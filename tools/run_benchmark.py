@@ -80,7 +80,11 @@ def count_mcp_calls(log_path, task_dir):
         return 0
     try:
         with open(os.path.join(task_dir, "environment", "payloads.json"), encoding="utf-8") as f:
-            tools = {v.get("tool") for v in json.load(f)["tools"].values()}
+            raw = json.load(f)["tools"].values()
+        # 2 cấu trúc payloads (main: {tool, params, envelope} · pilot: envelope-trực-tiếp)
+        tools = {(v.get("tool") if ("tool" in v and "envelope" in v) else k)
+                 for k, v in zip(json.load(open(os.path.join(task_dir, "environment", "payloads.json"),
+                                                encoding="utf-8"))["tools"].keys(), raw)}
     except (OSError, KeyError):
         return 0
     n = 0

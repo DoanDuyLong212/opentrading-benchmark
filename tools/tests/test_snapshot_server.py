@@ -77,6 +77,27 @@ def test_select_list_param_match():
 
 
 # ---------------------------------------------------------------- unit: tools/list
+def test_build_tool_defs_supports_pilot_bare_format():
+    """Pilot payloads (gen_tasks.py): {"tools": {TEN_TOOL: envelope-trực-tiếp}} —
+    không có wrapper {tool, params, envelope} như main (build_main.py)."""
+    payloads = {"snapshot_date": "2026-11-01", "tools": {
+        "vs_indicator_data": {"data": {"rows": []}, "provenance": {"as_of": "X"},
+                              "availability": "available", "warnings": []}}}
+    from mcp_snapshot_server import load_entries
+    import tempfile
+    fd, tmp = tempfile.mkstemp(suffix=".json")
+    with os.fdopen(fd, "w", encoding="utf-8") as f:
+        json.dump(payloads, f, ensure_ascii=False)
+    try:
+        entries, _ = load_entries(tmp)
+    finally:
+        os.unlink(tmp)
+    defs = build_tool_defs(entries)
+    assert [d["name"] for d in defs] == ["vs_indicator_data"]
+    env = select_envelope(entries, "vs_indicator_data", {"indicator": "CPI"})
+    assert env["data"] == {"rows": []}
+
+
 def test_build_tool_defs_union_and_schema():
     payloads = _load(REPO_TASK)
     entries = _entries(payloads)

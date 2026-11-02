@@ -78,9 +78,8 @@ def build_tool_defs(entries):
                 props[pk] = {"type": "string"}
         by_name[name] = {
             "name": name,
-            "description": ("Tool '%s' (snapshot replay, đóng băng). Gọi qua code mode: "
-                            "await tools.opentrading.%s({...}) — trả envelope JSON "
-                            "{data, provenance, availability}." % (name, name)),
+            "description": ("Tool '%s' (MCP opentrading, snapshot đóng băng) — trả envelope "
+                            "JSON {data, provenance, availability}." % name),
             "inputSchema": {"type": "object", "properties": props,
                             "additionalProperties": True},
             # BẮT BUỘC: OpenTrading chỉ auto-allow MCP tool khi readOnlyHint=true
@@ -93,8 +92,17 @@ def build_tool_defs(entries):
 
 # ------------------------------------------------------------------ server
 def load_entries(path):
+    """Hỗ trợ CẢ 2 cấu trúc payloads:
+    - main/holdout (build_main.py): {"tools": {KEY: {tool, params, envelope}}}
+    - pilot/smoke (gen_tasks.py):  {"tools": {TEN_TOOL: envelope-trực-tiếp}}"""
     payloads = json.load(open(path, encoding="utf-8"))
-    return [(k, v) for k, v in payloads["tools"].items()], payloads
+    entries = []
+    for k, v in payloads["tools"].items():
+        if isinstance(v, dict) and "tool" in v and "envelope" in v:
+            entries.append((k, v))
+        else:
+            entries.append((k, {"tool": k, "params": {}, "envelope": v}))
+    return entries, payloads
 
 
 def main():
@@ -108,10 +116,9 @@ def main():
     server = Server("opentrading-snapshot",
                     instructions=(
                         "Đây là server MCP 'opentrading' (snapshot replay, dữ liệu đóng băng %s). "
-                        "Tool khả dụng: %s. Cách gọi: trong code mode dùng "
-                        "`await tools.opentrading.<tool_name>({...params})` — kết quả trả về là "
-                        "envelope JSON {data, provenance, availability}; KHÔNG có resources. "
-                        "Chỉ dùng dữ liệu từ các tool này, không đọc file khác."
+                        "Tool khả dụng: %s. Mỗi tool trả envelope JSON "
+                        "{data, provenance, availability}. Chỉ dùng dữ liệu từ các tool này — "
+                        "không đọc file dữ liệu khác."
                         % (snap, ", ".join(tool_names) or "(không có)")))
 
     @server.list_tools()

@@ -37,10 +37,10 @@ def run(ws, instruction, task_dir, model, timeout_s, log_path):
                           "websearch": "deny",
                           "bash": {"*extra/benchmark*": "deny",
                                    "*payloads.json*": "deny"}},
-           "mcp": {"opentrading": {"type": "local",
-                                   "command": [sys.executable, SNAPSHOT],
-                                   "environment": {"BENCH_PAYLOADS": payloads},
-                                   "enabled": True}}}
+           "mcp": {"servers": {"opentrading": {"type": "local",
+                                               "command": [sys.executable, SNAPSHOT],
+                                               "environment": {"BENCH_PAYLOADS": payloads},
+                                               "codemode": False}}}}
     with open(os.path.join(xdg_cfg, "opencode", "opencode.json"), "w", encoding="utf-8") as f:
         json.dump(cfg, f, ensure_ascii=False, indent=1)
 

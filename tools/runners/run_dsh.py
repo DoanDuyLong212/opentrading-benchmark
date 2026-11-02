@@ -48,7 +48,7 @@ def run(ws, instruction, task_dir, model, timeout_s, log_path):
     with open(patch, "w", encoding="utf-8") as f:
         f.write(_patch_yml(SNAPSHOT, payloads, provider, model_id))
 
-    cmd = [DSH_BIN, "--profile", "headless", "--json", "--patch", patch, "-"]
+    cmd = [DSH_BIN, "--profile", "headless", "--patch", patch, "--json", "-"]
     rc, out, err, timed_out = popen_run(cmd, cwd=ws, env=dict(os.environ), timeout_s=timeout_s,
                                         log_path=log_path, stdin_text=instruction)
 
