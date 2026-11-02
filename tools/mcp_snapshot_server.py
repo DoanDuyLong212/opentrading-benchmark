@@ -82,6 +82,10 @@ def build_tool_defs(entries):
                             "của tool '%s' cho task benchmark." % name),
             "inputSchema": {"type": "object", "properties": props,
                             "additionalProperties": True},
+            # BẮT BUỘC: OpenTrading chỉ auto-allow MCP tool khi readOnlyHint=true
+            # (mcp/manager.ts: readOnly = annotations?.readOnlyHint ?? false);
+            # thiếu → headless mode sẽ DENY mọi tool call.
+            "annotations": {"title": name, "readOnlyHint": True},
         }
     return list(by_name.values())
 
@@ -105,7 +109,13 @@ def main():
 
     @server.list_tools()
     async def _list_tools():
-        return [types.Tool(**d) for d in build_tool_defs(entries)]
+        out = []
+        for d in build_tool_defs(entries):
+            d = dict(d)
+            ann = d.pop("annotations", None)
+            tool = types.Tool(**d, annotations=types.ToolAnnotations(**ann)) if ann else types.Tool(**d)
+            out.append(tool)
+        return out
 
     @server.call_tool()
     async def _call_tool(name, arguments):

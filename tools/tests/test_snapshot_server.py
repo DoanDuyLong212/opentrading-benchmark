@@ -89,6 +89,15 @@ def test_build_tool_defs_union_and_schema():
     assert schema.get("required") in (None, [])
 
 
+def test_build_tool_defs_mark_readonly_hint():
+    """OpenTrading chỉ auto-allow MCP tool khi annotations.readOnlyHint=true —
+    snapshot replay là read-only nên BẮT BUỘC khai báo (headless mode)."""
+    payloads = _load(REPO_TASK)
+    defs = build_tool_defs(_entries(payloads))
+    ann = defs[0].get("annotations") or {}
+    assert ann.get("readOnlyHint") is True
+
+
 # ---------------------------------------------------------------- integration: stdio handshake
 @pytest.mark.asyncio
 async def test_stdio_server_roundtrip(tmp_path):
