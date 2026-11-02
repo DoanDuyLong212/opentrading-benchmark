@@ -39,7 +39,7 @@ def _patch_yml(snapshot, payloads, provider, model):
 
 
 def run(ws, instruction, task_dir, model, timeout_s, log_path):
-    tdir = os.path.dirname(ws)
+    tdir = os.path.abspath(os.path.dirname(ws))  # bất biến: mọi path con tuyệt đối
     rdir = os.path.join(tdir, "runner")
     os.makedirs(rdir, exist_ok=True)
     payloads = os.path.join(task_dir, "environment", "payloads.json")

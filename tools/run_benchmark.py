@@ -255,7 +255,7 @@ def main():
     tasks = select_tasks(args.split, args.sample, args.seed, tasks_filter, args.confirm_holdout)
 
     ts = datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%SZ")
-    out_dir = args.out or os.path.join(ROOT, "results", "%s_%s" % (ts, args.split))
+    out_dir = os.path.abspath(args.out or os.path.join(ROOT, "results", "%s_%s" % (ts, args.split)))
     os.makedirs(out_dir, exist_ok=True)
     print("DRIVER: split=%s arms=%s model=%s runs=%d → %s" % (args.split, ",".join(arms), model, args.runs, out_dir))
 

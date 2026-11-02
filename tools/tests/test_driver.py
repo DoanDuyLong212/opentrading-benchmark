@@ -103,3 +103,18 @@ def test_grade_trial_missing_answer(tmp_path):
                           os.path.join(ROOT, "tasks", "pilot", "fin-l1-quote-01"),
                           out_dir=str(tmp_path))
     assert res["success"] is False
+
+
+# ---------------------------------------------------------------- path invariants
+def test_out_dir_absolute(tmp_path, monkeypatch):
+    """--out tương đối phải được resolve absolute (dsh --patch/XDG/OPENTRADING_HOME
+    là RELATIVE sẽ resolve sai theo cwd của harness)."""
+    os.chdir(str(tmp_path))
+    try:
+        out = os.path.abspath("results/x")
+        assert os.path.isabs(out)
+    finally:
+        os.chdir(ROOT)
+    # và trong main(): out_dir = os.path.abspath(args.out or ...) — kiểm tra source
+    src = open(os.path.join(ROOT, "tools", "run_benchmark.py"), encoding="utf-8").read()
+    assert "out_dir = os.path.abspath(args.out" in src

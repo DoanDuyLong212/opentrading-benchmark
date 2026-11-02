@@ -21,7 +21,7 @@ OPENCODE_BIN = os.path.expanduser("~/.opencode/bin/opencode")
 
 
 def run(ws, instruction, task_dir, model, timeout_s, log_path):
-    tdir = os.path.dirname(ws)
+    tdir = os.path.abspath(os.path.dirname(ws))  # bất biến: mọi path con tuyệt đối
     rdir = os.path.join(tdir, "runner")
     xdg_cfg = os.path.join(rdir, "xdg-config")
     xdg_data = os.path.join(rdir, "xdg-data")

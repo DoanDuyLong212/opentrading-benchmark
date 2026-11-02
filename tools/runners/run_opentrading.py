@@ -25,7 +25,7 @@ BUN = os.path.expanduser("~/.bun/bin/bun")
 
 
 def run(ws, instruction, task_dir, model, timeout_s, log_path):
-    tdir = os.path.dirname(ws)
+    tdir = os.path.abspath(os.path.dirname(ws))  # bất biến: mọi path con tuyệt đối
     home = os.path.join(tdir, "ot-home")
     os.makedirs(home, exist_ok=True)
     payloads = os.path.join(task_dir, "environment", "payloads.json")
