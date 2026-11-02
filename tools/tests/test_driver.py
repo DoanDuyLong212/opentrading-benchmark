@@ -118,3 +118,13 @@ def test_out_dir_absolute(tmp_path, monkeypatch):
     # và trong main(): out_dir = os.path.abspath(args.out or ...) — kiểm tra source
     src = open(os.path.join(ROOT, "tools", "run_benchmark.py"), encoding="utf-8").read()
     assert "out_dir = os.path.abspath(args.out" in src
+
+
+def test_retry_khi_rate_limit_trong_log(tmp_path):
+    """QA phát hiện dạng lỗi: harness exit 0 nhưng 429 trong log (opentrading
+    'outcome: failed'). Driver phải nhận diện được để retry — kiểm tra logic điều kiện."""
+    import inspect
+    src = inspect.getsource(rb.main)
+    assert "rate_limited" in src
+    assert "429" in src and "too many requests" in src
+    assert "got_answer" in src

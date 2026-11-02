@@ -286,8 +286,17 @@ def main():
                         attempt += 1
                         res = run_trial(arm, ws, instr, task_dir, model, timeout_s, log_path)
                         status = res.get("status", "unknown")
-                        # chỉ thử lại khi lỗi HẠ TẦNG (không phải timeout — timeout = cạn ngân sách task)
-                        infr = status in ("error", "runner_error")
+                        # chỉ thử lại khi lỗi HẠ TẦNG: runner lỗi rõ
+                        # + lỗi 429/quota trong log (harness tự retry nội bộ có thể đã hút cạn)
+                        got_answer = bool(res.get("answer_path")) or bool(res.get("final_text"))
+                        log_low = ""
+                        try:
+                            log_low = open(log_path, encoding="utf-8", errors="replace").read().lower()
+                        except OSError:
+                            pass
+                        rate_limited = (not got_answer) and bool(
+                            re.search(r"429|too many requests|rate.?limit|hết quota", log_low))
+                        infr = status in ("error", "runner_error") or rate_limited
                         if infr and attempt <= args.retry:
                             print("   ↻ retry %s %s (attempt %d, status=%s) sau %.0fs" % (
                                 tid, arm, attempt, status, args.pause * 2))
