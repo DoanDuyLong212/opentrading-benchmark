@@ -39,7 +39,9 @@ BCTC_Q = {
 }
 SCHEMA_UNIT = '{\n  "value": 0,\n  "unit": "%s",\n  "period": "%s",\n  "source": "%s",\n  "note": "(tuỳ chọn)"\n}'
 SCHEMA_LINE = '{\n  "value": 0,\n  "unit": "%s",\n  "period": "%s",\n  "source": "%s",\n  "line": "tên dòng chỉ tiêu trong báo cáo",\n  "note": "(tuỳ chọn)"\n}'
-SCHEMA_REFUSAL = '{\n  "value": null,\n  "reason": "lý do (nếu không trả lời được)",\n  "period": "%s",\n  "source": "%s",\n  "note": "kỳ có số mới nhất (nếu nêu)"\n}'
+# LƯU Ý (vá leak 02/11): KHÔNG còn schema riêng cho refusal — task bẫy dùng đúng
+# SCHEMA_UNIT (value placeholder 0) để format đề không bộc lộ "đây là task từ chối".
+# Quy tắc "không có dữ liệu → value null + lý do" nằm trong Ràng buộc chung của mọi task.
 
 
 # ---------------------------------------------------------------- L1
@@ -91,13 +93,13 @@ def f_l1_quote_crypto(t, env):
         q = "Giá **%s** tại thời điểm snapshot của task là bao nhiêu, theo **USD**?" % sym
         expects = [val_check(v), unit_check("usd"), period_check(["2026-11-01", "01/11", "snapshot"]), src_check("yf_commodities")]
         oracle = 'it = yf_item(env("yf:main"), %r)\ncheck("price", float(it["price"]), gold["solution"]["value"])\n' % sym
-        schema = SCHEMA_UNIT % ("USD", "snapshot 2026-11-01", "yf_commodities")
+        schema = SCHEMA_UNIT % ("USD", "(ngày dữ liệu)", "yf_commodities")
     elif kind == "ohlcv_close":
         k = t["payloads"][0]; cl = env[k]["data"]["closes"]; v = float(cl[-1]["c"])
         q = "Giá đóng cửa gần nhất của cặp **%s** (nguồn vnstock crypto) là bao nhiêu, theo **VND**?" % sym
         expects = [val_check(v), unit_check("dong"), period_check(["01/11", "2026-11-01"]), src_check("vn_crypto_ohlcv")]
         oracle = 'cl = env(%r)["data"]["closes"]\ncheck("close", float(cl[-1]["c"]), gold["solution"]["value"])\n' % k
-        schema = SCHEMA_UNIT % ("đồng", "phiên 01/11/2026", "vn_crypto_ohlcv")
+        schema = SCHEMA_UNIT % ("đồng", "(ngày dữ liệu)", "vn_crypto_ohlcv")
     else:  # yf_chg (holdout)
         it = yf_item(env, sym); v = r2((it["price"] / it["prev"] - 1) * 100)
         q = "**%s** đã thay đổi bao nhiêu **%%** so với phiên trước (theo dữ liệu snapshot)?" % sym
@@ -116,7 +118,7 @@ def f_l1_quote_gf(t, env):
     v = float(ser[idx]["c"]); uk, us = GF_UNIT[sym]
     return {"title": "Giá đóng cửa %s phiên %s" % (sym, day), "family_code": "L1·A quote", "fb": "single-metric extraction",
             "q": "Giá đóng cửa **phiên %s/2026** của **%s** là bao nhiêu? (đơn vị: %s)" % (day, sym, us),
-            "schema": SCHEMA_UNIT % (us, "phiên %s/2026" % day, "vn_msn_fx_gold"), "rules": "", "scoring": "value",
+            "schema": SCHEMA_UNIT % (us, "(kỳ được hỏi)", "vn_msn_fx_gold"), "rules": "", "scoring": "value",
             "expects": [val_check(v), unit_check(uk), period_check(pday(day)), src_check("vn_msn_fx_gold")],
             "solution": {"value": v},
             "oracle": 'ser = msn_series(env)\ncheck("close", float(ser[%r][%d]["c"]), gold["solution"]["value"])\n' % (sym, idx)}
@@ -130,7 +132,7 @@ def f_l1_macro(t, env):
         q = "**GDP** (tổng số, giá hiện hành) **%s** là bao nhiêu **tỷ đồng**?" % period.replace("Q", "quý ")
         expects = [val_check(v), unit_check("ty_dong"), period_check(pq(period)), src_check("vs_indicator_data")]
         oracle = 'check("gdp", gdp_pick(env, %r), gold["solution"]["value"])\n' % period
-        schema = SCHEMA_UNIT % ("tỷ đồng", period.replace("Q", "Quý "), "vs_indicator_data")
+        schema = SCHEMA_UNIT % ("tỷ đồng", "(kỳ được hỏi)", "vs_indicator_data")
         title = "GDP %s" % period
     else:
         name = MACRO_CPI[series]; lab = MACRO_LABEL.get(series, "nhóm **%s**" % name)
@@ -144,7 +146,7 @@ def f_l1_macro(t, env):
             ub = "diem"
         expects = [val_check_abs(v, 0.05), unit_check(ub), period_check(pmonth(period)), src_check("vs_indicator_data")]
         oracle = 'check("cpi", cpi_pick(env, %r, %r, %r), gold["solution"]["value"])\n' % (name, period, kind)
-        schema = SCHEMA_UNIT % (unit, mp, "vs_indicator_data")
+        schema = SCHEMA_UNIT % (unit, "(kỳ được hỏi)", "vs_indicator_data")
         title = "CPI %s — %s" % (series, mp)
     return {"title": title, "family_code": "L1·C macro", "fb": "single-metric extraction",
             "q": q, "schema": schema, "rules": "", "scoring": "value",
@@ -159,8 +161,8 @@ def f_l2_growth(t, env):
     vl, vp = float(dt["values"][pl]), float(dt["values"][pp])
     v = r2((vl / vp - 1) * 100)
     return {"title": "Tăng trưởng doanh thu %s (QoQ)" % sym, "family_code": "L2·A growth", "fb": "multi-step computation",
-            "q": "Doanh thu thuần của **%s** **quý gần nhất (%s)** thay đổi bao nhiêu **%%** so với quý liền trước (%s)? (dấu âm nếu giảm)" % (sym, pl, pp),
-            "schema": SCHEMA_UNIT % ("%", "%s so với %s" % (pl, pp), "financial_statements"),
+            "q": "Doanh thu thuần của **%s** **quý gần nhất** thay đổi bao nhiêu **%%** so với quý liền trước? (dấu âm nếu giảm)" % sym,
+            "schema": SCHEMA_UNIT % ("%", "quý gần nhất so với quý liền trước", "financial_statements"),
             "rules": "- Giá trị gốc đơn vị VND — % thay đổi tính trên cùng đơn vị.",
             "scoring": "value",
             "expects": [val_check_abs(v, 0.1), unit_check("pct"), period_check(pq(pl)), src_check("financial_statements")],
@@ -179,8 +181,8 @@ def f_l2_margin(t, env):
     p = d["periods"][-1]; i = len(d["periods"]) - 1
     v = r2(ln["values"][i] / dt["values"][i] * 100)
     return {"title": "Biên lợi nhuận gộp %s" % sym, "family_code": "L2·B margin", "fb": "multi-step computation",
-            "q": "**Biên lợi nhuận gộp** của **%s** quý **%s** là bao nhiêu **%%**? (lợi nhuận gộp ÷ doanh thu thuần)" % (sym, p),
-            "schema": SCHEMA_UNIT % ("%", p, "financial_detail"),
+            "q": "**Biên lợi nhuận gộp** của **%s** quý gần nhất là bao nhiêu **%%**? (lợi nhuận gộp ÷ doanh thu thuần)" % sym,
+            "schema": SCHEMA_UNIT % ("%", "quý gần nhất", "financial_detail"),
             "rules": "", "scoring": "value",
             "expects": [val_check_abs(v, 0.1), unit_check("pct"), period_check(pq(p)), src_check("financial_detail")],
             "solution": {"value": v},
@@ -206,10 +208,10 @@ def f_l2_tech(t, env):
     k = t["payloads"][0]; sym = t["entity"]; v = float(env[k]["data"]["rsi14"])
     return {"title": "RSI-14 %s" % sym, "family_code": "L2·D technical", "fb": "single-metric extraction (computed)",
             "q": "**RSI-14** của **%s** trên khung ngày (**1D**) là bao nhiêu?" % sym,
-            "schema": SCHEMA_UNIT % ("RSI-14", "đến phiên 30/10/2026", "signals_technical"),
+            "schema": SCHEMA_UNIT % ("RSI-14", "(kỳ được hỏi)", "signals_technical"),
             "rules": "", "scoring": "value",
             "expects": [val_check_abs(v, 0.1), {"type": "unit", "path": "unit", "accept": ["RSI-14", "RSI 14", "RSI", "rsi14"]},
-                        period_check(p30()), src_check("signals_technical")],
+                        period_check(p30() + ["phiên gần nhất", "gần nhất"]), src_check("signals_technical")],
             "solution": {"value": v},
             "oracle": 'check("rsi", float(env(%r)["data"]["rsi14"]), gold["solution"]["value"])\n' % k}
 
@@ -248,7 +250,7 @@ def f_l2_gf_compare(t, env):
     uk, us = GF_UNIT.get(sym, ("usd", "USD"))
     return {"title": "So sánh %s phiên %s" % (sym, day), "family_code": "L2·F fx", "fb": "single-metric + comparison",
             "q": "**%s** đóng cửa **phiên %s/2026** là bao nhiêu (**%s**)? So với phiên liền trước tăng hay giảm bao nhiêu — ghi trong `note`." % (sym, day, us),
-            "schema": SCHEMA_UNIT % (us, "phiên %s/2026" % day, "vn_msn_fx_gold") ,
+            "schema": SCHEMA_UNIT % (us, "(kỳ được hỏi)", "vn_msn_fx_gold") ,
             "rules": "- `note` **bắt buộc** nêu số phiên liền trước hoặc mức thay đổi.", "scoring": "value",
             "expects": [val_check(v), unit_check(uk), period_check(pday(day)), evnum([prev], 1), src_check("vn_msn_fx_gold", "yf_commodities") if sym not in ser else src_check("vn_msn_fx_gold")],
             "solution": {"value": v, "prev": prev}, "oracle": oracle}
@@ -260,20 +262,20 @@ def f_l2_macro_calc(t, env):
         qa, qb = "Q3/2026", "Q2/2026"
         va, vb = gdp_pick(env, qa), gdp_pick(env, qb); v = r2((va / vb - 1) * 100)
         q = "**GDP** (tổng số) **quý 3/2026** tăng bao nhiêu **%%** so với **quý 2/2026**?"
-        period = pq2(qa, qb)
+        period = pq2(qa, qb); sper = "quý được hỏi và kỳ đối chiếu"
         oracle = 'check("qoq", round((gdp_pick(env, %r) / gdp_pick(env, %r) - 1) * 100, 2), gold["solution"]["value"])\n' % (qa, qb)
     elif calc == "gdp_yoy":
         qa, qb = "Q3/2026", "Q3/2025"
         va, vb = gdp_pick(env, qa), gdp_pick(env, qb); v = r2((va / vb - 1) * 100)
         q = "**GDP** (tổng số) **quý 3/2026** tăng bao nhiêu **%%** so với **cùng kỳ năm trước** (quý 3/2025)?"
-        period = pq2(qa, qb)
+        period = pq2(qa, qb); sper = "quý được hỏi và cùng kỳ năm trước"
         oracle = 'check("yoy", round((gdp_pick(env, %r) / gdp_pick(env, %r) - 1) * 100, 2), gold["solution"]["value"])\n' % (qa, qb)
     elif calc == "cpi_gap":
         a = cpi_pick(env, "CHỈ SỐ GIÁ TIÊU DÙNG", "2026-09", "pct")
         b = cpi_pick(env, "LẠM PHÁT CƠ BẢN", "2026-09", "pct")
         v = r2(a - b)
         q = "**CPI** (chỉ số giá tiêu dùng, so tháng 12/2025) tháng 9/2026 cao hơn **lạm phát cơ bản** cùng tháng bao nhiêu **điểm %%**?"
-        period = pmonth("2026-09")
+        period = pmonth("2026-09"); sper = "tháng được hỏi"
         oracle = 'a = cpi_pick(env, "CHỈ SỐ GIÁ TIÊU DÙNG", "2026-09", "pct")\nb = cpi_pick(env, "LẠM PHÁT CƠ BẢN", "2026-09", "pct")\ncheck("gap", round(a - b, 2), gold["solution"]["value"])\n'
     else:  # cpi_avg / core_avg
         mon = w.split("/")[0].replace("T", "").split("-")
@@ -283,10 +285,10 @@ def f_l2_macro_calc(t, env):
         v = r2(sum(vals) / len(vals))
         lab = "CPI (chỉ số giá tiêu dùng, so tháng 12/2025)" if calc == "cpi_avg" else "lạm phát cơ bản"
         q = "**%s** bình quân các tháng %s **%s** là bao nhiêu **%%**?" % (lab, ", ".join(str(m) for m in months), y)
-        period = "T%s-T%s/%s" % (months[0], months[-1], y)
+        period = "T%s-T%s/%s" % (months[0], months[-1], y); sper = "kỳ bình quân được hỏi"
         oracle = 'vals = [cpi_pick(env, %r, "%s-%%02d" %% m, "pct") for m in %r]\ncheck("avg", round(sum(vals) / len(vals), 2), gold["solution"]["value"])\n' % (name, y, months)
     return {"title": "Macro — %s" % calc, "family_code": "L2·G macro-calc", "fb": "multi-step computation",
-            "q": q, "schema": SCHEMA_UNIT % ("%", period, "vs_indicator_data"),
+            "q": q, "schema": SCHEMA_UNIT % ("%", sper, "vs_indicator_data"),
             "rules": "", "scoring": "value",
             "expects": [val_check_abs(v, 0.1), unit_check("pct"), period_check(period if isinstance(period, list) else [period]), src_check("vs_indicator_data")],
             "solution": {"value": v}, "oracle": oracle}

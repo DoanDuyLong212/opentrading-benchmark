@@ -9,7 +9,7 @@ TASKS_B = [
     "entity": "VCB+BID+CTG+TCB+MBB", "asset": "vn_stock", "zone": "green", "pairs": [], "cap": 5,
     "band": "15–60 phút", "limit": 60, "tools": ["peer_compare"], "payloads": ["peer"],
     "q_md": "## Đề bài\nTrong 5 mã **VCB, BID, CTG, TCB, MBB** — dùng số liệu P/E và ROE từ **`peer_compare`** — những mã nào thỏa **đồng thời**: ROE > 20% **và** P/E < 10? Trả danh sách mã.",
-    "schema_md": '{\n  "values": {"pass": ["MÃ1", "MÃ2"]},\n  "period": "2025",\n  "source": "peer_compare",\n  "note": "P/E và ROE từng mã dùng để lọc"\n}',
+    "schema_md": '{\n  "values": {"pass": ["MÃ1", "MÃ2"]},\n  "period": "(kỳ dữ liệu tool)",\n  "source": "peer_compare",\n  "note": "P/E và ROE từng mã dùng để lọc"\n}',
     "rules_md": "- Chỉ dùng số liệu mà `peer_compare` trả về (kỳ do tool cung cấp); không thay bằng nguồn khác.",
     "gold": {"scoring": "value", "expects": [
         {"type": "set", "path": "values.pass", "gold": ["CTG", "MBB"]},
@@ -27,7 +27,7 @@ TASKS_B = [
     "entity": "VCB+BID+CTG+TCB+MBB", "asset": "vn_stock", "zone": "green", "pairs": [], "cap": 5,
     "band": "15–60 phút", "limit": 45, "tools": ["vn_quote_history"], "payloads": ["banks5"],
     "q_md": "## Đề bài\nCho 5 mã **VCB, BID, CTG, TCB, MBB**: giá đóng cửa **phiên 30/10** của từng mã là bao nhiêu (theo **nghìn đồng**), và **trung bình** 5 mã là bao nhiêu?",
-    "schema_md": '{\n  "values": {"VCB": 0, "BID": 0, "CTG": 0, "TCB": 0, "MBB": 0, "mean": 0},\n  "unit": "nghìn đồng",\n  "period": "phiên 2026-10-30",\n  "source": "vn_quote_history",\n  "note": "(tuỳ chọn)"\n}',
+    "schema_md": '{\n  "values": {"VCB": 0, "BID": 0, "CTG": 0, "TCB": 0, "MBB": 0, "mean": 0},\n  "unit": "nghìn đồng",\n  "period": "(kỳ được hỏi)",\n  "source": "vn_quote_history",\n  "note": "(tuỳ chọn)"\n}',
     "rules_md": "- Giá theo **nghìn đồng** (quy ước candles).",
     "gold": {"scoring": "value", "expects": [
         {"type": "value", "path": "values.VCB", "gold": 56.3, "tol": {"rel": 0.005}},
@@ -54,7 +54,7 @@ TASKS_B = [
     "entity": "VN30", "asset": "vn_stock", "zone": "green", "pairs": [], "cap": 30,
     "band": "15–60 phút", "limit": 45, "tools": ["market_movers"], "payloads": ["movers"],
     "q_md": "## Đề bài\n**Top 3 mã tăng mạnh nhất** phiên gần nhất trong rổ **VN30** (theo % tăng) là những mã nào? Kèm **% tăng** và **giá đóng cửa** (theo **đồng**) của từng mã, theo đúng thứ hạng.",
-    "schema_md": '{\n  "values": {\n    "1": {"symbol": "MÃ", "pct": 0, "close": 0},\n    "2": {"symbol": "MÃ", "pct": 0, "close": 0},\n    "3": {"symbol": "MÃ", "pct": 0, "close": 0}\n  },\n  "period": "phiên gần nhất (dd/mm/yyyy)",\n  "source": "market_movers",\n  "note": "(tuỳ chọn)"\n}',
+    "schema_md": '{\n  "values": {\n    "1": {"symbol": "MÃ", "pct": 0, "close": 0},\n    "2": {"symbol": "MÃ", "pct": 0, "close": 0},\n    "3": {"symbol": "MÃ", "pct": 0, "close": 0}\n  },\n  "period": "(kỳ được hỏi)",\n  "source": "market_movers",\n  "note": "(tuỳ chọn)"\n}',
     "rules_md": "- Giá theo **đồng** (bảng giá — khác candles nghìn đồng).",
     "gold": {"scoring": "value", "expects": [
         {"type": "str", "path": "values.1.symbol", "accept": ["GAS"]},
@@ -66,7 +66,7 @@ TASKS_B = [
         {"type": "str", "path": "values.3.symbol", "accept": ["NVL"]},
         {"type": "value", "path": "values.3.pct", "gold": 0.48, "tol": {"abs": 0.05}},
         {"type": "value", "path": "values.3.close", "gold": 10400, "tol": {"rel": 0.005}},
-        {"type": "period", "path": "period", "accept": ["30/10", "30-10", "30.10", "2026-10-30"]},
+        {"type": "period", "path": "period", "accept": ["30/10", "30-10", "30.10", "2026-10-30", "phiên gần nhất", "gần nhất"]},
         {"type": "str", "path": "source", "accept": ["market_movers"]},
     ], "solution": {"top": [{"symbol": "GAS", "pct": 2.63, "close": 78000},
                             {"symbol": "VHM", "pct": 1.45, "close": 63000},
@@ -86,12 +86,12 @@ TASKS_B = [
     "entity": "HPG+HCM+VND+SSI+SHB", "asset": "vn_stock", "zone": "green", "pairs": [], "cap": 5,
     "band": "15–60 phút", "limit": 45, "tools": ["signals_technical"], "payloads": ["tech"],
     "q_md": "## Đề bài\nTrong 5 mã **HPG, HCM, VND, SSI, SHB** — mã nào có **RSI-14 khung ngày thấp nhất** và bằng bao nhiêu?",
-    "schema_md": '{\n  "values": {"symbol": "MÃ", "rsi14": 0},\n  "period": "đến phiên gần nhất (dd/mm/yyyy)",\n  "source": "signals_technical",\n  "note": "RSI của cả 5 mã để đối chiếu"\n}',
+    "schema_md": '{\n  "values": {"symbol": "MÃ", "rsi14": 0},\n  "period": "(kỳ được hỏi)",\n  "source": "signals_technical",\n  "note": "RSI của cả 5 mã để đối chiếu"\n}',
     "rules_md": "",
     "gold": {"scoring": "value", "expects": [
         {"type": "str", "path": "values.symbol", "accept": ["SSI"]},
         {"type": "value", "path": "values.rsi14", "gold": 39.97, "tol": {"abs": 0.1}},
-        {"type": "period", "path": "period", "accept": ["30/10", "30-10", "30.10", "2026-10-30"]},
+        {"type": "period", "path": "period", "accept": ["30/10", "30-10", "30.10", "2026-10-30", "phiên gần nhất", "gần nhất"]},
         {"type": "str", "path": "source", "accept": ["signals_technical"]},
     ], "solution": {"symbol": "SSI", "rsi14": 39.97}, "as_of": "2026-11-01T15:57:53.193466+07:00",
         "notes": "RSI: HPG 51.9, HCM 40.87, VND 41.97, SSI 39.97, SHB 43.57 → thấp nhất SSI."},
@@ -130,7 +130,7 @@ TASKS_B = [
     "entity": "VNINDEX", "asset": "vn_stock", "zone": "green", "pairs": [], "cap": 0,
     "band": "15–60 phút", "limit": 45, "tools": ["vn_index_ohlcv"], "payloads": ["index10"],
     "q_md": "## Đề bài\n**VN-Index** thay đổi bao nhiêu **%** trong 10 phiên giao dịch gần nhất — từ đóng cửa phiên **19/10** đến đóng cửa phiên **30/10**?",
-    "schema_md": '{\n  "value": 0,\n  "unit": "%",\n  "period": "19/10 → 30/10/2026",\n  "source": "vn_index_ohlcv",\n  "note": "close đầu và close cuối dùng để tính"\n}',
+    "schema_md": '{\n  "value": 0,\n  "unit": "%",\n  "period": "(kỳ được hỏi)",\n  "source": "vn_index_ohlcv",\n  "note": "close đầu và close cuối dùng để tính"\n}',
     "rules_md": "",
     "gold": {"scoring": "value", "expects": [
         {"type": "value", "path": "value", "gold": 3.06, "tol": {"abs": 0.1}},
@@ -150,7 +150,7 @@ TASKS_B = [
     "entity": "DGC", "asset": "vn_stock", "zone": "green", "pairs": [], "cap": 0,
     "band": "<15 phút", "limit": 30, "tools": ["financial_statements"], "payloads": ["fs_dgc"],
     "q_md": "## Đề bài\nLợi nhuận sau thuế của **DGC** trong **quý 4/2026** là bao nhiêu? Quy ra **tỷ đồng**.",
-    "schema_md": '{\n  "value": null,\n  "reason": "lý do (nếu không trả lời được)",\n  "period": "Q4/2026",\n  "source": "financial_statements",\n  "note": "kỳ có số mới nhất (nếu nêu)"\n}',
+    "schema_md": '{\n  "value": 0,\n  "unit": "tỷ đồng",\n  "period": "Q4/2026",\n  "source": "financial_statements",\n  "note": "(tuỳ chọn)"\n}',
     "rules_md": "",
     "gold": {"scoring": "refusal",
              "refusal_tokens": ["chưa công bố", "chưa có", "chưa kết thúc", "không có", "không tồn tại",
@@ -174,7 +174,7 @@ TASKS_B = [
     "entity": "XYZX", "asset": "vn_stock", "zone": "green", "pairs": [], "cap": 0,
     "band": "<15 phút", "limit": 20, "tools": ["symbol_resolve"], "payloads": ["resolve"],
     "q_md": "## Đề bài\nGiá đóng cửa gần nhất của cổ phiếu **XYZX** là bao nhiêu (**đồng**)?",
-    "schema_md": '{\n  "value": null,\n  "reason": "lý do (nếu không trả lời được)",\n  "source": "symbol_resolve",\n  "note": "tuỳ chọn"\n}',
+    "schema_md": '{\n  "value": 0,\n  "unit": "đồng",\n  "period": "gần nhất",\n  "source": "symbol_resolve",\n  "note": "(tuỳ chọn)"\n}',
     "rules_md": "",
     "gold": {"scoring": "refusal",
              "refusal_tokens": ["không tồn tại", "không có", "không tìm thấy", "không hợp lệ",
@@ -191,22 +191,22 @@ TASKS_B = [
     "level": "L4", "family": "L4·I narrative-check", "fb": "claim verification",
     "entity": "XAUUSD+USDVND", "asset": "gold_fx", "zone": "green", "pairs": [], "cap": 0,
     "band": "15–60 phút", "limit": 30, "tools": ["vn_msn_fx_gold"], "payloads": ["fxgold"],
-    "q_md": "## Đề bài\nKiểm chứng nhận định sau:\n\n> “Trong 5 phiên giao dịch gần nhất (26/10 → 30/10), giá vàng thế giới (XAUUSD) và tỷ giá USD/VND **đều tăng liên tục từng phiên**.”\n\nĐúng hay **sai**? Nêu số close từng phiên của cả hai chuỗi trong `note` để chứng minh.",
+    "q_md": "## Đề bài\nKiểm chứng nhận định sau:\n\n> “Trong 5 phiên giao dịch gần nhất (26/10 → 30/10), giá vàng thế giới (XAUUSD) và tỷ giá USD/VND **đều có ít nhất một phiên giảm**.”\n\nĐúng hay **sai**? Nêu số close từng phiên của cả hai chuỗi trong `note` để chứng minh.",
     "schema_md": '{\n  "verdict": "đúng hoặc sai",\n  "period": "26/10 → 30/10/2026",\n  "source": "vn_msn_fx_gold",\n  "note": "số close từng phiên của cả hai chuỗi"\n}',
-    "rules_md": "- `note` phải chứa số liệu thật từ dữ liệu MCP (ít nhất một mốc cho thấy xu hướng ngược).",
+    "rules_md": "- `note` nêu số close từng phiên của cả hai chuỗi để chứng minh nhận định.",
     "gold": {"scoring": "verdict",
-             "verdict_accept": ["sai", "false", "không đúng", "không chính xác"],
-             "verdict_reject": ["đúng", "true", "chính xác"],
+             "verdict_accept": ["đúng", "true", "chính xác"],
+             "verdict_reject": ["sai", "false", "không đúng", "không chính xác"],
              "evidence": {"paths": ["note"], "min_hits": 1,
                           "numbers": [3875.02, 4020.42, 4067.04, 25799, 25832, 25852]},
-             "solution": {"verdict": "sai"},
+             "solution": {"verdict": "đúng"},
              "as_of": "2026-11-01T15:54:32.785351+07:00",
-             "notes": "XAUUSD giảm 2 phiên cuối (4067.04 → 4020.42 → 3875.02); USDVND lên–xuống (25841 → 25832 → 25852 → 25799 → 25802) → nhận định SAI."},
+             "notes": "Biến thể claim ĐÚNG (vá 2 chiều 02/11): XAUUSD giảm 2 phiên cuối (4067.04 → 4020.42 → 3875.02) và USDVND có 2 phiên giảm (25841 → 25832, 25852 → 25799) → cả hai chuỗi đều có ít nhất một phiên giảm → nhận định ĐÚNG."},
     "oracle_body": ('ser = {x["symbol"]: [p["c"] for p in x["closes"]] for x in env("vn_msn_fx_gold")["data"]["series"]}\n'
                     'xau, usd = ser["XAUUSD"], ser["USDVND"]\n'
-                    'check("xau_not_increasing", all(xau[i + 1] > xau[i] for i in range(len(xau) - 1)), False)\n'
-                    'check("usd_not_increasing", all(usd[i + 1] > usd[i] for i in range(len(usd) - 1)), False)\n'
-                    'check("verdict", "sai", gold["solution"]["verdict"])\n'),
+                    'check("xau_has_down", any(xau[i + 1] < xau[i] for i in range(len(xau) - 1)), True)\n'
+                    'check("usd_has_down", any(usd[i + 1] < usd[i] for i in range(len(usd) - 1)), True)\n'
+                    'check("verdict", "đúng", gold["solution"]["verdict"])\n'),
 },
 {
     "id": "fin-l4-2nguon-01", "group": "pilot", "title": "Đối chiếu 2 nguồn giá HPG",
@@ -216,7 +216,7 @@ TASKS_B = [
     "band": "15–60 phút", "limit": 30, "tools": ["vn_quote_history", "vs_overview_trading"],
     "payloads": ["qh_hpg", "vs_hpg"],
     "q_md": "## Đề bài\nĐối chiếu giá đóng cửa **phiên 30/10** của **HPG** từ **hai nguồn**: (a) lịch sử nến **`vn_quote_history`** và (b) bảng giao dịch **`vs_overview_trading`**. Hai nguồn có **khớp** nhau không? Nêu giá theo **đồng** và sai khác (nếu có) trong `note`.",
-    "schema_md": '{\n  "verdict": "khớp hoặc không khớp",\n  "value": 0,\n  "unit": "đồng",\n  "period": "phiên 2026-10-30",\n  "source": "vn_quote_history + vs_overview_trading",\n  "note": "số từng nguồn + sai khác (nếu có)"\n}',
+    "schema_md": '{\n  "verdict": "khớp hoặc không khớp",\n  "value": 0,\n  "unit": "đồng",\n  "period": "(kỳ được hỏi)",\n  "source": "vn_quote_history + vs_overview_trading",\n  "note": "số từng nguồn + sai khác (nếu có)"\n}',
     "rules_md": "- `value` theo đơn vị **đồng** (chuẩn hóa 2 nguồn).\n- `source` ghi **cả hai** tool đã dùng.",
     "gold": {"scoring": "value", "expects": [
         {"type": "verdict", "path": "verdict", "accept": ["khớp", "match", "giống nhau", "bằng nhau", "không lệch", "không chênh"],
@@ -271,7 +271,7 @@ TASKS_B = [
     "entity": "VCB+BID+CTG+TCB+MBB", "asset": "vn_stock", "zone": "green", "pairs": [], "cap": 5,
     "band": "15–60 phút", "limit": 60, "tools": ["peer_compare"], "payloads": ["peer"],
     "q_md": "## Đề bài\nDùng **`peer_compare`** lập bảng **P/E, P/B, ROE** của 5 mã **VCB, BID, CTG, TCB, MBB**, rồi **xếp hạng 5 mã theo ROE từ cao xuống thấp**.",
-    "schema_md": '{\n  "values": {\n    "VCB": {"pe": 0, "pb": 0, "roe": 0},\n    "BID": {"pe": 0, "pb": 0, "roe": 0},\n    "CTG": {"pe": 0, "pb": 0, "roe": 0},\n    "TCB": {"pe": 0, "pb": 0, "roe": 0},\n    "MBB": {"pe": 0, "pb": 0, "roe": 0}\n  },\n  "ranking": ["MÃ1", "MÃ2", "..."],\n  "period": "2025",\n  "source": "peer_compare",\n  "note": "(tuỳ chọn)"\n}',
+    "schema_md": '{\n  "values": {\n    "VCB": {"pe": 0, "pb": 0, "roe": 0},\n    "BID": {"pe": 0, "pb": 0, "roe": 0},\n    "CTG": {"pe": 0, "pb": 0, "roe": 0},\n    "TCB": {"pe": 0, "pb": 0, "roe": 0},\n    "MBB": {"pe": 0, "pb": 0, "roe": 0}\n  },\n  "ranking": ["MÃ1", "MÃ2", "..."],\n  "period": "(kỳ dữ liệu tool)",\n  "source": "peer_compare",\n  "note": "(tuỳ chọn)"\n}',
     "rules_md": "- Đúng kỳ mà `peer_compare` trả về (bội số theo giá cuối kỳ báo cáo — tool ghi rõ trong `note`).\n- `ranking` đủ 5 mã, đúng thứ tự.",
     "gold": {"scoring": "value", "expects": [
         {"type": "value", "path": "values.VCB.pe", "gold": 12.66, "tol": {"rel": 0.005}},

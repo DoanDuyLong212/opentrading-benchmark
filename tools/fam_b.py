@@ -7,7 +7,8 @@ from fam_util import (UNITS, p30, pday, pmonth, pq, pq2, nextq, r2, val_check, v
 from fam_a import MACRO_CPI, MACRO_LABEL, SCHEMA_UNIT
 from build_plan import GROUPS, PEER_GROUPS
 
-SCHEMA_REFUSAL = '{\n  "value": null,\n  "reason": "lý do (nếu không trả lời được)",\n  "period": "%s",\n  "source": "%s",\n  "note": "kỳ có số mới nhất (nếu nêu)"\n}'
+# LƯU Ý (vá leak 02/11): task refusal dùng SCHEMA_UNIT (value placeholder 0) —
+# không còn schema "value": null riêng để format đề không bộc lộ đây là task bẫy.
 SCHEMA_VERDICT = '{\n  "verdict": "đúng hoặc sai",\n  "period": "%s",\n  "source": "%s",\n  "note": "số liệu chứng minh"\n}'
 
 TICK_ACCEPT = {
@@ -27,7 +28,7 @@ def f_l3_agg(t, env):
     mean = r2(sum(vals.values()) / len(vals))
     lines = ", ".join(syms)
     schema = ('{\n  "values": {' + ", ".join('"%s": 0' % s for s in syms) + ', "mean": 0},\n'
-              '  "unit": "đồng",\n  "period": "phiên 30/10/2026",\n  "source": "vn_equity_quote_batch",\n  "note": "(tuỳ chọn)"\n}')
+              '  "unit": "đồng",\n  "period": "(kỳ được hỏi)",\n  "source": "vn_equity_quote_batch",\n  "note": "(tuỳ chọn)"\n}')
     expects = [{"type": "value", "path": "values.%s" % s, "gold": vals[s], "tol": {"rel": 0.005}} for s in syms]
     expects += [{"type": "value", "path": "values.mean", "gold": mean, "tol": {"rel": 0.005}},
                 unit_check("dong"), period_check(p30()), src_check("vn_equity_quote_batch")]
@@ -74,7 +75,7 @@ def f_l3_screen(t, env):
     label, expr, sel = chosen
     head, peers = PEER_GROUPS[g]
     members = [head] + peers
-    schema = '{\n  "values": {"pass": [' + ", ".join('"%s"' % s for s in sel) + ']},\n  "period": "2025",\n  "source": "peer_compare",\n  "note": "P/E, P/B, ROE từng mã để lọc"\n}'
+    schema = '{\n  "values": {"pass": [' + ", ".join('"%s"' % s for s in sel) + ']},\n  "period": "(kỳ dữ liệu tool)",\n  "source": "peer_compare",\n  "note": "P/E, P/B, ROE từng mã để lọc"\n}'
     oracle = ('rows = env(%r)["data"]["rows"]\n'
               'sel = []\n'
               'for r in rows:\n'
@@ -102,7 +103,7 @@ def f_l3_top(t, env):
         rows = L[which][:3]
         if which == "volume":
             cont = '"%d": {"symbol": "MÃ", "vol": 0, "close": 0}'
-            schema = '{\n  "values": {\n    ' + ",\n    ".join(cont % i for i in range(1, 4)) + '\n  },\n  "period": "phiên 30/10/2026",\n  "source": "market_movers",\n  "note": "(tuỳ chọn)"\n}'
+            schema = '{\n  "values": {\n    ' + ",\n    ".join(cont % i for i in range(1, 4)) + '\n  },\n  "period": "(kỳ được hỏi)",\n  "source": "market_movers",\n  "note": "(tuỳ chọn)"\n}'
             expects = []
             for i, r in enumerate(rows, 1):
                 expects += [{"type": "str", "path": "values.%d.symbol" % i, "accept": [r["symbol"]]},
@@ -111,14 +112,14 @@ def f_l3_top(t, env):
             q = "**Top 3 mã có khối lượng khớp lệnh lớn nhất** phiên gần nhất trong rổ **VN30** là những mã nào? Kèm khối lượng và giá đóng cửa (đồng)."
         else:
             cont = '"%d": {"symbol": "MÃ", "pct": 0, "close": 0}'
-            schema = '{\n  "values": {\n    ' + ",\n    ".join(cont % i for i in range(1, 4)) + '\n  },\n  "period": "phiên 30/10/2026",\n  "source": "market_movers",\n  "note": "(tuỳ chọn)"\n}'
+            schema = '{\n  "values": {\n    ' + ",\n    ".join(cont % i for i in range(1, 4)) + '\n  },\n  "period": "(kỳ được hỏi)",\n  "source": "market_movers",\n  "note": "(tuỳ chọn)"\n}'
             expects = []
             for i, r in enumerate(rows, 1):
                 expects += [{"type": "str", "path": "values.%d.symbol" % i, "accept": [r["symbol"]]},
                             {"type": "value", "path": "values.%d.pct" % i, "gold": r2(r["pct"]), "tol": {"abs": 0.05}},
                             {"type": "value", "path": "values.%d.close" % i, "gold": float(r["close"]), "tol": {"rel": 0.005}}]
             q = "**Top 3 mã %s mạnh nhất** phiên gần nhất trong rổ **VN30** (theo %% thay đổi) là những mã nào? Kèm %% và giá đóng cửa (đồng), theo đúng thứ hạng." % ("tăng" if which == "gainers" else "giảm")
-        expects += [period_check(p30()), src_check("market_movers")]
+        expects += [period_check(p30() + ["phiên gần nhất", "gần nhất"]), src_check("market_movers")]
         sol = {str(i): {"symbol": r["symbol"], "pct": r2(r["pct"]), "close": float(r["close"]),
                         **({"vol": float(r["vol"])} if which == "volume" else {})} for i, r in enumerate(rows, 1)}
         oracle = ('rows = env("movers:vn30")["data"][%r][:3]\n'
@@ -133,13 +134,13 @@ def f_l3_top(t, env):
         which = k[:-1]; rows = L[which][:5]
         keys = ('"1": {"symbol": "MÃ", "pct": 0, "close": 0}, ' * 5)
         schema = ('{\n  "values": {\n    ' + ",\n    ".join('"%d": {"symbol": "MÃ", "pct": 0, "close": 0}' % i for i in range(1, 6)) +
-                  '\n  },\n  "period": "phiên 30/10/2026",\n  "source": "market_movers",\n  "note": "(tuỳ chọn)"\n}')
+                  '\n  },\n  "period": "(kỳ được hỏi)",\n  "source": "market_movers",\n  "note": "(tuỳ chọn)"\n}')
         expects = []
         for i, r in enumerate(rows, 1):
             expects += [{"type": "str", "path": "values.%d.symbol" % i, "accept": [r["symbol"]]},
                         {"type": "value", "path": "values.%d.pct" % i, "gold": r2(r["pct"]), "tol": {"abs": 0.05}},
                         {"type": "value", "path": "values.%d.close" % i, "gold": float(r["close"]), "tol": {"rel": 0.005}}]
-        expects += [period_check(p30()), src_check("market_movers")]
+        expects += [period_check(p30() + ["phiên gần nhất", "gần nhất"]), src_check("market_movers")]
         sol = {str(i): {"symbol": r["symbol"], "pct": r2(r["pct"]), "close": float(r["close"])} for i, r in enumerate(rows, 1)}
         oracle = ('rows = env("movers:vn30")["data"][%r][:5]\n'
                   'for i, r in enumerate(rows, 1):\n'
@@ -175,7 +176,7 @@ def f_l3_tech_multi(t, env):
     members = GROUPS[g]
     rs = {s: float(env["tech:" + s]["data"]["rsi14"]) for s in members}
     note_desc = ", ".join("%s %s" % (s, rs[s]) for s in members)
-    schema_min = '{\n  "values": {"symbol": "MÃ", "rsi14": 0},\n  "period": "đến phiên 30/10/2026",\n  "source": "signals_technical",\n  "note": "RSI của cả 5 mã để đối chiếu"\n}'
+    schema_min = '{\n  "values": {"symbol": "MÃ", "rsi14": 0},\n  "period": "(kỳ được hỏi)",\n  "source": "signals_technical",\n  "note": "RSI của cả 5 mã để đối chiếu"\n}'
     if kind in ("min_rsi", "max_rsi"):
         best = min(rs.values()) if kind == "min_rsi" else max(rs.values())
         winners = sorted([s for s in members if rs[s] == best])
@@ -194,7 +195,7 @@ def f_l3_tech_multi(t, env):
                     "rules": "- Trả đúng **mã** và **giá trị** RSI của mã đó.", "scoring": "value",
                     "expects": [{"type": "str", "path": "values.symbol", "accept": [sym]},
                                 {"type": "value", "path": "values.rsi14", "gold": rs[sym], "tol": {"abs": 0.1}},
-                                period_check(p30()), src_check("signals_technical"),
+                                period_check(p30() + ["phiên gần nhất", "gần nhất"]), src_check("signals_technical"),
                                 evnum([rs[s] for s in members], 2)],
                     "solution": {"symbol": sym, "rsi14": rs[sym]}, "oracle": oracle}
     # count_below
@@ -210,10 +211,10 @@ def f_l3_tech_multi(t, env):
               'check("count", sum(1 for v in rs.values() if v < %s), gold["solution"]["count"])\n') % (members, th)
     return {"title": "Đếm RSI<%s nhóm %s" % (th, g), "family_code": "L3·D tech-multi", "fb": "multi-entity comparison",
             "q": q,
-            "schema": '{\n  "values": {"count": 0},\n  "period": "đến phiên 30/10/2026",\n  "source": "signals_technical",\n  "note": "RSI của cả 5 mã để đối chiếu"\n}',
+            "schema": '{\n  "values": {"count": 0},\n  "period": "(kỳ được hỏi)",\n  "source": "signals_technical",\n  "note": "RSI của cả 5 mã để đối chiếu"\n}',
             "rules": "", "scoring": "value",
             "expects": [{"type": "value", "path": "values.count", "gold": cnt, "tol": {"abs": 0.001}},
-                        period_check(p30()), src_check("signals_technical"), evnum([rs[s] for s in members], 2)],
+                        period_check(p30() + ["phiên gần nhất", "gần nhất"]), src_check("signals_technical"), evnum([rs[s] for s in members], 2)],
             "solution": {"count": cnt}, "oracle": oracle}
 
 
@@ -243,14 +244,14 @@ def f_l3_index(t, env):
         v = r2((cl[-1]["c"] / cl[0]["c"] - 1) * 100)
         return {"title": "%s 10 phiên" % sym, "family_code": "L3·F index", "fb": "temporal computation",
                 "q": "**%s** thay đổi bao nhiêu **%%** trong 10 phiên giao dịch gần nhất — từ đóng cửa phiên **19/10** đến đóng cửa phiên **30/10**?" % sym,
-                "schema": SCHEMA_UNIT % ("%", "19/10 → 30/10/2026", "vn_index_ohlcv"), "rules": "", "scoring": "value",
+                "schema": SCHEMA_UNIT % ("%", "(kỳ được hỏi)", "vn_index_ohlcv"), "rules": "", "scoring": "value",
                 "expects": [val_check_abs(v, 0.1), unit_check("pct"), period_check(["19/10", "30/10"]), src_check("vn_index_ohlcv")],
                 "solution": {"value": v},
                 "oracle": 'cl = env(%r)["data"]["closes"]\ncheck("chg", round((cl[-1]["c"] / cl[0]["c"] - 1) * 100, 2), gold["solution"]["value"])\n' % k}
     mx = max(cl, key=lambda x: x["c"]); d = mx["t"]; dd = "%s/%s" % (d[8:10], d[5:7])
     return {"title": "%s — phiên cao nhất" % sym, "family_code": "L3·F index", "fb": "temporal computation",
             "q": "Trong 10 phiên gần nhất (19/10 → 30/10), phiên nào **%s đóng cửa cao nhất** và mức đóng cửa đó là bao nhiêu điểm? (nêu ngày trong `note`)" % sym,
-            "schema": '{\n  "values": {"value": 0},\n  "unit": "điểm",\n  "period": "19/10 → 30/10/2026",\n  "source": "vn_index_ohlcv",\n  "note": "ngày phiên cao nhất (dd/mm)"\n}',
+            "schema": '{\n  "values": {"value": 0},\n  "unit": "điểm",\n  "period": "(kỳ được hỏi)",\n  "source": "vn_index_ohlcv",\n  "note": "ngày phiên cao nhất (dd/mm)"\n}',
             "rules": "", "scoring": "value",
             "expects": [{"type": "value", "path": "values.value", "gold": float(mx["c"]), "tol": {"rel": 0.005}},
                         unit_check("diem"), period_check(["19/10", "30/10"]), src_check("vn_index_ohlcv"),
@@ -273,7 +274,7 @@ def f_l3_macro_agg(t, env):
         label = name.lstrip("- ").strip()
         return {"title": "Nhóm CPI tăng cao nhất T9", "family_code": "L3·G macro-agg", "fb": "aggregation",
                 "q": "Trong **các nhóm hàng** của CPI tháng 9/2026 (so với tháng 12/2025), nhóm nào **tăng cao nhất** và mức tăng là bao nhiêu **%%**?",
-                "schema": '{\n  "values": {"category": "tên nhóm", "pct": 0},\n  "period": "Tháng 9/2026",\n  "source": "vs_indicator_data",\n  "note": "(tuỳ chọn)"\n}',
+                "schema": '{\n  "values": {"category": "tên nhóm", "pct": 0},\n  "period": "(kỳ được hỏi)",\n  "source": "vs_indicator_data",\n  "note": "(tuỳ chọn)"\n}',
                 "rules": "", "scoring": "value",
                 "expects": [{"type": "str", "path": "values.category", "accept": [label]},
                             {"type": "value", "path": "values.pct", "gold": r2(v), "tol": {"abs": 0.05}},
@@ -328,7 +329,7 @@ def f_l4_future(t, env):
         bonus_v = r2(row["values"][latest] / 1e9)
         return {"title": "%s — %s (chưa công bố)" % (sym, asked), "family_code": "L4·E future-period", "fb": "unanswerable (period trap)",
                 "q": "Lợi nhuận sau thuế của **%s** trong **%s** là bao nhiêu? Quy ra **tỷ đồng**." % (sym, asked),
-                "schema": SCHEMA_REFUSAL % (asked, "financial_statements"), "rules": "", "scoring": "refusal",
+                "schema": SCHEMA_UNIT % ("tỷ đồng", asked, "financial_statements"), "rules": "", "scoring": "refusal",
                 "refusal_tokens": REFUSE_TOKENS, "bonus_numbers": [bonus_v],
                 "bonus_strings": [latest] + pq(latest),
                 "solution": {"latest": latest, "asked": asked},
@@ -339,14 +340,14 @@ def f_l4_future(t, env):
         pr = t["params"]; series = pr["series"]; period = pr["period"]
         if series == "gdp":
             q = "**GDP** (tổng số) **quý 4/2026** là bao nhiêu **tỷ đồng**?"
-            schema = SCHEMA_REFUSAL % ("Q4/2026", "vs_indicator_data")
+            schema = SCHEMA_UNIT % ("tỷ đồng", "Q4/2026", "vs_indicator_data")
             bonus_numbers = [gdp_pick(env, "Q3/2026")]; bonus_strings = pq("Q3/2026")
             oracle = 'periods = [r["p"] for r in env("gdp:full")["data"]["total"]]\ncheck("absent", "Quý 4/2026" in periods, False)\n'
         else:
             name = MACRO_CPI[series]
             q = "**%s** **tháng 10/2026** tăng bao nhiêu phan-tram so với tháng 12/2025?" % name
             q = q.replace("phan-tram", "phần trăm (%)")
-            schema = SCHEMA_REFUSAL % ("Tháng 10/2026", "vs_indicator_data")
+            schema = SCHEMA_UNIT % ("%", "Tháng 10/2026", "vs_indicator_data")
             bonus_numbers = [cpi_pick(env, name, "2026-09", "pct")]; bonus_strings = pmonth("2026-09")
             oracle = 'rows = env("cpi:full")["data"]["rows"]\ncheck("absent", any(r["n"] == %r and r["p"] == "Tháng 10/2026" for r in rows), False)\n' % name
         return {"title": "Macro %s (chưa công bố)" % period, "family_code": "L4·E future-period", "fb": "unanswerable (period trap)",
@@ -359,14 +360,14 @@ def f_l4_future(t, env):
     if sym in ser:
         cl = ser[sym]; last = cl[-1]
         q = "Giá đóng cửa của **%s** trong **phiên %s/2026** là bao nhiêu?" % (sym, day)
-        schema = SCHEMA_REFUSAL % ("phiên %s/2026" % day, "vn_msn_fx_gold")
+        schema = SCHEMA_UNIT % (GF_UNIT.get(sym, ("usd", "USD"))[1], "phiên %s/2026" % day, "vn_msn_fx_gold")
         bonus_numbers = [float(last["c"])]; bonus_strings = [last["t"], pday(last["t"].split("-")[2] + "/" + last["t"].split("-")[1])[0]]
         _d = "2026-%s-%s" % (day.split("/")[1], day.split("/")[0])
         oracle = 'cl = msn_series(env)[%r]\ncheck("no_day", [x for x in cl if x["t"] == %r], [])\n' % (sym, _d)
     else:
         it = yf_item(env, sym)
         q = "Giá đóng cửa của **%s** trong **phiên %s/2026** là bao nhiêu?" % (sym, day)
-        schema = SCHEMA_REFUSAL % ("phiên %s/2026" % day, "yf_commodities")
+        schema = SCHEMA_UNIT % ("USD", "phiên %s/2026" % day, "yf_commodities")
         bonus_numbers = [it["price"]]; bonus_strings = ["snapshot"]
         oracle = 'check("no_series", True, True)\n'
     return {"title": "GF %s phiên %s (không có phiên)" % (sym, day), "family_code": "L4·E future-period", "fb": "unanswerable (period trap)",
@@ -380,41 +381,64 @@ def f_l4_nonexist(t, env):
     subj = "cặp **%s** (crypto)" % s if t["subject"] == "crypto" else "cổ phiếu **%s**" % s
     return {"title": "Mã %s (không tồn tại)" % s, "family_code": "L4·B nonexistent", "fb": "unanswerable (entity trap)",
             "q": "Giá đóng cửa gần nhất của %s là bao nhiêu (**đồng** nếu là cổ phiếu VN, **giá niêm yết** nếu là crypto)?" % subj,
-            "schema": SCHEMA_REFUSAL % ("gần nhất", "symbol_resolve"), "rules": "", "scoring": "refusal",
+            "schema": SCHEMA_UNIT % ("đồng", "gần nhất", "symbol_resolve"), "rules": "", "scoring": "refusal",
             "refusal_tokens": REFUSE_TOKENS, "bonus_numbers": [], "bonus_strings": [],
             "solution": {"query": s},
             "oracle": 'd = env(%r)["data"]\ncheck("null", d["resolved"] is None, True)\ncheck("no_cand", d["candidates"], [])\n' % k}
 
 
 def f_l4_narrative(t, env):
+    """Kiểm chứng nhận định — 2 CHIỀU (vá leak 02/11):
+    - claim "tăng liên tục từng phiên"  → verdict SAI khi dữ liệu có phiên giảm/phẳng;
+    - claim "có ít nhất một phiên giảm" → verdict ĐÚNG khi dữ liệu có phiên giảm.
+    Hướng chọn deterministic theo parity id (id lẻ → claim TRUE nếu has_down), để main
+    + holdout đều có cả 2 hướng; đề không gợi ý hướng kết luận (rule trung tính)."""
     subj = t["subject"]; sym = t["entity"]
     if subj == "vn_stock":
-        k = t["payloads"][0]; cl = env[k]["data"]["closes"]; unit = "nghìn đồng"
-        vs = [x["c"] for x in cl]; n = 10
-        q = "Nhận định: “Trong **10 phiên gần nhất (19/10 → 30/10)**, giá đóng cửa của **%s** **tăng liên tục từng phiên**.”\n\nĐúng hay **sai**? Nêu số close từng phiên trong `note` để chứng minh." % sym
-        schema = SCHEMA_VERDICT % ("19/10 → 30/10/2026", "vn_quote_history")
-        period = ["19/10", "30/10"]
-        oracle = 'cl = env(%r)["data"]["closes"]\nvs = [x["c"] for x in cl]\ncheck("not_rising", all(vs[i+1] > vs[i] for i in range(len(vs)-1)), False)\n' % k
+        k = t["payloads"][0]; cl = env[k]["data"]["closes"]
+        vs = [x["c"] for x in cl]
+        win, sper, src = "10 phiên gần nhất (19/10 → 30/10)", "19/10 → 30/10/2026", "vn_quote_history"
+        oracle_head = 'cl = env(%r)["data"]["closes"]\nvs = [x["c"] for x in cl]\n' % k
     elif subj == "crypto":
-        k = t["payloads"][0]; cl = env[k]["data"]["closes"]; vs = [x["c"] for x in cl]; unit = "VND"; n = 10
-        q = "Nhận định: “Trong **10 ngày gần nhất**, giá đóng cửa của **%s** **tăng liên tục từng ngày**.”\n\nĐúng hay **sai**? Nêu số close từng ngày trong `note` để chứng minh." % sym
-        schema = SCHEMA_VERDICT % ("10 ngày gần nhất", "vn_crypto_ohlcv")
-        period = ["10 ngày"]
-        oracle = 'cl = env(%r)["data"]["closes"]\nvs = [x["c"] for x in cl]\ncheck("not_rising", all(vs[i+1] > vs[i] for i in range(len(vs)-1)), False)\n' % k
+        k = t["payloads"][0]; cl = env[k]["data"]["closes"]
+        vs = [x["c"] for x in cl]
+        win, sper, src = "10 ngày gần nhất", "10 ngày gần nhất", "vn_crypto_ohlcv"
+        oracle_head = 'cl = env(%r)["data"]["closes"]\nvs = [x["c"] for x in cl]\n' % k
     else:
         cl = msn_series(env)[sym]; vs = [x["c"] for x in cl]
-        q = "Nhận định: “Trong **5 phiên gần nhất (26/10 → 30/10)**, giá đóng cửa của **%s** **tăng liên tục từng phiên**.”\n\nĐúng hay **sai**? Nêu số close từng phiên trong `note` để chứng minh." % sym
-        schema = SCHEMA_VERDICT % ("26/10 → 30/10/2026", "vn_msn_fx_gold")
-        period = ["26/10", "30/10"]
-        oracle = 'cl = msn_series(env)[%r]\nvs = [x["c"] for x in cl]\ncheck("not_rising", all(vs[i+1] > vs[i] for i in range(len(vs)-1)), False)\n' % sym
-    assert not all(vs[i + 1] > vs[i] for i in range(len(vs) - 1)), "narrative: chuỗi tăng liên tục — cần đổi claim"
+        win, sper, src = "5 phiên gần nhất (26/10 → 30/10)", "26/10 → 30/10/2026", "vn_msn_fx_gold"
+        oracle_head = 'cl = msn_series(env)[%r]\nvs = [x["c"] for x in cl]\n' % sym
+    all_up = all(vs[i + 1] > vs[i] for i in range(len(vs) - 1))
+    has_down = any(vs[i + 1] < vs[i] for i in range(len(vs) - 1))
+    try:
+        seq = int(re.sub(r"\D", "", str(t.get("id", "")).rsplit("-", 1)[-1]) or "0")
+    except ValueError:
+        seq = 0
+    if has_down and seq % 2 == 1:
+        claim, verdict = "có ít nhất một phiên giảm", "đúng"
+        v_accept = ["đúng", "true", "chính xác"]
+        v_reject = ["sai", "false", "không đúng", "không chính xác"]
+        oracle = (oracle_head +
+                  'check("has_down", any(vs[i + 1] < vs[i] for i in range(len(vs) - 1)), True)\n'
+                  'check("verdict", gold["solution"]["verdict"], "đúng")\n')
+    else:
+        claim, verdict = "tăng liên tục từng phiên", "sai"
+        assert not all_up, "narrative: chuỗi tăng liên tục — claim 'tăng liên tục' sẽ TRUE, phải dùng biến thể khác"
+        v_accept = ["sai", "false", "không đúng", "không chính xác"]
+        v_reject = ["đúng", "true", "chính xác"]
+        oracle = (oracle_head +
+                  'check("not_all_up", all(vs[i + 1] > vs[i] for i in range(len(vs) - 1)), False)\n'
+                  'check("verdict", gold["solution"]["verdict"], "sai")\n')
+    q = ("Nhận định: “Trong **%s**, giá đóng cửa của **%s** **%s**.”\n\n"
+         "Đúng hay **sai**? Nêu số close từng phiên trong `note` để chứng minh." % (win, sym, claim))
     return {"title": "Kiểm chứng nhận định %s" % sym, "family_code": "L4·I narrative-check", "fb": "claim verification",
-            "q": q, "schema": schema, "rules": "- `note` phải chứa số liệu thật chứng minh (ít nhất 1 phiên giảm).",
+            "q": q, "schema": SCHEMA_VERDICT % (sper, src),
+            "rules": "- `note` nêu số close từng phiên của kỳ được hỏi để chứng minh nhận định.",
             "scoring": "verdict",
-            "verdict_accept": ["sai", "false", "không đúng", "không chính xác"],
-            "verdict_reject": ["đúng", "true", "chính xác"],
+            "verdict_accept": v_accept,
+            "verdict_reject": v_reject,
             "evidence": {"paths": ["note"], "min_hits": 1, "numbers": list(vs)},
-            "solution": {"verdict": "sai"}, "oracle": oracle}
+            "solution": {"verdict": verdict}, "oracle": oracle}
 
 
 def f_l4_2src(t, env):
@@ -429,7 +453,7 @@ def f_l4_2src(t, env):
         verdict = "khớp" if diff == 0 else "lệch"
         return {"title": "Đối chiếu 2 nguồn %s" % sym, "family_code": "L4·D two-source", "fb": "cross-source verification",
                 "q": "Đối chiếu giá đóng cửa **phiên 30/10** của **%s** từ **hai nguồn**: (a) lịch sử nến **`vn_quote_history`** (nghìn đồng) và (b) bảng giá **`vn_equity_quote_batch`** (đồng). Hai nguồn có **khớp** không? Nêu giá theo **đồng** và sai khác trong `note`." % sym,
-                "schema": '{\n  "verdict": "khớp hoặc không khớp",\n  "value": 0,\n  "unit": "đồng",\n  "period": "phiên 30/10/2026",\n  "source": "vn_quote_history + vn_equity_quote_batch",\n  "note": "số từng nguồn + sai khác"\n}',
+                "schema": '{\n  "verdict": "khớp hoặc không khớp",\n  "value": 0,\n  "unit": "đồng",\n  "period": "(kỳ được hỏi)",\n  "source": "vn_quote_history + vn_equity_quote_batch",\n  "note": "số từng nguồn + sai khác"\n}',
                 "rules": "- `value` theo **đồng**.\n- `source` ghi cả hai tool.", "scoring": "value",
                 "expects": [{"type": "verdict", "path": "verdict", "accept": ["khớp", "match", "giống nhau", "không lệch"], "reject": ["không khớp", "lệch", "khác nhau"]},
                             val_check(close), unit_check("dong"), period_check(p30()),
@@ -489,7 +513,7 @@ def f_l5_profile(t, env):
         tr = env[ko]["data"]["trading"]
         pe = float(tr["PE"]); mcap = r2(tr["MarketCapital"] / 1e9)
         schema = ('{\n  "values": {"revenue_q_bn": 0, "gross_profit_q_bn": 0, "gross_margin_pct": 0, "pe": 0, "market_cap_bn": 0},\n'
-                  '  "period": "%s + snapshot",\n  "source": "financial_detail + stock_overview",\n  "note": "(tuỳ chọn)"\n}' % p)
+                  '  "period": "quý dữ liệu + snapshot",\n  "source": "financial_detail + stock_overview",\n  "note": "(tuỳ chọn)"\n}')
         expects = [{"type": "value", "path": "values.revenue_q_bn", "gold": float(dt), "tol": {"rel": 0.005}},
                    {"type": "value", "path": "values.gross_profit_q_bn", "gold": float(ln), "tol": {"rel": 0.005}},
                    {"type": "value", "path": "values.gross_margin_pct", "gold": margin, "tol": {"abs": 0.1}},
@@ -545,7 +569,7 @@ def f_l5_compare(t, env):
         k = t["payloads"][0]; g = t["params"]["group"]; rows = env[k]["data"]["rows"]
         syms = [r["symbol"] for r in rows]
         schema = ('{\n  "values": {\n    ' + ",\n    ".join('"%s": {"pe": 0, "pb": 0, "roe": 0}' % s for s in syms) +
-                  '\n  },\n  "ranking": ["MÃ1", "MÃ2", "..."],\n  "period": "2025",\n  "source": "peer_compare",\n  "note": "(tuỳ chọn)"\n}')
+                  '\n  },\n  "ranking": ["MÃ1", "MÃ2", "..."],\n  "period": "(kỳ dữ liệu tool)",\n  "source": "peer_compare",\n  "note": "(tuỳ chọn)"\n}')
         expects = []
         for r in rows:
             expects += [{"type": "value", "path": "values.%s.pe" % r["symbol"], "gold": float(r["p_e"]), "tol": {"rel": 0.005}},

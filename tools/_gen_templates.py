@@ -116,11 +116,25 @@ def tokens_hit(text, accept, reject=()):
 
 
 def verdict_hit(text, accept, reject=()):
-    """accept: chứa chuỗi con; reject: khớp TOÀN BỘ chuỗi (tránh bắt nhầm 'không đúng' khi reject 'đúng')."""
+    """Chấm verdict theo longest-match-wins:
+    - cả accept lẫn reject so khớp CHUỖI CON trong câu trả lời (đã normalize);
+    - token khớp DÀI hơn thắng → 'không đúng' (10 ký tự) đánh bại 'đúng' (4),
+      còn 'không lệch' (10) đánh bại reject 'lệch' (4).
+    Hòa độ dài → phủ định (reject) thắng (thận trọng)."""
     n = norm_text(text)
-    hit = [t for t in accept if norm_text(t) in n]
-    bad = [t for t in reject if n == norm_text(t)]
-    return (len(hit) > 0 and len(bad) == 0), hit, bad
+    a_best = 0
+    r_best = 0
+    for t in accept:
+        ln = len(norm_text(t))
+        if ln and norm_text(t) in n and ln > a_best:
+            a_best = ln
+    for t in reject:
+        ln = len(norm_text(t))
+        if ln and norm_text(t) in n and ln > r_best:
+            r_best = ln
+    hit = [t for t in accept if norm_text(t) and len(norm_text(t)) == a_best and a_best > 0]
+    bad = [t for t in reject if norm_text(t) and len(norm_text(t)) == r_best and r_best >= a_best]
+    return (a_best > 0 and a_best > r_best), hit, bad
 
 
 def numbers_in(text):
@@ -373,6 +387,6 @@ print("ORACLE OK — gold tai tao duoc tu payload (%s)" % gold["task_id"])
 COMMON_RULES = """## Ràng buộc chung
 - Chỉ dùng dữ liệu từ MCP `opentrading`, đúng snapshot của task (`task.toml` → `snapshot_date`). Cấm `web_search`, `web_fetch`, `sentiment_score`.
 - Mọi số trong `answer.json` phải truy nguồn được từ tool MCP bạn đã gọi trong phiên này — không dùng kiến thức nền hay ghi nhớ.
-- Nếu dữ liệu không tồn tại / chưa được công bố: đặt `value: null` và nêu lý do trong trường `reason`. Tuyệt đối không bịa số.
+- Nếu dữ liệu không tồn tại / chưa được công bố: đặt `value: null` và nêu lý do trong trường `reason` (hoặc `note`). Tuyệt đối không bịa số.
 - Số viết bằng dấu chấm thập phân (VD `12.34`), không dùng dấu ngăn cách hàng nghìn.
 - `source` ghi tên tool MCP chính xác như trong catalog (VD `vn_quote_history`)."""

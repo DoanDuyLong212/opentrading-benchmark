@@ -112,9 +112,12 @@ def scan_task(d):
             if ns and ns in nfence:
                 leaks.append(("bonus_leak", "fence chứa kỳ thay thế %r" % s))
 
-    # F. narrative_leak — cụm hướng kết luận
+    # F. narrative_leak — cụm hướng kết luận: chỉ là leak khi gold-verdict là "sai"
+    # (với biến thể claim ĐÚNG, cụm "có ít nhất một phiên giảm" CHÍNH là nhận định
+    #  được kiểm chứng — có trong câu hỏi là hợp lệ).
     if scoring == "verdict" and re.search(r"ít nhất (1|một) phiên giảm", instr):
-        leaks.append(("narrative_leak", "đề nêu hướng kết luận 'ít nhất 1 phiên giảm'"))
+        if str((gold.get("solution") or {}).get("verdict", "")).lower() != "đúng":
+            leaks.append(("narrative_leak", "đề nêu hướng kết luận 'ít nhất 1 phiên giảm'"))
 
     return leaks
 

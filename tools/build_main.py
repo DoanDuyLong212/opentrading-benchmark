@@ -299,24 +299,13 @@ def run_checks(built):
                 rep[store].append((b["id"], tag + ": no grade.json")); continue
             if g["success"] != want_success:
                 rep[store].append((b["id"], "%s: success=%s (want %s) err=%s" % (tag, g["success"], want_success, g["error_type"])))
-            if tag == "mut":
-                if b["scoring"] == "refusal" and g.get("fp") != 1:
-                    rep[mutate_fail].append((b["id"], "refusal mutate: fp != 1"))
-                if not os.path.exists(os.path.join(os.getcwd(), "grade.ctrf.json")):
-                    pass
-        # leak scan
-        instr = open(os.path.join(d, "instruction.md"), encoding="utf-8").read()
-        leaks = []
-        import re as _re
-        for exp in b["gold"].get("expects", []):
-            if exp["type"] == "value":
-                g = exp["gold"]
-                if isinstance(g, float) and abs(g) >= 6:
-                    for cand in {("%g" % g), ("%.2f" % g)}:
-                        if _re.search(r"(?<![0-9.,])" + _re.escape(cand) + r"(?![0-9.,])", instr):
-                            leaks.append(cand)
-        if leaks:
-            rep["leak_fail"].append((b["id"], leaks))
+            if tag == "mut" and b["scoring"] == "refusal" and g.get("fp") != 1:
+                rep["mutate_fail"].append((b["id"], "refusal mutate: fp != 1"))
+        # leak scan (dùng chung check_leaks — 6 lớp: fence_null, fence_period, value_leak,
+        # evidence_leak, bonus_leak, narrative_leak)
+        from check_leaks import scan_task
+        for cls, detail in scan_task(d):
+            rep["leak_fail"].append((b["id"], "%s: %s" % (cls, detail)))
         # ctrf check (chạy lại grader trên answer đúng)
         ap = os.path.join(tmp, "ctrf_%d.json" % i)
         with open(ap, "w", encoding="utf-8") as f:

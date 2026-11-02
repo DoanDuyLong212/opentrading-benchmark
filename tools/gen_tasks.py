@@ -185,8 +185,12 @@ def write_registry():
         '  CPI: {tasks: [fin-l1-macro-01]}',
         '  XYZX: {tasks: [fin-l4-nonexist-01, smoke-trap-01], note: "mã giả — trap"}',
     ]
-    with open(os.path.join(d, "entities.yaml"), "w", encoding="utf-8") as f:
-        f.write("\n".join(lines) + "\n")
+    # (vá 02/11) registry v2 + PRE-REGISTER đa-changelog được quản lý bởi bộ chính
+    # (build_plan/build_main) — generator pilot KHÔNG ghi đè; chỉ tạo khi chưa tồn tại.
+    reg = os.path.join(d, "entities.yaml")
+    if not os.path.exists(reg):
+        with open(reg, "w", encoding="utf-8") as f:
+            f.write("\n".join(lines) + "\n")
 
 
 def write_template_toml():
@@ -310,8 +314,12 @@ Harness tài chính chuyên biệt (OpenTrading) so với harness tổng quát (
 - 2026-11-01: khởi tạo. Pilot 24 sinh từ payload MCP thật; 5 task đổi nguồn/đề so với 5.5 vì
   dữ liệu thật (ghi trong PHẦN 6 benchmark-plan.md).
 """
-    with open(os.path.join(ROOT, "PRE-REGISTER.md"), "w", encoding="utf-8") as f:
-        f.write(content)
+    # (vá 02/11) PRE-REGISTER.md do người quản lý (đã có changelog bộ chính 200) —
+    # generator pilot chỉ tạo skeleton khi file chưa tồn tại.
+    pre = os.path.join(ROOT, "PRE-REGISTER.md")
+    if not os.path.exists(pre):
+        with open(pre, "w", encoding="utf-8") as f:
+            f.write(content)
 
 
 # ---------------------------------------------------------------------------
@@ -355,13 +363,21 @@ def grader_selftest():
          {"verdict": "khớp", "value": 21000, "unit": "đồng", "period": "phiên 2026-10-30",
           "source": "vn_quote_history + vs_overview_trading", "note": "cả hai nguồn đều 21000 đồng"},
          True, None),
+]
+    # narrative-01: gold-driven sau khi vá 2 chiều (hướng claim không còn cố định "sai")
+    gpath = os.path.join(TASKS_DIR, "pilot", "fin-l4-narrative-01", "solution", "gold.json")
+    g = json.load(open(gpath, encoding="utf-8"))
+    v_ok = g["solution"]["verdict"]
+    ev_nums = (g.get("evidence") or {}).get("numbers", [])
+    v_bad = (g.get("verdict_reject") or ["sai"])[0]
+    cases += [
         ("pilot/fin-l4-narrative-01",
-         {"verdict": "sai", "period": "26/10 → 30/10/2026", "source": "vn_msn_fx_gold",
-          "note": "XAUUSD giảm 2 phiên cuối: 4067.04 → 4020.42 → 3875.02"},
+         {"verdict": v_ok, "period": "26/10 → 30/10/2026", "source": "vn_msn_fx_gold",
+          "note": "closes: " + ", ".join(str(x) for x in ev_nums[:3])},
          True, None),
         ("pilot/fin-l4-narrative-01",
-         {"verdict": "đúng", "period": "26/10 → 30/10/2026", "source": "vn_msn_fx_gold",
-          "note": "4016.31 → 4057.80 → 4067.04"},
+         {"verdict": v_bad, "period": "26/10 → 30/10/2026", "source": "vn_msn_fx_gold",
+          "note": "closes: " + ", ".join(str(x) for x in ev_nums[:3])},
          False, "sai_ket_qua"),
     ]
     out = []
