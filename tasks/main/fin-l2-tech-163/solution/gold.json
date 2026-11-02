@@ -1,0 +1,46 @@
+{
+ "task_id": "fin-l2-tech-163",
+ "scoring": "value",
+ "solution": {
+  "value": 33.06
+ },
+ "as_of": "2026-11-01T23:26:05.000000+07:00",
+ "split": "main",
+ "expects": [
+  {
+   "type": "value",
+   "path": "value",
+   "gold": 33.06,
+   "tol": {
+    "abs": 0.1
+   }
+  },
+  {
+   "type": "unit",
+   "path": "unit",
+   "accept": [
+    "RSI-14",
+    "RSI 14",
+    "RSI",
+    "rsi14"
+   ]
+  },
+  {
+   "type": "period",
+   "path": "period",
+   "accept": [
+    "30/10",
+    "30-10",
+    "30.10",
+    "2026-10-30"
+   ]
+  },
+  {
+   "type": "str",
+   "path": "source",
+   "accept": [
+    "signals_technical"
+   ]
+  }
+ ]
+}

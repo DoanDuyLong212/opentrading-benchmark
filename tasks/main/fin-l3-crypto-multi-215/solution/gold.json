@@ -1,0 +1,56 @@
+{
+ "task_id": "fin-l3-crypto-multi-215",
+ "scoring": "value",
+ "solution": {
+  "pcts": {
+   "SOL-USD": -0.42,
+   "GC=F": -3.29,
+   "SI=F": -5.59
+  },
+  "winner": "SOL-USD"
+ },
+ "as_of": "2026-11-01T21:30:24.862185+07:00",
+ "split": "main",
+ "expects": [
+  {
+   "type": "value",
+   "path": "values.pcts.SOL-USD",
+   "gold": -0.42,
+   "tol": {
+    "abs": 0.1
+   }
+  },
+  {
+   "type": "value",
+   "path": "values.pcts.GC=F",
+   "gold": -3.29,
+   "tol": {
+    "abs": 0.1
+   }
+  },
+  {
+   "type": "value",
+   "path": "values.pcts.SI=F",
+   "gold": -5.59,
+   "tol": {
+    "abs": 0.1
+   }
+  },
+  {
+   "type": "str",
+   "path": "values.winner",
+   "accept": [
+    "SOL-USD",
+    "SOL",
+    "solana"
+   ]
+  },
+  {
+   "type": "str",
+   "path": "source",
+   "accept": [
+    "yf_commodities"
+   ]
+  }
+ ]
+}

@@ -1,0 +1,58 @@
+{
+ "task_id": "fin-l2-gf-compare-172",
+ "scoring": "value",
+ "solution": {
+  "value": 6.65,
+  "prev": 6.66
+ },
+ "as_of": "2026-11-01T21:30:32.261897+07:00",
+ "split": "main",
+ "expects": [
+  {
+   "type": "value",
+   "path": "value",
+   "gold": 6.65,
+   "tol": {
+    "rel": 0.005
+   }
+  },
+  {
+   "type": "unit",
+   "path": "unit",
+   "accept": [
+    "CNY",
+    "nhân dân tệ",
+    "NDT"
+   ]
+  },
+  {
+   "type": "period",
+   "path": "period",
+   "accept": [
+    "30/10",
+    "30-10",
+    "30.10",
+    "2026-10-30"
+   ]
+  },
+  {
+   "type": "evidence",
+   "path": "note",
+   "paths": [
+    "note"
+   ],
+   "numbers": [
+    6.66
+   ],
+   "strings": [],
+   "min_hits": 1
+  },
+  {
+   "type": "str",
+   "path": "source",
+   "accept": [
+    "vn_msn_fx_gold"
+   ]
+  }
+ ]
+}

@@ -1,0 +1,46 @@
+{
+ "task_id": "fin-l5-compare-284",
+ "scoring": "value",
+ "solution": {
+  "values": {
+   "SOL-USD_pct": -0.42,
+   "BNB-USD_pct": 1.66
+  },
+  "winner": "BNB-USD"
+ },
+ "as_of": "2026-11-01T21:30:24.862185+07:00",
+ "split": "main",
+ "expects": [
+  {
+   "type": "value",
+   "path": "values.SOL-USD_pct",
+   "gold": -0.42,
+   "tol": {
+    "abs": 0.05
+   }
+  },
+  {
+   "type": "value",
+   "path": "values.BNB-USD_pct",
+   "gold": 1.66,
+   "tol": {
+    "abs": 0.05
+   }
+  },
+  {
+   "type": "str",
+   "path": "values.winner",
+   "accept": [
+    "BNB-USD",
+    "BNB"
+   ]
+  },
+  {
+   "type": "str",
+   "path": "source",
+   "accept": [
+    "yf_commodities"
+   ]
+  }
+ ]
+}

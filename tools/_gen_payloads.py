@@ -1,0 +1,275 @@
+# -*- coding: utf-8 -*-
+"""Dữ liệu cho gen_tasks.py: ENVELOPES (payload MCP thật 01/11/2026) + TASKS (27 thẻ).
+
+Mọi số liệu trong ENVELOPES được ghi trực tiếp từ MCP opentrading lúc 2026-11-01
+(as_of trong từng envelope). KHÔNG chỉnh tay các con số này.
+"""
+
+SNAPSHOT = "2026-11-01"
+BANNED = ["web_search", "web_fetch", "sentiment_score"]
+
+# ---------------------------------------------------------------------------
+# ENVELOPES — envelope MCP đã trim (giữ nguyên data + provenance + availability)
+# ---------------------------------------------------------------------------
+ENVELOPES = {
+    "qh_hpg": {
+        "tool": "vn_quote_history",
+        "data": {"symbol": "HPG", "count": 5, "last": 21, "high": 21.6, "low": 20.75, "last_t": "2026-10-30"},
+        "provenance": {"source": "vnstock", "as_of": "2026-11-01T15:54:29.883479+07:00",
+                       "data_time": "2026-10-30", "timezone": "Asia/Ho_Chi_Minh"},
+        "availability": "available",
+        "warnings": ["dữ liệu lấy lúc 2026-11-01T15:06:35.543506+07:00, dùng lại bản đã lưu"],
+        "units": {"o, h, l, c, last, high, low": "nghìn đồng/cổ phiếu (64,27 = 64.270 đ)", "v": "cổ phiếu"},
+    },
+    "btc": {
+        "tool": "crypto_spot",
+        "data": {"tickers": [{"symbol": "BTCUSDT", "last": 78109, "change_pct": 1.0939102084323395,
+                              "high": None, "low": None, "volume": None, "quote_volume": 51019461968.14319}],
+                 "requested": ["BTCUSDT"], "missing": []},
+        "provenance": {"source": "binance", "as_of": "2026-11-01T15:54:32.586909+07:00",
+                       "timezone": "Asia/Ho_Chi_Minh"},
+        "availability": "available",
+        "warnings": [],
+        "_note": "live 24h ticker — bắt buộc chạy qua snapshot replay (kết quả cố định theo envelope)",
+    },
+    "fxgold": {
+        "tool": "vn_msn_fx_gold",
+        "data": {"series": [
+            {"symbol": "USDVND", "closes": [
+                {"t": "2026-10-26T00:00:00", "c": 25841}, {"t": "2026-10-27T00:00:00", "c": 25832},
+                {"t": "2026-10-28T00:00:00", "c": 25852}, {"t": "2026-10-29T00:00:00", "c": 25799},
+                {"t": "2026-10-30T00:00:00", "c": 25802}]},
+            {"symbol": "XAUUSD", "closes": [
+                {"t": "2026-10-26T00:00:00", "c": 4016.31}, {"t": "2026-10-27T00:00:00", "c": 4057.8},
+                {"t": "2026-10-28T00:00:00", "c": 4067.04}, {"t": "2026-10-29T00:00:00", "c": 4020.42},
+                {"t": "2026-10-30T00:00:00", "c": 3875.02}]},
+        ]},
+        "provenance": {"source": "msn", "as_of": "2026-11-01T15:54:32.785351+07:00",
+                       "timezone": "Asia/Ho_Chi_Minh"},
+        "availability": "available",
+        "warnings": [],
+    },
+    "fs_vcb": {
+        "tool": "financial_statements",
+        "data": {"symbol": "VCB", "period": "quarter", "periods": ["Q4/2025", "Q1/2026", "Q2/2026"],
+                 "statements": {"Kết quả kinh doanh": [
+                     {"norm_id": 4378, "name": "Tổng LNST", "unit": "VND", "values": {
+                         "Q4/2025": 8633783000000, "Q1/2026": 9462095000000, "Q2/2026": 14550959000000}},
+                     {"norm_id": 4380, "name": "LNST của CĐ Ngân hàng mẹ", "unit": "VND", "values": {
+                         "Q4/2025": 8629542000000, "Q1/2026": 9456566000000, "Q2/2026": 14542276000000}},
+                 ]}},
+        "provenance": {"source": "vietstock", "as_of": "2026-11-01T15:54:29.686603+07:00",
+                       "data_time": "2026-11-01T15:06:31.444490+07:00", "timezone": "Asia/Ho_Chi_Minh"},
+        "availability": "available",
+        "warnings": ["dữ liệu lấy lúc 2026-11-01T15:06:31.444490+07:00, dùng lại bản đã lưu"],
+    },
+    "cpi": {
+        "tool": "vs_indicator_data",
+        "data": {"rows": [
+            {"indicator": "CHỈ SỐ GIÁ TIÊU DÙNG", "period": "Tháng 9/2026", "value": 105.08, "unit": "%", "timeorder": 20260919},
+            {"indicator": "CHỈ SỐ GIÁ TIÊU DÙNG", "period": "Tháng 9/2026", "value": 5.08, "unit": "%", "timeorder": 20260919},
+            {"indicator": "LẠM PHÁT CƠ BẢN", "period": "Tháng 9/2026", "value": 4.45, "unit": "%", "timeorder": 20260919},
+            {"indicator": "Hàng ăn và dịch vụ ăn uống", "period": "Tháng 9/2026", "value": 104.44, "unit": "%", "timeorder": 20260919},
+            {"indicator": "Hàng ăn và dịch vụ ăn uống", "period": "Tháng 9/2026", "value": 4.44, "unit": "%", "timeorder": 20260919},
+            {"indicator": "Giao thông", "period": "Tháng 9/2026", "value": 111.67, "unit": "%", "timeorder": 20260919},
+            {"indicator": "Giao thông", "period": "Tháng 9/2026", "value": 11.67, "unit": "%", "timeorder": 20260919},
+            {"indicator": "Nhà ở và vật liệu xây dựng", "period": "Tháng 9/2026", "value": 106.47, "unit": "%", "timeorder": 20260919},
+            {"indicator": "Hàng hóa và dịch vụ khác", "period": "Tháng 9/2026", "value": 105.82, "unit": "%", "timeorder": 20260919},
+        ]},
+        "provenance": {"source": "vietstock", "as_of": "2026-11-01T15:57:51.287003+07:00",
+                       "timezone": "Asia/Ho_Chi_Minh"},
+        "availability": "available",
+        "warnings": [],
+        "_note": "tool trả ~17 chuỗi chỉ số khớp truy vấn 'CPI'; ở đây ghi 9 dòng Tháng 9/2026 đại diện (đủ tạo bẫy nhiều chuỗi: chỉ số gốc 105.08 vs % so T12 5.08 vs lạm phát cơ bản 4.45)",
+    },
+    "fs_vnm": {
+        "tool": "financial_statements",
+        "data": {"symbol": "VNM", "period": "quarter", "periods": ["Q4/2025", "Q1/2026", "Q2/2026", "Q3/2026"],
+                 "statements": {"Kết quả kinh doanh": [
+                     {"name": "Doanh thu thuần", "unit": "VND", "values": {
+                         "Q4/2025": 17033552405954, "Q1/2026": 16148657871623,
+                         "Q2/2026": 18847347464988, "Q3/2026": 18465190628493}},
+                 ]}},
+        "provenance": {"source": "vietstock", "as_of": "2026-11-01T15:54:29.489141+07:00",
+                       "data_time": "2026-11-01T15:09:28.645350+07:00", "timezone": "Asia/Ho_Chi_Minh"},
+        "availability": "available",
+        "warnings": ["dữ liệu lấy lúc 2026-11-01T15:09:28.645350+07:00, dùng lại bản đã lưu"],
+    },
+    "mwg_kqkd": {
+        "tool": "financial_detail",
+        "data": {"symbol": "MWG", "statement": "KQKD", "unit": "VNDbn",
+                 "periods": ["Q4/2025", "Q1/2026", "Q2/2026", "Q3/2026"], "report_type": "quarter",
+                 "rows": [
+                     {"name": "3. Doanh thu thuần về bán hàng và cung cấp dịch vụ", "values": [42850, 46462, 48751, 52614]},
+                     {"name": "4. Giá vốn hàng bán", "values": [34804, 36752, 37942, 41192]},
+                     {"name": "5. Lợi nhuận gộp về bán hàng và cung cấp dịch vụ", "values": [8046, 9710, 10809, 11421]},
+                 ]},
+        "provenance": {"source": "vietstock", "as_of": "2026-11-01T15:54:29.386552+07:00",
+                       "data_time": "2026-11-01T15:09:29.085370+07:00", "timezone": "Asia/Ho_Chi_Minh"},
+        "availability": "available",
+        "warnings": ["dữ liệu lấy lúc 2026-11-01T15:09:29.085370+07:00, dùng lại bản đã lưu"],
+        "_note": "unit VNDbn = VND billion = tỷ đồng",
+    },
+    "fpt_val": {
+        "tool": "valuation_run",
+        "data": {"symbol": "FPT", "price": 52700, "method": "per_pb",
+                 "price_source": "vnstock.equity_quote_batch", "price_as_of": None,
+                 "price_unit": "unverified", "price_adjustment_basis": "unverified",
+                 "eps_period": "2025", "eps_frequency": "annual", "eps_basis": "trailing_four_quarters",
+                 "eps_unit": "unverified", "eps_adjustment_basis": "unverified",
+                 "eps_source": "vnstock trailing EPS, period 2025",
+                 "bvps_source": "vnstock BVPS, period 2025", "bvps_period": "2025",
+                 "bvps_frequency": "annual", "eps": 6021.21, "bvps": 25679.55,
+                 "per": 8.75, "per_basis": "quote_price_over_reported_eps",
+                 "pb": 2.05, "pb_basis": "quote_price_over_reported_bvps",
+                 "multiple_comparability": "price/EPS units and adjustment bases unverified"},
+        "provenance": {"source": "computed-local", "as_of": "2026-11-01T15:54:35.771025+07:00",
+                       "timezone": "Asia/Ho_Chi_Minh"},
+        "availability": "available",
+        "warnings": [],
+        "_note": "cùng mã FPT, vn_fundamentals cho P/E khác (20.96 kỳ Q3/2026) — nguồn khác số khác",
+    },
+    "tech": {
+        "tool": "signals_technical",
+        "data": {"interval": "1D", "rows": [
+            {"symbol": "HPG", "rsi14": 51.9}, {"symbol": "HCM", "rsi14": 40.87},
+            {"symbol": "VND", "rsi14": 41.97}, {"symbol": "SSI", "rsi14": 39.97},
+            {"symbol": "SHB", "rsi14": 43.57}, {"symbol": "VCB", "rsi14": 44.01},
+        ]},
+        "provenance": {"source": "computed-local", "as_of": "2026-11-01T15:57:53.193466+07:00",
+                       "data_time": "2026-11-01T14:42:16.848238+07:00", "timezone": "Asia/Ho_Chi_Minh"},
+        "availability": "available",
+        "warnings": ["dữ liệu lấy lúc 2026-11-01T14:42:16.848238+07:00, dùng lại bản đã lưu"],
+        "_note": "6 lời gọi signals_technical riêng (1 call/symbol), hợp nhất lại để ghi snapshot",
+    },
+    "banks5": {
+        "tool": "vn_quote_history",
+        "data": {"banks": [
+            {"symbol": "VCB", "last": 56.3, "last_t": "2026-10-30"},
+            {"symbol": "BID", "last": 33.4, "last_t": "2026-10-30"},
+            {"symbol": "CTG", "last": 30.3, "last_t": "2026-10-30"},
+            {"symbol": "TCB", "last": 21.6, "last_t": "2026-10-30"},
+            {"symbol": "MBB", "last": 19.3, "last_t": "2026-10-30"},
+        ], "_note": "5 lời gọi vn_quote_history riêng (vn_equity_quote_batch unavailable lúc ghi snapshot)"},
+        "provenance": {"source": "vnstock", "as_of": "2026-11-01T15:57:50.079479+07:00",
+                       "data_time": "2026-10-30", "timezone": "Asia/Ho_Chi_Minh"},
+        "availability": "available",
+        "warnings": [],
+        "units": {"last": "nghìn đồng/cổ phiếu"},
+    },
+    "movers": {
+        "tool": "market_movers",
+        "data": {"universe": "vn30", "gainers": [
+            {"symbol": "GAS", "close_price": 78000, "percent_change": 2.631578947368421},
+            {"symbol": "VHM", "close_price": 63000, "percent_change": 1.4492753623188406},
+            {"symbol": "NVL", "close_price": 10400, "percent_change": 0.4830917874396135},
+            {"symbol": "SAB", "close_price": 42400, "percent_change": 0.2364066193853428},
+            {"symbol": "BVH", "close_price": 69000, "percent_change": 0},
+        ]},
+        "provenance": {"source": "vnstock", "as_of": "2026-11-01T15:57:50.290909+07:00",
+                       "data_time": "2026-11-01T15:09:42.046483+07:00", "timezone": "Asia/Ho_Chi_Minh"},
+        "availability": "available",
+        "warnings": ["dữ liệu lấy lúc 2026-11-01T15:09:42.046483+07:00, dùng lại bản đã lưu"],
+        "_note": "giá close theo đồng (bảng giá), khác candles (nghìn đồng)",
+    },
+    "yf": {
+        "tool": "yf_commodities",
+        "data": {"items": [
+            {"ticker": "GC=F", "price": 3898.89990234375, "prev": 4031.39990234375},
+            {"ticker": "CL=F", "price": 104.12000274658203, "prev": 102},
+            {"ticker": "BTC-USD", "price": 78030.3203125, "prev": 77434.75},
+        ]},
+        "provenance": {"source": "yfinance", "as_of": "2026-11-01T15:57:51.193584+07:00",
+                       "timezone": "Asia/Ho_Chi_Minh"},
+        "availability": "available",
+        "warnings": [],
+    },
+    "index10": {
+        "tool": "vn_index_ohlcv",
+        "data": {"symbol": "VNINDEX", "bars": [
+            {"time": "2026-10-19 00:00:00", "close": 1689.84}, {"time": "2026-10-20 00:00:00", "close": 1691.97},
+            {"time": "2026-10-21 00:00:00", "close": 1738.67}, {"time": "2026-10-22 00:00:00", "close": 1760.63},
+            {"time": "2026-10-23 00:00:00", "close": 1774.15}, {"time": "2026-10-26 00:00:00", "close": 1763.55},
+            {"time": "2026-10-27 00:00:00", "close": 1761.87}, {"time": "2026-10-28 00:00:00", "close": 1766.65},
+            {"time": "2026-10-29 00:00:00", "close": 1755.61}, {"time": "2026-10-30 00:00:00", "close": 1741.62},
+        ]},
+        "provenance": {"source": "vnstock", "as_of": "2026-11-01T15:57:50.289394+07:00",
+                       "data_time": "2026-10-30 00:00:00", "timezone": "Asia/Ho_Chi_Minh"},
+        "availability": "available",
+        "warnings": ["dữ liệu lấy lúc 2026-11-01T15:09:30.140913+07:00, dùng lại bản đã lưu"],
+    },
+    "fs_dgc": {
+        "tool": "financial_statements",
+        "data": {"symbol": "DGC", "period": "quarter", "periods": ["Q2/2026", "Q3/2026"],
+                 "statements": {"Kết quả kinh doanh": [
+                     {"name": "LNST thu nhập DN", "unit": "VND", "values": {
+                         "Q2/2026": 440769040323, "Q3/2026": 506681350271}},
+                     {"name": "LNST của CĐ cty mẹ", "unit": "VND", "values": {
+                         "Q2/2026": 388553679077, "Q3/2026": 478161901046}},
+                 ]}},
+        "provenance": {"source": "vietstock", "as_of": "2026-11-01T15:57:50.285524+07:00",
+                       "data_time": "2026-11-01T15:09:29.190055+07:00", "timezone": "Asia/Ho_Chi_Minh"},
+        "availability": "available",
+        "warnings": ["dữ liệu lấy lúc 2026-11-01T15:09:29.190055+07:00, dùng lại bản đã lưu"],
+    },
+    "resolve": {
+        "tool": "symbol_resolve",
+        "data": {"query": "XYZX", "resolved": None, "ambiguous": False, "candidates": []},
+        "provenance": {"source": "vnstock+local", "as_of": "2026-11-01T15:57:53.093226+07:00",
+                       "timezone": "Asia/Ho_Chi_Minh"},
+        "availability": "empty",
+        "warnings": [],
+    },
+    "vs_hpg": {
+        "tool": "vs_overview_trading",
+        "data": {"overview": {"data": [
+            {"StockCode": "HPG", "TradingDate": "2026-10-30", "ClosePrice": 21000, "Change": -200,
+             "PerChange": -0.94, "TotalVol": 29084000, "TotalVal": 622317095000,
+             "ForeignBuyVal": 123863635000, "ForeignSellVal": 127913285000},
+            {"StockCode": "HPG", "TradingDate": "2026-10-29", "ClosePrice": 21200, "Change": 450,
+             "PerChange": 2.17, "TotalVol": 38795800, "TotalVal": 826575805000},
+        ]}},
+        "provenance": {"source": "vietstock", "as_of": "2026-11-01T15:59:53.366224+07:00",
+                       "data_time": "2026-11-01T15:09:29.347610+07:00", "timezone": "Asia/Ho_Chi_Minh"},
+        "availability": "available",
+        "warnings": ["dữ liệu lấy lúc 2026-11-01T15:09:29.347610+07:00, dùng lại bản đã lưu"],
+        "_note": "đơn vị giá: đồng (bảng giao dịch vietstock)",
+    },
+    "mwg_ov": {
+        "tool": "stock_overview",
+        "data": {"trading": {"StockCode": "MWG", "TradingDate": "2026-10-30T14:58:49+07:00",
+                             "KLCPLH": 1475694086, "KLCPNY": 1477035294, "PriorClosePrice": 75800,
+                             "CeilingPrice": 81100, "FloorPrice": 70500, "TotalVol": 2294100,
+                             "TotalVal": 170477370000, "MarketCapital": 109201362364000,
+                             "HighestPrice": 75700, "LowestPrice": 74000, "OpenPrice": 75400,
+                             "LastPrice": 74000, "AvrPrice": 74366, "Change": -1800, "PerChange": -2.37,
+                             "Min52W": 61500, "Max52W": 91000, "OutstandingBuy": 141300,
+                             "OutstandingSell": 69900, "OwnedRatio": 49, "Dividend": 2000,
+                             "Yield": 0.03, "Beta": 1.13, "EPS": 7593, "PE": 9.75, "FEPS": 12.16,
+                             "BVPS": 35505, "PB": 2.08, "PS": 2.08, "FreeFloat": 75,
+                             "StatusName": "Kết thúc phiên", "Revenue": 156836115054975,
+                             "Profit": 11720081124307},
+                 "company": {"CompanyName": "CTCP Đầu tư Thế giới Di động", "CatGroup": "HOSE"}},
+        "provenance": {"source": "vietstock", "as_of": "2026-11-01T15:59:30.783891+07:00",
+                       "data_time": "2026-11-01T15:09:57.181567+07:00", "timezone": "Asia/Ho_Chi_Minh"},
+        "availability": "available",
+        "warnings": ["dữ liệu lấy lúc 2026-11-01T15:09:57.181567+07:00, dùng lại bản đã lưu"],
+        "_note": "đơn vị giá/cap: đồng (MarketCapital = 109.201.362.364.000 đ)",
+    },
+    "peer": {
+        "tool": "peer_compare",
+        "data": {"note": "P/E, P/B, P/S, EV/EBIT, EV/EBITDA, tỷ suất cổ tức tính theo giá ngày kết thúc "
+                         "từng kỳ báo cáo, KHÔNG phải bội số hiện tại.",
+                 "rows": [
+                     {"symbol": "VCB", "period_label": "2025", "p_e": 12.66, "p_b": 2.14, "roe": 16.73},
+                     {"symbol": "BID", "period_label": "2025", "p_e": 9.11, "p_b": 1.57, "roe": 19.43},
+                     {"symbol": "CTG", "period_label": "2025", "p_e": 5.55, "p_b": 1.07, "roe": 21.23},
+                     {"symbol": "TCB", "period_label": "2025", "p_e": 9.76, "p_b": 1.38, "roe": 16.03},
+                     {"symbol": "MBB", "period_label": "2025", "p_e": 6.36, "p_b": 1.43, "roe": 21.57},
+                 ]},
+        "provenance": {"source": "vnstock", "as_of": "2026-11-01T15:58:02.647158+07:00",
+                       "timezone": "Asia/Ho_Chi_Minh"},
+        "availability": "available",
+        "warnings": [],
+    },
+}

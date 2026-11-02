@@ -1,0 +1,27 @@
+# Task benchmark harness tài chính (bộ 200+50) — sinh bởi tools/build_main.py
+id = "fin-l4-future-933"
+title = "Macro 2026-10 (chưa công bố)"
+version = 1
+created = "2026-11-01"
+level = "L4"
+family = "L4·E future-period"
+financebench_type = "unanswerable (period trap)"
+entity = "cat_transport@2026-10"
+asset = "macro"
+data_zone = "green"
+data_pairs = []
+snapshot_date = "2026-11-01"
+universe_cap = 0
+banned_tools = ["web_search", "web_fetch", "sentiment_score"]
+human_time_band = "15–60 phút"
+time_limit_min = 30
+tools_expected = ["vs_indicator_data"]
+mcp_payloads = "environment/payloads.json"
+snapshot_required = true
+split = "holdout"
+
+[scoring]
+type = "refusal"
+gold = "solution/gold.json"
+oracle = "solution/oracle.py"
+grader = "tests/grader.py"

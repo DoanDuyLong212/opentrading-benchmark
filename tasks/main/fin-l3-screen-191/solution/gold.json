@@ -1,0 +1,37 @@
+{
+ "task_id": "fin-l3-screen-191",
+ "scoring": "value",
+ "solution": {
+  "pass": [
+   "POM",
+   "VGS"
+  ],
+  "filter": "ROE > 15% và P/E < 15"
+ },
+ "as_of": "2026-11-01T23:08:16.117741+07:00",
+ "split": "main",
+ "expects": [
+  {
+   "type": "set",
+   "path": "values.pass",
+   "gold": [
+    "POM",
+    "VGS"
+   ]
+  },
+  {
+   "type": "period",
+   "path": "period",
+   "accept": [
+    "2025"
+   ]
+  },
+  {
+   "type": "str",
+   "path": "source",
+   "accept": [
+    "peer_compare"
+   ]
+  }
+ ]
+}

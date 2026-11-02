@@ -1,0 +1,43 @@
+{
+ "task_id": "fin-l1-macro-910",
+ "scoring": "value",
+ "solution": {
+  "value": 103.42
+ },
+ "as_of": "2026-11-01T23:04:21.804723+07:00",
+ "split": "holdout",
+ "expects": [
+  {
+   "type": "value",
+   "path": "value",
+   "gold": 103.42,
+   "tol": {
+    "abs": 0.05
+   }
+  },
+  {
+   "type": "unit",
+   "path": "unit",
+   "accept": [
+    "điểm"
+   ]
+  },
+  {
+   "type": "period",
+   "path": "period",
+   "accept": [
+    "tháng 9/2026",
+    "9/2026",
+    "tháng 9",
+    "t9/2026"
+   ]
+  },
+  {
+   "type": "str",
+   "path": "source",
+   "accept": [
+    "vs_indicator_data"
+   ]
+  }
+ ]
+}

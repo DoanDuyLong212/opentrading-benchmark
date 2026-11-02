@@ -1,0 +1,33 @@
+{
+  "snapshot_date": "2026-11-01",
+  "note": "Envelope MCP đã ghi lúc tạo task (2026-11-01, trim trường không dùng cho gold; data + provenance + availability giữ nguyên). Benchmark chạy qua snapshot-replay các envelope này — không gọi MCP live.",
+  "tools": {
+    "crypto_spot": {
+      "data": {
+        "tickers": [
+          {
+            "symbol": "BTCUSDT",
+            "last": 78109,
+            "change_pct": 1.0939102084323395,
+            "high": null,
+            "low": null,
+            "volume": null,
+            "quote_volume": 51019461968.14319
+          }
+        ],
+        "requested": [
+          "BTCUSDT"
+        ],
+        "missing": []
+      },
+      "provenance": {
+        "source": "binance",
+        "as_of": "2026-11-01T15:54:32.586909+07:00",
+        "timezone": "Asia/Ho_Chi_Minh"
+      },
+      "availability": "available",
+      "warnings": [],
+      "_note": "live 24h ticker — bắt buộc chạy qua snapshot replay (kết quả cố định theo envelope)"
+    }
+  }
+}

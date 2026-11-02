@@ -1,0 +1,167 @@
+{
+ "task_id": "fin-l3-top-200",
+ "scoring": "value",
+ "solution": {
+  "1": {
+   "symbol": "GAS",
+   "pct": 2.63,
+   "close": 78000.0
+  },
+  "2": {
+   "symbol": "VHM",
+   "pct": 1.45,
+   "close": 63000.0
+  },
+  "3": {
+   "symbol": "NVL",
+   "pct": 0.48,
+   "close": 10400.0
+  },
+  "4": {
+   "symbol": "SAB",
+   "pct": 0.24,
+   "close": 42400.0
+  },
+  "5": {
+   "symbol": "BVH",
+   "pct": 0.0,
+   "close": 69000.0
+  }
+ },
+ "as_of": "2026-11-01T21:12:04.261634+07:00",
+ "split": "main",
+ "expects": [
+  {
+   "type": "str",
+   "path": "values.1.symbol",
+   "accept": [
+    "GAS"
+   ]
+  },
+  {
+   "type": "value",
+   "path": "values.1.pct",
+   "gold": 2.63,
+   "tol": {
+    "abs": 0.05
+   }
+  },
+  {
+   "type": "value",
+   "path": "values.1.close",
+   "gold": 78000.0,
+   "tol": {
+    "rel": 0.005
+   }
+  },
+  {
+   "type": "str",
+   "path": "values.2.symbol",
+   "accept": [
+    "VHM"
+   ]
+  },
+  {
+   "type": "value",
+   "path": "values.2.pct",
+   "gold": 1.45,
+   "tol": {
+    "abs": 0.05
+   }
+  },
+  {
+   "type": "value",
+   "path": "values.2.close",
+   "gold": 63000.0,
+   "tol": {
+    "rel": 0.005
+   }
+  },
+  {
+   "type": "str",
+   "path": "values.3.symbol",
+   "accept": [
+    "NVL"
+   ]
+  },
+  {
+   "type": "value",
+   "path": "values.3.pct",
+   "gold": 0.48,
+   "tol": {
+    "abs": 0.05
+   }
+  },
+  {
+   "type": "value",
+   "path": "values.3.close",
+   "gold": 10400.0,
+   "tol": {
+    "rel": 0.005
+   }
+  },
+  {
+   "type": "str",
+   "path": "values.4.symbol",
+   "accept": [
+    "SAB"
+   ]
+  },
+  {
+   "type": "value",
+   "path": "values.4.pct",
+   "gold": 0.24,
+   "tol": {
+    "abs": 0.05
+   }
+  },
+  {
+   "type": "value",
+   "path": "values.4.close",
+   "gold": 42400.0,
+   "tol": {
+    "rel": 0.005
+   }
+  },
+  {
+   "type": "str",
+   "path": "values.5.symbol",
+   "accept": [
+    "BVH"
+   ]
+  },
+  {
+   "type": "value",
+   "path": "values.5.pct",
+   "gold": 0.0,
+   "tol": {
+    "abs": 0.05
+   }
+  },
+  {
+   "type": "value",
+   "path": "values.5.close",
+   "gold": 69000.0,
+   "tol": {
+    "rel": 0.005
+   }
+  },
+  {
+   "type": "period",
+   "path": "period",
+   "accept": [
+    "30/10",
+    "30-10",
+    "30.10",
+    "2026-10-30"
+   ]
+  },
+  {
+   "type": "str",
+   "path": "source",
+   "accept": [
+    "market_movers"
+   ]
+  }
+ ]
+}

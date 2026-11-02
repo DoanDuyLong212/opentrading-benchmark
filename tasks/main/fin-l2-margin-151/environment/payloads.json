@@ -1,0 +1,60 @@
+{
+ "snapshot_date": "2026-11-01",
+ "note": "Envelope MCP ghi lúc tạo task. Key = mã payload nội bộ; envelope giữ nguyên data+provenance+availability.",
+ "tools": {
+  "fd:PVS": {
+   "tool": "financial_detail",
+   "params": {
+    "symbol": "PVS",
+    "statement": "KQKD",
+    "periods_n": 4
+   },
+   "envelope": {
+    "data": {
+     "symbol": "PVS",
+     "unit": "VNDbn",
+     "periods": [
+      "Q4/2025",
+      "Q1/2026",
+      "Q2/2026",
+      "Q3/2026"
+     ],
+     "rows": [
+      {
+       "name": "3. Doanh thu thuần về bán hàng và cung cấp dịch vụ",
+       "values": [
+        9554,
+        8699,
+        8589,
+        10579
+       ]
+      },
+      {
+       "name": "4. Giá vốn hàng bán ",
+       "values": [
+        8766,
+        7844,
+        7989,
+        9561
+       ]
+      },
+      {
+       "name": "5. Lợi nhuận gộp về bán hàng và cung cấp dịch vụ",
+       "values": [
+        788,
+        855,
+        600,
+        1018
+       ]
+      }
+     ]
+    },
+    "provenance": {
+     "source": "vietstock",
+     "as_of": "2026-11-01T22:44:39.273108+07:00"
+    },
+    "availability": "available"
+   }
+  }
+ }
+}

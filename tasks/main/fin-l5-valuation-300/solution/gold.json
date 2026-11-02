@@ -1,0 +1,45 @@
+{
+ "task_id": "fin-l5-valuation-300",
+ "scoring": "value",
+ "solution": {
+  "price": 3100.0,
+  "eps": -3000.19
+ },
+ "as_of": "2026-11-01T23:29:11.004748+07:00",
+ "split": "main",
+ "expects": [
+  {
+   "type": "value",
+   "path": "values.price",
+   "gold": 3100.0,
+   "tol": {
+    "rel": 0.005
+   }
+  },
+  {
+   "type": "value",
+   "path": "values.eps",
+   "gold": -3000.19,
+   "tol": {
+    "rel": 0.005
+   }
+  },
+  {
+   "type": "tokens",
+   "path": "note",
+   "accept": [
+    "âm",
+    "không tính được",
+    "không xác định"
+   ],
+   "reject": []
+  },
+  {
+   "type": "str",
+   "path": "source",
+   "accept": [
+    "valuation_run"
+   ]
+  }
+ ]
+}

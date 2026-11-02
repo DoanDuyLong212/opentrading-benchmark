@@ -1,0 +1,34 @@
+{
+ "task_id": "fin-l2-ratio-157",
+ "scoring": "value",
+ "solution": {
+  "value": 9.43
+ },
+ "as_of": "2026-11-01T23:58:39.328698+07:00",
+ "split": "main",
+ "expects": [
+  {
+   "type": "value",
+   "path": "value",
+   "gold": 9.43,
+   "tol": {
+    "rel": 0.005
+   }
+  },
+  {
+   "type": "unit",
+   "path": "unit",
+   "accept": [
+    "x",
+    "lần"
+   ]
+  },
+  {
+   "type": "str",
+   "path": "source",
+   "accept": [
+    "valuation_run"
+   ]
+  }
+ ]
+}

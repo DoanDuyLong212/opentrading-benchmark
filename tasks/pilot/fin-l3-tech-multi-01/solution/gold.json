@@ -1,0 +1,44 @@
+{
+  "task_id": "fin-l3-tech-multi-01",
+  "scoring": "value",
+  "expects": [
+    {
+      "type": "str",
+      "path": "values.symbol",
+      "accept": [
+        "SSI"
+      ]
+    },
+    {
+      "type": "value",
+      "path": "values.rsi14",
+      "gold": 39.97,
+      "tol": {
+        "abs": 0.1
+      }
+    },
+    {
+      "type": "period",
+      "path": "period",
+      "accept": [
+        "30/10",
+        "30-10",
+        "30.10",
+        "2026-10-30"
+      ]
+    },
+    {
+      "type": "str",
+      "path": "source",
+      "accept": [
+        "signals_technical"
+      ]
+    }
+  ],
+  "solution": {
+    "symbol": "SSI",
+    "rsi14": 39.97
+  },
+  "notes": "RSI: HPG 51.9, HCM 40.87, VND 41.97, SSI 39.97, SHB 43.57 → thấp nhất SSI.",
+  "as_of": "2026-11-01T15:57:53.193466+07:00"
+}

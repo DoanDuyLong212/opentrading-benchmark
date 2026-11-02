@@ -1,0 +1,58 @@
+{
+  "task_id": "fin-l1-bctc-01",
+  "scoring": "value",
+  "expects": [
+    {
+      "type": "unit",
+      "path": "unit",
+      "accept": [
+        "tỷ đồng",
+        "tỷ đ",
+        "tỷ"
+      ]
+    },
+    {
+      "type": "value",
+      "path": "value",
+      "gold": 14550.96,
+      "tol": {
+        "rel": 0.005
+      }
+    },
+    {
+      "type": "period",
+      "path": "period",
+      "accept": [
+        "Q2/2026",
+        "quý 2/2026",
+        "Q2 2026",
+        "Q2/26"
+      ]
+    },
+    {
+      "type": "tokens",
+      "path": "line",
+      "accept": [
+        "Tổng LNST",
+        "hợp nhất"
+      ],
+      "reject": [
+        "ngân hàng mẹ",
+        "cty mẹ",
+        "công ty mẹ"
+      ]
+    },
+    {
+      "type": "str",
+      "path": "source",
+      "accept": [
+        "financial_statements"
+      ]
+    }
+  ],
+  "solution": {
+    "value": 14550.96
+  },
+  "notes": "Hai dòng chỉ tiêu cách nhau 0.06% (14550.96 vs 14542.28) — tolerance KHÔNG phân biệt được; check `line` mới phân biệt. Quý gần nhất = Q2/2026 (Q3/2026 chưa công bố tại snapshot).",
+  "as_of": "2026-11-01T15:54:29.686603+07:00"
+}

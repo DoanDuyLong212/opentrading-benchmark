@@ -1,0 +1,46 @@
+{
+ "task_id": "fin-l5-compare-288",
+ "scoring": "value",
+ "solution": {
+  "sym_pct": -1.83,
+  "usdvnd_pct": -0.15,
+  "so_sanh": "mạnh hơn"
+ },
+ "as_of": "2026-11-01T21:30:32.261897+07:00",
+ "split": "main",
+ "expects": [
+  {
+   "type": "value",
+   "path": "values.sym_pct",
+   "gold": -1.83,
+   "tol": {
+    "abs": 0.05
+   }
+  },
+  {
+   "type": "value",
+   "path": "values.usdvnd_pct",
+   "gold": -0.15,
+   "tol": {
+    "abs": 0.05
+   }
+  },
+  {
+   "type": "verdict",
+   "path": "values.so_sanh",
+   "accept": [
+    "mạnh hơn"
+   ],
+   "reject": [
+    "yếu hơn"
+   ]
+  },
+  {
+   "type": "str",
+   "path": "source",
+   "accept": [
+    "vn_msn_fx_gold"
+   ]
+  }
+ ]
+}

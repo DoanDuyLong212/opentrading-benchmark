@@ -1,0 +1,27 @@
+# Task benchmark harness tài chính (bộ 200+50) — sinh bởi tools/build_main.py
+id = "fin-l2-growth-911"
+title = "Tăng trưởng doanh thu VGS (QoQ)"
+version = 1
+created = "2026-11-01"
+level = "L2"
+family = "L2·A growth"
+financebench_type = "multi-step computation"
+entity = "VGS"
+asset = "vn_stock"
+data_zone = "green"
+data_pairs = []
+snapshot_date = "2026-11-01"
+universe_cap = 0
+banned_tools = ["web_search", "web_fetch", "sentiment_score"]
+human_time_band = "<15 phút"
+time_limit_min = 20
+tools_expected = ["financial_statements"]
+mcp_payloads = "environment/payloads.json"
+snapshot_required = true
+split = "holdout"
+
+[scoring]
+type = "value"
+gold = "solution/gold.json"
+oracle = "solution/oracle.py"
+grader = "tests/grader.py"

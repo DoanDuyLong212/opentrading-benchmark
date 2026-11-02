@@ -1,0 +1,187 @@
+{
+ "task_id": "fin-l5-compare-276",
+ "scoring": "value",
+ "solution": {
+  "VIX": {
+   "pe": 6.22,
+   "pb": 1.61,
+   "roe": 28.85
+  },
+  "VCI": {
+   "pe": 18.96,
+   "pb": 1.67,
+   "roe": 8.67
+  },
+  "SHS": {
+   "pe": 13.28,
+   "pb": 1.47,
+   "roe": 11.28
+  },
+  "MBS": {
+   "pe": 13.33,
+   "pb": 2.14,
+   "roe": 15.18
+  },
+  "FTS": {
+   "pe": 27.12,
+   "pb": 2.58,
+   "roe": 9.29
+  },
+  "ranking": [
+   "VIX",
+   "MBS",
+   "SHS",
+   "FTS",
+   "VCI"
+  ]
+ },
+ "as_of": "2026-11-01T23:08:12.898974+07:00",
+ "split": "main",
+ "expects": [
+  {
+   "type": "value",
+   "path": "values.VIX.pe",
+   "gold": 6.22,
+   "tol": {
+    "rel": 0.005
+   }
+  },
+  {
+   "type": "value",
+   "path": "values.VIX.pb",
+   "gold": 1.61,
+   "tol": {
+    "rel": 0.005
+   }
+  },
+  {
+   "type": "value",
+   "path": "values.VIX.roe",
+   "gold": 28.85,
+   "tol": {
+    "rel": 0.005
+   }
+  },
+  {
+   "type": "value",
+   "path": "values.VCI.pe",
+   "gold": 18.96,
+   "tol": {
+    "rel": 0.005
+   }
+  },
+  {
+   "type": "value",
+   "path": "values.VCI.pb",
+   "gold": 1.67,
+   "tol": {
+    "rel": 0.005
+   }
+  },
+  {
+   "type": "value",
+   "path": "values.VCI.roe",
+   "gold": 8.67,
+   "tol": {
+    "rel": 0.005
+   }
+  },
+  {
+   "type": "value",
+   "path": "values.SHS.pe",
+   "gold": 13.28,
+   "tol": {
+    "rel": 0.005
+   }
+  },
+  {
+   "type": "value",
+   "path": "values.SHS.pb",
+   "gold": 1.47,
+   "tol": {
+    "rel": 0.005
+   }
+  },
+  {
+   "type": "value",
+   "path": "values.SHS.roe",
+   "gold": 11.28,
+   "tol": {
+    "rel": 0.005
+   }
+  },
+  {
+   "type": "value",
+   "path": "values.MBS.pe",
+   "gold": 13.33,
+   "tol": {
+    "rel": 0.005
+   }
+  },
+  {
+   "type": "value",
+   "path": "values.MBS.pb",
+   "gold": 2.14,
+   "tol": {
+    "rel": 0.005
+   }
+  },
+  {
+   "type": "value",
+   "path": "values.MBS.roe",
+   "gold": 15.18,
+   "tol": {
+    "rel": 0.005
+   }
+  },
+  {
+   "type": "value",
+   "path": "values.FTS.pe",
+   "gold": 27.12,
+   "tol": {
+    "rel": 0.005
+   }
+  },
+  {
+   "type": "value",
+   "path": "values.FTS.pb",
+   "gold": 2.58,
+   "tol": {
+    "rel": 0.005
+   }
+  },
+  {
+   "type": "value",
+   "path": "values.FTS.roe",
+   "gold": 9.29,
+   "tol": {
+    "rel": 0.005
+   }
+  },
+  {
+   "type": "list_order",
+   "path": "ranking",
+   "gold": [
+    "VIX",
+    "MBS",
+    "SHS",
+    "FTS",
+    "VCI"
+   ]
+  },
+  {
+   "type": "period",
+   "path": "period",
+   "accept": [
+    "2025"
+   ]
+  },
+  {
+   "type": "str",
+   "path": "source",
+   "accept": [
+    "peer_compare"
+   ]
+  }
+ ]
+}

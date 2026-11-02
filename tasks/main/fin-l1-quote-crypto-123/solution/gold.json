@@ -1,0 +1,43 @@
+{
+ "task_id": "fin-l1-quote-crypto-123",
+ "scoring": "value",
+ "solution": {
+  "value": 94.94999694824219
+ },
+ "as_of": "2026-11-01T21:30:24.862185+07:00",
+ "split": "main",
+ "expects": [
+  {
+   "type": "value",
+   "path": "value",
+   "gold": 94.94999694824219,
+   "tol": {
+    "rel": 0.005
+   }
+  },
+  {
+   "type": "unit",
+   "path": "unit",
+   "accept": [
+    "USD",
+    "USDT"
+   ]
+  },
+  {
+   "type": "period",
+   "path": "period",
+   "accept": [
+    "2026-11-01",
+    "01/11",
+    "snapshot"
+   ]
+  },
+  {
+   "type": "str",
+   "path": "source",
+   "accept": [
+    "yf_commodities"
+   ]
+  }
+ ]
+}

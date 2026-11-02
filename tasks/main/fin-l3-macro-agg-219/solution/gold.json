@@ -1,0 +1,52 @@
+{
+ "task_id": "fin-l3-macro-agg-219",
+ "scoring": "value",
+ "solution": {
+  "value": 3,
+  "months": [
+   "tháng 4",
+   "tháng 5",
+   "tháng 9"
+  ]
+ },
+ "as_of": "2026-11-01T23:04:21.804723+07:00",
+ "split": "main",
+ "expects": [
+  {
+   "type": "value",
+   "path": "value",
+   "gold": 3,
+   "tol": {
+    "abs": 0.001
+   }
+  },
+  {
+   "type": "unit",
+   "path": "unit",
+   "accept": [
+    "tháng",
+    "thang"
+   ]
+  },
+  {
+   "type": "str",
+   "path": "source",
+   "accept": [
+    "vs_indicator_data"
+   ]
+  },
+  {
+   "type": "evidence",
+   "path": "note",
+   "paths": [
+    "note"
+   ],
+   "numbers": [],
+   "strings": [
+    "tháng 4",
+    "tháng 5"
+   ],
+   "min_hits": 1
+  }
+ ]
+}

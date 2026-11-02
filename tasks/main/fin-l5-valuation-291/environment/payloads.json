@@ -1,0 +1,27 @@
+{
+ "snapshot_date": "2026-11-01",
+ "note": "Envelope MCP ghi lúc tạo task. Key = mã payload nội bộ; envelope giữ nguyên data+provenance+availability.",
+ "tools": {
+  "val:FOX": {
+   "tool": "valuation_run",
+   "params": {
+    "symbol": "FOX"
+   },
+   "envelope": {
+    "data": {
+     "symbol": "FOX",
+     "price": 55400,
+     "eps": 5592.4,
+     "bvps": 15202.14,
+     "per": 9.91,
+     "pb": 3.64
+    },
+    "provenance": {
+     "source": "computed-local",
+     "as_of": "2026-11-01T23:22:58.614325+07:00"
+    },
+    "availability": "available"
+   }
+  }
+ }
+}

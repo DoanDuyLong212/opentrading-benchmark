@@ -1,0 +1,49 @@
+{
+ "task_id": "fin-l2-macro-calc-180",
+ "scoring": "value",
+ "solution": {
+  "value": 14.25
+ },
+ "as_of": "2026-11-01T23:04:21.804723+07:00",
+ "split": "main",
+ "expects": [
+  {
+   "type": "value",
+   "path": "value",
+   "gold": 14.25,
+   "tol": {
+    "abs": 0.1
+   }
+  },
+  {
+   "type": "unit",
+   "path": "unit",
+   "accept": [
+    "%",
+    "phần trăm"
+   ]
+  },
+  {
+   "type": "period",
+   "path": "period",
+   "accept": [
+    "Q3/2026",
+    "quý 3/2026",
+    "q3 2026",
+    "q3/26",
+    "so với",
+    "Q3/2025",
+    "quý 3/2025",
+    "q3 2025",
+    "q3/25"
+   ]
+  },
+  {
+   "type": "str",
+   "path": "source",
+   "accept": [
+    "vs_indicator_data"
+   ]
+  }
+ ]
+}

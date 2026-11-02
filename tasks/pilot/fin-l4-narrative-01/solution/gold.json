@@ -1,0 +1,34 @@
+{
+  "task_id": "fin-l4-narrative-01",
+  "scoring": "verdict",
+  "verdict_accept": [
+    "sai",
+    "false",
+    "không đúng",
+    "không chính xác"
+  ],
+  "verdict_reject": [
+    "đúng",
+    "true",
+    "chính xác"
+  ],
+  "evidence": {
+    "paths": [
+      "note"
+    ],
+    "min_hits": 1,
+    "numbers": [
+      3875.02,
+      4020.42,
+      4067.04,
+      25799,
+      25832,
+      25852
+    ]
+  },
+  "solution": {
+    "verdict": "sai"
+  },
+  "notes": "XAUUSD giảm 2 phiên cuối (4067.04 → 4020.42 → 3875.02); USDVND lên–xuống (25841 → 25832 → 25852 → 25799 → 25802) → nhận định SAI.",
+  "as_of": "2026-11-01T15:54:32.785351+07:00"
+}

@@ -1,0 +1,343 @@
+# Registry thực thể — bộ CHÍNH 200 + holdout 50 (thi công 02/11/2026)
+# Nguồn: tools/build_plan.py (pools) + tools/manifest.json (phân bổ). Thay bản pilot trước.
+#
+# LUẬT ĐẾM (đã nới có ghi chú so với bản gốc ≤2/thực thể):
+#  - VN/crypto/gf: ≤2 task cá thể / thực thể / split (assert tự động khi build_plan chạy).
+#  - Task theo RỔ (agg/screen/tech-multi/compare): đếm theo rổ, KHÔNG tính vào ≤2 cá thể.
+#  - Crypto: nguồn khả dụng hạn chế (binance 429 thường trực) → dùng yf (BTC/ETH/SOL/BNB) +
+#    vn_crypto_ohlcv (BTC/ETH); mỗi ticker ≤4 lần với điều kiện khác family+kinds và có biến thể đề.
+#  - Macro: đếm theo (series@kỳ) ≤2; CPI khai thác dưới dạng sub-series + GDP TỔNG SỐ.
+#  - Vàng/FX: holdout dùng chung pool với main (nguồn msn+yf chỉ ~15 chuỗi).
+#
+# NGOẠI LỆ THỰC TẾ DỮ LIỆU (đã xử lý trong thiết kế task):
+#  - LTG, VIS: BCTC stale (2023–2024) → loại khỏi mọi họ tài chính/kỳ.
+#  - SBT: BCTC stale (hết 2025) → chỉ dùng ở l2-tech (RSI computed) + narrative; không dùng BCTC.
+#  - HAH: signals_technical không khả dụng khi ghi snapshot → thay bằng VGC ở l2-tech.
+#  - POM: valuation partial (EPS âm, không có P/E) → task L5 dạng 'dữ liệu một phần' (kèm yêu cầu giải thích).
+#  - HDB: trễ kỳ (mới nhất Q2/2026) → dùng làm bẫy l4-future hỏi Q3/2026 (mã khác đã có Q3).
+#  - movers universe 'hose': partial (missing 30 mã) → chỉ dùng universe vn30.
+#  - vn_equity_quote_batch: đã hồi phục → dùng cho l3-agg + l4-2src (nguồn 2 bảng giá).
+#  - vn_equity_quote_batch vs candles: kg bẫy đơn vị (đồng vs nghìn đồng) trong l4-2src.
+
+meta:
+  version: 2
+  updated: "2026-11-02"
+  snapshot: "2026-11-01"
+  mix_rule: {vn_stock: 0.64, crypto: 0.15, gold_fx: 0.105, macro: 0.105}
+  max_tasks_per_entity: 2
+
+vn_stock:
+  - "ACB"
+  - "STB"
+  - "VPB"
+  - "HDB"
+  - "TPB"
+  - "MSB"
+  - "VIB"
+  - "LPB"
+  - "EIB"
+  - "OCB"
+  - "VCI"
+  - "VIX"
+  - "SHS"
+  - "MBS"
+  - "FTS"
+  - "HSG"
+  - "NKG"
+  - "HT1"
+  - "TLH"
+  - "VGS"
+  - "POM"
+  - "PNJ"
+  - "FRT"
+  - "KDC"
+  - "MSN"
+  - "SBT"
+  - "LTG"
+  - "ANV"
+  - "CMG"
+  - "ELC"
+  - "VGI"
+  - "CTR"
+  - "FOX"
+  - "VIC"
+  - "KDH"
+  - "NLG"
+  - "DXG"
+  - "PDR"
+  - "SCR"
+  - "VRE"
+  - "KBC"
+  - "SZC"
+  - "IJC"
+  - "HHV"
+  - "CII"
+  - "PVS"
+  - "BSR"
+  - "PLX"
+  - "PVD"
+  - "PVT"
+  - "POW"
+  - "NT2"
+  - "GEG"
+  - "REE"
+  - "PC1"
+  - "HBC"
+  - "VCG"
+  - "CTD"
+  - "FCN"
+  - "GEX"
+  - "SAM"
+  - "HVN"
+  - "VJC"
+  - "GMD"
+  - "SCS"
+  - "HAH"
+  - "VOS"
+  - "VSC"
+  - "DBC"
+  - "BAF"
+  - "HAG"
+  - "DPM"
+  - "DCM"
+  - "CSV"
+  - "DHG"
+  - "IMP"
+  - "TRA"
+  - "DBD"
+  - "BMI"
+  - "MIG"
+  - "BIC"
+  - "QNS"
+  - "SLS"
+  - "TNG"
+  - "MSH"
+  - "VCS"
+  - "PTB"
+  - "HT1"
+  - "BMP"
+  - "NTP"
+  - "VGC"
+
+crypto:
+  - "ETHUSDT"
+  - "SOLUSDT"
+  - "BNBUSDT"
+  - "XRPUSDT"
+  - "DOGEUSDT"
+  - "ADAUSDT"
+  - "AVAXUSDT"
+  - "LINKUSDT"
+  - "TONUSDT"
+  - "DOTUSDT"
+  - "LTCUSDT"
+  - "TRXUSDT"
+  - "SHIBUSDT"
+  - "UNIUSDT"
+  - "ATOMUSDT"
+  - "XLMUSDT"
+  - "NEARUSDT"
+  - "APTUSDT"
+  - "ARBUSDT"
+  - "OPUSDT"
+  - "FILUSDT"
+  - "INJUSDT"
+  - "SUIUSDT"
+  - "POLUSDT"
+
+gold_fx:
+  note: "nguồn msn + yfinance; SJC/vn_retail_gold bỏ (timeout 01/11)."
+  - "XAGUSD"
+  - "EURVND"
+  - "JPYVND"
+  - "USDJPY"
+  - "EURUSD"
+  - "GBPUSD"
+  - "USDCNY"
+  - "KRWVND"
+  - "GC=F"
+  - "SI=F"
+  - "NG=F"
+  - "HG=F"
+  - "BZ=F"
+  - "CL=F"
+
+macro:
+  note: "CPI sub-series + GDP TỔNG SỐ; FDI/IIP/xuất khẩu/PMI... unavailable tại snapshot."
+  - "CHỈ SỐ GIÁ TIÊU DÙNG"
+  - "LẠM PHÁT CƠ BẢN"
+  - "Hàng ăn và dịch vụ ăn uống"
+  - "- Thực phẩm"
+  - "Đồ uống và thuốc lá"
+  - "May mặc, giày dép mũ nón"
+  - "Nhà ở và vật liệu xây dựng"
+  - "Thiết bị và đồ dùng gia đình"
+  - "Thuốc và dịch vụ y tế"
+  - "Giao thông"
+  - "Thông tin và truyền thông"
+  - "Giáo dục"
+  - "Văn hóa, giải trí và du lịch"
+  - "Hàng hóa và dịch vụ khác"
+  - "GDP (TỔNG SỐ)"
+
+composite:
+  - "banks1"
+  - "sec1"
+  - "steel1"
+  - "cons1"
+  - "tech1"
+  - "bds1"
+  - "energy1"
+  - "util1"
+  - "banks_p"
+  - "sec_p"
+  - "steel_p"
+  - "cons_p"
+  - "tech_p"
+  - "bds_p"
+  - "energy_p"
+  - "pharma_p"
+  - "VN30"
+  - "VNINDEX"
+  - "HNXINDEX"
+
+# --- Dùng thực tế trong bộ 200+50 (đếm cá thể, main/hold) ---
+usage:
+  "ACB": {main: 2, holdout: 0}
+  "ANV": {main: 4, holdout: 0}
+  "BMI": {main: 0, holdout: 1}
+  "BNB-USD": {main: 3, holdout: 0}
+  "BSR": {main: 1, holdout: 0}
+  "BTC": {main: 1, holdout: 0}
+  "BTC-USD": {main: 5, holdout: 1}
+  "BTCUSDT": {main: 3, holdout: 0}
+  "BZ=F": {main: 1, holdout: 0}
+  "CMG": {main: 1, holdout: 0}
+  "CTD": {main: 1, holdout: 0}
+  "CTR": {main: 1, holdout: 0}
+  "DBC": {main: 1, holdout: 0}
+  "DCM": {main: 2, holdout: 0}
+  "DXG": {main: 1, holdout: 0}
+  "EIB": {main: 2, holdout: 0}
+  "ELC": {main: 1, holdout: 0}
+  "ETH": {main: 1, holdout: 1}
+  "ETH-USD": {main: 3, holdout: 1}
+  "ETHUSDT": {main: 1, holdout: 1}
+  "EURUSD": {main: 1, holdout: 0}
+  "EURVND": {main: 2, holdout: 1}
+  "EURVND@01/11": {main: 0, holdout: 1}
+  "FAKE9": {main: 1, holdout: 0}
+  "FAKECOIN": {main: 1, holdout: 0}
+  "FCN": {main: 1, holdout: 0}
+  "FOX": {main: 1, holdout: 0}
+  "FRT": {main: 1, holdout: 0}
+  "FTS": {main: 1, holdout: 0}
+  "GBPUSD": {main: 1, holdout: 0}
+  "GBPUSD@31/10": {main: 1, holdout: 0}
+  "GC=F": {main: 1, holdout: 0}
+  "GEG": {main: 1, holdout: 0}
+  "GEX": {main: 1, holdout: 0}
+  "GMD": {main: 1, holdout: 0}
+  "HAG": {main: 1, holdout: 0}
+  "HAH": {main: 0, holdout: 1}
+  "HBC": {main: 1, holdout: 0}
+  "HDB": {main: 2, holdout: 0}
+  "HG=F": {main: 1, holdout: 0}
+  "HHV": {main: 0, holdout: 2}
+  "HNXINDEX": {main: 1, holdout: 0}
+  "HSG": {main: 2, holdout: 0}
+  "HT1": {main: 1, holdout: 0}
+  "HVN": {main: 1, holdout: 0}
+  "IJC": {main: 0, holdout: 1}
+  "JPYVND": {main: 2, holdout: 1}
+  "KBC": {main: 2, holdout: 0}
+  "KDC": {main: 2, holdout: 0}
+  "KDH": {main: 1, holdout: 0}
+  "KRWVND": {main: 1, holdout: 0}
+  "KRWVND@31/10": {main: 1, holdout: 0}
+  "LPB": {main: 2, holdout: 0}
+  "MBS": {main: 1, holdout: 0}
+  "MIG": {main: 0, holdout: 1}
+  "MSB": {main: 2, holdout: 0}
+  "MSN": {main: 2, holdout: 0}
+  "NG=F": {main: 1, holdout: 0}
+  "NKG": {main: 2, holdout: 0}
+  "NLG": {main: 1, holdout: 0}
+  "NT2": {main: 1, holdout: 0}
+  "OCB": {main: 2, holdout: 0}
+  "PC1": {main: 1, holdout: 0}
+  "PDR": {main: 2, holdout: 0}
+  "PLX": {main: 1, holdout: 0}
+  "PNJ": {main: 1, holdout: 0}
+  "POM": {main: 1, holdout: 2}
+  "POW": {main: 1, holdout: 0}
+  "PTB": {main: 1, holdout: 0}
+  "PVD": {main: 1, holdout: 0}
+  "PVS": {main: 2, holdout: 0}
+  "PVT": {main: 1, holdout: 0}
+  "QQV9": {main: 1, holdout: 0}
+  "QWER9": {main: 1, holdout: 0}
+  "REE": {main: 1, holdout: 0}
+  "SAM": {main: 1, holdout: 0}
+  "SBT": {main: 1, holdout: 1}
+  "SCR": {main: 2, holdout: 0}
+  "SCS": {main: 0, holdout: 1}
+  "SHS": {main: 1, holdout: 0}
+  "SI=F": {main: 1, holdout: 0}
+  "SOL-USD": {main: 4, holdout: 2}
+  "STB": {main: 2, holdout: 0}
+  "TPB": {main: 2, holdout: 0}
+  "TRA": {main: 0, holdout: 2}
+  "USDCNY": {main: 1, holdout: 0}
+  "USDCNY@31/10": {main: 1, holdout: 0}
+  "USDJPY": {main: 1, holdout: 0}
+  "VCG": {main: 0, holdout: 2}
+  "VCI": {main: 1, holdout: 2}
+  "VCS": {main: 0, holdout: 1}
+  "VGC": {main: 2, holdout: 0}
+  "VGI": {main: 1, holdout: 0}
+  "VGS": {main: 0, holdout: 2}
+  "VIB": {main: 2, holdout: 0}
+  "VIC": {main: 1, holdout: 0}
+  "VIX": {main: 1, holdout: 0}
+  "VJC": {main: 0, holdout: 1}
+  "VNINDEX": {main: 1, holdout: 1}
+  "VOS": {main: 0, holdout: 1}
+  "VPB": {main: 2, holdout: 0}
+  "VRE": {main: 1, holdout: 0}
+  "XAGUSD": {main: 2, holdout: 1}
+  "XAGUSD vs SI=F": {main: 1, holdout: 0}
+  "XAUUSD vs GC=F": {main: 1, holdout: 0}
+  "XKCD9": {main: 1, holdout: 0}
+  "XXVX": {main: 1, holdout: 0}
+  "XXYY": {main: 0, holdout: 1}
+  "XYZA": {main: 1, holdout: 0}
+  "ZQZQ": {main: 0, holdout: 1}
+  "ZZXQ": {main: 1, holdout: 0}
+  "ZZZ1": {main: 1, holdout: 0}
+  "cat_food@2026-09": {main: 1, holdout: 0}
+  "cat_house@2026-09": {main: 1, holdout: 0}
+  "cat_med@2026-09": {main: 0, holdout: 1}
+  "cat_telecom@2026-09": {main: 0, holdout: 1}
+  "cat_transport@2026-09": {main: 1, holdout: 0}
+  "cat_transport@2026-10": {main: 0, holdout: 1}
+  "cat_travel@2026-09": {main: 0, holdout: 1}
+  "core@2026-09": {main: 1, holdout: 0}
+  "core@2026-10": {main: 1, holdout: 0}
+  "core_avg@T7-T9/2026": {main: 1, holdout: 0}
+  "count_ge_5@2026": {main: 1, holdout: 0}
+  "cpi_avg@T5-T7/2026": {main: 0, holdout: 1}
+  "cpi_avg@T7-T9/2026": {main: 1, holdout: 0}
+  "cpi_gap@T9/2026": {main: 1, holdout: 0}
+  "cpi_total@2026-08": {main: 1, holdout: 0}
+  "cpi_total@2026-09": {main: 1, holdout: 0}
+  "cpi_total@2026-10": {main: 1, holdout: 0}
+  "gdp@Q1/2026": {main: 1, holdout: 0}
+  "gdp@Q2/2026": {main: 1, holdout: 0}
+  "gdp@Q3/2026": {main: 1, holdout: 0}
+  "gdp@Q4/2025": {main: 1, holdout: 0}
+  "gdp@Q4/2026": {main: 1, holdout: 0}
+  "gdp_max_q@2026": {main: 1, holdout: 0}
+  "gdp_qoq@Q3/2026 vs Q2/2026": {main: 1, holdout: 0}
+  "gdp_yoy@Q3/2026 vs Q3/2025": {main: 1, holdout: 0}
+  "max_cat@2026-09": {main: 1, holdout: 0}

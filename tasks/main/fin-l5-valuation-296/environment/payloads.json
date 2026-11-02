@@ -1,0 +1,27 @@
+{
+ "snapshot_date": "2026-11-01",
+ "note": "Envelope MCP ghi lúc tạo task. Key = mã payload nội bộ; envelope giữ nguyên data+provenance+availability.",
+ "tools": {
+  "val:PDR": {
+   "tool": "valuation_run",
+   "params": {
+    "symbol": "PDR"
+   },
+   "envelope": {
+    "data": {
+     "symbol": "PDR",
+     "price": 11300,
+     "eps": 556.52,
+     "bvps": 12679.95,
+     "per": 20.3,
+     "pb": 0.89
+    },
+    "provenance": {
+     "source": "computed-local",
+     "as_of": "2026-11-01T23:29:19.514194+07:00"
+    },
+    "availability": "available"
+   }
+  }
+ }
+}

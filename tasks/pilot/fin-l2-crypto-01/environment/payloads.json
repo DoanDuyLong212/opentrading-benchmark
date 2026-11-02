@@ -1,0 +1,96 @@
+{
+  "snapshot_date": "2026-11-01",
+  "note": "Envelope MCP đã ghi lúc tạo task (2026-11-01, trim trường không dùng cho gold; data + provenance + availability giữ nguyên). Benchmark chạy qua snapshot-replay các envelope này — không gọi MCP live.",
+  "tools": {
+    "crypto_spot": {
+      "data": {
+        "tickers": [
+          {
+            "symbol": "BTCUSDT",
+            "last": 78109,
+            "change_pct": 1.0939102084323395,
+            "high": null,
+            "low": null,
+            "volume": null,
+            "quote_volume": 51019461968.14319
+          }
+        ],
+        "requested": [
+          "BTCUSDT"
+        ],
+        "missing": []
+      },
+      "provenance": {
+        "source": "binance",
+        "as_of": "2026-11-01T15:54:32.586909+07:00",
+        "timezone": "Asia/Ho_Chi_Minh"
+      },
+      "availability": "available",
+      "warnings": [],
+      "_note": "live 24h ticker — bắt buộc chạy qua snapshot replay (kết quả cố định theo envelope)"
+    },
+    "vn_msn_fx_gold": {
+      "data": {
+        "series": [
+          {
+            "symbol": "USDVND",
+            "closes": [
+              {
+                "t": "2026-10-26T00:00:00",
+                "c": 25841
+              },
+              {
+                "t": "2026-10-27T00:00:00",
+                "c": 25832
+              },
+              {
+                "t": "2026-10-28T00:00:00",
+                "c": 25852
+              },
+              {
+                "t": "2026-10-29T00:00:00",
+                "c": 25799
+              },
+              {
+                "t": "2026-10-30T00:00:00",
+                "c": 25802
+              }
+            ]
+          },
+          {
+            "symbol": "XAUUSD",
+            "closes": [
+              {
+                "t": "2026-10-26T00:00:00",
+                "c": 4016.31
+              },
+              {
+                "t": "2026-10-27T00:00:00",
+                "c": 4057.8
+              },
+              {
+                "t": "2026-10-28T00:00:00",
+                "c": 4067.04
+              },
+              {
+                "t": "2026-10-29T00:00:00",
+                "c": 4020.42
+              },
+              {
+                "t": "2026-10-30T00:00:00",
+                "c": 3875.02
+              }
+            ]
+          }
+        ]
+      },
+      "provenance": {
+        "source": "msn",
+        "as_of": "2026-11-01T15:54:32.785351+07:00",
+        "timezone": "Asia/Ho_Chi_Minh"
+      },
+      "availability": "available",
+      "warnings": []
+    }
+  }
+}

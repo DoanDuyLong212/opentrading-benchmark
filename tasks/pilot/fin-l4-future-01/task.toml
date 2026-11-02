@@ -1,0 +1,26 @@
+# Task benchmark harness tài chính — sinh bởi tools/gen_tasks.py
+id = "fin-l4-future-01"
+title = "LNST DGC Q4/2026 (kỳ chưa công bố)"
+version = 1
+created = "2026-11-01"
+level = "L4"
+family = "L4·E future-period"
+financebench_type = "unanswerable (period trap)"
+entity = "DGC"
+asset = "vn_stock"
+data_zone = "green"
+data_pairs = []
+snapshot_date = "2026-11-01"
+universe_cap = 0
+banned_tools = ["web_search", "web_fetch", "sentiment_score"]
+human_time_band = "<15 phút"
+time_limit_min = 30
+tools_expected = ["financial_statements"]
+mcp_payloads = "environment/payloads.json"
+snapshot_required = true
+
+[scoring]
+type = "refusal"
+gold = "solution/gold.json"
+oracle = "solution/oracle.py"
+grader = "tests/grader.py"

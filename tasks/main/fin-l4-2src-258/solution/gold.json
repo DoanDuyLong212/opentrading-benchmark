@@ -1,0 +1,49 @@
+{
+ "task_id": "fin-l4-2src-258",
+ "scoring": "value",
+ "solution": {
+  "value": 0.59,
+  "price": 2266.1201171875,
+  "usd": 2252.75
+ },
+ "as_of": "2026-11-01T22:54:50.300938+07:00",
+ "split": "main",
+ "expects": [
+  {
+   "type": "value",
+   "path": "value",
+   "gold": 0.59,
+   "tol": {
+    "abs": 0.05
+   }
+  },
+  {
+   "type": "unit",
+   "path": "unit",
+   "accept": [
+    "%",
+    "phần trăm"
+   ]
+  },
+  {
+   "type": "evidence",
+   "path": "note",
+   "paths": [
+    "note"
+   ],
+   "numbers": [
+    25802.0
+   ],
+   "strings": [],
+   "min_hits": 1
+  },
+  {
+   "type": "str_all",
+   "path": "source",
+   "accept": [
+    "yf_commodities",
+    "vn_crypto_ohlcv"
+   ]
+  }
+ ]
+}

@@ -1,0 +1,37 @@
+{
+ "task_id": "fin-l3-macro-agg-220",
+ "scoring": "value",
+ "solution": {
+  "quarter": "Q3/2026",
+  "value": 3698333.99
+ },
+ "as_of": "2026-11-01T23:04:21.804723+07:00",
+ "split": "main",
+ "expects": [
+  {
+   "type": "str",
+   "path": "values.quarter",
+   "accept": [
+    "Q3/2026",
+    "quý 3/2026",
+    "q3 2026",
+    "q3/26"
+   ]
+  },
+  {
+   "type": "value",
+   "path": "values.value",
+   "gold": 3698333.99,
+   "tol": {
+    "rel": 0.005
+   }
+  },
+  {
+   "type": "str",
+   "path": "source",
+   "accept": [
+    "vs_indicator_data"
+   ]
+  }
+ ]
+}

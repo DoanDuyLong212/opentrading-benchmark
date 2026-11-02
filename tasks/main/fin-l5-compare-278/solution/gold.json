@@ -1,0 +1,187 @@
+{
+ "task_id": "fin-l5-compare-278",
+ "scoring": "value",
+ "solution": {
+  "FRT": {
+   "pe": 28.2,
+   "pb": 4.95,
+   "roe": 26.13
+  },
+  "PNJ": {
+   "pe": 11.61,
+   "pb": 2.49,
+   "roe": 23.06
+  },
+  "KDC": {
+   "pe": 28.85,
+   "pb": 1.95,
+   "roe": 7.61
+  },
+  "MSN": {
+   "pe": 27.94,
+   "pb": 2.6,
+   "roe": 12.53
+  },
+  "SBT": {
+   "pe": 27.66,
+   "pb": 1.77,
+   "roe": 7.49
+  },
+  "ranking": [
+   "FRT",
+   "PNJ",
+   "MSN",
+   "KDC",
+   "SBT"
+  ]
+ },
+ "as_of": "2026-11-01T23:08:19.121250+07:00",
+ "split": "main",
+ "expects": [
+  {
+   "type": "value",
+   "path": "values.FRT.pe",
+   "gold": 28.2,
+   "tol": {
+    "rel": 0.005
+   }
+  },
+  {
+   "type": "value",
+   "path": "values.FRT.pb",
+   "gold": 4.95,
+   "tol": {
+    "rel": 0.005
+   }
+  },
+  {
+   "type": "value",
+   "path": "values.FRT.roe",
+   "gold": 26.13,
+   "tol": {
+    "rel": 0.005
+   }
+  },
+  {
+   "type": "value",
+   "path": "values.PNJ.pe",
+   "gold": 11.61,
+   "tol": {
+    "rel": 0.005
+   }
+  },
+  {
+   "type": "value",
+   "path": "values.PNJ.pb",
+   "gold": 2.49,
+   "tol": {
+    "rel": 0.005
+   }
+  },
+  {
+   "type": "value",
+   "path": "values.PNJ.roe",
+   "gold": 23.06,
+   "tol": {
+    "rel": 0.005
+   }
+  },
+  {
+   "type": "value",
+   "path": "values.KDC.pe",
+   "gold": 28.85,
+   "tol": {
+    "rel": 0.005
+   }
+  },
+  {
+   "type": "value",
+   "path": "values.KDC.pb",
+   "gold": 1.95,
+   "tol": {
+    "rel": 0.005
+   }
+  },
+  {
+   "type": "value",
+   "path": "values.KDC.roe",
+   "gold": 7.61,
+   "tol": {
+    "rel": 0.005
+   }
+  },
+  {
+   "type": "value",
+   "path": "values.MSN.pe",
+   "gold": 27.94,
+   "tol": {
+    "rel": 0.005
+   }
+  },
+  {
+   "type": "value",
+   "path": "values.MSN.pb",
+   "gold": 2.6,
+   "tol": {
+    "rel": 0.005
+   }
+  },
+  {
+   "type": "value",
+   "path": "values.MSN.roe",
+   "gold": 12.53,
+   "tol": {
+    "rel": 0.005
+   }
+  },
+  {
+   "type": "value",
+   "path": "values.SBT.pe",
+   "gold": 27.66,
+   "tol": {
+    "rel": 0.005
+   }
+  },
+  {
+   "type": "value",
+   "path": "values.SBT.pb",
+   "gold": 1.77,
+   "tol": {
+    "rel": 0.005
+   }
+  },
+  {
+   "type": "value",
+   "path": "values.SBT.roe",
+   "gold": 7.49,
+   "tol": {
+    "rel": 0.005
+   }
+  },
+  {
+   "type": "list_order",
+   "path": "ranking",
+   "gold": [
+    "FRT",
+    "PNJ",
+    "MSN",
+    "KDC",
+    "SBT"
+   ]
+  },
+  {
+   "type": "period",
+   "path": "period",
+   "accept": [
+    "2025"
+   ]
+  },
+  {
+   "type": "str",
+   "path": "source",
+   "accept": [
+    "peer_compare"
+   ]
+  }
+ ]
+}

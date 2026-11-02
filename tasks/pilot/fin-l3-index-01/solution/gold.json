@@ -1,0 +1,44 @@
+{
+  "task_id": "fin-l3-index-01",
+  "scoring": "value",
+  "expects": [
+    {
+      "type": "value",
+      "path": "value",
+      "gold": 3.06,
+      "tol": {
+        "abs": 0.1
+      }
+    },
+    {
+      "type": "unit",
+      "path": "unit",
+      "accept": [
+        "%",
+        "phần trăm"
+      ]
+    },
+    {
+      "type": "period",
+      "path": "period",
+      "accept": [
+        "19/10",
+        "30/10",
+        "2026-10-19",
+        "2026-10-30"
+      ]
+    },
+    {
+      "type": "str",
+      "path": "source",
+      "accept": [
+        "vn_index_ohlcv"
+      ]
+    }
+  ],
+  "solution": {
+    "value": 3.06
+  },
+  "notes": "1689.84 → 1741.62 = +3.06%.",
+  "as_of": "2026-11-01T15:57:50.289394+07:00"
+}

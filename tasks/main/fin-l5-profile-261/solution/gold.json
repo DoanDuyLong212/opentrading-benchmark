@@ -1,0 +1,63 @@
+{
+ "task_id": "fin-l5-profile-261",
+ "scoring": "value",
+ "solution": {
+  "revenue_q_bn": 10471.0,
+  "gross_profit_q_bn": 466.0,
+  "gross_margin_pct": 4.45,
+  "pe": 8.84,
+  "market_cap_bn": 7156.69
+ },
+ "as_of": "2026-11-01T23:14:37.402092+07:00",
+ "split": "main",
+ "expects": [
+  {
+   "type": "value",
+   "path": "values.revenue_q_bn",
+   "gold": 10471.0,
+   "tol": {
+    "rel": 0.005
+   }
+  },
+  {
+   "type": "value",
+   "path": "values.gross_profit_q_bn",
+   "gold": 466.0,
+   "tol": {
+    "rel": 0.005
+   }
+  },
+  {
+   "type": "value",
+   "path": "values.gross_margin_pct",
+   "gold": 4.45,
+   "tol": {
+    "abs": 0.1
+   }
+  },
+  {
+   "type": "value",
+   "path": "values.pe",
+   "gold": 8.84,
+   "tol": {
+    "rel": 0.005
+   }
+  },
+  {
+   "type": "value",
+   "path": "values.market_cap_bn",
+   "gold": 7156.69,
+   "tol": {
+    "rel": 0.005
+   }
+  },
+  {
+   "type": "str_all",
+   "path": "source",
+   "accept": [
+    "financial_detail",
+    "stock_overview"
+   ]
+  }
+ ]
+}

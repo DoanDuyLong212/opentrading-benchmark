@@ -1,0 +1,54 @@
+{
+ "task_id": "fin-l3-index-930",
+ "scoring": "value",
+ "solution": {
+  "value": 1774.15,
+  "date": "2026-10-23"
+ },
+ "as_of": "2026-11-01T21:11:59.149010+07:00",
+ "split": "holdout",
+ "expects": [
+  {
+   "type": "value",
+   "path": "values.value",
+   "gold": 1774.15,
+   "tol": {
+    "rel": 0.005
+   }
+  },
+  {
+   "type": "unit",
+   "path": "unit",
+   "accept": [
+    "điểm"
+   ]
+  },
+  {
+   "type": "period",
+   "path": "period",
+   "accept": [
+    "19/10",
+    "30/10"
+   ]
+  },
+  {
+   "type": "str",
+   "path": "source",
+   "accept": [
+    "vn_index_ohlcv"
+   ]
+  },
+  {
+   "type": "evidence",
+   "path": "note",
+   "paths": [
+    "note"
+   ],
+   "numbers": [],
+   "strings": [
+    "23/10"
+   ],
+   "min_hits": 1
+  }
+ ]
+}

@@ -1,0 +1,57 @@
+{
+ "task_id": "fin-l3-crypto-multi-213",
+ "scoring": "value",
+ "solution": {
+  "pcts": {
+   "HG=F": -1.5,
+   "BZ=F": -1.26,
+   "NG=F": -1.83
+  },
+  "winner": "NG=F"
+ },
+ "as_of": "2026-11-01T21:30:24.862185+07:00",
+ "split": "main",
+ "expects": [
+  {
+   "type": "value",
+   "path": "values.pcts.HG=F",
+   "gold": -1.5,
+   "tol": {
+    "abs": 0.1
+   }
+  },
+  {
+   "type": "value",
+   "path": "values.pcts.BZ=F",
+   "gold": -1.26,
+   "tol": {
+    "abs": 0.1
+   }
+  },
+  {
+   "type": "value",
+   "path": "values.pcts.NG=F",
+   "gold": -1.83,
+   "tol": {
+    "abs": 0.1
+   }
+  },
+  {
+   "type": "str",
+   "path": "values.winner",
+   "accept": [
+    "NG=F",
+    "khí",
+    "natural gas",
+    "gas"
+   ]
+  },
+  {
+   "type": "str",
+   "path": "source",
+   "accept": [
+    "yf_commodities"
+   ]
+  }
+ ]
+}

@@ -1,0 +1,36 @@
+{
+ "task_id": "fin-l5-profile-273",
+ "scoring": "value",
+ "solution": {
+  "price": 94.94999694824219,
+  "prev": 95.34821319580078,
+  "change_pct": -0.42
+ },
+ "as_of": "2026-11-01T21:30:24.862185+07:00",
+ "split": "main",
+ "expects": [
+  {
+   "type": "value",
+   "path": "values.price",
+   "gold": 94.94999694824219,
+   "tol": {
+    "rel": 0.005
+   }
+  },
+  {
+   "type": "value",
+   "path": "values.change_pct",
+   "gold": -0.42,
+   "tol": {
+    "abs": 0.05
+   }
+  },
+  {
+   "type": "str",
+   "path": "source",
+   "accept": [
+    "yf_commodities"
+   ]
+  }
+ ]
+}

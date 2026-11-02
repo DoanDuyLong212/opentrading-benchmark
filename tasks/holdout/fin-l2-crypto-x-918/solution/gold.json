@@ -1,0 +1,48 @@
+{
+ "task_id": "fin-l2-crypto-x-918",
+ "scoring": "value",
+ "solution": {
+  "value": 2.45
+ },
+ "as_of": "2026-11-01T21:30:32.261897+07:00",
+ "split": "holdout",
+ "expects": [
+  {
+   "type": "value",
+   "path": "value",
+   "gold": 2.45,
+   "tol": {
+    "rel": 0.005
+   }
+  },
+  {
+   "type": "unit",
+   "path": "unit",
+   "accept": [
+    "triệu đồng",
+    "triệu đ"
+   ]
+  },
+  {
+   "type": "evidence",
+   "path": "note",
+   "paths": [
+    "note"
+   ],
+   "numbers": [
+    94.94999694824219,
+    25799.0
+   ],
+   "strings": [],
+   "min_hits": 2
+  },
+  {
+   "type": "str_all",
+   "path": "source",
+   "accept": [
+    "yf_commodities",
+    "vn_msn_fx_gold"
+   ]
+  }
+ ]
+}

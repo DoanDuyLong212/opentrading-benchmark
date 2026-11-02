@@ -1,0 +1,89 @@
+{
+ "task_id": "fin-l3-agg-921",
+ "scoring": "value",
+ "solution": {
+  "ACB": 21000.0,
+  "STB": 66300.0,
+  "VPB": 22950.0,
+  "HDB": 22400.0,
+  "TPB": 12650.0,
+  "mean": 29060.0
+ },
+ "as_of": "2026-11-01T23:04:24.002593+07:00",
+ "split": "holdout",
+ "expects": [
+  {
+   "type": "value",
+   "path": "values.ACB",
+   "gold": 21000.0,
+   "tol": {
+    "rel": 0.005
+   }
+  },
+  {
+   "type": "value",
+   "path": "values.STB",
+   "gold": 66300.0,
+   "tol": {
+    "rel": 0.005
+   }
+  },
+  {
+   "type": "value",
+   "path": "values.VPB",
+   "gold": 22950.0,
+   "tol": {
+    "rel": 0.005
+   }
+  },
+  {
+   "type": "value",
+   "path": "values.HDB",
+   "gold": 22400.0,
+   "tol": {
+    "rel": 0.005
+   }
+  },
+  {
+   "type": "value",
+   "path": "values.TPB",
+   "gold": 12650.0,
+   "tol": {
+    "rel": 0.005
+   }
+  },
+  {
+   "type": "value",
+   "path": "values.mean",
+   "gold": 29060.0,
+   "tol": {
+    "rel": 0.005
+   }
+  },
+  {
+   "type": "unit",
+   "path": "unit",
+   "accept": [
+    "đồng",
+    "VND"
+   ]
+  },
+  {
+   "type": "period",
+   "path": "period",
+   "accept": [
+    "30/10",
+    "30-10",
+    "30.10",
+    "2026-10-30"
+   ]
+  },
+  {
+   "type": "str",
+   "path": "source",
+   "accept": [
+    "vn_equity_quote_batch"
+   ]
+  }
+ ]
+}

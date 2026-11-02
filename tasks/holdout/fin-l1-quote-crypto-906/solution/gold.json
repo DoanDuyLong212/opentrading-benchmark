@@ -1,0 +1,34 @@
+{
+ "task_id": "fin-l1-quote-crypto-906",
+ "scoring": "value",
+ "solution": {
+  "value": 0.59
+ },
+ "as_of": "2026-11-01T21:30:24.862185+07:00",
+ "split": "holdout",
+ "expects": [
+  {
+   "type": "value",
+   "path": "value",
+   "gold": 0.59,
+   "tol": {
+    "abs": 0.05
+   }
+  },
+  {
+   "type": "unit",
+   "path": "unit",
+   "accept": [
+    "%",
+    "phần trăm"
+   ]
+  },
+  {
+   "type": "str",
+   "path": "source",
+   "accept": [
+    "yf_commodities"
+   ]
+  }
+ ]
+}

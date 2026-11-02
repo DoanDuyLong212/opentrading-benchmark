@@ -1,0 +1,44 @@
+{
+ "task_id": "fin-l5-valuation-297",
+ "scoring": "value",
+ "solution": {
+  "price": 3980.0,
+  "per": 22.45,
+  "pb": 0.32
+ },
+ "as_of": "2026-11-01T23:29:25.555539+07:00",
+ "split": "main",
+ "expects": [
+  {
+   "type": "value",
+   "path": "values.price",
+   "gold": 3980.0,
+   "tol": {
+    "rel": 0.005
+   }
+  },
+  {
+   "type": "value",
+   "path": "values.per",
+   "gold": 22.45,
+   "tol": {
+    "rel": 0.005
+   }
+  },
+  {
+   "type": "value",
+   "path": "values.pb",
+   "gold": 0.32,
+   "tol": {
+    "rel": 0.005
+   }
+  },
+  {
+   "type": "str",
+   "path": "source",
+   "accept": [
+    "valuation_run"
+   ]
+  }
+ ]
+}

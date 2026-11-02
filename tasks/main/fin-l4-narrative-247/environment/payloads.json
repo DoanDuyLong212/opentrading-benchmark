@@ -1,0 +1,66 @@
+{
+ "snapshot_date": "2026-11-01",
+ "note": "Envelope MCP ghi lúc tạo task. Key = mã payload nội bộ; envelope giữ nguyên data+provenance+availability.",
+ "tools": {
+  "vnq10:SBT": {
+   "tool": "vn_quote_history",
+   "params": {
+    "symbol": "SBT",
+    "days": 10
+   },
+   "envelope": {
+    "data": {
+     "symbol": "SBT",
+     "closes": [
+      {
+       "t": "2026-10-19",
+       "c": 22.5
+      },
+      {
+       "t": "2026-10-20",
+       "c": 21.1
+      },
+      {
+       "t": "2026-10-21",
+       "c": 21.2
+      },
+      {
+       "t": "2026-10-22",
+       "c": 21.2
+      },
+      {
+       "t": "2026-10-23",
+       "c": 20.95
+      },
+      {
+       "t": "2026-10-26",
+       "c": 20.8
+      },
+      {
+       "t": "2026-10-27",
+       "c": 20.8
+      },
+      {
+       "t": "2026-10-28",
+       "c": 20.75
+      },
+      {
+       "t": "2026-10-29",
+       "c": 20.75
+      },
+      {
+       "t": "2026-10-30",
+       "c": 20.7
+      }
+     ]
+    },
+    "provenance": {
+     "source": "vnstock",
+     "as_of": "2026-11-01T23:58:29.528713+07:00",
+     "data_time": "2026-10-30"
+    },
+    "availability": "available"
+   }
+  }
+ }
+}

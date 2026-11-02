@@ -1,0 +1,88 @@
+{
+ "snapshot_date": "2026-11-01",
+ "note": "Envelope MCP ghi lúc tạo task. Key = mã payload nội bộ; envelope giữ nguyên data+provenance+availability.",
+ "tools": {
+  "ov:HBC": {
+   "tool": "stock_overview",
+   "params": {
+    "symbol": "HBC"
+   },
+   "envelope": {
+    "data": {
+     "symbol": "HBC",
+     "trading": {
+      "LastPrice": 3000,
+      "PE": 4.47,
+      "PB": 0.52,
+      "MarketCapital": 1195897548000,
+      "EPS": 671,
+      "BVPS": 5812,
+      "Revenue": 4626996135770,
+      "Profit": 240474688372,
+      "PerChange": 0,
+      "TradingDate": "2026-10-30T14:58:49+07:00"
+     }
+    },
+    "provenance": {
+     "source": "vietstock",
+     "as_of": "2026-11-01T23:14:37.621348+07:00"
+    },
+    "availability": "available"
+   }
+  },
+  "fd:HBC": {
+   "tool": "financial_detail",
+   "params": {
+    "symbol": "HBC",
+    "statement": "KQKD",
+    "periods_n": 4
+   },
+   "envelope": {
+    "data": {
+     "symbol": "HBC",
+     "unit": "VNDbn",
+     "periods": [
+      "Q3/2025",
+      "Q4/2025",
+      "Q1/2026",
+      "Q2/2026"
+     ],
+     "rows": [
+      {
+       "name": "3. Doanh thu thuần về bán hàng và cung cấp dịch vụ",
+       "values": [
+        1123,
+        1876,
+        1322,
+        1946
+       ]
+      },
+      {
+       "name": "4. Giá vốn hàng bán ",
+       "values": [
+        1056,
+        1769,
+        1266,
+        1724
+       ]
+      },
+      {
+       "name": "5. Lợi nhuận gộp về bán hàng và cung cấp dịch vụ",
+       "values": [
+        67,
+        107,
+        56,
+        222
+       ]
+      }
+     ]
+    },
+    "provenance": {
+     "source": "vietstock",
+     "as_of": "2026-11-01T22:44:38.415589+07:00"
+    },
+    "availability": "available"
+   }
+  }
+ }
+}

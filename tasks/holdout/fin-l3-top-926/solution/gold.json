@@ -1,0 +1,42 @@
+{
+ "task_id": "fin-l3-top-926",
+ "scoring": "value",
+ "solution": {
+  "symbol": "HPG",
+  "close": 21000.0
+ },
+ "as_of": "2026-11-01T21:12:04.261634+07:00",
+ "split": "holdout",
+ "expects": [
+  {
+   "type": "str",
+   "path": "values.symbol",
+   "accept": [
+    "HPG"
+   ]
+  },
+  {
+   "type": "value",
+   "path": "values.close",
+   "gold": 21000.0,
+   "tol": {
+    "rel": 0.005
+   }
+  },
+  {
+   "type": "unit",
+   "path": "unit",
+   "accept": [
+    "đồng",
+    "VND"
+   ]
+  },
+  {
+   "type": "str",
+   "path": "source",
+   "accept": [
+    "market_movers"
+   ]
+  }
+ ]
+}

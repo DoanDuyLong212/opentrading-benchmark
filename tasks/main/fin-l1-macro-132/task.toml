@@ -1,0 +1,27 @@
+# Task benchmark harness tài chính (bộ 200+50) — sinh bởi tools/build_main.py
+id = "fin-l1-macro-132"
+title = "CPI cpi_total — tháng 8/2026"
+version = 1
+created = "2026-11-01"
+level = "L1"
+family = "L1·C macro"
+financebench_type = "single-metric extraction"
+entity = "cpi_total@2026-08"
+asset = "macro"
+data_zone = "green"
+data_pairs = []
+snapshot_date = "2026-11-01"
+universe_cap = 0
+banned_tools = ["web_search", "web_fetch", "sentiment_score"]
+human_time_band = "<15 phút"
+time_limit_min = 15
+tools_expected = ["vs_indicator_data"]
+mcp_payloads = "environment/payloads.json"
+snapshot_required = true
+split = "main"
+
+[scoring]
+type = "value"
+gold = "solution/gold.json"
+oracle = "solution/oracle.py"
+grader = "tests/grader.py"

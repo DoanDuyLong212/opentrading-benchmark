@@ -1,0 +1,52 @@
+{
+ "task_id": "fin-l3-tech-multi-203",
+ "scoring": "value",
+ "solution": {
+  "count": 2
+ },
+ "as_of": "2026-11-01T23:26:05.000000+07:00",
+ "split": "main",
+ "expects": [
+  {
+   "type": "value",
+   "path": "values.count",
+   "gold": 2,
+   "tol": {
+    "abs": 0.001
+   }
+  },
+  {
+   "type": "period",
+   "path": "period",
+   "accept": [
+    "30/10",
+    "30-10",
+    "30.10",
+    "2026-10-30"
+   ]
+  },
+  {
+   "type": "str",
+   "path": "source",
+   "accept": [
+    "signals_technical"
+   ]
+  },
+  {
+   "type": "evidence",
+   "path": "note",
+   "paths": [
+    "note"
+   ],
+   "numbers": [
+    48.89,
+    43.79,
+    43.79,
+    53.93,
+    57.88
+   ],
+   "strings": [],
+   "min_hits": 2
+  }
+ ]
+}

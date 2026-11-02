@@ -1,0 +1,57 @@
+{
+  "task_id": "fin-l3-crypto-01",
+  "scoring": "value",
+  "expects": [
+    {
+      "type": "value",
+      "path": "values.gold_pct",
+      "gold": -3.29,
+      "tol": {
+        "abs": 0.1
+      }
+    },
+    {
+      "type": "value",
+      "path": "values.oil_pct",
+      "gold": 2.08,
+      "tol": {
+        "abs": 0.1
+      }
+    },
+    {
+      "type": "value",
+      "path": "values.btc_pct",
+      "gold": 0.77,
+      "tol": {
+        "abs": 0.1
+      }
+    },
+    {
+      "type": "str",
+      "path": "values.winner",
+      "accept": [
+        "CL=F",
+        "CL",
+        "dầu thô",
+        "dầu WTI",
+        "WTI",
+        "crude"
+      ]
+    },
+    {
+      "type": "str",
+      "path": "source",
+      "accept": [
+        "yf_commodities"
+      ]
+    }
+  ],
+  "solution": {
+    "gold_pct": -3.29,
+    "oil_pct": 2.08,
+    "btc_pct": 0.77,
+    "winner": "CL=F"
+  },
+  "notes": "Đổi nguồn so với 5.5 (crypto_spot batch 10 mã dính Binance 429) → yf_commodities 3 tài sản. GC -3.29%, CL +2.08%, BTC +0.77% → CL cao nhất. Không check period (semantics ngày đóng của yfinance không rõ 30 hay 31/10).",
+  "as_of": "2026-11-01T15:57:51.193584+07:00"
+}

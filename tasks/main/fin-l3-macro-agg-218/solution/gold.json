@@ -1,0 +1,44 @@
+{
+ "task_id": "fin-l3-macro-agg-218",
+ "scoring": "value",
+ "solution": {
+  "category": "Giao thông",
+  "pct": 11.67
+ },
+ "as_of": "2026-11-01T23:04:21.804723+07:00",
+ "split": "main",
+ "expects": [
+  {
+   "type": "str",
+   "path": "values.category",
+   "accept": [
+    "Giao thông"
+   ]
+  },
+  {
+   "type": "value",
+   "path": "values.pct",
+   "gold": 11.67,
+   "tol": {
+    "abs": 0.05
+   }
+  },
+  {
+   "type": "period",
+   "path": "period",
+   "accept": [
+    "tháng 9/2026",
+    "9/2026",
+    "tháng 9",
+    "t9/2026"
+   ]
+  },
+  {
+   "type": "str",
+   "path": "source",
+   "accept": [
+    "vs_indicator_data"
+   ]
+  }
+ ]
+}

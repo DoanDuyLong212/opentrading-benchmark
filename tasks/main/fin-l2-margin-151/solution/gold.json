@@ -1,0 +1,44 @@
+{
+ "task_id": "fin-l2-margin-151",
+ "scoring": "value",
+ "solution": {
+  "value": 9.62
+ },
+ "as_of": "2026-11-01T22:44:39.273108+07:00",
+ "split": "main",
+ "expects": [
+  {
+   "type": "value",
+   "path": "value",
+   "gold": 9.62,
+   "tol": {
+    "abs": 0.1
+   }
+  },
+  {
+   "type": "unit",
+   "path": "unit",
+   "accept": [
+    "%",
+    "phần trăm"
+   ]
+  },
+  {
+   "type": "period",
+   "path": "period",
+   "accept": [
+    "Q3/2026",
+    "quý 3/2026",
+    "q3 2026",
+    "q3/26"
+   ]
+  },
+  {
+   "type": "str",
+   "path": "source",
+   "accept": [
+    "financial_detail"
+   ]
+  }
+ ]
+}

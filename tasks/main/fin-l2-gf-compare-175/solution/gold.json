@@ -1,0 +1,58 @@
+{
+ "task_id": "fin-l2-gf-compare-175",
+ "scoring": "value",
+ "solution": {
+  "value": 49.2760009765625,
+  "prev": 52.191001892089844
+ },
+ "as_of": "2026-11-01T21:30:32.261897+07:00",
+ "split": "main",
+ "expects": [
+  {
+   "type": "value",
+   "path": "value",
+   "gold": 49.2760009765625,
+   "tol": {
+    "rel": 0.005
+   }
+  },
+  {
+   "type": "unit",
+   "path": "unit",
+   "accept": [
+    "USD",
+    "USDT"
+   ]
+  },
+  {
+   "type": "period",
+   "path": "period",
+   "accept": [
+    "30/10",
+    "30-10",
+    "30.10",
+    "2026-10-30"
+   ]
+  },
+  {
+   "type": "evidence",
+   "path": "note",
+   "paths": [
+    "note"
+   ],
+   "numbers": [
+    52.191001892089844
+   ],
+   "strings": [],
+   "min_hits": 1
+  },
+  {
+   "type": "str_all",
+   "path": "source",
+   "accept": [
+    "vn_msn_fx_gold",
+    "yf_commodities"
+   ]
+  }
+ ]
+}

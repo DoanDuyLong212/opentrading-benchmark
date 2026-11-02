@@ -1,0 +1,44 @@
+{
+  "task_id": "fin-l5-valuation-01",
+  "scoring": "value",
+  "expects": [
+    {
+      "type": "value",
+      "path": "values.price",
+      "gold": 52700,
+      "tol": {
+        "rel": 0.005
+      }
+    },
+    {
+      "type": "value",
+      "path": "values.per",
+      "gold": 8.75,
+      "tol": {
+        "rel": 0.005
+      }
+    },
+    {
+      "type": "value",
+      "path": "values.pb",
+      "gold": 2.05,
+      "tol": {
+        "rel": 0.005
+      }
+    },
+    {
+      "type": "str",
+      "path": "source",
+      "accept": [
+        "valuation_run"
+      ]
+    }
+  ],
+  "solution": {
+    "price": 52700,
+    "per": 8.75,
+    "pb": 2.05
+  },
+  "notes": "Tool không trả fair-value range (chỉ multiples) → đề chỉ hỏi price/per/pb, trung thực với năng lực tool. Lưu ý: FPT giá 52,700 đ ở đây là giá tool dùng (nguồn vnstock.equity_quote_batch).",
+  "as_of": "2026-11-01T15:54:35.771025+07:00"
+}

@@ -1,0 +1,88 @@
+{
+ "snapshot_date": "2026-11-01",
+ "note": "Envelope MCP ghi lúc tạo task. Key = mã payload nội bộ; envelope giữ nguyên data+provenance+availability.",
+ "tools": {
+  "vnq:PVS": {
+   "tool": "vn_quote_history",
+   "params": {
+    "symbol": "PVS",
+    "days": 5,
+    "summary": true
+   },
+   "envelope": {
+    "data": {
+     "symbol": "PVS",
+     "count": 5,
+     "last": 30.5,
+     "high": 33,
+     "low": 30.3,
+     "last_t": "2026-10-30"
+    },
+    "provenance": {
+     "source": "vnstock",
+     "as_of": "2026-11-01T21:12:04.552938+07:00",
+     "timezone": "Asia/Ho_Chi_Minh",
+     "data_time": "2026-10-30"
+    },
+    "availability": "available",
+    "warnings": [],
+    "units": {
+     "last": "nghìn đồng/cổ phiếu (64,27 = 64.270 đ)"
+    }
+   }
+  },
+  "batch:energy1": {
+   "tool": "vn_equity_quote_batch",
+   "params": {
+    "symbols": [
+     "PVS",
+     "PVD",
+     "BSR",
+     "PLX",
+     "POW"
+    ]
+   },
+   "envelope": {
+    "data": {
+     "quotes": [
+      {
+       "symbol": "PVS",
+       "close": 30500,
+       "pct": 0,
+       "vol": 1699200
+      },
+      {
+       "symbol": "PVD",
+       "close": 17950,
+       "pct": -2.17983651226158,
+       "vol": 2262400
+      },
+      {
+       "symbol": "BSR",
+       "close": 27600,
+       "pct": -0.18083182640144665,
+       "vol": 5557900
+      },
+      {
+       "symbol": "PLX",
+       "close": 34000,
+       "pct": 0,
+       "vol": 1746000
+      },
+      {
+       "symbol": "POW",
+       "close": 12200,
+       "pct": -1.6129032258064515,
+       "vol": 3781000
+      }
+     ]
+    },
+    "provenance": {
+     "source": "vnstock",
+     "as_of": "2026-11-01T23:07:49.257317+07:00"
+    },
+    "availability": "available"
+   }
+  }
+ }
+}

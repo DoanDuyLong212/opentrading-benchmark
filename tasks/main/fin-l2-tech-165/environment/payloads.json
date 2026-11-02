@@ -1,0 +1,24 @@
+{
+ "snapshot_date": "2026-11-01",
+ "note": "Envelope MCP ghi lúc tạo task. Key = mã payload nội bộ; envelope giữ nguyên data+provenance+availability.",
+ "tools": {
+  "tech:VGC": {
+   "tool": "signals_technical",
+   "params": {
+    "symbol": "VGC",
+    "interval": "1D"
+   },
+   "envelope": {
+    "data": {
+     "symbol": "VGC",
+     "rsi14": 43.84
+    },
+    "provenance": {
+     "source": "computed-local",
+     "as_of": "2026-11-01T23:54:19.033081+07:00"
+    },
+    "availability": "available"
+   }
+  }
+ }
+}

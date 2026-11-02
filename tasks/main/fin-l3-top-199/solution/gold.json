@@ -1,0 +1,114 @@
+{
+ "task_id": "fin-l3-top-199",
+ "scoring": "value",
+ "solution": {
+  "1": {
+   "symbol": "HPG",
+   "pct": -0.94,
+   "close": 21000.0,
+   "vol": 24773000.0
+  },
+  "2": {
+   "symbol": "TCB",
+   "pct": -3.36,
+   "close": 21600.0,
+   "vol": 17644300.0
+  },
+  "3": {
+   "symbol": "NVL",
+   "pct": 0.48,
+   "close": 10400.0,
+   "vol": 14738700.0
+  }
+ },
+ "as_of": "2026-11-01T21:12:04.261634+07:00",
+ "split": "main",
+ "expects": [
+  {
+   "type": "str",
+   "path": "values.1.symbol",
+   "accept": [
+    "HPG"
+   ]
+  },
+  {
+   "type": "value",
+   "path": "values.1.vol",
+   "gold": 24773000.0,
+   "tol": {
+    "rel": 0.005
+   }
+  },
+  {
+   "type": "value",
+   "path": "values.1.close",
+   "gold": 21000.0,
+   "tol": {
+    "rel": 0.005
+   }
+  },
+  {
+   "type": "str",
+   "path": "values.2.symbol",
+   "accept": [
+    "TCB"
+   ]
+  },
+  {
+   "type": "value",
+   "path": "values.2.vol",
+   "gold": 17644300.0,
+   "tol": {
+    "rel": 0.005
+   }
+  },
+  {
+   "type": "value",
+   "path": "values.2.close",
+   "gold": 21600.0,
+   "tol": {
+    "rel": 0.005
+   }
+  },
+  {
+   "type": "str",
+   "path": "values.3.symbol",
+   "accept": [
+    "NVL"
+   ]
+  },
+  {
+   "type": "value",
+   "path": "values.3.vol",
+   "gold": 14738700.0,
+   "tol": {
+    "rel": 0.005
+   }
+  },
+  {
+   "type": "value",
+   "path": "values.3.close",
+   "gold": 10400.0,
+   "tol": {
+    "rel": 0.005
+   }
+  },
+  {
+   "type": "period",
+   "path": "period",
+   "accept": [
+    "30/10",
+    "30-10",
+    "30.10",
+    "2026-10-30"
+   ]
+  },
+  {
+   "type": "str",
+   "path": "source",
+   "accept": [
+    "market_movers"
+   ]
+  }
+ ]
+}

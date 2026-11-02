@@ -1,0 +1,113 @@
+{
+  "task_id": "fin-l3-top-01",
+  "scoring": "value",
+  "expects": [
+    {
+      "type": "str",
+      "path": "values.1.symbol",
+      "accept": [
+        "GAS"
+      ]
+    },
+    {
+      "type": "value",
+      "path": "values.1.pct",
+      "gold": 2.63,
+      "tol": {
+        "abs": 0.05
+      }
+    },
+    {
+      "type": "value",
+      "path": "values.1.close",
+      "gold": 78000,
+      "tol": {
+        "rel": 0.005
+      }
+    },
+    {
+      "type": "str",
+      "path": "values.2.symbol",
+      "accept": [
+        "VHM"
+      ]
+    },
+    {
+      "type": "value",
+      "path": "values.2.pct",
+      "gold": 1.45,
+      "tol": {
+        "abs": 0.05
+      }
+    },
+    {
+      "type": "value",
+      "path": "values.2.close",
+      "gold": 63000,
+      "tol": {
+        "rel": 0.005
+      }
+    },
+    {
+      "type": "str",
+      "path": "values.3.symbol",
+      "accept": [
+        "NVL"
+      ]
+    },
+    {
+      "type": "value",
+      "path": "values.3.pct",
+      "gold": 0.48,
+      "tol": {
+        "abs": 0.05
+      }
+    },
+    {
+      "type": "value",
+      "path": "values.3.close",
+      "gold": 10400,
+      "tol": {
+        "rel": 0.005
+      }
+    },
+    {
+      "type": "period",
+      "path": "period",
+      "accept": [
+        "30/10",
+        "30-10",
+        "30.10",
+        "2026-10-30"
+      ]
+    },
+    {
+      "type": "str",
+      "path": "source",
+      "accept": [
+        "market_movers"
+      ]
+    }
+  ],
+  "solution": {
+    "top": [
+      {
+        "symbol": "GAS",
+        "pct": 2.63,
+        "close": 78000
+      },
+      {
+        "symbol": "VHM",
+        "pct": 1.45,
+        "close": 63000
+      },
+      {
+        "symbol": "NVL",
+        "pct": 0.48,
+        "close": 10400
+      }
+    ]
+  },
+  "notes": "Top 3/5 gainers: GAS +2.63%, VHM +1.45%, NVL +0.48% (SAB +0.24%, BVH 0%).",
+  "as_of": "2026-11-01T15:57:50.290909+07:00"
+}

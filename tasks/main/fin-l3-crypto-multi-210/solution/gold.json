@@ -1,0 +1,55 @@
+{
+ "task_id": "fin-l3-crypto-multi-210",
+ "scoring": "value",
+ "solution": {
+  "pcts": {
+   "ETH-USD": 0.59,
+   "SOL-USD": -0.42,
+   "BNB-USD": 1.66
+  },
+  "winner": "BNB-USD"
+ },
+ "as_of": "2026-11-01T21:30:24.862185+07:00",
+ "split": "main",
+ "expects": [
+  {
+   "type": "value",
+   "path": "values.pcts.ETH-USD",
+   "gold": 0.59,
+   "tol": {
+    "abs": 0.1
+   }
+  },
+  {
+   "type": "value",
+   "path": "values.pcts.SOL-USD",
+   "gold": -0.42,
+   "tol": {
+    "abs": 0.1
+   }
+  },
+  {
+   "type": "value",
+   "path": "values.pcts.BNB-USD",
+   "gold": 1.66,
+   "tol": {
+    "abs": 0.1
+   }
+  },
+  {
+   "type": "str",
+   "path": "values.winner",
+   "accept": [
+    "BNB-USD",
+    "BNB"
+   ]
+  },
+  {
+   "type": "str",
+   "path": "source",
+   "accept": [
+    "yf_commodities"
+   ]
+  }
+ ]
+}

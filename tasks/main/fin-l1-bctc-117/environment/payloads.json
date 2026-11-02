@@ -1,0 +1,62 @@
+{
+ "snapshot_date": "2026-11-01",
+ "note": "Envelope MCP ghi lúc tạo task. Key = mã payload nội bộ; envelope giữ nguyên data+provenance+availability.",
+ "tools": {
+  "fs:EIB": {
+   "tool": "financial_statements",
+   "params": {
+    "symbol": "EIB",
+    "period": "quarter",
+    "periods_n": 4
+   },
+   "envelope": {
+    "data": {
+     "symbol": "EIB",
+     "periods": [
+      "Q4/2025",
+      "Q1/2026",
+      "Q2/2026",
+      "Q3/2026"
+     ],
+     "rows": [
+      {
+       "name": "Thu nhập lãi thuần",
+       "unit": "VND",
+       "values": {
+        "Q4/2025": 1690894000000,
+        "Q1/2026": 1379982000000,
+        "Q2/2026": 1395592000000,
+        "Q3/2026": 1090199000000
+       }
+      },
+      {
+       "name": "Tổng LNST",
+       "unit": "VND",
+       "values": {
+        "Q4/2025": -472482000000,
+        "Q1/2026": 269160000000,
+        "Q2/2026": 250491000000,
+        "Q3/2026": 144002000000
+       }
+      },
+      {
+       "name": "LNST của CĐ Ngân hàng mẹ",
+       "unit": "VND",
+       "values": {
+        "Q4/2025": -472482000000,
+        "Q1/2026": 269160000000,
+        "Q2/2026": 250491000000,
+        "Q3/2026": 144002000000
+       }
+      }
+     ]
+    },
+    "provenance": {
+     "source": "vietstock",
+     "as_of": "2026-11-01T22:00:33.373480+07:00"
+    },
+    "availability": "available"
+   }
+  }
+ }
+}

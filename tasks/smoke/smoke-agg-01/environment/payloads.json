@@ -1,0 +1,49 @@
+{
+  "snapshot_date": "2026-11-01",
+  "note": "Envelope MCP đã ghi lúc tạo task (2026-11-01, trim trường không dùng cho gold; data + provenance + availability giữ nguyên). Benchmark chạy qua snapshot-replay các envelope này — không gọi MCP live.",
+  "tools": {
+    "vn_quote_history": {
+      "data": {
+        "banks": [
+          {
+            "symbol": "VCB",
+            "last": 56.3,
+            "last_t": "2026-10-30"
+          },
+          {
+            "symbol": "BID",
+            "last": 33.4,
+            "last_t": "2026-10-30"
+          },
+          {
+            "symbol": "CTG",
+            "last": 30.3,
+            "last_t": "2026-10-30"
+          },
+          {
+            "symbol": "TCB",
+            "last": 21.6,
+            "last_t": "2026-10-30"
+          },
+          {
+            "symbol": "MBB",
+            "last": 19.3,
+            "last_t": "2026-10-30"
+          }
+        ],
+        "_note": "5 lời gọi vn_quote_history riêng (vn_equity_quote_batch unavailable lúc ghi snapshot)"
+      },
+      "provenance": {
+        "source": "vnstock",
+        "as_of": "2026-11-01T15:57:50.079479+07:00",
+        "data_time": "2026-10-30",
+        "timezone": "Asia/Ho_Chi_Minh"
+      },
+      "availability": "available",
+      "warnings": [],
+      "units": {
+        "last": "nghìn đồng/cổ phiếu"
+      }
+    }
+  }
+}

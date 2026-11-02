@@ -1,0 +1,44 @@
+{
+  "task_id": "fin-l2-growth-01",
+  "scoring": "value",
+  "expects": [
+    {
+      "type": "value",
+      "path": "value",
+      "gold": -2.03,
+      "tol": {
+        "abs": 0.1
+      }
+    },
+    {
+      "type": "unit",
+      "path": "unit",
+      "accept": [
+        "%",
+        "phần trăm"
+      ]
+    },
+    {
+      "type": "period",
+      "path": "period",
+      "accept": [
+        "Q3/2026",
+        "quý 3/2026",
+        "Q3 2026",
+        "Q3/26"
+      ]
+    },
+    {
+      "type": "str",
+      "path": "source",
+      "accept": [
+        "financial_statements"
+      ]
+    }
+  ],
+  "solution": {
+    "value": -2.03
+  },
+  "notes": "Q3/2026 = 18,465,190,628,493; Q2/2026 = 18,847,347,464,988 → -2.03%.",
+  "as_of": "2026-11-01T15:54:29.489141+07:00"
+}

@@ -1,0 +1,90 @@
+{
+  "task_id": "fin-l3-agg-01",
+  "scoring": "value",
+  "expects": [
+    {
+      "type": "value",
+      "path": "values.VCB",
+      "gold": 56.3,
+      "tol": {
+        "rel": 0.005
+      }
+    },
+    {
+      "type": "value",
+      "path": "values.BID",
+      "gold": 33.4,
+      "tol": {
+        "rel": 0.005
+      }
+    },
+    {
+      "type": "value",
+      "path": "values.CTG",
+      "gold": 30.3,
+      "tol": {
+        "rel": 0.005
+      }
+    },
+    {
+      "type": "value",
+      "path": "values.TCB",
+      "gold": 21.6,
+      "tol": {
+        "rel": 0.005
+      }
+    },
+    {
+      "type": "value",
+      "path": "values.MBB",
+      "gold": 19.3,
+      "tol": {
+        "rel": 0.005
+      }
+    },
+    {
+      "type": "value",
+      "path": "values.mean",
+      "gold": 32.18,
+      "tol": {
+        "rel": 0.005
+      }
+    },
+    {
+      "type": "unit",
+      "path": "unit",
+      "accept": [
+        "nghìn đồng",
+        "nghìn đ",
+        "k đồng"
+      ]
+    },
+    {
+      "type": "period",
+      "path": "period",
+      "accept": [
+        "30/10",
+        "30-10",
+        "30.10",
+        "2026-10-30"
+      ]
+    },
+    {
+      "type": "str",
+      "path": "source",
+      "accept": [
+        "vn_quote_history"
+      ]
+    }
+  ],
+  "solution": {
+    "VCB": 56.3,
+    "BID": 33.4,
+    "CTG": 30.3,
+    "TCB": 21.6,
+    "MBB": 19.3,
+    "mean": 32.18
+  },
+  "notes": "Đổi nguồn so với 5.5 (vn_equity_quote_batch unavailable 01/11) → 5 lời gọi vn_quote_history. Trung bình: 160.9/5 = 32.18.",
+  "as_of": "2026-11-01T15:57:50.079479+07:00"
+}

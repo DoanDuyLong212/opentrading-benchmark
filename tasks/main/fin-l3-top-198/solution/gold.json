@@ -1,0 +1,111 @@
+{
+ "task_id": "fin-l3-top-198",
+ "scoring": "value",
+ "solution": {
+  "1": {
+   "symbol": "PNJ",
+   "pct": -3.43,
+   "close": 15500.0
+  },
+  "2": {
+   "symbol": "TCB",
+   "pct": -3.36,
+   "close": 21600.0
+  },
+  "3": {
+   "symbol": "LPB",
+   "pct": -3.22,
+   "close": 36100.0
+  }
+ },
+ "as_of": "2026-11-01T21:12:04.261634+07:00",
+ "split": "main",
+ "expects": [
+  {
+   "type": "str",
+   "path": "values.1.symbol",
+   "accept": [
+    "PNJ"
+   ]
+  },
+  {
+   "type": "value",
+   "path": "values.1.pct",
+   "gold": -3.43,
+   "tol": {
+    "abs": 0.05
+   }
+  },
+  {
+   "type": "value",
+   "path": "values.1.close",
+   "gold": 15500.0,
+   "tol": {
+    "rel": 0.005
+   }
+  },
+  {
+   "type": "str",
+   "path": "values.2.symbol",
+   "accept": [
+    "TCB"
+   ]
+  },
+  {
+   "type": "value",
+   "path": "values.2.pct",
+   "gold": -3.36,
+   "tol": {
+    "abs": 0.05
+   }
+  },
+  {
+   "type": "value",
+   "path": "values.2.close",
+   "gold": 21600.0,
+   "tol": {
+    "rel": 0.005
+   }
+  },
+  {
+   "type": "str",
+   "path": "values.3.symbol",
+   "accept": [
+    "LPB"
+   ]
+  },
+  {
+   "type": "value",
+   "path": "values.3.pct",
+   "gold": -3.22,
+   "tol": {
+    "abs": 0.05
+   }
+  },
+  {
+   "type": "value",
+   "path": "values.3.close",
+   "gold": 36100.0,
+   "tol": {
+    "rel": 0.005
+   }
+  },
+  {
+   "type": "period",
+   "path": "period",
+   "accept": [
+    "30/10",
+    "30-10",
+    "30.10",
+    "2026-10-30"
+   ]
+  },
+  {
+   "type": "str",
+   "path": "source",
+   "accept": [
+    "market_movers"
+   ]
+  }
+ ]
+}

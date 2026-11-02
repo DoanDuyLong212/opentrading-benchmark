@@ -1,0 +1,26 @@
+# Task benchmark harness tài chính — sinh bởi tools/gen_tasks.py
+id = "smoke-agg-01"
+title = "Smoke — trung bình 5 ngân hàng"
+version = 1
+created = "2026-11-01"
+level = "SMOKE"
+family = "smoke"
+financebench_type = "aggregation"
+entity = "VCB+BID+CTG+TCB+MBB"
+asset = "vn_stock"
+data_zone = "green"
+data_pairs = []
+snapshot_date = "2026-11-01"
+universe_cap = 0
+banned_tools = ["web_search", "web_fetch", "sentiment_score"]
+human_time_band = "<15 phút"
+time_limit_min = 10
+tools_expected = ["vn_quote_history"]
+mcp_payloads = "environment/payloads.json"
+snapshot_required = true
+
+[scoring]
+type = "value"
+gold = "solution/gold.json"
+oracle = "solution/oracle.py"
+grader = "tests/grader.py"

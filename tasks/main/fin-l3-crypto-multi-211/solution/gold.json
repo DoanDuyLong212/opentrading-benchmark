@@ -1,0 +1,57 @@
+{
+ "task_id": "fin-l3-crypto-multi-211",
+ "scoring": "value",
+ "solution": {
+  "pcts": {
+   "BZ=F": -1.26,
+   "NG=F": -1.83,
+   "CL=F": 2.08
+  },
+  "winner": "CL=F"
+ },
+ "as_of": "2026-11-01T21:30:24.862185+07:00",
+ "split": "main",
+ "expects": [
+  {
+   "type": "value",
+   "path": "values.pcts.BZ=F",
+   "gold": -1.26,
+   "tol": {
+    "abs": 0.1
+   }
+  },
+  {
+   "type": "value",
+   "path": "values.pcts.NG=F",
+   "gold": -1.83,
+   "tol": {
+    "abs": 0.1
+   }
+  },
+  {
+   "type": "value",
+   "path": "values.pcts.CL=F",
+   "gold": 2.08,
+   "tol": {
+    "abs": 0.1
+   }
+  },
+  {
+   "type": "str",
+   "path": "values.winner",
+   "accept": [
+    "CL=F",
+    "dầu",
+    "WTI",
+    "crude"
+   ]
+  },
+  {
+   "type": "str",
+   "path": "source",
+   "accept": [
+    "yf_commodities"
+   ]
+  }
+ ]
+}

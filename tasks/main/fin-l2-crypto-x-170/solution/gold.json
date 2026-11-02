@@ -1,0 +1,47 @@
+{
+ "task_id": "fin-l2-crypto-x-170",
+ "scoring": "value",
+ "solution": {
+  "value": 69547.77
+ },
+ "as_of": "2026-11-01T21:30:32.261897+07:00",
+ "split": "main",
+ "expects": [
+  {
+   "type": "value",
+   "path": "value",
+   "gold": 69547.77,
+   "tol": {
+    "rel": 0.005
+   }
+  },
+  {
+   "type": "unit",
+   "path": "unit",
+   "accept": [
+    "EUR"
+   ]
+  },
+  {
+   "type": "evidence",
+   "path": "note",
+   "paths": [
+    "note"
+   ],
+   "numbers": [
+    77893.5078125,
+    1.12
+   ],
+   "strings": [],
+   "min_hits": 2
+  },
+  {
+   "type": "str_all",
+   "path": "source",
+   "accept": [
+    "yf_commodities",
+    "vn_msn_fx_gold"
+   ]
+  }
+ ]
+}

@@ -1,0 +1,57 @@
+{
+ "task_id": "fin-l1-bctc-905",
+ "scoring": "value",
+ "solution": {
+  "value": 367.41,
+  "period": "Q3/2026",
+  "line": "LNST thu nhập DN"
+ },
+ "as_of": "2026-11-01T22:08:27.168717+07:00",
+ "split": "holdout",
+ "expects": [
+  {
+   "type": "unit",
+   "path": "unit",
+   "accept": [
+    "tỷ đồng",
+    "tỷ đ",
+    "tỷ"
+   ]
+  },
+  {
+   "type": "value",
+   "path": "value",
+   "gold": 367.41,
+   "tol": {
+    "rel": 0.005
+   }
+  },
+  {
+   "type": "period",
+   "path": "period",
+   "accept": [
+    "Q3/2026",
+    "quý 3/2026",
+    "q3 2026",
+    "q3/26"
+   ]
+  },
+  {
+   "type": "tokens",
+   "path": "line",
+   "accept": [
+    "LNST thu nhập DN"
+   ],
+   "reject": [
+    "LNST của CĐ cty mẹ"
+   ]
+  },
+  {
+   "type": "str",
+   "path": "source",
+   "accept": [
+    "financial_statements"
+   ]
+  }
+ ]
+}

@@ -1,0 +1,41 @@
+{
+ "task_id": "fin-l3-screen-194",
+ "scoring": "value",
+ "solution": {
+  "pass": [
+   "DXG",
+   "KBC",
+   "NLG",
+   "PDR"
+  ],
+  "filter": "P/B < 1.5"
+ },
+ "as_of": "2026-11-01T23:14:30.802857+07:00",
+ "split": "main",
+ "expects": [
+  {
+   "type": "set",
+   "path": "values.pass",
+   "gold": [
+    "DXG",
+    "KBC",
+    "NLG",
+    "PDR"
+   ]
+  },
+  {
+   "type": "period",
+   "path": "period",
+   "accept": [
+    "2025"
+   ]
+  },
+  {
+   "type": "str",
+   "path": "source",
+   "accept": [
+    "peer_compare"
+   ]
+  }
+ ]
+}

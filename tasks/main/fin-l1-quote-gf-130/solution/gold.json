@@ -1,0 +1,44 @@
+{
+ "task_id": "fin-l1-quote-gf-130",
+ "scoring": "value",
+ "solution": {
+  "value": 1.12
+ },
+ "as_of": "2026-11-01T21:30:32.261897+07:00",
+ "split": "main",
+ "expects": [
+  {
+   "type": "value",
+   "path": "value",
+   "gold": 1.12,
+   "tol": {
+    "rel": 0.005
+   }
+  },
+  {
+   "type": "unit",
+   "path": "unit",
+   "accept": [
+    "USD",
+    "USDT"
+   ]
+  },
+  {
+   "type": "period",
+   "path": "period",
+   "accept": [
+    "30/10",
+    "30-10",
+    "30.10",
+    "2026-10-30"
+   ]
+  },
+  {
+   "type": "str",
+   "path": "source",
+   "accept": [
+    "vn_msn_fx_gold"
+   ]
+  }
+ ]
+}

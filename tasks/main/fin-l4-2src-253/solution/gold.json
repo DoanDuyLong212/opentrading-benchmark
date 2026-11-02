@@ -1,0 +1,62 @@
+{
+ "task_id": "fin-l4-2src-253",
+ "scoring": "value",
+ "solution": {
+  "close": 30500.0,
+  "diff": 0.0,
+  "match": true
+ },
+ "as_of": "2026-11-01T23:07:49.257317+07:00",
+ "split": "main",
+ "expects": [
+  {
+   "type": "verdict",
+   "path": "verdict",
+   "accept": [
+    "khớp",
+    "match",
+    "giống nhau",
+    "không lệch"
+   ],
+   "reject": [
+    "không khớp",
+    "lệch",
+    "khác nhau"
+   ]
+  },
+  {
+   "type": "value",
+   "path": "value",
+   "gold": 30500.0,
+   "tol": {
+    "rel": 0.005
+   }
+  },
+  {
+   "type": "unit",
+   "path": "unit",
+   "accept": [
+    "đồng",
+    "VND"
+   ]
+  },
+  {
+   "type": "period",
+   "path": "period",
+   "accept": [
+    "30/10",
+    "30-10",
+    "30.10",
+    "2026-10-30"
+   ]
+  },
+  {
+   "type": "str_all",
+   "path": "source",
+   "accept": [
+    "vn_quote_history",
+    "vn_equity_quote_batch"
+   ]
+  }
+ ]
+}

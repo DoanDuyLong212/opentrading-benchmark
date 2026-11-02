@@ -1,0 +1,60 @@
+{
+ "task_id": "fin-l3-tech-multi-206",
+ "scoring": "value",
+ "solution": {
+  "symbol": "DXG",
+  "rsi14": 45.96
+ },
+ "as_of": "2026-11-01T23:26:05.000000+07:00",
+ "split": "main",
+ "expects": [
+  {
+   "type": "str",
+   "path": "values.symbol",
+   "accept": [
+    "DXG"
+   ]
+  },
+  {
+   "type": "value",
+   "path": "values.rsi14",
+   "gold": 45.96,
+   "tol": {
+    "abs": 0.1
+   }
+  },
+  {
+   "type": "period",
+   "path": "period",
+   "accept": [
+    "30/10",
+    "30-10",
+    "30.10",
+    "2026-10-30"
+   ]
+  },
+  {
+   "type": "str",
+   "path": "source",
+   "accept": [
+    "signals_technical"
+   ]
+  },
+  {
+   "type": "evidence",
+   "path": "note",
+   "paths": [
+    "note"
+   ],
+   "numbers": [
+    42.34,
+    43.78,
+    45.96,
+    43.47,
+    44.05
+   ],
+   "strings": [],
+   "min_hits": 2
+  }
+ ]
+}

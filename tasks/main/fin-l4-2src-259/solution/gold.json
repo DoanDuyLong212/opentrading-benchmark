@@ -1,0 +1,37 @@
+{
+ "task_id": "fin-l4-2src-259",
+ "scoring": "value",
+ "solution": {
+  "value": 0.36,
+  "msn": 49.1,
+  "yf": 49.2760009765625
+ },
+ "as_of": "2026-11-01T21:30:32.261897+07:00",
+ "split": "main",
+ "expects": [
+  {
+   "type": "value",
+   "path": "value",
+   "gold": 0.36,
+   "tol": {
+    "abs": 0.05
+   }
+  },
+  {
+   "type": "unit",
+   "path": "unit",
+   "accept": [
+    "%",
+    "phần trăm"
+   ]
+  },
+  {
+   "type": "str_all",
+   "path": "source",
+   "accept": [
+    "vn_msn_fx_gold",
+    "yf_commodities"
+   ]
+  }
+ ]
+}

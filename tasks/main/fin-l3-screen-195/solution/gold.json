@@ -1,0 +1,37 @@
+{
+ "task_id": "fin-l3-screen-195",
+ "scoring": "value",
+ "solution": {
+  "pass": [
+   "PVS",
+   "PVT"
+  ],
+  "filter": "ROE > 12% và P/E < 15"
+ },
+ "as_of": "2026-11-01T23:14:37.310336+07:00",
+ "split": "main",
+ "expects": [
+  {
+   "type": "set",
+   "path": "values.pass",
+   "gold": [
+    "PVS",
+    "PVT"
+   ]
+  },
+  {
+   "type": "period",
+   "path": "period",
+   "accept": [
+    "2025"
+   ]
+  },
+  {
+   "type": "str",
+   "path": "source",
+   "accept": [
+    "peer_compare"
+   ]
+  }
+ ]
+}

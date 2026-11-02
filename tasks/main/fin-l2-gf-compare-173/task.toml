@@ -1,0 +1,27 @@
+# Task benchmark harness tài chính (bộ 200+50) — sinh bởi tools/build_main.py
+id = "fin-l2-gf-compare-173"
+title = "So sánh KRWVND phiên 30/10"
+version = 1
+created = "2026-11-01"
+level = "L2"
+family = "L2·F fx"
+financebench_type = "single-metric + comparison"
+entity = "KRWVND"
+asset = "gold_fx"
+data_zone = "green"
+data_pairs = []
+snapshot_date = "2026-11-01"
+universe_cap = 0
+banned_tools = ["web_search", "web_fetch", "sentiment_score"]
+human_time_band = "<15 phút"
+time_limit_min = 20
+tools_expected = ["vn_msn_fx_gold", "yf_commodities"]
+mcp_payloads = "environment/payloads.json"
+snapshot_required = true
+split = "main"
+
+[scoring]
+type = "value"
+gold = "solution/gold.json"
+oracle = "solution/oracle.py"
+grader = "tests/grader.py"

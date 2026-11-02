@@ -1,0 +1,45 @@
+{
+ "task_id": "fin-l1-macro-139",
+ "scoring": "value",
+ "solution": {
+  "value": 3143977.94
+ },
+ "as_of": "2026-11-01T23:04:21.804723+07:00",
+ "split": "main",
+ "expects": [
+  {
+   "type": "value",
+   "path": "value",
+   "gold": 3143977.94,
+   "tol": {
+    "rel": 0.005
+   }
+  },
+  {
+   "type": "unit",
+   "path": "unit",
+   "accept": [
+    "tỷ đồng",
+    "tỷ đ",
+    "tỷ"
+   ]
+  },
+  {
+   "type": "period",
+   "path": "period",
+   "accept": [
+    "Q1/2026",
+    "quý 1/2026",
+    "q1 2026",
+    "q1/26"
+   ]
+  },
+  {
+   "type": "str",
+   "path": "source",
+   "accept": [
+    "vs_indicator_data"
+   ]
+  }
+ ]
+}

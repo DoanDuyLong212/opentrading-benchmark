@@ -1,0 +1,27 @@
+# Task benchmark harness tài chính (bộ 200+50) — sinh bởi tools/build_main.py
+id = "fin-l2-macro-calc-176"
+title = "Macro — gdp_qoq"
+version = 1
+created = "2026-11-01"
+level = "L2"
+family = "L2·G macro-calc"
+financebench_type = "multi-step computation"
+entity = "gdp_qoq@Q3/2026 vs Q2/2026"
+asset = "macro"
+data_zone = "green"
+data_pairs = []
+snapshot_date = "2026-11-01"
+universe_cap = 0
+banned_tools = ["web_search", "web_fetch", "sentiment_score"]
+human_time_band = "<15 phút"
+time_limit_min = 20
+tools_expected = ["vs_indicator_data"]
+mcp_payloads = "environment/payloads.json"
+snapshot_required = true
+split = "main"
+
+[scoring]
+type = "value"
+gold = "solution/gold.json"
+oracle = "solution/oracle.py"
+grader = "tests/grader.py"

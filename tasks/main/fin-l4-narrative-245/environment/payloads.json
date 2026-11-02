@@ -1,0 +1,66 @@
+{
+ "snapshot_date": "2026-11-01",
+ "note": "Envelope MCP ghi lúc tạo task. Key = mã payload nội bộ; envelope giữ nguyên data+provenance+availability.",
+ "tools": {
+  "vnq10:PDR": {
+   "tool": "vn_quote_history",
+   "params": {
+    "symbol": "PDR",
+    "days": 10
+   },
+   "envelope": {
+    "data": {
+     "symbol": "PDR",
+     "closes": [
+      {
+       "t": "2026-10-19",
+       "c": 11.25
+      },
+      {
+       "t": "2026-10-20",
+       "c": 11.35
+      },
+      {
+       "t": "2026-10-21",
+       "c": 12
+      },
+      {
+       "t": "2026-10-22",
+       "c": 12.05
+      },
+      {
+       "t": "2026-10-23",
+       "c": 12.15
+      },
+      {
+       "t": "2026-10-26",
+       "c": 11.7
+      },
+      {
+       "t": "2026-10-27",
+       "c": 11.6
+      },
+      {
+       "t": "2026-10-28",
+       "c": 11.55
+      },
+      {
+       "t": "2026-10-29",
+       "c": 11.4
+      },
+      {
+       "t": "2026-10-30",
+       "c": 11.3
+      }
+     ]
+    },
+    "provenance": {
+     "source": "vnstock",
+     "as_of": "2026-11-01T23:58:29.841329+07:00",
+     "data_time": "2026-10-30"
+    },
+    "availability": "available"
+   }
+  }
+ }
+}

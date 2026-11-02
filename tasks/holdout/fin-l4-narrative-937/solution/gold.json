@@ -1,0 +1,38 @@
+{
+ "task_id": "fin-l4-narrative-937",
+ "scoring": "verdict",
+ "solution": {
+  "verdict": "sai"
+ },
+ "as_of": "2026-11-01T22:42:06.798970+07:00",
+ "split": "holdout",
+ "verdict_accept": [
+  "sai",
+  "false",
+  "không đúng",
+  "không chính xác"
+ ],
+ "verdict_reject": [
+  "đúng",
+  "true",
+  "chính xác"
+ ],
+ "evidence": {
+  "paths": [
+   "note"
+  ],
+  "min_hits": 1,
+  "numbers": [
+   127.5,
+   127.4,
+   128,
+   128.6,
+   129.7,
+   132,
+   132.9,
+   131.5,
+   131.6,
+   131.6
+  ]
+ }
+}

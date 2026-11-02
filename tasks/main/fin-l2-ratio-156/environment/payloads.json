@@ -1,0 +1,27 @@
+{
+ "snapshot_date": "2026-11-01",
+ "note": "Envelope MCP ghi lúc tạo task. Key = mã payload nội bộ; envelope giữ nguyên data+provenance+availability.",
+ "tools": {
+  "val:ANV": {
+   "tool": "valuation_run",
+   "params": {
+    "symbol": "ANV"
+   },
+   "envelope": {
+    "data": {
+     "symbol": "ANV",
+     "price": 16000,
+     "eps": 3753.83,
+     "bvps": 13246.17,
+     "per": 4.26,
+     "pb": 1.21
+    },
+    "provenance": {
+     "source": "computed-local",
+     "as_of": "2026-11-01T23:58:48.268500+07:00"
+    },
+    "availability": "available"
+   }
+  }
+ }
+}

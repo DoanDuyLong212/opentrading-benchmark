@@ -1,0 +1,63 @@
+{
+  "task_id": "fin-l4-2nguon-01",
+  "scoring": "value",
+  "expects": [
+    {
+      "type": "verdict",
+      "path": "verdict",
+      "accept": [
+        "khớp",
+        "match",
+        "giống nhau",
+        "bằng nhau",
+        "không lệch",
+        "không chênh"
+      ],
+      "reject": [
+        "không khớp",
+        "lệch",
+        "khác nhau"
+      ]
+    },
+    {
+      "type": "value",
+      "path": "value",
+      "gold": 21000,
+      "tol": {
+        "rel": 0.005
+      }
+    },
+    {
+      "type": "unit",
+      "path": "unit",
+      "accept": [
+        "đồng",
+        "VND"
+      ]
+    },
+    {
+      "type": "period",
+      "path": "period",
+      "accept": [
+        "30/10",
+        "30-10",
+        "30.10",
+        "2026-10-30"
+      ]
+    },
+    {
+      "type": "str_all",
+      "path": "source",
+      "accept": [
+        "vn_quote_history",
+        "vs_overview_trading"
+      ]
+    }
+  ],
+  "solution": {
+    "close": 21000,
+    "match": true
+  },
+  "notes": "vn_quote_history: 21 (nghìn đồng) = 21000 đồng; vs_overview_trading: ClosePrice 21000 (đồng) → khớp, sai khác 0. Bẫy đơn vị 2 nguồn.",
+  "as_of": "2026-11-01T15:59:53.366224+07:00"
+}

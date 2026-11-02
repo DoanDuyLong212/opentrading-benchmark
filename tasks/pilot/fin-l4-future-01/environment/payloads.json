@@ -1,0 +1,46 @@
+{
+  "snapshot_date": "2026-11-01",
+  "note": "Envelope MCP đã ghi lúc tạo task (2026-11-01, trim trường không dùng cho gold; data + provenance + availability giữ nguyên). Benchmark chạy qua snapshot-replay các envelope này — không gọi MCP live.",
+  "tools": {
+    "financial_statements": {
+      "data": {
+        "symbol": "DGC",
+        "period": "quarter",
+        "periods": [
+          "Q2/2026",
+          "Q3/2026"
+        ],
+        "statements": {
+          "Kết quả kinh doanh": [
+            {
+              "name": "LNST thu nhập DN",
+              "unit": "VND",
+              "values": {
+                "Q2/2026": 440769040323,
+                "Q3/2026": 506681350271
+              }
+            },
+            {
+              "name": "LNST của CĐ cty mẹ",
+              "unit": "VND",
+              "values": {
+                "Q2/2026": 388553679077,
+                "Q3/2026": 478161901046
+              }
+            }
+          ]
+        }
+      },
+      "provenance": {
+        "source": "vietstock",
+        "as_of": "2026-11-01T15:57:50.285524+07:00",
+        "data_time": "2026-11-01T15:09:29.190055+07:00",
+        "timezone": "Asia/Ho_Chi_Minh"
+      },
+      "availability": "available",
+      "warnings": [
+        "dữ liệu lấy lúc 2026-11-01T15:09:29.190055+07:00, dùng lại bản đã lưu"
+      ]
+    }
+  }
+}

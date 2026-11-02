@@ -1,0 +1,48 @@
+{
+  "task_id": "fin-l2-crypto-01",
+  "scoring": "value",
+  "expects": [
+    {
+      "type": "value",
+      "path": "value",
+      "gold": 2015.37,
+      "tol": {
+        "rel": 0.005
+      }
+    },
+    {
+      "type": "unit",
+      "path": "unit",
+      "accept": [
+        "triệu đồng",
+        "triệu đ",
+        "million vnd"
+      ]
+    },
+    {
+      "type": "evidence",
+      "path": "note",
+      "paths": [
+        "note"
+      ],
+      "numbers": [
+        78109,
+        25802
+      ],
+      "min_hits": 2
+    },
+    {
+      "type": "str_all",
+      "path": "source",
+      "accept": [
+        "crypto_spot",
+        "vn_msn_fx_gold"
+      ]
+    }
+  ],
+  "solution": {
+    "value": 2015.37
+  },
+  "notes": "78,109 × 25,802 = 2,015,368,418 VND = 2,015.37 triệu đồng.",
+  "as_of": "2026-11-01T15:54:32.586909+07:00"
+}

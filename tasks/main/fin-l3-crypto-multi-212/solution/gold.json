@@ -1,0 +1,56 @@
+{
+ "task_id": "fin-l3-crypto-multi-212",
+ "scoring": "value",
+ "solution": {
+  "pcts": {
+   "GC=F": -3.29,
+   "SI=F": -5.59,
+   "BTC-USD": 0.59
+  },
+  "winner": "SI=F"
+ },
+ "as_of": "2026-11-01T21:30:24.862185+07:00",
+ "split": "main",
+ "expects": [
+  {
+   "type": "value",
+   "path": "values.pcts.GC=F",
+   "gold": -3.29,
+   "tol": {
+    "abs": 0.1
+   }
+  },
+  {
+   "type": "value",
+   "path": "values.pcts.SI=F",
+   "gold": -5.59,
+   "tol": {
+    "abs": 0.1
+   }
+  },
+  {
+   "type": "value",
+   "path": "values.pcts.BTC-USD",
+   "gold": 0.59,
+   "tol": {
+    "abs": 0.1
+   }
+  },
+  {
+   "type": "str",
+   "path": "values.winner",
+   "accept": [
+    "SI=F",
+    "bạc",
+    "silver"
+   ]
+  },
+  {
+   "type": "str",
+   "path": "source",
+   "accept": [
+    "yf_commodities"
+   ]
+  }
+ ]
+}

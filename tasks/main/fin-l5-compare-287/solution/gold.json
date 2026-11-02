@@ -1,0 +1,46 @@
+{
+ "task_id": "fin-l5-compare-287",
+ "scoring": "value",
+ "solution": {
+  "values": {
+   "BTCUSDT_pct": 0.31,
+   "ETHUSDT_pct": 0.52
+  },
+  "winner": "ETHUSDT"
+ },
+ "as_of": "2026-11-01T22:54:50.300938+07:00",
+ "split": "main",
+ "expects": [
+  {
+   "type": "value",
+   "path": "values.BTCUSDT_pct",
+   "gold": 0.31,
+   "tol": {
+    "abs": 0.05
+   }
+  },
+  {
+   "type": "value",
+   "path": "values.ETHUSDT_pct",
+   "gold": 0.52,
+   "tol": {
+    "abs": 0.05
+   }
+  },
+  {
+   "type": "str",
+   "path": "values.winner",
+   "accept": [
+    "ETHUSDT",
+    "ETH"
+   ]
+  },
+  {
+   "type": "str",
+   "path": "source",
+   "accept": [
+    "vn_crypto_ohlcv"
+   ]
+  }
+ ]
+}

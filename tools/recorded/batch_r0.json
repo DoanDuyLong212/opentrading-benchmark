@@ -1,0 +1,77 @@
+{
+ "recorded_at": "2026-11-01",
+ "note": "Batch R0 — các envelope thu được từ round đầu (trước khi upstream nghẽn)",
+ "items": {
+  "vnq:PVS": {
+   "tool": "vn_quote_history",
+   "params": {"symbol": "PVS", "days": 5, "summary": true},
+   "body": {
+    "data": {"symbol": "PVS", "count": 5, "last": 30.5, "high": 33, "low": 30.3, "last_t": "2026-10-30"},
+    "provenance": {"source": "vnstock", "as_of": "2026-11-01T21:12:04.552938+07:00", "timezone": "Asia/Ho_Chi_Minh", "data_time": "2026-10-30"},
+    "availability": "available",
+    "warnings": [],
+    "units": {"last": "nghìn đồng/cổ phiếu (64,27 = 64.270 đ)"}
+   }
+  },
+  "vnq:DPM": {
+   "tool": "vn_quote_history",
+   "params": {"symbol": "DPM", "days": 5, "summary": true},
+   "body": {
+    "data": {"symbol": "DPM", "count": 5, "last": 20.4, "high": 21.8, "low": 20.4, "last_t": "2026-10-30"},
+    "provenance": {"source": "vnstock", "as_of": "2026-11-01T21:12:38.244320+07:00", "timezone": "Asia/Ho_Chi_Minh", "data_time": "2026-10-30"},
+    "availability": "available",
+    "warnings": [],
+    "units": {"last": "nghìn đồng/cổ phiếu (64,27 = 64.270 đ)"}
+   }
+  },
+  "idx:VNINDEX": {
+   "tool": "vn_index_ohlcv",
+   "params": {"symbol": "VNINDEX", "count": 10},
+   "body": {
+    "data": {"symbol": "VNINDEX", "closes": [
+      {"t": "2026-10-19", "c": 1689.84}, {"t": "2026-10-20", "c": 1691.97},
+      {"t": "2026-10-21", "c": 1738.67}, {"t": "2026-10-22", "c": 1760.63},
+      {"t": "2026-10-23", "c": 1774.15}, {"t": "2026-10-26", "c": 1763.55},
+      {"t": "2026-10-27", "c": 1761.87}, {"t": "2026-10-28", "c": 1766.65},
+      {"t": "2026-10-29", "c": 1755.61}, {"t": "2026-10-30", "c": 1741.62}
+    ]},
+    "provenance": {"source": "vnstock", "as_of": "2026-11-01T21:11:59.149010+07:00", "timezone": "Asia/Ho_Chi_Minh", "data_time": "2026-10-30 00:00:00"},
+    "availability": "available",
+    "warnings": []
+   }
+  },
+  "movers:vn30": {
+   "tool": "market_movers",
+   "params": {"top_n": 5, "universe": "vn30"},
+   "body": {
+    "data": {
+     "universe": "vn30",
+     "gainers": [
+      {"symbol": "GAS", "close": 78000, "pct": 2.631578947368421, "vol": 985200},
+      {"symbol": "VHM", "close": 63000, "pct": 1.4492753623188406, "vol": 13483800},
+      {"symbol": "NVL", "close": 10400, "pct": 0.4830917874396135, "vol": 14738700},
+      {"symbol": "SAB", "close": 42400, "pct": 0.2364066193853428, "vol": 386900},
+      {"symbol": "BVH", "close": 69000, "pct": 0, "vol": 917400}
+     ],
+     "losers": [
+      {"symbol": "PNJ", "close": 15500, "pct": -3.4267912772585665, "vol": 9396300},
+      {"symbol": "TCB", "close": 21600, "pct": -3.3557046979865772, "vol": 17644300},
+      {"symbol": "LPB", "close": 36100, "pct": -3.2171581769436997, "vol": 2352300},
+      {"symbol": "MSN", "close": 70000, "pct": -2.912621359223301, "vol": 5316200},
+      {"symbol": "BCM", "close": 38400, "pct": -2.9077117572692797, "vol": 492800}
+     ],
+     "volume_leaders": [
+      {"symbol": "HPG", "close": 21000, "pct": -0.9433962264150944, "vol": 24773000},
+      {"symbol": "TCB", "close": 21600, "pct": -3.3557046979865772, "vol": 17644300},
+      {"symbol": "NVL", "close": 10400, "pct": 0.4830917874396135, "vol": 14738700},
+      {"symbol": "VPB", "close": 22950, "pct": -1.0775862068965518, "vol": 14689300},
+      {"symbol": "SSI", "close": 19300, "pct": -1.530612244897959, "vol": 14279200}
+     ]
+    },
+    "provenance": {"source": "vnstock", "as_of": "2026-11-01T21:12:04.261634+07:00", "timezone": "Asia/Ho_Chi_Minh"},
+    "availability": "available",
+    "warnings": []
+   }
+  }
+ }
+}

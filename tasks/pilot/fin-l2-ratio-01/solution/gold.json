@@ -1,0 +1,34 @@
+{
+  "task_id": "fin-l2-ratio-01",
+  "scoring": "value",
+  "expects": [
+    {
+      "type": "value",
+      "path": "value",
+      "gold": 8.75,
+      "tol": {
+        "rel": 0.005
+      }
+    },
+    {
+      "type": "unit",
+      "path": "unit",
+      "accept": [
+        "x",
+        "lần"
+      ]
+    },
+    {
+      "type": "str",
+      "path": "source",
+      "accept": [
+        "valuation_run"
+      ]
+    }
+  ],
+  "solution": {
+    "value": 8.75
+  },
+  "notes": "valuation_run: price 52,700 / EPS trailing 6,021.21 = 8.75. vn_fundamentals cho P/E 20.96 (kỳ Q3/2026) — nguồn khác số khác, đúng chủ đích đề chỉ định nguồn.",
+  "as_of": "2026-11-01T15:54:35.771025+07:00"
+}
