@@ -623,3 +623,46 @@ tools/
 
 *Sinh tự động bởi `tools/build_main.py` — 250/250 oracle OK; xem chi tiết khi chạy lại lệnh.*
 
+---
+
+# PHẦN 8 — VÁ 3 LEAK ĐÁP ÁN HỆ THỐNG + NÂNG CẤP KIỂM ĐỊNH (02/11/2026)
+
+> Nguồn: review độc lập toàn bộ repo. Ba lỗi dưới đây đâm thẳng vào tiêu chí ① (sai kỳ = sai)
+> và ③ FP-rate / giả thuyết H2 — đã vá xong trước pilot, bộ task rebuild lại 100%.
+
+## 8.1. Ba leak đã vá
+
+| # | Leak | Quy mô | Vá |
+|---|---|---|---|
+| 1 | Schema block của task bẫy hiển thị `"value": null` + trường `reason` → agent nhận biết task refusal chỉ qua format đề | 32/32 task refusal (main+holdout+pilot+smoke) | Đồng bộ schema: task bẫy dùng đúng schema value (`"value": 0` + unit); quy tắc "không có dữ liệu → null" nằm ở Ràng buộc chung của mọi task |
+| 2 | Schema block chứa đúng token kỳ của gold (VD `"period": "Q3/2026 so với Q2/2026"`) → "sai kỳ = sai" vô hiệu | 113+ task (45%) | Placeholder trung tính `(kỳ được hỏi)` / `(kỳ dữ liệu tool)`; kỳ chỉ nêu ở thân câu hỏi khi là premise; growth/margin bỏ parenthetical "(Q3/2026)" (kỳ phải tự suy từ dữ liệu) |
+| 3 | Narrative một chiều: claim luôn "tăng liên tục" (luôn SAI) + rule trong đề lộ hướng ("ít nhất 1 phiên giảm") | 11 task (9 main + 2 holdout + 1 pilot) | 2 chiều claim: "tăng liên tục" (SAI) ↔ "có ít nhất một phiên giảm" (ĐÚNG), chọn theo parity id → main 5 sai + 5 đúng, holdout 1+1; rule trung tính |
+
+## 8.2. Nâng cấp đi kèm
+
+- **`tools/check_leaks.py` (mới)** — quét 6 lớp leak trên 277 task: `fence_null` · `fence_period` ·
+  `value_leak` · `evidence_leak` · `bonus_leak` · `narrative_leak`; exit 1 khi có leak.
+  Leak-scan nội bộ của `build_main.py` dùng lại module này (thay scan cũ chỉ quét số ≥6).
+- **Grader `verdict_hit` → longest-match-wins**: accept/reject đều so chuỗi con, token dài hơn thắng —
+  "không đúng" (10) đánh bại "đúng" (4), còn "không lệch" (10) đánh bại reject "lệch" (4).
+  Đóng lỗ hổng "không đúng vì..." bị tính là ĐÚNG — bắt buộc khi narrative có 2 hướng.
+- **build_main.py**: sửa NameError tiềm ẩn `rep[mutate_fail]` (chỉ nổ đúng lúc bộ tự kiểm cần báo
+  lỗi FP), bỏ khối no-op; **gen_tasks.py**: không còn ghi đè `registry/entities.yaml` (v2) và
+  `PRE-REGISTER.md` khi chạy lại; self-test narrative đọc gold (gold-driven).
+- **Period-accept mở rộng "gần nhất"** cho họ RSI (`l2-tech`, `l3-tech-multi`) và movers (`l3-top`):
+  payload các tool này không chứa ngày → sau khi fence hết leak kỳ, agent không thể tự suy
+  "30/10" → chấp nhận "phiên gần nhất/gần nhất" là hợp lệ (fairness, không phải nới lỏng bẫy).
+
+## 8.3. Kiểm định sau vá (độc lập)
+
+- 277/277 oracle PASS (gold tái tạo từ payload); 277×3 grader self-test (đúng/đột biến/rỗng) 0 fail;
+  `check_leaks` 277 task → **0 leak**; 12/12 case verdict thủ công (longest-match đúng cả 2 hướng).
+- Bất biến: 200 main (đúng 40/mức) · 50 holdout · 24 pilot · 3 smoke; ID/level/entity không đổi;
+  data payload không đổi (chỉ instruction/gold-narrative/grader thay đổi).
+- Commit: `32f0ca4` (test) → `5292e8d` (fix tools) → `a79ae99` (rebuild 277 task).
+
+## 8.4. Hệ quả đo lường
+
+- **FP-rate (H2) phải đo lại** trên bộ đã vá — số ước lượng trước đó (nếu có) từ bộ leak không dùng được.
+- Cột "sai kỳ" của tiêu chí ① hoạt động trở lại trên toàn bộ 250 task main+holdout.
+

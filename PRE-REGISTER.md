@@ -56,3 +56,14 @@ Harness tài chính chuyên biệt (OpenTrading) so với harness tổng quát (
   mở đúng 1 lần sau freeze; kết quả chỉ dùng xác nhận, không tinh chỉnh ngược.
 - 2026-11-02: Runner contract bổ sung: `environment/payloads.json` và `solution/` KHÔNG vào workspace
   agent (chống bypass MCP tool-use và đọc gold); snapshot-replay phục vụ đúng envelope đã ghi.
+- 2026-11-02: **Vá 3 leak đáp án hệ thống (review độc lập)** — ① schema refusal hiển thị
+  `"value": null` bộc lộ task bẫy qua format đề (32 task) → đồng bộ với value-schema
+  (`"value": 0`); ② schema block chứa đúng token kỳ gold ở 113+ task → thay placeholder
+  trung tính ("(kỳ được hỏi)"...) — kỳ chỉ được nêu ở thân câu hỏi khi là premise; ③ narrative
+  một chiều (toàn bộ claim sai + rule lộ hướng "ít nhất 1 phiên giảm", 11 task) → sinh 2 chiều
+  claim đúng/sai theo parity id (main 5+5, holdout 1+1), rule trung tính. Kèm: grader
+  `verdict_hit` đổi sang longest-match-wins (đóng lỗ "không đúng vì..."), mở rộng leak-scan
+  thành `tools/check_leaks.py` (6 lớp, 277 task → 0 leak), sửa NameError tiềm ẩn
+  `rep[mutate_fail]` trong build_main, pilot-gen không còn ghi đè registry v2/PRE-REGISTER.
+  Kiểm định sau vá: 277/277 oracle PASS, 277×3 self-test 0 fail, 0 leak, bất biến
+  200/50/24/3 task + ID/level/entity. **FP-rate (H2) phải đo lại trên bộ đã vá.**

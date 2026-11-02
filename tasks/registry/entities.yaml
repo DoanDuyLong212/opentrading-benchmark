@@ -17,7 +17,8 @@
 #  - HDB: trễ kỳ (mới nhất Q2/2026) → dùng làm bẫy l4-future hỏi Q3/2026 (mã khác đã có Q3).
 #  - movers universe 'hose': partial (missing 30 mã) → chỉ dùng universe vn30.
 #  - vn_equity_quote_batch: đã hồi phục → dùng cho l3-agg + l4-2src (nguồn 2 bảng giá).
-#  - vn_equity_quote_batch vs candles: kg bẫy đơn vị (đồng vs nghìn đồng) trong l4-2src.
+#  - vn_equity_quote_batch vs candles: CÓ bẫy đơn vị (đồng vs nghìn đồng) trong l4-2src —
+#    bẫy được nêu công khai trong đề (premise), agent phải tự quy đổi khi đối chiếu.
 
 meta:
   version: 2
@@ -114,7 +115,6 @@ vn_stock:
   - "MSH"
   - "VCS"
   - "PTB"
-  - "HT1"
   - "BMP"
   - "NTP"
   - "VGC"
