@@ -1,6 +1,6 @@
 {
-  "model": "nvidia/z-ai/glm-5.3-flash",
-  "model_note": "Model NHE dung cho SMOKE/setup (02/11/2026): trong 3 model NVIDIA NIM kha dung cho account (glm-5.3-flash, deepseek-v4.1-flash, minimax-m3.1-flash) — glm-5.3-flash nhe nhat + tool-calling da xac minh. gpt-oss-20b va cac model nho hon tra 404/hang cho account nay.",
+  "model": "nvidia/deepseek-ai/deepseek-v4.1-flash",
+  "model_note": "Smoke/setup (02/11/2026): NVIDIA NIM rate-limit THEO TUNG MODEL — z-ai/glm-5.3-flash bi dot can (chinh session agent nay dung no), gpt-oss-20b hang, cac model nho hon 404. deepseek-v4.1-flash chay tot VA la model chinh thuc cua benchmark (pre-register) — dung luon cho smoke.",
   "model_main_run": "nvidia/deepseek-ai/deepseek-v4.1-flash",
   "skills_parity": "smoke: khong skills tren ca 3 arm (dieu kien ngang nhau); pilot: wire skills-pack chung truoc khi chay",
   "runs_pilot": 3,

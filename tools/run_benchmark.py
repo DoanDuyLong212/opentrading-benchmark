@@ -237,6 +237,8 @@ def main():
     ap.add_argument("--runs", type=int, default=1)
     ap.add_argument("--out", default=None, help="mặc định results/<ts>_<split>")
     ap.add_argument("--confirm-holdout", action="store_true")
+    ap.add_argument("--retry", type=int, default=2, help="số lần thử lại trial lỗi hạ tầng (429/timeout)")
+    ap.add_argument("--pause", type=float, default=5.0, help="giây nghỉ giữa các trial (tránh 429)")
     ap.add_argument("--list-only", action="store_true")
     args = ap.parse_args()
 
@@ -279,8 +281,21 @@ def main():
                     tdir = os.path.join(out_dir, "trials", "%s__%s__r%d" % (tid, arm, run))
                     ws = make_workspace(os.path.join(tdir, "ws"), task_dir)
                     log_path = os.path.join(tdir, "run.log")
-                    res = run_trial(arm, ws, instr, task_dir, model, timeout_s, log_path)
-                    status = res.get("status", "unknown")
+                    attempt = 0
+                    while True:
+                        attempt += 1
+                        res = run_trial(arm, ws, instr, task_dir, model, timeout_s, log_path)
+                        status = res.get("status", "unknown")
+                        # chỉ thử lại khi lỗi HẠ TẦNG (không phải timeout — timeout = cạn ngân sách task)
+                        infr = status in ("error", "runner_error")
+                        if infr and attempt <= args.retry:
+                            print("   ↻ retry %s %s (attempt %d, status=%s) sau %.0fs" % (
+                                tid, arm, attempt, status, args.pause * 2))
+                            time.sleep(args.pause * 2)
+                            continue
+                        break
+                    if args.pause:
+                        time.sleep(args.pause)
                     answer_path = res.get("answer_path")
                     answer_src = "file" if answer_path and os.path.exists(answer_path) else None
                     if answer_src is None and res.get("answer_candidates"):
@@ -309,6 +324,7 @@ def main():
                         "tokens": res.get("tokens"),
                         "requests": res.get("requests"),
                         "session_id": res.get("session_id"),
+                        "attempt": attempt,
                         "mcp_calls": count_mcp_calls(log_path, task_dir),
                         "workspace": os.path.relpath(ws, ROOT),
                         "snapshot_date": meta.get("snapshot_date"),
