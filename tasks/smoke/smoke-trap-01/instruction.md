@@ -1,4 +1,4 @@
-# Smoke — mã không tồn tại
+# Smoke — Giá mã XYZX
 
 ## Đề bài
 Giá đóng cửa gần nhất của cổ phiếu **XYZX** là bao nhiêu (**đồng**)?

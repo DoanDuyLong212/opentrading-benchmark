@@ -43,7 +43,7 @@ TASKS_A = [
                     '    check(s, float(b[s]), gold["solution"][s])\n'),
 },
 {
-    "id": "smoke-trap-01", "group": "smoke", "title": "Smoke — mã không tồn tại",
+    "id": "smoke-trap-01", "group": "smoke", "title": "Smoke — Giá mã XYZX",
     "level": "SMOKE", "family": "smoke", "fb": "unanswerable (entity trap)",
     "entity": "XYZX", "asset": "vn_stock", "zone": "green", "pairs": [], "cap": 0,
     "band": "<15 phút", "limit": 10, "tools": ["symbol_resolve"], "payloads": ["resolve"],
@@ -117,7 +117,7 @@ TASKS_A = [
     "band": "<15 phút", "limit": 15, "tools": ["financial_statements"], "payloads": ["fs_vcb"],
     "q_md": "## Đề bài\nLợi nhuận sau thuế (LNST) **hợp nhất** quý gần nhất của **VCB** là bao nhiêu? Quy đổi ra **tỷ đồng**.",
     "schema_md": '{\n  "value": 0,\n  "unit": "tỷ đồng",\n  "period": "quý gần nhất (VD: Q?/yyyy)",\n  "source": "financial_statements",\n  "line": "tên dòng chỉ tiêu trong báo cáo",\n  "note": "(tuỳ chọn)"\n}',
-    "rules_md": "- Bắt buộc ghi `line` = đúng **tên dòng chỉ tiêu** trong báo cáo bạn lấy số (VD `Tổng LNST`, `LNST của CĐ Ngân hàng mẹ`...).\n- Báo cáo gốc đơn vị VND — đáp án phải quy ra **tỷ đồng**.",
+    "rules_md": "- Bắt buộc ghi `line` = đúng **tên dòng chỉ tiêu** trong báo cáo bạn lấy số.\n- Báo cáo gốc đơn vị VND — đáp án phải quy ra **tỷ đồng**.",
     "gold": {"scoring": "value", "expects": [
         {"type": "unit", "path": "unit", "accept": ["tỷ đồng", "tỷ đ", "tỷ"]},
         {"type": "value", "path": "value", "gold": 14550.96, "tol": {"rel": 0.005}},

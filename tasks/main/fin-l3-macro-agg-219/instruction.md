@@ -1,6 +1,6 @@
 # Đếm tháng CPI≥5%
 
-Trong **9 tháng đầu năm 2026**, có bao nhiêu tháng **CPI (so tháng 12/2025)** tăng **từ 5,0%% trở lên**? (nêu các tháng trong `note`)
+Trong **9 tháng đầu năm 2026**, có bao nhiêu tháng **CPI (so tháng 12/2025)** tăng **từ 5,0% trở lên**? (nêu các tháng trong `note`)
 
 ## Yêu cầu trả lời
 Ghi kết quả vào file `answer.json` ở thư mục hiện hành, theo schema:

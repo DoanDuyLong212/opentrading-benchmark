@@ -1,6 +1,6 @@
 # Macro — gdp_qoq
 
-**GDP** (tổng số) **quý 3/2026** tăng bao nhiêu **%%** so với **quý 2/2026**?
+**GDP** (tổng số) **quý 3/2026** tăng bao nhiêu **%** so với **quý 2/2026**?
 
 ## Yêu cầu trả lời
 Ghi kết quả vào file `answer.json` ở thư mục hiện hành, theo schema:

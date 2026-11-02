@@ -17,7 +17,7 @@ Ghi kết quả vào file `answer.json` ở thư mục hiện hành, theo schema
 }
 ```
 
-- Bắt buộc ghi `line` = đúng **tên dòng chỉ tiêu** trong báo cáo bạn lấy số (VD `Tổng LNST`, `LNST của CĐ Ngân hàng mẹ`...).
+- Bắt buộc ghi `line` = đúng **tên dòng chỉ tiêu** trong báo cáo bạn lấy số.
 - Báo cáo gốc đơn vị VND — đáp án phải quy ra **tỷ đồng**.
 
 ## Ràng buộc chung

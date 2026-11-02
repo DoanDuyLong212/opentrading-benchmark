@@ -11,7 +11,10 @@ Các lớp leak kiểm tra (mỗi lớp = 1 kiểu thông tin gold không đư�
   D. evidence_leak   — số bằng chứng (verdict-evidence) xuất hiện trong TOÀN instruction.
   E. bonus_leak      — refusal: bonus_numbers trong toàn bộ đề; bonus_strings (kỳ thay thế)
                        trong fence.
-  F. narrative_leak  — đề chứa cụm hướng kết luận "ít nhất 1/một phiên giảm" trên task verdict.
+  F. narrative_leak  — đề chứa cụm hướng kết luận "ít nhất 1/một phiên giảm" trên task verdict
+                       (chỉ tính là leak khi gold-verdict là "sai").
+  G. fence_set       — fence in nguyên chuỗi/list gold của expect set/list_order.
+  H. hint_token      — phần rules giao sẵn token gold (type=tokens, ≥4 ký tự).
 
 Chạy:  python3 tools/check_leaks.py [tasks_root]
 Mặc định quét tasks/pilot, tasks/smoke, tasks/main, tasks/holdout.
@@ -90,9 +93,28 @@ def scan_task(d):
         for exp in gold.get("expects", []):
             if exp.get("type") == "value":
                 for cand in num_variants(exp.get("gold")):
-                    if num_in_text(re.escape(cand).replace("\\ ", " "), instr) or \
-                            num_in_text(cand, instr):
+                    if num_in_text(cand, instr):
                         leaks.append(("value_leak", "đề chứa số vàng %s" % cand))
+        # G. fence_set — gold kiểu set/list_order bị in nguyên chuỗi đáp án trong fence
+        for exp in gold.get("expects", []):
+            if exp.get("type") in ("set", "list_order"):
+                gl = [str(x) for x in (exp.get("gold") or [])]
+                if not gl:
+                    continue
+                seq = norm(", ".join(gl))
+                pat = '["' + '", "'.join(gl) + '"]'
+                if (seq and seq in nfence) or pat in fence:
+                    leaks.append(("fence_set", "fence chứa đáp án gold %s" % gl))
+        # H. hint_token — token expects type=tokens (≥4 ký tự) bị giao sẵn trong phần rules
+        #    (đoạn giữa fence và "## Ràng buộc chung" — VD: "(VD `Tổng LNST`)" lộ token line)
+        rz = instr[m.end():].split("## Ràng buộc chung")[0] if m else ""
+        nrz = norm(rz)
+        for exp in gold.get("expects", []):
+            if exp.get("type") == "tokens":
+                for tok in exp.get("accept", []):
+                    nt = norm(tok)
+                    if len(nt) >= 4 and nt in nrz:
+                        leaks.append(("hint_token", "rules giao sẵn token gold %r" % tok))
 
     # D. evidence_leak — số bằng chứng verdict
     ev = gold.get("evidence") or {}
@@ -139,7 +161,7 @@ def main():
                 by_class.setdefault(cls, []).append("%s/%s: %s" % (split, tid, detail))
     print("check_leaks: %d task đã quét" % n_tasks)
     if not by_class:
-        print("LEAK: 0 (toàn bộ 6 lớp sạch)")
+        print("LEAK: 0 (toàn bộ 8 lớp sạch)")
         return 0
     total = 0
     for cls in sorted(by_class):

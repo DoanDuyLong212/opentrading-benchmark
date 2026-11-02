@@ -109,13 +109,21 @@ def tokens_hit(text, accept, reject=()):
     return (len(hit) > 0 and len(bad) == 0), hit, bad
 
 
+# Cụm trung tính chứa token reject ngắn làm substring ("chênh lệch" ≠ "lệch"):
+# mask trước khi so khớp verdict để câu trả lời đúng tự nhiên không bị tước điểm.
+VERDICT_NEUTRAL = ("chenh lech", "sai khac", "khong co lech")
+
+
 def verdict_hit(text, accept, reject=()):
     """Chấm verdict theo longest-match-wins:
-    - cả accept lẫn reject so khớp CHUỖI CON trong câu trả lời (đã normalize);
+    - cả accept lẫn reject so khớp CHUỖI CON trong câu trả lời (đã normalize, đã mask
+      các cụm trung tính VERDICT_NEUTRAL);
     - token khớp DÀI hơn thắng → 'không đúng' (10 ký tự) đánh bại 'đúng' (4),
       còn 'không lệch' (10) đánh bại reject 'lệch' (4).
     Hòa độ dài → phủ định (reject) thắng (thận trọng)."""
     n = norm_text(text)
+    for _ph in VERDICT_NEUTRAL:
+        n = n.replace(_ph, " ")
     a_best = 0
     r_best = 0
     for t in accept:

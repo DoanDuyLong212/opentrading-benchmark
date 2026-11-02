@@ -61,9 +61,16 @@ Harness tài chính chuyên biệt (OpenTrading) so với harness tổng quát (
   (`"value": 0`); ② schema block chứa đúng token kỳ gold ở 113+ task → thay placeholder
   trung tính ("(kỳ được hỏi)"...) — kỳ chỉ được nêu ở thân câu hỏi khi là premise; ③ narrative
   một chiều (toàn bộ claim sai + rule lộ hướng "ít nhất 1 phiên giảm", 11 task) → sinh 2 chiều
-  claim đúng/sai theo parity id (main 5+5, holdout 1+1), rule trung tính. Kèm: grader
-  `verdict_hit` đổi sang longest-match-wins (đóng lỗ "không đúng vì..."), mở rộng leak-scan
-  thành `tools/check_leaks.py` (6 lớp, 277 task → 0 leak), sửa NameError tiềm ẩn
+  claim đúng/sai theo parity id (main 5 sai + 4 đúng, holdout 1+1), rule trung tính. Kèm: grader
+  `verdict_hit` đổi sang longest-match-wins + mask cụm trung tính (đóng lỗ "không đúng vì...",
+  không tước "khớp, chênh lệch 0 đồng"), mở rộng leak-scan thành `tools/check_leaks.py`
+  (8 lớp A–H, 277 task → 0 leak), sửa NameError tiềm ẩn
   `rep[mutate_fail]` trong build_main, pilot-gen không còn ghi đè registry v2/PRE-REGISTER.
   Kiểm định sau vá: 277/277 oracle PASS, 277×3 self-test 0 fail, 0 leak, bất biến
   200/50/24/3 task + ID/level/entity. **FP-rate (H2) phải đo lại trên bộ đã vá.**
+- 2026-11-02 (round 2, sau review độc lập): ① fence `l3-screen` in nguyên gold set (10 task
+  tính điểm) → placeholder + scanner lớp G (fence_set); ② tie-break verdict tước điểm câu
+  trả lời đúng tự nhiên trên l4-2src → mask cụm trung tính + đồng bộ accept list với pilot;
+  ③ rules bctc giao sẵn token `line` gold (VD) → bỏ VD + scanner lớp H (hint_token);
+  ④ sửa `%%` literal trong đề (macro_calc, macro_agg); ⑤ smoke-trap đổi title trung tính;
+  ⑥ gen_tasks dry-run không ghi đè registry/PRE-REGISTER, pilot+smoke rebuild byte-identical.

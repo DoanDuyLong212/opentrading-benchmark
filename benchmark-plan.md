@@ -636,7 +636,7 @@ tools/
 |---|---|---|---|
 | 1 | Schema block của task bẫy hiển thị `"value": null` + trường `reason` → agent nhận biết task refusal chỉ qua format đề | 32/32 task refusal (main+holdout+pilot+smoke) | Đồng bộ schema: task bẫy dùng đúng schema value (`"value": 0` + unit); quy tắc "không có dữ liệu → null" nằm ở Ràng buộc chung của mọi task |
 | 2 | Schema block chứa đúng token kỳ của gold (VD `"period": "Q3/2026 so với Q2/2026"`) → "sai kỳ = sai" vô hiệu | 113+ task (45%) | Placeholder trung tính `(kỳ được hỏi)` / `(kỳ dữ liệu tool)`; kỳ chỉ nêu ở thân câu hỏi khi là premise; growth/margin bỏ parenthetical "(Q3/2026)" (kỳ phải tự suy từ dữ liệu) |
-| 3 | Narrative một chiều: claim luôn "tăng liên tục" (luôn SAI) + rule trong đề lộ hướng ("ít nhất 1 phiên giảm") | 11 task (9 main + 2 holdout + 1 pilot) | 2 chiều claim: "tăng liên tục" (SAI) ↔ "có ít nhất một phiên giảm" (ĐÚNG), chọn theo parity id → main 5 sai + 5 đúng, holdout 1+1; rule trung tính |
+| 3 | Narrative một chiều: claim luôn "tăng liên tục" (luôn SAI) + rule trong đề lộ hướng ("ít nhất 1 phiên giảm") | 11 task (9 main + 2 holdout + 1 pilot) | 2 chiều claim: "tăng liên tục" (SAI) ↔ "có ít nhất một phiên giảm" (ĐÚNG), chọn theo parity id → main 5 sai + 4 đúng, holdout 1+1; rule trung tính |
 
 ## 8.2. Nâng cấp đi kèm
 
@@ -653,13 +653,29 @@ tools/
   payload các tool này không chứa ngày → sau khi fence hết leak kỳ, agent không thể tự suy
   "30/10" → chấp nhận "phiên gần nhất/gần nhất" là hợp lệ (fairness, không phải nới lỏng bẫy).
 
+## 8.2b. Round 2 — findings từ review độc lập (code-reviewer fresh-context)
+
+| # | Finding | Mức | Vá |
+|---|---|---|---|
+| 1 | Fence `l3-screen` nội suy nguyên gold set vào schema (`"pass": ["ACB",...]`) — copy fence = pass; scanner cũ không quét set/list | Critical (10 task tính điểm) | Schema dùng placeholder `["MÃ1","MÃ2","..."]`; scanner thêm lớp **G `fence_set`** (chuỗi/list gold của expect set/list_order trong fence) |
+| 2 | Tie-break verdict (hòa → reject) tước điểm câu trả lời đúng tự nhiên: "khớp, chênh lệch 0 đồng" bị FAIL vì "lệch" ⊂ "chênh lệch" | Important (l4-2src 6 task) | Grader mask cụm trung tính (`chênh lệch`, `sai khác`, `không có lệch`) trước khi so khớp; đồng bộ accept list l4-2src main/holdout với pilot (thêm "bằng nhau", "không chênh") |
+| 3 | Rules bctc giao sẵn token gold `line` qua VD "(VD `Tổng LNST`)" | Minor→leak | Bỏ VD (2 pipeline); scanner thêm lớp **H `hint_token`** (token accepts ≥4 ký tự trong rules zone) |
+| 4 | `%%` literal in thẳng vào đề (macro_calc ×3, macro_agg ×2) | Minor | Sửa thành `%` |
+| 5 | Scanner: dead-call `num_in_text(re.escape(...))`; "6 lớp" → 8 lớp | Minor | Dọn |
+| 6 | `build_main.py` import trong loop + docstring stale | Minor | Dồn lên đầu module, cập nhật docstring |
+| 7 | smoke-trap title lộ bẫy ("mã không tồn tại") | Minor | Đổi title trung tính "Smoke — Giá mã XYZX" |
+
+Findings được reviewer xác nhận đã xử lý đúng: parity narrative cả 3 split; gen_tasks
+write-if-missing (dry-run sentinel nguyên vẹn, pilot+smoke rebuild byte-identical); không số
+gold nào thay đổi trong diff tasks/ (trừ narrative verdict theo chủ đích + enrich accept 2src).
+
 ## 8.3. Kiểm định sau vá (độc lập)
 
 - 277/277 oracle PASS (gold tái tạo từ payload); 277×3 grader self-test (đúng/đột biến/rỗng) 0 fail;
   `check_leaks` 277 task → **0 leak**; 12/12 case verdict thủ công (longest-match đúng cả 2 hướng).
 - Bất biến: 200 main (đúng 40/mức) · 50 holdout · 24 pilot · 3 smoke; ID/level/entity không đổi;
   data payload không đổi (chỉ instruction/gold-narrative/grader thay đổi).
-- Commit: `32f0ca4` (test) → `5292e8d` (fix tools) → `a79ae99` (rebuild 277 task).
+- Commit: `32f0ca4` (test) → `5292e8d` (fix tools) → `a79ae99` (rebuild 277 task) → `6f4c8d8` (docs) → round 2 (screen/verdict/scanner).
 
 ## 8.4. Hệ quả đo lường
 

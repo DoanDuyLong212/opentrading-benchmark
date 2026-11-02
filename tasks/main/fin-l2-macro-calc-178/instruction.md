@@ -1,6 +1,6 @@
 # Macro — cpi_gap
 
-**CPI** (chỉ số giá tiêu dùng, so tháng 12/2025) tháng 9/2026 cao hơn **lạm phát cơ bản** cùng tháng bao nhiêu **điểm %%**?
+**CPI** (chỉ số giá tiêu dùng, so tháng 12/2025) tháng 9/2026 cao hơn **lạm phát cơ bản** cùng tháng bao nhiêu **điểm %**?
 
 ## Yêu cầu trả lời
 Ghi kết quả vào file `answer.json` ở thư mục hiện hành, theo schema:

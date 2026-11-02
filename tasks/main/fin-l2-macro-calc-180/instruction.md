@@ -1,6 +1,6 @@
 # Macro — gdp_yoy
 
-**GDP** (tổng số) **quý 3/2026** tăng bao nhiêu **%%** so với **cùng kỳ năm trước** (quý 3/2025)?
+**GDP** (tổng số) **quý 3/2026** tăng bao nhiêu **%** so với **cùng kỳ năm trước** (quý 3/2025)?
 
 ## Yêu cầu trả lời
 Ghi kết quả vào file `answer.json` ở thư mục hiện hành, theo schema:

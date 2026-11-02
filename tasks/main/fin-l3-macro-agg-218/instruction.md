@@ -1,6 +1,6 @@
 # Nhóm CPI tăng cao nhất T9
 
-Trong **các nhóm hàng** của CPI tháng 9/2026 (so với tháng 12/2025), nhóm nào **tăng cao nhất** và mức tăng là bao nhiêu **%%**?
+Trong **các nhóm hàng** của CPI tháng 9/2026 (so với tháng 12/2025), nhóm nào **tăng cao nhất** và mức tăng là bao nhiêu **%**?
 
 ## Yêu cầu trả lời
 Ghi kết quả vào file `answer.json` ở thư mục hiện hành, theo schema:

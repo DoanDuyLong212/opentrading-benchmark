@@ -22,6 +22,7 @@ from build_plan import GROUPS  # noqa: E402
 from fam_a import FAMILIES_A  # noqa: E402
 from fam_b import FAMILIES_B  # noqa: E402
 from _gen_templates import GRADER_TMPL  # noqa: E402
+from check_leaks import scan_task  # noqa: E402
 
 FAMILIES = dict(FAMILIES_A, **FAMILIES_B)
 
@@ -301,9 +302,7 @@ def run_checks(built):
                 rep[store].append((b["id"], "%s: success=%s (want %s) err=%s" % (tag, g["success"], want_success, g["error_type"])))
             if tag == "mut" and b["scoring"] == "refusal" and g.get("fp") != 1:
                 rep["mutate_fail"].append((b["id"], "refusal mutate: fp != 1"))
-        # leak scan (dùng chung check_leaks — 6 lớp: fence_null, fence_period, value_leak,
-        # evidence_leak, bonus_leak, narrative_leak)
-        from check_leaks import scan_task
+        # leak scan (check_leaks — 8 lớp A..H)
         for cls, detail in scan_task(d):
             rep["leak_fail"].append((b["id"], "%s: %s" % (cls, detail)))
         # ctrf check (chạy lại grader trên answer đúng)

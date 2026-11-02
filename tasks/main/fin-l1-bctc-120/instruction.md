@@ -18,7 +18,7 @@ Ghi kết quả vào file `answer.json` ở thư mục hiện hành, theo schema
 }
 ```
 
-- Bắt buộc ghi `line` = đúng **tên dòng chỉ tiêu** trong báo cáo (VD `LNST của CĐ cty mẹ`).
+- Bắt buộc ghi `line` = đúng **tên dòng chỉ tiêu** trong báo cáo bạn lấy số.
 
 ## Ràng buộc chung
 - Chỉ dùng dữ liệu từ MCP `opentrading`, đúng snapshot của task (`task.toml` → `snapshot_date`). Cấm `web_search`, `web_fetch`, `sentiment_score`.

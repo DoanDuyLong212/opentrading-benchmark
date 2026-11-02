@@ -75,7 +75,8 @@ def f_l3_screen(t, env):
     label, expr, sel = chosen
     head, peers = PEER_GROUPS[g]
     members = [head] + peers
-    schema = '{\n  "values": {"pass": [' + ", ".join('"%s"' % s for s in sel) + ']},\n  "period": "(kỳ dữ liệu tool)",\n  "source": "peer_compare",\n  "note": "P/E, P/B, ROE từng mã để lọc"\n}'
+    # (vá round-2 02/11) fence KHÔNG được nội suy gold (sel) — dùng placeholder
+    schema = '{\n  "values": {"pass": ["MÃ1", "MÃ2", "..."]},\n  "period": "(kỳ dữ liệu tool)",\n  "source": "peer_compare",\n  "note": "P/E, P/B, ROE từng mã để lọc"\n}'
     oracle = ('rows = env(%r)["data"]["rows"]\n'
               'sel = []\n'
               'for r in rows:\n'
@@ -273,7 +274,7 @@ def f_l3_macro_agg(t, env):
         name, v = best
         label = name.lstrip("- ").strip()
         return {"title": "Nhóm CPI tăng cao nhất T9", "family_code": "L3·G macro-agg", "fb": "aggregation",
-                "q": "Trong **các nhóm hàng** của CPI tháng 9/2026 (so với tháng 12/2025), nhóm nào **tăng cao nhất** và mức tăng là bao nhiêu **%%**?",
+                "q": "Trong **các nhóm hàng** của CPI tháng 9/2026 (so với tháng 12/2025), nhóm nào **tăng cao nhất** và mức tăng là bao nhiêu **%**?",
                 "schema": '{\n  "values": {"category": "tên nhóm", "pct": 0},\n  "period": "(kỳ được hỏi)",\n  "source": "vs_indicator_data",\n  "note": "(tuỳ chọn)"\n}',
                 "rules": "", "scoring": "value",
                 "expects": [{"type": "str", "path": "values.category", "accept": [label]},
@@ -292,7 +293,7 @@ def f_l3_macro_agg(t, env):
             if v >= 5.0:
                 cnt += 1; months.append("tháng %d" % m)
         return {"title": "Đếm tháng CPI≥5%", "family_code": "L3·G macro-agg", "fb": "aggregation",
-                "q": "Trong **9 tháng đầu năm 2026**, có bao nhiêu tháng **CPI (so tháng 12/2025)** tăng **từ 5,0%% trở lên**? (nêu các tháng trong `note`)",
+                "q": "Trong **9 tháng đầu năm 2026**, có bao nhiêu tháng **CPI (so tháng 12/2025)** tăng **từ 5,0% trở lên**? (nêu các tháng trong `note`)",
                 "schema": '{\n  "value": 0,\n  "unit": "tháng",\n  "period": "9T/2026",\n  "source": "vs_indicator_data",\n  "note": "liệt kê các tháng"\n}',
                 "rules": "", "scoring": "value",
                 "expects": [val_check_abs(cnt, 0.001), {"type": "unit", "path": "unit", "accept": ["tháng", "thang"]},
@@ -455,7 +456,7 @@ def f_l4_2src(t, env):
                 "q": "Đối chiếu giá đóng cửa **phiên 30/10** của **%s** từ **hai nguồn**: (a) lịch sử nến **`vn_quote_history`** (nghìn đồng) và (b) bảng giá **`vn_equity_quote_batch`** (đồng). Hai nguồn có **khớp** không? Nêu giá theo **đồng** và sai khác trong `note`." % sym,
                 "schema": '{\n  "verdict": "khớp hoặc không khớp",\n  "value": 0,\n  "unit": "đồng",\n  "period": "(kỳ được hỏi)",\n  "source": "vn_quote_history + vn_equity_quote_batch",\n  "note": "số từng nguồn + sai khác"\n}',
                 "rules": "- `value` theo **đồng**.\n- `source` ghi cả hai tool.", "scoring": "value",
-                "expects": [{"type": "verdict", "path": "verdict", "accept": ["khớp", "match", "giống nhau", "không lệch"], "reject": ["không khớp", "lệch", "khác nhau"]},
+                "expects": [{"type": "verdict", "path": "verdict", "accept": ["khớp", "match", "giống nhau", "bằng nhau", "không lệch", "không chênh"], "reject": ["không khớp", "lệch", "khác nhau"]},
                             val_check(close), unit_check("dong"), period_check(p30()),
                             src_check("vn_quote_history", "vn_equity_quote_batch")],
                 "solution": {"close": close, "diff": diff, "match": diff == 0},

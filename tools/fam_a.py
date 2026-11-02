@@ -78,7 +78,8 @@ def f_l1_bctc(t, env):
         "title": "%s — %s quý gần nhất" % (sym, label), "family_code": "L1·B bctc", "fb": "single-metric extraction (unit conversion)",
         "q": (BCTC_Q[m] % sym) + "\n\nGhi `line` = **đúng tên dòng chỉ tiêu** trong báo cáo bạn lấy số. Báo cáo gốc đơn vị VND.",
         "schema": SCHEMA_LINE % ("tỷ đồng", "quý gần nhất (VD: Q?/yyyy)", "financial_statements"),
-        "rules": "- Bắt buộc ghi `line` = đúng **tên dòng chỉ tiêu** trong báo cáo (VD `%s`)." % label,
+        # (vá round-2) bỏ VD = tên dòng gold trong rules — tránh giao token `line` cần tự viết
+        "rules": "- Bắt buộc ghi `line` = đúng **tên dòng chỉ tiêu** trong báo cáo bạn lấy số.",
         "scoring": "value",
         "expects": [unit_check("ty_dong"), val_check(v), period_check(pq(p)), expect_tokens, src_check("financial_statements")],
         "solution": {"value": v, "period": p, "line": label},
@@ -261,20 +262,20 @@ def f_l2_macro_calc(t, env):
     if calc == "gdp_qoq":
         qa, qb = "Q3/2026", "Q2/2026"
         va, vb = gdp_pick(env, qa), gdp_pick(env, qb); v = r2((va / vb - 1) * 100)
-        q = "**GDP** (tổng số) **quý 3/2026** tăng bao nhiêu **%%** so với **quý 2/2026**?"
+        q = "**GDP** (tổng số) **quý 3/2026** tăng bao nhiêu **%** so với **quý 2/2026**?"
         period = pq2(qa, qb); sper = "quý được hỏi và kỳ đối chiếu"
         oracle = 'check("qoq", round((gdp_pick(env, %r) / gdp_pick(env, %r) - 1) * 100, 2), gold["solution"]["value"])\n' % (qa, qb)
     elif calc == "gdp_yoy":
         qa, qb = "Q3/2026", "Q3/2025"
         va, vb = gdp_pick(env, qa), gdp_pick(env, qb); v = r2((va / vb - 1) * 100)
-        q = "**GDP** (tổng số) **quý 3/2026** tăng bao nhiêu **%%** so với **cùng kỳ năm trước** (quý 3/2025)?"
+        q = "**GDP** (tổng số) **quý 3/2026** tăng bao nhiêu **%** so với **cùng kỳ năm trước** (quý 3/2025)?"
         period = pq2(qa, qb); sper = "quý được hỏi và cùng kỳ năm trước"
         oracle = 'check("yoy", round((gdp_pick(env, %r) / gdp_pick(env, %r) - 1) * 100, 2), gold["solution"]["value"])\n' % (qa, qb)
     elif calc == "cpi_gap":
         a = cpi_pick(env, "CHỈ SỐ GIÁ TIÊU DÙNG", "2026-09", "pct")
         b = cpi_pick(env, "LẠM PHÁT CƠ BẢN", "2026-09", "pct")
         v = r2(a - b)
-        q = "**CPI** (chỉ số giá tiêu dùng, so tháng 12/2025) tháng 9/2026 cao hơn **lạm phát cơ bản** cùng tháng bao nhiêu **điểm %%**?"
+        q = "**CPI** (chỉ số giá tiêu dùng, so tháng 12/2025) tháng 9/2026 cao hơn **lạm phát cơ bản** cùng tháng bao nhiêu **điểm %**?"
         period = pmonth("2026-09"); sper = "tháng được hỏi"
         oracle = 'a = cpi_pick(env, "CHỈ SỐ GIÁ TIÊU DÙNG", "2026-09", "pct")\nb = cpi_pick(env, "LẠM PHÁT CƠ BẢN", "2026-09", "pct")\ncheck("gap", round(a - b, 2), gold["solution"]["value"])\n'
     else:  # cpi_avg / core_avg
