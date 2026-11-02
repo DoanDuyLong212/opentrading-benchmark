@@ -43,8 +43,24 @@ def c_deps(_):
     return True, "mcp SDK OK"
 
 
-# 2 ---------------------------------------------------------------- NVIDIA
-def c_nvidia(args):
+# 2 ---------------------------------------------------------------- provider (theo model cấu hình)
+def c_provider(args):
+    provider, model = (args.model.split("/", 1) + [""])[:2] if "/" in args.model else ("nvidia", args.model)
+    if provider == "google":
+        key = open("/tmp/opencode/gg.key").read().strip() if os.path.exists("/tmp/opencode/gg.key") else ""
+        if not key:
+            # lấy key từ auth opentrading
+            import pathlib
+            p = pathlib.Path.home() / ".opentrading" / "auth.json"
+            key = (json.loads(p.read_text()).get("google") or {}).get("key", "") if p.exists() else ""
+        if not key:
+            return False, "không có Google key (auth.json opentrading/opencode)"
+        rc, out, _ = sh('curl -s --max-time 20 "https://generativelanguage.googleapis.com/'
+                       'v1beta/models?key=%s&pageSize=200"' % key)
+        ids = [m["name"].split("/")[-1] for m in json.loads(out).get("models", [])] if out else []
+        ok = model in ids
+        return ok, "google/%s %s (%d model trong list)" % (
+            model, "khả dụng" if ok else "KHÔNG trong list", len(ids))
     key = os.environ.get("NVIDIA_API_KEY")
     if not key:
         return False, "NVIDIA_API_KEY chưa set"
@@ -56,9 +72,8 @@ def c_nvidia(args):
         ids = [m["id"] for m in json.loads(out)["data"]]
     except Exception as e:
         return False, "phản hồi lạ: %s" % e
-    model = args.model.split("/", 1)[1] if "/" in args.model else args.model
     ok = model in ids
-    return ok, "model %s %s (account có %d model trong list)" % (
+    return ok, "nvidia/%s %s (account có %d model trong list)" % (
         model, "khả dụng" if ok else "KHÔNG trong list", len(ids))
 
 
@@ -170,7 +185,7 @@ def main():
         args.model = cfg["model"]
 
     check("1 deps python-mcp", c_deps)
-    check("2 key NVIDIA + model", c_nvidia)
+    check("2 key provider + model", c_provider)
     check("3 harness binaries", c_harnesses)
     check("4 driver/runner/config", c_files)
     check("5 MCP snapshot handshake", c_snapshot)

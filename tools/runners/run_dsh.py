@@ -44,15 +44,24 @@ def run(ws, instruction, task_dir, model, timeout_s, log_path):
     os.makedirs(rdir, exist_ok=True)
     payloads = os.path.join(task_dir, "environment", "payloads.json")
     if "/" in model:
-        provider, model_id = model.split("/", 1)
+        prefix, model_id = model.split("/", 1)
+        # dsh route id khác tên provider: google → google-ai-studio (route có sẵn trong profile)
+        provider = {"google": "google-ai-studio"}.get(prefix, prefix)
     else:
         provider, model_id = "nvidia", model
     patch = os.path.join(rdir, "bench.dsh.patch.yml")
     with open(patch, "w", encoding="utf-8") as f:
         f.write(_patch_yml(SNAPSHOT, payloads, provider, model_id))
 
+    env = dict(os.environ)
+    if prefix == "google" and not env.get("GOOGLE_API_KEY"):
+        try:
+            env["GOOGLE_API_KEY"] = json.load(open(
+                os.path.expanduser("~/.opentrading/auth.json")))["google"]["key"]
+        except Exception:
+            pass
     cmd = [DSH_BIN, "--profile", "headless", "--patch", patch, "--json", "-"]
-    rc, out, err, timed_out = popen_run(cmd, cwd=ws, env=dict(os.environ), timeout_s=timeout_s,
+    rc, out, err, timed_out = popen_run(cmd, cwd=ws, env=env, timeout_s=timeout_s,
                                         log_path=log_path, stdin_text=instruction)
 
     texts, session_id, tokens = [], None, None
