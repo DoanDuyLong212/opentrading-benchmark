@@ -245,7 +245,7 @@ def main():
                 for arm in arms:
                     n_done += 1
                     tdir = os.path.join(out_dir, "trials", "%s__%s__r%d" % (tid, arm, run))
-                    ws = make_workspace(tdir, task_dir)
+                    ws = make_workspace(os.path.join(tdir, "ws"), task_dir)
                     log_path = os.path.join(tdir, "run.log")
                     res = run_trial(arm, ws, instr, task_dir, model, timeout_s, log_path)
                     status = res.get("status", "unknown")
