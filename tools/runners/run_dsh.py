@@ -19,20 +19,23 @@ DSH_BIN = os.path.expanduser("~/.local/bin/dsh")
 
 
 def _patch_yml(snapshot, payloads, provider, model):
-    return ("- id: agent-default-model\n"
+    # Cú pháp patch của dsh (dsh-app-boot applyEntryPatches): entry MỚI phải nằm trong
+    # `- insert: [ ... ]` (không id = chèn top-level); entry có sẵn thì override theo id.
+    return ("- insert:\n"
+            "    - id: mcp-opentrading\n"
+            "      name: '@deepseek-ai/dsh-mcp-client'\n"
+            "      config:\n"
+            "        serverName: opentrading\n"
+            "        transport: stdio\n"
+            "        command: %s\n"
+            "        args: ['%s']\n"
+            "        env:\n"
+            "          BENCH_PAYLOADS: '%s'\n"
+            "- id: agent-default-model\n"
             "  config:\n"
             "    provider: %s\n"
             "    model: %s\n"
-            "- id: mcp-opentrading\n"
-            "  name: '@deepseek-ai/dsh-mcp-client'\n"
-            "  config:\n"
-            "    serverName: opentrading\n"
-            "    transport: stdio\n"
-            "    command: %s\n"
-            "    args: ['%s']\n"
-            "    env:\n"
-            "      BENCH_PAYLOADS: '%s'\n"
-            % (provider, model, sys.executable, snapshot, payloads))
+            % (sys.executable, snapshot, payloads, provider, model))
 
 
 def run(ws, instruction, task_dir, model, timeout_s, log_path):

@@ -283,6 +283,12 @@ def main():
                     status = res.get("status", "unknown")
                     answer_path = res.get("answer_path")
                     answer_src = "file" if answer_path and os.path.exists(answer_path) else None
+                    if answer_src is None and res.get("answer_candidates"):
+                        ans = res["answer_candidates"][-1]
+                        answer_path = os.path.join(ws, "answer.json")
+                        with open(answer_path, "w", encoding="utf-8") as f:
+                            json.dump(ans, f, ensure_ascii=False, indent=1)
+                        answer_src = "extracted_input"
                     if answer_src is None and res.get("final_text"):
                         ans = extract_answer_json(res["final_text"])
                         if ans is not None:

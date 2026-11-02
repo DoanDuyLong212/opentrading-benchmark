@@ -29,14 +29,15 @@ def run(ws, instruction, task_dir, model, timeout_s, log_path):
     os.makedirs(os.path.join(xdg_data, "opencode"), exist_ok=True)
 
     payloads = os.path.join(task_dir, "environment", "payloads.json")
-    # G-E7 + runner contract (02/11): external_directory deny — agent không được
-    # đọc/ghi ngoài workspace (chặn rò payloads/gold qua file tools); web tắt;
-    # payloads truyền cho snapshot server qua ENV (path không nằm trong config).
+    # G-E7 + runner contract: V2 permissions (shape [{action, resource, effect}]) —
+    # chặn tuyệt đối đọc/ghi ngoài workspace, shell, web; MCP snapshot qua ENV.
     cfg = {"$schema": "https://opencode.ai/config.json",
-           "permission": {"external_directory": "deny", "webfetch": "deny",
-                          "websearch": "deny",
-                          "bash": {"*extra/benchmark*": "deny",
-                                   "*payloads.json*": "deny"}},
+           "permissions": [
+               {"action": "external_directory", "resource": "*", "effect": "deny"},
+               {"action": "shell", "resource": "*", "effect": "deny"},
+               {"action": "webfetch", "resource": "*", "effect": "deny"},
+               {"action": "websearch", "resource": "*", "effect": "deny"},
+           ],
            "mcp": {"servers": {"opentrading": {"type": "local",
                                                "command": [sys.executable, SNAPSHOT],
                                                "environment": {"BENCH_PAYLOADS": payloads},
@@ -53,7 +54,8 @@ def run(ws, instruction, task_dir, model, timeout_s, log_path):
            "-m", model, instruction]
     rc, out, err, timed_out = popen_run(cmd, cwd=ws, env=env, timeout_s=timeout_s, log_path=log_path)
 
-    final_parts, session_id, tokens = [], None, None
+    final_parts, session_id, tokens, cands = [], None, None, []
+    ANSWER_KEYS = ("value", "values", "verdict", "ranking", "reason")
     for line in out.splitlines():
         line = line.strip()
         if not line.startswith("{"):
@@ -67,6 +69,13 @@ def run(ws, instruction, task_dir, model, timeout_s, log_path):
         part = ev.get("part") or {}
         if ev.get("type") == "text" and part.get("text"):
             final_parts.append(part["text"])
+        # model yếu hay gửi nguyên object vào write tool (content: Expected string)
+        # → vẫn thu object làm answer candidate (chuẩn hoá cấp runner, R21)
+        if isinstance(part, dict) and part.get("tool") in ("write", "edit"):
+            inp = (part.get("state") or {}).get("input") or {}
+            content = inp.get("content")
+            if isinstance(content, dict) and any(k in content for k in ANSWER_KEYS):
+                cands.append(content)
         # usage (nếu có): part.tokens hoặc ev.tokens
         tk = (part.get("tokens") if isinstance(part, dict) else None) or ev.get("tokens")
         if isinstance(tk, dict):
@@ -75,5 +84,6 @@ def run(ws, instruction, task_dir, model, timeout_s, log_path):
     return {"status": "timeout" if timed_out else ("ok" if rc == 0 else "error"),
             "answer_path": answer_path if os.path.exists(answer_path) else None,
             "final_text": "\n".join(final_parts),
+            "answer_candidates": cands,
             "session_id": session_id, "tokens": tokens,
             "notes": "" if rc == 0 else "exit=%s" % rc}
