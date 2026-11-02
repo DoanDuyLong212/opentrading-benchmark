@@ -35,9 +35,9 @@ def env(name):
 
 ser = {x["symbol"]: [p["c"] for p in x["closes"]] for x in env("vn_msn_fx_gold")["data"]["series"]}
 xau, usd = ser["XAUUSD"], ser["USDVND"]
-check("xau_not_increasing", all(xau[i + 1] > xau[i] for i in range(len(xau) - 1)), False)
-check("usd_not_increasing", all(usd[i + 1] > usd[i] for i in range(len(usd) - 1)), False)
-check("verdict", "sai", gold["solution"]["verdict"])
+check("xau_has_down", any(xau[i + 1] < xau[i] for i in range(len(xau) - 1)), True)
+check("usd_has_down", any(usd[i + 1] < usd[i] for i in range(len(usd) - 1)), True)
+check("verdict", "đúng", gold["solution"]["verdict"])
 
 if problems:
     print("ORACLE MISMATCH — gold KHONG tai tao duoc tu payload:")

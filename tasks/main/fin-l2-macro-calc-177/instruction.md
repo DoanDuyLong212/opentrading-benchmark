@@ -9,7 +9,7 @@ Ghi kết quả vào file `answer.json` ở thư mục hiện hành, theo schema
 {
   "value": 0,
   "unit": "%",
-  "period": "T7-T9/2026",
+  "period": "kỳ bình quân được hỏi",
   "source": "vs_indicator_data",
   "note": "(tuỳ chọn)"
 }

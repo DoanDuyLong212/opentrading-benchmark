@@ -1,6 +1,6 @@
 # Kiểm chứng nhận định EURVND
 
-Nhận định: “Trong **5 phiên gần nhất (26/10 → 30/10)**, giá đóng cửa của **EURVND** **tăng liên tục từng phiên**.”
+Nhận định: “Trong **5 phiên gần nhất (26/10 → 30/10)**, giá đóng cửa của **EURVND** **có ít nhất một phiên giảm**.”
 
 Đúng hay **sai**? Nêu số close từng phiên trong `note` để chứng minh.
 
@@ -16,7 +16,7 @@ Ghi kết quả vào file `answer.json` ở thư mục hiện hành, theo schema
 }
 ```
 
-- `note` phải chứa số liệu thật chứng minh (ít nhất 1 phiên giảm).
+- `note` nêu số close từng phiên của kỳ được hỏi để chứng minh nhận định.
 
 ## Ràng buộc chung
 - Chỉ dùng dữ liệu từ MCP `opentrading`, đúng snapshot của task (`task.toml` → `snapshot_date`). Cấm `web_search`, `web_fetch`, `sentiment_score`.

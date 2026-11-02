@@ -9,7 +9,7 @@ Ghi kết quả vào file `answer.json` ở thư mục hiện hành, theo schema
 {
   "value": 0,
   "unit": "USD/oz",
-  "period": "phiên 30/10/2026",
+  "period": "(kỳ được hỏi)",
   "source": "vn_msn_fx_gold",
   "note": "(tuỳ chọn)"
 }

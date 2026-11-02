@@ -9,7 +9,7 @@ Ghi kết quả vào file `answer.json` ở thư mục hiện hành, theo schema
 {
   "value": 0,
   "unit": "RSI-14",
-  "period": "đến phiên 30/10/2026",
+  "period": "(kỳ được hỏi)",
   "source": "signals_technical",
   "note": "(tuỳ chọn)"
 }

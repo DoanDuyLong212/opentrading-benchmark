@@ -7,11 +7,11 @@ Ghi kết quả vào file `answer.json` ở thư mục hiện hành, theo schema
 
 ```json
 {
-  "value": null,
-  "reason": "lý do (nếu không trả lời được)",
+  "value": 0,
+  "unit": "USD",
   "period": "phiên 31/10/2026",
   "source": "vn_msn_fx_gold",
-  "note": "kỳ có số mới nhất (nếu nêu)"
+  "note": "(tuỳ chọn)"
 }
 ```
 

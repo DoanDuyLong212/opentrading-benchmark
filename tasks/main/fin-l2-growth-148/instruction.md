@@ -1,6 +1,6 @@
 # Tăng trưởng doanh thu NKG
 
-Doanh thu thuần của **NKG** **quý gần nhất (Q3/2026)** thay đổi bao nhiêu **%** so với quý liền trước (Q2/2026)? (dấu âm nếu giảm)
+Doanh thu thuần của **NKG** **quý gần nhất** thay đổi bao nhiêu **%** so với quý liền trước? (dấu âm nếu giảm)
 
 ## Yêu cầu trả lời
 Ghi kết quả vào file `answer.json` ở thư mục hiện hành, theo schema:
@@ -9,7 +9,7 @@ Ghi kết quả vào file `answer.json` ở thư mục hiện hành, theo schema
 {
   "value": 0,
   "unit": "%",
-  "period": "Q3/2026 so với Q2/2026",
+  "period": "quý gần nhất so với quý liền trước",
   "source": "financial_statements",
   "note": "(tuỳ chọn)"
 }

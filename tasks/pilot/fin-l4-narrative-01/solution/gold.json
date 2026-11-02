@@ -2,15 +2,15 @@
   "task_id": "fin-l4-narrative-01",
   "scoring": "verdict",
   "verdict_accept": [
+    "đúng",
+    "true",
+    "chính xác"
+  ],
+  "verdict_reject": [
     "sai",
     "false",
     "không đúng",
     "không chính xác"
-  ],
-  "verdict_reject": [
-    "đúng",
-    "true",
-    "chính xác"
   ],
   "evidence": {
     "paths": [
@@ -27,8 +27,8 @@
     ]
   },
   "solution": {
-    "verdict": "sai"
+    "verdict": "đúng"
   },
-  "notes": "XAUUSD giảm 2 phiên cuối (4067.04 → 4020.42 → 3875.02); USDVND lên–xuống (25841 → 25832 → 25852 → 25799 → 25802) → nhận định SAI.",
+  "notes": "Biến thể claim ĐÚNG (vá 2 chiều 02/11): XAUUSD giảm 2 phiên cuối (4067.04 → 4020.42 → 3875.02) và USDVND có 2 phiên giảm (25841 → 25832, 25852 → 25799) → cả hai chuỗi đều có ít nhất một phiên giảm → nhận định ĐÚNG.",
   "as_of": "2026-11-01T15:54:32.785351+07:00"
 }

@@ -9,7 +9,7 @@ Ghi kết quả vào file `answer.json` ở thư mục hiện hành, theo schema
 {
   "values": {"KDH": 0, "NLG": 0, "DXG": 0, "PDR": 0, "KBC": 0, "mean": 0},
   "unit": "đồng",
-  "period": "phiên 30/10/2026",
+  "period": "(kỳ được hỏi)",
   "source": "vn_equity_quote_batch",
   "note": "(tuỳ chọn)"
 }

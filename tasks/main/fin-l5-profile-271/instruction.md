@@ -13,7 +13,7 @@ Ghi kết quả vào file `answer.json` ở thư mục hiện hành, theo schema
 ```json
 {
   "values": {"revenue_q_bn": 0, "gross_profit_q_bn": 0, "gross_margin_pct": 0, "pe": 0, "market_cap_bn": 0},
-  "period": "Q3/2026 + snapshot",
+  "period": "quý dữ liệu + snapshot",
   "source": "financial_detail + stock_overview",
   "note": "(tuỳ chọn)"
 }

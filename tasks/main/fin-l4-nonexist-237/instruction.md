@@ -7,11 +7,11 @@ Ghi kết quả vào file `answer.json` ở thư mục hiện hành, theo schema
 
 ```json
 {
-  "value": null,
-  "reason": "lý do (nếu không trả lời được)",
+  "value": 0,
+  "unit": "đồng",
   "period": "gần nhất",
   "source": "symbol_resolve",
-  "note": "kỳ có số mới nhất (nếu nêu)"
+  "note": "(tuỳ chọn)"
 }
 ```
 

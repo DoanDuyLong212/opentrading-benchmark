@@ -9,7 +9,7 @@ Ghi kết quả vào file `answer.json` ở thư mục hiện hành, theo schema
 {
   "value": 0,
   "unit": "đồng",
-  "period": "phiên 01/11/2026",
+  "period": "(ngày dữ liệu)",
   "source": "vn_crypto_ohlcv",
   "note": "(tuỳ chọn)"
 }

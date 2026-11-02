@@ -8,7 +8,7 @@ Ghi kết quả vào file `answer.json` ở thư mục hiện hành, theo schema
 ```json
 {
   "values": {"pass": ["POM", "VGS"]},
-  "period": "2025",
+  "period": "(kỳ dữ liệu tool)",
   "source": "peer_compare",
   "note": "P/E, P/B, ROE từng mã để lọc"
 }

@@ -1,6 +1,6 @@
 # Biên lợi nhuận gộp HAG
 
-**Biên lợi nhuận gộp** của **HAG** quý **Q2/2026** là bao nhiêu **%**? (lợi nhuận gộp ÷ doanh thu thuần)
+**Biên lợi nhuận gộp** của **HAG** quý gần nhất là bao nhiêu **%**? (lợi nhuận gộp ÷ doanh thu thuần)
 
 ## Yêu cầu trả lời
 Ghi kết quả vào file `answer.json` ở thư mục hiện hành, theo schema:
@@ -9,7 +9,7 @@ Ghi kết quả vào file `answer.json` ở thư mục hiện hành, theo schema
 {
   "value": 0,
   "unit": "%",
-  "period": "Q2/2026",
+  "period": "quý gần nhất",
   "source": "financial_detail",
   "note": "(tuỳ chọn)"
 }

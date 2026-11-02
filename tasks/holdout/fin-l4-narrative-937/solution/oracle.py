@@ -210,7 +210,8 @@ def gdp_pick(env, period):
 # === thân oracle ===
 cl = env('vnq10:VJC')["data"]["closes"]
 vs = [x["c"] for x in cl]
-check("not_rising", all(vs[i+1] > vs[i] for i in range(len(vs)-1)), False)
+check("has_down", any(vs[i + 1] < vs[i] for i in range(len(vs) - 1)), True)
+check("verdict", gold["solution"]["verdict"], "đúng")
 
 if problems:
     print("ORACLE MISMATCH:")

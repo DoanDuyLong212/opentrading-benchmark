@@ -9,7 +9,7 @@ Ghi kết quả vào file `answer.json` ở thư mục hiện hành, theo schema
 {
   "value": 0,
   "unit": "%",
-  "period": "19/10 → 30/10/2026",
+  "period": "(kỳ được hỏi)",
   "source": "vn_index_ohlcv",
   "note": "(tuỳ chọn)"
 }

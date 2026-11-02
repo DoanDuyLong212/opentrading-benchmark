@@ -9,7 +9,7 @@ Ghi kết quả vào file `answer.json` ở thư mục hiện hành, theo schema
 {
   "value": 0,
   "unit": "%",
-  "period": "['Q3/2026', 'quý 3/2026', 'q3 2026', 'q3/26', 'so với', 'Q2/2026', 'quý 2/2026', 'q2 2026', 'q2/26']",
+  "period": "quý được hỏi và kỳ đối chiếu",
   "source": "vs_indicator_data",
   "note": "(tuỳ chọn)"
 }

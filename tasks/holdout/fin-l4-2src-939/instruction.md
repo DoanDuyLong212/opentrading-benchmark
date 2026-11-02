@@ -10,7 +10,7 @@ Ghi kết quả vào file `answer.json` ở thư mục hiện hành, theo schema
   "verdict": "khớp hoặc không khớp",
   "value": 0,
   "unit": "đồng",
-  "period": "phiên 30/10/2026",
+  "period": "(kỳ được hỏi)",
   "source": "vn_quote_history + vn_equity_quote_batch",
   "note": "số từng nguồn + sai khác"
 }

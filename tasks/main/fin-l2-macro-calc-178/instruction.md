@@ -9,7 +9,7 @@ Ghi kết quả vào file `answer.json` ở thư mục hiện hành, theo schema
 {
   "value": 0,
   "unit": "%",
-  "period": "['tháng 9/2026', '9/2026', 'tháng 9', 't9/2026']",
+  "period": "tháng được hỏi",
   "source": "vs_indicator_data",
   "note": "(tuỳ chọn)"
 }

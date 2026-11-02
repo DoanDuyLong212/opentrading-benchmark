@@ -12,7 +12,7 @@ Ghi kết quả vào file `answer.json` ở thư mục hiện hành, theo schema
     "2": {"symbol": "MÃ", "pct": 0, "close": 0},
     "3": {"symbol": "MÃ", "pct": 0, "close": 0}
   },
-  "period": "phiên 30/10/2026",
+  "period": "(kỳ được hỏi)",
   "source": "market_movers",
   "note": "(tuỳ chọn)"
 }

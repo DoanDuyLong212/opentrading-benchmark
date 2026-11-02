@@ -15,7 +15,7 @@ Ghi kết quả vào file `answer.json` ở thư mục hiện hành, theo schema
     "SBT": {"pe": 0, "pb": 0, "roe": 0}
   },
   "ranking": ["MÃ1", "MÃ2", "..."],
-  "period": "2025",
+  "period": "(kỳ dữ liệu tool)",
   "source": "peer_compare",
   "note": "(tuỳ chọn)"
 }

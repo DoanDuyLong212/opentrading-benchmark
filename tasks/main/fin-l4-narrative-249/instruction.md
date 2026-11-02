@@ -1,8 +1,8 @@
 # Kiểm chứng nhận định BTCUSDT
 
-Nhận định: “Trong **10 ngày gần nhất**, giá đóng cửa của **BTCUSDT** **tăng liên tục từng ngày**.”
+Nhận định: “Trong **10 ngày gần nhất**, giá đóng cửa của **BTCUSDT** **có ít nhất một phiên giảm**.”
 
-Đúng hay **sai**? Nêu số close từng ngày trong `note` để chứng minh.
+Đúng hay **sai**? Nêu số close từng phiên trong `note` để chứng minh.
 
 ## Yêu cầu trả lời
 Ghi kết quả vào file `answer.json` ở thư mục hiện hành, theo schema:
@@ -16,7 +16,7 @@ Ghi kết quả vào file `answer.json` ở thư mục hiện hành, theo schema
 }
 ```
 
-- `note` phải chứa số liệu thật chứng minh (ít nhất 1 phiên giảm).
+- `note` nêu số close từng phiên của kỳ được hỏi để chứng minh nhận định.
 
 ## Ràng buộc chung
 - Chỉ dùng dữ liệu từ MCP `opentrading`, đúng snapshot của task (`task.toml` → `snapshot_date`). Cấm `web_search`, `web_fetch`, `sentiment_score`.

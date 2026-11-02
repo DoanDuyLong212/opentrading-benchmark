@@ -210,7 +210,8 @@ def gdp_pick(env, period):
 # === thân oracle ===
 cl = msn_series(env)['JPYVND']
 vs = [x["c"] for x in cl]
-check("not_rising", all(vs[i+1] > vs[i] for i in range(len(vs)-1)), False)
+check("not_all_up", all(vs[i + 1] > vs[i] for i in range(len(vs) - 1)), False)
+check("verdict", gold["solution"]["verdict"], "sai")
 
 if problems:
     print("ORACLE MISMATCH:")

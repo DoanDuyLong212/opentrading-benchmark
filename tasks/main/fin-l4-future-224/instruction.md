@@ -7,11 +7,11 @@ Ghi kết quả vào file `answer.json` ở thư mục hiện hành, theo schema
 
 ```json
 {
-  "value": null,
-  "reason": "lý do (nếu không trả lời được)",
+  "value": 0,
+  "unit": "tỷ đồng",
   "period": "Q3/2026",
   "source": "financial_statements",
-  "note": "kỳ có số mới nhất (nếu nêu)"
+  "note": "(tuỳ chọn)"
 }
 ```
 

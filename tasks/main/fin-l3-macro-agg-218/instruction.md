@@ -8,7 +8,7 @@ Ghi kết quả vào file `answer.json` ở thư mục hiện hành, theo schema
 ```json
 {
   "values": {"category": "tên nhóm", "pct": 0},
-  "period": "Tháng 9/2026",
+  "period": "(kỳ được hỏi)",
   "source": "vs_indicator_data",
   "note": "(tuỳ chọn)"
 }

@@ -9,7 +9,7 @@ Ghi kết quả vào file `answer.json` ở thư mục hiện hành, theo schema
 {
   "value": 0,
   "unit": "tỷ đồng",
-  "period": "Quý 3/2026",
+  "period": "(kỳ được hỏi)",
   "source": "vs_indicator_data",
   "note": "(tuỳ chọn)"
 }

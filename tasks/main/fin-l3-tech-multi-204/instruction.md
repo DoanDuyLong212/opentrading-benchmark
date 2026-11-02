@@ -8,7 +8,7 @@ Ghi kết quả vào file `answer.json` ở thư mục hiện hành, theo schema
 ```json
 {
   "values": {"symbol": "MÃ", "rsi14": 0},
-  "period": "đến phiên 30/10/2026",
+  "period": "(kỳ được hỏi)",
   "source": "signals_technical",
   "note": "RSI của cả 5 mã để đối chiếu"
 }

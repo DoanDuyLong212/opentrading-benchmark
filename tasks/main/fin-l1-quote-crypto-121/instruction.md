@@ -9,7 +9,7 @@ Ghi kết quả vào file `answer.json` ở thư mục hiện hành, theo schema
 {
   "value": 0,
   "unit": "USD",
-  "period": "snapshot 2026-11-01",
+  "period": "(ngày dữ liệu)",
   "source": "yf_commodities",
   "note": "(tuỳ chọn)"
 }
