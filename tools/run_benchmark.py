@@ -67,6 +67,34 @@ def select_tasks(split, sample=None, seed=None, tasks_filter=None, confirm_holdo
     return [os.path.join(root, i) for i in ids]
 
 
+def count_mcp_calls(log_path, task_dir):
+    """Đếm tín hiệu lời gọi tool MCP trong log thô của trial (best-effort).
+
+    Hợp lệ hoá runner contract: agent phải dùng MCP snapshot, không đọc payloads
+    trực tiếp. Quét: '"tool":"<name>"' (opencode NDJSON) · tool-start labels
+    (opentrading) · mcp__opentrading__<name> (dsh)."""
+    try:
+        with open(log_path, encoding="utf-8", errors="replace") as f:
+            log = f.read()
+    except OSError:
+        return 0
+    try:
+        with open(os.path.join(task_dir, "environment", "payloads.json"), encoding="utf-8") as f:
+            tools = {v.get("tool") for v in json.load(f)["tools"].values()}
+    except (OSError, KeyError):
+        return 0
+    n = 0
+    for t in tools:
+        if not t:
+            continue
+        esc = re.escape(t)
+        n += len(re.findall(r'"tool"\s*:\s*"[^"]*%s' % esc, log))
+        n += len(re.findall(r"mcp__opentrading__%s\b" % esc, log))
+        n += len(re.findall(r"tool-start[^\n]*%s" % esc, log))
+        n += len(re.findall(r"opentrading\.%s\b" % esc, log))  # code mode: tools.opentrading.<tool>
+    return n
+
+
 def read_task_meta(task_dir):
     """Đọc task.toml dạng phẳng (time_limit_min, level, snapshot_date...)."""
     meta = {}
@@ -271,6 +299,7 @@ def main():
                         "tokens": res.get("tokens"),
                         "requests": res.get("requests"),
                         "session_id": res.get("session_id"),
+                        "mcp_calls": count_mcp_calls(log_path, task_dir),
                         "workspace": os.path.relpath(ws, ROOT),
                         "snapshot_date": meta.get("snapshot_date"),
                         "started_at": int(time.time()),
@@ -283,9 +312,9 @@ def main():
                     st["fp"] += g["fp"]
                     if trial["wall_ms"]:
                         st["wall"].append(trial["wall_ms"])
-                    print("[%d/%d] %-22s %-11s %-8s success=%s fp=%d status=%s %sms" % (
+                    print("[%d/%d] %-22s %-11s %-8s success=%s fp=%d mcp=%d %sms" % (
                         n_done, n_total, tid, arm, status, g["success"], g["fp"],
-                        g["error_type"] or "-", trial["wall_ms"] or "-"))
+                        trial["mcp_calls"], trial["wall_ms"] or "-"))
 
     print("=" * 78)
     print("TÓM TẮT (model=%s, split=%s):" % (model, args.split))

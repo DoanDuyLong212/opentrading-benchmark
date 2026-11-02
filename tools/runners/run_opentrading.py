@@ -41,7 +41,8 @@ def run(ws, instruction, task_dir, model, timeout_s, log_path):
         shutil.copy(src_auth, os.path.join(home, "auth.json"))
     mcp = {"mcpServers": {"opentrading": {"type": "stdio",
                                           "command": sys.executable,
-                                          "args": [SNAPSHOT, payloads],
+                                          "args": [SNAPSHOT],
+                                          "env": {"BENCH_PAYLOADS": payloads},
                                           "startupTimeoutMs": 30000,
                                           "toolTimeoutMs": 120000,
                                           "alwaysLoad": True}}}

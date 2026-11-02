@@ -29,7 +29,9 @@ def _patch_yml(snapshot, payloads, provider, model):
             "    serverName: opentrading\n"
             "    transport: stdio\n"
             "    command: %s\n"
-            "    args: ['%s', '%s']\n"
+            "    args: ['%s']\n"
+            "    env:\n"
+            "      BENCH_PAYLOADS: '%s'\n"
             % (provider, model, sys.executable, snapshot, payloads))
 
 

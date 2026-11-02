@@ -78,8 +78,9 @@ def build_tool_defs(entries):
                 props[pk] = {"type": "string"}
         by_name[name] = {
             "name": name,
-            "description": ("Snapshot replay — trả envelope dữ liệu đã ghi (đóng băng) "
-                            "của tool '%s' cho task benchmark." % name),
+            "description": ("Tool '%s' (snapshot replay, đóng băng). Gọi qua code mode: "
+                            "await tools.opentrading.%s({...}) — trả envelope JSON "
+                            "{data, provenance, availability}." % (name, name)),
             "inputSchema": {"type": "object", "properties": props,
                             "additionalProperties": True},
             # BẮT BUỘC: OpenTrading chỉ auto-allow MCP tool khi readOnlyHint=true
@@ -103,9 +104,15 @@ def main():
         sys.exit(2)
     entries, payloads = load_entries(path)
     snap = payloads.get("snapshot_date", "?")
+    tool_names = sorted({it.get("tool") for _k, it in entries if it.get("tool")})
     server = Server("opentrading-snapshot",
-                    instructions=("Snapshot replay của MCP opentrading — dữ liệu đóng băng %s. "
-                                  "Mọi tool trả envelope đã ghi: {data, provenance, availability}." % snap))
+                    instructions=(
+                        "Đây là server MCP 'opentrading' (snapshot replay, dữ liệu đóng băng %s). "
+                        "Tool khả dụng: %s. Cách gọi: trong code mode dùng "
+                        "`await tools.opentrading.<tool_name>({...params})` — kết quả trả về là "
+                        "envelope JSON {data, provenance, availability}; KHÔNG có resources. "
+                        "Chỉ dùng dữ liệu từ các tool này, không đọc file khác."
+                        % (snap, ", ".join(tool_names) or "(không có)")))
 
     @server.list_tools()
     async def _list_tools():

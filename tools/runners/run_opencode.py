@@ -29,9 +29,17 @@ def run(ws, instruction, task_dir, model, timeout_s, log_path):
     os.makedirs(os.path.join(xdg_data, "opencode"), exist_ok=True)
 
     payloads = os.path.join(task_dir, "environment", "payloads.json")
+    # G-E7 + runner contract (02/11): external_directory deny — agent không được
+    # đọc/ghi ngoài workspace (chặn rò payloads/gold qua file tools); web tắt;
+    # payloads truyền cho snapshot server qua ENV (path không nằm trong config).
     cfg = {"$schema": "https://opencode.ai/config.json",
+           "permission": {"external_directory": "deny", "webfetch": "deny",
+                          "websearch": "deny",
+                          "bash": {"*extra/benchmark*": "deny",
+                                   "*payloads.json*": "deny"}},
            "mcp": {"opentrading": {"type": "local",
-                                   "command": [sys.executable, SNAPSHOT, payloads],
+                                   "command": [sys.executable, SNAPSHOT],
+                                   "environment": {"BENCH_PAYLOADS": payloads},
                                    "enabled": True}}}
     with open(os.path.join(xdg_cfg, "opencode", "opencode.json"), "w", encoding="utf-8") as f:
         json.dump(cfg, f, ensure_ascii=False, indent=1)
