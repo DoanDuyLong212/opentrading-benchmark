@@ -60,8 +60,8 @@ def run(ws, instruction, task_dir, model, timeout_s, log_path):
     cmd = [BUN, WRAPPER, instruction + ENV_NOTE]
     rc, out, err, timed_out = popen_run(cmd, cwd=ws, env=env, timeout_s=timeout_s, log_path=log_path)
 
-    # stderr = JSONL events → tìm usage/session nếu có
-    tokens, session_id = None, None
+    # stderr = JSONL events → usage/session/error
+    tokens, session_id, saw_error, err_msg = None, None, False, ""
     for line in (err or "").splitlines():
         line = line.strip()
         if not line.startswith("{"):
@@ -70,13 +70,21 @@ def run(ws, instruction, task_dir, model, timeout_s, log_path):
             ev = json.loads(line)
         except json.JSONDecodeError:
             continue
+        if ev.get("type") == "error":
+            saw_error = True
+            err_msg = str(ev.get("message") or "")[:160]
         if isinstance(ev.get("usage"), dict):
             tokens = ev["usage"]
         for key in ("sessionID", "sessionId", "session_id", "session"):
             if isinstance(ev.get(key), str) and ev[key]:
                 session_id = ev[key]
-    return {"status": "timeout" if timed_out else ("ok" if rc == 0 else "error"),
+    status = "timeout" if timed_out else ("ok" if rc == 0 else "error")
+    # lỗi provider giữa chừng (500/429…): run exit 0 nhưng KHÔNG có text trả lời
+    if status == "ok" and saw_error and not (out or "").strip():
+        status = "error"
+    return {"status": status,
             "answer_path": None,  # driver trích từ final_text (R14)
             "final_text": out or "",
             "session_id": session_id, "tokens": tokens,
-            "notes": "" if rc == 0 else "exit=%s" % rc}
+            "notes": "" if rc == 0 else "exit=%s" % rc,
+            **({"notes": "provider error: %s" % err_msg} if saw_error and not (out or "").strip() else {})}

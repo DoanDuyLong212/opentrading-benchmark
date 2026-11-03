@@ -294,8 +294,10 @@ def main():
                             log_low = open(log_path, encoding="utf-8", errors="replace").read().lower()
                         except OSError:
                             pass
-                        rate_limited = (not got_answer) and bool(
-                            re.search(r"429|too many requests|rate.?limit|hết quota", log_low))
+                        rate_limited = (not got_answer) and bool(re.search(
+                            r"429|too many requests|rate.?limit|hết quota"
+                            r"|internal server error|lỗi 500|bad gateway"
+                            r"|service unavailable|overloaded", log_low))
                         infr = status in ("error", "runner_error") or rate_limited
                         if infr and attempt <= args.retry:
                             print("   ↻ retry %s %s (attempt %d, status=%s) sau %.0fs" % (
