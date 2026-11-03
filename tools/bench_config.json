@@ -1,11 +1,7 @@
 {
-  "model": "google/gemini-3.5-flash-lite",
-  "model_note": "Setup 02/11/2026: NVIDIA NIM rate-limit theo model + account thieu (glm bi session dieu khien dot can, deepseek bi burn boi smoke trials) — chuyen sang Google AI Studio lite model (key lay tu ~/.opentrading/auth.json, cung key da nap vao opencode auth.json va dsh GOOGLE_API_KEY). gemini-3.5-flash-lite co trong catalog CA 3 harness va trong route dsh san (google-ai-studio).",
-  "model_main_run": "google/gemini-3.5-flash-lite",
-  "skills_parity": "smoke: khong skills tren ca 3 arm (dieu kien ngang nhau); pilot: wire skills-pack chung truoc khi chay",
-  "runs_pilot": 3,
-  "provider_map": {
-    "google": {"dsh_provider": "google-ai-studio", "ot_provider": "google", "env": "GOOGLE_API_KEY"},
-    "nvidia": {"dsh_provider": "nvidia", "ot_provider": "nvidia", "env": "NVIDIA_API_KEY"}
-  }
+ "model": "nvidia/deepseek-ai/deepseek-v4.1-flash",
+ "model_note": "03/11/2026: NIM da hoi phuc (deepseek 200x3) — smoke + pilot chay model CHINH THUC pre-register deepseek-v4.1-flash dong nhat ca 3 arm (dsh da verify native MCP voi model nay: dev-dsh5). Google path (gemini-3.5-flash-lite, key tu ~/.opentrading/auth.json da nap vao opencode auth + dsh route + OT config) giu lam FALLBACK khi NVIDIA rate-limit: opencode+OT chay tot (25s/11s per trial) nhung dsh bi 400 thought_signature (Gemini 3.x function-call + thinking; reasoningEffort:off khong cover) — can dsh native-gemini transport hoac model khac truoc khi dung Google cho pilot/main. gemini-2.5/2.0-flash-lite 404 (deprecated).",
+ "model_main_run": "google/gemini-2.5-flash-lite",
+ "skills_parity": "smoke: khong skills tren ca 3 arm (dieu kien ngang nhau); pilot: wire skills-pack chung truoc khi chay",
+ "runs_pilot": 3
 }

@@ -35,7 +35,9 @@ def _patch_yml(snapshot, payloads, provider, model):
             "  config:\n"
             "    provider: %s\n"
             "    model: %s\n"
-            % (sys.executable, snapshot, payloads, provider, model))
+            "    reasoningEffort: %s\n"
+            % (sys.executable, snapshot, payloads, provider, model,
+               "off" if provider == "google-ai-studio" else "low"))
 
 
 def run(ws, instruction, task_dir, model, timeout_s, log_path):
