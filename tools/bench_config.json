@@ -3,5 +3,11 @@
  "model_note": "03/11/2026: NIM da hoi phuc (deepseek 200x3) — smoke + pilot chay model CHINH THUC pre-register deepseek-v4.1-flash dong nhat ca 3 arm (dsh da verify native MCP voi model nay: dev-dsh5). Google path (gemini-3.5-flash-lite, key tu ~/.opentrading/auth.json da nap vao opencode auth + dsh route + OT config) giu lam FALLBACK khi NVIDIA rate-limit: opencode+OT chay tot (25s/11s per trial) nhung dsh bi 400 thought_signature (Gemini 3.x function-call + thinking; reasoningEffort:off khong cover) — can dsh native-gemini transport hoac model khac truoc khi dung Google cho pilot/main. gemini-2.5/2.0-flash-lite 404 (deprecated).",
  "model_main_run": "google/gemini-2.5-flash-lite",
  "skills_parity": "smoke: khong skills tren ca 3 arm (dieu kien ngang nhau); pilot: wire skills-pack chung truoc khi chay",
- "runs_pilot": 3
+ "runs_pilot": 3,
+ "price_per_1m": {
+  "input": 0.15,
+  "output": 0.6,
+  "cached": 0.003
+ },
+ "price_note": "USD/1M token, Off-Peak NIM (freeze PRE-REGISTER §2) — dùng cho metric B3 cost"
 }

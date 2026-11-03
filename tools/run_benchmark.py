@@ -360,6 +360,17 @@ def main():
             arm, st["n"], st["ok"], st["fp"], mean_wall))
     print("Kết quả: %s | Log thô: results/<runid>/trials/" % trials_path)
 
+    # Metrics phụ A1–A4 + B1–B6 (derive từ telemetry vừa ghi — không benchmark lại)
+    try:
+        import metrics
+        summary = metrics.build_summary(out_dir)
+        with open(os.path.join(out_dir, "summary.json"), "w", encoding="utf-8") as f:
+            json.dump(summary, f, ensure_ascii=False, indent=1)
+        metrics.print_summary(summary)
+        print("summary.json: %s" % os.path.join(out_dir, "summary.json"))
+    except Exception as e:
+        print("[warn] metrics lỗi (không ảnh hưởng kết quả): %s: %s" % (type(e).__name__, e))
+
 
 if __name__ == "__main__":
     main()

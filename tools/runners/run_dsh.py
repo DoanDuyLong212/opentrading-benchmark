@@ -81,8 +81,13 @@ def run(ws, instruction, task_dir, model, timeout_s, log_path):
         for key in ("sessionID", "sessionId", "session_id"):
             if ev.get(key):
                 session_id = ev[key]
-        if isinstance(ev.get("usage"), dict):
-            tokens = ev["usage"]
+        u = ev.get("usage")
+        if isinstance(u, dict):
+            # dsh: usage trong event step_end, shape inputTokens/outputTokens —
+            # cộng dồn các step thành tổng trial (định dạng thống nhất với opencode/OT)
+            tokens = tokens or {"input": 0, "output": 0}
+            tokens["input"] = (tokens.get("input") or 0) + (u.get("inputTokens") or 0)
+            tokens["output"] = (tokens.get("output") or 0) + (u.get("outputTokens") or 0)
     answer_path = os.path.join(ws, "answer.json")
     return {"status": "timeout" if timed_out else ("ok" if rc == 0 else "error"),
             "answer_path": answer_path if os.path.exists(answer_path) else None,
