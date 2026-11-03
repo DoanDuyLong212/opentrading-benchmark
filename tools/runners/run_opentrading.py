@@ -50,7 +50,14 @@ def run(ws, instruction, task_dir, model, timeout_s, log_path):
         json.dump(mcp, f, ensure_ascii=False, indent=1)
 
     env = {**os.environ, "OPENTRADING_HOME": home}
-    cmd = [BUN, WRAPPER, instruction]
+    # Chuẩn hoá môi trường (R14): OpenTrading không có tool ghi file — nhắc arm này
+    # in kết quả cuối dạng khối ```json``` để runner trích thành answer.json.
+    # Chuỗi HẰNG SỐ áp cho MỌI trial OT (công bằng nội bộ arm, không đụng gold).
+    ENV_NOTE = ("\n\n## Lưu ý môi trường chạy\n"
+                "- Phiên này KHÔNG có tool ghi file. Sau khi tính xong, in kết quả cuối "
+                "cùng dưới dạng MỘT khối ```json``` đúng schema ở trên ngay trong câu "
+                "trả lời của bạn (không ghi file).")
+    cmd = [BUN, WRAPPER, instruction + ENV_NOTE]
     rc, out, err, timed_out = popen_run(cmd, cwd=ws, env=env, timeout_s=timeout_s, log_path=log_path)
 
     # stderr = JSONL events → tìm usage/session nếu có
