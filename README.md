@@ -149,6 +149,26 @@ EOF
 
 ---
 
+## 4b. Metrics phụ (A1–A4 dashboard · B1–B6 phân tích)
+
+Tự động tính cuối mỗi lần chạy (ghi `results/<run>/summary.json` + in dashboard);
+chạy lại cho results cũ: `python3 tools/analyze.py <results-dir>`. Toàn bộ derive từ
+telemetry đã ghi — không benchmark lại; thiếu số → N/A (không ghi 0).
+
+| Metric | Mô tả | Cách tính |
+|---|---|---|
+| **A1 Phân bố loại lỗi** | Trên trial fail: % theo `error_type` (sai_don_vi/sai_ky/sai_nguon/bia_so/timeout…) | `grade.json` error_type; per arm × L |
+| **A2 Từ chối oan** | Trên task value CÓ dữ liệu: % trả `value:null` (thừa cẩn thận — ghép với FP thành ma trận trung thực 2 chiều) | `answer.json` value=null ÷ trial answered; loại trap + task partial |
+| **A3 DNF + 2 mẫu số** | % timeout/error; Success tính trên `answered` VÀ trên `started` | `trials.jsonl` status |
+| **A4 Kinh tế tool** | mcp_calls p50/p90 (tách đúng/sai); retry rate; số trial mcp=0 | `trials.jsonl` mcp_calls/attempt |
+| **B1 Success thành phần** | % pass từng check (value/unit/period/source/…) | `grade.json checks[]` |
+| **B2 Hồ sơ token** | input/output p50/p90 + coverage (hình dạng telemetry đã chuẩn hoá) | `trials.jsonl` tokens |
+| **B3 Cost** | cost/trial + **cost-per-success** (bảng giá freeze trong `bench_config.json`) | tokens × price_per_1m |
+| **B4 Phân tán đáp án** | MAD% giữa runs — per task, chỉ trial PASS (unit-safe); cần ≥2 runs | `answer.json` value |
+| **B5 Bonus replacement** | Trên trap: % từ chối đúng CÓ nêu kỳ/số thay thế | `grade.json bonus.hit` |
+
+---
+
 ## 5. Cấu trúc thư mục
 
 ```
