@@ -163,8 +163,16 @@ benchmark/
 
 ## 6. Trạng thái & việc tiếp theo
 
-- ✅ Hạ tầng 3 arm chạy được end-to-end (smoke 3 câu xác nhận pipeline; xem
-  `results/smoke3_*` khi xong).
+- ✅ **SMOKE 3 câu ĐẠT (03/11/2026)** — 9/9 trials success, model đồng nhất
+  `deepseek-v4.1-flash`: L1-macro 3/3 · L3-crypto-multi 3/3 · L4-future trap 3/3
+  (fp=0 — cả 3 arm từ chối đúng + nêu kỳ thay thế Q3/2026). Kết quả:
+  `results/smoke3_20261103/trials.jsonl`. Median wall: dsh 161s · opencode 169s ·
+  opentrading 168s. `mcp_calls` > 0 toàn bộ (1–5), `answer_source`: opencode/dsh=file,
+  opentrading=extracted (thiết kế R14).
+- 📌 Model: `deepseek-v4.1-flash` (pre-register) — NVIDIA đã hồi phục. Google path
+  `gemini-3.5-flash-lite` (key từ opentrading, đã nạp opencode/dsh/OT) chạy tốt trên
+  opencode+OT nhưng **dsh blocker** (Gemini 3.x thought_signature) → giữ fallback,
+  xem `tools/bench_config.json`.
 - ⏳ Trước PILOT thật: wire **skills-pack chung 3 arm**; freeze + hash 250 thẻ;
   duyệt người mẫu thẻ (memory/ambiguity check); (tùy chọn) container hóa chống đọc chéo.
 - 🔒 HOLDOUT chỉ mở 1 lần sau freeze (`--confirm-holdout`).
