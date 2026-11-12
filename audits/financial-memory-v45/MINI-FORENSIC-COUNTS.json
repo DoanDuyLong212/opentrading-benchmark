@@ -1,0 +1,28 @@
+{
+  "run": "/home/doanlong/extra/benchmark/experiments/finance-v45-study/results/financial-memory-v45-mini-20261109-preflight5",
+  "audit_sha256": "72ae5a65cc1065904b5a6e30d013ce709c783c86d46475df67ffddac2db442a5",
+  "original_audit_pass": false,
+  "errors": 94,
+  "affected_episodes": 20,
+  "error_counts": {
+    "nvidia/nvidia/nemotron-3.5-super-vl-120b-a12b": {
+      "actual_user_prompt_binding": 2,
+      "actual_source_sdk_context": 6,
+      "all_generated_calls_reconciled": 8,
+      "actual_user_read_context": 1,
+      "local_rejection_occurrence": 1,
+      "local_rejection_proofs": 2
+    },
+    "nvidia/deepseek-ai/deepseek-v4.1-flash": {
+      "native_effective_capture": 57,
+      "actual_source_sdk_context": 3,
+      "actual_user_read_context": 4,
+      "all_generated_calls_reconciled": 4,
+      "actual_user_prompt_binding": 3,
+      "native_execution_sdk_binding": 1,
+      "local_rejection_proofs": 2
+    }
+  },
+  "source_modified": false,
+  "external_model_calls": 0
+}

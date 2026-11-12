@@ -1,0 +1,27 @@
+{
+ "snapshot_date": "2026-11-01",
+ "note": "Envelope MCP ghi lúc tạo task. Key = mã payload nội bộ; envelope giữ nguyên data+provenance+availability.",
+ "tools": {
+  "val:VGI": {
+   "tool": "valuation_run",
+   "params": {
+    "symbol": "VGI"
+   },
+   "envelope": {
+    "data": {
+     "symbol": "VGI",
+     "price": 75500,
+     "eps": 3056.26,
+     "bvps": 14073.87,
+     "per": 24.7,
+     "pb": 5.36
+    },
+    "provenance": {
+     "source": "computed-local",
+     "as_of": "2026-11-01T23:58:42.323307+07:00"
+    },
+    "availability": "available"
+   }
+  }
+ }
+}

@@ -1,0 +1,65 @@
+{
+ "scoring": "value",
+ "memory_construct": "cross_session_recall_or_update",
+ "solution": {
+  "alerts": [
+   "PNJ"
+  ],
+  "safe": [
+   "MSN"
+  ]
+ },
+ "expects": [
+  {
+   "type": "set",
+   "path": "values.alerts",
+   "gold": [
+    "PNJ"
+   ]
+  },
+  {
+   "type": "set",
+   "path": "values.safe",
+   "gold": [
+    "MSN"
+   ]
+  },
+  {
+   "type": "str",
+   "path": "source",
+   "accept": [
+    "market_movers"
+   ]
+  },
+  {
+   "type": "evidence",
+   "path": "note",
+   "paths": [
+    "note",
+    "values.note"
+   ],
+   "numbers": [],
+   "strings": [
+    "PNJ",
+    "MSN"
+   ],
+   "min_hits": 2
+  }
+ ],
+ "notes": "2 vị thế, 2 cắt lỗ (nghìn): PNJ ≤16 vs close 15500 đồng → ALERT; MSN ≤66 vs 70000 đồng → không. Chuyển đơn vị nghìn→đồng từ memory.",
+ "memory_checks": {},
+ "provenance_contract": [
+  {
+   "tool": "market_movers",
+   "source": "vnstock",
+   "as_of": "2026-11-01T21:12:04.261634+07:00",
+   "matched_entry_id": "movers:vn30",
+   "response_sha256": "a8203b807b243068b924bf83bd810671386c59c2fdac6deabcc1ae9514a634ca"
+  }
+ ],
+ "required_payload_keys": [
+  "movers:vn30"
+ ],
+ "task_id": "fin-mem-338",
+ "payload_sha256": "5c451ece96e0efbf2d578f3d571fc0d8bba55d7ce79a9c7079f175b9680f26f3"
+}

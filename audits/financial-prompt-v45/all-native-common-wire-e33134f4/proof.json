@@ -1,0 +1,193 @@
+{
+  "pass": true,
+  "complete": true,
+  "external_model_calls": 0,
+  "reports": [
+    {
+      "arm": "opentrading_baseline",
+      "work": "/tmp/v45-independent-opentrading_baseline-_gbg1fjg",
+      "external_model_calls": 0,
+      "result": {
+        "status": "ok",
+        "session_id": null,
+        "notes": "",
+        "native_completion": {
+          "outcome": "completed",
+          "unanswered": false,
+          "recoveries": []
+        },
+        "final_text": "{\"value\": 24000, \"unit\": \"đồng/cổ phiếu\", \"evidence\": [{\"call_id\": \"11054206-4cce-4a1f-bf3f-ac928d3e34c2\", \"tool\": \"vn_quote_history\", \"matched_entry_id\": \"synthetic\", \"payload_sha256\": \"fd05c3fd85cc073e0beb06862c9adafb7f417a9627e305b0b7070eeec52d1481\", \"response_sha256\": \"d5011aa0dfb5c753a710598bc10b99725af460e7611feaa695d01d4d8b983f69\", \"source\": \"synthetic-not-live\", \"as_of\": \"2030-04-01\"}]}",
+        "tokens": {
+          "input": 300,
+          "output": 60,
+          "cached": null,
+          "cache_read": null,
+          "cached_observed": 0,
+          "cache_complete": false,
+          "usage_requests": 3,
+          "requests": 5,
+          "complete": false
+        },
+        "provider_requests": 5,
+        "provider_usage": {
+          "input": 300,
+          "output": 60,
+          "cached": null,
+          "cache_read": null,
+          "cached_observed": 0,
+          "cache_complete": false,
+          "usage_requests": 3,
+          "requests": 5,
+          "complete": false
+        },
+        "inventory_path": "/tmp/v45-independent-opentrading_baseline-_gbg1fjg/runner/inventory.json",
+        "provider_ledger": "/tmp/v45-independent-opentrading_baseline-_gbg1fjg/runner/provider.jsonl",
+        "answer_path": null,
+        "answer_candidates": [],
+        "transport_recovered": true,
+        "first_attempt_completed": false,
+        "token_reservations_not_observed_usage": 2113536,
+        "native_derived_ledger": null
+      },
+      "local_upstream_requests": 5,
+      "pass": true
+    },
+    {
+      "arm": "opentrading_finance",
+      "work": "/tmp/v45-independent-opentrading_finance-cbids6m8",
+      "external_model_calls": 0,
+      "result": {
+        "status": "ok",
+        "session_id": null,
+        "notes": "",
+        "native_completion": {
+          "outcome": "completed",
+          "unanswered": false,
+          "recoveries": []
+        },
+        "final_text": "{\"value\": 24000, \"unit\": \"đồng/cổ phiếu\", \"evidence\": [{\"call_id\": \"c949d169-d77c-4a56-abfc-1ecabddf6d30\", \"tool\": \"vn_quote_history\", \"matched_entry_id\": \"synthetic\", \"payload_sha256\": \"fd05c3fd85cc073e0beb06862c9adafb7f417a9627e305b0b7070eeec52d1481\", \"response_sha256\": \"d5011aa0dfb5c753a710598bc10b99725af460e7611feaa695d01d4d8b983f69\", \"source\": \"synthetic-not-live\", \"as_of\": \"2030-04-01\"}]}",
+        "tokens": {
+          "input": 300,
+          "output": 60,
+          "cached": null,
+          "cache_read": null,
+          "cached_observed": 0,
+          "cache_complete": false,
+          "usage_requests": 3,
+          "requests": 5,
+          "complete": false
+        },
+        "provider_requests": 5,
+        "provider_usage": {
+          "input": 300,
+          "output": 60,
+          "cached": null,
+          "cache_read": null,
+          "cached_observed": 0,
+          "cache_complete": false,
+          "usage_requests": 3,
+          "requests": 5,
+          "complete": false
+        },
+        "inventory_path": "/tmp/v45-independent-opentrading_finance-cbids6m8/runner/inventory.json",
+        "provider_ledger": "/tmp/v45-independent-opentrading_finance-cbids6m8/runner/provider.jsonl",
+        "answer_path": null,
+        "answer_candidates": [],
+        "transport_recovered": true,
+        "first_attempt_completed": false,
+        "token_reservations_not_observed_usage": 2113536,
+        "native_derived_ledger": "/tmp/v45-independent-opentrading_finance-cbids6m8/runner/native-derived.jsonl"
+      },
+      "local_upstream_requests": 5,
+      "pass": true
+    },
+    {
+      "arm": "opencode",
+      "work": "/tmp/v45-independent-opencode-f9isa6m9",
+      "external_model_calls": 0,
+      "result": {
+        "status": "ok",
+        "final_text": "{\"value\": 24000, \"unit\": \"đồng/cổ phiếu\", \"evidence\": [{\"call_id\": \"eac9d2a8-f8d7-472b-aaa3-f2ebe1635087\", \"tool\": \"vn_quote_history\", \"matched_entry_id\": \"synthetic\", \"payload_sha256\": \"fd05c3fd85cc073e0beb06862c9adafb7f417a9627e305b0b7070eeec52d1481\", \"response_sha256\": \"d5011aa0dfb5c753a710598bc10b99725af460e7611feaa695d01d4d8b983f69\", \"source\": \"synthetic-not-live\", \"as_of\": \"2030-04-01\"}]}",
+        "session_id": "ses_e45ca1c5fffeqqhXEQ6ETJkVmE",
+        "notes": "",
+        "tokens": {
+          "input": 300,
+          "output": 60,
+          "cached": null,
+          "cache_read": null,
+          "cached_observed": 0,
+          "cache_complete": false,
+          "usage_requests": 3,
+          "requests": 5,
+          "complete": false
+        },
+        "provider_requests": 5,
+        "provider_usage": {
+          "input": 300,
+          "output": 60,
+          "cached": null,
+          "cache_read": null,
+          "cached_observed": 0,
+          "cache_complete": false,
+          "usage_requests": 3,
+          "requests": 5,
+          "complete": false
+        },
+        "inventory_path": "/tmp/v45-independent-opencode-f9isa6m9/runner/inventory.json",
+        "provider_ledger": "/tmp/v45-independent-opencode-f9isa6m9/runner/provider.jsonl",
+        "answer_path": null,
+        "answer_candidates": [],
+        "transport_recovered": true,
+        "first_attempt_completed": false,
+        "token_reservations_not_observed_usage": 2113536,
+        "native_derived_ledger": null
+      },
+      "local_upstream_requests": 5,
+      "pass": true
+    },
+    {
+      "arm": "dsh",
+      "work": "/tmp/v45-independent-dsh-chpr0p4l",
+      "external_model_calls": 0,
+      "result": {
+        "status": "ok",
+        "final_text": "{\"value\": 24000, \"unit\": \"đồng/cổ phiếu\", \"evidence\": [{\"call_id\": \"f46e42fd-1bd3-49da-b8ef-3eb1a878e50d\", \"tool\": \"vn_quote_history\", \"matched_entry_id\": \"synthetic\", \"payload_sha256\": \"fd05c3fd85cc073e0beb06862c9adafb7f417a9627e305b0b7070eeec52d1481\", \"response_sha256\": \"d5011aa0dfb5c753a710598bc10b99725af460e7611feaa695d01d4d8b983f69\", \"source\": \"synthetic-not-live\", \"as_of\": \"2030-04-01\"}]}",
+        "session_id": "session-9ae542ab-56bf-48a3-ad7e-879f44cf241a",
+        "notes": "",
+        "tokens": {
+          "input": 300,
+          "output": 60,
+          "cached": null,
+          "cache_read": null,
+          "cached_observed": 0,
+          "cache_complete": false,
+          "usage_requests": 3,
+          "requests": 5,
+          "complete": false
+        },
+        "provider_requests": 5,
+        "provider_usage": {
+          "input": 300,
+          "output": 60,
+          "cached": null,
+          "cache_read": null,
+          "cached_observed": 0,
+          "cache_complete": false,
+          "usage_requests": 3,
+          "requests": 5,
+          "complete": false
+        },
+        "inventory_path": "/tmp/v45-independent-dsh-chpr0p4l/runner/inventory.json",
+        "provider_ledger": "/tmp/v45-independent-dsh-chpr0p4l/runner/provider.jsonl",
+        "answer_path": null,
+        "answer_candidates": [],
+        "transport_recovered": true,
+        "first_attempt_completed": false,
+        "token_reservations_not_observed_usage": 2113536,
+        "native_derived_ledger": null
+      },
+      "local_upstream_requests": 5,
+      "pass": true
+    }
+  ]
+}

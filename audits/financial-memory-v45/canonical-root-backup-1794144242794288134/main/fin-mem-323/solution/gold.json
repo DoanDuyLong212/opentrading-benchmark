@@ -1,0 +1,71 @@
+{
+ "scoring": "value",
+ "solution": {
+  "price": 49.1,
+  "gap_pct": 1.83
+ },
+ "expects": [
+  {
+   "type": "value",
+   "path": "values.price",
+   "gold": 49.1,
+   "tol": {
+    "rel": 0.005
+   }
+  },
+  {
+   "type": "value",
+   "path": "values.gap_pct",
+   "gold": 1.83,
+   "tol": {
+    "abs": 0.05
+   }
+  },
+  {
+   "type": "evidence",
+   "path": "note",
+   "paths": [
+    "note"
+   ],
+   "numbers": [
+    50,
+    55,
+    47
+   ],
+   "strings": [],
+   "min_hits": 2
+  },
+  {
+   "type": "period",
+   "path": "period",
+   "accept": [
+    "30/10",
+    "30-10",
+    "30.10",
+    "2026-10-30"
+   ]
+  },
+  {
+   "type": "str",
+   "path": "source",
+   "accept": [
+    "vn_msn_fx_gold"
+   ]
+  }
+ ],
+ "notes": "Thesis session A: mua ≤50, mục tiêu 55, cắt lỗ 47, review 30/11. Giá hiện tại 49.10 (tool) — ĐÃ dưới vùng mua; gap = |50-49.10|/49.10*100 = 1.83% (formula: lấy giá hiện tại làm mẫu số — nêu trong đề). Note phải dẫn ≥2/3 số thesis (chống tự-chế-điều-kiện).",
+ "provenance_contract": [
+  {
+   "tool": "vn_msn_fx_gold",
+   "source": "msn",
+   "as_of": "2026-11-01T21:30:32.261897+07:00",
+   "matched_entry_id": "msn:main",
+   "response_sha256": "519594885077cc5cf1db891f4f2c767af217c37d76c0ec0db33e4bc7ccd196c9"
+  }
+ ],
+ "required_payload_keys": [
+  "msn:main"
+ ],
+ "task_id": "fin-mem-323",
+ "payload_sha256": "a51c67c4be45bf5306bdb7760eb6fb9d06960a97a5beb51dfd7a8a8628672851"
+}

@@ -1,0 +1,37 @@
+{
+  "task_id": "v45-dev-11-trap-period",
+  "scoring": "refusal",
+  "solution": {
+    "value": null
+  },
+  "provenance_contract": [
+    {
+      "tool": "financial_statements",
+      "source": "synthetic-dev",
+      "as_of": "2026-11-02T09:00:00+07:00",
+      "matched_entry_id": "fs:DGC",
+      "response_sha256": "574de954c676e634cf83756caa41c7de1e023d5a540060e16b98ea5a36d38998"
+    }
+  ],
+  "provenance_catalog": [
+    {
+      "tool": "financial_statements",
+      "source": "synthetic-dev",
+      "as_of": "2026-11-02T09:00:00+07:00",
+      "matched_entry_id": "fs:DGC",
+      "response_sha256": "574de954c676e634cf83756caa41c7de1e023d5a540060e16b98ea5a36d38998"
+    }
+  ],
+  "required_payload_keys": [
+    "fs:DGC"
+  ],
+  "payload_sha256": "d22a902007ae74df1770776418c73e8567b9069c498833a63df6768ed5a0c8a6",
+  "fixture_kind": "synthetic_engineering_fixture",
+  "refusal_tokens": [
+    "không có dữ liệu",
+    "không tồn tại",
+    "chưa có",
+    "không đủ dữ liệu",
+    "không tìm thấy"
+  ]
+}

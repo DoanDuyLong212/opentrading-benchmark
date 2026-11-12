@@ -1,0 +1,71 @@
+{
+  "scope": "snapshot_grounded_financial_qa",
+  "client_date": "2026-11-05",
+  "client_timezone": "Asia/Bangkok",
+  "model": "nvidia/nvidia/nemotron-3.5-bolt-e4b",
+  "protocol": "operational_parity_v3",
+  "offline": {
+    "regression_tests_passed": 243,
+    "readiness_checks_passed": 4,
+    "readiness_checks_total": 4
+  },
+  "live": {
+    "trials": 18,
+    "unique_trial_ids": 18,
+    "status_ok": 18,
+    "primary_passed": 10,
+    "provider_requests": 35,
+    "provider_http_200": 35,
+    "usage_coverage": 1.0,
+    "input_tokens": 73498,
+    "output_tokens": 10632,
+    "mcp_calls": 37,
+    "mcp_successful_calls": 10,
+    "mcp_rejected_calls": 27
+  },
+  "certificate_passed": true,
+  "freeze": {
+    "command_exit_code": 0,
+    "state_sha256": "9b05b08eb0ac48ef53c3cc9ebcc3f1690f7bb3795ade816bb8d0fafd3f53b920"
+  },
+  "resume": {
+    "command_exit_code": 0,
+    "comparison_verified_by": "root orchestrator: SHA256 compared before and after exact original smoke command plus --resume",
+    "compared_files": 19,
+    "changed_files": [],
+    "new_provider_requests": 0,
+    "new_or_duplicate_trial_rows": 0,
+    "after_sha256": {
+      "results/v2-nvidia-smoke-final-20261105/trials/smoke-agg-01__dsh__r1/attempts/01-9b5111adfa4d/provider.jsonl": "ee2dcc9955288fee6a75bbb32231ad9313dd1274534aeb7a93c34b570657ef81",
+      "results/v2-nvidia-smoke-final-20261105/trials/smoke-agg-01__dsh__r2/attempts/01-4d4b6ee8b5f2/provider.jsonl": "499e52afc74e5d8bc577557ffcd964f56f43c20fc60353cab1f7888c15f40a4b",
+      "results/v2-nvidia-smoke-final-20261105/trials/smoke-agg-01__opencode__r1/attempts/01-62bea1fbcdbd/provider.jsonl": "ab15bfb9a6d5150dfb1bb6ad42ba8226d06499f6a6ee08eb6a84501907dee9d0",
+      "results/v2-nvidia-smoke-final-20261105/trials/smoke-agg-01__opencode__r2/attempts/01-2a44382755db/provider.jsonl": "12fa0f0b3e2c185beb65e1de082f35fbd38f8928f94aa724a5523032b90afd76",
+      "results/v2-nvidia-smoke-final-20261105/trials/smoke-agg-01__opentrading__r1/attempts/01-700dcedf5931/provider.jsonl": "bd36fd402976803ce95c3a8688b493840999d3fbebbda01c4f0730f59bcf8c9c",
+      "results/v2-nvidia-smoke-final-20261105/trials/smoke-agg-01__opentrading__r2/attempts/01-7413bd0a5430/provider.jsonl": "b4596e76e407b3bce3e9c082d90c9b1490226256ee31fe96191900f33f1559f5",
+      "results/v2-nvidia-smoke-final-20261105/trials/smoke-quote-01__dsh__r1/attempts/01-8623dc3dbb2c/provider.jsonl": "52f6410583a8cb7bf810aa5c1a2558fe8881e1ed2e669da93045e871c0fc8544",
+      "results/v2-nvidia-smoke-final-20261105/trials/smoke-quote-01__dsh__r2/attempts/01-c5c9997951b4/provider.jsonl": "eeb54246d5c84aa2996255fc7526e1ddd08b01a3b22fc003a3fe175f50534cb0",
+      "results/v2-nvidia-smoke-final-20261105/trials/smoke-quote-01__opencode__r1/attempts/01-1e85a8283881/provider.jsonl": "1d963e485a08f7574f46825195d79992625e4912b0df6ce81d3db18f53f01c69",
+      "results/v2-nvidia-smoke-final-20261105/trials/smoke-quote-01__opencode__r2/attempts/01-0de7014a50cf/provider.jsonl": "f7469f0e0f395b1889481140543e1111d939e2da190bca784f924829fac1d342",
+      "results/v2-nvidia-smoke-final-20261105/trials/smoke-quote-01__opentrading__r1/attempts/01-6380ee9574d8/provider.jsonl": "f1f0ce279bca1125189ed43cdc34a1a3251b810f782bda1a6e61bbc5c89cd188",
+      "results/v2-nvidia-smoke-final-20261105/trials/smoke-quote-01__opentrading__r2/attempts/01-19c660942fbd/provider.jsonl": "516543411035b9982e8c93ad551b383fdf01c77a40227856f66f20dc481b6a11",
+      "results/v2-nvidia-smoke-final-20261105/trials/smoke-trap-01__dsh__r1/attempts/01-3a5ea22aec0d/provider.jsonl": "a97c7295714b61ce10898fb9a4ff7a4988b0a6106dae4160b9e1be337b806b72",
+      "results/v2-nvidia-smoke-final-20261105/trials/smoke-trap-01__dsh__r2/attempts/01-49c8c5d5a85d/provider.jsonl": "c800c075d78fe8e95a03f67a190971e0ecd427af2839d27e7f4cbf2a058606f1",
+      "results/v2-nvidia-smoke-final-20261105/trials/smoke-trap-01__opencode__r1/attempts/01-4c0709b563a7/provider.jsonl": "02d275f22b8856e4e72fc32f31bf87dca7375b414881988d78bf6c568500391f",
+      "results/v2-nvidia-smoke-final-20261105/trials/smoke-trap-01__opencode__r2/attempts/01-7664db980f46/provider.jsonl": "71d44065d96a01d855b9909a7279e2636114b44872af10a46d9b8c64c03d32f6",
+      "results/v2-nvidia-smoke-final-20261105/trials/smoke-trap-01__opentrading__r1/attempts/01-8688d48c9234/provider.jsonl": "1769948cea1753bc678c72838060a41d29215b52d74e490e37a365e585f51c37",
+      "results/v2-nvidia-smoke-final-20261105/trials/smoke-trap-01__opentrading__r2/attempts/01-3a192d3cd00d/provider.jsonl": "f67b3a4811274cd343d5372c23527bdbf07dcaf0e5069c96d605d617863bf5f1",
+      "results/v2-nvidia-smoke-final-20261105/trials.jsonl": "14bd2e668a23a198b554d23f08bcf68cf5e99bb52126ae14b742be5b66af2f09"
+    }
+  },
+  "artifact_file_sha256": {
+    "results/v2-nvidia-smoke-final-20261105/manifest.json": "7897b4344b678741da315a4c13e47181fa0133d3e8b91f7f5caa264a6a7de2c3",
+    "results/v2-nvidia-ready-20261105.json": "3ec236ce9f61b81e3ac57564ed43330bd7d0514e7c7248b2806824c99ecee285",
+    "results/v2-nvidia-freeze-20261105.json": "8f606fc53e4f2014d843f1dcde1e521d52b929b40172fc0ac4bd99a70a1ea52d"
+  },
+  "limits": [
+    "smoke verifies operation; 3 tasks do not establish a harness quality ranking",
+    "truth relative to frozen snapshots; original filings not certified",
+    "no model holdout runs or paid Go/DeepSeek verification",
+    "USD cost unavailable without verified pricing"
+  ]
+}

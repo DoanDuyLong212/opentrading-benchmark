@@ -1,0 +1,69 @@
+{
+  "snapshot_date": "2026-11-01",
+  "note": "Envelope MCP đã ghi lúc tạo task (2026-11-01, trim trường không dùng cho gold; data + provenance + availability giữ nguyên). Benchmark chạy qua snapshot-replay các envelope này — không gọi MCP live.",
+  "tools": {
+    "vn_quote_history": {
+      "data": {
+        "symbol": "HPG",
+        "count": 5,
+        "last": 21,
+        "high": 21.6,
+        "low": 20.75,
+        "last_t": "2026-10-30"
+      },
+      "provenance": {
+        "source": "vnstock",
+        "as_of": "2026-11-01T15:54:29.883479+07:00",
+        "data_time": "2026-10-30",
+        "timezone": "Asia/Ho_Chi_Minh"
+      },
+      "availability": "available",
+      "warnings": [
+        "dữ liệu lấy lúc 2026-11-01T15:06:35.543506+07:00, dùng lại bản đã lưu"
+      ],
+      "units": {
+        "o, h, l, c, last, high, low": "nghìn đồng/cổ phiếu (64,27 = 64.270 đ)",
+        "v": "cổ phiếu"
+      }
+    },
+    "vs_overview_trading": {
+      "data": {
+        "overview": {
+          "data": [
+            {
+              "StockCode": "HPG",
+              "TradingDate": "2026-10-30",
+              "ClosePrice": 21000,
+              "Change": -200,
+              "PerChange": -0.94,
+              "TotalVol": 29084000,
+              "TotalVal": 622317095000,
+              "ForeignBuyVal": 123863635000,
+              "ForeignSellVal": 127913285000
+            },
+            {
+              "StockCode": "HPG",
+              "TradingDate": "2026-10-29",
+              "ClosePrice": 21200,
+              "Change": 450,
+              "PerChange": 2.17,
+              "TotalVol": 38795800,
+              "TotalVal": 826575805000
+            }
+          ]
+        }
+      },
+      "provenance": {
+        "source": "vietstock",
+        "as_of": "2026-11-01T15:59:53.366224+07:00",
+        "data_time": "2026-11-01T15:09:29.347610+07:00",
+        "timezone": "Asia/Ho_Chi_Minh"
+      },
+      "availability": "available",
+      "warnings": [
+        "dữ liệu lấy lúc 2026-11-01T15:09:29.347610+07:00, dùng lại bản đã lưu"
+      ],
+      "_note": "đơn vị giá: đồng (bảng giao dịch vietstock)"
+    }
+  }
+}

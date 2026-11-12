@@ -1,0 +1,101 @@
+{
+  "task_id": "fin-l5-profile-265",
+  "scoring": "value",
+  "solution": {
+    "revenue_q_bn": 1946.0,
+    "gross_profit_q_bn": 222.0,
+    "gross_margin_pct": 11.41,
+    "pe": 4.47,
+    "market_cap_bn": 1195.9
+  },
+  "as_of": "2026-11-01T23:14:37.621348+07:00",
+  "split": "main",
+  "expects": [
+    {
+      "type": "value",
+      "path": "values.revenue_q_bn",
+      "gold": 1946.0,
+      "tol": {
+        "rel": 0.005
+      }
+    },
+    {
+      "type": "value",
+      "path": "values.gross_profit_q_bn",
+      "gold": 222.0,
+      "tol": {
+        "rel": 0.005
+      }
+    },
+    {
+      "type": "value",
+      "path": "values.gross_margin_pct",
+      "gold": 11.41,
+      "tol": {
+        "abs": 0.1
+      }
+    },
+    {
+      "type": "value",
+      "path": "values.pe",
+      "gold": 4.47,
+      "tol": {
+        "rel": 0.005
+      }
+    },
+    {
+      "type": "value",
+      "path": "values.market_cap_bn",
+      "gold": 1195.9,
+      "tol": {
+        "rel": 0.005
+      }
+    },
+    {
+      "type": "str_all",
+      "path": "source",
+      "accept": [
+        "financial_detail",
+        "stock_overview"
+      ]
+    }
+  ],
+  "contract_version": 2,
+  "provenance_contract": [
+    {
+      "tool": "stock_overview",
+      "source": "vietstock",
+      "as_of": "2026-11-01T23:14:37.621348+07:00",
+      "matched_entry_id": "ov:HBC",
+      "response_sha256": "81eb02f54ac1e941d14b0f78cc23ca035961d995ea1ad09a43c9b591ba742b5c"
+    },
+    {
+      "tool": "financial_detail",
+      "source": "vietstock",
+      "as_of": "2026-11-01T22:44:38.415589+07:00",
+      "matched_entry_id": "fd:HBC",
+      "response_sha256": "9071253e5378b8295475348f40467d24e3b331aa6608eaa14271ac850656c773"
+    }
+  ],
+  "payload_sha256": "0c1a2ae3f9764dfe3210a24cd97e499f86a271e8b45d9f6b1d196ab0f578aceb",
+  "provenance_catalog": [
+    {
+      "tool": "stock_overview",
+      "source": "vietstock",
+      "as_of": "2026-11-01T23:14:37.621348+07:00",
+      "matched_entry_id": "ov:HBC",
+      "response_sha256": "81eb02f54ac1e941d14b0f78cc23ca035961d995ea1ad09a43c9b591ba742b5c"
+    },
+    {
+      "tool": "financial_detail",
+      "source": "vietstock",
+      "as_of": "2026-11-01T22:44:38.415589+07:00",
+      "matched_entry_id": "fd:HBC",
+      "response_sha256": "9071253e5378b8295475348f40467d24e3b331aa6608eaa14271ac850656c773"
+    }
+  ],
+  "required_payload_keys": [
+    "fd:HBC",
+    "ov:HBC"
+  ]
+}

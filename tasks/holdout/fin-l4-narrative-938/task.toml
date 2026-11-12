@@ -1,11 +1,11 @@
 # Task benchmark harness tài chính (bộ 200+50) — sinh bởi tools/build_main.py
 id = "fin-l4-narrative-938"
-title = "Kiểm chứng nhận định ETHUSDT"
-version = 1
+title = "Đáy và biên độ 10 ngày ETHUSDT"
+version = 2
 created = "2026-11-01"
-level = "L4"
-family = "L4·I narrative-check"
-financebench_type = "claim verification"
+level = "L3"
+family = "L3·B aggregate"
+financebench_type = "aggregation"
 entity = "ETHUSDT"
 asset = "crypto"
 data_zone = "green"
@@ -20,8 +20,10 @@ mcp_payloads = "environment/payloads.json"
 snapshot_required = true
 split = "holdout"
 
+confirmatory_eligible = true
+
 [scoring]
-type = "verdict"
+type = "value"
 gold = "solution/gold.json"
 oracle = "solution/oracle.py"
 grader = "tests/grader.py"

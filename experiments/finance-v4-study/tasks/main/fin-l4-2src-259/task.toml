@@ -1,0 +1,29 @@
+# Task benchmark harness tài chính (bộ 200+50) — sinh bởi tools/build_main.py
+id = "fin-l4-2src-259"
+title = "Đối chiếu 2 nguồn XAGUSD vs SI=F"
+version = 2
+created = "2026-11-01"
+level = "L4"
+family = "L4·D two-source"
+financebench_type = "cross-source verification"
+entity = "XAGUSD vs SI=F"
+asset = "gold_fx"
+data_zone = "green"
+data_pairs = ["msn:main", "yf:main"]
+snapshot_date = "2026-11-01"
+universe_cap = 0
+banned_tools = ["web_search", "web_fetch", "sentiment_score"]
+human_time_band = "15–60 phút"
+time_limit_min = 30
+tools_expected = ["vn_msn_fx_gold", "yf_commodities"]
+mcp_payloads = "environment/payloads.json"
+snapshot_required = true
+split = "main"
+
+confirmatory_eligible = true
+
+[scoring]
+type = "value"
+gold = "solution/gold.json"
+oracle = "solution/oracle.py"
+grader = "tests/grader.py"

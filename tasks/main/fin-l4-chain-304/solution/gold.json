@@ -1,0 +1,106 @@
+{
+ "scoring": "value",
+ "solution": {
+  "symbol": "PVS",
+  "rsi14": 35.86,
+  "margin_pct": 9.62
+ },
+ "expects": [
+  {
+   "type": "str",
+   "path": "values.symbol",
+   "accept": [
+    "PVS"
+   ]
+  },
+  {
+   "type": "value",
+   "path": "values.rsi14",
+   "gold": 35.86,
+   "tol": {
+    "abs": 0.1
+   }
+  },
+  {
+   "type": "value",
+   "path": "values.margin_pct",
+   "gold": 9.62,
+   "tol": {
+    "abs": 0.1
+   }
+  },
+  {
+   "type": "period",
+   "path": "period",
+   "accept": [
+    "Q3/2026",
+    "quý 3/2026",
+    "q3 2026",
+    "q3/26"
+   ]
+  },
+  {
+   "type": "str_all",
+   "path": "source",
+   "accept": [
+    "signals_technical",
+    "financial_detail"
+   ]
+  }
+ ],
+ "notes": "RSI thấp nhất PVS 35.86 (cách PLX 37.34 = 1.48pp); margin PVS Q3 = 1018/10579 = 9.62%.",
+ "provenance_contract": [
+  {
+   "tool": "signals_technical",
+   "source": "computed-local",
+   "as_of": "2026-11-01T23:26:05.000000+07:00",
+   "matched_entry_id": "tech:PVS",
+   "response_sha256": "87080b8323366da51dffecabe0db8372ad82b9c325952ec3f0bd560644341765"
+  },
+  {
+   "tool": "signals_technical",
+   "source": "computed-local",
+   "as_of": "2026-11-01T23:26:05.000000+07:00",
+   "matched_entry_id": "tech:PVD",
+   "response_sha256": "c8e769998c825ec942c96675c3b1f26e504f3f9d7b12b3f8fa7a60504118940f"
+  },
+  {
+   "tool": "signals_technical",
+   "source": "computed-local",
+   "as_of": "2026-11-01T23:26:05.000000+07:00",
+   "matched_entry_id": "tech:BSR",
+   "response_sha256": "8648a1e7ecd4674e6c57dd2d5c5ad7c4248a2e5bac99ae08db01bcb83e587445"
+  },
+  {
+   "tool": "signals_technical",
+   "source": "computed-local",
+   "as_of": "2026-11-01T23:26:05.000000+07:00",
+   "matched_entry_id": "tech:PLX",
+   "response_sha256": "b035d69ff87d7d6af5e3be8bfd87518c133eb7afae1d05a998662d839a5ab26b"
+  },
+  {
+   "tool": "signals_technical",
+   "source": "computed-local",
+   "as_of": "2026-11-01T23:26:05.000000+07:00",
+   "matched_entry_id": "tech:POW",
+   "response_sha256": "66856d7246ad0ce63615c95b12268e01b1d1c05cd6c7a83aec52c9ea712c45c9"
+  },
+  {
+   "tool": "financial_detail",
+   "source": "vietstock",
+   "as_of": "2026-11-01T22:44:39.273108+07:00",
+   "matched_entry_id": "fd:PVS",
+   "response_sha256": "b0bf5de915a6c77f53b631c21cc5230bd6ff5938feb1c4ae96b1254c000393b1"
+  }
+ ],
+ "required_payload_keys": [
+  "fd:PVS",
+  "tech:BSR",
+  "tech:PLX",
+  "tech:POW",
+  "tech:PVD",
+  "tech:PVS"
+ ],
+ "task_id": "fin-l4-chain-304",
+ "payload_sha256": "4ea8bbb9d1b871ff591d72c77cbfcdc51fb7861f012f3bc99fd23786b7605433"
+}

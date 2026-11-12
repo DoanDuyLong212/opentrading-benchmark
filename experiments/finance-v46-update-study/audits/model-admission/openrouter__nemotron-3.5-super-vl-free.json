@@ -1,0 +1,40 @@
+{
+ "schema": "openrouter-free-route-admission",
+ "created": "2026-11-09T16:10+07:00",
+ "route": "openrouter_free",
+ "model_requested": "nvidia/nemotron-3.5-super-vl:free",
+ "returned_model": "nvidia/nemotron-3.5-super-vl:free",
+ "identity_note": "OpenRouter trả đúng identity yêu cầu (khác NVIDIA private alias)",
+ "pricing_verified": {
+  "prompt": 0,
+  "completion": 0
+ },
+ "user_budget": "free 1000 requests; hard-stop 950; 50 reserve retries",
+ "probes": "3/3 PASS (identity, vn_follow, tool_wire) — probes.json trong receipt này",
+ "user_authorized": true,
+ "external_model_calls": 3,
+ "financial_inference": false,
+ "probes_detail": {
+  "model_requested": "nvidia/nemotron-3.5-super-vl:free",
+  "route": "openrouter-free",
+  "probes": [
+   {
+    "probe": "identity",
+    "wall_s": 1.9,
+    "content_ok": true,
+    "usage": true
+   },
+   {
+    "probe": "vn_follow",
+    "content_head": "4"
+   },
+   {
+    "probe": "tool_wire",
+    "tool_called": true
+   }
+  ],
+  "returned_model": "nvidia/nemotron-3.5-super-vl:free",
+  "rate_headers": {},
+  "pass": true
+ }
+}

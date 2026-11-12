@@ -1,0 +1,19 @@
+{
+ "recorded_at": "2026-11-01",
+ "note": "Batch r2 — quote HDB,MSB,LPB,VPB,STB,DCM,MSH,PLX,PVD + resolve QWER9,ZZXQ,XXVX,FAKE9. (NOEX1 fuzzy→NO1, loại.)",
+ "items": {
+  "vnq:HDB": {"tool": "vn_quote_history", "params": {"symbol": "HDB"}, "body": {"data": {"symbol": "HDB", "count": 5, "last": 22.4, "last_t": "2026-10-30"}, "provenance": {"source": "vnstock", "as_of": "2026-11-01T21:42:12.954586+07:00", "data_time": "2026-10-30"}, "availability": "available"}},
+  "vnq:MSB": {"tool": "vn_quote_history", "params": {"symbol": "MSB"}, "body": {"data": {"symbol": "MSB", "count": 5, "last": 15.8, "last_t": "2026-10-30"}, "provenance": {"source": "vnstock", "as_of": "2026-11-01T21:42:13.062439+07:00", "data_time": "2026-10-30"}, "availability": "available"}},
+  "vnq:LPB": {"tool": "vn_quote_history", "params": {"symbol": "LPB"}, "body": {"data": {"symbol": "LPB", "count": 5, "last": 36.1, "last_t": "2026-10-30"}, "provenance": {"source": "vnstock", "as_of": "2026-11-01T21:42:13.480255+07:00", "data_time": "2026-10-30"}, "availability": "available"}},
+  "vnq:VPB": {"tool": "vn_quote_history", "params": {"symbol": "VPB"}, "body": {"data": {"symbol": "VPB", "count": 5, "last": 22.95, "last_t": "2026-10-30"}, "provenance": {"source": "vnstock", "as_of": "2026-11-01T21:42:13.679051+07:00", "data_time": "2026-10-30"}, "availability": "available"}},
+  "vnq:STB": {"tool": "vn_quote_history", "params": {"symbol": "STB"}, "body": {"data": {"symbol": "STB", "count": 5, "last": 66.3, "last_t": "2026-10-30"}, "provenance": {"source": "vnstock", "as_of": "2026-11-01T21:47:23.857671+07:00", "data_time": "2026-10-30"}, "availability": "available"}},
+  "vnq:DCM": {"tool": "vn_quote_history", "params": {"symbol": "DCM"}, "body": {"data": {"symbol": "DCM", "count": 5, "last": 33.3, "last_t": "2026-10-30"}, "provenance": {"source": "vnstock", "as_of": "2026-11-01T21:47:21.661846+07:00", "data_time": "2026-10-30"}, "availability": "available"}},
+  "vnq:MSH": {"tool": "vn_quote_history", "params": {"symbol": "MSH"}, "body": {"data": {"symbol": "MSH", "count": 5, "last": 34.95, "last_t": "2026-10-30"}, "provenance": {"source": "vnstock", "as_of": "2026-11-01T21:47:21.259408+07:00", "data_time": "2026-10-30"}, "availability": "available"}},
+  "vnq:PLX": {"tool": "vn_quote_history", "params": {"symbol": "PLX"}, "body": {"data": {"symbol": "PLX", "count": 5, "last": 34, "last_t": "2026-10-30"}, "provenance": {"source": "vnstock", "as_of": "2026-11-01T21:47:21.466846+07:00", "data_time": "2026-10-30"}, "availability": "available"}},
+  "vnq:PVD": {"tool": "vn_quote_history", "params": {"symbol": "PVD"}, "body": {"data": {"symbol": "PVD", "count": 5, "last": 17.95, "last_t": "2026-10-30"}, "provenance": {"source": "vnstock", "as_of": "2026-11-01T21:47:23.857482+07:00", "data_time": "2026-10-30"}, "availability": "available"}},
+  "res:QWER9": {"tool": "symbol_resolve", "params": {"query": "QWER9"}, "body": {"data": {"query": "QWER9", "resolved": null, "candidates": []}, "provenance": {"source": "vnstock+local", "as_of": "2026-11-01T21:42:10.864784+07:00"}, "availability": "empty"}},
+  "res:ZZXQ": {"tool": "symbol_resolve", "params": {"query": "ZZXQ"}, "body": {"data": {"query": "ZZXQ", "resolved": null, "candidates": []}, "provenance": {"source": "vnstock+local", "as_of": "2026-11-01T21:47:23.854719+07:00"}, "availability": "empty"}},
+  "res:XXVX": {"tool": "symbol_resolve", "params": {"query": "XXVX"}, "body": {"data": {"query": "XXVX", "resolved": null, "candidates": []}, "provenance": {"source": "vnstock+local", "as_of": "2026-11-01T21:47:23.058331+07:00"}, "availability": "empty"}},
+  "res:FAKE9": {"tool": "symbol_resolve", "params": {"query": "FAKE9"}, "body": {"data": {"query": "FAKE9", "resolved": null, "candidates": []}, "provenance": {"source": "vnstock+local", "as_of": "2026-11-01T21:47:22.461440+07:00"}, "availability": "empty"}}
+ }
+}

@@ -1,0 +1,539 @@
+experiments/finance-v45-study/tools/tests/test_common_runner.py::test_pwd_matches_cwd
+experiments/finance-v45-study/tools/tests/test_common_runner.py::test_pwd_env_override
+experiments/finance-v45-study/tools/tests/test_common_runner.py::test_parent_exit_cannot_leave_pipe_holding_descendant
+experiments/finance-v45-study/tools/tests/test_current_wire_gateway.py::test_current_native_sdk_nvidia_requests_keep_catalog_and_declared_rewrites[0]
+experiments/finance-v45-study/tools/tests/test_current_wire_gateway.py::test_current_native_sdk_nvidia_requests_keep_catalog_and_declared_rewrites[1]
+experiments/finance-v45-study/tools/tests/test_current_wire_gateway.py::test_current_native_sdk_nvidia_requests_keep_catalog_and_declared_rewrites[2]
+experiments/finance-v45-study/tools/tests/test_driver.py::test_select_all_pilot_sorted
+experiments/finance-v45-study/tools/tests/test_driver.py::test_select_sample_deterministic
+experiments/finance-v45-study/tools/tests/test_driver.py::test_select_tasks_filter_unknown_raises
+experiments/finance-v45-study/tools/tests/test_driver.py::test_select_holdout_requires_confirm
+experiments/finance-v45-study/tools/tests/test_driver.py::test_make_workspace_only_instruction
+experiments/finance-v45-study/tools/tests/test_driver.py::test_extract_fenced_json
+experiments/finance-v45-study/tools/tests/test_driver.py::test_extract_inline_object
+experiments/finance-v45-study/tools/tests/test_driver.py::test_extract_prefers_object_with_answer_keys
+experiments/finance-v45-study/tools/tests/test_driver.py::test_extract_refusal_style
+experiments/finance-v45-study/tools/tests/test_driver.py::test_extract_none_when_no_json
+experiments/finance-v45-study/tools/tests/test_driver.py::test_grade_trial_with_real_grader
+experiments/finance-v45-study/tools/tests/test_driver.py::test_grade_trial_missing_answer
+experiments/finance-v45-study/tools/tests/test_driver.py::test_retry_only_identifiable_transient_errors
+experiments/finance-v45-study/tools/tests/test_driver.py::test_workspace_reuse_rejected
+experiments/finance-v45-study/tools/tests/test_driver.py::test_multiple_answer_objects_are_invalid
+experiments/finance-v45-study/tools/tests/test_experiment_conditions.py::test_explicit_aliases_keep_native_agent_and_distinct_prompts
+experiments/finance-v45-study/tools/tests/test_experiment_conditions.py::test_default_all_arms_remains_canonical_three_for_18_trial_smoke
+experiments/finance-v45-study/tools/tests/test_experiment_conditions.py::test_compact_pilot_schedule_exactly_balances_all_four_positions
+experiments/finance-v45-study/tools/tests/test_experiment_conditions.py::test_protocol_hash_changes_on_one_byte
+experiments/finance-v45-study/tools/tests/test_grader_v2.py::test_nonfinite_boolean_and_container_values_rejected[False]
+experiments/finance-v45-study/tools/tests/test_grader_v2.py::test_nonfinite_boolean_and_container_values_rejected[True]
+experiments/finance-v45-study/tools/tests/test_grader_v2.py::test_nonfinite_boolean_and_container_values_rejected[value2]
+experiments/finance-v45-study/tools/tests/test_grader_v2.py::test_nonfinite_boolean_and_container_values_rejected[value3]
+experiments/finance-v45-study/tools/tests/test_grader_v2.py::test_nonfinite_boolean_and_container_values_rejected[nan]
+experiments/finance-v45-study/tools/tests/test_grader_v2.py::test_nonfinite_boolean_and_container_values_rejected[inf]
+experiments/finance-v45-study/tools/tests/test_grader_v2.py::test_nonfinite_boolean_and_container_values_rejected[1e999]
+experiments/finance-v45-study/tools/tests/test_grader_v2.py::test_refusal_requires_present_json_null[answer0]
+experiments/finance-v45-study/tools/tests/test_grader_v2.py::test_refusal_requires_present_json_null[answer1]
+experiments/finance-v45-study/tools/tests/test_grader_v2.py::test_refusal_requires_present_json_null[None]
+experiments/finance-v45-study/tools/tests/test_grader_v2.py::test_refusal_requires_present_json_null[1]
+experiments/finance-v45-study/tools/tests/test_grader_v2.py::test_refusal_requires_present_json_null[answer]
+experiments/finance-v45-study/tools/tests/test_grader_v2.py::test_refusal_requires_present_json_null[answer5]
+experiments/finance-v45-study/tools/tests/test_grader_v2.py::test_refusal_requires_present_json_null[answer6]
+experiments/finance-v45-study/tools/tests/test_grader_v2.py::test_refusal_requires_present_json_null[answer7]
+experiments/finance-v45-study/tools/tests/test_grader_v2.py::test_null_refusal_with_reason_passes
+experiments/finance-v45-study/tools/tests/test_grader_v2.py::test_vietnamese_refusal_passive_paraphrases[M\xe3 XYZX kh\xf4ng \u0111\u01b0\u1ee3c t\xecm th\u1ea5y trong d\u1eef li\u1ec7u snapshot.]
+experiments/finance-v45-study/tools/tests/test_grader_v2.py::test_vietnamese_refusal_passive_paraphrases[Ch\u1ec9 ti\xeau n\xe0y ch\u01b0a \u0111\u01b0\u1ee3c c\xf4ng b\u1ed1 t\u1ea1i th\u1eddi \u0111i\u1ec3m snapshot.]
+experiments/finance-v45-study/tools/tests/test_grader_v2.py::test_vietnamese_refusal_passive_paraphrases[B\xe1o c\xe1o ch\u01b0a \u0111\u01b0\u1ee3c ph\xe1t h\xe0nh.]
+experiments/finance-v45-study/tools/tests/test_grader_v2.py::test_vietnamese_refusal_passive_paraphrases[Kh\xf4ng t\xecm th\u1ea5y d\u1eef li\u1ec7u cho m\xe3 \u0111\u01b0\u1ee3c h\u1ecfi.]
+experiments/finance-v45-study/tools/tests/test_grader_v2.py::test_refusal_double_negations_and_opposite_claims_rejected[Kh\xf4ng ph\u1ea3i kh\xf4ng \u0111\u01b0\u1ee3c t\xecm th\u1ea5y m\xe3 n\xe0y.]
+experiments/finance-v45-study/tools/tests/test_grader_v2.py::test_refusal_double_negations_and_opposite_claims_rejected[Kh\xf4ng ph\u1ea3i l\xe0 kh\xf4ng t\xecm th\u1ea5y m\xe3 n\xe0y.]
+experiments/finance-v45-study/tools/tests/test_grader_v2.py::test_refusal_double_negations_and_opposite_claims_rejected[Kh\xf4ng kh\xf4ng t\xecm th\u1ea5y.]
+experiments/finance-v45-study/tools/tests/test_grader_v2.py::test_refusal_double_negations_and_opposite_claims_rejected[Kh\xf4ng t\xecm th\u1ea5y l\xfac \u0111\u1ea7u nh\u01b0ng \u0111\xe3 t\xecm th\u1ea5y d\u1eef li\u1ec7u.]
+experiments/finance-v45-study/tools/tests/test_grader_v2.py::test_refusal_double_negations_and_opposite_claims_rejected[Ch\u01b0a \u0111\u01b0\u1ee3c c\xf4ng b\u1ed1, nh\u01b0ng \u0111\xe3 c\xf4ng b\u1ed1 trong snapshot.]
+experiments/finance-v45-study/tools/tests/test_grader_v2.py::test_refusal_double_negations_and_opposite_claims_rejected[Kh\xf4ng t\xecm th\u1ea5y, nh\u01b0ng m\xe3 v\u1eabn t\u1ed3n t\u1ea1i.]
+experiments/finance-v45-study/tools/tests/test_grader_v2.py::test_refusal_double_negations_and_opposite_claims_rejected[not unavailable]
+experiments/finance-v45-study/tools/tests/test_grader_v2.py::test_passive_refusal_still_requires_null
+experiments/finance-v45-study/tools/tests/test_grader_v2.py::test_wrong_or_incomplete_comparison_period_rejected[Q1/1900 kh\xf4ng ph\u1ea3i Q3/2026]
+experiments/finance-v45-study/tools/tests/test_grader_v2.py::test_wrong_or_incomplete_comparison_period_rejected[Q3/2025]
+experiments/finance-v45-study/tools/tests/test_grader_v2.py::test_wrong_or_incomplete_comparison_period_rejected[Q3/2026 so v\u1edbi Q1/2026]
+experiments/finance-v45-study/tools/tests/test_grader_v2.py::test_wrong_or_incomplete_comparison_period_rejected[Q3/2026]
+experiments/finance-v45-study/tools/tests/test_grader_v2.py::test_wrong_or_incomplete_comparison_period_rejected[Q3/2026 so v\u1edbi Q2/2025]
+experiments/finance-v45-study/tools/tests/test_grader_v2.py::test_comparison_period_valid_variants[Q3/2026 so v\u1edbi Q2/2026]
+experiments/finance-v45-study/tools/tests/test_grader_v2.py::test_comparison_period_valid_variants[qu\xfd 3 n\u0103m 2026 / qu\xfd 2 n\u0103m 2026]
+experiments/finance-v45-study/tools/tests/test_grader_v2.py::test_comparison_period_valid_variants[Q3/26 vs Q2/26]
+experiments/finance-v45-study/tools/tests/test_grader_v2.py::test_source_requires_canonical_tool[kh\xf4ng d\xf9ng vn_quote_history]
+experiments/finance-v45-study/tools/tests/test_grader_v2.py::test_source_requires_canonical_tool[NOT vn_quote_history]
+experiments/finance-v45-study/tools/tests/test_grader_v2.py::test_source_requires_canonical_tool[vn_quote_history_fake]
+experiments/finance-v45-study/tools/tests/test_grader_v2.py::test_source_requires_canonical_tool[vn_quote_history or invented]
+experiments/finance-v45-study/tools/tests/test_grader_v2.py::test_source_requires_canonical_tool[vnstock]
+experiments/finance-v45-study/tools/tests/test_grader_v2.py::test_numeric_tolerance_boundary
+experiments/finance-v45-study/tools/tests/test_grader_v2.py::test_provenance_namespace_and_timestamp_checked_separately
+experiments/finance-v45-study/tools/tests/test_grader_v2.py::test_date_extra_wrong_endpoint_rejected[2026-10-30 v\xe0 2026-10-29]
+experiments/finance-v45-study/tools/tests/test_grader_v2.py::test_date_extra_wrong_endpoint_rejected[30/10/2025]
+experiments/finance-v45-study/tools/tests/test_grader_v2.py::test_date_extra_wrong_endpoint_rejected[kh\xf4ng ph\u1ea3i 30/10/2026]
+experiments/finance-v45-study/tools/tests/test_grader_v2.py::test_month_valid_aliases_preserved[th\xe1ng 9/2026]
+experiments/finance-v45-study/tools/tests/test_grader_v2.py::test_month_valid_aliases_preserved[9/2026]
+experiments/finance-v45-study/tools/tests/test_grader_v2.py::test_month_valid_aliases_preserved[T9/2026]
+experiments/finance-v45-study/tools/tests/test_independent_snapshot.py::test_independent_finance_calculation[pilot-fin-l1-bctc-01]
+experiments/finance-v45-study/tools/tests/test_independent_snapshot.py::test_independent_finance_calculation[pilot-fin-l1-gold-01]
+experiments/finance-v45-study/tools/tests/test_independent_snapshot.py::test_independent_finance_calculation[pilot-fin-l1-quote-01]
+experiments/finance-v45-study/tools/tests/test_independent_snapshot.py::test_independent_finance_calculation[pilot-fin-l1-quote-02]
+experiments/finance-v45-study/tools/tests/test_independent_snapshot.py::test_independent_finance_calculation[pilot-fin-l2-crypto-01]
+experiments/finance-v45-study/tools/tests/test_independent_snapshot.py::test_independent_finance_calculation[pilot-fin-l2-gold-01]
+experiments/finance-v45-study/tools/tests/test_independent_snapshot.py::test_independent_finance_calculation[pilot-fin-l2-growth-01]
+experiments/finance-v45-study/tools/tests/test_independent_snapshot.py::test_independent_finance_calculation[pilot-fin-l2-margin-01]
+experiments/finance-v45-study/tools/tests/test_independent_snapshot.py::test_independent_finance_calculation[pilot-fin-l2-ratio-01]
+experiments/finance-v45-study/tools/tests/test_independent_snapshot.py::test_independent_finance_calculation[pilot-fin-l2-tech-01]
+experiments/finance-v45-study/tools/tests/test_independent_snapshot.py::test_independent_finance_calculation[pilot-fin-l3-agg-01]
+experiments/finance-v45-study/tools/tests/test_independent_snapshot.py::test_independent_finance_calculation[pilot-fin-l3-crypto-01]
+experiments/finance-v45-study/tools/tests/test_independent_snapshot.py::test_independent_finance_calculation[pilot-fin-l3-index-01]
+experiments/finance-v45-study/tools/tests/test_independent_snapshot.py::test_independent_finance_calculation[pilot-fin-l3-screen-01]
+experiments/finance-v45-study/tools/tests/test_independent_snapshot.py::test_independent_finance_calculation[pilot-fin-l3-tech-multi-01]
+experiments/finance-v45-study/tools/tests/test_independent_snapshot.py::test_independent_finance_calculation[pilot-fin-l3-top-01]
+experiments/finance-v45-study/tools/tests/test_independent_snapshot.py::test_independent_finance_calculation[pilot-fin-l4-2nguon-01]
+experiments/finance-v45-study/tools/tests/test_independent_snapshot.py::test_independent_finance_calculation[pilot-fin-l4-future-01]
+experiments/finance-v45-study/tools/tests/test_independent_snapshot.py::test_independent_finance_calculation[pilot-fin-l4-narrative-01]
+experiments/finance-v45-study/tools/tests/test_independent_snapshot.py::test_independent_finance_calculation[pilot-fin-l4-nonexist-01]
+experiments/finance-v45-study/tools/tests/test_independent_snapshot.py::test_independent_finance_calculation[pilot-fin-l5-compare-01]
+experiments/finance-v45-study/tools/tests/test_independent_snapshot.py::test_independent_finance_calculation[pilot-fin-l5-profile-01]
+experiments/finance-v45-study/tools/tests/test_independent_snapshot.py::test_independent_finance_calculation[pilot-fin-l5-valuation-01]
+experiments/finance-v45-study/tools/tests/test_independent_snapshot.py::test_independent_finance_calculation[main-fin-l1-bctc-109]
+experiments/finance-v45-study/tools/tests/test_independent_snapshot.py::test_independent_finance_calculation[main-fin-l1-quote-crypto-121]
+experiments/finance-v45-study/tools/tests/test_independent_snapshot.py::test_independent_finance_calculation[main-fin-l1-quote-gf-126]
+experiments/finance-v45-study/tools/tests/test_independent_snapshot.py::test_independent_finance_calculation[main-fin-l1-quote-vn-101]
+experiments/finance-v45-study/tools/tests/test_independent_snapshot.py::test_independent_finance_calculation[main-fin-l2-crypto-x-166]
+experiments/finance-v45-study/tools/tests/test_independent_snapshot.py::test_independent_finance_calculation[main-fin-l2-growth-141]
+experiments/finance-v45-study/tools/tests/test_independent_snapshot.py::test_independent_finance_calculation[main-fin-l1-macro-137]
+experiments/finance-v45-study/tools/tests/test_independent_snapshot.py::test_independent_finance_calculation[main-fin-l2-macro-calc-176]
+experiments/finance-v45-study/tools/tests/test_independent_snapshot.py::test_independent_finance_calculation[main-fin-l2-macro-calc-180]
+experiments/finance-v45-study/tools/tests/test_independent_snapshot.py::test_independent_finance_calculation[main-fin-l2-margin-149]
+experiments/finance-v45-study/tools/tests/test_independent_snapshot.py::test_independent_finance_calculation[main-fin-l2-ratio-157]
+experiments/finance-v45-study/tools/tests/test_independent_snapshot.py::test_independent_finance_calculation[main-fin-l2-tech-162]
+experiments/finance-v45-study/tools/tests/test_independent_snapshot.py::test_independent_finance_calculation[main-fin-l3-agg-181]
+experiments/finance-v45-study/tools/tests/test_independent_snapshot.py::test_independent_finance_calculation[main-fin-l3-screen-189]
+experiments/finance-v45-study/tools/tests/test_independent_snapshot.py::test_independent_finance_calculation[main-fin-l3-tech-multi-203]
+experiments/finance-v45-study/tools/tests/test_independent_snapshot.py::test_independent_finance_calculation[main-fin-l3-index-216]
+experiments/finance-v45-study/tools/tests/test_independent_snapshot.py::test_independent_finance_calculation[main-fin-l5-compare-275]
+experiments/finance-v45-study/tools/tests/test_independent_snapshot.py::test_independent_finance_calculation[main-fin-l5-profile-261]
+experiments/finance-v45-study/tools/tests/test_independent_snapshot.py::test_independent_finance_calculation[main-fin-l5-valuation-291]
+experiments/finance-v45-study/tools/tests/test_independent_snapshot.py::test_independent_finance_calculation[smoke-smoke-agg-01]
+experiments/finance-v45-study/tools/tests/test_independent_snapshot.py::test_independent_finance_calculation[smoke-smoke-quote-01]
+experiments/finance-v45-study/tools/tests/test_independent_snapshot.py::test_independent_finance_calculation[smoke-smoke-trap-01]
+experiments/finance-v45-study/tools/tests/test_independent_snapshot.py::test_ambiguous_or_nonfinite_json_cannot_pass[{"value": 999, "value": 100}]
+experiments/finance-v45-study/tools/tests/test_independent_snapshot.py::test_ambiguous_or_nonfinite_json_cannot_pass[{"value":100,"x":{"a":1,"a":2}}]
+experiments/finance-v45-study/tools/tests/test_independent_snapshot.py::test_ambiguous_or_nonfinite_json_cannot_pass[{"value":100} {"value":200}]
+experiments/finance-v45-study/tools/tests/test_independent_snapshot.py::test_ambiguous_or_nonfinite_json_cannot_pass[{"value":NaN}]
+experiments/finance-v45-study/tools/tests/test_independent_snapshot.py::test_ambiguous_or_nonfinite_json_cannot_pass[{"value":1e999}]
+experiments/finance-v45-study/tools/tests/test_independent_snapshot.py::test_ambiguous_or_nonfinite_json_cannot_pass[{"value":9999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999}]
+experiments/finance-v45-study/tools/tests/test_independent_snapshot.py::test_comparison_requires_both_captured_quarters[pilot-fin-l2-growth-01]
+experiments/finance-v45-study/tools/tests/test_independent_snapshot.py::test_comparison_requires_both_captured_quarters[main-fin-l2-growth-141]
+experiments/finance-v45-study/tools/tests/test_independent_snapshot.py::test_explicitly_contradictory_finance_fields_rejected[unit-unit-USD ch\u1ee9 kh\xf4ng ph\u1ea3i %-expect0]
+experiments/finance-v45-study/tools/tests/test_independent_snapshot.py::test_explicitly_contradictory_finance_fields_rejected[unit-unit-kh\xf4ng d\xf9ng \u0111\u1ed3ng-expect1]
+experiments/finance-v45-study/tools/tests/test_independent_snapshot.py::test_explicitly_contradictory_finance_fields_rejected[unit-unit-\u0111\u1ed3ng v\xe0 USD-expect2]
+experiments/finance-v45-study/tools/tests/test_independent_snapshot.py::test_explicitly_contradictory_finance_fields_rejected[tokens-line-Kh\xf4ng d\xf9ng T\u1ed5ng LNST-expect3]
+experiments/finance-v45-study/tools/tests/test_independent_snapshot.py::test_explicitly_contradictory_finance_fields_rejected[verdict-verdict-kh\xf4ng \u0111\xfang, nh\u01b0ng \u0111\xfang-expect4]
+experiments/finance-v45-study/tools/tests/test_independent_snapshot.py::test_explicitly_contradictory_finance_fields_rejected[verdict-verdict-kh\xf4ng sai-expect5]
+experiments/finance-v45-study/tools/tests/test_independent_snapshot.py::test_short_year_cannot_hide_wrong_financial_period[30/10/25]
+experiments/finance-v45-study/tools/tests/test_independent_snapshot.py::test_short_year_cannot_hide_wrong_financial_period[30-10-25]
+experiments/finance-v45-study/tools/tests/test_independent_snapshot.py::test_stablecoin_and_reciprocal_fx_units_are_distinct
+experiments/finance-v45-study/tools/tests/test_independent_snapshot.py::test_one_bank_response_cannot_ground_all_bank_answers
+experiments/finance-v45-study/tools/tests/test_independent_snapshot.py::test_only_question_required_responses_are_mandatory[main-fin-l1-quote-gf-126-expected_ids0]
+experiments/finance-v45-study/tools/tests/test_independent_snapshot.py::test_only_question_required_responses_are_mandatory[main-fin-l2-macro-calc-176-expected_ids1]
+experiments/finance-v45-study/tools/tests/test_independent_snapshot.py::test_only_question_required_responses_are_mandatory[pilot-fin-l2-tech-01-expected_ids2]
+experiments/finance-v45-study/tools/tests/test_independent_snapshot.py::test_only_question_required_responses_are_mandatory[pilot-fin-l3-tech-multi-01-expected_ids3]
+experiments/finance-v45-study/tools/tests/test_independent_snapshot.py::test_cpi_missing_series_dimension_is_quarantined_but_gdp_decoy_is_safe
+experiments/finance-v45-study/tools/tests/test_independent_snapshot.py::test_all_instruction_json_examples_parse
+experiments/finance-v45-study/tools/tests/test_independent_snapshot.py::test_incomplete_narrative_answer_is_diagnostic_only
+experiments/finance-v45-study/tools/tests/test_independent_snapshot.py::test_replay_native_defaults_and_exact_request_identity
+experiments/finance-v45-study/tools/tests/test_independent_snapshot.py::test_original_archive_preserved_and_versioned_payload_changes_are_explicit
+experiments/finance-v45-study/tools/tests/test_independent_snapshot.py::test_real_stdio_records_schema_invalid_and_wrong_entity_calls
+experiments/finance-v45-study/tools/tests/test_memory_controller.py::test_user_operation_requires_verbatim_explicit_consent
+experiments/finance-v45-study/tools/tests/test_memory_controller.py::test_read_notebook_exposes_only_active_user_facts_with_separate_trace
+experiments/finance-v45-study/tools/tests/test_memory_controller.py::test_native_user_forms_revision_revoke_and_readonly_audit
+experiments/finance-v45-study/tools/tests/test_metrics.py::test_percentile_basic
+experiments/finance-v45-study/tools/tests/test_metrics.py::test_dnf_and_two_denominators
+experiments/finance-v45-study/tools/tests/test_metrics.py::test_error_taxonomy
+experiments/finance-v45-study/tools/tests/test_metrics.py::test_tool_economy_and_retry
+experiments/finance-v45-study/tools/tests/test_metrics.py::test_false_refusal_classification
+experiments/finance-v45-study/tools/tests/test_metrics.py::test_false_refusal_rate_excludes_partial_tasks
+experiments/finance-v45-study/tools/tests/test_metrics.py::test_bonus_rate
+experiments/finance-v45-study/tools/tests/test_metrics.py::test_token_normalize_shapes
+experiments/finance-v45-study/tools/tests/test_metrics.py::test_cost_per_success
+experiments/finance-v45-study/tools/tests/test_metrics.py::test_dispersion_passed_only
+experiments/finance-v45-study/tools/tests/test_metrics.py::test_dispersion_per_task_khong_tron_dai_luong
+experiments/finance-v45-study/tools/tests/test_metrics.py::test_resolve_task_dir
+experiments/finance-v45-study/tools/tests/test_metrics.py::test_gold_scoring_and_partial
+experiments/finance-v45-study/tools/tests/test_metrics.py::test_uniform_public_refusal_branch_counts_on_aggregate_answerable_tasks[values.VCB]
+experiments/finance-v45-study/tools/tests/test_metrics.py::test_uniform_public_refusal_branch_counts_on_aggregate_answerable_tasks[ranking]
+experiments/finance-v45-study/tools/tests/test_metrics.py::test_uniform_public_refusal_branch_counts_on_aggregate_answerable_tasks[items]
+experiments/finance-v45-study/tools/tests/test_provider_runner.py::test_environment_drops_provider_keys_hooks_and_global_state
+experiments/finance-v45-study/tools/tests/test_provider_runner.py::test_allowlist_never_silently_routes_paid_or_other_provider
+experiments/finance-v45-study/tools/tests/test_provider_runner.py::test_usage_aggregates_all_requests_and_cache
+experiments/finance-v45-study/tools/tests/test_provider_runner.py::test_missing_usage_never_fabricates_zero_complete_cost
+experiments/finance-v45-study/tools/tests/test_provider_runner.py::test_exact_frozen_catalog_rejects_disguised_tools[opentrading_web_fetch]
+experiments/finance-v45-study/tools/tests/test_provider_runner.py::test_exact_frozen_catalog_rejects_disguised_tools[opentrading_shell]
+experiments/finance-v45-study/tools/tests/test_provider_runner.py::test_exact_frozen_catalog_rejects_disguised_tools[execute]
+experiments/finance-v45-study/tools/tests/test_provider_runner.py::test_exact_frozen_catalog_rejects_disguised_tools[mcp__opentrading__invented]
+experiments/finance-v45-study/tools/tests/test_provider_runner.py::test_gateway_deadline_blocks_before_network
+experiments/finance-v45-study/tools/tests/test_provider_runner.py::test_gateway_aggregates_real_sse_and_enforces_output_cap
+experiments/finance-v45-study/tools/tests/test_provider_runner.py::test_missing_cache_is_unknown_not_measured_zero
+experiments/finance-v45-study/tools/tests/test_provider_runner.py::test_invalid_usage_never_counts_as_measured[-1]
+experiments/finance-v45-study/tools/tests/test_provider_runner.py::test_invalid_usage_never_counts_as_measured[True]
+experiments/finance-v45-study/tools/tests/test_provider_runner.py::test_invalid_usage_never_counts_as_measured[nan]
+experiments/finance-v45-study/tools/tests/test_provider_runner.py::test_invalid_usage_never_counts_as_measured[inf]
+experiments/finance-v45-study/tools/tests/test_provider_runner.py::test_complete_snapshot_catalog_required
+experiments/finance-v45-study/tools/tests/test_provider_runner.py::test_unknown_upstream_usage_cannot_replenish_token_budget
+experiments/finance-v45-study/tools/tests/test_provider_runner.py::test_retry_after_terminal_429_retains_upstream_status
+experiments/finance-v45-study/tools/tests/test_provider_runner.py::test_native_opencode_final_text_excludes_tool_step_preface
+experiments/finance-v45-study/tools/tests/test_provider_runner.py::test_real_http_response_content_length_closes_fp_without_losing_usage
+experiments/finance-v45-study/tools/tests/test_public_contract.py::test_valid_number_and_optional_note
+experiments/finance-v45-study/tools/tests/test_public_contract.py::test_numeric_answer_does_not_excuse_missing_public_fields[period]
+experiments/finance-v45-study/tools/tests/test_public_contract.py::test_numeric_answer_does_not_excuse_missing_public_fields[source]
+experiments/finance-v45-study/tools/tests/test_public_contract.py::test_transport_requires_literal_single_json_object[<lambda>0]
+experiments/finance-v45-study/tools/tests/test_public_contract.py::test_transport_requires_literal_single_json_object[<lambda>1]
+experiments/finance-v45-study/tools/tests/test_public_contract.py::test_transport_requires_literal_single_json_object[<lambda>2]
+experiments/finance-v45-study/tools/tests/test_public_contract.py::test_nonobjects_rejected[value0]
+experiments/finance-v45-study/tools/tests/test_public_contract.py::test_nonobjects_rejected[1]
+experiments/finance-v45-study/tools/tests/test_public_contract.py::test_nonobjects_rejected[text]
+experiments/finance-v45-study/tools/tests/test_public_contract.py::test_nonobjects_rejected[None]
+experiments/finance-v45-study/tools/tests/test_public_contract.py::test_source_is_tool_namespace_not_provider
+experiments/finance-v45-study/tools/tests/test_public_contract.py::test_global_catalog_tool_absent_from_task_is_rejected
+experiments/finance-v45-study/tools/tests/test_public_contract.py::test_required_json_types[value-True]
+experiments/finance-v45-study/tools/tests/test_public_contract.py::test_required_json_types[period-2026]
+experiments/finance-v45-study/tools/tests/test_public_contract.py::test_required_json_types[evidence-value2]
+experiments/finance-v45-study/tools/tests/test_public_contract.py::test_uniform_refusal_also_applies_to_aggregation
+experiments/finance-v45-study/tools/tests/test_public_contract.py::test_explicit_public_nullable_field
+experiments/finance-v45-study/tools/tests/test_public_contract.py::test_unsupported_public_shape_fails_transparently
+experiments/finance-v45-study/tools/tests/test_public_contract.py::test_all_254_development_main_instructions_have_supported_single_example
+experiments/finance-v45-study/tools/tests/test_public_contract.py::test_common_endpoint_preserves_semantic_and_frozen_results[opentrading]
+experiments/finance-v45-study/tools/tests/test_public_contract.py::test_common_endpoint_preserves_semantic_and_frozen_results[opentrading_baseline]
+experiments/finance-v45-study/tools/tests/test_public_contract.py::test_common_endpoint_preserves_semantic_and_frozen_results[opencode]
+experiments/finance-v45-study/tools/tests/test_public_contract.py::test_common_endpoint_preserves_semantic_and_frozen_results[dsh]
+experiments/finance-v45-study/tools/tests/test_readiness.py::test_operational_certificate_allows_explicit_rejections_as_quality_failures
+experiments/finance-v45-study/tools/tests/test_readiness.py::test_zero_tool_model_response_needs_proven_zero_calls_and_complete_catalog
+experiments/finance-v45-study/tools/tests/test_readiness.py::test_certificate_requires_finite_nonnegative_authoritative_usage[usage0]
+experiments/finance-v45-study/tools/tests/test_readiness.py::test_certificate_requires_finite_nonnegative_authoritative_usage[usage1]
+experiments/finance-v45-study/tools/tests/test_readiness.py::test_certificate_requires_finite_nonnegative_authoritative_usage[usage2]
+experiments/finance-v45-study/tools/tests/test_readiness.py::test_certificate_requires_finite_nonnegative_authoritative_usage[usage3]
+experiments/finance-v45-study/tools/tests/test_readiness.py::test_certificate_requires_finite_nonnegative_authoritative_usage[usage4]
+experiments/finance-v45-study/tools/tests/test_readiness.py::test_certificate_recomputes_trial_usage_from_provider_ledger[requests-2]
+experiments/finance-v45-study/tools/tests/test_readiness.py::test_certificate_recomputes_trial_usage_from_provider_ledger[input-999]
+experiments/finance-v45-study/tools/tests/test_readiness.py::test_certificate_recomputes_trial_usage_from_provider_ledger[output-True]
+experiments/finance-v45-study/tools/tests/test_readiness.py::test_operational_certificate_rejects_broken_paths_and_fake_canaries[all_rejected]
+experiments/finance-v45-study/tools/tests/test_readiness.py::test_operational_certificate_rejects_broken_paths_and_fake_canaries[invented_evidence]
+experiments/finance-v45-study/tools/tests/test_readiness.py::test_operational_certificate_rejects_broken_paths_and_fake_canaries[malformed_ledger]
+experiments/finance-v45-study/tools/tests/test_readiness.py::test_operational_certificate_rejects_broken_paths_and_fake_canaries[server_error]
+experiments/finance-v45-study/tools/tests/test_readiness.py::test_operational_certificate_rejects_broken_paths_and_fake_canaries[unknown_usage]
+experiments/finance-v45-study/tools/tests/test_readiness.py::test_operational_certificate_rejects_broken_paths_and_fake_canaries[missing_tool]
+experiments/finance-v45-study/tools/tests/test_readiness.py::test_operational_certificate_rejects_broken_paths_and_fake_canaries[timeout]
+experiments/finance-v45-study/tools/tests/test_readiness.py::test_certificate_rejects_modified_raw_provider_capture
+experiments/finance-v45-study/tools/tests/test_readiness.py::test_certificate_rejects_wrong_prompt_variant_inventory
+experiments/finance-v45-study/tools/tests/test_readiness.py::test_certificate_rejects_effective_message_rewrite_even_with_rehashed_capture
+experiments/finance-v45-study/tools/tests/test_readiness.py::test_trap_only_primary_success_cannot_satisfy_numeric_retrieval_canary
+experiments/finance-v45-study/tools/tests/test_readiness.py::test_certificate_binds_public_contract_to_raw_completion[prose]
+experiments/finance-v45-study/tools/tests/test_readiness.py::test_certificate_binds_public_contract_to_raw_completion[missing_period]
+experiments/finance-v45-study/tools/tests/test_readiness.py::test_certificate_binds_public_contract_to_raw_completion[wrong_source]
+experiments/finance-v45-study/tools/tests/test_readiness.py::test_certificate_binds_public_contract_to_raw_completion[forged_valid]
+experiments/finance-v45-study/tools/tests/test_readiness.py::test_certificate_binds_public_contract_to_raw_completion[forged_success]
+experiments/finance-v45-study/tools/tests/test_reproducibility.py::test_retry_fresh_workspaces_aggregates_and_shares_caps
+experiments/finance-v45-study/tools/tests/test_reproducibility.py::test_timeout_cannot_pass_even_with_correct_answer
+experiments/finance-v45-study/tools/tests/test_reproducibility.py::test_write_file_is_never_answer_rescue
+experiments/finance-v45-study/tools/tests/test_reproducibility.py::test_grounding_requires_exact_successful_call
+experiments/finance-v45-study/tools/tests/test_reproducibility.py::test_recovery_after_completed_attempt_does_not_call_model
+experiments/finance-v45-study/tools/tests/test_reproducibility.py::test_recovery_midstream_records_failure_unknown_usage
+experiments/finance-v45-study/tools/tests/test_reproducibility.py::test_schedule_deterministic_and_counterbalanced
+experiments/finance-v45-study/tools/tests/test_reproducibility.py::test_manifest_resume_rejects_config_task_or_code_change
+experiments/finance-v45-study/tools/tests/test_reproducibility.py::test_duplicate_and_truncated_rows_fail_loudly
+experiments/finance-v45-study/tools/tests/test_reproducibility.py::test_freeze_requires_current_offline_and_live_certificate
+experiments/finance-v45-study/tools/tests/test_reproducibility.py::test_once_only_holdout_gate_is_exact_resume
+experiments/finance-v45-study/tools/tests/test_reproducibility.py::test_interrupted_append_quarantined_but_complete_rows_preserved
+experiments/finance-v45-study/tools/tests/test_reproducibility.py::test_negative_median_dispersion_and_missing_usage_never_zero
+experiments/finance-v45-study/tools/tests/test_reproducibility.py::test_answered_denominator_never_exceeds_one
+experiments/finance-v45-study/tools/tests/test_reproducibility.py::test_false_refusal_set_ranking_and_partial_fields
+experiments/finance-v45-study/tools/tests/test_reproducibility.py::test_stable_requires_three_distinct_scheduled_runs
+experiments/finance-v45-study/tools/tests/test_reproducibility.py::test_paired_statistics_task_clustered_exact_mcnemar_holm
+experiments/finance-v45-study/tools/tests/test_reproducibility.py::test_analysis_never_uses_live_pricing_and_rejects_model_mixture
+experiments/finance-v45-study/tools/tests/test_reproducibility.py::test_final_json_rejects_ambiguous_malformed_or_nonfinite[{"value":1,"value":2}]
+experiments/finance-v45-study/tools/tests/test_reproducibility.py::test_final_json_rejects_ambiguous_malformed_or_nonfinite[{"value":NaN}]
+experiments/finance-v45-study/tools/tests/test_reproducibility.py::test_final_json_rejects_ambiguous_malformed_or_nonfinite[{"value":Infinity}]
+experiments/finance-v45-study/tools/tests/test_reproducibility.py::test_final_json_rejects_ambiguous_malformed_or_nonfinite[{"value":1e999}]
+experiments/finance-v45-study/tools/tests/test_reproducibility.py::test_final_json_rejects_ambiguous_malformed_or_nonfinite[{"value":1} {"value":2}]
+experiments/finance-v45-study/tools/tests/test_reproducibility.py::test_final_json_rejects_ambiguous_malformed_or_nonfinite[Earlier answer {"value":1} then {"value":2}]
+experiments/finance-v45-study/tools/tests/test_reproducibility.py::test_final_json_rejects_ambiguous_malformed_or_nonfinite[```json\n{"value":1,"broken":{"value":2}\n```]
+experiments/finance-v45-study/tools/tests/test_reproducibility.py::test_final_json_rejects_ambiguous_malformed_or_nonfinite[{"values":{"x":1,"x":2}}]
+experiments/finance-v45-study/tools/tests/test_reproducibility.py::test_final_json_rejects_ambiguous_malformed_or_nonfinite[[{"value":1}]]
+experiments/finance-v45-study/tools/tests/test_reproducibility.py::test_grounding_requires_matched_entry_and_response_identity
+experiments/finance-v45-study/tools/tests/test_reproducibility.py::test_preflight_deadline_kills_descendant_group
+experiments/finance-v45-study/tools/tests/test_reproducibility.py::test_frozen_summary_and_resume_reject_substituted_trial
+experiments/finance-v45-study/tools/tests/test_reproducibility.py::test_runtime_package_pin_detects_same_version_code_and_bundle_edits
+experiments/finance-v45-study/tools/tests/test_reproducibility.py::test_quarantine_excluded_before_sampling_and_confirmatory_cannot_override
+experiments/finance-v45-study/tools/tests/test_snapshot_server.py::test_select_exact_param_match
+experiments/finance-v45-study/tools/tests/test_snapshot_server.py::test_select_scores_more_matching_params
+experiments/finance-v45-study/tools/tests/test_snapshot_server.py::test_select_missing_identity_rejected
+experiments/finance-v45-study/tools/tests/test_snapshot_server.py::test_select_unknown_tool_raises
+experiments/finance-v45-study/tools/tests/test_snapshot_server.py::test_select_list_param_match
+experiments/finance-v45-study/tools/tests/test_snapshot_server.py::test_legacy_requires_explicit_request_contract
+experiments/finance-v45-study/tools/tests/test_snapshot_server.py::test_build_tool_defs_union_and_schema
+experiments/finance-v45-study/tools/tests/test_snapshot_server.py::test_build_tool_defs_mark_readonly_hint
+experiments/finance-v45-study/tools/tests/test_snapshot_server.py::test_stdio_server_roundtrip
+experiments/finance-v45-study/tools/tests/test_snapshot_server.py::test_contradictory_and_malformed_requests_rejected[arguments0]
+experiments/finance-v45-study/tools/tests/test_snapshot_server.py::test_contradictory_and_malformed_requests_rejected[arguments1]
+experiments/finance-v45-study/tools/tests/test_snapshot_server.py::test_contradictory_and_malformed_requests_rejected[arguments2]
+experiments/finance-v45-study/tools/tests/test_snapshot_server.py::test_contradictory_and_malformed_requests_rejected[arguments3]
+experiments/finance-v45-study/tools/tests/test_snapshot_server.py::test_contradictory_and_malformed_requests_rejected[arguments4]
+experiments/finance-v45-study/tools/tests/test_snapshot_server.py::test_contradictory_and_malformed_requests_rejected[arguments5]
+experiments/finance-v45-study/tools/tests/test_snapshot_server.py::test_optional_parameter_ambiguity_rejected
+experiments/finance-v45-study/tools/tests/test_snapshot_server.py::test_ledger_success_and_rejection_are_bound_to_response
+experiments/finance-v45-study/tools/tests/test_snapshot_server.py::test_pilot_merged_capture_requires_individual_symbols
+experiments/finance-v45-study/tools/tests/test_snapshot_server.py::test_batch_subsets_do_not_reuse_full_batch_summary
+experiments/finance-v45-study/tools/tests/test_snapshot_server.py::test_omitted_nondefault_parameters_do_not_mutate_request
+experiments/finance-v45-study/tools/tests/test_snapshot_server.py::test_nonfinite_rejection_is_also_recorded
+experiments/finance-v45-study/tools/tests/test_v42_contract.py::test_all_382_recorded_requests_and_default_case_equivalence_stay_supported
+experiments/finance-v45-study/tools/tests/test_v42_contract.py::test_joint_finite_constraints_reject_projection_window_without_arg_mutation
+experiments/finance-v45-study/tools/tests/test_v42_contract.py::test_semantic_resolver_paraphrases_require_actual_empty_snapshot[M\xe3 t\xe0i s\u1ea3n XYZX kh\xf4ng \u0111\u01b0\u1ee3c gi\u1ea3i m\xe3 th\xe0nh symbol h\u1ee3p l\u1ec7 trong snapshot.]
+experiments/finance-v45-study/tools/tests/test_v42_contract.py::test_semantic_resolver_paraphrases_require_actual_empty_snapshot[Kh\xf4ng th\u1ec3 ph\xe2n gi\u1ea3i symbol h\u1ee3p l\u1ec7 cho m\xe3 XYZX.]
+experiments/finance-v45-study/tools/tests/test_v42_contract.py::test_semantic_resolver_paraphrases_require_actual_empty_snapshot[Ch\u01b0a nh\u1eadn di\u1ec7n \u0111\u01b0\u1ee3c symbol XYZX.]
+experiments/finance-v45-study/tools/tests/test_v42_contract.py::test_semantic_resolver_paraphrases_require_actual_empty_snapshot[Kh\xf4ng x\xe1c \u0111\u1ecbnh m\xe3 h\u1ee3p l\u1ec7.]
+experiments/finance-v45-study/tools/tests/test_v42_contract.py::test_semantic_resolver_paraphrases_require_actual_empty_snapshot[No valid ticker was returned for XYZX.]
+experiments/finance-v45-study/tools/tests/test_v42_contract.py::test_semantic_resolver_paraphrases_require_actual_empty_snapshot[Ticker could not be resolved.]
+experiments/finance-v45-study/tools/tests/test_v42_contract.py::test_semantic_resolver_paraphrases_require_actual_empty_snapshot[Unable to resolve the symbol XYZX.]
+experiments/finance-v45-study/tools/tests/test_v42_contract.py::test_semantic_resolver_contradictions_and_query_errors_fail[Kh\xf4ng ph\u1ea3i l\xe0 kh\xf4ng \u0111\u01b0\u1ee3c gi\u1ea3i m\xe3 th\xe0nh symbol h\u1ee3p l\u1ec7.]
+experiments/finance-v45-study/tools/tests/test_v42_contract.py::test_semantic_resolver_contradictions_and_query_errors_fail[Kh\xf4ng \u0111\u01b0\u1ee3c gi\u1ea3i m\xe3 th\xe0nh symbol h\u1ee3p l\u1ec7, nh\u01b0ng symbol VCB h\u1ee3p l\u1ec7.]
+experiments/finance-v45-study/tools/tests/test_v42_contract.py::test_semantic_resolver_contradictions_and_query_errors_fail[Kh\xf4ng t\xecm th\u1ea5y v\xec request b\u1ecb t\u1eeb ch\u1ed1i.]
+experiments/finance-v45-study/tools/tests/test_v42_contract.py::test_semantic_resolver_contradictions_and_query_errors_fail[Kh\xf4ng c\xf3 d\u1eef li\u1ec7u v\xec not_recorded.]
+experiments/finance-v45-study/tools/tests/test_v42_contract.py::test_semantic_resolver_contradictions_and_query_errors_fail[Kh\xf4ng t\xecm th\u1ea5y, nh\u01b0ng \u0111\xe3 t\xecm th\u1ea5y m\xe3 VCB.]
+experiments/finance-v45-study/tools/tests/test_v42_contract.py::test_semantic_resolver_contradictions_and_query_errors_fail[Symbol VCB h\u1ee3p l\u1ec7.]
+experiments/finance-v45-study/tools/tests/test_v42_contract.py::test_semantic_resolver_contradictions_and_query_errors_fail[Tool error: kh\xf4ng t\xecm th\u1ea5y.]
+experiments/finance-v45-study/tools/tests/test_v42_contract.py::test_semantic_resolver_contradictions_and_query_errors_fail[Kh\xf4ng \u0111\u01b0\u1ee3c gi\u1ea3i m\xe3 th\xe0nh symbol h\u1ee3p l\u1ec7. Tuy nhi\xean \u0111\xe3 ph\xe2n gi\u1ea3i \u0111\u01b0\u1ee3c XYZX th\xe0nh VCB.]
+experiments/finance-v45-study/tools/tests/test_v42_contract.py::test_semantic_resolver_contradictions_and_query_errors_fail[No valid symbol. However XYZX successfully resolves to VCB.]
+experiments/finance-v45-study/tools/tests/test_v42_contract.py::test_semantic_resolver_contradictions_and_query_errors_fail[Kh\xf4ng \u0111\u01b0\u1ee3c gi\u1ea3i m\xe3 th\xe0nh symbol h\u1ee3p l\u1ec7 do l\u1ed7i tham s\u1ed1 kh\xf4ng h\u1ee3p l\u1ec7.]
+experiments/finance-v45-study/tools/tests/test_v42_contract.py::test_public_contract_is_uniform_gold_free_and_allows_honest_aggregation_refusal
+experiments/finance-v45-study/tools/tests/test_v42_contract.py::test_frozen_v41_is_byte_identical_and_newgrading_is_separate
+experiments/finance-v45-study/tools/tests/test_v42_contract.py::test_wire_contracts_fail_on_missing_joint_constraint_and_preserve_argument_names
+experiments/finance-v45-study/tools/tests/test_v42_contract.py::test_actual_sdk_duplicate_fixture_joins_original_intent_and_rejects_tampering
+experiments/finance-v45-study/tools/tests/test_v42_contract.py::test_refusal_mixed_values_counts_fp_and_nonempty_resolver_reference_cannot_pass
+experiments/finance-v45-study/tools/tests/test_v42_contract.py::test_intent_duplicate_after_lossless_type_correction_is_proven_from_actual_start
+experiments/finance-v45-study/tools/tests/test_v43_study.py::test_independent_alias_multi_entity_partial_source_and_empty_receipts
+experiments/finance-v45-study/tools/tests/test_v43_study.py::test_independent_wrong_window_projection_can_correct_but_not_drift
+experiments/finance-v45-study/tools/tests/test_v43_study.py::test_common_description_preserves_production_metadata_and_constraints
+experiments/finance-v45-study/tools/tests/test_v43_study.py::test_two_registered_model_caps_and_four_conditions_have_fixed_schedule
+experiments/finance-v45-study/tools/tests/test_v43_study.py::test_all_corpus_gold_and_primary_graders_remain_byte_exact_v42
+experiments/finance-v45-study/tools/tests/test_v43_study.py::test_supervisor_proceeds_after_quality_failure_and_blocks_controls
+experiments/finance-v45-study/tools/tests/test_v43_study.py::test_seal_creates_both_model_manifests_before_inference_and_detects_drift
+experiments/finance-v45-study/tools/tests/test_v43_study.py::test_acquisition_duplicate_audit_requires_actual_wire_phase_and_original_args
+experiments/finance-v45-study/tools/tests/test_v43_study.py::test_supervisor_exception_is_durable_blocked_before_inference
+experiments/finance-v45-study/tools/tests/test_v43_study.py::test_supervisor_cancellation_unwinds_driver_and_separate_native_session
+experiments/finance-v45-study/tools/tests/test_v44_compute.py::test_bank_sum_mean_and_exact_ledger
+experiments/finance-v45-study/tools/tests/test_v44_compute.py::test_failclosed_sources[absent]
+experiments/finance-v45-study/tools/tests/test_v44_compute.py::test_failclosed_sources[wrong_unit]
+experiments/finance-v45-study/tools/tests/test_v44_compute.py::test_failclosed_sources[duplicate]
+experiments/finance-v45-study/tools/tests/test_v44_compute.py::test_failclosed_sources[period]
+experiments/finance-v45-study/tools/tests/test_v44_compute.py::test_failclosed_sources[metric]
+experiments/finance-v45-study/tools/tests/test_v44_compute.py::test_failclosed_sources[volume]
+experiments/finance-v45-study/tools/tests/test_v44_compute.py::test_failclosed_sources[nonfinite]
+experiments/finance-v45-study/tools/tests/test_v44_compute.py::test_pointer_rejects_noncanonical[/data/a/-1]
+experiments/finance-v45-study/tools/tests/test_v44_compute.py::test_pointer_rejects_noncanonical[/data/a/01]
+experiments/finance-v45-study/tools/tests/test_v44_compute.py::test_pointer_rejects_noncanonical[/data/a/+1]
+experiments/finance-v45-study/tools/tests/test_v44_compute.py::test_pointer_rejects_noncanonical[/data/a/-]
+experiments/finance-v45-study/tools/tests/test_v44_compute.py::test_pointer_rejects_noncanonical[/data/~2bad]
+experiments/finance-v45-study/tools/tests/test_v44_compute.py::test_growth_bad_denominator
+experiments/finance-v45-study/tools/tests/test_v44_compute.py::test_float_overflow
+experiments/finance-v45-study/tools/tests/test_v44_compute.py::test_catalog_common_compute
+experiments/finance-v45-study/tools/tests/test_v44_compute.py::test_actual_vnm_statement_growth_without_norm_id
+experiments/finance-v45-study/tools/tests/test_v44_compute.py::test_actual_mwg_aligned_table_margin_and_bad_alignment
+experiments/finance-v45-study/tools/tests/test_v44_compute.py::test_actual_vcb_scale_vnd_to_billion
+experiments/finance-v45-study/tools/tests/test_v44_gate.py::test_four_phase_commands_and_budgets
+experiments/finance-v45-study/tools/tests/test_v44_gate.py::test_gate_real_trial_shape_answer_path[answer0-final_json-ok-1-0]
+experiments/finance-v45-study/tools/tests/test_v44_gate.py::test_gate_real_trial_shape_answer_path[answer1-final_json-ok-1-0]
+experiments/finance-v45-study/tools/tests/test_v44_gate.py::test_gate_real_trial_shape_answer_path[answer2-final_json-ok-0-0]
+experiments/finance-v45-study/tools/tests/test_v44_gate.py::test_gate_real_trial_shape_answer_path[None-missing-ok-0-1]
+experiments/finance-v45-study/tools/tests/test_v44_gate.py::test_gate_real_trial_shape_answer_path[None-missing-timeout-0-1]
+experiments/finance-v45-study/tools/tests/test_v44_gate.py::test_gate_real_trial_shape_answer_path[answer5-final_json-ok-0-0]
+experiments/finance-v45-study/tools/tests/test_v44_gate.py::test_pilot_fails_closed_without_both_smokes
+experiments/finance-v45-study/tools/tests/test_v44_gate.py::test_supervisor_both_smokes_before_eligible_pilot_and_completed_resume
+experiments/finance-v45-study/tools/tests/test_v44_gate.py::test_pilot_independent_financial_canary_failclosed
+experiments/finance-v45-study/tools/tests/test_v44_gate.py::test_supervisor_actual_driver_cli_matches_presealed_manifest[bolt-smoke]
+experiments/finance-v45-study/tools/tests/test_v44_gate.py::test_supervisor_actual_driver_cli_matches_presealed_manifest[bolt-pilot]
+experiments/finance-v45-study/tools/tests/test_v44_gate.py::test_supervisor_actual_driver_cli_matches_presealed_manifest[deepseek-smoke]
+experiments/finance-v45-study/tools/tests/test_v44_gate.py::test_supervisor_actual_driver_cli_matches_presealed_manifest[deepseek-pilot]
+experiments/finance-v45-study/tools/tests/test_v45_calculate.py::test_real_native_engine_mean_and_chain_ledger
+experiments/finance-v45-study/tools/tests/test_v45_calculate.py::test_reject_broken_proof_and_metadata[literal]
+experiments/finance-v45-study/tools/tests/test_v45_calculate.py::test_reject_broken_proof_and_metadata[period]
+experiments/finance-v45-study/tools/tests/test_v45_calculate.py::test_reject_broken_proof_and_metadata[entity]
+experiments/finance-v45-study/tools/tests/test_v45_calculate.py::test_reject_broken_proof_and_metadata[scope]
+experiments/finance-v45-study/tools/tests/test_v45_calculate.py::test_reject_broken_proof_and_metadata[unknown]
+experiments/finance-v45-study/tools/tests/test_v45_calculate.py::test_reject_broken_proof_and_metadata[typed]
+experiments/finance-v45-study/tools/tests/test_v45_calculate.py::test_reject_broken_proof_and_metadata[reparent]
+experiments/finance-v45-study/tools/tests/test_v45_calculate.py::test_changed_derived_root_rejected
+experiments/finance-v45-study/tools/tests/test_v45_calculate.py::test_dimensional_units_preserved
+experiments/finance-v45-study/tools/tests/test_v45_calculate.py::test_missing_statement_period_not_replaced_by_capture_time
+experiments/finance-v45-study/tools/tests/test_v45_calculate.py::test_only_documented_super_route_alias_accepted
+experiments/finance-v45-study/tools/tests/test_v45_call_binding.py::test_repeated_sdkid_fresh_sessions_and_steps_bind_independent_occurrences
+experiments/finance-v45-study/tools/tests/test_v45_call_binding.py::test_repeated_equal_signature_still_requires_two_executions
+experiments/finance-v45-study/tools/tests/test_v45_call_binding.py::test_stream_fragments_keep_request_occurrences_without_rewriting_ids
+experiments/finance-v45-study/tools/tests/test_v45_call_binding.py::test_identical_args_across_fresh_sessions_never_bind_earlier_rejection
+experiments/finance-v45-study/tools/tests/test_v45_call_binding.py::test_changed_actual_response_bytes_are_rejected
+experiments/finance-v45-study/tools/tests/test_v45_call_binding.py::test_native_execution_and_local_rejection_require_actual_scope_turn_generation
+experiments/finance-v45-study/tools/tests/test_v45_canary.py::test_schedule_exact_caps_and_acceptance
+experiments/finance-v45-study/tools/tests/test_v45_canary.py::test_no_run_without_manifest_or_explicit_execution
+experiments/finance-v45-study/tools/tests/test_v45_canary.py::test_counter_hardcaps_before_network
+experiments/finance-v45-study/tools/tests/test_v45_canary.py::test_deadline_no_dispatch_and_malformed_message
+experiments/finance-v45-study/tools/tests/test_v45_execution.py::test_gate_expected_good[devsmoke]
+experiments/finance-v45-study/tools/tests/test_v45_execution.py::test_gate_expected_good[pilot]
+experiments/finance-v45-study/tools/tests/test_v45_execution.py::test_smoke_gate_failclosed[denominator]
+experiments/finance-v45-study/tools/tests/test_v45_execution.py::test_smoke_gate_failclosed[audit]
+experiments/finance-v45-study/tools/tests/test_v45_execution.py::test_smoke_gate_failclosed[fabrication]
+experiments/finance-v45-study/tools/tests/test_v45_execution.py::test_smoke_gate_failclosed[incomplete]
+experiments/finance-v45-study/tools/tests/test_v45_execution.py::test_smoke_gate_failclosed[dnf]
+experiments/finance-v45-study/tools/tests/test_v45_execution.py::test_smoke_gate_failclosed[fp]
+experiments/finance-v45-study/tools/tests/test_v45_execution.py::test_smoke_gate_failclosed[numeric]
+experiments/finance-v45-study/tools/tests/test_v45_execution.py::test_smoke_gate_failclosed[baseline]
+experiments/finance-v45-study/tools/tests/test_v45_execution.py::test_pilot_requires_margin_each_endpoint_opponent[opencode-strict_grounded_success]
+experiments/finance-v45-study/tools/tests/test_v45_execution.py::test_pilot_requires_margin_each_endpoint_opponent[opencode-grounded_financial_correctness]
+experiments/finance-v45-study/tools/tests/test_v45_execution.py::test_pilot_requires_margin_each_endpoint_opponent[dsh-strict_grounded_success]
+experiments/finance-v45-study/tools/tests/test_v45_execution.py::test_pilot_requires_margin_each_endpoint_opponent[dsh-grounded_financial_correctness]
+experiments/finance-v45-study/tools/tests/test_v45_execution.py::test_pilot_requires_margin_each_endpoint_opponent[opentrading_baseline-strict_grounded_success]
+experiments/finance-v45-study/tools/tests/test_v45_execution.py::test_pilot_requires_margin_each_endpoint_opponent[opentrading_baseline-grounded_financial_correctness]
+experiments/finance-v45-study/tools/tests/test_v45_execution.py::test_manifest_metric_denominators_include_pending_and_traps
+experiments/finance-v45-study/tools/tests/test_v45_execution.py::test_crash_resume_terminal_no_call
+experiments/finance-v45-study/tools/tests/test_v45_execution.py::test_actual_cli_completed_resume_zero_calls_and_bytes
+experiments/finance-v45-study/tools/tests/test_v45_execution.py::test_actual_cli_pause_before_first_trial_then_continue
+experiments/finance-v45-study/tools/tests/test_v45_execution.py::test_actual_cli_lock_before_any_call
+experiments/finance-v45-study/tools/tests/test_v45_execution.py::test_real_subprocess_graceful_pause_resume
+experiments/finance-v45-study/tools/tests/test_v45_execution.py::test_real_subprocess_hard_stop_resume_preserves_interrupted
+experiments/finance-v45-study/tools/tests/test_v45_execution.py::test_pipeline_continue_clears_only_propagated_pause
+experiments/finance-v45-study/tools/tests/test_v45_execution.py::test_manual_review_required_before_quality_gate
+experiments/finance-v45-study/tools/tests/test_v45_execution.py::test_manual_all_arm_hash_binding_can_only_remove_win
+experiments/finance-v45-study/tools/tests/test_v45_execution.py::test_receipt_requires_actual_json_all_seven_fields
+experiments/finance-v45-study/tools/tests/test_v45_math_audit.py::test_native_independent_decimal_fixture
+experiments/finance-v45-study/tools/tests/test_v45_math_audit.py::test_native_root_mutations_rejected[unit-USD]
+experiments/finance-v45-study/tools/tests/test_v45_math_audit.py::test_native_root_mutations_rejected[entity-OTHER]
+experiments/finance-v45-study/tools/tests/test_v45_math_audit.py::test_native_root_mutations_rejected[period-Q4/1900]
+experiments/finance-v45-study/tools/tests/test_v45_math_audit.py::test_native_root_mutations_rejected[scope-separate]
+experiments/finance-v45-study/tools/tests/test_v45_math_audit.py::test_native_root_mutations_rejected[value-999]
+experiments/finance-v45-study/tools/tests/test_v45_math_audit.py::test_native_root_mutations_rejected[source_response_sha256-bad]
+experiments/finance-v45-study/tools/tests/test_v45_math_audit.py::test_native_root_mutations_rejected[source_payload_sha256-bad]
+experiments/finance-v45-study/tools/tests/test_v45_math_audit.py::test_native_expression_binding_mutations_rejected[unit-USD]
+experiments/finance-v45-study/tools/tests/test_v45_math_audit.py::test_native_expression_binding_mutations_rejected[entity-OTHER]
+experiments/finance-v45-study/tools/tests/test_v45_math_audit.py::test_native_expression_binding_mutations_rejected[period-Q4/1900]
+experiments/finance-v45-study/tools/tests/test_v45_math_audit.py::test_native_expression_binding_mutations_rejected[scope-separate]
+experiments/finance-v45-study/tools/tests/test_v45_math_audit.py::test_native_expression_binding_mutations_rejected[value-999]
+experiments/finance-v45-study/tools/tests/test_v45_math_audit.py::test_native_expression_binding_mutations_rejected[name-invented]
+experiments/finance-v45-study/tools/tests/test_v45_math_audit.py::test_extra_lineage_rejected
+experiments/finance-v45-study/tools/tests/test_v45_math_audit.py::test_expression_binding_named_constant_rejected
+experiments/finance-v45-study/tools/tests/test_v45_math_audit.py::test_derived_chain_unit_mutation_rejected
+experiments/finance-v45-study/tools/tests/test_v45_math_audit.py::test_registered_expression_grammar[sqrt(4)-2]
+experiments/finance-v45-study/tools/tests/test_v45_math_audit.py::test_registered_expression_grammar[abs(-4)-4]
+experiments/finance-v45-study/tools/tests/test_v45_math_audit.py::test_registered_expression_grammar[sum(1,2,3)-6]
+experiments/finance-v45-study/tools/tests/test_v45_math_audit.py::test_registered_expression_grammar[avg(1,3)-2]
+experiments/finance-v45-study/tools/tests/test_v45_math_audit.py::test_registered_expression_grammar[2^3-8]
+experiments/finance-v45-study/tools/tests/test_v45_math_audit.py::test_registered_expression_grammar[min(1,4)-1]
+experiments/finance-v45-study/tools/tests/test_v45_math_audit.py::test_registered_expression_grammar[max(1,4)-4]
+experiments/finance-v45-study/tools/tests/test_v45_math_audit.py::test_registered_expression_grammar[ln(1)-0]
+experiments/finance-v45-study/tools/tests/test_v45_math_audit.py::test_registered_expression_grammar[log10(100)-2]
+experiments/finance-v45-study/tools/tests/test_v45_math_audit.py::test_registered_expression_grammar[exp(0)-1]
+experiments/finance-v45-study/tools/tests/test_v45_math_audit.py::test_arbitrary_or_unregistered_formula_rejected[__import__("os")]
+experiments/finance-v45-study/tools/tests/test_v45_math_audit.py::test_arbitrary_or_unregistered_formula_rejected[(1).__class__]
+experiments/finance-v45-study/tools/tests/test_v45_math_audit.py::test_arbitrary_or_unregistered_formula_rejected[[1,2]]
+experiments/finance-v45-study/tools/tests/test_v45_math_audit.py::test_arbitrary_or_unregistered_formula_rejected[5]
+experiments/finance-v45-study/tools/tests/test_v45_math_audit.py::test_arbitrary_or_unregistered_formula_rejected[42]
+experiments/finance-v45-study/tools/tests/test_v45_math_audit.py::test_arbitrary_or_unregistered_formula_rejected[open(1)]
+experiments/finance-v45-study/tools/tests/test_v45_math_audit.py::test_arbitrary_or_unregistered_formula_rejected[round(1)]
+experiments/finance-v45-study/tools/tests/test_v45_math_audit.py::test_unknown_unit_rejected
+experiments/finance-v45-study/tools/tests/test_v45_math_audit.py::test_relative_strength_independent_decimal
+experiments/finance-v45-study/tools/tests/test_v45_math_audit.py::test_vector_ops_labels_order_and_values[rank-result0]
+experiments/finance-v45-study/tools/tests/test_v45_math_audit.py::test_vector_ops_labels_order_and_values[share-result1]
+experiments/finance-v45-study/tools/tests/test_v45_math_audit.py::test_output_dimensions_independent_reject_even_with_correct_number
+experiments/finance-v45-study/tools/tests/test_v45_math_audit.py::test_sdk_scope_period_query_fallback_and_no_statement_cachetime
+experiments/finance-v45-study/tools/tests/test_v45_memory_metrics.py::test_all_fifteen_memory_tasks_offline_contracts
+experiments/finance-v45-study/tools/tests/test_v45_memory_metrics.py::test_verbatim_consent_cannot_be_minted_by_tool
+experiments/finance-v45-study/tools/tests/test_v45_memory_metrics.py::test_exact_memory_receipts_reject_fabrication_and_revoked_ids
+experiments/finance-v45-study/tools/tests/test_v45_memory_metrics.py::test_revision_and_forget_expected_state
+experiments/finance-v45-study/tools/tests/test_v45_memory_metrics.py::test_memory_user_only_abstention_requires_no_fake_market_receipt
+experiments/finance-v45-study/tools/tests/test_v45_memory_metrics.py::test_missing_and_dnf_remain_scheduled_no_model_pool
+experiments/finance-v45-study/tools/tests/test_v45_memory_metrics.py::test_real_singleturn_manifest_excludes_memory_even_diagnostic_override
+experiments/finance-v45-study/tools/tests/test_v45_memory_metrics.py::test_native_state_join_rejects_db_corruption_and_retained_revoked_record
+experiments/finance-v45-study/tools/tests/test_v45_memory_metrics.py::test_partial_tail_is_preserved_and_cannot_be_complete_telemetry
+experiments/finance-v45-study/tools/tests/test_v45_memory_metrics.py::test_independent_memory_review_hash_binding_only_removes_wins
+experiments/finance-v45-study/tools/tests/test_v45_memory_metrics.py::test_nested_injection_target_and_stale_values_are_explicit_contracts
+experiments/finance-v45-study/tools/tests/test_v45_memory_metrics.py::test_interrupted_query_pending_dispatch_is_not_reported_as_zero_cost
+experiments/finance-v45-study/tools/tests/test_v45_memory_metrics.py::test_registered_memory_protocol_is_part_of_exact_source_pin
+experiments/finance-v45-study/tools/tests/test_v45_provider_compute.py::test_success_captures_metadata_sampling
+experiments/finance-v45-study/tools/tests/test_v45_provider_compute.py::test_http503_recovers_one_owner_same_payload
+experiments/finance-v45-study/tools/tests/test_v45_provider_compute.py::test_never_retry_auth_daily_badrequest[401-badkey]
+experiments/finance-v45-study/tools/tests/test_v45_provider_compute.py::test_never_retry_auth_daily_badrequest[403-forbidden]
+experiments/finance-v45-study/tools/tests/test_v45_provider_compute.py::test_never_retry_auth_daily_badrequest[429-daily quota exhausted]
+experiments/finance-v45-study/tools/tests/test_v45_provider_compute.py::test_never_retry_auth_daily_badrequest[400-bad schema]
+experiments/finance-v45-study/tools/tests/test_v45_provider_compute.py::test_unknown_usage_failclosed
+experiments/finance-v45-study/tools/tests/test_v45_provider_compute.py::test_missing_metadata_no_retry[None-provider_response_model_missing]
+experiments/finance-v45-study/tools/tests/test_v45_provider_compute.py::test_missing_metadata_no_retry[other-provider_response_model_mismatch]
+experiments/finance-v45-study/tools/tests/test_v45_provider_compute.py::test_local_budget_is_not_auth
+experiments/finance-v45-study/tools/tests/test_v45_provider_compute.py::test_retry_policy[429-busy-12-1-60-12]
+experiments/finance-v45-study/tools/tests/test_v45_provider_compute.py::test_retry_policy[429-busy-61-1-80-None]
+experiments/finance-v45-study/tools/tests/test_v45_provider_compute.py::test_retry_policy[503---2-20-8]
+experiments/finance-v45-study/tools/tests/test_v45_provider_compute.py::test_retry_policy[503---3-20-None]
+experiments/finance-v45-study/tools/tests/test_v45_provider_compute.py::test_retry_policy[503---1-3-None]
+experiments/finance-v45-study/tools/tests/test_v45_provider_compute.py::test_retry_policy[429-daily quota--1-30-None]
+experiments/finance-v45-study/tools/tests/test_v45_provider_compute.py::test_retry_policy[200---1-30-None]
+experiments/finance-v45-study/tools/tests/test_v45_provider_compute.py::test_extended_operations[ratio-dimensionless-2]
+experiments/finance-v45-study/tools/tests/test_v45_provider_compute.py::test_extended_operations[absolute_difference-VND-50]
+experiments/finance-v45-study/tools/tests/test_v45_provider_compute.py::test_extended_operations[relative_difference_pct-%-100]
+experiments/finance-v45-study/tools/tests/test_v45_provider_compute.py::test_schema_parent_nonleaf_reject[/data]
+experiments/finance-v45-study/tools/tests/test_v45_provider_compute.py::test_schema_parent_nonleaf_reject[/data/]
+experiments/finance-v45-study/tools/tests/test_v45_provider_compute.py::test_schema_parent_nonleaf_reject[/data//last]
+experiments/finance-v45-study/tools/tests/test_v45_provider_compute.py::test_schema_parent_nonleaf_reject[/data/~2]
+experiments/finance-v45-study/tools/tests/test_v45_provider_compute.py::test_unit_scale_scope_and_hints
+experiments/finance-v45-study/tools/tests/test_v45_provider_compute.py::test_terminal_sdk_redelivery_no_extra_upstream
+experiments/finance-v45-study/tools/tests/test_v45_provider_compute.py::test_explicit_crossentity_ratio_no_blanket_deny
+experiments/finance-v45-study/tools/tests/test_v45_provider_compute.py::test_registered_usage_bound_violation_fatal
+experiments/finance-v45-study/tools/tests/test_v45_provider_compute.py::test_memory_native_whitelist_is_profile_condition_specific
+experiments/finance-v45-study/tools/tests/test_v45_provider_compute.py::test_pause_before_initial_dispatch_is_zero_call
+experiments/finance-v45-study/tools/tests/test_v45_provider_compute.py::test_pause_during_rate_wait_blocks_dispatch
+experiments/finance-v45-study/tools/tests/test_v45_provider_compute.py::test_pause_after_failed_transport_never_dispatches_retry
+experiments/finance-v45-study/tools/tests/test_v45_provider_compute.py::test_malformed_user_control_fails_closed
+experiments/finance-v45-study/tools/tests/test_v45_provider_compute.py::test_graceful_boundary_pause_does_not_abort_current_request
+experiments/finance-v45-study/tools/tests/test_v45_provider_compute.py::test_explicit_hardstop_blocks_current_retry_dispatch
+experiments/finance-v45-study/tools/tests/test_v4_contract.py::test_non_temporal_negation_does_not_erase_period[2026; kh\xf4ng ph\u1ea3i b\u1ed9i s\u1ed1 hi\u1ec7n t\u1ea1i-accept0]
+experiments/finance-v45-study/tools/tests/test_v4_contract.py::test_non_temporal_negation_does_not_erase_period[2026, not current trading multiple-accept1]
+experiments/finance-v45-study/tools/tests/test_v4_contract.py::test_non_temporal_negation_does_not_erase_period[Q3/2026; kh\xf4ng bao g\u1ed3m d\u1ef1 b\xe1o-accept2]
+experiments/finance-v45-study/tools/tests/test_v4_contract.py::test_non_temporal_negation_does_not_erase_period[30/10/2026; kh\xf4ng ph\u1ea3i gi\xe1 trong ng\xe0y-accept3]
+experiments/finance-v45-study/tools/tests/test_v4_contract.py::test_temporal_negation_and_wrong_period_still_fail[kh\xf4ng ph\u1ea3i n\u0103m 2026-accept0]
+experiments/finance-v45-study/tools/tests/test_v4_contract.py::test_temporal_negation_and_wrong_period_still_fail[not 2026-accept1]
+experiments/finance-v45-study/tools/tests/test_v4_contract.py::test_temporal_negation_and_wrong_period_still_fail[kh\xf4ng ph\u1ea3i Q3/2026-accept2]
+experiments/finance-v45-study/tools/tests/test_v4_contract.py::test_temporal_negation_and_wrong_period_still_fail[kh\xf4ng ph\u1ea3i qu\xfd 3/2026-accept3]
+experiments/finance-v45-study/tools/tests/test_v4_contract.py::test_temporal_negation_and_wrong_period_still_fail[kh\xf4ng ph\u1ea3i 30/10/2026-accept4]
+experiments/finance-v45-study/tools/tests/test_v4_contract.py::test_temporal_negation_and_wrong_period_still_fail[Q1/1900 kh\xf4ng ph\u1ea3i Q3/2026-accept5]
+experiments/finance-v45-study/tools/tests/test_v4_contract.py::test_temporal_negation_and_wrong_period_still_fail[Q3/2026 so v\u1edbi Q1/2026-accept6]
+experiments/finance-v45-study/tools/tests/test_v4_contract.py::test_temporal_negation_and_wrong_period_still_fail[2026 kh\xf4ng \u0111\xfang-accept7]
+experiments/finance-v45-study/tools/tests/test_v4_contract.py::test_temporal_negation_and_wrong_period_still_fail[2025, kh\xf4ng ph\u1ea3i b\u1ed9i s\u1ed1 hi\u1ec7n t\u1ea1i-accept8]
+experiments/finance-v45-study/tools/tests/test_v4_contract.py::test_temporal_negation_and_wrong_period_still_fail[30/10/2026 v\xe0 29/10/2026-accept9]
+experiments/finance-v45-study/tools/tests/test_v4_contract.py::test_all_copied_graders_match_template_and_frozen_is_original
+experiments/finance-v45-study/tools/tests/test_v4_contract.py::test_condition_policy_is_explicit_and_shared_runtime
+experiments/finance-v45-study/tools/tests/test_v4_contract.py::test_local_rejection_requires_generated_id_invalidargs_and_consumederror
+experiments/finance-v45-study/tools/tests/test_v4_contract.py::test_local_rejection_cannot_hide_unexecuted_calls[id]
+experiments/finance-v45-study/tools/tests/test_v4_contract.py::test_local_rejection_cannot_hide_unexecuted_calls[validargs]
+experiments/finance-v45-study/tools/tests/test_v4_contract.py::test_local_rejection_cannot_hide_unexecuted_calls[missingresult]
+experiments/finance-v45-study/tools/tests/test_v4_contract.py::test_local_rejection_cannot_hide_unexecuted_calls[evidence]
+experiments/finance-v45-study/tools/tests/test_v4_contract.py::test_local_rejection_cannot_hide_unexecuted_calls[duplicate]
+experiments/finance-v45-study/tools/tests/test_v4_contract.py::test_all_model_catalog_schemas_preserve_recorded_requests_and_metadata
+experiments/finance-v45-study/tools/tests/test_v4_contract.py::test_authoritative_common_c1_rejects_invaliddomains_without_data[args0-v4_domain_constraint]
+experiments/finance-v45-study/tools/tests/test_v4_contract.py::test_authoritative_common_c1_rejects_invaliddomains_without_data[args1-v4_domain_constraint]
+experiments/finance-v45-study/tools/tests/test_v4_contract.py::test_authoritative_common_c1_rejects_invaliddomains_without_data[args2-v4_domain_constraint]
+experiments/finance-v45-study/tools/tests/test_v4_contract.py::test_authoritative_common_c1_rejects_invaliddomains_without_data[args3-frozen_v3_type_or_shape]
+experiments/finance-v45-study/tools/tests/test_v4_contract.py::test_policy_guard_has_actual_same_tool_failed_intent_and_wire_error
+experiments/finance-v45-study/tools/tests/test_v4_contract.py::test_study_driver_rejects_unregistered_model_before_any_provider
+experiments/finance-v45-study/tools/tests/test_v4_contract.py::test_frozen_grading_sensitivity_is_persisted_for_same_answer
+experiments/finance-v45-study/tools/tests/test_v4_contract.py::test_gateway_direct_model_admission_precedes_credentials_and_network
+experiments/finance-v45-study/tools/tests/test_v4_contract.py::test_temporal_guard_has_actual_prior_scope_and_wire_error[newargs0]
+experiments/finance-v45-study/tools/tests/test_v4_contract.py::test_temporal_guard_has_actual_prior_scope_and_wire_error[newargs1]
+experiments/finance-v45-study/tools/tests/test_v4_contract.py::test_completed_native_text_replaces_discarded_deltas_without_json_rescue
+experiments/finance-v45-study/tools/tests/test_v4_contract.py::test_bounded_correction_localguard_requires_actual_failed_tools_and_phase
+experiments/finance-v45-study/tools/tests/test_v4_contract.py::test_native_completion_outcome_cannot_hide_failure[completed-0-False-None-ok]
+experiments/finance-v45-study/tools/tests/test_v4_contract.py::test_native_completion_outcome_cannot_hide_failure[failed-0-False-None-error]
+experiments/finance-v45-study/tools/tests/test_v4_contract.py::test_native_completion_outcome_cannot_hide_failure[aborted-0-False-None-aborted]
+experiments/finance-v45-study/tools/tests/test_v4_contract.py::test_native_completion_outcome_cannot_hide_failure[completed-1-False-None-error]
+experiments/finance-v45-study/tools/tests/test_v4_contract.py::test_native_completion_outcome_cannot_hide_failure[completed-0-True-None-timeout]
+experiments/finance-v45-study/tools/tests/test_v4_contract.py::test_native_completion_outcome_cannot_hide_failure[completed-0-False-native failure-error]
+experiments/finance-v45-study/tools/tests/test_v4_contract.py::test_native_completion_outcome_cannot_hide_failure[None-0-False-None-error]
+experiments/finance-v45-study/tools/tests/test_v4_contract.py::test_native_source_inventory_includes_tsx_and_tracks_byte_changes
+experiments/finance-v45-study/tools/tests/test_v4_contract.py::test_parallel_duplicate_guard_requires_same_batch_and_actual_other_mcp_execution
+
+537 tests collected in 37.16s

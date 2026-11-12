@@ -1,0 +1,31 @@
+{
+  "task_id": "fin-l4-2src-302",
+  "success": true,
+  "fp": 0,
+  "error_type": null,
+  "checks": [
+    {
+      "check": "provenance",
+      "pass": true,
+      "detail": "recorded response identity/provider/as_of coverage and snapshot hash; call IDs independently verified by driver"
+    },
+    {
+      "check": "value:value",
+      "pass": true,
+      "detail": "answer=6.19 gold=6.19 tol={'abs': 0.1}"
+    },
+    {
+      "check": "unit:unit",
+      "pass": true,
+      "detail": "answer='%' canon='pct' accept=['pct', 'pct']"
+    },
+    {
+      "check": "str_all:source",
+      "pass": true,
+      "detail": "answer='valuation_run + peer_compare' need_all=['valuation_run', 'peer_compare']"
+    }
+  ],
+  "schema_valid": true,
+  "provenance_correctness": true,
+  "semantic_correctness": true
+}

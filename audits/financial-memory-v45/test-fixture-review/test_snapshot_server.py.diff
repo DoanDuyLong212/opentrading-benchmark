@@ -1,0 +1,13 @@
+--- test_snapshot_server.py.before
++++ experiments/finance-v45-study/tools/tests/test_snapshot_server.py
+@@ -90,7 +90,9 @@
+     entries = _entries(payloads)
+     defs = build_tool_defs(entries)
+     names = [d["name"] for d in defs]
+-    assert names == ["vn_quote_history", "analytics_compute"]
++    assert names == ["vn_quote_history", "analytics_compute", "analytics_calculate"]
++    from analytics_calculate import DEFINITION
++    assert defs[2] == DEFINITION
+     schema = defs[0]["inputSchema"]
+     assert schema["type"] == "object"
+     assert "symbol" in schema["properties"]

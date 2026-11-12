@@ -1,0 +1,99 @@
+{
+  "pass": true,
+  "recordings": 402,
+  "queries": 2412,
+  "financial_files_unchanged": 589,
+  "matcher_source_unchanged": {
+    "_norm": true,
+    "_entry_matches": true
+  },
+  "semantic_results": [
+    {
+      "label": "observed honest passive",
+      "expected": true,
+      "actual": true,
+      "hit": [
+        "khong duoc giai ma thanh symbol hop le",
+        "tai san xyzx khong duoc giai ma"
+      ],
+      "bad": []
+    },
+    {
+      "label": "double negation",
+      "expected": false,
+      "actual": false,
+      "hit": [
+        "khong duoc giai ma thanh symbol hop le"
+      ],
+      "bad": [
+        "negated resolver assertion"
+      ]
+    },
+    {
+      "label": "Vietnamese contradiction",
+      "expected": false,
+      "actual": false,
+      "hit": [
+        "khong duoc giai ma thanh symbol hop le"
+      ],
+      "bad": [
+        "contradictory resolved symbol"
+      ]
+    },
+    {
+      "label": "English contradiction",
+      "expected": false,
+      "actual": false,
+      "hit": [
+        "no valid symbol"
+      ],
+      "bad": [
+        "contradictory resolved symbol"
+      ]
+    },
+    {
+      "label": "parameter error",
+      "expected": false,
+      "actual": false,
+      "hit": [
+        "khong duoc giai ma thanh symbol hop le"
+      ],
+      "bad": [
+        "query rejection is not empty resolver evidence"
+      ]
+    },
+    {
+      "label": "rejected query",
+      "expected": false,
+      "actual": false,
+      "hit": [
+        "không tìm thấy"
+      ],
+      "bad": [
+        "query rejection is not empty resolver evidence"
+      ]
+    }
+  ],
+  "errors": [],
+  "sha256": {
+    "experiments/finance-v43-study/tools/mcp_snapshot_server.py": "392e19b8294b66f38caccb1768f3a388f9bb766b61451fa4e4895db0d6e6cc37",
+    "experiments/finance-v43-study/tools/public_response_contract.py": "826c81b9d1873da3fddda10bb158d804b922dc6aea0340e10a123d5445247f29",
+    "experiments/finance-v43-study/tools/wire_contracts.py": "df622c3f78ad0b8b66dde6d44b49eaae99e610ac53af6ed07be09d3e7a6fefc6",
+    "experiments/finance-v43-study/tools/intent_audit.py": "a4c9fc32b601903f3814713c50bea1342ba6f55fa3dd67ef3ed971ef9c3af013",
+    "experiments/finance-v43-study/tools/metrics.py": "9d68729cab09a6d1d60cfbc86ee6900309a45067684279c8a23830018fc2dd02",
+    "experiments/finance-v43-study/tools/ready_check.py": "7effd1039d577ad1a0a7cf87a00d0cdfc9dbb44731f69c327fa14413f4f68192",
+    "experiments/finance-v43-study/tools/run_benchmark.py": "70e4a3864951f66f73ea50a30bc591584453e9341ab8d8bd44c99a3c6fc1f166",
+    "experiments/finance-v43-study/tools/bench_config.json": "37b71f4f33ce099168d5f537dcf4f2bffe76197dd6a25c15ca0eb8c0465616d3",
+    "experiments/finance-v43-study/tools/frozen_v41_grader.py": "4a761ab4f20644d1a845dfdc9535cddffe8f2ebff3f3a8335de02623d8d3ea0d",
+    "experiments/finance-v43-study/tools/frozen_v3_grader.py": "79b4960aafa6e078dac3f1bc22f0167d9f811ca1beb106588d5e00482f0728d4",
+    "experiments/finance-v43-study/tools/runners/provider.py": "580f9b964dbbf4c613d0a7ec10f6cfe0ceb0deaa049f5e6a396be38b15089a0c",
+    "experiments/finance-v43-study/tools/runners/ot_headless.ts": "8c008fbcb34a72505d671f9a4e275740d55c67a83057a7fb1faee4dd6208ae36",
+    "experiments/finance-v43-study/tasks/smoke/smoke-trap-01/tests/grader.py": "0d06643d3c6285a52cec9d85c1c739d70cc2aa8f4a633b272ae5ffff0da4023f",
+    "experiments/finance-v43-study/experiments/opentrading-runtime/src/core/finance-policy.ts": "00703fe026939cfdc01841b28c27bfa92f56901617b5990e0fdd28f8da504a30",
+    "experiments/finance-v43-study/experiments/opentrading-runtime/src/core/agent.ts": "846026065b4bc329170ca39972dd069a8f8f6552a45468f690e1f06de47716b4",
+    "experiments/finance-v43-study/experiments/opentrading-runtime/src/core/tools/registry.ts": "7dceaa9ad701868105dd3f3a459ddb86e9b9661a8f96e739ea27978fcaee47da",
+    "experiments/finance-v43-study/experiments/opentrading-runtime/src/core/mcp/convert.ts": "6ff42818ebf1d0ee83ec122883f618bd52e0ded0044d1c426aa5fd5f23f1410a",
+    "experiments/finance-v43-study/experiments/opentrading-runtime/src/core/tools/wrap.ts": "4d84513d85eddfdd0f170efabce01e96c3a4c32019329dbb79187eac8cf697e4",
+    "audits/financial-prompt-v43/offline-probes.py": "faa699a11bf54b0887084631d6aace73a6d8ef97542fc150a673a175be12f8a4"
+  }
+}

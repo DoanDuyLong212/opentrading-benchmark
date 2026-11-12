@@ -1,7 +1,7 @@
 # Task benchmark harness tài chính — sinh bởi tools/gen_tasks.py
 id = "fin-l4-narrative-01"
 title = "Kiểm chứng nhận định vàng & USD/VND cùng tăng"
-version = 1
+version = 2
 created = "2026-11-01"
 level = "L4"
 family = "L4·I narrative-check"
@@ -18,6 +18,9 @@ time_limit_min = 30
 tools_expected = ["vn_msn_fx_gold"]
 mcp_payloads = "environment/payloads.json"
 snapshot_required = true
+
+confirmatory_eligible = false
+exclusion_reason = "incomplete_narrative_evidence_rubric"
 
 [scoring]
 type = "verdict"

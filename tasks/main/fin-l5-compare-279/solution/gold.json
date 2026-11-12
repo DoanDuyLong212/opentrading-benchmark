@@ -1,187 +1,210 @@
 {
- "task_id": "fin-l5-compare-279",
- "scoring": "value",
- "solution": {
-  "CMG": {
-   "pe": 18.15,
-   "pb": 1.84,
-   "roe": 13.37
+  "task_id": "fin-l5-compare-279",
+  "scoring": "value",
+  "solution": {
+    "CMG": {
+      "pe": 18.15,
+      "pb": 1.84,
+      "roe": 13.37
+    },
+    "ELC": {
+      "pe": 18.89,
+      "pb": 1.75,
+      "roe": 10.6
+    },
+    "VGI": {
+      "pe": 23.17,
+      "pb": 5.03,
+      "roe": 24.61
+    },
+    "CTR": {
+      "pe": 16.27,
+      "pb": 4.72,
+      "roe": 30.5
+    },
+    "FOX": {
+      "pe": 11.35,
+      "pb": 4.18,
+      "roe": 32.26
+    },
+    "ranking": [
+      "FOX",
+      "CTR",
+      "VGI",
+      "CMG",
+      "ELC"
+    ]
   },
-  "ELC": {
-   "pe": 18.89,
-   "pb": 1.75,
-   "roe": 10.6
-  },
-  "VGI": {
-   "pe": 23.17,
-   "pb": 5.03,
-   "roe": 24.61
-  },
-  "CTR": {
-   "pe": 16.27,
-   "pb": 4.72,
-   "roe": 30.5
-  },
-  "FOX": {
-   "pe": 11.35,
-   "pb": 4.18,
-   "roe": 32.26
-  },
-  "ranking": [
-   "FOX",
-   "CTR",
-   "VGI",
-   "CMG",
-   "ELC"
+  "as_of": "2026-11-01T23:14:34.298379+07:00",
+  "split": "main",
+  "expects": [
+    {
+      "type": "value",
+      "path": "values.CMG.pe",
+      "gold": 18.15,
+      "tol": {
+        "rel": 0.005
+      }
+    },
+    {
+      "type": "value",
+      "path": "values.CMG.pb",
+      "gold": 1.84,
+      "tol": {
+        "rel": 0.005
+      }
+    },
+    {
+      "type": "value",
+      "path": "values.CMG.roe",
+      "gold": 13.37,
+      "tol": {
+        "rel": 0.005
+      }
+    },
+    {
+      "type": "value",
+      "path": "values.ELC.pe",
+      "gold": 18.89,
+      "tol": {
+        "rel": 0.005
+      }
+    },
+    {
+      "type": "value",
+      "path": "values.ELC.pb",
+      "gold": 1.75,
+      "tol": {
+        "rel": 0.005
+      }
+    },
+    {
+      "type": "value",
+      "path": "values.ELC.roe",
+      "gold": 10.6,
+      "tol": {
+        "rel": 0.005
+      }
+    },
+    {
+      "type": "value",
+      "path": "values.VGI.pe",
+      "gold": 23.17,
+      "tol": {
+        "rel": 0.005
+      }
+    },
+    {
+      "type": "value",
+      "path": "values.VGI.pb",
+      "gold": 5.03,
+      "tol": {
+        "rel": 0.005
+      }
+    },
+    {
+      "type": "value",
+      "path": "values.VGI.roe",
+      "gold": 24.61,
+      "tol": {
+        "rel": 0.005
+      }
+    },
+    {
+      "type": "value",
+      "path": "values.CTR.pe",
+      "gold": 16.27,
+      "tol": {
+        "rel": 0.005
+      }
+    },
+    {
+      "type": "value",
+      "path": "values.CTR.pb",
+      "gold": 4.72,
+      "tol": {
+        "rel": 0.005
+      }
+    },
+    {
+      "type": "value",
+      "path": "values.CTR.roe",
+      "gold": 30.5,
+      "tol": {
+        "rel": 0.005
+      }
+    },
+    {
+      "type": "value",
+      "path": "values.FOX.pe",
+      "gold": 11.35,
+      "tol": {
+        "rel": 0.005
+      }
+    },
+    {
+      "type": "value",
+      "path": "values.FOX.pb",
+      "gold": 4.18,
+      "tol": {
+        "rel": 0.005
+      }
+    },
+    {
+      "type": "value",
+      "path": "values.FOX.roe",
+      "gold": 32.26,
+      "tol": {
+        "rel": 0.005
+      }
+    },
+    {
+      "type": "list_order",
+      "path": "ranking",
+      "gold": [
+        "FOX",
+        "CTR",
+        "VGI",
+        "CMG",
+        "ELC"
+      ]
+    },
+    {
+      "type": "period",
+      "path": "period",
+      "accept": [
+        "2025"
+      ]
+    },
+    {
+      "type": "str",
+      "path": "source",
+      "accept": [
+        "peer_compare"
+      ]
+    }
+  ],
+  "contract_version": 2,
+  "provenance_contract": [
+    {
+      "tool": "peer_compare",
+      "source": "vnstock",
+      "as_of": "2026-11-01T23:14:34.298379+07:00",
+      "matched_entry_id": "peer:tech_p",
+      "response_sha256": "c17f97f543cd1b3958a270ab9223286c2deaa4cf422b633fa065f8aa44915960"
+    }
+  ],
+  "payload_sha256": "7482995f6d9cf105dd8fab6f4a2a6847b197553c28d9125dbf23595e6813dcbb",
+  "provenance_catalog": [
+    {
+      "tool": "peer_compare",
+      "source": "vnstock",
+      "as_of": "2026-11-01T23:14:34.298379+07:00",
+      "matched_entry_id": "peer:tech_p",
+      "response_sha256": "c17f97f543cd1b3958a270ab9223286c2deaa4cf422b633fa065f8aa44915960"
+    }
+  ],
+  "required_payload_keys": [
+    "peer:tech_p"
   ]
- },
- "as_of": "2026-11-01T23:14:34.298379+07:00",
- "split": "main",
- "expects": [
-  {
-   "type": "value",
-   "path": "values.CMG.pe",
-   "gold": 18.15,
-   "tol": {
-    "rel": 0.005
-   }
-  },
-  {
-   "type": "value",
-   "path": "values.CMG.pb",
-   "gold": 1.84,
-   "tol": {
-    "rel": 0.005
-   }
-  },
-  {
-   "type": "value",
-   "path": "values.CMG.roe",
-   "gold": 13.37,
-   "tol": {
-    "rel": 0.005
-   }
-  },
-  {
-   "type": "value",
-   "path": "values.ELC.pe",
-   "gold": 18.89,
-   "tol": {
-    "rel": 0.005
-   }
-  },
-  {
-   "type": "value",
-   "path": "values.ELC.pb",
-   "gold": 1.75,
-   "tol": {
-    "rel": 0.005
-   }
-  },
-  {
-   "type": "value",
-   "path": "values.ELC.roe",
-   "gold": 10.6,
-   "tol": {
-    "rel": 0.005
-   }
-  },
-  {
-   "type": "value",
-   "path": "values.VGI.pe",
-   "gold": 23.17,
-   "tol": {
-    "rel": 0.005
-   }
-  },
-  {
-   "type": "value",
-   "path": "values.VGI.pb",
-   "gold": 5.03,
-   "tol": {
-    "rel": 0.005
-   }
-  },
-  {
-   "type": "value",
-   "path": "values.VGI.roe",
-   "gold": 24.61,
-   "tol": {
-    "rel": 0.005
-   }
-  },
-  {
-   "type": "value",
-   "path": "values.CTR.pe",
-   "gold": 16.27,
-   "tol": {
-    "rel": 0.005
-   }
-  },
-  {
-   "type": "value",
-   "path": "values.CTR.pb",
-   "gold": 4.72,
-   "tol": {
-    "rel": 0.005
-   }
-  },
-  {
-   "type": "value",
-   "path": "values.CTR.roe",
-   "gold": 30.5,
-   "tol": {
-    "rel": 0.005
-   }
-  },
-  {
-   "type": "value",
-   "path": "values.FOX.pe",
-   "gold": 11.35,
-   "tol": {
-    "rel": 0.005
-   }
-  },
-  {
-   "type": "value",
-   "path": "values.FOX.pb",
-   "gold": 4.18,
-   "tol": {
-    "rel": 0.005
-   }
-  },
-  {
-   "type": "value",
-   "path": "values.FOX.roe",
-   "gold": 32.26,
-   "tol": {
-    "rel": 0.005
-   }
-  },
-  {
-   "type": "list_order",
-   "path": "ranking",
-   "gold": [
-    "FOX",
-    "CTR",
-    "VGI",
-    "CMG",
-    "ELC"
-   ]
-  },
-  {
-   "type": "period",
-   "path": "period",
-   "accept": [
-    "2025"
-   ]
-  },
-  {
-   "type": "str",
-   "path": "source",
-   "accept": [
-    "peer_compare"
-   ]
-  }
- ]
 }

@@ -1,34 +1,57 @@
 {
- "task_id": "fin-l4-future-227",
- "scoring": "refusal",
- "solution": {
-  "latest": "Q3/2026",
-  "asked": "Q4/2026"
- },
- "as_of": "2026-11-01T23:48:19.730595+07:00",
- "split": "main",
- "refusal_tokens": [
-  "chưa công bố",
-  "chưa có",
-  "chưa kết thúc",
-  "không có",
-  "không tồn tại",
-  "chưa phát hành",
-  "chưa đến kỳ",
-  "chưa có số liệu",
-  "không có số liệu",
-  "chưa được công bố",
-  "không có dữ liệu",
-  "không đủ dữ liệu"
- ],
- "bonus_numbers": [
-  1924.87
- ],
- "bonus_strings": [
-  "Q3/2026",
-  "Q3/2026",
-  "quý 3/2026",
-  "q3 2026",
-  "q3/26"
- ]
+  "task_id": "fin-l4-future-227",
+  "scoring": "refusal",
+  "solution": {
+    "latest": "Q3/2026",
+    "asked": "Q4/2026"
+  },
+  "as_of": "2026-11-01T23:48:19.730595+07:00",
+  "split": "main",
+  "refusal_tokens": [
+    "chưa công bố",
+    "chưa có",
+    "chưa kết thúc",
+    "không có",
+    "không tồn tại",
+    "chưa phát hành",
+    "chưa đến kỳ",
+    "chưa có số liệu",
+    "không có số liệu",
+    "chưa được công bố",
+    "không có dữ liệu",
+    "không đủ dữ liệu"
+  ],
+  "bonus_numbers": [
+    1924.87
+  ],
+  "bonus_strings": [
+    "Q3/2026",
+    "Q3/2026",
+    "quý 3/2026",
+    "q3 2026",
+    "q3/26"
+  ],
+  "contract_version": 2,
+  "provenance_contract": [
+    {
+      "tool": "financial_statements",
+      "source": "vietstock",
+      "as_of": "2026-11-01T23:48:19.730595+07:00",
+      "matched_entry_id": "fs:VIB",
+      "response_sha256": "058ebd68d61eb6e4cb304a7c2b9365667c878fd8877dd677c01d0f4b77b939c3"
+    }
+  ],
+  "payload_sha256": "d2d6286edc369f891b0e6df7fb9cc9292abd1d60018c8eb6c92180231da1dff3",
+  "provenance_catalog": [
+    {
+      "tool": "financial_statements",
+      "source": "vietstock",
+      "as_of": "2026-11-01T23:48:19.730595+07:00",
+      "matched_entry_id": "fs:VIB",
+      "response_sha256": "058ebd68d61eb6e4cb304a7c2b9365667c878fd8877dd677c01d0f4b77b939c3"
+    }
+  ],
+  "required_payload_keys": [
+    "fs:VIB"
+  ]
 }

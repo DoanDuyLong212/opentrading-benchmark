@@ -1,0 +1,24 @@
+{
+ "snapshot_date": "2026-11-01",
+ "note": "Envelope MCP tái sử dụng nguyên vẹn từ task đã ghi snapshot 2026-11-01 (memory stratum batch-3); không capture mới. Nguồn: holdout fin-l4-nonexist-935",
+ "tools": {
+  "res:ZQZQ": {
+   "tool": "symbol_resolve",
+   "params": {
+    "query": "ZQZQ"
+   },
+   "envelope": {
+    "data": {
+     "query": "ZQZQ",
+     "resolved": null,
+     "candidates": []
+    },
+    "provenance": {
+     "source": "vnstock+local",
+     "as_of": "2026-11-01T21:51:47.058842+07:00"
+    },
+    "availability": "empty"
+   }
+  }
+ }
+}

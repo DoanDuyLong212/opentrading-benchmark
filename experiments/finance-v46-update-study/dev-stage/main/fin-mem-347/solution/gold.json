@@ -1,0 +1,52 @@
+{
+ "scoring": "value",
+ "memory_construct": "cross_session_recall_or_update",
+ "solution": {
+  "symbol": "FRT",
+  "in_scope": "không"
+ },
+ "expects": [
+  {
+   "type": "str",
+   "path": "values.symbol",
+   "accept": [
+    "FRT"
+   ]
+  },
+  {
+   "type": "str",
+   "path": "values.in_scope",
+   "accept": [
+    "không",
+    "ngoài",
+    "false",
+    "không thuộc",
+    "ngoài phổ",
+    "không."
+   ]
+  },
+  {
+   "type": "str",
+   "path": "source",
+   "accept": [
+    "peer_compare"
+   ]
+  }
+ ],
+ "notes": "Constraint 'chỉ ngân hàng' + hỏi ROE cao nhất trong rổ cons: FRT 26.13 là cao nhất, NHƯNG FRT không phải ngân hàng → in_scope 'không'. Đo recall informing hành vi trả lời (note ngoài phổ).",
+ "memory_checks": {},
+ "provenance_contract": [
+  {
+   "tool": "peer_compare",
+   "source": "vnstock",
+   "as_of": "2026-11-01T23:08:19.121250+07:00",
+   "matched_entry_id": "peer:cons_p",
+   "response_sha256": "ddba4fdb6bb3c68d89a0cb89bcf91112bcee9fc811750394f7fb157fbdfffa82"
+  }
+ ],
+ "required_payload_keys": [
+  "peer:cons_p"
+ ],
+ "task_id": "fin-mem-347",
+ "payload_sha256": "cb4486b82d07494761d1d65b1416b960d1025a16d820895f9416dd76b996a0ba"
+}

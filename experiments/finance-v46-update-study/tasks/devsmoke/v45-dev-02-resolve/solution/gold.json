@@ -1,0 +1,77 @@
+{
+  "task_id": "v45-dev-02-resolve",
+  "scoring": "value",
+  "solution": {
+    "value": 37.25
+  },
+  "provenance_contract": [
+    {
+      "tool": "symbol_resolve",
+      "source": "synthetic-dev",
+      "as_of": "2026-11-02T09:00:00+07:00",
+      "matched_entry_id": "r:KDH",
+      "response_sha256": "8c83286dd0b8ad44abfdca9d322239a62c7b0e8b69fc6c26f41d69760eaa20f1"
+    },
+    {
+      "tool": "vn_quote_history",
+      "source": "synthetic-dev",
+      "as_of": "2026-11-02T09:00:00+07:00",
+      "matched_entry_id": "q:KDH",
+      "response_sha256": "43af4f3578ca074577a61e1a25922d33a38ce13f0646a871233aa9755fdf9fea"
+    }
+  ],
+  "provenance_catalog": [
+    {
+      "tool": "symbol_resolve",
+      "source": "synthetic-dev",
+      "as_of": "2026-11-02T09:00:00+07:00",
+      "matched_entry_id": "r:KDH",
+      "response_sha256": "8c83286dd0b8ad44abfdca9d322239a62c7b0e8b69fc6c26f41d69760eaa20f1"
+    },
+    {
+      "tool": "vn_quote_history",
+      "source": "synthetic-dev",
+      "as_of": "2026-11-02T09:00:00+07:00",
+      "matched_entry_id": "q:KDH",
+      "response_sha256": "43af4f3578ca074577a61e1a25922d33a38ce13f0646a871233aa9755fdf9fea"
+    }
+  ],
+  "required_payload_keys": [
+    "r:KDH",
+    "q:KDH"
+  ],
+  "payload_sha256": "9f0314e05c1f78b1eab543a198eb22bb92dcef99d7033f8a3d7bf76bf19726d3",
+  "fixture_kind": "synthetic_engineering_fixture",
+  "expects": [
+    {
+      "type": "value",
+      "path": "value",
+      "gold": 37.25,
+      "tol": {
+        "abs": 1e-06
+      }
+    },
+    {
+      "type": "unit",
+      "path": "unit",
+      "accept": [
+        "nghìn đồng"
+      ]
+    },
+    {
+      "type": "period",
+      "path": "period",
+      "accept": [
+        "2026-10-29"
+      ]
+    },
+    {
+      "type": "str_all",
+      "path": "source",
+      "accept": [
+        "symbol_resolve",
+        "vn_quote_history"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,64 @@
+{
+ "scoring": "value",
+ "solution": {
+  "symbol": "TPB",
+  "pct_drop": -1.94,
+  "lnst_bn": 2351.2
+ },
+ "expects": [
+  {
+   "type": "str",
+   "path": "values.symbol",
+   "accept": [
+    "TPB"
+   ]
+  },
+  {
+   "type": "value",
+   "path": "values.pct_drop",
+   "gold": -1.94,
+   "tol": {
+    "abs": 0.01
+   }
+  },
+  {
+   "type": "value",
+   "path": "values.lnst_bn",
+   "gold": 2351.2,
+   "tol": {
+    "rel": 0.005
+   }
+  },
+  {
+   "type": "str_all",
+   "path": "source",
+   "accept": [
+    "vn_equity_quote_batch",
+    "financial_statements"
+   ]
+  }
+ ],
+ "notes": "TPB giảm sâu nhất −1.94% (cách ACB −1.41% = 0.47pp); LNST Q3/2026 = 2,351.20 tỷ.",
+ "provenance_contract": [
+  {
+   "tool": "vn_equity_quote_batch",
+   "source": "vnstock",
+   "as_of": "2026-11-01T23:04:24.002593+07:00",
+   "matched_entry_id": "batch:banks1",
+   "response_sha256": "f34f28d0c86eac38fcf8951c1b7015a5a7e7cd9fd41ec9ed73970c147270510b"
+  },
+  {
+   "tool": "financial_statements",
+   "source": "vietstock",
+   "as_of": "2026-11-01T23:48:05.276403+07:00",
+   "matched_entry_id": "fs:TPB",
+   "response_sha256": "48a35e0731868cbf65c449baff6ebd11d24c5cef9a44bfd30cc4bdcc3aa6da4d"
+  }
+ ],
+ "required_payload_keys": [
+  "batch:banks1",
+  "fs:TPB"
+ ],
+ "task_id": "fin-l4-chain-305",
+ "payload_sha256": "63873ca0cdbf473946c7a06aa7520ca6bc194cc972ce80e49b59bba39a4a9a71"
+}

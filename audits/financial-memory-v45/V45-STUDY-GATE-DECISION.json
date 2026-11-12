@@ -1,0 +1,28 @@
+{
+  "schema": "v45-post-mini-gate-decision",
+  "status": "blocked_instrumentation",
+  "study_stage": "MINI_completed_reviewed_uncertified",
+  "mini_episodes": 24,
+  "mini_manifest_sha256": "4439ae833534f1e685c9bd0f67f6780fb4dfda9779d7de4e8b94dd2338e54bf6",
+  "frozen_audit_pass": false,
+  "frozen_audit_errors": 94,
+  "manual_reviewed_wins": 13,
+  "manual_rejected_wins": 0,
+  "completed_resume_new_model_calls": 0,
+  "stateless_smoke_pilot_main_launched": false,
+  "reasons": [
+    "Actual Bun/AJV cannot compile six generated finite schemas; captured valid GC=F request rejected before MCP.",
+    "Planned B0/B1 use different validator paths: confounded comparison.",
+    "Frozen auditor false positives and history-rejection generation stamping defect remain unresolved; no post-inference edits permitted."
+  ],
+  "registered_run_pause_markers": [
+    "/home/doanlong/extra/benchmark/experiments/finance-v45-study/results/financial-v45-20261109/super-devsmoke/PAUSE",
+    "/home/doanlong/extra/benchmark/experiments/finance-v45-study/results/financial-v45-20261109/super-pilot/PAUSE",
+    "/home/doanlong/extra/benchmark/experiments/finance-v45-study/results/financial-v45-20261109/super-main/PAUSE",
+    "/home/doanlong/extra/benchmark/experiments/finance-v45-study/results/financial-v45-20261109/deepseek-devsmoke/PAUSE",
+    "/home/doanlong/extra/benchmark/experiments/finance-v45-study/results/financial-v45-20261109/deepseek-pilot/PAUSE",
+    "/home/doanlong/extra/benchmark/experiments/finance-v45-study/results/financial-v45-20261109/deepseek-main/PAUSE"
+  ],
+  "historical_engineering_approvals_and_seal_preserved": true,
+  "new_inference_authorization": "No advancement under this frozen study; future repair requires separate version, offline validation and fresh preregistration under applicable user scope."
+}

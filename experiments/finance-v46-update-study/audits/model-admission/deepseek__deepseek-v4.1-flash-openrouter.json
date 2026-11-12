@@ -1,0 +1,26 @@
+{
+ "model_requested": "deepseek/deepseek-v4.1-flash",
+ "probes": [
+  {
+   "probe": "identity",
+   "wall_s": 1.8,
+   "response_model": "deepseek/deepseek-v4.1-flash",
+   "finish": "stop",
+   "content_ok": true,
+   "usage_present": true
+  },
+  {
+   "probe": "vn_follow",
+   "wall_s": 1.5,
+   "content_head": "4"
+  },
+  {
+   "probe": "tool_wire",
+   "wall_s": 1.0,
+   "tool_called": true,
+   "args_ok": true
+  }
+ ],
+ "returned_model": "deepseek/deepseek-v4.1-flash",
+ "pass": true
+}

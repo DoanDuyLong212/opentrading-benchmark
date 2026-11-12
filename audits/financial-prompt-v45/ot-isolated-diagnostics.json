@@ -1,0 +1,24 @@
+[
+  {
+    "log": "ot-recall-performance-isolated.log",
+    "command": [
+      "bun",
+      "test",
+      "test/memory-notebook-recall.test.ts",
+      "-t",
+      "builds cold"
+    ],
+    "exit_code": 0
+  },
+  {
+    "log": "ot-tui-stream-isolated.log",
+    "command": [
+      "bun",
+      "test",
+      "test/tui.test.tsx",
+      "-t",
+      "a reply streams"
+    ],
+    "exit_code": 1
+  }
+]

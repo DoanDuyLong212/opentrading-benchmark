@@ -1,0 +1,1342 @@
+--- pre-v44/bun.lock
++++ v44/bun.lock
+@@ -26,6 +26,7 @@
+         "@opentui/core": "0.8.1",
+         "@opentui/solid": "0.8.1",
+         "ai": "7.0.159",
++        "ajv": "8.20.0",
+         "linkedom": "0.18.14",
+         "lru-cache": "11.5.3",
+         "solid-js": "1.9.12",
+--- pre-v44/package.json
++++ v44/package.json
+@@ -41,6 +41,7 @@
+     "@opentui/core": "0.8.1",
+     "@opentui/solid": "0.8.1",
+     "ai": "7.0.159",
++    "ajv": "8.20.0",
+     "linkedom": "0.18.14",
+     "lru-cache": "11.5.3",
+     "solid-js": "1.9.12",
+--- pre-v44/src/core/agent.ts
++++ v44/src/core/agent.ts
+@@ -1,6 +1,7 @@
+ import {
+   generateText,
+   NoSuchToolError,
++  InvalidToolInputError,
+   ToolChoiceViolationError,
+   hasToolCall,
+   isStepCount,
+@@ -14,6 +15,7 @@
+   type ToolSet,
+   wrapLanguageModel,
+ } from "ai"
++import { FinancePolicyState, type FinancePolicyOptions } from "./finance-policy"
+ import { ChatSetupError, describeError, resolveTarget, type Target } from "./chat"
+ import { effortOptions, isEffort, mergeProviderOptions, type Effort } from "./effort"
+ import type { AgentEvent } from "./events"
+@@ -154,6 +156,9 @@
+   promptDir?: string
+   /** Default live; snapshot suppresses the live-session reminder without fabricating prevClock. */
+   clockPolicy?: "live" | "snapshot"
++  financePolicy?: FinancePolicyOptions
++  /** Internal turn-local state; runAgent creates it from financePolicy. */
++  financeState?: FinancePolicyState
+   signal?: AbortSignal
+   /**
+    * How long a request may stream nothing before it is cut (default LLM_STALL_MS). A subagent
+@@ -444,6 +449,11 @@
+   finishMessage?: string
+   /** The model streamed reasoning (thoughts) in this run. */
+   reasoned?: boolean
++  bufferText?: boolean
++  stepOffset?: number
++  localRejections?: FinancePolicyState["localRejections"]
++  financeAudit?: FinancePolicyState["callAudit"]
++  financeState?: FinancePolicyState
+   /** Text and tool calls of the step running or last finished (the stop gate reads the final step). */
+   stepText?: string
+   stepTools?: string[]
+@@ -580,9 +590,19 @@
+           outcome.text += part.text
+           outcome.stepText = (outcome.stepText ?? "") + part.text
+           stepText += part.text
+-          yield { type: "text-delta", text: part.text }
++          if (!outcome.bufferText) yield { type: "text-delta", text: part.text }
+           break
+         case "tool-call":
++          // SDK may validate again after its native name repair. Record that actual
++          // final parsed error too; it is not another MCP execution.
++          if (part.invalid && InvalidToolInputError.isInstance(part.error)) {
++            outcome.localRejections?.set(part.toolCallId,{code:"invalid_tool_input",tool:part.error.toolName,rawInput:part.error.toolInput})
++            const def=registry.get(part.toolName)
++            if(def && outcome.financeState && !outcome.financeAudit?.has(part.toolCallId)) {
++              let args:unknown=part.error.toolInput;try {args=JSON.parse(part.error.toolInput)} catch {}
++              outcome.financeState.failed(def,args,Object.assign(new Error(part.error.message),{code:"invalid_argument",retryable_with_corrected_arguments:true}),part.toolCallId)
++            }
++          }
+           outcome.stepTools = [...(outcome.stepTools ?? []), part.toolName]
+           started.set(part.toolCallId, Date.now())
+           stepCalls.push({
+@@ -599,7 +619,7 @@
+             name: part.toolName,
+             label: label(registry, part.toolName, part.input),
+             input: part.input,
+-            step: Math.max(1, outcome.steps),
++            step: Math.max(1, outcome.steps + (outcome.stepOffset ?? 0)),
+           }
+           break
+         case "tool-result":
+@@ -612,6 +632,8 @@
+             output: ok ? stringify(part.output) : toolErrorText(describeError(part.error)),
+             chart: ok ? chartOf(part.output) : undefined,
+             durationMs: Date.now() - (started.get(part.toolCallId) ?? Date.now()),
++            ...(outcome.financeAudit?.has(part.toolCallId) ? {financeIntent:outcome.financeAudit.get(part.toolCallId)} : {}),
++            ...(!ok && outcome.localRejections?.has(part.toolCallId) ? { localRejection: outcome.localRejections.get(part.toolCallId) } : {}),
+           }
+           pendingTools.delete(part.toolCallId)
+           stepResults.push({
+@@ -777,7 +799,7 @@
+   const mode = opts.registry.gate?.mode ?? "read-only"
+   const modeTools = mode === "read-only" ? [] : opts.registry.list().filter((d) => d.effect).map((d) => d.name)
+   const loaded = new Set([...loadedTools(opts.history ?? []), ...modeTools, ...(opts.preload ?? [])])
+-  const built = supportsTools ? opts.registry.toToolSet({ ...setOptions, defer, loaded }) : undefined
++  const built = supportsTools ? opts.registry.toToolSet({ ...setOptions, defer, loaded, financeState: opts.financeState }) : undefined
+   const toolNames = built?.names ?? []
+   const assembled = assemble({
+     tier,
+@@ -1018,6 +1040,8 @@
+   const config = await loadConfig()
+   // The main agent's effort comes from config; a subagent's is resolved by its manager.
+   if (opts.role !== "subagent" && opts.effort === undefined && isEffort(config.effort)) opts = { ...opts, effort: config.effort }
++  const finance = opts.financePolicy?.enabled ? new FinancePolicyState(opts.financePolicy, opts.input) : undefined
++  opts = { ...opts, financeState: finance }
+   const prepared = await prepare(opts, extras)
+   const { target, tools, built, assembled, supportsTools } = prepared
+   const configured = config.maxSteps
+@@ -1078,6 +1102,14 @@
+   // Steps used by earlier runs of this turn: a recovery run counts from 0 again, but the step
+   // cap (and its forced summary) is for the whole turn.
+   let stepsUsed = 0
++  let financeCorrections = 0
++  let financeOutputCorrections = 0
++  let financeAcquisition = false
++  let financeAcquisitionTools: string[] = []
++  let financePhase: "bounded_finance_acquisition" | "bounded_finance_correction" | "output_format_correction" | undefined
++  let financeRepairTools: string[] | undefined
++  let financeCorrectionSteps: number | undefined
++  let financeRescueNow = false
+ 
+   /** One streamText run over `base`; `rescue` is a nudge (never stored) on its first step. */
+   const run = (base: ModelMessage[], rescue?: Rescue) =>
+@@ -1087,7 +1119,7 @@
+       messages: base,
+       tools,
+       // A step that answers and closes the todo list ends the turn: no request after it.
+-      stopWhen: [isStepCount(Math.max(1, maxSteps - stepsUsed)), answeredAndClosedTodos, ...(opts.finalTool ? [hasToolCall(opts.finalTool)] : [])],
++      stopWhen: [isStepCount(Math.max(1, Math.min(maxSteps - stepsUsed, financeCorrectionSteps ?? Infinity))), answeredAndClosedTodos, ...(opts.finalTool ? [hasToolCall(opts.finalTool)] : [])],
+       // Every step exposes what the conversation has loaded so far, so a tool found by
+       // tool_search is callable at the very next step.
+       // Last allowed step: keep tools declared (some providers reject tool history otherwise)
+@@ -1111,6 +1143,19 @@
+         }
+         active = activeFor(built, messages)
+         loaded = loadedTools(messages)
++        if (financeAcquisition) {
++          const failures = turnFailures(messages)
++          const mayCall = failures.streak < FAILURE_STREAK_STOP && stepsUsed + stepNumber < maxSteps - 1
++          const available = (active ?? Object.keys(tools)).filter(name=>financeAcquisitionTools.includes(name))
++          return {activeTools: available, toolChoice: mayCall && available.length ? "auto" : "none", messages: rescueNow ? withNudge(messages,rescueNow.nudge) : messages}
++        }
++        if (financeRepairTools) {
++          // An optional native finance recovery shares upstream steps/usage/cancellation.
++          // Preserve native circuit-breaker/last-step guards; never enable arbitrary tools.
++          const failures = turnFailures(messages)
++          const mayCall = (finance?.correctionTools().length ?? 0) > 0 && failures.streak < FAILURE_STREAK_STOP && stepsUsed + stepNumber < maxSteps - 1
++          return {...(active ? {activeTools: active} : {}),toolChoice: mayCall ? "auto" : "none",messages: rescueNow ? withNudge(messages,rescueNow.nudge) : messages}
++        }
+         const failures = turnFailures(messages)
+         const stopped = failures.streak >= FAILURE_STREAK_STOP
+         // A run that must end in its final tool ends there: with tools off it could not.
+@@ -1133,7 +1178,13 @@
+         summarized = true
+         return { toolChoice: "none", activeTools: active, messages: withNudge(messages, SUMMARY_PROMPT) }
+       },
+-      experimental_repairToolCall: async ({ toolCall, error }) => repairCall(opts.registry, built, active, loaded, toolCall, error),
++      experimental_repairToolCall: async ({ toolCall, error }) => {
++        if (finance && InvalidToolInputError.isInstance(error)) {
++          finance.localRejections.set(toolCall.toolCallId,{code:"invalid_tool_input",tool:error.toolName,rawInput:error.toolInput})
++          const def=opts.registry.get(error.toolName); if(def) { let args:unknown=error.toolInput; try { args=JSON.parse(error.toolInput) } catch {} ;finance.failed(def,args,Object.assign(new Error(error.message),{code:"invalid_argument",retryable_with_corrected_arguments:true}),toolCall.toolCallId) }
++        }
++        return repairCall(opts.registry, built, active, loaded, toolCall, error)
++      },
+       abortSignal,
+       providerOptions,
+       // The model is wrapped with retry.ts (by kind of failure, shown to the user, Esc
+@@ -1155,9 +1206,12 @@
+   let unanswered = false
+ 
+   for (;;) {
++    // A phase-enter event may yield to a caller that cancels. Do not schedule a
++    // fresh SDK request with an already aborted signal, even for a stub fetch.
++    if (finance && abortSignal.aborted) { outcome.aborted=true;break }
+     const base = [...request, ...kept]
+     const result = run(base, rescue)
+-    const last: Outcome = { text: "", aborted: false, steps: 0, progress: [] }
++    const last: Outcome = { text: "", aborted: false, steps: 0, progress: [], bufferText: !!finance?.options.machineResponse, stepOffset: finance ? stepsUsed : undefined, localRejections: finance?.localRejections, financeAudit:finance?.callAudit, financeState:finance }
+     yield* relay(result, opts.registry, opts.signal, last, notices, { ms: stallMs, onStall }, prepared.images)
+     stepsUsed += last.steps
+     outcome.text += last.text
+@@ -1204,15 +1258,74 @@
+         )
+     // No step left for another run: the cap's summary step had the last word.
+     const capped = stepsUsed >= maxSteps
+-    const continuing = recoveries.at(-1) === "length"
++    const continuing = recoveries.at(-1) === "length" && !financeRescueNow
+     // Capped, a step with text is the turn's last word (the summary may well say what is missing).
+     if (verdict.action === "accept" || (verdict.action === "continue" && capped && !isEmptyAnswer(last.stepText ?? ""))) {
+       messages = continuing ? continueAnswer(kept, response) : [...kept, ...response]
++      if (finance && !opts.finalTool) {
++        const selected = messages.findLast((m): m is AssistantMessage => m.role === "assistant")
++        const finalText = stripEchoes(continuing && selected
++          ? assistantParts(selected).filter(p=>p.type === "text").map(p=>p.text).join("")
++          : last.stepText ?? "")
++        const issues = finance.issues(finalText, opts.registry.list())
++        if (financePhase) {
++          yield {type:"finance-phase",phase:financePhase,transition:"exit",reason:outcome.aborted ? "cancelled" : capped ? "shared_step_cap" : "candidate_returned",availableToolNames:financeAcquisition ? financeAcquisitionTools : financeRepairTools ?? [],toolChoice:"none",stepsUsed,maxSteps,actualCallIds:[...finance.callAudit.keys()]}
++          finance.endAcquisition();financeAcquisition=false;financePhase=undefined
++          financeCorrectionSteps=undefined;financeRepairTools=undefined
++        }
++        const correctionTools = finance.correctionTools()
++        const acquisition = finance.acquisitionDecision(finalText, opts.registry.list().filter(d=>!!tools?.[d.name] && (!active || active.includes(d.name))))
++        if (acquisition.tools.length && !correctionTools.length && !capped && stepsUsed < maxSteps - 1 && !abortSignal.aborted) {
++          financeAcquisitionTools=acquisition.tools
++          finance.beginAcquisition(acquisition.tools)
++          financeAcquisition=true;financePhase="bounded_finance_acquisition"
++          // One opportunity bounded by the original shared steps (including final),
++          // provider/token/time limits; no entity-count-dependent allowance.
++          financeCorrectionSteps=maxSteps - stepsUsed;financeRescueNow=true;kept=messages
++          yield {type:"finance-phase",phase:financePhase,transition:"enter",reason:acquisition.reason,availableToolNames:acquisition.tools,toolChoice:"auto",stepsUsed,maxSteps,actualCallIds:[...finance.callAudit.keys()]}
++          rescue={toolChoice:"auto",nudge:[
++            "One bounded evidence acquisition opportunity before final. The public request requires external financial evidence; the current candidate has no actual evidence attempt or declares missing support.",
++            "Choose appropriate declared read-only tools using the original request and public catalog. Resolve available entities when needed; preserve requested entities, periods, metrics and units. Generate your own arguments. Do not invent evidence, infer that an unattempted query is empty, or replay successful/rejected arguments.",
++            "If a necessary input is genuinely missing, ask a precise clarification and state which input is missing; tools cannot supply user intent. Actual empty responses, auth/terminal errors, cancellation and exhausted shared caps are terminal, not reasons to loop.",
++            ...issues,
++            'Return the requested raw JSON success with actual successful evidence, or the public refusal branch {"value":null,"reason":"specific honest reason","evidence":[]} without incompatible nonempty values/ranking/items. A refusal does not establish financial correctness.',
++          ].join("\n")}
++          continue
++        }
++        if (!finance.acquisitionUsed) yield {type:"finance-phase",phase:"bounded_finance_acquisition",transition:"skip",reason:capped || stepsUsed >= maxSteps - 1 ? "shared_step_cap" : correctionTools.length ? "failed_intent_repair_first" : acquisition.reason,availableToolNames:acquisition.tools,toolChoice:"none",stepsUsed,maxSteps,actualCallIds:[...finance.callAudit.keys()]}
++        const recoveryTools=financeCorrections === 0 ? correctionTools : []
++        if (!capped && (recoveryTools.length > 0 || (issues.length > 0 && financeOutputCorrections === 0))) {
++          if (recoveryTools.length) financeCorrections++
++          else financeOutputCorrections++
++          financePhase=recoveryTools.length ? "bounded_finance_correction" : "output_format_correction"
++          yield {type:"finance-phase",phase:financePhase,transition:"enter",reason:recoveryTools.length ? "actual_retryable_failed_intents" : "public_output_contract_issues",availableToolNames:recoveryTools,toolChoice:recoveryTools.length ? "auto" : "none",stepsUsed,maxSteps,actualCallIds:[...finance.callAudit.keys()]}
++          financeRepairTools = recoveryTools
++          // Pin parameter repair before eligibility changes. Output repair has its
++          // own one-request limit and must not reopen leftover query intents.
++          if (recoveryTools.length) financeCorrectionSteps=finance.beginCorrection() + 1
++          else { finance.beginOutputCorrection();financeCorrectionSteps=1 }
++          financeRescueNow = true
++          kept = messages // Preserve rejected finals in actual model/session history.
++          rescue = { toolChoice: recoveryTools.length ? "auto" : "none", nudge: [
++            "One bounded correction. Preserve requested entities, financial scope, periods and units. No invented data/evidence.",
++            ...issues,
++            ...(recoveryTools.length ? ["A read-only parse/schema/query failure does not prove missing financial data. Correct actual arguments using the public schema/error, do not replay rejected args or switch entity."] : []),
++            'Return exactly the requested final JSON. Copy evidence only from actual successful responses. The public refusal branch is {"value":null,"reason":"specific honest reason","evidence":[]}; omit incompatible nonempty values/ranking/items. A refusal does not establish financial correctness.', 
++          ].join("\n") }
++          continue
++        }
++        outcome.text = finalText
++        // A returned model answer with invalid formatting/evidence remains a gradeable
++        // answer, not an infrastructure failure. Preserve its exact bytes and expose
++        // the failed checks separately; never repair, coerce or certify it locally.
++        if (issues.length) yield {type:"finance-contract",valid:false,issues,rawFinal:finalText,correctionExhausted:financeOutputCorrections > 0,stepsUsed,maxSteps}
++      }
+       // Out of recoveries, the answer stands: the user still hears that nothing backs its figures.
+       if (!opts.finalTool && !continuing && isUnfetched({ unfetched })) yield { type: "notice", text: "Câu trả lời ghi số liệu kèm nguồn nhưng lượt này không có tool nào chạy: các số đó chưa được kiểm chứng." }
+       break
+     }
+     if (verdict.action === "continue" && !capped) {
++      financeRescueNow = false
+       recoveries.push(verdict.kind)
+       // A cut answer stays and the rest is joined onto it; any other broken step is dropped.
+       kept = verdict.kind === "length" ? (continuing ? continueAnswer(kept, response) : [...kept, ...response]) : [...kept, ...dropFinalText(response)]
+@@ -1235,6 +1348,12 @@
+     break
+   }
+ 
++  if (finance && financePhase) {
++    yield {type:"finance-phase",phase:financePhase,transition:"exit",reason:outcome.aborted ? "cancelled" : outcome.failure ? "request_failed" : "shared_step_cap",availableToolNames:financeAcquisition ? financeAcquisitionTools : financeRepairTools ?? [],toolChoice:"none",stepsUsed,maxSteps,actualCallIds:[...finance.callAudit.keys()]}
++    finance.endAcquisition()
++  }
++  if (finance?.options.machineResponse && unanswered && !outcome.failure) outcome.failure = new Error("Native stop gate ended without a valid machine response.")
++
+   if (midTurnPruned) {
+     yield {
+       type: "notice",
+@@ -1243,6 +1362,7 @@
+   }
+ 
+   if (messages && !outcome.aborted && !outcome.failure) {
++    if (finance?.options.machineResponse && outcome.text) yield { type: "text-delta", text: outcome.text }
+     // Echoed todo lines never reach history, so a later turn has nothing to imitate (29/10).
+     messages = stripEchoMessages(messages)
+     // Answered with items of this turn's list still open: retire the list (never mark them done
+--- pre-v44/src/core/events.ts
++++ v44/src/core/events.ts
+@@ -8,10 +8,12 @@
+  * Core never imports UI code; the TUI (or a future daemon/web client) just consumes these.
+  */
+ export type AgentEvent =
++  | {type:"finance-contract";valid:false;issues:string[];rawFinal:string;correctionExhausted:boolean;stepsUsed:number;maxSteps:number}
++  | {type:"finance-phase";phase:"bounded_finance_acquisition"|"bounded_finance_correction"|"output_format_correction";transition:"enter"|"exit"|"skip";reason:string;availableToolNames:string[];toolChoice:"auto"|"none";stepsUsed:number;maxSteps:number;actualCallIds:string[]}
+   | { type: "text-delta"; text: string }
+   /** `step`: the model request (1, 2, …) that made the call; calls of one step run together. */
+   | { type: "tool-start"; callId: string; name: string; label: string; input: unknown; step: number }
+-  | { type: "tool-end"; callId: string; ok: boolean; output: string; chart?: ChartData; durationMs: number }
++  | { type: "tool-end"; callId: string; ok: boolean; output: string; chart?: ChartData; durationMs: number; financeIntent?: import("./finance-policy").FinanceIntentAudit; localRejection?: { code: "invalid_tool_input" | "policy_guard_rejected"; tool: string; rawInput: string; reason?: string; phase?: "bounded_finance_correction" | "bounded_finance_acquisition"; allowedTools?: readonly string[] } }
+   /** Informational: step limit reached, model without tool support… */
+   | { type: "notice"; text: string }
+   /**
+--- pre-v44/src/core/finance-policy.ts
++++ v44/src/core/finance-policy.ts
+@@ -0,0 +1,260 @@
++/** Opt-in native read-only finance safeguards. No task IDs, oracle or financial gold. */
++import Ajv from "ajv"
++import type { JSONSchema7 } from "@ai-sdk/provider"
++import type { ToolDef } from "./tools/types"
++
++export interface FinancePolicyOptions { enabled: true; machineResponse?: boolean }
++const ajv = new Ajv({ strict: false, strictSchema: true, allErrors: true, coerceTypes: false, useDefaults: false, removeAdditional: false, validateFormats: false })
++for (const keyword of ["x-opentrading-schema-profile", "x-repair-fields", "x-finite-request-variants", "x-scope-aliases"]) ajv.addKeyword({ keyword, valid: true })
++const key = (v: unknown): string => JSON.stringify(v, (_k, x) => x && typeof x === "object" && !Array.isArray(x) ? Object.fromEntries(Object.entries(x).sort(([a],[b])=>a.localeCompare(b))) : x)
++const comparisonValue = (v:unknown):unknown => Array.isArray(v) ? v.map(comparisonValue).sort((a,b)=>key(a).localeCompare(key(b))) : typeof v === "string" ? v.trim().toUpperCase() : obj(v) ? Object.fromEntries(Object.entries(v).map(([k,x])=>[k,comparisonValue(x)])) : v
++const obj = (v: unknown): v is Record<string, unknown> => !!v && typeof v === "object" && !Array.isArray(v)
++const path = (v: unknown, p: string): unknown => p.split(".").reduce<unknown>((x,k)=>obj(x) ? x[k] : undefined,v)
++const immutableClone = (value: unknown): unknown => {
++  const copy: unknown = structuredClone(value)
++  const freeze = (v: unknown): unknown => { if (v && typeof v === "object") { for (const child of Object.values(v)) freeze(child); Object.freeze(v) }; return v }
++  return freeze(copy)
++}
++export interface FinanceIntentAudit {
++  intent_id: string; original_sdk_call_id: string; sdk_call_id: string
++  phase: "initial" | "correction" | "bounded_finance_correction" | "bounded_finance_acquisition"
++  correction_budget: number; correction_used: number; reason: string
++}
++interface Intent {
++  id: string; tool: string; canonical: string; scope: string; original: unknown; originalCallId: string
++  args: Set<string>; eligible: boolean; attempts: number; correctionUsed: number
++  status: "pending" | "failed" | "succeeded"; message: string
++}
++/** Structured error fields are authoritative. Bare legacy errors use only an anchored code. */
++function correctionEligible(def: ToolDef, error: unknown): boolean {
++  if (!def.readOnly) return false
++  const raw = obj(error) ? error.structuredError ?? error : undefined
++  const details = obj(raw) && obj(raw.error) ? raw.error : raw
++  const code = obj(details) && typeof details.code === "string" ? details.code : undefined
++  const allowed = new Set(["invalid_argument", "invalid_request", "invalid_tool_input", "unsupported_snapshot_query", "not_recorded", "schema_validation", "parse"])
++  if (code !== undefined) {
++    const retry = obj(details) ? details.retryable_with_corrected_arguments ?? details.retryable : undefined
++    return allowed.has(code) && retry !== false
++  }
++  const message = (error instanceof Error ? error.message : String(error)).trim()
++  // Some legacy tools prefix a second machine failure with invalid_argument. Only
++  // that immediate code position is considered, never auth/no-data words in prose.
++  if (/^(?:invalid[_. ]argument|invalid[_. ]request)[:\s]+(?:unauthorized|forbidden|permission_denied|no_data|not_found|unavailable)(?:\b|:)/i.test(message)) return false
++  return /^(?:invalid[_. ]argument|invalid[_. ]request|invalid_tool_input|unsupported_snapshot_query|not[_. ]recorded|schema(?:[_. ]validation)?|parse)(?:\b|:)/i.test(message.trim())
++}
++export class FinancePolicyState {
++  readonly localRejections = new Map<string, {code:"invalid_tool_input"|"policy_guard_rejected";tool:string;rawInput:string;reason?:string;phase?:"bounded_finance_correction"|"bounded_finance_acquisition";allowedTools?:readonly string[]}>()
++  readonly callAudit = new Map<string, FinanceIntentAudit>()
++  repairAllowedTools?: ReadonlySet<string>
++  private repairIntentIds?: ReadonlySet<string>
++  acquisitionActive = false
++  acquisitionUsed = false
++  private acquisitionAllowedTools?: ReadonlySet<string>
++  get acquisitionTools(): readonly string[] | undefined { return this.acquisitionAllowedTools ? [...this.acquisitionAllowedTools] : undefined }
++  readonly successes: { tool: string; canonical: string; value: unknown }[] = []
++  /** Retained for the complete turn, including successful corrections: no identity reset. */
++  readonly failures = new Map<string, Intent>()
++  private activeCalls = new Map<string, Intent>()
++  private validators = new WeakMap<object, ReturnType<typeof ajv.compile>>()
++  private serial = 0
++  constructor(readonly options: FinancePolicyOptions, readonly input: string) {}
++  private scope(def: ToolDef, input: unknown): string {
++    if (!obj(input)) return key(input)
++    const schema = obj(def.input) ? def.input : {}
++    const repairFields = new Set(Array.isArray(schema["x-repair-fields"]) ? (schema["x-repair-fields"] as string[]).filter(name=>!/symbol|ticker|currency|entity|peers|metric|statement|year|quarter|month|date|period|scope|consolidated|^(start|end|from|to)$/i.test(name)) : [])
++    const properties = obj(schema.properties) ? schema.properties : {}
++    const withDefaults = {...Object.fromEntries(Object.entries(properties).filter(([,v])=>obj(v) && "default" in v).map(([name,v])=>[name,(v as Record<string,unknown>).default])),...input}
++    const entries = Object.entries(withDefaults).filter(([name])=>!repairFields.has(name)).map(([name,value])=> {
++      // Equivalent scalar/list forms are compared only for public entity selectors.
++      if (/symbol|ticker|currency|entity|peers/i.test(name)) {
++        const normalized = (Array.isArray(value) ? value : [value]).map(x=>typeof x === "string" ? x.trim().toUpperCase() : x)
++        return [name, [...new Set(normalized)].sort()] as const
++      }
++      const declared = properties[name]
++      let compared:unknown=value
++      // Lossless representation equivalence only; never discard an invalid financial
++      // selector or collapse different invalid values into a single intent.
++      if(obj(declared)) {
++        const branches=[declared,...(Array.isArray(declared.anyOf) ? declared.anyOf.filter(obj) : []),...(Array.isArray(declared.oneOf) ? declared.oneOf.filter(obj) : [])]
++        const types=branches.flatMap(branch=>Array.isArray(branch.type) ? branch.type : [branch.type])
++        if((types.includes("integer") || types.includes("number")) && typeof value === "string" && /^[-+]?\d+$/.test(value.trim())) {
++          const numeric=Number(value);if(Number.isSafeInteger(numeric)) compared=numeric
++        }
++        if(types.includes("array") && /^(columns|metrics|statements)$/i.test(name) && typeof value === "string") compared=[value]
++      }
++      // Domain aliases must be declared publicly by the tool contract, never guessed
++      // from a failed value, task ID, answer or golden request.
++      const aliases=obj(schema["x-scope-aliases"]) ? schema["x-scope-aliases"][name] : undefined
++      if(obj(aliases) && typeof compared === "string" && Object.prototype.hasOwnProperty.call(aliases,compared)) compared=aliases[compared]
++      return [name, schema["x-opentrading-schema-profile"] === "finite-replay-c2" ? comparisonValue(compared) : compared] as const
++    })
++    return key(Object.fromEntries(entries))
++  }
++  private requestKey(def:ToolDef,input:unknown): string {
++    if(!obj(input) || !obj(def.input)) return key(input)
++    const properties=obj(def.input.properties) ? def.input.properties : {}
++    const value={...Object.fromEntries(Object.entries(properties).filter(([,v])=>obj(v) && "default" in v).map(([name,v])=>[name,(v as Record<string,unknown>).default])),...input}
++    return key(def.input["x-opentrading-schema-profile"] === "finite-replay-c2" ? comparisonValue(value) : value)
++  }
++  private find(def: ToolDef, input: unknown): Intent | undefined {
++    const canonical = def.canonicalName ?? def.name, scope = this.scope(def,input)
++    return [...this.failures.values()].find(f=>f.canonical === canonical && f.scope === scope)
++  }
++  private create(def:ToolDef,input:unknown,callId:string): Intent {
++    const f:Intent={id:`finance-intent-${++this.serial}`,tool:def.name,canonical:def.canonicalName ?? def.name,scope:this.scope(def,input),original:immutableClone(input),originalCallId:callId,args:new Set(),eligible:false,attempts:0,correctionUsed:0,status:"pending",message:""}
++    this.failures.set(f.id,f);return f
++  }
++  private record(f:Intent,callId:string,phase:FinanceIntentAudit["phase"],reason:string) {
++    this.callAudit.set(callId,{intent_id:f.id,original_sdk_call_id:f.originalCallId,sdk_call_id:callId,phase,correction_budget:1,correction_used:f.correctionUsed,reason})
++  }
++  beginCorrection() {
++    this.endAcquisition()
++    this.repairIntentIds = new Set([...this.failures.values()].filter(f=>f.status === "failed" && f.eligible && f.correctionUsed < 1).map(f=>f.id))
++    this.repairAllowedTools = new Set([...this.failures.values()].filter(f=>this.repairIntentIds!.has(f.id)).map(f=>f.tool))
++    return this.repairIntentIds.size
++  }
++  beginOutputCorrection() {
++    this.endAcquisition();this.repairIntentIds=new Set();this.repairAllowedTools=new Set()
++  }
++  /** A stop decision uses only the public response contract, candidate and actual calls.
++   * It cannot establish evaluator coverage or whether a refusal is financially correct.
++   */
++  acquisitionDecision(text: string, defs: ToolDef[]): {reason: string; tools: string[]} {
++    const tools = defs.filter(d=>d.readOnly).map(d=>d.name)
++    const stop = (reason:string) => ({reason,tools:[] as string[]})
++    if (!this.options.machineResponse) return stop("not_machine_response")
++    if (this.acquisitionUsed) return stop("opportunity_consumed")
++    // A public evidence mapping or declared public response contract establishes the
++    // external-data obligation. Ordinary conversations/clarification are not policed.
++    if (!/PUBLIC_RESPONSE_CONTRACT_V\d+=|\{[^{}]*"tool"\s*:[^{}]*"[^"\n]+\.[^"\n]+"/m.test(this.input)) return stop("no_public_evidence_obligation")
++    if (!tools.length) return stop("no_readonly_tools")
++    if ([...this.failures.values()].some(f=>f.status === "failed")) return stop("actual_failed_intent_requires_repair_or_terminal")
++    let value:unknown
++    try { value=JSON.parse(text) } catch { value=undefined }
++    if (obj(value) && ((value.clarification_required === true && typeof value.missing_input === "string" && value.missing_input.trim()) || (typeof value.reason === "string" && /missing (?:necessary |required )?(?:user )?input\s*:\s*\S/i.test(value.reason)))) return stop("explicit_missing_input")
++    const empty = (v:unknown):boolean => obj(v) && (v.availability === "empty" || v.status === "empty" || (v.resolved === null && Array.isArray(v.candidates) && !v.candidates.length))
++    const successes=this.successes.filter(s=>!empty(s.value) && !(obj(s.value) && empty(s.value.data)))
++    // An actual empty call establishes absence for that intent only. A candidate
++    // explicitly carrying partial success fields may still disclose missing others.
++    const declaredPartial=obj(value) && ["values","ranking","items"].some(k=>obj(value[k]) ? Object.values(value[k]).some(x=>x === null) : Array.isArray(value[k]) && value[k].some(x=>x === null))
++    if (this.successes.length && !successes.length && !declaredPartial) return stop("actual_empty_response")
++    const missing = (v:unknown):boolean => v === null || (Array.isArray(v) ? v.some(missing) : obj(v) ? Object.entries(v).some(([k,x])=> !["evidence","source","reason","unit","period"].includes(k) && missing(x)) : false)
++    if (!this.successes.length) return {reason:"no_actual_evidence_attempt",tools}
++    if (missing(value)) return {reason:"candidate_declares_partial_or_missing_support",tools}
++    return stop("candidate_has_actual_support")
++  }
++  beginAcquisition(tools: readonly string[]) {
++    this.acquisitionUsed=true;this.acquisitionActive=true
++    this.acquisitionAllowedTools=new Set(tools)
++    this.repairIntentIds=undefined;this.repairAllowedTools=undefined
++  }
++  endAcquisition() { this.acquisitionActive=false;this.acquisitionAllowedTools=undefined }
++  validate(def: ToolDef, value: unknown) {
++    if (!obj(def.input)) return { success: false as const, error: new Error("unsupported_schema: MCP input contract must be an object schema; arguments were not executed.") }
++    let validate = this.validators.get(def.input)
++    if (!validate) { validate = ajv.compile(def.input as JSONSchema7); this.validators.set(def.input, validate) }
++    if (validate(value)) return { success: true as const, value }
++    return { success: false as const, error: new Error(`invalid_argument: ${ajv.errorsText(validate.errors)}. Correct arguments to the declared schema; rejected input is not evidence of missing data.`) }
++  }
++  before(def: ToolDef, input: unknown, callId = `direct-${++this.serial}`) {
++    let f = this.find(def,input)
++    const reject = (message:string): never => {
++      if (!f) f=this.create(def,input,callId)
++      this.record(f,callId,this.repairIntentIds ? "bounded_finance_correction" : this.acquisitionActive ? "bounded_finance_acquisition" : "initial",message)
++      throw new Error(message)
++    }
++    if (this.acquisitionActive && (!def.readOnly || !this.acquisitionAllowedTools?.has(def.name))) reject("Bounded finance acquisition permits only declared read-only tools; side effects are not authorized.")
++    if (this.repairIntentIds && (!f || !this.repairIntentIds.has(f.id))) reject("Bounded finance correction changed original entity/currency or temporal/financial scope, or targeted an unrelated intent; rejected without execution.")
++    if (f) {
++      if (f.args.has(this.requestKey(def,input)) || f.status === "pending" || f.status === "succeeded") reject("Repeated or already pending/successful intent; do not replay this request.")
++      if (!f.eligible || f.correctionUsed >= 1) reject("Tool correction exhausted or ineligible; do not replay this request.")
++      f.correctionUsed++
++    } else f=this.create(def,input,callId)
++    f.args.add(this.requestKey(def,input));f.status="pending";this.activeCalls.set(callId,f)
++    this.record(f,callId,this.repairIntentIds ? "bounded_finance_correction" : this.acquisitionActive ? "bounded_finance_acquisition" : f.correctionUsed ? "correction" : "initial","execution_reserved")
++    return this.callAudit.get(callId)!
++  }
++  failed(def: ToolDef, input: unknown, error: unknown, callId?: string) {
++    let f = callId ? this.activeCalls.get(callId) : undefined
++    f ??= this.find(def,input)
++    if (!f) f=this.create(def,input,callId ?? `validation-${++this.serial}`)
++    // Validation happens before execute. Reserve its correction once, with actual SDK ID.
++    const id=callId ?? f.originalCallId
++    if(f.status === "succeeded") {this.record(f,id,this.repairIntentIds ? "bounded_finance_correction" : this.acquisitionActive ? "bounded_finance_acquisition" : "initial","invalid_duplicate_after_success; successful intent retained");return}
++    if (!this.activeCalls.has(id) && f.status === "failed" && !f.args.has(this.requestKey(def,input))) {
++      if (f.correctionUsed >= 1) return
++      f.correctionUsed++
++    }
++    f.args.add(this.requestKey(def,input));f.attempts++;f.status="failed";f.eligible=correctionEligible(def,error)
++    f.message=error instanceof Error ? error.message : String(error)
++    this.activeCalls.delete(id)
++    this.record(f,id,this.repairIntentIds ? "bounded_finance_correction" : this.acquisitionActive ? "bounded_finance_acquisition" : f.correctionUsed ? "correction" : "initial",f.message)
++  }
++  succeeded(def: ToolDef, value: unknown, input?: unknown, callId?:string) {
++    const f=callId ? this.activeCalls.get(callId) : input === undefined ? undefined : this.find(def,input)
++    if(f){f.status="succeeded";f.eligible=false;this.activeCalls.delete(callId!);this.record(f,callId!,this.repairIntentIds ? "bounded_finance_correction" : this.acquisitionActive ? "bounded_finance_acquisition" : f.correctionUsed ? "correction" : "initial","execution_succeeded")}
++    const text = typeof value === "string" ? value : obj(value) && typeof value.output === "string" ? value.output : undefined
++    let parsed: unknown = value
++    try { if (text !== undefined) parsed = JSON.parse(text.includes("<structuredContent>\n") ? text.split("<structuredContent>\n").at(-1)! : text.replace(/^\[ref r\d+\]\s*/, "")) } catch {}
++    this.successes.push({tool:def.name, canonical:def.canonicalName ?? def.name, value:immutableClone(parsed)})
++  }
++  correctionTools() { return [...new Set([...this.failures.values()].filter(f=>f.status === "failed" && f.eligible && f.correctionUsed < 1 && (!this.repairIntentIds || this.repairIntentIds.has(f.id))).map(f=>f.tool))] }
++  /** Contract keys come from user-provided JSON examples, including appended evidence mapping. */
++  issues(text: string, defs: ToolDef[]): string[] {
++    if (!this.options.machineResponse) return []
++    let value: unknown
++    try { value = JSON.parse(text) } catch { return ["Final response must be exactly one JSON object, without markdown or surrounding prose."] }
++    if (!obj(value)) return ["Final response must be a JSON object."]
++    const issues: string[] = []
++    let refusal = false
++    const publicContract = /^PUBLIC_RESPONSE_CONTRACT_V\d+=(.+)$/m.exec(this.input)
++    if (publicContract) {
++      try {
++        const contract = JSON.parse(publicContract[1]!)
++        if (obj(contract) && typeof contract.version === "string" && obj(contract.refusalSchema) && value.value === null) {
++          const valid = ajv.compile(contract.refusalSchema)
++          refusal = !!valid(value)
++          if (!refusal) issues.push("Refusal must satisfy the public refusal schema: value:null, nonempty reason, evidence array.")
++          if (["values","ranking","items"].some(k=>value[k] !== undefined && (Array.isArray(value[k]) ? value[k].length > 0 : obj(value[k]) ? Object.keys(value[k]).length > 0 : value[k] !== null))) issues.push("Refusal cannot contain incompatible nonempty success fields.")
++        }
++      } catch { issues.push("Public response contract is malformed; cannot validate refusal.") }
++    }
++    if (publicContract && value.value !== null && ["values","ranking","items"].some(k=>obj(value[k]) ? Object.values(value[k]).some(x=>x === null) : Array.isArray(value[k]) && value[k].some(x=>x === null))) issues.push('A null success map is not the refusal branch. For refusal return {"value":null,"reason":"specific honest reason","evidence":[]} and omit nonempty values/ranking/items; otherwise acquire actual evidence and fill the requested success fields.')
++    const nullable = new Set([...this.input.matchAll(/["`]?([A-Za-z_]\w*)["`]?\s*(?::|=|(?:với|là|as)\s+(?:JSON\s+)?)\s*["`]?null\b/gu)].map(m=>m[1]))
++    let sourceContract = /source[^\n]{0,160}(?:tên tool|tool name|catalog|namespace tool)/i.test(this.input)
++    const examples = [...this.input.matchAll(/```json\s*([\s\S]*?)```/g)]
++    for (const example of refusal ? [] : examples) {
++      try {
++        const e = JSON.parse(example[1]!)
++        if (obj(e)) for (const k of Object.keys(e)) {
++          const optional = typeof e[k] === "string" && /tuỳ chọn|tùy chọn|optional/i.test(e[k])
++          if (!(k in value)) { if (!optional) issues.push(`Missing requested field: ${k}`); continue }
++          // JSON examples declare public field shapes; null refusal remains permitted
++          // only when the user explicitly discusses null in the requested contract.
++          if (k === "source" && typeof e[k] === "string" && defs.some(d=>e[k] === (d.canonicalName ?? d.name))) sourceContract = true
++          if (value[k] === null && nullable.has(k)) continue
++          const shape = (v: unknown) => Array.isArray(v) ? "array" : v === null ? "null" : typeof v
++          if (shape(e[k]) !== shape(value[k])) issues.push(`Requested field has wrong JSON type: ${k}; expected ${shape(e[k])}`)
++        }
++      } catch {}
++    }
++    const names = new Set(defs.map(d=>d.canonicalName ?? d.name))
++    const sourceNames = typeof value.source === "string" ? value.source.split(/[,;+|]+/).map(s=>s.trim()) : Array.isArray(value.source) ? value.source : []
++    if (!refusal && sourceContract && !(value.source === null && nullable.has("source")) && (!sourceNames.length || !sourceNames.every(s=>typeof s === "string" && names.has(s)))) issues.push("source must use exact registered tool names, not provider names or invented aliases.")
++    // Parse public evidence field mapping supplied by caller/user, never a hidden grader schema.
++    const mappings = [...this.input.matchAll(/\{[^{}]*"tool"\s*:[^{}]*\}/g)].map(m=>{try{return JSON.parse(m[0])}catch{return undefined}}).filter(obj)
++    const mapping = mappings.find(m=>Object.values(m).some(v=>typeof v === "string" && v.includes(".")))
++    if (mapping) {
++      if (!Array.isArray(value.evidence)) issues.push("Required evidence must be an array copied from actual successful tool results.")
++      else for (const row of value.evidence) {
++        const matched = obj(row) && this.successes.some(s=>Object.entries(mapping).every(([k,p])=> {
++          const expected = k === "tool" ? s.canonical : typeof p === "string" ? path(s.value,p) : undefined
++          return expected !== undefined && key(row[k]) === key(expected)
++        }))
++        if (!matched) issues.push("Evidence row does not exactly match any actual successful tool response; copy public mapped fields unchanged.")
++      }
++      if (value.value !== null && Array.isArray(value.evidence) && value.evidence.length === 0) issues.push("Non-null answer requires actual successful tool evidence.")
++    }
++    return [...new Set(issues)]
++  }
++}
+--- pre-v44/src/core/mcp/convert.ts
++++ v44/src/core/mcp/convert.ts
+@@ -1,3 +1,5 @@
++import Ajv from "ajv"
++import type { JSONSchema7 } from "@ai-sdk/provider"
+ import type { ToolImage, ToolResult } from "../tools/types"
+ 
+ interface ContentBlock {
+@@ -46,7 +48,14 @@
+  * can see them. `isError` becomes a thrown error (the AI SDK turns it into a tool-error).
+  * Returns a plain string when there are no images, so text-only callers stay simple.
+  */
+-export function resultToOutput(result: CallToolResultLike): string | ToolResult {
++const outputAjv = new Ajv({strict:false,allErrors:true,coerceTypes:false,useDefaults:false,removeAdditional:false,validateFormats:false})
++export function resultToOutput(result: CallToolResultLike, contract?: { outputSchema?: JSONSchema7 }): string | ToolResult {
++  // Executed results are checked once here, outside manager retry handling. Never replay
++  // a completed write in response to a malformed output contract.
++  if (contract?.outputSchema && !result.isError) {
++    const validate = outputAjv.compile(contract.outputSchema)
++    if (result.structuredContent === undefined || !validate(result.structuredContent)) throw new Error(`output_contract: ${result.structuredContent === undefined ? "missing structuredContent" : outputAjv.errorsText(validate.errors)}`)
++  }
+   const parts: string[] = []
+   const images: ToolImage[] = []
+   for (const block of result.content ?? []) {
+@@ -54,9 +63,18 @@
+     if (text) parts.push(text)
+     if (image) images.push(image)
+   }
++  if (contract && result.structuredContent !== undefined && parts.length > 0) {
++    const structured = JSON.stringify(result.structuredContent)
++    const duplicates = parts.some(text=>{try{return JSON.stringify(JSON.parse(text))===structured}catch{return false}})
++    if (!duplicates) parts.push(`<structuredContent>\n${structured}`)
++  }
+   if (parts.length === 0 && images.length === 0 && result.structuredContent !== undefined) parts.push(JSON.stringify(result.structuredContent, null, 2))
+   const text = parts.join("\n\n")
+-  if (result.isError) throw new Error(text || "MCP tool báo lỗi nhưng không kèm thông điệp.")
++  if (result.isError) {
++    let details:unknown=result.structuredContent
++    if(details === undefined) { try { details=JSON.parse(text) } catch {} }
++    throw Object.assign(new Error(text || "MCP tool báo lỗi nhưng không kèm thông điệp."), {structuredError:details})
++  }
+   if (images.length > 0) return { output: text || `(tool trả về ${images.length} ảnh)`, images }
+   return text || "(tool không trả về nội dung)"
+ }
+--- pre-v44/src/core/mcp/manager.ts
++++ v44/src/core/mcp/manager.ts
+@@ -1001,6 +1001,7 @@
+       registered.push(modelName)
+       this.registry.register({
+         name: modelName,
++        canonicalName: tool.name,
+         source: `mcp:${name}`,
+         priority,
+         ...fields,
+@@ -1134,7 +1135,7 @@
+             // Outside the try: an error the tool itself reports (isError) is an answer, not a
+             // dead connection, even when its text says "ECONNRESET".
+             breaker?.success()
+-            return resultToOutput(result)
++            return resultToOutput(result, ctx.strictContract ? { outputSchema: tool.outputSchema as JSONSchema7 | undefined } : undefined)
+           }
+         },
+       })
+--- pre-v44/src/core/tools/registry.ts
++++ v44/src/core/tools/registry.ts
+@@ -8,6 +8,8 @@
+ import { RwLock, runTool } from "./wrap"
+ import { LoopGuard } from "./loop-guard"
+ 
++import type { FinancePolicyState } from "../finance-policy"
++
+ type Listener = () => void
+ 
+ /**
+@@ -22,6 +24,7 @@
+ const MAX_IMAGES_PER_RESULT = 4
+ 
+ export interface ToolSetOptions {
++  financeState?: FinancePolicyState
+   /** Schema dialect of the target provider. */
+   flavor?: SchemaFlavor
+   /** Whether the target model can see images in tool results. */
+@@ -138,7 +141,7 @@
+     let perFlavor = this.schemas.get(def)
+     if (!perFlavor) this.schemas.set(def, (perFlavor = new Map()))
+     let schema = perFlavor.get(flavor)
+-    if (!schema) perFlavor.set(flavor, (schema = sanitizeSchema(def.input, flavor)))
++    if (!schema) perFlavor.set(flavor, (schema = ["finite-replay-c2", "deterministic-derivation-v44"].includes(String((def.input as Record<string,unknown>)["x-opentrading-schema-profile"])) ? structuredClone(def.input as JSONSchema7) : sanitizeSchema(def.input, flavor)))
+     return schema
+   }
+ 
+@@ -180,19 +183,23 @@
+     // One guard per tool set: a turn (or a subagent run) counts its own repeats.
+     const loop = new LoopGuard()
+     for (const def of [...declared].sort((a, b) => a.name.localeCompare(b.name))) {
+-      const execute = (input: unknown, options: { abortSignal?: AbortSignal; toolCallId: string }) =>
+-        runTool(
+-          def,
+-          input,
+-          { signal: options.abortSignal ?? new AbortController().signal, callId: options.toolCallId, agent: this.origin, loop },
+-          this.lock,
+-          this.gate,
+-        )
++      const execute = async (input: unknown, options: { abortSignal?: AbortSignal; toolCallId: string }) => {
++        try { opts.financeState?.before(def, input, options.toolCallId) } catch (error) {
++          opts.financeState?.localRejections.set(options.toolCallId,{code:"policy_guard_rejected",tool:def.name,rawInput:JSON.stringify(input),reason:error instanceof Error ? error.message : String(error),...(opts.financeState?.acquisitionActive ? {phase:"bounded_finance_acquisition" as const,allowedTools:opts.financeState.acquisitionTools} : opts.financeState?.repairAllowedTools ? {phase:"bounded_finance_correction" as const,allowedTools:[...opts.financeState.repairAllowedTools]} : {})})
++          throw error
++        }
++        try {
++          const result = await runTool(def, input,
++            { signal: options.abortSignal ?? new AbortController().signal, callId: options.toolCallId, strictContract: !!opts.financeState, agent: this.origin, loop }, this.lock, this.gate)
++          opts.financeState?.succeeded(def, result, input, options.toolCallId)
++          return result
++        } catch (error) { opts.financeState?.failed(def, input, error, options.toolCallId); throw error }
++      }
+       const toModelOutput = ({ output }: { output: unknown }) => modelOutput(output as ToolResult, opts.images ?? false)
+       set[def.name] =
+         def.input instanceof z.ZodType
+           ? tool({ description: def.description, inputSchema: def.input, execute, toModelOutput })
+-          : dynamicTool({ description: def.description, inputSchema: jsonSchema(this.schemaFor(def, flavor)), execute, toModelOutput })
++          : dynamicTool({ description: def.description, inputSchema: opts.financeState ? jsonSchema(def.input, { validate: value => opts.financeState!.validate(def, value) }) : jsonSchema(this.schemaFor(def, flavor)), execute, toModelOutput })
+     }
+     return {
+       tools: set,
+--- pre-v44/src/core/tools/types.ts
++++ v44/src/core/tools/types.ts
+@@ -7,6 +7,7 @@
+ export interface ToolContext {
+   signal: AbortSignal
+   callId: string
++  strictContract?: boolean
+   /** What `prepare` returned, if the tool has one. */
+   prepared?: unknown
+   /** Set when a subagent makes the call: approval prompts name it. */
+@@ -49,6 +50,8 @@
+ export interface ToolDef<I = any> {
+   /** Name the model sees: [A-Za-z0-9_-], at most 64 characters. */
+   name: string
++  /** Public MCP name independent of SDK prefix. */
++  canonicalName?: string
+   description: string
+   /** zod for native tools, plain JSON Schema for MCP tools. */
+   input: z.ZodType<I> | JSONSchema7
+--- pre-v44/src/core/tools/wrap.ts
++++ v44/src/core/tools/wrap.ts
+@@ -188,7 +188,7 @@
+     // the context. Keep the head and tail.
+     const message = error instanceof Error ? error.message : String(error)
+     if (message.length <= MAX_ERROR_CHARS && error instanceof Error) throw error
+-    throw new Error(truncate(message, MAX_ERROR_CHARS))
++    throw Object.assign(new Error(truncate(message, MAX_ERROR_CHARS)), error && typeof error === "object" && "structuredError" in error ? {structuredError: error.structuredError} : {})
+   } finally {
+     clearTimeout(timer)
+     // The turn's signal outlives this call; don't leave one listener behind per tool call.
+--- pre-v44/test/agent.test.ts
++++ v44/test/agent.test.ts
+@@ -14,6 +14,7 @@
+ 
+ const text = { input: ["text"], output: ["text"] }
+ const CATALOG = {
++  nvidia: {id:"nvidia",name:"NVIDIA",env:["NVIDIA_API_KEY"],npm:"@ai-sdk/openai-compatible",api:"https://native-nvidia.invalid/v1",models:{"nvidia/nemotron-3.5-bolt-e4b":{id:"nvidia/nemotron-3.5-bolt-e4b",name:"Bolt",tool_call:true,reasoning:false,modalities:text}}},
+   groq: {
+     id: "groq",
+     name: "Groq",
+@@ -30,6 +31,7 @@
+ type Body = { messages: { role: string; content?: unknown }[]; tools?: unknown[]; tool_choice?: unknown }
+ const bodies: Body[] = []
+ /** What the fake model does when the conversation has no tool results yet. */
++let financeScript: ({text:string}|{tool:string;args:object})[] | undefined
+ let plan: { tool: string; args: object; always?: boolean; text?: string } | undefined
+ /** Several tool calls in one turn: call `script[n]` after n tool results (this turn), then answer. */
+ let script: { tool: string; args: object }[] | undefined
+@@ -102,6 +104,11 @@
+       usage: { prompt_tokens: 1, completion_tokens: 1 },
+     })
+   }
++  if (financeScript?.length) {
++    const next = financeScript.shift()!
++    if ("text" in next) return sse([chunk({role:"assistant",content:next.text}),usage ? {...chunk({},"stop"),x_groq:{usage}} : chunk({},"stop")])
++    return sse([chunk({role:"assistant",tool_calls:[{index:0,id:`call_${bodies.length}`,type:"function",function:{name:next.tool,arguments:JSON.stringify(next.args)}}]}),chunk({},"tool_calls")])
++  }
+   // Branch on the request, not on call counts: tool results present → answer in text.
+   const hasToolResult = body.messages.some((m) => m.role === "tool")
+   // The turn starts at the last real user message; the per-step tool nudge does not count.
+@@ -155,6 +162,7 @@
+ beforeEach(async () => {
+   bodies.length = 0
+   respond = undefined
++  financeScript = undefined
+   plan = undefined
+   script = undefined
+   emptyAfterTool = undefined
+@@ -1418,3 +1426,336 @@
+   expect(stored).toContain("VCB: phân tích sâu.")
+   expect(done(events).messages.map((m) => m.role)).toEqual(["user", "assistant"])
+ })
++
++test("finance policy validates raw MCP schema locally and sends correlated actual error to next native request", async () => {
++  let executed = 0
++  const r = new ToolRegistry()
++  r.register({ name:"mcp_quote", canonicalName:"quote", source:"mcp:test", description:"quote", input:{type:"object",properties:{symbol:{type:"string"},columns:{type:"array",items:{type:"string"}}},required:["symbol"],additionalProperties:false}, readOnly:true, async execute(){ executed++; return JSON.stringify({value:2}) } })
++  financeScript = [{tool:"mcp_quote",args:{symbol:"ABC",columns:"close"}},{tool:"mcp_quote",args:{symbol:"ABC",columns:["close"]}},{text:'{"value":2,"source":"quote"}'}]
++  const events = await collect(runAgent({history:[],input:'Return JSON. ```json\n{"value":0,"source":"quote"}\n```',skills:[],registry:r,financePolicy:{enabled:true,machineResponse:true}}))
++  await (await import("node:fs/promises")).mkdir(new URL("../test-artifacts",import.meta.url),{recursive:true})
++  await Bun.write(new URL("../test-artifacts/finance-local-mock.json",import.meta.url),JSON.stringify({kind:"scripted native SDK mock; no provider inference",events,bodies},null,2))
++  expect(executed).toBe(1)
++  const rejection = events.find(e=>e.type==="tool-end" && e.localRejection)
++  expect(rejection?.type).toBe("tool-end")
++  if(rejection?.type === "tool-end") {
++    expect(rejection.localRejection?.code).toBe("invalid_tool_input")
++    expect(rejection.localRejection?.rawInput).toContain('"columns":"close"')
++    expect(JSON.stringify(bodies[1]!.messages)).toContain(rejection.callId)
++    expect(JSON.stringify(bodies[1]!.messages)).toContain("invalid_argument")
++  }
++  expect(done(events).outcome).toBe("completed")
++  expect(events.filter(e=>e.type==="text-delta").map(e=>e.type==="text-delta"?e.text:"").join("")).toBe('{"value":2,"source":"quote"}')
++  expect(JSON.stringify(bodies[0]!.tools)).toContain('"additionalProperties":false')
++})
++
++test("finance output correction is one model request, buffers invalid final, and preserves history", async()=>{
++  usage={prompt_tokens:11,completion_tokens:3}
++  financeScript=[{text:"invalid prose"},{text:'{"value":null,"source":"boom"}'}]
++  const events=await collect(runAgent({history:[],input:'JSON; value: null permitted when absent. ```json\n{"value":0,"source":"boom"}\n```',skills:[],registry:registry(),financePolicy:{enabled:true,machineResponse:true}}))
++  expect(bodies).toHaveLength(2)
++  expect(done(events).usage?.total).toEqual({input:22,output:6})
++  expect(events.filter(e=>e.type==="step-usage")).toHaveLength(2)
++  expect(JSON.stringify(bodies[1]!.messages)).toContain("invalid prose")
++  expect(done(events).outcome).toBe("completed")
++  expect(events.filter(e=>e.type==="text-delta").map(e=>e.type==="text-delta"?e.text:"").join("")).toBe('{"value":null,"source":"boom"}')
++})
++
++test("finance failed output correction preserves raw candidate with explicit invalid diagnostic and no retry",async()=>{
++ financeScript=[{text:"bad"},{text:"still bad"}]
++ const events=await collect(runAgent({history:[],input:"JSON",skills:[],registry:registry(),financePolicy:{enabled:true,machineResponse:true}}))
++ expect(bodies).toHaveLength(2); expect(done(events).outcome).toBe("completed"); expect(events.filter(e=>e.type==="text-delta").map(e=>e.type==="text-delta"?e.text:"").join("")).toBe("still bad")
++ expect(events.some(e=>e.type==="finance-contract" && e.valid===false && e.rawFinal==="still bad" && e.correctionExhausted)).toBe(true)
++})
++
++test("finance recovery after final refusal requests only corrected readonly tool, then final JSON",async()=>{
++ let count=0;const r=new ToolRegistry(); r.register({name:"quote",description:"quote",input:{type:"object",properties:{symbol:{type:"string"},days:{type:"integer"}},"x-repair-fields":["days"]} as never,readOnly:true,async execute(args){count++;if(args.days)throw new Error("not_recorded: correct arguments; recorded symbol ABC");return '{"value":2}'}})
++ financeScript=[{tool:"quote",args:{symbol:"ABC",days:1}},{text:'{"value":null}'},{tool:"quote",args:{symbol:"ABC"}},{text:'{"value":2}'}]
++ const events=await collect(runAgent({history:[],input:"JSON",skills:[],registry:r,financePolicy:{enabled:true,machineResponse:true}}))
++ expect(count).toBe(2);expect(bodies).toHaveLength(4);expect(done(events).outcome).toBe("completed")
++ expect(events.filter(e=>e.type==="tool-start").map(e=>e.type==="tool-start"?e.step:0)).toEqual([1,3])
++ expect(JSON.stringify(bodies[2]!.messages)).toContain("Preserve requested entities")
++})
++
++
++test("finance output correction respects native maxSteps with no extra request",async()=>{
++ financeScript=[{text:"invalid"},{text:'{"value":1}'}]
++ const events=await collect(runAgent({history:[],input:"JSON",skills:[],registry:registry(),maxSteps:1,financePolicy:{enabled:true,machineResponse:true}}))
++ expect(bodies).toHaveLength(1);expect(done(events).outcome).toBe("completed");expect(events.some(e=>e.type==="finance-contract" && !e.correctionExhausted && e.rawFinal==="invalid")).toBe(true)
++})
++
++test("finance correction uses original cancellation signal and retains actual failed calls",async()=>{
++ const controller=new AbortController();let calls=0;const r=new ToolRegistry()
++ r.register({name:"quote",description:"quote",input:{type:"object",properties:{symbol:{type:"string"},days:{type:"integer"}},"x-repair-fields":["days"]} as never,readOnly:true,async execute(args,ctx){calls++;if(args.days)throw new Error("not_recorded");await new Promise((_resolve,reject)=>ctx.signal.addEventListener("abort",()=>reject(new Error("cancelled")),{once:true}));return "{}"}})
++ financeScript=[{tool:"quote",args:{symbol:"ABC",days:1}},{text:'{"value":null}'},{tool:"quote",args:{symbol:"ABC"}}]
++ let starts=0
++ const events=await collect(runAgent({history:[],input:"JSON",skills:[],registry:r,signal:controller.signal,financePolicy:{enabled:true,machineResponse:true}}),e=>{if(e.type==="tool-start" && ++starts===2)setTimeout(()=>controller.abort(),10)})
++ expect(calls).toBe(2);expect(done(events).outcome).toBe("aborted");expect(events.filter(e=>e.type==="text-delta")).toHaveLength(0)
++})
++
++
++test("finance public raw source namespace corrects SDK alias with one model request",async()=>{
++ const r=new ToolRegistry();r.register({name:"mcp_quote",canonicalName:"quote",description:"q",readOnly:true,input:{type:"object",properties:{}},async execute(){return "{}"}})
++ financeScript=[{text:'{"value":null,"source":"mcp_quote"}'},{text:'{"value":null,"source":"quote"}'}]
++ const events=await collect(runAgent({history:[],input:'source là tên tool trong catalog. value: null when unavailable. ```json\n{"value":0,"source":"quote"}\n```',skills:[],registry:r,financePolicy:{enabled:true,machineResponse:true}}))
++ expect(bodies).toHaveLength(2);expect(done(events).outcome).toBe("completed");expect(events.filter(e=>e.type==="text-delta").map(e=>e.type==="text-delta"?e.text:"").join("")).toBe('{"value":null,"source":"quote"}')
++})
++
++test("finance native empty-answer retry respects maxSteps and never starts extra correction",async()=>{
++ financeScript=[{text:""},{text:"invalid"},{text:'{"value":1}'}]
++ const events=await collect(runAgent({history:[],input:"JSON",skills:[],registry:registry(),maxSteps:2,financePolicy:{enabled:true,machineResponse:true}}))
++ expect(bodies).toHaveLength(2);expect(done(events).outcome).toBe("completed");expect(events.some(e=>e.type==="finance-contract" && !e.valid)).toBe(true)
++})
++test("finance ordinary failed entity does not block a new independent entity",async()=>{
++ let calls=0;const r=new ToolRegistry();r.register({name:"quote",canonicalName:"quote",description:"q",readOnly:true,input:{type:"object",properties:{symbol:{type:"string"},days:{type:"integer"}}},async execute(){calls++;throw new Error("not_recorded")}})
++ financeScript=[{tool:"quote",args:{symbol:"ABC",days:1}},{tool:"quote",args:{symbol:"XYZ"}},{text:'{"value":null}'}]
++ const events=await collect(runAgent({history:[],input:"JSON",skills:[],registry:r,maxSteps:3,financePolicy:{enabled:true,machineResponse:true}}))
++ expect(calls).toBe(2)
++ expect(events.some(e=>e.type==="tool-end" && e.localRejection?.code==="policy_guard_rejected")).toBe(false)
++ await Bun.write(new URL("../test-artifacts/finance-policy-guard-mock.json",import.meta.url),JSON.stringify({kind:"scripted native SDK mock; no inference",events,bodies},null,2))
++})
++
++
++test("finance validates the upstream joined length-continuation JSON with no extra correction",async()=>{
++ respond=(_body,n)=>sse([chunk({role:"assistant",content:n===0?'{"value":':'null}'}),{...chunk({},n===0?"length":"stop"),x_groq:{usage:{prompt_tokens:10,completion_tokens:2}}}])
++ const events=await collect(runAgent({history:[],input:"Return JSON value: null when absent",skills:[],registry:registry(),maxSteps:2,financePolicy:{enabled:true,machineResponse:true}}))
++ expect(bodies).toHaveLength(2);expect(done(events).outcome).toBe("completed");expect(done(events).usage?.total).toEqual({input:20,output:4})
++ expect(events.filter(e=>e.type==="text-delta").map(e=>e.type==="text-delta"?e.text:"").join("")).toBe('{"value":null}')
++ expect(events.filter(e=>e.type==="step")).toHaveLength(2)
++})
++
++
++test("finance SDK name repair followed by schema rejection retains actual local call identity",async()=>{
++ let executed=0;const r=new ToolRegistry();r.register({name:"mcp__opentrading__quote",canonicalName:"quote",source:"mcp:opentrading",description:"q",readOnly:true,input:{type:"object",properties:{symbol:{type:"string"},columns:{type:"array",items:{type:"string"}}}},async execute(){executed++;return "{}"}})
++ financeScript=[{tool:"quote",args:{symbol:"ABC",columns:"close"}},{tool:"mcp__opentrading__quote",args:{symbol:"ABC"}},{text:'{"value":null}'}]
++ const events=await collect(runAgent({history:[],input:"JSON",skills:[],registry:r,maxSteps:3,financePolicy:{enabled:true,machineResponse:true}}))
++ expect(executed).toBe(1);expect(events.some(e=>e.type==="tool-end"&&e.localRejection?.code==="invalid_tool_input")).toBe(true)
++ expect(done(events).outcome).toBe("completed")
++})
++
++
++test("finance length recovery then contract correction does not join rejected object into final",async()=>{
++ respond=(_body,n)=>sse([chunk({role:"assistant",content:n===0?'{"value":':n===1?'"wrong"}':'{"value":null}'}),{...chunk({},n===0?"length":"stop"),x_groq:{usage:{prompt_tokens:10,completion_tokens:2}}}])
++ const events=await collect(runAgent({history:[],input:'Return value: null when absent. JSON ```json\n{"value":0}\n```',skills:[],registry:registry(),maxSteps:3,financePolicy:{enabled:true,machineResponse:true}}))
++ expect(bodies).toHaveLength(3);expect(done(events).outcome).toBe("completed");expect(done(events).usage?.total).toEqual({input:30,output:6})
++ expect(events.filter(e=>e.type==="text-delta").map(e=>e.type==="text-delta"?e.text:"").join("")).toBe('{"value":null}')
++})
++
++test("finance correction keeps declared catalog while guarding unrelated tool execution",async()=>{
++ let quoteCalls=0,otherCalls=0;const r=new ToolRegistry();r.register({name:"quote",description:"q",input:{type:"object",properties:{symbol:{type:"string"}}},readOnly:true,async execute(){quoteCalls++;throw new Error("not_recorded")}});r.register({name:"other",description:"other",input:{type:"object",properties:{}},readOnly:true,async execute(){otherCalls++;return "{}"}})
++ financeScript=[{tool:"quote",args:{symbol:"ABC"}},{text:'{"value":null}'},{tool:"other",args:{}},{text:'{"value":null}'}]
++ const events=await collect(runAgent({history:[],input:"JSON",skills:[],registry:r,maxSteps:4,financePolicy:{enabled:true,machineResponse:true}}))
++ await Bun.write(new URL("../test-artifacts/finance-bounded-policy-mock.json",import.meta.url),JSON.stringify({kind:"scripted current native SDK mock; no inference",events,bodies},null,2))
++ expect(quoteCalls).toBe(1);expect(otherCalls).toBe(0);expect(bodies).toHaveLength(4)
++ expect((bodies[2]!.tools as unknown[]).length).toBe(2)
++ expect(events.some(e=>e.type==="tool-end"&&e.localRejection?.code==="policy_guard_rejected"&&e.localRejection.reason?.includes("unrelated intent"))).toBe(true)
++})
++
++
++test("finance current NVIDIA compatible route retains full tool catalog through bounded correction",async()=>{
++ await setKey("nvidia","mock-nvidia-no-real-key");await saveConfig({provider:"nvidia",model:"nvidia/nemotron-3.5-bolt-e4b"})
++ const r=new ToolRegistry();r.register({name:"mcp__opentrading__quote",canonicalName:"quote",source:"mcp:opentrading",description:"q",input:{type:"object",properties:{symbol:{type:"string"}},required:["symbol"],additionalProperties:false},readOnly:true,async execute(){return '{"value":2}'}})
++ financeScript=[{tool:"mcp__opentrading__quote",args:{symbol:"ABC"}},{text:"invalid prose"},{text:'{"value":2,"source":"quote"}'}]
++ const events=await collect(runAgent({history:[],input:'JSON ```json\n{"value":0,"source":"quote"}\n```',skills:[],registry:r,maxSteps:3,clockPolicy:"snapshot",now:new Date("2026-11-01T00:00:00+07:00"),financePolicy:{enabled:true,machineResponse:true}}))
++ expect(done(events).outcome).toBe("completed");expect(bodies).toHaveLength(3)
++ for(const body of bodies){expect((body as unknown as {model:string}).model).toBe("nvidia/nemotron-3.5-bolt-e4b");expect((body.tools as unknown[]).length).toBe(1);expect(JSON.stringify(body.tools)).toContain('"additionalProperties":false');expect("reasoning_effort" in body).toBe(false)}
++ expect(bodies[2]!.tool_choice).toBe("none")
++ await Bun.write(new URL("../test-artifacts/current-native-nvidia-capture-mock.json",import.meta.url),JSON.stringify({kind:"actual current native NVIDIA compatible SDK; fetch stub only; no model inference; gateway budget rewrites verified separately",events,bodies},null,2))
++})
++
++/** Actual stdio MCP snapshot + actual SDK/provider serialization, deterministic fetch gateway. */
++test("v42 actual MCP five-bank parallel errors repair independently with original call IDs",async()=>{
++ const {McpManager}=await import("../src/core/mcp/manager")
++ const folder=await mkdtemp(path.join(os.tmpdir(),"ot-v42-real-mcp-"))
++ const r=new ToolRegistry();const ledger=path.join(folder,"ledger.jsonl")
++ await writeFile(path.join(folder,"mcp.json"),JSON.stringify({mcpServers:{opentrading:{command:"/usr/bin/python3",args:[path.resolve(import.meta.dir,"../../../tools/mcp_snapshot_server.py"),path.resolve(import.meta.dir,"../../../tasks/smoke/smoke-agg-01/environment/payloads.json")],env:{BENCH_MCP_LEDGER:ledger}}}}))
++ const manager=new McpManager(r,{home:folder,cwd:folder,trustFile:path.join(folder,"trust.json")})
++ try {
++  await manager.start();expect(manager.status()[0]).toMatchObject({state:"connected"})
++  const name="mcp__opentrading__vn_quote_history",original=r.get(name)!
++  expect(original).toBeDefined()
++  const schema=original.input as Record<string,unknown>
++  // Controlled fixture declares days as a query-format repair field. This does not
++  // modify the real C2 study contract (whose x-repair-fields remains empty).
++  const c1=JSON.parse(await Bun.file(path.resolve(import.meta.dir,"../../../tools/tool_contracts_v4.json")).text()).tools.find((x:{name:string})=>x.name==="vn_quote_history").inputSchema
++  r.register({...original,input:{...c1,"x-repair-fields":["days"]}})
++  const symbols=["VCB","BID","CTG","TCB","MBB"]
++  const calls=(withDays:boolean,n:number)=>{const targets=withDays?[...symbols,"VCB"]:symbols;return sse([chunk({role:"assistant",tool_calls:targets.map((symbol,index)=>({index,id:`batch${n}-${symbol}-${index}`,type:"function",function:{name,arguments:JSON.stringify({symbol,...(withDays ? {days:1} : {})})}}))}),chunk({},"tool_calls")])}
++  const phaseModes=[]
++  for(const sequential of [false,true]) {
++  bodies.length=0
++  const priorRows=(await Bun.file(ledger).exists()) ? (await Bun.file(ledger).text()).trim().split("\n").filter(Boolean).length : 0
++  respond=(_body,n)=>{
++    if(n===0)return calls(true,n)
++    if(n===1)return sse([chunk({role:"assistant",content:'{"value":null}'}),chunk({},"stop")])
++    if(!sequential && n===2)return calls(false,n)
++    if(sequential && n>=2 && n<7)return sse([chunk({role:"assistant",tool_calls:[{index:0,id:`corrected-${n}-${symbols[n-2]}`,type:"function",function:{name,arguments:JSON.stringify({symbol:symbols[n-2]})}}]}),chunk({},"tool_calls")])
++    return sse([chunk({role:"assistant",content:'{"value":null}'}),chunk({},"stop")])
++  }
++  const events=await collect(runAgent({history:[],input:"Return JSON. Fixture days is presentation only; preserve all five requested entities.",skills:[],registry:r,maxSteps:10,financePolicy:{enabled:true,machineResponse:true}}))
++  expect(done(events).outcome).toBe("completed")
++  const ends=events.filter(e=>e.type==="tool-end");expect(ends).toHaveLength(11)
++  expect(ends.filter(e=>e.type==="tool-end"&&e.ok)).toHaveLength(5)
++  expect(ends.filter(e=>e.type==="tool-end"&&e.financeIntent?.phase==="initial").every(e=>e.type==="tool-end"&&e.financeIntent?.correction_used===0)).toBe(true)
++  expect(ends.filter(e=>e.type==="tool-end"&&e.financeIntent?.phase==="bounded_finance_correction").every(e=>e.type==="tool-end"&&e.financeIntent?.correction_used===1&&e.financeIntent.phase==="bounded_finance_correction")).toBe(true)
++  expect(new Set(ends.map(e=>e.type==="tool-end"&&e.financeIntent?.intent_id)).size).toBe(5)
++  expect(ends.filter(e=>e.type==="tool-end"&&e.localRejection?.code==="policy_guard_rejected")).toHaveLength(1)
++  const rows=(await Bun.file(ledger).text()).trim().split("\n").map(x=>JSON.parse(x)).slice(priorRows)
++  expect(rows).toHaveLength(10);expect(rows.filter(x=>x.status==="ok")).toHaveLength(5)
++  expect(rows.filter(x=>x.error_code==="unsupported_snapshot_query")).toHaveLength(5)
++  expect(bodies).toHaveLength(sequential ? 8 : 4)
++  phaseModes.push({sequential,events,bodies:structuredClone(bodies),ledger:rows})
++  }
++  const last=phaseModes.at(-1)!
++  await Bun.write(new URL("../test-artifacts/v42-actual-mcp-five-intents.json",import.meta.url),JSON.stringify({kind:"actual native SDK + deterministic fetch gateway + actual stdio C2 MCP replay; controlled C1 days-repair input fixture only, parallel and sequential corrections, no inference",publicStudySchema:schema,...last,phaseModes},null,2))
++ } finally {await manager.stop();await rm(folder,{recursive:true,force:true})}
++},30000)
++
++test("v42 actual C2 wire is lossless in baseline and candidate with independent VCB/BID calls",async()=>{
++ const {McpManager}=await import("../src/core/mcp/manager")
++ const folder=await mkdtemp(path.join(os.tmpdir(),"ot-v42-c2-wire-"));const r=new ToolRegistry()
++ await writeFile(path.join(folder,"mcp.json"),JSON.stringify({mcpServers:{opentrading:{command:"/usr/bin/python3",args:[path.resolve(import.meta.dir,"../../../tools/mcp_snapshot_server.py"),path.resolve(import.meta.dir,"../../../tasks/smoke/smoke-agg-01/environment/payloads.json")]}}}))
++ const manager=new McpManager(r,{home:folder,cwd:folder,trustFile:path.join(folder,"trust.json")})
++ try {
++  await manager.start();expect(manager.status()[0]).toMatchObject({state:"connected"})
++  const name="mcp__opentrading__vn_quote_history",wire=[]
++  for(const enabled of [false,true]) {
++   bodies.length=0;financeScript=[{tool:name,args:{symbol:"VCB",interval:"day"}},{tool:name,args:{symbol:"BID"}},{text:'{"value":null}'}]
++   const events=await collect(runAgent({history:[],input:"JSON",skills:[],registry:r,maxSteps:3,...(enabled?{financePolicy:{enabled:true as const,machineResponse:true}}:{})}))
++   expect(done(events).outcome).toBe("completed");expect(bodies).toHaveLength(3)
++   const declarations=bodies[0]!.tools as {function:{name:string;parameters:Record<string,unknown>}}[]
++   const actual=declarations.find(d=>d.function.name===name)!.function.parameters
++   expect(actual).toEqual(r.get(name)!.input);expect(Array.isArray(actual.anyOf)).toBe(true);expect(actual.additionalProperties).toBe(false)
++   const ends=events.filter(e=>e.type==="tool-end");expect(ends[0]?.type==="tool-end"&&ends[0].ok).toBe(false);expect(ends[1]?.type==="tool-end"&&ends[1].ok).toBe(true)
++   if(enabled) expect(ends[1]?.type==="tool-end"&&ends[1].financeIntent?.original_sdk_call_id).toBe(ends[1]?.callId)
++   wire.push({enabled,events,bodies:structuredClone(bodies)})
++  }
++  await Bun.write(new URL("../test-artifacts/v42-c2-native-wire.json",import.meta.url),JSON.stringify({kind:"actual current native SDK/fetch gateway/stdio MCP, baseline and candidate same C2 catalog, no inference",wire},null,2))
++ } finally {await manager.stop();await rm(folder,{recursive:true,force:true})}
++},30000)
++
++/** v4.3 independent development cases through native SDK serialization + real stdio MCP.
++ * Stub final evidence is copied from the actual server ledger, never a prefilled receipt.
++ */
++test("v43 independent actual MCP acquisition, terminals, partial, repair, B0 and shared caps",async()=>{
++ const {McpManager}=await import("../src/core/mcp/manager")
++ const folder=await mkdtemp(path.join(os.tmpdir(),"ot-v43-acquisition-")),ledger=path.join(folder,"ledger.jsonl")
++ const r=new ToolRegistry()
++ await writeFile(path.join(folder,"mcp.json"),JSON.stringify({mcpServers:{development:{command:process.execPath,args:[path.resolve(import.meta.dir,"fixtures/finance-acquisition-server.ts")],env:{FINANCE_DEV_LEDGER:ledger}}}}))
++ const manager=new McpManager(r,{home:folder,cwd:folder,trustFile:path.join(folder,"trust.json")})
++ const contract={version:"4.3",refusalSchema:{type:"object",required:["value","reason","evidence"],properties:{value:{type:"null"},reason:{type:"string",minLength:1},evidence:{type:"array"}},additionalProperties:false}}
++ const input='Return metrics for the entities and years specified in this development request. External evidence required. Public evidence mapping: {"tool":"receipt.tool","request_hash":"receipt.request_hash","response_hash":"receipt.response_hash","call_id":"receipt.call_id","data_scope":"receipt.data_scope","source":"receipt.source","as_of":"receipt.as_of"}\nPUBLIC_RESPONSE_CONTRACT_V43='+JSON.stringify(contract)
++ const refusal=JSON.stringify({value:null,reason:"Missing actual financial support",evidence:[]})
++ const rows=async()=>await Bun.file(ledger).exists() ? (await Bun.file(ledger).text()).trim().split("\n").filter(Boolean).map(x=>JSON.parse(x)) : []
++ const receiptFinal=async(start:number)=>{
++  const successful=(await rows()).slice(start).filter(x=>!x.isError)
++  const metrics=successful.filter(x=>typeof x.result.data.value === "number")
++  return JSON.stringify({value:metrics.length ? metrics.reduce((sum,x)=>sum+x.result.data.value,0)/metrics.length : null,unit:"USD",evidence:successful.map(x=>x.result.receipt)})
++ }
++ const call=(n:number,tool:string,args:object,duplicate=false)=>sse([chunk({role:"assistant",tool_calls:Array.from({length:duplicate?2:1},(_,index)=>({index,id:`dev-${n}-${index}`,type:"function",function:{name:`mcp__development__${tool}`,arguments:JSON.stringify(args)}}))}),chunk({},"tool_calls")])
++ const answer=(text:string)=>sse([chunk({role:"assistant",content:text}),chunk({},"stop")])
++ const captures:unknown[]=[]
++ try {
++  await manager.start();expect(manager.status()[0]).toMatchObject({state:"connected"})
++  for(const enabled of [false,true]) {
++   for(const mode of ["aggregate_zero","resolver_zero","partial","empty_partial","empty","auth","query_repair","duplicate","six_sequential","clarification","shared_cap","no_tools","side_effect_only","acquisition_query_repair","acquisition_then_format","query_then_format","cancel"] as const) {
++    bodies.length=0;const start=(await rows()).length
++    const controller=new AbortController()
++    respond=(_body,n)=>{
++     if(mode==="aggregate_zero") return n===0 ? answer('{"values":{"LUMA":null,"NOVA":null},"evidence":[]}') : n===1 ? call(n,"metric_lookup",{entity:"LUMA",year:2024}) : n===2 ? call(n,"metric_lookup",{entity:"NOVA",year:2024}) : undefined
++     if(mode==="resolver_zero") return n===0 ? answer(refusal) : n===1 ? call(n,"entity_resolve",{entity:"alias:ORION",year:2023}) : n===2 ? call(n,"metric_lookup",{entity:"ORION",year:2023}) : undefined
++     if(mode==="empty_partial") return n===0 ? call(n,"entity_resolve",{entity:"VOID",year:2022}) : n===1 ? answer('{"values":{"VOID":null,"RIVER":null},"evidence":[]}') : n===2 ? call(n,"metric_lookup",{entity:"RIVER",year:2022}) : undefined
++     if(mode==="partial") return n===0 ? call(n,"metric_lookup",{entity:"CEDAR",year:2022}) : n===1 ? answer('{"values":{"CEDAR":7,"RIVER":null},"evidence":[]}') : n===2 ? call(n,"metric_lookup",{entity:"RIVER",year:2022}) : undefined
++     if(mode==="empty" || mode==="auth") return n===0 ? call(n,"entity_resolve",{entity:mode==="empty"?"VOID":"AUTH",year:2021}) : answer(refusal)
++     if(mode==="no_tools" || mode==="side_effect_only") return answer(refusal)
++     if(mode==="acquisition_then_format") return n===0 ? answer(refusal) : n===1 ? call(n,"metric_lookup",{entity:"SPRUCE",year:2017}) : n===2 ? answer("invalid output after real retrieval") : undefined
++     if(mode==="query_then_format") return n===0 ? call(n,"metric_lookup",{entity:"OAK",year:2020,format:"wide"}) : n===1 ? answer(refusal) : n===2 ? call(n,"metric_lookup",{entity:"OAK",year:2020,format:"compact"}) : n===3 ? answer("invalid output after repaired query") : undefined
++     if(mode==="acquisition_query_repair") return n===0 ? answer(refusal) : n===1 ? call(n,"metric_lookup",{entity:"OAK",year:2020,format:"wide"}) : n===2 ? answer(refusal) : n===3 ? call(n,"metric_lookup",{entity:"OAK",year:2020,format:"compact"}) : undefined
++     if(mode==="query_repair") return n===0 ? call(n,"metric_lookup",{entity:"OAK",year:2020,format:"wide"}) : n===1 ? answer(refusal) : n===2 ? call(n,"metric_lookup",{entity:"OAK",year:2020,format:"compact"}) : undefined
++     if(mode==="duplicate") return n===0 ? answer(refusal) : n===1 ? call(n,"metric_lookup",{entity:"BIRCH",year:2025},true) : undefined
++     if(mode==="six_sequential") return n===0 ? answer(refusal) : n<=6 ? call(n,"metric_lookup",{entity:["ASH","ELM","FIR","PINE","YEW","MAPLE"][n-1],year:2019}) : undefined
++     if(mode==="clarification") return answer('{"value":null,"reason":"Which year should be used? Missing input: requested year.","evidence":[]}')
++     if(mode==="shared_cap" || mode==="cancel") return n===0 ? answer(refusal) : call(n,"metric_lookup",{entity:"CAP",year:2018})
++     return undefined
++    }
++    // Generate the final by copying only successful immutable receipts from actual executions.
++    const scripted=respond
++    respond=(_body,n)=>scripted!(_body,n) ?? new Response(new ReadableStream({async start(stream){const text=mode==="empty_partial" ? JSON.stringify({value:null,reason:"VOID resolver returned actual empty response; RIVER was retrieved.",evidence:(await rows()).slice(start).filter(x=>!x.isError).map(x=>x.result.receipt)}) : await receiptFinal(start);stream.enqueue(new TextEncoder().encode(`data: ${JSON.stringify(chunk({role:"assistant",content:text}))}\n\ndata: ${JSON.stringify(chunk({},"stop"))}\n\ndata: [DONE]\n\n`));stream.close()}}),{headers:{"content-type":"text/event-stream"}})
++    const registryForCase=mode==="no_tools" || mode==="side_effect_only" ? new ToolRegistry() : r
++    if(mode==="side_effect_only") registryForCase.register(r.get("mcp__development__place_order")!)
++    const requests:Record<string,string>={
++     aggregate_zero:"Return the mean of LUMA and NOVA metrics for 2024.",resolver_zero:"Resolve alias:ORION and retrieve its 2023 metric.",partial:"Return the mean of CEDAR and RIVER metrics for 2022.",empty_partial:"Resolve VOID and retrieve RIVER for 2022; report whether both metrics can be supplied.",empty:"Resolve VOID for 2021.",auth:"Resolve AUTH for 2021.",query_repair:"Retrieve OAK metric for 2020.",acquisition_query_repair:"Retrieve OAK metric for 2020.",query_then_format:"Retrieve OAK metric for 2020.",duplicate:"Retrieve BIRCH metric for 2025.",six_sequential:"Return mean metric of ASH, ELM, FIR, PINE, YEW and MAPLE for 2019.",clarification:"Retrieve CEDAR metric; reporting year has not been selected by the user.",shared_cap:"Retrieve CAP metric for 2018.",cancel:"Retrieve CAP metric for 2018.",no_tools:"Retrieve CEDAR metric for 2022.",side_effect_only:"Retrieve CEDAR metric for 2022.",acquisition_then_format:"Retrieve SPRUCE metric for 2017.",
++    }
++    const events=await collect(runAgent({history:[],input:input+`\n${requests[mode]} Preserve all requested entity/year selectors.`,skills:[],registry:registryForCase,maxSteps:mode==="shared_cap"?2:10,signal:controller.signal,...enabled?{financePolicy:{enabled:true as const,machineResponse:true}}:{}}),e=>{if(enabled && mode==="cancel" && e.type==="finance-phase" && e.transition==="enter")controller.abort()})
++    const actual=(await rows()).slice(start),phases=events.filter(e=>e.type==="finance-phase")
++    captures.push({enabled,mode,events,bodies:structuredClone(bodies),ledger:actual})
++    await Bun.write(new URL("../test-artifacts/v43-independent-acquisition.json",import.meta.url),JSON.stringify({kind:"actual native SDK with deterministic gateway stub + real stdio independent development MCP; no provider inference",captures},null,2))
++    if(enabled) {
++     if(mode==="clarification") {expect(actual).toHaveLength(0);expect(bodies).toHaveLength(1);expect(done(events).outcome).toBe("completed");expect(phases.some(e=>e.type==="finance-phase"&&e.reason==="explicit_missing_input")).toBe(true)}
++     if(["aggregate_zero","resolver_zero","partial","empty_partial","duplicate","six_sequential"].includes(mode)) {
++      expect(done(events).outcome).toBe("completed")
++      expect(phases.some(e=>e.type==="finance-phase"&&e.phase==="bounded_finance_acquisition"&&e.transition==="enter")).toBe(true)
++      const index=mode==="partial" || mode==="empty_partial"?2:1
++      expect(bodies[index]?.tool_choice).not.toBe("none")
++      expect(toolNames(bodies[index]!)).toContain("mcp__development__metric_lookup")
++      expect(toolNames(bodies[index]!)).not.toContain("mcp__development__place_order")
++      expect(actual.filter(x=>!x.isError)).toHaveLength(mode==="six_sequential"?6:mode==="duplicate"?1:2)
++      expect(JSON.stringify(done(events).messages)).toContain(mode==="aggregate_zero"?'\\"LUMA\\":null':(mode==="partial" || mode==="empty_partial")?'\\"RIVER\\":null':"Missing actual financial support")
++     }
++     if(mode==="no_tools" || mode==="side_effect_only") {expect(actual).toHaveLength(0);expect(bodies).toHaveLength(1);expect(phases.some(e=>e.type==="finance-phase"&&e.reason==="no_readonly_tools")).toBe(true)}
++     if(mode==="acquisition_then_format" || mode==="query_then_format") {
++      expect(done(events).outcome).toBe("completed")
++      expect(phases.filter(e=>e.type==="finance-phase"&&e.phase==="output_format_correction"&&e.transition==="enter")).toHaveLength(1)
++      expect(bodies.at(-1)?.tool_choice).toBe("none")
++      expect(JSON.stringify(done(events).messages)).toContain("invalid output after")
++     }
++     if(mode==="acquisition_query_repair") {
++      expect(actual).toHaveLength(2);expect(actual[0].isError).toBe(true);expect(actual[1].isError).toBe(false)
++      expect(phases.filter(e=>e.type==="finance-phase"&&e.phase==="bounded_finance_acquisition"&&e.transition==="enter")).toHaveLength(1)
++      expect(phases.some(e=>e.type==="finance-phase"&&e.phase==="bounded_finance_correction"&&e.transition==="enter")).toBe(true)
++     }
++     if(mode==="query_repair") {
++      expect(actual).toHaveLength(2);expect(actual[0].isError).toBe(true);expect(actual[1].isError).toBe(false)
++      expect(phases.some(e=>e.type==="finance-phase"&&e.phase==="bounded_finance_correction"&&e.transition==="enter")).toBe(true)
++      expect(phases.some(e=>e.type==="finance-phase"&&e.phase==="bounded_finance_acquisition"&&e.transition==="enter")).toBe(false)
++     }
++     if(mode==="empty" || mode==="auth") {expect(actual).toHaveLength(1);expect(bodies).toHaveLength(2);expect(phases.some(e=>e.type==="finance-phase"&&e.transition==="enter")).toBe(false)}
++     if(mode==="shared_cap") {expect(actual).toHaveLength(0);expect(bodies).toHaveLength(1)}
++     if(mode==="cancel") {expect(actual).toHaveLength(0);expect(bodies).toHaveLength(1);expect(done(events).outcome).toBe("aborted")}
++    } else {
++     expect(phases).toHaveLength(0)
++     if(mode!=="query_repair" && mode!=="query_then_format" && mode!=="partial" && mode!=="empty_partial" && mode!=="empty" && mode!=="auth") expect(actual).toHaveLength(0)
++    }
++   }
++  }
++ } finally {await manager.stop();await rm(folder,{recursive:true,force:true})}
++},60000)
++
++
++test("finance invalid evidence remains a failed contract diagnostic with exact raw output, not fabricated repair",async()=>{
++ const instruction='Return raw JSON with evidence [{"tool":"quote","receipt":"audit.receipt"}].'
++ const invalid='{"value":5,"evidence":[{"tool":"quote","receipt":"fabricated"}]}'
++ financeScript=[{text:invalid},{text:invalid}]
++ const events=await collect(runAgent({history:[],input:instruction,skills:[],registry:new ToolRegistry(),financePolicy:{enabled:true,machineResponse:true}}))
++ expect(bodies).toHaveLength(2)
++ const diagnostic=events.find(e=>e.type==="finance-contract")
++ expect(diagnostic?.type).toBe("finance-contract")
++ if(diagnostic?.type==="finance-contract") {expect(diagnostic.valid).toBe(false);expect(diagnostic.rawFinal).toBe(invalid);expect(diagnostic.issues.length).toBeGreaterThan(0)}
++ expect(events.filter(e=>e.type==="text-delta").map(e=>e.type==="text-delta"?e.text:"").join("")).toBe(invalid)
++ expect(done(events).outcome).toBe("completed")
++ await Bun.write(new URL("../test-artifacts/v44-invalid-final-diagnostic.json",import.meta.url),JSON.stringify({kind:"scripted native SDK; no financial inference",events,bodies},null,2))
++})
++
++
++test("v44 derivation public schema reaches actual SDK wire without losing additionalProperties in either native arm",async()=>{
++ const schema={type:"object",properties:{operation:{type:"string",enum:["sum","mean"]},operands:{type:"array",minItems:1,items:{type:"object",properties:{call_id:{type:"string"},path:{type:"string"}},required:["call_id","path"],additionalProperties:false}}},required:["operation","operands"],additionalProperties:false,"x-opentrading-schema-profile":"deterministic-derivation-v44"} as never
++ for(const enabled of [false,true]) {
++  const start=bodies.length
++  const r=new ToolRegistry();r.register({name:"analytics_compute",canonicalName:"analytics_compute",source:"mcp:fixture",description:"derived arithmetic",input:schema,readOnly:true,async execute(){return "{}"}})
++  financeScript=[{text:'{"value":null}'}]
++  const events=await collect(runAgent({history:[],input:"Return JSON",skills:[],registry:r,...enabled?{financePolicy:{enabled:true as const,machineResponse:true}}:{}}))
++  expect(done(events).outcome).toBe("completed")
++  const tools=bodies[start]!.tools as {function:{name:string;parameters:unknown}}[]
++  expect(tools.find(tool=>tool.function.name==="analytics_compute")!.function.parameters).toEqual(schema)
++ }
++})
+--- pre-v44/test/finance-policy.test.ts
++++ v44/test/finance-policy.test.ts
+@@ -0,0 +1,194 @@
++import { test, expect } from "bun:test"
++import { FinancePolicyState } from "../src/core/finance-policy"
++import { ToolRegistry } from "../src/core/tools/registry"
++import type { ToolDef } from "../src/core/tools/types"
++const def:ToolDef={name:"mcp_quote",canonicalName:"quote",source:"mcp:test",description:"quote",readOnly:true,input:{type:"object",properties:{symbol:{type:"string"}},required:["symbol"],additionalProperties:false,"x-repair-fields":["days"]} as never,async execute(){return "{}"}}
++test("raw validation does not coerce/default/remove and preserves nested constraints",()=>{
++ const s=new FinancePolicyState({enabled:true},"");const args={symbol:12,extra:true};expect(s.validate(def,args).success).toBe(false);expect(args).toEqual({symbol:12,extra:true})
++ expect(s.validate({...def,input:{type:"object",properties:{x:{type:"string",enum:["a"]}},required:["x"]}},{x:"b"}).success).toBe(false)
++})
++test("correction forbids identical arguments and more than one failed changed request",()=>{
++ const s=new FinancePolicyState({enabled:true},"");s.failed(def,{symbol:"A",days:1},new Error("not_recorded"));expect(s.correctionTools()).toEqual([def.name]);expect(()=>s.before(def,{days:1,symbol:"A"})).toThrow();s.before(def,{symbol:"A"});s.failed(def,{symbol:"A"},new Error("not_recorded"));expect(s.correctionTools()).toEqual([]);expect(()=>s.before(def,{symbol:"B"})).not.toThrow()
++})
++test("side effects, auth, no-data cannot enter correction eligibility",()=>{
++ for(const [d,error] of [[{...def,readOnly:false},"invalid_argument"],[def,Object.assign(new Error("invalid_argument misleading prose"),{code:"unauthorized",retryable:false})],[def,"no_data"],[def,"not_found"]] as const){const s=new FinancePolicyState({enabled:true},"");s.failed(d,{},typeof error === "string" ? new Error(error) : error);expect(s.correctionTools()).toEqual([])}
++})
++test("provenance contract is derived from public user mapping and immutable successful results",()=>{
++ const s=new FinancePolicyState({enabled:true,machineResponse:true},'source là tên tool trong catalog. Add evidence [{"tool":"public tool", "origin":"meta.vendor", "receipt":"audit.receipt"}]');s.succeeded(def,{output:JSON.stringify({meta:{vendor:"real"},audit:{receipt:"r1"}})})
++ expect(s.issues(JSON.stringify({value:1,source:"quote",evidence:[{tool:"quote",origin:"real",receipt:"r1"}]}),[def])).toEqual([])
++ expect(s.issues(JSON.stringify({value:1,source:"quote",evidence:[{tool:"quote",origin:"fake",receipt:"r1"}]}),[def])).toHaveLength(1)
++ expect(s.issues(JSON.stringify({value:1,source:"provider",evidence:[]}),[def]).length).toBeGreaterThan(0)
++})
++test("baseline registry continues accepting raw object without schema validation",async()=>{
++ let args:unknown;const r=new ToolRegistry();r.register({...def,async execute(x){args=x;return "okay"}});const built=r.toToolSet();const schema=built.tools[def.name]!.inputSchema as {validate?:unknown};expect(schema.validate).toBeUndefined()
++ await built.tools[def.name]!.execute!({symbol:1},{toolCallId:"c",messages:[]} as never);expect(args).toEqual({symbol:1})
++})
++
++test("correcting query cannot silently switch requested entity/currency",()=>{
++ const s=new FinancePolicyState({enabled:true},"");s.failed(def,{symbol:"ABC"},new Error("not_recorded"));s.beginCorrection();expect(()=>s.before(def,{symbol:"XYZ"})).toThrow("entity/currency")
++})
++test("MCP output policy preserves structured data, deduplicates equivalent JSON, validates without replay",async()=>{
++ const {resultToOutput}=await import("../src/core/mcp/convert")
++ const schema={type:"object" as const,properties:{value:{type:"number" as const}},required:["value"]}
++ expect(resultToOutput({content:[{type:"text",text:'{"value":2}'}],structuredContent:{value:2}},{outputSchema:schema})).toBe('{"value":2}')
++ expect(resultToOutput({content:[{type:"text",text:"human summary"}],structuredContent:{value:2}},{outputSchema:schema})).toContain('<structuredContent>\n{"value":2}')
++ expect(()=>resultToOutput({content:[{type:"text",text:"okay"}],structuredContent:{value:"bad"}},{outputSchema:schema})).toThrow("output_contract")
++ expect(resultToOutput({content:[{type:"text",text:"human summary"}],structuredContent:{value:2}})).toBe("human summary")
++})
++
++test("null permitted for requested value does not make source or other fields nullable",()=>{
++ const s=new FinancePolicyState({enabled:true,machineResponse:true},'value: null when unavailable. source là tên tool catalog. ```json\n{"value":0,"source":"quote"}\n```')
++ expect(s.issues('{"value":null,"source":null}',[def])).toContain("Requested field has wrong JSON type: source; expected string")
++ expect(s.issues('{"value":null,"source":"mcp_quote"}',[def])).toHaveLength(1)
++ expect(s.issues('{"value":null,"source":"quote"}',[def])).toEqual([])
++ const provider=new FinancePolicyState({enabled:true,machineResponse:true},'Return JSON with source as the provider. ```json\n{"source":"provider"}\n```')
++ expect(provider.issues('{"source":"provider"}',[def])).toEqual([])
++})
++
++test("scope comparison allows model scalar-to-list repair, batch reorder and readonly supersets without mutating args",()=>{
++ const batch={...def,input:{type:"object" as const,properties:{symbols:{type:"array" as const,items:{type:"string" as const}},peers:{type:"array" as const,items:{type:"string" as const}}}}}
++ const cases:[unknown,unknown,boolean][]=[[{symbols:"USDVND"},{symbols:["USDVND"]},true],[{symbols:["ABC","XYZ"]},{symbols:["xyz","abc"]},true],[{symbols:["XAU"]},{symbols:["USDVND","XAU"]},false],[{symbols:["ABC"]},{symbols:["XYZ"]},false],[{peers:["ABC","XYZ"]},{peers:["ABC"]},false]]
++ for(const [original,corrected,allowed] of cases){const state=new FinancePolicyState({enabled:true},"");state.failed(batch,original,new Error("invalid_argument"));state.beginCorrection();const before=JSON.stringify(corrected);if(allowed)expect(()=>state.before(batch,corrected)).not.toThrow();else expect(()=>state.before(batch,corrected)).toThrow("entity/currency");expect(JSON.stringify(corrected)).toBe(before)}
++})
++
++test("unsupported schema keyword fails closed rather than silently weakening validation",()=>{
++ const s=new FinancePolicyState({enabled:true},"")
++ expect(()=>s.validate({...def,input:{type:"object",properties:{symbol:{type:"string",madeUpConstraint:true} as never}}},{symbol:"ABC"})).toThrow("unknown keyword")
++})
++test("successful provenance is an immutable clone of actual structured result",()=>{
++ const s=new FinancePolicyState({enabled:true,machineResponse:true},'Add evidence [{"tool":"public tool", "receipt":"audit.receipt"}]');const actual={audit:{receipt:"r1"}};s.succeeded(def,actual);actual.audit.receipt="mutated"
++ expect(s.issues('{"value":1,"evidence":[{"tool":"quote","receipt":"r1"}]}',[def])).toEqual([])
++ expect(Object.isFrozen(s.successes[0]!.value)).toBe(true)
++})
++test("corrected request preserves declared temporal and financial scope",()=>{
++ const d={...def,input:{type:"object" as const,properties:{symbol:{type:"string" as const},year:{type:"integer" as const},quarter:{type:"integer" as const},days:{type:"integer" as const}},"x-repair-fields":["days"]} as never}
++ const s=new FinancePolicyState({enabled:true},"");s.failed(d,{symbol:"ABC",year:2025,quarter:1,days:1},new Error("not_recorded"));s.beginCorrection()
++ expect(()=>s.before(d,{symbol:"ABC",year:2024,quarter:1})).toThrow("temporal")
++ expect(()=>s.before(d,{symbol:"ABC",year:2025,quarter:2})).toThrow("temporal")
++ expect(()=>s.before(d,{symbol:"ABC",year:2025,quarter:1})).not.toThrow()
++})
++
++test("malformed and non-object MCP root contracts fail closed",()=>{
++ const s=new FinancePolicyState({enabled:true},"")
++ for(const input of [false,true,null,[],"object"]) expect(s.validate({...def,input:input as never},{symbol:"ABC"}).success).toBe(false)
++})
++
++const unsupported=()=>Object.assign(new Error("Provider mentions auth and no_data as examples only"),{structuredError:{error:{code:"unsupported_snapshot_query",retryable_with_corrected_arguments:true}}})
++test("five parallel initial failures retain five independent correction budgets",()=>{
++ const d={...def,input:{type:"object",properties:{symbol:{type:"string"},interval:{type:"string",enum:["1D"],default:"1D"}},required:["symbol"],"x-scope-aliases":{interval:{day:"1D"}}} as never}
++ const state=new FinancePolicyState({enabled:true},"")
++ for(const [i,symbol] of ["VCB","BID","CTG","TCB","MBB"].entries()) state.failed(d,{symbol,interval:"day"},unsupported(),`original-${i}`)
++ expect(state.failures.size).toBe(5);expect([...state.failures.values()].map(f=>f.correctionUsed)).toEqual([0,0,0,0,0])
++ state.beginCorrection()
++ for(const [i,symbol] of ["VCB","BID","CTG","TCB","MBB"].entries()) {state.before(d,{symbol},`correct-${i}`);state.succeeded(d,"{}",{symbol},`correct-${i}`)}
++ expect(state.correctionTools()).toEqual([]);expect([...state.failures.values()].map(f=>f.correctionUsed)).toEqual([1,1,1,1,1])
++ expect(new Set([...state.callAudit.values()].map(a=>a.intent_id)).size).toBe(5)
++ expect(()=>state.before(d,{symbol:"VCB"},"repeat")).toThrow()
++})
++test("ordinary VCB failure and successful BID have isolated retained histories",()=>{
++ const state=new FinancePolicyState({enabled:true},"");state.before(def,{symbol:"VCB"},"vcb");state.failed(def,{symbol:"VCB"},unsupported(),"vcb")
++ state.before(def,{symbol:"BID"},"bid");state.succeeded(def,"{}",{symbol:"BID"},"bid")
++ expect([...state.failures.values()].map(f=>f.status)).toEqual(["failed","succeeded"]);state.beginCorrection()
++ expect(()=>state.before(def,{symbol:"BID"},"duplicate")).toThrow();expect(()=>state.before(def,{symbol:"TCB"},"scope-switch")).toThrow()
++})
++test("same-batch duplicates reserve once and failed correction remains exhausted",()=>{
++ const state=new FinancePolicyState({enabled:true},"");const d={...def,input:{type:"object",properties:{symbol:{type:"string"},columns:{type:"array",items:{type:"string"}}},"x-repair-fields":["columns"]} as never}
++ state.before(d,{symbol:"VCB",columns:["c"]},"first");expect(()=>state.before(d,{symbol:"VCB",columns:["c"]},"duplicate")).toThrow()
++ state.failed(d,{symbol:"VCB",columns:["c"]},unsupported(),"first");state.before(d,{symbol:"VCB"},"correct");state.failed(d,{symbol:"VCB"},unsupported(),"correct")
++ expect(state.correctionTools()).toEqual([]);expect(()=>state.before(d,{symbol:"VCB",columns:["t"]},"third")).toThrow()
++})
++test("valid window/metric/statement/period scope cannot silently change in bounded repair",()=>{
++ for(const field of ["days","columns","metric","statement","period","year"]){const state=new FinancePolicyState({enabled:true},"");const args={symbol:"VCB",[field]:field === "year" ? 2025 : field === "days" ? 1 : field === "columns" ? ["c"] : "original"};const d={...def,input:{...def.input,"x-repair-fields":[]} as never};state.failed(d,args,unsupported());state.beginCorrection();expect(()=>state.before(d,{...args,[field]:"changed"})).toThrow();expect(()=>state.before(d,{symbol:"VCB"})).toThrow()}
++})
++test("structured code and retryability override misleading prose",()=>{
++ for(const [code,retry,eligible] of [["unsupported_snapshot_query",true,true],["invalid_argument",false,false],["unauthorized",true,false],["no_data",true,false],["not_found",true,false]] as const){const state=new FinancePolicyState({enabled:true},"");state.failed(def,{symbol:"VCB"},Object.assign(new Error("invalid_argument not_recorded auth schema"),{structuredError:{error:{code,retryable_with_corrected_arguments:retry}}}));expect(state.correctionTools().length > 0).toBe(eligible)}
++})
++test("public refusal branch bypasses success-only values but retains evidence grounding",()=>{
++ const contract={version:"4.2",refusalSchema:{type:"object",required:["value","reason","evidence"],properties:{value:{type:"null"},reason:{type:"string",minLength:1},evidence:{type:"array"}},additionalProperties:true}}
++ const instruction='Return ```json\n{"values":[0],"evidence":[]}\n``` Add [{"tool":"tool","receipt":"audit.receipt"}]\nPUBLIC_RESPONSE_CONTRACT_V42='+JSON.stringify(contract)
++ const state=new FinancePolicyState({enabled:true,machineResponse:true},instruction)
++ expect(state.issues('{"value":null,"reason":"unsupported request, not proof of missing data","evidence":[]}',[def])).toEqual([])
++ for(const answer of ['{"value":null,"reason":"","evidence":[]}','{"value":null,"reason":"error","evidence":{}}','{"value":null,"reason":"error","evidence":[{"tool":"quote","receipt":"invented"}]}','{"value":null,"reason":"error","evidence":[],"values":[1]}']) expect(state.issues(answer,[def]).length).toBeGreaterThan(0)
++})
++test("C2 schema remains identical in baseline and candidate tool declarations",()=>{
++ const d={...def,input:{type:"object",properties:{symbol:{type:"string"}},additionalProperties:false,anyOf:[{properties:{symbol:{const:"VCB"}},required:["symbol"]}],"x-opentrading-schema-profile":"finite-replay-c2","x-repair-fields":[],"x-finite-request-variants":[{symbol:"VCB"}]} as never}
++ const r=new ToolRegistry();r.register(d)
++ expect(r.jsonSchemaFor(d)).toEqual(d.input)
++ const state=new FinancePolicyState({enabled:true},"")
++ expect(state.validate(d,{symbol:"VCB"}).success).toBe(true);expect(state.validate(d,{symbol:"BID"}).success).toBe(false)
++ expect(r.toToolSet().names).toEqual(r.toToolSet({financeState:state}).names)
++})
++
++test("omitted and explicit defaults cannot reset completed or failed intent identity",()=>{
++ const d={...def,input:{type:"object",properties:{symbol:{type:"string"},days:{type:"integer",default:365},columns:{type:["array","null"],default:null}},required:["symbol"]} as never}
++ const s=new FinancePolicyState({enabled:true},"");s.before(d,{symbol:"HPG"},"first");s.succeeded(d,"{}",{symbol:"HPG"},"first")
++ expect(()=>s.before(d,{symbol:"HPG",days:365,columns:null},"duplicate")).toThrow();expect(s.failures.size).toBe(1)
++})
++
++test("C2 metric case and array order equivalence cannot recreate a successful intent",()=>{
++ const d={...def,input:{type:"object",properties:{symbol:{type:"string"},metric:{type:"string"},columns:{type:"array",items:{type:"string"}}},"x-opentrading-schema-profile":"finite-replay-c2"} as never}
++ const s=new FinancePolicyState({enabled:true},"");s.before(d,{symbol:"VCB",metric:"roe",columns:["c","t"]},"first");s.succeeded(d,"{}",{symbol:"VCB",metric:"roe",columns:["c","t"]},"first")
++ expect(()=>s.before(d,{symbol:"vcb",metric:" ROE ",columns:["t","c"]},"duplicate")).toThrow();expect(s.failures.size).toBe(1)
++})
++test("invalid period enum may be corrected while entity and valid statement remain fixed",()=>{
++ const d={...def,input:{type:"object",properties:{symbol:{type:"string"},period:{type:"string",enum:["year","quarter"],default:"year"},statement:{type:"string"}},"x-scope-aliases":{period:{quarterly:"quarter",annual:"year"}}} as never}
++ const s=new FinancePolicyState({enabled:true},"");s.failed(d,{symbol:"VCB",period:"quarterly",statement:"income"},unsupported(),"original");s.beginCorrection()
++ expect(()=>s.before(d,{symbol:"VCB",period:"quarter",statement:"income"},"correction")).not.toThrow()
++ expect(s.callAudit.get("correction")?.original_sdk_call_id).toBe("original")
++})
++
++test("a later schema-invalid alias cannot erase an already successful entity intent",()=>{
++ const d={...def,input:{type:"object",properties:{symbols:{type:"array",items:{type:"string"}}}} as never};const s=new FinancePolicyState({enabled:true},"")
++ s.before(d,{symbols:["VCB"]},"success");s.succeeded(d,"{}",{symbols:["VCB"]},"success")
++ s.failed(d,{symbols:"VCB"},Object.assign(new Error("bad type"),{code:"invalid_argument"}),"invalid-duplicate")
++ expect(s.correctionTools()).toEqual([]);expect([...s.failures.values()][0]!.status).toBe("succeeded")
++ expect(()=>s.before(d,{symbols:["vcb"]},"repeat")).toThrow()
++})
++
++test("invalid financial selectors retain meaning and cannot be replaced with another scope",()=>{
++ for(const [field,prior,changed] of [["year","2025",2024],["interval","day","1W"],["metric","unknown","roe"],["period","quarterly","year"]] as const) {
++  const d={...def,input:{type:"object",properties:{symbol:{type:"string"},year:{type:"integer"},interval:{type:"string",enum:["1D","1W"]},metric:{type:"string",enum:["roe","roa"]},period:{type:"string",enum:["year","quarter"]}}} as never}
++  const state=new FinancePolicyState({enabled:true},"");state.failed(d,{symbol:"VCB",[field]:prior},unsupported(),"original");state.beginCorrection()
++  expect(()=>state.before(d,{symbol:"VCB",[field]:changed},"changed")).toThrow()
++ }
++})
++test("numeric selector type repair is lossless and cannot omit the original year",()=>{
++ const d={...def,input:{type:"object",properties:{symbol:{type:"string"},year:{type:"integer"}}} as never};const state=new FinancePolicyState({enabled:true},"")
++ state.failed(d,{symbol:"VCB",year:"2025"},unsupported(),"original");state.beginCorrection();expect(()=>state.before(d,{symbol:"VCB",year:2025},"correct")).not.toThrow()
++})
++test("invalid enum values never collapse into one financial intent",()=>{
++ const d={...def,input:{type:"object",properties:{symbol:{type:"string"},period:{type:"string",enum:["quarter","year"]}}} as never};const state=new FinancePolicyState({enabled:true},"")
++ state.failed(d,{symbol:"VCB",period:"quarterly"},unsupported(),"quarterly");state.failed(d,{symbol:"VCB",period:"annual"},unsupported(),"annual")
++ expect(state.failures.size).toBe(2)
++})
++
++test("nullable array selectors preserve scalar-to-list meaning from actual C1 union shape",()=>{
++ const d={...def,input:{type:"object",properties:{symbol:{type:"string"},columns:{anyOf:[{type:"array",items:{type:"string"}},{type:"null"}],default:null}}} as never};const s=new FinancePolicyState({enabled:true},"")
++ s.failed(d,{symbol:"VCB",columns:"c"},unsupported(),"initial");s.beginCorrection();expect(()=>s.before(d,{symbol:"VCB",columns:["c"]},"correct")).not.toThrow()
++})
++test("unsafe integer text never aliases a rounded financial selector",()=>{
++ const d={...def,input:{type:"object",properties:{symbol:{type:"string"},year:{type:"integer"}}} as never};const s=new FinancePolicyState({enabled:true},"")
++ s.failed(d,{symbol:"VCB",year:"9007199254740993"},unsupported(),"initial");s.beginCorrection();expect(()=>s.before(d,{symbol:"VCB",year:9007199254740992},"wrong")).toThrow()
++})
++test("public repair annotations cannot erase entity metric or financial-period meaning",()=>{
++ const d={...def,input:{type:"object",properties:{symbol:{type:"string"},metric:{type:"string"},year:{type:"integer"}},"x-repair-fields":["symbol","metric","year"]} as never};const s=new FinancePolicyState({enabled:true},"")
++ s.failed(d,{symbol:"VCB",metric:"roe",year:2025},unsupported(),"initial");s.beginCorrection()
++ for(const args of [{symbol:"BID",metric:"roe",year:2025},{symbol:"VCB",metric:"roa",year:2025},{symbol:"VCB",metric:"roe",year:2024}]) expect(()=>s.before(d,args)).toThrow()
++})
++
++test("date range selectors cannot be erased by a public repair annotation",()=>{
++ for(const name of ["startDate","endDate","fromDate","toDate","fiscal_year"]){const d={...def,input:{type:"object",properties:{symbol:{type:"string"},[name]:{type:"string"}},"x-repair-fields":[name]} as never};const s=new FinancePolicyState({enabled:true},"");s.failed(d,{symbol:"VCB",[name]:"2025-01-01"},unsupported());s.beginCorrection();expect(()=>s.before(d,{symbol:"VCB",[name]:"2024-01-01"})).toThrow()}
++})
++
++test("legacy immediate auth or no-data failure codes are not parameter correction",()=>{
++ for(const message of ["invalid_argument unauthorized","invalid_argument: no_data","invalid_request: forbidden"]){const s=new FinancePolicyState({enabled:true},"");s.failed(def,{symbol:"VCB"},new Error(message));expect(s.correctionTools()).toEqual([])}
++ const s=new FinancePolicyState({enabled:true},"");s.failed(def,{symbol:"VCB"},new Error("invalid_argument: use the public schema; auth examples are not the cause"));expect(s.correctionTools()).toEqual([def.name])
++})
++
++test("bounded phase keeps untouched failed intents eligible after one correction succeeds",()=>{
++ const d={...def,input:{type:"object",properties:{symbol:{type:"string"},columns:{type:"array",items:{type:"string"}}},"x-repair-fields":["columns"]} as never};const s=new FinancePolicyState({enabled:true},"")
++ for(const symbol of ["VCB","BID","CTG","TCB","MBB"])s.failed(d,{symbol,columns:["c"]},unsupported(),`initial-${symbol}`)
++ s.beginCorrection()
++ for(const symbol of ["VCB","BID","CTG","TCB","MBB"]){expect(s.correctionTools()).toEqual([d.name]);s.before(d,{symbol},`correction-${symbol}`);s.succeeded(d,"{}",{symbol},`correction-${symbol}`)}
++ expect(s.correctionTools()).toEqual([])
++})
+--- pre-v44/test/fixtures/finance-acquisition-server.ts
++++ v44/test/fixtures/finance-acquisition-server.ts
+@@ -0,0 +1,29 @@
++/** Independent development fixtures: no study task IDs, production replay or gold. */
++import { Server } from "@modelcontextprotocol/sdk/server/index.js"
++import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js"
++import { CallToolRequestSchema, ListToolsRequestSchema } from "@modelcontextprotocol/sdk/types.js"
++import { appendFileSync } from "node:fs"
++import { createHash } from "node:crypto"
++let executions=0
++const server = new Server({name:"independent-finance",version:"1"},{capabilities:{tools:{}}})
++const schema={type:"object" as const,properties:{entity:{type:"string"},year:{type:"integer"},format:{type:"string"}},required:["entity","year"],additionalProperties:false,"x-repair-fields":["format"]}
++server.setRequestHandler(ListToolsRequestSchema,async()=>({tools:[
++ {name:"metric_lookup",description:"Read a metric for the requested entity and year. format defaults to compact; only compact is available.",inputSchema:schema,annotations:{readOnlyHint:true}},
++ {name:"entity_resolve",description:"Resolve public entity aliases for the requested year.",inputSchema:schema,annotations:{readOnlyHint:true}},
++ {name:"place_order",description:"Submit an order (side effect).",inputSchema:schema,annotations:{readOnlyHint:false}},
++]}))
++server.setRequestHandler(CallToolRequestSchema,async(req)=>{
++ const executionId=`fixture-execution-${++executions}`
++ const args=req.params.arguments ?? {},entity=String(args.entity),tool=req.params.name
++ let result:Record<string,unknown>,isError=false
++ if(entity==="AUTH") {isError=true;result={error:{code:"unauthorized",retryable_with_corrected_arguments:false,message:"Credentials unavailable"}}}
++ else if(args.format && args.format!=="compact") {isError=true;result={error:{code:"unsupported_snapshot_query",retryable_with_corrected_arguments:true,message:"Use compact or omit format; rejected query is not evidence of no financial data.",argument_paths:["format"],allowed_public_variants:[{...args,format:"compact"}]}}}
++ else {
++  const data=tool==="entity_resolve" ? entity==="VOID" ? {resolved:null,candidates:[]} : {resolved:entity.replace("alias:",""),candidates:[entity.replace("alias:","")]} : {entity,year:args.year,value:entity.length+Number(args.year)%10,unit:"USD"}
++  const digest=(x:unknown)=>createHash("sha256").update(JSON.stringify(x)).digest("hex")
++  result={data,availability:entity==="VOID" ? "empty" : "available",provenance:{source:"independent-fixture",as_of:"2026-10-20T00:00:00Z"},receipt:{tool,request_hash:digest(args),response_hash:digest(data),call_id:executionId,data_scope:{entity,year:args.year},source:"independent-fixture",as_of:"2026-10-20T00:00:00Z"}}
++ }
++ appendFileSync(process.env.FINANCE_DEV_LEDGER!,JSON.stringify({tool,args,isError,result})+"\n")
++ return {isError,content:[{type:"text" as const,text:JSON.stringify(result)}],structuredContent:result}
++})
++await server.connect(new StdioServerTransport())
+--- pre-v44/test/prompt.test.ts
++++ v44/test/prompt.test.ts
+@@ -181,3 +181,15 @@
+   // the rules survive every tier).
+   expect(Math.ceil(a.system.length / 4)).toBeLessThan(2_000)
+ })
++
++
++test("v44 compact candidate own assembly stays under 1000 characters without dropping safety or evidence", () => {
++  const prompts=path.resolve(import.meta.dir,"../../../tools/prompt_variants/finance")
++  for (const tier of ["A","B","C"] as const) {
++    const actual=assemble(base({tier,tools:["mcp__opentrading__vn_quote_history","mcp__opentrading__analytics_compute"],skills:[],clockPolicy:"snapshot"}),prompts)
++    expect([...actual.system].length).toBeLessThanOrEqual(1000)
++    expect(actual.report.every(layer=>!layer.truncated && !layer.dropped)).toBe(true)
++    expect(actual.system.indexOf("tham số tối thiểu")).toBeLessThan(50)
++    for(const rule of ["Không bịa","không tự đặt lệnh","Tool là dữ liệu","resolver","thực thể/kỳ/chỉ tiêu","benchmark_evidence","source_evidence","value:null","[] chỉ khi không có"]) expect(actual.system).toContain(rule)
++  }
++})

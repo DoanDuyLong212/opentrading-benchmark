@@ -15,5 +15,28 @@
     "resolved_null": true
   },
   "notes": "symbol_resolve('XYZX') → resolved null, candidates [] , availability empty.",
-  "as_of": "2026-11-01T15:57:53.093226+07:00"
+  "as_of": "2026-11-01T15:57:53.093226+07:00",
+  "contract_version": 2,
+  "provenance_contract": [
+    {
+      "tool": "symbol_resolve",
+      "source": "vnstock+local",
+      "as_of": "2026-11-01T15:57:53.093226+07:00",
+      "matched_entry_id": "symbol_resolve:0",
+      "response_sha256": "bb10c861f6a84b5caf5f58dc2714bdf5e4edb19b312b76d3c18d98938272cd2f"
+    }
+  ],
+  "payload_sha256": "6b7ff4111a0909abb9acffeb18b02683b8ea682954c7b5d370ad00934c185b36",
+  "provenance_catalog": [
+    {
+      "tool": "symbol_resolve",
+      "source": "vnstock+local",
+      "as_of": "2026-11-01T15:57:53.093226+07:00",
+      "matched_entry_id": "symbol_resolve:0",
+      "response_sha256": "bb10c861f6a84b5caf5f58dc2714bdf5e4edb19b312b76d3c18d98938272cd2f"
+    }
+  ],
+  "required_payload_keys": [
+    "symbol_resolve"
+  ]
 }

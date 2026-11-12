@@ -1,0 +1,201 @@
+{
+  "pass": true,
+  "fixture": true,
+  "external_provider_calls": 0,
+  "local_scripted_requests": 4,
+  "work": "/tmp/v45-headless-vwbbc7nf",
+  "result": {
+    "status": "ok",
+    "session_id": null,
+    "notes": "",
+    "native_completion": {
+      "outcome": "completed",
+      "unanswered": false,
+      "recoveries": [],
+      "accepted": true
+    },
+    "native_contract_invalid": null,
+    "final_text": "{\"value\": 24000, \"unit\": \"đồng/cổ phiếu\", \"evidence\": [{\"call_id\": \"dd51060a-3d19-480e-b19b-7106c6860efe\", \"tool\": \"vn_quote_history\", \"matched_entry_id\": \"synthetic\", \"payload_sha256\": \"72ff50d9b5d8ccd6a7c24da8f3fbf1b550ab2c668cbcb8fa59ea8455251a10f2\", \"response_sha256\": \"e07c7eade12dedb10efdff7e8a186c3c15161640447ef13e75e751ba4c688d16\", \"source\": \"synthetic-fixture-not-live\", \"as_of\": \"2030-04-01\"}]}",
+    "tokens": {
+      "input": 400,
+      "output": 80,
+      "cached": null,
+      "cache_read": null,
+      "cached_observed": 0,
+      "cache_complete": false,
+      "usage_requests": 4,
+      "requests": 4,
+      "complete": true
+    },
+    "provider_requests": 4,
+    "provider_usage": {
+      "input": 400,
+      "output": 80,
+      "cached": null,
+      "cache_read": null,
+      "cached_observed": 0,
+      "cache_complete": false,
+      "usage_requests": 4,
+      "requests": 4,
+      "complete": true
+    },
+    "inventory_path": "/tmp/v45-headless-vwbbc7nf/runner/inventory.json",
+    "provider_ledger": "/tmp/v45-headless-vwbbc7nf/runner/provider.jsonl",
+    "answer_path": null,
+    "answer_candidates": [],
+    "transport_recovered": false,
+    "first_attempt_completed": true,
+    "token_reservations_not_observed_usage": 0,
+    "native_derived_ledger": "/tmp/v45-headless-vwbbc7nf/runner/native-derived.jsonl",
+    "native_completed": true
+  },
+  "native_derived": [
+    {
+      "kind": "native_derived",
+      "status": "ok",
+      "sdk_call_id": "fixture-sdk-1",
+      "tool": "calculate",
+      "arguments": {
+        "expression": "x*2",
+        "values": {
+          "x": {
+            "from_call": "r1",
+            "field": "last"
+          }
+        },
+        "unit": "đồng/cổ phiếu"
+      },
+      "result": {
+        "expression": "x*2",
+        "result": 24000,
+        "unit": "đồng/cổ phiếu",
+        "inputs": [
+          {
+            "name": "x",
+            "value": 12,
+            "unit": "nghìn đồng/cổ phiếu",
+            "ref": "r1",
+            "tool": "mcp__opentrading__vn_quote_history",
+            "field": "last",
+            "symbol": "SYN",
+            "time": "2030-03-31"
+          }
+        ],
+        "source_evidence": [
+          {
+            "call_id": "dd51060a-3d19-480e-b19b-7106c6860efe",
+            "tool": "vn_quote_history",
+            "matched_entry_id": "synthetic",
+            "payload_sha256": "72ff50d9b5d8ccd6a7c24da8f3fbf1b550ab2c668cbcb8fa59ea8455251a10f2",
+            "response_sha256": "e07c7eade12dedb10efdff7e8a186c3c15161640447ef13e75e751ba4c688d16",
+            "source": "synthetic-fixture-not-live",
+            "as_of": "2030-04-01"
+          }
+        ],
+        "derived_result": {
+          "expression": "x*2",
+          "value": 24000,
+          "unit": "đồng/cổ phiếu",
+          "alignment_verification": {
+            "entity": "verified",
+            "period": "verified",
+            "scope": "unverified_missing",
+            "unit": "verified"
+          },
+          "inputs": [
+            {
+              "ref": "r1",
+              "sdk_call_id": "fixture-sdk-0",
+              "call_id": "dd51060a-3d19-480e-b19b-7106c6860efe",
+              "path": "/data/last",
+              "value": 12,
+              "unit": "nghìn đồng/cổ phiếu",
+              "entity": "SYN",
+              "period": "2030-03-31",
+              "period_provenance": "source",
+              "query_context": {
+                "symbol": "SYN"
+              },
+              "metric": "last",
+              "raw_source_sha256": "27b23f20489374c28ab4f5246e803e8c9e96e1adec061c4b626c472bd473dcd2",
+              "normalized_visible_sha256": "27b23f20489374c28ab4f5246e803e8c9e96e1adec061c4b626c472bd473dcd2",
+              "source_response_sha256": "e07c7eade12dedb10efdff7e8a186c3c15161640447ef13e75e751ba4c688d16",
+              "source_payload_sha256": "72ff50d9b5d8ccd6a7c24da8f3fbf1b550ab2c668cbcb8fa59ea8455251a10f2",
+              "receipt": {
+                "call_id": "dd51060a-3d19-480e-b19b-7106c6860efe",
+                "tool": "vn_quote_history",
+                "matched_entry_id": "synthetic",
+                "payload_sha256": "72ff50d9b5d8ccd6a7c24da8f3fbf1b550ab2c668cbcb8fa59ea8455251a10f2",
+                "response_sha256": "e07c7eade12dedb10efdff7e8a186c3c15161640447ef13e75e751ba4c688d16",
+                "source": "synthetic-fixture-not-live",
+                "as_of": "2030-04-01"
+              },
+              "name": "x"
+            }
+          ],
+          "expression_inputs": [
+            {
+              "ref": "r1",
+              "sdk_call_id": "fixture-sdk-0",
+              "call_id": "dd51060a-3d19-480e-b19b-7106c6860efe",
+              "path": "/data/last",
+              "value": 12,
+              "unit": "nghìn đồng/cổ phiếu",
+              "entity": "SYN",
+              "period": "2030-03-31",
+              "period_provenance": "source",
+              "query_context": {
+                "symbol": "SYN"
+              },
+              "metric": "last",
+              "raw_source_sha256": "27b23f20489374c28ab4f5246e803e8c9e96e1adec061c4b626c472bd473dcd2",
+              "normalized_visible_sha256": "27b23f20489374c28ab4f5246e803e8c9e96e1adec061c4b626c472bd473dcd2",
+              "source_response_sha256": "e07c7eade12dedb10efdff7e8a186c3c15161640447ef13e75e751ba4c688d16",
+              "source_payload_sha256": "72ff50d9b5d8ccd6a7c24da8f3fbf1b550ab2c668cbcb8fa59ea8455251a10f2",
+              "receipt": {
+                "call_id": "dd51060a-3d19-480e-b19b-7106c6860efe",
+                "tool": "vn_quote_history",
+                "matched_entry_id": "synthetic",
+                "payload_sha256": "72ff50d9b5d8ccd6a7c24da8f3fbf1b550ab2c668cbcb8fa59ea8455251a10f2",
+                "response_sha256": "e07c7eade12dedb10efdff7e8a186c3c15161640447ef13e75e751ba4c688d16",
+                "source": "synthetic-fixture-not-live",
+                "as_of": "2030-04-01"
+              },
+              "name": "x"
+            }
+          ],
+          "source_scopes": [
+            {
+              "entity": "SYN",
+              "period": "2030-03-31",
+              "metric": "last"
+            }
+          ]
+        }
+      },
+      "derived_id": "29b6d99319909d259240a5850d1ea7010dc7cb391562fe28b5358689e73e5354",
+      "source_call_ids": [
+        "dd51060a-3d19-480e-b19b-7106c6860efe"
+      ],
+      "source_receipts": [
+        {
+          "call_id": "dd51060a-3d19-480e-b19b-7106c6860efe",
+          "tool": "vn_quote_history",
+          "matched_entry_id": "synthetic",
+          "payload_sha256": "72ff50d9b5d8ccd6a7c24da8f3fbf1b550ab2c668cbcb8fa59ea8455251a10f2",
+          "response_sha256": "e07c7eade12dedb10efdff7e8a186c3c15161640447ef13e75e751ba4c688d16",
+          "source": "synthetic-fixture-not-live",
+          "as_of": "2030-04-01"
+        }
+      ],
+      "native_ref_ids": [
+        "r1"
+      ],
+      "provider_request_index": 2
+    }
+  ],
+  "expected_value": 24000,
+  "native_bun_binary": "/home/doanlong/extra/benchmark/experiments/toolchains/bun-1.4.4/bun",
+  "native_bun_sha256": "10702245766b225e70bbf6235fd6b47214fd94b4760d00ffaed8ab0df57ac235",
+  "actual_bun_command_verified": true
+}

@@ -1,0 +1,60 @@
+{
+  "task_id": "fin-l3-screen-924",
+  "scoring": "value",
+  "solution": {
+    "pass": [
+      "MBS",
+      "VIX"
+    ],
+    "filter": "ROE > 15% và P/E < 15"
+  },
+  "as_of": "2026-11-01T23:08:12.898974+07:00",
+  "split": "holdout",
+  "expects": [
+    {
+      "type": "set",
+      "path": "values.pass",
+      "gold": [
+        "MBS",
+        "VIX"
+      ]
+    },
+    {
+      "type": "period",
+      "path": "period",
+      "accept": [
+        "2025"
+      ]
+    },
+    {
+      "type": "str",
+      "path": "source",
+      "accept": [
+        "peer_compare"
+      ]
+    }
+  ],
+  "contract_version": 2,
+  "provenance_contract": [
+    {
+      "tool": "peer_compare",
+      "source": "vnstock",
+      "as_of": "2026-11-01T23:08:12.898974+07:00",
+      "matched_entry_id": "peer:sec_p",
+      "response_sha256": "8be7844f67076412534cd11c22b6c8ad377a2f28de9843d7c4c1576758186a8c"
+    }
+  ],
+  "payload_sha256": "bff00ef3fb44f7a704dadf8f94689c0b535b33cb7163d79fcab9a8ef83b54f4d",
+  "provenance_catalog": [
+    {
+      "tool": "peer_compare",
+      "source": "vnstock",
+      "as_of": "2026-11-01T23:08:12.898974+07:00",
+      "matched_entry_id": "peer:sec_p",
+      "response_sha256": "8be7844f67076412534cd11c22b6c8ad377a2f28de9843d7c4c1576758186a8c"
+    }
+  ],
+  "required_payload_keys": [
+    "peer:sec_p"
+  ]
+}

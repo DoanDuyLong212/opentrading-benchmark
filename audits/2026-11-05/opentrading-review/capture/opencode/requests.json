@@ -1,0 +1,69 @@
+[
+  {
+    "model": "nvidia/nemotron-3.5-bolt-e4b",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are an AI agent running in OpenCode, a coding agent harness. Help the user accomplish their goals using the tools you have available.\n\n# Harness\n- Responses are rendered as GitHub-flavored Markdown.\n- `<system-reminder>` blocks are harness instructions, not user-authored content. Read and follow them.\n- Prefer parallelizing independent tool calls.\n\n\n# Communication\n- Use clear file paths when referring to files.\n- Keep responses clear and concise, and avoid unnecessary technical jargon.\n\n# Working in codebases\n- Keep changes consistent with the structure, naming, style, and patterns of the surrounding code.\n- Treat unfamiliar files or changes as potential user work and investigate before deleting or overwriting them.\n\n<mcp_instructions>\n  <server name=\"opentrading\">\n    Offline frozen MCP snapshot 2026-11-01. Cite tool, provenance.source, provenance.as_of, benchmark_evidence.call_id and payload_sha256 in answer evidence.\n  </server>\n</mcp_instructions>\n\nToday's date: Thu Nov 05 2026\n\nHere is some useful information about the environment you are running in:\n<env>\n  Working directory: /home/doanlong/extra/benchmark/audits/2026-11-05/opentrading-review/capture/opencode/ws\n  Workspace root folder: /home/doanlong/extra/benchmark\n  Is directory a git repo: yes\n  Platform: linux\n  Prefer /home/doanlong/extra/benchmark/audits/2026-11-05/opentrading-review/capture/opencode/runner/home/tmp/opencode over generic system temporary directories such as /tmp; it is pre-created and approved for external access.\n</env>\nWhen you create a worktree outside the current working directory and intend to use it as your primary working directory, consider using `execute` to call `tools.opencode.session_move` and make the worktree the session's working directory."
+      },
+      {
+        "role": "user",
+        "content": "\"# Smoke — giá đóng cửa HPG\n\n## Đề bài\nGiá đóng cửa (close) **phiên giao dịch gần nhất** của cổ phiếu **HPG** là bao nhiêu? Trả lời theo **nghìn đồng** (quy ước của MCP: `64,27` = 64.270 đ).\n\n## Yêu cầu trả lời\nTrả lời bằng đúng một object JSON trong phản hồi cuối cùng, theo schema:\n\n```json\n{\n  \\\"value\\\": 0,\n  \\\"unit\\\": \\\"nghìn đồng\\\",\n  \\\"period\\\": \\\"phiên gần nhất (dd/mm/yyyy)\\\",\n  \\\"source\\\": \\\"vn_quote_history\\\"\n}\n```\n\n- `unit` phải là **nghìn đồng**.\n- `period` nêu ngày phiên.\n\n## Ràng buộc chung\n- Chỉ dùng dữ liệu từ MCP `opentrading`, đúng snapshot được ghi trong hợp đồng dữ liệu dưới đây. Cấm `web_search`, `web_fetch`, `sentiment_score`.\n- Mọi số trong object JSON trả lời phải truy nguồn được từ tool MCP bạn đã gọi trong phiên này — không dùng kiến thức nền hay ghi nhớ.\n- Nếu dữ liệu không tồn tại / chưa được công bố: đặt `value: null` và nêu lý do trong trường `reason` (hoặc `note`). Tuyệt đối không bịa số.\n- Số viết bằng dấu chấm thập phân (VD `12.34`), không dùng dấu ngăn cách hàng nghìn.\n- `source` ghi tên tool MCP chính xác như trong catalog (VD `vn_quote_history`).\n\n## Hợp đồng dữ liệu và bằng chứng\n- Snapshot cố định: `2026-11-01`. Không cần đọc task.toml; metadata này được cung cấp trực tiếp trong đề.\n- `source` là tên tool MCP; `evidence[].source` là nhà cung cấp trong `provenance.source`. Đây là hai namespace riêng.\n- Thêm trường `evidence` vào object JSON trả lời: danh sách các đối tượng `{\\\"tool\\\":\\\"tên tool\\\", \\\"source\\\":\\\"provenance.source\\\", \\\"as_of\\\":\\\"provenance.as_of\\\", \\\"call_id\\\":\\\"benchmark_evidence.call_id\\\", \\\"payload_sha256\\\":\\\"benchmark_evidence.payload_sha256\\\", \\\"matched_entry_id\\\":\\\"benchmark_evidence.matched_entry_id\\\", \\\"response_sha256\\\":\\\"benchmark_evidence.response_sha256\\\"}` lấy từ phản hồi tool thực gọi. Dẫn đầy đủ các phản hồi cần thiết cho chỉ tiêu/mã/kỳ được hỏi (kể cả các mã riêng biệt cùng tool/nguồn/timestamp); catalog có thể chứa dữ liệu không liên quan. Không suy đoán timestamp và không dùng thời gian của máy làm as_of.\n- Khi từ chối, bắt buộc có trường `value` với JSON `null`; chuỗi \\\"null\\\", thiếu trường, object hay số đều không hợp lệ. Thời kỳ phải nêu đúng năm, quý/tháng/ngày và đủ hai kỳ nếu đề yêu cầu so sánh.\n\""
+      }
+    ],
+    "tools": [
+      {
+        "type": "function",
+        "function": {
+          "name": "opentrading_vn_quote_history",
+          "description": "Frozen MCP snapshot; only snapshot_requests below are replayable. Supply all recorded non-default parameters; omitted parameters retain the real schema defaults. Read source/as_of from provenance and cite benchmark_evidence. snapshot_requests=[{\"symbol\": \"HPG\"}]",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "symbol": {
+                "type": "string"
+              },
+              "days": {
+                "type": "integer",
+                "default": 365
+              },
+              "summary": {
+                "type": "boolean",
+                "default": false
+              },
+              "columns": {
+                "anyOf": [
+                  {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null
+              },
+              "interval": {
+                "type": "string",
+                "default": "1D"
+              }
+            },
+            "required": [
+              "symbol"
+            ],
+            "additionalProperties": false
+          }
+        }
+      }
+    ],
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    },
+    "max_tokens": 2048,
+    "temperature": 0,
+    "top_p": 1
+  }
+]

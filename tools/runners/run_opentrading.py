@@ -1,90 +1,51 @@
-# -*- coding: utf-8 -*-
-"""Runner arm OpenTrading — wrapper headless qua core harness (bun + ot_headless.ts).
-
-Isolation per-trial bằng OPENTRADING_HOME riêng:
-- config.json : provider/model (NVIDIA)
-- auth.json   : copy từ ~/.opentrading/auth.json (key NVIDIA)
-- mcp.json    : MCP snapshot server (stdio) — thay server thật
-
-LƯU Ý (R14): OpenTrading KHÔNG có tool ghi file builtin → agent không tự ghi được
-answer.json; runner trả final_text (chỉ text-delta) và driver trích JSON thành
-answer.json (extract_answer_json) — chuẩn hoá ngang với "parse JSON output" arm khác.
-"""
+"""OpenTrading native agent, with only frozen snapshot MCP tools."""
 import json
 import os
-import shutil
+from pathlib import Path
 import sys
-
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from common import popen_run
+from isolated import prepare, finish, SNAPSHOT, TOOLS
 
-TOOLS = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
-SNAPSHOT = os.path.join(TOOLS, "mcp_snapshot_server.py")
-WRAPPER = os.path.join(TOOLS, "runners", "ot_headless.ts")
-BUN = os.path.expanduser("~/.bun/bin/bun")
+BUN = os.path.expanduser('~/.bun/bin/bun')
 
 
-def run(ws, instruction, task_dir, model, timeout_s, log_path):
-    tdir = os.path.abspath(os.path.dirname(ws))  # bất biến: mọi path con tuyệt đối
-    home = os.path.join(tdir, "ot-home")
-    os.makedirs(home, exist_ok=True)
-    payloads = os.path.join(task_dir, "environment", "payloads.json")
-    if "/" in model:
-        provider, model_id = model.split("/", 1)
-    else:
-        provider, model_id = "nvidia", model
-    with open(os.path.join(home, "config.json"), "w", encoding="utf-8") as f:
-        json.dump({"provider": provider, "model": model_id, "toolSearch": "off",
-                   "memory": {"provider": "none"}}, f, ensure_ascii=False, indent=1)
-    src_auth = os.path.expanduser("~/.opentrading/auth.json")
-    if os.path.exists(src_auth):
-        shutil.copy(src_auth, os.path.join(home, "auth.json"))
-    mcp = {"mcpServers": {"opentrading": {"type": "stdio",
-                                          "command": sys.executable,
-                                          "args": [SNAPSHOT],
-                                          "env": {"BENCH_PAYLOADS": payloads},
-                                          "startupTimeoutMs": 30000,
-                                          "toolTimeoutMs": 120000,
-                                          "alwaysLoad": True}}}
-    with open(os.path.join(home, "mcp.json"), "w", encoding="utf-8") as f:
-        json.dump(mcp, f, ensure_ascii=False, indent=1)
-
-    env = {**os.environ, "OPENTRADING_HOME": home}
-    # Chuẩn hoá môi trường (R14): OpenTrading không có tool ghi file — nhắc arm này
-    # in kết quả cuối dạng khối ```json``` để runner trích thành answer.json.
-    # Chuỗi HẰNG SỐ áp cho MỌI trial OT (công bằng nội bộ arm, không đụng gold).
-    ENV_NOTE = ("\n\n## Lưu ý môi trường chạy\n"
-                "- Phiên này KHÔNG có tool ghi file. Sau khi tính xong, in kết quả cuối "
-                "cùng dưới dạng MỘT khối ```json``` đúng schema ở trên ngay trong câu "
-                "trả lời của bạn (không ghi file).")
-    cmd = [BUN, WRAPPER, instruction + ENV_NOTE]
-    rc, out, err, timed_out = popen_run(cmd, cwd=ws, env=env, timeout_s=timeout_s, log_path=log_path)
-
-    # stderr = JSONL events → usage/session/error
-    tokens, session_id, saw_error, err_msg = None, None, False, ""
-    for line in (err or "").splitlines():
-        line = line.strip()
-        if not line.startswith("{"):
-            continue
-        try:
-            ev = json.loads(line)
-        except json.JSONDecodeError:
-            continue
-        if ev.get("type") == "error":
-            saw_error = True
-            err_msg = str(ev.get("message") or "")[:160]
-        if isinstance(ev.get("usage"), dict):
-            tokens = ev["usage"]
-        for key in ("sessionID", "sessionId", "session_id", "session"):
-            if isinstance(ev.get(key), str) and ev[key]:
-                session_id = ev[key]
-    status = "timeout" if timed_out else ("ok" if rc == 0 else "error")
-    # lỗi provider giữa chừng (500/429…): run exit 0 nhưng KHÔNG có text trả lời
-    if status == "ok" and saw_error and not (out or "").strip():
-        status = "error"
-    return {"status": status,
-            "answer_path": None,  # driver trích từ final_text (R14)
-            "final_text": out or "",
-            "session_id": session_id, "tokens": tokens,
-            "notes": "" if rc == 0 else "exit=%s" % rc,
-            **({"notes": "provider error: %s" % err_msg} if saw_error and not (out or "").strip() else {})}
+def run(ws, instruction, task_dir, model, timeout_s, log_path, options=None):
+    options = {**(options or {}), 'timeout_s': timeout_s}
+    root, env, gateway, mcp_env = prepare(ws, task_dir, model, options)
+    from experiment_conditions import RUNTIME_ROOT, prompt_directory
+    if not options.get('opentrading_runtime_root') or Path(options['opentrading_runtime_root']).resolve() != RUNTIME_ROOT.resolve():
+        raise ValueError('Explicit trusted OpenTrading runtime root required')
+    variant = options.get('prompt_variant') or 'finance'
+    prompts = prompt_directory(variant)
+    env.update(BENCH_OT_RUNTIME=str(RUNTIME_ROOT.resolve()), BENCH_PROMPT_DIR=str(prompts),
+               BENCH_AS_OF=gateway.options['snapshot_as_of'])
+    home = root / 'ot-home'
+    (home / 'cache').mkdir(parents=True, exist_ok=True)
+    cfg = {'provider': 'nvidia', 'model': gateway.model, 'toolSearch': 'off', 'memory': {'provider': 'none'},
+           'benchmark_prompt_variant': variant, 'benchmark_runtime_root': str(RUNTIME_ROOT.resolve())}
+    (home / 'config.json').write_text(json.dumps(cfg))
+    (home / 'auth.json').write_text(json.dumps({'nvidia': {'type': 'api', 'key': gateway.token}}))
+    catalog = {'nvidia': {'id': 'nvidia', 'name': 'NVIDIA controlled gateway', 'env': ['NVIDIA_API_KEY'],
+               'npm': '@ai-sdk/openai-compatible', 'api': gateway.url,
+               'models': {gateway.model: {'id': gateway.model, 'name': gateway.model, 'reasoning': False,
+                                          'tool_call': True, 'limit': {'context': 32000, 'output': 2048}}}}}
+    (home / 'cache/models.json').write_text(json.dumps(catalog))
+    mcp = {'mcpServers': {'opentrading': {'type': 'stdio', 'command': sys.executable,
+            'args': [str(SNAPSHOT)], 'env': mcp_env, 'startupTimeoutMs': 30000,
+            'toolTimeoutMs': 30000, 'alwaysLoad': True}}}
+    (home / 'mcp.json').write_text(json.dumps(mcp))
+    env.update(OPENTRADING_HOME=str(home), NVIDIA_API_KEY=gateway.token)
+    env['BENCH_INVENTORY'] = str(root / 'native-inventory.json')
+    with gateway:
+        rc, out, err, timed_out = popen_run([BUN, str(TOOLS / 'runners/ot_headless.ts'), instruction],
+            cwd=ws, env=env, timeout_s=timeout_s, log_path=log_path)
+    session = None
+    errors = []
+    for line in err.splitlines():
+        try: event = json.loads(line)
+        except ValueError: continue
+        if event.get('type') == 'error': errors.append(event.get('message', 'agent error'))
+        session = event.get('sessionId') or event.get('session') or session
+    return finish(root, gateway, {'status': 'timeout' if timed_out else 'ok' if rc == 0 and not errors else 'error',
+        'final_text': out, 'session_id': session, 'notes': '; '.join(errors)[:180]}, 'opentrading', cfg)

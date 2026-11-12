@@ -54,5 +54,28 @@
     "value": 14550.96
   },
   "notes": "Hai dòng chỉ tiêu cách nhau 0.06% (14550.96 vs 14542.28) — tolerance KHÔNG phân biệt được; check `line` mới phân biệt. Quý gần nhất = Q2/2026 (Q3/2026 chưa công bố tại snapshot).",
-  "as_of": "2026-11-01T15:54:29.686603+07:00"
+  "as_of": "2026-11-01T15:54:29.686603+07:00",
+  "contract_version": 2,
+  "provenance_contract": [
+    {
+      "tool": "financial_statements",
+      "source": "vietstock",
+      "as_of": "2026-11-01T15:54:29.686603+07:00",
+      "matched_entry_id": "financial_statements:0",
+      "response_sha256": "368411d1982abd746595febe29f0a84129757c95cffc4d59b334a7cf054a4a06"
+    }
+  ],
+  "payload_sha256": "e9c5e43dc5664805b215186c33c36a17a40f9109263b7ebf1a5a61bec507976f",
+  "provenance_catalog": [
+    {
+      "tool": "financial_statements",
+      "source": "vietstock",
+      "as_of": "2026-11-01T15:54:29.686603+07:00",
+      "matched_entry_id": "financial_statements:0",
+      "response_sha256": "368411d1982abd746595febe29f0a84129757c95cffc4d59b334a7cf054a4a06"
+    }
+  ],
+  "required_payload_keys": [
+    "financial_statements"
+  ]
 }

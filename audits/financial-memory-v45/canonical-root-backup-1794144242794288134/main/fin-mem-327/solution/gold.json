@@ -1,0 +1,59 @@
+{
+ "scoring": "value",
+ "solution": {
+  "total_bn": 43975.73
+ },
+ "expects": [
+  {
+   "type": "value",
+   "path": "values.total_bn",
+   "gold": 43975.73,
+   "tol": {
+    "rel": 0.005
+   }
+  },
+  {
+   "type": "evidence",
+   "path": "note",
+   "paths": [
+    "note"
+   ],
+   "numbers": [],
+   "strings": [
+    "MSN",
+    "PNJ"
+   ],
+   "min_hits": 2
+  },
+  {
+   "type": "str_all",
+   "path": "source",
+   "accept": [
+    "financial_statements"
+   ]
+  }
+ ],
+ "notes": "Portfolio session A: MSN + PNJ. Doanh thu Q3: MSN 36,981.04 + PNJ 6,994.69 = 43975.73 tỷ. Note phải nêu đủ 2 mã (portfolio recall).",
+ "provenance_contract": [
+  {
+   "tool": "financial_statements",
+   "source": "vietstock",
+   "as_of": "2026-11-01T23:48:45.000607+07:00",
+   "matched_entry_id": "fs:MSN",
+   "response_sha256": "304693ddd1f6deedade94de7faee3c790357d6ecae844ce0ad1bcb9f3697cce3"
+  },
+  {
+   "tool": "financial_statements",
+   "source": "vietstock",
+   "as_of": "2026-11-01T22:04:00.535310+07:00",
+   "matched_entry_id": "fs:PNJ",
+   "response_sha256": "277f33915c2d19db8df9fa786d3aa5007d43d832ab012da44d719ceb279a9576"
+  }
+ ],
+ "required_payload_keys": [
+  "fs:MSN",
+  "fs:PNJ"
+ ],
+ "task_id": "fin-mem-327",
+ "payload_sha256": "5b8951b98923688c61109f7bb2c34932b788e3bfb21d97efeb3e79c7509374f5"
+}

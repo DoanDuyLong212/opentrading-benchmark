@@ -1,0 +1,1615 @@
+{
+  "scope": "Read-only frozen smoke forensic audit; no inference. Derived evidence only.",
+  "run": "/home/doanlong/extra/benchmark/experiments/finance-v42-study/results/financial-v42-smoke-20261106",
+  "trials": [
+    {
+      "trial_id": "smoke-quote-01__dsh__r1",
+      "success": false,
+      "semantic_correctness": false,
+      "grounded_correctness": false,
+      "evidence_grounded": false,
+      "public_contract_valid": true,
+      "public_contract_errors": [],
+      "status": "ok",
+      "error_type": "sai_don_vi",
+      "tokens": {
+        "input": 3686,
+        "output": 127,
+        "reasoning": null,
+        "cache_read": 1760,
+        "complete": true
+      },
+      "requests": 2,
+      "wall_ms": 30951,
+      "native_completion": null,
+      "result_path": "experiments/finance-v42-study/results/financial-v42-smoke-20261106/trials/smoke-quote-01__dsh__r1/attempts/01-4dc61ba7ed21/result.json",
+      "final_text": "{\n  \"value\": null,\n  \"reason\": \"The requested query (days=1) is not supported under the frozen snapshot constraints, as indicated by the tool error: 'unsupported finite-snapshot query; inspect allowed_public_variants'. The tool only accepts requests explicitly recorded in the snapshot, and the current request parameters were rejected.\",\n  \"evidence\": []\n}",
+      "calls": [
+        {
+          "tool": "vn_quote_history",
+          "arguments": {
+            "columns": [
+              "t",
+              "c"
+            ],
+            "days": 1,
+            "interval": "1D",
+            "symbol": "HPG"
+          },
+          "c1_shape_valid": true,
+          "c2_valid": false,
+          "status": "rejected",
+          "error_code": "unsupported_snapshot_query",
+          "call_id": "14cd789d-bcdb-4b3a-aafa-79733ddbcce7"
+        }
+      ],
+      "provider_requests": [
+        {
+          "path": "experiments/finance-v42-study/results/financial-v42-smoke-20261106/trials/smoke-quote-01__dsh__r1/attempts/01-4dc61ba7ed21/provider-requests/0001-effective.json",
+          "tool_choice": null,
+          "tools": 1,
+          "max_tokens": 2048,
+          "system_chars": 307,
+          "system_utf8_bytes": 307
+        },
+        {
+          "path": "experiments/finance-v42-study/results/financial-v42-smoke-20261106/trials/smoke-quote-01__dsh__r1/attempts/01-4dc61ba7ed21/provider-requests/0002-effective.json",
+          "tool_choice": null,
+          "tools": 1,
+          "max_tokens": 2048,
+          "system_chars": 307,
+          "system_utf8_bytes": 307
+        }
+      ],
+      "provider_statuses": [
+        200,
+        200
+      ],
+      "per_request_output": [
+        46,
+        81
+      ],
+      "input_byte_estimates": [
+        7850,
+        8786
+      ]
+    },
+    {
+      "trial_id": "smoke-quote-01__opencode__r1",
+      "success": false,
+      "semantic_correctness": false,
+      "grounded_correctness": false,
+      "evidence_grounded": false,
+      "public_contract_valid": true,
+      "public_contract_errors": [],
+      "status": "ok",
+      "error_type": "sai_don_vi",
+      "tokens": {
+        "input": 4592,
+        "output": 129,
+        "reasoning": null,
+        "cache_read": 2208,
+        "complete": true
+      },
+      "requests": 2,
+      "wall_ms": 17973,
+      "native_completion": null,
+      "result_path": "experiments/finance-v42-study/results/financial-v42-smoke-20261106/trials/smoke-quote-01__opencode__r1/attempts/01-40ca5ac4f6fd/result.json",
+      "final_text": "{\n  \"value\": null,\n  \"reason\": \"The requested query for the latest closing price of HPG could not be executed against the frozen snapshot (2026-11-01) because the combination of parameters (specifically requesting only 1 day with specific columns) resulted in an unsupported finite-snapshot query, as indicated by the tool error.\",\n  \"evidence\": []\n}",
+      "calls": [
+        {
+          "tool": "vn_quote_history",
+          "arguments": {
+            "columns": [
+              "t",
+              "c"
+            ],
+            "days": 1,
+            "interval": "1D",
+            "symbol": "HPG"
+          },
+          "c1_shape_valid": true,
+          "c2_valid": false,
+          "status": "rejected",
+          "error_code": "unsupported_snapshot_query",
+          "call_id": "ef5bd5cb-e5ae-4333-a514-5023fe75bb61"
+        }
+      ],
+      "provider_requests": [
+        {
+          "path": "experiments/finance-v42-study/results/financial-v42-smoke-20261106/trials/smoke-quote-01__opencode__r1/attempts/01-40ca5ac4f6fd/provider-requests/0001-effective.json",
+          "tool_choice": null,
+          "tools": 1,
+          "max_tokens": 2048,
+          "system_chars": 1917,
+          "system_utf8_bytes": 1917
+        },
+        {
+          "path": "experiments/finance-v42-study/results/financial-v42-smoke-20261106/trials/smoke-quote-01__opencode__r1/attempts/01-40ca5ac4f6fd/provider-requests/0002-effective.json",
+          "tool_choice": null,
+          "tools": 1,
+          "max_tokens": 2048,
+          "system_chars": 1917,
+          "system_utf8_bytes": 1917
+        }
+      ],
+      "provider_statuses": [
+        200,
+        200
+      ],
+      "per_request_output": [
+        43,
+        86
+      ],
+      "input_byte_estimates": [
+        9682,
+        10758
+      ]
+    },
+    {
+      "trial_id": "smoke-quote-01__opentrading__r1",
+      "success": true,
+      "semantic_correctness": true,
+      "grounded_correctness": true,
+      "evidence_grounded": true,
+      "public_contract_valid": true,
+      "public_contract_errors": [],
+      "status": "ok",
+      "error_type": null,
+      "tokens": {
+        "input": 6793,
+        "output": 372,
+        "reasoning": null,
+        "cache_read": 3136,
+        "complete": true
+      },
+      "requests": 2,
+      "wall_ms": 16490,
+      "native_completion": {
+        "outcome": "completed",
+        "unanswered": false,
+        "recoveries": []
+      },
+      "result_path": "experiments/finance-v42-study/results/financial-v42-smoke-20261106/trials/smoke-quote-01__opentrading__r1/attempts/01-065d15b2cc33/result.json",
+      "final_text": "{\n  \"value\": 21.0,\n  \"unit\": \"nghìn đồng\",\n  \"period\": \"30/10/2026\",\n  \"source\": \"vn_quote_history\",\n  \"evidence\": [\n    {\n      \"tool\": \"vn_quote_history\",\n      \"source\": \"vnstock\",\n      \"as_of\": \"2026-11-01T15:54:29.883479+07:00\",\n      \"call_id\": \"0dc23abd-4899-4967-9e99-d355014e6f21\",\n      \"payload_sha256\": \"cb80cece34c0f94fc32a60a8f2ccd0022f827b72e9d6ccc0496744db39f2c71f\",\n      \"matched_entry_id\": \"vn_quote_history:0\",\n      \"response_sha256\": \"1494cd6b872e94237fbd832c39302b1f2242f6277a0da16148f560be974ba421\"\n    }\n  ]\n}",
+      "calls": [
+        {
+          "tool": "vn_quote_history",
+          "arguments": {
+            "days": 365,
+            "interval": "1D",
+            "summary": false,
+            "symbol": "HPG"
+          },
+          "c1_shape_valid": true,
+          "c2_valid": true,
+          "status": "ok",
+          "error_code": null,
+          "call_id": "0dc23abd-4899-4967-9e99-d355014e6f21"
+        }
+      ],
+      "provider_requests": [
+        {
+          "path": "experiments/finance-v42-study/results/financial-v42-smoke-20261106/trials/smoke-quote-01__opentrading__r1/attempts/01-065d15b2cc33/provider-requests/0001-effective.json",
+          "tool_choice": "auto",
+          "tools": 1,
+          "max_tokens": 2048,
+          "system_chars": 5368,
+          "system_utf8_bytes": 6865
+        },
+        {
+          "path": "experiments/finance-v42-study/results/financial-v42-smoke-20261106/trials/smoke-quote-01__opentrading__r1/attempts/01-065d15b2cc33/provider-requests/0002-effective.json",
+          "tool_choice": "auto",
+          "tools": 1,
+          "max_tokens": 2048,
+          "system_chars": 5368,
+          "system_utf8_bytes": 6865
+        }
+      ],
+      "provider_statuses": [
+        200,
+        200
+      ],
+      "per_request_output": [
+        42,
+        330
+      ],
+      "input_byte_estimates": [
+        14449,
+        15912
+      ]
+    },
+    {
+      "trial_id": "smoke-trap-01__opencode__r1",
+      "success": false,
+      "semantic_correctness": true,
+      "grounded_correctness": false,
+      "evidence_grounded": true,
+      "public_contract_valid": false,
+      "public_contract_errors": [
+        "Final response must be exactly one JSON object, without markdown or surrounding prose."
+      ],
+      "status": "ok",
+      "error_type": "public_contract_invalid",
+      "tokens": {
+        "input": 3911,
+        "output": 398,
+        "reasoning": null,
+        "cache_read": 1760,
+        "complete": true
+      },
+      "requests": 2,
+      "wall_ms": 20797,
+      "native_completion": null,
+      "result_path": "experiments/finance-v42-study/results/financial-v42-smoke-20261106/trials/smoke-trap-01__opencode__r1/attempts/01-146c8da42b16/result.json",
+      "final_text": "```json\n{\n  \"value\": null,\n  \"reason\": \"Mã tài sản XYZX không được giải mã thành symbol hợp lệ hoặc không tìm thấy trong dữ liệu tại thời điểm snapshot 2026-11-01.\",\n  \"unit\": \"đồng\",\n  \"period\": \"gần nhất\",\n  \"source\": \"symbol_resolve\",\n  \"note\": \"Không tìm thấy thông tin giá đóng cửa gần nhất cho mã XYZX.\",\n  \"evidence\": [\n    {\n      \"tool\": \"symbol_resolve\",\n      \"source\": \"vnstock+local\",\n      \"as_of\": \"2026-11-01T15:57:53.093226+07:00\",\n      \"call_id\": \"f80dfbdf-d3cb-4d23-986e-96434eda93c4\",\n      \"payload_sha256\": \"6b7ff4111a0909abb9acffeb18b02683b8ea682954c7b5d370ad00934c185b36\",\n      \"matched_entry_id\": \"symbol_resolve:0\",\n      \"response_sha256\": \"bb10c861f6a84b5caf5f58dc2714bdf5e4edb19b312b76d3c18d98938272cd2f\"\n    }\n  ]\n}\n```",
+      "calls": [
+        {
+          "tool": "symbol_resolve",
+          "arguments": {
+            "query": "XYZX"
+          },
+          "c1_shape_valid": true,
+          "c2_valid": true,
+          "status": "ok",
+          "error_code": null,
+          "call_id": "f80dfbdf-d3cb-4d23-986e-96434eda93c4"
+        }
+      ],
+      "provider_requests": [
+        {
+          "path": "experiments/finance-v42-study/results/financial-v42-smoke-20261106/trials/smoke-trap-01__opencode__r1/attempts/01-146c8da42b16/provider-requests/0001-effective.json",
+          "tool_choice": null,
+          "tools": 1,
+          "max_tokens": 2048,
+          "system_chars": 1915,
+          "system_utf8_bytes": 1915
+        },
+        {
+          "path": "experiments/finance-v42-study/results/financial-v42-smoke-20261106/trials/smoke-trap-01__opencode__r1/attempts/01-146c8da42b16/provider-requests/0002-effective.json",
+          "tool_choice": null,
+          "tools": 1,
+          "max_tokens": 2048,
+          "system_chars": 1915,
+          "system_utf8_bytes": 1915
+        }
+      ],
+      "provider_statuses": [
+        200,
+        200
+      ],
+      "per_request_output": [
+        20,
+        378
+      ],
+      "input_byte_estimates": [
+        7933,
+        8937
+      ]
+    },
+    {
+      "trial_id": "smoke-trap-01__opentrading__r1",
+      "success": false,
+      "semantic_correctness": false,
+      "grounded_correctness": false,
+      "evidence_grounded": false,
+      "public_contract_valid": true,
+      "public_contract_errors": [],
+      "status": "ok",
+      "error_type": "khong_tra_loi",
+      "tokens": {
+        "input": 2671,
+        "output": 48,
+        "reasoning": null,
+        "cache_read": 1440,
+        "complete": true
+      },
+      "requests": 1,
+      "wall_ms": 10994,
+      "native_completion": {
+        "outcome": "completed",
+        "unanswered": false,
+        "recoveries": []
+      },
+      "result_path": "experiments/finance-v42-study/results/financial-v42-smoke-20261106/trials/smoke-trap-01__opentrading__r1/attempts/01-24ab7f98f292/result.json",
+      "final_text": "{\n  \"value\": null,\n  \"reason\": \"Cần xác định loại tài sản và symbol chính xác của mã 'XYZX' trước khi truy vấn giá đóng cửa.\",\n  \"evidence\": []\n}",
+      "calls": [],
+      "provider_requests": [
+        {
+          "path": "experiments/finance-v42-study/results/financial-v42-smoke-20261106/trials/smoke-trap-01__opentrading__r1/attempts/01-24ab7f98f292/provider-requests/0001-effective.json",
+          "tool_choice": "auto",
+          "tools": 1,
+          "max_tokens": 2048,
+          "system_chars": 5368,
+          "system_utf8_bytes": 6865
+        }
+      ],
+      "provider_statuses": [
+        200
+      ],
+      "per_request_output": [
+        48
+      ],
+      "input_byte_estimates": [
+        12694
+      ]
+    },
+    {
+      "trial_id": "smoke-trap-01__dsh__r1",
+      "success": true,
+      "semantic_correctness": true,
+      "grounded_correctness": true,
+      "evidence_grounded": true,
+      "public_contract_valid": true,
+      "public_contract_errors": [],
+      "status": "ok",
+      "error_type": null,
+      "tokens": {
+        "input": 3015,
+        "output": 398,
+        "reasoning": null,
+        "cache_read": 1312,
+        "complete": true
+      },
+      "requests": 2,
+      "wall_ms": 26575,
+      "native_completion": null,
+      "result_path": "experiments/finance-v42-study/results/financial-v42-smoke-20261106/trials/smoke-trap-01__dsh__r1/attempts/01-68dd30536b5a/result.json",
+      "final_text": "{\n  \"value\": null,\n  \"reason\": \"Mã tài sản XYZX không được tìm thấy hoặc không có thông tin giải mã trong snapshot dữ liệu tại 2026-11-01.\",\n  \"unit\": \"đồng\",\n  \"period\": \"gần nhất\",\n  \"source\": \"symbol_resolve\",\n  \"note\": \"Không thể xác định loại tài sản hoặc tìm giá do mã không hợp lệ/không tồn tại.\",\n  \"evidence\": [\n    {\n      \"tool\": \"symbol_resolve\",\n      \"source\": \"vnstock+local\",\n      \"as_of\": \"2026-11-01T15:57:53.093226+07:00\",\n      \"call_id\": \"1ec35c28-e928-4efd-9fca-d76bac000a52\",\n      \"payload_sha256\": \"6b7ff4111a0909abb9acffeb18b02683b8ea682954c7b5d370ad00934c185b36\",\n      \"matched_entry_id\": \"symbol_resolve:0\",\n      \"response_sha256\": \"bb10c861f6a84b5caf5f58dc2714bdf5e4edb19b312b76d3c18d98938272cd2f\"\n    }\n  ]\n}",
+      "calls": [
+        {
+          "tool": "symbol_resolve",
+          "arguments": {
+            "query": "XYZX"
+          },
+          "c1_shape_valid": true,
+          "c2_valid": true,
+          "status": "ok",
+          "error_code": null,
+          "call_id": "1ec35c28-e928-4efd-9fca-d76bac000a52"
+        }
+      ],
+      "provider_requests": [
+        {
+          "path": "experiments/finance-v42-study/results/financial-v42-smoke-20261106/trials/smoke-trap-01__dsh__r1/attempts/01-68dd30536b5a/provider-requests/0001-effective.json",
+          "tool_choice": null,
+          "tools": 1,
+          "max_tokens": 2048,
+          "system_chars": 307,
+          "system_utf8_bytes": 307
+        },
+        {
+          "path": "experiments/finance-v42-study/results/financial-v42-smoke-20261106/trials/smoke-trap-01__dsh__r1/attempts/01-68dd30536b5a/provider-requests/0002-effective.json",
+          "tool_choice": null,
+          "tools": 1,
+          "max_tokens": 2048,
+          "system_chars": 307,
+          "system_utf8_bytes": 307
+        }
+      ],
+      "provider_statuses": [
+        200,
+        200
+      ],
+      "per_request_output": [
+        23,
+        375
+      ],
+      "input_byte_estimates": [
+        6095,
+        7105
+      ]
+    },
+    {
+      "trial_id": "smoke-agg-01__opentrading__r1",
+      "success": false,
+      "semantic_correctness": false,
+      "grounded_correctness": false,
+      "evidence_grounded": false,
+      "public_contract_valid": false,
+      "public_contract_errors": [
+        "Final response must be exactly one JSON object, without markdown or surrounding prose."
+      ],
+      "status": "error",
+      "error_type": "khong_tra_loi",
+      "tokens": {
+        "input": 5907,
+        "output": 474,
+        "reasoning": null,
+        "cache_read": 3232,
+        "complete": true
+      },
+      "requests": 2,
+      "wall_ms": 20310,
+      "native_completion": {
+        "outcome": "failed",
+        "unanswered": false,
+        "recoveries": []
+      },
+      "result_path": "experiments/finance-v42-study/results/financial-v42-smoke-20261106/trials/smoke-agg-01__opentrading__r1/attempts/01-bc2e32b36608/result.json",
+      "final_text": "",
+      "calls": [],
+      "provider_requests": [
+        {
+          "path": "experiments/finance-v42-study/results/financial-v42-smoke-20261106/trials/smoke-agg-01__opentrading__r1/attempts/01-bc2e32b36608/provider-requests/0001-effective.json",
+          "tool_choice": "auto",
+          "tools": 1,
+          "max_tokens": 2048,
+          "system_chars": 5368,
+          "system_utf8_bytes": 6865
+        },
+        {
+          "path": "experiments/finance-v42-study/results/financial-v42-smoke-20261106/trials/smoke-agg-01__opentrading__r1/attempts/01-bc2e32b36608/provider-requests/0002-effective.json",
+          "tool_choice": "none",
+          "tools": 1,
+          "max_tokens": 2048,
+          "system_chars": 5368,
+          "system_utf8_bytes": 6865
+        }
+      ],
+      "provider_statuses": [
+        200,
+        200
+      ],
+      "per_request_output": [
+        237,
+        237
+      ],
+      "input_byte_estimates": [
+        15784,
+        16930
+      ]
+    },
+    {
+      "trial_id": "smoke-agg-01__dsh__r1",
+      "success": false,
+      "semantic_correctness": false,
+      "grounded_correctness": false,
+      "evidence_grounded": false,
+      "public_contract_valid": false,
+      "public_contract_errors": [
+        "Final response must be exactly one JSON object, without markdown or surrounding prose."
+      ],
+      "status": "ok",
+      "error_type": "sai_so",
+      "tokens": {
+        "input": 4820,
+        "output": 419,
+        "reasoning": null,
+        "cache_read": 1984,
+        "complete": true
+      },
+      "requests": 2,
+      "wall_ms": 55576,
+      "native_completion": null,
+      "result_path": "experiments/finance-v42-study/results/financial-v42-smoke-20261106/trials/smoke-agg-01__dsh__r1/attempts/01-30aeeab29999/result.json",
+      "final_text": "```json\n{\n  \"values\": {\n    \"VCB\": null,\n    \"BID\": null,\n    \"CTG\": null,\n    \"TCB\": null,\n    \"MBB\": null,\n    \"mean\": null\n  },\n  \"unit\": \"nghìn đồng\",\n  \"period\": \"phiên 2026-10-30\",\n  \"source\": \"vn_quote_history\",\n  \"reason\": \"Các yêu cầu truy vấn lịch sử giá với tham số 'days' (dù là 1) đã bị từ chối do không hỗ trợ truy vấn hữu hạn (finite-snapshot query) trong bối cảnh snapshot cố định 2026-11-01. Chỉ các yêu cầu được liệt kê trong 'snapshot_requests' mới có thể được replay.\",\n  \"evidence\": []\n}\n```",
+      "calls": [
+        {
+          "tool": "vn_quote_history",
+          "arguments": {
+            "columns": [
+              "c",
+              "t"
+            ],
+            "days": 1,
+            "interval": "1D",
+            "symbol": "VCB"
+          },
+          "c1_shape_valid": true,
+          "c2_valid": false,
+          "status": "rejected",
+          "error_code": "unsupported_snapshot_query",
+          "call_id": "8da90457-fa62-42f9-ae27-a301885bbbfd"
+        },
+        {
+          "tool": "vn_quote_history",
+          "arguments": {
+            "columns": [
+              "c",
+              "t"
+            ],
+            "days": 1,
+            "interval": "1D",
+            "symbol": "BID"
+          },
+          "c1_shape_valid": true,
+          "c2_valid": false,
+          "status": "rejected",
+          "error_code": "unsupported_snapshot_query",
+          "call_id": "1d0b97d8-ae70-482e-ad1f-68914376b3d7"
+        },
+        {
+          "tool": "vn_quote_history",
+          "arguments": {
+            "columns": [
+              "c",
+              "t"
+            ],
+            "days": 1,
+            "interval": "1D",
+            "symbol": "CTG"
+          },
+          "c1_shape_valid": true,
+          "c2_valid": false,
+          "status": "rejected",
+          "error_code": "unsupported_snapshot_query",
+          "call_id": "6ecb1174-d906-4e9a-928e-e07a7ebee937"
+        },
+        {
+          "tool": "vn_quote_history",
+          "arguments": {
+            "columns": [
+              "c",
+              "t"
+            ],
+            "days": 1,
+            "interval": "1D",
+            "symbol": "TCB"
+          },
+          "c1_shape_valid": true,
+          "c2_valid": false,
+          "status": "rejected",
+          "error_code": "unsupported_snapshot_query",
+          "call_id": "0aa6cc90-f097-4920-b7d6-90d89f4fe6bf"
+        },
+        {
+          "tool": "vn_quote_history",
+          "arguments": {
+            "columns": [
+              "c",
+              "t"
+            ],
+            "days": 1,
+            "interval": "1D",
+            "symbol": "MBB"
+          },
+          "c1_shape_valid": true,
+          "c2_valid": false,
+          "status": "rejected",
+          "error_code": "unsupported_snapshot_query",
+          "call_id": "5251469f-6b33-4a9b-bef2-5f112ddf1d9d"
+        }
+      ],
+      "provider_requests": [
+        {
+          "path": "experiments/finance-v42-study/results/financial-v42-smoke-20261106/trials/smoke-agg-01__dsh__r1/attempts/01-30aeeab29999/provider-requests/0001-effective.json",
+          "tool_choice": null,
+          "tools": 1,
+          "max_tokens": 2048,
+          "system_chars": 307,
+          "system_utf8_bytes": 307
+        },
+        {
+          "path": "experiments/finance-v42-study/results/financial-v42-smoke-20261106/trials/smoke-agg-01__dsh__r1/attempts/01-30aeeab29999/provider-requests/0002-effective.json",
+          "tool_choice": null,
+          "tools": 1,
+          "max_tokens": 2048,
+          "system_chars": 307,
+          "system_utf8_bytes": 307
+        }
+      ],
+      "provider_statuses": [
+        200,
+        200
+      ],
+      "per_request_output": [
+        224,
+        195
+      ],
+      "input_byte_estimates": [
+        9185,
+        14561
+      ]
+    },
+    {
+      "trial_id": "smoke-agg-01__opencode__r1",
+      "success": false,
+      "semantic_correctness": false,
+      "grounded_correctness": false,
+      "evidence_grounded": false,
+      "public_contract_valid": false,
+      "public_contract_errors": [
+        "Final response must be exactly one JSON object, without markdown or surrounding prose."
+      ],
+      "status": "ok",
+      "error_type": "sai_so",
+      "tokens": {
+        "input": 5862,
+        "output": 310,
+        "reasoning": null,
+        "cache_read": 2432,
+        "complete": true
+      },
+      "requests": 2,
+      "wall_ms": 25035,
+      "native_completion": null,
+      "result_path": "experiments/finance-v42-study/results/financial-v42-smoke-20261106/trials/smoke-agg-01__opencode__r1/attempts/01-845cd02b4aea/result.json",
+      "final_text": "```json\n{\n  \"value\": null,\n  \"reason\": \"The tool execution failed with 'unsupported_snapshot_query' because the request included parameters ('columns' and 'days') that are not supported for the frozen snapshot query, despite the symbols being in the allowed_public_variants list. The specific data point (closing price on 2026-10-30) could not be retrieved.\",\n  \"evidence\": []\n}\n```",
+      "calls": [
+        {
+          "tool": "vn_quote_history",
+          "arguments": {
+            "columns": [
+              "c",
+              "t"
+            ],
+            "days": 1,
+            "interval": "1D",
+            "symbol": "VCB"
+          },
+          "c1_shape_valid": true,
+          "c2_valid": false,
+          "status": "rejected",
+          "error_code": "unsupported_snapshot_query",
+          "call_id": "14d1b04f-3b9b-44df-8613-2818e03116d4"
+        },
+        {
+          "tool": "vn_quote_history",
+          "arguments": {
+            "columns": [
+              "c",
+              "t"
+            ],
+            "days": 1,
+            "interval": "1D",
+            "symbol": "BID"
+          },
+          "c1_shape_valid": true,
+          "c2_valid": false,
+          "status": "rejected",
+          "error_code": "unsupported_snapshot_query",
+          "call_id": "24ea3d56-f943-4a2c-a22a-ff0ad9672d80"
+        },
+        {
+          "tool": "vn_quote_history",
+          "arguments": {
+            "columns": [
+              "c",
+              "t"
+            ],
+            "days": 1,
+            "interval": "1D",
+            "symbol": "CTG"
+          },
+          "c1_shape_valid": true,
+          "c2_valid": false,
+          "status": "rejected",
+          "error_code": "unsupported_snapshot_query",
+          "call_id": "440c8f76-3eaf-4411-b3e5-724e5db1e20e"
+        },
+        {
+          "tool": "vn_quote_history",
+          "arguments": {
+            "columns": [
+              "c",
+              "t"
+            ],
+            "days": 1,
+            "interval": "1D",
+            "symbol": "TCB"
+          },
+          "c1_shape_valid": true,
+          "c2_valid": false,
+          "status": "rejected",
+          "error_code": "unsupported_snapshot_query",
+          "call_id": "ace661bd-efd4-4c13-972f-bf3ff13c1003"
+        },
+        {
+          "tool": "vn_quote_history",
+          "arguments": {
+            "columns": [
+              "c",
+              "t"
+            ],
+            "days": 1,
+            "interval": "1D",
+            "symbol": "MBB"
+          },
+          "c1_shape_valid": true,
+          "c2_valid": false,
+          "status": "rejected",
+          "error_code": "unsupported_snapshot_query",
+          "call_id": "1a5aed41-96f4-43db-8815-ecf406bd7ef1"
+        }
+      ],
+      "provider_requests": [
+        {
+          "path": "experiments/finance-v42-study/results/financial-v42-smoke-20261106/trials/smoke-agg-01__opencode__r1/attempts/01-845cd02b4aea/provider-requests/0001-effective.json",
+          "tool_choice": null,
+          "tools": 1,
+          "max_tokens": 2048,
+          "system_chars": 1913,
+          "system_utf8_bytes": 1913
+        },
+        {
+          "path": "experiments/finance-v42-study/results/financial-v42-smoke-20261106/trials/smoke-agg-01__opencode__r1/attempts/01-845cd02b4aea/provider-requests/0002-effective.json",
+          "tool_choice": null,
+          "tools": 1,
+          "max_tokens": 2048,
+          "system_chars": 1913,
+          "system_utf8_bytes": 1913
+        }
+      ],
+      "provider_statuses": [
+        200,
+        200
+      ],
+      "per_request_output": [
+        209,
+        101
+      ],
+      "input_byte_estimates": [
+        11037,
+        17433
+      ]
+    },
+    {
+      "trial_id": "smoke-trap-01__opencode__r2",
+      "success": false,
+      "semantic_correctness": true,
+      "grounded_correctness": false,
+      "evidence_grounded": true,
+      "public_contract_valid": false,
+      "public_contract_errors": [
+        "Final response must be exactly one JSON object, without markdown or surrounding prose."
+      ],
+      "status": "ok",
+      "error_type": "public_contract_invalid",
+      "tokens": {
+        "input": 3913,
+        "output": 395,
+        "reasoning": null,
+        "cache_read": 1760,
+        "complete": true
+      },
+      "requests": 2,
+      "wall_ms": 23745,
+      "native_completion": null,
+      "result_path": "experiments/finance-v42-study/results/financial-v42-smoke-20261106/trials/smoke-trap-01__opencode__r2/attempts/01-5709d2a70ca5/result.json",
+      "final_text": "```json\n{\n  \"value\": null,\n  \"reason\": \"Mã tài sản XYZX không được giải mã thành symbol hợp lệ trong dữ liệu snapshot 2026-11-01.\",\n  \"unit\": \"đồng\",\n  \"period\": \"gần nhất\",\n  \"source\": \"symbol_resolve\",\n  \"note\": \"Không tìm thấy thông tin giá đóng cửa vì mã tài sản không xác định được.\",\n  \"evidence\": [\n    {\n      \"tool\": \"symbol_resolve\",\n      \"source\": \"vnstock+local\",\n      \"as_of\": \"2026-11-01T15:57:53.093226+07:00\",\n      \"call_id\": \"cffb3e6c-d5ee-4732-a272-2d5bc0190b7e\",\n      \"payload_sha256\": \"6b7ff4111a0909abb9acffeb18b02683b8ea682954c7b5d370ad00934c185b36\",\n      \"matched_entry_id\": \"symbol_resolve:0\",\n      \"response_sha256\": \"bb10c861f6a84b5caf5f58dc2714bdf5e4edb19b312b76d3c18d98938272cd2f\"\n    }\n  ]\n}\n```",
+      "calls": [
+        {
+          "tool": "symbol_resolve",
+          "arguments": {
+            "query": "XYZX"
+          },
+          "c1_shape_valid": true,
+          "c2_valid": true,
+          "status": "ok",
+          "error_code": null,
+          "call_id": "cffb3e6c-d5ee-4732-a272-2d5bc0190b7e"
+        }
+      ],
+      "provider_requests": [
+        {
+          "path": "experiments/finance-v42-study/results/financial-v42-smoke-20261106/trials/smoke-trap-01__opencode__r2/attempts/01-5709d2a70ca5/provider-requests/0001-effective.json",
+          "tool_choice": null,
+          "tools": 1,
+          "max_tokens": 2048,
+          "system_chars": 1915,
+          "system_utf8_bytes": 1915
+        },
+        {
+          "path": "experiments/finance-v42-study/results/financial-v42-smoke-20261106/trials/smoke-trap-01__opencode__r2/attempts/01-5709d2a70ca5/provider-requests/0002-effective.json",
+          "tool_choice": null,
+          "tools": 1,
+          "max_tokens": 2048,
+          "system_chars": 1915,
+          "system_utf8_bytes": 1915
+        }
+      ],
+      "provider_statuses": [
+        200,
+        200
+      ],
+      "per_request_output": [
+        20,
+        375
+      ],
+      "input_byte_estimates": [
+        7933,
+        8937
+      ]
+    },
+    {
+      "trial_id": "smoke-trap-01__opentrading__r2",
+      "success": false,
+      "semantic_correctness": false,
+      "grounded_correctness": false,
+      "evidence_grounded": false,
+      "public_contract_valid": true,
+      "public_contract_errors": [],
+      "status": "ok",
+      "error_type": "khong_tra_loi",
+      "tokens": {
+        "input": 2671,
+        "output": 47,
+        "reasoning": null,
+        "cache_read": 2656,
+        "complete": true
+      },
+      "requests": 1,
+      "wall_ms": 11189,
+      "native_completion": {
+        "outcome": "completed",
+        "unanswered": false,
+        "recoveries": []
+      },
+      "result_path": "experiments/finance-v42-study/results/financial-v42-smoke-20261106/trials/smoke-trap-01__opentrading__r2/attempts/01-2755c4592386/result.json",
+      "final_text": "{\n  \"value\": null,\n  \"reason\": \"Mã tài sản 'XYZX' cần được giải mã trước khi có thể tra cứu giá đóng cửa gần nhất.\",\n  \"evidence\": []\n}",
+      "calls": [],
+      "provider_requests": [
+        {
+          "path": "experiments/finance-v42-study/results/financial-v42-smoke-20261106/trials/smoke-trap-01__opentrading__r2/attempts/01-2755c4592386/provider-requests/0001-effective.json",
+          "tool_choice": "auto",
+          "tools": 1,
+          "max_tokens": 2048,
+          "system_chars": 5368,
+          "system_utf8_bytes": 6865
+        }
+      ],
+      "provider_statuses": [
+        200
+      ],
+      "per_request_output": [
+        47
+      ],
+      "input_byte_estimates": [
+        12694
+      ]
+    },
+    {
+      "trial_id": "smoke-trap-01__dsh__r2",
+      "success": true,
+      "semantic_correctness": true,
+      "grounded_correctness": true,
+      "evidence_grounded": true,
+      "public_contract_valid": true,
+      "public_contract_errors": [],
+      "status": "ok",
+      "error_type": null,
+      "tokens": {
+        "input": 3020,
+        "output": 402,
+        "reasoning": null,
+        "cache_read": 2752,
+        "complete": true
+      },
+      "requests": 2,
+      "wall_ms": 36163,
+      "native_completion": null,
+      "result_path": "experiments/finance-v42-study/results/financial-v42-smoke-20261106/trials/smoke-trap-01__dsh__r2/attempts/01-4765dc0e503c/result.json",
+      "final_text": "{\n  \"value\": null,\n  \"reason\": \"Mã tài sản XYZX không được giải mã thành symbol hợp lệ hoặc không tìm thấy trong cơ sở dữ liệu tại thời điểm snapshot 2026-11-01.\",\n  \"unit\": \"đồng\",\n  \"period\": \"gần nhất\",\n  \"source\": \"symbol_resolve\",\n  \"note\": \"Không có dữ liệu giá đóng cửa vì mã không xác định được.\",\n  \"evidence\": [\n    {\n      \"tool\": \"symbol_resolve\",\n      \"source\": \"vnstock+local\",\n      \"as_of\": \"2026-11-01T15:57:53.093226+07:00\",\n      \"call_id\": \"e091a4a1-71f8-4484-891d-f45f9e7b7574\",\n      \"payload_sha256\": \"6b7ff4111a0909abb9acffeb18b02683b8ea682954c7b5d370ad00934c185b36\",\n      \"matched_entry_id\": \"symbol_resolve:0\",\n      \"response_sha256\": \"bb10c861f6a84b5caf5f58dc2714bdf5e4edb19b312b76d3c18d98938272cd2f\"\n    }\n  ]\n}",
+      "calls": [
+        {
+          "tool": "symbol_resolve",
+          "arguments": {
+            "query": "XYZX"
+          },
+          "c1_shape_valid": true,
+          "c2_valid": true,
+          "status": "ok",
+          "error_code": null,
+          "call_id": "e091a4a1-71f8-4484-891d-f45f9e7b7574"
+        }
+      ],
+      "provider_requests": [
+        {
+          "path": "experiments/finance-v42-study/results/financial-v42-smoke-20261106/trials/smoke-trap-01__dsh__r2/attempts/01-4765dc0e503c/provider-requests/0001-effective.json",
+          "tool_choice": null,
+          "tools": 1,
+          "max_tokens": 2048,
+          "system_chars": 307,
+          "system_utf8_bytes": 307
+        },
+        {
+          "path": "experiments/finance-v42-study/results/financial-v42-smoke-20261106/trials/smoke-trap-01__dsh__r2/attempts/01-4765dc0e503c/provider-requests/0002-effective.json",
+          "tool_choice": null,
+          "tools": 1,
+          "max_tokens": 2048,
+          "system_chars": 307,
+          "system_utf8_bytes": 307
+        }
+      ],
+      "provider_statuses": [
+        200,
+        200
+      ],
+      "per_request_output": [
+        23,
+        379
+      ],
+      "input_byte_estimates": [
+        6095,
+        7105
+      ]
+    },
+    {
+      "trial_id": "smoke-agg-01__dsh__r2",
+      "success": false,
+      "semantic_correctness": false,
+      "grounded_correctness": false,
+      "evidence_grounded": false,
+      "public_contract_valid": false,
+      "public_contract_errors": [
+        "Final response must be exactly one JSON object, without markdown or surrounding prose."
+      ],
+      "status": "ok",
+      "error_type": "sai_so",
+      "tokens": {
+        "input": 4820,
+        "output": 410,
+        "reasoning": null,
+        "cache_read": 4768,
+        "complete": true
+      },
+      "requests": 2,
+      "wall_ms": 47582,
+      "native_completion": null,
+      "result_path": "experiments/finance-v42-study/results/financial-v42-smoke-20261106/trials/smoke-agg-01__dsh__r2/attempts/01-708cdcfc5bfe/result.json",
+      "final_text": "```json\n{\n  \"values\": {\n    \"VCB\": null,\n    \"BID\": null,\n    \"CTG\": null,\n    \"TCB\": null,\n    \"MBB\": null,\n    \"mean\": null\n  },\n  \"unit\": \"nghìn đồng\",\n  \"period\": \"phiên 2026-10-30\",\n  \"source\": \"vn_quote_history\",\n  \"reason\": \"The tool execution failed because the request included parameters ('columns' and 'days') that are not supported for the offline frozen snapshot (2026-11-01). The allowed requests only support fetching data for the specific symbols listed in snapshot_requests without specifying 'columns' or 'days' beyond the default/allowed set.\",\n  \"evidence\": []\n}\n```",
+      "calls": [
+        {
+          "tool": "vn_quote_history",
+          "arguments": {
+            "columns": [
+              "c",
+              "t"
+            ],
+            "days": 1,
+            "interval": "1D",
+            "symbol": "VCB"
+          },
+          "c1_shape_valid": true,
+          "c2_valid": false,
+          "status": "rejected",
+          "error_code": "unsupported_snapshot_query",
+          "call_id": "b3ed605f-86e2-4e13-b9a3-cdef22489b9d"
+        },
+        {
+          "tool": "vn_quote_history",
+          "arguments": {
+            "columns": [
+              "c",
+              "t"
+            ],
+            "days": 1,
+            "interval": "1D",
+            "symbol": "BID"
+          },
+          "c1_shape_valid": true,
+          "c2_valid": false,
+          "status": "rejected",
+          "error_code": "unsupported_snapshot_query",
+          "call_id": "e8c4e0a6-bdd9-4c01-83b7-211dc3236742"
+        },
+        {
+          "tool": "vn_quote_history",
+          "arguments": {
+            "columns": [
+              "c",
+              "t"
+            ],
+            "days": 1,
+            "interval": "1D",
+            "symbol": "CTG"
+          },
+          "c1_shape_valid": true,
+          "c2_valid": false,
+          "status": "rejected",
+          "error_code": "unsupported_snapshot_query",
+          "call_id": "66189331-5255-4622-83ea-3f9d69d37f95"
+        },
+        {
+          "tool": "vn_quote_history",
+          "arguments": {
+            "columns": [
+              "c",
+              "t"
+            ],
+            "days": 1,
+            "interval": "1D",
+            "symbol": "TCB"
+          },
+          "c1_shape_valid": true,
+          "c2_valid": false,
+          "status": "rejected",
+          "error_code": "unsupported_snapshot_query",
+          "call_id": "4b845118-c8fa-42b0-9eac-469776f337f8"
+        },
+        {
+          "tool": "vn_quote_history",
+          "arguments": {
+            "columns": [
+              "c",
+              "t"
+            ],
+            "days": 1,
+            "interval": "1D",
+            "symbol": "MBB"
+          },
+          "c1_shape_valid": true,
+          "c2_valid": false,
+          "status": "rejected",
+          "error_code": "unsupported_snapshot_query",
+          "call_id": "f9bbbf15-9a83-43d6-9f85-d6b6c3666755"
+        }
+      ],
+      "provider_requests": [
+        {
+          "path": "experiments/finance-v42-study/results/financial-v42-smoke-20261106/trials/smoke-agg-01__dsh__r2/attempts/01-708cdcfc5bfe/provider-requests/0001-effective.json",
+          "tool_choice": null,
+          "tools": 1,
+          "max_tokens": 2048,
+          "system_chars": 307,
+          "system_utf8_bytes": 307
+        },
+        {
+          "path": "experiments/finance-v42-study/results/financial-v42-smoke-20261106/trials/smoke-agg-01__dsh__r2/attempts/01-708cdcfc5bfe/provider-requests/0002-effective.json",
+          "tool_choice": null,
+          "tools": 1,
+          "max_tokens": 2048,
+          "system_chars": 307,
+          "system_utf8_bytes": 307
+        }
+      ],
+      "provider_statuses": [
+        200,
+        200
+      ],
+      "per_request_output": [
+        224,
+        186
+      ],
+      "input_byte_estimates": [
+        9185,
+        14561
+      ]
+    },
+    {
+      "trial_id": "smoke-agg-01__opencode__r2",
+      "success": false,
+      "semantic_correctness": false,
+      "grounded_correctness": false,
+      "evidence_grounded": false,
+      "public_contract_valid": false,
+      "public_contract_errors": [
+        "Final response must be exactly one JSON object, without markdown or surrounding prose."
+      ],
+      "status": "ok",
+      "error_type": "sai_so",
+      "tokens": {
+        "input": 5864,
+        "output": 308,
+        "reasoning": null,
+        "cache_read": 2432,
+        "complete": true
+      },
+      "requests": 2,
+      "wall_ms": 20230,
+      "native_completion": null,
+      "result_path": "experiments/finance-v42-study/results/financial-v42-smoke-20261106/trials/smoke-agg-01__opencode__r2/attempts/01-49b8077d39c2/result.json",
+      "final_text": "```json\n{\n  \"value\": null,\n  \"reason\": \"The tool execution failed for all requested symbols due to an 'unsupported finite-snapshot query' error, indicating that the specific query parameters (including columns) are not supported under the frozen snapshot context. The required closing price for 2026-10-30 could not be retrieved.\",\n  \"evidence\": []\n}\n```",
+      "calls": [
+        {
+          "tool": "vn_quote_history",
+          "arguments": {
+            "columns": [
+              "c",
+              "t"
+            ],
+            "days": 365,
+            "interval": "1D",
+            "symbol": "VCB"
+          },
+          "c1_shape_valid": true,
+          "c2_valid": false,
+          "status": "rejected",
+          "error_code": "unsupported_snapshot_query",
+          "call_id": "ead0365e-8bd9-4af6-8455-b122344c77a0"
+        },
+        {
+          "tool": "vn_quote_history",
+          "arguments": {
+            "columns": [
+              "c",
+              "t"
+            ],
+            "days": 365,
+            "interval": "1D",
+            "symbol": "BID"
+          },
+          "c1_shape_valid": true,
+          "c2_valid": false,
+          "status": "rejected",
+          "error_code": "unsupported_snapshot_query",
+          "call_id": "9f4dc687-954f-41c4-bd81-9db00b1b757c"
+        },
+        {
+          "tool": "vn_quote_history",
+          "arguments": {
+            "columns": [
+              "c",
+              "t"
+            ],
+            "days": 365,
+            "interval": "1D",
+            "symbol": "CTG"
+          },
+          "c1_shape_valid": true,
+          "c2_valid": false,
+          "status": "rejected",
+          "error_code": "unsupported_snapshot_query",
+          "call_id": "9969d59e-dca0-4082-b646-1094f59d7df2"
+        },
+        {
+          "tool": "vn_quote_history",
+          "arguments": {
+            "columns": [
+              "c",
+              "t"
+            ],
+            "days": 365,
+            "interval": "1D",
+            "symbol": "TCB"
+          },
+          "c1_shape_valid": true,
+          "c2_valid": false,
+          "status": "rejected",
+          "error_code": "unsupported_snapshot_query",
+          "call_id": "e6af4469-08f8-410f-9708-a2f71696c835"
+        },
+        {
+          "tool": "vn_quote_history",
+          "arguments": {
+            "columns": [
+              "c",
+              "t"
+            ],
+            "days": 365,
+            "interval": "1D",
+            "symbol": "MBB"
+          },
+          "c1_shape_valid": true,
+          "c2_valid": false,
+          "status": "rejected",
+          "error_code": "unsupported_snapshot_query",
+          "call_id": "0add4f12-dc66-4d34-8d75-9c2128ef5fac"
+        }
+      ],
+      "provider_requests": [
+        {
+          "path": "experiments/finance-v42-study/results/financial-v42-smoke-20261106/trials/smoke-agg-01__opencode__r2/attempts/01-49b8077d39c2/provider-requests/0001-effective.json",
+          "tool_choice": null,
+          "tools": 1,
+          "max_tokens": 2048,
+          "system_chars": 1913,
+          "system_utf8_bytes": 1913
+        },
+        {
+          "path": "experiments/finance-v42-study/results/financial-v42-smoke-20261106/trials/smoke-agg-01__opencode__r2/attempts/01-49b8077d39c2/provider-requests/0002-effective.json",
+          "tool_choice": null,
+          "tools": 1,
+          "max_tokens": 2048,
+          "system_chars": 1913,
+          "system_utf8_bytes": 1913
+        }
+      ],
+      "provider_statuses": [
+        200,
+        200
+      ],
+      "per_request_output": [
+        219,
+        89
+      ],
+      "input_byte_estimates": [
+        11037,
+        17368
+      ]
+    },
+    {
+      "trial_id": "smoke-agg-01__opentrading__r2",
+      "success": false,
+      "semantic_correctness": false,
+      "grounded_correctness": false,
+      "evidence_grounded": false,
+      "public_contract_valid": false,
+      "public_contract_errors": [
+        "Final response must be exactly one JSON object, without markdown or surrounding prose."
+      ],
+      "status": "error",
+      "error_type": "khong_tra_loi",
+      "tokens": {
+        "input": 5838,
+        "output": 336,
+        "reasoning": null,
+        "cache_read": 5696,
+        "complete": true
+      },
+      "requests": 2,
+      "wall_ms": 15485,
+      "native_completion": {
+        "outcome": "failed",
+        "unanswered": false,
+        "recoveries": []
+      },
+      "result_path": "experiments/finance-v42-study/results/financial-v42-smoke-20261106/trials/smoke-agg-01__opentrading__r2/attempts/01-b7e28f9ff4c9/result.json",
+      "final_text": "",
+      "calls": [],
+      "provider_requests": [
+        {
+          "path": "experiments/finance-v42-study/results/financial-v42-smoke-20261106/trials/smoke-agg-01__opentrading__r2/attempts/01-b7e28f9ff4c9/provider-requests/0001-effective.json",
+          "tool_choice": "auto",
+          "tools": 1,
+          "max_tokens": 2048,
+          "system_chars": 5368,
+          "system_utf8_bytes": 6865
+        },
+        {
+          "path": "experiments/finance-v42-study/results/financial-v42-smoke-20261106/trials/smoke-agg-01__opentrading__r2/attempts/01-b7e28f9ff4c9/provider-requests/0002-effective.json",
+          "tool_choice": "none",
+          "tools": 1,
+          "max_tokens": 2048,
+          "system_chars": 5368,
+          "system_utf8_bytes": 6865
+        }
+      ],
+      "provider_statuses": [
+        200,
+        200
+      ],
+      "per_request_output": [
+        168,
+        168
+      ],
+      "input_byte_estimates": [
+        15784,
+        16668
+      ]
+    },
+    {
+      "trial_id": "smoke-quote-01__opentrading__r2",
+      "success": true,
+      "semantic_correctness": true,
+      "grounded_correctness": true,
+      "evidence_grounded": true,
+      "public_contract_valid": true,
+      "public_contract_errors": [],
+      "status": "ok",
+      "error_type": null,
+      "tokens": {
+        "input": 6783,
+        "output": 360,
+        "reasoning": null,
+        "cache_read": 6208,
+        "complete": true
+      },
+      "requests": 2,
+      "wall_ms": 16453,
+      "native_completion": {
+        "outcome": "completed",
+        "unanswered": false,
+        "recoveries": []
+      },
+      "result_path": "experiments/finance-v42-study/results/financial-v42-smoke-20261106/trials/smoke-quote-01__opentrading__r2/attempts/01-25e9c0953e2f/result.json",
+      "final_text": "{\n  \"value\": 21,\n  \"unit\": \"nghìn đồng\",\n  \"period\": \"30/10/2026\",\n  \"source\": \"vn_quote_history\",\n  \"evidence\": [\n    {\n      \"tool\": \"vn_quote_history\",\n      \"source\": \"vnstock\",\n      \"as_of\": \"2026-11-01T15:54:29.883479+07:00\",\n      \"call_id\": \"7674ab7f-7149-4fdc-beef-fe84fc7efdd1\",\n      \"payload_sha256\": \"cb80cece34c0f94fc32a60a8f2ccd0022f827b72e9d6ccc0496744db39f2c71f\",\n      \"matched_entry_id\": \"vn_quote_history:0\",\n      \"response_sha256\": \"1494cd6b872e94237fbd832c39302b1f2242f6277a0da16148f560be974ba421\"\n    }\n  ]\n}",
+      "calls": [
+        {
+          "tool": "vn_quote_history",
+          "arguments": {
+            "days": 365,
+            "interval": "1D",
+            "symbol": "HPG"
+          },
+          "c1_shape_valid": true,
+          "c2_valid": true,
+          "status": "ok",
+          "error_code": null,
+          "call_id": "7674ab7f-7149-4fdc-beef-fe84fc7efdd1"
+        }
+      ],
+      "provider_requests": [
+        {
+          "path": "experiments/finance-v42-study/results/financial-v42-smoke-20261106/trials/smoke-quote-01__opentrading__r2/attempts/01-25e9c0953e2f/provider-requests/0001-effective.json",
+          "tool_choice": "auto",
+          "tools": 1,
+          "max_tokens": 2048,
+          "system_chars": 5368,
+          "system_utf8_bytes": 6865
+        },
+        {
+          "path": "experiments/finance-v42-study/results/financial-v42-smoke-20261106/trials/smoke-quote-01__opentrading__r2/attempts/01-25e9c0953e2f/provider-requests/0002-effective.json",
+          "tool_choice": "auto",
+          "tools": 1,
+          "max_tokens": 2048,
+          "system_chars": 5368,
+          "system_utf8_bytes": 6865
+        }
+      ],
+      "provider_statuses": [
+        200,
+        200
+      ],
+      "per_request_output": [
+        38,
+        322
+      ],
+      "input_byte_estimates": [
+        14449,
+        15894
+      ]
+    },
+    {
+      "trial_id": "smoke-quote-01__dsh__r2",
+      "success": false,
+      "semantic_correctness": false,
+      "grounded_correctness": false,
+      "evidence_grounded": false,
+      "public_contract_valid": true,
+      "public_contract_errors": [],
+      "status": "ok",
+      "error_type": "sai_don_vi",
+      "tokens": {
+        "input": 3686,
+        "output": 150,
+        "reasoning": null,
+        "cache_read": 3648,
+        "complete": true
+      },
+      "requests": 2,
+      "wall_ms": 22485,
+      "native_completion": null,
+      "result_path": "experiments/finance-v42-study/results/financial-v42-smoke-20261106/trials/smoke-quote-01__dsh__r2/attempts/01-1c5332ba29c7/result.json",
+      "final_text": "{\n  \"value\": null,\n  \"reason\": \"The requested query (days=1) is not supported for the frozen snapshot as of 2026-11-01, as indicated by the tool error: 'unsupported finite-snapshot query; inspect allowed_public_variants'. The tool only supports requests explicitly recorded in snapshot_requests, which only listed {\\\"symbol\\\": \\\"HPG\\\"} without specifying days or columns.\",\n  \"evidence\": []\n}",
+      "calls": [
+        {
+          "tool": "vn_quote_history",
+          "arguments": {
+            "columns": [
+              "t",
+              "c"
+            ],
+            "days": 1,
+            "interval": "1D",
+            "symbol": "HPG"
+          },
+          "c1_shape_valid": true,
+          "c2_valid": false,
+          "status": "rejected",
+          "error_code": "unsupported_snapshot_query",
+          "call_id": "efc073e2-f3c5-4c3b-b155-2e8c30c064f3"
+        }
+      ],
+      "provider_requests": [
+        {
+          "path": "experiments/finance-v42-study/results/financial-v42-smoke-20261106/trials/smoke-quote-01__dsh__r2/attempts/01-1c5332ba29c7/provider-requests/0001-effective.json",
+          "tool_choice": null,
+          "tools": 1,
+          "max_tokens": 2048,
+          "system_chars": 307,
+          "system_utf8_bytes": 307
+        },
+        {
+          "path": "experiments/finance-v42-study/results/financial-v42-smoke-20261106/trials/smoke-quote-01__dsh__r2/attempts/01-1c5332ba29c7/provider-requests/0002-effective.json",
+          "tool_choice": null,
+          "tools": 1,
+          "max_tokens": 2048,
+          "system_chars": 307,
+          "system_utf8_bytes": 307
+        }
+      ],
+      "provider_statuses": [
+        200,
+        200
+      ],
+      "per_request_output": [
+        46,
+        104
+      ],
+      "input_byte_estimates": [
+        7850,
+        8786
+      ]
+    },
+    {
+      "trial_id": "smoke-quote-01__opencode__r2",
+      "success": false,
+      "semantic_correctness": false,
+      "grounded_correctness": false,
+      "evidence_grounded": false,
+      "public_contract_valid": true,
+      "public_contract_errors": [],
+      "status": "ok",
+      "error_type": "sai_don_vi",
+      "tokens": {
+        "input": 4602,
+        "output": 106,
+        "reasoning": null,
+        "cache_read": 2240,
+        "complete": true
+      },
+      "requests": 2,
+      "wall_ms": 18488,
+      "native_completion": null,
+      "result_path": "experiments/finance-v42-study/results/financial-v42-smoke-20261106/trials/smoke-quote-01__opencode__r2/attempts/01-2e44f215a20b/result.json",
+      "final_text": "{\n  \"value\": null,\n  \"reason\": \"The request to retrieve HPG quote history failed because the query was not supported under the frozen snapshot context, specifically due to the 'columns' parameter being used in a finite-snapshot query.\",\n  \"evidence\": []\n}",
+      "calls": [
+        {
+          "tool": "vn_quote_history",
+          "arguments": {
+            "columns": [
+              "t",
+              "c"
+            ],
+            "days": 365,
+            "interval": "1D",
+            "symbol": "HPG"
+          },
+          "c1_shape_valid": true,
+          "c2_valid": false,
+          "status": "rejected",
+          "error_code": "unsupported_snapshot_query",
+          "call_id": "f7295d37-3dc8-4b25-8dcb-c25b53e8cd87"
+        }
+      ],
+      "provider_requests": [
+        {
+          "path": "experiments/finance-v42-study/results/financial-v42-smoke-20261106/trials/smoke-quote-01__opencode__r2/attempts/01-2e44f215a20b/provider-requests/0001-effective.json",
+          "tool_choice": null,
+          "tools": 1,
+          "max_tokens": 2048,
+          "system_chars": 1917,
+          "system_utf8_bytes": 1917
+        },
+        {
+          "path": "experiments/finance-v42-study/results/financial-v42-smoke-20261106/trials/smoke-quote-01__opencode__r2/attempts/01-2e44f215a20b/provider-requests/0002-effective.json",
+          "tool_choice": null,
+          "tools": 1,
+          "max_tokens": 2048,
+          "system_chars": 1917,
+          "system_utf8_bytes": 1917
+        }
+      ],
+      "provider_statuses": [
+        200,
+        200
+      ],
+      "per_request_output": [
+        45,
+        61
+      ],
+      "input_byte_estimates": [
+        9682,
+        10745
+      ]
+    }
+  ],
+  "manual_payload_checks": {
+    "smoke-quote-01": {
+      "payload": "experiments/finance-v42-study/tasks/smoke/smoke-quote-01/environment/payloads.json",
+      "payload_sha256": "cb80cece34c0f94fc32a60a8f2ccd0022f827b72e9d6ccc0496744db39f2c71f",
+      "recorded_tools": {
+        "vn_quote_history": {
+          "data": {
+            "symbol": "HPG",
+            "count": 5,
+            "last": 21,
+            "high": 21.6,
+            "low": 20.75,
+            "last_t": "2026-10-30"
+          },
+          "provenance": {
+            "source": "vnstock",
+            "as_of": "2026-11-01T15:54:29.883479+07:00",
+            "data_time": "2026-10-30",
+            "timezone": "Asia/Ho_Chi_Minh"
+          },
+          "availability": "available",
+          "warnings": [
+            "dữ liệu lấy lúc 2026-11-01T15:06:35.543506+07:00, dùng lại bản đã lưu"
+          ],
+          "units": {
+            "o, h, l, c, last, high, low": "nghìn đồng/cổ phiếu (64,27 = 64.270 đ)",
+            "v": "cổ phiếu"
+          }
+        }
+      },
+      "value": 21,
+      "gold_agrees": true
+    },
+    "smoke-agg-01": {
+      "payload": "experiments/finance-v42-study/tasks/smoke/smoke-agg-01/environment/payloads.json",
+      "payload_sha256": "aa1f6b5dca589360446eb510873587250c1c7d30f00a026d84e357360a74efd6",
+      "recorded_tools": {
+        "vn_quote_history": {
+          "data": {
+            "banks": [
+              {
+                "symbol": "VCB",
+                "last": 56.3,
+                "last_t": "2026-10-30"
+              },
+              {
+                "symbol": "BID",
+                "last": 33.4,
+                "last_t": "2026-10-30"
+              },
+              {
+                "symbol": "CTG",
+                "last": 30.3,
+                "last_t": "2026-10-30"
+              },
+              {
+                "symbol": "TCB",
+                "last": 21.6,
+                "last_t": "2026-10-30"
+              },
+              {
+                "symbol": "MBB",
+                "last": 19.3,
+                "last_t": "2026-10-30"
+              }
+            ],
+            "_note": "5 lời gọi vn_quote_history riêng (vn_equity_quote_batch unavailable lúc ghi snapshot)"
+          },
+          "provenance": {
+            "source": "vnstock",
+            "as_of": "2026-11-01T15:57:50.079479+07:00",
+            "data_time": "2026-10-30",
+            "timezone": "Asia/Ho_Chi_Minh"
+          },
+          "availability": "available",
+          "warnings": [],
+          "units": {
+            "last": "nghìn đồng/cổ phiếu"
+          }
+        }
+      },
+      "values": {
+        "VCB": "56.3",
+        "BID": "33.4",
+        "CTG": "30.3",
+        "TCB": "21.6",
+        "MBB": "19.3"
+      },
+      "sum": "160.9",
+      "mean": "32.18",
+      "gold_agrees": true
+    },
+    "smoke-trap-01": {
+      "payload": "experiments/finance-v42-study/tasks/smoke/smoke-trap-01/environment/payloads.json",
+      "payload_sha256": "6b7ff4111a0909abb9acffeb18b02683b8ea682954c7b5d370ad00934c185b36",
+      "recorded_tools": {
+        "symbol_resolve": {
+          "data": {
+            "query": "XYZX",
+            "resolved": null,
+            "ambiguous": false,
+            "candidates": []
+          },
+          "provenance": {
+            "source": "vnstock+local",
+            "as_of": "2026-11-01T15:57:53.093226+07:00",
+            "timezone": "Asia/Ho_Chi_Minh"
+          },
+          "availability": "empty",
+          "warnings": []
+        }
+      },
+      "empty_resolver": true
+    }
+  },
+  "aggregate": {
+    "mcp_status": {
+      "rejected": 24,
+      "ok": 6
+    },
+    "c2_valid_calls": 6,
+    "all_calls": 30,
+    "provider_requests": 34,
+    "per_request_max_output": 379,
+    "max_trial_ms": 55576
+  }
+}

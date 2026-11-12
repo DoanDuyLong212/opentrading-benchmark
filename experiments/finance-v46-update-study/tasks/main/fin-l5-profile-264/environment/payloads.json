@@ -1,0 +1,88 @@
+{
+ "snapshot_date": "2026-11-01",
+ "note": "Envelope MCP ghi lúc tạo task. Key = mã payload nội bộ; envelope giữ nguyên data+provenance+availability.",
+ "tools": {
+  "ov:GEX": {
+   "tool": "stock_overview",
+   "params": {
+    "symbol": "GEX"
+   },
+   "envelope": {
+    "data": {
+     "symbol": "GEX",
+     "trading": {
+      "LastPrice": 22200,
+      "PE": 22.27,
+      "PB": 0.83,
+      "MarketCapital": 29048064147600,
+      "EPS": 997,
+      "BVPS": 26782,
+      "Revenue": 39908172858988,
+      "Profit": 3411335337595,
+      "PerChange": -3.48,
+      "TradingDate": "2026-10-30T14:58:49+07:00"
+     }
+    },
+    "provenance": {
+     "source": "vietstock",
+     "as_of": "2026-11-01T23:14:37.499671+07:00"
+    },
+    "availability": "available"
+   }
+  },
+  "fd:GEX": {
+   "tool": "financial_detail",
+   "params": {
+    "symbol": "GEX",
+    "statement": "KQKD",
+    "periods_n": 4
+   },
+   "envelope": {
+    "data": {
+     "symbol": "GEX",
+     "unit": "VNDbn",
+     "periods": [
+      "Q4/2025",
+      "Q1/2026",
+      "Q2/2026",
+      "Q3/2026"
+     ],
+     "rows": [
+      {
+       "name": "3. Doanh thu thuần về bán hàng và cung cấp dịch vụ",
+       "values": [
+        11642,
+        10722,
+        14480,
+        13957
+       ]
+      },
+      {
+       "name": "4. Giá vốn hàng bán ",
+       "values": [
+        8982,
+        8720,
+        11526,
+        11179
+       ]
+      },
+      {
+       "name": "5. Lợi nhuận gộp về bán hàng và cung cấp dịch vụ",
+       "values": [
+        2661,
+        2002,
+        2954,
+        2778
+       ]
+      }
+     ]
+    },
+    "provenance": {
+     "source": "vietstock",
+     "as_of": "2026-11-01T22:44:38.097949+07:00"
+    },
+    "availability": "available"
+   }
+  }
+ }
+}

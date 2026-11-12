@@ -1,44 +1,65 @@
 {
- "task_id": "fin-l2-growth-144",
- "scoring": "value",
- "solution": {
-  "value": 20.81
- },
- "as_of": "2026-11-01T23:48:08.119336+07:00",
- "split": "main",
- "expects": [
-  {
-   "type": "value",
-   "path": "value",
-   "gold": 20.81,
-   "tol": {
-    "abs": 0.1
-   }
+  "task_id": "fin-l2-growth-144",
+  "scoring": "value",
+  "solution": {
+    "value": 20.81
   },
-  {
-   "type": "unit",
-   "path": "unit",
-   "accept": [
-    "%",
-    "phần trăm"
-   ]
-  },
-  {
-   "type": "period",
-   "path": "period",
-   "accept": [
-    "Q3/2026",
-    "quý 3/2026",
-    "q3 2026",
-    "q3/26"
-   ]
-  },
-  {
-   "type": "str",
-   "path": "source",
-   "accept": [
-    "financial_statements"
-   ]
-  }
- ]
+  "as_of": "2026-11-01T23:48:08.119336+07:00",
+  "split": "main",
+  "expects": [
+    {
+      "type": "value",
+      "path": "value",
+      "gold": 20.81,
+      "tol": {
+        "abs": 0.1
+      }
+    },
+    {
+      "type": "unit",
+      "path": "unit",
+      "accept": [
+        "%",
+        "phần trăm"
+      ]
+    },
+    {
+      "type": "period",
+      "path": "period",
+      "accept": [
+        "Q2/2026",
+        "Q3/2026"
+      ]
+    },
+    {
+      "type": "str",
+      "path": "source",
+      "accept": [
+        "financial_statements"
+      ]
+    }
+  ],
+  "contract_version": 2,
+  "provenance_contract": [
+    {
+      "tool": "financial_statements",
+      "source": "vietstock",
+      "as_of": "2026-11-01T23:48:08.119336+07:00",
+      "matched_entry_id": "fs:DBC",
+      "response_sha256": "274165ccee43cb7592e581ee78e9123f19e0f9f58554c849a518ac60b001d4cf"
+    }
+  ],
+  "payload_sha256": "c852b39888ea7572821e99df29d878c798798e55b6f05c82c56c3e50f40e4f7b",
+  "provenance_catalog": [
+    {
+      "tool": "financial_statements",
+      "source": "vietstock",
+      "as_of": "2026-11-01T23:48:08.119336+07:00",
+      "matched_entry_id": "fs:DBC",
+      "response_sha256": "274165ccee43cb7592e581ee78e9123f19e0f9f58554c849a518ac60b001d4cf"
+    }
+  ],
+  "required_payload_keys": [
+    "fs:DBC"
+  ]
 }

@@ -1,0 +1,62 @@
+{
+  "task_id": "fin-m5-stale-528",
+  "scoring": "value",
+  "solution": {
+    "symbol": "VNM",
+    "last": 54.44,
+    "stale_value_in_memory": 70.0
+  },
+  "split": "main",
+  "expects": [
+    {
+      "type": "str",
+      "path": "values.symbol",
+      "accept": [
+        "VNM"
+      ]
+    },
+    {
+      "type": "value",
+      "path": "values.last",
+      "gold": 54.44,
+      "tol": {
+        "rel": 0.001
+      }
+    },
+    {
+      "type": "str",
+      "path": "source",
+      "accept": [
+        "vn_quote_history"
+      ]
+    }
+  ],
+  "contract_version": 2,
+  "stratum": "memory",
+  "tier": "M5",
+  "subtier": "M5-stale",
+  "memory_construct": "M5-stale",
+  "notes": "Native-memory stratum (amendment 2026-11-11 d).",
+  "provenance_contract": [
+    {
+      "tool": "vn_quote_history",
+      "source": "vnstock",
+      "as_of": "2026-11-11T09:41:32.145602+07:00",
+      "matched_entry_id": "hist:VNM",
+      "response_sha256": "0246445b5967ca7124abe7adaf598b586522f0e0b9f0d4d59ceb7bc305d33780"
+    }
+  ],
+  "provenance_catalog": [
+    {
+      "tool": "vn_quote_history",
+      "source": "vnstock",
+      "as_of": "2026-11-11T09:41:32.145602+07:00",
+      "matched_entry_id": "hist:VNM",
+      "response_sha256": "0246445b5967ca7124abe7adaf598b586522f0e0b9f0d4d59ceb7bc305d33780"
+    }
+  ],
+  "payload_sha256": "089147710bf97ec80f17353f3b00dcfbccc5e5fdcad8687dfc312411f51f6aa2",
+  "required_payload_keys": [
+    "hist:VNM"
+  ]
+}

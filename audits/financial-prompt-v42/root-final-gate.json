@@ -1,0 +1,30 @@
+{
+  "state_sha256": "eb1471507c9f314d2ada983f40f183fab7839ec85ddd2c91e73776e19dddbd69",
+  "expected_state_sha256": "eb1471507c9f314d2ada983f40f183fab7839ec85ddd2c91e73776e19dddbd69",
+  "state_matches": true,
+  "native_source_files": 343,
+  "native_source_drift": [],
+  "native_logs": {
+    "final_full": {
+      "sha256": "f0ded21cac197adfa1d9d53c6070acf54c70155c47c3acb7dfbde969d74b1adb",
+      "expected": "f0ded21cac197adfa1d9d53c6070acf54c70155c47c3acb7dfbde969d74b1adb",
+      "matches": true
+    },
+    "typecheck_final": {
+      "sha256": "8366207267355d3e3d5bf3bf6e8c94c5f93f6078c34f08973fa2b38cdda6cc92",
+      "expected": "8366207267355d3e3d5bf3bf6e8c94c5f93f6078c34f08973fa2b38cdda6cc92",
+      "matches": true
+    },
+    "actual_five_bank_receipt": {
+      "sha256": "a0b3de16e870429313c984bc0a323a2101b7414e85bffbf60bbffd077039a90d",
+      "expected": "a0b3de16e870429313c984bc0a323a2101b7414e85bffbf60bbffd077039a90d",
+      "matches": true
+    }
+  },
+  "benchmark_final_full": {
+    "passed": true,
+    "log": "/home/doanlong/extra/benchmark/experiments/finance-v42-study/audits/final-offline-preflight-20261106-v2.log",
+    "sha256": "6d30a821188c44e90f216926c2df864f68ef012621cc288b32478092d7235c6e"
+  },
+  "no_inference_run_directories": true
+}

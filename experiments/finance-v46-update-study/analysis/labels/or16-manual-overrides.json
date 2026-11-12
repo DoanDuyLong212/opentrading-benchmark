@@ -1,0 +1,53 @@
+{
+ "authorized_by": "user 2026-11-11: \"2 trial đó xác nhận là đúng đi, bổ sung yêu cầu judge xử lí được tình huống đó trong tương lai\"",
+ "scope": "judge-primary verdict only; strict grader, FP/FR rules and audit unchanged",
+ "overrides": [
+  {
+   "run": "results/financial-v46u-or16r-ds-20261111/main-opentrading_baseline",
+   "trial_id": "fin-l4-nonexist-236__opentrading_baseline__r1",
+   "verdict": "correct",
+   "evidence": "value null, reason 'Mã XYZA không phân giải được ... Không có dữ liệu giá' (refusal token present); strict pass; batch judge reason cited QWER9 (another item) = batch crosstalk; single re-judge (amendment i) = correct"
+  },
+  {
+   "run": "results/financial-v46u-or16r-ds-20261111/main-opentrading_baseline",
+   "trial_id": "fin-l4-nonexist-238__opentrading_baseline__r1",
+   "verdict": "correct",
+   "evidence": "same pattern as 236 in the same batch; single re-judge (amendment i) = correct"
+  },
+  {
+   "run": "results/financial-v46u-or16-ds-20261111/deepseek-openrouter-main",
+   "trial_id": "fin-c1-chg-402__opentrading_baseline__r2",
+   "verdict": "incorrect",
+   "evidence": "REMOVE: graded text is a raw DSML calculate tool-call (\"(52.7 - 58.2) * 1000\"), no final answer object; judge inferred -5500 from the expression; strict fail (invalid_schema)",
+   "authorized_by": "user 2026-11-12 delegated the human-reviewer role: \"bạn đảm nhận thay tôi chấm và trả kết quả cuối cho main\"; read 2026-11-12, see analysis/labels/or16-main-labels.jsonl"
+  },
+  {
+   "run": "results/financial-v46u-or16-ds-20261111/deepseek-openrouter-main",
+   "trial_id": "fin-l1-bctc-115__dsh__r2",
+   "verdict": "correct",
+   "evidence": "answer value 1924.872, unit \"tỷ đồng\", period Q3/2026, line \"Tổng LNST\" (all in gold accept lists); judge reason cites \"1924872\" and unit \"t tỷ đồng\", neither present in the answer = judge misread; strict pass; numeric gate decides the value",
+   "authorized_by": "user 2026-11-12 approved the 4 proposed judge corrections: \"1 nâng điểm\""
+  },
+  {
+   "run": "results/financial-v46u-or16-ds-20261111/deepseek-openrouter-main",
+   "trial_id": "fin-m2-screen-507__opencode__r2",
+   "verdict": "correct",
+   "evidence": "answer values.pass = [\"PNJ\",\"MSN\"] = gold set {MSN,PNJ}; judge reason cites \"FSN\", not present in the answer = judge misread; strict pass",
+   "authorized_by": "user 2026-11-12 approved the 4 proposed judge corrections: \"1 nâng điểm\""
+  },
+  {
+   "run": "results/financial-v46u-or16-ds-20261111/deepseek-openrouter-main",
+   "trial_id": "fin-l2-growth-141__opentrading_baseline__r2",
+   "verdict": "correct",
+   "evidence": "value -17.551752 (gold -17.55 ±0.1), period \"Q3/2026 so với Q2/2026\" contains the accepted \"Q3/2026\" (strict period check passes); judge period rejection too strict; strict pass",
+   "authorized_by": "user 2026-11-12 approved the 4 proposed judge corrections: \"1 nâng điểm\""
+  },
+  {
+   "run": "results/financial-v46u-or16-ds-20261111/deepseek-openrouter-main",
+   "trial_id": "fin-l2-growth-144__opentrading_baseline__r2",
+   "verdict": "correct",
+   "evidence": "value 20.81398 (gold 20.81 ±0.1), period \"Q3/2026 so với Q2/2026\" contains accepted \"Q3/2026\"; judge period rejection too strict; strict pass",
+   "authorized_by": "user 2026-11-12 approved the 4 proposed judge corrections: \"1 nâng điểm\""
+  }
+ ]
+}

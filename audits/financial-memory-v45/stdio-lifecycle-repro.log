@@ -1,0 +1,70 @@
+F
+=================================== FAILURES ===================================
+________ test_real_stdio_records_schema_invalid_and_wrong_entity_calls _________
+  + Exception Group Traceback (most recent call last):
+  |   File "/home/doanlong/extra/benchmark/experiments/finance-v45-study/tools/tests/test_independent_snapshot.py", line 346, in test_real_stdio_records_schema_invalid_and_wrong_entity_calls
+  |     async with stdio_client(params) as (read,write):
+  |   File "/usr/lib/python3.12/contextlib.py", line 231, in __aexit__
+  |     await self.gen.athrow(value)
+  |   File "/home/doanlong/.local/lib/python3.12/site-packages/mcp/client/stdio/__init__.py", line 182, in stdio_client
+  |     async with (
+  |   File "/home/doanlong/.local/lib/python3.12/site-packages/anyio/_backends/_asyncio.py", line 811, in __aexit__
+  |     raise BaseExceptionGroup(
+  | ExceptionGroup: unhandled errors in a TaskGroup (1 sub-exception)
+  +-+---------------- 1 ----------------
+    | Exception Group Traceback (most recent call last):
+    |   File "/home/doanlong/.local/lib/python3.12/site-packages/mcp/client/stdio/__init__.py", line 189, in stdio_client
+    |     yield read_stream, write_stream
+    |   File "/home/doanlong/extra/benchmark/experiments/finance-v45-study/tools/tests/test_independent_snapshot.py", line 348, in test_real_stdio_records_schema_invalid_and_wrong_entity_calls
+    |     async with ClientSession(read,write) as session:
+    |   File "/home/doanlong/.local/lib/python3.12/site-packages/mcp/shared/session.py", line 238, in __aexit__
+    |     return await self._task_group.__aexit__(exc_type, exc_val, exc_tb)
+    |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |   File "/home/doanlong/.local/lib/python3.12/site-packages/anyio/_backends/_asyncio.py", line 811, in __aexit__
+    |     raise BaseExceptionGroup(
+    | ExceptionGroup: unhandled errors in a TaskGroup (1 sub-exception)
+    +-+---------------- 1 ----------------
+      | Traceback (most recent call last):
+      |   File "/home/doanlong/.local/lib/python3.12/site-packages/anyio/streams/memory.py", line 117, in receive
+      |     return self.receive_nowait()
+      |            ^^^^^^^^^^^^^^^^^^^^^
+      |   File "/home/doanlong/.local/lib/python3.12/site-packages/anyio/streams/memory.py", line 112, in receive_nowait
+      |     raise WouldBlock
+      | anyio.WouldBlock
+      | 
+      | During handling of the above exception, another exception occurred:
+      | 
+      | Traceback (most recent call last):
+      |   File "/home/doanlong/.local/lib/python3.12/site-packages/anyio/_core/_tasks.py", line 154, in fail_after
+      |     yield cancel_scope
+      |   File "/home/doanlong/extra/benchmark/experiments/finance-v45-study/tools/tests/test_independent_snapshot.py", line 350, in test_real_stdio_records_schema_invalid_and_wrong_entity_calls
+      |     await session.initialize()
+      |   File "/home/doanlong/.local/lib/python3.12/site-packages/mcp/client/session.py", line 183, in initialize
+      |     result = await self.send_request(
+      |              ^^^^^^^^^^^^^^^^^^^^^^^^
+      |   File "/home/doanlong/.local/lib/python3.12/site-packages/mcp/shared/session.py", line 292, in send_request
+      |     response_or_error = await response_stream_reader.receive()
+      |                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+      |   File "/home/doanlong/.local/lib/python3.12/site-packages/anyio/streams/memory.py", line 125, in receive
+      |     await receive_event.wait()
+      |   File "/home/doanlong/.local/lib/python3.12/site-packages/anyio/_backends/_asyncio.py", line 1840, in wait
+      |     await self._event.wait()
+      |   File "/usr/lib/python3.12/asyncio/locks.py", line 212, in wait
+      |     await fut
+      | asyncio.exceptions.CancelledError: Cancelled via cancel scope 721ea8d071b0; reason: deadline exceeded
+      | 
+      | During handling of the above exception, another exception occurred:
+      | 
+      | Traceback (most recent call last):
+      |   File "/home/doanlong/extra/benchmark/experiments/finance-v45-study/tools/tests/test_independent_snapshot.py", line 349, in test_real_stdio_records_schema_invalid_and_wrong_entity_calls
+      |     with anyio.fail_after(25):
+      |   File "/usr/lib/python3.12/contextlib.py", line 158, in __exit__
+      |     self.gen.throw(value)
+      |   File "/home/doanlong/.local/lib/python3.12/site-packages/anyio/_core/_tasks.py", line 157, in fail_after
+      |     raise TimeoutError
+      | TimeoutError
+      +------------------------------------
+=========================== short test summary info ============================
+FAILED experiments/finance-v45-study/tools/tests/test_independent_snapshot.py::test_real_stdio_records_schema_invalid_and_wrong_entity_calls
+!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!
+1 failed in 30.49s

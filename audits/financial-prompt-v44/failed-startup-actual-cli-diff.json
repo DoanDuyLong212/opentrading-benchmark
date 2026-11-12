@@ -1,0 +1,15 @@
+{
+  "old_fingerprint": "b21da0ad111ab6beaa0d18a56f91e56d6d87f81e51624b004131f5a5421229ac",
+  "actual_cli_fingerprint": "b96c8f4417b96814ea62c89a57dd9704dccdaa8f119dc29e14f13cf323a0841b",
+  "python_plan_equality": true,
+  "diffs": [
+    {
+      "path": "/settings/retry_backoff",
+      "registered": 4.0,
+      "registered_type": "float",
+      "actual_cli": 4,
+      "actual_cli_type": "int"
+    }
+  ],
+  "stopped_before_trial_loop": true
+}

@@ -1,0 +1,28 @@
+# Task benchmark harness tài chính — sinh bởi tools/gen_tasks.py
+id = "fin-l3-top-01"
+title = "Top 3 mã tăng mạnh nhất VN30"
+version = 2
+created = "2026-11-01"
+level = "L3"
+family = "L3·C movers"
+financebench_type = "ranking extraction"
+entity = "VN30"
+asset = "vn_stock"
+data_zone = "green"
+data_pairs = []
+snapshot_date = "2026-11-01"
+universe_cap = 30
+banned_tools = ["web_search", "web_fetch", "sentiment_score"]
+human_time_band = "15–60 phút"
+time_limit_min = 45
+tools_expected = ["market_movers"]
+mcp_payloads = "environment/payloads.json"
+snapshot_required = true
+
+confirmatory_eligible = true
+
+[scoring]
+type = "value"
+gold = "solution/gold.json"
+oracle = "solution/oracle.py"
+grader = "tests/grader.py"

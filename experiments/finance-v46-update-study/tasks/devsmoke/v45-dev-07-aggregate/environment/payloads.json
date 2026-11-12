@@ -1,0 +1,91 @@
+{
+  "snapshot_date": "2026-11-02",
+  "source_review_status": "synthetic_engineering_fixture",
+  "note": "New pre-registered dev fixtures; no source/gold copied from main or holdout.",
+  "tools": {
+    "q:DGC": {
+      "tool": "vn_quote_history",
+      "params": {
+        "symbol": "DGC",
+        "summary": true
+      },
+      "envelope": {
+        "data": {
+          "symbol": "DGC",
+          "last": 81.7,
+          "last_t": "2026-10-29",
+          "count": 1
+        },
+        "availability": "available",
+        "provenance": {
+          "source": "synthetic-dev",
+          "as_of": "2026-11-02T09:00:00+07:00",
+          "data_time": "2026-10-29",
+          "timezone": "Asia/Ho_Chi_Minh"
+        },
+        "units": {
+          "last": "nghìn đồng"
+        },
+        "warnings": [
+          "Synthetic engineering fixture; not independently captured market data."
+        ]
+      }
+    },
+    "q:DCM": {
+      "tool": "vn_quote_history",
+      "params": {
+        "symbol": "DCM",
+        "summary": true
+      },
+      "envelope": {
+        "data": {
+          "symbol": "DCM",
+          "last": 34.8,
+          "last_t": "2026-10-29",
+          "count": 1
+        },
+        "availability": "available",
+        "provenance": {
+          "source": "synthetic-dev",
+          "as_of": "2026-11-02T09:00:00+07:00",
+          "data_time": "2026-10-29",
+          "timezone": "Asia/Ho_Chi_Minh"
+        },
+        "units": {
+          "last": "nghìn đồng"
+        },
+        "warnings": [
+          "Synthetic engineering fixture; not independently captured market data."
+        ]
+      }
+    },
+    "q:DPM": {
+      "tool": "vn_quote_history",
+      "params": {
+        "symbol": "DPM",
+        "summary": true
+      },
+      "envelope": {
+        "data": {
+          "symbol": "DPM",
+          "last": 42.1,
+          "last_t": "2026-10-29",
+          "count": 1
+        },
+        "availability": "available",
+        "provenance": {
+          "source": "synthetic-dev",
+          "as_of": "2026-11-02T09:00:00+07:00",
+          "data_time": "2026-10-29",
+          "timezone": "Asia/Ho_Chi_Minh"
+        },
+        "units": {
+          "last": "nghìn đồng"
+        },
+        "warnings": [
+          "Synthetic engineering fixture; not independently captured market data."
+        ]
+      }
+    }
+  }
+}

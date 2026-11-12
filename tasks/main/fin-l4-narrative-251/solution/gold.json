@@ -1,33 +1,56 @@
 {
- "task_id": "fin-l4-narrative-251",
- "scoring": "verdict",
- "solution": {
-  "verdict": "đúng"
- },
- "as_of": "2026-11-01T21:30:32.261897+07:00",
- "split": "main",
- "verdict_accept": [
-  "đúng",
-  "true",
-  "chính xác"
- ],
- "verdict_reject": [
-  "sai",
-  "false",
-  "không đúng",
-  "không chính xác"
- ],
- "evidence": {
-  "paths": [
-   "note"
+  "task_id": "fin-l4-narrative-251",
+  "scoring": "verdict",
+  "solution": {
+    "verdict": "đúng"
+  },
+  "as_of": "2026-11-01T21:30:32.261897+07:00",
+  "split": "main",
+  "verdict_accept": [
+    "đúng",
+    "true",
+    "chính xác"
   ],
-  "min_hits": 1,
-  "numbers": [
-   28869.57,
-   28730.35,
-   28830.15,
-   28832.74,
-   28789.87
+  "verdict_reject": [
+    "sai",
+    "false",
+    "không đúng",
+    "không chính xác"
+  ],
+  "evidence": {
+    "paths": [
+      "note"
+    ],
+    "min_hits": 1,
+    "numbers": [
+      28869.57,
+      28730.35,
+      28830.15,
+      28832.74,
+      28789.87
+    ]
+  },
+  "contract_version": 2,
+  "provenance_contract": [
+    {
+      "tool": "vn_msn_fx_gold",
+      "source": "msn",
+      "as_of": "2026-11-01T21:30:32.261897+07:00",
+      "matched_entry_id": "msn:main",
+      "response_sha256": "519594885077cc5cf1db891f4f2c767af217c37d76c0ec0db33e4bc7ccd196c9"
+    }
+  ],
+  "payload_sha256": "7ff5439e3a871fc0996111025189c64049ec7d80f8a5f86d3512fe4b300705d9",
+  "provenance_catalog": [
+    {
+      "tool": "vn_msn_fx_gold",
+      "source": "msn",
+      "as_of": "2026-11-01T21:30:32.261897+07:00",
+      "matched_entry_id": "msn:main",
+      "response_sha256": "519594885077cc5cf1db891f4f2c767af217c37d76c0ec0db33e4bc7ccd196c9"
+    }
+  ],
+  "required_payload_keys": [
+    "msn:main"
   ]
- }
 }

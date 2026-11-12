@@ -1,0 +1,55 @@
+{
+ "scoring": "value",
+ "solution": {
+  "symbol": "PNJ",
+  "revenue_bn": 6994.69
+ },
+ "expects": [
+  {
+   "type": "str",
+   "path": "values.symbol",
+   "accept": [
+    "PNJ"
+   ]
+  },
+  {
+   "type": "value",
+   "path": "values.revenue_bn",
+   "gold": 6994.69,
+   "tol": {
+    "rel": 0.005
+   }
+  },
+  {
+   "type": "str_all",
+   "path": "source",
+   "accept": [
+    "market_movers",
+    "financial_statements"
+   ]
+  }
+ ],
+ "notes": "movers losers[0] = PNJ −3.43% (ranking do tool công bố); doanh thu PNJ Q3/2026 = 6,994.69 tỷ.",
+ "provenance_contract": [
+  {
+   "tool": "market_movers",
+   "source": "vnstock",
+   "as_of": "2026-11-01T21:12:04.261634+07:00",
+   "matched_entry_id": "movers:vn30",
+   "response_sha256": "a8203b807b243068b924bf83bd810671386c59c2fdac6deabcc1ae9514a634ca"
+  },
+  {
+   "tool": "financial_statements",
+   "source": "vietstock",
+   "as_of": "2026-11-01T22:04:00.535310+07:00",
+   "matched_entry_id": "fs:PNJ",
+   "response_sha256": "277f33915c2d19db8df9fa786d3aa5007d43d832ab012da44d719ceb279a9576"
+  }
+ ],
+ "required_payload_keys": [
+  "movers:vn30",
+  "fs:PNJ"
+ ],
+ "task_id": "fin-l4-chain-306",
+ "payload_sha256": "8e14fc5e914a943d7a59ecee36429f184b8d374c28127fb296e0c6ea489867c8"
+}

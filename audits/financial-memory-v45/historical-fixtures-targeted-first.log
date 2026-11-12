@@ -1,0 +1,39 @@
+..FF....................                                                 [100%]
+=================================== FAILURES ===================================
+____ test_common_description_preserves_production_metadata_and_constraints _____
+
+    def test_common_description_preserves_production_metadata_and_constraints():
+        definitions=build_tool_defs(offline_entries())
+        original={x['name']:x for x in json.loads((ROOT/'tools/tool_contracts_v4.json').read_text())['tools']}
+        for d in definitions:
+            if d['name'] in ('analytics_compute','analytics_calculate'):
+                expected='deterministic-derivation-v44' if d['name']=='analytics_compute' else 'source-bound-native-expression-v45'
+>               assert d['inputSchema']['x-opentrading-schema-profile']==expected
+E               AssertionError: assert 'deterministic-derivation-v45' == 'deterministic-derivation-v44'
+E                 
+E                 - deterministic-derivation-v44
+E                 ?                            ^
+E                 + deterministic-derivation-v45
+E                 ?                            ^
+
+experiments/finance-v45-study/tools/tests/test_v43_study.py:66: AssertionError
+____ test_two_registered_model_caps_and_four_conditions_have_fixed_schedule ____
+
+    def test_two_registered_model_caps_and_four_conditions_have_fixed_schedule():
+        from run_manifest import build_schedule
+        for filename,stratum in [('bench_config.json','bolt'),('bench_config_deepseek.json','deepseek')]:
+            config=json.loads((LEGACY/'tools'/filename).read_text());s=registered_settings(config)
+            assert s['model']==MODELS[stratum] and s['arms']==ARMS
+            assert s['max_requests']==24 and s['max_total_tokens']==48000 and s['max_output_tokens']==2048
+            assert s['retry']==0 and s['effort']=='none'
+>           assert config['allowed_inference_splits']==['smoke','pilot']
+E           AssertionError: assert ['smoke'] == ['smoke', 'pilot']
+E             
+E             Right contains one more item: 'pilot'
+E             Use -v to get more diff
+
+experiments/finance-v45-study/tools/tests/test_v43_study.py:83: AssertionError
+=========================== short test summary info ============================
+FAILED experiments/finance-v45-study/tools/tests/test_v43_study.py::test_common_description_preserves_production_metadata_and_constraints
+FAILED experiments/finance-v45-study/tools/tests/test_v43_study.py::test_two_registered_model_caps_and_four_conditions_have_fixed_schedule
+2 failed, 22 passed in 25.72s

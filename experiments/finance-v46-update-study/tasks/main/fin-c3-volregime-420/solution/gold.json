@@ -1,0 +1,266 @@
+{
+  "task_id": "fin-c3-volregime-420",
+  "scoring": "value",
+  "solution": {
+    "HPG": {
+      "avg20": 18565045.0,
+      "avg120": 20599363.775,
+      "ratio": 0.9012
+    },
+    "SSI": {
+      "avg20": 17636165.0,
+      "avg120": 18659183.975,
+      "ratio": 0.9452
+    },
+    "FPT": {
+      "avg20": 7297445.0,
+      "avg120": 7745699.4583,
+      "ratio": 0.9421
+    },
+    "MWG": {
+      "avg20": 2945726.8,
+      "avg120": 3775664.6333,
+      "ratio": 0.7802
+    },
+    "VNM": {
+      "avg20": 1804121.45,
+      "avg120": 3226522.8083,
+      "ratio": 0.5592
+    },
+    "ranking": [
+      "SSI",
+      "FPT",
+      "HPG",
+      "MWG",
+      "VNM"
+    ]
+  },
+  "as_of": "2026-11-11T09:41:32.145602+07:00",
+  "split": "main",
+  "expects": [
+    {
+      "type": "value",
+      "path": "values.HPG.avg20",
+      "gold": 18565045.0,
+      "tol": {
+        "rel": 0.001
+      }
+    },
+    {
+      "type": "value",
+      "path": "values.HPG.avg120",
+      "gold": 20599363.775,
+      "tol": {
+        "rel": 0.001
+      }
+    },
+    {
+      "type": "value",
+      "path": "values.HPG.ratio",
+      "gold": 0.9012,
+      "tol": {
+        "abs": 0.005
+      }
+    },
+    {
+      "type": "value",
+      "path": "values.SSI.avg20",
+      "gold": 17636165.0,
+      "tol": {
+        "rel": 0.001
+      }
+    },
+    {
+      "type": "value",
+      "path": "values.SSI.avg120",
+      "gold": 18659183.975,
+      "tol": {
+        "rel": 0.001
+      }
+    },
+    {
+      "type": "value",
+      "path": "values.SSI.ratio",
+      "gold": 0.9452,
+      "tol": {
+        "abs": 0.005
+      }
+    },
+    {
+      "type": "value",
+      "path": "values.FPT.avg20",
+      "gold": 7297445.0,
+      "tol": {
+        "rel": 0.001
+      }
+    },
+    {
+      "type": "value",
+      "path": "values.FPT.avg120",
+      "gold": 7745699.4583,
+      "tol": {
+        "rel": 0.001
+      }
+    },
+    {
+      "type": "value",
+      "path": "values.FPT.ratio",
+      "gold": 0.9421,
+      "tol": {
+        "abs": 0.005
+      }
+    },
+    {
+      "type": "value",
+      "path": "values.MWG.avg20",
+      "gold": 2945726.8,
+      "tol": {
+        "rel": 0.001
+      }
+    },
+    {
+      "type": "value",
+      "path": "values.MWG.avg120",
+      "gold": 3775664.6333,
+      "tol": {
+        "rel": 0.001
+      }
+    },
+    {
+      "type": "value",
+      "path": "values.MWG.ratio",
+      "gold": 0.7802,
+      "tol": {
+        "abs": 0.005
+      }
+    },
+    {
+      "type": "value",
+      "path": "values.VNM.avg20",
+      "gold": 1804121.45,
+      "tol": {
+        "rel": 0.001
+      }
+    },
+    {
+      "type": "value",
+      "path": "values.VNM.avg120",
+      "gold": 3226522.8083,
+      "tol": {
+        "rel": 0.001
+      }
+    },
+    {
+      "type": "value",
+      "path": "values.VNM.ratio",
+      "gold": 0.5592,
+      "tol": {
+        "abs": 0.005
+      }
+    },
+    {
+      "type": "list_order",
+      "path": "ranking",
+      "gold": [
+        "SSI",
+        "FPT",
+        "HPG",
+        "MWG",
+        "VNM"
+      ]
+    },
+    {
+      "type": "str",
+      "path": "source",
+      "accept": [
+        "vn_quote_history"
+      ]
+    }
+  ],
+  "contract_version": 2,
+  "stratum": "compute",
+  "tier": "C3",
+  "notes": "Compute stratum (amendment 2026-11-11 d). Gold computed with Decimal from payloads; uniform tolerance.",
+  "provenance_contract": [
+    {
+      "tool": "vn_quote_history",
+      "source": "vnstock",
+      "as_of": "2026-11-11T09:41:32.145602+07:00",
+      "matched_entry_id": "hist:FPT",
+      "response_sha256": "1848a2b64cb88877a56bf1cfddcee6397a83136392ab0caaf93843f66099178d"
+    },
+    {
+      "tool": "vn_quote_history",
+      "source": "vnstock",
+      "as_of": "2026-11-11T09:41:32.145602+07:00",
+      "matched_entry_id": "hist:HPG",
+      "response_sha256": "54e400ae73d13a243ba92310402f7ab2b9d4c6ecb8b22ba02ae2c2c12aa7329d"
+    },
+    {
+      "tool": "vn_quote_history",
+      "source": "vnstock",
+      "as_of": "2026-11-11T09:41:32.145602+07:00",
+      "matched_entry_id": "hist:MWG",
+      "response_sha256": "cb62ec924ec880ed6e0e7b9b1938af0b0eeaac97c4e7d11752d109e6f0dc53eb"
+    },
+    {
+      "tool": "vn_quote_history",
+      "source": "vnstock",
+      "as_of": "2026-11-11T09:41:32.145602+07:00",
+      "matched_entry_id": "hist:SSI",
+      "response_sha256": "3f61cd21692821418bfaa5e77f80b398ae08e11da4e34bc64774eb431c83e475"
+    },
+    {
+      "tool": "vn_quote_history",
+      "source": "vnstock",
+      "as_of": "2026-11-11T09:41:32.145602+07:00",
+      "matched_entry_id": "hist:VNM",
+      "response_sha256": "0246445b5967ca7124abe7adaf598b586522f0e0b9f0d4d59ceb7bc305d33780"
+    }
+  ],
+  "provenance_catalog": [
+    {
+      "tool": "vn_quote_history",
+      "source": "vnstock",
+      "as_of": "2026-11-11T09:41:32.145602+07:00",
+      "matched_entry_id": "hist:FPT",
+      "response_sha256": "1848a2b64cb88877a56bf1cfddcee6397a83136392ab0caaf93843f66099178d"
+    },
+    {
+      "tool": "vn_quote_history",
+      "source": "vnstock",
+      "as_of": "2026-11-11T09:41:32.145602+07:00",
+      "matched_entry_id": "hist:HPG",
+      "response_sha256": "54e400ae73d13a243ba92310402f7ab2b9d4c6ecb8b22ba02ae2c2c12aa7329d"
+    },
+    {
+      "tool": "vn_quote_history",
+      "source": "vnstock",
+      "as_of": "2026-11-11T09:41:32.145602+07:00",
+      "matched_entry_id": "hist:MWG",
+      "response_sha256": "cb62ec924ec880ed6e0e7b9b1938af0b0eeaac97c4e7d11752d109e6f0dc53eb"
+    },
+    {
+      "tool": "vn_quote_history",
+      "source": "vnstock",
+      "as_of": "2026-11-11T09:41:32.145602+07:00",
+      "matched_entry_id": "hist:SSI",
+      "response_sha256": "3f61cd21692821418bfaa5e77f80b398ae08e11da4e34bc64774eb431c83e475"
+    },
+    {
+      "tool": "vn_quote_history",
+      "source": "vnstock",
+      "as_of": "2026-11-11T09:41:32.145602+07:00",
+      "matched_entry_id": "hist:VNM",
+      "response_sha256": "0246445b5967ca7124abe7adaf598b586522f0e0b9f0d4d59ceb7bc305d33780"
+    }
+  ],
+  "payload_sha256": "4233d137981b9641071c318f22416a590c926b6147c0cbf56874397fffa4098a",
+  "required_payload_keys": [
+    "hist:FPT",
+    "hist:HPG",
+    "hist:MWG",
+    "hist:SSI",
+    "hist:VNM"
+  ]
+}

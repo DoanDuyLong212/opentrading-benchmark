@@ -1,0 +1,47 @@
+{
+ "version": 1,
+ "mode": "memory",
+ "sessions": [
+  {
+   "id": "A",
+   "turns": [
+    {
+     "text": "Portfolio của tôi hiện có MSN và PNJ — nhớ giùm."
+    }
+   ]
+  },
+  {
+   "id": "B",
+   "turns": [
+    {
+     "text": "Tổng doanh thu thuần quý gần nhất của các mã tôi đang giữ là bao nhiêu (tỷ đồng)? Tra `financial_statements` cho từng mã. Trả object JSON: {\"values\":{\"total_bn\":0},\"source\":\"financial_statements\",\"note\":\"(nêu các mã)\",\"evidence\":[...]}",
+     "final": true
+    }
+   ]
+  }
+ ],
+ "memory_policy": {
+  "opentrading": {
+   "memory": {
+    "provider": "notebook",
+    "cards": true
+   },
+   "permissions": {
+    "defaultMode": "auto",
+    "autoAcknowledged": true
+   }
+  },
+  "opencode": {
+   "permission": {
+    "edit": "allow",
+    "bash": "allow",
+    "webfetch": "allow"
+   }
+  },
+  "dsh": {
+   "approval_policy": "allow-reads",
+   "session_query": true
+  }
+ },
+ "note": "Portfolio recall + synthesis; note phải nêu đủ MSN, PNJ."
+}

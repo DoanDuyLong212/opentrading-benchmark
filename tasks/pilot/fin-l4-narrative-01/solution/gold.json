@@ -30,5 +30,28 @@
     "verdict": "đúng"
   },
   "notes": "Biến thể claim ĐÚNG (vá 2 chiều 02/11): XAUUSD giảm 2 phiên cuối (4067.04 → 4020.42 → 3875.02) và USDVND có 2 phiên giảm (25841 → 25832, 25852 → 25799) → cả hai chuỗi đều có ít nhất một phiên giảm → nhận định ĐÚNG.",
-  "as_of": "2026-11-01T15:54:32.785351+07:00"
+  "as_of": "2026-11-01T15:54:32.785351+07:00",
+  "contract_version": 2,
+  "provenance_contract": [
+    {
+      "tool": "vn_msn_fx_gold",
+      "source": "msn",
+      "as_of": "2026-11-01T15:54:32.785351+07:00",
+      "matched_entry_id": "vn_msn_fx_gold:0",
+      "response_sha256": "80dfedd9bdca6cd670fe64f071a6c135f19ae00b84bddf077bf83ed35bb3a379"
+    }
+  ],
+  "payload_sha256": "55699904bfdc76edb8c9fc1bd1f05798906fb14ace37440f0675cf91a3524fe7",
+  "provenance_catalog": [
+    {
+      "tool": "vn_msn_fx_gold",
+      "source": "msn",
+      "as_of": "2026-11-01T15:54:32.785351+07:00",
+      "matched_entry_id": "vn_msn_fx_gold:0",
+      "response_sha256": "80dfedd9bdca6cd670fe64f071a6c135f19ae00b84bddf077bf83ed35bb3a379"
+    }
+  ],
+  "required_payload_keys": [
+    "vn_msn_fx_gold"
+  ]
 }

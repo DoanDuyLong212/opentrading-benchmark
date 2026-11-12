@@ -1,0 +1,52 @@
+{
+ "scoring": "value",
+ "memory_construct": "in_session_context",
+ "solution": {
+  "low": 127.4,
+  "date": "2026-10-20"
+ },
+ "expects": [
+  {
+   "type": "value",
+   "path": "values.low",
+   "gold": 127.4,
+   "tol": {
+    "rel": 0.005
+   }
+  },
+  {
+   "type": "period",
+   "path": "period",
+   "accept": [
+    "20/10",
+    "20-10",
+    "20.10",
+    "2026-10-20",
+    "2026-10-20"
+   ]
+  },
+  {
+   "type": "str",
+   "path": "source",
+   "accept": [
+    "vn_quote_history"
+   ]
+  }
+ ],
+ "notes": "10 phiên VJC: min 127.4 (2026-10-20); sát min là 127.5 — phải chọn đúng phiên. In-session retention trên chuỗi 10 số.",
+ "memory_checks": {},
+ "provenance_contract": [
+  {
+   "tool": "vn_quote_history",
+   "source": "vnstock",
+   "as_of": "2026-11-01T22:42:06.798970+07:00",
+   "matched_entry_id": "vnq10:VJC",
+   "response_sha256": "22a68fdaf257d8c2bdb6df52f7a4e90072fa07f688e80ea717e2b0ee6dc37760"
+  }
+ ],
+ "required_payload_keys": [
+  "vnq10:VJC"
+ ],
+ "task_id": "fin-mem-963",
+ "payload_sha256": "4d3fee181c4fce7280862ed4d89df1574ea124998962f98950c5cc2c60174a80"
+}

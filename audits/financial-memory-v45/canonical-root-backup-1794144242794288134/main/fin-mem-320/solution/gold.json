@@ -1,0 +1,39 @@
+{
+ "scoring": "value",
+ "solution": {
+  "pass": [
+   "PNJ"
+  ]
+ },
+ "expects": [
+  {
+   "type": "set",
+   "path": "values.pass",
+   "gold": [
+    "PNJ"
+   ]
+  },
+  {
+   "type": "str",
+   "path": "source",
+   "accept": [
+    "peer_compare"
+   ]
+  }
+ ],
+ "notes": "Ràng buộc session A: ROE>12% AND P/E<25. FRT ✗ P/E 28.2; PNJ ✓ 23.06/11.61; KDC ✗ ROE 7.61; MSN ✗ P/E 27.94 (ROE 12.53 near-miss); SBT ✗ ROE 7.49.",
+ "provenance_contract": [
+  {
+   "tool": "peer_compare",
+   "source": "vnstock",
+   "as_of": "2026-11-01T23:08:19.121250+07:00",
+   "matched_entry_id": "peer:cons_p",
+   "response_sha256": "ddba4fdb6bb3c68d89a0cb89bcf91112bcee9fc811750394f7fb157fbdfffa82"
+  }
+ ],
+ "required_payload_keys": [
+  "peer:cons_p"
+ ],
+ "task_id": "fin-mem-320",
+ "payload_sha256": "a4d43dcbf420c5d98eb5f3ab40c887da4d53c2cc602484bcdc39b4e89938fb5c"
+}

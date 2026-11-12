@@ -1,0 +1,906 @@
+{
+  "scope": "Read-only independent count and receipt cross-check of stored fresh grades; no graders, tests, models, or inference executed.",
+  "runs": {
+    "smoke-nvidia/nvidia/nemotron-3.5-bolt-e4b": {
+      "scheduled": 24,
+      "observed": 24,
+      "manifest_hash_matches": false,
+      "counts": {
+        "opentrading_finance": {
+          "started": 6,
+          "primary": 2,
+          "frozen_v41_primary": 2,
+          "frozen_v3_primary": 2,
+          "public_contract_valid_trials": 6,
+          "dnf": 0,
+          "false_refusal": 4,
+          "fp": 0,
+          "required_data_complete_trials": 2,
+          "usage_complete_trials": 6,
+          "gateway_requests": 16,
+          "upstream_attempted": 16,
+          "usage_requests": 16,
+          "known_input_tokens": 42698,
+          "known_output_tokens": 1549,
+          "known_reasoning_tokens": 0,
+          "known_cached_tokens": 32704
+        },
+        "opentrading_baseline": {
+          "started": 6,
+          "primary": 2,
+          "frozen_v41_primary": 2,
+          "frozen_v3_primary": 2,
+          "public_contract_valid_trials": 4,
+          "dnf": 0,
+          "false_refusal": 4,
+          "fp": 0,
+          "required_data_complete_trials": 2,
+          "usage_complete_trials": 6,
+          "gateway_requests": 11,
+          "upstream_attempted": 11,
+          "usage_requests": 11,
+          "known_input_tokens": 52710,
+          "known_output_tokens": 1492,
+          "known_reasoning_tokens": 0,
+          "known_cached_tokens": 42944
+        },
+        "opencode": {
+          "started": 6,
+          "primary": 1,
+          "frozen_v41_primary": 2,
+          "frozen_v3_primary": 2,
+          "public_contract_valid_trials": 3,
+          "dnf": 0,
+          "false_refusal": 4,
+          "fp": 0,
+          "required_data_complete_trials": 2,
+          "usage_complete_trials": 6,
+          "gateway_requests": 12,
+          "upstream_attempted": 12,
+          "usage_requests": 12,
+          "known_input_tokens": 35957,
+          "known_output_tokens": 1831,
+          "known_reasoning_tokens": 0,
+          "known_cached_tokens": 16256
+        },
+        "dsh": {
+          "started": 6,
+          "primary": 1,
+          "frozen_v41_primary": 1,
+          "frozen_v3_primary": 1,
+          "public_contract_valid_trials": 6,
+          "dnf": 0,
+          "false_refusal": 4,
+          "fp": 0,
+          "required_data_complete_trials": 2,
+          "usage_complete_trials": 6,
+          "gateway_requests": 20,
+          "upstream_attempted": 20,
+          "usage_requests": 20,
+          "known_input_tokens": 54622,
+          "known_output_tokens": 1754,
+          "known_reasoning_tokens": 0,
+          "known_cached_tokens": 46368
+        }
+      },
+      "all_primary_wins": [
+        {
+          "trial": "smoke-trap-01__opencode__r1",
+          "answer": {
+            "value": null,
+            "reason": "C\u1ed5 phi\u1ebfu XYZX kh\u00f4ng \u0111\u01b0\u1ee3c t\u00ecm th\u1ea5y trong c\u01a1 s\u1edf d\u1eef li\u1ec7u t\u1ea1i th\u1eddi \u0111i\u1ec3m snapshot 2026-11-01.",
+            "evidence": [
+              {
+                "tool": "symbol_resolve",
+                "source": "vnstock+local",
+                "as_of": "2026-11-01T15:57:53.093226+07:00",
+                "call_id": "51684d70-7582-4709-8159-36f44ae7c396",
+                "payload_sha256": "6b7ff4111a0909abb9acffeb18b02683b8ea682954c7b5d370ad00934c185b36",
+                "matched_entry_id": "symbol_resolve:0",
+                "response_sha256": "bb10c861f6a84b5caf5f58dc2714bdf5e4edb19b312b76d3c18d98938272cd2f"
+              }
+            ]
+          },
+          "proofs": [
+            {
+              "receipt": {
+                "tool": "symbol_resolve",
+                "source": "vnstock+local",
+                "as_of": "2026-11-01T15:57:53.093226+07:00",
+                "call_id": "51684d70-7582-4709-8159-36f44ae7c396",
+                "payload_sha256": "6b7ff4111a0909abb9acffeb18b02683b8ea682954c7b5d370ad00934c185b36",
+                "matched_entry_id": "symbol_resolve:0",
+                "response_sha256": "bb10c861f6a84b5caf5f58dc2714bdf5e4edb19b312b76d3c18d98938272cd2f"
+              },
+              "exact_7_field_match": true,
+              "model_tool_context_match": true,
+              "availability": [
+                "empty"
+              ],
+              "actual_visible_data": [
+                {
+                  "query": "XYZX",
+                  "resolved": null,
+                  "ambiguous": false,
+                  "candidates": []
+                }
+              ]
+            }
+          ],
+          "financial_canary": null
+        },
+        {
+          "trial": "smoke-trap-01__dsh__r1",
+          "answer": {
+            "value": null,
+            "reason": "M\u00e3 t\u00e0i s\u1ea3n XYZX kh\u00f4ng \u0111\u01b0\u1ee3c t\u00ecm th\u1ea5y ho\u1eb7c kh\u00f4ng c\u00f3 th\u00f4ng tin h\u1ee3p l\u1ec7 trong snapshot d\u1eef li\u1ec7u t\u1ea1i 2026-11-01.",
+            "evidence": [
+              {
+                "tool": "symbol_resolve",
+                "source": "vnstock+local",
+                "as_of": "2026-11-01T15:57:53.093226+07:00",
+                "call_id": "bce17a00-7584-4eb9-9977-3392fa619de9",
+                "payload_sha256": "6b7ff4111a0909abb9acffeb18b02683b8ea682954c7b5d370ad00934c185b36",
+                "matched_entry_id": "symbol_resolve:0",
+                "response_sha256": "bb10c861f6a84b5caf5f58dc2714bdf5e4edb19b312b76d3c18d98938272cd2f"
+              }
+            ]
+          },
+          "proofs": [
+            {
+              "receipt": {
+                "tool": "symbol_resolve",
+                "source": "vnstock+local",
+                "as_of": "2026-11-01T15:57:53.093226+07:00",
+                "call_id": "bce17a00-7584-4eb9-9977-3392fa619de9",
+                "payload_sha256": "6b7ff4111a0909abb9acffeb18b02683b8ea682954c7b5d370ad00934c185b36",
+                "matched_entry_id": "symbol_resolve:0",
+                "response_sha256": "bb10c861f6a84b5caf5f58dc2714bdf5e4edb19b312b76d3c18d98938272cd2f"
+              },
+              "exact_7_field_match": true,
+              "model_tool_context_match": true,
+              "availability": [
+                "empty"
+              ],
+              "actual_visible_data": [
+                {
+                  "query": "XYZX",
+                  "resolved": null,
+                  "ambiguous": false,
+                  "candidates": []
+                }
+              ]
+            }
+          ],
+          "financial_canary": null
+        },
+        {
+          "trial": "smoke-trap-01__opentrading_finance__r1",
+          "answer": {
+            "value": null,
+            "reason": "M\u00e3 t\u00e0i s\u1ea3n XYZX kh\u00f4ng \u0111\u01b0\u1ee3c t\u00ecm th\u1ea5y trong c\u01a1 s\u1edf d\u1eef li\u1ec7u t\u00e0i s\u1ea3n \u0111\u01b0\u1ee3c h\u1ed7 tr\u1ee3.",
+            "evidence": [
+              {
+                "tool": "symbol_resolve",
+                "source": "vnstock+local",
+                "as_of": "2026-11-01T15:57:53.093226+07:00",
+                "call_id": "6b9008ca-a3be-4fe4-95db-1c8a4b79db7c",
+                "payload_sha256": "6b7ff4111a0909abb9acffeb18b02683b8ea682954c7b5d370ad00934c185b36",
+                "matched_entry_id": "symbol_resolve:0",
+                "response_sha256": "bb10c861f6a84b5caf5f58dc2714bdf5e4edb19b312b76d3c18d98938272cd2f"
+              }
+            ]
+          },
+          "proofs": [
+            {
+              "receipt": {
+                "tool": "symbol_resolve",
+                "source": "vnstock+local",
+                "as_of": "2026-11-01T15:57:53.093226+07:00",
+                "call_id": "6b9008ca-a3be-4fe4-95db-1c8a4b79db7c",
+                "payload_sha256": "6b7ff4111a0909abb9acffeb18b02683b8ea682954c7b5d370ad00934c185b36",
+                "matched_entry_id": "symbol_resolve:0",
+                "response_sha256": "bb10c861f6a84b5caf5f58dc2714bdf5e4edb19b312b76d3c18d98938272cd2f"
+              },
+              "exact_7_field_match": true,
+              "model_tool_context_match": true,
+              "availability": [
+                "empty"
+              ],
+              "actual_visible_data": [
+                {
+                  "query": "XYZX",
+                  "resolved": null,
+                  "ambiguous": false,
+                  "candidates": []
+                }
+              ]
+            }
+          ],
+          "financial_canary": null
+        },
+        {
+          "trial": "smoke-trap-01__opentrading_baseline__r1",
+          "answer": {
+            "value": null,
+            "reason": "Kh\u00f4ng t\u00ecm th\u1ea5y m\u00e3 c\u1ed5 phi\u1ebfu XYZX trong c\u01a1 s\u1edf d\u1eef li\u1ec7u \u0111\u01b0\u1ee3c cung c\u1ea5p t\u1ea1i th\u1eddi \u0111i\u1ec3m 2026-11-01.",
+            "evidence": [
+              {
+                "tool": "symbol_resolve",
+                "source": "vnstock+local",
+                "as_of": "2026-11-01T15:57:53.093226+07:00",
+                "call_id": "3cc1c9ff-9d33-4f68-9ea6-878b670d2cfd",
+                "payload_sha256": "6b7ff4111a0909abb9acffeb18b02683b8ea682954c7b5d370ad00934c185b36",
+                "matched_entry_id": "symbol_resolve:0",
+                "response_sha256": "bb10c861f6a84b5caf5f58dc2714bdf5e4edb19b312b76d3c18d98938272cd2f"
+              }
+            ]
+          },
+          "proofs": [
+            {
+              "receipt": {
+                "tool": "symbol_resolve",
+                "source": "vnstock+local",
+                "as_of": "2026-11-01T15:57:53.093226+07:00",
+                "call_id": "3cc1c9ff-9d33-4f68-9ea6-878b670d2cfd",
+                "payload_sha256": "6b7ff4111a0909abb9acffeb18b02683b8ea682954c7b5d370ad00934c185b36",
+                "matched_entry_id": "symbol_resolve:0",
+                "response_sha256": "bb10c861f6a84b5caf5f58dc2714bdf5e4edb19b312b76d3c18d98938272cd2f"
+              },
+              "exact_7_field_match": true,
+              "model_tool_context_match": true,
+              "availability": [
+                "empty"
+              ],
+              "actual_visible_data": [
+                {
+                  "query": "XYZX",
+                  "resolved": null,
+                  "ambiguous": false,
+                  "candidates": []
+                }
+              ]
+            }
+          ],
+          "financial_canary": null
+        },
+        {
+          "trial": "smoke-trap-01__opentrading_baseline__r2",
+          "answer": {
+            "value": null,
+            "reason": "M\u00e3 c\u1ed5 phi\u1ebfu XYZX kh\u00f4ng \u0111\u01b0\u1ee3c t\u00ecm th\u1ea5y trong c\u01a1 s\u1edf d\u1eef li\u1ec7u \u0111\u01b0\u1ee3c cung c\u1ea5p t\u1ea1i th\u1eddi \u0111i\u1ec3m snapshot 2026-11-01.",
+            "evidence": [
+              {
+                "tool": "symbol_resolve",
+                "source": "vnstock+local",
+                "as_of": "2026-11-01T15:57:53.093226+07:00",
+                "call_id": "aa6163a7-0ca3-4cff-b64e-fc04ec593102",
+                "payload_sha256": "6b7ff4111a0909abb9acffeb18b02683b8ea682954c7b5d370ad00934c185b36",
+                "matched_entry_id": "symbol_resolve:0",
+                "response_sha256": "bb10c861f6a84b5caf5f58dc2714bdf5e4edb19b312b76d3c18d98938272cd2f"
+              }
+            ]
+          },
+          "proofs": [
+            {
+              "receipt": {
+                "tool": "symbol_resolve",
+                "source": "vnstock+local",
+                "as_of": "2026-11-01T15:57:53.093226+07:00",
+                "call_id": "aa6163a7-0ca3-4cff-b64e-fc04ec593102",
+                "payload_sha256": "6b7ff4111a0909abb9acffeb18b02683b8ea682954c7b5d370ad00934c185b36",
+                "matched_entry_id": "symbol_resolve:0",
+                "response_sha256": "bb10c861f6a84b5caf5f58dc2714bdf5e4edb19b312b76d3c18d98938272cd2f"
+              },
+              "exact_7_field_match": true,
+              "model_tool_context_match": true,
+              "availability": [
+                "empty"
+              ],
+              "actual_visible_data": [
+                {
+                  "query": "XYZX",
+                  "resolved": null,
+                  "ambiguous": false,
+                  "candidates": []
+                }
+              ]
+            }
+          ],
+          "financial_canary": null
+        },
+        {
+          "trial": "smoke-trap-01__opentrading_finance__r2",
+          "answer": {
+            "value": null,
+            "reason": "M\u00e3 t\u00e0i s\u1ea3n XYZX kh\u00f4ng \u0111\u01b0\u1ee3c t\u00ecm th\u1ea5y trong c\u01a1 s\u1edf d\u1eef li\u1ec7u t\u00e0i s\u1ea3n \u0111\u01b0\u1ee3c h\u1ed7 tr\u1ee3.",
+            "evidence": [
+              {
+                "tool": "symbol_resolve",
+                "source": "vnstock+local",
+                "as_of": "2026-11-01T15:57:53.093226+07:00",
+                "call_id": "9c0863e6-31a3-42ed-bbed-7b72c6815467",
+                "payload_sha256": "6b7ff4111a0909abb9acffeb18b02683b8ea682954c7b5d370ad00934c185b36",
+                "matched_entry_id": "symbol_resolve:0",
+                "response_sha256": "bb10c861f6a84b5caf5f58dc2714bdf5e4edb19b312b76d3c18d98938272cd2f"
+              }
+            ]
+          },
+          "proofs": [
+            {
+              "receipt": {
+                "tool": "symbol_resolve",
+                "source": "vnstock+local",
+                "as_of": "2026-11-01T15:57:53.093226+07:00",
+                "call_id": "9c0863e6-31a3-42ed-bbed-7b72c6815467",
+                "payload_sha256": "6b7ff4111a0909abb9acffeb18b02683b8ea682954c7b5d370ad00934c185b36",
+                "matched_entry_id": "symbol_resolve:0",
+                "response_sha256": "bb10c861f6a84b5caf5f58dc2714bdf5e4edb19b312b76d3c18d98938272cd2f"
+              },
+              "exact_7_field_match": true,
+              "model_tool_context_match": true,
+              "availability": [
+                "empty"
+              ],
+              "actual_visible_data": [
+                {
+                  "query": "XYZX",
+                  "resolved": null,
+                  "ambiguous": false,
+                  "candidates": []
+                }
+              ]
+            }
+          ],
+          "financial_canary": null
+        }
+      ],
+      "read_trial_grade_and_capture_files": 174,
+      "main_audit_controls_pass": true,
+      "main_audit_errors": [],
+      "stored_usage_counts": {
+        "dsh": {
+          "gateway_requests": 20,
+          "usage_requests": 20,
+          "known_input_tokens": 54622,
+          "known_output_tokens": 1754,
+          "reported_reasoning_tokens_requests": 20,
+          "known_reasoning_tokens": 0,
+          "reported_cached_tokens_requests": 20,
+          "known_cached_tokens": 46368,
+          "capture_files": 40
+        },
+        "opencode": {
+          "gateway_requests": 12,
+          "usage_requests": 12,
+          "known_input_tokens": 35957,
+          "known_output_tokens": 1831,
+          "reported_reasoning_tokens_requests": 12,
+          "known_reasoning_tokens": 0,
+          "reported_cached_tokens_requests": 12,
+          "known_cached_tokens": 16256,
+          "capture_files": 24
+        },
+        "opentrading_baseline": {
+          "gateway_requests": 11,
+          "usage_requests": 11,
+          "known_input_tokens": 52710,
+          "known_output_tokens": 1492,
+          "reported_reasoning_tokens_requests": 11,
+          "known_reasoning_tokens": 0,
+          "reported_cached_tokens_requests": 11,
+          "known_cached_tokens": 42944,
+          "capture_files": 22
+        },
+        "opentrading_finance": {
+          "gateway_requests": 16,
+          "usage_requests": 16,
+          "known_input_tokens": 42698,
+          "known_output_tokens": 1549,
+          "reported_reasoning_tokens_requests": 16,
+          "known_reasoning_tokens": 0,
+          "reported_cached_tokens_requests": 16,
+          "known_cached_tokens": 32704,
+          "capture_files": 32
+        }
+      }
+    },
+    "smoke-nvidia/deepseek-ai/deepseek-v4.1-flash": {
+      "scheduled": 24,
+      "observed": 24,
+      "manifest_hash_matches": false,
+      "counts": {
+        "opentrading_finance": {
+          "started": 6,
+          "primary": 2,
+          "frozen_v41_primary": 2,
+          "frozen_v3_primary": 2,
+          "public_contract_valid_trials": 2,
+          "dnf": 4,
+          "false_refusal": 0,
+          "fp": 0,
+          "required_data_complete_trials": 5,
+          "usage_complete_trials": 2,
+          "gateway_requests": 18,
+          "upstream_attempted": 15,
+          "usage_requests": 13,
+          "known_input_tokens": 62599,
+          "known_output_tokens": 3355,
+          "known_reasoning_tokens": 825,
+          "known_cached_tokens": 7360,
+          "unmaterialized_grade_files": 12
+        },
+        "opentrading_baseline": {
+          "started": 6,
+          "primary": 0,
+          "frozen_v41_primary": 3,
+          "frozen_v3_primary": 3,
+          "public_contract_valid_trials": 0,
+          "dnf": 3,
+          "false_refusal": 0,
+          "fp": 0,
+          "required_data_complete_trials": 5,
+          "usage_complete_trials": 3,
+          "gateway_requests": 15,
+          "upstream_attempted": 12,
+          "usage_requests": 11,
+          "known_input_tokens": 79518,
+          "known_output_tokens": 3638,
+          "known_reasoning_tokens": 844,
+          "known_cached_tokens": 10368,
+          "unmaterialized_grade_files": 9
+        },
+        "opencode": {
+          "started": 6,
+          "primary": 0,
+          "frozen_v41_primary": 3,
+          "frozen_v3_primary": 3,
+          "public_contract_valid_trials": 0,
+          "dnf": 3,
+          "false_refusal": 0,
+          "fp": 0,
+          "required_data_complete_trials": 6,
+          "usage_complete_trials": 4,
+          "gateway_requests": 18,
+          "upstream_attempted": 16,
+          "usage_requests": 16,
+          "known_input_tokens": 73129,
+          "known_output_tokens": 4406,
+          "known_reasoning_tokens": 915,
+          "known_cached_tokens": 19200,
+          "unmaterialized_grade_files": 9
+        },
+        "dsh": {
+          "started": 6,
+          "primary": 1,
+          "frozen_v41_primary": 3,
+          "frozen_v3_primary": 3,
+          "public_contract_valid_trials": 1,
+          "dnf": 3,
+          "false_refusal": 0,
+          "fp": 0,
+          "required_data_complete_trials": 5,
+          "usage_complete_trials": 3,
+          "unmaterialized_grade_files": 9,
+          "gateway_requests": 15,
+          "upstream_attempted": 14,
+          "usage_requests": 12,
+          "known_input_tokens": 47602,
+          "known_output_tokens": 3356,
+          "known_reasoning_tokens": 958,
+          "known_cached_tokens": 14336
+        }
+      },
+      "all_primary_wins": [
+        {
+          "trial": "smoke-quote-01__opentrading_finance__r1",
+          "answer": {
+            "value": 21,
+            "unit": "ngh\u00ecn \u0111\u1ed3ng",
+            "period": "phi\u00ean g\u1ea7n nh\u1ea5t (30/10/2026)",
+            "source": "vn_quote_history",
+            "evidence": [
+              {
+                "tool": "vn_quote_history",
+                "source": "vnstock",
+                "as_of": "2026-11-01T15:54:29.883479+07:00",
+                "call_id": "fe356d7e-7243-4efc-874b-e3353dfb989d",
+                "payload_sha256": "cb80cece34c0f94fc32a60a8f2ccd0022f827b72e9d6ccc0496744db39f2c71f",
+                "matched_entry_id": "vn_quote_history:0",
+                "response_sha256": "1494cd6b872e94237fbd832c39302b1f2242f6277a0da16148f560be974ba421"
+              }
+            ]
+          },
+          "proofs": [
+            {
+              "receipt": {
+                "tool": "vn_quote_history",
+                "source": "vnstock",
+                "as_of": "2026-11-01T15:54:29.883479+07:00",
+                "call_id": "fe356d7e-7243-4efc-874b-e3353dfb989d",
+                "payload_sha256": "cb80cece34c0f94fc32a60a8f2ccd0022f827b72e9d6ccc0496744db39f2c71f",
+                "matched_entry_id": "vn_quote_history:0",
+                "response_sha256": "1494cd6b872e94237fbd832c39302b1f2242f6277a0da16148f560be974ba421"
+              },
+              "exact_7_field_match": true,
+              "model_tool_context_match": true,
+              "availability": [
+                "available"
+              ],
+              "actual_visible_data": [
+                {
+                  "symbol": "HPG",
+                  "count": 5,
+                  "last": 21,
+                  "high": 21.6,
+                  "low": 20.75,
+                  "last_t": "2026-10-30"
+                }
+              ]
+            }
+          ],
+          "financial_canary": {
+            "pass": true,
+            "scope": "secondary smoke financial source/date/unit/numeric canary, does not change primary/frozen grades",
+            "issues": [],
+            "actual_source_leaves": [
+              {
+                "call_id": "fe356d7e-7243-4efc-874b-e3353dfb989d",
+                "symbol": "HPG",
+                "last": 21,
+                "last_t": "2026-10-30",
+                "unit": "ngh\u00ecn \u0111\u1ed3ng/c\u1ed5 phi\u1ebfu",
+                "unit_metadata": {
+                  "o, h, l, c, last, high, low": "ngh\u00ecn \u0111\u1ed3ng/c\u1ed5 phi\u1ebfu (64,27 = 64.270 \u0111)",
+                  "v": "c\u1ed5 phi\u1ebfu"
+                },
+                "provenance_data_time": "2026-10-30"
+              }
+            ],
+            "parsed_answer_dates": [
+              "2026-10-30"
+            ],
+            "public_requested_dates": [],
+            "independently_recomputed_values": {
+              "value": "21"
+            },
+            "answer_period": "phi\u00ean g\u1ea7n nh\u1ea5t (30/10/2026)",
+            "answer_unit": "ngh\u00ecn \u0111\u1ed3ng"
+          }
+        },
+        {
+          "trial": "smoke-trap-01__opentrading_finance__r2",
+          "answer": {
+            "value": null,
+            "reason": "symbol_resolve cho m\u00e3 XYZX tr\u1ea3 v\u1ec1 resolved=null, candidates=[] (availability=empty) t\u1ea1i snapshot 2026-11-01; kh\u00f4ng c\u00f3 m\u00e3/t\u00e0i s\u1ea3n n\u00e0o \u0111\u01b0\u1ee3c gi\u1ea3i m\u00e3 n\u00ean kh\u00f4ng c\u00f3 d\u1eef li\u1ec7u gi\u00e1 \u0111\u00f3ng c\u1eeda \u0111\u1ec3 truy ngu\u1ed3n. Kh\u00f4ng c\u00f3 tool n\u00e0o kh\u00e1c trong snapshot h\u1ed7 tr\u1ee3 tra gi\u00e1 cho m\u00e3 n\u00e0y.",
+            "evidence": [
+              {
+                "tool": "symbol_resolve",
+                "source": "vnstock+local",
+                "as_of": "2026-11-01T15:57:53.093226+07:00",
+                "call_id": "1fd32819-b503-429c-b5c2-43bb6699191f",
+                "payload_sha256": "6b7ff4111a0909abb9acffeb18b02683b8ea682954c7b5d370ad00934c185b36",
+                "matched_entry_id": "symbol_resolve:0",
+                "response_sha256": "bb10c861f6a84b5caf5f58dc2714bdf5e4edb19b312b76d3c18d98938272cd2f"
+              }
+            ]
+          },
+          "proofs": [
+            {
+              "receipt": {
+                "tool": "symbol_resolve",
+                "source": "vnstock+local",
+                "as_of": "2026-11-01T15:57:53.093226+07:00",
+                "call_id": "1fd32819-b503-429c-b5c2-43bb6699191f",
+                "payload_sha256": "6b7ff4111a0909abb9acffeb18b02683b8ea682954c7b5d370ad00934c185b36",
+                "matched_entry_id": "symbol_resolve:0",
+                "response_sha256": "bb10c861f6a84b5caf5f58dc2714bdf5e4edb19b312b76d3c18d98938272cd2f"
+              },
+              "exact_7_field_match": true,
+              "model_tool_context_match": true,
+              "availability": [
+                "empty"
+              ],
+              "actual_visible_data": [
+                {
+                  "query": "XYZX",
+                  "resolved": null,
+                  "ambiguous": false,
+                  "candidates": []
+                }
+              ]
+            }
+          ],
+          "financial_canary": null
+        },
+        {
+          "trial": "smoke-quote-01__dsh__r2",
+          "answer": {
+            "value": 21,
+            "unit": "ngh\u00ecn \u0111\u1ed3ng",
+            "period": "phi\u00ean g\u1ea7n nh\u1ea5t (30/10/2026)",
+            "source": "vn_quote_history",
+            "evidence": [
+              {
+                "tool": "vn_quote_history",
+                "source": "vnstock",
+                "as_of": "2026-11-01T15:54:29.883479+07:00",
+                "call_id": "1bd9a4d0-95c3-4488-a540-e50c50cdebed",
+                "payload_sha256": "cb80cece34c0f94fc32a60a8f2ccd0022f827b72e9d6ccc0496744db39f2c71f",
+                "matched_entry_id": "vn_quote_history:0",
+                "response_sha256": "1494cd6b872e94237fbd832c39302b1f2242f6277a0da16148f560be974ba421"
+              }
+            ]
+          },
+          "proofs": [
+            {
+              "receipt": {
+                "tool": "vn_quote_history",
+                "source": "vnstock",
+                "as_of": "2026-11-01T15:54:29.883479+07:00",
+                "call_id": "1bd9a4d0-95c3-4488-a540-e50c50cdebed",
+                "payload_sha256": "cb80cece34c0f94fc32a60a8f2ccd0022f827b72e9d6ccc0496744db39f2c71f",
+                "matched_entry_id": "vn_quote_history:0",
+                "response_sha256": "1494cd6b872e94237fbd832c39302b1f2242f6277a0da16148f560be974ba421"
+              },
+              "exact_7_field_match": true,
+              "model_tool_context_match": true,
+              "availability": [
+                "available"
+              ],
+              "actual_visible_data": [
+                {
+                  "symbol": "HPG",
+                  "count": 5,
+                  "last": 21,
+                  "high": 21.6,
+                  "low": 20.75,
+                  "last_t": "2026-10-30"
+                }
+              ]
+            }
+          ],
+          "financial_canary": {
+            "pass": true,
+            "scope": "secondary smoke financial source/date/unit/numeric canary, does not change primary/frozen grades",
+            "issues": [],
+            "actual_source_leaves": [
+              {
+                "call_id": "1bd9a4d0-95c3-4488-a540-e50c50cdebed",
+                "symbol": "HPG",
+                "last": 21,
+                "last_t": "2026-10-30",
+                "unit": "ngh\u00ecn \u0111\u1ed3ng/c\u1ed5 phi\u1ebfu",
+                "unit_metadata": {
+                  "o, h, l, c, last, high, low": "ngh\u00ecn \u0111\u1ed3ng/c\u1ed5 phi\u1ebfu (64,27 = 64.270 \u0111)",
+                  "v": "c\u1ed5 phi\u1ebfu"
+                },
+                "provenance_data_time": "2026-10-30"
+              }
+            ],
+            "parsed_answer_dates": [
+              "2026-10-30"
+            ],
+            "public_requested_dates": [],
+            "independently_recomputed_values": {
+              "value": "21"
+            },
+            "answer_period": "phi\u00ean g\u1ea7n nh\u1ea5t (30/10/2026)",
+            "answer_unit": "ngh\u00ecn \u0111\u1ed3ng"
+          }
+        }
+      ],
+      "read_trial_grade_and_capture_files": 135,
+      "main_audit_controls_pass": false,
+      "main_audit_errors": [
+        {
+          "trial": "smoke-agg-01__opentrading_finance__r1",
+          "stage": "local_rejection",
+          "error": "Unrecognized policy guard rejection"
+        },
+        {
+          "trial": "smoke-agg-01__opentrading_finance__r1",
+          "stage": "tool_call_reconciliation"
+        },
+        {
+          "trial": "smoke-agg-01__opentrading_finance__r2",
+          "stage": "local_rejection",
+          "error": "Unrecognized policy guard rejection"
+        },
+        {
+          "trial": "smoke-agg-01__opentrading_finance__r2",
+          "stage": "tool_call_reconciliation"
+        }
+      ],
+      "stored_usage_counts": {
+        "dsh": {
+          "gateway_requests": 15,
+          "usage_requests": 12,
+          "known_input_tokens": 47602,
+          "known_output_tokens": 3356,
+          "reported_reasoning_tokens_requests": 12,
+          "known_reasoning_tokens": 958,
+          "reported_cached_tokens_requests": 12,
+          "known_cached_tokens": 14336,
+          "capture_files": 29,
+          "partial_or_missing_usage_requests": 3,
+          "partial_capture_requests": 1
+        },
+        "opentrading_baseline": {
+          "gateway_requests": 15,
+          "usage_requests": 11,
+          "known_input_tokens": 79518,
+          "known_output_tokens": 3638,
+          "reported_reasoning_tokens_requests": 11,
+          "known_reasoning_tokens": 844,
+          "reported_cached_tokens_requests": 11,
+          "known_cached_tokens": 10368,
+          "capture_files": 27,
+          "partial_or_missing_usage_requests": 4,
+          "partial_capture_requests": 3
+        },
+        "opencode": {
+          "gateway_requests": 18,
+          "usage_requests": 16,
+          "known_input_tokens": 73129,
+          "known_output_tokens": 4406,
+          "reported_reasoning_tokens_requests": 16,
+          "known_reasoning_tokens": 915,
+          "reported_cached_tokens_requests": 16,
+          "known_cached_tokens": 19200,
+          "capture_files": 34,
+          "partial_or_missing_usage_requests": 2,
+          "partial_capture_requests": 2
+        },
+        "opentrading_finance": {
+          "gateway_requests": 18,
+          "usage_requests": 13,
+          "known_input_tokens": 62599,
+          "known_output_tokens": 3355,
+          "reported_reasoning_tokens_requests": 13,
+          "known_reasoning_tokens": 825,
+          "reported_cached_tokens_requests": 13,
+          "known_cached_tokens": 7360,
+          "capture_files": 33,
+          "partial_or_missing_usage_requests": 5,
+          "partial_capture_requests": 3
+        }
+      }
+    }
+  },
+  "mismatches": [],
+  "preservation": {
+    "checks": {
+      "v42_results": {
+        "files": 2228,
+        "changed_or_missing": []
+      },
+      "v43_tools": {
+        "files": 92,
+        "changed_or_missing": []
+      },
+      "v43_tasks": {
+        "files": 1699,
+        "changed_or_missing": []
+      },
+      "v43_plans": {
+        "files": 5,
+        "changed_or_missing": []
+      },
+      "v43_native_src": {
+        "files": 214,
+        "changed_or_missing": []
+      },
+      "v43_native_test": {
+        "files": 121,
+        "changed_or_missing": []
+      },
+      "v43_native_prompts": {
+        "files": 6,
+        "changed_or_missing": []
+      },
+      "v43_native_test_artifacts": {
+        "files": 31,
+        "changed_or_missing": []
+      }
+    },
+    "original_stored_files": 978,
+    "original_changed_or_missing": [],
+    "original_head": "b6e354e76894887e31c33b1f13b44eadc02fad7e",
+    "original_head_matches": true,
+    "v43_dependency_metadata_matches": {
+      "package.json": true,
+      "bun.lock": true
+    },
+    "pass": true
+  },
+  "seal": {
+    "state_sha256": "5e4add17dab9d6eb5891c29afa5e34c1a257dc53aaf4f9be2353602e7fbc7f1a",
+    "source_task_test_hashes_checked": 3588,
+    "source_mismatches": [],
+    "audit_script_matches": true,
+    "approval_matches": true
+  },
+  "pilot_observed_trials": {
+    "financial-v44-pilot-deepseek-20261107-startupfix1": 0,
+    "financial-v44-pilot-bolt-20261107-startupfix1": 0
+  },
+  "failed_startup_preservation": {
+    "checked_files": 12,
+    "changed_or_missing": [],
+    "runs": [
+      {
+        "directory": "/home/doanlong/extra/benchmark/experiments/finance-v44-study/results/financial-v44-smoke-bolt-20261107",
+        "files": [
+          ".driver.lock",
+          "manifest.json"
+        ]
+      },
+      {
+        "directory": "/home/doanlong/extra/benchmark/experiments/finance-v44-study/results/financial-v44-smoke-deepseek-20261107",
+        "files": [
+          "manifest.json"
+        ]
+      },
+      {
+        "directory": "/home/doanlong/extra/benchmark/experiments/finance-v44-study/results/financial-v44-pilot-bolt-20261107",
+        "files": [
+          "manifest.json"
+        ]
+      },
+      {
+        "directory": "/home/doanlong/extra/benchmark/experiments/finance-v44-study/results/financial-v44-pilot-deepseek-20261107",
+        "files": [
+          "manifest.json"
+        ]
+      }
+    ]
+  },
+  "aggregate_source_manual_check": {
+    "banks": [
+      {
+        "symbol": "VCB",
+        "last": 56.3,
+        "last_t": "2026-10-30"
+      },
+      {
+        "symbol": "BID",
+        "last": 33.4,
+        "last_t": "2026-10-30"
+      },
+      {
+        "symbol": "CTG",
+        "last": 30.3,
+        "last_t": "2026-10-30"
+      },
+      {
+        "symbol": "TCB",
+        "last": 21.6,
+        "last_t": "2026-10-30"
+      },
+      {
+        "symbol": "MBB",
+        "last": 19.3,
+        "last_t": "2026-10-30"
+      }
+    ],
+    "mean": 32.18,
+    "units": {
+      "last": "ngh\u00ecn \u0111\u1ed3ng/c\u1ed5 phi\u1ebfu"
+    },
+    "no_primary_wins": true
+  },
+  "completed_resume_zero_call_check": {
+    "proof_path": "/home/doanlong/extra/benchmark/audits/financial-prompt-v44/completed-resume-proof.json",
+    "proof_sha256": "5708f5b839713fd83e18cc4486622001ac320ebbf8e3d536a7d62072f2698330",
+    "proof_pass": true,
+    "independently_checked_protected_entries": 8132,
+    "before_after_equal": true,
+    "current_files_match_after": true,
+    "exact_supervisor_argv_match": true,
+    "both_exit_zero": true,
+    "new_execute_trial_calls": 0,
+    "new_model_calls": 0,
+    "scope": "Actual frozen driver main with exact supervisor CLI in external wrapper that fatally prohibits execute_trial; summary and driver lock alone excluded as regenerable."
+  }
+}

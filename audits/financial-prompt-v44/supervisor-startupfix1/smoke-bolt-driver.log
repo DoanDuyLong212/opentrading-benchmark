@@ -1,0 +1,43 @@
+[1/24] smoke-quote-01__opentrading_finance__r1 status=ok semantic=False grounded=False success=False wall=15690ms
+[2/24] smoke-quote-01__opentrading_baseline__r1 status=ok semantic=False grounded=False success=False wall=11186ms
+[3/24] smoke-quote-01__opencode__r1 status=ok semantic=False grounded=False success=False wall=16137ms
+[4/24] smoke-quote-01__dsh__r1 status=ok semantic=False grounded=False success=False wall=18080ms
+[5/24] smoke-trap-01__opencode__r1 status=ok semantic=True grounded=True success=True wall=16938ms
+[6/24] smoke-trap-01__dsh__r1 status=ok semantic=True grounded=True success=True wall=20118ms
+[7/24] smoke-trap-01__opentrading_finance__r1 status=ok semantic=True grounded=True success=True wall=15426ms
+[8/24] smoke-trap-01__opentrading_baseline__r1 status=ok semantic=True grounded=True success=True wall=13807ms
+[9/24] smoke-agg-01__dsh__r1 status=ok semantic=False grounded=False success=False wall=29409ms
+[10/24] smoke-agg-01__opentrading_finance__r1 status=ok semantic=False grounded=False success=False wall=11938ms
+[11/24] smoke-agg-01__opentrading_baseline__r1 status=ok semantic=False grounded=False success=False wall=17429ms
+[12/24] smoke-agg-01__opencode__r1 status=ok semantic=False grounded=False success=False wall=16347ms
+[13/24] smoke-trap-01__opentrading_baseline__r2 status=ok semantic=True grounded=True success=True wall=12297ms
+[14/24] smoke-trap-01__opencode__r2 status=ok semantic=True grounded=True success=False wall=16033ms
+[15/24] smoke-trap-01__dsh__r2 status=ok semantic=False grounded=True success=False wall=30491ms
+[16/24] smoke-trap-01__opentrading_finance__r2 status=ok semantic=True grounded=True success=True wall=14457ms
+[17/24] smoke-agg-01__dsh__r2 status=ok semantic=False grounded=False success=False wall=24102ms
+[18/24] smoke-agg-01__opentrading_baseline__r2 status=ok semantic=False grounded=False success=False wall=14623ms
+[19/24] smoke-agg-01__opentrading_finance__r2 status=ok semantic=False grounded=False success=False wall=10718ms
+[20/24] smoke-agg-01__opencode__r2 status=ok semantic=False grounded=False success=False wall=15455ms
+[21/24] smoke-quote-01__opencode__r2 status=ok semantic=False grounded=False success=False wall=11635ms
+[22/24] smoke-quote-01__dsh__r2 status=ok semantic=False grounded=False success=False wall=19189ms
+[23/24] smoke-quote-01__opentrading_baseline__r2 status=ok semantic=False grounded=False success=False wall=8403ms
+[24/24] smoke-quote-01__opentrading_finance__r2 status=ok semantic=False grounded=False success=False wall=25846ms
+Model: nvidia/nvidia/nemotron-3.5-bolt-e4b | trials=24 | frozen=True | complete=True
+dsh: success/started=16.7% success/answered=16.7% DNF=0.0%
+  stable 0/3 complete tasks, incomplete=0, scheduled runs=2
+  false refusal=4/4 answered; token coverage=100.0%; cost/success=N/A
+  latency ms p50=20118 p90=30491; ledger calls p50=1; errors={'sai_don_vi': 2, 'sai_so': 2, 'khong_tra_loi': 1}
+opencode: success/started=16.7% success/answered=16.7% DNF=0.0%
+  stable 0/3 complete tasks, incomplete=0, scheduled runs=2
+  false refusal=4/4 answered; token coverage=100.0%; cost/success=N/A
+  latency ms p50=16033 p90=16938; ledger calls p50=1; errors={'sai_don_vi': 2, 'sai_so': 2, 'public_contract_invalid': 1}
+opentrading_baseline: success/started=33.3% success/answered=33.3% DNF=0.0%
+  stable 1/3 complete tasks, incomplete=0, scheduled runs=2
+  false refusal=4/4 answered; token coverage=100.0%; cost/success=N/A
+  latency ms p50=12297 p90=17429; ledger calls p50=1; errors={'sai_don_vi': 2, 'sai_so': 2}
+opentrading_finance: success/started=33.3% success/answered=33.3% DNF=0.0%
+  stable 1/3 complete tasks, incomplete=0, scheduled runs=2
+  false refusal=4/4 answered; token coverage=100.0%; cost/success=N/A
+  latency ms p50=14457 p90=25846; ledger calls p50=0; errors={'sai_don_vi': 2, 'sai_so': 2}
+Statistics and coverage: summary.json. Legacy/unfrozen runs are diagnostic only.
+Results: /home/doanlong/extra/benchmark/experiments/finance-v44-study/results/financial-v44-smoke-bolt-20261107-startupfix1

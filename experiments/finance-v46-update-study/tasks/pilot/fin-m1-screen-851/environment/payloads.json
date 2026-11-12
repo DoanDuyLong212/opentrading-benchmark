@@ -1,0 +1,64 @@
+{
+ "snapshot_date": "2026-11-01",
+ "note": "Envelope MCP (snapshot 2026-11-01; lịch sử 120 phiên xem audits/snapshot-extension-2026-11-11).",
+ "tools": {
+  "peer:energy_p": {
+   "tool": "peer_compare",
+   "params": {
+    "symbol": "PVS",
+    "peers": [
+     "PVD",
+     "PVT",
+     "PLX",
+     "BSR"
+    ]
+   },
+   "envelope": {
+    "data": {
+     "rows": [
+      {
+       "symbol": "PVS",
+       "period_label": "2025",
+       "p_e": 8.88,
+       "p_b": 1.08,
+       "roe": 12.92
+      },
+      {
+       "symbol": "PVD",
+       "period_label": "2025",
+       "p_e": 15.17,
+       "p_b": 0.92,
+       "roe": 6.36
+      },
+      {
+       "symbol": "PVT",
+       "period_label": "2025",
+       "p_e": 7.25,
+       "p_b": 0.75,
+       "roe": 12.66
+      },
+      {
+       "symbol": "PLX",
+       "period_label": "2025",
+       "p_e": 16.77,
+       "p_b": 1.52,
+       "roe": 10.24
+      },
+      {
+       "symbol": "BSR",
+       "period_label": "2025",
+       "p_e": 10.41,
+       "p_b": 1.33,
+       "roe": 8.99
+      }
+     ]
+    },
+    "provenance": {
+     "source": "vnstock",
+     "as_of": "2026-11-01T23:14:37.310336+07:00"
+    },
+    "availability": "available"
+   }
+  }
+ }
+}

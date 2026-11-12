@@ -1,0 +1,55 @@
+[
+  {
+    "arm": "opentrading_baseline",
+    "provider_requests": 3,
+    "captures": 6,
+    "generated": 2,
+    "executed": 2,
+    "proved_local": [],
+    "mcp_statuses": [
+      "rejected",
+      "ok"
+    ],
+    "wire_constraints_and_hashes": true
+  },
+  {
+    "arm": "opentrading_finance",
+    "provider_requests": 4,
+    "captures": 8,
+    "generated": 2,
+    "executed": 1,
+    "proved_local": [
+      "offline-unsupported"
+    ],
+    "mcp_statuses": [
+      "ok"
+    ],
+    "wire_constraints_and_hashes": true
+  },
+  {
+    "arm": "opencode",
+    "provider_requests": 3,
+    "captures": 6,
+    "generated": 2,
+    "executed": 2,
+    "proved_local": [],
+    "mcp_statuses": [
+      "rejected",
+      "ok"
+    ],
+    "wire_constraints_and_hashes": true
+  },
+  {
+    "arm": "dsh",
+    "provider_requests": 3,
+    "captures": 6,
+    "generated": 2,
+    "executed": 2,
+    "proved_local": [],
+    "mcp_statuses": [
+      "rejected",
+      "ok"
+    ],
+    "wire_constraints_and_hashes": true
+  }
+]

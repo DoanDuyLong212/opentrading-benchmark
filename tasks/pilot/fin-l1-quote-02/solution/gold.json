@@ -14,7 +14,6 @@
       "type": "unit",
       "path": "unit",
       "accept": [
-        "USD",
         "USDT"
       ]
     },
@@ -39,5 +38,28 @@
     "value": 78109
   },
   "notes": "live 24h ticker → bắt buộc snapshot replay; zone yellow.",
-  "as_of": "2026-11-01T15:54:32.586909+07:00"
+  "as_of": "2026-11-01T15:54:32.586909+07:00",
+  "contract_version": 2,
+  "provenance_contract": [
+    {
+      "tool": "crypto_spot",
+      "source": "binance",
+      "as_of": "2026-11-01T15:54:32.586909+07:00",
+      "matched_entry_id": "crypto_spot:0",
+      "response_sha256": "aeb32670107aea9963bb1f08f1bfc583738d3dedd8c655db00737a85329bdc13"
+    }
+  ],
+  "payload_sha256": "f40d9ee2ab68813fb2388acb2064b596ef6bb6287de9ca198e60f34c8f37ac26",
+  "provenance_catalog": [
+    {
+      "tool": "crypto_spot",
+      "source": "binance",
+      "as_of": "2026-11-01T15:54:32.586909+07:00",
+      "matched_entry_id": "crypto_spot:0",
+      "response_sha256": "aeb32670107aea9963bb1f08f1bfc583738d3dedd8c655db00737a85329bdc13"
+    }
+  ],
+  "required_payload_keys": [
+    "crypto_spot"
+  ]
 }

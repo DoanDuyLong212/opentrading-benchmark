@@ -1,0 +1,53 @@
+{
+  "kind": "v44-sequential-smoke",
+  "runs": {
+    "smoke-bolt": {
+      "status": "blocked",
+      "out": "/home/doanlong/extra/benchmark/experiments/finance-v44-study/results/financial-v44-smoke-bolt-20261107",
+      "command": [
+        "/usr/bin/python3",
+        "/home/doanlong/extra/benchmark/experiments/finance-v44-study/tools/run_benchmark.py",
+        "--split",
+        "smoke",
+        "--arms",
+        "opentrading_baseline,opentrading_finance,opencode,dsh",
+        "--runs",
+        "2",
+        "--seed",
+        "20261105",
+        "--config",
+        "/home/doanlong/extra/benchmark/experiments/finance-v44-study/tools/bench_config.json",
+        "--out",
+        "/home/doanlong/extra/benchmark/experiments/finance-v44-study/results/financial-v44-smoke-bolt-20261107",
+        "--timeout",
+        "240",
+        "--provider-timeout-s",
+        "45",
+        "--retry",
+        "0",
+        "--pause",
+        "2",
+        "--effort",
+        "none",
+        "--max-requests",
+        "24",
+        "--max-output-tokens",
+        "2048",
+        "--max-total-tokens",
+        "48000",
+        "--v44-seal",
+        "/home/doanlong/extra/benchmark/audits/financial-prompt-v44/preinference-seal.json",
+        "--resume"
+      ],
+      "exit_code": 1
+    }
+  },
+  "seal": "/home/doanlong/extra/benchmark/audits/financial-prompt-v44/preinference-seal.json",
+  "supervisor_pid": 2078712,
+  "child_pid": null,
+  "status": "blocked",
+  "updated_at": "2026-11-07T07:40:16.690775+00:00",
+  "stage": "smoke-bolt-driver",
+  "heartbeat_at": "2026-11-07T07:40:16.666937+00:00",
+  "reason": "Driver infrastructure/identity failure; no new stratum launched"
+}

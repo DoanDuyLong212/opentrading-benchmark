@@ -1,0 +1,80 @@
+{
+  "task_id": "fin-l1-bctc-118",
+  "scoring": "value",
+  "solution": {
+    "value": 1313.85,
+    "period": "Q3/2026",
+    "line": "Tổng LNST"
+  },
+  "as_of": "2026-11-01T22:03:59.101765+07:00",
+  "split": "main",
+  "expects": [
+    {
+      "type": "unit",
+      "path": "unit",
+      "accept": [
+        "tỷ đồng",
+        "tỷ đ",
+        "tỷ"
+      ]
+    },
+    {
+      "type": "value",
+      "path": "value",
+      "gold": 1313.85,
+      "tol": {
+        "rel": 0.005
+      }
+    },
+    {
+      "type": "period",
+      "path": "period",
+      "accept": [
+        "Q3/2026",
+        "quý 3/2026",
+        "q3 2026",
+        "q3/26"
+      ]
+    },
+    {
+      "type": "tokens",
+      "path": "line",
+      "accept": [
+        "Tổng LNST"
+      ],
+      "reject": [
+        "LNST của CĐ Ngân hàng mẹ"
+      ]
+    },
+    {
+      "type": "str",
+      "path": "source",
+      "accept": [
+        "financial_statements"
+      ]
+    }
+  ],
+  "contract_version": 2,
+  "provenance_contract": [
+    {
+      "tool": "financial_statements",
+      "source": "vietstock",
+      "as_of": "2026-11-01T22:03:59.101765+07:00",
+      "matched_entry_id": "fs:OCB",
+      "response_sha256": "b78d672bf784516ec5d7584b8166b2c583d7109a8b24285282d463cc648bca1e"
+    }
+  ],
+  "payload_sha256": "2fa8c2c6c169c867d7ad945d7680dbd98864bc5f28f271a15d98242d0afbb0bd",
+  "provenance_catalog": [
+    {
+      "tool": "financial_statements",
+      "source": "vietstock",
+      "as_of": "2026-11-01T22:03:59.101765+07:00",
+      "matched_entry_id": "fs:OCB",
+      "response_sha256": "b78d672bf784516ec5d7584b8166b2c583d7109a8b24285282d463cc648bca1e"
+    }
+  ],
+  "required_payload_keys": [
+    "fs:OCB"
+  ]
+}

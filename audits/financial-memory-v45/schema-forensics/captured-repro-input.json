@@ -1,0 +1,264 @@
+{
+  "source_capture": "/home/doanlong/extra/benchmark/experiments/finance-v45-study/results/financial-memory-v45-mini-20261109-preflight5/episodes/33ff2409409809fb6508/runner/provider-requests/0002-native.json",
+  "source_capture_sha256": "363b48c810e9b5fd35fe38089cbbe02988828cf99d42a81d718c38f5215132f6",
+  "tool": "mcp__opentrading__yf_commodities",
+  "schema": {
+    "type": "object",
+    "properties": {
+      "tickers": {
+        "anyOf": [
+          {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "default": null,
+        "description": "Yahoo Finance tickers, e.g. GC=F (gold), CL=F (oil), BTC-USD. Null uses the provider commodity universe; do not use domestic equity symbols here."
+      },
+      "period": {
+        "type": "string",
+        "default": "2d",
+        "description": "Lookback using yfinance period spelling; default 2d. Not a financial statement quarter/year."
+      },
+      "interval": {
+        "type": "string",
+        "default": "1d",
+        "description": "yfinance bar interval, default lowercase 1d; spelling differs from vn_quote_history."
+      }
+    },
+    "required": [],
+    "additionalProperties": false,
+    "anyOf": [
+      {
+        "type": "object",
+        "properties": {
+          "tickers": {
+            "type": "array",
+            "minItems": 12,
+            "maxItems": 12,
+            "items": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "pattern": "^\\s*[gG][cC]=[fF]\\s*$"
+                },
+                {
+                  "type": "string",
+                  "pattern": "^\\s*[sS][iI]=[fF]\\s*$"
+                },
+                {
+                  "type": "string",
+                  "pattern": "^\\s*[nN][gG]=[fF]\\s*$"
+                },
+                {
+                  "type": "string",
+                  "pattern": "^\\s*[hH][gG]=[fF]\\s*$"
+                },
+                {
+                  "type": "string",
+                  "pattern": "^\\s*[bB][zZ]=[fF]\\s*$"
+                },
+                {
+                  "type": "string",
+                  "pattern": "^\\s*[cC][lL]=[fF]\\s*$"
+                },
+                {
+                  "type": "string",
+                  "pattern": "^\\s*[bB][tT][cC]\\-[uU][sS][dD]\\s*$"
+                },
+                {
+                  "type": "string",
+                  "pattern": "^\\s*[eE][tT][hH]\\-[uU][sS][dD]\\s*$"
+                },
+                {
+                  "type": "string",
+                  "pattern": "^\\s*[sS][oO][lL]\\-[uU][sS][dD]\\s*$"
+                },
+                {
+                  "type": "string",
+                  "pattern": "^\\s*[bB][nN][bB]\\-[uU][sS][dD]\\s*$"
+                },
+                {
+                  "type": "string",
+                  "pattern": "^\\s*[gG][bB][pP][uU][sS][dD]=[xX]\\s*$"
+                },
+                {
+                  "type": "string",
+                  "pattern": "^\\s*[jJ][pP][yY]=[xX]\\s*$"
+                }
+              ]
+            },
+            "allOf": [
+              {
+                "contains": {
+                  "type": "string",
+                  "pattern": "^\\s*[gG][cC]=[fF]\\s*$"
+                }
+              },
+              {
+                "contains": {
+                  "type": "string",
+                  "pattern": "^\\s*[sS][iI]=[fF]\\s*$"
+                }
+              },
+              {
+                "contains": {
+                  "type": "string",
+                  "pattern": "^\\s*[nN][gG]=[fF]\\s*$"
+                }
+              },
+              {
+                "contains": {
+                  "type": "string",
+                  "pattern": "^\\s*[hH][gG]=[fF]\\s*$"
+                }
+              },
+              {
+                "contains": {
+                  "type": "string",
+                  "pattern": "^\\s*[bB][zZ]=[fF]\\s*$"
+                }
+              },
+              {
+                "contains": {
+                  "type": "string",
+                  "pattern": "^\\s*[cC][lL]=[fF]\\s*$"
+                }
+              },
+              {
+                "contains": {
+                  "type": "string",
+                  "pattern": "^\\s*[bB][tT][cC]\\-[uU][sS][dD]\\s*$"
+                }
+              },
+              {
+                "contains": {
+                  "type": "string",
+                  "pattern": "^\\s*[eE][tT][hH]\\-[uU][sS][dD]\\s*$"
+                }
+              },
+              {
+                "contains": {
+                  "type": "string",
+                  "pattern": "^\\s*[sS][oO][lL]\\-[uU][sS][dD]\\s*$"
+                }
+              },
+              {
+                "contains": {
+                  "type": "string",
+                  "pattern": "^\\s*[bB][nN][bB]\\-[uU][sS][dD]\\s*$"
+                }
+              },
+              {
+                "contains": {
+                  "type": "string",
+                  "pattern": "^\\s*[gG][bB][pP][uU][sS][dD]=[xX]\\s*$"
+                }
+              },
+              {
+                "contains": {
+                  "type": "string",
+                  "pattern": "^\\s*[jJ][pP][yY]=[xX]\\s*$"
+                }
+              }
+            ]
+          },
+          "period": {
+            "type": "string",
+            "pattern": "^\\s*5[dD]\\s*$"
+          },
+          "interval": {
+            "type": "string",
+            "pattern": "^\\s*1[dD]\\s*$"
+          }
+        },
+        "required": [
+          "tickers",
+          "period"
+        ],
+        "additionalProperties": false
+      }
+    ],
+    "x-opentrading-schema-profile": "finite-replay-c2",
+    "x-finite-request-variants": [
+      {
+        "tickers": [
+          "GC=F",
+          "SI=F",
+          "NG=F",
+          "HG=F",
+          "BZ=F",
+          "CL=F",
+          "BTC-USD",
+          "ETH-USD",
+          "SOL-USD",
+          "BNB-USD",
+          "GBPUSD=X",
+          "JPY=X"
+        ],
+        "period": "5d",
+        "interval": "1d"
+      }
+    ],
+    "x-repair-fields": []
+  },
+  "offending_patterns": [
+    {
+      "path": "/anyOf/0/properties/tickers/items/anyOf/6/pattern",
+      "pattern": "^\\s*[bB][tT][cC]\\-[uU][sS][dD]\\s*$"
+    },
+    {
+      "path": "/anyOf/0/properties/tickers/items/anyOf/7/pattern",
+      "pattern": "^\\s*[eE][tT][hH]\\-[uU][sS][dD]\\s*$"
+    },
+    {
+      "path": "/anyOf/0/properties/tickers/items/anyOf/8/pattern",
+      "pattern": "^\\s*[sS][oO][lL]\\-[uU][sS][dD]\\s*$"
+    },
+    {
+      "path": "/anyOf/0/properties/tickers/items/anyOf/9/pattern",
+      "pattern": "^\\s*[bB][nN][bB]\\-[uU][sS][dD]\\s*$"
+    },
+    {
+      "path": "/anyOf/0/properties/tickers/allOf/6/contains/pattern",
+      "pattern": "^\\s*[bB][tT][cC]\\-[uU][sS][dD]\\s*$"
+    },
+    {
+      "path": "/anyOf/0/properties/tickers/allOf/7/contains/pattern",
+      "pattern": "^\\s*[eE][tT][hH]\\-[uU][sS][dD]\\s*$"
+    },
+    {
+      "path": "/anyOf/0/properties/tickers/allOf/8/contains/pattern",
+      "pattern": "^\\s*[sS][oO][lL]\\-[uU][sS][dD]\\s*$"
+    },
+    {
+      "path": "/anyOf/0/properties/tickers/allOf/9/contains/pattern",
+      "pattern": "^\\s*[bB][nN][bB]\\-[uU][sS][dD]\\s*$"
+    }
+  ],
+  "captured_first_args": {
+    "tickers": [
+      "GC=F",
+      "SI=F",
+      "NG=F",
+      "HG=F",
+      "BZ=F",
+      "CL=F",
+      "BTC-USD",
+      "ETH-USD",
+      "SOL-USD",
+      "BNB-USD",
+      "GBPUSD=X",
+      "JPY=X"
+    ],
+    "period": "5d",
+    "interval": "1d"
+  },
+  "python_generator": "experiments/finance-v45-study/tools/mcp_snapshot_server.py:87-89",
+  "native_compile": "experiments/finance-v45-study/experiments/opentrading-runtime/src/core/finance-policy.ts:145"
+}

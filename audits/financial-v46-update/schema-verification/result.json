@@ -1,0 +1,6830 @@
+{
+  "pass": true,
+  "bun_version": "1.4.4",
+  "bun_binary_sha256": "10702245766b225e70bbf6235fd6b47214fd94b4760d00ffaed8ab0df57ac235",
+  "external_model_calls": 0,
+  "holdout_excluded": true,
+  "tasks": 254,
+  "unique_schemas": 156,
+  "recorded_checks": 378,
+  "failed_schemas": 0,
+  "schema_file_sha256": "1dd380c1bb3583c6b93b944f9bdcda8eb32b6f7cac80306fa0f5ecc2e64f9fe0",
+  "rows": [
+    {
+      "id": "f1b5a947b1ffe493998ddd28c01e60fdf1dc01275eee3e3fff89a13e968e25a4",
+      "occurrences": [
+        {
+          "task": "devsmoke/v45-dev-01-quote",
+          "tool": "vn_quote_history"
+        },
+        {
+          "task": "devsmoke/v45-dev-02-resolve",
+          "tool": "vn_quote_history"
+        }
+      ],
+      "unicode_patterns_compile": true,
+      "checks": [
+        {
+          "arm": "B0",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        },
+        {
+          "arm": "B1",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        }
+      ]
+    },
+    {
+      "id": "a2d705e9d576ad34dde0d8cd64159700aa165e1848e02a4839bdca5338a19f80",
+      "occurrences": [
+        {
+          "task": "devsmoke/v45-dev-01-quote",
+          "tool": "analytics_compute"
+        },
+        {
+          "task": "devsmoke/v45-dev-02-resolve",
+          "tool": "analytics_compute"
+        },
+        {
+          "task": "devsmoke/v45-dev-03-growth",
+          "tool": "analytics_compute"
+        },
+        {
+          "task": "devsmoke/v45-dev-04-margin",
+          "tool": "analytics_compute"
+        },
+        {
+          "task": "devsmoke/v45-dev-05-scale",
+          "tool": "analytics_compute"
+        },
+        {
+          "task": "devsmoke/v45-dev-06-ratio",
+          "tool": "analytics_compute"
+        },
+        {
+          "task": "devsmoke/v45-dev-07-aggregate",
+          "tool": "analytics_compute"
+        },
+        {
+          "task": "devsmoke/v45-dev-08-cross-source",
+          "tool": "analytics_compute"
+        },
+        {
+          "task": "devsmoke/v45-dev-09-chain",
+          "tool": "analytics_compute"
+        },
+        {
+          "task": "devsmoke/v45-dev-10-trap-resolver",
+          "tool": "analytics_compute"
+        },
+        {
+          "task": "devsmoke/v45-dev-11-trap-period",
+          "tool": "analytics_compute"
+        },
+        {
+          "task": "devsmoke/v45-dev-12-trap-empty",
+          "tool": "analytics_compute"
+        },
+        {
+          "task": "main/fin-l1-bctc-109",
+          "tool": "analytics_compute"
+        },
+        {
+          "task": "main/fin-l1-bctc-110",
+          "tool": "analytics_compute"
+        },
+        {
+          "task": "main/fin-l1-bctc-111",
+          "tool": "analytics_compute"
+        },
+        {
+          "task": "main/fin-l1-bctc-112",
+          "tool": "analytics_compute"
+        },
+        {
+          "task": "main/fin-l1-bctc-113",
+          "tool": "analytics_compute"
+        },
+        {
+          "task": "main/fin-l1-bctc-114",
+          "tool": "analytics_compute"
+        },
+        {
+          "task": "main/fin-l1-bctc-115",
+          "tool": "analytics_compute"
+        },
+        {
+          "task": "main/fin-l1-bctc-116",
+          "tool": "analytics_compute"
+        },
+        {
+          "task": "main/fin-l1-bctc-117",
+          "tool": "analytics_compute"
+        },
+        {
+          "task": "main/fin-l1-bctc-118",
+          "tool": "analytics_compute"
+        },
+        {
+          "task": "main/fin-l1-bctc-119",
+          "tool": "analytics_compute"
+        },
+        {
+          "task": "main/fin-l1-bctc-120",
+          "tool": "analytics_compute"
+        },
+        {
+          "task": "main/fin-l1-macro-133",
+          "tool": "analytics_compute"
+        },
+        {
+          "task": "main/fin-l1-macro-136",
+          "tool": "analytics_compute"
+        },
+        {
+          "task": "main/fin-l1-macro-137",
+          "tool": "analytics_compute"
+        },
+        {
+          "task": "main/fin-l1-macro-138",
+          "tool": "analytics_compute"
+        },
+        {
+          "task": "main/fin-l1-macro-139",
+          "tool": "analytics_compute"
+        },
+        {
+          "task": "main/fin-l1-macro-140",
+          "tool": "analytics_compute"
+        },
+        {
+          "task": "main/fin-l1-quote-crypto-121",
+          "tool": "analytics_compute"
+        },
+        {
+          "task": "main/fin-l1-quote-crypto-122",
+          "tool": "analytics_compute"
+        },
+        {
+          "task": "main/fin-l1-quote-crypto-123",
+          "tool": "analytics_compute"
+        },
+        {
+          "task": "main/fin-l1-quote-crypto-124",
+          "tool": "analytics_compute"
+        },
+        {
+          "task": "main/fin-l1-quote-crypto-125",
+          "tool": "analytics_compute"
+        },
+        {
+          "task": "main/fin-l1-quote-gf-126",
+          "tool": "analytics_compute"
+        },
+        {
+          "task": "main/fin-l1-quote-gf-127",
+          "tool": "analytics_compute"
+        },
+        {
+          "task": "main/fin-l1-quote-gf-128",
+          "tool": "analytics_compute"
+        },
+        {
+          "task": "main/fin-l1-quote-gf-129",
+          "tool": "analytics_compute"
+        },
+        {
+          "task": "main/fin-l1-quote-gf-130",
+          "tool": "analytics_compute"
+        },
+        {
+          "task": "main/fin-l1-quote-vn-101",
+          "tool": "analytics_compute"
+        },
+        {
+          "task": "main/fin-l1-quote-vn-103",
+          "tool": "analytics_compute"
+        },
+        {
+          "task": "main/fin-l1-quote-vn-104",
+          "tool": "analytics_compute"
+        },
+        {
+          "task": "main/fin-l1-quote-vn-106",
+          "tool": "analytics_compute"
+        },
+        {
+          "task": "main/fin-l1-quote-vn-107",
+          "tool": "analytics_compute"
+        },
+        {
+          "task": "main/fin-l1-quote-vn-108",
+          "tool": "analytics_compute"
+        },
+        {
+          "task": "main/fin-l2-crypto-x-166",
+          "tool": "analytics_compute"
+        },
+        {
+          "task": "main/fin-l2-crypto-x-167",
+          "tool": "analytics_compute"
+        },
+        {
+          "task": "main/fin-l2-crypto-x-168",
+          "tool": "analytics_compute"
+        },
+        {
+          "task": "main/fin-l2-crypto-x-169",
+          "tool": "analytics_compute"
+        },
+        {
+          "task": "main/fin-l2-crypto-x-170",
+          "tool": "analytics_compute"
+        },
+        {
+          "task": "main/fin-l2-gf-compare-172",
+          "tool": "analytics_compute"
+        },
+        {
+          "task": "main/fin-l2-gf-compare-173",
+          "tool": "analytics_compute"
+        },
+        {
+          "task": "main/fin-l2-gf-compare-174",
+          "tool": "analytics_compute"
+        },
+        {
+          "task": "main/fin-l2-gf-compare-175",
+          "tool": "analytics_compute"
+        },
+        {
+          "task": "main/fin-l2-growth-141",
+          "tool": "analytics_compute"
+        },
+        {
+          "task": "main/fin-l2-growth-142",
+          "tool": "analytics_compute"
+        },
+        {
+          "task": "main/fin-l2-growth-143",
+          "tool": "analytics_compute"
+        },
+        {
+          "task": "main/fin-l2-growth-144",
+          "tool": "analytics_compute"
+        },
+        {
+          "task": "main/fin-l2-growth-145",
+          "tool": "analytics_compute"
+        },
+        {
+          "task": "main/fin-l2-growth-146",
+          "tool": "analytics_compute"
+        },
+        {
+          "task": "main/fin-l2-growth-147",
+          "tool": "analytics_compute"
+        },
+        {
+          "task": "main/fin-l2-growth-148",
+          "tool": "analytics_compute"
+        },
+        {
+          "task": "main/fin-l2-macro-calc-176",
+          "tool": "analytics_compute"
+        },
+        {
+          "task": "main/fin-l2-macro-calc-178",
+          "tool": "analytics_compute"
+        },
+        {
+          "task": "main/fin-l2-macro-calc-179",
+          "tool": "analytics_compute"
+        },
+        {
+          "task": "main/fin-l2-macro-calc-180",
+          "tool": "analytics_compute"
+        },
+        {
+          "task": "main/fin-l2-margin-149",
+          "tool": "analytics_compute"
+        },
+        {
+          "task": "main/fin-l2-margin-150",
+          "tool": "analytics_compute"
+        },
+        {
+          "task": "main/fin-l2-margin-151",
+          "tool": "analytics_compute"
+        },
+        {
+          "task": "main/fin-l2-margin-152",
+          "tool": "analytics_compute"
+        },
+        {
+          "task": "main/fin-l2-margin-153",
+          "tool": "analytics_compute"
+        },
+        {
+          "task": "main/fin-l2-margin-154",
+          "tool": "analytics_compute"
+        },
+        {
+          "task": "main/fin-l2-margin-155",
+          "tool": "analytics_compute"
+        },
+        {
+          "task": "main/fin-l2-ratio-157",
+          "tool": "analytics_compute"
+        },
+        {
+          "task": "main/fin-l2-ratio-158",
+          "tool": "analytics_compute"
+        },
+        {
+          "task": "main/fin-l2-ratio-159",
+          "tool": "analytics_compute"
+        },
+        {
+          "task": "main/fin-l2-ratio-160",
+          "tool": "analytics_compute"
+        },
+        {
+          "task": "main/fin-l2-tech-162",
+          "tool": "analytics_compute"
+        },
+        {
+          "task": "main/fin-l2-tech-163",
+          "tool": "analytics_compute"
+        },
+        {
+          "task": "main/fin-l2-tech-164",
+          "tool": "analytics_compute"
+        },
+        {
+          "task": "main/fin-l2-tech-165",
+          "tool": "analytics_compute"
+        },
+        {
+          "task": "main/fin-l3-agg-181",
+          "tool": "analytics_compute"
+        },
+        {
+          "task": "main/fin-l3-agg-182",
+          "tool": "analytics_compute"
+        },
+        {
+          "task": "main/fin-l3-agg-183",
+          "tool": "analytics_compute"
+        },
+        {
+          "task": "main/fin-l3-agg-184",
+          "tool": "analytics_compute"
+        },
+        {
+          "task": "main/fin-l3-agg-185",
+          "tool": "analytics_compute"
+        },
+        {
+          "task": "main/fin-l3-agg-186",
+          "tool": "analytics_compute"
+        },
+        {
+          "task": "main/fin-l3-agg-187",
+          "tool": "analytics_compute"
+        },
+        {
+          "task": "main/fin-l3-agg-188",
+          "tool": "analytics_compute"
+        },
+        {
+          "task": "main/fin-l3-breadth-301",
+          "tool": "analytics_compute"
+        },
+        {
+          "task": "main/fin-l3-crypto-multi-208",
+          "tool": "analytics_compute"
+        },
+        {
+          "task": "main/fin-l3-crypto-multi-209",
+          "tool": "analytics_compute"
+        },
+        {
+          "task": "main/fin-l3-crypto-multi-210",
+          "tool": "analytics_compute"
+        },
+        {
+          "task": "main/fin-l3-crypto-multi-211",
+          "tool": "analytics_compute"
+        },
+        {
+          "task": "main/fin-l3-crypto-multi-212",
+          "tool": "analytics_compute"
+        },
+        {
+          "task": "main/fin-l3-crypto-multi-213",
+          "tool": "analytics_compute"
+        },
+        {
+          "task": "main/fin-l3-crypto-multi-214",
+          "tool": "analytics_compute"
+        },
+        {
+          "task": "main/fin-l3-crypto-multi-215",
+          "tool": "analytics_compute"
+        },
+        {
+          "task": "main/fin-l3-index-216",
+          "tool": "analytics_compute"
+        },
+        {
+          "task": "main/fin-l3-index-217",
+          "tool": "analytics_compute"
+        },
+        {
+          "task": "main/fin-l3-macro-agg-218",
+          "tool": "analytics_compute"
+        },
+        {
+          "task": "main/fin-l3-macro-agg-219",
+          "tool": "analytics_compute"
+        },
+        {
+          "task": "main/fin-l3-macro-agg-220",
+          "tool": "analytics_compute"
+        },
+        {
+          "task": "main/fin-l3-screen-189",
+          "tool": "analytics_compute"
+        },
+        {
+          "task": "main/fin-l3-screen-190",
+          "tool": "analytics_compute"
+        },
+        {
+          "task": "main/fin-l3-screen-191",
+          "tool": "analytics_compute"
+        },
+        {
+          "task": "main/fin-l3-screen-192",
+          "tool": "analytics_compute"
+        },
+        {
+          "task": "main/fin-l3-screen-193",
+          "tool": "analytics_compute"
+        },
+        {
+          "task": "main/fin-l3-screen-194",
+          "tool": "analytics_compute"
+        },
+        {
+          "task": "main/fin-l3-screen-195",
+          "tool": "analytics_compute"
+        },
+        {
+          "task": "main/fin-l3-screen-196",
+          "tool": "analytics_compute"
+        },
+        {
+          "task": "main/fin-l3-tech-multi-203",
+          "tool": "analytics_compute"
+        },
+        {
+          "task": "main/fin-l3-tech-multi-204",
+          "tool": "analytics_compute"
+        },
+        {
+          "task": "main/fin-l3-tech-multi-205",
+          "tool": "analytics_compute"
+        },
+        {
+          "task": "main/fin-l3-tech-multi-206",
+          "tool": "analytics_compute"
+        },
+        {
+          "task": "main/fin-l3-tech-multi-207",
+          "tool": "analytics_compute"
+        },
+        {
+          "task": "main/fin-l3-top-197",
+          "tool": "analytics_compute"
+        },
+        {
+          "task": "main/fin-l3-top-198",
+          "tool": "analytics_compute"
+        },
+        {
+          "task": "main/fin-l3-top-199",
+          "tool": "analytics_compute"
+        },
+        {
+          "task": "main/fin-l3-top-200",
+          "tool": "analytics_compute"
+        },
+        {
+          "task": "main/fin-l3-top-201",
+          "tool": "analytics_compute"
+        },
+        {
+          "task": "main/fin-l3-top-202",
+          "tool": "analytics_compute"
+        },
+        {
+          "task": "main/fin-l4-2src-253",
+          "tool": "analytics_compute"
+        },
+        {
+          "task": "main/fin-l4-2src-254",
+          "tool": "analytics_compute"
+        },
+        {
+          "task": "main/fin-l4-2src-255",
+          "tool": "analytics_compute"
+        },
+        {
+          "task": "main/fin-l4-2src-256",
+          "tool": "analytics_compute"
+        },
+        {
+          "task": "main/fin-l4-2src-257",
+          "tool": "analytics_compute"
+        },
+        {
+          "task": "main/fin-l4-2src-258",
+          "tool": "analytics_compute"
+        },
+        {
+          "task": "main/fin-l4-2src-259",
+          "tool": "analytics_compute"
+        },
+        {
+          "task": "main/fin-l4-2src-260",
+          "tool": "analytics_compute"
+        },
+        {
+          "task": "main/fin-l4-2src-302",
+          "tool": "analytics_compute"
+        },
+        {
+          "task": "main/fin-l4-chain-303",
+          "tool": "analytics_compute"
+        },
+        {
+          "task": "main/fin-l4-chain-304",
+          "tool": "analytics_compute"
+        },
+        {
+          "task": "main/fin-l4-chain-305",
+          "tool": "analytics_compute"
+        },
+        {
+          "task": "main/fin-l4-chain-306",
+          "tool": "analytics_compute"
+        },
+        {
+          "task": "main/fin-l4-future-221",
+          "tool": "analytics_compute"
+        },
+        {
+          "task": "main/fin-l4-future-222",
+          "tool": "analytics_compute"
+        },
+        {
+          "task": "main/fin-l4-future-223",
+          "tool": "analytics_compute"
+        },
+        {
+          "task": "main/fin-l4-future-224",
+          "tool": "analytics_compute"
+        },
+        {
+          "task": "main/fin-l4-future-225",
+          "tool": "analytics_compute"
+        },
+        {
+          "task": "main/fin-l4-future-226",
+          "tool": "analytics_compute"
+        },
+        {
+          "task": "main/fin-l4-future-227",
+          "tool": "analytics_compute"
+        },
+        {
+          "task": "main/fin-l4-future-228",
+          "tool": "analytics_compute"
+        },
+        {
+          "task": "main/fin-l4-future-229",
+          "tool": "analytics_compute"
+        },
+        {
+          "task": "main/fin-l4-future-230",
+          "tool": "analytics_compute"
+        },
+        {
+          "task": "main/fin-l4-future-231",
+          "tool": "analytics_compute"
+        },
+        {
+          "task": "main/fin-l4-future-232",
+          "tool": "analytics_compute"
+        },
+        {
+          "task": "main/fin-l4-future-233",
+          "tool": "analytics_compute"
+        },
+        {
+          "task": "main/fin-l4-future-234",
+          "tool": "analytics_compute"
+        },
+        {
+          "task": "main/fin-l4-future-307",
+          "tool": "analytics_compute"
+        },
+        {
+          "task": "main/fin-l4-future-308",
+          "tool": "analytics_compute"
+        },
+        {
+          "task": "main/fin-l4-narrative-244",
+          "tool": "analytics_compute"
+        },
+        {
+          "task": "main/fin-l4-narrative-245",
+          "tool": "analytics_compute"
+        },
+        {
+          "task": "main/fin-l4-narrative-246",
+          "tool": "analytics_compute"
+        },
+        {
+          "task": "main/fin-l4-narrative-247",
+          "tool": "analytics_compute"
+        },
+        {
+          "task": "main/fin-l4-narrative-248",
+          "tool": "analytics_compute"
+        },
+        {
+          "task": "main/fin-l4-narrative-249",
+          "tool": "analytics_compute"
+        },
+        {
+          "task": "main/fin-l4-narrative-250",
+          "tool": "analytics_compute"
+        },
+        {
+          "task": "main/fin-l4-narrative-251",
+          "tool": "analytics_compute"
+        },
+        {
+          "task": "main/fin-l4-narrative-252",
+          "tool": "analytics_compute"
+        },
+        {
+          "task": "main/fin-l4-nonexist-235",
+          "tool": "analytics_compute"
+        },
+        {
+          "task": "main/fin-l4-nonexist-236",
+          "tool": "analytics_compute"
+        },
+        {
+          "task": "main/fin-l4-nonexist-237",
+          "tool": "analytics_compute"
+        },
+        {
+          "task": "main/fin-l4-nonexist-238",
+          "tool": "analytics_compute"
+        },
+        {
+          "task": "main/fin-l4-nonexist-239",
+          "tool": "analytics_compute"
+        },
+        {
+          "task": "main/fin-l4-nonexist-240",
+          "tool": "analytics_compute"
+        },
+        {
+          "task": "main/fin-l4-nonexist-241",
+          "tool": "analytics_compute"
+        },
+        {
+          "task": "main/fin-l4-nonexist-242",
+          "tool": "analytics_compute"
+        },
+        {
+          "task": "main/fin-l4-nonexist-243",
+          "tool": "analytics_compute"
+        },
+        {
+          "task": "main/fin-l4-nonexist-309",
+          "tool": "analytics_compute"
+        },
+        {
+          "task": "main/fin-l4-nonexist-310",
+          "tool": "analytics_compute"
+        },
+        {
+          "task": "main/fin-l5-compare-275",
+          "tool": "analytics_compute"
+        },
+        {
+          "task": "main/fin-l5-compare-276",
+          "tool": "analytics_compute"
+        },
+        {
+          "task": "main/fin-l5-compare-277",
+          "tool": "analytics_compute"
+        },
+        {
+          "task": "main/fin-l5-compare-278",
+          "tool": "analytics_compute"
+        },
+        {
+          "task": "main/fin-l5-compare-279",
+          "tool": "analytics_compute"
+        },
+        {
+          "task": "main/fin-l5-compare-280",
+          "tool": "analytics_compute"
+        },
+        {
+          "task": "main/fin-l5-compare-281",
+          "tool": "analytics_compute"
+        },
+        {
+          "task": "main/fin-l5-compare-282",
+          "tool": "analytics_compute"
+        },
+        {
+          "task": "main/fin-l5-compare-283",
+          "tool": "analytics_compute"
+        },
+        {
+          "task": "main/fin-l5-compare-284",
+          "tool": "analytics_compute"
+        },
+        {
+          "task": "main/fin-l5-compare-285",
+          "tool": "analytics_compute"
+        },
+        {
+          "task": "main/fin-l5-compare-286",
+          "tool": "analytics_compute"
+        },
+        {
+          "task": "main/fin-l5-compare-287",
+          "tool": "analytics_compute"
+        },
+        {
+          "task": "main/fin-l5-compare-288",
+          "tool": "analytics_compute"
+        },
+        {
+          "task": "main/fin-l5-compare-289",
+          "tool": "analytics_compute"
+        },
+        {
+          "task": "main/fin-l5-compare-290",
+          "tool": "analytics_compute"
+        },
+        {
+          "task": "main/fin-l5-profile-261",
+          "tool": "analytics_compute"
+        },
+        {
+          "task": "main/fin-l5-profile-262",
+          "tool": "analytics_compute"
+        },
+        {
+          "task": "main/fin-l5-profile-263",
+          "tool": "analytics_compute"
+        },
+        {
+          "task": "main/fin-l5-profile-264",
+          "tool": "analytics_compute"
+        },
+        {
+          "task": "main/fin-l5-profile-265",
+          "tool": "analytics_compute"
+        },
+        {
+          "task": "main/fin-l5-profile-266",
+          "tool": "analytics_compute"
+        },
+        {
+          "task": "main/fin-l5-profile-267",
+          "tool": "analytics_compute"
+        },
+        {
+          "task": "main/fin-l5-profile-268",
+          "tool": "analytics_compute"
+        },
+        {
+          "task": "main/fin-l5-profile-269",
+          "tool": "analytics_compute"
+        },
+        {
+          "task": "main/fin-l5-profile-270",
+          "tool": "analytics_compute"
+        },
+        {
+          "task": "main/fin-l5-profile-271",
+          "tool": "analytics_compute"
+        },
+        {
+          "task": "main/fin-l5-profile-272",
+          "tool": "analytics_compute"
+        },
+        {
+          "task": "main/fin-l5-profile-273",
+          "tool": "analytics_compute"
+        },
+        {
+          "task": "main/fin-l5-profile-274",
+          "tool": "analytics_compute"
+        },
+        {
+          "task": "main/fin-l5-valuation-291",
+          "tool": "analytics_compute"
+        },
+        {
+          "task": "main/fin-l5-valuation-292",
+          "tool": "analytics_compute"
+        },
+        {
+          "task": "main/fin-l5-valuation-293",
+          "tool": "analytics_compute"
+        },
+        {
+          "task": "main/fin-l5-valuation-294",
+          "tool": "analytics_compute"
+        },
+        {
+          "task": "main/fin-l5-valuation-295",
+          "tool": "analytics_compute"
+        },
+        {
+          "task": "main/fin-l5-valuation-296",
+          "tool": "analytics_compute"
+        },
+        {
+          "task": "main/fin-l5-valuation-297",
+          "tool": "analytics_compute"
+        },
+        {
+          "task": "main/fin-l5-valuation-298",
+          "tool": "analytics_compute"
+        },
+        {
+          "task": "main/fin-l5-valuation-299",
+          "tool": "analytics_compute"
+        },
+        {
+          "task": "main/fin-l5-valuation-300",
+          "tool": "analytics_compute"
+        },
+        {
+          "task": "main/fin-mem-320",
+          "tool": "analytics_compute"
+        },
+        {
+          "task": "main/fin-mem-321",
+          "tool": "analytics_compute"
+        },
+        {
+          "task": "main/fin-mem-322",
+          "tool": "analytics_compute"
+        },
+        {
+          "task": "main/fin-mem-323",
+          "tool": "analytics_compute"
+        },
+        {
+          "task": "main/fin-mem-324",
+          "tool": "analytics_compute"
+        },
+        {
+          "task": "main/fin-mem-325",
+          "tool": "analytics_compute"
+        },
+        {
+          "task": "main/fin-mem-326",
+          "tool": "analytics_compute"
+        },
+        {
+          "task": "main/fin-mem-327",
+          "tool": "analytics_compute"
+        },
+        {
+          "task": "main/fin-mem-328",
+          "tool": "analytics_compute"
+        },
+        {
+          "task": "main/fin-mem-329",
+          "tool": "analytics_compute"
+        },
+        {
+          "task": "main/fin-mem-330",
+          "tool": "analytics_compute"
+        },
+        {
+          "task": "main/fin-mem-331",
+          "tool": "analytics_compute"
+        },
+        {
+          "task": "memorydev/mem-dev-stale-current",
+          "tool": "analytics_compute"
+        },
+        {
+          "task": "memorydev/mem-dev-update-revoke",
+          "tool": "analytics_compute"
+        },
+        {
+          "task": "pilot/fin-l1-bctc-01",
+          "tool": "analytics_compute"
+        },
+        {
+          "task": "pilot/fin-l1-gold-01",
+          "tool": "analytics_compute"
+        },
+        {
+          "task": "pilot/fin-l1-macro-01",
+          "tool": "analytics_compute"
+        },
+        {
+          "task": "pilot/fin-l1-quote-01",
+          "tool": "analytics_compute"
+        },
+        {
+          "task": "pilot/fin-l1-quote-02",
+          "tool": "analytics_compute"
+        },
+        {
+          "task": "pilot/fin-l2-crypto-01",
+          "tool": "analytics_compute"
+        },
+        {
+          "task": "pilot/fin-l2-gold-01",
+          "tool": "analytics_compute"
+        },
+        {
+          "task": "pilot/fin-l2-growth-01",
+          "tool": "analytics_compute"
+        },
+        {
+          "task": "pilot/fin-l2-margin-01",
+          "tool": "analytics_compute"
+        },
+        {
+          "task": "pilot/fin-l2-ratio-01",
+          "tool": "analytics_compute"
+        },
+        {
+          "task": "pilot/fin-l2-tech-01",
+          "tool": "analytics_compute"
+        },
+        {
+          "task": "pilot/fin-l3-agg-01",
+          "tool": "analytics_compute"
+        },
+        {
+          "task": "pilot/fin-l3-crypto-01",
+          "tool": "analytics_compute"
+        },
+        {
+          "task": "pilot/fin-l3-index-01",
+          "tool": "analytics_compute"
+        },
+        {
+          "task": "pilot/fin-l3-screen-01",
+          "tool": "analytics_compute"
+        },
+        {
+          "task": "pilot/fin-l3-tech-multi-01",
+          "tool": "analytics_compute"
+        },
+        {
+          "task": "pilot/fin-l3-top-01",
+          "tool": "analytics_compute"
+        },
+        {
+          "task": "pilot/fin-l4-2nguon-01",
+          "tool": "analytics_compute"
+        },
+        {
+          "task": "pilot/fin-l4-future-01",
+          "tool": "analytics_compute"
+        },
+        {
+          "task": "pilot/fin-l4-narrative-01",
+          "tool": "analytics_compute"
+        },
+        {
+          "task": "pilot/fin-l4-nonexist-01",
+          "tool": "analytics_compute"
+        },
+        {
+          "task": "pilot/fin-l5-compare-01",
+          "tool": "analytics_compute"
+        },
+        {
+          "task": "pilot/fin-l5-profile-01",
+          "tool": "analytics_compute"
+        },
+        {
+          "task": "pilot/fin-l5-valuation-01",
+          "tool": "analytics_compute"
+        },
+        {
+          "task": "pilot/fin-mem-p01",
+          "tool": "analytics_compute"
+        },
+        {
+          "task": "smoke/smoke-agg-01",
+          "tool": "analytics_compute"
+        },
+        {
+          "task": "smoke/smoke-quote-01",
+          "tool": "analytics_compute"
+        },
+        {
+          "task": "smoke/smoke-trap-01",
+          "tool": "analytics_compute"
+        }
+      ],
+      "unicode_patterns_compile": true,
+      "checks": [
+        {
+          "arm": "B0",
+          "recorded": false,
+          "positive": false,
+          "negative_rejected": true,
+          "error": "AI_TypeValidationError: Type validation failed: Value: {}.\nError message: Error: invalid_argument: data must have required property 'operation', data must have required property 'operands', data must have required property 'input_unit', data must have required property 'output_unit'. Correct arguments to the declared schema; rejected input is not evidence of missing data."
+        },
+        {
+          "arm": "B1",
+          "recorded": false,
+          "positive": false,
+          "negative_rejected": true,
+          "error": "AI_TypeValidationError: Type validation failed: Value: {}.\nError message: Error: invalid_argument: data must have required property 'operation', data must have required property 'operands', data must have required property 'input_unit', data must have required property 'output_unit'. Correct arguments to the declared schema; rejected input is not evidence of missing data."
+        }
+      ]
+    },
+    {
+      "id": "cd8ec8bbda82738432776add3e9ea35bbdda0b721d7bdeab7e1d3e8852b9c354",
+      "occurrences": [
+        {
+          "task": "devsmoke/v45-dev-01-quote",
+          "tool": "analytics_calculate"
+        },
+        {
+          "task": "devsmoke/v45-dev-02-resolve",
+          "tool": "analytics_calculate"
+        },
+        {
+          "task": "devsmoke/v45-dev-03-growth",
+          "tool": "analytics_calculate"
+        },
+        {
+          "task": "devsmoke/v45-dev-04-margin",
+          "tool": "analytics_calculate"
+        },
+        {
+          "task": "devsmoke/v45-dev-05-scale",
+          "tool": "analytics_calculate"
+        },
+        {
+          "task": "devsmoke/v45-dev-06-ratio",
+          "tool": "analytics_calculate"
+        },
+        {
+          "task": "devsmoke/v45-dev-07-aggregate",
+          "tool": "analytics_calculate"
+        },
+        {
+          "task": "devsmoke/v45-dev-08-cross-source",
+          "tool": "analytics_calculate"
+        },
+        {
+          "task": "devsmoke/v45-dev-09-chain",
+          "tool": "analytics_calculate"
+        },
+        {
+          "task": "devsmoke/v45-dev-10-trap-resolver",
+          "tool": "analytics_calculate"
+        },
+        {
+          "task": "devsmoke/v45-dev-11-trap-period",
+          "tool": "analytics_calculate"
+        },
+        {
+          "task": "devsmoke/v45-dev-12-trap-empty",
+          "tool": "analytics_calculate"
+        },
+        {
+          "task": "main/fin-l1-bctc-109",
+          "tool": "analytics_calculate"
+        },
+        {
+          "task": "main/fin-l1-bctc-110",
+          "tool": "analytics_calculate"
+        },
+        {
+          "task": "main/fin-l1-bctc-111",
+          "tool": "analytics_calculate"
+        },
+        {
+          "task": "main/fin-l1-bctc-112",
+          "tool": "analytics_calculate"
+        },
+        {
+          "task": "main/fin-l1-bctc-113",
+          "tool": "analytics_calculate"
+        },
+        {
+          "task": "main/fin-l1-bctc-114",
+          "tool": "analytics_calculate"
+        },
+        {
+          "task": "main/fin-l1-bctc-115",
+          "tool": "analytics_calculate"
+        },
+        {
+          "task": "main/fin-l1-bctc-116",
+          "tool": "analytics_calculate"
+        },
+        {
+          "task": "main/fin-l1-bctc-117",
+          "tool": "analytics_calculate"
+        },
+        {
+          "task": "main/fin-l1-bctc-118",
+          "tool": "analytics_calculate"
+        },
+        {
+          "task": "main/fin-l1-bctc-119",
+          "tool": "analytics_calculate"
+        },
+        {
+          "task": "main/fin-l1-bctc-120",
+          "tool": "analytics_calculate"
+        },
+        {
+          "task": "main/fin-l1-macro-133",
+          "tool": "analytics_calculate"
+        },
+        {
+          "task": "main/fin-l1-macro-136",
+          "tool": "analytics_calculate"
+        },
+        {
+          "task": "main/fin-l1-macro-137",
+          "tool": "analytics_calculate"
+        },
+        {
+          "task": "main/fin-l1-macro-138",
+          "tool": "analytics_calculate"
+        },
+        {
+          "task": "main/fin-l1-macro-139",
+          "tool": "analytics_calculate"
+        },
+        {
+          "task": "main/fin-l1-macro-140",
+          "tool": "analytics_calculate"
+        },
+        {
+          "task": "main/fin-l1-quote-crypto-121",
+          "tool": "analytics_calculate"
+        },
+        {
+          "task": "main/fin-l1-quote-crypto-122",
+          "tool": "analytics_calculate"
+        },
+        {
+          "task": "main/fin-l1-quote-crypto-123",
+          "tool": "analytics_calculate"
+        },
+        {
+          "task": "main/fin-l1-quote-crypto-124",
+          "tool": "analytics_calculate"
+        },
+        {
+          "task": "main/fin-l1-quote-crypto-125",
+          "tool": "analytics_calculate"
+        },
+        {
+          "task": "main/fin-l1-quote-gf-126",
+          "tool": "analytics_calculate"
+        },
+        {
+          "task": "main/fin-l1-quote-gf-127",
+          "tool": "analytics_calculate"
+        },
+        {
+          "task": "main/fin-l1-quote-gf-128",
+          "tool": "analytics_calculate"
+        },
+        {
+          "task": "main/fin-l1-quote-gf-129",
+          "tool": "analytics_calculate"
+        },
+        {
+          "task": "main/fin-l1-quote-gf-130",
+          "tool": "analytics_calculate"
+        },
+        {
+          "task": "main/fin-l1-quote-vn-101",
+          "tool": "analytics_calculate"
+        },
+        {
+          "task": "main/fin-l1-quote-vn-103",
+          "tool": "analytics_calculate"
+        },
+        {
+          "task": "main/fin-l1-quote-vn-104",
+          "tool": "analytics_calculate"
+        },
+        {
+          "task": "main/fin-l1-quote-vn-106",
+          "tool": "analytics_calculate"
+        },
+        {
+          "task": "main/fin-l1-quote-vn-107",
+          "tool": "analytics_calculate"
+        },
+        {
+          "task": "main/fin-l1-quote-vn-108",
+          "tool": "analytics_calculate"
+        },
+        {
+          "task": "main/fin-l2-crypto-x-166",
+          "tool": "analytics_calculate"
+        },
+        {
+          "task": "main/fin-l2-crypto-x-167",
+          "tool": "analytics_calculate"
+        },
+        {
+          "task": "main/fin-l2-crypto-x-168",
+          "tool": "analytics_calculate"
+        },
+        {
+          "task": "main/fin-l2-crypto-x-169",
+          "tool": "analytics_calculate"
+        },
+        {
+          "task": "main/fin-l2-crypto-x-170",
+          "tool": "analytics_calculate"
+        },
+        {
+          "task": "main/fin-l2-gf-compare-172",
+          "tool": "analytics_calculate"
+        },
+        {
+          "task": "main/fin-l2-gf-compare-173",
+          "tool": "analytics_calculate"
+        },
+        {
+          "task": "main/fin-l2-gf-compare-174",
+          "tool": "analytics_calculate"
+        },
+        {
+          "task": "main/fin-l2-gf-compare-175",
+          "tool": "analytics_calculate"
+        },
+        {
+          "task": "main/fin-l2-growth-141",
+          "tool": "analytics_calculate"
+        },
+        {
+          "task": "main/fin-l2-growth-142",
+          "tool": "analytics_calculate"
+        },
+        {
+          "task": "main/fin-l2-growth-143",
+          "tool": "analytics_calculate"
+        },
+        {
+          "task": "main/fin-l2-growth-144",
+          "tool": "analytics_calculate"
+        },
+        {
+          "task": "main/fin-l2-growth-145",
+          "tool": "analytics_calculate"
+        },
+        {
+          "task": "main/fin-l2-growth-146",
+          "tool": "analytics_calculate"
+        },
+        {
+          "task": "main/fin-l2-growth-147",
+          "tool": "analytics_calculate"
+        },
+        {
+          "task": "main/fin-l2-growth-148",
+          "tool": "analytics_calculate"
+        },
+        {
+          "task": "main/fin-l2-macro-calc-176",
+          "tool": "analytics_calculate"
+        },
+        {
+          "task": "main/fin-l2-macro-calc-178",
+          "tool": "analytics_calculate"
+        },
+        {
+          "task": "main/fin-l2-macro-calc-179",
+          "tool": "analytics_calculate"
+        },
+        {
+          "task": "main/fin-l2-macro-calc-180",
+          "tool": "analytics_calculate"
+        },
+        {
+          "task": "main/fin-l2-margin-149",
+          "tool": "analytics_calculate"
+        },
+        {
+          "task": "main/fin-l2-margin-150",
+          "tool": "analytics_calculate"
+        },
+        {
+          "task": "main/fin-l2-margin-151",
+          "tool": "analytics_calculate"
+        },
+        {
+          "task": "main/fin-l2-margin-152",
+          "tool": "analytics_calculate"
+        },
+        {
+          "task": "main/fin-l2-margin-153",
+          "tool": "analytics_calculate"
+        },
+        {
+          "task": "main/fin-l2-margin-154",
+          "tool": "analytics_calculate"
+        },
+        {
+          "task": "main/fin-l2-margin-155",
+          "tool": "analytics_calculate"
+        },
+        {
+          "task": "main/fin-l2-ratio-157",
+          "tool": "analytics_calculate"
+        },
+        {
+          "task": "main/fin-l2-ratio-158",
+          "tool": "analytics_calculate"
+        },
+        {
+          "task": "main/fin-l2-ratio-159",
+          "tool": "analytics_calculate"
+        },
+        {
+          "task": "main/fin-l2-ratio-160",
+          "tool": "analytics_calculate"
+        },
+        {
+          "task": "main/fin-l2-tech-162",
+          "tool": "analytics_calculate"
+        },
+        {
+          "task": "main/fin-l2-tech-163",
+          "tool": "analytics_calculate"
+        },
+        {
+          "task": "main/fin-l2-tech-164",
+          "tool": "analytics_calculate"
+        },
+        {
+          "task": "main/fin-l2-tech-165",
+          "tool": "analytics_calculate"
+        },
+        {
+          "task": "main/fin-l3-agg-181",
+          "tool": "analytics_calculate"
+        },
+        {
+          "task": "main/fin-l3-agg-182",
+          "tool": "analytics_calculate"
+        },
+        {
+          "task": "main/fin-l3-agg-183",
+          "tool": "analytics_calculate"
+        },
+        {
+          "task": "main/fin-l3-agg-184",
+          "tool": "analytics_calculate"
+        },
+        {
+          "task": "main/fin-l3-agg-185",
+          "tool": "analytics_calculate"
+        },
+        {
+          "task": "main/fin-l3-agg-186",
+          "tool": "analytics_calculate"
+        },
+        {
+          "task": "main/fin-l3-agg-187",
+          "tool": "analytics_calculate"
+        },
+        {
+          "task": "main/fin-l3-agg-188",
+          "tool": "analytics_calculate"
+        },
+        {
+          "task": "main/fin-l3-breadth-301",
+          "tool": "analytics_calculate"
+        },
+        {
+          "task": "main/fin-l3-crypto-multi-208",
+          "tool": "analytics_calculate"
+        },
+        {
+          "task": "main/fin-l3-crypto-multi-209",
+          "tool": "analytics_calculate"
+        },
+        {
+          "task": "main/fin-l3-crypto-multi-210",
+          "tool": "analytics_calculate"
+        },
+        {
+          "task": "main/fin-l3-crypto-multi-211",
+          "tool": "analytics_calculate"
+        },
+        {
+          "task": "main/fin-l3-crypto-multi-212",
+          "tool": "analytics_calculate"
+        },
+        {
+          "task": "main/fin-l3-crypto-multi-213",
+          "tool": "analytics_calculate"
+        },
+        {
+          "task": "main/fin-l3-crypto-multi-214",
+          "tool": "analytics_calculate"
+        },
+        {
+          "task": "main/fin-l3-crypto-multi-215",
+          "tool": "analytics_calculate"
+        },
+        {
+          "task": "main/fin-l3-index-216",
+          "tool": "analytics_calculate"
+        },
+        {
+          "task": "main/fin-l3-index-217",
+          "tool": "analytics_calculate"
+        },
+        {
+          "task": "main/fin-l3-macro-agg-218",
+          "tool": "analytics_calculate"
+        },
+        {
+          "task": "main/fin-l3-macro-agg-219",
+          "tool": "analytics_calculate"
+        },
+        {
+          "task": "main/fin-l3-macro-agg-220",
+          "tool": "analytics_calculate"
+        },
+        {
+          "task": "main/fin-l3-screen-189",
+          "tool": "analytics_calculate"
+        },
+        {
+          "task": "main/fin-l3-screen-190",
+          "tool": "analytics_calculate"
+        },
+        {
+          "task": "main/fin-l3-screen-191",
+          "tool": "analytics_calculate"
+        },
+        {
+          "task": "main/fin-l3-screen-192",
+          "tool": "analytics_calculate"
+        },
+        {
+          "task": "main/fin-l3-screen-193",
+          "tool": "analytics_calculate"
+        },
+        {
+          "task": "main/fin-l3-screen-194",
+          "tool": "analytics_calculate"
+        },
+        {
+          "task": "main/fin-l3-screen-195",
+          "tool": "analytics_calculate"
+        },
+        {
+          "task": "main/fin-l3-screen-196",
+          "tool": "analytics_calculate"
+        },
+        {
+          "task": "main/fin-l3-tech-multi-203",
+          "tool": "analytics_calculate"
+        },
+        {
+          "task": "main/fin-l3-tech-multi-204",
+          "tool": "analytics_calculate"
+        },
+        {
+          "task": "main/fin-l3-tech-multi-205",
+          "tool": "analytics_calculate"
+        },
+        {
+          "task": "main/fin-l3-tech-multi-206",
+          "tool": "analytics_calculate"
+        },
+        {
+          "task": "main/fin-l3-tech-multi-207",
+          "tool": "analytics_calculate"
+        },
+        {
+          "task": "main/fin-l3-top-197",
+          "tool": "analytics_calculate"
+        },
+        {
+          "task": "main/fin-l3-top-198",
+          "tool": "analytics_calculate"
+        },
+        {
+          "task": "main/fin-l3-top-199",
+          "tool": "analytics_calculate"
+        },
+        {
+          "task": "main/fin-l3-top-200",
+          "tool": "analytics_calculate"
+        },
+        {
+          "task": "main/fin-l3-top-201",
+          "tool": "analytics_calculate"
+        },
+        {
+          "task": "main/fin-l3-top-202",
+          "tool": "analytics_calculate"
+        },
+        {
+          "task": "main/fin-l4-2src-253",
+          "tool": "analytics_calculate"
+        },
+        {
+          "task": "main/fin-l4-2src-254",
+          "tool": "analytics_calculate"
+        },
+        {
+          "task": "main/fin-l4-2src-255",
+          "tool": "analytics_calculate"
+        },
+        {
+          "task": "main/fin-l4-2src-256",
+          "tool": "analytics_calculate"
+        },
+        {
+          "task": "main/fin-l4-2src-257",
+          "tool": "analytics_calculate"
+        },
+        {
+          "task": "main/fin-l4-2src-258",
+          "tool": "analytics_calculate"
+        },
+        {
+          "task": "main/fin-l4-2src-259",
+          "tool": "analytics_calculate"
+        },
+        {
+          "task": "main/fin-l4-2src-260",
+          "tool": "analytics_calculate"
+        },
+        {
+          "task": "main/fin-l4-2src-302",
+          "tool": "analytics_calculate"
+        },
+        {
+          "task": "main/fin-l4-chain-303",
+          "tool": "analytics_calculate"
+        },
+        {
+          "task": "main/fin-l4-chain-304",
+          "tool": "analytics_calculate"
+        },
+        {
+          "task": "main/fin-l4-chain-305",
+          "tool": "analytics_calculate"
+        },
+        {
+          "task": "main/fin-l4-chain-306",
+          "tool": "analytics_calculate"
+        },
+        {
+          "task": "main/fin-l4-future-221",
+          "tool": "analytics_calculate"
+        },
+        {
+          "task": "main/fin-l4-future-222",
+          "tool": "analytics_calculate"
+        },
+        {
+          "task": "main/fin-l4-future-223",
+          "tool": "analytics_calculate"
+        },
+        {
+          "task": "main/fin-l4-future-224",
+          "tool": "analytics_calculate"
+        },
+        {
+          "task": "main/fin-l4-future-225",
+          "tool": "analytics_calculate"
+        },
+        {
+          "task": "main/fin-l4-future-226",
+          "tool": "analytics_calculate"
+        },
+        {
+          "task": "main/fin-l4-future-227",
+          "tool": "analytics_calculate"
+        },
+        {
+          "task": "main/fin-l4-future-228",
+          "tool": "analytics_calculate"
+        },
+        {
+          "task": "main/fin-l4-future-229",
+          "tool": "analytics_calculate"
+        },
+        {
+          "task": "main/fin-l4-future-230",
+          "tool": "analytics_calculate"
+        },
+        {
+          "task": "main/fin-l4-future-231",
+          "tool": "analytics_calculate"
+        },
+        {
+          "task": "main/fin-l4-future-232",
+          "tool": "analytics_calculate"
+        },
+        {
+          "task": "main/fin-l4-future-233",
+          "tool": "analytics_calculate"
+        },
+        {
+          "task": "main/fin-l4-future-234",
+          "tool": "analytics_calculate"
+        },
+        {
+          "task": "main/fin-l4-future-307",
+          "tool": "analytics_calculate"
+        },
+        {
+          "task": "main/fin-l4-future-308",
+          "tool": "analytics_calculate"
+        },
+        {
+          "task": "main/fin-l4-narrative-244",
+          "tool": "analytics_calculate"
+        },
+        {
+          "task": "main/fin-l4-narrative-245",
+          "tool": "analytics_calculate"
+        },
+        {
+          "task": "main/fin-l4-narrative-246",
+          "tool": "analytics_calculate"
+        },
+        {
+          "task": "main/fin-l4-narrative-247",
+          "tool": "analytics_calculate"
+        },
+        {
+          "task": "main/fin-l4-narrative-248",
+          "tool": "analytics_calculate"
+        },
+        {
+          "task": "main/fin-l4-narrative-249",
+          "tool": "analytics_calculate"
+        },
+        {
+          "task": "main/fin-l4-narrative-250",
+          "tool": "analytics_calculate"
+        },
+        {
+          "task": "main/fin-l4-narrative-251",
+          "tool": "analytics_calculate"
+        },
+        {
+          "task": "main/fin-l4-narrative-252",
+          "tool": "analytics_calculate"
+        },
+        {
+          "task": "main/fin-l4-nonexist-235",
+          "tool": "analytics_calculate"
+        },
+        {
+          "task": "main/fin-l4-nonexist-236",
+          "tool": "analytics_calculate"
+        },
+        {
+          "task": "main/fin-l4-nonexist-237",
+          "tool": "analytics_calculate"
+        },
+        {
+          "task": "main/fin-l4-nonexist-238",
+          "tool": "analytics_calculate"
+        },
+        {
+          "task": "main/fin-l4-nonexist-239",
+          "tool": "analytics_calculate"
+        },
+        {
+          "task": "main/fin-l4-nonexist-240",
+          "tool": "analytics_calculate"
+        },
+        {
+          "task": "main/fin-l4-nonexist-241",
+          "tool": "analytics_calculate"
+        },
+        {
+          "task": "main/fin-l4-nonexist-242",
+          "tool": "analytics_calculate"
+        },
+        {
+          "task": "main/fin-l4-nonexist-243",
+          "tool": "analytics_calculate"
+        },
+        {
+          "task": "main/fin-l4-nonexist-309",
+          "tool": "analytics_calculate"
+        },
+        {
+          "task": "main/fin-l4-nonexist-310",
+          "tool": "analytics_calculate"
+        },
+        {
+          "task": "main/fin-l5-compare-275",
+          "tool": "analytics_calculate"
+        },
+        {
+          "task": "main/fin-l5-compare-276",
+          "tool": "analytics_calculate"
+        },
+        {
+          "task": "main/fin-l5-compare-277",
+          "tool": "analytics_calculate"
+        },
+        {
+          "task": "main/fin-l5-compare-278",
+          "tool": "analytics_calculate"
+        },
+        {
+          "task": "main/fin-l5-compare-279",
+          "tool": "analytics_calculate"
+        },
+        {
+          "task": "main/fin-l5-compare-280",
+          "tool": "analytics_calculate"
+        },
+        {
+          "task": "main/fin-l5-compare-281",
+          "tool": "analytics_calculate"
+        },
+        {
+          "task": "main/fin-l5-compare-282",
+          "tool": "analytics_calculate"
+        },
+        {
+          "task": "main/fin-l5-compare-283",
+          "tool": "analytics_calculate"
+        },
+        {
+          "task": "main/fin-l5-compare-284",
+          "tool": "analytics_calculate"
+        },
+        {
+          "task": "main/fin-l5-compare-285",
+          "tool": "analytics_calculate"
+        },
+        {
+          "task": "main/fin-l5-compare-286",
+          "tool": "analytics_calculate"
+        },
+        {
+          "task": "main/fin-l5-compare-287",
+          "tool": "analytics_calculate"
+        },
+        {
+          "task": "main/fin-l5-compare-288",
+          "tool": "analytics_calculate"
+        },
+        {
+          "task": "main/fin-l5-compare-289",
+          "tool": "analytics_calculate"
+        },
+        {
+          "task": "main/fin-l5-compare-290",
+          "tool": "analytics_calculate"
+        },
+        {
+          "task": "main/fin-l5-profile-261",
+          "tool": "analytics_calculate"
+        },
+        {
+          "task": "main/fin-l5-profile-262",
+          "tool": "analytics_calculate"
+        },
+        {
+          "task": "main/fin-l5-profile-263",
+          "tool": "analytics_calculate"
+        },
+        {
+          "task": "main/fin-l5-profile-264",
+          "tool": "analytics_calculate"
+        },
+        {
+          "task": "main/fin-l5-profile-265",
+          "tool": "analytics_calculate"
+        },
+        {
+          "task": "main/fin-l5-profile-266",
+          "tool": "analytics_calculate"
+        },
+        {
+          "task": "main/fin-l5-profile-267",
+          "tool": "analytics_calculate"
+        },
+        {
+          "task": "main/fin-l5-profile-268",
+          "tool": "analytics_calculate"
+        },
+        {
+          "task": "main/fin-l5-profile-269",
+          "tool": "analytics_calculate"
+        },
+        {
+          "task": "main/fin-l5-profile-270",
+          "tool": "analytics_calculate"
+        },
+        {
+          "task": "main/fin-l5-profile-271",
+          "tool": "analytics_calculate"
+        },
+        {
+          "task": "main/fin-l5-profile-272",
+          "tool": "analytics_calculate"
+        },
+        {
+          "task": "main/fin-l5-profile-273",
+          "tool": "analytics_calculate"
+        },
+        {
+          "task": "main/fin-l5-profile-274",
+          "tool": "analytics_calculate"
+        },
+        {
+          "task": "main/fin-l5-valuation-291",
+          "tool": "analytics_calculate"
+        },
+        {
+          "task": "main/fin-l5-valuation-292",
+          "tool": "analytics_calculate"
+        },
+        {
+          "task": "main/fin-l5-valuation-293",
+          "tool": "analytics_calculate"
+        },
+        {
+          "task": "main/fin-l5-valuation-294",
+          "tool": "analytics_calculate"
+        },
+        {
+          "task": "main/fin-l5-valuation-295",
+          "tool": "analytics_calculate"
+        },
+        {
+          "task": "main/fin-l5-valuation-296",
+          "tool": "analytics_calculate"
+        },
+        {
+          "task": "main/fin-l5-valuation-297",
+          "tool": "analytics_calculate"
+        },
+        {
+          "task": "main/fin-l5-valuation-298",
+          "tool": "analytics_calculate"
+        },
+        {
+          "task": "main/fin-l5-valuation-299",
+          "tool": "analytics_calculate"
+        },
+        {
+          "task": "main/fin-l5-valuation-300",
+          "tool": "analytics_calculate"
+        },
+        {
+          "task": "main/fin-mem-320",
+          "tool": "analytics_calculate"
+        },
+        {
+          "task": "main/fin-mem-321",
+          "tool": "analytics_calculate"
+        },
+        {
+          "task": "main/fin-mem-322",
+          "tool": "analytics_calculate"
+        },
+        {
+          "task": "main/fin-mem-323",
+          "tool": "analytics_calculate"
+        },
+        {
+          "task": "main/fin-mem-324",
+          "tool": "analytics_calculate"
+        },
+        {
+          "task": "main/fin-mem-325",
+          "tool": "analytics_calculate"
+        },
+        {
+          "task": "main/fin-mem-326",
+          "tool": "analytics_calculate"
+        },
+        {
+          "task": "main/fin-mem-327",
+          "tool": "analytics_calculate"
+        },
+        {
+          "task": "main/fin-mem-328",
+          "tool": "analytics_calculate"
+        },
+        {
+          "task": "main/fin-mem-329",
+          "tool": "analytics_calculate"
+        },
+        {
+          "task": "main/fin-mem-330",
+          "tool": "analytics_calculate"
+        },
+        {
+          "task": "main/fin-mem-331",
+          "tool": "analytics_calculate"
+        },
+        {
+          "task": "memorydev/mem-dev-stale-current",
+          "tool": "analytics_calculate"
+        },
+        {
+          "task": "memorydev/mem-dev-update-revoke",
+          "tool": "analytics_calculate"
+        },
+        {
+          "task": "pilot/fin-l1-bctc-01",
+          "tool": "analytics_calculate"
+        },
+        {
+          "task": "pilot/fin-l1-gold-01",
+          "tool": "analytics_calculate"
+        },
+        {
+          "task": "pilot/fin-l1-macro-01",
+          "tool": "analytics_calculate"
+        },
+        {
+          "task": "pilot/fin-l1-quote-01",
+          "tool": "analytics_calculate"
+        },
+        {
+          "task": "pilot/fin-l1-quote-02",
+          "tool": "analytics_calculate"
+        },
+        {
+          "task": "pilot/fin-l2-crypto-01",
+          "tool": "analytics_calculate"
+        },
+        {
+          "task": "pilot/fin-l2-gold-01",
+          "tool": "analytics_calculate"
+        },
+        {
+          "task": "pilot/fin-l2-growth-01",
+          "tool": "analytics_calculate"
+        },
+        {
+          "task": "pilot/fin-l2-margin-01",
+          "tool": "analytics_calculate"
+        },
+        {
+          "task": "pilot/fin-l2-ratio-01",
+          "tool": "analytics_calculate"
+        },
+        {
+          "task": "pilot/fin-l2-tech-01",
+          "tool": "analytics_calculate"
+        },
+        {
+          "task": "pilot/fin-l3-agg-01",
+          "tool": "analytics_calculate"
+        },
+        {
+          "task": "pilot/fin-l3-crypto-01",
+          "tool": "analytics_calculate"
+        },
+        {
+          "task": "pilot/fin-l3-index-01",
+          "tool": "analytics_calculate"
+        },
+        {
+          "task": "pilot/fin-l3-screen-01",
+          "tool": "analytics_calculate"
+        },
+        {
+          "task": "pilot/fin-l3-tech-multi-01",
+          "tool": "analytics_calculate"
+        },
+        {
+          "task": "pilot/fin-l3-top-01",
+          "tool": "analytics_calculate"
+        },
+        {
+          "task": "pilot/fin-l4-2nguon-01",
+          "tool": "analytics_calculate"
+        },
+        {
+          "task": "pilot/fin-l4-future-01",
+          "tool": "analytics_calculate"
+        },
+        {
+          "task": "pilot/fin-l4-narrative-01",
+          "tool": "analytics_calculate"
+        },
+        {
+          "task": "pilot/fin-l4-nonexist-01",
+          "tool": "analytics_calculate"
+        },
+        {
+          "task": "pilot/fin-l5-compare-01",
+          "tool": "analytics_calculate"
+        },
+        {
+          "task": "pilot/fin-l5-profile-01",
+          "tool": "analytics_calculate"
+        },
+        {
+          "task": "pilot/fin-l5-valuation-01",
+          "tool": "analytics_calculate"
+        },
+        {
+          "task": "pilot/fin-mem-p01",
+          "tool": "analytics_calculate"
+        },
+        {
+          "task": "smoke/smoke-agg-01",
+          "tool": "analytics_calculate"
+        },
+        {
+          "task": "smoke/smoke-quote-01",
+          "tool": "analytics_calculate"
+        },
+        {
+          "task": "smoke/smoke-trap-01",
+          "tool": "analytics_calculate"
+        }
+      ],
+      "unicode_patterns_compile": true,
+      "checks": [
+        {
+          "arm": "B0",
+          "recorded": false,
+          "positive": false,
+          "negative_rejected": true,
+          "error": "AI_TypeValidationError: Type validation failed: Value: {}.\nError message: Error: invalid_argument: data must have required property 'expression', data must have required property 'variables'. Correct arguments to the declared schema; rejected input is not evidence of missing data."
+        },
+        {
+          "arm": "B1",
+          "recorded": false,
+          "positive": false,
+          "negative_rejected": true,
+          "error": "AI_TypeValidationError: Type validation failed: Value: {}.\nError message: Error: invalid_argument: data must have required property 'expression', data must have required property 'variables'. Correct arguments to the declared schema; rejected input is not evidence of missing data."
+        }
+      ]
+    },
+    {
+      "id": "8d6b79668be93d428daeb03ff7ae7f47a9944b90e94f55fddc5f225bc10328ca",
+      "occurrences": [
+        {
+          "task": "devsmoke/v45-dev-02-resolve",
+          "tool": "symbol_resolve"
+        }
+      ],
+      "unicode_patterns_compile": true,
+      "checks": [
+        {
+          "arm": "B0",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        },
+        {
+          "arm": "B1",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        }
+      ]
+    },
+    {
+      "id": "14d5f6d721740756f0900b146540366394eb623bbdcfa052d1338f8d3943dfbf",
+      "occurrences": [
+        {
+          "task": "devsmoke/v45-dev-03-growth",
+          "tool": "financial_statements"
+        },
+        {
+          "task": "devsmoke/v45-dev-08-cross-source",
+          "tool": "financial_statements"
+        },
+        {
+          "task": "devsmoke/v45-dev-11-trap-period",
+          "tool": "financial_statements"
+        }
+      ],
+      "unicode_patterns_compile": true,
+      "checks": [
+        {
+          "arm": "B0",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        },
+        {
+          "arm": "B1",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        }
+      ]
+    },
+    {
+      "id": "665115d0b185156e18699a4a0d57520b645863bac1940d6184379f1afb5086b1",
+      "occurrences": [
+        {
+          "task": "devsmoke/v45-dev-04-margin",
+          "tool": "financial_statements"
+        }
+      ],
+      "unicode_patterns_compile": true,
+      "checks": [
+        {
+          "arm": "B0",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        },
+        {
+          "arm": "B1",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        }
+      ]
+    },
+    {
+      "id": "e21c3569d6f7bcf62194da8dab7de42417ae05e53a3633438531637361985883",
+      "occurrences": [
+        {
+          "task": "devsmoke/v45-dev-05-scale",
+          "tool": "vn_quote_history"
+        }
+      ],
+      "unicode_patterns_compile": true,
+      "checks": [
+        {
+          "arm": "B0",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        },
+        {
+          "arm": "B1",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        }
+      ]
+    },
+    {
+      "id": "bd9bca9332f221324a08588d7e93a5f1315b19dad823b23c244a889b2dde7169",
+      "occurrences": [
+        {
+          "task": "devsmoke/v45-dev-06-ratio",
+          "tool": "financial_statements"
+        }
+      ],
+      "unicode_patterns_compile": true,
+      "checks": [
+        {
+          "arm": "B0",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        },
+        {
+          "arm": "B1",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        }
+      ]
+    },
+    {
+      "id": "feae0654d89d4fe0b66de58c53c0562415e94a011bdb4034bdaf287fed3a7ece",
+      "occurrences": [
+        {
+          "task": "devsmoke/v45-dev-07-aggregate",
+          "tool": "vn_quote_history"
+        }
+      ],
+      "unicode_patterns_compile": true,
+      "checks": [
+        {
+          "arm": "B0",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        },
+        {
+          "arm": "B1",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        },
+        {
+          "arm": "B0",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        },
+        {
+          "arm": "B1",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        },
+        {
+          "arm": "B0",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        },
+        {
+          "arm": "B1",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        }
+      ]
+    },
+    {
+      "id": "1eb42e8a7a9a441d21ec237aca7458760f62c323b36d89663b229c5a632f39d6",
+      "occurrences": [
+        {
+          "task": "devsmoke/v45-dev-08-cross-source",
+          "tool": "vn_quote_history"
+        }
+      ],
+      "unicode_patterns_compile": true,
+      "checks": [
+        {
+          "arm": "B0",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        },
+        {
+          "arm": "B1",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        }
+      ]
+    },
+    {
+      "id": "4e33680b5162ef6163f28a5ab7c4f87bb11b34dad253ca514685b6af718206ab",
+      "occurrences": [
+        {
+          "task": "devsmoke/v45-dev-09-chain",
+          "tool": "symbol_resolve"
+        }
+      ],
+      "unicode_patterns_compile": true,
+      "checks": [
+        {
+          "arm": "B0",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        },
+        {
+          "arm": "B1",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        }
+      ]
+    },
+    {
+      "id": "6fdbb2195ff1a27f7ec0b422dbf6ec42c3cb248594c4ae05d485560e85cbf54c",
+      "occurrences": [
+        {
+          "task": "devsmoke/v45-dev-09-chain",
+          "tool": "financial_statements"
+        }
+      ],
+      "unicode_patterns_compile": true,
+      "checks": [
+        {
+          "arm": "B0",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        },
+        {
+          "arm": "B1",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        }
+      ]
+    },
+    {
+      "id": "55fe3afac6a30406eed145a8d3a673aa2594006ee51dc2b82a7994e972e497f0",
+      "occurrences": [
+        {
+          "task": "devsmoke/v45-dev-10-trap-resolver",
+          "tool": "symbol_resolve"
+        }
+      ],
+      "unicode_patterns_compile": true,
+      "checks": [
+        {
+          "arm": "B0",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        },
+        {
+          "arm": "B1",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        }
+      ]
+    },
+    {
+      "id": "06c6f9ad669dc771e66042aa2f4ca8ebeadb06f2385b2c7382c905b70dff6a4d",
+      "occurrences": [
+        {
+          "task": "devsmoke/v45-dev-12-trap-empty",
+          "tool": "vn_quote_history"
+        }
+      ],
+      "unicode_patterns_compile": true,
+      "checks": [
+        {
+          "arm": "B0",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        },
+        {
+          "arm": "B1",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        }
+      ]
+    },
+    {
+      "id": "e0265510101b5595007234f0d95ed419944d4bab754b12a85009f5d030fd3e21",
+      "occurrences": [
+        {
+          "task": "main/fin-l1-bctc-109",
+          "tool": "financial_statements"
+        },
+        {
+          "task": "main/fin-l4-future-221",
+          "tool": "financial_statements"
+        }
+      ],
+      "unicode_patterns_compile": true,
+      "checks": [
+        {
+          "arm": "B0",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        },
+        {
+          "arm": "B1",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        }
+      ]
+    },
+    {
+      "id": "a20e31e48bf61cbb8891c0c17d59986eb7142aab0dbf453886e84e559491936d",
+      "occurrences": [
+        {
+          "task": "main/fin-l1-bctc-110",
+          "tool": "financial_statements"
+        },
+        {
+          "task": "main/fin-l4-future-222",
+          "tool": "financial_statements"
+        }
+      ],
+      "unicode_patterns_compile": true,
+      "checks": [
+        {
+          "arm": "B0",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        },
+        {
+          "arm": "B1",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        }
+      ]
+    },
+    {
+      "id": "fd5fef77694241c52c0d72fcbd067f01b505cd8298342cb67e096aa2748ab6dc",
+      "occurrences": [
+        {
+          "task": "main/fin-l1-bctc-111",
+          "tool": "financial_statements"
+        },
+        {
+          "task": "main/fin-l4-future-223",
+          "tool": "financial_statements"
+        }
+      ],
+      "unicode_patterns_compile": true,
+      "checks": [
+        {
+          "arm": "B0",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        },
+        {
+          "arm": "B1",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        }
+      ]
+    },
+    {
+      "id": "d3646fbb1d912edca976c2fbd50a03835baa7f536764fb3bbfc36025b8e9d3b5",
+      "occurrences": [
+        {
+          "task": "main/fin-l1-bctc-112",
+          "tool": "financial_statements"
+        },
+        {
+          "task": "main/fin-l4-future-224",
+          "tool": "financial_statements"
+        }
+      ],
+      "unicode_patterns_compile": true,
+      "checks": [
+        {
+          "arm": "B0",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        },
+        {
+          "arm": "B1",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        }
+      ]
+    },
+    {
+      "id": "e2eec049b90def615e05e8db3aa2feb1077b7be34dff2463746dcf90c4334b16",
+      "occurrences": [
+        {
+          "task": "main/fin-l1-bctc-113",
+          "tool": "financial_statements"
+        },
+        {
+          "task": "main/fin-l4-chain-305",
+          "tool": "financial_statements"
+        },
+        {
+          "task": "main/fin-l4-future-225",
+          "tool": "financial_statements"
+        }
+      ],
+      "unicode_patterns_compile": true,
+      "checks": [
+        {
+          "arm": "B0",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        },
+        {
+          "arm": "B1",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        }
+      ]
+    },
+    {
+      "id": "70749b9110c7625200a4f68ee9ff41e57c05380c88adeb05dfbbaee64d67c277",
+      "occurrences": [
+        {
+          "task": "main/fin-l1-bctc-114",
+          "tool": "financial_statements"
+        },
+        {
+          "task": "main/fin-l4-future-226",
+          "tool": "financial_statements"
+        }
+      ],
+      "unicode_patterns_compile": true,
+      "checks": [
+        {
+          "arm": "B0",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        },
+        {
+          "arm": "B1",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        }
+      ]
+    },
+    {
+      "id": "c458b73f235f3108ce190434bdce03169384affe1277b828c0867f931f8b1320",
+      "occurrences": [
+        {
+          "task": "main/fin-l1-bctc-115",
+          "tool": "financial_statements"
+        },
+        {
+          "task": "main/fin-l4-future-227",
+          "tool": "financial_statements"
+        }
+      ],
+      "unicode_patterns_compile": true,
+      "checks": [
+        {
+          "arm": "B0",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        },
+        {
+          "arm": "B1",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        }
+      ]
+    },
+    {
+      "id": "1cd6f7da41aa92fe8bda2dc75f6530bf694939cc7f1f90ebee156430113ce2e3",
+      "occurrences": [
+        {
+          "task": "main/fin-l1-bctc-116",
+          "tool": "financial_statements"
+        },
+        {
+          "task": "main/fin-l4-future-228",
+          "tool": "financial_statements"
+        }
+      ],
+      "unicode_patterns_compile": true,
+      "checks": [
+        {
+          "arm": "B0",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        },
+        {
+          "arm": "B1",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        }
+      ]
+    },
+    {
+      "id": "2d1ebe92e89fc5fdc0fcd869d479104f50f969f31f6b0a319cd38b55349b5db9",
+      "occurrences": [
+        {
+          "task": "main/fin-l1-bctc-117",
+          "tool": "financial_statements"
+        }
+      ],
+      "unicode_patterns_compile": true,
+      "checks": [
+        {
+          "arm": "B0",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        },
+        {
+          "arm": "B1",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        }
+      ]
+    },
+    {
+      "id": "c90b6566e353be87a7e28f7cf80648f55728e7f1c46b7ae50f0ecb86ffa7a3ad",
+      "occurrences": [
+        {
+          "task": "main/fin-l1-bctc-118",
+          "tool": "financial_statements"
+        }
+      ],
+      "unicode_patterns_compile": true,
+      "checks": [
+        {
+          "arm": "B0",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        },
+        {
+          "arm": "B1",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        }
+      ]
+    },
+    {
+      "id": "0af1f0c1fab96ed581c4ffb1f2c90a8ed6b60b72cbecf856ac328ae0d2b79061",
+      "occurrences": [
+        {
+          "task": "main/fin-l1-bctc-119",
+          "tool": "financial_statements"
+        },
+        {
+          "task": "main/fin-l2-growth-147",
+          "tool": "financial_statements"
+        }
+      ],
+      "unicode_patterns_compile": true,
+      "checks": [
+        {
+          "arm": "B0",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        },
+        {
+          "arm": "B1",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        }
+      ]
+    },
+    {
+      "id": "ccaf886abfe63f610ca414731324ed7ac02328ca1aeec06f69c2e9290bddf5c4",
+      "occurrences": [
+        {
+          "task": "main/fin-l1-bctc-120",
+          "tool": "financial_statements"
+        },
+        {
+          "task": "main/fin-l2-growth-148",
+          "tool": "financial_statements"
+        }
+      ],
+      "unicode_patterns_compile": true,
+      "checks": [
+        {
+          "arm": "B0",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        },
+        {
+          "arm": "B1",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        }
+      ]
+    },
+    {
+      "id": "a224044a7f9e5c7d839766f1dd5e5086c5b47249e60ccfb9d780166c4f6e1893",
+      "occurrences": [
+        {
+          "task": "main/fin-l1-macro-133",
+          "tool": "vs_indicator_data"
+        },
+        {
+          "task": "main/fin-l1-macro-136",
+          "tool": "vs_indicator_data"
+        },
+        {
+          "task": "main/fin-l1-macro-137",
+          "tool": "vs_indicator_data"
+        },
+        {
+          "task": "main/fin-l1-macro-138",
+          "tool": "vs_indicator_data"
+        },
+        {
+          "task": "main/fin-l1-macro-139",
+          "tool": "vs_indicator_data"
+        },
+        {
+          "task": "main/fin-l1-macro-140",
+          "tool": "vs_indicator_data"
+        },
+        {
+          "task": "main/fin-l2-macro-calc-176",
+          "tool": "vs_indicator_data"
+        },
+        {
+          "task": "main/fin-l2-macro-calc-178",
+          "tool": "vs_indicator_data"
+        },
+        {
+          "task": "main/fin-l2-macro-calc-179",
+          "tool": "vs_indicator_data"
+        },
+        {
+          "task": "main/fin-l2-macro-calc-180",
+          "tool": "vs_indicator_data"
+        },
+        {
+          "task": "main/fin-l3-macro-agg-218",
+          "tool": "vs_indicator_data"
+        },
+        {
+          "task": "main/fin-l3-macro-agg-219",
+          "tool": "vs_indicator_data"
+        },
+        {
+          "task": "main/fin-l3-macro-agg-220",
+          "tool": "vs_indicator_data"
+        },
+        {
+          "task": "main/fin-l4-future-229",
+          "tool": "vs_indicator_data"
+        },
+        {
+          "task": "main/fin-l4-future-230",
+          "tool": "vs_indicator_data"
+        },
+        {
+          "task": "main/fin-l4-future-231",
+          "tool": "vs_indicator_data"
+        }
+      ],
+      "unicode_patterns_compile": true,
+      "checks": [
+        {
+          "arm": "B0",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        },
+        {
+          "arm": "B1",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        },
+        {
+          "arm": "B0",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        },
+        {
+          "arm": "B1",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        }
+      ]
+    },
+    {
+      "id": "ffff4523acdab529b8d4f9207bf2ae0116505ffc9db4361028e08ceb285d5ec0",
+      "occurrences": [
+        {
+          "task": "main/fin-l1-quote-crypto-121",
+          "tool": "yf_commodities"
+        },
+        {
+          "task": "main/fin-l1-quote-crypto-122",
+          "tool": "yf_commodities"
+        },
+        {
+          "task": "main/fin-l1-quote-crypto-123",
+          "tool": "yf_commodities"
+        },
+        {
+          "task": "main/fin-l1-quote-crypto-124",
+          "tool": "yf_commodities"
+        },
+        {
+          "task": "main/fin-l1-quote-gf-126",
+          "tool": "yf_commodities"
+        },
+        {
+          "task": "main/fin-l1-quote-gf-127",
+          "tool": "yf_commodities"
+        },
+        {
+          "task": "main/fin-l1-quote-gf-128",
+          "tool": "yf_commodities"
+        },
+        {
+          "task": "main/fin-l1-quote-gf-129",
+          "tool": "yf_commodities"
+        },
+        {
+          "task": "main/fin-l1-quote-gf-130",
+          "tool": "yf_commodities"
+        },
+        {
+          "task": "main/fin-l2-crypto-x-166",
+          "tool": "yf_commodities"
+        },
+        {
+          "task": "main/fin-l2-crypto-x-167",
+          "tool": "yf_commodities"
+        },
+        {
+          "task": "main/fin-l2-crypto-x-168",
+          "tool": "yf_commodities"
+        },
+        {
+          "task": "main/fin-l2-crypto-x-169",
+          "tool": "yf_commodities"
+        },
+        {
+          "task": "main/fin-l2-crypto-x-170",
+          "tool": "yf_commodities"
+        },
+        {
+          "task": "main/fin-l2-gf-compare-172",
+          "tool": "yf_commodities"
+        },
+        {
+          "task": "main/fin-l2-gf-compare-173",
+          "tool": "yf_commodities"
+        },
+        {
+          "task": "main/fin-l2-gf-compare-174",
+          "tool": "yf_commodities"
+        },
+        {
+          "task": "main/fin-l2-gf-compare-175",
+          "tool": "yf_commodities"
+        },
+        {
+          "task": "main/fin-l3-crypto-multi-208",
+          "tool": "yf_commodities"
+        },
+        {
+          "task": "main/fin-l3-crypto-multi-209",
+          "tool": "yf_commodities"
+        },
+        {
+          "task": "main/fin-l3-crypto-multi-210",
+          "tool": "yf_commodities"
+        },
+        {
+          "task": "main/fin-l3-crypto-multi-211",
+          "tool": "yf_commodities"
+        },
+        {
+          "task": "main/fin-l3-crypto-multi-212",
+          "tool": "yf_commodities"
+        },
+        {
+          "task": "main/fin-l3-crypto-multi-213",
+          "tool": "yf_commodities"
+        },
+        {
+          "task": "main/fin-l3-crypto-multi-214",
+          "tool": "yf_commodities"
+        },
+        {
+          "task": "main/fin-l3-crypto-multi-215",
+          "tool": "yf_commodities"
+        },
+        {
+          "task": "main/fin-l4-2src-257",
+          "tool": "yf_commodities"
+        },
+        {
+          "task": "main/fin-l4-2src-258",
+          "tool": "yf_commodities"
+        },
+        {
+          "task": "main/fin-l4-2src-259",
+          "tool": "yf_commodities"
+        },
+        {
+          "task": "main/fin-l4-2src-260",
+          "tool": "yf_commodities"
+        },
+        {
+          "task": "main/fin-l4-future-232",
+          "tool": "yf_commodities"
+        },
+        {
+          "task": "main/fin-l4-future-233",
+          "tool": "yf_commodities"
+        },
+        {
+          "task": "main/fin-l4-future-234",
+          "tool": "yf_commodities"
+        },
+        {
+          "task": "main/fin-l5-compare-283",
+          "tool": "yf_commodities"
+        },
+        {
+          "task": "main/fin-l5-compare-284",
+          "tool": "yf_commodities"
+        },
+        {
+          "task": "main/fin-l5-compare-285",
+          "tool": "yf_commodities"
+        },
+        {
+          "task": "main/fin-l5-compare-286",
+          "tool": "yf_commodities"
+        },
+        {
+          "task": "main/fin-l5-compare-288",
+          "tool": "yf_commodities"
+        },
+        {
+          "task": "main/fin-l5-compare-289",
+          "tool": "yf_commodities"
+        },
+        {
+          "task": "main/fin-l5-compare-290",
+          "tool": "yf_commodities"
+        },
+        {
+          "task": "main/fin-l5-profile-273",
+          "tool": "yf_commodities"
+        },
+        {
+          "task": "main/fin-l5-profile-274",
+          "tool": "yf_commodities"
+        },
+        {
+          "task": "main/fin-mem-323",
+          "tool": "yf_commodities"
+        },
+        {
+          "task": "main/fin-mem-325",
+          "tool": "yf_commodities"
+        },
+        {
+          "task": "memorydev/mem-dev-stale-current",
+          "tool": "yf_commodities"
+        }
+      ],
+      "unicode_patterns_compile": true,
+      "checks": [
+        {
+          "arm": "B0",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        },
+        {
+          "arm": "B1",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        }
+      ]
+    },
+    {
+      "id": "2c149ed57de320f580053a4416c6588623541a33a4f263902677fa3e9a3fb5aa",
+      "occurrences": [
+        {
+          "task": "main/fin-l1-quote-crypto-125",
+          "tool": "vn_crypto_ohlcv"
+        },
+        {
+          "task": "main/fin-l4-2src-257",
+          "tool": "vn_crypto_ohlcv"
+        },
+        {
+          "task": "main/fin-l4-narrative-249",
+          "tool": "vn_crypto_ohlcv"
+        }
+      ],
+      "unicode_patterns_compile": true,
+      "checks": [
+        {
+          "arm": "B0",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        },
+        {
+          "arm": "B1",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        }
+      ]
+    },
+    {
+      "id": "61a0a6e3458d856f86dc193cdd60f166431bae93752e3fa44c74d49108dc4197",
+      "occurrences": [
+        {
+          "task": "main/fin-l1-quote-gf-126",
+          "tool": "vn_msn_fx_gold"
+        },
+        {
+          "task": "main/fin-l1-quote-gf-127",
+          "tool": "vn_msn_fx_gold"
+        },
+        {
+          "task": "main/fin-l1-quote-gf-128",
+          "tool": "vn_msn_fx_gold"
+        },
+        {
+          "task": "main/fin-l1-quote-gf-129",
+          "tool": "vn_msn_fx_gold"
+        },
+        {
+          "task": "main/fin-l1-quote-gf-130",
+          "tool": "vn_msn_fx_gold"
+        },
+        {
+          "task": "main/fin-l2-crypto-x-166",
+          "tool": "vn_msn_fx_gold"
+        },
+        {
+          "task": "main/fin-l2-crypto-x-167",
+          "tool": "vn_msn_fx_gold"
+        },
+        {
+          "task": "main/fin-l2-crypto-x-168",
+          "tool": "vn_msn_fx_gold"
+        },
+        {
+          "task": "main/fin-l2-crypto-x-169",
+          "tool": "vn_msn_fx_gold"
+        },
+        {
+          "task": "main/fin-l2-crypto-x-170",
+          "tool": "vn_msn_fx_gold"
+        },
+        {
+          "task": "main/fin-l2-gf-compare-172",
+          "tool": "vn_msn_fx_gold"
+        },
+        {
+          "task": "main/fin-l2-gf-compare-173",
+          "tool": "vn_msn_fx_gold"
+        },
+        {
+          "task": "main/fin-l2-gf-compare-174",
+          "tool": "vn_msn_fx_gold"
+        },
+        {
+          "task": "main/fin-l2-gf-compare-175",
+          "tool": "vn_msn_fx_gold"
+        },
+        {
+          "task": "main/fin-l4-2src-257",
+          "tool": "vn_msn_fx_gold"
+        },
+        {
+          "task": "main/fin-l4-2src-258",
+          "tool": "vn_msn_fx_gold"
+        },
+        {
+          "task": "main/fin-l4-2src-259",
+          "tool": "vn_msn_fx_gold"
+        },
+        {
+          "task": "main/fin-l4-2src-260",
+          "tool": "vn_msn_fx_gold"
+        },
+        {
+          "task": "main/fin-l4-future-232",
+          "tool": "vn_msn_fx_gold"
+        },
+        {
+          "task": "main/fin-l4-future-233",
+          "tool": "vn_msn_fx_gold"
+        },
+        {
+          "task": "main/fin-l4-future-234",
+          "tool": "vn_msn_fx_gold"
+        },
+        {
+          "task": "main/fin-l4-narrative-250",
+          "tool": "vn_msn_fx_gold"
+        },
+        {
+          "task": "main/fin-l4-narrative-251",
+          "tool": "vn_msn_fx_gold"
+        },
+        {
+          "task": "main/fin-l4-narrative-252",
+          "tool": "vn_msn_fx_gold"
+        },
+        {
+          "task": "main/fin-l5-compare-288",
+          "tool": "vn_msn_fx_gold"
+        },
+        {
+          "task": "main/fin-l5-compare-289",
+          "tool": "vn_msn_fx_gold"
+        },
+        {
+          "task": "main/fin-l5-compare-290",
+          "tool": "vn_msn_fx_gold"
+        },
+        {
+          "task": "main/fin-mem-323",
+          "tool": "vn_msn_fx_gold"
+        },
+        {
+          "task": "main/fin-mem-325",
+          "tool": "vn_msn_fx_gold"
+        },
+        {
+          "task": "memorydev/mem-dev-stale-current",
+          "tool": "vn_msn_fx_gold"
+        }
+      ],
+      "unicode_patterns_compile": true,
+      "checks": [
+        {
+          "arm": "B0",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        },
+        {
+          "arm": "B1",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        }
+      ]
+    },
+    {
+      "id": "0e1c87dcc5b458dffc53684d93d316c9de76417b141259bd91d76c9d24cc9e33",
+      "occurrences": [
+        {
+          "task": "main/fin-l1-quote-vn-101",
+          "tool": "vn_quote_history"
+        }
+      ],
+      "unicode_patterns_compile": true,
+      "checks": [
+        {
+          "arm": "B0",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        },
+        {
+          "arm": "B1",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        }
+      ]
+    },
+    {
+      "id": "f8bb9c0d8f5c5ef941c2e817fa5546e8bd105d8d42713955c2cc50e30894d7a9",
+      "occurrences": [
+        {
+          "task": "main/fin-l1-quote-vn-103",
+          "tool": "vn_quote_history"
+        }
+      ],
+      "unicode_patterns_compile": true,
+      "checks": [
+        {
+          "arm": "B0",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        },
+        {
+          "arm": "B1",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        }
+      ]
+    },
+    {
+      "id": "b4806e2eb3697b08bfce37c4b88a6a11e608cf72c871fd4fab93c0e8f2caed8c",
+      "occurrences": [
+        {
+          "task": "main/fin-l1-quote-vn-104",
+          "tool": "vn_quote_history"
+        },
+        {
+          "task": "main/fin-l4-future-307",
+          "tool": "vn_quote_history"
+        }
+      ],
+      "unicode_patterns_compile": true,
+      "checks": [
+        {
+          "arm": "B0",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        },
+        {
+          "arm": "B1",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        }
+      ]
+    },
+    {
+      "id": "2599835f72e353165bae5229c1c985be51ec541b2b4f250fe92b4f27dcfac241",
+      "occurrences": [
+        {
+          "task": "main/fin-l1-quote-vn-106",
+          "tool": "vn_quote_history"
+        },
+        {
+          "task": "main/fin-l4-future-308",
+          "tool": "vn_quote_history"
+        }
+      ],
+      "unicode_patterns_compile": true,
+      "checks": [
+        {
+          "arm": "B0",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        },
+        {
+          "arm": "B1",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        }
+      ]
+    },
+    {
+      "id": "75a321c6469ed43808729f1670803a8748f6ebac9dc4a125c1c4f5b0069d4e60",
+      "occurrences": [
+        {
+          "task": "main/fin-l1-quote-vn-107",
+          "tool": "vn_quote_history"
+        }
+      ],
+      "unicode_patterns_compile": true,
+      "checks": [
+        {
+          "arm": "B0",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        },
+        {
+          "arm": "B1",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        }
+      ]
+    },
+    {
+      "id": "96825a454ff297a0a26c5a06f3295cff8045bdfc88da2316a5611a30b186e6d5",
+      "occurrences": [
+        {
+          "task": "main/fin-l1-quote-vn-108",
+          "tool": "vn_quote_history"
+        }
+      ],
+      "unicode_patterns_compile": true,
+      "checks": [
+        {
+          "arm": "B0",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        },
+        {
+          "arm": "B1",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        }
+      ]
+    },
+    {
+      "id": "468cc47f9cd480594cf3f2f3b263c671a5cf19a76c8b84f0b3318ee4327bddd8",
+      "occurrences": [
+        {
+          "task": "main/fin-l2-growth-141",
+          "tool": "financial_statements"
+        },
+        {
+          "task": "main/fin-l4-chain-306",
+          "tool": "financial_statements"
+        }
+      ],
+      "unicode_patterns_compile": true,
+      "checks": [
+        {
+          "arm": "B0",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        },
+        {
+          "arm": "B1",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        }
+      ]
+    },
+    {
+      "id": "d1fa479eaf33d1330ac785a4a33efff68bb90e55e2beba0bd951dcc21c1fc6c4",
+      "occurrences": [
+        {
+          "task": "main/fin-l2-growth-142",
+          "tool": "financial_statements"
+        }
+      ],
+      "unicode_patterns_compile": true,
+      "checks": [
+        {
+          "arm": "B0",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        },
+        {
+          "arm": "B1",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        }
+      ]
+    },
+    {
+      "id": "bc9a7e18295f0990b87a5dc7146bc0e44d5552b6c6783d2f5229b6575470a38c",
+      "occurrences": [
+        {
+          "task": "main/fin-l2-growth-143",
+          "tool": "financial_statements"
+        }
+      ],
+      "unicode_patterns_compile": true,
+      "checks": [
+        {
+          "arm": "B0",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        },
+        {
+          "arm": "B1",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        }
+      ]
+    },
+    {
+      "id": "fcc1aae8aeb9c1a76996892c61dfc9b01e84c28e87a79aaed917015ca551a75e",
+      "occurrences": [
+        {
+          "task": "main/fin-l2-growth-144",
+          "tool": "financial_statements"
+        }
+      ],
+      "unicode_patterns_compile": true,
+      "checks": [
+        {
+          "arm": "B0",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        },
+        {
+          "arm": "B1",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        }
+      ]
+    },
+    {
+      "id": "90acb65708a15f18a6f9dce17c70cfe4cec258b99e9e49b3bf0ad67518aee14c",
+      "occurrences": [
+        {
+          "task": "main/fin-l2-growth-145",
+          "tool": "financial_statements"
+        }
+      ],
+      "unicode_patterns_compile": true,
+      "checks": [
+        {
+          "arm": "B0",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        },
+        {
+          "arm": "B1",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        }
+      ]
+    },
+    {
+      "id": "8736fa97220cb87bb42da6f17a0b82cab9cde23c35ff6ff22c11db2f5c74744b",
+      "occurrences": [
+        {
+          "task": "main/fin-l2-growth-146",
+          "tool": "financial_statements"
+        }
+      ],
+      "unicode_patterns_compile": true,
+      "checks": [
+        {
+          "arm": "B0",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        },
+        {
+          "arm": "B1",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        }
+      ]
+    },
+    {
+      "id": "c7ee19cc974ffd30b00d629d4ead6570e3dba06e9ded53e2c91fcdd83e7c9ab5",
+      "occurrences": [
+        {
+          "task": "main/fin-l2-margin-149",
+          "tool": "financial_detail"
+        }
+      ],
+      "unicode_patterns_compile": true,
+      "checks": [
+        {
+          "arm": "B0",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        },
+        {
+          "arm": "B1",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        }
+      ]
+    },
+    {
+      "id": "0f6053a9d5d53ff4785c445aec8eb19132abdf962e66312d1026d41c766f7c64",
+      "occurrences": [
+        {
+          "task": "main/fin-l2-margin-150",
+          "tool": "financial_detail"
+        }
+      ],
+      "unicode_patterns_compile": true,
+      "checks": [
+        {
+          "arm": "B0",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        },
+        {
+          "arm": "B1",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        }
+      ]
+    },
+    {
+      "id": "a2f96c24b609007d17b0d866d21f78796d15da80ede27b9b6529b34915154af7",
+      "occurrences": [
+        {
+          "task": "main/fin-l2-margin-151",
+          "tool": "financial_detail"
+        },
+        {
+          "task": "main/fin-l4-chain-304",
+          "tool": "financial_detail"
+        }
+      ],
+      "unicode_patterns_compile": true,
+      "checks": [
+        {
+          "arm": "B0",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        },
+        {
+          "arm": "B1",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        }
+      ]
+    },
+    {
+      "id": "f1bbb8a924f15a769cea99f03d1a8ad93ce371a0f3e544fbc632c3267df807e6",
+      "occurrences": [
+        {
+          "task": "main/fin-l2-margin-152",
+          "tool": "financial_detail"
+        }
+      ],
+      "unicode_patterns_compile": true,
+      "checks": [
+        {
+          "arm": "B0",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        },
+        {
+          "arm": "B1",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        }
+      ]
+    },
+    {
+      "id": "db086e500715bb9a0cd392c53e090267e9454d6e9d32fe1e1b428565d9ee7657",
+      "occurrences": [
+        {
+          "task": "main/fin-l2-margin-153",
+          "tool": "financial_detail"
+        }
+      ],
+      "unicode_patterns_compile": true,
+      "checks": [
+        {
+          "arm": "B0",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        },
+        {
+          "arm": "B1",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        }
+      ]
+    },
+    {
+      "id": "eeff48c2e2180e534f2daa0d4bd2173d3e6070bdb95126af0109b92f8bcad403",
+      "occurrences": [
+        {
+          "task": "main/fin-l2-margin-154",
+          "tool": "financial_detail"
+        }
+      ],
+      "unicode_patterns_compile": true,
+      "checks": [
+        {
+          "arm": "B0",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        },
+        {
+          "arm": "B1",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        }
+      ]
+    },
+    {
+      "id": "0ed6e8a4f3838c1858fb7ac0a355fe97e27d43f21f856c667aa7cc17d5af3b94",
+      "occurrences": [
+        {
+          "task": "main/fin-l2-margin-155",
+          "tool": "financial_detail"
+        }
+      ],
+      "unicode_patterns_compile": true,
+      "checks": [
+        {
+          "arm": "B0",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        },
+        {
+          "arm": "B1",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        }
+      ]
+    },
+    {
+      "id": "036740624de68cab2933420d1aa270133dbbb3add8fdcda1851a40483ccbe384",
+      "occurrences": [
+        {
+          "task": "main/fin-l2-ratio-157",
+          "tool": "valuation_run"
+        }
+      ],
+      "unicode_patterns_compile": true,
+      "checks": [
+        {
+          "arm": "B0",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        },
+        {
+          "arm": "B1",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        }
+      ]
+    },
+    {
+      "id": "0b54e60f4027bfe0a6d795fe326ff3c5bef5329155062578ecbd370a24c24fbb",
+      "occurrences": [
+        {
+          "task": "main/fin-l2-ratio-158",
+          "tool": "valuation_run"
+        }
+      ],
+      "unicode_patterns_compile": true,
+      "checks": [
+        {
+          "arm": "B0",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        },
+        {
+          "arm": "B1",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        }
+      ]
+    },
+    {
+      "id": "17257044648d5eb03750e61578a64e222b556a787a43e99235f02f49ac8d3941",
+      "occurrences": [
+        {
+          "task": "main/fin-l2-ratio-159",
+          "tool": "valuation_run"
+        }
+      ],
+      "unicode_patterns_compile": true,
+      "checks": [
+        {
+          "arm": "B0",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        },
+        {
+          "arm": "B1",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        }
+      ]
+    },
+    {
+      "id": "6e78ce413ef97aaa3bb162abcecf393c3ca4d711f168710a2c5c7bdfdafcddda",
+      "occurrences": [
+        {
+          "task": "main/fin-l2-ratio-160",
+          "tool": "valuation_run"
+        },
+        {
+          "task": "main/fin-l4-2src-302",
+          "tool": "valuation_run"
+        }
+      ],
+      "unicode_patterns_compile": true,
+      "checks": [
+        {
+          "arm": "B0",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        },
+        {
+          "arm": "B1",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        }
+      ]
+    },
+    {
+      "id": "fde88d2c9cbd78d0c88aea48f67ce3b6f48e08efcde5f1c2895c1b6169248ba7",
+      "occurrences": [
+        {
+          "task": "main/fin-l2-tech-162",
+          "tool": "signals_technical"
+        }
+      ],
+      "unicode_patterns_compile": true,
+      "checks": [
+        {
+          "arm": "B0",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        },
+        {
+          "arm": "B1",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        }
+      ]
+    },
+    {
+      "id": "ad38dcbdb6899365c79f21e4d4639c147114206a198a65f00060219f8ef3840b",
+      "occurrences": [
+        {
+          "task": "main/fin-l2-tech-163",
+          "tool": "signals_technical"
+        }
+      ],
+      "unicode_patterns_compile": true,
+      "checks": [
+        {
+          "arm": "B0",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        },
+        {
+          "arm": "B1",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        }
+      ]
+    },
+    {
+      "id": "5fa7707c4aa75d3fe6542a47b104abeb121bc3b2c4598f99da628110a65894fc",
+      "occurrences": [
+        {
+          "task": "main/fin-l2-tech-164",
+          "tool": "signals_technical"
+        }
+      ],
+      "unicode_patterns_compile": true,
+      "checks": [
+        {
+          "arm": "B0",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        },
+        {
+          "arm": "B1",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        }
+      ]
+    },
+    {
+      "id": "d0e634639403255a89baff7924c353524d6149df4ad9675d47286e7f449a90dc",
+      "occurrences": [
+        {
+          "task": "main/fin-l2-tech-165",
+          "tool": "signals_technical"
+        }
+      ],
+      "unicode_patterns_compile": true,
+      "checks": [
+        {
+          "arm": "B0",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        },
+        {
+          "arm": "B1",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        }
+      ]
+    },
+    {
+      "id": "4fb28b5bc1ce0c7293789d0e9fda3039d157523a3d3133c71e14b2ff848aa21e",
+      "occurrences": [
+        {
+          "task": "main/fin-l3-agg-181",
+          "tool": "vn_equity_quote_batch"
+        },
+        {
+          "task": "main/fin-l4-chain-305",
+          "tool": "vn_equity_quote_batch"
+        }
+      ],
+      "unicode_patterns_compile": true,
+      "checks": [
+        {
+          "arm": "B0",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        },
+        {
+          "arm": "B1",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        }
+      ]
+    },
+    {
+      "id": "8b92339b706618f3653f714ba6728b3ff0c4d9e1b864cc2fd9cd86066cfd3dec",
+      "occurrences": [
+        {
+          "task": "main/fin-l3-agg-182",
+          "tool": "vn_equity_quote_batch"
+        }
+      ],
+      "unicode_patterns_compile": true,
+      "checks": [
+        {
+          "arm": "B0",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        },
+        {
+          "arm": "B1",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        }
+      ]
+    },
+    {
+      "id": "8d05b3675b6a19c56c75b702c0a972bf604aa556e633bace1f775d650a0a698e",
+      "occurrences": [
+        {
+          "task": "main/fin-l3-agg-183",
+          "tool": "vn_equity_quote_batch"
+        }
+      ],
+      "unicode_patterns_compile": true,
+      "checks": [
+        {
+          "arm": "B0",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        },
+        {
+          "arm": "B1",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        }
+      ]
+    },
+    {
+      "id": "3c148e638a231a374d8957e46e8561ba24dbc8c41b6fe778acdcb16779976d7b",
+      "occurrences": [
+        {
+          "task": "main/fin-l3-agg-184",
+          "tool": "vn_equity_quote_batch"
+        }
+      ],
+      "unicode_patterns_compile": true,
+      "checks": [
+        {
+          "arm": "B0",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        },
+        {
+          "arm": "B1",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        }
+      ]
+    },
+    {
+      "id": "55a40e16e90c02f22c5a21fdb99025beaf387d2c89495c8ca1be2598ff30f961",
+      "occurrences": [
+        {
+          "task": "main/fin-l3-agg-185",
+          "tool": "vn_equity_quote_batch"
+        }
+      ],
+      "unicode_patterns_compile": true,
+      "checks": [
+        {
+          "arm": "B0",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        },
+        {
+          "arm": "B1",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        }
+      ]
+    },
+    {
+      "id": "99fe8d7c35d7248297c5da1137c69803bafe8948664ebf442063051b7f6a3469",
+      "occurrences": [
+        {
+          "task": "main/fin-l3-agg-186",
+          "tool": "vn_equity_quote_batch"
+        },
+        {
+          "task": "main/fin-l3-breadth-301",
+          "tool": "vn_equity_quote_batch"
+        }
+      ],
+      "unicode_patterns_compile": true,
+      "checks": [
+        {
+          "arm": "B0",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        },
+        {
+          "arm": "B1",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        }
+      ]
+    },
+    {
+      "id": "7a8b4b31deb201c0296a6fa4ad9666cb591a907e2026ca9c23b6e8110ef086a8",
+      "occurrences": [
+        {
+          "task": "main/fin-l3-agg-187",
+          "tool": "vn_equity_quote_batch"
+        },
+        {
+          "task": "main/fin-l4-2src-253",
+          "tool": "vn_equity_quote_batch"
+        },
+        {
+          "task": "main/fin-l4-2src-254",
+          "tool": "vn_equity_quote_batch"
+        },
+        {
+          "task": "main/fin-l4-2src-255",
+          "tool": "vn_equity_quote_batch"
+        },
+        {
+          "task": "main/fin-l4-2src-256",
+          "tool": "vn_equity_quote_batch"
+        },
+        {
+          "task": "main/fin-mem-322",
+          "tool": "vn_equity_quote_batch"
+        }
+      ],
+      "unicode_patterns_compile": true,
+      "checks": [
+        {
+          "arm": "B0",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        },
+        {
+          "arm": "B1",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        }
+      ]
+    },
+    {
+      "id": "371b38afbc5a493ae80c90375db5449db88e19cf9bbf7212e9de02afec24d762",
+      "occurrences": [
+        {
+          "task": "main/fin-l3-agg-188",
+          "tool": "vn_equity_quote_batch"
+        }
+      ],
+      "unicode_patterns_compile": true,
+      "checks": [
+        {
+          "arm": "B0",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        },
+        {
+          "arm": "B1",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        }
+      ]
+    },
+    {
+      "id": "e44972ffc5fb6e915267aa8a169eb44d0b2582fe10a291d23c102b214481f1b9",
+      "occurrences": [
+        {
+          "task": "main/fin-l3-index-216",
+          "tool": "vn_index_ohlcv"
+        }
+      ],
+      "unicode_patterns_compile": true,
+      "checks": [
+        {
+          "arm": "B0",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        },
+        {
+          "arm": "B1",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        }
+      ]
+    },
+    {
+      "id": "e8a88d48608e246a654691f03aa23893d73c3ac2b19664105ca2a64220a566ae",
+      "occurrences": [
+        {
+          "task": "main/fin-l3-index-217",
+          "tool": "vn_index_ohlcv"
+        }
+      ],
+      "unicode_patterns_compile": true,
+      "checks": [
+        {
+          "arm": "B0",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        },
+        {
+          "arm": "B1",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        }
+      ]
+    },
+    {
+      "id": "05dc8d18d6672de1e8f6ef1f2289db028278aeff2109cd855d02cafad282e0c0",
+      "occurrences": [
+        {
+          "task": "main/fin-l3-screen-189",
+          "tool": "peer_compare"
+        },
+        {
+          "task": "main/fin-l5-compare-275",
+          "tool": "peer_compare"
+        },
+        {
+          "task": "main/fin-mem-326",
+          "tool": "peer_compare"
+        },
+        {
+          "task": "main/fin-mem-329",
+          "tool": "peer_compare"
+        },
+        {
+          "task": "memorydev/mem-dev-update-revoke",
+          "tool": "peer_compare"
+        },
+        {
+          "task": "pilot/fin-mem-p01",
+          "tool": "peer_compare"
+        }
+      ],
+      "unicode_patterns_compile": true,
+      "checks": [
+        {
+          "arm": "B0",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        },
+        {
+          "arm": "B1",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        }
+      ]
+    },
+    {
+      "id": "b3ec0f902cd3fa124e4a8d6e8aedb8f96152b48f1a145df830fa37805ca5c0ce",
+      "occurrences": [
+        {
+          "task": "main/fin-l3-screen-190",
+          "tool": "peer_compare"
+        },
+        {
+          "task": "main/fin-l4-chain-303",
+          "tool": "peer_compare"
+        },
+        {
+          "task": "main/fin-l5-compare-276",
+          "tool": "peer_compare"
+        }
+      ],
+      "unicode_patterns_compile": true,
+      "checks": [
+        {
+          "arm": "B0",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        },
+        {
+          "arm": "B1",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        }
+      ]
+    },
+    {
+      "id": "b6562b52fa8eb0799b83c0b4da19d08720b5c3aa51cac1411cac5333fcf044dd",
+      "occurrences": [
+        {
+          "task": "main/fin-l3-screen-191",
+          "tool": "peer_compare"
+        },
+        {
+          "task": "main/fin-l5-compare-277",
+          "tool": "peer_compare"
+        }
+      ],
+      "unicode_patterns_compile": true,
+      "checks": [
+        {
+          "arm": "B0",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        },
+        {
+          "arm": "B1",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        }
+      ]
+    },
+    {
+      "id": "7df62ed2d8fea13815ae496325bcad64af8d8d4603bf50a3aabe9ae6711b96c7",
+      "occurrences": [
+        {
+          "task": "main/fin-l3-screen-192",
+          "tool": "peer_compare"
+        },
+        {
+          "task": "main/fin-l5-compare-278",
+          "tool": "peer_compare"
+        },
+        {
+          "task": "main/fin-mem-320",
+          "tool": "peer_compare"
+        }
+      ],
+      "unicode_patterns_compile": true,
+      "checks": [
+        {
+          "arm": "B0",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        },
+        {
+          "arm": "B1",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        }
+      ]
+    },
+    {
+      "id": "c8e6e921cb7846d8d0ac37bf5dba22f7699611e85cf4ab8b159c1a9b433914f2",
+      "occurrences": [
+        {
+          "task": "main/fin-l3-screen-193",
+          "tool": "peer_compare"
+        },
+        {
+          "task": "main/fin-l4-2src-302",
+          "tool": "peer_compare"
+        },
+        {
+          "task": "main/fin-l5-compare-279",
+          "tool": "peer_compare"
+        }
+      ],
+      "unicode_patterns_compile": true,
+      "checks": [
+        {
+          "arm": "B0",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        },
+        {
+          "arm": "B1",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        }
+      ]
+    },
+    {
+      "id": "924b955239b604d97cdd8edab857840a2ae21ced30ec9fa995a76b7f5b6ef02f",
+      "occurrences": [
+        {
+          "task": "main/fin-l3-screen-194",
+          "tool": "peer_compare"
+        },
+        {
+          "task": "main/fin-l5-compare-280",
+          "tool": "peer_compare"
+        },
+        {
+          "task": "main/fin-mem-321",
+          "tool": "peer_compare"
+        }
+      ],
+      "unicode_patterns_compile": true,
+      "checks": [
+        {
+          "arm": "B0",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        },
+        {
+          "arm": "B1",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        }
+      ]
+    },
+    {
+      "id": "51369f2f3482988ed9954828114e60027b76ed8002079066f346e1deed7e26fd",
+      "occurrences": [
+        {
+          "task": "main/fin-l3-screen-195",
+          "tool": "peer_compare"
+        },
+        {
+          "task": "main/fin-l5-compare-281",
+          "tool": "peer_compare"
+        }
+      ],
+      "unicode_patterns_compile": true,
+      "checks": [
+        {
+          "arm": "B0",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        },
+        {
+          "arm": "B1",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        }
+      ]
+    },
+    {
+      "id": "af671fe218b9064694137479e4d7c1f417179c0163d2884b3a1c826a14590577",
+      "occurrences": [
+        {
+          "task": "main/fin-l3-screen-196",
+          "tool": "peer_compare"
+        },
+        {
+          "task": "main/fin-l5-compare-282",
+          "tool": "peer_compare"
+        }
+      ],
+      "unicode_patterns_compile": true,
+      "checks": [
+        {
+          "arm": "B0",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        },
+        {
+          "arm": "B1",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        }
+      ]
+    },
+    {
+      "id": "09b52652f119b127a2f1ffc20828387c8b7307c86adc9a592a78b0515e9c0b81",
+      "occurrences": [
+        {
+          "task": "main/fin-l3-tech-multi-203",
+          "tool": "signals_technical"
+        }
+      ],
+      "unicode_patterns_compile": true,
+      "checks": [
+        {
+          "arm": "B0",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        },
+        {
+          "arm": "B1",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        },
+        {
+          "arm": "B0",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        },
+        {
+          "arm": "B1",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        },
+        {
+          "arm": "B0",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        },
+        {
+          "arm": "B1",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        },
+        {
+          "arm": "B0",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        },
+        {
+          "arm": "B1",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        },
+        {
+          "arm": "B0",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        },
+        {
+          "arm": "B1",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        }
+      ]
+    },
+    {
+      "id": "e0666a926edd1616e9384d639fd0ae5d3d3f26fb7f07a5a4a992a4eba52c4a53",
+      "occurrences": [
+        {
+          "task": "main/fin-l3-tech-multi-204",
+          "tool": "signals_technical"
+        },
+        {
+          "task": "main/fin-l3-tech-multi-205",
+          "tool": "signals_technical"
+        },
+        {
+          "task": "main/fin-l4-chain-303",
+          "tool": "signals_technical"
+        }
+      ],
+      "unicode_patterns_compile": true,
+      "checks": [
+        {
+          "arm": "B0",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        },
+        {
+          "arm": "B1",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        },
+        {
+          "arm": "B0",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        },
+        {
+          "arm": "B1",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        },
+        {
+          "arm": "B0",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        },
+        {
+          "arm": "B1",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        },
+        {
+          "arm": "B0",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        },
+        {
+          "arm": "B1",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        },
+        {
+          "arm": "B0",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        },
+        {
+          "arm": "B1",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        }
+      ]
+    },
+    {
+      "id": "87ffa3b124566d1c73e8c925015b32a41e5c79426263af0ec7d915085c9ac9f8",
+      "occurrences": [
+        {
+          "task": "main/fin-l3-tech-multi-206",
+          "tool": "signals_technical"
+        }
+      ],
+      "unicode_patterns_compile": true,
+      "checks": [
+        {
+          "arm": "B0",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        },
+        {
+          "arm": "B1",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        },
+        {
+          "arm": "B0",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        },
+        {
+          "arm": "B1",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        },
+        {
+          "arm": "B0",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        },
+        {
+          "arm": "B1",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        },
+        {
+          "arm": "B0",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        },
+        {
+          "arm": "B1",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        },
+        {
+          "arm": "B0",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        },
+        {
+          "arm": "B1",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        }
+      ]
+    },
+    {
+      "id": "16684fea86c27d8c17a5e3187fdd2f5dd1b5ed82c63f6a5d1f9778911930796b",
+      "occurrences": [
+        {
+          "task": "main/fin-l3-tech-multi-207",
+          "tool": "signals_technical"
+        },
+        {
+          "task": "main/fin-l4-chain-304",
+          "tool": "signals_technical"
+        }
+      ],
+      "unicode_patterns_compile": true,
+      "checks": [
+        {
+          "arm": "B0",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        },
+        {
+          "arm": "B1",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        },
+        {
+          "arm": "B0",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        },
+        {
+          "arm": "B1",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        },
+        {
+          "arm": "B0",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        },
+        {
+          "arm": "B1",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        },
+        {
+          "arm": "B0",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        },
+        {
+          "arm": "B1",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        },
+        {
+          "arm": "B0",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        },
+        {
+          "arm": "B1",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        }
+      ]
+    },
+    {
+      "id": "e4741562f35651ef5401098cc70116879e73d8f37aa1d1adc72269ff5bd8f075",
+      "occurrences": [
+        {
+          "task": "main/fin-l3-top-197",
+          "tool": "market_movers"
+        },
+        {
+          "task": "main/fin-l3-top-198",
+          "tool": "market_movers"
+        },
+        {
+          "task": "main/fin-l3-top-199",
+          "tool": "market_movers"
+        },
+        {
+          "task": "main/fin-l3-top-200",
+          "tool": "market_movers"
+        },
+        {
+          "task": "main/fin-l3-top-201",
+          "tool": "market_movers"
+        },
+        {
+          "task": "main/fin-l3-top-202",
+          "tool": "market_movers"
+        },
+        {
+          "task": "main/fin-l4-chain-306",
+          "tool": "market_movers"
+        },
+        {
+          "task": "pilot/fin-l3-top-01",
+          "tool": "market_movers"
+        }
+      ],
+      "unicode_patterns_compile": true,
+      "checks": [
+        {
+          "arm": "B0",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        },
+        {
+          "arm": "B1",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        }
+      ]
+    },
+    {
+      "id": "5e78b267e60dfd8b2d3099a6af09a3e5de5c75fc5588ba868ec5a5db08c08b5c",
+      "occurrences": [
+        {
+          "task": "main/fin-l4-2src-253",
+          "tool": "vn_quote_history"
+        }
+      ],
+      "unicode_patterns_compile": true,
+      "checks": [
+        {
+          "arm": "B0",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        },
+        {
+          "arm": "B1",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        }
+      ]
+    },
+    {
+      "id": "1836008052fbb7c6b72e9da3a3babcc9d2d60d964946ed9e06e4fb1a6e8be513",
+      "occurrences": [
+        {
+          "task": "main/fin-l4-2src-254",
+          "tool": "vn_quote_history"
+        }
+      ],
+      "unicode_patterns_compile": true,
+      "checks": [
+        {
+          "arm": "B0",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        },
+        {
+          "arm": "B1",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        }
+      ]
+    },
+    {
+      "id": "905ef223f5c15c6ea2f876d62e7edd7b51ac66f1a377c96660c0f3703d2245e1",
+      "occurrences": [
+        {
+          "task": "main/fin-l4-2src-255",
+          "tool": "vn_quote_history"
+        }
+      ],
+      "unicode_patterns_compile": true,
+      "checks": [
+        {
+          "arm": "B0",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        },
+        {
+          "arm": "B1",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        }
+      ]
+    },
+    {
+      "id": "5bb4b730fd3918048d41eec3e00530ca00771554df7893d7f377be09e70d9f7e",
+      "occurrences": [
+        {
+          "task": "main/fin-l4-2src-256",
+          "tool": "vn_quote_history"
+        }
+      ],
+      "unicode_patterns_compile": true,
+      "checks": [
+        {
+          "arm": "B0",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        },
+        {
+          "arm": "B1",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        }
+      ]
+    },
+    {
+      "id": "6f817bafe900177776ffd87ff7ab35cb63244870dc6455f60a8caab7c4224174",
+      "occurrences": [
+        {
+          "task": "main/fin-l4-2src-258",
+          "tool": "vn_crypto_ohlcv"
+        },
+        {
+          "task": "main/fin-l4-narrative-248",
+          "tool": "vn_crypto_ohlcv"
+        }
+      ],
+      "unicode_patterns_compile": true,
+      "checks": [
+        {
+          "arm": "B0",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        },
+        {
+          "arm": "B1",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        }
+      ]
+    },
+    {
+      "id": "29b5bf78c1d33c6d21772627fbd58204c531f9497d267b4160032a29f612657f",
+      "occurrences": [
+        {
+          "task": "main/fin-l4-narrative-244",
+          "tool": "vn_quote_history"
+        }
+      ],
+      "unicode_patterns_compile": true,
+      "checks": [
+        {
+          "arm": "B0",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        },
+        {
+          "arm": "B1",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        }
+      ]
+    },
+    {
+      "id": "25fe352e53348a0d988465a23b7e739af5c93bf7b55258444d86eee8ed16d1f2",
+      "occurrences": [
+        {
+          "task": "main/fin-l4-narrative-245",
+          "tool": "vn_quote_history"
+        }
+      ],
+      "unicode_patterns_compile": true,
+      "checks": [
+        {
+          "arm": "B0",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        },
+        {
+          "arm": "B1",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        }
+      ]
+    },
+    {
+      "id": "4dcea17c5db1d9fe0d2a8e6fefe15d30e6b29fc9732500ed44bb21f5eb6ffb61",
+      "occurrences": [
+        {
+          "task": "main/fin-l4-narrative-246",
+          "tool": "vn_quote_history"
+        }
+      ],
+      "unicode_patterns_compile": true,
+      "checks": [
+        {
+          "arm": "B0",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        },
+        {
+          "arm": "B1",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        }
+      ]
+    },
+    {
+      "id": "dc0fdf5a1c2a7d3f321bd15e55af1627539cfe8b6a41385e728c0c9711bfde31",
+      "occurrences": [
+        {
+          "task": "main/fin-l4-narrative-247",
+          "tool": "vn_quote_history"
+        }
+      ],
+      "unicode_patterns_compile": true,
+      "checks": [
+        {
+          "arm": "B0",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        },
+        {
+          "arm": "B1",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        }
+      ]
+    },
+    {
+      "id": "75f2736e899f6c0283e2121a2a2ee7c5d07cfec5e2c5b44397acc50c69808b6b",
+      "occurrences": [
+        {
+          "task": "main/fin-l4-nonexist-235",
+          "tool": "symbol_resolve"
+        }
+      ],
+      "unicode_patterns_compile": true,
+      "checks": [
+        {
+          "arm": "B0",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        },
+        {
+          "arm": "B1",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        }
+      ]
+    },
+    {
+      "id": "1cc03b8f998b0fb273d91283f0f5eb6c7babc996a8058e90e7856c802821bcf5",
+      "occurrences": [
+        {
+          "task": "main/fin-l4-nonexist-236",
+          "tool": "symbol_resolve"
+        }
+      ],
+      "unicode_patterns_compile": true,
+      "checks": [
+        {
+          "arm": "B0",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        },
+        {
+          "arm": "B1",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        }
+      ]
+    },
+    {
+      "id": "e6e95314405eadbb3e25607f4fa0e971b2d3445857ef847284556be0bf71ce96",
+      "occurrences": [
+        {
+          "task": "main/fin-l4-nonexist-237",
+          "tool": "symbol_resolve"
+        }
+      ],
+      "unicode_patterns_compile": true,
+      "checks": [
+        {
+          "arm": "B0",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        },
+        {
+          "arm": "B1",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        }
+      ]
+    },
+    {
+      "id": "4e217a298375f8d1aa7b33a7fe9002b3aa81f09d8f3c0b52c3e7a77ebb76e931",
+      "occurrences": [
+        {
+          "task": "main/fin-l4-nonexist-238",
+          "tool": "symbol_resolve"
+        }
+      ],
+      "unicode_patterns_compile": true,
+      "checks": [
+        {
+          "arm": "B0",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        },
+        {
+          "arm": "B1",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        }
+      ]
+    },
+    {
+      "id": "5bad608746379f2c8b6993f33fda440a0a4d45c912ae0dfadb6028de55a58b79",
+      "occurrences": [
+        {
+          "task": "main/fin-l4-nonexist-239",
+          "tool": "symbol_resolve"
+        }
+      ],
+      "unicode_patterns_compile": true,
+      "checks": [
+        {
+          "arm": "B0",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        },
+        {
+          "arm": "B1",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        }
+      ]
+    },
+    {
+      "id": "5499ba908ef5192223a465aa9a90d01999370b321d0df23f589af7d635857fde",
+      "occurrences": [
+        {
+          "task": "main/fin-l4-nonexist-240",
+          "tool": "symbol_resolve"
+        }
+      ],
+      "unicode_patterns_compile": true,
+      "checks": [
+        {
+          "arm": "B0",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        },
+        {
+          "arm": "B1",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        }
+      ]
+    },
+    {
+      "id": "4d5b6cc37d0ca4a2fa01baa8723b8de864c81608828a5c95750530d9e34bb946",
+      "occurrences": [
+        {
+          "task": "main/fin-l4-nonexist-241",
+          "tool": "symbol_resolve"
+        }
+      ],
+      "unicode_patterns_compile": true,
+      "checks": [
+        {
+          "arm": "B0",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        },
+        {
+          "arm": "B1",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        }
+      ]
+    },
+    {
+      "id": "993a03ac0687275330ce1ebda52a11f503ec9570614a6e82ceae16fa415ad01d",
+      "occurrences": [
+        {
+          "task": "main/fin-l4-nonexist-242",
+          "tool": "symbol_resolve"
+        }
+      ],
+      "unicode_patterns_compile": true,
+      "checks": [
+        {
+          "arm": "B0",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        },
+        {
+          "arm": "B1",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        }
+      ]
+    },
+    {
+      "id": "02f85f849e5d59a70eab7def42f9cde542547b3a58e1175d05d530389d270b13",
+      "occurrences": [
+        {
+          "task": "main/fin-l4-nonexist-243",
+          "tool": "symbol_resolve"
+        }
+      ],
+      "unicode_patterns_compile": true,
+      "checks": [
+        {
+          "arm": "B0",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        },
+        {
+          "arm": "B1",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        }
+      ]
+    },
+    {
+      "id": "07928c357c2c41469e46e0539de1798dccef6c2f3c13a918b04382236f54c023",
+      "occurrences": [
+        {
+          "task": "main/fin-l4-nonexist-309",
+          "tool": "symbol_resolve"
+        }
+      ],
+      "unicode_patterns_compile": true,
+      "checks": [
+        {
+          "arm": "B0",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        },
+        {
+          "arm": "B1",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        }
+      ]
+    },
+    {
+      "id": "2ff5e9dd74338379fe5f2cc5e601d93596582085b23358e4a0336095296fac03",
+      "occurrences": [
+        {
+          "task": "main/fin-l4-nonexist-310",
+          "tool": "symbol_resolve"
+        }
+      ],
+      "unicode_patterns_compile": true,
+      "checks": [
+        {
+          "arm": "B0",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        },
+        {
+          "arm": "B1",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        }
+      ]
+    },
+    {
+      "id": "49a9beba2925e55c12deed1e964922c729c1610c67a0b9ff6a7f0f9161912dc2",
+      "occurrences": [
+        {
+          "task": "main/fin-l5-compare-287",
+          "tool": "vn_crypto_ohlcv"
+        }
+      ],
+      "unicode_patterns_compile": true,
+      "checks": [
+        {
+          "arm": "B0",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        },
+        {
+          "arm": "B1",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        },
+        {
+          "arm": "B0",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        },
+        {
+          "arm": "B1",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        }
+      ]
+    },
+    {
+      "id": "6291511ab60373c8c84b582f7812238afc7bbe3fe89f21f36ff19259ca77e3ea",
+      "occurrences": [
+        {
+          "task": "main/fin-l5-profile-261",
+          "tool": "stock_overview"
+        }
+      ],
+      "unicode_patterns_compile": true,
+      "checks": [
+        {
+          "arm": "B0",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        },
+        {
+          "arm": "B1",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        }
+      ]
+    },
+    {
+      "id": "583a1e59510d3fd719c8984ac59b7a66b008f05b28931d31df473c1597dc77e0",
+      "occurrences": [
+        {
+          "task": "main/fin-l5-profile-261",
+          "tool": "financial_detail"
+        }
+      ],
+      "unicode_patterns_compile": true,
+      "checks": [
+        {
+          "arm": "B0",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        },
+        {
+          "arm": "B1",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        }
+      ]
+    },
+    {
+      "id": "a245e403f5c3d39b219b585bad911b02bc64b98597670170e812dba25416c997",
+      "occurrences": [
+        {
+          "task": "main/fin-l5-profile-262",
+          "tool": "stock_overview"
+        }
+      ],
+      "unicode_patterns_compile": true,
+      "checks": [
+        {
+          "arm": "B0",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        },
+        {
+          "arm": "B1",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        }
+      ]
+    },
+    {
+      "id": "4e7007391c1198e6a15795adbb65ef11fb7efaa67c0224cf64f8b5c8cd5639d3",
+      "occurrences": [
+        {
+          "task": "main/fin-l5-profile-262",
+          "tool": "financial_detail"
+        }
+      ],
+      "unicode_patterns_compile": true,
+      "checks": [
+        {
+          "arm": "B0",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        },
+        {
+          "arm": "B1",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        }
+      ]
+    },
+    {
+      "id": "dab2e21bb1ae89b9ded29bbf181eda5667b89d17317e3d1bfe5443994b8347c2",
+      "occurrences": [
+        {
+          "task": "main/fin-l5-profile-263",
+          "tool": "stock_overview"
+        }
+      ],
+      "unicode_patterns_compile": true,
+      "checks": [
+        {
+          "arm": "B0",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        },
+        {
+          "arm": "B1",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        }
+      ]
+    },
+    {
+      "id": "8aa35740d1854c5c30f497be0ef3ff6018cf7b825467bf61b1c981a7c4c95823",
+      "occurrences": [
+        {
+          "task": "main/fin-l5-profile-263",
+          "tool": "financial_detail"
+        }
+      ],
+      "unicode_patterns_compile": true,
+      "checks": [
+        {
+          "arm": "B0",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        },
+        {
+          "arm": "B1",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        }
+      ]
+    },
+    {
+      "id": "0318a9d04b8e8096f23e270954a75b88bc7d1123bcb2444897dd2bf3c70d0ab4",
+      "occurrences": [
+        {
+          "task": "main/fin-l5-profile-264",
+          "tool": "stock_overview"
+        }
+      ],
+      "unicode_patterns_compile": true,
+      "checks": [
+        {
+          "arm": "B0",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        },
+        {
+          "arm": "B1",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        }
+      ]
+    },
+    {
+      "id": "6bcdab7cca2cecbb8feefc8405c882e6ac0bb40d1d973ab2328396fdaafcbf9e",
+      "occurrences": [
+        {
+          "task": "main/fin-l5-profile-264",
+          "tool": "financial_detail"
+        }
+      ],
+      "unicode_patterns_compile": true,
+      "checks": [
+        {
+          "arm": "B0",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        },
+        {
+          "arm": "B1",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        }
+      ]
+    },
+    {
+      "id": "cd521ea41a90535013604ae8d7f5a821c8de0fd5756a9204cb9dacabf17b6cf3",
+      "occurrences": [
+        {
+          "task": "main/fin-l5-profile-265",
+          "tool": "stock_overview"
+        }
+      ],
+      "unicode_patterns_compile": true,
+      "checks": [
+        {
+          "arm": "B0",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        },
+        {
+          "arm": "B1",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        }
+      ]
+    },
+    {
+      "id": "df92f349f7121012cfc48ac63167ffa5198f3801532e94780d96bc6474d4b78a",
+      "occurrences": [
+        {
+          "task": "main/fin-l5-profile-265",
+          "tool": "financial_detail"
+        }
+      ],
+      "unicode_patterns_compile": true,
+      "checks": [
+        {
+          "arm": "B0",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        },
+        {
+          "arm": "B1",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        }
+      ]
+    },
+    {
+      "id": "a3e9631d3f26b774afc1288e2a7b1444ac4ac9bb77625dbeb9d0233c4e2bf4cc",
+      "occurrences": [
+        {
+          "task": "main/fin-l5-profile-266",
+          "tool": "stock_overview"
+        }
+      ],
+      "unicode_patterns_compile": true,
+      "checks": [
+        {
+          "arm": "B0",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        },
+        {
+          "arm": "B1",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        }
+      ]
+    },
+    {
+      "id": "fc694aed1b8712212ab9a6b720c744be0a5c64454b1334b065c9b45739e11fbb",
+      "occurrences": [
+        {
+          "task": "main/fin-l5-profile-266",
+          "tool": "financial_detail"
+        }
+      ],
+      "unicode_patterns_compile": true,
+      "checks": [
+        {
+          "arm": "B0",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        },
+        {
+          "arm": "B1",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        }
+      ]
+    },
+    {
+      "id": "7f738afec00dd77d60aa3d05db8bf544f2eaa8fc37aaa7270455f3c135d46aa7",
+      "occurrences": [
+        {
+          "task": "main/fin-l5-profile-267",
+          "tool": "stock_overview"
+        }
+      ],
+      "unicode_patterns_compile": true,
+      "checks": [
+        {
+          "arm": "B0",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        },
+        {
+          "arm": "B1",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        }
+      ]
+    },
+    {
+      "id": "3b305fb65a04c42f78e88e12fbb99661bc2ad0b01cf41244b1e1f9bb218407cd",
+      "occurrences": [
+        {
+          "task": "main/fin-l5-profile-267",
+          "tool": "financial_detail"
+        }
+      ],
+      "unicode_patterns_compile": true,
+      "checks": [
+        {
+          "arm": "B0",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        },
+        {
+          "arm": "B1",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        }
+      ]
+    },
+    {
+      "id": "a58e4a2ac4aaac2e58696f95bee335de2c5d783b0e05dacb519f6835436aad12",
+      "occurrences": [
+        {
+          "task": "main/fin-l5-profile-268",
+          "tool": "stock_overview"
+        }
+      ],
+      "unicode_patterns_compile": true,
+      "checks": [
+        {
+          "arm": "B0",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        },
+        {
+          "arm": "B1",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        }
+      ]
+    },
+    {
+      "id": "054b210fc58f25ca4375c655a575be39ee71ea1e232d158689b2f83c0cfc4248",
+      "occurrences": [
+        {
+          "task": "main/fin-l5-profile-268",
+          "tool": "financial_detail"
+        }
+      ],
+      "unicode_patterns_compile": true,
+      "checks": [
+        {
+          "arm": "B0",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        },
+        {
+          "arm": "B1",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        }
+      ]
+    },
+    {
+      "id": "735bc1e2613717fde4123ea9c798fa6f75ed420dfa1fe8e4f3a12c5ec70e3b89",
+      "occurrences": [
+        {
+          "task": "main/fin-l5-profile-269",
+          "tool": "stock_overview"
+        }
+      ],
+      "unicode_patterns_compile": true,
+      "checks": [
+        {
+          "arm": "B0",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        },
+        {
+          "arm": "B1",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        }
+      ]
+    },
+    {
+      "id": "63588bb3518a3b2596a8b737a038b6c2ef5c96c32ae3d7c4e216c346fed414d4",
+      "occurrences": [
+        {
+          "task": "main/fin-l5-profile-269",
+          "tool": "financial_detail"
+        }
+      ],
+      "unicode_patterns_compile": true,
+      "checks": [
+        {
+          "arm": "B0",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        },
+        {
+          "arm": "B1",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        }
+      ]
+    },
+    {
+      "id": "5ddcfeb34d8b97de43f5be13bababfe63f1fed86bf99d217bea53ff48e904297",
+      "occurrences": [
+        {
+          "task": "main/fin-l5-profile-270",
+          "tool": "stock_overview"
+        }
+      ],
+      "unicode_patterns_compile": true,
+      "checks": [
+        {
+          "arm": "B0",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        },
+        {
+          "arm": "B1",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        }
+      ]
+    },
+    {
+      "id": "b817595866f57515279e3385afd5c12efe16428944aecedda418b6f4324edac8",
+      "occurrences": [
+        {
+          "task": "main/fin-l5-profile-270",
+          "tool": "financial_detail"
+        }
+      ],
+      "unicode_patterns_compile": true,
+      "checks": [
+        {
+          "arm": "B0",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        },
+        {
+          "arm": "B1",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        }
+      ]
+    },
+    {
+      "id": "4848bf9eaecbb76bc65c97681715ed8c9147ab5921eadbeca77ca1aab202eab6",
+      "occurrences": [
+        {
+          "task": "main/fin-l5-profile-271",
+          "tool": "stock_overview"
+        }
+      ],
+      "unicode_patterns_compile": true,
+      "checks": [
+        {
+          "arm": "B0",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        },
+        {
+          "arm": "B1",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        }
+      ]
+    },
+    {
+      "id": "e3fd94beefd9930cdf0d73c4747d49d77a05857c6888b6a3cd6b8c0e82676382",
+      "occurrences": [
+        {
+          "task": "main/fin-l5-profile-271",
+          "tool": "financial_detail"
+        }
+      ],
+      "unicode_patterns_compile": true,
+      "checks": [
+        {
+          "arm": "B0",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        },
+        {
+          "arm": "B1",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        }
+      ]
+    },
+    {
+      "id": "29ddc6ff34a1f2352a5abcf17dc93d33bf9896c60c561985e1f1d6eecc1c875d",
+      "occurrences": [
+        {
+          "task": "main/fin-l5-profile-272",
+          "tool": "stock_overview"
+        }
+      ],
+      "unicode_patterns_compile": true,
+      "checks": [
+        {
+          "arm": "B0",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        },
+        {
+          "arm": "B1",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        }
+      ]
+    },
+    {
+      "id": "feb70a212f0a64751bd36d34981879674dc5dc82db0aff282089dbc568b93df6",
+      "occurrences": [
+        {
+          "task": "main/fin-l5-profile-272",
+          "tool": "financial_detail"
+        }
+      ],
+      "unicode_patterns_compile": true,
+      "checks": [
+        {
+          "arm": "B0",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        },
+        {
+          "arm": "B1",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        }
+      ]
+    },
+    {
+      "id": "1315751d3c57493cb2d8d95e7fd352e8cd4496db19cce280b4ae0cba756ba6d0",
+      "occurrences": [
+        {
+          "task": "main/fin-l5-valuation-291",
+          "tool": "valuation_run"
+        }
+      ],
+      "unicode_patterns_compile": true,
+      "checks": [
+        {
+          "arm": "B0",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        },
+        {
+          "arm": "B1",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        }
+      ]
+    },
+    {
+      "id": "45e281796fcc30fe7c2d620671c492bff7fb264a4eb6ddf70accd06d1e1e307a",
+      "occurrences": [
+        {
+          "task": "main/fin-l5-valuation-292",
+          "tool": "valuation_run"
+        }
+      ],
+      "unicode_patterns_compile": true,
+      "checks": [
+        {
+          "arm": "B0",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        },
+        {
+          "arm": "B1",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        }
+      ]
+    },
+    {
+      "id": "5162c7b438983bce98328131e28f7a00c79d8bbe5b9389137c6dfb38ff8cbe1e",
+      "occurrences": [
+        {
+          "task": "main/fin-l5-valuation-293",
+          "tool": "valuation_run"
+        }
+      ],
+      "unicode_patterns_compile": true,
+      "checks": [
+        {
+          "arm": "B0",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        },
+        {
+          "arm": "B1",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        }
+      ]
+    },
+    {
+      "id": "6af35cf99c91fd6a78c7df2b598641b8476970974845d64571741772f39bb0f9",
+      "occurrences": [
+        {
+          "task": "main/fin-l5-valuation-294",
+          "tool": "valuation_run"
+        }
+      ],
+      "unicode_patterns_compile": true,
+      "checks": [
+        {
+          "arm": "B0",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        },
+        {
+          "arm": "B1",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        }
+      ]
+    },
+    {
+      "id": "81f7eafceec0f9ec9971abcb76dffd0ab01a222dde2218aaeaf6a369ee4a07df",
+      "occurrences": [
+        {
+          "task": "main/fin-l5-valuation-295",
+          "tool": "valuation_run"
+        }
+      ],
+      "unicode_patterns_compile": true,
+      "checks": [
+        {
+          "arm": "B0",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        },
+        {
+          "arm": "B1",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        }
+      ]
+    },
+    {
+      "id": "6e057ef0b1f79121ba803db876b4663f5c07ea0bc5c50832fc3082e89ec01c5b",
+      "occurrences": [
+        {
+          "task": "main/fin-l5-valuation-296",
+          "tool": "valuation_run"
+        }
+      ],
+      "unicode_patterns_compile": true,
+      "checks": [
+        {
+          "arm": "B0",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        },
+        {
+          "arm": "B1",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        }
+      ]
+    },
+    {
+      "id": "604a9858a9e1162221f0f47f03cfb07f9fbdd0989b639e897483ef87a2c7804f",
+      "occurrences": [
+        {
+          "task": "main/fin-l5-valuation-297",
+          "tool": "valuation_run"
+        }
+      ],
+      "unicode_patterns_compile": true,
+      "checks": [
+        {
+          "arm": "B0",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        },
+        {
+          "arm": "B1",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        }
+      ]
+    },
+    {
+      "id": "588e2f55f6ee2a61cc0f9ffde8aed8ecdcd37983750512d2a23affa1b9b83e73",
+      "occurrences": [
+        {
+          "task": "main/fin-l5-valuation-298",
+          "tool": "valuation_run"
+        }
+      ],
+      "unicode_patterns_compile": true,
+      "checks": [
+        {
+          "arm": "B0",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        },
+        {
+          "arm": "B1",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        }
+      ]
+    },
+    {
+      "id": "7dedcbca7aad9320bdf84e6388f11d5e5bced1a61d320c68720eb571a320db07",
+      "occurrences": [
+        {
+          "task": "main/fin-l5-valuation-299",
+          "tool": "valuation_run"
+        }
+      ],
+      "unicode_patterns_compile": true,
+      "checks": [
+        {
+          "arm": "B0",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        },
+        {
+          "arm": "B1",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        }
+      ]
+    },
+    {
+      "id": "b781556bb7673ebc61bf6db0448582836ad1bfcf0d377796ffb3cbc45840c2e2",
+      "occurrences": [
+        {
+          "task": "main/fin-l5-valuation-300",
+          "tool": "valuation_run"
+        }
+      ],
+      "unicode_patterns_compile": true,
+      "checks": [
+        {
+          "arm": "B0",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        },
+        {
+          "arm": "B1",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        }
+      ]
+    },
+    {
+      "id": "382b0315f01589bcacbdff892ad59232d689cc25f923f2d6642843dcd4277535",
+      "occurrences": [
+        {
+          "task": "main/fin-mem-324",
+          "tool": "vn_quote_history"
+        },
+        {
+          "task": "main/fin-mem-331",
+          "tool": "vn_quote_history"
+        }
+      ],
+      "unicode_patterns_compile": true,
+      "checks": [
+        {
+          "arm": "B0",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        },
+        {
+          "arm": "B1",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        },
+        {
+          "arm": "B0",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        },
+        {
+          "arm": "B1",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        }
+      ]
+    },
+    {
+      "id": "c75f4c003ee7420f10406e5798a7b927b92440438a8aa0f14485ad968abd815e",
+      "occurrences": [
+        {
+          "task": "main/fin-mem-326",
+          "tool": "financial_statements"
+        }
+      ],
+      "unicode_patterns_compile": true,
+      "checks": [
+        {
+          "arm": "B0",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        },
+        {
+          "arm": "B1",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        },
+        {
+          "arm": "B0",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        },
+        {
+          "arm": "B1",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        },
+        {
+          "arm": "B0",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        },
+        {
+          "arm": "B1",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        },
+        {
+          "arm": "B0",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        },
+        {
+          "arm": "B1",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        },
+        {
+          "arm": "B0",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        },
+        {
+          "arm": "B1",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        }
+      ]
+    },
+    {
+      "id": "48e3acf2919901452807e2fb80b0ce514d0311a3b1db46ae0a583d72fac718bb",
+      "occurrences": [
+        {
+          "task": "main/fin-mem-327",
+          "tool": "financial_statements"
+        }
+      ],
+      "unicode_patterns_compile": true,
+      "checks": [
+        {
+          "arm": "B0",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        },
+        {
+          "arm": "B1",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        },
+        {
+          "arm": "B0",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        },
+        {
+          "arm": "B1",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        }
+      ]
+    },
+    {
+      "id": "0afe67e616d8274515fb1eccc21ff309ccbe0ef6daa37bc06f4580e4b18a4cd7",
+      "occurrences": [
+        {
+          "task": "main/fin-mem-328",
+          "tool": "symbol_resolve"
+        }
+      ],
+      "unicode_patterns_compile": true,
+      "checks": [
+        {
+          "arm": "B0",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        },
+        {
+          "arm": "B1",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        }
+      ]
+    },
+    {
+      "id": "b00f5c4612d380f9c574f4cc4efdcaa0e47ec9593e73a5764c41b1d81865e910",
+      "occurrences": [
+        {
+          "task": "pilot/fin-l1-bctc-01",
+          "tool": "financial_statements"
+        }
+      ],
+      "unicode_patterns_compile": true,
+      "checks": [
+        {
+          "arm": "B0",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        },
+        {
+          "arm": "B1",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        }
+      ]
+    },
+    {
+      "id": "4409129850b31c88d2421e58b268c744c39612691ff3e8238ba9f1c83f83b57d",
+      "occurrences": [
+        {
+          "task": "pilot/fin-l1-gold-01",
+          "tool": "vn_msn_fx_gold"
+        },
+        {
+          "task": "pilot/fin-l2-crypto-01",
+          "tool": "vn_msn_fx_gold"
+        },
+        {
+          "task": "pilot/fin-l2-gold-01",
+          "tool": "vn_msn_fx_gold"
+        },
+        {
+          "task": "pilot/fin-l4-narrative-01",
+          "tool": "vn_msn_fx_gold"
+        }
+      ],
+      "unicode_patterns_compile": true,
+      "checks": [
+        {
+          "arm": "B0",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        },
+        {
+          "arm": "B1",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        }
+      ]
+    },
+    {
+      "id": "34d33289565ea6d14946f64c3980c8b0d850f3478831cf345192ab090c1304f6",
+      "occurrences": [
+        {
+          "task": "pilot/fin-l1-macro-01",
+          "tool": "vs_indicator_data"
+        }
+      ],
+      "unicode_patterns_compile": true,
+      "checks": [
+        {
+          "arm": "B0",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        },
+        {
+          "arm": "B1",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        }
+      ]
+    },
+    {
+      "id": "1e8ce61b16a61ef7a1244807a18e7e414d6daf2eb3bedafb02c0911b1f0e897a",
+      "occurrences": [
+        {
+          "task": "pilot/fin-l1-quote-01",
+          "tool": "vn_quote_history"
+        },
+        {
+          "task": "pilot/fin-l4-2nguon-01",
+          "tool": "vn_quote_history"
+        },
+        {
+          "task": "smoke/smoke-quote-01",
+          "tool": "vn_quote_history"
+        }
+      ],
+      "unicode_patterns_compile": true,
+      "checks": [
+        {
+          "arm": "B0",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        },
+        {
+          "arm": "B1",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        }
+      ]
+    },
+    {
+      "id": "ddd083492ae4ed08ea8634f562c326f1618c7298cbec47daf1821bdbf5638557",
+      "occurrences": [
+        {
+          "task": "pilot/fin-l1-quote-02",
+          "tool": "crypto_spot"
+        },
+        {
+          "task": "pilot/fin-l2-crypto-01",
+          "tool": "crypto_spot"
+        }
+      ],
+      "unicode_patterns_compile": true,
+      "checks": [
+        {
+          "arm": "B0",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        },
+        {
+          "arm": "B1",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        }
+      ]
+    },
+    {
+      "id": "5eb3c69692e8aa0d5ed7d64d0d8a40bd15edce1b4a770a0e0f8874478de8ba8d",
+      "occurrences": [
+        {
+          "task": "pilot/fin-l2-growth-01",
+          "tool": "financial_statements"
+        }
+      ],
+      "unicode_patterns_compile": true,
+      "checks": [
+        {
+          "arm": "B0",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        },
+        {
+          "arm": "B1",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        }
+      ]
+    },
+    {
+      "id": "2e481160e39683e787024e822c9bb394789e5cc9b8208971cdee5d740db4e13b",
+      "occurrences": [
+        {
+          "task": "pilot/fin-l2-margin-01",
+          "tool": "financial_detail"
+        },
+        {
+          "task": "pilot/fin-l5-profile-01",
+          "tool": "financial_detail"
+        }
+      ],
+      "unicode_patterns_compile": true,
+      "checks": [
+        {
+          "arm": "B0",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        },
+        {
+          "arm": "B1",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        }
+      ]
+    },
+    {
+      "id": "52433ceb86fd6f6c92e3dc13da1cb1e57e632ce4aab9fdf4fe08e70278c37d7c",
+      "occurrences": [
+        {
+          "task": "pilot/fin-l2-ratio-01",
+          "tool": "valuation_run"
+        },
+        {
+          "task": "pilot/fin-l5-valuation-01",
+          "tool": "valuation_run"
+        }
+      ],
+      "unicode_patterns_compile": true,
+      "checks": [
+        {
+          "arm": "B0",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        },
+        {
+          "arm": "B1",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        }
+      ]
+    },
+    {
+      "id": "120469ce4dd6342faae8e9e042812a1bf364591af4b9ced18a4f25308e4b4708",
+      "occurrences": [
+        {
+          "task": "pilot/fin-l2-tech-01",
+          "tool": "signals_technical"
+        },
+        {
+          "task": "pilot/fin-l3-tech-multi-01",
+          "tool": "signals_technical"
+        }
+      ],
+      "unicode_patterns_compile": true,
+      "checks": [
+        {
+          "arm": "B0",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        },
+        {
+          "arm": "B1",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        },
+        {
+          "arm": "B0",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        },
+        {
+          "arm": "B1",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        },
+        {
+          "arm": "B0",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        },
+        {
+          "arm": "B1",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        },
+        {
+          "arm": "B0",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        },
+        {
+          "arm": "B1",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        },
+        {
+          "arm": "B0",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        },
+        {
+          "arm": "B1",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        },
+        {
+          "arm": "B0",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        },
+        {
+          "arm": "B1",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        }
+      ]
+    },
+    {
+      "id": "9ecc634e1670064a490a26a2b32c0f5295f605f2b5aeada87d09b14649251da5",
+      "occurrences": [
+        {
+          "task": "pilot/fin-l3-agg-01",
+          "tool": "vn_quote_history"
+        },
+        {
+          "task": "smoke/smoke-agg-01",
+          "tool": "vn_quote_history"
+        }
+      ],
+      "unicode_patterns_compile": true,
+      "checks": [
+        {
+          "arm": "B0",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        },
+        {
+          "arm": "B1",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        },
+        {
+          "arm": "B0",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        },
+        {
+          "arm": "B1",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        },
+        {
+          "arm": "B0",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        },
+        {
+          "arm": "B1",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        },
+        {
+          "arm": "B0",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        },
+        {
+          "arm": "B1",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        },
+        {
+          "arm": "B0",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        },
+        {
+          "arm": "B1",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        }
+      ]
+    },
+    {
+      "id": "efd5b20dadb60136a9aafccd08ee7e69df962817f3d712fb492988b73fba670d",
+      "occurrences": [
+        {
+          "task": "pilot/fin-l3-crypto-01",
+          "tool": "yf_commodities"
+        }
+      ],
+      "unicode_patterns_compile": true,
+      "checks": [
+        {
+          "arm": "B0",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        },
+        {
+          "arm": "B1",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        }
+      ]
+    },
+    {
+      "id": "c9691ab74cc907f6ee1bf79c002dcb1c7f47715e3548fd7afcb5b89ada2c13de",
+      "occurrences": [
+        {
+          "task": "pilot/fin-l3-index-01",
+          "tool": "vn_index_ohlcv"
+        }
+      ],
+      "unicode_patterns_compile": true,
+      "checks": [
+        {
+          "arm": "B0",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        },
+        {
+          "arm": "B1",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        }
+      ]
+    },
+    {
+      "id": "ef977ae93d1fc95a9770fb86756908ac6c055ac0681fc9890b451eab53347a9c",
+      "occurrences": [
+        {
+          "task": "pilot/fin-l3-screen-01",
+          "tool": "peer_compare"
+        },
+        {
+          "task": "pilot/fin-l5-compare-01",
+          "tool": "peer_compare"
+        }
+      ],
+      "unicode_patterns_compile": true,
+      "checks": [
+        {
+          "arm": "B0",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        },
+        {
+          "arm": "B1",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        }
+      ]
+    },
+    {
+      "id": "10bc1acabea981e8025dfe84838eb78579c2c7a06f3150723c9cb6723c4cf90a",
+      "occurrences": [
+        {
+          "task": "pilot/fin-l4-2nguon-01",
+          "tool": "vs_overview_trading"
+        }
+      ],
+      "unicode_patterns_compile": true,
+      "checks": [
+        {
+          "arm": "B0",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        },
+        {
+          "arm": "B1",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        }
+      ]
+    },
+    {
+      "id": "c50184d2a73237632ed20f2fc1593ed9e27fe8cb9b39a7bfcdded803d09269fa",
+      "occurrences": [
+        {
+          "task": "pilot/fin-l4-future-01",
+          "tool": "financial_statements"
+        }
+      ],
+      "unicode_patterns_compile": true,
+      "checks": [
+        {
+          "arm": "B0",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        },
+        {
+          "arm": "B1",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        }
+      ]
+    },
+    {
+      "id": "6e08d4705edacd2f5025e35ccd4ba40334b6a253c20197dea18c12016e4dbb1a",
+      "occurrences": [
+        {
+          "task": "pilot/fin-l4-nonexist-01",
+          "tool": "symbol_resolve"
+        },
+        {
+          "task": "smoke/smoke-trap-01",
+          "tool": "symbol_resolve"
+        }
+      ],
+      "unicode_patterns_compile": true,
+      "checks": [
+        {
+          "arm": "B0",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        },
+        {
+          "arm": "B1",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        }
+      ]
+    },
+    {
+      "id": "db188368cf8cbd643a3da46e60b383ed7d9b8f802c47ae52a2b5aa300a123734",
+      "occurrences": [
+        {
+          "task": "pilot/fin-l5-profile-01",
+          "tool": "stock_overview"
+        }
+      ],
+      "unicode_patterns_compile": true,
+      "checks": [
+        {
+          "arm": "B0",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        },
+        {
+          "arm": "B1",
+          "recorded": true,
+          "positive": true,
+          "negative_rejected": true
+        }
+      ]
+    }
+  ]
+}

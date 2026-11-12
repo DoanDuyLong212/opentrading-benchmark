@@ -1,0 +1,80 @@
+{
+  "snapshot_date": "2026-11-02",
+  "source_review_status": "synthetic_engineering_fixture",
+  "note": "New pre-registered dev fixtures; no source/gold copied from main or holdout.",
+  "tools": {
+    "r:DPM": {
+      "tool": "symbol_resolve",
+      "params": {
+        "query": "Đạm Phú Mỹ",
+        "limit": 5
+      },
+      "envelope": {
+        "data": {
+          "query": "Đạm Phú Mỹ",
+          "resolved": "DPM",
+          "ambiguous": false,
+          "candidates": [
+            {
+              "symbol": "DPM",
+              "name": "Đạm Phú Mỹ",
+              "asset_class": "vn_stock"
+            }
+          ]
+        },
+        "availability": "available",
+        "provenance": {
+          "source": "synthetic-dev",
+          "as_of": "2026-11-02T09:00:00+07:00",
+          "data_time": "2026-10-29",
+          "timezone": "Asia/Ho_Chi_Minh"
+        },
+        "units": {},
+        "warnings": [
+          "Synthetic engineering fixture; not independently captured market data."
+        ]
+      }
+    },
+    "fs:DPM": {
+      "tool": "financial_statements",
+      "params": {
+        "symbol": "DPM",
+        "period": "quarter",
+        "statement": "all",
+        "periods_n": 15
+      },
+      "envelope": {
+        "data": {
+          "symbol": "DPM",
+          "scope": "consolidated",
+          "periods": [
+            "Q2/2026",
+            "Q3/2026"
+          ],
+          "rows": [
+            {
+              "name": "Doanh thu thuần",
+              "unit": "VND",
+              "scope": "consolidated",
+              "values": {
+                "Q2/2026": 810000000000,
+                "Q3/2026": 972000000000
+              }
+            }
+          ]
+        },
+        "availability": "available",
+        "provenance": {
+          "source": "synthetic-dev",
+          "as_of": "2026-11-02T09:00:00+07:00",
+          "data_time": "2026-10-29",
+          "timezone": "Asia/Ho_Chi_Minh"
+        },
+        "units": {},
+        "warnings": [
+          "Synthetic engineering fixture; not independently captured market data."
+        ]
+      }
+    }
+  }
+}

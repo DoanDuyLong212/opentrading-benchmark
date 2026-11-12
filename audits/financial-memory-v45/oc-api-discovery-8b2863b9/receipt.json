@@ -1,0 +1,4678 @@
+{
+  "binary": "/home/doanlong/.opencode/bin/opencode",
+  "binary_sha256": "cf5841e6666aeb469abec8b39ca494cef07a637756454a34a742b2f4996e1675",
+  "advertised_schema_sha256": "3ab02f3b92d19f3cae60d0b220cbad7a1b44865622186f074eebe191d05a431a",
+  "read_only_local": true,
+  "external_model_calls": 0,
+  "matches": [
+    {
+      "method": "get",
+      "path": "/api/session",
+      "operationId": "session.list",
+      "parameters": [
+        {
+          "name": "limit",
+          "in": "query",
+          "schema": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "Maximum number of sessions to return. Defaults to the newest 50 sessions."
+          },
+          "required": false
+        },
+        {
+          "name": "order",
+          "in": "query",
+          "schema": {
+            "anyOf": [
+              {
+                "type": "string",
+                "enum": [
+                  "asc",
+                  "desc"
+                ]
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "Session order for the first page. Use desc for newest first or asc for oldest first."
+          },
+          "required": false
+        },
+        {
+          "name": "search",
+          "in": "query",
+          "schema": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "required": false
+        },
+        {
+          "name": "parentID",
+          "in": "query",
+          "schema": {
+            "anyOf": [
+              {
+                "anyOf": [
+                  {
+                    "$ref": "#/components/schemas/Session.ID"
+                  },
+                  {
+                    "type": "string",
+                    "enum": [
+                      "null"
+                    ]
+                  }
+                ],
+                "description": "Filter by parent session. Use null to return only root sessions."
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "required": false
+        },
+        {
+          "name": "archived",
+          "in": "query",
+          "schema": {
+            "anyOf": [
+              {
+                "type": "string",
+                "enum": [
+                  "true",
+                  "false"
+                ]
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "required": false
+        },
+        {
+          "name": "directory",
+          "in": "query",
+          "schema": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/AbsolutePath"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "required": false
+        },
+        {
+          "name": "project",
+          "in": "query",
+          "schema": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Project.ID"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "required": false
+        },
+        {
+          "name": "subpath",
+          "in": "query",
+          "schema": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/RelativePath"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "required": false
+        },
+        {
+          "name": "cursor",
+          "in": "query",
+          "schema": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/SessionsCursor"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "required": false
+        }
+      ],
+      "responses": {
+        "200": {
+          "description": "SessionsResponse",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SessionsResponse"
+              }
+            }
+          }
+        },
+        "400": {
+          "description": "InvalidCursorError | InvalidRequestError",
+          "content": {
+            "application/json": {
+              "schema": {
+                "anyOf": [
+                  {
+                    "$ref": "#/components/schemas/InvalidCursorErrorEncoded"
+                  },
+                  {
+                    "$ref": "#/components/schemas/InvalidRequestErrorEncoded"
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "401": {
+          "description": "UnauthorizedError",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UnauthorizedErrorEncoded"
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "method": "post",
+      "path": "/api/session",
+      "operationId": "session.create",
+      "parameters": [],
+      "responses": {
+        "200": {
+          "description": "Success",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "data": {
+                    "$ref": "#/components/schemas/Session.Info"
+                  }
+                },
+                "required": [
+                  "data"
+                ],
+                "additionalProperties": false
+              }
+            }
+          }
+        },
+        "400": {
+          "description": "InvalidRequestError",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/InvalidRequestErrorEncoded"
+              }
+            }
+          }
+        },
+        "401": {
+          "description": "UnauthorizedError",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UnauthorizedErrorEncoded"
+              }
+            }
+          }
+        },
+        "404": {
+          "description": "SessionNotFoundError",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SessionNotFoundErrorEncoded"
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "method": "get",
+      "path": "/api/experimental/session/stats",
+      "operationId": "experimental.session.stats",
+      "parameters": [
+        {
+          "name": "from",
+          "in": "query",
+          "schema": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "required": false
+        },
+        {
+          "name": "to",
+          "in": "query",
+          "schema": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "required": false
+        },
+        {
+          "name": "project",
+          "in": "query",
+          "schema": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Project.ID"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "required": false
+        },
+        {
+          "name": "timezone",
+          "in": "query",
+          "schema": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "required": false
+        },
+        {
+          "name": "tools",
+          "in": "query",
+          "schema": {
+            "anyOf": [
+              {
+                "type": "string",
+                "enum": [
+                  "none",
+                  "summary",
+                  "detail"
+                ]
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "required": false
+        }
+      ],
+      "responses": {
+        "200": {
+          "description": "Success",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "data": {
+                    "$ref": "#/components/schemas/SessionStats.Info"
+                  }
+                },
+                "required": [
+                  "data"
+                ],
+                "additionalProperties": false
+              }
+            }
+          }
+        },
+        "400": {
+          "description": "InvalidRequestError",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/InvalidRequestErrorEncoded"
+              }
+            }
+          }
+        },
+        "401": {
+          "description": "UnauthorizedError",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UnauthorizedErrorEncoded"
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "method": "post",
+      "path": "/api/experimental/session/import",
+      "operationId": "experimental.session.import",
+      "parameters": [],
+      "responses": {
+        "200": {
+          "description": "Success",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "data": {
+                    "$ref": "#/components/schemas/Session.Info"
+                  }
+                },
+                "required": [
+                  "data"
+                ],
+                "additionalProperties": false
+              }
+            }
+          }
+        },
+        "400": {
+          "description": "InvalidRequestError",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/InvalidRequestErrorEncoded"
+              }
+            }
+          }
+        },
+        "401": {
+          "description": "UnauthorizedError",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UnauthorizedErrorEncoded"
+              }
+            }
+          }
+        },
+        "404": {
+          "description": "SessionNotFoundError",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SessionNotFoundErrorEncoded"
+              }
+            }
+          }
+        },
+        "409": {
+          "description": "ConflictError",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ConflictErrorEncoded"
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "method": "get",
+      "path": "/api/experimental/session/{sessionID}/export",
+      "operationId": "experimental.session.export",
+      "parameters": [
+        {
+          "name": "sessionID",
+          "in": "path",
+          "schema": {
+            "$ref": "#/components/schemas/Session.ID"
+          },
+          "required": true
+        },
+        {
+          "name": "sanitize",
+          "in": "query",
+          "schema": {
+            "anyOf": [
+              {
+                "type": "string",
+                "enum": [
+                  "true",
+                  "false"
+                ]
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "required": false
+        }
+      ],
+      "responses": {
+        "200": {
+          "description": "Success",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "data": {
+                    "$ref": "#/components/schemas/SessionTransfer.Data"
+                  }
+                },
+                "required": [
+                  "data"
+                ],
+                "additionalProperties": false
+              }
+            }
+          }
+        },
+        "400": {
+          "description": "InvalidRequestError",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/InvalidRequestErrorEncoded"
+              }
+            }
+          }
+        },
+        "401": {
+          "description": "UnauthorizedError",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UnauthorizedErrorEncoded"
+              }
+            }
+          }
+        },
+        "404": {
+          "description": "SessionNotFoundError",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SessionNotFoundErrorEncoded"
+              }
+            }
+          }
+        },
+        "500": {
+          "description": "UnknownError",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UnknownErrorEncoded"
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "method": "get",
+      "path": "/api/session/active",
+      "operationId": "session.active",
+      "parameters": [],
+      "responses": {
+        "200": {
+          "description": "Success",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "data": {
+                    "type": "object",
+                    "patternProperties": {
+                      "^ses": {
+                        "$ref": "#/components/schemas/SessionActive"
+                      }
+                    },
+                    "additionalProperties": false
+                  }
+                },
+                "required": [
+                  "data"
+                ],
+                "additionalProperties": false
+              }
+            }
+          }
+        },
+        "400": {
+          "description": "InvalidRequestError",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/InvalidRequestErrorEncoded"
+              }
+            }
+          }
+        },
+        "401": {
+          "description": "UnauthorizedError",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UnauthorizedErrorEncoded"
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "method": "get",
+      "path": "/api/session/{sessionID}",
+      "operationId": "session.get",
+      "parameters": [
+        {
+          "name": "sessionID",
+          "in": "path",
+          "schema": {
+            "$ref": "#/components/schemas/Session.ID"
+          },
+          "required": true
+        }
+      ],
+      "responses": {
+        "200": {
+          "description": "Success",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "data": {
+                    "$ref": "#/components/schemas/Session.Info"
+                  }
+                },
+                "required": [
+                  "data"
+                ],
+                "additionalProperties": false
+              }
+            }
+          }
+        },
+        "400": {
+          "description": "InvalidRequestError",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/InvalidRequestErrorEncoded"
+              }
+            }
+          }
+        },
+        "401": {
+          "description": "UnauthorizedError",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UnauthorizedErrorEncoded"
+              }
+            }
+          }
+        },
+        "404": {
+          "description": "SessionNotFoundError",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SessionNotFoundErrorEncoded"
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "method": "delete",
+      "path": "/api/session/{sessionID}",
+      "operationId": "session.remove",
+      "parameters": [
+        {
+          "name": "sessionID",
+          "in": "path",
+          "schema": {
+            "$ref": "#/components/schemas/Session.ID"
+          },
+          "required": true
+        }
+      ],
+      "responses": {
+        "204": {
+          "description": "<No Content>"
+        },
+        "400": {
+          "description": "InvalidRequestError",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/InvalidRequestErrorEncoded"
+              }
+            }
+          }
+        },
+        "401": {
+          "description": "UnauthorizedError",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UnauthorizedErrorEncoded"
+              }
+            }
+          }
+        },
+        "404": {
+          "description": "SessionNotFoundError",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SessionNotFoundErrorEncoded"
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "method": "patch",
+      "path": "/api/session/{sessionID}",
+      "operationId": "session.update",
+      "parameters": [
+        {
+          "name": "sessionID",
+          "in": "path",
+          "schema": {
+            "$ref": "#/components/schemas/Session.ID"
+          },
+          "required": true
+        }
+      ],
+      "responses": {
+        "204": {
+          "description": "<No Content>"
+        },
+        "400": {
+          "description": "InvalidRequestError",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/InvalidRequestErrorEncoded"
+              }
+            }
+          }
+        },
+        "401": {
+          "description": "UnauthorizedError",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UnauthorizedErrorEncoded"
+              }
+            }
+          }
+        },
+        "404": {
+          "description": "SessionNotFoundError | LocationNotFoundError",
+          "content": {
+            "application/json": {
+              "schema": {
+                "anyOf": [
+                  {
+                    "$ref": "#/components/schemas/SessionNotFoundErrorEncoded"
+                  },
+                  {
+                    "$ref": "#/components/schemas/LocationNotFoundErrorEncoded"
+                  }
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "method": "post",
+      "path": "/api/session/{sessionID}/fork",
+      "operationId": "session.fork",
+      "parameters": [
+        {
+          "name": "sessionID",
+          "in": "path",
+          "schema": {
+            "$ref": "#/components/schemas/Session.ID"
+          },
+          "required": true
+        }
+      ],
+      "responses": {
+        "200": {
+          "description": "Success",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "data": {
+                    "$ref": "#/components/schemas/Session.Info"
+                  }
+                },
+                "required": [
+                  "data"
+                ],
+                "additionalProperties": false
+              }
+            }
+          }
+        },
+        "400": {
+          "description": "InvalidRequestError",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/InvalidRequestErrorEncoded"
+              }
+            }
+          }
+        },
+        "401": {
+          "description": "UnauthorizedError",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UnauthorizedErrorEncoded"
+              }
+            }
+          }
+        },
+        "404": {
+          "description": "SessionNotFoundError | MessageNotFoundError | LocationNotFoundError",
+          "content": {
+            "application/json": {
+              "schema": {
+                "anyOf": [
+                  {
+                    "$ref": "#/components/schemas/SessionNotFoundErrorEncoded"
+                  },
+                  {
+                    "$ref": "#/components/schemas/MessageNotFoundErrorEncoded"
+                  },
+                  {
+                    "$ref": "#/components/schemas/LocationNotFoundErrorEncoded"
+                  }
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "method": "post",
+      "path": "/api/session/{sessionID}/agent",
+      "operationId": "session.switchAgent",
+      "parameters": [
+        {
+          "name": "sessionID",
+          "in": "path",
+          "schema": {
+            "$ref": "#/components/schemas/Session.ID"
+          },
+          "required": true
+        }
+      ],
+      "responses": {
+        "204": {
+          "description": "<No Content>"
+        },
+        "400": {
+          "description": "InvalidRequestError",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/InvalidRequestErrorEncoded"
+              }
+            }
+          }
+        },
+        "401": {
+          "description": "UnauthorizedError",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UnauthorizedErrorEncoded"
+              }
+            }
+          }
+        },
+        "404": {
+          "description": "SessionNotFoundError | LocationNotFoundError",
+          "content": {
+            "application/json": {
+              "schema": {
+                "anyOf": [
+                  {
+                    "$ref": "#/components/schemas/SessionNotFoundErrorEncoded"
+                  },
+                  {
+                    "$ref": "#/components/schemas/LocationNotFoundErrorEncoded"
+                  }
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "method": "post",
+      "path": "/api/session/{sessionID}/model",
+      "operationId": "session.switchModel",
+      "parameters": [
+        {
+          "name": "sessionID",
+          "in": "path",
+          "schema": {
+            "$ref": "#/components/schemas/Session.ID"
+          },
+          "required": true
+        }
+      ],
+      "responses": {
+        "204": {
+          "description": "<No Content>"
+        },
+        "400": {
+          "description": "InvalidRequestError",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/InvalidRequestErrorEncoded"
+              }
+            }
+          }
+        },
+        "401": {
+          "description": "UnauthorizedError",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UnauthorizedErrorEncoded"
+              }
+            }
+          }
+        },
+        "404": {
+          "description": "SessionNotFoundError | LocationNotFoundError",
+          "content": {
+            "application/json": {
+              "schema": {
+                "anyOf": [
+                  {
+                    "$ref": "#/components/schemas/SessionNotFoundErrorEncoded"
+                  },
+                  {
+                    "$ref": "#/components/schemas/LocationNotFoundErrorEncoded"
+                  }
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "method": "post",
+      "path": "/api/session/{sessionID}/move",
+      "operationId": "session.move",
+      "parameters": [
+        {
+          "name": "sessionID",
+          "in": "path",
+          "schema": {
+            "$ref": "#/components/schemas/Session.ID"
+          },
+          "required": true
+        }
+      ],
+      "responses": {
+        "204": {
+          "description": "<No Content>"
+        },
+        "400": {
+          "description": "InvalidRequestError",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/InvalidRequestErrorEncoded"
+              }
+            }
+          }
+        },
+        "401": {
+          "description": "UnauthorizedError",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UnauthorizedErrorEncoded"
+              }
+            }
+          }
+        },
+        "404": {
+          "description": "SessionNotFoundError",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SessionNotFoundErrorEncoded"
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "method": "post",
+      "path": "/api/session/{sessionID}/prompt",
+      "operationId": "session.prompt",
+      "parameters": [
+        {
+          "name": "sessionID",
+          "in": "path",
+          "schema": {
+            "$ref": "#/components/schemas/Session.ID"
+          },
+          "required": true
+        }
+      ],
+      "responses": {
+        "200": {
+          "description": "Success",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "data": {
+                    "$ref": "#/components/schemas/Session.Inbox.User"
+                  }
+                },
+                "required": [
+                  "data"
+                ],
+                "additionalProperties": false
+              }
+            }
+          }
+        },
+        "400": {
+          "description": "InvalidRequestError",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/InvalidRequestErrorEncoded"
+              }
+            }
+          }
+        },
+        "401": {
+          "description": "UnauthorizedError",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UnauthorizedErrorEncoded"
+              }
+            }
+          }
+        },
+        "404": {
+          "description": "SessionNotFoundError | LocationNotFoundError",
+          "content": {
+            "application/json": {
+              "schema": {
+                "anyOf": [
+                  {
+                    "$ref": "#/components/schemas/SessionNotFoundErrorEncoded"
+                  },
+                  {
+                    "$ref": "#/components/schemas/LocationNotFoundErrorEncoded"
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "409": {
+          "description": "ConflictError",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ConflictErrorEncoded"
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "method": "post",
+      "path": "/api/session/{sessionID}/command",
+      "operationId": "session.command",
+      "parameters": [
+        {
+          "name": "sessionID",
+          "in": "path",
+          "schema": {
+            "$ref": "#/components/schemas/Session.ID"
+          },
+          "required": true
+        }
+      ],
+      "responses": {
+        "204": {
+          "description": "<No Content>"
+        },
+        "400": {
+          "description": "InvalidRequestError",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/InvalidRequestErrorEncoded"
+              }
+            }
+          }
+        },
+        "401": {
+          "description": "UnauthorizedError",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UnauthorizedErrorEncoded"
+              }
+            }
+          }
+        },
+        "404": {
+          "description": "SessionNotFoundError | CommandNotFoundError | LocationNotFoundError",
+          "content": {
+            "application/json": {
+              "schema": {
+                "anyOf": [
+                  {
+                    "$ref": "#/components/schemas/SessionNotFoundErrorEncoded"
+                  },
+                  {
+                    "$ref": "#/components/schemas/CommandNotFoundErrorEncoded"
+                  },
+                  {
+                    "$ref": "#/components/schemas/LocationNotFoundErrorEncoded"
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "500": {
+          "description": "CommandExecutionError",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CommandExecutionErrorEncoded"
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "method": "post",
+      "path": "/api/experimental/session/{sessionID}/skill",
+      "operationId": "experimental.session.skill",
+      "parameters": [
+        {
+          "name": "sessionID",
+          "in": "path",
+          "schema": {
+            "$ref": "#/components/schemas/Session.ID"
+          },
+          "required": true
+        }
+      ],
+      "responses": {
+        "204": {
+          "description": "<No Content>"
+        },
+        "400": {
+          "description": "InvalidRequestError",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/InvalidRequestErrorEncoded"
+              }
+            }
+          }
+        },
+        "401": {
+          "description": "UnauthorizedError",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UnauthorizedErrorEncoded"
+              }
+            }
+          }
+        },
+        "404": {
+          "description": "SessionNotFoundError | SkillNotFoundError | LocationNotFoundError",
+          "content": {
+            "application/json": {
+              "schema": {
+                "anyOf": [
+                  {
+                    "$ref": "#/components/schemas/SessionNotFoundErrorEncoded"
+                  },
+                  {
+                    "$ref": "#/components/schemas/SkillNotFoundErrorEncoded"
+                  },
+                  {
+                    "$ref": "#/components/schemas/LocationNotFoundErrorEncoded"
+                  }
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "method": "post",
+      "path": "/api/session/{sessionID}/synthetic",
+      "operationId": "session.synthetic",
+      "parameters": [
+        {
+          "name": "sessionID",
+          "in": "path",
+          "schema": {
+            "$ref": "#/components/schemas/Session.ID"
+          },
+          "required": true
+        }
+      ],
+      "responses": {
+        "200": {
+          "description": "Success",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "data": {
+                    "$ref": "#/components/schemas/Session.Inbox.Synthetic"
+                  }
+                },
+                "required": [
+                  "data"
+                ],
+                "additionalProperties": false
+              }
+            }
+          }
+        },
+        "400": {
+          "description": "InvalidRequestError",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/InvalidRequestErrorEncoded"
+              }
+            }
+          }
+        },
+        "401": {
+          "description": "UnauthorizedError",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UnauthorizedErrorEncoded"
+              }
+            }
+          }
+        },
+        "404": {
+          "description": "SessionNotFoundError | LocationNotFoundError",
+          "content": {
+            "application/json": {
+              "schema": {
+                "anyOf": [
+                  {
+                    "$ref": "#/components/schemas/SessionNotFoundErrorEncoded"
+                  },
+                  {
+                    "$ref": "#/components/schemas/LocationNotFoundErrorEncoded"
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "409": {
+          "description": "ConflictError",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ConflictErrorEncoded"
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "method": "post",
+      "path": "/api/session/{sessionID}/shell",
+      "operationId": "session.shell",
+      "parameters": [
+        {
+          "name": "sessionID",
+          "in": "path",
+          "schema": {
+            "$ref": "#/components/schemas/Session.ID"
+          },
+          "required": true
+        }
+      ],
+      "responses": {
+        "204": {
+          "description": "<No Content>"
+        },
+        "400": {
+          "description": "InvalidRequestError",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/InvalidRequestErrorEncoded"
+              }
+            }
+          }
+        },
+        "401": {
+          "description": "UnauthorizedError",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UnauthorizedErrorEncoded"
+              }
+            }
+          }
+        },
+        "404": {
+          "description": "SessionNotFoundError | LocationNotFoundError",
+          "content": {
+            "application/json": {
+              "schema": {
+                "anyOf": [
+                  {
+                    "$ref": "#/components/schemas/SessionNotFoundErrorEncoded"
+                  },
+                  {
+                    "$ref": "#/components/schemas/LocationNotFoundErrorEncoded"
+                  }
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "method": "post",
+      "path": "/api/session/{sessionID}/compact",
+      "operationId": "session.compact",
+      "parameters": [
+        {
+          "name": "sessionID",
+          "in": "path",
+          "schema": {
+            "$ref": "#/components/schemas/Session.ID"
+          },
+          "required": true
+        }
+      ],
+      "responses": {
+        "200": {
+          "description": "Success",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "data": {
+                    "$ref": "#/components/schemas/Session.Inbox.Compaction"
+                  }
+                },
+                "required": [
+                  "data"
+                ],
+                "additionalProperties": false
+              }
+            }
+          }
+        },
+        "400": {
+          "description": "InvalidRequestError",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/InvalidRequestErrorEncoded"
+              }
+            }
+          }
+        },
+        "401": {
+          "description": "UnauthorizedError",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UnauthorizedErrorEncoded"
+              }
+            }
+          }
+        },
+        "404": {
+          "description": "SessionNotFoundError | LocationNotFoundError",
+          "content": {
+            "application/json": {
+              "schema": {
+                "anyOf": [
+                  {
+                    "$ref": "#/components/schemas/SessionNotFoundErrorEncoded"
+                  },
+                  {
+                    "$ref": "#/components/schemas/LocationNotFoundErrorEncoded"
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "409": {
+          "description": "ConflictError",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ConflictErrorEncoded"
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "method": "post",
+      "path": "/api/experimental/session/{sessionID}/wait",
+      "operationId": "experimental.session.wait",
+      "parameters": [
+        {
+          "name": "sessionID",
+          "in": "path",
+          "schema": {
+            "$ref": "#/components/schemas/Session.ID"
+          },
+          "required": true
+        }
+      ],
+      "responses": {
+        "204": {
+          "description": "<No Content>"
+        },
+        "400": {
+          "description": "InvalidRequestError",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/InvalidRequestErrorEncoded"
+              }
+            }
+          }
+        },
+        "401": {
+          "description": "UnauthorizedError",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UnauthorizedErrorEncoded"
+              }
+            }
+          }
+        },
+        "404": {
+          "description": "SessionNotFoundError | LocationNotFoundError",
+          "content": {
+            "application/json": {
+              "schema": {
+                "anyOf": [
+                  {
+                    "$ref": "#/components/schemas/SessionNotFoundErrorEncoded"
+                  },
+                  {
+                    "$ref": "#/components/schemas/LocationNotFoundErrorEncoded"
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "503": {
+          "description": "ServiceUnavailableError",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ServiceUnavailableErrorEncoded"
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "method": "post",
+      "path": "/api/session/{sessionID}/revert/stage",
+      "operationId": "session.revert.stage",
+      "parameters": [
+        {
+          "name": "sessionID",
+          "in": "path",
+          "schema": {
+            "$ref": "#/components/schemas/Session.ID"
+          },
+          "required": true
+        }
+      ],
+      "responses": {
+        "200": {
+          "description": "Success",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "data": {
+                    "$ref": "#/components/schemas/Session.Revert"
+                  }
+                },
+                "required": [
+                  "data"
+                ],
+                "additionalProperties": false
+              }
+            }
+          }
+        },
+        "400": {
+          "description": "InvalidRequestError",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/InvalidRequestErrorEncoded"
+              }
+            }
+          }
+        },
+        "401": {
+          "description": "UnauthorizedError",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UnauthorizedErrorEncoded"
+              }
+            }
+          }
+        },
+        "404": {
+          "description": "MessageNotFoundError | SessionNotFoundError | LocationNotFoundError",
+          "content": {
+            "application/json": {
+              "schema": {
+                "anyOf": [
+                  {
+                    "$ref": "#/components/schemas/MessageNotFoundErrorEncoded"
+                  },
+                  {
+                    "$ref": "#/components/schemas/SessionNotFoundErrorEncoded"
+                  },
+                  {
+                    "$ref": "#/components/schemas/LocationNotFoundErrorEncoded"
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "409": {
+          "description": "SessionBusyError",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SessionBusyErrorEncoded"
+              }
+            }
+          }
+        },
+        "500": {
+          "description": "UnknownError",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UnknownErrorEncoded"
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "method": "delete",
+      "path": "/api/session/{sessionID}/revert",
+      "operationId": "session.revert.clear",
+      "parameters": [
+        {
+          "name": "sessionID",
+          "in": "path",
+          "schema": {
+            "$ref": "#/components/schemas/Session.ID"
+          },
+          "required": true
+        }
+      ],
+      "responses": {
+        "204": {
+          "description": "<No Content>"
+        },
+        "400": {
+          "description": "InvalidRequestError",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/InvalidRequestErrorEncoded"
+              }
+            }
+          }
+        },
+        "401": {
+          "description": "UnauthorizedError",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UnauthorizedErrorEncoded"
+              }
+            }
+          }
+        },
+        "404": {
+          "description": "SessionNotFoundError | LocationNotFoundError",
+          "content": {
+            "application/json": {
+              "schema": {
+                "anyOf": [
+                  {
+                    "$ref": "#/components/schemas/SessionNotFoundErrorEncoded"
+                  },
+                  {
+                    "$ref": "#/components/schemas/LocationNotFoundErrorEncoded"
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "409": {
+          "description": "SessionBusyError",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SessionBusyErrorEncoded"
+              }
+            }
+          }
+        },
+        "500": {
+          "description": "UnknownError",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UnknownErrorEncoded"
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "method": "post",
+      "path": "/api/session/{sessionID}/revert/commit",
+      "operationId": "session.revert.commit",
+      "parameters": [
+        {
+          "name": "sessionID",
+          "in": "path",
+          "schema": {
+            "$ref": "#/components/schemas/Session.ID"
+          },
+          "required": true
+        }
+      ],
+      "responses": {
+        "204": {
+          "description": "<No Content>"
+        },
+        "400": {
+          "description": "InvalidRequestError",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/InvalidRequestErrorEncoded"
+              }
+            }
+          }
+        },
+        "401": {
+          "description": "UnauthorizedError",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UnauthorizedErrorEncoded"
+              }
+            }
+          }
+        },
+        "404": {
+          "description": "SessionNotFoundError | LocationNotFoundError",
+          "content": {
+            "application/json": {
+              "schema": {
+                "anyOf": [
+                  {
+                    "$ref": "#/components/schemas/SessionNotFoundErrorEncoded"
+                  },
+                  {
+                    "$ref": "#/components/schemas/LocationNotFoundErrorEncoded"
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "409": {
+          "description": "SessionBusyError",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SessionBusyErrorEncoded"
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "method": "get",
+      "path": "/api/session/{sessionID}/context",
+      "operationId": "session.context",
+      "parameters": [
+        {
+          "name": "sessionID",
+          "in": "path",
+          "schema": {
+            "$ref": "#/components/schemas/Session.ID"
+          },
+          "required": true
+        }
+      ],
+      "responses": {
+        "200": {
+          "description": "Success",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "data": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/Session.Message.Info"
+                    }
+                  }
+                },
+                "required": [
+                  "data"
+                ],
+                "additionalProperties": false
+              }
+            }
+          }
+        },
+        "400": {
+          "description": "InvalidRequestError",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/InvalidRequestErrorEncoded"
+              }
+            }
+          }
+        },
+        "401": {
+          "description": "UnauthorizedError",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UnauthorizedErrorEncoded"
+              }
+            }
+          }
+        },
+        "404": {
+          "description": "SessionNotFoundError",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SessionNotFoundErrorEncoded"
+              }
+            }
+          }
+        },
+        "500": {
+          "description": "UnknownError",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UnknownErrorEncoded"
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "method": "get",
+      "path": "/api/session/{sessionID}/diff",
+      "operationId": "session.diff",
+      "parameters": [
+        {
+          "name": "sessionID",
+          "in": "path",
+          "schema": {
+            "$ref": "#/components/schemas/Session.ID"
+          },
+          "required": true
+        },
+        {
+          "name": "from",
+          "in": "query",
+          "schema": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Session.Message.ID"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "User message whose turn to diff. Defaults to the turn of the newest user message."
+          },
+          "required": false
+        },
+        {
+          "name": "to",
+          "in": "query",
+          "schema": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Session.Message.ID"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "Later user message whose turn ends the range. Defaults to the turn of `from` alone."
+          },
+          "required": false
+        },
+        {
+          "name": "context",
+          "in": "query",
+          "schema": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "Unchanged lines around each hunk. Omit for full-file patches."
+          },
+          "required": false
+        }
+      ],
+      "responses": {
+        "200": {
+          "description": "Success",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "data": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/FileDiff.Info"
+                    }
+                  }
+                },
+                "required": [
+                  "data"
+                ],
+                "additionalProperties": false
+              }
+            }
+          }
+        },
+        "400": {
+          "description": "InvalidRequestError",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/InvalidRequestErrorEncoded"
+              }
+            }
+          }
+        },
+        "401": {
+          "description": "UnauthorizedError",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UnauthorizedErrorEncoded"
+              }
+            }
+          }
+        },
+        "404": {
+          "description": "MessageNotFoundError | SessionNotFoundError | LocationNotFoundError",
+          "content": {
+            "application/json": {
+              "schema": {
+                "anyOf": [
+                  {
+                    "$ref": "#/components/schemas/MessageNotFoundErrorEncoded"
+                  },
+                  {
+                    "$ref": "#/components/schemas/SessionNotFoundErrorEncoded"
+                  },
+                  {
+                    "$ref": "#/components/schemas/LocationNotFoundErrorEncoded"
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "500": {
+          "description": "UnknownError",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UnknownErrorEncoded"
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "method": "get",
+      "path": "/api/session/{sessionID}/inbox",
+      "operationId": "session.inbox.list",
+      "parameters": [
+        {
+          "name": "sessionID",
+          "in": "path",
+          "schema": {
+            "$ref": "#/components/schemas/Session.ID"
+          },
+          "required": true
+        }
+      ],
+      "responses": {
+        "200": {
+          "description": "Success",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "data": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/Session.Inbox.Info"
+                    }
+                  }
+                },
+                "required": [
+                  "data"
+                ],
+                "additionalProperties": false
+              }
+            }
+          }
+        },
+        "400": {
+          "description": "InvalidRequestError",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/InvalidRequestErrorEncoded"
+              }
+            }
+          }
+        },
+        "401": {
+          "description": "UnauthorizedError",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UnauthorizedErrorEncoded"
+              }
+            }
+          }
+        },
+        "404": {
+          "description": "SessionNotFoundError",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SessionNotFoundErrorEncoded"
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "method": "delete",
+      "path": "/api/session/{sessionID}/inbox/{inboxID}",
+      "operationId": "session.inbox.cancel",
+      "parameters": [
+        {
+          "name": "sessionID",
+          "in": "path",
+          "schema": {
+            "$ref": "#/components/schemas/Session.ID"
+          },
+          "required": true
+        },
+        {
+          "name": "inboxID",
+          "in": "path",
+          "schema": {
+            "$ref": "#/components/schemas/Session.Message.ID"
+          },
+          "required": true
+        }
+      ],
+      "responses": {
+        "204": {
+          "description": "<No Content>"
+        },
+        "400": {
+          "description": "InvalidRequestError",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/InvalidRequestErrorEncoded"
+              }
+            }
+          }
+        },
+        "401": {
+          "description": "UnauthorizedError",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UnauthorizedErrorEncoded"
+              }
+            }
+          }
+        },
+        "404": {
+          "description": "SessionNotFoundError",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SessionNotFoundErrorEncoded"
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "method": "patch",
+      "path": "/api/session/{sessionID}/inbox/{inboxID}",
+      "operationId": "session.inbox.update",
+      "parameters": [
+        {
+          "name": "sessionID",
+          "in": "path",
+          "schema": {
+            "$ref": "#/components/schemas/Session.ID"
+          },
+          "required": true
+        },
+        {
+          "name": "inboxID",
+          "in": "path",
+          "schema": {
+            "$ref": "#/components/schemas/Session.Message.ID"
+          },
+          "required": true
+        }
+      ],
+      "responses": {
+        "204": {
+          "description": "<No Content>"
+        },
+        "400": {
+          "description": "InvalidRequestError",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/InvalidRequestErrorEncoded"
+              }
+            }
+          }
+        },
+        "401": {
+          "description": "UnauthorizedError",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UnauthorizedErrorEncoded"
+              }
+            }
+          }
+        },
+        "404": {
+          "description": "SessionNotFoundError",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SessionNotFoundErrorEncoded"
+              }
+            }
+          }
+        },
+        "409": {
+          "description": "ConflictError",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ConflictErrorEncoded"
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "method": "get",
+      "path": "/api/experimental/session/{sessionID}/instructions/entries",
+      "operationId": "experimental.session.instructions.entry.list",
+      "parameters": [
+        {
+          "name": "sessionID",
+          "in": "path",
+          "schema": {
+            "$ref": "#/components/schemas/Session.ID"
+          },
+          "required": true
+        }
+      ],
+      "responses": {
+        "200": {
+          "description": "Success",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "data": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/InstructionEntry.Info"
+                    }
+                  }
+                },
+                "required": [
+                  "data"
+                ],
+                "additionalProperties": false
+              }
+            }
+          }
+        },
+        "400": {
+          "description": "InvalidRequestError",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/InvalidRequestErrorEncoded"
+              }
+            }
+          }
+        },
+        "401": {
+          "description": "UnauthorizedError",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UnauthorizedErrorEncoded"
+              }
+            }
+          }
+        },
+        "404": {
+          "description": "SessionNotFoundError | LocationNotFoundError",
+          "content": {
+            "application/json": {
+              "schema": {
+                "anyOf": [
+                  {
+                    "$ref": "#/components/schemas/SessionNotFoundErrorEncoded"
+                  },
+                  {
+                    "$ref": "#/components/schemas/LocationNotFoundErrorEncoded"
+                  }
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "method": "put",
+      "path": "/api/experimental/session/{sessionID}/instructions/entries/{key}",
+      "operationId": "experimental.session.instructions.entry.put",
+      "parameters": [
+        {
+          "name": "sessionID",
+          "in": "path",
+          "schema": {
+            "$ref": "#/components/schemas/Session.ID"
+          },
+          "required": true
+        },
+        {
+          "name": "key",
+          "in": "path",
+          "schema": {
+            "$ref": "#/components/schemas/InstructionEntry.Key"
+          },
+          "required": true
+        }
+      ],
+      "responses": {
+        "204": {
+          "description": "<No Content>"
+        },
+        "400": {
+          "description": "InvalidRequestError",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/InvalidRequestErrorEncoded"
+              }
+            }
+          }
+        },
+        "401": {
+          "description": "UnauthorizedError",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UnauthorizedErrorEncoded"
+              }
+            }
+          }
+        },
+        "404": {
+          "description": "SessionNotFoundError | LocationNotFoundError",
+          "content": {
+            "application/json": {
+              "schema": {
+                "anyOf": [
+                  {
+                    "$ref": "#/components/schemas/SessionNotFoundErrorEncoded"
+                  },
+                  {
+                    "$ref": "#/components/schemas/LocationNotFoundErrorEncoded"
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "413": {
+          "description": "InstructionEntryValueTooLargeError",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/InstructionEntryValueTooLargeErrorEncoded"
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "method": "delete",
+      "path": "/api/experimental/session/{sessionID}/instructions/entries/{key}",
+      "operationId": "experimental.session.instructions.entry.remove",
+      "parameters": [
+        {
+          "name": "sessionID",
+          "in": "path",
+          "schema": {
+            "$ref": "#/components/schemas/Session.ID"
+          },
+          "required": true
+        },
+        {
+          "name": "key",
+          "in": "path",
+          "schema": {
+            "$ref": "#/components/schemas/InstructionEntry.Key"
+          },
+          "required": true
+        }
+      ],
+      "responses": {
+        "204": {
+          "description": "<No Content>"
+        },
+        "400": {
+          "description": "InvalidRequestError",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/InvalidRequestErrorEncoded"
+              }
+            }
+          }
+        },
+        "401": {
+          "description": "UnauthorizedError",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UnauthorizedErrorEncoded"
+              }
+            }
+          }
+        },
+        "404": {
+          "description": "SessionNotFoundError | LocationNotFoundError",
+          "content": {
+            "application/json": {
+              "schema": {
+                "anyOf": [
+                  {
+                    "$ref": "#/components/schemas/SessionNotFoundErrorEncoded"
+                  },
+                  {
+                    "$ref": "#/components/schemas/LocationNotFoundErrorEncoded"
+                  }
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "method": "post",
+      "path": "/api/session/{sessionID}/generate",
+      "operationId": "session.generate",
+      "parameters": [
+        {
+          "name": "sessionID",
+          "in": "path",
+          "schema": {
+            "$ref": "#/components/schemas/Session.ID"
+          },
+          "required": true
+        }
+      ],
+      "responses": {
+        "200": {
+          "description": "SessionGenerateResponse",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SessionGenerateResponse"
+              }
+            }
+          }
+        },
+        "400": {
+          "description": "InvalidRequestError",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/InvalidRequestErrorEncoded"
+              }
+            }
+          }
+        },
+        "401": {
+          "description": "UnauthorizedError",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UnauthorizedErrorEncoded"
+              }
+            }
+          }
+        },
+        "404": {
+          "description": "SessionNotFoundError | LocationNotFoundError",
+          "content": {
+            "application/json": {
+              "schema": {
+                "anyOf": [
+                  {
+                    "$ref": "#/components/schemas/SessionNotFoundErrorEncoded"
+                  },
+                  {
+                    "$ref": "#/components/schemas/LocationNotFoundErrorEncoded"
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "503": {
+          "description": "ServiceUnavailableError",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ServiceUnavailableErrorEncoded"
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "method": "get",
+      "path": "/api/experimental/session/{sessionID}/log",
+      "operationId": "session.log",
+      "parameters": [
+        {
+          "name": "sessionID",
+          "in": "path",
+          "schema": {
+            "$ref": "#/components/schemas/Session.ID"
+          },
+          "required": true
+        },
+        {
+          "name": "after",
+          "in": "query",
+          "schema": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Event.SeqEncoded"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "required": false
+        },
+        {
+          "name": "follow",
+          "in": "query",
+          "schema": {
+            "anyOf": [
+              {
+                "type": "string",
+                "enum": [
+                  "true",
+                  "false"
+                ]
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "required": false
+        }
+      ],
+      "responses": {
+        "200": {
+          "description": "Success",
+          "content": {
+            "text/event-stream": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "anyOf": [
+                      {
+                        "type": "string"
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ]
+                  },
+                  "event": {
+                    "type": "string"
+                  },
+                  "data": {
+                    "$ref": "#/components/schemas/SessionLogItemEncoded"
+                  }
+                },
+                "required": [
+                  "event",
+                  "data"
+                ],
+                "additionalProperties": false
+              },
+              "x-effect-stream": {
+                "encoding": "sse",
+                "causeSchema": {
+                  "type": "array",
+                  "items": {
+                    "anyOf": [
+                      {
+                        "type": "object",
+                        "properties": {
+                          "_tag": {
+                            "type": "string",
+                            "enum": [
+                              "Fail"
+                            ]
+                          },
+                          "error": {
+                            "not": {}
+                          }
+                        },
+                        "required": [
+                          "_tag",
+                          "error"
+                        ],
+                        "additionalProperties": false
+                      },
+                      {
+                        "type": "object",
+                        "properties": {
+                          "_tag": {
+                            "type": "string",
+                            "enum": [
+                              "Die"
+                            ]
+                          },
+                          "defect": {}
+                        },
+                        "required": [
+                          "_tag",
+                          "defect"
+                        ],
+                        "additionalProperties": false
+                      },
+                      {
+                        "type": "object",
+                        "properties": {
+                          "_tag": {
+                            "type": "string",
+                            "enum": [
+                              "Interrupt"
+                            ]
+                          },
+                          "fiberId": {
+                            "anyOf": [
+                              {
+                                "type": "number"
+                              },
+                              {
+                                "type": "null"
+                              }
+                            ]
+                          }
+                        },
+                        "required": [
+                          "_tag",
+                          "fiberId"
+                        ],
+                        "additionalProperties": false
+                      }
+                    ]
+                  }
+                },
+                "errorSchema": {
+                  "not": {}
+                },
+                "failureEvent": "effect/http-api/stream/failure"
+              }
+            }
+          }
+        },
+        "400": {
+          "description": "InvalidRequestError",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/InvalidRequestErrorEncoded"
+              }
+            }
+          }
+        },
+        "401": {
+          "description": "UnauthorizedError",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UnauthorizedErrorEncoded"
+              }
+            }
+          }
+        },
+        "404": {
+          "description": "SessionNotFoundError",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SessionNotFoundErrorEncoded"
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "method": "post",
+      "path": "/api/session/{sessionID}/interrupt",
+      "operationId": "session.interrupt",
+      "parameters": [
+        {
+          "name": "sessionID",
+          "in": "path",
+          "schema": {
+            "$ref": "#/components/schemas/Session.ID"
+          },
+          "required": true
+        },
+        {
+          "name": "resume",
+          "in": "query",
+          "schema": {
+            "anyOf": [
+              {
+                "type": "string",
+                "enum": [
+                  "true",
+                  "false"
+                ]
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "required": false
+        }
+      ],
+      "responses": {
+        "200": {
+          "description": "SessionInterruptResponse",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SessionInterruptResponse"
+              }
+            }
+          }
+        },
+        "400": {
+          "description": "InvalidRequestError",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/InvalidRequestErrorEncoded"
+              }
+            }
+          }
+        },
+        "401": {
+          "description": "UnauthorizedError",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UnauthorizedErrorEncoded"
+              }
+            }
+          }
+        },
+        "404": {
+          "description": "SessionNotFoundError | LocationNotFoundError",
+          "content": {
+            "application/json": {
+              "schema": {
+                "anyOf": [
+                  {
+                    "$ref": "#/components/schemas/SessionNotFoundErrorEncoded"
+                  },
+                  {
+                    "$ref": "#/components/schemas/LocationNotFoundErrorEncoded"
+                  }
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "method": "post",
+      "path": "/api/session/{sessionID}/background",
+      "operationId": "session.background",
+      "parameters": [
+        {
+          "name": "sessionID",
+          "in": "path",
+          "schema": {
+            "$ref": "#/components/schemas/Session.ID"
+          },
+          "required": true
+        }
+      ],
+      "responses": {
+        "204": {
+          "description": "<No Content>"
+        },
+        "400": {
+          "description": "InvalidRequestError",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/InvalidRequestErrorEncoded"
+              }
+            }
+          }
+        },
+        "401": {
+          "description": "UnauthorizedError",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UnauthorizedErrorEncoded"
+              }
+            }
+          }
+        },
+        "404": {
+          "description": "SessionNotFoundError | LocationNotFoundError",
+          "content": {
+            "application/json": {
+              "schema": {
+                "anyOf": [
+                  {
+                    "$ref": "#/components/schemas/SessionNotFoundErrorEncoded"
+                  },
+                  {
+                    "$ref": "#/components/schemas/LocationNotFoundErrorEncoded"
+                  }
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "method": "get",
+      "path": "/api/session/{sessionID}/message/{messageID}",
+      "operationId": "session.message.get",
+      "parameters": [
+        {
+          "name": "sessionID",
+          "in": "path",
+          "schema": {
+            "$ref": "#/components/schemas/Session.ID"
+          },
+          "required": true
+        },
+        {
+          "name": "messageID",
+          "in": "path",
+          "schema": {
+            "$ref": "#/components/schemas/Session.Message.ID"
+          },
+          "required": true
+        }
+      ],
+      "responses": {
+        "200": {
+          "description": "Success",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "data": {
+                    "$ref": "#/components/schemas/Session.Message.Info"
+                  }
+                },
+                "required": [
+                  "data"
+                ],
+                "additionalProperties": false
+              }
+            }
+          }
+        },
+        "400": {
+          "description": "InvalidRequestError",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/InvalidRequestErrorEncoded"
+              }
+            }
+          }
+        },
+        "401": {
+          "description": "UnauthorizedError",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UnauthorizedErrorEncoded"
+              }
+            }
+          }
+        },
+        "404": {
+          "description": "SessionNotFoundError | MessageNotFoundError",
+          "content": {
+            "application/json": {
+              "schema": {
+                "anyOf": [
+                  {
+                    "$ref": "#/components/schemas/SessionNotFoundErrorEncoded"
+                  },
+                  {
+                    "$ref": "#/components/schemas/MessageNotFoundErrorEncoded"
+                  }
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "method": "get",
+      "path": "/api/session/{sessionID}/form",
+      "operationId": "session.form.list",
+      "parameters": [
+        {
+          "name": "sessionID",
+          "in": "path",
+          "schema": {
+            "type": "string"
+          },
+          "required": true
+        }
+      ],
+      "responses": {
+        "200": {
+          "description": "Success",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "data": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/Form.Info"
+                    }
+                  }
+                },
+                "required": [
+                  "data"
+                ],
+                "additionalProperties": false
+              }
+            }
+          }
+        },
+        "400": {
+          "description": "InvalidRequestError",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/InvalidRequestErrorEncoded"
+              }
+            }
+          }
+        },
+        "401": {
+          "description": "UnauthorizedError",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UnauthorizedErrorEncoded"
+              }
+            }
+          }
+        },
+        "404": {
+          "description": "SessionNotFoundError | LocationNotFoundError",
+          "content": {
+            "application/json": {
+              "schema": {
+                "anyOf": [
+                  {
+                    "$ref": "#/components/schemas/SessionNotFoundErrorEncoded"
+                  },
+                  {
+                    "$ref": "#/components/schemas/LocationNotFoundErrorEncoded"
+                  }
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "method": "post",
+      "path": "/api/session/{sessionID}/form",
+      "operationId": "session.form.create",
+      "parameters": [
+        {
+          "name": "sessionID",
+          "in": "path",
+          "schema": {
+            "type": "string"
+          },
+          "required": true
+        }
+      ],
+      "responses": {
+        "200": {
+          "description": "Success",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "data": {
+                    "$ref": "#/components/schemas/Form.Info"
+                  }
+                },
+                "required": [
+                  "data"
+                ],
+                "additionalProperties": false
+              }
+            }
+          }
+        },
+        "400": {
+          "description": "InvalidRequestError",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/InvalidRequestErrorEncoded"
+              }
+            }
+          }
+        },
+        "401": {
+          "description": "UnauthorizedError",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UnauthorizedErrorEncoded"
+              }
+            }
+          }
+        },
+        "404": {
+          "description": "SessionNotFoundError | LocationNotFoundError",
+          "content": {
+            "application/json": {
+              "schema": {
+                "anyOf": [
+                  {
+                    "$ref": "#/components/schemas/SessionNotFoundErrorEncoded"
+                  },
+                  {
+                    "$ref": "#/components/schemas/LocationNotFoundErrorEncoded"
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "409": {
+          "description": "ConflictError",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ConflictErrorEncoded"
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "method": "get",
+      "path": "/api/session/{sessionID}/form/{formID}",
+      "operationId": "session.form.get",
+      "parameters": [
+        {
+          "name": "sessionID",
+          "in": "path",
+          "schema": {
+            "type": "string"
+          },
+          "required": true
+        },
+        {
+          "name": "formID",
+          "in": "path",
+          "schema": {
+            "$ref": "#/components/schemas/Form.ID"
+          },
+          "required": true
+        }
+      ],
+      "responses": {
+        "200": {
+          "description": "Success",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "data": {
+                    "$ref": "#/components/schemas/Form.Detail"
+                  }
+                },
+                "required": [
+                  "data"
+                ],
+                "additionalProperties": false
+              }
+            }
+          }
+        },
+        "400": {
+          "description": "InvalidRequestError",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/InvalidRequestErrorEncoded"
+              }
+            }
+          }
+        },
+        "401": {
+          "description": "UnauthorizedError",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UnauthorizedErrorEncoded"
+              }
+            }
+          }
+        },
+        "404": {
+          "description": "SessionNotFoundError | FormNotFoundError | LocationNotFoundError",
+          "content": {
+            "application/json": {
+              "schema": {
+                "anyOf": [
+                  {
+                    "$ref": "#/components/schemas/SessionNotFoundErrorEncoded"
+                  },
+                  {
+                    "$ref": "#/components/schemas/FormNotFoundErrorEncoded"
+                  },
+                  {
+                    "$ref": "#/components/schemas/LocationNotFoundErrorEncoded"
+                  }
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "method": "delete",
+      "path": "/api/session/{sessionID}/form/{formID}",
+      "operationId": "session.form.cancel",
+      "parameters": [
+        {
+          "name": "sessionID",
+          "in": "path",
+          "schema": {
+            "type": "string"
+          },
+          "required": true
+        },
+        {
+          "name": "formID",
+          "in": "path",
+          "schema": {
+            "$ref": "#/components/schemas/Form.ID"
+          },
+          "required": true
+        },
+        {
+          "name": "message",
+          "in": "query",
+          "schema": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "required": false
+        }
+      ],
+      "responses": {
+        "204": {
+          "description": "<No Content>"
+        },
+        "400": {
+          "description": "InvalidRequestError",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/InvalidRequestErrorEncoded"
+              }
+            }
+          }
+        },
+        "401": {
+          "description": "UnauthorizedError",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UnauthorizedErrorEncoded"
+              }
+            }
+          }
+        },
+        "404": {
+          "description": "SessionNotFoundError | FormNotFoundError | LocationNotFoundError",
+          "content": {
+            "application/json": {
+              "schema": {
+                "anyOf": [
+                  {
+                    "$ref": "#/components/schemas/SessionNotFoundErrorEncoded"
+                  },
+                  {
+                    "$ref": "#/components/schemas/FormNotFoundErrorEncoded"
+                  },
+                  {
+                    "$ref": "#/components/schemas/LocationNotFoundErrorEncoded"
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "409": {
+          "description": "FormAlreadySettledError",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/FormAlreadySettledErrorEncoded"
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "method": "post",
+      "path": "/api/session/{sessionID}/form/{formID}/reply",
+      "operationId": "session.form.reply",
+      "parameters": [
+        {
+          "name": "sessionID",
+          "in": "path",
+          "schema": {
+            "type": "string"
+          },
+          "required": true
+        },
+        {
+          "name": "formID",
+          "in": "path",
+          "schema": {
+            "$ref": "#/components/schemas/Form.ID"
+          },
+          "required": true
+        }
+      ],
+      "responses": {
+        "204": {
+          "description": "<No Content>"
+        },
+        "400": {
+          "description": "FormInvalidAnswerError | InvalidRequestError",
+          "content": {
+            "application/json": {
+              "schema": {
+                "anyOf": [
+                  {
+                    "$ref": "#/components/schemas/FormInvalidAnswerErrorEncoded"
+                  },
+                  {
+                    "$ref": "#/components/schemas/InvalidRequestErrorEncoded"
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "401": {
+          "description": "UnauthorizedError",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UnauthorizedErrorEncoded"
+              }
+            }
+          }
+        },
+        "404": {
+          "description": "SessionNotFoundError | FormNotFoundError | LocationNotFoundError",
+          "content": {
+            "application/json": {
+              "schema": {
+                "anyOf": [
+                  {
+                    "$ref": "#/components/schemas/SessionNotFoundErrorEncoded"
+                  },
+                  {
+                    "$ref": "#/components/schemas/FormNotFoundErrorEncoded"
+                  },
+                  {
+                    "$ref": "#/components/schemas/LocationNotFoundErrorEncoded"
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "409": {
+          "description": "FormAlreadySettledError",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/FormAlreadySettledErrorEncoded"
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "method": "put",
+      "path": "/api/session/{sessionID}/environment",
+      "operationId": "session.environment",
+      "parameters": [
+        {
+          "name": "sessionID",
+          "in": "path",
+          "schema": {
+            "$ref": "#/components/schemas/Session.ID"
+          },
+          "required": true
+        }
+      ],
+      "responses": {
+        "204": {
+          "description": "<No Content>"
+        },
+        "400": {
+          "description": "InvalidRequestError",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/InvalidRequestErrorEncoded"
+              }
+            }
+          }
+        },
+        "401": {
+          "description": "UnauthorizedError",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UnauthorizedErrorEncoded"
+              }
+            }
+          }
+        },
+        "404": {
+          "description": "SessionNotFoundError",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SessionNotFoundErrorEncoded"
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "method": "post",
+      "path": "/api/session/{sessionID}/view",
+      "operationId": "session.view",
+      "parameters": [
+        {
+          "name": "sessionID",
+          "in": "path",
+          "schema": {
+            "$ref": "#/components/schemas/Session.ID"
+          },
+          "required": true
+        }
+      ],
+      "responses": {
+        "204": {
+          "description": "<No Content>"
+        },
+        "400": {
+          "description": "InvalidRequestError",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/InvalidRequestErrorEncoded"
+              }
+            }
+          }
+        },
+        "401": {
+          "description": "UnauthorizedError",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UnauthorizedErrorEncoded"
+              }
+            }
+          }
+        },
+        "404": {
+          "description": "SessionNotFoundError",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SessionNotFoundErrorEncoded"
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "method": "get",
+      "path": "/api/session/{sessionID}/message",
+      "operationId": "session.message.list",
+      "parameters": [
+        {
+          "name": "sessionID",
+          "in": "path",
+          "schema": {
+            "$ref": "#/components/schemas/Session.ID"
+          },
+          "required": true
+        },
+        {
+          "name": "limit",
+          "in": "query",
+          "schema": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "Maximum number of messages to return. When omitted, the endpoint returns its default page size."
+          },
+          "required": false
+        },
+        {
+          "name": "order",
+          "in": "query",
+          "schema": {
+            "anyOf": [
+              {
+                "type": "string",
+                "enum": [
+                  "asc",
+                  "desc"
+                ]
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "Message order for the first page. Use desc for newest first or asc for oldest first."
+          },
+          "required": false
+        },
+        {
+          "name": "cursor",
+          "in": "query",
+          "schema": {
+            "anyOf": [
+              {
+                "type": "string",
+                "description": "Opaque pagination cursor returned as cursor.previous or cursor.next in the previous response. Do not combine with order."
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "required": false
+        },
+        {
+          "name": "type",
+          "in": "query",
+          "schema": {
+            "anyOf": [
+              {
+                "type": "string",
+                "enum": [
+                  "agent-switched",
+                  "model-switched",
+                  "location-switched",
+                  "user",
+                  "synthetic",
+                  "system",
+                  "skill",
+                  "shell",
+                  "assistant",
+                  "compaction",
+                  "idle"
+                ]
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "Filter by message type before pagination. When omitted, all message types are returned. Pass the same type when following cursors."
+          },
+          "required": false
+        }
+      ],
+      "responses": {
+        "200": {
+          "description": "SessionMessagesResponse",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SessionMessagesResponse"
+              }
+            }
+          }
+        },
+        "400": {
+          "description": "InvalidCursorError | InvalidRequestError",
+          "content": {
+            "application/json": {
+              "schema": {
+                "anyOf": [
+                  {
+                    "$ref": "#/components/schemas/InvalidCursorErrorEncoded"
+                  },
+                  {
+                    "$ref": "#/components/schemas/InvalidRequestErrorEncoded"
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "401": {
+          "description": "UnauthorizedError",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UnauthorizedErrorEncoded"
+              }
+            }
+          }
+        },
+        "404": {
+          "description": "SessionNotFoundError",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SessionNotFoundErrorEncoded"
+              }
+            }
+          }
+        },
+        "500": {
+          "description": "UnknownError",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UnknownErrorEncoded"
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "method": "post",
+      "path": "/api/experimental/voice/session",
+      "operationId": "experimental.voice.session",
+      "parameters": [],
+      "responses": {
+        "200": {
+          "description": "VoiceSessionResponse",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/VoiceSessionResponse"
+              }
+            }
+          }
+        },
+        "400": {
+          "description": "InvalidRequestError",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/InvalidRequestErrorEncoded"
+              }
+            }
+          }
+        },
+        "401": {
+          "description": "UnauthorizedError",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UnauthorizedErrorEncoded"
+              }
+            }
+          }
+        },
+        "404": {
+          "description": "LocationNotFoundError",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LocationNotFoundErrorEncoded"
+              }
+            }
+          }
+        },
+        "503": {
+          "description": "ServiceUnavailableError",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ServiceUnavailableErrorEncoded"
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "method": "get",
+      "path": "/api/mcp",
+      "operationId": "mcp.list",
+      "parameters": [
+        {
+          "name": "location",
+          "in": "query",
+          "schema": {
+            "anyOf": [
+              {
+                "type": "object",
+                "properties": {
+                  "directory": {
+                    "anyOf": [
+                      {
+                        "type": "string"
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ]
+                  }
+                },
+                "additionalProperties": false
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "required": false,
+          "style": "deepObject",
+          "explode": true
+        }
+      ],
+      "responses": {
+        "200": {
+          "description": "Success",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "location": {
+                    "$ref": "#/components/schemas/Location.PublicRef"
+                  },
+                  "data": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/Mcp.Server"
+                    }
+                  }
+                },
+                "required": [
+                  "location",
+                  "data"
+                ],
+                "additionalProperties": false
+              }
+            }
+          }
+        },
+        "400": {
+          "description": "InvalidRequestError",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/InvalidRequestErrorEncoded"
+              }
+            }
+          }
+        },
+        "401": {
+          "description": "UnauthorizedError",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UnauthorizedErrorEncoded"
+              }
+            }
+          }
+        },
+        "404": {
+          "description": "LocationNotFoundError",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LocationNotFoundErrorEncoded"
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "method": "put",
+      "path": "/api/experimental/mcp/{server}",
+      "operationId": "experimental.mcp.add",
+      "parameters": [
+        {
+          "name": "server",
+          "in": "path",
+          "schema": {
+            "type": "string"
+          },
+          "required": true
+        },
+        {
+          "name": "location",
+          "in": "query",
+          "schema": {
+            "anyOf": [
+              {
+                "type": "object",
+                "properties": {
+                  "directory": {
+                    "anyOf": [
+                      {
+                        "type": "string"
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ]
+                  }
+                },
+                "additionalProperties": false
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "required": false,
+          "style": "deepObject",
+          "explode": true
+        }
+      ],
+      "responses": {
+        "204": {
+          "description": "<No Content>"
+        },
+        "400": {
+          "description": "InvalidRequestError",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/InvalidRequestErrorEncoded"
+              }
+            }
+          }
+        },
+        "401": {
+          "description": "UnauthorizedError",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UnauthorizedErrorEncoded"
+              }
+            }
+          }
+        },
+        "404": {
+          "description": "LocationNotFoundError",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LocationNotFoundErrorEncoded"
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "method": "delete",
+      "path": "/api/experimental/mcp/{server}",
+      "operationId": "experimental.mcp.remove",
+      "parameters": [
+        {
+          "name": "server",
+          "in": "path",
+          "schema": {
+            "type": "string"
+          },
+          "required": true
+        },
+        {
+          "name": "location",
+          "in": "query",
+          "schema": {
+            "anyOf": [
+              {
+                "type": "object",
+                "properties": {
+                  "directory": {
+                    "anyOf": [
+                      {
+                        "type": "string"
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ]
+                  }
+                },
+                "additionalProperties": false
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "required": false,
+          "style": "deepObject",
+          "explode": true
+        }
+      ],
+      "responses": {
+        "204": {
+          "description": "<No Content>"
+        },
+        "400": {
+          "description": "InvalidRequestError",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/InvalidRequestErrorEncoded"
+              }
+            }
+          }
+        },
+        "401": {
+          "description": "UnauthorizedError",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UnauthorizedErrorEncoded"
+              }
+            }
+          }
+        },
+        "404": {
+          "description": "McpServerNotFoundError | LocationNotFoundError",
+          "content": {
+            "application/json": {
+              "schema": {
+                "anyOf": [
+                  {
+                    "$ref": "#/components/schemas/McpServerNotFoundErrorEncoded"
+                  },
+                  {
+                    "$ref": "#/components/schemas/LocationNotFoundErrorEncoded"
+                  }
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "method": "post",
+      "path": "/api/experimental/mcp/{server}/connect",
+      "operationId": "experimental.mcp.connect",
+      "parameters": [
+        {
+          "name": "server",
+          "in": "path",
+          "schema": {
+            "type": "string"
+          },
+          "required": true
+        },
+        {
+          "name": "location",
+          "in": "query",
+          "schema": {
+            "anyOf": [
+              {
+                "type": "object",
+                "properties": {
+                  "directory": {
+                    "anyOf": [
+                      {
+                        "type": "string"
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ]
+                  }
+                },
+                "additionalProperties": false
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "required": false,
+          "style": "deepObject",
+          "explode": true
+        }
+      ],
+      "responses": {
+        "204": {
+          "description": "<No Content>"
+        },
+        "400": {
+          "description": "InvalidRequestError",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/InvalidRequestErrorEncoded"
+              }
+            }
+          }
+        },
+        "401": {
+          "description": "UnauthorizedError",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UnauthorizedErrorEncoded"
+              }
+            }
+          }
+        },
+        "404": {
+          "description": "McpServerNotFoundError | LocationNotFoundError",
+          "content": {
+            "application/json": {
+              "schema": {
+                "anyOf": [
+                  {
+                    "$ref": "#/components/schemas/McpServerNotFoundErrorEncoded"
+                  },
+                  {
+                    "$ref": "#/components/schemas/LocationNotFoundErrorEncoded"
+                  }
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "method": "post",
+      "path": "/api/experimental/mcp/{server}/disconnect",
+      "operationId": "experimental.mcp.disconnect",
+      "parameters": [
+        {
+          "name": "server",
+          "in": "path",
+          "schema": {
+            "type": "string"
+          },
+          "required": true
+        },
+        {
+          "name": "location",
+          "in": "query",
+          "schema": {
+            "anyOf": [
+              {
+                "type": "object",
+                "properties": {
+                  "directory": {
+                    "anyOf": [
+                      {
+                        "type": "string"
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ]
+                  }
+                },
+                "additionalProperties": false
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "required": false,
+          "style": "deepObject",
+          "explode": true
+        }
+      ],
+      "responses": {
+        "204": {
+          "description": "<No Content>"
+        },
+        "400": {
+          "description": "InvalidRequestError",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/InvalidRequestErrorEncoded"
+              }
+            }
+          }
+        },
+        "401": {
+          "description": "UnauthorizedError",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UnauthorizedErrorEncoded"
+              }
+            }
+          }
+        },
+        "404": {
+          "description": "McpServerNotFoundError | LocationNotFoundError",
+          "content": {
+            "application/json": {
+              "schema": {
+                "anyOf": [
+                  {
+                    "$ref": "#/components/schemas/McpServerNotFoundErrorEncoded"
+                  },
+                  {
+                    "$ref": "#/components/schemas/LocationNotFoundErrorEncoded"
+                  }
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "method": "get",
+      "path": "/api/mcp/resource",
+      "operationId": "mcp.resource.catalog",
+      "parameters": [
+        {
+          "name": "location",
+          "in": "query",
+          "schema": {
+            "anyOf": [
+              {
+                "type": "object",
+                "properties": {
+                  "directory": {
+                    "anyOf": [
+                      {
+                        "type": "string"
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ]
+                  }
+                },
+                "additionalProperties": false
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "required": false,
+          "style": "deepObject",
+          "explode": true
+        }
+      ],
+      "responses": {
+        "200": {
+          "description": "Success",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "location": {
+                    "$ref": "#/components/schemas/Location.PublicRef"
+                  },
+                  "data": {
+                    "$ref": "#/components/schemas/Mcp.ResourceCatalog"
+                  }
+                },
+                "required": [
+                  "location",
+                  "data"
+                ],
+                "additionalProperties": false
+              }
+            }
+          }
+        },
+        "400": {
+          "description": "InvalidRequestError",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/InvalidRequestErrorEncoded"
+              }
+            }
+          }
+        },
+        "401": {
+          "description": "UnauthorizedError",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UnauthorizedErrorEncoded"
+              }
+            }
+          }
+        },
+        "404": {
+          "description": "LocationNotFoundError",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LocationNotFoundErrorEncoded"
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "method": "post",
+      "path": "/api/session/{sessionID}/permission",
+      "operationId": "session.permission.create",
+      "parameters": [
+        {
+          "name": "sessionID",
+          "in": "path",
+          "schema": {
+            "$ref": "#/components/schemas/Session.ID"
+          },
+          "required": true
+        }
+      ],
+      "responses": {
+        "200": {
+          "description": "Success",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "data": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "$ref": "#/components/schemas/Permission.ID"
+                      },
+                      "effect": {
+                        "$ref": "#/components/schemas/Permission.Effect"
+                      }
+                    },
+                    "required": [
+                      "id",
+                      "effect"
+                    ],
+                    "additionalProperties": false
+                  }
+                },
+                "required": [
+                  "data"
+                ],
+                "additionalProperties": false
+              }
+            }
+          }
+        },
+        "400": {
+          "description": "InvalidRequestError",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/InvalidRequestErrorEncoded"
+              }
+            }
+          }
+        },
+        "401": {
+          "description": "UnauthorizedError",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UnauthorizedErrorEncoded"
+              }
+            }
+          }
+        },
+        "404": {
+          "description": "SessionNotFoundError | LocationNotFoundError",
+          "content": {
+            "application/json": {
+              "schema": {
+                "anyOf": [
+                  {
+                    "$ref": "#/components/schemas/SessionNotFoundErrorEncoded"
+                  },
+                  {
+                    "$ref": "#/components/schemas/LocationNotFoundErrorEncoded"
+                  }
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "method": "get",
+      "path": "/api/session/{sessionID}/permission",
+      "operationId": "session.permission.list",
+      "parameters": [
+        {
+          "name": "sessionID",
+          "in": "path",
+          "schema": {
+            "$ref": "#/components/schemas/Session.ID"
+          },
+          "required": true
+        }
+      ],
+      "responses": {
+        "200": {
+          "description": "Success",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "data": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/Permission.Request"
+                    }
+                  }
+                },
+                "required": [
+                  "data"
+                ],
+                "additionalProperties": false
+              }
+            }
+          }
+        },
+        "400": {
+          "description": "InvalidRequestError",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/InvalidRequestErrorEncoded"
+              }
+            }
+          }
+        },
+        "401": {
+          "description": "UnauthorizedError",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UnauthorizedErrorEncoded"
+              }
+            }
+          }
+        },
+        "404": {
+          "description": "SessionNotFoundError | LocationNotFoundError",
+          "content": {
+            "application/json": {
+              "schema": {
+                "anyOf": [
+                  {
+                    "$ref": "#/components/schemas/SessionNotFoundErrorEncoded"
+                  },
+                  {
+                    "$ref": "#/components/schemas/LocationNotFoundErrorEncoded"
+                  }
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "method": "get",
+      "path": "/api/session/{sessionID}/permission/{requestID}",
+      "operationId": "session.permission.get",
+      "parameters": [
+        {
+          "name": "sessionID",
+          "in": "path",
+          "schema": {
+            "$ref": "#/components/schemas/Session.ID"
+          },
+          "required": true
+        },
+        {
+          "name": "requestID",
+          "in": "path",
+          "schema": {
+            "$ref": "#/components/schemas/Permission.ID"
+          },
+          "required": true
+        }
+      ],
+      "responses": {
+        "200": {
+          "description": "Success",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "data": {
+                    "$ref": "#/components/schemas/Permission.Request"
+                  }
+                },
+                "required": [
+                  "data"
+                ],
+                "additionalProperties": false
+              }
+            }
+          }
+        },
+        "400": {
+          "description": "InvalidRequestError",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/InvalidRequestErrorEncoded"
+              }
+            }
+          }
+        },
+        "401": {
+          "description": "UnauthorizedError",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UnauthorizedErrorEncoded"
+              }
+            }
+          }
+        },
+        "404": {
+          "description": "SessionNotFoundError | PermissionNotFoundError | LocationNotFoundError",
+          "content": {
+            "application/json": {
+              "schema": {
+                "anyOf": [
+                  {
+                    "$ref": "#/components/schemas/SessionNotFoundErrorEncoded"
+                  },
+                  {
+                    "$ref": "#/components/schemas/PermissionNotFoundErrorEncoded"
+                  },
+                  {
+                    "$ref": "#/components/schemas/LocationNotFoundErrorEncoded"
+                  }
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "method": "post",
+      "path": "/api/session/{sessionID}/permission/{requestID}/reply",
+      "operationId": "session.permission.reply",
+      "parameters": [
+        {
+          "name": "sessionID",
+          "in": "path",
+          "schema": {
+            "$ref": "#/components/schemas/Session.ID"
+          },
+          "required": true
+        },
+        {
+          "name": "requestID",
+          "in": "path",
+          "schema": {
+            "$ref": "#/components/schemas/Permission.ID"
+          },
+          "required": true
+        }
+      ],
+      "responses": {
+        "204": {
+          "description": "<No Content>"
+        },
+        "400": {
+          "description": "InvalidRequestError",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/InvalidRequestErrorEncoded"
+              }
+            }
+          }
+        },
+        "401": {
+          "description": "UnauthorizedError",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UnauthorizedErrorEncoded"
+              }
+            }
+          }
+        },
+        "404": {
+          "description": "SessionNotFoundError | PermissionNotFoundError | LocationNotFoundError",
+          "content": {
+            "application/json": {
+              "schema": {
+                "anyOf": [
+                  {
+                    "$ref": "#/components/schemas/SessionNotFoundErrorEncoded"
+                  },
+                  {
+                    "$ref": "#/components/schemas/PermissionNotFoundErrorEncoded"
+                  },
+                  {
+                    "$ref": "#/components/schemas/LocationNotFoundErrorEncoded"
+                  }
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "method": "get",
+      "path": "/api/experimental/session/{sessionID}/terminal/read",
+      "operationId": "server.experimental.persistentPty.read",
+      "parameters": [
+        {
+          "name": "sessionID",
+          "in": "path",
+          "schema": {
+            "$ref": "#/components/schemas/Session.ID"
+          },
+          "required": true
+        },
+        {
+          "name": "lines",
+          "in": "query",
+          "schema": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/PersistentPty.ReadLinesEncoded"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "required": false
+        }
+      ],
+      "responses": {
+        "200": {
+          "description": "Success",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "data": {
+                    "anyOf": [
+                      {
+                        "$ref": "#/components/schemas/PersistentPty.ReadResult"
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ]
+                  }
+                },
+                "required": [
+                  "data"
+                ],
+                "additionalProperties": false
+              }
+            }
+          }
+        },
+        "400": {
+          "description": "InvalidRequestError",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/InvalidRequestErrorEncoded"
+              }
+            }
+          }
+        },
+        "401": {
+          "description": "UnauthorizedError",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UnauthorizedErrorEncoded"
+              }
+            }
+          }
+        },
+        "503": {
+          "description": "ServiceUnavailableError",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ServiceUnavailableErrorEncoded"
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "method": "get",
+      "path": "/api/experimental/session/{sessionID}/terminal",
+      "operationId": "server.experimental.persistentPty.list",
+      "parameters": [
+        {
+          "name": "sessionID",
+          "in": "path",
+          "schema": {
+            "$ref": "#/components/schemas/Session.ID"
+          },
+          "required": true
+        }
+      ],
+      "responses": {
+        "200": {
+          "description": "Success",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "data": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/PersistentPty.Info"
+                    }
+                  }
+                },
+                "required": [
+                  "data"
+                ],
+                "additionalProperties": false
+              }
+            }
+          }
+        },
+        "400": {
+          "description": "InvalidRequestError",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/InvalidRequestErrorEncoded"
+              }
+            }
+          }
+        },
+        "401": {
+          "description": "UnauthorizedError",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UnauthorizedErrorEncoded"
+              }
+            }
+          }
+        },
+        "503": {
+          "description": "ServiceUnavailableError",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ServiceUnavailableErrorEncoded"
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "method": "post",
+      "path": "/api/experimental/session/{sessionID}/terminal",
+      "operationId": "server.experimental.persistentPty.create",
+      "parameters": [
+        {
+          "name": "sessionID",
+          "in": "path",
+          "schema": {
+            "$ref": "#/components/schemas/Session.ID"
+          },
+          "required": true
+        }
+      ],
+      "responses": {
+        "200": {
+          "description": "Success",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "data": {
+                    "$ref": "#/components/schemas/PersistentPty.Info"
+                  }
+                },
+                "required": [
+                  "data"
+                ],
+                "additionalProperties": false
+              }
+            }
+          }
+        },
+        "400": {
+          "description": "InvalidRequestError",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/InvalidRequestErrorEncoded"
+              }
+            }
+          }
+        },
+        "401": {
+          "description": "UnauthorizedError",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UnauthorizedErrorEncoded"
+              }
+            }
+          }
+        },
+        "503": {
+          "description": "ServiceUnavailableError",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ServiceUnavailableErrorEncoded"
+              }
+            }
+          }
+        }
+      }
+    }
+  ]
+}

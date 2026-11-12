@@ -1,0 +1,41 @@
+{
+  "task_id": "fin-l3-breadth-301",
+  "success": true,
+  "fp": 0,
+  "error_type": null,
+  "checks": [
+    {
+      "check": "provenance",
+      "pass": true,
+      "detail": "recorded response identity/provider/as_of coverage and snapshot hash; call IDs independently verified by driver"
+    },
+    {
+      "check": "value:values.up",
+      "pass": true,
+      "detail": "answer=1.0 gold=1 tol={'abs': 0}"
+    },
+    {
+      "check": "value:values.down",
+      "pass": true,
+      "detail": "answer=4.0 gold=4 tol={'abs': 0}"
+    },
+    {
+      "check": "str:values.winner",
+      "pass": true,
+      "detail": "answer='DXG' accept=['DXG']"
+    },
+    {
+      "check": "period:period",
+      "pass": true,
+      "detail": "period='30/10 / 30-10 / 30.10 / 2026-10-30' accept=['30/10', '30-10', '30.10', '2026-10-30']"
+    },
+    {
+      "check": "str:source",
+      "pass": true,
+      "detail": "answer='vn_equity_quote_batch' accept=['vn_equity_quote_batch']"
+    }
+  ],
+  "schema_valid": true,
+  "provenance_correctness": true,
+  "semantic_correctness": true
+}

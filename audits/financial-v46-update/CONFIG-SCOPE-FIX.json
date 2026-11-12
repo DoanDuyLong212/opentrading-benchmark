@@ -1,0 +1,23 @@
+{
+  "reason": "correct stale config metadata before freeze",
+  "files": [
+    {
+      "path": "experiments/finance-v46-update-study/tools/bench_config.json",
+      "experiment_protocol": "plans/2026-11-09-v46-update-execution-protocol.md",
+      "allowed_inference_splits": [
+        "devsmoke",
+        "pilot"
+      ],
+      "sha256": "bd336cc3bc48e55c3bf3aec597677354fc23b6e536e1fd6fc84e124fe52f2342"
+    },
+    {
+      "path": "experiments/finance-v46-update-study/tools/bench_config_deepseek.json",
+      "experiment_protocol": "plans/2026-11-09-v46-update-execution-protocol.md",
+      "allowed_inference_splits": [
+        "devsmoke",
+        "pilot"
+      ],
+      "sha256": "9b8df2b17371a9b289a6725ae270925b3118ffdbf7506c7cc7689994562a8a53"
+    }
+  ]
+}

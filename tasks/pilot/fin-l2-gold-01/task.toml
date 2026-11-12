@@ -1,7 +1,7 @@
 # Task benchmark harness tài chính — sinh bởi tools/gen_tasks.py
 id = "fin-l2-gold-01"
 title = "Tỷ giá USD/VND phiên 30/10 + so phiên trước"
-version = 1
+version = 2
 created = "2026-11-01"
 level = "L2"
 family = "L2·F fx"
@@ -18,6 +18,8 @@ time_limit_min = 15
 tools_expected = ["vn_msn_fx_gold"]
 mcp_payloads = "environment/payloads.json"
 snapshot_required = true
+
+confirmatory_eligible = true
 
 [scoring]
 type = "value"

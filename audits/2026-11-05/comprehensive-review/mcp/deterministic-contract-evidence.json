@@ -1,0 +1,361 @@
+{
+  "scope": "Source-local registration and monkeypatched offline errors only; deployed Render version not contacted.",
+  "catalog_stats": {
+    "all": {
+      "tools": 174,
+      "properties": 331,
+      "property_descriptions": 0,
+      "enum_properties": 0,
+      "bounded_properties": 0,
+      "output_schemas": 174,
+      "output_schemas_with_fields": 0,
+      "description_chars": 53755
+    },
+    "snapshot": {
+      "tools": 17,
+      "properties": 52,
+      "property_descriptions": 0,
+      "enum_properties": 0,
+      "bounded_properties": 0,
+      "output_schemas": 17,
+      "output_schemas_with_fields": 0,
+      "description_chars": 9287
+    }
+  },
+  "validation_cases": [
+    {
+      "args": {
+        "symbol": "HPG",
+        "days": 1
+      },
+      "live_schema": "accept",
+      "snapshot_schema": "accept",
+      "snapshot_replay": "request is not recorded in this snapshot; inspect the tool snapshot_requests"
+    },
+    {
+      "args": {
+        "symbol": "HPG",
+        "interval": "day"
+      },
+      "live_schema": "accept",
+      "snapshot_schema": "accept",
+      "snapshot_replay": "request is not recorded in this snapshot; inspect the tool snapshot_requests"
+    },
+    {
+      "args": {
+        "symbol": "HPG",
+        "columns": "close"
+      },
+      "live_schema": "'close' is not valid under any of the given schemas",
+      "snapshot_schema": "'close' is not valid under any of the given schemas",
+      "snapshot_replay": "invalid request arguments: 'close' is not valid under any of the given schemas"
+    },
+    {
+      "args": {
+        "symbol": "HPG",
+        "columns": [
+          "close"
+        ]
+      },
+      "live_schema": "accept",
+      "snapshot_schema": "accept",
+      "snapshot_replay": "request is not recorded in this snapshot; inspect the tool snapshot_requests"
+    },
+    {
+      "args": {
+        "symbol": "HPG",
+        "days": 0
+      },
+      "live_schema": "accept",
+      "snapshot_schema": "accept",
+      "snapshot_replay": "request is not recorded in this snapshot; inspect the tool snapshot_requests"
+    },
+    {
+      "args": {
+        "symbol": "HPG",
+        "days": 366
+      },
+      "live_schema": "accept",
+      "snapshot_schema": "accept",
+      "snapshot_replay": "request is not recorded in this snapshot; inspect the tool snapshot_requests"
+    },
+    {
+      "args": {
+        "symbol": "HPG",
+        "extra": true
+      },
+      "live_schema": "accept",
+      "snapshot_schema": "Additional properties are not allowed ('extra' was unexpected)",
+      "snapshot_replay": "invalid request arguments: Additional properties are not allowed ('extra' was unexpected)"
+    }
+  ],
+  "wire_errors": {
+    "provider_bad_data": {
+      "content": [
+        {
+          "type": "text",
+          "text": "{\n  \"units\": {\n    \"o, h, l, c, last, high, low\": \"nghìn đồng/cổ phiếu (64,27 = 64.270 đ)\",\n    \"v\": \"cổ phiếu\"\n  },\n  \"data\": {\n    \"tool\": \"vn_quote_history\"\n  },\n  \"provenance\": {\n    \"source\": \"unavailable\",\n    \"as_of\": \"2026-11-05T16:33:30.350598+07:00\",\n    \"timezone\": \"Asia/Ho_Chi_Minh\"\n  },\n  \"warnings\": [\n    \"unknown interval 'day' (1D|1W|1M)\"\n  ],\n  \"availability\": \"unavailable\"\n}"
+        }
+      ],
+      "structuredContent": {
+        "units": {
+          "o, h, l, c, last, high, low": "nghìn đồng/cổ phiếu (64,27 = 64.270 đ)",
+          "v": "cổ phiếu"
+        },
+        "data": {
+          "tool": "vn_quote_history"
+        },
+        "provenance": {
+          "source": "unavailable",
+          "as_of": "2026-11-05T16:33:30.350598+07:00",
+          "timezone": "Asia/Ho_Chi_Minh"
+        },
+        "warnings": [
+          "unknown interval 'day' (1D|1W|1M)"
+        ],
+        "availability": "unavailable"
+      },
+      "isError": false
+    },
+    "schema_type_error": {
+      "content": [
+        {
+          "type": "text",
+          "text": "Error executing tool vn_quote_history: 1 validation error for vn_quote_historyArguments\ncolumns\n  Input should be a valid list [type=list_type, input_value='close', input_type=str]\n    For further information visit https://errors.pydantic.dev/2.13/v/list_type"
+        }
+      ],
+      "isError": true
+    }
+  },
+  "column_projection": {
+    "input": [
+      {
+        "t": "2026-10-30",
+        "o": 25,
+        "h": 26,
+        "l": 24,
+        "c": 25.5,
+        "v": 1000
+      }
+    ],
+    "columns": [
+      "close"
+    ],
+    "output": [
+      {}
+    ]
+  },
+  "valuation_results": {
+    "auto": {
+      "content": [
+        {
+          "type": "text",
+          "text": "{\n  \"data\": {\n    \"symbol\": \"FPT\",\n    \"price\": 100.0,\n    \"method\": \"per_pb\",\n    \"price_source\": \"vnstock.equity_quote_batch\",\n    \"price_as_of\": null,\n    \"price_unit\": \"unverified\",\n    \"price_adjustment_basis\": \"unverified\",\n    \"eps_period\": null,\n    \"eps_frequency\": null,\n    \"eps_basis\": \"unverified\",\n    \"eps_unit\": \"unverified\",\n    \"eps_adjustment_basis\": \"unverified\",\n    \"multiple_comparability\": \"price/EPS units and adjustment bases unverified\",\n    \"eps_source\": \"vietstock.overview_trading\",\n    \"bvps_source\": \"vietstock.overview_trading\",\n    \"eps\": 5.0,\n    \"bvps\": 50.0,\n    \"per\": 20.0,\n    \"per_basis\": \"quote_price_over_reported_eps\",\n    \"pb\": 2.0,\n    \"pb_basis\": \"quote_price_over_reported_bvps\"\n  },\n  \"provenance\": {\n    \"source\": \"computed-local\",\n    \"as_of\": \"2026-11-05T16:33:30.353461+07:00\",\n    \"timezone\": \"Asia/Ho_Chi_Minh\"\n  },\n  \"warnings\": [],\n  \"availability\": \"available\"\n}"
+        }
+      ],
+      "structuredContent": {
+        "data": {
+          "symbol": "FPT",
+          "price": 100.0,
+          "method": "per_pb",
+          "price_source": "vnstock.equity_quote_batch",
+          "price_as_of": null,
+          "price_unit": "unverified",
+          "price_adjustment_basis": "unverified",
+          "eps_period": null,
+          "eps_frequency": null,
+          "eps_basis": "unverified",
+          "eps_unit": "unverified",
+          "eps_adjustment_basis": "unverified",
+          "multiple_comparability": "price/EPS units and adjustment bases unverified",
+          "eps_source": "vietstock.overview_trading",
+          "bvps_source": "vietstock.overview_trading",
+          "eps": 5.0,
+          "bvps": 50.0,
+          "per": 20.0,
+          "per_basis": "quote_price_over_reported_eps",
+          "pb": 2.0,
+          "pb_basis": "quote_price_over_reported_bvps"
+        },
+        "provenance": {
+          "source": "computed-local",
+          "as_of": "2026-11-05T16:33:30.353461+07:00",
+          "timezone": "Asia/Ho_Chi_Minh"
+        },
+        "warnings": [],
+        "availability": "available"
+      },
+      "isError": false
+    },
+    "per": {
+      "content": [
+        {
+          "type": "text",
+          "text": "{\n  \"data\": {\n    \"symbol\": \"FPT\",\n    \"price\": 100.0,\n    \"method\": \"per\",\n    \"price_source\": \"vnstock.equity_quote_batch\",\n    \"price_as_of\": null,\n    \"price_unit\": \"unverified\",\n    \"price_adjustment_basis\": \"unverified\",\n    \"eps_period\": null,\n    \"eps_frequency\": null,\n    \"eps_basis\": \"unverified\",\n    \"eps_unit\": \"unverified\",\n    \"eps_adjustment_basis\": \"unverified\",\n    \"multiple_comparability\": \"price/EPS units and adjustment bases unverified\",\n    \"eps_source\": \"vietstock.overview_trading\",\n    \"bvps_source\": \"vietstock.overview_trading\",\n    \"eps\": 5.0,\n    \"bvps\": 50.0,\n    \"per\": 20.0,\n    \"per_basis\": \"quote_price_over_reported_eps\",\n    \"pb\": 2.0,\n    \"pb_basis\": \"quote_price_over_reported_bvps\"\n  },\n  \"provenance\": {\n    \"source\": \"computed-local\",\n    \"as_of\": \"2026-11-05T16:33:30.355668+07:00\",\n    \"timezone\": \"Asia/Ho_Chi_Minh\"\n  },\n  \"warnings\": [],\n  \"availability\": \"available\"\n}"
+        }
+      ],
+      "structuredContent": {
+        "data": {
+          "symbol": "FPT",
+          "price": 100.0,
+          "method": "per",
+          "price_source": "vnstock.equity_quote_batch",
+          "price_as_of": null,
+          "price_unit": "unverified",
+          "price_adjustment_basis": "unverified",
+          "eps_period": null,
+          "eps_frequency": null,
+          "eps_basis": "unverified",
+          "eps_unit": "unverified",
+          "eps_adjustment_basis": "unverified",
+          "multiple_comparability": "price/EPS units and adjustment bases unverified",
+          "eps_source": "vietstock.overview_trading",
+          "bvps_source": "vietstock.overview_trading",
+          "eps": 5.0,
+          "bvps": 50.0,
+          "per": 20.0,
+          "per_basis": "quote_price_over_reported_eps",
+          "pb": 2.0,
+          "pb_basis": "quote_price_over_reported_bvps"
+        },
+        "provenance": {
+          "source": "computed-local",
+          "as_of": "2026-11-05T16:33:30.355668+07:00",
+          "timezone": "Asia/Ho_Chi_Minh"
+        },
+        "warnings": [],
+        "availability": "available"
+      },
+      "isError": false
+    },
+    "dcf": {
+      "content": [
+        {
+          "type": "text",
+          "text": "{\n  \"data\": {\n    \"symbol\": \"FPT\",\n    \"price\": 100.0,\n    \"method\": \"dcf\",\n    \"price_source\": \"vnstock.equity_quote_batch\",\n    \"price_as_of\": null,\n    \"price_unit\": \"unverified\",\n    \"price_adjustment_basis\": \"unverified\",\n    \"eps_period\": null,\n    \"eps_frequency\": null,\n    \"eps_basis\": \"unverified\",\n    \"eps_unit\": \"unverified\",\n    \"eps_adjustment_basis\": \"unverified\",\n    \"multiple_comparability\": \"price/EPS units and adjustment bases unverified\",\n    \"eps_source\": \"vietstock.overview_trading\",\n    \"bvps_source\": \"vietstock.overview_trading\",\n    \"eps\": 5.0,\n    \"bvps\": 50.0,\n    \"per\": 20.0,\n    \"per_basis\": \"quote_price_over_reported_eps\",\n    \"pb\": 2.0,\n    \"pb_basis\": \"quote_price_over_reported_bvps\"\n  },\n  \"provenance\": {\n    \"source\": \"computed-local\",\n    \"as_of\": \"2026-11-05T16:33:30.357784+07:00\",\n    \"timezone\": \"Asia/Ho_Chi_Minh\"\n  },\n  \"warnings\": [],\n  \"availability\": \"available\"\n}"
+        }
+      ],
+      "structuredContent": {
+        "data": {
+          "symbol": "FPT",
+          "price": 100.0,
+          "method": "dcf",
+          "price_source": "vnstock.equity_quote_batch",
+          "price_as_of": null,
+          "price_unit": "unverified",
+          "price_adjustment_basis": "unverified",
+          "eps_period": null,
+          "eps_frequency": null,
+          "eps_basis": "unverified",
+          "eps_unit": "unverified",
+          "eps_adjustment_basis": "unverified",
+          "multiple_comparability": "price/EPS units and adjustment bases unverified",
+          "eps_source": "vietstock.overview_trading",
+          "bvps_source": "vietstock.overview_trading",
+          "eps": 5.0,
+          "bvps": 50.0,
+          "per": 20.0,
+          "per_basis": "quote_price_over_reported_eps",
+          "pb": 2.0,
+          "pb_basis": "quote_price_over_reported_bvps"
+        },
+        "provenance": {
+          "source": "computed-local",
+          "as_of": "2026-11-05T16:33:30.357784+07:00",
+          "timezone": "Asia/Ho_Chi_Minh"
+        },
+        "warnings": [],
+        "availability": "available"
+      },
+      "isError": false
+    }
+  },
+  "period_typo_behavior": {
+    "quarter": {
+      "returned_period": "quarter",
+      "requests": [
+        {
+          "path": "/data/financeinfo",
+          "args": {
+            "Code": "FPT",
+            "Page": 1,
+            "PageSize": 4,
+            "ReportTermType": 2,
+            "ReportType": "BCTQ",
+            "Unit": 1
+          }
+        },
+        {
+          "path": "/data/financeinfo",
+          "args": {
+            "Code": "FPT",
+            "Page": 2,
+            "PageSize": 4,
+            "ReportTermType": 2,
+            "ReportType": "BCTQ",
+            "Unit": 1
+          }
+        },
+        {
+          "path": "/data/financeinfo",
+          "args": {
+            "Code": "FPT",
+            "Page": 3,
+            "PageSize": 4,
+            "ReportTermType": 2,
+            "ReportType": "BCTQ",
+            "Unit": 1
+          }
+        }
+      ]
+    },
+    "year": {
+      "returned_period": "year",
+      "requests": [
+        {
+          "path": "/data/financeinfo",
+          "args": {
+            "Code": "FPT",
+            "Page": 1,
+            "PageSize": 4,
+            "ReportTermType": 1,
+            "ReportType": "BCTQ",
+            "Unit": 1
+          }
+        }
+      ]
+    },
+    "quarterly": {
+      "returned_period": "quarterly",
+      "requests": [
+        {
+          "path": "/data/financeinfo",
+          "args": {
+            "Code": "FPT",
+            "Page": 1,
+            "PageSize": 4,
+            "ReportTermType": 1,
+            "ReportType": "BCTQ",
+            "Unit": 1
+          }
+        }
+      ]
+    },
+    "garbage": {
+      "returned_period": "garbage",
+      "requests": [
+        {
+          "path": "/data/financeinfo",
+          "args": {
+            "Code": "FPT",
+            "Page": 1,
+            "PageSize": 4,
+            "ReportTermType": 1,
+            "ReportType": "BCTQ",
+            "Unit": 1
+          }
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,49 @@
+{
+  "name": "opentrading",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "OpenTrading — AI harness TUI for Vietnamese equity research (demo v0)",
+  "bin": {
+    "opentrading": "./src/index.tsx"
+  },
+  "scripts": {
+    "dev": "bun run ./src/index.tsx",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@ai-sdk/alibaba": "2.0.65",
+    "@ai-sdk/anthropic": "4.0.80",
+    "@ai-sdk/cerebras": "3.0.67",
+    "@ai-sdk/cohere": "4.0.59",
+    "@ai-sdk/deepinfra": "3.0.67",
+    "@ai-sdk/google": "4.0.96",
+    "@ai-sdk/groq": "4.0.59",
+    "@ai-sdk/mistral": "4.0.62",
+    "@ai-sdk/openai": "4.0.91",
+    "@ai-sdk/openai-compatible": "3.0.67",
+    "@ai-sdk/perplexity": "5.0.12",
+    "@ai-sdk/togetherai": "3.0.68",
+    "@ai-sdk/vercel": "3.0.30",
+    "@ai-sdk/xai": "5.0.20",
+    "@crafter/charts": "0.2.5",
+    "@modelcontextprotocol/sdk": "1.32.1",
+    "@mozilla/readability": "0.6.0",
+    "@openrouter/ai-sdk-provider": "3.1.0",
+    "@opentui/core": "0.6.5",
+    "@opentui/solid": "0.6.5",
+    "ai": "7.0.137",
+    "linkedom": "0.18.13",
+    "lru-cache": "11.5.3",
+    "solid-js": "1.9.12",
+    "turndown": "7.2.4",
+    "turndown-plugin-gfm": "1.0.2",
+    "unpdf": "1.8.1",
+    "zod": "4.6.5"
+  },
+  "devDependencies": {
+    "@types/bun": "latest",
+    "@types/turndown": "5.0.6",
+    "typescript": "^5.9.0"
+  }
+}

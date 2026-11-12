@@ -1,0 +1,95 @@
+{
+  "scoring": "value",
+  "solution": {
+    "highest_lnst": "VPB",
+    "lowest_pe": "TPB"
+  },
+  "expects": [
+    {
+      "type": "str",
+      "path": "values.highest_lnst",
+      "accept": [
+        "VPB"
+      ]
+    },
+    {
+      "type": "str",
+      "path": "values.lowest_pe",
+      "accept": [
+        "TPB"
+      ]
+    },
+    {
+      "type": "str_all",
+      "path": "source",
+      "accept": [
+        "financial_statements",
+        "peer_compare"
+      ]
+    },
+    {
+      "type": "period",
+      "path": "period",
+      "accept": [
+        "Q2/2026",
+        "quý 2/2026"
+      ]
+    }
+  ],
+  "notes": "Common Q2/2026: VPB8775.909 tỷ highest; TPB P/E6.14 lowest. Five FS source calls plus one peer call, six receipts, not two.",
+  "provenance_contract": [
+    {
+      "tool": "financial_statements",
+      "source": "vietstock",
+      "as_of": "2026-11-01T23:48:07.196226+07:00",
+      "matched_entry_id": "fs:ACB",
+      "response_sha256": "290a04a504cf196ec1247e9ccf83e04caba23a4a47c9878748be5a395086aca8"
+    },
+    {
+      "tool": "financial_statements",
+      "source": "vietstock",
+      "as_of": "2026-11-01T23:48:06.754706+07:00",
+      "matched_entry_id": "fs:HDB",
+      "response_sha256": "5de368b87dd34cf58fc7b0e4cb138c9cda31b1b26d9902b50fa3795a52e9a1ee"
+    },
+    {
+      "tool": "financial_statements",
+      "source": "vietstock",
+      "as_of": "2026-11-01T23:48:08.708380+07:00",
+      "matched_entry_id": "fs:STB",
+      "response_sha256": "d1ef49d2e2c1a80a2dc6ee0795387907aca34d78dee67a60780fbd5b1a59defa"
+    },
+    {
+      "tool": "financial_statements",
+      "source": "vietstock",
+      "as_of": "2026-11-01T23:48:05.276403+07:00",
+      "matched_entry_id": "fs:TPB",
+      "response_sha256": "48a35e0731868cbf65c449baff6ebd11d24c5cef9a44bfd30cc4bdcc3aa6da4d"
+    },
+    {
+      "tool": "financial_statements",
+      "source": "vietstock",
+      "as_of": "2026-11-01T23:48:09.300154+07:00",
+      "matched_entry_id": "fs:VPB",
+      "response_sha256": "1c99a4143fc7344ff87de10d4293deafd1018c68577f6d41f65ab1e7830bc352"
+    },
+    {
+      "tool": "peer_compare",
+      "source": "vnstock",
+      "as_of": "2026-11-01T23:08:09.776201+07:00",
+      "matched_entry_id": "peer:banks_p",
+      "response_sha256": "9314b3b9168bf0f8d0627ae5b1695f7e93273e7e403235cf370f2e564f8424e4"
+    }
+  ],
+  "required_payload_keys": [
+    "fs:ACB",
+    "fs:HDB",
+    "fs:STB",
+    "fs:TPB",
+    "fs:VPB",
+    "peer:banks_p"
+  ],
+  "task_id": "fin-mem-326",
+  "payload_sha256": "e23e3da09fdf41d50037cb405f76bc48b1b8cb9237487c2c97076ac07bd45e9a",
+  "memory_construct": "in_session_context"
+}

@@ -1,0 +1,27 @@
+{
+ "snapshot_date": "2026-11-01",
+ "note": "Envelope MCP ghi lúc tạo task. Key = mã payload nội bộ; envelope giữ nguyên data+provenance+availability.",
+ "tools": {
+  "val:CMG": {
+   "tool": "valuation_run",
+   "params": {
+    "symbol": "CMG"
+   },
+   "envelope": {
+    "data": {
+     "symbol": "CMG",
+     "price": 18500,
+     "eps": 1960.95,
+     "bvps": 19304.64,
+     "per": 9.43,
+     "pb": 0.96
+    },
+    "provenance": {
+     "source": "computed-local",
+     "as_of": "2026-11-01T23:58:39.328698+07:00"
+    },
+    "availability": "available"
+   }
+  }
+ }
+}

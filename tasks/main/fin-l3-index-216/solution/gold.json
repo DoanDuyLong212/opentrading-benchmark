@@ -1,42 +1,65 @@
 {
- "task_id": "fin-l3-index-216",
- "scoring": "value",
- "solution": {
-  "value": 3.06
- },
- "as_of": "2026-11-01T21:11:59.149010+07:00",
- "split": "main",
- "expects": [
-  {
-   "type": "value",
-   "path": "value",
-   "gold": 3.06,
-   "tol": {
-    "abs": 0.1
-   }
+  "task_id": "fin-l3-index-216",
+  "scoring": "value",
+  "solution": {
+    "value": 3.06
   },
-  {
-   "type": "unit",
-   "path": "unit",
-   "accept": [
-    "%",
-    "phần trăm"
-   ]
-  },
-  {
-   "type": "period",
-   "path": "period",
-   "accept": [
-    "19/10",
-    "30/10"
-   ]
-  },
-  {
-   "type": "str",
-   "path": "source",
-   "accept": [
-    "vn_index_ohlcv"
-   ]
-  }
- ]
+  "as_of": "2026-11-01T21:11:59.149010+07:00",
+  "split": "main",
+  "expects": [
+    {
+      "type": "value",
+      "path": "value",
+      "gold": 3.06,
+      "tol": {
+        "abs": 0.1
+      }
+    },
+    {
+      "type": "unit",
+      "path": "unit",
+      "accept": [
+        "%",
+        "phần trăm"
+      ]
+    },
+    {
+      "type": "period",
+      "path": "period",
+      "accept": [
+        "19/10",
+        "30/10"
+      ]
+    },
+    {
+      "type": "str",
+      "path": "source",
+      "accept": [
+        "vn_index_ohlcv"
+      ]
+    }
+  ],
+  "contract_version": 2,
+  "provenance_contract": [
+    {
+      "tool": "vn_index_ohlcv",
+      "source": "vnstock",
+      "as_of": "2026-11-01T21:11:59.149010+07:00",
+      "matched_entry_id": "idx:VNINDEX",
+      "response_sha256": "da713a2897278095ec6466eaa876b29eee310c9308def1110e8ef8cb8c0daf0e"
+    }
+  ],
+  "payload_sha256": "032ee59dea44d7ce71ae077f40f5d8ce7582a9be4478fdcfce931f86e14fd42c",
+  "provenance_catalog": [
+    {
+      "tool": "vn_index_ohlcv",
+      "source": "vnstock",
+      "as_of": "2026-11-01T21:11:59.149010+07:00",
+      "matched_entry_id": "idx:VNINDEX",
+      "response_sha256": "da713a2897278095ec6466eaa876b29eee310c9308def1110e8ef8cb8c0daf0e"
+    }
+  ],
+  "required_payload_keys": [
+    "idx:VNINDEX"
+  ]
 }

@@ -1,7 +1,7 @@
 # Task benchmark harness tài chính (bộ 200+50) — sinh bởi tools/build_main.py
 id = "fin-l4-2src-258"
 title = "Đối chiếu 2 nguồn ETH (crypto)"
-version = 1
+version = 2
 created = "2026-11-01"
 level = "L4"
 family = "L4·D two-source"
@@ -19,6 +19,8 @@ tools_expected = ["yf_commodities", "vn_crypto_ohlcv", "vn_msn_fx_gold"]
 mcp_payloads = "environment/payloads.json"
 snapshot_required = true
 split = "main"
+
+confirmatory_eligible = true
 
 [scoring]
 type = "value"

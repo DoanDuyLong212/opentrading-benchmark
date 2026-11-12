@@ -1,0 +1,13 @@
+version: 2
+updates:
+  # The app is TypeScript on Bun (bun.lock); the old pip entry pointed at nothing.
+  - package-ecosystem: bun
+    directory: /
+    schedule:
+      interval: weekly
+    open-pull-requests-limit: 5
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: weekly
+    open-pull-requests-limit: 5

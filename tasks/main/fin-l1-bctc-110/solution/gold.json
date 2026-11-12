@@ -1,57 +1,80 @@
 {
- "task_id": "fin-l1-bctc-110",
- "scoring": "value",
- "solution": {
-  "value": 1346.68,
-  "period": "Q3/2026",
-  "line": "Tổng LNST"
- },
- "as_of": "2026-11-01T23:48:08.708380+07:00",
- "split": "main",
- "expects": [
-  {
-   "type": "unit",
-   "path": "unit",
-   "accept": [
-    "tỷ đồng",
-    "tỷ đ",
-    "tỷ"
-   ]
+  "task_id": "fin-l1-bctc-110",
+  "scoring": "value",
+  "solution": {
+    "value": 1346.68,
+    "period": "Q3/2026",
+    "line": "Tổng LNST"
   },
-  {
-   "type": "value",
-   "path": "value",
-   "gold": 1346.68,
-   "tol": {
-    "rel": 0.005
-   }
-  },
-  {
-   "type": "period",
-   "path": "period",
-   "accept": [
-    "Q3/2026",
-    "quý 3/2026",
-    "q3 2026",
-    "q3/26"
-   ]
-  },
-  {
-   "type": "tokens",
-   "path": "line",
-   "accept": [
-    "Tổng LNST"
-   ],
-   "reject": [
-    "LNST của CĐ Ngân hàng mẹ"
-   ]
-  },
-  {
-   "type": "str",
-   "path": "source",
-   "accept": [
-    "financial_statements"
-   ]
-  }
- ]
+  "as_of": "2026-11-01T23:48:08.708380+07:00",
+  "split": "main",
+  "expects": [
+    {
+      "type": "unit",
+      "path": "unit",
+      "accept": [
+        "tỷ đồng",
+        "tỷ đ",
+        "tỷ"
+      ]
+    },
+    {
+      "type": "value",
+      "path": "value",
+      "gold": 1346.68,
+      "tol": {
+        "rel": 0.005
+      }
+    },
+    {
+      "type": "period",
+      "path": "period",
+      "accept": [
+        "Q3/2026",
+        "quý 3/2026",
+        "q3 2026",
+        "q3/26"
+      ]
+    },
+    {
+      "type": "tokens",
+      "path": "line",
+      "accept": [
+        "Tổng LNST"
+      ],
+      "reject": [
+        "LNST của CĐ Ngân hàng mẹ"
+      ]
+    },
+    {
+      "type": "str",
+      "path": "source",
+      "accept": [
+        "financial_statements"
+      ]
+    }
+  ],
+  "contract_version": 2,
+  "provenance_contract": [
+    {
+      "tool": "financial_statements",
+      "source": "vietstock",
+      "as_of": "2026-11-01T23:48:08.708380+07:00",
+      "matched_entry_id": "fs:STB",
+      "response_sha256": "d1ef49d2e2c1a80a2dc6ee0795387907aca34d78dee67a60780fbd5b1a59defa"
+    }
+  ],
+  "payload_sha256": "4b54bce803f4ff1e29da2403548fe58563d73af7360eba175c2d9eda20775873",
+  "provenance_catalog": [
+    {
+      "tool": "financial_statements",
+      "source": "vietstock",
+      "as_of": "2026-11-01T23:48:08.708380+07:00",
+      "matched_entry_id": "fs:STB",
+      "response_sha256": "d1ef49d2e2c1a80a2dc6ee0795387907aca34d78dee67a60780fbd5b1a59defa"
+    }
+  ],
+  "required_payload_keys": [
+    "fs:STB"
+  ]
 }

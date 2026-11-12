@@ -183,5 +183,28 @@
     ]
   },
   "notes": "ROE desc: MBB 21.57 > CTG 21.23 > BID 19.43 > VCB 16.73 > TCB 16.03.",
-  "as_of": "2026-11-01T15:58:02.647158+07:00"
+  "as_of": "2026-11-01T15:58:02.647158+07:00",
+  "contract_version": 2,
+  "provenance_contract": [
+    {
+      "tool": "peer_compare",
+      "source": "vnstock",
+      "as_of": "2026-11-01T15:58:02.647158+07:00",
+      "matched_entry_id": "peer_compare:0",
+      "response_sha256": "c7bf5f6871f6bf6268ae80f9a927991aac12a683d3d5cab89e4aae5eb9ea043f"
+    }
+  ],
+  "payload_sha256": "9d5cd2d9d48cbebfdbb5c67a4f81f87c93362a8c82b52accafd053219d49c7d5",
+  "provenance_catalog": [
+    {
+      "tool": "peer_compare",
+      "source": "vnstock",
+      "as_of": "2026-11-01T15:58:02.647158+07:00",
+      "matched_entry_id": "peer_compare:0",
+      "response_sha256": "c7bf5f6871f6bf6268ae80f9a927991aac12a683d3d5cab89e4aae5eb9ea043f"
+    }
+  ],
+  "required_payload_keys": [
+    "peer_compare"
+  ]
 }

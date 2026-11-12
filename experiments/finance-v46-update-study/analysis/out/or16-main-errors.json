@@ -1,0 +1,1040 @@
+{
+ "run": "/home/doanlong/extra/benchmark/experiments/finance-v46-update-study/results/financial-v46u-main-final-or16-20261111/deepseek-openrouter-main",
+ "counts": {
+  "dsh": {
+   "sign_convention": 8,
+   "dnf_token_cap": 17,
+   "rounding": 1,
+   "wrong_selection": 11,
+   "manual_rejected": 1
+  },
+  "opentrading_baseline": {
+   "sign_convention": 7,
+   "wrong_quantity": 4,
+   "wrong_selection": 1,
+   "dnf_request_cap": 1,
+   "no_answer_object": 2
+  },
+  "opencode": {
+   "sign_convention": 5,
+   "wrong_selection": 17,
+   "wrong_quantity": 6,
+   "false_refusal_memory": 17,
+   "rounding": 1,
+   "false_refusal_other": 1,
+   "manual_rejected": 1
+  }
+ },
+ "trials": [
+  {
+   "trial_id": "fin-l4-chain-306__dsh__r1",
+   "arm": "dsh",
+   "task": "fin-l4-chain-306",
+   "stratum": "core",
+   "tier": null,
+   "judge": "partial",
+   "class": "sign_convention",
+   "detail": "values.pct_drop=3.4267912772585665 gold=-3.4267912772585665"
+  },
+  {
+   "trial_id": "fin-c3-volshare-421__dsh__r1",
+   "arm": "dsh",
+   "task": "fin-c3-volshare-421",
+   "stratum": "compute",
+   "tier": "C3",
+   "judge": "incorrect",
+   "class": "dnf_token_cap",
+   "detail": "output=8488 requests=2"
+  },
+  {
+   "trial_id": "fin-l4-2src-259__opentrading_baseline__r1",
+   "arm": "opentrading_baseline",
+   "task": "fin-l4-2src-259",
+   "stratum": "core",
+   "tier": null,
+   "judge": "partial",
+   "class": "sign_convention",
+   "detail": "value=-0.357174 gold=0.36"
+  },
+  {
+   "trial_id": "fin-l4-2src-259__opencode__r1",
+   "arm": "opencode",
+   "task": "fin-l4-2src-259",
+   "stratum": "core",
+   "tier": null,
+   "judge": "partial",
+   "class": "sign_convention",
+   "detail": "value=-0.357174 gold=0.36"
+  },
+  {
+   "trial_id": "fin-l4-2src-259__dsh__r1",
+   "arm": "dsh",
+   "task": "fin-l4-2src-259",
+   "stratum": "core",
+   "tier": null,
+   "judge": "partial",
+   "class": "sign_convention",
+   "detail": "value=-0.357174 gold=0.36"
+  },
+  {
+   "trial_id": "fin-l5-compare-285__dsh__r1",
+   "arm": "dsh",
+   "task": "fin-l5-compare-285",
+   "stratum": "core",
+   "tier": null,
+   "judge": "partial",
+   "class": "rounding",
+   "detail": "values.ETH-USD_pct=0.0936 gold=0.59 tol={'abs': 0.05}"
+  },
+  {
+   "trial_id": "fin-m4-rule-522__opencode__r1",
+   "arm": "opencode",
+   "task": "fin-m4-rule-522",
+   "stratum": "memory",
+   "tier": "M4",
+   "judge": "incorrect",
+   "class": "wrong_selection",
+   "detail": "values.symbol=DHG"
+  },
+  {
+   "trial_id": "fin-m4-rule-522__dsh__r1",
+   "arm": "dsh",
+   "task": "fin-m4-rule-522",
+   "stratum": "memory",
+   "tier": "M4",
+   "judge": "incorrect",
+   "class": "wrong_selection",
+   "detail": "values.symbol=DHG"
+  },
+  {
+   "trial_id": "fin-l4-2src-260__dsh__r1",
+   "arm": "dsh",
+   "task": "fin-l4-2src-260",
+   "stratum": "core",
+   "tier": null,
+   "judge": "partial",
+   "class": "sign_convention",
+   "detail": "value=-0.612478 gold=0.61"
+  },
+  {
+   "trial_id": "fin-l4-2src-260__opentrading_baseline__r1",
+   "arm": "opentrading_baseline",
+   "task": "fin-l4-2src-260",
+   "stratum": "core",
+   "tier": null,
+   "judge": "partial",
+   "class": "sign_convention",
+   "detail": "value=-0.612478 gold=0.61"
+  },
+  {
+   "trial_id": "fin-l2-growth-143__opencode__r1",
+   "arm": "opencode",
+   "task": "fin-l2-growth-143",
+   "stratum": "core",
+   "tier": null,
+   "judge": "incorrect",
+   "class": "wrong_quantity",
+   "detail": "value=15.223825 gold=31.52"
+  },
+  {
+   "trial_id": "fin-l4-chain-305__dsh__r1",
+   "arm": "dsh",
+   "task": "fin-l4-chain-305",
+   "stratum": "core",
+   "tier": null,
+   "judge": "partial",
+   "class": "sign_convention",
+   "detail": "values.pct_drop=1.937984496124031 gold=-1.94"
+  },
+  {
+   "trial_id": "fin-l4-chain-305__opencode__r1",
+   "arm": "opencode",
+   "task": "fin-l4-chain-305",
+   "stratum": "core",
+   "tier": null,
+   "judge": "partial",
+   "class": "sign_convention",
+   "detail": "values.pct_drop=1.937984496124031 gold=-1.94"
+  },
+  {
+   "trial_id": "fin-l4-chain-305__opentrading_baseline__r1",
+   "arm": "opentrading_baseline",
+   "task": "fin-l4-chain-305",
+   "stratum": "core",
+   "tier": null,
+   "judge": "partial",
+   "class": "sign_convention",
+   "detail": "values.pct_drop=1.937984496124031 gold=-1.94"
+  },
+  {
+   "trial_id": "fin-m3-split-513__opencode__r1",
+   "arm": "opencode",
+   "task": "fin-m3-split-513",
+   "stratum": "memory",
+   "tier": "M3a",
+   "judge": "incorrect",
+   "class": "wrong_selection",
+   "detail": "values.pass=['FRT', 'PNJ', 'MSN']"
+  },
+  {
+   "trial_id": "fin-m3-split-513__dsh__r1",
+   "arm": "dsh",
+   "task": "fin-m3-split-513",
+   "stratum": "memory",
+   "tier": "M3a",
+   "judge": "incorrect",
+   "class": "wrong_selection",
+   "detail": "values.pass=['FRT', 'PNJ', 'MSN']"
+  },
+  {
+   "trial_id": "fin-c3-geo-424__opencode__r1",
+   "arm": "opencode",
+   "task": "fin-c3-geo-424",
+   "stratum": "compute",
+   "tier": "C3",
+   "judge": "partial",
+   "class": "wrong_selection",
+   "detail": "values.best=GVR"
+  },
+  {
+   "trial_id": "fin-m5-revoke-530__opencode__r1",
+   "arm": "opencode",
+   "task": "fin-m5-revoke-530",
+   "stratum": "memory",
+   "tier": "M5-revoke",
+   "judge": "incorrect",
+   "class": "false_refusal_memory",
+   "detail": "Không có bộ tiêu chí lọc nào đang còn hiệu lực trong phiên này: tiêu chí đã được thu hồi/không được cung cấp lại, nên kh"
+  },
+  {
+   "trial_id": "fin-m3-update-520__opencode__r1",
+   "arm": "opencode",
+   "task": "fin-m3-update-520",
+   "stratum": "memory",
+   "tier": "M3b",
+   "judge": "incorrect",
+   "class": "false_refusal_memory",
+   "detail": "Không tìm thấy bản ghi tiêu chí lọc nào được lưu/ghi nhớ trong phiên làm việc này (không có memory, không có tệp ghi chú"
+  },
+  {
+   "trial_id": "fin-c4-logann-427__dsh__r1",
+   "arm": "dsh",
+   "task": "fin-c4-logann-427",
+   "stratum": "compute",
+   "tier": "C4",
+   "judge": "incorrect",
+   "class": "dnf_token_cap",
+   "detail": "output=8816 requests=2"
+  },
+  {
+   "trial_id": "fin-m3-split-514__opencode__r1",
+   "arm": "opencode",
+   "task": "fin-m3-split-514",
+   "stratum": "memory",
+   "tier": "M3a",
+   "judge": "incorrect",
+   "class": "wrong_selection",
+   "detail": "values.pass=['VGI', 'CTR', 'FOX']"
+  },
+  {
+   "trial_id": "fin-m3-split-514__dsh__r1",
+   "arm": "dsh",
+   "task": "fin-m3-split-514",
+   "stratum": "memory",
+   "tier": "M3a",
+   "judge": "incorrect",
+   "class": "wrong_selection",
+   "detail": "values.pass=['VGI', 'CTR', 'FOX']"
+  },
+  {
+   "trial_id": "fin-m4-port-526__opencode__r1",
+   "arm": "opencode",
+   "task": "fin-m4-port-526",
+   "stratum": "memory",
+   "tier": "M4",
+   "judge": "incorrect",
+   "class": "false_refusal_memory",
+   "detail": "Không có thông tin danh mục đầu tư (mã cổ phiếu, số lượng nắm giữ, giá vốn) được cung cấp hoặc ghi nhớ trong phiên này. "
+  },
+  {
+   "trial_id": "fin-c4-stagger-430__opencode__r1",
+   "arm": "opencode",
+   "task": "fin-c4-stagger-430",
+   "stratum": "compute",
+   "tier": "C4",
+   "judge": "partial",
+   "class": "wrong_quantity",
+   "detail": "values.positions.VIC=24100000 gold=32.4047; values.positions.VHM=25200000 gold=-10.527; values.positions.MSN=35000000 gold=8.0123; values.positions.SAB=25440000 gold=-22.6805; values.positions.VJC=26320000 gold=37.3867; values.positions.PLX=51000000 gold=-21.9448; values.positions.POW=73200000 gold="
+  },
+  {
+   "trial_id": "fin-c4-stagger-430__dsh__r1",
+   "arm": "dsh",
+   "task": "fin-c4-stagger-430",
+   "stratum": "compute",
+   "tier": "C4",
+   "judge": "correct",
+   "class": "dnf_token_cap",
+   "detail": "output=8625 requests=2"
+  },
+  {
+   "trial_id": "fin-c4-stagger-430__opentrading_baseline__r1",
+   "arm": "opentrading_baseline",
+   "task": "fin-c4-stagger-430",
+   "stratum": "compute",
+   "tier": "C4",
+   "judge": "partial",
+   "class": "wrong_quantity",
+   "detail": "values.positions.VIC=24100000 gold=32.4047; values.positions.VHM=25200000 gold=-10.527; values.positions.MSN=35000000 gold=8.0123; values.positions.SAB=25440000 gold=-22.6805; values.positions.VJC=26320000 gold=37.3867; values.positions.PLX=51000000 gold=-21.9448; values.positions.POW=73200000 gold="
+  },
+  {
+   "trial_id": "fin-m3-update-517__opencode__r1",
+   "arm": "opencode",
+   "task": "fin-m3-update-517",
+   "stratum": "memory",
+   "tier": "M3b",
+   "judge": "incorrect",
+   "class": "false_refusal_memory",
+   "detail": "Không có bản ghi các tiêu chí hiện hành (bản cập nhật mới nhất) trong ngữ cảnh phiên này; các ngưỡng P/E, P/B, ROE cần đ"
+  },
+  {
+   "trial_id": "fin-c4-stagger-425__opentrading_baseline__r1",
+   "arm": "opentrading_baseline",
+   "task": "fin-c4-stagger-425",
+   "stratum": "compute",
+   "tier": "C4",
+   "judge": "partial",
+   "class": "wrong_quantity",
+   "detail": "values.positions.HPG=63000000 gold=-28.5246; values.positions.FPT=26350000 gold=-42.605; values.positions.VCB=45040000 gold=0.4453; values.positions.MWG=88800000 gold=8.5107; values.positions.GAS=31200000 gold=-53.5601; values.positions.SSI=48250000 gold=29.836"
+  },
+  {
+   "trial_id": "fin-c4-stagger-425__dsh__r1",
+   "arm": "dsh",
+   "task": "fin-c4-stagger-425",
+   "stratum": "compute",
+   "tier": "C4",
+   "judge": "no_answer",
+   "class": "dnf_token_cap",
+   "detail": "output=8538 requests=2"
+  },
+  {
+   "trial_id": "fin-c4-stagger-425__opencode__r1",
+   "arm": "opencode",
+   "task": "fin-c4-stagger-425",
+   "stratum": "compute",
+   "tier": "C4",
+   "judge": "partial",
+   "class": "wrong_quantity",
+   "detail": "values.positions.HPG=63000000 gold=-28.5246; values.positions.FPT=26350000 gold=-42.605; values.positions.VCB=45040000 gold=0.4453; values.positions.MWG=88800000 gold=8.5107; values.positions.GAS=31200000 gold=-53.5601; values.positions.SSI=48250000 gold=29.836"
+  },
+  {
+   "trial_id": "fin-c4-rebal-426__dsh__r1",
+   "arm": "dsh",
+   "task": "fin-c4-rebal-426",
+   "stratum": "compute",
+   "tier": "C4",
+   "judge": "correct",
+   "class": "dnf_token_cap",
+   "detail": "output=8541 requests=2"
+  },
+  {
+   "trial_id": "fin-c3-volregime-420__dsh__r1",
+   "arm": "dsh",
+   "task": "fin-c3-volregime-420",
+   "stratum": "compute",
+   "tier": "C3",
+   "judge": "incorrect",
+   "class": "dnf_token_cap",
+   "detail": "output=8486 requests=2"
+  },
+  {
+   "trial_id": "fin-m3-update-518__opencode__r1",
+   "arm": "opencode",
+   "task": "fin-m3-update-518",
+   "stratum": "memory",
+   "tier": "M3b",
+   "judge": "incorrect",
+   "class": "false_refusal_memory",
+   "detail": "Trong phiên này không có bản ghi nào về 'các tiêu chí hiện hành đã ghi nhớ' (kể cả bản cập nhật mới nhất), nên không thể"
+  },
+  {
+   "trial_id": "fin-m4-rule-523__dsh__r1",
+   "arm": "dsh",
+   "task": "fin-m4-rule-523",
+   "stratum": "memory",
+   "tier": "M4",
+   "judge": "incorrect",
+   "class": "wrong_selection",
+   "detail": "values.symbol=FOX"
+  },
+  {
+   "trial_id": "fin-m4-rule-523__opencode__r1",
+   "arm": "opencode",
+   "task": "fin-m4-rule-523",
+   "stratum": "memory",
+   "tier": "M4",
+   "judge": "incorrect",
+   "class": "wrong_selection",
+   "detail": "values.symbol=FOX"
+  },
+  {
+   "trial_id": "fin-m4-rule-521__dsh__r1",
+   "arm": "dsh",
+   "task": "fin-m4-rule-521",
+   "stratum": "memory",
+   "tier": "M4",
+   "judge": "incorrect",
+   "class": "wrong_selection",
+   "detail": "values.symbol=FRT"
+  },
+  {
+   "trial_id": "fin-m4-rule-521__opencode__r1",
+   "arm": "opencode",
+   "task": "fin-m4-rule-521",
+   "stratum": "memory",
+   "tier": "M4",
+   "judge": "incorrect",
+   "class": "wrong_selection",
+   "detail": "values.symbol=FRT"
+  },
+  {
+   "trial_id": "fin-l4-2src-302__opencode__r1",
+   "arm": "opencode",
+   "task": "fin-l4-2src-302",
+   "stratum": "core",
+   "tier": null,
+   "judge": "partial",
+   "class": "sign_convention",
+   "detail": "value=-6.194331983805668 gold=6.19"
+  },
+  {
+   "trial_id": "fin-l4-2src-302__opentrading_baseline__r1",
+   "arm": "opentrading_baseline",
+   "task": "fin-l4-2src-302",
+   "stratum": "core",
+   "tier": null,
+   "judge": "partial",
+   "class": "sign_convention",
+   "detail": "value=-6.194332 gold=6.19"
+  },
+  {
+   "trial_id": "fin-l4-2src-302__dsh__r1",
+   "arm": "dsh",
+   "task": "fin-l4-2src-302",
+   "stratum": "core",
+   "tier": null,
+   "judge": "incorrect",
+   "class": "sign_convention",
+   "detail": "value=-6.194332 gold=6.19"
+  },
+  {
+   "trial_id": "fin-m3-split-516__opencode__r1",
+   "arm": "opencode",
+   "task": "fin-m3-split-516",
+   "stratum": "memory",
+   "tier": "M3a",
+   "judge": "incorrect",
+   "class": "wrong_selection",
+   "detail": "values.pass=['DHG', 'IMP', 'TRA', 'DBD']"
+  },
+  {
+   "trial_id": "fin-m3-update-519__opencode__r1",
+   "arm": "opencode",
+   "task": "fin-m3-update-519",
+   "stratum": "memory",
+   "tier": "M3b",
+   "judge": "incorrect",
+   "class": "false_refusal_memory",
+   "detail": "Không có tiêu chí lọc nào được cung cấp trong phiên này: 'các tiêu chí hiện hành tôi đã nhờ bạn ghi nhớ (theo bản cập nh"
+  },
+  {
+   "trial_id": "fin-m3-split-515__opencode__r1",
+   "arm": "opencode",
+   "task": "fin-m3-split-515",
+   "stratum": "memory",
+   "tier": "M3a",
+   "judge": "incorrect",
+   "class": "wrong_selection",
+   "detail": "values.pass=['PVD', 'PVT']"
+  },
+  {
+   "trial_id": "fin-l3-screen-191__opentrading_baseline__r1",
+   "arm": "opentrading_baseline",
+   "task": "fin-l3-screen-191",
+   "stratum": "core",
+   "tier": null,
+   "judge": "partial",
+   "class": "wrong_selection",
+   "detail": "values.pass=['VGS']"
+  },
+  {
+   "trial_id": "fin-l3-screen-191__opencode__r1",
+   "arm": "opencode",
+   "task": "fin-l3-screen-191",
+   "stratum": "core",
+   "tier": null,
+   "judge": "partial",
+   "class": "wrong_selection",
+   "detail": "values.pass=['VGS']"
+  },
+  {
+   "trial_id": "fin-m4-port-525__opencode__r1",
+   "arm": "opencode",
+   "task": "fin-m4-port-525",
+   "stratum": "memory",
+   "tier": "M4",
+   "judge": "incorrect",
+   "class": "false_refusal_memory",
+   "detail": "Không có thông tin danh mục (mã, khối lượng nắm giữ, giá vốn) trong phiên này và không có tool MCP nào trả về holdings/d"
+  },
+  {
+   "trial_id": "fin-m5-revoke-529__opencode__r1",
+   "arm": "opencode",
+   "task": "fin-m5-revoke-529",
+   "stratum": "memory",
+   "tier": "M5-revoke",
+   "judge": "incorrect",
+   "class": "false_refusal_memory",
+   "detail": "Không có bộ tiêu chí lọc nào của bạn được lưu trong phiên này (không có bản ghi bộ nhớ/tiêu chí đã ghi nhớ để đối chiếu)"
+  },
+  {
+   "trial_id": "fin-c4-signal-429__dsh__r1",
+   "arm": "dsh",
+   "task": "fin-c4-signal-429",
+   "stratum": "compute",
+   "tier": "C4",
+   "judge": "no_answer",
+   "class": "dnf_token_cap",
+   "detail": "output=8715 requests=2"
+  },
+  {
+   "trial_id": "fin-m4-port-524__opencode__r1",
+   "arm": "opencode",
+   "task": "fin-m4-port-524",
+   "stratum": "memory",
+   "tier": "M4",
+   "judge": "incorrect",
+   "class": "false_refusal_memory",
+   "detail": "Không có thông tin danh mục trong phiên này: tôi không có bản ghi nào về các mã nắm giữ, số lượng cổ phiếu hay giá vốn đ"
+  },
+  {
+   "trial_id": "fin-c3-maladder-419__dsh__r1",
+   "arm": "dsh",
+   "task": "fin-c3-maladder-419",
+   "stratum": "compute",
+   "tier": "C3",
+   "judge": "incorrect",
+   "class": "dnf_token_cap",
+   "detail": "output=8429 requests=2"
+  },
+  {
+   "trial_id": "fin-c3-volshare-421__dsh__r2",
+   "arm": "dsh",
+   "task": "fin-c3-volshare-421",
+   "stratum": "compute",
+   "tier": "C3",
+   "judge": "incorrect",
+   "class": "dnf_token_cap",
+   "detail": "output=8488 requests=2"
+  },
+  {
+   "trial_id": "fin-l4-2src-259__opencode__r2",
+   "arm": "opencode",
+   "task": "fin-l4-2src-259",
+   "stratum": "core",
+   "tier": null,
+   "judge": "partial",
+   "class": "sign_convention",
+   "detail": "value=-0.357174 gold=0.36"
+  },
+  {
+   "trial_id": "fin-l4-2src-259__opentrading_baseline__r2",
+   "arm": "opentrading_baseline",
+   "task": "fin-l4-2src-259",
+   "stratum": "core",
+   "tier": null,
+   "judge": "partial",
+   "class": "sign_convention",
+   "detail": "value=-0.357174 gold=0.36"
+  },
+  {
+   "trial_id": "fin-l4-2src-259__dsh__r2",
+   "arm": "dsh",
+   "task": "fin-l4-2src-259",
+   "stratum": "core",
+   "tier": null,
+   "judge": "partial",
+   "class": "sign_convention",
+   "detail": "value=-0.357174 gold=0.36"
+  },
+  {
+   "trial_id": "fin-m4-rule-522__dsh__r2",
+   "arm": "dsh",
+   "task": "fin-m4-rule-522",
+   "stratum": "memory",
+   "tier": "M4",
+   "judge": "incorrect",
+   "class": "wrong_selection",
+   "detail": "values.symbol=DHG"
+  },
+  {
+   "trial_id": "fin-m4-rule-522__opencode__r2",
+   "arm": "opencode",
+   "task": "fin-m4-rule-522",
+   "stratum": "memory",
+   "tier": "M4",
+   "judge": "incorrect",
+   "class": "wrong_selection",
+   "detail": "values.symbol=DHG"
+  },
+  {
+   "trial_id": "fin-l4-2src-260__opentrading_baseline__r2",
+   "arm": "opentrading_baseline",
+   "task": "fin-l4-2src-260",
+   "stratum": "core",
+   "tier": null,
+   "judge": "correct",
+   "class": "sign_convention",
+   "detail": "value=-0.612478 gold=0.61"
+  },
+  {
+   "trial_id": "fin-l4-2src-260__dsh__r2",
+   "arm": "dsh",
+   "task": "fin-l4-2src-260",
+   "stratum": "core",
+   "tier": null,
+   "judge": "partial",
+   "class": "sign_convention",
+   "detail": "value=-0.612478 gold=0.61"
+  },
+  {
+   "trial_id": "fin-l4-chain-305__opencode__r2",
+   "arm": "opencode",
+   "task": "fin-l4-chain-305",
+   "stratum": "core",
+   "tier": null,
+   "judge": "partial",
+   "class": "sign_convention",
+   "detail": "values.pct_drop=1.937984496124031 gold=-1.94"
+  },
+  {
+   "trial_id": "fin-m2-port-511__dsh__r2",
+   "arm": "dsh",
+   "task": "fin-m2-port-511",
+   "stratum": "memory",
+   "tier": "M2",
+   "judge": "correct",
+   "class": "manual_rejected",
+   "detail": ""
+  },
+  {
+   "trial_id": "fin-m2-port-511__opencode__r2",
+   "arm": "opencode",
+   "task": "fin-m2-port-511",
+   "stratum": "memory",
+   "tier": "M2",
+   "judge": "partial",
+   "class": "rounding",
+   "detail": "values.pnl_pct=-15.5 gold=-15.4144 tol={'abs': 0.05}"
+  },
+  {
+   "trial_id": "fin-l3-crypto-multi-215__opencode__r2",
+   "arm": "opencode",
+   "task": "fin-l3-crypto-multi-215",
+   "stratum": "core",
+   "tier": null,
+   "judge": "partial",
+   "class": "wrong_selection",
+   "detail": "values.winner=SI=F"
+  },
+  {
+   "trial_id": "fin-m3-split-513__opencode__r2",
+   "arm": "opencode",
+   "task": "fin-m3-split-513",
+   "stratum": "memory",
+   "tier": "M3a",
+   "judge": "incorrect",
+   "class": "wrong_selection",
+   "detail": "values.pass=['FRT', 'PNJ', 'MSN']"
+  },
+  {
+   "trial_id": "fin-m3-split-513__dsh__r2",
+   "arm": "dsh",
+   "task": "fin-m3-split-513",
+   "stratum": "memory",
+   "tier": "M3a",
+   "judge": "incorrect",
+   "class": "wrong_selection",
+   "detail": "values.pass=['FRT', 'PNJ', 'MSN']"
+  },
+  {
+   "trial_id": "fin-l3-top-202__opencode__r2",
+   "arm": "opencode",
+   "task": "fin-l3-top-202",
+   "stratum": "core",
+   "tier": null,
+   "judge": "incorrect",
+   "class": "false_refusal_other",
+   "detail": "Không thể truy xuất dữ liệu: mọi lần gọi tool opentrading_market_movers với biến thể được phép {top_n: 5, universe: 'vn3"
+  },
+  {
+   "trial_id": "fin-m5-revoke-530__opencode__r2",
+   "arm": "opencode",
+   "task": "fin-m5-revoke-530",
+   "stratum": "memory",
+   "tier": "M5-revoke",
+   "judge": "incorrect",
+   "class": "false_refusal_memory",
+   "detail": "Trong phiên làm việc này không có bản ghi nào về các tiêu chí lọc bạn đã 'nhờ ghi nhớ' (không có nội dung tiêu chí, ngưỡ"
+  },
+  {
+   "trial_id": "fin-m3-update-520__opencode__r2",
+   "arm": "opencode",
+   "task": "fin-m3-update-520",
+   "stratum": "memory",
+   "tier": "M3b",
+   "judge": "correct",
+   "class": "manual_rejected",
+   "detail": ""
+  },
+  {
+   "trial_id": "fin-c4-logann-427__dsh__r2",
+   "arm": "dsh",
+   "task": "fin-c4-logann-427",
+   "stratum": "compute",
+   "tier": "C4",
+   "judge": "no_answer",
+   "class": "dnf_token_cap",
+   "detail": "output=8828 requests=2"
+  },
+  {
+   "trial_id": "fin-m3-split-514__opencode__r2",
+   "arm": "opencode",
+   "task": "fin-m3-split-514",
+   "stratum": "memory",
+   "tier": "M3a",
+   "judge": "incorrect",
+   "class": "wrong_selection",
+   "detail": "values.pass=['VGI', 'CTR', 'FOX']"
+  },
+  {
+   "trial_id": "fin-m4-port-526__opencode__r2",
+   "arm": "opencode",
+   "task": "fin-m4-port-526",
+   "stratum": "memory",
+   "tier": "M4",
+   "judge": "incorrect",
+   "class": "false_refusal_memory",
+   "detail": "Không có thông tin danh mục để định giá: trong phiên này không có bản ghi nào về các mã nắm giữ, số lượng cổ phiếu hay g"
+  },
+  {
+   "trial_id": "fin-c4-stagger-430__opencode__r2",
+   "arm": "opencode",
+   "task": "fin-c4-stagger-430",
+   "stratum": "compute",
+   "tier": "C4",
+   "judge": "partial",
+   "class": "wrong_quantity",
+   "detail": "values.positions.VIC=24100000 gold=32.4047; values.positions.VHM=25200000 gold=-10.527; values.positions.MSN=35000000 gold=8.0123; values.positions.SAB=25440000 gold=-22.6805; values.positions.VJC=26320000 gold=37.3867; values.positions.PLX=51000000 gold=-21.9448; values.positions.POW=73200000 gold="
+  },
+  {
+   "trial_id": "fin-c4-stagger-430__opentrading_baseline__r2",
+   "arm": "opentrading_baseline",
+   "task": "fin-c4-stagger-430",
+   "stratum": "compute",
+   "tier": "C4",
+   "judge": "partial",
+   "class": "wrong_quantity",
+   "detail": "values.positions.VIC=24100000 gold=32.4047; values.positions.VHM=25200000 gold=-10.527; values.positions.MSN=35000000 gold=8.0123; values.positions.SAB=25440000 gold=-22.6805; values.positions.VJC=26320000 gold=37.3867; values.positions.PLX=51000000 gold=-21.9448; values.positions.POW=73200000 gold="
+  },
+  {
+   "trial_id": "fin-c4-stagger-430__dsh__r2",
+   "arm": "dsh",
+   "task": "fin-c4-stagger-430",
+   "stratum": "compute",
+   "tier": "C4",
+   "judge": "no_answer",
+   "class": "dnf_token_cap",
+   "detail": "output=8611 requests=2"
+  },
+  {
+   "trial_id": "fin-c2-ann-414__opencode__r2",
+   "arm": "opencode",
+   "task": "fin-c2-ann-414",
+   "stratum": "compute",
+   "tier": "C2",
+   "judge": "partial",
+   "class": "wrong_quantity",
+   "detail": "values.annualized_pct=123.95 gold=-55.3475"
+  },
+  {
+   "trial_id": "fin-m3-update-517__opencode__r2",
+   "arm": "opencode",
+   "task": "fin-m3-update-517",
+   "stratum": "memory",
+   "tier": "M3b",
+   "judge": "incorrect",
+   "class": "false_refusal_memory",
+   "detail": "Không có bộ tiêu chí lọc nào được cung cấp hoặc lưu trong phiên làm việc này (không có ngữ cảnh/bộ nhớ từ các trao đổi t"
+  },
+  {
+   "trial_id": "fin-c4-stagger-425__dsh__r2",
+   "arm": "dsh",
+   "task": "fin-c4-stagger-425",
+   "stratum": "compute",
+   "tier": "C4",
+   "judge": "correct",
+   "class": "dnf_token_cap",
+   "detail": "output=8542 requests=2"
+  },
+  {
+   "trial_id": "fin-c4-stagger-425__opencode__r2",
+   "arm": "opencode",
+   "task": "fin-c4-stagger-425",
+   "stratum": "compute",
+   "tier": "C4",
+   "judge": "partial",
+   "class": "wrong_quantity",
+   "detail": "values.positions.HPG=63000000 gold=-28.5246; values.positions.FPT=26350000 gold=-42.605; values.positions.VCB=45040000 gold=0.4453; values.positions.MWG=88800000 gold=8.5107; values.positions.GAS=31200000 gold=-53.5601; values.positions.SSI=48250000 gold=29.836"
+  },
+  {
+   "trial_id": "fin-c4-stagger-425__opentrading_baseline__r2",
+   "arm": "opentrading_baseline",
+   "task": "fin-c4-stagger-425",
+   "stratum": "compute",
+   "tier": "C4",
+   "judge": "partial",
+   "class": "wrong_quantity",
+   "detail": "values.positions.HPG=63000000 gold=-28.5246; values.positions.FPT=26350000 gold=-42.605; values.positions.VCB=45040000 gold=0.4453; values.positions.MWG=88800000 gold=8.5107; values.positions.GAS=31200000 gold=-53.5601; values.positions.SSI=48250000 gold=29.836"
+  },
+  {
+   "trial_id": "fin-c2-ma-409__opentrading_baseline__r2",
+   "arm": "opentrading_baseline",
+   "task": "fin-c2-ma-409",
+   "stratum": "compute",
+   "tier": "C2",
+   "judge": "no_answer",
+   "class": "dnf_request_cap",
+   "detail": "requests=25"
+  },
+  {
+   "trial_id": "fin-c4-rebal-426__opentrading_baseline__r2",
+   "arm": "opentrading_baseline",
+   "task": "fin-c4-rebal-426",
+   "stratum": "compute",
+   "tier": "C4",
+   "judge": "incorrect",
+   "class": "no_answer_object",
+   "detail": "<｜DSML｜ calls>\n<｜DSML｜ invoke name=\"calculate\">\n<｜DSML｜ parameter name=\"expressi"
+  },
+  {
+   "trial_id": "fin-c4-rebal-426__dsh__r2",
+   "arm": "dsh",
+   "task": "fin-c4-rebal-426",
+   "stratum": "compute",
+   "tier": "C4",
+   "judge": "partial",
+   "class": "dnf_token_cap",
+   "detail": "output=8537 requests=2"
+  },
+  {
+   "trial_id": "fin-c3-volregime-420__dsh__r2",
+   "arm": "dsh",
+   "task": "fin-c3-volregime-420",
+   "stratum": "compute",
+   "tier": "C3",
+   "judge": "incorrect",
+   "class": "dnf_token_cap",
+   "detail": "output=8483 requests=2"
+  },
+  {
+   "trial_id": "fin-m3-update-518__opencode__r2",
+   "arm": "opencode",
+   "task": "fin-m3-update-518",
+   "stratum": "memory",
+   "tier": "M3b",
+   "judge": "incorrect",
+   "class": "false_refusal_memory",
+   "detail": "Không có bản ghi tiêu chí sàng lọc hiện hành nào (hoặc phiên bản cập nhật mới nhất của tiêu chí) trong ngữ cảnh phiên nà"
+  },
+  {
+   "trial_id": "fin-m4-rule-523__opencode__r2",
+   "arm": "opencode",
+   "task": "fin-m4-rule-523",
+   "stratum": "memory",
+   "tier": "M4",
+   "judge": "incorrect",
+   "class": "wrong_selection",
+   "detail": "values.symbol=FOX"
+  },
+  {
+   "trial_id": "fin-m4-rule-523__dsh__r2",
+   "arm": "dsh",
+   "task": "fin-m4-rule-523",
+   "stratum": "memory",
+   "tier": "M4",
+   "judge": "incorrect",
+   "class": "wrong_selection",
+   "detail": "values.symbol=FOX"
+  },
+  {
+   "trial_id": "fin-c3-logann-418__dsh__r2",
+   "arm": "dsh",
+   "task": "fin-c3-logann-418",
+   "stratum": "compute",
+   "tier": "C3",
+   "judge": "no_answer",
+   "class": "dnf_token_cap",
+   "detail": "output=8511 requests=2"
+  },
+  {
+   "trial_id": "fin-m4-rule-521__opencode__r2",
+   "arm": "opencode",
+   "task": "fin-m4-rule-521",
+   "stratum": "memory",
+   "tier": "M4",
+   "judge": "incorrect",
+   "class": "wrong_selection",
+   "detail": "values.symbol=FRT"
+  },
+  {
+   "trial_id": "fin-m4-rule-521__dsh__r2",
+   "arm": "dsh",
+   "task": "fin-m4-rule-521",
+   "stratum": "memory",
+   "tier": "M4",
+   "judge": "incorrect",
+   "class": "wrong_selection",
+   "detail": "values.symbol=FRT"
+  },
+  {
+   "trial_id": "fin-l4-2src-302__opentrading_baseline__r2",
+   "arm": "opentrading_baseline",
+   "task": "fin-l4-2src-302",
+   "stratum": "core",
+   "tier": null,
+   "judge": "partial",
+   "class": "sign_convention",
+   "detail": "value=-6.194332 gold=6.19"
+  },
+  {
+   "trial_id": "fin-l4-2src-302__dsh__r2",
+   "arm": "dsh",
+   "task": "fin-l4-2src-302",
+   "stratum": "core",
+   "tier": null,
+   "judge": "partial",
+   "class": "sign_convention",
+   "detail": "value=-6.194332 gold=6.19"
+  },
+  {
+   "trial_id": "fin-m3-split-516__dsh__r2",
+   "arm": "dsh",
+   "task": "fin-m3-split-516",
+   "stratum": "memory",
+   "tier": "M3a",
+   "judge": "incorrect",
+   "class": "wrong_selection",
+   "detail": "values.pass=['DHG', 'IMP', 'TRA', 'DBD']"
+  },
+  {
+   "trial_id": "fin-m3-split-516__opencode__r2",
+   "arm": "opencode",
+   "task": "fin-m3-split-516",
+   "stratum": "memory",
+   "tier": "M3a",
+   "judge": "incorrect",
+   "class": "wrong_selection",
+   "detail": "values.pass=['DHG', 'IMP', 'TRA', 'DBD']"
+  },
+  {
+   "trial_id": "fin-m3-update-519__opencode__r2",
+   "arm": "opencode",
+   "task": "fin-m3-update-519",
+   "stratum": "memory",
+   "tier": "M3b",
+   "judge": "incorrect",
+   "class": "false_refusal_memory",
+   "detail": "Không có bản ghi tiêu chí lọc 'hiện hành' nào trong ngữ cảnh phiên này (chỉ có dữ liệu peer_compare), nên không thể xác "
+  },
+  {
+   "trial_id": "fin-m3-split-515__dsh__r2",
+   "arm": "dsh",
+   "task": "fin-m3-split-515",
+   "stratum": "memory",
+   "tier": "M3a",
+   "judge": "incorrect",
+   "class": "wrong_selection",
+   "detail": "values.pass=['PVD', 'PVT']"
+  },
+  {
+   "trial_id": "fin-m3-split-515__opencode__r2",
+   "arm": "opencode",
+   "task": "fin-m3-split-515",
+   "stratum": "memory",
+   "tier": "M3a",
+   "judge": "incorrect",
+   "class": "wrong_selection",
+   "detail": "values.pass=['PVT', 'PVD']"
+  },
+  {
+   "trial_id": "fin-m4-port-525__opencode__r2",
+   "arm": "opencode",
+   "task": "fin-m4-port-525",
+   "stratum": "memory",
+   "tier": "M4",
+   "judge": "incorrect",
+   "class": "false_refusal_memory",
+   "detail": "Không có thông tin danh mục (mã cổ phiếu nào, số lượng cổ phiếu, giá vốn từng mã) trong phiên này, và không có tool MCP "
+  },
+  {
+   "trial_id": "fin-m5-revoke-529__opencode__r2",
+   "arm": "opencode",
+   "task": "fin-m5-revoke-529",
+   "stratum": "memory",
+   "tier": "M5-revoke",
+   "judge": "incorrect",
+   "class": "false_refusal_memory",
+   "detail": "Không có tiêu chí lọc nào đang còn hiệu lực trong phiên này: bạn chưa cung cấp (hoặc đã thu hồi) các tiêu chí đã nhờ ghi"
+  },
+  {
+   "trial_id": "fin-c1-chg-402__opentrading_baseline__r2",
+   "arm": "opentrading_baseline",
+   "task": "fin-c1-chg-402",
+   "stratum": "compute",
+   "tier": "C1",
+   "judge": "incorrect",
+   "class": "no_answer_object",
+   "detail": "<｜DSML｜ calls>\n<｜DSML｜ invoke name=\"calculate\">\n<｜DSML｜ parameter name=\"expressi"
+  },
+  {
+   "trial_id": "fin-c4-signal-429__dsh__r2",
+   "arm": "dsh",
+   "task": "fin-c4-signal-429",
+   "stratum": "compute",
+   "tier": "C4",
+   "judge": "incorrect",
+   "class": "dnf_token_cap",
+   "detail": "output=8646 requests=2"
+  },
+  {
+   "trial_id": "fin-m4-port-524__opencode__r2",
+   "arm": "opencode",
+   "task": "fin-m4-port-524",
+   "stratum": "memory",
+   "tier": "M4",
+   "judge": "incorrect",
+   "class": "false_refusal_memory",
+   "detail": "Không có thông tin về danh mục cần định giá trong phiên này: không có danh sách mã, số lượng cổ phiếu nắm giữ và giá vốn"
+  },
+  {
+   "trial_id": "fin-c3-maladder-419__dsh__r2",
+   "arm": "dsh",
+   "task": "fin-c3-maladder-419",
+   "stratum": "compute",
+   "tier": "C3",
+   "judge": "incorrect",
+   "class": "dnf_token_cap",
+   "detail": "output=8430 requests=2"
+  }
+ ]
+}

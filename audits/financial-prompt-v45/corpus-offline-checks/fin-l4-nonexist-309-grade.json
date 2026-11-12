@@ -1,0 +1,26 @@
+{
+  "task_id": "fin-l4-nonexist-309",
+  "success": true,
+  "fp": 0,
+  "error_type": null,
+  "checks": [
+    {
+      "check": "provenance",
+      "pass": true,
+      "detail": "recorded response identity/provider/as_of coverage and snapshot hash; call IDs independently verified by driver"
+    },
+    {
+      "check": "refusal_reason",
+      "pass": true,
+      "detail": "hit=['chưa công bố'] bad=[]"
+    }
+  ],
+  "bonus": {
+    "numbers": [],
+    "strings": [],
+    "hit": false
+  },
+  "schema_valid": true,
+  "provenance_correctness": true,
+  "semantic_correctness": true
+}

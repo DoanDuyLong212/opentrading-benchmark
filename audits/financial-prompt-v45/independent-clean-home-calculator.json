@@ -1,0 +1,81 @@
+{
+  "pass": true,
+  "external_model_calls": 0,
+  "isolated_home_had_bun": false,
+  "controller_binary": "/home/doanlong/.bun/bin/bun",
+  "binary_sha256": "33d56b070be6a9e3da0ab013038b43d1645d0534ca811ecdba4472599117eb4b",
+  "exit": 0,
+  "result": {
+    "derived_result": {
+      "alignment_verification": {
+        "entity": "verified",
+        "period": "verified",
+        "scope": "unverified_missing_all"
+      },
+      "expression": "quote*2",
+      "value": 24000,
+      "value_decimal": "24000",
+      "unit": "\u0111\u1ed3ng/c\u1ed5 phi\u1ebfu",
+      "inputs": [
+        {
+          "name": "quote",
+          "call_id": "local-source",
+          "path": "/data/last",
+          "value": 12.0,
+          "value_decimal": "12",
+          "unit": "ngh\u00ecn \u0111\u1ed3ng/c\u1ed5 phi\u1ebfu",
+          "entity": "SYN",
+          "period": "2030-03-31",
+          "metric": "last",
+          "source_response_sha256": "synthetic-r",
+          "source_payload_sha256": "synthetic-p",
+          "receipt": {
+            "call_id": "local-source",
+            "response_sha256": "synthetic-r",
+            "payload_sha256": "synthetic-p"
+          }
+        }
+      ],
+      "expression_inputs": [
+        {
+          "name": "quote",
+          "call_id": "local-source",
+          "path": "/data/last",
+          "value": 12.0,
+          "value_decimal": "12",
+          "unit": "ngh\u00ecn \u0111\u1ed3ng/c\u1ed5 phi\u1ebfu",
+          "entity": "SYN",
+          "period": "2030-03-31",
+          "metric": "last",
+          "source_response_sha256": "synthetic-r",
+          "source_payload_sha256": "synthetic-p",
+          "receipt": {
+            "call_id": "local-source",
+            "response_sha256": "synthetic-r",
+            "payload_sha256": "synthetic-p"
+          }
+        }
+      ],
+      "source_scopes": [
+        {
+          "entity": "SYN",
+          "period": "2030-03-31",
+          "scope": null,
+          "metric": "last"
+        }
+      ],
+      "engine": "shared-native-calculate-v45"
+    },
+    "source_evidence": [
+      {
+        "call_id": "local-source",
+        "response_sha256": "synthetic-r",
+        "payload_sha256": "synthetic-p"
+      }
+    ],
+    "availability": "derived_from_retrieved_sources",
+    "note": "Derived calculation, not upstream evidence. Cite original source_evidence; derived_ref supports calculation chaining only."
+  },
+  "stderr": "",
+  "scope": "Actual fresh Python process with clean HOME and controller-owned pinned Bun environment; not a four-arm native wire certificate."
+}

@@ -1,0 +1,2588 @@
+{
+  "manifest": {
+    "version": "v45-synthetic-canary-1",
+    "models": [
+      "deepseek-ai/deepseek-v4.1-flash",
+      "nvidia/nemotron-3.5-super-vl-120b-a12b"
+    ],
+    "treatments": {
+      "prefix": "^/data(?:/|$)",
+      "anchored": "^/data/(?:[^~/]|~[01])+(?:/(?:[^~/]|~[01])+)*$",
+      "none": null
+    },
+    "repeats": 2,
+    "cases": 12,
+    "max_chat_requests": 24,
+    "max_catalog_requests": 1,
+    "max_tokens_per_request": 4096,
+    "request_timeout_seconds": 240,
+    "total_deadline_seconds": 7200,
+    "retries": 0,
+    "synthetic_object": {
+      "data": {
+        "point": 17
+      }
+    },
+    "expected_selector": "/data/point",
+    "sampling": {
+      "deepseek-ai/deepseek-v4.1-flash": {
+        "temperature": 0,
+        "top_p": 1
+      },
+      "nvidia/nemotron-3.5-super-vl-120b-a12b": {
+        "temperature": 1,
+        "top_p": 0.95
+      }
+    },
+    "acceptance": "Admission requires both corrected-pattern and no-pattern repeats: expected model identity, valid function selector /data/point, continuation uses synthetic17, complete usage; pattern treatments reported regardless outcome."
+  },
+  "manifest_sha256": "13c5c5982f75bdce5f9f6cc9194d3fe9fb1a3db1a65213263588d56bc3944567",
+  "catalog": {
+    "status": 200,
+    "raw_response": "{\"object\":\"list\",\"data\":[{\"id\":\"01-ai/yi-large\",\"object\":\"model\",\"created\":735790403,\"owned_by\":\"01-ai\"},{\"id\":\"adept/fuyu-8b\",\"object\":\"model\",\"created\":735790403,\"owned_by\":\"adept\"},{\"id\":\"ai21labs/jamba-1.5-large-instruct\",\"object\":\"model\",\"created\":735790403,\"owned_by\":\"ai21labs\"},{\"id\":\"aisingapore/sea-lion-7b-instruct\",\"object\":\"model\",\"created\":735790403,\"owned_by\":\"aisingapore\"},{\"id\":\"bigcode/starcoder2-15b\",\"object\":\"model\",\"created\":735790403,\"owned_by\":\"bigcode\"},{\"id\":\"databricks/dbrx-instruct\",\"object\":\"model\",\"created\":735790403,\"owned_by\":\"databricks\"},{\"id\":\"deepseek-ai/deepseek-coder-6.7b-instruct\",\"object\":\"model\",\"created\":735790403,\"owned_by\":\"deepseek-ai\"},{\"id\":\"deepseek-ai/deepseek-v4.1-flash\",\"object\":\"model\",\"created\":735790403,\"owned_by\":\"deepseek-ai\"},{\"id\":\"google/codegemma-1.1-7b\",\"object\":\"model\",\"created\":735790403,\"owned_by\":\"google\"},{\"id\":\"google/codegemma-7b\",\"object\":\"model\",\"created\":735790403,\"owned_by\":\"google\"},{\"id\":\"google/deplot\",\"object\":\"model\",\"created\":735790403,\"owned_by\":\"google\"},{\"id\":\"google/diffusiongemma-26b-a4b-it\",\"object\":\"model\",\"created\":735790403,\"owned_by\":\"google\"},{\"id\":\"google/gemma-2b\",\"object\":\"model\",\"created\":735790403,\"owned_by\":\"google\"},{\"id\":\"google/gemma-3-12b-it\",\"object\":\"model\",\"created\":735790403,\"owned_by\":\"google\"},{\"id\":\"google/gemma-3-4b-it\",\"object\":\"model\",\"created\":735790403,\"owned_by\":\"google\"},{\"id\":\"google/gemma-4-31b-it\",\"object\":\"model\",\"created\":735790403,\"owned_by\":\"google\"},{\"id\":\"google/recurrentgemma-2b\",\"object\":\"model\",\"created\":735790403,\"owned_by\":\"google\"},{\"id\":\"ibm/granite-3.0-3b-a800m-instruct\",\"object\":\"model\",\"created\":735790403,\"owned_by\":\"ibm\"},{\"id\":\"ibm/granite-3.0-8b-instruct\",\"object\":\"model\",\"created\":735790403,\"owned_by\":\"ibm\"},{\"id\":\"ibm/granite-34b-code-instruct\",\"object\":\"model\",\"created\":735790403,\"owned_by\":\"ibm\"},{\"id\":\"ibm/granite-8b-code-instruct\",\"object\":\"model\",\"created\":735790403,\"owned_by\":\"ibm\"},{\"id\":\"meta/codellama-70b\",\"object\":\"model\",\"created\":735790403,\"owned_by\":\"meta\"},{\"id\":\"meta/llama-3.2-90b-vision-instruct\",\"object\":\"model\",\"created\":735790403,\"owned_by\":\"meta\"},{\"id\":\"meta/llama-guard-4-12b\",\"object\":\"model\",\"created\":735790403,\"owned_by\":\"meta\"},{\"id\":\"meta/llama2-70b\",\"object\":\"model\",\"created\":735790403,\"owned_by\":\"meta\"},{\"id\":\"meta/muse-glimmer-30b\",\"object\":\"model\",\"created\":735790403,\"owned_by\":\"meta\"},{\"id\":\"microsoft/kosmos-2\",\"object\":\"model\",\"created\":735790403,\"owned_by\":\"microsoft\"},{\"id\":\"microsoft/phi-3-vision-128k-instruct\",\"object\":\"model\",\"created\":735790403,\"owned_by\":\"microsoft\"},{\"id\":\"microsoft/phi-3.5-moe-instruct\",\"object\":\"model\",\"created\":735790403,\"owned_by\":\"microsoft\"},{\"id\":\"minimaxai/minimax-m3.1-flash\",\"object\":\"model\",\"created\":735790403,\"owned_by\":\"minimaxai\"},{\"id\":\"mistralai/codestral-22b-instruct-v0.1\",\"object\":\"model\",\"created\":735790403,\"owned_by\":\"mistralai\"},{\"id\":\"mistralai/mistral-7b-instruct-v0.3\",\"object\":\"model\",\"created\":735790403,\"owned_by\":\"mistralai\"},{\"id\":\"mistralai/mistral-large\",\"object\":\"model\",\"created\":735790403,\"owned_by\":\"mistralai\"},{\"id\":\"mistralai/mistral-large-2-instruct\",\"object\":\"model\",\"created\":735790403,\"owned_by\":\"mistralai\"},{\"id\":\"mistralai/mistral-large-4-1t-a52b\",\"object\":\"model\",\"created\":735790403,\"owned_by\":\"mistralai\"},{\"id\":\"mistralai/mixtral-8x22b-v0.1\",\"object\":\"model\",\"created\":735790403,\"owned_by\":\"mistralai\"},{\"id\":\"moonshotai/kimi-k2.6\",\"object\":\"model\",\"created\":735790403,\"owned_by\":\"moonshotai\"},{\"id\":\"nv-mistralai/mistral-nemo-12b-instruct\",\"object\":\"model\",\"created\":735790403,\"owned_by\":\"nv-mistralai\"},{\"id\":\"nvidia/ai-synthetic-video-detector\",\"object\":\"model\",\"created\":735790403,\"owned_by\":\"nvidia\"},{\"id\":\"nvidia/cosmos-reason2-8b\",\"object\":\"model\",\"created\":735790403,\"owned_by\":\"nvidia\"},{\"id\":\"nvidia/embed-qa-4\",\"object\":\"model\",\"created\":735790403,\"owned_by\":\"nvidia\"},{\"id\":\"nvidia/ising-calibration-1.5-31b\",\"object\":\"model\",\"created\":735790403,\"owned_by\":\"nvidia\"},{\"id\":\"nvidia/llama-3.1-nemoguard-8b-content-safety\",\"object\":\"model\",\"created\":735790403,\"owned_by\":\"nvidia\"},{\"id\":\"nvidia/llama-3.1-nemoguard-8b-topic-control\",\"object\":\"model\",\"created\":735790403,\"owned_by\":\"nvidia\"},{\"id\":\"nvidia/llama-3.1-nemotron-51b-instruct\",\"object\":\"model\",\"created\":735790403,\"owned_by\":\"nvidia\"},{\"id\":\"nvidia/llama-3.1-nemotron-70b-instruct\",\"object\":\"model\",\"created\":735790403,\"owned_by\":\"nvidia\"},{\"id\":\"nvidia/llama-3.1-nemotron-safety-guard-8b-v3\",\"object\":\"model\",\"created\":735790403,\"owned_by\":\"nvidia\"},{\"id\":\"nvidia/llama-3.1-nemotron-ultra-253b-v1\",\"object\":\"model\",\"created\":735790403,\"owned_by\":\"nvidia\"},{\"id\":\"nvidia/llama-3.2-nemoretriever-1b-vlm-embed-v1\",\"object\":\"model\",\"created\":735790403,\"owned_by\":\"nvidia\"},{\"id\":\"nvidia/llama-3.2-nv-embedqa-1b-v1\",\"object\":\"model\",\"created\":735790403,\"owned_by\":\"nvidia\"},{\"id\":\"nvidia/llama-nemotron-embed-vl-1b-v2\",\"object\":\"model\",\"created\":735790403,\"owned_by\":\"nvidia\"},{\"id\":\"nvidia/llama3-chatqa-1.5-70b\",\"object\":\"model\",\"created\":735790403,\"owned_by\":\"nvidia\"},{\"id\":\"nvidia/mistral-nemo-minitron-8b-8k-instruct\",\"object\":\"model\",\"created\":735790403,\"owned_by\":\"nvidia\"},{\"id\":\"nvidia/nemotron-3-embed-1b\",\"object\":\"model\",\"created\":735790403,\"owned_by\":\"nvidia\"},{\"id\":\"nvidia/nemotron-3-nano-omni-30b-a3b-reasoning\",\"object\":\"model\",\"created\":735790403,\"owned_by\":\"nvidia\"},{\"id\":\"nvidia/nemotron-3-super-120b-a12b\",\"object\":\"model\",\"created\":735790403,\"owned_by\":\"nvidia\"},{\"id\":\"nvidia/nemotron-3-ultra-550b-a55b\",\"object\":\"model\",\"created\":735790403,\"owned_by\":\"nvidia\"},{\"id\":\"nvidia/nemotron-3.5-bolt-e4b\",\"object\":\"model\",\"created\":735790403,\"owned_by\":\"nvidia\"},{\"id\":\"nvidia/nemotron-3.5-content-safety\",\"object\":\"model\",\"created\":735790403,\"owned_by\":\"nvidia\"},{\"id\":\"nvidia/nemotron-3.5-embed-1b\",\"object\":\"model\",\"created\":735790403,\"owned_by\":\"nvidia\"},{\"id\":\"nvidia/nemotron-3.5-embed-8b\",\"object\":\"model\",\"created\":735790403,\"owned_by\":\"nvidia\"},{\"id\":\"nvidia/nemotron-3.5-lightning-30b-a3b\",\"object\":\"model\",\"created\":735790403,\"owned_by\":\"nvidia\"},{\"id\":\"nvidia/nemotron-3.5-super-vl-120b-a12b\",\"object\":\"model\",\"created\":735790403,\"owned_by\":\"nvidia\"},{\"id\":\"nvidia/nemotron-4-340b-instruct\",\"object\":\"model\",\"created\":735790403,\"owned_by\":\"nvidia\"},{\"id\":\"nvidia/nemotron-4-340b-reward\",\"object\":\"model\",\"created\":735790403,\"owned_by\":\"nvidia\"},{\"id\":\"nvidia/nemotron-nano-3-30b-a3b\",\"object\":\"model\",\"created\":735790403,\"owned_by\":\"nvidia\"},{\"id\":\"nvidia/nemotron-parse\",\"object\":\"model\",\"created\":735790403,\"owned_by\":\"nvidia\"},{\"id\":\"nvidia/nemotron-parse-2.0\",\"object\":\"model\",\"created\":735790403,\"owned_by\":\"nvidia\"},{\"id\":\"nvidia/neva-22b\",\"object\":\"model\",\"created\":735790403,\"owned_by\":\"nvidia\"},{\"id\":\"nvidia/nv-embedqa-mistral-7b-v2\",\"object\":\"model\",\"created\":735790403,\"owned_by\":\"nvidia\"},{\"id\":\"nvidia/nvclip\",\"object\":\"model\",\"created\":735790403,\"owned_by\":\"nvidia\"},{\"id\":\"nvidia/riva-translate-4b-instruct\",\"object\":\"model\",\"created\":735790403,\"owned_by\":\"nvidia\"},{\"id\":\"nvidia/riva-translate-4b-instruct-v2\",\"object\":\"model\",\"created\":735790403,\"owned_by\":\"nvidia\"},{\"id\":\"nvidia/vila\",\"object\":\"model\",\"created\":735790403,\"owned_by\":\"nvidia\"},{\"id\":\"openai/gpt-oss-20b\",\"object\":\"model\",\"created\":735790403,\"owned_by\":\"openai\"},{\"id\":\"poolside/laguna-xs-2.1\",\"object\":\"model\",\"created\":735790403,\"owned_by\":\"poolside\"},{\"id\":\"snowflake/arctic-embed-l\",\"object\":\"model\",\"created\":735790403,\"owned_by\":\"snowflake\"},{\"id\":\"stepfun-ai/step-5-preview\",\"object\":\"model\",\"created\":735790403,\"owned_by\":\"stepfun-ai\"},{\"id\":\"writer/palmyra-creative-122b\",\"object\":\"model\",\"created\":735790403,\"owned_by\":\"writer\"},{\"id\":\"writer/palmyra-fin-70b-32k\",\"object\":\"model\",\"created\":735790403,\"owned_by\":\"writer\"},{\"id\":\"writer/palmyra-med-70b\",\"object\":\"model\",\"created\":735790403,\"owned_by\":\"writer\"},{\"id\":\"writer/palmyra-med-70b-32k\",\"object\":\"model\",\"created\":735790403,\"owned_by\":\"writer\"},{\"id\":\"z-ai/glm-5.3-flash\",\"object\":\"model\",\"created\":735790403,\"owned_by\":\"z-ai\"},{\"id\":\"zyphra/zamba2-7b-instruct\",\"object\":\"model\",\"created\":735790403,\"owned_by\":\"zyphra\"}]}\n",
+    "response_sha256": "e518666c4e2f29acc4d44400aa19868158800c1d2406f9f2a96d301fd90bd1eb",
+    "response_model": null,
+    "usage": null,
+    "finish_reasons": [],
+    "duration_s": 5.40950870513916
+  },
+  "cases": [
+    {
+      "model": "deepseek-ai/deepseek-v4.1-flash",
+      "treatment": "prefix",
+      "repeat": 0,
+      "request": {
+        "model": "deepseek-ai/deepseek-v4.1-flash",
+        "messages": [
+          {
+            "role": "user",
+            "content": "Object: {\"data\":{\"point\":17}}. Call select_numeric with exact JSON pointer of point. Do not select parent object."
+          }
+        ],
+        "tools": [
+          {
+            "type": "function",
+            "function": {
+              "name": "select_numeric",
+              "description": "Select exact JSON pointer of numeric point already supplied. No lookup.",
+              "parameters": {
+                "type": "object",
+                "properties": {
+                  "path": {
+                    "type": "string",
+                    "pattern": "^/data(?:/|$)"
+                  }
+                },
+                "required": [
+                  "path"
+                ],
+                "additionalProperties": false
+              }
+            }
+          }
+        ],
+        "tool_choice": "auto",
+        "max_tokens": 4096,
+        "temperature": 0,
+        "top_p": 1
+      },
+      "state": "completed",
+      "first": {
+        "status": 200,
+        "raw_response": "{\"id\":\"9e83e887e89adf9e\",\"choices\":[{\"index\":0,\"message\":{\"content\":null,\"refusal\":null,\"tool_calls\":[{\"id\":\"chatcmpl-tool-93ff70f06063823b\",\"type\":\"function\",\"function\":{\"name\":\"select_numeric\",\"arguments\":\"{\\\"path\\\": \\\"/data/\\\"}\"}}],\"role\":\"assistant\",\"reasoning_content\":\"The user wants me to select the numeric point at /data/point.\"},\"finish_reason\":\"tool_calls\",\"logprobs\":null}],\"created\":1794079407,\"model\":\"deepseek-ai/deepseek-v4.1-flash\",\"object\":\"chat.completion\",\"usage\":{\"prompt_tokens\":338,\"completion_tokens\":57,\"total_tokens\":395,\"prompt_tokens_details\":{\"cached_tokens\":192},\"completion_tokens_details\":{\"reasoning_tokens\":15}}}",
+        "response_sha256": "3a1387a0caa0e0ff920732f3bd122c65a3961aaeaa3f22fcb8b0aaf1c9ca1f43",
+        "response_model": "deepseek-ai/deepseek-v4.1-flash",
+        "usage": {
+          "prompt_tokens": 338,
+          "completion_tokens": 57,
+          "total_tokens": 395,
+          "prompt_tokens_details": {
+            "cached_tokens": 192
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 15
+          }
+        },
+        "finish_reasons": [
+          "tool_calls"
+        ],
+        "duration_s": 3.4305975437164307
+      },
+      "function_call_verified": false,
+      "continuation_request": {
+        "model": "deepseek-ai/deepseek-v4.1-flash",
+        "messages": [
+          {
+            "role": "user",
+            "content": "Object: {\"data\":{\"point\":17}}. Call select_numeric with exact JSON pointer of point. Do not select parent object."
+          },
+          {
+            "content": null,
+            "refusal": null,
+            "tool_calls": [
+              {
+                "id": "chatcmpl-tool-93ff70f06063823b",
+                "type": "function",
+                "function": {
+                  "name": "select_numeric",
+                  "arguments": "{\"path\": \"/data/\"}"
+                }
+              }
+            ],
+            "role": "assistant",
+            "reasoning_content": "The user wants me to select the numeric point at /data/point."
+          },
+          {
+            "role": "tool",
+            "tool_call_id": "chatcmpl-tool-93ff70f06063823b",
+            "content": "{\"error\": \"invalid_selector\", \"expected_numeric_leaf\": \"/data/point\"}"
+          },
+          {
+            "role": "user",
+            "content": "Return only JSON {\"value\":17} from tool result, or {\"error\":\"invalid_selector\"} when rejected."
+          }
+        ],
+        "tools": [
+          {
+            "type": "function",
+            "function": {
+              "name": "select_numeric",
+              "description": "Select exact JSON pointer of numeric point already supplied. No lookup.",
+              "parameters": {
+                "type": "object",
+                "properties": {
+                  "path": {
+                    "type": "string",
+                    "pattern": "^/data(?:/|$)"
+                  }
+                },
+                "required": [
+                  "path"
+                ],
+                "additionalProperties": false
+              }
+            }
+          }
+        ],
+        "tool_choice": "auto",
+        "max_tokens": 4096,
+        "temperature": 0,
+        "top_p": 1
+      },
+      "tool_loop": {
+        "status": 200,
+        "raw_response": "{\"id\":\"9d41777d02845267\",\"choices\":[{\"index\":0,\"message\":{\"content\":\"{\\\"error\\\":\\\"invalid_selector\\\"}\",\"refusal\":null,\"role\":\"assistant\",\"reasoning_content\":\"The tool call was rejected with invalid_selector. So return {\\\"error\\\":\\\"invalid_selector\\\"}.\"},\"finish_reason\":\"stop\",\"logprobs\":null}],\"created\":1794079410,\"model\":\"deepseek-ai/deepseek-v4.1-flash\",\"object\":\"chat.completion\",\"usage\":{\"prompt_tokens\":449,\"completion_tokens\":29,\"total_tokens\":478,\"prompt_tokens_details\":{\"cached_tokens\":192},\"completion_tokens_details\":{\"reasoning_tokens\":20}}}",
+        "response_sha256": "ae754b61ab18fbfd7bc130eeb800d5aa9d24f09f2a5b2fea1cf42bb663ceeca6",
+        "response_model": "deepseek-ai/deepseek-v4.1-flash",
+        "usage": {
+          "prompt_tokens": 449,
+          "completion_tokens": 29,
+          "total_tokens": 478,
+          "prompt_tokens_details": {
+            "cached_tokens": 192
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 20
+          }
+        },
+        "finish_reasons": [
+          "stop"
+        ],
+        "duration_s": 2.4906342029571533,
+        "request": {
+          "model": "deepseek-ai/deepseek-v4.1-flash",
+          "messages": [
+            {
+              "role": "user",
+              "content": "Object: {\"data\":{\"point\":17}}. Call select_numeric with exact JSON pointer of point. Do not select parent object."
+            },
+            {
+              "content": null,
+              "refusal": null,
+              "tool_calls": [
+                {
+                  "id": "chatcmpl-tool-93ff70f06063823b",
+                  "type": "function",
+                  "function": {
+                    "name": "select_numeric",
+                    "arguments": "{\"path\": \"/data/\"}"
+                  }
+                }
+              ],
+              "role": "assistant",
+              "reasoning_content": "The user wants me to select the numeric point at /data/point."
+            },
+            {
+              "role": "tool",
+              "tool_call_id": "chatcmpl-tool-93ff70f06063823b",
+              "content": "{\"error\": \"invalid_selector\", \"expected_numeric_leaf\": \"/data/point\"}"
+            },
+            {
+              "role": "user",
+              "content": "Return only JSON {\"value\":17} from tool result, or {\"error\":\"invalid_selector\"} when rejected."
+            }
+          ],
+          "tools": [
+            {
+              "type": "function",
+              "function": {
+                "name": "select_numeric",
+                "description": "Select exact JSON pointer of numeric point already supplied. No lookup.",
+                "parameters": {
+                  "type": "object",
+                  "properties": {
+                    "path": {
+                      "type": "string",
+                      "pattern": "^/data(?:/|$)"
+                    }
+                  },
+                  "required": [
+                    "path"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          ],
+          "tool_choice": "auto",
+          "max_tokens": 4096,
+          "temperature": 0,
+          "top_p": 1
+        },
+        "message": {
+          "content": "{\"error\":\"invalid_selector\"}",
+          "refusal": null,
+          "role": "assistant",
+          "reasoning_content": "The tool call was rejected with invalid_selector. So return {\"error\":\"invalid_selector\"}."
+        }
+      }
+    },
+    {
+      "model": "deepseek-ai/deepseek-v4.1-flash",
+      "treatment": "prefix",
+      "repeat": 1,
+      "request": {
+        "model": "deepseek-ai/deepseek-v4.1-flash",
+        "messages": [
+          {
+            "role": "user",
+            "content": "Object: {\"data\":{\"point\":17}}. Call select_numeric with exact JSON pointer of point. Do not select parent object."
+          }
+        ],
+        "tools": [
+          {
+            "type": "function",
+            "function": {
+              "name": "select_numeric",
+              "description": "Select exact JSON pointer of numeric point already supplied. No lookup.",
+              "parameters": {
+                "type": "object",
+                "properties": {
+                  "path": {
+                    "type": "string",
+                    "pattern": "^/data(?:/|$)"
+                  }
+                },
+                "required": [
+                  "path"
+                ],
+                "additionalProperties": false
+              }
+            }
+          }
+        ],
+        "tool_choice": "auto",
+        "max_tokens": 4096,
+        "temperature": 0,
+        "top_p": 1
+      },
+      "state": "completed",
+      "first": {
+        "status": 200,
+        "raw_response": "{\"id\":\"b0737d823941983e\",\"choices\":[{\"index\":0,\"message\":{\"content\":null,\"refusal\":null,\"tool_calls\":[{\"id\":\"chatcmpl-tool-ac9d6573a1be0fbe\",\"type\":\"function\",\"function\":{\"name\":\"select_numeric\",\"arguments\":\"{\\\"path\\\": \\\"/data/\\\"}\"}}],\"role\":\"assistant\",\"reasoning_content\":\"The user wants me to select the numeric point at /data/point.\"},\"finish_reason\":\"tool_calls\",\"logprobs\":null}],\"created\":1794079421,\"model\":\"deepseek-ai/deepseek-v4.1-flash\",\"object\":\"chat.completion\",\"usage\":{\"prompt_tokens\":338,\"completion_tokens\":57,\"total_tokens\":395,\"prompt_tokens_details\":{\"cached_tokens\":320},\"completion_tokens_details\":{\"reasoning_tokens\":15}}}",
+        "response_sha256": "d5cebe04e4f76cc24df9a12e23e0f13c80c4fde5f17ac2813d7dcdb40fde996a",
+        "response_model": "deepseek-ai/deepseek-v4.1-flash",
+        "usage": {
+          "prompt_tokens": 338,
+          "completion_tokens": 57,
+          "total_tokens": 395,
+          "prompt_tokens_details": {
+            "cached_tokens": 320
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 15
+          }
+        },
+        "finish_reasons": [
+          "tool_calls"
+        ],
+        "duration_s": 10.815654993057251
+      },
+      "function_call_verified": false,
+      "continuation_request": {
+        "model": "deepseek-ai/deepseek-v4.1-flash",
+        "messages": [
+          {
+            "role": "user",
+            "content": "Object: {\"data\":{\"point\":17}}. Call select_numeric with exact JSON pointer of point. Do not select parent object."
+          },
+          {
+            "content": null,
+            "refusal": null,
+            "tool_calls": [
+              {
+                "id": "chatcmpl-tool-ac9d6573a1be0fbe",
+                "type": "function",
+                "function": {
+                  "name": "select_numeric",
+                  "arguments": "{\"path\": \"/data/\"}"
+                }
+              }
+            ],
+            "role": "assistant",
+            "reasoning_content": "The user wants me to select the numeric point at /data/point."
+          },
+          {
+            "role": "tool",
+            "tool_call_id": "chatcmpl-tool-ac9d6573a1be0fbe",
+            "content": "{\"error\": \"invalid_selector\", \"expected_numeric_leaf\": \"/data/point\"}"
+          },
+          {
+            "role": "user",
+            "content": "Return only JSON {\"value\":17} from tool result, or {\"error\":\"invalid_selector\"} when rejected."
+          }
+        ],
+        "tools": [
+          {
+            "type": "function",
+            "function": {
+              "name": "select_numeric",
+              "description": "Select exact JSON pointer of numeric point already supplied. No lookup.",
+              "parameters": {
+                "type": "object",
+                "properties": {
+                  "path": {
+                    "type": "string",
+                    "pattern": "^/data(?:/|$)"
+                  }
+                },
+                "required": [
+                  "path"
+                ],
+                "additionalProperties": false
+              }
+            }
+          }
+        ],
+        "tool_choice": "auto",
+        "max_tokens": 4096,
+        "temperature": 0,
+        "top_p": 1
+      },
+      "tool_loop": {
+        "status": 200,
+        "raw_response": "{\"id\":\"a095c9146d76ca1e\",\"choices\":[{\"index\":0,\"message\":{\"content\":\"{\\\"error\\\":\\\"invalid_selector\\\"}\",\"refusal\":null,\"role\":\"assistant\",\"reasoning_content\":\"The tool rejected my call. The correct pointer is /data/point. But the instruction says return only JSON {\\\"value\\\":17} from tool result, or {\\\"error\\\":\\\"invalid_selector\\\"} when rejected. The tool result was an error, so return {\\\"error\\\":\\\"invalid_selector\\\"}.\\n\\nWait, but should I retry with the correct pointer? The user says \\\"Return only JSON {\\\"value\\\":17} from tool result, or {\\\"error\\\":\\\"invalid_selector\\\"} when rejected.\\\" The tool result was rejected. So return the error.\\n\\nHmm, but maybe I should call correctly. The task: \\\"Call select_numeric with exact JSON pointer of point.\\\" I made a mistake. But the final instruction says return based on tool result. The tool result was an error. So output {\\\"error\\\":\\\"invalid_selector\\\"}.\\n\\nActually, let me reconsider \u2014 should I retry? The instruction is explicit: return only JSON from tool result, or error when rejected. The result was rejected. So output the error.\"},\"finish_reason\":\"stop\",\"logprobs\":null}],\"created\":1794079426,\"model\":\"deepseek-ai/deepseek-v4.1-flash\",\"object\":\"chat.completion\",\"usage\":{\"prompt_tokens\":449,\"completion_tokens\":214,\"total_tokens\":663,\"prompt_tokens_details\":{\"cached_tokens\":448},\"completion_tokens_details\":{\"reasoning_tokens\":205}}}",
+        "response_sha256": "39faea0ad824df05851c1ce7940048ce7e1ea14b4ca666a9a910714be533281b",
+        "response_model": "deepseek-ai/deepseek-v4.1-flash",
+        "usage": {
+          "prompt_tokens": 449,
+          "completion_tokens": 214,
+          "total_tokens": 663,
+          "prompt_tokens_details": {
+            "cached_tokens": 448
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 205
+          }
+        },
+        "finish_reasons": [
+          "stop"
+        ],
+        "duration_s": 6.795893907546997,
+        "request": {
+          "model": "deepseek-ai/deepseek-v4.1-flash",
+          "messages": [
+            {
+              "role": "user",
+              "content": "Object: {\"data\":{\"point\":17}}. Call select_numeric with exact JSON pointer of point. Do not select parent object."
+            },
+            {
+              "content": null,
+              "refusal": null,
+              "tool_calls": [
+                {
+                  "id": "chatcmpl-tool-ac9d6573a1be0fbe",
+                  "type": "function",
+                  "function": {
+                    "name": "select_numeric",
+                    "arguments": "{\"path\": \"/data/\"}"
+                  }
+                }
+              ],
+              "role": "assistant",
+              "reasoning_content": "The user wants me to select the numeric point at /data/point."
+            },
+            {
+              "role": "tool",
+              "tool_call_id": "chatcmpl-tool-ac9d6573a1be0fbe",
+              "content": "{\"error\": \"invalid_selector\", \"expected_numeric_leaf\": \"/data/point\"}"
+            },
+            {
+              "role": "user",
+              "content": "Return only JSON {\"value\":17} from tool result, or {\"error\":\"invalid_selector\"} when rejected."
+            }
+          ],
+          "tools": [
+            {
+              "type": "function",
+              "function": {
+                "name": "select_numeric",
+                "description": "Select exact JSON pointer of numeric point already supplied. No lookup.",
+                "parameters": {
+                  "type": "object",
+                  "properties": {
+                    "path": {
+                      "type": "string",
+                      "pattern": "^/data(?:/|$)"
+                    }
+                  },
+                  "required": [
+                    "path"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          ],
+          "tool_choice": "auto",
+          "max_tokens": 4096,
+          "temperature": 0,
+          "top_p": 1
+        },
+        "message": {
+          "content": "{\"error\":\"invalid_selector\"}",
+          "refusal": null,
+          "role": "assistant",
+          "reasoning_content": "The tool rejected my call. The correct pointer is /data/point. But the instruction says return only JSON {\"value\":17} from tool result, or {\"error\":\"invalid_selector\"} when rejected. The tool result was an error, so return {\"error\":\"invalid_selector\"}.\n\nWait, but should I retry with the correct pointer? The user says \"Return only JSON {\"value\":17} from tool result, or {\"error\":\"invalid_selector\"} when rejected.\" The tool result was rejected. So return the error.\n\nHmm, but maybe I should call correctly. The task: \"Call select_numeric with exact JSON pointer of point.\" I made a mistake. But the final instruction says return based on tool result. The tool result was an error. So output {\"error\":\"invalid_selector\"}.\n\nActually, let me reconsider \u2014 should I retry? The instruction is explicit: return only JSON from tool result, or error when rejected. The result was rejected. So output the error."
+        }
+      }
+    },
+    {
+      "model": "deepseek-ai/deepseek-v4.1-flash",
+      "treatment": "anchored",
+      "repeat": 0,
+      "request": {
+        "model": "deepseek-ai/deepseek-v4.1-flash",
+        "messages": [
+          {
+            "role": "user",
+            "content": "Object: {\"data\":{\"point\":17}}. Call select_numeric with exact JSON pointer of point. Do not select parent object."
+          }
+        ],
+        "tools": [
+          {
+            "type": "function",
+            "function": {
+              "name": "select_numeric",
+              "description": "Select exact JSON pointer of numeric point already supplied. No lookup.",
+              "parameters": {
+                "type": "object",
+                "properties": {
+                  "path": {
+                    "type": "string",
+                    "pattern": "^/data/(?:[^~/]|~[01])+(?:/(?:[^~/]|~[01])+)*$"
+                  }
+                },
+                "required": [
+                  "path"
+                ],
+                "additionalProperties": false
+              }
+            }
+          }
+        ],
+        "tool_choice": "auto",
+        "max_tokens": 4096,
+        "temperature": 0,
+        "top_p": 1
+      },
+      "state": "completed",
+      "first": {
+        "status": 200,
+        "raw_response": "{\"id\":\"a2ab86b37e613184\",\"choices\":[{\"index\":0,\"message\":{\"content\":null,\"refusal\":null,\"tool_calls\":[{\"id\":\"chatcmpl-tool-9ad10c9481e1bb0a\",\"type\":\"function\",\"function\":{\"name\":\"select_numeric\",\"arguments\":\"{\\\"path\\\": \\\"/data/point\\\"}\"}}],\"role\":\"assistant\",\"reasoning_content\":\"The user wants me to select the numeric point at /data/point.\"},\"finish_reason\":\"tool_calls\",\"logprobs\":null}],\"created\":1794079435,\"model\":\"deepseek-ai/deepseek-v4.1-flash\",\"object\":\"chat.completion\",\"usage\":{\"prompt_tokens\":360,\"completion_tokens\":58,\"total_tokens\":418,\"prompt_tokens_details\":{\"cached_tokens\":256},\"completion_tokens_details\":{\"reasoning_tokens\":15}}}",
+        "response_sha256": "b5fd95102e3120e3df00caa0325f3abab2d1f0982380189770a859de58eb38f5",
+        "response_model": "deepseek-ai/deepseek-v4.1-flash",
+        "usage": {
+          "prompt_tokens": 360,
+          "completion_tokens": 58,
+          "total_tokens": 418,
+          "prompt_tokens_details": {
+            "cached_tokens": 256
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 15
+          }
+        },
+        "finish_reasons": [
+          "tool_calls"
+        ],
+        "duration_s": 8.052625894546509
+      },
+      "function_call_verified": true,
+      "continuation_request": {
+        "model": "deepseek-ai/deepseek-v4.1-flash",
+        "messages": [
+          {
+            "role": "user",
+            "content": "Object: {\"data\":{\"point\":17}}. Call select_numeric with exact JSON pointer of point. Do not select parent object."
+          },
+          {
+            "content": null,
+            "refusal": null,
+            "tool_calls": [
+              {
+                "id": "chatcmpl-tool-9ad10c9481e1bb0a",
+                "type": "function",
+                "function": {
+                  "name": "select_numeric",
+                  "arguments": "{\"path\": \"/data/point\"}"
+                }
+              }
+            ],
+            "role": "assistant",
+            "reasoning_content": "The user wants me to select the numeric point at /data/point."
+          },
+          {
+            "role": "tool",
+            "tool_call_id": "chatcmpl-tool-9ad10c9481e1bb0a",
+            "content": "{\"value\": 17}"
+          },
+          {
+            "role": "user",
+            "content": "Return only JSON {\"value\":17} from tool result, or {\"error\":\"invalid_selector\"} when rejected."
+          }
+        ],
+        "tools": [
+          {
+            "type": "function",
+            "function": {
+              "name": "select_numeric",
+              "description": "Select exact JSON pointer of numeric point already supplied. No lookup.",
+              "parameters": {
+                "type": "object",
+                "properties": {
+                  "path": {
+                    "type": "string",
+                    "pattern": "^/data/(?:[^~/]|~[01])+(?:/(?:[^~/]|~[01])+)*$"
+                  }
+                },
+                "required": [
+                  "path"
+                ],
+                "additionalProperties": false
+              }
+            }
+          }
+        ],
+        "tool_choice": "auto",
+        "max_tokens": 4096,
+        "temperature": 0,
+        "top_p": 1
+      },
+      "tool_loop": {
+        "status": 200,
+        "raw_response": "{\"id\":\"a1ee101f20144d3b\",\"choices\":[{\"index\":0,\"message\":{\"content\":\"{\\\"value\\\":17}\",\"refusal\":null,\"role\":\"assistant\"},\"finish_reason\":\"stop\",\"logprobs\":null}],\"created\":1794079436,\"model\":\"deepseek-ai/deepseek-v4.1-flash\",\"object\":\"chat.completion\",\"usage\":{\"prompt_tokens\":457,\"completion_tokens\":7,\"total_tokens\":464,\"prompt_tokens_details\":{\"cached_tokens\":384},\"completion_tokens_details\":{\"reasoning_tokens\":0}}}",
+        "response_sha256": "70d19df939dbbcdb130bf34559a3f03ffd69df9c35f6cdba50a617895b028974",
+        "response_model": "deepseek-ai/deepseek-v4.1-flash",
+        "usage": {
+          "prompt_tokens": 457,
+          "completion_tokens": 7,
+          "total_tokens": 464,
+          "prompt_tokens_details": {
+            "cached_tokens": 384
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 0
+          }
+        },
+        "finish_reasons": [
+          "stop"
+        ],
+        "duration_s": 0.8925356864929199,
+        "request": {
+          "model": "deepseek-ai/deepseek-v4.1-flash",
+          "messages": [
+            {
+              "role": "user",
+              "content": "Object: {\"data\":{\"point\":17}}. Call select_numeric with exact JSON pointer of point. Do not select parent object."
+            },
+            {
+              "content": null,
+              "refusal": null,
+              "tool_calls": [
+                {
+                  "id": "chatcmpl-tool-9ad10c9481e1bb0a",
+                  "type": "function",
+                  "function": {
+                    "name": "select_numeric",
+                    "arguments": "{\"path\": \"/data/point\"}"
+                  }
+                }
+              ],
+              "role": "assistant",
+              "reasoning_content": "The user wants me to select the numeric point at /data/point."
+            },
+            {
+              "role": "tool",
+              "tool_call_id": "chatcmpl-tool-9ad10c9481e1bb0a",
+              "content": "{\"value\": 17}"
+            },
+            {
+              "role": "user",
+              "content": "Return only JSON {\"value\":17} from tool result, or {\"error\":\"invalid_selector\"} when rejected."
+            }
+          ],
+          "tools": [
+            {
+              "type": "function",
+              "function": {
+                "name": "select_numeric",
+                "description": "Select exact JSON pointer of numeric point already supplied. No lookup.",
+                "parameters": {
+                  "type": "object",
+                  "properties": {
+                    "path": {
+                      "type": "string",
+                      "pattern": "^/data/(?:[^~/]|~[01])+(?:/(?:[^~/]|~[01])+)*$"
+                    }
+                  },
+                  "required": [
+                    "path"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          ],
+          "tool_choice": "auto",
+          "max_tokens": 4096,
+          "temperature": 0,
+          "top_p": 1
+        },
+        "message": {
+          "content": "{\"value\":17}",
+          "refusal": null,
+          "role": "assistant"
+        }
+      }
+    },
+    {
+      "model": "deepseek-ai/deepseek-v4.1-flash",
+      "treatment": "anchored",
+      "repeat": 1,
+      "request": {
+        "model": "deepseek-ai/deepseek-v4.1-flash",
+        "messages": [
+          {
+            "role": "user",
+            "content": "Object: {\"data\":{\"point\":17}}. Call select_numeric with exact JSON pointer of point. Do not select parent object."
+          }
+        ],
+        "tools": [
+          {
+            "type": "function",
+            "function": {
+              "name": "select_numeric",
+              "description": "Select exact JSON pointer of numeric point already supplied. No lookup.",
+              "parameters": {
+                "type": "object",
+                "properties": {
+                  "path": {
+                    "type": "string",
+                    "pattern": "^/data/(?:[^~/]|~[01])+(?:/(?:[^~/]|~[01])+)*$"
+                  }
+                },
+                "required": [
+                  "path"
+                ],
+                "additionalProperties": false
+              }
+            }
+          }
+        ],
+        "tool_choice": "auto",
+        "max_tokens": 4096,
+        "temperature": 0,
+        "top_p": 1
+      },
+      "state": "completed",
+      "first": {
+        "status": 200,
+        "raw_response": "{\"id\":\"a2ea6b76b93cc7f0\",\"choices\":[{\"index\":0,\"message\":{\"content\":null,\"refusal\":null,\"tool_calls\":[{\"id\":\"chatcmpl-tool-ac0cdd7acf27db1f\",\"type\":\"function\",\"function\":{\"name\":\"select_numeric\",\"arguments\":\"{\\\"path\\\": \\\"/data/point\\\"}\"}}],\"role\":\"assistant\",\"reasoning_content\":\"The user wants me to select the numeric point at /data/point.\"},\"finish_reason\":\"tool_calls\",\"logprobs\":null}],\"created\":1794079439,\"model\":\"deepseek-ai/deepseek-v4.1-flash\",\"object\":\"chat.completion\",\"usage\":{\"prompt_tokens\":360,\"completion_tokens\":58,\"total_tokens\":418,\"prompt_tokens_details\":{\"cached_tokens\":320},\"completion_tokens_details\":{\"reasoning_tokens\":15}}}",
+        "response_sha256": "1977575b49992669f3effd625ccbdb74881bba8f9141ec3a44ddc470e3693278",
+        "response_model": "deepseek-ai/deepseek-v4.1-flash",
+        "usage": {
+          "prompt_tokens": 360,
+          "completion_tokens": 58,
+          "total_tokens": 418,
+          "prompt_tokens_details": {
+            "cached_tokens": 320
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 15
+          }
+        },
+        "finish_reasons": [
+          "tool_calls"
+        ],
+        "duration_s": 2.101806402206421
+      },
+      "function_call_verified": true,
+      "continuation_request": {
+        "model": "deepseek-ai/deepseek-v4.1-flash",
+        "messages": [
+          {
+            "role": "user",
+            "content": "Object: {\"data\":{\"point\":17}}. Call select_numeric with exact JSON pointer of point. Do not select parent object."
+          },
+          {
+            "content": null,
+            "refusal": null,
+            "tool_calls": [
+              {
+                "id": "chatcmpl-tool-ac0cdd7acf27db1f",
+                "type": "function",
+                "function": {
+                  "name": "select_numeric",
+                  "arguments": "{\"path\": \"/data/point\"}"
+                }
+              }
+            ],
+            "role": "assistant",
+            "reasoning_content": "The user wants me to select the numeric point at /data/point."
+          },
+          {
+            "role": "tool",
+            "tool_call_id": "chatcmpl-tool-ac0cdd7acf27db1f",
+            "content": "{\"value\": 17}"
+          },
+          {
+            "role": "user",
+            "content": "Return only JSON {\"value\":17} from tool result, or {\"error\":\"invalid_selector\"} when rejected."
+          }
+        ],
+        "tools": [
+          {
+            "type": "function",
+            "function": {
+              "name": "select_numeric",
+              "description": "Select exact JSON pointer of numeric point already supplied. No lookup.",
+              "parameters": {
+                "type": "object",
+                "properties": {
+                  "path": {
+                    "type": "string",
+                    "pattern": "^/data/(?:[^~/]|~[01])+(?:/(?:[^~/]|~[01])+)*$"
+                  }
+                },
+                "required": [
+                  "path"
+                ],
+                "additionalProperties": false
+              }
+            }
+          }
+        ],
+        "tool_choice": "auto",
+        "max_tokens": 4096,
+        "temperature": 0,
+        "top_p": 1
+      },
+      "tool_loop": {
+        "status": 200,
+        "raw_response": "{\"id\":\"8881989a01f2076d\",\"choices\":[{\"index\":0,\"message\":{\"content\":\"{\\\"value\\\":17}\",\"refusal\":null,\"role\":\"assistant\"},\"finish_reason\":\"stop\",\"logprobs\":null}],\"created\":1794079451,\"model\":\"deepseek-ai/deepseek-v4.1-flash\",\"object\":\"chat.completion\",\"usage\":{\"prompt_tokens\":457,\"completion_tokens\":7,\"total_tokens\":464,\"prompt_tokens_details\":{\"cached_tokens\":192},\"completion_tokens_details\":{\"reasoning_tokens\":0}}}",
+        "response_sha256": "97946578e8c057e9a80f67d15af225acb9a7a1473200af4bc8027805cbb8d87f",
+        "response_model": "deepseek-ai/deepseek-v4.1-flash",
+        "usage": {
+          "prompt_tokens": 457,
+          "completion_tokens": 7,
+          "total_tokens": 464,
+          "prompt_tokens_details": {
+            "cached_tokens": 192
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 0
+          }
+        },
+        "finish_reasons": [
+          "stop"
+        ],
+        "duration_s": 12.10255217552185,
+        "request": {
+          "model": "deepseek-ai/deepseek-v4.1-flash",
+          "messages": [
+            {
+              "role": "user",
+              "content": "Object: {\"data\":{\"point\":17}}. Call select_numeric with exact JSON pointer of point. Do not select parent object."
+            },
+            {
+              "content": null,
+              "refusal": null,
+              "tool_calls": [
+                {
+                  "id": "chatcmpl-tool-ac0cdd7acf27db1f",
+                  "type": "function",
+                  "function": {
+                    "name": "select_numeric",
+                    "arguments": "{\"path\": \"/data/point\"}"
+                  }
+                }
+              ],
+              "role": "assistant",
+              "reasoning_content": "The user wants me to select the numeric point at /data/point."
+            },
+            {
+              "role": "tool",
+              "tool_call_id": "chatcmpl-tool-ac0cdd7acf27db1f",
+              "content": "{\"value\": 17}"
+            },
+            {
+              "role": "user",
+              "content": "Return only JSON {\"value\":17} from tool result, or {\"error\":\"invalid_selector\"} when rejected."
+            }
+          ],
+          "tools": [
+            {
+              "type": "function",
+              "function": {
+                "name": "select_numeric",
+                "description": "Select exact JSON pointer of numeric point already supplied. No lookup.",
+                "parameters": {
+                  "type": "object",
+                  "properties": {
+                    "path": {
+                      "type": "string",
+                      "pattern": "^/data/(?:[^~/]|~[01])+(?:/(?:[^~/]|~[01])+)*$"
+                    }
+                  },
+                  "required": [
+                    "path"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          ],
+          "tool_choice": "auto",
+          "max_tokens": 4096,
+          "temperature": 0,
+          "top_p": 1
+        },
+        "message": {
+          "content": "{\"value\":17}",
+          "refusal": null,
+          "role": "assistant"
+        }
+      }
+    },
+    {
+      "model": "deepseek-ai/deepseek-v4.1-flash",
+      "treatment": "none",
+      "repeat": 0,
+      "request": {
+        "model": "deepseek-ai/deepseek-v4.1-flash",
+        "messages": [
+          {
+            "role": "user",
+            "content": "Object: {\"data\":{\"point\":17}}. Call select_numeric with exact JSON pointer of point. Do not select parent object."
+          }
+        ],
+        "tools": [
+          {
+            "type": "function",
+            "function": {
+              "name": "select_numeric",
+              "description": "Select exact JSON pointer of numeric point already supplied. No lookup.",
+              "parameters": {
+                "type": "object",
+                "properties": {
+                  "path": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "path"
+                ],
+                "additionalProperties": false
+              }
+            }
+          }
+        ],
+        "tool_choice": "auto",
+        "max_tokens": 4096,
+        "temperature": 0,
+        "top_p": 1
+      },
+      "state": "completed",
+      "first": {
+        "status": 200,
+        "raw_response": "{\"id\":\"bbe8446a0cb8d8b8\",\"choices\":[{\"index\":0,\"message\":{\"content\":null,\"refusal\":null,\"tool_calls\":[{\"id\":\"chatcmpl-tool-aea0436744f0c4e7\",\"type\":\"function\",\"function\":{\"name\":\"select_numeric\",\"arguments\":\"{\\\"path\\\": \\\"/data/point\\\"}\"}}],\"role\":\"assistant\",\"reasoning_content\":\"The user wants the JSON pointer to the numeric point. The object is {\\\"data\\\":{\\\"point\\\":17}}. The pointer to \\\"point\\\" is /data/point.\"},\"finish_reason\":\"tool_calls\",\"logprobs\":null}],\"created\":1794079467,\"model\":\"deepseek-ai/deepseek-v4.1-flash\",\"object\":\"chat.completion\",\"usage\":{\"prompt_tokens\":326,\"completion_tokens\":76,\"total_tokens\":402,\"prompt_tokens_details\":{\"cached_tokens\":256},\"completion_tokens_details\":{\"reasoning_tokens\":33}}}",
+        "response_sha256": "34c53b7386e643d5f80cbf97139aa171f0fb6277841f72427a366a743bf8a953",
+        "response_model": "deepseek-ai/deepseek-v4.1-flash",
+        "usage": {
+          "prompt_tokens": 326,
+          "completion_tokens": 76,
+          "total_tokens": 402,
+          "prompt_tokens_details": {
+            "cached_tokens": 256
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 33
+          }
+        },
+        "finish_reasons": [
+          "tool_calls"
+        ],
+        "duration_s": 16.984610080718994
+      },
+      "function_call_verified": true,
+      "continuation_request": {
+        "model": "deepseek-ai/deepseek-v4.1-flash",
+        "messages": [
+          {
+            "role": "user",
+            "content": "Object: {\"data\":{\"point\":17}}. Call select_numeric with exact JSON pointer of point. Do not select parent object."
+          },
+          {
+            "content": null,
+            "refusal": null,
+            "tool_calls": [
+              {
+                "id": "chatcmpl-tool-aea0436744f0c4e7",
+                "type": "function",
+                "function": {
+                  "name": "select_numeric",
+                  "arguments": "{\"path\": \"/data/point\"}"
+                }
+              }
+            ],
+            "role": "assistant",
+            "reasoning_content": "The user wants the JSON pointer to the numeric point. The object is {\"data\":{\"point\":17}}. The pointer to \"point\" is /data/point."
+          },
+          {
+            "role": "tool",
+            "tool_call_id": "chatcmpl-tool-aea0436744f0c4e7",
+            "content": "{\"value\": 17}"
+          },
+          {
+            "role": "user",
+            "content": "Return only JSON {\"value\":17} from tool result, or {\"error\":\"invalid_selector\"} when rejected."
+          }
+        ],
+        "tools": [
+          {
+            "type": "function",
+            "function": {
+              "name": "select_numeric",
+              "description": "Select exact JSON pointer of numeric point already supplied. No lookup.",
+              "parameters": {
+                "type": "object",
+                "properties": {
+                  "path": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "path"
+                ],
+                "additionalProperties": false
+              }
+            }
+          }
+        ],
+        "tool_choice": "auto",
+        "max_tokens": 4096,
+        "temperature": 0,
+        "top_p": 1
+      },
+      "tool_loop": {
+        "status": 200,
+        "raw_response": "{\"id\":\"a64a1a5217493607\",\"choices\":[{\"index\":0,\"message\":{\"content\":\"{\\\"value\\\":17}\",\"refusal\":null,\"role\":\"assistant\",\"reasoning_content\":\"The tool returned {\\\"value\\\": 17}. The instruction: return only JSON {\\\"value\\\":17} from tool result, or {\\\"error\\\":\\\"invalid_selector\\\"} when rejected. The tool succeeded, so return {\\\"value\\\":17}.\"},\"finish_reason\":\"stop\",\"logprobs\":null}],\"created\":1794079503,\"model\":\"deepseek-ai/deepseek-v4.1-flash\",\"object\":\"chat.completion\",\"usage\":{\"prompt_tokens\":441,\"completion_tokens\":53,\"total_tokens\":494,\"prompt_tokens_details\":{\"cached_tokens\":192},\"completion_tokens_details\":{\"reasoning_tokens\":46}}}",
+        "response_sha256": "05c850f296ea7ee56d11544ac32884a2408e3352497ba3849b35b484f5e540a1",
+        "response_model": "deepseek-ai/deepseek-v4.1-flash",
+        "usage": {
+          "prompt_tokens": 441,
+          "completion_tokens": 53,
+          "total_tokens": 494,
+          "prompt_tokens_details": {
+            "cached_tokens": 192
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 46
+          }
+        },
+        "finish_reasons": [
+          "stop"
+        ],
+        "duration_s": 35.34623146057129,
+        "request": {
+          "model": "deepseek-ai/deepseek-v4.1-flash",
+          "messages": [
+            {
+              "role": "user",
+              "content": "Object: {\"data\":{\"point\":17}}. Call select_numeric with exact JSON pointer of point. Do not select parent object."
+            },
+            {
+              "content": null,
+              "refusal": null,
+              "tool_calls": [
+                {
+                  "id": "chatcmpl-tool-aea0436744f0c4e7",
+                  "type": "function",
+                  "function": {
+                    "name": "select_numeric",
+                    "arguments": "{\"path\": \"/data/point\"}"
+                  }
+                }
+              ],
+              "role": "assistant",
+              "reasoning_content": "The user wants the JSON pointer to the numeric point. The object is {\"data\":{\"point\":17}}. The pointer to \"point\" is /data/point."
+            },
+            {
+              "role": "tool",
+              "tool_call_id": "chatcmpl-tool-aea0436744f0c4e7",
+              "content": "{\"value\": 17}"
+            },
+            {
+              "role": "user",
+              "content": "Return only JSON {\"value\":17} from tool result, or {\"error\":\"invalid_selector\"} when rejected."
+            }
+          ],
+          "tools": [
+            {
+              "type": "function",
+              "function": {
+                "name": "select_numeric",
+                "description": "Select exact JSON pointer of numeric point already supplied. No lookup.",
+                "parameters": {
+                  "type": "object",
+                  "properties": {
+                    "path": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "path"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          ],
+          "tool_choice": "auto",
+          "max_tokens": 4096,
+          "temperature": 0,
+          "top_p": 1
+        },
+        "message": {
+          "content": "{\"value\":17}",
+          "refusal": null,
+          "role": "assistant",
+          "reasoning_content": "The tool returned {\"value\": 17}. The instruction: return only JSON {\"value\":17} from tool result, or {\"error\":\"invalid_selector\"} when rejected. The tool succeeded, so return {\"value\":17}."
+        }
+      }
+    },
+    {
+      "model": "deepseek-ai/deepseek-v4.1-flash",
+      "treatment": "none",
+      "repeat": 1,
+      "request": {
+        "model": "deepseek-ai/deepseek-v4.1-flash",
+        "messages": [
+          {
+            "role": "user",
+            "content": "Object: {\"data\":{\"point\":17}}. Call select_numeric with exact JSON pointer of point. Do not select parent object."
+          }
+        ],
+        "tools": [
+          {
+            "type": "function",
+            "function": {
+              "name": "select_numeric",
+              "description": "Select exact JSON pointer of numeric point already supplied. No lookup.",
+              "parameters": {
+                "type": "object",
+                "properties": {
+                  "path": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "path"
+                ],
+                "additionalProperties": false
+              }
+            }
+          }
+        ],
+        "tool_choice": "auto",
+        "max_tokens": 4096,
+        "temperature": 0,
+        "top_p": 1
+      },
+      "state": "completed",
+      "first": {
+        "status": 200,
+        "raw_response": "{\"id\":\"8039b745f5cb1f27\",\"choices\":[{\"index\":0,\"message\":{\"content\":null,\"refusal\":null,\"tool_calls\":[{\"id\":\"chatcmpl-tool-aabbd7f8c6dc76bd\",\"type\":\"function\",\"function\":{\"name\":\"select_numeric\",\"arguments\":\"{\\\"path\\\": \\\"/data/point\\\"}\"}}],\"role\":\"assistant\",\"reasoning_content\":\"The user wants the JSON pointer to the numeric point. The object is {\\\"data\\\":{\\\"point\\\":17}}. The pointer to \\\"point\\\" is /data/point.\"},\"finish_reason\":\"tool_calls\",\"logprobs\":null}],\"created\":1794079553,\"model\":\"deepseek-ai/deepseek-v4.1-flash\",\"object\":\"chat.completion\",\"usage\":{\"prompt_tokens\":326,\"completion_tokens\":76,\"total_tokens\":402,\"prompt_tokens_details\":{\"cached_tokens\":320},\"completion_tokens_details\":{\"reasoning_tokens\":33}}}",
+        "response_sha256": "946a41e934e06a23a7bb1d528366e00710e4b0ea7db615dac1165285fe486ce0",
+        "response_model": "deepseek-ai/deepseek-v4.1-flash",
+        "usage": {
+          "prompt_tokens": 326,
+          "completion_tokens": 76,
+          "total_tokens": 402,
+          "prompt_tokens_details": {
+            "cached_tokens": 320
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 33
+          }
+        },
+        "finish_reasons": [
+          "tool_calls"
+        ],
+        "duration_s": 49.88827180862427
+      },
+      "function_call_verified": true,
+      "continuation_request": {
+        "model": "deepseek-ai/deepseek-v4.1-flash",
+        "messages": [
+          {
+            "role": "user",
+            "content": "Object: {\"data\":{\"point\":17}}. Call select_numeric with exact JSON pointer of point. Do not select parent object."
+          },
+          {
+            "content": null,
+            "refusal": null,
+            "tool_calls": [
+              {
+                "id": "chatcmpl-tool-aabbd7f8c6dc76bd",
+                "type": "function",
+                "function": {
+                  "name": "select_numeric",
+                  "arguments": "{\"path\": \"/data/point\"}"
+                }
+              }
+            ],
+            "role": "assistant",
+            "reasoning_content": "The user wants the JSON pointer to the numeric point. The object is {\"data\":{\"point\":17}}. The pointer to \"point\" is /data/point."
+          },
+          {
+            "role": "tool",
+            "tool_call_id": "chatcmpl-tool-aabbd7f8c6dc76bd",
+            "content": "{\"value\": 17}"
+          },
+          {
+            "role": "user",
+            "content": "Return only JSON {\"value\":17} from tool result, or {\"error\":\"invalid_selector\"} when rejected."
+          }
+        ],
+        "tools": [
+          {
+            "type": "function",
+            "function": {
+              "name": "select_numeric",
+              "description": "Select exact JSON pointer of numeric point already supplied. No lookup.",
+              "parameters": {
+                "type": "object",
+                "properties": {
+                  "path": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "path"
+                ],
+                "additionalProperties": false
+              }
+            }
+          }
+        ],
+        "tool_choice": "auto",
+        "max_tokens": 4096,
+        "temperature": 0,
+        "top_p": 1
+      },
+      "tool_loop": {
+        "status": 200,
+        "raw_response": "{\"id\":\"bd6d6b03a5c726ea\",\"choices\":[{\"index\":0,\"message\":{\"content\":\"{\\\"value\\\":17}\",\"refusal\":null,\"role\":\"assistant\",\"reasoning_content\":\"The tool returned {\\\"value\\\": 17}. I should return only JSON {\\\"value\\\":17}.\"},\"finish_reason\":\"stop\",\"logprobs\":null}],\"created\":1794079555,\"model\":\"deepseek-ai/deepseek-v4.1-flash\",\"object\":\"chat.completion\",\"usage\":{\"prompt_tokens\":441,\"completion_tokens\":26,\"total_tokens\":467,\"prompt_tokens_details\":{\"cached_tokens\":384},\"completion_tokens_details\":{\"reasoning_tokens\":19}}}",
+        "response_sha256": "4eaf0debcce21f3bd3532045f3e5dcbf84b457408426d48d9af3c7046768efd7",
+        "response_model": "deepseek-ai/deepseek-v4.1-flash",
+        "usage": {
+          "prompt_tokens": 441,
+          "completion_tokens": 26,
+          "total_tokens": 467,
+          "prompt_tokens_details": {
+            "cached_tokens": 384
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 19
+          }
+        },
+        "finish_reasons": [
+          "stop"
+        ],
+        "duration_s": 2.015043258666992,
+        "request": {
+          "model": "deepseek-ai/deepseek-v4.1-flash",
+          "messages": [
+            {
+              "role": "user",
+              "content": "Object: {\"data\":{\"point\":17}}. Call select_numeric with exact JSON pointer of point. Do not select parent object."
+            },
+            {
+              "content": null,
+              "refusal": null,
+              "tool_calls": [
+                {
+                  "id": "chatcmpl-tool-aabbd7f8c6dc76bd",
+                  "type": "function",
+                  "function": {
+                    "name": "select_numeric",
+                    "arguments": "{\"path\": \"/data/point\"}"
+                  }
+                }
+              ],
+              "role": "assistant",
+              "reasoning_content": "The user wants the JSON pointer to the numeric point. The object is {\"data\":{\"point\":17}}. The pointer to \"point\" is /data/point."
+            },
+            {
+              "role": "tool",
+              "tool_call_id": "chatcmpl-tool-aabbd7f8c6dc76bd",
+              "content": "{\"value\": 17}"
+            },
+            {
+              "role": "user",
+              "content": "Return only JSON {\"value\":17} from tool result, or {\"error\":\"invalid_selector\"} when rejected."
+            }
+          ],
+          "tools": [
+            {
+              "type": "function",
+              "function": {
+                "name": "select_numeric",
+                "description": "Select exact JSON pointer of numeric point already supplied. No lookup.",
+                "parameters": {
+                  "type": "object",
+                  "properties": {
+                    "path": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "path"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          ],
+          "tool_choice": "auto",
+          "max_tokens": 4096,
+          "temperature": 0,
+          "top_p": 1
+        },
+        "message": {
+          "content": "{\"value\":17}",
+          "refusal": null,
+          "role": "assistant",
+          "reasoning_content": "The tool returned {\"value\": 17}. I should return only JSON {\"value\":17}."
+        }
+      }
+    },
+    {
+      "model": "nvidia/nemotron-3.5-super-vl-120b-a12b",
+      "treatment": "prefix",
+      "repeat": 0,
+      "request": {
+        "model": "nvidia/nemotron-3.5-super-vl-120b-a12b",
+        "messages": [
+          {
+            "role": "user",
+            "content": "Object: {\"data\":{\"point\":17}}. Call select_numeric with exact JSON pointer of point. Do not select parent object."
+          }
+        ],
+        "tools": [
+          {
+            "type": "function",
+            "function": {
+              "name": "select_numeric",
+              "description": "Select exact JSON pointer of numeric point already supplied. No lookup.",
+              "parameters": {
+                "type": "object",
+                "properties": {
+                  "path": {
+                    "type": "string",
+                    "pattern": "^/data(?:/|$)"
+                  }
+                },
+                "required": [
+                  "path"
+                ],
+                "additionalProperties": false
+              }
+            }
+          }
+        ],
+        "tool_choice": "auto",
+        "max_tokens": 4096,
+        "temperature": 1,
+        "top_p": 0.95
+      },
+      "state": "completed",
+      "first": {
+        "status": 200,
+        "raw_response": "{\"id\":\"chatcmpl-abfa6837-5f41-458a-b5ef-5f27abd8021e\",\"choices\":[{\"index\":0,\"message\":{\"content\":null,\"tool_calls\":[{\"id\":\"call-aeb8297b-d6d6-4df0-b773-222a03664fdf\",\"type\":\"function\",\"function\":{\"name\":\"select_numeric\",\"arguments\":\"{\\\"path\\\":\\\"/data/point\\\"}\"}}],\"role\":\"assistant\",\"reasoning_content\":\"The user wants me to call select_numeric with the exact JSON pointer of \\\"point\\\" in the object {\\\"data\\\":{\\\"point\\\":17}}.\\n\\nThe JSON pointer would be /data/point based on the pattern /data(?:/|$).\\n\\nLet me call the function with path \\\"/data/point\\\".\"},\"finish_reason\":\"tool_calls\",\"logprobs\":null}],\"created\":1794079555,\"model\":\"private/nvidia/nemotron-3.5-super-120b-a12b\",\"service_tier\":null,\"system_fingerprint\":null,\"object\":\"chat.completion\",\"usage\":{\"prompt_tokens\":320,\"completion_tokens\":91,\"total_tokens\":411,\"prompt_tokens_details\":{\"audio_tokens\":null,\"cached_tokens\":0},\"completion_tokens_details\":{\"accepted_prediction_tokens\":null,\"audio_tokens\":null,\"reasoning_tokens\":62,\"rejected_prediction_tokens\":null}}}",
+        "response_sha256": "2c6197be5f5982ba3f9f40c5ea296093e95d2c49d257b3a6b46454ce283e80bb",
+        "response_model": "private/nvidia/nemotron-3.5-super-120b-a12b",
+        "usage": {
+          "prompt_tokens": 320,
+          "completion_tokens": 91,
+          "total_tokens": 411,
+          "prompt_tokens_details": {
+            "audio_tokens": null,
+            "cached_tokens": 0
+          },
+          "completion_tokens_details": {
+            "accepted_prediction_tokens": null,
+            "audio_tokens": null,
+            "reasoning_tokens": 62,
+            "rejected_prediction_tokens": null
+          }
+        },
+        "finish_reasons": [
+          "tool_calls"
+        ],
+        "duration_s": 0.912872314453125
+      },
+      "function_call_verified": true,
+      "continuation_request": {
+        "model": "nvidia/nemotron-3.5-super-vl-120b-a12b",
+        "messages": [
+          {
+            "role": "user",
+            "content": "Object: {\"data\":{\"point\":17}}. Call select_numeric with exact JSON pointer of point. Do not select parent object."
+          },
+          {
+            "content": null,
+            "tool_calls": [
+              {
+                "id": "call-aeb8297b-d6d6-4df0-b773-222a03664fdf",
+                "type": "function",
+                "function": {
+                  "name": "select_numeric",
+                  "arguments": "{\"path\":\"/data/point\"}"
+                }
+              }
+            ],
+            "role": "assistant",
+            "reasoning_content": "The user wants me to call select_numeric with the exact JSON pointer of \"point\" in the object {\"data\":{\"point\":17}}.\n\nThe JSON pointer would be /data/point based on the pattern /data(?:/|$).\n\nLet me call the function with path \"/data/point\"."
+          },
+          {
+            "role": "tool",
+            "tool_call_id": "call-aeb8297b-d6d6-4df0-b773-222a03664fdf",
+            "content": "{\"value\": 17}"
+          },
+          {
+            "role": "user",
+            "content": "Return only JSON {\"value\":17} from tool result, or {\"error\":\"invalid_selector\"} when rejected."
+          }
+        ],
+        "tools": [
+          {
+            "type": "function",
+            "function": {
+              "name": "select_numeric",
+              "description": "Select exact JSON pointer of numeric point already supplied. No lookup.",
+              "parameters": {
+                "type": "object",
+                "properties": {
+                  "path": {
+                    "type": "string",
+                    "pattern": "^/data(?:/|$)"
+                  }
+                },
+                "required": [
+                  "path"
+                ],
+                "additionalProperties": false
+              }
+            }
+          }
+        ],
+        "tool_choice": "auto",
+        "max_tokens": 4096,
+        "temperature": 1,
+        "top_p": 0.95
+      },
+      "tool_loop": {
+        "status": 200,
+        "raw_response": "{\"id\":\"chatcmpl-ef1f97d6-e5a0-4b49-8d1c-3127e5148846\",\"choices\":[{\"index\":0,\"message\":{\"content\":\"{\\\"value\\\": 17}\",\"role\":\"assistant\",\"reasoning_content\":\"The user wants me to return only the JSON result from the tool call. The tool returned {\\\"value\\\": 17}. I should output exactly that JSON without any extra text.\"},\"finish_reason\":\"stop\",\"logprobs\":null}],\"created\":1794079556,\"model\":\"private/nvidia/nemotron-3.5-super-120b-a12b\",\"service_tier\":null,\"system_fingerprint\":null,\"object\":\"chat.completion\",\"usage\":{\"prompt_tokens\":399,\"completion_tokens\":45,\"total_tokens\":444,\"prompt_tokens_details\":{\"audio_tokens\":null,\"cached_tokens\":0},\"completion_tokens_details\":{\"accepted_prediction_tokens\":null,\"audio_tokens\":null,\"reasoning_tokens\":36,\"rejected_prediction_tokens\":null}}}",
+        "response_sha256": "2d28bae755fe60307cb70fdb7d286b431a14ff35ea2f7dc0f39e83210dbdaa0e",
+        "response_model": "private/nvidia/nemotron-3.5-super-120b-a12b",
+        "usage": {
+          "prompt_tokens": 399,
+          "completion_tokens": 45,
+          "total_tokens": 444,
+          "prompt_tokens_details": {
+            "audio_tokens": null,
+            "cached_tokens": 0
+          },
+          "completion_tokens_details": {
+            "accepted_prediction_tokens": null,
+            "audio_tokens": null,
+            "reasoning_tokens": 36,
+            "rejected_prediction_tokens": null
+          }
+        },
+        "finish_reasons": [
+          "stop"
+        ],
+        "duration_s": 0.770390510559082,
+        "request": {
+          "model": "nvidia/nemotron-3.5-super-vl-120b-a12b",
+          "messages": [
+            {
+              "role": "user",
+              "content": "Object: {\"data\":{\"point\":17}}. Call select_numeric with exact JSON pointer of point. Do not select parent object."
+            },
+            {
+              "content": null,
+              "tool_calls": [
+                {
+                  "id": "call-aeb8297b-d6d6-4df0-b773-222a03664fdf",
+                  "type": "function",
+                  "function": {
+                    "name": "select_numeric",
+                    "arguments": "{\"path\":\"/data/point\"}"
+                  }
+                }
+              ],
+              "role": "assistant",
+              "reasoning_content": "The user wants me to call select_numeric with the exact JSON pointer of \"point\" in the object {\"data\":{\"point\":17}}.\n\nThe JSON pointer would be /data/point based on the pattern /data(?:/|$).\n\nLet me call the function with path \"/data/point\"."
+            },
+            {
+              "role": "tool",
+              "tool_call_id": "call-aeb8297b-d6d6-4df0-b773-222a03664fdf",
+              "content": "{\"value\": 17}"
+            },
+            {
+              "role": "user",
+              "content": "Return only JSON {\"value\":17} from tool result, or {\"error\":\"invalid_selector\"} when rejected."
+            }
+          ],
+          "tools": [
+            {
+              "type": "function",
+              "function": {
+                "name": "select_numeric",
+                "description": "Select exact JSON pointer of numeric point already supplied. No lookup.",
+                "parameters": {
+                  "type": "object",
+                  "properties": {
+                    "path": {
+                      "type": "string",
+                      "pattern": "^/data(?:/|$)"
+                    }
+                  },
+                  "required": [
+                    "path"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          ],
+          "tool_choice": "auto",
+          "max_tokens": 4096,
+          "temperature": 1,
+          "top_p": 0.95
+        },
+        "message": {
+          "content": "{\"value\": 17}",
+          "role": "assistant",
+          "reasoning_content": "The user wants me to return only the JSON result from the tool call. The tool returned {\"value\": 17}. I should output exactly that JSON without any extra text."
+        }
+      }
+    },
+    {
+      "model": "nvidia/nemotron-3.5-super-vl-120b-a12b",
+      "treatment": "prefix",
+      "repeat": 1,
+      "request": {
+        "model": "nvidia/nemotron-3.5-super-vl-120b-a12b",
+        "messages": [
+          {
+            "role": "user",
+            "content": "Object: {\"data\":{\"point\":17}}. Call select_numeric with exact JSON pointer of point. Do not select parent object."
+          }
+        ],
+        "tools": [
+          {
+            "type": "function",
+            "function": {
+              "name": "select_numeric",
+              "description": "Select exact JSON pointer of numeric point already supplied. No lookup.",
+              "parameters": {
+                "type": "object",
+                "properties": {
+                  "path": {
+                    "type": "string",
+                    "pattern": "^/data(?:/|$)"
+                  }
+                },
+                "required": [
+                  "path"
+                ],
+                "additionalProperties": false
+              }
+            }
+          }
+        ],
+        "tool_choice": "auto",
+        "max_tokens": 4096,
+        "temperature": 1,
+        "top_p": 0.95
+      },
+      "state": "completed",
+      "first": {
+        "status": 200,
+        "raw_response": "{\"id\":\"chatcmpl-37b8625c-0f61-4c91-842d-7a1b8f93bd18\",\"choices\":[{\"index\":0,\"message\":{\"content\":null,\"tool_calls\":[{\"id\":\"call-c4771ca0-1530-4fab-9e58-03e148857877\",\"type\":\"function\",\"function\":{\"name\":\"select_numeric\",\"arguments\":\"{\\\"path\\\":\\\"/data/point\\\"}\"}}],\"role\":\"assistant\",\"reasoning_content\":\"The user wants me to call select_numeric with the exact JSON pointer of \\\"point\\\".\\nThe object is {\\\"data\\\":{\\\"point\\\":17}}.\\nJSON pointer syntax: /data/point\\nThe tool description says path pattern: ^/data(?:/|$)\\nSo path should be \\\"/data/point\\\".\\nI'll call the function.\"},\"finish_reason\":\"tool_calls\",\"logprobs\":null}],\"created\":1794079557,\"model\":\"private/nvidia/nemotron-3.5-super-120b-a12b\",\"service_tier\":null,\"system_fingerprint\":null,\"object\":\"chat.completion\",\"usage\":{\"prompt_tokens\":320,\"completion_tokens\":98,\"total_tokens\":418,\"prompt_tokens_details\":{\"audio_tokens\":null,\"cached_tokens\":0},\"completion_tokens_details\":{\"accepted_prediction_tokens\":null,\"audio_tokens\":null,\"reasoning_tokens\":69,\"rejected_prediction_tokens\":null}}}",
+        "response_sha256": "033a324782f05cb10fecb569c7d775d7443d543a41119999a67727ef39e2befd",
+        "response_model": "private/nvidia/nemotron-3.5-super-120b-a12b",
+        "usage": {
+          "prompt_tokens": 320,
+          "completion_tokens": 98,
+          "total_tokens": 418,
+          "prompt_tokens_details": {
+            "audio_tokens": null,
+            "cached_tokens": 0
+          },
+          "completion_tokens_details": {
+            "accepted_prediction_tokens": null,
+            "audio_tokens": null,
+            "reasoning_tokens": 69,
+            "rejected_prediction_tokens": null
+          }
+        },
+        "finish_reasons": [
+          "tool_calls"
+        ],
+        "duration_s": 1.1377627849578857
+      },
+      "function_call_verified": true,
+      "continuation_request": {
+        "model": "nvidia/nemotron-3.5-super-vl-120b-a12b",
+        "messages": [
+          {
+            "role": "user",
+            "content": "Object: {\"data\":{\"point\":17}}. Call select_numeric with exact JSON pointer of point. Do not select parent object."
+          },
+          {
+            "content": null,
+            "tool_calls": [
+              {
+                "id": "call-c4771ca0-1530-4fab-9e58-03e148857877",
+                "type": "function",
+                "function": {
+                  "name": "select_numeric",
+                  "arguments": "{\"path\":\"/data/point\"}"
+                }
+              }
+            ],
+            "role": "assistant",
+            "reasoning_content": "The user wants me to call select_numeric with the exact JSON pointer of \"point\".\nThe object is {\"data\":{\"point\":17}}.\nJSON pointer syntax: /data/point\nThe tool description says path pattern: ^/data(?:/|$)\nSo path should be \"/data/point\".\nI'll call the function."
+          },
+          {
+            "role": "tool",
+            "tool_call_id": "call-c4771ca0-1530-4fab-9e58-03e148857877",
+            "content": "{\"value\": 17}"
+          },
+          {
+            "role": "user",
+            "content": "Return only JSON {\"value\":17} from tool result, or {\"error\":\"invalid_selector\"} when rejected."
+          }
+        ],
+        "tools": [
+          {
+            "type": "function",
+            "function": {
+              "name": "select_numeric",
+              "description": "Select exact JSON pointer of numeric point already supplied. No lookup.",
+              "parameters": {
+                "type": "object",
+                "properties": {
+                  "path": {
+                    "type": "string",
+                    "pattern": "^/data(?:/|$)"
+                  }
+                },
+                "required": [
+                  "path"
+                ],
+                "additionalProperties": false
+              }
+            }
+          }
+        ],
+        "tool_choice": "auto",
+        "max_tokens": 4096,
+        "temperature": 1,
+        "top_p": 0.95
+      },
+      "tool_loop": {
+        "status": 200,
+        "raw_response": "{\"id\":\"chatcmpl-9b250da5-2702-425e-9cd4-502012029c0e\",\"choices\":[{\"index\":0,\"message\":{\"content\":\"{\\\"value\\\":17}\",\"role\":\"assistant\",\"reasoning_content\":\"The user wants me to return only JSON {\\\"value\\\":17} from the tool result, or {\\\"error\\\":\\\"invalid_selector\\\"} when rejected.\\n\\nThe tool result was: {\\\"value\\\": 17}\\n\\nSo I should return exactly that JSON: {\\\"value\\\":17}\\n\\nI should not add any extra text, just the JSON.\"},\"finish_reason\":\"stop\",\"logprobs\":null}],\"created\":1794079558,\"model\":\"private/nvidia/nemotron-3.5-super-120b-a12b\",\"service_tier\":null,\"system_fingerprint\":null,\"object\":\"chat.completion\",\"usage\":{\"prompt_tokens\":399,\"completion_tokens\":75,\"total_tokens\":474,\"prompt_tokens_details\":{\"audio_tokens\":null,\"cached_tokens\":0},\"completion_tokens_details\":{\"accepted_prediction_tokens\":null,\"audio_tokens\":null,\"reasoning_tokens\":67,\"rejected_prediction_tokens\":null}}}",
+        "response_sha256": "e64b447e74170873633bc725e0636a618374d729d299d2371dea17de7d55a0d2",
+        "response_model": "private/nvidia/nemotron-3.5-super-120b-a12b",
+        "usage": {
+          "prompt_tokens": 399,
+          "completion_tokens": 75,
+          "total_tokens": 474,
+          "prompt_tokens_details": {
+            "audio_tokens": null,
+            "cached_tokens": 0
+          },
+          "completion_tokens_details": {
+            "accepted_prediction_tokens": null,
+            "audio_tokens": null,
+            "reasoning_tokens": 67,
+            "rejected_prediction_tokens": null
+          }
+        },
+        "finish_reasons": [
+          "stop"
+        ],
+        "duration_s": 0.9857146739959717,
+        "request": {
+          "model": "nvidia/nemotron-3.5-super-vl-120b-a12b",
+          "messages": [
+            {
+              "role": "user",
+              "content": "Object: {\"data\":{\"point\":17}}. Call select_numeric with exact JSON pointer of point. Do not select parent object."
+            },
+            {
+              "content": null,
+              "tool_calls": [
+                {
+                  "id": "call-c4771ca0-1530-4fab-9e58-03e148857877",
+                  "type": "function",
+                  "function": {
+                    "name": "select_numeric",
+                    "arguments": "{\"path\":\"/data/point\"}"
+                  }
+                }
+              ],
+              "role": "assistant",
+              "reasoning_content": "The user wants me to call select_numeric with the exact JSON pointer of \"point\".\nThe object is {\"data\":{\"point\":17}}.\nJSON pointer syntax: /data/point\nThe tool description says path pattern: ^/data(?:/|$)\nSo path should be \"/data/point\".\nI'll call the function."
+            },
+            {
+              "role": "tool",
+              "tool_call_id": "call-c4771ca0-1530-4fab-9e58-03e148857877",
+              "content": "{\"value\": 17}"
+            },
+            {
+              "role": "user",
+              "content": "Return only JSON {\"value\":17} from tool result, or {\"error\":\"invalid_selector\"} when rejected."
+            }
+          ],
+          "tools": [
+            {
+              "type": "function",
+              "function": {
+                "name": "select_numeric",
+                "description": "Select exact JSON pointer of numeric point already supplied. No lookup.",
+                "parameters": {
+                  "type": "object",
+                  "properties": {
+                    "path": {
+                      "type": "string",
+                      "pattern": "^/data(?:/|$)"
+                    }
+                  },
+                  "required": [
+                    "path"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          ],
+          "tool_choice": "auto",
+          "max_tokens": 4096,
+          "temperature": 1,
+          "top_p": 0.95
+        },
+        "message": {
+          "content": "{\"value\":17}",
+          "role": "assistant",
+          "reasoning_content": "The user wants me to return only JSON {\"value\":17} from the tool result, or {\"error\":\"invalid_selector\"} when rejected.\n\nThe tool result was: {\"value\": 17}\n\nSo I should return exactly that JSON: {\"value\":17}\n\nI should not add any extra text, just the JSON."
+        }
+      }
+    },
+    {
+      "model": "nvidia/nemotron-3.5-super-vl-120b-a12b",
+      "treatment": "anchored",
+      "repeat": 0,
+      "request": {
+        "model": "nvidia/nemotron-3.5-super-vl-120b-a12b",
+        "messages": [
+          {
+            "role": "user",
+            "content": "Object: {\"data\":{\"point\":17}}. Call select_numeric with exact JSON pointer of point. Do not select parent object."
+          }
+        ],
+        "tools": [
+          {
+            "type": "function",
+            "function": {
+              "name": "select_numeric",
+              "description": "Select exact JSON pointer of numeric point already supplied. No lookup.",
+              "parameters": {
+                "type": "object",
+                "properties": {
+                  "path": {
+                    "type": "string",
+                    "pattern": "^/data/(?:[^~/]|~[01])+(?:/(?:[^~/]|~[01])+)*$"
+                  }
+                },
+                "required": [
+                  "path"
+                ],
+                "additionalProperties": false
+              }
+            }
+          }
+        ],
+        "tool_choice": "auto",
+        "max_tokens": 4096,
+        "temperature": 1,
+        "top_p": 0.95
+      },
+      "state": "completed",
+      "first": {
+        "status": 200,
+        "raw_response": "{\"id\":\"chatcmpl-ce991ca3-4af4-4848-8658-949ed39145fb\",\"choices\":[{\"index\":0,\"message\":{\"content\":null,\"tool_calls\":[{\"id\":\"call-2385b531-2303-42cf-878b-f667648123ad\",\"type\":\"function\",\"function\":{\"name\":\"select_numeric\",\"arguments\":\"{\\\"path\\\":\\\"/data/point\\\"}\"}}],\"role\":\"assistant\",\"reasoning_content\":\"The user wants me to call select_numeric with the exact JSON pointer of \\\"point\\\". The object is {\\\"data\\\":{\\\"point\\\":17}}. The JSON pointer would be /data/point. I need to call the function with path: \\\"/data/point\\\".\"},\"finish_reason\":\"tool_calls\",\"logprobs\":null}],\"created\":1794079559,\"model\":\"private/nvidia/nemotron-3.5-super-120b-a12b\",\"service_tier\":null,\"system_fingerprint\":null,\"object\":\"chat.completion\",\"usage\":{\"prompt_tokens\":342,\"completion_tokens\":81,\"total_tokens\":423,\"prompt_tokens_details\":{\"audio_tokens\":null,\"cached_tokens\":0},\"completion_tokens_details\":{\"accepted_prediction_tokens\":null,\"audio_tokens\":null,\"reasoning_tokens\":52,\"rejected_prediction_tokens\":null}}}",
+        "response_sha256": "a31ff0c83c23ff4966b50ac3fd384e8452af4707cfebe672d4c1235332e9b0b6",
+        "response_model": "private/nvidia/nemotron-3.5-super-120b-a12b",
+        "usage": {
+          "prompt_tokens": 342,
+          "completion_tokens": 81,
+          "total_tokens": 423,
+          "prompt_tokens_details": {
+            "audio_tokens": null,
+            "cached_tokens": 0
+          },
+          "completion_tokens_details": {
+            "accepted_prediction_tokens": null,
+            "audio_tokens": null,
+            "reasoning_tokens": 52,
+            "rejected_prediction_tokens": null
+          }
+        },
+        "finish_reasons": [
+          "tool_calls"
+        ],
+        "duration_s": 1.439441442489624
+      },
+      "function_call_verified": true,
+      "continuation_request": {
+        "model": "nvidia/nemotron-3.5-super-vl-120b-a12b",
+        "messages": [
+          {
+            "role": "user",
+            "content": "Object: {\"data\":{\"point\":17}}. Call select_numeric with exact JSON pointer of point. Do not select parent object."
+          },
+          {
+            "content": null,
+            "tool_calls": [
+              {
+                "id": "call-2385b531-2303-42cf-878b-f667648123ad",
+                "type": "function",
+                "function": {
+                  "name": "select_numeric",
+                  "arguments": "{\"path\":\"/data/point\"}"
+                }
+              }
+            ],
+            "role": "assistant",
+            "reasoning_content": "The user wants me to call select_numeric with the exact JSON pointer of \"point\". The object is {\"data\":{\"point\":17}}. The JSON pointer would be /data/point. I need to call the function with path: \"/data/point\"."
+          },
+          {
+            "role": "tool",
+            "tool_call_id": "call-2385b531-2303-42cf-878b-f667648123ad",
+            "content": "{\"value\": 17}"
+          },
+          {
+            "role": "user",
+            "content": "Return only JSON {\"value\":17} from tool result, or {\"error\":\"invalid_selector\"} when rejected."
+          }
+        ],
+        "tools": [
+          {
+            "type": "function",
+            "function": {
+              "name": "select_numeric",
+              "description": "Select exact JSON pointer of numeric point already supplied. No lookup.",
+              "parameters": {
+                "type": "object",
+                "properties": {
+                  "path": {
+                    "type": "string",
+                    "pattern": "^/data/(?:[^~/]|~[01])+(?:/(?:[^~/]|~[01])+)*$"
+                  }
+                },
+                "required": [
+                  "path"
+                ],
+                "additionalProperties": false
+              }
+            }
+          }
+        ],
+        "tool_choice": "auto",
+        "max_tokens": 4096,
+        "temperature": 1,
+        "top_p": 0.95
+      },
+      "tool_loop": {
+        "status": 200,
+        "raw_response": "{\"id\":\"chatcmpl-f913514c-8f5d-4ae9-8c4a-6e76c56a5313\",\"choices\":[{\"index\":0,\"message\":{\"content\":\"{\\\"value\\\": 17}\",\"role\":\"assistant\",\"reasoning_content\":\"The tool returned {\\\"value\\\":17}. The user wants me to return only JSON {\\\"value\\\":17} from tool result, or error if rejected. So I should output exactly that JSON.\"},\"finish_reason\":\"stop\",\"logprobs\":null}],\"created\":1794079561,\"model\":\"private/nvidia/nemotron-3.5-super-120b-a12b\",\"service_tier\":null,\"system_fingerprint\":null,\"object\":\"chat.completion\",\"usage\":{\"prompt_tokens\":421,\"completion_tokens\":49,\"total_tokens\":470,\"prompt_tokens_details\":{\"audio_tokens\":null,\"cached_tokens\":0},\"completion_tokens_details\":{\"accepted_prediction_tokens\":null,\"audio_tokens\":null,\"reasoning_tokens\":40,\"rejected_prediction_tokens\":null}}}",
+        "response_sha256": "f70e914acfbc4a763726402a8ccabd2759eb04d61ff925f00eebe11752a6b6b0",
+        "response_model": "private/nvidia/nemotron-3.5-super-120b-a12b",
+        "usage": {
+          "prompt_tokens": 421,
+          "completion_tokens": 49,
+          "total_tokens": 470,
+          "prompt_tokens_details": {
+            "audio_tokens": null,
+            "cached_tokens": 0
+          },
+          "completion_tokens_details": {
+            "accepted_prediction_tokens": null,
+            "audio_tokens": null,
+            "reasoning_tokens": 40,
+            "rejected_prediction_tokens": null
+          }
+        },
+        "finish_reasons": [
+          "stop"
+        ],
+        "duration_s": 0.9018237590789795,
+        "request": {
+          "model": "nvidia/nemotron-3.5-super-vl-120b-a12b",
+          "messages": [
+            {
+              "role": "user",
+              "content": "Object: {\"data\":{\"point\":17}}. Call select_numeric with exact JSON pointer of point. Do not select parent object."
+            },
+            {
+              "content": null,
+              "tool_calls": [
+                {
+                  "id": "call-2385b531-2303-42cf-878b-f667648123ad",
+                  "type": "function",
+                  "function": {
+                    "name": "select_numeric",
+                    "arguments": "{\"path\":\"/data/point\"}"
+                  }
+                }
+              ],
+              "role": "assistant",
+              "reasoning_content": "The user wants me to call select_numeric with the exact JSON pointer of \"point\". The object is {\"data\":{\"point\":17}}. The JSON pointer would be /data/point. I need to call the function with path: \"/data/point\"."
+            },
+            {
+              "role": "tool",
+              "tool_call_id": "call-2385b531-2303-42cf-878b-f667648123ad",
+              "content": "{\"value\": 17}"
+            },
+            {
+              "role": "user",
+              "content": "Return only JSON {\"value\":17} from tool result, or {\"error\":\"invalid_selector\"} when rejected."
+            }
+          ],
+          "tools": [
+            {
+              "type": "function",
+              "function": {
+                "name": "select_numeric",
+                "description": "Select exact JSON pointer of numeric point already supplied. No lookup.",
+                "parameters": {
+                  "type": "object",
+                  "properties": {
+                    "path": {
+                      "type": "string",
+                      "pattern": "^/data/(?:[^~/]|~[01])+(?:/(?:[^~/]|~[01])+)*$"
+                    }
+                  },
+                  "required": [
+                    "path"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          ],
+          "tool_choice": "auto",
+          "max_tokens": 4096,
+          "temperature": 1,
+          "top_p": 0.95
+        },
+        "message": {
+          "content": "{\"value\": 17}",
+          "role": "assistant",
+          "reasoning_content": "The tool returned {\"value\":17}. The user wants me to return only JSON {\"value\":17} from tool result, or error if rejected. So I should output exactly that JSON."
+        }
+      }
+    },
+    {
+      "model": "nvidia/nemotron-3.5-super-vl-120b-a12b",
+      "treatment": "anchored",
+      "repeat": 1,
+      "request": {
+        "model": "nvidia/nemotron-3.5-super-vl-120b-a12b",
+        "messages": [
+          {
+            "role": "user",
+            "content": "Object: {\"data\":{\"point\":17}}. Call select_numeric with exact JSON pointer of point. Do not select parent object."
+          }
+        ],
+        "tools": [
+          {
+            "type": "function",
+            "function": {
+              "name": "select_numeric",
+              "description": "Select exact JSON pointer of numeric point already supplied. No lookup.",
+              "parameters": {
+                "type": "object",
+                "properties": {
+                  "path": {
+                    "type": "string",
+                    "pattern": "^/data/(?:[^~/]|~[01])+(?:/(?:[^~/]|~[01])+)*$"
+                  }
+                },
+                "required": [
+                  "path"
+                ],
+                "additionalProperties": false
+              }
+            }
+          }
+        ],
+        "tool_choice": "auto",
+        "max_tokens": 4096,
+        "temperature": 1,
+        "top_p": 0.95
+      },
+      "state": "completed",
+      "first": {
+        "status": 200,
+        "raw_response": "{\"id\":\"chatcmpl-bda21bfe-666d-41ba-b266-0c8cf2f08916\",\"choices\":[{\"index\":0,\"message\":{\"content\":null,\"tool_calls\":[{\"id\":\"call-7a498efe-0339-45cf-9abc-fa759b2f4dae\",\"type\":\"function\",\"function\":{\"name\":\"select_numeric\",\"arguments\":\"{\\\"path\\\":\\\"/data/point\\\"}\"}}],\"role\":\"assistant\",\"reasoning_content\":\"The user wants me to call select_numeric with the exact JSON pointer of the point in the object {\\\"data\\\":{\\\"point\\\":17}}.\\n\\nThe object structure is:\\n- data\\n  - point: 17\\n\\nThe JSON pointer would be /data/point\\n\\nI need to call select_numeric with path: \\\"/data/point\\\"\"},\"finish_reason\":\"tool_calls\",\"logprobs\":null}],\"created\":1794079562,\"model\":\"private/nvidia/nemotron-3.5-super-120b-a12b\",\"service_tier\":null,\"system_fingerprint\":null,\"object\":\"chat.completion\",\"usage\":{\"prompt_tokens\":342,\"completion_tokens\":97,\"total_tokens\":439,\"prompt_tokens_details\":{\"audio_tokens\":null,\"cached_tokens\":0},\"completion_tokens_details\":{\"accepted_prediction_tokens\":null,\"audio_tokens\":null,\"reasoning_tokens\":68,\"rejected_prediction_tokens\":null}}}",
+        "response_sha256": "993dd171294f2fb7e4ab990ec9b9f954e8893757d0764c9663a1aeea3a2d0528",
+        "response_model": "private/nvidia/nemotron-3.5-super-120b-a12b",
+        "usage": {
+          "prompt_tokens": 342,
+          "completion_tokens": 97,
+          "total_tokens": 439,
+          "prompt_tokens_details": {
+            "audio_tokens": null,
+            "cached_tokens": 0
+          },
+          "completion_tokens_details": {
+            "accepted_prediction_tokens": null,
+            "audio_tokens": null,
+            "reasoning_tokens": 68,
+            "rejected_prediction_tokens": null
+          }
+        },
+        "finish_reasons": [
+          "tool_calls"
+        ],
+        "duration_s": 1.7282233238220215
+      },
+      "function_call_verified": true,
+      "continuation_request": {
+        "model": "nvidia/nemotron-3.5-super-vl-120b-a12b",
+        "messages": [
+          {
+            "role": "user",
+            "content": "Object: {\"data\":{\"point\":17}}. Call select_numeric with exact JSON pointer of point. Do not select parent object."
+          },
+          {
+            "content": null,
+            "tool_calls": [
+              {
+                "id": "call-7a498efe-0339-45cf-9abc-fa759b2f4dae",
+                "type": "function",
+                "function": {
+                  "name": "select_numeric",
+                  "arguments": "{\"path\":\"/data/point\"}"
+                }
+              }
+            ],
+            "role": "assistant",
+            "reasoning_content": "The user wants me to call select_numeric with the exact JSON pointer of the point in the object {\"data\":{\"point\":17}}.\n\nThe object structure is:\n- data\n  - point: 17\n\nThe JSON pointer would be /data/point\n\nI need to call select_numeric with path: \"/data/point\""
+          },
+          {
+            "role": "tool",
+            "tool_call_id": "call-7a498efe-0339-45cf-9abc-fa759b2f4dae",
+            "content": "{\"value\": 17}"
+          },
+          {
+            "role": "user",
+            "content": "Return only JSON {\"value\":17} from tool result, or {\"error\":\"invalid_selector\"} when rejected."
+          }
+        ],
+        "tools": [
+          {
+            "type": "function",
+            "function": {
+              "name": "select_numeric",
+              "description": "Select exact JSON pointer of numeric point already supplied. No lookup.",
+              "parameters": {
+                "type": "object",
+                "properties": {
+                  "path": {
+                    "type": "string",
+                    "pattern": "^/data/(?:[^~/]|~[01])+(?:/(?:[^~/]|~[01])+)*$"
+                  }
+                },
+                "required": [
+                  "path"
+                ],
+                "additionalProperties": false
+              }
+            }
+          }
+        ],
+        "tool_choice": "auto",
+        "max_tokens": 4096,
+        "temperature": 1,
+        "top_p": 0.95
+      },
+      "tool_loop": {
+        "status": 200,
+        "raw_response": "{\"id\":\"chatcmpl-878f6396-f48a-4981-83e2-c38d059d7001\",\"choices\":[{\"index\":0,\"message\":{\"content\":\"{\\\"value\\\": 17}\",\"role\":\"assistant\",\"reasoning_content\":\"The tool result returned {\\\"value\\\":17}. The user wants only JSON {\\\"value\\\":17} from tool result, or {\\\"error\\\":\\\"invalid_selector\\\"} when rejected. So output exactly that JSON.\"},\"finish_reason\":\"stop\",\"logprobs\":null}],\"created\":1794079563,\"model\":\"private/nvidia/nemotron-3.5-super-120b-a12b\",\"service_tier\":null,\"system_fingerprint\":null,\"object\":\"chat.completion\",\"usage\":{\"prompt_tokens\":421,\"completion_tokens\":50,\"total_tokens\":471,\"prompt_tokens_details\":{\"audio_tokens\":null,\"cached_tokens\":0},\"completion_tokens_details\":{\"accepted_prediction_tokens\":null,\"audio_tokens\":null,\"reasoning_tokens\":41,\"rejected_prediction_tokens\":null}}}",
+        "response_sha256": "51e17123d965445c5f2e5feca6e5ff87a889d3882eb142bb36241f879216321e",
+        "response_model": "private/nvidia/nemotron-3.5-super-120b-a12b",
+        "usage": {
+          "prompt_tokens": 421,
+          "completion_tokens": 50,
+          "total_tokens": 471,
+          "prompt_tokens_details": {
+            "audio_tokens": null,
+            "cached_tokens": 0
+          },
+          "completion_tokens_details": {
+            "accepted_prediction_tokens": null,
+            "audio_tokens": null,
+            "reasoning_tokens": 41,
+            "rejected_prediction_tokens": null
+          }
+        },
+        "finish_reasons": [
+          "stop"
+        ],
+        "duration_s": 1.11240816116333,
+        "request": {
+          "model": "nvidia/nemotron-3.5-super-vl-120b-a12b",
+          "messages": [
+            {
+              "role": "user",
+              "content": "Object: {\"data\":{\"point\":17}}. Call select_numeric with exact JSON pointer of point. Do not select parent object."
+            },
+            {
+              "content": null,
+              "tool_calls": [
+                {
+                  "id": "call-7a498efe-0339-45cf-9abc-fa759b2f4dae",
+                  "type": "function",
+                  "function": {
+                    "name": "select_numeric",
+                    "arguments": "{\"path\":\"/data/point\"}"
+                  }
+                }
+              ],
+              "role": "assistant",
+              "reasoning_content": "The user wants me to call select_numeric with the exact JSON pointer of the point in the object {\"data\":{\"point\":17}}.\n\nThe object structure is:\n- data\n  - point: 17\n\nThe JSON pointer would be /data/point\n\nI need to call select_numeric with path: \"/data/point\""
+            },
+            {
+              "role": "tool",
+              "tool_call_id": "call-7a498efe-0339-45cf-9abc-fa759b2f4dae",
+              "content": "{\"value\": 17}"
+            },
+            {
+              "role": "user",
+              "content": "Return only JSON {\"value\":17} from tool result, or {\"error\":\"invalid_selector\"} when rejected."
+            }
+          ],
+          "tools": [
+            {
+              "type": "function",
+              "function": {
+                "name": "select_numeric",
+                "description": "Select exact JSON pointer of numeric point already supplied. No lookup.",
+                "parameters": {
+                  "type": "object",
+                  "properties": {
+                    "path": {
+                      "type": "string",
+                      "pattern": "^/data/(?:[^~/]|~[01])+(?:/(?:[^~/]|~[01])+)*$"
+                    }
+                  },
+                  "required": [
+                    "path"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          ],
+          "tool_choice": "auto",
+          "max_tokens": 4096,
+          "temperature": 1,
+          "top_p": 0.95
+        },
+        "message": {
+          "content": "{\"value\": 17}",
+          "role": "assistant",
+          "reasoning_content": "The tool result returned {\"value\":17}. The user wants only JSON {\"value\":17} from tool result, or {\"error\":\"invalid_selector\"} when rejected. So output exactly that JSON."
+        }
+      }
+    },
+    {
+      "model": "nvidia/nemotron-3.5-super-vl-120b-a12b",
+      "treatment": "none",
+      "repeat": 0,
+      "request": {
+        "model": "nvidia/nemotron-3.5-super-vl-120b-a12b",
+        "messages": [
+          {
+            "role": "user",
+            "content": "Object: {\"data\":{\"point\":17}}. Call select_numeric with exact JSON pointer of point. Do not select parent object."
+          }
+        ],
+        "tools": [
+          {
+            "type": "function",
+            "function": {
+              "name": "select_numeric",
+              "description": "Select exact JSON pointer of numeric point already supplied. No lookup.",
+              "parameters": {
+                "type": "object",
+                "properties": {
+                  "path": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "path"
+                ],
+                "additionalProperties": false
+              }
+            }
+          }
+        ],
+        "tool_choice": "auto",
+        "max_tokens": 4096,
+        "temperature": 1,
+        "top_p": 0.95
+      },
+      "state": "completed",
+      "first": {
+        "status": 200,
+        "raw_response": "{\"id\":\"chatcmpl-29e9c09a-b909-429b-8a8d-957e2ea766da\",\"choices\":[{\"index\":0,\"message\":{\"content\":null,\"tool_calls\":[{\"id\":\"call-af5cb629-78bd-4b47-9033-0efdeebc452b\",\"type\":\"function\",\"function\":{\"name\":\"select_numeric\",\"arguments\":\"{\\\"path\\\":\\\"/data/point\\\"}\"}}],\"role\":\"assistant\",\"reasoning_content\":\"The user wants me to call `select_numeric` with the exact JSON pointer of the \\\"point\\\" field.\\nThe object is `{\\\"data\\\":{\\\"point\\\":17}}`.\\nJSON pointer for \\\"point\\\" would be `/data/point`.\\nI need to call the function with path: \\\"/data/point\\\".\\n\\nLet's check the function definition:\\n`select_numeric` takes `path` (string).\\nI will call it with path \\\"/data/point\\\".\"},\"finish_reason\":\"tool_calls\",\"logprobs\":null}],\"created\":1794079565,\"model\":\"private/nvidia/nemotron-3.5-super-120b-a12b\",\"service_tier\":null,\"system_fingerprint\":null,\"object\":\"chat.completion\",\"usage\":{\"prompt_tokens\":307,\"completion_tokens\":120,\"total_tokens\":427,\"prompt_tokens_details\":{\"audio_tokens\":null,\"cached_tokens\":0},\"completion_tokens_details\":{\"accepted_prediction_tokens\":null,\"audio_tokens\":null,\"reasoning_tokens\":91,\"rejected_prediction_tokens\":null}}}",
+        "response_sha256": "b54b3fc9e2df51fb7e67104da71a543a7be63af36ee27aa7318376eb72d3546b",
+        "response_model": "private/nvidia/nemotron-3.5-super-120b-a12b",
+        "usage": {
+          "prompt_tokens": 307,
+          "completion_tokens": 120,
+          "total_tokens": 427,
+          "prompt_tokens_details": {
+            "audio_tokens": null,
+            "cached_tokens": 0
+          },
+          "completion_tokens_details": {
+            "accepted_prediction_tokens": null,
+            "audio_tokens": null,
+            "reasoning_tokens": 91,
+            "rejected_prediction_tokens": null
+          }
+        },
+        "finish_reasons": [
+          "tool_calls"
+        ],
+        "duration_s": 1.2147045135498047
+      },
+      "function_call_verified": true,
+      "continuation_request": {
+        "model": "nvidia/nemotron-3.5-super-vl-120b-a12b",
+        "messages": [
+          {
+            "role": "user",
+            "content": "Object: {\"data\":{\"point\":17}}. Call select_numeric with exact JSON pointer of point. Do not select parent object."
+          },
+          {
+            "content": null,
+            "tool_calls": [
+              {
+                "id": "call-af5cb629-78bd-4b47-9033-0efdeebc452b",
+                "type": "function",
+                "function": {
+                  "name": "select_numeric",
+                  "arguments": "{\"path\":\"/data/point\"}"
+                }
+              }
+            ],
+            "role": "assistant",
+            "reasoning_content": "The user wants me to call `select_numeric` with the exact JSON pointer of the \"point\" field.\nThe object is `{\"data\":{\"point\":17}}`.\nJSON pointer for \"point\" would be `/data/point`.\nI need to call the function with path: \"/data/point\".\n\nLet's check the function definition:\n`select_numeric` takes `path` (string).\nI will call it with path \"/data/point\"."
+          },
+          {
+            "role": "tool",
+            "tool_call_id": "call-af5cb629-78bd-4b47-9033-0efdeebc452b",
+            "content": "{\"value\": 17}"
+          },
+          {
+            "role": "user",
+            "content": "Return only JSON {\"value\":17} from tool result, or {\"error\":\"invalid_selector\"} when rejected."
+          }
+        ],
+        "tools": [
+          {
+            "type": "function",
+            "function": {
+              "name": "select_numeric",
+              "description": "Select exact JSON pointer of numeric point already supplied. No lookup.",
+              "parameters": {
+                "type": "object",
+                "properties": {
+                  "path": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "path"
+                ],
+                "additionalProperties": false
+              }
+            }
+          }
+        ],
+        "tool_choice": "auto",
+        "max_tokens": 4096,
+        "temperature": 1,
+        "top_p": 0.95
+      },
+      "tool_loop": {
+        "status": 200,
+        "raw_response": "{\"id\":\"chatcmpl-421a675f-2942-4af8-ae59-f87716ac7758\",\"choices\":[{\"index\":0,\"message\":{\"content\":\"{\\\"value\\\":17}\",\"role\":\"assistant\",\"reasoning_content\":\"The user wants me to return only JSON {\\\"value\\\":17} from the tool result. The tool already returned {\\\"value\\\": 17}. I should output exactly that JSON format.\"},\"finish_reason\":\"stop\",\"logprobs\":null}],\"created\":1794079567,\"model\":\"private/nvidia/nemotron-3.5-super-120b-a12b\",\"service_tier\":null,\"system_fingerprint\":null,\"object\":\"chat.completion\",\"usage\":{\"prompt_tokens\":386,\"completion_tokens\":46,\"total_tokens\":432,\"prompt_tokens_details\":{\"audio_tokens\":null,\"cached_tokens\":0},\"completion_tokens_details\":{\"accepted_prediction_tokens\":null,\"audio_tokens\":null,\"reasoning_tokens\":38,\"rejected_prediction_tokens\":null}}}",
+        "response_sha256": "0dd418c6abf152afcd178bbef614c56ef5213436f13e151d9dd870e3a42004e7",
+        "response_model": "private/nvidia/nemotron-3.5-super-120b-a12b",
+        "usage": {
+          "prompt_tokens": 386,
+          "completion_tokens": 46,
+          "total_tokens": 432,
+          "prompt_tokens_details": {
+            "audio_tokens": null,
+            "cached_tokens": 0
+          },
+          "completion_tokens_details": {
+            "accepted_prediction_tokens": null,
+            "audio_tokens": null,
+            "reasoning_tokens": 38,
+            "rejected_prediction_tokens": null
+          }
+        },
+        "finish_reasons": [
+          "stop"
+        ],
+        "duration_s": 2.3509976863861084,
+        "request": {
+          "model": "nvidia/nemotron-3.5-super-vl-120b-a12b",
+          "messages": [
+            {
+              "role": "user",
+              "content": "Object: {\"data\":{\"point\":17}}. Call select_numeric with exact JSON pointer of point. Do not select parent object."
+            },
+            {
+              "content": null,
+              "tool_calls": [
+                {
+                  "id": "call-af5cb629-78bd-4b47-9033-0efdeebc452b",
+                  "type": "function",
+                  "function": {
+                    "name": "select_numeric",
+                    "arguments": "{\"path\":\"/data/point\"}"
+                  }
+                }
+              ],
+              "role": "assistant",
+              "reasoning_content": "The user wants me to call `select_numeric` with the exact JSON pointer of the \"point\" field.\nThe object is `{\"data\":{\"point\":17}}`.\nJSON pointer for \"point\" would be `/data/point`.\nI need to call the function with path: \"/data/point\".\n\nLet's check the function definition:\n`select_numeric` takes `path` (string).\nI will call it with path \"/data/point\"."
+            },
+            {
+              "role": "tool",
+              "tool_call_id": "call-af5cb629-78bd-4b47-9033-0efdeebc452b",
+              "content": "{\"value\": 17}"
+            },
+            {
+              "role": "user",
+              "content": "Return only JSON {\"value\":17} from tool result, or {\"error\":\"invalid_selector\"} when rejected."
+            }
+          ],
+          "tools": [
+            {
+              "type": "function",
+              "function": {
+                "name": "select_numeric",
+                "description": "Select exact JSON pointer of numeric point already supplied. No lookup.",
+                "parameters": {
+                  "type": "object",
+                  "properties": {
+                    "path": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "path"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          ],
+          "tool_choice": "auto",
+          "max_tokens": 4096,
+          "temperature": 1,
+          "top_p": 0.95
+        },
+        "message": {
+          "content": "{\"value\":17}",
+          "role": "assistant",
+          "reasoning_content": "The user wants me to return only JSON {\"value\":17} from the tool result. The tool already returned {\"value\": 17}. I should output exactly that JSON format."
+        }
+      }
+    },
+    {
+      "model": "nvidia/nemotron-3.5-super-vl-120b-a12b",
+      "treatment": "none",
+      "repeat": 1,
+      "request": {
+        "model": "nvidia/nemotron-3.5-super-vl-120b-a12b",
+        "messages": [
+          {
+            "role": "user",
+            "content": "Object: {\"data\":{\"point\":17}}. Call select_numeric with exact JSON pointer of point. Do not select parent object."
+          }
+        ],
+        "tools": [
+          {
+            "type": "function",
+            "function": {
+              "name": "select_numeric",
+              "description": "Select exact JSON pointer of numeric point already supplied. No lookup.",
+              "parameters": {
+                "type": "object",
+                "properties": {
+                  "path": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "path"
+                ],
+                "additionalProperties": false
+              }
+            }
+          }
+        ],
+        "tool_choice": "auto",
+        "max_tokens": 4096,
+        "temperature": 1,
+        "top_p": 0.95
+      },
+      "state": "completed",
+      "first": {
+        "status": 200,
+        "raw_response": "{\"id\":\"chatcmpl-428a79d0-08a4-4d45-b911-0ea33d1fc57d\",\"choices\":[{\"index\":0,\"message\":{\"content\":null,\"tool_calls\":[{\"id\":\"call-3425f600-3731-49c8-86e0-83501cdc867c\",\"type\":\"function\",\"function\":{\"name\":\"select_numeric\",\"arguments\":\"{\\\"path\\\":\\\"/data/point\\\"}\"}}],\"role\":\"assistant\",\"reasoning_content\":\"The user wants me to call select_numeric with the exact JSON pointer of the \\\"point\\\" field in the object {\\\"data\\\":{\\\"point\\\":17}}.\\n\\nThe JSON pointer for \\\"point\\\" would be \\\"/data/point\\\". The root is empty string, then \\\"data\\\", then \\\"point\\\". So path = \\\"/data/point\\\".\\n\\nLet me call the function.\"},\"finish_reason\":\"tool_calls\",\"logprobs\":null}],\"created\":1794079568,\"model\":\"private/nvidia/nemotron-3.5-super-120b-a12b\",\"service_tier\":null,\"system_fingerprint\":null,\"object\":\"chat.completion\",\"usage\":{\"prompt_tokens\":307,\"completion_tokens\":102,\"total_tokens\":409,\"prompt_tokens_details\":{\"audio_tokens\":null,\"cached_tokens\":0},\"completion_tokens_details\":{\"accepted_prediction_tokens\":null,\"audio_tokens\":null,\"reasoning_tokens\":73,\"rejected_prediction_tokens\":null}}}",
+        "response_sha256": "25f529add50ccedf16c67f02b4aba401e1433ea869db5e95ecd6482b87530cb2",
+        "response_model": "private/nvidia/nemotron-3.5-super-120b-a12b",
+        "usage": {
+          "prompt_tokens": 307,
+          "completion_tokens": 102,
+          "total_tokens": 409,
+          "prompt_tokens_details": {
+            "audio_tokens": null,
+            "cached_tokens": 0
+          },
+          "completion_tokens_details": {
+            "accepted_prediction_tokens": null,
+            "audio_tokens": null,
+            "reasoning_tokens": 73,
+            "rejected_prediction_tokens": null
+          }
+        },
+        "finish_reasons": [
+          "tool_calls"
+        ],
+        "duration_s": 3.0628578662872314
+      },
+      "function_call_verified": true,
+      "continuation_request": {
+        "model": "nvidia/nemotron-3.5-super-vl-120b-a12b",
+        "messages": [
+          {
+            "role": "user",
+            "content": "Object: {\"data\":{\"point\":17}}. Call select_numeric with exact JSON pointer of point. Do not select parent object."
+          },
+          {
+            "content": null,
+            "tool_calls": [
+              {
+                "id": "call-3425f600-3731-49c8-86e0-83501cdc867c",
+                "type": "function",
+                "function": {
+                  "name": "select_numeric",
+                  "arguments": "{\"path\":\"/data/point\"}"
+                }
+              }
+            ],
+            "role": "assistant",
+            "reasoning_content": "The user wants me to call select_numeric with the exact JSON pointer of the \"point\" field in the object {\"data\":{\"point\":17}}.\n\nThe JSON pointer for \"point\" would be \"/data/point\". The root is empty string, then \"data\", then \"point\". So path = \"/data/point\".\n\nLet me call the function."
+          },
+          {
+            "role": "tool",
+            "tool_call_id": "call-3425f600-3731-49c8-86e0-83501cdc867c",
+            "content": "{\"value\": 17}"
+          },
+          {
+            "role": "user",
+            "content": "Return only JSON {\"value\":17} from tool result, or {\"error\":\"invalid_selector\"} when rejected."
+          }
+        ],
+        "tools": [
+          {
+            "type": "function",
+            "function": {
+              "name": "select_numeric",
+              "description": "Select exact JSON pointer of numeric point already supplied. No lookup.",
+              "parameters": {
+                "type": "object",
+                "properties": {
+                  "path": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "path"
+                ],
+                "additionalProperties": false
+              }
+            }
+          }
+        ],
+        "tool_choice": "auto",
+        "max_tokens": 4096,
+        "temperature": 1,
+        "top_p": 0.95
+      },
+      "tool_loop": {
+        "status": 200,
+        "raw_response": "{\"id\":\"chatcmpl-397bb426-cc79-4850-992b-7aa032fcaa00\",\"choices\":[{\"index\":0,\"message\":{\"content\":\"{\\\"value\\\":17}\",\"role\":\"assistant\",\"reasoning_content\":\"The user wants only JSON {\\\"value\\\":17} from tool result, or error. The tool returned {\\\"value\\\":17}. So respond with exactly that JSON.\"},\"finish_reason\":\"stop\",\"logprobs\":null}],\"created\":1794079571,\"model\":\"private/nvidia/nemotron-3.5-super-120b-a12b\",\"service_tier\":null,\"system_fingerprint\":null,\"object\":\"chat.completion\",\"usage\":{\"prompt_tokens\":386,\"completion_tokens\":42,\"total_tokens\":428,\"prompt_tokens_details\":{\"audio_tokens\":null,\"cached_tokens\":0},\"completion_tokens_details\":{\"accepted_prediction_tokens\":null,\"audio_tokens\":null,\"reasoning_tokens\":34,\"rejected_prediction_tokens\":null}}}",
+        "response_sha256": "823db88efe94d147d4f694b19d446dc9bccf655be381cbb5a587a44f0c4271d3",
+        "response_model": "private/nvidia/nemotron-3.5-super-120b-a12b",
+        "usage": {
+          "prompt_tokens": 386,
+          "completion_tokens": 42,
+          "total_tokens": 428,
+          "prompt_tokens_details": {
+            "audio_tokens": null,
+            "cached_tokens": 0
+          },
+          "completion_tokens_details": {
+            "accepted_prediction_tokens": null,
+            "audio_tokens": null,
+            "reasoning_tokens": 34,
+            "rejected_prediction_tokens": null
+          }
+        },
+        "finish_reasons": [
+          "stop"
+        ],
+        "duration_s": 0.9042506217956543,
+        "request": {
+          "model": "nvidia/nemotron-3.5-super-vl-120b-a12b",
+          "messages": [
+            {
+              "role": "user",
+              "content": "Object: {\"data\":{\"point\":17}}. Call select_numeric with exact JSON pointer of point. Do not select parent object."
+            },
+            {
+              "content": null,
+              "tool_calls": [
+                {
+                  "id": "call-3425f600-3731-49c8-86e0-83501cdc867c",
+                  "type": "function",
+                  "function": {
+                    "name": "select_numeric",
+                    "arguments": "{\"path\":\"/data/point\"}"
+                  }
+                }
+              ],
+              "role": "assistant",
+              "reasoning_content": "The user wants me to call select_numeric with the exact JSON pointer of the \"point\" field in the object {\"data\":{\"point\":17}}.\n\nThe JSON pointer for \"point\" would be \"/data/point\". The root is empty string, then \"data\", then \"point\". So path = \"/data/point\".\n\nLet me call the function."
+            },
+            {
+              "role": "tool",
+              "tool_call_id": "call-3425f600-3731-49c8-86e0-83501cdc867c",
+              "content": "{\"value\": 17}"
+            },
+            {
+              "role": "user",
+              "content": "Return only JSON {\"value\":17} from tool result, or {\"error\":\"invalid_selector\"} when rejected."
+            }
+          ],
+          "tools": [
+            {
+              "type": "function",
+              "function": {
+                "name": "select_numeric",
+                "description": "Select exact JSON pointer of numeric point already supplied. No lookup.",
+                "parameters": {
+                  "type": "object",
+                  "properties": {
+                    "path": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "path"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          ],
+          "tool_choice": "auto",
+          "max_tokens": 4096,
+          "temperature": 1,
+          "top_p": 0.95
+        },
+        "message": {
+          "content": "{\"value\":17}",
+          "role": "assistant",
+          "reasoning_content": "The user wants only JSON {\"value\":17} from tool result, or error. The tool returned {\"value\":17}. So respond with exactly that JSON."
+        }
+      }
+    }
+  ],
+  "chat_requests": 24
+}

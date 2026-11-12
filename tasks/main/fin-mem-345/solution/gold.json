@@ -1,0 +1,48 @@
+{
+ "scoring": "value",
+ "memory_construct": "in_session_context",
+ "solution": {
+  "symbol": "MSN",
+  "close": 70000.0
+ },
+ "expects": [
+  {
+   "type": "str",
+   "path": "values.symbol",
+   "accept": [
+    "MSN"
+   ]
+  },
+  {
+   "type": "value",
+   "path": "values.close",
+   "gold": 70000.0,
+   "tol": {
+    "rel": 0.001
+   }
+  },
+  {
+   "type": "str",
+   "path": "source",
+   "accept": [
+    "market_movers"
+   ]
+  }
+ ],
+ "notes": "5 mã giảm có close: PNJ 15500, TCB 21600, LPB 36100, MSN 70000, BCM 38400 → MSN (70,000; #2 BCM 38,400 — cách xa). In-session retention реги trật tự.",
+ "memory_checks": {},
+ "provenance_contract": [
+  {
+   "tool": "market_movers",
+   "source": "vnstock",
+   "as_of": "2026-11-01T21:12:04.261634+07:00",
+   "matched_entry_id": "movers:vn30",
+   "response_sha256": "a8203b807b243068b924bf83bd810671386c59c2fdac6deabcc1ae9514a634ca"
+  }
+ ],
+ "required_payload_keys": [
+  "movers:vn30"
+ ],
+ "task_id": "fin-mem-345",
+ "payload_sha256": "5c451ece96e0efbf2d578f3d571fc0d8bba55d7ce79a9c7079f175b9680f26f3"
+}

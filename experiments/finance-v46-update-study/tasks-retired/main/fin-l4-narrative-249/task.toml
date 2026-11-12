@@ -1,0 +1,30 @@
+# Task benchmark harness tài chính (bộ 200+50) — sinh bởi tools/build_main.py
+id = "fin-l4-narrative-249"
+title = "Kiểm chứng nhận định BTCUSDT"
+version = 2
+created = "2026-11-01"
+level = "L4"
+family = "L4·I narrative-check"
+financebench_type = "claim verification"
+entity = "BTCUSDT"
+asset = "crypto"
+data_zone = "green"
+data_pairs = []
+snapshot_date = "2026-11-01"
+universe_cap = 0
+banned_tools = ["web_search", "web_fetch", "sentiment_score"]
+human_time_band = "15–60 phút"
+time_limit_min = 30
+tools_expected = ["vn_crypto_ohlcv"]
+mcp_payloads = "environment/payloads.json"
+snapshot_required = true
+split = "main"
+
+confirmatory_eligible = false
+exclusion_reason = "incomplete_narrative_evidence_rubric"
+
+[scoring]
+type = "verdict"
+gold = "solution/gold.json"
+oracle = "solution/oracle.py"
+grader = "tests/grader.py"

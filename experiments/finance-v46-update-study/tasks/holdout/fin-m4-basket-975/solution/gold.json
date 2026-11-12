@@ -1,0 +1,76 @@
+{
+  "task_id": "fin-m4-basket-975",
+  "scoring": "value",
+  "solution": {
+    "members": [
+      "ACB",
+      "HDB",
+      "TPB"
+    ],
+    "mean_close": 18683.3333
+  },
+  "split": "holdout",
+  "expects": [
+    {
+      "type": "set",
+      "path": "values.members",
+      "gold": [
+        "ACB",
+        "HDB",
+        "TPB"
+      ]
+    },
+    {
+      "type": "value",
+      "path": "values.mean_close",
+      "gold": 18683.3333,
+      "tol": {
+        "rel": 0.001
+      }
+    },
+    {
+      "type": "unit",
+      "path": "unit",
+      "accept": [
+        "đồng",
+        "VND",
+        "vnđ"
+      ]
+    },
+    {
+      "type": "str",
+      "path": "source",
+      "accept": [
+        "vn_equity_quote_batch"
+      ]
+    }
+  ],
+  "contract_version": 2,
+  "stratum": "memory",
+  "tier": "M4",
+  "subtier": "M4",
+  "memory_construct": "M4",
+  "notes": "Native-memory stratum (amendment 2026-11-11 d).",
+  "provenance_contract": [
+    {
+      "tool": "vn_equity_quote_batch",
+      "source": "vnstock",
+      "as_of": "2026-11-01T23:04:24.002593+07:00",
+      "matched_entry_id": "batch:banks1",
+      "response_sha256": "f34f28d0c86eac38fcf8951c1b7015a5a7e7cd9fd41ec9ed73970c147270510b"
+    }
+  ],
+  "provenance_catalog": [
+    {
+      "tool": "vn_equity_quote_batch",
+      "source": "vnstock",
+      "as_of": "2026-11-01T23:04:24.002593+07:00",
+      "matched_entry_id": "batch:banks1",
+      "response_sha256": "f34f28d0c86eac38fcf8951c1b7015a5a7e7cd9fd41ec9ed73970c147270510b"
+    }
+  ],
+  "payload_sha256": "a9f6c5bbc88e2d5ce9db39d6b717bd795947f40d723a18f390e57d9777d38427",
+  "required_payload_keys": [
+    "batch:banks1"
+  ]
+}

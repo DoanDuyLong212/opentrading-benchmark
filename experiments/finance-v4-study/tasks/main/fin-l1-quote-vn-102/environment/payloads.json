@@ -1,0 +1,25 @@
+{
+ "snapshot_date": "2026-11-01",
+ "note": "Envelope MCP ghi lúc tạo task. Key = mã payload nội bộ; envelope giữ nguyên data+provenance+availability.",
+ "tools": {
+  "vnq:OCB": {
+   "tool": "vn_quote_history",
+   "params": {
+    "symbol": "OCB"
+   },
+   "envelope": {
+    "data": {
+     "symbol": "OCB",
+     "last": 10.6,
+     "last_t": "2026-10-30"
+    },
+    "provenance": {
+     "source": "vnstock",
+     "as_of": "2026-11-01T22:40:51.796326+07:00",
+     "data_time": "2026-10-30"
+    },
+    "availability": "available"
+   }
+  }
+ }
+}

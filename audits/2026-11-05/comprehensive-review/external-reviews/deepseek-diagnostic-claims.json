@@ -1,0 +1,1231 @@
+{
+  "source_document": {
+    "path": "opencode-review.md",
+    "sha256": "c4a43d15be93c077468c18f9ee048641f5a3a97c87e69fc917da34d9e836b23b"
+  },
+  "all_started": {
+    "started": 84,
+    "status_ok": 31,
+    "primary": 30,
+    "errors": 53,
+    "all_started_success_rate": 0.35714285714285715,
+    "completed_success_rate": 0.967741935483871
+  },
+  "all_started_per_arm": {
+    "opentrading_baseline": {
+      "started": 22,
+      "status_ok": 6,
+      "primary": 6,
+      "errors": 16,
+      "all_started_success_rate": 0.2727272727272727,
+      "completed_success_rate": 1.0
+    },
+    "opentrading_finance": {
+      "started": 22,
+      "status_ok": 6,
+      "primary": 5,
+      "errors": 16,
+      "all_started_success_rate": 0.22727272727272727,
+      "completed_success_rate": 0.8333333333333334
+    },
+    "opencode": {
+      "started": 20,
+      "status_ok": 9,
+      "primary": 9,
+      "errors": 11,
+      "all_started_success_rate": 0.45,
+      "completed_success_rate": 1.0
+    },
+    "dsh": {
+      "started": 20,
+      "status_ok": 10,
+      "primary": 10,
+      "errors": 10,
+      "all_started_success_rate": 0.5,
+      "completed_success_rate": 1.0
+    }
+  },
+  "by_pass": {
+    "A": {
+      "directory": "results/diag-deepseek-flash-20261105",
+      "settings": {
+        "arms": [
+          "opentrading_baseline",
+          "opentrading_finance",
+          "opencode",
+          "dsh"
+        ],
+        "clock_policy": "snapshot_as_of; OpenTrading native now pinned; other native clocks observed in wire capture",
+        "conditions": {
+          "dsh": {
+            "native_arm": "dsh",
+            "prompt_variant": null
+          },
+          "opencode": {
+            "native_arm": "opencode",
+            "prompt_variant": null
+          },
+          "opentrading_baseline": {
+            "native_arm": "opentrading",
+            "prompt_variant": "baseline"
+          },
+          "opentrading_finance": {
+            "native_arm": "opentrading",
+            "prompt_variant": "finance"
+          }
+        },
+        "effort": "none",
+        "freeze_sha256": null,
+        "include_quarantined": false,
+        "max_output_tokens": 2048,
+        "max_requests": 24,
+        "max_total_tokens": 48000,
+        "model": "nvidia/deepseek-ai/deepseek-v4.1-flash",
+        "pause": 2.0,
+        "provider_timeout_s": 180.0,
+        "quarantined_tasks": {
+          "fin-l1-macro-01": "ambiguous_cpi_series_dimension",
+          "fin-l4-narrative-01": "incomplete_narrative_evidence_rubric"
+        },
+        "retry": 0,
+        "retry_backoff": 4,
+        "runs": 2,
+        "seed": 20261104,
+        "split": "pilot",
+        "timeout": 900.0
+      },
+      "counts": {
+        "started": 40,
+        "status_ok": 9,
+        "primary": 8,
+        "errors": 31,
+        "all_started_success_rate": 0.2,
+        "completed_success_rate": 0.8888888888888888
+      },
+      "per_arm": {
+        "opentrading_baseline": {
+          "started": 10,
+          "status_ok": 2,
+          "primary": 2,
+          "errors": 8,
+          "all_started_success_rate": 0.2,
+          "completed_success_rate": 1.0
+        },
+        "opentrading_finance": {
+          "started": 10,
+          "status_ok": 2,
+          "primary": 1,
+          "errors": 8,
+          "all_started_success_rate": 0.1,
+          "completed_success_rate": 0.5
+        },
+        "opencode": {
+          "started": 10,
+          "status_ok": 3,
+          "primary": 3,
+          "errors": 7,
+          "all_started_success_rate": 0.3,
+          "completed_success_rate": 1.0
+        },
+        "dsh": {
+          "started": 10,
+          "status_ok": 2,
+          "primary": 2,
+          "errors": 8,
+          "all_started_success_rate": 0.2,
+          "completed_success_rate": 1.0
+        }
+      },
+      "schedule_count": 40,
+      "watchdog_native_events": 2,
+      "watchdog_primary_notes": 0,
+      "watchdog_with_provider_error": 2
+    },
+    "B": {
+      "directory": "results/diag-deepseek-flash-20261105-passB",
+      "settings": {
+        "arms": [
+          "opentrading_baseline",
+          "opentrading_finance",
+          "opencode",
+          "dsh"
+        ],
+        "clock_policy": "snapshot_as_of; OpenTrading native now pinned; other native clocks observed in wire capture",
+        "conditions": {
+          "dsh": {
+            "native_arm": "dsh",
+            "prompt_variant": null
+          },
+          "opencode": {
+            "native_arm": "opencode",
+            "prompt_variant": null
+          },
+          "opentrading_baseline": {
+            "native_arm": "opentrading",
+            "prompt_variant": "baseline"
+          },
+          "opentrading_finance": {
+            "native_arm": "opentrading",
+            "prompt_variant": "finance"
+          }
+        },
+        "effort": "none",
+        "freeze_sha256": null,
+        "include_quarantined": false,
+        "max_output_tokens": 2048,
+        "max_requests": 24,
+        "max_total_tokens": 48000,
+        "model": "nvidia/deepseek-ai/deepseek-v4.1-flash",
+        "pause": 2.0,
+        "provider_timeout_s": 240.0,
+        "quarantined_tasks": {
+          "fin-l1-macro-01": "ambiguous_cpi_series_dimension",
+          "fin-l4-narrative-01": "incomplete_narrative_evidence_rubric"
+        },
+        "retry": 0,
+        "retry_backoff": 4,
+        "runs": 2,
+        "seed": 20261104,
+        "split": "pilot",
+        "timeout": 900.0
+      },
+      "counts": {
+        "started": 40,
+        "status_ok": 22,
+        "primary": 22,
+        "errors": 18,
+        "all_started_success_rate": 0.55,
+        "completed_success_rate": 1.0
+      },
+      "per_arm": {
+        "opentrading_baseline": {
+          "started": 10,
+          "status_ok": 4,
+          "primary": 4,
+          "errors": 6,
+          "all_started_success_rate": 0.4,
+          "completed_success_rate": 1.0
+        },
+        "opentrading_finance": {
+          "started": 10,
+          "status_ok": 4,
+          "primary": 4,
+          "errors": 6,
+          "all_started_success_rate": 0.4,
+          "completed_success_rate": 1.0
+        },
+        "opencode": {
+          "started": 10,
+          "status_ok": 6,
+          "primary": 6,
+          "errors": 4,
+          "all_started_success_rate": 0.6,
+          "completed_success_rate": 1.0
+        },
+        "dsh": {
+          "started": 10,
+          "status_ok": 8,
+          "primary": 8,
+          "errors": 2,
+          "all_started_success_rate": 0.8,
+          "completed_success_rate": 1.0
+        }
+      },
+      "schedule_count": 40,
+      "watchdog_native_events": 7,
+      "watchdog_primary_notes": 7,
+      "watchdog_with_provider_error": 0
+    },
+    "C1": {
+      "directory": "results/diag-deepseek-flash-20261105-passC",
+      "settings": {
+        "arms": [
+          "opentrading_baseline"
+        ],
+        "clock_policy": "snapshot_as_of; OpenTrading native now pinned; other native clocks observed in wire capture",
+        "conditions": {
+          "opentrading_baseline": {
+            "native_arm": "opentrading",
+            "prompt_variant": "baseline"
+          }
+        },
+        "effort": "none",
+        "freeze_sha256": null,
+        "include_quarantined": false,
+        "max_output_tokens": 2048,
+        "max_requests": 24,
+        "max_total_tokens": 48000,
+        "model": "nvidia/deepseek-ai/deepseek-v4.1-flash",
+        "pause": 2.0,
+        "provider_timeout_s": 240.0,
+        "quarantined_tasks": {
+          "fin-l1-macro-01": "ambiguous_cpi_series_dimension",
+          "fin-l4-narrative-01": "incomplete_narrative_evidence_rubric"
+        },
+        "retry": 0,
+        "retry_backoff": 4,
+        "runs": 2,
+        "seed": 20261104,
+        "split": "pilot",
+        "timeout": 900.0
+      },
+      "counts": {
+        "started": 2,
+        "status_ok": 0,
+        "primary": 0,
+        "errors": 2,
+        "all_started_success_rate": 0.0,
+        "completed_success_rate": null
+      },
+      "per_arm": {
+        "opentrading_baseline": {
+          "started": 2,
+          "status_ok": 0,
+          "primary": 0,
+          "errors": 2,
+          "all_started_success_rate": 0.0,
+          "completed_success_rate": null
+        },
+        "opentrading_finance": {
+          "started": 0,
+          "status_ok": 0,
+          "primary": 0,
+          "errors": 0,
+          "all_started_success_rate": null,
+          "completed_success_rate": null
+        },
+        "opencode": {
+          "started": 0,
+          "status_ok": 0,
+          "primary": 0,
+          "errors": 0,
+          "all_started_success_rate": null,
+          "completed_success_rate": null
+        },
+        "dsh": {
+          "started": 0,
+          "status_ok": 0,
+          "primary": 0,
+          "errors": 0,
+          "all_started_success_rate": null,
+          "completed_success_rate": null
+        }
+      },
+      "schedule_count": 2,
+      "watchdog_native_events": 2,
+      "watchdog_primary_notes": 2,
+      "watchdog_with_provider_error": 0
+    },
+    "C2": {
+      "directory": "results/diag-deepseek-flash-20261105-passC/driver2.log",
+      "settings": {
+        "arms": [
+          "opentrading_finance"
+        ],
+        "clock_policy": "snapshot_as_of; OpenTrading native now pinned; other native clocks observed in wire capture",
+        "conditions": {
+          "opentrading_finance": {
+            "native_arm": "opentrading",
+            "prompt_variant": "finance"
+          }
+        },
+        "effort": "none",
+        "freeze_sha256": null,
+        "include_quarantined": false,
+        "max_output_tokens": 2048,
+        "max_requests": 24,
+        "max_total_tokens": 48000,
+        "model": "nvidia/deepseek-ai/deepseek-v4.1-flash",
+        "pause": 2.0,
+        "provider_timeout_s": 240.0,
+        "quarantined_tasks": {
+          "fin-l1-macro-01": "ambiguous_cpi_series_dimension",
+          "fin-l4-narrative-01": "incomplete_narrative_evidence_rubric"
+        },
+        "retry": 0,
+        "retry_backoff": 4,
+        "runs": 2,
+        "seed": 20261104,
+        "split": "pilot",
+        "timeout": 900.0
+      },
+      "counts": {
+        "started": 2,
+        "status_ok": 0,
+        "primary": 0,
+        "errors": 2,
+        "all_started_success_rate": 0.0,
+        "completed_success_rate": null
+      },
+      "per_arm": {
+        "opentrading_baseline": {
+          "started": 0,
+          "status_ok": 0,
+          "primary": 0,
+          "errors": 0,
+          "all_started_success_rate": null,
+          "completed_success_rate": null
+        },
+        "opentrading_finance": {
+          "started": 2,
+          "status_ok": 0,
+          "primary": 0,
+          "errors": 2,
+          "all_started_success_rate": 0.0,
+          "completed_success_rate": null
+        },
+        "opencode": {
+          "started": 0,
+          "status_ok": 0,
+          "primary": 0,
+          "errors": 0,
+          "all_started_success_rate": null,
+          "completed_success_rate": null
+        },
+        "dsh": {
+          "started": 0,
+          "status_ok": 0,
+          "primary": 0,
+          "errors": 0,
+          "all_started_success_rate": null,
+          "completed_success_rate": null
+        }
+      },
+      "schedule_count": 2,
+      "watchdog_native_events": 2,
+      "watchdog_primary_notes": 1,
+      "watchdog_with_provider_error": 1
+    }
+  },
+  "published_B_preferred_A_fallback": {
+    "counts": {
+      "started": 40,
+      "status_ok": 25,
+      "primary": 24,
+      "errors": 15,
+      "all_started_success_rate": 0.6,
+      "completed_success_rate": 0.96
+    },
+    "per_arm": {
+      "opentrading_baseline": {
+        "started": 10,
+        "status_ok": 5,
+        "primary": 5,
+        "errors": 5,
+        "all_started_success_rate": 0.5,
+        "completed_success_rate": 1.0
+      },
+      "opentrading_finance": {
+        "started": 10,
+        "status_ok": 6,
+        "primary": 5,
+        "errors": 4,
+        "all_started_success_rate": 0.5,
+        "completed_success_rate": 0.8333333333333334
+      },
+      "opencode": {
+        "started": 10,
+        "status_ok": 6,
+        "primary": 6,
+        "errors": 4,
+        "all_started_success_rate": 0.6,
+        "completed_success_rate": 1.0
+      },
+      "dsh": {
+        "started": 10,
+        "status_ok": 8,
+        "primary": 8,
+        "errors": 2,
+        "all_started_success_rate": 0.8,
+        "completed_success_rate": 1.0
+      }
+    },
+    "chosen_sources": {
+      "B": 22,
+      "A": 3
+    },
+    "error_only_cells": 15
+  },
+  "latest_observed_attempt": {
+    "counts": {
+      "started": 40,
+      "status_ok": 22,
+      "primary": 22,
+      "errors": 18,
+      "all_started_success_rate": 0.55,
+      "completed_success_rate": 1.0
+    },
+    "per_arm": {
+      "opentrading_baseline": {
+        "started": 10,
+        "status_ok": 4,
+        "primary": 4,
+        "errors": 6,
+        "all_started_success_rate": 0.4,
+        "completed_success_rate": 1.0
+      },
+      "opentrading_finance": {
+        "started": 10,
+        "status_ok": 4,
+        "primary": 4,
+        "errors": 6,
+        "all_started_success_rate": 0.4,
+        "completed_success_rate": 1.0
+      },
+      "opencode": {
+        "started": 10,
+        "status_ok": 6,
+        "primary": 6,
+        "errors": 4,
+        "all_started_success_rate": 0.6,
+        "completed_success_rate": 1.0
+      },
+      "dsh": {
+        "started": 10,
+        "status_ok": 8,
+        "primary": 8,
+        "errors": 2,
+        "all_started_success_rate": 0.8,
+        "completed_success_rate": 1.0
+      }
+    }
+  },
+  "matched_complete_comparison": {
+    "opentrading_baseline": {
+      "matched_completed_cells": 5,
+      "small_primary_on_these_cells": 2,
+      "diagnostic_primary_on_these_cells": 5
+    },
+    "opentrading_finance": {
+      "matched_completed_cells": 6,
+      "small_primary_on_these_cells": 1,
+      "diagnostic_primary_on_these_cells": 5
+    },
+    "opencode": {
+      "matched_completed_cells": 6,
+      "small_primary_on_these_cells": 3,
+      "diagnostic_primary_on_these_cells": 6
+    },
+    "dsh": {
+      "matched_completed_cells": 8,
+      "small_primary_on_these_cells": 6,
+      "diagnostic_primary_on_these_cells": 8
+    }
+  },
+  "coverage": [
+    {
+      "task": "fin-l1-bctc-01",
+      "arm": "opentrading_baseline",
+      "completed": 1,
+      "primary": 1,
+      "missing_runs": [
+        2
+      ]
+    },
+    {
+      "task": "fin-l1-bctc-01",
+      "arm": "opentrading_finance",
+      "completed": 2,
+      "primary": 2,
+      "missing_runs": []
+    },
+    {
+      "task": "fin-l1-bctc-01",
+      "arm": "opencode",
+      "completed": 2,
+      "primary": 2,
+      "missing_runs": []
+    },
+    {
+      "task": "fin-l1-bctc-01",
+      "arm": "dsh",
+      "completed": 2,
+      "primary": 2,
+      "missing_runs": []
+    },
+    {
+      "task": "fin-l1-gold-01",
+      "arm": "opentrading_baseline",
+      "completed": 1,
+      "primary": 1,
+      "missing_runs": [
+        1
+      ]
+    },
+    {
+      "task": "fin-l1-gold-01",
+      "arm": "opentrading_finance",
+      "completed": 1,
+      "primary": 1,
+      "missing_runs": [
+        1
+      ]
+    },
+    {
+      "task": "fin-l1-gold-01",
+      "arm": "opencode",
+      "completed": 1,
+      "primary": 1,
+      "missing_runs": [
+        2
+      ]
+    },
+    {
+      "task": "fin-l1-gold-01",
+      "arm": "dsh",
+      "completed": 1,
+      "primary": 1,
+      "missing_runs": [
+        1
+      ]
+    },
+    {
+      "task": "fin-l1-quote-01",
+      "arm": "opentrading_baseline",
+      "completed": 0,
+      "primary": 0,
+      "missing_runs": [
+        1,
+        2
+      ]
+    },
+    {
+      "task": "fin-l1-quote-01",
+      "arm": "opentrading_finance",
+      "completed": 1,
+      "primary": 1,
+      "missing_runs": [
+        2
+      ]
+    },
+    {
+      "task": "fin-l1-quote-01",
+      "arm": "opencode",
+      "completed": 1,
+      "primary": 1,
+      "missing_runs": [
+        2
+      ]
+    },
+    {
+      "task": "fin-l1-quote-01",
+      "arm": "dsh",
+      "completed": 2,
+      "primary": 2,
+      "missing_runs": []
+    },
+    {
+      "task": "fin-l1-quote-02",
+      "arm": "opentrading_baseline",
+      "completed": 2,
+      "primary": 2,
+      "missing_runs": []
+    },
+    {
+      "task": "fin-l1-quote-02",
+      "arm": "opentrading_finance",
+      "completed": 1,
+      "primary": 1,
+      "missing_runs": [
+        2
+      ]
+    },
+    {
+      "task": "fin-l1-quote-02",
+      "arm": "opencode",
+      "completed": 1,
+      "primary": 1,
+      "missing_runs": [
+        2
+      ]
+    },
+    {
+      "task": "fin-l1-quote-02",
+      "arm": "dsh",
+      "completed": 2,
+      "primary": 2,
+      "missing_runs": []
+    },
+    {
+      "task": "fin-l5-compare-01",
+      "arm": "opentrading_baseline",
+      "completed": 1,
+      "primary": 1,
+      "missing_runs": [
+        2
+      ]
+    },
+    {
+      "task": "fin-l5-compare-01",
+      "arm": "opentrading_finance",
+      "completed": 1,
+      "primary": 0,
+      "missing_runs": [
+        2
+      ]
+    },
+    {
+      "task": "fin-l5-compare-01",
+      "arm": "opencode",
+      "completed": 1,
+      "primary": 1,
+      "missing_runs": [
+        2
+      ]
+    },
+    {
+      "task": "fin-l5-compare-01",
+      "arm": "dsh",
+      "completed": 1,
+      "primary": 1,
+      "missing_runs": [
+        1
+      ]
+    }
+  ],
+  "watchdog": {
+    "native_events": 13,
+    "primary_notes": 10,
+    "cooccurring_provider_errors": 3
+  },
+  "provider_counts": [
+    {
+      "pass": "A",
+      "status": "200",
+      "error": "",
+      "count": 21
+    },
+    {
+      "pass": "A",
+      "status": "502",
+      "error": "TimeoutError",
+      "count": 3
+    },
+    {
+      "pass": "A",
+      "status": "502",
+      "error": "URLError",
+      "count": 28
+    },
+    {
+      "pass": "A",
+      "status": "403",
+      "error": "previous upstream usage unknown; further requests denied",
+      "count": 21
+    },
+    {
+      "pass": "B",
+      "status": "403",
+      "error": "provider response model mismatch",
+      "count": 9
+    },
+    {
+      "pass": "B",
+      "status": "200",
+      "error": "",
+      "count": 60
+    },
+    {
+      "pass": "B",
+      "status": "502",
+      "error": "TimeoutError",
+      "count": 1
+    },
+    {
+      "pass": "B",
+      "status": "403",
+      "error": "previous upstream usage unknown; further requests denied",
+      "count": 2
+    },
+    {
+      "pass": "B",
+      "status": "502",
+      "error": "URLError",
+      "count": 1
+    },
+    {
+      "pass": "C1",
+      "status": "200",
+      "error": "",
+      "count": 3
+    },
+    {
+      "pass": "C2",
+      "status": "502",
+      "error": "TimeoutError",
+      "count": 1
+    },
+    {
+      "pass": "C2",
+      "status": "200",
+      "error": "",
+      "count": 2
+    }
+  ],
+  "response_models": [
+    {
+      "pass": "A",
+      "models": [
+        "deepseek-ai/deepseek-v4.1-flash"
+      ],
+      "count": 21
+    },
+    {
+      "pass": "B",
+      "models": [],
+      "count": 9
+    },
+    {
+      "pass": "B",
+      "models": [
+        "deepseek-ai/deepseek-v4.1-flash"
+      ],
+      "count": 60
+    },
+    {
+      "pass": "C1",
+      "models": [
+        "deepseek-ai/deepseek-v4.1-flash"
+      ],
+      "count": 3
+    },
+    {
+      "pass": "C2",
+      "models": [
+        "deepseek-ai/deepseek-v4.1-flash"
+      ],
+      "count": 2
+    }
+  ],
+  "usage": [
+    {
+      "pass": "A",
+      "measurement": "known_requests",
+      "value": 21
+    },
+    {
+      "pass": "A",
+      "measurement": "positive_reasoning_requests",
+      "value": 19
+    },
+    {
+      "pass": "A",
+      "measurement": "input_known",
+      "value": 65215
+    },
+    {
+      "pass": "A",
+      "measurement": "output_known",
+      "value": 5326
+    },
+    {
+      "pass": "A",
+      "measurement": "reasoning_known",
+      "value": 1006
+    },
+    {
+      "pass": "B",
+      "measurement": "known_requests",
+      "value": 60
+    },
+    {
+      "pass": "B",
+      "measurement": "positive_reasoning_requests",
+      "value": 47
+    },
+    {
+      "pass": "B",
+      "measurement": "input_known",
+      "value": 184989
+    },
+    {
+      "pass": "B",
+      "measurement": "output_known",
+      "value": 12257
+    },
+    {
+      "pass": "B",
+      "measurement": "reasoning_known",
+      "value": 1979
+    },
+    {
+      "pass": "C1",
+      "measurement": "known_requests",
+      "value": 3
+    },
+    {
+      "pass": "C1",
+      "measurement": "positive_reasoning_requests",
+      "value": 1
+    },
+    {
+      "pass": "C1",
+      "measurement": "input_known",
+      "value": 14402
+    },
+    {
+      "pass": "C1",
+      "measurement": "output_known",
+      "value": 564
+    },
+    {
+      "pass": "C1",
+      "measurement": "reasoning_known",
+      "value": 48
+    },
+    {
+      "pass": "C2",
+      "measurement": "known_requests",
+      "value": 2
+    },
+    {
+      "pass": "C2",
+      "measurement": "positive_reasoning_requests",
+      "value": 2
+    },
+    {
+      "pass": "C2",
+      "measurement": "input_known",
+      "value": 8633
+    },
+    {
+      "pass": "C2",
+      "measurement": "output_known",
+      "value": 669
+    },
+    {
+      "pass": "C2",
+      "measurement": "reasoning_known",
+      "value": 86
+    }
+  ],
+  "integrity": {
+    "A": {
+      "manifest_fingerprint_matches": true,
+      "input_trials_sha256": "11159807a9d6d91f6d25519ae386824fef7b62ca8c77c912afcc232b2b4584c2",
+      "manifest_sha256": "e7b3ba3200ab123a325e5f9b7950673e96036e10c0371d6e22deed8b29154e99",
+      "source_hash_mismatches": [],
+      "task_hash_mismatches": [],
+      "capture_count": 125,
+      "unique_trial_ids": true,
+      "physical_attempt_dirs": 40,
+      "unrecorded_attempt_dirs": [],
+      "recorded_but_missing_attempt_dirs": [],
+      "ot_source_hash_matches": true,
+      "ot_prompt_hashes_match": true
+    },
+    "B": {
+      "manifest_fingerprint_matches": true,
+      "input_trials_sha256": "f5b715ebf6a1b25d3517d5d29e4dd46e70197d08567ee006c0d65fabeb051426",
+      "manifest_sha256": "097bd21c5d65cb6bfd6d02016a318791cd3ff3469fad0c27e7307408a5156234",
+      "source_hash_mismatches": [],
+      "task_hash_mismatches": [],
+      "capture_count": 144,
+      "unique_trial_ids": true,
+      "physical_attempt_dirs": 40,
+      "unrecorded_attempt_dirs": [],
+      "recorded_but_missing_attempt_dirs": [],
+      "ot_source_hash_matches": true,
+      "ot_prompt_hashes_match": true
+    },
+    "C1": {
+      "manifest_fingerprint_matches": true,
+      "input_trials_sha256": "98b17a977becde652ba6285b42799203ccc436f764daa6cee834d0eba278c54f",
+      "manifest_sha256": "d451ecf675bbfbe017eed997178d4da52dd7d11047b792011dd7fd6cce0d0c7c",
+      "source_hash_mismatches": [],
+      "task_hash_mismatches": [],
+      "capture_count": 6,
+      "unique_trial_ids": true,
+      "physical_attempt_dirs": 2,
+      "unrecorded_attempt_dirs": [],
+      "recorded_but_missing_attempt_dirs": [],
+      "ot_source_hash_matches": true,
+      "ot_prompt_hashes_match": true
+    },
+    "C2": {
+      "manifest_fingerprint_matches": true,
+      "input_trials_sha256": "b113d89dea270066d0aff368ea102a57b1a75421aa46fb6649a40ee69c3d3a77",
+      "manifest_sha256": "fcbcb4a9f138e7aad84df8108fda8a35fe7c4334065a3dec61d9bce9660d4a30",
+      "source_hash_mismatches": [],
+      "task_hash_mismatches": [],
+      "capture_count": 6,
+      "unique_trial_ids": true,
+      "physical_attempt_dirs": 2,
+      "unrecorded_attempt_dirs": [],
+      "recorded_but_missing_attempt_dirs": [],
+      "ot_source_hash_matches": true,
+      "ot_prompt_hashes_match": true
+    }
+  },
+  "capture_failures": [],
+  "regrades": [
+    {
+      "pass": "A",
+      "trial_id": "fin-l1-bctc-01__opentrading_finance__r1",
+      "grade_success": true,
+      "matches_persisted": true,
+      "evidence_grounded": true,
+      "evidence_visible": true
+    },
+    {
+      "pass": "A",
+      "trial_id": "fin-l1-bctc-01__dsh__r1",
+      "grade_success": true,
+      "matches_persisted": true,
+      "evidence_grounded": true,
+      "evidence_visible": true
+    },
+    {
+      "pass": "A",
+      "trial_id": "fin-l1-bctc-01__opentrading_baseline__r1",
+      "grade_success": true,
+      "matches_persisted": true,
+      "evidence_grounded": true,
+      "evidence_visible": true
+    },
+    {
+      "pass": "A",
+      "trial_id": "fin-l1-bctc-01__opencode__r1",
+      "grade_success": true,
+      "matches_persisted": true,
+      "evidence_grounded": true,
+      "evidence_visible": true
+    },
+    {
+      "pass": "A",
+      "trial_id": "fin-l1-quote-02__dsh__r1",
+      "grade_success": true,
+      "matches_persisted": true,
+      "evidence_grounded": true,
+      "evidence_visible": true
+    },
+    {
+      "pass": "A",
+      "trial_id": "fin-l5-compare-01__opentrading_baseline__r1",
+      "grade_success": true,
+      "matches_persisted": true,
+      "evidence_grounded": true,
+      "evidence_visible": true
+    },
+    {
+      "pass": "A",
+      "trial_id": "fin-l5-compare-01__opencode__r1",
+      "grade_success": true,
+      "matches_persisted": true,
+      "evidence_grounded": true,
+      "evidence_visible": true
+    },
+    {
+      "pass": "A",
+      "trial_id": "fin-l5-compare-01__opentrading_finance__r1",
+      "grade_success": false,
+      "matches_persisted": true,
+      "evidence_grounded": true,
+      "evidence_visible": true
+    },
+    {
+      "pass": "A",
+      "trial_id": "fin-l1-quote-01__opencode__r1",
+      "grade_success": true,
+      "matches_persisted": true,
+      "evidence_grounded": true,
+      "evidence_visible": true
+    },
+    {
+      "pass": "B",
+      "trial_id": "fin-l1-bctc-01__dsh__r1",
+      "grade_success": true,
+      "matches_persisted": true,
+      "evidence_grounded": true,
+      "evidence_visible": true
+    },
+    {
+      "pass": "B",
+      "trial_id": "fin-l1-bctc-01__opentrading_baseline__r1",
+      "grade_success": true,
+      "matches_persisted": true,
+      "evidence_grounded": true,
+      "evidence_visible": true
+    },
+    {
+      "pass": "B",
+      "trial_id": "fin-l1-bctc-01__opencode__r1",
+      "grade_success": true,
+      "matches_persisted": true,
+      "evidence_grounded": true,
+      "evidence_visible": true
+    },
+    {
+      "pass": "B",
+      "trial_id": "fin-l1-quote-02__opentrading_baseline__r1",
+      "grade_success": true,
+      "matches_persisted": true,
+      "evidence_grounded": true,
+      "evidence_visible": true
+    },
+    {
+      "pass": "B",
+      "trial_id": "fin-l1-quote-02__opencode__r1",
+      "grade_success": true,
+      "matches_persisted": true,
+      "evidence_grounded": true,
+      "evidence_visible": true
+    },
+    {
+      "pass": "B",
+      "trial_id": "fin-l1-quote-02__opentrading_finance__r1",
+      "grade_success": true,
+      "matches_persisted": true,
+      "evidence_grounded": true,
+      "evidence_visible": true
+    },
+    {
+      "pass": "B",
+      "trial_id": "fin-l1-quote-02__dsh__r1",
+      "grade_success": true,
+      "matches_persisted": true,
+      "evidence_grounded": true,
+      "evidence_visible": true
+    },
+    {
+      "pass": "B",
+      "trial_id": "fin-l5-compare-01__opencode__r1",
+      "grade_success": true,
+      "matches_persisted": true,
+      "evidence_grounded": true,
+      "evidence_visible": true
+    },
+    {
+      "pass": "B",
+      "trial_id": "fin-l1-quote-01__opencode__r1",
+      "grade_success": true,
+      "matches_persisted": true,
+      "evidence_grounded": true,
+      "evidence_visible": true
+    },
+    {
+      "pass": "B",
+      "trial_id": "fin-l1-quote-01__opentrading_finance__r1",
+      "grade_success": true,
+      "matches_persisted": true,
+      "evidence_grounded": true,
+      "evidence_visible": true
+    },
+    {
+      "pass": "B",
+      "trial_id": "fin-l1-quote-01__dsh__r1",
+      "grade_success": true,
+      "matches_persisted": true,
+      "evidence_grounded": true,
+      "evidence_visible": true
+    },
+    {
+      "pass": "B",
+      "trial_id": "fin-l1-gold-01__opencode__r1",
+      "grade_success": true,
+      "matches_persisted": true,
+      "evidence_grounded": true,
+      "evidence_visible": true
+    },
+    {
+      "pass": "B",
+      "trial_id": "fin-l1-quote-02__opentrading_baseline__r2",
+      "grade_success": true,
+      "matches_persisted": true,
+      "evidence_grounded": true,
+      "evidence_visible": true
+    },
+    {
+      "pass": "B",
+      "trial_id": "fin-l1-quote-02__dsh__r2",
+      "grade_success": true,
+      "matches_persisted": true,
+      "evidence_grounded": true,
+      "evidence_visible": true
+    },
+    {
+      "pass": "B",
+      "trial_id": "fin-l5-compare-01__dsh__r2",
+      "grade_success": true,
+      "matches_persisted": true,
+      "evidence_grounded": true,
+      "evidence_visible": true
+    },
+    {
+      "pass": "B",
+      "trial_id": "fin-l1-quote-01__dsh__r2",
+      "grade_success": true,
+      "matches_persisted": true,
+      "evidence_grounded": true,
+      "evidence_visible": true
+    },
+    {
+      "pass": "B",
+      "trial_id": "fin-l1-gold-01__dsh__r2",
+      "grade_success": true,
+      "matches_persisted": true,
+      "evidence_grounded": true,
+      "evidence_visible": true
+    },
+    {
+      "pass": "B",
+      "trial_id": "fin-l1-gold-01__opentrading_finance__r2",
+      "grade_success": true,
+      "matches_persisted": true,
+      "evidence_grounded": true,
+      "evidence_visible": true
+    },
+    {
+      "pass": "B",
+      "trial_id": "fin-l1-gold-01__opentrading_baseline__r2",
+      "grade_success": true,
+      "matches_persisted": true,
+      "evidence_grounded": true,
+      "evidence_visible": true
+    },
+    {
+      "pass": "B",
+      "trial_id": "fin-l1-bctc-01__opencode__r2",
+      "grade_success": true,
+      "matches_persisted": true,
+      "evidence_grounded": true,
+      "evidence_visible": true
+    },
+    {
+      "pass": "B",
+      "trial_id": "fin-l1-bctc-01__dsh__r2",
+      "grade_success": true,
+      "matches_persisted": true,
+      "evidence_grounded": true,
+      "evidence_visible": true
+    },
+    {
+      "pass": "B",
+      "trial_id": "fin-l1-bctc-01__opentrading_finance__r2",
+      "grade_success": true,
+      "matches_persisted": true,
+      "evidence_grounded": true,
+      "evidence_visible": true
+    }
+  ],
+  "period_false_negative_candidate": {
+    "period": "2025 (period_label \"2025\"; bội số tính theo giá ngày kết thúc kỳ báo cáo, không phải bội số hiện tại)",
+    "frozen_result": false,
+    "same_text_without_unrelated_negation": true,
+    "official_result_preserved": true,
+    "interpretation": "Credible false-negative: negation concerns current multiples, not year2025. Single observationalcase cannot establish prompt-style cause."
+  },
+  "canary": {
+    "path": "audits/2026-11-05/nvidia-function-probe-deepseek-v41-flash.json",
+    "sha256": "d078ce590717254cc73d423d90345dde070ea2167c5abd2d94f1f6bf988c4f31",
+    "model": "deepseek-ai/deepseek-v4.1-flash",
+    "response_model": "deepseek-ai/deepseek-v4.1-flash",
+    "status": 200,
+    "catalog_status": 200,
+    "function_call_verified": true,
+    "tool_loop_status": 200,
+    "limitation": "Receipt contains summarized first response identity and tool continuation; no raw HTTP response hash/timestamp or second-response model identity stored."
+  },
+  "manifest_source_equal_across_passes": true,
+  "manifest_OT_inventory_equals_v3": true
+}

@@ -1,0 +1,32 @@
+# Task memory stratum — sinh 08/11/2026 (opencode-review §17)
+id = "fin-mem-327"
+title = "Memory — tổng doanh thu portfolio (L5)"
+version = 2
+created = "2026-11-08"
+level = "L5"
+family = "L5·M memory"
+financebench_type = "multi-turn memory"
+entity = "MSN,PNJ"
+asset = "vn_stock"
+data_zone = "green"
+data_pairs = ["fs:PNJ", "fs:MSN"]
+snapshot_date = "2026-11-01"
+universe_cap = 0
+banned_tools = ["web_search", "web_fetch", "sentiment_score"]
+human_time_band = "15–60 phút"
+time_limit_min = 45
+tools_expected = ["financial_statements"]
+mcp_payloads = "environment/payloads.json"
+snapshot_required = true
+split = "main"
+multiturn = true
+
+confirmatory_eligible = true
+
+track = "memory_multiturn"
+
+[scoring]
+type = "value"
+gold = "solution/gold.json"
+oracle = "solution/oracle.py"
+grader = "tests/grader.py"

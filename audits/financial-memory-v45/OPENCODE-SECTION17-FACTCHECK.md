@@ -1,0 +1,29 @@
+# §17 / §17.8 review — before any memory inference
+
+Reviewed 2026-11-08 against the actual versioned study, original root ten memory oracles, actual installed session CLI checks and controller source. The review document is evidence to assess, not executable authority. Latest user instruction caps **MAIN at250**, superseding the document's220. §17.8 cancels deleting18 old tasks. The base200 MAIN tasks are retained; the active study now has212 MAIN =200 existing +12 memory. Pilot has25 inventory tasks, but the one-turn confirmatory pilot still uses22 eligible tasks ×2repeats ×4arms =176/model, excluding memory. Holdout remains opaque and unused.
+
+## Findings and changes
+
+| Review claim | Check and disposition |
+|---|---|
+| Three harnesses can self-consent, therefore automatically accept memory cards | Permission/config symbols and binary string hits do not demonstrate user consent for a particular write or actual headless continuation. Do not activate model proposals or tool-text instructions. Only exact public user-authored operations are applied by the deterministic controller, with source session/turn/hash and explicit remember/update/forget intent. Native hard-deny remains effective. |
+| OC allow edit/bash/webfetch; DSH standalone B if continuation unavailable | Those permissions are unnecessary for this read-only evaluation. Actual OC session and DSH headless session-id interfaces were verified by the native worker. All arms receive the same read-only controlled notebook and session semantics. No deliberate loss of information for OC/DSH. |
+| 323 uses VCB20/21 | Stale §17.3 table. Actual §17.8/root task uses XAGUSD49.10, user buy50/target55/stop47, signed `(50−49.10)/49.10×100=1.83299…%`, rounded1.83. Study now requires structured plan fields, not2/3 loose numeric hits. User premises use their own trace, never fabricated market receipts. MAIN323 additionally needs a verified user-operand arithmetic bridge before MAIN memory admission; it is outside MINI. |
+| 324 HòaPhát alias proves persistence | HòaPhát→HPG is public knowledge and resolvable without memory. Replaced with private nonce `Lá Cam T7`→HPG and added a captured EIB distractor. Correct quote remainsHPG21 nghìn đồng/cổ phiếu on2026-10-30. This improves construct discrimination without changing the market value. |
+| 326 oracle handles delayed HDB by periods[-1] | That compares different reporting quarters, not a common-period ranking. Every bank has Q2/2026; the study now explicitly compares Q2/2026. VPB8775.909 tỷ is highest, TPB P/E6.14 lowest. Five statement responses plus one peer response require **six** source receipts, not two. |
+| 327 sum43975.73 | Recomputed from captured Q3/2026 MSN36981.036621863 +PNJ6994.690437483 =43975.727059346 tỷ. Explicit period/unit and absolute rounding tolerance replace the loose relative tolerance. |
+| 325 stale and328 repeated refusal are positive memory recall | They are negative controls. A system can pass without recalling a prior quote/refusal. Report them as stale-source resistance and refusal consistency, separately from preference recall. |
+| Existing oracles PASS ⇒ valid memory benchmark | All original10 oracles pass arithmetic self-consistency, but that does not establish causal memory, source authenticity, consent or native execution. Added explicit operation-source validation, new329update,330forget/abstention,331untrusted-source injection, and separate controlled evaluation. |
+| One2-turn pilot sufficient for memory | It demonstrates conversation continuation and use of prior tool output. It cannot show durable memory advantage. Keep this exact pilot and add only two small separate DEV controls: revision+revocation and historical-price versus fresh MCP. No MAIN memory inference belongs to this MINI. |
+
+## Controlled design and interpretation
+
+Four arms are OT notebook-on, OT notebook-off, OpenCode and DSH. Every arm receives identical seed turns and the same functional read-only authorized-user notebook. OT-on additionally exposes its native notebook integration; OT-off retains conversation context and the shared read tool. SessionB begins fresh for every arm in cross-session cases. User facts are separate from MCP financial evidence. No task gold, future turn, grader, task-ID-derived answer or model-generated card enters the authorized notebook. All stores are trial-local.
+
+The controller performs trusted explicit user operations with zero model inference. Models still process seed turns and all costs are recorded. This measures controlled application/retrieval, not autonomous formation of useful memories. Native model-generated storage is neither automatically consented nor counted as approved user input.
+
+[LongMemEval's official implementation](https://github.com/xiaowu0162/LongMemEval) covers extraction, cross-session reasoning, updates, time and abstention; [LoCoMo's official implementation](https://github.com/snap-research/locomo) uses long conversational histories. These motivate categories, not a claim that this tiny financial diagnostic reproduces either benchmark. N=3 episodes per arm/model in MINI cannot establish statistical superiority. A ceiling of3/3 across all arms is compatible with no demonstrated correctness advantage; costs and native integration uptake remain exploratory.
+
+## Remaining admission requirements
+
+The corpus audit validates15 memory fixtures (12MAIN+1pilot+2DEV) and has zero model calls. Actual native memory continuation, read-only/no-autowrite controls, complete/partial usage, interruption recovery, independent all-arm financial/narrative review, pinned latest-base merge and engineering approval still gate inference. MAIN memory remains under existing conditional-main authorization, with registered financial-pilot wins/guards plus a separate frozen validated memory schedule; this small diagnostic alone cannot promote it. Automatic one-turn grades and memory grades remain separate.

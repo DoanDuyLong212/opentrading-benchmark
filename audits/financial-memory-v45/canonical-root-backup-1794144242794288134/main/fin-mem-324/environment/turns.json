@@ -1,0 +1,47 @@
+{
+ "version": 1,
+ "mode": "memory",
+ "sessions": [
+  {
+   "id": "A",
+   "turns": [
+    {
+     "text": "Tôi quen gọi 'Hòa Phát' — nhớ giùm mã của nó, lần sau tôi hỏi theo tên gọi này."
+    }
+   ]
+  },
+  {
+   "id": "B",
+   "turns": [
+    {
+     "text": "Giá 'Hòa Phát' phiên gần nhất là bao nhiêu (nghìn đồng)? Trả object JSON: {\"values\":{\"symbol\":\"MÃ\",\"last\":0},\"period\":\"30/10/2026\",\"source\":\"vn_quote_history\",\"evidence\":[...]}",
+     "final": true
+    }
+   ]
+  }
+ ],
+ "memory_policy": {
+  "opentrading": {
+   "memory": {
+    "provider": "notebook",
+    "cards": true
+   },
+   "permissions": {
+    "defaultMode": "auto",
+    "autoAcknowledged": true
+   }
+  },
+  "opencode": {
+   "permission": {
+    "edit": "allow",
+    "bash": "allow",
+    "webfetch": "allow"
+   }
+  },
+  "dsh": {
+   "approval_policy": "allow-reads",
+   "session_query": true
+  }
+ },
+ "note": "Alias persistence — OT subjects/aliases; DSH session-query; OC core-only."
+}

@@ -1,0 +1,126 @@
+{
+  "collected": 537,
+  "progress": 354,
+  "failures": [
+    {
+      "index_1based": 147,
+      "status": "F",
+      "node": "experiments/finance-v45-study/tools/tests/test_independent_snapshot.py::test_real_stdio_records_schema_invalid_and_wrong_entity_calls"
+    },
+    {
+      "index_1based": 206,
+      "status": "F",
+      "node": "experiments/finance-v45-study/tools/tests/test_public_contract.py::test_common_endpoint_preserves_semantic_and_frozen_results[opentrading]"
+    },
+    {
+      "index_1based": 207,
+      "status": "F",
+      "node": "experiments/finance-v45-study/tools/tests/test_public_contract.py::test_common_endpoint_preserves_semantic_and_frozen_results[opentrading_baseline]"
+    },
+    {
+      "index_1based": 208,
+      "status": "F",
+      "node": "experiments/finance-v45-study/tools/tests/test_public_contract.py::test_common_endpoint_preserves_semantic_and_frozen_results[opencode]"
+    },
+    {
+      "index_1based": 209,
+      "status": "F",
+      "node": "experiments/finance-v45-study/tools/tests/test_public_contract.py::test_common_endpoint_preserves_semantic_and_frozen_results[dsh]"
+    },
+    {
+      "index_1based": 236,
+      "status": "F",
+      "node": "experiments/finance-v45-study/tools/tests/test_reproducibility.py::test_retry_fresh_workspaces_aggregates_and_shares_caps"
+    },
+    {
+      "index_1based": 237,
+      "status": "F",
+      "node": "experiments/finance-v45-study/tools/tests/test_reproducibility.py::test_timeout_cannot_pass_even_with_correct_answer"
+    },
+    {
+      "index_1based": 238,
+      "status": "F",
+      "node": "experiments/finance-v45-study/tools/tests/test_reproducibility.py::test_write_file_is_never_answer_rescue"
+    },
+    {
+      "index_1based": 240,
+      "status": "F",
+      "node": "experiments/finance-v45-study/tools/tests/test_reproducibility.py::test_recovery_after_completed_attempt_does_not_call_model"
+    },
+    {
+      "index_1based": 241,
+      "status": "F",
+      "node": "experiments/finance-v45-study/tools/tests/test_reproducibility.py::test_recovery_midstream_records_failure_unknown_usage"
+    },
+    {
+      "index_1based": 274,
+      "status": "F",
+      "node": "experiments/finance-v45-study/tools/tests/test_snapshot_server.py::test_build_tool_defs_union_and_schema"
+    },
+    {
+      "index_1based": 316,
+      "status": "F",
+      "node": "experiments/finance-v45-study/tools/tests/test_v43_study.py::test_common_description_preserves_production_metadata_and_constraints"
+    },
+    {
+      "index_1based": 317,
+      "status": "F",
+      "node": "experiments/finance-v45-study/tools/tests/test_v43_study.py::test_two_registered_model_caps_and_four_conditions_have_fixed_schedule"
+    },
+    {
+      "index_1based": 318,
+      "status": "F",
+      "node": "experiments/finance-v45-study/tools/tests/test_v43_study.py::test_all_corpus_gold_and_primary_graders_remain_byte_exact_v42"
+    },
+    {
+      "index_1based": 320,
+      "status": "F",
+      "node": "experiments/finance-v45-study/tools/tests/test_v43_study.py::test_seal_creates_both_model_manifests_before_inference_and_detects_drift"
+    },
+    {
+      "index_1based": 343,
+      "status": "F",
+      "node": "experiments/finance-v45-study/tools/tests/test_v44_gate.py::test_four_phase_commands_and_budgets"
+    },
+    {
+      "index_1based": 344,
+      "status": "F",
+      "node": "experiments/finance-v45-study/tools/tests/test_v44_gate.py::test_gate_real_trial_shape_answer_path[answer0-final_json-ok-1-0]"
+    },
+    {
+      "index_1based": 345,
+      "status": "F",
+      "node": "experiments/finance-v45-study/tools/tests/test_v44_gate.py::test_gate_real_trial_shape_answer_path[answer1-final_json-ok-1-0]"
+    },
+    {
+      "index_1based": 346,
+      "status": "F",
+      "node": "experiments/finance-v45-study/tools/tests/test_v44_gate.py::test_gate_real_trial_shape_answer_path[answer2-final_json-ok-0-0]"
+    },
+    {
+      "index_1based": 347,
+      "status": "F",
+      "node": "experiments/finance-v45-study/tools/tests/test_v44_gate.py::test_gate_real_trial_shape_answer_path[None-missing-ok-0-1]"
+    },
+    {
+      "index_1based": 348,
+      "status": "F",
+      "node": "experiments/finance-v45-study/tools/tests/test_v44_gate.py::test_gate_real_trial_shape_answer_path[None-missing-timeout-0-1]"
+    },
+    {
+      "index_1based": 349,
+      "status": "F",
+      "node": "experiments/finance-v45-study/tools/tests/test_v44_gate.py::test_gate_real_trial_shape_answer_path[answer5-final_json-ok-0-0]"
+    },
+    {
+      "index_1based": 353,
+      "status": "F",
+      "node": "experiments/finance-v45-study/tools/tests/test_v44_gate.py::test_supervisor_actual_driver_cli_matches_presealed_manifest[bolt-smoke]"
+    },
+    {
+      "index_1based": 354,
+      "status": "F",
+      "node": "experiments/finance-v45-study/tools/tests/test_v44_gate.py::test_supervisor_actual_driver_cli_matches_presealed_manifest[bolt-pilot]"
+    }
+  ]
+}

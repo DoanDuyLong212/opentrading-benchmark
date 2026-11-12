@@ -1,0 +1,61 @@
+{
+  "task_id": "fin-l4-narrative-246",
+  "scoring": "verdict",
+  "solution": {
+    "verdict": "sai"
+  },
+  "as_of": "2026-11-01T23:58:30.078110+07:00",
+  "split": "main",
+  "verdict_accept": [
+    "sai",
+    "false",
+    "không đúng",
+    "không chính xác"
+  ],
+  "verdict_reject": [
+    "đúng",
+    "true",
+    "chính xác"
+  ],
+  "evidence": {
+    "paths": [
+      "note"
+    ],
+    "min_hits": 1,
+    "numbers": [
+      4.05,
+      4.07,
+      4.16,
+      4.16,
+      4.11,
+      4.04,
+      4.04,
+      4.04,
+      4,
+      3.98
+    ]
+  },
+  "contract_version": 2,
+  "provenance_contract": [
+    {
+      "tool": "vn_quote_history",
+      "source": "vnstock",
+      "as_of": "2026-11-01T23:58:30.078110+07:00",
+      "matched_entry_id": "vnq10:SCR",
+      "response_sha256": "970a75cc361f9941af4825b9eb9c78ca8423f55f253b88246ed5e55ba5391525"
+    }
+  ],
+  "payload_sha256": "c250c282e6dfda3642e9a561e0ad959405d0e317eabbd8e88302000e03bbb660",
+  "provenance_catalog": [
+    {
+      "tool": "vn_quote_history",
+      "source": "vnstock",
+      "as_of": "2026-11-01T23:58:30.078110+07:00",
+      "matched_entry_id": "vnq10:SCR",
+      "response_sha256": "970a75cc361f9941af4825b9eb9c78ca8423f55f253b88246ed5e55ba5391525"
+    }
+  ],
+  "required_payload_keys": [
+    "vnq10:SCR"
+  ]
+}

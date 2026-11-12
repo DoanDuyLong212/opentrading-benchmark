@@ -1,0 +1,58 @@
+{
+  "pass": true,
+  "changed_source_paths": [],
+  "bound_runtime_receipt_sha256": "4486645e6fc6fe0bb799c48113e3ab7312c7cba8fb8c51235cd7f516506295b2",
+  "files": {
+    "src/core/agent.ts": "f8f69c674f50712b30eee3241871ff20bda83d4c811ee7fd95e3e9962920dca8",
+    "src/core/events.ts": "2b7187257eb0899d93f33f129f56f48f7685267272f1f72c61ae213bb515386b",
+    "src/core/finance-policy.ts": "20c0a0e4cddc6f986c1f9b8b012fe8b6525ce1d25569680c91f2dac48cb8f040",
+    "src/core/tools/registry.ts": "61b337199788dbf7d3510306de530b6a86e8bf06c0f2f5ec88064d772a05730f",
+    "test/agent.test.ts": "e617cacd7a94052735452717657b574d72fe841c346d3b3e57306be0d626a177",
+    "test/prompt.test.ts": "a031f9834845c65fa2e1fc73a00c3d8b64f1ec9fed4214373664e6a6bc0a337d"
+  },
+  "full_native": {
+    "pass": 1096,
+    "skip": 2,
+    "fail": 0,
+    "tests": 1098,
+    "files": 101,
+    "expect_calls": 11140,
+    "seconds": 138.69,
+    "log": "test-artifacts/v44-full-native-post-compute-schema.log",
+    "note": "Final full execution after all native runtime source and schema-profile fixes. Later finance prompt-only trim and tighter <=1000-character prompt test were verified by the focused prompt suite; native runtime source unchanged."
+  },
+  "targeted": {
+    "pass": 144,
+    "fail": 0,
+    "expect_calls": 785,
+    "seconds": 26.29,
+    "log": "test-artifacts/v44-targeted-post-compute-schema.log"
+  },
+  "typecheck_exit_code": 0,
+  "final_prompt": {
+    "own_assembled_characters": 997,
+    "own_assembled_utf8_bytes": 1218,
+    "tiers": [
+      "A",
+      "B",
+      "C"
+    ],
+    "no_dropped_or_truncated_layers": true,
+    "excludes_native_mcp_instructions": true,
+    "actual_wire": "Independent final installed B1 wire capture measured separately; see v44-compact-assembled-system.json for own assembly only.",
+    "prompt_test": {
+      "pass": 13,
+      "fail": 0,
+      "expect_calls": 98,
+      "log": "test-artifacts/v44-prompt-final.log"
+    },
+    "prompt_sha256": {
+      "identity.md": "e7e5d77211284c191e8d3a9b8c75225c24cafae76ae794dde006ee9bca839b9a",
+      "tools.md": "bdf00c36161807cb09cca2ba29c62a8bf4fa9cd3bf9fac9e32a9c1d2cf6c6926",
+      "citations.md": "a3004041521894913a4489b4f9d656a68036996731c015ee441e38afdf276d55",
+      "style.md": "f2f4e944e759ff5c02af89be52a14a4bace437b0b7c5fba3530abcfa35f27d46"
+    }
+  },
+  "actual_B1_system_characters": 1442,
+  "actual_B1_system_utf8_bytes": 1730
+}

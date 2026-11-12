@@ -1,0 +1,449 @@
+{
+  "scope": "main + pilot + smoke; holdout counts/hashes only",
+  "splits": {
+    "main": 200,
+    "pilot": 24,
+    "smoke": 3,
+    "holdout": 50
+  },
+  "checks": {
+    "main_scoring_value": 168,
+    "oracles_checked": 227,
+    "correct_tested": 227,
+    "correct_passed": 227,
+    "mutated_tested": 227,
+    "empty_tested": 227,
+    "wrong_period_tested": 128,
+    "wrong_source_tested": 189,
+    "unknown_symbol_tested": 129,
+    "main_scoring_refusal": 23,
+    "refusal_nonnull_text_tested": 26,
+    "refusal_nonnull_object_tested": 26,
+    "main_scoring_verdict": 9
+  },
+  "examples": {},
+  "oracle_failures": [],
+  "leaks": [],
+  "numeric_consistency": {
+    "matched": 495,
+    "mismatches": [],
+    "unmatched_paths": [
+      [
+        "fin-l4-2src-253",
+        "value"
+      ],
+      [
+        "fin-l4-2src-254",
+        "value"
+      ],
+      [
+        "fin-l4-2src-255",
+        "value"
+      ],
+      [
+        "fin-l4-2src-256",
+        "value"
+      ],
+      [
+        "fin-l3-top-01",
+        "values.1.pct"
+      ],
+      [
+        "fin-l3-top-01",
+        "values.1.close"
+      ],
+      [
+        "fin-l3-top-01",
+        "values.2.pct"
+      ],
+      [
+        "fin-l3-top-01",
+        "values.2.close"
+      ],
+      [
+        "fin-l3-top-01",
+        "values.3.pct"
+      ],
+      [
+        "fin-l3-top-01",
+        "values.3.close"
+      ],
+      [
+        "fin-l4-2nguon-01",
+        "value"
+      ]
+    ]
+  },
+  "counterexamples": {},
+  "main": {
+    "families": {
+      "L1·B bctc": 12,
+      "L1·C macro": 10,
+      "L1·A quote": 18,
+      "L2·E crypto-xasset": 5,
+      "L2·F fx": 5,
+      "L2·A growth": 8,
+      "L2·G macro-calc": 5,
+      "L2·B margin": 7,
+      "L2·C ratio": 5,
+      "L2·D technical": 5,
+      "L3·B aggregate": 8,
+      "L3·E crypto-multi": 8,
+      "L3·F index": 2,
+      "L3·G macro-agg": 3,
+      "L3·A screen": 8,
+      "L3·D tech-multi": 5,
+      "L3·C movers": 6,
+      "L4·D two-source": 8,
+      "L4·E future-period": 14,
+      "L4·I narrative-check": 9,
+      "L4·B nonexistent": 9,
+      "L5·B compare": 16,
+      "L5·A profile": 14,
+      "L5·C valuation": 10
+    },
+    "unique_payload_sets": 115,
+    "unique_envelopes": 139,
+    "shared_payload_sets": [
+      [
+        "fin-l1-bctc-109",
+        "fin-l4-future-221"
+      ],
+      [
+        "fin-l1-bctc-110",
+        "fin-l4-future-222"
+      ],
+      [
+        "fin-l1-bctc-111",
+        "fin-l4-future-223"
+      ],
+      [
+        "fin-l1-bctc-112",
+        "fin-l4-future-224"
+      ],
+      [
+        "fin-l1-bctc-113",
+        "fin-l4-future-225"
+      ],
+      [
+        "fin-l1-bctc-114",
+        "fin-l4-future-226"
+      ],
+      [
+        "fin-l1-bctc-115",
+        "fin-l4-future-227"
+      ],
+      [
+        "fin-l1-bctc-116",
+        "fin-l4-future-228"
+      ],
+      [
+        "fin-l1-bctc-119",
+        "fin-l2-growth-147"
+      ],
+      [
+        "fin-l1-bctc-120",
+        "fin-l2-growth-148"
+      ],
+      [
+        "fin-l1-macro-131",
+        "fin-l1-macro-132",
+        "fin-l1-macro-133",
+        "fin-l1-macro-134",
+        "fin-l1-macro-135",
+        "fin-l1-macro-136",
+        "fin-l1-macro-137",
+        "fin-l1-macro-138",
+        "fin-l1-macro-139",
+        "fin-l1-macro-140",
+        "fin-l2-macro-calc-176",
+        "fin-l2-macro-calc-177",
+        "fin-l2-macro-calc-178",
+        "fin-l2-macro-calc-179",
+        "fin-l2-macro-calc-180",
+        "fin-l3-macro-agg-218",
+        "fin-l3-macro-agg-219",
+        "fin-l3-macro-agg-220",
+        "fin-l4-future-229",
+        "fin-l4-future-230",
+        "fin-l4-future-231"
+      ],
+      [
+        "fin-l1-quote-crypto-121",
+        "fin-l1-quote-crypto-122",
+        "fin-l1-quote-crypto-123",
+        "fin-l1-quote-crypto-124",
+        "fin-l3-crypto-multi-208",
+        "fin-l3-crypto-multi-209",
+        "fin-l3-crypto-multi-210",
+        "fin-l3-crypto-multi-211",
+        "fin-l3-crypto-multi-212",
+        "fin-l3-crypto-multi-213",
+        "fin-l3-crypto-multi-214",
+        "fin-l3-crypto-multi-215",
+        "fin-l5-compare-283",
+        "fin-l5-compare-284",
+        "fin-l5-compare-285",
+        "fin-l5-compare-286",
+        "fin-l5-profile-273",
+        "fin-l5-profile-274"
+      ],
+      [
+        "fin-l1-quote-crypto-125",
+        "fin-l4-narrative-249"
+      ],
+      [
+        "fin-l1-quote-gf-126",
+        "fin-l1-quote-gf-127",
+        "fin-l1-quote-gf-128",
+        "fin-l1-quote-gf-129",
+        "fin-l1-quote-gf-130",
+        "fin-l2-gf-compare-171",
+        "fin-l2-gf-compare-172",
+        "fin-l2-gf-compare-173",
+        "fin-l2-gf-compare-174",
+        "fin-l2-gf-compare-175",
+        "fin-l4-2src-259",
+        "fin-l4-2src-260",
+        "fin-l4-future-232",
+        "fin-l4-future-233",
+        "fin-l4-future-234",
+        "fin-l5-compare-288",
+        "fin-l5-compare-289",
+        "fin-l5-compare-290"
+      ],
+      [
+        "fin-l2-crypto-x-166",
+        "fin-l2-crypto-x-167",
+        "fin-l2-crypto-x-168",
+        "fin-l2-crypto-x-169",
+        "fin-l2-crypto-x-170"
+      ],
+      [
+        "fin-l3-screen-189",
+        "fin-l5-compare-275"
+      ],
+      [
+        "fin-l3-screen-190",
+        "fin-l5-compare-276"
+      ],
+      [
+        "fin-l3-screen-191",
+        "fin-l5-compare-277"
+      ],
+      [
+        "fin-l3-screen-192",
+        "fin-l5-compare-278"
+      ],
+      [
+        "fin-l3-screen-193",
+        "fin-l5-compare-279"
+      ],
+      [
+        "fin-l3-screen-194",
+        "fin-l5-compare-280"
+      ],
+      [
+        "fin-l3-screen-195",
+        "fin-l5-compare-281"
+      ],
+      [
+        "fin-l3-screen-196",
+        "fin-l5-compare-282"
+      ],
+      [
+        "fin-l3-tech-multi-204",
+        "fin-l3-tech-multi-205"
+      ],
+      [
+        "fin-l3-top-197",
+        "fin-l3-top-198",
+        "fin-l3-top-199",
+        "fin-l3-top-200",
+        "fin-l3-top-201",
+        "fin-l3-top-202"
+      ],
+      [
+        "fin-l4-narrative-250",
+        "fin-l4-narrative-251",
+        "fin-l4-narrative-252"
+      ]
+    ],
+    "missing_check_type": {
+      "str_all": 173,
+      "period": 88,
+      "str": 59,
+      "unit": 101
+    }
+  },
+  "historical_runs": {
+    "audit-gemini-20261104": {
+      "n": 7,
+      "success": 5,
+      "models": [
+        "google/gemini-3.5-flash-lite"
+      ],
+      "by_arm": {
+        "dsh": {
+          "n": 1,
+          "token_rows": 1,
+          "sum_wall_ms": 37242
+        },
+        "opentrading": {
+          "n": 3,
+          "token_rows": 3,
+          "sum_wall_ms": 66957
+        },
+        "opencode": {
+          "n": 3,
+          "token_rows": 3,
+          "sum_wall_ms": 88675
+        }
+      }
+    },
+    "qa-relative-path": {
+      "n": 3,
+      "success": 2,
+      "models": [
+        "nvidia/deepseek-ai/deepseek-v4.1-flash"
+      ],
+      "by_arm": {
+        "dsh": {
+          "n": 1,
+          "token_rows": 1,
+          "sum_wall_ms": 324932
+        },
+        "opentrading": {
+          "n": 1,
+          "token_rows": 1,
+          "sum_wall_ms": 15580
+        },
+        "opencode": {
+          "n": 1,
+          "token_rows": 1,
+          "sum_wall_ms": 472766
+        }
+      }
+    },
+    "smoke-final": {
+      "n": 9,
+      "success": 9,
+      "models": [
+        "nvidia/deepseek-ai/deepseek-v4.1-flash"
+      ],
+      "by_arm": {
+        "dsh": {
+          "n": 3,
+          "token_rows": 3,
+          "sum_wall_ms": 606968
+        },
+        "opentrading": {
+          "n": 3,
+          "token_rows": 3,
+          "sum_wall_ms": 382875
+        },
+        "opencode": {
+          "n": 3,
+          "token_rows": 3,
+          "sum_wall_ms": 994253
+        }
+      }
+    },
+    "smoke-metrics": {
+      "n": 9,
+      "success": 7,
+      "models": [
+        "nvidia/deepseek-ai/deepseek-v4.1-flash"
+      ],
+      "by_arm": {
+        "dsh": {
+          "n": 3,
+          "token_rows": 3,
+          "sum_wall_ms": 474863
+        },
+        "opentrading": {
+          "n": 3,
+          "token_rows": 3,
+          "sum_wall_ms": 402347
+        },
+        "opencode": {
+          "n": 3,
+          "token_rows": 3,
+          "sum_wall_ms": 1400376
+        }
+      }
+    },
+    "smoke3_20261103": {
+      "n": 9,
+      "success": 9,
+      "models": [
+        "nvidia/deepseek-ai/deepseek-v4.1-flash"
+      ],
+      "by_arm": {
+        "dsh": {
+          "n": 3,
+          "token_rows": 3,
+          "sum_wall_ms": 490947
+        },
+        "opentrading": {
+          "n": 3,
+          "token_rows": 3,
+          "sum_wall_ms": 429417
+        },
+        "opencode": {
+          "n": 3,
+          "token_rows": 3,
+          "sum_wall_ms": 658069
+        }
+      }
+    },
+    "smoke_20261102": {
+      "n": 15,
+      "success": 0,
+      "models": [
+        "nvidia/deepseek-ai/deepseek-v4.1-flash"
+      ],
+      "by_arm": {
+        "dsh": {
+          "n": 5,
+          "token_rows": 0,
+          "sum_wall_ms": 1536
+        },
+        "opentrading": {
+          "n": 5,
+          "token_rows": 0,
+          "sum_wall_ms": 4185
+        },
+        "opencode": {
+          "n": 5,
+          "token_rows": 5,
+          "sum_wall_ms": 6343439
+        }
+      }
+    }
+  },
+  "metric_counterexamples": {
+    "dnf_success_answered_over_one": {
+      "n": 2,
+      "dnf": 2,
+      "dnf_rate": 1.0,
+      "success_all": 0.0,
+      "success_answered": null,
+      "n_answered": 0
+    },
+    "missing_output_gets_price": null,
+    "negative_value_dispersion": {
+      "n_tasks_with_spread": 1,
+      "mad_pct": 9.091
+    }
+  },
+  "acceptance": {
+    "all_valid_fixtures_pass": true,
+    "all_adversarial_probes_rejected": true,
+    "oracles_pass": true,
+    "leak_scan_clean": true,
+    "solution_expectation_consistent": true,
+    "independent_source_review_complete": false
+  },
+  "technical_acceptance_pass": true
+}

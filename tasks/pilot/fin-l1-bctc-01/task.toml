@@ -1,7 +1,7 @@
 # Task benchmark harness tài chính — sinh bởi tools/gen_tasks.py
 id = "fin-l1-bctc-01"
 title = "LNST hợp nhất quý gần nhất của VCB (bẫy đơn vị VND→tỷ + bẫy dòng mẹ/hợp nhất)"
-version = 1
+version = 2
 created = "2026-11-01"
 level = "L1"
 family = "L1·B bctc"
@@ -18,6 +18,8 @@ time_limit_min = 15
 tools_expected = ["financial_statements"]
 mcp_payloads = "environment/payloads.json"
 snapshot_required = true
+
+confirmatory_eligible = true
 
 [scoring]
 type = "value"

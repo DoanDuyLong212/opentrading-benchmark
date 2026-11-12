@@ -1,0 +1,11 @@
+--- test_v45_calculate.py.before
++++ experiments/finance-v45-study/tools/tests/test_v45_calculate.py
+@@ -38,7 +38,7 @@
+  with pytest.raises(ValueError,match='source changed'):calculate({'expression':'x*2','variables':[{'name':'x','derived_id':'calc:abc'}]},sources,derived)
+ 
+ def test_dimensional_units_preserved(tmp_path):
+- _,_,sources=bank_sources(tmp_path);a=args(sources,expression='a',unit='VND')
++ _,_,sources=bank_sources(tmp_path);a=args(sources,expression='a',unit='VND');a['variables']=a['variables'][:1] # exercise dimensions, not unused-variable validation
+  with pytest.raises(ValueError,match='lệch đơn vị'):calculate(a,sources)
+  a['output_unit']='đồng/cổ phiếu';assert calculate(a,sources)['derived_result']['value']==56300
+ 

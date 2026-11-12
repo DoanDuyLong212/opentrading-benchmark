@@ -1,0 +1,29 @@
+# Task benchmark harness tài chính (bộ 200+50) — sinh bởi tools/build_main.py
+id = "fin-l5-profile-267"
+title = "Hồ sơ nhanh PC1"
+version = 2
+created = "2026-11-01"
+level = "L5"
+family = "L5·A profile"
+financebench_type = "company profile (multi-part)"
+entity = "PC1"
+asset = "vn_stock"
+data_zone = "green"
+data_pairs = []
+snapshot_date = "2026-11-01"
+universe_cap = 0
+banned_tools = ["web_search", "web_fetch", "sentiment_score"]
+human_time_band = "15–60 phút"
+time_limit_min = 60
+tools_expected = ["stock_overview", "financial_detail"]
+mcp_payloads = "environment/payloads.json"
+snapshot_required = true
+split = "main"
+
+confirmatory_eligible = true
+
+[scoring]
+type = "value"
+gold = "solution/gold.json"
+oracle = "solution/oracle.py"
+grader = "tests/grader.py"

@@ -1,0 +1,68 @@
+{
+  "task_id": "fin-l1-quote-01",
+  "scoring": "value",
+  "expects": [
+    {
+      "type": "unit",
+      "path": "unit",
+      "accept": [
+        "nghìn đồng",
+        "nghìn đ",
+        "k đồng"
+      ]
+    },
+    {
+      "type": "value",
+      "path": "value",
+      "gold": 21.0,
+      "tol": {
+        "rel": 0.005
+      }
+    },
+    {
+      "type": "period",
+      "path": "period",
+      "accept": [
+        "30/10",
+        "30-10",
+        "30.10",
+        "2026-10-30"
+      ]
+    },
+    {
+      "type": "str",
+      "path": "source",
+      "accept": [
+        "vn_quote_history"
+      ]
+    }
+  ],
+  "solution": {
+    "value": 21.0
+  },
+  "notes": "Bẫy đơn vị: candles = nghìn đồng; trả 21000 với unit 'đồng' = sai đơn vị (unit check đứng trước value để error_type chuẩn = sai_don_vi).",
+  "as_of": "2026-11-01T15:54:29.883479+07:00",
+  "contract_version": 2,
+  "provenance_contract": [
+    {
+      "tool": "vn_quote_history",
+      "source": "vnstock",
+      "as_of": "2026-11-01T15:54:29.883479+07:00",
+      "matched_entry_id": "vn_quote_history:0",
+      "response_sha256": "1494cd6b872e94237fbd832c39302b1f2242f6277a0da16148f560be974ba421"
+    }
+  ],
+  "payload_sha256": "cb80cece34c0f94fc32a60a8f2ccd0022f827b72e9d6ccc0496744db39f2c71f",
+  "provenance_catalog": [
+    {
+      "tool": "vn_quote_history",
+      "source": "vnstock",
+      "as_of": "2026-11-01T15:54:29.883479+07:00",
+      "matched_entry_id": "vn_quote_history:0",
+      "response_sha256": "1494cd6b872e94237fbd832c39302b1f2242f6277a0da16148f560be974ba421"
+    }
+  ],
+  "required_payload_keys": [
+    "vn_quote_history"
+  ]
+}

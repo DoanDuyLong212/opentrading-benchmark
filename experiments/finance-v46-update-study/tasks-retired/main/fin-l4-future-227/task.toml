@@ -1,0 +1,29 @@
+# Task benchmark harness tài chính (bộ 200+50) — sinh bởi tools/build_main.py
+id = "fin-l4-future-227"
+title = "VIB — Q4/2026 (chưa công bố)"
+version = 2
+created = "2026-11-01"
+level = "L4"
+family = "L4·E future-period"
+financebench_type = "unanswerable (period trap)"
+entity = "VIB"
+asset = "vn_stock"
+data_zone = "green"
+data_pairs = []
+snapshot_date = "2026-11-01"
+universe_cap = 0
+banned_tools = ["web_search", "web_fetch", "sentiment_score"]
+human_time_band = "15–60 phút"
+time_limit_min = 30
+tools_expected = ["financial_statements"]
+mcp_payloads = "environment/payloads.json"
+snapshot_required = true
+split = "main"
+
+confirmatory_eligible = true
+
+[scoring]
+type = "refusal"
+gold = "solution/gold.json"
+oracle = "solution/oracle.py"
+grader = "tests/grader.py"

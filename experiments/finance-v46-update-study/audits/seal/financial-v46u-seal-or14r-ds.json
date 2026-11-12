@@ -1,0 +1,130 @@
+{
+  "approval": "/home/doanlong/extra/benchmark/experiments/finance-v46-update-study/audits/engineering-approval-v46-update.json",
+  "blocked_models": {},
+  "diagnostic_pilot_authorized": true,
+  "engineering_approved": true,
+  "gate": null,
+  "judge_kappa_file": "/home/doanlong/extra/benchmark/experiments/finance-v46-update-study/analysis/labels/or10-kappa-free.json",
+  "main_authorized_by_user": false,
+  "protected_files": {
+    "/home/doanlong/extra/benchmark/experiments/finance-v46-update-study/analysis/labels/or10-kappa-free.json": "cd4b5c14e27a869e987c803d1214e1f52324c1f84422581f0747790cc7a313e0",
+    "/home/doanlong/extra/benchmark/experiments/finance-v46-update-study/audits/engineering-approval-v46-update.json": "952f171a4e7022cd1e1ecd983858c56b47f73678e9534a13014db754a30f33e4",
+    "/home/doanlong/extra/benchmark/experiments/finance-v46-update-study/audits/model-admission/deepseek__deepseek-v4.1-flash-1017-openrouter.json": "28622b9ad64637f52a7f862a207dd2c8d329f3866f1e0bcf322dcd06aea55574"
+  },
+  "protocol": "financial_product_v45",
+  "runs": [
+    {
+      "config": "/home/doanlong/extra/benchmark/experiments/finance-v46-update-study/tools/bench_config_deepseek_openrouter.json",
+      "model": "deepseek/deepseek-v4.1-flash-1017",
+      "out": "/home/doanlong/extra/benchmark/experiments/finance-v46-update-study/results/financial-v46u-or7-ds-20261110-pilot4arm-superseded/deepseek-openrouter-devsmoke",
+      "settings": {
+        "arms": [
+          "opentrading_baseline",
+          "opentrading_finance",
+          "opencode",
+          "dsh"
+        ],
+        "clock_policy": "snapshot_as_of; OpenTrading native now pinned; other native clocks observed in wire capture",
+        "conditions": {
+          "dsh": {
+            "finance_policy": false,
+            "native_arm": "dsh",
+            "prompt_variant": null
+          },
+          "opencode": {
+            "finance_policy": false,
+            "native_arm": "opencode",
+            "prompt_variant": null
+          },
+          "opentrading_baseline": {
+            "finance_policy": false,
+            "native_arm": "opentrading",
+            "prompt_variant": "baseline"
+          },
+          "opentrading_finance": {
+            "finance_policy": true,
+            "native_arm": "opentrading",
+            "prompt_variant": "finance"
+          }
+        },
+        "effort": "none",
+        "freeze_sha256": null,
+        "include_quarantined": false,
+        "max_output_tokens": 8192,
+        "max_requests": 24,
+        "max_total_tokens": 3600000,
+        "model": "deepseek/deepseek-v4.1-flash-1017",
+        "pause": 2.0,
+        "provider_timeout_s": 240.0,
+        "quarantined_tasks": {},
+        "retry": 0,
+        "retry_backoff": 4.0,
+        "runs": 2,
+        "seed": 20261108,
+        "split": "devsmoke",
+        "timeout": 900.0
+      },
+      "split": "devsmoke",
+      "state_sha256": "1a4adf4f2858ae171e37df9ebcd9099999c6c4e8ed9ba2843353df41c3bb02b5",
+      "tasks": [
+        "v45-dev-01-quote",
+        "v45-dev-02-resolve",
+        "v45-dev-03-growth",
+        "v45-dev-04-margin",
+        "v45-dev-05-scale",
+        "v45-dev-06-ratio",
+        "v45-dev-07-aggregate",
+        "v45-dev-08-cross-source",
+        "v45-dev-09-chain",
+        "v45-dev-10-trap-resolver",
+        "v45-dev-11-trap-period",
+        "v45-dev-12-trap-empty"
+      ]
+    },
+    {
+      "out": "/home/doanlong/extra/benchmark/experiments/finance-v46-update-study/results/financial-v46u-or14r-ds-20261111/pilot-opentrading_baseline",
+      "config": "/home/doanlong/extra/benchmark/experiments/finance-v46-update-study/tools/bench_config_deepseek_openrouter.json",
+      "model": "deepseek/deepseek-v4.1-flash-1017",
+      "split": "pilot",
+      "settings": {
+        "split": "pilot",
+        "seed": 20261108,
+        "runs": 2,
+        "retry": 0,
+        "pause": 2.0,
+        "retry_backoff": 4.0,
+        "timeout": 900.0,
+        "effort": "none",
+        "max_requests": 24,
+        "max_output_tokens": 8192,
+        "max_total_tokens": 3600000,
+        "model": "deepseek/deepseek-v4.1-flash-1017",
+        "arms": [
+          "opentrading_baseline"
+        ],
+        "freeze_sha256": null,
+        "provider_timeout_s": 240.0,
+        "conditions": {
+          "opentrading_baseline": {
+            "native_arm": "opentrading",
+            "prompt_variant": "baseline",
+            "finance_policy": false
+          }
+        },
+        "clock_policy": "snapshot_as_of; OpenTrading native now pinned; other native clocks observed in wire capture",
+        "quarantined_tasks": {
+          "fin-l1-macro-01": "ambiguous_cpi_series_dimension",
+          "fin-l4-narrative-01": "incomplete_narrative_evidence_rubric",
+          "fin-mem-p01": "separate_memory_multiturn_stratum; use sealed memory driver"
+        },
+        "include_quarantined": false
+      },
+      "tasks": [
+        "fin-l3-agg-01"
+      ],
+      "state_sha256": "1a4adf4f2858ae171e37df9ebcd9099999c6c4e8ed9ba2843353df41c3bb02b5"
+    }
+  ],
+  "study_version": "v4.6-update",
+  "purpose": "targeted rerun of or11 failed slots (user 2026-11-11); diagnostic, never admits main"
+}

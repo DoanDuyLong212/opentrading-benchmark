@@ -1,7 +1,7 @@
 # Task benchmark harness tài chính (bộ 200+50) — sinh bởi tools/build_main.py
 id = "fin-l2-gf-compare-174"
 title = "So sánh GC=F phiên 30/10"
-version = 1
+version = 2
 created = "2026-11-01"
 level = "L2"
 family = "L2·F fx"
@@ -19,6 +19,8 @@ tools_expected = ["vn_msn_fx_gold", "yf_commodities"]
 mcp_payloads = "environment/payloads.json"
 snapshot_required = true
 split = "main"
+
+confirmatory_eligible = true
 
 [scoring]
 type = "value"

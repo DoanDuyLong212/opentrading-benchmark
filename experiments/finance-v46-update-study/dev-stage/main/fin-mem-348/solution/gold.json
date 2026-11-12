@@ -1,0 +1,53 @@
+{
+ "scoring": "value",
+ "memory_construct": "cross_session_recall_or_update",
+ "solution": {
+  "price": 78000,
+  "in_watch": "chưa"
+ },
+ "expects": [
+  {
+   "type": "value",
+   "path": "values.price",
+   "gold": 78000,
+   "tol": {
+    "rel": 0.001
+   }
+  },
+  {
+   "type": "str",
+   "path": "values.in_watch",
+   "accept": [
+    "chưa",
+    "không",
+    "false",
+    "chưa.",
+    "chưa vào vùng",
+    "chưa trong vùng"
+   ]
+  },
+  {
+   "type": "str",
+   "path": "source",
+   "accept": [
+    "market_movers"
+   ]
+  }
+ ],
+ "notes": "Watch threshold user: GAS dưới 72 nghìn thì báo. close 78000 đồng (> 72 nghìn, margin ~8%) → 'chưa'. Đo threshold guard từ memory.",
+ "memory_checks": {},
+ "provenance_contract": [
+  {
+   "tool": "market_movers",
+   "source": "vnstock",
+   "as_of": "2026-11-01T21:12:04.261634+07:00",
+   "matched_entry_id": "movers:vn30",
+   "response_sha256": "a8203b807b243068b924bf83bd810671386c59c2fdac6deabcc1ae9514a634ca"
+  }
+ ],
+ "required_payload_keys": [
+  "movers:vn30"
+ ],
+ "task_id": "fin-mem-348",
+ "payload_sha256": "5c451ece96e0efbf2d578f3d571fc0d8bba55d7ce79a9c7079f175b9680f26f3"
+}

@@ -1,0 +1,61 @@
+{
+  "task_id": "fin-l4-narrative-249",
+  "scoring": "verdict",
+  "solution": {
+    "verdict": "đúng"
+  },
+  "as_of": "2026-11-01T22:54:48.999223+07:00",
+  "split": "main",
+  "verdict_accept": [
+    "đúng",
+    "true",
+    "chính xác"
+  ],
+  "verdict_reject": [
+    "sai",
+    "false",
+    "không đúng",
+    "không chính xác"
+  ],
+  "evidence": {
+    "paths": [
+      "note"
+    ],
+    "min_hits": 1,
+    "numbers": [
+      2098009421.9,
+      2091876245.22,
+      2084565233.04,
+      2064779521.25,
+      2064331712.31,
+      2084932613.27,
+      2096866333.96,
+      2006753439.82,
+      1991868211.84,
+      1997971396.28
+    ]
+  },
+  "contract_version": 2,
+  "provenance_contract": [
+    {
+      "tool": "vn_crypto_ohlcv",
+      "source": "vnstock",
+      "as_of": "2026-11-01T22:54:48.999223+07:00",
+      "matched_entry_id": "cohlcv:BTCUSDT",
+      "response_sha256": "96ff7783782a88c62a3f33171d071a340203422c619185954fb9e876ece35055"
+    }
+  ],
+  "payload_sha256": "1a1c6ce1a6fe39d4702a41e9ed10dc606d88a7a47b401f2ade5906e1020ea70c",
+  "provenance_catalog": [
+    {
+      "tool": "vn_crypto_ohlcv",
+      "source": "vnstock",
+      "as_of": "2026-11-01T22:54:48.999223+07:00",
+      "matched_entry_id": "cohlcv:BTCUSDT",
+      "response_sha256": "96ff7783782a88c62a3f33171d071a340203422c619185954fb9e876ece35055"
+    }
+  ],
+  "required_payload_keys": [
+    "cohlcv:BTCUSDT"
+  ]
+}

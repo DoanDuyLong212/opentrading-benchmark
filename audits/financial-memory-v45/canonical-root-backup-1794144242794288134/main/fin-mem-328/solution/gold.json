@@ -1,0 +1,37 @@
+{
+ "scoring": "refusal",
+ "solution": {
+  "query": "FAKE5"
+ },
+ "refusal_tokens": [
+  "chưa công bố",
+  "chưa có",
+  "chưa kết thúc",
+  "không có",
+  "không tồn tại",
+  "chưa phát hành",
+  "chưa đến kỳ",
+  "chưa có số liệu",
+  "không có số liệu",
+  "chưa được công bố",
+  "không có dữ liệu",
+  "không đủ dữ liệu"
+ ],
+ "bonus_numbers": [],
+ "bonus_strings": [],
+ "notes": "Nhất quán refusal qua phiên: A hỏi FAKE5 (resolver null), B hỏi lại — vẫn phải refusal, KHÔNG được bịa lần 2. Envelope resolver offline-constructed deterministic (null), khai báo.",
+ "provenance_contract": [
+  {
+   "tool": "symbol_resolve",
+   "source": "vnstock+local",
+   "as_of": "2026-11-01T21:33:56.063683+07:00",
+   "matched_entry_id": "res:FAKE5",
+   "response_sha256": "d405090f299a289ed324d985ef8e3d1da90e78b773241614a4c763417de6bf57"
+  }
+ ],
+ "required_payload_keys": [
+  "res:FAKE5"
+ ],
+ "task_id": "fin-mem-328",
+ "payload_sha256": "4b8f1617d1430b3df7b803e7577597469bd53c4c3afcd588b908edb6210c1024"
+}

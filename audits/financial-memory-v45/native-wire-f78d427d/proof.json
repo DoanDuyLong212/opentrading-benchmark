@@ -1,0 +1,169 @@
+{
+  "pass": true,
+  "complete": true,
+  "full_matrix": false,
+  "expected_cases": 1,
+  "selected_arms": [
+    "opencode"
+  ],
+  "selected_scenarios": [
+    "same-session"
+  ],
+  "expected_local_requests": 3,
+  "external_model_calls": 0,
+  "reports": [
+    {
+      "arm": "opencode",
+      "scenario": "same-session",
+      "work": "/tmp/v45-memory-opencode-yguyles8",
+      "external_model_calls": 0,
+      "bun_binary": "/home/doanlong/extra/benchmark/experiments/toolchains/bun-1.4.4/bun",
+      "bun_sha256": "10702245766b225e70bbf6235fd6b47214fd94b4760d00ffaed8ab0df57ac235",
+      "state": {
+        "version": 1,
+        "model": "nvidia/deepseek-ai/deepseek-v4.1-flash",
+        "condition": "opencode",
+        "completed_turns": [
+          {
+            "session": "S1",
+            "turn": 0,
+            "final": false,
+            "user_text": "FIXTURE_SAME_SEED Đọc quote SYN bằng vn_quote_history và xác nhận đã hoàn tất.",
+            "result": {
+              "status": "ok",
+              "final_text": "Đã hoàn tất đọc nguồn. NONCE_AZURE_CEDAR chứng minh bản ghi assistant được tiếp tục.",
+              "session_id": "ses_e43997f74ffejCufo9ysynruUf",
+              "notes": "",
+              "tokens": {
+                "input": 200,
+                "output": 40,
+                "cached": null,
+                "cache_read": null,
+                "cached_observed": 0,
+                "cache_complete": false,
+                "usage_requests": 2,
+                "requests": 2,
+                "complete": true
+              },
+              "provider_requests": 2,
+              "provider_usage": {
+                "input": 200,
+                "output": 40,
+                "cached": null,
+                "cache_read": null,
+                "cached_observed": 0,
+                "cache_complete": false,
+                "usage_requests": 2,
+                "requests": 2,
+                "complete": true
+              },
+              "inventory_path": "/tmp/v45-memory-opencode-yguyles8/runner/inventory.json",
+              "provider_ledger": "/tmp/v45-memory-opencode-yguyles8/runner/provider.jsonl",
+              "answer_path": null,
+              "answer_candidates": [],
+              "transport_recovered": false,
+              "first_attempt_completed": true,
+              "token_reservations_not_observed_usage": 0,
+              "native_derived_ledger": null
+            },
+            "provider_rows_start": 0,
+            "provider_rows_end": 2,
+            "unauthorized_write": false,
+            "native_memory_before": null,
+            "native_memory_after": null,
+            "user_operations": {
+              "events": [],
+              "native_user_form": null,
+              "notebook_hash": "29c94f9951b652af125b8b5886db0e363c5720505d852c5674efd418f0917dd6"
+            }
+          },
+          {
+            "session": "S1",
+            "turn": 1,
+            "final": true,
+            "user_text": "FIXTURE_SAME_QUERY Dùng lại quote/biên nhận đã đọc, không gọi lại tool. Trả một object JSON: {\"value\":0,\"unit\":\"nghìn đồng/cổ phiếu\",\"period\":\"2030-03-31\",\"source\":\"vn_quote_history\",\"evidence\":[]} dùng biên nhận nguồn thật.",
+            "result": {
+              "status": "ok",
+              "final_text": "{\"value\": 12, \"unit\": \"nghìn đồng/cổ phiếu\", \"period\": \"2030-03-31\", \"source\": \"vn_quote_history\", \"evidence\": [{\"call_id\": \"12328b6a-db25-434a-8181-fad536884cde\", \"tool\": \"vn_quote_history\", \"matched_entry_id\": \"source\", \"payload_sha256\": \"11744bd0a712f73655f048c2b492d79ba0eca4022230765126341c94fc2079d6\", \"response_sha256\": \"d5011aa0dfb5c753a710598bc10b99725af460e7611feaa695d01d4d8b983f69\", \"source\": \"synthetic-not-live\", \"as_of\": \"2030-04-01\"}]}",
+              "session_id": "ses_e43997f74ffejCufo9ysynruUf",
+              "notes": "",
+              "tokens": {
+                "input": 300,
+                "output": 60,
+                "cached": null,
+                "cache_read": null,
+                "cached_observed": 0,
+                "cache_complete": false,
+                "usage_requests": 3,
+                "requests": 3,
+                "complete": true
+              },
+              "provider_requests": 3,
+              "provider_usage": {
+                "input": 300,
+                "output": 60,
+                "cached": null,
+                "cache_read": null,
+                "cached_observed": 0,
+                "cache_complete": false,
+                "usage_requests": 3,
+                "requests": 3,
+                "complete": true
+              },
+              "inventory_path": "/tmp/v45-memory-opencode-yguyles8/runner/inventory.json",
+              "provider_ledger": "/tmp/v45-memory-opencode-yguyles8/runner/provider.jsonl",
+              "answer_path": null,
+              "answer_candidates": [],
+              "transport_recovered": false,
+              "first_attempt_completed": true,
+              "token_reservations_not_observed_usage": 0,
+              "native_derived_ledger": null
+            },
+            "provider_rows_start": 2,
+            "provider_rows_end": 3,
+            "unauthorized_write": false,
+            "native_memory_before": null,
+            "native_memory_after": null,
+            "user_operations": {
+              "events": [],
+              "native_user_form": null,
+              "notebook_hash": "29c94f9951b652af125b8b5886db0e363c5720505d852c5674efd418f0917dd6"
+            }
+          }
+        ],
+        "native_sessions": {
+          "S1": "ses_e43997f74ffejCufo9ysynruUf"
+        },
+        "active_seconds": 54.48164518401609,
+        "status": "completed",
+        "final_text": "{\"value\": 12, \"unit\": \"nghìn đồng/cổ phiếu\", \"period\": \"2030-03-31\", \"source\": \"vn_quote_history\", \"evidence\": [{\"call_id\": \"12328b6a-db25-434a-8181-fad536884cde\", \"tool\": \"vn_quote_history\", \"matched_entry_id\": \"source\", \"payload_sha256\": \"11744bd0a712f73655f048c2b492d79ba0eca4022230765126341c94fc2079d6\", \"response_sha256\": \"d5011aa0dfb5c753a710598bc10b99725af460e7611feaa695d01d4d8b983f69\", \"source\": \"synthetic-not-live\", \"as_of\": \"2030-04-01\"}]}",
+        "provider_ledger": "/tmp/v45-memory-opencode-yguyles8/runner/provider.jsonl",
+        "mcp_ledger": "/tmp/v45-memory-opencode-yguyles8/runner/mcp.jsonl",
+        "memory_access_ledger": "/tmp/v45-memory-opencode-yguyles8/runner/memory-access.jsonl",
+        "authorized_user_notebook": "/tmp/v45-memory-opencode-yguyles8/runner/authorized-user-notebook.json",
+        "usage": {
+          "input": 300,
+          "output": 60,
+          "cached": null,
+          "cache_read": null,
+          "cached_observed": 0,
+          "cache_complete": false,
+          "usage_requests": 3,
+          "requests": 3,
+          "complete": true
+        },
+        "continuation_proofs": [
+          {
+            "native": "opencode",
+            "session_id": "ses_e43997f74ffejCufo9ysynruUf",
+            "message_count": 4,
+            "messages_sha256": "c347d11fccbe3c591fe024db57912870a543d26bd12b04c65cdb24ed9a4d4855"
+          }
+        ]
+      },
+      "local_requests": 3,
+      "pass_": true,
+      "completed_resume_new_calls": 0
+    }
+  ]
+}

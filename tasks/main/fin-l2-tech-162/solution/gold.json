@@ -1,48 +1,71 @@
 {
- "task_id": "fin-l2-tech-162",
- "scoring": "value",
- "solution": {
-  "value": 47.71
- },
- "as_of": "2026-11-01T23:26:05.000000+07:00",
- "split": "main",
- "expects": [
-  {
-   "type": "value",
-   "path": "value",
-   "gold": 47.71,
-   "tol": {
-    "abs": 0.1
-   }
+  "task_id": "fin-l2-tech-162",
+  "scoring": "value",
+  "solution": {
+    "value": 47.71
   },
-  {
-   "type": "unit",
-   "path": "unit",
-   "accept": [
-    "RSI-14",
-    "RSI 14",
-    "RSI",
-    "rsi14"
-   ]
-  },
-  {
-   "type": "period",
-   "path": "period",
-   "accept": [
-    "30/10",
-    "30-10",
-    "30.10",
-    "2026-10-30",
-    "phiên gần nhất",
-    "gần nhất"
-   ]
-  },
-  {
-   "type": "str",
-   "path": "source",
-   "accept": [
-    "signals_technical"
-   ]
-  }
- ]
+  "as_of": "2026-11-01T23:26:05.000000+07:00",
+  "split": "main",
+  "expects": [
+    {
+      "type": "value",
+      "path": "value",
+      "gold": 47.71,
+      "tol": {
+        "abs": 0.1
+      }
+    },
+    {
+      "type": "unit",
+      "path": "unit",
+      "accept": [
+        "RSI-14",
+        "RSI 14",
+        "RSI",
+        "rsi14"
+      ]
+    },
+    {
+      "type": "period",
+      "path": "period",
+      "accept": [
+        "30/10",
+        "30-10",
+        "30.10",
+        "2026-10-30",
+        "phiên gần nhất",
+        "gần nhất"
+      ]
+    },
+    {
+      "type": "str",
+      "path": "source",
+      "accept": [
+        "signals_technical"
+      ]
+    }
+  ],
+  "contract_version": 2,
+  "provenance_contract": [
+    {
+      "tool": "signals_technical",
+      "source": "computed-local",
+      "as_of": "2026-11-01T23:26:05.000000+07:00",
+      "matched_entry_id": "tech:HVN",
+      "response_sha256": "3775e652910c183c935ff7ff0a3342fffb772dd05a8371b43ff5eaa1ed7b2eaf"
+    }
+  ],
+  "payload_sha256": "afa42c9c3972d74ee1d3dc389ba5c24c051be2b1f91037d087bfc3759e02e6a5",
+  "provenance_catalog": [
+    {
+      "tool": "signals_technical",
+      "source": "computed-local",
+      "as_of": "2026-11-01T23:26:05.000000+07:00",
+      "matched_entry_id": "tech:HVN",
+      "response_sha256": "3775e652910c183c935ff7ff0a3342fffb772dd05a8371b43ff5eaa1ed7b2eaf"
+    }
+  ],
+  "required_payload_keys": [
+    "tech:HVN"
+  ]
 }

@@ -1,0 +1,104 @@
+{
+  "base": "b6e354e76894887e31c33b1f13b44eadc02fad7e",
+  "v44_frozen_runtime": "/home/doanlong/extra/benchmark/experiments/finance-v44-study/experiments/opentrading-runtime",
+  "changed_files": [
+    {
+      "path": "bun.lock",
+      "base_sha256": "8dcd6c84f277bf2e615226406d5eec76fac03aa8c00a05ad8d3bc0bc8beb042f",
+      "v44_sha256": "8a68c24ea5dd1239f244216766bd79840534ded415c5ae67e55278fc2c3ff5a9",
+      "bytes": 64344,
+      "new_in_v44": false
+    },
+    {
+      "path": "package.json",
+      "base_sha256": "8ddf90966a79375fa9ed2e4a78f52baacc6db8d83dec063f418ab4462df566ef",
+      "v44_sha256": "93380eeec80a701bfed071458dd7bc246dd1c76c16d6f45860724b3efcdd2d90",
+      "bytes": 1660,
+      "new_in_v44": false
+    },
+    {
+      "path": "src/core/agent.ts",
+      "base_sha256": "2e0608ddb3ee49b425311faa394c95078efd7f44265ebb839b525b0793a13410",
+      "v44_sha256": "f8f69c674f50712b30eee3241871ff20bda83d4c811ee7fd95e3e9962920dca8",
+      "bytes": 76330,
+      "new_in_v44": false
+    },
+    {
+      "path": "src/core/events.ts",
+      "base_sha256": "c57a579751579db1293d138f0a3696921c0d8d84158534936171dc12765d2043",
+      "v44_sha256": "2b7187257eb0899d93f33f129f56f48f7685267272f1f72c61ae213bb515386b",
+      "bytes": 3610,
+      "new_in_v44": false
+    },
+    {
+      "path": "src/core/finance-policy.ts",
+      "base_sha256": null,
+      "v44_sha256": "20c0a0e4cddc6f986c1f9b8b012fe8b6525ce1d25569680c91f2dac48cb8f040",
+      "bytes": 21628,
+      "new_in_v44": true
+    },
+    {
+      "path": "src/core/mcp/convert.ts",
+      "base_sha256": "35cd0713b5cb1dbeec70a13bf74ea60721cc1bbe1103347380c498104fda9485",
+      "v44_sha256": "6ff42818ebf1d0ee83ec122883f618bd52e0ded0044d1c426aa5fd5f23f1410a",
+      "bytes": 4206,
+      "new_in_v44": false
+    },
+    {
+      "path": "src/core/mcp/manager.ts",
+      "base_sha256": "d551ea0b53a75f7cdf13a77a06b0ed81cb2f1c67c1c67c01069b8ebdd777c546",
+      "v44_sha256": "086f1b92dabc1f65335bd789418242e40e160e12f55ef6809200517ed0d0614b",
+      "bytes": 56692,
+      "new_in_v44": false
+    },
+    {
+      "path": "src/core/tools/registry.ts",
+      "base_sha256": "b0befca6afce0bf1ee86ae619018d18b5ee88893e5196886631b2d178615973d",
+      "v44_sha256": "61b337199788dbf7d3510306de530b6a86e8bf06c0f2f5ec88064d772a05730f",
+      "bytes": 12010,
+      "new_in_v44": false
+    },
+    {
+      "path": "src/core/tools/types.ts",
+      "base_sha256": "846775ae733ee64e015ee1851a1f0f90b698818d2096ca14b96fcc49a8572dc8",
+      "v44_sha256": "470540c3ddd51efca07e8f6e683f1f155e13715e586c5c7e514ce69550e4b250",
+      "bytes": 6754,
+      "new_in_v44": false
+    },
+    {
+      "path": "src/core/tools/wrap.ts",
+      "base_sha256": "e7904498c60a0c6a9e2a334c97e21d503a699d2e005c3a8a47fde930752e4212",
+      "v44_sha256": "4d84513d85eddfdd0f170efabce01e96c3a4c32019329dbb79187eac8cf697e4",
+      "bytes": 8815,
+      "new_in_v44": false
+    },
+    {
+      "path": "test/agent.test.ts",
+      "base_sha256": "b4fbdd8da34754a6a05c49425a456d509facc9afebd79e279b72bc57e79a1795",
+      "v44_sha256": "e617cacd7a94052735452717657b574d72fe841c346d3b3e57306be0d626a177",
+      "bytes": 112718,
+      "new_in_v44": false
+    },
+    {
+      "path": "test/finance-policy.test.ts",
+      "base_sha256": null,
+      "v44_sha256": "cbd190fa81bde50f6e0354aba3c831b465a6f2476d623addefe17d9437fcdcdd",
+      "bytes": 20481,
+      "new_in_v44": true
+    },
+    {
+      "path": "test/fixtures/finance-acquisition-server.ts",
+      "base_sha256": null,
+      "v44_sha256": "7c6814e002d6baff55a41821b5707186984dfcd6b71ed3c070094e5a1ad6fd4d",
+      "bytes": 2906,
+      "new_in_v44": true
+    },
+    {
+      "path": "test/prompt.test.ts",
+      "base_sha256": "043bb118c16359b55be3ec36d0abe758736bdd4de575884985b3efc9bf7b7e45",
+      "v44_sha256": "a031f9834845c65fa2e1fc73a00c3d8b64f1ec9fed4214373664e6a6bc0a337d",
+      "bytes": 10646,
+      "new_in_v44": false
+    }
+  ]
+}

@@ -1,0 +1,47 @@
+{
+ "scoring": "value",
+ "memory_construct": "cross_session_recall_or_update",
+ "solution": {
+  "set": [
+   "ACB",
+   "HDB",
+   "TPB",
+   "VPB"
+  ]
+ },
+ "expects": [
+  {
+   "type": "set",
+   "path": "values.set",
+   "gold": [
+    "ACB",
+    "HDB",
+    "TPB",
+    "VPB"
+   ]
+  },
+  {
+   "type": "str",
+   "path": "source",
+   "accept": [
+    "peer_compare"
+   ]
+  }
+ ],
+ "notes": "Ràng buộc người dùng: chỉ mua nếu ROE >= 15%. Rổ 5 NH: {'VPB': 15.49, 'ACB': 17.56, 'STB': 10.34, 'HDB': 25.41, 'TPB': 18.53}. VPB 15.49 sát mốc trên (15.49); STB 10.34 ✗.",
+ "memory_checks": {},
+ "provenance_contract": [
+  {
+   "tool": "peer_compare",
+   "source": "vnstock",
+   "as_of": "2026-11-01T23:08:09.776201+07:00",
+   "matched_entry_id": "peer:banks_p",
+   "response_sha256": "9314b3b9168bf0f8d0627ae5b1695f7e93273e7e403235cf370f2e564f8424e4"
+  }
+ ],
+ "required_payload_keys": [
+  "peer:banks_p"
+ ],
+ "task_id": "fin-mem-336",
+ "payload_sha256": "ba57891236909096549ffb341e849752c1c14ee4d67aa781f67328197a91a027"
+}

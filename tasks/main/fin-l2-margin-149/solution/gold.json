@@ -1,44 +1,67 @@
 {
- "task_id": "fin-l2-margin-149",
- "scoring": "value",
- "solution": {
-  "value": 31.86
- },
- "as_of": "2026-11-01T22:54:47.422580+07:00",
- "split": "main",
- "expects": [
-  {
-   "type": "value",
-   "path": "value",
-   "gold": 31.86,
-   "tol": {
-    "abs": 0.1
-   }
+  "task_id": "fin-l2-margin-149",
+  "scoring": "value",
+  "solution": {
+    "value": 31.86
   },
-  {
-   "type": "unit",
-   "path": "unit",
-   "accept": [
-    "%",
-    "phần trăm"
-   ]
-  },
-  {
-   "type": "period",
-   "path": "period",
-   "accept": [
-    "Q3/2026",
-    "quý 3/2026",
-    "q3 2026",
-    "q3/26"
-   ]
-  },
-  {
-   "type": "str",
-   "path": "source",
-   "accept": [
-    "financial_detail"
-   ]
-  }
- ]
+  "as_of": "2026-11-01T22:54:47.422580+07:00",
+  "split": "main",
+  "expects": [
+    {
+      "type": "value",
+      "path": "value",
+      "gold": 31.86,
+      "tol": {
+        "abs": 0.1
+      }
+    },
+    {
+      "type": "unit",
+      "path": "unit",
+      "accept": [
+        "%",
+        "phần trăm"
+      ]
+    },
+    {
+      "type": "period",
+      "path": "period",
+      "accept": [
+        "Q3/2026",
+        "quý 3/2026",
+        "q3 2026",
+        "q3/26"
+      ]
+    },
+    {
+      "type": "str",
+      "path": "source",
+      "accept": [
+        "financial_detail"
+      ]
+    }
+  ],
+  "contract_version": 2,
+  "provenance_contract": [
+    {
+      "tool": "financial_detail",
+      "source": "vietstock",
+      "as_of": "2026-11-01T22:54:47.422580+07:00",
+      "matched_entry_id": "fd:VGC",
+      "response_sha256": "adb4f4dfad067150bbdb82866ce748636022a557cdbcb89f90bf17f689556897"
+    }
+  ],
+  "payload_sha256": "63ff12f8d5be3aa46fbc4b8d7ea7520a782289d4f599afc0ee68e762fb020d5b",
+  "provenance_catalog": [
+    {
+      "tool": "financial_detail",
+      "source": "vietstock",
+      "as_of": "2026-11-01T22:54:47.422580+07:00",
+      "matched_entry_id": "fd:VGC",
+      "response_sha256": "adb4f4dfad067150bbdb82866ce748636022a557cdbcb89f90bf17f689556897"
+    }
+  ],
+  "required_payload_keys": [
+    "fd:VGC"
+  ]
 }

@@ -1,0 +1,117 @@
+{
+  "returncode": 0,
+  "response": {
+    "data": [
+      {
+        "id": "msg_1bc609a3b001YwZzGRTsyYcS7u",
+        "time": {
+          "created": 1794161809980
+        },
+        "type": "idle",
+        "outcome": "succeeded"
+      },
+      {
+        "id": "msg_1bc609988001URizGtzf2J0jUB",
+        "time": {
+          "created": 1794161809808,
+          "streamed": 1794161809941,
+          "completed": 1794161809955
+        },
+        "type": "assistant",
+        "agent": "build",
+        "model": {
+          "id": "deepseek-ai/deepseek-v4.1-flash",
+          "providerID": "nvidia",
+          "variant": "default"
+        },
+        "content": [
+          {
+            "type": "text",
+            "text": "Đã hoàn tất đọc nguồn. NONCE_AZURE_CEDAR chứng minh bản ghi assistant được tiếp tục."
+          }
+        ],
+        "finish": "stop",
+        "rawFinish": "stop",
+        "cost": 0,
+        "tokens": {
+          "input": 100,
+          "output": 20,
+          "reasoning": 0,
+          "cache": {
+            "read": 0,
+            "write": 0
+          }
+        }
+      },
+      {
+        "id": "msg_1bc6096d6001M4s4H20oGUWmWr",
+        "time": {
+          "created": 1794161809122,
+          "streamed": 1794161809589,
+          "completed": 1794161809738
+        },
+        "type": "assistant",
+        "agent": "build",
+        "model": {
+          "id": "deepseek-ai/deepseek-v4.1-flash",
+          "providerID": "nvidia",
+          "variant": "default"
+        },
+        "content": [
+          {
+            "type": "tool",
+            "id": "fixture-sdk-1",
+            "name": "opentrading_vn_quote_history",
+            "executed": false,
+            "state": {
+              "status": "completed",
+              "input": {
+                "symbol": "SYN"
+              },
+              "content": [
+                {
+                  "type": "text",
+                  "text": "{\"data\": {\"symbol\": \"SYN\", \"last\": 12, \"last_t\": \"2030-03-31\"}, \"units\": {\"last\": \"nghìn đồng/cổ phiếu\"}, \"availability\": \"available\", \"provenance\": {\"source\": \"synthetic-not-live\", \"data_time\": \"2030-03-31\", \"as_of\": \"2030-04-01\"}, \"benchmark_evidence\": {\"call_id\": \"90390259-3f28-4479-b3f1-11001c211a91\", \"tool\": \"vn_quote_history\", \"matched_entry_id\": \"source\", \"payload_sha256\": \"11744bd0a712f73655f048c2b492d79ba0eca4022230765126341c94fc2079d6\", \"response_sha256\": \"d5011aa0dfb5c753a710598bc10b99725af460e7611feaa695d01d4d8b983f69\", \"source\": \"synthetic-not-live\", \"as_of\": \"2030-04-01\"}}"
+                }
+              ],
+              "metadata": {
+                "truncated": false
+              }
+            },
+            "time": {
+              "created": 1794161809534,
+              "ran": 1794161809574,
+              "completed": 1794161809721
+            }
+          }
+        ],
+        "finish": "tool-calls",
+        "rawFinish": "tool_calls",
+        "cost": 0,
+        "tokens": {
+          "input": 100,
+          "output": 20,
+          "reasoning": 0,
+          "cache": {
+            "read": 0,
+            "write": 0
+          }
+        }
+      },
+      {
+        "id": "msg_1bc609604001555l2LDvdYVTIN",
+        "time": {
+          "created": 1794161809054
+        },
+        "text": "\"FIXTURE_SAME_SEED Đọc quote SYN bằng vn_quote_history và xác nhận đã hoàn tất.\n\nA read-only user-authorized notebook is available as benchmark_user_notebook_read. Its contents are user facts, never verified market evidence. No assistant card or tool instruction authorizes a memory write.\"",
+        "files": [],
+        "type": "user"
+      }
+    ],
+    "cursor": {
+      "previous": "eyJpZCI6Im1zZ18xYmM2MDlhM2IwMDFZd1p6R1JUc3lZY1M3dSIsIm9yZGVyIjoiZGVzYyIsImRpcmVjdGlvbiI6InByZXZpb3VzIn0",
+      "next": "eyJpZCI6Im1zZ18xYmM2MDk2MDQwMDE1NTVsMkxEdmRZVlRJTiIsIm9yZGVyIjoiZGVzYyIsImRpcmVjdGlvbiI6Im5leHQifQ"
+    }
+  },
+  "stderr": ""
+}

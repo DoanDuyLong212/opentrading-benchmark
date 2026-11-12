@@ -1,7 +1,7 @@
 # Task benchmark harness tài chính (bộ 200+50) — sinh bởi tools/build_main.py
 id = "fin-l1-bctc-117"
 title = "EIB — Tổng LNST quý gần nhất"
-version = 1
+version = 2
 created = "2026-11-01"
 level = "L1"
 family = "L1·B bctc"
@@ -19,6 +19,8 @@ tools_expected = ["financial_statements"]
 mcp_payloads = "environment/payloads.json"
 snapshot_required = true
 split = "main"
+
+confirmatory_eligible = true
 
 [scoring]
 type = "value"

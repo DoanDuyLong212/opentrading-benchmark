@@ -1,89 +1,112 @@
-# -*- coding: utf-8 -*-
-"""Runner arm OpenCode — headless `opencode run` với isolation XDG per-trial.
-
-Isolation (không đụng cấu hình user thật):
-- XDG_CONFIG_HOME = <trial>/runner/xdg-config  → chỉ có opencode.json chứa MCP snapshot
-  (loại bỏ MCP github/playwright/canva + plugins của user khỏi trial)
-- XDG_DATA_HOME  = <trial>/runner/xdg-data   → auth.json copy (key NVIDIA) + sessions riêng
-- cwd = workspace (chỉ instruction.md); agent tự viết answer.json trong workspace.
-"""
+"""OpenCode native standalone run, isolated HOME/XDG with snapshot-only tools."""
 import json
 import os
-import shutil
+from pathlib import Path
 import sys
-
+import subprocess
+import signal
+import socket
+import time
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from common import popen_run
-
-TOOLS = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
-SNAPSHOT = os.path.join(TOOLS, "mcp_snapshot_server.py")
-OPENCODE_BIN = os.path.expanduser("~/.opencode/bin/opencode")
+from isolated import prepare, finish, SNAPSHOT
+OPENCODE_BIN = os.path.expanduser('~/.opencode/bin/opencode')
 
 
-def run(ws, instruction, task_dir, model, timeout_s, log_path):
-    tdir = os.path.abspath(os.path.dirname(ws))  # bất biến: mọi path con tuyệt đối
-    rdir = os.path.join(tdir, "runner")
-    xdg_cfg = os.path.join(rdir, "xdg-config")
-    xdg_data = os.path.join(rdir, "xdg-data")
-    os.makedirs(os.path.join(xdg_cfg, "opencode"), exist_ok=True)
-    os.makedirs(os.path.join(xdg_data, "opencode"), exist_ok=True)
-
-    payloads = os.path.join(task_dir, "environment", "payloads.json")
-    # G-E7 + runner contract: V2 permissions (shape [{action, resource, effect}]) —
-    # chặn tuyệt đối đọc/ghi ngoài workspace, shell, web; MCP snapshot qua ENV.
-    cfg = {"$schema": "https://opencode.ai/config.json",
-           "permissions": [
-               {"action": "external_directory", "resource": "*", "effect": "deny"},
-               {"action": "shell", "resource": "*", "effect": "deny"},
-               {"action": "webfetch", "resource": "*", "effect": "deny"},
-               {"action": "websearch", "resource": "*", "effect": "deny"},
-           ],
-           "mcp": {"servers": {"opentrading": {"type": "local",
-                                               "command": [sys.executable, SNAPSHOT],
-                                               "environment": {"BENCH_PAYLOADS": payloads},
-                                               "codemode": False}}}}
-    with open(os.path.join(xdg_cfg, "opencode", "opencode.json"), "w", encoding="utf-8") as f:
-        json.dump(cfg, f, ensure_ascii=False, indent=1)
-
-    src_auth = os.path.expanduser("~/.local/share/opencode/auth.json")
-    if os.path.exists(src_auth):
-        shutil.copy(src_auth, os.path.join(xdg_data, "opencode", "auth.json"))
-
-    env = {**os.environ, "XDG_CONFIG_HOME": xdg_cfg, "XDG_DATA_HOME": xdg_data}
-    cmd = [OPENCODE_BIN, "run", "--standalone", "--format", "json", "--auto",
-           "-m", model, instruction]
-    rc, out, err, timed_out = popen_run(cmd, cwd=ws, env=env, timeout_s=timeout_s, log_path=log_path)
-
-    final_parts, session_id, tokens, cands = [], None, None, []
-    ANSWER_KEYS = ("value", "values", "verdict", "ranking", "reason")
-    for line in out.splitlines():
-        line = line.strip()
-        if not line.startswith("{"):
-            continue
+def run(ws, instruction, task_dir, model, timeout_s, log_path, options=None):
+    options = {**(options or {}), 'timeout_s': timeout_s}
+    root, env, gateway, mcp_env = prepare(ws, task_dir, model, options)
+    cfg = {'$schema': 'https://opencode.ai/config.json',
+        'plugins': ['-*', 'opencode.agent', 'opencode.config.agent', 'opencode.config.mcp', 'opencode.config.provider', 'opencode.provider.dynamic', 'opencode.provider.nvidia', 'opencode.tools'],
+        'agents': {'title': {'disabled': True}, 'summary': {'disabled': True}, 'compaction': {'disabled': True}},
+        'providers': {'nvidia': {'package': '@ai-sdk/openai-compatible', 'name': 'NVIDIA controlled gateway',
+            'settings': {'apiKey': gateway.token, 'baseURL': gateway.url},
+            'models': {gateway.model: {'name': gateway.model, 'capabilities': {'tools': True, 'input': ['text'], 'output': ['text'], 'reasoning': {'supported': False}},
+                'limit': {'context': 32000, 'output': 2048}}}}},
+        'permissions': [{'action': action, 'resource': '*', 'effect': 'deny'} for action in ('execute','subagent','browser','shell','external_directory','webfetch','websearch','read','write','edit','glob','grep','skill','question','task','todowrite','todoread')],
+        'mcp': {'servers': {'opentrading': {'type': 'local', 'command': [sys.executable, str(SNAPSHOT)],
+                  'environment': mcp_env, 'codemode': False}}}}
+    config_path = Path(env['XDG_CONFIG_HOME']) / 'opencode/opencode.json'
+    config_path.parent.mkdir(parents=True, exist_ok=True)
+    config_path.write_text(json.dumps(cfg, indent=2))
+    env.update(OPENCODE_CONFIG=str(config_path), OPENCODE_DISABLE_EXTERNAL_SKILLS='1',
+        OPENCODE_DISABLE_PROJECT_CONFIG='1', OPENCODE_DISABLE_AUTOUPDATE='1', OPENCODE_DISABLE_MODELS_FETCH='1',
+        OPENCODE_DISABLE_AUTOCOMPACT='1')
+    # Start a dedicated native server, wait for its MCP catalog, then attach the
+    # native CLI run. run --standalone can race slow Python MCP startup.
+    with socket.socket() as listener:
+        listener.bind(('127.0.0.1', 0))
+        port = listener.getsockname()[1]
+    server_url = 'http://127.0.0.1:%d' % port
+    env['PWD'] = str(Path(ws).resolve())
+    env['OPENCODE_SERVER_PASSWORD'] = gateway.token
+    started = time.monotonic()
+    rc, out, err, timed_out = 1, '', '', False
+    startup_error = ''
+    server = None
+    with gateway, open(root / 'opencode-server.log', 'w', encoding='utf-8') as server_log:
         try:
-            ev = json.loads(line)
-        except json.JSONDecodeError:
-            continue
-        if ev.get("sessionID"):
-            session_id = ev["sessionID"]
-        part = ev.get("part") or {}
-        if ev.get("type") == "text" and part.get("text"):
-            final_parts.append(part["text"])
-        # model yếu hay gửi nguyên object vào write tool (content: Expected string)
-        # → vẫn thu object làm answer candidate (chuẩn hoá cấp runner, R21)
-        if isinstance(part, dict) and part.get("tool") in ("write", "edit"):
-            inp = (part.get("state") or {}).get("input") or {}
-            content = inp.get("content")
-            if isinstance(content, dict) and any(k in content for k in ANSWER_KEYS):
-                cands.append(content)
-        # usage (nếu có): part.tokens hoặc ev.tokens
-        tk = (part.get("tokens") if isinstance(part, dict) else None) or ev.get("tokens")
-        if isinstance(tk, dict):
-            tokens = tk
-    answer_path = os.path.join(ws, "answer.json")
-    return {"status": "timeout" if timed_out else ("ok" if rc == 0 else "error"),
-            "answer_path": answer_path if os.path.exists(answer_path) else None,
-            "final_text": "\n".join(final_parts),
-            "answer_candidates": cands,
-            "session_id": session_id, "tokens": tokens,
-            "notes": "" if rc == 0 else "exit=%s" % rc}
+            server = subprocess.Popen([OPENCODE_BIN, 'serve', '--hostname', '127.0.0.1', '--port', str(port)],
+                cwd=ws, env=env, stdin=subprocess.DEVNULL, stdout=server_log, stderr=server_log,
+                text=True, start_new_session=True)
+            catalog = None
+            while time.monotonic() - started < min(45, timeout_s):
+                if server.poll() is not None:
+                    raise RuntimeError('native OpenCode server exited during startup')
+                remaining = timeout_s - (time.monotonic() - started)
+                try:
+                    check = subprocess.run([OPENCODE_BIN, 'api', '--server', server_url, 'mcp.list'],
+                        cwd=ws, env=env, capture_output=True, text=True, timeout=max(0.1, min(8, remaining)))
+                except subprocess.TimeoutExpired:
+                    continue
+                try: catalog = json.loads(check.stdout)
+                except ValueError: catalog = None
+                (root / 'mcp-check.log').write_text((check.stdout + '\n' + check.stderr).replace(gateway.token, '[local-token]'))
+                (root / 'mcp-catalog.json').write_text(json.dumps(catalog, ensure_ascii=False, indent=2))
+                if catalog and any(item.get('name', item.get('id')) == 'opentrading' and
+                    (item.get('status') == 'connected' or (isinstance(item.get('status'), dict) and item['status'].get('status') == 'connected'))
+                    for item in catalog.get('data', [])):
+                    break
+                time.sleep(min(0.5, max(0, timeout_s - (time.monotonic() - started))))
+            else:
+                raise TimeoutError('native OpenCode MCP catalog did not become ready')
+            remaining = timeout_s - (time.monotonic() - started)
+            if remaining <= 0:
+                raise TimeoutError('trial deadline exhausted during MCP startup')
+            rc, out, err, timed_out = popen_run([OPENCODE_BIN, 'run', '--server', server_url, '--format', 'json',
+                '--auto', '--title', 'benchmark trial', '-m', model, instruction],
+                cwd=ws, env=env, timeout_s=remaining, log_path=log_path)
+        except Exception as exc:
+            startup_error = str(exc) if isinstance(exc, (RuntimeError, TimeoutError)) else type(exc).__name__
+            timed_out = isinstance(exc, (TimeoutError, subprocess.TimeoutExpired))
+            Path(log_path).write_text('native OpenCode startup/run failed: ' + startup_error + '\n')
+        finally:
+            if server is not None:
+                try: os.killpg(server.pid, signal.SIGTERM)
+                except ProcessLookupError: pass
+                try: server.wait(timeout=1)
+                except subprocess.TimeoutExpired:
+                    try: os.killpg(server.pid, signal.SIGKILL)
+                    except ProcessLookupError: pass
+                    server.wait(timeout=1)
+                try: os.killpg(server.pid, signal.SIGKILL)
+                except ProcessLookupError: pass
+    final_text, session, native_error = parse_output(out)
+    return finish(root, gateway, {'status': 'timeout' if timed_out else 'ok' if rc == 0 and not native_error else 'error',
+        'final_text': final_text, 'session_id': session, 'notes': startup_error or ('' if rc == 0 and not native_error else 'native runner error (exit=%s)' % rc)}, 'opencode', cfg)
+
+
+def parse_output(output):
+    """Use only the final assistant step, preserving unmodified text contents."""
+    texts, session, native_error = {}, None, False
+    for line in output.splitlines():
+        try: event = json.loads(line)
+        except ValueError: continue
+        session = event.get('sessionID') or session
+        native_error = native_error or event.get('type') == 'error'
+        part = event.get('part') or {}
+        if event.get('type') in ('step_start', 'tool_use'):
+            texts.clear()
+        if event.get('type') == 'text' and isinstance(part.get('text'), str):
+            texts[part.get('id', len(texts))] = part['text']
+    return '\n'.join(texts.values()), session, native_error

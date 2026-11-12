@@ -1,0 +1,14 @@
+{
+ "labeller": "root review session (agent reviewer, not an external human); method: content-only re-grade with sealed grader minus source/evidence + manual reading of every mismatch",
+ "n": 62,
+ "sample": "all 16 disagreements + 44 seeded random agreements (seed 20261110) + all 2 judge-incorrect non-DNF",
+ "agreement": 0.9839,
+ "cohen_kappa": 0.7919,
+ "confusion": {
+  "TP": 59,
+  "FN_judge": 1,
+  "FP_judge": 0,
+  "TN": 2
+ },
+ "caveat": "only 2 negatives available in or10 (base rate 97% correct) -> kappa estimate is imprecise; re-check on main with more negatives"
+}

@@ -28,5 +28,28 @@
     "latest_lnst_me_bn": 478.16
   },
   "notes": "Q4/2026 chưa kết thúc tại snapshot (01/11/2026). Kỳ có số mới nhất: Q3/2026 — LNST cty mẹ 478.16 tỷ, hợp nhất 506.68 tỷ.",
-  "as_of": "2026-11-01T15:57:50.285524+07:00"
+  "as_of": "2026-11-01T15:57:50.285524+07:00",
+  "contract_version": 2,
+  "provenance_contract": [
+    {
+      "tool": "financial_statements",
+      "source": "vietstock",
+      "as_of": "2026-11-01T15:57:50.285524+07:00",
+      "matched_entry_id": "financial_statements:0",
+      "response_sha256": "2e235400a86a7109ed9781e1e55029a00aede880537ec05eceb67c12a4f00341"
+    }
+  ],
+  "payload_sha256": "061aa29d57f44f4215751c88452ab1e36cf8c64bef1462946874c774fb76b61f",
+  "provenance_catalog": [
+    {
+      "tool": "financial_statements",
+      "source": "vietstock",
+      "as_of": "2026-11-01T15:57:50.285524+07:00",
+      "matched_entry_id": "financial_statements:0",
+      "response_sha256": "2e235400a86a7109ed9781e1e55029a00aede880537ec05eceb67c12a4f00341"
+    }
+  ],
+  "required_payload_keys": [
+    "financial_statements"
+  ]
 }

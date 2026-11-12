@@ -1,0 +1,33 @@
+{
+  "status": "PASS",
+  "no_model_calls": true,
+  "actual_sdk_occurrence_tests": {
+    "passed": 14,
+    "failed": 0,
+    "log": "/home/doanlong/extra/benchmark/audits/financial-v46-update/native-occurrence-final-tests.log",
+    "cases": [
+      "v46-update reused SDK id in two actual provider generations has two origins and truthful replays",
+      "SDK reuse across provider generations and memory namespaces retains distinct occurrences",
+      "origin generation is recorded at execution and cannot be restamped by later recovery",
+      "v46-update exhausted invalid financial contract preserves raw diagnostics but accepts no answer",
+      "v46-update B0 and B1 apply identical actual SDK finite-schema validation"
+    ]
+  },
+  "typecheck": {
+    "exit_code": 0,
+    "log": "/home/doanlong/extra/benchmark/audits/financial-v46-update/native-occurrence-final-typecheck.log"
+  },
+  "financial_contract": {
+    "passed": 26,
+    "failed": 0,
+    "log": "/home/doanlong/extra/benchmark/audits/financial-v46-update/financial-contract-final-tests.log"
+  },
+  "sha256": {
+    "/home/doanlong/extra/benchmark/experiments/finance-v46-update-study/experiments/opentrading-runtime/src/core/finance-policy.ts": "2d3e2cfc9e2fdb60373f524bb8baf28f8da209b54726ddc607d0410ae31bd962",
+    "/home/doanlong/extra/benchmark/experiments/finance-v46-update-study/experiments/opentrading-runtime/src/core/tools/registry.ts": "154a082e5408ce6538fab6bfaa4c5f96ec5f8d8cb81cadf4f93fd47c3016ee41",
+    "/home/doanlong/extra/benchmark/experiments/finance-v46-update-study/experiments/opentrading-runtime/src/core/agent.ts": "4710cf2fd4dc92f011eda005ffa205b61be355d4e291758a5783de8379e927f3",
+    "/home/doanlong/extra/benchmark/experiments/finance-v46-update-study/experiments/opentrading-runtime/test/finance-v46-update.test.ts": "b24865e4f0aad42f9e981e7474b178000c7817a88c949b753af6d2e2db3fccb7",
+    "/home/doanlong/extra/benchmark/experiments/finance-v46-update-study/experiments/opentrading-runtime/test/agent.test.ts": "9e185af454aaa518bc1e5dbd618cbaf24d53913b32bd920558eb4828f618f5ed",
+    "/home/doanlong/extra/benchmark/experiments/finance-v46-update-study/tools/tests/test_v46_update_contract.py": "66fcd055ed25d96623b27ef3f6696d3010aae9c0d03829c8e374c1288501f750"
+  }
+}

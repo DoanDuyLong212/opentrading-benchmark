@@ -1,0 +1,94 @@
+{
+  "schema": "v46-update-engineering-approval",
+  "created": "2026-11-09T15:45+07:00",
+  "approved": true,
+  "authorizer": "user explicit instruction 2026-11-09: duyệt v4.6-update; thay codex hoàn tất phần còn lại; smoke Super-only (NVIDIA) rồi pilot trên OpenRouter free",
+  "executor": "OpenCode agent — INDEPENDENT of the v4.6-update implementers (codex workers native/benchmark/provider)",
+  "study": "experiments/finance-v46-update-study",
+  "repairs_verified": {
+    "full_python_suite": "622/622 PASS (run by executor 09/11 15:5x)",
+    "typecheck": "PASS (tsc --noEmit exit 0)",
+    "all_4arm_common_wire": "PASS (all-native-common-wire-9e5ae401/proof.json)",
+    "native_utility_wire": "PASS (headless-wire-5aaa5667/proof.json)",
+    "offline_ready_check": "PASS (4 checks)",
+    "eight_repairs": "native evidence binding [ref rN] root-cause; B0/B1 schema parity; origin-generation audit; dimensionless units; unit normalizer exact-only; refusal predicates; common precision/source-chain instructions; grader families preserved",
+    "independence": "implementers = codex workers (native/benchmark/provider); approver = OpenCode agent (not an author of these repairs); preflight criticism of v4.6 self-approval addressed"
+  },
+  "model_admission": {
+    "nvidia/nvidia/nemotron-3.5-super-vl-120b-a12b": {
+      "approved": true,
+      "receipt": "/home/doanlong/extra/benchmark/experiments/finance-v46-update-study/audits/model-admission/nvidia__nemotron-3.5-super-vl-120b-a12b-route-v2.json",
+      "sha256": "7126e253f2023b96f29301d89cead3bb80a7eea22cbbfd1ed13619483cf71a8c",
+      "note": "route-v2; returned private alias; checkpoint UNVERIFIED retained; identity canary per-cohort wired"
+    },
+    "nvidia/deepseek-ai/deepseek-v4.1-flash": {
+      "approved": true,
+      "receipt": "/home/doanlong/extra/benchmark/experiments/finance-v46-update-study/audits/model-admission/deepseek-ai__deepseek-v4.1-flash.json",
+      "sha256": "b8566f7d495db4f4ee0434469d247ef028e248fb3b0c46d0271a12d81872ccb1"
+    },
+    "nvidia/nemotron-3.5-super-vl:free": {
+      "approved": true,
+      "receipt": "/home/doanlong/extra/benchmark/experiments/finance-v46-update-study/audits/model-admission/openrouter__nemotron-3.5-super-vl-free.json",
+      "sha256": "a70725bad3bf363cbb3783efc822049c624f8bc19e6a3bb1a2ab3549cf2cce2f",
+      "note": "OpenRouter FREE route (pricing 0/0); pilot-only; budget hard-stop 1900 (user-raised 2026-11-10, verified free_model_daily_requests limit=1000 per UTC day, reset 00:00 UTC); identity trả đúng yêu cầu; envelope provider_route wired 2026-11-10"
+    },
+    "deepseek/deepseek-v4.1-flash-1017": {
+      "approved": true,
+      "receipt": "/home/doanlong/extra/benchmark/experiments/finance-v46-update-study/audits/model-admission/deepseek__deepseek-v4.1-flash-1017-openrouter.json",
+      "sha256": "28622b9ad64637f52a7f862a207dd2c8d329f3866f1e0bcf322dcd06aea55574",
+      "note": "OpenRouter PAID route (credit); canary 3/3 PASS identity exact deepseek/deepseek-v4.1-flash; budget guard 1900 requests; price entitlement prompt $0.051/M completion $0.567/M cache $0.018/M; pipeline smoke→pilot, criterion B1>=B0 (user 2026-11-10)"
+    }
+  },
+  "freeze_state_sha256": [
+    "0b89a6edf98ded8a5ee27d7c98f8b786b0cdd6508b3819ac9209cf364249eb00",
+    "c455e2a92d64cc69e32d3aa8531ac447c68a2a85e33451d5069ee41ee784a910",
+    "97446090c73c2a9377fdf5c7ef4df6dd7989280595f1eb11b6b53b74eb52a748",
+    "1a4adf4f2858ae171e37df9ebcd9099999c6c4e8ed9ba2843353df41c3bb02b5",
+    "149356b74ce9bf4d552f755857824cfbd53951e55021fb6a66c2aeae6021ce1a",
+    "87b4cd63154936d9fbad81c3452a3e1f7ecd7d56c6a1e8725ac75681f909a36e",
+    "153748689216001f7491454fe9ff411ef30578b7fd9cead6689353c0de4a789f",
+    "a7536257db0c883bb135d88ec3b8178e6a061e0ab6f3cca4bfcd693128059203",
+    "8146de994a23e480a2aef3d950bdfa271493568598e298f48a3efb1f5997f186"
+  ],
+  "launch_scope": "Super-only devsmoke on NVIDIA (user directive); deepseek-devsmoke/pilot/main PAUSE markers pre-placed; pilot on OpenRouter :free is a SEPARATE authorized route after gate review",
+  "retune": "preregistered 2026-11-09: 2 policy sentences (growth both-periods + refusal concise); preregistration plans/2026-11-09-v46u-retune-preregistration.md; post-freeze instrumentation 2026-11-10: fix#5 unknown_context Error-prefix + provider_route wiring + budget 1900 — see SEAL-DRIFT-AMENDMENT-20261110.json",
+  "batch3_corpus_note": "Corpus batch-3 đã chốt 2026-11-10 (session OpenCode thứ hai): MAIN 230 (200 financial + 30 memory fin-mem-320..349), holdout 60 (50 nonmemory canonical + 10 memory). Receipts audits/financial-memory-v45-batch3/. Amendment: audits/seal/SEAL-DRIFT-AMENDMENT-20261110.json",
+  "diagnostic_pilot_authorized": true,
+  "diagnostic_pilot_authorization": "User explicit 2026-11-10 ~04:30: \"Thực hiện Pilot với OR như kế hoạch ban đầu (chỉ cần B1>=B0 là có thể chạy)\" — smoke :free gate FAIL được ghi nhận (B1 21<B0 22, trap 5/6, raw 22/24, DNF 2 — noise của serving pool :free); user chấp nhận kết quả \"khá ổn\" và phê duyệt pilot diagnostic với tiêu chí đánh giá pilot = B1>=B0 (relaxed, thay cho +3/44 mỗi control). Pilot vẫn giữ toàn bộ measurement integrity: audit PASS + manual review 80/80 + zero fabrication + caps + budget 1900.",
+  "amendments": {
+    "2026-11-10-gold-audit": {
+      "document": "/home/doanlong/extra/benchmark/experiments/finance-v46-update-study/plans/2026-11-10-v46u-gold-audit-amendment.md",
+      "sha256": "6ad7ae544978c8780cb5ded540d8a86a977d66eac7f2206dae33b7005bbef5b2",
+      "corpus_receipt": "/home/doanlong/extra/benchmark/experiments/finance-v46-update-study/audits/gold-audit-2026-11-10/patch-receipt.json",
+      "corpus_receipt_sha256": "693b842081fad722136eab159db1b6d0bcc0cae1b0f06962f1a3ad2e3c9586e3",
+      "scope": "freeze states recomputed after user-approved gold audit; model admissions unchanged",
+      "judge_calibration": "or9 53 answers: agreement 0.8868 vs sealed content label; 6/6 disagreements = grader period false-fails (A1, A7), manually confirmed"
+    },
+    "2026-11-10-judge-primary": {
+      "document": "/home/doanlong/extra/benchmark/experiments/finance-v46-update-study/plans/2026-11-10-v46u-judge-primary-amendment.md",
+      "sha256": "3aaf74d9e581d3d7fed3445c7d9dd7454d82b5923973e31f2b5002288c6112b6",
+      "approved_by_user": "2026-11-10"
+    },
+    "2026-11-10-main-b0": {
+      "document": "/home/doanlong/extra/benchmark/experiments/finance-v46-update-study/plans/2026-11-10-v46u-main-b0-amendment.md",
+      "sha256": "3f3c4d5fce2ad4430553881e2452030932195a473e318b3a63b4fa439410660f",
+      "approved_by_user": "2026-11-10"
+    },
+    "2026-11-10-ot-tool-deadlock-fix": {
+      "document": "/home/doanlong/extra/benchmark/experiments/finance-v46-update-study/plans/2026-11-10-v46u-ot-tool-deadlock-fix.md",
+      "sha256": "ec7cc02639bdeb1b05439f73bc2ab5257647e7169b86dd3c7fd25592285c13f3",
+      "approved_by_user": "2026-11-10/11 (addenda e,f,g)"
+    },
+    "2026-11-11-taskset-revision": {
+      "document": "/home/doanlong/extra/benchmark/experiments/finance-v46-update-study/plans/2026-11-11-v46u-taskset-revision-amendment.md",
+      "sha256": "a072b161a19c4791bb2ee271fce7b2a5786ae1739bc9c80bd816081a99bfba11",
+      "approved_by_user": "2026-11-11 (plan: \"2 ok … 3 chung, 4 ok, 5 ok\"; D1 \"Giữ tắt … session-query … đồng ý\"; addendum e \"2 duyệt\"; addendum f \"1-b\")",
+      "addendum_g": "user 2026-11-11: \"Sửa OT sửa cả 1,2,3 … chỉ chạy lại những câu sai để xác nhận. sửa đề như trên và chạy lại\"",
+      "pilot_evidence_exception": "user 2026-11-11 \"A chọn b\": merged or15 + confirmation reruns accepted as pilot evidence; after main check the key limit and run holdout immediately if sufficient"
+    }
+  },
+  "main_authorized_by_user": true,
+  "judge_kappa_file": "/home/doanlong/extra/benchmark/experiments/finance-v46-update-study/analysis/labels/or15-batch-kappa.json",
+  "holdout_authorized_by_user": true,
+  "holdout_authorization": "user 2026-11-11: \"Sau khi chạy xong main thì kiểm tra hạn mức, đủ holdout thì lập tức chạy\" - gated by holdout-go.json written after the key-limit check"
+}

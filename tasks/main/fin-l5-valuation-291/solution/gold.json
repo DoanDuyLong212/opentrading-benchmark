@@ -1,44 +1,67 @@
 {
- "task_id": "fin-l5-valuation-291",
- "scoring": "value",
- "solution": {
-  "price": 55400.0,
-  "per": 9.91,
-  "pb": 3.64
- },
- "as_of": "2026-11-01T23:22:58.614325+07:00",
- "split": "main",
- "expects": [
-  {
-   "type": "value",
-   "path": "values.price",
-   "gold": 55400.0,
-   "tol": {
-    "rel": 0.005
-   }
+  "task_id": "fin-l5-valuation-291",
+  "scoring": "value",
+  "solution": {
+    "price": 55400.0,
+    "per": 9.91,
+    "pb": 3.64
   },
-  {
-   "type": "value",
-   "path": "values.per",
-   "gold": 9.91,
-   "tol": {
-    "rel": 0.005
-   }
-  },
-  {
-   "type": "value",
-   "path": "values.pb",
-   "gold": 3.64,
-   "tol": {
-    "rel": 0.005
-   }
-  },
-  {
-   "type": "str",
-   "path": "source",
-   "accept": [
-    "valuation_run"
-   ]
-  }
- ]
+  "as_of": "2026-11-01T23:22:58.614325+07:00",
+  "split": "main",
+  "expects": [
+    {
+      "type": "value",
+      "path": "values.price",
+      "gold": 55400.0,
+      "tol": {
+        "rel": 0.005
+      }
+    },
+    {
+      "type": "value",
+      "path": "values.per",
+      "gold": 9.91,
+      "tol": {
+        "rel": 0.005
+      }
+    },
+    {
+      "type": "value",
+      "path": "values.pb",
+      "gold": 3.64,
+      "tol": {
+        "rel": 0.005
+      }
+    },
+    {
+      "type": "str",
+      "path": "source",
+      "accept": [
+        "valuation_run"
+      ]
+    }
+  ],
+  "contract_version": 2,
+  "provenance_contract": [
+    {
+      "tool": "valuation_run",
+      "source": "computed-local",
+      "as_of": "2026-11-01T23:22:58.614325+07:00",
+      "matched_entry_id": "val:FOX",
+      "response_sha256": "399af924d59a0917970f3a734ea44de9468b3197c25e81342ea60210ca9b1193"
+    }
+  ],
+  "payload_sha256": "910c3705e165f61bdfde71b664b100763aa3015104e37a029ca7bd745e987218",
+  "provenance_catalog": [
+    {
+      "tool": "valuation_run",
+      "source": "computed-local",
+      "as_of": "2026-11-01T23:22:58.614325+07:00",
+      "matched_entry_id": "val:FOX",
+      "response_sha256": "399af924d59a0917970f3a734ea44de9468b3197c25e81342ea60210ca9b1193"
+    }
+  ],
+  "required_payload_keys": [
+    "val:FOX"
+  ]
 }

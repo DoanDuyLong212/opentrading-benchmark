@@ -1,0 +1,20 @@
+{
+  "status": "offline_pass_not_financial_quality_certificate",
+  "tests_passed": 86,
+  "tests_failed": 0,
+  "test_log": "audits/financial-prompt-v45/provider-compute-tests.log",
+  "worker_inference_calls": 0,
+  "root_authorized_synthetic_canary_chat_calls": 24,
+  "new_calls_for_route_amendment": 0,
+  "super_checkpoint_unverified": true,
+  "files_sha256": {
+    "tools/runners/provider.py": "0b872e2f953a72789cd7d4cf5719610f634540eda3d6561c158c76d2038790dd",
+    "tools/analytics_compute.py": "59e3647c610daae5c610e1848a5a73b91da011a3c0350073821c83656f43ca26",
+    "tools/analytics_calculate.py": "11e0218f38a4fda53f4cc82334c419f3022ec0d224d1d2eca2af7c68517e66ae",
+    "tools/mcp_snapshot_server.py": "64962a84400d4907069c3a7d457f7cf1f9a5a0a53fdc16e782e972c407569d5e",
+    "tools/ready_check.py": "15230af5d1e998807093db530c8fb6155b9c0422d56d6df6236932d08654940f",
+    "tools/verify_nvidia.py": "1acf254d4315742d72897e7b528f6da6dd6dab7edc5f2a0527f4e7b1b5d71d9a",
+    "tools/runners/native_calculate.ts": "0a6488aad101ba149ac0a346cee591e59c877524331a761bbfc05c1d78b98474"
+  },
+  "scope": "provider/commoncalculator checks; actual SDK/binary full-suite and independent audit still required before financial inference"
+}

@@ -1,37 +1,60 @@
 {
- "task_id": "fin-l3-screen-195",
- "scoring": "value",
- "solution": {
-  "pass": [
-   "PVS",
-   "PVT"
+  "task_id": "fin-l3-screen-195",
+  "scoring": "value",
+  "solution": {
+    "pass": [
+      "PVS",
+      "PVT"
+    ],
+    "filter": "ROE > 12% và P/E < 15"
+  },
+  "as_of": "2026-11-01T23:14:37.310336+07:00",
+  "split": "main",
+  "expects": [
+    {
+      "type": "set",
+      "path": "values.pass",
+      "gold": [
+        "PVS",
+        "PVT"
+      ]
+    },
+    {
+      "type": "period",
+      "path": "period",
+      "accept": [
+        "2025"
+      ]
+    },
+    {
+      "type": "str",
+      "path": "source",
+      "accept": [
+        "peer_compare"
+      ]
+    }
   ],
-  "filter": "ROE > 12% và P/E < 15"
- },
- "as_of": "2026-11-01T23:14:37.310336+07:00",
- "split": "main",
- "expects": [
-  {
-   "type": "set",
-   "path": "values.pass",
-   "gold": [
-    "PVS",
-    "PVT"
-   ]
-  },
-  {
-   "type": "period",
-   "path": "period",
-   "accept": [
-    "2025"
-   ]
-  },
-  {
-   "type": "str",
-   "path": "source",
-   "accept": [
-    "peer_compare"
-   ]
-  }
- ]
+  "contract_version": 2,
+  "provenance_contract": [
+    {
+      "tool": "peer_compare",
+      "source": "vnstock",
+      "as_of": "2026-11-01T23:14:37.310336+07:00",
+      "matched_entry_id": "peer:energy_p",
+      "response_sha256": "65e84dc7917423c9b408c2f532b597c1a3ae3efa7a627f43834e1e821f4e3406"
+    }
+  ],
+  "payload_sha256": "fffbaf55bd1b4f1af5a6602068e0002cbb9d21c762cad0c7c2afc6c09aa0a67f",
+  "provenance_catalog": [
+    {
+      "tool": "peer_compare",
+      "source": "vnstock",
+      "as_of": "2026-11-01T23:14:37.310336+07:00",
+      "matched_entry_id": "peer:energy_p",
+      "response_sha256": "65e84dc7917423c9b408c2f532b597c1a3ae3efa7a627f43834e1e821f4e3406"
+    }
+  ],
+  "required_payload_keys": [
+    "peer:energy_p"
+  ]
 }

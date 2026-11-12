@@ -1,0 +1,165 @@
+{
+  "approval": "/home/doanlong/extra/benchmark/experiments/finance-v46-update-study/audits/engineering-approval-v46-update.json",
+  "blocked_models": {},
+  "diagnostic_pilot_authorized": false,
+  "engineering_approved": true,
+  "main_authorized_by_user": false,
+  "protected_files": {
+    "/home/doanlong/extra/benchmark/experiments/finance-v46-update-study/audits/engineering-approval-v46-update.json": "aa086795f857695dc91fef341d733bef2becd7e3847af28a3fd94e3f770b77e1",
+    "/home/doanlong/extra/benchmark/experiments/finance-v46-update-study/audits/model-admission/openrouter__nemotron-3.5-super-vl-free.json": "a70725bad3bf363cbb3783efc822049c624f8bc19e6a3bb1a2ab3549cf2cce2f"
+  },
+  "protocol": "financial_product_v45",
+  "runs": [
+    {
+      "config": "/home/doanlong/extra/benchmark/experiments/finance-v46-update-study/tools/bench_config_openrouter.json",
+      "model": "nvidia/nemotron-3.5-super-vl:free",
+      "out": "/home/doanlong/extra/benchmark/experiments/finance-v46-update-study/results/financial-v46u-or-20261109/super-openrouter-free-devsmoke",
+      "settings": {
+        "arms": [
+          "opentrading_baseline",
+          "opentrading_finance",
+          "opencode",
+          "dsh"
+        ],
+        "clock_policy": "snapshot_as_of; OpenTrading native now pinned; other native clocks observed in wire capture",
+        "conditions": {
+          "dsh": {
+            "finance_policy": false,
+            "native_arm": "dsh",
+            "prompt_variant": null
+          },
+          "opencode": {
+            "finance_policy": false,
+            "native_arm": "opencode",
+            "prompt_variant": null
+          },
+          "opentrading_baseline": {
+            "finance_policy": false,
+            "native_arm": "opentrading",
+            "prompt_variant": "baseline"
+          },
+          "opentrading_finance": {
+            "finance_policy": true,
+            "native_arm": "opentrading",
+            "prompt_variant": "finance"
+          }
+        },
+        "effort": "none",
+        "freeze_sha256": null,
+        "include_quarantined": false,
+        "max_output_tokens": 8192,
+        "max_requests": 24,
+        "max_total_tokens": 3600000,
+        "model": "nvidia/nemotron-3.5-super-vl:free",
+        "pause": 2.0,
+        "provider_timeout_s": 240.0,
+        "quarantined_tasks": {},
+        "retry": 0,
+        "retry_backoff": 4.0,
+        "runs": 2,
+        "seed": 20261108,
+        "split": "devsmoke",
+        "timeout": 900.0
+      },
+      "split": "devsmoke",
+      "state_sha256": "5f48f590a188493a1b6be50cadc7555c1f0d519f1c0f8fde36677d1e8391d781",
+      "tasks": [
+        "v45-dev-01-quote",
+        "v45-dev-02-resolve",
+        "v45-dev-03-growth",
+        "v45-dev-04-margin",
+        "v45-dev-05-scale",
+        "v45-dev-06-ratio",
+        "v45-dev-07-aggregate",
+        "v45-dev-08-cross-source",
+        "v45-dev-09-chain",
+        "v45-dev-10-trap-resolver",
+        "v45-dev-11-trap-period",
+        "v45-dev-12-trap-empty"
+      ]
+    },
+    {
+      "config": "/home/doanlong/extra/benchmark/experiments/finance-v46-update-study/tools/bench_config_openrouter.json",
+      "model": "nvidia/nemotron-3.5-super-vl:free",
+      "out": "/home/doanlong/extra/benchmark/experiments/finance-v46-update-study/results/financial-v46u-or-20261109/super-openrouter-free-pilot",
+      "settings": {
+        "arms": [
+          "opentrading_baseline",
+          "opentrading_finance",
+          "opencode",
+          "dsh"
+        ],
+        "clock_policy": "snapshot_as_of; OpenTrading native now pinned; other native clocks observed in wire capture",
+        "conditions": {
+          "dsh": {
+            "finance_policy": false,
+            "native_arm": "dsh",
+            "prompt_variant": null
+          },
+          "opencode": {
+            "finance_policy": false,
+            "native_arm": "opencode",
+            "prompt_variant": null
+          },
+          "opentrading_baseline": {
+            "finance_policy": false,
+            "native_arm": "opentrading",
+            "prompt_variant": "baseline"
+          },
+          "opentrading_finance": {
+            "finance_policy": true,
+            "native_arm": "opentrading",
+            "prompt_variant": "finance"
+          }
+        },
+        "effort": "none",
+        "freeze_sha256": null,
+        "include_quarantined": false,
+        "max_output_tokens": 8192,
+        "max_requests": 24,
+        "max_total_tokens": 3600000,
+        "model": "nvidia/nemotron-3.5-super-vl:free",
+        "pause": 2.0,
+        "provider_timeout_s": 240.0,
+        "quarantined_tasks": {
+          "fin-l1-macro-01": "ambiguous_cpi_series_dimension",
+          "fin-l4-narrative-01": "incomplete_narrative_evidence_rubric",
+          "fin-mem-p01": "separate_memory_multiturn_stratum; use sealed memory driver"
+        },
+        "retry": 0,
+        "retry_backoff": 4.0,
+        "runs": 2,
+        "seed": 20261108,
+        "split": "pilot",
+        "timeout": 900.0
+      },
+      "split": "pilot",
+      "state_sha256": "5f48f590a188493a1b6be50cadc7555c1f0d519f1c0f8fde36677d1e8391d781",
+      "tasks": [
+        "fin-l1-bctc-01",
+        "fin-l1-gold-01",
+        "fin-l1-quote-01",
+        "fin-l1-quote-02",
+        "fin-l2-crypto-01",
+        "fin-l2-gold-01",
+        "fin-l2-growth-01",
+        "fin-l2-margin-01",
+        "fin-l2-ratio-01",
+        "fin-l2-tech-01",
+        "fin-l3-agg-01",
+        "fin-l3-crypto-01",
+        "fin-l3-index-01",
+        "fin-l3-screen-01",
+        "fin-l3-tech-multi-01",
+        "fin-l3-top-01",
+        "fin-l4-2nguon-01",
+        "fin-l4-future-01",
+        "fin-l4-nonexist-01",
+        "fin-l5-compare-01",
+        "fin-l5-profile-01",
+        "fin-l5-valuation-01"
+      ]
+    }
+  ],
+  "study_version": "v4.6-update"
+}

@@ -5,3 +5,32 @@ grade.ctrf.json
 answer.json
 results/
 runs/
+
+# --- secrets ---
+.env
+.env.*
+**/auth.json
+
+# --- dependencies / toolchains / build ---
+node_modules
+experiments/toolchains/
+dist/
+.venv/
+.mypy_cache/
+.pytest_cache/
+.ruff_cache/
+
+# --- bulky run artifacts (kept local; summaries are force-added) ---
+results/
+runs/
+*.tar.gz
+*.tgz
+*.zip
+*.so
+audits/financial-prompt-v45/native/
+audits/financial-prompt-v44/compute-*/
+**/runner/home/
+**/provider-requests/
+**/provider-responses/
+**/ws/
+**/workspace/

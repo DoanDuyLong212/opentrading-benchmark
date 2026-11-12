@@ -1,0 +1,156 @@
+..............F.......F.......F.............F.....................F..... [100%]
+=================================== FAILURES ===================================
+________ test_all_copied_graders_match_template_and_frozen_is_original _________
+
+    def test_all_copied_graders_match_template_and_frozen_is_original():
+     from _gen_templates import GRADER_TMPL
+     for path in (ROOT/'tasks').glob('*/*/tests/grader.py'):
+>     assert path.read_text()==GRADER_TMPL
+E     assert '#!/usr/bin/e...n    main()\n' == '#!/usr/bin/e...n    main()\n'
+E       
+E       Skipping 18685 identical leading characters in diff, use -v to show
+E          "value")
+E       +     # Unknown structured numerical claims are not certified by a correct primary
+E       +     # value or an unrelated receipt. All arms use this same fixed finite contract.
+E       +     allowed_numeric={e.get("path","value") for e in gold.get("expects",[]) if e.get("type")=="value"}
+E       +     allowed_numeric|={e["path"] for e in gold.get("bonus_assertions",[]) if e.get("type")=="value"}...
+E       
+E       ...Full output truncated (148 lines hidden), use '-vv' to show
+
+experiments/finance-v45-study/tools/tests/test_v4_contract.py:33: AssertionError
+____ test_all_model_catalog_schemas_preserve_recorded_requests_and_metadata ____
+
+    def test_all_model_catalog_schemas_preserve_recorded_requests_and_metadata():
+     import json,jsonschema
+     from mcp_snapshot_server import load_entries,build_tool_defs
+     catalog=json.loads((ROOT/'tools/tool_contracts_v4.json').read_text())
+     contracts={d['name']:d for d in catalog['tools']}
+     for path in (ROOT/'tasks').glob('*/*/environment/payloads.json'):
+      entries,_=load_entries(path)
+      for _,entry in entries:
+       jsonschema.validate(entry['params'],contracts[entry['tool']]['inputSchema'])
+      for item in build_tool_defs(entries):
+       if item['name']=='analytics_compute':
+        from analytics_compute import DEFINITION
+        assert item==DEFINITION
+        continue
+>      original=contracts[item['name']]
+                ^^^^^^^^^^^^^^^^^^^^^^^
+E      KeyError: 'analytics_calculate'
+
+experiments/finance-v45-study/tools/tests/test_v4_contract.py:86: KeyError
+_____ test_gateway_direct_model_admission_precedes_credentials_and_network _____
+
+tmp_path = PosixPath('/tmp/pytest-of-doanlong/pytest-67/test_gateway_direct_model_admi0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x77c1ce4f97f0>
+
+    def test_gateway_direct_model_admission_precedes_credentials_and_network(tmp_path,monkeypatch):
+     from runners import provider
+     def denied():raise AssertionError('Unauthorized model must never access credentials')
+     monkeypatch.setattr(provider,'credential',denied)
+>    with pytest.raises(ValueError,match='verified NVIDIA'):
+E    AssertionError: Regex pattern did not match.
+E      Expected regex: 'verified NVIDIA'
+E      Actual message: 'Only the two user-authorized v45 NVIDIA models are enabled'
+
+experiments/finance-v45-study/tools/tests/test_v4_contract.py:150: AssertionError
+__ test_all_402_recorded_requests_and_default_case_equivalence_stay_supported __
+
+    def test_all_402_recorded_requests_and_default_case_equivalence_stay_supported():
+        count=0
+        for path in (ROOT/'tasks').glob('*/*/environment/payloads.json'):
+            entries,_=load_entries(path)
+            definitions={item['name']:item for item in build_tool_defs(entries)}
+            for _,entry in entries:
+                count+=1;name=entry['tool'];base=entry.get('params') or {}
+                variants=[base,dict(base)]
+                withdefaults=dict(base)
+                for key,prop in SCHEMAS[name]['properties'].items():
+                    if key not in withdefaults and 'default' in prop:withdefaults[key]=prop['default']
+                variants.append(withdefaults)
+                # C1 remains authoritative too: some production enums are case-sensitive.
+                case={k:' '+v.lower()+' ' if isinstance(v,str) and k not in {'interval','period','method'} else v for k,v in base.items()}
+                if jsonschema.Draft7Validator(SCHEMAS[name]).is_valid(case):variants.append(case)
+                for args in variants:
+>                   jsonschema.Draft7Validator(definitions[name]['inputSchema']).validate(args)
+
+experiments/finance-v45-study/tools/tests/test_v42_contract.py:26: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = Draft7Validator(schema={'additionalProperties': False, 'anyOf': [{'additionalProperties': False, 'properties': {'limit...: {'description': 'Asset ticker...he next tool.', 'type': 'string'}}, 'required': ['query'], ...}, format_checker=None)
+args = ({'query': ' nhà khang điền ', 'limit': 5},), kwargs = {}
+
+    def validate(self, *args, **kwargs):
+        for error in self.iter_errors(*args, **kwargs):
+>           raise error
+E           jsonschema.exceptions.ValidationError: {'query': ' nhà khang điền ', 'limit': 5} is not valid under any of the given schemas
+E           
+E           Failed validating 'anyOf' in schema:
+E               {'type': 'object',
+E                'properties': {'query': {'type': 'string',
+E                                         'description': 'Asset ticker or '
+E                                                        'human-readable asset name to '
+E                                                        'resolve. May be ambiguous; '
+E                                                        'inspect candidates and asset '
+E                                                        'class before selecting the '
+E                                                        'next tool.'},
+E                               'limit': {'type': 'integer',
+E                                         'default': 5,
+E                                         'description': 'Maximum resolver candidates '
+E                                                        'returned; default 5.'}},
+E                'required': ['query'],
+E                'additionalProperties': False,
+E                'anyOf': [{'type': 'object',
+E                           'properties': {'query': {'type': 'string',
+E                                                    'pattern': '^\\s*[nN][hH]à\\ '
+E                                                               '[kK][hH][aA][nN][gG]\\ '
+E                                                               'Đ[iI]ề[nN]\\s*$'},
+E                                          'limit': {'const': 5}},
+E                           'required': ['query'],
+E                           'additionalProperties': False}],
+E                'x-opentrading-schema-profile': 'finite-replay-c2',
+E                'x-finite-request-variants': [{'query': 'Nhà Khang Điền', 'limit': 5}],
+E                'x-repair-fields': []}
+E           
+E           On instance:
+E               {'query': ' nhà khang điền ', 'limit': 5}
+
+../../.local/lib/python3.12/site-packages/jsonschema/validators.py:450: ValidationError
+_ test_actual_sdk_duplicate_fixture_joins_original_intent_and_rejects_tampering _
+
+    def test_actual_sdk_duplicate_fixture_joins_original_intent_and_rejects_tampering():
+        from intent_audit import verify_v42_local_intent
+        artifact=ROOT/'experiments/opentrading-runtime/test-artifacts/v42-actual-mcp-five-intents.json'
+>       receipt=json.loads(artifact.read_text())
+                           ^^^^^^^^^^^^^^^^^^^^
+
+experiments/finance-v45-study/tools/tests/test_v42_contract.py:114: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/usr/lib/python3.12/pathlib.py:1029: in read_text
+    with self.open(mode='r', encoding=encoding, errors=errors) as f:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = PosixPath('/home/doanlong/extra/benchmark/experiments/finance-v45-study/experiments/opentrading-runtime/test-artifacts/v42-actual-mcp-five-intents.json')
+mode = 'r', buffering = -1, encoding = 'locale', errors = None, newline = None
+
+    def open(self, mode='r', buffering=-1, encoding=None,
+             errors=None, newline=None):
+        """
+        Open the file pointed by this path and return a file object, as
+        the built-in open() function does.
+        """
+        if "b" not in mode:
+            encoding = io.text_encoding(encoding)
+>       return io.open(self, mode, buffering, encoding, errors, newline)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       FileNotFoundError: [Errno 2] No such file or directory: '/home/doanlong/extra/benchmark/experiments/finance-v45-study/experiments/opentrading-runtime/test-artifacts/v42-actual-mcp-five-intents.json'
+
+/usr/lib/python3.12/pathlib.py:1015: FileNotFoundError
+=========================== short test summary info ============================
+FAILED experiments/finance-v45-study/tools/tests/test_v4_contract.py::test_all_copied_graders_match_template_and_frozen_is_original
+FAILED experiments/finance-v45-study/tools/tests/test_v4_contract.py::test_all_model_catalog_schemas_preserve_recorded_requests_and_metadata
+FAILED experiments/finance-v45-study/tools/tests/test_v4_contract.py::test_gateway_direct_model_admission_precedes_credentials_and_network
+FAILED experiments/finance-v45-study/tools/tests/test_v42_contract.py::test_all_402_recorded_requests_and_default_case_equivalence_stay_supported
+FAILED experiments/finance-v45-study/tools/tests/test_v42_contract.py::test_actual_sdk_duplicate_fixture_joins_original_intent_and_rejects_tampering
+5 failed, 67 passed in 23.04s

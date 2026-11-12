@@ -1,0 +1,943 @@
+{
+  "version": 4,
+  "profile": "finance-c1-v4",
+  "description": "Shared common authoritative C1 input-contract profile and MCP metadata prototype, not a production deployment or typed financial output migration. All conditions validate requests against this same advertised input schema before exact replay matching. Tool outputSchema remains the actual generic object. Snapshot restrictions are appended independently by the replay server.",
+  "source_identity": {
+    "local_source_head": "ed934aebd0ee6f9271512150a9bb3971089d7460",
+    "deployed_commit": "unverified",
+    "catalog_source": "audits/2026-11-05/comprehensive-review/mcp/live-source-tool-catalog.json",
+    "catalog_source_sha256": "68acd4567004ec0357834da82d9ab046c81b658abce3c629e690994d03b25c5c",
+    "source_tool_count": 174,
+    "source_modules": {
+      "hints.py": "aebbf0f14c980640ecc31837c5b2734ef93b4606ee42f50a792f643aaa1fa8c2",
+      "providers/vietstock.py": "6c9833c51aba8358bd3fda9bdd773170fe1b2e5d62e3bcfebc277684b3df3712",
+      "providers/vnstock.py": "eb258b98d9e742de2c8c876fc98b80e70f661ceb68dd1dc8b8a2dffdfc02bae7",
+      "tools/compute_financial.py": "96de2f70af8b30c6741a86294f696ea4b18bb55ea6930f16db81dbc2827d0316",
+      "tools/corp.py": "ec4a91094a3c1b9f3d20f308d9d9bb354310de33d0fb09cea9ce9adc003cf046",
+      "tools/crypto.py": "6e1776d0ad8e72e24b08677ec020bb233ee871124eed8db2a19325ee8726aef4",
+      "tools/market.py": "dbb09666208ce407849c63428922bed4728ccbbc0d70780495a237db13aabf6c",
+      "tools/scan.py": "4726fce0056198889c78df96b3c1a30ebec03ea499fad356952f59938d7f7e8b",
+      "tools/shared.py": "75f8220747f2c1ffbccd55b245299e9bdd158ad35bd458908d8cbde547ce2c92",
+      "tools/vn.py": "68a312107c260eb60e8a122ad3ddf55ad0d613557bb7797449df536ac56bd0fb",
+      "tools/vn_ext.py": "3b06dd1add9be2c55c1054fa654980833a8b6f145f3c032651fbf80b84572098",
+      "tools/vs.py": "cc0c32d2b63233779eda5ac088c454b3f39daccb27410d3b632c135c3644a7ef",
+      "tools/vs_bctc.py": "b447a420ff3460f5ecca456407b279c4dba7dc30b9813f42c9d935b64f94fea1",
+      "tools/yf.py": "df1f059770030d9f27c22b8817a053fa54caae4f233baa5b2e664a6bfacaf658"
+    },
+    "sdk": {
+      "mcp": "1.30.0",
+      "pydantic": "2.13.5"
+    },
+    "official_sources": [
+      "https://modelcontextprotocol.io/specification/2025-11-25/server/tools",
+      "https://raw.githubusercontent.com/modelcontextprotocol/python-sdk/v1.30.0/docs/server.md"
+    ]
+  },
+  "tools": [
+    {
+      "name": "yf_commodities",
+      "description": "Gold, oil, metals, BTC, VND and dollar index. Use for input-cost context.\n\n        tickers: subset override (default COMMO 13). period/interval: yfinance\n        spellings.\n        ",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "tickers": {
+            "anyOf": [
+              {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "description": "Yahoo Finance tickers, e.g. GC=F (gold), CL=F (oil), BTC-USD. Null uses the provider commodity universe; do not use domestic equity symbols here."
+          },
+          "period": {
+            "type": "string",
+            "default": "2d",
+            "description": "Lookback using yfinance period spelling; default 2d. Not a financial statement quarter/year."
+          },
+          "interval": {
+            "type": "string",
+            "default": "1d",
+            "description": "yfinance bar interval, default lowercase 1d; spelling differs from vn_quote_history."
+          }
+        },
+        "required": [],
+        "additionalProperties": false
+      },
+      "outputSchema": {
+        "additionalProperties": true,
+        "title": "yf_commoditiesDictOutput",
+        "type": "object"
+      },
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": true
+      },
+      "_meta": {
+        "anthropic/searchHint": "hang hoa dau vang kim loai | commodities oil metals",
+        "opentrading/contractProfile": "finance-c1-v4",
+        "opentrading/schemaPolicy": "Raw types/defaults/required preserved from frozen source. Additional public domain guards added; no coercion. Frozen replay matching remains exact and separate."
+      }
+    },
+    {
+      "name": "vs_overview_trading",
+      "description": "Giao dịch theo ngày gần đây của 1 mã từ Vietstock: giá đóng cửa, khối lượng, giá trị,\n            mua/bán của khối ngoại và tự doanh.\n\n        Dùng khi: xem dòng tiền khối ngoại/tự doanh vài phiên gần nhất của 1 mã.\n        Không dùng khi: cần P/E, P/B hiện tại (output KHÔNG có bội số — dùng stock_overview); cần\n            vùng giá trị hợp lý (dùng valuation_run); cần so nhiều mã (dùng peer_compare).\n        ",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "symbol": {
+            "type": "string",
+            "description": "Vietnamese listed equity ticker, e.g. HPG; trading overview is not a historical statement series."
+          }
+        },
+        "required": [
+          "symbol"
+        ],
+        "additionalProperties": false
+      },
+      "outputSchema": {
+        "additionalProperties": true,
+        "title": "vs_overview_tradingDictOutput",
+        "type": "object"
+      },
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false
+      },
+      "_meta": {
+        "anthropic/searchHint": "giao dich theo ngay khoi ngoai tu doanh | daily trading deals",
+        "opentrading/contractProfile": "finance-c1-v4",
+        "opentrading/schemaPolicy": "Raw types/defaults/required preserved from frozen source. Additional public domain guards added; no coercion. Frozen replay matching remains exact and separate."
+      }
+    },
+    {
+      "name": "symbol_resolve",
+      "description": "Giải mã BẤT KỲ mã tài sản nào ra symbol + loại tài sản + tool tiếp theo. Dùng ĐẦU TIÊN\n            khi không chắc mã thuộc loại nào.\n\n        Dùng khi: mã lạ (\"BTC\", \"USD\", \"VNI\", \"vàng SJC\") — gồm cổ phiếu VN, crypto, forex, chỉ số,\n            phái sinh, vàng/dầu. Trả ứng viên xếp hạng kèm thứ tự fallback; ambiguous=true nghĩa là\n            hỏi user hoặc thử #1 rồi #2.\n        Không dùng khi: đã rõ là cổ phiếu VN (dùng symbol_lookup nhanh hơn).\n        ",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "query": {
+            "type": "string",
+            "description": "Asset ticker or human-readable asset name to resolve. May be ambiguous; inspect candidates and asset class before selecting the next tool."
+          },
+          "limit": {
+            "type": "integer",
+            "default": 5,
+            "description": "Maximum resolver candidates returned; default 5."
+          }
+        },
+        "required": [
+          "query"
+        ],
+        "additionalProperties": false
+      },
+      "outputSchema": {
+        "additionalProperties": true,
+        "title": "symbol_resolveDictOutput",
+        "type": "object"
+      },
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false
+      },
+      "_meta": {
+        "anthropic/searchHint": "ma tai san vang usd bitcoin la gi | resolve any asset code",
+        "opentrading/contractProfile": "finance-c1-v4",
+        "opentrading/schemaPolicy": "Raw types/defaults/required preserved from frozen source. Additional public domain guards added; no coercion. Frozen replay matching remains exact and separate."
+      }
+    },
+    {
+      "name": "market_movers",
+      "description": "Top tăng/giảm mạnh và dẫn đầu thanh khoản. Dùng khi kiểm tra nhịp phiên (mã nào đang\n            chạy, dòng tiền ở đâu).\n\n        Dùng khi: hỏi \"mã nào tăng mạnh hôm nay\", \"dòng tiền đang ở đâu\".\n        Không dùng khi: cần đếm mã tăng/giảm toàn sàn (dùng breadth_scan); cần context gộp nhiều\n            chân cho bản tin (dùng market_overview).\n\n        top_n: số dòng mỗi bảng. universe: 'vn30' (mặc định, 30 bluechip — nhanh, ổn định) hoặc\n            'hose' (cả sàn ≤60 mã, chậm; mã kém thanh khoản có thể treo → trả partial kèm missing).\n        ",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "top_n": {
+            "type": "integer",
+            "default": 10,
+            "description": "Number of rows in each gainers/losers/volume ranking, default 10."
+          },
+          "universe": {
+            "type": "string",
+            "default": "vn30",
+            "description": "Ranking universe: vn30 for the VN30 basket, hose for HOSE; not an arbitrary ticker list."
+          }
+        },
+        "required": [],
+        "additionalProperties": false
+      },
+      "outputSchema": {
+        "additionalProperties": true,
+        "title": "market_moversDictOutput",
+        "type": "object"
+      },
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false
+      },
+      "_meta": {
+        "anthropic/searchHint": "top tang giam manh khoi luong | gainers losers active",
+        "opentrading/contractProfile": "finance-c1-v4",
+        "opentrading/schemaPolicy": "Raw types/defaults/required preserved from frozen source. Additional public domain guards added; no coercion. Frozen replay matching remains exact and separate."
+      }
+    },
+    {
+      "name": "valuation_run",
+      "description": "Observed price/EPS/BVPS and reported PER/PB quotients for a Vietnamese equity. Does not compute fair value, buy bands, target price, DCF, EV or sensitivity. method selects a label; it does not introduce a different valuation calculation. Inspect source, period, unit and adjustment-basis verification flags before comparing multiples. Unknown comparability must remain explicit.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "symbol": {
+            "type": "string",
+            "description": "Vietnamese equity ticker. Output is observed price/EPS/BVPS and quotients, not a fair-value target."
+          },
+          "btype": {
+            "type": "integer",
+            "default": 1,
+            "description": "Business type code: 1 ordinary, 2 broker, 3 bank, 5 insurance. Unknown codes produce a warning and auto label; this is not a sector-specific valuation model."
+          },
+          "method": {
+            "type": "string",
+            "default": "auto",
+            "description": "Supported label selection: auto, per, pb, ensemble. These label the existing quotient output; no DCF, fair-value band, target price or sensitivity is implemented. Unit/basis compatibility can remain unverified.",
+            "enum": [
+              "auto",
+              "per",
+              "pb",
+              "ensemble"
+            ]
+          }
+        },
+        "required": [
+          "symbol"
+        ],
+        "additionalProperties": false
+      },
+      "outputSchema": {
+        "additionalProperties": true,
+        "title": "valuation_runDictOutput",
+        "type": "object"
+      },
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false
+      },
+      "_meta": {
+        "anthropic/searchHint": "observed PER PB price EPS BVPS quotients | boi so quan sat; no DCF or fair-value bands",
+        "opentrading/contractProfile": "finance-c1-v4",
+        "opentrading/schemaPolicy": "Raw types/defaults/required preserved from frozen source. Additional public domain guards added; no coercion. Frozen replay matching remains exact and separate."
+      }
+    },
+    {
+      "name": "financial_statements",
+      "description": "Alias đọc BCTC (tương thích v3). Dùng khi đọc BCTC nhanh gọn, không cần JWT.\n\n        Dùng khi: \"báo cáo KQKD 4 quý gần nhất của FPT\", đọc statement nhanh.\n        Không dùng khi: cần từng dòng chi tiết/forensic (dùng financial_detail — nặng hơn); nguồn\n            gốc mirror khi thiếu JWT (dùng vs_financeinfo).\n\n        Bọc vs_financeinfo (không cần JWT). statement: mục BCTC cần đọc\n        ('all', 'KQKD' kết quả kinh doanh, 'CDKT' cân đối, 'CSTC' chỉ số); periods_n: số kỳ\n        gần nhất. Trả {periods: [kỳ cũ→mới], statements: {tên mục: [{name, unit,\n        values: {\"Q2/2026\": số, ...}}]}} — mỗi số gắn nhãn kỳ của nó; đơn vị theo\n        unit của dòng (đồng khi nguồn để trống).\n        ",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "symbol": {
+            "type": "string",
+            "description": "Vietnamese listed equity ticker."
+          },
+          "period": {
+            "type": "string",
+            "default": "quarter",
+            "description": "Statement frequency: quarter or year. quarter means quarterly reports; year means annual reports. quarterly/yearly are not supported values and must not silently select annual data.",
+            "enum": [
+              "quarter",
+              "year"
+            ]
+          },
+          "statement": {
+            "type": "string",
+            "default": "all",
+            "description": "Requested statement section: all, KQKD (income), CDKT (balance), CSTC (ratios), or exact source statement label. Inspect returned section and warnings; unknown names may return all sections in production."
+          },
+          "periods_n": {
+            "type": "integer",
+            "default": 15,
+            "description": "Number of most recent periods to display, default 15. Read each value under its explicit period label and row unit; as_of is fetch time, not fiscal period."
+          }
+        },
+        "required": [
+          "symbol"
+        ],
+        "additionalProperties": false
+      },
+      "outputSchema": {
+        "additionalProperties": true,
+        "title": "financial_statementsDictOutput",
+        "type": "object"
+      },
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false
+      },
+      "_meta": {
+        "anthropic/searchHint": "bao cao tai chinh can doi ket qua kinh doanh | income balance cash",
+        "opentrading/contractProfile": "finance-c1-v4",
+        "opentrading/schemaPolicy": "Raw types/defaults/required preserved from frozen source. Additional public domain guards added; no coercion. Frozen replay matching remains exact and separate."
+      }
+    },
+    {
+      "name": "peer_compare",
+      "description": "So sánh head-to-head chỉ số tài chính giữa các mã. Dùng khi chọn giữa vài ticker cùng\n            ngành.\n\n        Dùng khi: \"so VCB với TCB với MBB\", bảng so sánh trực diện.\n        Không dùng khi: cần P/E, P/B HIỆN TẠI (pe/pb ở đây là bội số tại ngày kết thúc năm báo\n            cáo — dùng stock_overview cho từng mã); sàng cả thị trường theo điều kiện (dùng\n            stock_screener); cần chuỗi thời gian của 1 mã (dùng financial_ratios period).\n\n        peers: tối đa 5 mã khác. metrics: chỉ giữ các item_id nêu tên (pe, pb, roe, roa, eps,\n        bvps là tên tắt của p_e, p_b, roe, roa, trailing_eps, book_value_per_share_bvps).\n        Mỗi dòng là chỉ số năm báo cáo mới nhất của mã (period_label): % cho tỷ suất, đồng cho\n        EPS/BVPS, bội số cuối kỳ cho P/E, P/B (dòng có valuation_as_of, kèm note).\n        metric_quality giữ cờ nghi vấn và ghi chú nguồn theo từng item_id được chọn.\n        Ví dụ: {\"symbol\": \"VCB\", \"peers\": [\"TCB\", \"MBB\"], \"metrics\": [\"pe\", \"roe\"]}.\n        ",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "symbol": {
+            "type": "string",
+            "description": "Main Vietnamese equity ticker, compared with peers."
+          },
+          "peers": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Other equity tickers. Production uses at most the first five peers; excess peers are silently omitted. Supply at most five when complete coverage is required."
+          },
+          "metrics": {
+            "anyOf": [
+              {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "description": "Optional list of source item_id strings. Aliases pe→p_e, pb→p_b, roe→roe, roa→roa, eps→trailing_eps, bvps→book_value_per_share_bvps are normalized by production. Other actual source item_ids are allowed; this is not a closed six-item enum. Missing/unknown metrics have warnings. Values belong to the latest annual period for each symbol, and PE/PB are period-end multiples, not current-price multiples."
+          }
+        },
+        "required": [
+          "symbol",
+          "peers"
+        ],
+        "additionalProperties": false
+      },
+      "outputSchema": {
+        "additionalProperties": true,
+        "title": "peer_compareDictOutput",
+        "type": "object"
+      },
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false
+      },
+      "_meta": {
+        "anthropic/searchHint": "so sanh cung nganh chi so cuoi ky | peers comparison",
+        "opentrading/contractProfile": "finance-c1-v4",
+        "opentrading/schemaPolicy": "Raw types/defaults/required preserved from frozen source. Additional public domain guards added; no coercion. Frozen replay matching remains exact and separate."
+      }
+    },
+    {
+      "name": "stock_overview",
+      "description": "Thông tin giao dịch + hồ sơ công ty gộp một lần. Dùng khi cần dossier nhanh về 1 mã.\n\n        Dùng khi: lần đầu xem 1 mã (giá + công ty làm gì).\n        Không dùng khi: cần cổ đông/lãnh đạo chi tiết (dùng vn_company detail=true); chỉ cần giá\n            (dùng vn_equity_quote_batch).\n\n        Ví dụ: {\"symbol\": \"FPT\"}.\n        ",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "symbol": {
+            "type": "string",
+            "description": "Vietnamese equity ticker; combines quote/company profile. Inspect price and ratio observation bases separately."
+          }
+        },
+        "required": [
+          "symbol"
+        ],
+        "additionalProperties": false
+      },
+      "outputSchema": {
+        "additionalProperties": true,
+        "title": "stock_overviewDictOutput",
+        "type": "object"
+      },
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false
+      },
+      "_meta": {
+        "anthropic/searchHint": "tong quan co phieu PE PB hien tai | stock summary current multiples",
+        "opentrading/contractProfile": "finance-c1-v4",
+        "opentrading/schemaPolicy": "Raw types/defaults/required preserved from frozen source. Additional public domain guards added; no coercion. Frozen replay matching remains exact and separate."
+      }
+    },
+    {
+      "name": "crypto_spot",
+      "description": "Binance spot 24h tickers. Use for crypto price and volume reads.\n\n        symbols: up to 10, any of BTCUSDT / BTC/USDT / btc-usdt spellings.\n        ",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "symbols": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Binance-style spot pairs, e.g. BTCUSDT or ETHUSDT; this is an array, not a comma-separated string."
+          }
+        },
+        "required": [
+          "symbols"
+        ],
+        "additionalProperties": false
+      },
+      "outputSchema": {
+        "additionalProperties": true,
+        "title": "crypto_spotDictOutput",
+        "type": "object"
+      },
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": true
+      },
+      "_meta": {
+        "anthropic/searchHint": "tien so gia bitcoin binance | crypto spot prices",
+        "opentrading/contractProfile": "finance-c1-v4",
+        "opentrading/schemaPolicy": "Raw types/defaults/required preserved from frozen source. Additional public domain guards added; no coercion. Frozen replay matching remains exact and separate."
+      }
+    },
+    {
+      "name": "financial_detail",
+      "description": "BCTC chi tiết đầy đủ, từng dòng mỗi kỳ. Dùng khi đọc sâu BCTC (soi từng chỉ tiêu).\n\n        Dùng khi: phân tích forensic, kiểm tra dòng tiền/thuế/phải thu chi tiết.\n        Không dùng khi: chỉ cần đọc nhanh (dùng financial_statements — nhẹ hơn, không cần JWT); cần\n            BCTC mirror khi thiếu JWT (dùng vs_financeinfo); cần điểm số gian lận/chất lượng lợi\n            nhuận (dùng stock_forensic thay vì tự tính).\n\n        statement: KQKD (kết quả kinh doanh), CDKT (cân đối), LCTT (lưu chuyển tiền —\n        Vietstock trống norms phía nguồn nên rơi về vnstock), TM (thuyết minh),\n        BCTT. periods_n: các kỳ gần nhất được phép (đơn vị tỷ đồng; chỉ kỳ\n        IsShowData_Permission=True). Giá trị thật trên gói Standard qua phát lại\n        phiên trình duyệt — dòng {norm_id, name, values[...]}; báo cáo không khả dụng\n        khi cổng phiên từ chối.\n        ",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "symbol": {
+            "type": "string",
+            "description": "Vietnamese equity ticker."
+          },
+          "statement": {
+            "type": "string",
+            "default": "KQKD",
+            "description": "Statement code: KQKD income, CDKT balance, LCTT cash flow, TM notes, BCTT. These are source codes, not English aliases.",
+            "enum": [
+              "KQKD",
+              "CDKT",
+              "LCTT",
+              "TM",
+              "BCTT",
+              "kqkd",
+              "cdkt",
+              "lctt",
+              "tm",
+              "bctt"
+            ]
+          },
+          "periods_n": {
+            "type": "integer",
+            "default": 4,
+            "description": "Most recent permitted source periods to display, default 4; inspect period labels, report_type and per-row unit. Tool documents financial values in billions VND; never assume other tools use the same unit."
+          }
+        },
+        "required": [
+          "symbol"
+        ],
+        "additionalProperties": false
+      },
+      "outputSchema": {
+        "additionalProperties": true,
+        "title": "financial_detailDictOutput",
+        "type": "object"
+      },
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false
+      },
+      "_meta": {
+        "anthropic/searchHint": "bctc chi tiet tung chi tieu | detailed statements line items",
+        "opentrading/contractProfile": "finance-c1-v4",
+        "opentrading/schemaPolicy": "Raw types/defaults/required preserved from frozen source. Additional public domain guards added; no coercion. Frozen replay matching remains exact and separate."
+      }
+    },
+    {
+      "name": "signals_technical",
+      "description": "Chấm kỹ thuật đầy đủ từ nến local trên 1D/1W/1M. Dùng khi chọn thời điểm vào lệnh cho 1\n            mã.\n\n        Dùng khi: \"FPT có nên mua lúc này\", RSI/MACD/MA, hỗ trợ/kháng cự, vị trí 52 tuần.\n        Không dùng khi: sàng nhiều mã (dùng stock_screener với technical); chỉ cần nến thô (dùng\n            vn_quote_history); backtest quy tắc (dùng backtest_strategies).\n\n        indicators: chỉ giữ output nêu tên (vd rsi14, macd, sma20, recommend,\n        patterns, support, resistance, rs_vs_bench, pos_52w, sma150, ichimoku,\n        swings, swing_trend, fib); bỏ qua để lấy full. interval: 1D (250 nến),\n        1W (dài, tối thiểu 30 nến) hoặc 1M (tối thiểu 24 nến); chỉ báo nào chưa đủ\n        nến thì null (không điền 50/0). ichimoku trả offset_bars và convention:\n        senkou_a/senkou_b là mây tại nến hiện tại từ phép tính offset nến trước;\n        senkou_*_ahead là span tính hôm nay; chikou là giá đóng cửa offset nến trước\n        để so với close hiện tại. ichimoku_convention: 'offset25' (mặc định — mây\n        hiện tại từ 25 completed bars trước, quy ước đã phát hành) hoặc 'classic26'\n        (displacement 26 theo tài liệu TradingView). Chưa parity TradingView\n        built-in với cả hai; chọn convention đổi kết quả 1 bar neo và nằm trong\n        fingerprint cache.\n        ",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "symbol": {
+            "type": "string",
+            "description": "Vietnamese equity ticker."
+          },
+          "interval": {
+            "type": "string",
+            "default": "1D",
+            "description": "Candle frequency: 1D daily, 1W weekly, 1M monthly. day, daily and minute aliases are not supported here.",
+            "enum": [
+              "1D",
+              "1W",
+              "1M",
+              "1d",
+              "1w",
+              "1m"
+            ]
+          },
+          "indicators": {
+            "anyOf": [
+              {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "description": "Optional output field names, e.g. rsi14, macd, sma20, recommend, patterns, support, resistance, rs_vs_bench, pos_52w, sma150, ichimoku, swings, swing_trend, fib. Null returns all. This list is illustrative, not a closed source field enum. Insufficient history yields null, not fabricated 0/50."
+          },
+          "ichimoku_convention": {
+            "type": "string",
+            "default": "offset25",
+            "description": "offset25 uses displacement 25; classic26 uses displacement 26. No claim of full TradingView parity.",
+            "enum": [
+              "offset25",
+              "classic26"
+            ]
+          }
+        },
+        "required": [
+          "symbol"
+        ],
+        "additionalProperties": false
+      },
+      "outputSchema": {
+        "additionalProperties": true,
+        "title": "signals_technicalDictOutput",
+        "type": "object"
+      },
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false
+      },
+      "_meta": {
+        "anthropic/searchHint": "phan tich ky thuat RSI MACD MA | technical indicators",
+        "opentrading/contractProfile": "finance-c1-v4",
+        "opentrading/schemaPolicy": "Raw types/defaults/required preserved from frozen source. Additional public domain guards added; no coercion. Frozen replay matching remains exact and separate."
+      }
+    },
+    {
+      "name": "vs_indicator_data",
+      "description": "Macro series (GDP/CPI/FX/trade) via browser-session replay. Use for macro reads.\n\n        indicator: 'GDP' (quarterly), 'CPI' (YoY) or 'XK' (exports, monthly) — the\n        server fills the id pair, so prefer it for these. Other series: pass\n        category_id from vs_categories plus term_type_id: 1 daily, 2 monthly,\n        3 quarterly, 4 yearly, 5 YTD, 6 MoM, 7 YoY, 8 QoQ — pairs must match each\n        category's ListTermType metadata or rows come back empty.\n        from_date default 2022-01-01. Uses the full browser cookie jar (HAR/env\n        seed); Standard pack serves it.\n        Rows: {name, group, period, year, value, unit, timeorder}.\n        Example: {\"indicator\": \"CPI\"}; {\"category_id\": 76, \"term_type_id\": 2}.\n        Numbers accepted as strings and coerced (e.g. \"3\" → 3).\n        ",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "category_id": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "description": "Optional Vietstock indicator category ID; obtain IDs from source metadata, do not invent mappings."
+          },
+          "term_type_id": {
+            "type": [
+              "integer",
+              "string"
+            ],
+            "default": 3,
+            "description": "Vietstock term-type ID (integer or string), default 3. Retains source ID semantics; do not infer monthly/yearly solely from a prose label."
+          },
+          "sub_term_type_id": {
+            "anyOf": [
+              {
+                "type": [
+                  "integer",
+                  "string"
+                ]
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "description": "Optional source sub-term-type ID, integer/string or null."
+          },
+          "from_date": {
+            "type": "string",
+            "default": "2022-01-01",
+            "description": "Start date string in YYYY-MM-DD spelling, default 2022-01-01."
+          },
+          "to_date": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "description": "Optional end date string in YYYY-MM-DD spelling or null."
+          },
+          "indicator": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "description": "Optional source indicator filter such as CPI. Inspect series definition, unit and period; CPI may refer to different comparison bases."
+          }
+        },
+        "required": [],
+        "additionalProperties": false
+      },
+      "outputSchema": {
+        "additionalProperties": true,
+        "title": "vs_indicator_dataDictOutput",
+        "type": "object"
+      },
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false
+      },
+      "_meta": {
+        "anthropic/searchHint": "du lieu vi mo GDP CPI lam phat ty gia | macro data inflation",
+        "opentrading/contractProfile": "finance-c1-v4",
+        "opentrading/schemaPolicy": "Raw types/defaults/required preserved from frozen source. Additional public domain guards added; no coercion. Frozen replay matching remains exact and separate."
+      }
+    },
+    {
+      "name": "vn_quote_history",
+      "description": "Nến 1 mã VN (1D/1W/1M), VCI trước KBS dự phòng. Dùng cho MỌI lịch sử giá của một mã.\n\n        Dùng khi: \"lịch sử giá FPT\", \"HPG có vượt đỉnh 20 phiên không\", mọi tính toán cần chuỗi giá\n            1 mã.\n        Không dùng khi: cần nhiều mã cùng lúc (dùng market_candles_batch); cần nến phút/intraday\n            (dùng vn_equity_ohlcv); cần giá khớp hiện tại (dùng vn_equity_quote_batch). Không có\n            tool nào tên stock_history — chính là tool này.\n\n        days: số nến yêu cầu (mặc định 365 nến; provider không enforce trần 365; nến tuần/tháng bao phủ dài hơn theo hệ số).\n        interval: '1D' (mặc định), '1W', '1M'. Nến 1W/1M mang ngày cuối kỳ (Chủ nhật cuối tuần,\n        ngày cuối tháng) nên nến của kỳ hiện tại có thể ghi một ngày chưa tới; kỳ không có phiên\n        (tuần Tết) bị bỏ. summary/columns: summary chỉ trả {count,last,high,low}; columns giữ\n        trường nêu tên.\n        ",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "symbol": {
+            "type": "string",
+            "description": "Vietnamese listed equity ticker, e.g. HPG."
+          },
+          "days": {
+            "type": "integer",
+            "default": 365,
+            "description": "Requested number of candles, not calendar days; default 365. Positive integer. Provider does not enforce the old prose claim of a 365 maximum. Replay accepts only explicitly recorded requests/default-equivalent arguments.",
+            "minimum": 1
+          },
+          "summary": {
+            "type": "boolean",
+            "default": false,
+            "description": "True returns count/last/high/low summary rather than candle rows. False preserves rows; summary changes output shape."
+          },
+          "columns": {
+            "anyOf": [
+              {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "enum": [
+                    "t",
+                    "o",
+                    "h",
+                    "l",
+                    "c",
+                    "v"
+                  ]
+                }
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "description": "Optional array of raw candle keys: t date, o open, h high, l low, c close, v volume. Use [\"c\",\"t\"], never \"close\" or [\"close\"]. Null keeps all fields. Production currently drops unknown keys silently; this C1 contract rejects them before that loss."
+          },
+          "interval": {
+            "type": "string",
+            "default": "1D",
+            "description": "Candle frequency: 1D daily, 1W weekly, 1M monthly. The provider canonicalizes case. day/daily are not accepted.",
+            "enum": [
+              "1D",
+              "1W",
+              "1M",
+              "1d",
+              "1w",
+              "1m"
+            ]
+          }
+        },
+        "required": [
+          "symbol"
+        ],
+        "additionalProperties": false
+      },
+      "outputSchema": {
+        "additionalProperties": true,
+        "title": "vn_quote_historyDictOutput",
+        "type": "object"
+      },
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false
+      },
+      "_meta": {
+        "anthropic/searchHint": "lich su gia nen ngay tuan thang co phieu | price history daily candles",
+        "opentrading/contractProfile": "finance-c1-v4",
+        "opentrading/schemaPolicy": "Raw types/defaults/required preserved from frozen source. Additional public domain guards added; no coercion. Frozen replay matching remains exact and separate."
+      }
+    },
+    {
+      "name": "vn_equity_quote_batch",
+      "description": "Bảng giá một lần cho NHIỀU mã. Dùng khi chụp nhanh giá khớp nhiều mã hoặc làm movers thủ\n            công.\n\n        Dùng khi: \"giá 5 mã FPT HPG VCB MBB SSI\", snapshot danh mục.\n        Không dùng khi: cần lịch sử nến (dùng vn_quote_history cho 1 mã, market_candles_batch cho\n            nhiều mã); cần top tăng/giảm đã xếp (dùng market_movers).\n\n        summary/columns: summary chỉ trả {count,symbols}; columns giữ\n        trường nêu tên từng báo giá.\n        ",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "symbols": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Vietnamese equity ticker array. Batch subset is an exact query, not permission to return another recorded symbol set."
+          },
+          "summary": {
+            "type": "boolean",
+            "default": false,
+            "description": "True returns count/symbols summary rather than full quotes."
+          },
+          "columns": {
+            "anyOf": [
+              {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "description": "Optional array of exact raw quote field names; null keeps all fields. Quote names are source-specific (e.g. close_price), not the short c key of vn_quote_history. Unknown production fields may be omitted; inspect returned keys."
+          }
+        },
+        "required": [
+          "symbols"
+        ],
+        "additionalProperties": false
+      },
+      "outputSchema": {
+        "additionalProperties": true,
+        "title": "vn_equity_quote_batchDictOutput",
+        "type": "object"
+      },
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false
+      },
+      "_meta": {
+        "anthropic/searchHint": "bang gia nhieu ma gia khop | quotes many tickers board",
+        "opentrading/contractProfile": "finance-c1-v4",
+        "opentrading/schemaPolicy": "Raw types/defaults/required preserved from frozen source. Additional public domain guards added; no coercion. Frozen replay matching remains exact and separate."
+      }
+    },
+    {
+      "name": "vn_index_ohlcv",
+      "description": "Index bars for VN tickers. Use for index history and breadth.\n\n        interval: bar size ('1D' daily; intraday like '1m'/'15m' where supported).\n        summary/columns: summary returns {count,last,high,low} only; columns keeps named fields.\n        ",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "symbol": {
+            "type": "string",
+            "default": "VNINDEX",
+            "description": "VN index ticker, default VNINDEX. Not a stock ticker."
+          },
+          "count": {
+            "type": "integer",
+            "default": 100,
+            "description": "Requested number of index bars, default 100."
+          },
+          "summary": {
+            "type": "boolean",
+            "default": false,
+            "description": "True returns count/last/high/low summary rather than raw bars."
+          },
+          "columns": {
+            "anyOf": [
+              {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "description": "Optional array of exact upstream index-bar field names; null keeps all fields. Index bars can use close/time rather than the c/t keys of vn_quote_history. No closed field enum is asserted for this upstream frame."
+          },
+          "interval": {
+            "type": "string",
+            "default": "1D",
+            "description": "Market API bar resolution, default 1D. Intraday examples 1m/15m where supported. Do not infer the quote_history 1D/1W/1M domain applies to this different endpoint."
+          }
+        },
+        "required": [],
+        "additionalProperties": false
+      },
+      "outputSchema": {
+        "additionalProperties": true,
+        "title": "vn_index_ohlcvDictOutput",
+        "type": "object"
+      },
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false
+      },
+      "_meta": {
+        "anthropic/searchHint": "lich su chi so VNINDEX VN30 nen | index history candles",
+        "opentrading/contractProfile": "finance-c1-v4",
+        "opentrading/schemaPolicy": "Raw types/defaults/required preserved from frozen source. Additional public domain guards added; no coercion. Frozen replay matching remains exact and separate."
+      }
+    },
+    {
+      "name": "vn_crypto_ohlcv",
+      "description": "Crypto bars. Use for digital-asset regime reads.\n\n        summary/columns: summary returns {count,last,high,low} only; columns keeps named fields.\n        ",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "symbol": {
+            "type": "string",
+            "default": "BTCUSDT",
+            "description": "Crypto pair, default BTCUSDT."
+          },
+          "count": {
+            "type": "integer",
+            "default": 30,
+            "description": "Requested number of crypto bars, default 30; this tool has count, not days."
+          },
+          "summary": {
+            "type": "boolean",
+            "default": false,
+            "description": "True returns count/last/high/low summary rather than raw bars."
+          },
+          "columns": {
+            "anyOf": [
+              {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "description": "Optional array of exact upstream crypto-bar field names; null keeps all. This endpoint does not promise quote_history short-key names."
+          }
+        },
+        "required": [],
+        "additionalProperties": false
+      },
+      "outputSchema": {
+        "additionalProperties": true,
+        "title": "vn_crypto_ohlcvDictOutput",
+        "type": "object"
+      },
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false
+      },
+      "_meta": {
+        "anthropic/searchHint": "tien so bitcoin nen lich su gia | crypto candles history",
+        "opentrading/contractProfile": "finance-c1-v4",
+        "opentrading/schemaPolicy": "Raw types/defaults/required preserved from frozen source. Additional public domain guards added; no coercion. Frozen replay matching remains exact and separate."
+      }
+    },
+    {
+      "name": "vn_msn_fx_gold",
+      "description": "USDVND and XAUUSD via MSN. Use for gold-basis math.\n\n        symbols: subset to fetch (default both); days: history depth.\n        ",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "symbols": {
+            "anyOf": [
+              {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "description": "Optional array of MSN currency/gold symbols such as USDVND and XAUUSD. Null defaults to those two. This is not a closed two-symbol enum; the provider may support other symbols. Do not replace with a string or invented Yahoo ticker mapping."
+          },
+          "days": {
+            "type": "integer",
+            "default": 35,
+            "description": "Calendar-day lookback for MSN history, default 35. Provider fetch span floors at five days and returns at most 35 series rows; this differs from vn_quote_history candle count."
+          }
+        },
+        "required": [],
+        "additionalProperties": false
+      },
+      "outputSchema": {
+        "additionalProperties": true,
+        "title": "vn_msn_fx_goldDictOutput",
+        "type": "object"
+      },
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false
+      },
+      "_meta": {
+        "anthropic/searchHint": "ty gia USDVND vang the gioi | usd vnd gold xau",
+        "opentrading/contractProfile": "finance-c1-v4",
+        "opentrading/schemaPolicy": "Raw types/defaults/required preserved from frozen source. Additional public domain guards added; no coercion. Frozen replay matching remains exact and separate."
+      }
+    }
+  ],
+  "catalog_digest": "18e79cba88470f0981ad035b1729420b798f3e68d2ed2396a21113ef91df6f35"
+}

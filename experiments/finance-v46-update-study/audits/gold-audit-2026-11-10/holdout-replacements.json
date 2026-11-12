@@ -1,0 +1,155 @@
+{
+ "decision": "user 2026-11-10: replace 11 verbatim main replicas in holdout",
+ "tasks": {
+  "fin-l3-agg-921": {
+   "instruction.md": "390e6cb6856d9af2bf43379c1b4a0454f1c9c72c4bc44d0fc2d77ac7635e4aec",
+   "solution/gold.json": "329c0c6c2b79401cb4c88a91c5fbd383eeccdcea9f17163f32ba542e8b7543ca",
+   "solution/oracle.py": "f29ca025bd4c3ca33490a9f9c16d16eb3bad596eb733eaac81af78b1faa24c5a",
+   "task.toml": "b028b9b6633808f17c1aa97755d18e94e6f4047366b0212c0f750886db13d61a",
+   "solution": {
+    "max_symbol": "STB",
+    "min_symbol": "TPB",
+    "spread": 53650.0
+   }
+  },
+  "fin-l3-agg-922": {
+   "instruction.md": "43bb098ef667034d3f24615b8988a3096d66fdfe0440a60ce43209593dad66b1",
+   "solution/gold.json": "d72cd12ca256a0b7ecfde9420b43c019642d71adc800732ccf750f480ec2db8f",
+   "solution/oracle.py": "9dc6c0d06a9c46382ad15569ba75f0c37685f2cb3d395f88424723b8990ab380",
+   "task.toml": "27d206cbe3d8327b5de08c6c23e7e11bae29564b4508d7d195d690571247f645",
+   "solution": {
+    "pass": [
+     "FTS",
+     "VCI"
+    ],
+    "count": 2
+   }
+  },
+  "fin-l3-crypto-multi-928": {
+   "instruction.md": "820e01f37e87959d2bfb768f6b397886849b7ccc1d5e821d80f6de905697f395",
+   "solution/gold.json": "772249d49a8395922ca16b87e525e6465ff154b330520182408fc45da4e6e912",
+   "solution/oracle.py": "97f0b2b7b2118b0567a8e867e2cac120f02a57a83a787bace9bc363449e55c30",
+   "task.toml": "506fc950c0e4815da96961e8b17d264258adf1ba2a1f7193fb57e2c7212123e2",
+   "solution": {
+    "pcts": {
+     "HG=F": -1.5,
+     "SI=F": -5.59,
+     "ETH-USD": 0.59
+    },
+    "winner": "ETH-USD"
+   }
+  },
+  "fin-l3-crypto-multi-929": {
+   "instruction.md": "65a37414daeea9e5235396d516c0fe896de81a1569face33b7197f46c4e07b10",
+   "solution/gold.json": "a81e19f03e3d56af495136aed6d3e00d43962217ead27b40b1404dc42340685f",
+   "solution/oracle.py": "3db6586d3511507fa826adc098997857c6644cdc3a97be093f4cef46b869ac7e",
+   "task.toml": "e6e9426c4e616a6d4bab6936c53440937f10cde6f823bee708bb586528cd5195",
+   "solution": {
+    "pcts": {
+     "CL=F": 2.08,
+     "BZ=F": -1.26,
+     "SOL-USD": -0.42
+    },
+    "winner": "BZ=F"
+   }
+  },
+  "fin-l3-screen-923": {
+   "instruction.md": "8b4792c2ef924e180388eefd418d4019f792dc6866045b524ab3a88fff5fb9b7",
+   "solution/gold.json": "efcdc41aa0cf08a8271de4865a5ce2f3151ee5742de285c0946c1866e2abcf4d",
+   "solution/oracle.py": "423268b5dfbe895a235a3cf591a36c21b285083834e211df52a0cd67e007d22d",
+   "task.toml": "67aabfa7905fffad37a059a25ee10f7bc2d56d7ab0b0b5a9c5c52247bb5e732a",
+   "solution": {
+    "pass": [
+     "TPB",
+     "VPB"
+    ],
+    "filter": "P/B < 1.3 và ROE > 15%"
+   }
+  },
+  "fin-l3-screen-924": {
+   "instruction.md": "d06e4e62d7024e0f1ac86991120b748c81c189284665747add6e24cc4cc92759",
+   "solution/gold.json": "b705c2d7127de5fb1c51b3bcbf1060244ba9191d6b40abad063f80483632feb7",
+   "solution/oracle.py": "c0fc3b0592d0db15ac27c6542fddad19b2465be1dc99c1c959a467d142b10a9c",
+   "task.toml": "a0b6fea3cae599d1725ac47b089c5bdccd9198d0bb33c92b7a32386f2e114dc6",
+   "solution": {
+    "pass": [
+     "SHS",
+     "VIX"
+    ],
+    "filter": "P/B < 2 và P/E < 15"
+   }
+  },
+  "fin-l3-tech-multi-927": {
+   "instruction.md": "abe4c28347c73bb040db3b56036cc736b257e7254be8a1a0c358fe4e3dedfafe",
+   "solution/gold.json": "125a7c8966aa1fe7d6d79fe6f27805fd3953867649492264284eaaf7a9b2ffac",
+   "solution/oracle.py": "5cea9a7487c612998e413e0675649673459fbac96b0ef9fdcff070a312ffc2d9",
+   "task.toml": "1f86c6cc4856c9c839c86bc80fff86459eb4944ac513bc3fdea69d948ef26665",
+   "solution": {
+    "symbol": "TPB",
+    "rsi14": 57.88
+   }
+  },
+  "fin-l4-2src-940": {
+   "instruction.md": "5b6eb40909fdbbf6a437faba4de3b760270dfc1366a40bce68ed499b0a673983",
+   "solution/gold.json": "d5fa2f7e69b10a2276add462b189a00548be4b4c29c773088ed427a113ed6803",
+   "solution/oracle.py": "ec3baeaf748d82b7c85e9e01a67ac60cce2cdd0295b3797fcc2aa23aad10e710",
+   "task.toml": "50ef3f05ae9f2ae72281d51fc062715f7bf88ed4a6ec0ac93c65cad9fe5acda4",
+   "solution": {
+    "yf_pct": 0.59,
+    "vnstock_pct": 0.52,
+    "stronger": "yfinance"
+   }
+  },
+  "fin-l4-narrative-938": {
+   "instruction.md": "936dffaae2c0384367823b41c3b7d9827347107c8964c78cd42f33bedd3a433e",
+   "solution/gold.json": "01d573c62233223d1c5590fed186e968b2208e761ed62d65b01dcffaf4004b38",
+   "solution/oracle.py": "0d410d6b0ccd0a02ed15856dafc0960a7f6053ed1f4436c0176396954512c81c",
+   "task.toml": "3f28e4512f27fb901345b58ab910c3c3edffb9c96000bc24a56c5bf177cc26e0",
+   "solution": {
+    "min_close": 57823683.82,
+    "min_date": "2026-10-31",
+    "range": 3744772.5
+   }
+  },
+  "fin-l5-compare-944": {
+   "instruction.md": "aa44bb5c575eed8a7034dd8a27ff15a278290fac6bc0aabe39f177f339baacce",
+   "solution/gold.json": "575b140e78a640887f8bc0f4941f4b30677df367f629cba2100b0c8498ec3b8b",
+   "solution/oracle.py": "48847e19d5a657a63951c156382e21c57bc659cef151963cde0bddde3ba6a169",
+   "task.toml": "301557e57d23c2f6d31ed953f2a75beaf71a50a1b1979b8bc535717fee9e104d",
+   "solution": {
+    "VPB": 1.26,
+    "ACB": 1.3,
+    "STB": 1.83,
+    "HDB": 1.46,
+    "TPB": 1.03,
+    "ranking": [
+     "TPB",
+     "VPB",
+     "ACB",
+     "HDB",
+     "STB"
+    ]
+   }
+  },
+  "fin-l5-compare-945": {
+   "instruction.md": "d52f0d09847f647d0818c077d0ee28c0c1455f915d1cb4f045384292e1768f5a",
+   "solution/gold.json": "aef4f19418c6be319fc534a63a124fd32de6d524b4164c3157dcf5b5e97b1882",
+   "solution/oracle.py": "00d2d1ea92e2469d2ae5559843a0a434c7a984ad42ce040e5c3aeac51357e2bc",
+   "task.toml": "8c52b1c8c7c08358caf09c4972a27e9d2bbbadfd9a845f070be0067187370ee2",
+   "solution": {
+    "VIX": 6.22,
+    "VCI": 18.96,
+    "SHS": 13.28,
+    "MBS": 13.33,
+    "FTS": 27.12,
+    "ranking": [
+     "VIX",
+     "SHS",
+     "MBS",
+     "VCI",
+     "FTS"
+    ]
+   }
+  }
+ }
+}

@@ -1,0 +1,49 @@
+{
+  "snapshot_date": "2026-11-01",
+  "note": "Envelope MCP đã ghi lúc tạo task (2026-11-01, trim trường không dùng cho gold; data + provenance + availability giữ nguyên). Benchmark chạy qua snapshot-replay các envelope này — không gọi MCP live.",
+  "tools": {
+    "market_movers": {
+      "data": {
+        "universe": "vn30",
+        "gainers": [
+          {
+            "symbol": "GAS",
+            "close_price": 78000,
+            "percent_change": 2.631578947368421
+          },
+          {
+            "symbol": "VHM",
+            "close_price": 63000,
+            "percent_change": 1.4492753623188406
+          },
+          {
+            "symbol": "NVL",
+            "close_price": 10400,
+            "percent_change": 0.4830917874396135
+          },
+          {
+            "symbol": "SAB",
+            "close_price": 42400,
+            "percent_change": 0.2364066193853428
+          },
+          {
+            "symbol": "BVH",
+            "close_price": 69000,
+            "percent_change": 0
+          }
+        ]
+      },
+      "provenance": {
+        "source": "vnstock",
+        "as_of": "2026-11-01T15:57:50.290909+07:00",
+        "data_time": "2026-11-01T15:09:42.046483+07:00",
+        "timezone": "Asia/Ho_Chi_Minh"
+      },
+      "availability": "available",
+      "warnings": [
+        "dữ liệu lấy lúc 2026-11-01T15:09:42.046483+07:00, dùng lại bản đã lưu"
+      ],
+      "_note": "giá close theo đồng (bảng giá), khác candles (nghìn đồng)"
+    }
+  }
+}

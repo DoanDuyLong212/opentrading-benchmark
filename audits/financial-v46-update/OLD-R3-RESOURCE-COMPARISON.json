@@ -1,0 +1,87 @@
+{
+  "historical_diagnostic_only": true,
+  "trials_sha256": "7e53c94e1bc55cf1eb6381c49607db611317e6ee14dcd11e29de086ae1d9f78e",
+  "arms": {
+    "dsh": {
+      "trials": 24,
+      "strict": 16,
+      "financial": 18,
+      "requests": 78,
+      "dnf": 1,
+      "usage_rows_observed": 24,
+      "median_input_observed_only": 14546.0,
+      "median_output_observed_only": 2064.5,
+      "median_wall_ms": 45415.0,
+      "growth_r1_initial_system_chars": 317,
+      "growth_r1_initial_tool_count": 3,
+      "growth_r1_tool_json_chars": 7945,
+      "growth_r1_native_capture": {
+        "path": "/home/doanlong/extra/benchmark/experiments/finance-v46-study/results/financial-v46-20261109-r3/super-devsmoke/trials/v45-dev-03-growth__dsh__r1/attempts/01-11a4f60f28e7/provider-requests/0001-native.json",
+        "raw_sha256": "7348e1216f213336fb4f930a9e2a7f15e4eb5513bb06fd4ccb002ec27cfc2463",
+        "canonical_sha256": "d8505b7c0a6c1515a8940c72834263fcc2b7414a5895095db05dc0952a18ad7f"
+      }
+    },
+    "opencode": {
+      "trials": 24,
+      "strict": 13,
+      "financial": 14,
+      "requests": 72,
+      "dnf": 1,
+      "usage_rows_observed": 24,
+      "median_input_observed_only": 16106.5,
+      "median_output_observed_only": 1653.5,
+      "median_wall_ms": 33187.5,
+      "growth_r1_initial_system_chars": 1947,
+      "growth_r1_initial_tool_count": 3,
+      "growth_r1_tool_json_chars": 7927,
+      "growth_r1_native_capture": {
+        "path": "/home/doanlong/extra/benchmark/experiments/finance-v46-study/results/financial-v46-20261109-r3/super-devsmoke/trials/v45-dev-03-growth__opencode__r1/attempts/01-3397f7407d19/provider-requests/0001-native.json",
+        "raw_sha256": "0590635e1507ecce3f5d6f415abcb91138fbdf9a995954aca2fffc6b7795b4b4",
+        "canonical_sha256": "d684fb2f0479ede0fa4b337af9d4f3bd94aa6439a7991be8c32d1c68b19a9deb"
+      }
+    },
+    "opentrading_baseline": {
+      "trials": 24,
+      "strict": 18,
+      "financial": 18,
+      "requests": 78,
+      "dnf": 0,
+      "usage_rows_observed": 24,
+      "median_input_observed_only": 28991.5,
+      "median_output_observed_only": 2194.0,
+      "median_wall_ms": 33933.0,
+      "growth_r1_initial_system_chars": 8113,
+      "growth_r1_initial_tool_count": 6,
+      "growth_r1_tool_json_chars": 14369,
+      "growth_r1_native_capture": {
+        "path": "/home/doanlong/extra/benchmark/experiments/finance-v46-study/results/financial-v46-20261109-r3/super-devsmoke/trials/v45-dev-03-growth__opentrading_baseline__r1/attempts/01-5b36980f3ef0/provider-requests/0001-native.json",
+        "raw_sha256": "b2fdda61a1de040018b887d37e277b203c2309bfce1efd25c91d1f62cc51fcbf",
+        "canonical_sha256": "59d7e907117961a15b8988f4df274166577d2ad1b62395815cb13cdac4df9724"
+      }
+    },
+    "opentrading_finance": {
+      "trials": 24,
+      "strict": 18,
+      "financial": 18,
+      "requests": 107,
+      "dnf": 1,
+      "usage_rows_observed": 23,
+      "median_input_observed_only": 33667,
+      "median_output_observed_only": 3308,
+      "median_wall_ms": 41127.5,
+      "growth_r1_initial_system_chars": 2641,
+      "growth_r1_initial_tool_count": 6,
+      "growth_r1_tool_json_chars": 14369,
+      "growth_r1_native_capture": {
+        "path": "/home/doanlong/extra/benchmark/experiments/finance-v46-study/results/financial-v46-20261109-r3/super-devsmoke/trials/v45-dev-03-growth__opentrading_finance__r1/attempts/01-ac7f1ea48642/provider-requests/0001-native.json",
+        "raw_sha256": "4b4b19a6b8f53e1721fb1c5de34ab723707abc95372583293bff1b37ff32f08b",
+        "canonical_sha256": "020b92665ed23eca2c2e05baafa0824f4d1219eba422c28406a7bf2e61e6b9d1"
+      }
+    }
+  },
+  "definitions": {
+    "dnf": "status != ok OR answer_source == missing",
+    "usage_medians": "observed rows only; missing/partial usage never imputed",
+    "comparison": "old frozen primary scores, not certified/regraded"
+  }
+}

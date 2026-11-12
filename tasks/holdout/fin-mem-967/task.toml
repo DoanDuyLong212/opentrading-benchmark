@@ -1,0 +1,31 @@
+# Task memory stratum — batch 3 (duyệt user 09/11/2026)
+id = "fin-mem-967"
+title = "Memory — sai số dự phóng user (BTC)"
+version = 2
+created = "2026-11-09"
+level = "L4"
+family = "L4·M memory"
+financebench_type = "multi-turn memory"
+entity = "BTC-USD"
+asset = "crypto"
+data_zone = "green"
+data_pairs = ["yf:main"]
+snapshot_date = "2026-11-01"
+universe_cap = 0
+banned_tools = ["web_search", "web_fetch", "sentiment_score"]
+human_time_band = "15–60 phút"
+time_limit_min = 30
+tools_expected = ["yf_commodities"]
+mcp_payloads = "environment/payloads.json"
+snapshot_required = true
+split = "holdout"
+track = "memory_multiturn"
+multiturn = true
+
+confirmatory_eligible = true
+
+[scoring]
+type = "value"
+gold = "solution/gold.json"
+oracle = "solution/oracle.py"
+grader = "tests/grader.py"

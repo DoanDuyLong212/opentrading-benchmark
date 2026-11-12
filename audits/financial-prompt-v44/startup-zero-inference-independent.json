@@ -1,0 +1,71 @@
+{
+  "pass": true,
+  "kind": "independent-pre-fix-zero-inference-proof",
+  "checked_at": "2026-11-07T07:42:15.497789+00:00",
+  "runs": [
+    {
+      "key": "smoke-bolt",
+      "directory": "/home/doanlong/extra/benchmark/experiments/finance-v44-study/results/financial-v44-smoke-bolt-20261107",
+      "files": [
+        "manifest.json",
+        ".driver.lock"
+      ],
+      "trials": 0,
+      "provider_records": 0,
+      "captures": 0,
+      "mcp_records": 0
+    },
+    {
+      "key": "smoke-deepseek",
+      "directory": "/home/doanlong/extra/benchmark/experiments/finance-v44-study/results/financial-v44-smoke-deepseek-20261107",
+      "files": [
+        "manifest.json"
+      ],
+      "trials": 0,
+      "provider_records": 0,
+      "captures": 0,
+      "mcp_records": 0
+    },
+    {
+      "key": "pilot-bolt",
+      "directory": "/home/doanlong/extra/benchmark/experiments/finance-v44-study/results/financial-v44-pilot-bolt-20261107",
+      "files": [
+        "manifest.json"
+      ],
+      "trials": 0,
+      "provider_records": 0,
+      "captures": 0,
+      "mcp_records": 0
+    },
+    {
+      "key": "pilot-deepseek",
+      "directory": "/home/doanlong/extra/benchmark/experiments/finance-v44-study/results/financial-v44-pilot-deepseek-20261107",
+      "files": [
+        "manifest.json"
+      ],
+      "trials": 0,
+      "provider_records": 0,
+      "captures": 0,
+      "mcp_records": 0
+    }
+  ],
+  "total_trials": 0,
+  "total_provider_records": 0,
+  "total_captures": 0,
+  "total_mcp_records": 0,
+  "failure": "Driver rejected resume identity at prepare_manifest before trial scheduling/execution; empty driver lock is operational artifact only",
+  "preserved_sha256": {
+    "/home/doanlong/extra/benchmark/experiments/finance-v44-study/results/financial-v44-smoke-bolt-20261107/manifest.json": "9fabdd5844b6b74f55bc4db97ceff7d97199319fb8ae3f8681be6dcad16dd95a",
+    "/home/doanlong/extra/benchmark/experiments/finance-v44-study/results/financial-v44-smoke-bolt-20261107/.driver.lock": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "/home/doanlong/extra/benchmark/experiments/finance-v44-study/results/financial-v44-smoke-deepseek-20261107/manifest.json": "8c6bb0e90f798841bdecee79c86fc8b540483d6ae63c09acd0ecfc83680f6c99",
+    "/home/doanlong/extra/benchmark/experiments/finance-v44-study/results/financial-v44-pilot-bolt-20261107/manifest.json": "978ab6636ab15a05dda23fbd95f74beb9e40506a55a6b11977d883e622996c6f",
+    "/home/doanlong/extra/benchmark/experiments/finance-v44-study/results/financial-v44-pilot-deepseek-20261107/manifest.json": "f21a9840be5570516f38a5931981c4f83f522fc6b05ee199966fb3bca9c041c7",
+    "/home/doanlong/extra/benchmark/audits/financial-prompt-v44/preinference-seal.json": "209426ec7a0c0d2778a4d5e7a524a1973684ec24748f77663115a1a9791e8124",
+    "/home/doanlong/extra/benchmark/audits/financial-prompt-v44/engineering-approval.json": "f9b8845288bfbe861e67bfb1cdfa9fff5984346e3d51a6f4fe50acdf81286e13",
+    "/home/doanlong/extra/benchmark/audits/financial-prompt-v44/final-state.json": "efdc972c336b77cda1a9be79786511f2922fa996003bf2ebcfada09b1034386e",
+    "/home/doanlong/extra/benchmark/audits/financial-prompt-v44/launch.json": "0d3303d9cd59d800761365e594cc873e78eaf28e21fc611d9e1459f0b750817a",
+    "/home/doanlong/extra/benchmark/audits/financial-prompt-v44/supervisor/state.json": "e64081d70d04a4746bd73946fce37ea7b06caafbe0cddc44c54f12a0fbe9bc0a",
+    "/home/doanlong/extra/benchmark/audits/financial-prompt-v44/supervisor/smoke-bolt-driver.log": "27717acfcd3d7c844901b06b4007b45ab60c704160acbaeca5b651c4543588bb",
+    "/home/doanlong/extra/benchmark/audits/financial-prompt-v44/supervisor.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  }
+}

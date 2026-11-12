@@ -1,0 +1,45 @@
+{
+  "id": "chatcmpl-20681539-ff5d-4045-8846-bc1c9c597138",
+  "choices": [
+    {
+      "index": 0,
+      "message": {
+        "content": "Mình đã lấy lịch sử giá của HPG để tìm giá đóng cửa phiên gần nhất.\n",
+        "tool_calls": [
+          {
+            "id": "call-74d56ea8-3a41-41f2-b1b8-e4c2f39576b0",
+            "type": "function",
+            "function": {
+              "name": "mcp__opentrading__vn_quote_history",
+              "arguments": "{\"symbol\":\"HPG\"}"
+            }
+          }
+        ],
+        "role": "assistant",
+        "reasoning_content": null
+      },
+      "finish_reason": "tool_calls",
+      "logprobs": null
+    }
+  ],
+  "created": 1793848613,
+  "model": "nvidia/nemotron-3.5-bolt-e4b",
+  "service_tier": null,
+  "system_fingerprint": null,
+  "object": "chat.completion",
+  "usage": {
+    "prompt_tokens": 3480,
+    "completion_tokens": 44,
+    "total_tokens": 3524,
+    "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 2368
+    },
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": null,
+      "audio_tokens": null,
+      "reasoning_tokens": 0,
+      "rejected_prediction_tokens": null
+    }
+  }
+}

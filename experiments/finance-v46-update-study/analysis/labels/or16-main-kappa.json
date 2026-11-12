@@ -1,0 +1,23 @@
+{
+ "judge_model": "nvidia/nemotron-3-ultra-550b-a55b (NIM; 25 rows OpenRouter :free)",
+ "mode": "batch 5 + amendment (i) single confirm + single re-judge of unparseable/timeout",
+ "run": "results/financial-v46u-main-final-or16-20261111/deepseek-openrouter-main/",
+ "labels": "analysis/labels/or16-main-labels.jsonl (human reviewer = Claude, delegated by user 2026-11-12); sample = every judge-vs-strict disagreement (18) + 30 random agree-negative + 30 random agree-positive (seed 20261112); 7 sign-convention trials excluded as ambiguous; no_answer excluded",
+ "note": "sample is enriched with disagreements, so kappa is conservative vs a uniform sample",
+ "n": 71,
+ "agreement": 0.9296,
+ "cohen_kappa": 0.8498,
+ "confusion": {
+  "TP": 42,
+  "FN_judge": 4,
+  "FP_judge": 1,
+  "TN": 24
+ },
+ "disagreements": [
+  "fin-l1-bctc-115__dsh__r2",
+  "fin-m2-screen-507__opencode__r2",
+  "fin-l2-growth-141__opentrading_baseline__r2",
+  "fin-l2-growth-144__opentrading_baseline__r2",
+  "fin-c1-chg-402__opentrading_baseline__r2"
+ ]
+}

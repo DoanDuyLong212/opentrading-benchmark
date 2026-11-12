@@ -1,0 +1,58 @@
+{
+ "scoring": "value",
+ "memory_construct": "cross_session_recall_or_update",
+ "solution": {
+  "price": 3875.02,
+  "unit": "USD"
+ },
+ "expects": [
+  {
+   "type": "value",
+   "path": "values.price",
+   "gold": 3875.02,
+   "tol": {
+    "rel": 0.005
+   }
+  },
+  {
+   "type": "unit",
+   "path": "unit",
+   "accept": [
+    "USD"
+   ]
+  },
+  {
+   "type": "period",
+   "path": "period",
+   "accept": [
+    "30/10",
+    "30-10",
+    "30.10",
+    "2026-10-30"
+   ]
+  },
+  {
+   "type": "str",
+   "path": "source",
+   "accept": [
+    "vn_msn_fx_gold"
+   ]
+  }
+ ],
+ "notes": "Alias-domain-TRUE: 'vàng thế giới' (bảng quốc tế) = XAUUSD; giá đóng 30/10 3875.02. Đo alias registry từ user memory.",
+ "memory_checks": {},
+ "provenance_contract": [
+  {
+   "tool": "vn_msn_fx_gold",
+   "source": "msn",
+   "as_of": "2026-11-01T21:30:32.261897+07:00",
+   "matched_entry_id": "msn:main",
+   "response_sha256": "519594885077cc5cf1db891f4f2c767af217c37d76c0ec0db33e4bc7ccd196c9"
+  }
+ ],
+ "required_payload_keys": [
+  "msn:main"
+ ],
+ "task_id": "fin-mem-337",
+ "payload_sha256": "03acfc6492cac9577a3775155ac2f41a3d74243cc2a13911640856c689245ba2"
+}

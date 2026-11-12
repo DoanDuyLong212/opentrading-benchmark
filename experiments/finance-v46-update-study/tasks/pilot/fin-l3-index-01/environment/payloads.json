@@ -1,0 +1,63 @@
+{
+  "snapshot_date": "2026-11-01",
+  "note": "Envelope MCP đã ghi lúc tạo task (2026-11-01, trim trường không dùng cho gold; data + provenance + availability giữ nguyên). Benchmark chạy qua snapshot-replay các envelope này — không gọi MCP live.",
+  "tools": {
+    "vn_index_ohlcv": {
+      "data": {
+        "symbol": "VNINDEX",
+        "bars": [
+          {
+            "time": "2026-10-19 00:00:00",
+            "close": 1689.84
+          },
+          {
+            "time": "2026-10-20 00:00:00",
+            "close": 1691.97
+          },
+          {
+            "time": "2026-10-21 00:00:00",
+            "close": 1738.67
+          },
+          {
+            "time": "2026-10-22 00:00:00",
+            "close": 1760.63
+          },
+          {
+            "time": "2026-10-23 00:00:00",
+            "close": 1774.15
+          },
+          {
+            "time": "2026-10-26 00:00:00",
+            "close": 1763.55
+          },
+          {
+            "time": "2026-10-27 00:00:00",
+            "close": 1761.87
+          },
+          {
+            "time": "2026-10-28 00:00:00",
+            "close": 1766.65
+          },
+          {
+            "time": "2026-10-29 00:00:00",
+            "close": 1755.61
+          },
+          {
+            "time": "2026-10-30 00:00:00",
+            "close": 1741.62
+          }
+        ]
+      },
+      "provenance": {
+        "source": "vnstock",
+        "as_of": "2026-11-01T15:57:50.289394+07:00",
+        "data_time": "2026-10-30 00:00:00",
+        "timezone": "Asia/Ho_Chi_Minh"
+      },
+      "availability": "available",
+      "warnings": [
+        "dữ liệu lấy lúc 2026-11-01T15:09:30.140913+07:00, dùng lại bản đã lưu"
+      ]
+    }
+  }
+}

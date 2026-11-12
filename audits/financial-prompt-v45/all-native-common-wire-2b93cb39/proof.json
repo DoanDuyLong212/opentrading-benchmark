@@ -1,0 +1,201 @@
+{
+  "pass": false,
+  "complete": true,
+  "external_model_calls": 0,
+  "reports": [
+    {
+      "arm": "opentrading_baseline",
+      "work": "/tmp/v45-independent-opentrading_baseline-cmcc5bdl",
+      "external_model_calls": 0,
+      "result": {
+        "status": "error",
+        "session_id": null,
+        "notes": "provider request failed; inspect redacted provider ledger",
+        "native_completion": {
+          "outcome": "failed",
+          "unanswered": false,
+          "recoveries": []
+        },
+        "final_text": "",
+        "tokens": {
+          "input": 2200,
+          "output": 440,
+          "cached": null,
+          "cache_read": null,
+          "cached_observed": 0,
+          "cache_complete": false,
+          "usage_requests": 22,
+          "requests": 25,
+          "complete": false
+        },
+        "provider_requests": 25,
+        "provider_usage": {
+          "input": 2200,
+          "output": 440,
+          "cached": null,
+          "cache_read": null,
+          "cached_observed": 0,
+          "cache_complete": false,
+          "usage_requests": 22,
+          "requests": 25,
+          "complete": false
+        },
+        "inventory_path": "/tmp/v45-independent-opentrading_baseline-cmcc5bdl/runner/inventory.json",
+        "provider_ledger": "/tmp/v45-independent-opentrading_baseline-cmcc5bdl/runner/provider.jsonl",
+        "answer_path": null,
+        "answer_candidates": [],
+        "transport_recovered": true,
+        "first_attempt_completed": false,
+        "token_reservations_not_observed_usage": 2113536,
+        "native_derived_ledger": null
+      },
+      "local_upstream_requests": 24,
+      "pass": false,
+      "error": "Derived result differs from exact prior source arithmetic",
+      "traceback": "Traceback (most recent call last):\n  File \"/home/doanlong/extra/benchmark/audits/financial-prompt-v45/verify-all-native-common-wire.py\", line 51, in <module>\n    calls=verify_mcp_attempt(task,{'ledger_path':str(work/'mcp.jsonl')})\n          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/doanlong/extra/benchmark/experiments/finance-v45-study/tools/ready_check.py\", line 182, in verify_mcp_attempt\n    raise ValueError('Derived result differs from exact prior source arithmetic')\nValueError: Derived result differs from exact prior source arithmetic\n"
+    },
+    {
+      "arm": "opentrading_finance",
+      "work": "/tmp/v45-independent-opentrading_finance-lukm76q2",
+      "external_model_calls": 0,
+      "result": {
+        "status": "error",
+        "session_id": null,
+        "notes": "Model response contained a tool call even though tool choice was none.",
+        "native_completion": {
+          "outcome": "failed",
+          "unanswered": false,
+          "recoveries": []
+        },
+        "final_text": "",
+        "tokens": {
+          "input": 1000,
+          "output": 200,
+          "cached": null,
+          "cache_read": null,
+          "cached_observed": 0,
+          "cache_complete": false,
+          "usage_requests": 10,
+          "requests": 12,
+          "complete": false
+        },
+        "provider_requests": 12,
+        "provider_usage": {
+          "input": 1000,
+          "output": 200,
+          "cached": null,
+          "cache_read": null,
+          "cached_observed": 0,
+          "cache_complete": false,
+          "usage_requests": 10,
+          "requests": 12,
+          "complete": false
+        },
+        "inventory_path": "/tmp/v45-independent-opentrading_finance-lukm76q2/runner/inventory.json",
+        "provider_ledger": "/tmp/v45-independent-opentrading_finance-lukm76q2/runner/provider.jsonl",
+        "answer_path": null,
+        "answer_candidates": [],
+        "transport_recovered": true,
+        "first_attempt_completed": false,
+        "token_reservations_not_observed_usage": 2113536,
+        "native_derived_ledger": "/tmp/v45-independent-opentrading_finance-lukm76q2/runner/native-derived.jsonl"
+      },
+      "local_upstream_requests": 12,
+      "pass": false,
+      "error": "Derived result differs from exact prior source arithmetic",
+      "traceback": "Traceback (most recent call last):\n  File \"/home/doanlong/extra/benchmark/audits/financial-prompt-v45/verify-all-native-common-wire.py\", line 51, in <module>\n    calls=verify_mcp_attempt(task,{'ledger_path':str(work/'mcp.jsonl')})\n          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/doanlong/extra/benchmark/experiments/finance-v45-study/tools/ready_check.py\", line 182, in verify_mcp_attempt\n    raise ValueError('Derived result differs from exact prior source arithmetic')\nValueError: Derived result differs from exact prior source arithmetic\n"
+    },
+    {
+      "arm": "opencode",
+      "work": "/tmp/v45-independent-opencode-hwz554ld",
+      "external_model_calls": 0,
+      "result": {
+        "status": "error",
+        "final_text": "",
+        "session_id": "ses_e46d5c479ffeUjJ4QcS2T0bq1F",
+        "notes": "provider request failed; inspect redacted provider ledger",
+        "tokens": {
+          "input": 2200,
+          "output": 440,
+          "cached": null,
+          "cache_read": null,
+          "cached_observed": 0,
+          "cache_complete": false,
+          "usage_requests": 22,
+          "requests": 25,
+          "complete": false
+        },
+        "provider_requests": 25,
+        "provider_usage": {
+          "input": 2200,
+          "output": 440,
+          "cached": null,
+          "cache_read": null,
+          "cached_observed": 0,
+          "cache_complete": false,
+          "usage_requests": 22,
+          "requests": 25,
+          "complete": false
+        },
+        "inventory_path": "/tmp/v45-independent-opencode-hwz554ld/runner/inventory.json",
+        "provider_ledger": "/tmp/v45-independent-opencode-hwz554ld/runner/provider.jsonl",
+        "answer_path": null,
+        "answer_candidates": [],
+        "transport_recovered": true,
+        "first_attempt_completed": false,
+        "token_reservations_not_observed_usage": 2113536,
+        "native_derived_ledger": null
+      },
+      "local_upstream_requests": 24,
+      "pass": false,
+      "error": "Derived result differs from exact prior source arithmetic",
+      "traceback": "Traceback (most recent call last):\n  File \"/home/doanlong/extra/benchmark/audits/financial-prompt-v45/verify-all-native-common-wire.py\", line 51, in <module>\n    calls=verify_mcp_attempt(task,{'ledger_path':str(work/'mcp.jsonl')})\n          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/doanlong/extra/benchmark/experiments/finance-v45-study/tools/ready_check.py\", line 182, in verify_mcp_attempt\n    raise ValueError('Derived result differs from exact prior source arithmetic')\nValueError: Derived result differs from exact prior source arithmetic\n"
+    },
+    {
+      "arm": "dsh",
+      "work": "/tmp/v45-independent-dsh-gc6hg70t",
+      "external_model_calls": 0,
+      "result": {
+        "status": "error",
+        "final_text": "",
+        "session_id": "session-e27d14ca-6e90-448b-bd27-7ffc9c8dbddb",
+        "notes": "provider request failed; inspect redacted provider ledger",
+        "tokens": {
+          "input": 2200,
+          "output": 440,
+          "cached": null,
+          "cache_read": null,
+          "cached_observed": 0,
+          "cache_complete": false,
+          "usage_requests": 22,
+          "requests": 25,
+          "complete": false
+        },
+        "provider_requests": 25,
+        "provider_usage": {
+          "input": 2200,
+          "output": 440,
+          "cached": null,
+          "cache_read": null,
+          "cached_observed": 0,
+          "cache_complete": false,
+          "usage_requests": 22,
+          "requests": 25,
+          "complete": false
+        },
+        "inventory_path": "/tmp/v45-independent-dsh-gc6hg70t/runner/inventory.json",
+        "provider_ledger": "/tmp/v45-independent-dsh-gc6hg70t/runner/provider.jsonl",
+        "answer_path": null,
+        "answer_candidates": [],
+        "transport_recovered": true,
+        "first_attempt_completed": false,
+        "token_reservations_not_observed_usage": 2113536,
+        "native_derived_ledger": null
+      },
+      "local_upstream_requests": 24,
+      "pass": false,
+      "error": "Derived result differs from exact prior source arithmetic",
+      "traceback": "Traceback (most recent call last):\n  File \"/home/doanlong/extra/benchmark/audits/financial-prompt-v45/verify-all-native-common-wire.py\", line 51, in <module>\n    calls=verify_mcp_attempt(task,{'ledger_path':str(work/'mcp.jsonl')})\n          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/doanlong/extra/benchmark/experiments/finance-v45-study/tools/ready_check.py\", line 182, in verify_mcp_attempt\n    raise ValueError('Derived result differs from exact prior source arithmetic')\nValueError: Derived result differs from exact prior source arithmetic\n"
+    }
+  ]
+}

@@ -22,7 +22,9 @@ PILOT = os.path.join(ROOT, "tasks", "pilot")
 def test_select_all_pilot_sorted():
     tasks = rb.select_tasks("pilot", sample=None, seed=None, tasks_filter=None)
     ids = [os.path.basename(t) for t in tasks]
-    assert len(ids) == 24 and ids == sorted(ids)
+    assert len(ids) == 22 and ids == sorted(ids)
+    assert 'fin-l1-macro-01' not in ids  # ambiguous CPI series is quarantined
+    assert 'fin-l4-narrative-01' not in ids  # incomplete narrative evidence rubric
 
 
 def test_select_sample_deterministic():
@@ -41,7 +43,7 @@ def test_select_holdout_requires_confirm():
     with pytest.raises(SystemExit):
         rb.select_tasks("holdout", sample=None, seed=None, tasks_filter=None, confirm_holdout=False)
     tasks = rb.select_tasks("holdout", sample=None, seed=None, tasks_filter=None, confirm_holdout=True)
-    assert len(tasks) == 50
+    assert len(tasks) == 43
 
 
 # ---------------------------------------------------------------- workspace
@@ -56,13 +58,13 @@ def test_make_workspace_only_instruction(tmp_path):
 
 # ---------------------------------------------------------------- extract answer (opentrading arm)
 def test_extract_fenced_json():
-    text = 'Trả lời:\n```json\n{"value": 5.08, "unit": "%", "period": "tháng 9/2026"}\n```\nXong.'
+    text = '```json\n{"value": 5.08, "unit": "%", "period": "tháng 9/2026"}\n```'
     ans = rb.extract_answer_json(text)
     assert ans == {"value": 5.08, "unit": "%", "period": "tháng 9/2026"}
 
 
 def test_extract_inline_object():
-    text = 'Kết quả cuối cùng: {"value": 2015.37, "unit": "triệu đồng"} — cảm ơn.'
+    text = '{"value": 2015.37, "unit": "triệu đồng"}'
     ans = rb.extract_answer_json(text)
     assert ans["value"] == 2015.37
 
@@ -70,7 +72,7 @@ def test_extract_inline_object():
 def test_extract_prefers_object_with_answer_keys():
     text = '{"a": 1} rồi {"value": 3}'
     ans = rb.extract_answer_json(text)
-    assert ans == {"value": 3}
+    assert ans is None
 
 
 def test_extract_refusal_style():
@@ -91,6 +93,8 @@ def test_grade_trial_with_real_grader(tmp_path):
     task_dir = os.path.join(ROOT, "tasks", "pilot", "fin-l1-quote-01")
     gold = json.load(open(os.path.join(task_dir, "solution", "gold.json")))
     ans = synthesize(gold)
+    ans['evidence'] = [dict(row, call_id='offline-fixture', payload_sha256=gold['payload_sha256'])
+                       for row in gold['provenance_contract']]
     ap = tmp_path / "answer.json"
     ap.write_text(json.dumps(ans, ensure_ascii=False), encoding="utf-8")
     res = rb.grade_answer(str(ap), task_dir, out_dir=str(tmp_path))
@@ -106,25 +110,21 @@ def test_grade_trial_missing_answer(tmp_path):
 
 
 # ---------------------------------------------------------------- path invariants
-def test_out_dir_absolute(tmp_path, monkeypatch):
-    """--out tương đối phải được resolve absolute (dsh --patch/XDG/OPENTRADING_HOME
-    là RELATIVE sẽ resolve sai theo cwd của harness)."""
-    os.chdir(str(tmp_path))
-    try:
-        out = os.path.abspath("results/x")
-        assert os.path.isabs(out)
-    finally:
-        os.chdir(ROOT)
-    # và trong main(): out_dir = os.path.abspath(args.out or ...) — kiểm tra source
-    src = open(os.path.join(ROOT, "tools", "run_benchmark.py"), encoding="utf-8").read()
-    assert "out_dir = os.path.abspath(args.out" in src
+def test_retry_only_identifiable_transient_errors():
+    assert rb.transient_failure({'status':'error'}, 'HTTP 429 too many requests')
+    assert rb.transient_failure({'status':'error'}, 'HTTP 503 service unavailable')
+    assert not rb.transient_failure({'status':'runner_error'}, 'TypeError unexpected argument')
+    assert not rb.transient_failure({'status':'error'}, 'HTTP 401 invalid api key')
+    assert not rb.transient_failure({'status':'error'}, 'HTTP 400 unsupported effort; prior 429')
+    assert not rb.transient_failure({'status':'error', 'final_text':'{"value":2}'}, '429')
 
 
-def test_retry_khi_rate_limit_trong_log(tmp_path):
-    """QA phát hiện dạng lỗi: harness exit 0 nhưng 429 trong log (opentrading
-    'outcome: failed'). Driver phải nhận diện được để retry — kiểm tra logic điều kiện."""
-    import inspect
-    src = inspect.getsource(rb.main)
-    assert "rate_limited" in src
-    assert "429" in src and "too many requests" in src
-    assert "got_answer" in src
+def test_workspace_reuse_rejected(tmp_path):
+    rb.make_workspace(tmp_path, os.path.join(PILOT, 'fin-l1-macro-01'))
+    (tmp_path/'answer.json').write_text('{"value": 12}')
+    with pytest.raises(ValueError, match='empty'):
+        rb.make_workspace(tmp_path, os.path.join(PILOT, 'fin-l1-macro-01'))
+
+
+def test_multiple_answer_objects_are_invalid():
+    assert rb.extract_answer_json('{"value": 1} {"value": 2}') is None

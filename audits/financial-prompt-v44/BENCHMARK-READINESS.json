@@ -1,0 +1,71 @@
+{
+  "kind": "v44-benchmark-engineering-readiness",
+  "created_at": "2026-11-07T03:00:19.788837+00:00",
+  "financial_inference_started": false,
+  "full_suite": {
+    "passed": 393,
+    "failed": 0,
+    "duration_s": 85.1,
+    "log": "/home/doanlong/extra/benchmark/experiments/finance-v44-study/audits/v44-benchmark-final-full-after-financial-ops.log",
+    "note": "Final full study suite after actual VNM growth, MWG financial_detail aligned-table margin, VCB scale coverage and generic unit/table support. Prior logs retained."
+  },
+  "additional_focused_gate_suite": {
+    "passed": 10,
+    "failed": 0,
+    "duration_s": 0.9,
+    "log": "/home/doanlong/extra/benchmark/experiments/finance-v44-study/audits/v44-gate-final-focused.log",
+    "note": "Final gate source includes newly preregistered independent financial canary. Two tests (supervisorflow andcanaryguard) added after full-suite collection; eight overlap."
+  },
+  "compute_focused_suite": {
+    "passed": 19,
+    "failed": 0,
+    "note": "Included in 29 passed compute+gate focused and final 393 passed full suite; actual VNM name-only metric, MWG VNDbn table/period alignment and VCB VND scale."
+  },
+  "source_and_log_sha256": {
+    "tools/analytics_compute.py": "ac178cd908edae36c35c59d2d0c469e03b851b156fc38af53f56c4c07f7dec56",
+    "tools/mcp_snapshot_server.py": "f1dd4020d0ce5c507102d5c9b82e60ca0b7564950c6a8724b32cb86d4a588308",
+    "tools/ready_check.py": "55bb9cdf647e996ed5caee866905063a8ffc73839b8ba1d16e3e19bcbc116521",
+    "tools/wire_contracts.py": "901a907ed32644b4e7e4044b9cb101da4a3a902f31fdb0fd12fe960b8a83cf8a",
+    "tools/v44_gate.py": "64f3f705fa0be67a199a69b847ec120a5d2167afb1bd4e8a1edeae003c44bdae",
+    "tools/v44_supervisor.py": "4917aa78cf6514b2adf6162415923b38bc761a539a8512d3b6f588b779e04519",
+    "tools/run_benchmark.py": "ea7549e971ae3d1662e2ef868d733acb589d18b7146b2f50563115f5ef6c806c",
+    "tools/bench_config.json": "88f56a126fcc7f01ab667e092ec3a996ccde4dc374489ca81aebc513da04b761",
+    "tools/bench_config_deepseek.json": "15c487f4917af6cf5182ce9a05801ac9f2adf02dace3ae6174130363ee5a017a",
+    "plans/2026-11-07-v44-compute-acquisition-study.md": "3357c4096fce0dd94a8f72fd63d08f94db33f56caff6b0d8773ca8a74909e063",
+    "audits/v44-benchmark-final-full.log": "d441d37f37a50eaadc3edb638dad9c701906d13faddd4f21ed9fecfb54715414",
+    "audits/v44-benchmark-first-full.log": "d504aaaf2cf0273efdf794ee63d14b05a38e7058bc7e4739f2933a0065178f8a",
+    "audits/v44-gate-final-focused.log": "b1a3b823c0132e996ea464ef2dc1e00db48e3527bc3e8cca3f60f18d18048927",
+    "audits/v44-growth-final-focused.log": "205d5423b9347a04066df6363f8aa4aa588811a340c24a228159229e15fa448b",
+    "tools/tests/test_v44_compute.py": "00fdcf49255dfa84fa759f719e8e5c014d7da58ed8f8ddc60ad8942210f7d3dd",
+    "tools/tests/test_v44_gate.py": "18f75fb84b23954512e9bbce1146520ba336cda80c877795a87793f016bcbe55",
+    "audits/v44-actual-financial-ops-focused.log": "7d99b8263fa0d959065b4912d866b1471571c6e68e834db7b6333c532fa24daf",
+    "audits/v44-benchmark-final-full-after-financial-ops.log": "49655cdd9805fe9342c97a0d41838a00d574d005bf5ffea50907fa3734646f61"
+  },
+  "status": "benchmark engineering tests passed; awaiting independent current installed-four-arm wire proof, final prompt/runtime binding and root engineering approval/shared seal",
+  "prior_failures": "First study full suite374passed6failed (catalog expectations and missing copied diagnostic admission receipt), all fixed; original log retained. One root-cwd full pytest was interrupted and excluded from readiness evidence.",
+  "post_canary_compute_and_gate_focused": {
+    "passed": 25,
+    "failed": 0,
+    "duration_s": 5.57,
+    "note": "9 gate +16 compute before final additionalcanaryguardtest; latestgate10above."
+  },
+  "post_actual_growth_fix_focused": {
+    "passed": 27,
+    "failed": 0,
+    "duration_s": 7.42,
+    "log": "/home/doanlong/extra/benchmark/experiments/finance-v44-study/audits/v44-growth-final-focused.log"
+  },
+  "updated_at": "2026-11-07T07:30:08.889504+00:00",
+  "prior_full_suite": {
+    "passed": 388,
+    "failed": 0,
+    "duration_s": 89.21
+  },
+  "post_actual_financial_ops_compute_and_gate_focused": {
+    "passed": 29,
+    "failed": 0,
+    "duration_s": 7.23,
+    "log": "/home/doanlong/extra/benchmark/experiments/finance-v44-study/audits/v44-actual-financial-ops-focused.log"
+  },
+  "scope": "Read-only benchmark receipts; no financial calls, production writes or commits by finisher. Root owns final state and seal."
+}

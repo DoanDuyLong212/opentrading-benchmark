@@ -1,38 +1,61 @@
 {
- "task_id": "fin-l4-narrative-248",
- "scoring": "verdict",
- "solution": {
-  "verdict": "sai"
- },
- "as_of": "2026-11-01T22:54:50.300938+07:00",
- "split": "main",
- "verdict_accept": [
-  "sai",
-  "false",
-  "không đúng",
-  "không chính xác"
- ],
- "verdict_reject": [
-  "đúng",
-  "true",
-  "chính xác"
- ],
- "evidence": {
-  "paths": [
-   "note"
+  "task_id": "fin-l4-narrative-248",
+  "scoring": "verdict",
+  "solution": {
+    "verdict": "sai"
+  },
+  "as_of": "2026-11-01T22:54:50.300938+07:00",
+  "split": "main",
+  "verdict_accept": [
+    "sai",
+    "false",
+    "không đúng",
+    "không chính xác"
   ],
-  "min_hits": 1,
-  "numbers": [
-   61568456.32,
-   61513961.98,
-   60788317.37,
-   60039197.58,
-   59867898.1,
-   60576132.04,
-   60831414.45,
-   58041555.14,
-   57823683.82,
-   58125401.32
+  "verdict_reject": [
+    "đúng",
+    "true",
+    "chính xác"
+  ],
+  "evidence": {
+    "paths": [
+      "note"
+    ],
+    "min_hits": 1,
+    "numbers": [
+      61568456.32,
+      61513961.98,
+      60788317.37,
+      60039197.58,
+      59867898.1,
+      60576132.04,
+      60831414.45,
+      58041555.14,
+      57823683.82,
+      58125401.32
+    ]
+  },
+  "contract_version": 2,
+  "provenance_contract": [
+    {
+      "tool": "vn_crypto_ohlcv",
+      "source": "vnstock",
+      "as_of": "2026-11-01T22:54:50.300938+07:00",
+      "matched_entry_id": "cohlcv:ETHUSDT",
+      "response_sha256": "5ee1a2d680a88d07995a0897aa1a155596c93ddd0ceeb6c403e3aac582440b32"
+    }
+  ],
+  "payload_sha256": "3daaf2f947f10f4eb2d07fa838492516811850c99a3db58cf732bbf834103792",
+  "provenance_catalog": [
+    {
+      "tool": "vn_crypto_ohlcv",
+      "source": "vnstock",
+      "as_of": "2026-11-01T22:54:50.300938+07:00",
+      "matched_entry_id": "cohlcv:ETHUSDT",
+      "response_sha256": "5ee1a2d680a88d07995a0897aa1a155596c93ddd0ceeb6c403e3aac582440b32"
+    }
+  ],
+  "required_payload_keys": [
+    "cohlcv:ETHUSDT"
   ]
- }
 }

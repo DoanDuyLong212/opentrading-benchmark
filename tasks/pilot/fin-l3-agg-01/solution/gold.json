@@ -86,5 +86,84 @@
     "mean": 32.18
   },
   "notes": "Đổi nguồn so với 5.5 (vn_equity_quote_batch unavailable 01/11) → 5 lời gọi vn_quote_history. Trung bình: 160.9/5 = 32.18.",
-  "as_of": "2026-11-01T15:57:50.079479+07:00"
+  "as_of": "2026-11-01T15:57:50.079479+07:00",
+  "contract_version": 2,
+  "provenance_contract": [
+    {
+      "tool": "vn_quote_history",
+      "source": "vnstock",
+      "as_of": "2026-11-01T15:57:50.079479+07:00",
+      "matched_entry_id": "vn_quote_history:0",
+      "response_sha256": "29dca469688c732c1e27d0e1d50d6eedf82c9c7d599397c2027f66437f3584da"
+    },
+    {
+      "tool": "vn_quote_history",
+      "source": "vnstock",
+      "as_of": "2026-11-01T15:57:50.079479+07:00",
+      "matched_entry_id": "vn_quote_history:1",
+      "response_sha256": "77ac06db666b246d165ec18c49c34e8bf2bd452d3beec1afb550d749ed44e0f3"
+    },
+    {
+      "tool": "vn_quote_history",
+      "source": "vnstock",
+      "as_of": "2026-11-01T15:57:50.079479+07:00",
+      "matched_entry_id": "vn_quote_history:2",
+      "response_sha256": "7e9d43536192ab2326abffc3e3b6cb14d3c0acdf07ebdb84c8e1bf4c694513d1"
+    },
+    {
+      "tool": "vn_quote_history",
+      "source": "vnstock",
+      "as_of": "2026-11-01T15:57:50.079479+07:00",
+      "matched_entry_id": "vn_quote_history:3",
+      "response_sha256": "998f1caf5c85a406975e8cd240f35ecbc2e0859d554ef1e0c3b30b8b10a30630"
+    },
+    {
+      "tool": "vn_quote_history",
+      "source": "vnstock",
+      "as_of": "2026-11-01T15:57:50.079479+07:00",
+      "matched_entry_id": "vn_quote_history:4",
+      "response_sha256": "6c6b79a2999f264850620c685370736647c06cd4c85fc09d74fe53384fb10a17"
+    }
+  ],
+  "payload_sha256": "aa1f6b5dca589360446eb510873587250c1c7d30f00a026d84e357360a74efd6",
+  "provenance_catalog": [
+    {
+      "tool": "vn_quote_history",
+      "source": "vnstock",
+      "as_of": "2026-11-01T15:57:50.079479+07:00",
+      "matched_entry_id": "vn_quote_history:0",
+      "response_sha256": "29dca469688c732c1e27d0e1d50d6eedf82c9c7d599397c2027f66437f3584da"
+    },
+    {
+      "tool": "vn_quote_history",
+      "source": "vnstock",
+      "as_of": "2026-11-01T15:57:50.079479+07:00",
+      "matched_entry_id": "vn_quote_history:1",
+      "response_sha256": "77ac06db666b246d165ec18c49c34e8bf2bd452d3beec1afb550d749ed44e0f3"
+    },
+    {
+      "tool": "vn_quote_history",
+      "source": "vnstock",
+      "as_of": "2026-11-01T15:57:50.079479+07:00",
+      "matched_entry_id": "vn_quote_history:2",
+      "response_sha256": "7e9d43536192ab2326abffc3e3b6cb14d3c0acdf07ebdb84c8e1bf4c694513d1"
+    },
+    {
+      "tool": "vn_quote_history",
+      "source": "vnstock",
+      "as_of": "2026-11-01T15:57:50.079479+07:00",
+      "matched_entry_id": "vn_quote_history:3",
+      "response_sha256": "998f1caf5c85a406975e8cd240f35ecbc2e0859d554ef1e0c3b30b8b10a30630"
+    },
+    {
+      "tool": "vn_quote_history",
+      "source": "vnstock",
+      "as_of": "2026-11-01T15:57:50.079479+07:00",
+      "matched_entry_id": "vn_quote_history:4",
+      "response_sha256": "6c6b79a2999f264850620c685370736647c06cd4c85fc09d74fe53384fb10a17"
+    }
+  ],
+  "required_payload_keys": [
+    "vn_quote_history"
+  ]
 }

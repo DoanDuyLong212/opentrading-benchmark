@@ -1,0 +1,193 @@
+{
+  "task_id": "fin-l3-top-202",
+  "scoring": "value",
+  "solution": {
+    "1": {
+      "symbol": "HPG",
+      "vol": 24773000.0,
+      "close": 21000.0
+    },
+    "2": {
+      "symbol": "TCB",
+      "vol": 17644300.0,
+      "close": 21600.0
+    },
+    "3": {
+      "symbol": "NVL",
+      "vol": 14738700.0,
+      "close": 10400.0
+    },
+    "4": {
+      "symbol": "VPB",
+      "vol": 14689300.0,
+      "close": 22950.0
+    },
+    "5": {
+      "symbol": "SSI",
+      "vol": 14279200.0,
+      "close": 19300.0
+    }
+  },
+  "as_of": "2026-11-01T21:12:04.261634+07:00",
+  "split": "main",
+  "expects": [
+    {
+      "type": "str",
+      "path": "values.1.symbol",
+      "accept": [
+        "HPG"
+      ]
+    },
+    {
+      "type": "value",
+      "path": "values.1.vol",
+      "gold": 24773000.0,
+      "tol": {
+        "rel": 0.005
+      }
+    },
+    {
+      "type": "value",
+      "path": "values.1.close",
+      "gold": 21000.0,
+      "tol": {
+        "rel": 0.005
+      }
+    },
+    {
+      "type": "str",
+      "path": "values.2.symbol",
+      "accept": [
+        "TCB"
+      ]
+    },
+    {
+      "type": "value",
+      "path": "values.2.vol",
+      "gold": 17644300.0,
+      "tol": {
+        "rel": 0.005
+      }
+    },
+    {
+      "type": "value",
+      "path": "values.2.close",
+      "gold": 21600.0,
+      "tol": {
+        "rel": 0.005
+      }
+    },
+    {
+      "type": "str",
+      "path": "values.3.symbol",
+      "accept": [
+        "NVL"
+      ]
+    },
+    {
+      "type": "value",
+      "path": "values.3.vol",
+      "gold": 14738700.0,
+      "tol": {
+        "rel": 0.005
+      }
+    },
+    {
+      "type": "value",
+      "path": "values.3.close",
+      "gold": 10400.0,
+      "tol": {
+        "rel": 0.005
+      }
+    },
+    {
+      "type": "str",
+      "path": "values.4.symbol",
+      "accept": [
+        "VPB"
+      ]
+    },
+    {
+      "type": "value",
+      "path": "values.4.vol",
+      "gold": 14689300.0,
+      "tol": {
+        "rel": 0.005
+      }
+    },
+    {
+      "type": "value",
+      "path": "values.4.close",
+      "gold": 22950.0,
+      "tol": {
+        "rel": 0.005
+      }
+    },
+    {
+      "type": "str",
+      "path": "values.5.symbol",
+      "accept": [
+        "SSI"
+      ]
+    },
+    {
+      "type": "value",
+      "path": "values.5.vol",
+      "gold": 14279200.0,
+      "tol": {
+        "rel": 0.005
+      }
+    },
+    {
+      "type": "value",
+      "path": "values.5.close",
+      "gold": 19300.0,
+      "tol": {
+        "rel": 0.005
+      }
+    },
+    {
+      "type": "period",
+      "path": "period",
+      "accept": [
+        "30/10",
+        "30-10",
+        "30.10",
+        "2026-10-30",
+        "phiên gần nhất",
+        "gần nhất"
+      ]
+    },
+    {
+      "type": "str",
+      "path": "source",
+      "accept": [
+        "market_movers"
+      ]
+    }
+  ],
+  "contract_version": 2,
+  "provenance_contract": [
+    {
+      "tool": "market_movers",
+      "source": "vnstock",
+      "as_of": "2026-11-01T21:12:04.261634+07:00",
+      "matched_entry_id": "movers:vn30",
+      "response_sha256": "a8203b807b243068b924bf83bd810671386c59c2fdac6deabcc1ae9514a634ca"
+    }
+  ],
+  "payload_sha256": "b2446a67d6b1807ecbe171b0dea66b6147a5730988d0ec7b1ba7ac9c629e7a00",
+  "provenance_catalog": [
+    {
+      "tool": "market_movers",
+      "source": "vnstock",
+      "as_of": "2026-11-01T21:12:04.261634+07:00",
+      "matched_entry_id": "movers:vn30",
+      "response_sha256": "a8203b807b243068b924bf83bd810671386c59c2fdac6deabcc1ae9514a634ca"
+    }
+  ],
+  "required_payload_keys": [
+    "movers:vn30"
+  ],
+  "notes": "Rewritten 2026-11-10 (gold audit A5): previously an exact duplicate of 201; now volume leaders top-5."
+}

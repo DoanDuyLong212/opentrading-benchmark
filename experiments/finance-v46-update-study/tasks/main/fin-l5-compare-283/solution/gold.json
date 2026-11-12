@@ -1,0 +1,75 @@
+{
+  "task_id": "fin-l5-compare-283",
+  "scoring": "value",
+  "solution": {
+    "values": {
+      "ETH-USD_pct": 0.59,
+      "SOL-USD_pct": -0.42
+    },
+    "winner": "ETH-USD"
+  },
+  "as_of": "2026-11-01T21:30:24.862185+07:00",
+  "split": "main",
+  "expects": [
+    {
+      "type": "value",
+      "path": "values.ETH-USD_pct",
+      "gold": 0.59,
+      "tol": {
+        "abs": 0.05
+      }
+    },
+    {
+      "type": "value",
+      "path": "values.SOL-USD_pct",
+      "gold": -0.42,
+      "tol": {
+        "abs": 0.05
+      }
+    },
+    {
+      "type": "tokens",
+      "path": "values.winner",
+      "accept": [
+        "ETH-USD",
+        "ETH",
+        "ethereum"
+      ],
+      "reject": [
+        "SOL-USD",
+        "SOL",
+        "solana"
+      ]
+    },
+    {
+      "type": "str",
+      "path": "source",
+      "accept": [
+        "yf_commodities"
+      ]
+    }
+  ],
+  "contract_version": 2,
+  "provenance_contract": [
+    {
+      "tool": "yf_commodities",
+      "source": "yfinance",
+      "as_of": "2026-11-01T21:30:24.862185+07:00",
+      "matched_entry_id": "yf:main",
+      "response_sha256": "572f3a74405981b59b46941a0062d32fb1f9a7843dcec5324fade8aafce5eb22"
+    }
+  ],
+  "payload_sha256": "057678ae8f95ca9e891512ae5b9a2b5fc3b569b94fc2ca37e3a19a01707165a5",
+  "provenance_catalog": [
+    {
+      "tool": "yf_commodities",
+      "source": "yfinance",
+      "as_of": "2026-11-01T21:30:24.862185+07:00",
+      "matched_entry_id": "yf:main",
+      "response_sha256": "572f3a74405981b59b46941a0062d32fb1f9a7843dcec5324fade8aafce5eb22"
+    }
+  ],
+  "required_payload_keys": [
+    "yf:main"
+  ]
+}

@@ -1,0 +1,78 @@
+{
+  "compared_manifest": "results/financial-prompt-v3-pilot-20261105/manifest.json",
+  "manifest_bound_code_drift": [
+    {
+      "path": "tools/run_benchmark.py",
+      "frozen_sha256": "670974e50261aac705f6893b15f7869abb515584f872fb4fce051f5e6353fd8c",
+      "current_sha256": "374abf69e9627a90706bd211c73c9cb738679c520c6a9d15d093499d54dabf1d"
+    },
+    {
+      "path": "tools/runners/provider.py",
+      "frozen_sha256": "9fbc35b553f64592c93e2907fc066a7489415fe932dbe6018dd0b890f2233324",
+      "current_sha256": "0901cf38c33e8c6591edfc55c977e48aa0187e9276125612d8759d2868b0938e"
+    },
+    {
+      "path": "tools/verify_nvidia.py",
+      "frozen_sha256": "f107309ce75b1890540c473342bc7bbba672f563d0205dce8fbed846e590947b",
+      "current_sha256": "cf3aaf4c0fd7ce84ac5c2178c94c8295fe354024fbc3728c987a537f20b7d47d"
+    }
+  ],
+  "diagnostic_log_counts": {
+    "diag-deepseek-flash-20261105": {
+      "counts": {
+        "watchdog_logs": 2,
+        "provider_requests": 73,
+        "provider_error:URLError": 28,
+        "provider_error:previous upstream usage unknown; further requests denied": 21,
+        "provider_error:TimeoutError": 3
+      },
+      "watchdog_paths": [
+        "results/diag-deepseek-flash-20261105/trials/fin-l1-quote-02__opentrading_baseline__r1/attempts/01-0693c962dc75/run.log",
+        "results/diag-deepseek-flash-20261105/trials/fin-l1-quote-01__opentrading_finance__r1/attempts/01-ebd8a53090ef/run.log"
+      ]
+    },
+    "diag-deepseek-flash-20261105-passB": {
+      "counts": {
+        "watchdog_logs": 7,
+        "provider_requests": 73,
+        "provider_error:URLError": 1,
+        "provider_error:previous upstream usage unknown; further requests denied": 2,
+        "provider_error:provider response model mismatch": 9,
+        "provider_error:TimeoutError": 1
+      },
+      "watchdog_paths": [
+        "results/diag-deepseek-flash-20261105-passB/trials/fin-l1-quote-01__opentrading_baseline__r2/attempts/01-77f69da8516d/run.log",
+        "results/diag-deepseek-flash-20261105-passB/trials/fin-l5-compare-01__opentrading_finance__r2/attempts/01-f0beeb7b5be2/run.log",
+        "results/diag-deepseek-flash-20261105-passB/trials/fin-l1-bctc-01__opentrading_baseline__r2/attempts/01-cf15d98da5ca/run.log",
+        "results/diag-deepseek-flash-20261105-passB/trials/fin-l1-quote-02__opentrading_finance__r2/attempts/01-174ab6797110/run.log",
+        "results/diag-deepseek-flash-20261105-passB/trials/fin-l5-compare-01__opentrading_finance__r1/attempts/01-5c00f3300bc1/run.log",
+        "results/diag-deepseek-flash-20261105-passB/trials/fin-l5-compare-01__opentrading_baseline__r1/attempts/01-7ebbba8c94ac/run.log",
+        "results/diag-deepseek-flash-20261105-passB/trials/fin-l5-compare-01__opentrading_baseline__r2/attempts/01-081f11b101e6/run.log"
+      ]
+    },
+    "diag-deepseek-flash-20261105-passC": {
+      "counts": {
+        "watchdog_logs": 4,
+        "provider_requests": 6,
+        "provider_error:TimeoutError": 1
+      },
+      "watchdog_paths": [
+        "results/diag-deepseek-flash-20261105-passC/driver2.log/trials/fin-l5-compare-01__opentrading_finance__r2/attempts/01-6d56fe3c01f5/run.log",
+        "results/diag-deepseek-flash-20261105-passC/driver2.log/trials/fin-l5-compare-01__opentrading_finance__r1/attempts/01-54eed7fe2575/run.log",
+        "results/diag-deepseek-flash-20261105-passC/trials/fin-l1-quote-01__opentrading_baseline__r2/attempts/01-737e1db0683e/run.log",
+        "results/diag-deepseek-flash-20261105-passC/trials/fin-l1-quote-01__opentrading_baseline__r1/attempts/01-bbf79a37f723/run.log"
+      ]
+    }
+  },
+  "review_hashes": {
+    "opencode-review.md": "c4a43d15be93c077468c18f9ee048641f5a3a97c87e69fc917da34d9e836b23b",
+    "agy-review.md": "2e47d407ce9c487f85076f6dfdc2e86f47dd58a422221ee37f8c9bc4562f68c2"
+  },
+  "arithmetic": {
+    "median_input_tokens_delta": 1237,
+    "system_chars_delta": 1462,
+    "chars_div_four": 365.5,
+    "Q2_vs_Q1_actual_pct": 16.711541075541845,
+    "Q3_vs_Q2_actual_pct": -2.0276425486658978
+  }
+}

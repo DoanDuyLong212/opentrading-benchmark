@@ -1,0 +1,26 @@
+{
+ "snapshot_date": "2026-11-01",
+ "note": "Envelope MCP tái sử dụng nguyên vẹn từ task đã ghi snapshot 2026-11-01 (memory stratum); không capture mới. Nguồn: khung fin-l4-nonexist-235",
+ "tools": {
+  "res:FAKE5": {
+   "tool": "symbol_resolve",
+   "params": {
+    "query": "FAKE5"
+   },
+   "envelope": {
+    "data": {
+     "query": "FAKE5",
+     "resolved": null,
+     "candidates": []
+    },
+    "provenance": {
+     "source": "vnstock+local",
+     "as_of": "2026-11-01T21:33:56.063683+07:00",
+     "timezone": "Asia/Ho_Chi_Minh"
+    },
+    "availability": "empty",
+    "warnings": []
+   }
+  }
+ }
+}

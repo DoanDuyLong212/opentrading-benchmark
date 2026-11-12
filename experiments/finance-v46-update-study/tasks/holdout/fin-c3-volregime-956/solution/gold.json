@@ -1,0 +1,266 @@
+{
+  "task_id": "fin-c3-volregime-956",
+  "scoring": "value",
+  "solution": {
+    "VCB": {
+      "avg20": 3239315.0,
+      "avg120": 4856170.6083,
+      "ratio": 0.6671
+    },
+    "BID": {
+      "avg20": 3266820.0,
+      "avg120": 4347805.6917,
+      "ratio": 0.7514
+    },
+    "CTG": {
+      "avg20": 7047615.0,
+      "avg120": 7734975.2833,
+      "ratio": 0.9111
+    },
+    "MBB": {
+      "avg20": 11350770.0,
+      "avg120": 12750595.5833,
+      "ratio": 0.8902
+    },
+    "TCB": {
+      "avg20": 18709300.45,
+      "avg120": 14687875.9917,
+      "ratio": 1.2738
+    },
+    "ranking": [
+      "TCB",
+      "CTG",
+      "MBB",
+      "BID",
+      "VCB"
+    ]
+  },
+  "as_of": "2026-11-11T09:41:32.145602+07:00",
+  "split": "holdout",
+  "expects": [
+    {
+      "type": "value",
+      "path": "values.VCB.avg20",
+      "gold": 3239315.0,
+      "tol": {
+        "rel": 0.001
+      }
+    },
+    {
+      "type": "value",
+      "path": "values.VCB.avg120",
+      "gold": 4856170.6083,
+      "tol": {
+        "rel": 0.001
+      }
+    },
+    {
+      "type": "value",
+      "path": "values.VCB.ratio",
+      "gold": 0.6671,
+      "tol": {
+        "abs": 0.005
+      }
+    },
+    {
+      "type": "value",
+      "path": "values.BID.avg20",
+      "gold": 3266820.0,
+      "tol": {
+        "rel": 0.001
+      }
+    },
+    {
+      "type": "value",
+      "path": "values.BID.avg120",
+      "gold": 4347805.6917,
+      "tol": {
+        "rel": 0.001
+      }
+    },
+    {
+      "type": "value",
+      "path": "values.BID.ratio",
+      "gold": 0.7514,
+      "tol": {
+        "abs": 0.005
+      }
+    },
+    {
+      "type": "value",
+      "path": "values.CTG.avg20",
+      "gold": 7047615.0,
+      "tol": {
+        "rel": 0.001
+      }
+    },
+    {
+      "type": "value",
+      "path": "values.CTG.avg120",
+      "gold": 7734975.2833,
+      "tol": {
+        "rel": 0.001
+      }
+    },
+    {
+      "type": "value",
+      "path": "values.CTG.ratio",
+      "gold": 0.9111,
+      "tol": {
+        "abs": 0.005
+      }
+    },
+    {
+      "type": "value",
+      "path": "values.MBB.avg20",
+      "gold": 11350770.0,
+      "tol": {
+        "rel": 0.001
+      }
+    },
+    {
+      "type": "value",
+      "path": "values.MBB.avg120",
+      "gold": 12750595.5833,
+      "tol": {
+        "rel": 0.001
+      }
+    },
+    {
+      "type": "value",
+      "path": "values.MBB.ratio",
+      "gold": 0.8902,
+      "tol": {
+        "abs": 0.005
+      }
+    },
+    {
+      "type": "value",
+      "path": "values.TCB.avg20",
+      "gold": 18709300.45,
+      "tol": {
+        "rel": 0.001
+      }
+    },
+    {
+      "type": "value",
+      "path": "values.TCB.avg120",
+      "gold": 14687875.9917,
+      "tol": {
+        "rel": 0.001
+      }
+    },
+    {
+      "type": "value",
+      "path": "values.TCB.ratio",
+      "gold": 1.2738,
+      "tol": {
+        "abs": 0.005
+      }
+    },
+    {
+      "type": "list_order",
+      "path": "ranking",
+      "gold": [
+        "TCB",
+        "CTG",
+        "MBB",
+        "BID",
+        "VCB"
+      ]
+    },
+    {
+      "type": "str",
+      "path": "source",
+      "accept": [
+        "vn_quote_history"
+      ]
+    }
+  ],
+  "contract_version": 2,
+  "stratum": "compute",
+  "tier": "C3",
+  "notes": "Compute stratum (amendment 2026-11-11 d). Gold computed with Decimal from payloads; uniform tolerance.",
+  "provenance_contract": [
+    {
+      "tool": "vn_quote_history",
+      "source": "vnstock",
+      "as_of": "2026-11-11T09:41:32.145602+07:00",
+      "matched_entry_id": "hist:BID",
+      "response_sha256": "95666bf7190cae7e06737d18dcd2ea11cd76bfbb0c7b02e0f5e9afad3f02c93b"
+    },
+    {
+      "tool": "vn_quote_history",
+      "source": "vnstock",
+      "as_of": "2026-11-11T09:41:32.145602+07:00",
+      "matched_entry_id": "hist:CTG",
+      "response_sha256": "259ac2694abe35161156759bf46c5850c094709d6ad331087a57c0493d8995f6"
+    },
+    {
+      "tool": "vn_quote_history",
+      "source": "vnstock",
+      "as_of": "2026-11-11T09:41:32.145602+07:00",
+      "matched_entry_id": "hist:MBB",
+      "response_sha256": "a8d2ca618df45eff0dc3826790cb4a89f8b08085bb7861ef4f5afc040b3945ff"
+    },
+    {
+      "tool": "vn_quote_history",
+      "source": "vnstock",
+      "as_of": "2026-11-11T09:41:32.145602+07:00",
+      "matched_entry_id": "hist:TCB",
+      "response_sha256": "bfe2f16c18d97e087a2b9acd246f13981dae8415c140d13babf43d7ec9b35f81"
+    },
+    {
+      "tool": "vn_quote_history",
+      "source": "vnstock",
+      "as_of": "2026-11-11T09:41:32.145602+07:00",
+      "matched_entry_id": "hist:VCB",
+      "response_sha256": "f196ec0abc711eb0f5e917231d39c4e1703b23b8669dd41c0bac66ae4bdff366"
+    }
+  ],
+  "provenance_catalog": [
+    {
+      "tool": "vn_quote_history",
+      "source": "vnstock",
+      "as_of": "2026-11-11T09:41:32.145602+07:00",
+      "matched_entry_id": "hist:BID",
+      "response_sha256": "95666bf7190cae7e06737d18dcd2ea11cd76bfbb0c7b02e0f5e9afad3f02c93b"
+    },
+    {
+      "tool": "vn_quote_history",
+      "source": "vnstock",
+      "as_of": "2026-11-11T09:41:32.145602+07:00",
+      "matched_entry_id": "hist:CTG",
+      "response_sha256": "259ac2694abe35161156759bf46c5850c094709d6ad331087a57c0493d8995f6"
+    },
+    {
+      "tool": "vn_quote_history",
+      "source": "vnstock",
+      "as_of": "2026-11-11T09:41:32.145602+07:00",
+      "matched_entry_id": "hist:MBB",
+      "response_sha256": "a8d2ca618df45eff0dc3826790cb4a89f8b08085bb7861ef4f5afc040b3945ff"
+    },
+    {
+      "tool": "vn_quote_history",
+      "source": "vnstock",
+      "as_of": "2026-11-11T09:41:32.145602+07:00",
+      "matched_entry_id": "hist:TCB",
+      "response_sha256": "bfe2f16c18d97e087a2b9acd246f13981dae8415c140d13babf43d7ec9b35f81"
+    },
+    {
+      "tool": "vn_quote_history",
+      "source": "vnstock",
+      "as_of": "2026-11-11T09:41:32.145602+07:00",
+      "matched_entry_id": "hist:VCB",
+      "response_sha256": "f196ec0abc711eb0f5e917231d39c4e1703b23b8669dd41c0bac66ae4bdff366"
+    }
+  ],
+  "payload_sha256": "6d83c0a14d1bcf7418dcc1b930aca521b8937f27517dee5cfd73112e06820ad7",
+  "required_payload_keys": [
+    "hist:BID",
+    "hist:CTG",
+    "hist:MBB",
+    "hist:TCB",
+    "hist:VCB"
+  ]
+}

@@ -1,0 +1,71 @@
+{
+  "task_id": "fin-l2-tech-165",
+  "scoring": "value",
+  "solution": {
+    "value": 43.84
+  },
+  "as_of": "2026-11-01T23:54:19.033081+07:00",
+  "split": "main",
+  "expects": [
+    {
+      "type": "value",
+      "path": "value",
+      "gold": 43.84,
+      "tol": {
+        "abs": 0.1
+      }
+    },
+    {
+      "type": "unit",
+      "path": "unit",
+      "accept": [
+        "RSI-14",
+        "RSI 14",
+        "RSI",
+        "rsi14"
+      ]
+    },
+    {
+      "type": "period",
+      "path": "period",
+      "accept": [
+        "30/10",
+        "30-10",
+        "30.10",
+        "2026-10-30",
+        "phiên gần nhất",
+        "gần nhất"
+      ]
+    },
+    {
+      "type": "str",
+      "path": "source",
+      "accept": [
+        "signals_technical"
+      ]
+    }
+  ],
+  "contract_version": 2,
+  "provenance_contract": [
+    {
+      "tool": "signals_technical",
+      "source": "computed-local",
+      "as_of": "2026-11-01T23:54:19.033081+07:00",
+      "matched_entry_id": "tech:VGC",
+      "response_sha256": "573d3b85ed73c02b5004456f37a6637c71b132176052ad67f369b69c8519feb2"
+    }
+  ],
+  "payload_sha256": "d2fd7d295d7e67e16788ccc795b209014833d4688b1b406e72915ccb933f8c10",
+  "provenance_catalog": [
+    {
+      "tool": "signals_technical",
+      "source": "computed-local",
+      "as_of": "2026-11-01T23:54:19.033081+07:00",
+      "matched_entry_id": "tech:VGC",
+      "response_sha256": "573d3b85ed73c02b5004456f37a6637c71b132176052ad67f369b69c8519feb2"
+    }
+  ],
+  "required_payload_keys": [
+    "tech:VGC"
+  ]
+}

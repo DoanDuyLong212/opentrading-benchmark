@@ -1,7 +1,7 @@
 # Task benchmark harness tài chính (bộ 200+50) — sinh bởi tools/build_main.py
 id = "fin-l3-screen-193"
 title = "Sàng lọc nhóm tech_p"
-version = 1
+version = 2
 created = "2026-11-01"
 level = "L3"
 family = "L3·A screen"
@@ -19,6 +19,8 @@ tools_expected = ["peer_compare"]
 mcp_payloads = "environment/payloads.json"
 snapshot_required = true
 split = "main"
+
+confirmatory_eligible = true
 
 [scoring]
 type = "value"

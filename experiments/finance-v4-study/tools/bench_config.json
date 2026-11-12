@@ -1,0 +1,26 @@
+{
+  "model": "nvidia/nvidia/nemotron-3.5-bolt-e4b",
+  "model_note": "NVIDIA small-model verification only. Bolt E4B passed a real function call plus tool-result continuation on 2026-11-04. Granite 3B was listed but returned HTTP 404. No paid or Google fallback is permitted. Final financial evaluation requires a new frozen model/provider/effort receipt.",
+  "model_main_run": null,
+  "effort": "none",
+  "effort_note": "No reasoning effort requested; provider telemetry records effective request fields and reported reasoning tokens. Medium/Go are intentionally fail-closed until independently supported and verified on all three adapters.",
+  "skills_parity": "No skills, user plugins, memory, web, filesystem, shell or subagents. Native harness system prompts are retained; model-visible tools must belong to the frozen snapshot MCP server.",
+  "runs_pilot": 2,
+  "max_requests": 24,
+  "max_output_tokens": 2048,
+  "max_total_tokens": 48000,
+  "request_interval_s": 2,
+  "provider_timeout_s": 45,
+  "price_per_1m": null,
+  "price_note": "Unknown/unverified for this NVIDIA key. Report measured usage and request counts; do not publish dollar cost until pricing and entitlement are frozen with an authoritative source.",
+  "opentrading_runtime_root": "/home/doanlong/extra/benchmark/experiments/finance-v4-study/experiments/opentrading-runtime",
+  "protocol": "financial_runtime_mcp_v4",
+  "experiment_protocol": "plans/2026-11-05-v4-improvement-experiment.md",
+  "allowed_models": [
+    "nvidia/nvidia/nemotron-3.5-bolt-e4b"
+  ],
+  "allowed_inference_splits": [
+    "smoke",
+    "pilot"
+  ]
+}

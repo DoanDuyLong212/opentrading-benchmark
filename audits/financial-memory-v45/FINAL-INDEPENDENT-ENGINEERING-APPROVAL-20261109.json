@@ -1,0 +1,48 @@
+{
+  "reviewer": "v45_independent_review",
+  "independent": true,
+  "date": "2026-11-09",
+  "scope": "Exact pinned benchmark headless profiles only; no claim of whole-production UI qualification or measured financial superiority.",
+  "full_host_tests": {
+    "pass": true,
+    "count": 537,
+    "log": "/home/doanlong/extra/benchmark/audits/financial-memory-v45/full-benchmark-host-final-verified.log",
+    "sha256": "98982e6a1d07469c3ebeaac05a1ccb480baa5243cfbff003e66821dfbae6516a"
+  },
+  "evidence_sha256": {
+    "audits/financial-prompt-v45/all-native-common-wire-9665393e/proof.json": "8b30728029a4ffc53f7e91f92737c249a222e21cf5230a7b310ee5d4cc51fec7",
+    "audits/financial-prompt-v45/native/headless-wire-31e832f2/proof.json": "3529a6058331019945506a43fb92a53a0968020c5c70f3205cf6122e118b25a5",
+    "audits/financial-memory-v45/native-wire-49bb3d66/proof.json": "01b2f2401b865b7079ec1db0129c0b7f5c339bac46c11c43c1780ec24ac0fff0",
+    "audits/financial-memory-v45/native-wire-f78d427d/proof.json": "2e417a610532072cb97bea5317d4500f516a5e3db310ee81e7f2d2b6a67e6a8b",
+    "audits/financial-memory-v45/pause-wire-693e0c97/proof.json": "3b8a0b1635e6814a77d9c103a677f8fae5f52dcac1bc1b49557ed49f89620e60",
+    "audits/financial-memory-v45/pause-wire-9f409a0d/proof.json": "4758e13f70ecc8903bce026644a54b0fd4a9c8cf61a637c2613144b91be8133f",
+    "audits/financial-prompt-v45/native/post-clean-full-node-tree-parity.json": "e9a6760bb1a623f2dd89ef41ff6b76dde71a593a98b6d60aea2d66147855d8ee",
+    "audits/financial-prompt-v45/native/post-clean-user-preservation.json": "1df4f4be8589a6c22a7c0efa0da4be6c8ce8585df01e1ef77d37fd2283de43c6"
+  },
+  "limitations": [
+    "Super requested public endpoint accepts only user-authorized private alias; checkpoint UNVERIFIED.",
+    "Native complete suite previously retained UI/performance failures; headless qualification is narrower.",
+    "Memory MINI N3 per model/arm is exploratory; common temperature1/top_p.95 differs from stateless DeepSeek0/1, so no paired cross-track memory claim.",
+    "Original failed local fixtures and earlier full-host510PASS27FAIL remain retained; corrected controls combine prior OT/OC cases with isolated DSH replacement, not one fresh all-eight run.",
+    "Legacy v3 runtime dependencies follow updated production symlink; stored results preserved, historical rerun environment not identical."
+  ],
+  "external_model_calls_by_reviewer": 0,
+  "schema": "independent-v45-final-memory-mini-engineering-approval-v1",
+  "status": "approved",
+  "manifest_sha256": "4439ae833534f1e685c9bd0f67f6780fb4dfda9779d7de4e8b94dd2338e54bf6",
+  "manifest": "/home/doanlong/extra/benchmark/experiments/finance-v45-study/results/financial-memory-v45-mini-20261109-preflight5/manifest.json",
+  "limits": {
+    "episodes": 24,
+    "upstream_attempts_per_episode": 12,
+    "max_upstream_attempts": 288
+  },
+  "authorized_scope": "Exactly24 preregistered MINI episodes; two separate model cohorts,4arms,N3/arm/model,12upstream attempts per episode. No memory MAIN/holdout or quality retries.",
+  "automatic_results_require_manual_all_arm_review": true,
+  "pin_review": "/home/doanlong/extra/benchmark/audits/financial-memory-v45/INDEPENDENT-FINAL-PIN-REVIEW.json",
+  "final_pin_review_sha256": "839600eb2ffe33d3091faa6b753c699fd374891091e134862f53e94732cd99ad",
+  "protocol_sha256": {
+    "/home/doanlong/extra/benchmark/experiments/finance-v45-study/plans/2026-11-08-v45-execution-protocol.md": "af5b0d91cb75e5ce663310045b9ad873ee88a1f8a7bad63dcfecd7d8553dee3b",
+    "/home/doanlong/extra/benchmark/experiments/finance-v45-study/plans/2026-11-08-v45-memory-mini-protocol.md": "f407476771ddadd0cbad98bd6fdf8d328e3b6b9725abacd8b64782bf9c12384f"
+  },
+  "supersedes": "Earlier MINI engineering approvals and preflight1-4; these remain historical and must not launch."
+}

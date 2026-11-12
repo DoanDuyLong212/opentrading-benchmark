@@ -1,0 +1,29 @@
+{
+  "pass": true,
+  "checks": [
+    "actual five-source mean independently32.18",
+    "tamperednumericresultrejected",
+    "tamperedsourcehashrejected",
+    "tamperedderivedhashrejected",
+    "syntheticupstreammetadatarejected",
+    "foreignsessionreferencerejected",
+    "futuresourcerejected",
+    "wrongunitrejected",
+    "duplicatedaggregateoperandrejected",
+    "actualsource numeric period unit canary passes",
+    "secondarycanary wrongperiod fails",
+    "secondarycanary wrongunit fails",
+    "secondarycanary wrongsource fails",
+    "secondarycanary wrongmean fails",
+    "secondarycanary missingyear fails",
+    "latestquoteperiod canary passes",
+    "latestquote wrongperiod rejected",
+    "actual public fin-l2-growth-01 growth_pct independently reconstructed",
+    "actual growth_pct scope tamper rejected",
+    "actual public fin-l2-margin-01 margin_pct independently reconstructed",
+    "actual margin_pct scope tamper rejected",
+    "actual public fin-l1-bctc-01 scale independently reconstructed",
+    "actual scale scope tamper rejected"
+  ],
+  "verifier_sha256": "7f902568f4ae8e04fc96057d70a12e3a9d8b3a92292bbe6a8003f973c6e0554d"
+}

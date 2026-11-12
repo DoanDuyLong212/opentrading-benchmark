@@ -1,0 +1,2619 @@
+{
+ "version": "v45-preinference-corpus-migration",
+ "historical_root_tasks_unchanged_by_this_worker": true,
+ "counts": {
+  "main": {
+   "total": 200,
+   "eligible": 200,
+   "core": 140,
+   "compute": 30,
+   "memory_native_v2": 30
+  },
+  "pilot": {
+   "total": 38,
+   "eligible": 36,
+   "core": 22,
+   "compute": 8,
+   "memory_native_v2": 6
+  },
+  "smoke": {
+   "total": 3,
+   "eligible": 3
+  },
+  "devsmoke": {
+   "total": 12,
+   "eligible": 12
+  },
+  "holdout": {
+   "total": 50,
+   "eligible": 50,
+   "core": 36,
+   "compute": 7,
+   "memory_native_v2": 7
+  },
+  "retired": {
+   "main": 90,
+   "holdout": 24
+  }
+ },
+ "holdout": "60-task canonical holdout: 10 memory (batch-3) + 50 financial migrated 2026-11-10 with the v4.6u contract suffix (+A8) and study grader; 11 former main replicas replaced first (audits/gold-audit-2026-11-10/holdout-replacements.json)",
+ "changed": {
+  "tasks/main/fin-l4-chain-303/instruction.md": {
+   "root_sha256": "ebcea915a52a7ea2c7860904b9034e0f6ad3ac1d39fb4b464228f15b1eb25128",
+   "study_sha256": "f57d87d16e45ef83cfac90b6a015f89f9adc38f89fd15c56bd83ea656abada38"
+  },
+  "tasks/main/fin-l3-top-202/task.toml": {
+   "root_sha256": "c391c28482b6ba89acdbd0fac6e747fd620f64b4eeee13af58f8c595d27a7e99",
+   "study_sha256": "b2c9a56674002e2fc527cace9293c9d3803355dcb11676df21c1d8f5926eddf3"
+  },
+  "tasks/main/fin-l4-future-307/instruction.md": {
+   "root_sha256": "0261f4659735975ca3a70ad49479a9a4b0ab8b1e663ad3e9e6d47163bd20b47d",
+   "study_sha256": "0413dd1052c5d28481040f997d045b01f41433e3a6d448d137f1dceb1a7e0d11"
+  },
+  "tasks/main/fin-l4-chain-305/instruction.md": {
+   "root_sha256": "c6972797593e32a0e2984fa3f06f9acb10d0abedce95b22ebd3315feb3e09868",
+   "study_sha256": "c507e2f3c55a8917694c0ecf09542f553013baa17de6899a347ef39f0b3170b0"
+  },
+  "tasks/main/fin-l4-chain-306/instruction.md": {
+   "root_sha256": "5f8f902f80f4069951320be7da7ed4f028f73d544c5a89b9c0c8848b911c8a86",
+   "study_sha256": "d19aaf7cac917152ea19b4ddd360c93561fdcd0e6f075447a33351ec8ec3c823"
+  },
+  "tasks/main/fin-l4-future-308/instruction.md": {
+   "root_sha256": "a55a8bde20193c522409f37835363a1ad78a514242d772a30ac9edffa82f4f0a",
+   "study_sha256": "d8eb65840043f21d5aebc58f78c2af51a508ea8c0ca7c818b3993c45488948d1"
+  },
+  "tasks/main/fin-l3-crypto-multi-214/instruction.md": {
+   "root_sha256": "2978c18fd60afb6eeb48e64b0574217fe1db54e80e213b793e6986915bb138cb",
+   "study_sha256": "9637e3333be4de6f70f2242be5745ef0dc05b112f442e7fa8c3da18083c29951"
+  },
+  "tasks/main/fin-l3-breadth-301/instruction.md": {
+   "root_sha256": "8d06efdbe86bf4d6452fde96b8deafb801c4a9f896227cb17ed6db8c7092317d",
+   "study_sha256": "3060d812261edac44e1226c6d84c1fdec7ab63054bd124612f57692b71731a17"
+  },
+  "tasks/main/fin-l3-screen-190/tests/grader.py": {
+   "root_sha256": "79b4960aafa6e078dac3f1bc22f0167d9f811ca1beb106588d5e00482f0728d4",
+   "study_sha256": "791e47ec98f45cba561b749a7a4fe0c234d062a1ce430e6cac55a2d764dc5269"
+  },
+  "tasks/main/fin-l1-bctc-119/tests/grader.py": {
+   "root_sha256": "79b4960aafa6e078dac3f1bc22f0167d9f811ca1beb106588d5e00482f0728d4",
+   "study_sha256": "791e47ec98f45cba561b749a7a4fe0c234d062a1ce430e6cac55a2d764dc5269"
+  },
+  "tasks/main/fin-l4-chain-303/tests/grader.py": {
+   "root_sha256": "79b4960aafa6e078dac3f1bc22f0167d9f811ca1beb106588d5e00482f0728d4",
+   "study_sha256": "791e47ec98f45cba561b749a7a4fe0c234d062a1ce430e6cac55a2d764dc5269"
+  },
+  "tasks/main/fin-l2-growth-146/tests/grader.py": {
+   "root_sha256": "79b4960aafa6e078dac3f1bc22f0167d9f811ca1beb106588d5e00482f0728d4",
+   "study_sha256": "791e47ec98f45cba561b749a7a4fe0c234d062a1ce430e6cac55a2d764dc5269"
+  },
+  "tasks/main/fin-l2-tech-163/tests/grader.py": {
+   "root_sha256": "79b4960aafa6e078dac3f1bc22f0167d9f811ca1beb106588d5e00482f0728d4",
+   "study_sha256": "791e47ec98f45cba561b749a7a4fe0c234d062a1ce430e6cac55a2d764dc5269"
+  },
+  "tasks/main/fin-l5-profile-261/tests/grader.py": {
+   "root_sha256": "79b4960aafa6e078dac3f1bc22f0167d9f811ca1beb106588d5e00482f0728d4",
+   "study_sha256": "791e47ec98f45cba561b749a7a4fe0c234d062a1ce430e6cac55a2d764dc5269"
+  },
+  "tasks/main/fin-l1-bctc-116/tests/grader.py": {
+   "root_sha256": "79b4960aafa6e078dac3f1bc22f0167d9f811ca1beb106588d5e00482f0728d4",
+   "study_sha256": "791e47ec98f45cba561b749a7a4fe0c234d062a1ce430e6cac55a2d764dc5269"
+  },
+  "tasks/main/fin-l4-nonexist-239/tests/grader.py": {
+   "root_sha256": "79b4960aafa6e078dac3f1bc22f0167d9f811ca1beb106588d5e00482f0728d4",
+   "study_sha256": "791e47ec98f45cba561b749a7a4fe0c234d062a1ce430e6cac55a2d764dc5269"
+  },
+  "tasks/main/fin-l5-profile-264/tests/grader.py": {
+   "root_sha256": "79b4960aafa6e078dac3f1bc22f0167d9f811ca1beb106588d5e00482f0728d4",
+   "study_sha256": "791e47ec98f45cba561b749a7a4fe0c234d062a1ce430e6cac55a2d764dc5269"
+  },
+  "tasks/main/fin-l3-agg-187/tests/grader.py": {
+   "root_sha256": "79b4960aafa6e078dac3f1bc22f0167d9f811ca1beb106588d5e00482f0728d4",
+   "study_sha256": "791e47ec98f45cba561b749a7a4fe0c234d062a1ce430e6cac55a2d764dc5269"
+  },
+  "tasks/main/fin-l5-valuation-296/tests/grader.py": {
+   "root_sha256": "79b4960aafa6e078dac3f1bc22f0167d9f811ca1beb106588d5e00482f0728d4",
+   "study_sha256": "791e47ec98f45cba561b749a7a4fe0c234d062a1ce430e6cac55a2d764dc5269"
+  },
+  "tasks/main/fin-l4-2src-257/tests/grader.py": {
+   "root_sha256": "79b4960aafa6e078dac3f1bc22f0167d9f811ca1beb106588d5e00482f0728d4",
+   "study_sha256": "791e47ec98f45cba561b749a7a4fe0c234d062a1ce430e6cac55a2d764dc5269"
+  },
+  "tasks/main/fin-l3-tech-multi-205/tests/grader.py": {
+   "root_sha256": "79b4960aafa6e078dac3f1bc22f0167d9f811ca1beb106588d5e00482f0728d4",
+   "study_sha256": "791e47ec98f45cba561b749a7a4fe0c234d062a1ce430e6cac55a2d764dc5269"
+  },
+  "tasks/main/fin-l3-top-202/solution/gold.json": {
+   "root_sha256": "4a641af7d01cd1401fa4eb22208eae21b6ecfe8c52945eb0c3228a7ff32e75f0",
+   "study_sha256": "97d1f370e1c6660264471f2cced3439b38aff79d6a97088a766c5ccdebc4e30c"
+  },
+  "tasks/main/fin-l3-top-202/solution/oracle.py": {
+   "root_sha256": "af2a01ca4b244970540bea5fce295bfe23f788cff4940acdbbf26aca6a348eb2",
+   "study_sha256": "7eb4f92680836df0a6dbdcdd1dad18e9535d28052ea5ef320013a23fce6c5980"
+  },
+  "tasks/main/fin-l3-top-202/tests/grader.py": {
+   "root_sha256": "79b4960aafa6e078dac3f1bc22f0167d9f811ca1beb106588d5e00482f0728d4",
+   "study_sha256": "791e47ec98f45cba561b749a7a4fe0c234d062a1ce430e6cac55a2d764dc5269"
+  },
+  "tasks/main/fin-l5-profile-263/tests/grader.py": {
+   "root_sha256": "79b4960aafa6e078dac3f1bc22f0167d9f811ca1beb106588d5e00482f0728d4",
+   "study_sha256": "791e47ec98f45cba561b749a7a4fe0c234d062a1ce430e6cac55a2d764dc5269"
+  },
+  "tasks/main/fin-l2-growth-144/tests/grader.py": {
+   "root_sha256": "79b4960aafa6e078dac3f1bc22f0167d9f811ca1beb106588d5e00482f0728d4",
+   "study_sha256": "791e47ec98f45cba561b749a7a4fe0c234d062a1ce430e6cac55a2d764dc5269"
+  },
+  "tasks/main/fin-l2-margin-150/tests/grader.py": {
+   "root_sha256": "79b4960aafa6e078dac3f1bc22f0167d9f811ca1beb106588d5e00482f0728d4",
+   "study_sha256": "791e47ec98f45cba561b749a7a4fe0c234d062a1ce430e6cac55a2d764dc5269"
+  },
+  "tasks/main/fin-l5-compare-289/tests/grader.py": {
+   "root_sha256": "79b4960aafa6e078dac3f1bc22f0167d9f811ca1beb106588d5e00482f0728d4",
+   "study_sha256": "791e47ec98f45cba561b749a7a4fe0c234d062a1ce430e6cac55a2d764dc5269"
+  },
+  "tasks/main/fin-l4-narrative-251/tests/grader.py": {
+   "root_sha256": "79b4960aafa6e078dac3f1bc22f0167d9f811ca1beb106588d5e00482f0728d4",
+   "study_sha256": "791e47ec98f45cba561b749a7a4fe0c234d062a1ce430e6cac55a2d764dc5269"
+  },
+  "tasks/main/fin-l3-screen-192/tests/grader.py": {
+   "root_sha256": "79b4960aafa6e078dac3f1bc22f0167d9f811ca1beb106588d5e00482f0728d4",
+   "study_sha256": "791e47ec98f45cba561b749a7a4fe0c234d062a1ce430e6cac55a2d764dc5269"
+  },
+  "tasks/main/fin-l4-future-307/solution/gold.json": {
+   "root_sha256": "e6ad7d1796937bf6ccedcfc3161996f563c9fdac27db709a979ca07fa886f465",
+   "study_sha256": "afa78edfb6a534aa08ccddb2098eb9661f607e32a5ab9b7811cd0d1d11a0c98b"
+  },
+  "tasks/main/fin-l4-future-307/tests/grader.py": {
+   "root_sha256": "79b4960aafa6e078dac3f1bc22f0167d9f811ca1beb106588d5e00482f0728d4",
+   "study_sha256": "791e47ec98f45cba561b749a7a4fe0c234d062a1ce430e6cac55a2d764dc5269"
+  },
+  "tasks/main/fin-l1-bctc-109/tests/grader.py": {
+   "root_sha256": "79b4960aafa6e078dac3f1bc22f0167d9f811ca1beb106588d5e00482f0728d4",
+   "study_sha256": "791e47ec98f45cba561b749a7a4fe0c234d062a1ce430e6cac55a2d764dc5269"
+  },
+  "tasks/main/fin-l4-chain-304/tests/grader.py": {
+   "root_sha256": "79b4960aafa6e078dac3f1bc22f0167d9f811ca1beb106588d5e00482f0728d4",
+   "study_sha256": "791e47ec98f45cba561b749a7a4fe0c234d062a1ce430e6cac55a2d764dc5269"
+  },
+  "tasks/main/fin-l1-bctc-110/tests/grader.py": {
+   "root_sha256": "79b4960aafa6e078dac3f1bc22f0167d9f811ca1beb106588d5e00482f0728d4",
+   "study_sha256": "791e47ec98f45cba561b749a7a4fe0c234d062a1ce430e6cac55a2d764dc5269"
+  },
+  "tasks/main/fin-l3-crypto-multi-215/tests/grader.py": {
+   "root_sha256": "79b4960aafa6e078dac3f1bc22f0167d9f811ca1beb106588d5e00482f0728d4",
+   "study_sha256": "791e47ec98f45cba561b749a7a4fe0c234d062a1ce430e6cac55a2d764dc5269"
+  },
+  "tasks/main/fin-l3-tech-multi-204/tests/grader.py": {
+   "root_sha256": "79b4960aafa6e078dac3f1bc22f0167d9f811ca1beb106588d5e00482f0728d4",
+   "study_sha256": "791e47ec98f45cba561b749a7a4fe0c234d062a1ce430e6cac55a2d764dc5269"
+  },
+  "tasks/main/fin-l5-compare-280/tests/grader.py": {
+   "root_sha256": "79b4960aafa6e078dac3f1bc22f0167d9f811ca1beb106588d5e00482f0728d4",
+   "study_sha256": "791e47ec98f45cba561b749a7a4fe0c234d062a1ce430e6cac55a2d764dc5269"
+  },
+  "tasks/main/fin-l3-crypto-multi-212/tests/grader.py": {
+   "root_sha256": "79b4960aafa6e078dac3f1bc22f0167d9f811ca1beb106588d5e00482f0728d4",
+   "study_sha256": "791e47ec98f45cba561b749a7a4fe0c234d062a1ce430e6cac55a2d764dc5269"
+  },
+  "tasks/main/fin-l5-valuation-298/tests/grader.py": {
+   "root_sha256": "79b4960aafa6e078dac3f1bc22f0167d9f811ca1beb106588d5e00482f0728d4",
+   "study_sha256": "791e47ec98f45cba561b749a7a4fe0c234d062a1ce430e6cac55a2d764dc5269"
+  },
+  "tasks/main/fin-l1-macro-137/tests/grader.py": {
+   "root_sha256": "79b4960aafa6e078dac3f1bc22f0167d9f811ca1beb106588d5e00482f0728d4",
+   "study_sha256": "791e47ec98f45cba561b749a7a4fe0c234d062a1ce430e6cac55a2d764dc5269"
+  },
+  "tasks/main/fin-l5-valuation-293/tests/grader.py": {
+   "root_sha256": "79b4960aafa6e078dac3f1bc22f0167d9f811ca1beb106588d5e00482f0728d4",
+   "study_sha256": "791e47ec98f45cba561b749a7a4fe0c234d062a1ce430e6cac55a2d764dc5269"
+  },
+  "tasks/main/fin-l1-quote-vn-104/tests/grader.py": {
+   "root_sha256": "79b4960aafa6e078dac3f1bc22f0167d9f811ca1beb106588d5e00482f0728d4",
+   "study_sha256": "791e47ec98f45cba561b749a7a4fe0c234d062a1ce430e6cac55a2d764dc5269"
+  },
+  "tasks/main/fin-l5-compare-276/tests/grader.py": {
+   "root_sha256": "79b4960aafa6e078dac3f1bc22f0167d9f811ca1beb106588d5e00482f0728d4",
+   "study_sha256": "791e47ec98f45cba561b749a7a4fe0c234d062a1ce430e6cac55a2d764dc5269"
+  },
+  "tasks/main/fin-l4-future-230/tests/grader.py": {
+   "root_sha256": "79b4960aafa6e078dac3f1bc22f0167d9f811ca1beb106588d5e00482f0728d4",
+   "study_sha256": "791e47ec98f45cba561b749a7a4fe0c234d062a1ce430e6cac55a2d764dc5269"
+  },
+  "tasks/main/fin-l1-quote-crypto-125/tests/grader.py": {
+   "root_sha256": "79b4960aafa6e078dac3f1bc22f0167d9f811ca1beb106588d5e00482f0728d4",
+   "study_sha256": "791e47ec98f45cba561b749a7a4fe0c234d062a1ce430e6cac55a2d764dc5269"
+  },
+  "tasks/main/fin-l4-future-232/tests/grader.py": {
+   "root_sha256": "79b4960aafa6e078dac3f1bc22f0167d9f811ca1beb106588d5e00482f0728d4",
+   "study_sha256": "791e47ec98f45cba561b749a7a4fe0c234d062a1ce430e6cac55a2d764dc5269"
+  },
+  "tasks/main/fin-l4-future-223/tests/grader.py": {
+   "root_sha256": "79b4960aafa6e078dac3f1bc22f0167d9f811ca1beb106588d5e00482f0728d4",
+   "study_sha256": "791e47ec98f45cba561b749a7a4fe0c234d062a1ce430e6cac55a2d764dc5269"
+  },
+  "tasks/main/fin-l4-future-226/tests/grader.py": {
+   "root_sha256": "79b4960aafa6e078dac3f1bc22f0167d9f811ca1beb106588d5e00482f0728d4",
+   "study_sha256": "791e47ec98f45cba561b749a7a4fe0c234d062a1ce430e6cac55a2d764dc5269"
+  },
+  "tasks/main/fin-l3-screen-196/tests/grader.py": {
+   "root_sha256": "79b4960aafa6e078dac3f1bc22f0167d9f811ca1beb106588d5e00482f0728d4",
+   "study_sha256": "791e47ec98f45cba561b749a7a4fe0c234d062a1ce430e6cac55a2d764dc5269"
+  },
+  "tasks/main/fin-l4-2src-260/tests/grader.py": {
+   "root_sha256": "79b4960aafa6e078dac3f1bc22f0167d9f811ca1beb106588d5e00482f0728d4",
+   "study_sha256": "791e47ec98f45cba561b749a7a4fe0c234d062a1ce430e6cac55a2d764dc5269"
+  },
+  "tasks/main/fin-l5-valuation-297/tests/grader.py": {
+   "root_sha256": "79b4960aafa6e078dac3f1bc22f0167d9f811ca1beb106588d5e00482f0728d4",
+   "study_sha256": "791e47ec98f45cba561b749a7a4fe0c234d062a1ce430e6cac55a2d764dc5269"
+  },
+  "tasks/main/fin-l2-tech-164/tests/grader.py": {
+   "root_sha256": "79b4960aafa6e078dac3f1bc22f0167d9f811ca1beb106588d5e00482f0728d4",
+   "study_sha256": "791e47ec98f45cba561b749a7a4fe0c234d062a1ce430e6cac55a2d764dc5269"
+  },
+  "tasks/main/fin-l2-crypto-x-169/tests/grader.py": {
+   "root_sha256": "79b4960aafa6e078dac3f1bc22f0167d9f811ca1beb106588d5e00482f0728d4",
+   "study_sha256": "791e47ec98f45cba561b749a7a4fe0c234d062a1ce430e6cac55a2d764dc5269"
+  },
+  "tasks/main/fin-l5-compare-285/tests/grader.py": {
+   "root_sha256": "79b4960aafa6e078dac3f1bc22f0167d9f811ca1beb106588d5e00482f0728d4",
+   "study_sha256": "791e47ec98f45cba561b749a7a4fe0c234d062a1ce430e6cac55a2d764dc5269"
+  },
+  "tasks/main/fin-l1-quote-vn-106/tests/grader.py": {
+   "root_sha256": "79b4960aafa6e078dac3f1bc22f0167d9f811ca1beb106588d5e00482f0728d4",
+   "study_sha256": "791e47ec98f45cba561b749a7a4fe0c234d062a1ce430e6cac55a2d764dc5269"
+  },
+  "tasks/main/fin-l5-profile-262/tests/grader.py": {
+   "root_sha256": "79b4960aafa6e078dac3f1bc22f0167d9f811ca1beb106588d5e00482f0728d4",
+   "study_sha256": "791e47ec98f45cba561b749a7a4fe0c234d062a1ce430e6cac55a2d764dc5269"
+  },
+  "tasks/main/fin-l1-macro-133/tests/grader.py": {
+   "root_sha256": "79b4960aafa6e078dac3f1bc22f0167d9f811ca1beb106588d5e00482f0728d4",
+   "study_sha256": "791e47ec98f45cba561b749a7a4fe0c234d062a1ce430e6cac55a2d764dc5269"
+  },
+  "tasks/main/fin-l1-quote-crypto-124/tests/grader.py": {
+   "root_sha256": "79b4960aafa6e078dac3f1bc22f0167d9f811ca1beb106588d5e00482f0728d4",
+   "study_sha256": "791e47ec98f45cba561b749a7a4fe0c234d062a1ce430e6cac55a2d764dc5269"
+  },
+  "tasks/main/fin-l1-quote-vn-107/tests/grader.py": {
+   "root_sha256": "79b4960aafa6e078dac3f1bc22f0167d9f811ca1beb106588d5e00482f0728d4",
+   "study_sha256": "791e47ec98f45cba561b749a7a4fe0c234d062a1ce430e6cac55a2d764dc5269"
+  },
+  "tasks/main/fin-l1-bctc-120/tests/grader.py": {
+   "root_sha256": "79b4960aafa6e078dac3f1bc22f0167d9f811ca1beb106588d5e00482f0728d4",
+   "study_sha256": "791e47ec98f45cba561b749a7a4fe0c234d062a1ce430e6cac55a2d764dc5269"
+  },
+  "tasks/main/fin-l2-margin-154/tests/grader.py": {
+   "root_sha256": "79b4960aafa6e078dac3f1bc22f0167d9f811ca1beb106588d5e00482f0728d4",
+   "study_sha256": "791e47ec98f45cba561b749a7a4fe0c234d062a1ce430e6cac55a2d764dc5269"
+  },
+  "tasks/main/fin-l3-agg-188/tests/grader.py": {
+   "root_sha256": "79b4960aafa6e078dac3f1bc22f0167d9f811ca1beb106588d5e00482f0728d4",
+   "study_sha256": "791e47ec98f45cba561b749a7a4fe0c234d062a1ce430e6cac55a2d764dc5269"
+  },
+  "tasks/main/fin-l3-screen-191/tests/grader.py": {
+   "root_sha256": "79b4960aafa6e078dac3f1bc22f0167d9f811ca1beb106588d5e00482f0728d4",
+   "study_sha256": "791e47ec98f45cba561b749a7a4fe0c234d062a1ce430e6cac55a2d764dc5269"
+  },
+  "tasks/main/fin-l5-compare-284/tests/grader.py": {
+   "root_sha256": "79b4960aafa6e078dac3f1bc22f0167d9f811ca1beb106588d5e00482f0728d4",
+   "study_sha256": "791e47ec98f45cba561b749a7a4fe0c234d062a1ce430e6cac55a2d764dc5269"
+  },
+  "tasks/main/fin-l2-macro-calc-176/tests/grader.py": {
+   "root_sha256": "79b4960aafa6e078dac3f1bc22f0167d9f811ca1beb106588d5e00482f0728d4",
+   "study_sha256": "791e47ec98f45cba561b749a7a4fe0c234d062a1ce430e6cac55a2d764dc5269"
+  },
+  "tasks/main/fin-l2-margin-149/tests/grader.py": {
+   "root_sha256": "79b4960aafa6e078dac3f1bc22f0167d9f811ca1beb106588d5e00482f0728d4",
+   "study_sha256": "791e47ec98f45cba561b749a7a4fe0c234d062a1ce430e6cac55a2d764dc5269"
+  },
+  "tasks/main/fin-l5-compare-287/tests/grader.py": {
+   "root_sha256": "79b4960aafa6e078dac3f1bc22f0167d9f811ca1beb106588d5e00482f0728d4",
+   "study_sha256": "791e47ec98f45cba561b749a7a4fe0c234d062a1ce430e6cac55a2d764dc5269"
+  },
+  "tasks/main/fin-l1-quote-crypto-121/tests/grader.py": {
+   "root_sha256": "79b4960aafa6e078dac3f1bc22f0167d9f811ca1beb106588d5e00482f0728d4",
+   "study_sha256": "791e47ec98f45cba561b749a7a4fe0c234d062a1ce430e6cac55a2d764dc5269"
+  },
+  "tasks/main/fin-l1-macro-138/tests/grader.py": {
+   "root_sha256": "79b4960aafa6e078dac3f1bc22f0167d9f811ca1beb106588d5e00482f0728d4",
+   "study_sha256": "791e47ec98f45cba561b749a7a4fe0c234d062a1ce430e6cac55a2d764dc5269"
+  },
+  "tasks/main/fin-l1-bctc-115/tests/grader.py": {
+   "root_sha256": "79b4960aafa6e078dac3f1bc22f0167d9f811ca1beb106588d5e00482f0728d4",
+   "study_sha256": "791e47ec98f45cba561b749a7a4fe0c234d062a1ce430e6cac55a2d764dc5269"
+  },
+  "tasks/main/fin-l3-crypto-multi-211/tests/grader.py": {
+   "root_sha256": "79b4960aafa6e078dac3f1bc22f0167d9f811ca1beb106588d5e00482f0728d4",
+   "study_sha256": "791e47ec98f45cba561b749a7a4fe0c234d062a1ce430e6cac55a2d764dc5269"
+  },
+  "tasks/main/fin-l5-profile-265/tests/grader.py": {
+   "root_sha256": "79b4960aafa6e078dac3f1bc22f0167d9f811ca1beb106588d5e00482f0728d4",
+   "study_sha256": "791e47ec98f45cba561b749a7a4fe0c234d062a1ce430e6cac55a2d764dc5269"
+  },
+  "tasks/main/fin-l2-crypto-x-166/tests/grader.py": {
+   "root_sha256": "79b4960aafa6e078dac3f1bc22f0167d9f811ca1beb106588d5e00482f0728d4",
+   "study_sha256": "791e47ec98f45cba561b749a7a4fe0c234d062a1ce430e6cac55a2d764dc5269"
+  },
+  "tasks/main/fin-l3-agg-183/tests/grader.py": {
+   "root_sha256": "79b4960aafa6e078dac3f1bc22f0167d9f811ca1beb106588d5e00482f0728d4",
+   "study_sha256": "791e47ec98f45cba561b749a7a4fe0c234d062a1ce430e6cac55a2d764dc5269"
+  },
+  "tasks/main/fin-l4-narrative-247/tests/grader.py": {
+   "root_sha256": "79b4960aafa6e078dac3f1bc22f0167d9f811ca1beb106588d5e00482f0728d4",
+   "study_sha256": "791e47ec98f45cba561b749a7a4fe0c234d062a1ce430e6cac55a2d764dc5269"
+  },
+  "tasks/main/fin-l4-future-225/tests/grader.py": {
+   "root_sha256": "79b4960aafa6e078dac3f1bc22f0167d9f811ca1beb106588d5e00482f0728d4",
+   "study_sha256": "791e47ec98f45cba561b749a7a4fe0c234d062a1ce430e6cac55a2d764dc5269"
+  },
+  "tasks/main/fin-l1-quote-vn-103/tests/grader.py": {
+   "root_sha256": "79b4960aafa6e078dac3f1bc22f0167d9f811ca1beb106588d5e00482f0728d4",
+   "study_sha256": "791e47ec98f45cba561b749a7a4fe0c234d062a1ce430e6cac55a2d764dc5269"
+  },
+  "tasks/main/fin-l5-compare-279/tests/grader.py": {
+   "root_sha256": "79b4960aafa6e078dac3f1bc22f0167d9f811ca1beb106588d5e00482f0728d4",
+   "study_sha256": "791e47ec98f45cba561b749a7a4fe0c234d062a1ce430e6cac55a2d764dc5269"
+  },
+  "tasks/main/fin-l2-growth-145/tests/grader.py": {
+   "root_sha256": "79b4960aafa6e078dac3f1bc22f0167d9f811ca1beb106588d5e00482f0728d4",
+   "study_sha256": "791e47ec98f45cba561b749a7a4fe0c234d062a1ce430e6cac55a2d764dc5269"
+  },
+  "tasks/main/fin-l1-quote-gf-129/tests/grader.py": {
+   "root_sha256": "79b4960aafa6e078dac3f1bc22f0167d9f811ca1beb106588d5e00482f0728d4",
+   "study_sha256": "791e47ec98f45cba561b749a7a4fe0c234d062a1ce430e6cac55a2d764dc5269"
+  },
+  "tasks/main/fin-l2-crypto-x-168/tests/grader.py": {
+   "root_sha256": "79b4960aafa6e078dac3f1bc22f0167d9f811ca1beb106588d5e00482f0728d4",
+   "study_sha256": "791e47ec98f45cba561b749a7a4fe0c234d062a1ce430e6cac55a2d764dc5269"
+  },
+  "tasks/main/fin-l2-tech-165/tests/grader.py": {
+   "root_sha256": "79b4960aafa6e078dac3f1bc22f0167d9f811ca1beb106588d5e00482f0728d4",
+   "study_sha256": "791e47ec98f45cba561b749a7a4fe0c234d062a1ce430e6cac55a2d764dc5269"
+  },
+  "tasks/main/fin-l3-macro-agg-220/tests/grader.py": {
+   "root_sha256": "79b4960aafa6e078dac3f1bc22f0167d9f811ca1beb106588d5e00482f0728d4",
+   "study_sha256": "791e47ec98f45cba561b749a7a4fe0c234d062a1ce430e6cac55a2d764dc5269"
+  },
+  "tasks/main/fin-l3-index-216/tests/grader.py": {
+   "root_sha256": "79b4960aafa6e078dac3f1bc22f0167d9f811ca1beb106588d5e00482f0728d4",
+   "study_sha256": "791e47ec98f45cba561b749a7a4fe0c234d062a1ce430e6cac55a2d764dc5269"
+  },
+  "tasks/main/fin-l3-macro-agg-219/tests/grader.py": {
+   "root_sha256": "79b4960aafa6e078dac3f1bc22f0167d9f811ca1beb106588d5e00482f0728d4",
+   "study_sha256": "791e47ec98f45cba561b749a7a4fe0c234d062a1ce430e6cac55a2d764dc5269"
+  },
+  "tasks/main/fin-l4-nonexist-241/tests/grader.py": {
+   "root_sha256": "79b4960aafa6e078dac3f1bc22f0167d9f811ca1beb106588d5e00482f0728d4",
+   "study_sha256": "791e47ec98f45cba561b749a7a4fe0c234d062a1ce430e6cac55a2d764dc5269"
+  },
+  "tasks/main/fin-l2-margin-155/tests/grader.py": {
+   "root_sha256": "79b4960aafa6e078dac3f1bc22f0167d9f811ca1beb106588d5e00482f0728d4",
+   "study_sha256": "791e47ec98f45cba561b749a7a4fe0c234d062a1ce430e6cac55a2d764dc5269"
+  },
+  "tasks/main/fin-l1-macro-140/tests/grader.py": {
+   "root_sha256": "79b4960aafa6e078dac3f1bc22f0167d9f811ca1beb106588d5e00482f0728d4",
+   "study_sha256": "791e47ec98f45cba561b749a7a4fe0c234d062a1ce430e6cac55a2d764dc5269"
+  },
+  "tasks/main/fin-l4-future-229/tests/grader.py": {
+   "root_sha256": "79b4960aafa6e078dac3f1bc22f0167d9f811ca1beb106588d5e00482f0728d4",
+   "study_sha256": "791e47ec98f45cba561b749a7a4fe0c234d062a1ce430e6cac55a2d764dc5269"
+  },
+  "tasks/main/fin-l4-narrative-245/tests/grader.py": {
+   "root_sha256": "79b4960aafa6e078dac3f1bc22f0167d9f811ca1beb106588d5e00482f0728d4",
+   "study_sha256": "791e47ec98f45cba561b749a7a4fe0c234d062a1ce430e6cac55a2d764dc5269"
+  },
+  "tasks/main/fin-l5-compare-286/tests/grader.py": {
+   "root_sha256": "79b4960aafa6e078dac3f1bc22f0167d9f811ca1beb106588d5e00482f0728d4",
+   "study_sha256": "791e47ec98f45cba561b749a7a4fe0c234d062a1ce430e6cac55a2d764dc5269"
+  },
+  "tasks/main/fin-l3-agg-182/tests/grader.py": {
+   "root_sha256": "79b4960aafa6e078dac3f1bc22f0167d9f811ca1beb106588d5e00482f0728d4",
+   "study_sha256": "791e47ec98f45cba561b749a7a4fe0c234d062a1ce430e6cac55a2d764dc5269"
+  },
+  "tasks/main/fin-l3-agg-181/tests/grader.py": {
+   "root_sha256": "79b4960aafa6e078dac3f1bc22f0167d9f811ca1beb106588d5e00482f0728d4",
+   "study_sha256": "791e47ec98f45cba561b749a7a4fe0c234d062a1ce430e6cac55a2d764dc5269"
+  },
+  "tasks/main/fin-l5-valuation-291/tests/grader.py": {
+   "root_sha256": "79b4960aafa6e078dac3f1bc22f0167d9f811ca1beb106588d5e00482f0728d4",
+   "study_sha256": "791e47ec98f45cba561b749a7a4fe0c234d062a1ce430e6cac55a2d764dc5269"
+  },
+  "tasks/main/fin-l4-narrative-250/tests/grader.py": {
+   "root_sha256": "79b4960aafa6e078dac3f1bc22f0167d9f811ca1beb106588d5e00482f0728d4",
+   "study_sha256": "791e47ec98f45cba561b749a7a4fe0c234d062a1ce430e6cac55a2d764dc5269"
+  },
+  "tasks/main/fin-l5-valuation-292/tests/grader.py": {
+   "root_sha256": "79b4960aafa6e078dac3f1bc22f0167d9f811ca1beb106588d5e00482f0728d4",
+   "study_sha256": "791e47ec98f45cba561b749a7a4fe0c234d062a1ce430e6cac55a2d764dc5269"
+  },
+  "tasks/main/fin-l2-crypto-x-167/tests/grader.py": {
+   "root_sha256": "79b4960aafa6e078dac3f1bc22f0167d9f811ca1beb106588d5e00482f0728d4",
+   "study_sha256": "791e47ec98f45cba561b749a7a4fe0c234d062a1ce430e6cac55a2d764dc5269"
+  },
+  "tasks/main/fin-l2-margin-153/tests/grader.py": {
+   "root_sha256": "79b4960aafa6e078dac3f1bc22f0167d9f811ca1beb106588d5e00482f0728d4",
+   "study_sha256": "791e47ec98f45cba561b749a7a4fe0c234d062a1ce430e6cac55a2d764dc5269"
+  },
+  "tasks/main/fin-l2-ratio-159/tests/grader.py": {
+   "root_sha256": "79b4960aafa6e078dac3f1bc22f0167d9f811ca1beb106588d5e00482f0728d4",
+   "study_sha256": "791e47ec98f45cba561b749a7a4fe0c234d062a1ce430e6cac55a2d764dc5269"
+  },
+  "tasks/main/fin-l4-future-231/tests/grader.py": {
+   "root_sha256": "79b4960aafa6e078dac3f1bc22f0167d9f811ca1beb106588d5e00482f0728d4",
+   "study_sha256": "791e47ec98f45cba561b749a7a4fe0c234d062a1ce430e6cac55a2d764dc5269"
+  },
+  "tasks/main/fin-l4-2src-253/tests/grader.py": {
+   "root_sha256": "79b4960aafa6e078dac3f1bc22f0167d9f811ca1beb106588d5e00482f0728d4",
+   "study_sha256": "791e47ec98f45cba561b749a7a4fe0c234d062a1ce430e6cac55a2d764dc5269"
+  },
+  "tasks/main/fin-l4-future-234/tests/grader.py": {
+   "root_sha256": "79b4960aafa6e078dac3f1bc22f0167d9f811ca1beb106588d5e00482f0728d4",
+   "study_sha256": "791e47ec98f45cba561b749a7a4fe0c234d062a1ce430e6cac55a2d764dc5269"
+  },
+  "tasks/main/fin-l3-tech-multi-203/tests/grader.py": {
+   "root_sha256": "79b4960aafa6e078dac3f1bc22f0167d9f811ca1beb106588d5e00482f0728d4",
+   "study_sha256": "791e47ec98f45cba561b749a7a4fe0c234d062a1ce430e6cac55a2d764dc5269"
+  },
+  "tasks/main/fin-l2-gf-compare-172/tests/grader.py": {
+   "root_sha256": "79b4960aafa6e078dac3f1bc22f0167d9f811ca1beb106588d5e00482f0728d4",
+   "study_sha256": "791e47ec98f45cba561b749a7a4fe0c234d062a1ce430e6cac55a2d764dc5269"
+  },
+  "tasks/main/fin-l5-valuation-299/tests/grader.py": {
+   "root_sha256": "79b4960aafa6e078dac3f1bc22f0167d9f811ca1beb106588d5e00482f0728d4",
+   "study_sha256": "791e47ec98f45cba561b749a7a4fe0c234d062a1ce430e6cac55a2d764dc5269"
+  },
+  "tasks/main/fin-l4-nonexist-238/tests/grader.py": {
+   "root_sha256": "79b4960aafa6e078dac3f1bc22f0167d9f811ca1beb106588d5e00482f0728d4",
+   "study_sha256": "791e47ec98f45cba561b749a7a4fe0c234d062a1ce430e6cac55a2d764dc5269"
+  },
+  "tasks/main/fin-l2-ratio-160/tests/grader.py": {
+   "root_sha256": "79b4960aafa6e078dac3f1bc22f0167d9f811ca1beb106588d5e00482f0728d4",
+   "study_sha256": "791e47ec98f45cba561b749a7a4fe0c234d062a1ce430e6cac55a2d764dc5269"
+  },
+  "tasks/main/fin-l4-nonexist-309/solution/gold.json": {
+   "root_sha256": "d77b1b74ecd226956a13a6b175b84752b2384e9cbfcb28bbb3152e68ee28a898",
+   "study_sha256": "19d9adcde5174688fea25b419513d1fa1b11ba2deb646a45a1913968fd6f4da2"
+  },
+  "tasks/main/fin-l4-nonexist-309/environment/payloads.json": {
+   "root_sha256": "0070f0cb42bdd5debb6e31560caaa4784cfa953f1d3d6f41a5fda3878e877d0a",
+   "study_sha256": "9d6af55ef9efde5e6eefb09a275591ff60a51f13377b971222e9dd3b39d4beae"
+  },
+  "tasks/main/fin-l4-nonexist-309/tests/grader.py": {
+   "root_sha256": "79b4960aafa6e078dac3f1bc22f0167d9f811ca1beb106588d5e00482f0728d4",
+   "study_sha256": "791e47ec98f45cba561b749a7a4fe0c234d062a1ce430e6cac55a2d764dc5269"
+  },
+  "tasks/main/fin-l2-macro-calc-180/tests/grader.py": {
+   "root_sha256": "79b4960aafa6e078dac3f1bc22f0167d9f811ca1beb106588d5e00482f0728d4",
+   "study_sha256": "791e47ec98f45cba561b749a7a4fe0c234d062a1ce430e6cac55a2d764dc5269"
+  },
+  "tasks/main/fin-l3-top-200/tests/grader.py": {
+   "root_sha256": "79b4960aafa6e078dac3f1bc22f0167d9f811ca1beb106588d5e00482f0728d4",
+   "study_sha256": "791e47ec98f45cba561b749a7a4fe0c234d062a1ce430e6cac55a2d764dc5269"
+  },
+  "tasks/main/fin-l5-compare-283/tests/grader.py": {
+   "root_sha256": "79b4960aafa6e078dac3f1bc22f0167d9f811ca1beb106588d5e00482f0728d4",
+   "study_sha256": "791e47ec98f45cba561b749a7a4fe0c234d062a1ce430e6cac55a2d764dc5269"
+  },
+  "tasks/main/fin-l2-growth-148/tests/grader.py": {
+   "root_sha256": "79b4960aafa6e078dac3f1bc22f0167d9f811ca1beb106588d5e00482f0728d4",
+   "study_sha256": "791e47ec98f45cba561b749a7a4fe0c234d062a1ce430e6cac55a2d764dc5269"
+  },
+  "tasks/main/fin-l2-ratio-157/tests/grader.py": {
+   "root_sha256": "79b4960aafa6e078dac3f1bc22f0167d9f811ca1beb106588d5e00482f0728d4",
+   "study_sha256": "791e47ec98f45cba561b749a7a4fe0c234d062a1ce430e6cac55a2d764dc5269"
+  },
+  "tasks/main/fin-l5-profile-266/tests/grader.py": {
+   "root_sha256": "79b4960aafa6e078dac3f1bc22f0167d9f811ca1beb106588d5e00482f0728d4",
+   "study_sha256": "791e47ec98f45cba561b749a7a4fe0c234d062a1ce430e6cac55a2d764dc5269"
+  },
+  "tasks/main/fin-l5-compare-278/tests/grader.py": {
+   "root_sha256": "79b4960aafa6e078dac3f1bc22f0167d9f811ca1beb106588d5e00482f0728d4",
+   "study_sha256": "791e47ec98f45cba561b749a7a4fe0c234d062a1ce430e6cac55a2d764dc5269"
+  },
+  "tasks/main/fin-l5-profile-272/tests/grader.py": {
+   "root_sha256": "79b4960aafa6e078dac3f1bc22f0167d9f811ca1beb106588d5e00482f0728d4",
+   "study_sha256": "791e47ec98f45cba561b749a7a4fe0c234d062a1ce430e6cac55a2d764dc5269"
+  },
+  "tasks/main/fin-l5-profile-268/tests/grader.py": {
+   "root_sha256": "79b4960aafa6e078dac3f1bc22f0167d9f811ca1beb106588d5e00482f0728d4",
+   "study_sha256": "791e47ec98f45cba561b749a7a4fe0c234d062a1ce430e6cac55a2d764dc5269"
+  },
+  "tasks/main/fin-l4-2src-302/tests/grader.py": {
+   "root_sha256": "79b4960aafa6e078dac3f1bc22f0167d9f811ca1beb106588d5e00482f0728d4",
+   "study_sha256": "791e47ec98f45cba561b749a7a4fe0c234d062a1ce430e6cac55a2d764dc5269"
+  },
+  "tasks/main/fin-l5-compare-281/tests/grader.py": {
+   "root_sha256": "79b4960aafa6e078dac3f1bc22f0167d9f811ca1beb106588d5e00482f0728d4",
+   "study_sha256": "791e47ec98f45cba561b749a7a4fe0c234d062a1ce430e6cac55a2d764dc5269"
+  },
+  "tasks/main/fin-l3-crypto-multi-210/tests/grader.py": {
+   "root_sha256": "79b4960aafa6e078dac3f1bc22f0167d9f811ca1beb106588d5e00482f0728d4",
+   "study_sha256": "791e47ec98f45cba561b749a7a4fe0c234d062a1ce430e6cac55a2d764dc5269"
+  },
+  "tasks/main/fin-l3-agg-185/tests/grader.py": {
+   "root_sha256": "79b4960aafa6e078dac3f1bc22f0167d9f811ca1beb106588d5e00482f0728d4",
+   "study_sha256": "791e47ec98f45cba561b749a7a4fe0c234d062a1ce430e6cac55a2d764dc5269"
+  },
+  "tasks/main/fin-l2-gf-compare-175/tests/grader.py": {
+   "root_sha256": "79b4960aafa6e078dac3f1bc22f0167d9f811ca1beb106588d5e00482f0728d4",
+   "study_sha256": "791e47ec98f45cba561b749a7a4fe0c234d062a1ce430e6cac55a2d764dc5269"
+  },
+  "tasks/main/fin-l1-bctc-114/tests/grader.py": {
+   "root_sha256": "79b4960aafa6e078dac3f1bc22f0167d9f811ca1beb106588d5e00482f0728d4",
+   "study_sha256": "791e47ec98f45cba561b749a7a4fe0c234d062a1ce430e6cac55a2d764dc5269"
+  },
+  "tasks/main/fin-l3-top-198/tests/grader.py": {
+   "root_sha256": "79b4960aafa6e078dac3f1bc22f0167d9f811ca1beb106588d5e00482f0728d4",
+   "study_sha256": "791e47ec98f45cba561b749a7a4fe0c234d062a1ce430e6cac55a2d764dc5269"
+  },
+  "tasks/main/fin-l4-narrative-244/tests/grader.py": {
+   "root_sha256": "79b4960aafa6e078dac3f1bc22f0167d9f811ca1beb106588d5e00482f0728d4",
+   "study_sha256": "791e47ec98f45cba561b749a7a4fe0c234d062a1ce430e6cac55a2d764dc5269"
+  },
+  "tasks/main/fin-l2-growth-143/tests/grader.py": {
+   "root_sha256": "79b4960aafa6e078dac3f1bc22f0167d9f811ca1beb106588d5e00482f0728d4",
+   "study_sha256": "791e47ec98f45cba561b749a7a4fe0c234d062a1ce430e6cac55a2d764dc5269"
+  },
+  "tasks/main/fin-l3-macro-agg-218/tests/grader.py": {
+   "root_sha256": "79b4960aafa6e078dac3f1bc22f0167d9f811ca1beb106588d5e00482f0728d4",
+   "study_sha256": "791e47ec98f45cba561b749a7a4fe0c234d062a1ce430e6cac55a2d764dc5269"
+  },
+  "tasks/main/fin-l1-macro-139/tests/grader.py": {
+   "root_sha256": "79b4960aafa6e078dac3f1bc22f0167d9f811ca1beb106588d5e00482f0728d4",
+   "study_sha256": "791e47ec98f45cba561b749a7a4fe0c234d062a1ce430e6cac55a2d764dc5269"
+  },
+  "tasks/main/fin-l4-narrative-246/tests/grader.py": {
+   "root_sha256": "79b4960aafa6e078dac3f1bc22f0167d9f811ca1beb106588d5e00482f0728d4",
+   "study_sha256": "791e47ec98f45cba561b749a7a4fe0c234d062a1ce430e6cac55a2d764dc5269"
+  },
+  "tasks/main/fin-l5-compare-290/tests/grader.py": {
+   "root_sha256": "79b4960aafa6e078dac3f1bc22f0167d9f811ca1beb106588d5e00482f0728d4",
+   "study_sha256": "791e47ec98f45cba561b749a7a4fe0c234d062a1ce430e6cac55a2d764dc5269"
+  },
+  "tasks/main/fin-l3-index-217/tests/grader.py": {
+   "root_sha256": "79b4960aafa6e078dac3f1bc22f0167d9f811ca1beb106588d5e00482f0728d4",
+   "study_sha256": "791e47ec98f45cba561b749a7a4fe0c234d062a1ce430e6cac55a2d764dc5269"
+  },
+  "tasks/main/fin-l1-quote-crypto-122/tests/grader.py": {
+   "root_sha256": "79b4960aafa6e078dac3f1bc22f0167d9f811ca1beb106588d5e00482f0728d4",
+   "study_sha256": "791e47ec98f45cba561b749a7a4fe0c234d062a1ce430e6cac55a2d764dc5269"
+  },
+  "tasks/main/fin-l4-nonexist-243/tests/grader.py": {
+   "root_sha256": "79b4960aafa6e078dac3f1bc22f0167d9f811ca1beb106588d5e00482f0728d4",
+   "study_sha256": "791e47ec98f45cba561b749a7a4fe0c234d062a1ce430e6cac55a2d764dc5269"
+  },
+  "tasks/main/fin-l4-chain-305/solution/gold.json": {
+   "root_sha256": "f6841cb3ebc328c5bf66dfdb684678c1719d5c7889888f1a9115a669365566be",
+   "study_sha256": "8c06bd568c9b3524247facb6133c0fac545b731ab20aa5f714c1b35c32bee24f"
+  },
+  "tasks/main/fin-l4-chain-305/tests/grader.py": {
+   "root_sha256": "79b4960aafa6e078dac3f1bc22f0167d9f811ca1beb106588d5e00482f0728d4",
+   "study_sha256": "791e47ec98f45cba561b749a7a4fe0c234d062a1ce430e6cac55a2d764dc5269"
+  },
+  "tasks/main/fin-l2-macro-calc-179/tests/grader.py": {
+   "root_sha256": "79b4960aafa6e078dac3f1bc22f0167d9f811ca1beb106588d5e00482f0728d4",
+   "study_sha256": "791e47ec98f45cba561b749a7a4fe0c234d062a1ce430e6cac55a2d764dc5269"
+  },
+  "tasks/main/fin-l1-bctc-111/tests/grader.py": {
+   "root_sha256": "79b4960aafa6e078dac3f1bc22f0167d9f811ca1beb106588d5e00482f0728d4",
+   "study_sha256": "791e47ec98f45cba561b749a7a4fe0c234d062a1ce430e6cac55a2d764dc5269"
+  },
+  "tasks/main/fin-l4-chain-306/solution/gold.json": {
+   "root_sha256": "99ad73f1cbfa1adc7495f75fd27cfc72857c1a75276262e292fabd74a562aa15",
+   "study_sha256": "ea23199f813ceefff9c11b81e525c67edbe6dcfc3bcba1426d2bcb20412296c7"
+  },
+  "tasks/main/fin-l4-chain-306/tests/grader.py": {
+   "root_sha256": "79b4960aafa6e078dac3f1bc22f0167d9f811ca1beb106588d5e00482f0728d4",
+   "study_sha256": "791e47ec98f45cba561b749a7a4fe0c234d062a1ce430e6cac55a2d764dc5269"
+  },
+  "tasks/main/fin-l2-gf-compare-173/tests/grader.py": {
+   "root_sha256": "79b4960aafa6e078dac3f1bc22f0167d9f811ca1beb106588d5e00482f0728d4",
+   "study_sha256": "791e47ec98f45cba561b749a7a4fe0c234d062a1ce430e6cac55a2d764dc5269"
+  },
+  "tasks/main/fin-l4-nonexist-236/tests/grader.py": {
+   "root_sha256": "79b4960aafa6e078dac3f1bc22f0167d9f811ca1beb106588d5e00482f0728d4",
+   "study_sha256": "791e47ec98f45cba561b749a7a4fe0c234d062a1ce430e6cac55a2d764dc5269"
+  },
+  "tasks/main/fin-l1-bctc-113/tests/grader.py": {
+   "root_sha256": "79b4960aafa6e078dac3f1bc22f0167d9f811ca1beb106588d5e00482f0728d4",
+   "study_sha256": "791e47ec98f45cba561b749a7a4fe0c234d062a1ce430e6cac55a2d764dc5269"
+  },
+  "tasks/main/fin-l4-narrative-249/tests/grader.py": {
+   "root_sha256": "79b4960aafa6e078dac3f1bc22f0167d9f811ca1beb106588d5e00482f0728d4",
+   "study_sha256": "791e47ec98f45cba561b749a7a4fe0c234d062a1ce430e6cac55a2d764dc5269"
+  },
+  "tasks/main/fin-l4-future-222/tests/grader.py": {
+   "root_sha256": "79b4960aafa6e078dac3f1bc22f0167d9f811ca1beb106588d5e00482f0728d4",
+   "study_sha256": "791e47ec98f45cba561b749a7a4fe0c234d062a1ce430e6cac55a2d764dc5269"
+  },
+  "tasks/main/fin-l1-quote-gf-130/tests/grader.py": {
+   "root_sha256": "79b4960aafa6e078dac3f1bc22f0167d9f811ca1beb106588d5e00482f0728d4",
+   "study_sha256": "791e47ec98f45cba561b749a7a4fe0c234d062a1ce430e6cac55a2d764dc5269"
+  },
+  "tasks/main/fin-l4-nonexist-240/tests/grader.py": {
+   "root_sha256": "79b4960aafa6e078dac3f1bc22f0167d9f811ca1beb106588d5e00482f0728d4",
+   "study_sha256": "791e47ec98f45cba561b749a7a4fe0c234d062a1ce430e6cac55a2d764dc5269"
+  },
+  "tasks/main/fin-l5-profile-273/tests/grader.py": {
+   "root_sha256": "79b4960aafa6e078dac3f1bc22f0167d9f811ca1beb106588d5e00482f0728d4",
+   "study_sha256": "791e47ec98f45cba561b749a7a4fe0c234d062a1ce430e6cac55a2d764dc5269"
+  },
+  "tasks/main/fin-l1-quote-vn-108/tests/grader.py": {
+   "root_sha256": "79b4960aafa6e078dac3f1bc22f0167d9f811ca1beb106588d5e00482f0728d4",
+   "study_sha256": "791e47ec98f45cba561b749a7a4fe0c234d062a1ce430e6cac55a2d764dc5269"
+  },
+  "tasks/main/fin-l4-future-233/tests/grader.py": {
+   "root_sha256": "79b4960aafa6e078dac3f1bc22f0167d9f811ca1beb106588d5e00482f0728d4",
+   "study_sha256": "791e47ec98f45cba561b749a7a4fe0c234d062a1ce430e6cac55a2d764dc5269"
+  },
+  "tasks/main/fin-l3-top-197/tests/grader.py": {
+   "root_sha256": "79b4960aafa6e078dac3f1bc22f0167d9f811ca1beb106588d5e00482f0728d4",
+   "study_sha256": "791e47ec98f45cba561b749a7a4fe0c234d062a1ce430e6cac55a2d764dc5269"
+  },
+  "tasks/main/fin-l1-bctc-112/tests/grader.py": {
+   "root_sha256": "79b4960aafa6e078dac3f1bc22f0167d9f811ca1beb106588d5e00482f0728d4",
+   "study_sha256": "791e47ec98f45cba561b749a7a4fe0c234d062a1ce430e6cac55a2d764dc5269"
+  },
+  "tasks/main/fin-l2-gf-compare-174/tests/grader.py": {
+   "root_sha256": "79b4960aafa6e078dac3f1bc22f0167d9f811ca1beb106588d5e00482f0728d4",
+   "study_sha256": "791e47ec98f45cba561b749a7a4fe0c234d062a1ce430e6cac55a2d764dc5269"
+  },
+  "tasks/main/fin-l1-quote-gf-126/tests/grader.py": {
+   "root_sha256": "79b4960aafa6e078dac3f1bc22f0167d9f811ca1beb106588d5e00482f0728d4",
+   "study_sha256": "791e47ec98f45cba561b749a7a4fe0c234d062a1ce430e6cac55a2d764dc5269"
+  },
+  "tasks/main/fin-l4-future-228/tests/grader.py": {
+   "root_sha256": "79b4960aafa6e078dac3f1bc22f0167d9f811ca1beb106588d5e00482f0728d4",
+   "study_sha256": "791e47ec98f45cba561b749a7a4fe0c234d062a1ce430e6cac55a2d764dc5269"
+  },
+  "tasks/main/fin-l3-screen-195/tests/grader.py": {
+   "root_sha256": "79b4960aafa6e078dac3f1bc22f0167d9f811ca1beb106588d5e00482f0728d4",
+   "study_sha256": "791e47ec98f45cba561b749a7a4fe0c234d062a1ce430e6cac55a2d764dc5269"
+  },
+  "tasks/main/fin-l5-compare-275/tests/grader.py": {
+   "root_sha256": "79b4960aafa6e078dac3f1bc22f0167d9f811ca1beb106588d5e00482f0728d4",
+   "study_sha256": "791e47ec98f45cba561b749a7a4fe0c234d062a1ce430e6cac55a2d764dc5269"
+  },
+  "tasks/main/fin-l5-compare-288/tests/grader.py": {
+   "root_sha256": "79b4960aafa6e078dac3f1bc22f0167d9f811ca1beb106588d5e00482f0728d4",
+   "study_sha256": "791e47ec98f45cba561b749a7a4fe0c234d062a1ce430e6cac55a2d764dc5269"
+  },
+  "tasks/main/fin-l4-nonexist-235/tests/grader.py": {
+   "root_sha256": "79b4960aafa6e078dac3f1bc22f0167d9f811ca1beb106588d5e00482f0728d4",
+   "study_sha256": "791e47ec98f45cba561b749a7a4fe0c234d062a1ce430e6cac55a2d764dc5269"
+  },
+  "tasks/main/fin-l1-bctc-117/tests/grader.py": {
+   "root_sha256": "79b4960aafa6e078dac3f1bc22f0167d9f811ca1beb106588d5e00482f0728d4",
+   "study_sha256": "791e47ec98f45cba561b749a7a4fe0c234d062a1ce430e6cac55a2d764dc5269"
+  },
+  "tasks/main/fin-l2-crypto-x-170/tests/grader.py": {
+   "root_sha256": "79b4960aafa6e078dac3f1bc22f0167d9f811ca1beb106588d5e00482f0728d4",
+   "study_sha256": "791e47ec98f45cba561b749a7a4fe0c234d062a1ce430e6cac55a2d764dc5269"
+  },
+  "tasks/main/fin-l2-margin-152/tests/grader.py": {
+   "root_sha256": "79b4960aafa6e078dac3f1bc22f0167d9f811ca1beb106588d5e00482f0728d4",
+   "study_sha256": "791e47ec98f45cba561b749a7a4fe0c234d062a1ce430e6cac55a2d764dc5269"
+  },
+  "tasks/main/fin-l4-future-308/solution/gold.json": {
+   "root_sha256": "9bcf3e43fa99f54a50ca23710dded91666ee731b0238125ea6b641318fd86765",
+   "study_sha256": "cd843db37645cf861b66b32517a775c702977da5f9686f83d960dad6dfffb241"
+  },
+  "tasks/main/fin-l4-future-308/tests/grader.py": {
+   "root_sha256": "79b4960aafa6e078dac3f1bc22f0167d9f811ca1beb106588d5e00482f0728d4",
+   "study_sha256": "791e47ec98f45cba561b749a7a4fe0c234d062a1ce430e6cac55a2d764dc5269"
+  },
+  "tasks/main/fin-l2-growth-147/tests/grader.py": {
+   "root_sha256": "79b4960aafa6e078dac3f1bc22f0167d9f811ca1beb106588d5e00482f0728d4",
+   "study_sha256": "791e47ec98f45cba561b749a7a4fe0c234d062a1ce430e6cac55a2d764dc5269"
+  },
+  "tasks/main/fin-l4-future-227/tests/grader.py": {
+   "root_sha256": "79b4960aafa6e078dac3f1bc22f0167d9f811ca1beb106588d5e00482f0728d4",
+   "study_sha256": "791e47ec98f45cba561b749a7a4fe0c234d062a1ce430e6cac55a2d764dc5269"
+  },
+  "tasks/main/fin-l3-screen-193/tests/grader.py": {
+   "root_sha256": "79b4960aafa6e078dac3f1bc22f0167d9f811ca1beb106588d5e00482f0728d4",
+   "study_sha256": "791e47ec98f45cba561b749a7a4fe0c234d062a1ce430e6cac55a2d764dc5269"
+  },
+  "tasks/main/fin-l2-ratio-158/tests/grader.py": {
+   "root_sha256": "79b4960aafa6e078dac3f1bc22f0167d9f811ca1beb106588d5e00482f0728d4",
+   "study_sha256": "791e47ec98f45cba561b749a7a4fe0c234d062a1ce430e6cac55a2d764dc5269"
+  },
+  "tasks/main/fin-l4-2src-254/tests/grader.py": {
+   "root_sha256": "79b4960aafa6e078dac3f1bc22f0167d9f811ca1beb106588d5e00482f0728d4",
+   "study_sha256": "791e47ec98f45cba561b749a7a4fe0c234d062a1ce430e6cac55a2d764dc5269"
+  },
+  "tasks/main/fin-l2-macro-calc-178/tests/grader.py": {
+   "root_sha256": "79b4960aafa6e078dac3f1bc22f0167d9f811ca1beb106588d5e00482f0728d4",
+   "study_sha256": "791e47ec98f45cba561b749a7a4fe0c234d062a1ce430e6cac55a2d764dc5269"
+  },
+  "tasks/main/fin-l2-growth-141/tests/grader.py": {
+   "root_sha256": "79b4960aafa6e078dac3f1bc22f0167d9f811ca1beb106588d5e00482f0728d4",
+   "study_sha256": "791e47ec98f45cba561b749a7a4fe0c234d062a1ce430e6cac55a2d764dc5269"
+  },
+  "tasks/main/fin-l5-profile-267/tests/grader.py": {
+   "root_sha256": "79b4960aafa6e078dac3f1bc22f0167d9f811ca1beb106588d5e00482f0728d4",
+   "study_sha256": "791e47ec98f45cba561b749a7a4fe0c234d062a1ce430e6cac55a2d764dc5269"
+  },
+  "tasks/main/fin-l5-profile-274/tests/grader.py": {
+   "root_sha256": "79b4960aafa6e078dac3f1bc22f0167d9f811ca1beb106588d5e00482f0728d4",
+   "study_sha256": "791e47ec98f45cba561b749a7a4fe0c234d062a1ce430e6cac55a2d764dc5269"
+  },
+  "tasks/main/fin-l4-future-221/tests/grader.py": {
+   "root_sha256": "79b4960aafa6e078dac3f1bc22f0167d9f811ca1beb106588d5e00482f0728d4",
+   "study_sha256": "791e47ec98f45cba561b749a7a4fe0c234d062a1ce430e6cac55a2d764dc5269"
+  },
+  "tasks/main/fin-l5-valuation-294/tests/grader.py": {
+   "root_sha256": "79b4960aafa6e078dac3f1bc22f0167d9f811ca1beb106588d5e00482f0728d4",
+   "study_sha256": "791e47ec98f45cba561b749a7a4fe0c234d062a1ce430e6cac55a2d764dc5269"
+  },
+  "tasks/main/fin-l5-valuation-300/tests/grader.py": {
+   "root_sha256": "79b4960aafa6e078dac3f1bc22f0167d9f811ca1beb106588d5e00482f0728d4",
+   "study_sha256": "791e47ec98f45cba561b749a7a4fe0c234d062a1ce430e6cac55a2d764dc5269"
+  },
+  "tasks/main/fin-l1-quote-vn-101/tests/grader.py": {
+   "root_sha256": "79b4960aafa6e078dac3f1bc22f0167d9f811ca1beb106588d5e00482f0728d4",
+   "study_sha256": "791e47ec98f45cba561b749a7a4fe0c234d062a1ce430e6cac55a2d764dc5269"
+  },
+  "tasks/main/fin-l2-growth-142/tests/grader.py": {
+   "root_sha256": "79b4960aafa6e078dac3f1bc22f0167d9f811ca1beb106588d5e00482f0728d4",
+   "study_sha256": "791e47ec98f45cba561b749a7a4fe0c234d062a1ce430e6cac55a2d764dc5269"
+  },
+  "tasks/main/fin-l1-quote-crypto-123/tests/grader.py": {
+   "root_sha256": "79b4960aafa6e078dac3f1bc22f0167d9f811ca1beb106588d5e00482f0728d4",
+   "study_sha256": "791e47ec98f45cba561b749a7a4fe0c234d062a1ce430e6cac55a2d764dc5269"
+  },
+  "tasks/main/fin-l3-screen-189/tests/grader.py": {
+   "root_sha256": "79b4960aafa6e078dac3f1bc22f0167d9f811ca1beb106588d5e00482f0728d4",
+   "study_sha256": "791e47ec98f45cba561b749a7a4fe0c234d062a1ce430e6cac55a2d764dc5269"
+  },
+  "tasks/main/fin-l3-crypto-multi-214/solution/gold.json": {
+   "root_sha256": "f1b6de295a6a480409c555c7624a0e8f32a15c816b03412ef5f0ad522e702151",
+   "study_sha256": "dd3052799e41fd7fc745ffccd804943785410c348efdfbcea1d24091f2949e4d"
+  },
+  "tasks/main/fin-l3-crypto-multi-214/solution/oracle.py": {
+   "root_sha256": "2cbc60c9dcc4e94ba875d8e1abcd65804017f578b21a10b57e50464ca6027c83",
+   "study_sha256": "c53a1dfee087a34b91eee441a57b66febb86798ecaf1e6f7c93ca0f6e797bfff"
+  },
+  "tasks/main/fin-l3-crypto-multi-214/tests/grader.py": {
+   "root_sha256": "79b4960aafa6e078dac3f1bc22f0167d9f811ca1beb106588d5e00482f0728d4",
+   "study_sha256": "791e47ec98f45cba561b749a7a4fe0c234d062a1ce430e6cac55a2d764dc5269"
+  },
+  "tasks/main/fin-l1-quote-gf-127/tests/grader.py": {
+   "root_sha256": "79b4960aafa6e078dac3f1bc22f0167d9f811ca1beb106588d5e00482f0728d4",
+   "study_sha256": "791e47ec98f45cba561b749a7a4fe0c234d062a1ce430e6cac55a2d764dc5269"
+  },
+  "tasks/main/fin-l3-agg-186/tests/grader.py": {
+   "root_sha256": "79b4960aafa6e078dac3f1bc22f0167d9f811ca1beb106588d5e00482f0728d4",
+   "study_sha256": "791e47ec98f45cba561b749a7a4fe0c234d062a1ce430e6cac55a2d764dc5269"
+  },
+  "tasks/main/fin-l2-margin-151/tests/grader.py": {
+   "root_sha256": "79b4960aafa6e078dac3f1bc22f0167d9f811ca1beb106588d5e00482f0728d4",
+   "study_sha256": "791e47ec98f45cba561b749a7a4fe0c234d062a1ce430e6cac55a2d764dc5269"
+  },
+  "tasks/main/fin-l4-2src-255/tests/grader.py": {
+   "root_sha256": "79b4960aafa6e078dac3f1bc22f0167d9f811ca1beb106588d5e00482f0728d4",
+   "study_sha256": "791e47ec98f45cba561b749a7a4fe0c234d062a1ce430e6cac55a2d764dc5269"
+  },
+  "tasks/main/fin-l5-profile-269/tests/grader.py": {
+   "root_sha256": "79b4960aafa6e078dac3f1bc22f0167d9f811ca1beb106588d5e00482f0728d4",
+   "study_sha256": "791e47ec98f45cba561b749a7a4fe0c234d062a1ce430e6cac55a2d764dc5269"
+  },
+  "tasks/main/fin-l3-agg-184/tests/grader.py": {
+   "root_sha256": "79b4960aafa6e078dac3f1bc22f0167d9f811ca1beb106588d5e00482f0728d4",
+   "study_sha256": "791e47ec98f45cba561b749a7a4fe0c234d062a1ce430e6cac55a2d764dc5269"
+  },
+  "tasks/main/fin-l1-macro-136/tests/grader.py": {
+   "root_sha256": "79b4960aafa6e078dac3f1bc22f0167d9f811ca1beb106588d5e00482f0728d4",
+   "study_sha256": "791e47ec98f45cba561b749a7a4fe0c234d062a1ce430e6cac55a2d764dc5269"
+  },
+  "tasks/main/fin-l4-nonexist-310/solution/gold.json": {
+   "root_sha256": "6eff2ae3df9e52c008c1215221f8df79f1af5f3594170ab7850c350940610abd",
+   "study_sha256": "9e1887c39a2baf38c783b6ea27dc9e2362e4b0f3f1e7c8fbbf57eef43a845f04"
+  },
+  "tasks/main/fin-l4-nonexist-310/environment/payloads.json": {
+   "root_sha256": "e54b47aa73795a35e2957fcb510a6e61ecb8f315eb2cc5022e06b83c08d4c9d5",
+   "study_sha256": "424e25e0f7cdd24ffb1d526fe5954a25631616480d4f6b4174cff55af2017d55"
+  },
+  "tasks/main/fin-l4-nonexist-310/tests/grader.py": {
+   "root_sha256": "79b4960aafa6e078dac3f1bc22f0167d9f811ca1beb106588d5e00482f0728d4",
+   "study_sha256": "791e47ec98f45cba561b749a7a4fe0c234d062a1ce430e6cac55a2d764dc5269"
+  },
+  "tasks/main/fin-l5-profile-270/tests/grader.py": {
+   "root_sha256": "79b4960aafa6e078dac3f1bc22f0167d9f811ca1beb106588d5e00482f0728d4",
+   "study_sha256": "791e47ec98f45cba561b749a7a4fe0c234d062a1ce430e6cac55a2d764dc5269"
+  },
+  "tasks/main/fin-l4-2src-256/tests/grader.py": {
+   "root_sha256": "79b4960aafa6e078dac3f1bc22f0167d9f811ca1beb106588d5e00482f0728d4",
+   "study_sha256": "791e47ec98f45cba561b749a7a4fe0c234d062a1ce430e6cac55a2d764dc5269"
+  },
+  "tasks/main/fin-l3-crypto-multi-209/tests/grader.py": {
+   "root_sha256": "79b4960aafa6e078dac3f1bc22f0167d9f811ca1beb106588d5e00482f0728d4",
+   "study_sha256": "791e47ec98f45cba561b749a7a4fe0c234d062a1ce430e6cac55a2d764dc5269"
+  },
+  "tasks/main/fin-l5-valuation-295/tests/grader.py": {
+   "root_sha256": "79b4960aafa6e078dac3f1bc22f0167d9f811ca1beb106588d5e00482f0728d4",
+   "study_sha256": "791e47ec98f45cba561b749a7a4fe0c234d062a1ce430e6cac55a2d764dc5269"
+  },
+  "tasks/main/fin-l1-bctc-118/tests/grader.py": {
+   "root_sha256": "79b4960aafa6e078dac3f1bc22f0167d9f811ca1beb106588d5e00482f0728d4",
+   "study_sha256": "791e47ec98f45cba561b749a7a4fe0c234d062a1ce430e6cac55a2d764dc5269"
+  },
+  "tasks/main/fin-l1-quote-gf-128/tests/grader.py": {
+   "root_sha256": "79b4960aafa6e078dac3f1bc22f0167d9f811ca1beb106588d5e00482f0728d4",
+   "study_sha256": "791e47ec98f45cba561b749a7a4fe0c234d062a1ce430e6cac55a2d764dc5269"
+  },
+  "tasks/main/fin-l3-tech-multi-206/tests/grader.py": {
+   "root_sha256": "79b4960aafa6e078dac3f1bc22f0167d9f811ca1beb106588d5e00482f0728d4",
+   "study_sha256": "791e47ec98f45cba561b749a7a4fe0c234d062a1ce430e6cac55a2d764dc5269"
+  },
+  "tasks/main/fin-l4-nonexist-242/tests/grader.py": {
+   "root_sha256": "79b4960aafa6e078dac3f1bc22f0167d9f811ca1beb106588d5e00482f0728d4",
+   "study_sha256": "791e47ec98f45cba561b749a7a4fe0c234d062a1ce430e6cac55a2d764dc5269"
+  },
+  "tasks/main/fin-l5-compare-282/tests/grader.py": {
+   "root_sha256": "79b4960aafa6e078dac3f1bc22f0167d9f811ca1beb106588d5e00482f0728d4",
+   "study_sha256": "791e47ec98f45cba561b749a7a4fe0c234d062a1ce430e6cac55a2d764dc5269"
+  },
+  "tasks/main/fin-l4-narrative-248/tests/grader.py": {
+   "root_sha256": "79b4960aafa6e078dac3f1bc22f0167d9f811ca1beb106588d5e00482f0728d4",
+   "study_sha256": "791e47ec98f45cba561b749a7a4fe0c234d062a1ce430e6cac55a2d764dc5269"
+  },
+  "tasks/main/fin-l4-2src-259/tests/grader.py": {
+   "root_sha256": "79b4960aafa6e078dac3f1bc22f0167d9f811ca1beb106588d5e00482f0728d4",
+   "study_sha256": "791e47ec98f45cba561b749a7a4fe0c234d062a1ce430e6cac55a2d764dc5269"
+  },
+  "tasks/main/fin-l4-narrative-252/tests/grader.py": {
+   "root_sha256": "79b4960aafa6e078dac3f1bc22f0167d9f811ca1beb106588d5e00482f0728d4",
+   "study_sha256": "791e47ec98f45cba561b749a7a4fe0c234d062a1ce430e6cac55a2d764dc5269"
+  },
+  "tasks/main/fin-l4-future-224/tests/grader.py": {
+   "root_sha256": "79b4960aafa6e078dac3f1bc22f0167d9f811ca1beb106588d5e00482f0728d4",
+   "study_sha256": "791e47ec98f45cba561b749a7a4fe0c234d062a1ce430e6cac55a2d764dc5269"
+  },
+  "tasks/main/fin-l3-screen-194/tests/grader.py": {
+   "root_sha256": "79b4960aafa6e078dac3f1bc22f0167d9f811ca1beb106588d5e00482f0728d4",
+   "study_sha256": "791e47ec98f45cba561b749a7a4fe0c234d062a1ce430e6cac55a2d764dc5269"
+  },
+  "tasks/main/fin-l3-top-199/tests/grader.py": {
+   "root_sha256": "79b4960aafa6e078dac3f1bc22f0167d9f811ca1beb106588d5e00482f0728d4",
+   "study_sha256": "791e47ec98f45cba561b749a7a4fe0c234d062a1ce430e6cac55a2d764dc5269"
+  },
+  "tasks/main/fin-l3-tech-multi-207/tests/grader.py": {
+   "root_sha256": "79b4960aafa6e078dac3f1bc22f0167d9f811ca1beb106588d5e00482f0728d4",
+   "study_sha256": "791e47ec98f45cba561b749a7a4fe0c234d062a1ce430e6cac55a2d764dc5269"
+  },
+  "tasks/main/fin-l2-tech-162/tests/grader.py": {
+   "root_sha256": "79b4960aafa6e078dac3f1bc22f0167d9f811ca1beb106588d5e00482f0728d4",
+   "study_sha256": "791e47ec98f45cba561b749a7a4fe0c234d062a1ce430e6cac55a2d764dc5269"
+  },
+  "tasks/main/fin-l5-profile-271/tests/grader.py": {
+   "root_sha256": "79b4960aafa6e078dac3f1bc22f0167d9f811ca1beb106588d5e00482f0728d4",
+   "study_sha256": "791e47ec98f45cba561b749a7a4fe0c234d062a1ce430e6cac55a2d764dc5269"
+  },
+  "tasks/main/fin-l5-compare-277/tests/grader.py": {
+   "root_sha256": "79b4960aafa6e078dac3f1bc22f0167d9f811ca1beb106588d5e00482f0728d4",
+   "study_sha256": "791e47ec98f45cba561b749a7a4fe0c234d062a1ce430e6cac55a2d764dc5269"
+  },
+  "tasks/main/fin-l3-crypto-multi-213/tests/grader.py": {
+   "root_sha256": "79b4960aafa6e078dac3f1bc22f0167d9f811ca1beb106588d5e00482f0728d4",
+   "study_sha256": "791e47ec98f45cba561b749a7a4fe0c234d062a1ce430e6cac55a2d764dc5269"
+  },
+  "tasks/main/fin-l4-nonexist-237/tests/grader.py": {
+   "root_sha256": "79b4960aafa6e078dac3f1bc22f0167d9f811ca1beb106588d5e00482f0728d4",
+   "study_sha256": "791e47ec98f45cba561b749a7a4fe0c234d062a1ce430e6cac55a2d764dc5269"
+  },
+  "tasks/main/fin-l3-top-201/tests/grader.py": {
+   "root_sha256": "79b4960aafa6e078dac3f1bc22f0167d9f811ca1beb106588d5e00482f0728d4",
+   "study_sha256": "791e47ec98f45cba561b749a7a4fe0c234d062a1ce430e6cac55a2d764dc5269"
+  },
+  "tasks/main/fin-l3-breadth-301/tests/grader.py": {
+   "root_sha256": "79b4960aafa6e078dac3f1bc22f0167d9f811ca1beb106588d5e00482f0728d4",
+   "study_sha256": "791e47ec98f45cba561b749a7a4fe0c234d062a1ce430e6cac55a2d764dc5269"
+  },
+  "tasks/main/fin-l4-2src-258/tests/grader.py": {
+   "root_sha256": "79b4960aafa6e078dac3f1bc22f0167d9f811ca1beb106588d5e00482f0728d4",
+   "study_sha256": "791e47ec98f45cba561b749a7a4fe0c234d062a1ce430e6cac55a2d764dc5269"
+  },
+  "tasks/main/fin-l3-crypto-multi-208/tests/grader.py": {
+   "root_sha256": "79b4960aafa6e078dac3f1bc22f0167d9f811ca1beb106588d5e00482f0728d4",
+   "study_sha256": "791e47ec98f45cba561b749a7a4fe0c234d062a1ce430e6cac55a2d764dc5269"
+  },
+  "tasks/pilot/fin-l4-narrative-01/tests/grader.py": {
+   "root_sha256": "79b4960aafa6e078dac3f1bc22f0167d9f811ca1beb106588d5e00482f0728d4",
+   "study_sha256": "791e47ec98f45cba561b749a7a4fe0c234d062a1ce430e6cac55a2d764dc5269"
+  },
+  "tasks/pilot/fin-l1-macro-01/tests/grader.py": {
+   "root_sha256": "79b4960aafa6e078dac3f1bc22f0167d9f811ca1beb106588d5e00482f0728d4",
+   "study_sha256": "791e47ec98f45cba561b749a7a4fe0c234d062a1ce430e6cac55a2d764dc5269"
+  },
+  "tasks/pilot/fin-l3-top-01/tests/grader.py": {
+   "root_sha256": "79b4960aafa6e078dac3f1bc22f0167d9f811ca1beb106588d5e00482f0728d4",
+   "study_sha256": "791e47ec98f45cba561b749a7a4fe0c234d062a1ce430e6cac55a2d764dc5269"
+  },
+  "tasks/pilot/fin-l3-crypto-01/tests/grader.py": {
+   "root_sha256": "79b4960aafa6e078dac3f1bc22f0167d9f811ca1beb106588d5e00482f0728d4",
+   "study_sha256": "791e47ec98f45cba561b749a7a4fe0c234d062a1ce430e6cac55a2d764dc5269"
+  },
+  "tasks/pilot/fin-l1-quote-01/tests/grader.py": {
+   "root_sha256": "79b4960aafa6e078dac3f1bc22f0167d9f811ca1beb106588d5e00482f0728d4",
+   "study_sha256": "791e47ec98f45cba561b749a7a4fe0c234d062a1ce430e6cac55a2d764dc5269"
+  },
+  "tasks/pilot/fin-l5-valuation-01/tests/grader.py": {
+   "root_sha256": "79b4960aafa6e078dac3f1bc22f0167d9f811ca1beb106588d5e00482f0728d4",
+   "study_sha256": "791e47ec98f45cba561b749a7a4fe0c234d062a1ce430e6cac55a2d764dc5269"
+  },
+  "tasks/pilot/fin-l2-gold-01/tests/grader.py": {
+   "root_sha256": "79b4960aafa6e078dac3f1bc22f0167d9f811ca1beb106588d5e00482f0728d4",
+   "study_sha256": "791e47ec98f45cba561b749a7a4fe0c234d062a1ce430e6cac55a2d764dc5269"
+  },
+  "tasks/pilot/fin-l3-agg-01/tests/grader.py": {
+   "root_sha256": "79b4960aafa6e078dac3f1bc22f0167d9f811ca1beb106588d5e00482f0728d4",
+   "study_sha256": "791e47ec98f45cba561b749a7a4fe0c234d062a1ce430e6cac55a2d764dc5269"
+  },
+  "tasks/pilot/fin-l3-screen-01/tests/grader.py": {
+   "root_sha256": "79b4960aafa6e078dac3f1bc22f0167d9f811ca1beb106588d5e00482f0728d4",
+   "study_sha256": "791e47ec98f45cba561b749a7a4fe0c234d062a1ce430e6cac55a2d764dc5269"
+  },
+  "tasks/pilot/fin-l2-tech-01/tests/grader.py": {
+   "root_sha256": "79b4960aafa6e078dac3f1bc22f0167d9f811ca1beb106588d5e00482f0728d4",
+   "study_sha256": "791e47ec98f45cba561b749a7a4fe0c234d062a1ce430e6cac55a2d764dc5269"
+  },
+  "tasks/pilot/fin-l1-quote-02/tests/grader.py": {
+   "root_sha256": "79b4960aafa6e078dac3f1bc22f0167d9f811ca1beb106588d5e00482f0728d4",
+   "study_sha256": "791e47ec98f45cba561b749a7a4fe0c234d062a1ce430e6cac55a2d764dc5269"
+  },
+  "tasks/pilot/fin-l4-2nguon-01/tests/grader.py": {
+   "root_sha256": "79b4960aafa6e078dac3f1bc22f0167d9f811ca1beb106588d5e00482f0728d4",
+   "study_sha256": "791e47ec98f45cba561b749a7a4fe0c234d062a1ce430e6cac55a2d764dc5269"
+  },
+  "tasks/pilot/fin-l1-gold-01/tests/grader.py": {
+   "root_sha256": "79b4960aafa6e078dac3f1bc22f0167d9f811ca1beb106588d5e00482f0728d4",
+   "study_sha256": "791e47ec98f45cba561b749a7a4fe0c234d062a1ce430e6cac55a2d764dc5269"
+  },
+  "tasks/pilot/fin-l5-profile-01/tests/grader.py": {
+   "root_sha256": "79b4960aafa6e078dac3f1bc22f0167d9f811ca1beb106588d5e00482f0728d4",
+   "study_sha256": "791e47ec98f45cba561b749a7a4fe0c234d062a1ce430e6cac55a2d764dc5269"
+  },
+  "tasks/pilot/fin-l2-ratio-01/tests/grader.py": {
+   "root_sha256": "79b4960aafa6e078dac3f1bc22f0167d9f811ca1beb106588d5e00482f0728d4",
+   "study_sha256": "791e47ec98f45cba561b749a7a4fe0c234d062a1ce430e6cac55a2d764dc5269"
+  },
+  "tasks/pilot/fin-l5-compare-01/tests/grader.py": {
+   "root_sha256": "79b4960aafa6e078dac3f1bc22f0167d9f811ca1beb106588d5e00482f0728d4",
+   "study_sha256": "791e47ec98f45cba561b749a7a4fe0c234d062a1ce430e6cac55a2d764dc5269"
+  },
+  "tasks/pilot/fin-l3-tech-multi-01/tests/grader.py": {
+   "root_sha256": "79b4960aafa6e078dac3f1bc22f0167d9f811ca1beb106588d5e00482f0728d4",
+   "study_sha256": "791e47ec98f45cba561b749a7a4fe0c234d062a1ce430e6cac55a2d764dc5269"
+  },
+  "tasks/pilot/fin-l3-index-01/tests/grader.py": {
+   "root_sha256": "79b4960aafa6e078dac3f1bc22f0167d9f811ca1beb106588d5e00482f0728d4",
+   "study_sha256": "791e47ec98f45cba561b749a7a4fe0c234d062a1ce430e6cac55a2d764dc5269"
+  },
+  "tasks/pilot/fin-l2-crypto-01/tests/grader.py": {
+   "root_sha256": "79b4960aafa6e078dac3f1bc22f0167d9f811ca1beb106588d5e00482f0728d4",
+   "study_sha256": "791e47ec98f45cba561b749a7a4fe0c234d062a1ce430e6cac55a2d764dc5269"
+  },
+  "tasks/pilot/fin-l4-future-01/tests/grader.py": {
+   "root_sha256": "79b4960aafa6e078dac3f1bc22f0167d9f811ca1beb106588d5e00482f0728d4",
+   "study_sha256": "791e47ec98f45cba561b749a7a4fe0c234d062a1ce430e6cac55a2d764dc5269"
+  },
+  "tasks/pilot/fin-l1-bctc-01/tests/grader.py": {
+   "root_sha256": "79b4960aafa6e078dac3f1bc22f0167d9f811ca1beb106588d5e00482f0728d4",
+   "study_sha256": "791e47ec98f45cba561b749a7a4fe0c234d062a1ce430e6cac55a2d764dc5269"
+  },
+  "tasks/pilot/fin-l4-nonexist-01/tests/grader.py": {
+   "root_sha256": "79b4960aafa6e078dac3f1bc22f0167d9f811ca1beb106588d5e00482f0728d4",
+   "study_sha256": "791e47ec98f45cba561b749a7a4fe0c234d062a1ce430e6cac55a2d764dc5269"
+  },
+  "tasks/pilot/fin-l2-margin-01/tests/grader.py": {
+   "root_sha256": "79b4960aafa6e078dac3f1bc22f0167d9f811ca1beb106588d5e00482f0728d4",
+   "study_sha256": "791e47ec98f45cba561b749a7a4fe0c234d062a1ce430e6cac55a2d764dc5269"
+  },
+  "tasks/pilot/fin-l2-growth-01/tests/grader.py": {
+   "root_sha256": "79b4960aafa6e078dac3f1bc22f0167d9f811ca1beb106588d5e00482f0728d4",
+   "study_sha256": "791e47ec98f45cba561b749a7a4fe0c234d062a1ce430e6cac55a2d764dc5269"
+  },
+  "tasks/smoke/smoke-trap-01/tests/grader.py": {
+   "root_sha256": "79b4960aafa6e078dac3f1bc22f0167d9f811ca1beb106588d5e00482f0728d4",
+   "study_sha256": "791e47ec98f45cba561b749a7a4fe0c234d062a1ce430e6cac55a2d764dc5269"
+  },
+  "tasks/smoke/smoke-agg-01/tests/grader.py": {
+   "root_sha256": "79b4960aafa6e078dac3f1bc22f0167d9f811ca1beb106588d5e00482f0728d4",
+   "study_sha256": "791e47ec98f45cba561b749a7a4fe0c234d062a1ce430e6cac55a2d764dc5269"
+  },
+  "tasks/smoke/smoke-quote-01/tests/grader.py": {
+   "root_sha256": "79b4960aafa6e078dac3f1bc22f0167d9f811ca1beb106588d5e00482f0728d4",
+   "study_sha256": "791e47ec98f45cba561b749a7a4fe0c234d062a1ce430e6cac55a2d764dc5269"
+  },
+  "tasks/main/fin-l1-quote-crypto-125/instruction.md": {
+   "root_sha256": "5d6eb4583253d4555b6fab5cb3e72199e7a1dccfd8eb4f0291b41764860bece2",
+   "study_sha256": "3139d5b82dcad6cf0c7408aa09c926ddba8a12bc5898bba69e134002b755fde1"
+  },
+  "tasks/main/fin-l2-gf-compare-174/instruction.md": {
+   "root_sha256": "13e8230209ecd45c9d4b6376773274a9e78b8d864e0c3b0da4154b72dc5f8762",
+   "study_sha256": "7e4291b4053c89f77eec2c4fad7a26d5e3792ab66d920dfb27eaf442e19f9e5d"
+  },
+  "tasks/main/fin-l2-gf-compare-174/solution/gold.json": {
+   "root_sha256": "c72994f814df9c07dba4144494ac3d9a80741dad5adb47f873331b50e2a2ec50",
+   "study_sha256": "f1643923f1a3e4a2fb14a1b1577cd1b07a74109c07af732d54dd541989f878f0"
+  },
+  "tasks/main/fin-l2-gf-compare-175/instruction.md": {
+   "root_sha256": "3905deb3d8cd55717762363017422e8ee60afa8e10be247f643e48343481ac81",
+   "study_sha256": "027232924856905ad3c0c446f020c268f607c18efa43d340739d5722c2ce39b4"
+  },
+  "tasks/main/fin-l2-gf-compare-175/solution/gold.json": {
+   "root_sha256": "26eaac38b0f2806047a6de5a1a438e03dfe06732bd3892c5285860b2b7d13b40",
+   "study_sha256": "c6eb6da0ee37c91e0c846bebb8f9c4c10226bc2a4667f6e1aa69e1cb6c39b71d"
+  },
+  "tasks/main/fin-l2-tech-162/instruction.md": {
+   "root_sha256": "831a10ff55dc50acd8591d3b22ce06644ed2c14c1e3a117e2a0dfcf3f52a8a70",
+   "study_sha256": "7ef1768d4535eb48ce96f245093b8e5fdc821c6ac1c463e65749584a35e8a1db"
+  },
+  "tasks/main/fin-l2-tech-163/instruction.md": {
+   "root_sha256": "7fee8f2f8452efeb2c7b3d4d7627b1dc868f3885308ab1549cdd83f5f3291d3e",
+   "study_sha256": "cc6403040737b190a2ea1a3ea38007f3dad2e054fb809fdbbef7c1b2548be43a"
+  },
+  "tasks/main/fin-l2-tech-164/instruction.md": {
+   "root_sha256": "e38faa1d43832255ab04475001c47dfb631686fcb901ba7293b9271a2f08094e",
+   "study_sha256": "8e87ed9c3af21188feffb79343e97eddce585470bcd9809d86821c14390894dd"
+  },
+  "tasks/main/fin-l2-tech-165/instruction.md": {
+   "root_sha256": "9fd5d76764caf9e17df384824fcc3ce58242ed3e570a844b90a7351c03f36db7",
+   "study_sha256": "5650a5182d06c135b9ae89cd878285e14f0bb8524705ca5e89cfe5dd032b0615"
+  },
+  "tasks/main/fin-l3-crypto-multi-208/solution/gold.json": {
+   "root_sha256": "f58e1b4d477eacb2bb1480024e8741fe4cf4a1f8d7d9ef21d18ba06844118a88",
+   "study_sha256": "0223a4fb296b07dd0129e077392549bc33679cf962c4ea8816d10d525e501f78"
+  },
+  "tasks/main/fin-l3-crypto-multi-209/solution/gold.json": {
+   "root_sha256": "1186e72f9cdad4999fea6ee02384b31e99dccffe669a7a1cf6e5c1a348cc741a",
+   "study_sha256": "d502819c0f5db74edee0a97a65cbae2f7fd11904b380100346ad2367183fc49b"
+  },
+  "tasks/main/fin-l3-crypto-multi-210/solution/gold.json": {
+   "root_sha256": "b2641f188fc42f5ad49a699e5dce37ff7f637829c3b44c0e5d33930a8d0aaf06",
+   "study_sha256": "8cd5a8bdc627d2a1ea9a4a0580988e7d181d40d19f8007e6af3e6f801842ff1b"
+  },
+  "tasks/main/fin-l3-crypto-multi-211/solution/gold.json": {
+   "root_sha256": "a135a6c884fa398b090c26012b49c9decb5a206f08098a2fe77d5c06e74b39d8",
+   "study_sha256": "632b31ff0ff30cf90b2e09bcb82a686435f68d54ef9f80aed17b676dc37f59d2"
+  },
+  "tasks/main/fin-l3-crypto-multi-212/solution/gold.json": {
+   "root_sha256": "32fbdc34d790afb8f3cf890ce2f948550a8ac2296a97d814d6f40496b47ea134",
+   "study_sha256": "f34279bd194ada79f1e23fbbd7d908493020f2bf7cf8b5f8d2e366fc0a075bf8"
+  },
+  "tasks/main/fin-l3-crypto-multi-213/solution/gold.json": {
+   "root_sha256": "49214bd2026a0e548b3d07aa2e865a0bd314c62131b09c8c9eb0defb962aff84",
+   "study_sha256": "f3307164ab8a39a2b5c209929edc08d6c3d8b0dfc6c7f95958c843b24d2839d0"
+  },
+  "tasks/main/fin-l3-crypto-multi-215/solution/gold.json": {
+   "root_sha256": "28615686fdbe1f61e80335782935ea9e64a5f1925cd299a8f87fb8482aed666b",
+   "study_sha256": "14f7f3c4c3d50877b67da3d6b8f39be8c20b53bbfbad4428fb2fe2c4e46ca59c"
+  },
+  "tasks/main/fin-l3-tech-multi-203/instruction.md": {
+   "root_sha256": "ff00a06ebcca95b21612bbd6eb511d8fc1195d9a5e6e113157a9e16d82c40de4",
+   "study_sha256": "c7e5542860f6c07345c4ef56c0e52c282e0ba1d28b675ac56e68c5ffebc41bd4"
+  },
+  "tasks/main/fin-l3-tech-multi-204/instruction.md": {
+   "root_sha256": "6c68c8bdaeecfcb3ac9842fd26e2f4c6c00861da8b03ec680cb6fc41a3b492a1",
+   "study_sha256": "82c1559b9a8f2e373472aaae24668628467d3951e095b931b54392cd05864156"
+  },
+  "tasks/main/fin-l3-tech-multi-204/solution/gold.json": {
+   "root_sha256": "5189365f6994dfd8c0110dbfb5f9df4d4b86e5c5f00a09138b5bfdfc9fb144df",
+   "study_sha256": "e1b3d17e58e383aadc00a181d4ebc2e28ae39ae9088170c4d56c850b1c9b90c8"
+  },
+  "tasks/main/fin-l3-tech-multi-205/instruction.md": {
+   "root_sha256": "30a9008788f0447aa681ec0cd798244b6802710a109a68d73eb134d07d257a30",
+   "study_sha256": "91198d8759966d5bebd6e2a85c2c07bf200dd0db96a76b1a322c9a508eb1b93a"
+  },
+  "tasks/main/fin-l3-tech-multi-206/instruction.md": {
+   "root_sha256": "1a78b37eb86709a5db8b690a3e1f3bde01c2005e69da097e0b91e76c79446c0e",
+   "study_sha256": "a1dce07c50b6150eb28d7f2af074b34c0a6342dff145c390997df053decc56d2"
+  },
+  "tasks/main/fin-l3-tech-multi-206/solution/gold.json": {
+   "root_sha256": "47d4f889d6c5cdf1e5a6d4ca54dd9cf002d6a52b165630e76970f405ab163ab8",
+   "study_sha256": "32bd334c6f788b94d187e57458e5504a0dc4408b139b73cdea7f4a4064e4f096"
+  },
+  "tasks/main/fin-l3-tech-multi-207/instruction.md": {
+   "root_sha256": "df76bbca8beb8d129ce47c445ecf7336cf8e828549c759a791b7b8af99f1d687",
+   "study_sha256": "3cddc7863b9e1e9703dc185e98d74d70f221999eb7dd17f2b8e83c89d35069f5"
+  },
+  "tasks/main/fin-l3-tech-multi-207/solution/gold.json": {
+   "root_sha256": "7aecaac520c94f2b504b0040750d579b2d7d9af5400964977226ac1b8bcbbf51",
+   "study_sha256": "99404a51a91a014f3a60b8b795e12864200793dc7c8b80f02b56a4eda9d78210"
+  },
+  "tasks/main/fin-l3-top-197/instruction.md": {
+   "root_sha256": "fb92a9e51c4a5eb2aae05faa87836085f234ef18a40b1cad559d72bdf6c2491e",
+   "study_sha256": "2689d34b5a1f97319833ec96a35409a36e021202fa5e28ede6577a41c67a9938"
+  },
+  "tasks/main/fin-l3-top-198/instruction.md": {
+   "root_sha256": "ea180c9f4345a07e985549605a8f34910a15ef0a185097b99eacff06dbdf0dd6",
+   "study_sha256": "14e7832838dc083a62bbdbc45fdfca25803c331b864ed43579fdd86a4e347ee6"
+  },
+  "tasks/main/fin-l3-top-199/instruction.md": {
+   "root_sha256": "96a5e350017545028c0d92b11cbd170cc6ad95437569fd203d2d5ffb0e931f8b",
+   "study_sha256": "c782df4d1520241bff4906c50c0e4d1ad2a88b981d42ba831ca1d9c602cc4fd9"
+  },
+  "tasks/main/fin-l3-top-200/instruction.md": {
+   "root_sha256": "e9d4a92d39421a6d53883273875091980069ba62d72bbff731d1aba4890c0f94",
+   "study_sha256": "90b5e988b147358e815c14ac85edeb6c0a33f8cb7d8679af81acf19a2f7cb30a"
+  },
+  "tasks/main/fin-l3-top-201/instruction.md": {
+   "root_sha256": "e7b9f0dbda9053e6d0fffc2a18a900320c683485f2c5c037678955e43aea11d4",
+   "study_sha256": "5a45e65fec2d26775b604e6b842443e64cc4121a0847a83828666ecfdffcec37"
+  },
+  "tasks/main/fin-l3-top-202/instruction.md": {
+   "root_sha256": "e7b9f0dbda9053e6d0fffc2a18a900320c683485f2c5c037678955e43aea11d4",
+   "study_sha256": "f7f6952c795804300e295687fa807f63aa1283619e2a6ccdd5d8985ca249fd55"
+  },
+  "tasks/main/fin-l4-2src-257/instruction.md": {
+   "root_sha256": "b8571ec85adc2c0abb692ad26f75ffe715199ba7b48aa6ddeff79f269711fcdf",
+   "study_sha256": "f6d192d17c604cad9c23b14730d57b6c9c215798d397d7a710e9732891defabf"
+  },
+  "tasks/main/fin-l4-2src-257/solution/gold.json": {
+   "root_sha256": "a82207a76955725248cb8ce2c00bc879a6d0ce4783f7f70def53a080438c851d",
+   "study_sha256": "0260f46ab9f7db53d1f3028e057157f88d827410cf964321c5d8915e51dc415f"
+  },
+  "tasks/main/fin-l4-2src-258/instruction.md": {
+   "root_sha256": "458460b6f44f9caa739cb0df02a4816747aa8ea3965acbc48745ce46e9ce54f1",
+   "study_sha256": "5259469f1f10e0e6a5538a018ba5355c25da83d36f22ef5235f990f3612fbde9"
+  },
+  "tasks/main/fin-l4-2src-258/solution/gold.json": {
+   "root_sha256": "518df91e90288170d46353ce7d8b9875ffcb8df7e56caf953699af677da7d037",
+   "study_sha256": "1a2a3869140f6fe1cde6516597f8ffcd5741293ecc6a3e563e86dd526ac63532"
+  },
+  "tasks/main/fin-l4-2src-259/instruction.md": {
+   "root_sha256": "31e55b30f510f29bbdad764888470d4d0376bab86d3a2c99c08e5b89b0239e8f",
+   "study_sha256": "0545b86d2ea3e1f16cbd43d883d20e21b7a60b2d18c45c9a79af5e229addbde0"
+  },
+  "tasks/main/fin-l4-2src-260/instruction.md": {
+   "root_sha256": "2623a9de0b79ed3556708b94f56e282435f2f1f51779ed5c459e83b21f610208",
+   "study_sha256": "e0763c6306cefce76c87b79d4995525143105ba2f67635f1fcaf5f42ed5b90b8"
+  },
+  "tasks/main/fin-l4-chain-303/solution/gold.json": {
+   "root_sha256": "4c301e23f9514fc3cfe35118269dc8577f4e4315ee6baf95f75b1228b240bd2d",
+   "study_sha256": "40384493c613584a336fe4403bce8a97b9efcc359f63ae5a9dc79196c53cdbd4"
+  },
+  "tasks/main/fin-l4-chain-304/solution/gold.json": {
+   "root_sha256": "17ce1a8279bc8521e00df4eaa1f708b3f000c7614f2e4f4275062f26a0605e66",
+   "study_sha256": "80ccbcb250fa313827d4bb76aa633fc45a146aa239f38cbd7820137922b1a15f"
+  },
+  "tasks/main/fin-l5-compare-277/instruction.md": {
+   "root_sha256": "67995174dc2b935c6f960b9248e861b278dfa2e51c0f5d7c3d5dd7276f23b3ec",
+   "study_sha256": "259f8dcdd185aa84589dc19e1f95585a5d14228eb0ffe6cc4a3fd02b90c2148c"
+  },
+  "tasks/main/fin-l5-compare-283/instruction.md": {
+   "root_sha256": "ba55d392f28ac5b16e97bd48e6bc0ab4e950129d1825f67924505723e2547967",
+   "study_sha256": "c4b08380fd7e6669f677adc06791b65454c16843fa14cc1fa62d3746b46e2977"
+  },
+  "tasks/main/fin-l5-compare-283/solution/gold.json": {
+   "root_sha256": "db7103c5098277e0c148a312ca7e0805fb467e0759224283e47d50ae04b23779",
+   "study_sha256": "21ccd3f726d2534ca064b326e8dae095cbe75f3c866fde96733c33b59b21f5b4"
+  },
+  "tasks/main/fin-l5-compare-284/instruction.md": {
+   "root_sha256": "0876f0f38de12fcbfa83d68adf261e88bc6bcddf840ac28b7b1742bcff3f36e8",
+   "study_sha256": "f15cbf697f0b07f7b09a72318644861501f7a0b8673ce0525edc6f80d1f7e22d"
+  },
+  "tasks/main/fin-l5-compare-284/solution/gold.json": {
+   "root_sha256": "1bcfe517071e0c8e8951691b8652a5e47c822843008b7e0422b5b63bf9c22d86",
+   "study_sha256": "4d0206efe3cb2df5a0dfab39c011d38861e23eb3fcb6ad86238b0c129106c664"
+  },
+  "tasks/main/fin-l5-compare-285/instruction.md": {
+   "root_sha256": "f8c83cd7e2df2ff0da5e24896c88223389c07db81670686ae426d8d46cb3f725",
+   "study_sha256": "81b8fe16c5d9b0e2ba4938e16b92033605917a17643be77a63dea35ebdfc3870"
+  },
+  "tasks/main/fin-l5-compare-285/solution/gold.json": {
+   "root_sha256": "98ef2bcff0942130aeae4c365b886da685f31970d29a4c0ad7614a11fc97f2c9",
+   "study_sha256": "b0af640333895ffbf08e5aa84b0c38618e69334ed69818e04c4c8a17a8744fa3"
+  },
+  "tasks/main/fin-l5-compare-286/instruction.md": {
+   "root_sha256": "35a8ad9404cc38e6ee660c54b68d1d3e65d6d432e0e40d6b8acc838688d883a1",
+   "study_sha256": "17da3b245bdd8a20481c6ac4d86275232f49414d75a49b389380e525fcc5195d"
+  },
+  "tasks/main/fin-l5-compare-286/solution/gold.json": {
+   "root_sha256": "c6aa4d44287e022135cfa6470e998677d5734e48ef126b58082e1a04c6cfddb2",
+   "study_sha256": "f08b7e97f24da01d6c3bde5eb35e5f5a5b5c41c44b673b980b60fd7797d1008a"
+  },
+  "tasks/main/fin-l5-compare-287/instruction.md": {
+   "root_sha256": "68c0c028ab2c38d2f63367baa5591ae733a0c6454906f52e3d48ccea0f6febc9",
+   "study_sha256": "ccdda293deaa539429b4a6db5acef3984d48fdd48cba1155dd39908d91b9c3cf"
+  },
+  "tasks/main/fin-l5-compare-287/solution/gold.json": {
+   "root_sha256": "8f3ca27659c4715834ad8e7c854fb1328070b39776833fac09d8e0198006f27e",
+   "study_sha256": "1ead27bfba1764011ab0101f6b5953bae33f0ba301b19083f0ec0cdc5f91980a"
+  },
+  "tasks/main/fin-l5-compare-288/instruction.md": {
+   "root_sha256": "1c99eca90629e6089ca1661fbe9e0a81d32cd47a2691a19d57ddc16e688bbb97",
+   "study_sha256": "84284efaf3b76781e2471f08845613bc3ddb2b4903aa07b5e4551f9eca81254f"
+  },
+  "tasks/main/fin-l5-compare-288/solution/gold.json": {
+   "root_sha256": "41ddaada7ef531d615c6147fc3d6ee26529bdacfb0fb0ccf93ce29f1b851b5ff",
+   "study_sha256": "803a4e831e82544c4a35cf760b568a585731965d4c0fbff538cab68c2c1748a7"
+  },
+  "tasks/main/fin-l5-compare-288/solution/oracle.py": {
+   "root_sha256": "ff0434735bae99d2422d32eea21b91e2aa3729749aeb48e96ccc47c64e209ded",
+   "study_sha256": "ca6e8338d30c28a4047beb0e5ec1b601dec2e3bfb6af707c9450669a42a7e52e"
+  },
+  "tasks/main/fin-l5-compare-289/instruction.md": {
+   "root_sha256": "6860b258fcfa065d5f519a52b78babac63c7e612b7f71751ae710e25a0922d03",
+   "study_sha256": "e49b95a843b45cad6f4a536934cf3b6c52f1fbb1908ee1c68d93f1aac887ef7a"
+  },
+  "tasks/main/fin-l5-compare-289/solution/gold.json": {
+   "root_sha256": "0e1ed44de0f5a1f32d5a736685233c63caf40a8fa05e4627270be8026caf5d7f",
+   "study_sha256": "2380ce6f260f23021fa27688485edfe6876402735eb080ad22dd8e053cc8904f"
+  },
+  "tasks/main/fin-l5-compare-289/solution/oracle.py": {
+   "root_sha256": "ff0434735bae99d2422d32eea21b91e2aa3729749aeb48e96ccc47c64e209ded",
+   "study_sha256": "07d46288cc098389db0a7191fa5a7ec4d1a15cdc786f9072f0beebc3a09ab758"
+  },
+  "tasks/main/fin-l5-compare-290/instruction.md": {
+   "root_sha256": "bfa6b19634b4433e497ec89947dea5272bb95b2727e605df2312b625a3ed1fe0",
+   "study_sha256": "b18fda6ef4acca5f14bf38585d4fa34c810586eb9bda1ded982d4b4ae88961b0"
+  },
+  "tasks/main/fin-l5-compare-290/solution/gold.json": {
+   "root_sha256": "74494744de55ba873800ab6d8d9506aa9056372f4b7a4c367ee32663069f90a3",
+   "study_sha256": "7cf84f2232f18724bbd415e84f5e171a566e41df24ce97de54f13b566d058781"
+  },
+  "tasks/main/fin-l5-compare-290/solution/oracle.py": {
+   "root_sha256": "ff0434735bae99d2422d32eea21b91e2aa3729749aeb48e96ccc47c64e209ded",
+   "study_sha256": "25bed3dddcf8fcc6bc61d20bb2ab58748965b8b324e8e6d20a51a42f4cca4f94"
+  },
+  "tasks/main/fin-l5-profile-261/instruction.md": {
+   "root_sha256": "b38e301eab597b5ddfdd8fad16e71c831c640be653831b26b9949eddf4d92756",
+   "study_sha256": "9dbca5f1377d26df071dcc4fe3f4297f8b66ffc199c4cd0b215bbbae82035efd"
+  },
+  "tasks/main/fin-mem-336/instruction.md": {
+   "root_sha256": "5cd2f7f7a513c752d292f4253739428369aed9ddb8cc1fd02bd2fbd4ff5d6cd7",
+   "study_sha256": "df2982580d223be92c60e162443c593b12cc37b46bed0f3f76b747672599b6f2"
+  },
+  "tasks/main/fin-mem-340/instruction.md": {
+   "root_sha256": "c1d7b73282c5ef4dab4b6bf78bcfec1fe97fb675970029f45505b7c9b7253485",
+   "study_sha256": "697586b6d86cb8931888a633c9c3b89b259e85d4fd0e435e24b70e82a8f66ed5"
+  },
+  "tasks/pilot/fin-l2-tech-01/instruction.md": {
+   "root_sha256": "ad0acee1dcca7804fa88ce00fd55e0cd11cd85e0a0ceadb9ad46067899d02249",
+   "study_sha256": "f1bca1c108beafe0fc9ba1fd5c1a97c1d91da1ead93ebece637f7fd38b034aeb"
+  },
+  "tasks/pilot/fin-l3-crypto-01/solution/gold.json": {
+   "root_sha256": "ee7fd06797294204ad7858b8cce7cd4c022a4f2a9392fa1e2d8a8d6b00d77dd3",
+   "study_sha256": "95b7008eba9496ff9fd25c4b5c1aa78a1236b3c105ecb63858370be0b836953a"
+  },
+  "tasks/pilot/fin-l3-tech-multi-01/instruction.md": {
+   "root_sha256": "1f13e8fd125773636767afbface77854ae49ea18ffb6766d9066b71c36d9f1ac",
+   "study_sha256": "73a4f4911dd7e6aa6bc03b8b86c20eeea694cd1653b393068817ad093b36882a"
+  },
+  "tasks/pilot/fin-l3-tech-multi-01/solution/gold.json": {
+   "root_sha256": "8eb525a67e824283f39c4ff87335ae211f08be333356e5e92ca72f5605dbec09",
+   "study_sha256": "da312ab0c810ef1dabd204be66bb26aef470e6c402810bec90a4b152cb858b7e"
+  },
+  "tasks/pilot/fin-l3-top-01/instruction.md": {
+   "root_sha256": "bbd3d85093b31b345ba4f64b9ef3a788907a6c7c373c0c79378f96e493fe7764",
+   "study_sha256": "7e091f231d28da77eb6fa68ae2f5e0c98213ffe45491dae03ed29831504d4911"
+  },
+  "tasks/main/fin-l2-gf-compare-172/instruction.md": {
+   "root_sha256": "741fb076e732edeb3436c4615df30ca352b0a1972a1a15c0d4fbafb211534e6d",
+   "study_sha256": "159bc7938b86137b3d7fbec8c85e1771a519a385d76d37b422639a9bde400095"
+  },
+  "tasks/main/fin-l2-gf-compare-173/instruction.md": {
+   "root_sha256": "4e211890dbe599b68d4efc45b18821e4d979a4c964f53fdf9be6313b7de91361",
+   "study_sha256": "b409725cc280f408e3783b195fea6045146d6d6056488d280ed4a630bf553e53"
+  },
+  "tasks/pilot/fin-l2-gold-01/instruction.md": {
+   "root_sha256": "90ed0a1f62a29bf97ff76e14119cbb1f0cb119b699d044e1217f007887c90a64",
+   "study_sha256": "3b69e7a744f26b9ebe19bf858e1bc84cf79a16e697041cb494d373bc1cba5360"
+  },
+  "tasks/pilot/fin-l1-bctc-01/instruction.md": {
+   "root_sha256": "e298ce34ef3e213eb1da604fb55dc8135961e5f1225227bb04bbd7b0160f3f28",
+   "study_sha256": "48bc99df5c4c48a9a0ac673670ba1e854d7101572028f308f4767a715e23c68c"
+  },
+  "tasks/pilot/fin-l1-gold-01/instruction.md": {
+   "root_sha256": "02edb7f0d93b043f70fcf3009b37a080c5b6067436dc9c61ddf0f86064ef60e7",
+   "study_sha256": "dd50ee18abbeef136d50be0e039081c83b16ce70fbc736c7d07c66363138d7ed"
+  },
+  "tasks/pilot/fin-l1-macro-01/instruction.md": {
+   "root_sha256": "02204279aab22e7a97e26b39405538e2a00e1dc283a9e145d09f475a6c385fbf",
+   "study_sha256": "5b53da9a74facbfd9fd76ae68406794591df9d409f433b9ea569d5ea597a0ad3"
+  },
+  "tasks/pilot/fin-l1-quote-01/instruction.md": {
+   "root_sha256": "6d5d76bbc4debed68fb62f7e99e3271cc2e69ef7f778edf8daad377cff653c44",
+   "study_sha256": "d5501d0392613c8cb8ae778050f8538953465139109bef97b404e336d83db9c2"
+  },
+  "tasks/pilot/fin-l1-quote-02/instruction.md": {
+   "root_sha256": "db9dca46b986eb88f9a9f37bef01ecf36c8921c97f601fc23aee7153130a4047",
+   "study_sha256": "fa0bc80b388eb16cceb07a264a1eadc72230a1a4d12cdc30da4381d7daad1b0a"
+  },
+  "tasks/pilot/fin-l2-crypto-01/instruction.md": {
+   "root_sha256": "9e91b41f210bff5a4c72b89dccc3004e0c3f7e74b4b8001d7002acb098059615",
+   "study_sha256": "bd41740103d829f44f88292478cdd1c31caea492675675897cf06b9e6c920cdf"
+  },
+  "tasks/pilot/fin-l2-growth-01/instruction.md": {
+   "root_sha256": "31659a6fa4a38a49515f89655c5f22674dcb22b3c998022b514ccbea0955a7ed",
+   "study_sha256": "c84e91645c0b6f19c3369b6c28eeb5f8b45571d7dd2d2eb9783fc28c0df1206b"
+  },
+  "tasks/pilot/fin-l2-margin-01/instruction.md": {
+   "root_sha256": "6f249b4a330085cbb98e9d03118373c6995106145d5153569bd69224f6eb0098",
+   "study_sha256": "416e38631bf467a07f44087fd57f1e781f1bd99311f7515b3bf7728a5ab101a4"
+  },
+  "tasks/pilot/fin-l2-ratio-01/instruction.md": {
+   "root_sha256": "fbf5d8ab4813a5f25dfdce2980869783844475710e484fce04ba77f7e48447ff",
+   "study_sha256": "e8b21b66b80da4ef3b30f4bafe8ee863294063ac11278deccbebf963a293022c"
+  },
+  "tasks/pilot/fin-l3-agg-01/instruction.md": {
+   "root_sha256": "f05eda533332bde34a102cd2bf315296b669afad7f7b04b3975dc4ade1ebc480",
+   "study_sha256": "fd37676cccd7468a86657cebd79a9846471cfacc6210def9ca5e495b02edfad9"
+  },
+  "tasks/pilot/fin-l3-crypto-01/instruction.md": {
+   "root_sha256": "99e9194c505f77100ed22c7540f5f5040edfc1d55cdb7c2865dc7ab1279fe374",
+   "study_sha256": "06581ab3aaabe10c43418ac1f0f11cbdd3a2f3cfa5f87b251778141976de662e"
+  },
+  "tasks/pilot/fin-l3-index-01/instruction.md": {
+   "root_sha256": "63f2c3f1ef0af7bb37c4e08da55f293ef10016bf450361d850c5469bdf2ef600",
+   "study_sha256": "674254e8016dd5511b2a6547acadf454268648aa631e0f7f80ff1537cc91367f"
+  },
+  "tasks/pilot/fin-l3-screen-01/instruction.md": {
+   "root_sha256": "3e352e619aced644f969b0d0e58c45003750e441c221f153ba5edf57cbf6e34d",
+   "study_sha256": "4c6aaf9932ba2475823f36e253dad36ffc563183660b42eb657632bc334435e6"
+  },
+  "tasks/pilot/fin-l4-2nguon-01/instruction.md": {
+   "root_sha256": "fa7cd88cb6d7e3fcbd0bbfc4084ce51b6541cfe2f79209d2b95c5e09d528dafe",
+   "study_sha256": "12f0e884b3ec9a1ccb607db4643fa6490bc7315cde05de527f620c0e025df7ff"
+  },
+  "tasks/pilot/fin-l4-future-01/instruction.md": {
+   "root_sha256": "a9cfb040a08538eb59e8f2ff880bacfa385b26702b5445a82142960bd876c041",
+   "study_sha256": "d2540eed7c8ced4ea0f88e651fc70531a3e3ae67319603fe26cc24356206fe06"
+  },
+  "tasks/pilot/fin-l4-narrative-01/instruction.md": {
+   "root_sha256": "254f71fb72a2878cc27c8ce1eb11284210fae611b230d483aee9f655c18b3193",
+   "study_sha256": "41af899d6e7d466d54a79dd25f895f7dad854ef523c9e9818fc1a37bedad0c06"
+  },
+  "tasks/pilot/fin-l4-nonexist-01/instruction.md": {
+   "root_sha256": "d763a4e9ac5ec65206b662e2b6c831f7f2e4ac8b3e57d7393195ef5115a653ae",
+   "study_sha256": "6744535741a75d1946024fc0234945d8a41a340dd116b9aec1b62e187c86b864"
+  },
+  "tasks/pilot/fin-l5-compare-01/instruction.md": {
+   "root_sha256": "435d3b79af6ca4c27d75a73d8c552d1f3c2ff7f011fa9b5741fafe3a71145704",
+   "study_sha256": "ba57f788352522ea9f04f43e830095ce30bd13b6d89414e10a208bea92a26386"
+  },
+  "tasks/pilot/fin-l5-profile-01/instruction.md": {
+   "root_sha256": "dc58c54dd51f25d428e2c45cb9906b69b1a11022e55c3c8586f1e00d37aebb8b",
+   "study_sha256": "9455a37c883ea0c2fddb5b6ce4f41e75c4eb1bc27107ebf0768ce1c584e4940e"
+  },
+  "tasks/pilot/fin-l5-valuation-01/instruction.md": {
+   "root_sha256": "d5eaeb066fd3066943862270bc18bdf430bb112cb4d97e774820dd26c5b50213",
+   "study_sha256": "06498c955a4f77f2abda2281fb1cd0a51c9bbdeca6855ce6373fdacfdf5930a2"
+  },
+  "tasks/smoke/smoke-agg-01/instruction.md": {
+   "root_sha256": "cb9b1565e3f79218e736f85acd1401e5b3101dfb13a615d8edb670db0b581525",
+   "study_sha256": "7675d4a11342ba7912414d6553e7e879227bcb572662fd23792f727d92027f7c"
+  },
+  "tasks/smoke/smoke-quote-01/instruction.md": {
+   "root_sha256": "727b425d24b08eefd5c13c5da68c320c17d68b6b52688f535c343290523d54b6",
+   "study_sha256": "78251b60a62bf5f57266fb5854b9a8930065c991cb761319e882a7af556adb6f"
+  },
+  "tasks/smoke/smoke-trap-01/instruction.md": {
+   "root_sha256": "e60909008c25e9c07555d392e119e68cc7f0e73a29fb7afb8c7d108334d3369b",
+   "study_sha256": "a3cf4f4e8bed6e28630398466b1aecf5f33a6477242f1655465883441b00dbe5"
+  },
+  "tasks/main/fin-l1-bctc-109/instruction.md": {
+   "root_sha256": "4a9f5d333e7d863d57c32c290cdec8b3d8dbcfff71a202582973226bb7eeb5f4",
+   "study_sha256": "484fd10d90d357c6fee70cb2e254f49882a96f75f4babd25b7c886fb2280af51"
+  },
+  "tasks/main/fin-l1-bctc-110/instruction.md": {
+   "root_sha256": "16f90ce7bce8722876b2496588f5fd06162a00b4eefb1de700d41baa04a1c041",
+   "study_sha256": "2440ca64750ef68bd4f2463d3f685c8c3046205c9cb45100215266eaa5299466"
+  },
+  "tasks/main/fin-l1-bctc-111/instruction.md": {
+   "root_sha256": "6f2ad28418a0c812d416ccc9e48dcd4570d465fd04ec43df9cf011cef5b03337",
+   "study_sha256": "a1336e1fe49e35adc6426c91fe77cf50d531446ab0569d555f87a52e575c4332"
+  },
+  "tasks/main/fin-l1-bctc-112/instruction.md": {
+   "root_sha256": "cfa63dcf1c42a64e1b1f02b6fbc646a92a0a3b49b89b676a794c2f1237f14c09",
+   "study_sha256": "1a8519e4f665e421473478b13372ebd1a22ea67e910e09a96d5d664d0d03e76a"
+  },
+  "tasks/main/fin-l1-bctc-113/instruction.md": {
+   "root_sha256": "068484f4bee0f0020f1a85b934a96adea678aff8997081c5fe40fcc909c20010",
+   "study_sha256": "0bc3e70d88fc6dccd8047eb24b38d9b211c5b43d2bacf99b0c6344b8c911d782"
+  },
+  "tasks/main/fin-l1-bctc-114/instruction.md": {
+   "root_sha256": "72fc1d662f76cba6414728fa22475b246065a60bc2ca8de9084f1515717869bc",
+   "study_sha256": "3368968ec021aa579c610befbb05f274249efae2636809c43e44de61b1e98938"
+  },
+  "tasks/main/fin-l1-bctc-115/instruction.md": {
+   "root_sha256": "fa9ab789d016cb0578feb0e4f592aafb614f14518942ef01305fc75cfd248d42",
+   "study_sha256": "19cdde0a80a8481d7b0be10aa61aea9403a75b1037514101b19fcbab0017c0c8"
+  },
+  "tasks/main/fin-l1-bctc-116/instruction.md": {
+   "root_sha256": "b34dd392530b1b260618ddf015157e1beb27ccf32671342a122c6efd98aecfcd",
+   "study_sha256": "e86d55c8df476a1201507926fd4c575c9acccd45343242f8ef902a8025533b7d"
+  },
+  "tasks/main/fin-l1-bctc-117/instruction.md": {
+   "root_sha256": "a8c1c1a7542d15c9345a35ac0a4fcf7771289187f941ad862161033012000547",
+   "study_sha256": "79587686cbbdd2b600d187ea0e2d194bb64db56b9558522887ce0f7103065aa1"
+  },
+  "tasks/main/fin-l1-bctc-118/instruction.md": {
+   "root_sha256": "986c4637fa3309920c53293d0e2bdaa4d41e6e0051e15ef95517b0349f7e84a0",
+   "study_sha256": "0797751cd9922289843133e97e07f8d050f290e1c040972fc4c0fc8565a09c3e"
+  },
+  "tasks/main/fin-l1-bctc-119/instruction.md": {
+   "root_sha256": "cf6cb76c13034e162758ff295f9486da14885c9624d8a518ef8030b1b9e6fc1d",
+   "study_sha256": "5249f8fae470eb2a3eff900edd7936b95d77fb650cd663bd2c10c9dc4d51374b"
+  },
+  "tasks/main/fin-l1-bctc-120/instruction.md": {
+   "root_sha256": "1e52999ab25739954314aeac64fe1ea9cedf287a6787b5a67e3e74f534ad60cd",
+   "study_sha256": "1c24f0e0ce14ad5238ebf0ec68f123dc04593b08268d9cde448e7ab771bd73c3"
+  },
+  "tasks/main/fin-l1-macro-133/instruction.md": {
+   "root_sha256": "db5518ce3c83cf92c6f2c7959b7d8f3fefe3982bfe7f3d41c1cda5f53e89cae8",
+   "study_sha256": "ad5b565c2c685e995b2375113837d16f056da8065c7cfbd46602a836ed5f1cb8"
+  },
+  "tasks/main/fin-l1-macro-136/instruction.md": {
+   "root_sha256": "bf9ec8c5fb909795b032eab494f75d8415d51e1255ebd1aa1ba725e94fd21fde",
+   "study_sha256": "99cbf8e713c7445af8120f09671d2326f86390b46b945b70490e5ac783a295eb"
+  },
+  "tasks/main/fin-l1-macro-137/instruction.md": {
+   "root_sha256": "66f894704aef5e2b1a6c2fecfc011bb67b4d4dbc30ffff649d45a4a93efeb6a5",
+   "study_sha256": "eb671325cf34ddc399007b90b09b9033273fd88afb5785028a7b74956ff43f41"
+  },
+  "tasks/main/fin-l1-macro-138/instruction.md": {
+   "root_sha256": "8d4a25897b18a2db84821d1ba5b2dabffc2f65829d8a69f9fd73a61f23e18849",
+   "study_sha256": "83db17eb9931faddc271a8b775859b288347b32d4287b284c253f44019f6a9be"
+  },
+  "tasks/main/fin-l1-macro-139/instruction.md": {
+   "root_sha256": "5b1281b1cd4172e88a30b103dd5fad3c1b38e8b9b1674a7d8cb92a9cb83145b3",
+   "study_sha256": "8671d766a541154fc0dc049b4e81ee619e2d7ac35abd8a4882565a45d18ed875"
+  },
+  "tasks/main/fin-l1-macro-140/instruction.md": {
+   "root_sha256": "4c96df9e6d5ebb7a1fc8899d7b3b7043313f839c9c26a916f8a04597de5ddc0c",
+   "study_sha256": "8faef5419e34387596c978a5b46e60c6578e32ab679e8f2fe6b05646da5a7a6f"
+  },
+  "tasks/main/fin-l1-quote-crypto-121/instruction.md": {
+   "root_sha256": "348612879665a49f816f5b0fbb19d7e8f595ddcfdec162c90ad24d732c3c1f31",
+   "study_sha256": "3614749e0315d1d35593199016e325b865e2755420e809a847c6b82edb819c53"
+  },
+  "tasks/main/fin-l1-quote-crypto-122/instruction.md": {
+   "root_sha256": "1d0b0c63d2f51b2833aaccdee8bf716b6e75e468cc8aa50d12f4ba7ab8deef3c",
+   "study_sha256": "95accc0195b16aeccc904e3f6af6509d36e9b3bb260a218b507ddf8fe7b9004c"
+  },
+  "tasks/main/fin-l1-quote-crypto-123/instruction.md": {
+   "root_sha256": "dbe5b7493b1c829db44e97495ef27ddb8eeca43d27e32f6a1155894f211821dc",
+   "study_sha256": "e8c11e56919a29a708e8e07e9df92a35dc18df6943c2c106a0669321b99487ff"
+  },
+  "tasks/main/fin-l1-quote-crypto-124/instruction.md": {
+   "root_sha256": "a5ca0867e3bcb7d4cbfc07b649224202cbd9c7ecb3d921c1035b5d2496e2110e",
+   "study_sha256": "a3f158365df5649c975d039144c51ea65c10c4070b0c60ff78890fac603d5401"
+  },
+  "tasks/main/fin-l1-quote-gf-126/instruction.md": {
+   "root_sha256": "653ab760ac4e4a23eb9323583cad304e77a2fc451f286fdcffffeb56172440d6",
+   "study_sha256": "0f961e8c5680f76f1ecb67cdfdf34193e4a4ae2dba7677027d7231bab57ae240"
+  },
+  "tasks/main/fin-l1-quote-gf-127/instruction.md": {
+   "root_sha256": "a32bae7aa86ca8d25de158e75f458fcd241bb91d27bba45d9c14c80e3151b09c",
+   "study_sha256": "c8eff9297afb517914656e417ea489aee862e7068dae2939898648a358782860"
+  },
+  "tasks/main/fin-l1-quote-gf-128/instruction.md": {
+   "root_sha256": "5f33f71069d2b8842a0f39b3d62a33d95a4871082fb5d0cc3560058c4ef16f2e",
+   "study_sha256": "75a72e4288bdd18ab80920ce4ee7feb73f9da6d5c49e342eb0a8933fc51c82c4"
+  },
+  "tasks/main/fin-l1-quote-gf-129/instruction.md": {
+   "root_sha256": "3145be496af0b7881d39013d8563440361fb57cac728d3baf7c8601b00c4b682",
+   "study_sha256": "a381005c83f4eb687e8673befd9832c51becb0a0e5ee1cf37220d6dc0883e65c"
+  },
+  "tasks/main/fin-l1-quote-gf-130/instruction.md": {
+   "root_sha256": "75c09f221e77e68d1289e58b34e4137a87aa7beb7d53c0513e5644ac61a8ffd7",
+   "study_sha256": "a31cab65ef9f1b42427817bc88903cf1a380451f5852932afbc3931e58a117d7"
+  },
+  "tasks/main/fin-l1-quote-vn-101/instruction.md": {
+   "root_sha256": "6eb8dde7f418efb873ee0c9c81a44a70655b435b5c0b25856aa0c19368c48c9f",
+   "study_sha256": "0abdd2c47ee335296df3090b57cc53dfddb5a6035366ea4c0744678c76dde4b3"
+  },
+  "tasks/main/fin-l1-quote-vn-103/instruction.md": {
+   "root_sha256": "4dc3c45c9f4b14903f63619646087fc48549567d9083d6466bffc9e6d3be0921",
+   "study_sha256": "62b048c8b06712714bd79b13dfd688d7ed72752b4be3a68a65fe894eac1a28bc"
+  },
+  "tasks/main/fin-l1-quote-vn-104/instruction.md": {
+   "root_sha256": "51273fdc14a2a7fa16d59ce18f42f1bf51a4a9377dbe0387d3e967453986e5de",
+   "study_sha256": "efe45a2dd38e2e52e3f6dee154267e3860ea642e2aa27dba67f58893ec9e9674"
+  },
+  "tasks/main/fin-l1-quote-vn-106/instruction.md": {
+   "root_sha256": "7a0b3402ff6c490ff1e9ef2c06fe0e6f6f871ed471bc4b647d9a0f47b8f99dd1",
+   "study_sha256": "0f054ff80b275b5b4755ce256cf912f958ebd018beed51113c206e5eee142dad"
+  },
+  "tasks/main/fin-l1-quote-vn-107/instruction.md": {
+   "root_sha256": "bfcdfb1381771e68874b549f4930c6e853c12d883ce1310aa06498e9fda0205b",
+   "study_sha256": "3ec3eda1a71b7a106b0584f26a054db1407f665b4e05611c1825dd852e66f993"
+  },
+  "tasks/main/fin-l1-quote-vn-108/instruction.md": {
+   "root_sha256": "2454b3c1e06d52cbef2826e168bdb4fe0035c84ed69555048c9fee8ddd96f1b1",
+   "study_sha256": "bb3e8d14d4aeb04632ff5f3f2b97c7a681a78a2f74896016059bbab02386335b"
+  },
+  "tasks/main/fin-l2-crypto-x-166/instruction.md": {
+   "root_sha256": "55e79d0d1c981bf470b86d2115182dd778c461c172035089eac8e408f41bd59d",
+   "study_sha256": "a4ccb098118b2dc81d426df2bce6c093077d04e40c1d2e815a8c52a5c8f446c4"
+  },
+  "tasks/main/fin-l2-crypto-x-167/instruction.md": {
+   "root_sha256": "dbde9192257f7e7ed3d4556e67b7fbef70148e2dbd7327fd1d0a9231d7406d4c",
+   "study_sha256": "3a855f5057377e0afb3657e64af694d20d4f3e5051c2af549e0c58ac3014a5d8"
+  },
+  "tasks/main/fin-l2-crypto-x-168/instruction.md": {
+   "root_sha256": "2cda887cef4299bba0f3ddbdba6441dfcf6069f42486a8749aaa7784739416a1",
+   "study_sha256": "6f12d2a437a6493a3b94ad1feb66fe1cf1c46e33ee4db26443237d9eb1debeae"
+  },
+  "tasks/main/fin-l2-crypto-x-169/instruction.md": {
+   "root_sha256": "4112f15ba8341eb7687ee8839f09c3afe7aac0e426eac577d74ffc6b968c1a41",
+   "study_sha256": "657c75c8509fba15452e56d453198fa5d1a220d91055c82cd64b0bdae9b4cf16"
+  },
+  "tasks/main/fin-l2-crypto-x-170/instruction.md": {
+   "root_sha256": "2560dc78283c8279091d91862a469a869164d514b41fcb1ca88d5ec11c4d62b4",
+   "study_sha256": "bc89351a703b34642ce97b5fe80a12f9a8020c9160beb521bd96f92db3aa1a6f"
+  },
+  "tasks/main/fin-l2-growth-141/instruction.md": {
+   "root_sha256": "7d189b63d25ec12b7afa9e01a9277ce6ace06e1718569c550701a23a0172856d",
+   "study_sha256": "69f987e56e9e697e6281c55315ca365796748500d03e076ba8db64910431a4a0"
+  },
+  "tasks/main/fin-l2-growth-142/instruction.md": {
+   "root_sha256": "b9e07ee52d02e3d3aa8917759ff609f7c04197ab8d0d258e0b8e41ea26c13f00",
+   "study_sha256": "fe1f6cc5bbaeca568ddc3ff71af24b341005ee0214e8a216820c5d1586e0b3ff"
+  },
+  "tasks/main/fin-l2-growth-143/instruction.md": {
+   "root_sha256": "b4f6048f82b216c608bcab30cb56c8cdb8eabe6f06bebe0fd7ad2a5ba8e31a76",
+   "study_sha256": "66ee94d2e656e4a40e3d54152fb190c51bed1e318c060dc35cbaa5a84eaa468f"
+  },
+  "tasks/main/fin-l2-growth-144/instruction.md": {
+   "root_sha256": "655712c8a0c77d73c757e2e5f59c1aad1d9d49eb505972cc05d16015269261d1",
+   "study_sha256": "577a012e778e46cafc02197dd722c454f3f99290b01c212689b6224aaf908dd8"
+  },
+  "tasks/main/fin-l2-growth-145/instruction.md": {
+   "root_sha256": "0c39ef832dfc3f9fd9785981ffb01df835aaac17cad02f5c3029f29272f0b659",
+   "study_sha256": "c9be5d53e8d06b74c78bb00f8cc2865c3e5f12eedeb72efeb548a1eec9f4e424"
+  },
+  "tasks/main/fin-l2-growth-146/instruction.md": {
+   "root_sha256": "9be8e8adfeccddee757ec5607fbc5e8ca0e3e4901494d31abe809a67ae4b4ff5",
+   "study_sha256": "966a10c346e0cea748153e29c1975f9b4b422f01bb1c97900d0b6aceb7729d6b"
+  },
+  "tasks/main/fin-l2-growth-147/instruction.md": {
+   "root_sha256": "b3a9e9116f15daef9c2822733b2645d4dd8d267341e05e768113f05b8939a765",
+   "study_sha256": "36ba71eff5515117aae30f915abb3ee0fc84804d9e808889fd2e36bfa101829f"
+  },
+  "tasks/main/fin-l2-growth-148/instruction.md": {
+   "root_sha256": "df20a705956a863e3988e2a060dc65c3c9e8643340848e1c36a7f0ee441a8ad7",
+   "study_sha256": "cf8c46ba8dc80a3f05be3bcbfeb04ff3fd1c6cfbcfa1de553e5c85f6268f806d"
+  },
+  "tasks/main/fin-l2-macro-calc-176/instruction.md": {
+   "root_sha256": "942930969fea7b0a5732e8c9d305ef0ef38ff1cfecf647ac0c3a5e2c1ff6d1f0",
+   "study_sha256": "bf57161486daea5f6212ab3fb6b9be7b2447f48f7c6bef4b63a092a39c9d2840"
+  },
+  "tasks/main/fin-l2-macro-calc-178/instruction.md": {
+   "root_sha256": "71997e6df1262e4e8330f4feefc15eb4b2963c84ee4a8b0dc844c1cf43530f13",
+   "study_sha256": "be76f6af460cbb02a864fd187f6ef3e1520fe92e3e4061ba2a4438361025b0dc"
+  },
+  "tasks/main/fin-l2-macro-calc-179/instruction.md": {
+   "root_sha256": "2f90868a274bbcb3bc728782a6407329e8e0ca110580f21f6526bd34dab46050",
+   "study_sha256": "f13f6d974d85ac1712cbb3b303374a8929f819687741689e45bd4dd06492d8b1"
+  },
+  "tasks/main/fin-l2-macro-calc-180/instruction.md": {
+   "root_sha256": "b8ae2e588545cb89e3a069c175fb47e79caff5fc93272687f77f9cd516e9b666",
+   "study_sha256": "eb0417b8724fee5f89853165cf5728661d40103405d82108be642ab2097514b4"
+  },
+  "tasks/main/fin-l2-margin-149/instruction.md": {
+   "root_sha256": "5270aba1e602356f80f8bf682ac2183ff9e6eb5417ae216fa2529b511980c1f9",
+   "study_sha256": "391390175205a0b46726b2db3600439d53eff5dd7fe05549f5484c48aa3f7be6"
+  },
+  "tasks/main/fin-l2-margin-150/instruction.md": {
+   "root_sha256": "98da4f90c04fa7cba8859a4b2eddac427025449fc81a83c13321f0df909dd07e",
+   "study_sha256": "9adb5e2247241800258e819150701421d52c5e5b6ab0d6248d3028de5b5ae1e4"
+  },
+  "tasks/main/fin-l2-margin-151/instruction.md": {
+   "root_sha256": "c6d3135623f03e26498d273fa9ccc7df4b925276ee6966374200cbc5dba54f15",
+   "study_sha256": "97fefe8666e03dee970f606eab27b4fbde6c5df9000e248d72b02e0fb7275dc2"
+  },
+  "tasks/main/fin-l2-margin-152/instruction.md": {
+   "root_sha256": "bc4f2cd29a504ff1ead423c9d3f2f41d49370a773833742975369df9ca4bc86c",
+   "study_sha256": "43c90c72071df21452f26466b023c5869e14a04a1e4dd6238d1978a88b8c7508"
+  },
+  "tasks/main/fin-l2-margin-153/instruction.md": {
+   "root_sha256": "64fb94463940428460f935d75841f00a2339a42dfd647cca30df8184816400b3",
+   "study_sha256": "cc3a5de21f5f9ec7176e820796611c5fe9d699165f755ea1915d52659aa964db"
+  },
+  "tasks/main/fin-l2-margin-154/instruction.md": {
+   "root_sha256": "b4efaf0e90ec548955a5c0e887a182aa04b7d35f71e381aee67db3f7e241e35c",
+   "study_sha256": "9837f9fa9f380dc2b2ea2fb4c67f80d7eea992eb1323038122ca47029bb40d01"
+  },
+  "tasks/main/fin-l2-margin-155/instruction.md": {
+   "root_sha256": "29954b9c3014cdc7fb4a1cc4044a699ca6ad273b70f1783a24eb95b22a835c9e",
+   "study_sha256": "fee62d77246b5c88a80a066a9e1f1a895b5723038fa2508f68f21e158ba7f874"
+  },
+  "tasks/main/fin-l2-ratio-157/instruction.md": {
+   "root_sha256": "750c73957b0fd42c34e6380e3d70f13c581fa56d196f8de602bb21f8de41b4a5",
+   "study_sha256": "2ca27ac5752c382ab5b6b8b743dbaae26f6103e0fb5079a1b7cd070bf57abca2"
+  },
+  "tasks/main/fin-l2-ratio-158/instruction.md": {
+   "root_sha256": "c7b2cefbd04ff599e5c790c49ddea56e0bfd6efdfad076de9b3d7ab8fcbb0ed8",
+   "study_sha256": "5aee00929d2093a101d1b86817f5f6f06a8c32f49ba4370e17c3b04d55f10ce2"
+  },
+  "tasks/main/fin-l2-ratio-159/instruction.md": {
+   "root_sha256": "6072b741ff855e0dcd62f2a89619385a74994bc5120cd1d053c88550c3d275df",
+   "study_sha256": "2f66d6c2083b8d098a8a0902f56e34f649699da42c18650f94b3943170adffdc"
+  },
+  "tasks/main/fin-l2-ratio-160/instruction.md": {
+   "root_sha256": "e8bfdf9a404013b10a0664cb6396d3091975e5cf7347ea9f558f19c0842b415c",
+   "study_sha256": "a8703445dc9b61efdd705b7d83af49c9a3274eb0a4db12a5ec605617e377a00c"
+  },
+  "tasks/main/fin-l3-agg-181/instruction.md": {
+   "root_sha256": "27d625c710354b1a42f0b14bb707821ab9a8474f98160f116f29d1bc38765c18",
+   "study_sha256": "1862d5ec54784ce8119a5d5f356b48cca010087fa31a24d5c0088ca325c338fb"
+  },
+  "tasks/main/fin-l3-agg-182/instruction.md": {
+   "root_sha256": "ce5f2751da1689e8d8f65117b9b9428a3c56e0ba18ca447bf3d00929289614c3",
+   "study_sha256": "815a61a0e84e78ae542f3f35ad0c2447e5c9e4f54b323ee960815f728022a519"
+  },
+  "tasks/main/fin-l3-agg-183/instruction.md": {
+   "root_sha256": "81b029a23a29f5faf7793591af434debaf7406399b0238ca839b9f44ee93bd78",
+   "study_sha256": "75176ad5b46ca44451f133902420cb7d9e9b03b930d99099c8b8b45c12562103"
+  },
+  "tasks/main/fin-l3-agg-184/instruction.md": {
+   "root_sha256": "2117d530d67f445333a4a6c84e66c091fe05f49655eac601029abca2426cbb40",
+   "study_sha256": "a74cc83574884200b60486e0b16422bf540afde5734a0abaac2a1eeb808757ef"
+  },
+  "tasks/main/fin-l3-agg-185/instruction.md": {
+   "root_sha256": "711aa1904ea94a903d78568c02946dba0c4131e697f651198153e035fa870ae0",
+   "study_sha256": "296b1295e667d03b25540742a514366fc79cbb9b620f75047be51a18ba19815a"
+  },
+  "tasks/main/fin-l3-agg-186/instruction.md": {
+   "root_sha256": "95143027ccf1fa7d6beba6918880356cc564bd55688712341d2be28605cb0f8f",
+   "study_sha256": "4debdfa11f4cea0f0be8bc3114d8d69a8f34201dc9bce30a45a27b99f50f9eeb"
+  },
+  "tasks/main/fin-l3-agg-187/instruction.md": {
+   "root_sha256": "6d620f17e3944b16f4ffaf63d2a515809cf5571b91a75ff1e53de46dcb904c79",
+   "study_sha256": "119a60f36ededdff89c7d221fbe147f694b676b176e5c2747567cc8f0ca4ae51"
+  },
+  "tasks/main/fin-l3-agg-188/instruction.md": {
+   "root_sha256": "e45a7766f80846e053756dec665aab934500a8caad48bfc61e1a8674d70c60fa",
+   "study_sha256": "8492ca3b80036583d47a756d0d379111cbbb4a395dded426d1c2bafb674c46a5"
+  },
+  "tasks/main/fin-l3-crypto-multi-208/instruction.md": {
+   "root_sha256": "e26d8bf092e06c554051380d88cca3b0744c7d7fcc713714223f82e6858181ce",
+   "study_sha256": "baaec131c2c4a2568ef08edd8eaa6086aa78370dd4e0eeeb91badcf0dd4ec815"
+  },
+  "tasks/main/fin-l3-crypto-multi-209/instruction.md": {
+   "root_sha256": "7e9c9cd2b7f7dde74f1ced2a640cd44b147458b2e62738691d0204908b6c2fac",
+   "study_sha256": "3476627a37ce04395d8c3edf231f8eb8372f1fdf44e32655698761a1f708b24b"
+  },
+  "tasks/main/fin-l3-crypto-multi-210/instruction.md": {
+   "root_sha256": "a1768db7b252a81df35d6d3dfdf8081fe9711eab97d431737116652b94db6e16",
+   "study_sha256": "40c7e3d227a8b23e69e3b64f0448603f22e5c32c8b6c6fcecfe53225155f32c3"
+  },
+  "tasks/main/fin-l3-crypto-multi-211/instruction.md": {
+   "root_sha256": "7453d7f13a87bc2457ecb01ffe6b8ca3bb4d7846da477eefdacef98d43dba50e",
+   "study_sha256": "7b56fe3fc619f17f20d866f6d30b4388e7a2e4ee4f3385f5cfbc808dec42b7d6"
+  },
+  "tasks/main/fin-l3-crypto-multi-212/instruction.md": {
+   "root_sha256": "7bb8a77bfe077257d7a334dc82aa8f4f4f386e00258318ba48b98c54c1f7e53b",
+   "study_sha256": "a144ebdcc9d1b9f3afe9af326a4c9e58aa4365b1a20a6395ada99260bcf29498"
+  },
+  "tasks/main/fin-l3-crypto-multi-213/instruction.md": {
+   "root_sha256": "84915d6486ccf0669649ffd77bcc7bdefcba2afcc080d1ab3b83cd9787be56fa",
+   "study_sha256": "2f3c4e34b1ccd6e9981af9908c5fa0ab05c95a7b29cea9c9fa9f4860c40fd4da"
+  },
+  "tasks/main/fin-l3-crypto-multi-215/instruction.md": {
+   "root_sha256": "dd2cc2d1d29e2da7a7ecc8e08a8cc925b4f8f3ffa49aa1a42918ca913b39afed",
+   "study_sha256": "36587f5ce78d40850df3878780c278ecaed41db4614b92aa55a4b824b5276634"
+  },
+  "tasks/main/fin-l3-index-216/instruction.md": {
+   "root_sha256": "7154ef8b2d424c669f1aeb65cdd2e8d178b5c0f113be3f85e28de5b3963079b2",
+   "study_sha256": "954ffecac9f1eb98ce80fb0f0021cc4eb9a142084c9fb2300c46a63b631fe554"
+  },
+  "tasks/main/fin-l3-index-217/instruction.md": {
+   "root_sha256": "0826ec1613eac5bf7be03918c149e830d9c05b8ada64f9600d70a31117aefb60",
+   "study_sha256": "6a8cb5a208dfb456410f5bc666baf00ba98be9a91a202ee861e6ddad4a3817ac"
+  },
+  "tasks/main/fin-l3-macro-agg-218/instruction.md": {
+   "root_sha256": "f4edff703dc8e58a99493275b71a126bc97366141e5cb5651c306c3ea942ecd8",
+   "study_sha256": "8f99073f9ee190040dcd963199017d77c544a18e94192253be5e379d32badef3"
+  },
+  "tasks/main/fin-l3-macro-agg-219/instruction.md": {
+   "root_sha256": "e9f33f0a0e69b5d6140e728c0ebf7a2a81ae1fd32304afc4e5c9322ed7efc3e8",
+   "study_sha256": "288431a9cff2290415549989fe490da3f7cc9f74bb30e8f9912d55a3cb47a5d2"
+  },
+  "tasks/main/fin-l3-macro-agg-220/instruction.md": {
+   "root_sha256": "e3b03c78979829e969d7cd90e91dd45b7502560e8504dbd90986d91e67a0b36f",
+   "study_sha256": "109fb2711799c1cc2680e6f453d66daf93c9e8b96d91a61aa3b00e8a977c4e29"
+  },
+  "tasks/main/fin-l3-screen-189/instruction.md": {
+   "root_sha256": "3b8502bd17c3f10ef4c001ed714ab1d70345f6fcf6124dffbc3e4801a111c730",
+   "study_sha256": "81d78e6bfdc2e3e16d667b13baf747e35b68abe1d597c3816b92f46973c38a9a"
+  },
+  "tasks/main/fin-l3-screen-190/instruction.md": {
+   "root_sha256": "8ccf8d76236479768f8ca661f27518a27bd65842639a4b0d00e7faf9d0e5a32d",
+   "study_sha256": "b616e5eb9f96976d0cf2fab1d6cc1a55f159b55df62da7f9698f7acb914c4894"
+  },
+  "tasks/main/fin-l3-screen-191/instruction.md": {
+   "root_sha256": "168942e8cc96976b5990ede4706b3fc50e5574a076262a3ba79ca448f00c3f95",
+   "study_sha256": "0daa5620789ebe50bb0d2ca54b951cdc223f4c4364eb0fc6c0ac6cab41e6dad3"
+  },
+  "tasks/main/fin-l3-screen-192/instruction.md": {
+   "root_sha256": "cffc0bfc7a098aad0ec552d548073585bdc3e5c92da77a8cd6e9c10f925963e4",
+   "study_sha256": "98bb3f6054dd462099419582e507ff340448a35a341210b1123afa824e8381fe"
+  },
+  "tasks/main/fin-l3-screen-193/instruction.md": {
+   "root_sha256": "1fe32c3507c741c7b8e47bcec91614617ea498bf5e33cae5c1414f7b65b88791",
+   "study_sha256": "c0add822a5d8f27b5c051beba34b9a66faf0c490f92533de998605d6b68ddbf4"
+  },
+  "tasks/main/fin-l3-screen-194/instruction.md": {
+   "root_sha256": "edf7e91e27b786a50a2b1a5a68e477cf01fc89295cebda8d5d6e362fa1d41a64",
+   "study_sha256": "65e71f79e203ecb535a67d71e03cb99b76ce8b5452c9e0ba27c367fb5113bb53"
+  },
+  "tasks/main/fin-l3-screen-195/instruction.md": {
+   "root_sha256": "bd67355426fd89c8f46a22eeed7564e2bd75c9ef690924bfe14f712fecee19c9",
+   "study_sha256": "ab12f2e3d02b8f657297f6863eed44bfe1f3a266c1f89728814a159f5cf38044"
+  },
+  "tasks/main/fin-l3-screen-196/instruction.md": {
+   "root_sha256": "64dabd9556801dfe0276b140dd41ce5f8c66072314c7b5d3ebad853e38249f9c",
+   "study_sha256": "cc512a7cb054f6d520d07f5e921729fe231074074b986d7855099389b165d498"
+  },
+  "tasks/main/fin-l4-2src-253/instruction.md": {
+   "root_sha256": "60cf3f5325f137c588e46aa2148f81b33f30f9031a8ea3e6dfd4819338bfcaed",
+   "study_sha256": "d2ee2ee2c203e8b4ca75c1f38a5a9ba3681758602a82717d046ebc42d07fea5e"
+  },
+  "tasks/main/fin-l4-2src-254/instruction.md": {
+   "root_sha256": "2b61764481bab115fed9ca28df49203ba4edc778bf9884b56eef17d34216cca3",
+   "study_sha256": "57c17ffa287267285abb08a904702fd37e1b463f0bcc9afed802ea715dac4754"
+  },
+  "tasks/main/fin-l4-2src-255/instruction.md": {
+   "root_sha256": "ff3de70409646569282bd2643d7218fa9f05d5db6eb379f71306962729bd7c39",
+   "study_sha256": "64adc6445fca58bdeff1fc6984cdafedc63801eb4d20118f8bbb5b067c74115a"
+  },
+  "tasks/main/fin-l4-2src-256/instruction.md": {
+   "root_sha256": "b8cfba0800c78a05d4ad86f40cb0d9d45bb48a30fc4180b6170de5aee5335efc",
+   "study_sha256": "d746846d600e60c6d9bc3158dbf89bb2d8520cce915d7df61e551ea7d03a6b53"
+  },
+  "tasks/main/fin-l4-2src-302/instruction.md": {
+   "root_sha256": "c3faf83183f695cfd030cc1696e39fd2b0d16ed8a5a713a0ad4c59e0cc60fcf5",
+   "study_sha256": "8e921a2620459737701a98bf708d14f5d82fef664c17f5017f04278f8033c5ae"
+  },
+  "tasks/main/fin-l4-chain-304/instruction.md": {
+   "root_sha256": "c084c56c148251959a5b990970b556a46b97d0a60720d87d9da0620abf9633b6",
+   "study_sha256": "5637775f01204fb0677cbbd34b679eacb9ce1ce6c19714deca96325e79d5dd2d"
+  },
+  "tasks/main/fin-l4-future-221/instruction.md": {
+   "root_sha256": "ec0b6ac4254b0affdf75aace30162c189e92ed8b8785e0994211bc6a6dc4bf7b",
+   "study_sha256": "a3797f369607550cd94e51d51cd69ddf8bc3ede384c9f9fa183d444f80049044"
+  },
+  "tasks/main/fin-l4-future-222/instruction.md": {
+   "root_sha256": "fc9dc3798bbadfc161bd98bdc62b82dcb0fd50145a1afafdad5d1dfed809b6bf",
+   "study_sha256": "8031987445431c0226bdd11549093d10ef0d44b184eb7265a7d2c87c72432b3d"
+  },
+  "tasks/main/fin-l4-future-223/instruction.md": {
+   "root_sha256": "8c63ad68695b071458aea68c3e8095645721b72b8f1fb1130b789ea5617d59be",
+   "study_sha256": "d02a5a8a7a1590b5c1f25508cda5b3666577e7e010fec5c799014b2893133c2a"
+  },
+  "tasks/main/fin-l4-future-224/instruction.md": {
+   "root_sha256": "b4823976cb0ee3873cd64478ab698a1048eecbfc2e51a51c3ee2b9cb921426ea",
+   "study_sha256": "c56568b531f2fb4edbf0f9ec9d0ad3c3409011c4e551028f92281b5d307fabf7"
+  },
+  "tasks/main/fin-l4-future-225/instruction.md": {
+   "root_sha256": "e8d288e190b2169e8de4a93c16e548b4bc8c12e82a10dc8db385b17bd65935fc",
+   "study_sha256": "5f5d886189abe40102db740de859bdc683221301c1886e7f7f89b5ee8840a5dd"
+  },
+  "tasks/main/fin-l4-future-226/instruction.md": {
+   "root_sha256": "cfd3e580dd77d26b4b0748c0d64d27d6642eed9ed2c7f240bc4e761a7744b7a5",
+   "study_sha256": "3801701d17c6df3e4af29891885f6c5e68f8d9347c09a8faeb0f4b60a8b5174b"
+  },
+  "tasks/main/fin-l4-future-227/instruction.md": {
+   "root_sha256": "29446cf7b2e3eaf86a1eb2d38f006013e37581358008e85c0cefb4da22541358",
+   "study_sha256": "d40bdd748f62cb5b2ca0b4958f81359b0fcc7bc84a1a7ce185dea1d32eafd180"
+  },
+  "tasks/main/fin-l4-future-228/instruction.md": {
+   "root_sha256": "78ee7145175dbbff75607087e2d48f5da9186fc7a1c90703228a66399cb1e810",
+   "study_sha256": "d394862ac9414702dffa9101e5547cf5e252ad7678706e73b1f85bf5ac0b1225"
+  },
+  "tasks/main/fin-l4-future-229/instruction.md": {
+   "root_sha256": "f056c42a0a6f9ff92631d2bbac4e47d67445a10e67652869b104e01cb9b15785",
+   "study_sha256": "2508ad375a4d519a318afde959e1a230d17ac4afc091d918176b6c27fc75f4ab"
+  },
+  "tasks/main/fin-l4-future-230/instruction.md": {
+   "root_sha256": "c20f0de112d07fdb9b78a869c5e54df976cad127836ff71a39f2b461da8fe8a1",
+   "study_sha256": "dd0d85d186e17395c272e8e239eef58223500147319d4449a516475e336eb4e0"
+  },
+  "tasks/main/fin-l4-future-231/instruction.md": {
+   "root_sha256": "f65a08708c19e4f57edfde7d76964784a84029bb011ca9b27ae74d77b192365f",
+   "study_sha256": "2a97b3cb9c57f6cec7d2f4e6db484e683d6da4439999d0f5708e7f7f8db08e11"
+  },
+  "tasks/main/fin-l4-future-232/instruction.md": {
+   "root_sha256": "4c766d7aa58a2dc2cb19d6bc538c3bb973c6a84c668c58816941af933725ba95",
+   "study_sha256": "fdda86ff47a64cca84587ba30e980ad050e7f0489b36c0e5c9b04465c2fcf5a7"
+  },
+  "tasks/main/fin-l4-future-233/instruction.md": {
+   "root_sha256": "93fb2b36ec88c9abf45fa337bf19fb809d7a9723587d53957897873af9d53168",
+   "study_sha256": "d7642c39ee986c952fbc9348f509fff0f51916a0be5a7d6c4824e96766563cff"
+  },
+  "tasks/main/fin-l4-future-234/instruction.md": {
+   "root_sha256": "1d3a7e10cc26616e55eba6d4aad141865b506a661e2efea5dcd85614ca955184",
+   "study_sha256": "900933ca6909181fa51573d0304d630a8b1849c637336693fafb0b21037c16c8"
+  },
+  "tasks/main/fin-l4-narrative-244/instruction.md": {
+   "root_sha256": "305f839cf02da1e077fe9c8042eed1273641a661e6fb2031d4a9440a239edf41",
+   "study_sha256": "c38ca82dfd098d1e4c61d0827b8e6bf178058362c182fc20e9b074dafdedaa7f"
+  },
+  "tasks/main/fin-l4-narrative-245/instruction.md": {
+   "root_sha256": "8c351bbe991bbc25f7abf9cc2c32f7311c772c8aa987d5f462114fda36e95040",
+   "study_sha256": "f5011c54145ea389d02eb415397bebcb1a90e47b2ce08db9edd96e7fcd076f60"
+  },
+  "tasks/main/fin-l4-narrative-246/instruction.md": {
+   "root_sha256": "26161ece2d200a03fcc6c56037e20c98b39876ffb9347876ca5f3de28f9e6492",
+   "study_sha256": "16dce3386faf81bb349d2c4a388559024dc7dcf0a625d99dcb24c07035a8b91c"
+  },
+  "tasks/main/fin-l4-narrative-247/instruction.md": {
+   "root_sha256": "aab6cef44395300bef362447c0cbb92a150f0448509f9154b6cd5e9cfc773635",
+   "study_sha256": "80f35920002377a7e962b5b8e315faf3ac90785588e58e89942c1f7a9e52e54f"
+  },
+  "tasks/main/fin-l4-narrative-248/instruction.md": {
+   "root_sha256": "9dc3a9dc86c80a5c78dcf347529a325fa05c38745f14032c84d8ede36abc5d00",
+   "study_sha256": "f22ff9ac483cadac404a88a5ffc0f66307e3c26f89c0ef43ea1cffb026d27549"
+  },
+  "tasks/main/fin-l4-narrative-249/instruction.md": {
+   "root_sha256": "a7aa057798ef7b948d4942b3a148d0e756cc2617e3d2d8092fa69958bb6f9c1a",
+   "study_sha256": "2dc86becda651b4baf56910b2d3e76012f45a56898907d06c19f69f7cd880437"
+  },
+  "tasks/main/fin-l4-narrative-250/instruction.md": {
+   "root_sha256": "aa92e6561949593cef9a790bca0130a46a17f605c0d4ba5d5d194a7c64936bc6",
+   "study_sha256": "5bc7fa58bac8d28db7510fa389e2ae463e11902c284596e4af59baced211111c"
+  },
+  "tasks/main/fin-l4-narrative-251/instruction.md": {
+   "root_sha256": "df50ecbd89b17f97b46052dfbac1f80d5b3cc3e315a53ee3d18566b6d5f11484",
+   "study_sha256": "704c28d9637969057252b75798ab23e7bf0aa7127641be90f8f91e002d231008"
+  },
+  "tasks/main/fin-l4-narrative-252/instruction.md": {
+   "root_sha256": "b2f1571daf23ff3b3e39e40ad9510ef5ebe8e1caf27839dc74d442c442b244af",
+   "study_sha256": "681e339365b5973955873e706c5c6589d98d458b0671e4cd5f586bff1c228644"
+  },
+  "tasks/main/fin-l4-nonexist-235/instruction.md": {
+   "root_sha256": "7016585aefb73fd3d13e8159860e0136abae7162c0f4973585e395dea94f1c2b",
+   "study_sha256": "f9a8c076f4c913eec78dc9e6f2e7fead5148f625842cab589037c176cffd2e09"
+  },
+  "tasks/main/fin-l4-nonexist-236/instruction.md": {
+   "root_sha256": "03925f947198c0f28fe1a5fb3073670d172609bf0c821f6dc5acb341c0b6738f",
+   "study_sha256": "75d7482cae657d4fd86c4b2e0602772e71d8f2b541365a0f5d150d14b4a5a99b"
+  },
+  "tasks/main/fin-l4-nonexist-237/instruction.md": {
+   "root_sha256": "df1b5760c999c7850ac0410f807ee1661690a4dcd461a38b0480736746dd6843",
+   "study_sha256": "e18f48b1dd614643a3a53e6cf0e0d992b5b496368ac803a0dadb1eec1116b249"
+  },
+  "tasks/main/fin-l4-nonexist-238/instruction.md": {
+   "root_sha256": "cf4fd3d982eab0605fb01db888c467edff7f61cad86da396ef20fe5f5eddce00",
+   "study_sha256": "49d6f230d3cf2cabf1aadf226bb47b1cefbdd02721d56c423068fc39df65ad7f"
+  },
+  "tasks/main/fin-l4-nonexist-239/instruction.md": {
+   "root_sha256": "23a94a525c67e438562914e7ff6296817be578b0ee4a0b14fe2074e6984bd3be",
+   "study_sha256": "40477c52293adb3d0f908944871a516f5b2c1495e4cfee59b1b72ff8dca3c813"
+  },
+  "tasks/main/fin-l4-nonexist-240/instruction.md": {
+   "root_sha256": "4ccc97fdc78b6265bf7655b0fa72b6de48e7c4850b3f6372d105e3d1ad5138a4",
+   "study_sha256": "21f3d5300d1f92209ed5cedc693b67174475e0dd8570697d373c233ba044c6ee"
+  },
+  "tasks/main/fin-l4-nonexist-241/instruction.md": {
+   "root_sha256": "8214617e105e182c0db037d67fe0b7f527577b48ee917ae683ac080ef0064dcd",
+   "study_sha256": "78c098273342bc34d7a5736447ce7428f82f107440776bcbe1b2f34cb4571f8c"
+  },
+  "tasks/main/fin-l4-nonexist-242/instruction.md": {
+   "root_sha256": "8d5b02795cd481a9b088564221dd1bbe3c29b10ae21ab9a45d3b7202b316f637",
+   "study_sha256": "65a94b235e2f43417e89da839af9098c898064b07042a11d3ef770897e89ca35"
+  },
+  "tasks/main/fin-l4-nonexist-243/instruction.md": {
+   "root_sha256": "bbd480c8774c239ee1217d1d90c35f75da89d189cc2a069ef48da36d2ff2ebca",
+   "study_sha256": "f8bd1efd71346807899360096e3c9f06396cc1f748eb3f958a705d075e73d675"
+  },
+  "tasks/main/fin-l4-nonexist-309/instruction.md": {
+   "root_sha256": "58cfb16b12e0114f4c3b321df7c01e2c3a373c1d814e7ec79c4a8b89a30ddfde",
+   "study_sha256": "59b7eaad849203d9be9cc4ea2b83ebbc8febf4ad970dca6be163f887867b5c47"
+  },
+  "tasks/main/fin-l4-nonexist-310/instruction.md": {
+   "root_sha256": "151d6f88b3bb22540a492d1b8afbfb98b77644adcbf16d1222c4bca5598f54ae",
+   "study_sha256": "8414c5969b88114611fe40c723705f2de0690a7a102252b13734190af03783ae"
+  },
+  "tasks/main/fin-l5-compare-275/instruction.md": {
+   "root_sha256": "94941a37241ab9731ea1755a0aceefadccc5c52461e3930c04c85b5de8d8cb32",
+   "study_sha256": "943db1cd6f582479b24adbe7f9034852cc33f098ea04fdb62f037c1895446ee3"
+  },
+  "tasks/main/fin-l5-compare-276/instruction.md": {
+   "root_sha256": "b7903b3ef0681a1be4442bd2b491bdc67a0942e8eca689d7c807fe873264cb46",
+   "study_sha256": "31332ae914a79b5612597cf3db4bd2f04dd9f194d4cac831c28128896b61784f"
+  },
+  "tasks/main/fin-l5-compare-278/instruction.md": {
+   "root_sha256": "f6900d920988ed11b2fab6c473f0e6eae60070065dce18b76862b654594a2e6a",
+   "study_sha256": "6e5d98522f9c70e418169f2cd5a65a500391f8c459c580c4e5d6081f83f0e02f"
+  },
+  "tasks/main/fin-l5-compare-279/instruction.md": {
+   "root_sha256": "1c172742034e8b5a08d6245ce0c3b0c08967631ecef406e1f6134ef22e16de34",
+   "study_sha256": "a7730fa337bdcda1d37213ea3d9b48607ebd337d036e0418204ec92b55fa497d"
+  },
+  "tasks/main/fin-l5-compare-280/instruction.md": {
+   "root_sha256": "669030e26b1fc40531a34bf2e0ecbf14af4465d98d84ad659a162d840bc09989",
+   "study_sha256": "2910648efce2f05b9b072f48ace19c2c9cbf7397a1c3849e1313fafc8b1606a0"
+  },
+  "tasks/main/fin-l5-compare-281/instruction.md": {
+   "root_sha256": "d0f968fa58c1067895f189548ff6826ac5e512986ec0ad9e4f13fb4b7e31d8c0",
+   "study_sha256": "2cfe3dd70250162927579ce7173f8eeecdc700eecc43535ec18634479c84f5af"
+  },
+  "tasks/main/fin-l5-compare-282/instruction.md": {
+   "root_sha256": "5d55f8aa59190efa1d7cfa7682d9f5856292e31f4b2fa6d29848bd0c4c1b7a4c",
+   "study_sha256": "1e9af0ddf6d1c5de2d1a28c48ceb2dae54b2149dc01d83e9393b4fc4967debd1"
+  },
+  "tasks/main/fin-l5-profile-262/instruction.md": {
+   "root_sha256": "31d770c5a9a6fcc107dd7f27ef4db85ede4710e70e139d8bb975a923ba57aade",
+   "study_sha256": "93382470dd6f870351b9ec70cd6346406ab264aa18394617b2d597fd3c2275d7"
+  },
+  "tasks/main/fin-l5-profile-263/instruction.md": {
+   "root_sha256": "843b0b1955a7921fbb0296310cbb7c0378f9b62953931d619111f0c9f695c6c0",
+   "study_sha256": "30a67eef736e174af0473a87d95fcb6e784b12210a6d1cdeeef7e7c31f700842"
+  },
+  "tasks/main/fin-l5-profile-264/instruction.md": {
+   "root_sha256": "b43f9e272c87d1d287e768454c73f5519c075185484fc0a29534fd02674f72c5",
+   "study_sha256": "2f041d20f55b03bfe9325bb94c736a9dedb53ad91aab76b3769a0c5b382f2082"
+  },
+  "tasks/main/fin-l5-profile-265/instruction.md": {
+   "root_sha256": "cf7329fa24d3d15def6c6c468d1d8036989cd140aa53821631b522841933bded",
+   "study_sha256": "035e4d1ae1f92c7d54da40d895f51bdb7def5faf0253975d100a2e3e8066816a"
+  },
+  "tasks/main/fin-l5-profile-266/instruction.md": {
+   "root_sha256": "082c0ceeb6fb57ff9bd4e51fe8817c8e46aa04963cce4a5bc646876df553abbb",
+   "study_sha256": "ede051b1df67ca7cfcfa696bd369e72f94727577383deda6d742338f34bcdce2"
+  },
+  "tasks/main/fin-l5-profile-267/instruction.md": {
+   "root_sha256": "8d17a672602fcf7aafeba09135da454527263a4b2969ee7e1d515e68ee5a7658",
+   "study_sha256": "d9894a07a9197bb500f4df8dd357fdcd6c95d430775b8bb9cd8d4b2339df029f"
+  },
+  "tasks/main/fin-l5-profile-268/instruction.md": {
+   "root_sha256": "f2b14c54425e63d90717bd8d2d402d1ca04a57bdd2168cb68e74ad0c38f5c89e",
+   "study_sha256": "e8edf9d83b23f07ee8edfa47f455f9bd6af4fd86fc60410489193502f2355d05"
+  },
+  "tasks/main/fin-l5-profile-269/instruction.md": {
+   "root_sha256": "4d8422b5ef1c65c4e1c3960c5ed572513d8c696fc444376484887ff23f272f20",
+   "study_sha256": "2495c27831c4ef30f3649c70fd8c7151a30404e3beb497c819fc28ba05c17661"
+  },
+  "tasks/main/fin-l5-profile-270/instruction.md": {
+   "root_sha256": "42ff9672509c0640e63b528fec8ae92be05bec85f54b6829cc588deec64fea1e",
+   "study_sha256": "18b2f6d1ceabe9067d840ada97ccd40e4f0061fbc486b2cf543946bcec2c8b19"
+  },
+  "tasks/main/fin-l5-profile-271/instruction.md": {
+   "root_sha256": "e6be07e489fe8c7a389a47c536b3680f0988cffce19337e5f21436a8cff022b4",
+   "study_sha256": "1b20f676b663f22ace5e4784a99acb1b7c44c7f4f5dd8adc14c18eca22bd2886"
+  },
+  "tasks/main/fin-l5-profile-272/instruction.md": {
+   "root_sha256": "d326dbb00f1fb16819ad89dc7140028b5a0ad54f5d9c6a0a8f06f1633c517539",
+   "study_sha256": "73cdc560be85418b6c48247c841dcf9cacb4794a802a5ee718d85c568dc92f0a"
+  },
+  "tasks/main/fin-l5-profile-273/instruction.md": {
+   "root_sha256": "061867b6f9d7ff81a5d9ab337d54c8c17b6408c677a1ac7da2fcf031686e9491",
+   "study_sha256": "2ef1937764f554d4730f63c1ac0e6b86ef001776fb60034542d3d871be436322"
+  },
+  "tasks/main/fin-l5-profile-274/instruction.md": {
+   "root_sha256": "9228ea187d981a416567ffcde21c729b6a2a18c8e124893bd20325ccddeb5270",
+   "study_sha256": "cd75f5dd8a3801770000e01749e142c1c131fc3d5265d0099ed5f45794322136"
+  },
+  "tasks/main/fin-l5-valuation-291/instruction.md": {
+   "root_sha256": "e88bb3ac1e33a4cafba28a7ce175e9ba77490dce8630cd40b1e45898ab681234",
+   "study_sha256": "655a9efcc97d9e3f9413d103693c032084271c8e6186fb0c77b7da618a72f631"
+  },
+  "tasks/main/fin-l5-valuation-292/instruction.md": {
+   "root_sha256": "e52a204ae0f898864e0067422238e2b15194cd3e8958c1de0d4649206faaf32c",
+   "study_sha256": "2bc53343380eeab2c5f6ce10560c17636e8df0ca625b8c132080ce47f91d4fae"
+  },
+  "tasks/main/fin-l5-valuation-293/instruction.md": {
+   "root_sha256": "635e93628e7c794a09dc1ee93efdac08fa1c1dcc1149d71837876e0ec1578c99",
+   "study_sha256": "7fbc5e8c040023ddca649b1a6e3d9624e276bfc314a0c0faa2ef719d48b0a904"
+  },
+  "tasks/main/fin-l5-valuation-294/instruction.md": {
+   "root_sha256": "579ec0c9899162aca4969eb89ee4f2f79a92792fd9010c665aea64cdbfd002f5",
+   "study_sha256": "9aa78cbb1e1803cd79086ce1fd72a3a08d315286ac4e2fc511e2def48c1b3e13"
+  },
+  "tasks/main/fin-l5-valuation-295/instruction.md": {
+   "root_sha256": "c885daba9295701f56d20f68c5508ae4ae0dedd708622018d6f304e54268485a",
+   "study_sha256": "ea3686657ae774d67fdf9a18e4beb6f950335ba3f359ca25117ba696994c7e17"
+  },
+  "tasks/main/fin-l5-valuation-296/instruction.md": {
+   "root_sha256": "024c96ed1892d11d811048cd5fa2ef3a3f2b91287ebfdf52d4d8b9aed49e5c76",
+   "study_sha256": "9a47570634d4581d8654c23017b7f9df3e43dec2e513f2a0ab4db57e24045f3e"
+  },
+  "tasks/main/fin-l5-valuation-297/instruction.md": {
+   "root_sha256": "e6d80955150af0255884af1250adb14c6b57c3d1c61bb9d34057567950eaead0",
+   "study_sha256": "d06588a338f5e0552c5b99b709c8fe97da6325e5d52fd5a91f467a1909257734"
+  },
+  "tasks/main/fin-l5-valuation-298/instruction.md": {
+   "root_sha256": "7a5dda87c2fd2b99777da3dbaf0580547d14ef0f022957ed97b688e2ddc6f4d0",
+   "study_sha256": "9a796d4035be75562c48627fb1b004f627885d7b6bf916132c2ce30048976552"
+  },
+  "tasks/main/fin-l5-valuation-299/instruction.md": {
+   "root_sha256": "00bc42c8d0c664429be23c0691d2b41dab337c0f055b3af1eb882198740029b7",
+   "study_sha256": "8c62de18e2c19563672faaadd34cb65e7d94c1fb8aec12eab5690e97fadab8a8"
+  },
+  "tasks/main/fin-l5-valuation-300/instruction.md": {
+   "root_sha256": "20f84e1aa3c50ad8942a647944fe8f16c1df0514eea3bc89d7b92714343b7046",
+   "study_sha256": "97e57d6e003fac9cfc94886f36f4082dc9196bc234fadf4cc683d0ef7a3c67d3"
+  },
+  "tasks/holdout/fin-l1-bctc-903/instruction.md": {
+   "root_sha256": "d6c00167a48e10d5e8226fda4b379560594429ef4f00d4045a921e97f285ad6d",
+   "study_sha256": "25488e3ceb8a9b107e42c88bd128edea7e6ac034ea84693f41d511cb517f4632"
+  },
+  "tasks/holdout/fin-l1-bctc-903/tests/grader.py": {
+   "root_sha256": "79b4960aafa6e078dac3f1bc22f0167d9f811ca1beb106588d5e00482f0728d4",
+   "study_sha256": "0032f4e83888a168fbed44d8bd88f3c0efabdb78f0f653fcd0b94ee035967b0b"
+  },
+  "tasks/holdout/fin-l1-bctc-904/instruction.md": {
+   "root_sha256": "74b4a2e12ebba8a8237398031c27831ff18b934b30c8892c0524fdae122d1265",
+   "study_sha256": "8c5350bbc60445e39e85173899bd834e59c369666316c64a7ebd86f684522a8d"
+  },
+  "tasks/holdout/fin-l1-bctc-904/tests/grader.py": {
+   "root_sha256": "79b4960aafa6e078dac3f1bc22f0167d9f811ca1beb106588d5e00482f0728d4",
+   "study_sha256": "0032f4e83888a168fbed44d8bd88f3c0efabdb78f0f653fcd0b94ee035967b0b"
+  },
+  "tasks/holdout/fin-l1-bctc-905/instruction.md": {
+   "root_sha256": "e7036f399ca017e2b016021c9f522b6de9ed6905f33811e63e1c27fcf7f61859",
+   "study_sha256": "e1690de00a75ea493a39cc5dd9bbb81c175cb832e89d7ef73b1a594827f6eb6b"
+  },
+  "tasks/holdout/fin-l1-bctc-905/tests/grader.py": {
+   "root_sha256": "79b4960aafa6e078dac3f1bc22f0167d9f811ca1beb106588d5e00482f0728d4",
+   "study_sha256": "0032f4e83888a168fbed44d8bd88f3c0efabdb78f0f653fcd0b94ee035967b0b"
+  },
+  "tasks/holdout/fin-l1-macro-908/instruction.md": {
+   "root_sha256": "3ca9c63599682f1c7d7a64282ce38e96936b4ebfa70c3af07da63864ad139fa6",
+   "study_sha256": "ef7fd92e79686133d2b4abf03e17e57b0f366bc9a9a51e30039aba88f8129fec"
+  },
+  "tasks/holdout/fin-l1-macro-908/tests/grader.py": {
+   "root_sha256": "79b4960aafa6e078dac3f1bc22f0167d9f811ca1beb106588d5e00482f0728d4",
+   "study_sha256": "0032f4e83888a168fbed44d8bd88f3c0efabdb78f0f653fcd0b94ee035967b0b"
+  },
+  "tasks/holdout/fin-l1-macro-909/instruction.md": {
+   "root_sha256": "431d3f0b448ea27592d0f70938928679793eede3650514c0f4cff7511dcd3dcf",
+   "study_sha256": "762a0797755146447cf7d8dcb5f5ad2f6b4b058a392c5a291cf030ae943217c6"
+  },
+  "tasks/holdout/fin-l1-macro-909/tests/grader.py": {
+   "root_sha256": "79b4960aafa6e078dac3f1bc22f0167d9f811ca1beb106588d5e00482f0728d4",
+   "study_sha256": "0032f4e83888a168fbed44d8bd88f3c0efabdb78f0f653fcd0b94ee035967b0b"
+  },
+  "tasks/holdout/fin-l1-macro-910/instruction.md": {
+   "root_sha256": "928eee2d5f3a86f21e240de4d8687a21827f5f2a3b2027853d908ec2843dec95",
+   "study_sha256": "fb5bf288eb1ec60a544208b8851e91750efcf4a79faec91fcd48c5fff2e9a983"
+  },
+  "tasks/holdout/fin-l1-macro-910/tests/grader.py": {
+   "root_sha256": "79b4960aafa6e078dac3f1bc22f0167d9f811ca1beb106588d5e00482f0728d4",
+   "study_sha256": "0032f4e83888a168fbed44d8bd88f3c0efabdb78f0f653fcd0b94ee035967b0b"
+  },
+  "tasks/holdout/fin-l1-quote-crypto-906/instruction.md": {
+   "root_sha256": "67cb90e39c27d1e6bec24f15fc2ee361f157426f2f09fb4557ffb310f0955f47",
+   "study_sha256": "cbc1daea28fca37a2182a1f1eac351e10dd08282c131fb763db874bc75f2d199"
+  },
+  "tasks/holdout/fin-l1-quote-crypto-906/tests/grader.py": {
+   "root_sha256": "79b4960aafa6e078dac3f1bc22f0167d9f811ca1beb106588d5e00482f0728d4",
+   "study_sha256": "0032f4e83888a168fbed44d8bd88f3c0efabdb78f0f653fcd0b94ee035967b0b"
+  },
+  "tasks/holdout/fin-l1-quote-gf-907/instruction.md": {
+   "root_sha256": "8b5b73ca07f4fa403581c34d8bb146751680cf5a9ad5a2b6da62a22cf35969cc",
+   "study_sha256": "23fb3e0ce67bf5d7e70597d377bf956322fc99555670b28b7a163452ff975ce7"
+  },
+  "tasks/holdout/fin-l1-quote-gf-907/tests/grader.py": {
+   "root_sha256": "79b4960aafa6e078dac3f1bc22f0167d9f811ca1beb106588d5e00482f0728d4",
+   "study_sha256": "0032f4e83888a168fbed44d8bd88f3c0efabdb78f0f653fcd0b94ee035967b0b"
+  },
+  "tasks/holdout/fin-l1-quote-vn-901/instruction.md": {
+   "root_sha256": "221b6647523befa01177407e2357e0493c60802a1752fcf22e304479265a7239",
+   "study_sha256": "9baa3d133ebe09c61b18036e8c22b2bd6efb4a375a3dbe88a8ceb134ce082bfa"
+  },
+  "tasks/holdout/fin-l1-quote-vn-901/tests/grader.py": {
+   "root_sha256": "79b4960aafa6e078dac3f1bc22f0167d9f811ca1beb106588d5e00482f0728d4",
+   "study_sha256": "0032f4e83888a168fbed44d8bd88f3c0efabdb78f0f653fcd0b94ee035967b0b"
+  },
+  "tasks/holdout/fin-l1-quote-vn-902/instruction.md": {
+   "root_sha256": "dfbf0d1d0f625006f779090523f0bc562e544e0711b6656d4988045e1d8d9eeb",
+   "study_sha256": "c29f5dab345a9b469a6b6bd18ff6a723899a187b72277d319139c77cc8726ac7"
+  },
+  "tasks/holdout/fin-l1-quote-vn-902/tests/grader.py": {
+   "root_sha256": "79b4960aafa6e078dac3f1bc22f0167d9f811ca1beb106588d5e00482f0728d4",
+   "study_sha256": "0032f4e83888a168fbed44d8bd88f3c0efabdb78f0f653fcd0b94ee035967b0b"
+  },
+  "tasks/holdout/fin-l2-crypto-x-918/instruction.md": {
+   "root_sha256": "a01501adc2c8a7a00ad57b81e193f681667e2be39ea8fa2f1ca798d769b0a213",
+   "study_sha256": "54681a04864d955f35fa0f292f7df7f34632163b513eda0734e488f43ec79c0c"
+  },
+  "tasks/holdout/fin-l2-crypto-x-918/tests/grader.py": {
+   "root_sha256": "79b4960aafa6e078dac3f1bc22f0167d9f811ca1beb106588d5e00482f0728d4",
+   "study_sha256": "0032f4e83888a168fbed44d8bd88f3c0efabdb78f0f653fcd0b94ee035967b0b"
+  },
+  "tasks/holdout/fin-l2-gf-compare-919/instruction.md": {
+   "root_sha256": "59150f1350011a5eb5c9c29bac1c6e80352d1df143f48066e9670ac00e6c3727",
+   "study_sha256": "e88d3653cd254b422c4957173fd484edd7f99379b31112fa109a046277920f0d"
+  },
+  "tasks/holdout/fin-l2-gf-compare-919/tests/grader.py": {
+   "root_sha256": "79b4960aafa6e078dac3f1bc22f0167d9f811ca1beb106588d5e00482f0728d4",
+   "study_sha256": "0032f4e83888a168fbed44d8bd88f3c0efabdb78f0f653fcd0b94ee035967b0b"
+  },
+  "tasks/holdout/fin-l2-growth-911/instruction.md": {
+   "root_sha256": "43df8715f858af42d0d87143ea3d6a3b9a8be9e21a185699ee3cc624439fc4f2",
+   "study_sha256": "2d58d70fad8a9dfddc47f43e3f08079ed2f580494412b91005e8d54d85414730"
+  },
+  "tasks/holdout/fin-l2-growth-911/tests/grader.py": {
+   "root_sha256": "79b4960aafa6e078dac3f1bc22f0167d9f811ca1beb106588d5e00482f0728d4",
+   "study_sha256": "0032f4e83888a168fbed44d8bd88f3c0efabdb78f0f653fcd0b94ee035967b0b"
+  },
+  "tasks/holdout/fin-l2-growth-912/instruction.md": {
+   "root_sha256": "bdf891d96f81b1311b0523dadd4aca5e5ff4e044d9006d291108322f4d2de1d6",
+   "study_sha256": "0178f0ef337d62af02183bb52f9a94299af99a3bdf4fa3606e6033a273f36758"
+  },
+  "tasks/holdout/fin-l2-growth-912/tests/grader.py": {
+   "root_sha256": "79b4960aafa6e078dac3f1bc22f0167d9f811ca1beb106588d5e00482f0728d4",
+   "study_sha256": "0032f4e83888a168fbed44d8bd88f3c0efabdb78f0f653fcd0b94ee035967b0b"
+  },
+  "tasks/holdout/fin-l2-macro-calc-920/instruction.md": {
+   "root_sha256": "1cd16b613d2be23b3324870ea459c7221c3039555b22b4dc9035c2ea29fcb1fe",
+   "study_sha256": "d1a0edc38262a2129322aeeab1b663e3a001335f679557dafc1c3dfdaf4e145b"
+  },
+  "tasks/holdout/fin-l2-macro-calc-920/tests/grader.py": {
+   "root_sha256": "79b4960aafa6e078dac3f1bc22f0167d9f811ca1beb106588d5e00482f0728d4",
+   "study_sha256": "0032f4e83888a168fbed44d8bd88f3c0efabdb78f0f653fcd0b94ee035967b0b"
+  },
+  "tasks/holdout/fin-l2-margin-913/instruction.md": {
+   "root_sha256": "630c79de134b927fa21f86fe95f377a1d077e763387152eba223c81fb66e5b82",
+   "study_sha256": "a7e316040e1717667ce8d7f1a3eb3ebdfdae2ffc939ee9fbd8cc4335232bb343"
+  },
+  "tasks/holdout/fin-l2-margin-913/tests/grader.py": {
+   "root_sha256": "79b4960aafa6e078dac3f1bc22f0167d9f811ca1beb106588d5e00482f0728d4",
+   "study_sha256": "0032f4e83888a168fbed44d8bd88f3c0efabdb78f0f653fcd0b94ee035967b0b"
+  },
+  "tasks/holdout/fin-l2-margin-914/instruction.md": {
+   "root_sha256": "41bb909f14b5125f6df48cebf676e1ac93a41f885b46a523ee1a31c3648bcdaa",
+   "study_sha256": "c5b3954f976b655d5a0e36d63282a629b955ffabf2e9159542c6e35ef20cc0a1"
+  },
+  "tasks/holdout/fin-l2-margin-914/tests/grader.py": {
+   "root_sha256": "79b4960aafa6e078dac3f1bc22f0167d9f811ca1beb106588d5e00482f0728d4",
+   "study_sha256": "0032f4e83888a168fbed44d8bd88f3c0efabdb78f0f653fcd0b94ee035967b0b"
+  },
+  "tasks/holdout/fin-l2-ratio-915/instruction.md": {
+   "root_sha256": "a3c87d6675fb4c97cc696445cb98b7714ac5d764f73e3bc37ae681563e21ff44",
+   "study_sha256": "bd2ac3d95d4ff6acc3ef1294936635249a9bfb8717740b107908b2965ee13147"
+  },
+  "tasks/holdout/fin-l2-ratio-915/tests/grader.py": {
+   "root_sha256": "79b4960aafa6e078dac3f1bc22f0167d9f811ca1beb106588d5e00482f0728d4",
+   "study_sha256": "0032f4e83888a168fbed44d8bd88f3c0efabdb78f0f653fcd0b94ee035967b0b"
+  },
+  "tasks/holdout/fin-l2-tech-916/instruction.md": {
+   "root_sha256": "1ce427612a0f068df3ccadfc4cdfb29433258f18eb57c9a5b5d66a433195fde6",
+   "study_sha256": "327263a159fcc32dd2873ee2de869e06c1bb9d4dc7c9199d51b878549ea04f95"
+  },
+  "tasks/holdout/fin-l2-tech-916/tests/grader.py": {
+   "root_sha256": "79b4960aafa6e078dac3f1bc22f0167d9f811ca1beb106588d5e00482f0728d4",
+   "study_sha256": "0032f4e83888a168fbed44d8bd88f3c0efabdb78f0f653fcd0b94ee035967b0b"
+  },
+  "tasks/holdout/fin-l2-tech-917/instruction.md": {
+   "root_sha256": "75cd889fbe784e48e27e570cb0716eb754cb4bc2b200ab0f00d96fa0451223da",
+   "study_sha256": "4ea95967b64d4f7c79fa448f361bb7cc4482688d6caa3d7a0ae605d68b2dbc26"
+  },
+  "tasks/holdout/fin-l2-tech-917/tests/grader.py": {
+   "root_sha256": "79b4960aafa6e078dac3f1bc22f0167d9f811ca1beb106588d5e00482f0728d4",
+   "study_sha256": "0032f4e83888a168fbed44d8bd88f3c0efabdb78f0f653fcd0b94ee035967b0b"
+  },
+  "tasks/holdout/fin-l3-agg-921/instruction.md": {
+   "root_sha256": "390e6cb6856d9af2bf43379c1b4a0454f1c9c72c4bc44d0fc2d77ac7635e4aec",
+   "study_sha256": "cc7b7c9330fc180b0ef12377d2204694ca86f8128c2b400acb7dda45b8c68c08"
+  },
+  "tasks/holdout/fin-l3-agg-921/tests/grader.py": {
+   "root_sha256": "79b4960aafa6e078dac3f1bc22f0167d9f811ca1beb106588d5e00482f0728d4",
+   "study_sha256": "0032f4e83888a168fbed44d8bd88f3c0efabdb78f0f653fcd0b94ee035967b0b"
+  },
+  "tasks/holdout/fin-l3-agg-922/instruction.md": {
+   "root_sha256": "43bb098ef667034d3f24615b8988a3096d66fdfe0440a60ce43209593dad66b1",
+   "study_sha256": "be95ed16a7c1ca43eef5e7b75c4b2cc64e35ce8f374e1c71e218adbd3d574c32"
+  },
+  "tasks/holdout/fin-l3-agg-922/tests/grader.py": {
+   "root_sha256": "79b4960aafa6e078dac3f1bc22f0167d9f811ca1beb106588d5e00482f0728d4",
+   "study_sha256": "0032f4e83888a168fbed44d8bd88f3c0efabdb78f0f653fcd0b94ee035967b0b"
+  },
+  "tasks/holdout/fin-l3-crypto-multi-928/instruction.md": {
+   "root_sha256": "820e01f37e87959d2bfb768f6b397886849b7ccc1d5e821d80f6de905697f395",
+   "study_sha256": "583af9f86cdadc71b962c9e5a535a50ea18c188f8d13667af2c2109778d8934a"
+  },
+  "tasks/holdout/fin-l3-crypto-multi-928/tests/grader.py": {
+   "root_sha256": "79b4960aafa6e078dac3f1bc22f0167d9f811ca1beb106588d5e00482f0728d4",
+   "study_sha256": "0032f4e83888a168fbed44d8bd88f3c0efabdb78f0f653fcd0b94ee035967b0b"
+  },
+  "tasks/holdout/fin-l3-crypto-multi-929/instruction.md": {
+   "root_sha256": "65a37414daeea9e5235396d516c0fe896de81a1569face33b7197f46c4e07b10",
+   "study_sha256": "85a4546e0a41bdf180fe646093880ba63875b221a0d04688015b903c613d0075"
+  },
+  "tasks/holdout/fin-l3-crypto-multi-929/tests/grader.py": {
+   "root_sha256": "79b4960aafa6e078dac3f1bc22f0167d9f811ca1beb106588d5e00482f0728d4",
+   "study_sha256": "0032f4e83888a168fbed44d8bd88f3c0efabdb78f0f653fcd0b94ee035967b0b"
+  },
+  "tasks/holdout/fin-l3-index-930/instruction.md": {
+   "root_sha256": "942d417c52fdf4510610d914edec6559445e39f97d2805372dba670f6a32c3da",
+   "study_sha256": "4a9f91deb46eaa1a60b1b4817d074db9a856d4b58be654b19624598fb256abed"
+  },
+  "tasks/holdout/fin-l3-index-930/tests/grader.py": {
+   "root_sha256": "79b4960aafa6e078dac3f1bc22f0167d9f811ca1beb106588d5e00482f0728d4",
+   "study_sha256": "0032f4e83888a168fbed44d8bd88f3c0efabdb78f0f653fcd0b94ee035967b0b"
+  },
+  "tasks/holdout/fin-l3-screen-923/instruction.md": {
+   "root_sha256": "8b4792c2ef924e180388eefd418d4019f792dc6866045b524ab3a88fff5fb9b7",
+   "study_sha256": "a6afde055e0edfb83114bc14d2dcc80685914c6cc5a1e04c2cbe0d08940b6e02"
+  },
+  "tasks/holdout/fin-l3-screen-923/tests/grader.py": {
+   "root_sha256": "79b4960aafa6e078dac3f1bc22f0167d9f811ca1beb106588d5e00482f0728d4",
+   "study_sha256": "0032f4e83888a168fbed44d8bd88f3c0efabdb78f0f653fcd0b94ee035967b0b"
+  },
+  "tasks/holdout/fin-l3-screen-924/instruction.md": {
+   "root_sha256": "d06e4e62d7024e0f1ac86991120b748c81c189284665747add6e24cc4cc92759",
+   "study_sha256": "95e003e5e01a26da22e1b3b695f1cdca783ee9a9fa0873021aafc8530a202148"
+  },
+  "tasks/holdout/fin-l3-screen-924/tests/grader.py": {
+   "root_sha256": "79b4960aafa6e078dac3f1bc22f0167d9f811ca1beb106588d5e00482f0728d4",
+   "study_sha256": "0032f4e83888a168fbed44d8bd88f3c0efabdb78f0f653fcd0b94ee035967b0b"
+  },
+  "tasks/holdout/fin-l3-tech-multi-927/instruction.md": {
+   "root_sha256": "abe4c28347c73bb040db3b56036cc736b257e7254be8a1a0c358fe4e3dedfafe",
+   "study_sha256": "e26fcaf19dc17e4933a7f9d4ddb492020c17214d173132b1a0d6c08135e0f95e"
+  },
+  "tasks/holdout/fin-l3-tech-multi-927/tests/grader.py": {
+   "root_sha256": "79b4960aafa6e078dac3f1bc22f0167d9f811ca1beb106588d5e00482f0728d4",
+   "study_sha256": "0032f4e83888a168fbed44d8bd88f3c0efabdb78f0f653fcd0b94ee035967b0b"
+  },
+  "tasks/holdout/fin-l3-top-925/instruction.md": {
+   "root_sha256": "a0338e09d57b011e7e7d21bf6260915f5a371bef4b0ed1231407a25cfc757fb5",
+   "study_sha256": "93f6c8b74ca90cfdc7e863ed332dc49ee4c4a6f362def88ec391dde02dd66a11"
+  },
+  "tasks/holdout/fin-l3-top-925/tests/grader.py": {
+   "root_sha256": "79b4960aafa6e078dac3f1bc22f0167d9f811ca1beb106588d5e00482f0728d4",
+   "study_sha256": "0032f4e83888a168fbed44d8bd88f3c0efabdb78f0f653fcd0b94ee035967b0b"
+  },
+  "tasks/holdout/fin-l3-top-926/instruction.md": {
+   "root_sha256": "c107d970d785dca18c706da05c9538fb6c1858deb2a194ddf9f69df5d4f39758",
+   "study_sha256": "276eb9ca62adb218496c609243431584e7c6db951cfd27e174b9b9e03f51ec71"
+  },
+  "tasks/holdout/fin-l3-top-926/tests/grader.py": {
+   "root_sha256": "79b4960aafa6e078dac3f1bc22f0167d9f811ca1beb106588d5e00482f0728d4",
+   "study_sha256": "0032f4e83888a168fbed44d8bd88f3c0efabdb78f0f653fcd0b94ee035967b0b"
+  },
+  "tasks/holdout/fin-l4-2src-939/instruction.md": {
+   "root_sha256": "2b54db17de240011a46246bf2573ee0cf6381d3266e5c8b4c6b546a20e86db60",
+   "study_sha256": "9356a05f0537be0bb3a128709e4c5d3357ace4b8f60f4b3a2ab421e3d71c04e0"
+  },
+  "tasks/holdout/fin-l4-2src-939/tests/grader.py": {
+   "root_sha256": "79b4960aafa6e078dac3f1bc22f0167d9f811ca1beb106588d5e00482f0728d4",
+   "study_sha256": "0032f4e83888a168fbed44d8bd88f3c0efabdb78f0f653fcd0b94ee035967b0b"
+  },
+  "tasks/holdout/fin-l4-2src-940/instruction.md": {
+   "root_sha256": "5b6eb40909fdbbf6a437faba4de3b760270dfc1366a40bce68ed499b0a673983",
+   "study_sha256": "bbbbe7d9759d199056e157316f0b54f4f4f84f4ddc8dc8a1f0dc4cbb8f14ca7f"
+  },
+  "tasks/holdout/fin-l4-2src-940/tests/grader.py": {
+   "root_sha256": "79b4960aafa6e078dac3f1bc22f0167d9f811ca1beb106588d5e00482f0728d4",
+   "study_sha256": "0032f4e83888a168fbed44d8bd88f3c0efabdb78f0f653fcd0b94ee035967b0b"
+  },
+  "tasks/holdout/fin-l4-future-931/instruction.md": {
+   "root_sha256": "75443905997d11dfb27a5b69593e3563b60de302043558a7318cd96ab1e5b70c",
+   "study_sha256": "a262954627f3563ce9ad7b7f33f36b9e30433d514ee4dab49caa8107928dc7ec"
+  },
+  "tasks/holdout/fin-l4-future-931/tests/grader.py": {
+   "root_sha256": "79b4960aafa6e078dac3f1bc22f0167d9f811ca1beb106588d5e00482f0728d4",
+   "study_sha256": "0032f4e83888a168fbed44d8bd88f3c0efabdb78f0f653fcd0b94ee035967b0b"
+  },
+  "tasks/holdout/fin-l4-future-932/instruction.md": {
+   "root_sha256": "49d1654a6f96397d25f06ee5a342b23e6289d78b03f7f6a8bec1bf34f2c1d643",
+   "study_sha256": "927d8e863c1bd3ebcd2706a555626bbd6f1a32999840b4917b71dd2b79fac774"
+  },
+  "tasks/holdout/fin-l4-future-932/tests/grader.py": {
+   "root_sha256": "79b4960aafa6e078dac3f1bc22f0167d9f811ca1beb106588d5e00482f0728d4",
+   "study_sha256": "0032f4e83888a168fbed44d8bd88f3c0efabdb78f0f653fcd0b94ee035967b0b"
+  },
+  "tasks/holdout/fin-l4-future-933/instruction.md": {
+   "root_sha256": "3744f4abfc6ccf887259e0a4124576a55a790973f52f3c1d5b0953484499c9b6",
+   "study_sha256": "3a1a9303c11fb3a32b45643e9ddc22a0d0780b01571fed49831097521c4731b9"
+  },
+  "tasks/holdout/fin-l4-future-933/tests/grader.py": {
+   "root_sha256": "79b4960aafa6e078dac3f1bc22f0167d9f811ca1beb106588d5e00482f0728d4",
+   "study_sha256": "0032f4e83888a168fbed44d8bd88f3c0efabdb78f0f653fcd0b94ee035967b0b"
+  },
+  "tasks/holdout/fin-l4-future-934/instruction.md": {
+   "root_sha256": "370e020e601e1c44f589556df2d5e9c5eaaaa7c8016bdbc943ef12dc07f6ac61",
+   "study_sha256": "f6eee4c834fca3d2275f6063f179fa0566a705599b4d2b7f72cefde703a0ddb4"
+  },
+  "tasks/holdout/fin-l4-future-934/tests/grader.py": {
+   "root_sha256": "79b4960aafa6e078dac3f1bc22f0167d9f811ca1beb106588d5e00482f0728d4",
+   "study_sha256": "0032f4e83888a168fbed44d8bd88f3c0efabdb78f0f653fcd0b94ee035967b0b"
+  },
+  "tasks/holdout/fin-l4-narrative-937/instruction.md": {
+   "root_sha256": "0d955ce90294bdfe0a1ae55830fc3604c5381d196468630e6117bca6e9ee5e20",
+   "study_sha256": "924577ed32415dcfda260b7b62d87682064445d9ca0bfd9cde096d95883a2a6f"
+  },
+  "tasks/holdout/fin-l4-narrative-937/tests/grader.py": {
+   "root_sha256": "79b4960aafa6e078dac3f1bc22f0167d9f811ca1beb106588d5e00482f0728d4",
+   "study_sha256": "0032f4e83888a168fbed44d8bd88f3c0efabdb78f0f653fcd0b94ee035967b0b"
+  },
+  "tasks/holdout/fin-l4-narrative-938/instruction.md": {
+   "root_sha256": "936dffaae2c0384367823b41c3b7d9827347107c8964c78cd42f33bedd3a433e",
+   "study_sha256": "4215c7c80b9382fb15a57ee55708e9b428c475819fabe8ab7aa7107c4b42dbc7"
+  },
+  "tasks/holdout/fin-l4-narrative-938/tests/grader.py": {
+   "root_sha256": "79b4960aafa6e078dac3f1bc22f0167d9f811ca1beb106588d5e00482f0728d4",
+   "study_sha256": "0032f4e83888a168fbed44d8bd88f3c0efabdb78f0f653fcd0b94ee035967b0b"
+  },
+  "tasks/holdout/fin-l4-nonexist-935/instruction.md": {
+   "root_sha256": "e443a8d3711c50cb9fb7a3db3734be8aaafd937fa010bbb1b3288ab030ee16bf",
+   "study_sha256": "97a220877ec0c2dd8ba050745a63e1f14b7a603b85878fc7810506644b6991b7"
+  },
+  "tasks/holdout/fin-l4-nonexist-935/tests/grader.py": {
+   "root_sha256": "79b4960aafa6e078dac3f1bc22f0167d9f811ca1beb106588d5e00482f0728d4",
+   "study_sha256": "0032f4e83888a168fbed44d8bd88f3c0efabdb78f0f653fcd0b94ee035967b0b"
+  },
+  "tasks/holdout/fin-l4-nonexist-936/instruction.md": {
+   "root_sha256": "a7aa22daecf25e6bc2842be2f50d25d37949b1911e3c6698d0d7df72b21a475a",
+   "study_sha256": "8048a13c024e1c1cb9a5daede4451c298eaccfda2e42abb10c6bc0892efc5640"
+  },
+  "tasks/holdout/fin-l4-nonexist-936/tests/grader.py": {
+   "root_sha256": "79b4960aafa6e078dac3f1bc22f0167d9f811ca1beb106588d5e00482f0728d4",
+   "study_sha256": "0032f4e83888a168fbed44d8bd88f3c0efabdb78f0f653fcd0b94ee035967b0b"
+  },
+  "tasks/holdout/fin-l5-compare-944/instruction.md": {
+   "root_sha256": "aa44bb5c575eed8a7034dd8a27ff15a278290fac6bc0aabe39f177f339baacce",
+   "study_sha256": "4d22d6c398153fe14c7a7dcb2bc56fb2ec673505bd8adfaf84abcc99500d1832"
+  },
+  "tasks/holdout/fin-l5-compare-944/tests/grader.py": {
+   "root_sha256": "79b4960aafa6e078dac3f1bc22f0167d9f811ca1beb106588d5e00482f0728d4",
+   "study_sha256": "0032f4e83888a168fbed44d8bd88f3c0efabdb78f0f653fcd0b94ee035967b0b"
+  },
+  "tasks/holdout/fin-l5-compare-945/instruction.md": {
+   "root_sha256": "d52f0d09847f647d0818c077d0ee28c0c1455f915d1cb4f045384292e1768f5a",
+   "study_sha256": "dfded286480a3580a944eb632ef08be7cf2ca2ff5c6f481324ae124c1e6f31a0"
+  },
+  "tasks/holdout/fin-l5-compare-945/tests/grader.py": {
+   "root_sha256": "79b4960aafa6e078dac3f1bc22f0167d9f811ca1beb106588d5e00482f0728d4",
+   "study_sha256": "0032f4e83888a168fbed44d8bd88f3c0efabdb78f0f653fcd0b94ee035967b0b"
+  },
+  "tasks/holdout/fin-l5-compare-946/instruction.md": {
+   "root_sha256": "76dfc7c943286d7d06d790328c6cde0b8e330e73c022cd1595d5decda6d2871c",
+   "study_sha256": "6cbf3422503f788d4db7fa3144a4f07ad9e26817f34f726c906b4f1c7b202576"
+  },
+  "tasks/holdout/fin-l5-compare-946/tests/grader.py": {
+   "root_sha256": "79b4960aafa6e078dac3f1bc22f0167d9f811ca1beb106588d5e00482f0728d4",
+   "study_sha256": "0032f4e83888a168fbed44d8bd88f3c0efabdb78f0f653fcd0b94ee035967b0b"
+  },
+  "tasks/holdout/fin-l5-compare-947/instruction.md": {
+   "root_sha256": "626c1059693b1dce61c40be1fc7fb0b6999fc8dcd5bf145a349d5fbb16e693e7",
+   "study_sha256": "bb6ef3a6bb09bb41e4f546d62c04fff8ac447c8a5d2a9392c75556b0a8f4878a"
+  },
+  "tasks/holdout/fin-l5-compare-947/tests/grader.py": {
+   "root_sha256": "79b4960aafa6e078dac3f1bc22f0167d9f811ca1beb106588d5e00482f0728d4",
+   "study_sha256": "0032f4e83888a168fbed44d8bd88f3c0efabdb78f0f653fcd0b94ee035967b0b"
+  },
+  "tasks/holdout/fin-l5-profile-941/instruction.md": {
+   "root_sha256": "9bd4ed17386189bdd368f09e368c70752ec9c44378486e9b9bb8f10db76df00d",
+   "study_sha256": "c51964f30be13b47dd9c2f4f927440293cc34d8ab85c585253c627ad75b86ee0"
+  },
+  "tasks/holdout/fin-l5-profile-941/tests/grader.py": {
+   "root_sha256": "79b4960aafa6e078dac3f1bc22f0167d9f811ca1beb106588d5e00482f0728d4",
+   "study_sha256": "0032f4e83888a168fbed44d8bd88f3c0efabdb78f0f653fcd0b94ee035967b0b"
+  },
+  "tasks/holdout/fin-l5-profile-942/instruction.md": {
+   "root_sha256": "18e41eaa79903c3215b9755c45dce74b3ae1e8dbbe4ca444837a54f5c04c58b1",
+   "study_sha256": "6440f9678578e49db324b08868ea154a88b1612318ee5c21a39a39f8ad35588e"
+  },
+  "tasks/holdout/fin-l5-profile-942/tests/grader.py": {
+   "root_sha256": "79b4960aafa6e078dac3f1bc22f0167d9f811ca1beb106588d5e00482f0728d4",
+   "study_sha256": "0032f4e83888a168fbed44d8bd88f3c0efabdb78f0f653fcd0b94ee035967b0b"
+  },
+  "tasks/holdout/fin-l5-profile-943/instruction.md": {
+   "root_sha256": "643c1ce40bca0935fc603070e71f4d9a398a3cab4bf8b591a05a3f694589fc6e",
+   "study_sha256": "41c9a58b617309c5d1613fca43f0b8b995e32bb34404775484ebf7cfb3ada91f"
+  },
+  "tasks/holdout/fin-l5-profile-943/tests/grader.py": {
+   "root_sha256": "79b4960aafa6e078dac3f1bc22f0167d9f811ca1beb106588d5e00482f0728d4",
+   "study_sha256": "0032f4e83888a168fbed44d8bd88f3c0efabdb78f0f653fcd0b94ee035967b0b"
+  },
+  "tasks/holdout/fin-l5-valuation-948/instruction.md": {
+   "root_sha256": "660067b74639d9d27f7d0c6f1fe62af7acbd27a50a5e7f5fe1b1b13872a0c909",
+   "study_sha256": "24503d17446a98fdc4bb43dac8668125d62ef70d74ea8e43722b1035ef1afb6d"
+  },
+  "tasks/holdout/fin-l5-valuation-948/tests/grader.py": {
+   "root_sha256": "79b4960aafa6e078dac3f1bc22f0167d9f811ca1beb106588d5e00482f0728d4",
+   "study_sha256": "0032f4e83888a168fbed44d8bd88f3c0efabdb78f0f653fcd0b94ee035967b0b"
+  },
+  "tasks/holdout/fin-l5-valuation-949/instruction.md": {
+   "root_sha256": "2a2dc6b21488149aacbdb21e96bbf9427003fc814f5c3295c2f534601872c51a",
+   "study_sha256": "6bc3cba6a73d35517f178f047c3e49d5adc25c8ba3f7f89e8f1d119e2ff27fdf"
+  },
+  "tasks/holdout/fin-l5-valuation-949/tests/grader.py": {
+   "root_sha256": "79b4960aafa6e078dac3f1bc22f0167d9f811ca1beb106588d5e00482f0728d4",
+   "study_sha256": "0032f4e83888a168fbed44d8bd88f3c0efabdb78f0f653fcd0b94ee035967b0b"
+  },
+  "tasks/holdout/fin-l5-valuation-950/instruction.md": {
+   "root_sha256": "c2edee5923442030ff225ee372359dbf4887e90c6b5bc91e5ccfdc2726e963b5",
+   "study_sha256": "e7ec1c40f705e902f6c899e284c9b0ecada4b3b3bc18bc5847c1613cce1086b3"
+  },
+  "tasks/holdout/fin-l5-valuation-950/tests/grader.py": {
+   "root_sha256": "79b4960aafa6e078dac3f1bc22f0167d9f811ca1beb106588d5e00482f0728d4",
+   "study_sha256": "0032f4e83888a168fbed44d8bd88f3c0efabdb78f0f653fcd0b94ee035967b0b"
+  }
+ },
+ "new_dev_fixtures": {
+  "tasks/devsmoke/v45-dev-12-trap-empty/instruction.md": "69775a9484ea13dffc01d3603adf8f3c7bc3ebc35e31a08bc5b430f55b770e94",
+  "tasks/devsmoke/v45-dev-12-trap-empty/task.toml": "1b361870562fffc3b62a9526b6b208066afdf1d6826d4c2b5433322e8744cde8",
+  "tasks/devsmoke/v45-dev-10-trap-resolver/instruction.md": "dfd0700ce6ce47619112b714d8a2f797f13d35fade5f61f64c206131c262e5cf",
+  "tasks/devsmoke/v45-dev-10-trap-resolver/task.toml": "6cd25d8da97cba122412367c9aea0af983cdf94daa70d46f137b5dddc35b5733",
+  "tasks/devsmoke/v45-dev-07-aggregate/instruction.md": "4cadd090b2e2d0d81b5705f85170695116c45ce798f21e2ca08675752c8c5bad",
+  "tasks/devsmoke/v45-dev-07-aggregate/task.toml": "e554ee2b2222039de975f79813c2225700f848dbf49906b07b3c2254940593bf",
+  "tasks/devsmoke/v45-dev-05-scale/instruction.md": "530b92e85c7102134105b53ec223a81dbaf02d921d5459aaa343cb60216b933d",
+  "tasks/devsmoke/v45-dev-05-scale/task.toml": "c42f149b5bea9474d514e2d5f6277bf0c88f04d8380f75fd35c8be27023dc9f1",
+  "tasks/devsmoke/v45-dev-11-trap-period/instruction.md": "3fd8159119ad1e70904c8ebaecb2efeb7d21c0c346f527ea5c29be4215c58716",
+  "tasks/devsmoke/v45-dev-11-trap-period/task.toml": "ce5647fc539e6c3a9456f2d5f31f70f22d898d5348887749859cd83e0a1cc5fd",
+  "tasks/devsmoke/v45-dev-03-growth/instruction.md": "31106d5f8db9108582c39f4662e1aa94cefa07beae8cd87ebc3496f674d264c3",
+  "tasks/devsmoke/v45-dev-03-growth/task.toml": "90db22ccf9db5036a95f9177790403adffd2a28ec2d3557207dc0fc707fe571e",
+  "tasks/devsmoke/v45-dev-04-margin/instruction.md": "3b280c804717afe7ead0b161a9ea979f2c972309113de9479ef70b6668bddef0",
+  "tasks/devsmoke/v45-dev-04-margin/task.toml": "34af95c183f331b70d12daf44ca8bd452e3c0d13ef4c3702d44ad6d5d670c4ef",
+  "tasks/devsmoke/v45-dev-01-quote/instruction.md": "59cc3df4d46f231fad95cd2bec6dd789c920e3b2cbb89ea0f8070ec177676b45",
+  "tasks/devsmoke/v45-dev-01-quote/task.toml": "f25e1b03fbab805c9311aa4ecf96d0ca4dae80a16d8a9f112caa8b14fe179abc",
+  "tasks/devsmoke/v45-dev-06-ratio/instruction.md": "91d16ead39c01f4c61eea00cb1ce72c168802343bba1dace7d37b9b5b4e3148f",
+  "tasks/devsmoke/v45-dev-06-ratio/task.toml": "72f16ebfefc5029b9cc8144910f67e268d50923539bbe8b4e0560f38b113145c",
+  "tasks/devsmoke/v45-dev-02-resolve/instruction.md": "e3f5401414bec7c6c67e176918250a2636c1e3f4c69eaa1e1eb40cf7e4e9de89",
+  "tasks/devsmoke/v45-dev-02-resolve/task.toml": "fc5299d588d8065a891d52cf343c10498eaec5b8176a7e6ac1307383f2ff7da3",
+  "tasks/devsmoke/v45-dev-08-cross-source/instruction.md": "7fe4abe1e46c422038f2d5b76b25a00ed28fc6705cbc930749ff051cf6542b5d",
+  "tasks/devsmoke/v45-dev-08-cross-source/task.toml": "30206101b8cbada7d5ce8e18a59471505118dc2c208df87ffcd2d0395e87b416",
+  "tasks/devsmoke/v45-dev-09-chain/instruction.md": "a2dc8e085592fe51f5f19d2c59d77740269a4a9fea2d52790938aea9eda4ad66",
+  "tasks/devsmoke/v45-dev-09-chain/task.toml": "eac39745a39708cf40cc95f9aec5b65e23bea4443632a2937c1361253c933ec0",
+  "tasks/devsmoke/v45-dev-12-trap-empty/solution/gold.json": "713b46342853c83c6deed5842172bf9e951713612896f5d2af47c4963de95442",
+  "tasks/devsmoke/v45-dev-12-trap-empty/solution/oracle.py": "941a3a78010abef18691ca9bcba924a0ff62c8a8edbff091001bb55ee0c69908",
+  "tasks/devsmoke/v45-dev-12-trap-empty/environment/payloads.json": "666e93609fbdf4835fa942981f8dca2a37d5e9f184d2f1524dc8cc4402029904",
+  "tasks/devsmoke/v45-dev-12-trap-empty/tests/grader.py": "791e47ec98f45cba561b749a7a4fe0c234d062a1ce430e6cac55a2d764dc5269",
+  "tasks/devsmoke/v45-dev-10-trap-resolver/solution/gold.json": "519c8c678d190b147a151ad4471a90f8f1f9f81312fc9046bc56497e90914763",
+  "tasks/devsmoke/v45-dev-10-trap-resolver/solution/oracle.py": "941a3a78010abef18691ca9bcba924a0ff62c8a8edbff091001bb55ee0c69908",
+  "tasks/devsmoke/v45-dev-10-trap-resolver/environment/payloads.json": "83718e46a05e9bf3679aea9e754e0c250b556ba687f859903b94ca0e69266c6f",
+  "tasks/devsmoke/v45-dev-10-trap-resolver/tests/grader.py": "791e47ec98f45cba561b749a7a4fe0c234d062a1ce430e6cac55a2d764dc5269",
+  "tasks/devsmoke/v45-dev-07-aggregate/solution/gold.json": "a1723bfedfd2e9ee9819a18064214be4ad6e78a1859350dcb44d61ac8d0ef3c2",
+  "tasks/devsmoke/v45-dev-07-aggregate/solution/oracle.py": "d91246e050ef3030c7fb6aff343feeb87fc99296193db9ba89fcbcbbebfdd741",
+  "tasks/devsmoke/v45-dev-07-aggregate/environment/payloads.json": "f1343e3beb51fb9f69323d3a2aaabbfe9affe4ec05c61b1c2a9d797ef4801c6d",
+  "tasks/devsmoke/v45-dev-07-aggregate/tests/grader.py": "791e47ec98f45cba561b749a7a4fe0c234d062a1ce430e6cac55a2d764dc5269",
+  "tasks/devsmoke/v45-dev-05-scale/solution/gold.json": "05f46e31cdb1a0b0b1469dc7914285d7434186e05ff7f27ac2955ca1182188b3",
+  "tasks/devsmoke/v45-dev-05-scale/solution/oracle.py": "dcf8a55c2f4fb5359684d9b704531868bdf518c7bf319ead712d53bb9ea6dc03",
+  "tasks/devsmoke/v45-dev-05-scale/environment/payloads.json": "712ba5ca078dc9a6a7085d2d9c0671d2aeadd20043cc40b9908a2fc67ba90cd6",
+  "tasks/devsmoke/v45-dev-05-scale/tests/grader.py": "791e47ec98f45cba561b749a7a4fe0c234d062a1ce430e6cac55a2d764dc5269",
+  "tasks/devsmoke/v45-dev-11-trap-period/solution/gold.json": "660b0249eae42064ea7dd58aba059dd9b60e914d692de5fea0faf9572e5ed164",
+  "tasks/devsmoke/v45-dev-11-trap-period/solution/oracle.py": "941a3a78010abef18691ca9bcba924a0ff62c8a8edbff091001bb55ee0c69908",
+  "tasks/devsmoke/v45-dev-11-trap-period/environment/payloads.json": "d22a902007ae74df1770776418c73e8567b9069c498833a63df6768ed5a0c8a6",
+  "tasks/devsmoke/v45-dev-11-trap-period/tests/grader.py": "791e47ec98f45cba561b749a7a4fe0c234d062a1ce430e6cac55a2d764dc5269",
+  "tasks/devsmoke/v45-dev-03-growth/solution/gold.json": "81a1b4ed4bcf77ddf512d583908a3d035a9f295437660788826a9909d41f5d21",
+  "tasks/devsmoke/v45-dev-03-growth/solution/oracle.py": "90e2f35e651a889c48affbb20f3889463d12576765b033bc1b0297e3f608957c",
+  "tasks/devsmoke/v45-dev-03-growth/environment/payloads.json": "d22a902007ae74df1770776418c73e8567b9069c498833a63df6768ed5a0c8a6",
+  "tasks/devsmoke/v45-dev-03-growth/tests/grader.py": "791e47ec98f45cba561b749a7a4fe0c234d062a1ce430e6cac55a2d764dc5269",
+  "tasks/devsmoke/v45-dev-04-margin/solution/gold.json": "90079e2059d780ae811fc6b58a9637aafd55f958542d5211dbf60e206503bdf1",
+  "tasks/devsmoke/v45-dev-04-margin/solution/oracle.py": "3c22c760c468400d5946f3b9ca62d48bc3abb502a047953184fd2bf0ec93074e",
+  "tasks/devsmoke/v45-dev-04-margin/environment/payloads.json": "61319f5a9649edbc499449f254355c2e962f2459d8b0b5856515d84ce38aa5b9",
+  "tasks/devsmoke/v45-dev-04-margin/tests/grader.py": "791e47ec98f45cba561b749a7a4fe0c234d062a1ce430e6cac55a2d764dc5269",
+  "tasks/devsmoke/v45-dev-01-quote/solution/gold.json": "b6097cc9c18579b580c84caf795abe83f4fefed712861ad911fc7a362b66abba",
+  "tasks/devsmoke/v45-dev-01-quote/solution/oracle.py": "8b39618a3bf142d20a60ddcd333975e9cbdbd05fcccbe04cd1a1d2d2105817fa",
+  "tasks/devsmoke/v45-dev-01-quote/environment/payloads.json": "22796aef7a36a4495d0b0b74511d50e00a592855e89804f567b2239e7ba8f8c8",
+  "tasks/devsmoke/v45-dev-01-quote/tests/grader.py": "791e47ec98f45cba561b749a7a4fe0c234d062a1ce430e6cac55a2d764dc5269",
+  "tasks/devsmoke/v45-dev-06-ratio/solution/gold.json": "5fdf4ac06bf998ae1de25354c3573005d90e1fbd7d29278466c5b95650273e64",
+  "tasks/devsmoke/v45-dev-06-ratio/solution/oracle.py": "f43963c7ccd73b4a3d7da94e262b3a23b276b5bd5621c1634dd7764ef29a1392",
+  "tasks/devsmoke/v45-dev-06-ratio/environment/payloads.json": "259ec587fa59990e305c523cfd2f2d80932f7596ce6e044f25f51d75b6ae7d79",
+  "tasks/devsmoke/v45-dev-06-ratio/tests/grader.py": "791e47ec98f45cba561b749a7a4fe0c234d062a1ce430e6cac55a2d764dc5269",
+  "tasks/devsmoke/v45-dev-02-resolve/solution/gold.json": "e95d263b89317f6b2624bbfae565e533ab5481418863d0b10d35b4d26eb5801f",
+  "tasks/devsmoke/v45-dev-02-resolve/solution/oracle.py": "8b39618a3bf142d20a60ddcd333975e9cbdbd05fcccbe04cd1a1d2d2105817fa",
+  "tasks/devsmoke/v45-dev-02-resolve/environment/payloads.json": "9f0314e05c1f78b1eab543a198eb22bb92dcef99d7033f8a3d7bf76bf19726d3",
+  "tasks/devsmoke/v45-dev-02-resolve/tests/grader.py": "791e47ec98f45cba561b749a7a4fe0c234d062a1ce430e6cac55a2d764dc5269",
+  "tasks/devsmoke/v45-dev-08-cross-source/solution/gold.json": "c733053b9cb228c6f762b509d623d1a7c8f029792602129d5bb249421664a6bf",
+  "tasks/devsmoke/v45-dev-08-cross-source/solution/oracle.py": "f9d2c134f235947e1176eb4e6d1b0612c47710535820afbbba1d702845022809",
+  "tasks/devsmoke/v45-dev-08-cross-source/environment/payloads.json": "31f5b24da5dffaeb587c1a45aab8a7f39fb16fc18a356e5eab444f2cb4c01c01",
+  "tasks/devsmoke/v45-dev-08-cross-source/tests/grader.py": "791e47ec98f45cba561b749a7a4fe0c234d062a1ce430e6cac55a2d764dc5269",
+  "tasks/devsmoke/v45-dev-09-chain/solution/gold.json": "83e360b994272f64278270e35dc3dc8a126d708e71deafb281aa36e6542e87a1",
+  "tasks/devsmoke/v45-dev-09-chain/solution/oracle.py": "27eff93ecd542893d5ef85aeb38e45473e5d859cd2d02d94d99920ca7b273174",
+  "tasks/devsmoke/v45-dev-09-chain/environment/payloads.json": "0ed33490b17a780d3960b2ac6078e15605d09a82bd68aac4f9d0d06a6b65a058",
+  "tasks/devsmoke/v45-dev-09-chain/tests/grader.py": "791e47ec98f45cba561b749a7a4fe0c234d062a1ce430e6cac55a2d764dc5269"
+ },
+ "content_corrections": {
+  "202": "actual5losers insteadvolumeleaders, oracle+gold+metadata",
+  "214": "rank unrounded: BTC0.59244436<ETH0.59360016, displayround2",
+  "305/306": "periodchecked,306pctexplicitstructuredrequested",
+  "301/303/307/308": "publicplaceholder templates no leakedanswerability",
+  "307/308": "refusalunit/period/source anddatedstructuredsecondaryalternative; snapshotavailability notcalendarcapture",
+  "309/310": "syntheticconstructed resolver fixture label andrawpayloadhash updated",
+  "gold-audit-2026-11-10": "A1 session date stated; A2 compare-288..290 rewritten 1-session; A3 174/175 source yf; A4 257/258 3-tool source; A5 top-202 volume top-5; A6 winner reject lists; A7 comparison-task period = asked session only; B2-B5 wording",
+  "main-amendment-2026-11-10": "A8 period bullet in common contract (pilot/smoke/main/holdout; devsmoke untouched); holdout migration 50 tasks"
+ },
+ "grader": "common v44 guard baseline + scoped refusal/structuredbonus + unrequestednumericclaim rejection, automaticco-primaryprovisionaluntilindependentallarmmanualclaimsreview",
+ "taskset_revision_20261111": {
+  "amendment": "plans/2026-11-11-v46u-taskset-revision-amendment.md",
+  "prune_receipt": "audits/taskset-revision-2026-11-11/PRUNE.json",
+  "builders": [
+   "tools/build_compute_stratum_20261111.py",
+   "tools/build_memory_stratum_20261111.py"
+  ],
+  "snapshot_extension": "audits/snapshot-extension-2026-11-11/RECEIPT.json",
+  "new_payloads": {
+   "tasks/holdout/fin-c1-pct-951/environment/payloads.json": "9ae3b4aad5753ea0ba847a5a677b4ea1bdfc6d03dcc261799f1a34ef4ef26c88",
+   "tasks/holdout/fin-c1-pnl-952/environment/payloads.json": "68b50a732e34effca3b77dcd3730919127ee8bbef3963ae7ca74906a69ec822e",
+   "tasks/holdout/fin-c2-ma-953/environment/payloads.json": "43e5866cfc88d6e4da53283d32018d6fcb3b4d57b9fc2f830285fb2dbbecb8a0",
+   "tasks/holdout/fin-c2-rs-954/environment/payloads.json": "24d0e709256c58d446549115cc819f4f01c550a75c881e1650f0635d169038d8",
+   "tasks/holdout/fin-c3-logann-955/environment/payloads.json": "35585aa840638085962a782c28a392c4f96f33d32c588e215be8890e5628c68a",
+   "tasks/holdout/fin-c3-volregime-956/environment/payloads.json": "6d83c0a14d1bcf7418dcc1b930aca521b8937f27517dee5cfd73112e06820ad7",
+   "tasks/holdout/fin-c4-dca-957/environment/payloads.json": "cfd8320627ef540b012c924884e07f3de7b27c2c25bf08ec20eb36330fa4bad5",
+   "tasks/holdout/fin-m1-screen-971/environment/payloads.json": "e06009cde05738f44bf8f2e41aee1a4ad30097dd573e1f0f8454a458d57fbe31",
+   "tasks/holdout/fin-m2-screen-972/environment/payloads.json": "276903442b4beb17c519ec98d84264b9e00105f58789177a67d1740d217e19ab",
+   "tasks/holdout/fin-m3-split-973/environment/payloads.json": "276903442b4beb17c519ec98d84264b9e00105f58789177a67d1740d217e19ab",
+   "tasks/holdout/fin-m3-update-974/environment/payloads.json": "e06009cde05738f44bf8f2e41aee1a4ad30097dd573e1f0f8454a458d57fbe31",
+   "tasks/holdout/fin-m4-basket-975/environment/payloads.json": "a9f6c5bbc88e2d5ce9db39d6b717bd795947f40d723a18f390e57d9777d38427",
+   "tasks/holdout/fin-m4-port-976/environment/payloads.json": "b8d3c65991609a84e165c065b29026ff7dd8edc1b7875379976bbd3ff614249b",
+   "tasks/holdout/fin-m5-stale-977/environment/payloads.json": "d9f351eb8f9bbd496b3c1dcde1e103b7d8857bb1b6ce2c767d2dfdc838db2cdc",
+   "tasks/main/fin-c1-chg-402/environment/payloads.json": "b18ac1fe0c1698ba02a9316660cbb696c10fcfa49c204be3dae789dcc31caee3",
+   "tasks/main/fin-c1-cmp-408/environment/payloads.json": "46a46c5002c4531bdac26e129d026117615e84f7ecdfb49bb6610bced4b78e53",
+   "tasks/main/fin-c1-idx-404/environment/payloads.json": "52c96b90cfd1ed6777a318d3ed8f7824bdc39ed888ed089a7dd4895648489c19",
+   "tasks/main/fin-c1-pct-401/environment/payloads.json": "602defde19de084c0f5ea8b88825d753ac50c063f9f1fbcd235a6c94620ec559",
+   "tasks/main/fin-c1-pct-407/environment/payloads.json": "0d72bb64aef0d4b8d934c793a68cc5bf29fef3ed59739b7f01c03da52f82a5b6",
+   "tasks/main/fin-c1-pnl-405/environment/payloads.json": "9c43e876643a9e2da0307918eef06f013ce5dba8a576a0685d06a931b7d22481",
+   "tasks/main/fin-c1-ratio-403/environment/payloads.json": "1b3d72d619e24850bcdab990310c83b3be273ff891745afea125e243811fd95b",
+   "tasks/main/fin-c1-ratio-406/environment/payloads.json": "305b1f4129dfa2688bbe0a317f8310266df5569eba709ea2ac7b252e55e0e7b4",
+   "tasks/main/fin-c2-ann-414/environment/payloads.json": "71cf80205b4b990d9474caaaa44bd3a851de3d4babb053417eac3aa254a4fa7b",
+   "tasks/main/fin-c2-eqw-415/environment/payloads.json": "b781df61a9b19ae13b64b127ac6820e5357488dd9f7e2420d5752e7a3aca8ded",
+   "tasks/main/fin-c2-ma-409/environment/payloads.json": "9ae3b4aad5753ea0ba847a5a677b4ea1bdfc6d03dcc261799f1a34ef4ef26c88",
+   "tasks/main/fin-c2-ma-416/environment/payloads.json": "3f91d5f2affd39cc40e4997fc60ee8b2cdaa41ac25c42b360772334b8a045871",
+   "tasks/main/fin-c2-pct-411/environment/payloads.json": "6213c3ed33f66379b4137c574f8d93c11c5ff0ae875614a82d04556195c68a87",
+   "tasks/main/fin-c2-rs-412/environment/payloads.json": "bfa5948f6b359170074dcbc1cce548aed4e8ce3c0348c47c5a753d200145b643",
+   "tasks/main/fin-c2-vol-410/environment/payloads.json": "68b50a732e34effca3b77dcd3730919127ee8bbef3963ae7ca74906a69ec822e",
+   "tasks/main/fin-c2-vol-413/environment/payloads.json": "9898637065cc0c364c1844d776e66cc95930975cb6017b6f52b26e8bb2867997",
+   "tasks/main/fin-c3-doubling-422/environment/payloads.json": "9898637065cc0c364c1844d776e66cc95930975cb6017b6f52b26e8bb2867997",
+   "tasks/main/fin-c3-geo-417/environment/payloads.json": "ea3a22dccd6e5cf5320e9fc915c82f92b633debac79bce11f6a783b27121d1d2",
+   "tasks/main/fin-c3-geo-424/environment/payloads.json": "9a2e49f8b39e7cf6f264a67cbb4fcf30202eb02621d06b8bb12545c45781fe97",
+   "tasks/main/fin-c3-logann-418/environment/payloads.json": "5dfe56de7895c7b97c9f9a2c26e07950a5828b23cccb42caab2a9e2d26fb5c27",
+   "tasks/main/fin-c3-maladder-419/environment/payloads.json": "ea50b3f784eae81fdafbc5bb8e7c2ea83f885b1f7b3d5535fc9e646b22aecbc7",
+   "tasks/main/fin-c3-rschain-423/environment/payloads.json": "01de4588a8d8235e373cc7ac2270739bb17957ca681d4ca252401c1e88cc2b48",
+   "tasks/main/fin-c3-volregime-420/environment/payloads.json": "4233d137981b9641071c318f22416a590c926b6147c0cbf56874397fffa4098a",
+   "tasks/main/fin-c3-volshare-421/environment/payloads.json": "7b4735bfdb0ecb5516593d661b15a1a09427327d7441176bfdde6c0e1d7955c4",
+   "tasks/main/fin-c4-dca-428/environment/payloads.json": "5c6f27bea68ef76213de07ebd0e7d6677c555249683fdbde67825c7d3b96e15d",
+   "tasks/main/fin-c4-logann-427/environment/payloads.json": "8976f1a2128c89dfe71ec82d20b07a9397af81dd1ad84ae2b8aba9ad940a5a60",
+   "tasks/main/fin-c4-rebal-426/environment/payloads.json": "22afcf4563e1a1d5d5ec50a99e66f1327fb713e219164c21c9c1e6136069b5a5",
+   "tasks/main/fin-c4-signal-429/environment/payloads.json": "e32aacd6c50318715c42552e58f5f27040e939a926df263ebbc48121493b190e",
+   "tasks/main/fin-c4-stagger-425/environment/payloads.json": "05831dd5ee13764767253122c420758fc641b2bf5005bf6c92eaefa2be687882",
+   "tasks/main/fin-c4-stagger-430/environment/payloads.json": "c419fe0ff5de296dee110f1361d5a26bdd5a4fe25f99786bcf758ce16062c655",
+   "tasks/main/fin-m1-port-506/environment/payloads.json": "825be3ca65b4877074dfbb1ae25ad1a2dfc58c6fba899430489fde5499308f58",
+   "tasks/main/fin-m1-screen-501/environment/payloads.json": "3cd972b4affa74d9a4d764358389e5abe58a4c6e5e2f016c089dcac1c27167eb",
+   "tasks/main/fin-m1-screen-502/environment/payloads.json": "c493f342a6591161607df94901497713938a90103ec2abdedf9098b49d6de160",
+   "tasks/main/fin-m1-screen-503/environment/payloads.json": "e217411bcc3663f87337da5300b863d6e5751d8774bb588768f1e14691ef4c96",
+   "tasks/main/fin-m1-screen-504/environment/payloads.json": "773c57078dc5b40feb73ec60f8e26bb18950c448967f5eb0e786328acafaaf52",
+   "tasks/main/fin-m1-screen-505/environment/payloads.json": "b354bf476a60638c32b3beab66c72f05fb7eaccacb7b19d132f7de6322916442",
+   "tasks/main/fin-m2-basket-510/environment/payloads.json": "1933b831fbd228b0ac98fad303de28ffb8e0fd47b6f3c2f39685fc96acad1982",
+   "tasks/main/fin-m2-port-511/environment/payloads.json": "87f73aa9fee29fe0d3ef0a55999141d225d075dab511cafc0a18abf87c6d0a22",
+   "tasks/main/fin-m2-screen-507/environment/payloads.json": "3cd972b4affa74d9a4d764358389e5abe58a4c6e5e2f016c089dcac1c27167eb",
+   "tasks/main/fin-m2-screen-508/environment/payloads.json": "c493f342a6591161607df94901497713938a90103ec2abdedf9098b49d6de160",
+   "tasks/main/fin-m2-screen-509/environment/payloads.json": "e217411bcc3663f87337da5300b863d6e5751d8774bb588768f1e14691ef4c96",
+   "tasks/main/fin-m2-top-512/environment/payloads.json": "b354bf476a60638c32b3beab66c72f05fb7eaccacb7b19d132f7de6322916442",
+   "tasks/main/fin-m3-split-513/environment/payloads.json": "3cd972b4affa74d9a4d764358389e5abe58a4c6e5e2f016c089dcac1c27167eb",
+   "tasks/main/fin-m3-split-514/environment/payloads.json": "c493f342a6591161607df94901497713938a90103ec2abdedf9098b49d6de160",
+   "tasks/main/fin-m3-split-515/environment/payloads.json": "773c57078dc5b40feb73ec60f8e26bb18950c448967f5eb0e786328acafaaf52",
+   "tasks/main/fin-m3-split-516/environment/payloads.json": "b354bf476a60638c32b3beab66c72f05fb7eaccacb7b19d132f7de6322916442",
+   "tasks/main/fin-m3-update-517/environment/payloads.json": "e217411bcc3663f87337da5300b863d6e5751d8774bb588768f1e14691ef4c96",
+   "tasks/main/fin-m3-update-518/environment/payloads.json": "3cd972b4affa74d9a4d764358389e5abe58a4c6e5e2f016c089dcac1c27167eb",
+   "tasks/main/fin-m3-update-519/environment/payloads.json": "c493f342a6591161607df94901497713938a90103ec2abdedf9098b49d6de160",
+   "tasks/main/fin-m3-update-520/environment/payloads.json": "773c57078dc5b40feb73ec60f8e26bb18950c448967f5eb0e786328acafaaf52",
+   "tasks/main/fin-m4-port-524/environment/payloads.json": "ccf56ab15d52b65c29761aee5ea44c8779cd6af417d87d5a870acfe6b2897a63",
+   "tasks/main/fin-m4-port-525/environment/payloads.json": "129be1565a5b70136ddaee3bac1c8ce7dce7c70cdc8b374cd6dabe9ba7fb3643",
+   "tasks/main/fin-m4-port-526/environment/payloads.json": "f6bd810ccef0e8236c9c9efbded073efb0697bab1f020097fbbbe312f7753ffc",
+   "tasks/main/fin-m4-rule-521/environment/payloads.json": "3cd972b4affa74d9a4d764358389e5abe58a4c6e5e2f016c089dcac1c27167eb",
+   "tasks/main/fin-m4-rule-522/environment/payloads.json": "b354bf476a60638c32b3beab66c72f05fb7eaccacb7b19d132f7de6322916442",
+   "tasks/main/fin-m4-rule-523/environment/payloads.json": "c493f342a6591161607df94901497713938a90103ec2abdedf9098b49d6de160",
+   "tasks/main/fin-m5-revoke-529/environment/payloads.json": "b354bf476a60638c32b3beab66c72f05fb7eaccacb7b19d132f7de6322916442",
+   "tasks/main/fin-m5-revoke-530/environment/payloads.json": "e217411bcc3663f87337da5300b863d6e5751d8774bb588768f1e14691ef4c96",
+   "tasks/main/fin-m5-stale-527/environment/payloads.json": "24741fee494ce0fc5a48dac1e5577729a81a0f23032effb9a9df23d2c40466a2",
+   "tasks/main/fin-m5-stale-528/environment/payloads.json": "089147710bf97ec80f17353f3b00dcfbccc5e5fdcad8687dfc312411f51f6aa2",
+   "tasks/pilot/fin-c1-pct-801/environment/payloads.json": "72c376460a862df58536e15ee8a48edc9da3e845082ad8957f8dd18de7c7e853",
+   "tasks/pilot/fin-c1-rs-802/environment/payloads.json": "9bd97c564ee0af3859dd79190ebbbad716bcdaa1af648ebe8e325860a3e0d6d7",
+   "tasks/pilot/fin-c2-eqw-804/environment/payloads.json": "11a251937b2b12a5af798f7f21f3f6150fc1569935f403519284921d8ae1a82d",
+   "tasks/pilot/fin-c2-ma-803/environment/payloads.json": "14d884eda0b3a0135e63c1dbabf617c8a9acb72f76c3356220b1700bb238c1a4",
+   "tasks/pilot/fin-c3-geo-805/environment/payloads.json": "d77d6be8471baabff1ae9c56328c0b92999b7a8348cd960deb24f31ff9f80b1d",
+   "tasks/pilot/fin-c3-maladder-806/environment/payloads.json": "82bd2b653cfc06f4ad44c844d6e8dc814f924382b1758a80d38a9f2908098d63",
+   "tasks/pilot/fin-c4-rebal-807/environment/payloads.json": "e29eaf2a43122dcfaa30df03a67141a66d6d3a316b539a39e5413f73f8514e80",
+   "tasks/pilot/fin-c4-signal-808/environment/payloads.json": "5f604bc9ea665ad7d2a9b1fa0540e621ac82d3dd0f88de3f540fe61f53bf1eef",
+   "tasks/pilot/fin-m1-screen-851/environment/payloads.json": "773c57078dc5b40feb73ec60f8e26bb18950c448967f5eb0e786328acafaaf52",
+   "tasks/pilot/fin-m2-screen-852/environment/payloads.json": "e217411bcc3663f87337da5300b863d6e5751d8774bb588768f1e14691ef4c96",
+   "tasks/pilot/fin-m3-split-853/environment/payloads.json": "3cd972b4affa74d9a4d764358389e5abe58a4c6e5e2f016c089dcac1c27167eb",
+   "tasks/pilot/fin-m3-update-854/environment/payloads.json": "b354bf476a60638c32b3beab66c72f05fb7eaccacb7b19d132f7de6322916442",
+   "tasks/pilot/fin-m4-port-855/environment/payloads.json": "f1ef2c88b4a98f731e0cd6c06e37b2dbc67e8ff1fa29f5cb6fde11771ac38b52",
+   "tasks/pilot/fin-m5-stale-856/environment/payloads.json": "3f6bae8c88afdfea39b48c4af88cbec20c73bcea2afc1db62c604a69f7bef87e"
+  },
+  "hard_compute_rule": "plans/2026-11-11-v46u-taskset-revision-amendment.md addendum (f); tools/compute_hard_templates_20261111.py"
+ }
+}

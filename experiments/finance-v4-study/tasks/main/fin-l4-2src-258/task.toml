@@ -1,0 +1,29 @@
+# Task benchmark harness tài chính (bộ 200+50) — sinh bởi tools/build_main.py
+id = "fin-l4-2src-258"
+title = "Đối chiếu 2 nguồn ETH (crypto)"
+version = 2
+created = "2026-11-01"
+level = "L4"
+family = "L4·D two-source"
+financebench_type = "cross-source verification"
+entity = "ETH"
+asset = "crypto"
+data_zone = "green"
+data_pairs = ["yf:main", "cohlcv:ETHUSDT", "msn:main"]
+snapshot_date = "2026-11-01"
+universe_cap = 0
+banned_tools = ["web_search", "web_fetch", "sentiment_score"]
+human_time_band = "15–60 phút"
+time_limit_min = 30
+tools_expected = ["yf_commodities", "vn_crypto_ohlcv", "vn_msn_fx_gold"]
+mcp_payloads = "environment/payloads.json"
+snapshot_required = true
+split = "main"
+
+confirmatory_eligible = true
+
+[scoring]
+type = "value"
+gold = "solution/gold.json"
+oracle = "solution/oracle.py"
+grader = "tests/grader.py"

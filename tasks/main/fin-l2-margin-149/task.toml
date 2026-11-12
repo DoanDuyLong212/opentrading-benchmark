@@ -1,7 +1,7 @@
 # Task benchmark harness tài chính (bộ 200+50) — sinh bởi tools/build_main.py
 id = "fin-l2-margin-149"
 title = "Biên lợi nhuận gộp VGC"
-version = 1
+version = 2
 created = "2026-11-01"
 level = "L2"
 family = "L2·B margin"
@@ -19,6 +19,8 @@ tools_expected = ["financial_detail"]
 mcp_payloads = "environment/payloads.json"
 snapshot_required = true
 split = "main"
+
+confirmatory_eligible = true
 
 [scoring]
 type = "value"

@@ -1,0 +1,100 @@
+{
+ "snapshot_date": "2026-11-01",
+ "note": "Envelope MCP tái sử dụng nguyên vẹn từ task đã ghi snapshot 2026-11-01 (memory stratum batch-3); không capture mới. Nguồn: fin-l5-compare-288",
+ "tools": {
+  "yf:main": {
+   "tool": "yf_commodities",
+   "params": {
+    "tickers": [
+     "GC=F",
+     "SI=F",
+     "NG=F",
+     "HG=F",
+     "BZ=F",
+     "CL=F",
+     "BTC-USD",
+     "ETH-USD",
+     "SOL-USD",
+     "BNB-USD",
+     "GBPUSD=X",
+     "JPY=X"
+    ],
+    "period": "5d",
+    "interval": "1d"
+   },
+   "envelope": {
+    "data": {
+     "items": [
+      {
+       "ticker": "GC=F",
+       "price": 3898.89990234375,
+       "prev": 4031.39990234375
+      },
+      {
+       "ticker": "SI=F",
+       "price": 49.2760009765625,
+       "prev": 52.191001892089844
+      },
+      {
+       "ticker": "NG=F",
+       "price": 2.8980000019073486,
+       "prev": 2.9519999027252197
+      },
+      {
+       "ticker": "HG=F",
+       "price": 6.48199987411499,
+       "prev": 6.580999851226807
+      },
+      {
+       "ticker": "BZ=F",
+       "price": 113.43000030517578,
+       "prev": 114.87999725341797
+      },
+      {
+       "ticker": "CL=F",
+       "price": 104.12000274658203,
+       "prev": 102
+      },
+      {
+       "ticker": "BTC-USD",
+       "price": 77893.5078125,
+       "prev": 77434.75
+      },
+      {
+       "ticker": "ETH-USD",
+       "price": 2266.1201171875,
+       "prev": 2252.747802734375
+      },
+      {
+       "ticker": "SOL-USD",
+       "price": 94.94999694824219,
+       "prev": 95.34821319580078
+      },
+      {
+       "ticker": "BNB-USD",
+       "price": 714.280029296875,
+       "prev": 702.6133422851562
+      },
+      {
+       "ticker": "GBPUSD=X",
+       "price": 1.3392976522445679,
+       "prev": 1.3378641605377197
+      },
+      {
+       "ticker": "JPY=X",
+       "price": 157.8040008544922,
+       "prev": 157.83299255371094
+      }
+     ]
+    },
+    "provenance": {
+     "source": "yfinance",
+     "as_of": "2026-11-01T21:30:24.862185+07:00",
+     "timezone": "Asia/Ho_Chi_Minh"
+    },
+    "availability": "available",
+    "warnings": []
+   }
+  }
+ }
+}

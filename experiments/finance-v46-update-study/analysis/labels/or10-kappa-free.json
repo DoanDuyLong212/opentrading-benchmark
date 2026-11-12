@@ -1,0 +1,18 @@
+{
+ "judge_model": "nvidia/nemotron-3-ultra-550b-a55b:free",
+ "returned_models": {
+  "nvidia/nemotron-3-ultra-550b-a55b:free": 62
+ },
+ "labels": "analysis/labels/or10-labels.jsonl",
+ "labeller": "root review session (agent reviewer, not an external human)",
+ "n": 62,
+ "agreement": 1.0,
+ "cohen_kappa": 1.0,
+ "confusion": {
+  "TP": 60,
+  "FN_judge": 0,
+  "FP_judge": 0,
+  "TN": 2
+ },
+ "caveat": "only 2 negatives; re-check on main"
+}

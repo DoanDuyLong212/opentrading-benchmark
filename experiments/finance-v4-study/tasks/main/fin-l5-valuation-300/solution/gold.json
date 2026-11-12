@@ -1,0 +1,68 @@
+{
+  "task_id": "fin-l5-valuation-300",
+  "scoring": "value",
+  "solution": {
+    "price": 3100.0,
+    "eps": -3000.19
+  },
+  "as_of": "2026-11-01T23:29:11.004748+07:00",
+  "split": "main",
+  "expects": [
+    {
+      "type": "value",
+      "path": "values.price",
+      "gold": 3100.0,
+      "tol": {
+        "rel": 0.005
+      }
+    },
+    {
+      "type": "value",
+      "path": "values.eps",
+      "gold": -3000.19,
+      "tol": {
+        "rel": 0.005
+      }
+    },
+    {
+      "type": "tokens",
+      "path": "note",
+      "accept": [
+        "âm",
+        "không tính được",
+        "không xác định"
+      ],
+      "reject": []
+    },
+    {
+      "type": "str",
+      "path": "source",
+      "accept": [
+        "valuation_run"
+      ]
+    }
+  ],
+  "contract_version": 2,
+  "provenance_contract": [
+    {
+      "tool": "valuation_run",
+      "source": "computed-local",
+      "as_of": "2026-11-01T23:29:11.004748+07:00",
+      "matched_entry_id": "val:POM",
+      "response_sha256": "6249aea837c146cdd52465834f1bcadf00ad8df14bb9e40386b3b4052f5fa4d3"
+    }
+  ],
+  "payload_sha256": "b2fb88469e70aaf4681dc7e0cd18b67993081e74350548c44b939cfeee4a6ef4",
+  "provenance_catalog": [
+    {
+      "tool": "valuation_run",
+      "source": "computed-local",
+      "as_of": "2026-11-01T23:29:11.004748+07:00",
+      "matched_entry_id": "val:POM",
+      "response_sha256": "6249aea837c146cdd52465834f1bcadf00ad8df14bb9e40386b3b4052f5fa4d3"
+    }
+  ],
+  "required_payload_keys": [
+    "val:POM"
+  ]
+}

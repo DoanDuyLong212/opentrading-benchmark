@@ -1,0 +1,1079 @@
+{
+  "splits": {
+    "main": {
+      "n": 200,
+      "eligible": 183,
+      "levels": {
+        "L3": 41,
+        "L1": 34,
+        "L4": 49,
+        "L2": 36,
+        "L5": 40
+      }
+    },
+    "pilot": {
+      "n": 24,
+      "eligible": 22,
+      "levels": {
+        "L4": 4,
+        "L1": 5,
+        "L3": 6,
+        "L5": 3,
+        "L2": 6
+      }
+    },
+    "smoke": {
+      "n": 3,
+      "eligible": 3,
+      "levels": {
+        "SMOKE": 3
+      }
+    },
+    "holdout": {
+      "n": 50,
+      "eligible": 43,
+      "levels": {
+        "L4": 10,
+        "L2": 10,
+        "L1": 10,
+        "L5": 10,
+        "L3": 10
+      }
+    }
+  },
+  "new10": [
+    {
+      "id": "fin-l3-breadth-301",
+      "payload_hash_matches_migration": true,
+      "gold_payload_hash_matches": true,
+      "scoring": "value",
+      "expects": [
+        {
+          "type": "value",
+          "path": "values.up",
+          "gold": 1,
+          "tol": {
+            "abs": 0
+          }
+        },
+        {
+          "type": "value",
+          "path": "values.down",
+          "gold": 4,
+          "tol": {
+            "abs": 0
+          }
+        },
+        {
+          "type": "str",
+          "path": "values.winner",
+          "accept": [
+            "DXG"
+          ]
+        },
+        {
+          "type": "period",
+          "path": "period",
+          "accept": [
+            "30/10",
+            "30-10",
+            "30.10",
+            "2026-10-30"
+          ]
+        },
+        {
+          "type": "str",
+          "path": "source",
+          "accept": [
+            "vn_equity_quote_batch"
+          ]
+        }
+      ],
+      "bonus_numbers": null,
+      "tools": {
+        "batch:bds1": {
+          "tool": "vn_equity_quote_batch",
+          "params": {
+            "symbols": [
+              "KDH",
+              "NLG",
+              "DXG",
+              "PDR",
+              "KBC"
+            ]
+          },
+          "data_keys": [
+            "quotes"
+          ],
+          "as_of": "2026-11-01T23:07:49.498325+07:00"
+        }
+      },
+      "response_sha_match": {
+        "batch:bds1": true
+      },
+      "oracle": {
+        "code": 0,
+        "stdout": "ORACLE OK — gold tai tao duoc tu payload (fin-l3-breadth-301)\n",
+        "stderr": ""
+      },
+      "synthesized_grade": {
+        "task_id": "fin-l3-breadth-301",
+        "success": true,
+        "fp": 0,
+        "error_type": null,
+        "checks": [
+          {
+            "check": "provenance",
+            "pass": true,
+            "detail": "recorded response identity/provider/as_of coverage and snapshot hash; call IDs independently verified by driver"
+          },
+          {
+            "check": "value:values.up",
+            "pass": true,
+            "detail": "answer=1.0 gold=1 tol={'abs': 0}"
+          },
+          {
+            "check": "value:values.down",
+            "pass": true,
+            "detail": "answer=4.0 gold=4 tol={'abs': 0}"
+          },
+          {
+            "check": "str:values.winner",
+            "pass": true,
+            "detail": "answer='DXG' accept=['DXG']"
+          },
+          {
+            "check": "period:period",
+            "pass": true,
+            "detail": "period='30/10 / 30-10 / 30.10 / 2026-10-30' accept=['30/10', '30-10', '30.10', '2026-10-30']"
+          },
+          {
+            "check": "str:source",
+            "pass": true,
+            "detail": "answer='vn_equity_quote_batch' accept=['vn_equity_quote_batch']"
+          }
+        ],
+        "schema_valid": true,
+        "provenance_correctness": true,
+        "semantic_correctness": true
+      }
+    },
+    {
+      "id": "fin-l4-2src-302",
+      "payload_hash_matches_migration": true,
+      "gold_payload_hash_matches": true,
+      "scoring": "value",
+      "expects": [
+        {
+          "type": "value",
+          "path": "value",
+          "gold": 6.19,
+          "tol": {
+            "abs": 0.1
+          }
+        },
+        {
+          "type": "unit",
+          "path": "unit",
+          "accept": [
+            "%",
+            "phần trăm"
+          ]
+        },
+        {
+          "type": "str_all",
+          "path": "source",
+          "accept": [
+            "valuation_run",
+            "peer_compare"
+          ]
+        }
+      ],
+      "bonus_numbers": null,
+      "tools": {
+        "val:VGI": {
+          "tool": "valuation_run",
+          "params": {
+            "symbol": "VGI"
+          },
+          "data_keys": [
+            "symbol",
+            "price",
+            "eps",
+            "bvps",
+            "per",
+            "pb"
+          ],
+          "as_of": "2026-11-01T23:58:42.323307+07:00"
+        },
+        "peer:tech_p": {
+          "tool": "peer_compare",
+          "params": {
+            "symbol": "CMG",
+            "peers": [
+              "ELC",
+              "VGI",
+              "CTR",
+              "FOX"
+            ]
+          },
+          "data_keys": [
+            "rows"
+          ],
+          "as_of": "2026-11-01T23:14:34.298379+07:00"
+        }
+      },
+      "response_sha_match": {
+        "val:VGI": true,
+        "peer:tech_p": true
+      },
+      "oracle": {
+        "code": 0,
+        "stdout": "ORACLE OK — gold tai tao duoc tu payload (fin-l4-2src-302)\n",
+        "stderr": ""
+      },
+      "synthesized_grade": {
+        "task_id": "fin-l4-2src-302",
+        "success": true,
+        "fp": 0,
+        "error_type": null,
+        "checks": [
+          {
+            "check": "provenance",
+            "pass": true,
+            "detail": "recorded response identity/provider/as_of coverage and snapshot hash; call IDs independently verified by driver"
+          },
+          {
+            "check": "value:value",
+            "pass": true,
+            "detail": "answer=6.19 gold=6.19 tol={'abs': 0.1}"
+          },
+          {
+            "check": "unit:unit",
+            "pass": true,
+            "detail": "answer='%' canon='pct' accept=['pct', 'pct']"
+          },
+          {
+            "check": "str_all:source",
+            "pass": true,
+            "detail": "answer='valuation_run + peer_compare' need_all=['valuation_run', 'peer_compare']"
+          }
+        ],
+        "schema_valid": true,
+        "provenance_correctness": true,
+        "semantic_correctness": true
+      }
+    },
+    {
+      "id": "fin-l4-chain-303",
+      "payload_hash_matches_migration": true,
+      "gold_payload_hash_matches": true,
+      "scoring": "value",
+      "expects": [
+        {
+          "type": "str",
+          "path": "values.symbol",
+          "accept": [
+            "FTS"
+          ]
+        },
+        {
+          "type": "value",
+          "path": "values.rsi14",
+          "gold": 35.22,
+          "tol": {
+            "abs": 0.1
+          }
+        },
+        {
+          "type": "value",
+          "path": "values.pe",
+          "gold": 27.12,
+          "tol": {
+            "rel": 0.005
+          }
+        },
+        {
+          "type": "period",
+          "path": "period",
+          "accept": [
+            "30/10",
+            "30-10",
+            "30.10",
+            "2026-10-30"
+          ]
+        },
+        {
+          "type": "str_all",
+          "path": "source",
+          "accept": [
+            "signals_technical",
+            "peer_compare"
+          ]
+        }
+      ],
+      "bonus_numbers": null,
+      "tools": {
+        "tech:VCI": {
+          "tool": "signals_technical",
+          "params": {
+            "symbol": "VCI",
+            "interval": "1D"
+          },
+          "data_keys": [
+            "symbol",
+            "rsi14"
+          ],
+          "as_of": "2026-11-01T23:22:54.600606+07:00"
+        },
+        "tech:VIX": {
+          "tool": "signals_technical",
+          "params": {
+            "symbol": "VIX",
+            "interval": "1D"
+          },
+          "data_keys": [
+            "symbol",
+            "rsi14"
+          ],
+          "as_of": "2026-11-01T23:22:53.108682+07:00"
+        },
+        "tech:SHS": {
+          "tool": "signals_technical",
+          "params": {
+            "symbol": "SHS",
+            "interval": "1D"
+          },
+          "data_keys": [
+            "symbol",
+            "rsi14"
+          ],
+          "as_of": "2026-11-01T23:22:55.502199+07:00"
+        },
+        "tech:MBS": {
+          "tool": "signals_technical",
+          "params": {
+            "symbol": "MBS",
+            "interval": "1D"
+          },
+          "data_keys": [
+            "symbol",
+            "rsi14"
+          ],
+          "as_of": "2026-11-01T23:22:55.202349+07:00"
+        },
+        "tech:FTS": {
+          "tool": "signals_technical",
+          "params": {
+            "symbol": "FTS",
+            "interval": "1D"
+          },
+          "data_keys": [
+            "symbol",
+            "rsi14"
+          ],
+          "as_of": "2026-11-01T23:22:54.113227+07:00"
+        },
+        "peer:sec_p": {
+          "tool": "peer_compare",
+          "params": {
+            "symbol": "VIX",
+            "peers": [
+              "VCI",
+              "SHS",
+              "MBS",
+              "FTS"
+            ]
+          },
+          "data_keys": [
+            "rows"
+          ],
+          "as_of": "2026-11-01T23:08:12.898974+07:00"
+        }
+      },
+      "response_sha_match": {
+        "tech:VCI": true,
+        "tech:VIX": true,
+        "tech:SHS": true,
+        "tech:MBS": true,
+        "tech:FTS": true,
+        "peer:sec_p": true
+      },
+      "oracle": {
+        "code": 0,
+        "stdout": "ORACLE OK — gold tai tao duoc tu payload (fin-l4-chain-303)\n",
+        "stderr": ""
+      },
+      "synthesized_grade": {
+        "task_id": "fin-l4-chain-303",
+        "success": true,
+        "fp": 0,
+        "error_type": null,
+        "checks": [
+          {
+            "check": "provenance",
+            "pass": true,
+            "detail": "recorded response identity/provider/as_of coverage and snapshot hash; call IDs independently verified by driver"
+          },
+          {
+            "check": "str:values.symbol",
+            "pass": true,
+            "detail": "answer='FTS' accept=['FTS']"
+          },
+          {
+            "check": "value:values.rsi14",
+            "pass": true,
+            "detail": "answer=35.22 gold=35.22 tol={'abs': 0.1}"
+          },
+          {
+            "check": "value:values.pe",
+            "pass": true,
+            "detail": "answer=27.12 gold=27.12 tol={'rel': 0.005}"
+          },
+          {
+            "check": "period:period",
+            "pass": true,
+            "detail": "period='30/10 / 30-10 / 30.10 / 2026-10-30' accept=['30/10', '30-10', '30.10', '2026-10-30']"
+          },
+          {
+            "check": "str_all:source",
+            "pass": true,
+            "detail": "answer='signals_technical + peer_compare' need_all=['signals_technical', 'peer_compare']"
+          }
+        ],
+        "schema_valid": true,
+        "provenance_correctness": true,
+        "semantic_correctness": true
+      }
+    },
+    {
+      "id": "fin-l4-chain-304",
+      "payload_hash_matches_migration": true,
+      "gold_payload_hash_matches": true,
+      "scoring": "value",
+      "expects": [
+        {
+          "type": "str",
+          "path": "values.symbol",
+          "accept": [
+            "PVS"
+          ]
+        },
+        {
+          "type": "value",
+          "path": "values.rsi14",
+          "gold": 35.86,
+          "tol": {
+            "abs": 0.1
+          }
+        },
+        {
+          "type": "value",
+          "path": "values.margin_pct",
+          "gold": 9.62,
+          "tol": {
+            "abs": 0.1
+          }
+        },
+        {
+          "type": "period",
+          "path": "period",
+          "accept": [
+            "Q3/2026",
+            "quý 3/2026",
+            "q3 2026",
+            "q3/26"
+          ]
+        },
+        {
+          "type": "str_all",
+          "path": "source",
+          "accept": [
+            "signals_technical",
+            "financial_detail"
+          ]
+        }
+      ],
+      "bonus_numbers": null,
+      "tools": {
+        "tech:PVS": {
+          "tool": "signals_technical",
+          "params": {
+            "symbol": "PVS",
+            "interval": "1D"
+          },
+          "data_keys": [
+            "symbol",
+            "rsi14"
+          ],
+          "as_of": "2026-11-01T23:26:05.000000+07:00"
+        },
+        "tech:PVD": {
+          "tool": "signals_technical",
+          "params": {
+            "symbol": "PVD",
+            "interval": "1D"
+          },
+          "data_keys": [
+            "symbol",
+            "rsi14"
+          ],
+          "as_of": "2026-11-01T23:26:05.000000+07:00"
+        },
+        "tech:BSR": {
+          "tool": "signals_technical",
+          "params": {
+            "symbol": "BSR",
+            "interval": "1D"
+          },
+          "data_keys": [
+            "symbol",
+            "rsi14"
+          ],
+          "as_of": "2026-11-01T23:26:05.000000+07:00"
+        },
+        "tech:PLX": {
+          "tool": "signals_technical",
+          "params": {
+            "symbol": "PLX",
+            "interval": "1D"
+          },
+          "data_keys": [
+            "symbol",
+            "rsi14"
+          ],
+          "as_of": "2026-11-01T23:26:05.000000+07:00"
+        },
+        "tech:POW": {
+          "tool": "signals_technical",
+          "params": {
+            "symbol": "POW",
+            "interval": "1D"
+          },
+          "data_keys": [
+            "symbol",
+            "rsi14"
+          ],
+          "as_of": "2026-11-01T23:26:05.000000+07:00"
+        },
+        "fd:PVS": {
+          "tool": "financial_detail",
+          "params": {
+            "symbol": "PVS",
+            "statement": "KQKD",
+            "periods_n": 4
+          },
+          "data_keys": [
+            "symbol",
+            "unit",
+            "periods",
+            "rows"
+          ],
+          "as_of": "2026-11-01T22:44:39.273108+07:00"
+        }
+      },
+      "response_sha_match": {
+        "tech:PVS": true,
+        "tech:PVD": true,
+        "tech:BSR": true,
+        "tech:PLX": true,
+        "tech:POW": true,
+        "fd:PVS": true
+      },
+      "oracle": {
+        "code": 0,
+        "stdout": "ORACLE OK — gold tai tao duoc tu payload (fin-l4-chain-304)\n",
+        "stderr": ""
+      },
+      "synthesized_grade": {
+        "task_id": "fin-l4-chain-304",
+        "success": true,
+        "fp": 0,
+        "error_type": null,
+        "checks": [
+          {
+            "check": "provenance",
+            "pass": true,
+            "detail": "recorded response identity/provider/as_of coverage and snapshot hash; call IDs independently verified by driver"
+          },
+          {
+            "check": "str:values.symbol",
+            "pass": true,
+            "detail": "answer='PVS' accept=['PVS']"
+          },
+          {
+            "check": "value:values.rsi14",
+            "pass": true,
+            "detail": "answer=35.86 gold=35.86 tol={'abs': 0.1}"
+          },
+          {
+            "check": "value:values.margin_pct",
+            "pass": true,
+            "detail": "answer=9.62 gold=9.62 tol={'abs': 0.1}"
+          },
+          {
+            "check": "period:period",
+            "pass": true,
+            "detail": "period='Q3/2026 / quý 3/2026 / q3 2026 / q3/26' accept=['Q3/2026', 'quý 3/2026', 'q3 2026', 'q3/26']"
+          },
+          {
+            "check": "str_all:source",
+            "pass": true,
+            "detail": "answer='signals_technical + financial_detail' need_all=['signals_technical', 'financial_detail']"
+          }
+        ],
+        "schema_valid": true,
+        "provenance_correctness": true,
+        "semantic_correctness": true
+      }
+    },
+    {
+      "id": "fin-l4-chain-305",
+      "payload_hash_matches_migration": true,
+      "gold_payload_hash_matches": true,
+      "scoring": "value",
+      "expects": [
+        {
+          "type": "str",
+          "path": "values.symbol",
+          "accept": [
+            "TPB"
+          ]
+        },
+        {
+          "type": "value",
+          "path": "values.pct_drop",
+          "gold": -1.94,
+          "tol": {
+            "abs": 0.01
+          }
+        },
+        {
+          "type": "value",
+          "path": "values.lnst_bn",
+          "gold": 2351.2,
+          "tol": {
+            "rel": 0.005
+          }
+        },
+        {
+          "type": "str_all",
+          "path": "source",
+          "accept": [
+            "vn_equity_quote_batch",
+            "financial_statements"
+          ]
+        }
+      ],
+      "bonus_numbers": null,
+      "tools": {
+        "batch:banks1": {
+          "tool": "vn_equity_quote_batch",
+          "params": {
+            "symbols": [
+              "ACB",
+              "STB",
+              "VPB",
+              "HDB",
+              "TPB"
+            ]
+          },
+          "data_keys": [
+            "quotes"
+          ],
+          "as_of": "2026-11-01T23:04:24.002593+07:00"
+        },
+        "fs:TPB": {
+          "tool": "financial_statements",
+          "params": {
+            "symbol": "TPB",
+            "period": "quarter",
+            "periods_n": 4
+          },
+          "data_keys": [
+            "symbol",
+            "periods",
+            "rows"
+          ],
+          "as_of": "2026-11-01T23:48:05.276403+07:00"
+        }
+      },
+      "response_sha_match": {
+        "batch:banks1": true,
+        "fs:TPB": true
+      },
+      "oracle": {
+        "code": 0,
+        "stdout": "ORACLE OK — gold tai tao duoc tu payload (fin-l4-chain-305)\n",
+        "stderr": ""
+      },
+      "synthesized_grade": {
+        "task_id": "fin-l4-chain-305",
+        "success": true,
+        "fp": 0,
+        "error_type": null,
+        "checks": [
+          {
+            "check": "provenance",
+            "pass": true,
+            "detail": "recorded response identity/provider/as_of coverage and snapshot hash; call IDs independently verified by driver"
+          },
+          {
+            "check": "str:values.symbol",
+            "pass": true,
+            "detail": "answer='TPB' accept=['TPB']"
+          },
+          {
+            "check": "value:values.pct_drop",
+            "pass": true,
+            "detail": "answer=-1.94 gold=-1.94 tol={'abs': 0.01}"
+          },
+          {
+            "check": "value:values.lnst_bn",
+            "pass": true,
+            "detail": "answer=2351.2 gold=2351.2 tol={'rel': 0.005}"
+          },
+          {
+            "check": "str_all:source",
+            "pass": true,
+            "detail": "answer='vn_equity_quote_batch + financial_statements' need_all=['vn_equity_quote_batch', 'financial_statements']"
+          }
+        ],
+        "schema_valid": true,
+        "provenance_correctness": true,
+        "semantic_correctness": true
+      }
+    },
+    {
+      "id": "fin-l4-chain-306",
+      "payload_hash_matches_migration": true,
+      "gold_payload_hash_matches": true,
+      "scoring": "value",
+      "expects": [
+        {
+          "type": "str",
+          "path": "values.symbol",
+          "accept": [
+            "PNJ"
+          ]
+        },
+        {
+          "type": "value",
+          "path": "values.revenue_bn",
+          "gold": 6994.69,
+          "tol": {
+            "rel": 0.005
+          }
+        },
+        {
+          "type": "str_all",
+          "path": "source",
+          "accept": [
+            "market_movers",
+            "financial_statements"
+          ]
+        }
+      ],
+      "bonus_numbers": null,
+      "tools": {
+        "movers:vn30": {
+          "tool": "market_movers",
+          "params": {
+            "top_n": 5,
+            "universe": "vn30"
+          },
+          "data_keys": [
+            "universe",
+            "gainers",
+            "losers",
+            "volume_leaders"
+          ],
+          "as_of": "2026-11-01T21:12:04.261634+07:00"
+        },
+        "fs:PNJ": {
+          "tool": "financial_statements",
+          "params": {
+            "symbol": "PNJ",
+            "period": "quarter",
+            "periods_n": 4
+          },
+          "data_keys": [
+            "symbol",
+            "periods",
+            "rows"
+          ],
+          "as_of": "2026-11-01T22:04:00.535310+07:00"
+        }
+      },
+      "response_sha_match": {
+        "movers:vn30": true,
+        "fs:PNJ": true
+      },
+      "oracle": {
+        "code": 0,
+        "stdout": "ORACLE OK — gold tai tao duoc tu payload (fin-l4-chain-306)\n",
+        "stderr": ""
+      },
+      "synthesized_grade": {
+        "task_id": "fin-l4-chain-306",
+        "success": true,
+        "fp": 0,
+        "error_type": null,
+        "checks": [
+          {
+            "check": "provenance",
+            "pass": true,
+            "detail": "recorded response identity/provider/as_of coverage and snapshot hash; call IDs independently verified by driver"
+          },
+          {
+            "check": "str:values.symbol",
+            "pass": true,
+            "detail": "answer='PNJ' accept=['PNJ']"
+          },
+          {
+            "check": "value:values.revenue_bn",
+            "pass": true,
+            "detail": "answer=6994.69 gold=6994.69 tol={'rel': 0.005}"
+          },
+          {
+            "check": "str_all:source",
+            "pass": true,
+            "detail": "answer='market_movers + financial_statements' need_all=['market_movers', 'financial_statements']"
+          }
+        ],
+        "schema_valid": true,
+        "provenance_correctness": true,
+        "semantic_correctness": true
+      }
+    },
+    {
+      "id": "fin-l4-future-307",
+      "payload_hash_matches_migration": true,
+      "gold_payload_hash_matches": true,
+      "scoring": "refusal",
+      "expects": null,
+      "bonus_numbers": [
+        12.0
+      ],
+      "tools": {
+        "vnq:VIX": {
+          "tool": "vn_quote_history",
+          "params": {
+            "symbol": "VIX"
+          },
+          "data_keys": [
+            "symbol",
+            "last",
+            "last_t"
+          ],
+          "as_of": "2026-11-01T22:40:53.500907+07:00"
+        }
+      },
+      "response_sha_match": {
+        "vnq:VIX": true
+      },
+      "oracle": {
+        "code": 0,
+        "stdout": "ORACLE OK — gold tai tao duoc tu payload (fin-l4-future-307)\n",
+        "stderr": ""
+      },
+      "synthesized_grade": {
+        "task_id": "fin-l4-future-307",
+        "success": true,
+        "fp": 0,
+        "error_type": null,
+        "checks": [
+          {
+            "check": "provenance",
+            "pass": true,
+            "detail": "recorded response identity/provider/as_of coverage and snapshot hash; call IDs independently verified by driver"
+          },
+          {
+            "check": "refusal_reason",
+            "pass": true,
+            "detail": "hit=['chưa công bố'] bad=[]"
+          }
+        ],
+        "bonus": {
+          "numbers": [],
+          "strings": [],
+          "hit": false
+        },
+        "schema_valid": true,
+        "provenance_correctness": true,
+        "semantic_correctness": true
+      }
+    },
+    {
+      "id": "fin-l4-future-308",
+      "payload_hash_matches_migration": true,
+      "gold_payload_hash_matches": true,
+      "scoring": "refusal",
+      "expects": null,
+      "bonus_numbers": [
+        15.0
+      ],
+      "tools": {
+        "vnq:MBS": {
+          "tool": "vn_quote_history",
+          "params": {
+            "symbol": "MBS"
+          },
+          "data_keys": [
+            "symbol",
+            "last",
+            "last_t"
+          ],
+          "as_of": "2026-11-01T22:40:52.097902+07:00"
+        }
+      },
+      "response_sha_match": {
+        "vnq:MBS": true
+      },
+      "oracle": {
+        "code": 0,
+        "stdout": "ORACLE OK — gold tai tao duoc tu payload (fin-l4-future-308)\n",
+        "stderr": ""
+      },
+      "synthesized_grade": {
+        "task_id": "fin-l4-future-308",
+        "success": true,
+        "fp": 0,
+        "error_type": null,
+        "checks": [
+          {
+            "check": "provenance",
+            "pass": true,
+            "detail": "recorded response identity/provider/as_of coverage and snapshot hash; call IDs independently verified by driver"
+          },
+          {
+            "check": "refusal_reason",
+            "pass": true,
+            "detail": "hit=['chưa công bố'] bad=[]"
+          }
+        ],
+        "bonus": {
+          "numbers": [],
+          "strings": [],
+          "hit": false
+        },
+        "schema_valid": true,
+        "provenance_correctness": true,
+        "semantic_correctness": true
+      }
+    },
+    {
+      "id": "fin-l4-nonexist-309",
+      "payload_hash_matches_migration": true,
+      "gold_payload_hash_matches": true,
+      "scoring": "refusal",
+      "expects": null,
+      "bonus_numbers": [],
+      "tools": {
+        "res:FPT2": {
+          "tool": "symbol_resolve",
+          "params": {
+            "query": "FPT2"
+          },
+          "data_keys": [
+            "query",
+            "resolved",
+            "candidates"
+          ],
+          "as_of": "2026-11-01T21:33:56.063683+07:00"
+        }
+      },
+      "response_sha_match": {
+        "res:FPT2": true
+      },
+      "oracle": {
+        "code": 0,
+        "stdout": "ORACLE OK — gold tai tao duoc tu payload (fin-l4-nonexist-309)\n",
+        "stderr": ""
+      },
+      "synthesized_grade": {
+        "task_id": "fin-l4-nonexist-309",
+        "success": true,
+        "fp": 0,
+        "error_type": null,
+        "checks": [
+          {
+            "check": "provenance",
+            "pass": true,
+            "detail": "recorded response identity/provider/as_of coverage and snapshot hash; call IDs independently verified by driver"
+          },
+          {
+            "check": "refusal_reason",
+            "pass": true,
+            "detail": "hit=['chưa công bố'] bad=[]"
+          }
+        ],
+        "bonus": {
+          "numbers": [],
+          "strings": [],
+          "hit": false
+        },
+        "schema_valid": true,
+        "provenance_correctness": true,
+        "semantic_correctness": true
+      }
+    },
+    {
+      "id": "fin-l4-nonexist-310",
+      "payload_hash_matches_migration": true,
+      "gold_payload_hash_matches": true,
+      "scoring": "refusal",
+      "expects": null,
+      "bonus_numbers": [],
+      "tools": {
+        "res:VCBX": {
+          "tool": "symbol_resolve",
+          "params": {
+            "query": "VCBX"
+          },
+          "data_keys": [
+            "query",
+            "resolved",
+            "candidates"
+          ],
+          "as_of": "2026-11-01T21:33:56.063683+07:00"
+        }
+      },
+      "response_sha_match": {
+        "res:VCBX": true
+      },
+      "oracle": {
+        "code": 0,
+        "stdout": "ORACLE OK — gold tai tao duoc tu payload (fin-l4-nonexist-310)\n",
+        "stderr": ""
+      },
+      "synthesized_grade": {
+        "task_id": "fin-l4-nonexist-310",
+        "success": true,
+        "fp": 0,
+        "error_type": null,
+        "checks": [
+          {
+            "check": "provenance",
+            "pass": true,
+            "detail": "recorded response identity/provider/as_of coverage and snapshot hash; call IDs independently verified by driver"
+          },
+          {
+            "check": "refusal_reason",
+            "pass": true,
+            "detail": "hit=['chưa công bố'] bad=[]"
+          }
+        ],
+        "bonus": {
+          "numbers": [],
+          "strings": [],
+          "hit": false
+        },
+        "schema_valid": true,
+        "provenance_correctness": true,
+        "semantic_correctness": true
+      }
+    }
+  ],
+  "holdout_shared_payload_tasks": 27
+}

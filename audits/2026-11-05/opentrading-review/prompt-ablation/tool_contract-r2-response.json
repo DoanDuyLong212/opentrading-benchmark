@@ -1,0 +1,35 @@
+{
+  "id": "chatcmpl-9857e476-22cb-4447-a704-c6efbc4c461b",
+  "choices": [
+    {
+      "index": 0,
+      "message": {
+        "content": "Mình đã lấy lịch sử giá của HPG để tìm giá đóng cửa phiên gần nhất.\n\nNguồn: opentrading · 01/11/2026.\n\n1 phiên gần nhất của HPG (trong 1 phiên đã lấy):\n\n| Ngày | Giá đóng cửa (đ) | Khối lượng (cp) |\n| --- | --- | --- |\n| 29/09/2026 | 64.270 | 1.234.567 |\n\n```json\n{\n  \"value\": 64.27,\n  \"unit\": \"nghìn đồng\",\n  \"period\": \"29/09/2026\",\n  \"source\": \"vn_quote_history\",\n  \"evidence\": [\n    {\n      \"tool\": \"vn_quote_history\",\n      \"source\": \"opentrading\",\n      \"as_of\": \"01/11/2026\",\n      \"call_id\": \"call_id_placeholder\",\n      \"payload_sha256\": \"payload_sha256_placeholder\",\n      \"matched_entry_id\": \"entry_id_placeholder\",\n      \"response_sha256\": \"response_sha256_placeholder\"\n    }\n  ]\n}\n```",
+        "role": "assistant",
+        "reasoning_content": null
+      },
+      "finish_reason": "stop",
+      "logprobs": null
+    }
+  ],
+  "created": 1793848625,
+  "model": "nvidia/nemotron-3.5-bolt-e4b",
+  "service_tier": null,
+  "system_fingerprint": null,
+  "object": "chat.completion",
+  "usage": {
+    "prompt_tokens": 3480,
+    "completion_tokens": 302,
+    "total_tokens": 3782,
+    "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 3456
+    },
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": null,
+      "audio_tokens": null,
+      "reasoning_tokens": 0,
+      "rejected_prediction_tokens": null
+    }
+  }
+}

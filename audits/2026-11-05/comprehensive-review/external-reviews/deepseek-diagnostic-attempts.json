@@ -1,0 +1,3678 @@
+[
+  {
+    "pass": "A",
+    "trial_id": "fin-l1-bctc-01__opentrading_finance__r1",
+    "task": "fin-l1-bctc-01",
+    "arm": "opentrading_finance",
+    "run": 1,
+    "status": "ok",
+    "success": true,
+    "error_type": null,
+    "attempt_count": 1,
+    "wall_ms": 182959,
+    "usage_complete": true,
+    "trial_source": "results/diag-deepseek-flash-20261105/trials.jsonl:1",
+    "manifest_path": "results/diag-deepseek-flash-20261105/manifest.json",
+    "provider_errors": [],
+    "native_watchdog_event": false,
+    "watchdog_in_primary_notes": false,
+    "watchdog_sources": [],
+    "ledger_path": "results/diag-deepseek-flash-20261105/trials/fin-l1-bctc-01__opentrading_finance__r1/attempts/01-34fba5eb405d/mcp.jsonl",
+    "calls": [
+      {
+        "tool": "financial_statements",
+        "arguments": {
+          "symbol": "VCB",
+          "period": "quarter"
+        },
+        "status": "ok",
+        "error_code": null,
+        "availability": "available"
+      }
+    ],
+    "answer": {
+      "value": 14550.959,
+      "unit": "tỷ đồng",
+      "period": "Q2/2026",
+      "source": "financial_statements",
+      "line": "Tổng LNST",
+      "note": "LNST hợp nhất (Tổng LNST) quý gần nhất Q2/2026 = 14,550,959,000,000 VND; quy đổi /1e9 = 14,550.959 tỷ đồng. Dòng 'LNST của CĐ Ngân hàng mẹ' cùng kỳ là 14,542,276,000,000 VND (14,542.276 tỷ đồng).",
+      "evidence": [
+        {
+          "tool": "financial_statements",
+          "source": "vietstock",
+          "as_of": "2026-11-01T15:54:29.686603+07:00",
+          "call_id": "92109c67-c30b-4605-a12a-84d000ae9d39",
+          "payload_sha256": "e9c5e43dc5664805b215186c33c36a17a40f9109263b7ebf1a5a61bec507976f",
+          "matched_entry_id": "financial_statements:0",
+          "response_sha256": "368411d1982abd746595febe29f0a84129757c95cffc4d59b334a7cf054a4a06"
+        }
+      ]
+    },
+    "all_evidence_7_fields_grounded": true,
+    "evidence_ids_and_hashes_visible": true,
+    "failed_checks": []
+  },
+  {
+    "pass": "A",
+    "trial_id": "fin-l1-bctc-01__dsh__r1",
+    "task": "fin-l1-bctc-01",
+    "arm": "dsh",
+    "run": 1,
+    "status": "ok",
+    "success": true,
+    "error_type": null,
+    "attempt_count": 1,
+    "wall_ms": 182474,
+    "usage_complete": true,
+    "trial_source": "results/diag-deepseek-flash-20261105/trials.jsonl:2",
+    "manifest_path": "results/diag-deepseek-flash-20261105/manifest.json",
+    "provider_errors": [],
+    "native_watchdog_event": false,
+    "watchdog_in_primary_notes": false,
+    "watchdog_sources": [],
+    "ledger_path": "results/diag-deepseek-flash-20261105/trials/fin-l1-bctc-01__dsh__r1/attempts/01-d03cbf4fcd63/mcp.jsonl",
+    "calls": [
+      {
+        "tool": "financial_statements",
+        "arguments": {
+          "symbol": "VCB",
+          "period": "quarter"
+        },
+        "status": "ok",
+        "error_code": null,
+        "availability": "available"
+      }
+    ],
+    "answer": {
+      "value": 14550.959,
+      "unit": "tỷ đồng",
+      "period": "Q2/2026",
+      "source": "financial_statements",
+      "line": "Tổng LNST",
+      "note": "LNST hợp nhất quý gần nhất (Q2/2026) = 14,550,959,000,000 VND, quy đổi /1e9 = 14,550.959 tỷ đồng. Dòng 'Tổng LNST' trong báo cáo Kết quả kinh doanh hợp nhất.",
+      "evidence": [
+        {
+          "tool": "financial_statements",
+          "source": "vietstock",
+          "as_of": "2026-11-01T15:54:29.686603+07:00",
+          "call_id": "51d8b168-6199-4f2a-ad18-1a2c5fea5fb9",
+          "payload_sha256": "e9c5e43dc5664805b215186c33c36a17a40f9109263b7ebf1a5a61bec507976f",
+          "matched_entry_id": "financial_statements:0",
+          "response_sha256": "368411d1982abd746595febe29f0a84129757c95cffc4d59b334a7cf054a4a06"
+        }
+      ]
+    },
+    "all_evidence_7_fields_grounded": true,
+    "evidence_ids_and_hashes_visible": true,
+    "failed_checks": []
+  },
+  {
+    "pass": "A",
+    "trial_id": "fin-l1-bctc-01__opentrading_baseline__r1",
+    "task": "fin-l1-bctc-01",
+    "arm": "opentrading_baseline",
+    "run": 1,
+    "status": "ok",
+    "success": true,
+    "error_type": null,
+    "attempt_count": 1,
+    "wall_ms": 165185,
+    "usage_complete": true,
+    "trial_source": "results/diag-deepseek-flash-20261105/trials.jsonl:3",
+    "manifest_path": "results/diag-deepseek-flash-20261105/manifest.json",
+    "provider_errors": [],
+    "native_watchdog_event": false,
+    "watchdog_in_primary_notes": false,
+    "watchdog_sources": [],
+    "ledger_path": "results/diag-deepseek-flash-20261105/trials/fin-l1-bctc-01__opentrading_baseline__r1/attempts/01-b7f594282b9b/mcp.jsonl",
+    "calls": [
+      {
+        "tool": "financial_statements",
+        "arguments": {
+          "symbol": "VCB",
+          "period": "quarter",
+          "statement": "all",
+          "periods_n": 15
+        },
+        "status": "ok",
+        "error_code": null,
+        "availability": "available"
+      }
+    ],
+    "answer": {
+      "value": 14550.959,
+      "unit": "tỷ đồng",
+      "period": "Q2/2026",
+      "source": "financial_statements",
+      "line": "Tổng LNST",
+      "note": "Báo cáo gốc đơn vị VND: 14.550.959.000.000 đồng, quy đổi chia 1.000.000.000. Đây là chỉ tiêu lợi nhuận sau thuế hợp nhất (Tổng LNST) của ngân hàng; dòng 'LNST của CĐ Ngân hàng mẹ' cùng kỳ là 14.542.276.000.000 đồng (14.542,276 tỷ đồng). Kỳ gần nhất trong dữ liệu là Q2/2026; các kỳ có sẵn: Q4/2025, Q1/2026, Q2/2026.",
+      "evidence": [
+        {
+          "tool": "financial_statements",
+          "source": "vietstock",
+          "as_of": "2026-11-01T15:54:29.686603+07:00",
+          "call_id": "d4bcbad9-82de-4998-9a36-6f0520d4e161",
+          "payload_sha256": "e9c5e43dc5664805b215186c33c36a17a40f9109263b7ebf1a5a61bec507976f",
+          "matched_entry_id": "financial_statements:0",
+          "response_sha256": "368411d1982abd746595febe29f0a84129757c95cffc4d59b334a7cf054a4a06"
+        }
+      ]
+    },
+    "all_evidence_7_fields_grounded": true,
+    "evidence_ids_and_hashes_visible": true,
+    "failed_checks": []
+  },
+  {
+    "pass": "A",
+    "trial_id": "fin-l1-bctc-01__opencode__r1",
+    "task": "fin-l1-bctc-01",
+    "arm": "opencode",
+    "run": 1,
+    "status": "ok",
+    "success": true,
+    "error_type": null,
+    "attempt_count": 1,
+    "wall_ms": 156257,
+    "usage_complete": true,
+    "trial_source": "results/diag-deepseek-flash-20261105/trials.jsonl:4",
+    "manifest_path": "results/diag-deepseek-flash-20261105/manifest.json",
+    "provider_errors": [],
+    "native_watchdog_event": false,
+    "watchdog_in_primary_notes": false,
+    "watchdog_sources": [],
+    "ledger_path": "results/diag-deepseek-flash-20261105/trials/fin-l1-bctc-01__opencode__r1/attempts/01-d6fbfe5ea39e/mcp.jsonl",
+    "calls": [
+      {
+        "tool": "financial_statements",
+        "arguments": {
+          "symbol": "VCB",
+          "period": "quarter"
+        },
+        "status": "ok",
+        "error_code": null,
+        "availability": "available"
+      }
+    ],
+    "answer": {
+      "value": 14550.959,
+      "unit": "tỷ đồng",
+      "period": "Q2/2026",
+      "source": "financial_statements",
+      "line": "Tổng LNST",
+      "note": "LNST hợp nhất quý gần nhất (Q2/2026) = 14,550,959,000,000 VND, quy đổi /1e9 = 14550.959 tỷ đồng. Báo cáo gốc đơn vị VND.",
+      "evidence": [
+        {
+          "tool": "financial_statements",
+          "source": "vietstock",
+          "as_of": "2026-11-01T15:54:29.686603+07:00",
+          "call_id": "5672b910-1bad-42d0-938c-3ffd588a3c09",
+          "payload_sha256": "e9c5e43dc5664805b215186c33c36a17a40f9109263b7ebf1a5a61bec507976f",
+          "matched_entry_id": "financial_statements:0",
+          "response_sha256": "368411d1982abd746595febe29f0a84129757c95cffc4d59b334a7cf054a4a06"
+        }
+      ]
+    },
+    "all_evidence_7_fields_grounded": true,
+    "evidence_ids_and_hashes_visible": true,
+    "failed_checks": []
+  },
+  {
+    "pass": "A",
+    "trial_id": "fin-l1-quote-02__opentrading_baseline__r1",
+    "task": "fin-l1-quote-02",
+    "arm": "opentrading_baseline",
+    "run": 1,
+    "status": "error",
+    "success": false,
+    "error_type": "khong_tra_loi",
+    "attempt_count": 1,
+    "wall_ms": 186404,
+    "usage_complete": false,
+    "trial_source": "results/diag-deepseek-flash-20261105/trials.jsonl:5",
+    "manifest_path": "results/diag-deepseek-flash-20261105/manifest.json",
+    "provider_errors": [
+      {
+        "source": "results/diag-deepseek-flash-20261105/trials/fin-l1-quote-02__opentrading_baseline__r1/attempts/01-0693c962dc75/provider.jsonl:1",
+        "status": 502,
+        "error": "TimeoutError",
+        "response_models": null,
+        "upstream_attempted": true
+      }
+    ],
+    "native_watchdog_event": true,
+    "watchdog_in_primary_notes": false,
+    "watchdog_sources": [
+      "results/diag-deepseek-flash-20261105/trials/fin-l1-quote-02__opentrading_baseline__r1/attempts/01-0693c962dc75/run.log:42"
+    ],
+    "ledger_path": "results/diag-deepseek-flash-20261105/trials/fin-l1-quote-02__opentrading_baseline__r1/attempts/01-0693c962dc75/mcp.jsonl",
+    "calls": []
+  },
+  {
+    "pass": "A",
+    "trial_id": "fin-l1-quote-02__opencode__r1",
+    "task": "fin-l1-quote-02",
+    "arm": "opencode",
+    "run": 1,
+    "status": "error",
+    "success": false,
+    "error_type": "khong_tra_loi",
+    "attempt_count": 1,
+    "wall_ms": 23133,
+    "usage_complete": false,
+    "trial_source": "results/diag-deepseek-flash-20261105/trials.jsonl:6",
+    "manifest_path": "results/diag-deepseek-flash-20261105/manifest.json",
+    "provider_errors": [
+      {
+        "source": "results/diag-deepseek-flash-20261105/trials/fin-l1-quote-02__opencode__r1/attempts/01-90352e89b23e/provider.jsonl:1",
+        "status": 502,
+        "error": "URLError",
+        "response_models": null,
+        "upstream_attempted": true
+      },
+      {
+        "source": "results/diag-deepseek-flash-20261105/trials/fin-l1-quote-02__opencode__r1/attempts/01-90352e89b23e/provider.jsonl:2",
+        "status": 403,
+        "error": "previous upstream usage unknown; further requests denied",
+        "response_models": null,
+        "upstream_attempted": false
+      }
+    ],
+    "native_watchdog_event": false,
+    "watchdog_in_primary_notes": false,
+    "watchdog_sources": [],
+    "ledger_path": "results/diag-deepseek-flash-20261105/trials/fin-l1-quote-02__opencode__r1/attempts/01-90352e89b23e/mcp.jsonl",
+    "calls": []
+  },
+  {
+    "pass": "A",
+    "trial_id": "fin-l1-quote-02__opentrading_finance__r1",
+    "task": "fin-l1-quote-02",
+    "arm": "opentrading_finance",
+    "run": 1,
+    "status": "error",
+    "success": false,
+    "error_type": "khong_tra_loi",
+    "attempt_count": 1,
+    "wall_ms": 86736,
+    "usage_complete": false,
+    "trial_source": "results/diag-deepseek-flash-20261105/trials.jsonl:7",
+    "manifest_path": "results/diag-deepseek-flash-20261105/manifest.json",
+    "provider_errors": [
+      {
+        "source": "results/diag-deepseek-flash-20261105/trials/fin-l1-quote-02__opentrading_finance__r1/attempts/01-f637e86f6c98/provider.jsonl:2",
+        "status": 502,
+        "error": "URLError",
+        "response_models": null,
+        "upstream_attempted": true
+      },
+      {
+        "source": "results/diag-deepseek-flash-20261105/trials/fin-l1-quote-02__opentrading_finance__r1/attempts/01-f637e86f6c98/provider.jsonl:3",
+        "status": 403,
+        "error": "previous upstream usage unknown; further requests denied",
+        "response_models": null,
+        "upstream_attempted": false
+      }
+    ],
+    "native_watchdog_event": false,
+    "watchdog_in_primary_notes": false,
+    "watchdog_sources": [],
+    "ledger_path": "results/diag-deepseek-flash-20261105/trials/fin-l1-quote-02__opentrading_finance__r1/attempts/01-f637e86f6c98/mcp.jsonl",
+    "calls": [
+      {
+        "tool": "crypto_spot",
+        "arguments": {
+          "symbols": [
+            "BTCUSDT"
+          ]
+        },
+        "status": "ok",
+        "error_code": null,
+        "availability": "available"
+      }
+    ]
+  },
+  {
+    "pass": "A",
+    "trial_id": "fin-l1-quote-02__dsh__r1",
+    "task": "fin-l1-quote-02",
+    "arm": "dsh",
+    "run": 1,
+    "status": "ok",
+    "success": true,
+    "error_type": null,
+    "attempt_count": 1,
+    "wall_ms": 233091,
+    "usage_complete": true,
+    "trial_source": "results/diag-deepseek-flash-20261105/trials.jsonl:8",
+    "manifest_path": "results/diag-deepseek-flash-20261105/manifest.json",
+    "provider_errors": [],
+    "native_watchdog_event": false,
+    "watchdog_in_primary_notes": false,
+    "watchdog_sources": [],
+    "ledger_path": "results/diag-deepseek-flash-20261105/trials/fin-l1-quote-02__dsh__r1/attempts/01-45109516f664/mcp.jsonl",
+    "calls": [
+      {
+        "tool": "crypto_spot",
+        "arguments": {
+          "symbols": [
+            "BTCUSDT"
+          ]
+        },
+        "status": "ok",
+        "error_code": null,
+        "availability": "available"
+      }
+    ],
+    "answer": {
+      "value": 78109,
+      "unit": "USDT",
+      "period": "2026-11-01",
+      "source": "crypto_spot",
+      "note": "Giá BTCUSDT (last) tại snapshot 2026-11-01T15:54:32+07:00, nguồn binance.",
+      "evidence": [
+        {
+          "tool": "crypto_spot",
+          "source": "binance",
+          "as_of": "2026-11-01T15:54:32.586909+07:00",
+          "call_id": "2d209fd4-5e3f-4791-8f58-a0454250f079",
+          "payload_sha256": "f40d9ee2ab68813fb2388acb2064b596ef6bb6287de9ca198e60f34c8f37ac26",
+          "matched_entry_id": "crypto_spot:0",
+          "response_sha256": "aeb32670107aea9963bb1f08f1bfc583738d3dedd8c655db00737a85329bdc13"
+        }
+      ]
+    },
+    "all_evidence_7_fields_grounded": true,
+    "evidence_ids_and_hashes_visible": true,
+    "failed_checks": []
+  },
+  {
+    "pass": "A",
+    "trial_id": "fin-l5-compare-01__dsh__r1",
+    "task": "fin-l5-compare-01",
+    "arm": "dsh",
+    "run": 1,
+    "status": "error",
+    "success": false,
+    "error_type": "invalid_json",
+    "attempt_count": 1,
+    "wall_ms": 258268,
+    "usage_complete": false,
+    "trial_source": "results/diag-deepseek-flash-20261105/trials.jsonl:9",
+    "manifest_path": "results/diag-deepseek-flash-20261105/manifest.json",
+    "provider_errors": [
+      {
+        "source": "results/diag-deepseek-flash-20261105/trials/fin-l5-compare-01__dsh__r1/attempts/01-e334a2aaa838/provider.jsonl:2",
+        "status": 502,
+        "error": "TimeoutError",
+        "response_models": null,
+        "upstream_attempted": true
+      }
+    ],
+    "native_watchdog_event": false,
+    "watchdog_in_primary_notes": false,
+    "watchdog_sources": [],
+    "ledger_path": "results/diag-deepseek-flash-20261105/trials/fin-l5-compare-01__dsh__r1/attempts/01-e334a2aaa838/mcp.jsonl",
+    "calls": [
+      {
+        "tool": "peer_compare",
+        "arguments": {
+          "symbol": "VCB",
+          "peers": [
+            "BID",
+            "CTG",
+            "TCB",
+            "MBB"
+          ]
+        },
+        "status": "ok",
+        "error_code": null,
+        "availability": "available"
+      }
+    ]
+  },
+  {
+    "pass": "A",
+    "trial_id": "fin-l5-compare-01__opentrading_baseline__r1",
+    "task": "fin-l5-compare-01",
+    "arm": "opentrading_baseline",
+    "run": 1,
+    "status": "ok",
+    "success": true,
+    "error_type": null,
+    "attempt_count": 1,
+    "wall_ms": 184432,
+    "usage_complete": true,
+    "trial_source": "results/diag-deepseek-flash-20261105/trials.jsonl:10",
+    "manifest_path": "results/diag-deepseek-flash-20261105/manifest.json",
+    "provider_errors": [],
+    "native_watchdog_event": false,
+    "watchdog_in_primary_notes": false,
+    "watchdog_sources": [],
+    "ledger_path": "results/diag-deepseek-flash-20261105/trials/fin-l5-compare-01__opentrading_baseline__r1/attempts/01-fd1e1039bcc9/mcp.jsonl",
+    "calls": [
+      {
+        "tool": "peer_compare",
+        "arguments": {
+          "symbol": "VCB",
+          "peers": [
+            "BID",
+            "CTG",
+            "TCB",
+            "MBB"
+          ]
+        },
+        "status": "ok",
+        "error_code": null,
+        "availability": "available"
+      }
+    ],
+    "answer": {
+      "values": {
+        "VCB": {
+          "pe": 12.66,
+          "pb": 2.14,
+          "roe": 16.73
+        },
+        "BID": {
+          "pe": 9.11,
+          "pb": 1.57,
+          "roe": 19.43
+        },
+        "CTG": {
+          "pe": 5.55,
+          "pb": 1.07,
+          "roe": 21.23
+        },
+        "TCB": {
+          "pe": 9.76,
+          "pb": 1.38,
+          "roe": 16.03
+        },
+        "MBB": {
+          "pe": 6.36,
+          "pb": 1.43,
+          "roe": 21.57
+        }
+      },
+      "ranking": [
+        "MBB",
+        "CTG",
+        "BID",
+        "VCB",
+        "TCB"
+      ],
+      "period": "2025",
+      "source": "peer_compare",
+      "note": "P/E, P/B tính theo giá ngày kết thúc kỳ báo cáo 2025, KHÔNG phải bội số hiện tại. ROE đơn vị %. Xếp hạng theo ROE giảm dần: MBB 21.57 > CTG 21.23 > BID 19.43 > VCB 16.73 > TCB 16.03.",
+      "evidence": [
+        {
+          "tool": "peer_compare",
+          "source": "vnstock",
+          "as_of": "2026-11-01T15:58:02.647158+07:00",
+          "call_id": "15c7fb0e-c169-40bc-8b73-7aafb1987f33",
+          "payload_sha256": "9d5cd2d9d48cbebfdbb5c67a4f81f87c93362a8c82b52accafd053219d49c7d5",
+          "matched_entry_id": "peer_compare:0",
+          "response_sha256": "c7bf5f6871f6bf6268ae80f9a927991aac12a683d3d5cab89e4aae5eb9ea043f"
+        }
+      ]
+    },
+    "all_evidence_7_fields_grounded": true,
+    "evidence_ids_and_hashes_visible": true,
+    "failed_checks": []
+  },
+  {
+    "pass": "A",
+    "trial_id": "fin-l5-compare-01__opencode__r1",
+    "task": "fin-l5-compare-01",
+    "arm": "opencode",
+    "run": 1,
+    "status": "ok",
+    "success": true,
+    "error_type": null,
+    "attempt_count": 1,
+    "wall_ms": 174311,
+    "usage_complete": true,
+    "trial_source": "results/diag-deepseek-flash-20261105/trials.jsonl:11",
+    "manifest_path": "results/diag-deepseek-flash-20261105/manifest.json",
+    "provider_errors": [],
+    "native_watchdog_event": false,
+    "watchdog_in_primary_notes": false,
+    "watchdog_sources": [],
+    "ledger_path": "results/diag-deepseek-flash-20261105/trials/fin-l5-compare-01__opencode__r1/attempts/01-7f6c642a4865/mcp.jsonl",
+    "calls": [
+      {
+        "tool": "peer_compare",
+        "arguments": {
+          "symbol": "VCB",
+          "peers": [
+            "BID",
+            "CTG",
+            "TCB",
+            "MBB"
+          ]
+        },
+        "status": "ok",
+        "error_code": null,
+        "availability": "available"
+      }
+    ],
+    "answer": {
+      "values": {
+        "VCB": {
+          "pe": 12.66,
+          "pb": 2.14,
+          "roe": 16.73
+        },
+        "BID": {
+          "pe": 9.11,
+          "pb": 1.57,
+          "roe": 19.43
+        },
+        "CTG": {
+          "pe": 5.55,
+          "pb": 1.07,
+          "roe": 21.23
+        },
+        "TCB": {
+          "pe": 9.76,
+          "pb": 1.38,
+          "roe": 16.03
+        },
+        "MBB": {
+          "pe": 6.36,
+          "pb": 1.43,
+          "roe": 21.57
+        }
+      },
+      "ranking": [
+        "MBB",
+        "CTG",
+        "BID",
+        "VCB",
+        "TCB"
+      ],
+      "period": "2025",
+      "source": "peer_compare",
+      "note": "P/E, P/B, ROE theo giá ngày kết thúc kỳ báo cáo 2025 (không phải bội số hiện tại). Xếp hạng theo ROE giảm dần: MBB 21.57 > CTG 21.23 > BID 19.43 > VCB 16.73 > TCB 16.03.",
+      "evidence": [
+        {
+          "tool": "peer_compare",
+          "source": "vnstock",
+          "as_of": "2026-11-01T15:58:02.647158+07:00",
+          "call_id": "ba9e8ba7-637d-4462-be3d-73456fdf4389",
+          "payload_sha256": "9d5cd2d9d48cbebfdbb5c67a4f81f87c93362a8c82b52accafd053219d49c7d5",
+          "matched_entry_id": "peer_compare:0",
+          "response_sha256": "c7bf5f6871f6bf6268ae80f9a927991aac12a683d3d5cab89e4aae5eb9ea043f"
+        }
+      ]
+    },
+    "all_evidence_7_fields_grounded": true,
+    "evidence_ids_and_hashes_visible": true,
+    "failed_checks": []
+  },
+  {
+    "pass": "A",
+    "trial_id": "fin-l5-compare-01__opentrading_finance__r1",
+    "task": "fin-l5-compare-01",
+    "arm": "opentrading_finance",
+    "run": 1,
+    "status": "ok",
+    "success": false,
+    "error_type": "sai_ky",
+    "attempt_count": 1,
+    "wall_ms": 150673,
+    "usage_complete": true,
+    "trial_source": "results/diag-deepseek-flash-20261105/trials.jsonl:12",
+    "manifest_path": "results/diag-deepseek-flash-20261105/manifest.json",
+    "provider_errors": [],
+    "native_watchdog_event": false,
+    "watchdog_in_primary_notes": false,
+    "watchdog_sources": [],
+    "ledger_path": "results/diag-deepseek-flash-20261105/trials/fin-l5-compare-01__opentrading_finance__r1/attempts/01-62797801260d/mcp.jsonl",
+    "calls": [
+      {
+        "tool": "peer_compare",
+        "arguments": {
+          "symbol": "VCB",
+          "peers": [
+            "BID",
+            "CTG",
+            "TCB",
+            "MBB"
+          ]
+        },
+        "status": "ok",
+        "error_code": null,
+        "availability": "available"
+      }
+    ],
+    "answer": {
+      "values": {
+        "VCB": {
+          "pe": 12.66,
+          "pb": 2.14,
+          "roe": 16.73
+        },
+        "BID": {
+          "pe": 9.11,
+          "pb": 1.57,
+          "roe": 19.43
+        },
+        "CTG": {
+          "pe": 5.55,
+          "pb": 1.07,
+          "roe": 21.23
+        },
+        "TCB": {
+          "pe": 9.76,
+          "pb": 1.38,
+          "roe": 16.03
+        },
+        "MBB": {
+          "pe": 6.36,
+          "pb": 1.43,
+          "roe": 21.57
+        }
+      },
+      "ranking": [
+        "MBB",
+        "CTG",
+        "BID",
+        "VCB",
+        "TCB"
+      ],
+      "period": "2025 (period_label \"2025\"; bội số tính theo giá ngày kết thúc kỳ báo cáo, không phải bội số hiện tại)",
+      "source": "peer_compare",
+      "note": "P/E, P/B, ROE lấy từ peer_compare cho VCB và peers BID, CTG, TCB, MBB, kỳ 2025. Xếp hạng theo ROE giảm dần: MBB 21.57 > CTG 21.23 > BID 19.43 > VCB 16.73 > TCB 16.03.",
+      "evidence": [
+        {
+          "tool": "peer_compare",
+          "source": "vnstock",
+          "as_of": "2026-11-01T15:58:02.647158+07:00",
+          "call_id": "893fc557-bced-4bef-bb48-dff711d50282",
+          "payload_sha256": "9d5cd2d9d48cbebfdbb5c67a4f81f87c93362a8c82b52accafd053219d49c7d5",
+          "matched_entry_id": "peer_compare:0",
+          "response_sha256": "c7bf5f6871f6bf6268ae80f9a927991aac12a683d3d5cab89e4aae5eb9ea043f"
+        }
+      ]
+    },
+    "all_evidence_7_fields_grounded": true,
+    "evidence_ids_and_hashes_visible": true,
+    "failed_checks": [
+      {
+        "check": "period:period",
+        "pass": false,
+        "detail": "period='2025 (period_label \"2025\"; bội số tính theo giá ngày kết thúc kỳ báo cáo, không phải bội số hiện tại)' accept=['2025']"
+      }
+    ]
+  },
+  {
+    "pass": "A",
+    "trial_id": "fin-l1-quote-01__opencode__r1",
+    "task": "fin-l1-quote-01",
+    "arm": "opencode",
+    "run": 1,
+    "status": "ok",
+    "success": true,
+    "error_type": null,
+    "attempt_count": 1,
+    "wall_ms": 133369,
+    "usage_complete": true,
+    "trial_source": "results/diag-deepseek-flash-20261105/trials.jsonl:13",
+    "manifest_path": "results/diag-deepseek-flash-20261105/manifest.json",
+    "provider_errors": [],
+    "native_watchdog_event": false,
+    "watchdog_in_primary_notes": false,
+    "watchdog_sources": [],
+    "ledger_path": "results/diag-deepseek-flash-20261105/trials/fin-l1-quote-01__opencode__r1/attempts/01-0dbe2f099af6/mcp.jsonl",
+    "calls": [
+      {
+        "tool": "vn_quote_history",
+        "arguments": {
+          "symbol": "HPG"
+        },
+        "status": "ok",
+        "error_code": null,
+        "availability": "available"
+      }
+    ],
+    "answer": {
+      "value": 21,
+      "unit": "nghìn đồng",
+      "period": "phiên gần nhất (30/10/2026)",
+      "source": "vn_quote_history",
+      "note": "Giá đóng cửa phiên gần nhất của HPG theo trường 'last' = 21 (nghìn đồng), tương ứng ngày giao dịch 2026-10-30.",
+      "evidence": [
+        {
+          "tool": "vn_quote_history",
+          "source": "vnstock",
+          "as_of": "2026-11-01T15:54:29.883479+07:00",
+          "call_id": "8ff67b20-5fef-46eb-8c28-9de730f21eac",
+          "payload_sha256": "cb80cece34c0f94fc32a60a8f2ccd0022f827b72e9d6ccc0496744db39f2c71f",
+          "matched_entry_id": "vn_quote_history:0",
+          "response_sha256": "1494cd6b872e94237fbd832c39302b1f2242f6277a0da16148f560be974ba421"
+        }
+      ]
+    },
+    "all_evidence_7_fields_grounded": true,
+    "evidence_ids_and_hashes_visible": true,
+    "failed_checks": []
+  },
+  {
+    "pass": "A",
+    "trial_id": "fin-l1-quote-01__opentrading_finance__r1",
+    "task": "fin-l1-quote-01",
+    "arm": "opentrading_finance",
+    "run": 1,
+    "status": "error",
+    "success": false,
+    "error_type": "khong_tra_loi",
+    "attempt_count": 1,
+    "wall_ms": 236851,
+    "usage_complete": false,
+    "trial_source": "results/diag-deepseek-flash-20261105/trials.jsonl:14",
+    "manifest_path": "results/diag-deepseek-flash-20261105/manifest.json",
+    "provider_errors": [
+      {
+        "source": "results/diag-deepseek-flash-20261105/trials/fin-l1-quote-01__opentrading_finance__r1/attempts/01-ebd8a53090ef/provider.jsonl:2",
+        "status": 502,
+        "error": "TimeoutError",
+        "response_models": null,
+        "upstream_attempted": true
+      }
+    ],
+    "native_watchdog_event": true,
+    "watchdog_in_primary_notes": false,
+    "watchdog_sources": [
+      "results/diag-deepseek-flash-20261105/trials/fin-l1-quote-01__opentrading_finance__r1/attempts/01-ebd8a53090ef/run.log:54"
+    ],
+    "ledger_path": "results/diag-deepseek-flash-20261105/trials/fin-l1-quote-01__opentrading_finance__r1/attempts/01-ebd8a53090ef/mcp.jsonl",
+    "calls": [
+      {
+        "tool": "vn_quote_history",
+        "arguments": {
+          "symbol": "HPG"
+        },
+        "status": "ok",
+        "error_code": null,
+        "availability": "available"
+      }
+    ]
+  },
+  {
+    "pass": "A",
+    "trial_id": "fin-l1-quote-01__dsh__r1",
+    "task": "fin-l1-quote-01",
+    "arm": "dsh",
+    "run": 1,
+    "status": "error",
+    "success": false,
+    "error_type": "khong_tra_loi",
+    "attempt_count": 1,
+    "wall_ms": 12466,
+    "usage_complete": false,
+    "trial_source": "results/diag-deepseek-flash-20261105/trials.jsonl:15",
+    "manifest_path": "results/diag-deepseek-flash-20261105/manifest.json",
+    "provider_errors": [
+      {
+        "source": "results/diag-deepseek-flash-20261105/trials/fin-l1-quote-01__dsh__r1/attempts/01-4dbe6231195a/provider.jsonl:1",
+        "status": 502,
+        "error": "URLError",
+        "response_models": null,
+        "upstream_attempted": true
+      }
+    ],
+    "native_watchdog_event": false,
+    "watchdog_in_primary_notes": false,
+    "watchdog_sources": [],
+    "ledger_path": "results/diag-deepseek-flash-20261105/trials/fin-l1-quote-01__dsh__r1/attempts/01-4dbe6231195a/mcp.jsonl",
+    "calls": []
+  },
+  {
+    "pass": "A",
+    "trial_id": "fin-l1-quote-01__opentrading_baseline__r1",
+    "task": "fin-l1-quote-01",
+    "arm": "opentrading_baseline",
+    "run": 1,
+    "status": "error",
+    "success": false,
+    "error_type": "khong_tra_loi",
+    "attempt_count": 1,
+    "wall_ms": 8662,
+    "usage_complete": false,
+    "trial_source": "results/diag-deepseek-flash-20261105/trials.jsonl:16",
+    "manifest_path": "results/diag-deepseek-flash-20261105/manifest.json",
+    "provider_errors": [
+      {
+        "source": "results/diag-deepseek-flash-20261105/trials/fin-l1-quote-01__opentrading_baseline__r1/attempts/01-0784ee5d6241/provider.jsonl:1",
+        "status": 502,
+        "error": "URLError",
+        "response_models": null,
+        "upstream_attempted": true
+      },
+      {
+        "source": "results/diag-deepseek-flash-20261105/trials/fin-l1-quote-01__opentrading_baseline__r1/attempts/01-0784ee5d6241/provider.jsonl:2",
+        "status": 403,
+        "error": "previous upstream usage unknown; further requests denied",
+        "response_models": null,
+        "upstream_attempted": false
+      }
+    ],
+    "native_watchdog_event": false,
+    "watchdog_in_primary_notes": false,
+    "watchdog_sources": [],
+    "ledger_path": "results/diag-deepseek-flash-20261105/trials/fin-l1-quote-01__opentrading_baseline__r1/attempts/01-0784ee5d6241/mcp.jsonl",
+    "calls": []
+  },
+  {
+    "pass": "A",
+    "trial_id": "fin-l1-gold-01__opentrading_baseline__r1",
+    "task": "fin-l1-gold-01",
+    "arm": "opentrading_baseline",
+    "run": 1,
+    "status": "error",
+    "success": false,
+    "error_type": "khong_tra_loi",
+    "attempt_count": 1,
+    "wall_ms": 8014,
+    "usage_complete": false,
+    "trial_source": "results/diag-deepseek-flash-20261105/trials.jsonl:17",
+    "manifest_path": "results/diag-deepseek-flash-20261105/manifest.json",
+    "provider_errors": [
+      {
+        "source": "results/diag-deepseek-flash-20261105/trials/fin-l1-gold-01__opentrading_baseline__r1/attempts/01-e827980e28fa/provider.jsonl:1",
+        "status": 502,
+        "error": "URLError",
+        "response_models": null,
+        "upstream_attempted": true
+      },
+      {
+        "source": "results/diag-deepseek-flash-20261105/trials/fin-l1-gold-01__opentrading_baseline__r1/attempts/01-e827980e28fa/provider.jsonl:2",
+        "status": 403,
+        "error": "previous upstream usage unknown; further requests denied",
+        "response_models": null,
+        "upstream_attempted": false
+      }
+    ],
+    "native_watchdog_event": false,
+    "watchdog_in_primary_notes": false,
+    "watchdog_sources": [],
+    "ledger_path": "results/diag-deepseek-flash-20261105/trials/fin-l1-gold-01__opentrading_baseline__r1/attempts/01-e827980e28fa/mcp.jsonl",
+    "calls": []
+  },
+  {
+    "pass": "A",
+    "trial_id": "fin-l1-gold-01__opentrading_finance__r1",
+    "task": "fin-l1-gold-01",
+    "arm": "opentrading_finance",
+    "run": 1,
+    "status": "error",
+    "success": false,
+    "error_type": "khong_tra_loi",
+    "attempt_count": 1,
+    "wall_ms": 8574,
+    "usage_complete": false,
+    "trial_source": "results/diag-deepseek-flash-20261105/trials.jsonl:18",
+    "manifest_path": "results/diag-deepseek-flash-20261105/manifest.json",
+    "provider_errors": [
+      {
+        "source": "results/diag-deepseek-flash-20261105/trials/fin-l1-gold-01__opentrading_finance__r1/attempts/01-45f91c221a75/provider.jsonl:1",
+        "status": 502,
+        "error": "URLError",
+        "response_models": null,
+        "upstream_attempted": true
+      },
+      {
+        "source": "results/diag-deepseek-flash-20261105/trials/fin-l1-gold-01__opentrading_finance__r1/attempts/01-45f91c221a75/provider.jsonl:2",
+        "status": 403,
+        "error": "previous upstream usage unknown; further requests denied",
+        "response_models": null,
+        "upstream_attempted": false
+      }
+    ],
+    "native_watchdog_event": false,
+    "watchdog_in_primary_notes": false,
+    "watchdog_sources": [],
+    "ledger_path": "results/diag-deepseek-flash-20261105/trials/fin-l1-gold-01__opentrading_finance__r1/attempts/01-45f91c221a75/mcp.jsonl",
+    "calls": []
+  },
+  {
+    "pass": "A",
+    "trial_id": "fin-l1-gold-01__dsh__r1",
+    "task": "fin-l1-gold-01",
+    "arm": "dsh",
+    "run": 1,
+    "status": "error",
+    "success": false,
+    "error_type": "khong_tra_loi",
+    "attempt_count": 1,
+    "wall_ms": 12957,
+    "usage_complete": false,
+    "trial_source": "results/diag-deepseek-flash-20261105/trials.jsonl:19",
+    "manifest_path": "results/diag-deepseek-flash-20261105/manifest.json",
+    "provider_errors": [
+      {
+        "source": "results/diag-deepseek-flash-20261105/trials/fin-l1-gold-01__dsh__r1/attempts/01-fa9644d5eae8/provider.jsonl:1",
+        "status": 502,
+        "error": "URLError",
+        "response_models": null,
+        "upstream_attempted": true
+      }
+    ],
+    "native_watchdog_event": false,
+    "watchdog_in_primary_notes": false,
+    "watchdog_sources": [],
+    "ledger_path": "results/diag-deepseek-flash-20261105/trials/fin-l1-gold-01__dsh__r1/attempts/01-fa9644d5eae8/mcp.jsonl",
+    "calls": []
+  },
+  {
+    "pass": "A",
+    "trial_id": "fin-l1-gold-01__opencode__r1",
+    "task": "fin-l1-gold-01",
+    "arm": "opencode",
+    "run": 1,
+    "status": "error",
+    "success": false,
+    "error_type": "khong_tra_loi",
+    "attempt_count": 1,
+    "wall_ms": 12414,
+    "usage_complete": false,
+    "trial_source": "results/diag-deepseek-flash-20261105/trials.jsonl:20",
+    "manifest_path": "results/diag-deepseek-flash-20261105/manifest.json",
+    "provider_errors": [
+      {
+        "source": "results/diag-deepseek-flash-20261105/trials/fin-l1-gold-01__opencode__r1/attempts/01-14c08b7a0291/provider.jsonl:1",
+        "status": 502,
+        "error": "URLError",
+        "response_models": null,
+        "upstream_attempted": true
+      },
+      {
+        "source": "results/diag-deepseek-flash-20261105/trials/fin-l1-gold-01__opencode__r1/attempts/01-14c08b7a0291/provider.jsonl:2",
+        "status": 403,
+        "error": "previous upstream usage unknown; further requests denied",
+        "response_models": null,
+        "upstream_attempted": false
+      }
+    ],
+    "native_watchdog_event": false,
+    "watchdog_in_primary_notes": false,
+    "watchdog_sources": [],
+    "ledger_path": "results/diag-deepseek-flash-20261105/trials/fin-l1-gold-01__opencode__r1/attempts/01-14c08b7a0291/mcp.jsonl",
+    "calls": []
+  },
+  {
+    "pass": "A",
+    "trial_id": "fin-l1-quote-02__opencode__r2",
+    "task": "fin-l1-quote-02",
+    "arm": "opencode",
+    "run": 2,
+    "status": "error",
+    "success": false,
+    "error_type": "khong_tra_loi",
+    "attempt_count": 1,
+    "wall_ms": 11249,
+    "usage_complete": false,
+    "trial_source": "results/diag-deepseek-flash-20261105/trials.jsonl:21",
+    "manifest_path": "results/diag-deepseek-flash-20261105/manifest.json",
+    "provider_errors": [
+      {
+        "source": "results/diag-deepseek-flash-20261105/trials/fin-l1-quote-02__opencode__r2/attempts/01-5bf2e8c4e0ce/provider.jsonl:1",
+        "status": 502,
+        "error": "URLError",
+        "response_models": null,
+        "upstream_attempted": true
+      },
+      {
+        "source": "results/diag-deepseek-flash-20261105/trials/fin-l1-quote-02__opencode__r2/attempts/01-5bf2e8c4e0ce/provider.jsonl:2",
+        "status": 403,
+        "error": "previous upstream usage unknown; further requests denied",
+        "response_models": null,
+        "upstream_attempted": false
+      }
+    ],
+    "native_watchdog_event": false,
+    "watchdog_in_primary_notes": false,
+    "watchdog_sources": [],
+    "ledger_path": "results/diag-deepseek-flash-20261105/trials/fin-l1-quote-02__opencode__r2/attempts/01-5bf2e8c4e0ce/mcp.jsonl",
+    "calls": []
+  },
+  {
+    "pass": "A",
+    "trial_id": "fin-l1-quote-02__opentrading_baseline__r2",
+    "task": "fin-l1-quote-02",
+    "arm": "opentrading_baseline",
+    "run": 2,
+    "status": "error",
+    "success": false,
+    "error_type": "khong_tra_loi",
+    "attempt_count": 1,
+    "wall_ms": 8030,
+    "usage_complete": false,
+    "trial_source": "results/diag-deepseek-flash-20261105/trials.jsonl:22",
+    "manifest_path": "results/diag-deepseek-flash-20261105/manifest.json",
+    "provider_errors": [
+      {
+        "source": "results/diag-deepseek-flash-20261105/trials/fin-l1-quote-02__opentrading_baseline__r2/attempts/01-d3df6c642295/provider.jsonl:1",
+        "status": 502,
+        "error": "URLError",
+        "response_models": null,
+        "upstream_attempted": true
+      },
+      {
+        "source": "results/diag-deepseek-flash-20261105/trials/fin-l1-quote-02__opentrading_baseline__r2/attempts/01-d3df6c642295/provider.jsonl:2",
+        "status": 403,
+        "error": "previous upstream usage unknown; further requests denied",
+        "response_models": null,
+        "upstream_attempted": false
+      }
+    ],
+    "native_watchdog_event": false,
+    "watchdog_in_primary_notes": false,
+    "watchdog_sources": [],
+    "ledger_path": "results/diag-deepseek-flash-20261105/trials/fin-l1-quote-02__opentrading_baseline__r2/attempts/01-d3df6c642295/mcp.jsonl",
+    "calls": []
+  },
+  {
+    "pass": "A",
+    "trial_id": "fin-l1-quote-02__opentrading_finance__r2",
+    "task": "fin-l1-quote-02",
+    "arm": "opentrading_finance",
+    "run": 2,
+    "status": "error",
+    "success": false,
+    "error_type": "khong_tra_loi",
+    "attempt_count": 1,
+    "wall_ms": 8778,
+    "usage_complete": false,
+    "trial_source": "results/diag-deepseek-flash-20261105/trials.jsonl:23",
+    "manifest_path": "results/diag-deepseek-flash-20261105/manifest.json",
+    "provider_errors": [
+      {
+        "source": "results/diag-deepseek-flash-20261105/trials/fin-l1-quote-02__opentrading_finance__r2/attempts/01-5f81a97bea9a/provider.jsonl:1",
+        "status": 502,
+        "error": "URLError",
+        "response_models": null,
+        "upstream_attempted": true
+      },
+      {
+        "source": "results/diag-deepseek-flash-20261105/trials/fin-l1-quote-02__opentrading_finance__r2/attempts/01-5f81a97bea9a/provider.jsonl:2",
+        "status": 403,
+        "error": "previous upstream usage unknown; further requests denied",
+        "response_models": null,
+        "upstream_attempted": false
+      }
+    ],
+    "native_watchdog_event": false,
+    "watchdog_in_primary_notes": false,
+    "watchdog_sources": [],
+    "ledger_path": "results/diag-deepseek-flash-20261105/trials/fin-l1-quote-02__opentrading_finance__r2/attempts/01-5f81a97bea9a/mcp.jsonl",
+    "calls": []
+  },
+  {
+    "pass": "A",
+    "trial_id": "fin-l1-quote-02__dsh__r2",
+    "task": "fin-l1-quote-02",
+    "arm": "dsh",
+    "run": 2,
+    "status": "error",
+    "success": false,
+    "error_type": "khong_tra_loi",
+    "attempt_count": 1,
+    "wall_ms": 12610,
+    "usage_complete": false,
+    "trial_source": "results/diag-deepseek-flash-20261105/trials.jsonl:24",
+    "manifest_path": "results/diag-deepseek-flash-20261105/manifest.json",
+    "provider_errors": [
+      {
+        "source": "results/diag-deepseek-flash-20261105/trials/fin-l1-quote-02__dsh__r2/attempts/01-dcc918c3b973/provider.jsonl:1",
+        "status": 502,
+        "error": "URLError",
+        "response_models": null,
+        "upstream_attempted": true
+      }
+    ],
+    "native_watchdog_event": false,
+    "watchdog_in_primary_notes": false,
+    "watchdog_sources": [],
+    "ledger_path": "results/diag-deepseek-flash-20261105/trials/fin-l1-quote-02__dsh__r2/attempts/01-dcc918c3b973/mcp.jsonl",
+    "calls": []
+  },
+  {
+    "pass": "A",
+    "trial_id": "fin-l5-compare-01__opentrading_finance__r2",
+    "task": "fin-l5-compare-01",
+    "arm": "opentrading_finance",
+    "run": 2,
+    "status": "error",
+    "success": false,
+    "error_type": "khong_tra_loi",
+    "attempt_count": 1,
+    "wall_ms": 8391,
+    "usage_complete": false,
+    "trial_source": "results/diag-deepseek-flash-20261105/trials.jsonl:25",
+    "manifest_path": "results/diag-deepseek-flash-20261105/manifest.json",
+    "provider_errors": [
+      {
+        "source": "results/diag-deepseek-flash-20261105/trials/fin-l5-compare-01__opentrading_finance__r2/attempts/01-d1c219ed9dff/provider.jsonl:1",
+        "status": 502,
+        "error": "URLError",
+        "response_models": null,
+        "upstream_attempted": true
+      },
+      {
+        "source": "results/diag-deepseek-flash-20261105/trials/fin-l5-compare-01__opentrading_finance__r2/attempts/01-d1c219ed9dff/provider.jsonl:2",
+        "status": 403,
+        "error": "previous upstream usage unknown; further requests denied",
+        "response_models": null,
+        "upstream_attempted": false
+      }
+    ],
+    "native_watchdog_event": false,
+    "watchdog_in_primary_notes": false,
+    "watchdog_sources": [],
+    "ledger_path": "results/diag-deepseek-flash-20261105/trials/fin-l5-compare-01__opentrading_finance__r2/attempts/01-d1c219ed9dff/mcp.jsonl",
+    "calls": []
+  },
+  {
+    "pass": "A",
+    "trial_id": "fin-l5-compare-01__dsh__r2",
+    "task": "fin-l5-compare-01",
+    "arm": "dsh",
+    "run": 2,
+    "status": "error",
+    "success": false,
+    "error_type": "khong_tra_loi",
+    "attempt_count": 1,
+    "wall_ms": 12399,
+    "usage_complete": false,
+    "trial_source": "results/diag-deepseek-flash-20261105/trials.jsonl:26",
+    "manifest_path": "results/diag-deepseek-flash-20261105/manifest.json",
+    "provider_errors": [
+      {
+        "source": "results/diag-deepseek-flash-20261105/trials/fin-l5-compare-01__dsh__r2/attempts/01-45d519300587/provider.jsonl:1",
+        "status": 502,
+        "error": "URLError",
+        "response_models": null,
+        "upstream_attempted": true
+      }
+    ],
+    "native_watchdog_event": false,
+    "watchdog_in_primary_notes": false,
+    "watchdog_sources": [],
+    "ledger_path": "results/diag-deepseek-flash-20261105/trials/fin-l5-compare-01__dsh__r2/attempts/01-45d519300587/mcp.jsonl",
+    "calls": []
+  },
+  {
+    "pass": "A",
+    "trial_id": "fin-l5-compare-01__opencode__r2",
+    "task": "fin-l5-compare-01",
+    "arm": "opencode",
+    "run": 2,
+    "status": "error",
+    "success": false,
+    "error_type": "khong_tra_loi",
+    "attempt_count": 1,
+    "wall_ms": 11072,
+    "usage_complete": false,
+    "trial_source": "results/diag-deepseek-flash-20261105/trials.jsonl:27",
+    "manifest_path": "results/diag-deepseek-flash-20261105/manifest.json",
+    "provider_errors": [
+      {
+        "source": "results/diag-deepseek-flash-20261105/trials/fin-l5-compare-01__opencode__r2/attempts/01-795e73a070bb/provider.jsonl:1",
+        "status": 502,
+        "error": "URLError",
+        "response_models": null,
+        "upstream_attempted": true
+      },
+      {
+        "source": "results/diag-deepseek-flash-20261105/trials/fin-l5-compare-01__opencode__r2/attempts/01-795e73a070bb/provider.jsonl:2",
+        "status": 403,
+        "error": "previous upstream usage unknown; further requests denied",
+        "response_models": null,
+        "upstream_attempted": false
+      }
+    ],
+    "native_watchdog_event": false,
+    "watchdog_in_primary_notes": false,
+    "watchdog_sources": [],
+    "ledger_path": "results/diag-deepseek-flash-20261105/trials/fin-l5-compare-01__opencode__r2/attempts/01-795e73a070bb/mcp.jsonl",
+    "calls": []
+  },
+  {
+    "pass": "A",
+    "trial_id": "fin-l5-compare-01__opentrading_baseline__r2",
+    "task": "fin-l5-compare-01",
+    "arm": "opentrading_baseline",
+    "run": 2,
+    "status": "error",
+    "success": false,
+    "error_type": "khong_tra_loi",
+    "attempt_count": 1,
+    "wall_ms": 8684,
+    "usage_complete": false,
+    "trial_source": "results/diag-deepseek-flash-20261105/trials.jsonl:28",
+    "manifest_path": "results/diag-deepseek-flash-20261105/manifest.json",
+    "provider_errors": [
+      {
+        "source": "results/diag-deepseek-flash-20261105/trials/fin-l5-compare-01__opentrading_baseline__r2/attempts/01-8189fa7af94f/provider.jsonl:1",
+        "status": 502,
+        "error": "URLError",
+        "response_models": null,
+        "upstream_attempted": true
+      },
+      {
+        "source": "results/diag-deepseek-flash-20261105/trials/fin-l5-compare-01__opentrading_baseline__r2/attempts/01-8189fa7af94f/provider.jsonl:2",
+        "status": 403,
+        "error": "previous upstream usage unknown; further requests denied",
+        "response_models": null,
+        "upstream_attempted": false
+      }
+    ],
+    "native_watchdog_event": false,
+    "watchdog_in_primary_notes": false,
+    "watchdog_sources": [],
+    "ledger_path": "results/diag-deepseek-flash-20261105/trials/fin-l5-compare-01__opentrading_baseline__r2/attempts/01-8189fa7af94f/mcp.jsonl",
+    "calls": []
+  },
+  {
+    "pass": "A",
+    "trial_id": "fin-l1-quote-01__dsh__r2",
+    "task": "fin-l1-quote-01",
+    "arm": "dsh",
+    "run": 2,
+    "status": "error",
+    "success": false,
+    "error_type": "khong_tra_loi",
+    "attempt_count": 1,
+    "wall_ms": 13216,
+    "usage_complete": false,
+    "trial_source": "results/diag-deepseek-flash-20261105/trials.jsonl:29",
+    "manifest_path": "results/diag-deepseek-flash-20261105/manifest.json",
+    "provider_errors": [
+      {
+        "source": "results/diag-deepseek-flash-20261105/trials/fin-l1-quote-01__dsh__r2/attempts/01-d7a89d35af3e/provider.jsonl:1",
+        "status": 502,
+        "error": "URLError",
+        "response_models": null,
+        "upstream_attempted": true
+      }
+    ],
+    "native_watchdog_event": false,
+    "watchdog_in_primary_notes": false,
+    "watchdog_sources": [],
+    "ledger_path": "results/diag-deepseek-flash-20261105/trials/fin-l1-quote-01__dsh__r2/attempts/01-d7a89d35af3e/mcp.jsonl",
+    "calls": []
+  },
+  {
+    "pass": "A",
+    "trial_id": "fin-l1-quote-01__opencode__r2",
+    "task": "fin-l1-quote-01",
+    "arm": "opencode",
+    "run": 2,
+    "status": "error",
+    "success": false,
+    "error_type": "khong_tra_loi",
+    "attempt_count": 1,
+    "wall_ms": 11081,
+    "usage_complete": false,
+    "trial_source": "results/diag-deepseek-flash-20261105/trials.jsonl:30",
+    "manifest_path": "results/diag-deepseek-flash-20261105/manifest.json",
+    "provider_errors": [
+      {
+        "source": "results/diag-deepseek-flash-20261105/trials/fin-l1-quote-01__opencode__r2/attempts/01-ada426f9f5bd/provider.jsonl:1",
+        "status": 502,
+        "error": "URLError",
+        "response_models": null,
+        "upstream_attempted": true
+      },
+      {
+        "source": "results/diag-deepseek-flash-20261105/trials/fin-l1-quote-01__opencode__r2/attempts/01-ada426f9f5bd/provider.jsonl:2",
+        "status": 403,
+        "error": "previous upstream usage unknown; further requests denied",
+        "response_models": null,
+        "upstream_attempted": false
+      }
+    ],
+    "native_watchdog_event": false,
+    "watchdog_in_primary_notes": false,
+    "watchdog_sources": [],
+    "ledger_path": "results/diag-deepseek-flash-20261105/trials/fin-l1-quote-01__opencode__r2/attempts/01-ada426f9f5bd/mcp.jsonl",
+    "calls": []
+  },
+  {
+    "pass": "A",
+    "trial_id": "fin-l1-quote-01__opentrading_baseline__r2",
+    "task": "fin-l1-quote-01",
+    "arm": "opentrading_baseline",
+    "run": 2,
+    "status": "error",
+    "success": false,
+    "error_type": "khong_tra_loi",
+    "attempt_count": 1,
+    "wall_ms": 7982,
+    "usage_complete": false,
+    "trial_source": "results/diag-deepseek-flash-20261105/trials.jsonl:31",
+    "manifest_path": "results/diag-deepseek-flash-20261105/manifest.json",
+    "provider_errors": [
+      {
+        "source": "results/diag-deepseek-flash-20261105/trials/fin-l1-quote-01__opentrading_baseline__r2/attempts/01-3bc0dd9ddfb4/provider.jsonl:1",
+        "status": 502,
+        "error": "URLError",
+        "response_models": null,
+        "upstream_attempted": true
+      },
+      {
+        "source": "results/diag-deepseek-flash-20261105/trials/fin-l1-quote-01__opentrading_baseline__r2/attempts/01-3bc0dd9ddfb4/provider.jsonl:2",
+        "status": 403,
+        "error": "previous upstream usage unknown; further requests denied",
+        "response_models": null,
+        "upstream_attempted": false
+      }
+    ],
+    "native_watchdog_event": false,
+    "watchdog_in_primary_notes": false,
+    "watchdog_sources": [],
+    "ledger_path": "results/diag-deepseek-flash-20261105/trials/fin-l1-quote-01__opentrading_baseline__r2/attempts/01-3bc0dd9ddfb4/mcp.jsonl",
+    "calls": []
+  },
+  {
+    "pass": "A",
+    "trial_id": "fin-l1-quote-01__opentrading_finance__r2",
+    "task": "fin-l1-quote-01",
+    "arm": "opentrading_finance",
+    "run": 2,
+    "status": "error",
+    "success": false,
+    "error_type": "khong_tra_loi",
+    "attempt_count": 1,
+    "wall_ms": 8422,
+    "usage_complete": false,
+    "trial_source": "results/diag-deepseek-flash-20261105/trials.jsonl:32",
+    "manifest_path": "results/diag-deepseek-flash-20261105/manifest.json",
+    "provider_errors": [
+      {
+        "source": "results/diag-deepseek-flash-20261105/trials/fin-l1-quote-01__opentrading_finance__r2/attempts/01-be608fd98c02/provider.jsonl:1",
+        "status": 502,
+        "error": "URLError",
+        "response_models": null,
+        "upstream_attempted": true
+      },
+      {
+        "source": "results/diag-deepseek-flash-20261105/trials/fin-l1-quote-01__opentrading_finance__r2/attempts/01-be608fd98c02/provider.jsonl:2",
+        "status": 403,
+        "error": "previous upstream usage unknown; further requests denied",
+        "response_models": null,
+        "upstream_attempted": false
+      }
+    ],
+    "native_watchdog_event": false,
+    "watchdog_in_primary_notes": false,
+    "watchdog_sources": [],
+    "ledger_path": "results/diag-deepseek-flash-20261105/trials/fin-l1-quote-01__opentrading_finance__r2/attempts/01-be608fd98c02/mcp.jsonl",
+    "calls": []
+  },
+  {
+    "pass": "A",
+    "trial_id": "fin-l1-gold-01__dsh__r2",
+    "task": "fin-l1-gold-01",
+    "arm": "dsh",
+    "run": 2,
+    "status": "error",
+    "success": false,
+    "error_type": "khong_tra_loi",
+    "attempt_count": 1,
+    "wall_ms": 12842,
+    "usage_complete": false,
+    "trial_source": "results/diag-deepseek-flash-20261105/trials.jsonl:33",
+    "manifest_path": "results/diag-deepseek-flash-20261105/manifest.json",
+    "provider_errors": [
+      {
+        "source": "results/diag-deepseek-flash-20261105/trials/fin-l1-gold-01__dsh__r2/attempts/01-96155a6d867f/provider.jsonl:1",
+        "status": 502,
+        "error": "URLError",
+        "response_models": null,
+        "upstream_attempted": true
+      }
+    ],
+    "native_watchdog_event": false,
+    "watchdog_in_primary_notes": false,
+    "watchdog_sources": [],
+    "ledger_path": "results/diag-deepseek-flash-20261105/trials/fin-l1-gold-01__dsh__r2/attempts/01-96155a6d867f/mcp.jsonl",
+    "calls": []
+  },
+  {
+    "pass": "A",
+    "trial_id": "fin-l1-gold-01__opentrading_finance__r2",
+    "task": "fin-l1-gold-01",
+    "arm": "opentrading_finance",
+    "run": 2,
+    "status": "error",
+    "success": false,
+    "error_type": "khong_tra_loi",
+    "attempt_count": 1,
+    "wall_ms": 8287,
+    "usage_complete": false,
+    "trial_source": "results/diag-deepseek-flash-20261105/trials.jsonl:34",
+    "manifest_path": "results/diag-deepseek-flash-20261105/manifest.json",
+    "provider_errors": [
+      {
+        "source": "results/diag-deepseek-flash-20261105/trials/fin-l1-gold-01__opentrading_finance__r2/attempts/01-8f865374d7c0/provider.jsonl:1",
+        "status": 502,
+        "error": "URLError",
+        "response_models": null,
+        "upstream_attempted": true
+      },
+      {
+        "source": "results/diag-deepseek-flash-20261105/trials/fin-l1-gold-01__opentrading_finance__r2/attempts/01-8f865374d7c0/provider.jsonl:2",
+        "status": 403,
+        "error": "previous upstream usage unknown; further requests denied",
+        "response_models": null,
+        "upstream_attempted": false
+      }
+    ],
+    "native_watchdog_event": false,
+    "watchdog_in_primary_notes": false,
+    "watchdog_sources": [],
+    "ledger_path": "results/diag-deepseek-flash-20261105/trials/fin-l1-gold-01__opentrading_finance__r2/attempts/01-8f865374d7c0/mcp.jsonl",
+    "calls": []
+  },
+  {
+    "pass": "A",
+    "trial_id": "fin-l1-gold-01__opentrading_baseline__r2",
+    "task": "fin-l1-gold-01",
+    "arm": "opentrading_baseline",
+    "run": 2,
+    "status": "error",
+    "success": false,
+    "error_type": "khong_tra_loi",
+    "attempt_count": 1,
+    "wall_ms": 8160,
+    "usage_complete": false,
+    "trial_source": "results/diag-deepseek-flash-20261105/trials.jsonl:35",
+    "manifest_path": "results/diag-deepseek-flash-20261105/manifest.json",
+    "provider_errors": [
+      {
+        "source": "results/diag-deepseek-flash-20261105/trials/fin-l1-gold-01__opentrading_baseline__r2/attempts/01-917101f74b76/provider.jsonl:1",
+        "status": 502,
+        "error": "URLError",
+        "response_models": null,
+        "upstream_attempted": true
+      },
+      {
+        "source": "results/diag-deepseek-flash-20261105/trials/fin-l1-gold-01__opentrading_baseline__r2/attempts/01-917101f74b76/provider.jsonl:2",
+        "status": 403,
+        "error": "previous upstream usage unknown; further requests denied",
+        "response_models": null,
+        "upstream_attempted": false
+      }
+    ],
+    "native_watchdog_event": false,
+    "watchdog_in_primary_notes": false,
+    "watchdog_sources": [],
+    "ledger_path": "results/diag-deepseek-flash-20261105/trials/fin-l1-gold-01__opentrading_baseline__r2/attempts/01-917101f74b76/mcp.jsonl",
+    "calls": []
+  },
+  {
+    "pass": "A",
+    "trial_id": "fin-l1-gold-01__opencode__r2",
+    "task": "fin-l1-gold-01",
+    "arm": "opencode",
+    "run": 2,
+    "status": "error",
+    "success": false,
+    "error_type": "khong_tra_loi",
+    "attempt_count": 1,
+    "wall_ms": 10741,
+    "usage_complete": false,
+    "trial_source": "results/diag-deepseek-flash-20261105/trials.jsonl:36",
+    "manifest_path": "results/diag-deepseek-flash-20261105/manifest.json",
+    "provider_errors": [
+      {
+        "source": "results/diag-deepseek-flash-20261105/trials/fin-l1-gold-01__opencode__r2/attempts/01-08369a1e4996/provider.jsonl:1",
+        "status": 502,
+        "error": "URLError",
+        "response_models": null,
+        "upstream_attempted": true
+      },
+      {
+        "source": "results/diag-deepseek-flash-20261105/trials/fin-l1-gold-01__opencode__r2/attempts/01-08369a1e4996/provider.jsonl:2",
+        "status": 403,
+        "error": "previous upstream usage unknown; further requests denied",
+        "response_models": null,
+        "upstream_attempted": false
+      }
+    ],
+    "native_watchdog_event": false,
+    "watchdog_in_primary_notes": false,
+    "watchdog_sources": [],
+    "ledger_path": "results/diag-deepseek-flash-20261105/trials/fin-l1-gold-01__opencode__r2/attempts/01-08369a1e4996/mcp.jsonl",
+    "calls": []
+  },
+  {
+    "pass": "A",
+    "trial_id": "fin-l1-bctc-01__opencode__r2",
+    "task": "fin-l1-bctc-01",
+    "arm": "opencode",
+    "run": 2,
+    "status": "error",
+    "success": false,
+    "error_type": "khong_tra_loi",
+    "attempt_count": 1,
+    "wall_ms": 11590,
+    "usage_complete": false,
+    "trial_source": "results/diag-deepseek-flash-20261105/trials.jsonl:37",
+    "manifest_path": "results/diag-deepseek-flash-20261105/manifest.json",
+    "provider_errors": [
+      {
+        "source": "results/diag-deepseek-flash-20261105/trials/fin-l1-bctc-01__opencode__r2/attempts/01-f176212ea1c4/provider.jsonl:1",
+        "status": 502,
+        "error": "URLError",
+        "response_models": null,
+        "upstream_attempted": true
+      },
+      {
+        "source": "results/diag-deepseek-flash-20261105/trials/fin-l1-bctc-01__opencode__r2/attempts/01-f176212ea1c4/provider.jsonl:2",
+        "status": 403,
+        "error": "previous upstream usage unknown; further requests denied",
+        "response_models": null,
+        "upstream_attempted": false
+      }
+    ],
+    "native_watchdog_event": false,
+    "watchdog_in_primary_notes": false,
+    "watchdog_sources": [],
+    "ledger_path": "results/diag-deepseek-flash-20261105/trials/fin-l1-bctc-01__opencode__r2/attempts/01-f176212ea1c4/mcp.jsonl",
+    "calls": []
+  },
+  {
+    "pass": "A",
+    "trial_id": "fin-l1-bctc-01__dsh__r2",
+    "task": "fin-l1-bctc-01",
+    "arm": "dsh",
+    "run": 2,
+    "status": "error",
+    "success": false,
+    "error_type": "khong_tra_loi",
+    "attempt_count": 1,
+    "wall_ms": 12415,
+    "usage_complete": false,
+    "trial_source": "results/diag-deepseek-flash-20261105/trials.jsonl:38",
+    "manifest_path": "results/diag-deepseek-flash-20261105/manifest.json",
+    "provider_errors": [
+      {
+        "source": "results/diag-deepseek-flash-20261105/trials/fin-l1-bctc-01__dsh__r2/attempts/01-2e48ad66eebe/provider.jsonl:1",
+        "status": 502,
+        "error": "URLError",
+        "response_models": null,
+        "upstream_attempted": true
+      }
+    ],
+    "native_watchdog_event": false,
+    "watchdog_in_primary_notes": false,
+    "watchdog_sources": [],
+    "ledger_path": "results/diag-deepseek-flash-20261105/trials/fin-l1-bctc-01__dsh__r2/attempts/01-2e48ad66eebe/mcp.jsonl",
+    "calls": []
+  },
+  {
+    "pass": "A",
+    "trial_id": "fin-l1-bctc-01__opentrading_finance__r2",
+    "task": "fin-l1-bctc-01",
+    "arm": "opentrading_finance",
+    "run": 2,
+    "status": "error",
+    "success": false,
+    "error_type": "khong_tra_loi",
+    "attempt_count": 1,
+    "wall_ms": 8693,
+    "usage_complete": false,
+    "trial_source": "results/diag-deepseek-flash-20261105/trials.jsonl:39",
+    "manifest_path": "results/diag-deepseek-flash-20261105/manifest.json",
+    "provider_errors": [
+      {
+        "source": "results/diag-deepseek-flash-20261105/trials/fin-l1-bctc-01__opentrading_finance__r2/attempts/01-b5f02f5e96b8/provider.jsonl:1",
+        "status": 502,
+        "error": "URLError",
+        "response_models": null,
+        "upstream_attempted": true
+      },
+      {
+        "source": "results/diag-deepseek-flash-20261105/trials/fin-l1-bctc-01__opentrading_finance__r2/attempts/01-b5f02f5e96b8/provider.jsonl:2",
+        "status": 403,
+        "error": "previous upstream usage unknown; further requests denied",
+        "response_models": null,
+        "upstream_attempted": false
+      }
+    ],
+    "native_watchdog_event": false,
+    "watchdog_in_primary_notes": false,
+    "watchdog_sources": [],
+    "ledger_path": "results/diag-deepseek-flash-20261105/trials/fin-l1-bctc-01__opentrading_finance__r2/attempts/01-b5f02f5e96b8/mcp.jsonl",
+    "calls": []
+  },
+  {
+    "pass": "A",
+    "trial_id": "fin-l1-bctc-01__opentrading_baseline__r2",
+    "task": "fin-l1-bctc-01",
+    "arm": "opentrading_baseline",
+    "run": 2,
+    "status": "error",
+    "success": false,
+    "error_type": "khong_tra_loi",
+    "attempt_count": 1,
+    "wall_ms": 8795,
+    "usage_complete": false,
+    "trial_source": "results/diag-deepseek-flash-20261105/trials.jsonl:40",
+    "manifest_path": "results/diag-deepseek-flash-20261105/manifest.json",
+    "provider_errors": [
+      {
+        "source": "results/diag-deepseek-flash-20261105/trials/fin-l1-bctc-01__opentrading_baseline__r2/attempts/01-8b855deaee3b/provider.jsonl:1",
+        "status": 502,
+        "error": "URLError",
+        "response_models": null,
+        "upstream_attempted": true
+      },
+      {
+        "source": "results/diag-deepseek-flash-20261105/trials/fin-l1-bctc-01__opentrading_baseline__r2/attempts/01-8b855deaee3b/provider.jsonl:2",
+        "status": 403,
+        "error": "previous upstream usage unknown; further requests denied",
+        "response_models": null,
+        "upstream_attempted": false
+      }
+    ],
+    "native_watchdog_event": false,
+    "watchdog_in_primary_notes": false,
+    "watchdog_sources": [],
+    "ledger_path": "results/diag-deepseek-flash-20261105/trials/fin-l1-bctc-01__opentrading_baseline__r2/attempts/01-8b855deaee3b/mcp.jsonl",
+    "calls": []
+  },
+  {
+    "pass": "B",
+    "trial_id": "fin-l1-bctc-01__opentrading_finance__r1",
+    "task": "fin-l1-bctc-01",
+    "arm": "opentrading_finance",
+    "run": 1,
+    "status": "error",
+    "success": false,
+    "error_type": "khong_tra_loi",
+    "attempt_count": 1,
+    "wall_ms": 92632,
+    "usage_complete": false,
+    "trial_source": "results/diag-deepseek-flash-20261105-passB/trials.jsonl:1",
+    "manifest_path": "results/diag-deepseek-flash-20261105-passB/manifest.json",
+    "provider_errors": [
+      {
+        "source": "results/diag-deepseek-flash-20261105-passB/trials/fin-l1-bctc-01__opentrading_finance__r1/attempts/01-8d94a9fbf4b1/provider.jsonl:1",
+        "status": 403,
+        "error": "provider response model mismatch",
+        "response_models": [],
+        "upstream_attempted": true
+      }
+    ],
+    "native_watchdog_event": false,
+    "watchdog_in_primary_notes": false,
+    "watchdog_sources": [],
+    "ledger_path": "results/diag-deepseek-flash-20261105-passB/trials/fin-l1-bctc-01__opentrading_finance__r1/attempts/01-8d94a9fbf4b1/mcp.jsonl",
+    "calls": []
+  },
+  {
+    "pass": "B",
+    "trial_id": "fin-l1-bctc-01__dsh__r1",
+    "task": "fin-l1-bctc-01",
+    "arm": "dsh",
+    "run": 1,
+    "status": "ok",
+    "success": true,
+    "error_type": null,
+    "attempt_count": 1,
+    "wall_ms": 177000,
+    "usage_complete": true,
+    "trial_source": "results/diag-deepseek-flash-20261105-passB/trials.jsonl:2",
+    "manifest_path": "results/diag-deepseek-flash-20261105-passB/manifest.json",
+    "provider_errors": [],
+    "native_watchdog_event": false,
+    "watchdog_in_primary_notes": false,
+    "watchdog_sources": [],
+    "ledger_path": "results/diag-deepseek-flash-20261105-passB/trials/fin-l1-bctc-01__dsh__r1/attempts/01-854cb7b4df42/mcp.jsonl",
+    "calls": [
+      {
+        "tool": "financial_statements",
+        "arguments": {
+          "symbol": "VCB",
+          "period": "quarter"
+        },
+        "status": "ok",
+        "error_code": null,
+        "availability": "available"
+      }
+    ],
+    "answer": {
+      "value": 14550.959,
+      "unit": "tỷ đồng",
+      "period": "Q2/2026",
+      "source": "financial_statements",
+      "line": "Tổng LNST",
+      "note": "LNST hợp nhất quý gần nhất (Q2/2026) = 14,550,959,000,000 VND, quy đổi /1e9 = 14,550.959 tỷ đồng. Dòng 'Tổng LNST' là chỉ tiêu lợi nhuận sau thuế hợp nhất; dòng 'LNST của CĐ Ngân hàng mẹ' (14,542,276,000,000 VND) là phần thuộc cổ đông ngân hàng mẹ.",
+      "evidence": [
+        {
+          "tool": "financial_statements",
+          "source": "vietstock",
+          "as_of": "2026-11-01T15:54:29.686603+07:00",
+          "call_id": "859e3f8d-d9e4-49b6-9a36-994189638056",
+          "payload_sha256": "e9c5e43dc5664805b215186c33c36a17a40f9109263b7ebf1a5a61bec507976f",
+          "matched_entry_id": "financial_statements:0",
+          "response_sha256": "368411d1982abd746595febe29f0a84129757c95cffc4d59b334a7cf054a4a06"
+        }
+      ]
+    },
+    "all_evidence_7_fields_grounded": true,
+    "evidence_ids_and_hashes_visible": true,
+    "failed_checks": []
+  },
+  {
+    "pass": "B",
+    "trial_id": "fin-l1-bctc-01__opentrading_baseline__r1",
+    "task": "fin-l1-bctc-01",
+    "arm": "opentrading_baseline",
+    "run": 1,
+    "status": "ok",
+    "success": true,
+    "error_type": null,
+    "attempt_count": 1,
+    "wall_ms": 145249,
+    "usage_complete": true,
+    "trial_source": "results/diag-deepseek-flash-20261105-passB/trials.jsonl:3",
+    "manifest_path": "results/diag-deepseek-flash-20261105-passB/manifest.json",
+    "provider_errors": [],
+    "native_watchdog_event": false,
+    "watchdog_in_primary_notes": false,
+    "watchdog_sources": [],
+    "ledger_path": "results/diag-deepseek-flash-20261105-passB/trials/fin-l1-bctc-01__opentrading_baseline__r1/attempts/01-45b6a583d025/mcp.jsonl",
+    "calls": [
+      {
+        "tool": "financial_statements",
+        "arguments": {
+          "symbol": "VCB",
+          "period": "quarter",
+          "statement": "all",
+          "periods_n": 15
+        },
+        "status": "ok",
+        "error_code": null,
+        "availability": "available"
+      }
+    ],
+    "answer": {
+      "value": 14550.959,
+      "unit": "tỷ đồng",
+      "period": "Q2/2026",
+      "source": "financial_statements",
+      "line": "Tổng LNST",
+      "note": "Báo cáo gốc đơn vị VND: 14.550.959.000.000 đồng, quy đổi ÷ 1.000.000.000 = 14.550,959 tỷ đồng. Đây là chỉ tiêu lợi nhuận sau thuế hợp nhất (Tổng LNST) của quý gần nhất trong snapshot; dòng 'LNST của CĐ Ngân hàng mẹ' cùng kỳ là 14.542,276 tỷ đồng.",
+      "evidence": [
+        {
+          "tool": "financial_statements",
+          "source": "vietstock",
+          "as_of": "2026-11-01T15:54:29.686603+07:00",
+          "call_id": "b0451fb3-f26c-4d54-b754-0aad55d75913",
+          "payload_sha256": "e9c5e43dc5664805b215186c33c36a17a40f9109263b7ebf1a5a61bec507976f",
+          "matched_entry_id": "financial_statements:0",
+          "response_sha256": "368411d1982abd746595febe29f0a84129757c95cffc4d59b334a7cf054a4a06"
+        }
+      ]
+    },
+    "all_evidence_7_fields_grounded": true,
+    "evidence_ids_and_hashes_visible": true,
+    "failed_checks": []
+  },
+  {
+    "pass": "B",
+    "trial_id": "fin-l1-bctc-01__opencode__r1",
+    "task": "fin-l1-bctc-01",
+    "arm": "opencode",
+    "run": 1,
+    "status": "ok",
+    "success": true,
+    "error_type": null,
+    "attempt_count": 1,
+    "wall_ms": 182709,
+    "usage_complete": true,
+    "trial_source": "results/diag-deepseek-flash-20261105-passB/trials.jsonl:4",
+    "manifest_path": "results/diag-deepseek-flash-20261105-passB/manifest.json",
+    "provider_errors": [],
+    "native_watchdog_event": false,
+    "watchdog_in_primary_notes": false,
+    "watchdog_sources": [],
+    "ledger_path": "results/diag-deepseek-flash-20261105-passB/trials/fin-l1-bctc-01__opencode__r1/attempts/01-70bee26bb76b/mcp.jsonl",
+    "calls": [
+      {
+        "tool": "financial_statements",
+        "arguments": {
+          "symbol": "VCB",
+          "period": "quarter"
+        },
+        "status": "ok",
+        "error_code": null,
+        "availability": "available"
+      }
+    ],
+    "answer": {
+      "value": 14550.959,
+      "unit": "tỷ đồng",
+      "period": "Q2/2026",
+      "source": "financial_statements",
+      "line": "Tổng LNST",
+      "note": "LNST hợp nhất quý gần nhất (Q2/2026) = 14,550,959,000,000 VND; quy đổi /1e9 = 14550.959 tỷ đồng. Dòng 'Tổng LNST' là lợi nhuận sau thuế hợp nhất.",
+      "evidence": [
+        {
+          "tool": "financial_statements",
+          "source": "vietstock",
+          "as_of": "2026-11-01T15:54:29.686603+07:00",
+          "call_id": "4240f49e-acf1-4654-b5ad-b2464dd610fd",
+          "payload_sha256": "e9c5e43dc5664805b215186c33c36a17a40f9109263b7ebf1a5a61bec507976f",
+          "matched_entry_id": "financial_statements:0",
+          "response_sha256": "368411d1982abd746595febe29f0a84129757c95cffc4d59b334a7cf054a4a06"
+        }
+      ]
+    },
+    "all_evidence_7_fields_grounded": true,
+    "evidence_ids_and_hashes_visible": true,
+    "failed_checks": []
+  },
+  {
+    "pass": "B",
+    "trial_id": "fin-l1-quote-02__opentrading_baseline__r1",
+    "task": "fin-l1-quote-02",
+    "arm": "opentrading_baseline",
+    "run": 1,
+    "status": "ok",
+    "success": true,
+    "error_type": null,
+    "attempt_count": 1,
+    "wall_ms": 173152,
+    "usage_complete": true,
+    "trial_source": "results/diag-deepseek-flash-20261105-passB/trials.jsonl:5",
+    "manifest_path": "results/diag-deepseek-flash-20261105-passB/manifest.json",
+    "provider_errors": [],
+    "native_watchdog_event": false,
+    "watchdog_in_primary_notes": false,
+    "watchdog_sources": [],
+    "ledger_path": "results/diag-deepseek-flash-20261105-passB/trials/fin-l1-quote-02__opentrading_baseline__r1/attempts/01-0e6d1dc57903/mcp.jsonl",
+    "calls": [
+      {
+        "tool": "crypto_spot",
+        "arguments": {
+          "symbols": [
+            "BTCUSDT"
+          ]
+        },
+        "status": "ok",
+        "error_code": null,
+        "availability": "available"
+      }
+    ],
+    "answer": {
+      "value": 78109,
+      "unit": "USDT",
+      "period": "2026-11-01",
+      "source": "crypto_spot",
+      "note": "Giá khớp gần nhất (last) của BTCUSDT trên Binance tại snapshot; biến động 24h +1.09%.",
+      "evidence": [
+        {
+          "tool": "crypto_spot",
+          "source": "binance",
+          "as_of": "2026-11-01T15:54:32.586909+07:00",
+          "call_id": "9d6e835f-7a89-418a-b1c5-12761094d8dd",
+          "payload_sha256": "f40d9ee2ab68813fb2388acb2064b596ef6bb6287de9ca198e60f34c8f37ac26",
+          "matched_entry_id": "crypto_spot:0",
+          "response_sha256": "aeb32670107aea9963bb1f08f1bfc583738d3dedd8c655db00737a85329bdc13"
+        }
+      ]
+    },
+    "all_evidence_7_fields_grounded": true,
+    "evidence_ids_and_hashes_visible": true,
+    "failed_checks": []
+  },
+  {
+    "pass": "B",
+    "trial_id": "fin-l1-quote-02__opencode__r1",
+    "task": "fin-l1-quote-02",
+    "arm": "opencode",
+    "run": 1,
+    "status": "ok",
+    "success": true,
+    "error_type": null,
+    "attempt_count": 1,
+    "wall_ms": 160741,
+    "usage_complete": true,
+    "trial_source": "results/diag-deepseek-flash-20261105-passB/trials.jsonl:6",
+    "manifest_path": "results/diag-deepseek-flash-20261105-passB/manifest.json",
+    "provider_errors": [],
+    "native_watchdog_event": false,
+    "watchdog_in_primary_notes": false,
+    "watchdog_sources": [],
+    "ledger_path": "results/diag-deepseek-flash-20261105-passB/trials/fin-l1-quote-02__opencode__r1/attempts/01-20f67704ea3f/mcp.jsonl",
+    "calls": [
+      {
+        "tool": "crypto_spot",
+        "arguments": {
+          "symbols": [
+            "BTCUSDT"
+          ]
+        },
+        "status": "ok",
+        "error_code": null,
+        "availability": "available"
+      }
+    ],
+    "answer": {
+      "value": 78109,
+      "unit": "USDT",
+      "period": "2026-11-01",
+      "source": "crypto_spot",
+      "note": "Giá BTCUSDT (last) tại snapshot 2026-11-01T15:54:32+07:00, nguồn binance.",
+      "evidence": [
+        {
+          "tool": "crypto_spot",
+          "source": "binance",
+          "as_of": "2026-11-01T15:54:32.586909+07:00",
+          "call_id": "55321d38-1488-4604-8187-c11620f8dba7",
+          "payload_sha256": "f40d9ee2ab68813fb2388acb2064b596ef6bb6287de9ca198e60f34c8f37ac26",
+          "matched_entry_id": "crypto_spot:0",
+          "response_sha256": "aeb32670107aea9963bb1f08f1bfc583738d3dedd8c655db00737a85329bdc13"
+        }
+      ]
+    },
+    "all_evidence_7_fields_grounded": true,
+    "evidence_ids_and_hashes_visible": true,
+    "failed_checks": []
+  },
+  {
+    "pass": "B",
+    "trial_id": "fin-l1-quote-02__opentrading_finance__r1",
+    "task": "fin-l1-quote-02",
+    "arm": "opentrading_finance",
+    "run": 1,
+    "status": "ok",
+    "success": true,
+    "error_type": null,
+    "attempt_count": 1,
+    "wall_ms": 178378,
+    "usage_complete": true,
+    "trial_source": "results/diag-deepseek-flash-20261105-passB/trials.jsonl:7",
+    "manifest_path": "results/diag-deepseek-flash-20261105-passB/manifest.json",
+    "provider_errors": [],
+    "native_watchdog_event": false,
+    "watchdog_in_primary_notes": false,
+    "watchdog_sources": [],
+    "ledger_path": "results/diag-deepseek-flash-20261105-passB/trials/fin-l1-quote-02__opentrading_finance__r1/attempts/01-ca7b547c1ac7/mcp.jsonl",
+    "calls": [
+      {
+        "tool": "crypto_spot",
+        "arguments": {
+          "symbols": [
+            "BTCUSDT"
+          ]
+        },
+        "status": "ok",
+        "error_code": null,
+        "availability": "available"
+      }
+    ],
+    "answer": {
+      "value": 78109,
+      "unit": "USDT",
+      "period": "2026-11-01",
+      "source": "crypto_spot",
+      "note": "Giá BTCUSDT (last) tại snapshot 2026-11-01T15:54:32+07:00, nguồn binance.",
+      "evidence": [
+        {
+          "tool": "crypto_spot",
+          "source": "binance",
+          "as_of": "2026-11-01T15:54:32.586909+07:00",
+          "call_id": "e63959ee-5d0c-45ce-a6df-21e85ed6d721",
+          "payload_sha256": "f40d9ee2ab68813fb2388acb2064b596ef6bb6287de9ca198e60f34c8f37ac26",
+          "matched_entry_id": "crypto_spot:0",
+          "response_sha256": "aeb32670107aea9963bb1f08f1bfc583738d3dedd8c655db00737a85329bdc13"
+        }
+      ]
+    },
+    "all_evidence_7_fields_grounded": true,
+    "evidence_ids_and_hashes_visible": true,
+    "failed_checks": []
+  },
+  {
+    "pass": "B",
+    "trial_id": "fin-l1-quote-02__dsh__r1",
+    "task": "fin-l1-quote-02",
+    "arm": "dsh",
+    "run": 1,
+    "status": "ok",
+    "success": true,
+    "error_type": null,
+    "attempt_count": 1,
+    "wall_ms": 241672,
+    "usage_complete": true,
+    "trial_source": "results/diag-deepseek-flash-20261105-passB/trials.jsonl:8",
+    "manifest_path": "results/diag-deepseek-flash-20261105-passB/manifest.json",
+    "provider_errors": [],
+    "native_watchdog_event": false,
+    "watchdog_in_primary_notes": false,
+    "watchdog_sources": [],
+    "ledger_path": "results/diag-deepseek-flash-20261105-passB/trials/fin-l1-quote-02__dsh__r1/attempts/01-bf6ff7a330e7/mcp.jsonl",
+    "calls": [
+      {
+        "tool": "crypto_spot",
+        "arguments": {
+          "symbols": [
+            "BTCUSDT"
+          ]
+        },
+        "status": "ok",
+        "error_code": null,
+        "availability": "available"
+      }
+    ],
+    "answer": {
+      "value": 78109,
+      "unit": "USDT",
+      "period": "2026-11-01",
+      "source": "crypto_spot",
+      "note": "Giá BTCUSDT (last) tại snapshot 2026-11-01T15:54:32+07:00, nguồn binance.",
+      "evidence": [
+        {
+          "tool": "crypto_spot",
+          "source": "binance",
+          "as_of": "2026-11-01T15:54:32.586909+07:00",
+          "call_id": "27685280-32b8-40be-b279-e3e4dc8519de",
+          "payload_sha256": "f40d9ee2ab68813fb2388acb2064b596ef6bb6287de9ca198e60f34c8f37ac26",
+          "matched_entry_id": "crypto_spot:0",
+          "response_sha256": "aeb32670107aea9963bb1f08f1bfc583738d3dedd8c655db00737a85329bdc13"
+        }
+      ]
+    },
+    "all_evidence_7_fields_grounded": true,
+    "evidence_ids_and_hashes_visible": true,
+    "failed_checks": []
+  },
+  {
+    "pass": "B",
+    "trial_id": "fin-l5-compare-01__dsh__r1",
+    "task": "fin-l5-compare-01",
+    "arm": "dsh",
+    "run": 1,
+    "status": "error",
+    "success": false,
+    "error_type": "khong_tra_loi",
+    "attempt_count": 1,
+    "wall_ms": 63336,
+    "usage_complete": false,
+    "trial_source": "results/diag-deepseek-flash-20261105-passB/trials.jsonl:9",
+    "manifest_path": "results/diag-deepseek-flash-20261105-passB/manifest.json",
+    "provider_errors": [
+      {
+        "source": "results/diag-deepseek-flash-20261105-passB/trials/fin-l5-compare-01__dsh__r1/attempts/01-a3af75fae914/provider.jsonl:1",
+        "status": 403,
+        "error": "provider response model mismatch",
+        "response_models": [],
+        "upstream_attempted": true
+      }
+    ],
+    "native_watchdog_event": false,
+    "watchdog_in_primary_notes": false,
+    "watchdog_sources": [],
+    "ledger_path": "results/diag-deepseek-flash-20261105-passB/trials/fin-l5-compare-01__dsh__r1/attempts/01-a3af75fae914/mcp.jsonl",
+    "calls": []
+  },
+  {
+    "pass": "B",
+    "trial_id": "fin-l5-compare-01__opentrading_baseline__r1",
+    "task": "fin-l5-compare-01",
+    "arm": "opentrading_baseline",
+    "run": 1,
+    "status": "error",
+    "success": false,
+    "error_type": "khong_tra_loi",
+    "attempt_count": 1,
+    "wall_ms": 129419,
+    "usage_complete": true,
+    "trial_source": "results/diag-deepseek-flash-20261105-passB/trials.jsonl:10",
+    "manifest_path": "results/diag-deepseek-flash-20261105-passB/manifest.json",
+    "provider_errors": [],
+    "native_watchdog_event": true,
+    "watchdog_in_primary_notes": true,
+    "watchdog_sources": [
+      "results/diag-deepseek-flash-20261105-passB/trials/fin-l5-compare-01__opentrading_baseline__r1/attempts/01-7ebbba8c94ac/run.log:49"
+    ],
+    "ledger_path": "results/diag-deepseek-flash-20261105-passB/trials/fin-l5-compare-01__opentrading_baseline__r1/attempts/01-7ebbba8c94ac/mcp.jsonl",
+    "calls": []
+  },
+  {
+    "pass": "B",
+    "trial_id": "fin-l5-compare-01__opencode__r1",
+    "task": "fin-l5-compare-01",
+    "arm": "opencode",
+    "run": 1,
+    "status": "ok",
+    "success": true,
+    "error_type": null,
+    "attempt_count": 1,
+    "wall_ms": 258616,
+    "usage_complete": true,
+    "trial_source": "results/diag-deepseek-flash-20261105-passB/trials.jsonl:11",
+    "manifest_path": "results/diag-deepseek-flash-20261105-passB/manifest.json",
+    "provider_errors": [],
+    "native_watchdog_event": false,
+    "watchdog_in_primary_notes": false,
+    "watchdog_sources": [],
+    "ledger_path": "results/diag-deepseek-flash-20261105-passB/trials/fin-l5-compare-01__opencode__r1/attempts/01-2d0b1b10a2e4/mcp.jsonl",
+    "calls": [
+      {
+        "tool": "peer_compare",
+        "arguments": {
+          "symbol": "VCB",
+          "peers": [
+            "BID",
+            "CTG",
+            "TCB",
+            "MBB"
+          ]
+        },
+        "status": "ok",
+        "error_code": null,
+        "availability": "available"
+      }
+    ],
+    "answer": {
+      "values": {
+        "VCB": {
+          "pe": 12.66,
+          "pb": 2.14,
+          "roe": 16.73
+        },
+        "BID": {
+          "pe": 9.11,
+          "pb": 1.57,
+          "roe": 19.43
+        },
+        "CTG": {
+          "pe": 5.55,
+          "pb": 1.07,
+          "roe": 21.23
+        },
+        "TCB": {
+          "pe": 9.76,
+          "pb": 1.38,
+          "roe": 16.03
+        },
+        "MBB": {
+          "pe": 6.36,
+          "pb": 1.43,
+          "roe": 21.57
+        }
+      },
+      "ranking": [
+        "MBB",
+        "CTG",
+        "BID",
+        "VCB",
+        "TCB"
+      ],
+      "period": "2025",
+      "source": "peer_compare",
+      "note": "P/E, P/B, ROE theo giá ngày kết thúc kỳ báo cáo 2025 (không phải bội số hiện tại). Xếp hạng theo ROE giảm dần: MBB 21.57 > CTG 21.23 > BID 19.43 > VCB 16.73 > TCB 16.03.",
+      "evidence": [
+        {
+          "tool": "peer_compare",
+          "source": "vnstock",
+          "as_of": "2026-11-01T15:58:02.647158+07:00",
+          "call_id": "409f95a8-8e9f-44b0-8622-5db590284f92",
+          "payload_sha256": "9d5cd2d9d48cbebfdbb5c67a4f81f87c93362a8c82b52accafd053219d49c7d5",
+          "matched_entry_id": "peer_compare:0",
+          "response_sha256": "c7bf5f6871f6bf6268ae80f9a927991aac12a683d3d5cab89e4aae5eb9ea043f"
+        }
+      ]
+    },
+    "all_evidence_7_fields_grounded": true,
+    "evidence_ids_and_hashes_visible": true,
+    "failed_checks": []
+  },
+  {
+    "pass": "B",
+    "trial_id": "fin-l5-compare-01__opentrading_finance__r1",
+    "task": "fin-l5-compare-01",
+    "arm": "opentrading_finance",
+    "run": 1,
+    "status": "error",
+    "success": false,
+    "error_type": "khong_tra_loi",
+    "attempt_count": 1,
+    "wall_ms": 125147,
+    "usage_complete": true,
+    "trial_source": "results/diag-deepseek-flash-20261105-passB/trials.jsonl:12",
+    "manifest_path": "results/diag-deepseek-flash-20261105-passB/manifest.json",
+    "provider_errors": [],
+    "native_watchdog_event": true,
+    "watchdog_in_primary_notes": true,
+    "watchdog_sources": [
+      "results/diag-deepseek-flash-20261105-passB/trials/fin-l5-compare-01__opentrading_finance__r1/attempts/01-5c00f3300bc1/run.log:49"
+    ],
+    "ledger_path": "results/diag-deepseek-flash-20261105-passB/trials/fin-l5-compare-01__opentrading_finance__r1/attempts/01-5c00f3300bc1/mcp.jsonl",
+    "calls": []
+  },
+  {
+    "pass": "B",
+    "trial_id": "fin-l1-quote-01__opencode__r1",
+    "task": "fin-l1-quote-01",
+    "arm": "opencode",
+    "run": 1,
+    "status": "ok",
+    "success": true,
+    "error_type": null,
+    "attempt_count": 1,
+    "wall_ms": 212653,
+    "usage_complete": true,
+    "trial_source": "results/diag-deepseek-flash-20261105-passB/trials.jsonl:13",
+    "manifest_path": "results/diag-deepseek-flash-20261105-passB/manifest.json",
+    "provider_errors": [],
+    "native_watchdog_event": false,
+    "watchdog_in_primary_notes": false,
+    "watchdog_sources": [],
+    "ledger_path": "results/diag-deepseek-flash-20261105-passB/trials/fin-l1-quote-01__opencode__r1/attempts/01-5062c61f8901/mcp.jsonl",
+    "calls": [
+      {
+        "tool": "vn_quote_history",
+        "arguments": {
+          "symbol": "HPG"
+        },
+        "status": "ok",
+        "error_code": null,
+        "availability": "available"
+      }
+    ],
+    "answer": {
+      "value": 21,
+      "unit": "nghìn đồng",
+      "period": "phiên gần nhất (30/10/2026)",
+      "source": "vn_quote_history",
+      "note": "Giá đóng cửa phiên gần nhất của HPG là 21 nghìn đồng (21.000 đ), theo trường 'last' với last_t = 2026-10-30.",
+      "evidence": [
+        {
+          "tool": "vn_quote_history",
+          "source": "vnstock",
+          "as_of": "2026-11-01T15:54:29.883479+07:00",
+          "call_id": "b2b5909f-7db9-46ac-8cf9-af70b09168df",
+          "payload_sha256": "cb80cece34c0f94fc32a60a8f2ccd0022f827b72e9d6ccc0496744db39f2c71f",
+          "matched_entry_id": "vn_quote_history:0",
+          "response_sha256": "1494cd6b872e94237fbd832c39302b1f2242f6277a0da16148f560be974ba421"
+        }
+      ]
+    },
+    "all_evidence_7_fields_grounded": true,
+    "evidence_ids_and_hashes_visible": true,
+    "failed_checks": []
+  },
+  {
+    "pass": "B",
+    "trial_id": "fin-l1-quote-01__opentrading_finance__r1",
+    "task": "fin-l1-quote-01",
+    "arm": "opentrading_finance",
+    "run": 1,
+    "status": "ok",
+    "success": true,
+    "error_type": null,
+    "attempt_count": 1,
+    "wall_ms": 197664,
+    "usage_complete": true,
+    "trial_source": "results/diag-deepseek-flash-20261105-passB/trials.jsonl:14",
+    "manifest_path": "results/diag-deepseek-flash-20261105-passB/manifest.json",
+    "provider_errors": [],
+    "native_watchdog_event": false,
+    "watchdog_in_primary_notes": false,
+    "watchdog_sources": [],
+    "ledger_path": "results/diag-deepseek-flash-20261105-passB/trials/fin-l1-quote-01__opentrading_finance__r1/attempts/01-6a7e28bb3a34/mcp.jsonl",
+    "calls": [
+      {
+        "tool": "vn_quote_history",
+        "arguments": {
+          "symbol": "HPG"
+        },
+        "status": "ok",
+        "error_code": null,
+        "availability": "available"
+      }
+    ],
+    "answer": {
+      "value": 21,
+      "unit": "nghìn đồng",
+      "period": "phiên gần nhất (30/10/2026)",
+      "source": "vn_quote_history",
+      "note": "Giá đóng cửa phiên gần nhất theo trường 'last' = 21 nghìn đồng/cổ phiếu, ngày phiên 2026-10-30 (data_time). Snapshot 2026-11-01.",
+      "evidence": [
+        {
+          "tool": "vn_quote_history",
+          "source": "vnstock",
+          "as_of": "2026-11-01T15:54:29.883479+07:00",
+          "call_id": "a73e3524-a714-4c8b-b3e7-127eac639d84",
+          "payload_sha256": "cb80cece34c0f94fc32a60a8f2ccd0022f827b72e9d6ccc0496744db39f2c71f",
+          "matched_entry_id": "vn_quote_history:0",
+          "response_sha256": "1494cd6b872e94237fbd832c39302b1f2242f6277a0da16148f560be974ba421"
+        }
+      ]
+    },
+    "all_evidence_7_fields_grounded": true,
+    "evidence_ids_and_hashes_visible": true,
+    "failed_checks": []
+  },
+  {
+    "pass": "B",
+    "trial_id": "fin-l1-quote-01__dsh__r1",
+    "task": "fin-l1-quote-01",
+    "arm": "dsh",
+    "run": 1,
+    "status": "ok",
+    "success": true,
+    "error_type": null,
+    "attempt_count": 1,
+    "wall_ms": 171901,
+    "usage_complete": true,
+    "trial_source": "results/diag-deepseek-flash-20261105-passB/trials.jsonl:15",
+    "manifest_path": "results/diag-deepseek-flash-20261105-passB/manifest.json",
+    "provider_errors": [],
+    "native_watchdog_event": false,
+    "watchdog_in_primary_notes": false,
+    "watchdog_sources": [],
+    "ledger_path": "results/diag-deepseek-flash-20261105-passB/trials/fin-l1-quote-01__dsh__r1/attempts/01-a2940e899b06/mcp.jsonl",
+    "calls": [
+      {
+        "tool": "vn_quote_history",
+        "arguments": {
+          "symbol": "HPG"
+        },
+        "status": "ok",
+        "error_code": null,
+        "availability": "available"
+      }
+    ],
+    "answer": {
+      "value": 21,
+      "unit": "nghìn đồng",
+      "period": "phiên gần nhất (30/10/2026)",
+      "source": "vn_quote_history",
+      "note": "Giá đóng cửa phiên gần nhất theo trường 'last' = 21 nghìn đồng/cổ phiếu, ngày giao dịch 2026-10-30.",
+      "evidence": [
+        {
+          "tool": "vn_quote_history",
+          "source": "vnstock",
+          "as_of": "2026-11-01T15:54:29.883479+07:00",
+          "call_id": "751d3a4e-577a-4132-95d1-90e7e04d5711",
+          "payload_sha256": "cb80cece34c0f94fc32a60a8f2ccd0022f827b72e9d6ccc0496744db39f2c71f",
+          "matched_entry_id": "vn_quote_history:0",
+          "response_sha256": "1494cd6b872e94237fbd832c39302b1f2242f6277a0da16148f560be974ba421"
+        }
+      ]
+    },
+    "all_evidence_7_fields_grounded": true,
+    "evidence_ids_and_hashes_visible": true,
+    "failed_checks": []
+  },
+  {
+    "pass": "B",
+    "trial_id": "fin-l1-quote-01__opentrading_baseline__r1",
+    "task": "fin-l1-quote-01",
+    "arm": "opentrading_baseline",
+    "run": 1,
+    "status": "error",
+    "success": false,
+    "error_type": "khong_tra_loi",
+    "attempt_count": 1,
+    "wall_ms": 71811,
+    "usage_complete": false,
+    "trial_source": "results/diag-deepseek-flash-20261105-passB/trials.jsonl:16",
+    "manifest_path": "results/diag-deepseek-flash-20261105-passB/manifest.json",
+    "provider_errors": [
+      {
+        "source": "results/diag-deepseek-flash-20261105-passB/trials/fin-l1-quote-01__opentrading_baseline__r1/attempts/01-f72ab34d8eb1/provider.jsonl:1",
+        "status": 403,
+        "error": "provider response model mismatch",
+        "response_models": [],
+        "upstream_attempted": true
+      }
+    ],
+    "native_watchdog_event": false,
+    "watchdog_in_primary_notes": false,
+    "watchdog_sources": [],
+    "ledger_path": "results/diag-deepseek-flash-20261105-passB/trials/fin-l1-quote-01__opentrading_baseline__r1/attempts/01-f72ab34d8eb1/mcp.jsonl",
+    "calls": []
+  },
+  {
+    "pass": "B",
+    "trial_id": "fin-l1-gold-01__opentrading_baseline__r1",
+    "task": "fin-l1-gold-01",
+    "arm": "opentrading_baseline",
+    "run": 1,
+    "status": "error",
+    "success": false,
+    "error_type": "khong_tra_loi",
+    "attempt_count": 1,
+    "wall_ms": 95154,
+    "usage_complete": false,
+    "trial_source": "results/diag-deepseek-flash-20261105-passB/trials.jsonl:17",
+    "manifest_path": "results/diag-deepseek-flash-20261105-passB/manifest.json",
+    "provider_errors": [
+      {
+        "source": "results/diag-deepseek-flash-20261105-passB/trials/fin-l1-gold-01__opentrading_baseline__r1/attempts/01-705b05642580/provider.jsonl:2",
+        "status": 403,
+        "error": "provider response model mismatch",
+        "response_models": [],
+        "upstream_attempted": true
+      }
+    ],
+    "native_watchdog_event": false,
+    "watchdog_in_primary_notes": false,
+    "watchdog_sources": [],
+    "ledger_path": "results/diag-deepseek-flash-20261105-passB/trials/fin-l1-gold-01__opentrading_baseline__r1/attempts/01-705b05642580/mcp.jsonl",
+    "calls": [
+      {
+        "tool": "vn_msn_fx_gold",
+        "arguments": {
+          "symbols": [
+            "XAUUSD"
+          ],
+          "days": 35
+        },
+        "status": "rejected",
+        "error_code": "not_recorded",
+        "availability": null
+      }
+    ]
+  },
+  {
+    "pass": "B",
+    "trial_id": "fin-l1-gold-01__opentrading_finance__r1",
+    "task": "fin-l1-gold-01",
+    "arm": "opentrading_finance",
+    "run": 1,
+    "status": "error",
+    "success": false,
+    "error_type": "khong_tra_loi",
+    "attempt_count": 1,
+    "wall_ms": 86630,
+    "usage_complete": false,
+    "trial_source": "results/diag-deepseek-flash-20261105-passB/trials.jsonl:18",
+    "manifest_path": "results/diag-deepseek-flash-20261105-passB/manifest.json",
+    "provider_errors": [
+      {
+        "source": "results/diag-deepseek-flash-20261105-passB/trials/fin-l1-gold-01__opentrading_finance__r1/attempts/01-ba46a19a2970/provider.jsonl:2",
+        "status": 403,
+        "error": "provider response model mismatch",
+        "response_models": [],
+        "upstream_attempted": true
+      }
+    ],
+    "native_watchdog_event": false,
+    "watchdog_in_primary_notes": false,
+    "watchdog_sources": [],
+    "ledger_path": "results/diag-deepseek-flash-20261105-passB/trials/fin-l1-gold-01__opentrading_finance__r1/attempts/01-ba46a19a2970/mcp.jsonl",
+    "calls": [
+      {
+        "tool": "vn_msn_fx_gold",
+        "arguments": {
+          "symbols": [
+            "USDVND",
+            "XAUUSD"
+          ]
+        },
+        "status": "ok",
+        "error_code": null,
+        "availability": "available"
+      }
+    ]
+  },
+  {
+    "pass": "B",
+    "trial_id": "fin-l1-gold-01__dsh__r1",
+    "task": "fin-l1-gold-01",
+    "arm": "dsh",
+    "run": 1,
+    "status": "error",
+    "success": false,
+    "error_type": "khong_tra_loi",
+    "attempt_count": 1,
+    "wall_ms": 78952,
+    "usage_complete": false,
+    "trial_source": "results/diag-deepseek-flash-20261105-passB/trials.jsonl:19",
+    "manifest_path": "results/diag-deepseek-flash-20261105-passB/manifest.json",
+    "provider_errors": [
+      {
+        "source": "results/diag-deepseek-flash-20261105-passB/trials/fin-l1-gold-01__dsh__r1/attempts/01-61142657ca59/provider.jsonl:2",
+        "status": 403,
+        "error": "provider response model mismatch",
+        "response_models": [],
+        "upstream_attempted": true
+      }
+    ],
+    "native_watchdog_event": false,
+    "watchdog_in_primary_notes": false,
+    "watchdog_sources": [],
+    "ledger_path": "results/diag-deepseek-flash-20261105-passB/trials/fin-l1-gold-01__dsh__r1/attempts/01-61142657ca59/mcp.jsonl",
+    "calls": [
+      {
+        "tool": "vn_msn_fx_gold",
+        "arguments": {
+          "symbols": [
+            "USDVND",
+            "XAUUSD"
+          ]
+        },
+        "status": "ok",
+        "error_code": null,
+        "availability": "available"
+      }
+    ]
+  },
+  {
+    "pass": "B",
+    "trial_id": "fin-l1-gold-01__opencode__r1",
+    "task": "fin-l1-gold-01",
+    "arm": "opencode",
+    "run": 1,
+    "status": "ok",
+    "success": true,
+    "error_type": null,
+    "attempt_count": 1,
+    "wall_ms": 138189,
+    "usage_complete": true,
+    "trial_source": "results/diag-deepseek-flash-20261105-passB/trials.jsonl:20",
+    "manifest_path": "results/diag-deepseek-flash-20261105-passB/manifest.json",
+    "provider_errors": [],
+    "native_watchdog_event": false,
+    "watchdog_in_primary_notes": false,
+    "watchdog_sources": [],
+    "ledger_path": "results/diag-deepseek-flash-20261105-passB/trials/fin-l1-gold-01__opencode__r1/attempts/01-2d085b4b60c2/mcp.jsonl",
+    "calls": [
+      {
+        "tool": "vn_msn_fx_gold",
+        "arguments": {
+          "symbols": [
+            "USDVND",
+            "XAUUSD"
+          ]
+        },
+        "status": "ok",
+        "error_code": null,
+        "availability": "available"
+      }
+    ],
+    "answer": {
+      "value": 3875.02,
+      "unit": "USD/oz",
+      "period": "phiên gần nhất (30/10/2026)",
+      "source": "vn_msn_fx_gold",
+      "note": "Giá đóng cửa XAUUSD phiên 30/10/2026 theo dữ liệu MSN trong snapshot 2026-11-01.",
+      "evidence": [
+        {
+          "tool": "vn_msn_fx_gold",
+          "source": "msn",
+          "as_of": "2026-11-01T15:54:32.785351+07:00",
+          "call_id": "52f09d26-cbcb-4c60-8e14-dc939f0969c7",
+          "payload_sha256": "55699904bfdc76edb8c9fc1bd1f05798906fb14ace37440f0675cf91a3524fe7",
+          "matched_entry_id": "vn_msn_fx_gold:0",
+          "response_sha256": "80dfedd9bdca6cd670fe64f071a6c135f19ae00b84bddf077bf83ed35bb3a379"
+        }
+      ]
+    },
+    "all_evidence_7_fields_grounded": true,
+    "evidence_ids_and_hashes_visible": true,
+    "failed_checks": []
+  },
+  {
+    "pass": "B",
+    "trial_id": "fin-l1-quote-02__opencode__r2",
+    "task": "fin-l1-quote-02",
+    "arm": "opencode",
+    "run": 2,
+    "status": "error",
+    "success": false,
+    "error_type": "khong_tra_loi",
+    "attempt_count": 1,
+    "wall_ms": 179774,
+    "usage_complete": false,
+    "trial_source": "results/diag-deepseek-flash-20261105-passB/trials.jsonl:21",
+    "manifest_path": "results/diag-deepseek-flash-20261105-passB/manifest.json",
+    "provider_errors": [
+      {
+        "source": "results/diag-deepseek-flash-20261105-passB/trials/fin-l1-quote-02__opencode__r2/attempts/01-0d31da15c1c9/provider.jsonl:2",
+        "status": 403,
+        "error": "provider response model mismatch",
+        "response_models": [],
+        "upstream_attempted": true
+      }
+    ],
+    "native_watchdog_event": false,
+    "watchdog_in_primary_notes": false,
+    "watchdog_sources": [],
+    "ledger_path": "results/diag-deepseek-flash-20261105-passB/trials/fin-l1-quote-02__opencode__r2/attempts/01-0d31da15c1c9/mcp.jsonl",
+    "calls": [
+      {
+        "tool": "crypto_spot",
+        "arguments": {
+          "symbols": [
+            "BTCUSDT"
+          ]
+        },
+        "status": "ok",
+        "error_code": null,
+        "availability": "available"
+      }
+    ]
+  },
+  {
+    "pass": "B",
+    "trial_id": "fin-l1-quote-02__opentrading_baseline__r2",
+    "task": "fin-l1-quote-02",
+    "arm": "opentrading_baseline",
+    "run": 2,
+    "status": "ok",
+    "success": true,
+    "error_type": null,
+    "attempt_count": 1,
+    "wall_ms": 209432,
+    "usage_complete": true,
+    "trial_source": "results/diag-deepseek-flash-20261105-passB/trials.jsonl:22",
+    "manifest_path": "results/diag-deepseek-flash-20261105-passB/manifest.json",
+    "provider_errors": [],
+    "native_watchdog_event": false,
+    "watchdog_in_primary_notes": false,
+    "watchdog_sources": [],
+    "ledger_path": "results/diag-deepseek-flash-20261105-passB/trials/fin-l1-quote-02__opentrading_baseline__r2/attempts/01-9ae01c76e340/mcp.jsonl",
+    "calls": [
+      {
+        "tool": "crypto_spot",
+        "arguments": {
+          "symbols": [
+            "BTCUSDT"
+          ]
+        },
+        "status": "ok",
+        "error_code": null,
+        "availability": "available"
+      }
+    ],
+    "answer": {
+      "value": 78109,
+      "unit": "USDT",
+      "period": "2026-11-01",
+      "source": "crypto_spot",
+      "note": "Giá khớp gần nhất (last) của BTCUSDT tại snapshot 2026-11-01T15:54:32+07:00; mức thay đổi 24h +1.09% (tính từ dữ liệu tool).",
+      "evidence": [
+        {
+          "tool": "crypto_spot",
+          "source": "binance",
+          "as_of": "2026-11-01T15:54:32.586909+07:00",
+          "call_id": "59b548d3-a508-43e3-b991-240ee6d7e544",
+          "payload_sha256": "f40d9ee2ab68813fb2388acb2064b596ef6bb6287de9ca198e60f34c8f37ac26",
+          "matched_entry_id": "crypto_spot:0",
+          "response_sha256": "aeb32670107aea9963bb1f08f1bfc583738d3dedd8c655db00737a85329bdc13"
+        }
+      ]
+    },
+    "all_evidence_7_fields_grounded": true,
+    "evidence_ids_and_hashes_visible": true,
+    "failed_checks": []
+  },
+  {
+    "pass": "B",
+    "trial_id": "fin-l1-quote-02__opentrading_finance__r2",
+    "task": "fin-l1-quote-02",
+    "arm": "opentrading_finance",
+    "run": 2,
+    "status": "error",
+    "success": false,
+    "error_type": "khong_tra_loi",
+    "attempt_count": 1,
+    "wall_ms": 224173,
+    "usage_complete": true,
+    "trial_source": "results/diag-deepseek-flash-20261105-passB/trials.jsonl:23",
+    "manifest_path": "results/diag-deepseek-flash-20261105-passB/manifest.json",
+    "provider_errors": [],
+    "native_watchdog_event": true,
+    "watchdog_in_primary_notes": true,
+    "watchdog_sources": [
+      "results/diag-deepseek-flash-20261105-passB/trials/fin-l1-quote-02__opentrading_finance__r2/attempts/01-174ab6797110/run.log:50"
+    ],
+    "ledger_path": "results/diag-deepseek-flash-20261105-passB/trials/fin-l1-quote-02__opentrading_finance__r2/attempts/01-174ab6797110/mcp.jsonl",
+    "calls": [
+      {
+        "tool": "crypto_spot",
+        "arguments": {
+          "symbols": [
+            "BTCUSDT"
+          ]
+        },
+        "status": "ok",
+        "error_code": null,
+        "availability": "available"
+      }
+    ]
+  },
+  {
+    "pass": "B",
+    "trial_id": "fin-l1-quote-02__dsh__r2",
+    "task": "fin-l1-quote-02",
+    "arm": "dsh",
+    "run": 2,
+    "status": "ok",
+    "success": true,
+    "error_type": null,
+    "attempt_count": 1,
+    "wall_ms": 260262,
+    "usage_complete": true,
+    "trial_source": "results/diag-deepseek-flash-20261105-passB/trials.jsonl:24",
+    "manifest_path": "results/diag-deepseek-flash-20261105-passB/manifest.json",
+    "provider_errors": [],
+    "native_watchdog_event": false,
+    "watchdog_in_primary_notes": false,
+    "watchdog_sources": [],
+    "ledger_path": "results/diag-deepseek-flash-20261105-passB/trials/fin-l1-quote-02__dsh__r2/attempts/01-5adcaf4379b3/mcp.jsonl",
+    "calls": [
+      {
+        "tool": "crypto_spot",
+        "arguments": {
+          "symbols": [
+            "BTCUSDT"
+          ]
+        },
+        "status": "ok",
+        "error_code": null,
+        "availability": "available"
+      }
+    ],
+    "answer": {
+      "value": 78109,
+      "unit": "USDT",
+      "period": "2026-11-01",
+      "source": "crypto_spot",
+      "note": "Giá BTCUSDT (last) tại snapshot 2026-11-01T15:54:32+07:00, nguồn binance.",
+      "evidence": [
+        {
+          "tool": "crypto_spot",
+          "source": "binance",
+          "as_of": "2026-11-01T15:54:32.586909+07:00",
+          "call_id": "d726f897-2a62-4e93-a099-90955befaad7",
+          "payload_sha256": "f40d9ee2ab68813fb2388acb2064b596ef6bb6287de9ca198e60f34c8f37ac26",
+          "matched_entry_id": "crypto_spot:0",
+          "response_sha256": "aeb32670107aea9963bb1f08f1bfc583738d3dedd8c655db00737a85329bdc13"
+        }
+      ]
+    },
+    "all_evidence_7_fields_grounded": true,
+    "evidence_ids_and_hashes_visible": true,
+    "failed_checks": []
+  },
+  {
+    "pass": "B",
+    "trial_id": "fin-l5-compare-01__opentrading_finance__r2",
+    "task": "fin-l5-compare-01",
+    "arm": "opentrading_finance",
+    "run": 2,
+    "status": "error",
+    "success": false,
+    "error_type": "khong_tra_loi",
+    "attempt_count": 1,
+    "wall_ms": 167115,
+    "usage_complete": true,
+    "trial_source": "results/diag-deepseek-flash-20261105-passB/trials.jsonl:25",
+    "manifest_path": "results/diag-deepseek-flash-20261105-passB/manifest.json",
+    "provider_errors": [],
+    "native_watchdog_event": true,
+    "watchdog_in_primary_notes": true,
+    "watchdog_sources": [
+      "results/diag-deepseek-flash-20261105-passB/trials/fin-l5-compare-01__opentrading_finance__r2/attempts/01-f0beeb7b5be2/run.log:49"
+    ],
+    "ledger_path": "results/diag-deepseek-flash-20261105-passB/trials/fin-l5-compare-01__opentrading_finance__r2/attempts/01-f0beeb7b5be2/mcp.jsonl",
+    "calls": []
+  },
+  {
+    "pass": "B",
+    "trial_id": "fin-l5-compare-01__dsh__r2",
+    "task": "fin-l5-compare-01",
+    "arm": "dsh",
+    "run": 2,
+    "status": "ok",
+    "success": true,
+    "error_type": null,
+    "attempt_count": 1,
+    "wall_ms": 332288,
+    "usage_complete": true,
+    "trial_source": "results/diag-deepseek-flash-20261105-passB/trials.jsonl:26",
+    "manifest_path": "results/diag-deepseek-flash-20261105-passB/manifest.json",
+    "provider_errors": [],
+    "native_watchdog_event": false,
+    "watchdog_in_primary_notes": false,
+    "watchdog_sources": [],
+    "ledger_path": "results/diag-deepseek-flash-20261105-passB/trials/fin-l5-compare-01__dsh__r2/attempts/01-e148cdc872ef/mcp.jsonl",
+    "calls": [
+      {
+        "tool": "peer_compare",
+        "arguments": {
+          "symbol": "VCB",
+          "peers": [
+            "BID",
+            "CTG",
+            "TCB",
+            "MBB"
+          ]
+        },
+        "status": "ok",
+        "error_code": null,
+        "availability": "available"
+      }
+    ],
+    "answer": {
+      "values": {
+        "VCB": {
+          "pe": 12.66,
+          "pb": 2.14,
+          "roe": 16.73
+        },
+        "BID": {
+          "pe": 9.11,
+          "pb": 1.57,
+          "roe": 19.43
+        },
+        "CTG": {
+          "pe": 5.55,
+          "pb": 1.07,
+          "roe": 21.23
+        },
+        "TCB": {
+          "pe": 9.76,
+          "pb": 1.38,
+          "roe": 16.03
+        },
+        "MBB": {
+          "pe": 6.36,
+          "pb": 1.43,
+          "roe": 21.57
+        }
+      },
+      "ranking": [
+        "MBB",
+        "CTG",
+        "BID",
+        "VCB",
+        "TCB"
+      ],
+      "period": "2025",
+      "source": "peer_compare",
+      "note": "P/E, P/B, ROE tính theo giá ngày kết thúc kỳ báo cáo 2025 (không phải bội số hiện tại). Xếp hạng theo ROE giảm dần: MBB 21.57 > CTG 21.23 > BID 19.43 > VCB 16.73 > TCB 16.03.",
+      "evidence": [
+        {
+          "tool": "peer_compare",
+          "source": "vnstock",
+          "as_of": "2026-11-01T15:58:02.647158+07:00",
+          "call_id": "69dccff3-8557-402f-af24-89a8f511eb00",
+          "payload_sha256": "9d5cd2d9d48cbebfdbb5c67a4f81f87c93362a8c82b52accafd053219d49c7d5",
+          "matched_entry_id": "peer_compare:0",
+          "response_sha256": "c7bf5f6871f6bf6268ae80f9a927991aac12a683d3d5cab89e4aae5eb9ea043f"
+        }
+      ]
+    },
+    "all_evidence_7_fields_grounded": true,
+    "evidence_ids_and_hashes_visible": true,
+    "failed_checks": []
+  },
+  {
+    "pass": "B",
+    "trial_id": "fin-l5-compare-01__opencode__r2",
+    "task": "fin-l5-compare-01",
+    "arm": "opencode",
+    "run": 2,
+    "status": "error",
+    "success": false,
+    "error_type": "khong_tra_loi",
+    "attempt_count": 1,
+    "wall_ms": 255067,
+    "usage_complete": false,
+    "trial_source": "results/diag-deepseek-flash-20261105-passB/trials.jsonl:27",
+    "manifest_path": "results/diag-deepseek-flash-20261105-passB/manifest.json",
+    "provider_errors": [
+      {
+        "source": "results/diag-deepseek-flash-20261105-passB/trials/fin-l5-compare-01__opencode__r2/attempts/01-9ee28fddb3b8/provider.jsonl:1",
+        "status": 502,
+        "error": "TimeoutError",
+        "response_models": null,
+        "upstream_attempted": true
+      },
+      {
+        "source": "results/diag-deepseek-flash-20261105-passB/trials/fin-l5-compare-01__opencode__r2/attempts/01-9ee28fddb3b8/provider.jsonl:2",
+        "status": 403,
+        "error": "previous upstream usage unknown; further requests denied",
+        "response_models": null,
+        "upstream_attempted": false
+      }
+    ],
+    "native_watchdog_event": false,
+    "watchdog_in_primary_notes": false,
+    "watchdog_sources": [],
+    "ledger_path": "results/diag-deepseek-flash-20261105-passB/trials/fin-l5-compare-01__opencode__r2/attempts/01-9ee28fddb3b8/mcp.jsonl",
+    "calls": []
+  },
+  {
+    "pass": "B",
+    "trial_id": "fin-l5-compare-01__opentrading_baseline__r2",
+    "task": "fin-l5-compare-01",
+    "arm": "opentrading_baseline",
+    "run": 2,
+    "status": "error",
+    "success": false,
+    "error_type": "khong_tra_loi",
+    "attempt_count": 1,
+    "wall_ms": 183787,
+    "usage_complete": true,
+    "trial_source": "results/diag-deepseek-flash-20261105-passB/trials.jsonl:28",
+    "manifest_path": "results/diag-deepseek-flash-20261105-passB/manifest.json",
+    "provider_errors": [],
+    "native_watchdog_event": true,
+    "watchdog_in_primary_notes": true,
+    "watchdog_sources": [
+      "results/diag-deepseek-flash-20261105-passB/trials/fin-l5-compare-01__opentrading_baseline__r2/attempts/01-081f11b101e6/run.log:49"
+    ],
+    "ledger_path": "results/diag-deepseek-flash-20261105-passB/trials/fin-l5-compare-01__opentrading_baseline__r2/attempts/01-081f11b101e6/mcp.jsonl",
+    "calls": []
+  },
+  {
+    "pass": "B",
+    "trial_id": "fin-l1-quote-01__dsh__r2",
+    "task": "fin-l1-quote-01",
+    "arm": "dsh",
+    "run": 2,
+    "status": "ok",
+    "success": true,
+    "error_type": null,
+    "attempt_count": 1,
+    "wall_ms": 237213,
+    "usage_complete": true,
+    "trial_source": "results/diag-deepseek-flash-20261105-passB/trials.jsonl:29",
+    "manifest_path": "results/diag-deepseek-flash-20261105-passB/manifest.json",
+    "provider_errors": [],
+    "native_watchdog_event": false,
+    "watchdog_in_primary_notes": false,
+    "watchdog_sources": [],
+    "ledger_path": "results/diag-deepseek-flash-20261105-passB/trials/fin-l1-quote-01__dsh__r2/attempts/01-08c18953f142/mcp.jsonl",
+    "calls": [
+      {
+        "tool": "vn_quote_history",
+        "arguments": {
+          "symbol": "HPG"
+        },
+        "status": "ok",
+        "error_code": null,
+        "availability": "available"
+      }
+    ],
+    "answer": {
+      "value": 21,
+      "unit": "nghìn đồng",
+      "period": "phiên gần nhất (30/10/2026)",
+      "source": "vn_quote_history",
+      "note": "Giá đóng cửa phiên gần nhất của HPG theo trường 'last' = 21 nghìn đồng/cổ phiếu, ngày giao dịch 2026-10-30.",
+      "evidence": [
+        {
+          "tool": "vn_quote_history",
+          "source": "vnstock",
+          "as_of": "2026-11-01T15:54:29.883479+07:00",
+          "call_id": "d1b72859-f147-4522-9e09-f72cdfb76094",
+          "payload_sha256": "cb80cece34c0f94fc32a60a8f2ccd0022f827b72e9d6ccc0496744db39f2c71f",
+          "matched_entry_id": "vn_quote_history:0",
+          "response_sha256": "1494cd6b872e94237fbd832c39302b1f2242f6277a0da16148f560be974ba421"
+        }
+      ]
+    },
+    "all_evidence_7_fields_grounded": true,
+    "evidence_ids_and_hashes_visible": true,
+    "failed_checks": []
+  },
+  {
+    "pass": "B",
+    "trial_id": "fin-l1-quote-01__opencode__r2",
+    "task": "fin-l1-quote-01",
+    "arm": "opencode",
+    "run": 2,
+    "status": "error",
+    "success": false,
+    "error_type": "khong_tra_loi",
+    "attempt_count": 1,
+    "wall_ms": 189101,
+    "usage_complete": false,
+    "trial_source": "results/diag-deepseek-flash-20261105-passB/trials.jsonl:30",
+    "manifest_path": "results/diag-deepseek-flash-20261105-passB/manifest.json",
+    "provider_errors": [
+      {
+        "source": "results/diag-deepseek-flash-20261105-passB/trials/fin-l1-quote-01__opencode__r2/attempts/01-b6893da58099/provider.jsonl:2",
+        "status": 403,
+        "error": "provider response model mismatch",
+        "response_models": [],
+        "upstream_attempted": true
+      }
+    ],
+    "native_watchdog_event": false,
+    "watchdog_in_primary_notes": false,
+    "watchdog_sources": [],
+    "ledger_path": "results/diag-deepseek-flash-20261105-passB/trials/fin-l1-quote-01__opencode__r2/attempts/01-b6893da58099/mcp.jsonl",
+    "calls": [
+      {
+        "tool": "vn_quote_history",
+        "arguments": {
+          "symbol": "HPG"
+        },
+        "status": "ok",
+        "error_code": null,
+        "availability": "available"
+      }
+    ]
+  },
+  {
+    "pass": "B",
+    "trial_id": "fin-l1-quote-01__opentrading_baseline__r2",
+    "task": "fin-l1-quote-01",
+    "arm": "opentrading_baseline",
+    "run": 2,
+    "status": "error",
+    "success": false,
+    "error_type": "khong_tra_loi",
+    "attempt_count": 1,
+    "wall_ms": 162019,
+    "usage_complete": true,
+    "trial_source": "results/diag-deepseek-flash-20261105-passB/trials.jsonl:31",
+    "manifest_path": "results/diag-deepseek-flash-20261105-passB/manifest.json",
+    "provider_errors": [],
+    "native_watchdog_event": true,
+    "watchdog_in_primary_notes": true,
+    "watchdog_sources": [
+      "results/diag-deepseek-flash-20261105-passB/trials/fin-l1-quote-01__opentrading_baseline__r2/attempts/01-77f69da8516d/run.log:45"
+    ],
+    "ledger_path": "results/diag-deepseek-flash-20261105-passB/trials/fin-l1-quote-01__opentrading_baseline__r2/attempts/01-77f69da8516d/mcp.jsonl",
+    "calls": []
+  },
+  {
+    "pass": "B",
+    "trial_id": "fin-l1-quote-01__opentrading_finance__r2",
+    "task": "fin-l1-quote-01",
+    "arm": "opentrading_finance",
+    "run": 2,
+    "status": "error",
+    "success": false,
+    "error_type": "khong_tra_loi",
+    "attempt_count": 1,
+    "wall_ms": 79728,
+    "usage_complete": false,
+    "trial_source": "results/diag-deepseek-flash-20261105-passB/trials.jsonl:32",
+    "manifest_path": "results/diag-deepseek-flash-20261105-passB/manifest.json",
+    "provider_errors": [
+      {
+        "source": "results/diag-deepseek-flash-20261105-passB/trials/fin-l1-quote-01__opentrading_finance__r2/attempts/01-c7b82625015f/provider.jsonl:1",
+        "status": 403,
+        "error": "provider response model mismatch",
+        "response_models": [],
+        "upstream_attempted": true
+      }
+    ],
+    "native_watchdog_event": false,
+    "watchdog_in_primary_notes": false,
+    "watchdog_sources": [],
+    "ledger_path": "results/diag-deepseek-flash-20261105-passB/trials/fin-l1-quote-01__opentrading_finance__r2/attempts/01-c7b82625015f/mcp.jsonl",
+    "calls": []
+  },
+  {
+    "pass": "B",
+    "trial_id": "fin-l1-gold-01__dsh__r2",
+    "task": "fin-l1-gold-01",
+    "arm": "dsh",
+    "run": 2,
+    "status": "ok",
+    "success": true,
+    "error_type": null,
+    "attempt_count": 1,
+    "wall_ms": 243526,
+    "usage_complete": true,
+    "trial_source": "results/diag-deepseek-flash-20261105-passB/trials.jsonl:33",
+    "manifest_path": "results/diag-deepseek-flash-20261105-passB/manifest.json",
+    "provider_errors": [],
+    "native_watchdog_event": false,
+    "watchdog_in_primary_notes": false,
+    "watchdog_sources": [],
+    "ledger_path": "results/diag-deepseek-flash-20261105-passB/trials/fin-l1-gold-01__dsh__r2/attempts/01-d33ba61a3cd8/mcp.jsonl",
+    "calls": [
+      {
+        "tool": "vn_msn_fx_gold",
+        "arguments": {
+          "symbols": [
+            "USDVND",
+            "XAUUSD"
+          ]
+        },
+        "status": "ok",
+        "error_code": null,
+        "availability": "available"
+      }
+    ],
+    "answer": {
+      "value": 3875.02,
+      "unit": "USD/oz",
+      "period": "phiên gần nhất (30/10/2026)",
+      "source": "vn_msn_fx_gold",
+      "note": "Giá đóng cửa XAUUSD phiên 30/10/2026 theo dữ liệu MSN; các phiên trước đó: 29/10 4020.42, 28/10 4067.04, 27/10 4057.8, 26/10 4016.31.",
+      "evidence": [
+        {
+          "tool": "vn_msn_fx_gold",
+          "source": "msn",
+          "as_of": "2026-11-01T15:54:32.785351+07:00",
+          "call_id": "6cd39ab8-fecc-4063-b7ca-31813d78cd0f",
+          "payload_sha256": "55699904bfdc76edb8c9fc1bd1f05798906fb14ace37440f0675cf91a3524fe7",
+          "matched_entry_id": "vn_msn_fx_gold:0",
+          "response_sha256": "80dfedd9bdca6cd670fe64f071a6c135f19ae00b84bddf077bf83ed35bb3a379"
+        }
+      ]
+    },
+    "all_evidence_7_fields_grounded": true,
+    "evidence_ids_and_hashes_visible": true,
+    "failed_checks": []
+  },
+  {
+    "pass": "B",
+    "trial_id": "fin-l1-gold-01__opentrading_finance__r2",
+    "task": "fin-l1-gold-01",
+    "arm": "opentrading_finance",
+    "run": 2,
+    "status": "ok",
+    "success": true,
+    "error_type": null,
+    "attempt_count": 1,
+    "wall_ms": 181392,
+    "usage_complete": true,
+    "trial_source": "results/diag-deepseek-flash-20261105-passB/trials.jsonl:34",
+    "manifest_path": "results/diag-deepseek-flash-20261105-passB/manifest.json",
+    "provider_errors": [],
+    "native_watchdog_event": false,
+    "watchdog_in_primary_notes": false,
+    "watchdog_sources": [],
+    "ledger_path": "results/diag-deepseek-flash-20261105-passB/trials/fin-l1-gold-01__opentrading_finance__r2/attempts/01-9cb86513b670/mcp.jsonl",
+    "calls": [
+      {
+        "tool": "vn_msn_fx_gold",
+        "arguments": {
+          "symbols": [
+            "USDVND",
+            "XAUUSD"
+          ]
+        },
+        "status": "ok",
+        "error_code": null,
+        "availability": "available"
+      }
+    ],
+    "answer": {
+      "value": 3875.02,
+      "unit": "USD/oz",
+      "period": "phiên gần nhất (30/10/2026)",
+      "source": "vn_msn_fx_gold",
+      "note": "Giá đóng cửa XAUUSD phiên 30/10/2026 theo chuỗi dữ liệu MSN; đây là phiên có dữ liệu mới nhất trong snapshot 2026-11-01.",
+      "evidence": [
+        {
+          "tool": "vn_msn_fx_gold",
+          "source": "msn",
+          "as_of": "2026-11-01T15:54:32.785351+07:00",
+          "call_id": "7f9226f4-11ca-4e5e-ac4f-7d600b8c3154",
+          "payload_sha256": "55699904bfdc76edb8c9fc1bd1f05798906fb14ace37440f0675cf91a3524fe7",
+          "matched_entry_id": "vn_msn_fx_gold:0",
+          "response_sha256": "80dfedd9bdca6cd670fe64f071a6c135f19ae00b84bddf077bf83ed35bb3a379"
+        }
+      ]
+    },
+    "all_evidence_7_fields_grounded": true,
+    "evidence_ids_and_hashes_visible": true,
+    "failed_checks": []
+  },
+  {
+    "pass": "B",
+    "trial_id": "fin-l1-gold-01__opentrading_baseline__r2",
+    "task": "fin-l1-gold-01",
+    "arm": "opentrading_baseline",
+    "run": 2,
+    "status": "ok",
+    "success": true,
+    "error_type": null,
+    "attempt_count": 1,
+    "wall_ms": 389930,
+    "usage_complete": true,
+    "trial_source": "results/diag-deepseek-flash-20261105-passB/trials.jsonl:35",
+    "manifest_path": "results/diag-deepseek-flash-20261105-passB/manifest.json",
+    "provider_errors": [],
+    "native_watchdog_event": false,
+    "watchdog_in_primary_notes": false,
+    "watchdog_sources": [],
+    "ledger_path": "results/diag-deepseek-flash-20261105-passB/trials/fin-l1-gold-01__opentrading_baseline__r2/attempts/01-a5aecb086c1a/mcp.jsonl",
+    "calls": [
+      {
+        "tool": "vn_msn_fx_gold",
+        "arguments": {
+          "symbols": [
+            "XAUUSD"
+          ],
+          "days": 35
+        },
+        "status": "rejected",
+        "error_code": "not_recorded",
+        "availability": null
+      },
+      {
+        "tool": "vn_msn_fx_gold",
+        "arguments": {
+          "days": 35
+        },
+        "status": "rejected",
+        "error_code": "not_recorded",
+        "availability": null
+      },
+      {
+        "tool": "vn_msn_fx_gold",
+        "arguments": {
+          "symbols": [
+            "USDVND",
+            "XAUUSD"
+          ],
+          "days": 35
+        },
+        "status": "ok",
+        "error_code": null,
+        "availability": "available"
+      }
+    ],
+    "answer": {
+      "value": 3875.02,
+      "unit": "USD/oz",
+      "period": "phiên gần nhất (30/10/2026)",
+      "source": "vn_msn_fx_gold",
+      "note": "Chuỗi dữ liệu trả về 5 phiên 26/10/2026-30/10/2026; phiên gần nhất là 30/10/2026 với giá đóng cửa 3875.02 USD/oz (giảm so với 4020.42 USD/oz ngày 29/10/2026).",
+      "evidence": [
+        {
+          "tool": "vn_msn_fx_gold",
+          "source": "msn",
+          "as_of": "2026-11-01T15:54:32.785351+07:00",
+          "call_id": "9fa7a250-a358-4bb9-ba5a-0948a6b8e75e",
+          "payload_sha256": "55699904bfdc76edb8c9fc1bd1f05798906fb14ace37440f0675cf91a3524fe7",
+          "matched_entry_id": "vn_msn_fx_gold:0",
+          "response_sha256": "80dfedd9bdca6cd670fe64f071a6c135f19ae00b84bddf077bf83ed35bb3a379"
+        }
+      ]
+    },
+    "all_evidence_7_fields_grounded": true,
+    "evidence_ids_and_hashes_visible": true,
+    "failed_checks": []
+  },
+  {
+    "pass": "B",
+    "trial_id": "fin-l1-gold-01__opencode__r2",
+    "task": "fin-l1-gold-01",
+    "arm": "opencode",
+    "run": 2,
+    "status": "error",
+    "success": false,
+    "error_type": "khong_tra_loi",
+    "attempt_count": 1,
+    "wall_ms": 34811,
+    "usage_complete": false,
+    "trial_source": "results/diag-deepseek-flash-20261105-passB/trials.jsonl:36",
+    "manifest_path": "results/diag-deepseek-flash-20261105-passB/manifest.json",
+    "provider_errors": [
+      {
+        "source": "results/diag-deepseek-flash-20261105-passB/trials/fin-l1-gold-01__opencode__r2/attempts/01-0cb008733284/provider.jsonl:1",
+        "status": 502,
+        "error": "URLError",
+        "response_models": null,
+        "upstream_attempted": true
+      },
+      {
+        "source": "results/diag-deepseek-flash-20261105-passB/trials/fin-l1-gold-01__opencode__r2/attempts/01-0cb008733284/provider.jsonl:2",
+        "status": 403,
+        "error": "previous upstream usage unknown; further requests denied",
+        "response_models": null,
+        "upstream_attempted": false
+      }
+    ],
+    "native_watchdog_event": false,
+    "watchdog_in_primary_notes": false,
+    "watchdog_sources": [],
+    "ledger_path": "results/diag-deepseek-flash-20261105-passB/trials/fin-l1-gold-01__opencode__r2/attempts/01-0cb008733284/mcp.jsonl",
+    "calls": []
+  },
+  {
+    "pass": "B",
+    "trial_id": "fin-l1-bctc-01__opencode__r2",
+    "task": "fin-l1-bctc-01",
+    "arm": "opencode",
+    "run": 2,
+    "status": "ok",
+    "success": true,
+    "error_type": null,
+    "attempt_count": 1,
+    "wall_ms": 238072,
+    "usage_complete": true,
+    "trial_source": "results/diag-deepseek-flash-20261105-passB/trials.jsonl:37",
+    "manifest_path": "results/diag-deepseek-flash-20261105-passB/manifest.json",
+    "provider_errors": [],
+    "native_watchdog_event": false,
+    "watchdog_in_primary_notes": false,
+    "watchdog_sources": [],
+    "ledger_path": "results/diag-deepseek-flash-20261105-passB/trials/fin-l1-bctc-01__opencode__r2/attempts/01-1864d55ec884/mcp.jsonl",
+    "calls": [
+      {
+        "tool": "financial_statements",
+        "arguments": {
+          "symbol": "VCB",
+          "period": "quarter"
+        },
+        "status": "ok",
+        "error_code": null,
+        "availability": "available"
+      }
+    ],
+    "answer": {
+      "value": 14550.959,
+      "unit": "tỷ đồng",
+      "period": "Q2/2026",
+      "source": "financial_statements",
+      "line": "Tổng LNST",
+      "note": "LNST hợp nhất quý gần nhất (Q2/2026) = 14,550,959,000,000 VND, quy đổi /1e9 = 14,550.959 tỷ đồng. Dòng 'Tổng LNST' là lợi nhuận sau thuế hợp nhất.",
+      "evidence": [
+        {
+          "tool": "financial_statements",
+          "source": "vietstock",
+          "as_of": "2026-11-01T15:54:29.686603+07:00",
+          "call_id": "9918e134-df6d-48a1-a5f1-ab409507ffba",
+          "payload_sha256": "e9c5e43dc5664805b215186c33c36a17a40f9109263b7ebf1a5a61bec507976f",
+          "matched_entry_id": "financial_statements:0",
+          "response_sha256": "368411d1982abd746595febe29f0a84129757c95cffc4d59b334a7cf054a4a06"
+        }
+      ]
+    },
+    "all_evidence_7_fields_grounded": true,
+    "evidence_ids_and_hashes_visible": true,
+    "failed_checks": []
+  },
+  {
+    "pass": "B",
+    "trial_id": "fin-l1-bctc-01__dsh__r2",
+    "task": "fin-l1-bctc-01",
+    "arm": "dsh",
+    "run": 2,
+    "status": "ok",
+    "success": true,
+    "error_type": null,
+    "attempt_count": 1,
+    "wall_ms": 213855,
+    "usage_complete": true,
+    "trial_source": "results/diag-deepseek-flash-20261105-passB/trials.jsonl:38",
+    "manifest_path": "results/diag-deepseek-flash-20261105-passB/manifest.json",
+    "provider_errors": [],
+    "native_watchdog_event": false,
+    "watchdog_in_primary_notes": false,
+    "watchdog_sources": [],
+    "ledger_path": "results/diag-deepseek-flash-20261105-passB/trials/fin-l1-bctc-01__dsh__r2/attempts/01-011da20dd29b/mcp.jsonl",
+    "calls": [
+      {
+        "tool": "financial_statements",
+        "arguments": {
+          "symbol": "VCB",
+          "period": "quarter"
+        },
+        "status": "ok",
+        "error_code": null,
+        "availability": "available"
+      }
+    ],
+    "answer": {
+      "value": 14550.959,
+      "unit": "tỷ đồng",
+      "period": "Q2/2026",
+      "source": "financial_statements",
+      "line": "Tổng LNST",
+      "note": "LNST hợp nhất (tổng lợi nhuận sau thuế) quý gần nhất Q2/2026 = 14,550,959,000,000 VND; quy đổi /1e9 = 14,550.959 tỷ đồng. Dòng 'LNST của CĐ Ngân hàng mẹ' cùng kỳ là 14,542,276,000,000 VND (14,542.276 tỷ đồng).",
+      "evidence": [
+        {
+          "tool": "financial_statements",
+          "source": "vietstock",
+          "as_of": "2026-11-01T15:54:29.686603+07:00",
+          "call_id": "fd3b7f9d-37fa-427c-90a7-bea5128f9864",
+          "payload_sha256": "e9c5e43dc5664805b215186c33c36a17a40f9109263b7ebf1a5a61bec507976f",
+          "matched_entry_id": "financial_statements:0",
+          "response_sha256": "368411d1982abd746595febe29f0a84129757c95cffc4d59b334a7cf054a4a06"
+        }
+      ]
+    },
+    "all_evidence_7_fields_grounded": true,
+    "evidence_ids_and_hashes_visible": true,
+    "failed_checks": []
+  },
+  {
+    "pass": "B",
+    "trial_id": "fin-l1-bctc-01__opentrading_finance__r2",
+    "task": "fin-l1-bctc-01",
+    "arm": "opentrading_finance",
+    "run": 2,
+    "status": "ok",
+    "success": true,
+    "error_type": null,
+    "attempt_count": 1,
+    "wall_ms": 219404,
+    "usage_complete": true,
+    "trial_source": "results/diag-deepseek-flash-20261105-passB/trials.jsonl:39",
+    "manifest_path": "results/diag-deepseek-flash-20261105-passB/manifest.json",
+    "provider_errors": [],
+    "native_watchdog_event": false,
+    "watchdog_in_primary_notes": false,
+    "watchdog_sources": [],
+    "ledger_path": "results/diag-deepseek-flash-20261105-passB/trials/fin-l1-bctc-01__opentrading_finance__r2/attempts/01-ca104c0835d2/mcp.jsonl",
+    "calls": [
+      {
+        "tool": "financial_statements",
+        "arguments": {
+          "symbol": "VCB",
+          "period": "quarter"
+        },
+        "status": "ok",
+        "error_code": null,
+        "availability": "available"
+      }
+    ],
+    "answer": {
+      "value": 14550.959,
+      "unit": "tỷ đồng",
+      "period": "Q2/2026",
+      "source": "financial_statements",
+      "line": "Tổng LNST",
+      "note": "LNST hợp nhất (tổng, gồm lợi ích cổ đông thiểu số) quý gần nhất Q2/2026 = 14,550,959,000,000 VND; quy đổi /1e9 = 14550.959 tỷ đồng. Dòng 'LNST của CĐ Ngân hàng mẹ' cùng kỳ là 14,542,276,000,000 VND (14542.276 tỷ đồng) nếu cần phần thuộc cổ đông ngân hàng mẹ.",
+      "evidence": [
+        {
+          "tool": "financial_statements",
+          "source": "vietstock",
+          "as_of": "2026-11-01T15:54:29.686603+07:00",
+          "call_id": "548ee035-47cd-43f8-b430-a9c439dc2105",
+          "payload_sha256": "e9c5e43dc5664805b215186c33c36a17a40f9109263b7ebf1a5a61bec507976f",
+          "matched_entry_id": "financial_statements:0",
+          "response_sha256": "368411d1982abd746595febe29f0a84129757c95cffc4d59b334a7cf054a4a06"
+        }
+      ]
+    },
+    "all_evidence_7_fields_grounded": true,
+    "evidence_ids_and_hashes_visible": true,
+    "failed_checks": []
+  },
+  {
+    "pass": "B",
+    "trial_id": "fin-l1-bctc-01__opentrading_baseline__r2",
+    "task": "fin-l1-bctc-01",
+    "arm": "opentrading_baseline",
+    "run": 2,
+    "status": "error",
+    "success": false,
+    "error_type": "khong_tra_loi",
+    "attempt_count": 1,
+    "wall_ms": 266742,
+    "usage_complete": true,
+    "trial_source": "results/diag-deepseek-flash-20261105-passB/trials.jsonl:40",
+    "manifest_path": "results/diag-deepseek-flash-20261105-passB/manifest.json",
+    "provider_errors": [],
+    "native_watchdog_event": true,
+    "watchdog_in_primary_notes": true,
+    "watchdog_sources": [
+      "results/diag-deepseek-flash-20261105-passB/trials/fin-l1-bctc-01__opentrading_baseline__r2/attempts/01-cf15d98da5ca/run.log:54"
+    ],
+    "ledger_path": "results/diag-deepseek-flash-20261105-passB/trials/fin-l1-bctc-01__opentrading_baseline__r2/attempts/01-cf15d98da5ca/mcp.jsonl",
+    "calls": [
+      {
+        "tool": "financial_statements",
+        "arguments": {
+          "symbol": "VCB",
+          "period": "quarter",
+          "statement": "all",
+          "periods_n": 15
+        },
+        "status": "ok",
+        "error_code": null,
+        "availability": "available"
+      }
+    ]
+  },
+  {
+    "pass": "C1",
+    "trial_id": "fin-l1-quote-01__opentrading_baseline__r1",
+    "task": "fin-l1-quote-01",
+    "arm": "opentrading_baseline",
+    "run": 1,
+    "status": "error",
+    "success": false,
+    "error_type": "khong_tra_loi",
+    "attempt_count": 1,
+    "wall_ms": 279975,
+    "usage_complete": true,
+    "trial_source": "results/diag-deepseek-flash-20261105-passC/trials.jsonl:1",
+    "manifest_path": "results/diag-deepseek-flash-20261105-passC/manifest.json",
+    "provider_errors": [],
+    "native_watchdog_event": true,
+    "watchdog_in_primary_notes": true,
+    "watchdog_sources": [
+      "results/diag-deepseek-flash-20261105-passC/trials/fin-l1-quote-01__opentrading_baseline__r1/attempts/01-bbf79a37f723/run.log:52"
+    ],
+    "ledger_path": "results/diag-deepseek-flash-20261105-passC/trials/fin-l1-quote-01__opentrading_baseline__r1/attempts/01-bbf79a37f723/mcp.jsonl",
+    "calls": [
+      {
+        "tool": "vn_quote_history",
+        "arguments": {
+          "symbol": "HPG",
+          "days": 365,
+          "interval": "1D"
+        },
+        "status": "ok",
+        "error_code": null,
+        "availability": "available"
+      }
+    ]
+  },
+  {
+    "pass": "C1",
+    "trial_id": "fin-l1-quote-01__opentrading_baseline__r2",
+    "task": "fin-l1-quote-01",
+    "arm": "opentrading_baseline",
+    "run": 2,
+    "status": "error",
+    "success": false,
+    "error_type": "khong_tra_loi",
+    "attempt_count": 1,
+    "wall_ms": 131141,
+    "usage_complete": true,
+    "trial_source": "results/diag-deepseek-flash-20261105-passC/trials.jsonl:2",
+    "manifest_path": "results/diag-deepseek-flash-20261105-passC/manifest.json",
+    "provider_errors": [],
+    "native_watchdog_event": true,
+    "watchdog_in_primary_notes": true,
+    "watchdog_sources": [
+      "results/diag-deepseek-flash-20261105-passC/trials/fin-l1-quote-01__opentrading_baseline__r2/attempts/01-737e1db0683e/run.log:45"
+    ],
+    "ledger_path": "results/diag-deepseek-flash-20261105-passC/trials/fin-l1-quote-01__opentrading_baseline__r2/attempts/01-737e1db0683e/mcp.jsonl",
+    "calls": []
+  },
+  {
+    "pass": "C2",
+    "trial_id": "fin-l5-compare-01__opentrading_finance__r1",
+    "task": "fin-l5-compare-01",
+    "arm": "opentrading_finance",
+    "run": 1,
+    "status": "error",
+    "success": false,
+    "error_type": "khong_tra_loi",
+    "attempt_count": 1,
+    "wall_ms": 258083,
+    "usage_complete": false,
+    "trial_source": "results/diag-deepseek-flash-20261105-passC/driver2.log/trials.jsonl:1",
+    "manifest_path": "results/diag-deepseek-flash-20261105-passC/driver2.log/manifest.json",
+    "provider_errors": [
+      {
+        "source": "results/diag-deepseek-flash-20261105-passC/driver2.log/trials/fin-l5-compare-01__opentrading_finance__r1/attempts/01-54eed7fe2575/provider.jsonl:1",
+        "status": 502,
+        "error": "TimeoutError",
+        "response_models": null,
+        "upstream_attempted": true
+      }
+    ],
+    "native_watchdog_event": true,
+    "watchdog_in_primary_notes": false,
+    "watchdog_sources": [
+      "results/diag-deepseek-flash-20261105-passC/driver2.log/trials/fin-l5-compare-01__opentrading_finance__r1/attempts/01-54eed7fe2575/run.log:49"
+    ],
+    "ledger_path": "results/diag-deepseek-flash-20261105-passC/driver2.log/trials/fin-l5-compare-01__opentrading_finance__r1/attempts/01-54eed7fe2575/mcp.jsonl",
+    "calls": []
+  },
+  {
+    "pass": "C2",
+    "trial_id": "fin-l5-compare-01__opentrading_finance__r2",
+    "task": "fin-l5-compare-01",
+    "arm": "opentrading_finance",
+    "run": 2,
+    "status": "error",
+    "success": false,
+    "error_type": "khong_tra_loi",
+    "attempt_count": 1,
+    "wall_ms": 250526,
+    "usage_complete": true,
+    "trial_source": "results/diag-deepseek-flash-20261105-passC/driver2.log/trials.jsonl:2",
+    "manifest_path": "results/diag-deepseek-flash-20261105-passC/driver2.log/manifest.json",
+    "provider_errors": [],
+    "native_watchdog_event": true,
+    "watchdog_in_primary_notes": true,
+    "watchdog_sources": [
+      "results/diag-deepseek-flash-20261105-passC/driver2.log/trials/fin-l5-compare-01__opentrading_finance__r2/attempts/01-6d56fe3c01f5/run.log:58"
+    ],
+    "ledger_path": "results/diag-deepseek-flash-20261105-passC/driver2.log/trials/fin-l5-compare-01__opentrading_finance__r2/attempts/01-6d56fe3c01f5/mcp.jsonl",
+    "calls": [
+      {
+        "tool": "peer_compare",
+        "arguments": {
+          "symbol": "VCB",
+          "peers": [
+            "BID",
+            "CTG",
+            "TCB",
+            "MBB"
+          ]
+        },
+        "status": "ok",
+        "error_code": null,
+        "availability": "available"
+      }
+    ]
+  }
+]

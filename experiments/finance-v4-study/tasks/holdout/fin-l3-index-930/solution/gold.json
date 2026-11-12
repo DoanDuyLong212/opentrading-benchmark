@@ -1,0 +1,77 @@
+{
+  "task_id": "fin-l3-index-930",
+  "scoring": "value",
+  "solution": {
+    "value": 1774.15,
+    "date": "2026-10-23"
+  },
+  "as_of": "2026-11-01T21:11:59.149010+07:00",
+  "split": "holdout",
+  "expects": [
+    {
+      "type": "value",
+      "path": "values.value",
+      "gold": 1774.15,
+      "tol": {
+        "rel": 0.005
+      }
+    },
+    {
+      "type": "unit",
+      "path": "unit",
+      "accept": [
+        "điểm"
+      ]
+    },
+    {
+      "type": "period",
+      "path": "period",
+      "accept": [
+        "19/10",
+        "30/10"
+      ]
+    },
+    {
+      "type": "str",
+      "path": "source",
+      "accept": [
+        "vn_index_ohlcv"
+      ]
+    },
+    {
+      "type": "evidence",
+      "path": "note",
+      "paths": [
+        "note"
+      ],
+      "numbers": [],
+      "strings": [
+        "23/10"
+      ],
+      "min_hits": 1
+    }
+  ],
+  "contract_version": 2,
+  "provenance_contract": [
+    {
+      "tool": "vn_index_ohlcv",
+      "source": "vnstock",
+      "as_of": "2026-11-01T21:11:59.149010+07:00",
+      "matched_entry_id": "idx:VNINDEX",
+      "response_sha256": "da713a2897278095ec6466eaa876b29eee310c9308def1110e8ef8cb8c0daf0e"
+    }
+  ],
+  "payload_sha256": "032ee59dea44d7ce71ae077f40f5d8ce7582a9be4478fdcfce931f86e14fd42c",
+  "provenance_catalog": [
+    {
+      "tool": "vn_index_ohlcv",
+      "source": "vnstock",
+      "as_of": "2026-11-01T21:11:59.149010+07:00",
+      "matched_entry_id": "idx:VNINDEX",
+      "response_sha256": "da713a2897278095ec6466eaa876b29eee310c9308def1110e8ef8cb8c0daf0e"
+    }
+  ],
+  "required_payload_keys": [
+    "idx:VNINDEX"
+  ]
+}

@@ -1,0 +1,126 @@
+{
+  "local_source_head": "ed934aebd0ee6f9271512150a9bb3971089d7460",
+  "subbackend_head": "5d291e04f43f49e41fc315efbaf45b6dcb0508a3",
+  "deployed_commit": "unverified",
+  "frozen_source_comparison": [
+    {
+      "tool": "yf_commodities",
+      "source": "/home/doanlong/MCP-server/src/opentrading_mcp/tools/yf.py",
+      "sha256": "df1f059770030d9f27c22b8817a053fa54caae4f233baa5b2e664a6bfacaf658",
+      "frozen_sha256": "df1f059770030d9f27c22b8817a053fa54caae4f233baa5b2e664a6bfacaf658",
+      "matches": true
+    },
+    {
+      "tool": "vs_overview_trading",
+      "source": "/home/doanlong/MCP-server/src/opentrading_mcp/tools/vs_bctc.py",
+      "sha256": "b447a420ff3460f5ecca456407b279c4dba7dc30b9813f42c9d935b64f94fea1",
+      "frozen_sha256": "b447a420ff3460f5ecca456407b279c4dba7dc30b9813f42c9d935b64f94fea1",
+      "matches": true
+    },
+    {
+      "tool": "symbol_resolve",
+      "source": "/home/doanlong/MCP-server/src/opentrading_mcp/tools/market.py",
+      "sha256": "dbb09666208ce407849c63428922bed4728ccbbc0d70780495a237db13aabf6c",
+      "frozen_sha256": "dbb09666208ce407849c63428922bed4728ccbbc0d70780495a237db13aabf6c",
+      "matches": true
+    },
+    {
+      "tool": "market_movers",
+      "source": "/home/doanlong/MCP-server/src/opentrading_mcp/tools/market.py",
+      "sha256": "dbb09666208ce407849c63428922bed4728ccbbc0d70780495a237db13aabf6c",
+      "frozen_sha256": "dbb09666208ce407849c63428922bed4728ccbbc0d70780495a237db13aabf6c",
+      "matches": true
+    },
+    {
+      "tool": "valuation_run",
+      "source": "/home/doanlong/MCP-server/src/opentrading_mcp/tools/compute_financial.py",
+      "sha256": "96de2f70af8b30c6741a86294f696ea4b18bb55ea6930f16db81dbc2827d0316",
+      "frozen_sha256": "96de2f70af8b30c6741a86294f696ea4b18bb55ea6930f16db81dbc2827d0316",
+      "matches": true
+    },
+    {
+      "tool": "financial_statements",
+      "source": "/home/doanlong/MCP-server/src/opentrading_mcp/tools/compute_financial.py",
+      "sha256": "96de2f70af8b30c6741a86294f696ea4b18bb55ea6930f16db81dbc2827d0316",
+      "frozen_sha256": "96de2f70af8b30c6741a86294f696ea4b18bb55ea6930f16db81dbc2827d0316",
+      "matches": true
+    },
+    {
+      "tool": "peer_compare",
+      "source": "/home/doanlong/MCP-server/src/opentrading_mcp/tools/compute_financial.py",
+      "sha256": "96de2f70af8b30c6741a86294f696ea4b18bb55ea6930f16db81dbc2827d0316",
+      "frozen_sha256": "96de2f70af8b30c6741a86294f696ea4b18bb55ea6930f16db81dbc2827d0316",
+      "matches": true
+    },
+    {
+      "tool": "stock_overview",
+      "source": "/home/doanlong/MCP-server/src/opentrading_mcp/tools/compute_financial.py",
+      "sha256": "96de2f70af8b30c6741a86294f696ea4b18bb55ea6930f16db81dbc2827d0316",
+      "frozen_sha256": "96de2f70af8b30c6741a86294f696ea4b18bb55ea6930f16db81dbc2827d0316",
+      "matches": true
+    },
+    {
+      "tool": "crypto_spot",
+      "source": "/home/doanlong/MCP-server/src/opentrading_mcp/tools/crypto.py",
+      "sha256": "6e1776d0ad8e72e24b08677ec020bb233ee871124eed8db2a19325ee8726aef4",
+      "frozen_sha256": "6e1776d0ad8e72e24b08677ec020bb233ee871124eed8db2a19325ee8726aef4",
+      "matches": true
+    },
+    {
+      "tool": "financial_detail",
+      "source": "/home/doanlong/MCP-server/src/opentrading_mcp/tools/corp.py",
+      "sha256": "ec4a91094a3c1b9f3d20f308d9d9bb354310de33d0fb09cea9ce9adc003cf046",
+      "frozen_sha256": "ec4a91094a3c1b9f3d20f308d9d9bb354310de33d0fb09cea9ce9adc003cf046",
+      "matches": true
+    },
+    {
+      "tool": "signals_technical",
+      "source": "/home/doanlong/MCP-server/src/opentrading_mcp/tools/scan.py",
+      "sha256": "4726fce0056198889c78df96b3c1a30ebec03ea499fad356952f59938d7f7e8b",
+      "frozen_sha256": "4726fce0056198889c78df96b3c1a30ebec03ea499fad356952f59938d7f7e8b",
+      "matches": true
+    },
+    {
+      "tool": "vs_indicator_data",
+      "source": "/home/doanlong/MCP-server/src/opentrading_mcp/tools/vs.py",
+      "sha256": "cc0c32d2b63233779eda5ac088c454b3f39daccb27410d3b632c135c3644a7ef",
+      "frozen_sha256": "cc0c32d2b63233779eda5ac088c454b3f39daccb27410d3b632c135c3644a7ef",
+      "matches": true
+    },
+    {
+      "tool": "vn_quote_history",
+      "source": "/home/doanlong/MCP-server/src/opentrading_mcp/tools/vn.py",
+      "sha256": "68a312107c260eb60e8a122ad3ddf55ad0d613557bb7797449df536ac56bd0fb",
+      "frozen_sha256": "68a312107c260eb60e8a122ad3ddf55ad0d613557bb7797449df536ac56bd0fb",
+      "matches": true
+    },
+    {
+      "tool": "vn_equity_quote_batch",
+      "source": "/home/doanlong/MCP-server/src/opentrading_mcp/tools/vn.py",
+      "sha256": "68a312107c260eb60e8a122ad3ddf55ad0d613557bb7797449df536ac56bd0fb",
+      "frozen_sha256": "68a312107c260eb60e8a122ad3ddf55ad0d613557bb7797449df536ac56bd0fb",
+      "matches": true
+    },
+    {
+      "tool": "vn_index_ohlcv",
+      "source": "/home/doanlong/MCP-server/src/opentrading_mcp/tools/vn_ext.py",
+      "sha256": "3b06dd1add9be2c55c1054fa654980833a8b6f145f3c032651fbf80b84572098",
+      "frozen_sha256": "3b06dd1add9be2c55c1054fa654980833a8b6f145f3c032651fbf80b84572098",
+      "matches": true
+    },
+    {
+      "tool": "vn_crypto_ohlcv",
+      "source": "/home/doanlong/MCP-server/src/opentrading_mcp/tools/vn_ext.py",
+      "sha256": "3b06dd1add9be2c55c1054fa654980833a8b6f145f3c032651fbf80b84572098",
+      "frozen_sha256": "3b06dd1add9be2c55c1054fa654980833a8b6f145f3c032651fbf80b84572098",
+      "matches": true
+    },
+    {
+      "tool": "vn_msn_fx_gold",
+      "source": "/home/doanlong/MCP-server/src/opentrading_mcp/tools/vn_ext.py",
+      "sha256": "3b06dd1add9be2c55c1054fa654980833a8b6f145f3c032651fbf80b84572098",
+      "frozen_sha256": "3b06dd1add9be2c55c1054fa654980833a8b6f145f3c032651fbf80b84572098",
+      "matches": true
+    }
+  ]
+}

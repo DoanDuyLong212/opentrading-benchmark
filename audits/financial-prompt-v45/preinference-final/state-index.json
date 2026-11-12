@@ -1,0 +1,14 @@
+[
+  {
+    "config": "/home/doanlong/extra/benchmark/experiments/finance-v45-study/tools/bench_config.json",
+    "model": "nvidia/nvidia/nemotron-3.5-super-vl-120b-a12b",
+    "state_sha256": "ae43af7be3593d02c8d6875a5b01ba871879182e9b31837832751f1f908a7878",
+    "state_path": "/home/doanlong/extra/benchmark/audits/financial-prompt-v45/preinference-final/super-freeze-state.json"
+  },
+  {
+    "config": "/home/doanlong/extra/benchmark/experiments/finance-v45-study/tools/bench_config_deepseek.json",
+    "model": "nvidia/deepseek-ai/deepseek-v4.1-flash",
+    "state_sha256": "e492cf5c7da165125d5dc1162bfb63be72f6a6b62bf2cfd9ccc62f21af652493",
+    "state_path": "/home/doanlong/extra/benchmark/audits/financial-prompt-v45/preinference-final/deepseek-freeze-state.json"
+  }
+]

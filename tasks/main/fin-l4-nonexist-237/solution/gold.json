@@ -1,25 +1,48 @@
 {
- "task_id": "fin-l4-nonexist-237",
- "scoring": "refusal",
- "solution": {
-  "query": "QQV9"
- },
- "as_of": "2026-11-01T21:33:54.663393+07:00",
- "split": "main",
- "refusal_tokens": [
-  "chưa công bố",
-  "chưa có",
-  "chưa kết thúc",
-  "không có",
-  "không tồn tại",
-  "chưa phát hành",
-  "chưa đến kỳ",
-  "chưa có số liệu",
-  "không có số liệu",
-  "chưa được công bố",
-  "không có dữ liệu",
-  "không đủ dữ liệu"
- ],
- "bonus_numbers": [],
- "bonus_strings": []
+  "task_id": "fin-l4-nonexist-237",
+  "scoring": "refusal",
+  "solution": {
+    "query": "QQV9"
+  },
+  "as_of": "2026-11-01T21:33:54.663393+07:00",
+  "split": "main",
+  "refusal_tokens": [
+    "chưa công bố",
+    "chưa có",
+    "chưa kết thúc",
+    "không có",
+    "không tồn tại",
+    "chưa phát hành",
+    "chưa đến kỳ",
+    "chưa có số liệu",
+    "không có số liệu",
+    "chưa được công bố",
+    "không có dữ liệu",
+    "không đủ dữ liệu"
+  ],
+  "bonus_numbers": [],
+  "bonus_strings": [],
+  "contract_version": 2,
+  "provenance_contract": [
+    {
+      "tool": "symbol_resolve",
+      "source": "vnstock+local",
+      "as_of": "2026-11-01T21:33:54.663393+07:00",
+      "matched_entry_id": "res:QQV9",
+      "response_sha256": "cb64c3de6722597f2391cd4555f8914bf64ead997caaddb3d8b635791305695a"
+    }
+  ],
+  "payload_sha256": "8367468176d2147aba18bcbaf47307d66f4ae6ae92cacab297afc375ed351805",
+  "provenance_catalog": [
+    {
+      "tool": "symbol_resolve",
+      "source": "vnstock+local",
+      "as_of": "2026-11-01T21:33:54.663393+07:00",
+      "matched_entry_id": "res:QQV9",
+      "response_sha256": "cb64c3de6722597f2391cd4555f8914bf64ead997caaddb3d8b635791305695a"
+    }
+  ],
+  "required_payload_keys": [
+    "res:QQV9"
+  ]
 }

@@ -1,0 +1,114 @@
+{
+ "schema": "seal-drift-amendment-v1",
+ "created": "2026-11-10T01:05:00+07:00",
+ "authorizer": "user explicit instruction 2026-11-10: corpus 230 main + 60 holdout đã chốt bởi session OpenCode thứ hai (batch-3 memory); nâng budget OpenRouter :free lên 1900; dùng hết quota hôm nay thì dừng đánh giá, tự chạy nốt 07:10 sáng mai; pipeline tự báo mỗi 20 trials",
+ "documents": {
+  "batch3_memory_corpus": {
+   "summary": "Mở rộng corpus memory đã đăng ký: MAIN 212 -> 230 (200 financial + 30 memory fin-mem-320..349); holdout 60 (50 nonmemory bất biến ở canonical root + 10 fin-mem-960..969 memory stratum); pilot fin-mem-p01 + memorydev 2 giữ nguyên. Tổng memory tasks 15 -> 33.",
+   "receipts": "audits/financial-memory-v45-batch3/ (corpus-audit.json 43 rows, canonical-verification.json, executor-review.json, MEMORY-ROOT-BEFORE-batch3.json, canonical-root-backup-*)",
+   "test_reconciliation": "test_public_contract 254->282 instructions; test_v42_contract 382->416 recorded entries; test_v45_memory_metrics 15->33 + main 212->230; test_driver holdout: study tasks/holdout chỉ chứa 10 fin-mem batch-3 (toàn bộ quarantined vào memory stratum) nên financial driver chọn 0; test_independent_snapshot: fingerprint memory = batch1 + batch3 (batch3 supersede cho task đã harmonize grader 1f06->6a67)",
+   "effect_on_running_results": "KHÔNG ảnh hưởng smoke v4.6-update đã chạy (corpus devsmoke 12 task bất biến, manifest pin đúng schedule); chỉ ảnh hưởng freeze state cho seal tương lai và MAIN (không chạy trong study này)"
+  },
+  "auditor_fix_5": {
+   "summary": "unknown_context() trong v46_rejection_proof.py nhận thêm prefix 'Error: ' của runtime tool_result (cùng class prefix rejected_context đã xử lý ở v4.6-update); tên tool sinh ra vẫn phải khớp ĐỦ (cấm fuzzy/canonical repair). 5 test case mới.",
+   "effect": "3 unbound generated occurrences của DSH (chain r1 analytics_calculate bare; chain r2 mcp__openttradng__financial_statements; aggregate r2 mcp__openttrad_compute) được classify đúng model_tool_name_error, financial_evidence=false — runtime đã từ chối đúng, model tự sửa ở turn sau. Audit super-devsmoke re-run: PASS 0 errors 0 fabrication 22:33 09/11."
+  },
+  "openrouter_route_wiring_fix": {
+   "summary": "bench_config_openrouter.json provider_options thiếu provider_route='openrouter_free' — route OR chưa từng được chạy qua driver thật (canary chạy bằng script riêng, seal không chạy inference). Đã wire provider_route + openrouter_free_budget=1900 vào provider_options. Gateway đọc đúng route/key/URL. Bổ sung (00:59): allowed_models của config thêm nvidia/nemotron-3.5-super-vl:free (driver từ chối model ngoài allowlist tại run_benchmark.py:500 — lỗi phát hiện trước trial đầu tiên, 0 request đã dùng).",
+   "key_resolution": "OPENROUTER_KEY đọc từ /home/doanlong/extra/benchmark/.env (biến OPENROUTER_API_KEY trong env cũ trả 401 - key khác, không dùng)"
+  },
+  "budget_raise_950_to_1900": {
+   "summary": "User nâng hard-stop 950 -> 1900 upstream requests cho route :free (hai ngày UTC quota). Verified bằng GET /api/v1/key: free_model_daily_requests limit=1000 per UTC day (tài khoản đã nạp >= 10 credits), reset 00:00 UTC = 07:00 giờ VN. Enforcement: persistent counter results/openrouter-free-budget-counter.json + hard-stop trong provider.py (tick trước dispatch); graceful daily stop = external quota watcher ghi PAUSE từ counter chính thức /api/v1/key khi remaining < 50.",
+   "admission_receipt_note": "Receipt admission OR giữ nguyên hash (user_budget 'hard-stop 950' là mốc lịch sử tại thời điểm admission); mốc hiện hành 1900 do amendment này + approval note cập nhật"
+  },
+  "drift_scope": "NVIDIA seal v3 freeze state bị supersede bởi các thay đổi trên; smoke NVIDIA 24/24 giữ nguyên là bằng chứng diagnostic sealed (audit PASS + manual review 86/86 complete, 0 rejected, 0 fabrication; gate PASS tính từ quality_gate + artifacts hash-bound). OpenRouter seal v3 phát SAU KHI toàn bộ thay đổi ổn định -> bind sạch, không drift.",
+  "going_forward_process": "Không sửa code/config/corpus sau khi seal OR v3 được phát; mọi phát hiện instrumentation mới -> dừng, amendment mới, xin duyệt.",
+  "oc_arm_openrouter_model_registration": {
+   "summary": "OpenCode arm (OC) trên route OR fail hệ thống 0/20 trial (khong_tra_loi, req=0): provider.no-route 'Model unavailable: nvidia/nemotron-3.5-super-vl:free' — plugin builtin opencode.provider.nvidia resolve '-m nvidia/<id>' qua catalog NVIDIA, không có id ':free' (hậu tố OpenRouter). Trên route NVIDIA cùng cấu trúc hoạt động (18/24) vì id đầy đủ là model NVIDIA thật.",
+   "fix": "run_opencode.py: khi provider_route=openrouter_free, đăng ký thêm model dưới OpenCode id 'nemotron-3.5-super-vl:free' (key không prefix) với modelID='nvidia/nemotron-3.5-super-vl:free'. '-m' giữ nguyên; request body vẫn mang đúng identity đã admission qua controlled gateway (ledger/caps/captures giữ nguyên). Xác minh thực nghiệm: OpenCode resolve model thành công (CLI vào agent build; retry do baseURL dead-port trong test cô lập).",
+   "superseded_run": "financial-v46u-or2-20261110 (81/96 trial, OC 0/20) giữ nguyên làm superseded diagnostic; không rescue. Route NVIDIA 2 arm kia unaffected (dsh 12/14, ot-fin 13/13, ot-b0 12/13 tại thời điểm pause).",
+   "budget_accounting": "Run cũ dùng 199/1000 request ngày UTC 09/11 (thời điểm pause 02:05); run mới re-run toàn bộ 96 trial smoke từ đầu theo protocol 'instrumentation error -> dừng, không patch cùng run'."
+  },
+  "auditor_fix_7_admission_or_route": {
+   "summary": "audit_v45_run.py admission() chỉ biết receipt NVIDIA (exact-identity-v1 + route-v2) — audit OR3 smoke crash ValueError 'v45 actual function-call admission receipt missing' (exit 1, không ghi audit-v45.json). Sửa: admission() nhận receipt OR (openrouter__nemotron-3.5-super-vl-free.json, convention ':'->'-'); yêu cầu model_requested==returned_model==id + user_authorized + route=openrouter_free + probes 'PASS'; checkpoint_unverified=true (đúng bản chất route OR). audit call-site: thử full model id trước, fallback strip prefix 'nvidia/' cho route NVIDIA.",
+   "test": "21/21 test_provider_runner PASS; admission lookup OR OK (contract openrouter-free-route-user-authorized)"
+  },
+  "auditor_fix_8_crash_truncated_journal": {
+   "summary": "Sự cố disk-full 02:52 làm truncates dòng CUỐI của provider.jsonl ở trial đang chạy (v45-dev-02-resolve OC r2, attempt 01-13378a5dc30d) — driver crash-recovery ghi attempt là 'timeout' (không phải 'interrupted') → auditor từ chối 'Corrupt nonterminal/noninterrupted telemetry journal'. Sửa: journal() tha thứ trailing fragment cho terminal-failure attempts (interrupted OR timeout), fragment giữ nguyên kèm sha256 trong partials — không bao giờ là evidence (trial đã fail, không có answer được chấp nhận).",
+   "evidence": "file có 2 dòng, dòng cuối 2607 bytes KHÔNG kết thúc newline — đúng pattern crash mid-write"
+  },
+  "auditor_fix_9_mcp_level_rejection": {
+   "summary": "OT runtime emit financial_local_rejection chỉ cho client-side InvalidToolInputError; rejection mức MCP server (symbol_resolve limit:'5' string vs constant int → 'invalid_argument: data/limit must be equal to constant') chỉ xuất hiện trong tool-end ok:false không có notice wrapper → 3 generated occurrences unbound ở chain OT-fin r2. Sửa verify_local_rejections: bind fallback từ tool-end ok:false có đủ marker ('invalid_argument' + 'Type validation failed' + 'Tham số không hợp lệ'), join callId→tool-start, tool name canonical parse từ error, code='invalid_tool_input' → classification schema_invalid_arguments qua jsonschema validate. Cùng độ nghiêm ngặt: callId unique, fragment không bao giờ là evidence.",
+   "result": "audit OR3 smoke re-run: PASS 0 errors 0 fabrication (từ 329 model_identity → 1 journal → 0)"
+  },
+  "user_pilot_authorization_20261110": {
+   "summary": "User phê duyệt diagnostic pilot trên OR :free dù smoke gate FAIL — tiêu chí pilot = B1>=B0 (relaxed). Smoke OR3: B1 21/24, B0 22/24, DSH 21, OC 15; review 80/80 PASS 0 rejected; audit PASS 0 fabrication.",
+   "mechanism": "seal v5: diagnostic_pilot_authorized=true; runs[devsmoke].out repoint về evidence dir or3 (manifest fingerprint cũ — evidence coil định, không đụng); runs[pilot].out = dir mới với manifest mới (cây hiện tại) → pilot capture/ledger integrity đầy đủ. Supervisor state pre-seed devsmoke finished=true/audit_pass=true (giá trị thật từ artifacts).",
+   "criterion": "Pilot PASS nếu B1>=B0 trên cả 2 co-primary (44 denominator); registered pilot gate (+3/44 mỗi control) báo kèm để tham chiếu nhưng KHÔNG phải điều kiện theo chỉ thị user."
+  },
+  "auditor_fix_10_native_args_normalized": {
+   "summary": "Pilot: OT runtime normalize calculate args trước khi persist deriv (strip output_unit của model) → exact-args claim fail ở 5 native call status=error (fin-l2-gold B0 r1, fin-l3-index OT-fin/B0 r2). Sửa: fallback bind theo sdk_call_id duy nhất + xác minh canonical tool + provider turn khớp; delta 'runtime-stripped output_unit' công bố trong audit result (native_args_normalized). Chỉ áp dụng deriv status=error — native call thất bại không bao giờ là evidence.",
+   "test": "audit pilot re-run: 9 errors → 1 (còn OC crypto)"
+  },
+  "auditor_fix_11_opencode_unknown_tool_sentence": {
+   "summary": "OC arm pilot fin-l2-crypto-01 r2: model hallucinate tool 'execute' (shell) ngoài inventory → OpenCode v2 từ chối dạng câu 'No tool named \"execute\" is currently available. Please use a tool from the available tool list.' (khác 3 format cũ). Sửa unknown_context nhận đúng dạng câu này (tên tool phải khớp ĐỦ). Classification: model_tool_name_error, financial_evidence=false.",
+   "test": "+2 test case; 51/51 test_v46_infrastructure PASS"
+  },
+  "pilot_completion_20261110": {
+   "summary": "Pilot OR :free 176/176 hoàn tất (đêm 10/11, qua reset quota 07:00). Kết quả: B1 34/44 strict + 34/44 grounded; B0 32/33; DSH 29/29; OC 24/25. Trap B1 4/4; DNF B1 3; FR 0; FP 0; usage complete 44/44.",
+   "criterion": "User criterion B1>=B0: strict 34>=32 ✓, grounded 34>=33 ✓ → ĐẠT. Registered pilot gate (+3/44 mỗi control): B1-B0 +2/+0 (<3) ✗, DNF 3>1 ✗ — báo kèm tham chiếu.",
+   "next": "audit PASS (sau fix #10/#11) → manual review ~119 wins → gate → PILOT-REPORT. Sau đó: OR DeepSeek v4.1 flash (credit) theo chỉ thị user — cần admission canary riêng route trả phí + config + approval entry."
+  },
+  "deepseek_openrouter_paid_route": {
+   "summary": "User chỉ thị 11/10: sau VL pilot → DeepSeek OR dùng credit. Model ID đúng trên OR: deepseek/deepseek-v4.1-flash (ID 'deepseek-ai/...' trong kế hoạch cũ KHÔNG tồn tại trên OR — đã xác minh qua /api/v1/models). Canary 3/3 PASS (identity exact + vn_follow + tool_wire), receipt audits/model-admission/deepseek__deepseek-v4.1-flash-openrouter.json.",
+   "gateway": "provider.py: route mới 'openrouter_paid' — cùng OPENROUTER_URL/key (.env OPENROUTER_KEY), admission riêng (contract openrouter-paid-route-user-authorized-20261110), budget guard riêng OPENROUTER_PAID_REQUEST_BUDGET=1900 (counter openrouter-paid-budget-counter.json — bounding guard; giá phí metered từ usage theo entitlement trong config: prompt $0.051/M, completion $0.567/M, cache-read $0.018/M).",
+   "config": "bench_config_deepseek_openrouter.json: DeepSeek sampling đăng ký temp 0/top_p 1; allowed_models +deepseek/deepseek-v4.1-flash; price_per_1m khai báo entitlement.",
+   "arms": "Cùng 4 arm (OT-finance/B0, OC, DSH) — OC arm dùng or_route chung (model registration fix #6 áp dụng cho paid), DSH/OT qua gateway.",
+   "pipeline": "Protocol chuẩn: smoke 96 → review → gate (điều kiện user: B1>=B0 như VL) → pilot 176. Out root: financial-v46u-or6-ds-20261110.",
+   "variant_choice": "User chốt 11/10: dùng variant deepseek/deepseek-v4.1-flash-1017 (input $0.006/M, output $0.50/M, cache $0.005/M — rẻ hơn 8.5x phần input so với bản không hậu tố); canary 3/3 PASS identity exact -1017; receipt audits/model-admission/deepseek__deepseek-v4.1-flash-1017-openrouter.json; price entitlement cập nhật trong config."
+  },
+  "fix_12_driver_allow_or_models": {
+   "summary": "run_benchmark.py:510 chặt 'model phải nvidia/*' — chặn route OR ngay launch DS smoke (exit 2, 0 request). Sửa: model OR (provider_route=openrouter_free/paid trong config) được chấp nhận với effort=none; effort != none vẫn bị chặn như cũ. allowlist model vẫn enforce qua allowed_models + admission receipt riêng."
+  },
+  "fix_13_opencode_provider_prefix": {
+   "summary": "DS smoke OC arm 0/6 (khong_tra_loi, req=0): OpenCode resolve '-m <provider>/<id>' theo SLASH DAU — model 'deepseek/deepseek-v4.1-flash-1017' resolve thanh provider 'deepseek' (khong ton tai trong config — block ten 'nvidia') -> provider.no-route. Sua run_opencode.py: voi OR route, -m prefix 'nvidia/' khi model chua co prefix ('nvidia/deepseek/deepseek-v4.1-flash-1017') -> resolve qua block nvidia (baseURL=controlled gateway), models key full-id khop, body.model = full id dung cho OpenRouter. Xac minh thuc nghiem: CLI vao agent build voi model DS (retry do dead-port test).",
+   "superseded_run": "financial-v46u-or6-ds-20261110 (22 trial, OC 0/6) giu lam superseded; re-run 96 tu dau theo protocol instrumentation-error.",
+   "vl_route_unaffected": "VL model 'nvidia/nemotron-3.5-super-vl:free' da co prefix nvidia/ -> model_ref giu nguyen hanh vi da chay."
+  },
+  "b1_retired_b0_promoted": {
+   "decision": "User 11/10 (sau điều tra phương án c): BỎ HOÀN TOÀN B1 (finance prompt) — B0 (baseline prompt) là candidate DUY NHẤT cho pilot/main/holdout từ giờ.",
+   "evidence": [
+    "DS smoke: B0 grounded 24/24 HOÀN HẢO vs B1 20/24 — 4 thất bại B1 đều prompt-induced deterministic (period 2 ngày 'phiên 2026-10-29 (snapshot 2026-11-02)' ×3 giống hệt + fence+note bị native contract từ chối ×1) — nội dung tài chính đúng hết, format chết.",
+    "VL pilot: B1 34/32 vs B0 32/33 — lợi thế +2/+1 KHÔNG có ý nghĩa thống kê (paired CI [-9%,+18%] cắt 0, p signflip 0,38).",
+    "NVIDIA smoke: B1 24 vs B0 22 — cùng mức noise.",
+    "Prompt disclosure-heavy của B1 gây decoration trên model tuân literal (DeepSeek); B0 format-robust mọi model (grounded 24/24 DS)."
+   ],
+   "implications": [
+    "DS pilot: chạy với B0 làm candidate — tiêu chí đánh giá = B0 >= controls (DSH/OC) trên cả 2 co-primary (theo tinh thần B1>=B0 của user, không còn B0-vs-B1).",
+    "VL pilot: số liệu B0 32/33 đã ghi — margin registered vs DSH/OC: strict +3/+8 ✓, grounded +4/+8 ✓ (đạt margin; các ngưỡng tuyệt đối 33<35/29<31/DNF 2>1 vẫn fail như đã báo).",
+    "MAIN/HOLDOUT: chờ user chốt model + authorization; B0 thống nhất mọi model/route.",
+    "B1 số liệu giữ nguyên trong các run đã hoàn thành — không xóa/không sửa; chỉ đánh dấu retired trong báo cáo."
+   ]
+  },
+  "pilot_arms_reduced_3arm": {
+   "summary": "User 11/10: 'bỏ hoàn toàn B1 tránh lãng phí' → pilot DS chuyển lịch 4-arm → 3-arm (opentrading_baseline + opencode + dsh) qua build_settings arms_<split> override (arms_pilot trong config). B1 (opentrading_finance) retired khỏi lịch — 176 → 132 trial (22 task × 2 runs × 3 arm). run 4-arm 18-trial đầu superseded.",
+   "reason": "B1 retired (xem b1_retired_b0_promoted): chạy tiếp 44 trial B1 = lãng phí credit/thời gian cho candidate đã loại.",
+   "denominator": "Pilot DS denominator mới = 132; mọi số liệu pilot DS báo trên mẫu số 132."
+  },
+  "contract_fence_acceptance": {
+   "summary": "User duyet phuong an (a) 11/10: noi native contract chap nhan SOLE FENCED JSON (whitespace ngoai fence) tuong duong bare object — tro lai DUNG dinh nghia metric grounded da dang ky ('accepts exactly one object or a sole JSON fence with whitespace outside'). Truoc day native endpoint enforce khat khe hon grader -> cac answer fence-style cua DeepSeek bi chet du noi dung dung (NVIDIA-judge xac nhan 32/40 correct, 0 incorrect, 8 unparseable).",
+   "changes": [
+    "tools/public_response_contract.py: fence extraction fallback (fullmatch 1 fence, prose/2-fence van tu choi)",
+    "experiments/opentrading-runtime/src/core/finance-policy.ts issues(): cung fence extraction (bun chay TS truc tiep - hieu luc trial ke tiep)",
+    "tests: test_sole_fenced_json_accepted_bare_equivalent (fence accepted; prose/2-fence rejected); test_transport parametrize cap nhat",
+    "TS compile check OK; 23/23 test_public_contract PASS"
+   ],
+   "strict_unchanged": "Co-primary strict VAN yeu cau bare JSON (khong fence) - phan biet strict/grounded giu nguyen.",
+   "nvidia_judge_diagnostic": "40 fence-killed trial duoc cham boi nvidia/nemotron-3.5-super-vl (direct route, temp 0): 32 correct / 8 unparseable (>=2 visible correct) / 0 incorrect - user-authorized diagnostic, khong thuoc sealed metrics, khong rescue rows."
+  },
+  "two_judge_double_check_protocol": {
+   "summary": "User yeu cau double-check 2 judge cho pilot DS: moi trial FAIL se duoc cham doc lap boi judge #1 (nemotron/NVIDIA direct) VA judge #2 (model family khac tren OR paid - chot khi chay). Quy tac: FAIL chi XAC NHAN khi CA HAI judge dong y incorrect; judge khong dong nhat -> review thu cong boi executor. Ket qua double-check bao cao RIENG (diagnostic overlay), sealed metrics khong doi.",
+   "purpose": "Dam bao 'khong nham dung thanh sai' - moi that bai phai co 2 phieu incorrect doc lap."
+  }
+ }
+}

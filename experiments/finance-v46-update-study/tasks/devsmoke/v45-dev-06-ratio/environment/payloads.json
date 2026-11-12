@@ -1,0 +1,57 @@
+{
+  "snapshot_date": "2026-11-02",
+  "source_review_status": "synthetic_engineering_fixture",
+  "note": "New pre-registered dev fixtures; no source/gold copied from main or holdout.",
+  "tools": {
+    "fs:DCM": {
+      "tool": "financial_statements",
+      "params": {
+        "symbol": "DCM",
+        "period": "quarter",
+        "statement": "all",
+        "periods_n": 15
+      },
+      "envelope": {
+        "data": {
+          "symbol": "DCM",
+          "scope": "consolidated",
+          "periods": [
+            "Q2/2026",
+            "Q3/2026"
+          ],
+          "rows": [
+            {
+              "name": "Doanh thu thuần",
+              "unit": "tỷ đồng",
+              "scope": "consolidated",
+              "values": {
+                "Q2/2026": 500,
+                "Q3/2026": 600
+              }
+            },
+            {
+              "name": "LNST",
+              "unit": "tỷ đồng",
+              "scope": "consolidated",
+              "values": {
+                "Q2/2026": 40,
+                "Q3/2026": 78
+              }
+            }
+          ]
+        },
+        "availability": "available",
+        "provenance": {
+          "source": "synthetic-dev",
+          "as_of": "2026-11-02T09:00:00+07:00",
+          "data_time": "2026-10-29",
+          "timezone": "Asia/Ho_Chi_Minh"
+        },
+        "units": {},
+        "warnings": [
+          "Synthetic engineering fixture; not independently captured market data."
+        ]
+      }
+    }
+  }
+}

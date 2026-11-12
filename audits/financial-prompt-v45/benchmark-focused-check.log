@@ -1,0 +1,12 @@
+........................................................................ [ 91%]
+....F..                                                                  [100%]
+=================================== FAILURES ===================================
+_______________________ test_dimensional_units_preserved _______________________
+experiments/finance-v45-study/tools/tests/test_v45_calculate.py:42: in test_dimensional_units_preserved
+    with pytest.raises(ValueError,match='lệch đơn vị'):calculate(a,sources)
+E   AssertionError: Regex pattern did not match.
+E     Expected regex: 'lệch đơn vị'
+E     Actual message: 'native arithmetic rejected: Expression/source bindings differ: missing=[], unused=[b]. Supply exactly the variables used in expression.'
+=========================== short test summary info ============================
+FAILED experiments/finance-v45-study/tools/tests/test_v45_calculate.py::test_dimensional_units_preserved
+1 failed, 78 passed in 32.86s

@@ -1,0 +1,11 @@
+--- test_public_contract.py.before
++++ experiments/finance-v45-study/tools/tests/test_public_contract.py
+@@ -108,6 +108,8 @@
+     import run_benchmark as rb
+     task = tmp_path/'task'
+     (task/'environment').mkdir(parents=True)
++    (task/'solution').mkdir()
++    (task/'solution/gold.json').write_text(json.dumps({'scoring':'value','expects':[]}))
+     (task/'instruction.md').write_text(instruction)
+     (task/'environment/payloads.json').write_text('{"snapshot_date":"2026-11-01","tools":{}}')
+     response = answer()

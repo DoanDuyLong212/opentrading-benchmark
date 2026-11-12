@@ -40,5 +40,28 @@
     "pb": 2.05
   },
   "notes": "Tool không trả fair-value range (chỉ multiples) → đề chỉ hỏi price/per/pb, trung thực với năng lực tool. Lưu ý: FPT giá 52,700 đ ở đây là giá tool dùng (nguồn vnstock.equity_quote_batch).",
-  "as_of": "2026-11-01T15:54:35.771025+07:00"
+  "as_of": "2026-11-01T15:54:35.771025+07:00",
+  "contract_version": 2,
+  "provenance_contract": [
+    {
+      "tool": "valuation_run",
+      "source": "computed-local",
+      "as_of": "2026-11-01T15:54:35.771025+07:00",
+      "matched_entry_id": "valuation_run:0",
+      "response_sha256": "658c84e68dfb887c809589d54a3955afd178861641bc64ff7be2b1ae52255d84"
+    }
+  ],
+  "payload_sha256": "2da896ac76215261e2d924a1e4065b27e7241c81bbf89292c67dadfe423bcad9",
+  "provenance_catalog": [
+    {
+      "tool": "valuation_run",
+      "source": "computed-local",
+      "as_of": "2026-11-01T15:54:35.771025+07:00",
+      "matched_entry_id": "valuation_run:0",
+      "response_sha256": "658c84e68dfb887c809589d54a3955afd178861641bc64ff7be2b1ae52255d84"
+    }
+  ],
+  "required_payload_keys": [
+    "valuation_run"
+  ]
 }

@@ -1,0 +1,244 @@
+{
+  "arm": "opencode",
+  "model": "nvidia/nemotron-3.5-bolt-e4b",
+  "provider": "nvidia",
+  "effort": "none",
+  "snapshot_tool_definitions": [
+    {
+      "name": "vn_quote_history",
+      "description": "Frozen MCP snapshot; only snapshot_requests below are replayable. Supply all recorded non-default parameters; omitted parameters retain the real schema defaults. Read source/as_of from provenance and cite benchmark_evidence. snapshot_requests=[{\"symbol\": \"HPG\"}]",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "symbol": {
+            "type": "string"
+          },
+          "days": {
+            "type": "integer",
+            "default": 365
+          },
+          "summary": {
+            "type": "boolean",
+            "default": false
+          },
+          "columns": {
+            "anyOf": [
+              {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null
+          },
+          "interval": {
+            "type": "string",
+            "default": "1D"
+          }
+        },
+        "required": [
+          "symbol"
+        ],
+        "additionalProperties": false
+      },
+      "annotations": {
+        "title": "vn_quote_history",
+        "readOnlyHint": true
+      }
+    }
+  ],
+  "allowed_tool_names": [
+    "mcp__opentrading__vn_quote_history",
+    "mcp_opentrading_vn_quote_history",
+    "opentrading_vn_quote_history"
+  ],
+  "native_system_prompt": true,
+  "skills": [],
+  "external_plugins": [],
+  "tool_policy": "snapshot MCP only; no filesystem, shell, web, memory, subagents",
+  "isolation": "isolated HOME/XDG/environment and native tool removal; not OS container",
+  "config": {
+    "$schema": "https://opencode.ai/config.json",
+    "plugins": [
+      "-*",
+      "opencode.agent",
+      "opencode.config.agent",
+      "opencode.config.mcp",
+      "opencode.config.provider",
+      "opencode.provider.dynamic",
+      "opencode.provider.nvidia",
+      "opencode.tools"
+    ],
+    "agents": {
+      "title": {
+        "disabled": true
+      },
+      "summary": {
+        "disabled": true
+      },
+      "compaction": {
+        "disabled": true
+      }
+    },
+    "providers": {
+      "nvidia": {
+        "package": "@ai-sdk/openai-compatible",
+        "name": "NVIDIA controlled gateway",
+        "settings": {
+          "apiKey": "[local-gateway-token]",
+          "baseURL": "http://127.0.0.1:34851/v1"
+        },
+        "models": {
+          "nvidia/nemotron-3.5-bolt-e4b": {
+            "name": "nvidia/nemotron-3.5-bolt-e4b",
+            "capabilities": {
+              "tools": true,
+              "input": [
+                "text"
+              ],
+              "output": [
+                "text"
+              ],
+              "reasoning": {
+                "supported": false
+              }
+            },
+            "limit": {
+              "context": 32000,
+              "output": 2048
+            }
+          }
+        }
+      }
+    },
+    "permissions": [
+      {
+        "action": "execute",
+        "resource": "*",
+        "effect": "deny"
+      },
+      {
+        "action": "subagent",
+        "resource": "*",
+        "effect": "deny"
+      },
+      {
+        "action": "browser",
+        "resource": "*",
+        "effect": "deny"
+      },
+      {
+        "action": "shell",
+        "resource": "*",
+        "effect": "deny"
+      },
+      {
+        "action": "external_directory",
+        "resource": "*",
+        "effect": "deny"
+      },
+      {
+        "action": "webfetch",
+        "resource": "*",
+        "effect": "deny"
+      },
+      {
+        "action": "websearch",
+        "resource": "*",
+        "effect": "deny"
+      },
+      {
+        "action": "read",
+        "resource": "*",
+        "effect": "deny"
+      },
+      {
+        "action": "write",
+        "resource": "*",
+        "effect": "deny"
+      },
+      {
+        "action": "edit",
+        "resource": "*",
+        "effect": "deny"
+      },
+      {
+        "action": "glob",
+        "resource": "*",
+        "effect": "deny"
+      },
+      {
+        "action": "grep",
+        "resource": "*",
+        "effect": "deny"
+      },
+      {
+        "action": "skill",
+        "resource": "*",
+        "effect": "deny"
+      },
+      {
+        "action": "question",
+        "resource": "*",
+        "effect": "deny"
+      },
+      {
+        "action": "task",
+        "resource": "*",
+        "effect": "deny"
+      },
+      {
+        "action": "todowrite",
+        "resource": "*",
+        "effect": "deny"
+      },
+      {
+        "action": "todoread",
+        "resource": "*",
+        "effect": "deny"
+      }
+    ],
+    "mcp": {
+      "servers": {
+        "opentrading": {
+          "type": "local",
+          "command": [
+            "/usr/bin/python3",
+            "/home/doanlong/extra/benchmark/tools/mcp_snapshot_server.py"
+          ],
+          "environment": {
+            "PYTHONPATH": "/home/doanlong/.local/lib/python3.12/site-packages",
+            "BENCH_PAYLOADS": "/home/doanlong/extra/benchmark/tasks/smoke/smoke-quote-01/environment/payloads.json",
+            "BENCH_MCP_LEDGER": "/home/doanlong/extra/benchmark/audits/2026-11-05/opentrading-review/capture/opencode/mcp.jsonl"
+          },
+          "codemode": false
+        }
+      }
+    }
+  },
+  "observed_tool_sets": [
+    [
+      "opentrading_vn_quote_history"
+    ]
+  ],
+  "provider_requests": 1,
+  "provider_upstream_requests": 1,
+  "usage_complete": true,
+  "native_mcp_catalog": {
+    "location": {
+      "directory": "/home/doanlong/extra/benchmark/audits/2026-11-05/opentrading-review/capture/opencode/ws"
+    },
+    "data": [
+      {
+        "name": "opentrading",
+        "status": {
+          "status": "connected"
+        }
+      }
+    ]
+  }
+}

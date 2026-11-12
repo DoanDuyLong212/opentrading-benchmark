@@ -1,44 +1,65 @@
 {
- "task_id": "fin-l2-growth-145",
- "scoring": "value",
- "solution": {
-  "value": -14.46
- },
- "as_of": "2026-11-01T23:52:44.754515+07:00",
- "split": "main",
- "expects": [
-  {
-   "type": "value",
-   "path": "value",
-   "gold": -14.46,
-   "tol": {
-    "abs": 0.1
-   }
+  "task_id": "fin-l2-growth-145",
+  "scoring": "value",
+  "solution": {
+    "value": -14.46
   },
-  {
-   "type": "unit",
-   "path": "unit",
-   "accept": [
-    "%",
-    "phần trăm"
-   ]
-  },
-  {
-   "type": "period",
-   "path": "period",
-   "accept": [
-    "Q3/2026",
-    "quý 3/2026",
-    "q3 2026",
-    "q3/26"
-   ]
-  },
-  {
-   "type": "str",
-   "path": "source",
-   "accept": [
-    "financial_statements"
-   ]
-  }
- ]
+  "as_of": "2026-11-01T23:52:44.754515+07:00",
+  "split": "main",
+  "expects": [
+    {
+      "type": "value",
+      "path": "value",
+      "gold": -14.46,
+      "tol": {
+        "abs": 0.1
+      }
+    },
+    {
+      "type": "unit",
+      "path": "unit",
+      "accept": [
+        "%",
+        "phần trăm"
+      ]
+    },
+    {
+      "type": "period",
+      "path": "period",
+      "accept": [
+        "Q2/2026",
+        "Q3/2026"
+      ]
+    },
+    {
+      "type": "str",
+      "path": "source",
+      "accept": [
+        "financial_statements"
+      ]
+    }
+  ],
+  "contract_version": 2,
+  "provenance_contract": [
+    {
+      "tool": "financial_statements",
+      "source": "vietstock",
+      "as_of": "2026-11-01T23:52:44.754515+07:00",
+      "matched_entry_id": "fs:DCM",
+      "response_sha256": "d4bcb0c3f68862267a8defa672465f2e6a693b799fe44c3d5c4e1a1a252a7cf7"
+    }
+  ],
+  "payload_sha256": "f5343736a6ba3915e6373bcbb8f7026d469188926b6a2d2cbeb387ba26cd0c27",
+  "provenance_catalog": [
+    {
+      "tool": "financial_statements",
+      "source": "vietstock",
+      "as_of": "2026-11-01T23:52:44.754515+07:00",
+      "matched_entry_id": "fs:DCM",
+      "response_sha256": "d4bcb0c3f68862267a8defa672465f2e6a693b799fe44c3d5c4e1a1a252a7cf7"
+    }
+  ],
+  "required_payload_keys": [
+    "fs:DCM"
+  ]
 }

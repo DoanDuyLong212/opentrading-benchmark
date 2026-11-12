@@ -1,0 +1,209 @@
+[
+  {
+    "name": "vn_quote_history_contract_example",
+    "description": "Ví dụ contract đề nghị, không phải implementation. Candles là t/o/h/l/c/v.",
+    "inputSchema": {
+      "properties": {
+        "symbol": {
+          "description": "Mã cổ phiếu/chỉ số; ví dụ HPG, VNINDEX.",
+          "maxLength": 32,
+          "minLength": 1,
+          "title": "Symbol",
+          "type": "string"
+        },
+        "days": {
+          "default": 365,
+          "description": "Số nến, không phải số ngày lịch. Từ 1 đến 365.",
+          "maximum": 365,
+          "minimum": 1,
+          "title": "Days",
+          "type": "integer"
+        },
+        "interval": {
+          "default": "1D",
+          "description": "1D ngày, 1W tuần, 1M tháng. Không nhận day/1d tùy ý.",
+          "enum": [
+            "1D",
+            "1W",
+            "1M"
+          ],
+          "title": "Interval",
+          "type": "string"
+        }
+      },
+      "required": [
+        "symbol"
+      ],
+      "title": "vn_quote_history_contract_exampleArguments",
+      "type": "object"
+    },
+    "outputSchema": {
+      "$defs": {
+        "Candle": {
+          "additionalProperties": false,
+          "properties": {
+            "t": {
+              "description": "Ngày phiên giao dịch ISO YYYY-MM-DD; không dùng fetch time.",
+              "title": "T",
+              "type": "string"
+            },
+            "o": {
+              "title": "O",
+              "type": "number"
+            },
+            "h": {
+              "title": "H",
+              "type": "number"
+            },
+            "l": {
+              "title": "L",
+              "type": "number"
+            },
+            "c": {
+              "title": "C",
+              "type": "number"
+            },
+            "v": {
+              "title": "V",
+              "type": "number"
+            }
+          },
+          "required": [
+            "t",
+            "o",
+            "h",
+            "l",
+            "c",
+            "v"
+          ],
+          "title": "Candle",
+          "type": "object"
+        },
+        "Provenance": {
+          "properties": {
+            "source": {
+              "title": "Source",
+              "type": "string"
+            },
+            "as_of": {
+              "description": "Fetch timestamp, ISO8601 có timezone; không phải ngày giao dịch.",
+              "title": "As Of",
+              "type": "string"
+            },
+            "data_time": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "description": "Ngày quan sát mới nhất; null khi không xác định.",
+              "title": "Data Time"
+            },
+            "timezone": {
+              "const": "Asia/Ho_Chi_Minh",
+              "title": "Timezone",
+              "type": "string"
+            }
+          },
+          "required": [
+            "source",
+            "as_of",
+            "data_time",
+            "timezone"
+          ],
+          "title": "Provenance",
+          "type": "object"
+        },
+        "QuoteHistoryData": {
+          "additionalProperties": false,
+          "properties": {
+            "symbol": {
+              "title": "Symbol",
+              "type": "string"
+            },
+            "interval": {
+              "enum": [
+                "1D",
+                "1W",
+                "1M"
+              ],
+              "title": "Interval",
+              "type": "string"
+            },
+            "candles": {
+              "items": {
+                "$ref": "#/$defs/Candle"
+              },
+              "title": "Candles",
+              "type": "array"
+            }
+          },
+          "required": [
+            "symbol",
+            "interval",
+            "candles"
+          ],
+          "title": "QuoteHistoryData",
+          "type": "object"
+        }
+      },
+      "additionalProperties": false,
+      "properties": {
+        "data": {
+          "$ref": "#/$defs/QuoteHistoryData"
+        },
+        "provenance": {
+          "$ref": "#/$defs/Provenance"
+        },
+        "price_unit": {
+          "enum": [
+            "thousand_VND_per_share",
+            "index_points"
+          ],
+          "title": "Price Unit",
+          "type": "string"
+        },
+        "volume_unit": {
+          "const": "shares",
+          "title": "Volume Unit",
+          "type": "string"
+        },
+        "availability": {
+          "enum": [
+            "available",
+            "partial",
+            "empty"
+          ],
+          "title": "Availability",
+          "type": "string"
+        },
+        "warnings": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Warnings",
+          "type": "array"
+        }
+      },
+      "required": [
+        "data",
+        "provenance",
+        "price_unit",
+        "volume_unit",
+        "availability",
+        "warnings"
+      ],
+      "title": "QuoteHistoryResult",
+      "type": "object"
+    },
+    "annotations": {
+      "readOnlyHint": true,
+      "destructiveHint": false,
+      "idempotentHint": true,
+      "openWorldHint": true
+    }
+  }
+]

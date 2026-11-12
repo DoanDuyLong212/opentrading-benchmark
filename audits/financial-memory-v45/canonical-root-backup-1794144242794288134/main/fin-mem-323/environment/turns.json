@@ -1,0 +1,47 @@
+{
+ "version": 1,
+ "mode": "memory",
+ "sessions": [
+  {
+   "id": "A",
+   "turns": [
+    {
+     "text": "Kế hoạch của tôi cho bạc XAGUSD: vùng mua ≤ 50 USD/oz, mục tiêu 55, cắt lỗ 47, ngày xem lại 30/11. Nhớ giùm."
+    }
+   ]
+  },
+  {
+   "id": "B",
+   "turns": [
+    {
+     "text": "Giá XAGUSD hiện tại là bao nhiêu (tra `vn_msn_fx_gold`)? Nó cách vùng mua của tôi bao nhiêu % (lấy giá hiện tại làm mẫu số)? Trả object JSON: {\"values\":{\"price\":0,\"gap_pct\":0},\"period\":\"30/10/2026\",\"source\":\"vn_msn_fx_gold\",\"note\":\"(dẫn các mức kế hoạch)\",\"evidence\":[...]}",
+     "final": true
+    }
+   ]
+  }
+ ],
+ "memory_policy": {
+  "opentrading": {
+   "memory": {
+    "provider": "notebook",
+    "cards": true
+   },
+   "permissions": {
+    "defaultMode": "auto",
+    "autoAcknowledged": true
+   }
+  },
+  "opencode": {
+   "permission": {
+    "edit": "allow",
+    "bash": "allow",
+    "webfetch": "allow"
+   }
+  },
+  "dsh": {
+   "approval_policy": "allow-reads",
+   "session_query": true
+  }
+ },
+ "note": "Thesis recall + tool + số học nhỏ; note phải dẫn ≥2/3 mức kế hoạch."
+}

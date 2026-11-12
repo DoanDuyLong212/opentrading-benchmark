@@ -1,0 +1,387 @@
+"""Behavior tests for budget isolation, recovery, frozen schedules and statistics."""
+import json
+import os
+from pathlib import Path
+import sys
+import time
+
+import pytest
+
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+import run_benchmark as rb
+import run_manifest as rm
+import metrics as M
+import ready_check as RC
+
+
+@pytest.fixture
+def task(tmp_path):
+    p = tmp_path/'tasks'/'canary'
+    p.mkdir(parents=True)
+    (p/'environment').mkdir()
+    (p/'environment'/'payloads.json').write_text(json.dumps({'snapshot_date': '2026-11-01', 'tools': {}}))
+    (p/'instruction.md').write_text('Use MCP and return final JSON')
+    (p/'task.toml').write_text('level = "SMOKE"\ntime_limit_min = 1\n')
+    return str(p)
+
+
+@pytest.fixture
+def item():
+    return {'trial_id':'canary__opencode__r1','task':'canary','arm':'opencode','run':1}
+
+
+def successful_runner(options):
+    claim = {'tool':'quote', 'source':'fixture', 'as_of':'2026-11-04', 'call_id':'c1', 'payload_sha256':'p1', 'matched_entry_id':'entry1', 'response_sha256':'r1'}
+    Path(options['mcp_ledger']).write_text(json.dumps(dict(claim,status='ok'))+'\n')
+    return {'status':'ok', 'final_text':json.dumps({'value':3, 'evidence':[claim]}),
+            'tokens':{'input':10,'output':2,'complete':True}, 'provider_requests':1}
+
+
+def grade(*_args, **_kwargs):
+    return {'success':True,'fp':0,'error_type':None,
+            'raw':{'semantic_correctness':True,'schema_valid':True}}
+
+
+def test_retry_fresh_workspaces_aggregates_and_shares_caps(tmp_path, task, item, monkeypatch):
+    seen = []
+    def runner(arm, ws, instruction, task_dir, model, timeout_s, log_path, options):
+        seen.append((ws, timeout_s, options))
+        assert sorted(os.listdir(ws)) == ['instruction.md']
+        if len(seen) == 1:
+            Path(ws,'answer.json').write_text('{"value":999}')
+            Path(log_path).write_text('HTTP 429 too many requests')
+            return {'status':'error','tokens':{'input':5,'output':1,'complete':True},'provider_requests':1}
+        return successful_runner(options)
+    monkeypatch.setattr(rb,'run_trial',runner)
+    monkeypatch.setattr(rb,'grade_answer',grade)
+    row = rb.execute_trial(item,task,str(tmp_path/'out'),'nvidia/tiny',10,retries=1,backoff_s=.01,
+                           options={'max_requests':5,'max_total_tokens':100})
+    assert row['success'] and row['attempt'] == 2
+    assert seen[0][0] != seen[1][0]
+    assert seen[1][1] < seen[0][1]
+    assert seen[1][2]['max_requests'] == 4 and seen[1][2]['max_total_tokens'] == 94
+    assert row['tokens']['input'] == 15 and row['tokens']['output'] == 3
+    assert row['wall_ms'] >= 10 and row['requests'] == 2
+    assert Path(seen[0][0],'answer.json').read_text() == '{"value":999}'
+    assert Path(seen[1][0],'answer.json').exists()
+
+
+def test_timeout_cannot_pass_even_with_correct_answer(tmp_path, task, item, monkeypatch):
+    def runner(*args):
+        result = successful_runner(args[-1])
+        result['status'] = 'timeout'
+        return result
+    monkeypatch.setattr(rb,'run_trial',runner)
+    monkeypatch.setattr(rb,'grade_answer',grade)
+    row = rb.execute_trial(item,task,str(tmp_path/'out'),'nvidia/tiny',10)
+    assert row['semantic_correctness'] is True and row['success'] is False
+    assert row['execution_error'] == 'timeout'
+
+
+def test_write_file_is_never_answer_rescue(tmp_path, task, item, monkeypatch):
+    def runner(*args):
+        Path(args[1],'answer.json').write_text('{"value":3}')
+        return {'status':'ok','answer_path':str(Path(args[1],'answer.json')),
+                'answer_candidates':[{'value':3}], 'tokens':None}
+    monkeypatch.setattr(rb,'run_trial',runner)
+    row = rb.execute_trial(item,task,str(tmp_path/'out'),'nvidia/tiny',10)
+    assert not row['success'] and row['answer_source'] == 'missing'
+
+
+def test_grounding_requires_exact_successful_call():
+    claim = {'tool':'quote','source':'fixture','as_of':'2026-11-04','call_id':'c1','payload_sha256':'h', 'matched_entry_id':'entry1', 'response_sha256':'r1'}
+    assert rb.grounded_answer({'evidence':[claim]}, [dict(claim,status='ok')])
+    assert not rb.grounded_answer({'evidence':[claim]}, [dict(claim,status='rejected')])
+    assert not rb.grounded_answer({'evidence':[dict(claim,call_id='invented')]}, [dict(claim,status='ok')])
+    assert not rb.grounded_answer({'evidence':[dict(claim,payload_sha256='other')]}, [dict(claim,status='ok')])
+    assert not rb.grounded_answer({'evidence':[dict(claim,as_of='wrong')]}, [dict(claim,status='ok')])
+
+
+def test_recovery_after_completed_attempt_does_not_call_model(tmp_path, task, item, monkeypatch):
+    monkeypatch.setattr(rb,'run_trial',lambda *a: successful_runner(a[-1]))
+    monkeypatch.setattr(rb,'grade_answer',lambda *a: (_ for _ in ()).throw(RuntimeError('simulated crash')))
+    with pytest.raises(RuntimeError):
+        rb.execute_trial(item,task,str(tmp_path/'out'),'nvidia/tiny',10)
+    monkeypatch.setattr(rb,'run_trial',lambda *a: pytest.fail('Recovery must not issue new calls'))
+    monkeypatch.setattr(rb,'grade_answer',grade)
+    row = rb.execute_trial(item,task,str(tmp_path/'out'),'nvidia/tiny',10)
+    assert row['recovered'] and row['success'] and row['attempt'] == 1
+    assert row['tokens']['input'] == 10
+
+
+def test_recovery_midstream_records_failure_unknown_usage(tmp_path, task, item, monkeypatch):
+    tdir = tmp_path/'out'/'trials'/item['trial_id']
+    (tdir/'attempts'/'01-crash'/'ws').mkdir(parents=True)
+    (tdir/'state.json').write_text(json.dumps({'trial_id':item['trial_id'],'timeout_s':10,
+           'started_at':'2026-11-04T00:00:00+00:00','started_epoch':time.time()-2}))
+    monkeypatch.setattr(rb,'run_trial',lambda *a: pytest.fail('No replenished trial budget after interruption'))
+    row = rb.execute_trial(item,task,str(tmp_path/'out'),'nvidia/tiny',10)
+    assert row['recovered'] and not row['success'] and row['status'] == 'interrupted'
+    assert row['tokens'] is None and row['requests'] is None
+    assert row['wall_ms'] >= 1900
+
+
+def test_schedule_deterministic_and_counterbalanced():
+    tasks = ['a','b','c','d','e','f']
+    arms = ['a','b','c']
+    s = rm.build_schedule(tasks,arms,3,42)
+    assert s == rm.build_schedule(tasks,arms,3,42)
+    assert s != rm.build_schedule(tasks,arms,3,43)
+    orders = [tuple(x['arm'] for x in s[i:i+3]) for i in range(0,len(s),3)]
+    assert len(set(orders)) == 6
+    assert len({x['trial_id'] for x in s}) == len(s)
+
+
+def test_manifest_resume_rejects_config_task_or_code_change(tmp_path, task, monkeypatch):
+    monkeypatch.setattr(rm,'harness_inventory',lambda *args:{'fixture':1})
+    monkeypatch.setattr(rm,'code_fingerprint',lambda:{'code':'sha'})
+    settings = {'arms':['opencode'],'runs':3,'seed':42,'model':'nvidia/tiny'}
+    out = tmp_path/'out'
+    manifest = rm.prepare_manifest(out,settings,[task],{'model':'nvidia/tiny'})
+    assert rm.prepare_manifest(out,settings,[task],{'model':'nvidia/tiny'},True) == manifest
+    with pytest.raises(ValueError):
+        rm.prepare_manifest(out,settings,[task],{'model':'other'},True)
+    Path(task,'instruction.md').write_text('changed')
+    with pytest.raises(ValueError):
+        rm.prepare_manifest(out,settings,[task],{'model':'nvidia/tiny'},True)
+    with pytest.raises(ValueError):
+        rm.prepare_manifest(out,settings,[task],{'model':'nvidia/tiny'})
+
+
+def test_duplicate_and_truncated_rows_fail_loudly(tmp_path):
+    path = tmp_path/'trials.jsonl'
+    path.write_text('{"trial_id":"same"}\n{"trial_id":"same"}\n')
+    with pytest.raises(ValueError,match='Duplicate'):
+        M.load_trials(tmp_path)
+    path.write_text('{"trial_id":')
+    with pytest.raises(json.JSONDecodeError):
+        M.load_trials(tmp_path)
+
+
+def test_freeze_requires_current_offline_and_live_certificate(tmp_path, monkeypatch):
+    state = {'config':{'model':'nvidia/tiny'}}
+    monkeypatch.setattr(rm,'freeze_state',lambda config:state)
+    cert = tmp_path/'cert.json'
+    cert.write_text(json.dumps({'schema_version':rm.SCHEMA_VERSION,'state_sha256':rm.digest_json(state),'model':'nvidia/tiny','offline_passed':True,'live_parity_passed':False}))
+    with pytest.raises(ValueError):
+        rm.create_freeze(tmp_path/'freeze.json',state['config'],cert)
+    data = json.loads(cert.read_text()); data['live_parity_passed'] = True
+    cert.write_text(json.dumps(data))
+    with pytest.raises(ValueError, match='actual completed live-run'):
+        rm.create_freeze(tmp_path/'freeze.json',state['config'],cert)
+    live = {'out_dir':str(tmp_path/'smoke'),'n_trials':18, 'stability_runs':2,'manifest_sha256':'live-sha'}
+    data['live_run'] = live
+    cert.write_text(json.dumps(data))
+    monkeypatch.setattr(RC,'validate_live_run',lambda *a:dict(live))
+    receipt = rm.create_freeze(tmp_path/'freeze.json',state['config'],cert)
+    assert rm.validate_freeze(tmp_path/'freeze.json',state['config']) == receipt['freeze_sha256']
+    monkeypatch.setattr(RC,'validate_live_run',lambda *a:dict(live,n_trials=9))
+    with pytest.raises(ValueError, match='artifacts changed'):
+        rm.validate_freeze(tmp_path/'freeze.json',state['config'])
+
+
+def test_once_only_holdout_gate_is_exact_resume(tmp_path, monkeypatch):
+    monkeypatch.setattr(rm,'ROOT',tmp_path)
+    rm.open_holdout(tmp_path/'run','sha')
+    rm.open_holdout(tmp_path/'run','sha',True)
+    with pytest.raises(ValueError): rm.open_holdout(tmp_path/'new','sha')
+    with pytest.raises(ValueError): rm.open_holdout(tmp_path/'run','other',True)
+
+
+def test_interrupted_append_quarantined_but_complete_rows_preserved(tmp_path):
+    path = tmp_path/'trials.jsonl'
+    path.write_bytes(b'{"trial_id":"done"}\n{"trial_id":"partial')
+    rb.repair_interrupted_append(path)
+    assert M.load_trials(tmp_path) == [{'trial_id':'done'}]
+    assert len(list(tmp_path.glob('trials.truncated-*.bin'))) == 1
+    path.write_text('{"trial_id":"done"}')
+    rb.repair_interrupted_append(path)
+    assert path.read_bytes().endswith(b'\n')
+    path.write_text('{"trial_id":"done"}\ninvalid\n')
+    rb.repair_interrupted_append(path)
+    with pytest.raises(json.JSONDecodeError): M.load_trials(tmp_path)
+
+
+def test_negative_median_dispersion_and_missing_usage_never_zero():
+    rows = [{'task':'t','success':True,'_answer':{'value':v}} for v in (-10,-12)]
+    assert M.answer_dispersion(rows)['mad_pct'] > 0
+    assert M.cost_of_trial({'input':100}, {'input':1,'output':2}) is None
+    assert M.cost_of_trial({'input':100,'output':3,'complete':False}, {'input':1,'output':2}) is None
+    assert M.norm_tokens({'inputTokens':100,'outputTokens':3,'cacheReadTokens':20}) == {
+        'input':100,'output':3,'reasoning':None,'cache_read':20}
+    assert M.norm_tokens({'input':100,'output':3,'cached':20})['cache_read'] == 20
+    assert M.cost_of_trial({'input':100,'output':3,'cache_read':20},{'input':1,'output':2,'cached':.1}) is None
+    assert M.cost_of_trial({'input':100,'output':3,'cache_read':20},
+                          {'input':1,'output':2,'cached':.1,'input_cache_semantics':'inclusive'}) == pytest.approx(88e-6)
+    assert M.cost_of_trial({'input':100,'output':3,'cache_read':None},
+                          {'input':1,'output':2,'cached':.1,'input_cache_semantics':'inclusive'}) is None
+    assert M.cost_of_trial({'input':100,'output':3,'cache_read':0},
+                          {'input':1,'output':2,'cached':.1,'input_cache_semantics':'inclusive'}) == pytest.approx(106e-6)
+
+
+def test_answered_denominator_never_exceeds_one():
+    rows = [{'status':'timeout','success':True,'answer_source':'final_json'},
+            {'status':'ok','success':True,'answer_source':'missing'},
+            {'status':'ok','success':True,'answer_source':'final_json'}]
+    metric = M.dnf_rate(rows)
+    assert metric['n_answered'] == 1 and metric['success_answered'] == 1
+    assert metric['success_all'] == pytest.approx(1/3)
+
+
+def test_false_refusal_set_ranking_and_partial_fields():
+    def row(answer, fields):
+        return {'task':'t','status':'ok','answer_source':'final_json', '_scoring':'value',
+                '_answer':answer, '_answerable_fields':fields}
+    ranking = row({'ranking':['A','B']},['ranking'])
+    explicit = row({'ranking':None, 'reason':'unavailable'},['ranking'])
+    missing = row({'reason':'unavailable'},['ranking'])
+    partial = row({'values':{'available':None,'unavailable':None}},['values.available'])
+    assert not M.is_false_refusal(ranking)
+    assert M.is_false_refusal(explicit)
+    assert not M.is_false_refusal(missing)
+    assert M.is_false_refusal(partial)
+    result = M.false_refusal_rate([ranking,explicit,missing,partial],partial_tasks={'t'})
+    assert result['denominator'] == 4 and result['false_refusals'] == 2
+
+
+def test_stable_requires_three_distinct_scheduled_runs():
+    rows = [{'task':'t','run':1,'success':True}]
+    result = M.stable_correct(rows,3,['t','missing'])
+    assert result['n_complete'] == 0 and result['n_incomplete'] == 2
+    assert result['rate_complete'] is None
+    rows += [{'task':'t','run':r,'success':True} for r in (2,3)]
+    result = M.stable_correct(rows,3,['t','missing'])
+    assert result['stable_correct'] == 1 and result['rate_all_scheduled'] == .5
+
+
+def test_paired_statistics_task_clustered_exact_mcnemar_holm():
+    rows = []
+    for tid in range(6):
+        for arm in ('A','B','C'):
+            for run in (1,2,3):
+                rows.append({'task':str(tid),'arm':arm,'run':run,'success':arm=='A'})
+    result = M.paired_statistics(rows,clusters={str(t):str(t//2) for t in range(6)})
+    ab = next(r for r in result if r['left']=='A' and r['right']=='B')
+    assert ab['trial_success_difference']['estimate'] == 1
+    assert ab['trial_success_difference']['n_clusters'] == 6
+    assert ab['payload_family_sensitivity']['n_clusters'] == 3
+    assert ab['stable_mcnemar']['p_exact'] == pytest.approx(2/64)
+    assert ab['stable_mcnemar']['p_holm'] == pytest.approx(6/64)
+
+
+def test_analysis_never_uses_live_pricing_and_rejects_model_mixture(tmp_path):
+    (tmp_path/'trials.jsonl').write_text(json.dumps({'trial_id':'t__a__r1','task':'unknown','arm':'a','run':1,
+       'status':'ok','success':False,'answer_source':'missing','model':'nvidia/tiny','tokens':{'input':100,'output':1}})+'\n')
+    summary = M.build_summary(str(tmp_path))
+    assert summary['model'] == 'nvidia/tiny' and summary['legacy_unfrozen']
+    assert summary['arms']['a']['cost'] is None
+    with (tmp_path/'trials.jsonl').open('a') as handle:
+        handle.write(json.dumps({'trial_id':'t__b__r1','task':'unknown','arm':'b','run':1,'model':'nvidia/other'})+'\n')
+    with pytest.raises(ValueError,match='Mixed-model'): M.build_summary(str(tmp_path))
+
+
+@pytest.mark.parametrize('text', [
+    '{"value":1,"value":2}', '{"value":NaN}', '{"value":Infinity}',
+    '{"value":1e999}', '{"value":1} {"value":2}',
+    'Earlier answer {"value":1} then {"value":2}',
+    '```json\n{"value":1,"broken":{"value":2}\n```',
+    '{"values":{"x":1,"x":2}}', '[{"value":1}]',
+])
+def test_final_json_rejects_ambiguous_malformed_or_nonfinite(text):
+    assert rb.extract_answer_json(text) is None
+
+
+def test_grounding_requires_matched_entry_and_response_identity():
+    claim = {'tool':'quote','source':'s','as_of':'d','call_id':'c','payload_sha256':'p',
+             'matched_entry_id':'bank:VCB','response_sha256':'response:VCB'}
+    ledger = [dict(claim,status='ok')]
+    assert rb.grounded_answer({'evidence':[claim]},ledger)
+    for field in ('matched_entry_id','response_sha256'):
+        forged = dict(claim, **{field:'bank:CTG'})
+        assert not rb.grounded_answer({'evidence':[forged]},ledger)
+        absent = dict(claim); absent.pop(field)
+        assert not rb.grounded_answer({'evidence':[absent]},ledger)
+
+
+def test_preflight_deadline_kills_descendant_group(tmp_path):
+    # The descendant inherits stdout and blocks forever, as an MCP SDK teardown
+    # can do. Killing only the direct child would leave this process alive.
+    pidfile = tmp_path/'pid'
+    child = 'import time; time.sleep(60)'
+    parent = ('import subprocess,sys,time,pathlib; '
+              'p=subprocess.Popen([sys.executable,"-c",sys.argv[2]]); '
+              'pathlib.Path(sys.argv[1]).write_text(str(p.pid)); time.sleep(60)')
+    start = time.monotonic()
+    with pytest.raises(TimeoutError, match='process group killed'):
+        RC.bounded_command([sys.executable,'-c',parent,str(pidfile),child], 3)
+    assert time.monotonic()-start < 8
+    pid = int(pidfile.read_text())
+    status = Path('/proc')/str(pid)/'stat'
+    # A killed orphan may remain a zombie until the container's init reaps it.
+    for _ in range(100):
+        if not status.exists() or status.read_text().split()[2] == 'Z':
+            break
+        time.sleep(.01)
+    else:
+        pytest.fail('MCP grandchild survived the preflight timeout')
+
+
+def test_frozen_summary_and_resume_reject_substituted_trial(tmp_path, task, monkeypatch):
+    monkeypatch.setattr(rm,'harness_inventory',lambda *args:{})
+    monkeypatch.setattr(rm,'code_fingerprint',lambda:{})
+    manifest = rm.prepare_manifest(tmp_path/'run',
+          {'arms':['a','b'],'runs':1,'seed':1,'model':'nvidia/tiny'}, [task], {})
+    rows = [dict(manifest['plan']['schedule'][0],model='nvidia/tiny',
+                 manifest_sha256=manifest['fingerprint'])]
+    assert not rm.validate_trial_rows(rows,manifest)
+    out = tmp_path/'run'
+    (out/'trials.jsonl').write_text(json.dumps(rows[0])+'\n')
+    summary = M.build_summary(out)
+    missing_arm = ({'a','b'}-{rows[0]['arm']}).pop()
+    assert not summary['completion']['complete']
+    assert summary['arms'][missing_arm]['n'] == 0
+    assert summary['arms'][missing_arm]['stable']['n_incomplete'] == 1
+    for changes in ({'trial_id':'other'}, {'task':'other'}, {'arm':missing_arm},
+                    {'run':99}, {'model':'nvidia/other'}, {'manifest_sha256':'other'}):
+        changed = dict(rows[0],**changes)
+        (out/'trials.jsonl').write_text(json.dumps(changed)+'\n')
+        with pytest.raises(ValueError):
+            M.build_summary(out)
+        with pytest.raises(ValueError):
+            rm.validate_trial_rows([changed],manifest)
+
+
+def test_runtime_package_pin_detects_same_version_code_and_bundle_edits(tmp_path):
+    package = tmp_path/'package'
+    (package/'lib').mkdir(parents=True)
+    (package/'package.json').write_text('{"version":"1.0"}')
+    (package/'lib'/'index.js').write_text('original')
+    (package/'cordis.patch.yml').write_text('original config')
+    first = rm.installed_package_fingerprint(package)
+    (package/'lib'/'index.js').write_text('edited')
+    second = rm.installed_package_fingerprint(package)
+    assert first['version'] == second['version'] and first != second
+    (package/'cordis.patch.yml').write_text('edited config')
+    third = rm.installed_package_fingerprint(package)
+    assert third != second
+    (package/'node_modules'/'irrelevant').mkdir(parents=True)
+    (package/'node_modules'/'irrelevant'/'index.js').write_text('excluded dependency')
+    assert rm.installed_package_fingerprint(package) == third
+
+
+def test_quarantine_excluded_before_sampling_and_confirmatory_cannot_override(tmp_path, monkeypatch, capsys):
+    monkeypatch.setattr(rb,'ROOT',str(tmp_path))
+    for split in ('smoke','pilot','main','holdout'):
+        for tid in ('ok','ambiguous'):
+            directory = tmp_path/'tasks'/split/tid
+            directory.mkdir(parents=True)
+            (directory/'task.toml').write_text('confirmatory_eligible = false\nexclusion_reason = "ambiguous CPI series"\n'
+                                             if tid == 'ambiguous' else 'level = "L1"\n')
+        chosen = rb.select_tasks(split,sample=1,seed=2,confirm_holdout=True)
+        assert [Path(p).name for p in chosen] == ['ok']
+        with pytest.raises(ValueError,match='quarantined'):
+            rb.select_tasks(split,tasks_filter=['ambiguous'],confirm_holdout=True)
+    assert 'ambiguous CPI series' in capsys.readouterr().err
+    assert len(rb.select_tasks('pilot',include_quarantined=True)) == 2
+    with pytest.raises(ValueError,match='diagnostics'):
+        rb.select_tasks('main',include_quarantined=True)

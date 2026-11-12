@@ -208,12 +208,11 @@ def gdp_pick(env, period):
 
 
 # === thân oracle ===
-its = {x: yf_item(env("yf:main"), x) for x in ['SI=F', 'HG=F', 'NG=F']}
-pcts = {x: round((its[x]["price"] / its[x]["prev"] - 1) * 100, 2) for x in its}
-for x, v in pcts.items():
-    check("pct_" + x, v, gold["solution"]["pcts"][x])
-b = min(pcts.values())
-check("winner", max(pcts, key=pcts.get) if 'min_chg' == "max_chg" else min(pcts, key=pcts.get), gold["solution"]["winner"])
+its = {x: yf_item(env('yf:main'), x) for x in ['CL=F', 'BZ=F', 'SOL-USD']}
+p = {x: (its[x]['price'] / its[x]['prev'] - 1) * 100 for x in its}
+for x, v in p.items():
+    check('pct_' + x, round(v, 2), gold['solution']['pcts'][x])
+check('winner', min(p, key=p.get), gold['solution']['winner'])
 
 if problems:
     print("ORACLE MISMATCH:")

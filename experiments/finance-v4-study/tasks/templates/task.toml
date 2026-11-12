@@ -1,0 +1,29 @@
+# Mẫu task.toml — quy ước bắt buộc mọi thẻ (benchmark-plan.md 5.3)
+# Sinh tự động bởi tools/gen_tasks.py; giữ file này làm tham chiếu khi viết task mới (200).
+
+id = "fin-lX-<family>-NN"            # NN = 2 số thứ tự
+title = "mô tả ngắn"
+version = 1
+created = "YYYY-MM-DD"
+
+level = "L1"                          # L1..L5 | SMOKE
+family = "L1·A quote"                 # mã họ task (5.2)
+financebench_type = "..."             # taxonomy FinanceBench
+entity = "HPG"                        # 1 thực thể | nhóm "A+B+C"
+asset = "vn_stock"                    # vn_stock | crypto | gold_fx | macro
+data_zone = "green"                   # green|yellow (red = không được phép tồn tại)
+data_pairs = []                       # bắt buộc với L4·D: 2 nguồn đối chiếu
+snapshot_date = "2026-11-01"          # mọi đề đọc theo snapshot
+universe_cap = 0                      # 0 = không áp dụng; L3·A bắt buộc cap rõ
+banned_tools = ["web_search", "web_fetch", "sentiment_score"]
+human_time_band = "<15 phút"          # <15 · 15–60 · >60
+time_limit_min = 10                   # hard cap cho agent
+tools_expected = ["vn_quote_history"]
+mcp_payloads = "environment/payloads.json"
+snapshot_required = true              # chạy qua MCP snapshot-replay, không gọi live
+
+[scoring]
+type = "value"                        # value|refusal|verdict
+gold = "solution/gold.json"
+oracle = "solution/oracle.py"
+grader = "tests/grader.py"

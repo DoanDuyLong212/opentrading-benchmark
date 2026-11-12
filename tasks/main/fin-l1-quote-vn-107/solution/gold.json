@@ -1,46 +1,69 @@
 {
- "task_id": "fin-l1-quote-vn-107",
- "scoring": "value",
- "solution": {
-  "value": 17.9,
-  "last_t": "2026-10-30"
- },
- "as_of": "2026-11-01T22:40:53.668775+07:00",
- "split": "main",
- "expects": [
-  {
-   "type": "unit",
-   "path": "unit",
-   "accept": [
-    "nghìn đồng",
-    "nghìn đ",
-    "k đồng"
-   ]
+  "task_id": "fin-l1-quote-vn-107",
+  "scoring": "value",
+  "solution": {
+    "value": 17.9,
+    "last_t": "2026-10-30"
   },
-  {
-   "type": "value",
-   "path": "value",
-   "gold": 17.9,
-   "tol": {
-    "rel": 0.005
-   }
-  },
-  {
-   "type": "period",
-   "path": "period",
-   "accept": [
-    "30/10",
-    "30-10",
-    "30.10",
-    "2026-10-30"
-   ]
-  },
-  {
-   "type": "str",
-   "path": "source",
-   "accept": [
-    "vn_quote_history"
-   ]
-  }
- ]
+  "as_of": "2026-11-01T22:40:53.668775+07:00",
+  "split": "main",
+  "expects": [
+    {
+      "type": "unit",
+      "path": "unit",
+      "accept": [
+        "nghìn đồng",
+        "nghìn đ",
+        "k đồng"
+      ]
+    },
+    {
+      "type": "value",
+      "path": "value",
+      "gold": 17.9,
+      "tol": {
+        "rel": 0.005
+      }
+    },
+    {
+      "type": "period",
+      "path": "period",
+      "accept": [
+        "30/10",
+        "30-10",
+        "30.10",
+        "2026-10-30"
+      ]
+    },
+    {
+      "type": "str",
+      "path": "source",
+      "accept": [
+        "vn_quote_history"
+      ]
+    }
+  ],
+  "contract_version": 2,
+  "provenance_contract": [
+    {
+      "tool": "vn_quote_history",
+      "source": "vnstock",
+      "as_of": "2026-11-01T22:40:53.668775+07:00",
+      "matched_entry_id": "vnq:FTS",
+      "response_sha256": "f94a6da93f8401284b42c199d750b39775320d2d4be22692a139d37bc9ae1ae3"
+    }
+  ],
+  "payload_sha256": "883079910d3406a2e804397e6ed831d3b9646f41ebd14b02d8764f00f019ead0",
+  "provenance_catalog": [
+    {
+      "tool": "vn_quote_history",
+      "source": "vnstock",
+      "as_of": "2026-11-01T22:40:53.668775+07:00",
+      "matched_entry_id": "vnq:FTS",
+      "response_sha256": "f94a6da93f8401284b42c199d750b39775320d2d4be22692a139d37bc9ae1ae3"
+    }
+  ],
+  "required_payload_keys": [
+    "vnq:FTS"
+  ]
 }

@@ -111,5 +111,28 @@
     ]
   },
   "notes": "Top 3/5 gainers: GAS +2.63%, VHM +1.45%, NVL +0.48% (SAB +0.24%, BVH 0%).",
-  "as_of": "2026-11-01T15:57:50.290909+07:00"
+  "as_of": "2026-11-01T15:57:50.290909+07:00",
+  "contract_version": 2,
+  "provenance_contract": [
+    {
+      "tool": "market_movers",
+      "source": "vnstock",
+      "as_of": "2026-11-01T15:57:50.290909+07:00",
+      "matched_entry_id": "market_movers:0",
+      "response_sha256": "460fae6758404235476c5e7b61a556e02866e2244884974c5ff6b316733f346b"
+    }
+  ],
+  "payload_sha256": "4262f1f1dc805048658429deb8496dd1ca11546b3ce31c31e9062bb12663d58e",
+  "provenance_catalog": [
+    {
+      "tool": "market_movers",
+      "source": "vnstock",
+      "as_of": "2026-11-01T15:57:50.290909+07:00",
+      "matched_entry_id": "market_movers:0",
+      "response_sha256": "460fae6758404235476c5e7b61a556e02866e2244884974c5ff6b316733f346b"
+    }
+  ],
+  "required_payload_keys": [
+    "market_movers"
+  ]
 }

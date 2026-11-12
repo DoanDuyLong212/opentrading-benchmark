@@ -1,0 +1,43 @@
+{
+  "approved": false,
+  "no_financial_inference": true,
+  "actual_all_four_native_wire": {
+    "pass": true,
+    "external_model_calls": 0,
+    "proof": "audits/financial-v46-update/all-native-common-wire-9e5ae401/proof.json"
+  },
+  "actual_native_utility_wire": {
+    "pass": true,
+    "external_model_calls": 0,
+    "proof": "audits/financial-v46-update/headless-wire-5aaa5667/proof.json"
+  },
+  "initial_native_affected_tests": {
+    "pass": 109,
+    "fail": 0,
+    "assertions": 443,
+    "qualification": "before subsequent terminal/repeated SDK origin fixes; final affected rerun required"
+  },
+  "typecheck": "PASS before subsequent final fixes; final required",
+  "full_python": {
+    "pass": 610,
+    "fail": 2,
+    "seconds": 437.55,
+    "status": "failed; fixes required before inference",
+    "failures": {
+      "test_primary_copies_and_template_are_identical": "new test misclassifies existing memory grader family; preserve memory namespace difference",
+      "test_local_rejection_requires_generated_id_invalidargs_and_consumederror": "old test assumes B0 no declared-schema local rejection; v46-update explicitly requires actual SDK B0/B1 schema parity; must retain policy/provenance negative tests"
+    }
+  },
+  "independent_schema_matrix": "audits/financial-v46-update/schema-verification/result.json",
+  "preservation_start": "audits/financial-v46-update/PARENT-PRESERVATION-START.json",
+  "offline_ready_check": {
+    "pass": true,
+    "provider_probe": false,
+    "checks": [
+      "isolated harness versions",
+      "actual MCP replay ledger",
+      "fresh workspace",
+      "grader correct/wrong numeric roundtrip"
+    ]
+  }
+}

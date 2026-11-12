@@ -1,0 +1,59 @@
+{
+ "scoring": "value",
+ "memory_construct": "cross_session_recall_or_update",
+ "solution": {
+  "ranking": [
+   "KBC",
+   "NLG",
+   "KDH",
+   "PDR",
+   "DXG"
+  ],
+  "violate": [
+   "DXG"
+  ]
+ },
+ "expects": [
+  {
+   "type": "list_order",
+   "path": "values.ranking",
+   "gold": [
+    "KBC",
+    "NLG",
+    "KDH",
+    "PDR",
+    "DXG"
+   ]
+  },
+  {
+   "type": "set",
+   "path": "values.violate",
+   "gold": [
+    "DXG"
+   ]
+  },
+  {
+   "type": "str",
+   "path": "source",
+   "accept": [
+    "peer_compare"
+   ]
+  }
+ ],
+ "notes": "Constraint session A: 'P/E trên 40 thì không đụng'. Ranking P/E tăng dần + gắn cờ vi phạm đồng thời. {'KDH': 31.84, 'NLG': 16.72, 'DXG': 43.58, 'PDR': 33.78, 'KBC': 14.26}",
+ "memory_checks": {},
+ "provenance_contract": [
+  {
+   "tool": "peer_compare",
+   "source": "vnstock",
+   "as_of": "2026-11-01T23:14:30.802857+07:00",
+   "matched_entry_id": "peer:bds_p",
+   "response_sha256": "ef36e0e04adedd781ea574a1b2784fb46ae01428e2eaf98c8cec9246f1524aa5"
+  }
+ ],
+ "required_payload_keys": [
+  "peer:bds_p"
+ ],
+ "task_id": "fin-mem-332",
+ "payload_sha256": "813aa64b5faedd49b9f817ff645288fd92ebb578988fb4cca61f49a6087395fd"
+}

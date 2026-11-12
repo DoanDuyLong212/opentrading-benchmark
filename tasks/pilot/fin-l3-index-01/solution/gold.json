@@ -40,5 +40,28 @@
     "value": 3.06
   },
   "notes": "1689.84 → 1741.62 = +3.06%.",
-  "as_of": "2026-11-01T15:57:50.289394+07:00"
+  "as_of": "2026-11-01T15:57:50.289394+07:00",
+  "contract_version": 2,
+  "provenance_contract": [
+    {
+      "tool": "vn_index_ohlcv",
+      "source": "vnstock",
+      "as_of": "2026-11-01T15:57:50.289394+07:00",
+      "matched_entry_id": "vn_index_ohlcv:0",
+      "response_sha256": "d9a07b301f1fadefbca50a7761cd2adf1b7d5862ea18ef9837c7aa39b40c8297"
+    }
+  ],
+  "payload_sha256": "0b72ae95bd6e663913177a3bd2b4ff09d799a20cd6da40e38cb40dda185712ae",
+  "provenance_catalog": [
+    {
+      "tool": "vn_index_ohlcv",
+      "source": "vnstock",
+      "as_of": "2026-11-01T15:57:50.289394+07:00",
+      "matched_entry_id": "vn_index_ohlcv:0",
+      "response_sha256": "d9a07b301f1fadefbca50a7761cd2adf1b7d5862ea18ef9837c7aa39b40c8297"
+    }
+  ],
+  "required_payload_keys": [
+    "vn_index_ohlcv"
+  ]
 }

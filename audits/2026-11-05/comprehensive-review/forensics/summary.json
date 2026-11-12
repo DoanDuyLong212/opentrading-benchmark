@@ -1,0 +1,279 @@
+{
+  "smoke": {
+    "dsh": {
+      "trials": 6,
+      "primary": 4,
+      "dnf": 0,
+      "calls": 14,
+      "call_status_counts": {
+        "ok": 4,
+        "not_recorded": 10
+      },
+      "actual_empty_calls": 2,
+      "rejected_trials": 2,
+      "rejected_no_success_trials": 2,
+      "same_tool_recovery_trials": 0,
+      "any_later_tool_success_trials": 0,
+      "rejected_tool_messages_visible_to_model": 10,
+      "stage_counts": {
+        "success": 4,
+        "rejected_no_success": 2
+      },
+      "failed_check_counts": {
+        "provenance": 2,
+        "value": 12
+      },
+      "failed_check_trial_counts": {
+        "value": 2,
+        "provenance": 2
+      },
+      "all_calls_have_visible_schema_and_catalog": true,
+      "provider_reported_tool_calls": 14,
+      "gateway_requests": 12
+    },
+    "opencode": {
+      "trials": 6,
+      "primary": 4,
+      "dnf": 0,
+      "calls": 14,
+      "call_status_counts": {
+        "ok": 4,
+        "not_recorded": 10
+      },
+      "actual_empty_calls": 2,
+      "rejected_trials": 2,
+      "rejected_no_success_trials": 2,
+      "same_tool_recovery_trials": 0,
+      "any_later_tool_success_trials": 0,
+      "rejected_tool_messages_visible_to_model": 10,
+      "stage_counts": {
+        "success": 4,
+        "rejected_no_success": 2
+      },
+      "failed_check_counts": {
+        "provenance": 2,
+        "value": 12
+      },
+      "failed_check_trial_counts": {
+        "value": 2,
+        "provenance": 2
+      },
+      "all_calls_have_visible_schema_and_catalog": true,
+      "provider_reported_tool_calls": 14,
+      "gateway_requests": 12
+    },
+    "opentrading": {
+      "trials": 6,
+      "primary": 2,
+      "dnf": 0,
+      "calls": 14,
+      "call_status_counts": {
+        "invalid_request": 12,
+        "ok": 2
+      },
+      "actual_empty_calls": 2,
+      "rejected_trials": 4,
+      "rejected_no_success_trials": 4,
+      "same_tool_recovery_trials": 0,
+      "any_later_tool_success_trials": 0,
+      "rejected_tool_messages_visible_to_model": 12,
+      "stage_counts": {
+        "rejected_no_success": 4,
+        "success": 2
+      },
+      "failed_check_counts": {
+        "provenance": 4,
+        "value": 14
+      },
+      "failed_check_trial_counts": {
+        "value": 4,
+        "provenance": 4
+      },
+      "all_calls_have_visible_schema_and_catalog": true,
+      "provider_reported_tool_calls": 14,
+      "gateway_requests": 12
+    }
+  },
+  "pilot": {
+    "dsh": {
+      "trials": 44,
+      "primary": 18,
+      "dnf": 5,
+      "calls": 66,
+      "call_status_counts": {
+        "ok": 41,
+        "not_recorded": 25
+      },
+      "actual_empty_calls": 2,
+      "rejected_trials": 17,
+      "rejected_no_success_trials": 11,
+      "same_tool_recovery_trials": 0,
+      "any_later_tool_success_trials": 4,
+      "rejected_tool_messages_visible_to_model": 25,
+      "stage_counts": {
+        "success": 18,
+        "dnf": 5,
+        "after_successful_tool": 10,
+        "rejected_no_success": 11
+      },
+      "failed_check_counts": {
+        "value": 37,
+        "str": 7,
+        "provenance": 15,
+        "verdict": 2,
+        "period": 9,
+        "evidence": 2
+      },
+      "failed_check_trial_counts": {
+        "str": 3,
+        "value": 16,
+        "provenance": 15,
+        "verdict": 2,
+        "period": 9,
+        "evidence": 2
+      },
+      "all_calls_have_visible_schema_and_catalog": true,
+      "provider_reported_tool_calls": 66,
+      "gateway_requests": 90
+    },
+    "opencode": {
+      "trials": 44,
+      "primary": 14,
+      "dnf": 1,
+      "calls": 66,
+      "call_status_counts": {
+        "ok": 39,
+        "not_recorded": 27
+      },
+      "actual_empty_calls": 2,
+      "rejected_trials": 19,
+      "rejected_no_success_trials": 13,
+      "same_tool_recovery_trials": 0,
+      "any_later_tool_success_trials": 4,
+      "rejected_tool_messages_visible_to_model": 27,
+      "stage_counts": {
+        "success": 14,
+        "after_successful_tool": 16,
+        "dnf": 1,
+        "rejected_no_success": 13
+      },
+      "failed_check_counts": {
+        "value": 47,
+        "period": 12,
+        "provenance": 24,
+        "tokens": 2,
+        "str": 14,
+        "verdict": 2,
+        "evidence": 2
+      },
+      "failed_check_trial_counts": {
+        "value": 21,
+        "period": 12,
+        "str": 10,
+        "tokens": 2,
+        "provenance": 24,
+        "verdict": 2,
+        "evidence": 2
+      },
+      "all_calls_have_visible_schema_and_catalog": true,
+      "provider_reported_tool_calls": 66,
+      "gateway_requests": 88
+    },
+    "opentrading_baseline": {
+      "trials": 44,
+      "primary": 12,
+      "dnf": 1,
+      "calls": 65,
+      "call_status_counts": {
+        "ok": 38,
+        "not_recorded": 15,
+        "invalid_request": 12
+      },
+      "actual_empty_calls": 2,
+      "rejected_trials": 19,
+      "rejected_no_success_trials": 13,
+      "same_tool_recovery_trials": 0,
+      "any_later_tool_success_trials": 4,
+      "rejected_tool_messages_visible_to_model": 27,
+      "stage_counts": {
+        "success": 12,
+        "after_successful_tool": 18,
+        "rejected_no_success": 13,
+        "dnf": 1
+      },
+      "failed_check_counts": {
+        "value": 60,
+        "period": 13,
+        "provenance": 26,
+        "str": 8,
+        "verdict": 2,
+        "evidence": 2,
+        "list_order": 1
+      },
+      "failed_check_trial_counts": {
+        "period": 13,
+        "value": 24,
+        "str": 6,
+        "provenance": 26,
+        "verdict": 2,
+        "evidence": 2,
+        "list_order": 1
+      },
+      "all_calls_have_visible_schema_and_catalog": true,
+      "provider_reported_tool_calls": 65,
+      "gateway_requests": 88
+    },
+    "opentrading_finance": {
+      "trials": 44,
+      "primary": 12,
+      "dnf": 1,
+      "calls": 66,
+      "call_status_counts": {
+        "ok": 39,
+        "not_recorded": 23,
+        "invalid_request": 4
+      },
+      "actual_empty_calls": 2,
+      "rejected_trials": 19,
+      "rejected_no_success_trials": 13,
+      "same_tool_recovery_trials": 0,
+      "any_later_tool_success_trials": 4,
+      "rejected_tool_messages_visible_to_model": 27,
+      "stage_counts": {
+        "success": 12,
+        "after_successful_tool": 18,
+        "rejected_no_success": 13,
+        "dnf": 1
+      },
+      "failed_check_counts": {
+        "value": 48,
+        "period": 13,
+        "str": 10,
+        "provenance": 22,
+        "verdict": 2,
+        "evidence": 2
+      },
+      "failed_check_trial_counts": {
+        "period": 13,
+        "value": 22,
+        "str": 6,
+        "provenance": 22,
+        "verdict": 2,
+        "evidence": 2
+      },
+      "all_calls_have_visible_schema_and_catalog": true,
+      "provider_reported_tool_calls": 66,
+      "gateway_requests": 88
+    }
+  },
+  "inputs": {
+    "results/financial-prompt-v3-smoke-20261105/trials.jsonl": "8da5a7df1c835dc73307a79ae60f81868689968b9955e57c01322af141d6cdee",
+    "results/financial-prompt-v3-pilot-20261105/trials.jsonl": "b27451089381b7fd6039e896652379b35ea248831786d16effbdcd980748f9ca"
+  },
+  "notes": [
+    "not_recorded means JSON-schema valid but replay mismatch; does not prove actual live backend accepts request.",
+    "failed-check counts overlap and may cascade after rejection; do not sum as mutually exclusive financial root causes.",
+    "Any-later-tool-success is not repair; same-tool-recovery tests time order, not only presence.",
+    "Calls rejected inside SDK before server would need trace audit; server ledger is authoritative for calls reaching snapshot."
+  ]
+}

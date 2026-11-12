@@ -1,44 +1,67 @@
 {
- "task_id": "fin-l2-margin-914",
- "scoring": "value",
- "solution": {
-  "value": 13.54
- },
- "as_of": "2026-11-01T22:44:37.901189+07:00",
- "split": "holdout",
- "expects": [
-  {
-   "type": "value",
-   "path": "value",
-   "gold": 13.54,
-   "tol": {
-    "abs": 0.1
-   }
+  "task_id": "fin-l2-margin-914",
+  "scoring": "value",
+  "solution": {
+    "value": 13.54
   },
-  {
-   "type": "unit",
-   "path": "unit",
-   "accept": [
-    "%",
-    "phần trăm"
-   ]
-  },
-  {
-   "type": "period",
-   "path": "period",
-   "accept": [
-    "Q3/2026",
-    "quý 3/2026",
-    "q3 2026",
-    "q3/26"
-   ]
-  },
-  {
-   "type": "str",
-   "path": "source",
-   "accept": [
-    "financial_detail"
-   ]
-  }
- ]
+  "as_of": "2026-11-01T22:44:37.901189+07:00",
+  "split": "holdout",
+  "expects": [
+    {
+      "type": "value",
+      "path": "value",
+      "gold": 13.54,
+      "tol": {
+        "abs": 0.1
+      }
+    },
+    {
+      "type": "unit",
+      "path": "unit",
+      "accept": [
+        "%",
+        "phần trăm"
+      ]
+    },
+    {
+      "type": "period",
+      "path": "period",
+      "accept": [
+        "Q3/2026",
+        "quý 3/2026",
+        "q3 2026",
+        "q3/26"
+      ]
+    },
+    {
+      "type": "str",
+      "path": "source",
+      "accept": [
+        "financial_detail"
+      ]
+    }
+  ],
+  "contract_version": 2,
+  "provenance_contract": [
+    {
+      "tool": "financial_detail",
+      "source": "vietstock",
+      "as_of": "2026-11-01T22:44:37.901189+07:00",
+      "matched_entry_id": "fd:MIG",
+      "response_sha256": "706e039642dd21c8f154b628c6de9c8e80318ab8179c072005b07ef7d813d0ae"
+    }
+  ],
+  "payload_sha256": "2a89d8cadd6d6a2d09e67a25df3e8b84959ea7b3510cf3f2b80a3b3f9817d353",
+  "provenance_catalog": [
+    {
+      "tool": "financial_detail",
+      "source": "vietstock",
+      "as_of": "2026-11-01T22:44:37.901189+07:00",
+      "matched_entry_id": "fd:MIG",
+      "response_sha256": "706e039642dd21c8f154b628c6de9c8e80318ab8179c072005b07ef7d813d0ae"
+    }
+  ],
+  "required_payload_keys": [
+    "fd:MIG"
+  ]
 }

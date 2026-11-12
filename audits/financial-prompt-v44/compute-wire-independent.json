@@ -1,0 +1,883 @@
+{
+  "pass": true,
+  "compute_path_pass": true,
+  "current_description_and_schema_parity": [
+    {
+      "arm": "opentrading_baseline",
+      "first_request_status": 200,
+      "current_schema_constraints_exact": true,
+      "current_public_descriptions_exact": true,
+      "provider_ledger_sha256": "b4671b707968afb645ea78ef31ade35dcecc12cd8a76d8b2de4873119c590db4"
+    },
+    {
+      "arm": "opentrading_finance",
+      "first_request_status": 200,
+      "current_schema_constraints_exact": true,
+      "current_public_descriptions_exact": true,
+      "provider_ledger_sha256": "751f4d1644ae7ede68051bedbbfccff066dde2bc741442319421d7c608dd7b06"
+    },
+    {
+      "arm": "opencode",
+      "first_request_status": 200,
+      "current_schema_constraints_exact": true,
+      "current_public_descriptions_exact": true,
+      "provider_ledger_sha256": "a28fefe497cc9bde2786e2e96cfc43b443e1e06530b66e76531891702c533311"
+    },
+    {
+      "arm": "dsh",
+      "first_request_status": 200,
+      "current_schema_constraints_exact": true,
+      "current_public_descriptions_exact": true,
+      "provider_ledger_sha256": "f7338458dc9000f3b07b7be3fd0c9907b38b23df3b18b76a201201bb311f2000"
+    }
+  ],
+  "kind": "actual installed four native SDKs + gateway + stdio MCP with fixed offline upstream; NO model inference or credentials",
+  "scope": "Three successful arm runs plus bounded DSH-only continuation; preserved earlier fixture parser failures. Historical functional bank computations preserved and independently reconstructed. Current schema constraints remain equal; updated public descriptions proved separately in fresh actual SDK first-request native/effective captures for all four arms. Final compact B1 functional fixture separately passes all4requests/8calls. Row-name and aligned-table operations separately independently reconstructed from original financial records.",
+  "financial_superiority_evidence": false,
+  "results": [
+    {
+      "compact_system_target_pass": true,
+      "arm": "opentrading_baseline",
+      "source_run": "/home/doanlong/extra/benchmark/audits/financial-prompt-v44/compute-wire-all-four-final/opentrading_baseline",
+      "provider_requests": 4,
+      "native_effective_captures": 8,
+      "generated_calls": 8,
+      "source_calls": 5,
+      "successful_derived_calls": 2,
+      "rejected_derived_calls": 1,
+      "cross_session_reference_rejected": false,
+      "negative_result_visible": true,
+      "derived_results_visible": true,
+      "source_receipts_join_all7": true,
+      "raw_contract": {
+        "valid": true,
+        "errors": [],
+        "branch": "success"
+      },
+      "financial_canary": {
+        "pass": true,
+        "scope": "secondary smoke financial source/date/unit/numeric canary, does not change primary/frozen grades",
+        "issues": [],
+        "actual_source_leaves": [
+          {
+            "call_id": "a5966565-4c8b-4308-9a11-26e623c1d532",
+            "symbol": "VCB",
+            "last": 56.3,
+            "last_t": "2026-10-30",
+            "unit": "nghìn đồng/cổ phiếu",
+            "unit_metadata": {
+              "last": "nghìn đồng/cổ phiếu"
+            },
+            "provenance_data_time": "2026-10-30"
+          },
+          {
+            "call_id": "6be30bc1-943f-4ecc-af38-ff25254a1279",
+            "symbol": "BID",
+            "last": 33.4,
+            "last_t": "2026-10-30",
+            "unit": "nghìn đồng/cổ phiếu",
+            "unit_metadata": {
+              "last": "nghìn đồng/cổ phiếu"
+            },
+            "provenance_data_time": "2026-10-30"
+          },
+          {
+            "call_id": "e92920f0-169f-449f-bd64-2192a1a361fa",
+            "symbol": "CTG",
+            "last": 30.3,
+            "last_t": "2026-10-30",
+            "unit": "nghìn đồng/cổ phiếu",
+            "unit_metadata": {
+              "last": "nghìn đồng/cổ phiếu"
+            },
+            "provenance_data_time": "2026-10-30"
+          },
+          {
+            "call_id": "05aa7abd-cbcb-48b8-ac3b-e810db1947df",
+            "symbol": "TCB",
+            "last": 21.6,
+            "last_t": "2026-10-30",
+            "unit": "nghìn đồng/cổ phiếu",
+            "unit_metadata": {
+              "last": "nghìn đồng/cổ phiếu"
+            },
+            "provenance_data_time": "2026-10-30"
+          },
+          {
+            "call_id": "ed8dfb33-18e8-4b2c-ae87-5e19332652cf",
+            "symbol": "MBB",
+            "last": 19.3,
+            "last_t": "2026-10-30",
+            "unit": "nghìn đồng/cổ phiếu",
+            "unit_metadata": {
+              "last": "nghìn đồng/cổ phiếu"
+            },
+            "provenance_data_time": "2026-10-30"
+          }
+        ],
+        "parsed_answer_dates": [
+          "2026-10-30"
+        ],
+        "public_requested_dates": [
+          "2026-10-30"
+        ],
+        "independently_recomputed_values": {
+          "VCB": "56.3",
+          "BID": "33.4",
+          "CTG": "30.3",
+          "TCB": "21.6",
+          "MBB": "19.3",
+          "mean": "32.18"
+        },
+        "answer_period": "phiên 2026-10-30",
+        "answer_unit": "nghìn đồng"
+      },
+      "system_characters": 7899,
+      "system_utf8_bytes": 10218,
+      "historical_functional_system_characters": 7899,
+      "initial_input_budget_bytes": 21316,
+      "independent_derived_proofs": [
+        {
+          "call_id": "73ad341f-bc87-4997-a1a5-fc0f2a6927cf",
+          "operation": "sum",
+          "value_decimal": "160.9",
+          "source_dependencies": [
+            {
+              "call_id": "a5966565-4c8b-4308-9a11-26e623c1d532",
+              "path": "/data/last",
+              "value_decimal": "56.3",
+              "unit": "nghìn đồng/cổ phiếu",
+              "source_response_sha256": "29dca469688c732c1e27d0e1d50d6eedf82c9c7d599397c2027f66437f3584da",
+              "source_payload_sha256": "aa1f6b5dca589360446eb510873587250c1c7d30f00a026d84e357360a74efd6"
+            },
+            {
+              "call_id": "6be30bc1-943f-4ecc-af38-ff25254a1279",
+              "path": "/data/last",
+              "value_decimal": "33.4",
+              "unit": "nghìn đồng/cổ phiếu",
+              "source_response_sha256": "77ac06db666b246d165ec18c49c34e8bf2bd452d3beec1afb550d749ed44e0f3",
+              "source_payload_sha256": "aa1f6b5dca589360446eb510873587250c1c7d30f00a026d84e357360a74efd6"
+            },
+            {
+              "call_id": "e92920f0-169f-449f-bd64-2192a1a361fa",
+              "path": "/data/last",
+              "value_decimal": "30.3",
+              "unit": "nghìn đồng/cổ phiếu",
+              "source_response_sha256": "7e9d43536192ab2326abffc3e3b6cb14d3c0acdf07ebdb84c8e1bf4c694513d1",
+              "source_payload_sha256": "aa1f6b5dca589360446eb510873587250c1c7d30f00a026d84e357360a74efd6"
+            },
+            {
+              "call_id": "05aa7abd-cbcb-48b8-ac3b-e810db1947df",
+              "path": "/data/last",
+              "value_decimal": "21.6",
+              "unit": "nghìn đồng/cổ phiếu",
+              "source_response_sha256": "998f1caf5c85a406975e8cd240f35ecbc2e0859d554ef1e0c3b30b8b10a30630",
+              "source_payload_sha256": "aa1f6b5dca589360446eb510873587250c1c7d30f00a026d84e357360a74efd6"
+            },
+            {
+              "call_id": "ed8dfb33-18e8-4b2c-ae87-5e19332652cf",
+              "path": "/data/last",
+              "value_decimal": "19.3",
+              "unit": "nghìn đồng/cổ phiếu",
+              "source_response_sha256": "6c6b79a2999f264850620c685370736647c06cd4c85fc09d74fe53384fb10a17",
+              "source_payload_sha256": "aa1f6b5dca589360446eb510873587250c1c7d30f00a026d84e357360a74efd6"
+            }
+          ],
+          "reconstructed_response_sha256": "20db99af4076a93770e6fcf543e1d25d39ab7f9adf0dc41dd712def30f17ebe7",
+          "upstream_evidence": false,
+          "semantic_entity_metric_period_validation": "not implied by arithmetic; evaluate task gold and source coverage separately"
+        },
+        {
+          "call_id": "f70cd82f-780a-4ba1-9d37-b9e1e2ca5556",
+          "operation": "mean",
+          "value_decimal": "32.18",
+          "source_dependencies": [
+            {
+              "call_id": "a5966565-4c8b-4308-9a11-26e623c1d532",
+              "path": "/data/last",
+              "value_decimal": "56.3",
+              "unit": "nghìn đồng/cổ phiếu",
+              "source_response_sha256": "29dca469688c732c1e27d0e1d50d6eedf82c9c7d599397c2027f66437f3584da",
+              "source_payload_sha256": "aa1f6b5dca589360446eb510873587250c1c7d30f00a026d84e357360a74efd6"
+            },
+            {
+              "call_id": "6be30bc1-943f-4ecc-af38-ff25254a1279",
+              "path": "/data/last",
+              "value_decimal": "33.4",
+              "unit": "nghìn đồng/cổ phiếu",
+              "source_response_sha256": "77ac06db666b246d165ec18c49c34e8bf2bd452d3beec1afb550d749ed44e0f3",
+              "source_payload_sha256": "aa1f6b5dca589360446eb510873587250c1c7d30f00a026d84e357360a74efd6"
+            },
+            {
+              "call_id": "e92920f0-169f-449f-bd64-2192a1a361fa",
+              "path": "/data/last",
+              "value_decimal": "30.3",
+              "unit": "nghìn đồng/cổ phiếu",
+              "source_response_sha256": "7e9d43536192ab2326abffc3e3b6cb14d3c0acdf07ebdb84c8e1bf4c694513d1",
+              "source_payload_sha256": "aa1f6b5dca589360446eb510873587250c1c7d30f00a026d84e357360a74efd6"
+            },
+            {
+              "call_id": "05aa7abd-cbcb-48b8-ac3b-e810db1947df",
+              "path": "/data/last",
+              "value_decimal": "21.6",
+              "unit": "nghìn đồng/cổ phiếu",
+              "source_response_sha256": "998f1caf5c85a406975e8cd240f35ecbc2e0859d554ef1e0c3b30b8b10a30630",
+              "source_payload_sha256": "aa1f6b5dca589360446eb510873587250c1c7d30f00a026d84e357360a74efd6"
+            },
+            {
+              "call_id": "ed8dfb33-18e8-4b2c-ae87-5e19332652cf",
+              "path": "/data/last",
+              "value_decimal": "19.3",
+              "unit": "nghìn đồng/cổ phiếu",
+              "source_response_sha256": "6c6b79a2999f264850620c685370736647c06cd4c85fc09d74fe53384fb10a17",
+              "source_payload_sha256": "aa1f6b5dca589360446eb510873587250c1c7d30f00a026d84e357360a74efd6"
+            }
+          ],
+          "reconstructed_response_sha256": "3ac0673ad799a16b287c6e783c03c079b02ba1ee1437907fc03baf26a2103a28",
+          "upstream_evidence": false,
+          "semantic_entity_metric_period_validation": "not implied by arithmetic; evaluate task gold and source coverage separately"
+        }
+      ],
+      "hashes": {
+        "/home/doanlong/extra/benchmark/audits/financial-prompt-v44/compute-wire-all-four-final/opentrading_baseline/runner/provider.jsonl": "bef615f27668f8b34f2b906b5c08f728d86d32bb4c3d1a143cec6897f04101a9",
+        "/home/doanlong/extra/benchmark/audits/financial-prompt-v44/compute-wire-all-four-final/opentrading_baseline/mcp.jsonl": "4e3b2f27122c71e791fcaa8911d1c686c9365099205a528113908f036a305c53",
+        "/home/doanlong/extra/benchmark/audits/financial-prompt-v44/compute-wire-all-four-final/opentrading_baseline/native.log": "ee3702fa7c8f3fa36ed0c6e255e727a587a2e133a5fb65c25042cb33cee7c037"
+      }
+    },
+    {
+      "compact_system_target_pass": true,
+      "arm": "opentrading_finance",
+      "source_run": "/home/doanlong/extra/benchmark/audits/financial-prompt-v44/compute-wire-all-four-final/opentrading_finance",
+      "provider_requests": 4,
+      "native_effective_captures": 8,
+      "generated_calls": 8,
+      "source_calls": 5,
+      "successful_derived_calls": 2,
+      "rejected_derived_calls": 1,
+      "cross_session_reference_rejected": true,
+      "negative_result_visible": true,
+      "derived_results_visible": true,
+      "source_receipts_join_all7": true,
+      "raw_contract": {
+        "valid": true,
+        "errors": [],
+        "branch": "success"
+      },
+      "financial_canary": {
+        "pass": true,
+        "scope": "secondary smoke financial source/date/unit/numeric canary, does not change primary/frozen grades",
+        "issues": [],
+        "actual_source_leaves": [
+          {
+            "call_id": "d7f16ae5-69e0-45c9-a480-5ebf64a0275a",
+            "symbol": "VCB",
+            "last": 56.3,
+            "last_t": "2026-10-30",
+            "unit": "nghìn đồng/cổ phiếu",
+            "unit_metadata": {
+              "last": "nghìn đồng/cổ phiếu"
+            },
+            "provenance_data_time": "2026-10-30"
+          },
+          {
+            "call_id": "249b68e0-e38e-49ad-9ae4-9c9357161e10",
+            "symbol": "BID",
+            "last": 33.4,
+            "last_t": "2026-10-30",
+            "unit": "nghìn đồng/cổ phiếu",
+            "unit_metadata": {
+              "last": "nghìn đồng/cổ phiếu"
+            },
+            "provenance_data_time": "2026-10-30"
+          },
+          {
+            "call_id": "f078a32b-717f-4efa-91fe-e6dcf21d1141",
+            "symbol": "CTG",
+            "last": 30.3,
+            "last_t": "2026-10-30",
+            "unit": "nghìn đồng/cổ phiếu",
+            "unit_metadata": {
+              "last": "nghìn đồng/cổ phiếu"
+            },
+            "provenance_data_time": "2026-10-30"
+          },
+          {
+            "call_id": "8a5c0414-3b6a-4bd3-a8d5-2a5d30500b11",
+            "symbol": "TCB",
+            "last": 21.6,
+            "last_t": "2026-10-30",
+            "unit": "nghìn đồng/cổ phiếu",
+            "unit_metadata": {
+              "last": "nghìn đồng/cổ phiếu"
+            },
+            "provenance_data_time": "2026-10-30"
+          },
+          {
+            "call_id": "e5830d00-0f33-4bb6-a721-7f4bf89946a4",
+            "symbol": "MBB",
+            "last": 19.3,
+            "last_t": "2026-10-30",
+            "unit": "nghìn đồng/cổ phiếu",
+            "unit_metadata": {
+              "last": "nghìn đồng/cổ phiếu"
+            },
+            "provenance_data_time": "2026-10-30"
+          }
+        ],
+        "parsed_answer_dates": [
+          "2026-10-30"
+        ],
+        "public_requested_dates": [
+          "2026-10-30"
+        ],
+        "independently_recomputed_values": {
+          "VCB": "56.3",
+          "BID": "33.4",
+          "CTG": "30.3",
+          "TCB": "21.6",
+          "MBB": "19.3",
+          "mean": "32.18"
+        },
+        "answer_period": "phiên 2026-10-30",
+        "answer_unit": "nghìn đồng"
+      },
+      "system_characters": 1442,
+      "system_utf8_bytes": 1730,
+      "historical_functional_system_characters": 1620,
+      "initial_input_budget_bytes": 12963,
+      "independent_derived_proofs": [
+        {
+          "call_id": "bb3023fc-c90e-4e16-b9be-c9840a769ab9",
+          "operation": "sum",
+          "value_decimal": "160.9",
+          "source_dependencies": [
+            {
+              "call_id": "d7f16ae5-69e0-45c9-a480-5ebf64a0275a",
+              "path": "/data/last",
+              "value_decimal": "56.3",
+              "unit": "nghìn đồng/cổ phiếu",
+              "source_response_sha256": "29dca469688c732c1e27d0e1d50d6eedf82c9c7d599397c2027f66437f3584da",
+              "source_payload_sha256": "aa1f6b5dca589360446eb510873587250c1c7d30f00a026d84e357360a74efd6"
+            },
+            {
+              "call_id": "249b68e0-e38e-49ad-9ae4-9c9357161e10",
+              "path": "/data/last",
+              "value_decimal": "33.4",
+              "unit": "nghìn đồng/cổ phiếu",
+              "source_response_sha256": "77ac06db666b246d165ec18c49c34e8bf2bd452d3beec1afb550d749ed44e0f3",
+              "source_payload_sha256": "aa1f6b5dca589360446eb510873587250c1c7d30f00a026d84e357360a74efd6"
+            },
+            {
+              "call_id": "f078a32b-717f-4efa-91fe-e6dcf21d1141",
+              "path": "/data/last",
+              "value_decimal": "30.3",
+              "unit": "nghìn đồng/cổ phiếu",
+              "source_response_sha256": "7e9d43536192ab2326abffc3e3b6cb14d3c0acdf07ebdb84c8e1bf4c694513d1",
+              "source_payload_sha256": "aa1f6b5dca589360446eb510873587250c1c7d30f00a026d84e357360a74efd6"
+            },
+            {
+              "call_id": "8a5c0414-3b6a-4bd3-a8d5-2a5d30500b11",
+              "path": "/data/last",
+              "value_decimal": "21.6",
+              "unit": "nghìn đồng/cổ phiếu",
+              "source_response_sha256": "998f1caf5c85a406975e8cd240f35ecbc2e0859d554ef1e0c3b30b8b10a30630",
+              "source_payload_sha256": "aa1f6b5dca589360446eb510873587250c1c7d30f00a026d84e357360a74efd6"
+            },
+            {
+              "call_id": "e5830d00-0f33-4bb6-a721-7f4bf89946a4",
+              "path": "/data/last",
+              "value_decimal": "19.3",
+              "unit": "nghìn đồng/cổ phiếu",
+              "source_response_sha256": "6c6b79a2999f264850620c685370736647c06cd4c85fc09d74fe53384fb10a17",
+              "source_payload_sha256": "aa1f6b5dca589360446eb510873587250c1c7d30f00a026d84e357360a74efd6"
+            }
+          ],
+          "reconstructed_response_sha256": "a8ccfb3298dccf1500fa47fd1b178283d57fb9273b6f6ca90890a4e426a59a16",
+          "upstream_evidence": false,
+          "semantic_entity_metric_period_validation": "not implied by arithmetic; evaluate task gold and source coverage separately"
+        },
+        {
+          "call_id": "31dc9a65-883c-4104-8f79-9a280f894e36",
+          "operation": "mean",
+          "value_decimal": "32.18",
+          "source_dependencies": [
+            {
+              "call_id": "d7f16ae5-69e0-45c9-a480-5ebf64a0275a",
+              "path": "/data/last",
+              "value_decimal": "56.3",
+              "unit": "nghìn đồng/cổ phiếu",
+              "source_response_sha256": "29dca469688c732c1e27d0e1d50d6eedf82c9c7d599397c2027f66437f3584da",
+              "source_payload_sha256": "aa1f6b5dca589360446eb510873587250c1c7d30f00a026d84e357360a74efd6"
+            },
+            {
+              "call_id": "249b68e0-e38e-49ad-9ae4-9c9357161e10",
+              "path": "/data/last",
+              "value_decimal": "33.4",
+              "unit": "nghìn đồng/cổ phiếu",
+              "source_response_sha256": "77ac06db666b246d165ec18c49c34e8bf2bd452d3beec1afb550d749ed44e0f3",
+              "source_payload_sha256": "aa1f6b5dca589360446eb510873587250c1c7d30f00a026d84e357360a74efd6"
+            },
+            {
+              "call_id": "f078a32b-717f-4efa-91fe-e6dcf21d1141",
+              "path": "/data/last",
+              "value_decimal": "30.3",
+              "unit": "nghìn đồng/cổ phiếu",
+              "source_response_sha256": "7e9d43536192ab2326abffc3e3b6cb14d3c0acdf07ebdb84c8e1bf4c694513d1",
+              "source_payload_sha256": "aa1f6b5dca589360446eb510873587250c1c7d30f00a026d84e357360a74efd6"
+            },
+            {
+              "call_id": "8a5c0414-3b6a-4bd3-a8d5-2a5d30500b11",
+              "path": "/data/last",
+              "value_decimal": "21.6",
+              "unit": "nghìn đồng/cổ phiếu",
+              "source_response_sha256": "998f1caf5c85a406975e8cd240f35ecbc2e0859d554ef1e0c3b30b8b10a30630",
+              "source_payload_sha256": "aa1f6b5dca589360446eb510873587250c1c7d30f00a026d84e357360a74efd6"
+            },
+            {
+              "call_id": "e5830d00-0f33-4bb6-a721-7f4bf89946a4",
+              "path": "/data/last",
+              "value_decimal": "19.3",
+              "unit": "nghìn đồng/cổ phiếu",
+              "source_response_sha256": "6c6b79a2999f264850620c685370736647c06cd4c85fc09d74fe53384fb10a17",
+              "source_payload_sha256": "aa1f6b5dca589360446eb510873587250c1c7d30f00a026d84e357360a74efd6"
+            }
+          ],
+          "reconstructed_response_sha256": "80779c9a5976bc96f6df373babd666ab9e45f60da108118561fda841e710cf2b",
+          "upstream_evidence": false,
+          "semantic_entity_metric_period_validation": "not implied by arithmetic; evaluate task gold and source coverage separately"
+        }
+      ],
+      "hashes": {
+        "/home/doanlong/extra/benchmark/audits/financial-prompt-v44/compute-wire-all-four-final/opentrading_finance/runner/provider.jsonl": "cd2c0a8ec1d17aab750769b74df0f37f5b8c3d93793d0f406fe65f5932252179",
+        "/home/doanlong/extra/benchmark/audits/financial-prompt-v44/compute-wire-all-four-final/opentrading_finance/mcp.jsonl": "1bad726aaabd78c2fa1b325a506fdb2a38b8b579ddb7e41df6721e94dcada9f1",
+        "/home/doanlong/extra/benchmark/audits/financial-prompt-v44/compute-wire-all-four-final/opentrading_finance/native.log": "f84bcaffaac32f63dc0dda746d996cca0d4048f3330ee49474deeff67bb2f90f"
+      }
+    },
+    {
+      "compact_system_target_pass": true,
+      "arm": "opencode",
+      "source_run": "/home/doanlong/extra/benchmark/audits/financial-prompt-v44/compute-wire-all-four-final/opencode",
+      "provider_requests": 4,
+      "native_effective_captures": 8,
+      "generated_calls": 8,
+      "source_calls": 5,
+      "successful_derived_calls": 2,
+      "rejected_derived_calls": 1,
+      "cross_session_reference_rejected": true,
+      "negative_result_visible": true,
+      "derived_results_visible": true,
+      "source_receipts_join_all7": true,
+      "raw_contract": {
+        "valid": true,
+        "errors": [],
+        "branch": "success"
+      },
+      "financial_canary": {
+        "pass": true,
+        "scope": "secondary smoke financial source/date/unit/numeric canary, does not change primary/frozen grades",
+        "issues": [],
+        "actual_source_leaves": [
+          {
+            "call_id": "60d11659-f255-44b7-b4af-ea17b24d8f3b",
+            "symbol": "VCB",
+            "last": 56.3,
+            "last_t": "2026-10-30",
+            "unit": "nghìn đồng/cổ phiếu",
+            "unit_metadata": {
+              "last": "nghìn đồng/cổ phiếu"
+            },
+            "provenance_data_time": "2026-10-30"
+          },
+          {
+            "call_id": "78923dc7-ea24-406f-bc70-d8cc2f94fd6c",
+            "symbol": "BID",
+            "last": 33.4,
+            "last_t": "2026-10-30",
+            "unit": "nghìn đồng/cổ phiếu",
+            "unit_metadata": {
+              "last": "nghìn đồng/cổ phiếu"
+            },
+            "provenance_data_time": "2026-10-30"
+          },
+          {
+            "call_id": "f1318e86-d8f1-41da-9ca6-25c48d97416f",
+            "symbol": "CTG",
+            "last": 30.3,
+            "last_t": "2026-10-30",
+            "unit": "nghìn đồng/cổ phiếu",
+            "unit_metadata": {
+              "last": "nghìn đồng/cổ phiếu"
+            },
+            "provenance_data_time": "2026-10-30"
+          },
+          {
+            "call_id": "5ba2702b-1737-4765-af7b-d80dbc84bd09",
+            "symbol": "TCB",
+            "last": 21.6,
+            "last_t": "2026-10-30",
+            "unit": "nghìn đồng/cổ phiếu",
+            "unit_metadata": {
+              "last": "nghìn đồng/cổ phiếu"
+            },
+            "provenance_data_time": "2026-10-30"
+          },
+          {
+            "call_id": "b520966b-e005-4284-8d6c-203b57755aad",
+            "symbol": "MBB",
+            "last": 19.3,
+            "last_t": "2026-10-30",
+            "unit": "nghìn đồng/cổ phiếu",
+            "unit_metadata": {
+              "last": "nghìn đồng/cổ phiếu"
+            },
+            "provenance_data_time": "2026-10-30"
+          }
+        ],
+        "parsed_answer_dates": [
+          "2026-10-30"
+        ],
+        "public_requested_dates": [
+          "2026-10-30"
+        ],
+        "independently_recomputed_values": {
+          "VCB": "56.3",
+          "BID": "33.4",
+          "CTG": "30.3",
+          "TCB": "21.6",
+          "MBB": "19.3",
+          "mean": "32.18"
+        },
+        "answer_period": "phiên 2026-10-30",
+        "answer_unit": "nghìn đồng"
+      },
+      "system_characters": 1798,
+      "system_utf8_bytes": 1798,
+      "historical_functional_system_characters": 1798,
+      "initial_input_budget_bytes": 13024,
+      "independent_derived_proofs": [
+        {
+          "call_id": "dabe0b36-6ccd-4706-8221-e2a1240fe1e7",
+          "operation": "sum",
+          "value_decimal": "160.9",
+          "source_dependencies": [
+            {
+              "call_id": "60d11659-f255-44b7-b4af-ea17b24d8f3b",
+              "path": "/data/last",
+              "value_decimal": "56.3",
+              "unit": "nghìn đồng/cổ phiếu",
+              "source_response_sha256": "29dca469688c732c1e27d0e1d50d6eedf82c9c7d599397c2027f66437f3584da",
+              "source_payload_sha256": "aa1f6b5dca589360446eb510873587250c1c7d30f00a026d84e357360a74efd6"
+            },
+            {
+              "call_id": "78923dc7-ea24-406f-bc70-d8cc2f94fd6c",
+              "path": "/data/last",
+              "value_decimal": "33.4",
+              "unit": "nghìn đồng/cổ phiếu",
+              "source_response_sha256": "77ac06db666b246d165ec18c49c34e8bf2bd452d3beec1afb550d749ed44e0f3",
+              "source_payload_sha256": "aa1f6b5dca589360446eb510873587250c1c7d30f00a026d84e357360a74efd6"
+            },
+            {
+              "call_id": "f1318e86-d8f1-41da-9ca6-25c48d97416f",
+              "path": "/data/last",
+              "value_decimal": "30.3",
+              "unit": "nghìn đồng/cổ phiếu",
+              "source_response_sha256": "7e9d43536192ab2326abffc3e3b6cb14d3c0acdf07ebdb84c8e1bf4c694513d1",
+              "source_payload_sha256": "aa1f6b5dca589360446eb510873587250c1c7d30f00a026d84e357360a74efd6"
+            },
+            {
+              "call_id": "5ba2702b-1737-4765-af7b-d80dbc84bd09",
+              "path": "/data/last",
+              "value_decimal": "21.6",
+              "unit": "nghìn đồng/cổ phiếu",
+              "source_response_sha256": "998f1caf5c85a406975e8cd240f35ecbc2e0859d554ef1e0c3b30b8b10a30630",
+              "source_payload_sha256": "aa1f6b5dca589360446eb510873587250c1c7d30f00a026d84e357360a74efd6"
+            },
+            {
+              "call_id": "b520966b-e005-4284-8d6c-203b57755aad",
+              "path": "/data/last",
+              "value_decimal": "19.3",
+              "unit": "nghìn đồng/cổ phiếu",
+              "source_response_sha256": "6c6b79a2999f264850620c685370736647c06cd4c85fc09d74fe53384fb10a17",
+              "source_payload_sha256": "aa1f6b5dca589360446eb510873587250c1c7d30f00a026d84e357360a74efd6"
+            }
+          ],
+          "reconstructed_response_sha256": "bc6b891091787aeac33e76685a8b9d913c6904ce4ebb06107c5a68fa9363bc5a",
+          "upstream_evidence": false,
+          "semantic_entity_metric_period_validation": "not implied by arithmetic; evaluate task gold and source coverage separately"
+        },
+        {
+          "call_id": "0b8d988f-ddf1-43f9-be81-32fb9a6f7751",
+          "operation": "mean",
+          "value_decimal": "32.18",
+          "source_dependencies": [
+            {
+              "call_id": "60d11659-f255-44b7-b4af-ea17b24d8f3b",
+              "path": "/data/last",
+              "value_decimal": "56.3",
+              "unit": "nghìn đồng/cổ phiếu",
+              "source_response_sha256": "29dca469688c732c1e27d0e1d50d6eedf82c9c7d599397c2027f66437f3584da",
+              "source_payload_sha256": "aa1f6b5dca589360446eb510873587250c1c7d30f00a026d84e357360a74efd6"
+            },
+            {
+              "call_id": "78923dc7-ea24-406f-bc70-d8cc2f94fd6c",
+              "path": "/data/last",
+              "value_decimal": "33.4",
+              "unit": "nghìn đồng/cổ phiếu",
+              "source_response_sha256": "77ac06db666b246d165ec18c49c34e8bf2bd452d3beec1afb550d749ed44e0f3",
+              "source_payload_sha256": "aa1f6b5dca589360446eb510873587250c1c7d30f00a026d84e357360a74efd6"
+            },
+            {
+              "call_id": "f1318e86-d8f1-41da-9ca6-25c48d97416f",
+              "path": "/data/last",
+              "value_decimal": "30.3",
+              "unit": "nghìn đồng/cổ phiếu",
+              "source_response_sha256": "7e9d43536192ab2326abffc3e3b6cb14d3c0acdf07ebdb84c8e1bf4c694513d1",
+              "source_payload_sha256": "aa1f6b5dca589360446eb510873587250c1c7d30f00a026d84e357360a74efd6"
+            },
+            {
+              "call_id": "5ba2702b-1737-4765-af7b-d80dbc84bd09",
+              "path": "/data/last",
+              "value_decimal": "21.6",
+              "unit": "nghìn đồng/cổ phiếu",
+              "source_response_sha256": "998f1caf5c85a406975e8cd240f35ecbc2e0859d554ef1e0c3b30b8b10a30630",
+              "source_payload_sha256": "aa1f6b5dca589360446eb510873587250c1c7d30f00a026d84e357360a74efd6"
+            },
+            {
+              "call_id": "b520966b-e005-4284-8d6c-203b57755aad",
+              "path": "/data/last",
+              "value_decimal": "19.3",
+              "unit": "nghìn đồng/cổ phiếu",
+              "source_response_sha256": "6c6b79a2999f264850620c685370736647c06cd4c85fc09d74fe53384fb10a17",
+              "source_payload_sha256": "aa1f6b5dca589360446eb510873587250c1c7d30f00a026d84e357360a74efd6"
+            }
+          ],
+          "reconstructed_response_sha256": "dfb7e4fa19b3629078099e1b16fefdf8ba617dc097d2ae28cdd9ef50e1aa2845",
+          "upstream_evidence": false,
+          "semantic_entity_metric_period_validation": "not implied by arithmetic; evaluate task gold and source coverage separately"
+        }
+      ],
+      "hashes": {
+        "/home/doanlong/extra/benchmark/audits/financial-prompt-v44/compute-wire-all-four-final/opencode/runner/provider.jsonl": "e71cb0b890c58934431e51836279a01f7d29ef173880284647aa43a7d9f53f6a",
+        "/home/doanlong/extra/benchmark/audits/financial-prompt-v44/compute-wire-all-four-final/opencode/mcp.jsonl": "2a59e4971d340152d432f2e5e6a4e5b35cf837650abe4982306b9f60fcecca89",
+        "/home/doanlong/extra/benchmark/audits/financial-prompt-v44/compute-wire-all-four-final/opencode/native.log": "08eb6b51b5b182dfe16e475dfc21266aa57e828eec3cbfd69da19351082a3ea8"
+      }
+    },
+    {
+      "compact_system_target_pass": true,
+      "arm": "dsh",
+      "source_run": "/home/doanlong/extra/benchmark/audits/financial-prompt-v44/compute-wire-dsh-final/dsh",
+      "provider_requests": 4,
+      "native_effective_captures": 8,
+      "generated_calls": 8,
+      "source_calls": 5,
+      "successful_derived_calls": 2,
+      "rejected_derived_calls": 1,
+      "cross_session_reference_rejected": true,
+      "negative_result_visible": true,
+      "derived_results_visible": true,
+      "source_receipts_join_all7": true,
+      "raw_contract": {
+        "valid": true,
+        "errors": [],
+        "branch": "success"
+      },
+      "financial_canary": {
+        "pass": true,
+        "scope": "secondary smoke financial source/date/unit/numeric canary, does not change primary/frozen grades",
+        "issues": [],
+        "actual_source_leaves": [
+          {
+            "call_id": "96ccd5ed-fe6c-478b-91b3-6bd2386b6cb4",
+            "symbol": "VCB",
+            "last": 56.3,
+            "last_t": "2026-10-30",
+            "unit": "nghìn đồng/cổ phiếu",
+            "unit_metadata": {
+              "last": "nghìn đồng/cổ phiếu"
+            },
+            "provenance_data_time": "2026-10-30"
+          },
+          {
+            "call_id": "1e191bbf-1c95-4b02-95cb-46a5481a2b38",
+            "symbol": "BID",
+            "last": 33.4,
+            "last_t": "2026-10-30",
+            "unit": "nghìn đồng/cổ phiếu",
+            "unit_metadata": {
+              "last": "nghìn đồng/cổ phiếu"
+            },
+            "provenance_data_time": "2026-10-30"
+          },
+          {
+            "call_id": "051e689b-d473-4e15-8e0f-6e17cb9c1731",
+            "symbol": "CTG",
+            "last": 30.3,
+            "last_t": "2026-10-30",
+            "unit": "nghìn đồng/cổ phiếu",
+            "unit_metadata": {
+              "last": "nghìn đồng/cổ phiếu"
+            },
+            "provenance_data_time": "2026-10-30"
+          },
+          {
+            "call_id": "abae4170-bb3f-449b-a535-f3d5ed3af817",
+            "symbol": "TCB",
+            "last": 21.6,
+            "last_t": "2026-10-30",
+            "unit": "nghìn đồng/cổ phiếu",
+            "unit_metadata": {
+              "last": "nghìn đồng/cổ phiếu"
+            },
+            "provenance_data_time": "2026-10-30"
+          },
+          {
+            "call_id": "747c5828-9a19-41f6-ac7b-b48764acf2f8",
+            "symbol": "MBB",
+            "last": 19.3,
+            "last_t": "2026-10-30",
+            "unit": "nghìn đồng/cổ phiếu",
+            "unit_metadata": {
+              "last": "nghìn đồng/cổ phiếu"
+            },
+            "provenance_data_time": "2026-10-30"
+          }
+        ],
+        "parsed_answer_dates": [
+          "2026-10-30"
+        ],
+        "public_requested_dates": [
+          "2026-10-30"
+        ],
+        "independently_recomputed_values": {
+          "VCB": "56.3",
+          "BID": "33.4",
+          "CTG": "30.3",
+          "TCB": "21.6",
+          "MBB": "19.3",
+          "mean": "32.18"
+        },
+        "answer_period": "phiên 2026-10-30",
+        "answer_unit": "nghìn đồng"
+      },
+      "system_characters": 307,
+      "system_utf8_bytes": 307,
+      "historical_functional_system_characters": 307,
+      "initial_input_budget_bytes": 11293,
+      "independent_derived_proofs": [
+        {
+          "call_id": "1a2cbcda-4c48-4474-877d-8490dcb6935e",
+          "operation": "sum",
+          "value_decimal": "160.9",
+          "source_dependencies": [
+            {
+              "call_id": "96ccd5ed-fe6c-478b-91b3-6bd2386b6cb4",
+              "path": "/data/last",
+              "value_decimal": "56.3",
+              "unit": "nghìn đồng/cổ phiếu",
+              "source_response_sha256": "29dca469688c732c1e27d0e1d50d6eedf82c9c7d599397c2027f66437f3584da",
+              "source_payload_sha256": "aa1f6b5dca589360446eb510873587250c1c7d30f00a026d84e357360a74efd6"
+            },
+            {
+              "call_id": "1e191bbf-1c95-4b02-95cb-46a5481a2b38",
+              "path": "/data/last",
+              "value_decimal": "33.4",
+              "unit": "nghìn đồng/cổ phiếu",
+              "source_response_sha256": "77ac06db666b246d165ec18c49c34e8bf2bd452d3beec1afb550d749ed44e0f3",
+              "source_payload_sha256": "aa1f6b5dca589360446eb510873587250c1c7d30f00a026d84e357360a74efd6"
+            },
+            {
+              "call_id": "051e689b-d473-4e15-8e0f-6e17cb9c1731",
+              "path": "/data/last",
+              "value_decimal": "30.3",
+              "unit": "nghìn đồng/cổ phiếu",
+              "source_response_sha256": "7e9d43536192ab2326abffc3e3b6cb14d3c0acdf07ebdb84c8e1bf4c694513d1",
+              "source_payload_sha256": "aa1f6b5dca589360446eb510873587250c1c7d30f00a026d84e357360a74efd6"
+            },
+            {
+              "call_id": "abae4170-bb3f-449b-a535-f3d5ed3af817",
+              "path": "/data/last",
+              "value_decimal": "21.6",
+              "unit": "nghìn đồng/cổ phiếu",
+              "source_response_sha256": "998f1caf5c85a406975e8cd240f35ecbc2e0859d554ef1e0c3b30b8b10a30630",
+              "source_payload_sha256": "aa1f6b5dca589360446eb510873587250c1c7d30f00a026d84e357360a74efd6"
+            },
+            {
+              "call_id": "747c5828-9a19-41f6-ac7b-b48764acf2f8",
+              "path": "/data/last",
+              "value_decimal": "19.3",
+              "unit": "nghìn đồng/cổ phiếu",
+              "source_response_sha256": "6c6b79a2999f264850620c685370736647c06cd4c85fc09d74fe53384fb10a17",
+              "source_payload_sha256": "aa1f6b5dca589360446eb510873587250c1c7d30f00a026d84e357360a74efd6"
+            }
+          ],
+          "reconstructed_response_sha256": "b5734e99d90185ef953f8585dd53d250d156386fea8a3b3f9785822de4771167",
+          "upstream_evidence": false,
+          "semantic_entity_metric_period_validation": "not implied by arithmetic; evaluate task gold and source coverage separately"
+        },
+        {
+          "call_id": "44a3d092-319e-4dc4-a03e-b5b276d1ef56",
+          "operation": "mean",
+          "value_decimal": "32.18",
+          "source_dependencies": [
+            {
+              "call_id": "96ccd5ed-fe6c-478b-91b3-6bd2386b6cb4",
+              "path": "/data/last",
+              "value_decimal": "56.3",
+              "unit": "nghìn đồng/cổ phiếu",
+              "source_response_sha256": "29dca469688c732c1e27d0e1d50d6eedf82c9c7d599397c2027f66437f3584da",
+              "source_payload_sha256": "aa1f6b5dca589360446eb510873587250c1c7d30f00a026d84e357360a74efd6"
+            },
+            {
+              "call_id": "1e191bbf-1c95-4b02-95cb-46a5481a2b38",
+              "path": "/data/last",
+              "value_decimal": "33.4",
+              "unit": "nghìn đồng/cổ phiếu",
+              "source_response_sha256": "77ac06db666b246d165ec18c49c34e8bf2bd452d3beec1afb550d749ed44e0f3",
+              "source_payload_sha256": "aa1f6b5dca589360446eb510873587250c1c7d30f00a026d84e357360a74efd6"
+            },
+            {
+              "call_id": "051e689b-d473-4e15-8e0f-6e17cb9c1731",
+              "path": "/data/last",
+              "value_decimal": "30.3",
+              "unit": "nghìn đồng/cổ phiếu",
+              "source_response_sha256": "7e9d43536192ab2326abffc3e3b6cb14d3c0acdf07ebdb84c8e1bf4c694513d1",
+              "source_payload_sha256": "aa1f6b5dca589360446eb510873587250c1c7d30f00a026d84e357360a74efd6"
+            },
+            {
+              "call_id": "abae4170-bb3f-449b-a535-f3d5ed3af817",
+              "path": "/data/last",
+              "value_decimal": "21.6",
+              "unit": "nghìn đồng/cổ phiếu",
+              "source_response_sha256": "998f1caf5c85a406975e8cd240f35ecbc2e0859d554ef1e0c3b30b8b10a30630",
+              "source_payload_sha256": "aa1f6b5dca589360446eb510873587250c1c7d30f00a026d84e357360a74efd6"
+            },
+            {
+              "call_id": "747c5828-9a19-41f6-ac7b-b48764acf2f8",
+              "path": "/data/last",
+              "value_decimal": "19.3",
+              "unit": "nghìn đồng/cổ phiếu",
+              "source_response_sha256": "6c6b79a2999f264850620c685370736647c06cd4c85fc09d74fe53384fb10a17",
+              "source_payload_sha256": "aa1f6b5dca589360446eb510873587250c1c7d30f00a026d84e357360a74efd6"
+            }
+          ],
+          "reconstructed_response_sha256": "a33bf5c3e856f70229a2d17cc0242d847e7a2b00c786c78b906ec4ff76fc5586",
+          "upstream_evidence": false,
+          "semantic_entity_metric_period_validation": "not implied by arithmetic; evaluate task gold and source coverage separately"
+        }
+      ],
+      "hashes": {
+        "/home/doanlong/extra/benchmark/audits/financial-prompt-v44/compute-wire-dsh-final/dsh/runner/provider.jsonl": "38f58141da04d404149b80633afbfdbc5fa29ac45dd104106ce663aacd349669",
+        "/home/doanlong/extra/benchmark/audits/financial-prompt-v44/compute-wire-dsh-final/dsh/mcp.jsonl": "f8c8878af1340ea3b67e8a771aa5522db0dfcb9289a59ef5b5cd8cdc4f0b0403",
+        "/home/doanlong/extra/benchmark/audits/financial-prompt-v44/compute-wire-dsh-final/dsh/native.log": "ffbce1edd9554b98e9949cc1be229cf506172e122cab93d7b9295d10b7659675"
+      }
+    }
+  ],
+  "totals": {
+    "requests": 16,
+    "captures": 32,
+    "generated_calls": 32,
+    "source_calls": 20,
+    "successful_derived_calls": 8,
+    "rejected_derived_calls": 4
+  }
+}

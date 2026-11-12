@@ -1,96 +1,69 @@
-# -*- coding: utf-8 -*-
-"""Runner arm DSH — `dsh --profile headless --json --patch <per-trial patch>`.
-
-Patch per-trial (sinh vào <trial>/runner/): model mặc định + MCP snapshot server
-(dsh-mcp-client, tool name dạng mcp__opentrading__<tool> — grader chấm `source`
-theo substring nên vẫn khớp). stdin nhận instruction (`-`), cwd = workspace.
-"""
+"""DSH native headless profile composed from installed core bundles only."""
 import json
 import os
-import re
+from pathlib import Path
 import sys
-
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from common import popen_run
+from isolated import prepare, finish, SNAPSHOT
 
-TOOLS = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
-SNAPSHOT = os.path.join(TOOLS, "mcp_snapshot_server.py")
-DSH_BIN = os.path.expanduser("~/.local/bin/dsh")
-
-
-def _patch_yml(snapshot, payloads, provider, model):
-    # Cú pháp patch của dsh (dsh-app-boot applyEntryPatches): entry MỚI phải nằm trong
-    # `- insert: [ ... ]` (không id = chèn top-level); entry có sẵn thì override theo id.
-    return ("- insert:\n"
-            "    - id: mcp-opentrading\n"
-            "      name: '@deepseek-ai/dsh-mcp-client'\n"
-            "      config:\n"
-            "        serverName: opentrading\n"
-            "        transport: stdio\n"
-            "        command: %s\n"
-            "        args: ['%s']\n"
-            "        env:\n"
-            "          BENCH_PAYLOADS: '%s'\n"
-            "- id: agent-default-model\n"
-            "  config:\n"
-            "    provider: %s\n"
-            "    model: %s\n"
-            "    reasoningEffort: %s\n"
-            % (sys.executable, snapshot, payloads, provider, model,
-               "off" if provider == "google-ai-studio" else "low"))
+DSH_BIN = os.path.expanduser('~/.local/bin/dsh')
+# Explicit allowlist of core services. Bundle updates do not silently add tools.
+CORE = {'timer', 'llm', 'session', 'session-log-deepseek', 'typert', 'typert-loader',
+ 'typert-gateway', 'remote-access', 'session-title', 'agent', 'agent-default-model',
+ 'deepseek-llm-api-extensions', 'jobs', 'llm-pi-ai', 'session-persistence-jsonl', 'attachment-local', 'session-query-sqlite',
+ 'session-projection', 'storage', 'storage-json', 'storage-domain',
+ 'session-projection-cache', 'otel', 'token-meter', 'compaction-basic', 'timeout-policy',
+ 'spill-local', 'spill-policy', 'session-checkpoint-policy', 'tools', 'system-prompt',
+ 'agent-loop', 'headless-startup', 'headless-runner'}
 
 
-def run(ws, instruction, task_dir, model, timeout_s, log_path):
-    tdir = os.path.abspath(os.path.dirname(ws))  # bất biến: mọi path con tuyệt đối
-    rdir = os.path.join(tdir, "runner")
-    os.makedirs(rdir, exist_ok=True)
-    payloads = os.path.join(task_dir, "environment", "payloads.json")
-    if "/" in model:
-        prefix, model_id = model.split("/", 1)
-        # dsh route id khác tên provider: google → google-ai-studio (route có sẵn trong profile)
-        provider = {"google": "google-ai-studio"}.get(prefix, prefix)
-    else:
-        provider, model_id = "nvidia", model
-    patch = os.path.join(rdir, "bench.dsh.patch.yml")
-    with open(patch, "w", encoding="utf-8") as f:
-        f.write(_patch_yml(SNAPSHOT, payloads, provider, model_id))
-
-    env = dict(os.environ)
-    if prefix == "google" and not env.get("GOOGLE_API_KEY"):
+def _events(text):
+    for line in text.splitlines():
         try:
-            env["GOOGLE_API_KEY"] = json.load(open(
-                os.path.expanduser("~/.opentrading/auth.json")))["google"]["key"]
-        except Exception:
-            pass
-    cmd = [DSH_BIN, "--profile", "headless", "--patch", patch, "--json", "-"]
-    rc, out, err, timed_out = popen_run(cmd, cwd=ws, env=env, timeout_s=timeout_s,
-                                        log_path=log_path, stdin_text=instruction)
+            event = json.loads(line)
+            if isinstance(event, dict): yield event
+        except ValueError: pass
 
-    texts, session_id, tokens = [], None, None
-    for line in (out or "").splitlines() + (err or "").splitlines():
-        line = line.strip()
-        if not line.startswith("{"):
-            texts.append(line)  # dòng thường (nếu dsh in final message không --json)
-            continue
-        try:
-            ev = json.loads(line)
-        except json.JSONDecodeError:
-            continue
-        if isinstance(ev.get("text"), str) and ev["text"]:
-            texts.append(ev["text"])
-        for key in ("sessionID", "sessionId", "session_id"):
-            if ev.get(key):
-                session_id = ev[key]
-        u = ev.get("usage")
-        if isinstance(u, dict):
-            # dsh: usage trong event step_end, shape inputTokens/outputTokens —
-            # cộng dồn các step thành tổng trial (định dạng thống nhất với opencode/OT)
-            tokens = tokens or {"input": 0, "output": 0}
-            tokens["input"] = (tokens.get("input") or 0) + (u.get("inputTokens") or 0)
-            tokens["output"] = (tokens.get("output") or 0) + (u.get("outputTokens") or 0)
-    answer_path = os.path.join(ws, "answer.json")
-    return {"status": "timeout" if timed_out else ("ok" if rc == 0 else "error"),
-            "answer_path": answer_path if os.path.exists(answer_path) else None,
-            "final_text": "\n".join(texts),
-            "session_id": session_id, "tokens": tokens,
-            "notes": "" if rc == 0 else "exit=%s" % rc}
+
+def run(ws, instruction, task_dir, model, timeout_s, log_path, options=None):
+    options = {**(options or {}), 'timeout_s': timeout_s}
+    root, env, gateway, mcp_env = prepare(ws, task_dir, model, options)
+    home = root / 'dsh-home'
+    profile = home / 'profiles/benchmark'
+    profile.mkdir(parents=True, exist_ok=True)
+    bundles = ['@deepseek-ai/dsh-base', '@deepseek-ai/dsh-headless']
+    (profile / 'package.json').write_text(json.dumps({'name': 'benchmark-isolated', 'private': True,
+        'dependencies': {}, 'dsh': {'profile': {'bundles': bundles}}}))
+    # Only module resolution is shared, never profiles, settings or plugin lists.
+    installed = Path(DSH_BIN).resolve().parent.parent / 'node_modules'
+    if not (profile / 'node_modules').exists(): (profile / 'node_modules').symlink_to(installed, target_is_directory=True)
+    # Discover shipped entry ids locally and disable everything outside the frozen allowlist.
+    # PyYAML cannot parse !!js tags; line-level id extraction is sufficient for bundle rows.
+    import re
+    ids = []
+    for bundle in bundles:
+        content = (installed / bundle / 'cordis.patch.yml').read_text()
+        ids += re.findall(r'^\s*- id: ([\w-]+)', content, flags=re.M)
+    patches = [{'id': name, 'disabled': True} for name in sorted(set(ids) - CORE)]
+    patches += [{'id': 'llm-pi-ai', 'config': {'providers': {'nvidia': {'apiKeyEnv': 'NVIDIA_API_KEY',
+        'api': 'openai-completions', 'baseURL': gateway.url, 'reasoning': 'off',
+        'models': [{'id': gateway.model, 'contextWindow': 32000, 'maxTokens': 2048, 'reasoningEfforts': False}],
+        'compat': {'supportsStore': False, 'supportsReasoningEffort': False}}}}},
+        {'id': 'agent-default-model', 'config': {'provider': 'nvidia', 'model': gateway.model}},
+        {'insert': [{'id': 'mcp-opentrading', 'name': '@deepseek-ai/dsh-mcp-client', 'config': {
+            'serverName': 'opentrading', 'transport': 'stdio', 'command': sys.executable,
+            'args': [str(SNAPSHOT)], 'env': mcp_env}}]}]
+    (profile / 'cordis.patch.yml').write_text(json.dumps(patches, indent=2))
+    (profile / 'cordis.yml').write_text('[]\n')
+    env.update(DSH_HOME=str(home), NVIDIA_API_KEY=gateway.token, DSH_TELEMETRY_DISABLED='1', DSH_TOOLS_MODE='native')
+    with gateway:
+        rc, out, err, timed_out = popen_run([DSH_BIN, '--profile', 'benchmark', '--json', '-'],
+            cwd=ws, env=env, timeout_s=timeout_s, log_path=log_path, stdin_text=instruction)
+    texts, session = [], None
+    for event in _events(out):
+        if event.get('type') == 'final' and isinstance(event.get('text'), str): texts = [event['text']]
+        session = event.get('sessionId') or event.get('session_id') or event.get('sessionID') or session
+    return finish(root, gateway, {'status': 'timeout' if timed_out else 'ok' if rc == 0 else 'error',
+        'final_text': '\n'.join(texts), 'session_id': session, 'notes': '' if rc == 0 else 'exit=%s' % rc},
+        'dsh', {'bundles': bundles, 'core_entries': sorted(CORE), 'patches': patches})

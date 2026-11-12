@@ -208,10 +208,14 @@ def gdp_pick(env, period):
 
 
 # === thân oracle ===
-price = float(yf_item(env("yf:main"), 'ETH-USD')["price"])
-fx = float(msn_series(env)["USDVND"][-1]["c"])
-usd = float(env('cohlcv:ETHUSDT')["data"]["closes"][-1]["c"]) / fx
-check("diffpct", round(abs(usd / price - 1) * 100, 2), gold["solution"]["value"])
+it = yf_item(env('yf:main'), 'ETH-USD')
+cl = env('cohlcv:ETHUSDT')['data']['closes']
+check('dates', [cl[-2]['t'], cl[-1]['t']], ['2026-10-31', '2026-11-01'])
+a = (it['price'] / it['prev'] - 1) * 100
+b = (cl[-1]['c'] / cl[-2]['c'] - 1) * 100
+check('yf', round(a, 2), gold['solution']['yf_pct'])
+check('vn', round(b, 2), gold['solution']['vnstock_pct'])
+check('stronger', 'yfinance' if abs(a) > abs(b) else 'vnstock', gold['solution']['stronger'])
 
 if problems:
     print("ORACLE MISMATCH:")

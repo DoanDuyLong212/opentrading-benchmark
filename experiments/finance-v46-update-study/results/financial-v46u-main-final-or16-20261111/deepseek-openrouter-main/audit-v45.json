@@ -1,0 +1,2891 @@
+{
+  "study_version": "v4.6-update",
+  "protected_artifacts_sha256": "3613e3d245bac4d8b2c4218c09f254ab0b4c8a08e3ec6733342f514aff230f2f",
+  "financial_fabrication_status": "requires independent all-arm manual claim review; receipt audit alone does not prove financial claims",
+  "schema": "independent-v45-audit",
+  "manifest_sha256": "9d79faed7119e112c2e453bf1779c49f2424d84dcc150b5b3dd89af25d627889",
+  "pass": true,
+  "trials": 1200,
+  "scheduled": 1200,
+  "financial_or_strict_wins": 1092,
+  "fabricated_evidence_accepted": 0,
+  "checks": 36591,
+  "partial_attempts": [],
+  "unknown_tool_outcomes": [
+    {
+      "trial_id": "fin-m4-rule-522__opentrading_baseline__r1",
+      "generation": "1:0:0",
+      "tool": "peer_compare",
+      "classification": "native_client_schema_rejection",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m4-rule-522__opentrading_baseline__r1",
+      "generation": "1:0:1",
+      "tool": "memory_read",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m4-rule-522__dsh__r1",
+      "generation": "0:0:0",
+      "tool": "session_search",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m4-rule-522__dsh__r1",
+      "generation": "0:0:1",
+      "tool": "session_search",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m4-rule-522__dsh__r1",
+      "generation": "3:0:1",
+      "tool": "session_search",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-l2-crypto-x-170__opentrading_baseline__r1",
+      "generation": "4:0:0",
+      "tool": "calculate",
+      "classification": "native_loop_guard_denial",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m3-split-513__dsh__r1",
+      "generation": "0:0:0",
+      "tool": "session_search",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m3-split-513__dsh__r1",
+      "generation": "0:0:1",
+      "tool": "session_search",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m3-split-513__dsh__r1",
+      "generation": "2:0:0",
+      "tool": "session_search",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m3-split-513__dsh__r1",
+      "generation": "2:0:1",
+      "tool": "session_search",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m1-screen-503__opentrading_baseline__r1",
+      "generation": "3:0:0",
+      "tool": "peer_compare",
+      "classification": "native_client_schema_rejection",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-c1-ratio-406__opentrading_baseline__r1",
+      "generation": "4:0:0",
+      "tool": "calculate",
+      "classification": "native_loop_guard_denial",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m5-revoke-530__opentrading_baseline__r1",
+      "generation": "1:0:1",
+      "tool": "peer_compare",
+      "classification": "native_client_schema_rejection",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m5-revoke-530__opentrading_baseline__r1",
+      "generation": "1:0:0",
+      "tool": "memory_read",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m5-revoke-530__opentrading_baseline__r1",
+      "generation": "3:0:0",
+      "tool": "memory_read",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m5-revoke-530__dsh__r1",
+      "generation": "0:0:0",
+      "tool": "session_search",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m5-revoke-530__dsh__r1",
+      "generation": "0:0:1",
+      "tool": "session_search",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m5-revoke-530__dsh__r1",
+      "generation": "3:0:0",
+      "tool": "session_search",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m5-revoke-530__dsh__r1",
+      "generation": "3:0:1",
+      "tool": "session_search",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m5-revoke-530__dsh__r1",
+      "generation": "4:0:0",
+      "tool": "session_event_read",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m5-revoke-530__dsh__r1",
+      "generation": "5:0:0",
+      "tool": "session_event_read",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m5-revoke-530__dsh__r1",
+      "generation": "6:0:0",
+      "tool": "session_search",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m5-revoke-530__dsh__r1",
+      "generation": "6:0:1",
+      "tool": "session_search",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m5-revoke-530__dsh__r1",
+      "generation": "7:0:0",
+      "tool": "session_event_read",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m5-revoke-530__dsh__r1",
+      "generation": "8:0:0",
+      "tool": "session_search",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m5-revoke-530__dsh__r1",
+      "generation": "8:0:1",
+      "tool": "session_trace",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m5-revoke-530__dsh__r1",
+      "generation": "9:0:0",
+      "tool": "session_search",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m5-revoke-530__dsh__r1",
+      "generation": "9:0:1",
+      "tool": "session_search",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m5-revoke-530__dsh__r1",
+      "generation": "12:0:0",
+      "tool": "session_search",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m5-revoke-530__dsh__r1",
+      "generation": "12:0:1",
+      "tool": "session_search",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m5-revoke-530__dsh__r1",
+      "generation": "13:0:0",
+      "tool": "session_search",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m5-revoke-530__dsh__r1",
+      "generation": "13:0:1",
+      "tool": "session_search",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m5-revoke-530__dsh__r1",
+      "generation": "14:0:0",
+      "tool": "session_trace",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m5-revoke-530__dsh__r1",
+      "generation": "14:0:1",
+      "tool": "session_trace",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m5-revoke-530__dsh__r1",
+      "generation": "15:0:0",
+      "tool": "session_event_read",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m5-revoke-530__dsh__r1",
+      "generation": "15:0:1",
+      "tool": "session_event_read",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m5-revoke-530__dsh__r1",
+      "generation": "16:0:0",
+      "tool": "session_search",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m5-revoke-530__dsh__r1",
+      "generation": "16:0:1",
+      "tool": "session_search",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m5-revoke-530__dsh__r1",
+      "generation": "17:0:0",
+      "tool": "session_event_read",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m5-revoke-530__dsh__r1",
+      "generation": "18:0:0",
+      "tool": "session_event_read",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m5-revoke-530__dsh__r1",
+      "generation": "18:0:1",
+      "tool": "session_search",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m5-revoke-530__dsh__r1",
+      "generation": "19:0:0",
+      "tool": "session_event_read",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m5-revoke-530__dsh__r1",
+      "generation": "20:0:0",
+      "tool": "session_search",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m5-revoke-530__dsh__r1",
+      "generation": "20:0:1",
+      "tool": "session_search",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m3-update-520__dsh__r1",
+      "generation": "0:0:0",
+      "tool": "session_search",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m3-update-520__dsh__r1",
+      "generation": "0:0:1",
+      "tool": "session_search",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m3-update-520__dsh__r1",
+      "generation": "3:0:0",
+      "tool": "session_search",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m3-update-520__dsh__r1",
+      "generation": "3:0:1",
+      "tool": "session_search",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m3-update-520__dsh__r1",
+      "generation": "4:0:0",
+      "tool": "session_event_read",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m3-update-520__dsh__r1",
+      "generation": "7:0:0",
+      "tool": "session_search",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m3-update-520__dsh__r1",
+      "generation": "7:0:1",
+      "tool": "session_search",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m3-update-520__dsh__r1",
+      "generation": "8:0:0",
+      "tool": "session_search",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m3-update-520__dsh__r1",
+      "generation": "8:0:1",
+      "tool": "session_search",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m3-update-520__dsh__r1",
+      "generation": "9:0:0",
+      "tool": "session_trace",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m3-update-520__dsh__r1",
+      "generation": "9:0:1",
+      "tool": "session_trace",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m3-update-520__dsh__r1",
+      "generation": "10:0:0",
+      "tool": "session_event_search",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m3-update-520__dsh__r1",
+      "generation": "10:0:1",
+      "tool": "session_event_search",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m3-update-520__dsh__r1",
+      "generation": "11:0:0",
+      "tool": "session_event_read",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m3-split-514__dsh__r1",
+      "generation": "0:0:0",
+      "tool": "session_search",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m3-split-514__dsh__r1",
+      "generation": "0:0:1",
+      "tool": "session_search",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m3-split-514__dsh__r1",
+      "generation": "2:0:0",
+      "tool": "session_search",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m3-split-514__dsh__r1",
+      "generation": "2:0:1",
+      "tool": "session_search",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m4-port-526__dsh__r1",
+      "generation": "0:0:0",
+      "tool": "session_search",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m4-port-526__dsh__r1",
+      "generation": "3:0:0",
+      "tool": "session_search",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m4-port-526__dsh__r1",
+      "generation": "3:0:1",
+      "tool": "session_search",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m4-port-526__dsh__r1",
+      "generation": "4:0:0",
+      "tool": "session_event_read",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m4-port-526__dsh__r1",
+      "generation": "4:0:1",
+      "tool": "session_event_read",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-c4-stagger-430__opentrading_baseline__r1",
+      "generation": "3:0:1",
+      "tool": "calculate",
+      "classification": "native_loop_guard_denial",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-c4-stagger-430__opentrading_baseline__r1",
+      "generation": "6:0:0",
+      "tool": "calculate",
+      "classification": "native_loop_guard_denial",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-c4-stagger-430__opentrading_baseline__r1",
+      "generation": "15:0:0",
+      "tool": "calculate",
+      "classification": "native_loop_guard_denial",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m5-stale-528__dsh__r1",
+      "generation": "0:0:0",
+      "tool": "session_search",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m5-stale-528__dsh__r1",
+      "generation": "0:0:1",
+      "tool": "session_search",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-l3-agg-186__opentrading_baseline__r1",
+      "generation": "4:0:0",
+      "tool": "calculate",
+      "classification": "native_loop_guard_denial",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m3-update-517__dsh__r1",
+      "generation": "0:0:0",
+      "tool": "session_search",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m3-update-517__dsh__r1",
+      "generation": "0:0:1",
+      "tool": "session_search",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m3-update-517__dsh__r1",
+      "generation": "3:0:0",
+      "tool": "session_search",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m3-update-517__dsh__r1",
+      "generation": "3:0:1",
+      "tool": "session_search",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m3-update-517__dsh__r1",
+      "generation": "3:0:2",
+      "tool": "session_search",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m3-update-517__dsh__r1",
+      "generation": "4:0:0",
+      "tool": "session_event_read",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m3-update-517__dsh__r1",
+      "generation": "7:0:0",
+      "tool": "session_search",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m3-update-517__dsh__r1",
+      "generation": "7:0:1",
+      "tool": "session_search",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m3-update-517__dsh__r1",
+      "generation": "8:0:0",
+      "tool": "session_search",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m3-update-517__dsh__r1",
+      "generation": "8:0:1",
+      "tool": "session_search",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m3-update-517__dsh__r1",
+      "generation": "9:0:0",
+      "tool": "session_trace",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m3-update-517__dsh__r1",
+      "generation": "9:0:1",
+      "tool": "session_trace",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m3-update-517__dsh__r1",
+      "generation": "10:0:0",
+      "tool": "session_event_read",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m3-update-517__dsh__r1",
+      "generation": "11:0:0",
+      "tool": "session_event_read",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-l3-crypto-multi-209__opentrading_baseline__r1",
+      "generation": "1:0:2",
+      "tool": "calculate",
+      "classification": "native_loop_guard_denial",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-l3-crypto-multi-209__opentrading_baseline__r1",
+      "generation": "2:0:0",
+      "tool": "calculate",
+      "classification": "native_loop_guard_denial",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-l3-crypto-multi-209__opentrading_baseline__r1",
+      "generation": "3:0:0",
+      "tool": "calculate",
+      "classification": "native_loop_guard_denial",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m3-update-518__opentrading_baseline__r1",
+      "generation": "1:0:1",
+      "tool": "memory_read",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m3-update-518__dsh__r1",
+      "generation": "0:0:0",
+      "tool": "session_search",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m3-update-518__dsh__r1",
+      "generation": "0:0:1",
+      "tool": "session_search",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m3-update-518__dsh__r1",
+      "generation": "3:0:0",
+      "tool": "session_search",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m3-update-518__dsh__r1",
+      "generation": "3:0:1",
+      "tool": "session_search",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m3-update-518__dsh__r1",
+      "generation": "4:0:0",
+      "tool": "session_event_read",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m3-update-518__dsh__r1",
+      "generation": "4:0:1",
+      "tool": "session_event_read",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m3-update-518__dsh__r1",
+      "generation": "5:0:0",
+      "tool": "session_search",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m3-update-518__dsh__r1",
+      "generation": "5:0:1",
+      "tool": "session_search",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m3-update-518__dsh__r1",
+      "generation": "6:0:0",
+      "tool": "session_event_read",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m3-update-518__dsh__r1",
+      "generation": "9:0:0",
+      "tool": "session_search",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m3-update-518__dsh__r1",
+      "generation": "9:0:1",
+      "tool": "session_search",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m3-update-518__dsh__r1",
+      "generation": "10:0:0",
+      "tool": "session_search",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m3-update-518__dsh__r1",
+      "generation": "10:0:1",
+      "tool": "session_search",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m3-update-518__dsh__r1",
+      "generation": "10:0:2",
+      "tool": "session_search",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m3-update-518__dsh__r1",
+      "generation": "11:0:0",
+      "tool": "session_trace",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m3-update-518__dsh__r1",
+      "generation": "12:0:0",
+      "tool": "session_event_search",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m3-update-518__dsh__r1",
+      "generation": "12:0:1",
+      "tool": "session_event_read",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m3-update-518__dsh__r1",
+      "generation": "13:0:0",
+      "tool": "session_event_read",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m3-update-518__dsh__r1",
+      "generation": "13:0:1",
+      "tool": "session_search",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m3-update-518__dsh__r1",
+      "generation": "14:0:0",
+      "tool": "session_search",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m3-update-518__dsh__r1",
+      "generation": "14:0:1",
+      "tool": "session_search",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m4-rule-523__dsh__r1",
+      "generation": "0:0:0",
+      "tool": "session_search",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m4-rule-523__dsh__r1",
+      "generation": "0:0:1",
+      "tool": "session_search",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m4-rule-523__dsh__r1",
+      "generation": "1:0:0",
+      "tool": "session_search",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m4-rule-523__dsh__r1",
+      "generation": "1:0:1",
+      "tool": "session_search",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m4-rule-523__dsh__r1",
+      "generation": "4:0:1",
+      "tool": "session_search",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m4-rule-523__dsh__r1",
+      "generation": "5:0:0",
+      "tool": "session_search",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m4-rule-523__dsh__r1",
+      "generation": "5:0:1",
+      "tool": "session_search",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m4-rule-523__opentrading_baseline__r1",
+      "generation": "1:0:0",
+      "tool": "memory_read",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-l5-profile-274__opentrading_baseline__r1",
+      "generation": "5:0:0",
+      "tool": "calculate",
+      "classification": "native_loop_guard_denial",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m4-rule-521__dsh__r1",
+      "generation": "0:0:0",
+      "tool": "session_search",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m4-rule-521__dsh__r1",
+      "generation": "0:0:1",
+      "tool": "session_search",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m4-rule-521__dsh__r1",
+      "generation": "3:0:1",
+      "tool": "session_search",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m4-rule-521__dsh__r1",
+      "generation": "4:0:0",
+      "tool": "session_search",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m4-rule-521__dsh__r1",
+      "generation": "4:0:1",
+      "tool": "session_search",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m4-rule-521__dsh__r1",
+      "generation": "5:0:0",
+      "tool": "session_search",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m4-rule-521__dsh__r1",
+      "generation": "5:0:1",
+      "tool": "session_search",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m4-rule-521__opentrading_baseline__r1",
+      "generation": "1:0:1",
+      "tool": "memory_read",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-l4-2src-302__opentrading_baseline__r1",
+      "generation": "5:0:0",
+      "tool": "calculate",
+      "classification": "native_loop_guard_denial",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m3-split-516__dsh__r1",
+      "generation": "0:0:0",
+      "tool": "session_search",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m3-split-516__dsh__r1",
+      "generation": "0:0:1",
+      "tool": "session_search",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m3-split-516__dsh__r1",
+      "generation": "2:0:0",
+      "tool": "session_search",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m3-split-516__dsh__r1",
+      "generation": "2:0:1",
+      "tool": "session_search",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m3-split-516__dsh__r1",
+      "generation": "3:0:0",
+      "tool": "session_event_read",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m3-update-519__dsh__r1",
+      "generation": "0:0:0",
+      "tool": "session_search",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m3-update-519__dsh__r1",
+      "generation": "0:0:1",
+      "tool": "session_search",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m3-update-519__dsh__r1",
+      "generation": "2:0:0",
+      "tool": "session_search",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m3-update-519__dsh__r1",
+      "generation": "2:0:1",
+      "tool": "session_search",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m3-update-519__dsh__r1",
+      "generation": "4:0:0",
+      "tool": "session_search",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m3-update-519__dsh__r1",
+      "generation": "4:0:1",
+      "tool": "session_search",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m3-update-519__dsh__r1",
+      "generation": "5:0:0",
+      "tool": "session_event_read",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m3-update-519__dsh__r1",
+      "generation": "5:0:1",
+      "tool": "session_event_read",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m3-update-519__dsh__r1",
+      "generation": "8:0:0",
+      "tool": "session_search",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m3-update-519__dsh__r1",
+      "generation": "8:0:1",
+      "tool": "session_search",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m3-update-519__dsh__r1",
+      "generation": "9:0:0",
+      "tool": "session_search",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m3-update-519__dsh__r1",
+      "generation": "9:0:1",
+      "tool": "session_search",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m3-update-519__dsh__r1",
+      "generation": "9:0:2",
+      "tool": "session_search",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m3-update-519__dsh__r1",
+      "generation": "10:0:0",
+      "tool": "session_event_read",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m3-update-519__dsh__r1",
+      "generation": "10:0:1",
+      "tool": "session_trace",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m3-update-519__dsh__r1",
+      "generation": "11:0:0",
+      "tool": "session_event_read",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m3-update-519__dsh__r1",
+      "generation": "11:0:1",
+      "tool": "session_search",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m3-update-519__opentrading_baseline__r1",
+      "generation": "1:0:0",
+      "tool": "peer_compare",
+      "classification": "native_client_schema_rejection",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m3-update-519__opentrading_baseline__r1",
+      "generation": "1:0:1",
+      "tool": "memory_read",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m3-update-519__opentrading_baseline__r1",
+      "generation": "3:0:0",
+      "tool": "memory_read",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m3-update-519__opentrading_baseline__r1",
+      "generation": "3:0:1",
+      "tool": "memory_read",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m3-split-515__dsh__r1",
+      "generation": "0:0:0",
+      "tool": "session_search",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m3-split-515__dsh__r1",
+      "generation": "0:0:1",
+      "tool": "session_search",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m3-split-515__dsh__r1",
+      "generation": "2:0:0",
+      "tool": "session_search",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m3-split-515__dsh__r1",
+      "generation": "2:0:1",
+      "tool": "session_search",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m3-split-515__dsh__r1",
+      "generation": "3:0:0",
+      "tool": "session_event_read",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m3-split-515__dsh__r1",
+      "generation": "4:0:0",
+      "tool": "session_event_read",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m4-port-525__dsh__r1",
+      "generation": "0:0:0",
+      "tool": "session_search",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m4-port-525__dsh__r1",
+      "generation": "4:0:0",
+      "tool": "session_search",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m4-port-525__dsh__r1",
+      "generation": "4:0:1",
+      "tool": "session_search",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m4-port-525__dsh__r1",
+      "generation": "5:0:0",
+      "tool": "session_event_read",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m4-port-525__dsh__r1",
+      "generation": "6:0:5",
+      "tool": "session_event_search",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m5-revoke-529__dsh__r1",
+      "generation": "0:0:0",
+      "tool": "session_search",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m5-revoke-529__dsh__r1",
+      "generation": "0:0:1",
+      "tool": "session_search",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m5-revoke-529__dsh__r1",
+      "generation": "1:0:0",
+      "tool": "session_search",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m5-revoke-529__dsh__r1",
+      "generation": "1:0:1",
+      "tool": "session_search",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m5-revoke-529__dsh__r1",
+      "generation": "4:0:0",
+      "tool": "session_search",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m5-revoke-529__dsh__r1",
+      "generation": "4:0:1",
+      "tool": "session_search",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m5-revoke-529__dsh__r1",
+      "generation": "5:0:0",
+      "tool": "session_event_read",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m5-revoke-529__dsh__r1",
+      "generation": "6:0:0",
+      "tool": "session_event_read",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m5-revoke-529__dsh__r1",
+      "generation": "7:0:0",
+      "tool": "session_search",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m5-revoke-529__dsh__r1",
+      "generation": "7:0:1",
+      "tool": "session_search",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m5-revoke-529__dsh__r1",
+      "generation": "10:0:0",
+      "tool": "session_search",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m5-revoke-529__dsh__r1",
+      "generation": "10:0:1",
+      "tool": "session_search",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m5-revoke-529__dsh__r1",
+      "generation": "11:0:0",
+      "tool": "session_search",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m5-revoke-529__dsh__r1",
+      "generation": "11:0:1",
+      "tool": "session_search",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m5-revoke-529__dsh__r1",
+      "generation": "11:0:2",
+      "tool": "session_search",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m5-revoke-529__dsh__r1",
+      "generation": "12:0:0",
+      "tool": "session_trace",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m5-revoke-529__dsh__r1",
+      "generation": "12:0:1",
+      "tool": "session_trace",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m5-revoke-529__dsh__r1",
+      "generation": "13:0:0",
+      "tool": "session_event_read",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m5-revoke-529__dsh__r1",
+      "generation": "13:0:1",
+      "tool": "session_event_read",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m5-revoke-529__dsh__r1",
+      "generation": "14:0:0",
+      "tool": "session_event_read",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m5-revoke-529__opentrading_baseline__r1",
+      "generation": "1:0:0",
+      "tool": "memory_read",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m5-revoke-529__opentrading_baseline__r1",
+      "generation": "1:0:1",
+      "tool": "memory_read",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m4-port-524__dsh__r1",
+      "generation": "0:0:0",
+      "tool": "session_search",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m4-port-524__dsh__r1",
+      "generation": "3:0:0",
+      "tool": "session_search",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m4-port-524__dsh__r1",
+      "generation": "3:0:1",
+      "tool": "session_search",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m4-port-524__dsh__r1",
+      "generation": "4:0:0",
+      "tool": "session_event_read",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m4-port-524__dsh__r1",
+      "generation": "6:0:0",
+      "tool": "session_event_read",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m4-port-524__dsh__r1",
+      "generation": "7:0:0",
+      "tool": "session_event_search",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-c1-pct-401__opentrading_baseline__r1",
+      "generation": "4:0:0",
+      "tool": "calculate",
+      "classification": "native_loop_guard_denial",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m4-rule-522__dsh__r2",
+      "generation": "0:0:0",
+      "tool": "session_search",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m4-rule-522__dsh__r2",
+      "generation": "0:0:1",
+      "tool": "session_search",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m4-rule-522__dsh__r2",
+      "generation": "3:0:0",
+      "tool": "session_search",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m2-port-511__dsh__r2",
+      "generation": "1:0:0",
+      "tool": "session_search",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m3-split-513__dsh__r2",
+      "generation": "0:0:0",
+      "tool": "session_search",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m3-split-513__dsh__r2",
+      "generation": "0:0:1",
+      "tool": "session_search",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m5-revoke-530__opentrading_baseline__r2",
+      "generation": "1:0:0",
+      "tool": "memory_read",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m5-revoke-530__opentrading_baseline__r2",
+      "generation": "1:0:1",
+      "tool": "memory_read",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m5-revoke-530__dsh__r2",
+      "generation": "0:0:0",
+      "tool": "session_search",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m5-revoke-530__dsh__r2",
+      "generation": "0:0:1",
+      "tool": "session_search",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m5-revoke-530__dsh__r2",
+      "generation": "3:0:0",
+      "tool": "session_search",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m5-revoke-530__dsh__r2",
+      "generation": "3:0:1",
+      "tool": "session_search",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m5-revoke-530__dsh__r2",
+      "generation": "4:0:0",
+      "tool": "session_event_read",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m5-revoke-530__dsh__r2",
+      "generation": "4:0:1",
+      "tool": "session_trace",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m5-revoke-530__dsh__r2",
+      "generation": "7:0:0",
+      "tool": "session_search",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m5-revoke-530__dsh__r2",
+      "generation": "7:0:1",
+      "tool": "session_search",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m5-revoke-530__dsh__r2",
+      "generation": "8:0:0",
+      "tool": "session_search",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m5-revoke-530__dsh__r2",
+      "generation": "8:0:1",
+      "tool": "session_search",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m5-revoke-530__dsh__r2",
+      "generation": "9:0:0",
+      "tool": "session_event_read",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m5-revoke-530__dsh__r2",
+      "generation": "9:0:1",
+      "tool": "session_event_read",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m5-revoke-530__dsh__r2",
+      "generation": "10:0:0",
+      "tool": "session_event_read",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m5-revoke-530__dsh__r2",
+      "generation": "10:0:1",
+      "tool": "session_event_read",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m5-revoke-530__dsh__r2",
+      "generation": "11:0:0",
+      "tool": "session_search",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m5-revoke-530__dsh__r2",
+      "generation": "11:0:1",
+      "tool": "session_search",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m3-update-520__opentrading_baseline__r2",
+      "generation": "1:0:1",
+      "tool": "memory_read",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m3-update-520__dsh__r2",
+      "generation": "0:0:0",
+      "tool": "session_search",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m3-update-520__dsh__r2",
+      "generation": "0:0:1",
+      "tool": "session_search",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m3-update-520__dsh__r2",
+      "generation": "2:0:0",
+      "tool": "session_search",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m3-update-520__dsh__r2",
+      "generation": "2:0:1",
+      "tool": "session_search",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m3-update-520__dsh__r2",
+      "generation": "4:0:0",
+      "tool": "session_search",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m3-update-520__dsh__r2",
+      "generation": "4:0:1",
+      "tool": "session_search",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m3-update-520__dsh__r2",
+      "generation": "5:0:0",
+      "tool": "session_event_read",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m3-update-520__dsh__r2",
+      "generation": "6:0:0",
+      "tool": "session_search",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m3-update-520__dsh__r2",
+      "generation": "6:0:1",
+      "tool": "session_search",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m3-update-520__dsh__r2",
+      "generation": "9:0:0",
+      "tool": "session_search",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m3-update-520__dsh__r2",
+      "generation": "9:0:1",
+      "tool": "session_search",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m3-update-520__dsh__r2",
+      "generation": "10:0:0",
+      "tool": "session_search",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m3-update-520__dsh__r2",
+      "generation": "10:0:1",
+      "tool": "session_search",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m3-update-520__dsh__r2",
+      "generation": "11:0:0",
+      "tool": "session_trace",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m3-update-520__dsh__r2",
+      "generation": "11:0:1",
+      "tool": "session_trace",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m3-update-520__dsh__r2",
+      "generation": "12:0:0",
+      "tool": "session_event_search",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m3-update-520__dsh__r2",
+      "generation": "12:0:1",
+      "tool": "session_event_search",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m3-update-520__dsh__r2",
+      "generation": "13:0:0",
+      "tool": "session_event_read",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m3-update-520__dsh__r2",
+      "generation": "14:0:0",
+      "tool": "session_event_read",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-c4-logann-427__opentrading_baseline__r2",
+      "generation": "6:0:0",
+      "tool": "calculate",
+      "classification": "native_loop_guard_denial",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-c4-logann-427__opentrading_baseline__r2",
+      "generation": "11:0:0",
+      "tool": "calculate",
+      "classification": "native_loop_guard_denial",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m3-split-514__dsh__r2",
+      "generation": "0:0:0",
+      "tool": "session_search",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m3-split-514__dsh__r2",
+      "generation": "0:0:1",
+      "tool": "session_search",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m3-split-514__dsh__r2",
+      "generation": "2:0:0",
+      "tool": "session_search",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m3-split-514__dsh__r2",
+      "generation": "2:0:1",
+      "tool": "session_search",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m3-split-514__dsh__r2",
+      "generation": "3:0:0",
+      "tool": "session_event_read",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m4-port-526__opentrading_baseline__r2",
+      "generation": "9:0:0",
+      "tool": "calculate",
+      "classification": "native_loop_guard_denial",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m4-port-526__dsh__r2",
+      "generation": "0:0:0",
+      "tool": "session_search",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m4-port-526__dsh__r2",
+      "generation": "3:0:0",
+      "tool": "session_search",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m4-port-526__dsh__r2",
+      "generation": "3:0:1",
+      "tool": "session_search",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m4-port-526__dsh__r2",
+      "generation": "4:0:0",
+      "tool": "session_event_read",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-c4-stagger-430__opentrading_baseline__r2",
+      "generation": "5:0:0",
+      "tool": "calculate",
+      "classification": "native_loop_guard_denial",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-c4-stagger-430__opentrading_baseline__r2",
+      "generation": "6:0:0",
+      "tool": "calculate",
+      "classification": "native_loop_guard_denial",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m5-stale-528__dsh__r2",
+      "generation": "0:0:1",
+      "tool": "session_search",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m3-update-517__dsh__r2",
+      "generation": "0:0:0",
+      "tool": "session_search",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m3-update-517__dsh__r2",
+      "generation": "0:0:1",
+      "tool": "session_search",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m3-update-517__dsh__r2",
+      "generation": "3:0:0",
+      "tool": "session_search",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m3-update-517__dsh__r2",
+      "generation": "3:0:1",
+      "tool": "session_search",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m3-update-517__dsh__r2",
+      "generation": "4:0:0",
+      "tool": "session_event_read",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m3-update-517__dsh__r2",
+      "generation": "5:0:0",
+      "tool": "session_event_read",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m3-update-517__dsh__r2",
+      "generation": "6:0:0",
+      "tool": "session_event_read",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m3-update-517__dsh__r2",
+      "generation": "7:0:0",
+      "tool": "session_event_read",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m3-update-517__dsh__r2",
+      "generation": "10:0:0",
+      "tool": "session_search",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m3-update-517__dsh__r2",
+      "generation": "10:0:1",
+      "tool": "session_search",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m3-update-517__dsh__r2",
+      "generation": "11:0:0",
+      "tool": "session_trace",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m3-update-517__dsh__r2",
+      "generation": "11:0:1",
+      "tool": "session_search",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m3-update-517__dsh__r2",
+      "generation": "12:0:0",
+      "tool": "session_event_search",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m3-update-517__dsh__r2",
+      "generation": "12:0:1",
+      "tool": "session_event_read",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m3-update-517__dsh__r2",
+      "generation": "13:0:0",
+      "tool": "session_event_read",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m3-update-517__dsh__r2",
+      "generation": "13:0:1",
+      "tool": "session_event_read",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m3-update-517__dsh__r2",
+      "generation": "13:0:2",
+      "tool": "session_event_read",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m3-update-517__dsh__r2",
+      "generation": "13:0:3",
+      "tool": "session_event_read",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m3-update-517__dsh__r2",
+      "generation": "14:0:0",
+      "tool": "session_search",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m3-update-517__dsh__r2",
+      "generation": "14:0:1",
+      "tool": "session_event_search",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m3-update-517__opentrading_baseline__r2",
+      "generation": "1:0:1",
+      "tool": "memory_read",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-l5-profile-273__opentrading_baseline__r2",
+      "generation": "4:0:0",
+      "tool": "calculate",
+      "classification": "native_loop_guard_denial",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-l5-profile-273__opentrading_baseline__r2",
+      "generation": "5:0:0",
+      "tool": "calculate",
+      "classification": "native_loop_guard_denial",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-c2-ma-409__opentrading_baseline__r2",
+      "generation": "8:0:0",
+      "tool": "calculate",
+      "classification": "native_loop_guard_denial",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-c2-ma-409__opentrading_baseline__r2",
+      "generation": "21:0:0",
+      "tool": "calculate",
+      "classification": "native_loop_guard_denial",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-c2-ma-409__opentrading_baseline__r2",
+      "generation": "22:0:0",
+      "tool": "calculate",
+      "classification": "native_loop_guard_denial",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-c2-ma-409__opentrading_baseline__r2",
+      "generation": "23:0:0",
+      "tool": "calculate",
+      "classification": "native_loop_guard_denial",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-c4-rebal-426__opentrading_baseline__r2",
+      "generation": "3:0:0",
+      "tool": "calculate",
+      "classification": "native_loop_guard_denial",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-c4-rebal-426__opentrading_baseline__r2",
+      "generation": "4:0:0",
+      "tool": "calculate",
+      "classification": "native_loop_guard_denial",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-c4-rebal-426__opentrading_baseline__r2",
+      "generation": "5:0:0",
+      "tool": "calculate",
+      "classification": "native_loop_guard_denial",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-c4-rebal-426__opentrading_baseline__r2",
+      "generation": "15:0:0",
+      "tool": "calculate",
+      "classification": "native_loop_guard_denial",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m3-update-518__opentrading_baseline__r2",
+      "generation": "1:0:1",
+      "tool": "peer_compare",
+      "classification": "native_client_schema_rejection",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m3-update-518__opentrading_baseline__r2",
+      "generation": "1:0:0",
+      "tool": "memory_read",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m3-update-518__dsh__r2",
+      "generation": "0:0:0",
+      "tool": "session_search",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m3-update-518__dsh__r2",
+      "generation": "0:0:1",
+      "tool": "session_search",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m3-update-518__dsh__r2",
+      "generation": "3:0:0",
+      "tool": "session_search",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m3-update-518__dsh__r2",
+      "generation": "3:0:1",
+      "tool": "session_search",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m3-update-518__dsh__r2",
+      "generation": "4:0:0",
+      "tool": "session_event_read",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m3-update-518__dsh__r2",
+      "generation": "7:0:0",
+      "tool": "session_search",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m3-update-518__dsh__r2",
+      "generation": "7:0:1",
+      "tool": "session_search",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m3-update-518__dsh__r2",
+      "generation": "8:0:0",
+      "tool": "session_search",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m3-update-518__dsh__r2",
+      "generation": "8:0:1",
+      "tool": "session_search",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m3-update-518__dsh__r2",
+      "generation": "8:0:2",
+      "tool": "session_search",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m3-update-518__dsh__r2",
+      "generation": "9:0:0",
+      "tool": "session_trace",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m3-update-518__dsh__r2",
+      "generation": "9:0:1",
+      "tool": "session_event_read",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m3-update-518__dsh__r2",
+      "generation": "10:0:0",
+      "tool": "session_search",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m3-update-518__dsh__r2",
+      "generation": "10:0:1",
+      "tool": "session_search",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m3-update-518__dsh__r2",
+      "generation": "10:0:2",
+      "tool": "session_search",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m3-update-518__dsh__r2",
+      "generation": "11:0:0",
+      "tool": "session_event_read",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m3-update-518__dsh__r2",
+      "generation": "12:0:1",
+      "tool": "session_event_read",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m4-rule-523__opentrading_baseline__r2",
+      "generation": "1:0:0",
+      "tool": "peer_compare",
+      "classification": "native_client_schema_rejection",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m4-rule-523__opentrading_baseline__r2",
+      "generation": "1:0:1",
+      "tool": "memory_read",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m4-rule-523__dsh__r2",
+      "generation": "0:0:0",
+      "tool": "session_search",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m4-rule-523__dsh__r2",
+      "generation": "0:0:1",
+      "tool": "session_search",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m4-rule-523__dsh__r2",
+      "generation": "3:0:1",
+      "tool": "session_search",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m4-rule-521__dsh__r2",
+      "generation": "2:0:1",
+      "tool": "session_search",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m4-rule-521__opentrading_baseline__r2",
+      "generation": "1:0:1",
+      "tool": "memory_read",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m3-split-516__dsh__r2",
+      "generation": "0:0:0",
+      "tool": "session_search",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m3-split-516__dsh__r2",
+      "generation": "0:0:1",
+      "tool": "session_search",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m3-split-516__dsh__r2",
+      "generation": "2:0:0",
+      "tool": "session_search",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m3-split-516__dsh__r2",
+      "generation": "2:0:1",
+      "tool": "session_search",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m3-update-519__opentrading_baseline__r2",
+      "generation": "1:0:0",
+      "tool": "peer_compare",
+      "classification": "native_client_schema_rejection",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m3-update-519__opentrading_baseline__r2",
+      "generation": "1:0:1",
+      "tool": "memory_read",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m3-update-519__opencode__r2",
+      "generation": "3:0:0",
+      "tool": "execute",
+      "classification": "model_tool_name_error",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m3-update-519__dsh__r2",
+      "generation": "0:0:0",
+      "tool": "session_search",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m3-update-519__dsh__r2",
+      "generation": "0:0:1",
+      "tool": "session_search",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m3-update-519__dsh__r2",
+      "generation": "3:0:0",
+      "tool": "session_search",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m3-update-519__dsh__r2",
+      "generation": "3:0:1",
+      "tool": "session_search",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m3-update-519__dsh__r2",
+      "generation": "4:0:0",
+      "tool": "session_event_read",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m3-update-519__dsh__r2",
+      "generation": "5:0:0",
+      "tool": "session_event_read",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m3-update-519__dsh__r2",
+      "generation": "6:0:0",
+      "tool": "session_search",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m3-update-519__dsh__r2",
+      "generation": "6:0:1",
+      "tool": "session_search",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m3-update-519__dsh__r2",
+      "generation": "9:0:0",
+      "tool": "session_search",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m3-update-519__dsh__r2",
+      "generation": "9:0:1",
+      "tool": "session_search",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m3-update-519__dsh__r2",
+      "generation": "10:0:0",
+      "tool": "session_search",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m3-update-519__dsh__r2",
+      "generation": "10:0:1",
+      "tool": "session_search",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m3-update-519__dsh__r2",
+      "generation": "11:0:0",
+      "tool": "session_trace",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m3-update-519__dsh__r2",
+      "generation": "11:0:1",
+      "tool": "session_trace",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m3-update-519__dsh__r2",
+      "generation": "12:0:0",
+      "tool": "session_event_read",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m3-update-519__dsh__r2",
+      "generation": "12:0:1",
+      "tool": "session_event_read",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m3-update-519__dsh__r2",
+      "generation": "13:0:0",
+      "tool": "session_search",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m3-update-519__dsh__r2",
+      "generation": "13:0:1",
+      "tool": "session_search",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m3-update-519__dsh__r2",
+      "generation": "14:0:0",
+      "tool": "session_event_read",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m3-update-519__dsh__r2",
+      "generation": "15:0:0",
+      "tool": "session_event_read",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m3-update-519__dsh__r2",
+      "generation": "16:0:0",
+      "tool": "session_event_read",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m3-update-519__dsh__r2",
+      "generation": "17:0:0",
+      "tool": "session_event_read",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m3-split-515__dsh__r2",
+      "generation": "0:0:0",
+      "tool": "session_search",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m3-split-515__dsh__r2",
+      "generation": "0:0:1",
+      "tool": "session_search",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m3-split-515__dsh__r2",
+      "generation": "2:0:0",
+      "tool": "session_search",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m3-split-515__dsh__r2",
+      "generation": "2:0:1",
+      "tool": "session_search",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-c3-rschain-423__opentrading_baseline__r2",
+      "generation": "10:0:0",
+      "tool": "calculate",
+      "classification": "native_loop_guard_denial",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-c3-rschain-423__opentrading_baseline__r2",
+      "generation": "11:0:0",
+      "tool": "calculate",
+      "classification": "native_loop_guard_denial",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-c3-rschain-423__opentrading_baseline__r2",
+      "generation": "12:0:0",
+      "tool": "calculate",
+      "classification": "native_loop_guard_denial",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m4-port-525__dsh__r2",
+      "generation": "0:0:0",
+      "tool": "session_search",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m4-port-525__dsh__r2",
+      "generation": "2:0:0",
+      "tool": "session_search",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m4-port-525__dsh__r2",
+      "generation": "2:0:1",
+      "tool": "session_search",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m4-port-525__dsh__r2",
+      "generation": "4:0:0",
+      "tool": "session_search",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m4-port-525__dsh__r2",
+      "generation": "4:0:1",
+      "tool": "session_search",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m4-port-525__dsh__r2",
+      "generation": "5:0:0",
+      "tool": "session_trace",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m4-port-525__dsh__r2",
+      "generation": "6:0:0",
+      "tool": "session_event_search",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m4-port-525__dsh__r2",
+      "generation": "8:0:0",
+      "tool": "session_event_read",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m5-revoke-529__dsh__r2",
+      "generation": "0:0:0",
+      "tool": "session_search",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m5-revoke-529__dsh__r2",
+      "generation": "0:0:1",
+      "tool": "session_search",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m5-revoke-529__dsh__r2",
+      "generation": "3:0:0",
+      "tool": "session_search",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m5-revoke-529__dsh__r2",
+      "generation": "3:0:1",
+      "tool": "session_search",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m5-revoke-529__dsh__r2",
+      "generation": "4:0:0",
+      "tool": "session_event_read",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m5-revoke-529__dsh__r2",
+      "generation": "5:0:0",
+      "tool": "session_event_read",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m5-revoke-529__dsh__r2",
+      "generation": "6:0:0",
+      "tool": "session_search",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m5-revoke-529__dsh__r2",
+      "generation": "6:0:1",
+      "tool": "session_search",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m5-revoke-529__dsh__r2",
+      "generation": "7:0:0",
+      "tool": "session_event_read",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m5-revoke-529__dsh__r2",
+      "generation": "7:0:1",
+      "tool": "session_event_read",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m5-revoke-529__dsh__r2",
+      "generation": "8:0:0",
+      "tool": "session_event_read",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m5-revoke-529__dsh__r2",
+      "generation": "9:0:0",
+      "tool": "session_event_read",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m5-revoke-529__dsh__r2",
+      "generation": "10:0:0",
+      "tool": "session_search",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m5-revoke-529__dsh__r2",
+      "generation": "10:0:1",
+      "tool": "session_search",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m5-revoke-529__dsh__r2",
+      "generation": "10:0:2",
+      "tool": "session_search",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m5-revoke-529__dsh__r2",
+      "generation": "11:0:0",
+      "tool": "session_event_read",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m5-revoke-529__dsh__r2",
+      "generation": "11:0:1",
+      "tool": "session_event_read",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m5-revoke-529__dsh__r2",
+      "generation": "12:0:0",
+      "tool": "session_event_read",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m5-revoke-529__dsh__r2",
+      "generation": "12:0:1",
+      "tool": "session_event_read",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m5-revoke-529__dsh__r2",
+      "generation": "13:0:0",
+      "tool": "session_event_search",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m5-revoke-529__dsh__r2",
+      "generation": "13:0:1",
+      "tool": "session_event_search",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m5-revoke-529__dsh__r2",
+      "generation": "14:0:0",
+      "tool": "session_event_read",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m5-revoke-529__dsh__r2",
+      "generation": "15:0:0",
+      "tool": "session_event_trace",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m5-revoke-529__dsh__r2",
+      "generation": "15:0:1",
+      "tool": "session_trace",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m5-revoke-529__dsh__r2",
+      "generation": "18:0:0",
+      "tool": "session_search",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m5-revoke-529__dsh__r2",
+      "generation": "18:0:1",
+      "tool": "session_search",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m5-revoke-529__dsh__r2",
+      "generation": "19:0:0",
+      "tool": "session_search",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m5-revoke-529__dsh__r2",
+      "generation": "19:0:1",
+      "tool": "session_search",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m5-revoke-529__dsh__r2",
+      "generation": "20:0:0",
+      "tool": "session_trace",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m5-revoke-529__dsh__r2",
+      "generation": "20:0:1",
+      "tool": "session_trace",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m5-revoke-529__dsh__r2",
+      "generation": "21:0:0",
+      "tool": "session_event_read",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m5-revoke-529__dsh__r2",
+      "generation": "21:0:1",
+      "tool": "session_event_read",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m5-revoke-529__opentrading_baseline__r2",
+      "generation": "1:0:1",
+      "tool": "memory_read",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m5-revoke-529__opentrading_baseline__r2",
+      "generation": "2:0:0",
+      "tool": "memory_read",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-c1-chg-402__opentrading_baseline__r2",
+      "generation": "6:0:0",
+      "tool": "calculate",
+      "classification": "native_loop_guard_denial",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m2-screen-508__opentrading_baseline__r2",
+      "generation": "2:0:0",
+      "tool": "peer_compare",
+      "classification": "native_client_schema_rejection",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m4-port-524__dsh__r2",
+      "generation": "0:0:0",
+      "tool": "session_search",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m4-port-524__dsh__r2",
+      "generation": "3:0:0",
+      "tool": "session_search",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m4-port-524__dsh__r2",
+      "generation": "3:0:1",
+      "tool": "session_search",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    },
+    {
+      "trial_id": "fin-m4-port-524__dsh__r2",
+      "generation": "4:0:0",
+      "tool": "session_event_read",
+      "classification": "native_memory_read",
+      "financial_evidence": false
+    }
+  ],
+  "native_args_normalized": [],
+  "errors": [],
+  "usage_policy": "unknown stays partial; reservations are not observed tokens",
+  "source_review_scope": "frozen payload consistency, not external snapshot authenticity",
+  "requested_model": "deepseek/deepseek-v4.1-flash-1017",
+  "accepted_response_model": "deepseek/deepseek-v4.1-flash-1017",
+  "checkpoint_unverified": true,
+  "admission_contract": "openrouter-paid-route-user-authorized-20261110",
+  "amendment_j_relaxed_bindings": [
+    {
+      "sdk_call_id": "call_00_5xmw7ka2yuuj381ttxs1w53b",
+      "provider_index": 5,
+      "typed_values": {
+        "yf_vnd": 58470431.263672
+      },
+      "generated_arguments": {
+        "expression": "abs(vn_close - yf_vnd) / yf_vnd",
+        "unit": "%",
+        "decimals": 6,
+        "values": {
+          "vn_close": {
+            "from_call": "r2",
+            "field": "c",
+            "path": "data/closes/9",
+            "unit": "VND"
+          },
+          "yf_vnd": {
+            "from_call": "r4",
+            "value": 58470431.263672,
+            "unit": "VND"
+          }
+        }
+      },
+      "persisted_arguments": {
+        "expression": "abs(vn_close - yf_vnd) / yf_vnd",
+        "values": {
+          "vn_close": {
+            "from_call": "r2",
+            "field": "c",
+            "path": "data/closes/9",
+            "unit": "VND"
+          },
+          "yf_vnd": {
+            "value": 58470431.263672,
+            "unit": "VND"
+          }
+        },
+        "unit": "%",
+        "decimals": 6
+      },
+      "trial_id": "fin-l4-2src-258__opentrading_baseline__r2",
+      "typed_values_traced": true,
+      "untraced": {}
+    },
+    {
+      "sdk_call_id": "chatcmpl-tool-b3093294ca25358f",
+      "provider_index": 3,
+      "typed_values": {
+        "prev": 4031.39990234375,
+        "price": 3898.89990234375
+      },
+      "generated_arguments": {
+        "decimals": 6,
+        "expression": "price - prev",
+        "unit": "USD",
+        "values": {
+          "prev": {
+            "field": "prev",
+            "from_call": "r1",
+            "from_symbol": "GC=F",
+            "value": 4031.39990234375,
+            "unit": "USD"
+          },
+          "price": {
+            "field": "price",
+            "from_call": "r1",
+            "from_symbol": "GC=F",
+            "value": 3898.89990234375,
+            "unit": "USD"
+          }
+        }
+      },
+      "persisted_arguments": {
+        "expression": "price - prev",
+        "values": {
+          "prev": {
+            "value": 4031.39990234375,
+            "unit": "USD"
+          },
+          "price": {
+            "value": 3898.89990234375,
+            "unit": "USD"
+          }
+        },
+        "unit": "USD",
+        "decimals": 6
+      },
+      "trial_id": "fin-l2-gf-compare-174__opentrading_baseline__r2",
+      "typed_values_traced": true,
+      "untraced": {}
+    }
+  ],
+  "amendment": "j 2026-11-11: calculate operand with source ref + typed value, runtime kept value only; bound by SDK id/tool/turn + stripped-args equality + typed value traced to earlier bound value (plans/2026-11-11-v46u-auditor-typed-value-amendment.md)"
+}

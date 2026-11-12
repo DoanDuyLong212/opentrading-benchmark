@@ -1,0 +1,58 @@
+{
+  "task_id": "fin-l3-screen-196",
+  "scoring": "value",
+  "solution": {
+    "pass": [
+      "TRA"
+    ],
+    "filter": "ROE > 15% và P/E < 15"
+  },
+  "as_of": "2026-11-01T23:14:27.401231+07:00",
+  "split": "main",
+  "expects": [
+    {
+      "type": "set",
+      "path": "values.pass",
+      "gold": [
+        "TRA"
+      ]
+    },
+    {
+      "type": "period",
+      "path": "period",
+      "accept": [
+        "2025"
+      ]
+    },
+    {
+      "type": "str",
+      "path": "source",
+      "accept": [
+        "peer_compare"
+      ]
+    }
+  ],
+  "contract_version": 2,
+  "provenance_contract": [
+    {
+      "tool": "peer_compare",
+      "source": "vnstock",
+      "as_of": "2026-11-01T23:14:27.401231+07:00",
+      "matched_entry_id": "peer:pharma_p",
+      "response_sha256": "60178b26a3fef9be9613101eb120c04d5295e7da6d45bd20cf2b08e54ea9c115"
+    }
+  ],
+  "payload_sha256": "6d60d2b1ef429d4d80579e8bea9d10cc323e16246a3b6ee768115b8bf2b05edf",
+  "provenance_catalog": [
+    {
+      "tool": "peer_compare",
+      "source": "vnstock",
+      "as_of": "2026-11-01T23:14:27.401231+07:00",
+      "matched_entry_id": "peer:pharma_p",
+      "response_sha256": "60178b26a3fef9be9613101eb120c04d5295e7da6d45bd20cf2b08e54ea9c115"
+    }
+  ],
+  "required_payload_keys": [
+    "peer:pharma_p"
+  ]
+}

@@ -1,0 +1,37 @@
+{
+  "contract": "user-authorized-requested-route-v2",
+  "model": "nvidia/nemotron-3.5-super-vl-120b-a12b",
+  "requested_model": "nvidia/nemotron-3.5-super-vl-120b-a12b",
+  "returned_model": "private/nvidia/nemotron-3.5-super-120b-a12b",
+  "checkpoint_unverified": true,
+  "user_authorized": true,
+  "authorization_record": "2026-11-08 root coordinator relayed explicit user approval to run requested public Super VL endpoint while recording actual private identifier and checkpoint UNVERIFIED; no equivalence or checkpoint claim authorized.",
+  "function_call_verified": true,
+  "tool_loop": {
+    "status": 200
+  },
+  "canary_path": "/home/doanlong/extra/benchmark/experiments/finance-v45-study/audits/model-admission/canary-results.json",
+  "canary_sha256": "1898728aa52e96294b6a686c725dce86ac67dfb3460739a26a179681d0982533",
+  "manifest_sha256": "13c5c5982f75bdce5f9f6cc9194d3fe9fb1a3db1a65213263588d56bc3944567",
+  "case_sha256s": [
+    "49d9eed3a776397754e1369e66e3e37d79f50f5e19939729ef191c093b18766d",
+    "8efa8ce412697c8efa42943ac43149990be5a88e6ee9e9022b29e9c118cacb5c",
+    "b5e18a6972469ef0cd84b24ada64a6c39f6f313ee252f474240500f27e5f1d82",
+    "e892ee3d615faede75dd9aca1f5baf5446e8d9c5387f2e3e6cf6d13eed973d2f",
+    "3672a0d9649ac95231a4874bbd417e444c8585486e1cfe2834e43528350335bd",
+    "1a016b3733ae41e6b5d0bcbddae06b3b3db46bc2aca259cb371f4a4893b3bd22"
+  ],
+  "original_exact_identity_admission": "FAIL_PRESERVED",
+  "new_inference_calls": 0,
+  "allowed_returned_model_ids": [
+    "private/nvidia/nemotron-3.5-super-120b-a12b"
+  ],
+  "allowed_requested_model_ids": [
+    "nvidia/nemotron-3.5-super-vl-120b-a12b"
+  ],
+  "forbidden_claims": [
+    "verified_checkpoint_identity",
+    "verified_VL_equivalence",
+    "same_model_as_other_endpoint"
+  ]
+}

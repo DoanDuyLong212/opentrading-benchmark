@@ -1,0 +1,101 @@
+{
+  "task_id": "fin-l5-profile-268",
+  "scoring": "value",
+  "solution": {
+    "revenue_q_bn": 20308.0,
+    "gross_profit_q_bn": 4721.0,
+    "gross_margin_pct": 23.25,
+    "pe": 5.36,
+    "market_cap_bn": 37427.72
+  },
+  "as_of": "2026-11-01T23:20:24.726782+07:00",
+  "split": "main",
+  "expects": [
+    {
+      "type": "value",
+      "path": "values.revenue_q_bn",
+      "gold": 20308.0,
+      "tol": {
+        "rel": 0.005
+      }
+    },
+    {
+      "type": "value",
+      "path": "values.gross_profit_q_bn",
+      "gold": 4721.0,
+      "tol": {
+        "rel": 0.005
+      }
+    },
+    {
+      "type": "value",
+      "path": "values.gross_margin_pct",
+      "gold": 23.25,
+      "tol": {
+        "abs": 0.1
+      }
+    },
+    {
+      "type": "value",
+      "path": "values.pe",
+      "gold": 5.36,
+      "tol": {
+        "rel": 0.005
+      }
+    },
+    {
+      "type": "value",
+      "path": "values.market_cap_bn",
+      "gold": 37427.72,
+      "tol": {
+        "rel": 0.005
+      }
+    },
+    {
+      "type": "str_all",
+      "path": "source",
+      "accept": [
+        "financial_detail",
+        "stock_overview"
+      ]
+    }
+  ],
+  "contract_version": 2,
+  "provenance_contract": [
+    {
+      "tool": "stock_overview",
+      "source": "vietstock",
+      "as_of": "2026-11-01T23:20:24.726782+07:00",
+      "matched_entry_id": "ov:POW",
+      "response_sha256": "74a181af89ff9a66b565aa69c528dfb9b89c5c5d94022d7e3cade2e301826660"
+    },
+    {
+      "tool": "financial_detail",
+      "source": "vietstock",
+      "as_of": "2026-11-01T22:44:39.011293+07:00",
+      "matched_entry_id": "fd:POW",
+      "response_sha256": "258a4f0aa8eca1ec70afc0bc73ada8644e26ddf7e7867b2bda825ff5805472bd"
+    }
+  ],
+  "payload_sha256": "9817f0a35694f41fe03d11a5257e1bb9584c08c6dcb66bb8207244e55235e967",
+  "provenance_catalog": [
+    {
+      "tool": "stock_overview",
+      "source": "vietstock",
+      "as_of": "2026-11-01T23:20:24.726782+07:00",
+      "matched_entry_id": "ov:POW",
+      "response_sha256": "74a181af89ff9a66b565aa69c528dfb9b89c5c5d94022d7e3cade2e301826660"
+    },
+    {
+      "tool": "financial_detail",
+      "source": "vietstock",
+      "as_of": "2026-11-01T22:44:39.011293+07:00",
+      "matched_entry_id": "fd:POW",
+      "response_sha256": "258a4f0aa8eca1ec70afc0bc73ada8644e26ddf7e7867b2bda825ff5805472bd"
+    }
+  ],
+  "required_payload_keys": [
+    "fd:POW",
+    "ov:POW"
+  ]
+}

@@ -20,3 +20,19 @@ def test_pwd_env_override(tmp_path):
                                  cwd=cwd, env={"PATH": os.environ["PATH"], "PWD": "/sai/duong/dan"},
                                  timeout_s=10, log_path=log)
     assert out.strip() == cwd, "PWD env phải bị override thành cwd thật"
+
+
+def test_parent_exit_cannot_leave_pipe_holding_descendant(tmp_path):
+    import time
+    script = "import subprocess,sys; p=subprocess.Popen([sys.executable,'-c','import time;time.sleep(60)']);print(p.pid,flush=True)"
+    start = time.monotonic()
+    rc, out, err, timed_out = popen_run([sys.executable, '-c', script], str(tmp_path), dict(os.environ), 2, str(tmp_path / 'log'))
+    assert time.monotonic() - start < 3
+    assert rc == 0 and not timed_out
+    child = int(out.strip())
+    proc = '/proc/%d/stat' % child
+    # It may briefly remain a zombie waiting for init to reap it.
+    for _ in range(100):
+        if not os.path.exists(proc) or open(proc).read().split()[2] == 'Z': break
+        time.sleep(0.01)
+    else: raise AssertionError('descendant survived the runner process group cleanup')

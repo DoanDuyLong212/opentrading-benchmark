@@ -1,0 +1,45 @@
+{
+  "protocol": "financial_product_v45",
+  "model": "nvidia/deepseek-ai/deepseek-v4.1-flash",
+  "model_stratum": "deepseek",
+  "allowed_models": [
+    "nvidia/nvidia/nemotron-3.5-super-vl-120b-a12b",
+    "nvidia/deepseek-ai/deepseek-v4.1-flash"
+  ],
+  "allowed_inference_splits": [
+    "devsmoke",
+    "pilot"
+  ],
+  "opentrading_runtime_root": "/home/doanlong/extra/benchmark/experiments/finance-v46-update-study/experiments/opentrading-runtime",
+  "experiment_protocol": "plans/2026-11-09-v46-update-execution-protocol.md",
+  "experiment_protocol_dependencies": [],
+  "runs_pilot": 2,
+  "runs_main": 2,
+  "max_requests": 24,
+  "max_output_tokens": 8192,
+  "max_total_tokens": 3600000,
+  "provider_timeout_s": 240,
+  "trial_timeout_s": 900,
+  "request_interval_s": 2,
+  "effort": "none",
+  "price_per_1m": null,
+  "memory_policy": "none fresh isolatedhome/store/session eachtrial",
+  "track": "product native utility capability parity, not identicalschemas",
+  "provider_options": {
+    "temperature": 0,
+    "top_p": 1,
+    "context_window": 1048576,
+    "max_output_tokens": 8192,
+    "max_requests": 24,
+    "max_total_tokens": 3600000,
+    "provider_timeout_s": 240,
+    "request_interval_s": 2,
+    "failed_attempt_context_bound": 1048576,
+    "failed_attempt_token_reservation": 1056768,
+    "native_reasoning_capability": true,
+    "native_reasoning_mode": "off",
+    "effort_note": "none requested; backend thinking not proven disabled",
+    "native_bun_binary": "/home/doanlong/extra/benchmark/experiments/toolchains/bun-1.4.4/bun",
+    "native_bun_sha256": "10702245766b225e70bbf6235fd6b47214fd94b4760d00ffaed8ab0df57ac235"
+  }
+}

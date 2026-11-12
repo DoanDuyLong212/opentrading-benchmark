@@ -1,0 +1,75 @@
+{
+  "scope": "Actual installed MCP lowlevel handler validation with synthetic-only stub, not production changed/deployed; no financial data fetched.",
+  "sdk_version": "1.30.0",
+  "catalog_digest": "18e79cba88470f0981ad035b1729420b798f3e68d2ed2396a21113ef91df6f35",
+  "cases": {
+    "bad_interval": {
+      "content": [
+        {
+          "type": "text",
+          "text": "Input validation error: 'day' is not one of ['1D', '1W', '1M', '1d', '1w', '1m']"
+        }
+      ],
+      "isError": true
+    },
+    "wrong_columns_type": {
+      "content": [
+        {
+          "type": "text",
+          "text": "Input validation error: 'close' is not valid under any of the given schemas"
+        }
+      ],
+      "isError": true
+    },
+    "unknown_columns": {
+      "content": [
+        {
+          "type": "text",
+          "text": "Input validation error: 'close' is not one of ['t', 'o', 'h', 'l', 'c', 'v']"
+        }
+      ],
+      "isError": true
+    },
+    "valid_projection": {
+      "content": [
+        {
+          "type": "text",
+          "text": "{\n  \"source\": \"synthetic-offline-stub\",\n  \"data\": {\n    \"candles\": [\n      {\n        \"t\": \"2000-01-03\",\n        \"c\": 11\n      }\n    ]\n  }\n}"
+        }
+      ],
+      "structuredContent": {
+        "source": "synthetic-offline-stub",
+        "data": {
+          "candles": [
+            {
+              "t": "2000-01-03",
+              "c": 11
+            }
+          ]
+        }
+      },
+      "isError": false
+    },
+    "valid_input_no_data": {
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"error\": {\"code\": \"no_data\", \"retryable\": false, \"message\": \"Synthetic source returned zero candle rows; argument shape is valid.\"}}"
+        }
+      ],
+      "isError": true
+    }
+  },
+  "executed_stub_calls": [
+    {
+      "symbol": "HPG",
+      "columns": [
+        "c",
+        "t"
+      ]
+    },
+    {
+      "symbol": "EMPTY_STUB"
+    }
+  ]
+}

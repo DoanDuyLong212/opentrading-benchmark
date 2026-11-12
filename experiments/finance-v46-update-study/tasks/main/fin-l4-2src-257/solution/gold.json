@@ -1,0 +1,103 @@
+{
+  "task_id": "fin-l4-2src-257",
+  "scoring": "value",
+  "solution": {
+    "value": 0.59,
+    "price": 77893.5078125,
+    "usd": 77434.75
+  },
+  "as_of": "2026-11-01T22:54:48.999223+07:00",
+  "split": "main",
+  "expects": [
+    {
+      "type": "value",
+      "path": "value",
+      "gold": 0.59,
+      "tol": {
+        "abs": 0.05
+      }
+    },
+    {
+      "type": "unit",
+      "path": "unit",
+      "accept": [
+        "%",
+        "phần trăm"
+      ]
+    },
+    {
+      "type": "evidence",
+      "path": "note",
+      "paths": [
+        "note"
+      ],
+      "numbers": [
+        25802.0
+      ],
+      "strings": [],
+      "min_hits": 1
+    },
+    {
+      "type": "str_all",
+      "path": "source",
+      "accept": [
+        "yf_commodities",
+        "vn_crypto_ohlcv",
+        "vn_msn_fx_gold"
+      ]
+    }
+  ],
+  "contract_version": 2,
+  "provenance_contract": [
+    {
+      "tool": "yf_commodities",
+      "source": "yfinance",
+      "as_of": "2026-11-01T21:30:24.862185+07:00",
+      "matched_entry_id": "yf:main",
+      "response_sha256": "572f3a74405981b59b46941a0062d32fb1f9a7843dcec5324fade8aafce5eb22"
+    },
+    {
+      "tool": "vn_crypto_ohlcv",
+      "source": "vnstock",
+      "as_of": "2026-11-01T22:54:48.999223+07:00",
+      "matched_entry_id": "cohlcv:BTCUSDT",
+      "response_sha256": "96ff7783782a88c62a3f33171d071a340203422c619185954fb9e876ece35055"
+    },
+    {
+      "tool": "vn_msn_fx_gold",
+      "source": "msn",
+      "as_of": "2026-11-01T21:30:32.261897+07:00",
+      "matched_entry_id": "msn:main",
+      "response_sha256": "519594885077cc5cf1db891f4f2c767af217c37d76c0ec0db33e4bc7ccd196c9"
+    }
+  ],
+  "payload_sha256": "a83de05b38f6a498d640caf04351f52affc7887e47c18dad593c003d7f4fa91a",
+  "provenance_catalog": [
+    {
+      "tool": "yf_commodities",
+      "source": "yfinance",
+      "as_of": "2026-11-01T21:30:24.862185+07:00",
+      "matched_entry_id": "yf:main",
+      "response_sha256": "572f3a74405981b59b46941a0062d32fb1f9a7843dcec5324fade8aafce5eb22"
+    },
+    {
+      "tool": "vn_crypto_ohlcv",
+      "source": "vnstock",
+      "as_of": "2026-11-01T22:54:48.999223+07:00",
+      "matched_entry_id": "cohlcv:BTCUSDT",
+      "response_sha256": "96ff7783782a88c62a3f33171d071a340203422c619185954fb9e876ece35055"
+    },
+    {
+      "tool": "vn_msn_fx_gold",
+      "source": "msn",
+      "as_of": "2026-11-01T21:30:32.261897+07:00",
+      "matched_entry_id": "msn:main",
+      "response_sha256": "519594885077cc5cf1db891f4f2c767af217c37d76c0ec0db33e4bc7ccd196c9"
+    }
+  ],
+  "required_payload_keys": [
+    "cohlcv:BTCUSDT",
+    "msn:main",
+    "yf:main"
+  ]
+}

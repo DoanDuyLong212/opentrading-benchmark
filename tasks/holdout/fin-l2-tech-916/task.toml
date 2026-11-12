@@ -1,7 +1,7 @@
 # Task benchmark harness tài chính (bộ 200+50) — sinh bởi tools/build_main.py
 id = "fin-l2-tech-916"
 title = "RSI-14 SBT"
-version = 1
+version = 2
 created = "2026-11-01"
 level = "L2"
 family = "L2·D technical"
@@ -19,6 +19,8 @@ tools_expected = ["signals_technical"]
 mcp_payloads = "environment/payloads.json"
 snapshot_required = true
 split = "holdout"
+
+confirmatory_eligible = true
 
 [scoring]
 type = "value"

@@ -1,0 +1,29 @@
+# Task benchmark harness tài chính (bộ 200+50) — sinh bởi tools/build_main.py
+id = "fin-l3-index-216"
+title = "VNINDEX 10 phiên"
+version = 2
+created = "2026-11-01"
+level = "L3"
+family = "L3·F index"
+financebench_type = "temporal computation"
+entity = "VNINDEX"
+asset = "vn_stock"
+data_zone = "green"
+data_pairs = []
+snapshot_date = "2026-11-01"
+universe_cap = 0
+banned_tools = ["web_search", "web_fetch", "sentiment_score"]
+human_time_band = "15–60 phút"
+time_limit_min = 60
+tools_expected = ["vn_index_ohlcv"]
+mcp_payloads = "environment/payloads.json"
+snapshot_required = true
+split = "main"
+
+confirmatory_eligible = true
+
+[scoring]
+type = "value"
+gold = "solution/gold.json"
+oracle = "solution/oracle.py"
+grader = "tests/grader.py"

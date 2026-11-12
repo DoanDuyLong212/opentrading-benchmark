@@ -1,0 +1,61 @@
+bun test v1.4.0 (34cbb9a40)
+
+test/tui.test.tsx:
+112 | 
+113 |   if (frame !== undefined) {
+114 |     details.push(`lastFrame:\n${frame}`)
+115 |   }
+116 | 
+117 |   return new Error(details.join("\n"))
+               ^
+error: Timed out waiting for frame predicate after 20 passes
+frameId: 20
+destroyed: false
+nativeFrameCount: 20
+cellsUpdated: 0
+isRunning: true
+isRendering: false
+hasScheduledRender: true
+lastFrame:
+                                                                                                    
+    ❯ Giải thích T+2.5                                                                            · 
+                                                                                                    
+    ✘ Chưa kết nối provider. Gõ /connect để nhập API key.                                           
+                                                                                                  · 
+                                                                                                    
+                                                                                                  ⠂⠁
+                                                                                                  · 
+                                                                                                    
+                                                                                                    
+⠁⠄                                                                                                · 
+                                                                                                    
+                                                                                                    
+                                                                                                  · 
+                                                                                                    
+                                                                                                    
+                                                                                                  · 
+                                                                                                    
+                                                                                                  ⠄⡀
+                                                                                                  · 
+                                                                                                    
+                                                                                                    
+⠄⠂                                                                                                · 
+⠂⠂                                                                                                  
+                                                                                                    
+                                                                                                  · 
+                                                                                                    
+  ────────────────────────────────────────────────────────────────────────────────────────────────  
+   › Hỏi về thị trường, hoặc gõ / để xem lệnh · ↑ lịch sử · ctrl+j xuống dòng                     · 
+  ────────────────────────────────────────────────────────────────────────────────────────────────  
+   ‖ chỉ đọc (shift+tab đổi) · ? phím tắt · / lệnh                                                  
+   ▲ OpenTrading  chưa kết nối  MCP 0/1                                                             
+
+      at createWaitError (/home/doanlong/OpenTrading/node_modules/@opentui/src/testing/test-renderer.ts:117:10)
+      at <anonymous> (/home/doanlong/OpenTrading/node_modules/@opentui/src/testing/test-renderer.ts:344:11)
+      at async <anonymous> (/home/doanlong/OpenTrading/test/tui.test.tsx:817:29)
+(fail) a reply streams into the transcript with wrapping [777.58ms]
+
+ 0 pass
+ 113 filtered out
+ 1 fail
+Ran 1 test across 1 file. [7.42s]

@@ -1,0 +1,74 @@
+{
+  "kind": "v44-independent-engineering-approval-startupfix1",
+  "engineering_pass": true,
+  "created_at": "2026-11-07T07:45:18.544859+00:00",
+  "state_sha256": "5e4add17dab9d6eb5891c29afa5e34c1a257dc53aaf4f9be2353602e7fbc7f1a",
+  "audit_script": {
+    "path": "/home/doanlong/extra/benchmark/audits/financial-prompt-v44/audit-completed-run.py",
+    "sha256": "743045848cd17165ddaec9c54530cdc487f44fcbf9ce8fd3c0e40a7089a78bde"
+  },
+  "derived_verifier": {
+    "path": "/home/doanlong/extra/benchmark/audits/financial-prompt-v44/derived_verifier.py",
+    "sha256": "7f902568f4ae8e04fc96057d70a12e3a9d8b3a92292bbe6a8003f973c6e0554d",
+    "pinned_in_auditor": true
+  },
+  "proof_sha256": {
+    "/home/doanlong/extra/benchmark/audits/financial-prompt-v44/compute-wire-independent.json": "cf0ab67b08f13325fa5d5fd81689bd3f115f3d7be7b3dacc92e3399e42ce576d",
+    "/home/doanlong/extra/benchmark/audits/financial-prompt-v44/compute-wire-b1-compact-final-allowed/receipt.json": "a9784de05b6ceae57a9828f8219bb330a9a367d303cab31eae5ff67fc268f177",
+    "/home/doanlong/extra/benchmark/audits/financial-prompt-v44/compute-current-description-wire/receipt.json": "81b4ce936eb05262cd7b1a08816e2b7780b7b5c9275eae530dda3528e456f2db",
+    "/home/doanlong/extra/benchmark/audits/financial-prompt-v44/derived-verifier-check.json": "326027974309580ded7d9fcb4d694cd274d3defb713d3cf917478fe1d259363b",
+    "/home/doanlong/extra/benchmark/audits/financial-prompt-v44/auditor-helper-check.json": "2af91d9769a8b0385d2291913c3da364e670da0f5be390b026e60ec3394b0ec6",
+    "/home/doanlong/extra/benchmark/audits/financial-prompt-v44/public-contract-probes.json": "fc77567f05a593610b79443e6024d2335d6336fb2c1d4c0dc63c1dba50938eaf",
+    "/home/doanlong/extra/benchmark/audits/financial-prompt-v44/post-run-preservation.json": "515c28c371045a512636dec4d51b4ede92e48eaa5167f6b1d177a3a2d3bb925e",
+    "/home/doanlong/extra/benchmark/audits/financial-prompt-v44/native-final-binding.json": "30f47ea6568107b0469fb20deba2ea7d9fbeb29a7dcc09e02b74a140834224a0",
+    "/home/doanlong/extra/benchmark/audits/financial-prompt-v44/BENCHMARK-READINESS.json": "642c4a0b9e170dec70e5f0d03b1b850130f28f1eb59ae7a7012f7e08ef446ae7",
+    "/home/doanlong/extra/benchmark/audits/financial-prompt-v44/derived_verifier.py": "7f902568f4ae8e04fc96057d70a12e3a9d8b3a92292bbe6a8003f973c6e0554d",
+    "/home/doanlong/extra/benchmark/audits/financial-prompt-v44/inspect-compute-wire.py": "b2c2ed04bafe98740e4155c5a1b089b83c002735b72c7d3a0cb07fd9d43ac803",
+    "/home/doanlong/extra/benchmark/audits/financial-prompt-v44/check-derived-verifier.py": "7e8094927557d701a8a2d3c09ae5dce6805ca9d403470894b1e5f5a6153fe7c3",
+    "/home/doanlong/extra/benchmark/audits/financial-prompt-v44/check-auditor.py": "24c947dcb8991372f6a81b665af4b6c353b95c43b5eeb17c10c0dfe03b82970a",
+    "/home/doanlong/extra/benchmark/audits/financial-prompt-v44/OPENCODE-SECTION12-FACTCHECK.md": "43c8dd085119e5b4b0ab37d436afa1168221b6691bf7acc8d77874d8c445234f",
+    "/home/doanlong/extra/benchmark/audits/financial-prompt-v44/startup-zero-inference-independent.json": "1dac33f65039f858b7fdf9be2b47048f1cefb7c3d6cf040e5cac4ed2b0d43081",
+    "/home/doanlong/extra/benchmark/audits/financial-prompt-v44/failed-startup-zero-inference.json": "3d4d85d1111f1b05c3de6cc24a728e5c707a50e05f34f9d9051b30b1e622b02d",
+    "/home/doanlong/extra/benchmark/audits/financial-prompt-v44/failed-startup-actual-cli-diff.json": "5c9c714062376ddc28f637f23f18e101aeb51eca86e569cb59fa031a38af4e32",
+    "/home/doanlong/extra/benchmark/audits/financial-prompt-v44/BENCHMARK-READINESS-startupfix1.json": "f77f8578e8b7aab2e71cb652c1bc560fb947cef08672a57bb14ff4230f7537ec",
+    "/home/doanlong/extra/benchmark/audits/financial-prompt-v44/failed-startup-source/inventory.json": "4b17f96069e4448b7f6a93ead2e14383d11dabe4045c8e694375e9ce3a5f2626",
+    "/home/doanlong/extra/benchmark/audits/financial-prompt-v44/preinference-seal.json": "209426ec7a0c0d2778a4d5e7a524a1973684ec24748f77663115a1a9791e8124"
+  },
+  "native": {
+    "passed": 1096,
+    "skipped": 2,
+    "failed": 0,
+    "targeted_passed": 144,
+    "typecheck_exit": 0,
+    "final_prompt_focused_passed": 13
+  },
+  "benchmark": {
+    "passed": 393,
+    "failed": 0
+  },
+  "actual_B1_system": {
+    "characters": 1442,
+    "utf8_bytes": 1730
+  },
+  "independent_controls": {
+    "derived_and_financial": 23,
+    "auditor_helpers": 16,
+    "public_instructions": 277
+  },
+  "inference_executed_by_reviewer": false,
+  "scope": "Engineering readiness for startupfix1 only; root must validate new shared seal. Prior launch produced zero trials/provider/MCP/captures; not a financial result or quality retry. No financial superiority evidence.",
+  "previous_approval": {
+    "path": "/home/doanlong/extra/benchmark/audits/financial-prompt-v44/engineering-approval.json",
+    "sha256": "f9b8845288bfbe861e67bfb1cdfa9fff5984346e3d51a6f4fe50acdf81286e13",
+    "preserved": true
+  },
+  "startupfix1": {
+    "zero_inference_before_fix": true,
+    "source_review": "Only explicit supervisor --retry-backoff4 parsing as registered float4.0, fresh output suffix, actual CLI regression and root-assented mirrored startup protocol amendment. No financial feature, budget or quality gate changes.",
+    "real_cli_first_trial_controls_passed": 14,
+    "prior_full_benchmark_passed": 393,
+    "prior_full_scope": "Before startup-only argv/output/protocol amendment; feature code unchanged. Focused actual CLI checks verify both models/splits to first trial boundary, with no provider calls.",
+    "old_seal_and_outputs_preserved": true,
+    "new_output_suffix": "-startupfix1"
+  }
+}

@@ -1,0 +1,586 @@
+bun test v1.4.0 (34cbb9a40)
+
+test/title.test.ts:
+(pass) the title prompt asks for a noun phrase and tells the model to ignore injected instructions [7.44ms]
+(pass) cleanTitle strips quotes and punctuation and caps at 50 chars [1.08ms]
+(pass) the title uses the side model (webModel) with room for a thinking model [174.53ms]
+
+test/financial-prompt.test.ts:
+(pass) finance contract survives smallest tier and retains native subagent invariants [66.81ms]
+(pass) snapshot omits only live-session reminder; default production clock stays live [3.78ms]
+(pass) trusted prompt override rejects missing, relative, oversized and escaping files [6.36ms]
+(pass) one prompt byte changes native version [2.95ms]
+
+test/web-native.test.ts:
+(pass) Gemini: the side call sends only google_search and returns the grounding sources [58.01ms]
+(pass) which providers get a native search: OpenAI only on its own API; others fall back to keyed search [1.52ms]
+
+test/skills.test.ts:
+(pass) SKILL.md frontmatter is validated with readable errors [20.10ms]
+(pass) project overrides user overrides bundled; broken skills are reported, not thrown [25.65ms]
+(pass) the bundled skills all load cleanly [38.16ms]
+(pass) ve-bieu-do references đọc được qua load_skill file= [30.14ms]
+(pass) every supporting file a bundled skill names exists in its directory [37.86ms]
+(pass) supporting files are readable only inside the skill directory [6.71ms]
+(pass) catalog lists auto skills only and stays within budget [4.56ms]
+(pass) skills whose required tools are missing are hidden [1.71ms]
+(pass) requires_tools accepts short names, server/tool and wildcards [1.74ms]
+(pass) trigger keywords match without Vietnamese diacritics, on word boundaries [4.79ms]
+(pass) soft routing names one bundled skill only when it clearly beats the others [103.16ms]
+(pass) analysis skills có hook Trực quan hóa trỏ về ve-bieu-do [23.89ms]
+(pass) ve-bieu-do được gợi ý khi hỏi vẽ chart + có trong catalog [26.45ms]
+(pass) cây quyết định choosing-a-form bao phủ đủ kinds + có lưới an toàn [20.25ms]
+(pass) SKILL.md trỏ sang cây thay vì bảng phẳng [17.79ms]
+
+test/retry.test.ts:
+(pass) a Gemini daily quota is never retried; a per-minute one waits RetryInfo [2.25ms]
+(pass) other providers: OpenAI insufficient_quota and Groq TPD are daily; Groq's 'try again in' is read [0.70ms]
+(pass) retry-after headers: milliseconds, seconds and dates [0.47ms]
+(pass) overload, 5xx and network errors retry; bad requests, keys and overflow do not [1.40ms]
+(pass) backoff: 2s doubling with at most 25% jitter, capped at 30s [0.37ms]
+(pass) withRetries: retries what can recover, reports each wait, then gives up [2.43ms]
+(pass) withRetries: no retry for a daily quota or a wait longer than a minute [0.91ms]
+(pass) withRetries: Esc during the wait stops at once [21.78ms]
+(pass) the messages a user sees when quota runs out [0.80ms]
+
+test/agents.test.ts:
+(pass) agent files: frontmatter is validated with readable errors [8.42ms]
+(pass) agent roots: project beats user beats bundled; broken files are reported, not thrown [9.42ms]
+(pass) the bundled agent types load cleanly [6.51ms]
+(pass) tool filter: @chi-doc keeps read-only tools, patterns narrow, disallowedTools subtracts; excluded tools never come back [5.04ms]
+(pass) spawn_subagent lists the types in its description and rejects an unknown type before any model call [12.20ms]
+
+test/compact.test.ts:
+(pass) turns start at user messages and keep each tool call with its result [0.97ms]
+(pass) pruning empties large old tool results, keeps the last two turns and the loaded-tools line [3.21ms]
+(pass) auto: pruning alone is enough below the threshold (no request) [3.04ms]
+(pass) manual: the head is summarized; marker + summary + kept turns, and the harness state is carried [10.94ms]
+(pass) a failed or empty summary leaves the history pruned but otherwise unchanged [3.44ms]
+(pass) a second compaction folds the earlier summary in and keeps the carried state [3.22ms]
+(pass) auto-compaction triggers at 80%, waits for growth after a compaction that stayed large, and stops after 3 failures [0.42ms]
+(pass) the summary prompt asks for verbatim sourced figures and carries the user's extra instructions [0.48ms]
+(pass) one request: an <analysis> scratchpad then the <summary>; lean drops the analysis section [0.20ms]
+(pass) the stored summary drops the scratchpad; a cut-off analysis is no summary [0.60ms]
+(pass) the effective window is capped (1M models compact around 160k by default) [0.20ms]
+(pass) context-overflow wording is told apart from quota and auth errors [0.26ms]
+(pass) a short history is no error for auto-compaction (only for /compact) [0.55ms]
+(pass) loaded skills survive a second compaction (read back from the first marker) [3.05ms]
+(pass) tokensOf counts an image as IMAGE_TOKENS, but a long non-image `data` string as text [2.37ms]
+
+test/tool-desc-lint.test.ts:
+(pass) mcp catalog: cluster tools state when to use and when not (with the right alternative) [5.17ms]
+(pass) mcp catalog: descriptions stay within budget (tool schemas ride on every load_skill/tool_search) [3.05ms]
+(pass) mcp catalog: 'dùng X' cross-references point at real tools (no dead names like valuation_band) [4.48ms]
+(pass) builtin tools follow the Claude standard: purpose + when + (when not) + bounded length [12.20ms]
+(pass) todo_write input keeps the Claude state contract (2 forms of wording are not required, statuses are) [0.57ms]
+
+test/tool-nudge.test.ts:
+(pass) anthropic: the nudge joins the tool results in one user turn [67.53ms]
+(pass) google: the nudge is merged into the function-response turn, so turns alternate [9.60ms]
+(pass) mergeGeminiTurns only joins neighbours with the same role [0.31ms]
+(pass) the nudge is sent only on routes whose request shape was checked [0.43ms]
+
+test/mcp-real-results.test.ts:
+(pass) from_call reads real candles: vn_quote_history (t/o/h/l/c/v) and vn_equity_ohlcv (time/open/…) [31.85ms]
+(pass) the /watchlist panel reads real quotes: price, % (already in percent) and volume [3.51ms]
+
+test/subagent.test.ts:
+(pass) end to end: the child runs its own loop and the parent gets its report with a metadata trailer [236.02ms]
+(pass) parallel spawns beyond subagents.maxConcurrent wait for a slot instead of failing [243.59ms]
+(pass) a child that fails with nothing to show fails the call; the error reaches the parent model [70.07ms]
+(pass) stopping the parent stops the child and frees its slot [77.03ms]
+(pass) a child's write tool asks in the parent's gate, labelled with the subagent [77.13ms]
+(pass) config subagents.model sends children to another model; a model without tools fails fast [90.25ms]
+(pass) a denied child write reaches the child as a denial; without a UI (headless) it is refused [124.91ms]
+(pass) a subagent model that cannot be used falls back to the session's model [82.20ms]
+(pass) the main agent's prompt does not change with the subagent role in place; identity.md is sent whole [7.28ms]
+(pass) an agent type brings its instructions, tool filter, step limit and model [57.28ms]
+(pass) background: the call returns at once with the id; the result arrives through onFinished; Esc on the parent does not stop it [44.06ms]
+(pass) send_message: queued for a running agent, resumes a finished one with its conversation, and rebuilds one from its sidechain [79.22ms]
+(pass) stop_agent stops a running background agent; its partial result still notifies [16.07ms]
+(pass) a subagent's sidechain holds tool errors cleaned, like the main history [31.33ms]
+(pass) reasoning-delta phát event progress cho UI/watchdog [18.64ms]
+(pass) watchdog không giết run còn reasoning khi idleMs nhỏ [1274.79ms]
+(pass) watchdog đọc idleMs: run im lặng bị dừng theo idleMs thay vì chờ 5 phút [2460.73ms]
+(pass) request treo trước part đầu bị cắt bằng lỗi stall [383.53ms]
+(pass) stream treo giữa chừng (sau 1 reasoning chunk) bị cắt bằng lỗi stall [418.42ms]
+(pass) dừng giữa chừng vẫn giữ tool call/result đã hoàn thành trong sidechain [107.66ms]
+(pass) subagents.model auto: con chạy model lite tự chọn và có notice [344.22ms]
+(pass) subagents.model auto: không có model khớp thì quay về model phiên + notice [156.26ms]
+(pass) idleMs không hợp lệ (0) bị bỏ qua, dùng mặc định 5 phút [1388.29ms]
+
+test/ui-text.test.ts:
+(pass) truncate cuts to terminal cells with …, keeping Vietnamese accents intact [12.67ms]
+(pass) truncate keeps column alignment when asked (tool output: tables, charts) [0.93ms]
+(pass) rank: exact, then prefix (shorter first), substring, in-order letters, description; accent-insensitive [4.01ms]
+
+test/tui.test.tsx:
+(pass) home screen shows branding and connect hint [177.72ms]
+(pass) the slash-command list: one line per command, straight columns, wraps with the arrow keys [208.22ms]
+(pass) '/' + ↓ + enter runs the highlighted command (never sends '/') [173.23ms]
+(pass) esc closes the '/' list until the draft changes; tab then does nothing [410.41ms]
+(pass) an unknown /command is reported and kept for editing, never sent to the model [111.16ms]
+(pass) /save and /export before any turn say there is nothing to save [32.69ms]
+(pass) chat before connecting shows a readable error instead of crashing [73.19ms]
+(pass) tab completes a partial command, enter opens it [184.59ms]
+(pass) enter on a partial command runs the highlighted suggestion [178.70ms]
+(pass) /connect saves a masked key and lists that provider's chat models [370.61ms]
+(pass) /model lists models from every connected provider [403.42ms]
+(pass) a reply streams into the transcript with wrapping [1112.23ms]
+(pass) switching to an OpenAI-compatible provider routes to its base URL [277.28ms]
+(pass) an invalid key surfaces as a Vietnamese error line [181.00ms]
+(pass) /mcp: grouped list → server menu → tools → tool detail, esc steps back [415.94ms]
+(pass) /mcp server screen: a page-long error or prompt list never draws rows over each other [398.20ms]
+(pass) /mcp: space turns a server off and on (saved to mcp.json); catalog entries open their own screen [3547.90ms]
+(pass) /mcp: enabling an OAuth catalog entry connects, then starts the login (no stuck screen) [965.52ms]
+(pass) /mcp: a pasted token is never shown on screen [246.66ms]
+(pass) /tools lists built-in and MCP tools [326.41ms]
+(pass) a lone '/' + enter is never sent to the model [3.11ms]
+(pass) MCP prompts are slash commands: suggested, argument-checked, sent as the user's message [210.78ms]
+(pass) /profile creates INVESTOR.md from a template [40.90ms]
+(pass) /context shows each prompt layer with its token estimate [80.72ms]
+(pass) a retried request shows one wait line, rewritten per retry, then the answer [118.41ms]
+(pass) a tool call renders as a ● row with its result under ⎿, then the answer [161.99ms]
+(pass) a write tool asks first: esc denies just that call (the turn goes on), 2 allows for the session [632.76ms]
+(pass) esc on the approval prompt denies that call without stopping the turn [49.23ms]
+(pass) esc with the '/' list open while answering closes the list, not the answer; a second esc stops it [467.25ms]
+(pass) 80×24: panels and the '/' list keep their hint line and the status bar on screen [363.09ms]
+(pass) 80×24: a full todo panel and the '/' list still leave the prompt, hint and status bar on screen [86.36ms]
+(pass) ask_user: one single-choice question sends on pick and the turn goes on [198.56ms]
+(pass) ask_user: esc declines without stopping the turn; 'Khác' takes a typed answer [538.38ms]
+(pass) ask_user: several questions have tabs, multi-select and a review before sending [353.78ms]
+(pass) Ctrl+C like Claude Code: the first press clears the draft and says press again; a second within 800 ms exits [2799.92ms]
+(pass) Ctrl+C while answering stops the answer (and arms exit); on an approval it denies [2044.96ms]
+(pass) highlighting with the mouse copies the words only (no ● / ⎿, no trailing spaces) and says so [239.54ms]
+(pass) an approval in the middle of a question set keeps the answers already picked [215.89ms]
+(pass) an approval while a panel is open keeps what was typed there; the panel ignores keys meanwhile [282.87ms]
+(pass) approval note: a note abandoned with esc is not sent later [170.51ms]
+(pass) /new starts a fresh session; /sessions reopens the previous one with its tool rows [185.48ms]
+(pass) /save copies the whole conversation as Markdown; /export writes it to a file, never replacing one unasked [232.66ms]
+(pass) /memory: a model proposal is pending until approved with 'a' [160.27ms]
+(pass) /config turns memory off and on without a restart [164.68ms]
+(pass) /config: subagent limit is a number ≥ 1 applied live; subagent model lists tool-capable models and can go back to the session's [443.52ms]
+(pass) todo_write: the open list is pinned above the prompt, the transcript keeps one line, /new clears it [184.17ms]
+(pass) status bar shows the share of the context window used [80.88ms]
+(pass) /compact summarizes the start of the conversation, keeps the last turns, and shows one line (ctrl+o: the summary) [399.81ms]
+(pass) /compact is refused while an answer is streaming [39.41ms]
+(pass) near the window, sending a message compacts first, then answers on the compacted history [475.16ms]
+(pass) prompt: long text wraps onto new lines and the box grows instead of scrolling sideways [100.66ms]
+(pass) prompt: Shift+← highlights, Backspace deletes the highlight; typing replaces it [169.95ms]
+(pass) prompt: dragging over the prompt copies and keeps the highlight, so typing replaces it [206.18ms]
+(pass) prompt: Ctrl+J and  + Enter add a line; Enter alone sends [83.95ms]
+(pass) prompt: a pasted CR or CRLF (Windows Terminal) becomes a line break [186.00ms]
+(pass) prompt: with the kitty keyboard protocol, Ctrl+J and Shift+Enter add a line [83.87ms]
+(pass) prompt: ↑/↓ recall earlier prompts and slash commands, and give the draft back [389.55ms]
+(pass) prompt: Ctrl+R searches the history; Esc keeps the match to edit [411.22ms]
+(pass) prompt: Ctrl+S puts the draft aside and brings it back [207.86ms]
+(pass) prompt: a long paste becomes one pill; one Backspace deletes it; sending puts the text back in place [321.85ms]
+(pass) prompt: pasting over a highlight replaces it with the pill, which still expands [147.14ms]
+(node:2510164) Warning: AI SDK Warning System: To turn off warning logging, set the AI_SDK_LOG_WARNINGS global to false.
+(Use `bun --trace-warnings ...` to show where the warning was created)
+"AI SDK Warning System: To turn off warning logging, set the AI_SDK_LOG_WARNINGS global to false."
+(node:2510164) [AISDK_DEP_IMAGE_CONTENT_PART] DeprecationWarning: AI SDK Warning: Deprecated: ""image" content part". The "image" content part type is deprecated. Use a "file" part with mediaType: 'image' (or a more specific image/* subtype) instead.
+"AI SDK Warning: Deprecated: \"\"image\" content part\". The \"image\" content part type is deprecated. Use a \"file\" part with mediaType: 'image' (or a more specific image/* subtype) instead."
+(pass) prompt: Alt+V pastes a clipboard image as [Image #N]; blocked for a text-only model, sent to a vision model [379.50ms]
+(pass) prompt: no image in the clipboard is reported, nothing is inserted [61.28ms]
+(pass) prompt: a message sent while answering waits, shows above the prompt, then goes next [353.32ms]
+(pass) prompt: after Esc stops the answer, queued messages come back to the prompt; ↑ also takes them back [333.64ms]
+(pass) prompt: Ctrl+G edits the prompt in $EDITOR; untouched pastes go back into their pill [1038.58ms]
+(pass) prompt: a message typed during /compact is sent once the compaction ends [749.08ms]
+(pass) subagents: parallel spawns render as one block; over the limit one waits for a slot; ctrl+o shows the brief and report [388.84ms]
+(pass) subagents: a child's write tool asks in the main prompt, named after the subagent; the answer shows under its call [812.25ms]
+(pass) /agents lists the subagent types by source; ctrl+r picks up a new file; enter shows the tools it resolves to [227.29ms]
+(pass) background subagent: the answer ends at once; /tasks and ⧗ show it running; when done its result is sent to the model on its own turn [654.79ms]
+(pass) subagent row: between two model steps it shows the last tool, not 'Đang khởi động…' [547.93ms]
+(pass) background subagent: /clear stops it and its result never reaches the new conversation [588.76ms]
+(pass) /watchlist: edits by command, opens a list and shows live quotes from the MCP quote tool [293.44ms]
+(pass) the third identical call asks before it runs; esc stops the loop and the turn answers [650.82ms]
+
+test/tool-output.test.ts:
+(pass) tool results carry images only to models that can see them [24.78ms]
+(pass) stripImages turns stored image results into text [1.27ms]
+(pass) schema flavor follows the provider and model [0.68ms]
+(pass) schemas are sanitized per flavor and cached per definition [3.34ms]
+
+test/mcp-schema.test.ts:
+(pass) fixtures are the real captures [0.50ms]
+(pass) real server schemas: no property is ever lost, for both flavors [181.21ms]
+(pass) real server schemas come out provider-safe [107.82ms]
+(pass) parameters named like keywords survive (pattern, title, description, default) [2.22ms]
+(pass) synthetic: $ref (incl. cycles) is inlined, const becomes enum, tuples and arrays get items [5.49ms]
+(pass) synthetic: a root union keeps every variant's parameters (as optional) [2.72ms]
+(pass) Gemini: non-string enums keep their type and move into the description [1.06ms]
+(pass) oversized schemas are compacted without losing parameters [3.39ms]
+
+test/model-pick.test.ts:
+(pass) google kết nối thì chọn gemini-3.5-flash-lite [1.61ms]
+(pass) google không kết nối, groq kết nối thì chọn llama instant [0.52ms]
+(pass) không có ứng viên nào thì trả undefined [0.34ms]
+(pass) restrictTo chỉ xét đúng provider đó [0.57ms]
+(pass) bỏ qua model không gọi được tool hoặc context dưới 64k [0.77ms]
+
+test/paths.test.ts:
+(pass) state paths follow OPENTRADING_HOME changes after import [13.86ms]
+(pass) each state dir gets its own catalog [22.07ms]
+
+test/tool-errors.test.ts:
+(pass) invalid input: one Vietnamese line per issue, without the echoed input or zod JSON [13.09ms]
+(pass) repair and unknown-tool errors lose the SDK wrapping; plain errors lose 'Error: ' [2.49ms]
+(pass) cleanToolErrors rewrites error-text results only, and returns the same array when nothing changes [0.98ms]
+(pass) resumed sessions show old raw error strings cleaned [0.72ms]
+
+test/tool-search.test.ts:
+(pass) select: takes full names, server/tool and unambiguous short names [8.99ms]
+(pass) select: an ambiguous or unknown name is explained, the rest still loads [2.78ms]
+(pass) keywords match names, hints, descriptions and parameters, without diacritics [15.81ms]
+(pass) mcp__server lists one server's tools; no match names the servers [8.46ms]
+(pass) loaded tools come back from history, even when the search result was cut [3.74ms]
+(pass) the deferred list falls back to per-server counts over budget [1.45ms]
+(pass) deferred local tools keep their names: they have no mcp__ prefix to search by [4.41ms]
+(pass) Vietnamese market terms also match English descriptions [8.03ms]
+(pass) only domain-neutral phrases expand; tool vocabulary lives in the tools' own hints [0.79ms]
+(pass) keyword search loads only hits close to the best one (loading is permanent) [10.90ms]
+
+test/routing-eval.test.ts:
+(pass) labels name real catalog tools and bundled auto skills [326.60ms]
+{"dev":{"toolCases":48,"toolHits":37,"skillPositives":33,"skillHits":30,"skillNegatives":20,"negativesSuggested":5,"suggestions":44,"rightSuggestions":30},"heldout":{"toolCases":22,"toolHits":14,"skillPositives":13,"skillHits":12,"skillNegatives":7,"negativesSuggested":0,"suggestions":16,"rightSuggestions":12},"all":{"toolCases":70,"toolHits":51,"skillPositives":46,"skillHits":42,"skillNegatives":27,"negativesSuggested":5,"suggestions":60,"rightSuggestions":42}}
+(pass) routing does not regress below the recorded floors [4279.68ms]
+
+test/session.test.ts:
+(pass) a session is created lazily, written turn by turn, and read back identically [7.84ms]
+(pass) continuing a session appends to the same file; newest session is listed first [4.27ms]
+(pass) a torn last line (crash mid-write) is skipped [3.48ms]
+(pass) tool calls without results are closed with an interrupted error [0.69ms]
+(pass) closeDanglingToolCalls nhận lý do vá tuỳ biến [0.28ms]
+(pass) the transcript is rebuilt without reminder blocks [0.48ms]
+(pass) tools loaded by tool_search survive a resume (derived from the stored history) [3.03ms]
+(pass) the todo list survives a resume (derived from the stored history) [3.07ms]
+(pass) a compaction replaces the model's history on resume; the transcript still shows everything [7.23ms]
+(pass) a chart drawn during a turn is written with the turn and comes back on resume, keyed by its tool call [6.86ms]
+(pass) sessions updated in the same millisecond list the one written last first [5.47ms]
+(pass) a generated title reaches the session list at once, even after a single turn [3.57ms]
+
+test/retry-google.test.ts:
+(pass) Gemini per-minute 429: retried after RetryInfo, then answers [48.99ms]
+(pass) Gemini daily quota: one request, the error says the quota is gone [9.46ms]
+(pass) Esc during a real wait ends the stream at once, without another request [52.80ms]
+
+test/prompt.test.ts:
+(pass) market phases come from calendar data [2.94ms]
+(pass) system prompt has a fixed layer order and is byte-identical when nothing changes [2.75ms]
+(pass) the market clock is re-sent only when a phase changes [4.00ms]
+(pass) trigger hits add a skill hint reminder; manual and sticky skills behave [3.25ms]
+(pass) investor profile rides the static system prefix, capped per tier, and never into context [1.52ms]
+(pass) tier C keeps style (reader-language rules cannot be dropped) and the market clock [1.54ms]
+(pass) no tools: no tool guidance, no skill catalog [0.71ms]
+(pass) prompt text is read from prompts/*.md, so edits apply without code changes [2.47ms]
+(pass) budget helpers [0.48ms]
+(pass) deferred tools are listed by server in system, after the skill catalog; skills may need deferred tools [2.62ms]
+(pass) MCP server instructions go to system, framed below the invariants, within budget [3.37ms]
+(pass) tool guidance lives in one place and presentation defaults preserve the output contract [2.41ms]
+
+test/model-filter.test.ts:
+(pass) Google: only chat models that call tools are offered [0.59ms]
+(pass) other providers: guards, rerankers, embeddings, audio, OCR and alpha are hidden; real chat models stay [0.22ms]
+(pass) matching is on id segments, and a missing tool_call counts as yes [0.22ms]
+(pass) the configured model is always listed, even when the filters hide it [0.53ms]
+
+test/session-tools.test.ts:
+(pass) session_get turns: each question keeps the last answer text of its turn, tool steps are skipped [0.84ms]
+(pass) doctor_local names providers (never keys), the data folder, MCP errors and skills hidden for missing tools [1.95ms]
+
+test/skill-lint.test.ts:
+(pass) bundled skills only name tools that exist (MCP fixture + local tools) [0.17ms]
+(pass) trigger keywords never fold onto everyday words ('nến' vs 'nên') and are not catch-alls [0.11ms]
+(pass) catalog lines fit 250 characters, headings are Vietnamese, write tools are never preloaded [0.09ms]
+(pass) an everyday question does not pull in the chart skill [55.75ms]
+(pass) load_skill preloads uses_tools (not every gate tool) and refuses a skill whose required tools are missing [3.97ms]
+
+test/empty-answer.test.ts:
+(pass) Gemini's raw finish reason and finishMessage reach the finish-step part relay reads [8.79ms]
+(pass) emptyReason names what the provider said, and stays quiet on a plain stop [0.48ms]
+
+test/chart-ui.test.tsx:
+(pass) the tool row shows a one-line summary and the coloured chart is drawn once, no ASCII art [620.50ms]
+(pass) a chart line paints up candles green and down candles red [184.50ms]
+(pass) a multiline chart paints each series in its own colour [174.70ms]
+(pass) trục X mọi chart thẳng hàng: marker ┤/│ cùng cột, plot cùng rộng [9.32ms]
+(pass) nến có volume thì vẽ pane volume màu hướng nến, không thì thôi [2.78ms]
+(pass) bar diverging: âm trái, dương phải, vạch 0 giữa [4.98ms]
+(pass) scatter phân nhóm: legend 2 màu + trục X theo x [2.77ms]
+(pass) area fill đủ: không còn lỗ hổng dưới đường [4.59ms]
+(pass) pie thanh tỷ lệ + donut thanh + boxplot mũ râu + histogram viền [6.69ms]
+(pass) compare nhận domain tùy biến + trục X [4.38ms]
+(pass) date quá dài quay dọc dưới cột nến [1.50ms]
+(pass) bar chung gốc 0: │ cùng cột mọi dòng, số âm sát thanh [1.18ms]
+(pass) bar có viền ngăn từng thanh + nhãn dài wrap đều [1.61ms]
+(pass) histogram có viền + vạch ngăn [0.63ms]
+(pass) trục X có đường ngang + chấm từng điểm [1.90ms]
+(pass) unit hiện ở tiêu đề mọi chart [4.71ms]
+(pass) compare giữ trục Y riêng từng series [4.06ms]
+
+test/chart-refs.test.ts:
+(pass) an MCP result with a data array is stamped [ref rN] and kept whole; plain text is not [2.10ms]
+(pass) chart_render from_call draws candles from the stored result, oldest first, without the model typing numbers [14.97ms]
+(pass) chart_compare from_calls compares the close series of two results [7.96ms]
+(pass) input checks: OHLC must be consistent, times must match the points, multiline takes 60 points [20.96ms]
+(pass) candles: resampling merges OHLC (keeps the extremes), the title counts every session, the axis labels the drawn range [3.86ms]
+(pass) compare: a shorter series is right-aligned; heatmap with ± values is centred on 0 [4.34ms]
+(pass) batch ref: chart_compare splits one result into one labelled series per symbol [9.96ms]
+(pass) single-symbol results in the batch shape are labelled by their symbol, not the ref [2.63ms]
+(pass) batch ref: chart_render never draws the first symbol by default; from_symbol or a leading ticker picks one [13.43ms]
+(pass) a single-symbol ref refuses a display name naming another stored result's symbol, or another from_symbol [29.22ms]
+(pass) a batch of more than five symbols is fully seen; a large nested result is walked quickly [135.30ms]
+(pass) % over the period is close to close everywhere: candle summary, candle header and chart_compare agree [13.08ms]
+(pass) bar with a matrix (grouped bars) says which kinds draw several series [6.41ms]
+
+test/watchlist-local.test.ts:
+(pass) local watchlist CRUD roundtrip, stored under the runtime's home [21.00ms]
+(pass) watchlist tools are deferred until loaded and only the list is read-only [3.16ms]
+(pass) a corrupted watchlists.json is refused, never overwritten with an empty store [7.61ms]
+(pass) symbols given as one comma string are split, uppercased and checked [11.30ms]
+(pass) rename and get; an unknown list names the existing ones [11.69ms]
+(pass) parallel adds in one step keep every symbol [11.16ms]
+
+test/todos.test.ts:
+(pass) todo_write accepts a valid list and reports progress on the first line [2.48ms]
+(pass) todo_write rejects two in_progress items and duplicates with a fix-it message [2.30ms]
+(pass) currentTodos is the last accepted list in history; rejected calls are ignored [1.12ms]
+(pass) a list the model stops updating expires after two user turns (it belonged to an earlier question) [0.79ms]
+(pass) open todos are recited in the turn's reminder; a finished list is not [5.70ms]
+(pass) the panel shows at most 6 rows: doing and waiting first, in the model's order [0.81ms]
+
+test/clipboard.test.ts:
+(pass) clipboard command per OS: PowerShell (UTF-8 stdin, never clip.exe), pbcopy, wl-copy/xclip/xsel [0.60ms]
+(pass) writeClipboard: text over maxOsc52 skips OSC52 but still reaches the OS command, with its timeout [1.26ms]
+(pass) writeClipboard sends OSC52 and hands the exact text (Vietnamese intact) to the OS command [0.67ms]
+(pass) copied text is cleaned: no trailing spaces on any line, no trailing blank lines [0.19ms]
+(pass) the TUI uses no emoji-prone glyphs [5.93ms]
+
+test/mcp-prompts.test.ts:
+(pass) getPrompt fails with a message for an unknown prompt or server [1438.52ms]
+
+test/tools.test.ts:
+(pass) truncate keeps head and tail with a marker [0.41ms]
+(pass) long output is truncated before the model sees it [0.92ms]
+(pass) a tool that ignores its signal still times out and releases the lock [51.65ms]
+(pass) errors are rethrown as Error with the tool's message [0.71ms]
+(pass) structured chart payloads survive runTool for the TUI [0.69ms]
+(pass) read-only tools overlap, write tools run one at a time [92.44ms]
+(pass) abort rejects a running tool [0.99ms]
+(pass) finished tool calls do not leave abort listeners on the turn's signal [1.31ms]
+(pass) current_time reports Vietnam time [1.22ms]
+(pass) load_skill returns a body, refuses manual skills and unknown names [0.94ms]
+(pass) load_skill loads the deferred tools a skill requires (first line, for the agent loop) [1.20ms]
+(pass) registry builds a sorted AI SDK tool set and unregisters by prefix [1.13ms]
+(pass) prompt arguments: positional with free-text tail, by name, missing required [1.28ms]
+(pass) long tool errors are cut before the model sees them [0.95ms]
+
+test/net-dates.test.ts:
+(pass) the value stock_overview sent on 11/10 is Friday 09/10 14:54 Vietnam time; midnight stays a date [0.45ms]
+(pass) only whole quoted .NET date values are rewritten, escaped slashes included [0.41ms]
+(pass) an MCP result reaches the model and the chart ref with ISO dates; a local tool's text is left alone [0.96ms]
+
+test/chart.test.ts:
+(pass) chart_render candlestick needs >=5 bars [4.95ms]
+(pass) chart_render line and sparkline [3.57ms]
+(pass) chart_depth renders ladder and rejects empty book [1.74ms]
+(pass) chart output is plain text: no ANSI codes reach the model or the transcript [7.44ms]
+(pass) chart_render gauge donut histogram heatmap winloss [4.03ms]
+(pass) chart_render returns structured chart data for the TUI, text only for the model [4.46ms]
+(pass) chart_compare puts each series on its own row, on one shared % scale [1.99ms]
+(pass) chart_render pie: proportional rows sorted desc, % of total, skips <=0 slices [2.51ms]
+(pass) chart_render waterfall: cumulative bars, delta and running total, start/end markers [3.78ms]
+(pass) chart_render multiline: distinct markers per series on one axes, legend after [2.38ms]
+(pass) chart_render stacked: shades per component, totals and legend [3.38ms]
+(pass) chart_render boxplot: whiskers, box, median and min/Q1/median/Q3/max values [2.94ms]
+(pass) chart_render scatter sparkcolumn linebox from the library [3.81ms]
+(pass) chart tools passthrough dữ liệu mới: volume nến, groups scatter, domain compare [6.03ms]
+
+test/mcp.test.ts:
+(pass) tool names are sanitised, length-limited and collision-free [0.81ms]
+(pass) env expansion supports defaults and reports missing variables [0.72ms]
+(pass) MCP results: text, structured fallback, images kept for the model, isError throws [0.80ms]
+(pass) config: project overrides global, invalid entries become errors [5.49ms]
+(pass) connects to the demo server over stdio and calls its tools [1089.32ms]
+(pass) stop() leaves no server process behind [1212.11ms]
+(pass) a server that cannot start is reported as failed, not thrown [8.19ms]
+(pass) missing env vars fail fast with the variable name [2.68ms]
+(pass) project servers wait for approval, then connect [1024.91ms]
+(pass) approval is tied to what runs: changing env or cwd asks again [1.06ms]
+(pass) disabled servers are not started [2.16ms]
+
+test/web-quota.test.ts:
+(pass) a 429 on the side calls is sent once, not three times (no SDK retries) [9.00ms]
+(pass) a model out of quota is skipped for 10 minutes, then tried again; another model is not affected [3.06ms]
+(pass) web_search reports the quota once in plain words and still answers from a fallback [3.85ms]
+
+test/agent.test.ts:
+(pass) calls a tool, feeds the result back and answers [28.37ms]
+(pass) native main loop loads trusted finance prompt and exposes repair feedback before a corrected call [28.28ms]
+(pass) a tool that throws is reported to the model, not raised [16.88ms]
+(pass) an unknown tool name does not crash the loop [17.76ms]
+(pass) hitting the step limit forces a final answer without tools [23.95ms]
+(pass) the step limit comes from config.maxSteps when the caller does not set one [62.72ms]
+(pass) without a configured cap the turn is not limited to 10 steps [117.20ms]
+(pass) a per-minute 429 is retried until success, and every wait is shown [22.60ms]
+(pass) a daily-quota 429 is not retried and says so [9.17ms]
+(pass) a failure after a tool ran retries only the failed request [18.87ms]
+(pass) each round of tool results gets one unstored nudge; the last step gets only the summary prompt [29.77ms]
+(pass) aborting mid-tool leaves no dangling tool call in history [35.33ms]
+(pass) an empty answer after a tool result is retried once with tools disabled [34.19ms]
+(pass) a model that stays silent gets a visible notice, not a blank turn [29.96ms]
+(pass) rate-limit errors wrapped in RetryError still read as quota errors [2.18ms]
+(pass) context rides on the first user message; reminders are kept in history, the profile is not [27.65ms]
+(pass) memory: active items reach the model (index + recall) and the UI is told; pending ones do not [17.49ms]
+(pass) hooks: a blocking user-prompt hook stops the turn before the model is called [24.42ms]
+(pass) models without tool support get no tools [23.65ms]
+(pass) more tools than the provider allows: capped at 128, MCP after native, told once [55.99ms]
+(pass) images in history never reach a model that cannot see them [20.80ms]
+(pass) tool search: many MCP tools go out by name only; a loaded tool is callable at the next step [149.40ms]
+(pass) tool search: keyword search finds tools by description, ignoring diacritics [56.95ms]
+(pass) tool search: calling a deferred tool before loading it loads it — the error says call again, with its parameters [81.58ms]
+(pass) tool search: the exact name of a deferred tool is loaded by the call itself [43.07ms]
+(pass) tool search: sessions saved with the SDK's raw error strings still load the tool [1.74ms]
+(pass) tool search: an unknown name tells the model to search first [42.29ms]
+(pass) tool search: few MCP tools are sent directly in auto mode; 'on' defers them anyway [34.49ms]
+(pass) tool search: alwaysLoad tools are never deferred [32.92ms]
+(pass) tool search: the forced last step keeps loaded tools declared [49.79ms]
+(pass) tool search: load_skill loads the skill's deferred tools for the next step [61.37ms]
+(pass) MCP server instructions reach the system prompt [11.09ms]
+(pass) a todo_write the tool rejects is recorded as an error, so the list comes from the next valid call [50.99ms]
+(pass) done carries the context size: provider usage of the last step, else an estimate [24.67ms]
+(pass) the compaction summary is asked with the turn's system prompt and visible tools, tools off, the prompt last [102.86ms]
+(pass) a summary cut off at the output limit is rejected, not used [11.19ms]
+(pass) quota errors that mention tokens never trim the head; a real overflow drops the oldest turn and retries [40.12ms]
+(pass) while todo items are open, the nudge after tool results lists them and asks to close them before answering [43.65ms]
+(pass) tool errors reach the model without the SDK's prefixes: a wrong argument is one Vietnamese line, never the input echoed [27.88ms]
+(pass) a thrown tool error reaches the model as its message, without 'Error: ' [23.71ms]
+(pass) a deferred tool with wrong arguments, called before loading, is loaded (its arguments are never checked first) [48.30ms]
+(pass) a loaded tool cut by the per-request cap is reported as such, not as 'loaded, call again' (no loop) [262.48ms]
+(pass) the deferral notice counts built-in tools apart from MCP ones [30.87ms]
+(pass) a request waiting on a 429 retry is not cut by the stall timer [1012.19ms]
+(pass) an aborted turn keeps each step's text once [33.23ms]
+
+test/memory.test.ts:
+(pass) proposals stay pending and invisible until approved [5.22ms]
+(pass) reject and remove delete the file [2.26ms]
+(pass) memories are readable markdown files [1.23ms]
+(pass) "Ghi nhớ: …" saves an active memory through the user-prompt hook [2.17ms]
+(pass) hook bus: block wins, context is collected, a failing hook is reported not thrown [1.28ms]
+(pass) switching memory live swaps its tools and hooks [7.88ms]
+
+test/permission.test.ts:
+(pass) read-only and approval:never tools never ask; headless denies writes [1.12ms]
+(pass) a denied call becomes a tool error the model reads, with the user's note [6.24ms]
+(pass) waiting for the user does not count against the tool timeout [81.37ms]
+(pass) parallel calls queue; 'for this session' lets the queued ones through without a second prompt [6.60ms]
+(pass) aborting the turn denies what is waiting [6.22ms]
+(pass) 'always' is saved per server identity: a different server with the same name asks again [12.41ms]
+(pass) wildcard rules cover a whole server [0.74ms]
+(pass) the registry passes its gate to every tool call [1.06ms]
+
+test/approval-web.test.tsx:
+(pass) web_fetch on a new domain: the prompt says it reads that domain (not a write), and 'always' is stored for that domain only [555.08ms]
+
+test/markdown.test.tsx:
+(pass) assistant answers render markdown instead of raw markers [336.79ms]
+
+test/session-export.test.ts:
+(pass) fence: longer than any backtick run inside, so the content cannot close it [0.25ms]
+(pass) transcript: title + meta, each turn, tool input/output, errors, no reminders, chart summary once [1.83ms]
+(pass) transcript: turns before a compaction stay, the summary is quoted where it happened [0.90ms]
+(pass) export path: default under the data dir, ~, relative, folder, no extension, quotes, --force [2.09ms]
+(pass) writeExport: creates folders, keeps an existing file unless allowed [1.53ms]
+
+test/prompt-history.test.ts:
+(pass) history: appended to a jsonl file, blanks and repeats of the newest skipped [2.23ms]
+(pass) history: loads the newest entries, skips a torn line and trims a long file [4.30ms]
+(pass) history: ↑/↓ cursor keeps the draft and restarts once the recalled text is edited [0.99ms]
+(pass) history: search is case-insensitive, newest first, without duplicates [1.68ms]
+
+test/loop-guard.test.ts:
+(pass) the guard counts identical calls in a row, whatever the key order [0.60ms]
+(pass) the third identical read asks; 'deny' tells the model to stop, 'session' stops asking [12.42ms]
+(pass) without a UI the loop is stopped, and other symbols are unaffected [0.73ms]
+
+test/subagent-limiter.test.ts:
+(pass) limiter: free slots start at once, the rest wait in FIFO order [4.73ms]
+(pass) limiter: aborting while queued leaves the queue; an aborted signal never takes a slot [1.96ms]
+(pass) limiter: raising the limit lets waiters in; lowering it stops nobody; nonsense counts as 1 [2.66ms]
+(pass) result: trailer round-trips, report survives without it, token counts read compactly [0.68ms]
+(pass) notifications: built from a view, split back out of a user message (resume, session title) [0.64ms]
+(pass) pruning old tool results keeps a subagent's metadata block (its agent_id stays usable) [0.55ms]
+
+test/prompt-parts.test.ts:
+(pass) paste pills: Claude Code's threshold and labels [0.25ms]
+(pass) textarea offsets: wide characters take two cells, a line break one [0.41ms]
+(pass) image paths: quotes, file:// URLs, escaped spaces; not relative paths or other files [0.42ms]
+(pass) image type comes from the bytes [0.27ms]
+
+test/ask.test.ts:
+(pass) schema: 1–4 questions, 2–4 options, short header, no duplicates [3.17ms]
+(pass) without a UI the model is told to ask in plain text [0.43ms]
+(pass) answers come back in Claude Code's format; skipping tells the model to assume and go on [11.20ms]
+(pass) waiting for an answer neither times the tool out nor blocks a write tool [66.44ms]
+(pass) aborting the turn cancels the open question [25.01ms]
+(pass) a typed answer containing quotes stays well-formed for the model [0.21ms]
+
+test/agent-tools.test.ts:
+(pass) a subagent gets the parent's tools minus spawn/ask/todo/memory, the same gate and lock, and its own tool_search/load_skill [2.35ms]
+(pass) spawn_subagent holds no lock, has no timeout, and reports an empty tool set before calling any model [1.10ms]
+
+test/web-tools.test.ts:
+(pass) URLs: http becomes https; credentials, other schemes and bare hosts are refused [3.30ms]
+(pass) private addresses, including CGNAT and v4-mapped v6; look-alike public names are fine [0.99ms]
+(pass) a public name resolving to a private IP is refused before any request [1.72ms]
+(pass) same-site redirects are followed; a cross-host redirect is reported to the model, never followed [74.93ms]
+(pass) HTML becomes markdown: main content, links and tables kept, menus dropped; cached for the next call [21.38ms]
+(pass) long pages are paged with start_char; prompt sends the page to the side model instead [2.93ms]
+Warning: Indexing all PDF objects
+(pass) PDFs are read as text; errors are short and say why [551.28ms]
+(pass) web_fetch asks per domain: Vietnamese sources are exempt, other hosts need the user [1.34ms]
+(pass) search plan: presets, domain lists (not both), recency; hits outside the allow list are dropped [0.60ms]
+(pass) search: provider search first, with numbered sources and the citation reminder; falls back on failure; cached [1.46ms]
+(pass) DuckDuckGo results are parsed, entities decoded and redirect links unwrapped; web tools are deferred local tools [1.60ms]
+
+test/image-routing.test.ts:
+(node:2510164) [AISDK_DEP_TOOL_RESULT_IMAGE_DATA] DeprecationWarning: AI SDK Warning: Deprecated: ""tool-result" content of type "image-data"". The "image-data" type for tool result content is deprecated. Use the "file" type with mediaType and { type: 'data', data } instead.
+(pass) images are enabled exactly where the SDK sends them as real image parts [37.74ms]
+(pass) unverified shapes stay off: Gemini 2.x, OpenAI-compatible, models without vision [0.25ms]
+
+test/mcp-remote.test.ts:
+(pass) OAuth: needs-auth without registering, login via loopback, tokens reused, refresh on expiry [121.90ms]
+(pass) static bearer header: wrong token is reported as a token problem, never OAuth [29.71ms]
+(pass) expired session: the tool call re-initialises and retries once [41.87ms]
+(pass) transient 503 on initialize is retried [35.37ms]
+(pass) a 502 HTML page (cold PaaS host) becomes a short one-line error with a retry hint [47.12ms]
+(pass) Streamable HTTP falls back to SSE for legacy servers; type sse connects directly [102.80ms]
+(pass) enabledTools / disabledTools filter what the model sees [26.19ms]
+(pass) config edits merge into the file and refuse to overwrite unreadable JSON [5.08ms]
+(pass) a bare { url } means Streamable HTTP; env vars beat saved secrets [1.25ms]
+(pass) trust fingerprint covers headers, so redirecting a secret asks again [0.21ms]
+(pass) CLI: add, secret, list, remove [17.39ms]
+(pass) CLI argument parsing [0.53ms]
+(pass) OAuth: a second login reuses the registered client; a busy port registers a new one [112.13ms]
+(pass) OAuth callback rejects a wrong state and can be cancelled [15.34ms]
+(pass) project servers: login refuses before approval, and /mcp shows which secrets would be sent [11.35ms]
+(pass) a dropped remote server is detected and reconnected when it comes back [392.50ms]
+(pass) CLI refuses headers the shell already emptied [0.68ms]
+(pass) CLI add connects right away, and a project server added by the user is approved [30.28ms]
+(pass) prompts, resources, images and lenient output schemas work end to end [38.33ms]
+(pass) a tool that breaks its own outputSchema still returns its content (no double run) [24.81ms]
+(pass) manager add / setEnabled / remove edit mcp.json and reload only what changed [41.25ms]
+(pass) calls made while a dropped server restarts wait for it instead of failing at once [1024.17ms]
+(pass) reconnect keeps trying past the old five-attempt budget [687.53ms]
+(pass) a read-only call is retried after a 502 page; a write call is not, and the model never sees the HTML [110.15ms]
+(pass) the server dies with calls in flight: read-only calls finish after it is back, a write fails fast [656.40ms]
+(pass) a host answering 502 to everything while it restarts: calls wait for one reconnect, then succeed [831.19ms]
+(pass) an error the tool reports itself is returned once, even when its text looks like a network error [23.93ms]
+(pass) tool calls to one server are capped at maxConcurrent (default 4), the rest queue [444.08ms]
+(pass) a queued call can be cancelled before it reaches the server [335.34ms]
+
+ 466 pass
+ 0 fail
+ 6330 expect() calls
+Ran 466 tests across 53 files. [73.70s]

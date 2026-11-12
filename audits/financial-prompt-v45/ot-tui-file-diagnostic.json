@@ -1,0 +1,9 @@
+{
+  "command": [
+    "bun",
+    "test",
+    "test/tui.test.tsx"
+  ],
+  "exit_code": 0,
+  "reason": "Filtered test was not standalone: depends on earlier connect/config tests; full file preserves required setup."
+}

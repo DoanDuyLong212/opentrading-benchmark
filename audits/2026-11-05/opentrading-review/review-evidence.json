@@ -1,0 +1,246 @@
+{
+  "scope": "Review only: existing frozen benchmark and OpenTrading sources unchanged",
+  "native_capture": "Local mock provider only; synthetic usage is not benchmark telemetry",
+  "current_harness_inventory_matches_run_B": true,
+  "prompts": {
+    "opentrading": {
+      "system_characters": 7892,
+      "system_sha256": "0c667dfcabcdcd43e77b301c7905e40ab6af5626f2bcd110bb7fbdc929566b46",
+      "tool_description": "Frozen MCP snapshot; only snapshot_requests below are replayable. Supply all recorded non-default parameters; omitted parameters retain the real schema defaults. Read source/as_of from provenance and cite benchmark_evidence. snapshot_requests=[{\"symbol\": \"HPG\"}]",
+      "tool_schema": {
+        "type": "object",
+        "properties": {
+          "symbol": {
+            "type": "string"
+          },
+          "days": {
+            "type": "integer",
+            "default": 365
+          },
+          "summary": {
+            "type": "boolean",
+            "default": false
+          },
+          "columns": {
+            "anyOf": [
+              {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null
+          },
+          "interval": {
+            "type": "string",
+            "default": "1D"
+          }
+        },
+        "required": [
+          "symbol"
+        ]
+      }
+    },
+    "opencode": {
+      "system_characters": 1769,
+      "system_sha256": "cfb2818caa6736088c493a6e9a7e962cd3cc9e728899fa2875a7af2ee0b277f7",
+      "tool_description": "Frozen MCP snapshot; only snapshot_requests below are replayable. Supply all recorded non-default parameters; omitted parameters retain the real schema defaults. Read source/as_of from provenance and cite benchmark_evidence. snapshot_requests=[{\"symbol\": \"HPG\"}]",
+      "tool_schema": {
+        "type": "object",
+        "properties": {
+          "symbol": {
+            "type": "string"
+          },
+          "days": {
+            "type": "integer",
+            "default": 365
+          },
+          "summary": {
+            "type": "boolean",
+            "default": false
+          },
+          "columns": {
+            "anyOf": [
+              {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null
+          },
+          "interval": {
+            "type": "string",
+            "default": "1D"
+          }
+        },
+        "required": [
+          "symbol"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "dsh": {
+      "system_characters": 307,
+      "system_sha256": "f38cbf64c8ffddc7fb9596319e242471db7ca33ce8e1ecbd7df59cf005629541",
+      "tool_description": "Frozen MCP snapshot; only snapshot_requests below are replayable. Supply all recorded non-default parameters; omitted parameters retain the real schema defaults. Read source/as_of from provenance and cite benchmark_evidence. snapshot_requests=[{\"symbol\": \"HPG\"}]",
+      "tool_schema": {
+        "type": "object",
+        "properties": {
+          "symbol": {
+            "type": "string"
+          },
+          "days": {
+            "type": "integer",
+            "default": 365
+          },
+          "summary": {
+            "type": "boolean",
+            "default": false
+          },
+          "columns": {
+            "anyOf": [
+              {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null
+          },
+          "interval": {
+            "type": "string",
+            "default": "1D"
+          }
+        },
+        "required": [
+          "symbol"
+        ],
+        "additionalProperties": false
+      }
+    }
+  },
+  "historical_by_task": {
+    "opentrading": {
+      "smoke-agg-01": {
+        "success": 0,
+        "trials": 2
+      },
+      "smoke-quote-01": {
+        "success": 0,
+        "trials": 2
+      },
+      "smoke-trap-01": {
+        "success": 2,
+        "trials": 2
+      }
+    },
+    "opencode": {
+      "smoke-agg-01": {
+        "success": 0,
+        "trials": 2
+      },
+      "smoke-quote-01": {
+        "success": 2,
+        "trials": 2
+      },
+      "smoke-trap-01": {
+        "success": 2,
+        "trials": 2
+      }
+    },
+    "dsh": {
+      "smoke-agg-01": {
+        "success": 0,
+        "trials": 2
+      },
+      "smoke-quote-01": {
+        "success": 2,
+        "trials": 2
+      },
+      "smoke-trap-01": {
+        "success": 2,
+        "trials": 2
+      }
+    }
+  },
+  "historical_by_arm": {
+    "opentrading": {
+      "success": 2,
+      "trials": 6,
+      "input_tokens": 39136,
+      "output_tokens": 2649,
+      "p50_nearest_rank_ms": 14377
+    },
+    "opencode": {
+      "success": 4,
+      "trials": 6,
+      "input_tokens": 19639,
+      "output_tokens": 4004,
+      "p50_nearest_rank_ms": 22654
+    },
+    "dsh": {
+      "success": 4,
+      "trials": 6,
+      "input_tokens": 14723,
+      "output_tokens": 3979,
+      "p50_nearest_rank_ms": 22976
+    }
+  },
+  "ablation": {
+    "kind": "first-response prompt diagnostic; not native harness evaluation",
+    "real_NVIDIA_requests": 8,
+    "total_tokens": 23306,
+    "user_message_hashes": [
+      "0303318a4825e10469f2d73bc5ad863c2cb2bebfe872097f688dbc4406b087aa"
+    ],
+    "tool_schema_hashes": [
+      "51f57c399f120e4f9dc3f946fd0d941c215601cfcd529e75838fc51d239a24e0"
+    ],
+    "max_tokens": 1024,
+    "stream": false,
+    "conditions": {
+      "dsh_system_only": {
+        "runs": 2,
+        "replayable_first_tool_call": 2,
+        "zero_tool_calls": 0
+      },
+      "format_exception": {
+        "runs": 2,
+        "replayable_first_tool_call": 2,
+        "zero_tool_calls": 0
+      },
+      "native": {
+        "runs": 2,
+        "replayable_first_tool_call": 2,
+        "zero_tool_calls": 0
+      },
+      "tool_contract": {
+        "runs": 2,
+        "replayable_first_tool_call": 1,
+        "zero_tool_calls": 1
+      }
+    },
+    "limitation": "First response only, one public smoke question, two repetitions per condition; no causal quality ranking; captured clock differs from historical trial and streaming/output cap normalized."
+  },
+  "source_files": {
+    "/home/doanlong/OpenTrading/prompts/identity.md": "b8fe73cda14db1b53ddd6687d648aff746e29bd3cca8166d26d32fcb121f6892",
+    "/home/doanlong/OpenTrading/prompts/tools.md": "23cf632d7cdb534be3210649387d69c6d36fd35bbc12c84ac7c06ee64c52f912",
+    "/home/doanlong/OpenTrading/prompts/citations.md": "5c6a69197d3ca59189369d0adfda4385c7b03a8af7c2c67e7d0d1bbbcf78d72a",
+    "/home/doanlong/OpenTrading/prompts/style.md": "56e82b54f5fb5e83c6047e4ad1c21ab1ade0427fadfce504e34dc28063d9e2c3",
+    "/home/doanlong/extra/benchmark/tools/run_manifest.py": "05ffa6d05471db35209415a0204214b86e5bfdf0754958afb41815fd02047c92",
+    "/home/doanlong/extra/benchmark/tools/mcp_snapshot_server.py": "ba951497f694f09c2b1c783dd0d2fb11159e46600af6a09857be087c1ebbca86"
+  }
+}

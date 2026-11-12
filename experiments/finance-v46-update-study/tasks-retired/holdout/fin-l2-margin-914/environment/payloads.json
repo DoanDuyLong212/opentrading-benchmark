@@ -1,0 +1,51 @@
+{
+ "snapshot_date": "2026-11-01",
+ "note": "Envelope MCP ghi lúc tạo task. Key = mã payload nội bộ; envelope giữ nguyên data+provenance+availability.",
+ "tools": {
+  "fd:MIG": {
+   "tool": "financial_detail",
+   "params": {
+    "symbol": "MIG",
+    "statement": "KQKD",
+    "periods_n": 4
+   },
+   "envelope": {
+    "data": {
+     "symbol": "MIG",
+     "unit": "VNDbn",
+     "periods": [
+      "Q4/2025",
+      "Q1/2026",
+      "Q2/2026",
+      "Q3/2026"
+     ],
+     "rows": [
+      {
+       "name": "5. Doanh thu thuần HĐKD BH (10=03+04)",
+       "values": [
+        1147,
+        1018,
+        1350,
+        1145
+       ]
+      },
+      {
+       "name": "14. Lợi nhuận gộp hoạt động kinh doanh bảo hiểm",
+       "values": [
+        80,
+        209,
+        172,
+        155
+       ]
+      }
+     ]
+    },
+    "provenance": {
+     "source": "vietstock",
+     "as_of": "2026-11-01T22:44:37.901189+07:00"
+    },
+    "availability": "available"
+   }
+  }
+ }
+}

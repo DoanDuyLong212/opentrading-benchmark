@@ -1,0 +1,4806 @@
+{
+  "schema": "memory-audit-v45",
+  "pass": false,
+  "observed": 24,
+  "scheduled": 24,
+  "errors": [
+    {
+      "trial_id": "a5c372aaeace0a055f64",
+      "check": "actual_user_prompt_binding",
+      "error": "Actual native last user request does not contain sealed public turn"
+    },
+    {
+      "trial_id": "a5c372aaeace0a055f64",
+      "check": "actual_source_sdk_context",
+      "error": "Source receipt/function/args not joined to unique generation occurrence"
+    },
+    {
+      "trial_id": "a5c372aaeace0a055f64",
+      "check": "all_generated_calls_reconciled",
+      "error": "Generated calls not executed or independently rejected: [{'key': '0:0:0', 'request': 0, 'provider_index': 1, 'id': 'call-91714d7d-635f-4e48-914d-f64699492447', 'tool': 'peer_compare', 'arguments': {'symbol': 'VPB', 'peers': ['ACB', 'STB', 'HDB', 'TPB'], 'metrics': ['roe']}, 'scope': 'S1'}]"
+    },
+    {
+      "trial_id": "e6a2460400071edbf9c5",
+      "check": "actual_source_sdk_context",
+      "error": "Source receipt/function/args not joined to unique generation occurrence"
+    },
+    {
+      "trial_id": "e6a2460400071edbf9c5",
+      "check": "all_generated_calls_reconciled",
+      "error": "Generated calls not executed or independently rejected: [{'key': '0:0:0', 'request': 0, 'provider_index': 1, 'id': 'call-6ad7d5ee-01aa-4ce7-82f0-0e8e1f30390b', 'tool': 'peer_compare', 'arguments': {'symbol': 'VPB', 'peers': ['ACB', 'STB', 'HDB', 'TPB'], 'metrics': ['roe']}, 'scope': 'S1'}]"
+    },
+    {
+      "trial_id": "49e459b9016ba557d1d2",
+      "check": "actual_source_sdk_context",
+      "error": "Source receipt/function/args not joined to unique generation occurrence"
+    },
+    {
+      "trial_id": "49e459b9016ba557d1d2",
+      "check": "actual_user_read_context",
+      "error": "Executed user read not joined to a distinct actual generation/context"
+    },
+    {
+      "trial_id": "49e459b9016ba557d1d2",
+      "check": "local_rejection_occurrence",
+      "error": "Local rejection lacks distinct generated occurrence"
+    },
+    {
+      "trial_id": "49e459b9016ba557d1d2",
+      "check": "all_generated_calls_reconciled",
+      "error": "Generated calls not executed or independently rejected: [{'key': '2:0:0', 'request': 2, 'provider_index': 3, 'id': 'call-94ef852b-8412-47f6-8591-4974d0affa94', 'tool': 'benchmark_user_notebook_read', 'arguments': {'query': 'ROE condition ACB STB VPB HDB TPB'}, 'scope': 'B'}, {'key': '2:0:1', 'request': 2, 'provider_index': 3, 'id': 'call-6d2c6ef2-9421-4e33-a371-a9de8a5d504e', 'tool': 'peer_compare', 'arguments': {'symbol': 'VPB', 'peers': ['ACB', 'STB', 'HDB', 'TPB'], 'metrics': ['roe']}, 'scope': 'B'}, {'key': '3:0:0', 'request': 3, 'provider_index': 4, 'id': 'call-324e221e-e99a-4a0c-a87d-20c3b27a33df', 'tool': 'peer_compare', 'arguments': {'symbol': 'VPB', 'peers': ['ACB', 'STB', 'HDB', 'TPB']}, 'scope': 'B'}]"
+    },
+    {
+      "trial_id": "f5b9f0b036a41915385c",
+      "check": "actual_source_sdk_context",
+      "error": "Source receipt/function/args not joined to unique generation occurrence"
+    },
+    {
+      "trial_id": "f5b9f0b036a41915385c",
+      "check": "all_generated_calls_reconciled",
+      "error": "Generated calls not executed or independently rejected: [{'key': '3:0:1', 'request': 3, 'provider_index': 4, 'id': 'call-7c80fe1f-a6bc-47cb-8279-2b37427f34a6', 'tool': 'peer_compare', 'arguments': {'symbol': 'VPB', 'peers': ['ACB', 'STB', 'HDB', 'TPB'], 'metrics': ['roe']}, 'scope': 'B'}]"
+    },
+    {
+      "trial_id": "2873e74f7a4c9a07a25a",
+      "check": "local_rejection_proofs",
+      "error": "Local rejection was not consumed as actual model-visible tool error"
+    },
+    {
+      "trial_id": "2873e74f7a4c9a07a25a",
+      "check": "all_generated_calls_reconciled",
+      "error": "Generated calls not executed or independently rejected: [{'key': '1:0:0', 'request': 1, 'provider_index': 2, 'id': 'call-73efb209-62ba-4d1c-9ed1-bd7b77959e55', 'tool': 'yf_commodities', 'arguments': {'tickers': ['GC=F'], 'period': '5d', 'interval': '1d'}, 'scope': 'B'}, {'key': '2:0:0', 'request': 2, 'provider_index': 3, 'id': 'call-069d5a6f-01c7-41db-86ac-3fd0c77dfe61', 'tool': 'yf_commodities', 'arguments': {'tickers': None, 'period': '5d', 'interval': '1d'}, 'scope': 'B'}, {'key': '3:0:0', 'request': 3, 'provider_index': 4, 'id': 'call-3242ece7-2757-40c5-9a7d-f51a40bee7f1', 'tool': 'yf_commodities', 'arguments': {'period': '5d', 'interval': '1d'}, 'scope': 'B'}, {'key': '4:0:0', 'request': 4, 'provider_index': 5, 'id': 'call-5880a53a-8453-4d94-b7db-0cde9f1eedb4', 'tool': 'vn_msn_fx_gold', 'arguments': {'symbols': ['XAUUSD'], 'days': 8}, 'scope': 'B'}, {'key': '6:0:0', 'request': 6, 'provider_index': 7, 'id': 'call-a538f9a9-e266-40d6-ac72-a5b96f40a7d3', 'tool': 'yf_commodities', 'arguments': {'tickers': ['GC=F', 'SI=F', 'NG=F', 'HG=F', 'BZ=F', 'CL=F', 'BTC-USD', 'ETH-USD', 'SOL-USD', 'BNB-USD', 'GBPUSD=X', 'JPY=X'], 'period': '5d', 'interval': '1d'}, 'scope': 'B'}]"
+    },
+    {
+      "trial_id": "4429f7978497fa2ad270",
+      "check": "local_rejection_proofs",
+      "error": "Claimed local rejection has schema-valid arguments"
+    },
+    {
+      "trial_id": "4429f7978497fa2ad270",
+      "check": "all_generated_calls_reconciled",
+      "error": "Generated calls not executed or independently rejected: [{'key': '1:0:0', 'request': 1, 'provider_index': 2, 'id': 'call-21a31348-97cf-4258-afff-016cda3b2eb0', 'tool': 'yf_commodities', 'arguments': {'tickers': ['GC=F', 'SI=F', 'NG=F', 'HG=F', 'BZ=F', 'CL=F', 'BTC-USD', 'ETH-USD', 'SOL-USD', 'BNB-USD', 'GBPUSD=X', 'JPY=X'], 'period': '5d', 'interval': '1d'}, 'scope': 'B'}, {'key': '2:0:0', 'request': 2, 'provider_index': 3, 'id': 'call-a8cc6591-5f39-4ce8-b243-6d68f72b52a8', 'tool': 'yf_commodities', 'arguments': {}, 'scope': 'B'}, {'key': '3:0:0', 'request': 3, 'provider_index': 4, 'id': 'call-eb5b8faa-d767-422a-a0d8-2ddc062e1ef7', 'tool': 'yf_commodities', 'arguments': {'tickers': ['GC=F'], 'period': '5d', 'interval': '1d'}, 'scope': 'B'}]"
+    },
+    {
+      "trial_id": "f5f7e9b18cd61305d933",
+      "check": "actual_user_prompt_binding",
+      "error": "Actual native last user request does not contain sealed public turn"
+    },
+    {
+      "trial_id": "f5f7e9b18cd61305d933",
+      "check": "actual_source_sdk_context",
+      "error": "Source receipt/function/args not joined to unique generation occurrence"
+    },
+    {
+      "trial_id": "f5f7e9b18cd61305d933",
+      "check": "all_generated_calls_reconciled",
+      "error": "Generated calls not executed or independently rejected: [{'key': '2:0:0', 'request': 2, 'provider_index': 3, 'id': 'call-f0e0810e-f0d3-470f-9d76-9fe33939bdb7', 'tool': 'yf_commodities', 'arguments': {'tickers': ['GC=F'], 'period': '5d', 'interval': '1d'}, 'scope': 'B'}]"
+    },
+    {
+      "trial_id": "e069b8c82b42d33e22fd",
+      "check": "actual_source_sdk_context",
+      "error": "Source receipt/function/args not joined to unique generation occurrence"
+    },
+    {
+      "trial_id": "e069b8c82b42d33e22fd",
+      "check": "all_generated_calls_reconciled",
+      "error": "Generated calls not executed or independently rejected: [{'key': '2:0:0', 'request': 2, 'provider_index': 3, 'id': 'call-0c003602-6a72-4e58-b253-4ac2efe3ff8b', 'tool': 'yf_commodities', 'arguments': {'tickers': ['GC=F'], 'period': '5d', 'interval': '1d'}, 'scope': 'B'}, {'key': '4:0:0', 'request': 4, 'provider_index': 5, 'id': 'call-783ce513-906a-4879-90d1-cb2c867fefa4', 'tool': 'benchmark_user_notebook_read', 'arguments': {'query': ''}, 'scope': 'B'}]"
+    },
+    {
+      "trial_id": "39493ddebb99c4ef4fef",
+      "check": "native_effective_capture",
+      "error": "Provider effective sampling policy mismatch"
+    },
+    {
+      "trial_id": "39493ddebb99c4ef4fef",
+      "check": "native_effective_capture",
+      "error": "Provider effective sampling policy mismatch"
+    },
+    {
+      "trial_id": "39493ddebb99c4ef4fef",
+      "check": "native_effective_capture",
+      "error": "Provider effective sampling policy mismatch"
+    },
+    {
+      "trial_id": "39493ddebb99c4ef4fef",
+      "check": "native_effective_capture",
+      "error": "Provider effective sampling policy mismatch"
+    },
+    {
+      "trial_id": "39493ddebb99c4ef4fef",
+      "check": "actual_source_sdk_context",
+      "error": "Source receipt/function/args not joined to unique generation occurrence"
+    },
+    {
+      "trial_id": "39493ddebb99c4ef4fef",
+      "check": "actual_user_read_context",
+      "error": "Executed user read not joined to a distinct actual generation/context"
+    },
+    {
+      "trial_id": "39493ddebb99c4ef4fef",
+      "check": "all_generated_calls_reconciled",
+      "error": "Generated calls not executed or independently rejected: [{'key': '0:0:0', 'request': 0, 'provider_index': 1, 'id': 'chatcmpl-tool-b21e1f2717b6e14e', 'tool': 'peer_compare', 'arguments': {'symbol': 'VPB', 'peers': ['ACB', 'STB', 'HDB', 'TPB'], 'metrics': None}, 'scope': 'S1'}, {'key': '0:0:1', 'request': 0, 'provider_index': 1, 'id': 'chatcmpl-tool-95521370b6cc1418', 'tool': 'benchmark_user_notebook_read', 'arguments': {}, 'scope': 'S1'}]"
+    },
+    {
+      "trial_id": "ccf61661902a3155e4b6",
+      "check": "native_effective_capture",
+      "error": "Provider effective sampling policy mismatch"
+    },
+    {
+      "trial_id": "ccf61661902a3155e4b6",
+      "check": "native_effective_capture",
+      "error": "Provider effective sampling policy mismatch"
+    },
+    {
+      "trial_id": "ccf61661902a3155e4b6",
+      "check": "native_effective_capture",
+      "error": "Provider effective sampling policy mismatch"
+    },
+    {
+      "trial_id": "ccf61661902a3155e4b6",
+      "check": "native_effective_capture",
+      "error": "Provider effective sampling policy mismatch"
+    },
+    {
+      "trial_id": "757cfe7c15f9e8c72e2c",
+      "check": "actual_user_prompt_binding",
+      "error": "Actual native last user request does not contain sealed public turn"
+    },
+    {
+      "trial_id": "757cfe7c15f9e8c72e2c",
+      "check": "native_effective_capture",
+      "error": "Provider effective sampling policy mismatch"
+    },
+    {
+      "trial_id": "757cfe7c15f9e8c72e2c",
+      "check": "native_effective_capture",
+      "error": "Provider effective sampling policy mismatch"
+    },
+    {
+      "trial_id": "757cfe7c15f9e8c72e2c",
+      "check": "native_effective_capture",
+      "error": "Provider effective sampling policy mismatch"
+    },
+    {
+      "trial_id": "e61e5dc8908b6a114b19",
+      "check": "native_effective_capture",
+      "error": "Provider effective sampling policy mismatch"
+    },
+    {
+      "trial_id": "e61e5dc8908b6a114b19",
+      "check": "native_effective_capture",
+      "error": "Provider effective sampling policy mismatch"
+    },
+    {
+      "trial_id": "e61e5dc8908b6a114b19",
+      "check": "native_effective_capture",
+      "error": "Provider effective sampling policy mismatch"
+    },
+    {
+      "trial_id": "e61e5dc8908b6a114b19",
+      "check": "actual_source_sdk_context",
+      "error": "Source receipt/function/args not joined to unique generation occurrence"
+    },
+    {
+      "trial_id": "e61e5dc8908b6a114b19",
+      "check": "actual_user_read_context",
+      "error": "Executed user read not joined to a distinct actual generation/context"
+    },
+    {
+      "trial_id": "e61e5dc8908b6a114b19",
+      "check": "all_generated_calls_reconciled",
+      "error": "Generated calls not executed or independently rejected: [{'key': '0:0:0', 'request': 0, 'provider_index': 1, 'id': 'chatcmpl-tool-99aac48a18a12152', 'tool': 'benchmark_user_notebook_read', 'arguments': {}, 'scope': 'S1'}, {'key': '0:0:1', 'request': 0, 'provider_index': 1, 'id': 'chatcmpl-tool-91b2234056d6914c', 'tool': 'peer_compare', 'arguments': {'symbol': 'VPB', 'peers': ['ACB', 'STB', 'HDB', 'TPB'], 'metrics': None}, 'scope': 'S1'}]"
+    },
+    {
+      "trial_id": "a10599b7d657e117c047",
+      "check": "native_effective_capture",
+      "error": "Provider effective sampling policy mismatch"
+    },
+    {
+      "trial_id": "a10599b7d657e117c047",
+      "check": "native_effective_capture",
+      "error": "Provider effective sampling policy mismatch"
+    },
+    {
+      "trial_id": "a10599b7d657e117c047",
+      "check": "native_effective_capture",
+      "error": "Provider effective sampling policy mismatch"
+    },
+    {
+      "trial_id": "a10599b7d657e117c047",
+      "check": "native_effective_capture",
+      "error": "Provider effective sampling policy mismatch"
+    },
+    {
+      "trial_id": "a10599b7d657e117c047",
+      "check": "native_effective_capture",
+      "error": "Provider effective sampling policy mismatch"
+    },
+    {
+      "trial_id": "a10599b7d657e117c047",
+      "check": "native_effective_capture",
+      "error": "Provider effective sampling policy mismatch"
+    },
+    {
+      "trial_id": "a10599b7d657e117c047",
+      "check": "actual_source_sdk_context",
+      "error": "Source receipt/function/args not joined to unique generation occurrence"
+    },
+    {
+      "trial_id": "a10599b7d657e117c047",
+      "check": "actual_user_read_context",
+      "error": "Executed user read not joined to a distinct actual generation/context"
+    },
+    {
+      "trial_id": "a10599b7d657e117c047",
+      "check": "actual_user_read_context",
+      "error": "Executed user read not joined to a distinct actual generation/context"
+    },
+    {
+      "trial_id": "a10599b7d657e117c047",
+      "check": "native_execution_sdk_binding",
+      "error": "Native execution SDK/tool/args lacks distinct generation occurrence"
+    },
+    {
+      "trial_id": "a10599b7d657e117c047",
+      "check": "all_generated_calls_reconciled",
+      "error": "Generated calls not executed or independently rejected: [{'key': '0:0:0', 'request': 0, 'provider_index': 1, 'id': 'chatcmpl-tool-b27134d8598a2fc7', 'tool': 'benchmark_user_notebook_read', 'arguments': {}, 'scope': 'A'}, {'key': '0:0:1', 'request': 0, 'provider_index': 1, 'id': 'chatcmpl-tool-9ed768b73b103584', 'tool': 'memory_read', 'arguments': {'query': 'ROE ngân hàng sàng lọc'}, 'scope': 'A'}, {'key': '3:0:0', 'request': 3, 'provider_index': 4, 'id': 'chatcmpl-tool-bc0754766419bedb', 'tool': 'peer_compare', 'arguments': {'symbol': 'VPB', 'peers': ['ACB', 'STB', 'HDB', 'TPB'], 'metrics': None}, 'scope': 'B'}, {'key': '3:0:1', 'request': 3, 'provider_index': 4, 'id': 'chatcmpl-tool-8222ea24aed2ff43', 'tool': 'benchmark_user_notebook_read', 'arguments': {}, 'scope': 'B'}]"
+    },
+    {
+      "trial_id": "daede90e19790146ea6e",
+      "check": "native_effective_capture",
+      "error": "Provider effective sampling policy mismatch"
+    },
+    {
+      "trial_id": "daede90e19790146ea6e",
+      "check": "native_effective_capture",
+      "error": "Provider effective sampling policy mismatch"
+    },
+    {
+      "trial_id": "7de851b72699fe916510",
+      "check": "actual_user_prompt_binding",
+      "error": "Actual native last user request does not contain sealed public turn"
+    },
+    {
+      "trial_id": "7de851b72699fe916510",
+      "check": "native_effective_capture",
+      "error": "Provider effective sampling policy mismatch"
+    },
+    {
+      "trial_id": "7de851b72699fe916510",
+      "check": "native_effective_capture",
+      "error": "Provider effective sampling policy mismatch"
+    },
+    {
+      "trial_id": "7de851b72699fe916510",
+      "check": "native_effective_capture",
+      "error": "Provider effective sampling policy mismatch"
+    },
+    {
+      "trial_id": "7de851b72699fe916510",
+      "check": "native_effective_capture",
+      "error": "Provider effective sampling policy mismatch"
+    },
+    {
+      "trial_id": "7de851b72699fe916510",
+      "check": "native_effective_capture",
+      "error": "Provider effective sampling policy mismatch"
+    },
+    {
+      "trial_id": "7de851b72699fe916510",
+      "check": "native_effective_capture",
+      "error": "Provider effective sampling policy mismatch"
+    },
+    {
+      "trial_id": "e5a62f15288014d0bc39",
+      "check": "native_effective_capture",
+      "error": "Provider effective sampling policy mismatch"
+    },
+    {
+      "trial_id": "e5a62f15288014d0bc39",
+      "check": "native_effective_capture",
+      "error": "Provider effective sampling policy mismatch"
+    },
+    {
+      "trial_id": "e5a62f15288014d0bc39",
+      "check": "native_effective_capture",
+      "error": "Provider effective sampling policy mismatch"
+    },
+    {
+      "trial_id": "e5a62f15288014d0bc39",
+      "check": "native_effective_capture",
+      "error": "Provider effective sampling policy mismatch"
+    },
+    {
+      "trial_id": "e5a62f15288014d0bc39",
+      "check": "native_effective_capture",
+      "error": "Provider effective sampling policy mismatch"
+    },
+    {
+      "trial_id": "e5a62f15288014d0bc39",
+      "check": "native_effective_capture",
+      "error": "Provider effective sampling policy mismatch"
+    },
+    {
+      "trial_id": "33ff2409409809fb6508",
+      "check": "native_effective_capture",
+      "error": "Provider effective sampling policy mismatch"
+    },
+    {
+      "trial_id": "33ff2409409809fb6508",
+      "check": "native_effective_capture",
+      "error": "Provider effective sampling policy mismatch"
+    },
+    {
+      "trial_id": "33ff2409409809fb6508",
+      "check": "native_effective_capture",
+      "error": "Provider effective sampling policy mismatch"
+    },
+    {
+      "trial_id": "33ff2409409809fb6508",
+      "check": "native_effective_capture",
+      "error": "Provider effective sampling policy mismatch"
+    },
+    {
+      "trial_id": "33ff2409409809fb6508",
+      "check": "native_effective_capture",
+      "error": "Provider effective sampling policy mismatch"
+    },
+    {
+      "trial_id": "33ff2409409809fb6508",
+      "check": "native_effective_capture",
+      "error": "Provider effective sampling policy mismatch"
+    },
+    {
+      "trial_id": "33ff2409409809fb6508",
+      "check": "native_effective_capture",
+      "error": "Provider effective sampling policy mismatch"
+    },
+    {
+      "trial_id": "33ff2409409809fb6508",
+      "check": "native_effective_capture",
+      "error": "Provider effective sampling policy mismatch"
+    },
+    {
+      "trial_id": "33ff2409409809fb6508",
+      "check": "local_rejection_proofs",
+      "error": "Claimed local rejection has schema-valid arguments"
+    },
+    {
+      "trial_id": "33ff2409409809fb6508",
+      "check": "all_generated_calls_reconciled",
+      "error": "Generated calls not executed or independently rejected: [{'key': '2:0:0', 'request': 2, 'provider_index': 3, 'id': 'chatcmpl-tool-95381ea27d4a89f9', 'tool': 'yf_commodities', 'arguments': {'tickers': ['GC=F', 'SI=F', 'NG=F', 'HG=F', 'BZ=F', 'CL=F', 'BTC-USD', 'ETH-USD', 'SOL-USD', 'BNB-USD', 'GBPUSD=X', 'JPY=X'], 'period': '5d', 'interval': '1d'}, 'scope': 'B'}, {'key': '3:0:0', 'request': 3, 'provider_index': 4, 'id': 'chatcmpl-tool-95dc46dd4d8b5593', 'tool': 'yf_commodities', 'arguments': {'tickers': ['GC=F'], 'period': '5d', 'interval': '1d'}, 'scope': 'B'}, {'key': '4:0:0', 'request': 4, 'provider_index': 5, 'id': 'chatcmpl-tool-bcd8f5f20b0de7f4', 'tool': 'yf_commodities', 'arguments': {'tickers': None, 'period': '5d', 'interval': '1d'}, 'scope': 'B'}, {'key': '5:0:0', 'request': 5, 'provider_index': 6, 'id': 'chatcmpl-tool-911939640439b113', 'tool': 'yf_commodities', 'arguments': {'tickers': ['GC=F', 'SI=F', 'NG=F', 'HG=F', 'BZ=F', 'CL=F', 'BTC-USD', 'ETH-USD', 'SOL-USD', 'BNB-USD', 'GBPUSD=X', 'JPY=X'], 'period': '5d'}, 'scope': 'B'}]"
+    },
+    {
+      "trial_id": "9c94afc0a4afcdbce705",
+      "check": "native_effective_capture",
+      "error": "Provider effective sampling policy mismatch"
+    },
+    {
+      "trial_id": "9c94afc0a4afcdbce705",
+      "check": "native_effective_capture",
+      "error": "Provider effective sampling policy mismatch"
+    },
+    {
+      "trial_id": "9c94afc0a4afcdbce705",
+      "check": "native_effective_capture",
+      "error": "Provider effective sampling policy mismatch"
+    },
+    {
+      "trial_id": "9c94afc0a4afcdbce705",
+      "check": "native_effective_capture",
+      "error": "Provider effective sampling policy mismatch"
+    },
+    {
+      "trial_id": "9c94afc0a4afcdbce705",
+      "check": "native_effective_capture",
+      "error": "Provider effective sampling policy mismatch"
+    },
+    {
+      "trial_id": "9c94afc0a4afcdbce705",
+      "check": "native_effective_capture",
+      "error": "Provider effective sampling policy mismatch"
+    },
+    {
+      "trial_id": "9c94afc0a4afcdbce705",
+      "check": "native_effective_capture",
+      "error": "Provider effective sampling policy mismatch"
+    },
+    {
+      "trial_id": "9c94afc0a4afcdbce705",
+      "check": "local_rejection_proofs",
+      "error": "Claimed local rejection has schema-valid arguments"
+    },
+    {
+      "trial_id": "8c19e2c99edc28522569",
+      "check": "actual_user_prompt_binding",
+      "error": "Actual native last user request does not contain sealed public turn"
+    },
+    {
+      "trial_id": "8c19e2c99edc28522569",
+      "check": "native_effective_capture",
+      "error": "Provider effective sampling policy mismatch"
+    },
+    {
+      "trial_id": "8c19e2c99edc28522569",
+      "check": "native_effective_capture",
+      "error": "Provider effective sampling policy mismatch"
+    },
+    {
+      "trial_id": "8c19e2c99edc28522569",
+      "check": "native_effective_capture",
+      "error": "Provider effective sampling policy mismatch"
+    },
+    {
+      "trial_id": "8c19e2c99edc28522569",
+      "check": "native_effective_capture",
+      "error": "Provider effective sampling policy mismatch"
+    },
+    {
+      "trial_id": "08b28dfd1a164f3912cd",
+      "check": "native_effective_capture",
+      "error": "Provider effective sampling policy mismatch"
+    },
+    {
+      "trial_id": "08b28dfd1a164f3912cd",
+      "check": "native_effective_capture",
+      "error": "Provider effective sampling policy mismatch"
+    },
+    {
+      "trial_id": "08b28dfd1a164f3912cd",
+      "check": "native_effective_capture",
+      "error": "Provider effective sampling policy mismatch"
+    },
+    {
+      "trial_id": "08b28dfd1a164f3912cd",
+      "check": "native_effective_capture",
+      "error": "Provider effective sampling policy mismatch"
+    },
+    {
+      "check": "completed_resume",
+      "error": "Missing actual completed-resume interceptor proof"
+    }
+  ],
+  "checks": [
+    {
+      "trial_id": "1ae3a0c5885d1b2f7bed",
+      "check": "schedule_identity",
+      "pass": true
+    },
+    {
+      "trial_id": "1ae3a0c5885d1b2f7bed",
+      "check": "model_admission",
+      "pass": true
+    },
+    {
+      "trial_id": "1ae3a0c5885d1b2f7bed",
+      "check": "provider_telemetry",
+      "pass": true
+    },
+    {
+      "trial_id": "1ae3a0c5885d1b2f7bed",
+      "check": "whole_episode_attempt_cap",
+      "pass": true
+    },
+    {
+      "trial_id": "1ae3a0c5885d1b2f7bed",
+      "check": "all_native_turns_completed",
+      "pass": true
+    },
+    {
+      "trial_id": "1ae3a0c5885d1b2f7bed",
+      "check": "public_user_turn_binding",
+      "pass": true
+    },
+    {
+      "trial_id": "1ae3a0c5885d1b2f7bed",
+      "check": "actual_turn_provider_dispatch",
+      "pass": true
+    },
+    {
+      "trial_id": "1ae3a0c5885d1b2f7bed",
+      "check": "actual_user_prompt_binding",
+      "pass": true
+    },
+    {
+      "trial_id": "1ae3a0c5885d1b2f7bed",
+      "check": "fresh_native_session_user_history",
+      "pass": true
+    },
+    {
+      "trial_id": "1ae3a0c5885d1b2f7bed",
+      "check": "public_user_turn_binding",
+      "pass": true
+    },
+    {
+      "trial_id": "1ae3a0c5885d1b2f7bed",
+      "check": "actual_turn_provider_dispatch",
+      "pass": true
+    },
+    {
+      "trial_id": "1ae3a0c5885d1b2f7bed",
+      "check": "actual_user_prompt_binding",
+      "pass": true
+    },
+    {
+      "trial_id": "1ae3a0c5885d1b2f7bed",
+      "check": "whole_episode_token_cap",
+      "pass": true
+    },
+    {
+      "trial_id": "1ae3a0c5885d1b2f7bed",
+      "check": "native_effective_capture",
+      "pass": true
+    },
+    {
+      "trial_id": "1ae3a0c5885d1b2f7bed",
+      "check": "actual_model_identity",
+      "pass": true
+    },
+    {
+      "trial_id": "1ae3a0c5885d1b2f7bed",
+      "check": "native_effective_capture",
+      "pass": true
+    },
+    {
+      "trial_id": "1ae3a0c5885d1b2f7bed",
+      "check": "actual_model_identity",
+      "pass": true
+    },
+    {
+      "trial_id": "1ae3a0c5885d1b2f7bed",
+      "check": "native_effective_capture",
+      "pass": true
+    },
+    {
+      "trial_id": "1ae3a0c5885d1b2f7bed",
+      "check": "actual_model_identity",
+      "pass": true
+    },
+    {
+      "trial_id": "1ae3a0c5885d1b2f7bed",
+      "check": "native_effective_capture",
+      "pass": true
+    },
+    {
+      "trial_id": "1ae3a0c5885d1b2f7bed",
+      "check": "actual_model_identity",
+      "pass": true
+    },
+    {
+      "trial_id": "1ae3a0c5885d1b2f7bed",
+      "check": "native_effective_capture",
+      "pass": true
+    },
+    {
+      "trial_id": "1ae3a0c5885d1b2f7bed",
+      "check": "actual_model_identity",
+      "pass": true
+    },
+    {
+      "trial_id": "1ae3a0c5885d1b2f7bed",
+      "check": "native_effective_capture",
+      "pass": true
+    },
+    {
+      "trial_id": "1ae3a0c5885d1b2f7bed",
+      "check": "actual_model_identity",
+      "pass": true
+    },
+    {
+      "trial_id": "1ae3a0c5885d1b2f7bed",
+      "check": "mcp_telemetry",
+      "pass": true
+    },
+    {
+      "trial_id": "1ae3a0c5885d1b2f7bed",
+      "check": "source_and_common_derived_replay",
+      "pass": true
+    },
+    {
+      "trial_id": "1ae3a0c5885d1b2f7bed",
+      "check": "independent_regrade",
+      "pass": true
+    },
+    {
+      "trial_id": "1ae3a0c5885d1b2f7bed",
+      "check": "grade_episode_grounded_financial_success",
+      "pass": true
+    },
+    {
+      "trial_id": "1ae3a0c5885d1b2f7bed",
+      "check": "grade_memory_state_correctness",
+      "pass": true
+    },
+    {
+      "trial_id": "1ae3a0c5885d1b2f7bed",
+      "check": "grade_public_contract_valid",
+      "pass": true
+    },
+    {
+      "trial_id": "1ae3a0c5885d1b2f7bed",
+      "check": "grade_controlled_user_state_correctness",
+      "pass": true
+    },
+    {
+      "trial_id": "1ae3a0c5885d1b2f7bed",
+      "check": "grade_user_fact_receipts_valid",
+      "pass": true
+    },
+    {
+      "trial_id": "1ae3a0c5885d1b2f7bed",
+      "check": "generated_occurrence_inventory",
+      "pass": true
+    },
+    {
+      "trial_id": "1ae3a0c5885d1b2f7bed",
+      "check": "local_rejection_proofs",
+      "pass": true
+    },
+    {
+      "trial_id": "1ae3a0c5885d1b2f7bed",
+      "check": "local_rejection_occurrence",
+      "pass": true
+    },
+    {
+      "trial_id": "1ae3a0c5885d1b2f7bed",
+      "check": "local_rejection_proofs",
+      "pass": true
+    },
+    {
+      "trial_id": "1ae3a0c5885d1b2f7bed",
+      "check": "all_generated_calls_reconciled",
+      "pass": true
+    },
+    {
+      "trial_id": "90c0fcdf43965fffcbab",
+      "check": "schedule_identity",
+      "pass": true
+    },
+    {
+      "trial_id": "90c0fcdf43965fffcbab",
+      "check": "model_admission",
+      "pass": true
+    },
+    {
+      "trial_id": "90c0fcdf43965fffcbab",
+      "check": "provider_telemetry",
+      "pass": true
+    },
+    {
+      "trial_id": "90c0fcdf43965fffcbab",
+      "check": "whole_episode_attempt_cap",
+      "pass": true
+    },
+    {
+      "trial_id": "90c0fcdf43965fffcbab",
+      "check": "all_native_turns_completed",
+      "pass": true
+    },
+    {
+      "trial_id": "90c0fcdf43965fffcbab",
+      "check": "public_user_turn_binding",
+      "pass": true
+    },
+    {
+      "trial_id": "90c0fcdf43965fffcbab",
+      "check": "actual_turn_provider_dispatch",
+      "pass": true
+    },
+    {
+      "trial_id": "90c0fcdf43965fffcbab",
+      "check": "actual_user_prompt_binding",
+      "pass": true
+    },
+    {
+      "trial_id": "90c0fcdf43965fffcbab",
+      "check": "fresh_native_session_user_history",
+      "pass": true
+    },
+    {
+      "trial_id": "90c0fcdf43965fffcbab",
+      "check": "public_user_turn_binding",
+      "pass": true
+    },
+    {
+      "trial_id": "90c0fcdf43965fffcbab",
+      "check": "actual_turn_provider_dispatch",
+      "pass": true
+    },
+    {
+      "trial_id": "90c0fcdf43965fffcbab",
+      "check": "actual_user_prompt_binding",
+      "pass": true
+    },
+    {
+      "trial_id": "90c0fcdf43965fffcbab",
+      "check": "whole_episode_token_cap",
+      "pass": true
+    },
+    {
+      "trial_id": "90c0fcdf43965fffcbab",
+      "check": "native_effective_capture",
+      "pass": true
+    },
+    {
+      "trial_id": "90c0fcdf43965fffcbab",
+      "check": "actual_model_identity",
+      "pass": true
+    },
+    {
+      "trial_id": "90c0fcdf43965fffcbab",
+      "check": "native_effective_capture",
+      "pass": true
+    },
+    {
+      "trial_id": "90c0fcdf43965fffcbab",
+      "check": "actual_model_identity",
+      "pass": true
+    },
+    {
+      "trial_id": "90c0fcdf43965fffcbab",
+      "check": "native_effective_capture",
+      "pass": true
+    },
+    {
+      "trial_id": "90c0fcdf43965fffcbab",
+      "check": "actual_model_identity",
+      "pass": true
+    },
+    {
+      "trial_id": "90c0fcdf43965fffcbab",
+      "check": "native_effective_capture",
+      "pass": true
+    },
+    {
+      "trial_id": "90c0fcdf43965fffcbab",
+      "check": "actual_model_identity",
+      "pass": true
+    },
+    {
+      "trial_id": "90c0fcdf43965fffcbab",
+      "check": "native_effective_capture",
+      "pass": true
+    },
+    {
+      "trial_id": "90c0fcdf43965fffcbab",
+      "check": "actual_model_identity",
+      "pass": true
+    },
+    {
+      "trial_id": "90c0fcdf43965fffcbab",
+      "check": "native_effective_capture",
+      "pass": true
+    },
+    {
+      "trial_id": "90c0fcdf43965fffcbab",
+      "check": "actual_model_identity",
+      "pass": true
+    },
+    {
+      "trial_id": "90c0fcdf43965fffcbab",
+      "check": "mcp_telemetry",
+      "pass": true
+    },
+    {
+      "trial_id": "90c0fcdf43965fffcbab",
+      "check": "source_and_common_derived_replay",
+      "pass": true
+    },
+    {
+      "trial_id": "90c0fcdf43965fffcbab",
+      "check": "independent_regrade",
+      "pass": true
+    },
+    {
+      "trial_id": "90c0fcdf43965fffcbab",
+      "check": "grade_episode_grounded_financial_success",
+      "pass": true
+    },
+    {
+      "trial_id": "90c0fcdf43965fffcbab",
+      "check": "grade_memory_state_correctness",
+      "pass": true
+    },
+    {
+      "trial_id": "90c0fcdf43965fffcbab",
+      "check": "grade_public_contract_valid",
+      "pass": true
+    },
+    {
+      "trial_id": "90c0fcdf43965fffcbab",
+      "check": "grade_controlled_user_state_correctness",
+      "pass": true
+    },
+    {
+      "trial_id": "90c0fcdf43965fffcbab",
+      "check": "grade_user_fact_receipts_valid",
+      "pass": true
+    },
+    {
+      "trial_id": "90c0fcdf43965fffcbab",
+      "check": "generated_occurrence_inventory",
+      "pass": true
+    },
+    {
+      "trial_id": "90c0fcdf43965fffcbab",
+      "check": "local_rejection_proofs",
+      "pass": true
+    },
+    {
+      "trial_id": "90c0fcdf43965fffcbab",
+      "check": "local_rejection_occurrence",
+      "pass": true
+    },
+    {
+      "trial_id": "90c0fcdf43965fffcbab",
+      "check": "local_rejection_proofs",
+      "pass": true
+    },
+    {
+      "trial_id": "90c0fcdf43965fffcbab",
+      "check": "all_generated_calls_reconciled",
+      "pass": true
+    },
+    {
+      "trial_id": "a5c372aaeace0a055f64",
+      "check": "schedule_identity",
+      "pass": true
+    },
+    {
+      "trial_id": "a5c372aaeace0a055f64",
+      "check": "model_admission",
+      "pass": true
+    },
+    {
+      "trial_id": "a5c372aaeace0a055f64",
+      "check": "provider_telemetry",
+      "pass": true
+    },
+    {
+      "trial_id": "a5c372aaeace0a055f64",
+      "check": "whole_episode_attempt_cap",
+      "pass": true
+    },
+    {
+      "trial_id": "a5c372aaeace0a055f64",
+      "check": "all_native_turns_completed",
+      "pass": true
+    },
+    {
+      "trial_id": "a5c372aaeace0a055f64",
+      "check": "public_user_turn_binding",
+      "pass": true
+    },
+    {
+      "trial_id": "a5c372aaeace0a055f64",
+      "check": "actual_turn_provider_dispatch",
+      "pass": true
+    },
+    {
+      "trial_id": "a5c372aaeace0a055f64",
+      "check": "actual_user_prompt_binding",
+      "pass": true
+    },
+    {
+      "trial_id": "a5c372aaeace0a055f64",
+      "check": "fresh_native_session_user_history",
+      "pass": true
+    },
+    {
+      "trial_id": "a5c372aaeace0a055f64",
+      "check": "public_user_turn_binding",
+      "pass": true
+    },
+    {
+      "trial_id": "a5c372aaeace0a055f64",
+      "check": "actual_turn_provider_dispatch",
+      "pass": true
+    },
+    {
+      "trial_id": "a5c372aaeace0a055f64",
+      "check": "whole_episode_token_cap",
+      "pass": true
+    },
+    {
+      "trial_id": "a5c372aaeace0a055f64",
+      "check": "native_effective_capture",
+      "pass": true
+    },
+    {
+      "trial_id": "a5c372aaeace0a055f64",
+      "check": "actual_model_identity",
+      "pass": true
+    },
+    {
+      "trial_id": "a5c372aaeace0a055f64",
+      "check": "native_effective_capture",
+      "pass": true
+    },
+    {
+      "trial_id": "a5c372aaeace0a055f64",
+      "check": "actual_model_identity",
+      "pass": true
+    },
+    {
+      "trial_id": "a5c372aaeace0a055f64",
+      "check": "native_effective_capture",
+      "pass": true
+    },
+    {
+      "trial_id": "a5c372aaeace0a055f64",
+      "check": "actual_model_identity",
+      "pass": true
+    },
+    {
+      "trial_id": "a5c372aaeace0a055f64",
+      "check": "native_effective_capture",
+      "pass": true
+    },
+    {
+      "trial_id": "a5c372aaeace0a055f64",
+      "check": "actual_model_identity",
+      "pass": true
+    },
+    {
+      "trial_id": "a5c372aaeace0a055f64",
+      "check": "mcp_telemetry",
+      "pass": true
+    },
+    {
+      "trial_id": "a5c372aaeace0a055f64",
+      "check": "source_and_common_derived_replay",
+      "pass": true
+    },
+    {
+      "trial_id": "a5c372aaeace0a055f64",
+      "check": "independent_regrade",
+      "pass": true
+    },
+    {
+      "trial_id": "a5c372aaeace0a055f64",
+      "check": "grade_episode_grounded_financial_success",
+      "pass": true
+    },
+    {
+      "trial_id": "a5c372aaeace0a055f64",
+      "check": "grade_memory_state_correctness",
+      "pass": true
+    },
+    {
+      "trial_id": "a5c372aaeace0a055f64",
+      "check": "grade_public_contract_valid",
+      "pass": true
+    },
+    {
+      "trial_id": "a5c372aaeace0a055f64",
+      "check": "grade_controlled_user_state_correctness",
+      "pass": true
+    },
+    {
+      "trial_id": "a5c372aaeace0a055f64",
+      "check": "grade_user_fact_receipts_valid",
+      "pass": true
+    },
+    {
+      "trial_id": "a5c372aaeace0a055f64",
+      "check": "generated_occurrence_inventory",
+      "pass": true
+    },
+    {
+      "trial_id": "a5c372aaeace0a055f64",
+      "check": "local_rejection_proofs",
+      "pass": true
+    },
+    {
+      "trial_id": "a5c372aaeace0a055f64",
+      "check": "local_rejection_proofs",
+      "pass": true
+    },
+    {
+      "trial_id": "e6a2460400071edbf9c5",
+      "check": "schedule_identity",
+      "pass": true
+    },
+    {
+      "trial_id": "e6a2460400071edbf9c5",
+      "check": "model_admission",
+      "pass": true
+    },
+    {
+      "trial_id": "e6a2460400071edbf9c5",
+      "check": "provider_telemetry",
+      "pass": true
+    },
+    {
+      "trial_id": "e6a2460400071edbf9c5",
+      "check": "whole_episode_attempt_cap",
+      "pass": true
+    },
+    {
+      "trial_id": "e6a2460400071edbf9c5",
+      "check": "all_native_turns_completed",
+      "pass": true
+    },
+    {
+      "trial_id": "e6a2460400071edbf9c5",
+      "check": "public_user_turn_binding",
+      "pass": true
+    },
+    {
+      "trial_id": "e6a2460400071edbf9c5",
+      "check": "actual_turn_provider_dispatch",
+      "pass": true
+    },
+    {
+      "trial_id": "e6a2460400071edbf9c5",
+      "check": "actual_user_prompt_binding",
+      "pass": true
+    },
+    {
+      "trial_id": "e6a2460400071edbf9c5",
+      "check": "fresh_native_session_user_history",
+      "pass": true
+    },
+    {
+      "trial_id": "e6a2460400071edbf9c5",
+      "check": "public_user_turn_binding",
+      "pass": true
+    },
+    {
+      "trial_id": "e6a2460400071edbf9c5",
+      "check": "actual_turn_provider_dispatch",
+      "pass": true
+    },
+    {
+      "trial_id": "e6a2460400071edbf9c5",
+      "check": "actual_user_prompt_binding",
+      "pass": true
+    },
+    {
+      "trial_id": "e6a2460400071edbf9c5",
+      "check": "whole_episode_token_cap",
+      "pass": true
+    },
+    {
+      "trial_id": "e6a2460400071edbf9c5",
+      "check": "native_effective_capture",
+      "pass": true
+    },
+    {
+      "trial_id": "e6a2460400071edbf9c5",
+      "check": "actual_model_identity",
+      "pass": true
+    },
+    {
+      "trial_id": "e6a2460400071edbf9c5",
+      "check": "native_effective_capture",
+      "pass": true
+    },
+    {
+      "trial_id": "e6a2460400071edbf9c5",
+      "check": "actual_model_identity",
+      "pass": true
+    },
+    {
+      "trial_id": "e6a2460400071edbf9c5",
+      "check": "native_effective_capture",
+      "pass": true
+    },
+    {
+      "trial_id": "e6a2460400071edbf9c5",
+      "check": "actual_model_identity",
+      "pass": true
+    },
+    {
+      "trial_id": "e6a2460400071edbf9c5",
+      "check": "native_effective_capture",
+      "pass": true
+    },
+    {
+      "trial_id": "e6a2460400071edbf9c5",
+      "check": "actual_model_identity",
+      "pass": true
+    },
+    {
+      "trial_id": "e6a2460400071edbf9c5",
+      "check": "mcp_telemetry",
+      "pass": true
+    },
+    {
+      "trial_id": "e6a2460400071edbf9c5",
+      "check": "source_and_common_derived_replay",
+      "pass": true
+    },
+    {
+      "trial_id": "e6a2460400071edbf9c5",
+      "check": "independent_regrade",
+      "pass": true
+    },
+    {
+      "trial_id": "e6a2460400071edbf9c5",
+      "check": "grade_episode_grounded_financial_success",
+      "pass": true
+    },
+    {
+      "trial_id": "e6a2460400071edbf9c5",
+      "check": "grade_memory_state_correctness",
+      "pass": true
+    },
+    {
+      "trial_id": "e6a2460400071edbf9c5",
+      "check": "grade_public_contract_valid",
+      "pass": true
+    },
+    {
+      "trial_id": "e6a2460400071edbf9c5",
+      "check": "grade_controlled_user_state_correctness",
+      "pass": true
+    },
+    {
+      "trial_id": "e6a2460400071edbf9c5",
+      "check": "grade_user_fact_receipts_valid",
+      "pass": true
+    },
+    {
+      "trial_id": "e6a2460400071edbf9c5",
+      "check": "generated_occurrence_inventory",
+      "pass": true
+    },
+    {
+      "trial_id": "e6a2460400071edbf9c5",
+      "check": "local_rejection_proofs",
+      "pass": true
+    },
+    {
+      "trial_id": "e6a2460400071edbf9c5",
+      "check": "local_rejection_proofs",
+      "pass": true
+    },
+    {
+      "trial_id": "82e207f69d36015f11da",
+      "check": "schedule_identity",
+      "pass": true
+    },
+    {
+      "trial_id": "82e207f69d36015f11da",
+      "check": "model_admission",
+      "pass": true
+    },
+    {
+      "trial_id": "82e207f69d36015f11da",
+      "check": "provider_telemetry",
+      "pass": true
+    },
+    {
+      "trial_id": "82e207f69d36015f11da",
+      "check": "whole_episode_attempt_cap",
+      "pass": true
+    },
+    {
+      "trial_id": "82e207f69d36015f11da",
+      "check": "all_native_turns_completed",
+      "pass": true
+    },
+    {
+      "trial_id": "82e207f69d36015f11da",
+      "check": "public_user_turn_binding",
+      "pass": true
+    },
+    {
+      "trial_id": "82e207f69d36015f11da",
+      "check": "actual_turn_provider_dispatch",
+      "pass": true
+    },
+    {
+      "trial_id": "82e207f69d36015f11da",
+      "check": "actual_user_prompt_binding",
+      "pass": true
+    },
+    {
+      "trial_id": "82e207f69d36015f11da",
+      "check": "fresh_native_session_user_history",
+      "pass": true
+    },
+    {
+      "trial_id": "82e207f69d36015f11da",
+      "check": "public_user_turn_binding",
+      "pass": true
+    },
+    {
+      "trial_id": "82e207f69d36015f11da",
+      "check": "actual_turn_provider_dispatch",
+      "pass": true
+    },
+    {
+      "trial_id": "82e207f69d36015f11da",
+      "check": "actual_user_prompt_binding",
+      "pass": true
+    },
+    {
+      "trial_id": "82e207f69d36015f11da",
+      "check": "public_user_turn_binding",
+      "pass": true
+    },
+    {
+      "trial_id": "82e207f69d36015f11da",
+      "check": "actual_turn_provider_dispatch",
+      "pass": true
+    },
+    {
+      "trial_id": "82e207f69d36015f11da",
+      "check": "actual_user_prompt_binding",
+      "pass": true
+    },
+    {
+      "trial_id": "82e207f69d36015f11da",
+      "check": "fresh_native_session_user_history",
+      "pass": true
+    },
+    {
+      "trial_id": "82e207f69d36015f11da",
+      "check": "whole_episode_token_cap",
+      "pass": true
+    },
+    {
+      "trial_id": "82e207f69d36015f11da",
+      "check": "native_effective_capture",
+      "pass": true
+    },
+    {
+      "trial_id": "82e207f69d36015f11da",
+      "check": "actual_model_identity",
+      "pass": true
+    },
+    {
+      "trial_id": "82e207f69d36015f11da",
+      "check": "native_effective_capture",
+      "pass": true
+    },
+    {
+      "trial_id": "82e207f69d36015f11da",
+      "check": "actual_model_identity",
+      "pass": true
+    },
+    {
+      "trial_id": "82e207f69d36015f11da",
+      "check": "native_effective_capture",
+      "pass": true
+    },
+    {
+      "trial_id": "82e207f69d36015f11da",
+      "check": "actual_model_identity",
+      "pass": true
+    },
+    {
+      "trial_id": "82e207f69d36015f11da",
+      "check": "native_effective_capture",
+      "pass": true
+    },
+    {
+      "trial_id": "82e207f69d36015f11da",
+      "check": "actual_model_identity",
+      "pass": true
+    },
+    {
+      "trial_id": "82e207f69d36015f11da",
+      "check": "native_effective_capture",
+      "pass": true
+    },
+    {
+      "trial_id": "82e207f69d36015f11da",
+      "check": "actual_model_identity",
+      "pass": true
+    },
+    {
+      "trial_id": "82e207f69d36015f11da",
+      "check": "native_effective_capture",
+      "pass": true
+    },
+    {
+      "trial_id": "82e207f69d36015f11da",
+      "check": "actual_model_identity",
+      "pass": true
+    },
+    {
+      "trial_id": "82e207f69d36015f11da",
+      "check": "native_effective_capture",
+      "pass": true
+    },
+    {
+      "trial_id": "82e207f69d36015f11da",
+      "check": "actual_model_identity",
+      "pass": true
+    },
+    {
+      "trial_id": "82e207f69d36015f11da",
+      "check": "mcp_telemetry",
+      "pass": true
+    },
+    {
+      "trial_id": "82e207f69d36015f11da",
+      "check": "source_and_common_derived_replay",
+      "pass": true
+    },
+    {
+      "trial_id": "82e207f69d36015f11da",
+      "check": "independent_regrade",
+      "pass": true
+    },
+    {
+      "trial_id": "82e207f69d36015f11da",
+      "check": "grade_episode_grounded_financial_success",
+      "pass": true
+    },
+    {
+      "trial_id": "82e207f69d36015f11da",
+      "check": "grade_memory_state_correctness",
+      "pass": true
+    },
+    {
+      "trial_id": "82e207f69d36015f11da",
+      "check": "grade_public_contract_valid",
+      "pass": true
+    },
+    {
+      "trial_id": "82e207f69d36015f11da",
+      "check": "grade_controlled_user_state_correctness",
+      "pass": true
+    },
+    {
+      "trial_id": "82e207f69d36015f11da",
+      "check": "grade_user_fact_receipts_valid",
+      "pass": true
+    },
+    {
+      "trial_id": "82e207f69d36015f11da",
+      "check": "generated_occurrence_inventory",
+      "pass": true
+    },
+    {
+      "trial_id": "82e207f69d36015f11da",
+      "check": "user_read_response_hash",
+      "pass": true
+    },
+    {
+      "trial_id": "82e207f69d36015f11da",
+      "check": "actual_user_read_context",
+      "pass": true
+    },
+    {
+      "trial_id": "82e207f69d36015f11da",
+      "check": "local_rejection_proofs",
+      "pass": true
+    },
+    {
+      "trial_id": "82e207f69d36015f11da",
+      "check": "local_rejection_proofs",
+      "pass": true
+    },
+    {
+      "trial_id": "82e207f69d36015f11da",
+      "check": "local_rejection_proofs",
+      "pass": true
+    },
+    {
+      "trial_id": "82e207f69d36015f11da",
+      "check": "local_rejection_occurrence",
+      "pass": true
+    },
+    {
+      "trial_id": "82e207f69d36015f11da",
+      "check": "all_generated_calls_reconciled",
+      "pass": true
+    },
+    {
+      "trial_id": "49e459b9016ba557d1d2",
+      "check": "schedule_identity",
+      "pass": true
+    },
+    {
+      "trial_id": "49e459b9016ba557d1d2",
+      "check": "model_admission",
+      "pass": true
+    },
+    {
+      "trial_id": "49e459b9016ba557d1d2",
+      "check": "provider_telemetry",
+      "pass": true
+    },
+    {
+      "trial_id": "49e459b9016ba557d1d2",
+      "check": "whole_episode_attempt_cap",
+      "pass": true
+    },
+    {
+      "trial_id": "49e459b9016ba557d1d2",
+      "check": "all_native_turns_completed",
+      "pass": true
+    },
+    {
+      "trial_id": "49e459b9016ba557d1d2",
+      "check": "public_user_turn_binding",
+      "pass": true
+    },
+    {
+      "trial_id": "49e459b9016ba557d1d2",
+      "check": "actual_turn_provider_dispatch",
+      "pass": true
+    },
+    {
+      "trial_id": "49e459b9016ba557d1d2",
+      "check": "actual_user_prompt_binding",
+      "pass": true
+    },
+    {
+      "trial_id": "49e459b9016ba557d1d2",
+      "check": "fresh_native_session_user_history",
+      "pass": true
+    },
+    {
+      "trial_id": "49e459b9016ba557d1d2",
+      "check": "public_user_turn_binding",
+      "pass": true
+    },
+    {
+      "trial_id": "49e459b9016ba557d1d2",
+      "check": "actual_turn_provider_dispatch",
+      "pass": true
+    },
+    {
+      "trial_id": "49e459b9016ba557d1d2",
+      "check": "actual_user_prompt_binding",
+      "pass": true
+    },
+    {
+      "trial_id": "49e459b9016ba557d1d2",
+      "check": "public_user_turn_binding",
+      "pass": true
+    },
+    {
+      "trial_id": "49e459b9016ba557d1d2",
+      "check": "actual_turn_provider_dispatch",
+      "pass": true
+    },
+    {
+      "trial_id": "49e459b9016ba557d1d2",
+      "check": "actual_user_prompt_binding",
+      "pass": true
+    },
+    {
+      "trial_id": "49e459b9016ba557d1d2",
+      "check": "fresh_native_session_user_history",
+      "pass": true
+    },
+    {
+      "trial_id": "49e459b9016ba557d1d2",
+      "check": "whole_episode_token_cap",
+      "pass": true
+    },
+    {
+      "trial_id": "49e459b9016ba557d1d2",
+      "check": "native_effective_capture",
+      "pass": true
+    },
+    {
+      "trial_id": "49e459b9016ba557d1d2",
+      "check": "actual_model_identity",
+      "pass": true
+    },
+    {
+      "trial_id": "49e459b9016ba557d1d2",
+      "check": "native_effective_capture",
+      "pass": true
+    },
+    {
+      "trial_id": "49e459b9016ba557d1d2",
+      "check": "actual_model_identity",
+      "pass": true
+    },
+    {
+      "trial_id": "49e459b9016ba557d1d2",
+      "check": "native_effective_capture",
+      "pass": true
+    },
+    {
+      "trial_id": "49e459b9016ba557d1d2",
+      "check": "actual_model_identity",
+      "pass": true
+    },
+    {
+      "trial_id": "49e459b9016ba557d1d2",
+      "check": "native_effective_capture",
+      "pass": true
+    },
+    {
+      "trial_id": "49e459b9016ba557d1d2",
+      "check": "actual_model_identity",
+      "pass": true
+    },
+    {
+      "trial_id": "49e459b9016ba557d1d2",
+      "check": "native_effective_capture",
+      "pass": true
+    },
+    {
+      "trial_id": "49e459b9016ba557d1d2",
+      "check": "actual_model_identity",
+      "pass": true
+    },
+    {
+      "trial_id": "49e459b9016ba557d1d2",
+      "check": "native_effective_capture",
+      "pass": true
+    },
+    {
+      "trial_id": "49e459b9016ba557d1d2",
+      "check": "actual_model_identity",
+      "pass": true
+    },
+    {
+      "trial_id": "49e459b9016ba557d1d2",
+      "check": "mcp_telemetry",
+      "pass": true
+    },
+    {
+      "trial_id": "49e459b9016ba557d1d2",
+      "check": "source_and_common_derived_replay",
+      "pass": true
+    },
+    {
+      "trial_id": "49e459b9016ba557d1d2",
+      "check": "independent_regrade",
+      "pass": true
+    },
+    {
+      "trial_id": "49e459b9016ba557d1d2",
+      "check": "grade_episode_grounded_financial_success",
+      "pass": true
+    },
+    {
+      "trial_id": "49e459b9016ba557d1d2",
+      "check": "grade_memory_state_correctness",
+      "pass": true
+    },
+    {
+      "trial_id": "49e459b9016ba557d1d2",
+      "check": "grade_public_contract_valid",
+      "pass": true
+    },
+    {
+      "trial_id": "49e459b9016ba557d1d2",
+      "check": "grade_controlled_user_state_correctness",
+      "pass": true
+    },
+    {
+      "trial_id": "49e459b9016ba557d1d2",
+      "check": "grade_user_fact_receipts_valid",
+      "pass": true
+    },
+    {
+      "trial_id": "49e459b9016ba557d1d2",
+      "check": "generated_occurrence_inventory",
+      "pass": true
+    },
+    {
+      "trial_id": "49e459b9016ba557d1d2",
+      "check": "user_read_response_hash",
+      "pass": true
+    },
+    {
+      "trial_id": "49e459b9016ba557d1d2",
+      "check": "local_rejection_proofs",
+      "pass": true
+    },
+    {
+      "trial_id": "49e459b9016ba557d1d2",
+      "check": "local_rejection_proofs",
+      "pass": true
+    },
+    {
+      "trial_id": "49e459b9016ba557d1d2",
+      "check": "local_rejection_proofs",
+      "pass": true
+    },
+    {
+      "trial_id": "857e11378583ca4f69f2",
+      "check": "schedule_identity",
+      "pass": true
+    },
+    {
+      "trial_id": "857e11378583ca4f69f2",
+      "check": "model_admission",
+      "pass": true
+    },
+    {
+      "trial_id": "857e11378583ca4f69f2",
+      "check": "provider_telemetry",
+      "pass": true
+    },
+    {
+      "trial_id": "857e11378583ca4f69f2",
+      "check": "whole_episode_attempt_cap",
+      "pass": true
+    },
+    {
+      "trial_id": "857e11378583ca4f69f2",
+      "check": "public_user_turn_binding",
+      "pass": true
+    },
+    {
+      "trial_id": "857e11378583ca4f69f2",
+      "check": "actual_turn_provider_dispatch",
+      "pass": true
+    },
+    {
+      "trial_id": "857e11378583ca4f69f2",
+      "check": "actual_user_prompt_binding",
+      "pass": true
+    },
+    {
+      "trial_id": "857e11378583ca4f69f2",
+      "check": "fresh_native_session_user_history",
+      "pass": true
+    },
+    {
+      "trial_id": "857e11378583ca4f69f2",
+      "check": "public_user_turn_binding",
+      "pass": true
+    },
+    {
+      "trial_id": "857e11378583ca4f69f2",
+      "check": "actual_user_prompt_binding",
+      "pass": true
+    },
+    {
+      "trial_id": "857e11378583ca4f69f2",
+      "check": "whole_episode_token_cap",
+      "pass": true
+    },
+    {
+      "trial_id": "857e11378583ca4f69f2",
+      "check": "native_effective_capture",
+      "pass": true
+    },
+    {
+      "trial_id": "857e11378583ca4f69f2",
+      "check": "actual_model_identity",
+      "pass": true
+    },
+    {
+      "trial_id": "857e11378583ca4f69f2",
+      "check": "native_effective_capture",
+      "pass": true
+    },
+    {
+      "trial_id": "857e11378583ca4f69f2",
+      "check": "actual_model_identity",
+      "pass": true
+    },
+    {
+      "trial_id": "857e11378583ca4f69f2",
+      "check": "native_effective_capture",
+      "pass": true
+    },
+    {
+      "trial_id": "857e11378583ca4f69f2",
+      "check": "mcp_telemetry",
+      "pass": true
+    },
+    {
+      "trial_id": "857e11378583ca4f69f2",
+      "check": "source_and_common_derived_replay",
+      "pass": true
+    },
+    {
+      "trial_id": "857e11378583ca4f69f2",
+      "check": "independent_regrade",
+      "pass": true
+    },
+    {
+      "trial_id": "857e11378583ca4f69f2",
+      "check": "grade_episode_grounded_financial_success",
+      "pass": true
+    },
+    {
+      "trial_id": "857e11378583ca4f69f2",
+      "check": "grade_memory_state_correctness",
+      "pass": true
+    },
+    {
+      "trial_id": "857e11378583ca4f69f2",
+      "check": "grade_public_contract_valid",
+      "pass": true
+    },
+    {
+      "trial_id": "857e11378583ca4f69f2",
+      "check": "grade_controlled_user_state_correctness",
+      "pass": true
+    },
+    {
+      "trial_id": "857e11378583ca4f69f2",
+      "check": "grade_user_fact_receipts_valid",
+      "pass": true
+    },
+    {
+      "trial_id": "857e11378583ca4f69f2",
+      "check": "generated_occurrence_inventory",
+      "pass": true
+    },
+    {
+      "trial_id": "857e11378583ca4f69f2",
+      "check": "user_read_response_hash",
+      "pass": true
+    },
+    {
+      "trial_id": "857e11378583ca4f69f2",
+      "check": "actual_user_read_context",
+      "pass": true
+    },
+    {
+      "trial_id": "857e11378583ca4f69f2",
+      "check": "local_rejection_proofs",
+      "pass": true
+    },
+    {
+      "trial_id": "857e11378583ca4f69f2",
+      "check": "local_rejection_proofs",
+      "pass": true
+    },
+    {
+      "trial_id": "857e11378583ca4f69f2",
+      "check": "all_generated_calls_reconciled",
+      "pass": true
+    },
+    {
+      "trial_id": "f5b9f0b036a41915385c",
+      "check": "schedule_identity",
+      "pass": true
+    },
+    {
+      "trial_id": "f5b9f0b036a41915385c",
+      "check": "model_admission",
+      "pass": true
+    },
+    {
+      "trial_id": "f5b9f0b036a41915385c",
+      "check": "provider_telemetry",
+      "pass": true
+    },
+    {
+      "trial_id": "f5b9f0b036a41915385c",
+      "check": "whole_episode_attempt_cap",
+      "pass": true
+    },
+    {
+      "trial_id": "f5b9f0b036a41915385c",
+      "check": "all_native_turns_completed",
+      "pass": true
+    },
+    {
+      "trial_id": "f5b9f0b036a41915385c",
+      "check": "public_user_turn_binding",
+      "pass": true
+    },
+    {
+      "trial_id": "f5b9f0b036a41915385c",
+      "check": "actual_turn_provider_dispatch",
+      "pass": true
+    },
+    {
+      "trial_id": "f5b9f0b036a41915385c",
+      "check": "actual_user_prompt_binding",
+      "pass": true
+    },
+    {
+      "trial_id": "f5b9f0b036a41915385c",
+      "check": "fresh_native_session_user_history",
+      "pass": true
+    },
+    {
+      "trial_id": "f5b9f0b036a41915385c",
+      "check": "public_user_turn_binding",
+      "pass": true
+    },
+    {
+      "trial_id": "f5b9f0b036a41915385c",
+      "check": "actual_turn_provider_dispatch",
+      "pass": true
+    },
+    {
+      "trial_id": "f5b9f0b036a41915385c",
+      "check": "actual_user_prompt_binding",
+      "pass": true
+    },
+    {
+      "trial_id": "f5b9f0b036a41915385c",
+      "check": "public_user_turn_binding",
+      "pass": true
+    },
+    {
+      "trial_id": "f5b9f0b036a41915385c",
+      "check": "actual_turn_provider_dispatch",
+      "pass": true
+    },
+    {
+      "trial_id": "f5b9f0b036a41915385c",
+      "check": "actual_user_prompt_binding",
+      "pass": true
+    },
+    {
+      "trial_id": "f5b9f0b036a41915385c",
+      "check": "fresh_native_session_user_history",
+      "pass": true
+    },
+    {
+      "trial_id": "f5b9f0b036a41915385c",
+      "check": "whole_episode_token_cap",
+      "pass": true
+    },
+    {
+      "trial_id": "f5b9f0b036a41915385c",
+      "check": "native_effective_capture",
+      "pass": true
+    },
+    {
+      "trial_id": "f5b9f0b036a41915385c",
+      "check": "actual_model_identity",
+      "pass": true
+    },
+    {
+      "trial_id": "f5b9f0b036a41915385c",
+      "check": "native_effective_capture",
+      "pass": true
+    },
+    {
+      "trial_id": "f5b9f0b036a41915385c",
+      "check": "actual_model_identity",
+      "pass": true
+    },
+    {
+      "trial_id": "f5b9f0b036a41915385c",
+      "check": "native_effective_capture",
+      "pass": true
+    },
+    {
+      "trial_id": "f5b9f0b036a41915385c",
+      "check": "actual_model_identity",
+      "pass": true
+    },
+    {
+      "trial_id": "f5b9f0b036a41915385c",
+      "check": "native_effective_capture",
+      "pass": true
+    },
+    {
+      "trial_id": "f5b9f0b036a41915385c",
+      "check": "actual_model_identity",
+      "pass": true
+    },
+    {
+      "trial_id": "f5b9f0b036a41915385c",
+      "check": "native_effective_capture",
+      "pass": true
+    },
+    {
+      "trial_id": "f5b9f0b036a41915385c",
+      "check": "actual_model_identity",
+      "pass": true
+    },
+    {
+      "trial_id": "f5b9f0b036a41915385c",
+      "check": "native_effective_capture",
+      "pass": true
+    },
+    {
+      "trial_id": "f5b9f0b036a41915385c",
+      "check": "actual_model_identity",
+      "pass": true
+    },
+    {
+      "trial_id": "f5b9f0b036a41915385c",
+      "check": "native_effective_capture",
+      "pass": true
+    },
+    {
+      "trial_id": "f5b9f0b036a41915385c",
+      "check": "actual_model_identity",
+      "pass": true
+    },
+    {
+      "trial_id": "f5b9f0b036a41915385c",
+      "check": "mcp_telemetry",
+      "pass": true
+    },
+    {
+      "trial_id": "f5b9f0b036a41915385c",
+      "check": "source_and_common_derived_replay",
+      "pass": true
+    },
+    {
+      "trial_id": "f5b9f0b036a41915385c",
+      "check": "independent_regrade",
+      "pass": true
+    },
+    {
+      "trial_id": "f5b9f0b036a41915385c",
+      "check": "grade_episode_grounded_financial_success",
+      "pass": true
+    },
+    {
+      "trial_id": "f5b9f0b036a41915385c",
+      "check": "grade_memory_state_correctness",
+      "pass": true
+    },
+    {
+      "trial_id": "f5b9f0b036a41915385c",
+      "check": "grade_public_contract_valid",
+      "pass": true
+    },
+    {
+      "trial_id": "f5b9f0b036a41915385c",
+      "check": "grade_controlled_user_state_correctness",
+      "pass": true
+    },
+    {
+      "trial_id": "f5b9f0b036a41915385c",
+      "check": "grade_user_fact_receipts_valid",
+      "pass": true
+    },
+    {
+      "trial_id": "f5b9f0b036a41915385c",
+      "check": "generated_occurrence_inventory",
+      "pass": true
+    },
+    {
+      "trial_id": "f5b9f0b036a41915385c",
+      "check": "user_read_response_hash",
+      "pass": true
+    },
+    {
+      "trial_id": "f5b9f0b036a41915385c",
+      "check": "actual_user_read_context",
+      "pass": true
+    },
+    {
+      "trial_id": "f5b9f0b036a41915385c",
+      "check": "user_read_response_hash",
+      "pass": true
+    },
+    {
+      "trial_id": "f5b9f0b036a41915385c",
+      "check": "actual_user_read_context",
+      "pass": true
+    },
+    {
+      "trial_id": "f5b9f0b036a41915385c",
+      "check": "local_rejection_proofs",
+      "pass": true
+    },
+    {
+      "trial_id": "f5b9f0b036a41915385c",
+      "check": "local_rejection_proofs",
+      "pass": true
+    },
+    {
+      "trial_id": "f5b9f0b036a41915385c",
+      "check": "local_rejection_proofs",
+      "pass": true
+    },
+    {
+      "trial_id": "2873e74f7a4c9a07a25a",
+      "check": "schedule_identity",
+      "pass": true
+    },
+    {
+      "trial_id": "2873e74f7a4c9a07a25a",
+      "check": "model_admission",
+      "pass": true
+    },
+    {
+      "trial_id": "2873e74f7a4c9a07a25a",
+      "check": "provider_telemetry",
+      "pass": true
+    },
+    {
+      "trial_id": "2873e74f7a4c9a07a25a",
+      "check": "whole_episode_attempt_cap",
+      "pass": true
+    },
+    {
+      "trial_id": "2873e74f7a4c9a07a25a",
+      "check": "all_native_turns_completed",
+      "pass": true
+    },
+    {
+      "trial_id": "2873e74f7a4c9a07a25a",
+      "check": "public_user_turn_binding",
+      "pass": true
+    },
+    {
+      "trial_id": "2873e74f7a4c9a07a25a",
+      "check": "actual_turn_provider_dispatch",
+      "pass": true
+    },
+    {
+      "trial_id": "2873e74f7a4c9a07a25a",
+      "check": "actual_user_prompt_binding",
+      "pass": true
+    },
+    {
+      "trial_id": "2873e74f7a4c9a07a25a",
+      "check": "fresh_native_session_user_history",
+      "pass": true
+    },
+    {
+      "trial_id": "2873e74f7a4c9a07a25a",
+      "check": "public_user_turn_binding",
+      "pass": true
+    },
+    {
+      "trial_id": "2873e74f7a4c9a07a25a",
+      "check": "actual_turn_provider_dispatch",
+      "pass": true
+    },
+    {
+      "trial_id": "2873e74f7a4c9a07a25a",
+      "check": "actual_user_prompt_binding",
+      "pass": true
+    },
+    {
+      "trial_id": "2873e74f7a4c9a07a25a",
+      "check": "fresh_native_session_user_history",
+      "pass": true
+    },
+    {
+      "trial_id": "2873e74f7a4c9a07a25a",
+      "check": "whole_episode_token_cap",
+      "pass": true
+    },
+    {
+      "trial_id": "2873e74f7a4c9a07a25a",
+      "check": "native_effective_capture",
+      "pass": true
+    },
+    {
+      "trial_id": "2873e74f7a4c9a07a25a",
+      "check": "actual_model_identity",
+      "pass": true
+    },
+    {
+      "trial_id": "2873e74f7a4c9a07a25a",
+      "check": "native_effective_capture",
+      "pass": true
+    },
+    {
+      "trial_id": "2873e74f7a4c9a07a25a",
+      "check": "actual_model_identity",
+      "pass": true
+    },
+    {
+      "trial_id": "2873e74f7a4c9a07a25a",
+      "check": "native_effective_capture",
+      "pass": true
+    },
+    {
+      "trial_id": "2873e74f7a4c9a07a25a",
+      "check": "actual_model_identity",
+      "pass": true
+    },
+    {
+      "trial_id": "2873e74f7a4c9a07a25a",
+      "check": "native_effective_capture",
+      "pass": true
+    },
+    {
+      "trial_id": "2873e74f7a4c9a07a25a",
+      "check": "actual_model_identity",
+      "pass": true
+    },
+    {
+      "trial_id": "2873e74f7a4c9a07a25a",
+      "check": "native_effective_capture",
+      "pass": true
+    },
+    {
+      "trial_id": "2873e74f7a4c9a07a25a",
+      "check": "actual_model_identity",
+      "pass": true
+    },
+    {
+      "trial_id": "2873e74f7a4c9a07a25a",
+      "check": "native_effective_capture",
+      "pass": true
+    },
+    {
+      "trial_id": "2873e74f7a4c9a07a25a",
+      "check": "actual_model_identity",
+      "pass": true
+    },
+    {
+      "trial_id": "2873e74f7a4c9a07a25a",
+      "check": "native_effective_capture",
+      "pass": true
+    },
+    {
+      "trial_id": "2873e74f7a4c9a07a25a",
+      "check": "actual_model_identity",
+      "pass": true
+    },
+    {
+      "trial_id": "2873e74f7a4c9a07a25a",
+      "check": "native_effective_capture",
+      "pass": true
+    },
+    {
+      "trial_id": "2873e74f7a4c9a07a25a",
+      "check": "actual_model_identity",
+      "pass": true
+    },
+    {
+      "trial_id": "2873e74f7a4c9a07a25a",
+      "check": "native_effective_capture",
+      "pass": true
+    },
+    {
+      "trial_id": "2873e74f7a4c9a07a25a",
+      "check": "actual_model_identity",
+      "pass": true
+    },
+    {
+      "trial_id": "2873e74f7a4c9a07a25a",
+      "check": "mcp_telemetry",
+      "pass": true
+    },
+    {
+      "trial_id": "2873e74f7a4c9a07a25a",
+      "check": "source_and_common_derived_replay",
+      "pass": true
+    },
+    {
+      "trial_id": "2873e74f7a4c9a07a25a",
+      "check": "independent_regrade",
+      "pass": true
+    },
+    {
+      "trial_id": "2873e74f7a4c9a07a25a",
+      "check": "grade_episode_grounded_financial_success",
+      "pass": true
+    },
+    {
+      "trial_id": "2873e74f7a4c9a07a25a",
+      "check": "grade_memory_state_correctness",
+      "pass": true
+    },
+    {
+      "trial_id": "2873e74f7a4c9a07a25a",
+      "check": "grade_public_contract_valid",
+      "pass": true
+    },
+    {
+      "trial_id": "2873e74f7a4c9a07a25a",
+      "check": "grade_controlled_user_state_correctness",
+      "pass": true
+    },
+    {
+      "trial_id": "2873e74f7a4c9a07a25a",
+      "check": "grade_user_fact_receipts_valid",
+      "pass": true
+    },
+    {
+      "trial_id": "2873e74f7a4c9a07a25a",
+      "check": "generated_occurrence_inventory",
+      "pass": true
+    },
+    {
+      "trial_id": "2873e74f7a4c9a07a25a",
+      "check": "local_rejection_proofs",
+      "pass": true
+    },
+    {
+      "trial_id": "4429f7978497fa2ad270",
+      "check": "schedule_identity",
+      "pass": true
+    },
+    {
+      "trial_id": "4429f7978497fa2ad270",
+      "check": "model_admission",
+      "pass": true
+    },
+    {
+      "trial_id": "4429f7978497fa2ad270",
+      "check": "provider_telemetry",
+      "pass": true
+    },
+    {
+      "trial_id": "4429f7978497fa2ad270",
+      "check": "whole_episode_attempt_cap",
+      "pass": true
+    },
+    {
+      "trial_id": "4429f7978497fa2ad270",
+      "check": "all_native_turns_completed",
+      "pass": true
+    },
+    {
+      "trial_id": "4429f7978497fa2ad270",
+      "check": "public_user_turn_binding",
+      "pass": true
+    },
+    {
+      "trial_id": "4429f7978497fa2ad270",
+      "check": "actual_turn_provider_dispatch",
+      "pass": true
+    },
+    {
+      "trial_id": "4429f7978497fa2ad270",
+      "check": "actual_user_prompt_binding",
+      "pass": true
+    },
+    {
+      "trial_id": "4429f7978497fa2ad270",
+      "check": "fresh_native_session_user_history",
+      "pass": true
+    },
+    {
+      "trial_id": "4429f7978497fa2ad270",
+      "check": "public_user_turn_binding",
+      "pass": true
+    },
+    {
+      "trial_id": "4429f7978497fa2ad270",
+      "check": "actual_turn_provider_dispatch",
+      "pass": true
+    },
+    {
+      "trial_id": "4429f7978497fa2ad270",
+      "check": "actual_user_prompt_binding",
+      "pass": true
+    },
+    {
+      "trial_id": "4429f7978497fa2ad270",
+      "check": "fresh_native_session_user_history",
+      "pass": true
+    },
+    {
+      "trial_id": "4429f7978497fa2ad270",
+      "check": "whole_episode_token_cap",
+      "pass": true
+    },
+    {
+      "trial_id": "4429f7978497fa2ad270",
+      "check": "native_effective_capture",
+      "pass": true
+    },
+    {
+      "trial_id": "4429f7978497fa2ad270",
+      "check": "actual_model_identity",
+      "pass": true
+    },
+    {
+      "trial_id": "4429f7978497fa2ad270",
+      "check": "native_effective_capture",
+      "pass": true
+    },
+    {
+      "trial_id": "4429f7978497fa2ad270",
+      "check": "actual_model_identity",
+      "pass": true
+    },
+    {
+      "trial_id": "4429f7978497fa2ad270",
+      "check": "native_effective_capture",
+      "pass": true
+    },
+    {
+      "trial_id": "4429f7978497fa2ad270",
+      "check": "actual_model_identity",
+      "pass": true
+    },
+    {
+      "trial_id": "4429f7978497fa2ad270",
+      "check": "native_effective_capture",
+      "pass": true
+    },
+    {
+      "trial_id": "4429f7978497fa2ad270",
+      "check": "actual_model_identity",
+      "pass": true
+    },
+    {
+      "trial_id": "4429f7978497fa2ad270",
+      "check": "native_effective_capture",
+      "pass": true
+    },
+    {
+      "trial_id": "4429f7978497fa2ad270",
+      "check": "actual_model_identity",
+      "pass": true
+    },
+    {
+      "trial_id": "4429f7978497fa2ad270",
+      "check": "native_effective_capture",
+      "pass": true
+    },
+    {
+      "trial_id": "4429f7978497fa2ad270",
+      "check": "actual_model_identity",
+      "pass": true
+    },
+    {
+      "trial_id": "4429f7978497fa2ad270",
+      "check": "mcp_telemetry",
+      "pass": true
+    },
+    {
+      "trial_id": "4429f7978497fa2ad270",
+      "check": "source_and_common_derived_replay",
+      "pass": true
+    },
+    {
+      "trial_id": "4429f7978497fa2ad270",
+      "check": "independent_regrade",
+      "pass": true
+    },
+    {
+      "trial_id": "4429f7978497fa2ad270",
+      "check": "grade_episode_grounded_financial_success",
+      "pass": true
+    },
+    {
+      "trial_id": "4429f7978497fa2ad270",
+      "check": "grade_memory_state_correctness",
+      "pass": true
+    },
+    {
+      "trial_id": "4429f7978497fa2ad270",
+      "check": "grade_public_contract_valid",
+      "pass": true
+    },
+    {
+      "trial_id": "4429f7978497fa2ad270",
+      "check": "grade_controlled_user_state_correctness",
+      "pass": true
+    },
+    {
+      "trial_id": "4429f7978497fa2ad270",
+      "check": "grade_user_fact_receipts_valid",
+      "pass": true
+    },
+    {
+      "trial_id": "4429f7978497fa2ad270",
+      "check": "generated_occurrence_inventory",
+      "pass": true
+    },
+    {
+      "trial_id": "4429f7978497fa2ad270",
+      "check": "local_rejection_proofs",
+      "pass": true
+    },
+    {
+      "trial_id": "f5f7e9b18cd61305d933",
+      "check": "schedule_identity",
+      "pass": true
+    },
+    {
+      "trial_id": "f5f7e9b18cd61305d933",
+      "check": "model_admission",
+      "pass": true
+    },
+    {
+      "trial_id": "f5f7e9b18cd61305d933",
+      "check": "provider_telemetry",
+      "pass": true
+    },
+    {
+      "trial_id": "f5f7e9b18cd61305d933",
+      "check": "whole_episode_attempt_cap",
+      "pass": true
+    },
+    {
+      "trial_id": "f5f7e9b18cd61305d933",
+      "check": "all_native_turns_completed",
+      "pass": true
+    },
+    {
+      "trial_id": "f5f7e9b18cd61305d933",
+      "check": "public_user_turn_binding",
+      "pass": true
+    },
+    {
+      "trial_id": "f5f7e9b18cd61305d933",
+      "check": "actual_turn_provider_dispatch",
+      "pass": true
+    },
+    {
+      "trial_id": "f5f7e9b18cd61305d933",
+      "check": "actual_user_prompt_binding",
+      "pass": true
+    },
+    {
+      "trial_id": "f5f7e9b18cd61305d933",
+      "check": "fresh_native_session_user_history",
+      "pass": true
+    },
+    {
+      "trial_id": "f5f7e9b18cd61305d933",
+      "check": "public_user_turn_binding",
+      "pass": true
+    },
+    {
+      "trial_id": "f5f7e9b18cd61305d933",
+      "check": "actual_turn_provider_dispatch",
+      "pass": true
+    },
+    {
+      "trial_id": "f5f7e9b18cd61305d933",
+      "check": "fresh_native_session_user_history",
+      "pass": true
+    },
+    {
+      "trial_id": "f5f7e9b18cd61305d933",
+      "check": "whole_episode_token_cap",
+      "pass": true
+    },
+    {
+      "trial_id": "f5f7e9b18cd61305d933",
+      "check": "native_effective_capture",
+      "pass": true
+    },
+    {
+      "trial_id": "f5f7e9b18cd61305d933",
+      "check": "actual_model_identity",
+      "pass": true
+    },
+    {
+      "trial_id": "f5f7e9b18cd61305d933",
+      "check": "native_effective_capture",
+      "pass": true
+    },
+    {
+      "trial_id": "f5f7e9b18cd61305d933",
+      "check": "actual_model_identity",
+      "pass": true
+    },
+    {
+      "trial_id": "f5f7e9b18cd61305d933",
+      "check": "native_effective_capture",
+      "pass": true
+    },
+    {
+      "trial_id": "f5f7e9b18cd61305d933",
+      "check": "actual_model_identity",
+      "pass": true
+    },
+    {
+      "trial_id": "f5f7e9b18cd61305d933",
+      "check": "native_effective_capture",
+      "pass": true
+    },
+    {
+      "trial_id": "f5f7e9b18cd61305d933",
+      "check": "actual_model_identity",
+      "pass": true
+    },
+    {
+      "trial_id": "f5f7e9b18cd61305d933",
+      "check": "native_effective_capture",
+      "pass": true
+    },
+    {
+      "trial_id": "f5f7e9b18cd61305d933",
+      "check": "actual_model_identity",
+      "pass": true
+    },
+    {
+      "trial_id": "f5f7e9b18cd61305d933",
+      "check": "mcp_telemetry",
+      "pass": true
+    },
+    {
+      "trial_id": "f5f7e9b18cd61305d933",
+      "check": "source_and_common_derived_replay",
+      "pass": true
+    },
+    {
+      "trial_id": "f5f7e9b18cd61305d933",
+      "check": "independent_regrade",
+      "pass": true
+    },
+    {
+      "trial_id": "f5f7e9b18cd61305d933",
+      "check": "grade_episode_grounded_financial_success",
+      "pass": true
+    },
+    {
+      "trial_id": "f5f7e9b18cd61305d933",
+      "check": "grade_memory_state_correctness",
+      "pass": true
+    },
+    {
+      "trial_id": "f5f7e9b18cd61305d933",
+      "check": "grade_public_contract_valid",
+      "pass": true
+    },
+    {
+      "trial_id": "f5f7e9b18cd61305d933",
+      "check": "grade_controlled_user_state_correctness",
+      "pass": true
+    },
+    {
+      "trial_id": "f5f7e9b18cd61305d933",
+      "check": "grade_user_fact_receipts_valid",
+      "pass": true
+    },
+    {
+      "trial_id": "f5f7e9b18cd61305d933",
+      "check": "generated_occurrence_inventory",
+      "pass": true
+    },
+    {
+      "trial_id": "f5f7e9b18cd61305d933",
+      "check": "user_read_response_hash",
+      "pass": true
+    },
+    {
+      "trial_id": "f5f7e9b18cd61305d933",
+      "check": "actual_user_read_context",
+      "pass": true
+    },
+    {
+      "trial_id": "f5f7e9b18cd61305d933",
+      "check": "local_rejection_proofs",
+      "pass": true
+    },
+    {
+      "trial_id": "f5f7e9b18cd61305d933",
+      "check": "local_rejection_proofs",
+      "pass": true
+    },
+    {
+      "trial_id": "e069b8c82b42d33e22fd",
+      "check": "schedule_identity",
+      "pass": true
+    },
+    {
+      "trial_id": "e069b8c82b42d33e22fd",
+      "check": "model_admission",
+      "pass": true
+    },
+    {
+      "trial_id": "e069b8c82b42d33e22fd",
+      "check": "provider_telemetry",
+      "pass": true
+    },
+    {
+      "trial_id": "e069b8c82b42d33e22fd",
+      "check": "whole_episode_attempt_cap",
+      "pass": true
+    },
+    {
+      "trial_id": "e069b8c82b42d33e22fd",
+      "check": "all_native_turns_completed",
+      "pass": true
+    },
+    {
+      "trial_id": "e069b8c82b42d33e22fd",
+      "check": "public_user_turn_binding",
+      "pass": true
+    },
+    {
+      "trial_id": "e069b8c82b42d33e22fd",
+      "check": "actual_turn_provider_dispatch",
+      "pass": true
+    },
+    {
+      "trial_id": "e069b8c82b42d33e22fd",
+      "check": "actual_user_prompt_binding",
+      "pass": true
+    },
+    {
+      "trial_id": "e069b8c82b42d33e22fd",
+      "check": "fresh_native_session_user_history",
+      "pass": true
+    },
+    {
+      "trial_id": "e069b8c82b42d33e22fd",
+      "check": "public_user_turn_binding",
+      "pass": true
+    },
+    {
+      "trial_id": "e069b8c82b42d33e22fd",
+      "check": "actual_turn_provider_dispatch",
+      "pass": true
+    },
+    {
+      "trial_id": "e069b8c82b42d33e22fd",
+      "check": "actual_user_prompt_binding",
+      "pass": true
+    },
+    {
+      "trial_id": "e069b8c82b42d33e22fd",
+      "check": "fresh_native_session_user_history",
+      "pass": true
+    },
+    {
+      "trial_id": "e069b8c82b42d33e22fd",
+      "check": "whole_episode_token_cap",
+      "pass": true
+    },
+    {
+      "trial_id": "e069b8c82b42d33e22fd",
+      "check": "native_effective_capture",
+      "pass": true
+    },
+    {
+      "trial_id": "e069b8c82b42d33e22fd",
+      "check": "actual_model_identity",
+      "pass": true
+    },
+    {
+      "trial_id": "e069b8c82b42d33e22fd",
+      "check": "native_effective_capture",
+      "pass": true
+    },
+    {
+      "trial_id": "e069b8c82b42d33e22fd",
+      "check": "actual_model_identity",
+      "pass": true
+    },
+    {
+      "trial_id": "e069b8c82b42d33e22fd",
+      "check": "native_effective_capture",
+      "pass": true
+    },
+    {
+      "trial_id": "e069b8c82b42d33e22fd",
+      "check": "actual_model_identity",
+      "pass": true
+    },
+    {
+      "trial_id": "e069b8c82b42d33e22fd",
+      "check": "native_effective_capture",
+      "pass": true
+    },
+    {
+      "trial_id": "e069b8c82b42d33e22fd",
+      "check": "actual_model_identity",
+      "pass": true
+    },
+    {
+      "trial_id": "e069b8c82b42d33e22fd",
+      "check": "native_effective_capture",
+      "pass": true
+    },
+    {
+      "trial_id": "e069b8c82b42d33e22fd",
+      "check": "actual_model_identity",
+      "pass": true
+    },
+    {
+      "trial_id": "e069b8c82b42d33e22fd",
+      "check": "native_effective_capture",
+      "pass": true
+    },
+    {
+      "trial_id": "e069b8c82b42d33e22fd",
+      "check": "actual_model_identity",
+      "pass": true
+    },
+    {
+      "trial_id": "e069b8c82b42d33e22fd",
+      "check": "mcp_telemetry",
+      "pass": true
+    },
+    {
+      "trial_id": "e069b8c82b42d33e22fd",
+      "check": "source_and_common_derived_replay",
+      "pass": true
+    },
+    {
+      "trial_id": "e069b8c82b42d33e22fd",
+      "check": "independent_regrade",
+      "pass": true
+    },
+    {
+      "trial_id": "e069b8c82b42d33e22fd",
+      "check": "grade_episode_grounded_financial_success",
+      "pass": true
+    },
+    {
+      "trial_id": "e069b8c82b42d33e22fd",
+      "check": "grade_memory_state_correctness",
+      "pass": true
+    },
+    {
+      "trial_id": "e069b8c82b42d33e22fd",
+      "check": "grade_public_contract_valid",
+      "pass": true
+    },
+    {
+      "trial_id": "e069b8c82b42d33e22fd",
+      "check": "grade_controlled_user_state_correctness",
+      "pass": true
+    },
+    {
+      "trial_id": "e069b8c82b42d33e22fd",
+      "check": "grade_user_fact_receipts_valid",
+      "pass": true
+    },
+    {
+      "trial_id": "e069b8c82b42d33e22fd",
+      "check": "generated_occurrence_inventory",
+      "pass": true
+    },
+    {
+      "trial_id": "e069b8c82b42d33e22fd",
+      "check": "user_read_response_hash",
+      "pass": true
+    },
+    {
+      "trial_id": "e069b8c82b42d33e22fd",
+      "check": "actual_user_read_context",
+      "pass": true
+    },
+    {
+      "trial_id": "e069b8c82b42d33e22fd",
+      "check": "local_rejection_proofs",
+      "pass": true
+    },
+    {
+      "trial_id": "e069b8c82b42d33e22fd",
+      "check": "local_rejection_proofs",
+      "pass": true
+    },
+    {
+      "trial_id": "39493ddebb99c4ef4fef",
+      "check": "schedule_identity",
+      "pass": true
+    },
+    {
+      "trial_id": "39493ddebb99c4ef4fef",
+      "check": "model_admission",
+      "pass": true
+    },
+    {
+      "trial_id": "39493ddebb99c4ef4fef",
+      "check": "provider_telemetry",
+      "pass": true
+    },
+    {
+      "trial_id": "39493ddebb99c4ef4fef",
+      "check": "whole_episode_attempt_cap",
+      "pass": true
+    },
+    {
+      "trial_id": "39493ddebb99c4ef4fef",
+      "check": "all_native_turns_completed",
+      "pass": true
+    },
+    {
+      "trial_id": "39493ddebb99c4ef4fef",
+      "check": "public_user_turn_binding",
+      "pass": true
+    },
+    {
+      "trial_id": "39493ddebb99c4ef4fef",
+      "check": "actual_turn_provider_dispatch",
+      "pass": true
+    },
+    {
+      "trial_id": "39493ddebb99c4ef4fef",
+      "check": "actual_user_prompt_binding",
+      "pass": true
+    },
+    {
+      "trial_id": "39493ddebb99c4ef4fef",
+      "check": "fresh_native_session_user_history",
+      "pass": true
+    },
+    {
+      "trial_id": "39493ddebb99c4ef4fef",
+      "check": "public_user_turn_binding",
+      "pass": true
+    },
+    {
+      "trial_id": "39493ddebb99c4ef4fef",
+      "check": "actual_turn_provider_dispatch",
+      "pass": true
+    },
+    {
+      "trial_id": "39493ddebb99c4ef4fef",
+      "check": "actual_user_prompt_binding",
+      "pass": true
+    },
+    {
+      "trial_id": "39493ddebb99c4ef4fef",
+      "check": "whole_episode_token_cap",
+      "pass": true
+    },
+    {
+      "trial_id": "39493ddebb99c4ef4fef",
+      "check": "actual_model_identity",
+      "pass": true
+    },
+    {
+      "trial_id": "39493ddebb99c4ef4fef",
+      "check": "actual_model_identity",
+      "pass": true
+    },
+    {
+      "trial_id": "39493ddebb99c4ef4fef",
+      "check": "actual_model_identity",
+      "pass": true
+    },
+    {
+      "trial_id": "39493ddebb99c4ef4fef",
+      "check": "actual_model_identity",
+      "pass": true
+    },
+    {
+      "trial_id": "39493ddebb99c4ef4fef",
+      "check": "mcp_telemetry",
+      "pass": true
+    },
+    {
+      "trial_id": "39493ddebb99c4ef4fef",
+      "check": "source_and_common_derived_replay",
+      "pass": true
+    },
+    {
+      "trial_id": "39493ddebb99c4ef4fef",
+      "check": "independent_regrade",
+      "pass": true
+    },
+    {
+      "trial_id": "39493ddebb99c4ef4fef",
+      "check": "grade_episode_grounded_financial_success",
+      "pass": true
+    },
+    {
+      "trial_id": "39493ddebb99c4ef4fef",
+      "check": "grade_memory_state_correctness",
+      "pass": true
+    },
+    {
+      "trial_id": "39493ddebb99c4ef4fef",
+      "check": "grade_public_contract_valid",
+      "pass": true
+    },
+    {
+      "trial_id": "39493ddebb99c4ef4fef",
+      "check": "grade_controlled_user_state_correctness",
+      "pass": true
+    },
+    {
+      "trial_id": "39493ddebb99c4ef4fef",
+      "check": "grade_user_fact_receipts_valid",
+      "pass": true
+    },
+    {
+      "trial_id": "39493ddebb99c4ef4fef",
+      "check": "generated_occurrence_inventory",
+      "pass": true
+    },
+    {
+      "trial_id": "39493ddebb99c4ef4fef",
+      "check": "user_read_response_hash",
+      "pass": true
+    },
+    {
+      "trial_id": "39493ddebb99c4ef4fef",
+      "check": "local_rejection_proofs",
+      "pass": true
+    },
+    {
+      "trial_id": "39493ddebb99c4ef4fef",
+      "check": "local_rejection_proofs",
+      "pass": true
+    },
+    {
+      "trial_id": "ccf61661902a3155e4b6",
+      "check": "schedule_identity",
+      "pass": true
+    },
+    {
+      "trial_id": "ccf61661902a3155e4b6",
+      "check": "model_admission",
+      "pass": true
+    },
+    {
+      "trial_id": "ccf61661902a3155e4b6",
+      "check": "provider_telemetry",
+      "pass": true
+    },
+    {
+      "trial_id": "ccf61661902a3155e4b6",
+      "check": "whole_episode_attempt_cap",
+      "pass": true
+    },
+    {
+      "trial_id": "ccf61661902a3155e4b6",
+      "check": "all_native_turns_completed",
+      "pass": true
+    },
+    {
+      "trial_id": "ccf61661902a3155e4b6",
+      "check": "public_user_turn_binding",
+      "pass": true
+    },
+    {
+      "trial_id": "ccf61661902a3155e4b6",
+      "check": "actual_turn_provider_dispatch",
+      "pass": true
+    },
+    {
+      "trial_id": "ccf61661902a3155e4b6",
+      "check": "actual_user_prompt_binding",
+      "pass": true
+    },
+    {
+      "trial_id": "ccf61661902a3155e4b6",
+      "check": "fresh_native_session_user_history",
+      "pass": true
+    },
+    {
+      "trial_id": "ccf61661902a3155e4b6",
+      "check": "public_user_turn_binding",
+      "pass": true
+    },
+    {
+      "trial_id": "ccf61661902a3155e4b6",
+      "check": "actual_turn_provider_dispatch",
+      "pass": true
+    },
+    {
+      "trial_id": "ccf61661902a3155e4b6",
+      "check": "actual_user_prompt_binding",
+      "pass": true
+    },
+    {
+      "trial_id": "ccf61661902a3155e4b6",
+      "check": "whole_episode_token_cap",
+      "pass": true
+    },
+    {
+      "trial_id": "ccf61661902a3155e4b6",
+      "check": "actual_model_identity",
+      "pass": true
+    },
+    {
+      "trial_id": "ccf61661902a3155e4b6",
+      "check": "actual_model_identity",
+      "pass": true
+    },
+    {
+      "trial_id": "ccf61661902a3155e4b6",
+      "check": "actual_model_identity",
+      "pass": true
+    },
+    {
+      "trial_id": "ccf61661902a3155e4b6",
+      "check": "actual_model_identity",
+      "pass": true
+    },
+    {
+      "trial_id": "ccf61661902a3155e4b6",
+      "check": "mcp_telemetry",
+      "pass": true
+    },
+    {
+      "trial_id": "ccf61661902a3155e4b6",
+      "check": "source_and_common_derived_replay",
+      "pass": true
+    },
+    {
+      "trial_id": "ccf61661902a3155e4b6",
+      "check": "independent_regrade",
+      "pass": true
+    },
+    {
+      "trial_id": "ccf61661902a3155e4b6",
+      "check": "grade_episode_grounded_financial_success",
+      "pass": true
+    },
+    {
+      "trial_id": "ccf61661902a3155e4b6",
+      "check": "grade_memory_state_correctness",
+      "pass": true
+    },
+    {
+      "trial_id": "ccf61661902a3155e4b6",
+      "check": "grade_public_contract_valid",
+      "pass": true
+    },
+    {
+      "trial_id": "ccf61661902a3155e4b6",
+      "check": "grade_controlled_user_state_correctness",
+      "pass": true
+    },
+    {
+      "trial_id": "ccf61661902a3155e4b6",
+      "check": "grade_user_fact_receipts_valid",
+      "pass": true
+    },
+    {
+      "trial_id": "ccf61661902a3155e4b6",
+      "check": "generated_occurrence_inventory",
+      "pass": true
+    },
+    {
+      "trial_id": "ccf61661902a3155e4b6",
+      "check": "local_rejection_proofs",
+      "pass": true
+    },
+    {
+      "trial_id": "ccf61661902a3155e4b6",
+      "check": "local_rejection_proofs",
+      "pass": true
+    },
+    {
+      "trial_id": "ccf61661902a3155e4b6",
+      "check": "all_generated_calls_reconciled",
+      "pass": true
+    },
+    {
+      "trial_id": "757cfe7c15f9e8c72e2c",
+      "check": "schedule_identity",
+      "pass": true
+    },
+    {
+      "trial_id": "757cfe7c15f9e8c72e2c",
+      "check": "model_admission",
+      "pass": true
+    },
+    {
+      "trial_id": "757cfe7c15f9e8c72e2c",
+      "check": "provider_telemetry",
+      "pass": true
+    },
+    {
+      "trial_id": "757cfe7c15f9e8c72e2c",
+      "check": "whole_episode_attempt_cap",
+      "pass": true
+    },
+    {
+      "trial_id": "757cfe7c15f9e8c72e2c",
+      "check": "all_native_turns_completed",
+      "pass": true
+    },
+    {
+      "trial_id": "757cfe7c15f9e8c72e2c",
+      "check": "public_user_turn_binding",
+      "pass": true
+    },
+    {
+      "trial_id": "757cfe7c15f9e8c72e2c",
+      "check": "actual_turn_provider_dispatch",
+      "pass": true
+    },
+    {
+      "trial_id": "757cfe7c15f9e8c72e2c",
+      "check": "actual_user_prompt_binding",
+      "pass": true
+    },
+    {
+      "trial_id": "757cfe7c15f9e8c72e2c",
+      "check": "fresh_native_session_user_history",
+      "pass": true
+    },
+    {
+      "trial_id": "757cfe7c15f9e8c72e2c",
+      "check": "public_user_turn_binding",
+      "pass": true
+    },
+    {
+      "trial_id": "757cfe7c15f9e8c72e2c",
+      "check": "actual_turn_provider_dispatch",
+      "pass": true
+    },
+    {
+      "trial_id": "757cfe7c15f9e8c72e2c",
+      "check": "whole_episode_token_cap",
+      "pass": true
+    },
+    {
+      "trial_id": "757cfe7c15f9e8c72e2c",
+      "check": "actual_model_identity",
+      "pass": true
+    },
+    {
+      "trial_id": "757cfe7c15f9e8c72e2c",
+      "check": "actual_model_identity",
+      "pass": true
+    },
+    {
+      "trial_id": "757cfe7c15f9e8c72e2c",
+      "check": "actual_model_identity",
+      "pass": true
+    },
+    {
+      "trial_id": "757cfe7c15f9e8c72e2c",
+      "check": "mcp_telemetry",
+      "pass": true
+    },
+    {
+      "trial_id": "757cfe7c15f9e8c72e2c",
+      "check": "source_and_common_derived_replay",
+      "pass": true
+    },
+    {
+      "trial_id": "757cfe7c15f9e8c72e2c",
+      "check": "independent_regrade",
+      "pass": true
+    },
+    {
+      "trial_id": "757cfe7c15f9e8c72e2c",
+      "check": "grade_episode_grounded_financial_success",
+      "pass": true
+    },
+    {
+      "trial_id": "757cfe7c15f9e8c72e2c",
+      "check": "grade_memory_state_correctness",
+      "pass": true
+    },
+    {
+      "trial_id": "757cfe7c15f9e8c72e2c",
+      "check": "grade_public_contract_valid",
+      "pass": true
+    },
+    {
+      "trial_id": "757cfe7c15f9e8c72e2c",
+      "check": "grade_controlled_user_state_correctness",
+      "pass": true
+    },
+    {
+      "trial_id": "757cfe7c15f9e8c72e2c",
+      "check": "grade_user_fact_receipts_valid",
+      "pass": true
+    },
+    {
+      "trial_id": "757cfe7c15f9e8c72e2c",
+      "check": "generated_occurrence_inventory",
+      "pass": true
+    },
+    {
+      "trial_id": "757cfe7c15f9e8c72e2c",
+      "check": "local_rejection_proofs",
+      "pass": true
+    },
+    {
+      "trial_id": "757cfe7c15f9e8c72e2c",
+      "check": "local_rejection_proofs",
+      "pass": true
+    },
+    {
+      "trial_id": "757cfe7c15f9e8c72e2c",
+      "check": "all_generated_calls_reconciled",
+      "pass": true
+    },
+    {
+      "trial_id": "e61e5dc8908b6a114b19",
+      "check": "schedule_identity",
+      "pass": true
+    },
+    {
+      "trial_id": "e61e5dc8908b6a114b19",
+      "check": "model_admission",
+      "pass": true
+    },
+    {
+      "trial_id": "e61e5dc8908b6a114b19",
+      "check": "provider_telemetry",
+      "pass": true
+    },
+    {
+      "trial_id": "e61e5dc8908b6a114b19",
+      "check": "whole_episode_attempt_cap",
+      "pass": true
+    },
+    {
+      "trial_id": "e61e5dc8908b6a114b19",
+      "check": "all_native_turns_completed",
+      "pass": true
+    },
+    {
+      "trial_id": "e61e5dc8908b6a114b19",
+      "check": "public_user_turn_binding",
+      "pass": true
+    },
+    {
+      "trial_id": "e61e5dc8908b6a114b19",
+      "check": "actual_turn_provider_dispatch",
+      "pass": true
+    },
+    {
+      "trial_id": "e61e5dc8908b6a114b19",
+      "check": "actual_user_prompt_binding",
+      "pass": true
+    },
+    {
+      "trial_id": "e61e5dc8908b6a114b19",
+      "check": "fresh_native_session_user_history",
+      "pass": true
+    },
+    {
+      "trial_id": "e61e5dc8908b6a114b19",
+      "check": "public_user_turn_binding",
+      "pass": true
+    },
+    {
+      "trial_id": "e61e5dc8908b6a114b19",
+      "check": "actual_turn_provider_dispatch",
+      "pass": true
+    },
+    {
+      "trial_id": "e61e5dc8908b6a114b19",
+      "check": "actual_user_prompt_binding",
+      "pass": true
+    },
+    {
+      "trial_id": "e61e5dc8908b6a114b19",
+      "check": "whole_episode_token_cap",
+      "pass": true
+    },
+    {
+      "trial_id": "e61e5dc8908b6a114b19",
+      "check": "actual_model_identity",
+      "pass": true
+    },
+    {
+      "trial_id": "e61e5dc8908b6a114b19",
+      "check": "actual_model_identity",
+      "pass": true
+    },
+    {
+      "trial_id": "e61e5dc8908b6a114b19",
+      "check": "actual_model_identity",
+      "pass": true
+    },
+    {
+      "trial_id": "e61e5dc8908b6a114b19",
+      "check": "mcp_telemetry",
+      "pass": true
+    },
+    {
+      "trial_id": "e61e5dc8908b6a114b19",
+      "check": "source_and_common_derived_replay",
+      "pass": true
+    },
+    {
+      "trial_id": "e61e5dc8908b6a114b19",
+      "check": "independent_regrade",
+      "pass": true
+    },
+    {
+      "trial_id": "e61e5dc8908b6a114b19",
+      "check": "grade_episode_grounded_financial_success",
+      "pass": true
+    },
+    {
+      "trial_id": "e61e5dc8908b6a114b19",
+      "check": "grade_memory_state_correctness",
+      "pass": true
+    },
+    {
+      "trial_id": "e61e5dc8908b6a114b19",
+      "check": "grade_public_contract_valid",
+      "pass": true
+    },
+    {
+      "trial_id": "e61e5dc8908b6a114b19",
+      "check": "grade_controlled_user_state_correctness",
+      "pass": true
+    },
+    {
+      "trial_id": "e61e5dc8908b6a114b19",
+      "check": "grade_user_fact_receipts_valid",
+      "pass": true
+    },
+    {
+      "trial_id": "e61e5dc8908b6a114b19",
+      "check": "generated_occurrence_inventory",
+      "pass": true
+    },
+    {
+      "trial_id": "e61e5dc8908b6a114b19",
+      "check": "user_read_response_hash",
+      "pass": true
+    },
+    {
+      "trial_id": "e61e5dc8908b6a114b19",
+      "check": "local_rejection_proofs",
+      "pass": true
+    },
+    {
+      "trial_id": "e61e5dc8908b6a114b19",
+      "check": "local_rejection_proofs",
+      "pass": true
+    },
+    {
+      "trial_id": "a10599b7d657e117c047",
+      "check": "schedule_identity",
+      "pass": true
+    },
+    {
+      "trial_id": "a10599b7d657e117c047",
+      "check": "model_admission",
+      "pass": true
+    },
+    {
+      "trial_id": "a10599b7d657e117c047",
+      "check": "provider_telemetry",
+      "pass": true
+    },
+    {
+      "trial_id": "a10599b7d657e117c047",
+      "check": "whole_episode_attempt_cap",
+      "pass": true
+    },
+    {
+      "trial_id": "a10599b7d657e117c047",
+      "check": "all_native_turns_completed",
+      "pass": true
+    },
+    {
+      "trial_id": "a10599b7d657e117c047",
+      "check": "public_user_turn_binding",
+      "pass": true
+    },
+    {
+      "trial_id": "a10599b7d657e117c047",
+      "check": "actual_turn_provider_dispatch",
+      "pass": true
+    },
+    {
+      "trial_id": "a10599b7d657e117c047",
+      "check": "actual_user_prompt_binding",
+      "pass": true
+    },
+    {
+      "trial_id": "a10599b7d657e117c047",
+      "check": "fresh_native_session_user_history",
+      "pass": true
+    },
+    {
+      "trial_id": "a10599b7d657e117c047",
+      "check": "public_user_turn_binding",
+      "pass": true
+    },
+    {
+      "trial_id": "a10599b7d657e117c047",
+      "check": "actual_turn_provider_dispatch",
+      "pass": true
+    },
+    {
+      "trial_id": "a10599b7d657e117c047",
+      "check": "actual_user_prompt_binding",
+      "pass": true
+    },
+    {
+      "trial_id": "a10599b7d657e117c047",
+      "check": "public_user_turn_binding",
+      "pass": true
+    },
+    {
+      "trial_id": "a10599b7d657e117c047",
+      "check": "actual_turn_provider_dispatch",
+      "pass": true
+    },
+    {
+      "trial_id": "a10599b7d657e117c047",
+      "check": "actual_user_prompt_binding",
+      "pass": true
+    },
+    {
+      "trial_id": "a10599b7d657e117c047",
+      "check": "fresh_native_session_user_history",
+      "pass": true
+    },
+    {
+      "trial_id": "a10599b7d657e117c047",
+      "check": "whole_episode_token_cap",
+      "pass": true
+    },
+    {
+      "trial_id": "a10599b7d657e117c047",
+      "check": "actual_model_identity",
+      "pass": true
+    },
+    {
+      "trial_id": "a10599b7d657e117c047",
+      "check": "actual_model_identity",
+      "pass": true
+    },
+    {
+      "trial_id": "a10599b7d657e117c047",
+      "check": "actual_model_identity",
+      "pass": true
+    },
+    {
+      "trial_id": "a10599b7d657e117c047",
+      "check": "actual_model_identity",
+      "pass": true
+    },
+    {
+      "trial_id": "a10599b7d657e117c047",
+      "check": "actual_model_identity",
+      "pass": true
+    },
+    {
+      "trial_id": "a10599b7d657e117c047",
+      "check": "actual_model_identity",
+      "pass": true
+    },
+    {
+      "trial_id": "a10599b7d657e117c047",
+      "check": "mcp_telemetry",
+      "pass": true
+    },
+    {
+      "trial_id": "a10599b7d657e117c047",
+      "check": "source_and_common_derived_replay",
+      "pass": true
+    },
+    {
+      "trial_id": "a10599b7d657e117c047",
+      "check": "independent_regrade",
+      "pass": true
+    },
+    {
+      "trial_id": "a10599b7d657e117c047",
+      "check": "grade_episode_grounded_financial_success",
+      "pass": true
+    },
+    {
+      "trial_id": "a10599b7d657e117c047",
+      "check": "grade_memory_state_correctness",
+      "pass": true
+    },
+    {
+      "trial_id": "a10599b7d657e117c047",
+      "check": "grade_public_contract_valid",
+      "pass": true
+    },
+    {
+      "trial_id": "a10599b7d657e117c047",
+      "check": "grade_controlled_user_state_correctness",
+      "pass": true
+    },
+    {
+      "trial_id": "a10599b7d657e117c047",
+      "check": "grade_user_fact_receipts_valid",
+      "pass": true
+    },
+    {
+      "trial_id": "a10599b7d657e117c047",
+      "check": "generated_occurrence_inventory",
+      "pass": true
+    },
+    {
+      "trial_id": "a10599b7d657e117c047",
+      "check": "user_read_response_hash",
+      "pass": true
+    },
+    {
+      "trial_id": "a10599b7d657e117c047",
+      "check": "user_read_response_hash",
+      "pass": true
+    },
+    {
+      "trial_id": "a10599b7d657e117c047",
+      "check": "native_execution_actual_turn_stamp",
+      "pass": true
+    },
+    {
+      "trial_id": "a10599b7d657e117c047",
+      "check": "local_rejection_proofs",
+      "pass": true
+    },
+    {
+      "trial_id": "a10599b7d657e117c047",
+      "check": "local_rejection_proofs",
+      "pass": true
+    },
+    {
+      "trial_id": "a10599b7d657e117c047",
+      "check": "local_rejection_proofs",
+      "pass": true
+    },
+    {
+      "trial_id": "daede90e19790146ea6e",
+      "check": "schedule_identity",
+      "pass": true
+    },
+    {
+      "trial_id": "daede90e19790146ea6e",
+      "check": "model_admission",
+      "pass": true
+    },
+    {
+      "trial_id": "daede90e19790146ea6e",
+      "check": "provider_telemetry",
+      "pass": true
+    },
+    {
+      "trial_id": "daede90e19790146ea6e",
+      "check": "whole_episode_attempt_cap",
+      "pass": true
+    },
+    {
+      "trial_id": "daede90e19790146ea6e",
+      "check": "public_user_turn_binding",
+      "pass": true
+    },
+    {
+      "trial_id": "daede90e19790146ea6e",
+      "check": "actual_user_prompt_binding",
+      "pass": true
+    },
+    {
+      "trial_id": "daede90e19790146ea6e",
+      "check": "fresh_native_session_user_history",
+      "pass": true
+    },
+    {
+      "trial_id": "daede90e19790146ea6e",
+      "check": "whole_episode_token_cap",
+      "pass": true
+    },
+    {
+      "trial_id": "daede90e19790146ea6e",
+      "check": "actual_model_identity",
+      "pass": true
+    },
+    {
+      "trial_id": "daede90e19790146ea6e",
+      "check": "mcp_telemetry",
+      "pass": true
+    },
+    {
+      "trial_id": "daede90e19790146ea6e",
+      "check": "source_and_common_derived_replay",
+      "pass": true
+    },
+    {
+      "trial_id": "daede90e19790146ea6e",
+      "check": "independent_regrade",
+      "pass": true
+    },
+    {
+      "trial_id": "daede90e19790146ea6e",
+      "check": "grade_episode_grounded_financial_success",
+      "pass": true
+    },
+    {
+      "trial_id": "daede90e19790146ea6e",
+      "check": "grade_memory_state_correctness",
+      "pass": true
+    },
+    {
+      "trial_id": "daede90e19790146ea6e",
+      "check": "grade_public_contract_valid",
+      "pass": true
+    },
+    {
+      "trial_id": "daede90e19790146ea6e",
+      "check": "grade_controlled_user_state_correctness",
+      "pass": true
+    },
+    {
+      "trial_id": "daede90e19790146ea6e",
+      "check": "grade_user_fact_receipts_valid",
+      "pass": true
+    },
+    {
+      "trial_id": "daede90e19790146ea6e",
+      "check": "generated_occurrence_inventory",
+      "pass": true
+    },
+    {
+      "trial_id": "daede90e19790146ea6e",
+      "check": "user_read_response_hash",
+      "pass": true
+    },
+    {
+      "trial_id": "daede90e19790146ea6e",
+      "check": "actual_user_read_context",
+      "pass": true
+    },
+    {
+      "trial_id": "daede90e19790146ea6e",
+      "check": "local_rejection_proofs",
+      "pass": true
+    },
+    {
+      "trial_id": "daede90e19790146ea6e",
+      "check": "all_generated_calls_reconciled",
+      "pass": true
+    },
+    {
+      "trial_id": "7de851b72699fe916510",
+      "check": "schedule_identity",
+      "pass": true
+    },
+    {
+      "trial_id": "7de851b72699fe916510",
+      "check": "model_admission",
+      "pass": true
+    },
+    {
+      "trial_id": "7de851b72699fe916510",
+      "check": "provider_telemetry",
+      "pass": true
+    },
+    {
+      "trial_id": "7de851b72699fe916510",
+      "check": "whole_episode_attempt_cap",
+      "pass": true
+    },
+    {
+      "trial_id": "7de851b72699fe916510",
+      "check": "all_native_turns_completed",
+      "pass": true
+    },
+    {
+      "trial_id": "7de851b72699fe916510",
+      "check": "public_user_turn_binding",
+      "pass": true
+    },
+    {
+      "trial_id": "7de851b72699fe916510",
+      "check": "actual_turn_provider_dispatch",
+      "pass": true
+    },
+    {
+      "trial_id": "7de851b72699fe916510",
+      "check": "actual_user_prompt_binding",
+      "pass": true
+    },
+    {
+      "trial_id": "7de851b72699fe916510",
+      "check": "fresh_native_session_user_history",
+      "pass": true
+    },
+    {
+      "trial_id": "7de851b72699fe916510",
+      "check": "public_user_turn_binding",
+      "pass": true
+    },
+    {
+      "trial_id": "7de851b72699fe916510",
+      "check": "actual_turn_provider_dispatch",
+      "pass": true
+    },
+    {
+      "trial_id": "7de851b72699fe916510",
+      "check": "actual_user_prompt_binding",
+      "pass": true
+    },
+    {
+      "trial_id": "7de851b72699fe916510",
+      "check": "public_user_turn_binding",
+      "pass": true
+    },
+    {
+      "trial_id": "7de851b72699fe916510",
+      "check": "actual_turn_provider_dispatch",
+      "pass": true
+    },
+    {
+      "trial_id": "7de851b72699fe916510",
+      "check": "fresh_native_session_user_history",
+      "pass": true
+    },
+    {
+      "trial_id": "7de851b72699fe916510",
+      "check": "whole_episode_token_cap",
+      "pass": true
+    },
+    {
+      "trial_id": "7de851b72699fe916510",
+      "check": "actual_model_identity",
+      "pass": true
+    },
+    {
+      "trial_id": "7de851b72699fe916510",
+      "check": "actual_model_identity",
+      "pass": true
+    },
+    {
+      "trial_id": "7de851b72699fe916510",
+      "check": "actual_model_identity",
+      "pass": true
+    },
+    {
+      "trial_id": "7de851b72699fe916510",
+      "check": "actual_model_identity",
+      "pass": true
+    },
+    {
+      "trial_id": "7de851b72699fe916510",
+      "check": "actual_model_identity",
+      "pass": true
+    },
+    {
+      "trial_id": "7de851b72699fe916510",
+      "check": "actual_model_identity",
+      "pass": true
+    },
+    {
+      "trial_id": "7de851b72699fe916510",
+      "check": "mcp_telemetry",
+      "pass": true
+    },
+    {
+      "trial_id": "7de851b72699fe916510",
+      "check": "source_and_common_derived_replay",
+      "pass": true
+    },
+    {
+      "trial_id": "7de851b72699fe916510",
+      "check": "independent_regrade",
+      "pass": true
+    },
+    {
+      "trial_id": "7de851b72699fe916510",
+      "check": "grade_episode_grounded_financial_success",
+      "pass": true
+    },
+    {
+      "trial_id": "7de851b72699fe916510",
+      "check": "grade_memory_state_correctness",
+      "pass": true
+    },
+    {
+      "trial_id": "7de851b72699fe916510",
+      "check": "grade_public_contract_valid",
+      "pass": true
+    },
+    {
+      "trial_id": "7de851b72699fe916510",
+      "check": "grade_controlled_user_state_correctness",
+      "pass": true
+    },
+    {
+      "trial_id": "7de851b72699fe916510",
+      "check": "grade_user_fact_receipts_valid",
+      "pass": true
+    },
+    {
+      "trial_id": "7de851b72699fe916510",
+      "check": "generated_occurrence_inventory",
+      "pass": true
+    },
+    {
+      "trial_id": "7de851b72699fe916510",
+      "check": "user_read_response_hash",
+      "pass": true
+    },
+    {
+      "trial_id": "7de851b72699fe916510",
+      "check": "actual_user_read_context",
+      "pass": true
+    },
+    {
+      "trial_id": "7de851b72699fe916510",
+      "check": "user_read_response_hash",
+      "pass": true
+    },
+    {
+      "trial_id": "7de851b72699fe916510",
+      "check": "actual_user_read_context",
+      "pass": true
+    },
+    {
+      "trial_id": "7de851b72699fe916510",
+      "check": "user_read_response_hash",
+      "pass": true
+    },
+    {
+      "trial_id": "7de851b72699fe916510",
+      "check": "actual_user_read_context",
+      "pass": true
+    },
+    {
+      "trial_id": "7de851b72699fe916510",
+      "check": "local_rejection_proofs",
+      "pass": true
+    },
+    {
+      "trial_id": "7de851b72699fe916510",
+      "check": "local_rejection_proofs",
+      "pass": true
+    },
+    {
+      "trial_id": "7de851b72699fe916510",
+      "check": "local_rejection_proofs",
+      "pass": true
+    },
+    {
+      "trial_id": "7de851b72699fe916510",
+      "check": "all_generated_calls_reconciled",
+      "pass": true
+    },
+    {
+      "trial_id": "e5a62f15288014d0bc39",
+      "check": "schedule_identity",
+      "pass": true
+    },
+    {
+      "trial_id": "e5a62f15288014d0bc39",
+      "check": "model_admission",
+      "pass": true
+    },
+    {
+      "trial_id": "e5a62f15288014d0bc39",
+      "check": "provider_telemetry",
+      "pass": true
+    },
+    {
+      "trial_id": "e5a62f15288014d0bc39",
+      "check": "whole_episode_attempt_cap",
+      "pass": true
+    },
+    {
+      "trial_id": "e5a62f15288014d0bc39",
+      "check": "all_native_turns_completed",
+      "pass": true
+    },
+    {
+      "trial_id": "e5a62f15288014d0bc39",
+      "check": "public_user_turn_binding",
+      "pass": true
+    },
+    {
+      "trial_id": "e5a62f15288014d0bc39",
+      "check": "actual_turn_provider_dispatch",
+      "pass": true
+    },
+    {
+      "trial_id": "e5a62f15288014d0bc39",
+      "check": "actual_user_prompt_binding",
+      "pass": true
+    },
+    {
+      "trial_id": "e5a62f15288014d0bc39",
+      "check": "fresh_native_session_user_history",
+      "pass": true
+    },
+    {
+      "trial_id": "e5a62f15288014d0bc39",
+      "check": "public_user_turn_binding",
+      "pass": true
+    },
+    {
+      "trial_id": "e5a62f15288014d0bc39",
+      "check": "actual_turn_provider_dispatch",
+      "pass": true
+    },
+    {
+      "trial_id": "e5a62f15288014d0bc39",
+      "check": "actual_user_prompt_binding",
+      "pass": true
+    },
+    {
+      "trial_id": "e5a62f15288014d0bc39",
+      "check": "public_user_turn_binding",
+      "pass": true
+    },
+    {
+      "trial_id": "e5a62f15288014d0bc39",
+      "check": "actual_turn_provider_dispatch",
+      "pass": true
+    },
+    {
+      "trial_id": "e5a62f15288014d0bc39",
+      "check": "actual_user_prompt_binding",
+      "pass": true
+    },
+    {
+      "trial_id": "e5a62f15288014d0bc39",
+      "check": "fresh_native_session_user_history",
+      "pass": true
+    },
+    {
+      "trial_id": "e5a62f15288014d0bc39",
+      "check": "whole_episode_token_cap",
+      "pass": true
+    },
+    {
+      "trial_id": "e5a62f15288014d0bc39",
+      "check": "actual_model_identity",
+      "pass": true
+    },
+    {
+      "trial_id": "e5a62f15288014d0bc39",
+      "check": "actual_model_identity",
+      "pass": true
+    },
+    {
+      "trial_id": "e5a62f15288014d0bc39",
+      "check": "actual_model_identity",
+      "pass": true
+    },
+    {
+      "trial_id": "e5a62f15288014d0bc39",
+      "check": "actual_model_identity",
+      "pass": true
+    },
+    {
+      "trial_id": "e5a62f15288014d0bc39",
+      "check": "actual_model_identity",
+      "pass": true
+    },
+    {
+      "trial_id": "e5a62f15288014d0bc39",
+      "check": "actual_model_identity",
+      "pass": true
+    },
+    {
+      "trial_id": "e5a62f15288014d0bc39",
+      "check": "mcp_telemetry",
+      "pass": true
+    },
+    {
+      "trial_id": "e5a62f15288014d0bc39",
+      "check": "source_and_common_derived_replay",
+      "pass": true
+    },
+    {
+      "trial_id": "e5a62f15288014d0bc39",
+      "check": "independent_regrade",
+      "pass": true
+    },
+    {
+      "trial_id": "e5a62f15288014d0bc39",
+      "check": "grade_episode_grounded_financial_success",
+      "pass": true
+    },
+    {
+      "trial_id": "e5a62f15288014d0bc39",
+      "check": "grade_memory_state_correctness",
+      "pass": true
+    },
+    {
+      "trial_id": "e5a62f15288014d0bc39",
+      "check": "grade_public_contract_valid",
+      "pass": true
+    },
+    {
+      "trial_id": "e5a62f15288014d0bc39",
+      "check": "grade_controlled_user_state_correctness",
+      "pass": true
+    },
+    {
+      "trial_id": "e5a62f15288014d0bc39",
+      "check": "grade_user_fact_receipts_valid",
+      "pass": true
+    },
+    {
+      "trial_id": "e5a62f15288014d0bc39",
+      "check": "generated_occurrence_inventory",
+      "pass": true
+    },
+    {
+      "trial_id": "e5a62f15288014d0bc39",
+      "check": "user_read_response_hash",
+      "pass": true
+    },
+    {
+      "trial_id": "e5a62f15288014d0bc39",
+      "check": "actual_user_read_context",
+      "pass": true
+    },
+    {
+      "trial_id": "e5a62f15288014d0bc39",
+      "check": "user_read_response_hash",
+      "pass": true
+    },
+    {
+      "trial_id": "e5a62f15288014d0bc39",
+      "check": "actual_user_read_context",
+      "pass": true
+    },
+    {
+      "trial_id": "e5a62f15288014d0bc39",
+      "check": "user_read_response_hash",
+      "pass": true
+    },
+    {
+      "trial_id": "e5a62f15288014d0bc39",
+      "check": "actual_user_read_context",
+      "pass": true
+    },
+    {
+      "trial_id": "e5a62f15288014d0bc39",
+      "check": "local_rejection_proofs",
+      "pass": true
+    },
+    {
+      "trial_id": "e5a62f15288014d0bc39",
+      "check": "local_rejection_proofs",
+      "pass": true
+    },
+    {
+      "trial_id": "e5a62f15288014d0bc39",
+      "check": "local_rejection_proofs",
+      "pass": true
+    },
+    {
+      "trial_id": "e5a62f15288014d0bc39",
+      "check": "all_generated_calls_reconciled",
+      "pass": true
+    },
+    {
+      "trial_id": "33ff2409409809fb6508",
+      "check": "schedule_identity",
+      "pass": true
+    },
+    {
+      "trial_id": "33ff2409409809fb6508",
+      "check": "model_admission",
+      "pass": true
+    },
+    {
+      "trial_id": "33ff2409409809fb6508",
+      "check": "provider_telemetry",
+      "pass": true
+    },
+    {
+      "trial_id": "33ff2409409809fb6508",
+      "check": "whole_episode_attempt_cap",
+      "pass": true
+    },
+    {
+      "trial_id": "33ff2409409809fb6508",
+      "check": "all_native_turns_completed",
+      "pass": true
+    },
+    {
+      "trial_id": "33ff2409409809fb6508",
+      "check": "public_user_turn_binding",
+      "pass": true
+    },
+    {
+      "trial_id": "33ff2409409809fb6508",
+      "check": "actual_turn_provider_dispatch",
+      "pass": true
+    },
+    {
+      "trial_id": "33ff2409409809fb6508",
+      "check": "actual_user_prompt_binding",
+      "pass": true
+    },
+    {
+      "trial_id": "33ff2409409809fb6508",
+      "check": "fresh_native_session_user_history",
+      "pass": true
+    },
+    {
+      "trial_id": "33ff2409409809fb6508",
+      "check": "public_user_turn_binding",
+      "pass": true
+    },
+    {
+      "trial_id": "33ff2409409809fb6508",
+      "check": "actual_turn_provider_dispatch",
+      "pass": true
+    },
+    {
+      "trial_id": "33ff2409409809fb6508",
+      "check": "actual_user_prompt_binding",
+      "pass": true
+    },
+    {
+      "trial_id": "33ff2409409809fb6508",
+      "check": "fresh_native_session_user_history",
+      "pass": true
+    },
+    {
+      "trial_id": "33ff2409409809fb6508",
+      "check": "whole_episode_token_cap",
+      "pass": true
+    },
+    {
+      "trial_id": "33ff2409409809fb6508",
+      "check": "actual_model_identity",
+      "pass": true
+    },
+    {
+      "trial_id": "33ff2409409809fb6508",
+      "check": "actual_model_identity",
+      "pass": true
+    },
+    {
+      "trial_id": "33ff2409409809fb6508",
+      "check": "actual_model_identity",
+      "pass": true
+    },
+    {
+      "trial_id": "33ff2409409809fb6508",
+      "check": "actual_model_identity",
+      "pass": true
+    },
+    {
+      "trial_id": "33ff2409409809fb6508",
+      "check": "actual_model_identity",
+      "pass": true
+    },
+    {
+      "trial_id": "33ff2409409809fb6508",
+      "check": "actual_model_identity",
+      "pass": true
+    },
+    {
+      "trial_id": "33ff2409409809fb6508",
+      "check": "actual_model_identity",
+      "pass": true
+    },
+    {
+      "trial_id": "33ff2409409809fb6508",
+      "check": "actual_model_identity",
+      "pass": true
+    },
+    {
+      "trial_id": "33ff2409409809fb6508",
+      "check": "mcp_telemetry",
+      "pass": true
+    },
+    {
+      "trial_id": "33ff2409409809fb6508",
+      "check": "source_and_common_derived_replay",
+      "pass": true
+    },
+    {
+      "trial_id": "33ff2409409809fb6508",
+      "check": "independent_regrade",
+      "pass": true
+    },
+    {
+      "trial_id": "33ff2409409809fb6508",
+      "check": "grade_episode_grounded_financial_success",
+      "pass": true
+    },
+    {
+      "trial_id": "33ff2409409809fb6508",
+      "check": "grade_memory_state_correctness",
+      "pass": true
+    },
+    {
+      "trial_id": "33ff2409409809fb6508",
+      "check": "grade_public_contract_valid",
+      "pass": true
+    },
+    {
+      "trial_id": "33ff2409409809fb6508",
+      "check": "grade_controlled_user_state_correctness",
+      "pass": true
+    },
+    {
+      "trial_id": "33ff2409409809fb6508",
+      "check": "grade_user_fact_receipts_valid",
+      "pass": true
+    },
+    {
+      "trial_id": "33ff2409409809fb6508",
+      "check": "generated_occurrence_inventory",
+      "pass": true
+    },
+    {
+      "trial_id": "33ff2409409809fb6508",
+      "check": "user_read_response_hash",
+      "pass": true
+    },
+    {
+      "trial_id": "33ff2409409809fb6508",
+      "check": "actual_user_read_context",
+      "pass": true
+    },
+    {
+      "trial_id": "33ff2409409809fb6508",
+      "check": "local_rejection_proofs",
+      "pass": true
+    },
+    {
+      "trial_id": "9c94afc0a4afcdbce705",
+      "check": "schedule_identity",
+      "pass": true
+    },
+    {
+      "trial_id": "9c94afc0a4afcdbce705",
+      "check": "model_admission",
+      "pass": true
+    },
+    {
+      "trial_id": "9c94afc0a4afcdbce705",
+      "check": "provider_telemetry",
+      "pass": true
+    },
+    {
+      "trial_id": "9c94afc0a4afcdbce705",
+      "check": "whole_episode_attempt_cap",
+      "pass": true
+    },
+    {
+      "trial_id": "9c94afc0a4afcdbce705",
+      "check": "public_user_turn_binding",
+      "pass": true
+    },
+    {
+      "trial_id": "9c94afc0a4afcdbce705",
+      "check": "actual_turn_provider_dispatch",
+      "pass": true
+    },
+    {
+      "trial_id": "9c94afc0a4afcdbce705",
+      "check": "actual_user_prompt_binding",
+      "pass": true
+    },
+    {
+      "trial_id": "9c94afc0a4afcdbce705",
+      "check": "fresh_native_session_user_history",
+      "pass": true
+    },
+    {
+      "trial_id": "9c94afc0a4afcdbce705",
+      "check": "public_user_turn_binding",
+      "pass": true
+    },
+    {
+      "trial_id": "9c94afc0a4afcdbce705",
+      "check": "actual_user_prompt_binding",
+      "pass": true
+    },
+    {
+      "trial_id": "9c94afc0a4afcdbce705",
+      "check": "fresh_native_session_user_history",
+      "pass": true
+    },
+    {
+      "trial_id": "9c94afc0a4afcdbce705",
+      "check": "whole_episode_token_cap",
+      "pass": true
+    },
+    {
+      "trial_id": "9c94afc0a4afcdbce705",
+      "check": "actual_model_identity",
+      "pass": true
+    },
+    {
+      "trial_id": "9c94afc0a4afcdbce705",
+      "check": "actual_model_identity",
+      "pass": true
+    },
+    {
+      "trial_id": "9c94afc0a4afcdbce705",
+      "check": "actual_model_identity",
+      "pass": true
+    },
+    {
+      "trial_id": "9c94afc0a4afcdbce705",
+      "check": "actual_model_identity",
+      "pass": true
+    },
+    {
+      "trial_id": "9c94afc0a4afcdbce705",
+      "check": "actual_model_identity",
+      "pass": true
+    },
+    {
+      "trial_id": "9c94afc0a4afcdbce705",
+      "check": "actual_model_identity",
+      "pass": true
+    },
+    {
+      "trial_id": "9c94afc0a4afcdbce705",
+      "check": "mcp_telemetry",
+      "pass": true
+    },
+    {
+      "trial_id": "9c94afc0a4afcdbce705",
+      "check": "source_and_common_derived_replay",
+      "pass": true
+    },
+    {
+      "trial_id": "9c94afc0a4afcdbce705",
+      "check": "independent_regrade",
+      "pass": true
+    },
+    {
+      "trial_id": "9c94afc0a4afcdbce705",
+      "check": "grade_episode_grounded_financial_success",
+      "pass": true
+    },
+    {
+      "trial_id": "9c94afc0a4afcdbce705",
+      "check": "grade_memory_state_correctness",
+      "pass": true
+    },
+    {
+      "trial_id": "9c94afc0a4afcdbce705",
+      "check": "grade_public_contract_valid",
+      "pass": true
+    },
+    {
+      "trial_id": "9c94afc0a4afcdbce705",
+      "check": "grade_controlled_user_state_correctness",
+      "pass": true
+    },
+    {
+      "trial_id": "9c94afc0a4afcdbce705",
+      "check": "grade_user_fact_receipts_valid",
+      "pass": true
+    },
+    {
+      "trial_id": "9c94afc0a4afcdbce705",
+      "check": "generated_occurrence_inventory",
+      "pass": true
+    },
+    {
+      "trial_id": "9c94afc0a4afcdbce705",
+      "check": "user_read_response_hash",
+      "pass": true
+    },
+    {
+      "trial_id": "9c94afc0a4afcdbce705",
+      "check": "actual_user_read_context",
+      "pass": true
+    },
+    {
+      "trial_id": "9c94afc0a4afcdbce705",
+      "check": "local_rejection_proofs",
+      "pass": true
+    },
+    {
+      "trial_id": "8c19e2c99edc28522569",
+      "check": "schedule_identity",
+      "pass": true
+    },
+    {
+      "trial_id": "8c19e2c99edc28522569",
+      "check": "model_admission",
+      "pass": true
+    },
+    {
+      "trial_id": "8c19e2c99edc28522569",
+      "check": "provider_telemetry",
+      "pass": true
+    },
+    {
+      "trial_id": "8c19e2c99edc28522569",
+      "check": "whole_episode_attempt_cap",
+      "pass": true
+    },
+    {
+      "trial_id": "8c19e2c99edc28522569",
+      "check": "all_native_turns_completed",
+      "pass": true
+    },
+    {
+      "trial_id": "8c19e2c99edc28522569",
+      "check": "public_user_turn_binding",
+      "pass": true
+    },
+    {
+      "trial_id": "8c19e2c99edc28522569",
+      "check": "actual_turn_provider_dispatch",
+      "pass": true
+    },
+    {
+      "trial_id": "8c19e2c99edc28522569",
+      "check": "actual_user_prompt_binding",
+      "pass": true
+    },
+    {
+      "trial_id": "8c19e2c99edc28522569",
+      "check": "fresh_native_session_user_history",
+      "pass": true
+    },
+    {
+      "trial_id": "8c19e2c99edc28522569",
+      "check": "public_user_turn_binding",
+      "pass": true
+    },
+    {
+      "trial_id": "8c19e2c99edc28522569",
+      "check": "actual_turn_provider_dispatch",
+      "pass": true
+    },
+    {
+      "trial_id": "8c19e2c99edc28522569",
+      "check": "fresh_native_session_user_history",
+      "pass": true
+    },
+    {
+      "trial_id": "8c19e2c99edc28522569",
+      "check": "whole_episode_token_cap",
+      "pass": true
+    },
+    {
+      "trial_id": "8c19e2c99edc28522569",
+      "check": "actual_model_identity",
+      "pass": true
+    },
+    {
+      "trial_id": "8c19e2c99edc28522569",
+      "check": "actual_model_identity",
+      "pass": true
+    },
+    {
+      "trial_id": "8c19e2c99edc28522569",
+      "check": "actual_model_identity",
+      "pass": true
+    },
+    {
+      "trial_id": "8c19e2c99edc28522569",
+      "check": "actual_model_identity",
+      "pass": true
+    },
+    {
+      "trial_id": "8c19e2c99edc28522569",
+      "check": "mcp_telemetry",
+      "pass": true
+    },
+    {
+      "trial_id": "8c19e2c99edc28522569",
+      "check": "source_and_common_derived_replay",
+      "pass": true
+    },
+    {
+      "trial_id": "8c19e2c99edc28522569",
+      "check": "independent_regrade",
+      "pass": true
+    },
+    {
+      "trial_id": "8c19e2c99edc28522569",
+      "check": "grade_episode_grounded_financial_success",
+      "pass": true
+    },
+    {
+      "trial_id": "8c19e2c99edc28522569",
+      "check": "grade_memory_state_correctness",
+      "pass": true
+    },
+    {
+      "trial_id": "8c19e2c99edc28522569",
+      "check": "grade_public_contract_valid",
+      "pass": true
+    },
+    {
+      "trial_id": "8c19e2c99edc28522569",
+      "check": "grade_controlled_user_state_correctness",
+      "pass": true
+    },
+    {
+      "trial_id": "8c19e2c99edc28522569",
+      "check": "grade_user_fact_receipts_valid",
+      "pass": true
+    },
+    {
+      "trial_id": "8c19e2c99edc28522569",
+      "check": "generated_occurrence_inventory",
+      "pass": true
+    },
+    {
+      "trial_id": "8c19e2c99edc28522569",
+      "check": "user_read_response_hash",
+      "pass": true
+    },
+    {
+      "trial_id": "8c19e2c99edc28522569",
+      "check": "actual_user_read_context",
+      "pass": true
+    },
+    {
+      "trial_id": "8c19e2c99edc28522569",
+      "check": "local_rejection_proofs",
+      "pass": true
+    },
+    {
+      "trial_id": "8c19e2c99edc28522569",
+      "check": "local_rejection_proofs",
+      "pass": true
+    },
+    {
+      "trial_id": "8c19e2c99edc28522569",
+      "check": "all_generated_calls_reconciled",
+      "pass": true
+    },
+    {
+      "trial_id": "08b28dfd1a164f3912cd",
+      "check": "schedule_identity",
+      "pass": true
+    },
+    {
+      "trial_id": "08b28dfd1a164f3912cd",
+      "check": "model_admission",
+      "pass": true
+    },
+    {
+      "trial_id": "08b28dfd1a164f3912cd",
+      "check": "provider_telemetry",
+      "pass": true
+    },
+    {
+      "trial_id": "08b28dfd1a164f3912cd",
+      "check": "whole_episode_attempt_cap",
+      "pass": true
+    },
+    {
+      "trial_id": "08b28dfd1a164f3912cd",
+      "check": "all_native_turns_completed",
+      "pass": true
+    },
+    {
+      "trial_id": "08b28dfd1a164f3912cd",
+      "check": "public_user_turn_binding",
+      "pass": true
+    },
+    {
+      "trial_id": "08b28dfd1a164f3912cd",
+      "check": "actual_turn_provider_dispatch",
+      "pass": true
+    },
+    {
+      "trial_id": "08b28dfd1a164f3912cd",
+      "check": "actual_user_prompt_binding",
+      "pass": true
+    },
+    {
+      "trial_id": "08b28dfd1a164f3912cd",
+      "check": "fresh_native_session_user_history",
+      "pass": true
+    },
+    {
+      "trial_id": "08b28dfd1a164f3912cd",
+      "check": "public_user_turn_binding",
+      "pass": true
+    },
+    {
+      "trial_id": "08b28dfd1a164f3912cd",
+      "check": "actual_turn_provider_dispatch",
+      "pass": true
+    },
+    {
+      "trial_id": "08b28dfd1a164f3912cd",
+      "check": "actual_user_prompt_binding",
+      "pass": true
+    },
+    {
+      "trial_id": "08b28dfd1a164f3912cd",
+      "check": "fresh_native_session_user_history",
+      "pass": true
+    },
+    {
+      "trial_id": "08b28dfd1a164f3912cd",
+      "check": "whole_episode_token_cap",
+      "pass": true
+    },
+    {
+      "trial_id": "08b28dfd1a164f3912cd",
+      "check": "actual_model_identity",
+      "pass": true
+    },
+    {
+      "trial_id": "08b28dfd1a164f3912cd",
+      "check": "actual_model_identity",
+      "pass": true
+    },
+    {
+      "trial_id": "08b28dfd1a164f3912cd",
+      "check": "actual_model_identity",
+      "pass": true
+    },
+    {
+      "trial_id": "08b28dfd1a164f3912cd",
+      "check": "actual_model_identity",
+      "pass": true
+    },
+    {
+      "trial_id": "08b28dfd1a164f3912cd",
+      "check": "mcp_telemetry",
+      "pass": true
+    },
+    {
+      "trial_id": "08b28dfd1a164f3912cd",
+      "check": "source_and_common_derived_replay",
+      "pass": true
+    },
+    {
+      "trial_id": "08b28dfd1a164f3912cd",
+      "check": "independent_regrade",
+      "pass": true
+    },
+    {
+      "trial_id": "08b28dfd1a164f3912cd",
+      "check": "grade_episode_grounded_financial_success",
+      "pass": true
+    },
+    {
+      "trial_id": "08b28dfd1a164f3912cd",
+      "check": "grade_memory_state_correctness",
+      "pass": true
+    },
+    {
+      "trial_id": "08b28dfd1a164f3912cd",
+      "check": "grade_public_contract_valid",
+      "pass": true
+    },
+    {
+      "trial_id": "08b28dfd1a164f3912cd",
+      "check": "grade_controlled_user_state_correctness",
+      "pass": true
+    },
+    {
+      "trial_id": "08b28dfd1a164f3912cd",
+      "check": "grade_user_fact_receipts_valid",
+      "pass": true
+    },
+    {
+      "trial_id": "08b28dfd1a164f3912cd",
+      "check": "generated_occurrence_inventory",
+      "pass": true
+    },
+    {
+      "trial_id": "08b28dfd1a164f3912cd",
+      "check": "user_read_response_hash",
+      "pass": true
+    },
+    {
+      "trial_id": "08b28dfd1a164f3912cd",
+      "check": "actual_user_read_context",
+      "pass": true
+    },
+    {
+      "trial_id": "08b28dfd1a164f3912cd",
+      "check": "local_rejection_proofs",
+      "pass": true
+    },
+    {
+      "trial_id": "08b28dfd1a164f3912cd",
+      "check": "local_rejection_proofs",
+      "pass": true
+    },
+    {
+      "trial_id": "08b28dfd1a164f3912cd",
+      "check": "all_generated_calls_reconciled",
+      "pass": true
+    }
+  ],
+  "partial_telemetry": [
+    {
+      "trial_id": "9c94afc0a4afcdbce705",
+      "kind": "unexecuted_or_unconsumed_generated_calls",
+      "generation_occurrences": [
+        {
+          "key": "2:0:0",
+          "request": 2,
+          "provider_index": 3,
+          "id": "chatcmpl-tool-849760d32059b2a0",
+          "tool": "yf_commodities",
+          "arguments": {
+            "tickers": [
+              "GC=F",
+              "SI=F",
+              "NG=F",
+              "HG=F",
+              "BZ=F",
+              "CL=F",
+              "BTC-USD",
+              "ETH-USD",
+              "SOL-USD",
+              "BNB-USD",
+              "GBPUSD=X",
+              "JPY=X"
+            ],
+            "period": "5d",
+            "interval": "1d"
+          },
+          "scope": "B"
+        },
+        {
+          "key": "3:0:0",
+          "request": 3,
+          "provider_index": 4,
+          "id": "chatcmpl-tool-a09ea56183c06e83",
+          "tool": "yf_commodities",
+          "arguments": {
+            "tickers": [
+              "GC=F",
+              "SI=F",
+              "NG=F",
+              "HG=F",
+              "BZ=F",
+              "CL=F",
+              "BTC-USD",
+              "ETH-USD",
+              "SOL-USD",
+              "BNB-USD",
+              "GBPUSD=X",
+              "JPY=X"
+            ],
+            "period": "5d"
+          },
+          "scope": "B"
+        },
+        {
+          "key": "4:0:0",
+          "request": 4,
+          "provider_index": 5,
+          "id": "chatcmpl-tool-946cf3519a975a69",
+          "tool": "yf_commodities",
+          "arguments": {
+            "tickers": [
+              "GC=F"
+            ],
+            "period": "5d",
+            "interval": "1d"
+          },
+          "scope": "B"
+        },
+        {
+          "key": "5:0:0",
+          "request": 5,
+          "provider_index": 6,
+          "id": "chatcmpl-tool-a2cd57188c1c5e70",
+          "tool": "yf_commodities",
+          "arguments": {
+            "tickers": null,
+            "period": "5d",
+            "interval": "1d"
+          },
+          "scope": "B"
+        },
+        {
+          "key": "5:0:1",
+          "request": 5,
+          "provider_index": 6,
+          "id": "chatcmpl-tool-ab83d6e23cb81880",
+          "tool": "yf_commodities",
+          "arguments": {
+            "tickers": [
+              "GC=F",
+              "SI=F",
+              "NG=F",
+              "HG=F",
+              "BZ=F",
+              "CL=F",
+              "ETH-USD",
+              "SOL-USD",
+              "BNB-USD",
+              "GBPUSD=X",
+              "JPY=X",
+              "USDVND"
+            ],
+            "period": "5d",
+            "interval": "1d"
+          },
+          "scope": "B"
+        }
+      ],
+      "financial_evidence": false
+    }
+  ],
+  "external_model_calls": 0,
+  "financial_narrative_review": "separate mandatory hash-bound memory-financial-review.json, all automatic wins in all arms",
+  "native_causal_memory_superiority": "not established by this diagnostic"
+}

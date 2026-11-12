@@ -1,0 +1,763 @@
+{
+  "pass": true,
+  "directory": "/home/doanlong/extra/benchmark/experiments/finance-v43-study/audits/v43-c2-calls-escalated",
+  "receipt_sha256": "58c34f7877adffcfefca0b67b71ff34b51f901430a263b363ead70a488a4033e",
+  "errors": [],
+  "cases": [
+    {
+      "arm": "opentrading_baseline",
+      "definitions": [
+        {
+          "name": "vn_quote_history",
+          "description": "FINITE SNAPSHOT SUPPORT: use a recorded public variant below and only default-equivalent optional arguments allowed by inputSchema. Production optional windows/projections are NOT generally supported here. snapshot_requests=[{\"symbol\": \"HPG\"}]\nIf unsupported_snapshot_query: inspect argument_paths and allowed_public_variants; choose a supported same-intent request only if entity, period, metric and scope remain unchanged. retryable_with_corrected_arguments permits a bounded correction; rejection does not mean financial data is absent. Read provenance and copy benchmark_evidence only from actual successful responses.\n\nPRODUCTION API METADATA (capabilities below do not expand this finite snapshot):\nNến 1 mã VN (1D/1W/1M), VCI trước KBS dự phòng. Dùng cho MỌI lịch sử giá của một mã.\n\n        Dùng khi: \"lịch sử giá FPT\", \"HPG có vượt đỉnh 20 phiên không\", mọi tính toán cần chuỗi giá\n            1 mã.\n        Không dùng khi: cần nhiều mã cùng lúc (dùng market_candles_batch); cần nến phút/intraday\n            (dùng vn_equity_ohlcv); cần giá khớp hiện tại (dùng vn_equity_quote_batch). Không có\n            tool nào tên stock_history — chính là tool này.\n\n        days: số nến yêu cầu (mặc định 365 nến; provider không enforce trần 365; nến tuần/tháng bao phủ dài hơn theo hệ số).\n        interval: '1D' (mặc định), '1W', '1M'. Nến 1W/1M mang ngày cuối kỳ (Chủ nhật cuối tuần,\n        ngày cuối tháng) nên nến của kỳ hiện tại có thể ghi một ngày chưa tới; kỳ không có phiên\n        (tuần Tết) bị bỏ. summary/columns: summary chỉ trả {count,last,high,low}; columns giữ\n        trường nêu tên.\n        ",
+          "inputSchema": {
+            "type": "object",
+            "properties": {
+              "symbol": {
+                "type": "string",
+                "description": "Vietnamese listed equity ticker, e.g. HPG."
+              },
+              "days": {
+                "type": "integer",
+                "default": 365,
+                "description": "Requested number of candles, not calendar days; default 365. Positive integer. Provider does not enforce the old prose claim of a 365 maximum. Replay accepts only explicitly recorded requests/default-equivalent arguments.",
+                "minimum": 1
+              },
+              "summary": {
+                "type": "boolean",
+                "default": false,
+                "description": "True returns count/last/high/low summary rather than candle rows. False preserves rows; summary changes output shape."
+              },
+              "columns": {
+                "anyOf": [
+                  {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "enum": [
+                        "t",
+                        "o",
+                        "h",
+                        "l",
+                        "c",
+                        "v"
+                      ]
+                    }
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null,
+                "description": "Optional array of raw candle keys: t date, o open, h high, l low, c close, v volume. Use [\"c\",\"t\"], never \"close\" or [\"close\"]. Null keeps all fields. Production currently drops unknown keys silently; this C1 contract rejects them before that loss."
+              },
+              "interval": {
+                "type": "string",
+                "default": "1D",
+                "description": "Candle frequency: 1D daily, 1W weekly, 1M monthly. The provider canonicalizes case. day/daily are not accepted.",
+                "enum": [
+                  "1D",
+                  "1W",
+                  "1M",
+                  "1d",
+                  "1w",
+                  "1m"
+                ]
+              }
+            },
+            "required": [
+              "symbol"
+            ],
+            "additionalProperties": false,
+            "anyOf": [
+              {
+                "type": "object",
+                "properties": {
+                  "symbol": {
+                    "type": "string",
+                    "pattern": "^\\s*[hH][pP][gG]\\s*$"
+                  },
+                  "days": {
+                    "const": 365
+                  },
+                  "summary": {
+                    "const": false
+                  },
+                  "columns": {
+                    "const": null
+                  },
+                  "interval": {
+                    "type": "string",
+                    "pattern": "^\\s*1[dD]\\s*$"
+                  }
+                },
+                "required": [
+                  "symbol"
+                ],
+                "additionalProperties": false
+              }
+            ],
+            "x-opentrading-schema-profile": "finite-replay-c2",
+            "x-finite-request-variants": [
+              {
+                "symbol": "HPG"
+              }
+            ],
+            "x-repair-fields": []
+          },
+          "outputSchema": {
+            "additionalProperties": true,
+            "title": "vn_quote_historyDictOutput",
+            "type": "object"
+          },
+          "annotations": {
+            "readOnlyHint": true,
+            "destructiveHint": false,
+            "idempotentHint": true,
+            "openWorldHint": false
+          },
+          "_meta": {
+            "anthropic/searchHint": "lich su gia nen ngay tuan thang co phieu | price history daily candles",
+            "opentrading/contractProfile": "finance-c1-v4",
+            "opentrading/schemaPolicy": "Raw types/defaults/required preserved from frozen source. Additional public domain guards added; no coercion. Frozen replay matching remains exact and separate."
+          }
+        }
+      ],
+      "requests": 3,
+      "generated_calls": 2,
+      "actual_mcp": 2,
+      "local_rejections": 0,
+      "user_raw_lengths": [
+        3663
+      ],
+      "user_content_after_explicit_presentation_normalization_sha256": "4efca780812b261ccba7fea60bfef359f6e3307c21323de7c440194b2ad147cf",
+      "captures": [
+        {
+          "stage": "native",
+          "path": "/home/doanlong/extra/benchmark/experiments/finance-v43-study/audits/v43-c2-calls-escalated/opentrading_baseline/runner/provider-requests/0001-native.json",
+          "sha256": "f33f94288310ddc7486ca5c262d8c674dd2f7718debef3fe0a29d3ce54350f1c",
+          "tools": [
+            "vn_quote_history"
+          ],
+          "tool_choice": "auto"
+        },
+        {
+          "stage": "effective",
+          "path": "/home/doanlong/extra/benchmark/experiments/finance-v43-study/audits/v43-c2-calls-escalated/opentrading_baseline/runner/provider-requests/0001-effective.json",
+          "sha256": "789061c582bebc0f8a2c57a94aa88929ff20f4565dea21c3a6e7ff40f3ac4d00",
+          "tools": [
+            "vn_quote_history"
+          ],
+          "tool_choice": "auto"
+        },
+        {
+          "stage": "native",
+          "path": "/home/doanlong/extra/benchmark/experiments/finance-v43-study/audits/v43-c2-calls-escalated/opentrading_baseline/runner/provider-requests/0002-native.json",
+          "sha256": "5e87106e2f9c3aa9179ae07ad424aac2b46e1a931b0e1fe793b5f016db5a7a17",
+          "tools": [
+            "vn_quote_history"
+          ],
+          "tool_choice": "auto"
+        },
+        {
+          "stage": "effective",
+          "path": "/home/doanlong/extra/benchmark/experiments/finance-v43-study/audits/v43-c2-calls-escalated/opentrading_baseline/runner/provider-requests/0002-effective.json",
+          "sha256": "7dc80a6427d2b1455c29db361de58dec77b7cab78d4589a4b13778fd09799a86",
+          "tools": [
+            "vn_quote_history"
+          ],
+          "tool_choice": "auto"
+        },
+        {
+          "stage": "native",
+          "path": "/home/doanlong/extra/benchmark/experiments/finance-v43-study/audits/v43-c2-calls-escalated/opentrading_baseline/runner/provider-requests/0003-native.json",
+          "sha256": "42c6200b757cbeb5b76be8863dbbeb8c1d265083641701fbb1d773e9c5903962",
+          "tools": [
+            "vn_quote_history"
+          ],
+          "tool_choice": "auto"
+        },
+        {
+          "stage": "effective",
+          "path": "/home/doanlong/extra/benchmark/experiments/finance-v43-study/audits/v43-c2-calls-escalated/opentrading_baseline/runner/provider-requests/0003-effective.json",
+          "sha256": "4378645712a0bb4b464e56760a8bd950a75cc7719a9ef6fb0d3878080f28042c",
+          "tools": [
+            "vn_quote_history"
+          ],
+          "tool_choice": "auto"
+        }
+      ]
+    },
+    {
+      "arm": "opentrading_finance",
+      "definitions": [
+        {
+          "name": "vn_quote_history",
+          "description": "FINITE SNAPSHOT SUPPORT: use a recorded public variant below and only default-equivalent optional arguments allowed by inputSchema. Production optional windows/projections are NOT generally supported here. snapshot_requests=[{\"symbol\": \"HPG\"}]\nIf unsupported_snapshot_query: inspect argument_paths and allowed_public_variants; choose a supported same-intent request only if entity, period, metric and scope remain unchanged. retryable_with_corrected_arguments permits a bounded correction; rejection does not mean financial data is absent. Read provenance and copy benchmark_evidence only from actual successful responses.\n\nPRODUCTION API METADATA (capabilities below do not expand this finite snapshot):\nNến 1 mã VN (1D/1W/1M), VCI trước KBS dự phòng. Dùng cho MỌI lịch sử giá của một mã.\n\n        Dùng khi: \"lịch sử giá FPT\", \"HPG có vượt đỉnh 20 phiên không\", mọi tính toán cần chuỗi giá\n            1 mã.\n        Không dùng khi: cần nhiều mã cùng lúc (dùng market_candles_batch); cần nến phút/intraday\n            (dùng vn_equity_ohlcv); cần giá khớp hiện tại (dùng vn_equity_quote_batch). Không có\n            tool nào tên stock_history — chính là tool này.\n\n        days: số nến yêu cầu (mặc định 365 nến; provider không enforce trần 365; nến tuần/tháng bao phủ dài hơn theo hệ số).\n        interval: '1D' (mặc định), '1W', '1M'. Nến 1W/1M mang ngày cuối kỳ (Chủ nhật cuối tuần,\n        ngày cuối tháng) nên nến của kỳ hiện tại có thể ghi một ngày chưa tới; kỳ không có phiên\n        (tuần Tết) bị bỏ. summary/columns: summary chỉ trả {count,last,high,low}; columns giữ\n        trường nêu tên.\n        ",
+          "inputSchema": {
+            "type": "object",
+            "properties": {
+              "symbol": {
+                "type": "string",
+                "description": "Vietnamese listed equity ticker, e.g. HPG."
+              },
+              "days": {
+                "type": "integer",
+                "default": 365,
+                "description": "Requested number of candles, not calendar days; default 365. Positive integer. Provider does not enforce the old prose claim of a 365 maximum. Replay accepts only explicitly recorded requests/default-equivalent arguments.",
+                "minimum": 1
+              },
+              "summary": {
+                "type": "boolean",
+                "default": false,
+                "description": "True returns count/last/high/low summary rather than candle rows. False preserves rows; summary changes output shape."
+              },
+              "columns": {
+                "anyOf": [
+                  {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "enum": [
+                        "t",
+                        "o",
+                        "h",
+                        "l",
+                        "c",
+                        "v"
+                      ]
+                    }
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null,
+                "description": "Optional array of raw candle keys: t date, o open, h high, l low, c close, v volume. Use [\"c\",\"t\"], never \"close\" or [\"close\"]. Null keeps all fields. Production currently drops unknown keys silently; this C1 contract rejects them before that loss."
+              },
+              "interval": {
+                "type": "string",
+                "default": "1D",
+                "description": "Candle frequency: 1D daily, 1W weekly, 1M monthly. The provider canonicalizes case. day/daily are not accepted.",
+                "enum": [
+                  "1D",
+                  "1W",
+                  "1M",
+                  "1d",
+                  "1w",
+                  "1m"
+                ]
+              }
+            },
+            "required": [
+              "symbol"
+            ],
+            "additionalProperties": false,
+            "anyOf": [
+              {
+                "type": "object",
+                "properties": {
+                  "symbol": {
+                    "type": "string",
+                    "pattern": "^\\s*[hH][pP][gG]\\s*$"
+                  },
+                  "days": {
+                    "const": 365
+                  },
+                  "summary": {
+                    "const": false
+                  },
+                  "columns": {
+                    "const": null
+                  },
+                  "interval": {
+                    "type": "string",
+                    "pattern": "^\\s*1[dD]\\s*$"
+                  }
+                },
+                "required": [
+                  "symbol"
+                ],
+                "additionalProperties": false
+              }
+            ],
+            "x-opentrading-schema-profile": "finite-replay-c2",
+            "x-finite-request-variants": [
+              {
+                "symbol": "HPG"
+              }
+            ],
+            "x-repair-fields": []
+          },
+          "outputSchema": {
+            "additionalProperties": true,
+            "title": "vn_quote_historyDictOutput",
+            "type": "object"
+          },
+          "annotations": {
+            "readOnlyHint": true,
+            "destructiveHint": false,
+            "idempotentHint": true,
+            "openWorldHint": false
+          },
+          "_meta": {
+            "anthropic/searchHint": "lich su gia nen ngay tuan thang co phieu | price history daily candles",
+            "opentrading/contractProfile": "finance-c1-v4",
+            "opentrading/schemaPolicy": "Raw types/defaults/required preserved from frozen source. Additional public domain guards added; no coercion. Frozen replay matching remains exact and separate."
+          }
+        }
+      ],
+      "requests": 4,
+      "generated_calls": 2,
+      "actual_mcp": 1,
+      "local_rejections": 1,
+      "user_raw_lengths": [
+        3663
+      ],
+      "user_content_after_explicit_presentation_normalization_sha256": "4efca780812b261ccba7fea60bfef359f6e3307c21323de7c440194b2ad147cf",
+      "captures": [
+        {
+          "stage": "native",
+          "path": "/home/doanlong/extra/benchmark/experiments/finance-v43-study/audits/v43-c2-calls-escalated/opentrading_finance/runner/provider-requests/0001-native.json",
+          "sha256": "54b1d4a3b366f5090133a15840be910a318afcaab796928f9ce582134ffcbc1e",
+          "tools": [
+            "vn_quote_history"
+          ],
+          "tool_choice": "auto"
+        },
+        {
+          "stage": "effective",
+          "path": "/home/doanlong/extra/benchmark/experiments/finance-v43-study/audits/v43-c2-calls-escalated/opentrading_finance/runner/provider-requests/0001-effective.json",
+          "sha256": "1aef6ce2e231f7f375937b3018c07830a28e3600e904e1b8a0787f2454583c69",
+          "tools": [
+            "vn_quote_history"
+          ],
+          "tool_choice": "auto"
+        },
+        {
+          "stage": "native",
+          "path": "/home/doanlong/extra/benchmark/experiments/finance-v43-study/audits/v43-c2-calls-escalated/opentrading_finance/runner/provider-requests/0002-native.json",
+          "sha256": "97473dac06885f928941b7f42f05bd2da76c2451091c3bc0b7d452ff537c447c",
+          "tools": [
+            "vn_quote_history"
+          ],
+          "tool_choice": "auto"
+        },
+        {
+          "stage": "effective",
+          "path": "/home/doanlong/extra/benchmark/experiments/finance-v43-study/audits/v43-c2-calls-escalated/opentrading_finance/runner/provider-requests/0002-effective.json",
+          "sha256": "5ff80d0c38ab50baf7b5e838a4fc73fab49ffbb7ef005e4d4e52ab539bb20046",
+          "tools": [
+            "vn_quote_history"
+          ],
+          "tool_choice": "auto"
+        },
+        {
+          "stage": "native",
+          "path": "/home/doanlong/extra/benchmark/experiments/finance-v43-study/audits/v43-c2-calls-escalated/opentrading_finance/runner/provider-requests/0003-native.json",
+          "sha256": "ec250e7aa2d3fce3aadb6479408845135e9e0ab4eca63ceb96e5090dd580d656",
+          "tools": [
+            "vn_quote_history"
+          ],
+          "tool_choice": "auto"
+        },
+        {
+          "stage": "effective",
+          "path": "/home/doanlong/extra/benchmark/experiments/finance-v43-study/audits/v43-c2-calls-escalated/opentrading_finance/runner/provider-requests/0003-effective.json",
+          "sha256": "7aee5a89bde98996c2960c895b402270d7d51f35da7448a9672b7f460324a8ec",
+          "tools": [
+            "vn_quote_history"
+          ],
+          "tool_choice": "auto"
+        },
+        {
+          "stage": "native",
+          "path": "/home/doanlong/extra/benchmark/experiments/finance-v43-study/audits/v43-c2-calls-escalated/opentrading_finance/runner/provider-requests/0004-native.json",
+          "sha256": "2099223064b60d89438f1f81191c3887dc219481d5df7fb88dca4f3e5259d548",
+          "tools": [
+            "vn_quote_history"
+          ],
+          "tool_choice": "auto"
+        },
+        {
+          "stage": "effective",
+          "path": "/home/doanlong/extra/benchmark/experiments/finance-v43-study/audits/v43-c2-calls-escalated/opentrading_finance/runner/provider-requests/0004-effective.json",
+          "sha256": "5ce6193e5a01ec7263a7c62f93f43125df631d7f39cca0168ddd766737facdbc",
+          "tools": [
+            "vn_quote_history"
+          ],
+          "tool_choice": "auto"
+        }
+      ]
+    },
+    {
+      "arm": "opencode",
+      "definitions": [
+        {
+          "name": "vn_quote_history",
+          "description": "FINITE SNAPSHOT SUPPORT: use a recorded public variant below and only default-equivalent optional arguments allowed by inputSchema. Production optional windows/projections are NOT generally supported here. snapshot_requests=[{\"symbol\": \"HPG\"}]\nIf unsupported_snapshot_query: inspect argument_paths and allowed_public_variants; choose a supported same-intent request only if entity, period, metric and scope remain unchanged. retryable_with_corrected_arguments permits a bounded correction; rejection does not mean financial data is absent. Read provenance and copy benchmark_evidence only from actual successful responses.\n\nPRODUCTION API METADATA (capabilities below do not expand this finite snapshot):\nNến 1 mã VN (1D/1W/1M), VCI trước KBS dự phòng. Dùng cho MỌI lịch sử giá của một mã.\n\n        Dùng khi: \"lịch sử giá FPT\", \"HPG có vượt đỉnh 20 phiên không\", mọi tính toán cần chuỗi giá\n            1 mã.\n        Không dùng khi: cần nhiều mã cùng lúc (dùng market_candles_batch); cần nến phút/intraday\n            (dùng vn_equity_ohlcv); cần giá khớp hiện tại (dùng vn_equity_quote_batch). Không có\n            tool nào tên stock_history — chính là tool này.\n\n        days: số nến yêu cầu (mặc định 365 nến; provider không enforce trần 365; nến tuần/tháng bao phủ dài hơn theo hệ số).\n        interval: '1D' (mặc định), '1W', '1M'. Nến 1W/1M mang ngày cuối kỳ (Chủ nhật cuối tuần,\n        ngày cuối tháng) nên nến của kỳ hiện tại có thể ghi một ngày chưa tới; kỳ không có phiên\n        (tuần Tết) bị bỏ. summary/columns: summary chỉ trả {count,last,high,low}; columns giữ\n        trường nêu tên.\n        ",
+          "inputSchema": {
+            "type": "object",
+            "properties": {
+              "symbol": {
+                "type": "string",
+                "description": "Vietnamese listed equity ticker, e.g. HPG."
+              },
+              "days": {
+                "type": "integer",
+                "default": 365,
+                "description": "Requested number of candles, not calendar days; default 365. Positive integer. Provider does not enforce the old prose claim of a 365 maximum. Replay accepts only explicitly recorded requests/default-equivalent arguments.",
+                "minimum": 1
+              },
+              "summary": {
+                "type": "boolean",
+                "default": false,
+                "description": "True returns count/last/high/low summary rather than candle rows. False preserves rows; summary changes output shape."
+              },
+              "columns": {
+                "anyOf": [
+                  {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "enum": [
+                        "t",
+                        "o",
+                        "h",
+                        "l",
+                        "c",
+                        "v"
+                      ]
+                    }
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null,
+                "description": "Optional array of raw candle keys: t date, o open, h high, l low, c close, v volume. Use [\"c\",\"t\"], never \"close\" or [\"close\"]. Null keeps all fields. Production currently drops unknown keys silently; this C1 contract rejects them before that loss."
+              },
+              "interval": {
+                "type": "string",
+                "default": "1D",
+                "description": "Candle frequency: 1D daily, 1W weekly, 1M monthly. The provider canonicalizes case. day/daily are not accepted.",
+                "enum": [
+                  "1D",
+                  "1W",
+                  "1M",
+                  "1d",
+                  "1w",
+                  "1m"
+                ]
+              }
+            },
+            "required": [
+              "symbol"
+            ],
+            "additionalProperties": false,
+            "anyOf": [
+              {
+                "type": "object",
+                "properties": {
+                  "symbol": {
+                    "type": "string",
+                    "pattern": "^\\s*[hH][pP][gG]\\s*$"
+                  },
+                  "days": {
+                    "const": 365
+                  },
+                  "summary": {
+                    "const": false
+                  },
+                  "columns": {
+                    "const": null
+                  },
+                  "interval": {
+                    "type": "string",
+                    "pattern": "^\\s*1[dD]\\s*$"
+                  }
+                },
+                "required": [
+                  "symbol"
+                ],
+                "additionalProperties": false
+              }
+            ],
+            "x-opentrading-schema-profile": "finite-replay-c2",
+            "x-finite-request-variants": [
+              {
+                "symbol": "HPG"
+              }
+            ],
+            "x-repair-fields": []
+          },
+          "outputSchema": {
+            "additionalProperties": true,
+            "title": "vn_quote_historyDictOutput",
+            "type": "object"
+          },
+          "annotations": {
+            "readOnlyHint": true,
+            "destructiveHint": false,
+            "idempotentHint": true,
+            "openWorldHint": false
+          },
+          "_meta": {
+            "anthropic/searchHint": "lich su gia nen ngay tuan thang co phieu | price history daily candles",
+            "opentrading/contractProfile": "finance-c1-v4",
+            "opentrading/schemaPolicy": "Raw types/defaults/required preserved from frozen source. Additional public domain guards added; no coercion. Frozen replay matching remains exact and separate."
+          }
+        }
+      ],
+      "requests": 3,
+      "generated_calls": 2,
+      "actual_mcp": 2,
+      "local_rejections": 0,
+      "user_raw_lengths": [
+        3763
+      ],
+      "user_content_after_explicit_presentation_normalization_sha256": "4efca780812b261ccba7fea60bfef359f6e3307c21323de7c440194b2ad147cf",
+      "captures": [
+        {
+          "stage": "native",
+          "path": "/home/doanlong/extra/benchmark/experiments/finance-v43-study/audits/v43-c2-calls-escalated/opencode/runner/provider-requests/0001-native.json",
+          "sha256": "08f4c8b5ec1a8eb408d659bc1f737f20f1b3a66e9a436513abe11fb05c1962ea",
+          "tools": [
+            "vn_quote_history"
+          ],
+          "tool_choice": null
+        },
+        {
+          "stage": "effective",
+          "path": "/home/doanlong/extra/benchmark/experiments/finance-v43-study/audits/v43-c2-calls-escalated/opencode/runner/provider-requests/0001-effective.json",
+          "sha256": "40ceebc346878ff7036029bb5e3dddb52a1abe08e9de1840299b5b6cd3968bf4",
+          "tools": [
+            "vn_quote_history"
+          ],
+          "tool_choice": null
+        },
+        {
+          "stage": "native",
+          "path": "/home/doanlong/extra/benchmark/experiments/finance-v43-study/audits/v43-c2-calls-escalated/opencode/runner/provider-requests/0002-native.json",
+          "sha256": "680140dea0edee358b5813932a9fb4c0bea189022a7afe1d24ea26fe29ed3ca3",
+          "tools": [
+            "vn_quote_history"
+          ],
+          "tool_choice": null
+        },
+        {
+          "stage": "effective",
+          "path": "/home/doanlong/extra/benchmark/experiments/finance-v43-study/audits/v43-c2-calls-escalated/opencode/runner/provider-requests/0002-effective.json",
+          "sha256": "250d35fdb5ab982007f64421182f4852b2bdc5486d8942683f7182f551d45cb9",
+          "tools": [
+            "vn_quote_history"
+          ],
+          "tool_choice": null
+        },
+        {
+          "stage": "native",
+          "path": "/home/doanlong/extra/benchmark/experiments/finance-v43-study/audits/v43-c2-calls-escalated/opencode/runner/provider-requests/0003-native.json",
+          "sha256": "a6dad318b240b728059872b64f4947fe5a9f63a594c66a55b36a2de310a78aa7",
+          "tools": [
+            "vn_quote_history"
+          ],
+          "tool_choice": null
+        },
+        {
+          "stage": "effective",
+          "path": "/home/doanlong/extra/benchmark/experiments/finance-v43-study/audits/v43-c2-calls-escalated/opencode/runner/provider-requests/0003-effective.json",
+          "sha256": "55f97390bec05568f60b638376dc7902a3537b109bf15f3309fc6fd10acdd8ef",
+          "tools": [
+            "vn_quote_history"
+          ],
+          "tool_choice": null
+        }
+      ]
+    },
+    {
+      "arm": "dsh",
+      "definitions": [
+        {
+          "name": "vn_quote_history",
+          "description": "FINITE SNAPSHOT SUPPORT: use a recorded public variant below and only default-equivalent optional arguments allowed by inputSchema. Production optional windows/projections are NOT generally supported here. snapshot_requests=[{\"symbol\": \"HPG\"}]\nIf unsupported_snapshot_query: inspect argument_paths and allowed_public_variants; choose a supported same-intent request only if entity, period, metric and scope remain unchanged. retryable_with_corrected_arguments permits a bounded correction; rejection does not mean financial data is absent. Read provenance and copy benchmark_evidence only from actual successful responses.\n\nPRODUCTION API METADATA (capabilities below do not expand this finite snapshot):\nNến 1 mã VN (1D/1W/1M), VCI trước KBS dự phòng. Dùng cho MỌI lịch sử giá của một mã.\n\n        Dùng khi: \"lịch sử giá FPT\", \"HPG có vượt đỉnh 20 phiên không\", mọi tính toán cần chuỗi giá\n            1 mã.\n        Không dùng khi: cần nhiều mã cùng lúc (dùng market_candles_batch); cần nến phút/intraday\n            (dùng vn_equity_ohlcv); cần giá khớp hiện tại (dùng vn_equity_quote_batch). Không có\n            tool nào tên stock_history — chính là tool này.\n\n        days: số nến yêu cầu (mặc định 365 nến; provider không enforce trần 365; nến tuần/tháng bao phủ dài hơn theo hệ số).\n        interval: '1D' (mặc định), '1W', '1M'. Nến 1W/1M mang ngày cuối kỳ (Chủ nhật cuối tuần,\n        ngày cuối tháng) nên nến của kỳ hiện tại có thể ghi một ngày chưa tới; kỳ không có phiên\n        (tuần Tết) bị bỏ. summary/columns: summary chỉ trả {count,last,high,low}; columns giữ\n        trường nêu tên.\n        ",
+          "inputSchema": {
+            "type": "object",
+            "properties": {
+              "symbol": {
+                "type": "string",
+                "description": "Vietnamese listed equity ticker, e.g. HPG."
+              },
+              "days": {
+                "type": "integer",
+                "default": 365,
+                "description": "Requested number of candles, not calendar days; default 365. Positive integer. Provider does not enforce the old prose claim of a 365 maximum. Replay accepts only explicitly recorded requests/default-equivalent arguments.",
+                "minimum": 1
+              },
+              "summary": {
+                "type": "boolean",
+                "default": false,
+                "description": "True returns count/last/high/low summary rather than candle rows. False preserves rows; summary changes output shape."
+              },
+              "columns": {
+                "anyOf": [
+                  {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "enum": [
+                        "t",
+                        "o",
+                        "h",
+                        "l",
+                        "c",
+                        "v"
+                      ]
+                    }
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null,
+                "description": "Optional array of raw candle keys: t date, o open, h high, l low, c close, v volume. Use [\"c\",\"t\"], never \"close\" or [\"close\"]. Null keeps all fields. Production currently drops unknown keys silently; this C1 contract rejects them before that loss."
+              },
+              "interval": {
+                "type": "string",
+                "default": "1D",
+                "description": "Candle frequency: 1D daily, 1W weekly, 1M monthly. The provider canonicalizes case. day/daily are not accepted.",
+                "enum": [
+                  "1D",
+                  "1W",
+                  "1M",
+                  "1d",
+                  "1w",
+                  "1m"
+                ]
+              }
+            },
+            "required": [
+              "symbol"
+            ],
+            "additionalProperties": false,
+            "anyOf": [
+              {
+                "type": "object",
+                "properties": {
+                  "symbol": {
+                    "type": "string",
+                    "pattern": "^\\s*[hH][pP][gG]\\s*$"
+                  },
+                  "days": {
+                    "const": 365
+                  },
+                  "summary": {
+                    "const": false
+                  },
+                  "columns": {
+                    "const": null
+                  },
+                  "interval": {
+                    "type": "string",
+                    "pattern": "^\\s*1[dD]\\s*$"
+                  }
+                },
+                "required": [
+                  "symbol"
+                ],
+                "additionalProperties": false
+              }
+            ],
+            "x-opentrading-schema-profile": "finite-replay-c2",
+            "x-finite-request-variants": [
+              {
+                "symbol": "HPG"
+              }
+            ],
+            "x-repair-fields": []
+          },
+          "outputSchema": {
+            "additionalProperties": true,
+            "title": "vn_quote_historyDictOutput",
+            "type": "object"
+          },
+          "annotations": {
+            "readOnlyHint": true,
+            "destructiveHint": false,
+            "idempotentHint": true,
+            "openWorldHint": false
+          },
+          "_meta": {
+            "anthropic/searchHint": "lich su gia nen ngay tuan thang co phieu | price history daily candles",
+            "opentrading/contractProfile": "finance-c1-v4",
+            "opentrading/schemaPolicy": "Raw types/defaults/required preserved from frozen source. Additional public domain guards added; no coercion. Frozen replay matching remains exact and separate."
+          }
+        }
+      ],
+      "requests": 3,
+      "generated_calls": 2,
+      "actual_mcp": 2,
+      "local_rejections": 0,
+      "user_raw_lengths": [
+        3663
+      ],
+      "user_content_after_explicit_presentation_normalization_sha256": "4efca780812b261ccba7fea60bfef359f6e3307c21323de7c440194b2ad147cf",
+      "captures": [
+        {
+          "stage": "native",
+          "path": "/home/doanlong/extra/benchmark/experiments/finance-v43-study/audits/v43-c2-calls-escalated/dsh/runner/provider-requests/0001-native.json",
+          "sha256": "2f9ff3a89431a2f5f758e2b74202d6f6b0e6ef10c45c6e9e6f015f6f4d6dd08c",
+          "tools": [
+            "vn_quote_history"
+          ],
+          "tool_choice": null
+        },
+        {
+          "stage": "effective",
+          "path": "/home/doanlong/extra/benchmark/experiments/finance-v43-study/audits/v43-c2-calls-escalated/dsh/runner/provider-requests/0001-effective.json",
+          "sha256": "01fe1c9efda75dd43047dc4321fdde1829a7fac5d5632b2a0e252fb3203adf7e",
+          "tools": [
+            "vn_quote_history"
+          ],
+          "tool_choice": null
+        },
+        {
+          "stage": "native",
+          "path": "/home/doanlong/extra/benchmark/experiments/finance-v43-study/audits/v43-c2-calls-escalated/dsh/runner/provider-requests/0002-native.json",
+          "sha256": "04f9ee6189d1310efbb5e2ec9965af8ac9b748a732a6e52e667b512cffee8dd9",
+          "tools": [
+            "vn_quote_history"
+          ],
+          "tool_choice": null
+        },
+        {
+          "stage": "effective",
+          "path": "/home/doanlong/extra/benchmark/experiments/finance-v43-study/audits/v43-c2-calls-escalated/dsh/runner/provider-requests/0002-effective.json",
+          "sha256": "e45bf1b8ff48c8bbfbe1f6126c88b117b05b686ac86541f656352c2bcf1d6340",
+          "tools": [
+            "vn_quote_history"
+          ],
+          "tool_choice": null
+        },
+        {
+          "stage": "native",
+          "path": "/home/doanlong/extra/benchmark/experiments/finance-v43-study/audits/v43-c2-calls-escalated/dsh/runner/provider-requests/0003-native.json",
+          "sha256": "691197fede7dfc5d0983bbaba3ddd9c3ac82a856b62e409f7ce984d431223e88",
+          "tools": [
+            "vn_quote_history"
+          ],
+          "tool_choice": null
+        },
+        {
+          "stage": "effective",
+          "path": "/home/doanlong/extra/benchmark/experiments/finance-v43-study/audits/v43-c2-calls-escalated/dsh/runner/provider-requests/0003-effective.json",
+          "sha256": "5de2252fc13e1b696290c785c899324309f09e088460ec5527f8da62f9797eef",
+          "tools": [
+            "vn_quote_history"
+          ],
+          "tool_choice": null
+        }
+      ]
+    }
+  ],
+  "presentation_limitation": "Full native system prompts differ by design. OpenCode outer quotation/backslash-quote presentation differs on raw wire; explicit read-only normalization yields the same public task/contract text if this check passes. No cause or efficacy inference."
+}

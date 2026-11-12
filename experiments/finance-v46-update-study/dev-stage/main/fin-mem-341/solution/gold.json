@@ -1,0 +1,50 @@
+{
+ "scoring": "value",
+ "memory_construct": "cross_session_recall_or_update",
+ "solution": {
+  "set": [
+   "FRT",
+   "MSN",
+   "PNJ"
+  ]
+ },
+ "expects": [
+  {
+   "type": "set",
+   "path": "values.set",
+   "gold": [
+    "FRT",
+    "MSN",
+    "PNJ"
+   ]
+  },
+  {
+   "type": "str",
+   "path": "source",
+   "accept": [
+    "peer_compare"
+   ]
+  }
+ ],
+ "notes": "Đặt 2 điều kiện (PE<25, ROE>10) rồi HỦY điều PE (revision mới). Filter còn lại ROE>10: {'FRT': 26.13, 'PNJ': 23.06, 'KDC': 7.61, 'MSN': 12.53, 'SBT': 7.49} → [FRT,MSN,PNJ]; KDC 7.61 ✗; SBT 7.49 ✗. PE: {'FRT': 28.2, 'PNJ': 11.61, 'KDC': 28.85, 'MSN': 27.94, 'SBT': 27.66}.",
+ "memory_checks": {
+  "revoked_id": "pe-cap-341",
+  "active_ids": [
+   "roe-floor-341"
+  ]
+ },
+ "provenance_contract": [
+  {
+   "tool": "peer_compare",
+   "source": "vnstock",
+   "as_of": "2026-11-01T23:08:19.121250+07:00",
+   "matched_entry_id": "peer:cons_p",
+   "response_sha256": "ddba4fdb6bb3c68d89a0cb89bcf91112bcee9fc811750394f7fb157fbdfffa82"
+  }
+ ],
+ "required_payload_keys": [
+  "peer:cons_p"
+ ],
+ "task_id": "fin-mem-341",
+ "payload_sha256": "cb4486b82d07494761d1d65b1416b960d1025a16d820895f9416dd76b996a0ba"
+}

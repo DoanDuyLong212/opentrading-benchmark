@@ -1,0 +1,497 @@
+{
+  "yf_commodities": {
+    "type": "object",
+    "properties": {
+      "tickers": {
+        "anyOf": [
+          {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "default": null
+      },
+      "period": {
+        "type": "string",
+        "default": "2d"
+      },
+      "interval": {
+        "type": "string",
+        "default": "1d"
+      }
+    },
+    "required": [],
+    "additionalProperties": false,
+    "x-source": "tools/yf.py",
+    "x-source-sha256": "df1f059770030d9f27c22b8817a053fa54caae4f233baa5b2e664a6bfacaf658"
+  },
+  "vs_overview_trading": {
+    "type": "object",
+    "properties": {
+      "symbol": {
+        "type": "string"
+      }
+    },
+    "required": [
+      "symbol"
+    ],
+    "additionalProperties": false,
+    "x-source": "tools/vs_bctc.py",
+    "x-source-sha256": "b447a420ff3460f5ecca456407b279c4dba7dc30b9813f42c9d935b64f94fea1"
+  },
+  "symbol_resolve": {
+    "type": "object",
+    "properties": {
+      "query": {
+        "type": "string"
+      },
+      "limit": {
+        "type": "integer",
+        "default": 5
+      }
+    },
+    "required": [
+      "query"
+    ],
+    "additionalProperties": false,
+    "x-source": "tools/market.py",
+    "x-source-sha256": "dbb09666208ce407849c63428922bed4728ccbbc0d70780495a237db13aabf6c"
+  },
+  "market_movers": {
+    "type": "object",
+    "properties": {
+      "top_n": {
+        "type": "integer",
+        "default": 10
+      },
+      "universe": {
+        "type": "string",
+        "default": "vn30"
+      }
+    },
+    "required": [],
+    "additionalProperties": false,
+    "x-source": "tools/market.py",
+    "x-source-sha256": "dbb09666208ce407849c63428922bed4728ccbbc0d70780495a237db13aabf6c"
+  },
+  "valuation_run": {
+    "type": "object",
+    "properties": {
+      "symbol": {
+        "type": "string"
+      },
+      "btype": {
+        "type": "integer",
+        "default": 1
+      },
+      "method": {
+        "type": "string",
+        "default": "auto"
+      }
+    },
+    "required": [
+      "symbol"
+    ],
+    "additionalProperties": false,
+    "x-source": "tools/compute_financial.py",
+    "x-source-sha256": "96de2f70af8b30c6741a86294f696ea4b18bb55ea6930f16db81dbc2827d0316"
+  },
+  "financial_statements": {
+    "type": "object",
+    "properties": {
+      "symbol": {
+        "type": "string"
+      },
+      "period": {
+        "type": "string",
+        "default": "quarter"
+      },
+      "statement": {
+        "type": "string",
+        "default": "all"
+      },
+      "periods_n": {
+        "type": "integer",
+        "default": 15
+      }
+    },
+    "required": [
+      "symbol"
+    ],
+    "additionalProperties": false,
+    "x-source": "tools/compute_financial.py",
+    "x-source-sha256": "96de2f70af8b30c6741a86294f696ea4b18bb55ea6930f16db81dbc2827d0316"
+  },
+  "peer_compare": {
+    "type": "object",
+    "properties": {
+      "symbol": {
+        "type": "string"
+      },
+      "peers": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        }
+      },
+      "metrics": {
+        "anyOf": [
+          {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "default": null
+      }
+    },
+    "required": [
+      "symbol",
+      "peers"
+    ],
+    "additionalProperties": false,
+    "x-source": "tools/compute_financial.py",
+    "x-source-sha256": "96de2f70af8b30c6741a86294f696ea4b18bb55ea6930f16db81dbc2827d0316"
+  },
+  "stock_overview": {
+    "type": "object",
+    "properties": {
+      "symbol": {
+        "type": "string"
+      }
+    },
+    "required": [
+      "symbol"
+    ],
+    "additionalProperties": false,
+    "x-source": "tools/compute_financial.py",
+    "x-source-sha256": "96de2f70af8b30c6741a86294f696ea4b18bb55ea6930f16db81dbc2827d0316"
+  },
+  "crypto_spot": {
+    "type": "object",
+    "properties": {
+      "symbols": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        }
+      }
+    },
+    "required": [
+      "symbols"
+    ],
+    "additionalProperties": false,
+    "x-source": "tools/crypto.py",
+    "x-source-sha256": "6e1776d0ad8e72e24b08677ec020bb233ee871124eed8db2a19325ee8726aef4"
+  },
+  "financial_detail": {
+    "type": "object",
+    "properties": {
+      "symbol": {
+        "type": "string"
+      },
+      "statement": {
+        "type": "string",
+        "default": "KQKD"
+      },
+      "periods_n": {
+        "type": "integer",
+        "default": 4
+      }
+    },
+    "required": [
+      "symbol"
+    ],
+    "additionalProperties": false,
+    "x-source": "tools/corp.py",
+    "x-source-sha256": "ec4a91094a3c1b9f3d20f308d9d9bb354310de33d0fb09cea9ce9adc003cf046"
+  },
+  "signals_technical": {
+    "type": "object",
+    "properties": {
+      "symbol": {
+        "type": "string"
+      },
+      "interval": {
+        "type": "string",
+        "default": "1D"
+      },
+      "indicators": {
+        "anyOf": [
+          {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "default": null
+      },
+      "ichimoku_convention": {
+        "type": "string",
+        "default": "offset25"
+      }
+    },
+    "required": [
+      "symbol"
+    ],
+    "additionalProperties": false,
+    "x-source": "tools/scan.py",
+    "x-source-sha256": "4726fce0056198889c78df96b3c1a30ebec03ea499fad356952f59938d7f7e8b"
+  },
+  "vs_indicator_data": {
+    "type": "object",
+    "properties": {
+      "category_id": {
+        "anyOf": [
+          {
+            "type": "integer"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "default": null
+      },
+      "term_type_id": {
+        "type": [
+          "integer",
+          "string"
+        ],
+        "default": 3
+      },
+      "sub_term_type_id": {
+        "anyOf": [
+          {
+            "type": [
+              "integer",
+              "string"
+            ]
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "default": null
+      },
+      "from_date": {
+        "type": "string",
+        "default": "2022-01-01"
+      },
+      "to_date": {
+        "anyOf": [
+          {
+            "type": "string"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "default": null
+      },
+      "indicator": {
+        "anyOf": [
+          {
+            "type": "string"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "default": null
+      }
+    },
+    "required": [],
+    "additionalProperties": false,
+    "x-source": "tools/vs.py",
+    "x-source-sha256": "cc0c32d2b63233779eda5ac088c454b3f39daccb27410d3b632c135c3644a7ef"
+  },
+  "vn_quote_history": {
+    "type": "object",
+    "properties": {
+      "symbol": {
+        "type": "string"
+      },
+      "days": {
+        "type": "integer",
+        "default": 365
+      },
+      "summary": {
+        "type": "boolean",
+        "default": false
+      },
+      "columns": {
+        "anyOf": [
+          {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "default": null
+      },
+      "interval": {
+        "type": "string",
+        "default": "1D"
+      }
+    },
+    "required": [
+      "symbol"
+    ],
+    "additionalProperties": false,
+    "x-source": "tools/vn.py",
+    "x-source-sha256": "68a312107c260eb60e8a122ad3ddf55ad0d613557bb7797449df536ac56bd0fb"
+  },
+  "vn_equity_quote_batch": {
+    "type": "object",
+    "properties": {
+      "symbols": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        }
+      },
+      "summary": {
+        "type": "boolean",
+        "default": false
+      },
+      "columns": {
+        "anyOf": [
+          {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "default": null
+      }
+    },
+    "required": [
+      "symbols"
+    ],
+    "additionalProperties": false,
+    "x-source": "tools/vn.py",
+    "x-source-sha256": "68a312107c260eb60e8a122ad3ddf55ad0d613557bb7797449df536ac56bd0fb"
+  },
+  "vn_index_ohlcv": {
+    "type": "object",
+    "properties": {
+      "symbol": {
+        "type": "string",
+        "default": "VNINDEX"
+      },
+      "count": {
+        "type": "integer",
+        "default": 100
+      },
+      "summary": {
+        "type": "boolean",
+        "default": false
+      },
+      "columns": {
+        "anyOf": [
+          {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "default": null
+      },
+      "interval": {
+        "type": "string",
+        "default": "1D"
+      }
+    },
+    "required": [],
+    "additionalProperties": false,
+    "x-source": "tools/vn_ext.py",
+    "x-source-sha256": "3b06dd1add9be2c55c1054fa654980833a8b6f145f3c032651fbf80b84572098"
+  },
+  "vn_crypto_ohlcv": {
+    "type": "object",
+    "properties": {
+      "symbol": {
+        "type": "string",
+        "default": "BTCUSDT"
+      },
+      "count": {
+        "type": "integer",
+        "default": 30
+      },
+      "summary": {
+        "type": "boolean",
+        "default": false
+      },
+      "columns": {
+        "anyOf": [
+          {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "default": null
+      }
+    },
+    "required": [],
+    "additionalProperties": false,
+    "x-source": "tools/vn_ext.py",
+    "x-source-sha256": "3b06dd1add9be2c55c1054fa654980833a8b6f145f3c032651fbf80b84572098"
+  },
+  "vn_msn_fx_gold": {
+    "type": "object",
+    "properties": {
+      "symbols": {
+        "anyOf": [
+          {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "default": null
+      },
+      "days": {
+        "type": "integer",
+        "default": 35
+      }
+    },
+    "required": [],
+    "additionalProperties": false,
+    "x-source": "tools/vn_ext.py",
+    "x-source-sha256": "3b06dd1add9be2c55c1054fa654980833a8b6f145f3c032651fbf80b84572098"
+  }
+}

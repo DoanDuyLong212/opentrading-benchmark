@@ -1,44 +1,67 @@
 {
- "task_id": "fin-l5-valuation-949",
- "scoring": "value",
- "solution": {
-  "price": 49650.0,
-  "per": 5.86,
-  "pb": 1.55
- },
- "as_of": "2026-11-01T23:29:07.796859+07:00",
- "split": "holdout",
- "expects": [
-  {
-   "type": "value",
-   "path": "values.price",
-   "gold": 49650.0,
-   "tol": {
-    "rel": 0.005
-   }
+  "task_id": "fin-l5-valuation-949",
+  "scoring": "value",
+  "solution": {
+    "price": 49650.0,
+    "per": 5.86,
+    "pb": 1.55
   },
-  {
-   "type": "value",
-   "path": "values.per",
-   "gold": 5.86,
-   "tol": {
-    "rel": 0.005
-   }
-  },
-  {
-   "type": "value",
-   "path": "values.pb",
-   "gold": 1.55,
-   "tol": {
-    "rel": 0.005
-   }
-  },
-  {
-   "type": "str",
-   "path": "source",
-   "accept": [
-    "valuation_run"
-   ]
-  }
- ]
+  "as_of": "2026-11-01T23:29:07.796859+07:00",
+  "split": "holdout",
+  "expects": [
+    {
+      "type": "value",
+      "path": "values.price",
+      "gold": 49650.0,
+      "tol": {
+        "rel": 0.005
+      }
+    },
+    {
+      "type": "value",
+      "path": "values.per",
+      "gold": 5.86,
+      "tol": {
+        "rel": 0.005
+      }
+    },
+    {
+      "type": "value",
+      "path": "values.pb",
+      "gold": 1.55,
+      "tol": {
+        "rel": 0.005
+      }
+    },
+    {
+      "type": "str",
+      "path": "source",
+      "accept": [
+        "valuation_run"
+      ]
+    }
+  ],
+  "contract_version": 2,
+  "provenance_contract": [
+    {
+      "tool": "valuation_run",
+      "source": "computed-local",
+      "as_of": "2026-11-01T23:29:07.796859+07:00",
+      "matched_entry_id": "val:HAH",
+      "response_sha256": "89fd6cb30b30dfca6b7c4019a05e4879a2a7b252fbb7461f6e164cb58904b032"
+    }
+  ],
+  "payload_sha256": "e7623500881682447bf730ea605179cdeebc4744b5a9d10351857a51cf9399c1",
+  "provenance_catalog": [
+    {
+      "tool": "valuation_run",
+      "source": "computed-local",
+      "as_of": "2026-11-01T23:29:07.796859+07:00",
+      "matched_entry_id": "val:HAH",
+      "response_sha256": "89fd6cb30b30dfca6b7c4019a05e4879a2a7b252fbb7461f6e164cb58904b032"
+    }
+  ],
+  "required_payload_keys": [
+    "val:HAH"
+  ]
 }

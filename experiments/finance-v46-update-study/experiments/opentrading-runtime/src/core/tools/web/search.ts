@@ -1,0 +1,375 @@
+import { LRUCache } from "lru-cache"
+import { z } from "zod"
+import { vnDay } from "../net-dates"
+import { LOCAL_SOURCE, type ToolDef } from "../types"
+import { cleanDomains, hostMatches, PRESETS, type Preset } from "./domains"
+import { guardedNative, nativeSearch, webTarget, type NativeSearch } from "./side-model"
+
+/**
+ * web_search at the level of Claude Code's WebSearch and Codex's web.run:
+ * - the provider's own search first (Gemini grounding, Anthropic web_search, OpenAI
+ *   Responses web_search) in a side call, then keyed APIs (Exa, Parallel, Tavily, Brave),
+ *   then DuckDuckGo's HTML page;
+ * - domain allow/block lists and Vietnamese presets, a recency window;
+ * - numbered results with domain and date, and a reminder to cite sources next to claims
+ *   (Codex) with a closing source list (Claude Code).
+ */
+
+export type WebSearchInput = {
+  query: string
+  allowed_domains?: string[]
+  blocked_domains?: string[]
+  preset?: Preset
+  recency_days?: number
+  num_results?: number
+}
+
+export interface Hit {
+  title?: string
+  url: string
+  snippet?: string
+  date?: string
+}
+
+const TIMEOUT_MS = 45_000
+const NATIVE_TIMEOUT_MS = 15_000
+const cache = new LRUCache<string, string>({ max: 100, ttl: 5 * 60_000 })
+
+const hostOf = (url: string) => {
+  try {
+    return new URL(url).hostname.replace(/^www\./, "")
+  } catch {
+    return ""
+  }
+}
+
+export interface SearchPlan {
+  query: string
+  n: number
+  allowed: string[]
+  blocked: string[]
+  /** ISO date: results published on or after it. */
+  since?: string
+  /** The window asked for (recency_days), for backends that take a number of days or a bucket. */
+  days?: number
+}
+
+export function planSearch(input: WebSearchInput, now = new Date()): SearchPlan {
+  if ((input.allowed_domains?.length ?? 0) > 0 && (input.blocked_domains?.length ?? 0) > 0) {
+    throw new Error("Không truyền cùng lúc allowed_domains và blocked_domains.")
+  }
+  const allowed = [...new Set([...cleanDomains(input.allowed_domains), ...(input.preset ? PRESETS[input.preset] : [])])]
+  const since = input.recency_days ? vnDay(now.getTime() - input.recency_days * 86_400_000) : undefined
+  return { query: input.query.trim(), n: input.num_results ?? 8, allowed, blocked: cleanDomains(input.blocked_domains), since, ...(since ? { days: input.recency_days } : {}) }
+}
+
+/** `site:` operators for backends without a domain filter (Brave, DuckDuckGo, Gemini). */
+export function withSiteOperators(plan: SearchPlan) {
+  const allow = plan.allowed.length > 0 ? ` (${plan.allowed.map((d) => `site:${d}`).join(" OR ")})` : ""
+  const block = plan.blocked.map((d) => ` -site:${d}`).join("")
+  return `${plan.query}${allow}${block}`
+}
+
+/** A hit's publication day when it is a real date ("2026-10-01…"); Brave's "2 days ago" is not. */
+const hitDay = (h: Hit) => (h.date && /^\d{4}-\d{2}-\d{2}/.test(h.date) ? h.date.slice(0, 10) : undefined)
+
+/**
+ * Drop hits outside the allow list, inside the block list, or dated before the recency window
+ * (backends do not all honour them, and some only round the window to a week/month/year).
+ * An undated hit is kept: formatResults says the date is unknown.
+ */
+export function filterHits(hits: Hit[], plan: SearchPlan) {
+  return hits.filter((h) => {
+    const host = hostOf(h.url)
+    if (!host) return false
+    if (plan.allowed.length > 0 && !plan.allowed.some((d) => hostMatches(host, d))) return false
+    if (plan.blocked.some((d) => hostMatches(host, d))) return false
+    const day = hitDay(h)
+    return !(plan.since && day && day < plan.since)
+  })
+}
+
+/** A recency window in days as the coarse buckets DuckDuckGo (df) and Brave (freshness) take, rounded up. */
+export function freshnessBucket(days: number | undefined): "d" | "w" | "m" | "y" | undefined {
+  if (!days) return undefined
+  return days <= 1 ? "d" : days <= 7 ? "w" : days <= 31 ? "m" : days <= 366 ? "y" : undefined
+}
+
+type Backend = { name: string; run: (plan: SearchPlan, signal: AbortSignal) => Promise<Hit[]> }
+
+async function postJson(url: string, body: unknown, headers: Record<string, string>, signal: AbortSignal) {
+  const res = await fetch(url, { method: "POST", signal, headers: { "Content-Type": "application/json", ...headers }, body: JSON.stringify(body) })
+  if (!res.ok) throw new Error(`${new URL(url).hostname} HTTP ${res.status}`)
+  return res.json() as Promise<Record<string, unknown>>
+}
+
+const str = (v: unknown) => (typeof v === "string" && v.trim() ? v.trim() : undefined)
+
+export const BACKENDS: Record<string, (key: string) => Backend> = {
+  exa: (key) => ({
+    name: "exa",
+    async run(plan, signal) {
+      const data = await postJson(
+        "https://api.exa.ai/search",
+        {
+          query: plan.query,
+          numResults: plan.n,
+          type: "auto",
+          contents: { highlights: { numSentences: 3 }, text: { maxCharacters: 600 } },
+          ...(plan.allowed.length ? { includeDomains: plan.allowed } : {}),
+          ...(plan.blocked.length ? { excludeDomains: plan.blocked } : {}),
+          ...(plan.since ? { startPublishedDate: `${plan.since}T00:00:00.000Z` } : {}),
+        },
+        { "x-api-key": key },
+        signal,
+      )
+      return ((data.results as Record<string, unknown>[]) ?? []).map((r) => ({
+        title: str(r.title),
+        url: String(r.url ?? ""),
+        snippet: (Array.isArray(r.highlights) ? (r.highlights as string[]).join(" … ") : undefined) ?? str(r.text),
+        date: str(r.publishedDate)?.slice(0, 10),
+      }))
+    },
+  }),
+  parallel: (key) => ({
+    name: "parallel",
+    async run(plan, signal) {
+      const data = await postJson(
+        "https://api.parallel.ai/v1beta/search",
+        {
+          objective: plan.query,
+          search_queries: [plan.query],
+          max_results: plan.n,
+          ...(plan.allowed.length || plan.blocked.length
+            || plan.since
+            ? {
+                source_policy: {
+                  ...(plan.allowed.length ? { include_domains: plan.allowed } : {}),
+                  ...(plan.blocked.length ? { exclude_domains: plan.blocked } : {}),
+                  ...(plan.since ? { after_date: plan.since } : {}),
+                },
+              }
+            : {}),
+        },
+        { "x-api-key": key },
+        signal,
+      )
+      return ((data.results as Record<string, unknown>[]) ?? []).map((r) => ({
+        title: str(r.title),
+        url: String(r.url ?? ""),
+        snippet: (Array.isArray(r.excerpts) ? (r.excerpts as string[]).join(" … ") : undefined) ?? str(r.content),
+        date: str(r.publish_date)?.slice(0, 10),
+      }))
+    },
+  }),
+  tavily: (key) => ({
+    name: "tavily",
+    async run(plan, signal) {
+      const days = plan.days
+      const data = await postJson(
+        "https://api.tavily.com/search",
+        {
+          query: plan.query,
+          max_results: plan.n,
+          search_depth: "basic",
+          ...(days ? { topic: "news", days } : {}),
+          ...(plan.allowed.length ? { include_domains: plan.allowed } : {}),
+          ...(plan.blocked.length ? { exclude_domains: plan.blocked } : {}),
+        },
+        { Authorization: `Bearer ${key}` },
+        signal,
+      )
+      return ((data.results as Record<string, unknown>[]) ?? []).map((r) => ({
+        title: str(r.title),
+        url: String(r.url ?? ""),
+        snippet: str(r.content),
+        date: str(r.published_date)?.slice(0, 10),
+      }))
+    },
+  }),
+  brave: (key) => ({
+    name: "brave",
+    async run(plan, signal) {
+      // Longer than a year has no bucket: the post-filter on dates does the rest.
+      const bucket = freshnessBucket(plan.days)
+      const freshness = bucket ? `&freshness=p${bucket}` : ""
+      const url = `https://api.search.brave.com/res/v1/web/search?q=${encodeURIComponent(withSiteOperators(plan))}&count=${Math.min(plan.n, 20)}${freshness}`
+      const res = await fetch(url, { signal, headers: { Accept: "application/json", "X-Subscription-Token": key } })
+      if (!res.ok) throw new Error(`Brave HTTP ${res.status}`)
+      const data = (await res.json()) as { web?: { results?: Record<string, unknown>[] } }
+      return (data.web?.results ?? []).map((r) => ({
+        title: str(r.title)?.replace(/<[^>]+>/g, ""),
+        url: String(r.url ?? ""),
+        snippet: str(r.description)?.replace(/<[^>]+>/g, ""),
+        date: str(r.page_age)?.slice(0, 10) ?? str(r.age),
+      }))
+    },
+  }),
+}
+
+const RESULT = /<a[^>]*class="result__a"[^>]*href="([^"]+)"[^>]*>([\s\S]*?)<\/a>[\s\S]*?<a[^>]*class="result__snippet"[^>]*>([\s\S]*?)<\/a>/gi
+
+/** Parse DuckDuckGo's HTML results page (exported for tests). */
+export function parseDuckDuckGo(html: string, n: number): Hit[] {
+  const clean = (s: string) =>
+    s
+      .replace(/<[^>]+>/g, "")
+      .replace(/&#x([0-9a-f]+);/gi, (_, h) => String.fromCodePoint(parseInt(h, 16)))
+      .replace(/&#(\d+);/g, (_, d) => String.fromCodePoint(Number(d)))
+      .replace(/&quot;/g, '"')
+      .replace(/&amp;/g, "&")
+      .trim()
+  const items: Hit[] = []
+  for (const m of html.matchAll(RESULT)) {
+    if (items.length >= n) break
+    let url = clean(m[1] ?? "")
+    const redirect = url.match(/uddg=([^&]+)/)
+    if (redirect) {
+      try {
+        url = decodeURIComponent(redirect[1]!)
+      } catch {
+        // keep the redirect URL
+      }
+    }
+    items.push({ title: clean(m[2] ?? ""), url, snippet: clean(m[3] ?? "") })
+  }
+  return items
+}
+
+const duckduckgo: Backend = {
+  name: "duckduckgo",
+  async run(plan, signal) {
+    const bucket = freshnessBucket(plan.days)
+    const res = await fetch(`https://html.duckduckgo.com/html/?q=${encodeURIComponent(withSiteOperators(plan))}&kl=vn-vi${bucket ? `&df=${bucket}` : ""}`, {
+      signal,
+      headers: { "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/128.0 Safari/537.36" },
+    })
+    if (!res.ok) throw new Error(`DuckDuckGo HTTP ${res.status}`)
+    const items = parseDuckDuckGo(await res.text(), plan.n)
+    if (items.length === 0) throw new Error("DuckDuckGo không trả kết quả đọc được (có thể bị chặn)")
+    return items
+  },
+}
+
+/** Keyed backends whose key is set, in order, then DuckDuckGo. */
+export function keyedBackends(env: Record<string, string | undefined> = process.env): Backend[] {
+  const list: Backend[] = []
+  if (env.EXA_API_KEY) list.push(BACKENDS.exa!(env.EXA_API_KEY))
+  if (env.PARALLEL_API_KEY) list.push(BACKENDS.parallel!(env.PARALLEL_API_KEY))
+  if (env.TAVILY_API_KEY) list.push(BACKENDS.tavily!(env.TAVILY_API_KEY))
+  if (env.BRAVE_API_KEY ?? env.BRAVE_SEARCH_API_KEY) list.push(BACKENDS.brave!((env.BRAVE_API_KEY ?? env.BRAVE_SEARCH_API_KEY)!))
+  list.push(duckduckgo)
+  return list
+}
+
+const CITE =
+  'NHẮC: trích nguồn bằng link markdown [Tiêu đề](URL) ngay cạnh số liệu/khẳng định lấy từ kết quả; cuối câu trả lời có mục "Nguồn:". Ghi ngày đăng với tin tức. Giá và chỉ số thị trường kiểm lại bằng tool dữ liệu MCP khi có.'
+
+export function formatResults(query: string, backend: string, hits: Hit[], summary?: string, notes: string[] = [], since?: string) {
+  const day = vnDay()
+  const lines = hits.map((h, i) => {
+    // With a recency window, an undated hit says so: it passed the date filter unchecked.
+    const date = h.date ?? (since ? "không rõ ngày" : undefined)
+    const meta = [hostOf(h.url), date].filter(Boolean).join(" — ")
+    const snippet = h.snippet ? `\n    ${h.snippet.replace(/\s+/g, " ").slice(0, 300)}` : ""
+    return `[${i + 1}] ${h.title || "(không tiêu đề)"}${meta ? ` — ${meta}` : ""}\n    ${h.url}${snippet}`
+  })
+  return [
+    `Kết quả tìm kiếm "${query}" (nguồn: ${backend} · ${day})`,
+    ...notes,
+    ...lines,
+    ...(summary ? ["", `Tóm tắt của bộ tìm kiếm: ${summary.slice(0, 1500)}`] : []),
+    "",
+    CITE,
+  ].join("\n")
+}
+
+export interface SearchDeps {
+  native?: (query: string, plan: SearchPlan, signal: AbortSignal) => Promise<NativeSearch | undefined>
+  backends?: () => Backend[]
+}
+
+const defaultNative: NonNullable<SearchDeps["native"]> = async (query, plan, signal) => {
+  const target = await webTarget()
+  if (!target) return undefined
+  // Not every native search filters domains or dates: the query carries `site:` / `after:`
+  // operators too, and the sources are filtered again afterwards.
+  const base = plan.allowed.length || plan.blocked.length ? withSiteOperators(plan) : query
+  const q = plan.since ? `${base} after:${plan.since}` : base
+  // Keyed by model: one that ran out of quota is skipped for a while, another is not.
+  return guardedNative(`${target.provider.id}/${target.model}`, () => nativeSearch(q, target, { allowed: plan.allowed, blocked: plan.blocked }, signal))
+}
+
+export async function runSearch(input: WebSearchInput, signal: AbortSignal, deps: SearchDeps = {}): Promise<string> {
+  const plan = planSearch(input)
+  const key = JSON.stringify(plan)
+  const cached = cache.get(key)
+  if (cached) return `${cached}\n(kết quả lưu trong 5 phút)`
+  const failures: string[] = []
+  // Its own budget: a slow or throttled provider search must leave time for the fallbacks.
+  const nativeSignal = AbortSignal.any([signal, AbortSignal.timeout(NATIVE_TIMEOUT_MS)])
+  const native = await (deps.native ?? defaultNative)(plan.query, plan, nativeSignal).catch((error: unknown) => {
+    failures.push(`tìm kiếm của model: ${error instanceof Error ? error.message.slice(0, 120) : String(error)}`)
+    return undefined
+  })
+  if (native && native.sources.length > 0) {
+    const kept = filterHits(native.sources.map((s) => ({ title: s.title, url: s.url })), plan)
+    if (kept.length > 0) {
+      // The provider's summary may quote any source it used: once one is filtered out (a
+      // blocked or off-list domain), the summary goes too and only the kept sources remain.
+      const filtered = kept.length < native.sources.length
+      const notes = filtered ? ["(Đã bỏ các nguồn ngoài bộ lọc domain và cả phần tóm tắt của bộ tìm kiếm, vì nó có thể trích từ các nguồn đó.)"] : []
+      const out = formatResults(plan.query, native.backend, kept.slice(0, plan.n), filtered ? undefined : native.text, notes, plan.since)
+      cache.set(key, out)
+      return out
+    }
+    failures.push("tìm kiếm của model: mọi nguồn đều bị bộ lọc domain loại")
+  }
+  for (const backend of (deps.backends ?? keyedBackends)()) {
+    try {
+      const hits = filterHits(await backend.run(plan, signal), plan).slice(0, plan.n)
+      if (hits.length === 0) {
+        failures.push(`${backend.name}: không có kết quả`)
+        continue
+      }
+      const notes = failures.length > 0 ? [`(đã thử: ${failures.join("; ")})`] : []
+      const out = formatResults(plan.query, backend.name, hits, undefined, notes, plan.since)
+      cache.set(key, out)
+      return out
+    } catch (error) {
+      if (signal.aborted) throw error
+      failures.push(`${backend.name}: ${error instanceof Error ? error.message.slice(0, 120) : String(error)}`)
+    }
+  }
+  throw new Error(
+    `Không tìm được kết quả cho "${plan.query}". Đã thử: ${failures.join("; ")}. Đặt EXA_API_KEY, TAVILY_API_KEY hoặc BRAVE_API_KEY để tìm ổn định hơn, hoặc nới lọc domain/ngày.`,
+  )
+}
+
+export function webSearchTool(deps: SearchDeps = {}): ToolDef<WebSearchInput> {
+  const month = vnDay().slice(0, 7)
+  return {
+    name: "web_search",
+    description:
+      `Tìm kiếm web (tin tức, công bố, sự kiện, tài liệu) — trả về danh sách kết quả đánh số có tiêu đề, URL, domain, ngày đăng, đoạn trích. Tháng hiện tại: ${month}; dùng đúng năm hiện tại khi tìm tin mới. ` +
+      "Giá, chỉ số, lãi suất, nhân sự doanh nghiệp có thể đã đổi: phải tìm, không nhớ; nhưng số liệu thị trường ưu tiên tool dữ liệu MCP. Ưu tiên nguồn gốc (HOSE/HNX, SBV, GSO, trang IR doanh nghiệp). " +
+      "preset vn_finance / vn_news / vn_official để giới hạn nguồn Việt Nam; recency_days cho tin mới. Đọc chi tiết một kết quả bằng web_fetch. Trong câu trả lời: trích nguồn bằng link markdown cạnh khẳng định, cuối có mục \"Nguồn:\".",
+    input: z.object({
+      query: z.string().min(2).describe("Câu truy vấn"),
+      allowed_domains: z.array(z.string()).max(20).optional().describe("Chỉ lấy kết quả từ các domain này, ví dụ [\"cafef.vn\"]"),
+      blocked_domains: z.array(z.string()).max(20).optional().describe("Loại kết quả từ các domain này (không dùng cùng allowed_domains)"),
+      preset: z.enum(["vn_finance", "vn_news", "vn_official"]).optional().describe("Nhóm nguồn Việt Nam: tài chính, báo chí, cơ quan nhà nước"),
+      recency_days: z.number().int().min(1).max(3650).optional().describe("Chỉ kết quả trong N ngày gần đây"),
+      num_results: z.number().int().min(1).max(20).optional().describe("Số kết quả (mặc định 8)"),
+    }),
+    readOnly: true,
+    deferrable: true,
+    source: LOCAL_SOURCE,
+    timeoutMs: 60_000,
+    summarize: (input) => `web_search "${input.query.slice(0, 50)}"${input.preset ? ` · ${input.preset}` : ""}${input.recency_days ? ` · ${input.recency_days} ngày` : ""}`,
+    execute: (input, ctx) => runSearch(input, AbortSignal.any([ctx.signal, AbortSignal.timeout(TIMEOUT_MS)]), deps),
+  }
+}
+
+/** Tests only. */
+export const clearSearchCache = () => cache.clear()

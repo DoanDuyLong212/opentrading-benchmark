@@ -1,0 +1,43 @@
+........................................................................ [ 13%]
+........................................................................ [ 26%]
+.F
+=================================== FAILURES ===================================
+_________ test_original_finance_solution_and_payload_hashes_preserved __________
+
+    def test_original_finance_solution_and_payload_hashes_preserved():
+        # Holdout archive content is not opened. Hash-only payload verification applies all splits.
+        origin=ROOT.parents[1]  # Immutable source audit archive, not model-visible workspace.
+        receipt=json.loads((origin/'audits/contract-v2/migration.json').read_text())
+        with tarfile.open(origin/'audits/contract-v2/v1-task-artifacts.tar.gz') as archive:
+            for member in archive.getmembers():
+                if '/holdout/' in member.name or not member.name.endswith('/solution/gold.json'): continue
+>               before=json.load(archive.extractfile(member));after=json.loads((ROOT/member.name).read_text())
+                                                                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tools/tests/test_independent_snapshot.py:293: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/usr/lib/python3.12/pathlib.py:1029: in read_text
+    with self.open(mode='r', encoding=encoding, errors=errors) as f:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = PosixPath('/home/doanlong/extra/benchmark/experiments/finance-v45-study/tasks/main/fin-l1-macro-131/solution/gold.json')
+mode = 'r', buffering = -1, encoding = 'locale', errors = None, newline = None
+
+    def open(self, mode='r', buffering=-1, encoding=None,
+             errors=None, newline=None):
+        """
+        Open the file pointed by this path and return a file object, as
+        the built-in open() function does.
+        """
+        if "b" not in mode:
+            encoding = io.text_encoding(encoding)
+>       return io.open(self, mode, buffering, encoding, errors, newline)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       FileNotFoundError: [Errno 2] No such file or directory: '/home/doanlong/extra/benchmark/experiments/finance-v45-study/tasks/main/fin-l1-macro-131/solution/gold.json'
+
+/usr/lib/python3.12/pathlib.py:1015: FileNotFoundError
+=========================== short test summary info ============================
+FAILED tools/tests/test_independent_snapshot.py::test_original_finance_solution_and_payload_hashes_preserved
+!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!
+1 failed, 145 passed in 20.02s

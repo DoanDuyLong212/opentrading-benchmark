@@ -1,0 +1,27 @@
+{
+ "snapshot_date": "2026-11-01",
+ "note": "Envelope MCP ghi lúc tạo task. Key = mã payload nội bộ; envelope giữ nguyên data+provenance+availability.",
+ "tools": {
+  "val:KBC": {
+   "tool": "valuation_run",
+   "params": {
+    "symbol": "KBC"
+   },
+   "envelope": {
+    "data": {
+     "symbol": "KBC",
+     "price": 26000,
+     "eps": 2478.54,
+     "bvps": 28378.77,
+     "per": 10.49,
+     "pb": 0.92
+    },
+    "provenance": {
+     "source": "computed-local",
+     "as_of": "2026-11-01T23:29:11.322635+07:00"
+    },
+    "availability": "available"
+   }
+  }
+ }
+}

@@ -1,0 +1,57 @@
+{
+  "task_id": "fin-l2-ratio-157",
+  "scoring": "value",
+  "solution": {
+    "value": 9.43
+  },
+  "as_of": "2026-11-01T23:58:39.328698+07:00",
+  "split": "main",
+  "expects": [
+    {
+      "type": "value",
+      "path": "value",
+      "gold": 9.43,
+      "tol": {
+        "rel": 0.005
+      }
+    },
+    {
+      "type": "unit",
+      "path": "unit",
+      "accept": [
+        "x",
+        "lần"
+      ]
+    },
+    {
+      "type": "str",
+      "path": "source",
+      "accept": [
+        "valuation_run"
+      ]
+    }
+  ],
+  "contract_version": 2,
+  "provenance_contract": [
+    {
+      "tool": "valuation_run",
+      "source": "computed-local",
+      "as_of": "2026-11-01T23:58:39.328698+07:00",
+      "matched_entry_id": "val:CMG",
+      "response_sha256": "026d29ad08efbac433683c7fdb816e6c4a9c114292807d0b9ee326a3d130f221"
+    }
+  ],
+  "payload_sha256": "735dac62ede355f823bee7f1445e7ff07c348251d5836e1e3dba69245d14c03f",
+  "provenance_catalog": [
+    {
+      "tool": "valuation_run",
+      "source": "computed-local",
+      "as_of": "2026-11-01T23:58:39.328698+07:00",
+      "matched_entry_id": "val:CMG",
+      "response_sha256": "026d29ad08efbac433683c7fdb816e6c4a9c114292807d0b9ee326a3d130f221"
+    }
+  ],
+  "required_payload_keys": [
+    "val:CMG"
+  ]
+}

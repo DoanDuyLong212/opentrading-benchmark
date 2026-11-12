@@ -208,14 +208,10 @@ def gdp_pick(env, period):
 
 
 # === thân oracle ===
-rows = env('peer:banks_p')["data"]["rows"]
+rows = env('peer:banks_p')['data']['rows']
 for r in rows:
-    s = gold["solution"][r["symbol"]]
-    check(r["symbol"] + "_pe", float(r["p_e"]), s["pe"])
-    check(r["symbol"] + "_pb", float(r["p_b"]), s["pb"])
-    check(r["symbol"] + "_roe", float(r["roe"]), s["roe"])
-rk = [r["symbol"] for r in sorted(rows, key=lambda x: -x["roe"])]
-check("ranking", rk, gold["solution"]["ranking"])
+    check(r['symbol'], float(r['p_b']), gold['solution'][r['symbol']])
+check('ranking', [r['symbol'] for r in sorted(rows, key=lambda r: r['p_b'])], gold['solution']['ranking'])
 
 if problems:
     print("ORACLE MISMATCH:")

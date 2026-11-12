@@ -1,0 +1,45 @@
+{
+  "id": "chatcmpl-00574491-c285-4989-a668-383466c0ac7d",
+  "choices": [
+    {
+      "index": 0,
+      "message": {
+        "content": null,
+        "tool_calls": [
+          {
+            "id": "call-92334593-a05b-4e3a-90db-2fd56ace5bec",
+            "type": "function",
+            "function": {
+              "name": "mcp__opentrading__vn_quote_history",
+              "arguments": "{\"symbol\":\"HPG\"}"
+            }
+          }
+        ],
+        "role": "assistant",
+        "reasoning_content": null
+      },
+      "finish_reason": "tool_calls",
+      "logprobs": null
+    }
+  ],
+  "created": 1793848638,
+  "model": "nvidia/nemotron-3.5-bolt-e4b",
+  "service_tier": null,
+  "system_fingerprint": null,
+  "object": "chat.completion",
+  "usage": {
+    "prompt_tokens": 3371,
+    "completion_tokens": 25,
+    "total_tokens": 3396,
+    "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 3360
+    },
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": null,
+      "audio_tokens": null,
+      "reasoning_tokens": 0,
+      "rejected_prediction_tokens": null
+    }
+  }
+}

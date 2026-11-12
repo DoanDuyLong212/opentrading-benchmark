@@ -1,54 +1,149 @@
 {
- "task_id": "fin-l3-tech-multi-927",
- "scoring": "value",
- "solution": {
-  "count": 2
- },
- "as_of": "2026-11-01T23:26:05.000000+07:00",
- "split": "holdout",
- "expects": [
-  {
-   "type": "value",
-   "path": "values.count",
-   "gold": 2,
-   "tol": {
-    "abs": 0.001
-   }
+  "task_id": "fin-l3-tech-multi-927",
+  "scoring": "value",
+  "solution": {
+    "symbol": "TPB",
+    "rsi14": 57.88
   },
-  {
-   "type": "period",
-   "path": "period",
-   "accept": [
-    "30/10",
-    "30-10",
-    "30.10",
-    "2026-10-30",
-    "phiên gần nhất",
-    "gần nhất"
-   ]
-  },
-  {
-   "type": "str",
-   "path": "source",
-   "accept": [
-    "signals_technical"
-   ]
-  },
-  {
-   "type": "evidence",
-   "path": "note",
-   "paths": [
-    "note"
-   ],
-   "numbers": [
-    48.89,
-    43.79,
-    43.79,
-    53.93,
-    57.88
-   ],
-   "strings": [],
-   "min_hits": 2
-  }
- ]
+  "as_of": "2026-11-01T23:26:05.000000+07:00",
+  "split": "holdout",
+  "expects": [
+    {
+      "type": "tokens",
+      "path": "values.symbol",
+      "accept": [
+        "TPB"
+      ],
+      "reject": [
+        "ACB",
+        "STB",
+        "VPB",
+        "HDB"
+      ]
+    },
+    {
+      "type": "value",
+      "path": "values.rsi14",
+      "gold": 57.88,
+      "tol": {
+        "abs": 0.1
+      }
+    },
+    {
+      "type": "period",
+      "path": "period",
+      "accept": [
+        "30/10",
+        "30-10",
+        "30.10",
+        "2026-10-30"
+      ]
+    },
+    {
+      "type": "str",
+      "path": "source",
+      "accept": [
+        "signals_technical"
+      ]
+    },
+    {
+      "type": "evidence",
+      "path": "note",
+      "paths": [
+        "note"
+      ],
+      "numbers": [
+        48.89,
+        43.79,
+        43.79,
+        53.93,
+        57.88
+      ],
+      "min_hits": 3
+    }
+  ],
+  "contract_version": 2,
+  "provenance_contract": [
+    {
+      "tool": "signals_technical",
+      "source": "computed-local",
+      "as_of": "2026-11-01T23:26:05.000000+07:00",
+      "matched_entry_id": "tech:ACB",
+      "response_sha256": "25547a459618ace734708d1be4012b57e0acbc817d0551cfd6910b4fca7a8212"
+    },
+    {
+      "tool": "signals_technical",
+      "source": "computed-local",
+      "as_of": "2026-11-01T23:26:05.000000+07:00",
+      "matched_entry_id": "tech:STB",
+      "response_sha256": "604a0964f250b36adc40ffe3624af229ab6faec20a5daa1b99b5b7b945f245fa"
+    },
+    {
+      "tool": "signals_technical",
+      "source": "computed-local",
+      "as_of": "2026-11-01T23:26:05.000000+07:00",
+      "matched_entry_id": "tech:VPB",
+      "response_sha256": "585a3b4403cd579c03a84403b490087bef69f77629af5fe1dc01aefe12f6d5e0"
+    },
+    {
+      "tool": "signals_technical",
+      "source": "computed-local",
+      "as_of": "2026-11-01T23:26:05.000000+07:00",
+      "matched_entry_id": "tech:HDB",
+      "response_sha256": "9381929fe58f613ca2ae083727727a8b14740d173f79d82121198777b8ad6254"
+    },
+    {
+      "tool": "signals_technical",
+      "source": "computed-local",
+      "as_of": "2026-11-01T23:26:05.000000+07:00",
+      "matched_entry_id": "tech:TPB",
+      "response_sha256": "a5ba768c12606ec3aa41d78ff11ee4cdaad448ef5d6a2c1a3713a5cf92526a64"
+    }
+  ],
+  "payload_sha256": "7b9ce4b4d0ce09d948905ce544f253c6cac93ed3819a068ee461bdac85ce5715",
+  "provenance_catalog": [
+    {
+      "tool": "signals_technical",
+      "source": "computed-local",
+      "as_of": "2026-11-01T23:26:05.000000+07:00",
+      "matched_entry_id": "tech:ACB",
+      "response_sha256": "25547a459618ace734708d1be4012b57e0acbc817d0551cfd6910b4fca7a8212"
+    },
+    {
+      "tool": "signals_technical",
+      "source": "computed-local",
+      "as_of": "2026-11-01T23:26:05.000000+07:00",
+      "matched_entry_id": "tech:STB",
+      "response_sha256": "604a0964f250b36adc40ffe3624af229ab6faec20a5daa1b99b5b7b945f245fa"
+    },
+    {
+      "tool": "signals_technical",
+      "source": "computed-local",
+      "as_of": "2026-11-01T23:26:05.000000+07:00",
+      "matched_entry_id": "tech:VPB",
+      "response_sha256": "585a3b4403cd579c03a84403b490087bef69f77629af5fe1dc01aefe12f6d5e0"
+    },
+    {
+      "tool": "signals_technical",
+      "source": "computed-local",
+      "as_of": "2026-11-01T23:26:05.000000+07:00",
+      "matched_entry_id": "tech:HDB",
+      "response_sha256": "9381929fe58f613ca2ae083727727a8b14740d173f79d82121198777b8ad6254"
+    },
+    {
+      "tool": "signals_technical",
+      "source": "computed-local",
+      "as_of": "2026-11-01T23:26:05.000000+07:00",
+      "matched_entry_id": "tech:TPB",
+      "response_sha256": "a5ba768c12606ec3aa41d78ff11ee4cdaad448ef5d6a2c1a3713a5cf92526a64"
+    }
+  ],
+  "required_payload_keys": [
+    "tech:ACB",
+    "tech:HDB",
+    "tech:STB",
+    "tech:TPB",
+    "tech:VPB"
+  ],
+  "notes": "Holdout replacement 2026-11-10: previous question was a verbatim copy of a main task; same frozen payload, new question not asked by any main task."
 }

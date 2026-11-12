@@ -1,0 +1,149 @@
+{
+  "task_id": "fin-m4-port-525",
+  "scoring": "value",
+  "solution": {
+    "market_value": 176812000.0,
+    "cost": 202500000.0,
+    "pnl": -25688000.0,
+    "pnl_pct": -12.6854
+  },
+  "split": "main",
+  "expects": [
+    {
+      "type": "value",
+      "path": "values.market_value",
+      "gold": 176812000.0,
+      "tol": {
+        "rel": 0.001
+      }
+    },
+    {
+      "type": "value",
+      "path": "values.cost",
+      "gold": 202500000.0,
+      "tol": {
+        "rel": 0.001
+      }
+    },
+    {
+      "type": "value",
+      "path": "values.pnl",
+      "gold": -25688000.0,
+      "tol": {
+        "rel": 0.001
+      }
+    },
+    {
+      "type": "value",
+      "path": "values.pnl_pct",
+      "gold": -12.6854,
+      "tol": {
+        "abs": 0.05
+      }
+    },
+    {
+      "type": "unit",
+      "path": "unit",
+      "accept": [
+        "đồng",
+        "VND",
+        "vnđ"
+      ]
+    },
+    {
+      "type": "str",
+      "path": "source",
+      "accept": [
+        "vn_quote_history"
+      ]
+    }
+  ],
+  "contract_version": 2,
+  "stratum": "memory",
+  "tier": "M4",
+  "subtier": "M4",
+  "memory_construct": "M4",
+  "notes": "Native-memory stratum (amendment 2026-11-11 d).",
+  "provenance_contract": [
+    {
+      "tool": "vn_quote_history",
+      "source": "vnstock",
+      "as_of": "2026-11-11T09:41:32.145602+07:00",
+      "matched_entry_id": "hist:MBB",
+      "response_sha256": "a8d2ca618df45eff0dc3826790cb4a89f8b08085bb7861ef4f5afc040b3945ff"
+    },
+    {
+      "tool": "vn_quote_history",
+      "source": "vnstock",
+      "as_of": "2026-11-11T09:41:32.145602+07:00",
+      "matched_entry_id": "hist:TCB",
+      "response_sha256": "bfe2f16c18d97e087a2b9acd246f13981dae8415c140d13babf43d7ec9b35f81"
+    },
+    {
+      "tool": "vn_quote_history",
+      "source": "vnstock",
+      "as_of": "2026-11-11T09:41:32.145602+07:00",
+      "matched_entry_id": "hist:VJC",
+      "response_sha256": "e50bd26f8b82a340a64f1d9716b0cc5c018938a3c8c4c953cc78314ad42ac83a"
+    },
+    {
+      "tool": "vn_quote_history",
+      "source": "vnstock",
+      "as_of": "2026-11-11T09:41:32.145602+07:00",
+      "matched_entry_id": "hist:POW",
+      "response_sha256": "5012098ec8d22ef7aacfd5ce7fb7126fa4056f9a449ce9eb0639a3190b6b9041"
+    },
+    {
+      "tool": "vn_quote_history",
+      "source": "vnstock",
+      "as_of": "2026-11-11T09:41:32.145602+07:00",
+      "matched_entry_id": "hist:GVR",
+      "response_sha256": "4e0d8d1035760cb3417372b4896c8ea2ec28190bdc89c3bd5744371511d504d2"
+    }
+  ],
+  "provenance_catalog": [
+    {
+      "tool": "vn_quote_history",
+      "source": "vnstock",
+      "as_of": "2026-11-11T09:41:32.145602+07:00",
+      "matched_entry_id": "hist:MBB",
+      "response_sha256": "a8d2ca618df45eff0dc3826790cb4a89f8b08085bb7861ef4f5afc040b3945ff"
+    },
+    {
+      "tool": "vn_quote_history",
+      "source": "vnstock",
+      "as_of": "2026-11-11T09:41:32.145602+07:00",
+      "matched_entry_id": "hist:TCB",
+      "response_sha256": "bfe2f16c18d97e087a2b9acd246f13981dae8415c140d13babf43d7ec9b35f81"
+    },
+    {
+      "tool": "vn_quote_history",
+      "source": "vnstock",
+      "as_of": "2026-11-11T09:41:32.145602+07:00",
+      "matched_entry_id": "hist:VJC",
+      "response_sha256": "e50bd26f8b82a340a64f1d9716b0cc5c018938a3c8c4c953cc78314ad42ac83a"
+    },
+    {
+      "tool": "vn_quote_history",
+      "source": "vnstock",
+      "as_of": "2026-11-11T09:41:32.145602+07:00",
+      "matched_entry_id": "hist:POW",
+      "response_sha256": "5012098ec8d22ef7aacfd5ce7fb7126fa4056f9a449ce9eb0639a3190b6b9041"
+    },
+    {
+      "tool": "vn_quote_history",
+      "source": "vnstock",
+      "as_of": "2026-11-11T09:41:32.145602+07:00",
+      "matched_entry_id": "hist:GVR",
+      "response_sha256": "4e0d8d1035760cb3417372b4896c8ea2ec28190bdc89c3bd5744371511d504d2"
+    }
+  ],
+  "payload_sha256": "129be1565a5b70136ddaee3bac1c8ce7dce7c70cdc8b374cd6dabe9ba7fb3643",
+  "required_payload_keys": [
+    "hist:GVR",
+    "hist:MBB",
+    "hist:POW",
+    "hist:TCB",
+    "hist:VJC"
+  ]
+}

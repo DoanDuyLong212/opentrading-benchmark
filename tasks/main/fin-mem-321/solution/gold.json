@@ -1,0 +1,44 @@
+{
+  "scoring": "value",
+  "solution": {
+    "pass": [
+      "KBC",
+      "NLG",
+      "PDR"
+    ]
+  },
+  "expects": [
+    {
+      "type": "set",
+      "path": "values.pass",
+      "gold": [
+        "KBC",
+        "NLG",
+        "PDR"
+      ]
+    },
+    {
+      "type": "str",
+      "path": "source",
+      "accept": [
+        "peer_compare"
+      ]
+    }
+  ],
+  "notes": "Ràng buộc: P/B<1.5 AND ROE>4%. KDH ✗ P/B 1.67; NLG ✓ 0.79/6.28; DXG ✗ ROE 2.95; PDR ✓ 1.48 (near-miss 0.02)/4.41; KBC ✓ 1.25/9.7.",
+  "provenance_contract": [
+    {
+      "tool": "peer_compare",
+      "source": "vnstock",
+      "as_of": "2026-11-01T23:14:30.802857+07:00",
+      "matched_entry_id": "peer:bds_p",
+      "response_sha256": "ef36e0e04adedd781ea574a1b2784fb46ae01428e2eaf98c8cec9246f1524aa5"
+    }
+  ],
+  "required_payload_keys": [
+    "peer:bds_p"
+  ],
+  "task_id": "fin-mem-321",
+  "payload_sha256": "08ae987b15ccb3007783ac26fac5024334b1f763ed5fb961f5395ade5fe30ed7",
+  "memory_construct": "cross_session_recall_or_update"
+}

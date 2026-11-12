@@ -1,0 +1,22 @@
+{
+  "schema": "guarded-memory-only-sync-v45-batch3",
+  "dry_run": false,
+  "main_before": 212,
+  "main_after": 230,
+  "holdout_before": 50,
+  "holdout_after": 60,
+  "pilot_after": 25,
+  "new_tasks": 28,
+  "updated_tasks": 13,
+  "holdout_access": "batch-3 holdout tasks ARE the sync payload (no external holdout inspection)",
+  "review_sha256": "0fe6a8ca0919a89ca301242673269e6ffe63af9efb931631f5d3149a228b8b85",
+  "audit_sha256": "474be1311cfb1026031c37b49279915c062bf7bfa43e83b984c40b1fed7eb6df",
+  "base200_sha256": "ebb865f9cf7f86f273dc1f98a4a0c46a5f0a7b248015217311a9cbd560f06e9c",
+  "base_holdout_sha256": "fbf80e97a0055eca1d0fa3d88746e520a223f5c30a9c73979a5191c1b01f3b62",
+  "counts": {
+    "main": 230,
+    "holdout": 60,
+    "pilot": 25
+  },
+  "backup": "/home/doanlong/extra/benchmark/audits/financial-memory-v45-batch3/canonical-root-backup-1794245467405536453"
+}

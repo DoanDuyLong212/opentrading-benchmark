@@ -1,0 +1,75 @@
+{
+  "task_id": "fin-l1-macro-140",
+  "scoring": "value",
+  "solution": {
+    "value": 3710894.93
+  },
+  "as_of": "2026-11-01T23:04:21.804723+07:00",
+  "split": "main",
+  "expects": [
+    {
+      "type": "value",
+      "path": "value",
+      "gold": 3710894.93,
+      "tol": {
+        "rel": 0.005
+      }
+    },
+    {
+      "type": "unit",
+      "path": "unit",
+      "accept": [
+        "tỷ đồng",
+        "tỷ đ",
+        "tỷ"
+      ]
+    },
+    {
+      "type": "period",
+      "path": "period",
+      "accept": [
+        "Q4/2025",
+        "quý 4/2025",
+        "q4 2025",
+        "q4/25"
+      ]
+    },
+    {
+      "type": "str",
+      "path": "source",
+      "accept": [
+        "vs_indicator_data"
+      ]
+    }
+  ],
+  "contract_version": 2,
+  "provenance_contract": [
+    {
+      "tool": "vs_indicator_data",
+      "source": "vietstock",
+      "as_of": "2026-11-01T23:04:21.804723+07:00",
+      "matched_entry_id": "gdp:full",
+      "response_sha256": "fff022c59ca121b36d95b03b146b72d40f4a88b3037425e0c7edfebe35894be8"
+    }
+  ],
+  "payload_sha256": "d8bc0abecd0495db6c9b79b9469ef73d76a229eec064aafe83770002f2fd3277",
+  "provenance_catalog": [
+    {
+      "tool": "vs_indicator_data",
+      "source": "vietstock",
+      "as_of": "2026-11-01T23:04:21.216514+07:00",
+      "matched_entry_id": "cpi:full",
+      "response_sha256": "abe5b0042af2cf14991be86c763d836f186f8c8dedbc873e4abee2c807fa4078"
+    },
+    {
+      "tool": "vs_indicator_data",
+      "source": "vietstock",
+      "as_of": "2026-11-01T23:04:21.804723+07:00",
+      "matched_entry_id": "gdp:full",
+      "response_sha256": "fff022c59ca121b36d95b03b146b72d40f4a88b3037425e0c7edfebe35894be8"
+    }
+  ],
+  "required_payload_keys": [
+    "gdp:full"
+  ]
+}

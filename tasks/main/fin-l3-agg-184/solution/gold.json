@@ -1,89 +1,112 @@
 {
- "task_id": "fin-l3-agg-184",
- "scoring": "value",
- "solution": {
-  "PNJ": 15500.0,
-  "FRT": 148700.0,
-  "KDC": 50200.0,
-  "MSN": 70000.0,
-  "SBT": 20700.0,
-  "mean": 61020.0
- },
- "as_of": "2026-11-01T23:04:26.087808+07:00",
- "split": "main",
- "expects": [
-  {
-   "type": "value",
-   "path": "values.PNJ",
-   "gold": 15500.0,
-   "tol": {
-    "rel": 0.005
-   }
+  "task_id": "fin-l3-agg-184",
+  "scoring": "value",
+  "solution": {
+    "PNJ": 15500.0,
+    "FRT": 148700.0,
+    "KDC": 50200.0,
+    "MSN": 70000.0,
+    "SBT": 20700.0,
+    "mean": 61020.0
   },
-  {
-   "type": "value",
-   "path": "values.FRT",
-   "gold": 148700.0,
-   "tol": {
-    "rel": 0.005
-   }
-  },
-  {
-   "type": "value",
-   "path": "values.KDC",
-   "gold": 50200.0,
-   "tol": {
-    "rel": 0.005
-   }
-  },
-  {
-   "type": "value",
-   "path": "values.MSN",
-   "gold": 70000.0,
-   "tol": {
-    "rel": 0.005
-   }
-  },
-  {
-   "type": "value",
-   "path": "values.SBT",
-   "gold": 20700.0,
-   "tol": {
-    "rel": 0.005
-   }
-  },
-  {
-   "type": "value",
-   "path": "values.mean",
-   "gold": 61020.0,
-   "tol": {
-    "rel": 0.005
-   }
-  },
-  {
-   "type": "unit",
-   "path": "unit",
-   "accept": [
-    "đồng",
-    "VND"
-   ]
-  },
-  {
-   "type": "period",
-   "path": "period",
-   "accept": [
-    "30/10",
-    "30-10",
-    "30.10",
-    "2026-10-30"
-   ]
-  },
-  {
-   "type": "str",
-   "path": "source",
-   "accept": [
-    "vn_equity_quote_batch"
-   ]
-  }
- ]
+  "as_of": "2026-11-01T23:04:26.087808+07:00",
+  "split": "main",
+  "expects": [
+    {
+      "type": "value",
+      "path": "values.PNJ",
+      "gold": 15500.0,
+      "tol": {
+        "rel": 0.005
+      }
+    },
+    {
+      "type": "value",
+      "path": "values.FRT",
+      "gold": 148700.0,
+      "tol": {
+        "rel": 0.005
+      }
+    },
+    {
+      "type": "value",
+      "path": "values.KDC",
+      "gold": 50200.0,
+      "tol": {
+        "rel": 0.005
+      }
+    },
+    {
+      "type": "value",
+      "path": "values.MSN",
+      "gold": 70000.0,
+      "tol": {
+        "rel": 0.005
+      }
+    },
+    {
+      "type": "value",
+      "path": "values.SBT",
+      "gold": 20700.0,
+      "tol": {
+        "rel": 0.005
+      }
+    },
+    {
+      "type": "value",
+      "path": "values.mean",
+      "gold": 61020.0,
+      "tol": {
+        "rel": 0.005
+      }
+    },
+    {
+      "type": "unit",
+      "path": "unit",
+      "accept": [
+        "đồng",
+        "VND"
+      ]
+    },
+    {
+      "type": "period",
+      "path": "period",
+      "accept": [
+        "30/10",
+        "30-10",
+        "30.10",
+        "2026-10-30"
+      ]
+    },
+    {
+      "type": "str",
+      "path": "source",
+      "accept": [
+        "vn_equity_quote_batch"
+      ]
+    }
+  ],
+  "contract_version": 2,
+  "provenance_contract": [
+    {
+      "tool": "vn_equity_quote_batch",
+      "source": "vnstock",
+      "as_of": "2026-11-01T23:04:26.087808+07:00",
+      "matched_entry_id": "batch:cons1",
+      "response_sha256": "e5c197abfd2786abac040b9785aa74342d2d73dbb121ba869183dda41a903023"
+    }
+  ],
+  "payload_sha256": "3aca8555c0c04c22fef28f0832df46393a5b11e1398bf0698b432abeba0376ce",
+  "provenance_catalog": [
+    {
+      "tool": "vn_equity_quote_batch",
+      "source": "vnstock",
+      "as_of": "2026-11-01T23:04:26.087808+07:00",
+      "matched_entry_id": "batch:cons1",
+      "response_sha256": "e5c197abfd2786abac040b9785aa74342d2d73dbb121ba869183dda41a903023"
+    }
+  ],
+  "required_payload_keys": [
+    "batch:cons1"
+  ]
 }

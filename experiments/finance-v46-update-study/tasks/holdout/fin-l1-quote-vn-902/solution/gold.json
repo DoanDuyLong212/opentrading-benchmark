@@ -1,0 +1,69 @@
+{
+  "task_id": "fin-l1-quote-vn-902",
+  "scoring": "value",
+  "solution": {
+    "value": 9.3,
+    "last_t": "2026-10-30"
+  },
+  "as_of": "2026-11-01T22:37:33.997151+07:00",
+  "split": "holdout",
+  "expects": [
+    {
+      "type": "unit",
+      "path": "unit",
+      "accept": [
+        "nghìn đồng",
+        "nghìn đ",
+        "k đồng"
+      ]
+    },
+    {
+      "type": "value",
+      "path": "value",
+      "gold": 9.3,
+      "tol": {
+        "rel": 0.005
+      }
+    },
+    {
+      "type": "period",
+      "path": "period",
+      "accept": [
+        "30/10",
+        "30-10",
+        "30.10",
+        "2026-10-30"
+      ]
+    },
+    {
+      "type": "str",
+      "path": "source",
+      "accept": [
+        "vn_quote_history"
+      ]
+    }
+  ],
+  "contract_version": 2,
+  "provenance_contract": [
+    {
+      "tool": "vn_quote_history",
+      "source": "vnstock",
+      "as_of": "2026-11-01T22:37:33.997151+07:00",
+      "matched_entry_id": "vnq:HHV",
+      "response_sha256": "7d81e7cc616a8fab05297215610430fe317b6c3beac6a46a70e5d682658f5081"
+    }
+  ],
+  "payload_sha256": "e394f58db1c7902f2a69029c4644dd13df80b8408c1dcbfe5766ae84e24ac8fe",
+  "provenance_catalog": [
+    {
+      "tool": "vn_quote_history",
+      "source": "vnstock",
+      "as_of": "2026-11-01T22:37:33.997151+07:00",
+      "matched_entry_id": "vnq:HHV",
+      "response_sha256": "7d81e7cc616a8fab05297215610430fe317b6c3beac6a46a70e5d682658f5081"
+    }
+  ],
+  "required_payload_keys": [
+    "vnq:HHV"
+  ]
+}

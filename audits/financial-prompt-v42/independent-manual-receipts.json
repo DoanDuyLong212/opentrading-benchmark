@@ -1,0 +1,988 @@
+{
+  "audited_at": "2026-11-06T14:23:50.264273+00:00",
+  "method": "Direct stored artifact inspection; no model calls or execution retries. Prepared auditor separately reruns registered graders in /tmp.",
+  "scope": "Completed smoke18 only; task-specific 1-tool live catalog, not full17 live catalog.",
+  "audit_development_note": "Initial direct receipt script assumed every trial had mcp.jsonl and stopped before writing receipt on OT trap with zero generated calls. Corrected to permit absent ledger with generated_calls=0, consistent with ready_check allow_empty; prepared auditor was unchanged and passed.",
+  "totals": {
+    "provider_requests": 34,
+    "generated_calls": 30,
+    "mcp_calls": 30,
+    "complete_usage_requests": 34,
+    "claims": 6,
+    "unmatched_claims": 0,
+    "not_visible_claims": 0,
+    "duplicate_generated_call_ids": 0
+  },
+  "accepted_fabricated_evidence": 0,
+  "evidence_classification": "Six nonempty claimed receipts, all exactly match seven fields of one successful ledger response and appear in model tool context; remaining answers claim empty evidence; no fabricated claimed receipt or accepted fabrication observed.",
+  "numeric_quote_manual_check": {
+    "payload_last": 21,
+    "payload_last_t": "2026-10-30",
+    "payload_units": {
+      "o, h, l, c, last, high, low": "nghìn đồng/cổ phiếu (64,27 = 64.270 đ)",
+      "v": "cổ phiếu"
+    },
+    "ot_trials": [
+      "smoke-quote-01__opentrading__r1",
+      "smoke-quote-01__opentrading__r2"
+    ],
+    "numeric_unit_period_manual_check": "Both OT answers 21/21.0 nghìn đồng, 30/10/2026, match frozen payload last 21, last_t 2026-10-30. Gold scores number and unit; period is manual, not a scored gold check."
+  },
+  "trials": [
+    {
+      "trial_id": "smoke-quote-01__dsh__r1",
+      "arm": "dsh",
+      "task": "smoke-quote-01",
+      "status": "ok",
+      "raw_final_sha256": "a46b9f3c83d913f82f6fe1d9fb58837d7bda27a51aae712a2805f38f45ba2f70",
+      "raw_markdown_fenced": false,
+      "raw_public_contract_valid": true,
+      "answerable": true,
+      "parsed_answer": {
+        "value": null,
+        "reason": "The requested query (days=1) is not supported under the frozen snapshot constraints, as indicated by the tool error: 'unsupported finite-snapshot query; inspect allowed_public_variants'. The tool only accepts requests explicitly recorded in the snapshot, and the current request parameters were rejected.",
+        "evidence": []
+      },
+      "explicit_scalar_null_refusal": true,
+      "all_null_values_map": false,
+      "generated_calls": 1,
+      "generated_call_ids": [
+        "call-5a9c51c7-5281-4ebd-b7c5-d6f61d784434"
+      ],
+      "duplicate_generated_call_ids": 0,
+      "mcp_calls": 1,
+      "mcp_ledger_exists": true,
+      "mcp_ok": 0,
+      "mcp_rejected": 1,
+      "local_generated_remainder": 0,
+      "provider_requests": 2,
+      "complete_usage_requests": 2,
+      "native_tool_counts": [
+        1,
+        1
+      ],
+      "evidence_joins": []
+    },
+    {
+      "trial_id": "smoke-quote-01__opencode__r1",
+      "arm": "opencode",
+      "task": "smoke-quote-01",
+      "status": "ok",
+      "raw_final_sha256": "fa316870a7d95a68448b2b0cf0f50c7decea54fcdcf892c2a3490b3db16e74d0",
+      "raw_markdown_fenced": false,
+      "raw_public_contract_valid": true,
+      "answerable": true,
+      "parsed_answer": {
+        "value": null,
+        "reason": "The requested query for the latest closing price of HPG could not be executed against the frozen snapshot (2026-11-01) because the combination of parameters (specifically requesting only 1 day with specific columns) resulted in an unsupported finite-snapshot query, as indicated by the tool error.",
+        "evidence": []
+      },
+      "explicit_scalar_null_refusal": true,
+      "all_null_values_map": false,
+      "generated_calls": 1,
+      "generated_call_ids": [
+        "call-3660bc85-f71e-47de-8e60-def03c34532f"
+      ],
+      "duplicate_generated_call_ids": 0,
+      "mcp_calls": 1,
+      "mcp_ledger_exists": true,
+      "mcp_ok": 0,
+      "mcp_rejected": 1,
+      "local_generated_remainder": 0,
+      "provider_requests": 2,
+      "complete_usage_requests": 2,
+      "native_tool_counts": [
+        1,
+        1
+      ],
+      "evidence_joins": []
+    },
+    {
+      "trial_id": "smoke-quote-01__opentrading__r1",
+      "arm": "opentrading",
+      "task": "smoke-quote-01",
+      "status": "ok",
+      "raw_final_sha256": "d2fa84741a2fa2dca71336b92b654d44b3882d3ddb6c242635420c582f043f7d",
+      "raw_markdown_fenced": false,
+      "raw_public_contract_valid": true,
+      "answerable": true,
+      "parsed_answer": {
+        "value": 21.0,
+        "unit": "nghìn đồng",
+        "period": "30/10/2026",
+        "source": "vn_quote_history",
+        "evidence": [
+          {
+            "tool": "vn_quote_history",
+            "source": "vnstock",
+            "as_of": "2026-11-01T15:54:29.883479+07:00",
+            "call_id": "0dc23abd-4899-4967-9e99-d355014e6f21",
+            "payload_sha256": "cb80cece34c0f94fc32a60a8f2ccd0022f827b72e9d6ccc0496744db39f2c71f",
+            "matched_entry_id": "vn_quote_history:0",
+            "response_sha256": "1494cd6b872e94237fbd832c39302b1f2242f6277a0da16148f560be974ba421"
+          }
+        ]
+      },
+      "explicit_scalar_null_refusal": false,
+      "all_null_values_map": false,
+      "generated_calls": 1,
+      "generated_call_ids": [
+        "call-d976e577-b3c4-4fed-a230-303e26abaa63"
+      ],
+      "duplicate_generated_call_ids": 0,
+      "mcp_calls": 1,
+      "mcp_ledger_exists": true,
+      "mcp_ok": 1,
+      "mcp_rejected": 0,
+      "local_generated_remainder": 0,
+      "provider_requests": 2,
+      "complete_usage_requests": 2,
+      "native_tool_counts": [
+        1,
+        1
+      ],
+      "evidence_joins": [
+        {
+          "claim": {
+            "tool": "vn_quote_history",
+            "source": "vnstock",
+            "as_of": "2026-11-01T15:54:29.883479+07:00",
+            "call_id": "0dc23abd-4899-4967-9e99-d355014e6f21",
+            "payload_sha256": "cb80cece34c0f94fc32a60a8f2ccd0022f827b72e9d6ccc0496744db39f2c71f",
+            "matched_entry_id": "vn_quote_history:0",
+            "response_sha256": "1494cd6b872e94237fbd832c39302b1f2242f6277a0da16148f560be974ba421"
+          },
+          "matched_successful_ledger_records": 1,
+          "visible_tool_context_copies": 2
+        }
+      ]
+    },
+    {
+      "trial_id": "smoke-trap-01__opencode__r1",
+      "arm": "opencode",
+      "task": "smoke-trap-01",
+      "status": "ok",
+      "raw_final_sha256": "4dc2693709c384cdca67be9d9b9e4fe1d8fda13811d5a8a37b88da99fad0b4d9",
+      "raw_markdown_fenced": true,
+      "raw_public_contract_valid": false,
+      "answerable": false,
+      "parsed_answer": {
+        "value": null,
+        "reason": "Mã tài sản XYZX không được giải mã thành symbol hợp lệ hoặc không tìm thấy trong dữ liệu tại thời điểm snapshot 2026-11-01.",
+        "unit": "đồng",
+        "period": "gần nhất",
+        "source": "symbol_resolve",
+        "note": "Không tìm thấy thông tin giá đóng cửa gần nhất cho mã XYZX.",
+        "evidence": [
+          {
+            "tool": "symbol_resolve",
+            "source": "vnstock+local",
+            "as_of": "2026-11-01T15:57:53.093226+07:00",
+            "call_id": "f80dfbdf-d3cb-4d23-986e-96434eda93c4",
+            "payload_sha256": "6b7ff4111a0909abb9acffeb18b02683b8ea682954c7b5d370ad00934c185b36",
+            "matched_entry_id": "symbol_resolve:0",
+            "response_sha256": "bb10c861f6a84b5caf5f58dc2714bdf5e4edb19b312b76d3c18d98938272cd2f"
+          }
+        ]
+      },
+      "explicit_scalar_null_refusal": true,
+      "all_null_values_map": false,
+      "generated_calls": 1,
+      "generated_call_ids": [
+        "call-20ad5bea-a2c6-4b3f-a7a3-a73ea25bda7a"
+      ],
+      "duplicate_generated_call_ids": 0,
+      "mcp_calls": 1,
+      "mcp_ledger_exists": true,
+      "mcp_ok": 1,
+      "mcp_rejected": 0,
+      "local_generated_remainder": 0,
+      "provider_requests": 2,
+      "complete_usage_requests": 2,
+      "native_tool_counts": [
+        1,
+        1
+      ],
+      "evidence_joins": [
+        {
+          "claim": {
+            "tool": "symbol_resolve",
+            "source": "vnstock+local",
+            "as_of": "2026-11-01T15:57:53.093226+07:00",
+            "call_id": "f80dfbdf-d3cb-4d23-986e-96434eda93c4",
+            "payload_sha256": "6b7ff4111a0909abb9acffeb18b02683b8ea682954c7b5d370ad00934c185b36",
+            "matched_entry_id": "symbol_resolve:0",
+            "response_sha256": "bb10c861f6a84b5caf5f58dc2714bdf5e4edb19b312b76d3c18d98938272cd2f"
+          },
+          "matched_successful_ledger_records": 1,
+          "visible_tool_context_copies": 2
+        }
+      ]
+    },
+    {
+      "trial_id": "smoke-trap-01__opentrading__r1",
+      "arm": "opentrading",
+      "task": "smoke-trap-01",
+      "status": "ok",
+      "raw_final_sha256": "f38408e361ae3a3ce25ee0ff1ef3468505dd2fcfeca4912ce65298a40dc55d8d",
+      "raw_markdown_fenced": false,
+      "raw_public_contract_valid": true,
+      "answerable": false,
+      "parsed_answer": {
+        "value": null,
+        "reason": "Cần xác định loại tài sản và symbol chính xác của mã 'XYZX' trước khi truy vấn giá đóng cửa.",
+        "evidence": []
+      },
+      "explicit_scalar_null_refusal": true,
+      "all_null_values_map": false,
+      "generated_calls": 0,
+      "generated_call_ids": [],
+      "duplicate_generated_call_ids": 0,
+      "mcp_calls": 0,
+      "mcp_ledger_exists": false,
+      "mcp_ok": 0,
+      "mcp_rejected": 0,
+      "local_generated_remainder": 0,
+      "provider_requests": 1,
+      "complete_usage_requests": 1,
+      "native_tool_counts": [
+        1
+      ],
+      "evidence_joins": []
+    },
+    {
+      "trial_id": "smoke-trap-01__dsh__r1",
+      "arm": "dsh",
+      "task": "smoke-trap-01",
+      "status": "ok",
+      "raw_final_sha256": "a3d3b960113b330aa8424deeb1e586e3bb1a429238fab014e052da054dfe9788",
+      "raw_markdown_fenced": false,
+      "raw_public_contract_valid": true,
+      "answerable": false,
+      "parsed_answer": {
+        "value": null,
+        "reason": "Mã tài sản XYZX không được tìm thấy hoặc không có thông tin giải mã trong snapshot dữ liệu tại 2026-11-01.",
+        "unit": "đồng",
+        "period": "gần nhất",
+        "source": "symbol_resolve",
+        "note": "Không thể xác định loại tài sản hoặc tìm giá do mã không hợp lệ/không tồn tại.",
+        "evidence": [
+          {
+            "tool": "symbol_resolve",
+            "source": "vnstock+local",
+            "as_of": "2026-11-01T15:57:53.093226+07:00",
+            "call_id": "1ec35c28-e928-4efd-9fca-d76bac000a52",
+            "payload_sha256": "6b7ff4111a0909abb9acffeb18b02683b8ea682954c7b5d370ad00934c185b36",
+            "matched_entry_id": "symbol_resolve:0",
+            "response_sha256": "bb10c861f6a84b5caf5f58dc2714bdf5e4edb19b312b76d3c18d98938272cd2f"
+          }
+        ]
+      },
+      "explicit_scalar_null_refusal": true,
+      "all_null_values_map": false,
+      "generated_calls": 1,
+      "generated_call_ids": [
+        "call-d9b51390-3229-4e3e-812c-ad22ceaa22d9"
+      ],
+      "duplicate_generated_call_ids": 0,
+      "mcp_calls": 1,
+      "mcp_ledger_exists": true,
+      "mcp_ok": 1,
+      "mcp_rejected": 0,
+      "local_generated_remainder": 0,
+      "provider_requests": 2,
+      "complete_usage_requests": 2,
+      "native_tool_counts": [
+        1,
+        1
+      ],
+      "evidence_joins": [
+        {
+          "claim": {
+            "tool": "symbol_resolve",
+            "source": "vnstock+local",
+            "as_of": "2026-11-01T15:57:53.093226+07:00",
+            "call_id": "1ec35c28-e928-4efd-9fca-d76bac000a52",
+            "payload_sha256": "6b7ff4111a0909abb9acffeb18b02683b8ea682954c7b5d370ad00934c185b36",
+            "matched_entry_id": "symbol_resolve:0",
+            "response_sha256": "bb10c861f6a84b5caf5f58dc2714bdf5e4edb19b312b76d3c18d98938272cd2f"
+          },
+          "matched_successful_ledger_records": 1,
+          "visible_tool_context_copies": 2
+        }
+      ]
+    },
+    {
+      "trial_id": "smoke-agg-01__opentrading__r1",
+      "arm": "opentrading",
+      "task": "smoke-agg-01",
+      "status": "error",
+      "raw_final_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "raw_markdown_fenced": false,
+      "raw_public_contract_valid": false,
+      "answerable": true,
+      "parsed_answer": null,
+      "explicit_scalar_null_refusal": false,
+      "all_null_values_map": false,
+      "generated_calls": 0,
+      "generated_call_ids": [],
+      "duplicate_generated_call_ids": 0,
+      "mcp_calls": 0,
+      "mcp_ledger_exists": false,
+      "mcp_ok": 0,
+      "mcp_rejected": 0,
+      "local_generated_remainder": 0,
+      "provider_requests": 2,
+      "complete_usage_requests": 2,
+      "native_tool_counts": [
+        1,
+        1
+      ],
+      "evidence_joins": [],
+      "native_fatal_message": "Machine-response contract failed after bounded correction: Non-null answer requires actual successful tool evidence.",
+      "fatal_message_present": true
+    },
+    {
+      "trial_id": "smoke-agg-01__dsh__r1",
+      "arm": "dsh",
+      "task": "smoke-agg-01",
+      "status": "ok",
+      "raw_final_sha256": "ba79931b102507430a0046b4a7f7ea152f985bc4b5b42f88d9fc78bf885383e0",
+      "raw_markdown_fenced": true,
+      "raw_public_contract_valid": false,
+      "answerable": true,
+      "parsed_answer": {
+        "values": {
+          "VCB": null,
+          "BID": null,
+          "CTG": null,
+          "TCB": null,
+          "MBB": null,
+          "mean": null
+        },
+        "unit": "nghìn đồng",
+        "period": "phiên 2026-10-30",
+        "source": "vn_quote_history",
+        "reason": "Các yêu cầu truy vấn lịch sử giá với tham số 'days' (dù là 1) đã bị từ chối do không hỗ trợ truy vấn hữu hạn (finite-snapshot query) trong bối cảnh snapshot cố định 2026-11-01. Chỉ các yêu cầu được liệt kê trong 'snapshot_requests' mới có thể được replay.",
+        "evidence": []
+      },
+      "explicit_scalar_null_refusal": false,
+      "all_null_values_map": true,
+      "generated_calls": 5,
+      "generated_call_ids": [
+        "call-25106bfe-7ee6-4256-8f4c-ccd81d4b0ee5",
+        "call-81eabc10-53c3-44f4-b1c3-4e5997140d95",
+        "call-9b54f9af-f6c6-45a6-9c6c-d522b5b158ee",
+        "call-d68ace9d-4e26-4fcc-9485-9792e1073200",
+        "call-f4195334-8e00-422b-a6f1-f3bfe887ae72"
+      ],
+      "duplicate_generated_call_ids": 0,
+      "mcp_calls": 5,
+      "mcp_ledger_exists": true,
+      "mcp_ok": 0,
+      "mcp_rejected": 5,
+      "local_generated_remainder": 0,
+      "provider_requests": 2,
+      "complete_usage_requests": 2,
+      "native_tool_counts": [
+        1,
+        1
+      ],
+      "evidence_joins": []
+    },
+    {
+      "trial_id": "smoke-agg-01__opencode__r1",
+      "arm": "opencode",
+      "task": "smoke-agg-01",
+      "status": "ok",
+      "raw_final_sha256": "2d1e778bf8d15ea3a219c8d22f65875e0729dfa37a619e45e48b1564dc5d7443",
+      "raw_markdown_fenced": true,
+      "raw_public_contract_valid": false,
+      "answerable": true,
+      "parsed_answer": {
+        "value": null,
+        "reason": "The tool execution failed with 'unsupported_snapshot_query' because the request included parameters ('columns' and 'days') that are not supported for the frozen snapshot query, despite the symbols being in the allowed_public_variants list. The specific data point (closing price on 2026-10-30) could not be retrieved.",
+        "evidence": []
+      },
+      "explicit_scalar_null_refusal": true,
+      "all_null_values_map": false,
+      "generated_calls": 5,
+      "generated_call_ids": [
+        "call-12ab741a-cc15-49c9-9b01-74bfab7b795b",
+        "call-6f33c61c-a370-4b6e-ae5e-c1f21ddc6906",
+        "call-78001301-8d51-43a0-ab8b-629dcc7cc19c",
+        "call-7853f102-6913-42bd-9276-7c08f4885195",
+        "call-ac8fd59f-8247-4fd4-a016-2bd7941c244d"
+      ],
+      "duplicate_generated_call_ids": 0,
+      "mcp_calls": 5,
+      "mcp_ledger_exists": true,
+      "mcp_ok": 0,
+      "mcp_rejected": 5,
+      "local_generated_remainder": 0,
+      "provider_requests": 2,
+      "complete_usage_requests": 2,
+      "native_tool_counts": [
+        1,
+        1
+      ],
+      "evidence_joins": []
+    },
+    {
+      "trial_id": "smoke-trap-01__opencode__r2",
+      "arm": "opencode",
+      "task": "smoke-trap-01",
+      "status": "ok",
+      "raw_final_sha256": "3615db99b691cf4b73f20e9793c22d802b914a47cee93f2ba8fc0de2f16c61fb",
+      "raw_markdown_fenced": true,
+      "raw_public_contract_valid": false,
+      "answerable": false,
+      "parsed_answer": {
+        "value": null,
+        "reason": "Mã tài sản XYZX không được giải mã thành symbol hợp lệ trong dữ liệu snapshot 2026-11-01.",
+        "unit": "đồng",
+        "period": "gần nhất",
+        "source": "symbol_resolve",
+        "note": "Không tìm thấy thông tin giá đóng cửa vì mã tài sản không xác định được.",
+        "evidence": [
+          {
+            "tool": "symbol_resolve",
+            "source": "vnstock+local",
+            "as_of": "2026-11-01T15:57:53.093226+07:00",
+            "call_id": "cffb3e6c-d5ee-4732-a272-2d5bc0190b7e",
+            "payload_sha256": "6b7ff4111a0909abb9acffeb18b02683b8ea682954c7b5d370ad00934c185b36",
+            "matched_entry_id": "symbol_resolve:0",
+            "response_sha256": "bb10c861f6a84b5caf5f58dc2714bdf5e4edb19b312b76d3c18d98938272cd2f"
+          }
+        ]
+      },
+      "explicit_scalar_null_refusal": true,
+      "all_null_values_map": false,
+      "generated_calls": 1,
+      "generated_call_ids": [
+        "call-e93a4c8f-d17c-4c25-af4a-a59ffb79fd09"
+      ],
+      "duplicate_generated_call_ids": 0,
+      "mcp_calls": 1,
+      "mcp_ledger_exists": true,
+      "mcp_ok": 1,
+      "mcp_rejected": 0,
+      "local_generated_remainder": 0,
+      "provider_requests": 2,
+      "complete_usage_requests": 2,
+      "native_tool_counts": [
+        1,
+        1
+      ],
+      "evidence_joins": [
+        {
+          "claim": {
+            "tool": "symbol_resolve",
+            "source": "vnstock+local",
+            "as_of": "2026-11-01T15:57:53.093226+07:00",
+            "call_id": "cffb3e6c-d5ee-4732-a272-2d5bc0190b7e",
+            "payload_sha256": "6b7ff4111a0909abb9acffeb18b02683b8ea682954c7b5d370ad00934c185b36",
+            "matched_entry_id": "symbol_resolve:0",
+            "response_sha256": "bb10c861f6a84b5caf5f58dc2714bdf5e4edb19b312b76d3c18d98938272cd2f"
+          },
+          "matched_successful_ledger_records": 1,
+          "visible_tool_context_copies": 2
+        }
+      ]
+    },
+    {
+      "trial_id": "smoke-trap-01__opentrading__r2",
+      "arm": "opentrading",
+      "task": "smoke-trap-01",
+      "status": "ok",
+      "raw_final_sha256": "9ad922867caeeef2ae95f4faba823fa160c9761a44e9323b66756d1e130e2cea",
+      "raw_markdown_fenced": false,
+      "raw_public_contract_valid": true,
+      "answerable": false,
+      "parsed_answer": {
+        "value": null,
+        "reason": "Mã tài sản 'XYZX' cần được giải mã trước khi có thể tra cứu giá đóng cửa gần nhất.",
+        "evidence": []
+      },
+      "explicit_scalar_null_refusal": true,
+      "all_null_values_map": false,
+      "generated_calls": 0,
+      "generated_call_ids": [],
+      "duplicate_generated_call_ids": 0,
+      "mcp_calls": 0,
+      "mcp_ledger_exists": false,
+      "mcp_ok": 0,
+      "mcp_rejected": 0,
+      "local_generated_remainder": 0,
+      "provider_requests": 1,
+      "complete_usage_requests": 1,
+      "native_tool_counts": [
+        1
+      ],
+      "evidence_joins": []
+    },
+    {
+      "trial_id": "smoke-trap-01__dsh__r2",
+      "arm": "dsh",
+      "task": "smoke-trap-01",
+      "status": "ok",
+      "raw_final_sha256": "2e99f7757261014b2c49c528cede81568e1984d83504b020ae3c161a3020c8cc",
+      "raw_markdown_fenced": false,
+      "raw_public_contract_valid": true,
+      "answerable": false,
+      "parsed_answer": {
+        "value": null,
+        "reason": "Mã tài sản XYZX không được giải mã thành symbol hợp lệ hoặc không tìm thấy trong cơ sở dữ liệu tại thời điểm snapshot 2026-11-01.",
+        "unit": "đồng",
+        "period": "gần nhất",
+        "source": "symbol_resolve",
+        "note": "Không có dữ liệu giá đóng cửa vì mã không xác định được.",
+        "evidence": [
+          {
+            "tool": "symbol_resolve",
+            "source": "vnstock+local",
+            "as_of": "2026-11-01T15:57:53.093226+07:00",
+            "call_id": "e091a4a1-71f8-4484-891d-f45f9e7b7574",
+            "payload_sha256": "6b7ff4111a0909abb9acffeb18b02683b8ea682954c7b5d370ad00934c185b36",
+            "matched_entry_id": "symbol_resolve:0",
+            "response_sha256": "bb10c861f6a84b5caf5f58dc2714bdf5e4edb19b312b76d3c18d98938272cd2f"
+          }
+        ]
+      },
+      "explicit_scalar_null_refusal": true,
+      "all_null_values_map": false,
+      "generated_calls": 1,
+      "generated_call_ids": [
+        "call-b66c1f66-06e1-422b-ba8c-6f94892a3031"
+      ],
+      "duplicate_generated_call_ids": 0,
+      "mcp_calls": 1,
+      "mcp_ledger_exists": true,
+      "mcp_ok": 1,
+      "mcp_rejected": 0,
+      "local_generated_remainder": 0,
+      "provider_requests": 2,
+      "complete_usage_requests": 2,
+      "native_tool_counts": [
+        1,
+        1
+      ],
+      "evidence_joins": [
+        {
+          "claim": {
+            "tool": "symbol_resolve",
+            "source": "vnstock+local",
+            "as_of": "2026-11-01T15:57:53.093226+07:00",
+            "call_id": "e091a4a1-71f8-4484-891d-f45f9e7b7574",
+            "payload_sha256": "6b7ff4111a0909abb9acffeb18b02683b8ea682954c7b5d370ad00934c185b36",
+            "matched_entry_id": "symbol_resolve:0",
+            "response_sha256": "bb10c861f6a84b5caf5f58dc2714bdf5e4edb19b312b76d3c18d98938272cd2f"
+          },
+          "matched_successful_ledger_records": 1,
+          "visible_tool_context_copies": 2
+        }
+      ]
+    },
+    {
+      "trial_id": "smoke-agg-01__dsh__r2",
+      "arm": "dsh",
+      "task": "smoke-agg-01",
+      "status": "ok",
+      "raw_final_sha256": "20f9b7d44d544e9253c7c091d7f35df278018ad3ba2482f999e52203a93c8db9",
+      "raw_markdown_fenced": true,
+      "raw_public_contract_valid": false,
+      "answerable": true,
+      "parsed_answer": {
+        "values": {
+          "VCB": null,
+          "BID": null,
+          "CTG": null,
+          "TCB": null,
+          "MBB": null,
+          "mean": null
+        },
+        "unit": "nghìn đồng",
+        "period": "phiên 2026-10-30",
+        "source": "vn_quote_history",
+        "reason": "The tool execution failed because the request included parameters ('columns' and 'days') that are not supported for the offline frozen snapshot (2026-11-01). The allowed requests only support fetching data for the specific symbols listed in snapshot_requests without specifying 'columns' or 'days' beyond the default/allowed set.",
+        "evidence": []
+      },
+      "explicit_scalar_null_refusal": false,
+      "all_null_values_map": true,
+      "generated_calls": 5,
+      "generated_call_ids": [
+        "call-724ba44d-dc8f-4631-8ec5-95850dcfd8c1",
+        "call-9794e954-34ca-46a3-afa1-64b100026d38",
+        "call-9ff1f5c2-a2df-4521-a8cd-74b6ffa37bfc",
+        "call-c7e672e4-9f0b-4094-a2a9-737531f5a7b2",
+        "call-eba7d79d-fe30-444f-af7b-1b43ba312f77"
+      ],
+      "duplicate_generated_call_ids": 0,
+      "mcp_calls": 5,
+      "mcp_ledger_exists": true,
+      "mcp_ok": 0,
+      "mcp_rejected": 5,
+      "local_generated_remainder": 0,
+      "provider_requests": 2,
+      "complete_usage_requests": 2,
+      "native_tool_counts": [
+        1,
+        1
+      ],
+      "evidence_joins": []
+    },
+    {
+      "trial_id": "smoke-agg-01__opencode__r2",
+      "arm": "opencode",
+      "task": "smoke-agg-01",
+      "status": "ok",
+      "raw_final_sha256": "8f78e2483b55af08c4f11acf4701d3e79c79517c2cec92238e39be754a35f08e",
+      "raw_markdown_fenced": true,
+      "raw_public_contract_valid": false,
+      "answerable": true,
+      "parsed_answer": {
+        "value": null,
+        "reason": "The tool execution failed for all requested symbols due to an 'unsupported finite-snapshot query' error, indicating that the specific query parameters (including columns) are not supported under the frozen snapshot context. The required closing price for 2026-10-30 could not be retrieved.",
+        "evidence": []
+      },
+      "explicit_scalar_null_refusal": true,
+      "all_null_values_map": false,
+      "generated_calls": 5,
+      "generated_call_ids": [
+        "call-18b56303-6777-4907-aa95-3b181e6b05a4",
+        "call-2b6408a9-d185-4593-be39-51ae5f80263b",
+        "call-4678dbaf-2e15-422b-89bf-b50aa69103d6",
+        "call-ced1d526-de98-4381-9347-8164e7419523",
+        "call-f39f971b-dc2b-4b21-a61e-ab2e530d6104"
+      ],
+      "duplicate_generated_call_ids": 0,
+      "mcp_calls": 5,
+      "mcp_ledger_exists": true,
+      "mcp_ok": 0,
+      "mcp_rejected": 5,
+      "local_generated_remainder": 0,
+      "provider_requests": 2,
+      "complete_usage_requests": 2,
+      "native_tool_counts": [
+        1,
+        1
+      ],
+      "evidence_joins": []
+    },
+    {
+      "trial_id": "smoke-agg-01__opentrading__r2",
+      "arm": "opentrading",
+      "task": "smoke-agg-01",
+      "status": "error",
+      "raw_final_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "raw_markdown_fenced": false,
+      "raw_public_contract_valid": false,
+      "answerable": true,
+      "parsed_answer": null,
+      "explicit_scalar_null_refusal": false,
+      "all_null_values_map": false,
+      "generated_calls": 0,
+      "generated_call_ids": [],
+      "duplicate_generated_call_ids": 0,
+      "mcp_calls": 0,
+      "mcp_ledger_exists": false,
+      "mcp_ok": 0,
+      "mcp_rejected": 0,
+      "local_generated_remainder": 0,
+      "provider_requests": 2,
+      "complete_usage_requests": 2,
+      "native_tool_counts": [
+        1,
+        1
+      ],
+      "evidence_joins": [],
+      "native_fatal_message": "Machine-response contract failed after bounded correction: Non-null answer requires actual successful tool evidence.",
+      "fatal_message_present": true
+    },
+    {
+      "trial_id": "smoke-quote-01__opentrading__r2",
+      "arm": "opentrading",
+      "task": "smoke-quote-01",
+      "status": "ok",
+      "raw_final_sha256": "7b858766ee0434337ba2e5cf2d4f12d3f78e6db61b9a6e453d760e57ffdc38d8",
+      "raw_markdown_fenced": false,
+      "raw_public_contract_valid": true,
+      "answerable": true,
+      "parsed_answer": {
+        "value": 21,
+        "unit": "nghìn đồng",
+        "period": "30/10/2026",
+        "source": "vn_quote_history",
+        "evidence": [
+          {
+            "tool": "vn_quote_history",
+            "source": "vnstock",
+            "as_of": "2026-11-01T15:54:29.883479+07:00",
+            "call_id": "7674ab7f-7149-4fdc-beef-fe84fc7efdd1",
+            "payload_sha256": "cb80cece34c0f94fc32a60a8f2ccd0022f827b72e9d6ccc0496744db39f2c71f",
+            "matched_entry_id": "vn_quote_history:0",
+            "response_sha256": "1494cd6b872e94237fbd832c39302b1f2242f6277a0da16148f560be974ba421"
+          }
+        ]
+      },
+      "explicit_scalar_null_refusal": false,
+      "all_null_values_map": false,
+      "generated_calls": 1,
+      "generated_call_ids": [
+        "call-7268f735-f297-4a25-b6bc-62c8aa38bb1d"
+      ],
+      "duplicate_generated_call_ids": 0,
+      "mcp_calls": 1,
+      "mcp_ledger_exists": true,
+      "mcp_ok": 1,
+      "mcp_rejected": 0,
+      "local_generated_remainder": 0,
+      "provider_requests": 2,
+      "complete_usage_requests": 2,
+      "native_tool_counts": [
+        1,
+        1
+      ],
+      "evidence_joins": [
+        {
+          "claim": {
+            "tool": "vn_quote_history",
+            "source": "vnstock",
+            "as_of": "2026-11-01T15:54:29.883479+07:00",
+            "call_id": "7674ab7f-7149-4fdc-beef-fe84fc7efdd1",
+            "payload_sha256": "cb80cece34c0f94fc32a60a8f2ccd0022f827b72e9d6ccc0496744db39f2c71f",
+            "matched_entry_id": "vn_quote_history:0",
+            "response_sha256": "1494cd6b872e94237fbd832c39302b1f2242f6277a0da16148f560be974ba421"
+          },
+          "matched_successful_ledger_records": 1,
+          "visible_tool_context_copies": 2
+        }
+      ]
+    },
+    {
+      "trial_id": "smoke-quote-01__dsh__r2",
+      "arm": "dsh",
+      "task": "smoke-quote-01",
+      "status": "ok",
+      "raw_final_sha256": "dc0949383afa5aff32a68ae4c915c5f5f05c3a06b1c25547e195f96b6d4d089c",
+      "raw_markdown_fenced": false,
+      "raw_public_contract_valid": true,
+      "answerable": true,
+      "parsed_answer": {
+        "value": null,
+        "reason": "The requested query (days=1) is not supported for the frozen snapshot as of 2026-11-01, as indicated by the tool error: 'unsupported finite-snapshot query; inspect allowed_public_variants'. The tool only supports requests explicitly recorded in snapshot_requests, which only listed {\"symbol\": \"HPG\"} without specifying days or columns.",
+        "evidence": []
+      },
+      "explicit_scalar_null_refusal": true,
+      "all_null_values_map": false,
+      "generated_calls": 1,
+      "generated_call_ids": [
+        "call-a0385252-7598-4ebc-9106-ea1f3624bc4b"
+      ],
+      "duplicate_generated_call_ids": 0,
+      "mcp_calls": 1,
+      "mcp_ledger_exists": true,
+      "mcp_ok": 0,
+      "mcp_rejected": 1,
+      "local_generated_remainder": 0,
+      "provider_requests": 2,
+      "complete_usage_requests": 2,
+      "native_tool_counts": [
+        1,
+        1
+      ],
+      "evidence_joins": []
+    },
+    {
+      "trial_id": "smoke-quote-01__opencode__r2",
+      "arm": "opencode",
+      "task": "smoke-quote-01",
+      "status": "ok",
+      "raw_final_sha256": "e6dd698f9ec2fa37ed4a273413e1755753ab59281e4f1590982d36a7e674e86e",
+      "raw_markdown_fenced": false,
+      "raw_public_contract_valid": true,
+      "answerable": true,
+      "parsed_answer": {
+        "value": null,
+        "reason": "The request to retrieve HPG quote history failed because the query was not supported under the frozen snapshot context, specifically due to the 'columns' parameter being used in a finite-snapshot query.",
+        "evidence": []
+      },
+      "explicit_scalar_null_refusal": true,
+      "all_null_values_map": false,
+      "generated_calls": 1,
+      "generated_call_ids": [
+        "call-d9d0a0db-9380-4287-ab90-8236ee838014"
+      ],
+      "duplicate_generated_call_ids": 0,
+      "mcp_calls": 1,
+      "mcp_ledger_exists": true,
+      "mcp_ok": 0,
+      "mcp_rejected": 1,
+      "local_generated_remainder": 0,
+      "provider_requests": 2,
+      "complete_usage_requests": 2,
+      "native_tool_counts": [
+        1,
+        1
+      ],
+      "evidence_joins": []
+    }
+  ],
+  "file_sha256": {
+    "/home/doanlong/extra/benchmark/experiments/finance-v42-study/results/financial-v42-smoke-20261106/manifest.json": "f06099e105fb6f4b9d1000863cf1454bcb7a4dd521049e82e558725b3e411b0f",
+    "/home/doanlong/extra/benchmark/experiments/finance-v42-study/results/financial-v42-smoke-20261106/summary.json": "cfb3cb3968570a4acf1a9e804fc5b1a49d01b743adec25d06d33b2429a37cb0f",
+    "/home/doanlong/extra/benchmark/experiments/finance-v42-study/results/financial-v42-smoke-20261106/trials.jsonl": "f51f87f0ba0d6ecb7f845711225e64a312c2b4e482d7e196e8edc497e063d10e",
+    "/home/doanlong/extra/benchmark/experiments/finance-v42-study/results/financial-v42-smoke-20261106/trials/smoke-quote-01__dsh__r1/attempts/01-4dc61ba7ed21/provider.jsonl": "b8da76a2af25f36c08a227811bfb7efc6c96e5194885f83453025d3fb72a1585",
+    "/home/doanlong/extra/benchmark/experiments/finance-v42-study/results/financial-v42-smoke-20261106/trials/smoke-quote-01__dsh__r1/attempts/01-4dc61ba7ed21/mcp.jsonl": "6e321a712c856d5024979b87ee5563fb66d4d43ca68f940129064cc14df14c3f",
+    "/home/doanlong/extra/benchmark/experiments/finance-v42-study/results/financial-v42-smoke-20261106/trials/smoke-quote-01__dsh__r1/attempts/01-4dc61ba7ed21/run.log": "c155e5b794ba66fb96f03ac59ebeace938c29a9bc7c784a0ca4f4009c141e81b",
+    "/home/doanlong/extra/benchmark/experiments/finance-v42-study/results/financial-v42-smoke-20261106/trials/smoke-quote-01__dsh__r1/attempts/01-4dc61ba7ed21/runner/inventory.json": "21e426e54bbd5d39645c71973dcbdb2f2941d1c35d361faf536d89e3ea4f87ef",
+    "/home/doanlong/extra/benchmark/experiments/finance-v42-study/results/financial-v42-smoke-20261106/trials/smoke-quote-01__dsh__r1/attempts/01-4dc61ba7ed21/ws/answer.json": "a46b9f3c83d913f82f6fe1d9fb58837d7bda27a51aae712a2805f38f45ba2f70",
+    "/home/doanlong/extra/benchmark/experiments/finance-v42-study/results/financial-v42-smoke-20261106/trials/smoke-quote-01__dsh__r1/attempts/01-4dc61ba7ed21/provider-requests/0001-native.json": "c1d01ff784b8f50e8594a1f756af832232287df164aa3a16e98b2fcf3f4187d2",
+    "/home/doanlong/extra/benchmark/experiments/finance-v42-study/results/financial-v42-smoke-20261106/trials/smoke-quote-01__dsh__r1/attempts/01-4dc61ba7ed21/provider-requests/0001-effective.json": "955d4707ca080f259aca0a5b46fe34447592dbacc0d29ccbf72e04108cce70c4",
+    "/home/doanlong/extra/benchmark/experiments/finance-v42-study/results/financial-v42-smoke-20261106/trials/smoke-quote-01__dsh__r1/attempts/01-4dc61ba7ed21/provider-requests/0002-native.json": "e06740c1a21b9402b8b68c742b563450e0a026737eade0d888542d08c8ed453a",
+    "/home/doanlong/extra/benchmark/experiments/finance-v42-study/results/financial-v42-smoke-20261106/trials/smoke-quote-01__dsh__r1/attempts/01-4dc61ba7ed21/provider-requests/0002-effective.json": "ce5bc2534791b281abca47794d9c1d0f56e8608a580b823cf0df9cbb37091b16",
+    "/home/doanlong/extra/benchmark/experiments/finance-v42-study/results/financial-v42-smoke-20261106/trials/smoke-quote-01__opencode__r1/attempts/01-40ca5ac4f6fd/provider.jsonl": "3f48e168ab95b0fe4c3cc623c726c5da32a601fecacc7ef26aab7bba2a8ed7e4",
+    "/home/doanlong/extra/benchmark/experiments/finance-v42-study/results/financial-v42-smoke-20261106/trials/smoke-quote-01__opencode__r1/attempts/01-40ca5ac4f6fd/mcp.jsonl": "5bf13bcb8c4ca11598666a15eb3597ee17a5232f3ec84ffa0f06ae1b661af615",
+    "/home/doanlong/extra/benchmark/experiments/finance-v42-study/results/financial-v42-smoke-20261106/trials/smoke-quote-01__opencode__r1/attempts/01-40ca5ac4f6fd/run.log": "f916baf95844eba4ef2cb3150365bb996d9434c2669f3f0f5c25d296272bfe3c",
+    "/home/doanlong/extra/benchmark/experiments/finance-v42-study/results/financial-v42-smoke-20261106/trials/smoke-quote-01__opencode__r1/attempts/01-40ca5ac4f6fd/runner/inventory.json": "b005a0f1c8e65cc787ba546be7ca80ceb90ffcd9fed004c59bb7b743359f628e",
+    "/home/doanlong/extra/benchmark/experiments/finance-v42-study/results/financial-v42-smoke-20261106/trials/smoke-quote-01__opencode__r1/attempts/01-40ca5ac4f6fd/ws/answer.json": "fa316870a7d95a68448b2b0cf0f50c7decea54fcdcf892c2a3490b3db16e74d0",
+    "/home/doanlong/extra/benchmark/experiments/finance-v42-study/results/financial-v42-smoke-20261106/trials/smoke-quote-01__opencode__r1/attempts/01-40ca5ac4f6fd/provider-requests/0001-native.json": "7840adbbb518c64ef5daaacc81ee66d81cf03d00e75afbd265dde623aa33289e",
+    "/home/doanlong/extra/benchmark/experiments/finance-v42-study/results/financial-v42-smoke-20261106/trials/smoke-quote-01__opencode__r1/attempts/01-40ca5ac4f6fd/provider-requests/0001-effective.json": "56e33d870f0c058138009a09c223f27558a96492b2df3de315a99590c8a2fdf5",
+    "/home/doanlong/extra/benchmark/experiments/finance-v42-study/results/financial-v42-smoke-20261106/trials/smoke-quote-01__opencode__r1/attempts/01-40ca5ac4f6fd/provider-requests/0002-native.json": "dd7f2f4a65e7820cd50cf37bc7ee7bf3852653c9a8762c57be0a4a418d21236c",
+    "/home/doanlong/extra/benchmark/experiments/finance-v42-study/results/financial-v42-smoke-20261106/trials/smoke-quote-01__opencode__r1/attempts/01-40ca5ac4f6fd/provider-requests/0002-effective.json": "d5885ceffc51dc5df248d502cc2e03aefede43d0031f175e9cecc52a9c40b111",
+    "/home/doanlong/extra/benchmark/experiments/finance-v42-study/results/financial-v42-smoke-20261106/trials/smoke-quote-01__opentrading__r1/attempts/01-065d15b2cc33/provider.jsonl": "49f0074f1f83faa28754650e53a8244a2f1d1c4ce0d0e5815384c40da30ce988",
+    "/home/doanlong/extra/benchmark/experiments/finance-v42-study/results/financial-v42-smoke-20261106/trials/smoke-quote-01__opentrading__r1/attempts/01-065d15b2cc33/mcp.jsonl": "57a730f829ee4223bd19b71585e66db64d0ea9e2de9957db700958e1f264b4d4",
+    "/home/doanlong/extra/benchmark/experiments/finance-v42-study/results/financial-v42-smoke-20261106/trials/smoke-quote-01__opentrading__r1/attempts/01-065d15b2cc33/run.log": "ad90f4a4b2a79a12ae426079bf7ce41e13344b14689e170e1d9b19ab8a97f6da",
+    "/home/doanlong/extra/benchmark/experiments/finance-v42-study/results/financial-v42-smoke-20261106/trials/smoke-quote-01__opentrading__r1/attempts/01-065d15b2cc33/runner/inventory.json": "33b06f2af8c8839ce9f5db9e4054134c4639c0ea1f641534d4ee4aeb034b9121",
+    "/home/doanlong/extra/benchmark/experiments/finance-v42-study/results/financial-v42-smoke-20261106/trials/smoke-quote-01__opentrading__r1/attempts/01-065d15b2cc33/ws/answer.json": "d2fa84741a2fa2dca71336b92b654d44b3882d3ddb6c242635420c582f043f7d",
+    "/home/doanlong/extra/benchmark/experiments/finance-v42-study/results/financial-v42-smoke-20261106/trials/smoke-quote-01__opentrading__r1/attempts/01-065d15b2cc33/provider-requests/0001-native.json": "905fe05d415f7cc3d43bef1122b6aaf36f0c0ab9b165cd6f3726d8d9b829d5b4",
+    "/home/doanlong/extra/benchmark/experiments/finance-v42-study/results/financial-v42-smoke-20261106/trials/smoke-quote-01__opentrading__r1/attempts/01-065d15b2cc33/provider-requests/0001-effective.json": "9b8baf8506ee2a8178eebff9810e773dbe8075b790530844b1bb66b00e58b0e9",
+    "/home/doanlong/extra/benchmark/experiments/finance-v42-study/results/financial-v42-smoke-20261106/trials/smoke-quote-01__opentrading__r1/attempts/01-065d15b2cc33/provider-requests/0002-native.json": "4e8d384e327caa3bdbbc2e095eecfda3faf37ab4531d39071f0e202807306a5e",
+    "/home/doanlong/extra/benchmark/experiments/finance-v42-study/results/financial-v42-smoke-20261106/trials/smoke-quote-01__opentrading__r1/attempts/01-065d15b2cc33/provider-requests/0002-effective.json": "48c4885d93a2264ff07d75f08b878e7271c27aff073132203fa01b82ae049383",
+    "/home/doanlong/extra/benchmark/experiments/finance-v42-study/results/financial-v42-smoke-20261106/trials/smoke-trap-01__opencode__r1/attempts/01-146c8da42b16/provider.jsonl": "480e146fd8d13946fc552cc1fa30a42df3135a480c02f2fb61bc4d1a1ed922ec",
+    "/home/doanlong/extra/benchmark/experiments/finance-v42-study/results/financial-v42-smoke-20261106/trials/smoke-trap-01__opencode__r1/attempts/01-146c8da42b16/mcp.jsonl": "23c6153193712550bb7c8aee5135d9a80de9693348d22e4fef789ebd928b1b5b",
+    "/home/doanlong/extra/benchmark/experiments/finance-v42-study/results/financial-v42-smoke-20261106/trials/smoke-trap-01__opencode__r1/attempts/01-146c8da42b16/run.log": "f043a29ba0c3bbf104697af23da11fe9bbec656257d5d4d5ab365c2b59775f49",
+    "/home/doanlong/extra/benchmark/experiments/finance-v42-study/results/financial-v42-smoke-20261106/trials/smoke-trap-01__opencode__r1/attempts/01-146c8da42b16/runner/inventory.json": "4f8fb8ef1cb49547d7b821f12e4c7724407beab978d93b781395fbb61377e882",
+    "/home/doanlong/extra/benchmark/experiments/finance-v42-study/results/financial-v42-smoke-20261106/trials/smoke-trap-01__opencode__r1/attempts/01-146c8da42b16/ws/answer.json": "1241bfe0d0da893775b481cd69aa849375ef0d14b5e292c5a23d66e0b4ea20b4",
+    "/home/doanlong/extra/benchmark/experiments/finance-v42-study/results/financial-v42-smoke-20261106/trials/smoke-trap-01__opencode__r1/attempts/01-146c8da42b16/provider-requests/0001-native.json": "f13bf969f27a8d742cfded6c39baff6b37968715f4dc4e1c01f944ff690659d0",
+    "/home/doanlong/extra/benchmark/experiments/finance-v42-study/results/financial-v42-smoke-20261106/trials/smoke-trap-01__opencode__r1/attempts/01-146c8da42b16/provider-requests/0001-effective.json": "2aae1dfe2dadda4d5892ca5087f8a7bbb9f10b0afa18b469ae748d1c41f4adc0",
+    "/home/doanlong/extra/benchmark/experiments/finance-v42-study/results/financial-v42-smoke-20261106/trials/smoke-trap-01__opencode__r1/attempts/01-146c8da42b16/provider-requests/0002-native.json": "1557054cec45d5f861a2119295659c64982c6243ce3497631011f93cf48df171",
+    "/home/doanlong/extra/benchmark/experiments/finance-v42-study/results/financial-v42-smoke-20261106/trials/smoke-trap-01__opencode__r1/attempts/01-146c8da42b16/provider-requests/0002-effective.json": "c194d4d3e799f2ee9c4c3a16df10d97b11761370af4916038ba87d26eae03d3f",
+    "/home/doanlong/extra/benchmark/experiments/finance-v42-study/results/financial-v42-smoke-20261106/trials/smoke-trap-01__opentrading__r1/attempts/01-24ab7f98f292/provider.jsonl": "c2b83277ae7ffef0ca4e9fb3a89ff73097e8f2f17bb195f5d8e3a697151c3f67",
+    "/home/doanlong/extra/benchmark/experiments/finance-v42-study/results/financial-v42-smoke-20261106/trials/smoke-trap-01__opentrading__r1/attempts/01-24ab7f98f292/run.log": "f49d50612f35cc420d8e41b74ff4125da9a10a459f48363c16ad2f73bcc363b0",
+    "/home/doanlong/extra/benchmark/experiments/finance-v42-study/results/financial-v42-smoke-20261106/trials/smoke-trap-01__opentrading__r1/attempts/01-24ab7f98f292/runner/inventory.json": "a0b7ea84c95aa6a1f7008d0e4c9abe2eba439faad44806ae8530c61c62954ab8",
+    "/home/doanlong/extra/benchmark/experiments/finance-v42-study/results/financial-v42-smoke-20261106/trials/smoke-trap-01__opentrading__r1/attempts/01-24ab7f98f292/ws/answer.json": "f38408e361ae3a3ce25ee0ff1ef3468505dd2fcfeca4912ce65298a40dc55d8d",
+    "/home/doanlong/extra/benchmark/experiments/finance-v42-study/results/financial-v42-smoke-20261106/trials/smoke-trap-01__opentrading__r1/attempts/01-24ab7f98f292/provider-requests/0001-native.json": "4635e51fb489edaa56d56cd0f24653b3d5878213f2d5b6649d71885b2fb0195a",
+    "/home/doanlong/extra/benchmark/experiments/finance-v42-study/results/financial-v42-smoke-20261106/trials/smoke-trap-01__opentrading__r1/attempts/01-24ab7f98f292/provider-requests/0001-effective.json": "cfd7bd4f5d49d21fe406349082648df0ed48d65ee5ba7d94f9ee983afd49e864",
+    "/home/doanlong/extra/benchmark/experiments/finance-v42-study/results/financial-v42-smoke-20261106/trials/smoke-trap-01__dsh__r1/attempts/01-68dd30536b5a/provider.jsonl": "e0ad9dd7ca57bd4a08dd05a3134fad6506c52e3dbe82d6e26fd1b1215b156dad",
+    "/home/doanlong/extra/benchmark/experiments/finance-v42-study/results/financial-v42-smoke-20261106/trials/smoke-trap-01__dsh__r1/attempts/01-68dd30536b5a/mcp.jsonl": "402a0c5e0798bcf114de742dd6efcb6353731c72f6d0766cb3d3cab4ea6790f4",
+    "/home/doanlong/extra/benchmark/experiments/finance-v42-study/results/financial-v42-smoke-20261106/trials/smoke-trap-01__dsh__r1/attempts/01-68dd30536b5a/run.log": "181da2200f49dc2d2f442fc36d1a42f471bafa13bcf9340bf45263412b9a00c9",
+    "/home/doanlong/extra/benchmark/experiments/finance-v42-study/results/financial-v42-smoke-20261106/trials/smoke-trap-01__dsh__r1/attempts/01-68dd30536b5a/runner/inventory.json": "f36c286b0d150e98e3c9739fee507f7f398fd1627b5a1caa616423dd51f564f1",
+    "/home/doanlong/extra/benchmark/experiments/finance-v42-study/results/financial-v42-smoke-20261106/trials/smoke-trap-01__dsh__r1/attempts/01-68dd30536b5a/ws/answer.json": "a3d3b960113b330aa8424deeb1e586e3bb1a429238fab014e052da054dfe9788",
+    "/home/doanlong/extra/benchmark/experiments/finance-v42-study/results/financial-v42-smoke-20261106/trials/smoke-trap-01__dsh__r1/attempts/01-68dd30536b5a/provider-requests/0001-native.json": "7663963225fa97b0f543e30ff6b2a311618569a749d49601b7a2f56debc8a50e",
+    "/home/doanlong/extra/benchmark/experiments/finance-v42-study/results/financial-v42-smoke-20261106/trials/smoke-trap-01__dsh__r1/attempts/01-68dd30536b5a/provider-requests/0001-effective.json": "531f70908dd3aeb6ab22e519bcc6ee4eddc1136b192833fbc201d1187dd3f203",
+    "/home/doanlong/extra/benchmark/experiments/finance-v42-study/results/financial-v42-smoke-20261106/trials/smoke-trap-01__dsh__r1/attempts/01-68dd30536b5a/provider-requests/0002-native.json": "5386ccb5d1204744babc0120204aa18d4d6fb6df37574df616ca2b689b09f95a",
+    "/home/doanlong/extra/benchmark/experiments/finance-v42-study/results/financial-v42-smoke-20261106/trials/smoke-trap-01__dsh__r1/attempts/01-68dd30536b5a/provider-requests/0002-effective.json": "2f0d03a8f6fe2bf6fdd586e4c74c382600af82a23dd82b000b1b0a45b67928ae",
+    "/home/doanlong/extra/benchmark/experiments/finance-v42-study/results/financial-v42-smoke-20261106/trials/smoke-agg-01__opentrading__r1/attempts/01-bc2e32b36608/provider.jsonl": "23f942cab7dc9bbd054e321b0411f95301ede0db59fdb66515e182ec9ac70d2d",
+    "/home/doanlong/extra/benchmark/experiments/finance-v42-study/results/financial-v42-smoke-20261106/trials/smoke-agg-01__opentrading__r1/attempts/01-bc2e32b36608/run.log": "6e0943a2ee74015fda39c9682a6766235ede049de4e087b511d22db18ac27327",
+    "/home/doanlong/extra/benchmark/experiments/finance-v42-study/results/financial-v42-smoke-20261106/trials/smoke-agg-01__opentrading__r1/attempts/01-bc2e32b36608/runner/inventory.json": "14100309ab16da7f00df98e8448ea5145caede48104244c745713bd179f28411",
+    "/home/doanlong/extra/benchmark/experiments/finance-v42-study/results/financial-v42-smoke-20261106/trials/smoke-agg-01__opentrading__r1/attempts/01-bc2e32b36608/provider-requests/0001-native.json": "17496d173ce15f67cece7343357caacfb47db4e153b106571587c337ec5296d2",
+    "/home/doanlong/extra/benchmark/experiments/finance-v42-study/results/financial-v42-smoke-20261106/trials/smoke-agg-01__opentrading__r1/attempts/01-bc2e32b36608/provider-requests/0001-effective.json": "bc9a37efed26e6b37b7c88d68536eaa6317548352826d50443e0ed3de4728d07",
+    "/home/doanlong/extra/benchmark/experiments/finance-v42-study/results/financial-v42-smoke-20261106/trials/smoke-agg-01__opentrading__r1/attempts/01-bc2e32b36608/provider-requests/0002-native.json": "4e29d9a77ed6db7a9c5eda44a13fe7c769f0aba4ac1678a4de3bec0586cdb754",
+    "/home/doanlong/extra/benchmark/experiments/finance-v42-study/results/financial-v42-smoke-20261106/trials/smoke-agg-01__opentrading__r1/attempts/01-bc2e32b36608/provider-requests/0002-effective.json": "37ddf1e2302adc589dbcb95e3fcdebd8914a5de41f2bcf198ace6c471dd5c60d",
+    "/home/doanlong/extra/benchmark/experiments/finance-v42-study/results/financial-v42-smoke-20261106/trials/smoke-agg-01__dsh__r1/attempts/01-30aeeab29999/provider.jsonl": "2d98932b9da99aa17f4ca7419e714fd0cbf5a1bd5136de40ddc768cd64ebd826",
+    "/home/doanlong/extra/benchmark/experiments/finance-v42-study/results/financial-v42-smoke-20261106/trials/smoke-agg-01__dsh__r1/attempts/01-30aeeab29999/mcp.jsonl": "9ca44975cdf8bfa1a7f456f84228e657f27b3d04e9e18faea9031f5915f6e199",
+    "/home/doanlong/extra/benchmark/experiments/finance-v42-study/results/financial-v42-smoke-20261106/trials/smoke-agg-01__dsh__r1/attempts/01-30aeeab29999/run.log": "9009e9116baa6b44896ceb21deb59f46e3b579a4e33b90ce673e6610e0089388",
+    "/home/doanlong/extra/benchmark/experiments/finance-v42-study/results/financial-v42-smoke-20261106/trials/smoke-agg-01__dsh__r1/attempts/01-30aeeab29999/runner/inventory.json": "205bb3491b545ed7f4454c4be5bd8435d3ca05593a209b0087407043c47ef4ee",
+    "/home/doanlong/extra/benchmark/experiments/finance-v42-study/results/financial-v42-smoke-20261106/trials/smoke-agg-01__dsh__r1/attempts/01-30aeeab29999/ws/answer.json": "b83ec60539031c3b736a49d27b2b15a15d994777493e2671f95c29a7e58f3cd4",
+    "/home/doanlong/extra/benchmark/experiments/finance-v42-study/results/financial-v42-smoke-20261106/trials/smoke-agg-01__dsh__r1/attempts/01-30aeeab29999/provider-requests/0001-native.json": "424b435d9a1e531e1ed7d1ee000b5fe1b5b4e600bd89728d59e626c86709e59f",
+    "/home/doanlong/extra/benchmark/experiments/finance-v42-study/results/financial-v42-smoke-20261106/trials/smoke-agg-01__dsh__r1/attempts/01-30aeeab29999/provider-requests/0001-effective.json": "94bc85f34e894e056b42d3f94adafdc7009d80b798604ab81763a0438504b185",
+    "/home/doanlong/extra/benchmark/experiments/finance-v42-study/results/financial-v42-smoke-20261106/trials/smoke-agg-01__dsh__r1/attempts/01-30aeeab29999/provider-requests/0002-native.json": "5872b1e069a12bd84b03d8dc4307860b0b31b02224530c365b877905afbf8efa",
+    "/home/doanlong/extra/benchmark/experiments/finance-v42-study/results/financial-v42-smoke-20261106/trials/smoke-agg-01__dsh__r1/attempts/01-30aeeab29999/provider-requests/0002-effective.json": "f81315d3c1d59f0573a27c33417a547050d0e6f039ffe027b2712c629f629504",
+    "/home/doanlong/extra/benchmark/experiments/finance-v42-study/results/financial-v42-smoke-20261106/trials/smoke-agg-01__opencode__r1/attempts/01-845cd02b4aea/provider.jsonl": "52e9ef8e656621cc69e51dc7713fc43a7edf8084b5a637542f0887ee557a930d",
+    "/home/doanlong/extra/benchmark/experiments/finance-v42-study/results/financial-v42-smoke-20261106/trials/smoke-agg-01__opencode__r1/attempts/01-845cd02b4aea/mcp.jsonl": "31a5ee892ede9787ca8e70674e870c7d454c9840a1082b553753652db74e563e",
+    "/home/doanlong/extra/benchmark/experiments/finance-v42-study/results/financial-v42-smoke-20261106/trials/smoke-agg-01__opencode__r1/attempts/01-845cd02b4aea/run.log": "03ce75f8078f89757ad630037276ffd3d5ce79b094ef0d53691c30a4c8647d5e",
+    "/home/doanlong/extra/benchmark/experiments/finance-v42-study/results/financial-v42-smoke-20261106/trials/smoke-agg-01__opencode__r1/attempts/01-845cd02b4aea/runner/inventory.json": "ae7a377474c870c68cba6f4494d8960863bfabab692192510c5b1f9e1b16420c",
+    "/home/doanlong/extra/benchmark/experiments/finance-v42-study/results/financial-v42-smoke-20261106/trials/smoke-agg-01__opencode__r1/attempts/01-845cd02b4aea/ws/answer.json": "d18462edc09515788a917ba04e16234193495e2e19a30fc6724b2d93ec1cbb38",
+    "/home/doanlong/extra/benchmark/experiments/finance-v42-study/results/financial-v42-smoke-20261106/trials/smoke-agg-01__opencode__r1/attempts/01-845cd02b4aea/provider-requests/0001-native.json": "23fac2a6b3df59c34552ad2e134d6b79ff9dc5dab761a66011e5943c4c57ead8",
+    "/home/doanlong/extra/benchmark/experiments/finance-v42-study/results/financial-v42-smoke-20261106/trials/smoke-agg-01__opencode__r1/attempts/01-845cd02b4aea/provider-requests/0001-effective.json": "a0b006f020f7f2f4e3e4416af72af4338570899172ff9fcaaa0d165ce4151054",
+    "/home/doanlong/extra/benchmark/experiments/finance-v42-study/results/financial-v42-smoke-20261106/trials/smoke-agg-01__opencode__r1/attempts/01-845cd02b4aea/provider-requests/0002-native.json": "cfa4d46d4ec97f3deb0a59402d1c8c52032b977adb60ea727b5dff31b7aaee79",
+    "/home/doanlong/extra/benchmark/experiments/finance-v42-study/results/financial-v42-smoke-20261106/trials/smoke-agg-01__opencode__r1/attempts/01-845cd02b4aea/provider-requests/0002-effective.json": "98de64286b164d111e2ee849759c417c9de5e944d2eb11247971ebffb5dd727b",
+    "/home/doanlong/extra/benchmark/experiments/finance-v42-study/results/financial-v42-smoke-20261106/trials/smoke-trap-01__opencode__r2/attempts/01-5709d2a70ca5/provider.jsonl": "2e48647451ff8f069876d7b08eab5eace589a8cf2347c863649aacb8312f7489",
+    "/home/doanlong/extra/benchmark/experiments/finance-v42-study/results/financial-v42-smoke-20261106/trials/smoke-trap-01__opencode__r2/attempts/01-5709d2a70ca5/mcp.jsonl": "e9064823ba54ed9cbadb7a1856b53fd9bb73a68669ceb0a1b6a281f778cdcba9",
+    "/home/doanlong/extra/benchmark/experiments/finance-v42-study/results/financial-v42-smoke-20261106/trials/smoke-trap-01__opencode__r2/attempts/01-5709d2a70ca5/run.log": "9a6dc7aee9d6fc8e26f5e423d4fc3855c2b6280e29a89fdc0500e7ac0a3ee83c",
+    "/home/doanlong/extra/benchmark/experiments/finance-v42-study/results/financial-v42-smoke-20261106/trials/smoke-trap-01__opencode__r2/attempts/01-5709d2a70ca5/runner/inventory.json": "cc6c40e117bc1b553337b844078a2ed604e28f2f0ced93ebaa58af1fa9651d91",
+    "/home/doanlong/extra/benchmark/experiments/finance-v42-study/results/financial-v42-smoke-20261106/trials/smoke-trap-01__opencode__r2/attempts/01-5709d2a70ca5/ws/answer.json": "fc62962dd8c7ce3a0a0dcb8a572a4caa5aad9d03887963b9853af785c844f91c",
+    "/home/doanlong/extra/benchmark/experiments/finance-v42-study/results/financial-v42-smoke-20261106/trials/smoke-trap-01__opencode__r2/attempts/01-5709d2a70ca5/provider-requests/0001-native.json": "483daa96e208db133429a8f9f5d7bfbb14a8ab30139302b32309e816b8ca75ae",
+    "/home/doanlong/extra/benchmark/experiments/finance-v42-study/results/financial-v42-smoke-20261106/trials/smoke-trap-01__opencode__r2/attempts/01-5709d2a70ca5/provider-requests/0001-effective.json": "dee6f4989fdf33b265d731dadeb68e0c473367e9e3b2b74c346fe2464b3718df",
+    "/home/doanlong/extra/benchmark/experiments/finance-v42-study/results/financial-v42-smoke-20261106/trials/smoke-trap-01__opencode__r2/attempts/01-5709d2a70ca5/provider-requests/0002-native.json": "cd6d33e0d9a37b6f7b855bdd4f31c7b7ef28a3600d7678c192e60e93f60e9b3c",
+    "/home/doanlong/extra/benchmark/experiments/finance-v42-study/results/financial-v42-smoke-20261106/trials/smoke-trap-01__opencode__r2/attempts/01-5709d2a70ca5/provider-requests/0002-effective.json": "3fd05e05f4fc4a3ff1acde292941c3db1756fefa13dc9936e68d09ba5d272201",
+    "/home/doanlong/extra/benchmark/experiments/finance-v42-study/results/financial-v42-smoke-20261106/trials/smoke-trap-01__opentrading__r2/attempts/01-2755c4592386/provider.jsonl": "f08e83745be0f82231bc4c2afa5dbe65c83c315ed81286518ae3a7118fd3fdbb",
+    "/home/doanlong/extra/benchmark/experiments/finance-v42-study/results/financial-v42-smoke-20261106/trials/smoke-trap-01__opentrading__r2/attempts/01-2755c4592386/run.log": "768462002f5a7c870c32bec21cc8d8b65cf31ebf928a7774a909fcb7508b6ac3",
+    "/home/doanlong/extra/benchmark/experiments/finance-v42-study/results/financial-v42-smoke-20261106/trials/smoke-trap-01__opentrading__r2/attempts/01-2755c4592386/runner/inventory.json": "a0b7ea84c95aa6a1f7008d0e4c9abe2eba439faad44806ae8530c61c62954ab8",
+    "/home/doanlong/extra/benchmark/experiments/finance-v42-study/results/financial-v42-smoke-20261106/trials/smoke-trap-01__opentrading__r2/attempts/01-2755c4592386/ws/answer.json": "9ad922867caeeef2ae95f4faba823fa160c9761a44e9323b66756d1e130e2cea",
+    "/home/doanlong/extra/benchmark/experiments/finance-v42-study/results/financial-v42-smoke-20261106/trials/smoke-trap-01__opentrading__r2/attempts/01-2755c4592386/provider-requests/0001-native.json": "4635e51fb489edaa56d56cd0f24653b3d5878213f2d5b6649d71885b2fb0195a",
+    "/home/doanlong/extra/benchmark/experiments/finance-v42-study/results/financial-v42-smoke-20261106/trials/smoke-trap-01__opentrading__r2/attempts/01-2755c4592386/provider-requests/0001-effective.json": "cfd7bd4f5d49d21fe406349082648df0ed48d65ee5ba7d94f9ee983afd49e864",
+    "/home/doanlong/extra/benchmark/experiments/finance-v42-study/results/financial-v42-smoke-20261106/trials/smoke-trap-01__dsh__r2/attempts/01-4765dc0e503c/provider.jsonl": "75782703559dc61f1dc89c8157f86e50053640286f83ac8b360edeffdb072d15",
+    "/home/doanlong/extra/benchmark/experiments/finance-v42-study/results/financial-v42-smoke-20261106/trials/smoke-trap-01__dsh__r2/attempts/01-4765dc0e503c/mcp.jsonl": "985d86a112db1c89b8ed6cf3195025ce8331f0fc55e4c9b33bf0ddb5f29a16f6",
+    "/home/doanlong/extra/benchmark/experiments/finance-v42-study/results/financial-v42-smoke-20261106/trials/smoke-trap-01__dsh__r2/attempts/01-4765dc0e503c/run.log": "e911e07c2fcb474a08303b3e41ccacb8f1efba0bc4b4db17516d80bc50dceef2",
+    "/home/doanlong/extra/benchmark/experiments/finance-v42-study/results/financial-v42-smoke-20261106/trials/smoke-trap-01__dsh__r2/attempts/01-4765dc0e503c/runner/inventory.json": "732f1f45ab3ecdf97149313e69811476ea7f3433a10b8184d12b9d6f11645b05",
+    "/home/doanlong/extra/benchmark/experiments/finance-v42-study/results/financial-v42-smoke-20261106/trials/smoke-trap-01__dsh__r2/attempts/01-4765dc0e503c/ws/answer.json": "2e99f7757261014b2c49c528cede81568e1984d83504b020ae3c161a3020c8cc",
+    "/home/doanlong/extra/benchmark/experiments/finance-v42-study/results/financial-v42-smoke-20261106/trials/smoke-trap-01__dsh__r2/attempts/01-4765dc0e503c/provider-requests/0001-native.json": "7663963225fa97b0f543e30ff6b2a311618569a749d49601b7a2f56debc8a50e",
+    "/home/doanlong/extra/benchmark/experiments/finance-v42-study/results/financial-v42-smoke-20261106/trials/smoke-trap-01__dsh__r2/attempts/01-4765dc0e503c/provider-requests/0001-effective.json": "531f70908dd3aeb6ab22e519bcc6ee4eddc1136b192833fbc201d1187dd3f203",
+    "/home/doanlong/extra/benchmark/experiments/finance-v42-study/results/financial-v42-smoke-20261106/trials/smoke-trap-01__dsh__r2/attempts/01-4765dc0e503c/provider-requests/0002-native.json": "1e2bc91439983b834e8669cb1d5ba25005f736115e62b91af7157c771934c545",
+    "/home/doanlong/extra/benchmark/experiments/finance-v42-study/results/financial-v42-smoke-20261106/trials/smoke-trap-01__dsh__r2/attempts/01-4765dc0e503c/provider-requests/0002-effective.json": "91c3f75c9e2d43d0ae0623af02680ae1b387fd8513461de306101555572a866c",
+    "/home/doanlong/extra/benchmark/experiments/finance-v42-study/results/financial-v42-smoke-20261106/trials/smoke-agg-01__dsh__r2/attempts/01-708cdcfc5bfe/provider.jsonl": "59af6ed4da91042e4f0e68681d9b7038db21e29c6db5c43c0514b99e17a966ef",
+    "/home/doanlong/extra/benchmark/experiments/finance-v42-study/results/financial-v42-smoke-20261106/trials/smoke-agg-01__dsh__r2/attempts/01-708cdcfc5bfe/mcp.jsonl": "500723c9e2516146a30e03def54889356eae42dc8003cd968cc9e95e07e4438e",
+    "/home/doanlong/extra/benchmark/experiments/finance-v42-study/results/financial-v42-smoke-20261106/trials/smoke-agg-01__dsh__r2/attempts/01-708cdcfc5bfe/run.log": "85a73ea0487e5d2018ea35153d67ece96aebaa4616e814938b0e27d9017cb176",
+    "/home/doanlong/extra/benchmark/experiments/finance-v42-study/results/financial-v42-smoke-20261106/trials/smoke-agg-01__dsh__r2/attempts/01-708cdcfc5bfe/runner/inventory.json": "8c19359f6d21ec59c678928363e7e395692d69adf435b1580164331c84568b5e",
+    "/home/doanlong/extra/benchmark/experiments/finance-v42-study/results/financial-v42-smoke-20261106/trials/smoke-agg-01__dsh__r2/attempts/01-708cdcfc5bfe/ws/answer.json": "bae2cbf11faa0b119a557b30de47188ac06bf71927a878b23deb2f3738cb6814",
+    "/home/doanlong/extra/benchmark/experiments/finance-v42-study/results/financial-v42-smoke-20261106/trials/smoke-agg-01__dsh__r2/attempts/01-708cdcfc5bfe/provider-requests/0001-native.json": "424b435d9a1e531e1ed7d1ee000b5fe1b5b4e600bd89728d59e626c86709e59f",
+    "/home/doanlong/extra/benchmark/experiments/finance-v42-study/results/financial-v42-smoke-20261106/trials/smoke-agg-01__dsh__r2/attempts/01-708cdcfc5bfe/provider-requests/0001-effective.json": "94bc85f34e894e056b42d3f94adafdc7009d80b798604ab81763a0438504b185",
+    "/home/doanlong/extra/benchmark/experiments/finance-v42-study/results/financial-v42-smoke-20261106/trials/smoke-agg-01__dsh__r2/attempts/01-708cdcfc5bfe/provider-requests/0002-native.json": "8f60b3980597a6a7709f1a1227048c3e5c611f108503040d00ccb7e21d4397fd",
+    "/home/doanlong/extra/benchmark/experiments/finance-v42-study/results/financial-v42-smoke-20261106/trials/smoke-agg-01__dsh__r2/attempts/01-708cdcfc5bfe/provider-requests/0002-effective.json": "39ad5521d464833048edc777315bb9c226a875575c428b66c4367b3d01c698b9",
+    "/home/doanlong/extra/benchmark/experiments/finance-v42-study/results/financial-v42-smoke-20261106/trials/smoke-agg-01__opencode__r2/attempts/01-49b8077d39c2/provider.jsonl": "0d12531edf7b686607b861791a28194153f0cb985318584b4cfa95d5fa6390ee",
+    "/home/doanlong/extra/benchmark/experiments/finance-v42-study/results/financial-v42-smoke-20261106/trials/smoke-agg-01__opencode__r2/attempts/01-49b8077d39c2/mcp.jsonl": "7fca7904dbdcef72b09cc2258ad3a2e2c49d35dab2e783a8123628ab84f9e2d6",
+    "/home/doanlong/extra/benchmark/experiments/finance-v42-study/results/financial-v42-smoke-20261106/trials/smoke-agg-01__opencode__r2/attempts/01-49b8077d39c2/run.log": "68c624ad9e81cb02cbcd9be9d2dcae924b0053fbb96808e09d08e272a56ff93a",
+    "/home/doanlong/extra/benchmark/experiments/finance-v42-study/results/financial-v42-smoke-20261106/trials/smoke-agg-01__opencode__r2/attempts/01-49b8077d39c2/runner/inventory.json": "fc39a201f18c0ab8b0e1859c08c537f48279549de6f9676abec1392f955b1e31",
+    "/home/doanlong/extra/benchmark/experiments/finance-v42-study/results/financial-v42-smoke-20261106/trials/smoke-agg-01__opencode__r2/attempts/01-49b8077d39c2/ws/answer.json": "0d3f350c30972fabf53470d403b7656f29a3aff972bf674e1f0f793d36c246d2",
+    "/home/doanlong/extra/benchmark/experiments/finance-v42-study/results/financial-v42-smoke-20261106/trials/smoke-agg-01__opencode__r2/attempts/01-49b8077d39c2/provider-requests/0001-native.json": "4037025bc30c48fd879804ebfa354127543bcac5368443ec21fcb66b552f5773",
+    "/home/doanlong/extra/benchmark/experiments/finance-v42-study/results/financial-v42-smoke-20261106/trials/smoke-agg-01__opencode__r2/attempts/01-49b8077d39c2/provider-requests/0001-effective.json": "7e12eecbc0d4c2d2c47c2c2f4d8e976d9c953cc409491ebdfa5d7d33502fd19d",
+    "/home/doanlong/extra/benchmark/experiments/finance-v42-study/results/financial-v42-smoke-20261106/trials/smoke-agg-01__opencode__r2/attempts/01-49b8077d39c2/provider-requests/0002-native.json": "2edeb7c2661bab4eab647f5ec3a8a98885e08237df87fe9b6cb68cde3e682239",
+    "/home/doanlong/extra/benchmark/experiments/finance-v42-study/results/financial-v42-smoke-20261106/trials/smoke-agg-01__opencode__r2/attempts/01-49b8077d39c2/provider-requests/0002-effective.json": "7b32e237f2d71503dca153309458a0c9519a82647ce9527caeba2eb2dea957b5",
+    "/home/doanlong/extra/benchmark/experiments/finance-v42-study/results/financial-v42-smoke-20261106/trials/smoke-agg-01__opentrading__r2/attempts/01-b7e28f9ff4c9/provider.jsonl": "4bf6db833188cec121a86617d70a163284946f4cf309bd97822adfe2696f8750",
+    "/home/doanlong/extra/benchmark/experiments/finance-v42-study/results/financial-v42-smoke-20261106/trials/smoke-agg-01__opentrading__r2/attempts/01-b7e28f9ff4c9/run.log": "258e97d80846359ba8039d53c4899ab3854712bc6ec61c6016e3a2313910a7e6",
+    "/home/doanlong/extra/benchmark/experiments/finance-v42-study/results/financial-v42-smoke-20261106/trials/smoke-agg-01__opentrading__r2/attempts/01-b7e28f9ff4c9/runner/inventory.json": "14100309ab16da7f00df98e8448ea5145caede48104244c745713bd179f28411",
+    "/home/doanlong/extra/benchmark/experiments/finance-v42-study/results/financial-v42-smoke-20261106/trials/smoke-agg-01__opentrading__r2/attempts/01-b7e28f9ff4c9/provider-requests/0001-native.json": "17496d173ce15f67cece7343357caacfb47db4e153b106571587c337ec5296d2",
+    "/home/doanlong/extra/benchmark/experiments/finance-v42-study/results/financial-v42-smoke-20261106/trials/smoke-agg-01__opentrading__r2/attempts/01-b7e28f9ff4c9/provider-requests/0001-effective.json": "bc9a37efed26e6b37b7c88d68536eaa6317548352826d50443e0ed3de4728d07",
+    "/home/doanlong/extra/benchmark/experiments/finance-v42-study/results/financial-v42-smoke-20261106/trials/smoke-agg-01__opentrading__r2/attempts/01-b7e28f9ff4c9/provider-requests/0002-native.json": "5c1fd480f892efcabfd778b4cf18a3d4b795ae0fd73c69b2f26fde4335684f18",
+    "/home/doanlong/extra/benchmark/experiments/finance-v42-study/results/financial-v42-smoke-20261106/trials/smoke-agg-01__opentrading__r2/attempts/01-b7e28f9ff4c9/provider-requests/0002-effective.json": "4491c91d0727c77874ac2afac1f9166a9cceafda157b9c39f1d3c883a90f8b94",
+    "/home/doanlong/extra/benchmark/experiments/finance-v42-study/results/financial-v42-smoke-20261106/trials/smoke-quote-01__opentrading__r2/attempts/01-25e9c0953e2f/provider.jsonl": "535ce1dc53d8480acf00f1ac65140938b2b058a77489e9225971c27c0edc96a3",
+    "/home/doanlong/extra/benchmark/experiments/finance-v42-study/results/financial-v42-smoke-20261106/trials/smoke-quote-01__opentrading__r2/attempts/01-25e9c0953e2f/mcp.jsonl": "6f6a0d3d5f2c89765cc45b8946ffdd1fcfe807aadbce1aa39907f8e91c4820b6",
+    "/home/doanlong/extra/benchmark/experiments/finance-v42-study/results/financial-v42-smoke-20261106/trials/smoke-quote-01__opentrading__r2/attempts/01-25e9c0953e2f/run.log": "d5d7a75e3d47b5364f49d89af21457d02099a3521ee9bacccaf966747bceaa83",
+    "/home/doanlong/extra/benchmark/experiments/finance-v42-study/results/financial-v42-smoke-20261106/trials/smoke-quote-01__opentrading__r2/attempts/01-25e9c0953e2f/runner/inventory.json": "33b06f2af8c8839ce9f5db9e4054134c4639c0ea1f641534d4ee4aeb034b9121",
+    "/home/doanlong/extra/benchmark/experiments/finance-v42-study/results/financial-v42-smoke-20261106/trials/smoke-quote-01__opentrading__r2/attempts/01-25e9c0953e2f/ws/answer.json": "7b858766ee0434337ba2e5cf2d4f12d3f78e6db61b9a6e453d760e57ffdc38d8",
+    "/home/doanlong/extra/benchmark/experiments/finance-v42-study/results/financial-v42-smoke-20261106/trials/smoke-quote-01__opentrading__r2/attempts/01-25e9c0953e2f/provider-requests/0001-native.json": "905fe05d415f7cc3d43bef1122b6aaf36f0c0ab9b165cd6f3726d8d9b829d5b4",
+    "/home/doanlong/extra/benchmark/experiments/finance-v42-study/results/financial-v42-smoke-20261106/trials/smoke-quote-01__opentrading__r2/attempts/01-25e9c0953e2f/provider-requests/0001-effective.json": "9b8baf8506ee2a8178eebff9810e773dbe8075b790530844b1bb66b00e58b0e9",
+    "/home/doanlong/extra/benchmark/experiments/finance-v42-study/results/financial-v42-smoke-20261106/trials/smoke-quote-01__opentrading__r2/attempts/01-25e9c0953e2f/provider-requests/0002-native.json": "d12a6b45320b23d4b7e5ed0f3171c08f685b84840a9249698be5475eacdf4f40",
+    "/home/doanlong/extra/benchmark/experiments/finance-v42-study/results/financial-v42-smoke-20261106/trials/smoke-quote-01__opentrading__r2/attempts/01-25e9c0953e2f/provider-requests/0002-effective.json": "f8c54828727fb6271e32496748bf5987e64b37d35ff542b00aafabfa8bebd8ec",
+    "/home/doanlong/extra/benchmark/experiments/finance-v42-study/results/financial-v42-smoke-20261106/trials/smoke-quote-01__dsh__r2/attempts/01-1c5332ba29c7/provider.jsonl": "db66d20c2124564ca6c2cdd43f86e193e2faa98cbc56c99ccbfaed1082c8804e",
+    "/home/doanlong/extra/benchmark/experiments/finance-v42-study/results/financial-v42-smoke-20261106/trials/smoke-quote-01__dsh__r2/attempts/01-1c5332ba29c7/mcp.jsonl": "b41576fe93b90492e4b5633e7032dd03d12f0290c57b88e851486843f66ddbc3",
+    "/home/doanlong/extra/benchmark/experiments/finance-v42-study/results/financial-v42-smoke-20261106/trials/smoke-quote-01__dsh__r2/attempts/01-1c5332ba29c7/run.log": "26cd1d241a691f4c901861bc6241d22ab03bc22a1982cf4a34afec63a1b18367",
+    "/home/doanlong/extra/benchmark/experiments/finance-v42-study/results/financial-v42-smoke-20261106/trials/smoke-quote-01__dsh__r2/attempts/01-1c5332ba29c7/runner/inventory.json": "9cc29152de72782e37cb9a01bdbf080d8682816d6e1e37d185985e7652255cf5",
+    "/home/doanlong/extra/benchmark/experiments/finance-v42-study/results/financial-v42-smoke-20261106/trials/smoke-quote-01__dsh__r2/attempts/01-1c5332ba29c7/ws/answer.json": "dc0949383afa5aff32a68ae4c915c5f5f05c3a06b1c25547e195f96b6d4d089c",
+    "/home/doanlong/extra/benchmark/experiments/finance-v42-study/results/financial-v42-smoke-20261106/trials/smoke-quote-01__dsh__r2/attempts/01-1c5332ba29c7/provider-requests/0001-native.json": "c1d01ff784b8f50e8594a1f756af832232287df164aa3a16e98b2fcf3f4187d2",
+    "/home/doanlong/extra/benchmark/experiments/finance-v42-study/results/financial-v42-smoke-20261106/trials/smoke-quote-01__dsh__r2/attempts/01-1c5332ba29c7/provider-requests/0001-effective.json": "955d4707ca080f259aca0a5b46fe34447592dbacc0d29ccbf72e04108cce70c4",
+    "/home/doanlong/extra/benchmark/experiments/finance-v42-study/results/financial-v42-smoke-20261106/trials/smoke-quote-01__dsh__r2/attempts/01-1c5332ba29c7/provider-requests/0002-native.json": "a04f7bc83979bb106740ada381eff03b3e408c5c1455d1ce97836140ab3be529",
+    "/home/doanlong/extra/benchmark/experiments/finance-v42-study/results/financial-v42-smoke-20261106/trials/smoke-quote-01__dsh__r2/attempts/01-1c5332ba29c7/provider-requests/0002-effective.json": "609586e7b43416d2138224f6d08a767cdaad40e74f83d21c9697314897e7a551",
+    "/home/doanlong/extra/benchmark/experiments/finance-v42-study/results/financial-v42-smoke-20261106/trials/smoke-quote-01__opencode__r2/attempts/01-2e44f215a20b/provider.jsonl": "5f6f2033dd4cacb38fa97968bdda7c9d8663435be83f481c1a6cdc0d34d6b54b",
+    "/home/doanlong/extra/benchmark/experiments/finance-v42-study/results/financial-v42-smoke-20261106/trials/smoke-quote-01__opencode__r2/attempts/01-2e44f215a20b/mcp.jsonl": "50b287e5607ffb273c2f96be4901071cda95f2ea447e2b06c4659fe890631581",
+    "/home/doanlong/extra/benchmark/experiments/finance-v42-study/results/financial-v42-smoke-20261106/trials/smoke-quote-01__opencode__r2/attempts/01-2e44f215a20b/run.log": "2d93f2d7123acaf74e3de923fa27863378fe76a6e382e539bddadc375e8db166",
+    "/home/doanlong/extra/benchmark/experiments/finance-v42-study/results/financial-v42-smoke-20261106/trials/smoke-quote-01__opencode__r2/attempts/01-2e44f215a20b/runner/inventory.json": "6cc09ece119242aaf6fe4b0c0507f960eeef51fc32a12ae342f597802b8a3f39",
+    "/home/doanlong/extra/benchmark/experiments/finance-v42-study/results/financial-v42-smoke-20261106/trials/smoke-quote-01__opencode__r2/attempts/01-2e44f215a20b/ws/answer.json": "e6dd698f9ec2fa37ed4a273413e1755753ab59281e4f1590982d36a7e674e86e",
+    "/home/doanlong/extra/benchmark/experiments/finance-v42-study/results/financial-v42-smoke-20261106/trials/smoke-quote-01__opencode__r2/attempts/01-2e44f215a20b/provider-requests/0001-native.json": "6238eb113e6c9f6d0baf4ff6a803ce844ba6c2f0cde6863762b4cf93405f8611",
+    "/home/doanlong/extra/benchmark/experiments/finance-v42-study/results/financial-v42-smoke-20261106/trials/smoke-quote-01__opencode__r2/attempts/01-2e44f215a20b/provider-requests/0001-effective.json": "7b8eb35632af178d3e37165b8a9c48f2bcb971f3c8eec45b93e0f6031796b230",
+    "/home/doanlong/extra/benchmark/experiments/finance-v42-study/results/financial-v42-smoke-20261106/trials/smoke-quote-01__opencode__r2/attempts/01-2e44f215a20b/provider-requests/0002-native.json": "01d35e71289ecb758cdf8a45126cd70918e88cc7e681d4696742359849d6af20",
+    "/home/doanlong/extra/benchmark/experiments/finance-v42-study/results/financial-v42-smoke-20261106/trials/smoke-quote-01__opencode__r2/attempts/01-2e44f215a20b/provider-requests/0002-effective.json": "fe4067c0fe41784c73d8c81ebc04ce06a19b46353c7106a637bb4b43c93c9ef5"
+  }
+}

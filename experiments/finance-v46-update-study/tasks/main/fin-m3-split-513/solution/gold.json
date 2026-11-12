@@ -1,0 +1,60 @@
+{
+  "task_id": "fin-m3-split-513",
+  "scoring": "value",
+  "solution": {
+    "pass": [
+      "MSN",
+      "PNJ"
+    ],
+    "criteria": [
+      "P/B dưới 3",
+      "ROE trên 12%"
+    ]
+  },
+  "split": "main",
+  "expects": [
+    {
+      "type": "set",
+      "path": "values.pass",
+      "gold": [
+        "MSN",
+        "PNJ"
+      ]
+    },
+    {
+      "type": "str",
+      "path": "source",
+      "accept": [
+        "peer_compare"
+      ]
+    }
+  ],
+  "contract_version": 2,
+  "stratum": "memory",
+  "tier": "M3",
+  "subtier": "M3a",
+  "memory_construct": "M3a",
+  "notes": "Native-memory stratum (amendment 2026-11-11 d).",
+  "provenance_contract": [
+    {
+      "tool": "peer_compare",
+      "source": "vnstock",
+      "as_of": "2026-11-01T23:08:19.121250+07:00",
+      "matched_entry_id": "peer:cons_p",
+      "response_sha256": "ddba4fdb6bb3c68d89a0cb89bcf91112bcee9fc811750394f7fb157fbdfffa82"
+    }
+  ],
+  "provenance_catalog": [
+    {
+      "tool": "peer_compare",
+      "source": "vnstock",
+      "as_of": "2026-11-01T23:08:19.121250+07:00",
+      "matched_entry_id": "peer:cons_p",
+      "response_sha256": "ddba4fdb6bb3c68d89a0cb89bcf91112bcee9fc811750394f7fb157fbdfffa82"
+    }
+  ],
+  "payload_sha256": "3cd972b4affa74d9a4d764358389e5abe58a4c6e5e2f016c089dcac1c27167eb",
+  "required_payload_keys": [
+    "peer:cons_p"
+  ]
+}

@@ -1,0 +1,1427 @@
+{
+  "pass": false,
+  "complete": true,
+  "external_model_calls": 0,
+  "reports": [
+    {
+      "arm": "ot_memory_on",
+      "scenario": "same-session",
+      "work": "/tmp/v45-memory-ot_memory_on-zuvopd5l",
+      "external_model_calls": 0,
+      "bun_binary": "/home/doanlong/extra/benchmark/experiments/toolchains/bun-1.4.4/bun",
+      "bun_sha256": "10702245766b225e70bbf6235fd6b47214fd94b4760d00ffaed8ab0df57ac235",
+      "state": {
+        "version": 1,
+        "model": "nvidia/deepseek-ai/deepseek-v4.1-flash",
+        "condition": "ot_memory_on",
+        "completed_turns": [
+          {
+            "session": "S1",
+            "turn": 0,
+            "final": false,
+            "user_text": "FIXTURE_SAME_SEED Đọc quote SYN bằng vn_quote_history và xác nhận đã hoàn tất.",
+            "result": {
+              "status": "ok",
+              "session_id": null,
+              "notes": "",
+              "native_completion": {
+                "outcome": "completed",
+                "unanswered": false,
+                "recoveries": []
+              },
+              "final_text": "Đã hoàn tất đọc nguồn. NONCE_AZURE_CEDAR chứng minh bản ghi assistant được tiếp tục.",
+              "tokens": {
+                "input": 200,
+                "output": 40,
+                "cached": null,
+                "cache_read": null,
+                "cached_observed": 0,
+                "cache_complete": false,
+                "usage_requests": 2,
+                "requests": 2,
+                "complete": true
+              },
+              "provider_requests": 2,
+              "provider_usage": {
+                "input": 200,
+                "output": 40,
+                "cached": null,
+                "cache_read": null,
+                "cached_observed": 0,
+                "cache_complete": false,
+                "usage_requests": 2,
+                "requests": 2,
+                "complete": true
+              },
+              "inventory_path": "/tmp/v45-memory-ot_memory_on-zuvopd5l/runner/inventory.json",
+              "provider_ledger": "/tmp/v45-memory-ot_memory_on-zuvopd5l/runner/provider.jsonl",
+              "answer_path": null,
+              "answer_candidates": [],
+              "transport_recovered": false,
+              "first_attempt_completed": true,
+              "token_reservations_not_observed_usage": 0,
+              "native_derived_ledger": "/tmp/v45-memory-ot_memory_on-zuvopd5l/runner/native-derived.jsonl"
+            },
+            "provider_rows_start": 0,
+            "provider_rows_end": 2,
+            "unauthorized_write": false,
+            "native_memory_before": {
+              "ok": true,
+              "events": [],
+              "entries": [],
+              "authorized_map": {},
+              "normalized_actual_entries": [],
+              "native_persistence_verified": true,
+              "entry_hash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+            },
+            "native_memory_after": {
+              "ok": true,
+              "events": [],
+              "entries": [],
+              "authorized_map": {},
+              "normalized_actual_entries": [],
+              "native_persistence_verified": true,
+              "entry_hash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+            },
+            "user_operations": {
+              "events": [],
+              "native_user_form": null,
+              "notebook_hash": "29c94f9951b652af125b8b5886db0e363c5720505d852c5674efd418f0917dd6"
+            }
+          },
+          {
+            "session": "S1",
+            "turn": 1,
+            "final": true,
+            "user_text": "FIXTURE_SAME_QUERY Dùng lại quote/biên nhận đã đọc, không gọi lại tool. Trả một object JSON: {\"value\":0,\"unit\":\"nghìn đồng/cổ phiếu\",\"period\":\"2030-03-31\",\"source\":\"vn_quote_history\",\"evidence\":[]} dùng biên nhận nguồn thật.",
+            "result": {
+              "status": "ok",
+              "session_id": null,
+              "notes": "",
+              "native_completion": {
+                "outcome": "completed",
+                "unanswered": false,
+                "recoveries": []
+              },
+              "final_text": "{\"value\": 12, \"unit\": \"nghìn đồng/cổ phiếu\", \"period\": \"2030-03-31\", \"source\": \"vn_quote_history\", \"evidence\": [{\"call_id\": \"7e9b7bfe-3f1d-4e8d-9c2d-3bd00851dd49\", \"tool\": \"vn_quote_history\", \"matched_entry_id\": \"source\", \"payload_sha256\": \"11744bd0a712f73655f048c2b492d79ba0eca4022230765126341c94fc2079d6\", \"response_sha256\": \"d5011aa0dfb5c753a710598bc10b99725af460e7611feaa695d01d4d8b983f69\", \"source\": \"synthetic-not-live\", \"as_of\": \"2030-04-01\"}]}",
+              "tokens": {
+                "input": 300,
+                "output": 60,
+                "cached": null,
+                "cache_read": null,
+                "cached_observed": 0,
+                "cache_complete": false,
+                "usage_requests": 3,
+                "requests": 3,
+                "complete": true
+              },
+              "provider_requests": 3,
+              "provider_usage": {
+                "input": 300,
+                "output": 60,
+                "cached": null,
+                "cache_read": null,
+                "cached_observed": 0,
+                "cache_complete": false,
+                "usage_requests": 3,
+                "requests": 3,
+                "complete": true
+              },
+              "inventory_path": "/tmp/v45-memory-ot_memory_on-zuvopd5l/runner/inventory.json",
+              "provider_ledger": "/tmp/v45-memory-ot_memory_on-zuvopd5l/runner/provider.jsonl",
+              "answer_path": null,
+              "answer_candidates": [],
+              "transport_recovered": false,
+              "first_attempt_completed": true,
+              "token_reservations_not_observed_usage": 0,
+              "native_derived_ledger": "/tmp/v45-memory-ot_memory_on-zuvopd5l/runner/native-derived.jsonl"
+            },
+            "provider_rows_start": 2,
+            "provider_rows_end": 3,
+            "unauthorized_write": false,
+            "native_memory_before": {
+              "ok": true,
+              "events": [],
+              "entries": [],
+              "authorized_map": {},
+              "normalized_actual_entries": [],
+              "native_persistence_verified": true,
+              "entry_hash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+            },
+            "native_memory_after": {
+              "ok": true,
+              "events": [],
+              "entries": [],
+              "authorized_map": {},
+              "normalized_actual_entries": [],
+              "native_persistence_verified": true,
+              "entry_hash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+            },
+            "user_operations": {
+              "events": [],
+              "native_user_form": null,
+              "notebook_hash": "29c94f9951b652af125b8b5886db0e363c5720505d852c5674efd418f0917dd6"
+            }
+          }
+        ],
+        "native_sessions": {},
+        "active_seconds": 55.05103756200697,
+        "status": "completed",
+        "native_notebook_audit": {
+          "ok": true,
+          "events": [],
+          "entries": [],
+          "authorized_map": {},
+          "normalized_actual_entries": [],
+          "native_persistence_verified": true,
+          "entry_hash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "final_text": "{\"value\": 12, \"unit\": \"nghìn đồng/cổ phiếu\", \"period\": \"2030-03-31\", \"source\": \"vn_quote_history\", \"evidence\": [{\"call_id\": \"7e9b7bfe-3f1d-4e8d-9c2d-3bd00851dd49\", \"tool\": \"vn_quote_history\", \"matched_entry_id\": \"source\", \"payload_sha256\": \"11744bd0a712f73655f048c2b492d79ba0eca4022230765126341c94fc2079d6\", \"response_sha256\": \"d5011aa0dfb5c753a710598bc10b99725af460e7611feaa695d01d4d8b983f69\", \"source\": \"synthetic-not-live\", \"as_of\": \"2030-04-01\"}]}",
+        "provider_ledger": "/tmp/v45-memory-ot_memory_on-zuvopd5l/runner/provider.jsonl",
+        "mcp_ledger": "/tmp/v45-memory-ot_memory_on-zuvopd5l/runner/mcp.jsonl",
+        "memory_access_ledger": "/tmp/v45-memory-ot_memory_on-zuvopd5l/runner/memory-access.jsonl",
+        "authorized_user_notebook": "/tmp/v45-memory-ot_memory_on-zuvopd5l/runner/authorized-user-notebook.json",
+        "usage": {
+          "input": 300,
+          "output": 60,
+          "cached": null,
+          "cache_read": null,
+          "cached_observed": 0,
+          "cache_complete": false,
+          "usage_requests": 3,
+          "requests": 3,
+          "complete": true
+        }
+      },
+      "local_requests": 3,
+      "pass_": true,
+      "completed_resume_new_calls": 0
+    },
+    {
+      "arm": "ot_memory_on",
+      "scenario": "fresh-session",
+      "work": "/tmp/v45-memory-ot_memory_on-jvdw6w0v",
+      "external_model_calls": 0,
+      "bun_binary": "/home/doanlong/extra/benchmark/experiments/toolchains/bun-1.4.4/bun",
+      "bun_sha256": "10702245766b225e70bbf6235fd6b47214fd94b4760d00ffaed8ab0df57ac235",
+      "state": {
+        "version": 1,
+        "model": "nvidia/deepseek-ai/deepseek-v4.1-flash",
+        "condition": "ot_memory_on",
+        "completed_turns": [
+          {
+            "session": "A",
+            "turn": 0,
+            "final": false,
+            "user_text": "FIXTURE_FRESH_SEED Nhớ ràng buộc người dùng: chỉ xem cổ phiếu có giá dưới hai mươi nghìn đồng.",
+            "result": {
+              "status": "ok",
+              "session_id": null,
+              "notes": "",
+              "native_completion": {
+                "outcome": "completed",
+                "unanswered": false,
+                "recoveries": []
+              },
+              "final_text": "Đã nhận yêu cầu người dùng. Controller sẽ chỉ lưu đúng nội dung được cho phép.",
+              "tokens": {
+                "input": 100,
+                "output": 20,
+                "cached": null,
+                "cache_read": null,
+                "cached_observed": 0,
+                "cache_complete": false,
+                "usage_requests": 1,
+                "requests": 1,
+                "complete": true
+              },
+              "provider_requests": 1,
+              "provider_usage": {
+                "input": 100,
+                "output": 20,
+                "cached": null,
+                "cache_read": null,
+                "cached_observed": 0,
+                "cache_complete": false,
+                "usage_requests": 1,
+                "requests": 1,
+                "complete": true
+              },
+              "inventory_path": "/tmp/v45-memory-ot_memory_on-jvdw6w0v/runner/inventory.json",
+              "provider_ledger": "/tmp/v45-memory-ot_memory_on-jvdw6w0v/runner/provider.jsonl",
+              "answer_path": null,
+              "answer_candidates": [],
+              "transport_recovered": false,
+              "first_attempt_completed": true,
+              "token_reservations_not_observed_usage": 0,
+              "native_derived_ledger": "/tmp/v45-memory-ot_memory_on-jvdw6w0v/runner/native-derived.jsonl"
+            },
+            "provider_rows_start": 0,
+            "provider_rows_end": 1,
+            "unauthorized_write": false,
+            "native_memory_before": {
+              "ok": true,
+              "events": [],
+              "entries": [],
+              "authorized_map": {},
+              "normalized_actual_entries": [],
+              "native_persistence_verified": true,
+              "entry_hash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+            },
+            "native_memory_after": {
+              "ok": true,
+              "events": [],
+              "entries": [],
+              "authorized_map": {},
+              "normalized_actual_entries": [],
+              "native_persistence_verified": true,
+              "entry_hash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+            },
+            "user_operations": {
+              "events": [
+                {
+                  "op": "put",
+                  "id": "fixture-price-limit",
+                  "revision": 1,
+                  "source_user_turn_sha256": "ee359e9a0c7fbb6c0aaaa5b77086bc196f6a41725bd90a4375d605b294152f57"
+                }
+              ],
+              "native_user_form": {
+                "ok": true,
+                "events": [
+                  {
+                    "id": "fixture-price-limit",
+                    "op": "put",
+                    "kind": "constraint",
+                    "native_saved": {
+                      "id": 1,
+                      "version": 1,
+                      "group": "constraint"
+                    },
+                    "source_user_turn_sha256": "ee359e9a0c7fbb6c0aaaa5b77086bc196f6a41725bd90a4375d605b294152f57"
+                  }
+                ],
+                "entries": [
+                  {
+                    "group": "constraint",
+                    "id": 1,
+                    "version": 1,
+                    "title": "FIXTURE_FRESH_SEED Nhớ ràng buộc người dùng: chỉ xem cổ phiếu có giá dưới hai mươi nghìn đồng.",
+                    "text": "FIXTURE_FRESH_SEED Nhớ ràng buộc người dùng: chỉ xem cổ phiếu có giá dưới hai mươi nghìn đồng.",
+                    "detail": "FIXTURE_FRESH_SEED Nhớ ràng buộc người dùng: chỉ xem cổ phiếu có giá dưới hai mươi nghìn đồng.\nBản 1 · lưu 08/11/2026 · nguồn: tự ghi",
+                    "createdAt": "2026-11-08T13:25:51.596Z"
+                  }
+                ],
+                "authorized_map": {
+                  "fixture-price-limit": {
+                    "id": 1,
+                    "version": 1,
+                    "group": "constraint"
+                  }
+                },
+                "normalized_actual_entries": [
+                  {
+                    "user_fact_id": "fixture-price-limit",
+                    "native_id": 1,
+                    "version": 1,
+                    "kind": "constraint",
+                    "text": "FIXTURE_FRESH_SEED Nhớ ràng buộc người dùng: chỉ xem cổ phiếu có giá dưới hai mươi nghìn đồng.",
+                    "active": true
+                  }
+                ],
+                "native_persistence_verified": true,
+                "entry_hash": "239cf1c9a3d29c8a7f98d3de2dea590693112fa287295acc647408f2a3a9746c"
+              },
+              "notebook_hash": "4ac17528c44de6dc0635c28c0b789e2c8448ea29c6c975a7787cee85b3e947fa"
+            }
+          },
+          {
+            "session": "B",
+            "turn": 0,
+            "final": true,
+            "user_text": "FIXTURE_FRESH_QUERY Đọc notebook được ủy quyền rồi quote SYN; trả giá và memory_evidence thật. Trả một object JSON: {\"value\":0,\"unit\":\"nghìn đồng/cổ phiếu\",\"period\":\"2030-03-31\",\"source\":\"vn_quote_history\",\"evidence\":[]} dùng biên nhận nguồn thật.",
+            "result": {
+              "status": "ok",
+              "session_id": null,
+              "notes": "",
+              "native_completion": {
+                "outcome": "completed",
+                "unanswered": false,
+                "recoveries": []
+              },
+              "final_text": "{\"value\": 12, \"unit\": \"nghìn đồng/cổ phiếu\", \"period\": \"2030-03-31\", \"source\": \"vn_quote_history\", \"evidence\": [{\"call_id\": \"6d7079c8-1af6-465b-94e8-5b55a64a4ade\", \"tool\": \"vn_quote_history\", \"matched_entry_id\": \"source\", \"payload_sha256\": \"11744bd0a712f73655f048c2b492d79ba0eca4022230765126341c94fc2079d6\", \"response_sha256\": \"d5011aa0dfb5c753a710598bc10b99725af460e7611feaa695d01d4d8b983f69\", \"source\": \"synthetic-not-live\", \"as_of\": \"2030-04-01\"}], \"memory_evidence\": [{\"id\": \"fixture-price-limit\", \"revision\": 1, \"source_session\": \"A\", \"source_turn\": 0, \"source_user_turn_sha256\": \"ee359e9a0c7fbb6c0aaaa5b77086bc196f6a41725bd90a4375d605b294152f57\"}]}",
+              "tokens": {
+                "input": 400,
+                "output": 80,
+                "cached": null,
+                "cache_read": null,
+                "cached_observed": 0,
+                "cache_complete": false,
+                "usage_requests": 4,
+                "requests": 4,
+                "complete": true
+              },
+              "provider_requests": 4,
+              "provider_usage": {
+                "input": 400,
+                "output": 80,
+                "cached": null,
+                "cache_read": null,
+                "cached_observed": 0,
+                "cache_complete": false,
+                "usage_requests": 4,
+                "requests": 4,
+                "complete": true
+              },
+              "inventory_path": "/tmp/v45-memory-ot_memory_on-jvdw6w0v/runner/inventory.json",
+              "provider_ledger": "/tmp/v45-memory-ot_memory_on-jvdw6w0v/runner/provider.jsonl",
+              "answer_path": null,
+              "answer_candidates": [],
+              "transport_recovered": false,
+              "first_attempt_completed": true,
+              "token_reservations_not_observed_usage": 0,
+              "native_derived_ledger": "/tmp/v45-memory-ot_memory_on-jvdw6w0v/runner/native-derived.jsonl"
+            },
+            "provider_rows_start": 1,
+            "provider_rows_end": 4,
+            "unauthorized_write": false,
+            "native_memory_before": {
+              "ok": true,
+              "events": [],
+              "entries": [
+                {
+                  "group": "constraint",
+                  "id": 1,
+                  "version": 1,
+                  "title": "FIXTURE_FRESH_SEED Nhớ ràng buộc người dùng: chỉ xem cổ phiếu có giá dưới hai mươi nghìn đồng.",
+                  "text": "FIXTURE_FRESH_SEED Nhớ ràng buộc người dùng: chỉ xem cổ phiếu có giá dưới hai mươi nghìn đồng.",
+                  "detail": "FIXTURE_FRESH_SEED Nhớ ràng buộc người dùng: chỉ xem cổ phiếu có giá dưới hai mươi nghìn đồng.\nBản 1 · lưu 08/11/2026 · nguồn: tự ghi",
+                  "createdAt": "2026-11-08T13:25:51.596Z"
+                }
+              ],
+              "authorized_map": {
+                "fixture-price-limit": {
+                  "id": 1,
+                  "version": 1,
+                  "group": "constraint"
+                }
+              },
+              "normalized_actual_entries": [
+                {
+                  "user_fact_id": "fixture-price-limit",
+                  "native_id": 1,
+                  "version": 1,
+                  "kind": "constraint",
+                  "text": "FIXTURE_FRESH_SEED Nhớ ràng buộc người dùng: chỉ xem cổ phiếu có giá dưới hai mươi nghìn đồng.",
+                  "active": true
+                }
+              ],
+              "native_persistence_verified": true,
+              "entry_hash": "239cf1c9a3d29c8a7f98d3de2dea590693112fa287295acc647408f2a3a9746c"
+            },
+            "native_memory_after": {
+              "ok": true,
+              "events": [],
+              "entries": [
+                {
+                  "group": "constraint",
+                  "id": 1,
+                  "version": 1,
+                  "title": "FIXTURE_FRESH_SEED Nhớ ràng buộc người dùng: chỉ xem cổ phiếu có giá dưới hai mươi nghìn đồng.",
+                  "text": "FIXTURE_FRESH_SEED Nhớ ràng buộc người dùng: chỉ xem cổ phiếu có giá dưới hai mươi nghìn đồng.",
+                  "detail": "FIXTURE_FRESH_SEED Nhớ ràng buộc người dùng: chỉ xem cổ phiếu có giá dưới hai mươi nghìn đồng.\nBản 1 · lưu 08/11/2026 · nguồn: tự ghi",
+                  "createdAt": "2026-11-08T13:25:51.596Z"
+                }
+              ],
+              "authorized_map": {
+                "fixture-price-limit": {
+                  "id": 1,
+                  "version": 1,
+                  "group": "constraint"
+                }
+              },
+              "normalized_actual_entries": [
+                {
+                  "user_fact_id": "fixture-price-limit",
+                  "native_id": 1,
+                  "version": 1,
+                  "kind": "constraint",
+                  "text": "FIXTURE_FRESH_SEED Nhớ ràng buộc người dùng: chỉ xem cổ phiếu có giá dưới hai mươi nghìn đồng.",
+                  "active": true
+                }
+              ],
+              "native_persistence_verified": true,
+              "entry_hash": "239cf1c9a3d29c8a7f98d3de2dea590693112fa287295acc647408f2a3a9746c"
+            },
+            "user_operations": {
+              "events": [],
+              "native_user_form": null,
+              "notebook_hash": "4ac17528c44de6dc0635c28c0b789e2c8448ea29c6c975a7787cee85b3e947fa"
+            }
+          }
+        ],
+        "native_sessions": {},
+        "active_seconds": 47.4945862290042,
+        "status": "completed",
+        "native_notebook_audit": {
+          "ok": true,
+          "events": [],
+          "entries": [
+            {
+              "group": "constraint",
+              "id": 1,
+              "version": 1,
+              "title": "FIXTURE_FRESH_SEED Nhớ ràng buộc người dùng: chỉ xem cổ phiếu có giá dưới hai mươi nghìn đồng.",
+              "text": "FIXTURE_FRESH_SEED Nhớ ràng buộc người dùng: chỉ xem cổ phiếu có giá dưới hai mươi nghìn đồng.",
+              "detail": "FIXTURE_FRESH_SEED Nhớ ràng buộc người dùng: chỉ xem cổ phiếu có giá dưới hai mươi nghìn đồng.\nBản 1 · lưu 08/11/2026 · nguồn: tự ghi",
+              "createdAt": "2026-11-08T13:25:51.596Z"
+            }
+          ],
+          "authorized_map": {
+            "fixture-price-limit": {
+              "id": 1,
+              "version": 1,
+              "group": "constraint"
+            }
+          },
+          "normalized_actual_entries": [
+            {
+              "user_fact_id": "fixture-price-limit",
+              "native_id": 1,
+              "version": 1,
+              "kind": "constraint",
+              "text": "FIXTURE_FRESH_SEED Nhớ ràng buộc người dùng: chỉ xem cổ phiếu có giá dưới hai mươi nghìn đồng.",
+              "active": true
+            }
+          ],
+          "native_persistence_verified": true,
+          "entry_hash": "239cf1c9a3d29c8a7f98d3de2dea590693112fa287295acc647408f2a3a9746c"
+        },
+        "final_text": "{\"value\": 12, \"unit\": \"nghìn đồng/cổ phiếu\", \"period\": \"2030-03-31\", \"source\": \"vn_quote_history\", \"evidence\": [{\"call_id\": \"6d7079c8-1af6-465b-94e8-5b55a64a4ade\", \"tool\": \"vn_quote_history\", \"matched_entry_id\": \"source\", \"payload_sha256\": \"11744bd0a712f73655f048c2b492d79ba0eca4022230765126341c94fc2079d6\", \"response_sha256\": \"d5011aa0dfb5c753a710598bc10b99725af460e7611feaa695d01d4d8b983f69\", \"source\": \"synthetic-not-live\", \"as_of\": \"2030-04-01\"}], \"memory_evidence\": [{\"id\": \"fixture-price-limit\", \"revision\": 1, \"source_session\": \"A\", \"source_turn\": 0, \"source_user_turn_sha256\": \"ee359e9a0c7fbb6c0aaaa5b77086bc196f6a41725bd90a4375d605b294152f57\"}]}",
+        "provider_ledger": "/tmp/v45-memory-ot_memory_on-jvdw6w0v/runner/provider.jsonl",
+        "mcp_ledger": "/tmp/v45-memory-ot_memory_on-jvdw6w0v/runner/mcp.jsonl",
+        "memory_access_ledger": "/tmp/v45-memory-ot_memory_on-jvdw6w0v/runner/memory-access.jsonl",
+        "authorized_user_notebook": "/tmp/v45-memory-ot_memory_on-jvdw6w0v/runner/authorized-user-notebook.json",
+        "usage": {
+          "input": 400,
+          "output": 80,
+          "cached": null,
+          "cache_read": null,
+          "cached_observed": 0,
+          "cache_complete": false,
+          "usage_requests": 4,
+          "requests": 4,
+          "complete": true
+        }
+      },
+      "local_requests": 4,
+      "pass_": true,
+      "completed_resume_new_calls": 0
+    },
+    {
+      "arm": "ot_memory_off",
+      "scenario": "same-session",
+      "work": "/tmp/v45-memory-ot_memory_off-olc0pwti",
+      "external_model_calls": 0,
+      "bun_binary": "/home/doanlong/extra/benchmark/experiments/toolchains/bun-1.4.4/bun",
+      "bun_sha256": "10702245766b225e70bbf6235fd6b47214fd94b4760d00ffaed8ab0df57ac235",
+      "state": {
+        "version": 1,
+        "model": "nvidia/deepseek-ai/deepseek-v4.1-flash",
+        "condition": "ot_memory_off",
+        "completed_turns": [
+          {
+            "session": "S1",
+            "turn": 0,
+            "final": false,
+            "user_text": "FIXTURE_SAME_SEED Đọc quote SYN bằng vn_quote_history và xác nhận đã hoàn tất.",
+            "result": {
+              "status": "ok",
+              "session_id": null,
+              "notes": "",
+              "native_completion": {
+                "outcome": "completed",
+                "unanswered": false,
+                "recoveries": []
+              },
+              "final_text": "Đã hoàn tất đọc nguồn. NONCE_AZURE_CEDAR chứng minh bản ghi assistant được tiếp tục.",
+              "tokens": {
+                "input": 200,
+                "output": 40,
+                "cached": null,
+                "cache_read": null,
+                "cached_observed": 0,
+                "cache_complete": false,
+                "usage_requests": 2,
+                "requests": 2,
+                "complete": true
+              },
+              "provider_requests": 2,
+              "provider_usage": {
+                "input": 200,
+                "output": 40,
+                "cached": null,
+                "cache_read": null,
+                "cached_observed": 0,
+                "cache_complete": false,
+                "usage_requests": 2,
+                "requests": 2,
+                "complete": true
+              },
+              "inventory_path": "/tmp/v45-memory-ot_memory_off-olc0pwti/runner/inventory.json",
+              "provider_ledger": "/tmp/v45-memory-ot_memory_off-olc0pwti/runner/provider.jsonl",
+              "answer_path": null,
+              "answer_candidates": [],
+              "transport_recovered": false,
+              "first_attempt_completed": true,
+              "token_reservations_not_observed_usage": 0,
+              "native_derived_ledger": "/tmp/v45-memory-ot_memory_off-olc0pwti/runner/native-derived.jsonl"
+            },
+            "provider_rows_start": 0,
+            "provider_rows_end": 2,
+            "unauthorized_write": false,
+            "native_memory_before": null,
+            "native_memory_after": null,
+            "user_operations": {
+              "events": [],
+              "native_user_form": null,
+              "notebook_hash": "29c94f9951b652af125b8b5886db0e363c5720505d852c5674efd418f0917dd6"
+            }
+          },
+          {
+            "session": "S1",
+            "turn": 1,
+            "final": true,
+            "user_text": "FIXTURE_SAME_QUERY Dùng lại quote/biên nhận đã đọc, không gọi lại tool. Trả một object JSON: {\"value\":0,\"unit\":\"nghìn đồng/cổ phiếu\",\"period\":\"2030-03-31\",\"source\":\"vn_quote_history\",\"evidence\":[]} dùng biên nhận nguồn thật.",
+            "result": {
+              "status": "ok",
+              "session_id": null,
+              "notes": "",
+              "native_completion": {
+                "outcome": "completed",
+                "unanswered": false,
+                "recoveries": []
+              },
+              "final_text": "{\"value\": 12, \"unit\": \"nghìn đồng/cổ phiếu\", \"period\": \"2030-03-31\", \"source\": \"vn_quote_history\", \"evidence\": [{\"call_id\": \"554abcd0-d082-41b5-aa1f-cffe33f8cb31\", \"tool\": \"vn_quote_history\", \"matched_entry_id\": \"source\", \"payload_sha256\": \"11744bd0a712f73655f048c2b492d79ba0eca4022230765126341c94fc2079d6\", \"response_sha256\": \"d5011aa0dfb5c753a710598bc10b99725af460e7611feaa695d01d4d8b983f69\", \"source\": \"synthetic-not-live\", \"as_of\": \"2030-04-01\"}]}",
+              "tokens": {
+                "input": 300,
+                "output": 60,
+                "cached": null,
+                "cache_read": null,
+                "cached_observed": 0,
+                "cache_complete": false,
+                "usage_requests": 3,
+                "requests": 3,
+                "complete": true
+              },
+              "provider_requests": 3,
+              "provider_usage": {
+                "input": 300,
+                "output": 60,
+                "cached": null,
+                "cache_read": null,
+                "cached_observed": 0,
+                "cache_complete": false,
+                "usage_requests": 3,
+                "requests": 3,
+                "complete": true
+              },
+              "inventory_path": "/tmp/v45-memory-ot_memory_off-olc0pwti/runner/inventory.json",
+              "provider_ledger": "/tmp/v45-memory-ot_memory_off-olc0pwti/runner/provider.jsonl",
+              "answer_path": null,
+              "answer_candidates": [],
+              "transport_recovered": false,
+              "first_attempt_completed": true,
+              "token_reservations_not_observed_usage": 0,
+              "native_derived_ledger": "/tmp/v45-memory-ot_memory_off-olc0pwti/runner/native-derived.jsonl"
+            },
+            "provider_rows_start": 2,
+            "provider_rows_end": 3,
+            "unauthorized_write": false,
+            "native_memory_before": null,
+            "native_memory_after": null,
+            "user_operations": {
+              "events": [],
+              "native_user_form": null,
+              "notebook_hash": "29c94f9951b652af125b8b5886db0e363c5720505d852c5674efd418f0917dd6"
+            }
+          }
+        ],
+        "native_sessions": {},
+        "active_seconds": 41.63950658599788,
+        "status": "completed",
+        "final_text": "{\"value\": 12, \"unit\": \"nghìn đồng/cổ phiếu\", \"period\": \"2030-03-31\", \"source\": \"vn_quote_history\", \"evidence\": [{\"call_id\": \"554abcd0-d082-41b5-aa1f-cffe33f8cb31\", \"tool\": \"vn_quote_history\", \"matched_entry_id\": \"source\", \"payload_sha256\": \"11744bd0a712f73655f048c2b492d79ba0eca4022230765126341c94fc2079d6\", \"response_sha256\": \"d5011aa0dfb5c753a710598bc10b99725af460e7611feaa695d01d4d8b983f69\", \"source\": \"synthetic-not-live\", \"as_of\": \"2030-04-01\"}]}",
+        "provider_ledger": "/tmp/v45-memory-ot_memory_off-olc0pwti/runner/provider.jsonl",
+        "mcp_ledger": "/tmp/v45-memory-ot_memory_off-olc0pwti/runner/mcp.jsonl",
+        "memory_access_ledger": "/tmp/v45-memory-ot_memory_off-olc0pwti/runner/memory-access.jsonl",
+        "authorized_user_notebook": "/tmp/v45-memory-ot_memory_off-olc0pwti/runner/authorized-user-notebook.json",
+        "usage": {
+          "input": 300,
+          "output": 60,
+          "cached": null,
+          "cache_read": null,
+          "cached_observed": 0,
+          "cache_complete": false,
+          "usage_requests": 3,
+          "requests": 3,
+          "complete": true
+        }
+      },
+      "local_requests": 3,
+      "pass_": true,
+      "completed_resume_new_calls": 0
+    },
+    {
+      "arm": "ot_memory_off",
+      "scenario": "fresh-session",
+      "work": "/tmp/v45-memory-ot_memory_off-ci4n1st2",
+      "external_model_calls": 0,
+      "bun_binary": "/home/doanlong/extra/benchmark/experiments/toolchains/bun-1.4.4/bun",
+      "bun_sha256": "10702245766b225e70bbf6235fd6b47214fd94b4760d00ffaed8ab0df57ac235",
+      "state": {
+        "version": 1,
+        "model": "nvidia/deepseek-ai/deepseek-v4.1-flash",
+        "condition": "ot_memory_off",
+        "completed_turns": [
+          {
+            "session": "A",
+            "turn": 0,
+            "final": false,
+            "user_text": "FIXTURE_FRESH_SEED Nhớ ràng buộc người dùng: chỉ xem cổ phiếu có giá dưới hai mươi nghìn đồng.",
+            "result": {
+              "status": "ok",
+              "session_id": null,
+              "notes": "",
+              "native_completion": {
+                "outcome": "completed",
+                "unanswered": false,
+                "recoveries": []
+              },
+              "final_text": "Đã nhận yêu cầu người dùng. Controller sẽ chỉ lưu đúng nội dung được cho phép.",
+              "tokens": {
+                "input": 100,
+                "output": 20,
+                "cached": null,
+                "cache_read": null,
+                "cached_observed": 0,
+                "cache_complete": false,
+                "usage_requests": 1,
+                "requests": 1,
+                "complete": true
+              },
+              "provider_requests": 1,
+              "provider_usage": {
+                "input": 100,
+                "output": 20,
+                "cached": null,
+                "cache_read": null,
+                "cached_observed": 0,
+                "cache_complete": false,
+                "usage_requests": 1,
+                "requests": 1,
+                "complete": true
+              },
+              "inventory_path": "/tmp/v45-memory-ot_memory_off-ci4n1st2/runner/inventory.json",
+              "provider_ledger": "/tmp/v45-memory-ot_memory_off-ci4n1st2/runner/provider.jsonl",
+              "answer_path": null,
+              "answer_candidates": [],
+              "transport_recovered": false,
+              "first_attempt_completed": true,
+              "token_reservations_not_observed_usage": 0,
+              "native_derived_ledger": "/tmp/v45-memory-ot_memory_off-ci4n1st2/runner/native-derived.jsonl"
+            },
+            "provider_rows_start": 0,
+            "provider_rows_end": 1,
+            "unauthorized_write": false,
+            "native_memory_before": null,
+            "native_memory_after": null,
+            "user_operations": {
+              "events": [
+                {
+                  "op": "put",
+                  "id": "fixture-price-limit",
+                  "revision": 1,
+                  "source_user_turn_sha256": "ee359e9a0c7fbb6c0aaaa5b77086bc196f6a41725bd90a4375d605b294152f57"
+                }
+              ],
+              "native_user_form": null,
+              "notebook_hash": "4ac17528c44de6dc0635c28c0b789e2c8448ea29c6c975a7787cee85b3e947fa"
+            }
+          },
+          {
+            "session": "B",
+            "turn": 0,
+            "final": true,
+            "user_text": "FIXTURE_FRESH_QUERY Đọc notebook được ủy quyền rồi quote SYN; trả giá và memory_evidence thật. Trả một object JSON: {\"value\":0,\"unit\":\"nghìn đồng/cổ phiếu\",\"period\":\"2030-03-31\",\"source\":\"vn_quote_history\",\"evidence\":[]} dùng biên nhận nguồn thật.",
+            "result": {
+              "status": "ok",
+              "session_id": null,
+              "notes": "",
+              "native_completion": {
+                "outcome": "completed",
+                "unanswered": false,
+                "recoveries": []
+              },
+              "final_text": "{\"value\": 12, \"unit\": \"nghìn đồng/cổ phiếu\", \"period\": \"2030-03-31\", \"source\": \"vn_quote_history\", \"evidence\": [{\"call_id\": \"c4e79831-8297-4abc-ba91-40ab95737d25\", \"tool\": \"vn_quote_history\", \"matched_entry_id\": \"source\", \"payload_sha256\": \"11744bd0a712f73655f048c2b492d79ba0eca4022230765126341c94fc2079d6\", \"response_sha256\": \"d5011aa0dfb5c753a710598bc10b99725af460e7611feaa695d01d4d8b983f69\", \"source\": \"synthetic-not-live\", \"as_of\": \"2030-04-01\"}], \"memory_evidence\": [{\"id\": \"fixture-price-limit\", \"revision\": 1, \"source_session\": \"A\", \"source_turn\": 0, \"source_user_turn_sha256\": \"ee359e9a0c7fbb6c0aaaa5b77086bc196f6a41725bd90a4375d605b294152f57\"}]}",
+              "tokens": {
+                "input": 400,
+                "output": 80,
+                "cached": null,
+                "cache_read": null,
+                "cached_observed": 0,
+                "cache_complete": false,
+                "usage_requests": 4,
+                "requests": 4,
+                "complete": true
+              },
+              "provider_requests": 4,
+              "provider_usage": {
+                "input": 400,
+                "output": 80,
+                "cached": null,
+                "cache_read": null,
+                "cached_observed": 0,
+                "cache_complete": false,
+                "usage_requests": 4,
+                "requests": 4,
+                "complete": true
+              },
+              "inventory_path": "/tmp/v45-memory-ot_memory_off-ci4n1st2/runner/inventory.json",
+              "provider_ledger": "/tmp/v45-memory-ot_memory_off-ci4n1st2/runner/provider.jsonl",
+              "answer_path": null,
+              "answer_candidates": [],
+              "transport_recovered": false,
+              "first_attempt_completed": true,
+              "token_reservations_not_observed_usage": 0,
+              "native_derived_ledger": "/tmp/v45-memory-ot_memory_off-ci4n1st2/runner/native-derived.jsonl"
+            },
+            "provider_rows_start": 1,
+            "provider_rows_end": 4,
+            "unauthorized_write": false,
+            "native_memory_before": null,
+            "native_memory_after": null,
+            "user_operations": {
+              "events": [],
+              "native_user_form": null,
+              "notebook_hash": "4ac17528c44de6dc0635c28c0b789e2c8448ea29c6c975a7787cee85b3e947fa"
+            }
+          }
+        ],
+        "native_sessions": {},
+        "active_seconds": 35.00821607100079,
+        "status": "completed",
+        "final_text": "{\"value\": 12, \"unit\": \"nghìn đồng/cổ phiếu\", \"period\": \"2030-03-31\", \"source\": \"vn_quote_history\", \"evidence\": [{\"call_id\": \"c4e79831-8297-4abc-ba91-40ab95737d25\", \"tool\": \"vn_quote_history\", \"matched_entry_id\": \"source\", \"payload_sha256\": \"11744bd0a712f73655f048c2b492d79ba0eca4022230765126341c94fc2079d6\", \"response_sha256\": \"d5011aa0dfb5c753a710598bc10b99725af460e7611feaa695d01d4d8b983f69\", \"source\": \"synthetic-not-live\", \"as_of\": \"2030-04-01\"}], \"memory_evidence\": [{\"id\": \"fixture-price-limit\", \"revision\": 1, \"source_session\": \"A\", \"source_turn\": 0, \"source_user_turn_sha256\": \"ee359e9a0c7fbb6c0aaaa5b77086bc196f6a41725bd90a4375d605b294152f57\"}]}",
+        "provider_ledger": "/tmp/v45-memory-ot_memory_off-ci4n1st2/runner/provider.jsonl",
+        "mcp_ledger": "/tmp/v45-memory-ot_memory_off-ci4n1st2/runner/mcp.jsonl",
+        "memory_access_ledger": "/tmp/v45-memory-ot_memory_off-ci4n1st2/runner/memory-access.jsonl",
+        "authorized_user_notebook": "/tmp/v45-memory-ot_memory_off-ci4n1st2/runner/authorized-user-notebook.json",
+        "usage": {
+          "input": 400,
+          "output": 80,
+          "cached": null,
+          "cache_read": null,
+          "cached_observed": 0,
+          "cache_complete": false,
+          "usage_requests": 4,
+          "requests": 4,
+          "complete": true
+        }
+      },
+      "local_requests": 4,
+      "pass_": true,
+      "completed_resume_new_calls": 0
+    },
+    {
+      "arm": "opencode",
+      "scenario": "same-session",
+      "work": "/tmp/v45-memory-opencode-hewc6_xh",
+      "external_model_calls": 0,
+      "bun_binary": "/home/doanlong/extra/benchmark/experiments/toolchains/bun-1.4.4/bun",
+      "bun_sha256": "10702245766b225e70bbf6235fd6b47214fd94b4760d00ffaed8ab0df57ac235",
+      "state": {
+        "version": 1,
+        "model": "nvidia/deepseek-ai/deepseek-v4.1-flash",
+        "condition": "opencode",
+        "completed_turns": [
+          {
+            "session": "S1",
+            "turn": 0,
+            "final": false,
+            "user_text": "FIXTURE_SAME_SEED Đọc quote SYN bằng vn_quote_history và xác nhận đã hoàn tất.",
+            "result": {
+              "status": "ok",
+              "final_text": "Đã hoàn tất đọc nguồn. NONCE_AZURE_CEDAR chứng minh bản ghi assistant được tiếp tục.",
+              "session_id": "ses_e44a7c97fffe1JmGGWjuf0sxfI",
+              "notes": "",
+              "tokens": {
+                "input": 200,
+                "output": 40,
+                "cached": null,
+                "cache_read": null,
+                "cached_observed": 0,
+                "cache_complete": false,
+                "usage_requests": 2,
+                "requests": 2,
+                "complete": true
+              },
+              "provider_requests": 2,
+              "provider_usage": {
+                "input": 200,
+                "output": 40,
+                "cached": null,
+                "cache_read": null,
+                "cached_observed": 0,
+                "cache_complete": false,
+                "usage_requests": 2,
+                "requests": 2,
+                "complete": true
+              },
+              "inventory_path": "/tmp/v45-memory-opencode-hewc6_xh/runner/inventory.json",
+              "provider_ledger": "/tmp/v45-memory-opencode-hewc6_xh/runner/provider.jsonl",
+              "answer_path": null,
+              "answer_candidates": [],
+              "transport_recovered": false,
+              "first_attempt_completed": true,
+              "token_reservations_not_observed_usage": 0,
+              "native_derived_ledger": null
+            },
+            "provider_rows_start": 0,
+            "provider_rows_end": 2,
+            "unauthorized_write": false,
+            "native_memory_before": null,
+            "native_memory_after": null,
+            "user_operations": {
+              "events": [],
+              "native_user_form": null,
+              "notebook_hash": "29c94f9951b652af125b8b5886db0e363c5720505d852c5674efd418f0917dd6"
+            }
+          },
+          {
+            "session": "S1",
+            "turn": 1,
+            "final": true,
+            "user_text": "FIXTURE_SAME_QUERY Dùng lại quote/biên nhận đã đọc, không gọi lại tool. Trả một object JSON: {\"value\":0,\"unit\":\"nghìn đồng/cổ phiếu\",\"period\":\"2030-03-31\",\"source\":\"vn_quote_history\",\"evidence\":[]} dùng biên nhận nguồn thật.",
+            "result": {
+              "status": "error",
+              "final_text": "",
+              "session_id": null,
+              "notes": "Cannot verify persisted OpenCode session before continuation",
+              "tokens": {
+                "input": 200,
+                "output": 40,
+                "cached": null,
+                "cache_read": null,
+                "cached_observed": 0,
+                "cache_complete": false,
+                "usage_requests": 2,
+                "requests": 2,
+                "complete": true
+              },
+              "provider_requests": 2,
+              "provider_usage": {
+                "input": 200,
+                "output": 40,
+                "cached": null,
+                "cache_read": null,
+                "cached_observed": 0,
+                "cache_complete": false,
+                "usage_requests": 2,
+                "requests": 2,
+                "complete": true
+              },
+              "inventory_path": "/tmp/v45-memory-opencode-hewc6_xh/runner/inventory.json",
+              "provider_ledger": "/tmp/v45-memory-opencode-hewc6_xh/runner/provider.jsonl",
+              "answer_path": null,
+              "answer_candidates": [],
+              "transport_recovered": false,
+              "first_attempt_completed": false,
+              "token_reservations_not_observed_usage": 0,
+              "native_derived_ledger": null
+            },
+            "provider_rows_start": 2,
+            "provider_rows_end": 2,
+            "unauthorized_write": false,
+            "native_memory_before": null,
+            "native_memory_after": null
+          }
+        ],
+        "native_sessions": {
+          "S1": "ses_e44a7c97fffe1JmGGWjuf0sxfI"
+        },
+        "active_seconds": 39.59000197298883,
+        "status": "dnf",
+        "final_text": "",
+        "provider_ledger": "/tmp/v45-memory-opencode-hewc6_xh/runner/provider.jsonl",
+        "mcp_ledger": "/tmp/v45-memory-opencode-hewc6_xh/runner/mcp.jsonl",
+        "memory_access_ledger": "/tmp/v45-memory-opencode-hewc6_xh/runner/memory-access.jsonl",
+        "authorized_user_notebook": "/tmp/v45-memory-opencode-hewc6_xh/runner/authorized-user-notebook.json",
+        "usage": {
+          "input": 200,
+          "output": 40,
+          "cached": null,
+          "cache_read": null,
+          "cached_observed": 0,
+          "cache_complete": false,
+          "usage_requests": 2,
+          "requests": 2,
+          "complete": true
+        }
+      },
+      "local_requests": 2,
+      "pass_": false,
+      "error": "{'version': 1, 'model': 'nvidia/deepseek-ai/deepseek-v4.1-flash', 'condition': 'opencode', 'completed_turns': [{'session': 'S1', 'turn': 0, 'final': False, 'user_text': 'FIXTURE_SAME_SEED Đọc quote SYN bằng vn_quote_history và xác nhận đã hoàn tất.', 'result': {'status': 'ok', 'final_text': 'Đã hoàn tất đọc nguồn. NONCE_AZURE_CEDAR chứng minh bản ghi assistant được tiếp tục.', 'session_id': 'ses_e44a7c97fffe1JmGGWjuf0sxfI', 'notes': '', 'tokens': {'input': 200, 'output': 40, 'cached': None, 'cache_read': None, 'cached_observed': 0, 'cache_complete': False, 'usage_requests': 2, 'requests': 2, 'complete': True}, 'provider_requests': 2, 'provider_usage': {'input': 200, 'output': 40, 'cached': None, 'cache_read': None, 'cached_observed': 0, 'cache_complete': False, 'usage_requests': 2, 'requests': 2, 'complete': True}, 'inventory_path': '/tmp/v45-memory-opencode-hewc6_xh/runner/inventory.json', 'provider_ledger': '/tmp/v45-memory-opencode-hewc6_xh/runner/provider.jsonl', 'answer_path': None, 'answer_candidates': [], 'transport_recovered': False, 'first_attempt_completed': True, 'token_reservations_not_observed_usage': 0, 'native_derived_ledger': None}, 'provider_rows_start': 0, 'provider_rows_end': 2, 'unauthorized_write': False, 'native_memory_before': None, 'native_memory_after': None, 'user_operations': {'events': [], 'native_user_form': None, 'notebook_hash': '29c94f9951b652af125b8b5886db0e363c5720505d852c5674efd418f0917dd6'}}, {'session': 'S1', 'turn': 1, 'final': True, 'user_text': 'FIXTURE_SAME_QUERY Dùng lại quote/biên nhận đã đọc, không gọi lại tool. Trả một object JSON: {\"value\":0,\"unit\":\"nghìn đồng/cổ phiếu\",\"period\":\"2030-03-31\",\"source\":\"vn_quote_history\",\"evidence\":[]} dùng biên nhận nguồn thật.', 'result': {'status': 'error', 'final_text': '', 'session_id': None, 'notes': 'Cannot verify persisted OpenCode session before continuation', 'tokens': {'input': 200, 'output': 40, 'cached': None, 'cache_read': None, 'cached_observed': 0, 'cache_complete': False, 'usage_requests': 2, 'requests': 2, 'complete': True}, 'provider_requests': 2, 'provider_usage': {'input': 200, 'output': 40, 'cached': None, 'cache_read': None, 'cached_observed': 0, 'cache_complete': False, 'usage_requests': 2, 'requests': 2, 'complete': True}, 'inventory_path': '/tmp/v45-memory-opencode-hewc6_xh/runner/inventory.json', 'provider_ledger': '/tmp/v45-memory-opencode-hewc6_xh/runner/provider.jsonl', 'answer_path': None, 'answer_candidates': [], 'transport_recovered': False, 'first_attempt_completed': False, 'token_reservations_not_observed_usage': 0, 'native_derived_ledger': None}, 'provider_rows_start': 2, 'provider_rows_end': 2, 'unauthorized_write': False, 'native_memory_before': None, 'native_memory_after': None}], 'native_sessions': {'S1': 'ses_e44a7c97fffe1JmGGWjuf0sxfI'}, 'active_seconds': 39.59000197298883, 'status': 'dnf', 'final_text': '', 'provider_ledger': '/tmp/v45-memory-opencode-hewc6_xh/runner/provider.jsonl', 'mcp_ledger': '/tmp/v45-memory-opencode-hewc6_xh/runner/mcp.jsonl', 'memory_access_ledger': '/tmp/v45-memory-opencode-hewc6_xh/runner/memory-access.jsonl', 'authorized_user_notebook': '/tmp/v45-memory-opencode-hewc6_xh/runner/authorized-user-notebook.json', 'usage': {'input': 200, 'output': 40, 'cached': None, 'cache_read': None, 'cached_observed': 0, 'cache_complete': False, 'usage_requests': 2, 'requests': 2, 'complete': True}}",
+      "traceback": "Traceback (most recent call last):\n  File \"/home/doanlong/extra/benchmark/audits/financial-memory-v45/verify-native-memory-wire.py\", line 64, in <module>\n    assert done['status']=='completed',done\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: {'version': 1, 'model': 'nvidia/deepseek-ai/deepseek-v4.1-flash', 'condition': 'opencode', 'completed_turns': [{'session': 'S1', 'turn': 0, 'final': False, 'user_text': 'FIXTURE_SAME_SEED Đọc quote SYN bằng vn_quote_history và xác nhận đã hoàn tất.', 'result': {'status': 'ok', 'final_text': 'Đã hoàn tất đọc nguồn. NONCE_AZURE_CEDAR chứng minh bản ghi assistant được tiếp tục.', 'session_id': 'ses_e44a7c97fffe1JmGGWjuf0sxfI', 'notes': '', 'tokens': {'input': 200, 'output': 40, 'cached': None, 'cache_read': None, 'cached_observed': 0, 'cache_complete': False, 'usage_requests': 2, 'requests': 2, 'complete': True}, 'provider_requests': 2, 'provider_usage': {'input': 200, 'output': 40, 'cached': None, 'cache_read': None, 'cached_observed': 0, 'cache_complete': False, 'usage_requests': 2, 'requests': 2, 'complete': True}, 'inventory_path': '/tmp/v45-memory-opencode-hewc6_xh/runner/inventory.json', 'provider_ledger': '/tmp/v45-memory-opencode-hewc6_xh/runner/provider.jsonl', 'answer_path': None, 'answer_candidates': [], 'transport_recovered': False, 'first_attempt_completed': True, 'token_reservations_not_observed_usage': 0, 'native_derived_ledger': None}, 'provider_rows_start': 0, 'provider_rows_end': 2, 'unauthorized_write': False, 'native_memory_before': None, 'native_memory_after': None, 'user_operations': {'events': [], 'native_user_form': None, 'notebook_hash': '29c94f9951b652af125b8b5886db0e363c5720505d852c5674efd418f0917dd6'}}, {'session': 'S1', 'turn': 1, 'final': True, 'user_text': 'FIXTURE_SAME_QUERY Dùng lại quote/biên nhận đã đọc, không gọi lại tool. Trả một object JSON: {\"value\":0,\"unit\":\"nghìn đồng/cổ phiếu\",\"period\":\"2030-03-31\",\"source\":\"vn_quote_history\",\"evidence\":[]} dùng biên nhận nguồn thật.', 'result': {'status': 'error', 'final_text': '', 'session_id': None, 'notes': 'Cannot verify persisted OpenCode session before continuation', 'tokens': {'input': 200, 'output': 40, 'cached': None, 'cache_read': None, 'cached_observed': 0, 'cache_complete': False, 'usage_requests': 2, 'requests': 2, 'complete': True}, 'provider_requests': 2, 'provider_usage': {'input': 200, 'output': 40, 'cached': None, 'cache_read': None, 'cached_observed': 0, 'cache_complete': False, 'usage_requests': 2, 'requests': 2, 'complete': True}, 'inventory_path': '/tmp/v45-memory-opencode-hewc6_xh/runner/inventory.json', 'provider_ledger': '/tmp/v45-memory-opencode-hewc6_xh/runner/provider.jsonl', 'answer_path': None, 'answer_candidates': [], 'transport_recovered': False, 'first_attempt_completed': False, 'token_reservations_not_observed_usage': 0, 'native_derived_ledger': None}, 'provider_rows_start': 2, 'provider_rows_end': 2, 'unauthorized_write': False, 'native_memory_before': None, 'native_memory_after': None}], 'native_sessions': {'S1': 'ses_e44a7c97fffe1JmGGWjuf0sxfI'}, 'active_seconds': 39.59000197298883, 'status': 'dnf', 'final_text': '', 'provider_ledger': '/tmp/v45-memory-opencode-hewc6_xh/runner/provider.jsonl', 'mcp_ledger': '/tmp/v45-memory-opencode-hewc6_xh/runner/mcp.jsonl', 'memory_access_ledger': '/tmp/v45-memory-opencode-hewc6_xh/runner/memory-access.jsonl', 'authorized_user_notebook': '/tmp/v45-memory-opencode-hewc6_xh/runner/authorized-user-notebook.json', 'usage': {'input': 200, 'output': 40, 'cached': None, 'cache_read': None, 'cached_observed': 0, 'cache_complete': False, 'usage_requests': 2, 'requests': 2, 'complete': True}}\n"
+    },
+    {
+      "arm": "opencode",
+      "scenario": "fresh-session",
+      "work": "/tmp/v45-memory-opencode-iz_7y_el",
+      "external_model_calls": 0,
+      "bun_binary": "/home/doanlong/extra/benchmark/experiments/toolchains/bun-1.4.4/bun",
+      "bun_sha256": "10702245766b225e70bbf6235fd6b47214fd94b4760d00ffaed8ab0df57ac235",
+      "state": {
+        "version": 1,
+        "model": "nvidia/deepseek-ai/deepseek-v4.1-flash",
+        "condition": "opencode",
+        "completed_turns": [
+          {
+            "session": "A",
+            "turn": 0,
+            "final": false,
+            "user_text": "FIXTURE_FRESH_SEED Nhớ ràng buộc người dùng: chỉ xem cổ phiếu có giá dưới hai mươi nghìn đồng.",
+            "result": {
+              "status": "ok",
+              "final_text": "Đã nhận yêu cầu người dùng. Controller sẽ chỉ lưu đúng nội dung được cho phép.",
+              "session_id": "ses_e44a733dfffeXn4notWdovn4Z3",
+              "notes": "",
+              "tokens": {
+                "input": 100,
+                "output": 20,
+                "cached": null,
+                "cache_read": null,
+                "cached_observed": 0,
+                "cache_complete": false,
+                "usage_requests": 1,
+                "requests": 1,
+                "complete": true
+              },
+              "provider_requests": 1,
+              "provider_usage": {
+                "input": 100,
+                "output": 20,
+                "cached": null,
+                "cache_read": null,
+                "cached_observed": 0,
+                "cache_complete": false,
+                "usage_requests": 1,
+                "requests": 1,
+                "complete": true
+              },
+              "inventory_path": "/tmp/v45-memory-opencode-iz_7y_el/runner/inventory.json",
+              "provider_ledger": "/tmp/v45-memory-opencode-iz_7y_el/runner/provider.jsonl",
+              "answer_path": null,
+              "answer_candidates": [],
+              "transport_recovered": false,
+              "first_attempt_completed": true,
+              "token_reservations_not_observed_usage": 0,
+              "native_derived_ledger": null
+            },
+            "provider_rows_start": 0,
+            "provider_rows_end": 1,
+            "unauthorized_write": false,
+            "native_memory_before": null,
+            "native_memory_after": null,
+            "user_operations": {
+              "events": [
+                {
+                  "op": "put",
+                  "id": "fixture-price-limit",
+                  "revision": 1,
+                  "source_user_turn_sha256": "ee359e9a0c7fbb6c0aaaa5b77086bc196f6a41725bd90a4375d605b294152f57"
+                }
+              ],
+              "native_user_form": null,
+              "notebook_hash": "4ac17528c44de6dc0635c28c0b789e2c8448ea29c6c975a7787cee85b3e947fa"
+            }
+          },
+          {
+            "session": "B",
+            "turn": 0,
+            "final": true,
+            "user_text": "FIXTURE_FRESH_QUERY Đọc notebook được ủy quyền rồi quote SYN; trả giá và memory_evidence thật. Trả một object JSON: {\"value\":0,\"unit\":\"nghìn đồng/cổ phiếu\",\"period\":\"2030-03-31\",\"source\":\"vn_quote_history\",\"evidence\":[]} dùng biên nhận nguồn thật.",
+            "result": {
+              "status": "ok",
+              "final_text": "{\"value\": 12, \"unit\": \"nghìn đồng/cổ phiếu\", \"period\": \"2030-03-31\", \"source\": \"vn_quote_history\", \"evidence\": [{\"call_id\": \"91821396-266a-43ac-afe8-3892e8c0c8cb\", \"tool\": \"vn_quote_history\", \"matched_entry_id\": \"source\", \"payload_sha256\": \"11744bd0a712f73655f048c2b492d79ba0eca4022230765126341c94fc2079d6\", \"response_sha256\": \"d5011aa0dfb5c753a710598bc10b99725af460e7611feaa695d01d4d8b983f69\", \"source\": \"synthetic-not-live\", \"as_of\": \"2030-04-01\"}], \"memory_evidence\": [{\"id\": \"fixture-price-limit\", \"revision\": 1, \"source_session\": \"A\", \"source_turn\": 0, \"source_user_turn_sha256\": \"ee359e9a0c7fbb6c0aaaa5b77086bc196f6a41725bd90a4375d605b294152f57\"}]}",
+              "session_id": "ses_e44a6edc7ffe1iSGlO5j54ee64",
+              "notes": "",
+              "tokens": {
+                "input": 400,
+                "output": 80,
+                "cached": null,
+                "cache_read": null,
+                "cached_observed": 0,
+                "cache_complete": false,
+                "usage_requests": 4,
+                "requests": 4,
+                "complete": true
+              },
+              "provider_requests": 4,
+              "provider_usage": {
+                "input": 400,
+                "output": 80,
+                "cached": null,
+                "cache_read": null,
+                "cached_observed": 0,
+                "cache_complete": false,
+                "usage_requests": 4,
+                "requests": 4,
+                "complete": true
+              },
+              "inventory_path": "/tmp/v45-memory-opencode-iz_7y_el/runner/inventory.json",
+              "provider_ledger": "/tmp/v45-memory-opencode-iz_7y_el/runner/provider.jsonl",
+              "answer_path": null,
+              "answer_candidates": [],
+              "transport_recovered": false,
+              "first_attempt_completed": true,
+              "token_reservations_not_observed_usage": 0,
+              "native_derived_ledger": null
+            },
+            "provider_rows_start": 1,
+            "provider_rows_end": 4,
+            "unauthorized_write": false,
+            "native_memory_before": null,
+            "native_memory_after": null,
+            "user_operations": {
+              "events": [],
+              "native_user_form": null,
+              "notebook_hash": "4ac17528c44de6dc0635c28c0b789e2c8448ea29c6c975a7787cee85b3e947fa"
+            }
+          }
+        ],
+        "native_sessions": {
+          "A": "ses_e44a733dfffeXn4notWdovn4Z3",
+          "B": "ses_e44a6edc7ffe1iSGlO5j54ee64"
+        },
+        "active_seconds": 36.14348033198621,
+        "status": "completed",
+        "final_text": "{\"value\": 12, \"unit\": \"nghìn đồng/cổ phiếu\", \"period\": \"2030-03-31\", \"source\": \"vn_quote_history\", \"evidence\": [{\"call_id\": \"91821396-266a-43ac-afe8-3892e8c0c8cb\", \"tool\": \"vn_quote_history\", \"matched_entry_id\": \"source\", \"payload_sha256\": \"11744bd0a712f73655f048c2b492d79ba0eca4022230765126341c94fc2079d6\", \"response_sha256\": \"d5011aa0dfb5c753a710598bc10b99725af460e7611feaa695d01d4d8b983f69\", \"source\": \"synthetic-not-live\", \"as_of\": \"2030-04-01\"}], \"memory_evidence\": [{\"id\": \"fixture-price-limit\", \"revision\": 1, \"source_session\": \"A\", \"source_turn\": 0, \"source_user_turn_sha256\": \"ee359e9a0c7fbb6c0aaaa5b77086bc196f6a41725bd90a4375d605b294152f57\"}]}",
+        "provider_ledger": "/tmp/v45-memory-opencode-iz_7y_el/runner/provider.jsonl",
+        "mcp_ledger": "/tmp/v45-memory-opencode-iz_7y_el/runner/mcp.jsonl",
+        "memory_access_ledger": "/tmp/v45-memory-opencode-iz_7y_el/runner/memory-access.jsonl",
+        "authorized_user_notebook": "/tmp/v45-memory-opencode-iz_7y_el/runner/authorized-user-notebook.json",
+        "usage": {
+          "input": 400,
+          "output": 80,
+          "cached": null,
+          "cache_read": null,
+          "cached_observed": 0,
+          "cache_complete": false,
+          "usage_requests": 4,
+          "requests": 4,
+          "complete": true
+        }
+      },
+      "local_requests": 4,
+      "pass_": true,
+      "completed_resume_new_calls": 0
+    },
+    {
+      "arm": "dsh",
+      "scenario": "same-session",
+      "work": "/tmp/v45-memory-dsh-u7qo75ux",
+      "external_model_calls": 0,
+      "bun_binary": "/home/doanlong/extra/benchmark/experiments/toolchains/bun-1.4.4/bun",
+      "bun_sha256": "10702245766b225e70bbf6235fd6b47214fd94b4760d00ffaed8ab0df57ac235",
+      "state": {
+        "version": 1,
+        "model": "nvidia/deepseek-ai/deepseek-v4.1-flash",
+        "condition": "dsh",
+        "completed_turns": [
+          {
+            "session": "S1",
+            "turn": 0,
+            "final": false,
+            "user_text": "FIXTURE_SAME_SEED Đọc quote SYN bằng vn_quote_history và xác nhận đã hoàn tất.",
+            "result": {
+              "status": "ok",
+              "final_text": "Đã hoàn tất đọc nguồn. NONCE_AZURE_CEDAR chứng minh bản ghi assistant được tiếp tục.",
+              "session_id": "session-ca93fe36-c5e1-48aa-b99b-728b528da89f",
+              "notes": "",
+              "tokens": {
+                "input": 200,
+                "output": 40,
+                "cached": null,
+                "cache_read": null,
+                "cached_observed": 0,
+                "cache_complete": false,
+                "usage_requests": 2,
+                "requests": 2,
+                "complete": true
+              },
+              "provider_requests": 2,
+              "provider_usage": {
+                "input": 200,
+                "output": 40,
+                "cached": null,
+                "cache_read": null,
+                "cached_observed": 0,
+                "cache_complete": false,
+                "usage_requests": 2,
+                "requests": 2,
+                "complete": true
+              },
+              "inventory_path": "/tmp/v45-memory-dsh-u7qo75ux/runner/inventory.json",
+              "provider_ledger": "/tmp/v45-memory-dsh-u7qo75ux/runner/provider.jsonl",
+              "answer_path": null,
+              "answer_candidates": [],
+              "transport_recovered": false,
+              "first_attempt_completed": true,
+              "token_reservations_not_observed_usage": 0,
+              "native_derived_ledger": null
+            },
+            "provider_rows_start": 0,
+            "provider_rows_end": 2,
+            "unauthorized_write": false,
+            "native_memory_before": null,
+            "native_memory_after": null,
+            "user_operations": {
+              "events": [],
+              "native_user_form": null,
+              "notebook_hash": "29c94f9951b652af125b8b5886db0e363c5720505d852c5674efd418f0917dd6"
+            }
+          },
+          {
+            "session": "S1",
+            "turn": 1,
+            "final": true,
+            "user_text": "FIXTURE_SAME_QUERY Dùng lại quote/biên nhận đã đọc, không gọi lại tool. Trả một object JSON: {\"value\":0,\"unit\":\"nghìn đồng/cổ phiếu\",\"period\":\"2030-03-31\",\"source\":\"vn_quote_history\",\"evidence\":[]} dùng biên nhận nguồn thật.",
+            "result": {
+              "status": "ok",
+              "final_text": "{\"value\": 12, \"unit\": \"nghìn đồng/cổ phiếu\", \"period\": \"2030-03-31\", \"source\": \"vn_quote_history\", \"evidence\": [{\"call_id\": \"31404f54-f102-48e7-93b3-34fb071f0d3d\", \"tool\": \"vn_quote_history\", \"matched_entry_id\": \"source\", \"payload_sha256\": \"11744bd0a712f73655f048c2b492d79ba0eca4022230765126341c94fc2079d6\", \"response_sha256\": \"d5011aa0dfb5c753a710598bc10b99725af460e7611feaa695d01d4d8b983f69\", \"source\": \"synthetic-not-live\", \"as_of\": \"2030-04-01\"}]}",
+              "session_id": "session-ca93fe36-c5e1-48aa-b99b-728b528da89f",
+              "notes": "",
+              "tokens": {
+                "input": 300,
+                "output": 60,
+                "cached": null,
+                "cache_read": null,
+                "cached_observed": 0,
+                "cache_complete": false,
+                "usage_requests": 3,
+                "requests": 3,
+                "complete": true
+              },
+              "provider_requests": 3,
+              "provider_usage": {
+                "input": 300,
+                "output": 60,
+                "cached": null,
+                "cache_read": null,
+                "cached_observed": 0,
+                "cache_complete": false,
+                "usage_requests": 3,
+                "requests": 3,
+                "complete": true
+              },
+              "inventory_path": "/tmp/v45-memory-dsh-u7qo75ux/runner/inventory.json",
+              "provider_ledger": "/tmp/v45-memory-dsh-u7qo75ux/runner/provider.jsonl",
+              "answer_path": null,
+              "answer_candidates": [],
+              "transport_recovered": false,
+              "first_attempt_completed": true,
+              "token_reservations_not_observed_usage": 0,
+              "native_derived_ledger": null
+            },
+            "provider_rows_start": 2,
+            "provider_rows_end": 3,
+            "unauthorized_write": false,
+            "native_memory_before": null,
+            "native_memory_after": null,
+            "user_operations": {
+              "events": [],
+              "native_user_form": null,
+              "notebook_hash": "29c94f9951b652af125b8b5886db0e363c5720505d852c5674efd418f0917dd6"
+            }
+          }
+        ],
+        "native_sessions": {
+          "S1": "session-ca93fe36-c5e1-48aa-b99b-728b528da89f"
+        },
+        "active_seconds": 60.63317280000774,
+        "status": "completed",
+        "final_text": "{\"value\": 12, \"unit\": \"nghìn đồng/cổ phiếu\", \"period\": \"2030-03-31\", \"source\": \"vn_quote_history\", \"evidence\": [{\"call_id\": \"31404f54-f102-48e7-93b3-34fb071f0d3d\", \"tool\": \"vn_quote_history\", \"matched_entry_id\": \"source\", \"payload_sha256\": \"11744bd0a712f73655f048c2b492d79ba0eca4022230765126341c94fc2079d6\", \"response_sha256\": \"d5011aa0dfb5c753a710598bc10b99725af460e7611feaa695d01d4d8b983f69\", \"source\": \"synthetic-not-live\", \"as_of\": \"2030-04-01\"}]}",
+        "provider_ledger": "/tmp/v45-memory-dsh-u7qo75ux/runner/provider.jsonl",
+        "mcp_ledger": "/tmp/v45-memory-dsh-u7qo75ux/runner/mcp.jsonl",
+        "memory_access_ledger": "/tmp/v45-memory-dsh-u7qo75ux/runner/memory-access.jsonl",
+        "authorized_user_notebook": "/tmp/v45-memory-dsh-u7qo75ux/runner/authorized-user-notebook.json",
+        "usage": {
+          "input": 300,
+          "output": 60,
+          "cached": null,
+          "cache_read": null,
+          "cached_observed": 0,
+          "cache_complete": false,
+          "usage_requests": 3,
+          "requests": 3,
+          "complete": true
+        }
+      },
+      "local_requests": 3,
+      "pass_": true,
+      "completed_resume_new_calls": 0
+    },
+    {
+      "arm": "dsh",
+      "scenario": "fresh-session",
+      "work": "/tmp/v45-memory-dsh-y_9r18v_",
+      "external_model_calls": 0,
+      "bun_binary": "/home/doanlong/extra/benchmark/experiments/toolchains/bun-1.4.4/bun",
+      "bun_sha256": "10702245766b225e70bbf6235fd6b47214fd94b4760d00ffaed8ab0df57ac235",
+      "state": {
+        "version": 1,
+        "model": "nvidia/deepseek-ai/deepseek-v4.1-flash",
+        "condition": "dsh",
+        "completed_turns": [
+          {
+            "session": "A",
+            "turn": 0,
+            "final": false,
+            "user_text": "FIXTURE_FRESH_SEED Nhớ ràng buộc người dùng: chỉ xem cổ phiếu có giá dưới hai mươi nghìn đồng.",
+            "result": {
+              "status": "ok",
+              "final_text": "Đã nhận yêu cầu người dùng. Controller sẽ chỉ lưu đúng nội dung được cho phép.",
+              "session_id": "session-dec7d1a8-c799-48f3-9bf5-8bc5808c1090",
+              "notes": "",
+              "tokens": {
+                "input": 100,
+                "output": 20,
+                "cached": null,
+                "cache_read": null,
+                "cached_observed": 0,
+                "cache_complete": false,
+                "usage_requests": 1,
+                "requests": 1,
+                "complete": true
+              },
+              "provider_requests": 1,
+              "provider_usage": {
+                "input": 100,
+                "output": 20,
+                "cached": null,
+                "cache_read": null,
+                "cached_observed": 0,
+                "cache_complete": false,
+                "usage_requests": 1,
+                "requests": 1,
+                "complete": true
+              },
+              "inventory_path": "/tmp/v45-memory-dsh-y_9r18v_/runner/inventory.json",
+              "provider_ledger": "/tmp/v45-memory-dsh-y_9r18v_/runner/provider.jsonl",
+              "answer_path": null,
+              "answer_candidates": [],
+              "transport_recovered": false,
+              "first_attempt_completed": true,
+              "token_reservations_not_observed_usage": 0,
+              "native_derived_ledger": null
+            },
+            "provider_rows_start": 0,
+            "provider_rows_end": 1,
+            "unauthorized_write": false,
+            "native_memory_before": null,
+            "native_memory_after": null,
+            "user_operations": {
+              "events": [
+                {
+                  "op": "put",
+                  "id": "fixture-price-limit",
+                  "revision": 1,
+                  "source_user_turn_sha256": "ee359e9a0c7fbb6c0aaaa5b77086bc196f6a41725bd90a4375d605b294152f57"
+                }
+              ],
+              "native_user_form": null,
+              "notebook_hash": "4ac17528c44de6dc0635c28c0b789e2c8448ea29c6c975a7787cee85b3e947fa"
+            }
+          },
+          {
+            "session": "B",
+            "turn": 0,
+            "final": true,
+            "user_text": "FIXTURE_FRESH_QUERY Đọc notebook được ủy quyền rồi quote SYN; trả giá và memory_evidence thật. Trả một object JSON: {\"value\":0,\"unit\":\"nghìn đồng/cổ phiếu\",\"period\":\"2030-03-31\",\"source\":\"vn_quote_history\",\"evidence\":[]} dùng biên nhận nguồn thật.",
+            "result": {
+              "status": "ok",
+              "final_text": "{\"value\": 12, \"unit\": \"nghìn đồng/cổ phiếu\", \"period\": \"2030-03-31\", \"source\": \"vn_quote_history\", \"evidence\": [{\"call_id\": \"d043d9b4-0de6-42f8-b9af-d191e7e93aaa\", \"tool\": \"vn_quote_history\", \"matched_entry_id\": \"source\", \"payload_sha256\": \"11744bd0a712f73655f048c2b492d79ba0eca4022230765126341c94fc2079d6\", \"response_sha256\": \"d5011aa0dfb5c753a710598bc10b99725af460e7611feaa695d01d4d8b983f69\", \"source\": \"synthetic-not-live\", \"as_of\": \"2030-04-01\"}], \"memory_evidence\": [{\"id\": \"fixture-price-limit\", \"revision\": 1, \"source_session\": \"A\", \"source_turn\": 0, \"source_user_turn_sha256\": \"ee359e9a0c7fbb6c0aaaa5b77086bc196f6a41725bd90a4375d605b294152f57\"}]}",
+              "session_id": "session-8e3970b9-45dc-466d-950f-6b697f51d567",
+              "notes": "",
+              "tokens": {
+                "input": 400,
+                "output": 80,
+                "cached": null,
+                "cache_read": null,
+                "cached_observed": 0,
+                "cache_complete": false,
+                "usage_requests": 4,
+                "requests": 4,
+                "complete": true
+              },
+              "provider_requests": 4,
+              "provider_usage": {
+                "input": 400,
+                "output": 80,
+                "cached": null,
+                "cache_read": null,
+                "cached_observed": 0,
+                "cache_complete": false,
+                "usage_requests": 4,
+                "requests": 4,
+                "complete": true
+              },
+              "inventory_path": "/tmp/v45-memory-dsh-y_9r18v_/runner/inventory.json",
+              "provider_ledger": "/tmp/v45-memory-dsh-y_9r18v_/runner/provider.jsonl",
+              "answer_path": null,
+              "answer_candidates": [],
+              "transport_recovered": false,
+              "first_attempt_completed": true,
+              "token_reservations_not_observed_usage": 0,
+              "native_derived_ledger": null
+            },
+            "provider_rows_start": 1,
+            "provider_rows_end": 4,
+            "unauthorized_write": false,
+            "native_memory_before": null,
+            "native_memory_after": null,
+            "user_operations": {
+              "events": [],
+              "native_user_form": null,
+              "notebook_hash": "4ac17528c44de6dc0635c28c0b789e2c8448ea29c6c975a7787cee85b3e947fa"
+            }
+          }
+        ],
+        "native_sessions": {
+          "A": "session-dec7d1a8-c799-48f3-9bf5-8bc5808c1090",
+          "B": "session-8e3970b9-45dc-466d-950f-6b697f51d567"
+        },
+        "active_seconds": 52.60493065400806,
+        "status": "completed",
+        "final_text": "{\"value\": 12, \"unit\": \"nghìn đồng/cổ phiếu\", \"period\": \"2030-03-31\", \"source\": \"vn_quote_history\", \"evidence\": [{\"call_id\": \"d043d9b4-0de6-42f8-b9af-d191e7e93aaa\", \"tool\": \"vn_quote_history\", \"matched_entry_id\": \"source\", \"payload_sha256\": \"11744bd0a712f73655f048c2b492d79ba0eca4022230765126341c94fc2079d6\", \"response_sha256\": \"d5011aa0dfb5c753a710598bc10b99725af460e7611feaa695d01d4d8b983f69\", \"source\": \"synthetic-not-live\", \"as_of\": \"2030-04-01\"}], \"memory_evidence\": [{\"id\": \"fixture-price-limit\", \"revision\": 1, \"source_session\": \"A\", \"source_turn\": 0, \"source_user_turn_sha256\": \"ee359e9a0c7fbb6c0aaaa5b77086bc196f6a41725bd90a4375d605b294152f57\"}]}",
+        "provider_ledger": "/tmp/v45-memory-dsh-y_9r18v_/runner/provider.jsonl",
+        "mcp_ledger": "/tmp/v45-memory-dsh-y_9r18v_/runner/mcp.jsonl",
+        "memory_access_ledger": "/tmp/v45-memory-dsh-y_9r18v_/runner/memory-access.jsonl",
+        "authorized_user_notebook": "/tmp/v45-memory-dsh-y_9r18v_/runner/authorized-user-notebook.json",
+        "usage": {
+          "input": 400,
+          "output": 80,
+          "cached": null,
+          "cache_read": null,
+          "cached_observed": 0,
+          "cache_complete": false,
+          "usage_requests": 4,
+          "requests": 4,
+          "complete": true
+        }
+      },
+      "local_requests": 4,
+      "pass_": true,
+      "completed_resume_new_calls": 0
+    }
+  ]
+}

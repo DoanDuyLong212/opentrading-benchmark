@@ -1,48 +1,71 @@
 {
- "task_id": "fin-l2-tech-164",
- "scoring": "value",
- "solution": {
-  "value": 42.74
- },
- "as_of": "2026-11-01T23:26:05.000000+07:00",
- "split": "main",
- "expects": [
-  {
-   "type": "value",
-   "path": "value",
-   "gold": 42.74,
-   "tol": {
-    "abs": 0.1
-   }
+  "task_id": "fin-l2-tech-164",
+  "scoring": "value",
+  "solution": {
+    "value": 42.74
   },
-  {
-   "type": "unit",
-   "path": "unit",
-   "accept": [
-    "RSI-14",
-    "RSI 14",
-    "RSI",
-    "rsi14"
-   ]
-  },
-  {
-   "type": "period",
-   "path": "period",
-   "accept": [
-    "30/10",
-    "30-10",
-    "30.10",
-    "2026-10-30",
-    "phiên gần nhất",
-    "gần nhất"
-   ]
-  },
-  {
-   "type": "str",
-   "path": "source",
-   "accept": [
-    "signals_technical"
-   ]
-  }
- ]
+  "as_of": "2026-11-01T23:26:05.000000+07:00",
+  "split": "main",
+  "expects": [
+    {
+      "type": "value",
+      "path": "value",
+      "gold": 42.74,
+      "tol": {
+        "abs": 0.1
+      }
+    },
+    {
+      "type": "unit",
+      "path": "unit",
+      "accept": [
+        "RSI-14",
+        "RSI 14",
+        "RSI",
+        "rsi14"
+      ]
+    },
+    {
+      "type": "period",
+      "path": "period",
+      "accept": [
+        "30/10",
+        "30-10",
+        "30.10",
+        "2026-10-30",
+        "phiên gần nhất",
+        "gần nhất"
+      ]
+    },
+    {
+      "type": "str",
+      "path": "source",
+      "accept": [
+        "signals_technical"
+      ]
+    }
+  ],
+  "contract_version": 2,
+  "provenance_contract": [
+    {
+      "tool": "signals_technical",
+      "source": "computed-local",
+      "as_of": "2026-11-01T23:26:05.000000+07:00",
+      "matched_entry_id": "tech:MSN",
+      "response_sha256": "b9fd6cf3cc67051563acfbdbf311b7c73c6f16e43d58395e959a57d4ef3ad9c5"
+    }
+  ],
+  "payload_sha256": "62bf5948b31b06ec1cfbdbc06c2dced04f2a573e2cddf9a9d704d017061d7a60",
+  "provenance_catalog": [
+    {
+      "tool": "signals_technical",
+      "source": "computed-local",
+      "as_of": "2026-11-01T23:26:05.000000+07:00",
+      "matched_entry_id": "tech:MSN",
+      "response_sha256": "b9fd6cf3cc67051563acfbdbf311b7c73c6f16e43d58395e959a57d4ef3ad9c5"
+    }
+  ],
+  "required_payload_keys": [
+    "tech:MSN"
+  ]
 }

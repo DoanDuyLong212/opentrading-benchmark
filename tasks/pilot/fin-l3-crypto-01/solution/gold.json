@@ -53,5 +53,28 @@
     "winner": "CL=F"
   },
   "notes": "Đổi nguồn so với 5.5 (crypto_spot batch 10 mã dính Binance 429) → yf_commodities 3 tài sản. GC -3.29%, CL +2.08%, BTC +0.77% → CL cao nhất. Không check period (semantics ngày đóng của yfinance không rõ 30 hay 31/10).",
-  "as_of": "2026-11-01T15:57:51.193584+07:00"
+  "as_of": "2026-11-01T15:57:51.193584+07:00",
+  "contract_version": 2,
+  "provenance_contract": [
+    {
+      "tool": "yf_commodities",
+      "source": "yfinance",
+      "as_of": "2026-11-01T15:57:51.193584+07:00",
+      "matched_entry_id": "yf_commodities:0",
+      "response_sha256": "c19de9b3f7db30787b32dd2f0e332ceb94be0df7b496f337e3b385ac36bb6521"
+    }
+  ],
+  "payload_sha256": "e5d94c946d68e64d53d61d3d7fa89cb3ff273b46e0bbd5acd728c8edec5f8cbd",
+  "provenance_catalog": [
+    {
+      "tool": "yf_commodities",
+      "source": "yfinance",
+      "as_of": "2026-11-01T15:57:51.193584+07:00",
+      "matched_entry_id": "yf_commodities:0",
+      "response_sha256": "c19de9b3f7db30787b32dd2f0e332ceb94be0df7b496f337e3b385ac36bb6521"
+    }
+  ],
+  "required_payload_keys": [
+    "yf_commodities"
+  ]
 }

@@ -1,44 +1,65 @@
 {
- "task_id": "fin-l2-growth-911",
- "scoring": "value",
- "solution": {
-  "value": -9.58
- },
- "as_of": "2026-11-01T22:08:27.714037+07:00",
- "split": "holdout",
- "expects": [
-  {
-   "type": "value",
-   "path": "value",
-   "gold": -9.58,
-   "tol": {
-    "abs": 0.1
-   }
+  "task_id": "fin-l2-growth-911",
+  "scoring": "value",
+  "solution": {
+    "value": -9.58
   },
-  {
-   "type": "unit",
-   "path": "unit",
-   "accept": [
-    "%",
-    "phần trăm"
-   ]
-  },
-  {
-   "type": "period",
-   "path": "period",
-   "accept": [
-    "Q3/2026",
-    "quý 3/2026",
-    "q3 2026",
-    "q3/26"
-   ]
-  },
-  {
-   "type": "str",
-   "path": "source",
-   "accept": [
-    "financial_statements"
-   ]
-  }
- ]
+  "as_of": "2026-11-01T22:08:27.714037+07:00",
+  "split": "holdout",
+  "expects": [
+    {
+      "type": "value",
+      "path": "value",
+      "gold": -9.58,
+      "tol": {
+        "abs": 0.1
+      }
+    },
+    {
+      "type": "unit",
+      "path": "unit",
+      "accept": [
+        "%",
+        "phần trăm"
+      ]
+    },
+    {
+      "type": "period",
+      "path": "period",
+      "accept": [
+        "Q2/2026",
+        "Q3/2026"
+      ]
+    },
+    {
+      "type": "str",
+      "path": "source",
+      "accept": [
+        "financial_statements"
+      ]
+    }
+  ],
+  "contract_version": 2,
+  "provenance_contract": [
+    {
+      "tool": "financial_statements",
+      "source": "vietstock",
+      "as_of": "2026-11-01T22:08:27.714037+07:00",
+      "matched_entry_id": "fs:VGS",
+      "response_sha256": "b3cef59ab343710b1e94bb07b968ff5ca825592650c323273de06a4401c76785"
+    }
+  ],
+  "payload_sha256": "0794fec2341a6a35c95c2a35286576e951360e03e507ebc67f263fc53def967b",
+  "provenance_catalog": [
+    {
+      "tool": "financial_statements",
+      "source": "vietstock",
+      "as_of": "2026-11-01T22:08:27.714037+07:00",
+      "matched_entry_id": "fs:VGS",
+      "response_sha256": "b3cef59ab343710b1e94bb07b968ff5ca825592650c323273de06a4401c76785"
+    }
+  ],
+  "required_payload_keys": [
+    "fs:VGS"
+  ]
 }

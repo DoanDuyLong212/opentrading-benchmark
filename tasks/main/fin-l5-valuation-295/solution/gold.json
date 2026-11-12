@@ -1,44 +1,67 @@
 {
- "task_id": "fin-l5-valuation-295",
- "scoring": "value",
- "solution": {
-  "price": 10100.0,
-  "per": 25.74,
-  "pb": 0.54
- },
- "as_of": "2026-11-01T23:23:01.617993+07:00",
- "split": "main",
- "expects": [
-  {
-   "type": "value",
-   "path": "values.price",
-   "gold": 10100.0,
-   "tol": {
-    "rel": 0.005
-   }
+  "task_id": "fin-l5-valuation-295",
+  "scoring": "value",
+  "solution": {
+    "price": 10100.0,
+    "per": 25.74,
+    "pb": 0.54
   },
-  {
-   "type": "value",
-   "path": "values.per",
-   "gold": 25.74,
-   "tol": {
-    "rel": 0.005
-   }
-  },
-  {
-   "type": "value",
-   "path": "values.pb",
-   "gold": 0.54,
-   "tol": {
-    "rel": 0.005
-   }
-  },
-  {
-   "type": "str",
-   "path": "source",
-   "accept": [
-    "valuation_run"
-   ]
-  }
- ]
+  "as_of": "2026-11-01T23:23:01.617993+07:00",
+  "split": "main",
+  "expects": [
+    {
+      "type": "value",
+      "path": "values.price",
+      "gold": 10100.0,
+      "tol": {
+        "rel": 0.005
+      }
+    },
+    {
+      "type": "value",
+      "path": "values.per",
+      "gold": 25.74,
+      "tol": {
+        "rel": 0.005
+      }
+    },
+    {
+      "type": "value",
+      "path": "values.pb",
+      "gold": 0.54,
+      "tol": {
+        "rel": 0.005
+      }
+    },
+    {
+      "type": "str",
+      "path": "source",
+      "accept": [
+        "valuation_run"
+      ]
+    }
+  ],
+  "contract_version": 2,
+  "provenance_contract": [
+    {
+      "tool": "valuation_run",
+      "source": "computed-local",
+      "as_of": "2026-11-01T23:23:01.617993+07:00",
+      "matched_entry_id": "val:DXG",
+      "response_sha256": "57035e51f79eaf0f8e8c52fedd6c23f26c8015780eb8055962b4320bc726603d"
+    }
+  ],
+  "payload_sha256": "7f147cc5616f33e7f185419c992fd875f6ac4960a509254d8f72034e4c5247dc",
+  "provenance_catalog": [
+    {
+      "tool": "valuation_run",
+      "source": "computed-local",
+      "as_of": "2026-11-01T23:23:01.617993+07:00",
+      "matched_entry_id": "val:DXG",
+      "response_sha256": "57035e51f79eaf0f8e8c52fedd6c23f26c8015780eb8055962b4320bc726603d"
+    }
+  ],
+  "required_payload_keys": [
+    "val:DXG"
+  ]
 }

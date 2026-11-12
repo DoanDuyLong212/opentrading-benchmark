@@ -1,63 +1,101 @@
 {
- "task_id": "fin-l5-profile-269",
- "scoring": "value",
- "solution": {
-  "revenue_q_bn": 2084.0,
-  "gross_profit_q_bn": 405.0,
-  "gross_margin_pct": 19.43,
-  "pe": 4.01,
-  "market_cap_bn": 3012.23
- },
- "as_of": "2026-11-01T23:20:24.666663+07:00",
- "split": "main",
- "expects": [
-  {
-   "type": "value",
-   "path": "values.revenue_q_bn",
-   "gold": 2084.0,
-   "tol": {
-    "rel": 0.005
-   }
+  "task_id": "fin-l5-profile-269",
+  "scoring": "value",
+  "solution": {
+    "revenue_q_bn": 2084.0,
+    "gross_profit_q_bn": 405.0,
+    "gross_margin_pct": 19.43,
+    "pe": 4.01,
+    "market_cap_bn": 3012.23
   },
-  {
-   "type": "value",
-   "path": "values.gross_profit_q_bn",
-   "gold": 405.0,
-   "tol": {
-    "rel": 0.005
-   }
-  },
-  {
-   "type": "value",
-   "path": "values.gross_margin_pct",
-   "gold": 19.43,
-   "tol": {
-    "abs": 0.1
-   }
-  },
-  {
-   "type": "value",
-   "path": "values.pe",
-   "gold": 4.01,
-   "tol": {
-    "rel": 0.005
-   }
-  },
-  {
-   "type": "value",
-   "path": "values.market_cap_bn",
-   "gold": 3012.23,
-   "tol": {
-    "rel": 0.005
-   }
-  },
-  {
-   "type": "str_all",
-   "path": "source",
-   "accept": [
-    "financial_detail",
-    "stock_overview"
-   ]
-  }
- ]
+  "as_of": "2026-11-01T23:20:24.666663+07:00",
+  "split": "main",
+  "expects": [
+    {
+      "type": "value",
+      "path": "values.revenue_q_bn",
+      "gold": 2084.0,
+      "tol": {
+        "rel": 0.005
+      }
+    },
+    {
+      "type": "value",
+      "path": "values.gross_profit_q_bn",
+      "gold": 405.0,
+      "tol": {
+        "rel": 0.005
+      }
+    },
+    {
+      "type": "value",
+      "path": "values.gross_margin_pct",
+      "gold": 19.43,
+      "tol": {
+        "abs": 0.1
+      }
+    },
+    {
+      "type": "value",
+      "path": "values.pe",
+      "gold": 4.01,
+      "tol": {
+        "rel": 0.005
+      }
+    },
+    {
+      "type": "value",
+      "path": "values.market_cap_bn",
+      "gold": 3012.23,
+      "tol": {
+        "rel": 0.005
+      }
+    },
+    {
+      "type": "str_all",
+      "path": "source",
+      "accept": [
+        "financial_detail",
+        "stock_overview"
+      ]
+    }
+  ],
+  "contract_version": 2,
+  "provenance_contract": [
+    {
+      "tool": "stock_overview",
+      "source": "vietstock",
+      "as_of": "2026-11-01T23:20:24.666663+07:00",
+      "matched_entry_id": "ov:PTB",
+      "response_sha256": "695e8c378e24c335b25bdee2ee57eb5946fb7202bd5ff4625a9102603444d896"
+    },
+    {
+      "tool": "financial_detail",
+      "source": "vietstock",
+      "as_of": "2026-11-01T22:44:39.488272+07:00",
+      "matched_entry_id": "fd:PTB",
+      "response_sha256": "e4b41987b5d842853a421c88929da5742a808bb08a9096633157b0a400bfa6b9"
+    }
+  ],
+  "payload_sha256": "878b186c487ba5e716708c0f68dcdc576d48d97ce17a5ed116a86b78cf7c5323",
+  "provenance_catalog": [
+    {
+      "tool": "stock_overview",
+      "source": "vietstock",
+      "as_of": "2026-11-01T23:20:24.666663+07:00",
+      "matched_entry_id": "ov:PTB",
+      "response_sha256": "695e8c378e24c335b25bdee2ee57eb5946fb7202bd5ff4625a9102603444d896"
+    },
+    {
+      "tool": "financial_detail",
+      "source": "vietstock",
+      "as_of": "2026-11-01T22:44:39.488272+07:00",
+      "matched_entry_id": "fd:PTB",
+      "response_sha256": "e4b41987b5d842853a421c88929da5742a808bb08a9096633157b0a400bfa6b9"
+    }
+  ],
+  "required_payload_keys": [
+    "fd:PTB",
+    "ov:PTB"
+  ]
 }

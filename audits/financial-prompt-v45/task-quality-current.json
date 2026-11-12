@@ -1,0 +1,3253 @@
+{
+  "version": 2,
+  "source_review_status": "not_independently_human_reviewed",
+  "holdout_scope": "payload byte hashes, eligibility metadata and task counts only; no question/gold inspection",
+  "capability_definition": "retrieval = value already returned; compute = arithmetic over inputs; aggregation = rank/filter/aggregate; evidence_check = refusal/consistency; synthesis = combine returned metrics; no task certified multi-hop by labels alone",
+  "limitations": [
+    "holdout contains shared payloads with main; not an unseen-data generalization test",
+    "task-specific catalog narrows tool selection; does not measure full-catalog discovery",
+    "some pilot captures were manually trimmed/merged; original optional request parameters unavailable",
+    "scope is correctness relative to captured snapshots; original-source financial certification is outside this benchmark",
+    "CPI captures with ambiguous duplicate indicator/period/unit rows are diagnostic only and excluded from confirmatory scoring",
+    "narrative tasks requesting full close sequences but accepting incomplete evidence remain diagnostic only",
+    "valuation_run outputs multiples; these tasks do not measure independent fair-value valuation"
+  ],
+  "splits": {
+    "main": {
+      "n": 200,
+      "diagnostic_only": 17
+    },
+    "pilot": {
+      "n": 24,
+      "diagnostic_only": 2
+    },
+    "smoke": {
+      "n": 3
+    },
+    "holdout": {
+      "n": 50,
+      "diagnostic_only": 7
+    }
+  },
+  "tasks": [
+    {
+      "task": "fin-l1-bctc-109",
+      "split": "main",
+      "original_level": "L1",
+      "capability": "retrieval",
+      "family": "L1·B bctc",
+      "payload_sha256": "807221df72b3943e15ea466c1091ebfc4c2628faa5827d9ba7a01c28ad289352",
+      "source_review_status": "not_independently_human_reviewed",
+      "confirmatory_eligible": true,
+      "exclusion_reason": null,
+      "multi_hop_verified": false
+    },
+    {
+      "task": "fin-l1-bctc-110",
+      "split": "main",
+      "original_level": "L1",
+      "capability": "retrieval",
+      "family": "L1·B bctc",
+      "payload_sha256": "4b54bce803f4ff1e29da2403548fe58563d73af7360eba175c2d9eda20775873",
+      "source_review_status": "not_independently_human_reviewed",
+      "confirmatory_eligible": true,
+      "exclusion_reason": null,
+      "multi_hop_verified": false
+    },
+    {
+      "task": "fin-l1-bctc-111",
+      "split": "main",
+      "original_level": "L1",
+      "capability": "retrieval",
+      "family": "L1·B bctc",
+      "payload_sha256": "ecb498d7e0e732f4996b88fcb7c7973dc889b2e9ea478e912a91af41fa9681de",
+      "source_review_status": "not_independently_human_reviewed",
+      "confirmatory_eligible": true,
+      "exclusion_reason": null,
+      "multi_hop_verified": false
+    },
+    {
+      "task": "fin-l1-bctc-112",
+      "split": "main",
+      "original_level": "L1",
+      "capability": "retrieval",
+      "family": "L1·B bctc",
+      "payload_sha256": "6bb3e2980ffc09fd4a909dd01053fb435f80e8a3901eff3174c9ac9c9004e5c6",
+      "source_review_status": "not_independently_human_reviewed",
+      "confirmatory_eligible": true,
+      "exclusion_reason": null,
+      "multi_hop_verified": false
+    },
+    {
+      "task": "fin-l1-bctc-113",
+      "split": "main",
+      "original_level": "L1",
+      "capability": "retrieval",
+      "family": "L1·B bctc",
+      "payload_sha256": "bc3ecd38d371c46a9eb87d65d48fcd97c4993b974206c0b44c57c227057a5439",
+      "source_review_status": "not_independently_human_reviewed",
+      "confirmatory_eligible": true,
+      "exclusion_reason": null,
+      "multi_hop_verified": false
+    },
+    {
+      "task": "fin-l1-bctc-114",
+      "split": "main",
+      "original_level": "L1",
+      "capability": "retrieval",
+      "family": "L1·B bctc",
+      "payload_sha256": "3b5d1d3a5400d5b8372299c63c574fd6edd9ce75300ab580403aad1b57bd5e7b",
+      "source_review_status": "not_independently_human_reviewed",
+      "confirmatory_eligible": true,
+      "exclusion_reason": null,
+      "multi_hop_verified": false
+    },
+    {
+      "task": "fin-l1-bctc-115",
+      "split": "main",
+      "original_level": "L1",
+      "capability": "retrieval",
+      "family": "L1·B bctc",
+      "payload_sha256": "d2d6286edc369f891b0e6df7fb9cc9292abd1d60018c8eb6c92180231da1dff3",
+      "source_review_status": "not_independently_human_reviewed",
+      "confirmatory_eligible": true,
+      "exclusion_reason": null,
+      "multi_hop_verified": false
+    },
+    {
+      "task": "fin-l1-bctc-116",
+      "split": "main",
+      "original_level": "L1",
+      "capability": "retrieval",
+      "family": "L1·B bctc",
+      "payload_sha256": "5f0bbe1901782843db46480749ebf90d592b2e85c8b09ca8c85c7310253775e9",
+      "source_review_status": "not_independently_human_reviewed",
+      "confirmatory_eligible": true,
+      "exclusion_reason": null,
+      "multi_hop_verified": false
+    },
+    {
+      "task": "fin-l1-bctc-117",
+      "split": "main",
+      "original_level": "L1",
+      "capability": "retrieval",
+      "family": "L1·B bctc",
+      "payload_sha256": "8c28d6192d81bb304953dec467a2de98595c9c4637f2599d15fb2ad771718a85",
+      "source_review_status": "not_independently_human_reviewed",
+      "confirmatory_eligible": true,
+      "exclusion_reason": null,
+      "multi_hop_verified": false
+    },
+    {
+      "task": "fin-l1-bctc-118",
+      "split": "main",
+      "original_level": "L1",
+      "capability": "retrieval",
+      "family": "L1·B bctc",
+      "payload_sha256": "2fa8c2c6c169c867d7ad945d7680dbd98864bc5f28f271a15d98242d0afbb0bd",
+      "source_review_status": "not_independently_human_reviewed",
+      "confirmatory_eligible": true,
+      "exclusion_reason": null,
+      "multi_hop_verified": false
+    },
+    {
+      "task": "fin-l1-bctc-119",
+      "split": "main",
+      "original_level": "L1",
+      "capability": "retrieval",
+      "family": "L1·B bctc",
+      "payload_sha256": "ddac3ec1b92e79f1ffce8323a34081f8467bffb2b5dfde3c7404aa61574624ab",
+      "source_review_status": "not_independently_human_reviewed",
+      "confirmatory_eligible": true,
+      "exclusion_reason": null,
+      "multi_hop_verified": false
+    },
+    {
+      "task": "fin-l1-bctc-120",
+      "split": "main",
+      "original_level": "L1",
+      "capability": "retrieval",
+      "family": "L1·B bctc",
+      "payload_sha256": "006c4869e4deb3e1ca6bf94ec81e1922cdc38c62083b8cc37fdff5bc165aa7b7",
+      "source_review_status": "not_independently_human_reviewed",
+      "confirmatory_eligible": true,
+      "exclusion_reason": null,
+      "multi_hop_verified": false
+    },
+    {
+      "task": "fin-l1-macro-133",
+      "split": "main",
+      "original_level": "L1",
+      "capability": "retrieval",
+      "family": "L1·C macro",
+      "payload_sha256": "d8bc0abecd0495db6c9b79b9469ef73d76a229eec064aafe83770002f2fd3277",
+      "source_review_status": "not_independently_human_reviewed",
+      "confirmatory_eligible": false,
+      "exclusion_reason": "ambiguous_cpi_series_dimension",
+      "multi_hop_verified": false
+    },
+    {
+      "task": "fin-l1-macro-136",
+      "split": "main",
+      "original_level": "L1",
+      "capability": "retrieval",
+      "family": "L1·C macro",
+      "payload_sha256": "d8bc0abecd0495db6c9b79b9469ef73d76a229eec064aafe83770002f2fd3277",
+      "source_review_status": "not_independently_human_reviewed",
+      "confirmatory_eligible": false,
+      "exclusion_reason": "ambiguous_cpi_series_dimension",
+      "multi_hop_verified": false
+    },
+    {
+      "task": "fin-l1-macro-137",
+      "split": "main",
+      "original_level": "L1",
+      "capability": "retrieval",
+      "family": "L1·C macro",
+      "payload_sha256": "d8bc0abecd0495db6c9b79b9469ef73d76a229eec064aafe83770002f2fd3277",
+      "source_review_status": "not_independently_human_reviewed",
+      "confirmatory_eligible": true,
+      "exclusion_reason": null,
+      "multi_hop_verified": false
+    },
+    {
+      "task": "fin-l1-macro-138",
+      "split": "main",
+      "original_level": "L1",
+      "capability": "retrieval",
+      "family": "L1·C macro",
+      "payload_sha256": "d8bc0abecd0495db6c9b79b9469ef73d76a229eec064aafe83770002f2fd3277",
+      "source_review_status": "not_independently_human_reviewed",
+      "confirmatory_eligible": true,
+      "exclusion_reason": null,
+      "multi_hop_verified": false
+    },
+    {
+      "task": "fin-l1-macro-139",
+      "split": "main",
+      "original_level": "L1",
+      "capability": "retrieval",
+      "family": "L1·C macro",
+      "payload_sha256": "d8bc0abecd0495db6c9b79b9469ef73d76a229eec064aafe83770002f2fd3277",
+      "source_review_status": "not_independently_human_reviewed",
+      "confirmatory_eligible": true,
+      "exclusion_reason": null,
+      "multi_hop_verified": false
+    },
+    {
+      "task": "fin-l1-macro-140",
+      "split": "main",
+      "original_level": "L1",
+      "capability": "retrieval",
+      "family": "L1·C macro",
+      "payload_sha256": "d8bc0abecd0495db6c9b79b9469ef73d76a229eec064aafe83770002f2fd3277",
+      "source_review_status": "not_independently_human_reviewed",
+      "confirmatory_eligible": true,
+      "exclusion_reason": null,
+      "multi_hop_verified": false
+    },
+    {
+      "task": "fin-l1-quote-crypto-121",
+      "split": "main",
+      "original_level": "L1",
+      "capability": "retrieval",
+      "family": "L1·A quote",
+      "payload_sha256": "057678ae8f95ca9e891512ae5b9a2b5fc3b569b94fc2ca37e3a19a01707165a5",
+      "source_review_status": "not_independently_human_reviewed",
+      "confirmatory_eligible": true,
+      "exclusion_reason": null,
+      "multi_hop_verified": false
+    },
+    {
+      "task": "fin-l1-quote-crypto-122",
+      "split": "main",
+      "original_level": "L1",
+      "capability": "retrieval",
+      "family": "L1·A quote",
+      "payload_sha256": "057678ae8f95ca9e891512ae5b9a2b5fc3b569b94fc2ca37e3a19a01707165a5",
+      "source_review_status": "not_independently_human_reviewed",
+      "confirmatory_eligible": true,
+      "exclusion_reason": null,
+      "multi_hop_verified": false
+    },
+    {
+      "task": "fin-l1-quote-crypto-123",
+      "split": "main",
+      "original_level": "L1",
+      "capability": "retrieval",
+      "family": "L1·A quote",
+      "payload_sha256": "057678ae8f95ca9e891512ae5b9a2b5fc3b569b94fc2ca37e3a19a01707165a5",
+      "source_review_status": "not_independently_human_reviewed",
+      "confirmatory_eligible": true,
+      "exclusion_reason": null,
+      "multi_hop_verified": false
+    },
+    {
+      "task": "fin-l1-quote-crypto-124",
+      "split": "main",
+      "original_level": "L1",
+      "capability": "retrieval",
+      "family": "L1·A quote",
+      "payload_sha256": "057678ae8f95ca9e891512ae5b9a2b5fc3b569b94fc2ca37e3a19a01707165a5",
+      "source_review_status": "not_independently_human_reviewed",
+      "confirmatory_eligible": true,
+      "exclusion_reason": null,
+      "multi_hop_verified": false
+    },
+    {
+      "task": "fin-l1-quote-crypto-125",
+      "split": "main",
+      "original_level": "L1",
+      "capability": "retrieval",
+      "family": "L1·A quote",
+      "payload_sha256": "1a1c6ce1a6fe39d4702a41e9ed10dc606d88a7a47b401f2ade5906e1020ea70c",
+      "source_review_status": "not_independently_human_reviewed",
+      "confirmatory_eligible": true,
+      "exclusion_reason": null,
+      "multi_hop_verified": false
+    },
+    {
+      "task": "fin-l1-quote-gf-126",
+      "split": "main",
+      "original_level": "L1",
+      "capability": "retrieval",
+      "family": "L1·A quote",
+      "payload_sha256": "6e724aed6de39026019090303dc95158803438613308e97562d8a1b8ed48c809",
+      "source_review_status": "not_independently_human_reviewed",
+      "confirmatory_eligible": true,
+      "exclusion_reason": null,
+      "multi_hop_verified": false
+    },
+    {
+      "task": "fin-l1-quote-gf-127",
+      "split": "main",
+      "original_level": "L1",
+      "capability": "retrieval",
+      "family": "L1·A quote",
+      "payload_sha256": "6e724aed6de39026019090303dc95158803438613308e97562d8a1b8ed48c809",
+      "source_review_status": "not_independently_human_reviewed",
+      "confirmatory_eligible": true,
+      "exclusion_reason": null,
+      "multi_hop_verified": false
+    },
+    {
+      "task": "fin-l1-quote-gf-128",
+      "split": "main",
+      "original_level": "L1",
+      "capability": "retrieval",
+      "family": "L1·A quote",
+      "payload_sha256": "6e724aed6de39026019090303dc95158803438613308e97562d8a1b8ed48c809",
+      "source_review_status": "not_independently_human_reviewed",
+      "confirmatory_eligible": true,
+      "exclusion_reason": null,
+      "multi_hop_verified": false
+    },
+    {
+      "task": "fin-l1-quote-gf-129",
+      "split": "main",
+      "original_level": "L1",
+      "capability": "retrieval",
+      "family": "L1·A quote",
+      "payload_sha256": "6e724aed6de39026019090303dc95158803438613308e97562d8a1b8ed48c809",
+      "source_review_status": "not_independently_human_reviewed",
+      "confirmatory_eligible": true,
+      "exclusion_reason": null,
+      "multi_hop_verified": false
+    },
+    {
+      "task": "fin-l1-quote-gf-130",
+      "split": "main",
+      "original_level": "L1",
+      "capability": "retrieval",
+      "family": "L1·A quote",
+      "payload_sha256": "6e724aed6de39026019090303dc95158803438613308e97562d8a1b8ed48c809",
+      "source_review_status": "not_independently_human_reviewed",
+      "confirmatory_eligible": true,
+      "exclusion_reason": null,
+      "multi_hop_verified": false
+    },
+    {
+      "task": "fin-l1-quote-vn-101",
+      "split": "main",
+      "original_level": "L1",
+      "capability": "retrieval",
+      "family": "L1·A quote",
+      "payload_sha256": "fb8a39991555e595192cf4190947f4bdccddcbe1f3b9a3da08568a60d4d784f4",
+      "source_review_status": "not_independently_human_reviewed",
+      "confirmatory_eligible": true,
+      "exclusion_reason": null,
+      "multi_hop_verified": false
+    },
+    {
+      "task": "fin-l1-quote-vn-103",
+      "split": "main",
+      "original_level": "L1",
+      "capability": "retrieval",
+      "family": "L1·A quote",
+      "payload_sha256": "2caa80cc9914b508afe8b8a71126e43e867e814faf82d4bf1984d3035a0517ce",
+      "source_review_status": "not_independently_human_reviewed",
+      "confirmatory_eligible": true,
+      "exclusion_reason": null,
+      "multi_hop_verified": false
+    },
+    {
+      "task": "fin-l1-quote-vn-104",
+      "split": "main",
+      "original_level": "L1",
+      "capability": "retrieval",
+      "family": "L1·A quote",
+      "payload_sha256": "5b191b038f6a6a13d118b0fc5a82a511610d05f842723755a4f66b84f47cf8d2",
+      "source_review_status": "not_independently_human_reviewed",
+      "confirmatory_eligible": true,
+      "exclusion_reason": null,
+      "multi_hop_verified": false
+    },
+    {
+      "task": "fin-l1-quote-vn-106",
+      "split": "main",
+      "original_level": "L1",
+      "capability": "retrieval",
+      "family": "L1·A quote",
+      "payload_sha256": "ad65887916989540c20d6d80cf22e13581a5e27d9217cd0fa89ded3c8a6f9cfc",
+      "source_review_status": "not_independently_human_reviewed",
+      "confirmatory_eligible": true,
+      "exclusion_reason": null,
+      "multi_hop_verified": false
+    },
+    {
+      "task": "fin-l1-quote-vn-107",
+      "split": "main",
+      "original_level": "L1",
+      "capability": "retrieval",
+      "family": "L1·A quote",
+      "payload_sha256": "883079910d3406a2e804397e6ed831d3b9646f41ebd14b02d8764f00f019ead0",
+      "source_review_status": "not_independently_human_reviewed",
+      "confirmatory_eligible": true,
+      "exclusion_reason": null,
+      "multi_hop_verified": false
+    },
+    {
+      "task": "fin-l1-quote-vn-108",
+      "split": "main",
+      "original_level": "L1",
+      "capability": "retrieval",
+      "family": "L1·A quote",
+      "payload_sha256": "0efe3f152b5b27c22f1c4c17e98a2ae6b97ebe5ea009a5f2ab11e1d6e47c5df1",
+      "source_review_status": "not_independently_human_reviewed",
+      "confirmatory_eligible": true,
+      "exclusion_reason": null,
+      "multi_hop_verified": false
+    },
+    {
+      "task": "fin-l2-crypto-x-166",
+      "split": "main",
+      "original_level": "L2",
+      "capability": "compute",
+      "family": "L2·E crypto-xasset",
+      "payload_sha256": "d8bf304445161d93a1be377ba4abb24f44754c61c91e3780eff24c2965abece8",
+      "source_review_status": "not_independently_human_reviewed",
+      "confirmatory_eligible": true,
+      "exclusion_reason": null,
+      "multi_hop_verified": false
+    },
+    {
+      "task": "fin-l2-crypto-x-167",
+      "split": "main",
+      "original_level": "L2",
+      "capability": "compute",
+      "family": "L2·E crypto-xasset",
+      "payload_sha256": "d8bf304445161d93a1be377ba4abb24f44754c61c91e3780eff24c2965abece8",
+      "source_review_status": "not_independently_human_reviewed",
+      "confirmatory_eligible": true,
+      "exclusion_reason": null,
+      "multi_hop_verified": false
+    },
+    {
+      "task": "fin-l2-crypto-x-168",
+      "split": "main",
+      "original_level": "L2",
+      "capability": "compute",
+      "family": "L2·E crypto-xasset",
+      "payload_sha256": "d8bf304445161d93a1be377ba4abb24f44754c61c91e3780eff24c2965abece8",
+      "source_review_status": "not_independently_human_reviewed",
+      "confirmatory_eligible": true,
+      "exclusion_reason": null,
+      "multi_hop_verified": false
+    },
+    {
+      "task": "fin-l2-crypto-x-169",
+      "split": "main",
+      "original_level": "L2",
+      "capability": "compute",
+      "family": "L2·E crypto-xasset",
+      "payload_sha256": "d8bf304445161d93a1be377ba4abb24f44754c61c91e3780eff24c2965abece8",
+      "source_review_status": "not_independently_human_reviewed",
+      "confirmatory_eligible": true,
+      "exclusion_reason": null,
+      "multi_hop_verified": false
+    },
+    {
+      "task": "fin-l2-crypto-x-170",
+      "split": "main",
+      "original_level": "L2",
+      "capability": "compute",
+      "family": "L2·E crypto-xasset",
+      "payload_sha256": "d8bf304445161d93a1be377ba4abb24f44754c61c91e3780eff24c2965abece8",
+      "source_review_status": "not_independently_human_reviewed",
+      "confirmatory_eligible": true,
+      "exclusion_reason": null,
+      "multi_hop_verified": false
+    },
+    {
+      "task": "fin-l2-gf-compare-172",
+      "split": "main",
+      "original_level": "L2",
+      "capability": "synthesis",
+      "family": "L2·F fx",
+      "payload_sha256": "6e724aed6de39026019090303dc95158803438613308e97562d8a1b8ed48c809",
+      "source_review_status": "not_independently_human_reviewed",
+      "confirmatory_eligible": true,
+      "exclusion_reason": null,
+      "multi_hop_verified": false
+    },
+    {
+      "task": "fin-l2-gf-compare-173",
+      "split": "main",
+      "original_level": "L2",
+      "capability": "synthesis",
+      "family": "L2·F fx",
+      "payload_sha256": "6e724aed6de39026019090303dc95158803438613308e97562d8a1b8ed48c809",
+      "source_review_status": "not_independently_human_reviewed",
+      "confirmatory_eligible": true,
+      "exclusion_reason": null,
+      "multi_hop_verified": false
+    },
+    {
+      "task": "fin-l2-gf-compare-174",
+      "split": "main",
+      "original_level": "L2",
+      "capability": "synthesis",
+      "family": "L2·F fx",
+      "payload_sha256": "6e724aed6de39026019090303dc95158803438613308e97562d8a1b8ed48c809",
+      "source_review_status": "not_independently_human_reviewed",
+      "confirmatory_eligible": true,
+      "exclusion_reason": null,
+      "multi_hop_verified": false
+    },
+    {
+      "task": "fin-l2-gf-compare-175",
+      "split": "main",
+      "original_level": "L2",
+      "capability": "synthesis",
+      "family": "L2·F fx",
+      "payload_sha256": "6e724aed6de39026019090303dc95158803438613308e97562d8a1b8ed48c809",
+      "source_review_status": "not_independently_human_reviewed",
+      "confirmatory_eligible": true,
+      "exclusion_reason": null,
+      "multi_hop_verified": false
+    },
+    {
+      "task": "fin-l2-growth-141",
+      "split": "main",
+      "original_level": "L2",
+      "capability": "compute",
+      "family": "L2·A growth",
+      "payload_sha256": "ab35eb80103c73d6c77708e79be3c3c7b67a82777646035c9eb3e425125920aa",
+      "source_review_status": "not_independently_human_reviewed",
+      "confirmatory_eligible": true,
+      "exclusion_reason": null,
+      "multi_hop_verified": false
+    },
+    {
+      "task": "fin-l2-growth-142",
+      "split": "main",
+      "original_level": "L2",
+      "capability": "compute",
+      "family": "L2·A growth",
+      "payload_sha256": "2b41596fdc6a336bcaed9c92ac9faf1b713f2f5c9a40684ba6fbd60a120650a0",
+      "source_review_status": "not_independently_human_reviewed",
+      "confirmatory_eligible": true,
+      "exclusion_reason": null,
+      "multi_hop_verified": false
+    },
+    {
+      "task": "fin-l2-growth-143",
+      "split": "main",
+      "original_level": "L2",
+      "capability": "compute",
+      "family": "L2·A growth",
+      "payload_sha256": "0860e4740da953d16f7ef0e56c7ba692638f6954a42ee5820c3f93d2e3b240a2",
+      "source_review_status": "not_independently_human_reviewed",
+      "confirmatory_eligible": true,
+      "exclusion_reason": null,
+      "multi_hop_verified": false
+    },
+    {
+      "task": "fin-l2-growth-144",
+      "split": "main",
+      "original_level": "L2",
+      "capability": "compute",
+      "family": "L2·A growth",
+      "payload_sha256": "c852b39888ea7572821e99df29d878c798798e55b6f05c82c56c3e50f40e4f7b",
+      "source_review_status": "not_independently_human_reviewed",
+      "confirmatory_eligible": true,
+      "exclusion_reason": null,
+      "multi_hop_verified": false
+    },
+    {
+      "task": "fin-l2-growth-145",
+      "split": "main",
+      "original_level": "L2",
+      "capability": "compute",
+      "family": "L2·A growth",
+      "payload_sha256": "f5343736a6ba3915e6373bcbb8f7026d469188926b6a2d2cbeb387ba26cd0c27",
+      "source_review_status": "not_independently_human_reviewed",
+      "confirmatory_eligible": true,
+      "exclusion_reason": null,
+      "multi_hop_verified": false
+    },
+    {
+      "task": "fin-l2-growth-146",
+      "split": "main",
+      "original_level": "L2",
+      "capability": "compute",
+      "family": "L2·A growth",
+      "payload_sha256": "52326a23883dcc861639e6d89540ad07ebcdf6758e5dd9e127bb751377d6f0c3",
+      "source_review_status": "not_independently_human_reviewed",
+      "confirmatory_eligible": true,
+      "exclusion_reason": null,
+      "multi_hop_verified": false
+    },
+    {
+      "task": "fin-l2-growth-147",
+      "split": "main",
+      "original_level": "L2",
+      "capability": "compute",
+      "family": "L2·A growth",
+      "payload_sha256": "ddac3ec1b92e79f1ffce8323a34081f8467bffb2b5dfde3c7404aa61574624ab",
+      "source_review_status": "not_independently_human_reviewed",
+      "confirmatory_eligible": true,
+      "exclusion_reason": null,
+      "multi_hop_verified": false
+    },
+    {
+      "task": "fin-l2-growth-148",
+      "split": "main",
+      "original_level": "L2",
+      "capability": "compute",
+      "family": "L2·A growth",
+      "payload_sha256": "006c4869e4deb3e1ca6bf94ec81e1922cdc38c62083b8cc37fdff5bc165aa7b7",
+      "source_review_status": "not_independently_human_reviewed",
+      "confirmatory_eligible": true,
+      "exclusion_reason": null,
+      "multi_hop_verified": false
+    },
+    {
+      "task": "fin-l2-macro-calc-176",
+      "split": "main",
+      "original_level": "L2",
+      "capability": "retrieval",
+      "family": "L2·G macro-calc",
+      "payload_sha256": "d8bc0abecd0495db6c9b79b9469ef73d76a229eec064aafe83770002f2fd3277",
+      "source_review_status": "not_independently_human_reviewed",
+      "confirmatory_eligible": true,
+      "exclusion_reason": null,
+      "multi_hop_verified": false
+    },
+    {
+      "task": "fin-l2-macro-calc-178",
+      "split": "main",
+      "original_level": "L2",
+      "capability": "retrieval",
+      "family": "L2·G macro-calc",
+      "payload_sha256": "d8bc0abecd0495db6c9b79b9469ef73d76a229eec064aafe83770002f2fd3277",
+      "source_review_status": "not_independently_human_reviewed",
+      "confirmatory_eligible": false,
+      "exclusion_reason": "ambiguous_cpi_series_dimension",
+      "multi_hop_verified": false
+    },
+    {
+      "task": "fin-l2-macro-calc-179",
+      "split": "main",
+      "original_level": "L2",
+      "capability": "retrieval",
+      "family": "L2·G macro-calc",
+      "payload_sha256": "d8bc0abecd0495db6c9b79b9469ef73d76a229eec064aafe83770002f2fd3277",
+      "source_review_status": "not_independently_human_reviewed",
+      "confirmatory_eligible": false,
+      "exclusion_reason": "ambiguous_cpi_series_dimension",
+      "multi_hop_verified": false
+    },
+    {
+      "task": "fin-l2-macro-calc-180",
+      "split": "main",
+      "original_level": "L2",
+      "capability": "retrieval",
+      "family": "L2·G macro-calc",
+      "payload_sha256": "d8bc0abecd0495db6c9b79b9469ef73d76a229eec064aafe83770002f2fd3277",
+      "source_review_status": "not_independently_human_reviewed",
+      "confirmatory_eligible": true,
+      "exclusion_reason": null,
+      "multi_hop_verified": false
+    },
+    {
+      "task": "fin-l2-margin-149",
+      "split": "main",
+      "original_level": "L2",
+      "capability": "compute",
+      "family": "L2·B margin",
+      "payload_sha256": "63ff12f8d5be3aa46fbc4b8d7ea7520a782289d4f599afc0ee68e762fb020d5b",
+      "source_review_status": "not_independently_human_reviewed",
+      "confirmatory_eligible": true,
+      "exclusion_reason": null,
+      "multi_hop_verified": false
+    },
+    {
+      "task": "fin-l2-margin-150",
+      "split": "main",
+      "original_level": "L2",
+      "capability": "compute",
+      "family": "L2·B margin",
+      "payload_sha256": "56e2419f49053c98cd4f8dd6af1276d2a71fb4f3c9cc395e1e8d1dd5183e19e8",
+      "source_review_status": "not_independently_human_reviewed",
+      "confirmatory_eligible": true,
+      "exclusion_reason": null,
+      "multi_hop_verified": false
+    },
+    {
+      "task": "fin-l2-margin-151",
+      "split": "main",
+      "original_level": "L2",
+      "capability": "compute",
+      "family": "L2·B margin",
+      "payload_sha256": "60be85cbc9f79dd4ca7743b33bc002dc20d0f1acc65bb1887637ea4ad4d91b33",
+      "source_review_status": "not_independently_human_reviewed",
+      "confirmatory_eligible": true,
+      "exclusion_reason": null,
+      "multi_hop_verified": false
+    },
+    {
+      "task": "fin-l2-margin-152",
+      "split": "main",
+      "original_level": "L2",
+      "capability": "compute",
+      "family": "L2·B margin",
+      "payload_sha256": "1a9d1a89e3d93e6dbf2d00c581175caac8464abe474a496ace198b696625066b",
+      "source_review_status": "not_independently_human_reviewed",
+      "confirmatory_eligible": true,
+      "exclusion_reason": null,
+      "multi_hop_verified": false
+    },
+    {
+      "task": "fin-l2-margin-153",
+      "split": "main",
+      "original_level": "L2",
+      "capability": "compute",
+      "family": "L2·B margin",
+      "payload_sha256": "a8b91af579a4afda08325d20d13d20ab44da5fbe1388a6e22dc51ca0a4393eca",
+      "source_review_status": "not_independently_human_reviewed",
+      "confirmatory_eligible": true,
+      "exclusion_reason": null,
+      "multi_hop_verified": false
+    },
+    {
+      "task": "fin-l2-margin-154",
+      "split": "main",
+      "original_level": "L2",
+      "capability": "compute",
+      "family": "L2·B margin",
+      "payload_sha256": "7792cbff04e9d984807a7017a1841576d3659361e2af03918669bb9d086b20a2",
+      "source_review_status": "not_independently_human_reviewed",
+      "confirmatory_eligible": true,
+      "exclusion_reason": null,
+      "multi_hop_verified": false
+    },
+    {
+      "task": "fin-l2-margin-155",
+      "split": "main",
+      "original_level": "L2",
+      "capability": "compute",
+      "family": "L2·B margin",
+      "payload_sha256": "3c3116c38aab22e01747a7f4ee790f104d4a7542dfda744503d570679db45838",
+      "source_review_status": "not_independently_human_reviewed",
+      "confirmatory_eligible": true,
+      "exclusion_reason": null,
+      "multi_hop_verified": false
+    },
+    {
+      "task": "fin-l2-ratio-157",
+      "split": "main",
+      "original_level": "L2",
+      "capability": "retrieval",
+      "family": "L2·C ratio",
+      "payload_sha256": "735dac62ede355f823bee7f1445e7ff07c348251d5836e1e3dba69245d14c03f",
+      "source_review_status": "not_independently_human_reviewed",
+      "confirmatory_eligible": true,
+      "exclusion_reason": null,
+      "multi_hop_verified": false,
+      "limitation": "precomputed ratio/indicator retrieval; historical L2 label overstates calculation"
+    },
+    {
+      "task": "fin-l2-ratio-158",
+      "split": "main",
+      "original_level": "L2",
+      "capability": "retrieval",
+      "family": "L2·C ratio",
+      "payload_sha256": "be8af9e204ca0187952ba5b35730293bcb6bd858fd6c47eabca4193a4075ee45",
+      "source_review_status": "not_independently_human_reviewed",
+      "confirmatory_eligible": true,
+      "exclusion_reason": null,
+      "multi_hop_verified": false,
+      "limitation": "precomputed ratio/indicator retrieval; historical L2 label overstates calculation"
+    },
+    {
+      "task": "fin-l2-ratio-159",
+      "split": "main",
+      "original_level": "L2",
+      "capability": "retrieval",
+      "family": "L2·C ratio",
+      "payload_sha256": "7146f70a87b4d00c4f925f1c9c1e045a9f3c6bea9ad52ca231f2777bff8d254a",
+      "source_review_status": "not_independently_human_reviewed",
+      "confirmatory_eligible": true,
+      "exclusion_reason": null,
+      "multi_hop_verified": false,
+      "limitation": "precomputed ratio/indicator retrieval; historical L2 label overstates calculation"
+    },
+    {
+      "task": "fin-l2-ratio-160",
+      "split": "main",
+      "original_level": "L2",
+      "capability": "retrieval",
+      "family": "L2·C ratio",
+      "payload_sha256": "431d0a37dcc8350973bca7d2f2fdfd68219b0264e327dc583e5b82ed83ce4ad2",
+      "source_review_status": "not_independently_human_reviewed",
+      "confirmatory_eligible": true,
+      "exclusion_reason": null,
+      "multi_hop_verified": false,
+      "limitation": "precomputed ratio/indicator retrieval; historical L2 label overstates calculation"
+    },
+    {
+      "task": "fin-l2-tech-162",
+      "split": "main",
+      "original_level": "L2",
+      "capability": "retrieval",
+      "family": "L2·D technical",
+      "payload_sha256": "afa42c9c3972d74ee1d3dc389ba5c24c051be2b1f91037d087bfc3759e02e6a5",
+      "source_review_status": "not_independently_human_reviewed",
+      "confirmatory_eligible": true,
+      "exclusion_reason": null,
+      "multi_hop_verified": false,
+      "limitation": "precomputed ratio/indicator retrieval; historical L2 label overstates calculation"
+    },
+    {
+      "task": "fin-l2-tech-163",
+      "split": "main",
+      "original_level": "L2",
+      "capability": "retrieval",
+      "family": "L2·D technical",
+      "payload_sha256": "3bb0c036d30afe297305571587870c0b1b1a2d9392326ea72c40c46f78fa0099",
+      "source_review_status": "not_independently_human_reviewed",
+      "confirmatory_eligible": true,
+      "exclusion_reason": null,
+      "multi_hop_verified": false,
+      "limitation": "precomputed ratio/indicator retrieval; historical L2 label overstates calculation"
+    },
+    {
+      "task": "fin-l2-tech-164",
+      "split": "main",
+      "original_level": "L2",
+      "capability": "retrieval",
+      "family": "L2·D technical",
+      "payload_sha256": "62bf5948b31b06ec1cfbdbc06c2dced04f2a573e2cddf9a9d704d017061d7a60",
+      "source_review_status": "not_independently_human_reviewed",
+      "confirmatory_eligible": true,
+      "exclusion_reason": null,
+      "multi_hop_verified": false,
+      "limitation": "precomputed ratio/indicator retrieval; historical L2 label overstates calculation"
+    },
+    {
+      "task": "fin-l2-tech-165",
+      "split": "main",
+      "original_level": "L2",
+      "capability": "retrieval",
+      "family": "L2·D technical",
+      "payload_sha256": "d2fd7d295d7e67e16788ccc795b209014833d4688b1b406e72915ccb933f8c10",
+      "source_review_status": "not_independently_human_reviewed",
+      "confirmatory_eligible": true,
+      "exclusion_reason": null,
+      "multi_hop_verified": false,
+      "limitation": "precomputed ratio/indicator retrieval; historical L2 label overstates calculation"
+    },
+    {
+      "task": "fin-l3-agg-181",
+      "split": "main",
+      "original_level": "L3",
+      "capability": "aggregation",
+      "family": "L3·B aggregate",
+      "payload_sha256": "5e90a01275cd731a0ce0794296a39216b6374ea1712f1163b137bfe26d081a72",
+      "source_review_status": "not_independently_human_reviewed",
+      "confirmatory_eligible": true,
+      "exclusion_reason": null,
+      "multi_hop_verified": false
+    },
+    {
+      "task": "fin-l3-agg-182",
+      "split": "main",
+      "original_level": "L3",
+      "capability": "aggregation",
+      "family": "L3·B aggregate",
+      "payload_sha256": "ad1f0f1a339fecc528ecee588ce49fc757c333073502376ddcd4eb695e950a6b",
+      "source_review_status": "not_independently_human_reviewed",
+      "confirmatory_eligible": true,
+      "exclusion_reason": null,
+      "multi_hop_verified": false
+    },
+    {
+      "task": "fin-l3-agg-183",
+      "split": "main",
+      "original_level": "L3",
+      "capability": "aggregation",
+      "family": "L3·B aggregate",
+      "payload_sha256": "4ec6a4f2af168b3c45e5a0623fc5580c7d77411c0d654346f2035c8a1b3fa93e",
+      "source_review_status": "not_independently_human_reviewed",
+      "confirmatory_eligible": true,
+      "exclusion_reason": null,
+      "multi_hop_verified": false
+    },
+    {
+      "task": "fin-l3-agg-184",
+      "split": "main",
+      "original_level": "L3",
+      "capability": "aggregation",
+      "family": "L3·B aggregate",
+      "payload_sha256": "3aca8555c0c04c22fef28f0832df46393a5b11e1398bf0698b432abeba0376ce",
+      "source_review_status": "not_independently_human_reviewed",
+      "confirmatory_eligible": true,
+      "exclusion_reason": null,
+      "multi_hop_verified": false
+    },
+    {
+      "task": "fin-l3-agg-185",
+      "split": "main",
+      "original_level": "L3",
+      "capability": "aggregation",
+      "family": "L3·B aggregate",
+      "payload_sha256": "8e7143d01b44455e27cfde14bc55ae90731048b1db95110770d4c3279e148a86",
+      "source_review_status": "not_independently_human_reviewed",
+      "confirmatory_eligible": true,
+      "exclusion_reason": null,
+      "multi_hop_verified": false
+    },
+    {
+      "task": "fin-l3-agg-186",
+      "split": "main",
+      "original_level": "L3",
+      "capability": "aggregation",
+      "family": "L3·B aggregate",
+      "payload_sha256": "067c6094929aad887101bba17ad696bd914102ffe79315b804d28aa7cd6ebb1f",
+      "source_review_status": "not_independently_human_reviewed",
+      "confirmatory_eligible": true,
+      "exclusion_reason": null,
+      "multi_hop_verified": false
+    },
+    {
+      "task": "fin-l3-agg-187",
+      "split": "main",
+      "original_level": "L3",
+      "capability": "aggregation",
+      "family": "L3·B aggregate",
+      "payload_sha256": "6b4594b66bdb0c69625575b43c1cfe507f0719475baa432565ff454c6e258c35",
+      "source_review_status": "not_independently_human_reviewed",
+      "confirmatory_eligible": true,
+      "exclusion_reason": null,
+      "multi_hop_verified": false
+    },
+    {
+      "task": "fin-l3-agg-188",
+      "split": "main",
+      "original_level": "L3",
+      "capability": "aggregation",
+      "family": "L3·B aggregate",
+      "payload_sha256": "fc69728bc67004535d4bc0d8edba7eeac0e7ce93e48d406f9684cf87e6d33407",
+      "source_review_status": "not_independently_human_reviewed",
+      "confirmatory_eligible": true,
+      "exclusion_reason": null,
+      "multi_hop_verified": false
+    },
+    {
+      "task": "fin-l3-breadth-301",
+      "split": "main",
+      "original_level": "L3",
+      "capability": "retrieval",
+      "family": "L3·B aggregate",
+      "payload_sha256": "aca7ccccfba6e96cf58124b10f74cfece8a6652b8240987f656db83836cc34c3",
+      "source_review_status": "not_independently_human_reviewed",
+      "confirmatory_eligible": true,
+      "exclusion_reason": null,
+      "multi_hop_verified": false
+    },
+    {
+      "task": "fin-l3-crypto-multi-208",
+      "split": "main",
+      "original_level": "L3",
+      "capability": "aggregation",
+      "family": "L3·E crypto-multi",
+      "payload_sha256": "057678ae8f95ca9e891512ae5b9a2b5fc3b569b94fc2ca37e3a19a01707165a5",
+      "source_review_status": "not_independently_human_reviewed",
+      "confirmatory_eligible": true,
+      "exclusion_reason": null,
+      "multi_hop_verified": false
+    },
+    {
+      "task": "fin-l3-crypto-multi-209",
+      "split": "main",
+      "original_level": "L3",
+      "capability": "aggregation",
+      "family": "L3·E crypto-multi",
+      "payload_sha256": "057678ae8f95ca9e891512ae5b9a2b5fc3b569b94fc2ca37e3a19a01707165a5",
+      "source_review_status": "not_independently_human_reviewed",
+      "confirmatory_eligible": true,
+      "exclusion_reason": null,
+      "multi_hop_verified": false
+    },
+    {
+      "task": "fin-l3-crypto-multi-210",
+      "split": "main",
+      "original_level": "L3",
+      "capability": "aggregation",
+      "family": "L3·E crypto-multi",
+      "payload_sha256": "057678ae8f95ca9e891512ae5b9a2b5fc3b569b94fc2ca37e3a19a01707165a5",
+      "source_review_status": "not_independently_human_reviewed",
+      "confirmatory_eligible": true,
+      "exclusion_reason": null,
+      "multi_hop_verified": false
+    },
+    {
+      "task": "fin-l3-crypto-multi-211",
+      "split": "main",
+      "original_level": "L3",
+      "capability": "aggregation",
+      "family": "L3·E crypto-multi",
+      "payload_sha256": "057678ae8f95ca9e891512ae5b9a2b5fc3b569b94fc2ca37e3a19a01707165a5",
+      "source_review_status": "not_independently_human_reviewed",
+      "confirmatory_eligible": true,
+      "exclusion_reason": null,
+      "multi_hop_verified": false
+    },
+    {
+      "task": "fin-l3-crypto-multi-212",
+      "split": "main",
+      "original_level": "L3",
+      "capability": "aggregation",
+      "family": "L3·E crypto-multi",
+      "payload_sha256": "057678ae8f95ca9e891512ae5b9a2b5fc3b569b94fc2ca37e3a19a01707165a5",
+      "source_review_status": "not_independently_human_reviewed",
+      "confirmatory_eligible": true,
+      "exclusion_reason": null,
+      "multi_hop_verified": false
+    },
+    {
+      "task": "fin-l3-crypto-multi-213",
+      "split": "main",
+      "original_level": "L3",
+      "capability": "aggregation",
+      "family": "L3·E crypto-multi",
+      "payload_sha256": "057678ae8f95ca9e891512ae5b9a2b5fc3b569b94fc2ca37e3a19a01707165a5",
+      "source_review_status": "not_independently_human_reviewed",
+      "confirmatory_eligible": true,
+      "exclusion_reason": null,
+      "multi_hop_verified": false
+    },
+    {
+      "task": "fin-l3-crypto-multi-214",
+      "split": "main",
+      "original_level": "L3",
+      "capability": "aggregation",
+      "family": "L3·E crypto-multi",
+      "payload_sha256": "057678ae8f95ca9e891512ae5b9a2b5fc3b569b94fc2ca37e3a19a01707165a5",
+      "source_review_status": "not_independently_human_reviewed",
+      "confirmatory_eligible": true,
+      "exclusion_reason": null,
+      "multi_hop_verified": false
+    },
+    {
+      "task": "fin-l3-crypto-multi-215",
+      "split": "main",
+      "original_level": "L3",
+      "capability": "aggregation",
+      "family": "L3·E crypto-multi",
+      "payload_sha256": "057678ae8f95ca9e891512ae5b9a2b5fc3b569b94fc2ca37e3a19a01707165a5",
+      "source_review_status": "not_independently_human_reviewed",
+      "confirmatory_eligible": true,
+      "exclusion_reason": null,
+      "multi_hop_verified": false
+    },
+    {
+      "task": "fin-l3-index-216",
+      "split": "main",
+      "original_level": "L3",
+      "capability": "aggregation",
+      "family": "L3·F index",
+      "payload_sha256": "032ee59dea44d7ce71ae077f40f5d8ce7582a9be4478fdcfce931f86e14fd42c",
+      "source_review_status": "not_independently_human_reviewed",
+      "confirmatory_eligible": true,
+      "exclusion_reason": null,
+      "multi_hop_verified": false
+    },
+    {
+      "task": "fin-l3-index-217",
+      "split": "main",
+      "original_level": "L3",
+      "capability": "aggregation",
+      "family": "L3·F index",
+      "payload_sha256": "3e2cb72a1d26644b5b6db60e6ac5b5d1e37b38b0b177ce1037a2dfd65cdd1ad7",
+      "source_review_status": "not_independently_human_reviewed",
+      "confirmatory_eligible": true,
+      "exclusion_reason": null,
+      "multi_hop_verified": false
+    },
+    {
+      "task": "fin-l3-macro-agg-218",
+      "split": "main",
+      "original_level": "L3",
+      "capability": "aggregation",
+      "family": "L3·G macro-agg",
+      "payload_sha256": "d8bc0abecd0495db6c9b79b9469ef73d76a229eec064aafe83770002f2fd3277",
+      "source_review_status": "not_independently_human_reviewed",
+      "confirmatory_eligible": false,
+      "exclusion_reason": "ambiguous_cpi_series_dimension",
+      "multi_hop_verified": false
+    },
+    {
+      "task": "fin-l3-macro-agg-219",
+      "split": "main",
+      "original_level": "L3",
+      "capability": "aggregation",
+      "family": "L3·G macro-agg",
+      "payload_sha256": "d8bc0abecd0495db6c9b79b9469ef73d76a229eec064aafe83770002f2fd3277",
+      "source_review_status": "not_independently_human_reviewed",
+      "confirmatory_eligible": false,
+      "exclusion_reason": "ambiguous_cpi_series_dimension",
+      "multi_hop_verified": false
+    },
+    {
+      "task": "fin-l3-macro-agg-220",
+      "split": "main",
+      "original_level": "L3",
+      "capability": "aggregation",
+      "family": "L3·G macro-agg",
+      "payload_sha256": "d8bc0abecd0495db6c9b79b9469ef73d76a229eec064aafe83770002f2fd3277",
+      "source_review_status": "not_independently_human_reviewed",
+      "confirmatory_eligible": true,
+      "exclusion_reason": null,
+      "multi_hop_verified": false
+    },
+    {
+      "task": "fin-l3-screen-189",
+      "split": "main",
+      "original_level": "L3",
+      "capability": "aggregation",
+      "family": "L3·A screen",
+      "payload_sha256": "3295ee3228fce43220d78e8c6b29b422a9311243d3dc6a72e01c36d405515e18",
+      "source_review_status": "not_independently_human_reviewed",
+      "confirmatory_eligible": true,
+      "exclusion_reason": null,
+      "multi_hop_verified": false
+    },
+    {
+      "task": "fin-l3-screen-190",
+      "split": "main",
+      "original_level": "L3",
+      "capability": "aggregation",
+      "family": "L3·A screen",
+      "payload_sha256": "bff00ef3fb44f7a704dadf8f94689c0b535b33cb7163d79fcab9a8ef83b54f4d",
+      "source_review_status": "not_independently_human_reviewed",
+      "confirmatory_eligible": true,
+      "exclusion_reason": null,
+      "multi_hop_verified": false
+    },
+    {
+      "task": "fin-l3-screen-191",
+      "split": "main",
+      "original_level": "L3",
+      "capability": "aggregation",
+      "family": "L3·A screen",
+      "payload_sha256": "f44870181d3518ee4f89a07ac809ce95b2f95b3e27c66af4e96eb6ceeb19e2d2",
+      "source_review_status": "not_independently_human_reviewed",
+      "confirmatory_eligible": true,
+      "exclusion_reason": null,
+      "multi_hop_verified": false
+    },
+    {
+      "task": "fin-l3-screen-192",
+      "split": "main",
+      "original_level": "L3",
+      "capability": "aggregation",
+      "family": "L3·A screen",
+      "payload_sha256": "0bd2fbf239937f6339375a3b74c14e626923c430bc191b9a6d0c9e0f61482465",
+      "source_review_status": "not_independently_human_reviewed",
+      "confirmatory_eligible": true,
+      "exclusion_reason": null,
+      "multi_hop_verified": false
+    },
+    {
+      "task": "fin-l3-screen-193",
+      "split": "main",
+      "original_level": "L3",
+      "capability": "aggregation",
+      "family": "L3·A screen",
+      "payload_sha256": "7482995f6d9cf105dd8fab6f4a2a6847b197553c28d9125dbf23595e6813dcbb",
+      "source_review_status": "not_independently_human_reviewed",
+      "confirmatory_eligible": true,
+      "exclusion_reason": null,
+      "multi_hop_verified": false
+    },
+    {
+      "task": "fin-l3-screen-194",
+      "split": "main",
+      "original_level": "L3",
+      "capability": "aggregation",
+      "family": "L3·A screen",
+      "payload_sha256": "9a6f7ee8f2c3ccec42436b0f8c701c2fa5bb48d54f4fa9bdab0ba5e30c6158e5",
+      "source_review_status": "not_independently_human_reviewed",
+      "confirmatory_eligible": true,
+      "exclusion_reason": null,
+      "multi_hop_verified": false
+    },
+    {
+      "task": "fin-l3-screen-195",
+      "split": "main",
+      "original_level": "L3",
+      "capability": "aggregation",
+      "family": "L3·A screen",
+      "payload_sha256": "fffbaf55bd1b4f1af5a6602068e0002cbb9d21c762cad0c7c2afc6c09aa0a67f",
+      "source_review_status": "not_independently_human_reviewed",
+      "confirmatory_eligible": true,
+      "exclusion_reason": null,
+      "multi_hop_verified": false
+    },
+    {
+      "task": "fin-l3-screen-196",
+      "split": "main",
+      "original_level": "L3",
+      "capability": "aggregation",
+      "family": "L3·A screen",
+      "payload_sha256": "6d60d2b1ef429d4d80579e8bea9d10cc323e16246a3b6ee768115b8bf2b05edf",
+      "source_review_status": "not_independently_human_reviewed",
+      "confirmatory_eligible": true,
+      "exclusion_reason": null,
+      "multi_hop_verified": false
+    },
+    {
+      "task": "fin-l3-tech-multi-203",
+      "split": "main",
+      "original_level": "L3",
+      "capability": "aggregation",
+      "family": "L3·D tech-multi",
+      "payload_sha256": "7b9ce4b4d0ce09d948905ce544f253c6cac93ed3819a068ee461bdac85ce5715",
+      "source_review_status": "not_independently_human_reviewed",
+      "confirmatory_eligible": true,
+      "exclusion_reason": null,
+      "multi_hop_verified": false
+    },
+    {
+      "task": "fin-l3-tech-multi-204",
+      "split": "main",
+      "original_level": "L3",
+      "capability": "aggregation",
+      "family": "L3·D tech-multi",
+      "payload_sha256": "4497a9be9def0f66ddfe9ebbf1f52ca9738f0047c502e1a69e4d8924e8dc0f65",
+      "source_review_status": "not_independently_human_reviewed",
+      "confirmatory_eligible": true,
+      "exclusion_reason": null,
+      "multi_hop_verified": false
+    },
+    {
+      "task": "fin-l3-tech-multi-205",
+      "split": "main",
+      "original_level": "L3",
+      "capability": "aggregation",
+      "family": "L3·D tech-multi",
+      "payload_sha256": "4497a9be9def0f66ddfe9ebbf1f52ca9738f0047c502e1a69e4d8924e8dc0f65",
+      "source_review_status": "not_independently_human_reviewed",
+      "confirmatory_eligible": true,
+      "exclusion_reason": null,
+      "multi_hop_verified": false
+    },
+    {
+      "task": "fin-l3-tech-multi-206",
+      "split": "main",
+      "original_level": "L3",
+      "capability": "aggregation",
+      "family": "L3·D tech-multi",
+      "payload_sha256": "3806d89602288ed593d5ff041e1d89048286f413accc5e3022bd415d85e3e546",
+      "source_review_status": "not_independently_human_reviewed",
+      "confirmatory_eligible": true,
+      "exclusion_reason": null,
+      "multi_hop_verified": false
+    },
+    {
+      "task": "fin-l3-tech-multi-207",
+      "split": "main",
+      "original_level": "L3",
+      "capability": "aggregation",
+      "family": "L3·D tech-multi",
+      "payload_sha256": "c774c4c749c1f9bcf28ff12f20daf317257fc76063fe8f1e97c95d5f75bacd43",
+      "source_review_status": "not_independently_human_reviewed",
+      "confirmatory_eligible": true,
+      "exclusion_reason": null,
+      "multi_hop_verified": false
+    },
+    {
+      "task": "fin-l3-top-197",
+      "split": "main",
+      "original_level": "L3",
+      "capability": "aggregation",
+      "family": "L3·C movers",
+      "payload_sha256": "b2446a67d6b1807ecbe171b0dea66b6147a5730988d0ec7b1ba7ac9c629e7a00",
+      "source_review_status": "not_independently_human_reviewed",
+      "confirmatory_eligible": true,
+      "exclusion_reason": null,
+      "multi_hop_verified": false
+    },
+    {
+      "task": "fin-l3-top-198",
+      "split": "main",
+      "original_level": "L3",
+      "capability": "aggregation",
+      "family": "L3·C movers",
+      "payload_sha256": "b2446a67d6b1807ecbe171b0dea66b6147a5730988d0ec7b1ba7ac9c629e7a00",
+      "source_review_status": "not_independently_human_reviewed",
+      "confirmatory_eligible": true,
+      "exclusion_reason": null,
+      "multi_hop_verified": false
+    },
+    {
+      "task": "fin-l3-top-199",
+      "split": "main",
+      "original_level": "L3",
+      "capability": "aggregation",
+      "family": "L3·C movers",
+      "payload_sha256": "b2446a67d6b1807ecbe171b0dea66b6147a5730988d0ec7b1ba7ac9c629e7a00",
+      "source_review_status": "not_independently_human_reviewed",
+      "confirmatory_eligible": true,
+      "exclusion_reason": null,
+      "multi_hop_verified": false
+    },
+    {
+      "task": "fin-l3-top-200",
+      "split": "main",
+      "original_level": "L3",
+      "capability": "aggregation",
+      "family": "L3·C movers",
+      "payload_sha256": "b2446a67d6b1807ecbe171b0dea66b6147a5730988d0ec7b1ba7ac9c629e7a00",
+      "source_review_status": "not_independently_human_reviewed",
+      "confirmatory_eligible": true,
+      "exclusion_reason": null,
+      "multi_hop_verified": false
+    },
+    {
+      "task": "fin-l3-top-201",
+      "split": "main",
+      "original_level": "L3",
+      "capability": "aggregation",
+      "family": "L3·C movers",
+      "payload_sha256": "b2446a67d6b1807ecbe171b0dea66b6147a5730988d0ec7b1ba7ac9c629e7a00",
+      "source_review_status": "not_independently_human_reviewed",
+      "confirmatory_eligible": true,
+      "exclusion_reason": null,
+      "multi_hop_verified": false
+    },
+    {
+      "task": "fin-l3-top-202",
+      "split": "main",
+      "original_level": "L3",
+      "capability": "aggregation",
+      "family": "L3·C movers",
+      "payload_sha256": "b2446a67d6b1807ecbe171b0dea66b6147a5730988d0ec7b1ba7ac9c629e7a00",
+      "source_review_status": "not_independently_human_reviewed",
+      "confirmatory_eligible": true,
+      "exclusion_reason": null,
+      "multi_hop_verified": false
+    },
+    {
+      "task": "fin-l4-2src-253",
+      "split": "main",
+      "original_level": "L4",
+      "capability": "evidence_check",
+      "family": "L4·D two-source",
+      "payload_sha256": "6fad2792b6ef3256accc1e4eed074ec30ba2dc243479c872c3745248cfd60268",
+      "source_review_status": "not_independently_human_reviewed",
+      "confirmatory_eligible": true,
+      "exclusion_reason": null,
+      "multi_hop_verified": false
+    },
+    {
+      "task": "fin-l4-2src-254",
+      "split": "main",
+      "original_level": "L4",
+      "capability": "evidence_check",
+      "family": "L4·D two-source",
+      "payload_sha256": "d30eae748a7085ed00a84c39bbe31a1dcc7c2b0de5e85ccaa8b9ca34ca89fc48",
+      "source_review_status": "not_independently_human_reviewed",
+      "confirmatory_eligible": true,
+      "exclusion_reason": null,
+      "multi_hop_verified": false
+    },
+    {
+      "task": "fin-l4-2src-255",
+      "split": "main",
+      "original_level": "L4",
+      "capability": "evidence_check",
+      "family": "L4·D two-source",
+      "payload_sha256": "34c492658e60d8646065b650f61b0c8bca3fce24c5cf875c4f9aaf6ab60894e0",
+      "source_review_status": "not_independently_human_reviewed",
+      "confirmatory_eligible": true,
+      "exclusion_reason": null,
+      "multi_hop_verified": false
+    },
+    {
+      "task": "fin-l4-2src-256",
+      "split": "main",
+      "original_level": "L4",
+      "capability": "evidence_check",
+      "family": "L4·D two-source",
+      "payload_sha256": "a9a6bda5ce9480cc3f1256363c27fa853c16cccea21015776cbdb855768d8776",
+      "source_review_status": "not_independently_human_reviewed",
+      "confirmatory_eligible": true,
+      "exclusion_reason": null,
+      "multi_hop_verified": false
+    },
+    {
+      "task": "fin-l4-2src-257",
+      "split": "main",
+      "original_level": "L4",
+      "capability": "evidence_check",
+      "family": "L4·D two-source",
+      "payload_sha256": "a83de05b38f6a498d640caf04351f52affc7887e47c18dad593c003d7f4fa91a",
+      "source_review_status": "not_independently_human_reviewed",
+      "confirmatory_eligible": true,
+      "exclusion_reason": null,
+      "multi_hop_verified": false
+    },
+    {
+      "task": "fin-l4-2src-258",
+      "split": "main",
+      "original_level": "L4",
+      "capability": "evidence_check",
+      "family": "L4·D two-source",
+      "payload_sha256": "5f582a83ebe2bf454b1bee47fb1f163e448df10c33d66eb82e6931bf28cc5eee",
+      "source_review_status": "not_independently_human_reviewed",
+      "confirmatory_eligible": true,
+      "exclusion_reason": null,
+      "multi_hop_verified": false
+    },
+    {
+      "task": "fin-l4-2src-259",
+      "split": "main",
+      "original_level": "L4",
+      "capability": "evidence_check",
+      "family": "L4·D two-source",
+      "payload_sha256": "6e724aed6de39026019090303dc95158803438613308e97562d8a1b8ed48c809",
+      "source_review_status": "not_independently_human_reviewed",
+      "confirmatory_eligible": true,
+      "exclusion_reason": null,
+      "multi_hop_verified": false
+    },
+    {
+      "task": "fin-l4-2src-260",
+      "split": "main",
+      "original_level": "L4",
+      "capability": "evidence_check",
+      "family": "L4·D two-source",
+      "payload_sha256": "6e724aed6de39026019090303dc95158803438613308e97562d8a1b8ed48c809",
+      "source_review_status": "not_independently_human_reviewed",
+      "confirmatory_eligible": true,
+      "exclusion_reason": null,
+      "multi_hop_verified": false
+    },
+    {
+      "task": "fin-l4-2src-302",
+      "split": "main",
+      "original_level": "L4",
+      "capability": "evidence_check",
+      "family": "L4·D two-source",
+      "payload_sha256": "2234df4ae92e80db82431eff6293e8e5ba90e7b3499e041c647f0e0b9b1b98af",
+      "source_review_status": "not_independently_human_reviewed",
+      "confirmatory_eligible": true,
+      "exclusion_reason": null,
+      "multi_hop_verified": false
+    },
+    {
+      "task": "fin-l4-chain-303",
+      "split": "main",
+      "original_level": "L4",
+      "capability": "retrieval",
+      "family": "L4·F two-step chain",
+      "payload_sha256": "293bef31c521c5388fb947161dd46816720fc35c84c27c387f7dce816fd6249b",
+      "source_review_status": "not_independently_human_reviewed",
+      "confirmatory_eligible": true,
+      "exclusion_reason": null,
+      "multi_hop_verified": false
+    },
+    {
+      "task": "fin-l4-chain-304",
+      "split": "main",
+      "original_level": "L4",
+      "capability": "retrieval",
+      "family": "L4·F two-step chain",
+      "payload_sha256": "4ea8bbb9d1b871ff591d72c77cbfcdc51fb7861f012f3bc99fd23786b7605433",
+      "source_review_status": "not_independently_human_reviewed",
+      "confirmatory_eligible": true,
+      "exclusion_reason": null,
+      "multi_hop_verified": false
+    },
+    {
+      "task": "fin-l4-chain-305",
+      "split": "main",
+      "original_level": "L4",
+      "capability": "retrieval",
+      "family": "L4·F two-step chain",
+      "payload_sha256": "63873ca0cdbf473946c7a06aa7520ca6bc194cc972ce80e49b59bba39a4a9a71",
+      "source_review_status": "not_independently_human_reviewed",
+      "confirmatory_eligible": true,
+      "exclusion_reason": null,
+      "multi_hop_verified": false
+    },
+    {
+      "task": "fin-l4-chain-306",
+      "split": "main",
+      "original_level": "L4",
+      "capability": "retrieval",
+      "family": "L4·F two-step chain",
+      "payload_sha256": "8e14fc5e914a943d7a59ecee36429f184b8d374c28127fb296e0c6ea489867c8",
+      "source_review_status": "not_independently_human_reviewed",
+      "confirmatory_eligible": true,
+      "exclusion_reason": null,
+      "multi_hop_verified": false
+    },
+    {
+      "task": "fin-l4-future-221",
+      "split": "main",
+      "original_level": "L4",
+      "capability": "evidence_check",
+      "family": "L4·E future-period",
+      "payload_sha256": "807221df72b3943e15ea466c1091ebfc4c2628faa5827d9ba7a01c28ad289352",
+      "source_review_status": "not_independently_human_reviewed",
+      "confirmatory_eligible": true,
+      "exclusion_reason": null,
+      "multi_hop_verified": false
+    },
+    {
+      "task": "fin-l4-future-222",
+      "split": "main",
+      "original_level": "L4",
+      "capability": "evidence_check",
+      "family": "L4·E future-period",
+      "payload_sha256": "4b54bce803f4ff1e29da2403548fe58563d73af7360eba175c2d9eda20775873",
+      "source_review_status": "not_independently_human_reviewed",
+      "confirmatory_eligible": true,
+      "exclusion_reason": null,
+      "multi_hop_verified": false
+    },
+    {
+      "task": "fin-l4-future-223",
+      "split": "main",
+      "original_level": "L4",
+      "capability": "evidence_check",
+      "family": "L4·E future-period",
+      "payload_sha256": "ecb498d7e0e732f4996b88fcb7c7973dc889b2e9ea478e912a91af41fa9681de",
+      "source_review_status": "not_independently_human_reviewed",
+      "confirmatory_eligible": true,
+      "exclusion_reason": null,
+      "multi_hop_verified": false
+    },
+    {
+      "task": "fin-l4-future-224",
+      "split": "main",
+      "original_level": "L4",
+      "capability": "evidence_check",
+      "family": "L4·E future-period",
+      "payload_sha256": "6bb3e2980ffc09fd4a909dd01053fb435f80e8a3901eff3174c9ac9c9004e5c6",
+      "source_review_status": "not_independently_human_reviewed",
+      "confirmatory_eligible": true,
+      "exclusion_reason": null,
+      "multi_hop_verified": false
+    },
+    {
+      "task": "fin-l4-future-225",
+      "split": "main",
+      "original_level": "L4",
+      "capability": "evidence_check",
+      "family": "L4·E future-period",
+      "payload_sha256": "bc3ecd38d371c46a9eb87d65d48fcd97c4993b974206c0b44c57c227057a5439",
+      "source_review_status": "not_independently_human_reviewed",
+      "confirmatory_eligible": true,
+      "exclusion_reason": null,
+      "multi_hop_verified": false
+    },
+    {
+      "task": "fin-l4-future-226",
+      "split": "main",
+      "original_level": "L4",
+      "capability": "evidence_check",
+      "family": "L4·E future-period",
+      "payload_sha256": "3b5d1d3a5400d5b8372299c63c574fd6edd9ce75300ab580403aad1b57bd5e7b",
+      "source_review_status": "not_independently_human_reviewed",
+      "confirmatory_eligible": true,
+      "exclusion_reason": null,
+      "multi_hop_verified": false
+    },
+    {
+      "task": "fin-l4-future-227",
+      "split": "main",
+      "original_level": "L4",
+      "capability": "evidence_check",
+      "family": "L4·E future-period",
+      "payload_sha256": "d2d6286edc369f891b0e6df7fb9cc9292abd1d60018c8eb6c92180231da1dff3",
+      "source_review_status": "not_independently_human_reviewed",
+      "confirmatory_eligible": true,
+      "exclusion_reason": null,
+      "multi_hop_verified": false
+    },
+    {
+      "task": "fin-l4-future-228",
+      "split": "main",
+      "original_level": "L4",
+      "capability": "evidence_check",
+      "family": "L4·E future-period",
+      "payload_sha256": "5f0bbe1901782843db46480749ebf90d592b2e85c8b09ca8c85c7310253775e9",
+      "source_review_status": "not_independently_human_reviewed",
+      "confirmatory_eligible": true,
+      "exclusion_reason": null,
+      "multi_hop_verified": false
+    },
+    {
+      "task": "fin-l4-future-229",
+      "split": "main",
+      "original_level": "L4",
+      "capability": "evidence_check",
+      "family": "L4·E future-period",
+      "payload_sha256": "d8bc0abecd0495db6c9b79b9469ef73d76a229eec064aafe83770002f2fd3277",
+      "source_review_status": "not_independently_human_reviewed",
+      "confirmatory_eligible": false,
+      "exclusion_reason": "ambiguous_cpi_series_dimension",
+      "multi_hop_verified": false
+    },
+    {
+      "task": "fin-l4-future-230",
+      "split": "main",
+      "original_level": "L4",
+      "capability": "evidence_check",
+      "family": "L4·E future-period",
+      "payload_sha256": "d8bc0abecd0495db6c9b79b9469ef73d76a229eec064aafe83770002f2fd3277",
+      "source_review_status": "not_independently_human_reviewed",
+      "confirmatory_eligible": false,
+      "exclusion_reason": "ambiguous_cpi_series_dimension",
+      "multi_hop_verified": false
+    },
+    {
+      "task": "fin-l4-future-231",
+      "split": "main",
+      "original_level": "L4",
+      "capability": "evidence_check",
+      "family": "L4·E future-period",
+      "payload_sha256": "d8bc0abecd0495db6c9b79b9469ef73d76a229eec064aafe83770002f2fd3277",
+      "source_review_status": "not_independently_human_reviewed",
+      "confirmatory_eligible": true,
+      "exclusion_reason": null,
+      "multi_hop_verified": false
+    },
+    {
+      "task": "fin-l4-future-232",
+      "split": "main",
+      "original_level": "L4",
+      "capability": "evidence_check",
+      "family": "L4·E future-period",
+      "payload_sha256": "6e724aed6de39026019090303dc95158803438613308e97562d8a1b8ed48c809",
+      "source_review_status": "not_independently_human_reviewed",
+      "confirmatory_eligible": true,
+      "exclusion_reason": null,
+      "multi_hop_verified": false
+    },
+    {
+      "task": "fin-l4-future-233",
+      "split": "main",
+      "original_level": "L4",
+      "capability": "evidence_check",
+      "family": "L4·E future-period",
+      "payload_sha256": "6e724aed6de39026019090303dc95158803438613308e97562d8a1b8ed48c809",
+      "source_review_status": "not_independently_human_reviewed",
+      "confirmatory_eligible": true,
+      "exclusion_reason": null,
+      "multi_hop_verified": false
+    },
+    {
+      "task": "fin-l4-future-234",
+      "split": "main",
+      "original_level": "L4",
+      "capability": "evidence_check",
+      "family": "L4·E future-period",
+      "payload_sha256": "6e724aed6de39026019090303dc95158803438613308e97562d8a1b8ed48c809",
+      "source_review_status": "not_independently_human_reviewed",
+      "confirmatory_eligible": true,
+      "exclusion_reason": null,
+      "multi_hop_verified": false
+    },
+    {
+      "task": "fin-l4-future-307",
+      "split": "main",
+      "original_level": "L4",
+      "capability": "evidence_check",
+      "family": "L4·E future-period",
+      "payload_sha256": "2693ecdd2176d5a3ed4c65e4f561581a43fdacd662ab58f35d2ed17d57e1b744",
+      "source_review_status": "not_independently_human_reviewed",
+      "confirmatory_eligible": true,
+      "exclusion_reason": null,
+      "multi_hop_verified": false
+    },
+    {
+      "task": "fin-l4-future-308",
+      "split": "main",
+      "original_level": "L4",
+      "capability": "evidence_check",
+      "family": "L4·E future-period",
+      "payload_sha256": "0b1d1ffa3de38adebd2491e2993b8b72f31beca5af94a15e60019c865a194747",
+      "source_review_status": "not_independently_human_reviewed",
+      "confirmatory_eligible": true,
+      "exclusion_reason": null,
+      "multi_hop_verified": false
+    },
+    {
+      "task": "fin-l4-narrative-244",
+      "split": "main",
+      "original_level": "L4",
+      "capability": "evidence_check",
+      "family": "L4·I narrative-check",
+      "payload_sha256": "0413817d9f85b8b6ce0c01cf4dfe1897fc58aa9db85a55e60cc637fa2f157e7c",
+      "source_review_status": "not_independently_human_reviewed",
+      "confirmatory_eligible": false,
+      "exclusion_reason": "incomplete_narrative_evidence_rubric",
+      "multi_hop_verified": false
+    },
+    {
+      "task": "fin-l4-narrative-245",
+      "split": "main",
+      "original_level": "L4",
+      "capability": "evidence_check",
+      "family": "L4·I narrative-check",
+      "payload_sha256": "56001d4f2fea13b2076d153fd77e5f4ac06c1f4f731d1576efb36e43f42dea61",
+      "source_review_status": "not_independently_human_reviewed",
+      "confirmatory_eligible": false,
+      "exclusion_reason": "incomplete_narrative_evidence_rubric",
+      "multi_hop_verified": false
+    },
+    {
+      "task": "fin-l4-narrative-246",
+      "split": "main",
+      "original_level": "L4",
+      "capability": "evidence_check",
+      "family": "L4·I narrative-check",
+      "payload_sha256": "c250c282e6dfda3642e9a561e0ad959405d0e317eabbd8e88302000e03bbb660",
+      "source_review_status": "not_independently_human_reviewed",
+      "confirmatory_eligible": false,
+      "exclusion_reason": "incomplete_narrative_evidence_rubric",
+      "multi_hop_verified": false
+    },
+    {
+      "task": "fin-l4-narrative-247",
+      "split": "main",
+      "original_level": "L4",
+      "capability": "evidence_check",
+      "family": "L4·I narrative-check",
+      "payload_sha256": "6770bc9b036d8167c00814f11b81e304be7719bdcbc26ea59a0ce6cb67770ae7",
+      "source_review_status": "not_independently_human_reviewed",
+      "confirmatory_eligible": false,
+      "exclusion_reason": "incomplete_narrative_evidence_rubric",
+      "multi_hop_verified": false
+    },
+    {
+      "task": "fin-l4-narrative-248",
+      "split": "main",
+      "original_level": "L4",
+      "capability": "evidence_check",
+      "family": "L4·I narrative-check",
+      "payload_sha256": "3daaf2f947f10f4eb2d07fa838492516811850c99a3db58cf732bbf834103792",
+      "source_review_status": "not_independently_human_reviewed",
+      "confirmatory_eligible": false,
+      "exclusion_reason": "incomplete_narrative_evidence_rubric",
+      "multi_hop_verified": false
+    },
+    {
+      "task": "fin-l4-narrative-249",
+      "split": "main",
+      "original_level": "L4",
+      "capability": "evidence_check",
+      "family": "L4·I narrative-check",
+      "payload_sha256": "1a1c6ce1a6fe39d4702a41e9ed10dc606d88a7a47b401f2ade5906e1020ea70c",
+      "source_review_status": "not_independently_human_reviewed",
+      "confirmatory_eligible": false,
+      "exclusion_reason": "incomplete_narrative_evidence_rubric",
+      "multi_hop_verified": false
+    },
+    {
+      "task": "fin-l4-narrative-250",
+      "split": "main",
+      "original_level": "L4",
+      "capability": "evidence_check",
+      "family": "L4·I narrative-check",
+      "payload_sha256": "7ff5439e3a871fc0996111025189c64049ec7d80f8a5f86d3512fe4b300705d9",
+      "source_review_status": "not_independently_human_reviewed",
+      "confirmatory_eligible": false,
+      "exclusion_reason": "incomplete_narrative_evidence_rubric",
+      "multi_hop_verified": false
+    },
+    {
+      "task": "fin-l4-narrative-251",
+      "split": "main",
+      "original_level": "L4",
+      "capability": "evidence_check",
+      "family": "L4·I narrative-check",
+      "payload_sha256": "7ff5439e3a871fc0996111025189c64049ec7d80f8a5f86d3512fe4b300705d9",
+      "source_review_status": "not_independently_human_reviewed",
+      "confirmatory_eligible": false,
+      "exclusion_reason": "incomplete_narrative_evidence_rubric",
+      "multi_hop_verified": false
+    },
+    {
+      "task": "fin-l4-narrative-252",
+      "split": "main",
+      "original_level": "L4",
+      "capability": "evidence_check",
+      "family": "L4·I narrative-check",
+      "payload_sha256": "7ff5439e3a871fc0996111025189c64049ec7d80f8a5f86d3512fe4b300705d9",
+      "source_review_status": "not_independently_human_reviewed",
+      "confirmatory_eligible": false,
+      "exclusion_reason": "incomplete_narrative_evidence_rubric",
+      "multi_hop_verified": false
+    },
+    {
+      "task": "fin-l4-nonexist-235",
+      "split": "main",
+      "original_level": "L4",
+      "capability": "evidence_check",
+      "family": "L4·B nonexistent",
+      "payload_sha256": "6b0d8b8dc0a5d8bcdac5b2c01abeba374320de679d9b3d93b804a5b8d004d82c",
+      "source_review_status": "not_independently_human_reviewed",
+      "confirmatory_eligible": true,
+      "exclusion_reason": null,
+      "multi_hop_verified": false
+    },
+    {
+      "task": "fin-l4-nonexist-236",
+      "split": "main",
+      "original_level": "L4",
+      "capability": "evidence_check",
+      "family": "L4·B nonexistent",
+      "payload_sha256": "88d629997ebcf82984d4ce583525da4c771ad20eed3b3133fe3fdce0fd544798",
+      "source_review_status": "not_independently_human_reviewed",
+      "confirmatory_eligible": true,
+      "exclusion_reason": null,
+      "multi_hop_verified": false
+    },
+    {
+      "task": "fin-l4-nonexist-237",
+      "split": "main",
+      "original_level": "L4",
+      "capability": "evidence_check",
+      "family": "L4·B nonexistent",
+      "payload_sha256": "8367468176d2147aba18bcbaf47307d66f4ae6ae92cacab297afc375ed351805",
+      "source_review_status": "not_independently_human_reviewed",
+      "confirmatory_eligible": true,
+      "exclusion_reason": null,
+      "multi_hop_verified": false
+    },
+    {
+      "task": "fin-l4-nonexist-238",
+      "split": "main",
+      "original_level": "L4",
+      "capability": "evidence_check",
+      "family": "L4·B nonexistent",
+      "payload_sha256": "7658ca2f6b5f17aa56164755efb5314c4396ebb9fd91a78dc0e36a09a43f1158",
+      "source_review_status": "not_independently_human_reviewed",
+      "confirmatory_eligible": true,
+      "exclusion_reason": null,
+      "multi_hop_verified": false
+    },
+    {
+      "task": "fin-l4-nonexist-239",
+      "split": "main",
+      "original_level": "L4",
+      "capability": "evidence_check",
+      "family": "L4·B nonexistent",
+      "payload_sha256": "6d3e5b56f5ce2283d7e01781e46791dd5ad7e1fffaa64a260994962681d53b10",
+      "source_review_status": "not_independently_human_reviewed",
+      "confirmatory_eligible": true,
+      "exclusion_reason": null,
+      "multi_hop_verified": false
+    },
+    {
+      "task": "fin-l4-nonexist-240",
+      "split": "main",
+      "original_level": "L4",
+      "capability": "evidence_check",
+      "family": "L4·B nonexistent",
+      "payload_sha256": "e06cb353890a6df953eed511512365a9dee7b43b9f22ea3ee9619da7343c0acb",
+      "source_review_status": "not_independently_human_reviewed",
+      "confirmatory_eligible": true,
+      "exclusion_reason": null,
+      "multi_hop_verified": false
+    },
+    {
+      "task": "fin-l4-nonexist-241",
+      "split": "main",
+      "original_level": "L4",
+      "capability": "evidence_check",
+      "family": "L4·B nonexistent",
+      "payload_sha256": "4e7acbf34b050682e6b634a70d21c1fa0df994591839e4c42aecd26eee7e8141",
+      "source_review_status": "not_independently_human_reviewed",
+      "confirmatory_eligible": true,
+      "exclusion_reason": null,
+      "multi_hop_verified": false
+    },
+    {
+      "task": "fin-l4-nonexist-242",
+      "split": "main",
+      "original_level": "L4",
+      "capability": "evidence_check",
+      "family": "L4·B nonexistent",
+      "payload_sha256": "97937c295a67f5679ea012139851c8c92b52cc785a0061774913b3ca8cc9780c",
+      "source_review_status": "not_independently_human_reviewed",
+      "confirmatory_eligible": true,
+      "exclusion_reason": null,
+      "multi_hop_verified": false
+    },
+    {
+      "task": "fin-l4-nonexist-243",
+      "split": "main",
+      "original_level": "L4",
+      "capability": "evidence_check",
+      "family": "L4·B nonexistent",
+      "payload_sha256": "896535c1551bbd5d34814dfe90e42300bf157637735b4bd0e6d3ca10fdc53ed7",
+      "source_review_status": "not_independently_human_reviewed",
+      "confirmatory_eligible": true,
+      "exclusion_reason": null,
+      "multi_hop_verified": false
+    },
+    {
+      "task": "fin-l4-nonexist-309",
+      "split": "main",
+      "original_level": "L4",
+      "capability": "evidence_check",
+      "family": "L4·B nonexistent",
+      "payload_sha256": "0070f0cb42bdd5debb6e31560caaa4784cfa953f1d3d6f41a5fda3878e877d0a",
+      "source_review_status": "not_independently_human_reviewed",
+      "confirmatory_eligible": true,
+      "exclusion_reason": null,
+      "multi_hop_verified": false
+    },
+    {
+      "task": "fin-l4-nonexist-310",
+      "split": "main",
+      "original_level": "L4",
+      "capability": "evidence_check",
+      "family": "L4·B nonexistent",
+      "payload_sha256": "e54b47aa73795a35e2957fcb510a6e61ecb8f315eb2cc5022e06b83c08d4c9d5",
+      "source_review_status": "not_independently_human_reviewed",
+      "confirmatory_eligible": true,
+      "exclusion_reason": null,
+      "multi_hop_verified": false
+    },
+    {
+      "task": "fin-l5-compare-275",
+      "split": "main",
+      "original_level": "L5",
+      "capability": "synthesis",
+      "family": "L5·B compare",
+      "payload_sha256": "3295ee3228fce43220d78e8c6b29b422a9311243d3dc6a72e01c36d405515e18",
+      "source_review_status": "not_independently_human_reviewed",
+      "confirmatory_eligible": true,
+      "exclusion_reason": null,
+      "multi_hop_verified": false
+    },
+    {
+      "task": "fin-l5-compare-276",
+      "split": "main",
+      "original_level": "L5",
+      "capability": "synthesis",
+      "family": "L5·B compare",
+      "payload_sha256": "bff00ef3fb44f7a704dadf8f94689c0b535b33cb7163d79fcab9a8ef83b54f4d",
+      "source_review_status": "not_independently_human_reviewed",
+      "confirmatory_eligible": true,
+      "exclusion_reason": null,
+      "multi_hop_verified": false
+    },
+    {
+      "task": "fin-l5-compare-277",
+      "split": "main",
+      "original_level": "L5",
+      "capability": "synthesis",
+      "family": "L5·B compare",
+      "payload_sha256": "f44870181d3518ee4f89a07ac809ce95b2f95b3e27c66af4e96eb6ceeb19e2d2",
+      "source_review_status": "not_independently_human_reviewed",
+      "confirmatory_eligible": true,
+      "exclusion_reason": null,
+      "multi_hop_verified": false
+    },
+    {
+      "task": "fin-l5-compare-278",
+      "split": "main",
+      "original_level": "L5",
+      "capability": "synthesis",
+      "family": "L5·B compare",
+      "payload_sha256": "0bd2fbf239937f6339375a3b74c14e626923c430bc191b9a6d0c9e0f61482465",
+      "source_review_status": "not_independently_human_reviewed",
+      "confirmatory_eligible": true,
+      "exclusion_reason": null,
+      "multi_hop_verified": false
+    },
+    {
+      "task": "fin-l5-compare-279",
+      "split": "main",
+      "original_level": "L5",
+      "capability": "synthesis",
+      "family": "L5·B compare",
+      "payload_sha256": "7482995f6d9cf105dd8fab6f4a2a6847b197553c28d9125dbf23595e6813dcbb",
+      "source_review_status": "not_independently_human_reviewed",
+      "confirmatory_eligible": true,
+      "exclusion_reason": null,
+      "multi_hop_verified": false
+    },
+    {
+      "task": "fin-l5-compare-280",
+      "split": "main",
+      "original_level": "L5",
+      "capability": "synthesis",
+      "family": "L5·B compare",
+      "payload_sha256": "9a6f7ee8f2c3ccec42436b0f8c701c2fa5bb48d54f4fa9bdab0ba5e30c6158e5",
+      "source_review_status": "not_independently_human_reviewed",
+      "confirmatory_eligible": true,
+      "exclusion_reason": null,
+      "multi_hop_verified": false
+    },
+    {
+      "task": "fin-l5-compare-281",
+      "split": "main",
+      "original_level": "L5",
+      "capability": "synthesis",
+      "family": "L5·B compare",
+      "payload_sha256": "fffbaf55bd1b4f1af5a6602068e0002cbb9d21c762cad0c7c2afc6c09aa0a67f",
+      "source_review_status": "not_independently_human_reviewed",
+      "confirmatory_eligible": true,
+      "exclusion_reason": null,
+      "multi_hop_verified": false
+    },
+    {
+      "task": "fin-l5-compare-282",
+      "split": "main",
+      "original_level": "L5",
+      "capability": "synthesis",
+      "family": "L5·B compare",
+      "payload_sha256": "6d60d2b1ef429d4d80579e8bea9d10cc323e16246a3b6ee768115b8bf2b05edf",
+      "source_review_status": "not_independently_human_reviewed",
+      "confirmatory_eligible": true,
+      "exclusion_reason": null,
+      "multi_hop_verified": false
+    },
+    {
+      "task": "fin-l5-compare-283",
+      "split": "main",
+      "original_level": "L5",
+      "capability": "synthesis",
+      "family": "L5·B compare",
+      "payload_sha256": "057678ae8f95ca9e891512ae5b9a2b5fc3b569b94fc2ca37e3a19a01707165a5",
+      "source_review_status": "not_independently_human_reviewed",
+      "confirmatory_eligible": true,
+      "exclusion_reason": null,
+      "multi_hop_verified": false
+    },
+    {
+      "task": "fin-l5-compare-284",
+      "split": "main",
+      "original_level": "L5",
+      "capability": "synthesis",
+      "family": "L5·B compare",
+      "payload_sha256": "057678ae8f95ca9e891512ae5b9a2b5fc3b569b94fc2ca37e3a19a01707165a5",
+      "source_review_status": "not_independently_human_reviewed",
+      "confirmatory_eligible": true,
+      "exclusion_reason": null,
+      "multi_hop_verified": false
+    },
+    {
+      "task": "fin-l5-compare-285",
+      "split": "main",
+      "original_level": "L5",
+      "capability": "synthesis",
+      "family": "L5·B compare",
+      "payload_sha256": "057678ae8f95ca9e891512ae5b9a2b5fc3b569b94fc2ca37e3a19a01707165a5",
+      "source_review_status": "not_independently_human_reviewed",
+      "confirmatory_eligible": true,
+      "exclusion_reason": null,
+      "multi_hop_verified": false
+    },
+    {
+      "task": "fin-l5-compare-286",
+      "split": "main",
+      "original_level": "L5",
+      "capability": "synthesis",
+      "family": "L5·B compare",
+      "payload_sha256": "057678ae8f95ca9e891512ae5b9a2b5fc3b569b94fc2ca37e3a19a01707165a5",
+      "source_review_status": "not_independently_human_reviewed",
+      "confirmatory_eligible": true,
+      "exclusion_reason": null,
+      "multi_hop_verified": false
+    },
+    {
+      "task": "fin-l5-compare-287",
+      "split": "main",
+      "original_level": "L5",
+      "capability": "synthesis",
+      "family": "L5·B compare",
+      "payload_sha256": "1ea94fab93037b3630eeb9786033b34cc15b3648ce3df3cdae92ac7d4633ab6d",
+      "source_review_status": "not_independently_human_reviewed",
+      "confirmatory_eligible": true,
+      "exclusion_reason": null,
+      "multi_hop_verified": false
+    },
+    {
+      "task": "fin-l5-compare-288",
+      "split": "main",
+      "original_level": "L5",
+      "capability": "synthesis",
+      "family": "L5·B compare",
+      "payload_sha256": "6e724aed6de39026019090303dc95158803438613308e97562d8a1b8ed48c809",
+      "source_review_status": "not_independently_human_reviewed",
+      "confirmatory_eligible": true,
+      "exclusion_reason": null,
+      "multi_hop_verified": false
+    },
+    {
+      "task": "fin-l5-compare-289",
+      "split": "main",
+      "original_level": "L5",
+      "capability": "synthesis",
+      "family": "L5·B compare",
+      "payload_sha256": "6e724aed6de39026019090303dc95158803438613308e97562d8a1b8ed48c809",
+      "source_review_status": "not_independently_human_reviewed",
+      "confirmatory_eligible": true,
+      "exclusion_reason": null,
+      "multi_hop_verified": false
+    },
+    {
+      "task": "fin-l5-compare-290",
+      "split": "main",
+      "original_level": "L5",
+      "capability": "synthesis",
+      "family": "L5·B compare",
+      "payload_sha256": "6e724aed6de39026019090303dc95158803438613308e97562d8a1b8ed48c809",
+      "source_review_status": "not_independently_human_reviewed",
+      "confirmatory_eligible": true,
+      "exclusion_reason": null,
+      "multi_hop_verified": false
+    },
+    {
+      "task": "fin-l5-profile-261",
+      "split": "main",
+      "original_level": "L5",
+      "capability": "synthesis",
+      "family": "L5·A profile",
+      "payload_sha256": "c1105a9cf7013020defacf181424c2fae45d69c2e14769bdf9ff1f8e18cd7baf",
+      "source_review_status": "not_independently_human_reviewed",
+      "confirmatory_eligible": true,
+      "exclusion_reason": null,
+      "multi_hop_verified": false
+    },
+    {
+      "task": "fin-l5-profile-262",
+      "split": "main",
+      "original_level": "L5",
+      "capability": "synthesis",
+      "family": "L5·A profile",
+      "payload_sha256": "ea4f5e709168c331478f99c570196fdd7ed6fda6e9c3122fb5ce2e0f0dbcc9a8",
+      "source_review_status": "not_independently_human_reviewed",
+      "confirmatory_eligible": true,
+      "exclusion_reason": null,
+      "multi_hop_verified": false
+    },
+    {
+      "task": "fin-l5-profile-263",
+      "split": "main",
+      "original_level": "L5",
+      "capability": "synthesis",
+      "family": "L5·A profile",
+      "payload_sha256": "44687915bb42eb667a928220620fe8fc19159d78d7e75d11989588439d080fb2",
+      "source_review_status": "not_independently_human_reviewed",
+      "confirmatory_eligible": true,
+      "exclusion_reason": null,
+      "multi_hop_verified": false
+    },
+    {
+      "task": "fin-l5-profile-264",
+      "split": "main",
+      "original_level": "L5",
+      "capability": "synthesis",
+      "family": "L5·A profile",
+      "payload_sha256": "ba34a4807b439f21100f5fc4ce1050eb829f7a92b6850e05ecfe3f9293e50fac",
+      "source_review_status": "not_independently_human_reviewed",
+      "confirmatory_eligible": true,
+      "exclusion_reason": null,
+      "multi_hop_verified": false
+    },
+    {
+      "task": "fin-l5-profile-265",
+      "split": "main",
+      "original_level": "L5",
+      "capability": "synthesis",
+      "family": "L5·A profile",
+      "payload_sha256": "0c1a2ae3f9764dfe3210a24cd97e499f86a271e8b45d9f6b1d196ab0f578aceb",
+      "source_review_status": "not_independently_human_reviewed",
+      "confirmatory_eligible": true,
+      "exclusion_reason": null,
+      "multi_hop_verified": false
+    },
+    {
+      "task": "fin-l5-profile-266",
+      "split": "main",
+      "original_level": "L5",
+      "capability": "synthesis",
+      "family": "L5·A profile",
+      "payload_sha256": "f0c5fcfe35ea72460d4425381b4c83a98168d1feef0fc4ce45255c08efe72585",
+      "source_review_status": "not_independently_human_reviewed",
+      "confirmatory_eligible": true,
+      "exclusion_reason": null,
+      "multi_hop_verified": false
+    },
+    {
+      "task": "fin-l5-profile-267",
+      "split": "main",
+      "original_level": "L5",
+      "capability": "synthesis",
+      "family": "L5·A profile",
+      "payload_sha256": "029659807e4d6196a71f719b4864b1d9b45f0e3ef525d0332c3c066819b4bb30",
+      "source_review_status": "not_independently_human_reviewed",
+      "confirmatory_eligible": true,
+      "exclusion_reason": null,
+      "multi_hop_verified": false
+    },
+    {
+      "task": "fin-l5-profile-268",
+      "split": "main",
+      "original_level": "L5",
+      "capability": "synthesis",
+      "family": "L5·A profile",
+      "payload_sha256": "9817f0a35694f41fe03d11a5257e1bb9584c08c6dcb66bb8207244e55235e967",
+      "source_review_status": "not_independently_human_reviewed",
+      "confirmatory_eligible": true,
+      "exclusion_reason": null,
+      "multi_hop_verified": false
+    },
+    {
+      "task": "fin-l5-profile-269",
+      "split": "main",
+      "original_level": "L5",
+      "capability": "synthesis",
+      "family": "L5·A profile",
+      "payload_sha256": "878b186c487ba5e716708c0f68dcdc576d48d97ce17a5ed116a86b78cf7c5323",
+      "source_review_status": "not_independently_human_reviewed",
+      "confirmatory_eligible": true,
+      "exclusion_reason": null,
+      "multi_hop_verified": false
+    },
+    {
+      "task": "fin-l5-profile-270",
+      "split": "main",
+      "original_level": "L5",
+      "capability": "synthesis",
+      "family": "L5·A profile",
+      "payload_sha256": "4ee78d7da453cdba971e681890aea1a3bae175a3e06cd34cc4d61f66c06fa5ea",
+      "source_review_status": "not_independently_human_reviewed",
+      "confirmatory_eligible": true,
+      "exclusion_reason": null,
+      "multi_hop_verified": false
+    },
+    {
+      "task": "fin-l5-profile-271",
+      "split": "main",
+      "original_level": "L5",
+      "capability": "synthesis",
+      "family": "L5·A profile",
+      "payload_sha256": "df9ea3fd726342a0dada973420912b22030f0575e69709fc9e30e588cc136ae2",
+      "source_review_status": "not_independently_human_reviewed",
+      "confirmatory_eligible": true,
+      "exclusion_reason": null,
+      "multi_hop_verified": false
+    },
+    {
+      "task": "fin-l5-profile-272",
+      "split": "main",
+      "original_level": "L5",
+      "capability": "synthesis",
+      "family": "L5·A profile",
+      "payload_sha256": "6f6428af849ad1f7b87c53f88b46a1de63fbc42f53c716814b8cd1e846a26d98",
+      "source_review_status": "not_independently_human_reviewed",
+      "confirmatory_eligible": true,
+      "exclusion_reason": null,
+      "multi_hop_verified": false
+    },
+    {
+      "task": "fin-l5-profile-273",
+      "split": "main",
+      "original_level": "L5",
+      "capability": "synthesis",
+      "family": "L5·A profile",
+      "payload_sha256": "057678ae8f95ca9e891512ae5b9a2b5fc3b569b94fc2ca37e3a19a01707165a5",
+      "source_review_status": "not_independently_human_reviewed",
+      "confirmatory_eligible": true,
+      "exclusion_reason": null,
+      "multi_hop_verified": false
+    },
+    {
+      "task": "fin-l5-profile-274",
+      "split": "main",
+      "original_level": "L5",
+      "capability": "synthesis",
+      "family": "L5·A profile",
+      "payload_sha256": "057678ae8f95ca9e891512ae5b9a2b5fc3b569b94fc2ca37e3a19a01707165a5",
+      "source_review_status": "not_independently_human_reviewed",
+      "confirmatory_eligible": true,
+      "exclusion_reason": null,
+      "multi_hop_verified": false
+    },
+    {
+      "task": "fin-l5-valuation-291",
+      "split": "main",
+      "original_level": "L5",
+      "capability": "retrieval",
+      "family": "L5·C valuation",
+      "payload_sha256": "910c3705e165f61bdfde71b664b100763aa3015104e37a029ca7bd745e987218",
+      "source_review_status": "not_independently_human_reviewed",
+      "confirmatory_eligible": true,
+      "exclusion_reason": null,
+      "multi_hop_verified": false,
+      "limitation": "multiple extraction; no fair-value model"
+    },
+    {
+      "task": "fin-l5-valuation-292",
+      "split": "main",
+      "original_level": "L5",
+      "capability": "retrieval",
+      "family": "L5·C valuation",
+      "payload_sha256": "2fb795d6665dac1c5332bdc8af14223ed15e0ba031bcf8a37fd7c26bf3bba180",
+      "source_review_status": "not_independently_human_reviewed",
+      "confirmatory_eligible": true,
+      "exclusion_reason": null,
+      "multi_hop_verified": false,
+      "limitation": "multiple extraction; no fair-value model"
+    },
+    {
+      "task": "fin-l5-valuation-293",
+      "split": "main",
+      "original_level": "L5",
+      "capability": "retrieval",
+      "family": "L5·C valuation",
+      "payload_sha256": "4d613b3f64f8d4fc3f98d9df248e5dcff0cefa47e51ec5373b79675e7f092cdf",
+      "source_review_status": "not_independently_human_reviewed",
+      "confirmatory_eligible": true,
+      "exclusion_reason": null,
+      "multi_hop_verified": false,
+      "limitation": "multiple extraction; no fair-value model"
+    },
+    {
+      "task": "fin-l5-valuation-294",
+      "split": "main",
+      "original_level": "L5",
+      "capability": "retrieval",
+      "family": "L5·C valuation",
+      "payload_sha256": "9541f21819cc110be2b8e79c38208df12b4da9ffdd2c1da9d45b846bf37e476f",
+      "source_review_status": "not_independently_human_reviewed",
+      "confirmatory_eligible": true,
+      "exclusion_reason": null,
+      "multi_hop_verified": false,
+      "limitation": "multiple extraction; no fair-value model"
+    },
+    {
+      "task": "fin-l5-valuation-295",
+      "split": "main",
+      "original_level": "L5",
+      "capability": "retrieval",
+      "family": "L5·C valuation",
+      "payload_sha256": "7f147cc5616f33e7f185419c992fd875f6ac4960a509254d8f72034e4c5247dc",
+      "source_review_status": "not_independently_human_reviewed",
+      "confirmatory_eligible": true,
+      "exclusion_reason": null,
+      "multi_hop_verified": false,
+      "limitation": "multiple extraction; no fair-value model"
+    },
+    {
+      "task": "fin-l5-valuation-296",
+      "split": "main",
+      "original_level": "L5",
+      "capability": "retrieval",
+      "family": "L5·C valuation",
+      "payload_sha256": "3d59e30094e5c847d423c604aabb11bd81ce687ca2171bad03f63c3bc4314afe",
+      "source_review_status": "not_independently_human_reviewed",
+      "confirmatory_eligible": true,
+      "exclusion_reason": null,
+      "multi_hop_verified": false,
+      "limitation": "multiple extraction; no fair-value model"
+    },
+    {
+      "task": "fin-l5-valuation-297",
+      "split": "main",
+      "original_level": "L5",
+      "capability": "retrieval",
+      "family": "L5·C valuation",
+      "payload_sha256": "2adce515903bbed94f11a57cb1b9d38c6256912a1e505dd49bd8d01fc3c088b9",
+      "source_review_status": "not_independently_human_reviewed",
+      "confirmatory_eligible": true,
+      "exclusion_reason": null,
+      "multi_hop_verified": false,
+      "limitation": "multiple extraction; no fair-value model"
+    },
+    {
+      "task": "fin-l5-valuation-298",
+      "split": "main",
+      "original_level": "L5",
+      "capability": "retrieval",
+      "family": "L5·C valuation",
+      "payload_sha256": "a3784ca1fa495c818f7e60ba24e90d05c60a05e5a1a73ad002141fbf7d42df64",
+      "source_review_status": "not_independently_human_reviewed",
+      "confirmatory_eligible": true,
+      "exclusion_reason": null,
+      "multi_hop_verified": false,
+      "limitation": "multiple extraction; no fair-value model"
+    },
+    {
+      "task": "fin-l5-valuation-299",
+      "split": "main",
+      "original_level": "L5",
+      "capability": "retrieval",
+      "family": "L5·C valuation",
+      "payload_sha256": "04b47ddea2599a22724c6c8660863c45ea38331b2441d5700668c018184c9211",
+      "source_review_status": "not_independently_human_reviewed",
+      "confirmatory_eligible": true,
+      "exclusion_reason": null,
+      "multi_hop_verified": false,
+      "limitation": "multiple extraction; no fair-value model"
+    },
+    {
+      "task": "fin-l5-valuation-300",
+      "split": "main",
+      "original_level": "L5",
+      "capability": "retrieval",
+      "family": "L5·C valuation",
+      "payload_sha256": "b2fb88469e70aaf4681dc7e0cd18b67993081e74350548c44b939cfeee4a6ef4",
+      "source_review_status": "not_independently_human_reviewed",
+      "confirmatory_eligible": true,
+      "exclusion_reason": null,
+      "multi_hop_verified": false,
+      "limitation": "multiple extraction; no fair-value model"
+    },
+    {
+      "task": "fin-l1-bctc-01",
+      "split": "pilot",
+      "original_level": "L1",
+      "capability": "retrieval",
+      "family": "L1·B bctc",
+      "payload_sha256": "e9c5e43dc5664805b215186c33c36a17a40f9109263b7ebf1a5a61bec507976f",
+      "source_review_status": "not_independently_human_reviewed",
+      "confirmatory_eligible": true,
+      "exclusion_reason": null,
+      "multi_hop_verified": false
+    },
+    {
+      "task": "fin-l1-gold-01",
+      "split": "pilot",
+      "original_level": "L1",
+      "capability": "retrieval",
+      "family": "L1·A quote",
+      "payload_sha256": "55699904bfdc76edb8c9fc1bd1f05798906fb14ace37440f0675cf91a3524fe7",
+      "source_review_status": "not_independently_human_reviewed",
+      "confirmatory_eligible": true,
+      "exclusion_reason": null,
+      "multi_hop_verified": false
+    },
+    {
+      "task": "fin-l1-macro-01",
+      "split": "pilot",
+      "original_level": "L1",
+      "capability": "retrieval",
+      "family": "L1·C macro",
+      "payload_sha256": "37e13e20e0acac8fe7ccd42263b6bd8c9842e5f6f457b2d0b289282c51903f9b",
+      "source_review_status": "not_independently_human_reviewed",
+      "confirmatory_eligible": false,
+      "exclusion_reason": "ambiguous_cpi_series_dimension",
+      "multi_hop_verified": false
+    },
+    {
+      "task": "fin-l1-quote-01",
+      "split": "pilot",
+      "original_level": "L1",
+      "capability": "retrieval",
+      "family": "L1·A quote",
+      "payload_sha256": "cb80cece34c0f94fc32a60a8f2ccd0022f827b72e9d6ccc0496744db39f2c71f",
+      "source_review_status": "not_independently_human_reviewed",
+      "confirmatory_eligible": true,
+      "exclusion_reason": null,
+      "multi_hop_verified": false
+    },
+    {
+      "task": "fin-l1-quote-02",
+      "split": "pilot",
+      "original_level": "L1",
+      "capability": "retrieval",
+      "family": "L1·A quote",
+      "payload_sha256": "f40d9ee2ab68813fb2388acb2064b596ef6bb6287de9ca198e60f34c8f37ac26",
+      "source_review_status": "not_independently_human_reviewed",
+      "confirmatory_eligible": true,
+      "exclusion_reason": null,
+      "multi_hop_verified": false
+    },
+    {
+      "task": "fin-l2-crypto-01",
+      "split": "pilot",
+      "original_level": "L2",
+      "capability": "compute",
+      "family": "L2·E crypto-xasset",
+      "payload_sha256": "f7c1cc379eec879b9845d7916df12894caffb7fc994f954e68cc5929327406b1",
+      "source_review_status": "not_independently_human_reviewed",
+      "confirmatory_eligible": true,
+      "exclusion_reason": null,
+      "multi_hop_verified": false
+    },
+    {
+      "task": "fin-l2-gold-01",
+      "split": "pilot",
+      "original_level": "L2",
+      "capability": "compute",
+      "family": "L2·F fx",
+      "payload_sha256": "55699904bfdc76edb8c9fc1bd1f05798906fb14ace37440f0675cf91a3524fe7",
+      "source_review_status": "not_independently_human_reviewed",
+      "confirmatory_eligible": true,
+      "exclusion_reason": null,
+      "multi_hop_verified": false
+    },
+    {
+      "task": "fin-l2-growth-01",
+      "split": "pilot",
+      "original_level": "L2",
+      "capability": "compute",
+      "family": "L2·A growth",
+      "payload_sha256": "b2ccc97e7e34af753586d8471dcebdf2a5dc125fb0fe7353544e9f2c4fde0627",
+      "source_review_status": "not_independently_human_reviewed",
+      "confirmatory_eligible": true,
+      "exclusion_reason": null,
+      "multi_hop_verified": false
+    },
+    {
+      "task": "fin-l2-margin-01",
+      "split": "pilot",
+      "original_level": "L2",
+      "capability": "compute",
+      "family": "L2·B margin",
+      "payload_sha256": "0e699394d0d6f073a09da1f65909078669d2ef714ad47130a7a41c5fcb451c88",
+      "source_review_status": "not_independently_human_reviewed",
+      "confirmatory_eligible": true,
+      "exclusion_reason": null,
+      "multi_hop_verified": false
+    },
+    {
+      "task": "fin-l2-ratio-01",
+      "split": "pilot",
+      "original_level": "L2",
+      "capability": "retrieval",
+      "family": "L2·C ratio",
+      "payload_sha256": "2da896ac76215261e2d924a1e4065b27e7241c81bbf89292c67dadfe423bcad9",
+      "source_review_status": "not_independently_human_reviewed",
+      "confirmatory_eligible": true,
+      "exclusion_reason": null,
+      "multi_hop_verified": false,
+      "limitation": "precomputed ratio/indicator retrieval; historical L2 label overstates calculation"
+    },
+    {
+      "task": "fin-l2-tech-01",
+      "split": "pilot",
+      "original_level": "L2",
+      "capability": "retrieval",
+      "family": "L2·D technical",
+      "payload_sha256": "f334553f17b36b4e092930887e591d2226b804ec31095286cdbcfcedf65f2b32",
+      "source_review_status": "not_independently_human_reviewed",
+      "confirmatory_eligible": true,
+      "exclusion_reason": null,
+      "multi_hop_verified": false,
+      "limitation": "precomputed ratio/indicator retrieval; historical L2 label overstates calculation"
+    },
+    {
+      "task": "fin-l3-agg-01",
+      "split": "pilot",
+      "original_level": "L3",
+      "capability": "aggregation",
+      "family": "L3·B aggregate",
+      "payload_sha256": "aa1f6b5dca589360446eb510873587250c1c7d30f00a026d84e357360a74efd6",
+      "source_review_status": "not_independently_human_reviewed",
+      "confirmatory_eligible": true,
+      "exclusion_reason": null,
+      "multi_hop_verified": false
+    },
+    {
+      "task": "fin-l3-crypto-01",
+      "split": "pilot",
+      "original_level": "L3",
+      "capability": "retrieval",
+      "family": "L3·E crypto-multi",
+      "payload_sha256": "e5d94c946d68e64d53d61d3d7fa89cb3ff273b46e0bbd5acd728c8edec5f8cbd",
+      "source_review_status": "not_independently_human_reviewed",
+      "confirmatory_eligible": true,
+      "exclusion_reason": null,
+      "multi_hop_verified": false
+    },
+    {
+      "task": "fin-l3-index-01",
+      "split": "pilot",
+      "original_level": "L3",
+      "capability": "aggregation",
+      "family": "L3·F index",
+      "payload_sha256": "0b72ae95bd6e663913177a3bd2b4ff09d799a20cd6da40e38cb40dda185712ae",
+      "source_review_status": "not_independently_human_reviewed",
+      "confirmatory_eligible": true,
+      "exclusion_reason": null,
+      "multi_hop_verified": false
+    },
+    {
+      "task": "fin-l3-screen-01",
+      "split": "pilot",
+      "original_level": "L3",
+      "capability": "aggregation",
+      "family": "L3·A screen",
+      "payload_sha256": "9d5cd2d9d48cbebfdbb5c67a4f81f87c93362a8c82b52accafd053219d49c7d5",
+      "source_review_status": "not_independently_human_reviewed",
+      "confirmatory_eligible": true,
+      "exclusion_reason": null,
+      "multi_hop_verified": false
+    },
+    {
+      "task": "fin-l3-tech-multi-01",
+      "split": "pilot",
+      "original_level": "L3",
+      "capability": "aggregation",
+      "family": "L3·D tech-multi",
+      "payload_sha256": "f334553f17b36b4e092930887e591d2226b804ec31095286cdbcfcedf65f2b32",
+      "source_review_status": "not_independently_human_reviewed",
+      "confirmatory_eligible": true,
+      "exclusion_reason": null,
+      "multi_hop_verified": false
+    },
+    {
+      "task": "fin-l3-top-01",
+      "split": "pilot",
+      "original_level": "L3",
+      "capability": "aggregation",
+      "family": "L3·C movers",
+      "payload_sha256": "4262f1f1dc805048658429deb8496dd1ca11546b3ce31c31e9062bb12663d58e",
+      "source_review_status": "not_independently_human_reviewed",
+      "confirmatory_eligible": true,
+      "exclusion_reason": null,
+      "multi_hop_verified": false
+    },
+    {
+      "task": "fin-l4-2nguon-01",
+      "split": "pilot",
+      "original_level": "L4",
+      "capability": "evidence_check",
+      "family": "L4·D two-source",
+      "payload_sha256": "0fe7ffe546c40db88aaa4369834a8d2bf92b38ac85dca1ffea2d53ce68c7320f",
+      "source_review_status": "not_independently_human_reviewed",
+      "confirmatory_eligible": true,
+      "exclusion_reason": null,
+      "multi_hop_verified": false
+    },
+    {
+      "task": "fin-l4-future-01",
+      "split": "pilot",
+      "original_level": "L4",
+      "capability": "evidence_check",
+      "family": "L4·E future-period",
+      "payload_sha256": "061aa29d57f44f4215751c88452ab1e36cf8c64bef1462946874c774fb76b61f",
+      "source_review_status": "not_independently_human_reviewed",
+      "confirmatory_eligible": true,
+      "exclusion_reason": null,
+      "multi_hop_verified": false
+    },
+    {
+      "task": "fin-l4-narrative-01",
+      "split": "pilot",
+      "original_level": "L4",
+      "capability": "evidence_check",
+      "family": "L4·I narrative-check",
+      "payload_sha256": "55699904bfdc76edb8c9fc1bd1f05798906fb14ace37440f0675cf91a3524fe7",
+      "source_review_status": "not_independently_human_reviewed",
+      "confirmatory_eligible": false,
+      "exclusion_reason": "incomplete_narrative_evidence_rubric",
+      "multi_hop_verified": false
+    },
+    {
+      "task": "fin-l4-nonexist-01",
+      "split": "pilot",
+      "original_level": "L4",
+      "capability": "evidence_check",
+      "family": "L4·B nonexistent",
+      "payload_sha256": "6b7ff4111a0909abb9acffeb18b02683b8ea682954c7b5d370ad00934c185b36",
+      "source_review_status": "not_independently_human_reviewed",
+      "confirmatory_eligible": true,
+      "exclusion_reason": null,
+      "multi_hop_verified": false
+    },
+    {
+      "task": "fin-l5-compare-01",
+      "split": "pilot",
+      "original_level": "L5",
+      "capability": "synthesis",
+      "family": "L5·B compare",
+      "payload_sha256": "9d5cd2d9d48cbebfdbb5c67a4f81f87c93362a8c82b52accafd053219d49c7d5",
+      "source_review_status": "not_independently_human_reviewed",
+      "confirmatory_eligible": true,
+      "exclusion_reason": null,
+      "multi_hop_verified": false
+    },
+    {
+      "task": "fin-l5-profile-01",
+      "split": "pilot",
+      "original_level": "L5",
+      "capability": "synthesis",
+      "family": "L5·A profile",
+      "payload_sha256": "0ef4d20adb9ce375ec2bb743778a603449ac4d342b23778ff125c721775630fb",
+      "source_review_status": "not_independently_human_reviewed",
+      "confirmatory_eligible": true,
+      "exclusion_reason": null,
+      "multi_hop_verified": false
+    },
+    {
+      "task": "fin-l5-valuation-01",
+      "split": "pilot",
+      "original_level": "L5",
+      "capability": "retrieval",
+      "family": "L5·C valuation",
+      "payload_sha256": "2da896ac76215261e2d924a1e4065b27e7241c81bbf89292c67dadfe423bcad9",
+      "source_review_status": "not_independently_human_reviewed",
+      "confirmatory_eligible": true,
+      "exclusion_reason": null,
+      "multi_hop_verified": false,
+      "limitation": "multiple extraction; no fair-value model"
+    },
+    {
+      "task": "smoke-agg-01",
+      "split": "smoke",
+      "original_level": "SMOKE",
+      "capability": "aggregation",
+      "family": "smoke",
+      "payload_sha256": "aa1f6b5dca589360446eb510873587250c1c7d30f00a026d84e357360a74efd6",
+      "source_review_status": "not_independently_human_reviewed",
+      "confirmatory_eligible": true,
+      "exclusion_reason": null,
+      "multi_hop_verified": false
+    },
+    {
+      "task": "smoke-quote-01",
+      "split": "smoke",
+      "original_level": "SMOKE",
+      "capability": "retrieval",
+      "family": "smoke",
+      "payload_sha256": "cb80cece34c0f94fc32a60a8f2ccd0022f827b72e9d6ccc0496744db39f2c71f",
+      "source_review_status": "not_independently_human_reviewed",
+      "confirmatory_eligible": true,
+      "exclusion_reason": null,
+      "multi_hop_verified": false
+    },
+    {
+      "task": "smoke-trap-01",
+      "split": "smoke",
+      "original_level": "SMOKE",
+      "capability": "evidence_check",
+      "family": "smoke",
+      "payload_sha256": "6b7ff4111a0909abb9acffeb18b02683b8ea682954c7b5d370ad00934c185b36",
+      "source_review_status": "not_independently_human_reviewed",
+      "confirmatory_eligible": true,
+      "exclusion_reason": null,
+      "multi_hop_verified": false
+    }
+  ],
+  "overlap": {
+    "main_holdout_shared_payload_groups": [
+      {
+        "sha256": "d8bc0abecd0495db6c9b79b9469ef73d76a229eec064aafe83770002f2fd3277",
+        "members": [
+          {
+            "split": "main",
+            "task": "fin-l1-macro-133"
+          },
+          {
+            "split": "main",
+            "task": "fin-l1-macro-136"
+          },
+          {
+            "split": "main",
+            "task": "fin-l1-macro-137"
+          },
+          {
+            "split": "main",
+            "task": "fin-l1-macro-138"
+          },
+          {
+            "split": "main",
+            "task": "fin-l1-macro-139"
+          },
+          {
+            "split": "main",
+            "task": "fin-l1-macro-140"
+          },
+          {
+            "split": "main",
+            "task": "fin-l2-macro-calc-176"
+          },
+          {
+            "split": "main",
+            "task": "fin-l2-macro-calc-178"
+          },
+          {
+            "split": "main",
+            "task": "fin-l2-macro-calc-179"
+          },
+          {
+            "split": "main",
+            "task": "fin-l2-macro-calc-180"
+          },
+          {
+            "split": "main",
+            "task": "fin-l3-macro-agg-218"
+          },
+          {
+            "split": "main",
+            "task": "fin-l3-macro-agg-219"
+          },
+          {
+            "split": "main",
+            "task": "fin-l3-macro-agg-220"
+          },
+          {
+            "split": "main",
+            "task": "fin-l4-future-229"
+          },
+          {
+            "split": "main",
+            "task": "fin-l4-future-230"
+          },
+          {
+            "split": "main",
+            "task": "fin-l4-future-231"
+          },
+          {
+            "split": "holdout",
+            "task": "fin-l1-macro-908"
+          },
+          {
+            "split": "holdout",
+            "task": "fin-l1-macro-909"
+          },
+          {
+            "split": "holdout",
+            "task": "fin-l1-macro-910"
+          },
+          {
+            "split": "holdout",
+            "task": "fin-l2-macro-calc-920"
+          },
+          {
+            "split": "holdout",
+            "task": "fin-l4-future-933"
+          }
+        ]
+      },
+      {
+        "sha256": "057678ae8f95ca9e891512ae5b9a2b5fc3b569b94fc2ca37e3a19a01707165a5",
+        "members": [
+          {
+            "split": "main",
+            "task": "fin-l1-quote-crypto-121"
+          },
+          {
+            "split": "main",
+            "task": "fin-l1-quote-crypto-122"
+          },
+          {
+            "split": "main",
+            "task": "fin-l1-quote-crypto-123"
+          },
+          {
+            "split": "main",
+            "task": "fin-l1-quote-crypto-124"
+          },
+          {
+            "split": "main",
+            "task": "fin-l3-crypto-multi-208"
+          },
+          {
+            "split": "main",
+            "task": "fin-l3-crypto-multi-209"
+          },
+          {
+            "split": "main",
+            "task": "fin-l3-crypto-multi-210"
+          },
+          {
+            "split": "main",
+            "task": "fin-l3-crypto-multi-211"
+          },
+          {
+            "split": "main",
+            "task": "fin-l3-crypto-multi-212"
+          },
+          {
+            "split": "main",
+            "task": "fin-l3-crypto-multi-213"
+          },
+          {
+            "split": "main",
+            "task": "fin-l3-crypto-multi-214"
+          },
+          {
+            "split": "main",
+            "task": "fin-l3-crypto-multi-215"
+          },
+          {
+            "split": "main",
+            "task": "fin-l5-compare-283"
+          },
+          {
+            "split": "main",
+            "task": "fin-l5-compare-284"
+          },
+          {
+            "split": "main",
+            "task": "fin-l5-compare-285"
+          },
+          {
+            "split": "main",
+            "task": "fin-l5-compare-286"
+          },
+          {
+            "split": "main",
+            "task": "fin-l5-profile-273"
+          },
+          {
+            "split": "main",
+            "task": "fin-l5-profile-274"
+          },
+          {
+            "split": "holdout",
+            "task": "fin-l1-quote-crypto-906"
+          },
+          {
+            "split": "holdout",
+            "task": "fin-l3-crypto-multi-928"
+          },
+          {
+            "split": "holdout",
+            "task": "fin-l3-crypto-multi-929"
+          },
+          {
+            "split": "holdout",
+            "task": "fin-l5-compare-946"
+          },
+          {
+            "split": "holdout",
+            "task": "fin-l5-profile-943"
+          }
+        ]
+      },
+      {
+        "sha256": "6e724aed6de39026019090303dc95158803438613308e97562d8a1b8ed48c809",
+        "members": [
+          {
+            "split": "main",
+            "task": "fin-l1-quote-gf-126"
+          },
+          {
+            "split": "main",
+            "task": "fin-l1-quote-gf-127"
+          },
+          {
+            "split": "main",
+            "task": "fin-l1-quote-gf-128"
+          },
+          {
+            "split": "main",
+            "task": "fin-l1-quote-gf-129"
+          },
+          {
+            "split": "main",
+            "task": "fin-l1-quote-gf-130"
+          },
+          {
+            "split": "main",
+            "task": "fin-l2-gf-compare-172"
+          },
+          {
+            "split": "main",
+            "task": "fin-l2-gf-compare-173"
+          },
+          {
+            "split": "main",
+            "task": "fin-l2-gf-compare-174"
+          },
+          {
+            "split": "main",
+            "task": "fin-l2-gf-compare-175"
+          },
+          {
+            "split": "main",
+            "task": "fin-l4-2src-259"
+          },
+          {
+            "split": "main",
+            "task": "fin-l4-2src-260"
+          },
+          {
+            "split": "main",
+            "task": "fin-l4-future-232"
+          },
+          {
+            "split": "main",
+            "task": "fin-l4-future-233"
+          },
+          {
+            "split": "main",
+            "task": "fin-l4-future-234"
+          },
+          {
+            "split": "main",
+            "task": "fin-l5-compare-288"
+          },
+          {
+            "split": "main",
+            "task": "fin-l5-compare-289"
+          },
+          {
+            "split": "main",
+            "task": "fin-l5-compare-290"
+          },
+          {
+            "split": "holdout",
+            "task": "fin-l1-quote-gf-907"
+          },
+          {
+            "split": "holdout",
+            "task": "fin-l2-gf-compare-919"
+          },
+          {
+            "split": "holdout",
+            "task": "fin-l4-future-934"
+          },
+          {
+            "split": "holdout",
+            "task": "fin-l5-compare-947"
+          }
+        ]
+      },
+      {
+        "sha256": "d8bf304445161d93a1be377ba4abb24f44754c61c91e3780eff24c2965abece8",
+        "members": [
+          {
+            "split": "main",
+            "task": "fin-l2-crypto-x-166"
+          },
+          {
+            "split": "main",
+            "task": "fin-l2-crypto-x-167"
+          },
+          {
+            "split": "main",
+            "task": "fin-l2-crypto-x-168"
+          },
+          {
+            "split": "main",
+            "task": "fin-l2-crypto-x-169"
+          },
+          {
+            "split": "main",
+            "task": "fin-l2-crypto-x-170"
+          },
+          {
+            "split": "holdout",
+            "task": "fin-l2-crypto-x-918"
+          }
+        ]
+      },
+      {
+        "sha256": "5e90a01275cd731a0ce0794296a39216b6374ea1712f1163b137bfe26d081a72",
+        "members": [
+          {
+            "split": "main",
+            "task": "fin-l3-agg-181"
+          },
+          {
+            "split": "holdout",
+            "task": "fin-l3-agg-921"
+          }
+        ]
+      },
+      {
+        "sha256": "ad1f0f1a339fecc528ecee588ce49fc757c333073502376ddcd4eb695e950a6b",
+        "members": [
+          {
+            "split": "main",
+            "task": "fin-l3-agg-182"
+          },
+          {
+            "split": "holdout",
+            "task": "fin-l3-agg-922"
+          }
+        ]
+      },
+      {
+        "sha256": "032ee59dea44d7ce71ae077f40f5d8ce7582a9be4478fdcfce931f86e14fd42c",
+        "members": [
+          {
+            "split": "main",
+            "task": "fin-l3-index-216"
+          },
+          {
+            "split": "holdout",
+            "task": "fin-l3-index-930"
+          }
+        ]
+      },
+      {
+        "sha256": "3295ee3228fce43220d78e8c6b29b422a9311243d3dc6a72e01c36d405515e18",
+        "members": [
+          {
+            "split": "main",
+            "task": "fin-l3-screen-189"
+          },
+          {
+            "split": "main",
+            "task": "fin-l5-compare-275"
+          },
+          {
+            "split": "holdout",
+            "task": "fin-l3-screen-923"
+          },
+          {
+            "split": "holdout",
+            "task": "fin-l5-compare-944"
+          }
+        ]
+      },
+      {
+        "sha256": "bff00ef3fb44f7a704dadf8f94689c0b535b33cb7163d79fcab9a8ef83b54f4d",
+        "members": [
+          {
+            "split": "main",
+            "task": "fin-l3-screen-190"
+          },
+          {
+            "split": "main",
+            "task": "fin-l5-compare-276"
+          },
+          {
+            "split": "holdout",
+            "task": "fin-l3-screen-924"
+          },
+          {
+            "split": "holdout",
+            "task": "fin-l5-compare-945"
+          }
+        ]
+      },
+      {
+        "sha256": "7b9ce4b4d0ce09d948905ce544f253c6cac93ed3819a068ee461bdac85ce5715",
+        "members": [
+          {
+            "split": "main",
+            "task": "fin-l3-tech-multi-203"
+          },
+          {
+            "split": "holdout",
+            "task": "fin-l3-tech-multi-927"
+          }
+        ]
+      },
+      {
+        "sha256": "b2446a67d6b1807ecbe171b0dea66b6147a5730988d0ec7b1ba7ac9c629e7a00",
+        "members": [
+          {
+            "split": "main",
+            "task": "fin-l3-top-197"
+          },
+          {
+            "split": "main",
+            "task": "fin-l3-top-198"
+          },
+          {
+            "split": "main",
+            "task": "fin-l3-top-199"
+          },
+          {
+            "split": "main",
+            "task": "fin-l3-top-200"
+          },
+          {
+            "split": "main",
+            "task": "fin-l3-top-201"
+          },
+          {
+            "split": "main",
+            "task": "fin-l3-top-202"
+          },
+          {
+            "split": "holdout",
+            "task": "fin-l3-top-925"
+          },
+          {
+            "split": "holdout",
+            "task": "fin-l3-top-926"
+          }
+        ]
+      },
+      {
+        "sha256": "5f582a83ebe2bf454b1bee47fb1f163e448df10c33d66eb82e6931bf28cc5eee",
+        "members": [
+          {
+            "split": "main",
+            "task": "fin-l4-2src-258"
+          },
+          {
+            "split": "holdout",
+            "task": "fin-l4-2src-940"
+          }
+        ]
+      },
+      {
+        "sha256": "3daaf2f947f10f4eb2d07fa838492516811850c99a3db58cf732bbf834103792",
+        "members": [
+          {
+            "split": "main",
+            "task": "fin-l4-narrative-248"
+          },
+          {
+            "split": "holdout",
+            "task": "fin-l4-narrative-938"
+          }
+        ]
+      }
+    ],
+    "main_unique_payloads": 121,
+    "holdout_tasks_sharing_main_payload": 27
+  },
+  "capability_counts": {
+    "retrieval": 71,
+    "compute": 24,
+    "synthesis": 36,
+    "aggregation": 46,
+    "evidence_check": 50
+  }
+}

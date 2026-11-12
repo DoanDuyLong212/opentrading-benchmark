@@ -1,0 +1,27 @@
+bun test v1.4.4 (38afee6c8)
+
+test/financial-source.test.ts:
+(pass) scalar bridge keeps real SDK ID, original receipt, numeric leaf and separate raw/visible hashes [20.16ms]
+(pass) finance guard rejects an identical successful call with original SDK identity [6.53ms]
+
+test/finance-v46-update.test.ts:
+(pass) actual runTool ref-prefixed source validates exact mapped seven-field receipt [10.56ms]
+(pass) schema validation preserves finite alternatives, closed objects and Unicode patterns [189.72ms]
+(pass) origin generation is recorded at execution and cannot be restamped by later recovery [6.09ms]
+(pass) dimensionless aliases do not acquire currency or percentage dimensions [4.89ms]
+(pass) SDK reuse across provider generations and memory namespaces retains distinct occurrences [2.89ms]
+
+test/agent.test.ts:
+(pass) v45 native gateway-owned retries do not redeliver503 or terminal424 [304.15ms]
+(pass) v45 caller JSON contract buffers rejected raw final and repairs format only once [180.91ms]
+(pass) v45 grounded mode preserves finite MCP JSON Schema constraints on the actual SDK wire [84.83ms]
+(pass) v45 SDK schema rejection is local proof; one lossless argument correction keeps original identity [225.77ms]
+(pass) v46-update B0 and B1 apply identical actual SDK finite-schema validation [236.74ms]
+(pass) v46-update exhausted invalid financial contract preserves raw diagnostics but accepts no answer [62.49ms]
+(pass) v46-update reused SDK id in two actual provider generations has two origins and truthful replays [206.78ms]
+
+ 14 pass
+ 98 filtered out
+ 0 fail
+ 78 expect() calls
+Ran 14 tests across 3 files. [4.21s]

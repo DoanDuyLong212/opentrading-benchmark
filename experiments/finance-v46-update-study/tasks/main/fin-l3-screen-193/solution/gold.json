@@ -1,0 +1,58 @@
+{
+  "task_id": "fin-l3-screen-193",
+  "scoring": "value",
+  "solution": {
+    "pass": [
+      "FOX"
+    ],
+    "filter": "ROE > 15% và P/E < 15"
+  },
+  "as_of": "2026-11-01T23:14:34.298379+07:00",
+  "split": "main",
+  "expects": [
+    {
+      "type": "set",
+      "path": "values.pass",
+      "gold": [
+        "FOX"
+      ]
+    },
+    {
+      "type": "period",
+      "path": "period",
+      "accept": [
+        "2025"
+      ]
+    },
+    {
+      "type": "str",
+      "path": "source",
+      "accept": [
+        "peer_compare"
+      ]
+    }
+  ],
+  "contract_version": 2,
+  "provenance_contract": [
+    {
+      "tool": "peer_compare",
+      "source": "vnstock",
+      "as_of": "2026-11-01T23:14:34.298379+07:00",
+      "matched_entry_id": "peer:tech_p",
+      "response_sha256": "c17f97f543cd1b3958a270ab9223286c2deaa4cf422b633fa065f8aa44915960"
+    }
+  ],
+  "payload_sha256": "7482995f6d9cf105dd8fab6f4a2a6847b197553c28d9125dbf23595e6813dcbb",
+  "provenance_catalog": [
+    {
+      "tool": "peer_compare",
+      "source": "vnstock",
+      "as_of": "2026-11-01T23:14:34.298379+07:00",
+      "matched_entry_id": "peer:tech_p",
+      "response_sha256": "c17f97f543cd1b3958a270ab9223286c2deaa4cf422b633fa065f8aa44915960"
+    }
+  ],
+  "required_payload_keys": [
+    "peer:tech_p"
+  ]
+}

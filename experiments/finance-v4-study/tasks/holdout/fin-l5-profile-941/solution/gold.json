@@ -1,0 +1,101 @@
+{
+  "task_id": "fin-l5-profile-941",
+  "scoring": "value",
+  "solution": {
+    "revenue_q_bn": 3296.0,
+    "gross_profit_q_bn": 439.0,
+    "gross_margin_pct": 13.32,
+    "pe": 8.88,
+    "market_cap_bn": 10333.15
+  },
+  "as_of": "2026-11-01T23:22:16.549905+07:00",
+  "split": "holdout",
+  "expects": [
+    {
+      "type": "value",
+      "path": "values.revenue_q_bn",
+      "gold": 3296.0,
+      "tol": {
+        "rel": 0.005
+      }
+    },
+    {
+      "type": "value",
+      "path": "values.gross_profit_q_bn",
+      "gold": 439.0,
+      "tol": {
+        "rel": 0.005
+      }
+    },
+    {
+      "type": "value",
+      "path": "values.gross_margin_pct",
+      "gold": 13.32,
+      "tol": {
+        "abs": 0.1
+      }
+    },
+    {
+      "type": "value",
+      "path": "values.pe",
+      "gold": 8.88,
+      "tol": {
+        "rel": 0.005
+      }
+    },
+    {
+      "type": "value",
+      "path": "values.market_cap_bn",
+      "gold": 10333.15,
+      "tol": {
+        "rel": 0.005
+      }
+    },
+    {
+      "type": "str_all",
+      "path": "source",
+      "accept": [
+        "financial_detail",
+        "stock_overview"
+      ]
+    }
+  ],
+  "contract_version": 2,
+  "provenance_contract": [
+    {
+      "tool": "stock_overview",
+      "source": "vietstock",
+      "as_of": "2026-11-01T23:22:16.549905+07:00",
+      "matched_entry_id": "ov:VCG",
+      "response_sha256": "72b55623dd01599946bf1593fdd3912b702afbdf955e2e972ad69822826b5606"
+    },
+    {
+      "tool": "financial_detail",
+      "source": "vietstock",
+      "as_of": "2026-11-01T22:54:47.258434+07:00",
+      "matched_entry_id": "fd:VCG",
+      "response_sha256": "9ff56b0e319c53980a5ab4a8616ddb8daf05768078d879e3271cebf2a4bed77e"
+    }
+  ],
+  "payload_sha256": "2f4a6565071de52faee0e64e7d9c62552af97a969cf7267dd51849721b476c20",
+  "provenance_catalog": [
+    {
+      "tool": "stock_overview",
+      "source": "vietstock",
+      "as_of": "2026-11-01T23:22:16.549905+07:00",
+      "matched_entry_id": "ov:VCG",
+      "response_sha256": "72b55623dd01599946bf1593fdd3912b702afbdf955e2e972ad69822826b5606"
+    },
+    {
+      "tool": "financial_detail",
+      "source": "vietstock",
+      "as_of": "2026-11-01T22:54:47.258434+07:00",
+      "matched_entry_id": "fd:VCG",
+      "response_sha256": "9ff56b0e319c53980a5ab4a8616ddb8daf05768078d879e3271cebf2a4bed77e"
+    }
+  ],
+  "required_payload_keys": [
+    "fd:VCG",
+    "ov:VCG"
+  ]
+}

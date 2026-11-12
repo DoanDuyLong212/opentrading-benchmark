@@ -1,0 +1,33 @@
+{
+  "snapshot_date": "2026-11-02",
+  "source_review_status": "synthetic_engineering_fixture",
+  "note": "New pre-registered dev fixtures; no source/gold copied from main or holdout.",
+  "tools": {
+    "r:ZZDEV45": {
+      "tool": "symbol_resolve",
+      "params": {
+        "query": "ZZDEV45",
+        "limit": 5
+      },
+      "envelope": {
+        "data": {
+          "query": "ZZDEV45",
+          "resolved": null,
+          "ambiguous": false,
+          "candidates": []
+        },
+        "availability": "empty",
+        "provenance": {
+          "source": "synthetic-dev",
+          "as_of": "2026-11-02T09:00:00+07:00",
+          "data_time": "2026-10-29",
+          "timezone": "Asia/Ho_Chi_Minh"
+        },
+        "units": {},
+        "warnings": [
+          "Synthetic engineering fixture; not independently captured market data."
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,76 @@
+--- test_independent_snapshot.py.before
++++ experiments/finance-v45-study/tools/tests/test_independent_snapshot.py
+@@ -326,7 +326,7 @@
+ 
+ 
+ @pytest.mark.asyncio
+-async def test_real_stdio_records_schema_invalid_and_wrong_entity_calls(tmp_path):
++async def test_real_stdio_records_schema_invalid_and_wrong_entity_calls(tmp_path,monkeypatch):
+     import anyio
+     from mcp import ClientSession, StdioServerParameters
+     from mcp.client.stdio import stdio_client
+@@ -335,24 +335,47 @@
+     params=StdioServerParameters(command=sys.executable,
+         args=[str(ROOT/'tools/mcp_snapshot_server.py'), str(task/'environment/payloads.json')],
+         env={**os.environ,'BENCH_MCP_LEDGER':str(ledger)})
+-    with anyio.fail_after(25):
+-        async with stdio_client(params) as (read,write):
++    # Request correctness and child cleanup have separate deadlines. The pinned
++    # stdio SDK may wait on pipe teardown after calls succeeded; own and reap only
++    # this fixture's actual child instead of consuming the request deadline.
++    import mcp.client.stdio as transport
++    original_open=transport._create_platform_compatible_process;owned=[]
++    async def capture_child(*args,**kwargs):
++        child=await original_open(*args,**kwargs);owned.append(child);return child
++    monkeypatch.setattr(transport,'_create_platform_compatible_process',capture_child)
++    async with stdio_client(params) as (read,write):
++        try:
+             async with ClientSession(read,write) as session:
+-                await session.initialize()
+-                for arguments in [{'symbol':'EIB'}, {'symbol':'WRONG_ENTITY'}, {'symbol':'EIB','days':True}]:
+-                    result=await session.call_tool('vn_quote_history',arguments)
+-                    body=json.loads(result.content[0].text)
+-                    if arguments=={'symbol':'EIB'}:
+-                        assert result.isError is False
+-                        assert body['data']['last']==16.1
+-                        assert body['benchmark_evidence']['call_id']
+-                    else:
+-                        assert result.isError is True
+-                        assert body['request_rejected'] is True
+-                        expected = 'unsupported_snapshot_query' if arguments['symbol'] == 'WRONG_ENTITY' else 'invalid_request'
+-                        assert body['error']['code'] == expected
+-                        assert body['error']['snapshot_requests']
+-                        assert not ({'data', 'availability', 'benchmark_evidence'} & body.keys())
++                with anyio.fail_after(25):
++                    await session.initialize()
++                    for arguments in [{'symbol':'EIB'}, {'symbol':'WRONG_ENTITY'}, {'symbol':'EIB','days':True}]:
++                        result=await session.call_tool('vn_quote_history',arguments)
++                        body=json.loads(result.content[0].text)
++                        if arguments=={'symbol':'EIB'}:
++                            assert result.isError is False
++                            assert body['data']['last']==16.1
++                            assert body['benchmark_evidence']['call_id']
++                        else:
++                            assert result.isError is True
++                            assert body['request_rejected'] is True
++                            expected = 'unsupported_snapshot_query' if arguments['symbol'] == 'WRONG_ENTITY' else 'invalid_request'
++                            assert body['error']['code'] == expected
++                            assert body['error']['snapshot_requests']
++                            assert not ({'data', 'availability', 'benchmark_evidence'} & body.keys())
++        finally:
++            assert len(owned)==1
++            child=owned[0];method='stdin_eof'
++            with anyio.move_on_after(1,shield=True):
++                if child.stdin:await child.stdin.aclose()
++                await child.wait()
++            if child.returncode is None:
++                method='terminate_owned_child';child.terminate()
++                with anyio.move_on_after(2,shield=True):await child.wait()
++            if child.returncode is None:
++                method='kill_owned_child';child.kill()
++                with anyio.fail_after(2,shield=True):await child.wait()
++            assert child.returncode is not None
++            (tmp_path/'shutdown.json').write_text(json.dumps({'pid':child.pid,'method':method,'returncode':child.returncode,'external_model_calls':0}))
+     rows=[json.loads(line) for line in ledger.read_text().splitlines()]
+     assert [r['status'] for r in rows]==['ok','rejected','rejected']
+     assert len({r['call_id'] for r in rows})==3

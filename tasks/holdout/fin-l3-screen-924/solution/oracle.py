@@ -208,13 +208,8 @@ def gdp_pick(env, period):
 
 
 # === thân oracle ===
-rows = env('peer:sec_p')["data"]["rows"]
-sel = []
-for r in rows:
-    pe = r["p_e"]; pb = r["p_b"]; roe = r["roe"]
-    if roe > 15 and pe < 15:
-        sel.append(r["symbol"])
-check("screen", sorted(sel), gold["solution"]["pass"])
+rows = env('peer:sec_p')['data']['rows']
+check('screen', sorted(r['symbol'] for r in rows if r['p_b'] < 2 and r['p_e'] < 15), gold['solution']['pass'])
 
 if problems:
     print("ORACLE MISMATCH:")

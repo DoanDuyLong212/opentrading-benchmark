@@ -1,0 +1,157 @@
+{
+  "pass": true,
+  "cases": [
+    {
+      "label": "public success shape with arbitrary ungraded numeric value",
+      "expected": true,
+      "valid": true,
+      "errors": [],
+      "branch": "success"
+    },
+    {
+      "label": "missing period",
+      "expected": false,
+      "valid": false,
+      "errors": [
+        "Missing requested field: period"
+      ],
+      "branch": "success"
+    },
+    {
+      "label": "missing source",
+      "expected": false,
+      "valid": false,
+      "errors": [
+        "Missing requested field: source",
+        "source must use exact registered tool names, not provider names or invented aliases."
+      ],
+      "branch": "success"
+    },
+    {
+      "label": "missing evidence",
+      "expected": false,
+      "valid": false,
+      "errors": [
+        "Required evidence must be an array."
+      ],
+      "branch": "success"
+    },
+    {
+      "label": "wrong period: 20261030",
+      "expected": false,
+      "valid": false,
+      "errors": [
+        "Requested field has wrong JSON type: period; expected string"
+      ],
+      "branch": "success"
+    },
+    {
+      "label": "wrong value: True",
+      "expected": false,
+      "valid": false,
+      "errors": [
+        "Requested field has wrong JSON type: value; expected number"
+      ],
+      "branch": "success"
+    },
+    {
+      "label": "wrong evidence: {}",
+      "expected": false,
+      "valid": false,
+      "errors": [
+        "Required evidence must be an array."
+      ],
+      "branch": "success"
+    },
+    {
+      "label": "wrong source: 'vnstock'",
+      "expected": false,
+      "valid": false,
+      "errors": [
+        "source must use exact registered tool names, not provider names or invented aliases."
+      ],
+      "branch": "success"
+    },
+    {
+      "label": "wrong source: 'mcp__opentrading__vn_quote_history'",
+      "expected": false,
+      "valid": false,
+      "errors": [
+        "source must use exact registered tool names, not provider names or invented aliases."
+      ],
+      "branch": "success"
+    },
+    {
+      "label": "wrong source: 'stock_overview'",
+      "expected": false,
+      "valid": false,
+      "errors": [
+        "source must use exact registered tool names, not provider names or invented aliases."
+      ],
+      "branch": "success"
+    },
+    {
+      "label": "markdown fence",
+      "expected": false,
+      "valid": false,
+      "errors": [
+        "Final response must be exactly one JSON object, without markdown or surrounding prose."
+      ],
+      "branch": null
+    },
+    {
+      "label": "surrounding prose",
+      "expected": false,
+      "valid": false,
+      "errors": [
+        "Final response must be exactly one JSON object, without markdown or surrounding prose."
+      ],
+      "branch": null
+    },
+    {
+      "label": "two objects",
+      "expected": false,
+      "valid": false,
+      "errors": [
+        "Final response must be exactly one JSON object, without markdown or surrounding prose."
+      ],
+      "branch": null
+    },
+    {
+      "label": "surrounding whitespace",
+      "expected": true,
+      "valid": true,
+      "errors": [],
+      "branch": "success"
+    },
+    {
+      "label": "public refusal branch",
+      "expected": true,
+      "valid": true,
+      "errors": [],
+      "branch": "refusal"
+    },
+    {
+      "label": "refusal missing reason",
+      "expected": false,
+      "valid": false,
+      "errors": [
+        "Refusal requires a nonempty reason string."
+      ],
+      "branch": "refusal"
+    },
+    {
+      "label": "refusal mixed financial success",
+      "expected": false,
+      "valid": false,
+      "errors": [
+        "Refusal cannot contain incompatible nonempty success field: values"
+      ],
+      "branch": "refusal"
+    }
+  ],
+  "errors": [],
+  "public_instruction_count": 277,
+  "unsupported_public_instructions": [],
+  "source_sha256": "826c81b9d1873da3fddda10bb158d804b922dc6aea0340e10a123d5445247f29"
+}

@@ -1,7 +1,7 @@
 # Task benchmark harness tài chính — sinh bởi tools/gen_tasks.py
 id = "fin-l3-screen-01"
 title = "Sàng lọc 5 ngân hàng: ROE>20% và P/E<10"
-version = 1
+version = 2
 created = "2026-11-01"
 level = "L3"
 family = "L3·A screen"
@@ -18,6 +18,8 @@ time_limit_min = 60
 tools_expected = ["peer_compare"]
 mcp_payloads = "environment/payloads.json"
 snapshot_required = true
+
+confirmatory_eligible = true
 
 [scoring]
 type = "value"

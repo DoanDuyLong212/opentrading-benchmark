@@ -24,7 +24,7 @@ TASKS_A = [
     "entity": "VCB+BID+CTG+TCB+MBB", "asset": "vn_stock", "zone": "green", "pairs": [], "cap": 0,
     "band": "<15 phút", "limit": 10, "tools": ["vn_quote_history"], "payloads": ["banks5"],
     "q_md": "## Đề bài\nCho 5 mã **VCB, BID, CTG, TCB, MBB**: giá đóng cửa **phiên 30/10** của từng mã (theo **nghìn đồng**) và **trung bình** 5 mã là bao nhiêu?",
-    "schema_md": '{\n  "values": {"VCB": 0, "BID": 0, "CTG": 0, "TCB": 0, "MBB": 0, "mean": 0},\n  "unit": "nghìn đồng",\n  "period": "phiên 2026-10-30",\n  "source": \'vn_quote_history\'\n}',
+    "schema_md": '{\n  "values": {"VCB": 0, "BID": 0, "CTG": 0, "TCB": 0, "MBB": 0, "mean": 0},\n  "unit": "nghìn đồng",\n  "period": "phiên 2026-10-30",\n  "source": "vn_quote_history"\n}',
     "rules_md": "",
     "gold": {"scoring": "value", "expects": [
         {"type": "value", "path": "values.VCB", "gold": 56.3, "tol": {"rel": 0.005}},

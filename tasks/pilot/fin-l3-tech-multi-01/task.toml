@@ -1,7 +1,7 @@
 # Task benchmark harness tài chính — sinh bởi tools/gen_tasks.py
 id = "fin-l3-tech-multi-01"
 title = "RSI thấp nhất trong 5 mã"
-version = 1
+version = 2
 created = "2026-11-01"
 level = "L3"
 family = "L3·D tech-multi"
@@ -18,6 +18,8 @@ time_limit_min = 45
 tools_expected = ["signals_technical"]
 mcp_payloads = "environment/payloads.json"
 snapshot_required = true
+
+confirmatory_eligible = true
 
 [scoring]
 type = "value"

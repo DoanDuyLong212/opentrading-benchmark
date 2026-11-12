@@ -1,13 +1,19 @@
 {
- "model": "nvidia/deepseek-ai/deepseek-v4.1-flash",
- "model_note": "03/11/2026: NIM da hoi phuc (deepseek 200x3) — smoke + pilot chay model CHINH THUC pre-register deepseek-v4.1-flash dong nhat ca 3 arm (dsh da verify native MCP voi model nay: dev-dsh5). Google path (gemini-3.5-flash-lite, key tu ~/.opentrading/auth.json da nap vao opencode auth + dsh route + OT config) giu lam FALLBACK khi NVIDIA rate-limit: opencode+OT chay tot (25s/11s per trial) nhung dsh bi 400 thought_signature (Gemini 3.x function-call + thinking; reasoningEffort:off khong cover) — can dsh native-gemini transport hoac model khac truoc khi dung Google cho pilot/main. gemini-2.5/2.0-flash-lite 404 (deprecated).",
- "model_main_run": "google/gemini-2.5-flash-lite",
- "skills_parity": "smoke: khong skills tren ca 3 arm (dieu kien ngang nhau); pilot: wire skills-pack chung truoc khi chay",
- "runs_pilot": 3,
- "price_per_1m": {
-  "input": 0.15,
-  "output": 0.6,
-  "cached": 0.003
- },
- "price_note": "USD/1M token, Off-Peak NIM (freeze PRE-REGISTER §2) — dùng cho metric B3 cost"
+  "model": "nvidia/nvidia/nemotron-3.5-bolt-e4b",
+  "model_note": "NVIDIA small-model verification only. Bolt E4B passed a real function call plus tool-result continuation on 2026-11-04. Granite 3B was listed but returned HTTP 404. No paid or Google fallback is permitted. Final financial evaluation requires a new frozen model/provider/effort receipt.",
+  "model_main_run": null,
+  "effort": "none",
+  "effort_note": "No reasoning effort requested; provider telemetry records effective request fields and reported reasoning tokens. Medium/Go are intentionally fail-closed until independently supported and verified on all three adapters.",
+  "skills_parity": "No skills, user plugins, memory, web, filesystem, shell or subagents. Native harness system prompts are retained; model-visible tools must belong to the frozen snapshot MCP server.",
+  "runs_pilot": 3,
+  "max_requests": 24,
+  "max_output_tokens": 2048,
+  "max_total_tokens": 48000,
+  "request_interval_s": 2,
+  "provider_timeout_s": 45,
+  "price_per_1m": null,
+  "price_note": "Unknown/unverified for this NVIDIA key. Report measured usage and request counts; do not publish dollar cost until pricing and entitlement are frozen with an authoritative source.",
+  "opentrading_runtime_root": "/home/doanlong/extra/benchmark/experiments/opentrading-runtime",
+  "protocol": "financial_prompt_v3",
+  "experiment_protocol": "plans/2026-11-05-compact-pilot-protocol.md"
 }

@@ -1,41 +1,64 @@
 {
- "task_id": "fin-l3-screen-194",
- "scoring": "value",
- "solution": {
-  "pass": [
-   "DXG",
-   "KBC",
-   "NLG",
-   "PDR"
+  "task_id": "fin-l3-screen-194",
+  "scoring": "value",
+  "solution": {
+    "pass": [
+      "DXG",
+      "KBC",
+      "NLG",
+      "PDR"
+    ],
+    "filter": "P/B < 1.5"
+  },
+  "as_of": "2026-11-01T23:14:30.802857+07:00",
+  "split": "main",
+  "expects": [
+    {
+      "type": "set",
+      "path": "values.pass",
+      "gold": [
+        "DXG",
+        "KBC",
+        "NLG",
+        "PDR"
+      ]
+    },
+    {
+      "type": "period",
+      "path": "period",
+      "accept": [
+        "2025"
+      ]
+    },
+    {
+      "type": "str",
+      "path": "source",
+      "accept": [
+        "peer_compare"
+      ]
+    }
   ],
-  "filter": "P/B < 1.5"
- },
- "as_of": "2026-11-01T23:14:30.802857+07:00",
- "split": "main",
- "expects": [
-  {
-   "type": "set",
-   "path": "values.pass",
-   "gold": [
-    "DXG",
-    "KBC",
-    "NLG",
-    "PDR"
-   ]
-  },
-  {
-   "type": "period",
-   "path": "period",
-   "accept": [
-    "2025"
-   ]
-  },
-  {
-   "type": "str",
-   "path": "source",
-   "accept": [
-    "peer_compare"
-   ]
-  }
- ]
+  "contract_version": 2,
+  "provenance_contract": [
+    {
+      "tool": "peer_compare",
+      "source": "vnstock",
+      "as_of": "2026-11-01T23:14:30.802857+07:00",
+      "matched_entry_id": "peer:bds_p",
+      "response_sha256": "ef36e0e04adedd781ea574a1b2784fb46ae01428e2eaf98c8cec9246f1524aa5"
+    }
+  ],
+  "payload_sha256": "9a6f7ee8f2c3ccec42436b0f8c701c2fa5bb48d54f4fa9bdab0ba5e30c6158e5",
+  "provenance_catalog": [
+    {
+      "tool": "peer_compare",
+      "source": "vnstock",
+      "as_of": "2026-11-01T23:14:30.802857+07:00",
+      "matched_entry_id": "peer:bds_p",
+      "response_sha256": "ef36e0e04adedd781ea574a1b2784fb46ae01428e2eaf98c8cec9246f1524aa5"
+    }
+  ],
+  "required_payload_keys": [
+    "peer:bds_p"
+  ]
 }

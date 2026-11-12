@@ -1,0 +1,47 @@
+{
+ "version": 1,
+ "mode": "memory",
+ "sessions": [
+  {
+   "id": "A",
+   "turns": [
+    {
+     "text": "Nhớ giúp tôi 2 điều: tôi chỉ quan tâm cổ phiếu có ROE trên 12%, và không đụng mã có P/E trên 25."
+    }
+   ]
+  },
+  {
+   "id": "B",
+   "turns": [
+    {
+     "text": "Trong 5 mã FRT, PNJ, KDC, MSN, SBT: mã nào thỏa cả hai điều kiện của tôi? Số liệu lấy từ `peer_compare`. Trả object JSON: {\"values\":{\"pass\":[...]}},\"source\":\"peer_compare\",\"evidence\":[...]}",
+     "final": true
+    }
+   ]
+  }
+ ],
+ "memory_policy": {
+  "opentrading": {
+   "memory": {
+    "provider": "notebook",
+    "cards": true
+   },
+   "permissions": {
+    "defaultMode": "auto",
+    "autoAcknowledged": true
+   }
+  },
+  "opencode": {
+   "permission": {
+    "edit": "allow",
+    "bash": "allow",
+    "webfetch": "allow"
+   }
+  },
+  "dsh": {
+   "approval_policy": "allow-reads",
+   "session_query": true
+  }
+ },
+ "note": "Cross-session constraint recall; chấm session B."
+}

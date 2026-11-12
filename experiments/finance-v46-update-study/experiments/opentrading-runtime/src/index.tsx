@@ -1,0 +1,81 @@
+#!/usr/bin/env bun
+import path from "node:path"
+import { HELP, parseCli, resolveDir } from "./cli/args"
+
+const cli = parseCli(process.argv.slice(2))
+
+// `opentrading mcp …` is a plain CLI: branch before anything loads the TUI or runtime.
+// This file has no JSX, so the CLI also runs without the Solid transform.
+if (cli.kind === "mcp") {
+  const { runMcpCli } = await import("./cli/mcp")
+  process.exit(await runMcpCli(cli.args))
+}
+
+if (cli.kind === "update") {
+  const { runUpdateCli } = await import("./cli/update")
+  process.exit(await runUpdateCli(cli.args))
+}
+
+if (cli.kind === "help") {
+  process.stdout.write(HELP)
+  process.exit(0)
+}
+
+if (cli.kind === "version") {
+  const { build } = await import("./core/build-info")
+  if (build) {
+    process.stdout.write(`opentrading ${build.version} (${build.commit}, ${build.target})\ncài tại ${process.execPath}\n`)
+    const { cachedLatest, compareVersions } = await import("./core/update")
+    const latest = await cachedLatest()
+    if (latest && compareVersions(latest, build.version) > 0) process.stdout.write(`có bản mới ${latest}: opentrading update\n`)
+    process.exit(0)
+  }
+  const { prebundled } = await import("./core/build-info")
+  // The shims' bundle lives in node_modules/.opentrading-dev/<key>/ (src/cli/dev-launch.ts).
+  const root = path.resolve(import.meta.dir, prebundled ? "../../.." : "..")
+  const { version } = await import("../package.json")
+  let commit = ""
+  try {
+    const git = Bun.spawnSync(["git", "rev-parse", "--short", "HEAD"], { cwd: root, stdout: "pipe", stderr: "ignore" })
+    if (git.success) commit = ` (${git.stdout.toString().trim()})`
+  } catch {
+    // no git on PATH: the version alone
+  }
+  process.stdout.write(`opentrading ${version}${commit}\ncài tại ${root}\n`)
+  process.exit(0)
+}
+
+if (cli.kind === "self-check") {
+  const { selfCheck } = await import("./cli/self-check")
+  process.exit(await selfCheck())
+}
+
+if (cli.kind === "error") {
+  process.stderr.write(`${cli.message}\n`)
+  process.exit(1)
+}
+
+if (cli.dir !== undefined) {
+  const dir = resolveDir(cli.dir)
+  if ("error" in dir) {
+    process.stderr.write(`${dir.error}\n`)
+    process.exit(1)
+  }
+  // Before anything reads process.cwd(): the workspace, project skills/agents, .mcp.json,
+  // sessions and /export all follow the folder the user asked for.
+  process.chdir(dir.path)
+}
+
+// One turn without the TUI: no Solid transform needed (src/cli/print.ts has no JSX).
+if (cli.kind === "print") {
+  const { runPrint } = await import("./cli/print")
+  process.exit(await runPrint(cli))
+}
+
+// Bun reads bunfig.toml (and its Solid preload) from the current folder only, so started from
+// any other folder the JSX would not compile. Register the transform here instead.
+// A binary is already compiled by scripts/build.ts, and the shims' bundle by src/cli/dev-launch.ts.
+const { compiled, prebundled } = await import("./core/build-info")
+if (!compiled && !prebundled) await import("@opentui/solid/preload")
+const { startTui } = await import("./tui/main")
+await startTui(cli.resume, { yolo: cli.yolo === true })

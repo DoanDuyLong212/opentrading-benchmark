@@ -1,0 +1,101 @@
+{
+  "task_id": "fin-l4-2nguon-01",
+  "scoring": "value",
+  "expects": [
+    {
+      "type": "verdict",
+      "path": "verdict",
+      "accept": [
+        "khớp",
+        "match",
+        "giống nhau",
+        "bằng nhau",
+        "không lệch",
+        "không chênh"
+      ],
+      "reject": [
+        "không khớp",
+        "lệch",
+        "khác nhau"
+      ]
+    },
+    {
+      "type": "value",
+      "path": "value",
+      "gold": 21000,
+      "tol": {
+        "rel": 0.005
+      }
+    },
+    {
+      "type": "unit",
+      "path": "unit",
+      "accept": [
+        "đồng",
+        "VND"
+      ]
+    },
+    {
+      "type": "period",
+      "path": "period",
+      "accept": [
+        "30/10",
+        "30-10",
+        "30.10",
+        "2026-10-30"
+      ]
+    },
+    {
+      "type": "str_all",
+      "path": "source",
+      "accept": [
+        "vn_quote_history",
+        "vs_overview_trading"
+      ]
+    }
+  ],
+  "solution": {
+    "close": 21000,
+    "match": true
+  },
+  "notes": "vn_quote_history: 21 (nghìn đồng) = 21000 đồng; vs_overview_trading: ClosePrice 21000 (đồng) → khớp, sai khác 0. Bẫy đơn vị 2 nguồn.",
+  "as_of": "2026-11-01T15:59:53.366224+07:00",
+  "contract_version": 2,
+  "provenance_contract": [
+    {
+      "tool": "vn_quote_history",
+      "source": "vnstock",
+      "as_of": "2026-11-01T15:54:29.883479+07:00",
+      "matched_entry_id": "vn_quote_history:0",
+      "response_sha256": "1494cd6b872e94237fbd832c39302b1f2242f6277a0da16148f560be974ba421"
+    },
+    {
+      "tool": "vs_overview_trading",
+      "source": "vietstock",
+      "as_of": "2026-11-01T15:59:53.366224+07:00",
+      "matched_entry_id": "vs_overview_trading:0",
+      "response_sha256": "f331a37e26afeba10e3a423acae86b5cb3aef1473d4dfea09296a6c0cde9f64b"
+    }
+  ],
+  "payload_sha256": "0fe7ffe546c40db88aaa4369834a8d2bf92b38ac85dca1ffea2d53ce68c7320f",
+  "provenance_catalog": [
+    {
+      "tool": "vn_quote_history",
+      "source": "vnstock",
+      "as_of": "2026-11-01T15:54:29.883479+07:00",
+      "matched_entry_id": "vn_quote_history:0",
+      "response_sha256": "1494cd6b872e94237fbd832c39302b1f2242f6277a0da16148f560be974ba421"
+    },
+    {
+      "tool": "vs_overview_trading",
+      "source": "vietstock",
+      "as_of": "2026-11-01T15:59:53.366224+07:00",
+      "matched_entry_id": "vs_overview_trading:0",
+      "response_sha256": "f331a37e26afeba10e3a423acae86b5cb3aef1473d4dfea09296a6c0cde9f64b"
+    }
+  ],
+  "required_payload_keys": [
+    "vn_quote_history",
+    "vs_overview_trading"
+  ]
+}

@@ -1,0 +1,146 @@
+{
+ "version": 1,
+ "date": "2026-11-08",
+ "actor": "OpenCode agent (user-authorized execution, supersedes reviewer no-mutation stance for this corpus piece only)",
+ "scope": "tasks/main ONLY — pilot/holdout/smoke/results/frozen audits untouched",
+ "rationale": "Swap trùng lặp/dead-weight lấy capability mới (thiết kế 27-task đã duyệt; stage-1 = 10/10 task buildable từ envelope snapshot 2026-11-01 có sẵn; 17 còn lại chờ capture mới — wave-2 stage-2)",
+ "added": [
+  {
+   "id": "fin-l3-breadth-301",
+   "sha256": "d4c50934e63bf17fd046f02dd4e4e3b12d3ebb8520b849bd89677e2c733c5244",
+   "payload_sha256": "aca7ccccfba6e96cf58124b10f74cfece8a6652b8240987f656db83836cc34c3"
+  },
+  {
+   "id": "fin-l4-2src-302",
+   "sha256": "78d029058f0ebc046f7d4ddf6344ff0055f78b2a3397c647879da9c9547cfaed",
+   "payload_sha256": "2234df4ae92e80db82431eff6293e8e5ba90e7b3499e041c647f0e0b9b1b98af"
+  },
+  {
+   "id": "fin-l4-chain-303",
+   "sha256": "123741f61f9ae261fba959eb4f3d516653a7f0b7f79cf0caea33b71c4fb436f0",
+   "payload_sha256": "293bef31c521c5388fb947161dd46816720fc35c84c27c387f7dce816fd6249b"
+  },
+  {
+   "id": "fin-l4-chain-304",
+   "sha256": "3935706c0e0e0732b7dbd9e978e21d4b3d3660d39f99210f1dd6573d3b7fcd97",
+   "payload_sha256": "4ea8bbb9d1b871ff591d72c77cbfcdc51fb7861f012f3bc99fd23786b7605433"
+  },
+  {
+   "id": "fin-l4-chain-305",
+   "sha256": "e80e03054c6837ee77e1d5a4b190c02ab31b45fa0ac138338b5761ccfd58883a",
+   "payload_sha256": "63873ca0cdbf473946c7a06aa7520ca6bc194cc972ce80e49b59bba39a4a9a71"
+  },
+  {
+   "id": "fin-l4-chain-306",
+   "sha256": "19e444380bd6cae9cad5e5cd480e67f87d0d134537e6bf601047fde2660e4294",
+   "payload_sha256": "8e14fc5e914a943d7a59ecee36429f184b8d374c28127fb296e0c6ea489867c8"
+  },
+  {
+   "id": "fin-l4-future-307",
+   "sha256": "a176995b25c442777f78510fbffe79c34e8ee52d000247e956cdbb5a18ca953d",
+   "payload_sha256": "2693ecdd2176d5a3ed4c65e4f561581a43fdacd662ab58f35d2ed17d57e1b744"
+  },
+  {
+   "id": "fin-l4-future-308",
+   "sha256": "32e418e900bb7e6c45bb6403decbcfc951da36568f254e22c635199875931818",
+   "payload_sha256": "0b1d1ffa3de38adebd2491e2993b8b72f31beca5af94a15e60019c865a194747"
+  },
+  {
+   "id": "fin-l4-nonexist-309",
+   "sha256": "a40d77d6780df646b3ed73c7a55fbbc9184fbf9772641d1804df46938ad52041",
+   "payload_sha256": "0070f0cb42bdd5debb6e31560caaa4784cfa953f1d3d6f41a5fda3878e877d0a"
+  },
+  {
+   "id": "fin-l4-nonexist-310",
+   "sha256": "f2b98e9d55009703a077782d95563a695ef2d1fca3e57d9abfe38df29382dacb",
+   "payload_sha256": "e54b47aa73795a35e2957fcb510a6e61ecb8f315eb2cc5022e06b83c08d4c9d5"
+  }
+ ],
+ "removed": [
+  {
+   "id": "fin-l1-macro-131",
+   "archived_to": "audits/2026-11-07-corpus-wave2/removed/fin-l1-macro-131",
+   "sha256": "230a3c8b3512ff8046427def8060a8d03d8dae59fe23b159d2cc03da46ba43f2"
+  },
+  {
+   "id": "fin-l1-macro-132",
+   "archived_to": "audits/2026-11-07-corpus-wave2/removed/fin-l1-macro-132",
+   "sha256": "c2e32586f313d022732ebb1a2ccbb0732e88a320d489bd2a6d992476f6add3de"
+  },
+  {
+   "id": "fin-l1-macro-134",
+   "archived_to": "audits/2026-11-07-corpus-wave2/removed/fin-l1-macro-134",
+   "sha256": "9ac4dc85ef7acb4be762abc1d61f252657aa82a46506cb4148be4746d5743443"
+  },
+  {
+   "id": "fin-l1-macro-135",
+   "archived_to": "audits/2026-11-07-corpus-wave2/removed/fin-l1-macro-135",
+   "sha256": "89dc2182dd976630dd8e73594b951094ffe27794fcac534f6db7db7fa88d4dad"
+  },
+  {
+   "id": "fin-l1-quote-vn-102",
+   "archived_to": "audits/2026-11-07-corpus-wave2/removed/fin-l1-quote-vn-102",
+   "sha256": "ea7387f112d4db12a85a1d8a1d20b45f58a7c111caa43b0dedbad5c643524109"
+  },
+  {
+   "id": "fin-l1-quote-vn-105",
+   "archived_to": "audits/2026-11-07-corpus-wave2/removed/fin-l1-quote-vn-105",
+   "sha256": "3716e4680c3ebc4b1054cbca622508d9e604832d98155888104bae190f62de92"
+  },
+  {
+   "id": "fin-l2-ratio-156",
+   "archived_to": "audits/2026-11-07-corpus-wave2/removed/fin-l2-ratio-156",
+   "sha256": "044d5e22142bbd0d7a180f88a94bbe88b4be4f18893a479c77ce07f53ddf319e"
+  },
+  {
+   "id": "fin-l2-tech-161",
+   "archived_to": "audits/2026-11-07-corpus-wave2/removed/fin-l2-tech-161",
+   "sha256": "81343310c3c3fc390d3d5041c4e6f3fb5bbe277c974b1cda331aaf1d5105448a"
+  },
+  {
+   "id": "fin-l2-macro-calc-177",
+   "archived_to": "audits/2026-11-07-corpus-wave2/removed/fin-l2-macro-calc-177",
+   "sha256": "8252ef70a48761991527c3648e81d03d1e7dd53f37bf8fea6c526803bf4c9dc5"
+  },
+  {
+   "id": "fin-l2-gf-compare-171",
+   "archived_to": "audits/2026-11-07-corpus-wave2/removed/fin-l2-gf-compare-171",
+   "sha256": "48ba8416f508e2d0a92bb32afbd76a44be87cd4712497efc7d56c9e838a20a7a"
+  }
+ ],
+ "state_after": {
+  "total": 200,
+  "levels": {
+   "L1": 34,
+   "L2": 36,
+   "L3": 41,
+   "L4": 49,
+   "L5": 40
+  },
+  "confirmatory_eligible": 183,
+  "quarantined": 17,
+  "notes": [
+   "ANV entity-rule violation fixed: 4→2/split (margin-155 + narrative-244)",
+   "Removed 5 quarantined dead-weight (4 CPI L1 + 1 CPI-calc L2) + 5 duplicative/warn (2 quote fan-out, 2 precomputed-ratio/tech ANV, 1 degenerate fx compare)",
+   "Added 1 L3 breadth (clean bds pool: 1up/4down), 1 L4 2src (P/E dual-source VGI), 4 L4·F two-step chains (new family), 2 L4·E non-trading-day refusals (equity facet mới), 2 L4·B near-miss nonexistent (offline-constructed deterministic resolver envelope — verifiable: symbol_resolve(FPT2/VCBX)→null; as_of aligned to snapshot date)"
+  ]
+ },
+ "wave2_pending": {
+  "count": 17,
+  "items": [
+   "L1·D resolver-quote ×6 (VNM/HPG/VCB/FRT/MBB/PNJ alias → symbol_resolve → close) — CẦN capture quote mới",
+   "L2·H resolver-twist ×4 (TCB đồng/VPS/DGC/BAC) — CẦN capture mới + registry thêm VPS/DGC/BAC",
+   "L5·D stock_overview dossier ×4 (POW/PTB/SCR/VRE) — CẦN capture + xác nhận schema ≥6 trường (SLCP/market_cap chưa thấy trong snapshot_tool_schemas)",
+   "L4·F mcap = price×SLCP (VCG) — phụ thuộc schema stock_overview",
+   "L4·F RSI-14 khung TUẦN (1W) top-2 gainers — CẦN capture signals_technical 1W (corpus hiện 0 task 1W)",
+   "L4·D/D·D top-5 VN30 + volume cross-tool (HPG/TCB/NVL) — CẦN capture batch/candles"
+  ],
+  "rebalance_plan": "Sau stage-2: thêm L1 +6, L2 +4, L5 +4, L4 +3; gỡ thêm 17 từ bảng 27-design (226/227/233 L4-future fanout, 273/274/277/285 L5-WARN/dup, 133/136/178/179 CPI-diagnostic tùy quyết định, 178 L2...) để về lại 40/mức — chốt ở seal stage-2"
+ },
+ "integrity": [
+  "Mọi envelope mới = copy byte nguyên vẹn từ payload đã ghi (không capture mới, không bịa số thị trường)",
+  "response_sha256 tái tạo bằng đúng digest() của mcp_snapshot_server.py — validated chéo với gold của fin-l2-growth-141",
+  "2 envelope resolver near-miss offline-constructed (deterministic null), khai báo trong gold.notes",
+  "Self-test 10/10: oracle OK; grader correct→semantic pass (thiếu evidence là hành vi driver-side), wrong→sai_so/bia_so"
+ ]
+}

@@ -1,0 +1,60 @@
+{
+  "task_id": "fin-m2-screen-972",
+  "scoring": "value",
+  "solution": {
+    "pass": [
+      "SHS",
+      "VIX"
+    ],
+    "criteria": [
+      "P/E dưới 15",
+      "P/B dưới 2"
+    ]
+  },
+  "split": "holdout",
+  "expects": [
+    {
+      "type": "set",
+      "path": "values.pass",
+      "gold": [
+        "SHS",
+        "VIX"
+      ]
+    },
+    {
+      "type": "str",
+      "path": "source",
+      "accept": [
+        "peer_compare"
+      ]
+    }
+  ],
+  "contract_version": 2,
+  "stratum": "memory",
+  "tier": "M2",
+  "subtier": "M2",
+  "memory_construct": "M2",
+  "notes": "Native-memory stratum (amendment 2026-11-11 d).",
+  "provenance_contract": [
+    {
+      "tool": "peer_compare",
+      "source": "vnstock",
+      "as_of": "2026-11-01T23:08:12.898974+07:00",
+      "matched_entry_id": "peer:sec_p",
+      "response_sha256": "8be7844f67076412534cd11c22b6c8ad377a2f28de9843d7c4c1576758186a8c"
+    }
+  ],
+  "provenance_catalog": [
+    {
+      "tool": "peer_compare",
+      "source": "vnstock",
+      "as_of": "2026-11-01T23:08:12.898974+07:00",
+      "matched_entry_id": "peer:sec_p",
+      "response_sha256": "8be7844f67076412534cd11c22b6c8ad377a2f28de9843d7c4c1576758186a8c"
+    }
+  ],
+  "payload_sha256": "276903442b4beb17c519ec98d84264b9e00105f58789177a67d1740d217e19ab",
+  "required_payload_keys": [
+    "peer:sec_p"
+  ]
+}

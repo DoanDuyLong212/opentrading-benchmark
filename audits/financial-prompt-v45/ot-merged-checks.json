@@ -1,0 +1,19 @@
+[
+  {
+    "log": "ot-merged-typecheck.log",
+    "command": [
+      "bun",
+      "run",
+      "typecheck"
+    ],
+    "exit_code": 0
+  },
+  {
+    "log": "ot-merged-native.log",
+    "command": [
+      "bun",
+      "test"
+    ],
+    "exit_code": 1
+  }
+]

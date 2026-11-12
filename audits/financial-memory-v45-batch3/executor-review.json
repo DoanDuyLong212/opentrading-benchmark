@@ -1,0 +1,454 @@
+{
+ "schema": "independent-memory-corpus-only-approval-v45-batch3",
+ "independent_review_pass": true,
+ "corpus_audit_sha256": "474be1311cfb1026031c37b49279915c062bf7bfa43e83b984c40b1fed7eb6df",
+ "reviewer": "OpenCode executor — independent of v4.6-update implementers (engineering-approval-v46-update.json)",
+ "scope": "CORPUS ONLY: guarded batch-3 memory sync (main +18 fin-mem-332..349, holdout +10 fin-mem-960..969) + grader harmonization 320..331+p01 (1f063f5e → 6a67ae9b, post-repair 09/11). NO model inference, engineering seal, runtime or efficacy approval.",
+ "main_total": 230,
+ "holdout_total": 60,
+ "pilot_total": 25,
+ "existing_base200_deletion_authorized": false,
+ "checked_memory_tasks": 43,
+ "new_tasks": 28,
+ "updated_tasks": 13,
+ "external_model_calls": 0,
+ "reviewed_task_trees": {
+  "fin-mem-320": {
+   "environment/payloads.json": "a4d43dcbf420c5d98eb5f3ab40c887da4d53c2cc602484bcdc39b4e89938fb5c",
+   "environment/request_contracts.json": "a2f23e94fe0d516fdbb8d520c9e2f4bc2a89d7c013873d031af70586f56cbb63",
+   "environment/turns.json": "43664bb17ad0c60d3f85517da16f77751134e8f98ef26a76be201a33c6f2995e",
+   "instruction.md": "f6742ee6e3a5d95dc2c7861f0c24024dc6d92016c5a9fbe965e4630730ea3094",
+   "solution/gold.json": "e0b83a9a5acf491f362db2c1207a1efc481ea57e810aa0f97d85784212f6f188",
+   "solution/oracle.py": "af9c4fcc87e251c2076cab21124eed0d256a7be859c4aabcb7be4e74db21b7ea",
+   "task.toml": "7c0f090ffc7d59c5213881f491f87ef848169dba0dd4814c35fe346443800389",
+   "tests/grader.py": "6a67ae9bdfd44b40916256fba7a7a8c7b518eaaacb9b9304260f9481e337ce69"
+  },
+  "fin-mem-321": {
+   "environment/payloads.json": "08ae987b15ccb3007783ac26fac5024334b1f763ed5fb961f5395ade5fe30ed7",
+   "environment/request_contracts.json": "a2f23e94fe0d516fdbb8d520c9e2f4bc2a89d7c013873d031af70586f56cbb63",
+   "environment/turns.json": "b29d6868b9093b63937d2974322254534c334117b99d87bd38b15035c140281f",
+   "instruction.md": "885bf88cc3c711d7a1660ebe87285da3a3a11eee5b85efe32bd93784d61c71cd",
+   "solution/gold.json": "437de3ae3fd6b845c4d844ad6c2b4c1ff1a1b5d5efec92dcb13b9eb3267bee82",
+   "solution/oracle.py": "15662c26e9310035cd842a7873b473dc621161417c5763b19ea770f92660f725",
+   "task.toml": "cb78778bbb94482210d4c67f0584f7eb0e8e7c16c83a23f3b43ba8cd46db119c",
+   "tests/grader.py": "6a67ae9bdfd44b40916256fba7a7a8c7b518eaaacb9b9304260f9481e337ce69"
+  },
+  "fin-mem-322": {
+   "environment/payloads.json": "67aa6ac1519eb485643f1f37273e3e4510ff98da3faa92070b2cf0c10f51aefa",
+   "environment/request_contracts.json": "a2f23e94fe0d516fdbb8d520c9e2f4bc2a89d7c013873d031af70586f56cbb63",
+   "environment/turns.json": "89ab334a9b0af7f53fc67430f8c290c525390943f81cfc92b42c2a35c9b5a1f5",
+   "instruction.md": "151a0c760e43661b898d9a2e63058e067119afe57b700c17855f121aa64e5c69",
+   "solution/gold.json": "b73d35899443455e159eda53372b548108ec230de300c77de76ff06ac562d1e1",
+   "solution/oracle.py": "c86b75d8a9b047f198a1e8600b217cf74df4eacfb145d3b0d7bfbddfd20c6f8c",
+   "task.toml": "860aa76534daaf7c4774fe11a9004b7e7960a31bb4ff74dc612252351e4a8426",
+   "tests/grader.py": "6a67ae9bdfd44b40916256fba7a7a8c7b518eaaacb9b9304260f9481e337ce69"
+  },
+  "fin-mem-323": {
+   "environment/payloads.json": "a51c67c4be45bf5306bdb7760eb6fb9d06960a97a5beb51dfd7a8a8628672851",
+   "environment/request_contracts.json": "a2f23e94fe0d516fdbb8d520c9e2f4bc2a89d7c013873d031af70586f56cbb63",
+   "environment/turns.json": "f68967319521110378c571986e50fc2874c61dc53c41eca53f710bfd8d19b786",
+   "instruction.md": "cce69ea47eeb0fe50e3bcb6feb373934cf52b9dbe44f6bf5172cc0912ad8ef55",
+   "solution/gold.json": "0fb04e589372a0d0d671739d90f1775de1d3aaf246ea288c3331dab88e769264",
+   "solution/oracle.py": "13ace1a9359ed240ad5bb338895d2dfa09459634e457b8930faa20bcb9fac14a",
+   "task.toml": "f7e913e45fce0855ea6b4766bb0f80098469547e378495afdaa3275a5997444b",
+   "tests/grader.py": "6a67ae9bdfd44b40916256fba7a7a8c7b518eaaacb9b9304260f9481e337ce69"
+  },
+  "fin-mem-324": {
+   "environment/payloads.json": "f41fbdc2c7c5179fca1d38cd75812a7450f93313e86d6f7cc025f68497268588",
+   "environment/request_contracts.json": "a2f23e94fe0d516fdbb8d520c9e2f4bc2a89d7c013873d031af70586f56cbb63",
+   "environment/turns.json": "6b1f6520a915795b62924cacf46f7cd3c8381b0f8cd22eb188e004f04d8c7d54",
+   "instruction.md": "c0701ac835a899c1780e5504ceb0598e352bcbed0dd8ee9f347682af7cfaa3fe",
+   "solution/gold.json": "fe24b6f525f43afc9bcc0fbfad5e1e9b8fc7eff0ddbec55265a010d4d80db6a5",
+   "solution/oracle.py": "661434457f12538f973880fb83dd25fe9dc156aad33f394021831f062e2671a0",
+   "task.toml": "290f029d8e699a8470d587f115abde4dc7b2b7e32978374f0dd69c7f2f53d0aa",
+   "tests/grader.py": "6a67ae9bdfd44b40916256fba7a7a8c7b518eaaacb9b9304260f9481e337ce69"
+  },
+  "fin-mem-325": {
+   "environment/payloads.json": "a51c67c4be45bf5306bdb7760eb6fb9d06960a97a5beb51dfd7a8a8628672851",
+   "environment/request_contracts.json": "a2f23e94fe0d516fdbb8d520c9e2f4bc2a89d7c013873d031af70586f56cbb63",
+   "environment/turns.json": "d7db8866499c4e4a9b89b8fb6c650f0998738b40994a0b2935ccaa1476ac0f69",
+   "instruction.md": "a6a7b14c279ec819475fdfc3a6d9662b575146dd99a133029704059ea31789cb",
+   "solution/gold.json": "e07f507ccbfb036c055cb569768d7ed035c3e7a91604c55fd2921cd0e1aa4270",
+   "solution/oracle.py": "e0cdcf92a32533a40822f954bb3b66cc465622d83ea2eb0ceb38f13c2fc1c4e6",
+   "task.toml": "b5e5946a229f03848875de80365de1edaff3dc3e84fb3ed2f04866157036575c",
+   "tests/grader.py": "6a67ae9bdfd44b40916256fba7a7a8c7b518eaaacb9b9304260f9481e337ce69"
+  },
+  "fin-mem-326": {
+   "environment/payloads.json": "e23e3da09fdf41d50037cb405f76bc48b1b8cb9237487c2c97076ac07bd45e9a",
+   "environment/request_contracts.json": "a2f23e94fe0d516fdbb8d520c9e2f4bc2a89d7c013873d031af70586f56cbb63",
+   "environment/turns.json": "e7d913eeabc2a49d413a4a2149d74b65c57701bc70f203ae1d4c6000ebde692b",
+   "instruction.md": "f00a5979c187d59d9ee84e164e75f7025b163b64aa0358ef246bc5548ec7b06d",
+   "solution/gold.json": "0e7d53ed7e9f838b2062587b505a80e0a1e2bbd74bc319a87eac166245fe3461",
+   "solution/oracle.py": "3f3d5eca87d01eac1b6fb2fa0a98321ceecc1ca05646e6ab0ccc0b9651027ed2",
+   "task.toml": "5a8760c0d868553090995717e617ed66d38f95124167f374d87c230c8459607b",
+   "tests/grader.py": "6a67ae9bdfd44b40916256fba7a7a8c7b518eaaacb9b9304260f9481e337ce69"
+  },
+  "fin-mem-327": {
+   "environment/payloads.json": "5b8951b98923688c61109f7bb2c34932b788e3bfb21d97efeb3e79c7509374f5",
+   "environment/request_contracts.json": "a2f23e94fe0d516fdbb8d520c9e2f4bc2a89d7c013873d031af70586f56cbb63",
+   "environment/turns.json": "57de9aed2c175db2547739d8c510381339b618d1eb2e9be373ffa382e4099833",
+   "instruction.md": "38c7b9ca57492ae10a32822aef646b505ea8966d1d98869f9689e1a2433ec791",
+   "solution/gold.json": "28d8082685b52b7d919488122edec5c92b01aa68c9936258b3e634126284241a",
+   "solution/oracle.py": "ffabb0cf2a04980e764b53c754e8811b037c24c7e8dfc3ad2c689f18e9e3622a",
+   "task.toml": "0f08bea416ae30b9dfaddc932b9a821e387ef147a9842da94f602f11c4a829d7",
+   "tests/grader.py": "6a67ae9bdfd44b40916256fba7a7a8c7b518eaaacb9b9304260f9481e337ce69"
+  },
+  "fin-mem-328": {
+   "environment/payloads.json": "4b8f1617d1430b3df7b803e7577597469bd53c4c3afcd588b908edb6210c1024",
+   "environment/request_contracts.json": "a2f23e94fe0d516fdbb8d520c9e2f4bc2a89d7c013873d031af70586f56cbb63",
+   "environment/turns.json": "5a5dbefcf0f422941dc75a0cf337657fc9bf9b9ca1cb5644cd79dd221e182076",
+   "instruction.md": "11c227513bdaf7a21058274b1cd8dfbd3078603b6957b1d54a235c0444d04bc9",
+   "solution/gold.json": "03d8a0b271d7f4042293cfb81814f209e55edf98be8ac72b2322e0b7339b6adf",
+   "solution/oracle.py": "2ed85313e7c260262933978a8dd27131127f00318b5b103ab1d5118d9e45d92d",
+   "task.toml": "74fb86d4e73389dc15066220a7b51ac967521631b6ffe45acb24713da31077f0",
+   "tests/grader.py": "6a67ae9bdfd44b40916256fba7a7a8c7b518eaaacb9b9304260f9481e337ce69"
+  },
+  "fin-mem-329": {
+   "environment/payloads.json": "1c7adf815dea56ac7754b522eca4bc45e8e836b655ddb9c08cebf0bee07321ba",
+   "environment/request_contracts.json": "a2f23e94fe0d516fdbb8d520c9e2f4bc2a89d7c013873d031af70586f56cbb63",
+   "environment/turns.json": "f6cb46374d57d384558a27c0a5ac6237e312c51d052d1108d20cf27a61f5c6b8",
+   "instruction.md": "9b361db96df39852b32b61b39e0e3455e84332fee36550b231aa9d74fa6f441f",
+   "solution/gold.json": "ff1fe2e757679bd116d87c766e11987c358166522099b642310d0a5b2f28dd75",
+   "solution/oracle.py": "d131ea834a245a604ce76cb9ada1e0532d8a1e60b2c8a9ebf06b0e380e9a73e7",
+   "task.toml": "4259fd8109cf773b16830f0b86de69fb973b267af4653942b710c384e07157c6",
+   "tests/grader.py": "6a67ae9bdfd44b40916256fba7a7a8c7b518eaaacb9b9304260f9481e337ce69"
+  },
+  "fin-mem-330": {
+   "environment/payloads.json": "94b03b193fa13bcb1b5f7f5480dc5fd4c8673311b11958705840b994d0e17dd1",
+   "environment/request_contracts.json": "a2f23e94fe0d516fdbb8d520c9e2f4bc2a89d7c013873d031af70586f56cbb63",
+   "environment/turns.json": "1a3e906ce27398eb67c3dd600d050b0fed9adea2721e97a026cb2f7199a2e061",
+   "instruction.md": "89ce506242638384ff1b2497de5331b7c1e2bc9fa36aaf17638cdb75f68c1a86",
+   "solution/gold.json": "c14cadfd360669a0f58444038bdcb1b8cbad37b39c8f79564c8cb8a7f2c8c93b",
+   "solution/oracle.py": "5e436e40480b6a655823b372d5d1782e2fd6aea7cf12ddb1b69c1686d1a7055e",
+   "task.toml": "b9ea791f0a57adbaff84136f4296ebaadf89a85b2b976ff79fbe190076efb99e",
+   "tests/grader.py": "6a67ae9bdfd44b40916256fba7a7a8c7b518eaaacb9b9304260f9481e337ce69"
+  },
+  "fin-mem-331": {
+   "environment/payloads.json": "be72b11297c05c8fec25b9d0f638b82c51e46782db57f981577ba346fcc8abd7",
+   "environment/request_contracts.json": "a2f23e94fe0d516fdbb8d520c9e2f4bc2a89d7c013873d031af70586f56cbb63",
+   "environment/turns.json": "7c00a3a95b78bab309c3f7b1923ff7e86e9c2d913c3c824e1af725cc91d9b600",
+   "instruction.md": "898825d0a9fae42221509789efd07d2f68b6e2f4f6d90d81950372bef9647935",
+   "solution/gold.json": "6f8ef4dd7d63aa1adfcfc6b42aa03cd3b6bf9f7398f448824fb43bc9444c88c0",
+   "solution/oracle.py": "db1a0cfab93baee8bc7e9cc86826d1c487cd5834f0149ac9d4c3819f64d448ac",
+   "task.toml": "b2b2713db91d372805fd5e07ab58bd5a16bb82349f62129f8c24d96a2e88f8b4",
+   "tests/grader.py": "6a67ae9bdfd44b40916256fba7a7a8c7b518eaaacb9b9304260f9481e337ce69"
+  },
+  "fin-mem-332": {
+   "environment/payloads.json": "813aa64b5faedd49b9f817ff645288fd92ebb578988fb4cca61f49a6087395fd",
+   "environment/request_contracts.json": "a2f23e94fe0d516fdbb8d520c9e2f4bc2a89d7c013873d031af70586f56cbb63",
+   "environment/turns.json": "4961973941add99d0e1caf6b6fa70e5e3d08aad00be82df919424b2ff8e41d7d",
+   "instruction.md": "5b463e88704d3a670f2e4437dc9bd047a4f2d2417010bd08abecf480111a182d",
+   "solution/gold.json": "18cba565273599527b067953a09567d0d77ae9a4ac14ab66053d726928486020",
+   "solution/oracle.py": "822b0fb1d64af555ee9d6011382f9a5bc18e957d6993447e71d34484eb30d6a3",
+   "task.toml": "52db1ec5f91947af9dc2f0ec8d9c7096884bc957c65536412746877c0e9db1aa",
+   "tests/grader.py": "6a67ae9bdfd44b40916256fba7a7a8c7b518eaaacb9b9304260f9481e337ce69"
+  },
+  "fin-mem-333": {
+   "environment/payloads.json": "dc27ea2e0c6b8ef9d732127be68ca13c21e2aad6ea673d7375874ef0aef96b0e",
+   "environment/request_contracts.json": "a2f23e94fe0d516fdbb8d520c9e2f4bc2a89d7c013873d031af70586f56cbb63",
+   "environment/turns.json": "e2c97cf11ea7d78eb203ca42a26d2ed6b36aebd627713fcdea06d677bf40a1a9",
+   "instruction.md": "ecf4cf0e6a5d4407b49c77083896417fca854467e2825848b37f57e2a8fa3b8f",
+   "solution/gold.json": "e9a68540e4dce4236d5bcb57322ac4e473c0b7d70e38222be0aaf9c95fc213b7",
+   "solution/oracle.py": "024b06d6e0f31f37d69950446fc4aeb99e9040ca83b764fe3ced0e5fb5d2de8b",
+   "task.toml": "df12da2019439b912244e0eb8f4e07d08c5ab970fcc6e616bc95ca74be4cd0a9",
+   "tests/grader.py": "6a67ae9bdfd44b40916256fba7a7a8c7b518eaaacb9b9304260f9481e337ce69"
+  },
+  "fin-mem-334": {
+   "environment/payloads.json": "dc27ea2e0c6b8ef9d732127be68ca13c21e2aad6ea673d7375874ef0aef96b0e",
+   "environment/request_contracts.json": "a2f23e94fe0d516fdbb8d520c9e2f4bc2a89d7c013873d031af70586f56cbb63",
+   "environment/turns.json": "177f795fce8d83841d03f8af77d0b8511b140f7939dbb16ad8fe26196ee23814",
+   "instruction.md": "6d0279cc8c5b2e2a2a320a592449aaa74c62ba2285cd342b9be94f72df77e67a",
+   "solution/gold.json": "312ed6c1c96044a3923cdafd6bc47283345043fbefcfbd3d8e5e0eb8d52f9f89",
+   "solution/oracle.py": "12e347027fb25bef07608407056c82014031fc35858822957bf383c97eef59e9",
+   "task.toml": "02d20be6e9f924f7a2d9d53d8e2460ce14be7081717308718c245205e3f13882",
+   "tests/grader.py": "6a67ae9bdfd44b40916256fba7a7a8c7b518eaaacb9b9304260f9481e337ce69"
+  },
+  "fin-mem-335": {
+   "environment/payloads.json": "ea1d6e468a6678f0b618008351dab6b367f484c1284deea1b7bf3ab849317d25",
+   "environment/request_contracts.json": "a2f23e94fe0d516fdbb8d520c9e2f4bc2a89d7c013873d031af70586f56cbb63",
+   "environment/turns.json": "e439a15c1474664ad3d9fb2b3fc37ec91de537b6ff3a7cf73465640839b4a91d",
+   "instruction.md": "5190a7b7bdc3ee3a3deb34e2d0b3faeae4b487ec9c8d5f6cb765862789eed568",
+   "solution/gold.json": "aa6d8230ae4011ce2d2921cb2094766f43b3506028a6419abdef60b81369c67d",
+   "solution/oracle.py": "8f72480d2cd57a5e749d169bcb6e1c924bd21703e70d57989fc4cc7599a7bdfd",
+   "task.toml": "8c34485d358a751901a015c371dd92abd368a6e43d8beb8c51e3c4b56e396a6b",
+   "tests/grader.py": "6a67ae9bdfd44b40916256fba7a7a8c7b518eaaacb9b9304260f9481e337ce69"
+  },
+  "fin-mem-336": {
+   "environment/payloads.json": "ba57891236909096549ffb341e849752c1c14ee4d67aa781f67328197a91a027",
+   "environment/request_contracts.json": "a2f23e94fe0d516fdbb8d520c9e2f4bc2a89d7c013873d031af70586f56cbb63",
+   "environment/turns.json": "b6decae99425764fa783422a85682f97d698b88e705784c6e496844fcf29e8c2",
+   "instruction.md": "5cd2f7f7a513c752d292f4253739428369aed9ddb8cc1fd02bd2fbd4ff5d6cd7",
+   "solution/gold.json": "d5a5ea45f7b9ce99b5238ec352e9757c7c619762e04d9e5171436371eaa8c8a9",
+   "solution/oracle.py": "9bcd2b5843d87761987902d8c81593faeab76f7a281597df430f8b7313197085",
+   "task.toml": "f4eec811d36f2b3ce8f0805236378b1a52ca19d27165df773144bbd8372b5a36",
+   "tests/grader.py": "6a67ae9bdfd44b40916256fba7a7a8c7b518eaaacb9b9304260f9481e337ce69"
+  },
+  "fin-mem-337": {
+   "environment/payloads.json": "03acfc6492cac9577a3775155ac2f41a3d74243cc2a13911640856c689245ba2",
+   "environment/request_contracts.json": "a2f23e94fe0d516fdbb8d520c9e2f4bc2a89d7c013873d031af70586f56cbb63",
+   "environment/turns.json": "d2e8760b139c0820172fa1051d40c29e3d8ef028e4f04a3364c174aff67c753e",
+   "instruction.md": "d1e7f2c77e156a791f5154c38002cee7e0b6d2ea857193b5bf50fd3b1f7a5f3a",
+   "solution/gold.json": "638973421f41c6f21f9106b580fcee9887bef6cc6465b6f623b2c95d48b84719",
+   "solution/oracle.py": "acd1198f7aefff0f7e9151756b0f8790f65b1b76518a14a4aad16ff6f4c7551a",
+   "task.toml": "1c0dacf7c64cad6b79ca738fd18c87109067cbb86f67a29dcad5e3a64c700402",
+   "tests/grader.py": "6a67ae9bdfd44b40916256fba7a7a8c7b518eaaacb9b9304260f9481e337ce69"
+  },
+  "fin-mem-338": {
+   "environment/payloads.json": "5c451ece96e0efbf2d578f3d571fc0d8bba55d7ce79a9c7079f175b9680f26f3",
+   "environment/request_contracts.json": "a2f23e94fe0d516fdbb8d520c9e2f4bc2a89d7c013873d031af70586f56cbb63",
+   "environment/turns.json": "f8a903f0c22afaf9876cf1607dae907a612b42fe31b2e57ac6023e1d6b92e1d2",
+   "instruction.md": "6108e25da436b500578dd3bf35406127371a9839af47811fe45a4e9850d8bcd9",
+   "solution/gold.json": "a0e805def515afc3100f41f64ed0c04376175bc492c107a3352644c3cdec4b54",
+   "solution/oracle.py": "536d84148f1a26720189428baa9a9b9187c7f1a1e6cea38a739d711254151d55",
+   "task.toml": "669e980c54c5aaa1873583549fc83a8a72b9963ea6451e21e7422377e414e06f",
+   "tests/grader.py": "6a67ae9bdfd44b40916256fba7a7a8c7b518eaaacb9b9304260f9481e337ce69"
+  },
+  "fin-mem-339": {
+   "environment/payloads.json": "5c451ece96e0efbf2d578f3d571fc0d8bba55d7ce79a9c7079f175b9680f26f3",
+   "environment/request_contracts.json": "a2f23e94fe0d516fdbb8d520c9e2f4bc2a89d7c013873d031af70586f56cbb63",
+   "environment/turns.json": "4e5090df2f9de20620d6a09973ba8d5a7cf71bd8aa9077e333b071a8e1af12e5",
+   "instruction.md": "0505a32037a07d403e73001e9614e3277945f2ff3dd1562c5f46a4717d43f6ff",
+   "solution/gold.json": "5dc1b68e9b7ec254cb0fa6460abca735430adf4eaf24f742ea11ef3f484b84fb",
+   "solution/oracle.py": "d88661c540787c9eb3facc8db42a121cb3724e0899638bcc71a6336b78976e8a",
+   "task.toml": "3aa524505dcca5041d1d2b82c48127526dd4e90966df04687f4c01d7cd09fa7f",
+   "tests/grader.py": "6a67ae9bdfd44b40916256fba7a7a8c7b518eaaacb9b9304260f9481e337ce69"
+  },
+  "fin-mem-340": {
+   "environment/payloads.json": "ba57891236909096549ffb341e849752c1c14ee4d67aa781f67328197a91a027",
+   "environment/request_contracts.json": "a2f23e94fe0d516fdbb8d520c9e2f4bc2a89d7c013873d031af70586f56cbb63",
+   "environment/turns.json": "c2909dba482643ade34c0f9789de52ef46fd33ec9273616667ac823bfb1168e9",
+   "instruction.md": "c1d7b73282c5ef4dab4b6bf78bcfec1fe97fb675970029f45505b7c9b7253485",
+   "solution/gold.json": "ce2e40753e58788fc335c4698cda6d96b642e68f36bfcc9e94cf20fe3d185b04",
+   "solution/oracle.py": "d6cdb6cfc88d3ec4bfc0556cebddf04f5d52c12451589ea5e3ca687e853de09a",
+   "task.toml": "3fc5071e152e32f5ecfdf6de7710ea887a55cc62ef811df3dcb799f205de236d",
+   "tests/grader.py": "6a67ae9bdfd44b40916256fba7a7a8c7b518eaaacb9b9304260f9481e337ce69"
+  },
+  "fin-mem-341": {
+   "environment/payloads.json": "cb4486b82d07494761d1d65b1416b960d1025a16d820895f9416dd76b996a0ba",
+   "environment/request_contracts.json": "a2f23e94fe0d516fdbb8d520c9e2f4bc2a89d7c013873d031af70586f56cbb63",
+   "environment/turns.json": "9b45dd3c098089c02f160b5c2934e23ac7c337a5126e3743d9d9e87c0edfc8b2",
+   "instruction.md": "1a4f7adb0ce6f2948683a142e2f83b2b2d3cc52a72fe8f2a5bd7d6004edf71f1",
+   "solution/gold.json": "b2028cfcfe5478d4a844de5c6579d7231ec5980b31cfb8d4128f0e7eab3e1869",
+   "solution/oracle.py": "9ef897b7d351708e4fa9f5ed6dcdcc524c46ad38edb2ff4f2a63ac626cd270b9",
+   "task.toml": "8e71966f78621008b0eb1bafb2dd113b2e5bbf45ebf8dc0934c16a762a0239de",
+   "tests/grader.py": "6a67ae9bdfd44b40916256fba7a7a8c7b518eaaacb9b9304260f9481e337ce69"
+  },
+  "fin-mem-342": {
+   "environment/payloads.json": "322030b2bf7ec9f0e60e0c8d405e79d1a7397b5ccea47c2dab46d6231ba35600",
+   "environment/request_contracts.json": "a2f23e94fe0d516fdbb8d520c9e2f4bc2a89d7c013873d031af70586f56cbb63",
+   "environment/turns.json": "7e401caa743be32dfcc1df850c72488a2412775a2a6923411b65866af31a2159",
+   "instruction.md": "8a49f30897e55de01c282a496ca1a418499d0c31caf74d51cad151a575e49752",
+   "solution/gold.json": "94570b42c7856e908a458a9eb3c14afdb0034d8add81bfc6b7f210af7a154300",
+   "solution/oracle.py": "f63acfe31d333b0faaba213e2dd0c3afd98358efcfefba61835b0494d6f9d7ae",
+   "task.toml": "1a0d39c1991f64323d2b5cfddef15fcdd6fd01ccf7796a885801752f686860e3",
+   "tests/grader.py": "6a67ae9bdfd44b40916256fba7a7a8c7b518eaaacb9b9304260f9481e337ce69"
+  },
+  "fin-mem-343": {
+   "environment/payloads.json": "a71b30088aadefcaf3f60898b1f3a8e3bd54fd43459fc433a1f0d8fe7f2b91fc",
+   "environment/request_contracts.json": "a2f23e94fe0d516fdbb8d520c9e2f4bc2a89d7c013873d031af70586f56cbb63",
+   "environment/turns.json": "3c7abc30bc063fb19696260eb3c37e9e56e0ca251e18e84b150103f13c013181",
+   "instruction.md": "71314dec696ed362f6c343a124e4383ab2fda7815aad0a53f8dfeea86aea11e1",
+   "solution/gold.json": "15ed2a605d203f1ad62645da088a36a7d3b301e72aedbdec4f7956fb8f84bdd8",
+   "solution/oracle.py": "d669ed234e903e63e9d45c151d48d30bf6a5a0833fc250719fb6c347a4c4cd26",
+   "task.toml": "6a2a760e719cfe0e53da4c78355a2cbec2dd95e79de169ce5fd5d23157ec6346",
+   "tests/grader.py": "6a67ae9bdfd44b40916256fba7a7a8c7b518eaaacb9b9304260f9481e337ce69"
+  },
+  "fin-mem-344": {
+   "environment/payloads.json": "485c4de3bc1c3bb5eee4ea17538d96d8f5529bd5d723dd1d726f3e27a540934b",
+   "environment/request_contracts.json": "a2f23e94fe0d516fdbb8d520c9e2f4bc2a89d7c013873d031af70586f56cbb63",
+   "environment/turns.json": "b1b206ae8a12bc913d7b70f388fc37e66b3af2d32403c84ee8a18a3d370bae76",
+   "instruction.md": "46f048d1c0c2654f2859c8f0621e507094b5fbdbbdbfebe335ef76cdc447fd3d",
+   "solution/gold.json": "a69208ad32eb5cfa5898f0aecdc0857202407a8053477226a924fc980e764faa",
+   "solution/oracle.py": "9e6925d5c1077a1171bdb96acc53cb7049251ef6bdc1a8d77121841c393d6c2b",
+   "task.toml": "7bb06cdc8b4a50a71efd79c80ff5cb2ce31fa3cfb0a226b0ded4f92d299b6a54",
+   "tests/grader.py": "6a67ae9bdfd44b40916256fba7a7a8c7b518eaaacb9b9304260f9481e337ce69"
+  },
+  "fin-mem-345": {
+   "environment/payloads.json": "5c451ece96e0efbf2d578f3d571fc0d8bba55d7ce79a9c7079f175b9680f26f3",
+   "environment/request_contracts.json": "a2f23e94fe0d516fdbb8d520c9e2f4bc2a89d7c013873d031af70586f56cbb63",
+   "environment/turns.json": "37bf5d0eda4adee3263d6a9a724754fb2c084247b8b92da38ac3dd6fe68b7f70",
+   "instruction.md": "ccbabacd4f5baea7f3c34ce11c3bbe3c2940ba2f6a742933d5eb522f2c711b03",
+   "solution/gold.json": "27875303bb3471428419935fae642f7af89ee5505d86f4f0068ea1298a6dbdb3",
+   "solution/oracle.py": "27424eec02b79bf5157ecc2a13f6a26080f7174fbba0613e988749b0325ec8ca",
+   "task.toml": "e2e22a1fc4098feee662af9b5bf5628d85ca88d3238dd08d98c472c221a4c346",
+   "tests/grader.py": "6a67ae9bdfd44b40916256fba7a7a8c7b518eaaacb9b9304260f9481e337ce69"
+  },
+  "fin-mem-346": {
+   "environment/payloads.json": "03acfc6492cac9577a3775155ac2f41a3d74243cc2a13911640856c689245ba2",
+   "environment/request_contracts.json": "a2f23e94fe0d516fdbb8d520c9e2f4bc2a89d7c013873d031af70586f56cbb63",
+   "environment/turns.json": "56a7b7e17305298fbd96e457cc5299346d9b6e3b6ce34a984631fef432f00b98",
+   "instruction.md": "5ccd81e64a1e3c7f3db4fef5c15d8dbb73aac8384326774e23730333f9d724dc",
+   "solution/gold.json": "4cb297bf1144225b20dfb30cec998e336619817166b31f715669b384037c40d9",
+   "solution/oracle.py": "de15b79a78d730f2f57fb615b4aa07a1ac18949be8552dbb24c32582dbafafee",
+   "task.toml": "c6502aebe43bbb3f576206e98d6b60b39eaae7fc737cf98a5415c14061bf0764",
+   "tests/grader.py": "6a67ae9bdfd44b40916256fba7a7a8c7b518eaaacb9b9304260f9481e337ce69"
+  },
+  "fin-mem-347": {
+   "environment/payloads.json": "cb4486b82d07494761d1d65b1416b960d1025a16d820895f9416dd76b996a0ba",
+   "environment/request_contracts.json": "a2f23e94fe0d516fdbb8d520c9e2f4bc2a89d7c013873d031af70586f56cbb63",
+   "environment/turns.json": "27af0b4be6701cc47ec62e7e6cbb4fcd7525da2ffb75da554af51a7d664c518f",
+   "instruction.md": "ac02fa93bbbe92d808f237573856b9891fde0106fa419a432b815f8acec1cd89",
+   "solution/gold.json": "df9734f880365570892c25c448ed59dd1247bd8f539a9374b4fb37d56a831e42",
+   "solution/oracle.py": "b9ce68303dd67428870c954dfa7b067504937542bc93561010f04f5ef7b8a12e",
+   "task.toml": "3a0255823e115c1ec6c5e89f26216043af0b9be6c7858b7e7f4dd06ca16cd4b7",
+   "tests/grader.py": "6a67ae9bdfd44b40916256fba7a7a8c7b518eaaacb9b9304260f9481e337ce69"
+  },
+  "fin-mem-348": {
+   "environment/payloads.json": "5c451ece96e0efbf2d578f3d571fc0d8bba55d7ce79a9c7079f175b9680f26f3",
+   "environment/request_contracts.json": "a2f23e94fe0d516fdbb8d520c9e2f4bc2a89d7c013873d031af70586f56cbb63",
+   "environment/turns.json": "3c68d02e02e8c92164bddd0127c8f851d6b9bf40b16945716aed0bdb3c810546",
+   "instruction.md": "fec149d59b90293ff880cf8d6e22962fa2908ca6cb61d5e2599e5be69a7b1920",
+   "solution/gold.json": "abc75fa4a0b5644aa8d3fa5516bc56672b7750af929a02cd6acbb3e8fd4cd361",
+   "solution/oracle.py": "e88ff1aa73cbbef5fcfa31969e28000feb863943343b30d036043c827b549545",
+   "task.toml": "5a1a21ef23d1daf18612bad2169560af60ec2efd15f027bcd20452b88c82d0ea",
+   "tests/grader.py": "6a67ae9bdfd44b40916256fba7a7a8c7b518eaaacb9b9304260f9481e337ce69"
+  },
+  "fin-mem-349": {
+   "environment/payloads.json": "05b6d697e07415ff354b44a395060372762f77367420237a1571c972ffbabc00",
+   "environment/request_contracts.json": "a2f23e94fe0d516fdbb8d520c9e2f4bc2a89d7c013873d031af70586f56cbb63",
+   "environment/turns.json": "080d634c85ef9548b5bad62f39676880e697a973236936aa94e0755f41041bdb",
+   "instruction.md": "d0a8aa8f406706e5c69d3497090d1b129adf901bcd93da2edf61f2f52a4531dc",
+   "solution/gold.json": "6180ead15c1a649d5d1f29e8e2be7e119001a165b4bd909c39b879ba6c16ff96",
+   "solution/oracle.py": "f6fcabae1a794cb9ea27789c3d76ad84f2e877471597b5d35f06e8e3cb54ba91",
+   "task.toml": "945486dd89ea71cfff19061013bb1ae3b5df72951049f9382d2b9be39f17248c",
+   "tests/grader.py": "6a67ae9bdfd44b40916256fba7a7a8c7b518eaaacb9b9304260f9481e337ce69"
+  },
+  "fin-mem-p01": {
+   "environment/payloads.json": "1c7adf815dea56ac7754b522eca4bc45e8e836b655ddb9c08cebf0bee07321ba",
+   "environment/request_contracts.json": "a2f23e94fe0d516fdbb8d520c9e2f4bc2a89d7c013873d031af70586f56cbb63",
+   "environment/turns.json": "6b8cef04867e410934d1dbed5fbf8c10c60d619e5c12f2213c8fb52c07b327f3",
+   "instruction.md": "57355194b5d68d2c5e97cd0d898ea5c377c2ada82af55f695c5de13148947d8f",
+   "solution/gold.json": "580bf97aafee8fc941f804676387efc6858801576e0a3b81720dc1f007c58d0a",
+   "solution/oracle.py": "6b573fabe611b713f0a6812d953fa48b9f3eaf11daa1fc3457b0566f06d7763a",
+   "task.toml": "4f5aef909848500c7cf0558b9492555d182b93245431325910b55e0c8892c4f3",
+   "tests/grader.py": "6a67ae9bdfd44b40916256fba7a7a8c7b518eaaacb9b9304260f9481e337ce69"
+  },
+  "mem-dev-stale-current": {
+   "environment/payloads.json": "a51c67c4be45bf5306bdb7760eb6fb9d06960a97a5beb51dfd7a8a8628672851",
+   "environment/request_contracts.json": "a2f23e94fe0d516fdbb8d520c9e2f4bc2a89d7c013873d031af70586f56cbb63",
+   "environment/turns.json": "d7db8866499c4e4a9b89b8fb6c650f0998738b40994a0b2935ccaa1476ac0f69",
+   "instruction.md": "a6a7b14c279ec819475fdfc3a6d9662b575146dd99a133029704059ea31789cb",
+   "solution/gold.json": "d32ea7a292d617f3758c5fa9f9d6ff08ae17e16775051541471bfa357ff77c0d",
+   "solution/oracle.py": "e0cdcf92a32533a40822f954bb3b66cc465622d83ea2eb0ceb38f13c2fc1c4e6",
+   "task.toml": "88720657abb99be86d9cfdacca64b37c2fdbcde43b20ab32a4a46a05740d5c26",
+   "tests/grader.py": "6a67ae9bdfd44b40916256fba7a7a8c7b518eaaacb9b9304260f9481e337ce69"
+  },
+  "mem-dev-update-revoke": {
+   "environment/payloads.json": "1c7adf815dea56ac7754b522eca4bc45e8e836b655ddb9c08cebf0bee07321ba",
+   "environment/request_contracts.json": "a2f23e94fe0d516fdbb8d520c9e2f4bc2a89d7c013873d031af70586f56cbb63",
+   "environment/turns.json": "a1a6d529b787eb555621ea0107bab673b125ba5876b5d8319d3150097ec28373",
+   "instruction.md": "9b361db96df39852b32b61b39e0e3455e84332fee36550b231aa9d74fa6f441f",
+   "solution/gold.json": "eca1912fcb4cc9c5f3e8cfbd2ace756a2307516f04258fc4299d6f069a53c6cc",
+   "solution/oracle.py": "d131ea834a245a604ce76cb9ada1e0532d8a1e60b2c8a9ebf06b0e380e9a73e7",
+   "task.toml": "c3027233e70078dfe9ba4d69565d8b994a72b1a88f54e99576b57fe4c76a01b8",
+   "tests/grader.py": "6a67ae9bdfd44b40916256fba7a7a8c7b518eaaacb9b9304260f9481e337ce69"
+  },
+  "fin-mem-960": {
+   "environment/payloads.json": "059f45cb1d942a479895958653d4d8d859152531f5ad3716cd2e1aa55233ee4f",
+   "environment/request_contracts.json": "a2f23e94fe0d516fdbb8d520c9e2f4bc2a89d7c013873d031af70586f56cbb63",
+   "environment/turns.json": "0aadb5e25b6cd91b07ba93c068b3677f64005e5ec39d9df082d6b6bafc507b50",
+   "instruction.md": "d33f19d636af03f91d0cc161166c70fbba0bb5fe5671edc712baf263b36fd66f",
+   "solution/gold.json": "323ac22b02a72a373959031fe98ba02a1842b06d5c4b3fd7dd5dc7e53caa93ae",
+   "solution/oracle.py": "3f2848529a5e0149c1d2388ca551d92aaf85e977ae5c92492e5aff0f44ded085",
+   "task.toml": "abce878e8eade5fa6dcabc38c2980780bfcbdd5be5d8e2d1da35687a4355bdb2",
+   "tests/grader.py": "6a67ae9bdfd44b40916256fba7a7a8c7b518eaaacb9b9304260f9481e337ce69"
+  },
+  "fin-mem-961": {
+   "environment/payloads.json": "dfdd284d0cf643aa3fe8f7f5af76db64297da80e293c0abf61189e6a6c146865",
+   "environment/request_contracts.json": "a2f23e94fe0d516fdbb8d520c9e2f4bc2a89d7c013873d031af70586f56cbb63",
+   "environment/turns.json": "756aa8b340e3f8fcb2f66676482fa237d0c4eca1179e1b006c3d4e94fe7d742a",
+   "instruction.md": "083fb45c50012f69b457621bf22390ff622000762d18cfa68c6dc0f51e1e0d64",
+   "solution/gold.json": "eac90404d32c71dc59883ba1dc3938c847f1ca6d78b7180541d3e3dbb07886a0",
+   "solution/oracle.py": "838cb9dc115fa082960a7ed44c10614ebcef61ddd6cddeeecaead7c1260bc5f0",
+   "task.toml": "f68d9cd7f47012d517125bcb8651584d90a888fbae23a61334899aaa6546d754",
+   "tests/grader.py": "6a67ae9bdfd44b40916256fba7a7a8c7b518eaaacb9b9304260f9481e337ce69"
+  },
+  "fin-mem-962": {
+   "environment/payloads.json": "2d446a58bb12b36aa624758c04e3818c73a501fd4f0eed1e8b1588a5bdd52c92",
+   "environment/request_contracts.json": "a2f23e94fe0d516fdbb8d520c9e2f4bc2a89d7c013873d031af70586f56cbb63",
+   "environment/turns.json": "30ef46480063caef5572bf117fb19e77a002c2db714d689e43cd90b3bbceb6a8",
+   "instruction.md": "f772efdd52206fa6c91f97a60e40cd84c8c112481de1368be9cfd1d02971caf1",
+   "solution/gold.json": "40ded534dcb89c4b1220b559eced1807211e6a456b335009a66cd24924375827",
+   "solution/oracle.py": "e583241b4315ebb93ddadf320baffdccbd61fd80ed438df7671720d221009be9",
+   "task.toml": "23f2603b67de88ca7d42154a4244039168634657a50126618cb754cd17fa45a2",
+   "tests/grader.py": "6a67ae9bdfd44b40916256fba7a7a8c7b518eaaacb9b9304260f9481e337ce69"
+  },
+  "fin-mem-963": {
+   "environment/payloads.json": "4d3fee181c4fce7280862ed4d89df1574ea124998962f98950c5cc2c60174a80",
+   "environment/request_contracts.json": "a2f23e94fe0d516fdbb8d520c9e2f4bc2a89d7c013873d031af70586f56cbb63",
+   "environment/turns.json": "dd62a294d820a4f2cb519e0b5e2295ffddeb44d546b6f3a47d847ed3c738b880",
+   "instruction.md": "477623867e1d65c7c3a982570e209452462d0de2dd310ee778a116bb44a8c7fd",
+   "solution/gold.json": "2f0eaaf7f600a5cbb3cc669edef33cc84d194fae8fbc6d52d47faf60bf3e9cc5",
+   "solution/oracle.py": "534ff1cc956fa6a22cee455aea22990b33082a0f425ea54b578a7926ede7bc67",
+   "task.toml": "9703bf5666f27321ee427b15e2dd390347f6465bdcf07043269ec7cb9d160264",
+   "tests/grader.py": "6a67ae9bdfd44b40916256fba7a7a8c7b518eaaacb9b9304260f9481e337ce69"
+  },
+  "fin-mem-964": {
+   "environment/payloads.json": "45ed89a3fd5b0be7abcdfbf7cb1764b58f7b97db96fb5c2354cc6a43d82781c0",
+   "environment/request_contracts.json": "a2f23e94fe0d516fdbb8d520c9e2f4bc2a89d7c013873d031af70586f56cbb63",
+   "environment/turns.json": "6198b7dd3bc5a6868795ffbc87e9139c0920a7ee71b99276e3e1f76c61e8d2e0",
+   "instruction.md": "9f5d70593b9908f51ab0a4c48689832cfe72a6c161a479014b5cc1155e3b9434",
+   "solution/gold.json": "bd5071f1edac7bed07c252c9f7c9a4f0e90d2080e3d706d6489720cb7fdf5889",
+   "solution/oracle.py": "a570804ce6f2e8d4aad3ccdbd61a3bb7811248f4f1b773f5b87753fec22f8b7b",
+   "task.toml": "4ac49af394b783701b67d34749404538a376732cb1a47af1aa5d8b806375545d",
+   "tests/grader.py": "6a67ae9bdfd44b40916256fba7a7a8c7b518eaaacb9b9304260f9481e337ce69"
+  },
+  "fin-mem-965": {
+   "environment/payloads.json": "a0cae0df25d0c4d7ee9c8aa1c107e48423d3abe09d5d12b92028827771f594c6",
+   "environment/request_contracts.json": "a2f23e94fe0d516fdbb8d520c9e2f4bc2a89d7c013873d031af70586f56cbb63",
+   "environment/turns.json": "c667f56397f929c61d2a9dd411d0da46fba5fd7a131e173dcfada68d97dc50c3",
+   "instruction.md": "844b72555c64790cdc441763b0438c5c32dc0e49accfb965d986b23744e7d0e5",
+   "solution/gold.json": "f357c494a87518d90a214c80aca077be0c9fd0785854607ed897318c55ee0e09",
+   "solution/oracle.py": "8b1e280dc6449e4660018376ed5e1e91ac77112046812a12ef3106d20814de5c",
+   "task.toml": "85dc5c0cfa52246450d48975cb8eee7b4de0639a76a1298c97bbb124d0ee3c5d",
+   "tests/grader.py": "6a67ae9bdfd44b40916256fba7a7a8c7b518eaaacb9b9304260f9481e337ce69"
+  },
+  "fin-mem-966": {
+   "environment/payloads.json": "67864ae1693acdd55336a456a936f7ee4e1a641c2b233274e16e8e5bd3783691",
+   "environment/request_contracts.json": "a2f23e94fe0d516fdbb8d520c9e2f4bc2a89d7c013873d031af70586f56cbb63",
+   "environment/turns.json": "f7619222490da247741a2995c5b544c320db88977b6a2bb217a608de43871659",
+   "instruction.md": "ebf814fb9506fb400d3f284ea586a2267b1545f61e2130073db319c29ddf001b",
+   "solution/gold.json": "6c1195784472624c5bff5bad77f6b135fc98ab787830a161774d5567767fdb25",
+   "solution/oracle.py": "468dee0445c4cfd778e3c30294d6bbf81e1b61d90c71f21cdc9b5b7291944a8c",
+   "task.toml": "f41722a43ff06559e5d5a40ed9ba6701846ffa1910a48d9089bce99e0a1cb223",
+   "tests/grader.py": "6a67ae9bdfd44b40916256fba7a7a8c7b518eaaacb9b9304260f9481e337ce69"
+  },
+  "fin-mem-967": {
+   "environment/payloads.json": "059f45cb1d942a479895958653d4d8d859152531f5ad3716cd2e1aa55233ee4f",
+   "environment/request_contracts.json": "a2f23e94fe0d516fdbb8d520c9e2f4bc2a89d7c013873d031af70586f56cbb63",
+   "environment/turns.json": "5e0760a513f12a9c5af0e8f5f5ebc4087652303f2bb263c10dd27b0ac9684830",
+   "instruction.md": "10d2760517f1d262ed2da9b2d9af512275ec4cb8ae18f50b6c08d4b8a5a1c629",
+   "solution/gold.json": "521b3f91bd64b76df349ad3498c973577a409d85fcc94ea510e4b29063733baf",
+   "solution/oracle.py": "5e4372302b84c1835d4261057693fbf38614ecbb444cc04e301492bebffe659d",
+   "task.toml": "8940b240543d480b8df70b06eeaaccf1167c186215bad9d7ca3816fe3bbdd7fa",
+   "tests/grader.py": "6a67ae9bdfd44b40916256fba7a7a8c7b518eaaacb9b9304260f9481e337ce69"
+  },
+  "fin-mem-968": {
+   "environment/payloads.json": "f176a8c37e75f543f7f1857719ab39f31c505f0422bf36d698ae23519308b960",
+   "environment/request_contracts.json": "a2f23e94fe0d516fdbb8d520c9e2f4bc2a89d7c013873d031af70586f56cbb63",
+   "environment/turns.json": "6da0381207ce8e6fb5ce701d25367b8e9238518196ffe8fdabb16b194b1bb530",
+   "instruction.md": "75a1a13a773082779d1ffab4955b48c32bd2c529c01784744f51ffa26e28f1c3",
+   "solution/gold.json": "83c7339a3c7392813f783bfa3a7e378654da1c7dc391032855cf3891d72dfee4",
+   "solution/oracle.py": "e4edf69ef33c25f0414577f7a279f264f4df5c6a65d7c369b43f598c3cc953dc",
+   "task.toml": "e580fa32a9b8f05ed82fe269ad18ac175b7ed52064072395a18b7a66470ae0b3",
+   "tests/grader.py": "6a67ae9bdfd44b40916256fba7a7a8c7b518eaaacb9b9304260f9481e337ce69"
+  },
+  "fin-mem-969": {
+   "environment/payloads.json": "8a90deaca3547a367668d8283a57eded1ccf4d80ff8107e1940abf1d24541bce",
+   "environment/request_contracts.json": "a2f23e94fe0d516fdbb8d520c9e2f4bc2a89d7c013873d031af70586f56cbb63",
+   "environment/turns.json": "b42a280adda18c95f03d1d889a4555744683718882060db3730bb59d1136c6cb",
+   "instruction.md": "08216ba77906972b738984119643737abf683ed8961abacc7673cdbaa307f023",
+   "solution/gold.json": "6d02b39812edd0ac50b996de5ee84290b9cdd74b414570b32da5a4714c457ab1",
+   "solution/oracle.py": "6e8883828a923641fe8c3723aa70ae035575b2ca5328598ce30f3f2d16015bd8",
+   "task.toml": "e15910ba3dd73bda73cb883d52a035bf62a326a2491f9e21bd3cdfd5da6470ad",
+   "tests/grader.py": "6a67ae9bdfd44b40916256fba7a7a8c7b518eaaacb9b9304260f9481e337ce69"
+  }
+ },
+ "verification": {
+  "selftest": "28/28 OK (correct→pass, corrupted→fail) với grader chuẩn 6a67",
+  "oracle": "43/43 rows pass offline oracle + invariant trong corpus-audit batch-3",
+  "dev_run": "84/84 episodes (OT 71.4% / OC 46.4% / DSH 39.3% financial; trace 100%; injection 0)",
+  "grader_harmonization": "chỉ tests/grader.py đổi trên 13 task cũ; 28 task mới mang sẵn 6a67; re-grade toàn bộ 84 row dev-run: 1 flip 334-OT → bia_so (uncertified numerics)",
+  "payload_hashes": "không đổi với mọi task đã có run (receipts cache còn hợp lệ)"
+ }
+}

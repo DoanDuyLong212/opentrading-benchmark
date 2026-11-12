@@ -1,0 +1,8 @@
+{
+  "script": "tools/verify_nvidia.py",
+  "sha256": "1acf254d4315742d72897e7b528f6da6dd6dab7edc5f2a0527f4e7b1b5d71d9a",
+  "dependencies": "Python standard library only; no provider.py import",
+  "manifest_sha256": "13c5c5982f75bdce5f9f6cc9194d3fe9fb1a3db1a65213263588d56bc3944567",
+  "model_calls_so_far": 0,
+  "interruption_policy": "Durable before-dispatch append-only event, output/attempt-log existence forbids replay. No automatic resume unknown in-flight canary request."
+}

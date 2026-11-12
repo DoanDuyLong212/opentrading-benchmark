@@ -1,0 +1,3382 @@
+{
+  "pass": true,
+  "complete": true,
+  "external_model_calls": 0,
+  "reports": [
+    {
+      "arm": "opentrading_baseline",
+      "work": "/tmp/v45-independent-opentrading_baseline-jmzn2p7_",
+      "external_model_calls": 0,
+      "native_bun_binary": "/home/doanlong/extra/benchmark/experiments/toolchains/bun-1.4.4/bun",
+      "native_bun_sha256": "10702245766b225e70bbf6235fd6b47214fd94b4760d00ffaed8ab0df57ac235",
+      "result": {
+        "status": "ok",
+        "session_id": null,
+        "notes": "",
+        "native_completion": {
+          "outcome": "completed",
+          "unanswered": false,
+          "recoveries": [],
+          "accepted": true
+        },
+        "native_contract_invalid": null,
+        "final_text": "{\"value\": 24000, \"unit\": \"đồng/cổ phiếu\", \"evidence\": [{\"call_id\": \"8bb6a4a1-8a9b-4cbe-8a46-9eae7d261d0c\", \"tool\": \"vn_quote_history\", \"matched_entry_id\": \"synthetic\", \"payload_sha256\": \"fd05c3fd85cc073e0beb06862c9adafb7f417a9627e305b0b7070eeec52d1481\", \"response_sha256\": \"d5011aa0dfb5c753a710598bc10b99725af460e7611feaa695d01d4d8b983f69\", \"source\": \"synthetic-not-live\", \"as_of\": \"2030-04-01\"}]}",
+        "tokens": {
+          "input": 300,
+          "output": 60,
+          "cached": null,
+          "cache_read": null,
+          "cached_observed": 0,
+          "cache_complete": false,
+          "usage_requests": 3,
+          "requests": 5,
+          "complete": false
+        },
+        "provider_requests": 5,
+        "provider_usage": {
+          "input": 300,
+          "output": 60,
+          "cached": null,
+          "cache_read": null,
+          "cached_observed": 0,
+          "cache_complete": false,
+          "usage_requests": 3,
+          "requests": 5,
+          "complete": false
+        },
+        "inventory_path": "/tmp/v45-independent-opentrading_baseline-jmzn2p7_/runner/inventory.json",
+        "provider_ledger": "/tmp/v45-independent-opentrading_baseline-jmzn2p7_/runner/provider.jsonl",
+        "answer_path": null,
+        "answer_candidates": [],
+        "transport_recovered": true,
+        "first_attempt_completed": false,
+        "token_reservations_not_observed_usage": 2113536,
+        "native_derived_ledger": null,
+        "native_completed": true
+      },
+      "local_upstream_requests": 5,
+      "inventory": {
+        "arm": "opentrading",
+        "model": "deepseek-ai/deepseek-v4.1-flash",
+        "provider": "nvidia",
+        "effort": "none",
+        "condition": "opentrading_baseline",
+        "native_arm": "opentrading",
+        "prompt_variant": "baseline",
+        "finance_policy": false,
+        "clock_policy": {
+          "answer_as_of": "2030-04-01",
+          "native_now_pinned": true,
+          "native_stall_ms": 300000,
+          "native_clock_limitation": null
+        },
+        "snapshot_tool_definitions": [
+          {
+            "name": "vn_quote_history",
+            "description": "FINITE SNAPSHOT SUPPORT: use a recorded public variant below and only default-equivalent optional arguments allowed by inputSchema. Production optional windows/projections are NOT generally supported here. snapshot_requests=[{\"symbol\": \"SYN\"}]\nIf unsupported_snapshot_query: inspect argument_paths and allowed_public_variants; choose a supported same-intent request only if entity, period, metric and scope remain unchanged. retryable_with_corrected_arguments permits a bounded correction; rejection does not mean financial data is absent. Read provenance and copy benchmark_evidence only from actual successful responses.\n\nPRODUCTION API METADATA (capabilities below do not expand this finite snapshot):\nNến 1 mã VN (1D/1W/1M), VCI trước KBS dự phòng. Dùng cho MỌI lịch sử giá của một mã.\n\n        Dùng khi: \"lịch sử giá FPT\", \"HPG có vượt đỉnh 20 phiên không\", mọi tính toán cần chuỗi giá\n            1 mã.\n        Không dùng khi: cần nhiều mã cùng lúc (dùng market_candles_batch); cần nến phút/intraday\n            (dùng vn_equity_ohlcv); cần giá khớp hiện tại (dùng vn_equity_quote_batch). Không có\n            tool nào tên stock_history — chính là tool này.\n\n        days: số nến yêu cầu (mặc định 365 nến; provider không enforce trần 365; nến tuần/tháng bao phủ dài hơn theo hệ số).\n        interval: '1D' (mặc định), '1W', '1M'. Nến 1W/1M mang ngày cuối kỳ (Chủ nhật cuối tuần,\n        ngày cuối tháng) nên nến của kỳ hiện tại có thể ghi một ngày chưa tới; kỳ không có phiên\n        (tuần Tết) bị bỏ. summary/columns: summary chỉ trả {count,last,high,low}; columns giữ\n        trường nêu tên.\n        ",
+            "inputSchema": {
+              "type": "object",
+              "properties": {
+                "symbol": {
+                  "type": "string",
+                  "description": "Vietnamese listed equity ticker, e.g. HPG."
+                },
+                "days": {
+                  "type": "integer",
+                  "default": 365,
+                  "description": "Requested number of candles, not calendar days; default 365. Positive integer. Provider does not enforce the old prose claim of a 365 maximum. Replay accepts only explicitly recorded requests/default-equivalent arguments.",
+                  "minimum": 1
+                },
+                "summary": {
+                  "type": "boolean",
+                  "default": false,
+                  "description": "True returns count/last/high/low summary rather than candle rows. False preserves rows; summary changes output shape."
+                },
+                "columns": {
+                  "anyOf": [
+                    {
+                      "type": "array",
+                      "items": {
+                        "type": "string",
+                        "enum": [
+                          "t",
+                          "o",
+                          "h",
+                          "l",
+                          "c",
+                          "v"
+                        ]
+                      }
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ],
+                  "default": null,
+                  "description": "Optional array of raw candle keys: t date, o open, h high, l low, c close, v volume. Use [\"c\",\"t\"], never \"close\" or [\"close\"]. Null keeps all fields. Production currently drops unknown keys silently; this C1 contract rejects them before that loss."
+                },
+                "interval": {
+                  "type": "string",
+                  "default": "1D",
+                  "description": "Candle frequency: 1D daily, 1W weekly, 1M monthly. The provider canonicalizes case. day/daily are not accepted.",
+                  "enum": [
+                    "1D",
+                    "1W",
+                    "1M",
+                    "1d",
+                    "1w",
+                    "1m"
+                  ]
+                }
+              },
+              "required": [
+                "symbol"
+              ],
+              "additionalProperties": false,
+              "anyOf": [
+                {
+                  "type": "object",
+                  "properties": {
+                    "symbol": {
+                      "type": "string",
+                      "pattern": "^\\s*[sS][yY][nN]\\s*$"
+                    },
+                    "days": {
+                      "const": 365
+                    },
+                    "summary": {
+                      "const": false
+                    },
+                    "columns": {
+                      "const": null
+                    },
+                    "interval": {
+                      "type": "string",
+                      "pattern": "^\\s*1[dD]\\s*$"
+                    }
+                  },
+                  "required": [
+                    "symbol"
+                  ],
+                  "additionalProperties": false
+                }
+              ],
+              "x-opentrading-schema-profile": "finite-replay-c2",
+              "x-finite-request-variants": [
+                {
+                  "symbol": "SYN"
+                }
+              ],
+              "x-repair-fields": []
+            },
+            "outputSchema": {
+              "additionalProperties": true,
+              "title": "vn_quote_historyDictOutput",
+              "type": "object"
+            },
+            "annotations": {
+              "readOnlyHint": true,
+              "destructiveHint": false,
+              "idempotentHint": true,
+              "openWorldHint": false
+            },
+            "_meta": {
+              "anthropic/searchHint": "lich su gia nen ngay tuan thang co phieu | price history daily candles",
+              "opentrading/contractProfile": "finance-c1-v4",
+              "opentrading/schemaPolicy": "Raw types/defaults/required preserved from frozen source. Additional public domain guards added; no coercion. Frozen replay matching remains exact and separate."
+            }
+          },
+          {
+            "name": "analytics_compute",
+            "description": "DETERMINISTIC COMPUTATION over numeric leaves from successful source tools ALREADY retrieved in this session. No data lookup. JSON pointers escape ~ as ~0 and / inside a key as ~1. operands are {call_id: original benchmark_evidence.call_id, path: JSON pointer /data/...}. Operations: sum/mean equal-unit operands; growth_pct exactly [current,previous] => (current/previous-1)*100; margin_pct exactly [numerator,denominator] => numerator/denominator*100; scale exactly one operand, converts VND/nghìn đồng/cổ phiếu/triệu đồng/tỷ đồng. ratio [numerator,denominator] returns dimensionless. absolute_difference [a,b] returns abs(a-b); relative_difference_pct [a,b] returns abs(a-b)/abs(b)*100, for same entity, metric and period across sources. Read actual source units; never mix currencies, dates or metrics. entity_policy defaults same_entity for ratios; explicit cross_entity permits same-metric same-period ratio across named entities. Aggregates may combine entities. input_unit MUST match source metadata (VND, nghìn đồng/cổ phiếu, triệu đồng, tỷ đồng, dimensionless). VNDbn normalizes to tỷ đồng; table rows.values align by index with explicit periods. Returned derived_result is computed, not new upstream evidence: cite ORIGINAL source_evidence seven-field receipts. If inputs are absent, retrieve source tools first. No indicators/topN/profile capability.",
+            "inputSchema": {
+              "type": "object",
+              "properties": {
+                "entity_policy": {
+                  "type": "string",
+                  "enum": [
+                    "same_entity",
+                    "cross_entity"
+                  ]
+                },
+                "operation": {
+                  "type": "string",
+                  "enum": [
+                    "sum",
+                    "mean",
+                    "growth_pct",
+                    "margin_pct",
+                    "ratio",
+                    "scale",
+                    "absolute_difference",
+                    "relative_difference_pct"
+                  ]
+                },
+                "operands": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "call_id": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "path": {
+                        "type": "string",
+                        "pattern": "^/data/(?:[^~/]|~[01])+(?:/(?:[^~/]|~[01])+)*$"
+                      }
+                    },
+                    "required": [
+                      "call_id",
+                      "path"
+                    ],
+                    "additionalProperties": false
+                  },
+                  "minItems": 1,
+                  "maxItems": 100
+                },
+                "input_unit": {
+                  "type": "string",
+                  "enum": [
+                    "VND",
+                    "nghìn đồng/cổ phiếu",
+                    "nghìn đồng",
+                    "VND/cổ phiếu",
+                    "tỷ đồng",
+                    "triệu đồng",
+                    "dimensionless",
+                    "%"
+                  ]
+                },
+                "output_unit": {
+                  "type": "string",
+                  "enum": [
+                    "VND",
+                    "nghìn đồng/cổ phiếu",
+                    "nghìn đồng",
+                    "VND/cổ phiếu",
+                    "tỷ đồng",
+                    "triệu đồng",
+                    "dimensionless",
+                    "%"
+                  ]
+                }
+              },
+              "required": [
+                "operation",
+                "operands",
+                "input_unit",
+                "output_unit"
+              ],
+              "additionalProperties": false,
+              "x-opentrading-schema-profile": "deterministic-derivation-v45"
+            },
+            "annotations": {
+              "readOnlyHint": true,
+              "destructiveHint": false,
+              "idempotentHint": true,
+              "openWorldHint": false
+            }
+          },
+          {
+            "name": "analytics_calculate",
+            "description": "Read-only financial calculator using the SAME native OpenTrading expression/unit engine, never arbitrary code. Supply named variables from successful retrieved original benchmark_evidence.call_id + exact numeric JSON pointer, or a prior analytics_calculate derived_ref via derived_id. No typed financial numbers. expression supports + - * / ^ parentheses and native functions abs,min,max,sqrt,sum,avg,ln,log10,exp; formula constants only 0,1,2,3,4,12,100,252,365. All data values must be referenced. output_unit converts dimensions: a/b with output_unit % already multiplies fraction by100; do not also multiply expression by100. Use explicit alignment: same_period defaults same entity/period/scope; time_series permits distinct periods for same entity/metric; cross_entity_same_period permits named entity comparison at same period. Price per-share scale: nghìn đồng/cổ phiếu -> đồng/cổ phiếu, never strip share dimension; public final quote VND means VND per share only when task declares asset-price convention. Returned derived_ref is NOT upstream evidence; cite original source_evidence receipts. No lookup, shell, files or network.",
+            "inputSchema": {
+              "type": "object",
+              "properties": {
+                "expression": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 4096
+                },
+                "variables": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "name": {
+                        "type": "string",
+                        "pattern": "^[A-Za-z_][A-Za-z0-9_]*$"
+                      },
+                      "call_id": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "path": {
+                        "type": "string",
+                        "pattern": "^/data/(?:[^~/]|~[01])+(?:/(?:[^~/]|~[01])+)*$"
+                      },
+                      "derived_id": {
+                        "type": "string",
+                        "pattern": "^calc:[A-Za-z0-9-]+$"
+                      }
+                    },
+                    "required": [
+                      "name"
+                    ],
+                    "oneOf": [
+                      {
+                        "required": [
+                          "call_id",
+                          "path"
+                        ],
+                        "not": {
+                          "required": [
+                            "derived_id"
+                          ]
+                        }
+                      },
+                      {
+                        "required": [
+                          "derived_id"
+                        ],
+                        "not": {
+                          "anyOf": [
+                            {
+                              "required": [
+                                "call_id"
+                              ]
+                            },
+                            {
+                              "required": [
+                                "path"
+                              ]
+                            }
+                          ]
+                        }
+                      }
+                    ],
+                    "additionalProperties": false
+                  },
+                  "minItems": 1,
+                  "maxItems": 100
+                },
+                "output_unit": {
+                  "type": "string",
+                  "maxLength": 128
+                },
+                "precision": {
+                  "type": "integer",
+                  "minimum": 0,
+                  "maximum": 12
+                },
+                "alignment": {
+                  "type": "string",
+                  "enum": [
+                    "same_period",
+                    "time_series",
+                    "cross_entity_same_period"
+                  ]
+                }
+              },
+              "required": [
+                "expression",
+                "variables"
+              ],
+              "additionalProperties": false,
+              "x-opentrading-schema-profile": "grounded-calculation-v45"
+            },
+            "annotations": {
+              "readOnlyHint": true,
+              "destructiveHint": false,
+              "idempotentHint": true,
+              "openWorldHint": false
+            }
+          }
+        ],
+        "allowed_tool_names": [
+          "mcp__opentrading__analytics_calculate",
+          "mcp__opentrading__analytics_compute",
+          "mcp__opentrading__vn_quote_history",
+          "mcp_opentrading_analytics_calculate",
+          "mcp_opentrading_analytics_compute",
+          "mcp_opentrading_vn_quote_history",
+          "opentrading_analytics_calculate",
+          "opentrading_analytics_compute",
+          "opentrading_vn_quote_history",
+          "calculate",
+          "compute",
+          "read_result"
+        ],
+        "native_system_prompt": true,
+        "skills": [],
+        "external_plugins": [],
+        "tool_policy": "product track: snapshot MCP + OT native read_result/compute/calculate; common analytics utility all arms; memory none; no filesystem/shell/web/subagents",
+        "isolation": "isolated HOME/XDG/environment and native tool removal; not OS container",
+        "config": {
+          "provider": "nvidia",
+          "model": "deepseek-ai/deepseek-v4.1-flash",
+          "toolSearch": "off",
+          "memory": {
+            "provider": "none"
+          },
+          "benchmark_prompt_variant": "baseline",
+          "benchmark_runtime_root": "/home/doanlong/extra/benchmark/experiments/finance-v46-update-study/experiments/opentrading-runtime"
+        },
+        "observed_tool_sets": [
+          [
+            "calculate",
+            "compute",
+            "mcp__opentrading__analytics_calculate",
+            "mcp__opentrading__analytics_compute",
+            "mcp__opentrading__vn_quote_history",
+            "read_result"
+          ],
+          [
+            "calculate",
+            "compute",
+            "mcp__opentrading__analytics_calculate",
+            "mcp__opentrading__analytics_compute",
+            "mcp__opentrading__vn_quote_history",
+            "read_result"
+          ],
+          [
+            "calculate",
+            "compute",
+            "mcp__opentrading__analytics_calculate",
+            "mcp__opentrading__analytics_compute",
+            "mcp__opentrading__vn_quote_history",
+            "read_result"
+          ],
+          [
+            "calculate",
+            "compute",
+            "mcp__opentrading__analytics_calculate",
+            "mcp__opentrading__analytics_compute",
+            "mcp__opentrading__vn_quote_history",
+            "read_result"
+          ],
+          [
+            "calculate",
+            "compute",
+            "mcp__opentrading__analytics_calculate",
+            "mcp__opentrading__analytics_compute",
+            "mcp__opentrading__vn_quote_history",
+            "read_result"
+          ]
+        ],
+        "provider_requests": 5,
+        "provider_upstream_requests": 5,
+        "usage_complete": false,
+        "native_inventory": {
+          "skills": [],
+          "memory": "none",
+          "home_isolated": true,
+          "session_id": "benchmark-isolated-turn",
+          "native_retry_max": 0,
+          "tools": [
+            {
+              "name": "calculate",
+              "source": "local",
+              "input": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "type": "object",
+                "properties": {
+                  "alignment": {
+                    "description": "Financial alignment: default same entity/period/scope; time_series permits different periods of one metric; cross_entity_same_period permits aggregation/comparison of entities at one date.",
+                    "type": "string",
+                    "enum": [
+                      "same_period",
+                      "time_series",
+                      "cross_entity_same_period"
+                    ]
+                  },
+                  "expression": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "Biểu thức với tên trong values: price / eps, (rev_2025 / rev_2022) ^ (1/3) - 1, a + b. Hàm: sqrt, abs, min, max, sum, avg, ln, log10, exp."
+                  },
+                  "values": {
+                    "description": "Tên → giá trị có đơn vị. Supply exactly the variables used in expression; no unused bindings. Mọi số lấy từ dữ liệu đặt ở đây, không viết thẳng vào biểu thức.",
+                    "type": "object",
+                    "propertyNames": {
+                      "type": "string"
+                    },
+                    "additionalProperties": {
+                      "anyOf": [
+                        {
+                          "type": "object",
+                          "properties": {
+                            "value": {
+                              "type": "number",
+                              "description": "Số, đúng như trong kết quả tool (64.27, không phải 64,27)."
+                            },
+                            "unit": {
+                              "description": "Đơn vị của số: \"nghìn đồng/cổ phiếu\", \"tỷ đồng\", \"cổ phiếu\", \"%\", \"lần\". Bỏ trống = số thuần.",
+                              "type": "string"
+                            },
+                            "ref": {
+                              "description": "Ref của kết quả có số này, dạng r3: để trích nguồn.",
+                              "type": "string"
+                            }
+                          },
+                          "required": [
+                            "value"
+                          ],
+                          "additionalProperties": false
+                        },
+                        {
+                          "type": "object",
+                          "properties": {
+                            "from_call": {
+                              "type": "string",
+                              "minLength": 1,
+                              "description": "Ref của kết quả dữ liệu, dạng r3: lấy số thẳng từ đó, không gõ lại."
+                            },
+                            "field": {
+                              "description": "Trường số; mặc định là giá đóng cửa hoặc trường số đầu tiên.",
+                              "type": "string"
+                            },
+                            "from_symbol": {
+                              "description": "Mã cần đọc khi kết quả có nhiều mã.",
+                              "type": "string"
+                            },
+                            "path": {
+                              "description": "Đường dẫn tới mảng khi kết quả có nhiều mảng.",
+                              "type": "string"
+                            },
+                            "at": {
+                              "description": "Phần tử: \"last\" (mặc định), \"first\", hoặc chỉ số (âm = đếm từ cuối).",
+                              "anyOf": [
+                                {
+                                  "type": "string",
+                                  "const": "last"
+                                },
+                                {
+                                  "type": "string",
+                                  "const": "first"
+                                },
+                                {
+                                  "type": "integer",
+                                  "minimum": -9007199254740991,
+                                  "maximum": 9007199254740991
+                                }
+                              ]
+                            },
+                            "unit": {
+                              "description": "Chỉ khi kết quả không ghi đơn vị của trường này.",
+                              "type": "string"
+                            }
+                          },
+                          "required": [
+                            "from_call"
+                          ],
+                          "additionalProperties": false
+                        }
+                      ]
+                    }
+                  },
+                  "unit": {
+                    "description": "Đơn vị muốn nhận kết quả (unit-aware: expression a/b-1 with unit % already scales by 100; do not also multiply expression by 100): \"lần\", \"%\", \"tỷ đồng\", \"đồng/cổ phiếu\". Lệch loại đơn vị thì báo lỗi.",
+                    "type": "string"
+                  },
+                  "decimals": {
+                    "description": "Số chữ số thập phân khi làm tròn; mặc định 6.",
+                    "type": "integer",
+                    "minimum": 0,
+                    "maximum": 12
+                  }
+                },
+                "required": [
+                  "expression"
+                ],
+                "additionalProperties": false
+              }
+            },
+            {
+              "name": "compute",
+              "source": "local",
+              "input": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "type": "object",
+                "properties": {
+                  "op": {
+                    "type": "string",
+                    "enum": [
+                      "pct_change",
+                      "mean",
+                      "sum",
+                      "ratio",
+                      "relative_strength",
+                      "rank",
+                      "share",
+                      "annualize"
+                    ]
+                  },
+                  "from_call": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "Ref của kết quả dữ liệu, dạng r3."
+                  },
+                  "from_symbol": {
+                    "description": "Mã cần đọc khi kết quả có nhiều mã.",
+                    "type": "string"
+                  },
+                  "field": {
+                    "description": "Trường số; mặc định là giá đóng cửa hoặc trường số đầu tiên.",
+                    "type": "string"
+                  },
+                  "path": {
+                    "description": "Đường dẫn tới mảng khi kết quả có nhiều mảng.",
+                    "type": "string"
+                  },
+                  "other": {
+                    "description": "Chuỗi thứ hai, cho ratio và relative_strength.",
+                    "type": "object",
+                    "properties": {
+                      "from_call": {
+                        "type": "string",
+                        "minLength": 1,
+                        "description": "Ref của kết quả dữ liệu, dạng r3."
+                      },
+                      "from_symbol": {
+                        "description": "Mã cần đọc khi kết quả có nhiều mã.",
+                        "type": "string"
+                      },
+                      "field": {
+                        "description": "Trường số; mặc định là giá đóng cửa hoặc trường số đầu tiên.",
+                        "type": "string"
+                      },
+                      "path": {
+                        "description": "Đường dẫn tới mảng khi kết quả có nhiều mảng.",
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "from_call"
+                    ],
+                    "additionalProperties": false
+                  },
+                  "periods": {
+                    "description": "Số kỳ gần nhất. pct_change: so với N kỳ trước; mean, sum: N kỳ cuối. Mặc định cả chuỗi.",
+                    "type": "integer",
+                    "minimum": 1,
+                    "maximum": 9007199254740991
+                  },
+                  "periods_done": {
+                    "description": "annualize: số kỳ đã có trong năm.",
+                    "type": "integer",
+                    "minimum": 1,
+                    "maximum": 9007199254740991
+                  },
+                  "periods_per_year": {
+                    "description": "annualize: số kỳ trong một năm, ví dụ 4 quý.",
+                    "type": "integer",
+                    "minimum": 1,
+                    "maximum": 9007199254740991
+                  }
+                },
+                "required": [
+                  "op",
+                  "from_call"
+                ],
+                "additionalProperties": false
+              }
+            },
+            {
+              "name": "mcp__opentrading__analytics_calculate",
+              "source": "mcp:opentrading",
+              "input": {
+                "type": "object",
+                "properties": {
+                  "expression": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 4096
+                  },
+                  "variables": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "name": {
+                          "type": "string",
+                          "pattern": "^[A-Za-z_][A-Za-z0-9_]*$"
+                        },
+                        "call_id": {
+                          "type": "string",
+                          "minLength": 1
+                        },
+                        "path": {
+                          "type": "string",
+                          "pattern": "^/data/(?:[^~/]|~[01])+(?:/(?:[^~/]|~[01])+)*$"
+                        },
+                        "derived_id": {
+                          "type": "string",
+                          "pattern": "^calc:[A-Za-z0-9-]+$"
+                        }
+                      },
+                      "required": [
+                        "name"
+                      ],
+                      "oneOf": [
+                        {
+                          "required": [
+                            "call_id",
+                            "path"
+                          ],
+                          "not": {
+                            "required": [
+                              "derived_id"
+                            ]
+                          }
+                        },
+                        {
+                          "required": [
+                            "derived_id"
+                          ],
+                          "not": {
+                            "anyOf": [
+                              {
+                                "required": [
+                                  "call_id"
+                                ]
+                              },
+                              {
+                                "required": [
+                                  "path"
+                                ]
+                              }
+                            ]
+                          }
+                        }
+                      ],
+                      "additionalProperties": false
+                    },
+                    "minItems": 1,
+                    "maxItems": 100
+                  },
+                  "output_unit": {
+                    "type": "string",
+                    "maxLength": 128
+                  },
+                  "precision": {
+                    "type": "integer",
+                    "minimum": 0,
+                    "maximum": 12
+                  },
+                  "alignment": {
+                    "type": "string",
+                    "enum": [
+                      "same_period",
+                      "time_series",
+                      "cross_entity_same_period"
+                    ]
+                  }
+                },
+                "required": [
+                  "expression",
+                  "variables"
+                ],
+                "additionalProperties": false,
+                "x-opentrading-schema-profile": "grounded-calculation-v45"
+              }
+            },
+            {
+              "name": "mcp__opentrading__analytics_compute",
+              "source": "mcp:opentrading",
+              "input": {
+                "type": "object",
+                "properties": {
+                  "entity_policy": {
+                    "type": "string",
+                    "enum": [
+                      "same_entity",
+                      "cross_entity"
+                    ]
+                  },
+                  "operation": {
+                    "type": "string",
+                    "enum": [
+                      "sum",
+                      "mean",
+                      "growth_pct",
+                      "margin_pct",
+                      "ratio",
+                      "scale",
+                      "absolute_difference",
+                      "relative_difference_pct"
+                    ]
+                  },
+                  "operands": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "call_id": {
+                          "type": "string",
+                          "minLength": 1
+                        },
+                        "path": {
+                          "type": "string",
+                          "pattern": "^/data/(?:[^~/]|~[01])+(?:/(?:[^~/]|~[01])+)*$"
+                        }
+                      },
+                      "required": [
+                        "call_id",
+                        "path"
+                      ],
+                      "additionalProperties": false
+                    },
+                    "minItems": 1,
+                    "maxItems": 100
+                  },
+                  "input_unit": {
+                    "type": "string",
+                    "enum": [
+                      "VND",
+                      "nghìn đồng/cổ phiếu",
+                      "nghìn đồng",
+                      "VND/cổ phiếu",
+                      "tỷ đồng",
+                      "triệu đồng",
+                      "dimensionless",
+                      "%"
+                    ]
+                  },
+                  "output_unit": {
+                    "type": "string",
+                    "enum": [
+                      "VND",
+                      "nghìn đồng/cổ phiếu",
+                      "nghìn đồng",
+                      "VND/cổ phiếu",
+                      "tỷ đồng",
+                      "triệu đồng",
+                      "dimensionless",
+                      "%"
+                    ]
+                  }
+                },
+                "required": [
+                  "operation",
+                  "operands",
+                  "input_unit",
+                  "output_unit"
+                ],
+                "additionalProperties": false,
+                "x-opentrading-schema-profile": "deterministic-derivation-v45"
+              }
+            },
+            {
+              "name": "mcp__opentrading__vn_quote_history",
+              "source": "mcp:opentrading",
+              "input": {
+                "type": "object",
+                "properties": {
+                  "symbol": {
+                    "type": "string",
+                    "description": "Vietnamese listed equity ticker, e.g. HPG."
+                  },
+                  "days": {
+                    "type": "integer",
+                    "default": 365,
+                    "description": "Requested number of candles, not calendar days; default 365. Positive integer. Provider does not enforce the old prose claim of a 365 maximum. Replay accepts only explicitly recorded requests/default-equivalent arguments.",
+                    "minimum": 1
+                  },
+                  "summary": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "True returns count/last/high/low summary rather than candle rows. False preserves rows; summary changes output shape."
+                  },
+                  "columns": {
+                    "anyOf": [
+                      {
+                        "type": "array",
+                        "items": {
+                          "type": "string",
+                          "enum": [
+                            "t",
+                            "o",
+                            "h",
+                            "l",
+                            "c",
+                            "v"
+                          ]
+                        }
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ],
+                    "default": null,
+                    "description": "Optional array of raw candle keys: t date, o open, h high, l low, c close, v volume. Use [\"c\",\"t\"], never \"close\" or [\"close\"]. Null keeps all fields. Production currently drops unknown keys silently; this C1 contract rejects them before that loss."
+                  },
+                  "interval": {
+                    "type": "string",
+                    "default": "1D",
+                    "description": "Candle frequency: 1D daily, 1W weekly, 1M monthly. The provider canonicalizes case. day/daily are not accepted.",
+                    "enum": [
+                      "1D",
+                      "1W",
+                      "1M",
+                      "1d",
+                      "1w",
+                      "1m"
+                    ]
+                  }
+                },
+                "required": [
+                  "symbol"
+                ],
+                "additionalProperties": false,
+                "anyOf": [
+                  {
+                    "type": "object",
+                    "properties": {
+                      "symbol": {
+                        "type": "string",
+                        "pattern": "^\\s*[sS][yY][nN]\\s*$"
+                      },
+                      "days": {
+                        "const": 365
+                      },
+                      "summary": {
+                        "const": false
+                      },
+                      "columns": {
+                        "const": null
+                      },
+                      "interval": {
+                        "type": "string",
+                        "pattern": "^\\s*1[dD]\\s*$"
+                      }
+                    },
+                    "required": [
+                      "symbol"
+                    ],
+                    "additionalProperties": false
+                  }
+                ],
+                "x-opentrading-schema-profile": "finite-replay-c2",
+                "x-finite-request-variants": [
+                  {
+                    "symbol": "SYN"
+                  }
+                ],
+                "x-repair-fields": []
+              }
+            },
+            {
+              "name": "read_result",
+              "input": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "Id ghi trong dòng đã dọn, hoặc ref dạng r3."
+                  },
+                  "offset": {
+                    "description": "Ký tự bắt đầu, khi kết quả dài hơn một trang.",
+                    "type": "integer",
+                    "minimum": 0,
+                    "maximum": 9007199254740991
+                  }
+                },
+                "required": [
+                  "id"
+                ],
+                "additionalProperties": false
+              }
+            }
+          ]
+        },
+        "prompt_directory": "/home/doanlong/extra/benchmark/experiments/finance-v46-update-study/tools/prompt_variants/baseline",
+        "prompt_files": {
+          "citations.md": "de9fb1fc83fa4a9754f48d8ac37d78e65b4d24c3dbcca3ddf62ad6ad91a8879b",
+          "identity.md": "b8fe73cda14db1b53ddd6687d648aff746e29bd3cca8166d26d32fcb121f6892",
+          "memory-cards.md": "0e272324666c58e6cb0dabcd29f5a52f219fe1f0c8d515cc2b0c0499699578b1",
+          "memory.md": "680e283ecf05662d9e13326df41cabb5f7d6f4bd607fb7c6d0bb8e4d38f96f7d",
+          "style.md": "56e82b54f5fb5e83c6047e4ad1c21ab1ade0427fadfce504e34dc28063d9e2c3",
+          "subagent.md": "b8bc6181355d4d557e047d60c0de4347c58888d6b0a41562bf693b63ba89b039",
+          "title.md": "8329a2554713df24143cbc5bc2f6dc6ab5df78e0a44392ce6bc887d439c7444e",
+          "tools.md": "431c997121e6e9a2aadf00adbfa416ecf2a246624bac6e27e2b638a972da82c8"
+        }
+      },
+      "actual_bun_command_verified": true,
+      "pass": true
+    },
+    {
+      "arm": "opentrading_finance",
+      "work": "/tmp/v45-independent-opentrading_finance-fy_3mmyl",
+      "external_model_calls": 0,
+      "native_bun_binary": "/home/doanlong/extra/benchmark/experiments/toolchains/bun-1.4.4/bun",
+      "native_bun_sha256": "10702245766b225e70bbf6235fd6b47214fd94b4760d00ffaed8ab0df57ac235",
+      "result": {
+        "status": "ok",
+        "session_id": null,
+        "notes": "",
+        "native_completion": {
+          "outcome": "completed",
+          "unanswered": false,
+          "recoveries": [],
+          "accepted": true
+        },
+        "native_contract_invalid": null,
+        "final_text": "{\"value\": 24000, \"unit\": \"đồng/cổ phiếu\", \"evidence\": [{\"call_id\": \"09543278-39d1-409e-bbfe-9436bb09b26c\", \"tool\": \"vn_quote_history\", \"matched_entry_id\": \"synthetic\", \"payload_sha256\": \"fd05c3fd85cc073e0beb06862c9adafb7f417a9627e305b0b7070eeec52d1481\", \"response_sha256\": \"d5011aa0dfb5c753a710598bc10b99725af460e7611feaa695d01d4d8b983f69\", \"source\": \"synthetic-not-live\", \"as_of\": \"2030-04-01\"}]}",
+        "tokens": {
+          "input": 300,
+          "output": 60,
+          "cached": null,
+          "cache_read": null,
+          "cached_observed": 0,
+          "cache_complete": false,
+          "usage_requests": 3,
+          "requests": 5,
+          "complete": false
+        },
+        "provider_requests": 5,
+        "provider_usage": {
+          "input": 300,
+          "output": 60,
+          "cached": null,
+          "cache_read": null,
+          "cached_observed": 0,
+          "cache_complete": false,
+          "usage_requests": 3,
+          "requests": 5,
+          "complete": false
+        },
+        "inventory_path": "/tmp/v45-independent-opentrading_finance-fy_3mmyl/runner/inventory.json",
+        "provider_ledger": "/tmp/v45-independent-opentrading_finance-fy_3mmyl/runner/provider.jsonl",
+        "answer_path": null,
+        "answer_candidates": [],
+        "transport_recovered": true,
+        "first_attempt_completed": false,
+        "token_reservations_not_observed_usage": 2113536,
+        "native_derived_ledger": "/tmp/v45-independent-opentrading_finance-fy_3mmyl/runner/native-derived.jsonl",
+        "native_completed": true
+      },
+      "local_upstream_requests": 5,
+      "inventory": {
+        "arm": "opentrading",
+        "model": "deepseek-ai/deepseek-v4.1-flash",
+        "provider": "nvidia",
+        "effort": "none",
+        "condition": "opentrading_finance",
+        "native_arm": "opentrading",
+        "prompt_variant": "finance",
+        "finance_policy": true,
+        "clock_policy": {
+          "answer_as_of": "2030-04-01",
+          "native_now_pinned": true,
+          "native_stall_ms": 300000,
+          "native_clock_limitation": null
+        },
+        "snapshot_tool_definitions": [
+          {
+            "name": "vn_quote_history",
+            "description": "FINITE SNAPSHOT SUPPORT: use a recorded public variant below and only default-equivalent optional arguments allowed by inputSchema. Production optional windows/projections are NOT generally supported here. snapshot_requests=[{\"symbol\": \"SYN\"}]\nIf unsupported_snapshot_query: inspect argument_paths and allowed_public_variants; choose a supported same-intent request only if entity, period, metric and scope remain unchanged. retryable_with_corrected_arguments permits a bounded correction; rejection does not mean financial data is absent. Read provenance and copy benchmark_evidence only from actual successful responses.\n\nPRODUCTION API METADATA (capabilities below do not expand this finite snapshot):\nNến 1 mã VN (1D/1W/1M), VCI trước KBS dự phòng. Dùng cho MỌI lịch sử giá của một mã.\n\n        Dùng khi: \"lịch sử giá FPT\", \"HPG có vượt đỉnh 20 phiên không\", mọi tính toán cần chuỗi giá\n            1 mã.\n        Không dùng khi: cần nhiều mã cùng lúc (dùng market_candles_batch); cần nến phút/intraday\n            (dùng vn_equity_ohlcv); cần giá khớp hiện tại (dùng vn_equity_quote_batch). Không có\n            tool nào tên stock_history — chính là tool này.\n\n        days: số nến yêu cầu (mặc định 365 nến; provider không enforce trần 365; nến tuần/tháng bao phủ dài hơn theo hệ số).\n        interval: '1D' (mặc định), '1W', '1M'. Nến 1W/1M mang ngày cuối kỳ (Chủ nhật cuối tuần,\n        ngày cuối tháng) nên nến của kỳ hiện tại có thể ghi một ngày chưa tới; kỳ không có phiên\n        (tuần Tết) bị bỏ. summary/columns: summary chỉ trả {count,last,high,low}; columns giữ\n        trường nêu tên.\n        ",
+            "inputSchema": {
+              "type": "object",
+              "properties": {
+                "symbol": {
+                  "type": "string",
+                  "description": "Vietnamese listed equity ticker, e.g. HPG."
+                },
+                "days": {
+                  "type": "integer",
+                  "default": 365,
+                  "description": "Requested number of candles, not calendar days; default 365. Positive integer. Provider does not enforce the old prose claim of a 365 maximum. Replay accepts only explicitly recorded requests/default-equivalent arguments.",
+                  "minimum": 1
+                },
+                "summary": {
+                  "type": "boolean",
+                  "default": false,
+                  "description": "True returns count/last/high/low summary rather than candle rows. False preserves rows; summary changes output shape."
+                },
+                "columns": {
+                  "anyOf": [
+                    {
+                      "type": "array",
+                      "items": {
+                        "type": "string",
+                        "enum": [
+                          "t",
+                          "o",
+                          "h",
+                          "l",
+                          "c",
+                          "v"
+                        ]
+                      }
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ],
+                  "default": null,
+                  "description": "Optional array of raw candle keys: t date, o open, h high, l low, c close, v volume. Use [\"c\",\"t\"], never \"close\" or [\"close\"]. Null keeps all fields. Production currently drops unknown keys silently; this C1 contract rejects them before that loss."
+                },
+                "interval": {
+                  "type": "string",
+                  "default": "1D",
+                  "description": "Candle frequency: 1D daily, 1W weekly, 1M monthly. The provider canonicalizes case. day/daily are not accepted.",
+                  "enum": [
+                    "1D",
+                    "1W",
+                    "1M",
+                    "1d",
+                    "1w",
+                    "1m"
+                  ]
+                }
+              },
+              "required": [
+                "symbol"
+              ],
+              "additionalProperties": false,
+              "anyOf": [
+                {
+                  "type": "object",
+                  "properties": {
+                    "symbol": {
+                      "type": "string",
+                      "pattern": "^\\s*[sS][yY][nN]\\s*$"
+                    },
+                    "days": {
+                      "const": 365
+                    },
+                    "summary": {
+                      "const": false
+                    },
+                    "columns": {
+                      "const": null
+                    },
+                    "interval": {
+                      "type": "string",
+                      "pattern": "^\\s*1[dD]\\s*$"
+                    }
+                  },
+                  "required": [
+                    "symbol"
+                  ],
+                  "additionalProperties": false
+                }
+              ],
+              "x-opentrading-schema-profile": "finite-replay-c2",
+              "x-finite-request-variants": [
+                {
+                  "symbol": "SYN"
+                }
+              ],
+              "x-repair-fields": []
+            },
+            "outputSchema": {
+              "additionalProperties": true,
+              "title": "vn_quote_historyDictOutput",
+              "type": "object"
+            },
+            "annotations": {
+              "readOnlyHint": true,
+              "destructiveHint": false,
+              "idempotentHint": true,
+              "openWorldHint": false
+            },
+            "_meta": {
+              "anthropic/searchHint": "lich su gia nen ngay tuan thang co phieu | price history daily candles",
+              "opentrading/contractProfile": "finance-c1-v4",
+              "opentrading/schemaPolicy": "Raw types/defaults/required preserved from frozen source. Additional public domain guards added; no coercion. Frozen replay matching remains exact and separate."
+            }
+          },
+          {
+            "name": "analytics_compute",
+            "description": "DETERMINISTIC COMPUTATION over numeric leaves from successful source tools ALREADY retrieved in this session. No data lookup. JSON pointers escape ~ as ~0 and / inside a key as ~1. operands are {call_id: original benchmark_evidence.call_id, path: JSON pointer /data/...}. Operations: sum/mean equal-unit operands; growth_pct exactly [current,previous] => (current/previous-1)*100; margin_pct exactly [numerator,denominator] => numerator/denominator*100; scale exactly one operand, converts VND/nghìn đồng/cổ phiếu/triệu đồng/tỷ đồng. ratio [numerator,denominator] returns dimensionless. absolute_difference [a,b] returns abs(a-b); relative_difference_pct [a,b] returns abs(a-b)/abs(b)*100, for same entity, metric and period across sources. Read actual source units; never mix currencies, dates or metrics. entity_policy defaults same_entity for ratios; explicit cross_entity permits same-metric same-period ratio across named entities. Aggregates may combine entities. input_unit MUST match source metadata (VND, nghìn đồng/cổ phiếu, triệu đồng, tỷ đồng, dimensionless). VNDbn normalizes to tỷ đồng; table rows.values align by index with explicit periods. Returned derived_result is computed, not new upstream evidence: cite ORIGINAL source_evidence seven-field receipts. If inputs are absent, retrieve source tools first. No indicators/topN/profile capability.",
+            "inputSchema": {
+              "type": "object",
+              "properties": {
+                "entity_policy": {
+                  "type": "string",
+                  "enum": [
+                    "same_entity",
+                    "cross_entity"
+                  ]
+                },
+                "operation": {
+                  "type": "string",
+                  "enum": [
+                    "sum",
+                    "mean",
+                    "growth_pct",
+                    "margin_pct",
+                    "ratio",
+                    "scale",
+                    "absolute_difference",
+                    "relative_difference_pct"
+                  ]
+                },
+                "operands": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "call_id": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "path": {
+                        "type": "string",
+                        "pattern": "^/data/(?:[^~/]|~[01])+(?:/(?:[^~/]|~[01])+)*$"
+                      }
+                    },
+                    "required": [
+                      "call_id",
+                      "path"
+                    ],
+                    "additionalProperties": false
+                  },
+                  "minItems": 1,
+                  "maxItems": 100
+                },
+                "input_unit": {
+                  "type": "string",
+                  "enum": [
+                    "VND",
+                    "nghìn đồng/cổ phiếu",
+                    "nghìn đồng",
+                    "VND/cổ phiếu",
+                    "tỷ đồng",
+                    "triệu đồng",
+                    "dimensionless",
+                    "%"
+                  ]
+                },
+                "output_unit": {
+                  "type": "string",
+                  "enum": [
+                    "VND",
+                    "nghìn đồng/cổ phiếu",
+                    "nghìn đồng",
+                    "VND/cổ phiếu",
+                    "tỷ đồng",
+                    "triệu đồng",
+                    "dimensionless",
+                    "%"
+                  ]
+                }
+              },
+              "required": [
+                "operation",
+                "operands",
+                "input_unit",
+                "output_unit"
+              ],
+              "additionalProperties": false,
+              "x-opentrading-schema-profile": "deterministic-derivation-v45"
+            },
+            "annotations": {
+              "readOnlyHint": true,
+              "destructiveHint": false,
+              "idempotentHint": true,
+              "openWorldHint": false
+            }
+          },
+          {
+            "name": "analytics_calculate",
+            "description": "Read-only financial calculator using the SAME native OpenTrading expression/unit engine, never arbitrary code. Supply named variables from successful retrieved original benchmark_evidence.call_id + exact numeric JSON pointer, or a prior analytics_calculate derived_ref via derived_id. No typed financial numbers. expression supports + - * / ^ parentheses and native functions abs,min,max,sqrt,sum,avg,ln,log10,exp; formula constants only 0,1,2,3,4,12,100,252,365. All data values must be referenced. output_unit converts dimensions: a/b with output_unit % already multiplies fraction by100; do not also multiply expression by100. Use explicit alignment: same_period defaults same entity/period/scope; time_series permits distinct periods for same entity/metric; cross_entity_same_period permits named entity comparison at same period. Price per-share scale: nghìn đồng/cổ phiếu -> đồng/cổ phiếu, never strip share dimension; public final quote VND means VND per share only when task declares asset-price convention. Returned derived_ref is NOT upstream evidence; cite original source_evidence receipts. No lookup, shell, files or network.",
+            "inputSchema": {
+              "type": "object",
+              "properties": {
+                "expression": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 4096
+                },
+                "variables": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "name": {
+                        "type": "string",
+                        "pattern": "^[A-Za-z_][A-Za-z0-9_]*$"
+                      },
+                      "call_id": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "path": {
+                        "type": "string",
+                        "pattern": "^/data/(?:[^~/]|~[01])+(?:/(?:[^~/]|~[01])+)*$"
+                      },
+                      "derived_id": {
+                        "type": "string",
+                        "pattern": "^calc:[A-Za-z0-9-]+$"
+                      }
+                    },
+                    "required": [
+                      "name"
+                    ],
+                    "oneOf": [
+                      {
+                        "required": [
+                          "call_id",
+                          "path"
+                        ],
+                        "not": {
+                          "required": [
+                            "derived_id"
+                          ]
+                        }
+                      },
+                      {
+                        "required": [
+                          "derived_id"
+                        ],
+                        "not": {
+                          "anyOf": [
+                            {
+                              "required": [
+                                "call_id"
+                              ]
+                            },
+                            {
+                              "required": [
+                                "path"
+                              ]
+                            }
+                          ]
+                        }
+                      }
+                    ],
+                    "additionalProperties": false
+                  },
+                  "minItems": 1,
+                  "maxItems": 100
+                },
+                "output_unit": {
+                  "type": "string",
+                  "maxLength": 128
+                },
+                "precision": {
+                  "type": "integer",
+                  "minimum": 0,
+                  "maximum": 12
+                },
+                "alignment": {
+                  "type": "string",
+                  "enum": [
+                    "same_period",
+                    "time_series",
+                    "cross_entity_same_period"
+                  ]
+                }
+              },
+              "required": [
+                "expression",
+                "variables"
+              ],
+              "additionalProperties": false,
+              "x-opentrading-schema-profile": "grounded-calculation-v45"
+            },
+            "annotations": {
+              "readOnlyHint": true,
+              "destructiveHint": false,
+              "idempotentHint": true,
+              "openWorldHint": false
+            }
+          }
+        ],
+        "allowed_tool_names": [
+          "mcp__opentrading__analytics_calculate",
+          "mcp__opentrading__analytics_compute",
+          "mcp__opentrading__vn_quote_history",
+          "mcp_opentrading_analytics_calculate",
+          "mcp_opentrading_analytics_compute",
+          "mcp_opentrading_vn_quote_history",
+          "opentrading_analytics_calculate",
+          "opentrading_analytics_compute",
+          "opentrading_vn_quote_history",
+          "calculate",
+          "compute",
+          "read_result"
+        ],
+        "native_system_prompt": true,
+        "skills": [],
+        "external_plugins": [],
+        "tool_policy": "product track: snapshot MCP + OT native read_result/compute/calculate; common analytics utility all arms; memory none; no filesystem/shell/web/subagents",
+        "isolation": "isolated HOME/XDG/environment and native tool removal; not OS container",
+        "config": {
+          "provider": "nvidia",
+          "model": "deepseek-ai/deepseek-v4.1-flash",
+          "toolSearch": "off",
+          "memory": {
+            "provider": "none"
+          },
+          "benchmark_prompt_variant": "finance",
+          "benchmark_runtime_root": "/home/doanlong/extra/benchmark/experiments/finance-v46-update-study/experiments/opentrading-runtime"
+        },
+        "observed_tool_sets": [
+          [
+            "calculate",
+            "compute",
+            "mcp__opentrading__analytics_calculate",
+            "mcp__opentrading__analytics_compute",
+            "mcp__opentrading__vn_quote_history",
+            "read_result"
+          ],
+          [
+            "calculate",
+            "compute",
+            "mcp__opentrading__analytics_calculate",
+            "mcp__opentrading__analytics_compute",
+            "mcp__opentrading__vn_quote_history",
+            "read_result"
+          ],
+          [
+            "calculate",
+            "compute",
+            "mcp__opentrading__analytics_calculate",
+            "mcp__opentrading__analytics_compute",
+            "mcp__opentrading__vn_quote_history",
+            "read_result"
+          ],
+          [
+            "calculate",
+            "compute",
+            "mcp__opentrading__analytics_calculate",
+            "mcp__opentrading__analytics_compute",
+            "mcp__opentrading__vn_quote_history",
+            "read_result"
+          ],
+          [
+            "calculate",
+            "compute",
+            "mcp__opentrading__analytics_calculate",
+            "mcp__opentrading__analytics_compute",
+            "mcp__opentrading__vn_quote_history",
+            "read_result"
+          ]
+        ],
+        "provider_requests": 5,
+        "provider_upstream_requests": 5,
+        "usage_complete": false,
+        "native_inventory": {
+          "skills": [],
+          "memory": "none",
+          "home_isolated": true,
+          "session_id": "benchmark-isolated-turn",
+          "native_retry_max": 0,
+          "tools": [
+            {
+              "name": "calculate",
+              "source": "local",
+              "input": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "type": "object",
+                "properties": {
+                  "alignment": {
+                    "description": "Financial alignment: default same entity/period/scope; time_series permits different periods of one metric; cross_entity_same_period permits aggregation/comparison of entities at one date.",
+                    "type": "string",
+                    "enum": [
+                      "same_period",
+                      "time_series",
+                      "cross_entity_same_period"
+                    ]
+                  },
+                  "expression": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "Biểu thức với tên trong values: price / eps, (rev_2025 / rev_2022) ^ (1/3) - 1, a + b. Hàm: sqrt, abs, min, max, sum, avg, ln, log10, exp."
+                  },
+                  "values": {
+                    "description": "Tên → giá trị có đơn vị. Supply exactly the variables used in expression; no unused bindings. Mọi số lấy từ dữ liệu đặt ở đây, không viết thẳng vào biểu thức.",
+                    "type": "object",
+                    "propertyNames": {
+                      "type": "string"
+                    },
+                    "additionalProperties": {
+                      "anyOf": [
+                        {
+                          "type": "object",
+                          "properties": {
+                            "value": {
+                              "type": "number",
+                              "description": "Số, đúng như trong kết quả tool (64.27, không phải 64,27)."
+                            },
+                            "unit": {
+                              "description": "Đơn vị của số: \"nghìn đồng/cổ phiếu\", \"tỷ đồng\", \"cổ phiếu\", \"%\", \"lần\". Bỏ trống = số thuần.",
+                              "type": "string"
+                            },
+                            "ref": {
+                              "description": "Ref của kết quả có số này, dạng r3: để trích nguồn.",
+                              "type": "string"
+                            }
+                          },
+                          "required": [
+                            "value"
+                          ],
+                          "additionalProperties": false
+                        },
+                        {
+                          "type": "object",
+                          "properties": {
+                            "from_call": {
+                              "type": "string",
+                              "minLength": 1,
+                              "description": "Ref của kết quả dữ liệu, dạng r3: lấy số thẳng từ đó, không gõ lại."
+                            },
+                            "field": {
+                              "description": "Trường số; mặc định là giá đóng cửa hoặc trường số đầu tiên.",
+                              "type": "string"
+                            },
+                            "from_symbol": {
+                              "description": "Mã cần đọc khi kết quả có nhiều mã.",
+                              "type": "string"
+                            },
+                            "path": {
+                              "description": "Đường dẫn tới mảng khi kết quả có nhiều mảng.",
+                              "type": "string"
+                            },
+                            "at": {
+                              "description": "Phần tử: \"last\" (mặc định), \"first\", hoặc chỉ số (âm = đếm từ cuối).",
+                              "anyOf": [
+                                {
+                                  "type": "string",
+                                  "const": "last"
+                                },
+                                {
+                                  "type": "string",
+                                  "const": "first"
+                                },
+                                {
+                                  "type": "integer",
+                                  "minimum": -9007199254740991,
+                                  "maximum": 9007199254740991
+                                }
+                              ]
+                            },
+                            "unit": {
+                              "description": "Chỉ khi kết quả không ghi đơn vị của trường này.",
+                              "type": "string"
+                            }
+                          },
+                          "required": [
+                            "from_call"
+                          ],
+                          "additionalProperties": false
+                        }
+                      ]
+                    }
+                  },
+                  "unit": {
+                    "description": "Đơn vị muốn nhận kết quả (unit-aware: expression a/b-1 with unit % already scales by 100; do not also multiply expression by 100): \"lần\", \"%\", \"tỷ đồng\", \"đồng/cổ phiếu\". Lệch loại đơn vị thì báo lỗi.",
+                    "type": "string"
+                  },
+                  "decimals": {
+                    "description": "Số chữ số thập phân khi làm tròn; mặc định 6.",
+                    "type": "integer",
+                    "minimum": 0,
+                    "maximum": 12
+                  }
+                },
+                "required": [
+                  "expression"
+                ],
+                "additionalProperties": false
+              }
+            },
+            {
+              "name": "compute",
+              "source": "local",
+              "input": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "type": "object",
+                "properties": {
+                  "op": {
+                    "type": "string",
+                    "enum": [
+                      "pct_change",
+                      "mean",
+                      "sum",
+                      "ratio",
+                      "relative_strength",
+                      "rank",
+                      "share",
+                      "annualize"
+                    ]
+                  },
+                  "from_call": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "Ref của kết quả dữ liệu, dạng r3."
+                  },
+                  "from_symbol": {
+                    "description": "Mã cần đọc khi kết quả có nhiều mã.",
+                    "type": "string"
+                  },
+                  "field": {
+                    "description": "Trường số; mặc định là giá đóng cửa hoặc trường số đầu tiên.",
+                    "type": "string"
+                  },
+                  "path": {
+                    "description": "Đường dẫn tới mảng khi kết quả có nhiều mảng.",
+                    "type": "string"
+                  },
+                  "other": {
+                    "description": "Chuỗi thứ hai, cho ratio và relative_strength.",
+                    "type": "object",
+                    "properties": {
+                      "from_call": {
+                        "type": "string",
+                        "minLength": 1,
+                        "description": "Ref của kết quả dữ liệu, dạng r3."
+                      },
+                      "from_symbol": {
+                        "description": "Mã cần đọc khi kết quả có nhiều mã.",
+                        "type": "string"
+                      },
+                      "field": {
+                        "description": "Trường số; mặc định là giá đóng cửa hoặc trường số đầu tiên.",
+                        "type": "string"
+                      },
+                      "path": {
+                        "description": "Đường dẫn tới mảng khi kết quả có nhiều mảng.",
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "from_call"
+                    ],
+                    "additionalProperties": false
+                  },
+                  "periods": {
+                    "description": "Số kỳ gần nhất. pct_change: so với N kỳ trước; mean, sum: N kỳ cuối. Mặc định cả chuỗi.",
+                    "type": "integer",
+                    "minimum": 1,
+                    "maximum": 9007199254740991
+                  },
+                  "periods_done": {
+                    "description": "annualize: số kỳ đã có trong năm.",
+                    "type": "integer",
+                    "minimum": 1,
+                    "maximum": 9007199254740991
+                  },
+                  "periods_per_year": {
+                    "description": "annualize: số kỳ trong một năm, ví dụ 4 quý.",
+                    "type": "integer",
+                    "minimum": 1,
+                    "maximum": 9007199254740991
+                  }
+                },
+                "required": [
+                  "op",
+                  "from_call"
+                ],
+                "additionalProperties": false
+              }
+            },
+            {
+              "name": "mcp__opentrading__analytics_calculate",
+              "source": "mcp:opentrading",
+              "input": {
+                "type": "object",
+                "properties": {
+                  "expression": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 4096
+                  },
+                  "variables": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "name": {
+                          "type": "string",
+                          "pattern": "^[A-Za-z_][A-Za-z0-9_]*$"
+                        },
+                        "call_id": {
+                          "type": "string",
+                          "minLength": 1
+                        },
+                        "path": {
+                          "type": "string",
+                          "pattern": "^/data/(?:[^~/]|~[01])+(?:/(?:[^~/]|~[01])+)*$"
+                        },
+                        "derived_id": {
+                          "type": "string",
+                          "pattern": "^calc:[A-Za-z0-9-]+$"
+                        }
+                      },
+                      "required": [
+                        "name"
+                      ],
+                      "oneOf": [
+                        {
+                          "required": [
+                            "call_id",
+                            "path"
+                          ],
+                          "not": {
+                            "required": [
+                              "derived_id"
+                            ]
+                          }
+                        },
+                        {
+                          "required": [
+                            "derived_id"
+                          ],
+                          "not": {
+                            "anyOf": [
+                              {
+                                "required": [
+                                  "call_id"
+                                ]
+                              },
+                              {
+                                "required": [
+                                  "path"
+                                ]
+                              }
+                            ]
+                          }
+                        }
+                      ],
+                      "additionalProperties": false
+                    },
+                    "minItems": 1,
+                    "maxItems": 100
+                  },
+                  "output_unit": {
+                    "type": "string",
+                    "maxLength": 128
+                  },
+                  "precision": {
+                    "type": "integer",
+                    "minimum": 0,
+                    "maximum": 12
+                  },
+                  "alignment": {
+                    "type": "string",
+                    "enum": [
+                      "same_period",
+                      "time_series",
+                      "cross_entity_same_period"
+                    ]
+                  }
+                },
+                "required": [
+                  "expression",
+                  "variables"
+                ],
+                "additionalProperties": false,
+                "x-opentrading-schema-profile": "grounded-calculation-v45"
+              }
+            },
+            {
+              "name": "mcp__opentrading__analytics_compute",
+              "source": "mcp:opentrading",
+              "input": {
+                "type": "object",
+                "properties": {
+                  "entity_policy": {
+                    "type": "string",
+                    "enum": [
+                      "same_entity",
+                      "cross_entity"
+                    ]
+                  },
+                  "operation": {
+                    "type": "string",
+                    "enum": [
+                      "sum",
+                      "mean",
+                      "growth_pct",
+                      "margin_pct",
+                      "ratio",
+                      "scale",
+                      "absolute_difference",
+                      "relative_difference_pct"
+                    ]
+                  },
+                  "operands": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "call_id": {
+                          "type": "string",
+                          "minLength": 1
+                        },
+                        "path": {
+                          "type": "string",
+                          "pattern": "^/data/(?:[^~/]|~[01])+(?:/(?:[^~/]|~[01])+)*$"
+                        }
+                      },
+                      "required": [
+                        "call_id",
+                        "path"
+                      ],
+                      "additionalProperties": false
+                    },
+                    "minItems": 1,
+                    "maxItems": 100
+                  },
+                  "input_unit": {
+                    "type": "string",
+                    "enum": [
+                      "VND",
+                      "nghìn đồng/cổ phiếu",
+                      "nghìn đồng",
+                      "VND/cổ phiếu",
+                      "tỷ đồng",
+                      "triệu đồng",
+                      "dimensionless",
+                      "%"
+                    ]
+                  },
+                  "output_unit": {
+                    "type": "string",
+                    "enum": [
+                      "VND",
+                      "nghìn đồng/cổ phiếu",
+                      "nghìn đồng",
+                      "VND/cổ phiếu",
+                      "tỷ đồng",
+                      "triệu đồng",
+                      "dimensionless",
+                      "%"
+                    ]
+                  }
+                },
+                "required": [
+                  "operation",
+                  "operands",
+                  "input_unit",
+                  "output_unit"
+                ],
+                "additionalProperties": false,
+                "x-opentrading-schema-profile": "deterministic-derivation-v45"
+              }
+            },
+            {
+              "name": "mcp__opentrading__vn_quote_history",
+              "source": "mcp:opentrading",
+              "input": {
+                "type": "object",
+                "properties": {
+                  "symbol": {
+                    "type": "string",
+                    "description": "Vietnamese listed equity ticker, e.g. HPG."
+                  },
+                  "days": {
+                    "type": "integer",
+                    "default": 365,
+                    "description": "Requested number of candles, not calendar days; default 365. Positive integer. Provider does not enforce the old prose claim of a 365 maximum. Replay accepts only explicitly recorded requests/default-equivalent arguments.",
+                    "minimum": 1
+                  },
+                  "summary": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "True returns count/last/high/low summary rather than candle rows. False preserves rows; summary changes output shape."
+                  },
+                  "columns": {
+                    "anyOf": [
+                      {
+                        "type": "array",
+                        "items": {
+                          "type": "string",
+                          "enum": [
+                            "t",
+                            "o",
+                            "h",
+                            "l",
+                            "c",
+                            "v"
+                          ]
+                        }
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ],
+                    "default": null,
+                    "description": "Optional array of raw candle keys: t date, o open, h high, l low, c close, v volume. Use [\"c\",\"t\"], never \"close\" or [\"close\"]. Null keeps all fields. Production currently drops unknown keys silently; this C1 contract rejects them before that loss."
+                  },
+                  "interval": {
+                    "type": "string",
+                    "default": "1D",
+                    "description": "Candle frequency: 1D daily, 1W weekly, 1M monthly. The provider canonicalizes case. day/daily are not accepted.",
+                    "enum": [
+                      "1D",
+                      "1W",
+                      "1M",
+                      "1d",
+                      "1w",
+                      "1m"
+                    ]
+                  }
+                },
+                "required": [
+                  "symbol"
+                ],
+                "additionalProperties": false,
+                "anyOf": [
+                  {
+                    "type": "object",
+                    "properties": {
+                      "symbol": {
+                        "type": "string",
+                        "pattern": "^\\s*[sS][yY][nN]\\s*$"
+                      },
+                      "days": {
+                        "const": 365
+                      },
+                      "summary": {
+                        "const": false
+                      },
+                      "columns": {
+                        "const": null
+                      },
+                      "interval": {
+                        "type": "string",
+                        "pattern": "^\\s*1[dD]\\s*$"
+                      }
+                    },
+                    "required": [
+                      "symbol"
+                    ],
+                    "additionalProperties": false
+                  }
+                ],
+                "x-opentrading-schema-profile": "finite-replay-c2",
+                "x-finite-request-variants": [
+                  {
+                    "symbol": "SYN"
+                  }
+                ],
+                "x-repair-fields": []
+              }
+            },
+            {
+              "name": "read_result",
+              "input": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "Id ghi trong dòng đã dọn, hoặc ref dạng r3."
+                  },
+                  "offset": {
+                    "description": "Ký tự bắt đầu, khi kết quả dài hơn một trang.",
+                    "type": "integer",
+                    "minimum": 0,
+                    "maximum": 9007199254740991
+                  }
+                },
+                "required": [
+                  "id"
+                ],
+                "additionalProperties": false
+              }
+            }
+          ]
+        },
+        "prompt_directory": "/home/doanlong/extra/benchmark/experiments/finance-v46-update-study/tools/prompt_variants/finance",
+        "prompt_files": {
+          "citations.md": "52db97c18c611d53e2155fd0e06550bf45a68283e1b70ea28405e70f3ca402e1",
+          "identity.md": "c0cec92f955694ca68e46c632d2939a7abb2262391c60ab3b4fdd710c6f66da7",
+          "memory-cards.md": "0e272324666c58e6cb0dabcd29f5a52f219fe1f0c8d515cc2b0c0499699578b1",
+          "memory.md": "680e283ecf05662d9e13326df41cabb5f7d6f4bd607fb7c6d0bb8e4d38f96f7d",
+          "style.md": "1b56924d276b017e7c9826dd7fa4e5f9a88586f15d725f490bb52df4e535ed91",
+          "subagent.md": "b8bc6181355d4d557e047d60c0de4347c58888d6b0a41562bf693b63ba89b039",
+          "title.md": "8329a2554713df24143cbc5bc2f6dc6ab5df78e0a44392ce6bc887d439c7444e",
+          "tools.md": "45ec251c83018bffa963bcff389444a69cbcd57f3b248f22dba44b39617d171a"
+        }
+      },
+      "actual_bun_command_verified": true,
+      "pass": true
+    },
+    {
+      "arm": "opencode",
+      "work": "/tmp/v45-independent-opencode-rvkvkien",
+      "external_model_calls": 0,
+      "native_bun_binary": "/home/doanlong/extra/benchmark/experiments/toolchains/bun-1.4.4/bun",
+      "native_bun_sha256": "10702245766b225e70bbf6235fd6b47214fd94b4760d00ffaed8ab0df57ac235",
+      "result": {
+        "status": "ok",
+        "final_text": "{\"value\": 24000, \"unit\": \"đồng/cổ phiếu\", \"evidence\": [{\"call_id\": \"1e4354c4-856c-454a-8907-c9260b4b3170\", \"tool\": \"vn_quote_history\", \"matched_entry_id\": \"synthetic\", \"payload_sha256\": \"fd05c3fd85cc073e0beb06862c9adafb7f417a9627e305b0b7070eeec52d1481\", \"response_sha256\": \"d5011aa0dfb5c753a710598bc10b99725af460e7611feaa695d01d4d8b983f69\", \"source\": \"synthetic-not-live\", \"as_of\": \"2030-04-01\"}]}",
+        "native_completion": {
+          "outcome": "completed",
+          "evidence": "native final assistant text event and process exit",
+          "accepted": true
+        },
+        "session_id": "ses_e409850ceffeQAW3rn8zutEJyl",
+        "notes": "",
+        "tokens": {
+          "input": 300,
+          "output": 60,
+          "cached": null,
+          "cache_read": null,
+          "cached_observed": 0,
+          "cache_complete": false,
+          "usage_requests": 3,
+          "requests": 5,
+          "complete": false
+        },
+        "provider_requests": 5,
+        "provider_usage": {
+          "input": 300,
+          "output": 60,
+          "cached": null,
+          "cache_read": null,
+          "cached_observed": 0,
+          "cache_complete": false,
+          "usage_requests": 3,
+          "requests": 5,
+          "complete": false
+        },
+        "inventory_path": "/tmp/v45-independent-opencode-rvkvkien/runner/inventory.json",
+        "provider_ledger": "/tmp/v45-independent-opencode-rvkvkien/runner/provider.jsonl",
+        "answer_path": null,
+        "answer_candidates": [],
+        "transport_recovered": true,
+        "first_attempt_completed": false,
+        "token_reservations_not_observed_usage": 2113536,
+        "native_derived_ledger": null,
+        "native_completed": true
+      },
+      "local_upstream_requests": 5,
+      "inventory": {
+        "arm": "opencode",
+        "model": "deepseek-ai/deepseek-v4.1-flash",
+        "provider": "nvidia",
+        "effort": "none",
+        "condition": "opencode",
+        "native_arm": "opencode",
+        "prompt_variant": "baseline",
+        "finance_policy": false,
+        "clock_policy": {
+          "answer_as_of": "2030-04-01",
+          "native_now_pinned": false,
+          "native_stall_ms": null,
+          "native_clock_limitation": "native runtime clock not controlled; captured request exposes effective context"
+        },
+        "snapshot_tool_definitions": [
+          {
+            "name": "vn_quote_history",
+            "description": "FINITE SNAPSHOT SUPPORT: use a recorded public variant below and only default-equivalent optional arguments allowed by inputSchema. Production optional windows/projections are NOT generally supported here. snapshot_requests=[{\"symbol\": \"SYN\"}]\nIf unsupported_snapshot_query: inspect argument_paths and allowed_public_variants; choose a supported same-intent request only if entity, period, metric and scope remain unchanged. retryable_with_corrected_arguments permits a bounded correction; rejection does not mean financial data is absent. Read provenance and copy benchmark_evidence only from actual successful responses.\n\nPRODUCTION API METADATA (capabilities below do not expand this finite snapshot):\nNến 1 mã VN (1D/1W/1M), VCI trước KBS dự phòng. Dùng cho MỌI lịch sử giá của một mã.\n\n        Dùng khi: \"lịch sử giá FPT\", \"HPG có vượt đỉnh 20 phiên không\", mọi tính toán cần chuỗi giá\n            1 mã.\n        Không dùng khi: cần nhiều mã cùng lúc (dùng market_candles_batch); cần nến phút/intraday\n            (dùng vn_equity_ohlcv); cần giá khớp hiện tại (dùng vn_equity_quote_batch). Không có\n            tool nào tên stock_history — chính là tool này.\n\n        days: số nến yêu cầu (mặc định 365 nến; provider không enforce trần 365; nến tuần/tháng bao phủ dài hơn theo hệ số).\n        interval: '1D' (mặc định), '1W', '1M'. Nến 1W/1M mang ngày cuối kỳ (Chủ nhật cuối tuần,\n        ngày cuối tháng) nên nến của kỳ hiện tại có thể ghi một ngày chưa tới; kỳ không có phiên\n        (tuần Tết) bị bỏ. summary/columns: summary chỉ trả {count,last,high,low}; columns giữ\n        trường nêu tên.\n        ",
+            "inputSchema": {
+              "type": "object",
+              "properties": {
+                "symbol": {
+                  "type": "string",
+                  "description": "Vietnamese listed equity ticker, e.g. HPG."
+                },
+                "days": {
+                  "type": "integer",
+                  "default": 365,
+                  "description": "Requested number of candles, not calendar days; default 365. Positive integer. Provider does not enforce the old prose claim of a 365 maximum. Replay accepts only explicitly recorded requests/default-equivalent arguments.",
+                  "minimum": 1
+                },
+                "summary": {
+                  "type": "boolean",
+                  "default": false,
+                  "description": "True returns count/last/high/low summary rather than candle rows. False preserves rows; summary changes output shape."
+                },
+                "columns": {
+                  "anyOf": [
+                    {
+                      "type": "array",
+                      "items": {
+                        "type": "string",
+                        "enum": [
+                          "t",
+                          "o",
+                          "h",
+                          "l",
+                          "c",
+                          "v"
+                        ]
+                      }
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ],
+                  "default": null,
+                  "description": "Optional array of raw candle keys: t date, o open, h high, l low, c close, v volume. Use [\"c\",\"t\"], never \"close\" or [\"close\"]. Null keeps all fields. Production currently drops unknown keys silently; this C1 contract rejects them before that loss."
+                },
+                "interval": {
+                  "type": "string",
+                  "default": "1D",
+                  "description": "Candle frequency: 1D daily, 1W weekly, 1M monthly. The provider canonicalizes case. day/daily are not accepted.",
+                  "enum": [
+                    "1D",
+                    "1W",
+                    "1M",
+                    "1d",
+                    "1w",
+                    "1m"
+                  ]
+                }
+              },
+              "required": [
+                "symbol"
+              ],
+              "additionalProperties": false,
+              "anyOf": [
+                {
+                  "type": "object",
+                  "properties": {
+                    "symbol": {
+                      "type": "string",
+                      "pattern": "^\\s*[sS][yY][nN]\\s*$"
+                    },
+                    "days": {
+                      "const": 365
+                    },
+                    "summary": {
+                      "const": false
+                    },
+                    "columns": {
+                      "const": null
+                    },
+                    "interval": {
+                      "type": "string",
+                      "pattern": "^\\s*1[dD]\\s*$"
+                    }
+                  },
+                  "required": [
+                    "symbol"
+                  ],
+                  "additionalProperties": false
+                }
+              ],
+              "x-opentrading-schema-profile": "finite-replay-c2",
+              "x-finite-request-variants": [
+                {
+                  "symbol": "SYN"
+                }
+              ],
+              "x-repair-fields": []
+            },
+            "outputSchema": {
+              "additionalProperties": true,
+              "title": "vn_quote_historyDictOutput",
+              "type": "object"
+            },
+            "annotations": {
+              "readOnlyHint": true,
+              "destructiveHint": false,
+              "idempotentHint": true,
+              "openWorldHint": false
+            },
+            "_meta": {
+              "anthropic/searchHint": "lich su gia nen ngay tuan thang co phieu | price history daily candles",
+              "opentrading/contractProfile": "finance-c1-v4",
+              "opentrading/schemaPolicy": "Raw types/defaults/required preserved from frozen source. Additional public domain guards added; no coercion. Frozen replay matching remains exact and separate."
+            }
+          },
+          {
+            "name": "analytics_compute",
+            "description": "DETERMINISTIC COMPUTATION over numeric leaves from successful source tools ALREADY retrieved in this session. No data lookup. JSON pointers escape ~ as ~0 and / inside a key as ~1. operands are {call_id: original benchmark_evidence.call_id, path: JSON pointer /data/...}. Operations: sum/mean equal-unit operands; growth_pct exactly [current,previous] => (current/previous-1)*100; margin_pct exactly [numerator,denominator] => numerator/denominator*100; scale exactly one operand, converts VND/nghìn đồng/cổ phiếu/triệu đồng/tỷ đồng. ratio [numerator,denominator] returns dimensionless. absolute_difference [a,b] returns abs(a-b); relative_difference_pct [a,b] returns abs(a-b)/abs(b)*100, for same entity, metric and period across sources. Read actual source units; never mix currencies, dates or metrics. entity_policy defaults same_entity for ratios; explicit cross_entity permits same-metric same-period ratio across named entities. Aggregates may combine entities. input_unit MUST match source metadata (VND, nghìn đồng/cổ phiếu, triệu đồng, tỷ đồng, dimensionless). VNDbn normalizes to tỷ đồng; table rows.values align by index with explicit periods. Returned derived_result is computed, not new upstream evidence: cite ORIGINAL source_evidence seven-field receipts. If inputs are absent, retrieve source tools first. No indicators/topN/profile capability.",
+            "inputSchema": {
+              "type": "object",
+              "properties": {
+                "entity_policy": {
+                  "type": "string",
+                  "enum": [
+                    "same_entity",
+                    "cross_entity"
+                  ]
+                },
+                "operation": {
+                  "type": "string",
+                  "enum": [
+                    "sum",
+                    "mean",
+                    "growth_pct",
+                    "margin_pct",
+                    "ratio",
+                    "scale",
+                    "absolute_difference",
+                    "relative_difference_pct"
+                  ]
+                },
+                "operands": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "call_id": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "path": {
+                        "type": "string",
+                        "pattern": "^/data/(?:[^~/]|~[01])+(?:/(?:[^~/]|~[01])+)*$"
+                      }
+                    },
+                    "required": [
+                      "call_id",
+                      "path"
+                    ],
+                    "additionalProperties": false
+                  },
+                  "minItems": 1,
+                  "maxItems": 100
+                },
+                "input_unit": {
+                  "type": "string",
+                  "enum": [
+                    "VND",
+                    "nghìn đồng/cổ phiếu",
+                    "nghìn đồng",
+                    "VND/cổ phiếu",
+                    "tỷ đồng",
+                    "triệu đồng",
+                    "dimensionless",
+                    "%"
+                  ]
+                },
+                "output_unit": {
+                  "type": "string",
+                  "enum": [
+                    "VND",
+                    "nghìn đồng/cổ phiếu",
+                    "nghìn đồng",
+                    "VND/cổ phiếu",
+                    "tỷ đồng",
+                    "triệu đồng",
+                    "dimensionless",
+                    "%"
+                  ]
+                }
+              },
+              "required": [
+                "operation",
+                "operands",
+                "input_unit",
+                "output_unit"
+              ],
+              "additionalProperties": false,
+              "x-opentrading-schema-profile": "deterministic-derivation-v45"
+            },
+            "annotations": {
+              "readOnlyHint": true,
+              "destructiveHint": false,
+              "idempotentHint": true,
+              "openWorldHint": false
+            }
+          },
+          {
+            "name": "analytics_calculate",
+            "description": "Read-only financial calculator using the SAME native OpenTrading expression/unit engine, never arbitrary code. Supply named variables from successful retrieved original benchmark_evidence.call_id + exact numeric JSON pointer, or a prior analytics_calculate derived_ref via derived_id. No typed financial numbers. expression supports + - * / ^ parentheses and native functions abs,min,max,sqrt,sum,avg,ln,log10,exp; formula constants only 0,1,2,3,4,12,100,252,365. All data values must be referenced. output_unit converts dimensions: a/b with output_unit % already multiplies fraction by100; do not also multiply expression by100. Use explicit alignment: same_period defaults same entity/period/scope; time_series permits distinct periods for same entity/metric; cross_entity_same_period permits named entity comparison at same period. Price per-share scale: nghìn đồng/cổ phiếu -> đồng/cổ phiếu, never strip share dimension; public final quote VND means VND per share only when task declares asset-price convention. Returned derived_ref is NOT upstream evidence; cite original source_evidence receipts. No lookup, shell, files or network.",
+            "inputSchema": {
+              "type": "object",
+              "properties": {
+                "expression": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 4096
+                },
+                "variables": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "name": {
+                        "type": "string",
+                        "pattern": "^[A-Za-z_][A-Za-z0-9_]*$"
+                      },
+                      "call_id": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "path": {
+                        "type": "string",
+                        "pattern": "^/data/(?:[^~/]|~[01])+(?:/(?:[^~/]|~[01])+)*$"
+                      },
+                      "derived_id": {
+                        "type": "string",
+                        "pattern": "^calc:[A-Za-z0-9-]+$"
+                      }
+                    },
+                    "required": [
+                      "name"
+                    ],
+                    "oneOf": [
+                      {
+                        "required": [
+                          "call_id",
+                          "path"
+                        ],
+                        "not": {
+                          "required": [
+                            "derived_id"
+                          ]
+                        }
+                      },
+                      {
+                        "required": [
+                          "derived_id"
+                        ],
+                        "not": {
+                          "anyOf": [
+                            {
+                              "required": [
+                                "call_id"
+                              ]
+                            },
+                            {
+                              "required": [
+                                "path"
+                              ]
+                            }
+                          ]
+                        }
+                      }
+                    ],
+                    "additionalProperties": false
+                  },
+                  "minItems": 1,
+                  "maxItems": 100
+                },
+                "output_unit": {
+                  "type": "string",
+                  "maxLength": 128
+                },
+                "precision": {
+                  "type": "integer",
+                  "minimum": 0,
+                  "maximum": 12
+                },
+                "alignment": {
+                  "type": "string",
+                  "enum": [
+                    "same_period",
+                    "time_series",
+                    "cross_entity_same_period"
+                  ]
+                }
+              },
+              "required": [
+                "expression",
+                "variables"
+              ],
+              "additionalProperties": false,
+              "x-opentrading-schema-profile": "grounded-calculation-v45"
+            },
+            "annotations": {
+              "readOnlyHint": true,
+              "destructiveHint": false,
+              "idempotentHint": true,
+              "openWorldHint": false
+            }
+          }
+        ],
+        "allowed_tool_names": [
+          "mcp__opentrading__analytics_calculate",
+          "mcp__opentrading__analytics_compute",
+          "mcp__opentrading__vn_quote_history",
+          "mcp_opentrading_analytics_calculate",
+          "mcp_opentrading_analytics_compute",
+          "mcp_opentrading_vn_quote_history",
+          "opentrading_analytics_calculate",
+          "opentrading_analytics_compute",
+          "opentrading_vn_quote_history"
+        ],
+        "native_system_prompt": true,
+        "skills": [],
+        "external_plugins": [],
+        "tool_policy": "product track: snapshot MCP + OT native read_result/compute/calculate; common analytics utility all arms; memory none; no filesystem/shell/web/subagents",
+        "isolation": "isolated HOME/XDG/environment and native tool removal; not OS container",
+        "config": {
+          "$schema": "https://opencode.ai/config.json",
+          "plugins": [
+            "-*",
+            "opencode.agent",
+            "opencode.config.agent",
+            "opencode.config.mcp",
+            "opencode.config.provider",
+            "opencode.provider.dynamic",
+            "opencode.provider.nvidia",
+            "opencode.tools"
+          ],
+          "agents": {
+            "title": {
+              "disabled": true
+            },
+            "summary": {
+              "disabled": true
+            },
+            "compaction": {
+              "disabled": true
+            }
+          },
+          "providers": {
+            "nvidia": {
+              "package": "@ai-sdk/openai-compatible",
+              "name": "NVIDIA controlled gateway",
+              "settings": {
+                "apiKey": "[local-gateway-token]",
+                "baseURL": "http://127.0.0.1:42237/v1"
+              },
+              "models": {
+                "deepseek-ai/deepseek-v4.1-flash": {
+                  "name": "deepseek-ai/deepseek-v4.1-flash",
+                  "capabilities": {
+                    "tools": true,
+                    "input": [
+                      "text"
+                    ],
+                    "output": [
+                      "text"
+                    ],
+                    "reasoning": {
+                      "supported": true
+                    }
+                  },
+                  "limit": {
+                    "context": 1048576,
+                    "output": 8192
+                  }
+                }
+              }
+            }
+          },
+          "permissions": [
+            {
+              "action": "execute",
+              "resource": "*",
+              "effect": "deny"
+            },
+            {
+              "action": "subagent",
+              "resource": "*",
+              "effect": "deny"
+            },
+            {
+              "action": "browser",
+              "resource": "*",
+              "effect": "deny"
+            },
+            {
+              "action": "shell",
+              "resource": "*",
+              "effect": "deny"
+            },
+            {
+              "action": "external_directory",
+              "resource": "*",
+              "effect": "deny"
+            },
+            {
+              "action": "webfetch",
+              "resource": "*",
+              "effect": "deny"
+            },
+            {
+              "action": "websearch",
+              "resource": "*",
+              "effect": "deny"
+            },
+            {
+              "action": "read",
+              "resource": "*",
+              "effect": "deny"
+            },
+            {
+              "action": "write",
+              "resource": "*",
+              "effect": "deny"
+            },
+            {
+              "action": "edit",
+              "resource": "*",
+              "effect": "deny"
+            },
+            {
+              "action": "glob",
+              "resource": "*",
+              "effect": "deny"
+            },
+            {
+              "action": "grep",
+              "resource": "*",
+              "effect": "deny"
+            },
+            {
+              "action": "skill",
+              "resource": "*",
+              "effect": "deny"
+            },
+            {
+              "action": "question",
+              "resource": "*",
+              "effect": "deny"
+            },
+            {
+              "action": "task",
+              "resource": "*",
+              "effect": "deny"
+            },
+            {
+              "action": "todowrite",
+              "resource": "*",
+              "effect": "deny"
+            },
+            {
+              "action": "todoread",
+              "resource": "*",
+              "effect": "deny"
+            }
+          ],
+          "mcp": {
+            "servers": {
+              "opentrading": {
+                "type": "local",
+                "command": [
+                  "/usr/bin/python3",
+                  "/home/doanlong/extra/benchmark/experiments/finance-v46-update-study/tools/mcp_snapshot_server.py"
+                ],
+                "environment": {
+                  "BENCH_BUN_BIN": "/home/doanlong/extra/benchmark/experiments/toolchains/bun-1.4.4/bun",
+                  "BENCH_BUN_SHA256": "10702245766b225e70bbf6235fd6b47214fd94b4760d00ffaed8ab0df57ac235",
+                  "PYTHONPATH": "/home/doanlong/.local/lib/python3.12/site-packages",
+                  "BENCH_PAYLOADS": "/tmp/v45-independent-opencode-rvkvkien/task/environment/payloads.json",
+                  "BENCH_MCP_LEDGER": "/tmp/v45-independent-opencode-rvkvkien/mcp.jsonl"
+                },
+                "codemode": false
+              }
+            }
+          }
+        },
+        "observed_tool_sets": [
+          [
+            "opentrading_analytics_calculate",
+            "opentrading_analytics_compute",
+            "opentrading_vn_quote_history"
+          ],
+          [
+            "opentrading_analytics_calculate",
+            "opentrading_analytics_compute",
+            "opentrading_vn_quote_history"
+          ],
+          [
+            "opentrading_analytics_calculate",
+            "opentrading_analytics_compute",
+            "opentrading_vn_quote_history"
+          ],
+          [
+            "opentrading_analytics_calculate",
+            "opentrading_analytics_compute",
+            "opentrading_vn_quote_history"
+          ],
+          [
+            "opentrading_analytics_calculate",
+            "opentrading_analytics_compute",
+            "opentrading_vn_quote_history"
+          ]
+        ],
+        "provider_requests": 5,
+        "provider_upstream_requests": 5,
+        "usage_complete": false,
+        "native_mcp_catalog": {
+          "location": {
+            "directory": "/tmp/v45-independent-opencode-rvkvkien/ws"
+          },
+          "data": [
+            {
+              "name": "opentrading",
+              "status": {
+                "status": "connected"
+              }
+            }
+          ]
+        }
+      },
+      "pass": true
+    },
+    {
+      "arm": "dsh",
+      "work": "/tmp/v45-independent-dsh-xuglxiz7",
+      "external_model_calls": 0,
+      "native_bun_binary": "/home/doanlong/extra/benchmark/experiments/toolchains/bun-1.4.4/bun",
+      "native_bun_sha256": "10702245766b225e70bbf6235fd6b47214fd94b4760d00ffaed8ab0df57ac235",
+      "result": {
+        "status": "ok",
+        "final_text": "{\"value\": 24000, \"unit\": \"đồng/cổ phiếu\", \"evidence\": [{\"call_id\": \"8537e9c7-5de1-4621-8c27-bd0712cc3c3d\", \"tool\": \"vn_quote_history\", \"matched_entry_id\": \"synthetic\", \"payload_sha256\": \"fd05c3fd85cc073e0beb06862c9adafb7f417a9627e305b0b7070eeec52d1481\", \"response_sha256\": \"d5011aa0dfb5c753a710598bc10b99725af460e7611feaa695d01d4d8b983f69\", \"source\": \"synthetic-not-live\", \"as_of\": \"2030-04-01\"}]}",
+        "native_completion": {
+          "outcome": "completed",
+          "evidence": "native final event and process exit",
+          "accepted": true
+        },
+        "session_id": "session-ae401c09-f5ad-4a18-9973-690d57917d16",
+        "notes": "",
+        "tokens": {
+          "input": 300,
+          "output": 60,
+          "cached": null,
+          "cache_read": null,
+          "cached_observed": 0,
+          "cache_complete": false,
+          "usage_requests": 3,
+          "requests": 5,
+          "complete": false
+        },
+        "provider_requests": 5,
+        "provider_usage": {
+          "input": 300,
+          "output": 60,
+          "cached": null,
+          "cache_read": null,
+          "cached_observed": 0,
+          "cache_complete": false,
+          "usage_requests": 3,
+          "requests": 5,
+          "complete": false
+        },
+        "inventory_path": "/tmp/v45-independent-dsh-xuglxiz7/runner/inventory.json",
+        "provider_ledger": "/tmp/v45-independent-dsh-xuglxiz7/runner/provider.jsonl",
+        "answer_path": null,
+        "answer_candidates": [],
+        "transport_recovered": true,
+        "first_attempt_completed": false,
+        "token_reservations_not_observed_usage": 2113536,
+        "native_derived_ledger": null,
+        "native_completed": true
+      },
+      "local_upstream_requests": 5,
+      "inventory": {
+        "arm": "dsh",
+        "model": "deepseek-ai/deepseek-v4.1-flash",
+        "provider": "nvidia",
+        "effort": "none",
+        "condition": "dsh",
+        "native_arm": "dsh",
+        "prompt_variant": "baseline",
+        "finance_policy": false,
+        "clock_policy": {
+          "answer_as_of": "2030-04-01",
+          "native_now_pinned": false,
+          "native_stall_ms": null,
+          "native_clock_limitation": "native runtime clock not controlled; captured request exposes effective context"
+        },
+        "snapshot_tool_definitions": [
+          {
+            "name": "vn_quote_history",
+            "description": "FINITE SNAPSHOT SUPPORT: use a recorded public variant below and only default-equivalent optional arguments allowed by inputSchema. Production optional windows/projections are NOT generally supported here. snapshot_requests=[{\"symbol\": \"SYN\"}]\nIf unsupported_snapshot_query: inspect argument_paths and allowed_public_variants; choose a supported same-intent request only if entity, period, metric and scope remain unchanged. retryable_with_corrected_arguments permits a bounded correction; rejection does not mean financial data is absent. Read provenance and copy benchmark_evidence only from actual successful responses.\n\nPRODUCTION API METADATA (capabilities below do not expand this finite snapshot):\nNến 1 mã VN (1D/1W/1M), VCI trước KBS dự phòng. Dùng cho MỌI lịch sử giá của một mã.\n\n        Dùng khi: \"lịch sử giá FPT\", \"HPG có vượt đỉnh 20 phiên không\", mọi tính toán cần chuỗi giá\n            1 mã.\n        Không dùng khi: cần nhiều mã cùng lúc (dùng market_candles_batch); cần nến phút/intraday\n            (dùng vn_equity_ohlcv); cần giá khớp hiện tại (dùng vn_equity_quote_batch). Không có\n            tool nào tên stock_history — chính là tool này.\n\n        days: số nến yêu cầu (mặc định 365 nến; provider không enforce trần 365; nến tuần/tháng bao phủ dài hơn theo hệ số).\n        interval: '1D' (mặc định), '1W', '1M'. Nến 1W/1M mang ngày cuối kỳ (Chủ nhật cuối tuần,\n        ngày cuối tháng) nên nến của kỳ hiện tại có thể ghi một ngày chưa tới; kỳ không có phiên\n        (tuần Tết) bị bỏ. summary/columns: summary chỉ trả {count,last,high,low}; columns giữ\n        trường nêu tên.\n        ",
+            "inputSchema": {
+              "type": "object",
+              "properties": {
+                "symbol": {
+                  "type": "string",
+                  "description": "Vietnamese listed equity ticker, e.g. HPG."
+                },
+                "days": {
+                  "type": "integer",
+                  "default": 365,
+                  "description": "Requested number of candles, not calendar days; default 365. Positive integer. Provider does not enforce the old prose claim of a 365 maximum. Replay accepts only explicitly recorded requests/default-equivalent arguments.",
+                  "minimum": 1
+                },
+                "summary": {
+                  "type": "boolean",
+                  "default": false,
+                  "description": "True returns count/last/high/low summary rather than candle rows. False preserves rows; summary changes output shape."
+                },
+                "columns": {
+                  "anyOf": [
+                    {
+                      "type": "array",
+                      "items": {
+                        "type": "string",
+                        "enum": [
+                          "t",
+                          "o",
+                          "h",
+                          "l",
+                          "c",
+                          "v"
+                        ]
+                      }
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ],
+                  "default": null,
+                  "description": "Optional array of raw candle keys: t date, o open, h high, l low, c close, v volume. Use [\"c\",\"t\"], never \"close\" or [\"close\"]. Null keeps all fields. Production currently drops unknown keys silently; this C1 contract rejects them before that loss."
+                },
+                "interval": {
+                  "type": "string",
+                  "default": "1D",
+                  "description": "Candle frequency: 1D daily, 1W weekly, 1M monthly. The provider canonicalizes case. day/daily are not accepted.",
+                  "enum": [
+                    "1D",
+                    "1W",
+                    "1M",
+                    "1d",
+                    "1w",
+                    "1m"
+                  ]
+                }
+              },
+              "required": [
+                "symbol"
+              ],
+              "additionalProperties": false,
+              "anyOf": [
+                {
+                  "type": "object",
+                  "properties": {
+                    "symbol": {
+                      "type": "string",
+                      "pattern": "^\\s*[sS][yY][nN]\\s*$"
+                    },
+                    "days": {
+                      "const": 365
+                    },
+                    "summary": {
+                      "const": false
+                    },
+                    "columns": {
+                      "const": null
+                    },
+                    "interval": {
+                      "type": "string",
+                      "pattern": "^\\s*1[dD]\\s*$"
+                    }
+                  },
+                  "required": [
+                    "symbol"
+                  ],
+                  "additionalProperties": false
+                }
+              ],
+              "x-opentrading-schema-profile": "finite-replay-c2",
+              "x-finite-request-variants": [
+                {
+                  "symbol": "SYN"
+                }
+              ],
+              "x-repair-fields": []
+            },
+            "outputSchema": {
+              "additionalProperties": true,
+              "title": "vn_quote_historyDictOutput",
+              "type": "object"
+            },
+            "annotations": {
+              "readOnlyHint": true,
+              "destructiveHint": false,
+              "idempotentHint": true,
+              "openWorldHint": false
+            },
+            "_meta": {
+              "anthropic/searchHint": "lich su gia nen ngay tuan thang co phieu | price history daily candles",
+              "opentrading/contractProfile": "finance-c1-v4",
+              "opentrading/schemaPolicy": "Raw types/defaults/required preserved from frozen source. Additional public domain guards added; no coercion. Frozen replay matching remains exact and separate."
+            }
+          },
+          {
+            "name": "analytics_compute",
+            "description": "DETERMINISTIC COMPUTATION over numeric leaves from successful source tools ALREADY retrieved in this session. No data lookup. JSON pointers escape ~ as ~0 and / inside a key as ~1. operands are {call_id: original benchmark_evidence.call_id, path: JSON pointer /data/...}. Operations: sum/mean equal-unit operands; growth_pct exactly [current,previous] => (current/previous-1)*100; margin_pct exactly [numerator,denominator] => numerator/denominator*100; scale exactly one operand, converts VND/nghìn đồng/cổ phiếu/triệu đồng/tỷ đồng. ratio [numerator,denominator] returns dimensionless. absolute_difference [a,b] returns abs(a-b); relative_difference_pct [a,b] returns abs(a-b)/abs(b)*100, for same entity, metric and period across sources. Read actual source units; never mix currencies, dates or metrics. entity_policy defaults same_entity for ratios; explicit cross_entity permits same-metric same-period ratio across named entities. Aggregates may combine entities. input_unit MUST match source metadata (VND, nghìn đồng/cổ phiếu, triệu đồng, tỷ đồng, dimensionless). VNDbn normalizes to tỷ đồng; table rows.values align by index with explicit periods. Returned derived_result is computed, not new upstream evidence: cite ORIGINAL source_evidence seven-field receipts. If inputs are absent, retrieve source tools first. No indicators/topN/profile capability.",
+            "inputSchema": {
+              "type": "object",
+              "properties": {
+                "entity_policy": {
+                  "type": "string",
+                  "enum": [
+                    "same_entity",
+                    "cross_entity"
+                  ]
+                },
+                "operation": {
+                  "type": "string",
+                  "enum": [
+                    "sum",
+                    "mean",
+                    "growth_pct",
+                    "margin_pct",
+                    "ratio",
+                    "scale",
+                    "absolute_difference",
+                    "relative_difference_pct"
+                  ]
+                },
+                "operands": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "call_id": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "path": {
+                        "type": "string",
+                        "pattern": "^/data/(?:[^~/]|~[01])+(?:/(?:[^~/]|~[01])+)*$"
+                      }
+                    },
+                    "required": [
+                      "call_id",
+                      "path"
+                    ],
+                    "additionalProperties": false
+                  },
+                  "minItems": 1,
+                  "maxItems": 100
+                },
+                "input_unit": {
+                  "type": "string",
+                  "enum": [
+                    "VND",
+                    "nghìn đồng/cổ phiếu",
+                    "nghìn đồng",
+                    "VND/cổ phiếu",
+                    "tỷ đồng",
+                    "triệu đồng",
+                    "dimensionless",
+                    "%"
+                  ]
+                },
+                "output_unit": {
+                  "type": "string",
+                  "enum": [
+                    "VND",
+                    "nghìn đồng/cổ phiếu",
+                    "nghìn đồng",
+                    "VND/cổ phiếu",
+                    "tỷ đồng",
+                    "triệu đồng",
+                    "dimensionless",
+                    "%"
+                  ]
+                }
+              },
+              "required": [
+                "operation",
+                "operands",
+                "input_unit",
+                "output_unit"
+              ],
+              "additionalProperties": false,
+              "x-opentrading-schema-profile": "deterministic-derivation-v45"
+            },
+            "annotations": {
+              "readOnlyHint": true,
+              "destructiveHint": false,
+              "idempotentHint": true,
+              "openWorldHint": false
+            }
+          },
+          {
+            "name": "analytics_calculate",
+            "description": "Read-only financial calculator using the SAME native OpenTrading expression/unit engine, never arbitrary code. Supply named variables from successful retrieved original benchmark_evidence.call_id + exact numeric JSON pointer, or a prior analytics_calculate derived_ref via derived_id. No typed financial numbers. expression supports + - * / ^ parentheses and native functions abs,min,max,sqrt,sum,avg,ln,log10,exp; formula constants only 0,1,2,3,4,12,100,252,365. All data values must be referenced. output_unit converts dimensions: a/b with output_unit % already multiplies fraction by100; do not also multiply expression by100. Use explicit alignment: same_period defaults same entity/period/scope; time_series permits distinct periods for same entity/metric; cross_entity_same_period permits named entity comparison at same period. Price per-share scale: nghìn đồng/cổ phiếu -> đồng/cổ phiếu, never strip share dimension; public final quote VND means VND per share only when task declares asset-price convention. Returned derived_ref is NOT upstream evidence; cite original source_evidence receipts. No lookup, shell, files or network.",
+            "inputSchema": {
+              "type": "object",
+              "properties": {
+                "expression": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 4096
+                },
+                "variables": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "name": {
+                        "type": "string",
+                        "pattern": "^[A-Za-z_][A-Za-z0-9_]*$"
+                      },
+                      "call_id": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "path": {
+                        "type": "string",
+                        "pattern": "^/data/(?:[^~/]|~[01])+(?:/(?:[^~/]|~[01])+)*$"
+                      },
+                      "derived_id": {
+                        "type": "string",
+                        "pattern": "^calc:[A-Za-z0-9-]+$"
+                      }
+                    },
+                    "required": [
+                      "name"
+                    ],
+                    "oneOf": [
+                      {
+                        "required": [
+                          "call_id",
+                          "path"
+                        ],
+                        "not": {
+                          "required": [
+                            "derived_id"
+                          ]
+                        }
+                      },
+                      {
+                        "required": [
+                          "derived_id"
+                        ],
+                        "not": {
+                          "anyOf": [
+                            {
+                              "required": [
+                                "call_id"
+                              ]
+                            },
+                            {
+                              "required": [
+                                "path"
+                              ]
+                            }
+                          ]
+                        }
+                      }
+                    ],
+                    "additionalProperties": false
+                  },
+                  "minItems": 1,
+                  "maxItems": 100
+                },
+                "output_unit": {
+                  "type": "string",
+                  "maxLength": 128
+                },
+                "precision": {
+                  "type": "integer",
+                  "minimum": 0,
+                  "maximum": 12
+                },
+                "alignment": {
+                  "type": "string",
+                  "enum": [
+                    "same_period",
+                    "time_series",
+                    "cross_entity_same_period"
+                  ]
+                }
+              },
+              "required": [
+                "expression",
+                "variables"
+              ],
+              "additionalProperties": false,
+              "x-opentrading-schema-profile": "grounded-calculation-v45"
+            },
+            "annotations": {
+              "readOnlyHint": true,
+              "destructiveHint": false,
+              "idempotentHint": true,
+              "openWorldHint": false
+            }
+          }
+        ],
+        "allowed_tool_names": [
+          "mcp__opentrading__analytics_calculate",
+          "mcp__opentrading__analytics_compute",
+          "mcp__opentrading__vn_quote_history",
+          "mcp_opentrading_analytics_calculate",
+          "mcp_opentrading_analytics_compute",
+          "mcp_opentrading_vn_quote_history",
+          "opentrading_analytics_calculate",
+          "opentrading_analytics_compute",
+          "opentrading_vn_quote_history"
+        ],
+        "native_system_prompt": true,
+        "skills": [],
+        "external_plugins": [],
+        "tool_policy": "product track: snapshot MCP + OT native read_result/compute/calculate; common analytics utility all arms; memory none; no filesystem/shell/web/subagents",
+        "isolation": "isolated HOME/XDG/environment and native tool removal; not OS container",
+        "config": {
+          "bundles": [
+            "@deepseek-ai/dsh-base",
+            "@deepseek-ai/dsh-headless"
+          ],
+          "core_entries": [
+            "agent",
+            "agent-default-model",
+            "agent-loop",
+            "attachment-local",
+            "compaction-basic",
+            "deepseek-llm-api-extensions",
+            "headless-runner",
+            "headless-startup",
+            "jobs",
+            "llm",
+            "llm-pi-ai",
+            "otel",
+            "remote-access",
+            "session",
+            "session-checkpoint-policy",
+            "session-log-deepseek",
+            "session-persistence-jsonl",
+            "session-projection",
+            "session-projection-cache",
+            "session-query-sqlite",
+            "session-title",
+            "spill-local",
+            "spill-policy",
+            "storage",
+            "storage-domain",
+            "storage-json",
+            "system-prompt",
+            "timeout-policy",
+            "timer",
+            "token-meter",
+            "tools",
+            "typert",
+            "typert-gateway",
+            "typert-loader"
+          ],
+          "patches": [
+            {
+              "id": "agent-instructions",
+              "disabled": true
+            },
+            {
+              "id": "approval",
+              "disabled": true
+            },
+            {
+              "id": "authorization",
+              "disabled": true
+            },
+            {
+              "id": "bash-sandbox",
+              "disabled": true
+            },
+            {
+              "id": "command-compact",
+              "disabled": true
+            },
+            {
+              "id": "command-feedback",
+              "disabled": true
+            },
+            {
+              "id": "command-goal",
+              "disabled": true
+            },
+            {
+              "id": "commands",
+              "disabled": true
+            },
+            {
+              "id": "config-editor",
+              "disabled": true
+            },
+            {
+              "id": "credentials",
+              "disabled": true
+            },
+            {
+              "id": "deepseek-account",
+              "disabled": true
+            },
+            {
+              "id": "fs-observation-policy",
+              "disabled": true
+            },
+            {
+              "id": "fs-sandbox",
+              "disabled": true
+            },
+            {
+              "id": "goal",
+              "disabled": true
+            },
+            {
+              "id": "goal-round-driver",
+              "disabled": true
+            },
+            {
+              "id": "hmr",
+              "disabled": true
+            },
+            {
+              "id": "image-offload",
+              "disabled": true
+            },
+            {
+              "id": "llm-deepseek",
+              "disabled": true
+            },
+            {
+              "id": "llm-deepseek-account",
+              "disabled": true
+            },
+            {
+              "id": "llm-retry",
+              "disabled": true
+            },
+            {
+              "id": "mcp-resources",
+              "disabled": true
+            },
+            {
+              "id": "permission",
+              "disabled": true
+            },
+            {
+              "id": "plan-mode",
+              "disabled": true
+            },
+            {
+              "id": "plugin-manager",
+              "disabled": true
+            },
+            {
+              "id": "plugin-package-inventory-deepseek",
+              "disabled": true
+            },
+            {
+              "id": "ptc-runtime",
+              "disabled": true
+            },
+            {
+              "id": "pwsh-sandbox",
+              "disabled": true
+            },
+            {
+              "id": "repeat-tool-reminder",
+              "disabled": true
+            },
+            {
+              "id": "sandbox",
+              "disabled": true
+            },
+            {
+              "id": "sandbox-policy",
+              "disabled": true
+            },
+            {
+              "id": "session-telemetry-otel",
+              "disabled": true
+            },
+            {
+              "id": "session-title-llm",
+              "disabled": true
+            },
+            {
+              "id": "settings",
+              "disabled": true
+            },
+            {
+              "id": "shell-env",
+              "disabled": true
+            },
+            {
+              "id": "skill",
+              "disabled": true
+            },
+            {
+              "id": "skill-filesystem",
+              "disabled": true
+            },
+            {
+              "id": "subagent",
+              "disabled": true
+            },
+            {
+              "id": "subagent-fork-in-process",
+              "disabled": true
+            },
+            {
+              "id": "subagent-spawn-in-process",
+              "disabled": true
+            },
+            {
+              "id": "subprocess",
+              "disabled": true
+            },
+            {
+              "id": "tool-bash",
+              "disabled": true
+            },
+            {
+              "id": "tool-fs",
+              "disabled": true
+            },
+            {
+              "id": "tool-fs-search",
+              "disabled": true
+            },
+            {
+              "id": "tool-goal",
+              "disabled": true
+            },
+            {
+              "id": "tool-jobs",
+              "disabled": true
+            },
+            {
+              "id": "tool-plugin-manager",
+              "disabled": true
+            },
+            {
+              "id": "tool-pwsh",
+              "disabled": true
+            },
+            {
+              "id": "tool-result-pruner",
+              "disabled": true
+            },
+            {
+              "id": "tool-skill",
+              "disabled": true
+            },
+            {
+              "id": "tool-subagent",
+              "disabled": true
+            },
+            {
+              "id": "tool-subagent-control",
+              "disabled": true
+            },
+            {
+              "id": "tool-subagent-fork",
+              "disabled": true
+            },
+            {
+              "id": "tool-subagent-list-agents",
+              "disabled": true
+            },
+            {
+              "id": "tool-todo",
+              "disabled": true
+            },
+            {
+              "id": "tool-web",
+              "disabled": true
+            },
+            {
+              "id": "tool-workflow",
+              "disabled": true
+            },
+            {
+              "id": "tool-working-directory",
+              "disabled": true
+            },
+            {
+              "id": "user-questions",
+              "disabled": true
+            },
+            {
+              "id": "web",
+              "disabled": true
+            },
+            {
+              "id": "web-deepseek-api",
+              "disabled": true
+            },
+            {
+              "id": "web-fetch-http",
+              "disabled": true
+            },
+            {
+              "id": "web-search-deepseek",
+              "disabled": true
+            },
+            {
+              "id": "workflow-ptc",
+              "disabled": true
+            },
+            {
+              "id": "working-directory",
+              "disabled": true
+            },
+            {
+              "id": "llm-pi-ai",
+              "config": {
+                "providers": {
+                  "nvidia": {
+                    "apiKeyEnv": "NVIDIA_API_KEY",
+                    "api": "openai-completions",
+                    "baseURL": "http://127.0.0.1:44071/v1",
+                    "reasoning": "off",
+                    "models": [
+                      {
+                        "id": "deepseek-ai/deepseek-v4.1-flash",
+                        "contextWindow": 1048576,
+                        "maxTokens": 8192,
+                        "reasoningEfforts": false
+                      }
+                    ],
+                    "compat": {
+                      "supportsStore": false,
+                      "supportsReasoningEffort": false
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "id": "agent-default-model",
+              "config": {
+                "provider": "nvidia",
+                "model": "deepseek-ai/deepseek-v4.1-flash"
+              }
+            },
+            {
+              "insert": [
+                {
+                  "id": "mcp-opentrading",
+                  "name": "@deepseek-ai/dsh-mcp-client",
+                  "config": {
+                    "serverName": "opentrading",
+                    "transport": "stdio",
+                    "command": "/usr/bin/python3",
+                    "args": [
+                      "/home/doanlong/extra/benchmark/experiments/finance-v46-update-study/tools/mcp_snapshot_server.py"
+                    ],
+                    "env": {
+                      "BENCH_BUN_BIN": "/home/doanlong/extra/benchmark/experiments/toolchains/bun-1.4.4/bun",
+                      "BENCH_BUN_SHA256": "10702245766b225e70bbf6235fd6b47214fd94b4760d00ffaed8ab0df57ac235",
+                      "PYTHONPATH": "/home/doanlong/.local/lib/python3.12/site-packages",
+                      "BENCH_PAYLOADS": "/tmp/v45-independent-dsh-xuglxiz7/task/environment/payloads.json",
+                      "BENCH_MCP_LEDGER": "/tmp/v45-independent-dsh-xuglxiz7/mcp.jsonl"
+                    }
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        "observed_tool_sets": [
+          [
+            "mcp__opentrading__analytics_calculate",
+            "mcp__opentrading__analytics_compute",
+            "mcp__opentrading__vn_quote_history"
+          ],
+          [
+            "mcp__opentrading__analytics_calculate",
+            "mcp__opentrading__analytics_compute",
+            "mcp__opentrading__vn_quote_history"
+          ],
+          [
+            "mcp__opentrading__analytics_calculate",
+            "mcp__opentrading__analytics_compute",
+            "mcp__opentrading__vn_quote_history"
+          ],
+          [
+            "mcp__opentrading__analytics_calculate",
+            "mcp__opentrading__analytics_compute",
+            "mcp__opentrading__vn_quote_history"
+          ],
+          [
+            "mcp__opentrading__analytics_calculate",
+            "mcp__opentrading__analytics_compute",
+            "mcp__opentrading__vn_quote_history"
+          ]
+        ],
+        "provider_requests": 5,
+        "provider_upstream_requests": 5,
+        "usage_complete": false
+      },
+      "pass": true
+    }
+  ]
+}

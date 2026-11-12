@@ -1,0 +1,31 @@
+# Task memory stratum — batch 3 (duyệt user 09/11/2026)
+id = "fin-mem-333"
+title = "Memory — thesis USDJPY quá hạn review"
+version = 2
+created = "2026-11-09"
+level = "L4"
+family = "L4·M memory"
+financebench_type = "multi-turn memory"
+entity = "USDJPY"
+asset = "gold_fx"
+data_zone = "green"
+data_pairs = ["msn:main", "yf:main"]
+snapshot_date = "2026-11-01"
+universe_cap = 0
+banned_tools = ["web_search", "web_fetch", "sentiment_score"]
+human_time_band = "15–60 phút"
+time_limit_min = 30
+tools_expected = ["vn_msn_fx_gold"]
+mcp_payloads = "environment/payloads.json"
+snapshot_required = true
+split = "main"
+track = "memory_multiturn"
+multiturn = true
+
+confirmatory_eligible = true
+
+[scoring]
+type = "value"
+gold = "solution/gold.json"
+oracle = "solution/oracle.py"
+grader = "tests/grader.py"

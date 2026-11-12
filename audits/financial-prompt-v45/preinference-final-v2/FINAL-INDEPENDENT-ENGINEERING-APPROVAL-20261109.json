@@ -1,0 +1,60 @@
+{
+  "reviewer": "v45_independent_review",
+  "independent": true,
+  "date": "2026-11-09",
+  "scope": "Exact pinned benchmark headless profiles only; no claim of whole-production UI qualification or measured financial superiority.",
+  "full_host_tests": {
+    "pass": true,
+    "count": 537,
+    "log": "/home/doanlong/extra/benchmark/audits/financial-memory-v45/full-benchmark-host-final-verified.log",
+    "sha256": "98982e6a1d07469c3ebeaac05a1ccb480baa5243cfbff003e66821dfbae6516a"
+  },
+  "evidence_sha256": {
+    "audits/financial-prompt-v45/all-native-common-wire-9665393e/proof.json": "8b30728029a4ffc53f7e91f92737c249a222e21cf5230a7b310ee5d4cc51fec7",
+    "audits/financial-prompt-v45/native/headless-wire-31e832f2/proof.json": "3529a6058331019945506a43fb92a53a0968020c5c70f3205cf6122e118b25a5",
+    "audits/financial-memory-v45/native-wire-49bb3d66/proof.json": "01b2f2401b865b7079ec1db0129c0b7f5c339bac46c11c43c1780ec24ac0fff0",
+    "audits/financial-memory-v45/native-wire-f78d427d/proof.json": "2e417a610532072cb97bea5317d4500f516a5e3db310ee81e7f2d2b6a67e6a8b",
+    "audits/financial-memory-v45/pause-wire-693e0c97/proof.json": "3b8a0b1635e6814a77d9c103a677f8fae5f52dcac1bc1b49557ed49f89620e60",
+    "audits/financial-memory-v45/pause-wire-9f409a0d/proof.json": "4758e13f70ecc8903bce026644a54b0fd4a9c8cf61a637c2613144b91be8133f",
+    "audits/financial-prompt-v45/native/post-clean-full-node-tree-parity.json": "e9a6760bb1a623f2dd89ef41ff6b76dde71a593a98b6d60aea2d66147855d8ee",
+    "audits/financial-prompt-v45/native/post-clean-user-preservation.json": "1df4f4be8589a6c22a7c0efa0da4be6c8ce8585df01e1ef77d37fd2283de43c6"
+  },
+  "limitations": [
+    "Super requested public endpoint accepts only user-authorized private alias; checkpoint UNVERIFIED.",
+    "Native complete suite previously retained UI/performance failures; headless qualification is narrower.",
+    "Memory MINI N3 per model/arm is exploratory; common temperature1/top_p.95 differs from stateless DeepSeek0/1, so no paired cross-track memory claim.",
+    "Original failed local fixtures and earlier full-host510PASS27FAIL remain retained; corrected controls combine prior OT/OC cases with isolated DSH replacement, not one fresh all-eight run.",
+    "Legacy v3 runtime dependencies follow updated production symlink; stored results preserved, historical rerun environment not identical.",
+    "Original v1-v4 prior approvals and MINIpreflight1-4 are superseded; this approval binds only the final factual protocol correction and current exact source states."
+  ],
+  "external_model_calls_by_reviewer": 0,
+  "schema": "independent-v45-final-headless-engineering-approval-v1",
+  "approved": true,
+  "freeze_state_sha256": [
+    "516aceede2b546b5ba6d8f178e70b265eebc3012d2780ea826d09c984f9406ba",
+    "08cdd1216e2408ab47696ca2139a2968a2104db4fee8370db1ad11f7f545e764"
+  ],
+  "model_admission": {
+    "nvidia/nvidia/nemotron-3.5-super-vl-120b-a12b": {
+      "approved": true,
+      "receipt": "/home/doanlong/extra/benchmark/experiments/finance-v45-study/audits/model-admission/nvidia__nemotron-3.5-super-vl-120b-a12b-route-v2.json",
+      "sha256": "7126e253f2023b96f29301d89cead3bb80a7eea22cbbfd1ed13619483cf71a8c",
+      "checkpoint_unverified": true
+    },
+    "nvidia/deepseek-ai/deepseek-v4.1-flash": {
+      "approved": true,
+      "receipt": "/home/doanlong/extra/benchmark/experiments/finance-v45-study/audits/model-admission/deepseek-ai__deepseek-v4.1-flash.json",
+      "sha256": "b8566f7d495db4f4ee0434469d247ef028e248fb3b0c46d0271a12d81872ccb1",
+      "checkpoint_unverified": false
+    }
+  },
+  "registered_main_authorization": "Conditional only: audited pilot must pass both coprimary margins and every guard, independent all-arm financial review and user-delivered pilot report attestation before main. No holdout.",
+  "freeze_review": "/home/doanlong/extra/benchmark/audits/financial-memory-v45/INDEPENDENT-FINAL-PIN-REVIEW.json",
+  "status": "approved",
+  "final_pin_review_sha256": "839600eb2ffe33d3091faa6b753c699fd374891091e134862f53e94732cd99ad",
+  "supersedes": "Only the earlier exact engineering approvals; all earlier zero-call plans/approvals remain historical and must not launch.",
+  "protocol_sha256": {
+    "/home/doanlong/extra/benchmark/experiments/finance-v45-study/plans/2026-11-08-v45-execution-protocol.md": "af5b0d91cb75e5ce663310045b9ad873ee88a1f8a7bad63dcfecd7d8553dee3b",
+    "/home/doanlong/extra/benchmark/experiments/finance-v45-study/plans/2026-11-08-v45-memory-mini-protocol.md": "f407476771ddadd0cbad98bd6fdf8d328e3b6b9725abacd8b64782bf9c12384f"
+  }
+}

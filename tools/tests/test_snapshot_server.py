@@ -43,7 +43,7 @@ def two_same_tool():
 
 # ---------------------------------------------------------------- unit: matcher
 def test_select_exact_param_match(two_same_tool):
-    env = select_envelope(two_same_tool, "vn_quote_history", {"symbol": "ACB"})
+    env = select_envelope(two_same_tool, "vn_quote_history", {"symbol": "ACB", "days": 5})
     assert env["data"]["symbol"] == "ACB"
 
 
@@ -53,10 +53,10 @@ def test_select_scores_more_matching_params(two_same_tool):
     assert env["data"]["symbol"] == "ANV"
 
 
-def test_select_tie_keeps_first_by_key_order(two_same_tool):
+def test_select_missing_identity_rejected(two_same_tool):
     """Không có args nào khớp → hòa 0-0 → giữ envelope đầu theo thứ tự key."""
-    env = select_envelope(two_same_tool, "vn_quote_history", {})
-    assert env["data"]["symbol"] == "EIB"
+    with pytest.raises(ValueError):
+        select_envelope(two_same_tool, "vn_quote_history", {})
 
 
 def test_select_unknown_tool_raises(two_same_tool):
@@ -71,31 +71,18 @@ def test_select_list_param_match():
                                  "envelope": {"data": {"quotes": []}}}),
                ("batch:tech1", {"tool": "vn_equity_quote_batch",
                                 "params": {"symbols": ["CMG", "ELC", "VGI", "CTR", "FOX"]},
-                                "envelope": {"data": {"quotes": ["x"]}}})]
+                                "envelope": {"data": {"quotes": [{"symbol": "CMG", "last": 1}]}}})]
     env = select_envelope(entries, "vn_equity_quote_batch", {"symbols": ["CMG", "ELC", "VGI", "CTR", "FOX"]})
-    assert env["data"]["quotes"] == ["x"]
+    assert env["data"]["quotes"] == [{"symbol": "CMG", "last": 1}]
 
 
 # ---------------------------------------------------------------- unit: tools/list
-def test_build_tool_defs_supports_pilot_bare_format():
-    """Pilot payloads (gen_tasks.py): {"tools": {TEN_TOOL: envelope-trực-tiếp}} —
-    không có wrapper {tool, params, envelope} như main (build_main.py)."""
-    payloads = {"snapshot_date": "2026-11-01", "tools": {
-        "vs_indicator_data": {"data": {"rows": []}, "provenance": {"as_of": "X"},
-                              "availability": "available", "warnings": []}}}
+def test_legacy_requires_explicit_request_contract(tmp_path):
     from mcp_snapshot_server import load_entries
-    import tempfile
-    fd, tmp = tempfile.mkstemp(suffix=".json")
-    with os.fdopen(fd, "w", encoding="utf-8") as f:
-        json.dump(payloads, f, ensure_ascii=False)
-    try:
-        entries, _ = load_entries(tmp)
-    finally:
-        os.unlink(tmp)
-    defs = build_tool_defs(entries)
-    assert [d["name"] for d in defs] == ["vs_indicator_data"]
-    env = select_envelope(entries, "vs_indicator_data", {"indicator": "CPI"})
-    assert env["data"] == {"rows": []}
+    payload = tmp_path / "payloads.json"
+    payload.write_text(json.dumps({"tools": {"vs_indicator_data": {"data": {"rows": []}}}}))
+    with pytest.raises(ValueError, match="request_contracts"):
+        load_entries(payload)
 
 
 def test_build_tool_defs_union_and_schema():
@@ -107,7 +94,8 @@ def test_build_tool_defs_union_and_schema():
     schema = defs[0]["inputSchema"]
     assert schema["type"] == "object"
     assert "symbol" in schema["properties"]
-    assert schema.get("required") in (None, [])
+    assert schema["required"] == ["symbol"]
+    assert schema["additionalProperties"] is False
 
 
 def test_build_tool_defs_mark_readonly_hint():
@@ -140,8 +128,80 @@ async def test_stdio_server_roundtrip(tmp_path):
             await session.initialize()
             tools = await session.list_tools()
             assert "vn_quote_history" in [t.name for t in tools.tools]
+            bad = await session.call_tool('vn_quote_history', {'symbol': 'EIB', 'days': 1})
+            assert bad.isError is True
+            diagnostic = json.loads(bad.content[0].text)
+            assert diagnostic['error']['code'] == 'not_recorded'
+            assert diagnostic['error']['snapshot_requests']
+            assert 'benchmark_evidence' not in diagnostic and 'data' not in diagnostic
             res = await session.call_tool("vn_quote_history", {"symbol": "EIB"})
+            assert res.isError is False
             text = res.content[0].text
             data = json.loads(text)
             assert data["data"]["last"] == pytest.approx(16.1)
             assert data["provenance"]["as_of"]  # provenance giữ nguyên
+
+@pytest.mark.parametrize('arguments', [
+    {'symbol': 'INVENTED'}, {'symbol': 'EIB', 'days': 10},
+    {'symbol': 'EIB', 'days': True}, {'symbol': 'EIB', 'unknown': 'x'},
+    {'symbol': ['EIB']}, {'symbol': 'EIB', 'interval': '1W'},
+])
+def test_contradictory_and_malformed_requests_rejected(two_same_tool, arguments):
+    with pytest.raises(ValueError):
+        select_envelope(two_same_tool, 'vn_quote_history', arguments)
+
+
+def test_optional_parameter_ambiguity_rejected():
+    entries=[('a',{'tool':'vn_quote_history','params':{'symbol':'EIB','days':5},'envelope':{'data':1}}),
+             ('b',{'tool':'vn_quote_history','params':{'symbol':'EIB','days':10},'envelope':{'data':2}})]
+    with pytest.raises(ValueError):
+        select_envelope(entries,'vn_quote_history',{'symbol':'EIB'})
+
+
+def test_ledger_success_and_rejection_are_bound_to_response(tmp_path, two_same_tool):
+    from mcp_snapshot_server import replay_call, digest
+    path=tmp_path/'calls.jsonl'
+    env=replay_call(two_same_tool,'vn_quote_history',{'symbol':'EIB','days':5},'a'*64,str(path))
+    rejected=replay_call(two_same_tool,'vn_quote_history',{'symbol':'NOPE'},'a'*64,str(path))
+    rows=[json.loads(line) for line in path.read_text().splitlines()]
+    assert [r['status'] for r in rows]==['ok','rejected']
+    assert len({r['call_id'] for r in rows})==2
+    assert rows[0]['response_sha256']==digest({k:v for k,v in env.items() if k!='benchmark_evidence'})
+    assert env['benchmark_evidence']['call_id']==rows[0]['call_id']
+    assert rows[0]['as_of']=='A'
+    assert rejected['request_rejected'] is True
+    assert rejected['error']['code'] == 'not_recorded'
+    assert 'benchmark_evidence' not in rejected
+    assert rejected['error']['snapshot_requests']
+    assert 'data' not in rejected
+
+
+def test_pilot_merged_capture_requires_individual_symbols():
+    from mcp_snapshot_server import load_entries
+    entries,_=load_entries(os.path.join(ROOT,'tasks/pilot/fin-l3-agg-01/environment/payloads.json'))
+    assert len(entries)==5
+    assert select_envelope(entries,'vn_quote_history',{'symbol':'VCB'})['data']['last']==56.3
+    with pytest.raises(ValueError):select_envelope(entries,'vn_quote_history',{'symbol':'FAKE'})
+
+
+def test_batch_subsets_do_not_reuse_full_batch_summary():
+    entries=[('batch',{'tool':'crypto_spot','params':{'symbols':['BTCUSDT','ETHUSDT']},
+                      'envelope':{'data':{'tickers':[],'summary':'full batch'}}})]
+    with pytest.raises(ValueError):
+        select_envelope(entries,'crypto_spot',{'symbols':['BTCUSDT']})
+
+
+def test_omitted_nondefault_parameters_do_not_mutate_request(two_same_tool):
+    with pytest.raises(ValueError):
+        select_envelope(two_same_tool,'vn_quote_history',{'symbol':'EIB'})
+
+
+def test_nonfinite_rejection_is_also_recorded(tmp_path,two_same_tool):
+    from mcp_snapshot_server import replay_call
+    path=tmp_path/'ledger.jsonl'
+    env=replay_call(two_same_tool,'vn_quote_history',{'symbol':'EIB','days':float('nan')},'a'*64,str(path))
+    assert env['request_rejected'] is True
+    assert env['error']['code'] == 'invalid_request'
+    assert 'benchmark_evidence' not in env
+    row=json.loads(path.read_text());assert row['status']=='rejected'
+    assert row['arguments']['days']=='[NONFINITE]'

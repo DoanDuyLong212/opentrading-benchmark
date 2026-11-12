@@ -1,0 +1,2305 @@
+{
+  "kind": "v45-independent-readonly-preservation",
+  "pass": true,
+  "checks": {
+    "archived_v4_native/src": {
+      "checked": 98,
+      "changed_or_missing": []
+    },
+    "archived_v4_native/prompts": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v3_native/src": {
+      "checked": 97,
+      "changed_or_missing": []
+    },
+    "v3_native/prompts": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v42/code": {
+      "checked": 74,
+      "changed_or_missing": []
+    },
+    "v42/tests": {
+      "checked": 14,
+      "changed_or_missing": []
+    },
+    "v42/tasks/holdout/fin-l1-bctc-903": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v42/tasks/holdout/fin-l1-bctc-904": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v42/tasks/holdout/fin-l1-bctc-905": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v42/tasks/holdout/fin-l1-macro-908": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v42/tasks/holdout/fin-l1-macro-909": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v42/tasks/holdout/fin-l1-macro-910": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v42/tasks/holdout/fin-l1-quote-crypto-906": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v42/tasks/holdout/fin-l1-quote-gf-907": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v42/tasks/holdout/fin-l1-quote-vn-901": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v42/tasks/holdout/fin-l1-quote-vn-902": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v42/tasks/holdout/fin-l2-crypto-x-918": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v42/tasks/holdout/fin-l2-gf-compare-919": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v42/tasks/holdout/fin-l2-growth-911": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v42/tasks/holdout/fin-l2-growth-912": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v42/tasks/holdout/fin-l2-macro-calc-920": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v42/tasks/holdout/fin-l2-margin-913": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v42/tasks/holdout/fin-l2-margin-914": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v42/tasks/holdout/fin-l2-ratio-915": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v42/tasks/holdout/fin-l2-tech-916": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v42/tasks/holdout/fin-l2-tech-917": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v42/tasks/holdout/fin-l3-agg-921": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v42/tasks/holdout/fin-l3-agg-922": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v42/tasks/holdout/fin-l3-crypto-multi-928": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v42/tasks/holdout/fin-l3-crypto-multi-929": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v42/tasks/holdout/fin-l3-index-930": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v42/tasks/holdout/fin-l3-screen-923": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v42/tasks/holdout/fin-l3-screen-924": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v42/tasks/holdout/fin-l3-tech-multi-927": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v42/tasks/holdout/fin-l3-top-925": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v42/tasks/holdout/fin-l3-top-926": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v42/tasks/holdout/fin-l4-2src-939": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v42/tasks/holdout/fin-l4-2src-940": {
+      "checked": 7,
+      "changed_or_missing": []
+    },
+    "v42/tasks/holdout/fin-l4-future-931": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v42/tasks/holdout/fin-l4-future-932": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v42/tasks/holdout/fin-l4-future-933": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v42/tasks/holdout/fin-l4-future-934": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v42/tasks/holdout/fin-l4-narrative-937": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v42/tasks/holdout/fin-l4-narrative-938": {
+      "checked": 7,
+      "changed_or_missing": []
+    },
+    "v42/tasks/holdout/fin-l4-nonexist-935": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v42/tasks/holdout/fin-l4-nonexist-936": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v42/tasks/holdout/fin-l5-compare-944": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v42/tasks/holdout/fin-l5-compare-945": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v42/tasks/holdout/fin-l5-compare-946": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v42/tasks/holdout/fin-l5-compare-947": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v42/tasks/holdout/fin-l5-profile-941": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v42/tasks/holdout/fin-l5-profile-942": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v42/tasks/holdout/fin-l5-profile-943": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v42/tasks/holdout/fin-l5-valuation-948": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v42/tasks/holdout/fin-l5-valuation-949": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v42/tasks/holdout/fin-l5-valuation-950": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v42/tasks/main/fin-l1-bctc-109": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v42/tasks/main/fin-l1-bctc-110": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v42/tasks/main/fin-l1-bctc-111": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v42/tasks/main/fin-l1-bctc-112": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v42/tasks/main/fin-l1-bctc-113": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v42/tasks/main/fin-l1-bctc-114": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v42/tasks/main/fin-l1-bctc-115": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v42/tasks/main/fin-l1-bctc-116": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v42/tasks/main/fin-l1-bctc-117": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v42/tasks/main/fin-l1-bctc-118": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v42/tasks/main/fin-l1-bctc-119": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v42/tasks/main/fin-l1-bctc-120": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v42/tasks/main/fin-l1-macro-131": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v42/tasks/main/fin-l1-macro-132": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v42/tasks/main/fin-l1-macro-133": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v42/tasks/main/fin-l1-macro-134": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v42/tasks/main/fin-l1-macro-135": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v42/tasks/main/fin-l1-macro-136": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v42/tasks/main/fin-l1-macro-137": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v42/tasks/main/fin-l1-macro-138": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v42/tasks/main/fin-l1-macro-139": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v42/tasks/main/fin-l1-macro-140": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v42/tasks/main/fin-l1-quote-crypto-121": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v42/tasks/main/fin-l1-quote-crypto-122": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v42/tasks/main/fin-l1-quote-crypto-123": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v42/tasks/main/fin-l1-quote-crypto-124": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v42/tasks/main/fin-l1-quote-crypto-125": {
+      "checked": 7,
+      "changed_or_missing": []
+    },
+    "v42/tasks/main/fin-l1-quote-gf-126": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v42/tasks/main/fin-l1-quote-gf-127": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v42/tasks/main/fin-l1-quote-gf-128": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v42/tasks/main/fin-l1-quote-gf-129": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v42/tasks/main/fin-l1-quote-gf-130": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v42/tasks/main/fin-l1-quote-vn-101": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v42/tasks/main/fin-l1-quote-vn-102": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v42/tasks/main/fin-l1-quote-vn-103": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v42/tasks/main/fin-l1-quote-vn-104": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v42/tasks/main/fin-l1-quote-vn-105": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v42/tasks/main/fin-l1-quote-vn-106": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v42/tasks/main/fin-l1-quote-vn-107": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v42/tasks/main/fin-l1-quote-vn-108": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v42/tasks/main/fin-l2-crypto-x-166": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v42/tasks/main/fin-l2-crypto-x-167": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v42/tasks/main/fin-l2-crypto-x-168": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v42/tasks/main/fin-l2-crypto-x-169": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v42/tasks/main/fin-l2-crypto-x-170": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v42/tasks/main/fin-l2-gf-compare-171": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v42/tasks/main/fin-l2-gf-compare-172": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v42/tasks/main/fin-l2-gf-compare-173": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v42/tasks/main/fin-l2-gf-compare-174": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v42/tasks/main/fin-l2-gf-compare-175": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v42/tasks/main/fin-l2-growth-141": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v42/tasks/main/fin-l2-growth-142": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v42/tasks/main/fin-l2-growth-143": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v42/tasks/main/fin-l2-growth-144": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v42/tasks/main/fin-l2-growth-145": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v42/tasks/main/fin-l2-growth-146": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v42/tasks/main/fin-l2-growth-147": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v42/tasks/main/fin-l2-growth-148": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v42/tasks/main/fin-l2-macro-calc-176": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v42/tasks/main/fin-l2-macro-calc-177": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v42/tasks/main/fin-l2-macro-calc-178": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v42/tasks/main/fin-l2-macro-calc-179": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v42/tasks/main/fin-l2-macro-calc-180": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v42/tasks/main/fin-l2-margin-149": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v42/tasks/main/fin-l2-margin-150": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v42/tasks/main/fin-l2-margin-151": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v42/tasks/main/fin-l2-margin-152": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v42/tasks/main/fin-l2-margin-153": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v42/tasks/main/fin-l2-margin-154": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v42/tasks/main/fin-l2-margin-155": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v42/tasks/main/fin-l2-ratio-156": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v42/tasks/main/fin-l2-ratio-157": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v42/tasks/main/fin-l2-ratio-158": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v42/tasks/main/fin-l2-ratio-159": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v42/tasks/main/fin-l2-ratio-160": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v42/tasks/main/fin-l2-tech-161": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v42/tasks/main/fin-l2-tech-162": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v42/tasks/main/fin-l2-tech-163": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v42/tasks/main/fin-l2-tech-164": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v42/tasks/main/fin-l2-tech-165": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v42/tasks/main/fin-l3-agg-181": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v42/tasks/main/fin-l3-agg-182": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v42/tasks/main/fin-l3-agg-183": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v42/tasks/main/fin-l3-agg-184": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v42/tasks/main/fin-l3-agg-185": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v42/tasks/main/fin-l3-agg-186": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v42/tasks/main/fin-l3-agg-187": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v42/tasks/main/fin-l3-agg-188": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v42/tasks/main/fin-l3-crypto-multi-208": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v42/tasks/main/fin-l3-crypto-multi-209": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v42/tasks/main/fin-l3-crypto-multi-210": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v42/tasks/main/fin-l3-crypto-multi-211": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v42/tasks/main/fin-l3-crypto-multi-212": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v42/tasks/main/fin-l3-crypto-multi-213": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v42/tasks/main/fin-l3-crypto-multi-214": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v42/tasks/main/fin-l3-crypto-multi-215": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v42/tasks/main/fin-l3-index-216": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v42/tasks/main/fin-l3-index-217": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v42/tasks/main/fin-l3-macro-agg-218": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v42/tasks/main/fin-l3-macro-agg-219": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v42/tasks/main/fin-l3-macro-agg-220": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v42/tasks/main/fin-l3-screen-189": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v42/tasks/main/fin-l3-screen-190": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v42/tasks/main/fin-l3-screen-191": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v42/tasks/main/fin-l3-screen-192": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v42/tasks/main/fin-l3-screen-193": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v42/tasks/main/fin-l3-screen-194": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v42/tasks/main/fin-l3-screen-195": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v42/tasks/main/fin-l3-screen-196": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v42/tasks/main/fin-l3-tech-multi-203": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v42/tasks/main/fin-l3-tech-multi-204": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v42/tasks/main/fin-l3-tech-multi-205": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v42/tasks/main/fin-l3-tech-multi-206": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v42/tasks/main/fin-l3-tech-multi-207": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v42/tasks/main/fin-l3-top-197": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v42/tasks/main/fin-l3-top-198": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v42/tasks/main/fin-l3-top-199": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v42/tasks/main/fin-l3-top-200": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v42/tasks/main/fin-l3-top-201": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v42/tasks/main/fin-l3-top-202": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v42/tasks/main/fin-l4-2src-253": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v42/tasks/main/fin-l4-2src-254": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v42/tasks/main/fin-l4-2src-255": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v42/tasks/main/fin-l4-2src-256": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v42/tasks/main/fin-l4-2src-257": {
+      "checked": 7,
+      "changed_or_missing": []
+    },
+    "v42/tasks/main/fin-l4-2src-258": {
+      "checked": 7,
+      "changed_or_missing": []
+    },
+    "v42/tasks/main/fin-l4-2src-259": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v42/tasks/main/fin-l4-2src-260": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v42/tasks/main/fin-l4-future-221": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v42/tasks/main/fin-l4-future-222": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v42/tasks/main/fin-l4-future-223": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v42/tasks/main/fin-l4-future-224": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v42/tasks/main/fin-l4-future-225": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v42/tasks/main/fin-l4-future-226": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v42/tasks/main/fin-l4-future-227": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v42/tasks/main/fin-l4-future-228": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v42/tasks/main/fin-l4-future-229": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v42/tasks/main/fin-l4-future-230": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v42/tasks/main/fin-l4-future-231": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v42/tasks/main/fin-l4-future-232": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v42/tasks/main/fin-l4-future-233": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v42/tasks/main/fin-l4-future-234": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v42/tasks/main/fin-l4-narrative-244": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v42/tasks/main/fin-l4-narrative-245": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v42/tasks/main/fin-l4-narrative-246": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v42/tasks/main/fin-l4-narrative-247": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v42/tasks/main/fin-l4-narrative-248": {
+      "checked": 7,
+      "changed_or_missing": []
+    },
+    "v42/tasks/main/fin-l4-narrative-249": {
+      "checked": 7,
+      "changed_or_missing": []
+    },
+    "v42/tasks/main/fin-l4-narrative-250": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v42/tasks/main/fin-l4-narrative-251": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v42/tasks/main/fin-l4-narrative-252": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v42/tasks/main/fin-l4-nonexist-235": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v42/tasks/main/fin-l4-nonexist-236": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v42/tasks/main/fin-l4-nonexist-237": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v42/tasks/main/fin-l4-nonexist-238": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v42/tasks/main/fin-l4-nonexist-239": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v42/tasks/main/fin-l4-nonexist-240": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v42/tasks/main/fin-l4-nonexist-241": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v42/tasks/main/fin-l4-nonexist-242": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v42/tasks/main/fin-l4-nonexist-243": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v42/tasks/main/fin-l5-compare-275": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v42/tasks/main/fin-l5-compare-276": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v42/tasks/main/fin-l5-compare-277": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v42/tasks/main/fin-l5-compare-278": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v42/tasks/main/fin-l5-compare-279": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v42/tasks/main/fin-l5-compare-280": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v42/tasks/main/fin-l5-compare-281": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v42/tasks/main/fin-l5-compare-282": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v42/tasks/main/fin-l5-compare-283": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v42/tasks/main/fin-l5-compare-284": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v42/tasks/main/fin-l5-compare-285": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v42/tasks/main/fin-l5-compare-286": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v42/tasks/main/fin-l5-compare-287": {
+      "checked": 7,
+      "changed_or_missing": []
+    },
+    "v42/tasks/main/fin-l5-compare-288": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v42/tasks/main/fin-l5-compare-289": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v42/tasks/main/fin-l5-compare-290": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v42/tasks/main/fin-l5-profile-261": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v42/tasks/main/fin-l5-profile-262": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v42/tasks/main/fin-l5-profile-263": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v42/tasks/main/fin-l5-profile-264": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v42/tasks/main/fin-l5-profile-265": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v42/tasks/main/fin-l5-profile-266": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v42/tasks/main/fin-l5-profile-267": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v42/tasks/main/fin-l5-profile-268": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v42/tasks/main/fin-l5-profile-269": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v42/tasks/main/fin-l5-profile-270": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v42/tasks/main/fin-l5-profile-271": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v42/tasks/main/fin-l5-profile-272": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v42/tasks/main/fin-l5-profile-273": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v42/tasks/main/fin-l5-profile-274": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v42/tasks/main/fin-l5-valuation-291": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v42/tasks/main/fin-l5-valuation-292": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v42/tasks/main/fin-l5-valuation-293": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v42/tasks/main/fin-l5-valuation-294": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v42/tasks/main/fin-l5-valuation-295": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v42/tasks/main/fin-l5-valuation-296": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v42/tasks/main/fin-l5-valuation-297": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v42/tasks/main/fin-l5-valuation-298": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v42/tasks/main/fin-l5-valuation-299": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v42/tasks/main/fin-l5-valuation-300": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v42/tasks/pilot/fin-l1-bctc-01": {
+      "checked": 7,
+      "changed_or_missing": []
+    },
+    "v42/tasks/pilot/fin-l1-gold-01": {
+      "checked": 7,
+      "changed_or_missing": []
+    },
+    "v42/tasks/pilot/fin-l1-macro-01": {
+      "checked": 7,
+      "changed_or_missing": []
+    },
+    "v42/tasks/pilot/fin-l1-quote-01": {
+      "checked": 7,
+      "changed_or_missing": []
+    },
+    "v42/tasks/pilot/fin-l1-quote-02": {
+      "checked": 7,
+      "changed_or_missing": []
+    },
+    "v42/tasks/pilot/fin-l2-crypto-01": {
+      "checked": 7,
+      "changed_or_missing": []
+    },
+    "v42/tasks/pilot/fin-l2-gold-01": {
+      "checked": 7,
+      "changed_or_missing": []
+    },
+    "v42/tasks/pilot/fin-l2-growth-01": {
+      "checked": 7,
+      "changed_or_missing": []
+    },
+    "v42/tasks/pilot/fin-l2-margin-01": {
+      "checked": 7,
+      "changed_or_missing": []
+    },
+    "v42/tasks/pilot/fin-l2-ratio-01": {
+      "checked": 7,
+      "changed_or_missing": []
+    },
+    "v42/tasks/pilot/fin-l2-tech-01": {
+      "checked": 7,
+      "changed_or_missing": []
+    },
+    "v42/tasks/pilot/fin-l3-agg-01": {
+      "checked": 7,
+      "changed_or_missing": []
+    },
+    "v42/tasks/pilot/fin-l3-crypto-01": {
+      "checked": 7,
+      "changed_or_missing": []
+    },
+    "v42/tasks/pilot/fin-l3-index-01": {
+      "checked": 7,
+      "changed_or_missing": []
+    },
+    "v42/tasks/pilot/fin-l3-screen-01": {
+      "checked": 7,
+      "changed_or_missing": []
+    },
+    "v42/tasks/pilot/fin-l3-tech-multi-01": {
+      "checked": 7,
+      "changed_or_missing": []
+    },
+    "v42/tasks/pilot/fin-l3-top-01": {
+      "checked": 7,
+      "changed_or_missing": []
+    },
+    "v42/tasks/pilot/fin-l4-2nguon-01": {
+      "checked": 7,
+      "changed_or_missing": []
+    },
+    "v42/tasks/pilot/fin-l4-future-01": {
+      "checked": 7,
+      "changed_or_missing": []
+    },
+    "v42/tasks/pilot/fin-l4-narrative-01": {
+      "checked": 7,
+      "changed_or_missing": []
+    },
+    "v42/tasks/pilot/fin-l4-nonexist-01": {
+      "checked": 7,
+      "changed_or_missing": []
+    },
+    "v42/tasks/pilot/fin-l5-compare-01": {
+      "checked": 7,
+      "changed_or_missing": []
+    },
+    "v42/tasks/pilot/fin-l5-profile-01": {
+      "checked": 7,
+      "changed_or_missing": []
+    },
+    "v42/tasks/pilot/fin-l5-valuation-01": {
+      "checked": 7,
+      "changed_or_missing": []
+    },
+    "v42/tasks/smoke/smoke-agg-01": {
+      "checked": 7,
+      "changed_or_missing": []
+    },
+    "v42/tasks/smoke/smoke-quote-01": {
+      "checked": 7,
+      "changed_or_missing": []
+    },
+    "v42/tasks/smoke/smoke-trap-01": {
+      "checked": 7,
+      "changed_or_missing": []
+    },
+    "v42/protocol": {
+      "checked": 1,
+      "changed_or_missing": []
+    },
+    "v44/code": {
+      "checked": 80,
+      "changed_or_missing": []
+    },
+    "v44/tests": {
+      "checked": 17,
+      "changed_or_missing": []
+    },
+    "v44/tasks/holdout/fin-l1-bctc-903": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v44/tasks/holdout/fin-l1-bctc-904": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v44/tasks/holdout/fin-l1-bctc-905": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v44/tasks/holdout/fin-l1-macro-908": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v44/tasks/holdout/fin-l1-macro-909": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v44/tasks/holdout/fin-l1-macro-910": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v44/tasks/holdout/fin-l1-quote-crypto-906": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v44/tasks/holdout/fin-l1-quote-gf-907": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v44/tasks/holdout/fin-l1-quote-vn-901": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v44/tasks/holdout/fin-l1-quote-vn-902": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v44/tasks/holdout/fin-l2-crypto-x-918": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v44/tasks/holdout/fin-l2-gf-compare-919": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v44/tasks/holdout/fin-l2-growth-911": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v44/tasks/holdout/fin-l2-growth-912": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v44/tasks/holdout/fin-l2-macro-calc-920": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v44/tasks/holdout/fin-l2-margin-913": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v44/tasks/holdout/fin-l2-margin-914": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v44/tasks/holdout/fin-l2-ratio-915": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v44/tasks/holdout/fin-l2-tech-916": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v44/tasks/holdout/fin-l2-tech-917": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v44/tasks/holdout/fin-l3-agg-921": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v44/tasks/holdout/fin-l3-agg-922": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v44/tasks/holdout/fin-l3-crypto-multi-928": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v44/tasks/holdout/fin-l3-crypto-multi-929": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v44/tasks/holdout/fin-l3-index-930": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v44/tasks/holdout/fin-l3-screen-923": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v44/tasks/holdout/fin-l3-screen-924": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v44/tasks/holdout/fin-l3-tech-multi-927": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v44/tasks/holdout/fin-l3-top-925": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v44/tasks/holdout/fin-l3-top-926": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v44/tasks/holdout/fin-l4-2src-939": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v44/tasks/holdout/fin-l4-2src-940": {
+      "checked": 7,
+      "changed_or_missing": []
+    },
+    "v44/tasks/holdout/fin-l4-future-931": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v44/tasks/holdout/fin-l4-future-932": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v44/tasks/holdout/fin-l4-future-933": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v44/tasks/holdout/fin-l4-future-934": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v44/tasks/holdout/fin-l4-narrative-937": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v44/tasks/holdout/fin-l4-narrative-938": {
+      "checked": 7,
+      "changed_or_missing": []
+    },
+    "v44/tasks/holdout/fin-l4-nonexist-935": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v44/tasks/holdout/fin-l4-nonexist-936": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v44/tasks/holdout/fin-l5-compare-944": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v44/tasks/holdout/fin-l5-compare-945": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v44/tasks/holdout/fin-l5-compare-946": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v44/tasks/holdout/fin-l5-compare-947": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v44/tasks/holdout/fin-l5-profile-941": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v44/tasks/holdout/fin-l5-profile-942": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v44/tasks/holdout/fin-l5-profile-943": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v44/tasks/holdout/fin-l5-valuation-948": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v44/tasks/holdout/fin-l5-valuation-949": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v44/tasks/holdout/fin-l5-valuation-950": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v44/tasks/main/fin-l1-bctc-109": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v44/tasks/main/fin-l1-bctc-110": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v44/tasks/main/fin-l1-bctc-111": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v44/tasks/main/fin-l1-bctc-112": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v44/tasks/main/fin-l1-bctc-113": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v44/tasks/main/fin-l1-bctc-114": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v44/tasks/main/fin-l1-bctc-115": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v44/tasks/main/fin-l1-bctc-116": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v44/tasks/main/fin-l1-bctc-117": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v44/tasks/main/fin-l1-bctc-118": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v44/tasks/main/fin-l1-bctc-119": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v44/tasks/main/fin-l1-bctc-120": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v44/tasks/main/fin-l1-macro-131": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v44/tasks/main/fin-l1-macro-132": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v44/tasks/main/fin-l1-macro-133": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v44/tasks/main/fin-l1-macro-134": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v44/tasks/main/fin-l1-macro-135": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v44/tasks/main/fin-l1-macro-136": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v44/tasks/main/fin-l1-macro-137": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v44/tasks/main/fin-l1-macro-138": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v44/tasks/main/fin-l1-macro-139": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v44/tasks/main/fin-l1-macro-140": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v44/tasks/main/fin-l1-quote-crypto-121": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v44/tasks/main/fin-l1-quote-crypto-122": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v44/tasks/main/fin-l1-quote-crypto-123": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v44/tasks/main/fin-l1-quote-crypto-124": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v44/tasks/main/fin-l1-quote-crypto-125": {
+      "checked": 7,
+      "changed_or_missing": []
+    },
+    "v44/tasks/main/fin-l1-quote-gf-126": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v44/tasks/main/fin-l1-quote-gf-127": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v44/tasks/main/fin-l1-quote-gf-128": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v44/tasks/main/fin-l1-quote-gf-129": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v44/tasks/main/fin-l1-quote-gf-130": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v44/tasks/main/fin-l1-quote-vn-101": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v44/tasks/main/fin-l1-quote-vn-102": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v44/tasks/main/fin-l1-quote-vn-103": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v44/tasks/main/fin-l1-quote-vn-104": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v44/tasks/main/fin-l1-quote-vn-105": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v44/tasks/main/fin-l1-quote-vn-106": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v44/tasks/main/fin-l1-quote-vn-107": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v44/tasks/main/fin-l1-quote-vn-108": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v44/tasks/main/fin-l2-crypto-x-166": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v44/tasks/main/fin-l2-crypto-x-167": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v44/tasks/main/fin-l2-crypto-x-168": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v44/tasks/main/fin-l2-crypto-x-169": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v44/tasks/main/fin-l2-crypto-x-170": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v44/tasks/main/fin-l2-gf-compare-171": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v44/tasks/main/fin-l2-gf-compare-172": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v44/tasks/main/fin-l2-gf-compare-173": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v44/tasks/main/fin-l2-gf-compare-174": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v44/tasks/main/fin-l2-gf-compare-175": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v44/tasks/main/fin-l2-growth-141": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v44/tasks/main/fin-l2-growth-142": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v44/tasks/main/fin-l2-growth-143": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v44/tasks/main/fin-l2-growth-144": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v44/tasks/main/fin-l2-growth-145": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v44/tasks/main/fin-l2-growth-146": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v44/tasks/main/fin-l2-growth-147": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v44/tasks/main/fin-l2-growth-148": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v44/tasks/main/fin-l2-macro-calc-176": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v44/tasks/main/fin-l2-macro-calc-177": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v44/tasks/main/fin-l2-macro-calc-178": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v44/tasks/main/fin-l2-macro-calc-179": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v44/tasks/main/fin-l2-macro-calc-180": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v44/tasks/main/fin-l2-margin-149": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v44/tasks/main/fin-l2-margin-150": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v44/tasks/main/fin-l2-margin-151": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v44/tasks/main/fin-l2-margin-152": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v44/tasks/main/fin-l2-margin-153": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v44/tasks/main/fin-l2-margin-154": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v44/tasks/main/fin-l2-margin-155": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v44/tasks/main/fin-l2-ratio-156": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v44/tasks/main/fin-l2-ratio-157": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v44/tasks/main/fin-l2-ratio-158": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v44/tasks/main/fin-l2-ratio-159": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v44/tasks/main/fin-l2-ratio-160": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v44/tasks/main/fin-l2-tech-161": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v44/tasks/main/fin-l2-tech-162": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v44/tasks/main/fin-l2-tech-163": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v44/tasks/main/fin-l2-tech-164": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v44/tasks/main/fin-l2-tech-165": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v44/tasks/main/fin-l3-agg-181": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v44/tasks/main/fin-l3-agg-182": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v44/tasks/main/fin-l3-agg-183": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v44/tasks/main/fin-l3-agg-184": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v44/tasks/main/fin-l3-agg-185": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v44/tasks/main/fin-l3-agg-186": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v44/tasks/main/fin-l3-agg-187": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v44/tasks/main/fin-l3-agg-188": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v44/tasks/main/fin-l3-crypto-multi-208": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v44/tasks/main/fin-l3-crypto-multi-209": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v44/tasks/main/fin-l3-crypto-multi-210": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v44/tasks/main/fin-l3-crypto-multi-211": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v44/tasks/main/fin-l3-crypto-multi-212": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v44/tasks/main/fin-l3-crypto-multi-213": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v44/tasks/main/fin-l3-crypto-multi-214": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v44/tasks/main/fin-l3-crypto-multi-215": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v44/tasks/main/fin-l3-index-216": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v44/tasks/main/fin-l3-index-217": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v44/tasks/main/fin-l3-macro-agg-218": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v44/tasks/main/fin-l3-macro-agg-219": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v44/tasks/main/fin-l3-macro-agg-220": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v44/tasks/main/fin-l3-screen-189": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v44/tasks/main/fin-l3-screen-190": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v44/tasks/main/fin-l3-screen-191": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v44/tasks/main/fin-l3-screen-192": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v44/tasks/main/fin-l3-screen-193": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v44/tasks/main/fin-l3-screen-194": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v44/tasks/main/fin-l3-screen-195": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v44/tasks/main/fin-l3-screen-196": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v44/tasks/main/fin-l3-tech-multi-203": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v44/tasks/main/fin-l3-tech-multi-204": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v44/tasks/main/fin-l3-tech-multi-205": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v44/tasks/main/fin-l3-tech-multi-206": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v44/tasks/main/fin-l3-tech-multi-207": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v44/tasks/main/fin-l3-top-197": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v44/tasks/main/fin-l3-top-198": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v44/tasks/main/fin-l3-top-199": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v44/tasks/main/fin-l3-top-200": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v44/tasks/main/fin-l3-top-201": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v44/tasks/main/fin-l3-top-202": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v44/tasks/main/fin-l4-2src-253": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v44/tasks/main/fin-l4-2src-254": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v44/tasks/main/fin-l4-2src-255": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v44/tasks/main/fin-l4-2src-256": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v44/tasks/main/fin-l4-2src-257": {
+      "checked": 7,
+      "changed_or_missing": []
+    },
+    "v44/tasks/main/fin-l4-2src-258": {
+      "checked": 7,
+      "changed_or_missing": []
+    },
+    "v44/tasks/main/fin-l4-2src-259": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v44/tasks/main/fin-l4-2src-260": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v44/tasks/main/fin-l4-future-221": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v44/tasks/main/fin-l4-future-222": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v44/tasks/main/fin-l4-future-223": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v44/tasks/main/fin-l4-future-224": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v44/tasks/main/fin-l4-future-225": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v44/tasks/main/fin-l4-future-226": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v44/tasks/main/fin-l4-future-227": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v44/tasks/main/fin-l4-future-228": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v44/tasks/main/fin-l4-future-229": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v44/tasks/main/fin-l4-future-230": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v44/tasks/main/fin-l4-future-231": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v44/tasks/main/fin-l4-future-232": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v44/tasks/main/fin-l4-future-233": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v44/tasks/main/fin-l4-future-234": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v44/tasks/main/fin-l4-narrative-244": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v44/tasks/main/fin-l4-narrative-245": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v44/tasks/main/fin-l4-narrative-246": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v44/tasks/main/fin-l4-narrative-247": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v44/tasks/main/fin-l4-narrative-248": {
+      "checked": 7,
+      "changed_or_missing": []
+    },
+    "v44/tasks/main/fin-l4-narrative-249": {
+      "checked": 7,
+      "changed_or_missing": []
+    },
+    "v44/tasks/main/fin-l4-narrative-250": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v44/tasks/main/fin-l4-narrative-251": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v44/tasks/main/fin-l4-narrative-252": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v44/tasks/main/fin-l4-nonexist-235": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v44/tasks/main/fin-l4-nonexist-236": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v44/tasks/main/fin-l4-nonexist-237": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v44/tasks/main/fin-l4-nonexist-238": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v44/tasks/main/fin-l4-nonexist-239": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v44/tasks/main/fin-l4-nonexist-240": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v44/tasks/main/fin-l4-nonexist-241": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v44/tasks/main/fin-l4-nonexist-242": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v44/tasks/main/fin-l4-nonexist-243": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v44/tasks/main/fin-l5-compare-275": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v44/tasks/main/fin-l5-compare-276": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v44/tasks/main/fin-l5-compare-277": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v44/tasks/main/fin-l5-compare-278": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v44/tasks/main/fin-l5-compare-279": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v44/tasks/main/fin-l5-compare-280": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v44/tasks/main/fin-l5-compare-281": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v44/tasks/main/fin-l5-compare-282": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v44/tasks/main/fin-l5-compare-283": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v44/tasks/main/fin-l5-compare-284": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v44/tasks/main/fin-l5-compare-285": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v44/tasks/main/fin-l5-compare-286": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v44/tasks/main/fin-l5-compare-287": {
+      "checked": 7,
+      "changed_or_missing": []
+    },
+    "v44/tasks/main/fin-l5-compare-288": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v44/tasks/main/fin-l5-compare-289": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v44/tasks/main/fin-l5-compare-290": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v44/tasks/main/fin-l5-profile-261": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v44/tasks/main/fin-l5-profile-262": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v44/tasks/main/fin-l5-profile-263": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v44/tasks/main/fin-l5-profile-264": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v44/tasks/main/fin-l5-profile-265": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v44/tasks/main/fin-l5-profile-266": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v44/tasks/main/fin-l5-profile-267": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v44/tasks/main/fin-l5-profile-268": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v44/tasks/main/fin-l5-profile-269": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v44/tasks/main/fin-l5-profile-270": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v44/tasks/main/fin-l5-profile-271": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v44/tasks/main/fin-l5-profile-272": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v44/tasks/main/fin-l5-profile-273": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v44/tasks/main/fin-l5-profile-274": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v44/tasks/main/fin-l5-valuation-291": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v44/tasks/main/fin-l5-valuation-292": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v44/tasks/main/fin-l5-valuation-293": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v44/tasks/main/fin-l5-valuation-294": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v44/tasks/main/fin-l5-valuation-295": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v44/tasks/main/fin-l5-valuation-296": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v44/tasks/main/fin-l5-valuation-297": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v44/tasks/main/fin-l5-valuation-298": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v44/tasks/main/fin-l5-valuation-299": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v44/tasks/main/fin-l5-valuation-300": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "v44/tasks/pilot/fin-l1-bctc-01": {
+      "checked": 7,
+      "changed_or_missing": []
+    },
+    "v44/tasks/pilot/fin-l1-gold-01": {
+      "checked": 7,
+      "changed_or_missing": []
+    },
+    "v44/tasks/pilot/fin-l1-macro-01": {
+      "checked": 7,
+      "changed_or_missing": []
+    },
+    "v44/tasks/pilot/fin-l1-quote-01": {
+      "checked": 7,
+      "changed_or_missing": []
+    },
+    "v44/tasks/pilot/fin-l1-quote-02": {
+      "checked": 7,
+      "changed_or_missing": []
+    },
+    "v44/tasks/pilot/fin-l2-crypto-01": {
+      "checked": 7,
+      "changed_or_missing": []
+    },
+    "v44/tasks/pilot/fin-l2-gold-01": {
+      "checked": 7,
+      "changed_or_missing": []
+    },
+    "v44/tasks/pilot/fin-l2-growth-01": {
+      "checked": 7,
+      "changed_or_missing": []
+    },
+    "v44/tasks/pilot/fin-l2-margin-01": {
+      "checked": 7,
+      "changed_or_missing": []
+    },
+    "v44/tasks/pilot/fin-l2-ratio-01": {
+      "checked": 7,
+      "changed_or_missing": []
+    },
+    "v44/tasks/pilot/fin-l2-tech-01": {
+      "checked": 7,
+      "changed_or_missing": []
+    },
+    "v44/tasks/pilot/fin-l3-agg-01": {
+      "checked": 7,
+      "changed_or_missing": []
+    },
+    "v44/tasks/pilot/fin-l3-crypto-01": {
+      "checked": 7,
+      "changed_or_missing": []
+    },
+    "v44/tasks/pilot/fin-l3-index-01": {
+      "checked": 7,
+      "changed_or_missing": []
+    },
+    "v44/tasks/pilot/fin-l3-screen-01": {
+      "checked": 7,
+      "changed_or_missing": []
+    },
+    "v44/tasks/pilot/fin-l3-tech-multi-01": {
+      "checked": 7,
+      "changed_or_missing": []
+    },
+    "v44/tasks/pilot/fin-l3-top-01": {
+      "checked": 7,
+      "changed_or_missing": []
+    },
+    "v44/tasks/pilot/fin-l4-2nguon-01": {
+      "checked": 7,
+      "changed_or_missing": []
+    },
+    "v44/tasks/pilot/fin-l4-future-01": {
+      "checked": 7,
+      "changed_or_missing": []
+    },
+    "v44/tasks/pilot/fin-l4-narrative-01": {
+      "checked": 7,
+      "changed_or_missing": []
+    },
+    "v44/tasks/pilot/fin-l4-nonexist-01": {
+      "checked": 7,
+      "changed_or_missing": []
+    },
+    "v44/tasks/pilot/fin-l5-compare-01": {
+      "checked": 7,
+      "changed_or_missing": []
+    },
+    "v44/tasks/pilot/fin-l5-profile-01": {
+      "checked": 7,
+      "changed_or_missing": []
+    },
+    "v44/tasks/pilot/fin-l5-valuation-01": {
+      "checked": 7,
+      "changed_or_missing": []
+    },
+    "v44/tasks/smoke/smoke-agg-01": {
+      "checked": 7,
+      "changed_or_missing": []
+    },
+    "v44/tasks/smoke/smoke-quote-01": {
+      "checked": 7,
+      "changed_or_missing": []
+    },
+    "v44/tasks/smoke/smoke-trap-01": {
+      "checked": 7,
+      "changed_or_missing": []
+    },
+    "v44/protocol": {
+      "checked": 1,
+      "changed_or_missing": []
+    },
+    "inherited/v42_results": {
+      "checked": 2228,
+      "changed_or_missing": []
+    },
+    "inherited/v43_tools": {
+      "checked": 92,
+      "changed_or_missing": []
+    },
+    "inherited/v43_tasks": {
+      "checked": 1699,
+      "changed_or_missing": []
+    },
+    "inherited/v43_plans": {
+      "checked": 5,
+      "changed_or_missing": []
+    },
+    "inherited/v43_native_src": {
+      "checked": 214,
+      "changed_or_missing": []
+    },
+    "inherited/v43_native_test": {
+      "checked": 121,
+      "changed_or_missing": []
+    },
+    "inherited/v43_native_prompts": {
+      "checked": 6,
+      "changed_or_missing": []
+    },
+    "inherited/v43_native_test_artifacts": {
+      "checked": 31,
+      "changed_or_missing": []
+    },
+    "v44/results-byte-sha-mtime": {
+      "checked": 8132,
+      "changed_or_missing": [],
+      "symlinks_checked_separately": 12
+    }
+  },
+  "notes": [
+    "No frozen source/artifact writes, no provider/model calls.",
+    "Production expected upstream merge not compared with old e5ce4e1 baseline.",
+    "Legacy v3 shared dependency tree deliberately excluded: known production dependency update disclosed in plan.",
+    "Protected directory symlinks checked with lstat/readlink rather than is_file; original target_sha256=None retained."
+  ]
+}

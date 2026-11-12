@@ -1,0 +1,15 @@
+{
+  "protocol": "v44-four-condition-numeric-diagnostic",
+  "model": "nvidia/nvidia/nemotron-3.5-bolt-e4b",
+  "n_started": 24,
+  "numeric_canary_conditions": [],
+  "quality_pass": false,
+  "candidate_success": 2,
+  "candidate_dnf": 0,
+  "candidate_false_refusals": 4,
+  "candidate_trap_correct": 2,
+  "model_quality_failures": 18,
+  "dnf": 0,
+  "note": "Independent actual receipt/control audit must also pass. Pilot requires this preregistered quality gate plus independent zero-fabrication/complete audit controls; no promotion.",
+  "smoke_financial_canary_pass": true
+}

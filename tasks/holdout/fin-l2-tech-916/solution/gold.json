@@ -1,48 +1,71 @@
 {
- "task_id": "fin-l2-tech-916",
- "scoring": "value",
- "solution": {
-  "value": 22.55
- },
- "as_of": "2026-11-01T23:31:17.898533+07:00",
- "split": "holdout",
- "expects": [
-  {
-   "type": "value",
-   "path": "value",
-   "gold": 22.55,
-   "tol": {
-    "abs": 0.1
-   }
+  "task_id": "fin-l2-tech-916",
+  "scoring": "value",
+  "solution": {
+    "value": 22.55
   },
-  {
-   "type": "unit",
-   "path": "unit",
-   "accept": [
-    "RSI-14",
-    "RSI 14",
-    "RSI",
-    "rsi14"
-   ]
-  },
-  {
-   "type": "period",
-   "path": "period",
-   "accept": [
-    "30/10",
-    "30-10",
-    "30.10",
-    "2026-10-30",
-    "phiên gần nhất",
-    "gần nhất"
-   ]
-  },
-  {
-   "type": "str",
-   "path": "source",
-   "accept": [
-    "signals_technical"
-   ]
-  }
- ]
+  "as_of": "2026-11-01T23:31:17.898533+07:00",
+  "split": "holdout",
+  "expects": [
+    {
+      "type": "value",
+      "path": "value",
+      "gold": 22.55,
+      "tol": {
+        "abs": 0.1
+      }
+    },
+    {
+      "type": "unit",
+      "path": "unit",
+      "accept": [
+        "RSI-14",
+        "RSI 14",
+        "RSI",
+        "rsi14"
+      ]
+    },
+    {
+      "type": "period",
+      "path": "period",
+      "accept": [
+        "30/10",
+        "30-10",
+        "30.10",
+        "2026-10-30",
+        "phiên gần nhất",
+        "gần nhất"
+      ]
+    },
+    {
+      "type": "str",
+      "path": "source",
+      "accept": [
+        "signals_technical"
+      ]
+    }
+  ],
+  "contract_version": 2,
+  "provenance_contract": [
+    {
+      "tool": "signals_technical",
+      "source": "computed-local",
+      "as_of": "2026-11-01T23:31:17.898533+07:00",
+      "matched_entry_id": "tech:SBT",
+      "response_sha256": "3a4d461c9d2c0534f7458a90f3642a6f75c14e69d1968e07aa8e5ca1c729749c"
+    }
+  ],
+  "payload_sha256": "0f8ed508d0b5ee8bb532840ba210615c2a2b532706fb49b82284a30f7e40adf8",
+  "provenance_catalog": [
+    {
+      "tool": "signals_technical",
+      "source": "computed-local",
+      "as_of": "2026-11-01T23:31:17.898533+07:00",
+      "matched_entry_id": "tech:SBT",
+      "response_sha256": "3a4d461c9d2c0534f7458a90f3642a6f75c14e69d1968e07aa8e5ca1c729749c"
+    }
+  ],
+  "required_payload_keys": [
+    "tech:SBT"
+  ]
 }

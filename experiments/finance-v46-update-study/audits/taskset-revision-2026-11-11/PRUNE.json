@@ -1,0 +1,675 @@
+{
+ "amendment": "plans/2026-11-11-v46u-taskset-revision-amendment.md",
+ "rule": "Amendment 2026-11-11 (d): outcome-blind pruning of main/holdout and retirement of quarantined + old memory tasks.\n\nRule (fixed before any main data, uses no arm outcome):\n  per family quota; keep tasks by round-robin over template signatures (tools_expected + expects paths),\n  within a signature prefer an entity not yet kept, then more expects, then smaller id.\nUsage: python tools/apply_taskset_prune_20261111.py [--apply]",
+ "quota": {
+  "main": {
+   "fin-l1-bctc": 7,
+   "fin-l5-profile": 7,
+   "fin-l4-nonexist": 5,
+   "fin-l5-valuation": 6,
+   "fin-l2-growth": 5,
+   "fin-l3-screen": 5,
+   "fin-l4-future": 6,
+   "fin-l2-margin": 5,
+   "fin-l1-quote-vn": 5,
+   "fin-l1-quote-gf": 3,
+   "fin-l1-quote-crypto": 3
+  },
+  "holdout": {
+   "fin-l1-bctc": 2,
+   "fin-l5-valuation": 2,
+   "fin-l4-future": 2,
+   "fin-l4-nonexist": 1,
+   "fin-l5-profile": 2,
+   "fin-l2-growth": 1,
+   "fin-l2-margin": 1,
+   "fin-l2-tech": 1
+  }
+ },
+ "splits": {
+  "main": {
+   "core_kept": [
+    "fin-l1-bctc-109",
+    "fin-l1-bctc-110",
+    "fin-l1-bctc-111",
+    "fin-l1-bctc-112",
+    "fin-l1-bctc-113",
+    "fin-l1-bctc-114",
+    "fin-l1-bctc-115",
+    "fin-l1-macro-137",
+    "fin-l1-macro-138",
+    "fin-l1-macro-139",
+    "fin-l1-macro-140",
+    "fin-l1-quote-crypto-121",
+    "fin-l1-quote-crypto-122",
+    "fin-l1-quote-crypto-125",
+    "fin-l1-quote-gf-126",
+    "fin-l1-quote-gf-127",
+    "fin-l1-quote-gf-128",
+    "fin-l1-quote-vn-101",
+    "fin-l1-quote-vn-103",
+    "fin-l1-quote-vn-104",
+    "fin-l1-quote-vn-106",
+    "fin-l1-quote-vn-107",
+    "fin-l2-crypto-x-166",
+    "fin-l2-crypto-x-167",
+    "fin-l2-crypto-x-168",
+    "fin-l2-crypto-x-169",
+    "fin-l2-crypto-x-170",
+    "fin-l2-gf-compare-172",
+    "fin-l2-gf-compare-173",
+    "fin-l2-gf-compare-174",
+    "fin-l2-gf-compare-175",
+    "fin-l2-growth-141",
+    "fin-l2-growth-142",
+    "fin-l2-growth-143",
+    "fin-l2-growth-144",
+    "fin-l2-growth-145",
+    "fin-l2-macro-calc-176",
+    "fin-l2-macro-calc-180",
+    "fin-l2-margin-149",
+    "fin-l2-margin-150",
+    "fin-l2-margin-151",
+    "fin-l2-margin-152",
+    "fin-l2-margin-153",
+    "fin-l2-ratio-157",
+    "fin-l2-ratio-158",
+    "fin-l2-ratio-159",
+    "fin-l2-ratio-160",
+    "fin-l2-tech-162",
+    "fin-l2-tech-163",
+    "fin-l2-tech-164",
+    "fin-l2-tech-165",
+    "fin-l3-agg-181",
+    "fin-l3-agg-182",
+    "fin-l3-agg-183",
+    "fin-l3-agg-184",
+    "fin-l3-agg-185",
+    "fin-l3-agg-186",
+    "fin-l3-agg-187",
+    "fin-l3-agg-188",
+    "fin-l3-breadth-301",
+    "fin-l3-crypto-multi-208",
+    "fin-l3-crypto-multi-209",
+    "fin-l3-crypto-multi-210",
+    "fin-l3-crypto-multi-211",
+    "fin-l3-crypto-multi-212",
+    "fin-l3-crypto-multi-213",
+    "fin-l3-crypto-multi-214",
+    "fin-l3-crypto-multi-215",
+    "fin-l3-index-216",
+    "fin-l3-index-217",
+    "fin-l3-macro-agg-220",
+    "fin-l3-screen-189",
+    "fin-l3-screen-190",
+    "fin-l3-screen-191",
+    "fin-l3-screen-192",
+    "fin-l3-screen-193",
+    "fin-l3-tech-multi-203",
+    "fin-l3-tech-multi-204",
+    "fin-l3-tech-multi-205",
+    "fin-l3-tech-multi-206",
+    "fin-l3-tech-multi-207",
+    "fin-l3-top-197",
+    "fin-l3-top-198",
+    "fin-l3-top-199",
+    "fin-l3-top-200",
+    "fin-l3-top-201",
+    "fin-l3-top-202",
+    "fin-l4-2src-253",
+    "fin-l4-2src-254",
+    "fin-l4-2src-255",
+    "fin-l4-2src-256",
+    "fin-l4-2src-257",
+    "fin-l4-2src-258",
+    "fin-l4-2src-259",
+    "fin-l4-2src-260",
+    "fin-l4-2src-302",
+    "fin-l4-chain-303",
+    "fin-l4-chain-304",
+    "fin-l4-chain-305",
+    "fin-l4-chain-306",
+    "fin-l4-future-221",
+    "fin-l4-future-222",
+    "fin-l4-future-231",
+    "fin-l4-future-232",
+    "fin-l4-future-233",
+    "fin-l4-future-307",
+    "fin-l4-nonexist-235",
+    "fin-l4-nonexist-236",
+    "fin-l4-nonexist-237",
+    "fin-l4-nonexist-238",
+    "fin-l4-nonexist-239",
+    "fin-l5-compare-275",
+    "fin-l5-compare-276",
+    "fin-l5-compare-277",
+    "fin-l5-compare-278",
+    "fin-l5-compare-279",
+    "fin-l5-compare-280",
+    "fin-l5-compare-281",
+    "fin-l5-compare-282",
+    "fin-l5-compare-283",
+    "fin-l5-compare-284",
+    "fin-l5-compare-285",
+    "fin-l5-compare-286",
+    "fin-l5-compare-287",
+    "fin-l5-compare-288",
+    "fin-l5-compare-289",
+    "fin-l5-compare-290",
+    "fin-l5-profile-261",
+    "fin-l5-profile-262",
+    "fin-l5-profile-263",
+    "fin-l5-profile-264",
+    "fin-l5-profile-265",
+    "fin-l5-profile-273",
+    "fin-l5-profile-274",
+    "fin-l5-valuation-291",
+    "fin-l5-valuation-292",
+    "fin-l5-valuation-293",
+    "fin-l5-valuation-294",
+    "fin-l5-valuation-295",
+    "fin-l5-valuation-300"
+   ],
+   "retired": [
+    {
+     "id": "fin-l1-macro-133",
+     "reason": "quarantined:ambiguous_cpi_series_dimension"
+    },
+    {
+     "id": "fin-l1-macro-136",
+     "reason": "quarantined:ambiguous_cpi_series_dimension"
+    },
+    {
+     "id": "fin-l2-macro-calc-178",
+     "reason": "quarantined:ambiguous_cpi_series_dimension"
+    },
+    {
+     "id": "fin-l2-macro-calc-179",
+     "reason": "quarantined:ambiguous_cpi_series_dimension"
+    },
+    {
+     "id": "fin-l3-macro-agg-218",
+     "reason": "quarantined:ambiguous_cpi_series_dimension"
+    },
+    {
+     "id": "fin-l3-macro-agg-219",
+     "reason": "quarantined:ambiguous_cpi_series_dimension"
+    },
+    {
+     "id": "fin-l4-future-229",
+     "reason": "quarantined:ambiguous_cpi_series_dimension"
+    },
+    {
+     "id": "fin-l4-future-230",
+     "reason": "quarantined:ambiguous_cpi_series_dimension"
+    },
+    {
+     "id": "fin-l4-narrative-244",
+     "reason": "quarantined:incomplete_narrative_evidence_rubric"
+    },
+    {
+     "id": "fin-l4-narrative-245",
+     "reason": "quarantined:incomplete_narrative_evidence_rubric"
+    },
+    {
+     "id": "fin-l4-narrative-246",
+     "reason": "quarantined:incomplete_narrative_evidence_rubric"
+    },
+    {
+     "id": "fin-l4-narrative-247",
+     "reason": "quarantined:incomplete_narrative_evidence_rubric"
+    },
+    {
+     "id": "fin-l4-narrative-248",
+     "reason": "quarantined:incomplete_narrative_evidence_rubric"
+    },
+    {
+     "id": "fin-l4-narrative-249",
+     "reason": "quarantined:incomplete_narrative_evidence_rubric"
+    },
+    {
+     "id": "fin-l4-narrative-250",
+     "reason": "quarantined:incomplete_narrative_evidence_rubric"
+    },
+    {
+     "id": "fin-l4-narrative-251",
+     "reason": "quarantined:incomplete_narrative_evidence_rubric"
+    },
+    {
+     "id": "fin-l4-narrative-252",
+     "reason": "quarantined:incomplete_narrative_evidence_rubric"
+    },
+    {
+     "id": "fin-mem-320",
+     "reason": "memory_redesign_native"
+    },
+    {
+     "id": "fin-mem-321",
+     "reason": "memory_redesign_native"
+    },
+    {
+     "id": "fin-mem-322",
+     "reason": "memory_redesign_native"
+    },
+    {
+     "id": "fin-mem-323",
+     "reason": "memory_redesign_native"
+    },
+    {
+     "id": "fin-mem-324",
+     "reason": "memory_redesign_native"
+    },
+    {
+     "id": "fin-mem-325",
+     "reason": "memory_redesign_native"
+    },
+    {
+     "id": "fin-mem-326",
+     "reason": "memory_redesign_native"
+    },
+    {
+     "id": "fin-mem-327",
+     "reason": "memory_redesign_native"
+    },
+    {
+     "id": "fin-mem-328",
+     "reason": "memory_redesign_native"
+    },
+    {
+     "id": "fin-mem-329",
+     "reason": "memory_redesign_native"
+    },
+    {
+     "id": "fin-mem-330",
+     "reason": "memory_redesign_native"
+    },
+    {
+     "id": "fin-mem-331",
+     "reason": "memory_redesign_native"
+    },
+    {
+     "id": "fin-mem-332",
+     "reason": "memory_redesign_native"
+    },
+    {
+     "id": "fin-mem-333",
+     "reason": "memory_redesign_native"
+    },
+    {
+     "id": "fin-mem-334",
+     "reason": "memory_redesign_native"
+    },
+    {
+     "id": "fin-mem-335",
+     "reason": "memory_redesign_native"
+    },
+    {
+     "id": "fin-mem-336",
+     "reason": "memory_redesign_native"
+    },
+    {
+     "id": "fin-mem-337",
+     "reason": "memory_redesign_native"
+    },
+    {
+     "id": "fin-mem-338",
+     "reason": "memory_redesign_native"
+    },
+    {
+     "id": "fin-mem-339",
+     "reason": "memory_redesign_native"
+    },
+    {
+     "id": "fin-mem-340",
+     "reason": "memory_redesign_native"
+    },
+    {
+     "id": "fin-mem-341",
+     "reason": "memory_redesign_native"
+    },
+    {
+     "id": "fin-mem-342",
+     "reason": "memory_redesign_native"
+    },
+    {
+     "id": "fin-mem-343",
+     "reason": "memory_redesign_native"
+    },
+    {
+     "id": "fin-mem-344",
+     "reason": "memory_redesign_native"
+    },
+    {
+     "id": "fin-mem-345",
+     "reason": "memory_redesign_native"
+    },
+    {
+     "id": "fin-mem-346",
+     "reason": "memory_redesign_native"
+    },
+    {
+     "id": "fin-mem-347",
+     "reason": "memory_redesign_native"
+    },
+    {
+     "id": "fin-mem-348",
+     "reason": "memory_redesign_native"
+    },
+    {
+     "id": "fin-mem-349",
+     "reason": "memory_redesign_native"
+    },
+    {
+     "id": "fin-l1-bctc-116",
+     "reason": "prune_template_cap:fin-l1-bctc:7"
+    },
+    {
+     "id": "fin-l1-bctc-117",
+     "reason": "prune_template_cap:fin-l1-bctc:7"
+    },
+    {
+     "id": "fin-l1-bctc-118",
+     "reason": "prune_template_cap:fin-l1-bctc:7"
+    },
+    {
+     "id": "fin-l1-bctc-119",
+     "reason": "prune_template_cap:fin-l1-bctc:7"
+    },
+    {
+     "id": "fin-l1-bctc-120",
+     "reason": "prune_template_cap:fin-l1-bctc:7"
+    },
+    {
+     "id": "fin-l1-quote-crypto-123",
+     "reason": "prune_template_cap:fin-l1-quote-crypto:3"
+    },
+    {
+     "id": "fin-l1-quote-crypto-124",
+     "reason": "prune_template_cap:fin-l1-quote-crypto:3"
+    },
+    {
+     "id": "fin-l1-quote-gf-129",
+     "reason": "prune_template_cap:fin-l1-quote-gf:3"
+    },
+    {
+     "id": "fin-l1-quote-gf-130",
+     "reason": "prune_template_cap:fin-l1-quote-gf:3"
+    },
+    {
+     "id": "fin-l1-quote-vn-108",
+     "reason": "prune_template_cap:fin-l1-quote-vn:5"
+    },
+    {
+     "id": "fin-l2-growth-146",
+     "reason": "prune_template_cap:fin-l2-growth:5"
+    },
+    {
+     "id": "fin-l2-growth-147",
+     "reason": "prune_template_cap:fin-l2-growth:5"
+    },
+    {
+     "id": "fin-l2-growth-148",
+     "reason": "prune_template_cap:fin-l2-growth:5"
+    },
+    {
+     "id": "fin-l2-margin-154",
+     "reason": "prune_template_cap:fin-l2-margin:5"
+    },
+    {
+     "id": "fin-l2-margin-155",
+     "reason": "prune_template_cap:fin-l2-margin:5"
+    },
+    {
+     "id": "fin-l3-screen-194",
+     "reason": "prune_template_cap:fin-l3-screen:5"
+    },
+    {
+     "id": "fin-l3-screen-195",
+     "reason": "prune_template_cap:fin-l3-screen:5"
+    },
+    {
+     "id": "fin-l3-screen-196",
+     "reason": "prune_template_cap:fin-l3-screen:5"
+    },
+    {
+     "id": "fin-l4-future-223",
+     "reason": "prune_template_cap:fin-l4-future:6"
+    },
+    {
+     "id": "fin-l4-future-224",
+     "reason": "prune_template_cap:fin-l4-future:6"
+    },
+    {
+     "id": "fin-l4-future-225",
+     "reason": "prune_template_cap:fin-l4-future:6"
+    },
+    {
+     "id": "fin-l4-future-226",
+     "reason": "prune_template_cap:fin-l4-future:6"
+    },
+    {
+     "id": "fin-l4-future-227",
+     "reason": "prune_template_cap:fin-l4-future:6"
+    },
+    {
+     "id": "fin-l4-future-228",
+     "reason": "prune_template_cap:fin-l4-future:6"
+    },
+    {
+     "id": "fin-l4-future-234",
+     "reason": "prune_template_cap:fin-l4-future:6"
+    },
+    {
+     "id": "fin-l4-future-308",
+     "reason": "prune_template_cap:fin-l4-future:6"
+    },
+    {
+     "id": "fin-l4-nonexist-240",
+     "reason": "prune_template_cap:fin-l4-nonexist:5"
+    },
+    {
+     "id": "fin-l4-nonexist-241",
+     "reason": "prune_template_cap:fin-l4-nonexist:5"
+    },
+    {
+     "id": "fin-l4-nonexist-242",
+     "reason": "prune_template_cap:fin-l4-nonexist:5"
+    },
+    {
+     "id": "fin-l4-nonexist-243",
+     "reason": "prune_template_cap:fin-l4-nonexist:5"
+    },
+    {
+     "id": "fin-l4-nonexist-309",
+     "reason": "prune_template_cap:fin-l4-nonexist:5"
+    },
+    {
+     "id": "fin-l4-nonexist-310",
+     "reason": "prune_template_cap:fin-l4-nonexist:5"
+    },
+    {
+     "id": "fin-l5-profile-266",
+     "reason": "prune_template_cap:fin-l5-profile:7"
+    },
+    {
+     "id": "fin-l5-profile-267",
+     "reason": "prune_template_cap:fin-l5-profile:7"
+    },
+    {
+     "id": "fin-l5-profile-268",
+     "reason": "prune_template_cap:fin-l5-profile:7"
+    },
+    {
+     "id": "fin-l5-profile-269",
+     "reason": "prune_template_cap:fin-l5-profile:7"
+    },
+    {
+     "id": "fin-l5-profile-270",
+     "reason": "prune_template_cap:fin-l5-profile:7"
+    },
+    {
+     "id": "fin-l5-profile-271",
+     "reason": "prune_template_cap:fin-l5-profile:7"
+    },
+    {
+     "id": "fin-l5-profile-272",
+     "reason": "prune_template_cap:fin-l5-profile:7"
+    },
+    {
+     "id": "fin-l5-valuation-296",
+     "reason": "prune_template_cap:fin-l5-valuation:6"
+    },
+    {
+     "id": "fin-l5-valuation-297",
+     "reason": "prune_template_cap:fin-l5-valuation:6"
+    },
+    {
+     "id": "fin-l5-valuation-298",
+     "reason": "prune_template_cap:fin-l5-valuation:6"
+    },
+    {
+     "id": "fin-l5-valuation-299",
+     "reason": "prune_template_cap:fin-l5-valuation:6"
+    }
+   ]
+  },
+  "holdout": {
+   "core_kept": [
+    "fin-l1-bctc-903",
+    "fin-l1-bctc-904",
+    "fin-l1-quote-crypto-906",
+    "fin-l1-quote-gf-907",
+    "fin-l1-quote-vn-901",
+    "fin-l1-quote-vn-902",
+    "fin-l2-crypto-x-918",
+    "fin-l2-gf-compare-919",
+    "fin-l2-growth-911",
+    "fin-l2-margin-913",
+    "fin-l2-ratio-915",
+    "fin-l2-tech-916",
+    "fin-l3-agg-921",
+    "fin-l3-agg-922",
+    "fin-l3-crypto-multi-928",
+    "fin-l3-crypto-multi-929",
+    "fin-l3-index-930",
+    "fin-l3-screen-923",
+    "fin-l3-screen-924",
+    "fin-l3-tech-multi-927",
+    "fin-l3-top-925",
+    "fin-l3-top-926",
+    "fin-l4-2src-939",
+    "fin-l4-2src-940",
+    "fin-l4-future-931",
+    "fin-l4-future-934",
+    "fin-l4-narrative-938",
+    "fin-l4-nonexist-935",
+    "fin-l5-compare-944",
+    "fin-l5-compare-945",
+    "fin-l5-compare-946",
+    "fin-l5-compare-947",
+    "fin-l5-profile-941",
+    "fin-l5-profile-943",
+    "fin-l5-valuation-948",
+    "fin-l5-valuation-949"
+   ],
+   "retired": [
+    {
+     "id": "fin-l1-macro-908",
+     "reason": "quarantined:ambiguous_cpi_series_dimension"
+    },
+    {
+     "id": "fin-l1-macro-909",
+     "reason": "quarantined:ambiguous_cpi_series_dimension"
+    },
+    {
+     "id": "fin-l1-macro-910",
+     "reason": "quarantined:ambiguous_cpi_series_dimension"
+    },
+    {
+     "id": "fin-l2-macro-calc-920",
+     "reason": "quarantined:ambiguous_cpi_series_dimension"
+    },
+    {
+     "id": "fin-l4-future-933",
+     "reason": "quarantined:ambiguous_cpi_series_dimension"
+    },
+    {
+     "id": "fin-l4-narrative-937",
+     "reason": "quarantined:incomplete_narrative_evidence_rubric"
+    },
+    {
+     "id": "fin-mem-960",
+     "reason": "memory_redesign_native"
+    },
+    {
+     "id": "fin-mem-961",
+     "reason": "memory_redesign_native"
+    },
+    {
+     "id": "fin-mem-962",
+     "reason": "memory_redesign_native"
+    },
+    {
+     "id": "fin-mem-963",
+     "reason": "memory_redesign_native"
+    },
+    {
+     "id": "fin-mem-964",
+     "reason": "memory_redesign_native"
+    },
+    {
+     "id": "fin-mem-965",
+     "reason": "memory_redesign_native"
+    },
+    {
+     "id": "fin-mem-966",
+     "reason": "memory_redesign_native"
+    },
+    {
+     "id": "fin-mem-967",
+     "reason": "memory_redesign_native"
+    },
+    {
+     "id": "fin-mem-968",
+     "reason": "memory_redesign_native"
+    },
+    {
+     "id": "fin-mem-969",
+     "reason": "memory_redesign_native"
+    },
+    {
+     "id": "fin-l1-bctc-905",
+     "reason": "prune_template_cap:fin-l1-bctc:2"
+    },
+    {
+     "id": "fin-l2-growth-912",
+     "reason": "prune_template_cap:fin-l2-growth:1"
+    },
+    {
+     "id": "fin-l2-margin-914",
+     "reason": "prune_template_cap:fin-l2-margin:1"
+    },
+    {
+     "id": "fin-l2-tech-917",
+     "reason": "prune_template_cap:fin-l2-tech:1"
+    },
+    {
+     "id": "fin-l4-future-932",
+     "reason": "prune_template_cap:fin-l4-future:2"
+    },
+    {
+     "id": "fin-l4-nonexist-936",
+     "reason": "prune_template_cap:fin-l4-nonexist:1"
+    },
+    {
+     "id": "fin-l5-profile-942",
+     "reason": "prune_template_cap:fin-l5-profile:2"
+    },
+    {
+     "id": "fin-l5-valuation-950",
+     "reason": "prune_template_cap:fin-l5-valuation:2"
+    }
+   ]
+  }
+ }
+}

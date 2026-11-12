@@ -208,10 +208,12 @@ def gdp_pick(env, period):
 
 
 # === thân oracle ===
-cl = env('cohlcv:ETHUSDT')["data"]["closes"]
-vs = [x["c"] for x in cl]
-check("not_all_up", all(vs[i + 1] > vs[i] for i in range(len(vs) - 1)), False)
-check("verdict", gold["solution"]["verdict"], "sai")
+cl = env('cohlcv:ETHUSDT')['data']['closes']
+check('n', len(cl), 10)
+lo = min(cl, key=lambda x: x['c']); hi = max(cl, key=lambda x: x['c'])
+check('min', lo['c'], gold['solution']['min_close'])
+check('date', lo['t'], gold['solution']['min_date'])
+check('range', round(hi['c'] - lo['c'], 2), gold['solution']['range'])
 
 if problems:
     print("ORACLE MISMATCH:")

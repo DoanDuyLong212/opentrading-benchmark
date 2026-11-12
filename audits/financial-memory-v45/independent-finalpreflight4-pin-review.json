@@ -1,0 +1,28 @@
+{
+  "status": "pin-review-pass-await-full-suite",
+  "manifest": "/home/doanlong/extra/benchmark/experiments/finance-v45-study/results/financial-memory-v45-mini-20261109-preflight4/manifest.json",
+  "manifest_sha256": "da969d97c711b687cf4f5e558e6dcf3488543a67309edf6aacbf6610c9804410",
+  "source_files_pinned": 2039,
+  "current_fingerprints_match": true,
+  "cells": {
+    "('nvidia/nvidia/nemotron-3.5-super-vl-120b-a12b', 'ot_memory_on')": 3,
+    "('nvidia/nvidia/nemotron-3.5-super-vl-120b-a12b', 'ot_memory_off')": 3,
+    "('nvidia/nvidia/nemotron-3.5-super-vl-120b-a12b', 'opencode')": 3,
+    "('nvidia/nvidia/nemotron-3.5-super-vl-120b-a12b', 'dsh')": 3,
+    "('nvidia/deepseek-ai/deepseek-v4.1-flash', 'ot_memory_on')": 3,
+    "('nvidia/deepseek-ai/deepseek-v4.1-flash', 'ot_memory_off')": 3,
+    "('nvidia/deepseek-ai/deepseek-v4.1-flash', 'opencode')": 3,
+    "('nvidia/deepseek-ai/deepseek-v4.1-flash', 'dsh')": 3
+  },
+  "exact_admissions_match": true,
+  "common_mini_sampling": {
+    "temperature": 1,
+    "top_p": 0.95
+  },
+  "limits": {
+    "episodes": 24,
+    "upstream_attempts_per_episode": 12,
+    "max_upstream_attempts": 288
+  },
+  "external_model_calls": 0
+}

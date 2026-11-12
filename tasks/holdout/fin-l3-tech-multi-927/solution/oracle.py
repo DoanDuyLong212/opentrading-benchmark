@@ -208,8 +208,10 @@ def gdp_pick(env, period):
 
 
 # === thân oracle ===
-rs = {s: float(env("tech:" + s)["data"]["rsi14"]) for s in ['ACB', 'STB', 'VPB', 'HDB', 'TPB']}
-check("count", sum(1 for v in rs.values() if v < 45), gold["solution"]["count"])
+rs = {s: float(env('tech:' + s)['data']['rsi14']) for s in ['ACB', 'STB', 'VPB', 'HDB', 'TPB']}
+m = max(rs, key=rs.get)
+check('symbol', m, gold['solution']['symbol'])
+check('rsi', rs[m], gold['solution']['rsi14'])
 
 if problems:
     print("ORACLE MISMATCH:")

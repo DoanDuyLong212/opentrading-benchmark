@@ -1,0 +1,28 @@
+import json,pathlib,hashlib,datetime,collections
+W=pathlib.Path('/home/doanlong/extra/benchmark');root=W/'experiments/finance-v42-study/results/financial-v42-smoke-20261106'; out=W/'audits/financial-prompt-v42/independent-manual-receipts.json'
+load=lambda p:json.loads(pathlib.Path(p).read_text()); lines=lambda p:[json.loads(x) for x in pathlib.Path(p).read_text().splitlines() if x.strip()] if pathlib.Path(p).exists() else []; sha=lambda p:hashlib.sha256(pathlib.Path(p).read_bytes()).hexdigest()
+fields=('call_id','tool','matched_entry_id','payload_sha256','response_sha256','source','as_of'); records=[]; filehashes={str(root/p):sha(root/p) for p in ['manifest.json','summary.json','trials.jsonl']};totals=collections.Counter()
+for r in lines(root/'trials.jsonl'):
+ a=r['attempts'][0];ps=lines(a['provider_ledger']);ms=lines(a['ledger_path']);ans=load(r['answer_path']) if r.get('answer_path') else None
+ for k in ('provider_ledger','ledger_path','log_path','inventory_path'):
+  if pathlib.Path(a[k]).exists():filehashes[a[k]]=sha(a[k])
+ if r.get('answer_path'):filehashes[r['answer_path']]=sha(r['answer_path'])
+ bodies=[]
+ for req in ps:
+  for stage in ('native','effective'):
+   p=req[stage+'_request_capture']['path'];filehashes[p]=sha(p);bodies.append(load(p))
+ claims=ans.get('evidence',[]) if ans else [];joins=[]
+ for c in claims:
+  matching=[m for m in ms if m.get('status')=='ok' and all(c.get(k)==m.get(k) and c.get(k) is not None for k in fields)]
+  visible=[m for b in bodies for m in b.get('messages',[]) if m.get('role')=='tool' and str(c.get('call_id')) in str(m.get('content')) and str(c.get('response_sha256')) in str(m.get('content'))]
+  joins.append({'claim':c,'matched_successful_ledger_records':len(matching),'visible_tool_context_copies':len(visible)})
+ generated=sum(p['tool_call_count'] for p in ps);ids=[i for p in ps for i in p.get('response_tool_call_ids',[])];mcp=len(ms)
+ complete=sum(isinstance(p.get('usage'),dict) and all(type(p['usage'].get(k)) is int and p['usage'][k]>=0 for k in ('prompt_tokens','completion_tokens')) for p in ps)
+ raw=a.get('final_text','');fenced=raw.strip().startswith('```');answerable=r['task']!='smoke-trap-01';explicit=bool(ans and 'value' in ans and ans['value'] is None and str(ans.get('reason') or ans.get('note') or '').strip());nullmap=bool(ans and isinstance(ans.get('values'),dict) and all(v is None for v in ans['values'].values()))
+ rec={'trial_id':r['trial_id'],'arm':r['arm'],'task':r['task'],'status':r['status'],'raw_final_sha256':hashlib.sha256(raw.encode()).hexdigest(),'raw_markdown_fenced':fenced,'raw_public_contract_valid':r['public_contract_valid'],'answerable':answerable,'parsed_answer':ans,'explicit_scalar_null_refusal':explicit,'all_null_values_map':nullmap,'generated_calls':generated,'generated_call_ids':ids,'duplicate_generated_call_ids':len(ids)-len(set(ids)),'mcp_calls':mcp,'mcp_ledger_exists':pathlib.Path(a['ledger_path']).exists(),'mcp_ok':sum(m.get('status')=='ok' for m in ms),'mcp_rejected':sum(m.get('status')=='rejected' for m in ms),'local_generated_remainder':generated-mcp,'provider_requests':len(ps),'complete_usage_requests':complete,'native_tool_counts':[len(b.get('tools',[])) for b in bodies[::2]],'evidence_joins':joins}
+ if r['arm']=='opentrading' and r['task']=='smoke-agg-01':
+  text=pathlib.Path(a['log_path']).read_text(); rec['native_fatal_message']='Machine-response contract failed after bounded correction: Non-null answer requires actual successful tool evidence.';rec['fatal_message_present']=rec['native_fatal_message'] in text
+ records.append(rec);totals.update(provider_requests=len(ps),generated_calls=generated,mcp_calls=mcp,complete_usage_requests=complete,claims=len(claims),unmatched_claims=sum(j['matched_successful_ledger_records']!=1 for j in joins),not_visible_claims=sum(not j['visible_tool_context_copies'] for j in joins),duplicate_generated_call_ids=rec['duplicate_generated_call_ids'])
+payload=load(W/'experiments/finance-v42-study/tasks/smoke/smoke-quote-01/environment/payloads.json')['tools']['vn_quote_history'];quote={'payload_last':payload['data']['last'],'payload_last_t':payload['data']['last_t'],'payload_units':payload['units'],'ot_trials':[r['trial_id'] for r in records if r['arm']=='opentrading' and r['task']=='smoke-quote-01'],'numeric_unit_period_manual_check':'Both OT answers 21/21.0 nghìn đồng, 30/10/2026, match frozen payload last 21, last_t 2026-10-30. Gold scores number and unit; period is manual, not a scored gold check.'}
+receipt={'audited_at':datetime.datetime.now(datetime.timezone.utc).isoformat(),'method':'Direct stored artifact inspection; no model calls or execution retries. Prepared auditor separately reruns registered graders in /tmp.','scope':'Completed smoke18 only; task-specific 1-tool live catalog, not full17 live catalog.','audit_development_note':'Initial direct receipt script assumed every trial had mcp.jsonl and stopped before writing receipt on OT trap with zero generated calls. Corrected to permit absent ledger with generated_calls=0, consistent with ready_check allow_empty; prepared auditor was unchanged and passed.','totals':dict(totals),'accepted_fabricated_evidence':0,'evidence_classification':'Six nonempty claimed receipts, all exactly match seven fields of one successful ledger response and appear in model tool context; remaining answers claim empty evidence; no fabricated claimed receipt or accepted fabrication observed.','numeric_quote_manual_check':quote,'trials':records,'file_sha256':filehashes}
+out.write_text(json.dumps(receipt,indent=2,ensure_ascii=False)+'\n');print(out);print(json.dumps(totals))

@@ -1,0 +1,1512 @@
+{
+  "counts": {
+    "holdout_any_shared_payload": 27,
+    "holdout_shared_instruction": 11,
+    "holdout_shared_instruction_and_payload": 11,
+    "holdout_all_four_identical": 0
+  },
+  "main_hashes": {
+    "fin-l3-screen-190": {
+      "instruction.md": "8ccf8d76236479768f8ca661f27518a27bd65842639a4b0d00e7faf9d0e5a32d",
+      "environment/payloads.json": "bff00ef3fb44f7a704dadf8f94689c0b535b33cb7163d79fcab9a8ef83b54f4d",
+      "solution/gold.json": "19a7351dccdc61b259171209c4a8e3b2b52d486ee65cb824fc7bc9a769ff859f",
+      "solution/oracle.py": "e8ded6a3fd8e22037dc53fa55daddbacbbc76f9c6cc286db97bdfc2053e50ab3"
+    },
+    "fin-l1-bctc-119": {
+      "instruction.md": "cf6cb76c13034e162758ff295f9486da14885c9624d8a518ef8030b1b9e6fc1d",
+      "environment/payloads.json": "ddac3ec1b92e79f1ffce8323a34081f8467bffb2b5dfde3c7404aa61574624ab",
+      "solution/gold.json": "7a93a411b741150e6dedc8a4e33aadc6a9ca66a9255cffb5b8345001fce1b1f3",
+      "solution/oracle.py": "48944b335b35350ae68596bf2e690602a7e444bfb9f2fed54ad4ab60b162c105"
+    },
+    "fin-l4-chain-303": {
+      "instruction.md": "ebcea915a52a7ea2c7860904b9034e0f6ad3ac1d39fb4b464228f15b1eb25128",
+      "environment/payloads.json": "293bef31c521c5388fb947161dd46816720fc35c84c27c387f7dce816fd6249b",
+      "solution/gold.json": "4c301e23f9514fc3cfe35118269dc8577f4e4315ee6baf95f75b1228b240bd2d",
+      "solution/oracle.py": "5317c3b98f439304158910bef7d06bed543dfef25d33a3ddaaca73de0c215a38"
+    },
+    "fin-l2-growth-146": {
+      "instruction.md": "9be8e8adfeccddee757ec5607fbc5e8ca0e3e4901494d31abe809a67ae4b4ff5",
+      "environment/payloads.json": "52326a23883dcc861639e6d89540ad07ebcdf6758e5dd9e127bb751377d6f0c3",
+      "solution/gold.json": "f9a8a546df1e85e898c2854c8d467cf3d6c7b8a8a2deb8393e5d7b5aa1d7c83c",
+      "solution/oracle.py": "5f72f2e95aa3711ee721abe7ab800146d106e3c9a2cff0cfaf6fb14140beea37"
+    },
+    "fin-l2-tech-163": {
+      "instruction.md": "7fee8f2f8452efeb2c7b3d4d7627b1dc868f3885308ab1549cdd83f5f3291d3e",
+      "environment/payloads.json": "3bb0c036d30afe297305571587870c0b1b1a2d9392326ea72c40c46f78fa0099",
+      "solution/gold.json": "c054c212a4302c40638f631241d058ebf38e01011231a041a635048b81542063",
+      "solution/oracle.py": "d2c9d0e8ebd714188eb7ff3d333af725d62ab030680100094c66c252d13a185d"
+    },
+    "fin-l5-profile-261": {
+      "instruction.md": "b38e301eab597b5ddfdd8fad16e71c831c640be653831b26b9949eddf4d92756",
+      "environment/payloads.json": "c1105a9cf7013020defacf181424c2fae45d69c2e14769bdf9ff1f8e18cd7baf",
+      "solution/gold.json": "8e645eb081beb62e2aab8f6e156a46440284b48476b3f96b4188ab5187dc5b7f",
+      "solution/oracle.py": "47e0785ba4d994e2047fae10d04baefc2717078904c25a365b716d882e5c038c"
+    },
+    "fin-l1-bctc-116": {
+      "instruction.md": "b34dd392530b1b260618ddf015157e1beb27ccf32671342a122c6efd98aecfcd",
+      "environment/payloads.json": "5f0bbe1901782843db46480749ebf90d592b2e85c8b09ca8c85c7310253775e9",
+      "solution/gold.json": "14ade021afc9a0ab90c138c62e3b1c41e1931858258b2d52917c9d2746df0f9f",
+      "solution/oracle.py": "f2d58a78668fe68c1d77b2521e0c19836c083c0afdc1d6acfa3b879ad2800c03"
+    },
+    "fin-l4-nonexist-239": {
+      "instruction.md": "23a94a525c67e438562914e7ff6296817be578b0ee4a0b14fe2074e6984bd3be",
+      "environment/payloads.json": "6d3e5b56f5ce2283d7e01781e46791dd5ad7e1fffaa64a260994962681d53b10",
+      "solution/gold.json": "b6e525ba4d3c2ebb3185ae406947e68ab01209247beaf9ccb46e7d94c8bd39be",
+      "solution/oracle.py": "a85f5d9c7186c6bd34f775614fc8466781a0880ea539f419852ae028e34db1a6"
+    },
+    "fin-l5-profile-264": {
+      "instruction.md": "b43f9e272c87d1d287e768454c73f5519c075185484fc0a29534fd02674f72c5",
+      "environment/payloads.json": "ba34a4807b439f21100f5fc4ce1050eb829f7a92b6850e05ecfe3f9293e50fac",
+      "solution/gold.json": "2c7f6f32e33f940a002e05570870058263ba3c291fe02178affbc9083abf29e5",
+      "solution/oracle.py": "8c546599a8712adec01782dc723ac3c9115dbbc3535ac41bf9819e34cc7b53cb"
+    },
+    "fin-l3-agg-187": {
+      "instruction.md": "6d620f17e3944b16f4ffaf63d2a515809cf5571b91a75ff1e53de46dcb904c79",
+      "environment/payloads.json": "6b4594b66bdb0c69625575b43c1cfe507f0719475baa432565ff454c6e258c35",
+      "solution/gold.json": "4093f61658b0abfa07cca8c549ed4dc923961dff2b75b8e6a0d6c3f826fe1b26",
+      "solution/oracle.py": "b65316f8c4c83c6f2023ba7b0c58c58c344aadda21ad6d1c8d25f5338cebe6c7"
+    },
+    "fin-l5-valuation-296": {
+      "instruction.md": "024c96ed1892d11d811048cd5fa2ef3a3f2b91287ebfdf52d4d8b9aed49e5c76",
+      "environment/payloads.json": "3d59e30094e5c847d423c604aabb11bd81ce687ca2171bad03f63c3bc4314afe",
+      "solution/gold.json": "247d95b050eea86c0b0a9aef66168b65ae3f26738d551a6e1895ee0e8010c409",
+      "solution/oracle.py": "b9455d755e74ed8338ad2f91c7bbb764fa9f86dc0ea96338a73fa2425b990da2"
+    },
+    "fin-l4-2src-257": {
+      "instruction.md": "b8571ec85adc2c0abb692ad26f75ffe715199ba7b48aa6ddeff79f269711fcdf",
+      "environment/payloads.json": "a83de05b38f6a498d640caf04351f52affc7887e47c18dad593c003d7f4fa91a",
+      "solution/gold.json": "a82207a76955725248cb8ce2c00bc879a6d0ce4783f7f70def53a080438c851d",
+      "solution/oracle.py": "32fd3fd05df6410620618079918b03c697e2bfe0f0f8df7ccfcf374835066c81"
+    },
+    "fin-l3-tech-multi-205": {
+      "instruction.md": "30a9008788f0447aa681ec0cd798244b6802710a109a68d73eb134d07d257a30",
+      "environment/payloads.json": "4497a9be9def0f66ddfe9ebbf1f52ca9738f0047c502e1a69e4d8924e8dc0f65",
+      "solution/gold.json": "9773d7108ecb112dec1472e84e5af7998f7dab953439fa21f6b1ce96e57f3aa9",
+      "solution/oracle.py": "a21dece0c8ef96111527059bdef512d0379da830bf6f690465b8e5a8c14f0da9"
+    },
+    "fin-l3-top-202": {
+      "instruction.md": "e7b9f0dbda9053e6d0fffc2a18a900320c683485f2c5c037678955e43aea11d4",
+      "environment/payloads.json": "b2446a67d6b1807ecbe171b0dea66b6147a5730988d0ec7b1ba7ac9c629e7a00",
+      "solution/gold.json": "4a641af7d01cd1401fa4eb22208eae21b6ecfe8c52945eb0c3228a7ff32e75f0",
+      "solution/oracle.py": "af2a01ca4b244970540bea5fce295bfe23f788cff4940acdbbf26aca6a348eb2"
+    },
+    "fin-l5-profile-263": {
+      "instruction.md": "843b0b1955a7921fbb0296310cbb7c0378f9b62953931d619111f0c9f695c6c0",
+      "environment/payloads.json": "44687915bb42eb667a928220620fe8fc19159d78d7e75d11989588439d080fb2",
+      "solution/gold.json": "428c0570ea35386c3575f7e23655aba61232dd5de740bf2bec7d839eb970618d",
+      "solution/oracle.py": "0e2a82f5ad613119ecbba0a81239eb00458d60f509db40b407b9252b61b8098c"
+    },
+    "fin-l2-growth-144": {
+      "instruction.md": "655712c8a0c77d73c757e2e5f59c1aad1d9d49eb505972cc05d16015269261d1",
+      "environment/payloads.json": "c852b39888ea7572821e99df29d878c798798e55b6f05c82c56c3e50f40e4f7b",
+      "solution/gold.json": "06ef1d6c99b60c4c949cdc42e2fa9db2a01d0d96534d0a41cd70ef847de27002",
+      "solution/oracle.py": "a4567975931860293220422a95bc24a2767784f53ec75c2bba43a1635c1ddec4"
+    },
+    "fin-l2-margin-150": {
+      "instruction.md": "98da4f90c04fa7cba8859a4b2eddac427025449fc81a83c13321f0df909dd07e",
+      "environment/payloads.json": "56e2419f49053c98cd4f8dd6af1276d2a71fb4f3c9cc395e1e8d1dd5183e19e8",
+      "solution/gold.json": "371f8f41420132392b033b43096afc016a7048f626387800c8f983a51772da53",
+      "solution/oracle.py": "76c5ded06169b87f0aae023fbcb62543c9af8dff350c03bfecf49f4094e407df"
+    },
+    "fin-l5-compare-289": {
+      "instruction.md": "6860b258fcfa065d5f519a52b78babac63c7e612b7f71751ae710e25a0922d03",
+      "environment/payloads.json": "6e724aed6de39026019090303dc95158803438613308e97562d8a1b8ed48c809",
+      "solution/gold.json": "0e1ed44de0f5a1f32d5a736685233c63caf40a8fa05e4627270be8026caf5d7f",
+      "solution/oracle.py": "ff0434735bae99d2422d32eea21b91e2aa3729749aeb48e96ccc47c64e209ded"
+    },
+    "fin-l4-narrative-251": {
+      "instruction.md": "df50ecbd89b17f97b46052dfbac1f80d5b3cc3e315a53ee3d18566b6d5f11484",
+      "environment/payloads.json": "7ff5439e3a871fc0996111025189c64049ec7d80f8a5f86d3512fe4b300705d9",
+      "solution/gold.json": "f30a6f9382551d37ecbacb38d134fbb6fc86dba04e632dbc6bb3f16eeda97222",
+      "solution/oracle.py": "677b90fd1878fe581134d237e16648200d1da0dcd207b6a169f91d4d42369293"
+    },
+    "fin-l3-screen-192": {
+      "instruction.md": "cffc0bfc7a098aad0ec552d548073585bdc3e5c92da77a8cd6e9c10f925963e4",
+      "environment/payloads.json": "0bd2fbf239937f6339375a3b74c14e626923c430bc191b9a6d0c9e0f61482465",
+      "solution/gold.json": "3c14a383bbe1696b2932fb064a3a82da9f35c90673d2d6acc71cdfd9f74af2ce",
+      "solution/oracle.py": "5f18de2ae3d534b1d00f31fde5b5cdfb5f1a0c8918bc46c8a71646e5a4f608ad"
+    },
+    "fin-l4-future-307": {
+      "instruction.md": "0261f4659735975ca3a70ad49479a9a4b0ab8b1e663ad3e9e6d47163bd20b47d",
+      "environment/payloads.json": "2693ecdd2176d5a3ed4c65e4f561581a43fdacd662ab58f35d2ed17d57e1b744",
+      "solution/gold.json": "e6ad7d1796937bf6ccedcfc3161996f563c9fdac27db709a979ca07fa886f465",
+      "solution/oracle.py": "a62c6ade2147b8304fd3a676ab14c2fc871cbe2e61501db97e5a439e66a9a298"
+    },
+    "fin-l1-bctc-109": {
+      "instruction.md": "4a9f5d333e7d863d57c32c290cdec8b3d8dbcfff71a202582973226bb7eeb5f4",
+      "environment/payloads.json": "807221df72b3943e15ea466c1091ebfc4c2628faa5827d9ba7a01c28ad289352",
+      "solution/gold.json": "21f0361598a67b17f9aac21be085c5ed9d7278b6ee57287c18005917ef2f549f",
+      "solution/oracle.py": "0992748f6863f576900db1d65b23751bf485b9c47188b91382eec5ec1ccbf093"
+    },
+    "fin-l4-chain-304": {
+      "instruction.md": "c084c56c148251959a5b990970b556a46b97d0a60720d87d9da0620abf9633b6",
+      "environment/payloads.json": "4ea8bbb9d1b871ff591d72c77cbfcdc51fb7861f012f3bc99fd23786b7605433",
+      "solution/gold.json": "17ce1a8279bc8521e00df4eaa1f708b3f000c7614f2e4f4275062f26a0605e66",
+      "solution/oracle.py": "05f3712ac33900d5d15c90e2b1727b91705155c0f7c9d8071132df71425a6107"
+    },
+    "fin-l1-bctc-110": {
+      "instruction.md": "16f90ce7bce8722876b2496588f5fd06162a00b4eefb1de700d41baa04a1c041",
+      "environment/payloads.json": "4b54bce803f4ff1e29da2403548fe58563d73af7360eba175c2d9eda20775873",
+      "solution/gold.json": "684e68d21058ed601c2c6a9c35fe3164150b346954d6faba46cc2be52d45da68",
+      "solution/oracle.py": "731d71879d16fda3826b5baf5e46b72c0bc33e0973d5c9ad1725905cfb05a4c2"
+    },
+    "fin-l3-crypto-multi-215": {
+      "instruction.md": "dd2cc2d1d29e2da7a7ecc8e08a8cc925b4f8f3ffa49aa1a42918ca913b39afed",
+      "environment/payloads.json": "057678ae8f95ca9e891512ae5b9a2b5fc3b569b94fc2ca37e3a19a01707165a5",
+      "solution/gold.json": "28615686fdbe1f61e80335782935ea9e64a5f1925cd299a8f87fb8482aed666b",
+      "solution/oracle.py": "66460275e5a22cb1bddaeba6fa2d933ea65b754dadeeaa07c0a56c69849bc5c9"
+    },
+    "fin-l3-tech-multi-204": {
+      "instruction.md": "6c68c8bdaeecfcb3ac9842fd26e2f4c6c00861da8b03ec680cb6fc41a3b492a1",
+      "environment/payloads.json": "4497a9be9def0f66ddfe9ebbf1f52ca9738f0047c502e1a69e4d8924e8dc0f65",
+      "solution/gold.json": "5189365f6994dfd8c0110dbfb5f9df4d4b86e5c5f00a09138b5bfdfc9fb144df",
+      "solution/oracle.py": "ed8b7d676cfa38484425af16cb330e06efa872feafafeca31312d5634e32ea24"
+    },
+    "fin-l5-compare-280": {
+      "instruction.md": "669030e26b1fc40531a34bf2e0ecbf14af4465d98d84ad659a162d840bc09989",
+      "environment/payloads.json": "9a6f7ee8f2c3ccec42436b0f8c701c2fa5bb48d54f4fa9bdab0ba5e30c6158e5",
+      "solution/gold.json": "d70e9f42eba12a713b3d1751103d57aa51ed2cf0e6cd0583483626c91e99ef16",
+      "solution/oracle.py": "ef8b40900ce60ade79bb2467503e5fdbe9019f02467771362cb9e013015fbd6a"
+    },
+    "fin-l3-crypto-multi-212": {
+      "instruction.md": "7bb8a77bfe077257d7a334dc82aa8f4f4f386e00258318ba48b98c54c1f7e53b",
+      "environment/payloads.json": "057678ae8f95ca9e891512ae5b9a2b5fc3b569b94fc2ca37e3a19a01707165a5",
+      "solution/gold.json": "32fbdc34d790afb8f3cf890ce2f948550a8ac2296a97d814d6f40496b47ea134",
+      "solution/oracle.py": "af18a7bb0806577c86f06b112d534914c5520a4dfa3516ceeeddcf77c98d84fe"
+    },
+    "fin-l5-valuation-298": {
+      "instruction.md": "7a5dda87c2fd2b99777da3dbaf0580547d14ef0f022957ed97b688e2ddc6f4d0",
+      "environment/payloads.json": "a3784ca1fa495c818f7e60ba24e90d05c60a05e5a1a73ad002141fbf7d42df64",
+      "solution/gold.json": "4840a1e5356c702dfcd0f468302091eaddf7dae07c481a9d894f6f99c9ef4b18",
+      "solution/oracle.py": "2f36ab725fec15a4e67fe6ae5a5bed1d700016dd997572aeaa199b4faa14e7d5"
+    },
+    "fin-l1-macro-137": {
+      "instruction.md": "66f894704aef5e2b1a6c2fecfc011bb67b4d4dbc30ffff649d45a4a93efeb6a5",
+      "environment/payloads.json": "d8bc0abecd0495db6c9b79b9469ef73d76a229eec064aafe83770002f2fd3277",
+      "solution/gold.json": "1f39ddf35c80ae7f59d954c6f03550fcd650585898a6ea30c7c1eedec3a52323",
+      "solution/oracle.py": "685ff79611b7f1b27ca5f820e58ead26fc6e3d4c317e2ee647bcbb8b83b0a8f6"
+    },
+    "fin-l5-valuation-293": {
+      "instruction.md": "635e93628e7c794a09dc1ee93efdac08fa1c1dcc1149d71837876e0ec1578c99",
+      "environment/payloads.json": "4d613b3f64f8d4fc3f98d9df248e5dcff0cefa47e51ec5373b79675e7f092cdf",
+      "solution/gold.json": "6523b0a1939afe9b87fca6832c1680e1989b0041cb69dae16647a108c57e0bc3",
+      "solution/oracle.py": "890e44fa2b55aee8a8fdee78f33c59e3b2bb145e1a520d7fdbce4f4ed06a4779"
+    },
+    "fin-l1-quote-vn-104": {
+      "instruction.md": "51273fdc14a2a7fa16d59ce18f42f1bf51a4a9377dbe0387d3e967453986e5de",
+      "environment/payloads.json": "5b191b038f6a6a13d118b0fc5a82a511610d05f842723755a4f66b84f47cf8d2",
+      "solution/gold.json": "b2f489706ab1dad9b9f96ac942e3497695bf9028406b646a1341ab8cbedd44b6",
+      "solution/oracle.py": "36139a1ada9b58701ac6c055b8f73f51fa5424b7d36f269ab02101005b7c146b"
+    },
+    "fin-l5-compare-276": {
+      "instruction.md": "b7903b3ef0681a1be4442bd2b491bdc67a0942e8eca689d7c807fe873264cb46",
+      "environment/payloads.json": "bff00ef3fb44f7a704dadf8f94689c0b535b33cb7163d79fcab9a8ef83b54f4d",
+      "solution/gold.json": "2dc208182a64099197209469b37836ea304371bd9fbc47a54b6cb4c59d3d14e0",
+      "solution/oracle.py": "160edd530fa02c0ccfdd64b3a12c56fbda9038a0ed1ebc01442a0f187d367743"
+    },
+    "fin-l4-future-230": {
+      "instruction.md": "c20f0de112d07fdb9b78a869c5e54df976cad127836ff71a39f2b461da8fe8a1",
+      "environment/payloads.json": "d8bc0abecd0495db6c9b79b9469ef73d76a229eec064aafe83770002f2fd3277",
+      "solution/gold.json": "113f01b26784f82220b59ef8dc615f4d7e90a6475a8750e5d74fa0b94e45eb31",
+      "solution/oracle.py": "f148914a52862ba78f3b1e697df3386e8dd86413ffde8426b8a0396e758b2903"
+    },
+    "fin-l1-quote-crypto-125": {
+      "instruction.md": "5d6eb4583253d4555b6fab5cb3e72199e7a1dccfd8eb4f0291b41764860bece2",
+      "environment/payloads.json": "1a1c6ce1a6fe39d4702a41e9ed10dc606d88a7a47b401f2ade5906e1020ea70c",
+      "solution/gold.json": "6eaad6a0a8fb39340cb2a851d0a830ef330572e32585df78f3143bdd1ddec1a0",
+      "solution/oracle.py": "357ca6b58546c43d9a903a892002c53b069f467ada1aad3da48e493ec3f4f149"
+    },
+    "fin-l4-future-232": {
+      "instruction.md": "4c766d7aa58a2dc2cb19d6bc538c3bb973c6a84c668c58816941af933725ba95",
+      "environment/payloads.json": "6e724aed6de39026019090303dc95158803438613308e97562d8a1b8ed48c809",
+      "solution/gold.json": "7bfb182da8d7f3d733e81d7a9a302f6ebc2206cdf0cf298a12aa4365f9b636a5",
+      "solution/oracle.py": "6a9baf7bb1fe01d302890a43a69c03cd807e87a5aac8e4e2b525284a05fa3b0c"
+    },
+    "fin-l4-future-223": {
+      "instruction.md": "8c63ad68695b071458aea68c3e8095645721b72b8f1fb1130b789ea5617d59be",
+      "environment/payloads.json": "ecb498d7e0e732f4996b88fcb7c7973dc889b2e9ea478e912a91af41fa9681de",
+      "solution/gold.json": "b6a3b8aec71f16ff9167b821dfc16c283f1d7adb1a8cd15bfc789662264dfa79",
+      "solution/oracle.py": "c60c63f0489efc440bc04d597c4a6cc3701345ab6c99e90562d32489af9b1849"
+    },
+    "fin-l4-future-226": {
+      "instruction.md": "cfd3e580dd77d26b4b0748c0d64d27d6642eed9ed2c7f240bc4e761a7744b7a5",
+      "environment/payloads.json": "3b5d1d3a5400d5b8372299c63c574fd6edd9ce75300ab580403aad1b57bd5e7b",
+      "solution/gold.json": "8b5486d0dd200157c08cceb62f4d830ab8b8365aea4bb1ad2dd4c780f1bfb12e",
+      "solution/oracle.py": "177ad8c0adfbc827e74c8f1bb06e899a47be638fe428edc1a6b3c6b5116e68e5"
+    },
+    "fin-l3-screen-196": {
+      "instruction.md": "64dabd9556801dfe0276b140dd41ce5f8c66072314c7b5d3ebad853e38249f9c",
+      "environment/payloads.json": "6d60d2b1ef429d4d80579e8bea9d10cc323e16246a3b6ee768115b8bf2b05edf",
+      "solution/gold.json": "30105319da332e78cc86f288cbe827d70b63d2c2732377b70ed59910091a695b",
+      "solution/oracle.py": "5cc31ab769baa0b4cf9c805bfb58cecbbf45027d7ec9d6087172f87b1a7b9c4a"
+    },
+    "fin-l4-2src-260": {
+      "instruction.md": "2623a9de0b79ed3556708b94f56e282435f2f1f51779ed5c459e83b21f610208",
+      "environment/payloads.json": "6e724aed6de39026019090303dc95158803438613308e97562d8a1b8ed48c809",
+      "solution/gold.json": "4b68322a8277c33c6aa973572f5e2cde54df740dd7e3e078742d58867edf1ce1",
+      "solution/oracle.py": "fba5003a10d59aeced1c6c9eabf53c5ed36047a90b042f074491b0568f08738b"
+    },
+    "fin-l5-valuation-297": {
+      "instruction.md": "e6d80955150af0255884af1250adb14c6b57c3d1c61bb9d34057567950eaead0",
+      "environment/payloads.json": "2adce515903bbed94f11a57cb1b9d38c6256912a1e505dd49bd8d01fc3c088b9",
+      "solution/gold.json": "325c527ad51d68a81a5d08103cb1a8d0082806dfb0c9c69d68f9c2fdf6499dc0",
+      "solution/oracle.py": "19912096489b34f4920f437fd6412d36a42854ee8d0f59bdc5698f463469182f"
+    },
+    "fin-l2-tech-164": {
+      "instruction.md": "e38faa1d43832255ab04475001c47dfb631686fcb901ba7293b9271a2f08094e",
+      "environment/payloads.json": "62bf5948b31b06ec1cfbdbc06c2dced04f2a573e2cddf9a9d704d017061d7a60",
+      "solution/gold.json": "481ad85923dd4e3e3d71b5a20568ea24875245c0642cd487550def0694d3f204",
+      "solution/oracle.py": "68d644816b5726cc734336072a60c4cbc6476992eded9a6529744e3fc978ba71"
+    },
+    "fin-l2-crypto-x-169": {
+      "instruction.md": "4112f15ba8341eb7687ee8839f09c3afe7aac0e426eac577d74ffc6b968c1a41",
+      "environment/payloads.json": "d8bf304445161d93a1be377ba4abb24f44754c61c91e3780eff24c2965abece8",
+      "solution/gold.json": "f137bf22601d20358027de3fbce44ec3119cd34eb29365e8f32579ca7d65ee9d",
+      "solution/oracle.py": "7ab366b20f8351c3b6fde2080b2032a2e8e24e6abafe96ab0c0f119493a734a3"
+    },
+    "fin-l5-compare-285": {
+      "instruction.md": "f8c83cd7e2df2ff0da5e24896c88223389c07db81670686ae426d8d46cb3f725",
+      "environment/payloads.json": "057678ae8f95ca9e891512ae5b9a2b5fc3b569b94fc2ca37e3a19a01707165a5",
+      "solution/gold.json": "98ef2bcff0942130aeae4c365b886da685f31970d29a4c0ad7614a11fc97f2c9",
+      "solution/oracle.py": "59ddf81995d58385bb33e36db43665383bdf36e01a87eed448bd11de05aa9482"
+    },
+    "fin-l1-quote-vn-106": {
+      "instruction.md": "7a0b3402ff6c490ff1e9ef2c06fe0e6f6f871ed471bc4b647d9a0f47b8f99dd1",
+      "environment/payloads.json": "ad65887916989540c20d6d80cf22e13581a5e27d9217cd0fa89ded3c8a6f9cfc",
+      "solution/gold.json": "825fe1129bbdd2b2a96564c22ecba87fe9240fdd59831771119e2ac6cb4191ff",
+      "solution/oracle.py": "227422c946d4a735d0a609c521e0327de545396ecba02f10b5ad3ea76f04dbd4"
+    },
+    "fin-l5-profile-262": {
+      "instruction.md": "31d770c5a9a6fcc107dd7f27ef4db85ede4710e70e139d8bb975a923ba57aade",
+      "environment/payloads.json": "ea4f5e709168c331478f99c570196fdd7ed6fda6e9c3122fb5ce2e0f0dbcc9a8",
+      "solution/gold.json": "fec91b492cf6ad6548a30624918c68b2b98b6fd8e07327e6efdb8743ebc0ac04",
+      "solution/oracle.py": "535c9a0467f405c1cb39acd74cb3dede2a0083b0cb51e56225adb4aeda015d5a"
+    },
+    "fin-l1-macro-133": {
+      "instruction.md": "db5518ce3c83cf92c6f2c7959b7d8f3fefe3982bfe7f3d41c1cda5f53e89cae8",
+      "environment/payloads.json": "d8bc0abecd0495db6c9b79b9469ef73d76a229eec064aafe83770002f2fd3277",
+      "solution/gold.json": "9f06067e6ad43319a61d0d2e4164e54a1824f5a30795d9836c1ad07b55b9a030",
+      "solution/oracle.py": "40f3ed950000fa432f61dec14c4f536d7f4f82f74c03185de07a620f46540a7d"
+    },
+    "fin-l1-quote-crypto-124": {
+      "instruction.md": "a5ca0867e3bcb7d4cbfc07b649224202cbd9c7ecb3d921c1035b5d2496e2110e",
+      "environment/payloads.json": "057678ae8f95ca9e891512ae5b9a2b5fc3b569b94fc2ca37e3a19a01707165a5",
+      "solution/gold.json": "c39a954bf3a2d3606f4e7244f6703aaa0932d0183ca763a9e13f664bb91fe780",
+      "solution/oracle.py": "453fdfbd86334f7f63893ca97b3a85ab135874b82376d029ec20a403327d31c4"
+    },
+    "fin-l1-quote-vn-107": {
+      "instruction.md": "bfcdfb1381771e68874b549f4930c6e853c12d883ce1310aa06498e9fda0205b",
+      "environment/payloads.json": "883079910d3406a2e804397e6ed831d3b9646f41ebd14b02d8764f00f019ead0",
+      "solution/gold.json": "c4e9a0b646b320260bc79fa1e3ff68c416559b6c3b8f1ec6dc78bce89d9ea2b6",
+      "solution/oracle.py": "1843837510760066f80fcaba580e1a17f50cb7f2e56ea9224a591df4ec68d374"
+    },
+    "fin-l1-bctc-120": {
+      "instruction.md": "1e52999ab25739954314aeac64fe1ea9cedf287a6787b5a67e3e74f534ad60cd",
+      "environment/payloads.json": "006c4869e4deb3e1ca6bf94ec81e1922cdc38c62083b8cc37fdff5bc165aa7b7",
+      "solution/gold.json": "bab28458f82b5fa6d6cbb9948269cf472070896673c4138f5862e60b76132b69",
+      "solution/oracle.py": "c502b7c5a46dc65d2c5b9fe2521472b9970e336c1a33b11e0d48d9aaf31e3ce9"
+    },
+    "fin-l2-margin-154": {
+      "instruction.md": "b4efaf0e90ec548955a5c0e887a182aa04b7d35f71e381aee67db3f7e241e35c",
+      "environment/payloads.json": "7792cbff04e9d984807a7017a1841576d3659361e2af03918669bb9d086b20a2",
+      "solution/gold.json": "ec325be9aeca0f55e80f267b6dad784c7500e70aa7d75a52ea510e3a5a4973ef",
+      "solution/oracle.py": "d37a92a95fec4fc1dfae40446b4e7739537c485f3506695c0a13d497b1a787c6"
+    },
+    "fin-l3-agg-188": {
+      "instruction.md": "e45a7766f80846e053756dec665aab934500a8caad48bfc61e1a8674d70c60fa",
+      "environment/payloads.json": "fc69728bc67004535d4bc0d8edba7eeac0e7ce93e48d406f9684cf87e6d33407",
+      "solution/gold.json": "282039928f212eb7550492810925bd71ad4ab1ffb5e40e3596d59610b0378c2d",
+      "solution/oracle.py": "c387b345b68262a980b8e49c8e414f2765524c0e250dea78cf56ee73a10a130f"
+    },
+    "fin-l3-screen-191": {
+      "instruction.md": "168942e8cc96976b5990ede4706b3fc50e5574a076262a3ba79ca448f00c3f95",
+      "environment/payloads.json": "f44870181d3518ee4f89a07ac809ce95b2f95b3e27c66af4e96eb6ceeb19e2d2",
+      "solution/gold.json": "6963ef7ceddac51b01eeffbdd7020f6ec08a30ce2988f0359880698903164a13",
+      "solution/oracle.py": "8a82aa4f4378f3b1b32fb12c684a0424a78c6d6944b922cf585c5e9d9b661be4"
+    },
+    "fin-l5-compare-284": {
+      "instruction.md": "0876f0f38de12fcbfa83d68adf261e88bc6bcddf840ac28b7b1742bcff3f36e8",
+      "environment/payloads.json": "057678ae8f95ca9e891512ae5b9a2b5fc3b569b94fc2ca37e3a19a01707165a5",
+      "solution/gold.json": "1bcfe517071e0c8e8951691b8652a5e47c822843008b7e0422b5b63bf9c22d86",
+      "solution/oracle.py": "4a394b970b145ce741065b8894bd1f7c94d3d93575fb7f0267360cc04e8c226c"
+    },
+    "fin-l2-macro-calc-176": {
+      "instruction.md": "942930969fea7b0a5732e8c9d305ef0ef38ff1cfecf647ac0c3a5e2c1ff6d1f0",
+      "environment/payloads.json": "d8bc0abecd0495db6c9b79b9469ef73d76a229eec064aafe83770002f2fd3277",
+      "solution/gold.json": "06125e708b8df7ca1612e60556dd6afc08114441742b91e40f76d0cff1581df6",
+      "solution/oracle.py": "453a62c13007c757905c528bfa2ef6bae41d7a7ee3572edd09940d72302259a5"
+    },
+    "fin-l2-margin-149": {
+      "instruction.md": "5270aba1e602356f80f8bf682ac2183ff9e6eb5417ae216fa2529b511980c1f9",
+      "environment/payloads.json": "63ff12f8d5be3aa46fbc4b8d7ea7520a782289d4f599afc0ee68e762fb020d5b",
+      "solution/gold.json": "270ece200a80a1553309d214cf35db7a419095d40ba2983892c81e1b455d25bb",
+      "solution/oracle.py": "e740ef7aad3fc7cec554c177f19b3a54e18ec6699f88cb6e556a9644d597b2c9"
+    },
+    "fin-l5-compare-287": {
+      "instruction.md": "68c0c028ab2c38d2f63367baa5591ae733a0c6454906f52e3d48ccea0f6febc9",
+      "environment/payloads.json": "1ea94fab93037b3630eeb9786033b34cc15b3648ce3df3cdae92ac7d4633ab6d",
+      "solution/gold.json": "8f3ca27659c4715834ad8e7c854fb1328070b39776833fac09d8e0198006f27e",
+      "solution/oracle.py": "97e97bb0ec6a53bdd0a3ddac621b4f6d809dd9dacc3f27ed7d90f330b2f00ffe"
+    },
+    "fin-l1-quote-crypto-121": {
+      "instruction.md": "348612879665a49f816f5b0fbb19d7e8f595ddcfdec162c90ad24d732c3c1f31",
+      "environment/payloads.json": "057678ae8f95ca9e891512ae5b9a2b5fc3b569b94fc2ca37e3a19a01707165a5",
+      "solution/gold.json": "0bf83e1f7a46388afbf7d8d01152155d51ba4d44378867d7d1ab5b25a53a569d",
+      "solution/oracle.py": "e4c2c4cd6fe7d7febc62f9b9d19b7b56e0ec82763159589b6a80352cb7eee116"
+    },
+    "fin-l1-macro-138": {
+      "instruction.md": "8d4a25897b18a2db84821d1ba5b2dabffc2f65829d8a69f9fd73a61f23e18849",
+      "environment/payloads.json": "d8bc0abecd0495db6c9b79b9469ef73d76a229eec064aafe83770002f2fd3277",
+      "solution/gold.json": "65abd627816da86b4d30e9e409a5f7c5c1d294621e70d70f44ea5f9f67776d84",
+      "solution/oracle.py": "0290dbc99c4b287e8a5b3b4403f3d9e7d677d7ace85f545a56c97899fb2206b4"
+    },
+    "fin-l1-bctc-115": {
+      "instruction.md": "fa9ab789d016cb0578feb0e4f592aafb614f14518942ef01305fc75cfd248d42",
+      "environment/payloads.json": "d2d6286edc369f891b0e6df7fb9cc9292abd1d60018c8eb6c92180231da1dff3",
+      "solution/gold.json": "68846cfd4b243efb024e03bdcb095021d65512a7192ba221d46ee67be6496776",
+      "solution/oracle.py": "24e88aeeef3d1f9b358f2f0acdcba9572bc19a291d6c07d21fcb473a0c80ecd4"
+    },
+    "fin-l3-crypto-multi-211": {
+      "instruction.md": "7453d7f13a87bc2457ecb01ffe6b8ca3bb4d7846da477eefdacef98d43dba50e",
+      "environment/payloads.json": "057678ae8f95ca9e891512ae5b9a2b5fc3b569b94fc2ca37e3a19a01707165a5",
+      "solution/gold.json": "a135a6c884fa398b090c26012b49c9decb5a206f08098a2fe77d5c06e74b39d8",
+      "solution/oracle.py": "3d0c73cd42caa8808f186ead3b9140febc0d528eb31e98e9ae80661c87dd0747"
+    },
+    "fin-l5-profile-265": {
+      "instruction.md": "cf7329fa24d3d15def6c6c468d1d8036989cd140aa53821631b522841933bded",
+      "environment/payloads.json": "0c1a2ae3f9764dfe3210a24cd97e499f86a271e8b45d9f6b1d196ab0f578aceb",
+      "solution/gold.json": "a85263fa81ad1a0cbf4cecf05c9db0f10c5ed800f42defc02ff6cd32c5c3968a",
+      "solution/oracle.py": "3148dd2d017ad3f2889a623b97180d6b7617f4bfd5e688acd86c69a0dec84387"
+    },
+    "fin-l2-crypto-x-166": {
+      "instruction.md": "55e79d0d1c981bf470b86d2115182dd778c461c172035089eac8e408f41bd59d",
+      "environment/payloads.json": "d8bf304445161d93a1be377ba4abb24f44754c61c91e3780eff24c2965abece8",
+      "solution/gold.json": "571c2b8614e0cc15695942ed77f04d5fa3456b31d06899aaf8bcf111888e14bc",
+      "solution/oracle.py": "7b663ff38d22bd87a209ccdf55c0a5a245c94df46f00637cd2c84ec6c94405fc"
+    },
+    "fin-l3-agg-183": {
+      "instruction.md": "81b029a23a29f5faf7793591af434debaf7406399b0238ca839b9f44ee93bd78",
+      "environment/payloads.json": "4ec6a4f2af168b3c45e5a0623fc5580c7d77411c0d654346f2035c8a1b3fa93e",
+      "solution/gold.json": "a985c574635269709f52a09aecfeaa8082eacc334183f1816431108b32497aa2",
+      "solution/oracle.py": "e1bf7e1bb8f5979b47e3929a04f4635a4174e354aa8b3bc0b92e1093634dbf54"
+    },
+    "fin-l4-narrative-247": {
+      "instruction.md": "aab6cef44395300bef362447c0cbb92a150f0448509f9154b6cd5e9cfc773635",
+      "environment/payloads.json": "6770bc9b036d8167c00814f11b81e304be7719bdcbc26ea59a0ce6cb67770ae7",
+      "solution/gold.json": "50a18542dd830315b0ef50ffa18406dcb600a8c9d1fb01f2987dd1b2c3c12801",
+      "solution/oracle.py": "49d49ed5e3f0f52099f54090b44a961d8d236356a5e2232f4e591917c8b37a22"
+    },
+    "fin-l4-future-225": {
+      "instruction.md": "e8d288e190b2169e8de4a93c16e548b4bc8c12e82a10dc8db385b17bd65935fc",
+      "environment/payloads.json": "bc3ecd38d371c46a9eb87d65d48fcd97c4993b974206c0b44c57c227057a5439",
+      "solution/gold.json": "500132d507a0bf5a5c77df8ff0231d26dbf9b063530b0078d281140a195cd4d7",
+      "solution/oracle.py": "8a23cc185992926e8b2d72c2c5022e233f14f0379539ef10b6fe407088af6ae3"
+    },
+    "fin-l1-quote-vn-103": {
+      "instruction.md": "4dc3c45c9f4b14903f63619646087fc48549567d9083d6466bffc9e6d3be0921",
+      "environment/payloads.json": "2caa80cc9914b508afe8b8a71126e43e867e814faf82d4bf1984d3035a0517ce",
+      "solution/gold.json": "8fb85ff9cf728aab4d36e5c08899f6e6885b28a8d851207eed71be6c931dfa17",
+      "solution/oracle.py": "c88b8d20e79570d8d46380d3a328b24c5010eac26c71f985bb0e004230d81c1c"
+    },
+    "fin-l5-compare-279": {
+      "instruction.md": "1c172742034e8b5a08d6245ce0c3b0c08967631ecef406e1f6134ef22e16de34",
+      "environment/payloads.json": "7482995f6d9cf105dd8fab6f4a2a6847b197553c28d9125dbf23595e6813dcbb",
+      "solution/gold.json": "c288d2c73bc1a816e7a272fef460b21c0edc2fc5ec7a1860c3246adf066d668e",
+      "solution/oracle.py": "ac6c572ca9159d5a4fd1df46f65e41f1851f5d2a11ffb5a8b5a07d11b0b0ea3d"
+    },
+    "fin-l2-growth-145": {
+      "instruction.md": "0c39ef832dfc3f9fd9785981ffb01df835aaac17cad02f5c3029f29272f0b659",
+      "environment/payloads.json": "f5343736a6ba3915e6373bcbb8f7026d469188926b6a2d2cbeb387ba26cd0c27",
+      "solution/gold.json": "bced03af82f77b28eeddebe0265b4acfd6bcbe7e89aca4447831aa00ddeb9ce9",
+      "solution/oracle.py": "aff5a0c95e86a254d310e596a21c2c7234b6f9a696b1cd919add00146d96bd81"
+    },
+    "fin-l1-quote-gf-129": {
+      "instruction.md": "3145be496af0b7881d39013d8563440361fb57cac728d3baf7c8601b00c4b682",
+      "environment/payloads.json": "6e724aed6de39026019090303dc95158803438613308e97562d8a1b8ed48c809",
+      "solution/gold.json": "5a2b2d5d9ea4d0dafca5212ad497291f18163ae6c3ae2f7f3b9f26fe5aff301d",
+      "solution/oracle.py": "ba79d39067bb5c352b3bfd8a32488971733de29492f94030cb61f7a8bb3203c9"
+    },
+    "fin-l2-crypto-x-168": {
+      "instruction.md": "2cda887cef4299bba0f3ddbdba6441dfcf6069f42486a8749aaa7784739416a1",
+      "environment/payloads.json": "d8bf304445161d93a1be377ba4abb24f44754c61c91e3780eff24c2965abece8",
+      "solution/gold.json": "85ef4e8db4ea3da072931353010688372c45aa0608dd630f90a4c4dcad29f811",
+      "solution/oracle.py": "2b39f030cd9dd7fa5a116c20b1194f54c395ca2c77b651649981a31f7bbd5493"
+    },
+    "fin-l2-tech-165": {
+      "instruction.md": "9fd5d76764caf9e17df384824fcc3ce58242ed3e570a844b90a7351c03f36db7",
+      "environment/payloads.json": "d2fd7d295d7e67e16788ccc795b209014833d4688b1b406e72915ccb933f8c10",
+      "solution/gold.json": "cb4f93b0eb561666974147d956c11e513909ccb97943cd0265608ff26599f218",
+      "solution/oracle.py": "2606df75bf5d48af4456e41f5e90bbc478531362c6b4e28f4ba01838ef1134da"
+    },
+    "fin-l3-macro-agg-220": {
+      "instruction.md": "e3b03c78979829e969d7cd90e91dd45b7502560e8504dbd90986d91e67a0b36f",
+      "environment/payloads.json": "d8bc0abecd0495db6c9b79b9469ef73d76a229eec064aafe83770002f2fd3277",
+      "solution/gold.json": "00e711b5b26746019a93243469c230615f6da298f84ad946f2cd77781d554db7",
+      "solution/oracle.py": "1139aee34aa8562e54d4ced623d4f1e17f4c343cc662ba082ed5afdb5ea439f9"
+    },
+    "fin-l3-index-216": {
+      "instruction.md": "7154ef8b2d424c669f1aeb65cdd2e8d178b5c0f113be3f85e28de5b3963079b2",
+      "environment/payloads.json": "032ee59dea44d7ce71ae077f40f5d8ce7582a9be4478fdcfce931f86e14fd42c",
+      "solution/gold.json": "27e7cad4ca4235a0768d562c726ddb129612c775e78a73e4679796a333fad1c8",
+      "solution/oracle.py": "38da50f63580c1b0b1727dbe980a404e49542f237570ece9559902c245ef54c3"
+    },
+    "fin-l3-macro-agg-219": {
+      "instruction.md": "e9f33f0a0e69b5d6140e728c0ebf7a2a81ae1fd32304afc4e5c9322ed7efc3e8",
+      "environment/payloads.json": "d8bc0abecd0495db6c9b79b9469ef73d76a229eec064aafe83770002f2fd3277",
+      "solution/gold.json": "a722999fbbbb808991be302e9c262d8427bcbf03bb85a12aa25ac7f1e501e261",
+      "solution/oracle.py": "78fbb018e8a77224357ad9e4353f6194881d516fce1a0bc54d62f313f2961a1a"
+    },
+    "fin-l4-nonexist-241": {
+      "instruction.md": "8214617e105e182c0db037d67fe0b7f527577b48ee917ae683ac080ef0064dcd",
+      "environment/payloads.json": "4e7acbf34b050682e6b634a70d21c1fa0df994591839e4c42aecd26eee7e8141",
+      "solution/gold.json": "730b9a09fde8e67361f419273e6025b452c3782054916c5825841ac4868aff2f",
+      "solution/oracle.py": "e6a54121bf06a92898b0aec736f9ea8504a5c055798639a71820002d05edd03f"
+    },
+    "fin-l2-margin-155": {
+      "instruction.md": "29954b9c3014cdc7fb4a1cc4044a699ca6ad273b70f1783a24eb95b22a835c9e",
+      "environment/payloads.json": "3c3116c38aab22e01747a7f4ee790f104d4a7542dfda744503d570679db45838",
+      "solution/gold.json": "47b5855b4886a77384088ea6acf51b03636b6f01d5c3f165b320396d727c22fb",
+      "solution/oracle.py": "38230bae32574d615de8d9d8abc5b71ce357eb226bcdce6be052c79743761d20"
+    },
+    "fin-l1-macro-140": {
+      "instruction.md": "4c96df9e6d5ebb7a1fc8899d7b3b7043313f839c9c26a916f8a04597de5ddc0c",
+      "environment/payloads.json": "d8bc0abecd0495db6c9b79b9469ef73d76a229eec064aafe83770002f2fd3277",
+      "solution/gold.json": "a59662116a6ad1a4f0ea58dc3c491df43a99fd9e99f2b67a4830d2ae1d052af1",
+      "solution/oracle.py": "f8d8feefa8cbb80288e03e1e9fcc22ac6e9dde73f43ef9b2f8f48c5df4080cc5"
+    },
+    "fin-l4-future-229": {
+      "instruction.md": "f056c42a0a6f9ff92631d2bbac4e47d67445a10e67652869b104e01cb9b15785",
+      "environment/payloads.json": "d8bc0abecd0495db6c9b79b9469ef73d76a229eec064aafe83770002f2fd3277",
+      "solution/gold.json": "c2a16d7c5cd1903721385f0ce45a9272031f388180a1a942d512c2d558e389fe",
+      "solution/oracle.py": "69581833aa42f1b850836e965ccfe18dedb3dfa34be221955f72696ad196ce48"
+    },
+    "fin-l4-narrative-245": {
+      "instruction.md": "8c351bbe991bbc25f7abf9cc2c32f7311c772c8aa987d5f462114fda36e95040",
+      "environment/payloads.json": "56001d4f2fea13b2076d153fd77e5f4ac06c1f4f731d1576efb36e43f42dea61",
+      "solution/gold.json": "403de06adf2869b670f6fc7008e0397bf8dad9c73eb483f7554197fbc6fdb70a",
+      "solution/oracle.py": "a9c1d1a3698b9e54672aa0dce75abc3832979db5e67e0ed3d26a05ae9cf211e3"
+    },
+    "fin-l5-compare-286": {
+      "instruction.md": "35a8ad9404cc38e6ee660c54b68d1d3e65d6d432e0e40d6b8acc838688d883a1",
+      "environment/payloads.json": "057678ae8f95ca9e891512ae5b9a2b5fc3b569b94fc2ca37e3a19a01707165a5",
+      "solution/gold.json": "c6aa4d44287e022135cfa6470e998677d5734e48ef126b58082e1a04c6cfddb2",
+      "solution/oracle.py": "419e04d99851024a2faf8015692db764d80aa531f9784d94436b0e34df7b3a46"
+    },
+    "fin-l3-agg-182": {
+      "instruction.md": "ce5f2751da1689e8d8f65117b9b9428a3c56e0ba18ca447bf3d00929289614c3",
+      "environment/payloads.json": "ad1f0f1a339fecc528ecee588ce49fc757c333073502376ddcd4eb695e950a6b",
+      "solution/gold.json": "a51d0958fc27f7fcaf638a9b549114fed7953034f656bfc1657cfa3154e53213",
+      "solution/oracle.py": "3333897ec17a78351ce0a4d688cf2459f1812c3974752fc73735b06da416bbc9"
+    },
+    "fin-l3-agg-181": {
+      "instruction.md": "27d625c710354b1a42f0b14bb707821ab9a8474f98160f116f29d1bc38765c18",
+      "environment/payloads.json": "5e90a01275cd731a0ce0794296a39216b6374ea1712f1163b137bfe26d081a72",
+      "solution/gold.json": "fb16f11573e817f9815de64d41ad2d4bdba8bce17eb76a20dcd7df6336e746b0",
+      "solution/oracle.py": "5351e71c201d27a6389609a4d474098cb191c49a68220a60a6ad4b38048e0513"
+    },
+    "fin-l5-valuation-291": {
+      "instruction.md": "e88bb3ac1e33a4cafba28a7ce175e9ba77490dce8630cd40b1e45898ab681234",
+      "environment/payloads.json": "910c3705e165f61bdfde71b664b100763aa3015104e37a029ca7bd745e987218",
+      "solution/gold.json": "eedba49a040a1d5c94cd8f606cdcfe00e8355737ef44dbd58497126e58ddf52a",
+      "solution/oracle.py": "c8fdd38fb9a1fb0de1c8e15df531fadaf28f11c57a2f97026cc3b545b430d274"
+    },
+    "fin-l4-narrative-250": {
+      "instruction.md": "aa92e6561949593cef9a790bca0130a46a17f605c0d4ba5d5d194a7c64936bc6",
+      "environment/payloads.json": "7ff5439e3a871fc0996111025189c64049ec7d80f8a5f86d3512fe4b300705d9",
+      "solution/gold.json": "0de579c4508eebf82fbd2c535355bc075e1d1ddccaa61aee32d05307a1a5d6a5",
+      "solution/oracle.py": "8802fe62383060d4fed07f50373a4d18f5c1ce5fab6053195a9a6e3f09c61054"
+    },
+    "fin-l5-valuation-292": {
+      "instruction.md": "e52a204ae0f898864e0067422238e2b15194cd3e8958c1de0d4649206faaf32c",
+      "environment/payloads.json": "2fb795d6665dac1c5332bdc8af14223ed15e0ba031bcf8a37fd7c26bf3bba180",
+      "solution/gold.json": "32da003a9a574b093e707136d7a180b135dfabaaa4a39e3178740bddc524a0ca",
+      "solution/oracle.py": "9e3260a6e8a246ff535bc3ed53a84fa5c3d6a7639dc2f3bba2f0b37401af9cab"
+    },
+    "fin-l2-crypto-x-167": {
+      "instruction.md": "dbde9192257f7e7ed3d4556e67b7fbef70148e2dbd7327fd1d0a9231d7406d4c",
+      "environment/payloads.json": "d8bf304445161d93a1be377ba4abb24f44754c61c91e3780eff24c2965abece8",
+      "solution/gold.json": "4aba277ec74b3b2c44f0380793d416254fb65350672885eac62ac37ba414c04c",
+      "solution/oracle.py": "1851d4a353367c34082ffb75936ba195e57984b605471a46f1a7df68f5f0149f"
+    },
+    "fin-l2-margin-153": {
+      "instruction.md": "64fb94463940428460f935d75841f00a2339a42dfd647cca30df8184816400b3",
+      "environment/payloads.json": "a8b91af579a4afda08325d20d13d20ab44da5fbe1388a6e22dc51ca0a4393eca",
+      "solution/gold.json": "b15495c6700e1d9ba4811ba953370e133aef1fcfc8ff6f73aebe580b2135e394",
+      "solution/oracle.py": "b7abdd9adbc14b3ca82e3e4eabba97fb23899b010750f59081e3d748b86c539e"
+    },
+    "fin-l2-ratio-159": {
+      "instruction.md": "6072b741ff855e0dcd62f2a89619385a74994bc5120cd1d053c88550c3d275df",
+      "environment/payloads.json": "7146f70a87b4d00c4f925f1c9c1e045a9f3c6bea9ad52ca231f2777bff8d254a",
+      "solution/gold.json": "af5d8d8196543ed4693467b11d7f0001796f62ce91fe5fcfea154a2ef711e830",
+      "solution/oracle.py": "ada5a95ae4b6ea7d785c9c1b58332355584bc5209e1ace12a31d85191ec430a9"
+    },
+    "fin-l4-future-231": {
+      "instruction.md": "f65a08708c19e4f57edfde7d76964784a84029bb011ca9b27ae74d77b192365f",
+      "environment/payloads.json": "d8bc0abecd0495db6c9b79b9469ef73d76a229eec064aafe83770002f2fd3277",
+      "solution/gold.json": "0b2561c58da00d24b4cdaad504e56a0ca6240112ff4e42e0e48c9b4a1a4a2fb1",
+      "solution/oracle.py": "482080a296e92056ecf6306fef1cb11a91b35f7612a15c36f251684196c309f4"
+    },
+    "fin-l4-2src-253": {
+      "instruction.md": "60cf3f5325f137c588e46aa2148f81b33f30f9031a8ea3e6dfd4819338bfcaed",
+      "environment/payloads.json": "6fad2792b6ef3256accc1e4eed074ec30ba2dc243479c872c3745248cfd60268",
+      "solution/gold.json": "e0e924e0f31498d1e0dd385cf74be32c6def47d8154531133acab996997b58c2",
+      "solution/oracle.py": "9e67d71167519a588d14125a3ab0748a3e9e44c016997b168aa5f952a6f2e70a"
+    },
+    "fin-l4-future-234": {
+      "instruction.md": "1d3a7e10cc26616e55eba6d4aad141865b506a661e2efea5dcd85614ca955184",
+      "environment/payloads.json": "6e724aed6de39026019090303dc95158803438613308e97562d8a1b8ed48c809",
+      "solution/gold.json": "71538097384182d0e20bbd5e0dc0f39608e57e25b8a3c1f80d63ba1b7da38f2b",
+      "solution/oracle.py": "4b5f562e86ed992158dff4f7b4ddd5e6352916753067e5fddedda963bbc21e7c"
+    },
+    "fin-l3-tech-multi-203": {
+      "instruction.md": "ff00a06ebcca95b21612bbd6eb511d8fc1195d9a5e6e113157a9e16d82c40de4",
+      "environment/payloads.json": "7b9ce4b4d0ce09d948905ce544f253c6cac93ed3819a068ee461bdac85ce5715",
+      "solution/gold.json": "3f23e593f9dddbb11af45694b1c1ab67be2c896dda1a7804114cd61f99e8591c",
+      "solution/oracle.py": "7c01c83da376ec776bf335b1bbaced3241843dbad934781d02234a8fd97fa326"
+    },
+    "fin-l2-gf-compare-172": {
+      "instruction.md": "741fb076e732edeb3436c4615df30ca352b0a1972a1a15c0d4fbafb211534e6d",
+      "environment/payloads.json": "6e724aed6de39026019090303dc95158803438613308e97562d8a1b8ed48c809",
+      "solution/gold.json": "af41c82aaf1553ed6851a8d17d83bccffa4286feabb89a85ce6e565c3e24cf48",
+      "solution/oracle.py": "ff4dbcf40c852855a13722e432c0fc0b2c105178eeca29bffbfe7c5d5d18675c"
+    },
+    "fin-l5-valuation-299": {
+      "instruction.md": "00bc42c8d0c664429be23c0691d2b41dab337c0f055b3af1eb882198740029b7",
+      "environment/payloads.json": "04b47ddea2599a22724c6c8660863c45ea38331b2441d5700668c018184c9211",
+      "solution/gold.json": "dfc5e7bb8f15ee05f42a41c647460e9478dc9ef63d19b316df05c1e29aacd47f",
+      "solution/oracle.py": "387c3bcf0bb1ec8332ef170913d894d45aa6d798a13eb1e20d8c55662cf28123"
+    },
+    "fin-l4-nonexist-238": {
+      "instruction.md": "cf4fd3d982eab0605fb01db888c467edff7f61cad86da396ef20fe5f5eddce00",
+      "environment/payloads.json": "7658ca2f6b5f17aa56164755efb5314c4396ebb9fd91a78dc0e36a09a43f1158",
+      "solution/gold.json": "97351d3d90fa0e91a68052f535997f2f9d6e02d67642be5a963f2b4db483ae2c",
+      "solution/oracle.py": "1d58bbad8521c3a329b8096a76e6b93720f301b8c0947056ef586b176eebbc0b"
+    },
+    "fin-l2-ratio-160": {
+      "instruction.md": "e8bfdf9a404013b10a0664cb6396d3091975e5cf7347ea9f558f19c0842b415c",
+      "environment/payloads.json": "431d0a37dcc8350973bca7d2f2fdfd68219b0264e327dc583e5b82ed83ce4ad2",
+      "solution/gold.json": "eeb5b8863d87de0b55309d6da42315e9904d0c3c17596ba98cec2d9e747fcca0",
+      "solution/oracle.py": "971700bbd59742ffa667bbaedaac96febc9d360d0fda1a538dff212cf28277ac"
+    },
+    "fin-l4-nonexist-309": {
+      "instruction.md": "58cfb16b12e0114f4c3b321df7c01e2c3a373c1d814e7ec79c4a8b89a30ddfde",
+      "environment/payloads.json": "0070f0cb42bdd5debb6e31560caaa4784cfa953f1d3d6f41a5fda3878e877d0a",
+      "solution/gold.json": "d77b1b74ecd226956a13a6b175b84752b2384e9cbfcb28bbb3152e68ee28a898",
+      "solution/oracle.py": "750854200fd8e9acc165c7836742dad487c5743650879e6d3cdd8ee7726d4c22"
+    },
+    "fin-l2-macro-calc-180": {
+      "instruction.md": "b8ae2e588545cb89e3a069c175fb47e79caff5fc93272687f77f9cd516e9b666",
+      "environment/payloads.json": "d8bc0abecd0495db6c9b79b9469ef73d76a229eec064aafe83770002f2fd3277",
+      "solution/gold.json": "5c9e076067c0031c763a898e51517de99eed5e52979764a1b6ec87f9f60766c8",
+      "solution/oracle.py": "cbde8787392dfc665a0b74713bbad6d007b2bbf85818bc117e1cff250a386cf2"
+    },
+    "fin-l3-top-200": {
+      "instruction.md": "e9d4a92d39421a6d53883273875091980069ba62d72bbff731d1aba4890c0f94",
+      "environment/payloads.json": "b2446a67d6b1807ecbe171b0dea66b6147a5730988d0ec7b1ba7ac9c629e7a00",
+      "solution/gold.json": "3deb0031260f655c7d5ac42a528a60f61a05bea3da8e3b45695761d3fa144296",
+      "solution/oracle.py": "b41f46aec9b537aca7442e85fcb8ef122de84da7e50a3b0eac19c4e6fb14a88d"
+    },
+    "fin-l5-compare-283": {
+      "instruction.md": "ba55d392f28ac5b16e97bd48e6bc0ab4e950129d1825f67924505723e2547967",
+      "environment/payloads.json": "057678ae8f95ca9e891512ae5b9a2b5fc3b569b94fc2ca37e3a19a01707165a5",
+      "solution/gold.json": "db7103c5098277e0c148a312ca7e0805fb467e0759224283e47d50ae04b23779",
+      "solution/oracle.py": "7e189825a04e2d384168fa92e4af0cccdd4a254db4258c7ea387df4daa5daf45"
+    },
+    "fin-l2-growth-148": {
+      "instruction.md": "df20a705956a863e3988e2a060dc65c3c9e8643340848e1c36a7f0ee441a8ad7",
+      "environment/payloads.json": "006c4869e4deb3e1ca6bf94ec81e1922cdc38c62083b8cc37fdff5bc165aa7b7",
+      "solution/gold.json": "6ec2e1e269a9d1e993580c90a340865536cc134112c3ebf1a1f68c3b506d9a8a",
+      "solution/oracle.py": "d9aecdbce927c47d5b2cc04968a0d4259b31c1ea82a946daa5c733f7fabbdab4"
+    },
+    "fin-l2-ratio-157": {
+      "instruction.md": "750c73957b0fd42c34e6380e3d70f13c581fa56d196f8de602bb21f8de41b4a5",
+      "environment/payloads.json": "735dac62ede355f823bee7f1445e7ff07c348251d5836e1e3dba69245d14c03f",
+      "solution/gold.json": "2437458318ef803eecf4ad970700e212cca902043929b6745ed7c569a9762ac3",
+      "solution/oracle.py": "86e799bd25e9c14b7068bdd45d1b83be349d1b64e7a9e0ed70f7eaa14355ce47"
+    },
+    "fin-l5-profile-266": {
+      "instruction.md": "082c0ceeb6fb57ff9bd4e51fe8817c8e46aa04963cce4a5bc646876df553abbb",
+      "environment/payloads.json": "f0c5fcfe35ea72460d4425381b4c83a98168d1feef0fc4ce45255c08efe72585",
+      "solution/gold.json": "d9a7305082aa908758e022d7fca50b24690d12bc56a49eba13cedc9f1533a862",
+      "solution/oracle.py": "f8cdc3b123faa6ad5b738a5724b4e5de1c3787cbebc06fb4f881a84c98431880"
+    },
+    "fin-l5-compare-278": {
+      "instruction.md": "f6900d920988ed11b2fab6c473f0e6eae60070065dce18b76862b654594a2e6a",
+      "environment/payloads.json": "0bd2fbf239937f6339375a3b74c14e626923c430bc191b9a6d0c9e0f61482465",
+      "solution/gold.json": "8ce65c18b711161fbb99294068c4dc476fa171afd23ae47bc7436107d4a6844c",
+      "solution/oracle.py": "5dae9707644fc9e9b4f6f2037bd8e28c5d3e5e83fd6e3139b01c2e7fd9aada11"
+    },
+    "fin-l5-profile-272": {
+      "instruction.md": "d326dbb00f1fb16819ad89dc7140028b5a0ad54f5d9c6a0a8f06f1633c517539",
+      "environment/payloads.json": "6f6428af849ad1f7b87c53f88b46a1de63fbc42f53c716814b8cd1e846a26d98",
+      "solution/gold.json": "146b80396cf07c6aed46b1cd8b14b528715186b2234c4e646429b7bb1b56d567",
+      "solution/oracle.py": "82220353355782762f49f382e26ce8dc45170fa82e43a9526448017b4dc1662e"
+    },
+    "fin-l5-profile-268": {
+      "instruction.md": "f2b14c54425e63d90717bd8d2d402d1ca04a57bdd2168cb68e74ad0c38f5c89e",
+      "environment/payloads.json": "9817f0a35694f41fe03d11a5257e1bb9584c08c6dcb66bb8207244e55235e967",
+      "solution/gold.json": "3cf417db1c336f5c53ffc13cc14a4c01533337df1ec81516e2da052ab1d2a236",
+      "solution/oracle.py": "a8ffeed93332e463e782e8715d9178f2f9b0f436bde21bc377e2f2a78335e17a"
+    },
+    "fin-l4-2src-302": {
+      "instruction.md": "c3faf83183f695cfd030cc1696e39fd2b0d16ed8a5a713a0ad4c59e0cc60fcf5",
+      "environment/payloads.json": "2234df4ae92e80db82431eff6293e8e5ba90e7b3499e041c647f0e0b9b1b98af",
+      "solution/gold.json": "e287b20338c2dd85cbf8a98fae9ad4d0074b0c6fdd3a78e83c29c8760f5eed99",
+      "solution/oracle.py": "d3bd13eeb5c8dfccaee7df3681157f93cb653cda74c66411894ebc2cf20a3050"
+    },
+    "fin-l5-compare-281": {
+      "instruction.md": "d0f968fa58c1067895f189548ff6826ac5e512986ec0ad9e4f13fb4b7e31d8c0",
+      "environment/payloads.json": "fffbaf55bd1b4f1af5a6602068e0002cbb9d21c762cad0c7c2afc6c09aa0a67f",
+      "solution/gold.json": "cb5a87f454a15e47fde67d346404d3d0f6ee0b81d7ee4927d68987fea39a827f",
+      "solution/oracle.py": "e18d0b92e19463285bfeed986c9b251f6a8d09c25c3ad4401a53b02fe58affbb"
+    },
+    "fin-l3-crypto-multi-210": {
+      "instruction.md": "a1768db7b252a81df35d6d3dfdf8081fe9711eab97d431737116652b94db6e16",
+      "environment/payloads.json": "057678ae8f95ca9e891512ae5b9a2b5fc3b569b94fc2ca37e3a19a01707165a5",
+      "solution/gold.json": "b2641f188fc42f5ad49a699e5dce37ff7f637829c3b44c0e5d33930a8d0aaf06",
+      "solution/oracle.py": "84197097cf5349ffbf9e0b6049559e323432549982ae0dc9027c09feaf7bc018"
+    },
+    "fin-l3-agg-185": {
+      "instruction.md": "711aa1904ea94a903d78568c02946dba0c4131e697f651198153e035fa870ae0",
+      "environment/payloads.json": "8e7143d01b44455e27cfde14bc55ae90731048b1db95110770d4c3279e148a86",
+      "solution/gold.json": "335fbda76ae34e7eed08d29fa586375de04e5d6210928a36a37d2fbb474b29f8",
+      "solution/oracle.py": "91f1f8beb560fabc0de9165fdb34776c65b089bd9a9520682008b53f923b3a9d"
+    },
+    "fin-l2-gf-compare-175": {
+      "instruction.md": "3905deb3d8cd55717762363017422e8ee60afa8e10be247f643e48343481ac81",
+      "environment/payloads.json": "6e724aed6de39026019090303dc95158803438613308e97562d8a1b8ed48c809",
+      "solution/gold.json": "26eaac38b0f2806047a6de5a1a438e03dfe06732bd3892c5285860b2b7d13b40",
+      "solution/oracle.py": "663f880cc89fedf276454b2ff239340ea98cc3fcab85b19ec191d05b8e725b04"
+    },
+    "fin-l1-bctc-114": {
+      "instruction.md": "72fc1d662f76cba6414728fa22475b246065a60bc2ca8de9084f1515717869bc",
+      "environment/payloads.json": "3b5d1d3a5400d5b8372299c63c574fd6edd9ce75300ab580403aad1b57bd5e7b",
+      "solution/gold.json": "aedc1a460d633363ab3671f9924a53dd1e5e5186ccc52935046a25e888b3ba58",
+      "solution/oracle.py": "e11d101cd6775c28864885b04bfbed7bedf02f250617d9f7eae284751f325d00"
+    },
+    "fin-l3-top-198": {
+      "instruction.md": "ea180c9f4345a07e985549605a8f34910a15ef0a185097b99eacff06dbdf0dd6",
+      "environment/payloads.json": "b2446a67d6b1807ecbe171b0dea66b6147a5730988d0ec7b1ba7ac9c629e7a00",
+      "solution/gold.json": "a530f53571d310ab379cc0534ade53e1a9d246170ba46a5726b12ac16e6d1422",
+      "solution/oracle.py": "a162b93e5218ae64f2007e7bdea2931feff02a476dee61c6a902324a9071b0eb"
+    },
+    "fin-l4-narrative-244": {
+      "instruction.md": "305f839cf02da1e077fe9c8042eed1273641a661e6fb2031d4a9440a239edf41",
+      "environment/payloads.json": "0413817d9f85b8b6ce0c01cf4dfe1897fc58aa9db85a55e60cc637fa2f157e7c",
+      "solution/gold.json": "91e842bbadd0058e2a69f2a1048b9621ee522e8fe661e04d01309a57d7382645",
+      "solution/oracle.py": "38ebfda66677ea4eb6c96f9fa70c2b642f7aa7504f00fa7dfaec6df422570fbb"
+    },
+    "fin-l2-growth-143": {
+      "instruction.md": "b4f6048f82b216c608bcab30cb56c8cdb8eabe6f06bebe0fd7ad2a5ba8e31a76",
+      "environment/payloads.json": "0860e4740da953d16f7ef0e56c7ba692638f6954a42ee5820c3f93d2e3b240a2",
+      "solution/gold.json": "100741a7c95fa3470a629213cf2a68331119f4276f33096c6d71e463c27e210e",
+      "solution/oracle.py": "c5401e92801c8d75450b7f8a4b99c3e677fbe8be72737fbaec455c8c570558b0"
+    },
+    "fin-l3-macro-agg-218": {
+      "instruction.md": "f4edff703dc8e58a99493275b71a126bc97366141e5cb5651c306c3ea942ecd8",
+      "environment/payloads.json": "d8bc0abecd0495db6c9b79b9469ef73d76a229eec064aafe83770002f2fd3277",
+      "solution/gold.json": "2e5f430391df005673823c8f13a2b61269a3491e748bf01e4846d7b700223109",
+      "solution/oracle.py": "a279d315528b7039a1386d5e2015fbbea249b50bca9ab958c3558a18a4433d99"
+    },
+    "fin-l1-macro-139": {
+      "instruction.md": "5b1281b1cd4172e88a30b103dd5fad3c1b38e8b9b1674a7d8cb92a9cb83145b3",
+      "environment/payloads.json": "d8bc0abecd0495db6c9b79b9469ef73d76a229eec064aafe83770002f2fd3277",
+      "solution/gold.json": "e1d5540b3d1b5926f713a6107909c75f708aa67d61c7cd6cf423fcbbea74c358",
+      "solution/oracle.py": "441644e7d149963b61960561909676d809cca50b85be09f27bc8d56373fd8213"
+    },
+    "fin-l4-narrative-246": {
+      "instruction.md": "26161ece2d200a03fcc6c56037e20c98b39876ffb9347876ca5f3de28f9e6492",
+      "environment/payloads.json": "c250c282e6dfda3642e9a561e0ad959405d0e317eabbd8e88302000e03bbb660",
+      "solution/gold.json": "1c641f97c5fe12693732122520a746d58d52b0c7ec04dff8cc9b93f1191d6100",
+      "solution/oracle.py": "da8c660f8977c89bf0b2124d3653227a0e6c6bdac90d9f11e7a46cda3366cd0b"
+    },
+    "fin-l5-compare-290": {
+      "instruction.md": "bfa6b19634b4433e497ec89947dea5272bb95b2727e605df2312b625a3ed1fe0",
+      "environment/payloads.json": "6e724aed6de39026019090303dc95158803438613308e97562d8a1b8ed48c809",
+      "solution/gold.json": "74494744de55ba873800ab6d8d9506aa9056372f4b7a4c367ee32663069f90a3",
+      "solution/oracle.py": "ff0434735bae99d2422d32eea21b91e2aa3729749aeb48e96ccc47c64e209ded"
+    },
+    "fin-l3-index-217": {
+      "instruction.md": "0826ec1613eac5bf7be03918c149e830d9c05b8ada64f9600d70a31117aefb60",
+      "environment/payloads.json": "3e2cb72a1d26644b5b6db60e6ac5b5d1e37b38b0b177ce1037a2dfd65cdd1ad7",
+      "solution/gold.json": "2ba2a90e564d40eaab1cb2ee4c71a042010c8eaf4e7757b7ba7f576648383848",
+      "solution/oracle.py": "3fc0aebe916ae1904e628f4a78663130cb9bf4f3afb6c63a1089eb85aec39dfb"
+    },
+    "fin-l1-quote-crypto-122": {
+      "instruction.md": "1d0b0c63d2f51b2833aaccdee8bf716b6e75e468cc8aa50d12f4ba7ab8deef3c",
+      "environment/payloads.json": "057678ae8f95ca9e891512ae5b9a2b5fc3b569b94fc2ca37e3a19a01707165a5",
+      "solution/gold.json": "6a1d2f423b67fe5a8c300a3ea532054435a5784d46f8cfad28ecdf723e41b852",
+      "solution/oracle.py": "8fc27342d93344b7eae692e705b5a66a99e94f0ddcbc61a261c395296a35013a"
+    },
+    "fin-l4-nonexist-243": {
+      "instruction.md": "bbd480c8774c239ee1217d1d90c35f75da89d189cc2a069ef48da36d2ff2ebca",
+      "environment/payloads.json": "896535c1551bbd5d34814dfe90e42300bf157637735b4bd0e6d3ca10fdc53ed7",
+      "solution/gold.json": "adfc88c08648cdea1bc024f7bac56c8f4ee752476194d0dd96f936ab4be681d9",
+      "solution/oracle.py": "bb90de6e93170d3a738bbfd3990d4bfc390efec86b8285fec9b069a4cf27ae17"
+    },
+    "fin-l4-chain-305": {
+      "instruction.md": "c6972797593e32a0e2984fa3f06f9acb10d0abedce95b22ebd3315feb3e09868",
+      "environment/payloads.json": "63873ca0cdbf473946c7a06aa7520ca6bc194cc972ce80e49b59bba39a4a9a71",
+      "solution/gold.json": "f6841cb3ebc328c5bf66dfdb684678c1719d5c7889888f1a9115a669365566be",
+      "solution/oracle.py": "b226256c9050376c910f1b77ff79c8f3a073528d4cc87beb0a68afb1b8b4fdfe"
+    },
+    "fin-l2-macro-calc-179": {
+      "instruction.md": "2f90868a274bbcb3bc728782a6407329e8e0ca110580f21f6526bd34dab46050",
+      "environment/payloads.json": "d8bc0abecd0495db6c9b79b9469ef73d76a229eec064aafe83770002f2fd3277",
+      "solution/gold.json": "f8454649b1f8efa5152c33dcb22328da3a38805f48aff204945f880114ee6116",
+      "solution/oracle.py": "0af962da8dd2480c355388841e8e07122baad65f7d4e8bd5bb4a5411a15e1154"
+    },
+    "fin-l1-bctc-111": {
+      "instruction.md": "6f2ad28418a0c812d416ccc9e48dcd4570d465fd04ec43df9cf011cef5b03337",
+      "environment/payloads.json": "ecb498d7e0e732f4996b88fcb7c7973dc889b2e9ea478e912a91af41fa9681de",
+      "solution/gold.json": "179d726a77dfa8362676d45b22c1a8467e79cf1dddc157fcdf709292e828d612",
+      "solution/oracle.py": "8a23cd7352ff16acb0382bf88c3d1f340b9a3b559e3a021bf0d487fd7e2b108b"
+    },
+    "fin-l4-chain-306": {
+      "instruction.md": "5f8f902f80f4069951320be7da7ed4f028f73d544c5a89b9c0c8848b911c8a86",
+      "environment/payloads.json": "8e14fc5e914a943d7a59ecee36429f184b8d374c28127fb296e0c6ea489867c8",
+      "solution/gold.json": "99ad73f1cbfa1adc7495f75fd27cfc72857c1a75276262e292fabd74a562aa15",
+      "solution/oracle.py": "4ce3c0825a5bd9439420d0c32262fee8a65ff1e98a000411747dd4f0750f29f5"
+    },
+    "fin-l2-gf-compare-173": {
+      "instruction.md": "4e211890dbe599b68d4efc45b18821e4d979a4c964f53fdf9be6313b7de91361",
+      "environment/payloads.json": "6e724aed6de39026019090303dc95158803438613308e97562d8a1b8ed48c809",
+      "solution/gold.json": "ea7f75053b8921fa059cc3233a837705a625965547f72e097c74a82eb084ea7b",
+      "solution/oracle.py": "0de1b94d68bc26a7e72290e2e8ae705e6ce938d4696c69b7922a79e57d705f65"
+    },
+    "fin-l4-nonexist-236": {
+      "instruction.md": "03925f947198c0f28fe1a5fb3073670d172609bf0c821f6dc5acb341c0b6738f",
+      "environment/payloads.json": "88d629997ebcf82984d4ce583525da4c771ad20eed3b3133fe3fdce0fd544798",
+      "solution/gold.json": "5635d94a2b7bb34e9ab4a1e159ad6c2be8ade13aa3ef087bd8a9456771ed1f9b",
+      "solution/oracle.py": "93e7dfd5e88f2a7408e64bedb282a8652d5bc1c0f96d3c404dff41acd1aebb6b"
+    },
+    "fin-l1-bctc-113": {
+      "instruction.md": "068484f4bee0f0020f1a85b934a96adea678aff8997081c5fe40fcc909c20010",
+      "environment/payloads.json": "bc3ecd38d371c46a9eb87d65d48fcd97c4993b974206c0b44c57c227057a5439",
+      "solution/gold.json": "e7de707c538329692a000a307fea6291e1537198df9ad144fe18de0bb1353b3e",
+      "solution/oracle.py": "dc0a5ca7d14ecd17e8aec13f83986e10c9194a20536f46f94d2396341fd13e15"
+    },
+    "fin-l4-narrative-249": {
+      "instruction.md": "a7aa057798ef7b948d4942b3a148d0e756cc2617e3d2d8092fa69958bb6f9c1a",
+      "environment/payloads.json": "1a1c6ce1a6fe39d4702a41e9ed10dc606d88a7a47b401f2ade5906e1020ea70c",
+      "solution/gold.json": "f681ce362a9910492cc5b7b6b268c6309eae426845d5fbde932092f9509012e3",
+      "solution/oracle.py": "123f236fd2bd38f3f554447b593168b8fcf4fb0e6d4799022c513a5f7f636797"
+    },
+    "fin-l4-future-222": {
+      "instruction.md": "fc9dc3798bbadfc161bd98bdc62b82dcb0fd50145a1afafdad5d1dfed809b6bf",
+      "environment/payloads.json": "4b54bce803f4ff1e29da2403548fe58563d73af7360eba175c2d9eda20775873",
+      "solution/gold.json": "b4c866c1294bdad7db66f11fb50c50f90ffbc349a7c302812aa44a6d5107d06f",
+      "solution/oracle.py": "5172bfe5abde7fcf3127cfeff014ed40ab75a338d7dd420af7ba80a2f0249632"
+    },
+    "fin-l1-quote-gf-130": {
+      "instruction.md": "75c09f221e77e68d1289e58b34e4137a87aa7beb7d53c0513e5644ac61a8ffd7",
+      "environment/payloads.json": "6e724aed6de39026019090303dc95158803438613308e97562d8a1b8ed48c809",
+      "solution/gold.json": "3c0960ecd7eab300f1be372df2c565fca66631e9d136d9aa471fdc0de61d57bf",
+      "solution/oracle.py": "582301a956af196e80f89b6d343e8092d0ad41d95a9bdeff9084202f353346bf"
+    },
+    "fin-l4-nonexist-240": {
+      "instruction.md": "4ccc97fdc78b6265bf7655b0fa72b6de48e7c4850b3f6372d105e3d1ad5138a4",
+      "environment/payloads.json": "e06cb353890a6df953eed511512365a9dee7b43b9f22ea3ee9619da7343c0acb",
+      "solution/gold.json": "14e5d7e9807e343a2993e58c80dda4eab51e015a9a29768651c55d53c46cad5a",
+      "solution/oracle.py": "5d89771ecf49f9b118122bcda9a9a64b795b0cdb43abac08fe93be9ea2599c7a"
+    },
+    "fin-l5-profile-273": {
+      "instruction.md": "061867b6f9d7ff81a5d9ab337d54c8c17b6408c677a1ac7da2fcf031686e9491",
+      "environment/payloads.json": "057678ae8f95ca9e891512ae5b9a2b5fc3b569b94fc2ca37e3a19a01707165a5",
+      "solution/gold.json": "002d9f3d1fd49a591a7c5f3a97e68444121734ec27028fbf8d84da77989d9a01",
+      "solution/oracle.py": "12a1db9ce0fe65490bae1aa23a682317541167008bd8c76756d2cc9e547d8711"
+    },
+    "fin-l1-quote-vn-108": {
+      "instruction.md": "2454b3c1e06d52cbef2826e168bdb4fe0035c84ed69555048c9fee8ddd96f1b1",
+      "environment/payloads.json": "0efe3f152b5b27c22f1c4c17e98a2ae6b97ebe5ea009a5f2ab11e1d6e47c5df1",
+      "solution/gold.json": "7ca3616ab43ed4b7dd87540e56bbf21b35b68600296206ab5e42d8702202402c",
+      "solution/oracle.py": "c2444442dfc76306f72f7fb08b372bfe72e9c922cce8b43a3584c4a32369916a"
+    },
+    "fin-l4-future-233": {
+      "instruction.md": "93fb2b36ec88c9abf45fa337bf19fb809d7a9723587d53957897873af9d53168",
+      "environment/payloads.json": "6e724aed6de39026019090303dc95158803438613308e97562d8a1b8ed48c809",
+      "solution/gold.json": "c4e3aeec9b3ed2a0830fa3229a14c1da8ac6dba560cf4c6e0fb6db53979ac69b",
+      "solution/oracle.py": "5312e2cc066115f73affdb4975a8097d1f454a725519116980167202c1fb8fb7"
+    },
+    "fin-l3-top-197": {
+      "instruction.md": "fb92a9e51c4a5eb2aae05faa87836085f234ef18a40b1cad559d72bdf6c2491e",
+      "environment/payloads.json": "b2446a67d6b1807ecbe171b0dea66b6147a5730988d0ec7b1ba7ac9c629e7a00",
+      "solution/gold.json": "7e238d715344a081f3f99fbc1626ed031672ee15d872bb93a5fb330f5e5ae390",
+      "solution/oracle.py": "0e45579a69b9eed253e010779ef07b7aae8ed67512d2151744dd5a74cda9be9e"
+    },
+    "fin-l1-bctc-112": {
+      "instruction.md": "cfa63dcf1c42a64e1b1f02b6fbc646a92a0a3b49b89b676a794c2f1237f14c09",
+      "environment/payloads.json": "6bb3e2980ffc09fd4a909dd01053fb435f80e8a3901eff3174c9ac9c9004e5c6",
+      "solution/gold.json": "e0e3dd71986155da2ba9fc824e19d15bc9af4f387b5f9749558d7263c1b4915f",
+      "solution/oracle.py": "b1f29daea05dadeaeaade60afb2be72bf52c137b2ec2f970f78ab40e397ba834"
+    },
+    "fin-l2-gf-compare-174": {
+      "instruction.md": "13e8230209ecd45c9d4b6376773274a9e78b8d864e0c3b0da4154b72dc5f8762",
+      "environment/payloads.json": "6e724aed6de39026019090303dc95158803438613308e97562d8a1b8ed48c809",
+      "solution/gold.json": "c72994f814df9c07dba4144494ac3d9a80741dad5adb47f873331b50e2a2ec50",
+      "solution/oracle.py": "a00b73c5a2544cc19eec2e7dd07179b36d3096c7aa8943b53cfb7c36396eb075"
+    },
+    "fin-l1-quote-gf-126": {
+      "instruction.md": "653ab760ac4e4a23eb9323583cad304e77a2fc451f286fdcffffeb56172440d6",
+      "environment/payloads.json": "6e724aed6de39026019090303dc95158803438613308e97562d8a1b8ed48c809",
+      "solution/gold.json": "c08d61742def85196f873cf90e20b38bd447b19413c3b4749fc16744f25081cc",
+      "solution/oracle.py": "789f42dd6a3613df88b9bfb00b5fbde47d772ce5cf915d449c917df3523d1119"
+    },
+    "fin-l4-future-228": {
+      "instruction.md": "78ee7145175dbbff75607087e2d48f5da9186fc7a1c90703228a66399cb1e810",
+      "environment/payloads.json": "5f0bbe1901782843db46480749ebf90d592b2e85c8b09ca8c85c7310253775e9",
+      "solution/gold.json": "15e9f2824f2ebf37788f8c73819d0dffd1a0713c37eb86bd2feef9c25cb23743",
+      "solution/oracle.py": "3aed24166c640688ed315d2b9c4fec3c9b392cfd72947bfb3939fd8579de3ed8"
+    },
+    "fin-l3-screen-195": {
+      "instruction.md": "bd67355426fd89c8f46a22eeed7564e2bd75c9ef690924bfe14f712fecee19c9",
+      "environment/payloads.json": "fffbaf55bd1b4f1af5a6602068e0002cbb9d21c762cad0c7c2afc6c09aa0a67f",
+      "solution/gold.json": "225df1cd058fce6f91088d1a9a2b3d28c5e39071b3421f964e0ad640d529b694",
+      "solution/oracle.py": "44a0fd8d597c2e3de45e5b2d12daf59d06e049482ef0049e757e8c6bcd1779b2"
+    },
+    "fin-l5-compare-275": {
+      "instruction.md": "94941a37241ab9731ea1755a0aceefadccc5c52461e3930c04c85b5de8d8cb32",
+      "environment/payloads.json": "3295ee3228fce43220d78e8c6b29b422a9311243d3dc6a72e01c36d405515e18",
+      "solution/gold.json": "f3c15d98fb92c2a25327240b981da6fd56a2d9ac873721ab27654beefefba7cf",
+      "solution/oracle.py": "6a83b99d577e8d5b8321f2a8f9fb37f745b2d46aa11eb5cef335ad517ea13cd6"
+    },
+    "fin-l5-compare-288": {
+      "instruction.md": "1c99eca90629e6089ca1661fbe9e0a81d32cd47a2691a19d57ddc16e688bbb97",
+      "environment/payloads.json": "6e724aed6de39026019090303dc95158803438613308e97562d8a1b8ed48c809",
+      "solution/gold.json": "41ddaada7ef531d615c6147fc3d6ee26529bdacfb0fb0ccf93ce29f1b851b5ff",
+      "solution/oracle.py": "ff0434735bae99d2422d32eea21b91e2aa3729749aeb48e96ccc47c64e209ded"
+    },
+    "fin-l4-nonexist-235": {
+      "instruction.md": "7016585aefb73fd3d13e8159860e0136abae7162c0f4973585e395dea94f1c2b",
+      "environment/payloads.json": "6b0d8b8dc0a5d8bcdac5b2c01abeba374320de679d9b3d93b804a5b8d004d82c",
+      "solution/gold.json": "2622e2e869bbb811f77eadfd09fcb3baee0c015c4f6b83fe5cb4d1eefa10ce42",
+      "solution/oracle.py": "ffcf52ded40dd836e89703f12ce5e02983844b7212e6732e1ddfd4aac9aae9cd"
+    },
+    "fin-l1-bctc-117": {
+      "instruction.md": "a8c1c1a7542d15c9345a35ac0a4fcf7771289187f941ad862161033012000547",
+      "environment/payloads.json": "8c28d6192d81bb304953dec467a2de98595c9c4637f2599d15fb2ad771718a85",
+      "solution/gold.json": "6ea3889cd0aa1f2f246e9dd2a1ec67c8317b192706a254c8a4bac657cbc3972a",
+      "solution/oracle.py": "63d186a38cdbb0873603516de00498ba41b3f683bcd55bff0f8aa2ec25a58696"
+    },
+    "fin-l2-crypto-x-170": {
+      "instruction.md": "2560dc78283c8279091d91862a469a869164d514b41fcb1ca88d5ec11c4d62b4",
+      "environment/payloads.json": "d8bf304445161d93a1be377ba4abb24f44754c61c91e3780eff24c2965abece8",
+      "solution/gold.json": "64672a6fcc889c7a5eaed9823feabc07a7e62e814c67bf1e3b35c3c485a4c472",
+      "solution/oracle.py": "9d4eb16f0cb2dee2d8b3c0bd326dd94d197c09f7df1d708dec4e02ff76ea77b1"
+    },
+    "fin-l2-margin-152": {
+      "instruction.md": "bc4f2cd29a504ff1ead423c9d3f2f41d49370a773833742975369df9ca4bc86c",
+      "environment/payloads.json": "1a9d1a89e3d93e6dbf2d00c581175caac8464abe474a496ace198b696625066b",
+      "solution/gold.json": "f1cd12e218ee868306d3eeb45d635105009691e1c3c7ccfbefdc14876d38ab6d",
+      "solution/oracle.py": "ffbb142d33055437fcdcdcd81849d8c88e3dba321a7b01dabc9c7deb6b69d5c1"
+    },
+    "fin-l4-future-308": {
+      "instruction.md": "a55a8bde20193c522409f37835363a1ad78a514242d772a30ac9edffa82f4f0a",
+      "environment/payloads.json": "0b1d1ffa3de38adebd2491e2993b8b72f31beca5af94a15e60019c865a194747",
+      "solution/gold.json": "9bcf3e43fa99f54a50ca23710dded91666ee731b0238125ea6b641318fd86765",
+      "solution/oracle.py": "775816ea447443859da94888ed7a63e1406a3bcf616d6b82de804b2d77d2b837"
+    },
+    "fin-l2-growth-147": {
+      "instruction.md": "b3a9e9116f15daef9c2822733b2645d4dd8d267341e05e768113f05b8939a765",
+      "environment/payloads.json": "ddac3ec1b92e79f1ffce8323a34081f8467bffb2b5dfde3c7404aa61574624ab",
+      "solution/gold.json": "d75bb638d9e6bb5dd868fac246f681c9fafee522186205bc4aab90ddd365ef17",
+      "solution/oracle.py": "55509242ccc712ea8015b9ab490c01da9c174422f7fb3a45955cf2d772c46f6c"
+    },
+    "fin-l4-future-227": {
+      "instruction.md": "29446cf7b2e3eaf86a1eb2d38f006013e37581358008e85c0cefb4da22541358",
+      "environment/payloads.json": "d2d6286edc369f891b0e6df7fb9cc9292abd1d60018c8eb6c92180231da1dff3",
+      "solution/gold.json": "3a32f2cafd96b5e04afd60e7fd33528af5546df57975a74bf2bdb94dfbce2ed3",
+      "solution/oracle.py": "1f60039a0594a69cdd46d8cfe44d5cba3821a84a9cdc2f4a20ed3d446b1fb0e0"
+    },
+    "fin-l3-screen-193": {
+      "instruction.md": "1fe32c3507c741c7b8e47bcec91614617ea498bf5e33cae5c1414f7b65b88791",
+      "environment/payloads.json": "7482995f6d9cf105dd8fab6f4a2a6847b197553c28d9125dbf23595e6813dcbb",
+      "solution/gold.json": "8f1019e140a72ad44389ae75041afa6a7591896b1b29befa26a8663ca76c458c",
+      "solution/oracle.py": "d954bc6eea90da3d78953c53ccd575174d032619f446e201abbc5bb0f97c9786"
+    },
+    "fin-l2-ratio-158": {
+      "instruction.md": "c7b2cefbd04ff599e5c790c49ddea56e0bfd6efdfad076de9b3d7ab8fcbb0ed8",
+      "environment/payloads.json": "be8af9e204ca0187952ba5b35730293bcb6bd858fd6c47eabca4193a4075ee45",
+      "solution/gold.json": "262fcf1d420d8e0bf024dee8a62d821d723d5cad04e906fe45a101f562469fbd",
+      "solution/oracle.py": "38868eee4dbc4d0b6e99e4267e36419ecef1edc0d94f4b2e2c09a98a32505ca9"
+    },
+    "fin-l4-2src-254": {
+      "instruction.md": "2b61764481bab115fed9ca28df49203ba4edc778bf9884b56eef17d34216cca3",
+      "environment/payloads.json": "d30eae748a7085ed00a84c39bbe31a1dcc7c2b0de5e85ccaa8b9ca34ca89fc48",
+      "solution/gold.json": "ec3187a117f166bf0ca28a23073a462cc68b4cc44be183a77a825cc35676f3c9",
+      "solution/oracle.py": "65eb1dbe82cec33083da234b515a81262ca717bc939eacb96394db0179376412"
+    },
+    "fin-l2-macro-calc-178": {
+      "instruction.md": "71997e6df1262e4e8330f4feefc15eb4b2963c84ee4a8b0dc844c1cf43530f13",
+      "environment/payloads.json": "d8bc0abecd0495db6c9b79b9469ef73d76a229eec064aafe83770002f2fd3277",
+      "solution/gold.json": "95b4dde871136f3c359dfe9f51f3b0e62fe4baa00e572401e2b5c314bd6a2ea2",
+      "solution/oracle.py": "a3c811ecc898b93db8ed4a31466c2b95ac78e0cf3dde5bf7cf479d9e3abb6f5f"
+    },
+    "fin-l2-growth-141": {
+      "instruction.md": "7d189b63d25ec12b7afa9e01a9277ce6ace06e1718569c550701a23a0172856d",
+      "environment/payloads.json": "ab35eb80103c73d6c77708e79be3c3c7b67a82777646035c9eb3e425125920aa",
+      "solution/gold.json": "60eebaa6b7ba8d4052eda7cc8ce6a411decaea6a36dad29de7cbc741de0014a0",
+      "solution/oracle.py": "a31befd9308d2577bd8ac0bfa799a5611f628493598bf61beff13b962a202e92"
+    },
+    "fin-l5-profile-267": {
+      "instruction.md": "8d17a672602fcf7aafeba09135da454527263a4b2969ee7e1d515e68ee5a7658",
+      "environment/payloads.json": "029659807e4d6196a71f719b4864b1d9b45f0e3ef525d0332c3c066819b4bb30",
+      "solution/gold.json": "720f8f23ee41252f2ba3b7b2b895260fae5b227b9daeffdc0773e02b5718c2be",
+      "solution/oracle.py": "83e9e1468ea7f4182013c3af05aed0578141783690161af00bde1028d06b6fb3"
+    },
+    "fin-l5-profile-274": {
+      "instruction.md": "9228ea187d981a416567ffcde21c729b6a2a18c8e124893bd20325ccddeb5270",
+      "environment/payloads.json": "057678ae8f95ca9e891512ae5b9a2b5fc3b569b94fc2ca37e3a19a01707165a5",
+      "solution/gold.json": "9a1d757b54197fe484d9b68e21a309a6e214324795ddbe52898e23d6ed8b2f2e",
+      "solution/oracle.py": "364357fd3ba1cb00c78d6f42464b0a20dc76572806bfdb92e1c6db56cb16b6e0"
+    },
+    "fin-l4-future-221": {
+      "instruction.md": "ec0b6ac4254b0affdf75aace30162c189e92ed8b8785e0994211bc6a6dc4bf7b",
+      "environment/payloads.json": "807221df72b3943e15ea466c1091ebfc4c2628faa5827d9ba7a01c28ad289352",
+      "solution/gold.json": "ca41670d2aea4ab989e28e0ca983ec3f0c8e22ae758491543d36be2933c6069a",
+      "solution/oracle.py": "b7b51ad9c61db290cf3fae51bbcabb9fa2fc3ac62a39711904b5774b911e0b0e"
+    },
+    "fin-l5-valuation-294": {
+      "instruction.md": "579ec0c9899162aca4969eb89ee4f2f79a92792fd9010c665aea64cdbfd002f5",
+      "environment/payloads.json": "9541f21819cc110be2b8e79c38208df12b4da9ffdd2c1da9d45b846bf37e476f",
+      "solution/gold.json": "b7b1420a8e223edd7799bfa7d73b0020f2a7added431ef7f542432d0e60bcd40",
+      "solution/oracle.py": "9dc4272e47659b8259dc41d38086e221b317a3bc9a1f744a3871f02d155a1e42"
+    },
+    "fin-l5-valuation-300": {
+      "instruction.md": "20f84e1aa3c50ad8942a647944fe8f16c1df0514eea3bc89d7b92714343b7046",
+      "environment/payloads.json": "b2fb88469e70aaf4681dc7e0cd18b67993081e74350548c44b939cfeee4a6ef4",
+      "solution/gold.json": "555282d9897c753fe3c267a23a233573feecc81f1e1efc293dfd6fda5236ab85",
+      "solution/oracle.py": "d9eee94b8f39ef330e9150836fa0d4be8d83ce9633b5664874ae8f71a2e60cad"
+    },
+    "fin-l1-quote-vn-101": {
+      "instruction.md": "6eb8dde7f418efb873ee0c9c81a44a70655b435b5c0b25856aa0c19368c48c9f",
+      "environment/payloads.json": "fb8a39991555e595192cf4190947f4bdccddcbe1f3b9a3da08568a60d4d784f4",
+      "solution/gold.json": "5b71600bd715578c690dfac0e5ebda9fe6755e4372deab94400ff4a1a1667d8a",
+      "solution/oracle.py": "2fa621a61a65562aba824aec582fd5d5e2d850e57116ee7598b7cbb8e46ab2df"
+    },
+    "fin-l2-growth-142": {
+      "instruction.md": "b9e07ee52d02e3d3aa8917759ff609f7c04197ab8d0d258e0b8e41ea26c13f00",
+      "environment/payloads.json": "2b41596fdc6a336bcaed9c92ac9faf1b713f2f5c9a40684ba6fbd60a120650a0",
+      "solution/gold.json": "427aceaf7c727cfa68a89fcea41988b60c246097b6bddd4c774952a06890a337",
+      "solution/oracle.py": "629bcef63c88f0ca217e854e6d0dcee459c1828f864fa3748019b7ce8234b1de"
+    },
+    "fin-l1-quote-crypto-123": {
+      "instruction.md": "dbe5b7493b1c829db44e97495ef27ddb8eeca43d27e32f6a1155894f211821dc",
+      "environment/payloads.json": "057678ae8f95ca9e891512ae5b9a2b5fc3b569b94fc2ca37e3a19a01707165a5",
+      "solution/gold.json": "184f325583d4e47ffba375305faaeffd59d1b7fa90511dee19e721df66d32401",
+      "solution/oracle.py": "f22c5071097ece96906f50428b4d9259fe82f305b74a7faa24abdb1bba889479"
+    },
+    "fin-l3-screen-189": {
+      "instruction.md": "3b8502bd17c3f10ef4c001ed714ab1d70345f6fcf6124dffbc3e4801a111c730",
+      "environment/payloads.json": "3295ee3228fce43220d78e8c6b29b422a9311243d3dc6a72e01c36d405515e18",
+      "solution/gold.json": "07a0e777c9ce055554b76875f0109a5594f810825d32a0e9a0ed2c086e063475",
+      "solution/oracle.py": "e102aa6b39aea8c6355c275ba8817d1d45316ac7ff5fe4aa264e5ade8b66728f"
+    },
+    "fin-l3-crypto-multi-214": {
+      "instruction.md": "2978c18fd60afb6eeb48e64b0574217fe1db54e80e213b793e6986915bb138cb",
+      "environment/payloads.json": "057678ae8f95ca9e891512ae5b9a2b5fc3b569b94fc2ca37e3a19a01707165a5",
+      "solution/gold.json": "f1b6de295a6a480409c555c7624a0e8f32a15c816b03412ef5f0ad522e702151",
+      "solution/oracle.py": "2cbc60c9dcc4e94ba875d8e1abcd65804017f578b21a10b57e50464ca6027c83"
+    },
+    "fin-l1-quote-gf-127": {
+      "instruction.md": "a32bae7aa86ca8d25de158e75f458fcd241bb91d27bba45d9c14c80e3151b09c",
+      "environment/payloads.json": "6e724aed6de39026019090303dc95158803438613308e97562d8a1b8ed48c809",
+      "solution/gold.json": "aef0d7cb355a1ce0e33b1ffe7853de70b7ecdd08ba9a1b94d3626acc76869ef2",
+      "solution/oracle.py": "d04c9130187212bea14f9e10bf869d21b0a732c77bcfa8cdf54f2c6f459e7477"
+    },
+    "fin-l3-agg-186": {
+      "instruction.md": "95143027ccf1fa7d6beba6918880356cc564bd55688712341d2be28605cb0f8f",
+      "environment/payloads.json": "067c6094929aad887101bba17ad696bd914102ffe79315b804d28aa7cd6ebb1f",
+      "solution/gold.json": "67f57f2031e364b9e218cab23b77f9a34cc457bf76a1f85906a72a0726dda13c",
+      "solution/oracle.py": "796f92285b2aac44f82a3792943732a6b48371ca617bc71fd17b0c999bb67e4c"
+    },
+    "fin-l2-margin-151": {
+      "instruction.md": "c6d3135623f03e26498d273fa9ccc7df4b925276ee6966374200cbc5dba54f15",
+      "environment/payloads.json": "60be85cbc9f79dd4ca7743b33bc002dc20d0f1acc65bb1887637ea4ad4d91b33",
+      "solution/gold.json": "d3ea8d8dd88b4cb3ff62f8f3f51ea3531b7aa5b258c0af82dafd076277b7be1c",
+      "solution/oracle.py": "d5d8c2b107ca10484b7852337e8c6d429bb7d17f8d17aaf77a972491907141f3"
+    },
+    "fin-l4-2src-255": {
+      "instruction.md": "ff3de70409646569282bd2643d7218fa9f05d5db6eb379f71306962729bd7c39",
+      "environment/payloads.json": "34c492658e60d8646065b650f61b0c8bca3fce24c5cf875c4f9aaf6ab60894e0",
+      "solution/gold.json": "5936a4dad43b88700465dc198ae576122114954a4492d7fc46a0242fe9bebbd4",
+      "solution/oracle.py": "cc9f9362cd94ca9f83860025db237b4932347b9d4e16eaa216cd37751e3fcfe5"
+    },
+    "fin-l5-profile-269": {
+      "instruction.md": "4d8422b5ef1c65c4e1c3960c5ed572513d8c696fc444376484887ff23f272f20",
+      "environment/payloads.json": "878b186c487ba5e716708c0f68dcdc576d48d97ce17a5ed116a86b78cf7c5323",
+      "solution/gold.json": "718ac9f187ce36a85c80c14c4bec9c9f8ddd9b848137355455f95412f572f2ed",
+      "solution/oracle.py": "bcdd5d70f92c28fc2a20d7f6ae60fd72158c10d66298854abb28c5d2d955c58b"
+    },
+    "fin-l3-agg-184": {
+      "instruction.md": "2117d530d67f445333a4a6c84e66c091fe05f49655eac601029abca2426cbb40",
+      "environment/payloads.json": "3aca8555c0c04c22fef28f0832df46393a5b11e1398bf0698b432abeba0376ce",
+      "solution/gold.json": "ba98267786556733c8cf138a3a8c6330054d6cd3cf6ac1612f1d5ef981250a4a",
+      "solution/oracle.py": "ff2b626a370b3940e7a2503053799f3eb7c424b3e3e7d1986f51a748c47420bd"
+    },
+    "fin-l1-macro-136": {
+      "instruction.md": "bf9ec8c5fb909795b032eab494f75d8415d51e1255ebd1aa1ba725e94fd21fde",
+      "environment/payloads.json": "d8bc0abecd0495db6c9b79b9469ef73d76a229eec064aafe83770002f2fd3277",
+      "solution/gold.json": "8d3d0176ef1caa2cf711fa11b8ae885cf7e3d693cd05cbe634a10eb6efdf2429",
+      "solution/oracle.py": "11ce76b00c4fa03610bb4d606f780993ea19b0fcf29091bb0b3d94525aaa6d6e"
+    },
+    "fin-l4-nonexist-310": {
+      "instruction.md": "151d6f88b3bb22540a492d1b8afbfb98b77644adcbf16d1222c4bca5598f54ae",
+      "environment/payloads.json": "e54b47aa73795a35e2957fcb510a6e61ecb8f315eb2cc5022e06b83c08d4c9d5",
+      "solution/gold.json": "6eff2ae3df9e52c008c1215221f8df79f1af5f3594170ab7850c350940610abd",
+      "solution/oracle.py": "d2e33354c80b429defb67a14c6875096d921528c37d40b8ad3a3d8e176cc274c"
+    },
+    "fin-l5-profile-270": {
+      "instruction.md": "42ff9672509c0640e63b528fec8ae92be05bec85f54b6829cc588deec64fea1e",
+      "environment/payloads.json": "4ee78d7da453cdba971e681890aea1a3bae175a3e06cd34cc4d61f66c06fa5ea",
+      "solution/gold.json": "2a53e2610361f7a0c73aa965e7aafd3d19230da275d38040c83a35cd17878e9a",
+      "solution/oracle.py": "fa83d7af7dfb190b793e5628cd224528a8784bdc0b2e645ed68c738d9865b072"
+    },
+    "fin-l4-2src-256": {
+      "instruction.md": "b8cfba0800c78a05d4ad86f40cb0d9d45bb48a30fc4180b6170de5aee5335efc",
+      "environment/payloads.json": "a9a6bda5ce9480cc3f1256363c27fa853c16cccea21015776cbdb855768d8776",
+      "solution/gold.json": "d90103c3b0eb7a412b246dfdd0eafb49585c306ca395f13de897711c27e550f0",
+      "solution/oracle.py": "0de60d7f06897efcebf75a46767294417119429d39bee51efd8a0f5c0945f853"
+    },
+    "fin-l3-crypto-multi-209": {
+      "instruction.md": "7e9c9cd2b7f7dde74f1ced2a640cd44b147458b2e62738691d0204908b6c2fac",
+      "environment/payloads.json": "057678ae8f95ca9e891512ae5b9a2b5fc3b569b94fc2ca37e3a19a01707165a5",
+      "solution/gold.json": "1186e72f9cdad4999fea6ee02384b31e99dccffe669a7a1cf6e5c1a348cc741a",
+      "solution/oracle.py": "454f27cf8b3e37b488aa6509223ce8463375c3ac857327001d89f5b5754ff986"
+    },
+    "fin-l5-valuation-295": {
+      "instruction.md": "c885daba9295701f56d20f68c5508ae4ae0dedd708622018d6f304e54268485a",
+      "environment/payloads.json": "7f147cc5616f33e7f185419c992fd875f6ac4960a509254d8f72034e4c5247dc",
+      "solution/gold.json": "270de13a4d5bd1455095806d771c0e5bf45557d58181abe572590995eee2208c",
+      "solution/oracle.py": "4a137e39b66bf72f93b813e5b23be95cf2e0a5b8ac4eb8b514f881b6555e2dfa"
+    },
+    "fin-l1-bctc-118": {
+      "instruction.md": "986c4637fa3309920c53293d0e2bdaa4d41e6e0051e15ef95517b0349f7e84a0",
+      "environment/payloads.json": "2fa8c2c6c169c867d7ad945d7680dbd98864bc5f28f271a15d98242d0afbb0bd",
+      "solution/gold.json": "078a0b95ff72334ef50f35ac98e2524b566c784b9e6f918dc7b981788c5de1db",
+      "solution/oracle.py": "6ba44c9d392dae1c320124f31cac279fb8ff3697aebb8bf6f436b03ffa7a1d77"
+    },
+    "fin-l1-quote-gf-128": {
+      "instruction.md": "5f33f71069d2b8842a0f39b3d62a33d95a4871082fb5d0cc3560058c4ef16f2e",
+      "environment/payloads.json": "6e724aed6de39026019090303dc95158803438613308e97562d8a1b8ed48c809",
+      "solution/gold.json": "ae8c5cad7a69c19c2e28ae0d406593d55b1123a91787ded818b4f5d57243abba",
+      "solution/oracle.py": "5c32b858b24efeed5c3c604ecd0a6df4ed986063f644bbdf587b4eee3409eff4"
+    },
+    "fin-l3-tech-multi-206": {
+      "instruction.md": "1a78b37eb86709a5db8b690a3e1f3bde01c2005e69da097e0b91e76c79446c0e",
+      "environment/payloads.json": "3806d89602288ed593d5ff041e1d89048286f413accc5e3022bd415d85e3e546",
+      "solution/gold.json": "47d4f889d6c5cdf1e5a6d4ca54dd9cf002d6a52b165630e76970f405ab163ab8",
+      "solution/oracle.py": "dd2599a2dabb9be5978b4b32a4484a0f48e21787879c2c9420b22ef5e0e96dc4"
+    },
+    "fin-l4-nonexist-242": {
+      "instruction.md": "8d5b02795cd481a9b088564221dd1bbe3c29b10ae21ab9a45d3b7202b316f637",
+      "environment/payloads.json": "97937c295a67f5679ea012139851c8c92b52cc785a0061774913b3ca8cc9780c",
+      "solution/gold.json": "764a26addf471b70a0a6fb34d298bedef7780f39e5f57423a9e624490077f250",
+      "solution/oracle.py": "1a0a60b3d9d875f45f74f05c5b9722ad8b226c80360598d5ad3343ed5681078d"
+    },
+    "fin-l5-compare-282": {
+      "instruction.md": "5d55f8aa59190efa1d7cfa7682d9f5856292e31f4b2fa6d29848bd0c4c1b7a4c",
+      "environment/payloads.json": "6d60d2b1ef429d4d80579e8bea9d10cc323e16246a3b6ee768115b8bf2b05edf",
+      "solution/gold.json": "4e79523796994dcac082fe1d51acb5517d63c0b42e486bea3971155fed2e5a1d",
+      "solution/oracle.py": "5400802b5c966933860f5fd198a96ccf77f96c25d97257c61a41643938849f50"
+    },
+    "fin-l4-narrative-248": {
+      "instruction.md": "9dc3a9dc86c80a5c78dcf347529a325fa05c38745f14032c84d8ede36abc5d00",
+      "environment/payloads.json": "3daaf2f947f10f4eb2d07fa838492516811850c99a3db58cf732bbf834103792",
+      "solution/gold.json": "5cdaf3ea0939362c28c758d77b0d35804dce83a91475f3ba14b722f572846a45",
+      "solution/oracle.py": "6aa922be7f19eef8d2915ce523644f99102fe7281150c253aea78a8b2dcf9679"
+    },
+    "fin-l4-2src-259": {
+      "instruction.md": "31e55b30f510f29bbdad764888470d4d0376bab86d3a2c99c08e5b89b0239e8f",
+      "environment/payloads.json": "6e724aed6de39026019090303dc95158803438613308e97562d8a1b8ed48c809",
+      "solution/gold.json": "4544ba75c7c8b16beae223578a39b6e0933d3013d51f17ab38b4f89c6ab7ad45",
+      "solution/oracle.py": "5871e7a36231d25fff10af6649da2c55ed7d638e18d82007ac47b6d97875d221"
+    },
+    "fin-l4-narrative-252": {
+      "instruction.md": "b2f1571daf23ff3b3e39e40ad9510ef5ebe8e1caf27839dc74d442c442b244af",
+      "environment/payloads.json": "7ff5439e3a871fc0996111025189c64049ec7d80f8a5f86d3512fe4b300705d9",
+      "solution/gold.json": "b24cef0a6bb5190539d032d128b1a37ce04a6b70d88ddd4f6b046c4ec6f0311b",
+      "solution/oracle.py": "161143034ee348853d30c17afbd68ac0c20e3133b4a3cbd58e6012417d07abad"
+    },
+    "fin-l4-future-224": {
+      "instruction.md": "b4823976cb0ee3873cd64478ab698a1048eecbfc2e51a51c3ee2b9cb921426ea",
+      "environment/payloads.json": "6bb3e2980ffc09fd4a909dd01053fb435f80e8a3901eff3174c9ac9c9004e5c6",
+      "solution/gold.json": "9ead7316ac6c86e5c70e3da0dddc2cdcbf843d3ad0464e838c4303fcbc7d612b",
+      "solution/oracle.py": "126a2102a3b0010b04a4ec28bb199cc11742b0d03bd0d210eb58df0c3ea02c2e"
+    },
+    "fin-l3-screen-194": {
+      "instruction.md": "edf7e91e27b786a50a2b1a5a68e477cf01fc89295cebda8d5d6e362fa1d41a64",
+      "environment/payloads.json": "9a6f7ee8f2c3ccec42436b0f8c701c2fa5bb48d54f4fa9bdab0ba5e30c6158e5",
+      "solution/gold.json": "2e1a703221d1937ee7bceda32148d3ccf84108d3ff8e5a2747eb3ca75e69ea97",
+      "solution/oracle.py": "5f64fef7edc2e2522c24907e253b31cda9fd875dfd0b868f8066296959061ae5"
+    },
+    "fin-l3-top-199": {
+      "instruction.md": "96a5e350017545028c0d92b11cbd170cc6ad95437569fd203d2d5ffb0e931f8b",
+      "environment/payloads.json": "b2446a67d6b1807ecbe171b0dea66b6147a5730988d0ec7b1ba7ac9c629e7a00",
+      "solution/gold.json": "f9b2c967f2df096cbca9186b5451c111e078e39548522188d54fa05226a5b29f",
+      "solution/oracle.py": "2edf6743ab8d711ee365a19ee6dbb0e8a363effe22d2e4f436a48bd163cac903"
+    },
+    "fin-l3-tech-multi-207": {
+      "instruction.md": "df76bbca8beb8d129ce47c445ecf7336cf8e828549c759a791b7b8af99f1d687",
+      "environment/payloads.json": "c774c4c749c1f9bcf28ff12f20daf317257fc76063fe8f1e97c95d5f75bacd43",
+      "solution/gold.json": "7aecaac520c94f2b504b0040750d579b2d7d9af5400964977226ac1b8bcbbf51",
+      "solution/oracle.py": "ffbb1951e8794e95b4aa1772c3a5cb95f383762d6ed74c5ffa4fd6e5c7aa4829"
+    },
+    "fin-l2-tech-162": {
+      "instruction.md": "831a10ff55dc50acd8591d3b22ce06644ed2c14c1e3a117e2a0dfcf3f52a8a70",
+      "environment/payloads.json": "afa42c9c3972d74ee1d3dc389ba5c24c051be2b1f91037d087bfc3759e02e6a5",
+      "solution/gold.json": "d47e5af4df23bb26e4df9c3da0302874e4e39734836a45ac0a27483ad3788937",
+      "solution/oracle.py": "100c275760d8c29e38527e9fd1fb1d679cc27ed5000e6ad34304df155c1c7ced"
+    },
+    "fin-l5-profile-271": {
+      "instruction.md": "e6be07e489fe8c7a389a47c536b3680f0988cffce19337e5f21436a8cff022b4",
+      "environment/payloads.json": "df9ea3fd726342a0dada973420912b22030f0575e69709fc9e30e588cc136ae2",
+      "solution/gold.json": "4737d471ca48f8712b833782b3b990ba4b78459f8192b809be2cb7a29d0aaa95",
+      "solution/oracle.py": "640420b677d678013d6056b222ede9edc1a56a008eb629a5d101420da66e2d21"
+    },
+    "fin-l5-compare-277": {
+      "instruction.md": "67995174dc2b935c6f960b9248e861b278dfa2e51c0f5d7c3d5dd7276f23b3ec",
+      "environment/payloads.json": "f44870181d3518ee4f89a07ac809ce95b2f95b3e27c66af4e96eb6ceeb19e2d2",
+      "solution/gold.json": "0ec12aba041826281da4a2373dfe34d7ab32ec44f81bc8fb4a65139ea0552741",
+      "solution/oracle.py": "316cb336bee6ee0cfbdf156649b3d74e39a1e1b2320e751238e1ea60e5434d0f"
+    },
+    "fin-l3-crypto-multi-213": {
+      "instruction.md": "84915d6486ccf0669649ffd77bcc7bdefcba2afcc080d1ab3b83cd9787be56fa",
+      "environment/payloads.json": "057678ae8f95ca9e891512ae5b9a2b5fc3b569b94fc2ca37e3a19a01707165a5",
+      "solution/gold.json": "49214bd2026a0e548b3d07aa2e865a0bd314c62131b09c8c9eb0defb962aff84",
+      "solution/oracle.py": "61d0c81c5589af4bed0f5450a228324cd2afb49acc1f653a5c2d54faaa3f683c"
+    },
+    "fin-l4-nonexist-237": {
+      "instruction.md": "df1b5760c999c7850ac0410f807ee1661690a4dcd461a38b0480736746dd6843",
+      "environment/payloads.json": "8367468176d2147aba18bcbaf47307d66f4ae6ae92cacab297afc375ed351805",
+      "solution/gold.json": "7dbcac985c16fc6dc62cc240bd7cfcb5eb5b1a3d65aff36b0d909de53b0da077",
+      "solution/oracle.py": "9f8f213ec26776499931a09777f8ee5cc4c173c0700215b657c389aa7ce0e676"
+    },
+    "fin-l3-top-201": {
+      "instruction.md": "e7b9f0dbda9053e6d0fffc2a18a900320c683485f2c5c037678955e43aea11d4",
+      "environment/payloads.json": "b2446a67d6b1807ecbe171b0dea66b6147a5730988d0ec7b1ba7ac9c629e7a00",
+      "solution/gold.json": "468afa808814c1795f71051a9dd6b729d9e149448e1b591d7eb266c0adf14ae4",
+      "solution/oracle.py": "7a8289b071ae38e73fd02c7fe0448520bb41f9671416f929d6f06ecb89c7b0c1"
+    },
+    "fin-l3-breadth-301": {
+      "instruction.md": "8d06efdbe86bf4d6452fde96b8deafb801c4a9f896227cb17ed6db8c7092317d",
+      "environment/payloads.json": "aca7ccccfba6e96cf58124b10f74cfece8a6652b8240987f656db83836cc34c3",
+      "solution/gold.json": "d1715a079631440c36df610dc8c0a65da48a44729f1d99af9b8f671b7e1fdeb5",
+      "solution/oracle.py": "26e91ab92ee502a4da06b78e05f65e0940c61c9fee60e7f9c71e6675b7298bea"
+    },
+    "fin-l4-2src-258": {
+      "instruction.md": "458460b6f44f9caa739cb0df02a4816747aa8ea3965acbc48745ce46e9ce54f1",
+      "environment/payloads.json": "5f582a83ebe2bf454b1bee47fb1f163e448df10c33d66eb82e6931bf28cc5eee",
+      "solution/gold.json": "518df91e90288170d46353ce7d8b9875ffcb8df7e56caf953699af677da7d037",
+      "solution/oracle.py": "c0e680eadef9c76f023febc638b09b5dcbc0a2fd5e0cf6ab9f91e8707b468266"
+    },
+    "fin-l3-crypto-multi-208": {
+      "instruction.md": "e26d8bf092e06c554051380d88cca3b0744c7d7fcc713714223f82e6858181ce",
+      "environment/payloads.json": "057678ae8f95ca9e891512ae5b9a2b5fc3b569b94fc2ca37e3a19a01707165a5",
+      "solution/gold.json": "f58e1b4d477eacb2bb1480024e8741fe4cf4a1f8d7d9ef21d18ba06844118a88",
+      "solution/oracle.py": "d0f0d7130b2ece2c7dd8cfc6f7476ff637ffffae083aaa68db4ced96708619a5"
+    }
+  },
+  "holdout_hashes": {
+    "fin-l4-2src-940": {
+      "instruction.md": "458460b6f44f9caa739cb0df02a4816747aa8ea3965acbc48745ce46e9ce54f1",
+      "environment/payloads.json": "5f582a83ebe2bf454b1bee47fb1f163e448df10c33d66eb82e6931bf28cc5eee",
+      "solution/gold.json": "b17eac48f1f30485986043da8c45f02d4506759c8d84a0e3e5737af6bc610d29",
+      "solution/oracle.py": "c0e680eadef9c76f023febc638b09b5dcbc0a2fd5e0cf6ab9f91e8707b468266"
+    },
+    "fin-l4-nonexist-936": {
+      "instruction.md": "a7aa22daecf25e6bc2842be2f50d25d37949b1911e3c6698d0d7df72b21a475a",
+      "environment/payloads.json": "3f0a212617c93ac2b97a0650b26cf42d143d17b01743f2feea03f73251ed7169",
+      "solution/gold.json": "db826f35b2a357b5b8b41108792f016126adf53187b385a69d56c2862bb54320",
+      "solution/oracle.py": "9ddd5e916c1cbceb84de1f506494bce48bd9805c5207ac0c1f7b504811d9ecf3"
+    },
+    "fin-l2-growth-911": {
+      "instruction.md": "43df8715f858af42d0d87143ea3d6a3b9a8be9e21a185699ee3cc624439fc4f2",
+      "environment/payloads.json": "0794fec2341a6a35c95c2a35286576e951360e03e507ebc67f263fc53def967b",
+      "solution/gold.json": "45656e263d3a1e8029c98fc6a65048d348435e6662dbfaf9a71c4899ed1d0c17",
+      "solution/oracle.py": "8da6af484fff3f267b9ca70bb5a0933bd9c5b3238bc9e757c9ae5c66aebbeb91"
+    },
+    "fin-l2-tech-916": {
+      "instruction.md": "9f24cab0db5be9d2b7def775b7addb53f9425488bc1b060cfac744f9ac01fbfc",
+      "environment/payloads.json": "0f8ed508d0b5ee8bb532840ba210615c2a2b532706fb49b82284a30f7e40adf8",
+      "solution/gold.json": "546316e37a3662a398510df2e54a50ab3c40bdb301324233668cdb13714e6422",
+      "solution/oracle.py": "26f64883ac5f7b61f51f4519b709509f6d17f94e202b225c9e33184327660a77"
+    },
+    "fin-l4-future-933": {
+      "instruction.md": "3744f4abfc6ccf887259e0a4124576a55a790973f52f3c1d5b0953484499c9b6",
+      "environment/payloads.json": "d8bc0abecd0495db6c9b79b9469ef73d76a229eec064aafe83770002f2fd3277",
+      "solution/gold.json": "b440562821d552e0d258bb74af5b3fcbd1d77af349cb4bd2ad997a6a66adf7b3",
+      "solution/oracle.py": "b3eca482828f2b7991c5df05e6e0ae8dba22ab269101181331d29dcb0617cfbe"
+    },
+    "fin-l4-future-931": {
+      "instruction.md": "75443905997d11dfb27a5b69593e3563b60de302043558a7318cd96ab1e5b70c",
+      "environment/payloads.json": "2ed78e57be4734c1efb7188084e609e794382ebd907c3f372f9b02805e94949b",
+      "solution/gold.json": "c53ff3ac1bf74a46a29b7fff0b91b59669d8b4e4132c05af0f4269e9c1fa4edb",
+      "solution/oracle.py": "561cbc5f88d4bace24302e3da2e1b2a6e72df376b31b4c5d3356594afc4d5d63"
+    },
+    "fin-l1-quote-vn-901": {
+      "instruction.md": "221b6647523befa01177407e2357e0493c60802a1752fcf22e304479265a7239",
+      "environment/payloads.json": "db794508322da0523fb8cbe771367280221155df743be25c33c59fab16b5f308",
+      "solution/gold.json": "b2afb6011805690335fc0d5de44acda0d8dca24f88dea42a747d7d295c0ce3c3",
+      "solution/oracle.py": "52de73fba00f578b44968f0e9e3629c28be1ede77510a5c900bd4f22b740b2b1"
+    },
+    "fin-l2-gf-compare-919": {
+      "instruction.md": "bbe0151db3c6b183ccd07650d57fdbd57260d67f7d5e9833bc714c0828e51ae7",
+      "environment/payloads.json": "6e724aed6de39026019090303dc95158803438613308e97562d8a1b8ed48c809",
+      "solution/gold.json": "2c6d7f5611830e347ea36613d4e5d481d8ae3f818ae427e064b90c137c4a3b63",
+      "solution/oracle.py": "1bb492dfc7850c7d3eebb5de6a339c04ca27db638ed6e8be524f2232f3fc3f9b"
+    },
+    "fin-l5-profile-942": {
+      "instruction.md": "18e41eaa79903c3215b9755c45dce74b3ae1e8dbbe4ca444837a54f5c04c58b1",
+      "environment/payloads.json": "146c047928e683706a9c302f05c1168f428eebee34c50733a44b834fe8326f1c",
+      "solution/gold.json": "cbc570db4455ec9c7921c38d34bfe305652f24859f18db47ec00f85a4da96a18",
+      "solution/oracle.py": "eb064ed2a8df8f39ab7a1d9dcaf2fb47db550c796474bc8d22c9085a80da2c65"
+    },
+    "fin-l5-valuation-948": {
+      "instruction.md": "660067b74639d9d27f7d0c6f1fe62af7acbd27a50a5e7f5fe1b1b13872a0c909",
+      "environment/payloads.json": "ed3760f90328f6a4457c3a0ed0827129979b3771b15b04f733d81773ecac8560",
+      "solution/gold.json": "8a68ee69a006bd997533e9a1d223031c8a6c959a11e878cff9017e30a59fa7f9",
+      "solution/oracle.py": "7b149d7786ba03e79611285e8af62ddda64a356cfabcdf2faf8ffe4e6049bf23"
+    },
+    "fin-l5-compare-947": {
+      "instruction.md": "626c1059693b1dce61c40be1fc7fb0b6999fc8dcd5bf145a349d5fbb16e693e7",
+      "environment/payloads.json": "6e724aed6de39026019090303dc95158803438613308e97562d8a1b8ed48c809",
+      "solution/gold.json": "bbbf9db93425654c9bf37ae78005b30400bf180f72fdc1715e52742ad6e441b6",
+      "solution/oracle.py": "ff0434735bae99d2422d32eea21b91e2aa3729749aeb48e96ccc47c64e209ded"
+    },
+    "fin-l1-quote-gf-907": {
+      "instruction.md": "8b5b73ca07f4fa403581c34d8bb146751680cf5a9ad5a2b6da62a22cf35969cc",
+      "environment/payloads.json": "6e724aed6de39026019090303dc95158803438613308e97562d8a1b8ed48c809",
+      "solution/gold.json": "105df4bd67228ab0d4887036e507bc79e20d324362de105cbe9d8163b34c9202",
+      "solution/oracle.py": "41f3f1366b36d370fdfcc3aef6894a1e6e3d9960fabe25cd91fe080546b6d36c"
+    },
+    "fin-l3-agg-921": {
+      "instruction.md": "27d625c710354b1a42f0b14bb707821ab9a8474f98160f116f29d1bc38765c18",
+      "environment/payloads.json": "5e90a01275cd731a0ce0794296a39216b6374ea1712f1163b137bfe26d081a72",
+      "solution/gold.json": "a8f6bb4ff612a8ac927adf466db67325e9be011ba93e9aa4157e5cea72c8749a",
+      "solution/oracle.py": "5351e71c201d27a6389609a4d474098cb191c49a68220a60a6ad4b38048e0513"
+    },
+    "fin-l1-bctc-905": {
+      "instruction.md": "e7036f399ca017e2b016021c9f522b6de9ed6905f33811e63e1c27fcf7f61859",
+      "environment/payloads.json": "632bf7303e1c4ba0682359e94377c0147d7d72169c13fa91d62c9dd22f1d5935",
+      "solution/gold.json": "1ef0031bf29721bd8e6de54875f62d610f6ea8b57f43ce05d64e0f89dea7bf71",
+      "solution/oracle.py": "0e70821e27faff4d946908f6db54f2a9d6ed4253fd516c25b5a272e8917da26a"
+    },
+    "fin-l1-bctc-904": {
+      "instruction.md": "74b4a2e12ebba8a8237398031c27831ff18b934b30c8892c0524fdae122d1265",
+      "environment/payloads.json": "19972f2e55cfa37bb10ae817dc8da60d366c4e6ef6901c18b44cae59f551efd2",
+      "solution/gold.json": "114347ab5b5880fda1ceff6c03ec0ab1dcd95230a2e05d79a43bc4f30f997a80",
+      "solution/oracle.py": "689a25748fb070d683c317efe33c6be206b281e5a39822f3a2a9437b347109cb"
+    },
+    "fin-l5-compare-944": {
+      "instruction.md": "94941a37241ab9731ea1755a0aceefadccc5c52461e3930c04c85b5de8d8cb32",
+      "environment/payloads.json": "3295ee3228fce43220d78e8c6b29b422a9311243d3dc6a72e01c36d405515e18",
+      "solution/gold.json": "07fe62d59ec05bf7695fe77f3f7ecd0c89ec6c281752aad8f00309c01c7ac52f",
+      "solution/oracle.py": "6a83b99d577e8d5b8321f2a8f9fb37f745b2d46aa11eb5cef335ad517ea13cd6"
+    },
+    "fin-l1-quote-vn-902": {
+      "instruction.md": "dfbf0d1d0f625006f779090523f0bc562e544e0711b6656d4988045e1d8d9eeb",
+      "environment/payloads.json": "e394f58db1c7902f2a69029c4644dd13df80b8408c1dcbfe5766ae84e24ac8fe",
+      "solution/gold.json": "2a33ee346759e99afedb34eeaca625bbbf446174a5a10a0c2184dad65707f20c",
+      "solution/oracle.py": "e8879ca8f3d2012dd7284f7aef187edb3b2c63b5df540de0634535ea08cea6f4"
+    },
+    "fin-l4-2src-939": {
+      "instruction.md": "2b54db17de240011a46246bf2573ee0cf6381d3266e5c8b4c6b546a20e86db60",
+      "environment/payloads.json": "8fb04123646de059857accac0c8e2a47d4ac5ea211f51c755d6b5cb2785c1036",
+      "solution/gold.json": "a55bc44a8ccf9af7b1b4f9e5e8b64c9f9f7e5870cafb0fdcdeb9be2b925e55e0",
+      "solution/oracle.py": "1917d2cefe6e0bac12950d1e561456888aa3ddcb168e89fe8d11dcc74583f7a9"
+    },
+    "fin-l1-quote-crypto-906": {
+      "instruction.md": "67cb90e39c27d1e6bec24f15fc2ee361f157426f2f09fb4557ffb310f0955f47",
+      "environment/payloads.json": "057678ae8f95ca9e891512ae5b9a2b5fc3b569b94fc2ca37e3a19a01707165a5",
+      "solution/gold.json": "ab88a4521d139bbebf32548ef2ae70f1f7ef828bb5796a470a33e1730fe89dfe",
+      "solution/oracle.py": "27397ec7ab787fa53db8ff1bd44f99c0f85eab8ade98f1660049885ac0ca7102"
+    },
+    "fin-l5-valuation-950": {
+      "instruction.md": "c2edee5923442030ff225ee372359dbf4887e90c6b5bc91e5ccfdc2726e963b5",
+      "environment/payloads.json": "b6ff40dfa9c2d74f6eba21d916f12df2d8b0599e7b42841731d19440734aa2e6",
+      "solution/gold.json": "ec222bfe3cf3d1fc2d3199af9f26690d757cb1ce8d5862ff2e73867abfb4c12a",
+      "solution/oracle.py": "5d813b281efef9a9ed62e461af0f179853f1cff619a8a8c6f7b75eae47941d92"
+    },
+    "fin-l2-crypto-x-918": {
+      "instruction.md": "a01501adc2c8a7a00ad57b81e193f681667e2be39ea8fa2f1ca798d769b0a213",
+      "environment/payloads.json": "d8bf304445161d93a1be377ba4abb24f44754c61c91e3780eff24c2965abece8",
+      "solution/gold.json": "2c6508cbc0352158399c337232333616fbb6ebcf1764898512d0639ed270b816",
+      "solution/oracle.py": "e795898ab6ae715d1fec54e123c7f8cf103857920e542e7de3c7d77076d009a9"
+    },
+    "fin-l4-nonexist-935": {
+      "instruction.md": "e443a8d3711c50cb9fb7a3db3734be8aaafd937fa010bbb1b3288ab030ee16bf",
+      "environment/payloads.json": "1d71b92a1271d7cdd532a23d3a68c0c56198dada7995b30e12aea740e2990e55",
+      "solution/gold.json": "933377e01366d79c84fe0823b78bda8d53300efdf31ebae943e6fee8e385dbf5",
+      "solution/oracle.py": "95f7f3aa727c783d70c3a0144b163ce70fb28fc60217e6ffce1f98759cdee659"
+    },
+    "fin-l2-ratio-915": {
+      "instruction.md": "a3c87d6675fb4c97cc696445cb98b7714ac5d764f73e3bc37ae681563e21ff44",
+      "environment/payloads.json": "8406b04a51cc4ad5ac69fe7006cb363817cd07c74fad1d747ba4ae8be3db730b",
+      "solution/gold.json": "de21b1c3ac5b5e917f3b34c9518bf8262cce796043ee689c7e7ddc1ad32dea01",
+      "solution/oracle.py": "ab4e3087e695847a28b97ff91b13a9aaa0e8269bb3e712458c8b66bf76cd1214"
+    },
+    "fin-l5-valuation-949": {
+      "instruction.md": "2a2dc6b21488149aacbdb21e96bbf9427003fc814f5c3295c2f534601872c51a",
+      "environment/payloads.json": "e7623500881682447bf730ea605179cdeebc4744b5a9d10351857a51cf9399c1",
+      "solution/gold.json": "72b4dea17df89f5852846a2da64b871e7fb762cd9779d29c67dc1f14bb8d749b",
+      "solution/oracle.py": "933a62381b6bb911d7e83e64d6e8844aa0a0e9d50d1ab3de0dafc03b2dc970d2"
+    },
+    "fin-l1-bctc-903": {
+      "instruction.md": "d6c00167a48e10d5e8226fda4b379560594429ef4f00d4045a921e97f285ad6d",
+      "environment/payloads.json": "2ed78e57be4734c1efb7188084e609e794382ebd907c3f372f9b02805e94949b",
+      "solution/gold.json": "6db9ef05b88468a3cc1c4809f677596465d1ece2102aaa55d2a252bfc7dd9b51",
+      "solution/oracle.py": "4f394dc537f5e93fc30be32e390818b79f25edb99c5815d9b922220e8f3562a8"
+    },
+    "fin-l5-compare-945": {
+      "instruction.md": "b7903b3ef0681a1be4442bd2b491bdc67a0942e8eca689d7c807fe873264cb46",
+      "environment/payloads.json": "bff00ef3fb44f7a704dadf8f94689c0b535b33cb7163d79fcab9a8ef83b54f4d",
+      "solution/gold.json": "8892ea8b691ece48971f300ff09c87c8391417e7b5aba2531357daf9245c8201",
+      "solution/oracle.py": "160edd530fa02c0ccfdd64b3a12c56fbda9038a0ed1ebc01442a0f187d367743"
+    },
+    "fin-l4-narrative-937": {
+      "instruction.md": "0d955ce90294bdfe0a1ae55830fc3604c5381d196468630e6117bca6e9ee5e20",
+      "environment/payloads.json": "e7d964bec30ef406a54f447e7a8894ce157909a6182382859c1fb1e2f700ada5",
+      "solution/gold.json": "aa8c61f6cbf4ad9645b8d05771db7ba0e1c2eebd1a28dcc8fbc211336555f910",
+      "solution/oracle.py": "48a8ea59d87c5294ea10632daa150ddd97c695337a2c2b5dbb24d42ebca226a3"
+    },
+    "fin-l1-macro-908": {
+      "instruction.md": "3ca9c63599682f1c7d7a64282ce38e96936b4ebfa70c3af07da63864ad139fa6",
+      "environment/payloads.json": "d8bc0abecd0495db6c9b79b9469ef73d76a229eec064aafe83770002f2fd3277",
+      "solution/gold.json": "824b433f1a9c3c611e823d7727efb9488146fb19c0362b57b23a9bcbdd6c350f",
+      "solution/oracle.py": "2db9d70481a975fac9ee6f39bbefae6d25a65889095248a6a4324d2230e29212"
+    },
+    "fin-l3-crypto-multi-929": {
+      "instruction.md": "7e9c9cd2b7f7dde74f1ced2a640cd44b147458b2e62738691d0204908b6c2fac",
+      "environment/payloads.json": "057678ae8f95ca9e891512ae5b9a2b5fc3b569b94fc2ca37e3a19a01707165a5",
+      "solution/gold.json": "2b10f4df6c5d7cc6dd9e3f725dee277171a38b77b85577d4624429387b8ad15c",
+      "solution/oracle.py": "454f27cf8b3e37b488aa6509223ce8463375c3ac857327001d89f5b5754ff986"
+    },
+    "fin-l3-tech-multi-927": {
+      "instruction.md": "ff00a06ebcca95b21612bbd6eb511d8fc1195d9a5e6e113157a9e16d82c40de4",
+      "environment/payloads.json": "7b9ce4b4d0ce09d948905ce544f253c6cac93ed3819a068ee461bdac85ce5715",
+      "solution/gold.json": "7abf5e8af7252e6ab9eaab949ea6aea29b60dcea6b7c8defb9d3bd009417c95c",
+      "solution/oracle.py": "7c01c83da376ec776bf335b1bbaced3241843dbad934781d02234a8fd97fa326"
+    },
+    "fin-l4-narrative-938": {
+      "instruction.md": "9dc3a9dc86c80a5c78dcf347529a325fa05c38745f14032c84d8ede36abc5d00",
+      "environment/payloads.json": "3daaf2f947f10f4eb2d07fa838492516811850c99a3db58cf732bbf834103792",
+      "solution/gold.json": "538b3cf237b7d9e2e462d330d56698bd2dfe6bcfafe40954a40791fcc71f19d9",
+      "solution/oracle.py": "6aa922be7f19eef8d2915ce523644f99102fe7281150c253aea78a8b2dcf9679"
+    },
+    "fin-l3-crypto-multi-928": {
+      "instruction.md": "e26d8bf092e06c554051380d88cca3b0744c7d7fcc713714223f82e6858181ce",
+      "environment/payloads.json": "057678ae8f95ca9e891512ae5b9a2b5fc3b569b94fc2ca37e3a19a01707165a5",
+      "solution/gold.json": "8650f100f8818c06e20dbc234cc5c62dada31880cff00e9abe57514f53cae922",
+      "solution/oracle.py": "d0f0d7130b2ece2c7dd8cfc6f7476ff637ffffae083aaa68db4ced96708619a5"
+    },
+    "fin-l4-future-934": {
+      "instruction.md": "370e020e601e1c44f589556df2d5e9c5eaaaa7c8016bdbc943ef12dc07f6ac61",
+      "environment/payloads.json": "6e724aed6de39026019090303dc95158803438613308e97562d8a1b8ed48c809",
+      "solution/gold.json": "5d5b72d555c09157ccb31ce1a858d09fe4cd9735908b8706e7c531ec2c656ff7",
+      "solution/oracle.py": "fddee6ea95acd970420ed560d0cec46a85200c2b0c99d7b099e0b2fcb1374de0"
+    },
+    "fin-l5-compare-946": {
+      "instruction.md": "76dfc7c943286d7d06d790328c6cde0b8e330e73c022cd1595d5decda6d2871c",
+      "environment/payloads.json": "057678ae8f95ca9e891512ae5b9a2b5fc3b569b94fc2ca37e3a19a01707165a5",
+      "solution/gold.json": "42a92e5f017466359b2b59077faf21501b93ac0cae35f39a71727210eed270e3",
+      "solution/oracle.py": "64cc37be9618f02460cbffec76496ca7ba46d680a36a1c4f7405fb6ec0960d81"
+    },
+    "fin-l2-macro-calc-920": {
+      "instruction.md": "1cd16b613d2be23b3324870ea459c7221c3039555b22b4dc9035c2ea29fcb1fe",
+      "environment/payloads.json": "d8bc0abecd0495db6c9b79b9469ef73d76a229eec064aafe83770002f2fd3277",
+      "solution/gold.json": "c8b3d84f26500571667f89a299bb62501b14562e1a8700525b9cb3b6c527da94",
+      "solution/oracle.py": "59c822c102cc1054bc5db2fc7c02160797a04a7e3629143c785d581e79893c93"
+    },
+    "fin-l2-margin-913": {
+      "instruction.md": "630c79de134b927fa21f86fe95f377a1d077e763387152eba223c81fb66e5b82",
+      "environment/payloads.json": "c719f2dbf9115fbbcee1463d4753c4034f47953577986bc699fe2daf2f37c6af",
+      "solution/gold.json": "8b75548676cac135143c89b4185a8c26356158b6758be93437d1ee6687ea6508",
+      "solution/oracle.py": "aad0e8adf4876737a300e88f89d44cd66eadbe6235ad02069a1fe69242c28f9a"
+    },
+    "fin-l5-profile-941": {
+      "instruction.md": "9bd4ed17386189bdd368f09e368c70752ec9c44378486e9b9bb8f10db76df00d",
+      "environment/payloads.json": "2f4a6565071de52faee0e64e7d9c62552af97a969cf7267dd51849721b476c20",
+      "solution/gold.json": "8a75b9afad692924ead355f5906ab23c6af56bd6921ff2b647d6efccb557b428",
+      "solution/oracle.py": "48a30153596381f7a169509b65c85664f02994e403d9adea930d0d7143b401e9"
+    },
+    "fin-l3-index-930": {
+      "instruction.md": "942d417c52fdf4510610d914edec6559445e39f97d2805372dba670f6a32c3da",
+      "environment/payloads.json": "032ee59dea44d7ce71ae077f40f5d8ce7582a9be4478fdcfce931f86e14fd42c",
+      "solution/gold.json": "567c2a7aecb1029d1112b751e4109567ebb7c98662b54093c99dfafbcfa6c729",
+      "solution/oracle.py": "4dd667f44014ddba8dd45eedcc2c7c890ed0ab8b2820d070be2e0ad1d04c5230"
+    },
+    "fin-l1-macro-910": {
+      "instruction.md": "928eee2d5f3a86f21e240de4d8687a21827f5f2a3b2027853d908ec2843dec95",
+      "environment/payloads.json": "d8bc0abecd0495db6c9b79b9469ef73d76a229eec064aafe83770002f2fd3277",
+      "solution/gold.json": "dc24cc788c0251e65349521c35f6265372c992c9afd4be6bf0bcde13e16b7c28",
+      "solution/oracle.py": "2132419759d5b85503c12c18aad44b866ea2660f2c8cd3f06746e9ae195361dd"
+    },
+    "fin-l5-profile-943": {
+      "instruction.md": "643c1ce40bca0935fc603070e71f4d9a398a3cab4bf8b591a05a3f694589fc6e",
+      "environment/payloads.json": "057678ae8f95ca9e891512ae5b9a2b5fc3b569b94fc2ca37e3a19a01707165a5",
+      "solution/gold.json": "7da34d344fa8726af8d190712a313cf8013ccb9f4ea5c2453ae10471b59690f0",
+      "solution/oracle.py": "e2c9dcc5bedca832c582d905e52e17490d6b587442dd90698c1db4540af97369"
+    },
+    "fin-l3-screen-923": {
+      "instruction.md": "3b8502bd17c3f10ef4c001ed714ab1d70345f6fcf6124dffbc3e4801a111c730",
+      "environment/payloads.json": "3295ee3228fce43220d78e8c6b29b422a9311243d3dc6a72e01c36d405515e18",
+      "solution/gold.json": "c9f29424f338c8ea757202b1250f0c181c93f25f34b20c96f0232b93b8f9884b",
+      "solution/oracle.py": "e102aa6b39aea8c6355c275ba8817d1d45316ac7ff5fe4aa264e5ade8b66728f"
+    },
+    "fin-l3-agg-922": {
+      "instruction.md": "ce5f2751da1689e8d8f65117b9b9428a3c56e0ba18ca447bf3d00929289614c3",
+      "environment/payloads.json": "ad1f0f1a339fecc528ecee588ce49fc757c333073502376ddcd4eb695e950a6b",
+      "solution/gold.json": "e80f317af80228d169bd0e7fc43f7b17fc017a45169db3697ad16cda2cbc3ca2",
+      "solution/oracle.py": "3333897ec17a78351ce0a4d688cf2459f1812c3974752fc73735b06da416bbc9"
+    },
+    "fin-l3-top-925": {
+      "instruction.md": "1d54c6da4c572c962897a3b26e457fcd6c62bd152fef55b084aed559ac4e4200",
+      "environment/payloads.json": "b2446a67d6b1807ecbe171b0dea66b6147a5730988d0ec7b1ba7ac9c629e7a00",
+      "solution/gold.json": "da1c71452dcb0f192a3b43620f5dffde7eda52f2906a525140eef72262d4df28",
+      "solution/oracle.py": "04b7a0e5ca85ea3bf412edabb81414b38393a80d6b6b49d21fbc3a1fd8040180"
+    },
+    "fin-l2-tech-917": {
+      "instruction.md": "1b27a3e5f96a1011e608ebe798d8dc9bdfa99916156a1b59b258df7127b5cb51",
+      "environment/payloads.json": "027cd9b779db9b8ecbff86daf1d9a69b632f2a02ddffaa8e9116edce9ed903e6",
+      "solution/gold.json": "006b0b5d9629d1b29ed6eba00149624bd190379bdc2b358e1a60bc8224bcff67",
+      "solution/oracle.py": "fb3c60042f6218946343b8483a8b249a2504707e2b3ad2657f071d73be51cbed"
+    },
+    "fin-l1-macro-909": {
+      "instruction.md": "431d3f0b448ea27592d0f70938928679793eede3650514c0f4cff7511dcd3dcf",
+      "environment/payloads.json": "d8bc0abecd0495db6c9b79b9469ef73d76a229eec064aafe83770002f2fd3277",
+      "solution/gold.json": "073ac65c601cad85dbdc34c952df756d8b8de97852bcc586cd655e3ec7c11d19",
+      "solution/oracle.py": "2fa5fce2c15973e8b605a2e1d3f2ee5307bf4e8cdf9ff5067d436101a71b39b7"
+    },
+    "fin-l2-margin-914": {
+      "instruction.md": "41bb909f14b5125f6df48cebf676e1ac93a41f885b46a523ee1a31c3648bcdaa",
+      "environment/payloads.json": "2a89d8cadd6d6a2d09e67a25df3e8b84959ea7b3510cf3f2b80a3b3f9817d353",
+      "solution/gold.json": "f737a535c157443e607586dfd599e1522bff63d9349372281c0c88dded897cc0",
+      "solution/oracle.py": "537b50f2cd9a705cbbfae3af821c2aa219a1e78fff77485b8a166f9bee94a2c7"
+    },
+    "fin-l2-growth-912": {
+      "instruction.md": "bdf891d96f81b1311b0523dadd4aca5e5ff4e044d9006d291108322f4d2de1d6",
+      "environment/payloads.json": "19972f2e55cfa37bb10ae817dc8da60d366c4e6ef6901c18b44cae59f551efd2",
+      "solution/gold.json": "c740a0767c6a8d19a1530d8544683c283cd8922b7f0891b3a74c39d8c79fd013",
+      "solution/oracle.py": "0b0ddb481f922c5be72669a0ab4a934bc707f6d2d713f567fefe5e009d817537"
+    },
+    "fin-l4-future-932": {
+      "instruction.md": "49d1654a6f96397d25f06ee5a342b23e6289d78b03f7f6a8bec1bf34f2c1d643",
+      "environment/payloads.json": "632bf7303e1c4ba0682359e94377c0147d7d72169c13fa91d62c9dd22f1d5935",
+      "solution/gold.json": "c7a7589e0c3e480b90bef0088302b1bf92e52c3d293cf6ac1532eb3b8a251c5c",
+      "solution/oracle.py": "bdbb838bdbbb283cbab430a5ed3a442db38eed4feb455acfc374658b930e526a"
+    },
+    "fin-l3-screen-924": {
+      "instruction.md": "8ccf8d76236479768f8ca661f27518a27bd65842639a4b0d00e7faf9d0e5a32d",
+      "environment/payloads.json": "bff00ef3fb44f7a704dadf8f94689c0b535b33cb7163d79fcab9a8ef83b54f4d",
+      "solution/gold.json": "dc18280540a5576947747b0a23e50aeef9adbe27d7aefe36e366a226f71091bf",
+      "solution/oracle.py": "e8ded6a3fd8e22037dc53fa55daddbacbbc76f9c6cc286db97bdfc2053e50ab3"
+    },
+    "fin-l3-top-926": {
+      "instruction.md": "c107d970d785dca18c706da05c9538fb6c1858deb2a194ddf9f69df5d4f39758",
+      "environment/payloads.json": "b2446a67d6b1807ecbe171b0dea66b6147a5730988d0ec7b1ba7ac9c629e7a00",
+      "solution/gold.json": "fc44f633ce23550034068154a5ed6c064e8e7825d88150ee43b286ad21496eda",
+      "solution/oracle.py": "3a2aa44f1f00864b2330c97d7918bbb71190fabd95b14ee13024d9999b351ff5"
+    }
+  }
+}

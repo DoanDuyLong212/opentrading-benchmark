@@ -1,0 +1,17 @@
+{
+  "status": "integration-check-pass-not-inference-approval",
+  "external_model_calls": 0,
+  "checks": {
+    "latest_native_calculate_occurrence": "generation index2 -> occurrence1:0:0; source fixture-sdk-0; 24000 expected",
+    "actual_oc_same_session": "persisted4messages + nonce + original receipt in actual turn2 request; same nativeID; completed resume0call"
+  },
+  "sha256": {
+    "audits/financial-prompt-v45/native/headless-wire-31e832f2/proof.json": "3529a6058331019945506a43fb92a53a0968020c5c70f3205cf6122e118b25a5",
+    "audits/financial-memory-v45/native-wire-f78d427d/proof.json": "2e417a610532072cb97bea5317d4500f516a5e3db310ee81e7f2d2b6a67e6a8b",
+    "experiments/finance-v45-study/tools/v45_call_binding.py": "e29cd2b92ed5fa71dbe03a2291069b9d22e9c8c34f048e5929532d2e3c38db6e",
+    "experiments/finance-v45-study/tools/audit_v45_memory_run.py": "16ad71c1c5851e4c32d6fd473b7689cf2eb54a70d6958585c07d6e14144603d4",
+    "experiments/finance-v45-study/tools/runners/memory_runner.py": "4b2101336413310f7066f7b7137eb1ee1a7cbfb98bd18f542ccf4f8913ecf402",
+    "experiments/finance-v45-study/tools/runners/ot_headless.ts": "9d800b3096d1ec55457a1d6234adb219b7083416b45285f67f014d81c97b622f",
+    "experiments/finance-v45-study/tools/runners/ot_memory_headless.ts": "5cef47969b28cb1afc2111f55ba80be0dac57a6cfa1bc110bf29568b1024f615"
+  }
+}

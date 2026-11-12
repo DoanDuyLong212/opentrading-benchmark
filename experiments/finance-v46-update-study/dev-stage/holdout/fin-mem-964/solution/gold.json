@@ -1,0 +1,29 @@
+{
+ "scoring": "refusal",
+ "memory_construct": "revocation_abstention",
+ "solution": {
+  "active_threshold": null
+ },
+ "expects": [],
+ "notes": "put rồi delete cùng điều kiện; lượt cuối hỏi ngưỡng hiện hành → value null + reason 'không còn điều kiện' (không tự suy lại số cũ). Mirror 330.",
+ "refusal_tokens": [
+  "không còn điều kiện",
+  "chưa có ngưỡng",
+  "không có điều kiện",
+  "đã hủi",
+  "đã hủy",
+  "không còn ngưỡng",
+  "chưa có điều kiện",
+  "không còn ràng buộc",
+  "không có ràng buộc",
+  "không còn điều kiện nào"
+ ],
+ "memory_checks": {
+  "revoked_id": "cond-roe-964",
+  "no_market_assertion": true
+ },
+ "provenance_contract": [],
+ "required_payload_keys": [],
+ "task_id": "fin-mem-964",
+ "payload_sha256": "45ed89a3fd5b0be7abcdfbf7cb1764b58f7b97db96fb5c2354cc6a43d82781c0"
+}

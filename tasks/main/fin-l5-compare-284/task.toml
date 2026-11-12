@@ -1,7 +1,7 @@
 # Task benchmark harness tài chính (bộ 200+50) — sinh bởi tools/build_main.py
 id = "fin-l5-compare-284"
 title = "So % biến động SOL-USD vs BNB-USD"
-version = 1
+version = 2
 created = "2026-11-01"
 level = "L5"
 family = "L5·B compare"
@@ -19,6 +19,8 @@ tools_expected = ["yf_commodities"]
 mcp_payloads = "environment/payloads.json"
 snapshot_required = true
 split = "main"
+
+confirmatory_eligible = true
 
 [scoring]
 type = "value"

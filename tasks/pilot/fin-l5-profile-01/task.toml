@@ -1,7 +1,7 @@
 # Task benchmark harness tài chính — sinh bởi tools/gen_tasks.py
 id = "fin-l5-profile-01"
 title = "Hồ sơ nhanh MWG (multi-part)"
-version = 1
+version = 2
 created = "2026-11-01"
 level = "L5"
 family = "L5·A profile"
@@ -18,6 +18,8 @@ time_limit_min = 60
 tools_expected = ["financial_detail", "stock_overview"]
 mcp_payloads = "environment/payloads.json"
 snapshot_required = true
+
+confirmatory_eligible = true
 
 [scoring]
 type = "value"

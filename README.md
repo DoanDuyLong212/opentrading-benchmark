@@ -1,199 +1,179 @@
-# Benchmark Harness Tài chính — README
+# Benchmark harness tài chính Việt Nam — v2
 
-> Đánh giá **harness agent tài chính** (OpenTrading) so với harness tổng quát (OpenCode, DSH)
-> trên bộ task dữ liệu chứng khoán Việt Nam/crypto/vàng-FX/macro, snapshot đóng băng
-> **2026-11-01**. Thiết kế đầy đủ: [`benchmark-plan.md`](benchmark-plan.md) · Khung đo đã
-> đăng ký trước: [`PRE-REGISTER.md`](PRE-REGISTER.md).
+Đối chiếu OpenTrading, OpenCode và DeepSeek Harness (DSH) trên cùng model/provider,
+ngân sách, MCP snapshot và hợp đồng đầu ra. Benchmark đo **hỏi đáp tài chính có căn cứ
+trong snapshot**, không chứng nhận độ chính xác của báo cáo tài chính gốc hay hiệu quả
+đầu tư thực tế. Xem [khung đăng ký v2](PRE-REGISTER.md) và [audit lịch sử 04/11](audits/2026-11-04/REVIEW.md).
 
----
+Bộ đề gồm **200 main, 50 holdout, 24 pilot và 3 smoke**, từ L1 trích xuất đến L5 nhiều
+phần. Không dùng kết quả smoke/pilot hoặc các lần chạy cũ để tuyên bố harness thắng.
+Sau khi cách ly các câu CPI chưa xác định rõ chiều của chỉ tiêu và rubric narrative
+chưa kiểm tra đủ dữ kiện được hỏi, mặc định còn **178 main, 43 holdout, 22 pilot và
+3 smoke** đủ điều kiện chạy; lần lượt có 22, 7, 2 và 0 câu chỉ dành cho chẩn đoán.
+Các kết quả trước v2 dùng grader/parity/telemetry cũ chỉ có giá trị chẩn đoán.
 
-## 1. Đo cái gì
+Trạng thái mới ngày 05/11/2026: **250 regression tests và 4/4 offline checks đạt**;
+smoke v3 hoàn tất **18/18 trial**, primary grounded đúng 10/18. Pilot mới hoàn tất
+**176/176 trial**: OT finance 12/44, OT baseline 12/44, OpenCode 14/44, DSH 18/44.
+Finance giảm false refusal 17→15 nhưng chưa tăng primary/semantic; không chứng minh
+thắng hai đối chứng. Sau review chỉ cài runtime fixes vào OpenTrading gốc, giữ prompt
+baseline mặc định. Candidate finance vẫn là thử nghiệm. Certificate mới và resume
+smoke/pilot đạt, không thêm request/trial. Xem [báo cáo v3 đầy đủ](audits/financial-prompt-v3/REPORT.md)
+và [xác minh v2 lịch sử](audits/contract-v2/NVIDIA-VERIFICATION.md).
 
-Dashboard 5 cột — **không cộng điểm tổng**:
+**Lưu ý alias:** bản thí nghiệm v3 đã frozen vẫn chọn finance cho `opentrading`
+(cả `--arms all`). Để chạy so sánh prompt default thực tế đang giữ lại, ghi rõ
+`--arms opentrading_baseline,opencode,dsh` và tạo manifest/certificate mới theo gate
+tương ứng. Alias frozen tái lập thí nghiệm không phải prompt default đã triển khai.
 
-| # | Tiêu chí | Cơ chế |
-|---|---|---|
-| ① | **Success** (đúng số + đơn vị + kỳ + nguồn) | Grader code đối chiếu `answer.json` × gold (oracle sinh từ payload) |
-| ② | **Stable-correct** (đúng cả 3 runs) | Tận dụng 3 runs/task — đo độ tin cậy "dùng một lần" |
-| ③ | **FP-rate** (chống bịa) | Task bẫy (kỳ chưa công bố / mã không tồn tại) — bịa số = FP=1 |
-| ④ | **Time p50/p90** | wall_ms từ driver, tách theo mức L |
-| ⑤ | **Cost/task** | tokens × bảng giá freeze (N/A nếu harness không xuất usage) |
+## Hợp đồng đánh giá
 
-Bộ task: **200 main + 50 holdout + 24 pilot + 3 smoke** — 5 mức L1→L5 (extraction →
-computation → multi-entity → trap/verification → multi-part report); mỗi thẻ có
-`task.toml / instruction.md / payloads.json / oracle.py + gold.json / grader.py`.
-Giả thuyết H1–H3 và ngưỡng khẳng định: xem PRE-REGISTER.
-
----
-
-## 2. Nguyên lí hoạt động
-
-```
-run_benchmark.py (driver — 1 lệnh)
-│  chọn task → tạo workspace CHỈ có instruction.md → gọi runner của arm
-│  → timeout = time_limit_min → chấm bằng tests/grader.py → trials.jsonl
-│
-├── arm OpenCode    : opencode run --format json (XDG cách ly + PWD=ws + permissions deny)
-├── arm DSH         : dsh --profile headless --json --patch <per-trial patch>
-└── arm OpenTrading : bun wrapper → core harness headless (OPENTRADING_HOME riêng)
-         │
-         ▼
-   MCP snapshot server (stdio, KHÔNG mạng) — phục vụ đúng envelope đã ghi
-         │
-         ▼
-   agent → answer.json trong workspace → grader.py (gold ngoài workspace)
-```
-
-### 2.1. Tám trục điều kiện chung (3 arm chạy như nhau)
-
-| Trục | Cơ chế |
+| Điều kiện | Cách thực thi |
 |---|---|
-| **Dữ liệu** | MCP snapshot replay `tools/mcp_snapshot_server.py` — mọi arm nhận đúng cùng envelope `{data, provenance, availability}`; không gọi mạng |
-| **Workspace** | Mỗi trial 1 workspace mới **chỉ chứa `instruction.md`**; gold/payloads nằm ngoài |
-| **Cách ly** | Opencode: `XDG_*` riêng + `PWD`=ws + `permissions` deny external_directory/shell/web · DSH: profile patch + sandbox `workspace-write` · OpenTrading: `OPENTRADING_HOME` riêng (không có tool ghi file → runner trích answer từ output) |
-| **Model/API** | Cùng model + key NVIDIA NIM (`tools/bench_config.json`) |
-| **Chấm** | Cùng `tests/grader.py`, chấm ngoài workspace; tolerance `±0.5%` (giá) / `±0.1` điểm % (chỉ số); **sai đơn vị = sai** |
-| **Ngân sách** | Timeout = `time_limit_min` của task; quá hạn → kill process group, tính là timeout |
-| **Lịch chạy** | Tuần tự (tránh rate-limit); round-robin arm trong từng task |
-| **Sạch** | Session mới mỗi trial; retry tự động khi lỗi hạ tầng (429/timeout mạng) |
+| Dữ liệu | Replay offline; schema tool đóng băng, định danh sai hoặc request không ghi nhận bị từ chối. Tool công bố các request có thể replay. |
+| Tool và state | Profile/config/session riêng từng attempt; không user skills, external plugins, memory hoặc web trong track kiểm soát. Runtime inventory lưu tool schema thực gửi provider. Native system prompt của harness được giữ. |
+| Model/effort | Chỉ route NVIDIA đã triển khai, `effort=none`. Default hiện tại là model nhỏ phục vụ kiểm tra. Go/DeepSeek medium là kế hoạch tương lai, bị chặn cho đến khi adapter được xác minh. |
+| Output | Cả ba arm trả JSON cuối cùng; driver chuẩn hóa cùng cách. Không cứu đáp án từ file hoặc write-tool input. Nhiều JSON đáp án mâu thuẫn bị từ chối. |
+| Ngân sách | Giới hạn toàn trial gồm mọi attempt và backoff; cap request, output/request và tổng token. Retry chỉ lỗi provider tạm thời có bằng chứng, không retry mọi runner error. |
+| Evidence | `evidence:[{tool,source,as_of,call_id,payload_sha256,matched_entry_id,response_sha256}]`. Grader đối chiếu provenance đã đóng băng; driver nối từng evidence với lời gọi **thành công thật** trong ledger của attempt đó, đúng entry và đúng response. |
+| Lịch và resume | Task order seeded; arm orders xoay qua các hoán vị cân bằng. Manifest giữ nguyên lịch, code, config, task, version/hash harness và giá. `--resume` chỉ chấp nhận đúng manifest. |
 
-### 2.2. Chống rò rỉ / bypass
+Payload/gold nằm ngoài workspace và không là tool cho agent. Đây là cách ly công cụ và
+cấu hình, không phải chứng minh mọi tiến trình thù địch đã bị sandbox ở mức OS. JSON
+provenance xác minh việc dùng snapshot; tự ghi tên nguồn không đủ để được primary pass.
 
-- **Gold ngoài workspace**: agent không đọc được `solution/` (workspace chỉ có đề).
-- **Snapshot replay**: agent buộc dùng MCP tool — server từ chối tool ngoài snapshot,
-  không có `web_search/web_fetch/sentiment_score`.
-- **Telemetry tuân thủ**: mỗi trial ghi `mcp_calls` (số lời gọi tool MCP trong log) +
-  `answer_source` (`file`/`extracted`/`extracted_input`/`missing`) — phát hiện trial
-  "trả lời mà không dùng MCP".
-- Hạn chế đã biết: agent có shell vẫn có thể `cat` được đường dẫn nếu đoán ra (đã chặn
-  các đường rò chính; mức chặn tuyệt đối cần container — việc chuẩn bị pilot).
+## Metrics
 
----
+Không cộng các cột thành một điểm tổng.
 
-## 3. Xây dựng môi trường (đã cài đặt gì)
-
-| Thành phần | Vị trí / Cấu hình |
+| Metric | Định nghĩa |
 |---|---|
-| **Driver + infra** | `tools/run_benchmark.py`, `tools/mcp_snapshot_server.py`, `tools/runners/…`, `tools/ready_check.py` — 24 test hạ tầng (`python3 -m pytest tools/tests/`) |
-| **OpenCode** v2.1.2 | `~/.opencode/bin/opencode`; trial dùng config V2 (`mcp.servers`, `permissions` array, `codemode:false`) trong XDG riêng |
-| **DSH** 0.2.1-rc.2 | `~/.local/bin/dsh`, profile `headless`; đã cài plugin `@deepseek-ai/dsh-mcp-client@0.2.1-rc.2` vào profile; patch per-trial dùng cú pháp `- insert:` |
-| **OpenTrading** | repo `~/OpenTrading` (pin commit ghi trong log); wrapper headless `tools/runners/ot_headless.ts` (bun) |
-| **NVIDIA NIM** | key `NVIDIA_API_KEY` + `~/.local/share/opencode/auth.json` (nvidia) + `~/.opentrading/auth.json` (nvidia). ⚠️ Rate-limit **theo từng model** — danh sách model khả dụng thực tế hẹp (xem `bench_config.json`) |
-| **MCP snapshot** | Chạy hoàn toàn offline từ `environment/payloads.json` (hỗ trợ cả 2 format main/pilot); tool khai báo `readOnlyHint:true` (bắt buộc cho OpenTrading headless auto-allow) |
+| Primary success | JSON/schema và mọi check bắt buộc đúng, evidence nối ledger thật, process thành công trong thời hạn; mẫu số mọi trial đã bắt đầu. |
+| Task bị cách ly | `task.toml` ghi `confirmatory_eligible=false` và `exclusion_reason`; mặc định loại trước khi sample ở mọi split, ghi số lượng/lý do trong manifest, summary và freeze. `--include-quarantined` chỉ dành cho chẩn đoán smoke/pilot, không được cấp certificate. |
+| Certificate vận hành | Mọi trial đúng model/catalog, hoàn tất trong budget, usage đủ và ledger replay hợp lệ. Chọn tham số bị snapshot từ chối hoặc model không gọi tool vẫn là lỗi chất lượng; 0 call cần telemetry chứng minh. Mỗi arm phải có canary tool thành công và đáp án primary grounded đúng. Không chứng nhận accuracy của model nhỏ. Xem protocol `operational_parity_v3` trong PRE-REGISTER. |
+| Semantic correctness | Check nội dung tài chính riêng, giúp phân biệt lỗi kiến thức/tính toán với lỗi schema/provenance/harness. |
+| Stable-correct 3/3 | Task đúng cả ba lần độc lập. Báo riêng task đủ ba lần và task thiếu run; **không phải xác suất đúng khi dùng một lần**. Smoke một run không tạo endpoint 3/3. |
+| Bịa trên unanswerable | FP trên task refusal, báo mẫu số started và answered, kèm DNF. |
+| Từ chối oan | Null/từ chối ở trường được hỏi có đáp án trong gold. Không suy ra refusal vì thiếu scalar khi đáp án là set/ranking; không loại toàn task vì một trường khác partial. |
+| Thời gian | End-to-end p50/p90, valid-answer latency, timeout; bao gồm attempts/backoff. |
+| Token/cost | Tổng usage mọi request/attempt, coverage từng trường. Thiếu usage là N/A. Chỉ dùng bảng giá nằm trong manifest; input/cache cần semantics rõ. Subscription/allowance/cash spend không bị đồng nhất với list-price estimate. |
+| Chẩn đoán | Per-check, error taxonomy, calls từ ledger, retry, bonus replacement, MAD/abs(median) theo task trên đáp án pass. |
 
----
+Phân tích so sánh dùng paired bootstrap **theo task**, thêm sensitivity theo hash payload
+trùng; exact McNemar trên endpoint stable 3/3 đủ cặp và Holm cho các cặp arm. Không coi
+600 trial là 600 quan sát độc lập. Incomplete run và số cặp đủ dữ liệu phải được báo.
+Dữ liệu lịch sử không có manifest không được gắn lại model/giá từ config mới; trộn model
+trong cùng thư mục bị từ chối.
 
-## 4. Hướng dẫn chạy
+## Chạy kiểm tra bằng NVIDIA model nhỏ
 
-### 4.0. Điều kiện tiên quyết
-- `NVIDIA_API_KEY` set trong môi trường; 3 harness cài đúng chỗ như bảng trên.
-
-### 4.1. Lệnh chính (1 lệnh là chạy)
+Cần Python có `mcp`, `jsonschema`, `pytest`, ba harness đã cài và `NVIDIA_API_KEY` trong
+môi trường. Key không được ghi vào manifest/config/log. Chạy tại thư mục benchmark:
 
 ```bash
-cd ~/extra/benchmark
-
-# ① Preflight (~30s) — 8 hạng mục PASS = sẵn sàng
+# Offline mặc định, không gọi provider và không sửa auth/profile người dùng.
 python3 tools/ready_check.py
+python3 -m pytest tools/tests -q
 
-# ② SMOKE 3 câu (xác nhận pipeline, 9 trials ~1–1.5h)
-#    L1-macro (trap chuỗi CPI) · L3-crypto-multi · L4-future (trap FP)
-python3 tools/run_benchmark.py --split pilot --sample 3 --seed 20261102 --runs 1 --retry 3 --pause 15
+# Discovery NVIDIA chỉ khi yêu cầu rõ tùy chọn này.
+python3 tools/ready_check.py --provider-probe
 
-# ③ PILOT đầy đủ (3 arm × 24 task × 3 runs theo pre-register — chạy dài)
-python3 tools/run_benchmark.py --split pilot --runs 3 --retry 3 --pause 15
+# Smoke 3 câu × 3 arm × 2 run: kiểm tra lặp ổn định, không xếp hạng.
+python3 tools/run_benchmark.py --split smoke --runs 2 \
+  --timeout 180 --max-requests 24 --max-output-tokens 2048 \
+  --max-total-tokens 48000 --retry 1 --retry-backoff 4 --pause 2 \
+  --effort none --out results/v2-smoke
 
-# ④ MAIN 200 (sau freeze)
-python3 tools/run_benchmark.py --split main --runs 3 --retry 3 --pause 15
-
-# ⑤ HOLDOUT — niêm phong, có GUARD (quy chế 7.4): chỉ chạy sau freeze
-python3 tools/run_benchmark.py --split holdout --confirm-holdout
+# Tiếp tục chính xác lần chạy bị gián đoạn: giữ nguyên mọi tùy chọn trên và thêm --resume.
+# Driver bỏ qua row đã hoàn tất; attempt đã có kết quả sẽ finalize mà không gọi model lại.
+# Attempt bị ngắt giữa request thành terminal interrupted với usage chưa biết=N/A.
 ```
 
-Tùy chọn: `--tasks id1,id2` · `--arms opencode,dsh,opentrading` · `--model nvidia/<model>` ·
-`--out <dir>` (mặc định `results/<ts>_<split>`) · `--retry N --pause S` · `--list-only`.
+`--config PATH` chọn config khác; `--model` được phép cho smoke/pilot, nhưng khi dùng
+freeze phải trùng model đã chứng nhận trong config. `--tasks id1,id2`, `--sample N`,
+`--seed S` và `--arms ...` được đóng băng trong manifest. Chạy tuần tự; gateway dùng
+rate limiter chung. Chưa mua Go: không gọi Beam hay DeepSeek trả phí trong kiểm tra.
 
-> ⚠️ **Vận hành:** chạy **tuần tự** — NIM rate-limit theo model, chạy song song sẽ 429.
-> Driver tự nghỉ giữa trial và tự retry khi lỗi hạ tầng. Không Ctrl-C giữa chừng;
-> muốn chạy tiếp task khác thì chạy lệnh mới với `--tasks`.
+## Pilot, freeze và main/holdout
 
-### 4.2. Đọc kết quả
-
-```
-results/<ts>_<split>/
-├── trials.jsonl                  # 1 dòng/trial
-└── trials/<task>__<arm>__r<run>/
-    ├── ws/instruction.md         # đề agent nhận
-    ├── ws/answer.json            # câu trả lời (nếu có)
-    ├── runner/                   # config cách ly của từng harness
-    ├── run.log                   # log thô (events + output)
-    └── grade.json                # chấm từng check + error_type + fp
-```
-
-Mỗi dòng `trials.jsonl`: `task, arm, run, status, success, fp, error_type, wall_ms,
-tokens, mcp_calls, answer_source, attempt, session_id, snapshot_date`.
-
-Xem nhanh tổng hợp:
+Pilot dùng model nhỏ để kiểm tra vận hành, metrics và thời gian. Trước nghiên cứu chính,
+chốt **một** model/provider/effort được hỗ trợ, config và subset nếu cần, rồi chạy lại smoke
+đúng cấu hình đó. Giữ nguyên code/config/harness/task từ smoke đến khi cấp certificate.
 
 ```bash
-python3 - <<'EOF'
-import json, collections
-rows = [json.loads(l) for l in open("results/<run-id>/trials.jsonl")]
-by = collections.defaultdict(lambda: {"n": 0, "ok": 0, "fp": 0})
-for r in rows:
-    s = by[r["arm"]]; s["n"] += 1; s["ok"] += r["success"]; s["fp"] += r["fp"]
-for a, s in by.items():
-    print(f"{a:11s} n={s['n']} success={s['ok']} fp={s['fp']}")
-EOF
+# Certificate đòi full regression pass + artifact smoke đủ 3 câu × 3 arm × ít nhất 2 run,
+# schema/tool/evidence hoạt động và runtime inventory đúng model/config/code hiện tại.
+python3 tools/ready_check.py --config tools/bench_config.json \
+  --live-run results/v2-smoke --certificate results/v2-ready.json
+
+python3 tools/run_manifest.py --config tools/bench_config.json \
+  --certificate results/v2-ready.json --output results/v2-freeze.json
+
+python3 tools/run_benchmark.py --split main --runs 3 \
+  --freeze-receipt results/v2-freeze.json --out results/v2-main
+
+# Chỉ thực hiện khi bắt đầu lần xác nhận cuối cùng đã lên lịch.
+python3 tools/run_benchmark.py --split holdout --runs 3 --confirm-holdout \
+  --freeze-receipt results/v2-freeze.json --out results/v2-holdout
 ```
 
----
+Offline xanh **không** tự chứng minh runtime parity. Certificate kiểm tra artifact live
+chứ không dựa vào cờ xác nhận. Main/holdout bị chặn nếu certificate, model, code, task,
+harness hoặc config thay đổi. Hash bao gồm mọi split; không chạy model holdout trong
+phát triển. Holdout có receipt mở một lần tại `results/holdout-open-v2.json`; chỉ
+`--resume` đúng run đó được chấp nhận sau khi mở. Không xóa receipt để chạy thử lại.
 
-## 4b. Metrics phụ (A1–A4 dashboard · B1–B6 phân tích)
+Nếu route Go/effort medium được triển khai sau này, phải kiểm tra tương đương khả năng
+và budget cho cả ba arm trước khi đổi cấu hình. Không lấy kết quả model nhỏ làm ước
+lượng chất lượng của DeepSeek. Scope `real_world_filings_accuracy` cần quy trình đối
+chiếu tài liệu gốc riêng; certificate hiện tại chỉ hỗ trợ `snapshot_grounded_financial_qa`.
 
-Tự động tính cuối mỗi lần chạy (ghi `results/<run>/summary.json` + in dashboard);
-chạy lại cho results cũ: `python3 tools/analyze.py <results-dir>`. Toàn bộ derive từ
-telemetry đã ghi — không benchmark lại; thiếu số → N/A (không ghi 0).
+## Artifacts và kiểm toán
 
-| Metric | Mô tả | Cách tính |
-|---|---|---|
-| **A1 Phân bố loại lỗi** | Trên trial fail: % theo `error_type` (sai_don_vi/sai_ky/sai_nguon/bia_so/timeout…) | `grade.json` error_type; per arm × L |
-| **A2 Từ chối oan** | Trên task value CÓ dữ liệu: % trả `value:null` (thừa cẩn thận — ghép với FP thành ma trận trung thực 2 chiều) | `answer.json` value=null ÷ trial answered; loại trap + task partial |
-| **A3 DNF + 2 mẫu số** | % timeout/error; Success tính trên `answered` VÀ trên `started` | `trials.jsonl` status |
-| **A4 Kinh tế tool** | mcp_calls p50/p90 (tách đúng/sai); retry rate; số trial mcp=0 | `trials.jsonl` mcp_calls/attempt |
-| **B1 Success thành phần** | % pass từng check (value/unit/period/source/…) | `grade.json checks[]` |
-| **B2 Hồ sơ token** | input/output p50/p90 + coverage (hình dạng telemetry đã chuẩn hoá) | `trials.jsonl` tokens |
-| **B3 Cost** | cost/trial + **cost-per-success** (bảng giá freeze trong `bench_config.json`) | tokens × price_per_1m |
-| **B4 Phân tán đáp án** | MAD% giữa runs — per task, chỉ trial PASS (unit-safe); cần ≥2 runs | `answer.json` value |
-| **B5 Bonus replacement** | Trên trap: % từ chối đúng CÓ nêu kỳ/số thay thế | `grade.json bonus.hit` |
-
----
-
-## 5. Cấu trúc thư mục
-
-```
-benchmark/
-├── README.md · benchmark-plan.md · PRE-REGISTER.md     # tài liệu
-├── tasks/  main/ · holdout/ · pilot/ · smoke/ · registry/ · templates/
-├── tools/  run_benchmark.py · ready_check.py · mcp_snapshot_server.py
-│           bench_config.json · tests/ · runners/{opencode,dsh,opentrading}
-├── results/  (gitignore) — kết quả từng đợt chạy
-└── gold/README.md — quy trình vàng
+```text
+results/<run>/
+  manifest.json                  # kế hoạch bất biến, hashes, giá, schedule, scoring metadata
+  trials.jsonl                   # một row/trial; duplicate/corruption không bị bỏ qua âm thầm
+  summary.json                   # coverage, completeness, metrics, paired statistics
+  trials/<task>__<arm>__r<run>/
+    state.json                   # thời điểm và whole-trial budget bền vững
+    grade.json
+    attempts/<number>-<nonce>/
+      ws/instruction.md
+      ws/answer.json             # driver sinh từ final_text nếu hợp lệ
+      run.log
+      mcp.jsonl                  # lời gọi thực, request/response hashes và provenance
+      provider.jsonl             # provider requests và usage, không chứa key
+      result.json                # kết quả attempt phục vụ recovery không gọi lại
+      runner/                    # config/runtime inventory của adapter
 ```
 
-## 6. Trạng thái & việc tiếp theo
+```bash
+python3 tools/analyze.py results/v2-smoke
+python3 tools/analyze.py results/v2-smoke --json
+```
 
-- ✅ **SMOKE 3 câu ĐẠT (03/11/2026)** — 9/9 trials success, model đồng nhất
-  `deepseek-v4.1-flash`: L1-macro 3/3 · L3-crypto-multi 3/3 · L4-future trap 3/3
-  (fp=0 — cả 3 arm từ chối đúng + nêu kỳ thay thế Q3/2026). Kết quả:
-  `results/smoke3_20261103/trials.jsonl`. Median wall: dsh 161s · opencode 169s ·
-  opentrading 168s. `mcp_calls` > 0 toàn bộ (1–5), `answer_source`: opencode/dsh=file,
-  opentrading=extracted (thiết kế R14).
-- 📌 Model: `deepseek-v4.1-flash` (pre-register) — NVIDIA đã hồi phục. Google path
-  `gemini-3.5-flash-lite` (key từ opentrading, đã nạp opencode/dsh/OT) chạy tốt trên
-  opencode+OT nhưng **dsh blocker** (Gemini 3.x thought_signature) → giữ fallback,
-  xem `tools/bench_config.json`.
-- ⏳ Trước PILOT thật: wire **skills-pack chung 3 arm**; freeze + hash 250 thẻ;
-  duyệt người mẫu thẻ (memory/ambiguity check); (tùy chọn) container hóa chống đọc chéo.
-- 🔒 HOLDOUT chỉ mở 1 lần sau freeze (`--confirm-holdout`).
-- Chi tiết bug-fix hạ tầng & rulings: ledger nội bộ phiên setup (ngoài repo).
+`--resume` khóa độc quyền thư mục run, không thêm row trùng và không nạp đáp án attempt
+cũ vào session mới. JSONL cuối bị cắt do crash được lưu riêng trước khi phục hồi; dòng
+sai ở giữa vẫn làm phân tích dừng để tránh mất dữ liệu. Các artifacts gồm prompt/đáp án
+và số đo sử dụng, cần giữ cùng manifest khi chia sẻ kết quả.
+
+## Kế hoạch một tuần
+
+1. Ngày 1–2: regression/adversarial, replay đúng/sai tham số, kiểm tra đơn vị/công thức và
+   ambiguity của main/pilot, smoke NVIDIA cả ba arm. Không mở holdout bằng model.
+2. Ngày 3: pilot có lặp để đo completion, p90 thời gian, request/token và tần suất lỗi;
+   quyết định trước main có đủ 178 task đủ điều kiện hay dùng subset phân tầng đã lưu ID/seed.
+3. Ngày 4: chốt model/config/metrics/subset, chạy canary đúng cấu hình, cấp certificate
+   và freeze. Việc mua Go chỉ thực hiện sau khi xác minh adapter/effort.
+4. Ngày 4–6: main ba lần/task/arm; dùng resume khi gián đoạn; giữ thời gian dự phòng
+   quota/recovery. Main + holdout đủ điều kiện cần 1.989 trial nếu mỗi task/arm chạy
+   ba lần; thời gian cần tính từ pilot, không ngoại suy từ smoke hoặc hứa đủ trong tuần.
+5. Ngày 7: mở holdout một lần nếu main và lịch còn đủ; phân tích paired, CI,
+   completeness, payload overlap/family sensitivity; ghi rõ mọi giới hạn.
+
+Đừng điều chỉnh đề/grader theo kết quả holdout. Payload tái sử dụng khiến tính độc lập
+hạn chế; sensitivity theo nhóm không thay thế một holdout dữ liệu hoàn toàn mới.
+Các kiểm tra pipeline không chứng minh bộ câu hỏi đại diện đầy đủ nghiệp vụ tài chính
+Việt Nam: cần bổ sung sau nghiên cứu các case niên độ, báo cáo hợp nhất/riêng lẻ,
+điều chỉnh corporate actions, missing fields và tài liệu gốc có page/line evidence.

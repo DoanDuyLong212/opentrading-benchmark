@@ -1,0 +1,1036 @@
+[
+  {
+    "ot": "opentrading_finance",
+    "comparator": "dsh",
+    "task": "fin-l1-bctc-01",
+    "run": 1,
+    "stage": "after_successful_tool",
+    "error_type": "sai_so",
+    "semantic_correctness": false,
+    "ot_trial_id": "fin-l1-bctc-01__opentrading_finance__r1",
+    "comparator_trial_id": "fin-l1-bctc-01__dsh__r1",
+    "ot_answer": {
+      "value": 14.550959,
+      "unit": "tỷ đồng",
+      "period": "Q2/2026",
+      "source": "mcp__opentrading__financial_statements",
+      "line": "Tổng LNST",
+      "note": "LNST hợp nhất quý gần nhất của VCB (Q2/2026) được quy đổi từ VND sang tỷ đồng (14,550,959,000,000 VND / 1,000,000,000 = 14.550959 tỷ đồng).",
+      "evidence": [
+        {
+          "tool": "mcp__opentrading__financial_statements",
+          "source": "vietstock",
+          "as_of": "2026-11-01T15:54:29.686603+07:00",
+          "call_id": "559f26aa-99d5-4eab-98e9-8f5b5f525f24",
+          "payload_sha256": "e9c5e43dc5664805b215186c33c36a17a40f9109263b7ebf1a5a61bec507976f",
+          "matched_entry_id": "financial_statements:0",
+          "response_sha256": "368411d1982abd746595febe29f0a84129757c95cffc4d59b334a7cf054a4a06"
+        }
+      ]
+    },
+    "failed_checks": [
+      {
+        "check": "provenance",
+        "pass": false,
+        "detail": "recorded response identity/provider/as_of coverage and snapshot hash; call IDs independently verified by driver"
+      },
+      {
+        "check": "value:value",
+        "pass": false,
+        "detail": "answer=14.550959 gold=14550.96 tol={'rel': 0.005}"
+      },
+      {
+        "check": "str:source",
+        "pass": false,
+        "detail": "answer='mcp__opentrading__financial_statements' accept=['financial_statements']"
+      }
+    ],
+    "ledger_path": "results/financial-prompt-v3-pilot-20261105/trials/fin-l1-bctc-01__opentrading_finance__r1/attempts/01-049e1613788c/mcp.jsonl",
+    "grade_path": "results/financial-prompt-v3-pilot-20261105/trials/fin-l1-bctc-01__opentrading_finance__r1/grade.json"
+  },
+  {
+    "ot": "opentrading_baseline",
+    "comparator": "dsh",
+    "task": "fin-l1-bctc-01",
+    "run": 1,
+    "stage": "after_successful_tool",
+    "error_type": "sai_so",
+    "semantic_correctness": false,
+    "ot_trial_id": "fin-l1-bctc-01__opentrading_baseline__r1",
+    "comparator_trial_id": "fin-l1-bctc-01__dsh__r1",
+    "ot_answer": {
+      "value": 14.550959,
+      "unit": "tỷ đồng",
+      "period": "Q2/2026",
+      "source": "financial_statements",
+      "line": "Tổng LNST",
+      "note": "LNST hợp nhất quý gần nhất là Q2/2026. Số liệu được quy đổi từ VND sang tỷ đồng (14.550959 tỷ đồng)."
+    },
+    "failed_checks": [
+      {
+        "check": "provenance",
+        "pass": false,
+        "detail": "recorded response identity/provider/as_of coverage and snapshot hash; call IDs independently verified by driver"
+      },
+      {
+        "check": "value:value",
+        "pass": false,
+        "detail": "answer=14.550959 gold=14550.96 tol={'rel': 0.005}"
+      }
+    ],
+    "ledger_path": "results/financial-prompt-v3-pilot-20261105/trials/fin-l1-bctc-01__opentrading_baseline__r1/attempts/01-4edd1ad4c9c3/mcp.jsonl",
+    "grade_path": "results/financial-prompt-v3-pilot-20261105/trials/fin-l1-bctc-01__opentrading_baseline__r1/grade.json"
+  },
+  {
+    "ot": "opentrading_finance",
+    "comparator": "dsh",
+    "task": "fin-l1-gold-01",
+    "run": 1,
+    "stage": "rejected_no_success",
+    "error_type": "sai_so",
+    "semantic_correctness": false,
+    "ot_trial_id": "fin-l1-gold-01__opentrading_finance__r1",
+    "comparator_trial_id": "fin-l1-gold-01__dsh__r1",
+    "ot_answer": {
+      "value": null,
+      "unit": "USD/oz",
+      "period": "Không có dữ liệu được ghi nhận trong snapshot 2026-11-01",
+      "source": "vn_msn_fx_gold",
+      "note": "Yêu cầu XAUUSD không được ghi nhận trong snapshot dữ liệu cố định 2026-11-01 theo phản hồi của tool.",
+      "evidence": []
+    },
+    "failed_checks": [
+      {
+        "check": "provenance",
+        "pass": false,
+        "detail": "recorded response identity/provider/as_of coverage and snapshot hash; call IDs independently verified by driver"
+      },
+      {
+        "check": "value:value",
+        "pass": false,
+        "detail": "không đọc được số từ None"
+      },
+      {
+        "check": "period:period",
+        "pass": false,
+        "detail": "period='Không có dữ liệu được ghi nhận trong snapshot 2026-11-01' accept=['30/10', '30-10', '30.10', '2026-10-30']"
+      }
+    ],
+    "ledger_path": "results/financial-prompt-v3-pilot-20261105/trials/fin-l1-gold-01__opentrading_finance__r1/attempts/01-89d2f07e63fc/mcp.jsonl",
+    "grade_path": "results/financial-prompt-v3-pilot-20261105/trials/fin-l1-gold-01__opentrading_finance__r1/grade.json"
+  },
+  {
+    "ot": "opentrading_baseline",
+    "comparator": "dsh",
+    "task": "fin-l1-gold-01",
+    "run": 1,
+    "stage": "rejected_no_success",
+    "error_type": "sai_so",
+    "semantic_correctness": false,
+    "ot_trial_id": "fin-l1-gold-01__opentrading_baseline__r1",
+    "comparator_trial_id": "fin-l1-gold-01__dsh__r1",
+    "ot_answer": {
+      "value": null,
+      "unit": "USD/oz",
+      "period": "phiên gần nhất (dd/mm/yyyy)",
+      "source": "vn_msn_fx_gold",
+      "note": "Dữ liệu về giá XAUUSD không được ghi nhận trong snapshot cố định ngày 2026-11-01.",
+      "evidence": []
+    },
+    "failed_checks": [
+      {
+        "check": "provenance",
+        "pass": false,
+        "detail": "recorded response identity/provider/as_of coverage and snapshot hash; call IDs independently verified by driver"
+      },
+      {
+        "check": "value:value",
+        "pass": false,
+        "detail": "không đọc được số từ None"
+      },
+      {
+        "check": "period:period",
+        "pass": false,
+        "detail": "period='phiên gần nhất (dd/mm/yyyy)' accept=['30/10', '30-10', '30.10', '2026-10-30']"
+      }
+    ],
+    "ledger_path": "results/financial-prompt-v3-pilot-20261105/trials/fin-l1-gold-01__opentrading_baseline__r1/attempts/01-53dc8ebae8f6/mcp.jsonl",
+    "grade_path": "results/financial-prompt-v3-pilot-20261105/trials/fin-l1-gold-01__opentrading_baseline__r1/grade.json"
+  },
+  {
+    "ot": "opentrading_baseline",
+    "comparator": "opencode",
+    "task": "fin-l1-quote-01",
+    "run": 1,
+    "stage": "rejected_no_success",
+    "error_type": "sai_so",
+    "semantic_correctness": false,
+    "ot_trial_id": "fin-l1-quote-01__opentrading_baseline__r1",
+    "comparator_trial_id": "fin-l1-quote-01__opencode__r1",
+    "ot_answer": {
+      "value": null,
+      "unit": "nghìn đồng",
+      "period": "phiên gần nhất (dd/mm/yyyy)",
+      "source": "vn_quote_history",
+      "note": "Dữ liệu giá đóng cửa phiên giao dịch gần nhất của HPG không được ghi nhận trong snapshot dữ liệu cố định tính đến 2026-11-01.",
+      "evidence": []
+    },
+    "failed_checks": [
+      {
+        "check": "provenance",
+        "pass": false,
+        "detail": "recorded response identity/provider/as_of coverage and snapshot hash; call IDs independently verified by driver"
+      },
+      {
+        "check": "value:value",
+        "pass": false,
+        "detail": "không đọc được số từ None"
+      },
+      {
+        "check": "period:period",
+        "pass": false,
+        "detail": "period='phiên gần nhất (dd/mm/yyyy)' accept=['30/10', '30-10', '30.10', '2026-10-30']"
+      }
+    ],
+    "ledger_path": "results/financial-prompt-v3-pilot-20261105/trials/fin-l1-quote-01__opentrading_baseline__r1/attempts/01-02a7ff86a819/mcp.jsonl",
+    "grade_path": "results/financial-prompt-v3-pilot-20261105/trials/fin-l1-quote-01__opentrading_baseline__r1/grade.json"
+  },
+  {
+    "ot": "opentrading_baseline",
+    "comparator": "dsh",
+    "task": "fin-l1-quote-01",
+    "run": 1,
+    "stage": "rejected_no_success",
+    "error_type": "sai_so",
+    "semantic_correctness": false,
+    "ot_trial_id": "fin-l1-quote-01__opentrading_baseline__r1",
+    "comparator_trial_id": "fin-l1-quote-01__dsh__r1",
+    "ot_answer": {
+      "value": null,
+      "unit": "nghìn đồng",
+      "period": "phiên gần nhất (dd/mm/yyyy)",
+      "source": "vn_quote_history",
+      "note": "Dữ liệu giá đóng cửa phiên giao dịch gần nhất của HPG không được ghi nhận trong snapshot dữ liệu cố định tính đến 2026-11-01.",
+      "evidence": []
+    },
+    "failed_checks": [
+      {
+        "check": "provenance",
+        "pass": false,
+        "detail": "recorded response identity/provider/as_of coverage and snapshot hash; call IDs independently verified by driver"
+      },
+      {
+        "check": "value:value",
+        "pass": false,
+        "detail": "không đọc được số từ None"
+      },
+      {
+        "check": "period:period",
+        "pass": false,
+        "detail": "period='phiên gần nhất (dd/mm/yyyy)' accept=['30/10', '30-10', '30.10', '2026-10-30']"
+      }
+    ],
+    "ledger_path": "results/financial-prompt-v3-pilot-20261105/trials/fin-l1-quote-01__opentrading_baseline__r1/attempts/01-02a7ff86a819/mcp.jsonl",
+    "grade_path": "results/financial-prompt-v3-pilot-20261105/trials/fin-l1-quote-01__opentrading_baseline__r1/grade.json"
+  },
+  {
+    "ot": "opentrading_finance",
+    "comparator": "opencode",
+    "task": "fin-l1-quote-01",
+    "run": 1,
+    "stage": "rejected_no_success",
+    "error_type": "sai_so",
+    "semantic_correctness": false,
+    "ot_trial_id": "fin-l1-quote-01__opentrading_finance__r1",
+    "comparator_trial_id": "fin-l1-quote-01__opencode__r1",
+    "ot_answer": {
+      "value": null,
+      "unit": "nghìn đồng",
+      "period": "N/A",
+      "source": "vn_quote_history",
+      "note": "Không tìm thấy dữ liệu giá đóng cửa cho HPG trong phạm vi truy xuất được từ snapshot 2026-11-01. Yêu cầu cột 'close' không hợp lệ theo schema của tool."
+    },
+    "failed_checks": [
+      {
+        "check": "provenance",
+        "pass": false,
+        "detail": "recorded response identity/provider/as_of coverage and snapshot hash; call IDs independently verified by driver"
+      },
+      {
+        "check": "value:value",
+        "pass": false,
+        "detail": "không đọc được số từ None"
+      },
+      {
+        "check": "period:period",
+        "pass": false,
+        "detail": "period='N/A' accept=['30/10', '30-10', '30.10', '2026-10-30']"
+      }
+    ],
+    "ledger_path": "results/financial-prompt-v3-pilot-20261105/trials/fin-l1-quote-01__opentrading_finance__r1/attempts/01-cf82421ab84a/mcp.jsonl",
+    "grade_path": "results/financial-prompt-v3-pilot-20261105/trials/fin-l1-quote-01__opentrading_finance__r1/grade.json"
+  },
+  {
+    "ot": "opentrading_finance",
+    "comparator": "dsh",
+    "task": "fin-l1-quote-01",
+    "run": 1,
+    "stage": "rejected_no_success",
+    "error_type": "sai_so",
+    "semantic_correctness": false,
+    "ot_trial_id": "fin-l1-quote-01__opentrading_finance__r1",
+    "comparator_trial_id": "fin-l1-quote-01__dsh__r1",
+    "ot_answer": {
+      "value": null,
+      "unit": "nghìn đồng",
+      "period": "N/A",
+      "source": "vn_quote_history",
+      "note": "Không tìm thấy dữ liệu giá đóng cửa cho HPG trong phạm vi truy xuất được từ snapshot 2026-11-01. Yêu cầu cột 'close' không hợp lệ theo schema của tool."
+    },
+    "failed_checks": [
+      {
+        "check": "provenance",
+        "pass": false,
+        "detail": "recorded response identity/provider/as_of coverage and snapshot hash; call IDs independently verified by driver"
+      },
+      {
+        "check": "value:value",
+        "pass": false,
+        "detail": "không đọc được số từ None"
+      },
+      {
+        "check": "period:period",
+        "pass": false,
+        "detail": "period='N/A' accept=['30/10', '30-10', '30.10', '2026-10-30']"
+      }
+    ],
+    "ledger_path": "results/financial-prompt-v3-pilot-20261105/trials/fin-l1-quote-01__opentrading_finance__r1/attempts/01-cf82421ab84a/mcp.jsonl",
+    "grade_path": "results/financial-prompt-v3-pilot-20261105/trials/fin-l1-quote-01__opentrading_finance__r1/grade.json"
+  },
+  {
+    "ot": "opentrading_baseline",
+    "comparator": "opencode",
+    "task": "fin-l1-quote-02",
+    "run": 1,
+    "stage": "after_successful_tool",
+    "error_type": "thieu_bang_chung",
+    "semantic_correctness": true,
+    "ot_trial_id": "fin-l1-quote-02__opentrading_baseline__r1",
+    "comparator_trial_id": "fin-l1-quote-02__opencode__r1",
+    "ot_answer": {
+      "value": 78109.0,
+      "unit": "USDT",
+      "period": "01/11/2026",
+      "source": "crypto_spot",
+      "note": "Giá được lấy từ snapshot cố định 2026-11-01"
+    },
+    "failed_checks": [
+      {
+        "check": "provenance",
+        "pass": false,
+        "detail": "recorded response identity/provider/as_of coverage and snapshot hash; call IDs independently verified by driver"
+      }
+    ],
+    "ledger_path": "results/financial-prompt-v3-pilot-20261105/trials/fin-l1-quote-02__opentrading_baseline__r1/attempts/01-3032c36b6d93/mcp.jsonl",
+    "grade_path": "results/financial-prompt-v3-pilot-20261105/trials/fin-l1-quote-02__opentrading_baseline__r1/grade.json"
+  },
+  {
+    "ot": "opentrading_baseline",
+    "comparator": "dsh",
+    "task": "fin-l1-quote-02",
+    "run": 1,
+    "stage": "after_successful_tool",
+    "error_type": "thieu_bang_chung",
+    "semantic_correctness": true,
+    "ot_trial_id": "fin-l1-quote-02__opentrading_baseline__r1",
+    "comparator_trial_id": "fin-l1-quote-02__dsh__r1",
+    "ot_answer": {
+      "value": 78109.0,
+      "unit": "USDT",
+      "period": "01/11/2026",
+      "source": "crypto_spot",
+      "note": "Giá được lấy từ snapshot cố định 2026-11-01"
+    },
+    "failed_checks": [
+      {
+        "check": "provenance",
+        "pass": false,
+        "detail": "recorded response identity/provider/as_of coverage and snapshot hash; call IDs independently verified by driver"
+      }
+    ],
+    "ledger_path": "results/financial-prompt-v3-pilot-20261105/trials/fin-l1-quote-02__opentrading_baseline__r1/attempts/01-3032c36b6d93/mcp.jsonl",
+    "grade_path": "results/financial-prompt-v3-pilot-20261105/trials/fin-l1-quote-02__opentrading_baseline__r1/grade.json"
+  },
+  {
+    "ot": "opentrading_finance",
+    "comparator": "opencode",
+    "task": "fin-l5-compare-01",
+    "run": 1,
+    "stage": "after_successful_tool",
+    "error_type": "thieu_bang_chung",
+    "semantic_correctness": true,
+    "ot_trial_id": "fin-l5-compare-01__opentrading_finance__r1",
+    "comparator_trial_id": "fin-l5-compare-01__opencode__r1",
+    "ot_answer": {
+      "values": {
+        "VCB": {
+          "pe": 12.66,
+          "pb": 2.14,
+          "roe": 16.73
+        },
+        "BID": {
+          "pe": 9.11,
+          "pb": 1.57,
+          "roe": 19.43
+        },
+        "CTG": {
+          "pe": 5.55,
+          "pb": 1.07,
+          "roe": 21.23
+        },
+        "TCB": {
+          "pe": 9.76,
+          "pb": 1.38,
+          "roe": 16.03
+        },
+        "MBB": {
+          "pe": 6.36,
+          "pb": 1.43,
+          "roe": 21.57
+        }
+      },
+      "ranking": [
+        "MBB",
+        "CTG",
+        "BID",
+        "VCB",
+        "TCB"
+      ],
+      "period": "2025",
+      "source": "peer_compare",
+      "note": "Các chỉ số P/E, P/B, ROE được tính theo giá ngày kết thúc kỳ báo cáo 2025, không phải bội số hiện tại. (Nguồn: vnstock)"
+    },
+    "failed_checks": [
+      {
+        "check": "provenance",
+        "pass": false,
+        "detail": "recorded response identity/provider/as_of coverage and snapshot hash; call IDs independently verified by driver"
+      }
+    ],
+    "ledger_path": "results/financial-prompt-v3-pilot-20261105/trials/fin-l5-compare-01__opentrading_finance__r1/attempts/01-fea091aea7df/mcp.jsonl",
+    "grade_path": "results/financial-prompt-v3-pilot-20261105/trials/fin-l5-compare-01__opentrading_finance__r1/grade.json"
+  },
+  {
+    "ot": "opentrading_finance",
+    "comparator": "dsh",
+    "task": "fin-l5-compare-01",
+    "run": 1,
+    "stage": "after_successful_tool",
+    "error_type": "thieu_bang_chung",
+    "semantic_correctness": true,
+    "ot_trial_id": "fin-l5-compare-01__opentrading_finance__r1",
+    "comparator_trial_id": "fin-l5-compare-01__dsh__r1",
+    "ot_answer": {
+      "values": {
+        "VCB": {
+          "pe": 12.66,
+          "pb": 2.14,
+          "roe": 16.73
+        },
+        "BID": {
+          "pe": 9.11,
+          "pb": 1.57,
+          "roe": 19.43
+        },
+        "CTG": {
+          "pe": 5.55,
+          "pb": 1.07,
+          "roe": 21.23
+        },
+        "TCB": {
+          "pe": 9.76,
+          "pb": 1.38,
+          "roe": 16.03
+        },
+        "MBB": {
+          "pe": 6.36,
+          "pb": 1.43,
+          "roe": 21.57
+        }
+      },
+      "ranking": [
+        "MBB",
+        "CTG",
+        "BID",
+        "VCB",
+        "TCB"
+      ],
+      "period": "2025",
+      "source": "peer_compare",
+      "note": "Các chỉ số P/E, P/B, ROE được tính theo giá ngày kết thúc kỳ báo cáo 2025, không phải bội số hiện tại. (Nguồn: vnstock)"
+    },
+    "failed_checks": [
+      {
+        "check": "provenance",
+        "pass": false,
+        "detail": "recorded response identity/provider/as_of coverage and snapshot hash; call IDs independently verified by driver"
+      }
+    ],
+    "ledger_path": "results/financial-prompt-v3-pilot-20261105/trials/fin-l5-compare-01__opentrading_finance__r1/attempts/01-fea091aea7df/mcp.jsonl",
+    "grade_path": "results/financial-prompt-v3-pilot-20261105/trials/fin-l5-compare-01__opentrading_finance__r1/grade.json"
+  },
+  {
+    "ot": "opentrading_finance",
+    "comparator": "opencode",
+    "task": "fin-l1-quote-01",
+    "run": 2,
+    "stage": "rejected_no_success",
+    "error_type": "sai_so",
+    "semantic_correctness": false,
+    "ot_trial_id": "fin-l1-quote-01__opentrading_finance__r2",
+    "comparator_trial_id": "fin-l1-quote-01__opencode__r2",
+    "ot_answer": {
+      "value": null,
+      "unit": "nghìn đồng",
+      "period": "Không có dữ liệu",
+      "source": "vn_quote_history",
+      "note": "Không thể lấy giá đóng cửa HPG vì tham số 'close' không hợp lệ theo schema của tool. Dữ liệu không tồn tại trong phạm vi truy xuất."
+    },
+    "failed_checks": [
+      {
+        "check": "provenance",
+        "pass": false,
+        "detail": "recorded response identity/provider/as_of coverage and snapshot hash; call IDs independently verified by driver"
+      },
+      {
+        "check": "value:value",
+        "pass": false,
+        "detail": "không đọc được số từ None"
+      },
+      {
+        "check": "period:period",
+        "pass": false,
+        "detail": "period='Không có dữ liệu' accept=['30/10', '30-10', '30.10', '2026-10-30']"
+      }
+    ],
+    "ledger_path": "results/financial-prompt-v3-pilot-20261105/trials/fin-l1-quote-01__opentrading_finance__r2/attempts/01-23d8e12fd976/mcp.jsonl",
+    "grade_path": "results/financial-prompt-v3-pilot-20261105/trials/fin-l1-quote-01__opentrading_finance__r2/grade.json"
+  },
+  {
+    "ot": "opentrading_finance",
+    "comparator": "dsh",
+    "task": "fin-l1-quote-01",
+    "run": 2,
+    "stage": "rejected_no_success",
+    "error_type": "sai_so",
+    "semantic_correctness": false,
+    "ot_trial_id": "fin-l1-quote-01__opentrading_finance__r2",
+    "comparator_trial_id": "fin-l1-quote-01__dsh__r2",
+    "ot_answer": {
+      "value": null,
+      "unit": "nghìn đồng",
+      "period": "Không có dữ liệu",
+      "source": "vn_quote_history",
+      "note": "Không thể lấy giá đóng cửa HPG vì tham số 'close' không hợp lệ theo schema của tool. Dữ liệu không tồn tại trong phạm vi truy xuất."
+    },
+    "failed_checks": [
+      {
+        "check": "provenance",
+        "pass": false,
+        "detail": "recorded response identity/provider/as_of coverage and snapshot hash; call IDs independently verified by driver"
+      },
+      {
+        "check": "value:value",
+        "pass": false,
+        "detail": "không đọc được số từ None"
+      },
+      {
+        "check": "period:period",
+        "pass": false,
+        "detail": "period='Không có dữ liệu' accept=['30/10', '30-10', '30.10', '2026-10-30']"
+      }
+    ],
+    "ledger_path": "results/financial-prompt-v3-pilot-20261105/trials/fin-l1-quote-01__opentrading_finance__r2/attempts/01-23d8e12fd976/mcp.jsonl",
+    "grade_path": "results/financial-prompt-v3-pilot-20261105/trials/fin-l1-quote-01__opentrading_finance__r2/grade.json"
+  },
+  {
+    "ot": "opentrading_baseline",
+    "comparator": "opencode",
+    "task": "fin-l1-quote-01",
+    "run": 2,
+    "stage": "after_successful_tool",
+    "error_type": "thieu_bang_chung",
+    "semantic_correctness": true,
+    "ot_trial_id": "fin-l1-quote-01__opentrading_baseline__r2",
+    "comparator_trial_id": "fin-l1-quote-01__opencode__r2",
+    "ot_answer": {
+      "value": 21.0,
+      "unit": "nghìn đồng",
+      "period": "30/10/2026",
+      "source": "vn_quote_history",
+      "note": "Giá đóng cửa phiên gần nhất của HPG là 21.0 nghìn đồng, dữ liệu được lấy từ snapshot ngày 2026-11-01."
+    },
+    "failed_checks": [
+      {
+        "check": "provenance",
+        "pass": false,
+        "detail": "recorded response identity/provider/as_of coverage and snapshot hash; call IDs independently verified by driver"
+      }
+    ],
+    "ledger_path": "results/financial-prompt-v3-pilot-20261105/trials/fin-l1-quote-01__opentrading_baseline__r2/attempts/01-cea929e994ac/mcp.jsonl",
+    "grade_path": "results/financial-prompt-v3-pilot-20261105/trials/fin-l1-quote-01__opentrading_baseline__r2/grade.json"
+  },
+  {
+    "ot": "opentrading_baseline",
+    "comparator": "dsh",
+    "task": "fin-l1-quote-01",
+    "run": 2,
+    "stage": "after_successful_tool",
+    "error_type": "thieu_bang_chung",
+    "semantic_correctness": true,
+    "ot_trial_id": "fin-l1-quote-01__opentrading_baseline__r2",
+    "comparator_trial_id": "fin-l1-quote-01__dsh__r2",
+    "ot_answer": {
+      "value": 21.0,
+      "unit": "nghìn đồng",
+      "period": "30/10/2026",
+      "source": "vn_quote_history",
+      "note": "Giá đóng cửa phiên gần nhất của HPG là 21.0 nghìn đồng, dữ liệu được lấy từ snapshot ngày 2026-11-01."
+    },
+    "failed_checks": [
+      {
+        "check": "provenance",
+        "pass": false,
+        "detail": "recorded response identity/provider/as_of coverage and snapshot hash; call IDs independently verified by driver"
+      }
+    ],
+    "ledger_path": "results/financial-prompt-v3-pilot-20261105/trials/fin-l1-quote-01__opentrading_baseline__r2/attempts/01-cea929e994ac/mcp.jsonl",
+    "grade_path": "results/financial-prompt-v3-pilot-20261105/trials/fin-l1-quote-01__opentrading_baseline__r2/grade.json"
+  },
+  {
+    "ot": "opentrading_baseline",
+    "comparator": "opencode",
+    "task": "fin-l5-compare-01",
+    "run": 2,
+    "stage": "rejected_no_success",
+    "error_type": "sai_so",
+    "semantic_correctness": false,
+    "ot_trial_id": "fin-l5-compare-01__opentrading_baseline__r2",
+    "comparator_trial_id": "fin-l5-compare-01__opencode__r2",
+    "ot_answer": {
+      "values": {
+        "VCB": {
+          "pe": null,
+          "pb": null,
+          "roe": null
+        },
+        "BID": {
+          "pe": null,
+          "pb": null,
+          "roe": null
+        },
+        "CTG": {
+          "pe": null,
+          "pb": null,
+          "roe": null
+        },
+        "TCB": {
+          "pe": null,
+          "pb": null,
+          "roe": null
+        },
+        "MBB": {
+          "pe": null,
+          "pb": null,
+          "roe": null
+        }
+      },
+      "ranking": [],
+      "period": "Không có dữ liệu",
+      "source": "mcp__opentrading__peer_compare",
+      "note": "Yêu cầu so sánh các chỉ số P/E, P/B, ROE không hợp lệ theo schema của tool peer_compare. Dữ liệu tài chính chi tiết không được cung cấp qua lệnh này."
+    },
+    "failed_checks": [
+      {
+        "check": "provenance",
+        "pass": false,
+        "detail": "recorded response identity/provider/as_of coverage and snapshot hash; call IDs independently verified by driver"
+      },
+      {
+        "check": "value:values.VCB.pe",
+        "pass": false,
+        "detail": "không đọc được số từ None"
+      },
+      {
+        "check": "value:values.VCB.pb",
+        "pass": false,
+        "detail": "không đọc được số từ None"
+      },
+      {
+        "check": "value:values.VCB.roe",
+        "pass": false,
+        "detail": "không đọc được số từ None"
+      },
+      {
+        "check": "value:values.BID.pe",
+        "pass": false,
+        "detail": "không đọc được số từ None"
+      },
+      {
+        "check": "value:values.BID.pb",
+        "pass": false,
+        "detail": "không đọc được số từ None"
+      },
+      {
+        "check": "value:values.BID.roe",
+        "pass": false,
+        "detail": "không đọc được số từ None"
+      },
+      {
+        "check": "value:values.CTG.pe",
+        "pass": false,
+        "detail": "không đọc được số từ None"
+      },
+      {
+        "check": "value:values.CTG.pb",
+        "pass": false,
+        "detail": "không đọc được số từ None"
+      },
+      {
+        "check": "value:values.CTG.roe",
+        "pass": false,
+        "detail": "không đọc được số từ None"
+      },
+      {
+        "check": "value:values.TCB.pe",
+        "pass": false,
+        "detail": "không đọc được số từ None"
+      },
+      {
+        "check": "value:values.TCB.pb",
+        "pass": false,
+        "detail": "không đọc được số từ None"
+      },
+      {
+        "check": "value:values.TCB.roe",
+        "pass": false,
+        "detail": "không đọc được số từ None"
+      },
+      {
+        "check": "value:values.MBB.pe",
+        "pass": false,
+        "detail": "không đọc được số từ None"
+      },
+      {
+        "check": "value:values.MBB.pb",
+        "pass": false,
+        "detail": "không đọc được số từ None"
+      },
+      {
+        "check": "value:values.MBB.roe",
+        "pass": false,
+        "detail": "không đọc được số từ None"
+      },
+      {
+        "check": "list_order:ranking",
+        "pass": false,
+        "detail": "answer=[] gold=['MBB', 'CTG', 'BID', 'VCB', 'TCB']"
+      },
+      {
+        "check": "period:period",
+        "pass": false,
+        "detail": "period='Không có dữ liệu' accept=['2025']"
+      },
+      {
+        "check": "str:source",
+        "pass": false,
+        "detail": "answer='mcp__opentrading__peer_compare' accept=['peer_compare']"
+      }
+    ],
+    "ledger_path": "results/financial-prompt-v3-pilot-20261105/trials/fin-l5-compare-01__opentrading_baseline__r2/attempts/01-afedb95b93f8/mcp.jsonl",
+    "grade_path": "results/financial-prompt-v3-pilot-20261105/trials/fin-l5-compare-01__opentrading_baseline__r2/grade.json"
+  },
+  {
+    "ot": "opentrading_baseline",
+    "comparator": "dsh",
+    "task": "fin-l5-compare-01",
+    "run": 2,
+    "stage": "rejected_no_success",
+    "error_type": "sai_so",
+    "semantic_correctness": false,
+    "ot_trial_id": "fin-l5-compare-01__opentrading_baseline__r2",
+    "comparator_trial_id": "fin-l5-compare-01__dsh__r2",
+    "ot_answer": {
+      "values": {
+        "VCB": {
+          "pe": null,
+          "pb": null,
+          "roe": null
+        },
+        "BID": {
+          "pe": null,
+          "pb": null,
+          "roe": null
+        },
+        "CTG": {
+          "pe": null,
+          "pb": null,
+          "roe": null
+        },
+        "TCB": {
+          "pe": null,
+          "pb": null,
+          "roe": null
+        },
+        "MBB": {
+          "pe": null,
+          "pb": null,
+          "roe": null
+        }
+      },
+      "ranking": [],
+      "period": "Không có dữ liệu",
+      "source": "mcp__opentrading__peer_compare",
+      "note": "Yêu cầu so sánh các chỉ số P/E, P/B, ROE không hợp lệ theo schema của tool peer_compare. Dữ liệu tài chính chi tiết không được cung cấp qua lệnh này."
+    },
+    "failed_checks": [
+      {
+        "check": "provenance",
+        "pass": false,
+        "detail": "recorded response identity/provider/as_of coverage and snapshot hash; call IDs independently verified by driver"
+      },
+      {
+        "check": "value:values.VCB.pe",
+        "pass": false,
+        "detail": "không đọc được số từ None"
+      },
+      {
+        "check": "value:values.VCB.pb",
+        "pass": false,
+        "detail": "không đọc được số từ None"
+      },
+      {
+        "check": "value:values.VCB.roe",
+        "pass": false,
+        "detail": "không đọc được số từ None"
+      },
+      {
+        "check": "value:values.BID.pe",
+        "pass": false,
+        "detail": "không đọc được số từ None"
+      },
+      {
+        "check": "value:values.BID.pb",
+        "pass": false,
+        "detail": "không đọc được số từ None"
+      },
+      {
+        "check": "value:values.BID.roe",
+        "pass": false,
+        "detail": "không đọc được số từ None"
+      },
+      {
+        "check": "value:values.CTG.pe",
+        "pass": false,
+        "detail": "không đọc được số từ None"
+      },
+      {
+        "check": "value:values.CTG.pb",
+        "pass": false,
+        "detail": "không đọc được số từ None"
+      },
+      {
+        "check": "value:values.CTG.roe",
+        "pass": false,
+        "detail": "không đọc được số từ None"
+      },
+      {
+        "check": "value:values.TCB.pe",
+        "pass": false,
+        "detail": "không đọc được số từ None"
+      },
+      {
+        "check": "value:values.TCB.pb",
+        "pass": false,
+        "detail": "không đọc được số từ None"
+      },
+      {
+        "check": "value:values.TCB.roe",
+        "pass": false,
+        "detail": "không đọc được số từ None"
+      },
+      {
+        "check": "value:values.MBB.pe",
+        "pass": false,
+        "detail": "không đọc được số từ None"
+      },
+      {
+        "check": "value:values.MBB.pb",
+        "pass": false,
+        "detail": "không đọc được số từ None"
+      },
+      {
+        "check": "value:values.MBB.roe",
+        "pass": false,
+        "detail": "không đọc được số từ None"
+      },
+      {
+        "check": "list_order:ranking",
+        "pass": false,
+        "detail": "answer=[] gold=['MBB', 'CTG', 'BID', 'VCB', 'TCB']"
+      },
+      {
+        "check": "period:period",
+        "pass": false,
+        "detail": "period='Không có dữ liệu' accept=['2025']"
+      },
+      {
+        "check": "str:source",
+        "pass": false,
+        "detail": "answer='mcp__opentrading__peer_compare' accept=['peer_compare']"
+      }
+    ],
+    "ledger_path": "results/financial-prompt-v3-pilot-20261105/trials/fin-l5-compare-01__opentrading_baseline__r2/attempts/01-afedb95b93f8/mcp.jsonl",
+    "grade_path": "results/financial-prompt-v3-pilot-20261105/trials/fin-l5-compare-01__opentrading_baseline__r2/grade.json"
+  },
+  {
+    "ot": "opentrading_finance",
+    "comparator": "opencode",
+    "task": "fin-l5-compare-01",
+    "run": 2,
+    "stage": "after_successful_tool",
+    "error_type": "sai_nguon",
+    "semantic_correctness": false,
+    "ot_trial_id": "fin-l5-compare-01__opentrading_finance__r2",
+    "comparator_trial_id": "fin-l5-compare-01__opencode__r2",
+    "ot_answer": {
+      "values": {
+        "VCB": {
+          "pe": 12.66,
+          "pb": 2.14,
+          "roe": 16.73
+        },
+        "BID": {
+          "pe": 9.11,
+          "pb": 1.57,
+          "roe": 19.43
+        },
+        "CTG": {
+          "pe": 5.55,
+          "pb": 1.07,
+          "roe": 21.23
+        },
+        "TCB": {
+          "pe": 9.76,
+          "pb": 1.38,
+          "roe": 16.03
+        },
+        "MBB": {
+          "pe": 6.36,
+          "pb": 1.43,
+          "roe": 21.57
+        }
+      },
+      "ranking": [
+        "MBB",
+        "CTG",
+        "BID",
+        "VCB",
+        "TCB"
+      ],
+      "period": "2025",
+      "source": "mcp__opentrading__peer_compare",
+      "note": "Dữ liệu P/E, P/B, ROE là theo giá ngày kết thúc kỳ báo cáo 2025, không phải bội số hiện tại. Xếp hạng theo ROE từ cao xuống thấp.",
+      "evidence": [
+        {
+          "tool": "peer_compare",
+          "source": "vnstock",
+          "as_of": "2026-11-01T15:58:02.647158+07:00",
+          "call_id": "3dc265cb-3ae6-4cb5-9baa-62a0d9479571",
+          "payload_sha256": "9d5cd2d9d48cbebfdbb5c67a4f81f87c93362a8c82b52accafd053219d49c7d5",
+          "matched_entry_id": "peer_compare:0",
+          "response_sha256": "c7bf5f6871f6bf6268ae80f9a927991aac12a683d3d5cab89e4aae5eb9ea043f"
+        }
+      ]
+    },
+    "failed_checks": [
+      {
+        "check": "str:source",
+        "pass": false,
+        "detail": "answer='mcp__opentrading__peer_compare' accept=['peer_compare']"
+      }
+    ],
+    "ledger_path": "results/financial-prompt-v3-pilot-20261105/trials/fin-l5-compare-01__opentrading_finance__r2/attempts/01-19a24a03bbc0/mcp.jsonl",
+    "grade_path": "results/financial-prompt-v3-pilot-20261105/trials/fin-l5-compare-01__opentrading_finance__r2/grade.json"
+  },
+  {
+    "ot": "opentrading_finance",
+    "comparator": "dsh",
+    "task": "fin-l5-compare-01",
+    "run": 2,
+    "stage": "after_successful_tool",
+    "error_type": "sai_nguon",
+    "semantic_correctness": false,
+    "ot_trial_id": "fin-l5-compare-01__opentrading_finance__r2",
+    "comparator_trial_id": "fin-l5-compare-01__dsh__r2",
+    "ot_answer": {
+      "values": {
+        "VCB": {
+          "pe": 12.66,
+          "pb": 2.14,
+          "roe": 16.73
+        },
+        "BID": {
+          "pe": 9.11,
+          "pb": 1.57,
+          "roe": 19.43
+        },
+        "CTG": {
+          "pe": 5.55,
+          "pb": 1.07,
+          "roe": 21.23
+        },
+        "TCB": {
+          "pe": 9.76,
+          "pb": 1.38,
+          "roe": 16.03
+        },
+        "MBB": {
+          "pe": 6.36,
+          "pb": 1.43,
+          "roe": 21.57
+        }
+      },
+      "ranking": [
+        "MBB",
+        "CTG",
+        "BID",
+        "VCB",
+        "TCB"
+      ],
+      "period": "2025",
+      "source": "mcp__opentrading__peer_compare",
+      "note": "Dữ liệu P/E, P/B, ROE là theo giá ngày kết thúc kỳ báo cáo 2025, không phải bội số hiện tại. Xếp hạng theo ROE từ cao xuống thấp.",
+      "evidence": [
+        {
+          "tool": "peer_compare",
+          "source": "vnstock",
+          "as_of": "2026-11-01T15:58:02.647158+07:00",
+          "call_id": "3dc265cb-3ae6-4cb5-9baa-62a0d9479571",
+          "payload_sha256": "9d5cd2d9d48cbebfdbb5c67a4f81f87c93362a8c82b52accafd053219d49c7d5",
+          "matched_entry_id": "peer_compare:0",
+          "response_sha256": "c7bf5f6871f6bf6268ae80f9a927991aac12a683d3d5cab89e4aae5eb9ea043f"
+        }
+      ]
+    },
+    "failed_checks": [
+      {
+        "check": "str:source",
+        "pass": false,
+        "detail": "answer='mcp__opentrading__peer_compare' accept=['peer_compare']"
+      }
+    ],
+    "ledger_path": "results/financial-prompt-v3-pilot-20261105/trials/fin-l5-compare-01__opentrading_finance__r2/attempts/01-19a24a03bbc0/mcp.jsonl",
+    "grade_path": "results/financial-prompt-v3-pilot-20261105/trials/fin-l5-compare-01__opentrading_finance__r2/grade.json"
+  }
+]

@@ -1,0 +1,41 @@
+{
+ "version": 1,
+ "mode": "memory",
+ "sessions": [
+  {
+   "id": "S1",
+   "turns": [
+    {
+     "text": "Đọc ROE của 5 ngân hàng ACB, STB, VPB, HDB, TPB từ tool `peer_compare`, ghi ngắn gọn từng mã."
+    },
+    {
+     "text": "Xếp hạng 5 mã theo ROE giảm dần. Dùng số đã đọc ở lượt trước, không gọi lại tool. Trả object JSON cuối cùng: {\"values\":{\"ranking\":[...5 mã theo thứ tự...]},\"source\":\"peer_compare\",\"evidence\":[...evidence của call peer_compare ở lượt trước...]}"
+    }
+   ]
+  }
+ ],
+ "memory_policy": {
+  "opentrading": {
+   "memory": {
+    "provider": "notebook",
+    "cards": true
+   },
+   "permissions": {
+    "defaultMode": "auto",
+    "autoAcknowledged": true
+   }
+  },
+  "opencode": {
+   "permission": {
+    "edit": "allow",
+    "bash": "allow",
+    "webfetch": "allow"
+   }
+  },
+  "dsh": {
+   "approval_policy": "allow-reads",
+   "session_query": true
+  }
+ },
+ "note": "In-session memory: kiểm tra giữ ngữ cảnh giữa 2 lượt; chấm lượt 2."
+}

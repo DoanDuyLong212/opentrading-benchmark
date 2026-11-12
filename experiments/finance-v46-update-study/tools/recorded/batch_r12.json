@@ -1,0 +1,595 @@
+{
+ "recorded_at": "2026-11-01",
+ "note": "Batch r12 — fd ANV,BMI,CTD,FCN + res 4 mã + fs TRA,VCI,VGS,VIX,VRE",
+ "items": {
+  "fd:ANV": {
+   "tool": "financial_detail",
+   "params": {
+    "symbol": "ANV",
+    "statement": "KQKD",
+    "periods_n": 4
+   },
+   "body": {
+    "data": {
+     "symbol": "ANV",
+     "unit": "VNDbn",
+     "periods": [
+      "Q4/2025",
+      "Q1/2026",
+      "Q2/2026",
+      "Q3/2026"
+     ],
+     "rows": [
+      {
+       "name": "3. Doanh thu thuần về bán hàng và cung cấp dịch vụ",
+       "values": [
+        2119,
+        1841,
+        1937,
+        2071
+       ]
+      },
+      {
+       "name": "4. Giá vốn hàng bán ",
+       "values": [
+        1694,
+        1515,
+        1625,
+        1666
+       ]
+      },
+      {
+       "name": "5. Lợi nhuận gộp về bán hàng và cung cấp dịch vụ",
+       "values": [
+        425,
+        326,
+        312,
+        405
+       ]
+      }
+     ]
+    },
+    "provenance": {
+     "source": "vietstock",
+     "as_of": "2026-11-01T22:08:28.539230+07:00"
+    },
+    "availability": "available"
+   }
+  },
+  "fd:BMI": {
+   "tool": "financial_detail",
+   "params": {
+    "symbol": "BMI",
+    "statement": "KQKD",
+    "periods_n": 4
+   },
+   "body": {
+    "data": {
+     "symbol": "BMI",
+     "unit": "VNDbn",
+     "periods": [
+      "Q3/2025",
+      "Q4/2025",
+      "Q1/2026",
+      "Q2/2026"
+     ],
+     "rows": [
+      {
+       "name": "5. Doanh thu thuần HĐKD BH (10=03+04)",
+       "values": [
+        1331,
+        1340,
+        1360,
+        1482
+       ]
+      },
+      {
+       "name": "14. Lợi nhuận gộp hoạt động kinh doanh bảo hiểm",
+       "values": [
+        91,
+        15,
+        78,
+        159
+       ]
+      }
+     ]
+    },
+    "provenance": {
+     "source": "vietstock",
+     "as_of": "2026-11-01T22:08:27.470720+07:00"
+    },
+    "availability": "available"
+   }
+  },
+  "fd:CTD": {
+   "tool": "financial_detail",
+   "params": {
+    "symbol": "CTD",
+    "statement": "KQKD",
+    "periods_n": 4
+   },
+   "body": {
+    "data": {
+     "symbol": "CTD",
+     "unit": "VNDbn",
+     "periods": [
+      "Q1/2026",
+      "Q2/2026",
+      "Q3/2026",
+      "Q4/2026"
+     ],
+     "rows": [
+      {
+       "name": "3. Doanh thu thuần về bán hàng và cung cấp dịch vụ",
+       "values": [
+        7452,
+        10007,
+        6409,
+        10471
+       ]
+      },
+      {
+       "name": "4. Giá vốn hàng bán ",
+       "values": [
+        7130,
+        9636,
+        6122,
+        10005
+       ]
+      },
+      {
+       "name": "5. Lợi nhuận gộp về bán hàng và cung cấp dịch vụ",
+       "values": [
+        322,
+        371,
+        287,
+        466
+       ]
+      }
+     ]
+    },
+    "provenance": {
+     "source": "vietstock",
+     "as_of": "2026-11-01T22:08:27.239278+07:00"
+    },
+    "availability": "available"
+   }
+  },
+  "fd:FCN": {
+   "tool": "financial_detail",
+   "params": {
+    "symbol": "FCN",
+    "statement": "KQKD",
+    "periods_n": 4
+   },
+   "body": {
+    "data": {
+     "symbol": "FCN",
+     "unit": "VNDbn",
+     "periods": [
+      "Q3/2025",
+      "Q4/2025",
+      "Q1/2026",
+      "Q2/2026"
+     ],
+     "rows": [
+      {
+       "name": "3. Doanh thu thuần về bán hàng và cung cấp dịch vụ",
+       "values": [
+        1143,
+        1572,
+        1302,
+        1911
+       ]
+      },
+      {
+       "name": "4. Giá vốn hàng bán ",
+       "values": [
+        985,
+        1322,
+        1122,
+        1727
+       ]
+      },
+      {
+       "name": "5. Lợi nhuận gộp về bán hàng và cung cấp dịch vụ",
+       "values": [
+        157,
+        250,
+        180,
+        184
+       ]
+      }
+     ]
+    },
+    "provenance": {
+     "source": "vietstock",
+     "as_of": "2026-11-01T22:08:29.224443+07:00"
+    },
+    "availability": "available"
+   }
+  },
+  "res:FAKECOIN": {
+   "tool": "symbol_resolve",
+   "params": {
+    "query": "FAKECOIN"
+   },
+   "body": {
+    "data": {
+     "query": "FAKECOIN",
+     "resolved": null,
+     "candidates": []
+    },
+    "provenance": {
+     "source": "vnstock+local",
+     "as_of": "2026-11-01T21:51:47.664417+07:00"
+    },
+    "availability": "empty"
+   }
+  },
+  "res:XKCD9": {
+   "tool": "symbol_resolve",
+   "params": {
+    "query": "XKCD9"
+   },
+   "body": {
+    "data": {
+     "query": "XKCD9",
+     "resolved": null,
+     "candidates": []
+    },
+    "provenance": {
+     "source": "vnstock+local",
+     "as_of": "2026-11-01T21:51:46.661158+07:00"
+    },
+    "availability": "empty"
+   }
+  },
+  "res:XXYY": {
+   "tool": "symbol_resolve",
+   "params": {
+    "query": "XXYY"
+   },
+   "body": {
+    "data": {
+     "query": "XXYY",
+     "resolved": null,
+     "candidates": []
+    },
+    "provenance": {
+     "source": "vnstock+local",
+     "as_of": "2026-11-01T21:51:46.061398+07:00"
+    },
+    "availability": "empty"
+   }
+  },
+  "res:ZQZQ": {
+   "tool": "symbol_resolve",
+   "params": {
+    "query": "ZQZQ"
+   },
+   "body": {
+    "data": {
+     "query": "ZQZQ",
+     "resolved": null,
+     "candidates": []
+    },
+    "provenance": {
+     "source": "vnstock+local",
+     "as_of": "2026-11-01T21:51:47.058842+07:00"
+    },
+    "availability": "empty"
+   }
+  },
+  "fs:TRA": {
+   "tool": "financial_statements",
+   "params": {
+    "symbol": "TRA",
+    "period": "quarter",
+    "periods_n": 4
+   },
+   "body": {
+    "data": {
+     "symbol": "TRA",
+     "periods": [
+      "Q3/2025",
+      "Q4/2025",
+      "Q1/2026",
+      "Q2/2026"
+     ],
+     "rows": [
+      {
+       "name": "Doanh thu thuần",
+       "unit": "VND",
+       "values": {
+        "Q3/2025": 675765960474,
+        "Q4/2025": 749330427556,
+        "Q1/2026": 632846800424,
+        "Q2/2026": 737391538774
+       }
+      },
+      {
+       "name": "Lợi nhuận gộp",
+       "unit": "VND",
+       "values": {
+        "Q3/2025": 399636762146,
+        "Q4/2025": 392345631075,
+        "Q1/2026": 366387919981,
+        "Q2/2026": 414312132950
+       }
+      },
+      {
+       "name": "LNST thu nhập DN",
+       "unit": "VND",
+       "values": {
+        "Q3/2025": 78298719684,
+        "Q4/2025": 77543151517,
+        "Q1/2026": 68246825428,
+        "Q2/2026": 64838250934
+       }
+      },
+      {
+       "name": "LNST của CĐ cty mẹ",
+       "unit": "VND",
+       "values": {
+        "Q3/2025": 68004349873,
+        "Q4/2025": 70777882061,
+        "Q1/2026": 61612959818,
+        "Q2/2026": 57746162046
+       }
+      }
+     ]
+    },
+    "provenance": {
+     "source": "vietstock",
+     "as_of": "2026-11-01T22:08:28.290481+07:00"
+    },
+    "availability": "available"
+   }
+  },
+  "fs:VCI": {
+   "tool": "financial_statements",
+   "params": {
+    "symbol": "VCI",
+    "period": "quarter",
+    "periods_n": 4
+   },
+   "body": {
+    "data": {
+     "symbol": "VCI",
+     "periods": [
+      "Q4/2025",
+      "Q1/2026",
+      "Q2/2026",
+      "Q3/2026"
+     ],
+     "rows": [
+      {
+       "name": "Lợi nhuận gộp",
+       "unit": "VND",
+       "values": {
+        "Q4/2025": 906922590412,
+        "Q1/2026": 774647809382,
+        "Q2/2026": 660258396935,
+        "Q3/2026": 901834957252
+       }
+      },
+      {
+       "name": "LNST thu nhập DN",
+       "unit": "VND",
+       "values": {
+        "Q4/2025": 442924081840,
+        "Q1/2026": 340729881088,
+        "Q2/2026": 250588812865,
+        "Q3/2026": 367407505316
+       }
+      },
+      {
+       "name": "LNST của CĐ cty mẹ",
+       "unit": "VND",
+       "values": {
+        "Q4/2025": 442924081840,
+        "Q1/2026": 340729881088,
+        "Q2/2026": 250588812865,
+        "Q3/2026": 367407505316
+       }
+      }
+     ]
+    },
+    "provenance": {
+     "source": "vietstock",
+     "as_of": "2026-11-01T22:08:27.168717+07:00"
+    },
+    "availability": "available"
+   }
+  },
+  "fs:VGS": {
+   "tool": "financial_statements",
+   "params": {
+    "symbol": "VGS",
+    "period": "quarter",
+    "periods_n": 4
+   },
+   "body": {
+    "data": {
+     "symbol": "VGS",
+     "periods": [
+      "Q4/2025",
+      "Q1/2026",
+      "Q2/2026",
+      "Q3/2026"
+     ],
+     "rows": [
+      {
+       "name": "Doanh thu thuần",
+       "unit": "VND",
+       "values": {
+        "Q4/2025": 1644335086068,
+        "Q1/2026": 1701200949719,
+        "Q2/2026": 2365351594478,
+        "Q3/2026": 2138701810017
+       }
+      },
+      {
+       "name": "Lợi nhuận gộp",
+       "unit": "VND",
+       "values": {
+        "Q4/2025": 86347225862,
+        "Q1/2026": 69268371670,
+        "Q2/2026": 84718284658,
+        "Q3/2026": 98390601964
+       }
+      },
+      {
+       "name": "LNST thu nhập DN",
+       "unit": "VND",
+       "values": {
+        "Q4/2025": 77462684236,
+        "Q1/2026": 45282967552,
+        "Q2/2026": 57771866526,
+        "Q3/2026": 96246232659
+       }
+      },
+      {
+       "name": "LNST của CĐ cty mẹ",
+       "unit": "VND",
+       "values": {
+        "Q4/2025": 77457184635,
+        "Q1/2026": 45276981104,
+        "Q2/2026": 57765299079,
+        "Q3/2026": 96239624043
+       }
+      }
+     ]
+    },
+    "provenance": {
+     "source": "vietstock",
+     "as_of": "2026-11-01T22:08:27.714037+07:00"
+    },
+    "availability": "available"
+   }
+  },
+  "fs:VIX": {
+   "tool": "financial_statements",
+   "params": {
+    "symbol": "VIX",
+    "period": "quarter",
+    "periods_n": 4
+   },
+   "body": {
+    "data": {
+     "symbol": "VIX",
+     "periods": [
+      "Q4/2025",
+      "Q1/2026",
+      "Q2/2026",
+      "Q3/2026"
+     ],
+     "rows": [
+      {
+       "name": "Lợi nhuận gộp",
+       "unit": "VND",
+       "values": {
+        "Q4/2025": 1786775071493,
+        "Q1/2026": 313700560729,
+        "Q2/2026": 194120633154,
+        "Q3/2026": 303180379578
+       }
+      },
+      {
+       "name": "LNST thu nhập DN",
+       "unit": "VND",
+       "values": {
+        "Q4/2025": 1286710923220,
+        "Q1/2026": 138370269055,
+        "Q2/2026": 75882025127,
+        "Q3/2026": 173835663136
+       }
+      },
+      {
+       "name": "LNST của CĐ cty mẹ",
+       "unit": "VND",
+       "values": {
+        "Q4/2025": 1286710923220,
+        "Q1/2026": 138370269055,
+        "Q2/2026": 75882025127,
+        "Q3/2026": 173835663136
+       }
+      }
+     ]
+    },
+    "provenance": {
+     "source": "vietstock",
+     "as_of": "2026-11-01T22:08:29.000840+07:00"
+    },
+    "availability": "available"
+   }
+  },
+  "fs:VRE": {
+   "tool": "financial_statements",
+   "params": {
+    "symbol": "VRE",
+    "period": "quarter",
+    "periods_n": 4
+   },
+   "body": {
+    "data": {
+     "symbol": "VRE",
+     "periods": [
+      "Q4/2025",
+      "Q1/2026",
+      "Q2/2026",
+      "Q3/2026"
+     ],
+     "rows": [
+      {
+       "name": "Doanh thu thuần",
+       "unit": "VND",
+       "values": {
+        "Q4/2025": 2312326000000,
+        "Q1/2026": 2293618000000,
+        "Q2/2026": 2373871000000,
+        "Q3/2026": 2373798000000
+       }
+      },
+      {
+       "name": "Lợi nhuận gộp",
+       "unit": "VND",
+       "values": {
+        "Q4/2025": 1210485000000,
+        "Q1/2026": 1253776000000,
+        "Q2/2026": 1398332000000,
+        "Q3/2026": 1221578000000
+       }
+      },
+      {
+       "name": "LNST thu nhập DN",
+       "unit": "VND",
+       "values": {
+        "Q4/2025": 2658835000000,
+        "Q1/2026": 1606257000000,
+        "Q2/2026": 1608531000000,
+        "Q3/2026": 1522067000000
+       }
+      },
+      {
+       "name": "LNST của CĐ cty mẹ",
+       "unit": "VND",
+       "values": {
+        "Q4/2025": 2658835000000,
+        "Q1/2026": 1606257000000,
+        "Q2/2026": 1608531000000,
+        "Q3/2026": 1522067000000
+       }
+      }
+     ]
+    },
+    "provenance": {
+     "source": "vietstock",
+     "as_of": "2026-11-01T22:08:26.502281+07:00"
+    },
+    "availability": "available"
+   }
+  }
+ }
+}

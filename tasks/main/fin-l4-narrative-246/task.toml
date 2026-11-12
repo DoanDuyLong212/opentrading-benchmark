@@ -1,7 +1,7 @@
 # Task benchmark harness tài chính (bộ 200+50) — sinh bởi tools/build_main.py
 id = "fin-l4-narrative-246"
 title = "Kiểm chứng nhận định SCR"
-version = 1
+version = 2
 created = "2026-11-01"
 level = "L4"
 family = "L4·I narrative-check"
@@ -19,6 +19,9 @@ tools_expected = ["vn_quote_history"]
 mcp_payloads = "environment/payloads.json"
 snapshot_required = true
 split = "main"
+
+confirmatory_eligible = false
+exclusion_reason = "incomplete_narrative_evidence_rubric"
 
 [scoring]
 type = "verdict"

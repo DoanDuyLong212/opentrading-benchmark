@@ -1,0 +1,2249 @@
+import type { KeyEvent, TextareaRenderable } from "@opentui/core"
+import { useKeyboard, useRenderer, useTerminalDimensions } from "@opentui/solid"
+import { createEffect, createMemo, createSignal, For, Match, on, onCleanup, onMount, Show, Switch } from "solid-js"
+import { produce, reconcile } from "solid-js/store"
+import { REMINDER_TAG, runAgent, summarizeConversation } from "../core/agent"
+import { redactHistory } from "../core/memory/redaction/redact"
+import {
+  COMPACT_LEAN_TOKENS,
+  IMAGE_TOKENS,
+  MAX_AUTO_FAILURES,
+  compactHistory,
+  compactPrompt,
+  formatCompactSummary,
+  isContextOverflow,
+  clampPercent,
+  pruneAttachmentsForRequest,
+  shouldAutoCompact,
+  tokensOf,
+} from "../core/compact"
+import { estimateTokens } from "../core/prompt/budget"
+import { acceptsImageInput } from "../core/agent"
+import { attachMentions, mentionText } from "../core/mentions"
+import { FileIndex, INDEX_MISS_MS, matchPaths } from "../core/fs/file-index"
+import { connectedProviders } from "../core/auth"
+import { describeError } from "../core/chat"
+import { TurnHeldError, type BoundSource, type Waiver } from "../core/memory/binding/bind"
+import { waiveLabel } from "../core/memory/binding/render"
+import type { AgentEvent } from "../core/events"
+import { cardsSwitchOn, loadConfig, saveConfig } from "../core/config"
+import { idleCompactSettings, IdleTimer } from "../core/idle-compact"
+import { loadCatalog } from "../core/catalog"
+import { closeMemory, type Runtime } from "../core/runtime"
+import { ensureProfile } from "../core/profile"
+import { loadSkills, skillRoots } from "../core/skills/loader"
+import { FolderTrust, projectExtras } from "../core/folder-trust"
+import { Background } from "./background"
+import { ApprovalPrompt } from "./approval"
+import { AskPrompt } from "./ask"
+import { McpPanel, STATUS } from "./mcp/panel"
+import { rank, truncate } from "./ui/text"
+import { COMMANDS, parseCommand, parsePromptArgs, promptUsage, withPlaybooks, type CommandInfo } from "./commands"
+import { ConfigDialog } from "./dialogs/config"
+import { announceUpdate } from "./update-notice"
+import { ConnectDialog } from "./dialogs/connect"
+import { ContextDialog } from "./dialogs/context"
+import { HelpDialog } from "./dialogs/help"
+import { MemoryDialog } from "./dialogs/memory"
+import { migrateLegacyMemory } from "../core/memory/legacy"
+import { cardStreamFilter } from "../core/memory/cards/stream"
+import type { Card, CardDraft } from "../core/memory/cards/types"
+import { CardKeys } from "./card-row"
+import { cardOutcomes, focusLatestCard, takeCard } from "./cards"
+import { NotebookFormDialog } from "./dialogs/notebook-form/forms"
+import { offWithConstraints, openNotebookForm } from "./dialogs/notebook-form/open"
+import { notebookCommandOf } from "../core/memory/notebook/commands"
+import { PermissionsDialog } from "./dialogs/permissions"
+import { SessionsDialog } from "./dialogs/sessions"
+import { ModelDialog } from "./dialogs/model"
+import { SkillsDialog, toggleSkill } from "./dialogs/skills"
+import { AgentsDialog, reloadAgents } from "./dialogs/agents"
+import { TasksDialog } from "./dialogs/tasks"
+import { focusWatchlist, WatchlistDialog } from "./dialogs/watchlist"
+import { watchlistOps } from "../core/tools/watchlist/local"
+import { noticesMessage, notificationText } from "../core/subagents/notification"
+import { DESK_NOTE, deskNotification } from "../core/desk/notification"
+import { deskReminder, deskSkippedNote, hasDeskKeyword, type DeskOptIn } from "../core/desk/keyword"
+import { deskSettings } from "../core/desk/settings"
+import { DESK_RUN } from "../core/desk/tool"
+import { PLAYBOOKS } from "../core/desk/playbooks"
+import { DeskApprovalCard } from "./dialogs/desk-approval"
+import { HoldCard } from "./hold-card"
+import { DESK_STATUS, DeskDialog, runStats } from "./dialogs/desk"
+import { currentTarget, EffortDialog, effortText, supportNote } from "./dialogs/effort"
+import { EFFORT_LEVELS, EFFORT_SYMBOL, effectiveEffort, isEffort, stepEffort, supportedEfforts, type Effort } from "../core/effort"
+import { KeywordMark } from "./prompt/keyword"
+import { fmtSeconds, fmtTokens } from "../core/subagents/result"
+import { ToolsDialog } from "./dialogs/tools"
+import { Home } from "./home"
+import {
+  attachSubagents,
+  currentSession,
+  exitTimeoutLine,
+  recordCompact,
+  recordRedaction,
+  heldLine,
+  recordTurn,
+  resumeFromArgs,
+  settleForExit,
+  startSession,
+  transcriptOfCurrent,
+} from "./session"
+import { resolveExportPath, writeExport } from "../core/session/export"
+import { cycleMode } from "../core/permission/mode"
+
+import { armExit, type HoldChoice, type Queued, closeDialog, contextLimits, EXIT_WINDOW_MS, onExitRequest, providerName, pushLine, setState, state, type Line } from "./state"
+import { flash, notify, say } from "./notify"
+import { watchAutoBlocks } from "./auto-notice"
+import { ModeLine } from "./mode-line"
+import { terminalAttention, type Attention } from "./attention"
+import { ShortcutsPane } from "./shortcuts"
+import { loadModelPrefs } from "../core/model-prefs"
+import { AgentPanel, isDeskRow, panelAgents } from "./agent-panel"
+import { AutoOptInDialog } from "./dialogs/auto-optin"
+import { YoloWarningDialog } from "./dialogs/yolo-warning"
+import { FolderTrustDialog } from "./dialogs/folder-trust"
+import { announceMcp } from "./mcp/notices"
+import { Toasts } from "./toast"
+import { ActivityRow, activeMs, startActivity } from "./activity"
+import { now, useNow } from "./ui/clock"
+import { pruneOldScratch, scratchCommand, scratchTurnStart, scratchTurnWarning } from "./scratch"
+import { color, promptStyle } from "./theme"
+import { cleanSelection, writeClipboard } from "./clipboard"
+import { ArgumentHint, commandItem, Suggestions } from "./suggestions"
+import { Transcript } from "./transcript"
+import { scrollSetting, scrollTranscript } from "./scroll"
+import { TodoPanel } from "./todo-panel"
+import { PromptInput } from "./prompt/input"
+import { addHistory, HistoryCursor, loadHistory, pastesFor, searchHistory } from "./prompt/history"
+import { imagePath, MAX_IMAGE_BASE64, readClipboardImage, readImageFile, type PromptImage } from "./prompt/image"
+import { isLargePaste, offsetSlice, offsetWidth, pasteLabel, PromptParts, type DraftSnapshot, type ExpandedPrompt } from "./prompt/parts"
+import { editInEditor } from "./prompt/editor"
+import { TODO_WRITE, TodoWriteInput } from "../core/tools/todos"
+import { gapsLine } from "../core/loop/failures"
+import { stripEchoes } from "../core/loop/stop-gate"
+
+let abort: AbortController | undefined
+/** /save skips OSC52 above this: megabytes of escape sequence can stall the terminal. */
+const MAX_OSC52_CHARS = 100_000
+/** Bumped by /clear so a stream that is still unwinding never touches the new transcript. */
+let epoch = 0
+
+/** /clear and /new: stop any running turn and start a fresh session. */
+export async function clearTranscript(runtime: Runtime) {
+  epoch++
+  // A held turn's card belongs to the old session: answering it after epoch++ gives nothing back.
+  state.turnHold?.choose("cancel")
+  setState("queue", [])
+  abort?.abort()
+  // Desk runs first: cut as stopped, they start no new agent while their agents stop.
+  runtime.desk.stopAll()
+  runtime.subagents.stopAll()
+  await startSession(runtime, "clear")
+}
+
+function lineIndex(predicate: (line: Line) => boolean) {
+  for (let i = state.lines.length - 1; i >= 0; i--) if (predicate(state.lines[i]!)) return i
+  return -1
+}
+
+/**
+ * Compact the conversation (see core/compact.ts). Runs like a turn: esc stops it, /new
+ * discards it. On failure the history is left as is (or only pruned). "idle": the user has
+ * been away (idleCompact); it summarizes above `state.idleCompactMinTokens` rather than the
+ * auto threshold, and is recorded and counted as an auto compaction.
+ */
+export async function compact(runtime: Runtime, trigger: "auto" | "manual" | "idle", instructions?: string, projected?: number, force = false): Promise<boolean> {
+  if (state.history.length === 0) {
+    if (trigger === "manual") say("Chưa có hội thoại để nén.")
+    return true
+  }
+  const mine = epoch
+  const controller = new AbortController()
+  abort = controller
+  const limits = contextLimits()
+  setState({ streaming: true, compacting: true, activity: startActivity({ compacting: true }) })
+  try {
+    // The summary request must not carry what the user deleted: mask first (recorded once), and hand the
+    // compaction what would be sent. Blocks held then stay held in the part kept after compaction.
+    const masked = await redactHistory(state.history, runtime.redaction)
+    // /new or a stop while the store was read: the history and the session are no longer this one's.
+    if (epoch !== mine || controller.signal.aborted) return false
+    if (masked.record.length > 0) {
+      setState("history", masked.kept)
+      recordRedaction(masked.record)
+    }
+    const held = heldLine(masked.temporary)
+    if (held) pushLine(held)
+    const result = await compactHistory(masked.sent, {
+      // Auto: what the next request would hold, including the message being sent.
+      contextTokens: projected ?? state.contextTokens,
+      onSummarize: () =>
+        pushLine({
+          kind: "info",
+          text:
+            trigger === "auto"
+              ? "Context gần đầy: đang tóm tắt phần đầu hội thoại (dùng 1 request)…"
+              : trigger === "idle"
+                ? `Bạn vắng ${state.idleCompactMinutes} phút: đang tóm tắt phần đầu hội thoại để tin nhắn sau không phải gửi lại toàn bộ (dùng 1 request)…`
+                : "Đang tóm tắt hội thoại (dùng 1 request)…",
+        }),
+      limits,
+      // Forced after a context-overflow error: summarize even if the estimate is below the threshold.
+      manual: trigger === "manual" || force,
+      summarizeAbove: trigger === "idle" ? state.idleCompactMinTokens : undefined,
+      instructions,
+      summarize: async (head, extra) => {
+        // One request: <analysis> scratchpad then <summary> (Claude Code); lean when the head is huge.
+        const lean = tokensOf(head) > COMPACT_LEAN_TOKENS
+        const text = await summarizeConversation({
+          head,
+          prompt: compactPrompt(extra, lean ? "lean" : "full"),
+          skills: state.skills,
+          sticky: state.activeSkills,
+          registry: runtime.registry,
+          sessionId: currentSession().id,
+          memory: runtime.memory,
+          // Read leniently there: compaction never holds, and shares the turn's system prefix.
+          constraints: runtime.constraints,
+          serverInstructions: () => runtime.mcp.instructions(),
+          signal: controller.signal,
+        })
+        const summary = formatCompactSummary(text)
+        if (summary === undefined) throw new Error("Bản tóm tắt bị cắt giữa chừng; hội thoại giữ nguyên.")
+        return summary
+      },
+    })
+    if (epoch !== mine) return false
+    if (controller.signal.aborted) {
+      pushLine({ kind: "info", text: "Đã dừng nén; hội thoại giữ nguyên." })
+      return false
+    }
+    if (result.summary !== undefined || result.pruned > 0) {
+      // The clock reminder lived in the dropped turns: send it again next turn.
+      setState({ history: result.messages, contextTokens: result.after, contextEstimated: true, clock: undefined })
+      recordCompact({ trigger: trigger === "manual" ? "manual" : "auto", before: result.before, after: result.after, messages: result.messages })
+      pushLine({ kind: "compact", summary: result.summary, before: result.before, after: result.after, pruned: result.pruned })
+    }
+    if (result.error) {
+      pushLine({ kind: "error", text: `Không tóm tắt được hội thoại: ${result.error}` })
+      if (trigger !== "manual") {
+        setState("compactFailures", (n) => n + 1)
+        if (state.compactFailures >= MAX_AUTO_FAILURES) {
+          pushLine({ kind: "info", text: `Tự nén lỗi ${MAX_AUTO_FAILURES} lần liên tiếp nên đã tắt cho phiên này; gõ /compact để thử lại.` })
+        }
+      }
+    } else setState("compactFailures", 0)
+    // Still above the threshold: do not pay for another compaction until the context grows.
+    setState("compactFloor", limits && result.after >= limits.threshold ? result.after : undefined)
+  } finally {
+    if (epoch === mine) setState({ streaming: false, compacting: false, activity: undefined })
+    if (abort === controller) abort = undefined
+  }
+  return true
+}
+
+/** The turn being answered, so exit can wait for it to be saved. */
+let inflight: Promise<void> | undefined
+
+/** Idle compaction (core/idle-compact.ts): armed while nothing runs, at most once per idle spell. */
+const idleTimer = new IdleTimer()
+let idleSpent = false
+let armedMinutes = 0
+/** The session the timer and idleSpent belong to: another one (/resume, /clear) starts afresh. */
+let armedFor: string | undefined
+
+/** Tests fire the pending idle compaction at once instead of waiting minutes. */
+export function idleTimerForTests() {
+  return idleTimer
+}
+
+/** Keep the idle timer in step with the app: armed while idle with a conversation, else not. */
+function syncIdleTimer(runtime: Runtime) {
+  const session = currentSession().id
+  if (armedFor !== session) {
+    armedFor = session
+    idleSpent = false
+    idleTimer.disarm()
+  }
+  const idle = !state.streaming && !state.compacting && state.history.length > 0
+  if (!idle || idleSpent || state.autoCompactOff || state.idleCompactMinutes <= 0) return idleTimer.disarm()
+  // A new setting from /config takes effect at once.
+  if (!idleTimer.armed || armedMinutes !== state.idleCompactMinutes) {
+    armedMinutes = state.idleCompactMinutes
+    idleTimer.arm(armedMinutes * 60_000, () => void idleCompact(runtime))
+  }
+}
+
+/**
+ * The user has been away `idleCompactMinutes`: summarize a big conversation now, so the next
+ * message does not resend it all to a provider whose prompt cache has expired. Waits instead
+ * while something needs the user (a prompt, a dialog) or work is still running in the
+ * background; a conversation that is small, or too short to summarize, is left alone.
+ */
+async function idleCompact(runtime: Runtime) {
+  if (state.streaming || state.compacting || state.history.length === 0) return
+  if (state.autoCompactOff || state.compactFailures >= MAX_AUTO_FAILURES) return
+  const busy =
+    state.dialog || state.approval || state.question || state.deskApproval || inflight || state.queue.length > 0 || state.notices.length > 0
+  const working = Object.values(state.agents).some((a) => a.status === "running" || a.status === "queued")
+  // Not now: try again after another idle spell.
+  if (busy || working) return syncIdleTimer(runtime)
+  if ((state.contextTokens ?? tokensOf(state.history)) < state.idleCompactMinTokens) return
+  idleSpent = true
+  await compact(runtime, "idle")
+}
+
+/** A message to send: the text for the model, what the transcript shows, pasted images. */
+type Outgoing = {
+  text: string
+  display?: string
+  images?: PromptImage[]
+  notice?: boolean
+  desk?: DeskOptIn
+  /** The box's pills (pastes, images), to put back if the turn is held and then cancelled. */
+  saved?: Queued["saved"]
+  /** The background results this message carries, to queue again if it is held and then cancelled. */
+  noticeTexts?: string[]
+}
+
+/**
+ * Background subagent results go to the model on their own turn when nothing else is
+ * going on (Claude Code's task notifications). They wait while an answer runs, a prompt
+ * owns the keyboard or messages are queued, and after a failed turn until the user sends
+ * something (a 429 must not loop).
+ */
+export function deliverNotices(runtime: Runtime) {
+  if (state.notices.length === 0 || state.noticeHold || state.streaming || state.compacting) return
+  if (state.approval || state.question || state.deskApproval || inflight || state.queue.length > 0) return
+  const texts = [...state.notices]
+  setState("notices", [])
+  void send(runtime, { text: noticesMessage(texts), notice: true, noticeTexts: texts })
+}
+
+function send(runtime: Runtime, message: string | Outgoing) {
+  // Any turn (a typed message, a queued one, a background result) ends the idle wait.
+  idleTimer.disarm()
+  idleSpent = false
+  let msg: Outgoing = typeof message === "string" ? { text: message } : message
+  // Undelivered subagent results ride in front of what the user typed.
+  if (!msg.notice && state.notices.length > 0) {
+    msg = { ...msg, display: msg.display ?? msg.text, text: `${noticesMessage(state.notices)}\n\n${msg.text}`, noticeTexts: [...state.notices] }
+    setState("notices", [])
+  }
+  if (!msg.notice) setState("noticeHold", false)
+  const turn = (async () => {
+    // Files @-attached turns ago: their content goes once it adds up (resent every request).
+    const cleared = pruneAttachmentsForRequest(state.history, state.contextTokens)
+    if (cleared) {
+      setState({ history: cleared.messages, contextTokens: cleared.contextTokens, contextEstimated: true })
+      say(`Đã dọn nội dung ${cleared.pruned} file gắn ở các lượt cũ để tiết kiệm context.`, "info")
+    }
+    // Near the window: compact first, so this turn still fits.
+    const config = await loadConfig()
+    const projected =
+      (state.contextTokens ?? tokensOf(state.history)) + estimateTokens(msg.text) + (msg.images?.length ?? 0) * IMAGE_TOKENS
+    const auto = shouldAutoCompact({
+      contextTokens: projected,
+      limits: contextLimits(),
+      floor: state.compactFloor,
+      failures: state.compactFailures,
+      disabled: config.autoCompact === "off",
+    })
+    if (auto) await compact(runtime, "auto", undefined, projected)
+    const first = await turnWithHolds(runtime, msg, { recover: config.autoCompact !== "off" })
+    if (typeof first === "boolean") return first
+    return recoverOverflow(runtime, msg, first)
+  })()
+  const settled = turn.then(
+    (ok) => ok,
+    () => false,
+  )
+  const done = settled.then(() => {})
+  inflight = done
+  return settled.then((ok) => {
+    if (inflight === done) inflight = undefined
+    afterTurn(runtime, ok)
+  })
+}
+
+/**
+ * Sent after a turn that ran tools and then overflowed, once the conversation is compacted.
+ * A reminder block: harness text, never shown as something the user typed (transcript.ts).
+ */
+const CONTINUE_AFTER_OVERFLOW = `<${REMINDER_TAG}>
+Lượt trước bị ngắt vì hội thoại quá dài cho model; harness đã nén hội thoại. Tiếp tục yêu cầu gần nhất của người dùng từ chỗ đã làm được, không gọi lại tool đã có kết quả.
+</${REMINDER_TAG}>`
+
+/**
+ * The provider said the request does not fit (Claude Code's reactive compact, opencode's
+ * ContextOverflowError): compact even below the threshold, then try once more. A turn that
+ * failed before any tool ran is sent again as is; one whose tools already ran is kept and
+ * continued, so no tool runs twice.
+ */
+async function recoverOverflow(runtime: Runtime, msg: Outgoing, how: "resend" | "continue"): Promise<boolean> {
+  const mine = epoch
+  const size = tokensOf(state.history)
+  const finished = await compact(runtime, "auto", undefined, undefined, true)
+  if (!finished || epoch !== mine) return false
+  if (tokensOf(state.history) >= size) {
+    pushLine({ kind: "info", text: "Không nén được hội thoại để gửi lại: gõ /compact với hướng dẫn ngắn hơn, hoặc /new để bắt đầu phiên mới." })
+    return false
+  }
+  const again =
+    how === "resend"
+      ? await turnWithHolds(runtime, msg, { resend: true })
+      : await turnWithHolds(runtime, { text: CONTINUE_AFTER_OVERFLOW, notice: true }, {})
+  return again === true
+}
+
+let returnQueue: ((items: Queued[]) => void) | undefined
+/** Puts messages back into the box, ahead of its draft, without the "queued messages" flash. */
+let restoreInput: ((items: Queued[]) => void) | undefined
+
+/**
+ * A turn, and its card when it is held before sending (memory/binding: the profile or the constraints
+ * could not be read): try again, run without the failed sources (this turn and the sub-agents it
+ * starts only), or cancel. A retry after compacting goes through here too, so it gets the same card.
+ */
+async function turnWithHolds(runtime: Runtime, msg: Outgoing, mode: { recover?: boolean; resend?: boolean }): Promise<boolean | "resend" | "continue"> {
+  const mine = epoch
+  let waive: Waiver | undefined
+  let resend = mode.resend
+  for (;;) {
+    const result = await sendTurn(runtime, msg, { ...mode, resend, waive })
+    // Stopped while reading: nothing was sent, so it goes back like a cancel ("Đã dừng." is on screen).
+    if (result === "held-stopped") {
+      giveBack(msg)
+      return false
+    }
+    if (!(result instanceof TurnHeldError)) return result
+    if (epoch !== mine) return false
+    // Too large for the model: no choice would help (the constraints are never cut); the line says why.
+    if (result.hold.kind === "too-large") {
+      giveBack(msg)
+      return false
+    }
+    const hold = result.hold
+    const sources: BoundSource[] = []
+    if (hold.profile) sources.push("profile")
+    if (hold.constraints) sources.push("constraints")
+    const choice = await new Promise<HoldChoice>((resolve) =>
+      setState("turnHold", {
+        text: result.message,
+        waive: waiveLabel(sources),
+        choose: (c: HoldChoice) => {
+          setState("turnHold", undefined)
+          resolve(c)
+        },
+      }),
+    )
+    if (epoch !== mine) return false
+    if (choice === "cancel") {
+      giveBack(msg)
+      return false
+    }
+    // Only what failed is left out; a source that reads again next time is sent.
+    if (choice === "waive") waive = { profile: waive?.profile || !!hold.profile, constraints: waive?.constraints || !!hold.constraints }
+    // The question's line is on screen already.
+    resend = true
+  }
+}
+
+/**
+ * A held turn that will not be sent: its line leaves the screen (the model never saw it) and its words
+ * go back to the box once, ahead of what was typed meanwhile and of the draft. Background results it
+ * carried wait again for the next message.
+ */
+function giveBack(msg: Outgoing) {
+  if (!msg.notice) {
+    const at = lineIndex((l) => l.kind === "user" && l.text === (msg.display ?? msg.text))
+    if (at >= 0) setState("lines", (lines) => lines.filter((_, i) => i !== at))
+  }
+  if (msg.noticeTexts && msg.noticeTexts.length > 0) setState("notices", (n) => [...msg.noticeTexts!, ...n])
+  const items: Queued[] = msg.notice
+    ? []
+    : [{ text: msg.text, display: msg.display ?? msg.text, images: msg.images ?? [], saved: msg.saved ?? {}, ...(msg.desk ? { desk: msg.desk } : {}) }]
+  items.push(...state.queue)
+  setState("queue", [])
+  if (items.length > 0) restoreInput?.(items)
+}
+
+/**
+ * A turn ended. Messages typed meanwhile go next, one per turn; after a stop or an error
+ * they return to the input instead, to be checked before sending (Claude Code).
+ */
+function afterTurn(runtime: Runtime, ok: boolean) {
+  if (state.streaming) return
+  if (!ok) setState("noticeHold", true)
+  if (state.queue.length === 0) return deliverNotices(runtime)
+  if (!ok) {
+    const items = [...state.queue]
+    setState("queue", [])
+    return returnQueue?.(items)
+  }
+  const [next, ...rest] = state.queue
+  setState("queue", rest)
+  void send(runtime, next!)
+}
+
+/** The terminal side of the app (attention.ts), set while the app is mounted. */
+let attention: Attention | undefined
+
+/** How long a first x on a subagent panel row waits for the second one. */
+const STOP_WINDOW_MS = 2000
+
+/** Turns shorter than this end without a "✻ Xong sau …" line. */
+const DONE_LINE_MS = 5000
+/** How long streamed text is buffered before it reaches the transcript (one frame at 30 fps). */
+const FLUSH_MS = 32
+
+/**
+ * Feed the working row: any event is a sign of life and ends a retry wait; deltas and tool
+ * inputs estimate the output so far, and the provider's count replaces the estimate per step.
+ */
+function track(event: AgentEvent) {
+  if (!state.activity) return
+  setState(
+    produce((s) => {
+      const a = s.activity
+      if (!a) return
+      a.lastProgressAt = now()
+      if (event.type !== "retry") a.retry = undefined
+      switch (event.type) {
+        case "text-delta":
+          a.streamedOut += event.text.length / 4
+          break
+        case "tool-start":
+          a.toolsRunning++
+          a.streamedOut += (JSON.stringify(event.input ?? "")?.length ?? 0) / 4
+          break
+        case "tool-end":
+          a.toolsRunning = Math.max(0, a.toolsRunning - 1)
+          break
+        case "step-usage":
+          a.billedOut += event.outputTokens
+          a.streamedOut = 0
+          break
+        case "retry":
+          a.retry = { attempt: event.attempt, max: event.max, until: event.until, label: event.label }
+          break
+      }
+    }),
+  )
+}
+
+/** Files the message @-mentions, read for the model; images only for a model that sees them. */
+function mentionsOf(runtime: Runtime, text: string) {
+  if (!text.includes("@")) return undefined
+  const target = state.provider && state.model ? { provider: state.catalog[state.provider]!, model: state.model } : undefined
+  return attachMentions(text, {
+    workspace: runtime.workspace,
+    files: runtime.files,
+    history: state.history,
+    images: !!target?.provider && acceptsImageInput(target),
+  })
+}
+
+/**
+ * One turn; true when it ran to the end (not stopped, no error, no /clear meanwhile).
+ * `recover`: a context-overflow error returns how to retry after compacting (recoverOverflow)
+ * instead of false; a turn that failed before any tool ran is then left out of history.
+ * `resend`: the same message again, its line is already in the transcript.
+ */
+async function sendTurn(
+  runtime: Runtime,
+  msg: Outgoing,
+  mode: { recover?: boolean; resend?: boolean; waive?: Waiver } = {},
+): Promise<boolean | "resend" | "continue" | TurnHeldError | "held-stopped"> {
+  // A notification turn already has its "◆ Subagent nền …" lines.
+  if (!msg.notice && !mode.resend) pushLine({ kind: "user", text: msg.display ?? msg.text })
+  const userLine = msg.notice || mode.resend ? -1 : state.lines.length - 1
+  const mine = epoch
+  const live = () => epoch === mine
+  let failed = false
+  /** Held before sending (memory/binding): turnWithHolds shows the card. */
+  let held: TurnHeldError | undefined
+  /** Held, but the user had already stopped the turn while the sources were read: no card. */
+  let heldStopped = false
+  let overflow: "resend" | "continue" | undefined
+  // The request asked for ultradesk (keyword, /<playbook>) and the model started a run.
+  let deskStarted = false
+  /** The stop gate gave up: the turn ends without an answer (the done line says so). */
+  let unanswered = false
+  // Index of the assistant line currently receiving text; -1 after a tool call.
+  let current = -1
+  // Card blocks never show, not even while they stream (spec 007): one filter per assistant line.
+  let cards = cardStreamFilter()
+  /** The card this turn's answer ended with (the core checked it); named and noted when the turn is recorded. */
+  let cardDraft: CardDraft | undefined
+  let madeCard: Card | undefined
+  const edit = (index: number, fn: (line: any) => void) => {
+    if (live() && index >= 0) setState(produce((s) => fn(s.lines[index])))
+  }
+  // Text deltas are buffered and written once per frame (opencode batches its events the same
+  // way): one store write per token re-laid-out the answer for every token. Any other event
+  // flushes first, so lines keep their order.
+  let pending = ""
+  let flushTimer: ReturnType<typeof setTimeout> | undefined
+  const flush = () => {
+    if (flushTimer) clearTimeout(flushTimer)
+    flushTimer = undefined
+    const text = pending
+    pending = ""
+    if (!text || !live()) return
+    track({ type: "text-delta", text })
+    if (current < 0) {
+      pushLine({ kind: "assistant", text: "", done: false })
+      current = state.lines.length - 1
+    }
+    edit(current, (l) => (l.text += text))
+  }
+  const closeText = () => {
+    pending += cards.end()
+    cards = cardStreamFilter()
+    flush()
+    // Echoed todo status lines leave the screen as they leave history (loop/stop-gate.ts).
+    edit(current, (l) => {
+      l.text = stripEchoes(l.text)
+      l.done = true
+    })
+    current = -1
+  }
+
+  // todo_write inputs by call id; the panel updates only once a call is accepted.
+  const todoCalls = new Map<string, unknown>()
+
+  const controller = new AbortController()
+  abort = controller
+  setState({ streaming: true, activity: startActivity() })
+  // The temp folder is made on the first turn (no empty folder for a session that never
+  // chats), and again after the OS emptied the temp dir; its size is measured now and then.
+  await scratchTurnStart(runtime)
+  try {
+    // @-mentions in what the user typed (not in pasted text: code there is full of "@").
+    const attached = msg.notice ? undefined : await mentionsOf(runtime, msg.display ?? msg.text)
+    if (attached && attached.files.length > 0) edit(userLine, (l) => (l.files = attached.files))
+    if (!live() || controller.signal.aborted) return false
+    // Desk runs are allowed by what the user did (keyword, /desk on, /<playbook>), never by a notice.
+    const optIn: DeskOptIn | undefined = msg.notice || PLAYBOOKS.length === 0 ? undefined : (msg.desk ?? (state.deskMode ? "session" : undefined))
+    runtime.deskOptIn = optIn
+    // Sub-agents started in this turn take the same choice (SubagentManager reads it at start).
+    runtime.turnWaiver = mode.waive
+    // Cards follow the notebook's switch in /config, read for each turn (spec 007).
+    const cardsOn = runtime.memory.id === "notebook" && cardsSwitchOn(await loadConfig())
+    const turn = runAgent({
+      history: state.history,
+      input: msg.text,
+      cards: cardsOn,
+      cardOutcomes: cardOutcomes(),
+      ...(optIn ? { preload: [DESK_RUN], desk: deskReminder(optIn, PLAYBOOKS) } : {}),
+      images: [...(msg.images ?? []), ...(attached?.images ?? [])],
+      attachments: attached?.parts,
+      skills: state.skills,
+      sticky: state.activeSkills,
+      prevClock: state.clock,
+      registry: runtime.registry,
+      signal: controller.signal,
+      sessionId: currentSession().id,
+      // A notification is harness text, not the user's: no user-prompt hooks on it.
+      hooks: msg.notice ? undefined : runtime.hooks,
+      memory: runtime.memory,
+      constraints: runtime.constraints,
+      waive: mode.waive,
+      redaction: runtime.redaction,
+      serverInstructions: () => runtime.mcp.instructions(),
+      compactAt: state.autoCompactOff ? undefined : contextLimits()?.threshold,
+    })
+    for await (const event of turn) {
+      if (!live()) continue
+      if (event.type === "text-delta") {
+        pending += cards.push(event.text)
+        flushTimer ??= setTimeout(flush, FLUSH_MS)
+        continue
+      }
+      flush()
+      track(event)
+      switch (event.type) {
+        case "tool-start":
+          closeText()
+          pushLine({ kind: "tool", callId: event.callId, name: event.name, label: event.label, status: "running", step: event.step })
+          if (event.name === TODO_WRITE) todoCalls.set(event.callId, event.input)
+          if (event.name === DESK_RUN) deskStarted = true
+          break
+        case "tool-end":
+          edit(
+            lineIndex((l) => l.kind === "tool" && l.callId === event.callId),
+            (l) => Object.assign(l, { status: event.ok ? "ok" : "error", output: event.output, durationMs: event.durationMs }),
+          )
+          if (event.ok && event.chart) {
+            pushLine({ kind: "chart", data: event.chart })
+            currentSession().noteChart(event.callId, event.chart)
+          }
+          if (event.ok && todoCalls.has(event.callId)) {
+            const parsed = TodoWriteInput.safeParse(todoCalls.get(event.callId))
+            if (parsed.success) setState("liveTodos", parsed.data.todos)
+          }
+          break
+        case "card":
+          cardDraft = event.card
+          break
+        case "notice":
+          pushLine({ kind: "info", text: event.text })
+          break
+        case "memory-redaction": {
+          // Masks the store confirmed replace the history for good; held ones were only in what was sent.
+          if (event.record.length > 0) {
+            setState("history", event.kept)
+            recordRedaction(event.record)
+          }
+          const held = heldLine(event.temporary)
+          if (held) pushLine(held)
+          break
+        }
+        case "step-usage":
+          // Live during a long tool loop: each step's prompt plus its answer (opencode).
+          if (event.inputTokens > 0) setState({ contextTokens: event.inputTokens + event.outputTokens, contextEstimated: false })
+          break
+        case "error":
+          failed = true
+          pushLine({ kind: "error", text: event.message })
+          if (isContextOverflow(event.message)) {
+            if (mode.recover) {
+              overflow = "resend"
+              pushLine({ kind: "info", text: "Hội thoại quá dài cho model: đang nén rồi thử lại một lần." })
+            } else pushLine({ kind: "info", text: "Hội thoại có thể đã quá dài cho model này: gõ /compact để nén rồi hỏi lại." })
+          }
+          break
+        case "done":
+          // Overflowed before any tool ran: nothing worth keeping, the message is sent again.
+          if (overflow && !event.messages.some((m) => m.role === "tool")) break
+          if (overflow) overflow = "continue"
+          if (event.usage) setState({ contextTokens: event.usage.contextTokens, contextEstimated: event.usage.estimated })
+          if (event.messages.length > 0) {
+            setState("history", (history) => [...history, ...event.messages])
+            // Before the turn is queued: the card is written with it, named after its number.
+            if (cardDraft) madeCard = takeCard(cardDraft)
+            cardDraft = undefined
+            recordTurn(event.messages, event.usage?.contextTokens, { recoveries: event.recoveries, unanswered: event.unanswered, retiredTodos: event.retiredTodos, dataGaps: event.dataGaps, ungrounded: event.ungrounded })
+          }
+          if (event.dataGaps) {
+            closeText()
+            pushLine({ kind: "info", text: gapsLine(event.dataGaps) })
+          }
+          if (event.clock) setState("clock", event.clock)
+          if (event.unanswered) unanswered = true
+          break
+      }
+    }
+    flush()
+    if (live() && madeCard) {
+      closeText()
+      // Never takes the keys by itself: the user's next keystroke belongs to the prompt (an "x" there must not
+      // dismiss the card). /goiy gives it the keys.
+      pushLine({ kind: "card", card: madeCard, state: "pending" })
+    }
+    madeCard = undefined
+    if (live() && controller.signal.aborted) pushLine({ kind: "info", text: "Đã dừng." })
+  } catch (error) {
+    // Setup problems (no provider, model or key) are thrown before the turn starts.
+    failed = true
+    flush()
+    if (error instanceof TurnHeldError && error.role === "main" && controller.signal.aborted) {
+      heldStopped = true
+      if (live()) pushLine({ kind: "info", text: "Đã dừng." })
+    } else if (error instanceof TurnHeldError && error.role === "main") {
+      held = error
+      // Unreadable: the card says it. Too large: no card, this line says it.
+      if (live() && error.hold.kind === "too-large") pushLine({ kind: "error", text: error.message })
+    } else if (live()) pushLine({ kind: "error", text: describeError(error) })
+  } finally {
+    runtime.turnWaiver = undefined
+    // After /clear the buffer belongs to nothing; never let its timer fire into a later turn.
+    clearTimeout(flushTimer)
+    if (!live()) pending = ""
+    const worked = state.activity ? activeMs(state.activity, now()) : 0
+    if (live()) {
+      closeText()
+      // The user asked for ultradesk in this message but the model ran no playbook: say so,
+      // or nothing on screen tells the run never started (/desk on has its mode-line pill).
+      if (msg.desk && msg.desk !== "session" && !deskStarted && !failed && !controller.signal.aborted && PLAYBOOKS.length > 0) {
+        pushLine({ kind: "info", text: deskSkippedNote(msg.desk, PLAYBOOKS) })
+      }
+      // Someone looking at another window hears that the answer (or the error) is in.
+      // A held turn says why it waits (the last line on screen is the previous answer).
+      if (held && !msg.notice) attention?.attention("error", held.message.replace(/\s+/g, " ").trim().slice(0, 120))
+      else if (!controller.signal.aborted && !msg.notice && !overflow) {
+        const last = state.lines.findLast((l) => l.kind === "assistant" || l.kind === "error")
+        const text = last && "text" in last ? last.text.replace(/\s+/g, " ").trim().slice(0, 120) : ""
+        attention?.attention(failed ? "error" : "done", failed ? `Lỗi: ${text}` : text || "Đã trả lời xong")
+      }
+      // A long turn that ran to the end says how long it took (Claude Code's "Worked for").
+      if (!failed && !controller.signal.aborted && (worked >= DONE_LINE_MS || unanswered)) {
+        pushLine({ kind: "done", ms: worked, background: backgroundRunning() || undefined, ...(unanswered ? { unanswered } : {}) })
+      }
+      // The temp folder passed a size step: said under this answer, once per step.
+      const scratchWarning = await scratchTurnWarning(runtime)
+      if (scratchWarning && live()) pushLine({ kind: "warning", text: scratchWarning })
+      // Tools still marked running never got a result (aborted turn).
+      setState(
+        produce((s) => {
+          for (const l of s.lines) if (l.kind === "tool" && l.status === "running") Object.assign(l, { status: "error", output: "Đã dừng." })
+        }),
+      )
+    }
+    // History now holds the accepted calls (or, after an abort, none of this turn's).
+    setState("liveTodos", undefined)
+    setState({ streaming: false, activity: undefined })
+    if (abort === controller) abort = undefined
+  }
+  if (heldStopped && live()) return "held-stopped"
+  if (held && live()) return held
+  if (overflow && live() && !controller.signal.aborted) return overflow
+  return live() && !failed && !controller.signal.aborted
+}
+
+export function App(props: {
+  runtime: Runtime
+  resume?: string
+  /** Tests replace the final step (destroy the renderer, end the process). */
+  onExit?: () => void
+}) {
+  const renderer = useRenderer()
+  const dims = useTerminalDimensions()
+  const [draft, setDraft] = createSignal("")
+  const [selected, setSelected] = createSignal(0)
+  /**
+   * Who owns the keyboard instead of the prompt: an approval or a question from the model.
+   * Every rule that hides the prompt, closes dialogs or reroutes Esc goes through this.
+   */
+  const owner = () => (state.yoloWarning ? "yolo" : undefined) ?? state.approval ?? state.question ?? state.folderTrust ?? state.autoOptIn ?? state.deskApproval ?? state.turnHold
+  /** The subagent panel's rows (ticks once a second so finished agents leave). */
+  const panelTick = useNow(1000)
+  const panelList = createMemo(() => panelAgents(panelTick()))
+  // The selected row stays on the list as it changes; an empty panel gives the keys back.
+  createEffect(() => {
+    const at = state.panelFocus
+    if (at === undefined) return
+    const n = panelList().length
+    if (n === 0 || owner() || state.dialog) setState("panelFocus", undefined)
+    else if (at >= n) setState("panelFocus", n - 1)
+  })
+  /** Draft at which Esc closed the "/" list; it reopens as soon as the draft changes. */
+  const [dismissedFor, setDismissedFor] = createSignal<string>()
+  let input: TextareaRenderable | undefined
+
+  /**
+   * Leave: stop the running answer and wait — under one 2 s deadline — for it to be saved,
+   * the session-end hook and MCP servers to stop (no orphaned child process), then restore
+   * the terminal.
+   */
+  const exit = async () => {
+    if (state.exiting) return
+    if (props.onExit) return props.onExit()
+    setState("exiting", true)
+    abort?.abort()
+    props.runtime.desk.stopAll()
+    props.runtime.subagents.stopAll()
+    const deadline = Date.now() + 2000
+    // Said after the terminal is restored; set when the session's writes did not all land.
+    let unsaved: string | undefined
+    let settled = false
+    await Promise.race([
+      Promise.all([
+        // Waits for the aborted answer too: it queues its turn when it ends, so the wait for
+        // writes starts after it.
+        (inflight ?? Promise.resolve()).then(async () => {
+          unsaved = await settleForExit(Math.max(100, deadline - Date.now() - 50))
+          settled = true
+        }),
+        props.runtime.subagents.flush(),
+        props.runtime.desk.flush(),
+        props.runtime.hooks.emit({ type: "session-end", sessionId: currentSession().id }),
+        props.runtime.mcp.stop(),
+      ]),
+      new Promise((r) => setTimeout(r, 2000)),
+    ])
+    // The wait ran out before the writes were looked at (an aborted answer slow to end): say so only
+    // when the session does have something waiting.
+    if (!settled) unsaved = exitTimeoutLine(currentSession())
+    // The notebook's store stays locked on Windows while open; session-end also fires on /clear, so not there.
+    closeMemory(props.runtime)
+    attention?.clear()
+    renderer.destroy()
+    if (unsaved) process.stderr.write(unsaved + "\n")
+    process.exit(0)
+  }
+  onExitRequest(() => void exit())
+  onCleanup(() => onExitRequest(undefined))
+
+  /**
+   * Copy what the mouse highlighted (opencode's copy-on-select); true when something was
+   * copied. `keep` leaves the highlight in place.
+   */
+  function copySelection(keep = false) {
+    const text = cleanSelection(renderer.getSelection()?.getSelectedText() ?? "")
+    if (!keep) renderer.clearSelection()
+    if (!text) return false
+    writeClipboard(text, (t) => renderer.copyToClipboardOSC52(t))
+    flash(`Đã copy ${[...text].length} ký tự`, 2000, "success")
+    return true
+  }
+  // A finished drag copies at once — no keystroke needed, like Claude Code in a terminal.
+  const onSelection = () => {
+    // Text highlighted inside the prompt stays highlighted, so typing or Backspace
+    // replaces it as in a document editor.
+    const selected = renderer.getSelection()?.selectedRenderables ?? []
+    copySelection(selected.length > 0 && selected.every((r) => r === input))
+    // A click/drag moves focus to what was clicked; typing must still go to the prompt.
+    if (!state.dialog && !owner()) input?.focus()
+  }
+  renderer.on("selection", onSelection)
+  onCleanup(() => renderer.off("selection", onSelection))
+
+  const offMcp = props.runtime.mcp.onChange((status) => {
+    announceMcp(state.mcp, status)
+    setState("mcp", status)
+  })
+  onCleanup(() => offMcp())
+
+  // Tools with side effects ask first. A pending question takes over the keyboard: any open
+  // dialog closes so its keys cannot also act on the prompt.
+  props.runtime.permissions.interactive = true
+  // Questions from the model (ask_user) take over the same way; approval goes first.
+  props.runtime.questions.interactive = true
+  // The terminal hears what the agent does: progress ring, program status, notifications.
+  attention = terminalAttention(renderer, () => state.terminalNotify)
+  const onFocus = () => attention?.focus(true)
+  const onBlur = () => attention?.focus(false)
+  renderer.on("focus", onFocus)
+  renderer.on("blur", onBlur)
+  createEffect(() => attention?.setBusy(state.approval ? "permission" : state.question ? "question" : state.streaming ? "working" : "idle"))
+  onCleanup(() => {
+    renderer.off("focus", onFocus)
+    renderer.off("blur", onBlur)
+    attention?.clear()
+    attention = undefined
+  })
+  const offQuestion = props.runtime.questions.onChange((head) => {
+    if (head) attention?.attention("question", "Model đang hỏi bạn một câu")
+    setState("question", head)
+    if (!head) deliverNotices(props.runtime)
+  })
+  const offPending = props.runtime.permissions.onPending((pending) => setState("approvals", pending))
+  const subagents = props.runtime.subagents
+  // Runs of a session no longer shown (/clear, /new) still report while they stop: ignore them.
+  const offAgents = subagents.onChange((view) => {
+    if (view.sessionId === currentSession().id) setState("agents", view.id, reconcile(view))
+  })
+  const offSlots = subagents.limiter.onChange(() => setState("agentSlots", subagents.limiter.stats()))
+  const offCharts = subagents.onChart((chart, view, callId) => {
+    if (view.sessionId !== currentSession().id) return
+    pushLine({ kind: "chart", data: chart })
+    currentSession().noteChart(callId, chart)
+  })
+  // A background subagent finished: a line now, its result to the model when idle.
+  const offFinished = subagents.onFinished((view) => {
+    if (view.sessionId !== currentSession().id) return
+    const stats = `${view.toolCount} tool · ${fmtTokens(view.usage.input + view.usage.output)} token · ${fmtSeconds((view.endedAt ?? Date.now()) - (view.startedAt ?? view.createdAt))}`
+    const status = { completed: "xong", failed: "lỗi", stopped: "đã dừng" }[view.status as string] ?? view.status
+    pushLine({ kind: "agent-notice", agentId: view.id, status, text: `Subagent nền ${view.type} (${view.description}) · ${status} · ${stats}${view.error ? ` · ${view.error}` : ""}` })
+    setState("notices", (n) => [...n, notificationText(view)])
+    deliverNotices(props.runtime)
+  })
+  const desk = props.runtime.desk
+  const offDesk = desk.onChange((view) => {
+    if (view.sessionId === currentSession().id) setState("deskRuns", view.id, reconcile(view))
+  })
+  // A desk run finished: one line and one notice for the whole run, never one per agent.
+  const offDeskDone = desk.onFinished((view) => {
+    if (view.sessionId !== currentSession().id) return
+    const status = DESK_STATUS[view.status]
+    pushLine({ kind: "agent-notice", agentId: view.id, status, text: `Ultradesk ${view.playbook} (${view.id}) · ${status} · ${runStats(view)}${view.error ? ` · ${view.error}` : ""}` })
+    setState("notices", (n) => [...n, `${deskNotification(view)}\n${DESK_NOTE}`])
+    deliverNotices(props.runtime)
+  })
+  const offDeskAsk = props.runtime.deskApprovals.onChange((head) => {
+    if (head) attention?.attention("question", `Ultradesk cần bạn duyệt: ${head.playbook}`)
+    setState("deskApproval", head)
+    if (!head) deliverNotices(props.runtime)
+  })
+  desk.onPersistError = (error) => pushLine({ kind: "error", text: `Không lưu được journal của ultradesk: ${error instanceof Error ? error.message : String(error)}` })
+  onCleanup(() => {
+    offDesk()
+    offDeskDone()
+    offDeskAsk()
+  })
+  subagents.onPersistError = (error) =>
+    pushLine({ kind: "error", text: `Không lưu được transcript của subagent: ${error instanceof Error ? error.message : String(error)}` })
+  onCleanup(() => {
+    offPending()
+    offAgents()
+    offSlots()
+    offCharts()
+    offFinished()
+  })
+  setState("permissionMode", props.runtime.permissions.mode)
+  const offAuto = props.runtime.auto.onChange(() => setState("autoPausedUntil", props.runtime.auto.paused()))
+  const offAutoBlocks = watchAutoBlocks(props.runtime.auto, notify)
+  onCleanup(() => {
+    offAuto()
+    offAutoBlocks()
+  })
+  const offMode = props.runtime.permissions.onModeChange((mode) => setState("permissionMode", mode))
+  onCleanup(() => offMode())
+  createEffect(
+    on(
+      () => [Boolean(state.approval || state.question), Boolean(state.activity)] as const,
+      ([waiting, active]) => {
+        const a = state.activity
+        if (!active || !a) return
+        if (waiting && a.pausedAt === undefined) setState("activity", "pausedAt", now())
+        else if (!waiting && a.pausedAt !== undefined) setState("activity", { pausedMs: a.pausedMs + (now() - a.pausedAt), pausedAt: undefined })
+      },
+    ),
+  )
+  const offApproval = props.runtime.permissions.onChange((head) => {
+    if (head) attention?.attention("approval", `Cần bạn duyệt: ${truncate(head.label, 80)}`)
+    setState("approval", head)
+    if (!head) queueMicrotask(() => deliverNotices(props.runtime))
+  })
+  onCleanup(() => {
+    offApproval()
+    offQuestion()
+    props.runtime.questions.interactive = false
+    props.runtime.questions.cancelAll()
+    props.runtime.permissions.interactive = false
+    props.runtime.permissions.denyAll()
+  })
+
+  onMount(async () => {
+    void props.runtime.mcp.start()
+    // The folder's own skills/agents wait for the user to trust it (src/core/folder-trust.ts).
+    const folder = props.runtime.mcp.cwd
+    const extras = await projectExtras(folder)
+    const allowed = !extras || (await new FolderTrust().isTrusted(folder))
+    setState({ projectAllowed: allowed, folderTrust: allowed ? undefined : extras })
+    const [config, skillSet, catalog, modelPrefs] = await Promise.all([
+      loadConfig(),
+      loadSkills(skillRoots(folder, { project: allowed })),
+      loadCatalog(),
+      loadModelPrefs(),
+    ])
+    const connected = await connectedProviders()
+    // A key from an env var counts as connected even before /connect is used.
+    setState({
+      provider: config.provider ?? connected[0],
+      model: config.model,
+      skills: skillSet.skills,
+      skillProblems: skillSet.problems,
+      catalog,
+      connected,
+      compactCap: config.compactWindow,
+      compactPercent: clampPercent(config.autoCompactPercent),
+      tips: config.ui?.tips !== false,
+      askEffort: config.ui?.askEffort !== false,
+      terminalNotify: config.ui?.terminalNotify !== false,
+      scroll: scrollSetting(config.ui),
+      autoCompactOff: config.autoCompact === "off",
+      // The raw setting: "Tự nén hội thoại" off is state.autoCompactOff, which the timer follows.
+      idleCompactMinutes: idleCompactSettings({ idleCompact: config.idleCompact }).minutes,
+      idleCompactMinTokens: idleCompactSettings({ idleCompact: config.idleCompact }).minTokens,
+      autoAcknowledged: config.permissions?.autoAcknowledged === true,
+      modelPrefs,
+      deskKeywordOn: deskSettings(config).keyword,
+      deskMode: deskSettings(config).alwaysOn,
+      effort: isEffort(config.effort) ? config.effort : undefined,
+    })
+    void announceUpdate(config)
+    // Set to open in ▸▸ auto without ever having said yes (config or /config): ask now.
+    if (config.permissions?.defaultMode === "auto" && !state.autoAcknowledged) setState("autoOptIn", { from: props.runtime.permissions.mode })
+    attachSubagents(props.runtime)
+    await reloadAgents(props.runtime)
+    if (state.agentProblems.length > 0) {
+      pushLine({ kind: "error", text: `${state.agentProblems.length} file subagent bị lỗi và không được nạp. Xem /agents.` })
+    }
+    if (config.subagents?.maxConcurrent) props.runtime.subagents.setMax(config.subagents.maxConcurrent)
+    setState("agentSlots", props.runtime.subagents.limiter.stats())
+    if (props.resume) await resumeFromArgs(props.runtime, props.resume)
+    else await props.runtime.hooks.emit({ type: "session-start", sessionId: currentSession().id, source: "startup" })
+    // After the session is known: a resumed one keeps its temp folder however old it is.
+    void pruneOldScratch(props.runtime)
+    if (skillSet.problems.length > 0) {
+      pushLine({ kind: "error", text: `${skillSet.problems.length} skill bị lỗi và không được nạp. Xem /skills.` })
+    }
+    // A config still naming the removed legacy memory: written back as the notebook and said once (spec 007).
+    const moved = await migrateLegacyMemory(props.runtime.home).catch(() => undefined)
+    if (moved) pushLine({ kind: "info", text: moved })
+    // A notebook that did not open says why at once (chat still works); it is also in /config and /memory.
+    if (props.runtime.memory.id === "notebook") {
+      for (const problem of props.runtime.memory.problems?.() ?? []) pushLine({ kind: "error", text: problem })
+    }
+  })
+
+  /** MCP prompts as `/server:prompt` commands, from every connected server. */
+  const promptCommands = createMemo<(CommandInfo & { server: string; prompt: string })[]>(() =>
+    state.mcp.flatMap((s) =>
+      s.state === "connected"
+        ? s.prompts.map((p) => ({
+            name: `${s.name}:${p.name}`,
+            args: promptUsage(p.arguments) || undefined,
+            argsRequired: p.arguments.some((a) => a.required),
+            description: p.description?.split("\n")[0] ?? `Prompt của MCP server ${s.name}`,
+            server: s.name,
+            prompt: p.name,
+          }))
+        : [],
+    ),
+  )
+
+  /** /<playbook>: ask the model to run that playbook for the rest of the line (an opt-in). */
+  const playbookCommands: CommandInfo[] = PLAYBOOKS.map((p) => ({ name: p.meta.name, args: "<yêu cầu>", argsRequired: true, description: `Ultradesk: ${p.meta.description.split("\n")[0]}` }))
+  const allCommands = createMemo<CommandInfo[]>(() => [...withPlaybooks(COMMANDS, playbookCommands), ...promptCommands()])
+
+  /**
+   * The "/" list, Claude Code style: open while the draft is "/" + a command name (no
+   * space yet), ranked (exact, prefix, substring, description), and closed by Esc until
+   * the draft changes.
+   */
+  const suggestions = createMemo(() => {
+    const d = draft()
+    if (!d.startsWith("/") || /\s/.test(d) || d === dismissedFor()) return []
+    return rank(allCommands(), d.slice(1), (c) => c.name, (c) => c.description)
+  })
+  const commandItems = createMemo(() => suggestions().map(commandItem))
+  const allCommandItems = createMemo(() => allCommands().map(commandItem))
+
+  /**
+   * The `@` list (Claude Code, opencode): open while the word before the cursor starts with
+   * `@`, files and folders of the workspace ranked against what follows, closed by Esc until
+   * the draft changes.
+   */
+  const [cursor, setCursor] = createSignal(0)
+  const fileIndex = new FileIndex(props.runtime.workspace.primary, props.runtime.workspace.env())
+  const [indexed, setIndexed] = createSignal(0)
+  const mention = createMemo(() => {
+    const d = draft()
+    if (d.startsWith("/") || d === dismissedFor()) return undefined
+    const before = offsetSlice(d, 0, cursor())
+    const m = /(^|\s)@("?)([^\s"]*)$/.exec(before)
+    if (!m) return undefined
+    return { query: m[3]!, start: offsetWidth(before) - offsetWidth(`@${m[2]}${m[3]}`), end: cursor() }
+  })
+  // Opening the list (re)builds a stale index in the background; the list fills in when it ends.
+  createEffect(
+    on(
+      () => mention() !== undefined,
+      (open) => {
+        if (open) void fileIndex.refresh().then((rebuilt) => rebuilt && setIndexed((n) => n + 1))
+      },
+    ),
+  )
+  const fileMatches = createMemo(() => {
+    const m = mention()
+    indexed()
+    return m ? matchPaths(fileIndex.current(), m.query, 50) : []
+  })
+  // Nothing matches: maybe the file was made a moment ago. Look again, once per query and at
+  // most once a second (an "@FPT" that is no file must not rescan the folder on every key).
+  let missed: string | undefined
+  createEffect(() => {
+    const m = mention()
+    if (!m || fileMatches().length > 0 || m.query === missed) return
+    missed = m.query
+    void fileIndex.refreshAfter(INDEX_MISS_MS).then((rebuilt) => rebuilt && setIndexed((n) => n + 1))
+  })
+  const fileItems = createMemo(() => fileMatches().map((p) => ({ label: `@${p.rel}`, description: p.dir ? "thư mục" : "" })))
+  const fileNote = () => (props.runtime.workspace.fallbackReason ? `tìm trong ${props.runtime.workspace.primary} (mở OpenTrading ở ${props.runtime.workspace.fallbackReason})` : undefined)
+
+  /**
+   * Put the highlighted path in place of the `@word`: a pill (one Backspace deletes it). Tab
+   * on a folder opens it instead (`@dir/`, the list goes on inside it), as in opencode.
+   */
+  function pickFile(open: boolean) {
+    const m = mention()
+    const p = fileMatches()[selected()]
+    if (!m || !p || !input) return
+    input.setSelection(m.start, m.end)
+    if (open && p.dir) {
+      input.deleteSelection()
+      input.insertText(`@${p.rel}`)
+      return
+    }
+    parts.insert({ kind: "file", mention: mentionText(p.rel) })
+  }
+
+  /** After "/name " (with the space): the arguments the command takes, shown under the list's place. */
+  const argHint = createMemo(() => {
+    const m = /^\/(\S+) $/.exec(draft())
+    if (!m) return undefined
+    const c = allCommands().find((x) => x.name.toLowerCase() === m[1]!.toLowerCase())
+    return c?.args ? c : undefined
+  })
+
+  /** `/mcp enable|disable|reconnect <name>` without opening the panel (as in Claude Code). */
+  /** `/watchlist [tên]` opens the panel; `new|add|rm|rename|del …` edit the personal lists. */
+  async function watchlistCommand(args: string) {
+    const [sub = "", ...rest] = args.split(/\s+/).filter(Boolean)
+    const home = props.runtime.home
+    const usage = "Dùng: /watchlist new <tên> · add <tên> <mã…> · rm <tên> <mã…> · rename <tên> <tên mới> · del <tên>"
+    try {
+      switch (sub.toLowerCase()) {
+        case "new":
+          if (!rest[0]) return pushLine({ kind: "error", text: usage })
+          return say(await watchlistOps.create(home, rest[0]), "success")
+        case "add":
+        case "rm":
+          if (!rest[0] || rest.length < 2) return pushLine({ kind: "error", text: usage })
+          return say(await (sub.toLowerCase() === "add" ? watchlistOps.add : watchlistOps.remove)(home, rest[0], rest.slice(1)), "success")
+        case "rename":
+          if (rest.length < 2) return pushLine({ kind: "error", text: usage })
+          return say(await watchlistOps.rename(home, rest[0]!, rest[1]!), "success")
+        case "del":
+          if (!rest[0]) return pushLine({ kind: "error", text: usage })
+          return say(await watchlistOps.delete(home, rest[0]), "success")
+        default:
+          focusWatchlist(sub || undefined)
+          return setState("dialog", "watchlist")
+      }
+    } catch (error) {
+      say(error instanceof Error ? error.message : String(error), "error")
+    }
+  }
+
+  /** The conversation as Markdown, or undefined (with the reason shown) when there is none yet. */
+  async function transcriptOrSay() {
+    if (state.streaming) return void say("Đang trả lời; chờ xong rồi lưu hội thoại.", "warning")
+    const transcript = await transcriptOfCurrent(props.runtime)
+    if (!transcript) say("Chưa có lượt nào để lưu.")
+    // Turns still unsaved are missing from what was read back: say so next to the result.
+    else if (transcript.unsaved) say(`${transcript.unsaved} Bản lưu thiếu phần đó.`, "warning", 8000)
+    return transcript
+  }
+
+  /** `/save`: the whole conversation to the clipboard, like selecting everything and copying. */
+  async function saveCommand() {
+    try {
+      const transcript = await transcriptOrSay()
+      if (!transcript) return
+      const { text } = transcript
+      const sent = writeClipboard(text, (t) => renderer.copyToClipboardOSC52(t), { maxOsc52: MAX_OSC52_CHARS, timeoutMs: 15_000 })
+      const size = `${transcript.turns} lượt, ${[...text].length} ký tự`
+      if (await sent.native) return say(`Đã copy toàn bộ hội thoại vào clipboard (${size}).`, "success")
+      if (sent.osc52) return say(`Đã gửi hội thoại cho terminal copy (OSC52, ${size}); nếu dán không ra, dùng /export.`, "info", 8000)
+      say("Không copy được vào clipboard. Dùng /export để lưu ra file.", "error")
+    } catch (error) {
+      say(`Không lưu được hội thoại: ${error instanceof Error ? error.message : String(error)}`, "error")
+    }
+  }
+
+  /** `/export [đường dẫn] [--force]`: the conversation as a Markdown file. */
+  async function exportCommand(args: string) {
+    try {
+      const transcript = await transcriptOrSay()
+      if (!transcript) return
+      const { file, overwrite } = resolveExportPath(args, { cwd: process.cwd(), id: transcript.id })
+      await writeExport(file, transcript.text, { overwrite })
+      pushLine({ kind: "info", text: `✓ Đã lưu hội thoại (${transcript.turns} lượt): ${file}` })
+    } catch (error) {
+      pushLine({ kind: "error", text: `Không xuất được hội thoại: ${error instanceof Error ? error.message : String(error)}` })
+    }
+  }
+
+  /** `/add-dir [thư mục] [--luu]`: add a workspace folder for this session (and keep it with --luu). */
+  async function addDirCommand(args: string) {
+    const workspace = props.runtime.workspace
+    const keep = /(^|\s)--luu$/.test(args)
+    const raw = args.replace(/(^|\s)--luu$/, "").trim()
+    if (!raw) {
+      return pushLine({
+        kind: "info",
+        text: `Workspace: ${workspace.roots().join(" · ")}${workspace.fallbackReason ? ` (mở ở ${workspace.fallbackReason} nên dùng thư mục riêng)` : ""}. Thêm thư mục: /add-dir <đường dẫn> [--luu]`,
+      })
+    }
+    const added = workspace.add(raw)
+    if ("error" in added) return say(added.error, "error")
+    if (keep) {
+      try {
+        await saveConfig((config) => ({ workspace: { ...config.workspace, dirs: [...new Set([...(config.workspace?.dirs ?? []), added.dir])] } }))
+      } catch (error) {
+        return say(`Đã thêm ${added.dir} cho phiên này nhưng không lưu được cấu hình: ${error instanceof Error ? error.message : String(error)}`, "error")
+      }
+    }
+    say(`Đã thêm ${added.dir} vào workspace${keep ? " (đã lưu cho các phiên sau)" : " cho phiên này (thêm --luu để giữ cho các phiên sau)"}.`, "success", 6000)
+  }
+
+  /** `/undo` lists this run's file changes; `/undo <n> [--force]` puts change n back. */
+  async function undoCommand(args: string) {
+    const history = props.runtime.history
+    const m = args.match(/^(\d+)(\s+--force)?$/)
+    if (!args.trim()) {
+      const changes = history.list()
+      if (changes.length === 0) return pushLine({ kind: "info", text: "Chưa có thay đổi file nào trong lần chạy này (chỉ write_file/edit_file mới hoàn tác được)." })
+      const rows = changes.slice(0, 15).map((c) => `${c.n}. ${c.at.slice(11, 19)} ${c.tool} ${c.created ? "tạo" : "sửa"} ${c.path}${c.undone ? " (đã hoàn tác)" : ""}`)
+      return pushLine({ kind: "info", text: ["Thay đổi file (mới nhất trước) — /undo <số> để hoàn tác:", ...rows].join("\n") })
+    }
+    if (!m) return pushLine({ kind: "error", text: "Dùng: /undo (xem danh sách) hoặc /undo <số> [--force]." })
+    try {
+      const result = await history.undo(Number(m[1]), !!m[2])
+      if ("error" in result) return say(result.error, "error")
+      props.runtime.files.forget(history.list().find((c) => c.n === Number(m[1]))!.path)
+      say(result.ok, "success", 6000)
+    } catch (error) {
+      say(`Không hoàn tác được: ${error instanceof Error ? error.message : String(error)}`, "error")
+    }
+  }
+
+  async function mcpCommand(args: string) {
+    const [action, name] = args.split(/\s+/)
+    const known = state.mcp.some((s) => s.name === name)
+    if (!name || !known || !["enable", "disable", "reconnect"].includes(action ?? "")) {
+      return pushLine({ kind: "error", text: "Dùng: /mcp enable|disable|reconnect <tên server> (hoặc /mcp để mở bảng quản lý)." })
+    }
+    try {
+      if (action === "reconnect") await props.runtime.mcp.restart(name)
+      else await props.runtime.mcp.setEnabled(name, action === "enable")
+      const s = state.mcp.find((x) => x.name === name)
+      say(`MCP "${name}": ${s ? STATUS[s.state].text : "?"}${s?.error ? ` — ${s.error}` : ""}`, s?.state === "failed" ? "error" : "success")
+    } catch (error) {
+      say(`/mcp ${action} ${name}: ${error instanceof Error ? error.message : String(error)}`, "error")
+    }
+  }
+
+  /** Fetch an MCP prompt with the typed arguments and send it as the user's message. */
+  async function runPrompt(command: { server: string; prompt: string; name: string }, rawArgs: string) {
+    const info = state.mcp.find((s) => s.name === command.server)?.prompts.find((p) => p.name === command.prompt)
+    if (!info) return say(`Không còn prompt /${command.name}.`, "error")
+    const parsed = parsePromptArgs(info.arguments, rawArgs)
+    if ("error" in parsed) return say(`/${command.name}: ${parsed.error}`, "error")
+    try {
+      const text = await props.runtime.mcp.getPrompt(command.server, command.prompt, parsed.values)
+      if (!text.trim()) return say(`Prompt /${command.name} không có nội dung.`, "error")
+      // What is sent in the user's name is shown in full as their message.
+      pushLine({ kind: "info", text: `Prompt /${command.name} của server ${command.server}:` })
+      // The classifier reads what the user typed as theirs and the server's template as harness text.
+      props.runtime.auto.log.turn(`/${command.name} ${rawArgs}`.trim())
+      props.runtime.auto.log.markHarness(text)
+      currentSession().noteHarness(text)
+      void send(props.runtime, text)
+    } catch (error) {
+      say(`/${command.name}: ${error instanceof Error ? error.message : String(error)}`, "error")
+    }
+  }
+
+  /** Pills in the prompt: `[Pasted text #1 +49 lines]`, `[Image #2]`, `@src/x.ts`. */
+  const parts = new PromptParts(
+    () => input,
+    () => promptStyle(renderer.nativeScene).getStyleId("extmark.paste") ?? undefined,
+    () => promptStyle(renderer.nativeScene).getStyleId("extmark.file") ?? undefined,
+  )
+
+  /** `ultradesk` coloured in the prompt while the keyword is on (config desk.keyword). */
+  const keywordMark = new KeywordMark(
+    () => input,
+    () => promptStyle(renderer.nativeScene).getStyleId("extmark.desk") ?? undefined,
+  )
+
+  /**
+   * Replace the draft; the cursor goes to the end (or the start, for an entry recalled with
+   * ↑). `saved` turns known labels back into pills.
+   */
+  function setInput(value: string, cursor: "start" | "end" = "end", saved?: Omit<DraftSnapshot, "text">) {
+    if (input) {
+      input.setText(value)
+      keywordMark.reset()
+      parts.restore(saved)
+      if (cursor === "start") input.gotoBufferHome()
+      else input.gotoBufferEnd()
+      setCursor(input.cursorOffset)
+    }
+    setDraft(value)
+    keywordMark.update(value, state.deskKeywordOn)
+    setSelected(0)
+    if (value !== dismissedFor()) setDismissedFor(undefined)
+  }
+  /** Remember what is in the box (with the pastes behind its pills) before clearing it. */
+  function rememberDraft() {
+    const snap = parts.snapshot()
+    // A notebook command's arguments (a pasted key, a private thesis) never reach the history file.
+    const notebook = notebookCommandOf(snap.text)
+    if (notebook) return addHistory(`/${notebook}`)
+    addHistory(snap.text, snap.pastes)
+  }
+
+  /** Ctrl+V / Alt+V, or an empty paste (Windows Terminal with only an image copied). */
+  async function pasteImage() {
+    flash("Đang đọc ảnh từ clipboard…", 15_000)
+    const image = await readClipboardImage()
+    if (!image) return flash(`Không có ảnh trong clipboard · ${process.platform === "win32" ? "alt+v" : "ctrl+v"} để dán ảnh`, 3000, "warning")
+    attachImage(image)
+  }
+  function attachImage(image: PromptImage) {
+    if (image.data.length > MAX_IMAGE_BASE64) return flash("Ảnh quá lớn để gửi (tối đa 5 MB)", 4000, "error")
+    parts.insert({ kind: "image", ...image })
+    flash("Đã đính ảnh", 1500, "success")
+  }
+  /** A paste: an image path becomes `[Image #N]`, a long text `[Pasted text #N +X lines]`. */
+  function onPaste(text: string) {
+    if (!input) return
+    if (!text.trim()) return void pasteImage()
+    const file = imagePath(text)
+    if (file) {
+      void readImageFile(file).then((image) => (image ? attachImage(image) : input?.insertText(text)))
+      return
+    }
+    if (isLargePaste(text)) return void parts.insert({ kind: "text", text })
+    input.insertText(text)
+  }
+
+  /** ↑/↓ through earlier prompts (slash commands included), Claude Code style. */
+  const recall = new HistoryCursor()
+  void loadHistory()
+  function showRecalled(text: string, cursor: "start" | "end", saved: Omit<DraftSnapshot, "text"> | undefined = { pastes: pastesFor(text) }) {
+    setInput(text, cursor, saved)
+    // A recalled "/model" must not open the "/" list: the next ↑ would move in the list
+    // instead of going further back.
+    setDismissedFor(text)
+  }
+  /**
+   * ↑ moves up a line first; only when the cursor cannot go higher does it bring back the
+   * previous prompt (the cursor then sits at its start, so another ↑ goes further back).
+   */
+  function historyKey(evt: KeyEvent, direction: "up" | "down") {
+    if (!input || input.hasSelection()) return
+    evt.preventDefault()
+    // ↑ on an empty prompt first takes back the queued messages, to edit them.
+    if (direction === "up" && !draft() && state.queue.length > 0) {
+      const items = [...state.queue]
+      setState("queue", [])
+      return pullBack(items)
+    }
+    const before = input.cursorOffset
+    if (direction === "up") input.moveCursorUp()
+    else input.moveCursorDown()
+    if (input.cursorOffset !== before) return
+    const text = direction === "up" ? recall.up(input.plainText) : recall.down(input.plainText)
+    if (text !== undefined) showRecalled(text, direction === "up" ? "start" : "end")
+    // Past the newest entry, on the draft's last line: ↓ goes on into the subagent panel.
+    else if (direction === "down" && panelList().length > 0) setState("panelFocus", 0)
+  }
+
+  /**
+   * Ctrl+G: write the prompt in $EDITOR (Notepad by default on Windows). Pastes come out in
+   * full; those left untouched go back into their pills.
+   */
+  async function openEditor() {
+    const snap = parts.snapshot()
+    const result = await editInEditor(parts.expand().text, renderer)
+    input?.focus()
+    if ("error" in result) return flash(result.error, 6000, "error")
+    if (result.returnedAtOnce) {
+      return flash('Trình soạn thảo đóng ngay (Notepad có thể đã mở thành tab) · đặt biến EDITOR, ví dụ "code --wait"', 6000, "warning")
+    }
+    let text = result.text
+    for (const [id, content] of Object.entries(snap.pastes ?? {})) {
+      const at = text.indexOf(content)
+      if (at >= 0) text = text.slice(0, at) + pasteLabel(Number(id), content) + text.slice(at + content.length)
+    }
+    setInput(text, "end", snap)
+  }
+
+  /** Queued messages back into the box (joined by line breaks), ahead of any draft. */
+  function pullBack(items: Queued[]) {
+    const current = parts.snapshot()
+    const all = [...items, ...(current.text.trim() ? [{ display: current.text, saved: current }] : [])]
+    const saved = {
+      pastes: Object.assign({}, ...all.map((i) => i.saved.pastes ?? {})),
+      images: Object.assign({}, ...all.map((i) => i.saved.images ?? {})),
+    }
+    setInput(all.map((i) => i.display).join("\n"), "end", saved)
+  }
+  returnQueue = (items) => {
+    pullBack(items)
+    flash("Tin đang chờ đã được trả về ô nhập", 4000, "warning")
+  }
+  restoreInput = pullBack
+  onCleanup(() => {
+    returnQueue = undefined
+    restoreInput = undefined
+  })
+
+  /** Ctrl+S: put the draft aside (or bring it back); it also returns after the next send. */
+  let stash: DraftSnapshot | undefined
+  function toggleStash() {
+    if (draft().trim()) {
+      stash = parts.snapshot()
+      setInput("")
+      flash("Đã cất bản nháp · ctrl+s để lấy lại", 3000, "success")
+    } else if (stash !== undefined) {
+      setInput(stash.text, "end", stash)
+      stash = undefined
+    }
+  }
+  function restoreStash() {
+    if (stash === undefined || draft()) return
+    setInput(stash.text, "end", stash)
+    stash = undefined
+  }
+
+  /** Esc twice on a draft clears it (saved to history first, so ↑ brings it back). */
+  let escArmedAt = 0
+  function escapeClear(evt: KeyEvent) {
+    // Two quick presses can arrive in one read ("\x1b\x1b", parsed as alt+escape).
+    if (evt.sequence === "\x1b\x1b" || Date.now() - escArmedAt <= EXIT_WINDOW_MS) {
+      escArmedAt = 0
+      rememberDraft()
+      recall.reset()
+      setInput("")
+      return
+    }
+    escArmedAt = Date.now()
+    flash("Esc lần nữa để xoá ô nhập", EXIT_WINDOW_MS)
+  }
+
+  /**
+   * Ctrl+R: search earlier prompts as you type; the input shows the newest match. Ctrl+R
+   * again goes to an older match, Enter sends it, Tab/Esc keep it in the input to edit,
+   * Ctrl+C gives the draft back.
+   */
+  const [search, setSearch] = createSignal<{ query: string; skip: number; original: DraftSnapshot }>()
+  const searchMatches = createMemo(() => {
+    const s = search()
+    return s ? searchHistory(s.query) : []
+  })
+  function showSearch(next: { query: string; skip: number; original: DraftSnapshot }) {
+    setSearch(next)
+    const match = searchMatches()[next.skip]
+    if (match !== undefined) showRecalled(match, "end")
+  }
+  function searchKey(evt: KeyEvent) {
+    const s = search()!
+    evt.preventDefault()
+    const end = () => {
+      setSearch(undefined)
+      recall.reset()
+    }
+    if (evt.ctrl && evt.name === "c") {
+      end()
+      return setInput(s.original.text, "end", s.original)
+    }
+    if (evt.ctrl && evt.name === "r") {
+      if (s.skip + 1 < searchMatches().length) showSearch({ ...s, skip: s.skip + 1 })
+      return
+    }
+    if (evt.name === "return" || evt.name === "kpenter") {
+      end()
+      return submit()
+    }
+    if (evt.name === "backspace") {
+      if (!s.query) {
+        end()
+        return setInput(s.original.text, "end", s.original)
+      }
+      return showSearch({ ...s, query: s.query.slice(0, -1), skip: 0 })
+    }
+    if (!evt.ctrl && !evt.meta && evt.sequence && evt.sequence.length >= 1 && evt.sequence.charCodeAt(0) >= 32 && evt.sequence !== "\x7f") {
+      return showSearch({ ...s, query: s.query + evt.sequence, skip: 0 })
+    }
+    // Tab, Esc, arrows, anything else: keep the match in the input and edit it there.
+    end()
+  }
+
+  /**
+   * Ctrl+C / Ctrl+D like Claude Code: the first press does the nearest useful thing and
+   * says "press again to exit"; a second press within 800 ms exits. Ctrl+C with text
+   * highlighted copies it instead. Ctrl+D only counts on an empty prompt.
+   */
+  function onQuitKey(name: "c" | "d") {
+    if (name === "c" && renderer.hasSelection && copySelection()) return
+    const key = name === "c" ? "Ctrl+C" : "Ctrl+D"
+    if (name === "d" && (draft() || owner() || state.dialog)) return
+    if (state.exitArmed === key) return void exit()
+    if (name === "c") {
+      // An approval or question answers Ctrl+C itself (like Esc: deny / skip).
+      if (owner()) {
+        // handled by the prompt's own keyboard hook
+      } else if (state.dialog === "notebook-form" && state.notebookFormDirty) {
+        // A changed notebook form asks first, like Esc: Ctrl+C is also Windows' copy key, a long thesis typed
+        // so far must not go on one press. A second press within the window still exits.
+        setState("notebookFormAskLeave", true)
+      } else if (state.dialog) closeDialog()
+      else if (draft()) {
+        // Cleared, not lost: ↑ brings it back (Codex, Claude Code).
+        rememberDraft()
+        recall.reset()
+        setInput("")
+      }
+      else if (state.streaming) abort?.abort()
+    }
+    armExit(key)
+  }
+
+  /** Tab: put the highlighted command in the input ("/name ") without running it; the list closes. */
+  function complete() {
+    const c = suggestions()[selected()]
+    if (c) setInput(`/${c.name} `)
+  }
+
+  /**
+   * Enter. With the "/" list open it runs the highlighted command — or, when the command
+   * cannot run without arguments, fills "/name " and waits (Claude Code). Otherwise a
+   * "/…" line is a command (unknown ones are reported, never sent to the model) and
+   * anything else is a message.
+   */
+  /** Enter in the prompt: what the box shows, with its pills expanded. With the `@` list open, it picks. */
+  function submit() {
+    if (fileMatches().length > 0) return pickFile(false)
+    run(input?.plainText ?? draft(), parts.expand())
+  }
+
+  function run(value: string, expanded?: ExpandedPrompt) {
+    const shown = value.trim()
+    // What the model gets: pasted text put back in place of its pill.
+    const text = (expanded?.text ?? value).trim()
+    const images = expanded?.images ?? []
+    const list = suggestions()
+    const highlighted = list[selected()]
+    recall.reset()
+    if (highlighted && list.length > 0) {
+      if (highlighted.argsRequired) return setInput(`/${highlighted.name} `)
+      addHistory(`/${highlighted.name}`)
+      setInput("")
+      runCommand(highlighted.name.toLowerCase(), "")
+      return restoreStash()
+    }
+    if (!text && images.length === 0) return setInput("")
+    // A notebook command is recognised before the history is written: only its name is kept there.
+    const notebook = notebookCommandOf(text)
+    if (notebook) {
+      addHistory(`/${notebook}`)
+      const problem = openNotebookForm(props.runtime.memory, notebook, parseCommand(text)!.args)
+      // Not saved anywhere: keep what was typed in the box so it is not lost.
+      if (problem) return sayOff(problem)
+      setInput("")
+      return restoreStash()
+    }
+    // Every line sent or run is remembered for ↑ — typos in a command name too, to fix them.
+    addHistory(shown, expanded?.pastes)
+    const cmd = parseCommand(text)
+    if (!cmd) {
+      if (text.startsWith("/")) return setInput("") // "/" alone or "/ text": nothing to run, nothing to send
+      const target = state.provider && state.model ? { provider: state.catalog[state.provider]!, model: state.model } : undefined
+      if (images.length > 0 && target?.provider && !acceptsImageInput(target)) {
+        // Keep the draft: switch model or delete the image, then send again.
+        return say(`Model ${state.model} không đọc được ảnh. Đổi model bằng /model, hoặc xoá ${images.length > 1 ? "các ảnh" : "ảnh"} khỏi ô nhập rồi gửi lại.`, "error")
+      }
+      const saved = expanded ? parts.snapshot() : {}
+      setInput("")
+      restoreStash()
+      // Typed while an answer is streaming: sent when it ends (Claude Code), ↑ to edit it.
+      const desk = state.deskKeywordOn && hasDeskKeyword(shown) ? ("keyword" as const) : undefined
+      if (state.streaming) return void setState("queue", (q) => [...q, { text, display: shown, images, saved, desk }])
+      void send(props.runtime, { text, display: shown, images, desk, saved })
+      return
+    }
+    const known = allCommands().some((c) => c.name.toLowerCase() === cmd.name) || cmd.name === "quit"
+    if (!known) {
+      // Keep what was typed so it can be fixed.
+      return say(`Không có lệnh /${cmd.name}. Gõ /help để xem các lệnh.`, "error")
+    }
+    setInput("")
+    runCommand(cmd.name, cmd.args)
+    restoreStash()
+  }
+
+  /** Why a notebook command did not open, said at once; then, read from the store, the constraints that still apply. */
+  function sayOff(problem: string) {
+    say(problem, "warning")
+    void offWithConstraints(props.runtime.memory, props.runtime.constraints, problem).then((text) => {
+      // Only if nothing newer replaced the message meanwhile.
+      if (text && state.notification?.text === problem) say(text, "warning")
+    })
+  }
+
+  function runCommand(name: string, args: string) {
+    const cmd = { name, args }
+    const promptCmd = promptCommands().find((c) => c.name.toLowerCase() === cmd.name)
+    if (promptCmd) {
+      if (state.streaming) return say("Đang trả lời; chờ xong rồi chạy prompt.", "warning")
+      return void runPrompt(promptCmd, cmd.args)
+    }
+    const playbook = PLAYBOOKS.find((p) => p.meta.name === cmd.name)
+    if (playbook) {
+      if (!cmd.args) return say(`Dùng: /${playbook.meta.name} <yêu cầu>`, "error")
+      const text = `Chạy playbook ultradesk ${playbook.meta.name} cho yêu cầu sau (gọi desk_run với args đúng schema): ${cmd.args}`
+      // The transcript shows the start of a long pasted argument; the model gets all of it.
+      const outgoing = { text, display: `/${playbook.meta.name} ${truncate(cmd.args.replace(/\s+/g, " "), 200)}`, desk: "command" as const }
+      if (state.streaming) return void setState("queue", (q) => [...q, { ...outgoing, images: [], saved: {} }])
+      return void send(props.runtime, outgoing)
+    }
+    switch (cmd.name) {
+      case "desk":
+        return void deskCommand(cmd.args)
+      case "effort":
+        return void effortCommand(cmd.args)
+      case "connect":
+      case "model":
+      case "skills":
+      case "help":
+      case "tools":
+      case "context":
+      case "sessions":
+      case "permissions":
+        // Rules edited by hand in config.json take effect from here on.
+        void props.runtime.permissions.refreshRules()
+        return setState("dialog", cmd.name)
+      case "memory":
+      case "config":
+      case "agents":
+      case "tasks":
+        return setState("dialog", cmd.name)
+      case "nho":
+      case "luandiem":
+      case "baihoc":
+      case "quyetdinh": {
+        // Picked in the "/" list: the box held only the name, so clearing it lost nothing.
+        const problem = openNotebookForm(props.runtime.memory, cmd.name, cmd.args)
+        if (problem) sayOff(problem)
+        return
+      }
+      case "profile":
+        return void ensureProfile().then(({ file, created }) =>
+          pushLine({
+            kind: "info",
+            text: created
+              ? `Đã tạo hồ sơ nhà đầu tư mẫu: ${file}. Mở file để sửa; OpenTrading đọc lại ở mỗi lượt hỏi.`
+              : `Hồ sơ nhà đầu tư: ${file}. Sửa file này; thay đổi có hiệu lực từ lượt hỏi tiếp theo.`,
+          }),
+        )
+      case "skill":
+        return cmd.args ? toggleSkill(cmd.args) : setState("dialog", "skills")
+      case "mcp":
+        return cmd.args ? void mcpCommand(cmd.args) : setState("dialog", "mcp")
+      case "watchlist":
+        return void watchlistCommand(cmd.args)
+      case "clear":
+      case "new":
+        return void clearTranscript(props.runtime)
+      case "goiy":
+        if (!focusLatestCard()) say("Không có thẻ gợi ý nào đang chờ.", "info")
+        return
+      case "compact":
+        if (state.streaming) return say("Đang trả lời; chờ xong rồi nén.", "warning")
+        // Messages typed while it runs are queued: send them (or give them back) afterwards.
+        return void compact(props.runtime, "manual", cmd.args || undefined).then((ok) => afterTurn(props.runtime, ok))
+      case "save":
+        return void saveCommand()
+      case "export":
+        return void exportCommand(cmd.args)
+      case "add-dir":
+        return void addDirCommand(cmd.args)
+      case "undo":
+        return void undoCommand(cmd.args)
+      case "scratch":
+        return void scratchCommand(props.runtime, cmd.args).then((r) => (r.level === "error" ? say(r.text, "error") : pushLine({ kind: "info", text: r.text })))
+      case "exit":
+      case "quit":
+        return void exit()
+      default:
+        say(`Không có lệnh /${cmd.name}. Gõ /help để xem các lệnh.`, "error")
+    }
+  }
+
+  /** /desk: the runs; on|off for the session; resume <run> runs a cut run again from its journal. */
+  /** Save the main agent's effort (undefined = auto) and say what the model will get. */
+  async function setEffort(next: Effort | undefined) {
+    try {
+      await saveConfig({ effort: next })
+    } catch (error) {
+      return say(`Không lưu được effort: ${error instanceof Error ? error.message : String(error)}`, "error")
+    }
+    setState("effort", next)
+    say(`Effort ${effortText(next, "auto")} · ${supportNote(next).text} · /effort`, "success", 3000)
+  }
+
+  /** /effort opens the panel; /effort <level|auto> sets the main agent's level at once. */
+  async function effortCommand(args: string) {
+    const wanted = args.trim().toLowerCase()
+    if (!wanted) return setState("dialog", "effort")
+    if (wanted !== "auto" && !isEffort(wanted)) return say(`Mức effort không hợp lệ: ${args.trim()}. Dùng auto, ${EFFORT_LEVELS.join(", ")}.`, "error")
+    await setEffort(wanted === "auto" ? undefined : wanted)
+  }
+
+  /** ctrl+t: auto → each level the current model takes → auto. */
+  async function cycleEffort() {
+    const target = currentTarget()
+    const levels = target ? supportedEfforts(target) : []
+    if (levels.length === 0) return say("Model này không có mức effort để đổi. /effort chỉnh effort của subagent và ultradesk.", "warning", 3000)
+    await setEffort(stepEffort(state.effort, [undefined, ...levels], 1))
+  }
+
+  async function deskCommand(args: string) {
+    const [sub, id] = args.split(/\s+/)
+    if (!sub) return setState("dialog", "desk")
+    if (sub === "on" || sub === "off") {
+      setState("deskMode", sub === "on")
+      return say(sub === "on" ? "Ultradesk bật cho cả phiên: yêu cầu nghiên cứu lớn có thể chạy playbook (vẫn duyệt trước khi chạy)" : "Đã tắt ultradesk cho phiên này", "success")
+    }
+    if (sub === "resume") {
+      if (!id) return setState("dialog", "desk")
+      try {
+        await props.runtime.desk.resume(id)
+        return say(`Đang chạy tiếp run ${id}`, "success")
+      } catch (error) {
+        return say(error instanceof Error ? error.message : String(error), "error")
+      }
+    }
+    say("Dùng: /desk, /desk on, /desk off, /desk resume <run>", "error")
+  }
+
+  /** A first x on a panel row only asks; a second x on the same row within the window stops it. */
+  let stopArmed: { id: string; at: number } | undefined
+
+  /**
+   * Keys while a panel row is selected: ↑↓ move (↑ on the first row goes back to the prompt),
+   * enter opens the agent in /tasks, x twice (or ctrl+x, as in /tasks) stops it, esc goes back;
+   * any other key goes back to the prompt, a typed character landing in it. Stopping asks twice
+   * because a stray ↓ then a word starting with "x" must not throw away a running agent's work.
+   */
+  function panelKey(evt: KeyEvent) {
+    const list = panelList()
+    const at = Math.min(state.panelFocus ?? 0, list.length - 1)
+    const agent = list[at]
+    const plain = !evt.ctrl && !evt.meta
+    const stopKey = evt.name === "x" && !evt.meta
+    if (!stopKey) stopArmed = undefined
+    if (evt.name === "up" || evt.name === "down" || evt.name === "return" || evt.name === "escape" || stopKey) evt.preventDefault()
+    if (evt.name === "up") return setState("panelFocus", at <= 0 ? undefined : at - 1)
+    if (evt.name === "down") return setState("panelFocus", Math.min(list.length - 1, at + 1))
+    if (evt.name === "escape") return setState("panelFocus", undefined)
+    if (evt.name === "return") {
+      if (!agent) return setState("panelFocus", undefined)
+      if (isDeskRow(agent)) return setState({ panelFocus: undefined, deskFocus: agent.id, dialog: "desk" })
+      return setState({ panelFocus: undefined, tasksFocus: agent.id, dialog: "tasks" })
+    }
+    if (stopKey) {
+      if (!agent || (agent.status !== "running" && agent.status !== "queued")) return
+      const name = `${agent.type} (${truncate(agent.description, 40)})`
+      const confirmed = evt.ctrl || (stopArmed?.id === agent.id && Date.now() - stopArmed.at <= STOP_WINDOW_MS)
+      if (!confirmed) {
+        stopArmed = { id: agent.id, at: Date.now() }
+        return flash(`Nhấn x lần nữa để dừng ${name}`, STOP_WINDOW_MS, "warning")
+      }
+      stopArmed = undefined
+      if (isDeskRow(agent)) {
+        if (props.runtime.desk.stop(agent.id)) say(`Đã dừng run ultradesk ${agent.id}`, "success")
+        return
+      }
+      if (props.runtime.subagents.stop(agent.id)) say(`Đã dừng subagent ${name}`, "success")
+      return
+    }
+    setState("panelFocus", undefined)
+    if (plain && evt.sequence && evt.sequence.length === 1 && evt.sequence >= " ") {
+      evt.preventDefault()
+      input?.insertText(evt.sequence)
+    }
+  }
+
+  // Idle compaction: armed after each turn (and on a resumed session) while nothing runs.
+  createEffect(() => syncIdleTimer(props.runtime))
+  onCleanup(() => idleTimer.disarm())
+
+  useKeyboard((evt) => {
+    if (evt.eventType === "release") return
+    // Typing is not being away.
+    idleTimer.poke()
+    if (search() && !owner() && !state.dialog) return searchKey(evt)
+    if (evt.ctrl && (evt.name === "c" || evt.name === "d")) return onQuitKey(evt.name)
+    if (evt.ctrl && evt.name === "o") return void setState("expandTools", (v) => !v)
+    // ctrl+t: the next effort level the model takes (Claude Code's ← → in /model, one key here).
+    if (evt.ctrl && evt.name === "t" && !owner() && !state.dialog) {
+      evt.preventDefault()
+      return void cycleEffort()
+    }
+    if (evt.name === "escape" && renderer.hasSelection) {
+      evt.preventDefault()
+      input?.clearSelection()
+      return renderer.clearSelection()
+    }
+    if (owner() || state.dialog) return
+    // A focused suggestion card has the keys (card-row.tsx CardKeys); the prompt stays in view.
+    if (state.cardFocus !== undefined) return
+    if (state.panelFocus !== undefined) return panelKey(evt)
+    // The chat scrolls from the keyboard too (opencode): PageUp/PageDown half a screen,
+    // Ctrl+Home/Ctrl+End to the start/end (plain Home/End stay with the prompt).
+    const move =
+      evt.name === "pageup" ? "page-up" : evt.name === "pagedown" ? "page-down" : evt.ctrl && evt.name === "home" ? "top" : evt.ctrl && evt.name === "end" ? "bottom" : undefined
+    if (move && scrollTranscript(move)) return evt.preventDefault()
+    const n = suggestions().length
+    // "?" on an empty prompt: the keys at a glance (Claude Code). Typed anywhere else it is text.
+    // The textarea's own text: draft() follows it a moment later, so fast typing would lose a "?".
+    if (evt.sequence === "?" && !evt.ctrl && !evt.meta && n === 0 && !(input?.plainText ?? draft())) {
+      evt.preventDefault()
+      return setState("dialog", "shortcuts")
+    }
+    // Esc closes the "/" or "@" list first (it stays closed until the draft changes) and never
+    // also stops the running answer.
+    if (evt.name === "escape" && (n > 0 || fileMatches().length > 0)) {
+      evt.preventDefault()
+      setDismissedFor(draft())
+      return
+    }
+    if (evt.name === "escape" && state.streaming) return void abort?.abort()
+    if (evt.name === "escape" && draft()) {
+      evt.preventDefault()
+      return escapeClear(evt)
+    }
+    if (evt.ctrl && evt.name === "r") {
+      evt.preventDefault()
+      return showSearch({ query: "", skip: 0, original: parts.snapshot() })
+    }
+    if (evt.ctrl && evt.name === "s") {
+      evt.preventDefault()
+      return toggleStash()
+    }
+    if (evt.ctrl && evt.name === "g") {
+      evt.preventDefault()
+      return void openEditor()
+    }
+    // Permission mode: Shift+Tab, or Alt+M where the terminal does not send Shift+Tab
+    // (as in Claude Code). Not while a prompt or dialog owns the keys (checked above).
+    if ((evt.name === "tab" && evt.shift) || (evt.meta && evt.name === "m")) {
+      evt.preventDefault()
+      const next = cycleMode(props.runtime.permissions.mode, { bypass: props.runtime.permissions.bypassAvailable })
+      // The first time, auto waits for a yes in the opt-in dialog; the gate keeps its mode.
+      if (next === "auto" && !state.autoAcknowledged) return void setState("autoOptIn", { from: props.runtime.permissions.mode })
+      return props.runtime.permissions.setMode(next)
+    }
+    // Paste an image from the clipboard: Alt+V (Windows Terminal keeps Ctrl+V for its own
+    // text paste, as in Claude Code), or Ctrl+V where the terminal passes the key through.
+    if ((evt.meta || evt.ctrl) && evt.name === "v" && !evt.shift) {
+      evt.preventDefault()
+      return void pasteImage()
+    }
+    // The "@" list: ↑↓ choose, Tab fills (opens a folder), Enter picks (submit()).
+    const k = fileMatches().length
+    if (n === 0 && k > 0) {
+      if (evt.name === "tab" && !evt.shift) {
+        evt.preventDefault()
+        return pickFile(true)
+      }
+      if (evt.name === "up" || (evt.ctrl && evt.name === "p")) {
+        evt.preventDefault()
+        return setSelected((i) => (i + k - 1) % k)
+      }
+      if (evt.name === "down" || (evt.ctrl && evt.name === "n")) {
+        evt.preventDefault()
+        return setSelected((i) => (i + 1) % k)
+      }
+    }
+    // With the list closed, Tab does nothing special (no autofill) and the arrows walk
+    // through the prompt history.
+    if (n === 0) {
+      const plain = !evt.ctrl && !evt.meta && !evt.shift
+      // "\" then Enter: a new line, for terminals that send Shift+Enter as Enter (Claude Code).
+      if (plain && evt.name === "return" && input) {
+        const at = input.cursorOffset
+        if (at > 0 && input.getTextRange(at - 1, at) === "\\") {
+          evt.preventDefault()
+          input.deleteCharBackward()
+          input.newLine()
+        }
+        return
+      }
+      if ((plain && evt.name === "up") || (evt.ctrl && evt.name === "p")) return historyKey(evt, "up")
+      if ((plain && evt.name === "down") || (evt.ctrl && evt.name === "n")) return historyKey(evt, "down")
+      return
+    }
+    if (evt.name === "tab") {
+      evt.preventDefault()
+      complete()
+    } else if (evt.name === "up" || (evt.ctrl && evt.name === "p")) {
+      evt.preventDefault()
+      setSelected((i) => (i + n - 1) % n)
+    } else if (evt.name === "down" || (evt.ctrl && evt.name === "n")) {
+      evt.preventDefault()
+      setSelected((i) => (i + 1) % n)
+    }
+  })
+
+  return (
+    <box width={dims().width} height={dims().height} backgroundColor={color.bg}>
+      <Background quiet={state.lines.length > 0} />
+      <box position="absolute" left={0} top={0} width="100%" height="100%" zIndex={1} flexDirection="column">
+        {/* Tall panels below (/mcp, approval) shrink this area; clip it instead of letting
+            flexbox squeeze rows on top of each other. */}
+        <box flexGrow={1} flexShrink={1} minHeight={0} overflow="hidden" flexDirection="column">
+          <Show when={state.lines.length > 0} fallback={<Show when={!state.dialog}>{<Home workspace={props.runtime.workspace.primary} fallback={props.runtime.workspace.fallbackReason} />}</Show>}>
+            <Transcript />
+          </Show>
+        </box>
+
+        <Show when={state.activity && !owner() && !state.dialog}>
+          <ActivityRow tips={state.tips} />
+        </Show>
+        <Show when={!owner() && !state.dialog}>
+          <TodoPanel />
+        </Show>
+        <Show when={suggestions().length > 0 && !owner() && !state.dialog}>
+          <Suggestions items={commandItems()} all={allCommandItems()} selected={selected()} />
+        </Show>
+        <Show when={suggestions().length === 0 && fileItems().length > 0 && !owner() && !state.dialog}>
+          <Suggestions items={fileItems()} all={fileItems()} selected={selected()} noun="mục" note={fileNote()} hint="↑↓ chọn · enter gắn file · tab điền (mở thư mục) · esc đóng" />
+        </Show>
+        <Show when={!owner() && !state.dialog && search()}>
+          {(s) => (
+            <box marginLeft={2} marginRight={2} paddingLeft={1} flexShrink={0} backgroundColor={color.bg}>
+              <text fg={color.tx2} wrapMode="none">
+                {`${searchMatches().length > 0 ? "tìm trong lịch sử" : "không thấy prompt nào khớp"}: ${s().query}`}
+                <span style={{ fg: color.tx3 }}>{"   ctrl+r cũ hơn · enter gửi · tab/esc sửa · ctrl+c huỷ"}</span>
+              </text>
+            </box>
+          )}
+        </Show>
+        {/* Messages waiting for the answer to finish (Claude Code shows them above the prompt). */}
+        <Show when={!owner() && !state.dialog && state.queue.length > 0}>
+          <box marginLeft={2} marginRight={2} paddingLeft={1} flexShrink={0} flexDirection="column" backgroundColor={color.bg}>
+            <For each={state.queue}>
+              {(item) => (
+                <text fg={color.tx3} wrapMode="none">
+                  {`(chờ) ${truncate(item.display.split("\n")[0] ?? "", Math.max(10, dims().width - 30))}`}
+                </text>
+              )}
+            </For>
+            <text fg={color.tx3} wrapMode="none">
+              {"  gửi khi câu trả lời xong · ↑ để sửa"}
+            </text>
+          </box>
+        </Show>
+        <Show when={!owner() && !state.dialog && suggestions().length === 0 && argHint()}>
+          {(c) => <ArgumentHint command={c()} />}
+        </Show>
+
+        {/* The approval prompt and /mcp take the input's place; the input is hidden, not
+            unmounted, so a half-typed message survives. */}
+        {/* Keyed: a new request starts with a fresh selection and no leftover note. */}
+        <Show when={state.approval} keyed>
+          {(request) => <ApprovalPrompt gate={props.runtime.permissions} request={request} subagents={props.runtime.subagents} />}
+        </Show>
+        {/* The ▸▸ auto opt-in gives way to an approval or a question (it is asked again later). */}
+        {/* Asked once at start, before the ▸▸ auto opt-in; waits behind approvals and questions. */}
+        {/* --yolo asks before anything else at start; until then the gate keeps its mode. */}
+        <Show when={state.yoloWarning}>
+          <YoloWarningDialog gate={props.runtime.permissions} />
+        </Show>
+        <Show when={state.folderTrust && !state.yoloWarning && !state.approval && !state.question}>
+          <FolderTrustDialog runtime={props.runtime} />
+        </Show>
+        <Show when={state.autoOptIn && !state.yoloWarning && !state.approval && !state.question && !state.folderTrust}>
+          <AutoOptInDialog gate={props.runtime.permissions} />
+        </Show>
+        {/* A desk run's approval card waits behind tool approvals and questions. */}
+        <Show when={!state.approval && !state.question ? state.deskApproval : undefined} keyed>
+          {(request) => <DeskApprovalCard request={request} approvals={props.runtime.deskApprovals} />}
+        </Show>
+        {/* A held turn's card waits behind tool approvals and questions. */}
+        <Show when={!state.approval && !state.question ? state.turnHold : undefined} keyed>
+          {(card) => <HoldCard card={card} />}
+        </Show>
+        {/* A suggestion card's keys, behind every other card and prompt (spec 007). */}
+        <Show when={!state.approval && !state.question && !state.turnHold && !state.deskApproval && !state.dialog ? state.cardFocus : undefined} keyed>
+          {(id) => <CardKeys id={id} memory={props.runtime.memory} />}
+        </Show>
+        {/* A question stays mounted (answers kept) while an approval covers it. */}
+        <Show when={state.question} keyed>
+          {(request) => (
+            <box visible={!state.approval} flexShrink={0} flexDirection="column">
+              <AskPrompt broker={props.runtime.questions} request={request} />
+            </box>
+          )}
+        </Show>
+        {/* Every dialog is a pane docked here, in place of the prompt (Claude Code style). It
+            stays mounted — hidden and deaf to keys — while a prompt covers it, so a typed key,
+            a pasted token or an OAuth login in progress survives. */}
+        <box visible={!owner()} flexShrink={0} flexDirection="column">
+          <Switch>
+            <Match when={state.dialog === "mcp"}>
+              <McpPanel mcp={props.runtime.mcp} cwd={props.runtime.mcp.cwd} />
+            </Match>
+            <Match when={state.dialog === "connect"}>
+              <ConnectDialog />
+            </Match>
+            <Match when={state.dialog === "model"}>
+              <ModelDialog />
+            </Match>
+            <Match when={state.dialog === "skills"}>
+              <SkillsDialog />
+            </Match>
+            <Match when={state.dialog === "agents"}>
+              <AgentsDialog runtime={props.runtime} />
+            </Match>
+            <Match when={state.dialog === "tasks"}>
+              <TasksDialog runtime={props.runtime} />
+            </Match>
+            <Match when={state.dialog === "watchlist"}>
+              <WatchlistDialog runtime={props.runtime} />
+            </Match>
+            <Match when={state.dialog === "help"}>
+              <HelpDialog onRun={(command) => run(command)} />
+            </Match>
+            <Match when={state.dialog === "tools"}>
+              <ToolsDialog registry={props.runtime.registry} runtime={props.runtime} />
+            </Match>
+            <Match when={state.dialog === "context"}>
+              <ContextDialog runtime={props.runtime} />
+            </Match>
+            <Match when={state.dialog === "sessions"}>
+              <SessionsDialog runtime={props.runtime} />
+            </Match>
+            <Match when={state.dialog === "config"}>
+              <ConfigDialog runtime={props.runtime} />
+            </Match>
+            <Match when={state.dialog === "permissions"}>
+              <PermissionsDialog mode={props.runtime.permissions.mode} workspace={props.runtime.workspace} auto={props.runtime.auto} onChanged={() => props.runtime.permissions.refreshRules()} />
+            </Match>
+            <Match when={state.dialog === "shortcuts"}>
+              <ShortcutsPane onType={(text) => input?.insertText(text)} />
+            </Match>
+            <Match when={state.dialog === "desk"}>
+              <DeskDialog runtime={props.runtime} />
+            </Match>
+            <Match when={state.dialog === "effort"}>
+              <EffortDialog />
+            </Match>
+            <Match when={state.dialog === "memory"}>
+              <MemoryDialog memory={props.runtime.memory} redaction={props.runtime.redaction} />
+            </Match>
+            <Match when={state.dialog === "notebook-form"}>
+              <NotebookFormDialog memory={props.runtime.memory} />
+            </Match>
+          </Switch>
+        </box>
+
+        <PromptInput
+          ref={(r) => (input = r)}
+          visible={!owner() && !state.dialog}
+          focused={!state.dialog && !owner() && state.panelFocus === undefined && state.cardFocus === undefined}
+          busy={state.streaming}
+          placeholder={
+            state.streaming ? "đang trả lời… esc để dừng · enter để xếp hàng tin tiếp" : "Hỏi về thị trường, hoặc gõ / để xem lệnh · ↑ lịch sử · ctrl+j xuống dòng"
+          }
+          onChange={(v) => {
+            if (input) setCursor(input.cursorOffset)
+            if (v === draft()) return
+            setDraft(v)
+            keywordMark.update(v, state.deskKeywordOn)
+            setSelected(0)
+            // A dismissed list stays closed only until the draft changes.
+            if (v !== dismissedFor()) setDismissedFor(undefined)
+          }}
+          onCursor={(at) => {
+            if (at === cursor()) return
+            setCursor(at)
+            setSelected(0)
+          }}
+          onSubmit={submit}
+          onPaste={onPaste}
+        />
+
+        <ModeLine
+          hint={
+            owner() || state.dialog
+              ? undefined
+              : state.panelFocus !== undefined
+                ? "↑↓ chọn · enter xem · x ×2 dừng · esc về ô nhập"
+                : state.streaming
+                  ? "esc dừng"
+                  : draft()
+                    ? state.deskKeywordOn && hasDeskKeyword(draft())
+                      ? "ultradesk: yêu cầu này được chạy playbook"
+                      : undefined
+                    : "? phím tắt · / lệnh"
+          }
+        />
+        <Show when={!owner() && !state.dialog}>
+          <AgentPanel />
+        </Show>
+        <StatusBar />
+      </box>
+      <Toasts />
+
+    </box>
+  )
+}
+
+const BRAND = " ▲ OpenTrading "
+/** The status bar warns this close (share of the threshold) to auto-compaction. */
+const CONTEXT_WARN_LEFT = 0.15
+
+const backgroundRunning = () =>
+  Object.values(state.agents).filter((a) => a.background && (a.status === "running" || a.status === "queued")).length
+
+/**
+ * The bottom line: who answers (provider · model), MCP, skills on the left; a context
+ * warning on the right when compaction is near. The mode, hints and notifications live on
+ * the line under the prompt (mode-line.tsx).
+ */
+function StatusBar() {
+  const target = () => ` ${state.provider ? `${providerName(state.provider)} · ${state.model ?? "chưa chọn model"}` : "chưa kết nối"} `
+  /** "◐ medium" when the main agent's level reaches the model (stepped down to what it takes). */
+  const effort = () => {
+    const t = currentTarget()
+    const sent = t ? effectiveEffort(t, state.effort) : undefined
+    return sent ? `${EFFORT_SYMBOL[sent]} ${sent} ` : undefined
+  }
+  const ready = () => state.mcp.filter((s) => s.state === "connected").length
+  const attention = () => state.mcp.some((s) => s.state === "failed" || s.state === "untrusted")
+  /**
+   * Always: the context used against the model's window (opencode, Codex). Near the threshold,
+   * the room left before auto-compaction as a share of the threshold (Claude Code's
+   * TokenWarning); when nothing will compact by itself, a pointer to /compact.
+   */
+  const ctx = (): { text: string; fg: string } | undefined => {
+    const limits = contextLimits()
+    if (!limits) return undefined
+    const tokens = state.contextTokens
+    if (tokens === undefined) return { text: ` ctx –/${fmtTokens(limits.window)} `, fg: color.tx3 }
+    const head = `ctx ${Math.round(Math.min(1, tokens / limits.window) * 100)}% · ${fmtTokens(tokens)}/${fmtTokens(limits.window)}`
+    const left = (limits.threshold - tokens) / limits.threshold
+    if (left > CONTEXT_WARN_LEFT) return { text: ` ${head} `, fg: color.tx3 }
+    // Nothing will compact by itself: turned off, given up after failures, held until the
+    // context grows, or already past the threshold. Then only /compact helps.
+    const manual = state.autoCompactOff || state.compactFailures >= MAX_AUTO_FAILURES || state.compactFloor !== undefined || left <= 0
+    if (manual) return { text: ` ${head} · /compact `, fg: color.giam }
+    return { text: ` ${head} · còn ${Math.round(left * 100)}% tới tự nén `, fg: left <= 0.05 ? color.tham : color.tx2 }
+  }
+  return (
+    <box flexDirection="row" height={1} flexShrink={0} backgroundColor={color.panel2} paddingLeft={2} paddingRight={2}>
+      <text fg={color.bg} bg={color.tang} flexShrink={0} selectable={false}>
+        {BRAND}
+      </text>
+      <text fg={color.tx2} flexShrink={1} wrapMode="none" selectable={false}>
+        {target()}
+      </text>
+      <Show when={effort()}>
+        <text fg={color.tran} flexShrink={0} wrapMode="none" selectable={false}>
+          {effort()}
+        </text>
+      </Show>
+      <Show when={state.mcp.length > 0}>
+        <text fg={attention() ? color.tham : color.san} flexShrink={0} selectable={false}>
+          {` MCP ${ready()}/${state.mcp.length} `}
+        </text>
+      </Show>
+      <Show when={state.activeSkills.length > 0}>
+        <text fg={color.tran} flexShrink={1} wrapMode="none" selectable={false}>
+          {` ✦ ${truncate(state.activeSkills.join(", "), 30)}`}
+        </text>
+      </Show>
+      <box flexGrow={1} />
+      <Show when={ctx()}>
+        {(c) => (
+          <text fg={c().fg} flexShrink={0} selectable={false}>
+            {c().text}
+          </text>
+        )}
+      </Show>
+    </box>
+  )
+}

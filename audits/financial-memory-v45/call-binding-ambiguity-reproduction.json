@@ -1,0 +1,26 @@
+{
+  "fixture": "Earlier fresh-session generation rejected locally; later identical raw ID/args actually executes source",
+  "external_model_calls": 0,
+  "selected_generation": {
+    "key": "0:0:0",
+    "request": 0,
+    "id": "same-sdk-id",
+    "tool": "vn_quote_history",
+    "arguments": {
+      "symbol": "SYN"
+    }
+  },
+  "expected_generation_request": 2,
+  "claim_misbound": true,
+  "pending": [
+    {
+      "key": "2:0:0",
+      "request": 2,
+      "id": "same-sdk-id",
+      "tool": "vn_quote_history",
+      "arguments": {
+        "symbol": "SYN"
+      }
+    }
+  ]
+}

@@ -1,0 +1,101 @@
+{
+  "task_id": "fin-l5-profile-271",
+  "scoring": "value",
+  "solution": {
+    "revenue_q_bn": 3270.0,
+    "gross_profit_q_bn": 1088.0,
+    "gross_margin_pct": 33.27,
+    "pe": 9.37,
+    "market_cap_bn": 28302.32
+  },
+  "as_of": "2026-11-01T23:22:51.336419+07:00",
+  "split": "main",
+  "expects": [
+    {
+      "type": "value",
+      "path": "values.revenue_q_bn",
+      "gold": 3270.0,
+      "tol": {
+        "rel": 0.005
+      }
+    },
+    {
+      "type": "value",
+      "path": "values.gross_profit_q_bn",
+      "gold": 1088.0,
+      "tol": {
+        "rel": 0.005
+      }
+    },
+    {
+      "type": "value",
+      "path": "values.gross_margin_pct",
+      "gold": 33.27,
+      "tol": {
+        "abs": 0.1
+      }
+    },
+    {
+      "type": "value",
+      "path": "values.pe",
+      "gold": 9.37,
+      "tol": {
+        "rel": 0.005
+      }
+    },
+    {
+      "type": "value",
+      "path": "values.market_cap_bn",
+      "gold": 28302.32,
+      "tol": {
+        "rel": 0.005
+      }
+    },
+    {
+      "type": "str_all",
+      "path": "source",
+      "accept": [
+        "financial_detail",
+        "stock_overview"
+      ]
+    }
+  ],
+  "contract_version": 2,
+  "provenance_contract": [
+    {
+      "tool": "stock_overview",
+      "source": "vietstock",
+      "as_of": "2026-11-01T23:22:51.336419+07:00",
+      "matched_entry_id": "ov:REE",
+      "response_sha256": "af1876b5899675410aae7e44218cc5d63405411edabbf8552290b8d982b7ed7d"
+    },
+    {
+      "tool": "financial_detail",
+      "source": "vietstock",
+      "as_of": "2026-11-01T22:54:47.651607+07:00",
+      "matched_entry_id": "fd:REE",
+      "response_sha256": "e48adcc08db4f369335475fa403f7df39512c7fcedc80d85663eb019d22c16e4"
+    }
+  ],
+  "payload_sha256": "df9ea3fd726342a0dada973420912b22030f0575e69709fc9e30e588cc136ae2",
+  "provenance_catalog": [
+    {
+      "tool": "stock_overview",
+      "source": "vietstock",
+      "as_of": "2026-11-01T23:22:51.336419+07:00",
+      "matched_entry_id": "ov:REE",
+      "response_sha256": "af1876b5899675410aae7e44218cc5d63405411edabbf8552290b8d982b7ed7d"
+    },
+    {
+      "tool": "financial_detail",
+      "source": "vietstock",
+      "as_of": "2026-11-01T22:54:47.651607+07:00",
+      "matched_entry_id": "fd:REE",
+      "response_sha256": "e48adcc08db4f369335475fa403f7df39512c7fcedc80d85663eb019d22c16e4"
+    }
+  ],
+  "required_payload_keys": [
+    "fd:REE",
+    "ov:REE"
+  ]
+}

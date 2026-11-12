@@ -1,0 +1,22 @@
+{
+  "pass": true,
+  "checks": [
+    "all seven actual evidence fields join",
+    "tampered call_id rejected",
+    "tampered tool rejected",
+    "tampered matched_entry_id rejected",
+    "tampered payload_sha256 rejected",
+    "tampered response_sha256 rejected",
+    "tampered source rejected",
+    "tampered as_of rejected",
+    "empty evidence is not grounded",
+    "rejected execution cannot ground evidence",
+    "no provider response is not no-call response",
+    "observed no-call provider response counted",
+    "DeepSeek selects registered DeepSeek filesystem config",
+    "Bolt config in DeepSeek registered path rejected",
+    "unknown phase cannot imply corrected execution",
+    "explicit completion trigger required"
+  ],
+  "auditor_sha256": "9468c987dd407ad5e7cb1ab89cd705b3d6fd1eefb0a52d0fb648630333e7716c"
+}

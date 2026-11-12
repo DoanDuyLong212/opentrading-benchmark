@@ -1,0 +1,2348 @@
+{
+  "completed_runs": {
+    "smoke": {
+      "audited_at": "2026-11-06T14:21:45.457864+00:00",
+      "directory": "/home/doanlong/extra/benchmark/experiments/finance-v42-study/results/financial-v42-smoke-20261106",
+      "manifest_sha256": "74d47a6deb33b477e62ed5279050293deeb2b53de29f367d4f39f4c8531f73e5",
+      "scheduled": 18,
+      "observed": 18,
+      "counts": {
+        "opencode": {
+          "started": 6,
+          "mcp_calls": 14,
+          "mcp_rejected": 12,
+          "mcp_successful": 2,
+          "mcp_error_unsupported_snapshot_query": 12,
+          "gateway_requests": 12,
+          "upstream_attempted": 12,
+          "usage_requests": 12,
+          "known_input_tokens": 28744,
+          "known_output_tokens": 1646,
+          "capture_files": 24,
+          "local_rejections": 0,
+          "public_contract_valid_trials": 2,
+          "public_contract_invalid_trials": 4,
+          "frozen_v41_primary": 2,
+          "v41_grader_delta_trials": 2,
+          "primary": 0,
+          "frozen_v3_primary": 2,
+          "semantic": 2,
+          "schema": 6,
+          "answered": 6,
+          "dnf": 0,
+          "fp": 0,
+          "native_unanswered": 0,
+          "native_recovery_trials": 0,
+          "usage_complete_trials": 6,
+          "wall_ms": 126268,
+          "answerable_started": 4,
+          "unanswerable_started": 2,
+          "false_refusal": 4,
+          "claimed_evidence_mismatch": 0,
+          "required_data_complete_trials": 2,
+          "stage_required_retrieval_incomplete": 4,
+          "answer_period_without_numeric_gold_period_check": 2,
+          "stage_public_contract_invalid": 2
+        },
+        "dsh": {
+          "started": 6,
+          "mcp_calls": 14,
+          "mcp_rejected": 12,
+          "mcp_successful": 2,
+          "mcp_error_unsupported_snapshot_query": 12,
+          "gateway_requests": 12,
+          "upstream_attempted": 12,
+          "usage_requests": 12,
+          "known_input_tokens": 23047,
+          "known_output_tokens": 1906,
+          "capture_files": 24,
+          "local_rejections": 0,
+          "public_contract_valid_trials": 4,
+          "public_contract_invalid_trials": 2,
+          "frozen_v41_primary": 2,
+          "v41_grader_delta_trials": 0,
+          "primary": 2,
+          "frozen_v3_primary": 2,
+          "semantic": 2,
+          "schema": 6,
+          "answered": 6,
+          "dnf": 0,
+          "fp": 0,
+          "native_unanswered": 0,
+          "native_recovery_trials": 0,
+          "usage_complete_trials": 6,
+          "wall_ms": 219332,
+          "answerable_started": 4,
+          "unanswerable_started": 2,
+          "false_refusal": 4,
+          "claimed_evidence_mismatch": 0,
+          "required_data_complete_trials": 2,
+          "stage_required_retrieval_incomplete": 4,
+          "answer_period_without_numeric_gold_period_check": 4,
+          "stage_primary_correct": 2
+        },
+        "opentrading": {
+          "started": 6,
+          "mcp_calls": 2,
+          "mcp_rejected": 0,
+          "mcp_successful": 2,
+          "gateway_requests": 10,
+          "upstream_attempted": 10,
+          "usage_requests": 10,
+          "known_input_tokens": 30663,
+          "known_output_tokens": 1637,
+          "capture_files": 20,
+          "local_rejections": 0,
+          "public_contract_valid_trials": 4,
+          "public_contract_invalid_trials": 2,
+          "frozen_v41_primary": 2,
+          "v41_grader_delta_trials": 0,
+          "primary": 2,
+          "frozen_v3_primary": 2,
+          "semantic": 2,
+          "schema": 2,
+          "answered": 4,
+          "dnf": 2,
+          "fp": 0,
+          "native_unanswered": 0,
+          "native_recovery_trials": 0,
+          "usage_complete_trials": 6,
+          "wall_ms": 90921,
+          "answerable_started": 4,
+          "unanswerable_started": 2,
+          "false_refusal": 0,
+          "claimed_evidence_mismatch": 0,
+          "answer_period_without_numeric_gold_period_check": 2,
+          "required_data_complete_trials": 2,
+          "stage_primary_correct": 2,
+          "stage_required_retrieval_incomplete": 2,
+          "stage_dnf": 2
+        }
+      },
+      "positions": {
+        "opencode": {
+          "1": 2,
+          "0": 2,
+          "2": 2
+        },
+        "dsh": {
+          "0": 2,
+          "2": 2,
+          "1": 2
+        },
+        "opentrading": {
+          "2": 2,
+          "1": 2,
+          "0": 2
+        }
+      },
+      "errors": [],
+      "fresh_grades": [
+        {
+          "trial_id": "smoke-quote-01__dsh__r1",
+          "primary": false,
+          "frozen_v41_primary": false,
+          "frozen_v3_primary": false,
+          "grounded": false,
+          "answered": true,
+          "false_refusal": true,
+          "public_contract": {
+            "valid": true,
+            "errors": [],
+            "branch": "refusal"
+          },
+          "required_data_complete": false,
+          "required_responses": 1,
+          "retrieved_required_responses": 0,
+          "failure_stage": "required_retrieval_incomplete",
+          "financial_check_coverage": {
+            "period_scored": false,
+            "unit_scored": true,
+            "answer_period": null
+          },
+          "fresh_grade": {
+            "task_id": "smoke-quote-01",
+            "success": false,
+            "fp": 0,
+            "error_type": "sai_don_vi",
+            "checks": [
+              {
+                "check": "provenance",
+                "pass": false,
+                "detail": "recorded response identity/provider/as_of coverage and snapshot hash; call IDs independently verified by driver"
+              },
+              {
+                "check": "unit:unit",
+                "pass": false,
+                "detail": "answer=None canon='' accept=['nghin_dong', 'nghin_dong', 'nghin_dong']"
+              },
+              {
+                "check": "value:value",
+                "pass": false,
+                "detail": "không đọc được số từ None"
+              }
+            ],
+            "schema_valid": true,
+            "provenance_correctness": false,
+            "semantic_correctness": false
+          },
+          "fresh_frozen_v41_grade": {
+            "task_id": "smoke-quote-01",
+            "success": false,
+            "fp": 0,
+            "error_type": "sai_don_vi",
+            "checks": [
+              {
+                "check": "provenance",
+                "pass": false,
+                "detail": "recorded response identity/provider/as_of coverage and snapshot hash; call IDs independently verified by driver"
+              },
+              {
+                "check": "unit:unit",
+                "pass": false,
+                "detail": "answer=None canon='' accept=['nghin_dong', 'nghin_dong', 'nghin_dong']"
+              },
+              {
+                "check": "value:value",
+                "pass": false,
+                "detail": "không đọc được số từ None"
+              }
+            ],
+            "schema_valid": true,
+            "provenance_correctness": false,
+            "semantic_correctness": false
+          },
+          "fresh_frozen_grade": {
+            "task_id": "smoke-quote-01",
+            "success": false,
+            "fp": 0,
+            "error_type": "sai_don_vi",
+            "checks": [
+              {
+                "check": "provenance",
+                "pass": false,
+                "detail": "recorded response identity/provider/as_of coverage and snapshot hash; call IDs independently verified by driver"
+              },
+              {
+                "check": "unit:unit",
+                "pass": false,
+                "detail": "answer=None canon='' accept=['nghin_dong', 'nghin_dong', 'nghin_dong']"
+              },
+              {
+                "check": "value:value",
+                "pass": false,
+                "detail": "không đọc được số từ None"
+              }
+            ],
+            "schema_valid": true,
+            "provenance_correctness": false,
+            "semantic_correctness": false
+          }
+        },
+        {
+          "trial_id": "smoke-quote-01__opencode__r1",
+          "primary": false,
+          "frozen_v41_primary": false,
+          "frozen_v3_primary": false,
+          "grounded": false,
+          "answered": true,
+          "false_refusal": true,
+          "public_contract": {
+            "valid": true,
+            "errors": [],
+            "branch": "refusal"
+          },
+          "required_data_complete": false,
+          "required_responses": 1,
+          "retrieved_required_responses": 0,
+          "failure_stage": "required_retrieval_incomplete",
+          "financial_check_coverage": {
+            "period_scored": false,
+            "unit_scored": true,
+            "answer_period": null
+          },
+          "fresh_grade": {
+            "task_id": "smoke-quote-01",
+            "success": false,
+            "fp": 0,
+            "error_type": "sai_don_vi",
+            "checks": [
+              {
+                "check": "provenance",
+                "pass": false,
+                "detail": "recorded response identity/provider/as_of coverage and snapshot hash; call IDs independently verified by driver"
+              },
+              {
+                "check": "unit:unit",
+                "pass": false,
+                "detail": "answer=None canon='' accept=['nghin_dong', 'nghin_dong', 'nghin_dong']"
+              },
+              {
+                "check": "value:value",
+                "pass": false,
+                "detail": "không đọc được số từ None"
+              }
+            ],
+            "schema_valid": true,
+            "provenance_correctness": false,
+            "semantic_correctness": false
+          },
+          "fresh_frozen_v41_grade": {
+            "task_id": "smoke-quote-01",
+            "success": false,
+            "fp": 0,
+            "error_type": "sai_don_vi",
+            "checks": [
+              {
+                "check": "provenance",
+                "pass": false,
+                "detail": "recorded response identity/provider/as_of coverage and snapshot hash; call IDs independently verified by driver"
+              },
+              {
+                "check": "unit:unit",
+                "pass": false,
+                "detail": "answer=None canon='' accept=['nghin_dong', 'nghin_dong', 'nghin_dong']"
+              },
+              {
+                "check": "value:value",
+                "pass": false,
+                "detail": "không đọc được số từ None"
+              }
+            ],
+            "schema_valid": true,
+            "provenance_correctness": false,
+            "semantic_correctness": false
+          },
+          "fresh_frozen_grade": {
+            "task_id": "smoke-quote-01",
+            "success": false,
+            "fp": 0,
+            "error_type": "sai_don_vi",
+            "checks": [
+              {
+                "check": "provenance",
+                "pass": false,
+                "detail": "recorded response identity/provider/as_of coverage and snapshot hash; call IDs independently verified by driver"
+              },
+              {
+                "check": "unit:unit",
+                "pass": false,
+                "detail": "answer=None canon='' accept=['nghin_dong', 'nghin_dong', 'nghin_dong']"
+              },
+              {
+                "check": "value:value",
+                "pass": false,
+                "detail": "không đọc được số từ None"
+              }
+            ],
+            "schema_valid": true,
+            "provenance_correctness": false,
+            "semantic_correctness": false
+          }
+        },
+        {
+          "trial_id": "smoke-quote-01__opentrading__r1",
+          "primary": true,
+          "frozen_v41_primary": true,
+          "frozen_v3_primary": true,
+          "grounded": true,
+          "answered": true,
+          "false_refusal": false,
+          "public_contract": {
+            "valid": true,
+            "errors": [],
+            "branch": "success"
+          },
+          "required_data_complete": true,
+          "required_responses": 1,
+          "retrieved_required_responses": 1,
+          "failure_stage": "primary_correct",
+          "financial_check_coverage": {
+            "period_scored": false,
+            "unit_scored": true,
+            "answer_period": "30/10/2026"
+          },
+          "fresh_grade": {
+            "task_id": "smoke-quote-01",
+            "success": true,
+            "fp": 0,
+            "error_type": null,
+            "checks": [
+              {
+                "check": "provenance",
+                "pass": true,
+                "detail": "recorded response identity/provider/as_of coverage and snapshot hash; call IDs independently verified by driver"
+              },
+              {
+                "check": "unit:unit",
+                "pass": true,
+                "detail": "answer='nghìn đồng' canon='nghin_dong' accept=['nghin_dong', 'nghin_dong', 'nghin_dong']"
+              },
+              {
+                "check": "value:value",
+                "pass": true,
+                "detail": "answer=21.0 gold=21.0 tol={'rel': 0.005}"
+              }
+            ],
+            "schema_valid": true,
+            "provenance_correctness": true,
+            "semantic_correctness": true
+          },
+          "fresh_frozen_v41_grade": {
+            "task_id": "smoke-quote-01",
+            "success": true,
+            "fp": 0,
+            "error_type": null,
+            "checks": [
+              {
+                "check": "provenance",
+                "pass": true,
+                "detail": "recorded response identity/provider/as_of coverage and snapshot hash; call IDs independently verified by driver"
+              },
+              {
+                "check": "unit:unit",
+                "pass": true,
+                "detail": "answer='nghìn đồng' canon='nghin_dong' accept=['nghin_dong', 'nghin_dong', 'nghin_dong']"
+              },
+              {
+                "check": "value:value",
+                "pass": true,
+                "detail": "answer=21.0 gold=21.0 tol={'rel': 0.005}"
+              }
+            ],
+            "schema_valid": true,
+            "provenance_correctness": true,
+            "semantic_correctness": true
+          },
+          "fresh_frozen_grade": {
+            "task_id": "smoke-quote-01",
+            "success": true,
+            "fp": 0,
+            "error_type": null,
+            "checks": [
+              {
+                "check": "provenance",
+                "pass": true,
+                "detail": "recorded response identity/provider/as_of coverage and snapshot hash; call IDs independently verified by driver"
+              },
+              {
+                "check": "unit:unit",
+                "pass": true,
+                "detail": "answer='nghìn đồng' canon='nghin_dong' accept=['nghin_dong', 'nghin_dong', 'nghin_dong']"
+              },
+              {
+                "check": "value:value",
+                "pass": true,
+                "detail": "answer=21.0 gold=21.0 tol={'rel': 0.005}"
+              }
+            ],
+            "schema_valid": true,
+            "provenance_correctness": true,
+            "semantic_correctness": true
+          }
+        },
+        {
+          "trial_id": "smoke-trap-01__opencode__r1",
+          "primary": false,
+          "frozen_v41_primary": true,
+          "frozen_v3_primary": true,
+          "grounded": true,
+          "answered": true,
+          "false_refusal": false,
+          "public_contract": {
+            "valid": false,
+            "errors": [
+              "Final response must be exactly one JSON object, without markdown or surrounding prose."
+            ],
+            "branch": null
+          },
+          "required_data_complete": true,
+          "required_responses": 1,
+          "retrieved_required_responses": 1,
+          "failure_stage": "public_contract_invalid",
+          "financial_check_coverage": {
+            "period_scored": false,
+            "unit_scored": false,
+            "answer_period": "gần nhất"
+          },
+          "fresh_grade": {
+            "task_id": "smoke-trap-01",
+            "success": true,
+            "fp": 0,
+            "error_type": null,
+            "checks": [
+              {
+                "check": "provenance",
+                "pass": true,
+                "detail": "recorded response identity/provider/as_of coverage and snapshot hash; call IDs independently verified by driver"
+              },
+              {
+                "check": "refusal_reference_empty",
+                "pass": true,
+                "detail": "Symbol-not-found claim requires an actual empty resolver payload"
+              },
+              {
+                "check": "refusal_no_conflicting_success",
+                "pass": true,
+                "detail": "Refusal must not also supply success results"
+              },
+              {
+                "check": "refusal_reason",
+                "pass": true,
+                "detail": "hit=['không tìm thấy', 'khong duoc giai ma thanh symbol hop le', 'tai san xyzx khong duoc giai ma'] bad=[]"
+              }
+            ],
+            "bonus": {
+              "numbers": [],
+              "strings": [],
+              "hit": false
+            },
+            "schema_valid": true,
+            "provenance_correctness": true,
+            "semantic_correctness": true
+          },
+          "fresh_frozen_v41_grade": {
+            "task_id": "smoke-trap-01",
+            "success": true,
+            "fp": 0,
+            "error_type": null,
+            "checks": [
+              {
+                "check": "provenance",
+                "pass": true,
+                "detail": "recorded response identity/provider/as_of coverage and snapshot hash; call IDs independently verified by driver"
+              },
+              {
+                "check": "refusal_reason",
+                "pass": true,
+                "detail": "hit=['không tìm thấy'] bad=[]"
+              }
+            ],
+            "bonus": {
+              "numbers": [],
+              "strings": [],
+              "hit": false
+            },
+            "schema_valid": true,
+            "provenance_correctness": true,
+            "semantic_correctness": true
+          },
+          "fresh_frozen_grade": {
+            "task_id": "smoke-trap-01",
+            "success": true,
+            "fp": 0,
+            "error_type": null,
+            "checks": [
+              {
+                "check": "provenance",
+                "pass": true,
+                "detail": "recorded response identity/provider/as_of coverage and snapshot hash; call IDs independently verified by driver"
+              },
+              {
+                "check": "refusal_reason",
+                "pass": true,
+                "detail": "hit=['không tìm thấy'] bad=[]"
+              }
+            ],
+            "bonus": {
+              "numbers": [],
+              "strings": [],
+              "hit": false
+            },
+            "schema_valid": true,
+            "provenance_correctness": true,
+            "semantic_correctness": true
+          }
+        },
+        {
+          "trial_id": "smoke-trap-01__opentrading__r1",
+          "primary": false,
+          "frozen_v41_primary": false,
+          "frozen_v3_primary": false,
+          "grounded": false,
+          "answered": true,
+          "false_refusal": false,
+          "public_contract": {
+            "valid": true,
+            "errors": [],
+            "branch": "refusal"
+          },
+          "required_data_complete": false,
+          "required_responses": 1,
+          "retrieved_required_responses": 0,
+          "failure_stage": "required_retrieval_incomplete",
+          "financial_check_coverage": {
+            "period_scored": false,
+            "unit_scored": false,
+            "answer_period": null
+          },
+          "fresh_grade": {
+            "task_id": "smoke-trap-01",
+            "success": false,
+            "fp": 0,
+            "error_type": "khong_tra_loi",
+            "checks": [
+              {
+                "check": "provenance",
+                "pass": false,
+                "detail": "recorded response identity/provider/as_of coverage and snapshot hash; call IDs independently verified by driver"
+              },
+              {
+                "check": "refusal_reference_empty",
+                "pass": true,
+                "detail": "Symbol-not-found claim requires an actual empty resolver payload"
+              },
+              {
+                "check": "refusal_no_conflicting_success",
+                "pass": true,
+                "detail": "Refusal must not also supply success results"
+              },
+              {
+                "check": "refusal_reason",
+                "pass": false,
+                "detail": "hit=[] bad=[]"
+              }
+            ],
+            "bonus": {
+              "numbers": [],
+              "strings": [],
+              "hit": false
+            },
+            "schema_valid": false,
+            "provenance_correctness": false,
+            "semantic_correctness": false
+          },
+          "fresh_frozen_v41_grade": {
+            "task_id": "smoke-trap-01",
+            "success": false,
+            "fp": 0,
+            "error_type": "khong_tra_loi",
+            "checks": [
+              {
+                "check": "provenance",
+                "pass": false,
+                "detail": "recorded response identity/provider/as_of coverage and snapshot hash; call IDs independently verified by driver"
+              },
+              {
+                "check": "refusal_reason",
+                "pass": false,
+                "detail": "hit=[] bad=[]"
+              }
+            ],
+            "bonus": {
+              "numbers": [],
+              "strings": [],
+              "hit": false
+            },
+            "schema_valid": false,
+            "provenance_correctness": false,
+            "semantic_correctness": false
+          },
+          "fresh_frozen_grade": {
+            "task_id": "smoke-trap-01",
+            "success": false,
+            "fp": 0,
+            "error_type": "khong_tra_loi",
+            "checks": [
+              {
+                "check": "provenance",
+                "pass": false,
+                "detail": "recorded response identity/provider/as_of coverage and snapshot hash; call IDs independently verified by driver"
+              },
+              {
+                "check": "refusal_reason",
+                "pass": false,
+                "detail": "hit=[] bad=[]"
+              }
+            ],
+            "bonus": {
+              "numbers": [],
+              "strings": [],
+              "hit": false
+            },
+            "schema_valid": false,
+            "provenance_correctness": false,
+            "semantic_correctness": false
+          }
+        },
+        {
+          "trial_id": "smoke-trap-01__dsh__r1",
+          "primary": true,
+          "frozen_v41_primary": true,
+          "frozen_v3_primary": true,
+          "grounded": true,
+          "answered": true,
+          "false_refusal": false,
+          "public_contract": {
+            "valid": true,
+            "errors": [],
+            "branch": "refusal"
+          },
+          "required_data_complete": true,
+          "required_responses": 1,
+          "retrieved_required_responses": 1,
+          "failure_stage": "primary_correct",
+          "financial_check_coverage": {
+            "period_scored": false,
+            "unit_scored": false,
+            "answer_period": "gần nhất"
+          },
+          "fresh_grade": {
+            "task_id": "smoke-trap-01",
+            "success": true,
+            "fp": 0,
+            "error_type": null,
+            "checks": [
+              {
+                "check": "provenance",
+                "pass": true,
+                "detail": "recorded response identity/provider/as_of coverage and snapshot hash; call IDs independently verified by driver"
+              },
+              {
+                "check": "refusal_reference_empty",
+                "pass": true,
+                "detail": "Symbol-not-found claim requires an actual empty resolver payload"
+              },
+              {
+                "check": "refusal_no_conflicting_success",
+                "pass": true,
+                "detail": "Refusal must not also supply success results"
+              },
+              {
+                "check": "refusal_reason",
+                "pass": true,
+                "detail": "hit=['không tồn tại', 'không có', 'không tìm thấy', 'không hợp lệ', 'mã không', 'ma khong hop le'] bad=[]"
+              }
+            ],
+            "bonus": {
+              "numbers": [],
+              "strings": [],
+              "hit": false
+            },
+            "schema_valid": true,
+            "provenance_correctness": true,
+            "semantic_correctness": true
+          },
+          "fresh_frozen_v41_grade": {
+            "task_id": "smoke-trap-01",
+            "success": true,
+            "fp": 0,
+            "error_type": null,
+            "checks": [
+              {
+                "check": "provenance",
+                "pass": true,
+                "detail": "recorded response identity/provider/as_of coverage and snapshot hash; call IDs independently verified by driver"
+              },
+              {
+                "check": "refusal_reason",
+                "pass": true,
+                "detail": "hit=['không tồn tại', 'không có', 'không tìm thấy', 'không hợp lệ', 'mã không'] bad=[]"
+              }
+            ],
+            "bonus": {
+              "numbers": [],
+              "strings": [],
+              "hit": false
+            },
+            "schema_valid": true,
+            "provenance_correctness": true,
+            "semantic_correctness": true
+          },
+          "fresh_frozen_grade": {
+            "task_id": "smoke-trap-01",
+            "success": true,
+            "fp": 0,
+            "error_type": null,
+            "checks": [
+              {
+                "check": "provenance",
+                "pass": true,
+                "detail": "recorded response identity/provider/as_of coverage and snapshot hash; call IDs independently verified by driver"
+              },
+              {
+                "check": "refusal_reason",
+                "pass": true,
+                "detail": "hit=['không tồn tại', 'không có', 'không tìm thấy', 'không hợp lệ', 'mã không'] bad=[]"
+              }
+            ],
+            "bonus": {
+              "numbers": [],
+              "strings": [],
+              "hit": false
+            },
+            "schema_valid": true,
+            "provenance_correctness": true,
+            "semantic_correctness": true
+          }
+        },
+        {
+          "trial_id": "smoke-agg-01__opentrading__r1",
+          "primary": false,
+          "frozen_v41_primary": false,
+          "frozen_v3_primary": false,
+          "grounded": false,
+          "answered": false,
+          "false_refusal": false,
+          "public_contract": {
+            "valid": false,
+            "errors": [
+              "Final response must be exactly one JSON object, without markdown or surrounding prose."
+            ],
+            "branch": null
+          },
+          "required_data_complete": false,
+          "required_responses": 5,
+          "retrieved_required_responses": 0,
+          "failure_stage": "dnf",
+          "financial_check_coverage": {
+            "period_scored": false,
+            "unit_scored": true,
+            "answer_period": null
+          },
+          "fresh_grade": {
+            "success": false,
+            "fp": 0,
+            "schema_valid": false,
+            "semantic_correctness": false,
+            "error_type": "missing_answer"
+          },
+          "fresh_frozen_v41_grade": {
+            "success": false,
+            "fp": 0,
+            "schema_valid": false,
+            "semantic_correctness": false,
+            "error_type": "missing_answer"
+          },
+          "fresh_frozen_grade": {
+            "success": false,
+            "fp": 0,
+            "schema_valid": false,
+            "semantic_correctness": false,
+            "error_type": "missing_answer"
+          }
+        },
+        {
+          "trial_id": "smoke-agg-01__dsh__r1",
+          "primary": false,
+          "frozen_v41_primary": false,
+          "frozen_v3_primary": false,
+          "grounded": false,
+          "answered": true,
+          "false_refusal": true,
+          "public_contract": {
+            "valid": false,
+            "errors": [
+              "Final response must be exactly one JSON object, without markdown or surrounding prose."
+            ],
+            "branch": null
+          },
+          "required_data_complete": false,
+          "required_responses": 5,
+          "retrieved_required_responses": 0,
+          "failure_stage": "required_retrieval_incomplete",
+          "financial_check_coverage": {
+            "period_scored": false,
+            "unit_scored": true,
+            "answer_period": "phiên 2026-10-30"
+          },
+          "fresh_grade": {
+            "task_id": "smoke-agg-01",
+            "success": false,
+            "fp": 0,
+            "error_type": "sai_so",
+            "checks": [
+              {
+                "check": "provenance",
+                "pass": false,
+                "detail": "recorded response identity/provider/as_of coverage and snapshot hash; call IDs independently verified by driver"
+              },
+              {
+                "check": "value:values.VCB",
+                "pass": false,
+                "detail": "không đọc được số từ None"
+              },
+              {
+                "check": "value:values.BID",
+                "pass": false,
+                "detail": "không đọc được số từ None"
+              },
+              {
+                "check": "value:values.CTG",
+                "pass": false,
+                "detail": "không đọc được số từ None"
+              },
+              {
+                "check": "value:values.TCB",
+                "pass": false,
+                "detail": "không đọc được số từ None"
+              },
+              {
+                "check": "value:values.MBB",
+                "pass": false,
+                "detail": "không đọc được số từ None"
+              },
+              {
+                "check": "value:values.mean",
+                "pass": false,
+                "detail": "không đọc được số từ None"
+              },
+              {
+                "check": "unit:unit",
+                "pass": true,
+                "detail": "answer='nghìn đồng' canon='nghin_dong' accept=['nghin_dong', 'nghin_dong', 'nghin_dong']"
+              }
+            ],
+            "schema_valid": true,
+            "provenance_correctness": false,
+            "semantic_correctness": false
+          },
+          "fresh_frozen_v41_grade": {
+            "task_id": "smoke-agg-01",
+            "success": false,
+            "fp": 0,
+            "error_type": "sai_so",
+            "checks": [
+              {
+                "check": "provenance",
+                "pass": false,
+                "detail": "recorded response identity/provider/as_of coverage and snapshot hash; call IDs independently verified by driver"
+              },
+              {
+                "check": "value:values.VCB",
+                "pass": false,
+                "detail": "không đọc được số từ None"
+              },
+              {
+                "check": "value:values.BID",
+                "pass": false,
+                "detail": "không đọc được số từ None"
+              },
+              {
+                "check": "value:values.CTG",
+                "pass": false,
+                "detail": "không đọc được số từ None"
+              },
+              {
+                "check": "value:values.TCB",
+                "pass": false,
+                "detail": "không đọc được số từ None"
+              },
+              {
+                "check": "value:values.MBB",
+                "pass": false,
+                "detail": "không đọc được số từ None"
+              },
+              {
+                "check": "value:values.mean",
+                "pass": false,
+                "detail": "không đọc được số từ None"
+              },
+              {
+                "check": "unit:unit",
+                "pass": true,
+                "detail": "answer='nghìn đồng' canon='nghin_dong' accept=['nghin_dong', 'nghin_dong', 'nghin_dong']"
+              }
+            ],
+            "schema_valid": true,
+            "provenance_correctness": false,
+            "semantic_correctness": false
+          },
+          "fresh_frozen_grade": {
+            "task_id": "smoke-agg-01",
+            "success": false,
+            "fp": 0,
+            "error_type": "sai_so",
+            "checks": [
+              {
+                "check": "provenance",
+                "pass": false,
+                "detail": "recorded response identity/provider/as_of coverage and snapshot hash; call IDs independently verified by driver"
+              },
+              {
+                "check": "value:values.VCB",
+                "pass": false,
+                "detail": "không đọc được số từ None"
+              },
+              {
+                "check": "value:values.BID",
+                "pass": false,
+                "detail": "không đọc được số từ None"
+              },
+              {
+                "check": "value:values.CTG",
+                "pass": false,
+                "detail": "không đọc được số từ None"
+              },
+              {
+                "check": "value:values.TCB",
+                "pass": false,
+                "detail": "không đọc được số từ None"
+              },
+              {
+                "check": "value:values.MBB",
+                "pass": false,
+                "detail": "không đọc được số từ None"
+              },
+              {
+                "check": "value:values.mean",
+                "pass": false,
+                "detail": "không đọc được số từ None"
+              },
+              {
+                "check": "unit:unit",
+                "pass": true,
+                "detail": "answer='nghìn đồng' canon='nghin_dong' accept=['nghin_dong', 'nghin_dong', 'nghin_dong']"
+              }
+            ],
+            "schema_valid": true,
+            "provenance_correctness": false,
+            "semantic_correctness": false
+          }
+        },
+        {
+          "trial_id": "smoke-agg-01__opencode__r1",
+          "primary": false,
+          "frozen_v41_primary": false,
+          "frozen_v3_primary": false,
+          "grounded": false,
+          "answered": true,
+          "false_refusal": true,
+          "public_contract": {
+            "valid": false,
+            "errors": [
+              "Final response must be exactly one JSON object, without markdown or surrounding prose."
+            ],
+            "branch": null
+          },
+          "required_data_complete": false,
+          "required_responses": 5,
+          "retrieved_required_responses": 0,
+          "failure_stage": "required_retrieval_incomplete",
+          "financial_check_coverage": {
+            "period_scored": false,
+            "unit_scored": true,
+            "answer_period": null
+          },
+          "fresh_grade": {
+            "task_id": "smoke-agg-01",
+            "success": false,
+            "fp": 0,
+            "error_type": "sai_so",
+            "checks": [
+              {
+                "check": "provenance",
+                "pass": false,
+                "detail": "recorded response identity/provider/as_of coverage and snapshot hash; call IDs independently verified by driver"
+              },
+              {
+                "check": "value:values.VCB",
+                "pass": false,
+                "detail": "không đọc được số từ None"
+              },
+              {
+                "check": "value:values.BID",
+                "pass": false,
+                "detail": "không đọc được số từ None"
+              },
+              {
+                "check": "value:values.CTG",
+                "pass": false,
+                "detail": "không đọc được số từ None"
+              },
+              {
+                "check": "value:values.TCB",
+                "pass": false,
+                "detail": "không đọc được số từ None"
+              },
+              {
+                "check": "value:values.MBB",
+                "pass": false,
+                "detail": "không đọc được số từ None"
+              },
+              {
+                "check": "value:values.mean",
+                "pass": false,
+                "detail": "không đọc được số từ None"
+              },
+              {
+                "check": "unit:unit",
+                "pass": false,
+                "detail": "answer=None canon='' accept=['nghin_dong', 'nghin_dong', 'nghin_dong']"
+              }
+            ],
+            "schema_valid": true,
+            "provenance_correctness": false,
+            "semantic_correctness": false
+          },
+          "fresh_frozen_v41_grade": {
+            "task_id": "smoke-agg-01",
+            "success": false,
+            "fp": 0,
+            "error_type": "sai_so",
+            "checks": [
+              {
+                "check": "provenance",
+                "pass": false,
+                "detail": "recorded response identity/provider/as_of coverage and snapshot hash; call IDs independently verified by driver"
+              },
+              {
+                "check": "value:values.VCB",
+                "pass": false,
+                "detail": "không đọc được số từ None"
+              },
+              {
+                "check": "value:values.BID",
+                "pass": false,
+                "detail": "không đọc được số từ None"
+              },
+              {
+                "check": "value:values.CTG",
+                "pass": false,
+                "detail": "không đọc được số từ None"
+              },
+              {
+                "check": "value:values.TCB",
+                "pass": false,
+                "detail": "không đọc được số từ None"
+              },
+              {
+                "check": "value:values.MBB",
+                "pass": false,
+                "detail": "không đọc được số từ None"
+              },
+              {
+                "check": "value:values.mean",
+                "pass": false,
+                "detail": "không đọc được số từ None"
+              },
+              {
+                "check": "unit:unit",
+                "pass": false,
+                "detail": "answer=None canon='' accept=['nghin_dong', 'nghin_dong', 'nghin_dong']"
+              }
+            ],
+            "schema_valid": true,
+            "provenance_correctness": false,
+            "semantic_correctness": false
+          },
+          "fresh_frozen_grade": {
+            "task_id": "smoke-agg-01",
+            "success": false,
+            "fp": 0,
+            "error_type": "sai_so",
+            "checks": [
+              {
+                "check": "provenance",
+                "pass": false,
+                "detail": "recorded response identity/provider/as_of coverage and snapshot hash; call IDs independently verified by driver"
+              },
+              {
+                "check": "value:values.VCB",
+                "pass": false,
+                "detail": "không đọc được số từ None"
+              },
+              {
+                "check": "value:values.BID",
+                "pass": false,
+                "detail": "không đọc được số từ None"
+              },
+              {
+                "check": "value:values.CTG",
+                "pass": false,
+                "detail": "không đọc được số từ None"
+              },
+              {
+                "check": "value:values.TCB",
+                "pass": false,
+                "detail": "không đọc được số từ None"
+              },
+              {
+                "check": "value:values.MBB",
+                "pass": false,
+                "detail": "không đọc được số từ None"
+              },
+              {
+                "check": "value:values.mean",
+                "pass": false,
+                "detail": "không đọc được số từ None"
+              },
+              {
+                "check": "unit:unit",
+                "pass": false,
+                "detail": "answer=None canon='' accept=['nghin_dong', 'nghin_dong', 'nghin_dong']"
+              }
+            ],
+            "schema_valid": true,
+            "provenance_correctness": false,
+            "semantic_correctness": false
+          }
+        },
+        {
+          "trial_id": "smoke-trap-01__opencode__r2",
+          "primary": false,
+          "frozen_v41_primary": true,
+          "frozen_v3_primary": true,
+          "grounded": true,
+          "answered": true,
+          "false_refusal": false,
+          "public_contract": {
+            "valid": false,
+            "errors": [
+              "Final response must be exactly one JSON object, without markdown or surrounding prose."
+            ],
+            "branch": null
+          },
+          "required_data_complete": true,
+          "required_responses": 1,
+          "retrieved_required_responses": 1,
+          "failure_stage": "public_contract_invalid",
+          "financial_check_coverage": {
+            "period_scored": false,
+            "unit_scored": false,
+            "answer_period": "gần nhất"
+          },
+          "fresh_grade": {
+            "task_id": "smoke-trap-01",
+            "success": true,
+            "fp": 0,
+            "error_type": null,
+            "checks": [
+              {
+                "check": "provenance",
+                "pass": true,
+                "detail": "recorded response identity/provider/as_of coverage and snapshot hash; call IDs independently verified by driver"
+              },
+              {
+                "check": "refusal_reference_empty",
+                "pass": true,
+                "detail": "Symbol-not-found claim requires an actual empty resolver payload"
+              },
+              {
+                "check": "refusal_no_conflicting_success",
+                "pass": true,
+                "detail": "Refusal must not also supply success results"
+              },
+              {
+                "check": "refusal_reason",
+                "pass": true,
+                "detail": "hit=['không tìm thấy', 'khong duoc giai ma thanh symbol hop le', 'tai san xyzx khong duoc giai ma', 'tai san khong xac dinh'] bad=[]"
+              }
+            ],
+            "bonus": {
+              "numbers": [],
+              "strings": [],
+              "hit": false
+            },
+            "schema_valid": true,
+            "provenance_correctness": true,
+            "semantic_correctness": true
+          },
+          "fresh_frozen_v41_grade": {
+            "task_id": "smoke-trap-01",
+            "success": true,
+            "fp": 0,
+            "error_type": null,
+            "checks": [
+              {
+                "check": "provenance",
+                "pass": true,
+                "detail": "recorded response identity/provider/as_of coverage and snapshot hash; call IDs independently verified by driver"
+              },
+              {
+                "check": "refusal_reason",
+                "pass": true,
+                "detail": "hit=['không tìm thấy'] bad=[]"
+              }
+            ],
+            "bonus": {
+              "numbers": [],
+              "strings": [],
+              "hit": false
+            },
+            "schema_valid": true,
+            "provenance_correctness": true,
+            "semantic_correctness": true
+          },
+          "fresh_frozen_grade": {
+            "task_id": "smoke-trap-01",
+            "success": true,
+            "fp": 0,
+            "error_type": null,
+            "checks": [
+              {
+                "check": "provenance",
+                "pass": true,
+                "detail": "recorded response identity/provider/as_of coverage and snapshot hash; call IDs independently verified by driver"
+              },
+              {
+                "check": "refusal_reason",
+                "pass": true,
+                "detail": "hit=['không tìm thấy'] bad=[]"
+              }
+            ],
+            "bonus": {
+              "numbers": [],
+              "strings": [],
+              "hit": false
+            },
+            "schema_valid": true,
+            "provenance_correctness": true,
+            "semantic_correctness": true
+          }
+        },
+        {
+          "trial_id": "smoke-trap-01__opentrading__r2",
+          "primary": false,
+          "frozen_v41_primary": false,
+          "frozen_v3_primary": false,
+          "grounded": false,
+          "answered": true,
+          "false_refusal": false,
+          "public_contract": {
+            "valid": true,
+            "errors": [],
+            "branch": "refusal"
+          },
+          "required_data_complete": false,
+          "required_responses": 1,
+          "retrieved_required_responses": 0,
+          "failure_stage": "required_retrieval_incomplete",
+          "financial_check_coverage": {
+            "period_scored": false,
+            "unit_scored": false,
+            "answer_period": null
+          },
+          "fresh_grade": {
+            "task_id": "smoke-trap-01",
+            "success": false,
+            "fp": 0,
+            "error_type": "khong_tra_loi",
+            "checks": [
+              {
+                "check": "provenance",
+                "pass": false,
+                "detail": "recorded response identity/provider/as_of coverage and snapshot hash; call IDs independently verified by driver"
+              },
+              {
+                "check": "refusal_reference_empty",
+                "pass": true,
+                "detail": "Symbol-not-found claim requires an actual empty resolver payload"
+              },
+              {
+                "check": "refusal_no_conflicting_success",
+                "pass": true,
+                "detail": "Refusal must not also supply success results"
+              },
+              {
+                "check": "refusal_reason",
+                "pass": false,
+                "detail": "hit=[] bad=[]"
+              }
+            ],
+            "bonus": {
+              "numbers": [],
+              "strings": [],
+              "hit": false
+            },
+            "schema_valid": false,
+            "provenance_correctness": false,
+            "semantic_correctness": false
+          },
+          "fresh_frozen_v41_grade": {
+            "task_id": "smoke-trap-01",
+            "success": false,
+            "fp": 0,
+            "error_type": "khong_tra_loi",
+            "checks": [
+              {
+                "check": "provenance",
+                "pass": false,
+                "detail": "recorded response identity/provider/as_of coverage and snapshot hash; call IDs independently verified by driver"
+              },
+              {
+                "check": "refusal_reason",
+                "pass": false,
+                "detail": "hit=[] bad=[]"
+              }
+            ],
+            "bonus": {
+              "numbers": [],
+              "strings": [],
+              "hit": false
+            },
+            "schema_valid": false,
+            "provenance_correctness": false,
+            "semantic_correctness": false
+          },
+          "fresh_frozen_grade": {
+            "task_id": "smoke-trap-01",
+            "success": false,
+            "fp": 0,
+            "error_type": "khong_tra_loi",
+            "checks": [
+              {
+                "check": "provenance",
+                "pass": false,
+                "detail": "recorded response identity/provider/as_of coverage and snapshot hash; call IDs independently verified by driver"
+              },
+              {
+                "check": "refusal_reason",
+                "pass": false,
+                "detail": "hit=[] bad=[]"
+              }
+            ],
+            "bonus": {
+              "numbers": [],
+              "strings": [],
+              "hit": false
+            },
+            "schema_valid": false,
+            "provenance_correctness": false,
+            "semantic_correctness": false
+          }
+        },
+        {
+          "trial_id": "smoke-trap-01__dsh__r2",
+          "primary": true,
+          "frozen_v41_primary": true,
+          "frozen_v3_primary": true,
+          "grounded": true,
+          "answered": true,
+          "false_refusal": false,
+          "public_contract": {
+            "valid": true,
+            "errors": [],
+            "branch": "refusal"
+          },
+          "required_data_complete": true,
+          "required_responses": 1,
+          "retrieved_required_responses": 1,
+          "failure_stage": "primary_correct",
+          "financial_check_coverage": {
+            "period_scored": false,
+            "unit_scored": false,
+            "answer_period": "gần nhất"
+          },
+          "fresh_grade": {
+            "task_id": "smoke-trap-01",
+            "success": true,
+            "fp": 0,
+            "error_type": null,
+            "checks": [
+              {
+                "check": "provenance",
+                "pass": true,
+                "detail": "recorded response identity/provider/as_of coverage and snapshot hash; call IDs independently verified by driver"
+              },
+              {
+                "check": "refusal_reference_empty",
+                "pass": true,
+                "detail": "Symbol-not-found claim requires an actual empty resolver payload"
+              },
+              {
+                "check": "refusal_no_conflicting_success",
+                "pass": true,
+                "detail": "Refusal must not also supply success results"
+              },
+              {
+                "check": "refusal_reason",
+                "pass": true,
+                "detail": "hit=['không có', 'không tìm thấy', 'mã không', 'khong duoc giai ma thanh symbol hop le', 'tai san xyzx khong duoc giai ma', 'ma khong xac dinh'] bad=[]"
+              }
+            ],
+            "bonus": {
+              "numbers": [],
+              "strings": [],
+              "hit": false
+            },
+            "schema_valid": true,
+            "provenance_correctness": true,
+            "semantic_correctness": true
+          },
+          "fresh_frozen_v41_grade": {
+            "task_id": "smoke-trap-01",
+            "success": true,
+            "fp": 0,
+            "error_type": null,
+            "checks": [
+              {
+                "check": "provenance",
+                "pass": true,
+                "detail": "recorded response identity/provider/as_of coverage and snapshot hash; call IDs independently verified by driver"
+              },
+              {
+                "check": "refusal_reason",
+                "pass": true,
+                "detail": "hit=['không có', 'không tìm thấy', 'mã không'] bad=[]"
+              }
+            ],
+            "bonus": {
+              "numbers": [],
+              "strings": [],
+              "hit": false
+            },
+            "schema_valid": true,
+            "provenance_correctness": true,
+            "semantic_correctness": true
+          },
+          "fresh_frozen_grade": {
+            "task_id": "smoke-trap-01",
+            "success": true,
+            "fp": 0,
+            "error_type": null,
+            "checks": [
+              {
+                "check": "provenance",
+                "pass": true,
+                "detail": "recorded response identity/provider/as_of coverage and snapshot hash; call IDs independently verified by driver"
+              },
+              {
+                "check": "refusal_reason",
+                "pass": true,
+                "detail": "hit=['không có', 'không tìm thấy', 'mã không'] bad=[]"
+              }
+            ],
+            "bonus": {
+              "numbers": [],
+              "strings": [],
+              "hit": false
+            },
+            "schema_valid": true,
+            "provenance_correctness": true,
+            "semantic_correctness": true
+          }
+        },
+        {
+          "trial_id": "smoke-agg-01__dsh__r2",
+          "primary": false,
+          "frozen_v41_primary": false,
+          "frozen_v3_primary": false,
+          "grounded": false,
+          "answered": true,
+          "false_refusal": true,
+          "public_contract": {
+            "valid": false,
+            "errors": [
+              "Final response must be exactly one JSON object, without markdown or surrounding prose."
+            ],
+            "branch": null
+          },
+          "required_data_complete": false,
+          "required_responses": 5,
+          "retrieved_required_responses": 0,
+          "failure_stage": "required_retrieval_incomplete",
+          "financial_check_coverage": {
+            "period_scored": false,
+            "unit_scored": true,
+            "answer_period": "phiên 2026-10-30"
+          },
+          "fresh_grade": {
+            "task_id": "smoke-agg-01",
+            "success": false,
+            "fp": 0,
+            "error_type": "sai_so",
+            "checks": [
+              {
+                "check": "provenance",
+                "pass": false,
+                "detail": "recorded response identity/provider/as_of coverage and snapshot hash; call IDs independently verified by driver"
+              },
+              {
+                "check": "value:values.VCB",
+                "pass": false,
+                "detail": "không đọc được số từ None"
+              },
+              {
+                "check": "value:values.BID",
+                "pass": false,
+                "detail": "không đọc được số từ None"
+              },
+              {
+                "check": "value:values.CTG",
+                "pass": false,
+                "detail": "không đọc được số từ None"
+              },
+              {
+                "check": "value:values.TCB",
+                "pass": false,
+                "detail": "không đọc được số từ None"
+              },
+              {
+                "check": "value:values.MBB",
+                "pass": false,
+                "detail": "không đọc được số từ None"
+              },
+              {
+                "check": "value:values.mean",
+                "pass": false,
+                "detail": "không đọc được số từ None"
+              },
+              {
+                "check": "unit:unit",
+                "pass": true,
+                "detail": "answer='nghìn đồng' canon='nghin_dong' accept=['nghin_dong', 'nghin_dong', 'nghin_dong']"
+              }
+            ],
+            "schema_valid": true,
+            "provenance_correctness": false,
+            "semantic_correctness": false
+          },
+          "fresh_frozen_v41_grade": {
+            "task_id": "smoke-agg-01",
+            "success": false,
+            "fp": 0,
+            "error_type": "sai_so",
+            "checks": [
+              {
+                "check": "provenance",
+                "pass": false,
+                "detail": "recorded response identity/provider/as_of coverage and snapshot hash; call IDs independently verified by driver"
+              },
+              {
+                "check": "value:values.VCB",
+                "pass": false,
+                "detail": "không đọc được số từ None"
+              },
+              {
+                "check": "value:values.BID",
+                "pass": false,
+                "detail": "không đọc được số từ None"
+              },
+              {
+                "check": "value:values.CTG",
+                "pass": false,
+                "detail": "không đọc được số từ None"
+              },
+              {
+                "check": "value:values.TCB",
+                "pass": false,
+                "detail": "không đọc được số từ None"
+              },
+              {
+                "check": "value:values.MBB",
+                "pass": false,
+                "detail": "không đọc được số từ None"
+              },
+              {
+                "check": "value:values.mean",
+                "pass": false,
+                "detail": "không đọc được số từ None"
+              },
+              {
+                "check": "unit:unit",
+                "pass": true,
+                "detail": "answer='nghìn đồng' canon='nghin_dong' accept=['nghin_dong', 'nghin_dong', 'nghin_dong']"
+              }
+            ],
+            "schema_valid": true,
+            "provenance_correctness": false,
+            "semantic_correctness": false
+          },
+          "fresh_frozen_grade": {
+            "task_id": "smoke-agg-01",
+            "success": false,
+            "fp": 0,
+            "error_type": "sai_so",
+            "checks": [
+              {
+                "check": "provenance",
+                "pass": false,
+                "detail": "recorded response identity/provider/as_of coverage and snapshot hash; call IDs independently verified by driver"
+              },
+              {
+                "check": "value:values.VCB",
+                "pass": false,
+                "detail": "không đọc được số từ None"
+              },
+              {
+                "check": "value:values.BID",
+                "pass": false,
+                "detail": "không đọc được số từ None"
+              },
+              {
+                "check": "value:values.CTG",
+                "pass": false,
+                "detail": "không đọc được số từ None"
+              },
+              {
+                "check": "value:values.TCB",
+                "pass": false,
+                "detail": "không đọc được số từ None"
+              },
+              {
+                "check": "value:values.MBB",
+                "pass": false,
+                "detail": "không đọc được số từ None"
+              },
+              {
+                "check": "value:values.mean",
+                "pass": false,
+                "detail": "không đọc được số từ None"
+              },
+              {
+                "check": "unit:unit",
+                "pass": true,
+                "detail": "answer='nghìn đồng' canon='nghin_dong' accept=['nghin_dong', 'nghin_dong', 'nghin_dong']"
+              }
+            ],
+            "schema_valid": true,
+            "provenance_correctness": false,
+            "semantic_correctness": false
+          }
+        },
+        {
+          "trial_id": "smoke-agg-01__opencode__r2",
+          "primary": false,
+          "frozen_v41_primary": false,
+          "frozen_v3_primary": false,
+          "grounded": false,
+          "answered": true,
+          "false_refusal": true,
+          "public_contract": {
+            "valid": false,
+            "errors": [
+              "Final response must be exactly one JSON object, without markdown or surrounding prose."
+            ],
+            "branch": null
+          },
+          "required_data_complete": false,
+          "required_responses": 5,
+          "retrieved_required_responses": 0,
+          "failure_stage": "required_retrieval_incomplete",
+          "financial_check_coverage": {
+            "period_scored": false,
+            "unit_scored": true,
+            "answer_period": null
+          },
+          "fresh_grade": {
+            "task_id": "smoke-agg-01",
+            "success": false,
+            "fp": 0,
+            "error_type": "sai_so",
+            "checks": [
+              {
+                "check": "provenance",
+                "pass": false,
+                "detail": "recorded response identity/provider/as_of coverage and snapshot hash; call IDs independently verified by driver"
+              },
+              {
+                "check": "value:values.VCB",
+                "pass": false,
+                "detail": "không đọc được số từ None"
+              },
+              {
+                "check": "value:values.BID",
+                "pass": false,
+                "detail": "không đọc được số từ None"
+              },
+              {
+                "check": "value:values.CTG",
+                "pass": false,
+                "detail": "không đọc được số từ None"
+              },
+              {
+                "check": "value:values.TCB",
+                "pass": false,
+                "detail": "không đọc được số từ None"
+              },
+              {
+                "check": "value:values.MBB",
+                "pass": false,
+                "detail": "không đọc được số từ None"
+              },
+              {
+                "check": "value:values.mean",
+                "pass": false,
+                "detail": "không đọc được số từ None"
+              },
+              {
+                "check": "unit:unit",
+                "pass": false,
+                "detail": "answer=None canon='' accept=['nghin_dong', 'nghin_dong', 'nghin_dong']"
+              }
+            ],
+            "schema_valid": true,
+            "provenance_correctness": false,
+            "semantic_correctness": false
+          },
+          "fresh_frozen_v41_grade": {
+            "task_id": "smoke-agg-01",
+            "success": false,
+            "fp": 0,
+            "error_type": "sai_so",
+            "checks": [
+              {
+                "check": "provenance",
+                "pass": false,
+                "detail": "recorded response identity/provider/as_of coverage and snapshot hash; call IDs independently verified by driver"
+              },
+              {
+                "check": "value:values.VCB",
+                "pass": false,
+                "detail": "không đọc được số từ None"
+              },
+              {
+                "check": "value:values.BID",
+                "pass": false,
+                "detail": "không đọc được số từ None"
+              },
+              {
+                "check": "value:values.CTG",
+                "pass": false,
+                "detail": "không đọc được số từ None"
+              },
+              {
+                "check": "value:values.TCB",
+                "pass": false,
+                "detail": "không đọc được số từ None"
+              },
+              {
+                "check": "value:values.MBB",
+                "pass": false,
+                "detail": "không đọc được số từ None"
+              },
+              {
+                "check": "value:values.mean",
+                "pass": false,
+                "detail": "không đọc được số từ None"
+              },
+              {
+                "check": "unit:unit",
+                "pass": false,
+                "detail": "answer=None canon='' accept=['nghin_dong', 'nghin_dong', 'nghin_dong']"
+              }
+            ],
+            "schema_valid": true,
+            "provenance_correctness": false,
+            "semantic_correctness": false
+          },
+          "fresh_frozen_grade": {
+            "task_id": "smoke-agg-01",
+            "success": false,
+            "fp": 0,
+            "error_type": "sai_so",
+            "checks": [
+              {
+                "check": "provenance",
+                "pass": false,
+                "detail": "recorded response identity/provider/as_of coverage and snapshot hash; call IDs independently verified by driver"
+              },
+              {
+                "check": "value:values.VCB",
+                "pass": false,
+                "detail": "không đọc được số từ None"
+              },
+              {
+                "check": "value:values.BID",
+                "pass": false,
+                "detail": "không đọc được số từ None"
+              },
+              {
+                "check": "value:values.CTG",
+                "pass": false,
+                "detail": "không đọc được số từ None"
+              },
+              {
+                "check": "value:values.TCB",
+                "pass": false,
+                "detail": "không đọc được số từ None"
+              },
+              {
+                "check": "value:values.MBB",
+                "pass": false,
+                "detail": "không đọc được số từ None"
+              },
+              {
+                "check": "value:values.mean",
+                "pass": false,
+                "detail": "không đọc được số từ None"
+              },
+              {
+                "check": "unit:unit",
+                "pass": false,
+                "detail": "answer=None canon='' accept=['nghin_dong', 'nghin_dong', 'nghin_dong']"
+              }
+            ],
+            "schema_valid": true,
+            "provenance_correctness": false,
+            "semantic_correctness": false
+          }
+        },
+        {
+          "trial_id": "smoke-agg-01__opentrading__r2",
+          "primary": false,
+          "frozen_v41_primary": false,
+          "frozen_v3_primary": false,
+          "grounded": false,
+          "answered": false,
+          "false_refusal": false,
+          "public_contract": {
+            "valid": false,
+            "errors": [
+              "Final response must be exactly one JSON object, without markdown or surrounding prose."
+            ],
+            "branch": null
+          },
+          "required_data_complete": false,
+          "required_responses": 5,
+          "retrieved_required_responses": 0,
+          "failure_stage": "dnf",
+          "financial_check_coverage": {
+            "period_scored": false,
+            "unit_scored": true,
+            "answer_period": null
+          },
+          "fresh_grade": {
+            "success": false,
+            "fp": 0,
+            "schema_valid": false,
+            "semantic_correctness": false,
+            "error_type": "missing_answer"
+          },
+          "fresh_frozen_v41_grade": {
+            "success": false,
+            "fp": 0,
+            "schema_valid": false,
+            "semantic_correctness": false,
+            "error_type": "missing_answer"
+          },
+          "fresh_frozen_grade": {
+            "success": false,
+            "fp": 0,
+            "schema_valid": false,
+            "semantic_correctness": false,
+            "error_type": "missing_answer"
+          }
+        },
+        {
+          "trial_id": "smoke-quote-01__opentrading__r2",
+          "primary": true,
+          "frozen_v41_primary": true,
+          "frozen_v3_primary": true,
+          "grounded": true,
+          "answered": true,
+          "false_refusal": false,
+          "public_contract": {
+            "valid": true,
+            "errors": [],
+            "branch": "success"
+          },
+          "required_data_complete": true,
+          "required_responses": 1,
+          "retrieved_required_responses": 1,
+          "failure_stage": "primary_correct",
+          "financial_check_coverage": {
+            "period_scored": false,
+            "unit_scored": true,
+            "answer_period": "30/10/2026"
+          },
+          "fresh_grade": {
+            "task_id": "smoke-quote-01",
+            "success": true,
+            "fp": 0,
+            "error_type": null,
+            "checks": [
+              {
+                "check": "provenance",
+                "pass": true,
+                "detail": "recorded response identity/provider/as_of coverage and snapshot hash; call IDs independently verified by driver"
+              },
+              {
+                "check": "unit:unit",
+                "pass": true,
+                "detail": "answer='nghìn đồng' canon='nghin_dong' accept=['nghin_dong', 'nghin_dong', 'nghin_dong']"
+              },
+              {
+                "check": "value:value",
+                "pass": true,
+                "detail": "answer=21.0 gold=21.0 tol={'rel': 0.005}"
+              }
+            ],
+            "schema_valid": true,
+            "provenance_correctness": true,
+            "semantic_correctness": true
+          },
+          "fresh_frozen_v41_grade": {
+            "task_id": "smoke-quote-01",
+            "success": true,
+            "fp": 0,
+            "error_type": null,
+            "checks": [
+              {
+                "check": "provenance",
+                "pass": true,
+                "detail": "recorded response identity/provider/as_of coverage and snapshot hash; call IDs independently verified by driver"
+              },
+              {
+                "check": "unit:unit",
+                "pass": true,
+                "detail": "answer='nghìn đồng' canon='nghin_dong' accept=['nghin_dong', 'nghin_dong', 'nghin_dong']"
+              },
+              {
+                "check": "value:value",
+                "pass": true,
+                "detail": "answer=21.0 gold=21.0 tol={'rel': 0.005}"
+              }
+            ],
+            "schema_valid": true,
+            "provenance_correctness": true,
+            "semantic_correctness": true
+          },
+          "fresh_frozen_grade": {
+            "task_id": "smoke-quote-01",
+            "success": true,
+            "fp": 0,
+            "error_type": null,
+            "checks": [
+              {
+                "check": "provenance",
+                "pass": true,
+                "detail": "recorded response identity/provider/as_of coverage and snapshot hash; call IDs independently verified by driver"
+              },
+              {
+                "check": "unit:unit",
+                "pass": true,
+                "detail": "answer='nghìn đồng' canon='nghin_dong' accept=['nghin_dong', 'nghin_dong', 'nghin_dong']"
+              },
+              {
+                "check": "value:value",
+                "pass": true,
+                "detail": "answer=21.0 gold=21.0 tol={'rel': 0.005}"
+              }
+            ],
+            "schema_valid": true,
+            "provenance_correctness": true,
+            "semantic_correctness": true
+          }
+        },
+        {
+          "trial_id": "smoke-quote-01__dsh__r2",
+          "primary": false,
+          "frozen_v41_primary": false,
+          "frozen_v3_primary": false,
+          "grounded": false,
+          "answered": true,
+          "false_refusal": true,
+          "public_contract": {
+            "valid": true,
+            "errors": [],
+            "branch": "refusal"
+          },
+          "required_data_complete": false,
+          "required_responses": 1,
+          "retrieved_required_responses": 0,
+          "failure_stage": "required_retrieval_incomplete",
+          "financial_check_coverage": {
+            "period_scored": false,
+            "unit_scored": true,
+            "answer_period": null
+          },
+          "fresh_grade": {
+            "task_id": "smoke-quote-01",
+            "success": false,
+            "fp": 0,
+            "error_type": "sai_don_vi",
+            "checks": [
+              {
+                "check": "provenance",
+                "pass": false,
+                "detail": "recorded response identity/provider/as_of coverage and snapshot hash; call IDs independently verified by driver"
+              },
+              {
+                "check": "unit:unit",
+                "pass": false,
+                "detail": "answer=None canon='' accept=['nghin_dong', 'nghin_dong', 'nghin_dong']"
+              },
+              {
+                "check": "value:value",
+                "pass": false,
+                "detail": "không đọc được số từ None"
+              }
+            ],
+            "schema_valid": true,
+            "provenance_correctness": false,
+            "semantic_correctness": false
+          },
+          "fresh_frozen_v41_grade": {
+            "task_id": "smoke-quote-01",
+            "success": false,
+            "fp": 0,
+            "error_type": "sai_don_vi",
+            "checks": [
+              {
+                "check": "provenance",
+                "pass": false,
+                "detail": "recorded response identity/provider/as_of coverage and snapshot hash; call IDs independently verified by driver"
+              },
+              {
+                "check": "unit:unit",
+                "pass": false,
+                "detail": "answer=None canon='' accept=['nghin_dong', 'nghin_dong', 'nghin_dong']"
+              },
+              {
+                "check": "value:value",
+                "pass": false,
+                "detail": "không đọc được số từ None"
+              }
+            ],
+            "schema_valid": true,
+            "provenance_correctness": false,
+            "semantic_correctness": false
+          },
+          "fresh_frozen_grade": {
+            "task_id": "smoke-quote-01",
+            "success": false,
+            "fp": 0,
+            "error_type": "sai_don_vi",
+            "checks": [
+              {
+                "check": "provenance",
+                "pass": false,
+                "detail": "recorded response identity/provider/as_of coverage and snapshot hash; call IDs independently verified by driver"
+              },
+              {
+                "check": "unit:unit",
+                "pass": false,
+                "detail": "answer=None canon='' accept=['nghin_dong', 'nghin_dong', 'nghin_dong']"
+              },
+              {
+                "check": "value:value",
+                "pass": false,
+                "detail": "không đọc được số từ None"
+              }
+            ],
+            "schema_valid": true,
+            "provenance_correctness": false,
+            "semantic_correctness": false
+          }
+        },
+        {
+          "trial_id": "smoke-quote-01__opencode__r2",
+          "primary": false,
+          "frozen_v41_primary": false,
+          "frozen_v3_primary": false,
+          "grounded": false,
+          "answered": true,
+          "false_refusal": true,
+          "public_contract": {
+            "valid": true,
+            "errors": [],
+            "branch": "refusal"
+          },
+          "required_data_complete": false,
+          "required_responses": 1,
+          "retrieved_required_responses": 0,
+          "failure_stage": "required_retrieval_incomplete",
+          "financial_check_coverage": {
+            "period_scored": false,
+            "unit_scored": true,
+            "answer_period": null
+          },
+          "fresh_grade": {
+            "task_id": "smoke-quote-01",
+            "success": false,
+            "fp": 0,
+            "error_type": "sai_don_vi",
+            "checks": [
+              {
+                "check": "provenance",
+                "pass": false,
+                "detail": "recorded response identity/provider/as_of coverage and snapshot hash; call IDs independently verified by driver"
+              },
+              {
+                "check": "unit:unit",
+                "pass": false,
+                "detail": "answer=None canon='' accept=['nghin_dong', 'nghin_dong', 'nghin_dong']"
+              },
+              {
+                "check": "value:value",
+                "pass": false,
+                "detail": "không đọc được số từ None"
+              }
+            ],
+            "schema_valid": true,
+            "provenance_correctness": false,
+            "semantic_correctness": false
+          },
+          "fresh_frozen_v41_grade": {
+            "task_id": "smoke-quote-01",
+            "success": false,
+            "fp": 0,
+            "error_type": "sai_don_vi",
+            "checks": [
+              {
+                "check": "provenance",
+                "pass": false,
+                "detail": "recorded response identity/provider/as_of coverage and snapshot hash; call IDs independently verified by driver"
+              },
+              {
+                "check": "unit:unit",
+                "pass": false,
+                "detail": "answer=None canon='' accept=['nghin_dong', 'nghin_dong', 'nghin_dong']"
+              },
+              {
+                "check": "value:value",
+                "pass": false,
+                "detail": "không đọc được số từ None"
+              }
+            ],
+            "schema_valid": true,
+            "provenance_correctness": false,
+            "semantic_correctness": false
+          },
+          "fresh_frozen_grade": {
+            "task_id": "smoke-quote-01",
+            "success": false,
+            "fp": 0,
+            "error_type": "sai_don_vi",
+            "checks": [
+              {
+                "check": "provenance",
+                "pass": false,
+                "detail": "recorded response identity/provider/as_of coverage and snapshot hash; call IDs independently verified by driver"
+              },
+              {
+                "check": "unit:unit",
+                "pass": false,
+                "detail": "answer=None canon='' accept=['nghin_dong', 'nghin_dong', 'nghin_dong']"
+              },
+              {
+                "check": "value:value",
+                "pass": false,
+                "detail": "không đọc được số từ None"
+              }
+            ],
+            "schema_valid": true,
+            "provenance_correctness": false,
+            "semantic_correctness": false
+          }
+        }
+      ],
+      "direct_paired_outcomes": [],
+      "paired_comparisons_exploratory_95": [
+        {
+          "left": "dsh",
+          "right": "opencode",
+          "paired_tasks": 3,
+          "trial_success_difference": {
+            "estimate": 0.3333333333333333,
+            "ci95": [
+              0.0,
+              1.0
+            ],
+            "n_clusters": 3,
+            "draws": 2000,
+            "seed": 20261104
+          },
+          "payload_family_sensitivity": {
+            "estimate": 0.3333333333333333,
+            "ci95": [
+              0.0,
+              1.0
+            ],
+            "n_clusters": 3,
+            "draws": 2000,
+            "seed": 20261104
+          },
+          "stable_mcnemar": {
+            "available": false,
+            "reason": "requires exactly 3 scheduled runs"
+          }
+        },
+        {
+          "left": "dsh",
+          "right": "opentrading",
+          "paired_tasks": 3,
+          "trial_success_difference": {
+            "estimate": 0.0,
+            "ci95": [
+              -1.0,
+              1.0
+            ],
+            "n_clusters": 3,
+            "draws": 2000,
+            "seed": 20261104
+          },
+          "payload_family_sensitivity": {
+            "estimate": 0.0,
+            "ci95": [
+              -1.0,
+              1.0
+            ],
+            "n_clusters": 3,
+            "draws": 2000,
+            "seed": 20261104
+          },
+          "stable_mcnemar": {
+            "available": false,
+            "reason": "requires exactly 3 scheduled runs"
+          }
+        },
+        {
+          "left": "opencode",
+          "right": "opentrading",
+          "paired_tasks": 3,
+          "trial_success_difference": {
+            "estimate": -0.3333333333333333,
+            "ci95": [
+              -1.0,
+              0.0
+            ],
+            "n_clusters": 3,
+            "draws": 2000,
+            "seed": 20261104
+          },
+          "payload_family_sensitivity": {
+            "estimate": -0.3333333333333333,
+            "ci95": [
+              -1.0,
+              0.0
+            ],
+            "n_clusters": 3,
+            "draws": 2000,
+            "seed": 20261104
+          },
+          "stable_mcnemar": {
+            "available": false,
+            "reason": "requires exactly 3 scheduled runs"
+          }
+        }
+      ],
+      "promotion_guard_pending_manual_evidence": null,
+      "resume_zero_call_check": "not executed by this offline auditor"
+    }
+  },
+  "status": "completed smoke18 offline audit and manual evidence closure; coordinator completed-resume and preservation receipts checked; live certificate blocked",
+  "closure": {
+    "closed_at": "2026-11-06T14:24:58.814931+00:00",
+    "scope": "Completed smoke18 only; no pilot guard or rollout claim. Raw prepared-auditor observations, counts, and pending-at-generation strings preserved above.",
+    "manual_evidence_classification": {
+      "receipt": "audits/financial-prompt-v42/independent-manual-receipts.json",
+      "nonempty_claims": 6,
+      "seven_field_exact_matches": 6,
+      "model_context_visible_claims": 6,
+      "fabricated_claims_observed": 0,
+      "accepted_fabricated_evidence": 0
+    },
+    "resume_verification": {
+      "owner": "root coordinator; independently read resulting receipt",
+      "receipt": "audits/financial-prompt-v42/smoke-resume-check.json",
+      "exit_code": 0,
+      "checked_artifacts": 2220,
+      "unchanged": true,
+      "zero_new_model_calls": true,
+      "summary_excluded": true,
+      "note": "manifest, trials.jsonl, every trial artifact including captures and provider/MCP ledgers; summary timestamp intentionally regenerated"
+    },
+    "preservation": {
+      "receipt": "audits/financial-prompt-v42/post-run-preservation.json",
+      "passed": true,
+      "freeze_matches": true,
+      "baseline_scope": "Inherited Nov6 inventory, not new v4.2 start inventory; checks stored paths byte-preserved, no ownership claim for unrelated new user files"
+    },
+    "prepared_auditor_edits": [],
+    "audit_errors": [],
+    "product_gate": "Certificate refused at live parity; supervisor blocked; pilot not authorized by smoke results."
+  }
+}

@@ -1,62 +1,145 @@
 {
- "task_id": "fin-l3-tech-multi-206",
- "scoring": "value",
- "solution": {
-  "symbol": "DXG",
-  "rsi14": 45.96
- },
- "as_of": "2026-11-01T23:26:05.000000+07:00",
- "split": "main",
- "expects": [
-  {
-   "type": "str",
-   "path": "values.symbol",
-   "accept": [
-    "DXG"
-   ]
+  "task_id": "fin-l3-tech-multi-206",
+  "scoring": "value",
+  "solution": {
+    "symbol": "DXG",
+    "rsi14": 45.96
   },
-  {
-   "type": "value",
-   "path": "values.rsi14",
-   "gold": 45.96,
-   "tol": {
-    "abs": 0.1
-   }
-  },
-  {
-   "type": "period",
-   "path": "period",
-   "accept": [
-    "30/10",
-    "30-10",
-    "30.10",
-    "2026-10-30",
-    "phiên gần nhất",
-    "gần nhất"
-   ]
-  },
-  {
-   "type": "str",
-   "path": "source",
-   "accept": [
-    "signals_technical"
-   ]
-  },
-  {
-   "type": "evidence",
-   "path": "note",
-   "paths": [
-    "note"
-   ],
-   "numbers": [
-    42.34,
-    43.78,
-    45.96,
-    43.47,
-    44.05
-   ],
-   "strings": [],
-   "min_hits": 2
-  }
- ]
+  "as_of": "2026-11-01T23:26:05.000000+07:00",
+  "split": "main",
+  "expects": [
+    {
+      "type": "str",
+      "path": "values.symbol",
+      "accept": [
+        "DXG"
+      ]
+    },
+    {
+      "type": "value",
+      "path": "values.rsi14",
+      "gold": 45.96,
+      "tol": {
+        "abs": 0.1
+      }
+    },
+    {
+      "type": "period",
+      "path": "period",
+      "accept": [
+        "30/10",
+        "30-10",
+        "30.10",
+        "2026-10-30",
+        "phiên gần nhất",
+        "gần nhất"
+      ]
+    },
+    {
+      "type": "str",
+      "path": "source",
+      "accept": [
+        "signals_technical"
+      ]
+    },
+    {
+      "type": "evidence",
+      "path": "note",
+      "paths": [
+        "note"
+      ],
+      "numbers": [
+        42.34,
+        43.78,
+        45.96,
+        43.47,
+        44.05
+      ],
+      "strings": [],
+      "min_hits": 2
+    }
+  ],
+  "contract_version": 2,
+  "provenance_contract": [
+    {
+      "tool": "signals_technical",
+      "source": "computed-local",
+      "as_of": "2026-11-01T23:26:05.000000+07:00",
+      "matched_entry_id": "tech:KDH",
+      "response_sha256": "45e22af03ba17199c42843204be24d3b032be73604ae1be6622c03814e6050f3"
+    },
+    {
+      "tool": "signals_technical",
+      "source": "computed-local",
+      "as_of": "2026-11-01T23:26:05.000000+07:00",
+      "matched_entry_id": "tech:NLG",
+      "response_sha256": "cf4578dd87b22ca8d366b909a26d75139cdf95d03c242cb2a26a014cccfaa12a"
+    },
+    {
+      "tool": "signals_technical",
+      "source": "computed-local",
+      "as_of": "2026-11-01T23:26:05.000000+07:00",
+      "matched_entry_id": "tech:DXG",
+      "response_sha256": "d864c7f1f96516bdcb11d66bad91fb29f46178087e080efc2cdee020b8aa0b61"
+    },
+    {
+      "tool": "signals_technical",
+      "source": "computed-local",
+      "as_of": "2026-11-01T23:26:05.000000+07:00",
+      "matched_entry_id": "tech:PDR",
+      "response_sha256": "b4d00078f49f53361f540a46f1c6f8918dbdadf41d1f58fc5f5284f56ac029b2"
+    },
+    {
+      "tool": "signals_technical",
+      "source": "computed-local",
+      "as_of": "2026-11-01T23:26:05.000000+07:00",
+      "matched_entry_id": "tech:KBC",
+      "response_sha256": "f38f8944c97d9ee591d33cced195e1a410c0cd7cdb79b286e0667b5eabfec899"
+    }
+  ],
+  "payload_sha256": "3806d89602288ed593d5ff041e1d89048286f413accc5e3022bd415d85e3e546",
+  "provenance_catalog": [
+    {
+      "tool": "signals_technical",
+      "source": "computed-local",
+      "as_of": "2026-11-01T23:26:05.000000+07:00",
+      "matched_entry_id": "tech:KDH",
+      "response_sha256": "45e22af03ba17199c42843204be24d3b032be73604ae1be6622c03814e6050f3"
+    },
+    {
+      "tool": "signals_technical",
+      "source": "computed-local",
+      "as_of": "2026-11-01T23:26:05.000000+07:00",
+      "matched_entry_id": "tech:NLG",
+      "response_sha256": "cf4578dd87b22ca8d366b909a26d75139cdf95d03c242cb2a26a014cccfaa12a"
+    },
+    {
+      "tool": "signals_technical",
+      "source": "computed-local",
+      "as_of": "2026-11-01T23:26:05.000000+07:00",
+      "matched_entry_id": "tech:DXG",
+      "response_sha256": "d864c7f1f96516bdcb11d66bad91fb29f46178087e080efc2cdee020b8aa0b61"
+    },
+    {
+      "tool": "signals_technical",
+      "source": "computed-local",
+      "as_of": "2026-11-01T23:26:05.000000+07:00",
+      "matched_entry_id": "tech:PDR",
+      "response_sha256": "b4d00078f49f53361f540a46f1c6f8918dbdadf41d1f58fc5f5284f56ac029b2"
+    },
+    {
+      "tool": "signals_technical",
+      "source": "computed-local",
+      "as_of": "2026-11-01T23:26:05.000000+07:00",
+      "matched_entry_id": "tech:KBC",
+      "response_sha256": "f38f8944c97d9ee591d33cced195e1a410c0cd7cdb79b286e0667b5eabfec899"
+    }
+  ],
+  "required_payload_keys": [
+    "tech:DXG",
+    "tech:KBC",
+    "tech:KDH",
+    "tech:NLG",
+    "tech:PDR"
+  ]
 }

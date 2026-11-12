@@ -1,0 +1,43 @@
+--- CMD ---
+/home/doanlong/.bun/bin/bun /home/doanlong/extra/benchmark/tools/runners/ot_headless.ts # Smoke — giá đóng cửa HPG
+
+## Đề bài
+Giá đóng cửa (close) **phiên giao dịch gần nhất** của cổ phiếu **HPG** là bao nhiêu? Trả lời theo **nghìn đồng** (quy ước của MCP: `64,27` = 64.270 đ).
+
+## Yêu cầu trả lời
+Trả lời bằng đúng một object JSON trong phản hồi cuối cùng, theo schema:
+
+```json
+{
+  "value": 0,
+  "unit": "nghìn đồng",
+  "period": "phiên gần nhất (dd/mm/yyyy)",
+  "source": "vn_quote_history"
+}
+```
+
+- `unit` phải là **nghìn đồng**.
+- `period` nêu ngày phiên.
+
+## Ràng buộc chung
+- Chỉ dùng dữ liệu từ MCP `opentrading`, đúng snapshot được ghi trong hợp đồng dữ liệu dưới đây. Cấm `web_search`, `web_fetch`, `sentiment_score`.
+- Mọi số trong object JSON trả lời phải truy nguồn được từ tool MCP bạn đã gọi trong phiên này — không dùng kiến thức nền hay ghi nhớ.
+- Nếu dữ liệu không tồn tại / chưa được công bố: đặt `value: null` và nêu lý do trong trường `reason` (hoặc `note`). Tuyệt đối không bịa số.
+- Số viết bằng dấu chấm thập phân (VD `12.34`), không dùng dấu ngăn cách hàng nghìn.
+- `source` ghi tên tool MCP chính xác như trong catalog (VD `vn_quote_history`).
+
+## Hợp đồng dữ liệu và bằng chứng
+- Snapshot cố định: `2026-11-01`. Không cần đọc task.toml; metadata này được cung cấp trực tiếp trong đề.
+- `source` là tên tool MCP; `evidence[].source` là nhà cung cấp trong `provenance.source`. Đây là hai namespace riêng.
+- Thêm trường `evidence` vào object JSON trả lời: danh sách các đối tượng `{"tool":"tên tool", "source":"provenance.source", "as_of":"provenance.as_of", "call_id":"benchmark_evidence.call_id", "payload_sha256":"benchmark_evidence.payload_sha256", "matched_entry_id":"benchmark_evidence.matched_entry_id", "response_sha256":"benchmark_evidence.response_sha256"}` lấy từ phản hồi tool thực gọi. Dẫn đầy đủ các phản hồi cần thiết cho chỉ tiêu/mã/kỳ được hỏi (kể cả các mã riêng biệt cùng tool/nguồn/timestamp); catalog có thể chứa dữ liệu không liên quan. Không suy đoán timestamp và không dùng thời gian của máy làm as_of.
+- Khi từ chối, bắt buộc có trường `value` với JSON `null`; chuỗi "null", thiếu trường, object hay số đều không hợp lệ. Thời kỳ phải nêu đúng năm, quý/tháng/ngày và đủ hai kỳ nếu đề yêu cầu so sánh.
+
+
+--- STDOUT ---
+{"inspection":"local capture only"}
+
+--- STDERR ---
+{"type":"text-delta","text":"{\"inspection\":\"local capture only\"}"}
+{"type":"step-usage","inputTokens":1,"outputTokens":1}
+{"type":"done","messages":[{"role":"user","content":[{"type":"text","text":"<nhac_nho>\n<phien_giao_dich>\nCập nhật lúc 10:14 (giờ Việt Nam), Thứ năm 05/11/2026.\nHOSE: khớp lệnh liên tục (sáng), tới 11:30\nHNX: khớp lệnh liên tục (sáng), tới 11:30\nUPCoM: khớp lệnh liên tục (sáng), tới 11:30\nKhối này chỉ gửi lại khi phiên thay đổi; cần giờ chính xác thì gọi tool current_time.\n(Lịch phiên chưa kiểm chứng, dữ liệu tới 2026-09-29: nhắc người dùng đối chiếu thông báo của sàn.)\n</phien_giao_dich>\n</nhac_nho>"},{"type":"text","text":"# Smoke — giá đóng cửa HPG\n\n## Đề bài\nGiá đóng cửa (close) **phiên giao dịch gần nhất** của cổ phiếu **HPG** là bao nhiêu? Trả lời theo **nghìn đồng** (quy ước của MCP: `64,27` = 64.270 đ).\n\n## Yêu cầu trả lời\nTrả lời bằng đúng một object JSON trong phản hồi cuối cùng, theo schema:\n\n```json\n{\n  \"value\": 0,\n  \"unit\": \"nghìn đồng\",\n  \"period\": \"phiên gần nhất (dd/mm/yyyy)\",\n  \"source\": \"vn_quote_history\"\n}\n```\n\n- `unit` phải là **nghìn đồng**.\n- `period` nêu ngày phiên.\n\n## Ràng buộc chung\n- Chỉ dùng dữ liệu từ MCP `opentrading`, đúng snapshot được ghi trong hợp đồng dữ liệu dưới đây. Cấm `web_search`, `web_fetch`, `sentiment_score`.\n- Mọi số trong object JSON trả lời phải truy nguồn được từ tool MCP bạn đã gọi trong phiên này — không dùng kiến thức nền hay ghi nhớ.\n- Nếu dữ liệu không tồn tại / chưa được công bố: đặt `value: null` và nêu lý do trong trường `reason` (hoặc `note`). Tuyệt đối không bịa số.\n- Số viết bằng dấu chấm thập phân (VD `12.34`), không dùng dấu ngăn cách hàng nghìn.\n- `source` ghi tên tool MCP chính xác như trong catalog (VD `vn_quote_history`).\n\n## Hợp đồng dữ liệu và bằng chứng\n- Snapshot cố định: `2026-11-01`. Không cần đọc task.toml; metadata này được cung cấp trực tiếp trong đề.\n- `source` là tên tool MCP; `evidence[].source` là nhà cung cấp trong `provenance.source`. Đây là hai namespace riêng.\n- Thêm trường `evidence` vào object JSON trả lời: danh sách các đối tượng `{\"tool\":\"tên tool\", \"source\":\"provenance.source\", \"as_of\":\"provenance.as_of\", \"call_id\":\"benchmark_evidence.call_id\", \"payload_sha256\":\"benchmark_evidence.payload_sha256\", \"matched_entry_id\":\"benchmark_evidence.matched_entry_id\", \"response_sha256\":\"benchmark_evidence.response_sha256\"}` lấy từ phản hồi tool thực gọi. Dẫn đầy đủ các phản hồi cần thiết cho chỉ tiêu/mã/kỳ được hỏi (kể cả các mã riêng biệt cùng tool/nguồn/timestamp); catalog có thể chứa dữ liệu không liên quan. Không suy đoán timestamp và không dùng thời gian của máy làm as_of.\n- Khi từ chối, bắt buộc có trường `value` với JSON `null`; chuỗi \"null\", thiếu trường, object hay số đều không hợp lệ. Thời kỳ phải nêu đúng năm, quý/tháng/ngày và đủ hai kỳ nếu đề yêu cầu so sánh.\n"}]},{"role":"assistant","content":[{"type":"text","text":"{\"inspection\":\"local capture only\"}"}]}],"clock":{"date":"2026-11-05","phases":{"HOSE":"continuous","HNX":"continuous","UPCoM":"continuous"}},"usage":{"contextTokens":2,"estimated":false,"total":{"input":1,"output":1}},"outcome":"completed"}
+

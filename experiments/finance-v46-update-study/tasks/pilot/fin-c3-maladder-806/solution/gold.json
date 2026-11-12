@@ -1,0 +1,259 @@
+{
+  "task_id": "fin-c3-maladder-806",
+  "scoring": "value",
+  "solution": {
+    "SSI": {
+      "ma20": 19.5575,
+      "ma60": 20.1642,
+      "ma120": 20.5584,
+      "gap20_120_pct": -4.8686
+    },
+    "PLX": {
+      "ma20": 35.64,
+      "ma60": 36.1142,
+      "ma120": 36.2971,
+      "gap20_120_pct": -1.8103
+    },
+    "GVR": {
+      "ma20": 31.6305,
+      "ma60": 31.4357,
+      "ma120": 31.7888,
+      "gap20_120_pct": -0.4981
+    },
+    "POW": {
+      "ma20": 12.465,
+      "ma60": 12.8517,
+      "ma120": 13.4029,
+      "gap20_120_pct": -6.9979
+    },
+    "top_gap": "GVR",
+    "aligned_uptrend": []
+  },
+  "as_of": "2026-11-11T09:41:32.145602+07:00",
+  "split": "pilot",
+  "expects": [
+    {
+      "type": "value",
+      "path": "values.SSI.ma20",
+      "gold": 19.5575,
+      "tol": {
+        "rel": 0.001
+      }
+    },
+    {
+      "type": "value",
+      "path": "values.SSI.ma60",
+      "gold": 20.1642,
+      "tol": {
+        "rel": 0.001
+      }
+    },
+    {
+      "type": "value",
+      "path": "values.SSI.ma120",
+      "gold": 20.5584,
+      "tol": {
+        "rel": 0.001
+      }
+    },
+    {
+      "type": "value",
+      "path": "values.SSI.gap20_120_pct",
+      "gold": -4.8686,
+      "tol": {
+        "abs": 0.05
+      }
+    },
+    {
+      "type": "value",
+      "path": "values.PLX.ma20",
+      "gold": 35.64,
+      "tol": {
+        "rel": 0.001
+      }
+    },
+    {
+      "type": "value",
+      "path": "values.PLX.ma60",
+      "gold": 36.1142,
+      "tol": {
+        "rel": 0.001
+      }
+    },
+    {
+      "type": "value",
+      "path": "values.PLX.ma120",
+      "gold": 36.2971,
+      "tol": {
+        "rel": 0.001
+      }
+    },
+    {
+      "type": "value",
+      "path": "values.PLX.gap20_120_pct",
+      "gold": -1.8103,
+      "tol": {
+        "abs": 0.05
+      }
+    },
+    {
+      "type": "value",
+      "path": "values.GVR.ma20",
+      "gold": 31.6305,
+      "tol": {
+        "rel": 0.001
+      }
+    },
+    {
+      "type": "value",
+      "path": "values.GVR.ma60",
+      "gold": 31.4357,
+      "tol": {
+        "rel": 0.001
+      }
+    },
+    {
+      "type": "value",
+      "path": "values.GVR.ma120",
+      "gold": 31.7888,
+      "tol": {
+        "rel": 0.001
+      }
+    },
+    {
+      "type": "value",
+      "path": "values.GVR.gap20_120_pct",
+      "gold": -0.4981,
+      "tol": {
+        "abs": 0.05
+      }
+    },
+    {
+      "type": "value",
+      "path": "values.POW.ma20",
+      "gold": 12.465,
+      "tol": {
+        "rel": 0.001
+      }
+    },
+    {
+      "type": "value",
+      "path": "values.POW.ma60",
+      "gold": 12.8517,
+      "tol": {
+        "rel": 0.001
+      }
+    },
+    {
+      "type": "value",
+      "path": "values.POW.ma120",
+      "gold": 13.4029,
+      "tol": {
+        "rel": 0.001
+      }
+    },
+    {
+      "type": "value",
+      "path": "values.POW.gap20_120_pct",
+      "gold": -6.9979,
+      "tol": {
+        "abs": 0.05
+      }
+    },
+    {
+      "type": "tokens",
+      "path": "values.top_gap",
+      "accept": [
+        "GVR"
+      ],
+      "reject": [
+        "SSI",
+        "PLX",
+        "POW"
+      ]
+    },
+    {
+      "type": "set",
+      "path": "values.aligned_uptrend",
+      "gold": []
+    },
+    {
+      "type": "str",
+      "path": "source",
+      "accept": [
+        "vn_quote_history"
+      ]
+    }
+  ],
+  "contract_version": 2,
+  "stratum": "compute",
+  "tier": "C3",
+  "notes": "Compute stratum (amendment 2026-11-11 d). Gold computed with Decimal from payloads; uniform tolerance.",
+  "provenance_contract": [
+    {
+      "tool": "vn_quote_history",
+      "source": "vnstock",
+      "as_of": "2026-11-11T09:41:32.145602+07:00",
+      "matched_entry_id": "hist:GVR",
+      "response_sha256": "4e0d8d1035760cb3417372b4896c8ea2ec28190bdc89c3bd5744371511d504d2"
+    },
+    {
+      "tool": "vn_quote_history",
+      "source": "vnstock",
+      "as_of": "2026-11-11T09:41:32.145602+07:00",
+      "matched_entry_id": "hist:PLX",
+      "response_sha256": "5a7fa3661a96aa11c2d5a20bcdff0733b85be413b05914d6212d95cbbcd0efb2"
+    },
+    {
+      "tool": "vn_quote_history",
+      "source": "vnstock",
+      "as_of": "2026-11-11T09:41:32.145602+07:00",
+      "matched_entry_id": "hist:POW",
+      "response_sha256": "5012098ec8d22ef7aacfd5ce7fb7126fa4056f9a449ce9eb0639a3190b6b9041"
+    },
+    {
+      "tool": "vn_quote_history",
+      "source": "vnstock",
+      "as_of": "2026-11-11T09:41:32.145602+07:00",
+      "matched_entry_id": "hist:SSI",
+      "response_sha256": "3f61cd21692821418bfaa5e77f80b398ae08e11da4e34bc64774eb431c83e475"
+    }
+  ],
+  "provenance_catalog": [
+    {
+      "tool": "vn_quote_history",
+      "source": "vnstock",
+      "as_of": "2026-11-11T09:41:32.145602+07:00",
+      "matched_entry_id": "hist:GVR",
+      "response_sha256": "4e0d8d1035760cb3417372b4896c8ea2ec28190bdc89c3bd5744371511d504d2"
+    },
+    {
+      "tool": "vn_quote_history",
+      "source": "vnstock",
+      "as_of": "2026-11-11T09:41:32.145602+07:00",
+      "matched_entry_id": "hist:PLX",
+      "response_sha256": "5a7fa3661a96aa11c2d5a20bcdff0733b85be413b05914d6212d95cbbcd0efb2"
+    },
+    {
+      "tool": "vn_quote_history",
+      "source": "vnstock",
+      "as_of": "2026-11-11T09:41:32.145602+07:00",
+      "matched_entry_id": "hist:POW",
+      "response_sha256": "5012098ec8d22ef7aacfd5ce7fb7126fa4056f9a449ce9eb0639a3190b6b9041"
+    },
+    {
+      "tool": "vn_quote_history",
+      "source": "vnstock",
+      "as_of": "2026-11-11T09:41:32.145602+07:00",
+      "matched_entry_id": "hist:SSI",
+      "response_sha256": "3f61cd21692821418bfaa5e77f80b398ae08e11da4e34bc64774eb431c83e475"
+    }
+  ],
+  "payload_sha256": "82bd2b653cfc06f4ad44c844d6e8dc814f924382b1758a80d38a9f2908098d63",
+  "required_payload_keys": [
+    "hist:GVR",
+    "hist:PLX",
+    "hist:POW",
+    "hist:SSI"
+  ]
+}

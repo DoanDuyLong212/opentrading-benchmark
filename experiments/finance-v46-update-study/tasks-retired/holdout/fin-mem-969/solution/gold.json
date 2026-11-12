@@ -1,0 +1,61 @@
+{
+ "scoring": "value",
+ "memory_construct": "cross_session_recall_or_update",
+ "solution": {
+  "ranking": [
+   "TPB",
+   "HDB",
+   "ACB",
+   "VPB",
+   "STB"
+  ],
+  "violate": [
+   "STB",
+   "VPB"
+  ]
+ },
+ "expects": [
+  {
+   "type": "list_order",
+   "path": "values.ranking",
+   "gold": [
+    "TPB",
+    "HDB",
+    "ACB",
+    "VPB",
+    "STB"
+   ]
+  },
+  {
+   "type": "set",
+   "path": "values.violate",
+   "gold": [
+    "STB",
+    "VPB"
+   ]
+  },
+  {
+   "type": "str",
+   "path": "source",
+   "accept": [
+    "peer_compare"
+   ]
+  }
+ ],
+ "notes": "Ràng buộc user: 'P/E trên 9 thì không đụng' + rank P/E tăng dần: {'VPB': 9.48, 'ACB': 7.43, 'STB': 18.41, 'HDB': 6.39, 'TPB': 6.14}; violate>9: ['STB', 'VPB'].",
+ "memory_checks": {},
+ "provenance_contract": [
+  {
+   "tool": "peer_compare",
+   "source": "vnstock",
+   "as_of": "2026-11-01T23:08:09.776201+07:00",
+   "matched_entry_id": "peer:banks_p",
+   "response_sha256": "9314b3b9168bf0f8d0627ae5b1695f7e93273e7e403235cf370f2e564f8424e4"
+  }
+ ],
+ "required_payload_keys": [
+  "peer:banks_p"
+ ],
+ "task_id": "fin-mem-969",
+ "payload_sha256": "8a90deaca3547a367668d8283a57eded1ccf4d80ff8107e1940abf1d24541bce"
+}

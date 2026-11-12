@@ -1,0 +1,88 @@
+{
+  "scope": "native OpenTrading runtime and financial prompt candidate; no model quality claims",
+  "native_runtime": "/home/doanlong/extra/benchmark/experiments/opentrading-runtime",
+  "focused_tests": {
+    "command": "bun test test/prompt.test.ts test/financial-prompt.test.ts test/agent.test.ts",
+    "passed": 61,
+    "failed": 0,
+    "expect_calls": 275,
+    "typecheck": "bun run typecheck: PASS"
+  },
+  "prompt_variants": {
+    "baseline": {
+      "files": {
+        "citations.md": "5c6a69197d3ca59189369d0adfda4385c7b03a8af7c2c67e7d0d1bbbcf78d72a",
+        "identity.md": "b8fe73cda14db1b53ddd6687d648aff746e29bd3cca8166d26d32fcb121f6892",
+        "style.md": "56e82b54f5fb5e83c6047e4ad1c21ab1ade0427fadfce504e34dc28063d9e2c3",
+        "subagent.md": "22c1d31f297c7a7e209e3bc3b11c46db34025d34c20197277d47c76a9af0b40a",
+        "title.md": "8329a2554713df24143cbc5bc2f6dc6ab5df78e0a44392ce6bc887d439c7444e",
+        "tools.md": "23cf632d7cdb534be3210649387d69c6d36fd35bbc12c84ac7c06ee64c52f912"
+      },
+      "four_layer_chars": 7362
+    },
+    "finance": {
+      "files": {
+        "citations.md": "f04b93c0e0a9433fb58f07014ff9190beef233bc9e23b182959c2c112a97f072",
+        "identity.md": "e3b3558a4ab311b0c4cede5fffdb7cf5cd97b680f841fa5c36302a0fb255c110",
+        "style.md": "5565b9f7dbff21b5ad3a74a8747a7fba42cf3e47161afb9b23901a0a5c4fedf7",
+        "subagent.md": "22c1d31f297c7a7e209e3bc3b11c46db34025d34c20197277d47c76a9af0b40a",
+        "title.md": "8329a2554713df24143cbc5bc2f6dc6ab5df78e0a44392ce6bc887d439c7444e",
+        "tools.md": "75d4956dbdfb9c1c9f3751b11e7898e54486d85f79d004413d9bff0819dfb981"
+      },
+      "four_layer_chars": 5901
+    }
+  },
+  "changes": {
+    "src/core/agent.ts": {
+      "before_sha256": "d1656d1604598ec595e2a81da483f75b27dc0d6f31cdd0950fc20b8f54681a63",
+      "after_sha256": "f1c954e6222cafee3474b809deca5d34b0de6cd0264caf67f845d9cf507bf84d"
+    },
+    "src/core/prompt/assemble.ts": {
+      "before_sha256": "c05fb3b5c210de684cc01a4a487b830b0daf5bdae6a382b9a5276a21cf2904ae",
+      "after_sha256": "5c3a7951fd3f83b7bd81dd9d21efce63073efb3cab195584f5238b175e09931a"
+    },
+    "prompts/identity.md": {
+      "before_sha256": "b8fe73cda14db1b53ddd6687d648aff746e29bd3cca8166d26d32fcb121f6892",
+      "after_sha256": "e3b3558a4ab311b0c4cede5fffdb7cf5cd97b680f841fa5c36302a0fb255c110"
+    },
+    "prompts/tools.md": {
+      "before_sha256": "23cf632d7cdb534be3210649387d69c6d36fd35bbc12c84ac7c06ee64c52f912",
+      "after_sha256": "75d4956dbdfb9c1c9f3751b11e7898e54486d85f79d004413d9bff0819dfb981"
+    },
+    "prompts/citations.md": {
+      "before_sha256": "5c6a69197d3ca59189369d0adfda4385c7b03a8af7c2c67e7d0d1bbbcf78d72a",
+      "after_sha256": "f04b93c0e0a9433fb58f07014ff9190beef233bc9e23b182959c2c112a97f072"
+    },
+    "prompts/style.md": {
+      "before_sha256": "56e82b54f5fb5e83c6047e4ad1c21ab1ade0427fadfce504e34dc28063d9e2c3",
+      "after_sha256": "5565b9f7dbff21b5ad3a74a8747a7fba42cf3e47161afb9b23901a0a5c4fedf7"
+    },
+    "test/agent.test.ts": {
+      "before_sha256": "f9dba027b742e18af56ddbf6d8789348745ed7fa9a35a687195cd02a3c47b3f6",
+      "after_sha256": "98192f47e1fa235243672756dfc58b5fe564ca5f4bd8e7a070634ac856c0bc3b"
+    },
+    "test/prompt.test.ts": {
+      "before_sha256": "043bb118c16359b55be3ec36d0abe758736bdd4de575884985b3efc9bf7b7e45",
+      "after_sha256": "f1bf612c3a2dd3a93e7ef7f2c5f7cbef5f545c11ce9a4a9bf51d760b6c1137be"
+    },
+    "test/financial-prompt.test.ts": {
+      "before_sha256": null,
+      "after_sha256": "70f42260b734ce54a99d73a8da6f8ba5eb64c45f72a92baf65ed5f1713f40fb7"
+    }
+  },
+  "limits": [
+    "Repair behavior bounded by common benchmark request/token/deadline caps and native maxSteps; no new per-error retry counter",
+    "Mock model scripts test native plumbing, not finance reasoning quality",
+    "No original project file was modified; installer requires explicit use after review"
+  ],
+  "full_native_tests": {
+    "command": "bun test",
+    "passed": 466,
+    "failed": 0,
+    "expect_calls": 6330,
+    "files": 53,
+    "seconds": 73.7,
+    "environment": "outside sandbox, clean HOME and no API keys",
+    "log": "experiments/opentrading-native-tests.log"
+  }
+}

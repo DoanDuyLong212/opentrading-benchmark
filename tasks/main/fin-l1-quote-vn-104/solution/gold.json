@@ -1,46 +1,69 @@
 {
- "task_id": "fin-l1-quote-vn-104",
- "scoring": "value",
- "solution": {
-  "value": 12.0,
-  "last_t": "2026-10-30"
- },
- "as_of": "2026-11-01T22:40:53.500907+07:00",
- "split": "main",
- "expects": [
-  {
-   "type": "unit",
-   "path": "unit",
-   "accept": [
-    "nghìn đồng",
-    "nghìn đ",
-    "k đồng"
-   ]
+  "task_id": "fin-l1-quote-vn-104",
+  "scoring": "value",
+  "solution": {
+    "value": 12.0,
+    "last_t": "2026-10-30"
   },
-  {
-   "type": "value",
-   "path": "value",
-   "gold": 12.0,
-   "tol": {
-    "rel": 0.005
-   }
-  },
-  {
-   "type": "period",
-   "path": "period",
-   "accept": [
-    "30/10",
-    "30-10",
-    "30.10",
-    "2026-10-30"
-   ]
-  },
-  {
-   "type": "str",
-   "path": "source",
-   "accept": [
-    "vn_quote_history"
-   ]
-  }
- ]
+  "as_of": "2026-11-01T22:40:53.500907+07:00",
+  "split": "main",
+  "expects": [
+    {
+      "type": "unit",
+      "path": "unit",
+      "accept": [
+        "nghìn đồng",
+        "nghìn đ",
+        "k đồng"
+      ]
+    },
+    {
+      "type": "value",
+      "path": "value",
+      "gold": 12.0,
+      "tol": {
+        "rel": 0.005
+      }
+    },
+    {
+      "type": "period",
+      "path": "period",
+      "accept": [
+        "30/10",
+        "30-10",
+        "30.10",
+        "2026-10-30"
+      ]
+    },
+    {
+      "type": "str",
+      "path": "source",
+      "accept": [
+        "vn_quote_history"
+      ]
+    }
+  ],
+  "contract_version": 2,
+  "provenance_contract": [
+    {
+      "tool": "vn_quote_history",
+      "source": "vnstock",
+      "as_of": "2026-11-01T22:40:53.500907+07:00",
+      "matched_entry_id": "vnq:VIX",
+      "response_sha256": "c30db91127c4150d07b83d09f33cac4bf782ff5bb4b939c45327c074205936c4"
+    }
+  ],
+  "payload_sha256": "5b191b038f6a6a13d118b0fc5a82a511610d05f842723755a4f66b84f47cf8d2",
+  "provenance_catalog": [
+    {
+      "tool": "vn_quote_history",
+      "source": "vnstock",
+      "as_of": "2026-11-01T22:40:53.500907+07:00",
+      "matched_entry_id": "vnq:VIX",
+      "response_sha256": "c30db91127c4150d07b83d09f33cac4bf782ff5bb4b939c45327c074205936c4"
+    }
+  ],
+  "required_payload_keys": [
+    "vnq:VIX"
+  ]
 }

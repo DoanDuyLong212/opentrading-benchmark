@@ -1,0 +1,425 @@
+{
+  "arm": "dsh",
+  "model": "nvidia/nemotron-3.5-bolt-e4b",
+  "provider": "nvidia",
+  "effort": "none",
+  "snapshot_tool_definitions": [
+    {
+      "name": "vn_quote_history",
+      "description": "Frozen MCP snapshot; only snapshot_requests below are replayable. Supply all recorded non-default parameters; omitted parameters retain the real schema defaults. Read source/as_of from provenance and cite benchmark_evidence. snapshot_requests=[{\"symbol\": \"HPG\"}]",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "symbol": {
+            "type": "string"
+          },
+          "days": {
+            "type": "integer",
+            "default": 365
+          },
+          "summary": {
+            "type": "boolean",
+            "default": false
+          },
+          "columns": {
+            "anyOf": [
+              {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null
+          },
+          "interval": {
+            "type": "string",
+            "default": "1D"
+          }
+        },
+        "required": [
+          "symbol"
+        ],
+        "additionalProperties": false
+      },
+      "annotations": {
+        "title": "vn_quote_history",
+        "readOnlyHint": true
+      }
+    }
+  ],
+  "allowed_tool_names": [
+    "mcp__opentrading__vn_quote_history",
+    "mcp_opentrading_vn_quote_history",
+    "opentrading_vn_quote_history"
+  ],
+  "native_system_prompt": true,
+  "skills": [],
+  "external_plugins": [],
+  "tool_policy": "snapshot MCP only; no filesystem, shell, web, memory, subagents",
+  "isolation": "isolated HOME/XDG/environment and native tool removal; not OS container",
+  "config": {
+    "bundles": [
+      "@deepseek-ai/dsh-base",
+      "@deepseek-ai/dsh-headless"
+    ],
+    "core_entries": [
+      "agent",
+      "agent-default-model",
+      "agent-loop",
+      "attachment-local",
+      "compaction-basic",
+      "deepseek-llm-api-extensions",
+      "headless-runner",
+      "headless-startup",
+      "jobs",
+      "llm",
+      "llm-pi-ai",
+      "otel",
+      "remote-access",
+      "session",
+      "session-checkpoint-policy",
+      "session-log-deepseek",
+      "session-persistence-jsonl",
+      "session-projection",
+      "session-projection-cache",
+      "session-query-sqlite",
+      "session-title",
+      "spill-local",
+      "spill-policy",
+      "storage",
+      "storage-domain",
+      "storage-json",
+      "system-prompt",
+      "timeout-policy",
+      "timer",
+      "token-meter",
+      "tools",
+      "typert",
+      "typert-gateway",
+      "typert-loader"
+    ],
+    "patches": [
+      {
+        "id": "agent-instructions",
+        "disabled": true
+      },
+      {
+        "id": "approval",
+        "disabled": true
+      },
+      {
+        "id": "authorization",
+        "disabled": true
+      },
+      {
+        "id": "bash-sandbox",
+        "disabled": true
+      },
+      {
+        "id": "command-compact",
+        "disabled": true
+      },
+      {
+        "id": "command-feedback",
+        "disabled": true
+      },
+      {
+        "id": "command-goal",
+        "disabled": true
+      },
+      {
+        "id": "commands",
+        "disabled": true
+      },
+      {
+        "id": "config-editor",
+        "disabled": true
+      },
+      {
+        "id": "credentials",
+        "disabled": true
+      },
+      {
+        "id": "deepseek-account",
+        "disabled": true
+      },
+      {
+        "id": "fs-observation-policy",
+        "disabled": true
+      },
+      {
+        "id": "fs-sandbox",
+        "disabled": true
+      },
+      {
+        "id": "goal",
+        "disabled": true
+      },
+      {
+        "id": "goal-round-driver",
+        "disabled": true
+      },
+      {
+        "id": "hmr",
+        "disabled": true
+      },
+      {
+        "id": "image-offload",
+        "disabled": true
+      },
+      {
+        "id": "llm-deepseek",
+        "disabled": true
+      },
+      {
+        "id": "llm-deepseek-account",
+        "disabled": true
+      },
+      {
+        "id": "llm-retry",
+        "disabled": true
+      },
+      {
+        "id": "mcp-resources",
+        "disabled": true
+      },
+      {
+        "id": "permission",
+        "disabled": true
+      },
+      {
+        "id": "plan-mode",
+        "disabled": true
+      },
+      {
+        "id": "plugin-manager",
+        "disabled": true
+      },
+      {
+        "id": "plugin-package-inventory-deepseek",
+        "disabled": true
+      },
+      {
+        "id": "ptc-runtime",
+        "disabled": true
+      },
+      {
+        "id": "pwsh-sandbox",
+        "disabled": true
+      },
+      {
+        "id": "repeat-tool-reminder",
+        "disabled": true
+      },
+      {
+        "id": "sandbox",
+        "disabled": true
+      },
+      {
+        "id": "sandbox-policy",
+        "disabled": true
+      },
+      {
+        "id": "session-telemetry-otel",
+        "disabled": true
+      },
+      {
+        "id": "session-title-llm",
+        "disabled": true
+      },
+      {
+        "id": "settings",
+        "disabled": true
+      },
+      {
+        "id": "shell-env",
+        "disabled": true
+      },
+      {
+        "id": "skill",
+        "disabled": true
+      },
+      {
+        "id": "skill-filesystem",
+        "disabled": true
+      },
+      {
+        "id": "subagent",
+        "disabled": true
+      },
+      {
+        "id": "subagent-fork-in-process",
+        "disabled": true
+      },
+      {
+        "id": "subagent-spawn-in-process",
+        "disabled": true
+      },
+      {
+        "id": "subprocess",
+        "disabled": true
+      },
+      {
+        "id": "tool-bash",
+        "disabled": true
+      },
+      {
+        "id": "tool-fs",
+        "disabled": true
+      },
+      {
+        "id": "tool-fs-search",
+        "disabled": true
+      },
+      {
+        "id": "tool-goal",
+        "disabled": true
+      },
+      {
+        "id": "tool-jobs",
+        "disabled": true
+      },
+      {
+        "id": "tool-plugin-manager",
+        "disabled": true
+      },
+      {
+        "id": "tool-pwsh",
+        "disabled": true
+      },
+      {
+        "id": "tool-result-pruner",
+        "disabled": true
+      },
+      {
+        "id": "tool-skill",
+        "disabled": true
+      },
+      {
+        "id": "tool-subagent",
+        "disabled": true
+      },
+      {
+        "id": "tool-subagent-control",
+        "disabled": true
+      },
+      {
+        "id": "tool-subagent-fork",
+        "disabled": true
+      },
+      {
+        "id": "tool-subagent-list-agents",
+        "disabled": true
+      },
+      {
+        "id": "tool-todo",
+        "disabled": true
+      },
+      {
+        "id": "tool-web",
+        "disabled": true
+      },
+      {
+        "id": "tool-workflow",
+        "disabled": true
+      },
+      {
+        "id": "tool-working-directory",
+        "disabled": true
+      },
+      {
+        "id": "user-questions",
+        "disabled": true
+      },
+      {
+        "id": "web",
+        "disabled": true
+      },
+      {
+        "id": "web-deepseek-api",
+        "disabled": true
+      },
+      {
+        "id": "web-fetch-http",
+        "disabled": true
+      },
+      {
+        "id": "web-search-deepseek",
+        "disabled": true
+      },
+      {
+        "id": "workflow-ptc",
+        "disabled": true
+      },
+      {
+        "id": "working-directory",
+        "disabled": true
+      },
+      {
+        "id": "llm-pi-ai",
+        "config": {
+          "providers": {
+            "nvidia": {
+              "apiKeyEnv": "NVIDIA_API_KEY",
+              "api": "openai-completions",
+              "baseURL": "http://127.0.0.1:36137/v1",
+              "reasoning": "off",
+              "models": [
+                {
+                  "id": "nvidia/nemotron-3.5-bolt-e4b",
+                  "contextWindow": 32000,
+                  "maxTokens": 2048,
+                  "reasoningEfforts": false
+                }
+              ],
+              "compat": {
+                "supportsStore": false,
+                "supportsReasoningEffort": false
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "agent-default-model",
+        "config": {
+          "provider": "nvidia",
+          "model": "nvidia/nemotron-3.5-bolt-e4b"
+        }
+      },
+      {
+        "insert": [
+          {
+            "id": "mcp-opentrading",
+            "name": "@deepseek-ai/dsh-mcp-client",
+            "config": {
+              "serverName": "opentrading",
+              "transport": "stdio",
+              "command": "/usr/bin/python3",
+              "args": [
+                "/home/doanlong/extra/benchmark/tools/mcp_snapshot_server.py"
+              ],
+              "env": {
+                "PYTHONPATH": "/home/doanlong/.local/lib/python3.12/site-packages",
+                "BENCH_PAYLOADS": "/home/doanlong/extra/benchmark/tasks/smoke/smoke-quote-01/environment/payloads.json",
+                "BENCH_MCP_LEDGER": "/home/doanlong/extra/benchmark/audits/2026-11-05/opentrading-review/capture/dsh/mcp.jsonl"
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "observed_tool_sets": [
+    [
+      "mcp__opentrading__vn_quote_history"
+    ]
+  ],
+  "provider_requests": 1,
+  "provider_upstream_requests": 1,
+  "usage_complete": true
+}

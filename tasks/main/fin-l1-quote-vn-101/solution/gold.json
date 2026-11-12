@@ -1,46 +1,69 @@
 {
- "task_id": "fin-l1-quote-vn-101",
- "scoring": "value",
- "solution": {
-  "value": 16.1,
-  "last_t": "2026-10-30"
- },
- "as_of": "2026-11-01T22:37:34.299882+07:00",
- "split": "main",
- "expects": [
-  {
-   "type": "unit",
-   "path": "unit",
-   "accept": [
-    "nghìn đồng",
-    "nghìn đ",
-    "k đồng"
-   ]
+  "task_id": "fin-l1-quote-vn-101",
+  "scoring": "value",
+  "solution": {
+    "value": 16.1,
+    "last_t": "2026-10-30"
   },
-  {
-   "type": "value",
-   "path": "value",
-   "gold": 16.1,
-   "tol": {
-    "rel": 0.005
-   }
-  },
-  {
-   "type": "period",
-   "path": "period",
-   "accept": [
-    "30/10",
-    "30-10",
-    "30.10",
-    "2026-10-30"
-   ]
-  },
-  {
-   "type": "str",
-   "path": "source",
-   "accept": [
-    "vn_quote_history"
-   ]
-  }
- ]
+  "as_of": "2026-11-01T22:37:34.299882+07:00",
+  "split": "main",
+  "expects": [
+    {
+      "type": "unit",
+      "path": "unit",
+      "accept": [
+        "nghìn đồng",
+        "nghìn đ",
+        "k đồng"
+      ]
+    },
+    {
+      "type": "value",
+      "path": "value",
+      "gold": 16.1,
+      "tol": {
+        "rel": 0.005
+      }
+    },
+    {
+      "type": "period",
+      "path": "period",
+      "accept": [
+        "30/10",
+        "30-10",
+        "30.10",
+        "2026-10-30"
+      ]
+    },
+    {
+      "type": "str",
+      "path": "source",
+      "accept": [
+        "vn_quote_history"
+      ]
+    }
+  ],
+  "contract_version": 2,
+  "provenance_contract": [
+    {
+      "tool": "vn_quote_history",
+      "source": "vnstock",
+      "as_of": "2026-11-01T22:37:34.299882+07:00",
+      "matched_entry_id": "vnq:EIB",
+      "response_sha256": "318d58614ffab40f362b89f5089943630f9ec675cd3114a84f7b6112cc4156b6"
+    }
+  ],
+  "payload_sha256": "fb8a39991555e595192cf4190947f4bdccddcbe1f3b9a3da08568a60d4d784f4",
+  "provenance_catalog": [
+    {
+      "tool": "vn_quote_history",
+      "source": "vnstock",
+      "as_of": "2026-11-01T22:37:34.299882+07:00",
+      "matched_entry_id": "vnq:EIB",
+      "response_sha256": "318d58614ffab40f362b89f5089943630f9ec675cd3114a84f7b6112cc4156b6"
+    }
+  ],
+  "required_payload_keys": [
+    "vnq:EIB"
+  ]
 }

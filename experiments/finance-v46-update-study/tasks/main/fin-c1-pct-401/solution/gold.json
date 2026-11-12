@@ -1,0 +1,60 @@
+{
+  "task_id": "fin-c1-pct-401",
+  "scoring": "value",
+  "solution": {
+    "value": -0.8803
+  },
+  "as_of": "2026-11-11T09:41:32.145602+07:00",
+  "split": "main",
+  "expects": [
+    {
+      "type": "value",
+      "path": "value",
+      "gold": -0.8803,
+      "tol": {
+        "abs": 0.05
+      }
+    },
+    {
+      "type": "unit",
+      "path": "unit",
+      "accept": [
+        "%",
+        "phần trăm"
+      ]
+    },
+    {
+      "type": "str",
+      "path": "source",
+      "accept": [
+        "vn_quote_history"
+      ]
+    }
+  ],
+  "contract_version": 2,
+  "stratum": "compute",
+  "tier": "C1",
+  "notes": "Compute stratum (amendment 2026-11-11 d). Gold computed with Decimal from payloads; uniform tolerance.",
+  "provenance_contract": [
+    {
+      "tool": "vn_quote_history",
+      "source": "vnstock",
+      "as_of": "2026-11-11T09:41:32.145602+07:00",
+      "matched_entry_id": "hist:VCB",
+      "response_sha256": "f196ec0abc711eb0f5e917231d39c4e1703b23b8669dd41c0bac66ae4bdff366"
+    }
+  ],
+  "provenance_catalog": [
+    {
+      "tool": "vn_quote_history",
+      "source": "vnstock",
+      "as_of": "2026-11-11T09:41:32.145602+07:00",
+      "matched_entry_id": "hist:VCB",
+      "response_sha256": "f196ec0abc711eb0f5e917231d39c4e1703b23b8669dd41c0bac66ae4bdff366"
+    }
+  ],
+  "payload_sha256": "602defde19de084c0f5ea8b88825d753ac50c063f9f1fbcd235a6c94620ec559",
+  "required_payload_keys": [
+    "hist:VCB"
+  ]
+}

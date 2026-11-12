@@ -1,0 +1,71 @@
+{
+  "provider": "nvidia",
+  "catalog_status": 200,
+  "model": "deepseek-ai/deepseek-v4.1-flash",
+  "small_candidates": [
+    "adept/fuyu-8b",
+    "google/diffusiongemma-26b-a4b-it",
+    "google/gemma-3-4b-it",
+    "ibm/granite-3.0-3b-a800m-instruct",
+    "ibm/granite-3.0-8b-instruct",
+    "ibm/granite-34b-code-instruct",
+    "ibm/granite-8b-code-instruct",
+    "nvidia/cosmos-reason2-8b",
+    "nvidia/llama-3.1-nemoguard-8b-content-safety",
+    "nvidia/llama-3.1-nemoguard-8b-topic-control",
+    "nvidia/llama-3.1-nemotron-safety-guard-8b-v3",
+    "nvidia/llama-3.1-nemotron-ultra-253b-v1",
+    "nvidia/mistral-nemo-minitron-8b-8k-instruct",
+    "nvidia/nemotron-3-nano-omni-30b-a3b-reasoning",
+    "nvidia/nemotron-3.5-bolt-e4b",
+    "nvidia/nemotron-3.5-embed-8b",
+    "nvidia/nemotron-3.5-lightning-30b-a3b",
+    "nvidia/nemotron-nano-3-30b-a3b",
+    "nvidia/riva-translate-4b-instruct",
+    "nvidia/riva-translate-4b-instruct-v2"
+  ],
+  "status": 200,
+  "response_model": "deepseek-ai/deepseek-v4.1-flash",
+  "usage": {
+    "prompt_tokens": 305,
+    "completion_tokens": 62,
+    "total_tokens": 367,
+    "prompt_tokens_details": {
+      "cached_tokens": 192
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 20
+    }
+  },
+  "calls": [
+    {
+      "id": "chatcmpl-tool-b4914b1a51f6374b",
+      "type": "function",
+      "function": {
+        "name": "get_quote",
+        "arguments": "{\"ticker\": \"FPT\"}"
+      }
+    }
+  ],
+  "function_call_verified": true,
+  "tool_loop": {
+    "status": 200,
+    "usage": {
+      "prompt_tokens": 414,
+      "completion_tokens": 33,
+      "total_tokens": 447,
+      "prompt_tokens_details": {
+        "cached_tokens": 192
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 20
+      }
+    },
+    "message": {
+      "content": "{\"value\":123400,\"unit\":\"VND\"}",
+      "refusal": null,
+      "role": "assistant",
+      "reasoning_content": "The user wants only JSON output. The quote result: close 123400, unit VND."
+    }
+  }
+}

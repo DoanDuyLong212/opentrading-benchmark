@@ -1,0 +1,95 @@
+{
+  "kind": "v44-benchmark-engineering-readiness-startupfix1",
+  "created_at": "2026-11-07T03:00:19.788837+00:00",
+  "financial_inference_started": false,
+  "full_suite": {
+    "passed": 393,
+    "failed": 0,
+    "duration_s": 85.1,
+    "log": "/home/doanlong/extra/benchmark/experiments/finance-v44-study/audits/v44-benchmark-final-full-after-financial-ops.log",
+    "note": "393 passed before startup-only supervisor argv/output suffix/protocol amendment; feature implementation unchanged. Startup-specific actual CLI regression below verifies changed launch path; no extra full suite needed."
+  },
+  "additional_focused_gate_suite": {
+    "passed": 10,
+    "failed": 0,
+    "duration_s": 0.9,
+    "log": "/home/doanlong/extra/benchmark/experiments/finance-v44-study/audits/v44-gate-final-focused.log",
+    "note": "Final gate source includes newly preregistered independent financial canary. Two tests (supervisorflow andcanaryguard) added after full-suite collection; eight overlap."
+  },
+  "compute_focused_suite": {
+    "passed": 19,
+    "failed": 0,
+    "note": "Included in 29 passed compute+gate focused and final 393 passed full suite; actual VNM name-only metric, MWG VNDbn table/period alignment and VCB VND scale."
+  },
+  "source_and_log_sha256": {
+    "tools/analytics_compute.py": "ac178cd908edae36c35c59d2d0c469e03b851b156fc38af53f56c4c07f7dec56",
+    "tools/mcp_snapshot_server.py": "f1dd4020d0ce5c507102d5c9b82e60ca0b7564950c6a8724b32cb86d4a588308",
+    "tools/ready_check.py": "55bb9cdf647e996ed5caee866905063a8ffc73839b8ba1d16e3e19bcbc116521",
+    "tools/wire_contracts.py": "901a907ed32644b4e7e4044b9cb101da4a3a902f31fdb0fd12fe960b8a83cf8a",
+    "tools/v44_gate.py": "a5546b33e5ed748aeca530fdec7570eb01c922a41593f9933b0b3fe3bd2f75fb",
+    "tools/v44_supervisor.py": "13fead56fb85ad37997bfaadaf5be5e178a0fcf75cdc35867c01c96242b3b438",
+    "tools/run_benchmark.py": "ea7549e971ae3d1662e2ef868d733acb589d18b7146b2f50563115f5ef6c806c",
+    "tools/bench_config.json": "88f56a126fcc7f01ab667e092ec3a996ccde4dc374489ca81aebc513da04b761",
+    "tools/bench_config_deepseek.json": "15c487f4917af6cf5182ce9a05801ac9f2adf02dace3ae6174130363ee5a017a",
+    "plans/2026-11-07-v44-compute-acquisition-study.md": "695c1b03928af671eda935fcf3a02bbeebd65f160a7f6fa93fc2946e395cc985",
+    "audits/v44-benchmark-final-full.log": "d441d37f37a50eaadc3edb638dad9c701906d13faddd4f21ed9fecfb54715414",
+    "audits/v44-benchmark-first-full.log": "d504aaaf2cf0273efdf794ee63d14b05a38e7058bc7e4739f2933a0065178f8a",
+    "audits/v44-gate-final-focused.log": "b1a3b823c0132e996ea464ef2dc1e00db48e3527bc3e8cca3f60f18d18048927",
+    "audits/v44-growth-final-focused.log": "205d5423b9347a04066df6363f8aa4aa588811a340c24a228159229e15fa448b",
+    "tools/tests/test_v44_compute.py": "00fdcf49255dfa84fa759f719e8e5c014d7da58ed8f8ddc60ad8942210f7d3dd",
+    "tools/tests/test_v44_gate.py": "1872c650feced14ab7f6b22c1ba15f503510a4af5877173ed3c599e6b59611e3",
+    "audits/v44-actual-financial-ops-focused.log": "7d99b8263fa0d959065b4912d866b1471571c6e68e834db7b6333c532fa24daf",
+    "audits/v44-benchmark-final-full-after-financial-ops.log": "49655cdd9805fe9342c97a0d41838a00d574d005bf5ffea50907fa3734646f61",
+    "audits/v44-startupfix1-gate.log": "9feefa95da4867a0be3039ebc2f2e1a6b54bc199238dbc1877114051dda3cddd",
+    "audits/v44-startupfix1-gate-first-trial.log": "1f26575867e0938158c52d29bb092d752afca00d4c272cad70b702218416d466"
+  },
+  "status": "startupfix1 engineering checks passed; awaiting independent fresh state/approval then root new shared seal before any inference",
+  "prior_failures": "First study full suite374passed6failed (catalog expectations and missing copied diagnostic admission receipt), all fixed; original log retained. One root-cwd full pytest was interrupted and excluded from readiness evidence.",
+  "post_canary_compute_and_gate_focused": {
+    "passed": 25,
+    "failed": 0,
+    "duration_s": 5.57,
+    "note": "9 gate +16 compute before final additionalcanaryguardtest; latestgate10above."
+  },
+  "post_actual_growth_fix_focused": {
+    "passed": 27,
+    "failed": 0,
+    "duration_s": 7.42,
+    "log": "/home/doanlong/extra/benchmark/experiments/finance-v44-study/audits/v44-growth-final-focused.log"
+  },
+  "updated_at": "2026-11-07T07:44:30.925470+00:00",
+  "prior_full_suite": {
+    "passed": 388,
+    "failed": 0,
+    "duration_s": 89.21
+  },
+  "post_actual_financial_ops_compute_and_gate_focused": {
+    "passed": 29,
+    "failed": 0,
+    "duration_s": 7.23,
+    "log": "/home/doanlong/extra/benchmark/experiments/finance-v44-study/audits/v44-actual-financial-ops-focused.log"
+  },
+  "scope": "Source final: only supervisor explicit retry-backoff argv, fresh output suffix, actual-CLI regression, and preregistered protocol amendment. No inference/production writes/commits. Old readiness file unchanged.",
+  "previous_readiness": {
+    "path": "/home/doanlong/extra/benchmark/audits/financial-prompt-v44/BENCHMARK-READINESS.json",
+    "sha256": "642c4a0b9e170dec70e5f0d03b1b850130f28f1eb59ae7a7012f7e08ef446ae7",
+    "preserved": true
+  },
+  "startup_fix": {
+    "root_cause": "Actual argparse omitted retry_backoff default int4 differed from registered float4.0 only in JSON fingerprint, correctly blocking before first trial.",
+    "fix": "Supervisor explicitly --retry-backoff4 parses float4.0; same 4-second numeric policy. Fresh all4 output names suffix-startupfix1; old seal/approval/manifests preserved.",
+    "policy_changes": false,
+    "zero_inference_proof": "/home/doanlong/extra/benchmark/audits/financial-prompt-v44/failed-startup-zero-inference.json",
+    "actual_cli_reproduction": "/home/doanlong/extra/benchmark/audits/financial-prompt-v44/failed-startup-actual-cli-diff.json",
+    "old_source_archive": "/home/doanlong/extra/benchmark/audits/financial-prompt-v44/failed-startup-original-source"
+  },
+  "startup_cli_first_trial_regression": {
+    "passed": 14,
+    "failed": 0,
+    "duration_s": 29.41,
+    "log": "/home/doanlong/extra/benchmark/experiments/finance-v44-study/audits/v44-startupfix1-gate-first-trial.log",
+    "command": "python3 -m pytest tools/tests/test_v44_gate.py -q",
+    "cwd": "/home/doanlong/extra/benchmark/experiments/finance-v44-study",
+    "coverage": "10 gate cases plus all4 model/split actual driver argparse/main, full settings JSON digest and real prepare_manifest resume fingerprints. Each continues through empty-trial validation to first execute_trial interceptor. No financial execution; temporary trialfiles remain empty."
+  }
+}

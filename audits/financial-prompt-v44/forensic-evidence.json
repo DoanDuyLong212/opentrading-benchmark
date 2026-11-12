@@ -1,0 +1,2851 @@
+{
+  "scope": "read-only supplementary forensic examination; frozen audit remains FAIL; no inference/tests/retry",
+  "inputs": {
+    "/home/doanlong/extra/benchmark/audits/financial-prompt-v44/independent-evidence.json": {
+      "sha256": "f0e771c0296eb8d8dddc48ff9c4f54f95ce76ebdab5472bb89d807082eda7aaa",
+      "bytes": 289932
+    },
+    "/home/doanlong/extra/benchmark/experiments/finance-v44-study/results/financial-v44-smoke-bolt-20261107-startupfix1/trials.jsonl": {
+      "sha256": "6b60b0f7cb757fb363958c8a0424d85d03bde098dfbb8d4e68463fedd3f06e21",
+      "bytes": 107272
+    },
+    "/home/doanlong/extra/benchmark/experiments/finance-v44-study/results/financial-v44-smoke-bolt-20261107-startupfix1/trials/smoke-quote-01__opentrading_finance__r1/attempts/01-10a309b920b9/provider.jsonl": {
+      "sha256": "dda0d057e9609d64fb1576b6261cd5fb631ddbc8c78a8ff5224506e02f8006c0",
+      "bytes": 36462
+    },
+    "/home/doanlong/extra/benchmark/experiments/finance-v44-study/results/financial-v44-smoke-bolt-20261107-startupfix1/trials/smoke-quote-01__opentrading_finance__r1/attempts/01-10a309b920b9/run.log": {
+      "sha256": "aff3a68153a25fb3a0651c30f2a70a27a581156d33d8f5fc74e019368b12d3fe",
+      "bytes": 10929
+    },
+    "/home/doanlong/extra/benchmark/experiments/finance-v44-study/results/financial-v44-smoke-bolt-20261107-startupfix1/trials/smoke-quote-01__opentrading_baseline__r1/attempts/01-1a87f9b9d6e4/mcp.jsonl": {
+      "sha256": "c798b00cf14577c749afefb2961048e5e852bc074b4ae6ce642ce3f551682d82",
+      "bytes": 701
+    },
+    "/home/doanlong/extra/benchmark/experiments/finance-v44-study/results/financial-v44-smoke-bolt-20261107-startupfix1/trials/smoke-quote-01__opentrading_baseline__r1/attempts/01-1a87f9b9d6e4/provider.jsonl": {
+      "sha256": "aee5e34ffad69a926bc1c0654d885faccfddf261ed9bf59e07ab58ace8ca87f2",
+      "bytes": 37095
+    },
+    "/home/doanlong/extra/benchmark/experiments/finance-v44-study/results/financial-v44-smoke-bolt-20261107-startupfix1/trials/smoke-quote-01__opentrading_baseline__r1/attempts/01-1a87f9b9d6e4/run.log": {
+      "sha256": "d6db1abc8aeac9c3c1aba7f3953d1507250cca16f8dd3cfd6f4fe8b97418c9b8",
+      "bytes": 14269
+    },
+    "/home/doanlong/extra/benchmark/experiments/finance-v44-study/results/financial-v44-smoke-bolt-20261107-startupfix1/trials/smoke-quote-01__opencode__r1/attempts/01-e279c3b0d2e0/mcp.jsonl": {
+      "sha256": "07f824117df42bf241bf0ca0aba8fac0c30ca1d433a582493240cc7a9796b913",
+      "bytes": 703
+    },
+    "/home/doanlong/extra/benchmark/experiments/finance-v44-study/results/financial-v44-smoke-bolt-20261107-startupfix1/trials/smoke-quote-01__opencode__r1/attempts/01-e279c3b0d2e0/provider.jsonl": {
+      "sha256": "e7ab6d4560928ba4abbc6e6d1ccc478ba7ebd29da0a8f15b95b30cd08053b0f2",
+      "bytes": 36987
+    },
+    "/home/doanlong/extra/benchmark/experiments/finance-v44-study/results/financial-v44-smoke-bolt-20261107-startupfix1/trials/smoke-quote-01__opencode__r1/attempts/01-e279c3b0d2e0/run.log": {
+      "sha256": "3ad38dbfe29ad388cb98ba88c179e970f9d51bb6308ee0a4b9926af260609f3a",
+      "bytes": 7471
+    },
+    "/home/doanlong/extra/benchmark/experiments/finance-v44-study/results/financial-v44-smoke-bolt-20261107-startupfix1/trials/smoke-quote-01__dsh__r1/attempts/01-77971f397735/mcp.jsonl": {
+      "sha256": "b04f69e1a4a685f62f7f771bbfdb31c16fb978a2007d3d7f55e2e888b9f20483",
+      "bytes": 701
+    },
+    "/home/doanlong/extra/benchmark/experiments/finance-v44-study/results/financial-v44-smoke-bolt-20261107-startupfix1/trials/smoke-quote-01__dsh__r1/attempts/01-77971f397735/provider.jsonl": {
+      "sha256": "6961c01bbbe37e0164b392d0a77a0279d292b04053b6411fcf1a946203bc350c",
+      "bytes": 36994
+    },
+    "/home/doanlong/extra/benchmark/experiments/finance-v44-study/results/financial-v44-smoke-bolt-20261107-startupfix1/trials/smoke-quote-01__dsh__r1/attempts/01-77971f397735/run.log": {
+      "sha256": "43c7829f121356cf1cbaf13a1dd3122099b0bb2fd4ac4e484023fdd9f9457125",
+      "bytes": 3520
+    },
+    "/home/doanlong/extra/benchmark/experiments/finance-v44-study/results/financial-v44-smoke-bolt-20261107-startupfix1/trials/smoke-trap-01__opencode__r1/attempts/01-95e4fe162e0d/mcp.jsonl": {
+      "sha256": "9d0442906e840b89ea327491f92f23a8cf58f8e45a5d683cd31c412cf9b27e3f",
+      "bytes": 665
+    },
+    "/home/doanlong/extra/benchmark/experiments/finance-v44-study/results/financial-v44-smoke-bolt-20261107-startupfix1/trials/smoke-trap-01__opencode__r1/attempts/01-95e4fe162e0d/provider.jsonl": {
+      "sha256": "8be2812087382e7acb39aeba757437750f04561b1c98f60960e98202f7255436",
+      "bytes": 26596
+    },
+    "/home/doanlong/extra/benchmark/experiments/finance-v44-study/results/financial-v44-smoke-bolt-20261107-startupfix1/trials/smoke-trap-01__opencode__r1/attempts/01-95e4fe162e0d/run.log": {
+      "sha256": "686f08ce5b1a1cfa98323b701da1e877b67fd8e429c2a40db7cd1374e0d912cd",
+      "bytes": 8134
+    },
+    "/home/doanlong/extra/benchmark/experiments/finance-v44-study/results/financial-v44-smoke-bolt-20261107-startupfix1/trials/smoke-trap-01__dsh__r1/attempts/01-3dc8d027e8c3/mcp.jsonl": {
+      "sha256": "2fc112f76d65c008196d0ae51c125fa9389b2f4a6e681d3fca6e34cf0978dd63",
+      "bytes": 665
+    },
+    "/home/doanlong/extra/benchmark/experiments/finance-v44-study/results/financial-v44-smoke-bolt-20261107-startupfix1/trials/smoke-trap-01__dsh__r1/attempts/01-3dc8d027e8c3/provider.jsonl": {
+      "sha256": "404efa21353f215b1174b2d918c213b2783b7429f737761cddf8651a7809d8c9",
+      "bytes": 26600
+    },
+    "/home/doanlong/extra/benchmark/experiments/finance-v44-study/results/financial-v44-smoke-bolt-20261107-startupfix1/trials/smoke-trap-01__dsh__r1/attempts/01-3dc8d027e8c3/run.log": {
+      "sha256": "a22172b2862292374e75835021df513f7b37240426e3346d1e0a1d7ae784ab9a",
+      "bytes": 3190
+    },
+    "/home/doanlong/extra/benchmark/experiments/finance-v44-study/results/financial-v44-smoke-bolt-20261107-startupfix1/trials/smoke-trap-01__opentrading_finance__r1/attempts/01-5889af05df01/mcp.jsonl": {
+      "sha256": "7b5d8c5d070c292e1b6c5e4b083868c49e35ef73aaa91b722f5af86f1340a6b8",
+      "bytes": 663
+    },
+    "/home/doanlong/extra/benchmark/experiments/finance-v44-study/results/financial-v44-smoke-bolt-20261107-startupfix1/trials/smoke-trap-01__opentrading_finance__r1/attempts/01-5889af05df01/provider.jsonl": {
+      "sha256": "b77e08ff147b6bb49a4e508759dc583114a58c0ca62674a538aa0b7411be4b57",
+      "bytes": 39994
+    },
+    "/home/doanlong/extra/benchmark/experiments/finance-v44-study/results/financial-v44-smoke-bolt-20261107-startupfix1/trials/smoke-trap-01__opentrading_finance__r1/attempts/01-5889af05df01/run.log": {
+      "sha256": "bc6a8fde115bd2b1193221162546f0a19561209af9f87f1235b57dca8800772e",
+      "bytes": 13885
+    },
+    "/home/doanlong/extra/benchmark/experiments/finance-v44-study/results/financial-v44-smoke-bolt-20261107-startupfix1/trials/smoke-trap-01__opentrading_baseline__r1/attempts/01-9cfb0602a958/mcp.jsonl": {
+      "sha256": "c70f9eb0d41dce69498f9b2a312229473029f29ea82e89a783be46cf173b03eb",
+      "bytes": 665
+    },
+    "/home/doanlong/extra/benchmark/experiments/finance-v44-study/results/financial-v44-smoke-bolt-20261107-startupfix1/trials/smoke-trap-01__opentrading_baseline__r1/attempts/01-9cfb0602a958/provider.jsonl": {
+      "sha256": "e8ee9648e7a6d8edd8e57725acb95e5d9b613bc23787c7b30b5f917d5eadbb0e",
+      "bytes": 26709
+    },
+    "/home/doanlong/extra/benchmark/experiments/finance-v44-study/results/financial-v44-smoke-bolt-20261107-startupfix1/trials/smoke-trap-01__opentrading_baseline__r1/attempts/01-9cfb0602a958/run.log": {
+      "sha256": "0249d7b91be06bbdb6b3fa78f5ae0c864c5d0e225c249e1fca800607dd3fd249",
+      "bytes": 21437
+    },
+    "/home/doanlong/extra/benchmark/experiments/finance-v44-study/results/financial-v44-smoke-bolt-20261107-startupfix1/trials/smoke-agg-01__dsh__r1/attempts/01-53b283bed76d/mcp.jsonl": {
+      "sha256": "53aa586cc79095686c00e6b3ce1d23146099154127021f109c4fa363f9e13a50",
+      "bytes": 3515
+    },
+    "/home/doanlong/extra/benchmark/experiments/finance-v44-study/results/financial-v44-smoke-bolt-20261107-startupfix1/trials/smoke-agg-01__dsh__r1/attempts/01-53b283bed76d/provider.jsonl": {
+      "sha256": "03f399c08501ba90e25c5f57902092f171b5c0ffcf4836a25efab0c069777298",
+      "bytes": 180288
+    },
+    "/home/doanlong/extra/benchmark/experiments/finance-v44-study/results/financial-v44-smoke-bolt-20261107-startupfix1/trials/smoke-agg-01__dsh__r1/attempts/01-53b283bed76d/run.log": {
+      "sha256": "371f9f854245b58b690261a0cff2e734788c4c98cd1faac56855c8c923ba49d9",
+      "bytes": 8731
+    },
+    "/home/doanlong/extra/benchmark/experiments/finance-v44-study/results/financial-v44-smoke-bolt-20261107-startupfix1/trials/smoke-agg-01__opentrading_finance__r1/attempts/01-999da8fbcc7d/provider.jsonl": {
+      "sha256": "28b72afc6304ad319a2f0e381c603dbc73b9f988ea5848918cc761a14bf9b408",
+      "bytes": 56151
+    },
+    "/home/doanlong/extra/benchmark/experiments/finance-v44-study/results/financial-v44-smoke-bolt-20261107-startupfix1/trials/smoke-agg-01__opentrading_finance__r1/attempts/01-999da8fbcc7d/run.log": {
+      "sha256": "effc7c4514bc5a4d5d9642d7e71bc9aa7a90e46f61831e21b947cd3538ae99f8",
+      "bytes": 10767
+    },
+    "/home/doanlong/extra/benchmark/experiments/finance-v44-study/results/financial-v44-smoke-bolt-20261107-startupfix1/trials/smoke-agg-01__opentrading_baseline__r1/attempts/01-41fac63b8bd0/mcp.jsonl": {
+      "sha256": "d96f7d70fdbca53d1889d3d04527baaf2e2d44a8360cb27fcc3f8e2ea64d1605",
+      "bytes": 3515
+    },
+    "/home/doanlong/extra/benchmark/experiments/finance-v44-study/results/financial-v44-smoke-bolt-20261107-startupfix1/trials/smoke-agg-01__opentrading_baseline__r1/attempts/01-41fac63b8bd0/provider.jsonl": {
+      "sha256": "4d6297338a4b03e7447aeab7b718de5d58ac2d788c9125c5e29154ed5f07599d",
+      "bytes": 59609
+    },
+    "/home/doanlong/extra/benchmark/experiments/finance-v44-study/results/financial-v44-smoke-bolt-20261107-startupfix1/trials/smoke-agg-01__opentrading_baseline__r1/attempts/01-41fac63b8bd0/run.log": {
+      "sha256": "ec1910333e8328518935329b51179bcf25eb84c8babe1c67961aefca041fcd09",
+      "bytes": 26511
+    },
+    "/home/doanlong/extra/benchmark/experiments/finance-v44-study/results/financial-v44-smoke-bolt-20261107-startupfix1/trials/smoke-agg-01__opencode__r1/attempts/01-bb89a596777e/mcp.jsonl": {
+      "sha256": "72e044330e774f0e339ca90dbd93b13ddb1e3ee31e3c032d5940efe3e8b2f21b",
+      "bytes": 3504
+    },
+    "/home/doanlong/extra/benchmark/experiments/finance-v44-study/results/financial-v44-smoke-bolt-20261107-startupfix1/trials/smoke-agg-01__opencode__r1/attempts/01-bb89a596777e/provider.jsonl": {
+      "sha256": "f6cfd8c22a6e0a623627f29d953249fa5512bffb75f22f5e1c61a30880315981",
+      "bytes": 59497
+    },
+    "/home/doanlong/extra/benchmark/experiments/finance-v44-study/results/financial-v44-smoke-bolt-20261107-startupfix1/trials/smoke-agg-01__opencode__r1/attempts/01-bb89a596777e/run.log": {
+      "sha256": "5a5ab34de101c160e830b04919fb008f474ec757033a845d07db181f8fab037b",
+      "bytes": 14391
+    },
+    "/home/doanlong/extra/benchmark/experiments/finance-v44-study/results/financial-v44-smoke-bolt-20261107-startupfix1/trials/smoke-trap-01__opentrading_baseline__r2/attempts/01-d9496e1919da/mcp.jsonl": {
+      "sha256": "a2870282dbea37eef4a4f0f7f9a10e5a12e24120962624ebdc9bb12fce250421",
+      "bytes": 665
+    },
+    "/home/doanlong/extra/benchmark/experiments/finance-v44-study/results/financial-v44-smoke-bolt-20261107-startupfix1/trials/smoke-trap-01__opentrading_baseline__r2/attempts/01-d9496e1919da/provider.jsonl": {
+      "sha256": "6a6c944faca3d7a7ca9e44cd8eb989c2193b98910875c3ac5e177eae37eb2353",
+      "bytes": 26706
+    },
+    "/home/doanlong/extra/benchmark/experiments/finance-v44-study/results/financial-v44-smoke-bolt-20261107-startupfix1/trials/smoke-trap-01__opentrading_baseline__r2/attempts/01-d9496e1919da/run.log": {
+      "sha256": "f0212d1ad5bb740efdc8bf73989e0d9afa5e6435585007c8dd0be9d53e9759b8",
+      "bytes": 21523
+    },
+    "/home/doanlong/extra/benchmark/experiments/finance-v44-study/results/financial-v44-smoke-bolt-20261107-startupfix1/trials/smoke-trap-01__opencode__r2/attempts/01-d452d8742151/mcp.jsonl": {
+      "sha256": "336f704f1725f7e269e7f228c179e06e98a0a9b9b5f9f32bb99c352e85b0dae8",
+      "bytes": 665
+    },
+    "/home/doanlong/extra/benchmark/experiments/finance-v44-study/results/financial-v44-smoke-bolt-20261107-startupfix1/trials/smoke-trap-01__opencode__r2/attempts/01-d452d8742151/provider.jsonl": {
+      "sha256": "ba9ae7e70da94dc8c4360fd096b536103d2e0154903e021e2a1ed025755b191b",
+      "bytes": 26596
+    },
+    "/home/doanlong/extra/benchmark/experiments/finance-v44-study/results/financial-v44-smoke-bolt-20261107-startupfix1/trials/smoke-trap-01__opencode__r2/attempts/01-d452d8742151/run.log": {
+      "sha256": "39081d6710d966dcc7b0abef5a4d611fb3fd1133661220ff6ade8ca6bc93af64",
+      "bytes": 8360
+    },
+    "/home/doanlong/extra/benchmark/experiments/finance-v44-study/results/financial-v44-smoke-bolt-20261107-startupfix1/trials/smoke-trap-01__dsh__r2/attempts/01-1fd625b798b5/mcp.jsonl": {
+      "sha256": "38b86e55fbc991a4e02e42bc8664536784be91432ab959e3ee8430aa84528090",
+      "bytes": 665
+    },
+    "/home/doanlong/extra/benchmark/experiments/finance-v44-study/results/financial-v44-smoke-bolt-20261107-startupfix1/trials/smoke-trap-01__dsh__r2/attempts/01-1fd625b798b5/provider.jsonl": {
+      "sha256": "e5f3a5e818bf97cee7034d59f5970f61f53fac4b61677053b17ed6668ebcac29",
+      "bytes": 26601
+    },
+    "/home/doanlong/extra/benchmark/experiments/finance-v44-study/results/financial-v44-smoke-bolt-20261107-startupfix1/trials/smoke-trap-01__dsh__r2/attempts/01-1fd625b798b5/run.log": {
+      "sha256": "328a7d475c75357b156bbe22335d64c8e4985a2cf4836b608bdb346c5b48b1b5",
+      "bytes": 3144
+    },
+    "/home/doanlong/extra/benchmark/experiments/finance-v44-study/results/financial-v44-smoke-bolt-20261107-startupfix1/trials/smoke-trap-01__opentrading_finance__r2/attempts/01-3790d590fb2b/mcp.jsonl": {
+      "sha256": "5907df54d6806d8ab0752a4ef310157d7993932f6abc90181b2a0a60fe04987f",
+      "bytes": 665
+    },
+    "/home/doanlong/extra/benchmark/experiments/finance-v44-study/results/financial-v44-smoke-bolt-20261107-startupfix1/trials/smoke-trap-01__opentrading_finance__r2/attempts/01-3790d590fb2b/provider.jsonl": {
+      "sha256": "fcf6649819713ca02ef33d56313d6bc22293811af8aed6b21c09de56169f7eb8",
+      "bytes": 39995
+    },
+    "/home/doanlong/extra/benchmark/experiments/finance-v44-study/results/financial-v44-smoke-bolt-20261107-startupfix1/trials/smoke-trap-01__opentrading_finance__r2/attempts/01-3790d590fb2b/run.log": {
+      "sha256": "165416f180eaba85ba8192d43cfe2789f2c6a38f555ddb44a76c997df790a4e0",
+      "bytes": 13705
+    },
+    "/home/doanlong/extra/benchmark/experiments/finance-v44-study/results/financial-v44-smoke-bolt-20261107-startupfix1/trials/smoke-agg-01__dsh__r2/attempts/01-14c31d70fa46/mcp.jsonl": {
+      "sha256": "b7dd83ed07efe621c543d9ee9c9c2524a63088481a155fb3a95f881b8cc68d76",
+      "bytes": 3516
+    },
+    "/home/doanlong/extra/benchmark/experiments/finance-v44-study/results/financial-v44-smoke-bolt-20261107-startupfix1/trials/smoke-agg-01__dsh__r2/attempts/01-14c31d70fa46/provider.jsonl": {
+      "sha256": "47ee2d334df0f686f139091a311dca9444026488db2bdefabd5f01656a0f9bbe",
+      "bytes": 180293
+    },
+    "/home/doanlong/extra/benchmark/experiments/finance-v44-study/results/financial-v44-smoke-bolt-20261107-startupfix1/trials/smoke-agg-01__dsh__r2/attempts/01-14c31d70fa46/run.log": {
+      "sha256": "e1a9caa6fb63fbcf47cc396ae18e9864805eecaebef23e9cf5db3eebc5c8338c",
+      "bytes": 8782
+    },
+    "/home/doanlong/extra/benchmark/experiments/finance-v44-study/results/financial-v44-smoke-bolt-20261107-startupfix1/trials/smoke-agg-01__opentrading_baseline__r2/attempts/01-3d64028fef14/mcp.jsonl": {
+      "sha256": "d9cc1f5bd30f9f71eb65b4e7e127c8e41ac8cda4b70cfc135068166cc5589bbb",
+      "bytes": 3514
+    },
+    "/home/doanlong/extra/benchmark/experiments/finance-v44-study/results/financial-v44-smoke-bolt-20261107-startupfix1/trials/smoke-agg-01__opentrading_baseline__r2/attempts/01-3d64028fef14/provider.jsonl": {
+      "sha256": "b376763464c109e42e897c07a9cc42798baa8904350eab247927512103bc2240",
+      "bytes": 59610
+    },
+    "/home/doanlong/extra/benchmark/experiments/finance-v44-study/results/financial-v44-smoke-bolt-20261107-startupfix1/trials/smoke-agg-01__opentrading_baseline__r2/attempts/01-3d64028fef14/run.log": {
+      "sha256": "150539fcec6ca60da9bc2c666d0e27a7bd8da1229b52683869ef820fe56afb4a",
+      "bytes": 26604
+    },
+    "/home/doanlong/extra/benchmark/experiments/finance-v44-study/results/financial-v44-smoke-bolt-20261107-startupfix1/trials/smoke-agg-01__opentrading_finance__r2/attempts/01-98f1cc090fe5/provider.jsonl": {
+      "sha256": "e6aa55715620e89dab6c4f42c7560c2bab06738f589b93f5de96989135adf4e9",
+      "bytes": 56153
+    },
+    "/home/doanlong/extra/benchmark/experiments/finance-v44-study/results/financial-v44-smoke-bolt-20261107-startupfix1/trials/smoke-agg-01__opentrading_finance__r2/attempts/01-98f1cc090fe5/run.log": {
+      "sha256": "18987c87b7026436567e071378cdb08c77b92e109c2fc24610a186376f3aafb9",
+      "bytes": 10809
+    },
+    "/home/doanlong/extra/benchmark/experiments/finance-v44-study/results/financial-v44-smoke-bolt-20261107-startupfix1/trials/smoke-agg-01__opencode__r2/attempts/01-dbf18f38a989/mcp.jsonl": {
+      "sha256": "2ac387909e096f24c4d99acd16f3012ef7e0e7c9730fdb58831f64e4be212a71",
+      "bytes": 3505
+    },
+    "/home/doanlong/extra/benchmark/experiments/finance-v44-study/results/financial-v44-smoke-bolt-20261107-startupfix1/trials/smoke-agg-01__opencode__r2/attempts/01-dbf18f38a989/provider.jsonl": {
+      "sha256": "4c89a322cb10fee8469bc9b7478809a9cd43b84e39cd67240dafeb03d72ef37d",
+      "bytes": 59495
+    },
+    "/home/doanlong/extra/benchmark/experiments/finance-v44-study/results/financial-v44-smoke-bolt-20261107-startupfix1/trials/smoke-agg-01__opencode__r2/attempts/01-dbf18f38a989/run.log": {
+      "sha256": "954582783098ae4667449086df8ad4b112062ec189789d321a9d83bd92be59c0",
+      "bytes": 14195
+    },
+    "/home/doanlong/extra/benchmark/experiments/finance-v44-study/results/financial-v44-smoke-bolt-20261107-startupfix1/trials/smoke-quote-01__opencode__r2/attempts/01-cfc19c27cc2c/mcp.jsonl": {
+      "sha256": "54517966ac05e93d5155733dea816a32793e3b3c357880df72e93b7b14b0a76c",
+      "bytes": 721
+    },
+    "/home/doanlong/extra/benchmark/experiments/finance-v44-study/results/financial-v44-smoke-bolt-20261107-startupfix1/trials/smoke-quote-01__opencode__r2/attempts/01-cfc19c27cc2c/provider.jsonl": {
+      "sha256": "39b5855a1d2b02e887145e07747f2a7dba53cbaa7e9d6f4a9988e614aad6f6a1",
+      "bytes": 36988
+    },
+    "/home/doanlong/extra/benchmark/experiments/finance-v44-study/results/financial-v44-smoke-bolt-20261107-startupfix1/trials/smoke-quote-01__opencode__r2/attempts/01-cfc19c27cc2c/run.log": {
+      "sha256": "bbaa5f94b33e95418186a206bd1d609e9737317ed702ee877a65289e0878c7a7",
+      "bytes": 7490
+    },
+    "/home/doanlong/extra/benchmark/experiments/finance-v44-study/results/financial-v44-smoke-bolt-20261107-startupfix1/trials/smoke-quote-01__dsh__r2/attempts/01-cbfc11a71b17/mcp.jsonl": {
+      "sha256": "35651fb42b21fc21b03f66bd7d513c092956476792a55ef9dc95b5fc8c989f08",
+      "bytes": 701
+    },
+    "/home/doanlong/extra/benchmark/experiments/finance-v44-study/results/financial-v44-smoke-bolt-20261107-startupfix1/trials/smoke-quote-01__dsh__r2/attempts/01-cbfc11a71b17/provider.jsonl": {
+      "sha256": "43cac9f9668f1fd500c92876d57295f9820fbab2a5e597cc08c9d0532ceb6ce6",
+      "bytes": 36997
+    },
+    "/home/doanlong/extra/benchmark/experiments/finance-v44-study/results/financial-v44-smoke-bolt-20261107-startupfix1/trials/smoke-quote-01__dsh__r2/attempts/01-cbfc11a71b17/run.log": {
+      "sha256": "efe36d2f5aebd96407975e77133d4297b200f06eac25c8c68136f01bcdb1afca",
+      "bytes": 2933
+    },
+    "/home/doanlong/extra/benchmark/experiments/finance-v44-study/results/financial-v44-smoke-bolt-20261107-startupfix1/trials/smoke-quote-01__opentrading_baseline__r2/attempts/01-298552ec92e3/provider.jsonl": {
+      "sha256": "135a49ac92a24c70fe5b86674fe75c1df8791bff18e1c4732abf784acd9d95c7",
+      "bytes": 18107
+    },
+    "/home/doanlong/extra/benchmark/experiments/finance-v44-study/results/financial-v44-smoke-bolt-20261107-startupfix1/trials/smoke-quote-01__opentrading_baseline__r2/attempts/01-298552ec92e3/run.log": {
+      "sha256": "2ed511cb9f4c3190a6ef4b27096f22a5da9350d1a8403f2471985f236d859af4",
+      "bytes": 12408
+    },
+    "/home/doanlong/extra/benchmark/experiments/finance-v44-study/results/financial-v44-smoke-bolt-20261107-startupfix1/trials/smoke-quote-01__opentrading_finance__r2/attempts/01-67e70b66c67d/provider.jsonl": {
+      "sha256": "a03e6ba7bc8d4a60a3c8e7480501eed488e7aaea367d8400953b7faa5c49a601",
+      "bytes": 74915
+    },
+    "/home/doanlong/extra/benchmark/experiments/finance-v44-study/results/financial-v44-smoke-bolt-20261107-startupfix1/trials/smoke-quote-01__opentrading_finance__r2/attempts/01-67e70b66c67d/run.log": {
+      "sha256": "b3e6a5dbc9b6c12223ca3e8f19e8fb51e64e9a12afebe5ff27dcab64e6c86b2f",
+      "bytes": 14132
+    },
+    "/home/doanlong/extra/benchmark/experiments/finance-v44-study/results/financial-v44-smoke-deepseek-20261107-startupfix1/trials.jsonl": {
+      "sha256": "64b622ae3d5c0f90d70c73f1cb41c292ce3c811368edd87347c53e89b5d9d2a6",
+      "bytes": 95928
+    },
+    "/home/doanlong/extra/benchmark/experiments/finance-v44-study/results/financial-v44-smoke-deepseek-20261107-startupfix1/trials/smoke-quote-01__opentrading_finance__r1/attempts/01-d2f16cf104b8/mcp.jsonl": {
+      "sha256": "a755dcc46e7b51337f39ea862ae3e2720112a9bcdf43de1d426788696462a6bd",
+      "bytes": 667
+    },
+    "/home/doanlong/extra/benchmark/experiments/finance-v44-study/results/financial-v44-smoke-deepseek-20261107-startupfix1/trials/smoke-quote-01__opentrading_finance__r1/attempts/01-d2f16cf104b8/provider.jsonl": {
+      "sha256": "59603f4a7dd3751f2d6e46925cfe3c89fcb84304872f9aec0b79d1d55b63567c",
+      "bytes": 36955
+    },
+    "/home/doanlong/extra/benchmark/experiments/finance-v44-study/results/financial-v44-smoke-deepseek-20261107-startupfix1/trials/smoke-quote-01__opentrading_finance__r1/attempts/01-d2f16cf104b8/run.log": {
+      "sha256": "9f73d829970a5daf555c07867b8b93aafa76a95d0f5c058d1195990e18502c0d",
+      "bytes": 15540
+    },
+    "/home/doanlong/extra/benchmark/experiments/finance-v44-study/results/financial-v44-smoke-deepseek-20261107-startupfix1/trials/smoke-quote-01__opentrading_baseline__r1/attempts/01-da8eebbd348c/mcp.jsonl": {
+      "sha256": "63ff76b6e3a26d1202d369ffea5b2b848d7147121936a5a9fbb5ff4837e0a947",
+      "bytes": 732
+    },
+    "/home/doanlong/extra/benchmark/experiments/finance-v44-study/results/financial-v44-smoke-deepseek-20261107-startupfix1/trials/smoke-quote-01__opentrading_baseline__r1/attempts/01-da8eebbd348c/provider.jsonl": {
+      "sha256": "95158180eaeef37951664f3210e971a4e99d53f1368a71c8161b80051e6fdbbc",
+      "bytes": 36890
+    },
+    "/home/doanlong/extra/benchmark/experiments/finance-v44-study/results/financial-v44-smoke-deepseek-20261107-startupfix1/trials/smoke-quote-01__opentrading_baseline__r1/attempts/01-da8eebbd348c/run.log": {
+      "sha256": "0382f85111f6d53acb209dbfb6c263d7bceaff818b6e120f79c60326847a62d1",
+      "bytes": 16850
+    },
+    "/home/doanlong/extra/benchmark/experiments/finance-v44-study/results/financial-v44-smoke-deepseek-20261107-startupfix1/trials/smoke-quote-01__opencode__r1/attempts/01-1ff94c16cb64/mcp.jsonl": {
+      "sha256": "8ff76aa0984f5750dc1acf430824a380be125b71d8a48880ab7ea0ffc968cc1f",
+      "bytes": 733
+    },
+    "/home/doanlong/extra/benchmark/experiments/finance-v44-study/results/financial-v44-smoke-deepseek-20261107-startupfix1/trials/smoke-quote-01__opencode__r1/attempts/01-1ff94c16cb64/provider.jsonl": {
+      "sha256": "e5a7b31d0b3e64e11c34e027b610b4ecfab9a36e9cfdafeac7155ee18a93d4e4",
+      "bytes": 36850
+    },
+    "/home/doanlong/extra/benchmark/experiments/finance-v44-study/results/financial-v44-smoke-deepseek-20261107-startupfix1/trials/smoke-quote-01__opencode__r1/attempts/01-1ff94c16cb64/run.log": {
+      "sha256": "7577ab8b1dd5e9c03f168542bb4d5d29a6e994b2af9a1cb9a943bbdcc49f58e4",
+      "bytes": 9294
+    },
+    "/home/doanlong/extra/benchmark/experiments/finance-v44-study/results/financial-v44-smoke-deepseek-20261107-startupfix1/trials/smoke-quote-01__dsh__r1/attempts/01-ae0e424dd690/mcp.jsonl": {
+      "sha256": "9c7ade8d5f55c1baf1fd56ed87df8ee015c718af0bcd514662c6ef3377ae2bc4",
+      "bytes": 732
+    },
+    "/home/doanlong/extra/benchmark/experiments/finance-v44-study/results/financial-v44-smoke-deepseek-20261107-startupfix1/trials/smoke-quote-01__dsh__r1/attempts/01-ae0e424dd690/provider.jsonl": {
+      "sha256": "f162a12d15392a47af91486028891b07b585c223bdd88016e6c271b2a19dbbfc",
+      "bytes": 36642
+    },
+    "/home/doanlong/extra/benchmark/experiments/finance-v44-study/results/financial-v44-smoke-deepseek-20261107-startupfix1/trials/smoke-quote-01__dsh__r1/attempts/01-ae0e424dd690/run.log": {
+      "sha256": "7b036dd612f047887134b7c3b91898c99b305d0c7dccffce7d92736004df694b",
+      "bytes": 2383
+    },
+    "/home/doanlong/extra/benchmark/experiments/finance-v44-study/results/financial-v44-smoke-deepseek-20261107-startupfix1/trials/smoke-trap-01__opencode__r1/attempts/01-0a33fab1949d/mcp.jsonl": {
+      "sha256": "26679e3b6dbfd1fba3332b5104e2d2ac71ad2cb5b70d99ce64c77de99666d27c",
+      "bytes": 665
+    },
+    "/home/doanlong/extra/benchmark/experiments/finance-v44-study/results/financial-v44-smoke-deepseek-20261107-startupfix1/trials/smoke-trap-01__opencode__r1/attempts/01-0a33fab1949d/provider.jsonl": {
+      "sha256": "d8c393483d9ade475ad445f13efc71d3e5b23198910b194878369f4e440bbbf7",
+      "bytes": 26455
+    },
+    "/home/doanlong/extra/benchmark/experiments/finance-v44-study/results/financial-v44-smoke-deepseek-20261107-startupfix1/trials/smoke-trap-01__opencode__r1/attempts/01-0a33fab1949d/run.log": {
+      "sha256": "a7e6b53a57ecebf7c994daab2c4b92505558af00c0082d4579a24991585b746e",
+      "bytes": 8562
+    },
+    "/home/doanlong/extra/benchmark/experiments/finance-v44-study/results/financial-v44-smoke-deepseek-20261107-startupfix1/trials/smoke-trap-01__dsh__r1/attempts/01-03473fa7060f/mcp.jsonl": {
+      "sha256": "fd34a06b8ce5cac854ac896fc18723d5dd4eb229f0b918822d9d994316bf310a",
+      "bytes": 677
+    },
+    "/home/doanlong/extra/benchmark/experiments/finance-v44-study/results/financial-v44-smoke-deepseek-20261107-startupfix1/trials/smoke-trap-01__dsh__r1/attempts/01-03473fa7060f/provider.jsonl": {
+      "sha256": "ab1705bb3e7c36e1a7f077001537b2176ae746027b27a7755203fa725706976a",
+      "bytes": 26464
+    },
+    "/home/doanlong/extra/benchmark/experiments/finance-v44-study/results/financial-v44-smoke-deepseek-20261107-startupfix1/trials/smoke-trap-01__dsh__r1/attempts/01-03473fa7060f/run.log": {
+      "sha256": "88e0c45a0f81c1beeb989123feefb0af8655ddb731b305ae28b75f0175c2bb9e",
+      "bytes": 4761
+    },
+    "/home/doanlong/extra/benchmark/experiments/finance-v44-study/results/financial-v44-smoke-deepseek-20261107-startupfix1/trials/smoke-trap-01__opentrading_finance__r1/attempts/01-3c8691acd22c/mcp.jsonl": {
+      "sha256": "1c1d954abfcfeec8192ec25e8364ea8eb5fb212ec9e4f5888dcc17d074e19f33",
+      "bytes": 677
+    },
+    "/home/doanlong/extra/benchmark/experiments/finance-v44-study/results/financial-v44-smoke-deepseek-20261107-startupfix1/trials/smoke-trap-01__opentrading_finance__r1/attempts/01-3c8691acd22c/provider.jsonl": {
+      "sha256": "69dc6233c34167121fff77bbcc8211945d78372c3d4601fbd6c4f58098d2541e",
+      "bytes": 26351
+    },
+    "/home/doanlong/extra/benchmark/experiments/finance-v44-study/results/financial-v44-smoke-deepseek-20261107-startupfix1/trials/smoke-trap-01__opentrading_finance__r1/attempts/01-3c8691acd22c/run.log": {
+      "sha256": "54d3d2368b0f01629bf716add2b9912e3ce0c4251fce2a2b7073257728d95e58",
+      "bytes": 11474
+    },
+    "/home/doanlong/extra/benchmark/experiments/finance-v44-study/results/financial-v44-smoke-deepseek-20261107-startupfix1/trials/smoke-trap-01__opentrading_baseline__r1/attempts/01-aea8eb262278/provider.jsonl": {
+      "sha256": "07e86f36e46e92645b3fa3673a4d38722491656f29a93b3f89e8a29c2a0d31b7",
+      "bytes": 19114
+    },
+    "/home/doanlong/extra/benchmark/experiments/finance-v44-study/results/financial-v44-smoke-deepseek-20261107-startupfix1/trials/smoke-trap-01__opentrading_baseline__r1/attempts/01-aea8eb262278/run.log": {
+      "sha256": "7cf58893f41766236f99746591e783780e164085da4741c305b7986a2061655e",
+      "bytes": 8654
+    },
+    "/home/doanlong/extra/benchmark/experiments/finance-v44-study/results/financial-v44-smoke-deepseek-20261107-startupfix1/trials/smoke-agg-01__dsh__r1/attempts/01-8390461e3b66/mcp.jsonl": {
+      "sha256": "83815f70c4b20faa5b473946dfad960b491983988a4fcaa0fed6c278c4b0ec1c",
+      "bytes": 7510
+    },
+    "/home/doanlong/extra/benchmark/experiments/finance-v44-study/results/financial-v44-smoke-deepseek-20261107-startupfix1/trials/smoke-agg-01__dsh__r1/attempts/01-8390461e3b66/provider.jsonl": {
+      "sha256": "3c5fd256b227a51d07ec0cc46e2837e98aee1b8a496cbeca773eb25f09c1a63d",
+      "bytes": 176927
+    },
+    "/home/doanlong/extra/benchmark/experiments/finance-v44-study/results/financial-v44-smoke-deepseek-20261107-startupfix1/trials/smoke-agg-01__dsh__r1/attempts/01-8390461e3b66/run.log": {
+      "sha256": "6e03fec658f2635d9a1d584e6db4f770d8b6f5bef6a0b296309bb00009d86323",
+      "bytes": 11898
+    },
+    "/home/doanlong/extra/benchmark/experiments/finance-v44-study/results/financial-v44-smoke-deepseek-20261107-startupfix1/trials/smoke-agg-01__opentrading_finance__r1/attempts/01-ddb279a46ee6/mcp.jsonl": {
+      "sha256": "4ac8964b49cc1904117c3d8adba21352334ca56bbc8eb946b0b47115d649a50b",
+      "bytes": 5263
+    },
+    "/home/doanlong/extra/benchmark/experiments/finance-v44-study/results/financial-v44-smoke-deepseek-20261107-startupfix1/trials/smoke-agg-01__opentrading_finance__r1/attempts/01-ddb279a46ee6/provider.jsonl": {
+      "sha256": "29158cdef6466838e5c9207cbddb9ffc3c13b1ece5fe2962f3c9f7fbc6d17f0e",
+      "bytes": 142485
+    },
+    "/home/doanlong/extra/benchmark/experiments/finance-v44-study/results/financial-v44-smoke-deepseek-20261107-startupfix1/trials/smoke-agg-01__opentrading_finance__r1/attempts/01-ddb279a46ee6/run.log": {
+      "sha256": "00af40e3a715eaad2fae5af45d1334bdf72d62017177c91aa0a18ec4083dad2c",
+      "bytes": 30837
+    },
+    "/home/doanlong/extra/benchmark/experiments/finance-v44-study/results/financial-v44-smoke-deepseek-20261107-startupfix1/trials/smoke-agg-01__opentrading_finance__r1/attempts/01-ddb279a46ee6/provider-requests/0001-native.json": {
+      "sha256": "04a1bfb63cc3c3ae2bb6ecc90cb1606279ca3e65fed63370f976895121feaa47",
+      "bytes": 12870
+    },
+    "/home/doanlong/extra/benchmark/experiments/finance-v44-study/results/financial-v44-smoke-deepseek-20261107-startupfix1/trials/smoke-agg-01__opentrading_finance__r1/attempts/01-ddb279a46ee6/provider-requests/0002-native.json": {
+      "sha256": "c63deba2b27027439956f6e51cdd4f06d57486d09462d747129529a3e150df42",
+      "bytes": 18719
+    },
+    "/home/doanlong/extra/benchmark/experiments/finance-v44-study/results/financial-v44-smoke-deepseek-20261107-startupfix1/trials/smoke-agg-01__opentrading_finance__r1/attempts/01-ddb279a46ee6/provider-requests/0003-native.json": {
+      "sha256": "95cd01c79b0bc6d2b2de2612f911dc2a65a1e316706e51474b888ec8fe6208e8",
+      "bytes": 19900
+    },
+    "/home/doanlong/extra/benchmark/experiments/finance-v44-study/results/financial-v44-smoke-deepseek-20261107-startupfix1/trials/smoke-agg-01__opentrading_finance__r1/attempts/01-ddb279a46ee6/provider-requests/0004-native.json": {
+      "sha256": "28297810d5491fac7137cd1294e706f15fac6390ca8c193fadfcf2bcfad69b28",
+      "bytes": 21142
+    },
+    "/home/doanlong/extra/benchmark/experiments/finance-v44-study/results/financial-v44-smoke-deepseek-20261107-startupfix1/trials/smoke-agg-01__opentrading_finance__r1/attempts/01-ddb279a46ee6/provider-requests/0005-native.json": {
+      "sha256": "a3f03f585324e3cb22ae716ceaf93ea079a25d6418b239932fa720cdda6200cc",
+      "bytes": 22043
+    },
+    "/home/doanlong/extra/benchmark/experiments/finance-v44-study/results/financial-v44-smoke-deepseek-20261107-startupfix1/trials/smoke-agg-01__opentrading_baseline__r1/attempts/01-033b32f5f62c/mcp.jsonl": {
+      "sha256": "24e5440e742f8595976c28fa4c5e5fbe423541cd9bf160596e7592cb6e4965f7",
+      "bytes": 4471
+    },
+    "/home/doanlong/extra/benchmark/experiments/finance-v44-study/results/financial-v44-smoke-deepseek-20261107-startupfix1/trials/smoke-agg-01__opentrading_baseline__r1/attempts/01-033b32f5f62c/provider.jsonl": {
+      "sha256": "a7086a2260d0f075e210a8a61e23d170026abaeb40c4082d476a7136526dc300",
+      "bytes": 75906
+    },
+    "/home/doanlong/extra/benchmark/experiments/finance-v44-study/results/financial-v44-smoke-deepseek-20261107-startupfix1/trials/smoke-agg-01__opentrading_baseline__r1/attempts/01-033b32f5f62c/run.log": {
+      "sha256": "05e04e117fba9e113dd16de5a763e42360ff7fa078f2f5f7e72943daf85c9a47",
+      "bytes": 24741
+    },
+    "/home/doanlong/extra/benchmark/experiments/finance-v44-study/results/financial-v44-smoke-deepseek-20261107-startupfix1/trials/smoke-agg-01__opencode__r1/attempts/01-d4af241051d9/mcp.jsonl": {
+      "sha256": "a8660d3c2a42ad764b6f7a427593628494caf3a67ff0de8afa0a897535f99ae7",
+      "bytes": 6717
+    },
+    "/home/doanlong/extra/benchmark/experiments/finance-v44-study/results/financial-v44-smoke-deepseek-20261107-startupfix1/trials/smoke-agg-01__opencode__r1/attempts/01-d4af241051d9/provider.jsonl": {
+      "sha256": "932e3f0bfc7819bf45250a0ce83b703e53a12585f7ed97cbcd07903b7b3f3153",
+      "bytes": 142254
+    },
+    "/home/doanlong/extra/benchmark/experiments/finance-v44-study/results/financial-v44-smoke-deepseek-20261107-startupfix1/trials/smoke-agg-01__opencode__r1/attempts/01-d4af241051d9/run.log": {
+      "sha256": "5d41f90eafbe069116e19d388924de5f342d3f75f1014a185022b0f484688abd",
+      "bytes": 25274
+    },
+    "/home/doanlong/extra/benchmark/experiments/finance-v44-study/results/financial-v44-smoke-deepseek-20261107-startupfix1/trials/smoke-trap-01__opentrading_baseline__r2/attempts/01-3bc035a4bf61/mcp.jsonl": {
+      "sha256": "c56ed6e1c29ba9c871435bbcf702766c9b750dab7217f55891ec6c68fdbdaa5c",
+      "bytes": 665
+    },
+    "/home/doanlong/extra/benchmark/experiments/finance-v44-study/results/financial-v44-smoke-deepseek-20261107-startupfix1/trials/smoke-trap-01__opentrading_baseline__r2/attempts/01-3bc035a4bf61/provider.jsonl": {
+      "sha256": "8c3c0f1839bb33ffe0aec3302c127d25c45588a555652870a282bda31fa35d03",
+      "bytes": 26571
+    },
+    "/home/doanlong/extra/benchmark/experiments/finance-v44-study/results/financial-v44-smoke-deepseek-20261107-startupfix1/trials/smoke-trap-01__opentrading_baseline__r2/attempts/01-3bc035a4bf61/run.log": {
+      "sha256": "cc4abe2f636474ac975e8ec8f7f86f1d9d2520dd35bbc157e9a67ae652ccfcab",
+      "bytes": 17088
+    },
+    "/home/doanlong/extra/benchmark/experiments/finance-v44-study/results/financial-v44-smoke-deepseek-20261107-startupfix1/trials/smoke-trap-01__opencode__r2/attempts/01-5e3431ba84e1/mcp.jsonl": {
+      "sha256": "dfdee9b1e5a0bb1a33f4e0b73a0d01ed077757dfbf8503788c760ad7e2335fcd",
+      "bytes": 665
+    },
+    "/home/doanlong/extra/benchmark/experiments/finance-v44-study/results/financial-v44-smoke-deepseek-20261107-startupfix1/trials/smoke-trap-01__opencode__r2/attempts/01-5e3431ba84e1/provider.jsonl": {
+      "sha256": "750fd426d373b991b0dd6a23eb2c4216e3fc7862250d7a0d09c80489241a74f1",
+      "bytes": 26457
+    },
+    "/home/doanlong/extra/benchmark/experiments/finance-v44-study/results/financial-v44-smoke-deepseek-20261107-startupfix1/trials/smoke-trap-01__opencode__r2/attempts/01-5e3431ba84e1/run.log": {
+      "sha256": "5757f763f339a5e2a3ecdfb3ffb8260f262eb9011249b316fbb6a4c618488d7c",
+      "bytes": 8737
+    },
+    "/home/doanlong/extra/benchmark/experiments/finance-v44-study/results/financial-v44-smoke-deepseek-20261107-startupfix1/trials/smoke-trap-01__dsh__r2/attempts/01-d89e5a9d6a3d/mcp.jsonl": {
+      "sha256": "98f063587fbfe94a88b1f9890a3bab06c0b0acf83580a59eebdc60734a34abce",
+      "bytes": 677
+    },
+    "/home/doanlong/extra/benchmark/experiments/finance-v44-study/results/financial-v44-smoke-deepseek-20261107-startupfix1/trials/smoke-trap-01__dsh__r2/attempts/01-d89e5a9d6a3d/provider.jsonl": {
+      "sha256": "497747579361d9509d8b87e7b9659af42b0ce386237bd24c5113d5786057e0a4",
+      "bytes": 26462
+    },
+    "/home/doanlong/extra/benchmark/experiments/finance-v44-study/results/financial-v44-smoke-deepseek-20261107-startupfix1/trials/smoke-trap-01__dsh__r2/attempts/01-d89e5a9d6a3d/run.log": {
+      "sha256": "824df078fe69a868ab8ef470b45dff33091d79fc7efd87dfd699d748a810c85c",
+      "bytes": 4825
+    },
+    "/home/doanlong/extra/benchmark/experiments/finance-v44-study/results/financial-v44-smoke-deepseek-20261107-startupfix1/trials/smoke-trap-01__opentrading_finance__r2/attempts/01-2d7952b758dc/mcp.jsonl": {
+      "sha256": "43feca139dc8fc442c7200b72b842eb546d334ad881b56937dbb3173b9548afc",
+      "bytes": 677
+    },
+    "/home/doanlong/extra/benchmark/experiments/finance-v44-study/results/financial-v44-smoke-deepseek-20261107-startupfix1/trials/smoke-trap-01__opentrading_finance__r2/attempts/01-2d7952b758dc/provider.jsonl": {
+      "sha256": "92c156595dc48b18a8ff8fe73f046ade0103b798f205818b2cf08cf50ea07653",
+      "bytes": 26564
+    },
+    "/home/doanlong/extra/benchmark/experiments/finance-v44-study/results/financial-v44-smoke-deepseek-20261107-startupfix1/trials/smoke-trap-01__opentrading_finance__r2/attempts/01-2d7952b758dc/run.log": {
+      "sha256": "d0a4b1542bcd25e539f909bd30420a494c57c2d017c1319c996e40f062cc939a",
+      "bytes": 15435
+    },
+    "/home/doanlong/extra/benchmark/experiments/finance-v44-study/results/financial-v44-smoke-deepseek-20261107-startupfix1/trials/smoke-agg-01__dsh__r2/attempts/01-9a9964b5a61a/provider.jsonl": {
+      "sha256": "40e51a1fe9c8ac618a3d0928bc0dc5b98d9d4d9a7a71aa0b66ddc292564f918e",
+      "bytes": 27589
+    },
+    "/home/doanlong/extra/benchmark/experiments/finance-v44-study/results/financial-v44-smoke-deepseek-20261107-startupfix1/trials/smoke-agg-01__dsh__r2/attempts/01-9a9964b5a61a/run.log": {
+      "sha256": "20731a81878e92c0c5c7357be38829085724a011f8d6df818d7acb0921d9a7c3",
+      "bytes": 898
+    },
+    "/home/doanlong/extra/benchmark/experiments/finance-v44-study/results/financial-v44-smoke-deepseek-20261107-startupfix1/trials/smoke-agg-01__opentrading_baseline__r2/attempts/01-dad39aff863e/mcp.jsonl": {
+      "sha256": "c2c147c245b2b8c3b41ca9138be3616ee23f4932123eed00c823a8064186a91b",
+      "bytes": 5594
+    },
+    "/home/doanlong/extra/benchmark/experiments/finance-v44-study/results/financial-v44-smoke-deepseek-20261107-startupfix1/trials/smoke-agg-01__opentrading_baseline__r2/attempts/01-dad39aff863e/provider.jsonl": {
+      "sha256": "fbc6c3c2f8890db9c14bf0d52f1b7ca2b64bf64065565f72854e2aebbac441c1",
+      "bytes": 108728
+    },
+    "/home/doanlong/extra/benchmark/experiments/finance-v44-study/results/financial-v44-smoke-deepseek-20261107-startupfix1/trials/smoke-agg-01__opentrading_baseline__r2/attempts/01-dad39aff863e/run.log": {
+      "sha256": "26e835de3f7e606ef5750bd9b25637cc26ea883cd1858f9018993934cda07b84",
+      "bytes": 26748
+    },
+    "/home/doanlong/extra/benchmark/experiments/finance-v44-study/results/financial-v44-smoke-deepseek-20261107-startupfix1/trials/smoke-agg-01__opentrading_finance__r2/attempts/01-3482089719c5/mcp.jsonl": {
+      "sha256": "96fcd78a87be0f06534c2c20766b429d0a72c4f599ff06833068fb28ade3d06a",
+      "bytes": 5264
+    },
+    "/home/doanlong/extra/benchmark/experiments/finance-v44-study/results/financial-v44-smoke-deepseek-20261107-startupfix1/trials/smoke-agg-01__opentrading_finance__r2/attempts/01-3482089719c5/provider.jsonl": {
+      "sha256": "58110e458d29b93364647f53bbbc840f389407f8199fb733dcc0bb460a3ddeb4",
+      "bytes": 142484
+    },
+    "/home/doanlong/extra/benchmark/experiments/finance-v44-study/results/financial-v44-smoke-deepseek-20261107-startupfix1/trials/smoke-agg-01__opentrading_finance__r2/attempts/01-3482089719c5/run.log": {
+      "sha256": "47c40544682cb58f0557212d13392ee5dd65e196770b32167f1a25781ccb4abd",
+      "bytes": 30687
+    },
+    "/home/doanlong/extra/benchmark/experiments/finance-v44-study/results/financial-v44-smoke-deepseek-20261107-startupfix1/trials/smoke-agg-01__opentrading_finance__r2/attempts/01-3482089719c5/provider-requests/0001-native.json": {
+      "sha256": "04a1bfb63cc3c3ae2bb6ecc90cb1606279ca3e65fed63370f976895121feaa47",
+      "bytes": 12870
+    },
+    "/home/doanlong/extra/benchmark/experiments/finance-v44-study/results/financial-v44-smoke-deepseek-20261107-startupfix1/trials/smoke-agg-01__opentrading_finance__r2/attempts/01-3482089719c5/provider-requests/0002-native.json": {
+      "sha256": "6544b52af305c2d59904e9bbf3873b99c5e8b04cf5d5fd685a47e6205ab1b1ce",
+      "bytes": 18719
+    },
+    "/home/doanlong/extra/benchmark/experiments/finance-v44-study/results/financial-v44-smoke-deepseek-20261107-startupfix1/trials/smoke-agg-01__opentrading_finance__r2/attempts/01-3482089719c5/provider-requests/0003-native.json": {
+      "sha256": "173ac556665c5ac777808aff9df5635d73493d341b9adc5cb21615c367899a5a",
+      "bytes": 19852
+    },
+    "/home/doanlong/extra/benchmark/experiments/finance-v44-study/results/financial-v44-smoke-deepseek-20261107-startupfix1/trials/smoke-agg-01__opentrading_finance__r2/attempts/01-3482089719c5/provider-requests/0004-native.json": {
+      "sha256": "0a628fd4db36955c95cfd86b4e53cb1fa07c78816716e47db6babd6305fdea36",
+      "bytes": 21094
+    },
+    "/home/doanlong/extra/benchmark/experiments/finance-v44-study/results/financial-v44-smoke-deepseek-20261107-startupfix1/trials/smoke-agg-01__opentrading_finance__r2/attempts/01-3482089719c5/provider-requests/0005-native.json": {
+      "sha256": "9628cd5834edbf70493ad03fd85803461cc6f6a6fa31f35bc88c74947a9a5c9a",
+      "bytes": 21970
+    },
+    "/home/doanlong/extra/benchmark/experiments/finance-v44-study/results/financial-v44-smoke-deepseek-20261107-startupfix1/trials/smoke-agg-01__opencode__r2/attempts/01-aea6db80b9ac/mcp.jsonl": {
+      "sha256": "a6e0c80a5659159b6e6e889a04f3dc5f599ce26e75c100839e509ff46b0d0fbd",
+      "bytes": 6386
+    },
+    "/home/doanlong/extra/benchmark/experiments/finance-v44-study/results/financial-v44-smoke-deepseek-20261107-startupfix1/trials/smoke-agg-01__opencode__r2/attempts/01-aea6db80b9ac/provider.jsonl": {
+      "sha256": "c8701b334093832f970d9cb626d1b3aafb5c777dd15e4ebb259bd98a207a49e4",
+      "bytes": 142250
+    },
+    "/home/doanlong/extra/benchmark/experiments/finance-v44-study/results/financial-v44-smoke-deepseek-20261107-startupfix1/trials/smoke-agg-01__opencode__r2/attempts/01-aea6db80b9ac/run.log": {
+      "sha256": "7823c01d91f35773c285d70c930f12f75cb88663c108f4fe5cacb8aaa6668079",
+      "bytes": 24318
+    },
+    "/home/doanlong/extra/benchmark/experiments/finance-v44-study/results/financial-v44-smoke-deepseek-20261107-startupfix1/trials/smoke-quote-01__opencode__r2/attempts/01-3fe3f9989b5f/mcp.jsonl": {
+      "sha256": "96ec5ed04678cc24c80de4ff710e3a97f3853eb3e17d4336239eef2a28a63e88",
+      "bytes": 667
+    },
+    "/home/doanlong/extra/benchmark/experiments/finance-v44-study/results/financial-v44-smoke-deepseek-20261107-startupfix1/trials/smoke-quote-01__opencode__r2/attempts/01-3fe3f9989b5f/provider.jsonl": {
+      "sha256": "428d6d7ee85c6082275fa9307a16555af14eead1b9e6e48ac31eb9e3ff3b4791",
+      "bytes": 36849
+    },
+    "/home/doanlong/extra/benchmark/experiments/finance-v44-study/results/financial-v44-smoke-deepseek-20261107-startupfix1/trials/smoke-quote-01__opencode__r2/attempts/01-3fe3f9989b5f/run.log": {
+      "sha256": "9c9724bf1023d4971f82958becb3a98265e4c91d3ae26c4aa74739862e96e84a",
+      "bytes": 9159
+    },
+    "/home/doanlong/extra/benchmark/experiments/finance-v44-study/results/financial-v44-smoke-deepseek-20261107-startupfix1/trials/smoke-quote-01__dsh__r2/attempts/01-5c69050a68eb/mcp.jsonl": {
+      "sha256": "f7f9240d404d0069511e4619e2da5a46ed1242e480b3f84418a65df316b8f6c6",
+      "bytes": 733
+    },
+    "/home/doanlong/extra/benchmark/experiments/finance-v44-study/results/financial-v44-smoke-deepseek-20261107-startupfix1/trials/smoke-quote-01__dsh__r2/attempts/01-5c69050a68eb/provider.jsonl": {
+      "sha256": "64480f1e5ecb886e325c82fce313dd93be7d2e860898c39a7a5722d5565a6081",
+      "bytes": 36855
+    },
+    "/home/doanlong/extra/benchmark/experiments/finance-v44-study/results/financial-v44-smoke-deepseek-20261107-startupfix1/trials/smoke-quote-01__dsh__r2/attempts/01-5c69050a68eb/run.log": {
+      "sha256": "e6e292c64adf45cb3e7eaa5e925fa5d41db2c514440c1df5591181d70185046d",
+      "bytes": 4017
+    },
+    "/home/doanlong/extra/benchmark/experiments/finance-v44-study/results/financial-v44-smoke-deepseek-20261107-startupfix1/trials/smoke-quote-01__opentrading_baseline__r2/attempts/01-d1de4015948c/mcp.jsonl": {
+      "sha256": "338212bed47d173bfcd2b8fc20b1371fbcb6236a30b3b3a4b3de52028ae7c4f0",
+      "bytes": 732
+    },
+    "/home/doanlong/extra/benchmark/experiments/finance-v44-study/results/financial-v44-smoke-deepseek-20261107-startupfix1/trials/smoke-quote-01__opentrading_baseline__r2/attempts/01-d1de4015948c/provider.jsonl": {
+      "sha256": "03257deb1c373704a7113136e985e92f8753d3e24d36993d1a6c907e7668f726",
+      "bytes": 36890
+    },
+    "/home/doanlong/extra/benchmark/experiments/finance-v44-study/results/financial-v44-smoke-deepseek-20261107-startupfix1/trials/smoke-quote-01__opentrading_baseline__r2/attempts/01-d1de4015948c/run.log": {
+      "sha256": "714a8f253f530309297d0149276e429a4a00e06dc345c51e631c153ff6106f44",
+      "bytes": 16641
+    },
+    "/home/doanlong/extra/benchmark/experiments/finance-v44-study/results/financial-v44-smoke-deepseek-20261107-startupfix1/trials/smoke-quote-01__opentrading_finance__r2/attempts/01-110ccaeacafe/provider.jsonl": {
+      "sha256": "89f20e16433b230d707a0c36fdd502fc9b50668e81e24836c7b411b08a083635",
+      "bytes": 26907
+    },
+    "/home/doanlong/extra/benchmark/experiments/finance-v44-study/results/financial-v44-smoke-deepseek-20261107-startupfix1/trials/smoke-quote-01__opentrading_finance__r2/attempts/01-110ccaeacafe/run.log": {
+      "sha256": "4ad3150b1c8f3cd4378ab995e162bc5f00d0becb544283ccdd4a8be7666b04d5",
+      "bytes": 9003
+    },
+    "/home/doanlong/extra/benchmark/experiments/finance-v44-study/tools/analytics_compute.py": {
+      "sha256": "ac178cd908edae36c35c59d2d0c469e03b851b156fc38af53f56c4c07f7dec56",
+      "bytes": 10727
+    },
+    "/home/doanlong/extra/benchmark/experiments/finance-v44-study/tools/ready_check.py": {
+      "sha256": "55bb9cdf647e996ed5caee866905063a8ffc73839b8ba1d16e3e19bcbc116521",
+      "bytes": 39748
+    },
+    "/home/doanlong/extra/benchmark/experiments/finance-v44-study/tools/intent_audit.py": {
+      "sha256": "26272dad6dc5fa384eaf99ba97efc3e36dc2771d23c0cf42c28fbf2ba062f358",
+      "bytes": 7007
+    },
+    "/home/doanlong/extra/benchmark/experiments/finance-v44-study/tools/runners/provider.py": {
+      "sha256": "e404db992b0ad1081e623ccc03d1b5632595c784422797da2143c06e7b5e07a6",
+      "bytes": 18683
+    },
+    "/home/doanlong/extra/benchmark/experiments/finance-v44-study/experiments/opentrading-runtime/src/core/finance-policy.ts": {
+      "sha256": "20c0a0e4cddc6f986c1f9b8b012fe8b6525ce1d25569680c91f2dac48cb8f040",
+      "bytes": 21628
+    },
+    "/home/doanlong/extra/benchmark/experiments/finance-v44-study/experiments/opentrading-runtime/src/core/tools/registry.ts": {
+      "sha256": "61b337199788dbf7d3510306de530b6a86e8bf06c0f2f5ec88064d772a05730f",
+      "bytes": 12010
+    }
+  },
+  "models": {
+    "bolt": {
+      "trials": [
+        {
+          "trial_id": "smoke-quote-01__opentrading_finance__r1",
+          "status": "ok",
+          "success": false,
+          "semantic_correctness": false,
+          "public_contract_valid": true,
+          "public_contract_errors": [],
+          "native_completion": {
+            "outcome": "completed",
+            "unanswered": false,
+            "recoveries": []
+          },
+          "tokens": {
+            "input": 5499,
+            "output": 162,
+            "reasoning": null,
+            "cache_read": 2688,
+            "complete": true
+          },
+          "requests": 2,
+          "execution_error": null,
+          "final_text": "{\n  \"value\": null,\n  \"reason\": \"Tool vn_quote_history yêu cầu tham số 'days' (số nến) và 'interval' (khoảng thời gian) cụ thể, không hỗ trợ truy vấn 'phiên giao dịch gần nhất' mà không có thông tin về số lượng nến hoặc khoảng thời gian mong muốn.\",\n  \"evidence\": []\n}",
+          "provider_errors": [],
+          "mcp_calls": 0,
+          "compute_calls": 0
+        },
+        {
+          "trial_id": "smoke-quote-01__opentrading_baseline__r1",
+          "status": "ok",
+          "success": false,
+          "semantic_correctness": false,
+          "public_contract_valid": true,
+          "public_contract_errors": [],
+          "native_completion": {
+            "outcome": "completed",
+            "unanswered": false,
+            "recoveries": []
+          },
+          "tokens": {
+            "input": 9382,
+            "output": 114,
+            "reasoning": null,
+            "cache_read": 4608,
+            "complete": true
+          },
+          "requests": 2,
+          "execution_error": null,
+          "final_text": "{\"value\": null, \"reason\": \"Yêu cầu lấy giá đóng cửa phiên giao dịch gần nhất (days=1) cho HPG không được hỗ trợ trong chế độ snapshot cố định 2026-11-01 theo thông báo lỗi của tool vn_quote_history.\", \"evidence\": []}",
+          "provider_errors": [],
+          "mcp_calls": 1,
+          "compute_calls": 0
+        },
+        {
+          "trial_id": "smoke-quote-01__opencode__r1",
+          "status": "ok",
+          "success": false,
+          "semantic_correctness": false,
+          "public_contract_valid": true,
+          "public_contract_errors": [],
+          "native_completion": null,
+          "tokens": {
+            "input": 5756,
+            "output": 142,
+            "reasoning": null,
+            "cache_read": 2784,
+            "complete": true
+          },
+          "requests": 2,
+          "execution_error": null,
+          "final_text": "{\n  \"value\": null,\n  \"reason\": \"The requested query for HPG price history using `vn_quote_history` resulted in an unsupported snapshot query error, indicating that the specific combination of arguments (including requesting specific columns) is not supported under the finite snapshot constraints for the given data context (2026-11-01). I cannot retrieve the 'closest trading session' closing price.\",\n  \"evidence\": []\n}",
+          "provider_errors": [],
+          "mcp_calls": 1,
+          "compute_calls": 0
+        },
+        {
+          "trial_id": "smoke-quote-01__dsh__r1",
+          "status": "ok",
+          "success": false,
+          "semantic_correctness": false,
+          "public_contract_valid": true,
+          "public_contract_errors": [],
+          "native_completion": null,
+          "tokens": {
+            "input": 4822,
+            "output": 204,
+            "reasoning": null,
+            "cache_read": 2304,
+            "complete": true
+          },
+          "requests": 2,
+          "execution_error": null,
+          "final_text": "{\n  \"value\": null,\n  \"reason\": \"The requested query for the latest closing price of HPG using `vn_quote_history` with specific arguments (columns=['c', 't'], days=1, interval='1D') was rejected because the combination of arguments constitutes an unsupported finite-snapshot query according to the tool's metadata. The tool documentation advises inspecting `allowed_public_variants` and correcting the arguments while preserving the intent (latest price). Since the exact supported variant for 'latest price' is not explicitly clear from the error message alone, and I cannot infer a single supported correction that guarantees the 'latest' price without further guidance on supported argument paths, I cannot retrieve the required data.\",\n  \"evidence\": []\n}",
+          "provider_errors": [],
+          "mcp_calls": 1,
+          "compute_calls": 0
+        },
+        {
+          "trial_id": "smoke-trap-01__opencode__r1",
+          "status": "ok",
+          "success": true,
+          "semantic_correctness": true,
+          "public_contract_valid": true,
+          "public_contract_errors": [],
+          "native_completion": null,
+          "tokens": {
+            "input": 5025,
+            "output": 341,
+            "reasoning": null,
+            "cache_read": 2336,
+            "complete": true
+          },
+          "requests": 2,
+          "execution_error": null,
+          "final_text": "{\n  \"value\": null,\n  \"reason\": \"Cổ phiếu XYZX không được tìm thấy trong cơ sở dữ liệu tại thời điểm snapshot 2026-11-01.\",\n  \"evidence\": [\n    {\n      \"tool\": \"symbol_resolve\",\n      \"source\": \"vnstock+local\",\n      \"as_of\": \"2026-11-01T15:57:53.093226+07:00\",\n      \"call_id\": \"51684d70-7582-4709-8159-36f44ae7c396\",\n      \"payload_sha256\": \"6b7ff4111a0909abb9acffeb18b02683b8ea682954c7b5d370ad00934c185b36\",\n      \"matched_entry_id\": \"symbol_resolve:0\",\n      \"response_sha256\": \"bb10c861f6a84b5caf5f58dc2714bdf5e4edb19b312b76d3c18d98938272cd2f\"\n    }\n  ]\n}",
+          "provider_errors": [],
+          "mcp_calls": 1,
+          "compute_calls": 0
+        },
+        {
+          "trial_id": "smoke-trap-01__dsh__r1",
+          "status": "ok",
+          "success": true,
+          "semantic_correctness": true,
+          "public_contract_valid": true,
+          "public_contract_errors": [],
+          "native_completion": null,
+          "tokens": {
+            "input": 4108,
+            "output": 345,
+            "reasoning": null,
+            "cache_read": 2400,
+            "complete": true
+          },
+          "requests": 2,
+          "execution_error": null,
+          "final_text": "{\n  \"value\": null,\n  \"reason\": \"Mã tài sản XYZX không được tìm thấy hoặc không có thông tin hợp lệ trong snapshot dữ liệu tại 2026-11-01.\",\n  \"evidence\": [\n    {\n      \"tool\": \"symbol_resolve\",\n      \"source\": \"vnstock+local\",\n      \"as_of\": \"2026-11-01T15:57:53.093226+07:00\",\n      \"call_id\": \"bce17a00-7584-4eb9-9977-3392fa619de9\",\n      \"payload_sha256\": \"6b7ff4111a0909abb9acffeb18b02683b8ea682954c7b5d370ad00934c185b36\",\n      \"matched_entry_id\": \"symbol_resolve:0\",\n      \"response_sha256\": \"bb10c861f6a84b5caf5f58dc2714bdf5e4edb19b312b76d3c18d98938272cd2f\"\n    }\n  ]\n}",
+          "provider_errors": [],
+          "mcp_calls": 1,
+          "compute_calls": 0
+        },
+        {
+          "trial_id": "smoke-trap-01__opentrading_finance__r1",
+          "status": "ok",
+          "success": true,
+          "semantic_correctness": true,
+          "public_contract_valid": true,
+          "public_contract_errors": [],
+          "native_completion": {
+            "outcome": "completed",
+            "unanswered": false,
+            "recoveries": []
+          },
+          "tokens": {
+            "input": 7248,
+            "output": 375,
+            "reasoning": null,
+            "cache_read": 4416,
+            "complete": true
+          },
+          "requests": 3,
+          "execution_error": null,
+          "final_text": "{\n  \"value\": null,\n  \"reason\": \"Mã tài sản XYZX không được tìm thấy trong cơ sở dữ liệu tài sản được hỗ trợ.\",\n  \"evidence\": [\n    {\n      \"tool\": \"symbol_resolve\",\n      \"source\": \"vnstock+local\",\n      \"as_of\": \"2026-11-01T15:57:53.093226+07:00\",\n      \"call_id\": \"6b9008ca-a3be-4fe4-95db-1c8a4b79db7c\",\n      \"payload_sha256\": \"6b7ff4111a0909abb9acffeb18b02683b8ea682954c7b5d370ad00934c185b36\",\n      \"matched_entry_id\": \"symbol_resolve:0\",\n      \"response_sha256\": \"bb10c861f6a84b5caf5f58dc2714bdf5e4edb19b312b76d3c18d98938272cd2f\"\n    }\n  ]\n}",
+          "provider_errors": [],
+          "mcp_calls": 1,
+          "compute_calls": 0
+        },
+        {
+          "trial_id": "smoke-trap-01__opentrading_baseline__r1",
+          "status": "ok",
+          "success": true,
+          "semantic_correctness": true,
+          "public_contract_valid": true,
+          "public_contract_errors": [],
+          "native_completion": {
+            "outcome": "completed",
+            "unanswered": false,
+            "recoveries": []
+          },
+          "tokens": {
+            "input": 8700,
+            "output": 310,
+            "reasoning": null,
+            "cache_read": 7008,
+            "complete": true
+          },
+          "requests": 2,
+          "execution_error": null,
+          "final_text": "{\"value\": null, \"reason\": \"Không tìm thấy mã cổ phiếu XYZX trong cơ sở dữ liệu được cung cấp tại thời điểm 2026-11-01.\", \"evidence\": [{\"tool\": \"symbol_resolve\", \"source\": \"vnstock+local\", \"as_of\": \"2026-11-01T15:57:53.093226+07:00\", \"call_id\": \"3cc1c9ff-9d33-4f68-9ea6-878b670d2cfd\", \"payload_sha256\": \"6b7ff4111a0909abb9acffeb18b02683b8ea682954c7b5d370ad00934c185b36\", \"matched_entry_id\": \"symbol_resolve:0\", \"response_sha256\": \"bb10c861f6a84b5caf5f58dc2714bdf5e4edb19b312b76d3c18d98938272cd2f\"}]}",
+          "provider_errors": [],
+          "mcp_calls": 1,
+          "compute_calls": 0
+        },
+        {
+          "trial_id": "smoke-agg-01__dsh__r1",
+          "status": "ok",
+          "success": false,
+          "semantic_correctness": false,
+          "public_contract_valid": true,
+          "public_contract_errors": [],
+          "native_completion": null,
+          "tokens": {
+            "input": 18380,
+            "output": 353,
+            "reasoning": null,
+            "cache_read": 14720,
+            "complete": true
+          },
+          "requests": 6,
+          "execution_error": null,
+          "final_text": "{\"value\":null,\"reason\":\"The `vn_quote_history` tool, within the provided finite snapshot context, does not support querying for a specific historical date (2026-10-30). The tool only supports fetching a range of the last N candles (default 365) with intervals '1D', '1W', or '1M', and does not allow filtering by an exact date. Therefore, the closing price for 2026-10-30 cannot be retrieved.\",\"evidence\":[]}",
+          "provider_errors": [],
+          "mcp_calls": 5,
+          "compute_calls": 0
+        },
+        {
+          "trial_id": "smoke-agg-01__opentrading_finance__r1",
+          "status": "ok",
+          "success": false,
+          "semantic_correctness": false,
+          "public_contract_valid": true,
+          "public_contract_errors": [],
+          "native_completion": {
+            "outcome": "completed",
+            "unanswered": false,
+            "recoveries": []
+          },
+          "tokens": {
+            "input": 5588,
+            "output": 174,
+            "reasoning": null,
+            "cache_read": 2720,
+            "complete": true
+          },
+          "requests": 2,
+          "execution_error": null,
+          "final_text": "{\"value\":null,\"reason\":\"Tool vn_quote_history không hỗ trợ truy vấn giá đóng cửa theo ngày cụ thể (30/10) mà chỉ hỗ trợ theo khoảng thời gian (1D, 1W, 1M). Cần xác định khoảng thời gian (ví dụ: 1D) bao gồm ngày 30/10/2026 để lấy dữ liệu.\",\"evidence\":[]}",
+          "provider_errors": [],
+          "mcp_calls": 0,
+          "compute_calls": 0
+        },
+        {
+          "trial_id": "smoke-agg-01__opentrading_baseline__r1",
+          "status": "ok",
+          "success": false,
+          "semantic_correctness": false,
+          "public_contract_valid": false,
+          "public_contract_errors": [
+            "Final response must be exactly one JSON object, without markdown or surrounding prose."
+          ],
+          "native_completion": {
+            "outcome": "completed",
+            "unanswered": false,
+            "recoveries": []
+          },
+          "tokens": {
+            "input": 10679,
+            "output": 336,
+            "reasoning": null,
+            "cache_read": 7712,
+            "complete": true
+          },
+          "requests": 2,
+          "execution_error": null,
+          "final_text": "```json\n{\n  \"value\": null,\n  \"reason\": \"Tool vn_quote_history không hỗ trợ truy vấn lịch sử giá theo ngày cụ thể (phiên 30/10) mà chỉ hỗ trợ các khoảng thời gian lớn (1D, 1W, 1M) và yêu cầu này không thể đáp ứng được với dữ liệu snapshot 2026-11-01.\",\n  \"evidence\": []\n}\n```",
+          "provider_errors": [],
+          "mcp_calls": 5,
+          "compute_calls": 0
+        },
+        {
+          "trial_id": "smoke-agg-01__opencode__r1",
+          "status": "ok",
+          "success": false,
+          "semantic_correctness": false,
+          "public_contract_valid": false,
+          "public_contract_errors": [
+            "Final response must be exactly one JSON object, without markdown or surrounding prose."
+          ],
+          "native_completion": null,
+          "tokens": {
+            "input": 7200,
+            "output": 422,
+            "reasoning": null,
+            "cache_read": 2976,
+            "complete": true
+          },
+          "requests": 2,
+          "execution_error": null,
+          "final_text": "```json\n{\n  \"values\": {\n    \"VCB\": null,\n    \"BID\": null,\n    \"CTG\": null,\n    \"TCB\": null,\n    \"MBB\": null,\n    \"mean\": null\n  },\n  \"unit\": \"nghìn đồng\",\n  \"period\": \"phiên 2026-10-30\",\n  \"source\": \"vn_quote_history\",\n  \"reason\": \"The tool 'vn_quote_history' rejected the query because the requested arguments (specifically 'days' and 'columns') are not supported for the finite snapshot, as indicated by the 'unsupported_snapshot_query' error. The tool documentation suggests inspecting allowed_public_variants and making a supported same-intent correction, but the specific date '2026-10-30' cannot be reliably retrieved with the current supported variants for historical price data.\",\n  \"evidence\": []\n}\n```",
+          "provider_errors": [],
+          "mcp_calls": 5,
+          "compute_calls": 0
+        },
+        {
+          "trial_id": "smoke-trap-01__opentrading_baseline__r2",
+          "status": "ok",
+          "success": true,
+          "semantic_correctness": true,
+          "public_contract_valid": true,
+          "public_contract_errors": [],
+          "native_completion": {
+            "outcome": "completed",
+            "unanswered": false,
+            "recoveries": []
+          },
+          "tokens": {
+            "input": 8699,
+            "output": 312,
+            "reasoning": null,
+            "cache_read": 8416,
+            "complete": true
+          },
+          "requests": 2,
+          "execution_error": null,
+          "final_text": "{\"value\": null, \"reason\": \"Mã cổ phiếu XYZX không được tìm thấy trong cơ sở dữ liệu được cung cấp tại thời điểm snapshot 2026-11-01.\", \"evidence\": [{\"tool\": \"symbol_resolve\", \"source\": \"vnstock+local\", \"as_of\": \"2026-11-01T15:57:53.093226+07:00\", \"call_id\": \"aa6163a7-0ca3-4cff-b64e-fc04ec593102\", \"payload_sha256\": \"6b7ff4111a0909abb9acffeb18b02683b8ea682954c7b5d370ad00934c185b36\", \"matched_entry_id\": \"symbol_resolve:0\", \"response_sha256\": \"bb10c861f6a84b5caf5f58dc2714bdf5e4edb19b312b76d3c18d98938272cd2f\"}]}",
+          "provider_errors": [],
+          "mcp_calls": 1,
+          "compute_calls": 0
+        },
+        {
+          "trial_id": "smoke-trap-01__opencode__r2",
+          "status": "ok",
+          "success": false,
+          "semantic_correctness": true,
+          "public_contract_valid": false,
+          "public_contract_errors": [
+            "Final response must be exactly one JSON object, without markdown or surrounding prose."
+          ],
+          "native_completion": null,
+          "tokens": {
+            "input": 5024,
+            "output": 393,
+            "reasoning": null,
+            "cache_read": 2400,
+            "complete": true
+          },
+          "requests": 2,
+          "execution_error": null,
+          "final_text": "```json\n{\n  \"value\": null,\n  \"reason\": \"Cổ phiếu XYZX không được tìm thấy trong cơ sở dữ liệu theo snapshot 2026-11-01.\",\n  \"unit\": \"đồng\",\n  \"period\": \"gần nhất\",\n  \"source\": \"symbol_resolve\",\n  \"note\": \"Không có dữ liệu giá đóng cửa vì mã tài sản không được phân giải thành symbol hợp lệ.\",\n  \"evidence\": [\n    {\n      \"tool\": \"symbol_resolve\",\n      \"source\": \"vnstock+local\",\n      \"as_of\": \"2026-11-01T15:57:53.093226+07:00\",\n      \"call_id\": \"752e80aa-1031-4aff-8bbc-1148d442ae1d\",\n      \"payload_sha256\": \"6b7ff4111a0909abb9acffeb18b02683b8ea682954c7b5d370ad00934c185b36\",\n      \"matched_entry_id\": \"symbol_resolve:0\",\n      \"response_sha256\": \"bb10c861f6a84b5caf5f58dc2714bdf5e4edb19b312b76d3c18d98938272cd2f\"\n    }\n  ]\n}\n```",
+          "provider_errors": [],
+          "mcp_calls": 1,
+          "compute_calls": 0
+        },
+        {
+          "trial_id": "smoke-trap-01__dsh__r2",
+          "status": "ok",
+          "success": false,
+          "semantic_correctness": false,
+          "public_contract_valid": true,
+          "public_contract_errors": [],
+          "native_completion": null,
+          "tokens": {
+            "input": 4110,
+            "output": 336,
+            "reasoning": null,
+            "cache_read": 3840,
+            "complete": true
+          },
+          "requests": 2,
+          "execution_error": null,
+          "final_text": "{\n  \"value\": null,\n  \"reason\": \"The symbol 'XYZX' could not be resolved to a specific asset type or symbol within the available snapshot data.\",\n  \"evidence\": [\n    {\n      \"tool\": \"symbol_resolve\",\n      \"source\": \"vnstock+local\",\n      \"as_of\": \"2026-11-01T15:57:53.093226+07:00\",\n      \"call_id\": \"980f2549-4798-4212-940f-d5948dbae9b7\",\n      \"payload_sha256\": \"6b7ff4111a0909abb9acffeb18b02683b8ea682954c7b5d370ad00934c185b36\",\n      \"matched_entry_id\": \"symbol_resolve:0\",\n      \"response_sha256\": \"bb10c861f6a84b5caf5f58dc2714bdf5e4edb19b312b76d3c18d98938272cd2f\"\n    }\n  ]\n}",
+          "provider_errors": [],
+          "mcp_calls": 1,
+          "compute_calls": 0
+        },
+        {
+          "trial_id": "smoke-trap-01__opentrading_finance__r2",
+          "status": "ok",
+          "success": true,
+          "semantic_correctness": true,
+          "public_contract_valid": true,
+          "public_contract_errors": [],
+          "native_completion": {
+            "outcome": "completed",
+            "unanswered": false,
+            "recoveries": []
+          },
+          "tokens": {
+            "input": 7244,
+            "output": 361,
+            "reasoning": null,
+            "cache_read": 6592,
+            "complete": true
+          },
+          "requests": 3,
+          "execution_error": null,
+          "final_text": "{\n\"value\": null,\n\"reason\": \"Mã tài sản XYZX không được tìm thấy trong cơ sở dữ liệu tài sản được hỗ trợ.\",\n\"evidence\": [\n{\n\"tool\": \"symbol_resolve\",\n\"source\": \"vnstock+local\",\n\"as_of\": \"2026-11-01T15:57:53.093226+07:00\",\n\"call_id\": \"9c0863e6-31a3-42ed-bbed-7b72c6815467\",\n\"payload_sha256\": \"6b7ff4111a0909abb9acffeb18b02683b8ea682954c7b5d370ad00934c185b36\",\n\"matched_entry_id\": \"symbol_resolve:0\",\n\"response_sha256\": \"bb10c861f6a84b5caf5f58dc2714bdf5e4edb19b312b76d3c18d98938272cd2f\"\n}\n]\n}",
+          "provider_errors": [],
+          "mcp_calls": 1,
+          "compute_calls": 0
+        },
+        {
+          "trial_id": "smoke-agg-01__dsh__r2",
+          "status": "ok",
+          "success": false,
+          "semantic_correctness": false,
+          "public_contract_valid": true,
+          "public_contract_errors": [],
+          "native_completion": null,
+          "tokens": {
+            "input": 18380,
+            "output": 365,
+            "reasoning": null,
+            "cache_read": 18304,
+            "complete": true
+          },
+          "requests": 6,
+          "execution_error": null,
+          "final_text": "{\"value\":null,\"reason\":\"The `vn_quote_history` tool in the current offline frozen MCP snapshot (2026-11-01) does not support querying for a specific historical date (2026-10-30). The tool only supports fetching a range of the last N candles (default 365) with intervals '1D', '1W', or '1M', and does not allow filtering by an exact date. Therefore, the required closing price for 2026-10-30 cannot be retrieved.\",\"evidence\":[]}",
+          "provider_errors": [],
+          "mcp_calls": 5,
+          "compute_calls": 0
+        },
+        {
+          "trial_id": "smoke-agg-01__opentrading_baseline__r2",
+          "status": "ok",
+          "success": false,
+          "semantic_correctness": false,
+          "public_contract_valid": false,
+          "public_contract_errors": [
+            "Final response must be exactly one JSON object, without markdown or surrounding prose."
+          ],
+          "native_completion": {
+            "outcome": "completed",
+            "unanswered": false,
+            "recoveries": []
+          },
+          "tokens": {
+            "input": 10679,
+            "output": 339,
+            "reasoning": null,
+            "cache_read": 10656,
+            "complete": true
+          },
+          "requests": 2,
+          "execution_error": null,
+          "final_text": "```json\n{\n  \"value\": null,\n  \"reason\": \"Tool vn_quote_history không hỗ trợ truy vấn lịch sử giá theo ngày cụ thể (phiên 30/10) mà chỉ hỗ trợ các tham số cố định (days, interval) và không cung cấp dữ liệu cho ngày 30/10/2026 trong phạm vi snapshot 2026-11-01.\",\n  \"evidence\": []\n}\n```",
+          "provider_errors": [],
+          "mcp_calls": 5,
+          "compute_calls": 0
+        },
+        {
+          "trial_id": "smoke-agg-01__opentrading_finance__r2",
+          "status": "ok",
+          "success": false,
+          "semantic_correctness": false,
+          "public_contract_valid": true,
+          "public_contract_errors": [],
+          "native_completion": {
+            "outcome": "completed",
+            "unanswered": false,
+            "recoveries": []
+          },
+          "tokens": {
+            "input": 5728,
+            "output": 239,
+            "reasoning": null,
+            "cache_read": 5440,
+            "complete": true
+          },
+          "requests": 2,
+          "execution_error": null,
+          "final_text": "{\n  \"value\": null,\n  \"reason\": \"Tool vn_quote_history chỉ hỗ trợ các snapshot được ghi sẵn và không có khả năng truy vấn giá đóng cửa cho một ngày cụ thể (30/10) trong phạm vi snapshot 2026-11-01.\",\n  \"evidence\": []\n}",
+          "provider_errors": [],
+          "mcp_calls": 0,
+          "compute_calls": 0
+        },
+        {
+          "trial_id": "smoke-agg-01__opencode__r2",
+          "status": "ok",
+          "success": false,
+          "semantic_correctness": false,
+          "public_contract_valid": false,
+          "public_contract_errors": [
+            "Final response must be exactly one JSON object, without markdown or surrounding prose."
+          ],
+          "native_completion": null,
+          "tokens": {
+            "input": 7200,
+            "output": 389,
+            "reasoning": null,
+            "cache_read": 2976,
+            "complete": true
+          },
+          "requests": 2,
+          "execution_error": null,
+          "final_text": "```json\n{\n  \"values\": {\n    \"VCB\": null,\n    \"BID\": null,\n    \"CTG\": null,\n    \"TCB\": null,\n    \"MBB\": null,\n    \"mean\": null\n  },\n  \"unit\": \"nghìn đồng\",\n  \"period\": \"phiên 2026-10-30\",\n  \"source\": \"vn_quote_history\",\n  \"reason\": \"The requested data for a specific date (2026-10-30) is not supported by the finite snapshot query tool, which requires a number of candles (days) rather than a specific date, and the tool returned an 'unsupported_snapshot_query' error for the arguments used.\",\n  \"evidence\": []\n}\n```",
+          "provider_errors": [],
+          "mcp_calls": 5,
+          "compute_calls": 0
+        },
+        {
+          "trial_id": "smoke-quote-01__opencode__r2",
+          "status": "ok",
+          "success": false,
+          "semantic_correctness": false,
+          "public_contract_valid": true,
+          "public_contract_errors": [],
+          "native_completion": null,
+          "tokens": {
+            "input": 5752,
+            "output": 144,
+            "reasoning": null,
+            "cache_read": 2784,
+            "complete": true
+          },
+          "requests": 2,
+          "execution_error": null,
+          "final_text": "{\n  \"value\": null,\n  \"reason\": \"The requested query for HPG historical quote data using `vn_quote_history` resulted in an unsupported snapshot query error, indicating that the specific combination of arguments (including columns) is not supported under the finite snapshot constraints for the 2026-11-01 context. I cannot retrieve the closing price for the most recent trading session.\",\n  \"evidence\": []\n}",
+          "provider_errors": [],
+          "mcp_calls": 1,
+          "compute_calls": 0
+        },
+        {
+          "trial_id": "smoke-quote-01__dsh__r2",
+          "status": "ok",
+          "success": false,
+          "semantic_correctness": false,
+          "public_contract_valid": true,
+          "public_contract_errors": [],
+          "native_completion": null,
+          "tokens": {
+            "input": 4822,
+            "output": 151,
+            "reasoning": null,
+            "cache_read": 4800,
+            "complete": true
+          },
+          "requests": 2,
+          "execution_error": null,
+          "final_text": "{\n  \"value\": null,\n  \"reason\": \"The requested query for the latest closing price of HPG using `vn_quote_history` with specific arguments (columns=['c', 't'], days=1, interval='1D') was rejected because it constitutes an unsupported finite-snapshot query according to the tool's metadata. The tool only supports default-equivalent optional arguments, and the specific combination used was not supported in the frozen snapshot context.\",\n  \"evidence\": []\n}",
+          "provider_errors": [],
+          "mcp_calls": 1,
+          "compute_calls": 0
+        },
+        {
+          "trial_id": "smoke-quote-01__opentrading_baseline__r2",
+          "status": "ok",
+          "success": false,
+          "semantic_correctness": false,
+          "public_contract_valid": true,
+          "public_contract_errors": [],
+          "native_completion": {
+            "outcome": "completed",
+            "unanswered": false,
+            "recoveries": []
+          },
+          "tokens": {
+            "input": 4571,
+            "output": 81,
+            "reasoning": null,
+            "cache_read": 4544,
+            "complete": true
+          },
+          "requests": 1,
+          "execution_error": null,
+          "final_text": "{\"value\": null, \"reason\": \"Tool `vn_quote_history` không hỗ trợ truy xuất giá đóng cửa của phiên giao dịch gần nhất (real-time/latest quote); tool này chỉ cung cấp lịch sử giá theo khoảng thời gian (1D, 1W, 1M) và cần chỉ định số lượng nến (`days`).\", \"evidence\": []}",
+          "provider_errors": [],
+          "mcp_calls": 0,
+          "compute_calls": 0
+        },
+        {
+          "trial_id": "smoke-quote-01__opentrading_finance__r2",
+          "status": "ok",
+          "success": false,
+          "semantic_correctness": false,
+          "public_contract_valid": true,
+          "public_contract_errors": [],
+          "native_completion": {
+            "outcome": "completed",
+            "unanswered": false,
+            "recoveries": []
+          },
+          "tokens": {
+            "input": 11391,
+            "output": 238,
+            "reasoning": null,
+            "cache_read": 10848,
+            "complete": true
+          },
+          "requests": 4,
+          "execution_error": null,
+          "final_text": "{\n  \"value\": null,\n  \"reason\": \"Lỗi tham số không hợp lệ khi gọi tool vn_quote_history, không thể lấy dữ liệu giá đóng cửa của phiên giao dịch gần nhất.\",\n  \"evidence\": []\n}",
+          "provider_errors": [],
+          "mcp_calls": 0,
+          "compute_calls": 0
+        }
+      ],
+      "provider_error_counts": {},
+      "compute_error_counts": {},
+      "mcp_status_counts": {
+        "vn_quote_history:rejected": 35,
+        "symbol_resolve:ok": 8
+      },
+      "finish_reasons_recorded_in_runtime": {
+        "tool-calls": 6
+      },
+      "local_events": [
+        {
+          "trial_id": "smoke-quote-01__opentrading_finance__r2",
+          "path": "/home/doanlong/extra/benchmark/experiments/finance-v44-study/results/financial-v44-smoke-bolt-20261107-startupfix1/trials/smoke-quote-01__opentrading_finance__r2/attempts/01-67e70b66c67d/run.log",
+          "type": "tool-end",
+          "callId": "call-50827157-d576-451d-ad5a-2bfe4f1b4e42",
+          "ok": false,
+          "output": "Tham số không hợp lệ cho mcp__opentrading__vn_quote_history: Type validation failed: Value: {\"days\":1,\"interval\":\"1D\",\"summary\":false,\"symbol\":\"HPG\"}.\nError message: Error: invalid_argument: data/days must be equal to constant, data must match a schema in anyOf. Correct arguments to the declared schema; rejected input is not evidence of missing data.",
+          "durationMs": 1,
+          "financeIntent": {
+            "intent_id": "finance-intent-1",
+            "original_sdk_call_id": "call-50827157-d576-451d-ad5a-2bfe4f1b4e42",
+            "sdk_call_id": "call-50827157-d576-451d-ad5a-2bfe4f1b4e42",
+            "phase": "bounded_finance_acquisition",
+            "correction_budget": 1,
+            "correction_used": 0,
+            "reason": "Invalid input for tool mcp__opentrading__vn_quote_history: AI_TypeValidationError: Type validation failed: Value: {\"days\":1,\"interval\":\"1D\",\"summary\":false,\"symbol\":\"HPG\"}.\nError message: Error: invalid_argument: data/days must be equal to constant, data must match a schema in anyOf. Correct arguments to the declared schema; rejected input is not evidence of missing data."
+          },
+          "localRejection": {
+            "code": "invalid_tool_input",
+            "tool": "mcp__opentrading__vn_quote_history",
+            "rawInput": "{\"days\":1,\"interval\":\"1D\",\"summary\":false,\"symbol\":\"HPG\"}"
+          },
+          "_line": 55
+        }
+      ],
+      "compute_rows": []
+    },
+    "deepseek": {
+      "trials": [
+        {
+          "trial_id": "smoke-quote-01__opentrading_finance__r1",
+          "status": "ok",
+          "success": true,
+          "semantic_correctness": true,
+          "public_contract_valid": true,
+          "public_contract_errors": [],
+          "native_completion": {
+            "outcome": "completed",
+            "unanswered": false,
+            "recoveries": []
+          },
+          "tokens": {
+            "input": 7480,
+            "output": 448,
+            "reasoning": null,
+            "cache_read": 0,
+            "complete": true
+          },
+          "requests": 2,
+          "execution_error": null,
+          "final_text": "{\"value\": 21, \"unit\": \"nghìn đồng\", \"period\": \"phiên gần nhất (30/10/2026)\", \"source\": \"vn_quote_history\", \"evidence\": [{\"tool\": \"vn_quote_history\", \"source\": \"vnstock\", \"as_of\": \"2026-11-01T15:54:29.883479+07:00\", \"call_id\": \"fe356d7e-7243-4efc-874b-e3353dfb989d\", \"payload_sha256\": \"cb80cece34c0f94fc32a60a8f2ccd0022f827b72e9d6ccc0496744db39f2c71f\", \"matched_entry_id\": \"vn_quote_history:0\", \"response_sha256\": \"1494cd6b872e94237fbd832c39302b1f2242f6277a0da16148f560be974ba421\"}]}",
+          "provider_errors": [],
+          "mcp_calls": 1,
+          "compute_calls": 0
+        },
+        {
+          "trial_id": "smoke-quote-01__opentrading_baseline__r1",
+          "status": "ok",
+          "success": false,
+          "semantic_correctness": true,
+          "public_contract_valid": false,
+          "public_contract_errors": [
+            "Final response must be exactly one JSON object, without markdown or surrounding prose."
+          ],
+          "native_completion": {
+            "outcome": "completed",
+            "unanswered": false,
+            "recoveries": []
+          },
+          "tokens": {
+            "input": 13132,
+            "output": 520,
+            "reasoning": null,
+            "cache_read": 6272,
+            "complete": true
+          },
+          "requests": 2,
+          "execution_error": null,
+          "final_text": "```json\n{\n  \"value\": 21.0,\n  \"unit\": \"nghìn đồng\",\n  \"period\": \"phiên gần nhất (30/10/2026)\",\n  \"source\": \"vn_quote_history\",\n  \"evidence\": [\n    {\n      \"tool\": \"vn_quote_history\",\n      \"source\": \"vnstock\",\n      \"as_of\": \"2026-11-01T15:54:29.883479+07:00\",\n      \"call_id\": \"7210063e-1001-44fe-a25e-3072ebeb4732\",\n      \"payload_sha256\": \"cb80cece34c0f94fc32a60a8f2ccd0022f827b72e9d6ccc0496744db39f2c71f\",\n      \"matched_entry_id\": \"vn_quote_history:0\",\n      \"response_sha256\": \"1494cd6b872e94237fbd832c39302b1f2242f6277a0da16148f560be974ba421\"\n    }\n  ]\n}\n```",
+          "provider_errors": [],
+          "mcp_calls": 1,
+          "compute_calls": 0
+        },
+        {
+          "trial_id": "smoke-quote-01__opencode__r1",
+          "status": "ok",
+          "success": false,
+          "semantic_correctness": true,
+          "public_contract_valid": false,
+          "public_contract_errors": [
+            "Final response must be exactly one JSON object, without markdown or surrounding prose."
+          ],
+          "native_completion": null,
+          "tokens": {
+            "input": 7491,
+            "output": 519,
+            "reasoning": null,
+            "cache_read": 0,
+            "complete": true
+          },
+          "requests": 2,
+          "execution_error": null,
+          "final_text": "```json\n{\n  \"value\": 21,\n  \"unit\": \"nghìn đồng\",\n  \"period\": \"phiên gần nhất (30/10/2026)\",\n  \"source\": \"vn_quote_history\",\n  \"evidence\": [\n    {\n      \"tool\": \"vn_quote_history\",\n      \"source\": \"vnstock\",\n      \"as_of\": \"2026-11-01T15:54:29.883479+07:00\",\n      \"call_id\": \"f01721c4-af0c-4e9a-8d67-1fd6e9bdca9d\",\n      \"payload_sha256\": \"cb80cece34c0f94fc32a60a8f2ccd0022f827b72e9d6ccc0496744db39f2c71f\",\n      \"matched_entry_id\": \"vn_quote_history:0\",\n      \"response_sha256\": \"1494cd6b872e94237fbd832c39302b1f2242f6277a0da16148f560be974ba421\"\n    }\n  ]\n}\n```",
+          "provider_errors": [],
+          "mcp_calls": 1,
+          "compute_calls": 0
+        },
+        {
+          "trial_id": "smoke-quote-01__dsh__r1",
+          "status": "error",
+          "success": false,
+          "semantic_correctness": false,
+          "public_contract_valid": false,
+          "public_contract_errors": [
+            "Final response must be exactly one JSON object, without markdown or surrounding prose."
+          ],
+          "native_completion": null,
+          "tokens": null,
+          "requests": 2,
+          "execution_error": "error",
+          "final_text": "",
+          "provider_errors": [
+            {
+              "index": 2,
+              "error": "provider response model mismatch",
+              "upstream_attempted": true,
+              "status": 403,
+              "response_models": [],
+              "duration_s": 76.2966730594635
+            }
+          ],
+          "mcp_calls": 1,
+          "compute_calls": 0
+        },
+        {
+          "trial_id": "smoke-trap-01__opencode__r1",
+          "status": "ok",
+          "success": false,
+          "semantic_correctness": true,
+          "public_contract_valid": false,
+          "public_contract_errors": [
+            "Final response must be exactly one JSON object, without markdown or surrounding prose."
+          ],
+          "native_completion": null,
+          "tokens": {
+            "input": 6222,
+            "output": 426,
+            "reasoning": null,
+            "cache_read": 0,
+            "complete": true
+          },
+          "requests": 2,
+          "execution_error": null,
+          "final_text": "```json\n{\n  \"value\": null,\n  \"reason\": \"Mã XYZX không tồn tại trong snapshot dữ liệu: symbol_resolve trả về resolved=null, candidates=[] (availability=empty) tại as_of 2026-11-01, nên không có giá đóng cửa nào để báo cáo.\",\n  \"evidence\": [\n    {\n      \"tool\": \"symbol_resolve\",\n      \"source\": \"vnstock+local\",\n      \"as_of\": \"2026-11-01T15:57:53.093226+07:00\",\n      \"call_id\": \"38af3f80-dd62-464e-ad8c-bed181c76290\",\n      \"payload_sha256\": \"6b7ff4111a0909abb9acffeb18b02683b8ea682954c7b5d370ad00934c185b36\",\n      \"matched_entry_id\": \"symbol_resolve:0\",\n      \"response_sha256\": \"bb10c861f6a84b5caf5f58dc2714bdf5e4edb19b312b76d3c18d98938272cd2f\"\n    }\n  ]\n}\n```",
+          "provider_errors": [],
+          "mcp_calls": 1,
+          "compute_calls": 0
+        },
+        {
+          "trial_id": "smoke-trap-01__dsh__r1",
+          "status": "ok",
+          "success": false,
+          "semantic_correctness": true,
+          "public_contract_valid": false,
+          "public_contract_errors": [
+            "Final response must be exactly one JSON object, without markdown or surrounding prose."
+          ],
+          "native_completion": null,
+          "tokens": {
+            "input": 5365,
+            "output": 591,
+            "reasoning": null,
+            "cache_read": 2496,
+            "complete": true
+          },
+          "requests": 2,
+          "execution_error": null,
+          "final_text": "```json\n{\n  \"value\": null,\n  \"reason\": \"symbol_resolve cho mã XYZX trả về resolved=null, candidates=[] (availability=empty) tại snapshot 2026-11-01; không có mã/loại tài sản nào được giải mã nên không có dữ liệu giá đóng cửa để truy nguồn. Không có tool báo giá nào được cung cấp cho mã này trong snapshot.\",\n  \"evidence\": [\n    {\n      \"tool\": \"symbol_resolve\",\n      \"source\": \"vnstock+local\",\n      \"as_of\": \"2026-11-01T15:57:53.093226+07:00\",\n      \"call_id\": \"ab02c81c-1053-4931-98bf-b6473c5ee533\",\n      \"payload_sha256\": \"6b7ff4111a0909abb9acffeb18b02683b8ea682954c7b5d370ad00934c185b36\",\n      \"matched_entry_id\": \"symbol_resolve:0\",\n      \"response_sha256\": \"bb10c861f6a84b5caf5f58dc2714bdf5e4edb19b312b76d3c18d98938272cd2f\"\n    }\n  ]\n}\n```",
+          "provider_errors": [],
+          "mcp_calls": 1,
+          "compute_calls": 0
+        },
+        {
+          "trial_id": "smoke-trap-01__opentrading_finance__r1",
+          "status": "error",
+          "success": false,
+          "semantic_correctness": false,
+          "public_contract_valid": false,
+          "public_contract_errors": [
+            "Final response must be exactly one JSON object, without markdown or surrounding prose."
+          ],
+          "native_completion": {
+            "outcome": "failed",
+            "unanswered": false,
+            "recoveries": []
+          },
+          "tokens": null,
+          "requests": 2,
+          "execution_error": "error",
+          "final_text": "",
+          "provider_errors": [
+            {
+              "index": 2,
+              "error": "provider response model mismatch",
+              "upstream_attempted": true,
+              "status": 403,
+              "response_models": [],
+              "duration_s": 66.27916169166565
+            }
+          ],
+          "mcp_calls": 1,
+          "compute_calls": 0
+        },
+        {
+          "trial_id": "smoke-trap-01__opentrading_baseline__r1",
+          "status": "error",
+          "success": false,
+          "semantic_correctness": false,
+          "public_contract_valid": false,
+          "public_contract_errors": [
+            "Final response must be exactly one JSON object, without markdown or surrounding prose."
+          ],
+          "native_completion": {
+            "outcome": "failed",
+            "unanswered": false,
+            "recoveries": []
+          },
+          "tokens": null,
+          "requests": 2,
+          "execution_error": "error",
+          "final_text": "",
+          "provider_errors": [
+            {
+              "index": 1,
+              "error": "TimeoutError",
+              "upstream_attempted": true,
+              "status": 502,
+              "response_models": null,
+              "duration_s": 240.50702166557312
+            },
+            {
+              "index": 2,
+              "error": "previous upstream usage unknown; further requests denied",
+              "upstream_attempted": false,
+              "status": 403,
+              "response_models": null,
+              "duration_s": 0.002841949462890625
+            }
+          ],
+          "mcp_calls": 0,
+          "compute_calls": 0
+        },
+        {
+          "trial_id": "smoke-agg-01__dsh__r1",
+          "status": "error",
+          "success": false,
+          "semantic_correctness": false,
+          "public_contract_valid": false,
+          "public_contract_errors": [
+            "Final response must be exactly one JSON object, without markdown or surrounding prose."
+          ],
+          "native_completion": null,
+          "tokens": null,
+          "requests": 6,
+          "execution_error": "error",
+          "final_text": "\n\n<｜DSML｜ calls>\n",
+          "provider_errors": [
+            {
+              "index": 6,
+              "error": "token budget exhausted before request",
+              "upstream_attempted": false,
+              "status": 403,
+              "response_models": null,
+              "duration_s": 0.003617525100708008
+            }
+          ],
+          "mcp_calls": 9,
+          "compute_calls": 4
+        },
+        {
+          "trial_id": "smoke-agg-01__opentrading_finance__r1",
+          "status": "error",
+          "success": false,
+          "semantic_correctness": false,
+          "public_contract_valid": false,
+          "public_contract_errors": [
+            "Final response must be exactly one JSON object, without markdown or surrounding prose."
+          ],
+          "native_completion": {
+            "outcome": "failed",
+            "unanswered": false,
+            "recoveries": []
+          },
+          "tokens": null,
+          "requests": 5,
+          "execution_error": "error",
+          "final_text": "",
+          "provider_errors": [
+            {
+              "index": 5,
+              "error": "token budget exhausted before request",
+              "upstream_attempted": false,
+              "status": 403,
+              "response_models": null,
+              "duration_s": 0.004441738128662109
+            }
+          ],
+          "mcp_calls": 7,
+          "compute_calls": 2
+        },
+        {
+          "trial_id": "smoke-agg-01__opentrading_baseline__r1",
+          "status": "error",
+          "success": false,
+          "semantic_correctness": false,
+          "public_contract_valid": false,
+          "public_contract_errors": [
+            "Final response must be exactly one JSON object, without markdown or surrounding prose."
+          ],
+          "native_completion": {
+            "outcome": "failed",
+            "unanswered": false,
+            "recoveries": []
+          },
+          "tokens": null,
+          "requests": 3,
+          "execution_error": "error",
+          "final_text": "",
+          "provider_errors": [
+            {
+              "index": 3,
+              "error": "token budget exhausted before request",
+              "upstream_attempted": false,
+              "status": 403,
+              "response_models": null,
+              "duration_s": 0.0058825016021728516
+            }
+          ],
+          "mcp_calls": 6,
+          "compute_calls": 1
+        },
+        {
+          "trial_id": "smoke-agg-01__opencode__r1",
+          "status": "error",
+          "success": false,
+          "semantic_correctness": false,
+          "public_contract_valid": false,
+          "public_contract_errors": [
+            "Final response must be exactly one JSON object, without markdown or surrounding prose."
+          ],
+          "native_completion": null,
+          "tokens": null,
+          "requests": 5,
+          "execution_error": "error",
+          "final_text": "",
+          "provider_errors": [
+            {
+              "index": 5,
+              "error": "token budget exhausted before request",
+              "upstream_attempted": false,
+              "status": 403,
+              "response_models": null,
+              "duration_s": 0.006191253662109375
+            }
+          ],
+          "mcp_calls": 8,
+          "compute_calls": 3
+        },
+        {
+          "trial_id": "smoke-trap-01__opentrading_baseline__r2",
+          "status": "ok",
+          "success": false,
+          "semantic_correctness": true,
+          "public_contract_valid": false,
+          "public_contract_errors": [
+            "Final response must be exactly one JSON object, without markdown or surrounding prose."
+          ],
+          "native_completion": {
+            "outcome": "completed",
+            "unanswered": false,
+            "recoveries": []
+          },
+          "tokens": {
+            "input": 11920,
+            "output": 495,
+            "reasoning": null,
+            "cache_read": 4096,
+            "complete": true
+          },
+          "requests": 2,
+          "execution_error": null,
+          "final_text": "```json\n{\n  \"value\": null,\n  \"reason\": \"Mã XYZX không phân giải được thành tài sản nào trong snapshot 2026-11-01: symbol_resolve trả resolved=null, candidates rỗng (availability=empty). Do đó không có dữ liệu giá đóng cửa gần nhất cho XYZX, và mình không bịa số.\",\n  \"evidence\": [\n    {\n      \"tool\": \"symbol_resolve\",\n      \"source\": \"vnstock+local\",\n      \"as_of\": \"2026-11-01T15:57:53.093226+07:00\",\n      \"call_id\": \"eb0069a7-9229-475a-a6a0-97e64a6f4d30\",\n      \"payload_sha256\": \"6b7ff4111a0909abb9acffeb18b02683b8ea682954c7b5d370ad00934c185b36\",\n      \"matched_entry_id\": \"symbol_resolve:0\",\n      \"response_sha256\": \"bb10c861f6a84b5caf5f58dc2714bdf5e4edb19b312b76d3c18d98938272cd2f\"\n    }\n  ]\n}\n```",
+          "provider_errors": [],
+          "mcp_calls": 1,
+          "compute_calls": 0
+        },
+        {
+          "trial_id": "smoke-trap-01__opencode__r2",
+          "status": "ok",
+          "success": false,
+          "semantic_correctness": false,
+          "public_contract_valid": false,
+          "public_contract_errors": [
+            "Final response must be exactly one JSON object, without markdown or surrounding prose."
+          ],
+          "native_completion": null,
+          "tokens": {
+            "input": 6231,
+            "output": 478,
+            "reasoning": null,
+            "cache_read": 2944,
+            "complete": true
+          },
+          "requests": 2,
+          "execution_error": null,
+          "final_text": "The symbol resolver returned no candidates for `XYZX` — the ticker does not resolve to any asset in the frozen snapshot, so no closing price exists to report.\n\n```json\n{\n  \"value\": null,\n  \"reason\": \"Mã XYZX không tồn tại/không được giải mã trong snapshot 2026-11-01: symbol_resolve trả về resolved=null, candidates=[] (availability=empty). Không có dữ liệu giá để báo cáo, không bịa số.\",\n  \"evidence\": [\n    {\n      \"tool\": \"symbol_resolve\",\n      \"source\": \"vnstock+local\",\n      \"as_of\": \"2026-11-01T15:57:53.093226+07:00\",\n      \"call_id\": \"26c97d28-a771-47d5-9b16-e5aa94887e8b\",\n      \"payload_sha256\": \"6b7ff4111a0909abb9acffeb18b02683b8ea682954c7b5d370ad00934c185b36\",\n      \"matched_entry_id\": \"symbol_resolve:0\",\n      \"response_sha256\": \"bb10c861f6a84b5caf5f58dc2714bdf5e4edb19b312b76d3c18d98938272cd2f\"\n    }\n  ]\n}\n```",
+          "provider_errors": [],
+          "mcp_calls": 1,
+          "compute_calls": 0
+        },
+        {
+          "trial_id": "smoke-trap-01__dsh__r2",
+          "status": "ok",
+          "success": false,
+          "semantic_correctness": true,
+          "public_contract_valid": false,
+          "public_contract_errors": [
+            "Final response must be exactly one JSON object, without markdown or surrounding prose."
+          ],
+          "native_completion": null,
+          "tokens": {
+            "input": 5368,
+            "output": 630,
+            "reasoning": null,
+            "cache_read": 0,
+            "complete": true
+          },
+          "requests": 2,
+          "execution_error": null,
+          "final_text": "```json\n{\n  \"value\": null,\n  \"reason\": \"Không có dữ liệu giá cho mã XYZX trong snapshot 2026-11-01: symbol_resolve trả về resolved=null, candidates=[] và availability=empty, tức mã không được giải mã/tồn tại nên không thể truy xuất giá đóng cửa gần nhất.\",\n  \"evidence\": [\n    {\n      \"tool\": \"symbol_resolve\",\n      \"source\": \"vnstock+local\",\n      \"as_of\": \"2026-11-01T15:57:53.093226+07:00\",\n      \"call_id\": \"01e28dcc-d95e-4fda-95b7-e0c787326c9f\",\n      \"payload_sha256\": \"6b7ff4111a0909abb9acffeb18b02683b8ea682954c7b5d370ad00934c185b36\",\n      \"matched_entry_id\": \"symbol_resolve:0\",\n      \"response_sha256\": \"bb10c861f6a84b5caf5f58dc2714bdf5e4edb19b312b76d3c18d98938272cd2f\"\n    }\n  ]\n}\n```",
+          "provider_errors": [],
+          "mcp_calls": 1,
+          "compute_calls": 0
+        },
+        {
+          "trial_id": "smoke-trap-01__opentrading_finance__r2",
+          "status": "ok",
+          "success": true,
+          "semantic_correctness": true,
+          "public_contract_valid": true,
+          "public_contract_errors": [],
+          "native_completion": {
+            "outcome": "completed",
+            "unanswered": false,
+            "recoveries": []
+          },
+          "tokens": {
+            "input": 6260,
+            "output": 505,
+            "reasoning": null,
+            "cache_read": 0,
+            "complete": true
+          },
+          "requests": 2,
+          "execution_error": null,
+          "final_text": "{\"value\": null, \"reason\": \"symbol_resolve cho mã XYZX trả về resolved=null, candidates=[] (availability=empty) tại snapshot 2026-11-01; không có mã/tài sản nào được giải mã nên không có dữ liệu giá đóng cửa để truy nguồn. Không có tool nào khác trong snapshot hỗ trợ tra giá cho mã này.\", \"evidence\": [{\"tool\": \"symbol_resolve\", \"source\": \"vnstock+local\", \"as_of\": \"2026-11-01T15:57:53.093226+07:00\", \"call_id\": \"1fd32819-b503-429c-b5c2-43bb6699191f\", \"payload_sha256\": \"6b7ff4111a0909abb9acffeb18b02683b8ea682954c7b5d370ad00934c185b36\", \"matched_entry_id\": \"symbol_resolve:0\", \"response_sha256\": \"bb10c861f6a84b5caf5f58dc2714bdf5e4edb19b312b76d3c18d98938272cd2f\"}]}",
+          "provider_errors": [],
+          "mcp_calls": 1,
+          "compute_calls": 0
+        },
+        {
+          "trial_id": "smoke-agg-01__dsh__r2",
+          "status": "error",
+          "success": false,
+          "semantic_correctness": false,
+          "public_contract_valid": false,
+          "public_contract_errors": [
+            "Final response must be exactly one JSON object, without markdown or surrounding prose."
+          ],
+          "native_completion": null,
+          "tokens": null,
+          "requests": 1,
+          "execution_error": "error",
+          "final_text": "",
+          "provider_errors": [
+            {
+              "index": 1,
+              "error": "provider response model mismatch",
+              "upstream_attempted": true,
+              "status": 403,
+              "response_models": [],
+              "duration_s": 76.78139805793762
+            }
+          ],
+          "mcp_calls": 0,
+          "compute_calls": 0
+        },
+        {
+          "trial_id": "smoke-agg-01__opentrading_baseline__r2",
+          "status": "error",
+          "success": false,
+          "semantic_correctness": false,
+          "public_contract_valid": false,
+          "public_contract_errors": [
+            "Final response must be exactly one JSON object, without markdown or surrounding prose."
+          ],
+          "native_completion": {
+            "outcome": "failed",
+            "unanswered": false,
+            "recoveries": []
+          },
+          "tokens": null,
+          "requests": 4,
+          "execution_error": "error",
+          "final_text": "",
+          "provider_errors": [
+            {
+              "index": 4,
+              "error": "token budget exhausted before request",
+              "upstream_attempted": false,
+              "status": 403,
+              "response_models": null,
+              "duration_s": 0.0034127235412597656
+            }
+          ],
+          "mcp_calls": 7,
+          "compute_calls": 2
+        },
+        {
+          "trial_id": "smoke-agg-01__opentrading_finance__r2",
+          "status": "error",
+          "success": false,
+          "semantic_correctness": false,
+          "public_contract_valid": false,
+          "public_contract_errors": [
+            "Final response must be exactly one JSON object, without markdown or surrounding prose."
+          ],
+          "native_completion": {
+            "outcome": "failed",
+            "unanswered": false,
+            "recoveries": []
+          },
+          "tokens": null,
+          "requests": 5,
+          "execution_error": "error",
+          "final_text": "",
+          "provider_errors": [
+            {
+              "index": 5,
+              "error": "token budget exhausted before request",
+              "upstream_attempted": false,
+              "status": 403,
+              "response_models": null,
+              "duration_s": 0.002895832061767578
+            }
+          ],
+          "mcp_calls": 7,
+          "compute_calls": 2
+        },
+        {
+          "trial_id": "smoke-agg-01__opencode__r2",
+          "status": "error",
+          "success": false,
+          "semantic_correctness": false,
+          "public_contract_valid": false,
+          "public_contract_errors": [
+            "Final response must be exactly one JSON object, without markdown or surrounding prose."
+          ],
+          "native_completion": null,
+          "tokens": null,
+          "requests": 5,
+          "execution_error": "error",
+          "final_text": "",
+          "provider_errors": [
+            {
+              "index": 5,
+              "error": "token budget exhausted before request",
+              "upstream_attempted": false,
+              "status": 403,
+              "response_models": null,
+              "duration_s": 0.003859996795654297
+            }
+          ],
+          "mcp_calls": 8,
+          "compute_calls": 3
+        },
+        {
+          "trial_id": "smoke-quote-01__opencode__r2",
+          "status": "ok",
+          "success": false,
+          "semantic_correctness": true,
+          "public_contract_valid": false,
+          "public_contract_errors": [
+            "Final response must be exactly one JSON object, without markdown or surrounding prose."
+          ],
+          "native_completion": null,
+          "tokens": {
+            "input": 7430,
+            "output": 409,
+            "reasoning": null,
+            "cache_read": 0,
+            "complete": true
+          },
+          "requests": 2,
+          "execution_error": null,
+          "final_text": "```json\n{\n  \"value\": 21,\n  \"unit\": \"nghìn đồng\",\n  \"period\": \"phiên gần nhất (30/10/2026)\",\n  \"source\": \"vn_quote_history\",\n  \"evidence\": [\n    {\n      \"tool\": \"vn_quote_history\",\n      \"source\": \"vnstock\",\n      \"as_of\": \"2026-11-01T15:54:29.883479+07:00\",\n      \"call_id\": \"d6bc2f14-229e-45da-b9b2-a0fe35fb4d43\",\n      \"payload_sha256\": \"cb80cece34c0f94fc32a60a8f2ccd0022f827b72e9d6ccc0496744db39f2c71f\",\n      \"matched_entry_id\": \"vn_quote_history:0\",\n      \"response_sha256\": \"1494cd6b872e94237fbd832c39302b1f2242f6277a0da16148f560be974ba421\"\n    }\n  ]\n}\n```",
+          "provider_errors": [],
+          "mcp_calls": 1,
+          "compute_calls": 0
+        },
+        {
+          "trial_id": "smoke-quote-01__dsh__r2",
+          "status": "ok",
+          "success": true,
+          "semantic_correctness": true,
+          "public_contract_valid": true,
+          "public_contract_errors": [],
+          "native_completion": null,
+          "tokens": {
+            "input": 6586,
+            "output": 514,
+            "reasoning": null,
+            "cache_read": 0,
+            "complete": true
+          },
+          "requests": 2,
+          "execution_error": null,
+          "final_text": "{\n  \"value\": 21,\n  \"unit\": \"nghìn đồng\",\n  \"period\": \"phiên gần nhất (30/10/2026)\",\n  \"source\": \"vn_quote_history\",\n  \"evidence\": [\n    {\n      \"tool\": \"vn_quote_history\",\n      \"source\": \"vnstock\",\n      \"as_of\": \"2026-11-01T15:54:29.883479+07:00\",\n      \"call_id\": \"1bd9a4d0-95c3-4488-a540-e50c50cdebed\",\n      \"payload_sha256\": \"cb80cece34c0f94fc32a60a8f2ccd0022f827b72e9d6ccc0496744db39f2c71f\",\n      \"matched_entry_id\": \"vn_quote_history:0\",\n      \"response_sha256\": \"1494cd6b872e94237fbd832c39302b1f2242f6277a0da16148f560be974ba421\"\n    }\n  ]\n}",
+          "provider_errors": [],
+          "mcp_calls": 1,
+          "compute_calls": 0
+        },
+        {
+          "trial_id": "smoke-quote-01__opentrading_baseline__r2",
+          "status": "ok",
+          "success": false,
+          "semantic_correctness": true,
+          "public_contract_valid": false,
+          "public_contract_errors": [
+            "Final response must be exactly one JSON object, without markdown or surrounding prose."
+          ],
+          "native_completion": {
+            "outcome": "completed",
+            "unanswered": false,
+            "recoveries": []
+          },
+          "tokens": {
+            "input": 13135,
+            "output": 492,
+            "reasoning": null,
+            "cache_read": 0,
+            "complete": true
+          },
+          "requests": 2,
+          "execution_error": null,
+          "final_text": "```json\n{\n  \"value\": 21,\n  \"unit\": \"nghìn đồng\",\n  \"period\": \"phiên gần nhất (30/10/2026)\",\n  \"source\": \"vn_quote_history\",\n  \"evidence\": [\n    {\n      \"tool\": \"vn_quote_history\",\n      \"source\": \"vnstock\",\n      \"as_of\": \"2026-11-01T15:54:29.883479+07:00\",\n      \"call_id\": \"fa55a331-5804-44fe-9f65-f904d0e55254\",\n      \"payload_sha256\": \"cb80cece34c0f94fc32a60a8f2ccd0022f827b72e9d6ccc0496744db39f2c71f\",\n      \"matched_entry_id\": \"vn_quote_history:0\",\n      \"response_sha256\": \"1494cd6b872e94237fbd832c39302b1f2242f6277a0da16148f560be974ba421\"\n    }\n  ]\n}\n```",
+          "provider_errors": [],
+          "mcp_calls": 1,
+          "compute_calls": 0
+        },
+        {
+          "trial_id": "smoke-quote-01__opentrading_finance__r2",
+          "status": "error",
+          "success": false,
+          "semantic_correctness": false,
+          "public_contract_valid": false,
+          "public_contract_errors": [
+            "Final response must be exactly one JSON object, without markdown or surrounding prose."
+          ],
+          "native_completion": {
+            "outcome": "failed",
+            "unanswered": false,
+            "recoveries": []
+          },
+          "tokens": null,
+          "requests": 2,
+          "execution_error": "error",
+          "final_text": "",
+          "provider_errors": [
+            {
+              "index": 1,
+              "error": "TimeoutError",
+              "upstream_attempted": true,
+              "status": 502,
+              "response_models": null,
+              "duration_s": 240.51119589805603
+            },
+            {
+              "index": 2,
+              "error": "previous upstream usage unknown; further requests denied",
+              "upstream_attempted": false,
+              "status": 403,
+              "response_models": null,
+              "duration_s": 0.0014803409576416016
+            }
+          ],
+          "mcp_calls": 0,
+          "compute_calls": 0
+        }
+      ],
+      "provider_error_counts": {
+        "provider response model mismatch": 3,
+        "TimeoutError": 2,
+        "previous upstream usage unknown; further requests denied": 2,
+        "token budget exhausted before request": 7
+      },
+      "compute_error_counts": {
+        "''": 7,
+        "numeric source path must be under /data/": 10
+      },
+      "mcp_status_counts": {
+        "vn_quote_history:ok": 42,
+        "symbol_resolve:ok": 7,
+        "analytics_compute:rejected": 17
+      },
+      "finish_reasons_recorded_in_runtime": {
+        "tool-calls": 12
+      },
+      "local_events": [
+        {
+          "trial_id": "smoke-agg-01__opentrading_finance__r1",
+          "path": "/home/doanlong/extra/benchmark/experiments/finance-v44-study/results/financial-v44-smoke-deepseek-20261107-startupfix1/trials/smoke-agg-01__opentrading_finance__r1/attempts/01-ddb279a46ee6/run.log",
+          "type": "tool-end",
+          "callId": "chatcmpl-tool-877445b470d906d5",
+          "ok": false,
+          "output": "Repeated or already pending/successful intent; do not replay this request.",
+          "durationMs": 2,
+          "financeIntent": {
+            "intent_id": "finance-intent-7",
+            "original_sdk_call_id": "chatcmpl-tool-b12a5933cae278af",
+            "sdk_call_id": "chatcmpl-tool-877445b470d906d5",
+            "phase": "initial",
+            "correction_budget": 1,
+            "correction_used": 0,
+            "reason": "Repeated or already pending/successful intent; do not replay this request."
+          },
+          "localRejection": {
+            "code": "policy_guard_rejected",
+            "tool": "mcp__opentrading__analytics_compute",
+            "rawInput": "{\"operation\":\"mean\",\"operands\":[{\"call_id\":\"41f4122c-711a-4d75-b514-8aea0fbccff8\",\"path\":\"/data\"},{\"call_id\":\"a028c283-efda-41f1-985a-e539aeece9a4\",\"path\":\"/data\"},{\"call_id\":\"68da1511-ef0d-4737-8265-1202509d31f5\",\"path\":\"/data\"},{\"call_id\":\"450dfd3b-69b2-4d1f-8289-e48f731b20c4\",\"path\":\"/data\"},{\"call_id\":\"3ecc41dd-4965-484d-b97e-df4aef4fa03d\",\"path\":\"/data\"}],\"input_unit\":\"nghìn đồng/cổ phiếu\",\"output_unit\":\"nghìn đồng/cổ phiếu\"}",
+            "reason": "Repeated or already pending/successful intent; do not replay this request."
+          },
+          "_line": 121
+        },
+        {
+          "trial_id": "smoke-agg-01__opentrading_finance__r2",
+          "path": "/home/doanlong/extra/benchmark/experiments/finance-v44-study/results/financial-v44-smoke-deepseek-20261107-startupfix1/trials/smoke-agg-01__opentrading_finance__r2/attempts/01-3482089719c5/run.log",
+          "type": "tool-end",
+          "callId": "chatcmpl-tool-8aceaeab56ebc26b",
+          "ok": false,
+          "output": "Repeated or already pending/successful intent; do not replay this request.",
+          "durationMs": 1,
+          "financeIntent": {
+            "intent_id": "finance-intent-7",
+            "original_sdk_call_id": "chatcmpl-tool-92f3120d5358c5c6",
+            "sdk_call_id": "chatcmpl-tool-8aceaeab56ebc26b",
+            "phase": "initial",
+            "correction_budget": 1,
+            "correction_used": 0,
+            "reason": "Repeated or already pending/successful intent; do not replay this request."
+          },
+          "localRejection": {
+            "code": "policy_guard_rejected",
+            "tool": "mcp__opentrading__analytics_compute",
+            "rawInput": "{\"operation\":\"mean\",\"operands\":[{\"call_id\":\"1fd79f48-39e7-4624-9b02-ed9a422bd7a1\",\"path\":\"/data\"},{\"call_id\":\"fabab2a6-ac97-4ec3-9f74-e86911c1ec06\",\"path\":\"/data\"},{\"call_id\":\"f8be76ec-491c-4eba-b274-8baa99a0e3e7\",\"path\":\"/data\"},{\"call_id\":\"40ddcdb8-d6b6-4259-b57e-f095123eb78e\",\"path\":\"/data\"},{\"call_id\":\"763449f0-f734-4161-ae5d-a39853e51745\",\"path\":\"/data\"}],\"input_unit\":\"nghìn đồng/cổ phiếu\",\"output_unit\":\"nghìn đồng/cổ phiếu\"}",
+            "reason": "Repeated or already pending/successful intent; do not replay this request."
+          },
+          "_line": 116
+        }
+      ],
+      "compute_rows": [
+        {
+          "trial_id": "smoke-agg-01__dsh__r1",
+          "path": "/home/doanlong/extra/benchmark/experiments/finance-v44-study/results/financial-v44-smoke-deepseek-20261107-startupfix1/trials/smoke-agg-01__dsh__r1/attempts/01-8390461e3b66/mcp.jsonl",
+          "schema_version": 2,
+          "call_id": "bfd3e652-23c7-4a6c-95a2-1529948e7846",
+          "tool": "analytics_compute",
+          "arguments": {
+            "operation": "mean",
+            "operands": [
+              {
+                "call_id": "e43001e2-5ede-44ce-a4ee-0ea936d840d6",
+                "path": "/data/"
+              }
+            ],
+            "input_unit": "nghìn đồng/cổ phiếu",
+            "output_unit": "nghìn đồng/cổ phiếu"
+          },
+          "arguments_sha256": "dd6694e0f91276a6dd51e3ab83dddb4b8543c3e81b7fec4d600004401a6cc2f6",
+          "payload_sha256": "aa1f6b5dca589360446eb510873587250c1c7d30f00a026d84e357360a74efd6",
+          "started_at": "2026-11-07T08:27:54.316315+00:00",
+          "matched_entry_id": null,
+          "source": null,
+          "as_of": null,
+          "response_sha256": null,
+          "record_kind": "deterministic_derivation",
+          "status": "rejected",
+          "error_code": "invalid_derivation",
+          "error": "''",
+          "ended_at": "2026-11-07T08:27:54.317913+00:00",
+          "duration_ms": 1.867
+        },
+        {
+          "trial_id": "smoke-agg-01__dsh__r1",
+          "path": "/home/doanlong/extra/benchmark/experiments/finance-v44-study/results/financial-v44-smoke-deepseek-20261107-startupfix1/trials/smoke-agg-01__dsh__r1/attempts/01-8390461e3b66/mcp.jsonl",
+          "schema_version": 2,
+          "call_id": "f6184bea-5038-4714-b33d-7a7af68660cc",
+          "tool": "analytics_compute",
+          "arguments": {
+            "operation": "mean",
+            "operands": [
+              {
+                "call_id": "e43001e2-5ede-44ce-a4ee-0ea936d840d6",
+                "path": "/data"
+              },
+              {
+                "call_id": "24425546-a813-42f6-a511-efe9860f7027",
+                "path": "/data"
+              },
+              {
+                "call_id": "26dc5ffb-97d7-42a2-9d8e-85ca9273199c",
+                "path": "/data"
+              },
+              {
+                "call_id": "2d8ec855-9d43-4423-b624-ee12c4cc49f3",
+                "path": "/data"
+              },
+              {
+                "call_id": "31e725b4-180f-4b7f-a247-c924970bc14a",
+                "path": "/data"
+              }
+            ],
+            "input_unit": "nghìn đồng/cổ phiếu",
+            "output_unit": "nghìn đồng/cổ phiếu"
+          },
+          "arguments_sha256": "f7e9cb2fa8e033c770e3fc0b5c86cbb7d7bd362e763fff743aa33e3ce95bb903",
+          "payload_sha256": "aa1f6b5dca589360446eb510873587250c1c7d30f00a026d84e357360a74efd6",
+          "started_at": "2026-11-07T08:29:28.175210+00:00",
+          "matched_entry_id": null,
+          "source": null,
+          "as_of": null,
+          "response_sha256": null,
+          "record_kind": "deterministic_derivation",
+          "status": "rejected",
+          "error_code": "invalid_derivation",
+          "error": "numeric source path must be under /data/",
+          "ended_at": "2026-11-07T08:29:28.176314+00:00",
+          "duration_ms": 1.286
+        },
+        {
+          "trial_id": "smoke-agg-01__dsh__r1",
+          "path": "/home/doanlong/extra/benchmark/experiments/finance-v44-study/results/financial-v44-smoke-deepseek-20261107-startupfix1/trials/smoke-agg-01__dsh__r1/attempts/01-8390461e3b66/mcp.jsonl",
+          "schema_version": 2,
+          "call_id": "16dbb31d-6ef7-4217-8667-192fc2cb1b02",
+          "tool": "analytics_compute",
+          "arguments": {
+            "operation": "mean",
+            "operands": [
+              {
+                "call_id": "e43001e2-5ede-44ce-a4ee-0ea936d840d6",
+                "path": "/data"
+              },
+              {
+                "call_id": "24425546-a813-42f6-a511-efe9860f7027",
+                "path": "/data"
+              },
+              {
+                "call_id": "26dc5ffb-97d7-42a2-9d8e-85ca9273199c",
+                "path": "/data"
+              },
+              {
+                "call_id": "2d8ec855-9d43-4423-b624-ee12c4cc49f3",
+                "path": "/data"
+              },
+              {
+                "call_id": "31e725b4-180f-4b7f-a247-c924970bc14a",
+                "path": "/data"
+              }
+            ],
+            "input_unit": "nghìn đồng/cổ phiếu",
+            "output_unit": "nghìn đồng/cổ phiếu"
+          },
+          "arguments_sha256": "f7e9cb2fa8e033c770e3fc0b5c86cbb7d7bd362e763fff743aa33e3ce95bb903",
+          "payload_sha256": "aa1f6b5dca589360446eb510873587250c1c7d30f00a026d84e357360a74efd6",
+          "started_at": "2026-11-07T08:30:31.666610+00:00",
+          "matched_entry_id": null,
+          "source": null,
+          "as_of": null,
+          "response_sha256": null,
+          "record_kind": "deterministic_derivation",
+          "status": "rejected",
+          "error_code": "invalid_derivation",
+          "error": "numeric source path must be under /data/",
+          "ended_at": "2026-11-07T08:30:31.667004+00:00",
+          "duration_ms": 0.502
+        },
+        {
+          "trial_id": "smoke-agg-01__dsh__r1",
+          "path": "/home/doanlong/extra/benchmark/experiments/finance-v44-study/results/financial-v44-smoke-deepseek-20261107-startupfix1/trials/smoke-agg-01__dsh__r1/attempts/01-8390461e3b66/mcp.jsonl",
+          "schema_version": 2,
+          "call_id": "f678de8c-02a1-4514-8b8e-a51de9e4e06b",
+          "tool": "analytics_compute",
+          "arguments": {
+            "operation": "mean",
+            "operands": [
+              {
+                "call_id": "e43001e2-5ede-44ce-a4ee-0ea936d840d6",
+                "path": "/data"
+              },
+              {
+                "call_id": "24425546-a813-42f6-a511-efe9860f7027",
+                "path": "/data"
+              },
+              {
+                "call_id": "26dc5ffb-97d7-42a2-9d8e-85ca9273199c",
+                "path": "/data"
+              },
+              {
+                "call_id": "2d8ec855-9d43-4423-b624-ee12c4cc49f3",
+                "path": "/data"
+              },
+              {
+                "call_id": "31e725b4-180f-4b7f-a247-c924970bc14a",
+                "path": "/data"
+              }
+            ],
+            "input_unit": "nghìn đồng/cổ phiếu",
+            "output_unit": "nghìn đồng/cổ phiếu"
+          },
+          "arguments_sha256": "f7e9cb2fa8e033c770e3fc0b5c86cbb7d7bd362e763fff743aa33e3ce95bb903",
+          "payload_sha256": "aa1f6b5dca589360446eb510873587250c1c7d30f00a026d84e357360a74efd6",
+          "started_at": "2026-11-07T08:31:41.966552+00:00",
+          "matched_entry_id": null,
+          "source": null,
+          "as_of": null,
+          "response_sha256": null,
+          "record_kind": "deterministic_derivation",
+          "status": "rejected",
+          "error_code": "invalid_derivation",
+          "error": "numeric source path must be under /data/",
+          "ended_at": "2026-11-07T08:31:41.967042+00:00",
+          "duration_ms": 0.634
+        },
+        {
+          "trial_id": "smoke-agg-01__opentrading_finance__r1",
+          "path": "/home/doanlong/extra/benchmark/experiments/finance-v44-study/results/financial-v44-smoke-deepseek-20261107-startupfix1/trials/smoke-agg-01__opentrading_finance__r1/attempts/01-ddb279a46ee6/mcp.jsonl",
+          "schema_version": 2,
+          "call_id": "7e913fa2-b45b-48a8-8f4b-4891b4d98774",
+          "tool": "analytics_compute",
+          "arguments": {
+            "operation": "mean",
+            "operands": [
+              {
+                "call_id": "41f4122c-711a-4d75-b514-8aea0fbccff8",
+                "path": "/data/"
+              }
+            ],
+            "input_unit": "nghìn đồng/cổ phiếu",
+            "output_unit": "nghìn đồng/cổ phiếu"
+          },
+          "arguments_sha256": "f532ef2b1c800e417d32092a523925d7fe594cd8bb2e32d861c05ce3e7f90f95",
+          "payload_sha256": "aa1f6b5dca589360446eb510873587250c1c7d30f00a026d84e357360a74efd6",
+          "started_at": "2026-11-07T08:33:56.940197+00:00",
+          "matched_entry_id": null,
+          "source": null,
+          "as_of": null,
+          "response_sha256": null,
+          "record_kind": "deterministic_derivation",
+          "status": "rejected",
+          "error_code": "invalid_derivation",
+          "error": "''",
+          "ended_at": "2026-11-07T08:33:56.940800+00:00",
+          "duration_ms": 0.718
+        },
+        {
+          "trial_id": "smoke-agg-01__opentrading_finance__r1",
+          "path": "/home/doanlong/extra/benchmark/experiments/finance-v44-study/results/financial-v44-smoke-deepseek-20261107-startupfix1/trials/smoke-agg-01__opentrading_finance__r1/attempts/01-ddb279a46ee6/mcp.jsonl",
+          "schema_version": 2,
+          "call_id": "61bb4b6f-93f7-4569-8d8c-fa2d280c350e",
+          "tool": "analytics_compute",
+          "arguments": {
+            "operation": "mean",
+            "operands": [
+              {
+                "call_id": "41f4122c-711a-4d75-b514-8aea0fbccff8",
+                "path": "/data"
+              },
+              {
+                "call_id": "a028c283-efda-41f1-985a-e539aeece9a4",
+                "path": "/data"
+              },
+              {
+                "call_id": "68da1511-ef0d-4737-8265-1202509d31f5",
+                "path": "/data"
+              },
+              {
+                "call_id": "450dfd3b-69b2-4d1f-8289-e48f731b20c4",
+                "path": "/data"
+              },
+              {
+                "call_id": "3ecc41dd-4965-484d-b97e-df4aef4fa03d",
+                "path": "/data"
+              }
+            ],
+            "input_unit": "nghìn đồng/cổ phiếu",
+            "output_unit": "nghìn đồng/cổ phiếu"
+          },
+          "arguments_sha256": "da3186070105693e091e91b364a1049d9b635be12c4cf06850a904458db33240",
+          "payload_sha256": "aa1f6b5dca589360446eb510873587250c1c7d30f00a026d84e357360a74efd6",
+          "started_at": "2026-11-07T08:34:59.318144+00:00",
+          "matched_entry_id": null,
+          "source": null,
+          "as_of": null,
+          "response_sha256": null,
+          "record_kind": "deterministic_derivation",
+          "status": "rejected",
+          "error_code": "invalid_derivation",
+          "error": "numeric source path must be under /data/",
+          "ended_at": "2026-11-07T08:34:59.318959+00:00",
+          "duration_ms": 1.002
+        },
+        {
+          "trial_id": "smoke-agg-01__opentrading_baseline__r1",
+          "path": "/home/doanlong/extra/benchmark/experiments/finance-v44-study/results/financial-v44-smoke-deepseek-20261107-startupfix1/trials/smoke-agg-01__opentrading_baseline__r1/attempts/01-033b32f5f62c/mcp.jsonl",
+          "schema_version": 2,
+          "call_id": "f9d9c113-15b8-4370-b508-dd1ae0e9b510",
+          "tool": "analytics_compute",
+          "arguments": {
+            "operation": "mean",
+            "operands": [
+              {
+                "call_id": "e4428e64-4d4c-40ce-81b1-b5fa25c7af16",
+                "path": "/data/"
+              }
+            ],
+            "input_unit": "nghìn đồng/cổ phiếu",
+            "output_unit": "nghìn đồng/cổ phiếu"
+          },
+          "arguments_sha256": "f6eaaedc4c6522ab5458b2812c4a07a8e9a2154dfcb7d5b0b6f418be6fabd4b6",
+          "payload_sha256": "aa1f6b5dca589360446eb510873587250c1c7d30f00a026d84e357360a74efd6",
+          "started_at": "2026-11-07T08:38:38.840781+00:00",
+          "matched_entry_id": null,
+          "source": null,
+          "as_of": null,
+          "response_sha256": null,
+          "record_kind": "deterministic_derivation",
+          "status": "rejected",
+          "error_code": "invalid_derivation",
+          "error": "''",
+          "ended_at": "2026-11-07T08:38:38.841746+00:00",
+          "duration_ms": 1.181
+        },
+        {
+          "trial_id": "smoke-agg-01__opencode__r1",
+          "path": "/home/doanlong/extra/benchmark/experiments/finance-v44-study/results/financial-v44-smoke-deepseek-20261107-startupfix1/trials/smoke-agg-01__opencode__r1/attempts/01-d4af241051d9/mcp.jsonl",
+          "schema_version": 2,
+          "call_id": "d70cbdd8-fed3-4233-a119-2db203a1eb9a",
+          "tool": "analytics_compute",
+          "arguments": {
+            "operation": "mean",
+            "operands": [
+              {
+                "call_id": "09a4494c-6f98-4c33-9be7-0fdb60a32d11",
+                "path": "/data/"
+              }
+            ],
+            "input_unit": "nghìn đồng/cổ phiếu",
+            "output_unit": "nghìn đồng/cổ phiếu"
+          },
+          "arguments_sha256": "e3435cb2dba610204a13d656075936e9b50df41dcbb44c46094e22c9442f0f7e",
+          "payload_sha256": "aa1f6b5dca589360446eb510873587250c1c7d30f00a026d84e357360a74efd6",
+          "started_at": "2026-11-07T08:42:36.425529+00:00",
+          "matched_entry_id": null,
+          "source": null,
+          "as_of": null,
+          "response_sha256": null,
+          "record_kind": "deterministic_derivation",
+          "status": "rejected",
+          "error_code": "invalid_derivation",
+          "error": "''",
+          "ended_at": "2026-11-07T08:42:36.426650+00:00",
+          "duration_ms": 1.337
+        },
+        {
+          "trial_id": "smoke-agg-01__opencode__r1",
+          "path": "/home/doanlong/extra/benchmark/experiments/finance-v44-study/results/financial-v44-smoke-deepseek-20261107-startupfix1/trials/smoke-agg-01__opencode__r1/attempts/01-d4af241051d9/mcp.jsonl",
+          "schema_version": 2,
+          "call_id": "3ee85f3d-0d8d-4c5d-8d42-baa3b66f4f20",
+          "tool": "analytics_compute",
+          "arguments": {
+            "operation": "mean",
+            "operands": [
+              {
+                "call_id": "09a4494c-6f98-4c33-9be7-0fdb60a32d11",
+                "path": "/data"
+              },
+              {
+                "call_id": "b06e4dcd-4220-4601-b5ec-cdcd7d1af8a2",
+                "path": "/data"
+              },
+              {
+                "call_id": "f0bf54ff-7603-467b-b5bb-9bbdf4172213",
+                "path": "/data"
+              },
+              {
+                "call_id": "c9262d5b-2d74-4055-a266-b9ba182de75c",
+                "path": "/data"
+              },
+              {
+                "call_id": "3affb7cb-dd94-455d-aac1-91b4dbffb8f2",
+                "path": "/data"
+              }
+            ],
+            "input_unit": "nghìn đồng/cổ phiếu",
+            "output_unit": "nghìn đồng/cổ phiếu"
+          },
+          "arguments_sha256": "488803ca2db760290c578c7d38aed1d40eaf9a553748aac166b5fd431d724a8a",
+          "payload_sha256": "aa1f6b5dca589360446eb510873587250c1c7d30f00a026d84e357360a74efd6",
+          "started_at": "2026-11-07T08:45:15.684857+00:00",
+          "matched_entry_id": null,
+          "source": null,
+          "as_of": null,
+          "response_sha256": null,
+          "record_kind": "deterministic_derivation",
+          "status": "rejected",
+          "error_code": "invalid_derivation",
+          "error": "numeric source path must be under /data/",
+          "ended_at": "2026-11-07T08:45:15.685531+00:00",
+          "duration_ms": 0.843
+        },
+        {
+          "trial_id": "smoke-agg-01__opencode__r1",
+          "path": "/home/doanlong/extra/benchmark/experiments/finance-v44-study/results/financial-v44-smoke-deepseek-20261107-startupfix1/trials/smoke-agg-01__opencode__r1/attempts/01-d4af241051d9/mcp.jsonl",
+          "schema_version": 2,
+          "call_id": "b0f46b72-4bec-40c2-9286-92e9ae2ddc55",
+          "tool": "analytics_compute",
+          "arguments": {
+            "operation": "mean",
+            "operands": [
+              {
+                "call_id": "09a4494c-6f98-4c33-9be7-0fdb60a32d11",
+                "path": "/data"
+              },
+              {
+                "call_id": "b06e4dcd-4220-4601-b5ec-cdcd7d1af8a2",
+                "path": "/data"
+              },
+              {
+                "call_id": "f0bf54ff-7603-467b-b5bb-9bbdf4172213",
+                "path": "/data"
+              },
+              {
+                "call_id": "c9262d5b-2d74-4055-a266-b9ba182de75c",
+                "path": "/data"
+              },
+              {
+                "call_id": "3affb7cb-dd94-455d-aac1-91b4dbffb8f2",
+                "path": "/data"
+              }
+            ],
+            "input_unit": "nghìn đồng/cổ phiếu",
+            "output_unit": "nghìn đồng/cổ phiếu"
+          },
+          "arguments_sha256": "488803ca2db760290c578c7d38aed1d40eaf9a553748aac166b5fd431d724a8a",
+          "payload_sha256": "aa1f6b5dca589360446eb510873587250c1c7d30f00a026d84e357360a74efd6",
+          "started_at": "2026-11-07T08:47:19.976290+00:00",
+          "matched_entry_id": null,
+          "source": null,
+          "as_of": null,
+          "response_sha256": null,
+          "record_kind": "deterministic_derivation",
+          "status": "rejected",
+          "error_code": "invalid_derivation",
+          "error": "numeric source path must be under /data/",
+          "ended_at": "2026-11-07T08:47:19.977242+00:00",
+          "duration_ms": 1.208
+        },
+        {
+          "trial_id": "smoke-agg-01__opentrading_baseline__r2",
+          "path": "/home/doanlong/extra/benchmark/experiments/finance-v44-study/results/financial-v44-smoke-deepseek-20261107-startupfix1/trials/smoke-agg-01__opentrading_baseline__r2/attempts/01-dad39aff863e/mcp.jsonl",
+          "schema_version": 2,
+          "call_id": "b33478c3-1cb4-4a08-8010-57ae4b8f0159",
+          "tool": "analytics_compute",
+          "arguments": {
+            "operation": "mean",
+            "operands": [
+              {
+                "call_id": "c21ab384-f8c2-4072-9369-49d22d3362cc",
+                "path": "/data/"
+              }
+            ],
+            "input_unit": "nghìn đồng/cổ phiếu",
+            "output_unit": "nghìn đồng/cổ phiếu"
+          },
+          "arguments_sha256": "4dd7096bd306f24080fdfd00df9e1055ec8385d8073d6ab47978c6f5f268ae37",
+          "payload_sha256": "aa1f6b5dca589360446eb510873587250c1c7d30f00a026d84e357360a74efd6",
+          "started_at": "2026-11-07T09:10:18.642972+00:00",
+          "matched_entry_id": null,
+          "source": null,
+          "as_of": null,
+          "response_sha256": null,
+          "record_kind": "deterministic_derivation",
+          "status": "rejected",
+          "error_code": "invalid_derivation",
+          "error": "''",
+          "ended_at": "2026-11-07T09:10:18.643570+00:00",
+          "duration_ms": 0.707
+        },
+        {
+          "trial_id": "smoke-agg-01__opentrading_baseline__r2",
+          "path": "/home/doanlong/extra/benchmark/experiments/finance-v44-study/results/financial-v44-smoke-deepseek-20261107-startupfix1/trials/smoke-agg-01__opentrading_baseline__r2/attempts/01-dad39aff863e/mcp.jsonl",
+          "schema_version": 2,
+          "call_id": "938885b3-e9a0-46b9-aa04-773af680355d",
+          "tool": "analytics_compute",
+          "arguments": {
+            "operation": "mean",
+            "operands": [
+              {
+                "call_id": "c21ab384-f8c2-4072-9369-49d22d3362cc",
+                "path": "/data"
+              },
+              {
+                "call_id": "239ce7d8-7273-4719-a3e2-7c9cfa878334",
+                "path": "/data"
+              },
+              {
+                "call_id": "be744309-a1a5-46c7-a8e6-66877a42b2ed",
+                "path": "/data"
+              },
+              {
+                "call_id": "3a28e165-bf7f-4c7e-b81a-fce6cad247dc",
+                "path": "/data"
+              },
+              {
+                "call_id": "cda04824-7df9-46c5-a00b-fc1bc5b45c7f",
+                "path": "/data"
+              }
+            ],
+            "input_unit": "nghìn đồng/cổ phiếu",
+            "output_unit": "nghìn đồng/cổ phiếu"
+          },
+          "arguments_sha256": "7c97e44953add9fbf08af532429eadfc9b9e98e653fadaca12a5ca13dd435b77",
+          "payload_sha256": "aa1f6b5dca589360446eb510873587250c1c7d30f00a026d84e357360a74efd6",
+          "started_at": "2026-11-07T09:12:07.173999+00:00",
+          "matched_entry_id": null,
+          "source": null,
+          "as_of": null,
+          "response_sha256": null,
+          "record_kind": "deterministic_derivation",
+          "status": "rejected",
+          "error_code": "invalid_derivation",
+          "error": "numeric source path must be under /data/",
+          "ended_at": "2026-11-07T09:12:07.174453+00:00",
+          "duration_ms": 0.601
+        },
+        {
+          "trial_id": "smoke-agg-01__opentrading_finance__r2",
+          "path": "/home/doanlong/extra/benchmark/experiments/finance-v44-study/results/financial-v44-smoke-deepseek-20261107-startupfix1/trials/smoke-agg-01__opentrading_finance__r2/attempts/01-3482089719c5/mcp.jsonl",
+          "schema_version": 2,
+          "call_id": "137fd47d-ba8a-440d-b58c-ebb2db151323",
+          "tool": "analytics_compute",
+          "arguments": {
+            "operation": "mean",
+            "operands": [
+              {
+                "call_id": "1fd79f48-39e7-4624-9b02-ed9a422bd7a1",
+                "path": "/data/"
+              }
+            ],
+            "input_unit": "nghìn đồng/cổ phiếu",
+            "output_unit": "nghìn đồng/cổ phiếu"
+          },
+          "arguments_sha256": "d2dc34dee8a9124839ee55536be40f1f9fae0b033afa879725f81c73fc52b487",
+          "payload_sha256": "aa1f6b5dca589360446eb510873587250c1c7d30f00a026d84e357360a74efd6",
+          "started_at": "2026-11-07T09:15:52.077531+00:00",
+          "matched_entry_id": null,
+          "source": null,
+          "as_of": null,
+          "response_sha256": null,
+          "record_kind": "deterministic_derivation",
+          "status": "rejected",
+          "error_code": "invalid_derivation",
+          "error": "''",
+          "ended_at": "2026-11-07T09:15:52.078276+00:00",
+          "duration_ms": 0.888
+        },
+        {
+          "trial_id": "smoke-agg-01__opentrading_finance__r2",
+          "path": "/home/doanlong/extra/benchmark/experiments/finance-v44-study/results/financial-v44-smoke-deepseek-20261107-startupfix1/trials/smoke-agg-01__opentrading_finance__r2/attempts/01-3482089719c5/mcp.jsonl",
+          "schema_version": 2,
+          "call_id": "392392df-9fe6-4673-96a2-983845850fa7",
+          "tool": "analytics_compute",
+          "arguments": {
+            "operation": "mean",
+            "operands": [
+              {
+                "call_id": "1fd79f48-39e7-4624-9b02-ed9a422bd7a1",
+                "path": "/data"
+              },
+              {
+                "call_id": "fabab2a6-ac97-4ec3-9f74-e86911c1ec06",
+                "path": "/data"
+              },
+              {
+                "call_id": "f8be76ec-491c-4eba-b274-8baa99a0e3e7",
+                "path": "/data"
+              },
+              {
+                "call_id": "40ddcdb8-d6b6-4259-b57e-f095123eb78e",
+                "path": "/data"
+              },
+              {
+                "call_id": "763449f0-f734-4161-ae5d-a39853e51745",
+                "path": "/data"
+              }
+            ],
+            "input_unit": "nghìn đồng/cổ phiếu",
+            "output_unit": "nghìn đồng/cổ phiếu"
+          },
+          "arguments_sha256": "eaaea0bf9ab8b9e6a3245282371d890d5564f22d206a0034abe5048683a2e3e2",
+          "payload_sha256": "aa1f6b5dca589360446eb510873587250c1c7d30f00a026d84e357360a74efd6",
+          "started_at": "2026-11-07T09:17:13.264694+00:00",
+          "matched_entry_id": null,
+          "source": null,
+          "as_of": null,
+          "response_sha256": null,
+          "record_kind": "deterministic_derivation",
+          "status": "rejected",
+          "error_code": "invalid_derivation",
+          "error": "numeric source path must be under /data/",
+          "ended_at": "2026-11-07T09:17:13.265180+00:00",
+          "duration_ms": 0.632
+        },
+        {
+          "trial_id": "smoke-agg-01__opencode__r2",
+          "path": "/home/doanlong/extra/benchmark/experiments/finance-v44-study/results/financial-v44-smoke-deepseek-20261107-startupfix1/trials/smoke-agg-01__opencode__r2/attempts/01-aea6db80b9ac/mcp.jsonl",
+          "schema_version": 2,
+          "call_id": "802c1445-692a-4d28-a2fc-0391d08c827c",
+          "tool": "analytics_compute",
+          "arguments": {
+            "operation": "mean",
+            "operands": [
+              {
+                "call_id": "b3ad5762-243f-4a1f-a0a2-c0a7668eabaa",
+                "path": "/data/"
+              }
+            ],
+            "input_unit": "nghìn đồng/cổ phiếu",
+            "output_unit": "nghìn đồng/cổ phiếu"
+          },
+          "arguments_sha256": "52ebc0223459032330ab75461a1375df7b227bf60d3af68208c578dd6f3967df",
+          "payload_sha256": "aa1f6b5dca589360446eb510873587250c1c7d30f00a026d84e357360a74efd6",
+          "started_at": "2026-11-07T09:21:50.031313+00:00",
+          "matched_entry_id": null,
+          "source": null,
+          "as_of": null,
+          "response_sha256": null,
+          "record_kind": "deterministic_derivation",
+          "status": "rejected",
+          "error_code": "invalid_derivation",
+          "error": "''",
+          "ended_at": "2026-11-07T09:21:50.032109+00:00",
+          "duration_ms": 0.955
+        },
+        {
+          "trial_id": "smoke-agg-01__opencode__r2",
+          "path": "/home/doanlong/extra/benchmark/experiments/finance-v44-study/results/financial-v44-smoke-deepseek-20261107-startupfix1/trials/smoke-agg-01__opencode__r2/attempts/01-aea6db80b9ac/mcp.jsonl",
+          "schema_version": 2,
+          "call_id": "3fed5afb-66dd-4985-91fc-48f29939dc45",
+          "tool": "analytics_compute",
+          "arguments": {
+            "operation": "mean",
+            "operands": [
+              {
+                "call_id": "b3ad5762-243f-4a1f-a0a2-c0a7668eabaa",
+                "path": "/data"
+              },
+              {
+                "call_id": "5f9e244a-a44a-4fdd-911b-ced1769c007a",
+                "path": "/data"
+              },
+              {
+                "call_id": "81ff4a4b-3121-4c13-a7e8-1119deea3147",
+                "path": "/data"
+              },
+              {
+                "call_id": "d0312ad8-2afd-4da4-9c53-63ac2abd42d3",
+                "path": "/data"
+              },
+              {
+                "call_id": "412b1a4b-3e94-402b-a0ec-18f0b9d533c2",
+                "path": "/data"
+              }
+            ],
+            "input_unit": "nghìn đồng/cổ phiếu",
+            "output_unit": "nghìn đồng/cổ phiếu"
+          },
+          "arguments_sha256": "5a0992d93533d2650c168ade647acc8d2eb0d9a331f0dde667ccd4840f96e371",
+          "payload_sha256": "aa1f6b5dca589360446eb510873587250c1c7d30f00a026d84e357360a74efd6",
+          "started_at": "2026-11-07T09:23:11.866471+00:00",
+          "matched_entry_id": null,
+          "source": null,
+          "as_of": null,
+          "response_sha256": null,
+          "record_kind": "deterministic_derivation",
+          "status": "rejected",
+          "error_code": "invalid_derivation",
+          "error": "numeric source path must be under /data/",
+          "ended_at": "2026-11-07T09:23:11.866901+00:00",
+          "duration_ms": 0.545
+        },
+        {
+          "trial_id": "smoke-agg-01__opencode__r2",
+          "path": "/home/doanlong/extra/benchmark/experiments/finance-v44-study/results/financial-v44-smoke-deepseek-20261107-startupfix1/trials/smoke-agg-01__opencode__r2/attempts/01-aea6db80b9ac/mcp.jsonl",
+          "schema_version": 2,
+          "call_id": "90b6e926-e3ea-4548-aa02-1efa6087a889",
+          "tool": "analytics_compute",
+          "arguments": {
+            "operation": "mean",
+            "operands": [
+              {
+                "call_id": "b3ad5762-243f-4a1f-a0a2-c0a7668eabaa",
+                "path": "/data"
+              },
+              {
+                "call_id": "5f9e244a-a44a-4fdd-911b-ced1769c007a",
+                "path": "/data"
+              },
+              {
+                "call_id": "81ff4a4b-3121-4c13-a7e8-1119deea3147",
+                "path": "/data"
+              },
+              {
+                "call_id": "d0312ad8-2afd-4da4-9c53-63ac2abd42d3",
+                "path": "/data"
+              },
+              {
+                "call_id": "412b1a4b-3e94-402b-a0ec-18f0b9d533c2",
+                "path": "/data"
+              }
+            ],
+            "input_unit": "nghìn đồng/cổ phiếu",
+            "output_unit": "nghìn đồng/cổ phiếu"
+          },
+          "arguments_sha256": "5a0992d93533d2650c168ade647acc8d2eb0d9a331f0dde667ccd4840f96e371",
+          "payload_sha256": "aa1f6b5dca589360446eb510873587250c1c7d30f00a026d84e357360a74efd6",
+          "started_at": "2026-11-07T09:24:35.947396+00:00",
+          "matched_entry_id": null,
+          "source": null,
+          "as_of": null,
+          "response_sha256": null,
+          "record_kind": "deterministic_derivation",
+          "status": "rejected",
+          "error_code": "invalid_derivation",
+          "error": "numeric source path must be under /data/",
+          "ended_at": "2026-11-07T09:24:35.947799+00:00",
+          "duration_ms": 0.52
+        }
+      ]
+    }
+  },
+  "local_duplicate_proofs": [
+    {
+      "trial_id": "smoke-agg-01__opentrading_finance__r1",
+      "log_path": "/home/doanlong/extra/benchmark/experiments/finance-v44-study/results/financial-v44-smoke-deepseek-20261107-startupfix1/trials/smoke-agg-01__opentrading_finance__r1/attempts/01-ddb279a46ee6/run.log",
+      "ledger_path": "/home/doanlong/extra/benchmark/experiments/finance-v44-study/results/financial-v44-smoke-deepseek-20261107-startupfix1/trials/smoke-agg-01__opentrading_finance__r1/attempts/01-ddb279a46ee6/mcp.jsonl",
+      "duplicate_sdk_call_id": "chatcmpl-tool-877445b470d906d5",
+      "original_sdk_call_id": "chatcmpl-tool-b12a5933cae278af",
+      "duplicate_start_line": 120,
+      "duplicate_end_line": 121,
+      "original_start_line": 110,
+      "original_end_line": 111,
+      "duplicate_generating_provider_index": 4,
+      "original_generating_provider_index": 3,
+      "exact_same_name_and_args": true,
+      "raw_local_args_equal": true,
+      "same_intent_id": true,
+      "wire_duplicate_and_original_args_proven": true,
+      "wire_local_error_visible": true,
+      "matching_mcp_rows": 1,
+      "matching_mcp_call_id": "61bb4b6f-93f7-4569-8d8c-fa2d280c350e",
+      "matching_mcp_status": "rejected",
+      "all_operand_source_ids_are_successful_same_trial": true,
+      "ledger_total": 7,
+      "generated_sdk_ids": 8,
+      "local_rejections": 1,
+      "reason": "Repeated or already pending/successful intent; do not replay this request.",
+      "arguments": {
+        "operation": "mean",
+        "operands": [
+          {
+            "call_id": "41f4122c-711a-4d75-b514-8aea0fbccff8",
+            "path": "/data"
+          },
+          {
+            "call_id": "a028c283-efda-41f1-985a-e539aeece9a4",
+            "path": "/data"
+          },
+          {
+            "call_id": "68da1511-ef0d-4737-8265-1202509d31f5",
+            "path": "/data"
+          },
+          {
+            "call_id": "450dfd3b-69b2-4d1f-8289-e48f731b20c4",
+            "path": "/data"
+          },
+          {
+            "call_id": "3ecc41dd-4965-484d-b97e-df4aef4fa03d",
+            "path": "/data"
+          }
+        ],
+        "input_unit": "nghìn đồng/cổ phiếu",
+        "output_unit": "nghìn đồng/cổ phiếu"
+      },
+      "wire_capture_refs": [
+        {
+          "path": "/home/doanlong/extra/benchmark/experiments/finance-v44-study/results/financial-v44-smoke-deepseek-20261107-startupfix1/trials/smoke-agg-01__opentrading_finance__r1/attempts/01-ddb279a46ee6/provider-requests/0004-native.json",
+          "call_id": "chatcmpl-tool-b12a5933cae278af",
+          "matches_exact_args": true
+        },
+        {
+          "path": "/home/doanlong/extra/benchmark/experiments/finance-v44-study/results/financial-v44-smoke-deepseek-20261107-startupfix1/trials/smoke-agg-01__opentrading_finance__r1/attempts/01-ddb279a46ee6/provider-requests/0005-native.json",
+          "call_id": "chatcmpl-tool-b12a5933cae278af",
+          "matches_exact_args": true
+        },
+        {
+          "path": "/home/doanlong/extra/benchmark/experiments/finance-v44-study/results/financial-v44-smoke-deepseek-20261107-startupfix1/trials/smoke-agg-01__opentrading_finance__r1/attempts/01-ddb279a46ee6/provider-requests/0005-native.json",
+          "call_id": "chatcmpl-tool-877445b470d906d5",
+          "matches_exact_args": true
+        }
+      ]
+    },
+    {
+      "trial_id": "smoke-agg-01__opentrading_finance__r2",
+      "log_path": "/home/doanlong/extra/benchmark/experiments/finance-v44-study/results/financial-v44-smoke-deepseek-20261107-startupfix1/trials/smoke-agg-01__opentrading_finance__r2/attempts/01-3482089719c5/run.log",
+      "ledger_path": "/home/doanlong/extra/benchmark/experiments/finance-v44-study/results/financial-v44-smoke-deepseek-20261107-startupfix1/trials/smoke-agg-01__opentrading_finance__r2/attempts/01-3482089719c5/mcp.jsonl",
+      "duplicate_sdk_call_id": "chatcmpl-tool-8aceaeab56ebc26b",
+      "original_sdk_call_id": "chatcmpl-tool-92f3120d5358c5c6",
+      "duplicate_start_line": 115,
+      "duplicate_end_line": 116,
+      "original_start_line": 109,
+      "original_end_line": 110,
+      "duplicate_generating_provider_index": 4,
+      "original_generating_provider_index": 3,
+      "exact_same_name_and_args": true,
+      "raw_local_args_equal": true,
+      "same_intent_id": true,
+      "wire_duplicate_and_original_args_proven": true,
+      "wire_local_error_visible": true,
+      "matching_mcp_rows": 1,
+      "matching_mcp_call_id": "392392df-9fe6-4673-96a2-983845850fa7",
+      "matching_mcp_status": "rejected",
+      "all_operand_source_ids_are_successful_same_trial": true,
+      "ledger_total": 7,
+      "generated_sdk_ids": 8,
+      "local_rejections": 1,
+      "reason": "Repeated or already pending/successful intent; do not replay this request.",
+      "arguments": {
+        "operation": "mean",
+        "operands": [
+          {
+            "call_id": "1fd79f48-39e7-4624-9b02-ed9a422bd7a1",
+            "path": "/data"
+          },
+          {
+            "call_id": "fabab2a6-ac97-4ec3-9f74-e86911c1ec06",
+            "path": "/data"
+          },
+          {
+            "call_id": "f8be76ec-491c-4eba-b274-8baa99a0e3e7",
+            "path": "/data"
+          },
+          {
+            "call_id": "40ddcdb8-d6b6-4259-b57e-f095123eb78e",
+            "path": "/data"
+          },
+          {
+            "call_id": "763449f0-f734-4161-ae5d-a39853e51745",
+            "path": "/data"
+          }
+        ],
+        "input_unit": "nghìn đồng/cổ phiếu",
+        "output_unit": "nghìn đồng/cổ phiếu"
+      },
+      "wire_capture_refs": [
+        {
+          "path": "/home/doanlong/extra/benchmark/experiments/finance-v44-study/results/financial-v44-smoke-deepseek-20261107-startupfix1/trials/smoke-agg-01__opentrading_finance__r2/attempts/01-3482089719c5/provider-requests/0004-native.json",
+          "call_id": "chatcmpl-tool-92f3120d5358c5c6",
+          "matches_exact_args": true
+        },
+        {
+          "path": "/home/doanlong/extra/benchmark/experiments/finance-v44-study/results/financial-v44-smoke-deepseek-20261107-startupfix1/trials/smoke-agg-01__opentrading_finance__r2/attempts/01-3482089719c5/provider-requests/0005-native.json",
+          "call_id": "chatcmpl-tool-92f3120d5358c5c6",
+          "matches_exact_args": true
+        },
+        {
+          "path": "/home/doanlong/extra/benchmark/experiments/finance-v44-study/results/financial-v44-smoke-deepseek-20261107-startupfix1/trials/smoke-agg-01__opentrading_finance__r2/attempts/01-3482089719c5/provider-requests/0005-native.json",
+          "call_id": "chatcmpl-tool-8aceaeab56ebc26b",
+          "matches_exact_args": true
+        }
+      ]
+    }
+  ],
+  "frozen_audit_errors": {
+    "smoke-nvidia/nvidia/nemotron-3.5-bolt-e4b": [],
+    "smoke-nvidia/deepseek-ai/deepseek-v4.1-flash": [
+      {
+        "trial": "smoke-agg-01__opentrading_finance__r1",
+        "stage": "local_rejection",
+        "error": "Unrecognized policy guard rejection"
+      },
+      {
+        "trial": "smoke-agg-01__opentrading_finance__r1",
+        "stage": "tool_call_reconciliation"
+      },
+      {
+        "trial": "smoke-agg-01__opentrading_finance__r2",
+        "stage": "local_rejection",
+        "error": "Unrecognized policy guard rejection"
+      },
+      {
+        "trial": "smoke-agg-01__opentrading_finance__r2",
+        "stage": "tool_call_reconciliation"
+      }
+    ]
+  }
+}

@@ -1,0 +1,2362 @@
+{
+  "tasks": 277,
+  "requests": 402,
+  "files": [
+    {
+      "path": "tasks/holdout/fin-l1-bctc-903/environment/payloads.json",
+      "sha256": "2ed78e57be4734c1efb7188084e609e794382ebd907c3f372f9b02805e94949b"
+    },
+    {
+      "path": "tasks/holdout/fin-l1-bctc-903/solution/gold.json",
+      "sha256": "6db9ef05b88468a3cc1c4809f677596465d1ece2102aaa55d2a252bfc7dd9b51"
+    },
+    {
+      "path": "tasks/holdout/fin-l1-bctc-904/environment/payloads.json",
+      "sha256": "19972f2e55cfa37bb10ae817dc8da60d366c4e6ef6901c18b44cae59f551efd2"
+    },
+    {
+      "path": "tasks/holdout/fin-l1-bctc-904/solution/gold.json",
+      "sha256": "114347ab5b5880fda1ceff6c03ec0ab1dcd95230a2e05d79a43bc4f30f997a80"
+    },
+    {
+      "path": "tasks/holdout/fin-l1-bctc-905/environment/payloads.json",
+      "sha256": "632bf7303e1c4ba0682359e94377c0147d7d72169c13fa91d62c9dd22f1d5935"
+    },
+    {
+      "path": "tasks/holdout/fin-l1-bctc-905/solution/gold.json",
+      "sha256": "1ef0031bf29721bd8e6de54875f62d610f6ea8b57f43ce05d64e0f89dea7bf71"
+    },
+    {
+      "path": "tasks/holdout/fin-l1-macro-908/environment/payloads.json",
+      "sha256": "d8bc0abecd0495db6c9b79b9469ef73d76a229eec064aafe83770002f2fd3277"
+    },
+    {
+      "path": "tasks/holdout/fin-l1-macro-908/solution/gold.json",
+      "sha256": "824b433f1a9c3c611e823d7727efb9488146fb19c0362b57b23a9bcbdd6c350f"
+    },
+    {
+      "path": "tasks/holdout/fin-l1-macro-909/environment/payloads.json",
+      "sha256": "d8bc0abecd0495db6c9b79b9469ef73d76a229eec064aafe83770002f2fd3277"
+    },
+    {
+      "path": "tasks/holdout/fin-l1-macro-909/solution/gold.json",
+      "sha256": "073ac65c601cad85dbdc34c952df756d8b8de97852bcc586cd655e3ec7c11d19"
+    },
+    {
+      "path": "tasks/holdout/fin-l1-macro-910/environment/payloads.json",
+      "sha256": "d8bc0abecd0495db6c9b79b9469ef73d76a229eec064aafe83770002f2fd3277"
+    },
+    {
+      "path": "tasks/holdout/fin-l1-macro-910/solution/gold.json",
+      "sha256": "dc24cc788c0251e65349521c35f6265372c992c9afd4be6bf0bcde13e16b7c28"
+    },
+    {
+      "path": "tasks/holdout/fin-l1-quote-crypto-906/environment/payloads.json",
+      "sha256": "057678ae8f95ca9e891512ae5b9a2b5fc3b569b94fc2ca37e3a19a01707165a5"
+    },
+    {
+      "path": "tasks/holdout/fin-l1-quote-crypto-906/solution/gold.json",
+      "sha256": "ab88a4521d139bbebf32548ef2ae70f1f7ef828bb5796a470a33e1730fe89dfe"
+    },
+    {
+      "path": "tasks/holdout/fin-l1-quote-gf-907/environment/payloads.json",
+      "sha256": "6e724aed6de39026019090303dc95158803438613308e97562d8a1b8ed48c809"
+    },
+    {
+      "path": "tasks/holdout/fin-l1-quote-gf-907/solution/gold.json",
+      "sha256": "105df4bd67228ab0d4887036e507bc79e20d324362de105cbe9d8163b34c9202"
+    },
+    {
+      "path": "tasks/holdout/fin-l1-quote-vn-901/environment/payloads.json",
+      "sha256": "db794508322da0523fb8cbe771367280221155df743be25c33c59fab16b5f308"
+    },
+    {
+      "path": "tasks/holdout/fin-l1-quote-vn-901/solution/gold.json",
+      "sha256": "b2afb6011805690335fc0d5de44acda0d8dca24f88dea42a747d7d295c0ce3c3"
+    },
+    {
+      "path": "tasks/holdout/fin-l1-quote-vn-902/environment/payloads.json",
+      "sha256": "e394f58db1c7902f2a69029c4644dd13df80b8408c1dcbfe5766ae84e24ac8fe"
+    },
+    {
+      "path": "tasks/holdout/fin-l1-quote-vn-902/solution/gold.json",
+      "sha256": "2a33ee346759e99afedb34eeaca625bbbf446174a5a10a0c2184dad65707f20c"
+    },
+    {
+      "path": "tasks/holdout/fin-l2-crypto-x-918/environment/payloads.json",
+      "sha256": "d8bf304445161d93a1be377ba4abb24f44754c61c91e3780eff24c2965abece8"
+    },
+    {
+      "path": "tasks/holdout/fin-l2-crypto-x-918/solution/gold.json",
+      "sha256": "2c6508cbc0352158399c337232333616fbb6ebcf1764898512d0639ed270b816"
+    },
+    {
+      "path": "tasks/holdout/fin-l2-gf-compare-919/environment/payloads.json",
+      "sha256": "6e724aed6de39026019090303dc95158803438613308e97562d8a1b8ed48c809"
+    },
+    {
+      "path": "tasks/holdout/fin-l2-gf-compare-919/solution/gold.json",
+      "sha256": "2c6d7f5611830e347ea36613d4e5d481d8ae3f818ae427e064b90c137c4a3b63"
+    },
+    {
+      "path": "tasks/holdout/fin-l2-growth-911/environment/payloads.json",
+      "sha256": "0794fec2341a6a35c95c2a35286576e951360e03e507ebc67f263fc53def967b"
+    },
+    {
+      "path": "tasks/holdout/fin-l2-growth-911/solution/gold.json",
+      "sha256": "45656e263d3a1e8029c98fc6a65048d348435e6662dbfaf9a71c4899ed1d0c17"
+    },
+    {
+      "path": "tasks/holdout/fin-l2-growth-912/environment/payloads.json",
+      "sha256": "19972f2e55cfa37bb10ae817dc8da60d366c4e6ef6901c18b44cae59f551efd2"
+    },
+    {
+      "path": "tasks/holdout/fin-l2-growth-912/solution/gold.json",
+      "sha256": "c740a0767c6a8d19a1530d8544683c283cd8922b7f0891b3a74c39d8c79fd013"
+    },
+    {
+      "path": "tasks/holdout/fin-l2-macro-calc-920/environment/payloads.json",
+      "sha256": "d8bc0abecd0495db6c9b79b9469ef73d76a229eec064aafe83770002f2fd3277"
+    },
+    {
+      "path": "tasks/holdout/fin-l2-macro-calc-920/solution/gold.json",
+      "sha256": "c8b3d84f26500571667f89a299bb62501b14562e1a8700525b9cb3b6c527da94"
+    },
+    {
+      "path": "tasks/holdout/fin-l2-margin-913/environment/payloads.json",
+      "sha256": "c719f2dbf9115fbbcee1463d4753c4034f47953577986bc699fe2daf2f37c6af"
+    },
+    {
+      "path": "tasks/holdout/fin-l2-margin-913/solution/gold.json",
+      "sha256": "8b75548676cac135143c89b4185a8c26356158b6758be93437d1ee6687ea6508"
+    },
+    {
+      "path": "tasks/holdout/fin-l2-margin-914/environment/payloads.json",
+      "sha256": "2a89d8cadd6d6a2d09e67a25df3e8b84959ea7b3510cf3f2b80a3b3f9817d353"
+    },
+    {
+      "path": "tasks/holdout/fin-l2-margin-914/solution/gold.json",
+      "sha256": "f737a535c157443e607586dfd599e1522bff63d9349372281c0c88dded897cc0"
+    },
+    {
+      "path": "tasks/holdout/fin-l2-ratio-915/environment/payloads.json",
+      "sha256": "8406b04a51cc4ad5ac69fe7006cb363817cd07c74fad1d747ba4ae8be3db730b"
+    },
+    {
+      "path": "tasks/holdout/fin-l2-ratio-915/solution/gold.json",
+      "sha256": "de21b1c3ac5b5e917f3b34c9518bf8262cce796043ee689c7e7ddc1ad32dea01"
+    },
+    {
+      "path": "tasks/holdout/fin-l2-tech-916/environment/payloads.json",
+      "sha256": "0f8ed508d0b5ee8bb532840ba210615c2a2b532706fb49b82284a30f7e40adf8"
+    },
+    {
+      "path": "tasks/holdout/fin-l2-tech-916/solution/gold.json",
+      "sha256": "546316e37a3662a398510df2e54a50ab3c40bdb301324233668cdb13714e6422"
+    },
+    {
+      "path": "tasks/holdout/fin-l2-tech-917/environment/payloads.json",
+      "sha256": "027cd9b779db9b8ecbff86daf1d9a69b632f2a02ddffaa8e9116edce9ed903e6"
+    },
+    {
+      "path": "tasks/holdout/fin-l2-tech-917/solution/gold.json",
+      "sha256": "006b0b5d9629d1b29ed6eba00149624bd190379bdc2b358e1a60bc8224bcff67"
+    },
+    {
+      "path": "tasks/holdout/fin-l3-agg-921/environment/payloads.json",
+      "sha256": "5e90a01275cd731a0ce0794296a39216b6374ea1712f1163b137bfe26d081a72"
+    },
+    {
+      "path": "tasks/holdout/fin-l3-agg-921/solution/gold.json",
+      "sha256": "a8f6bb4ff612a8ac927adf466db67325e9be011ba93e9aa4157e5cea72c8749a"
+    },
+    {
+      "path": "tasks/holdout/fin-l3-agg-922/environment/payloads.json",
+      "sha256": "ad1f0f1a339fecc528ecee588ce49fc757c333073502376ddcd4eb695e950a6b"
+    },
+    {
+      "path": "tasks/holdout/fin-l3-agg-922/solution/gold.json",
+      "sha256": "e80f317af80228d169bd0e7fc43f7b17fc017a45169db3697ad16cda2cbc3ca2"
+    },
+    {
+      "path": "tasks/holdout/fin-l3-crypto-multi-928/environment/payloads.json",
+      "sha256": "057678ae8f95ca9e891512ae5b9a2b5fc3b569b94fc2ca37e3a19a01707165a5"
+    },
+    {
+      "path": "tasks/holdout/fin-l3-crypto-multi-928/solution/gold.json",
+      "sha256": "8650f100f8818c06e20dbc234cc5c62dada31880cff00e9abe57514f53cae922"
+    },
+    {
+      "path": "tasks/holdout/fin-l3-crypto-multi-929/environment/payloads.json",
+      "sha256": "057678ae8f95ca9e891512ae5b9a2b5fc3b569b94fc2ca37e3a19a01707165a5"
+    },
+    {
+      "path": "tasks/holdout/fin-l3-crypto-multi-929/solution/gold.json",
+      "sha256": "2b10f4df6c5d7cc6dd9e3f725dee277171a38b77b85577d4624429387b8ad15c"
+    },
+    {
+      "path": "tasks/holdout/fin-l3-index-930/environment/payloads.json",
+      "sha256": "032ee59dea44d7ce71ae077f40f5d8ce7582a9be4478fdcfce931f86e14fd42c"
+    },
+    {
+      "path": "tasks/holdout/fin-l3-index-930/solution/gold.json",
+      "sha256": "567c2a7aecb1029d1112b751e4109567ebb7c98662b54093c99dfafbcfa6c729"
+    },
+    {
+      "path": "tasks/holdout/fin-l3-screen-923/environment/payloads.json",
+      "sha256": "3295ee3228fce43220d78e8c6b29b422a9311243d3dc6a72e01c36d405515e18"
+    },
+    {
+      "path": "tasks/holdout/fin-l3-screen-923/solution/gold.json",
+      "sha256": "c9f29424f338c8ea757202b1250f0c181c93f25f34b20c96f0232b93b8f9884b"
+    },
+    {
+      "path": "tasks/holdout/fin-l3-screen-924/environment/payloads.json",
+      "sha256": "bff00ef3fb44f7a704dadf8f94689c0b535b33cb7163d79fcab9a8ef83b54f4d"
+    },
+    {
+      "path": "tasks/holdout/fin-l3-screen-924/solution/gold.json",
+      "sha256": "dc18280540a5576947747b0a23e50aeef9adbe27d7aefe36e366a226f71091bf"
+    },
+    {
+      "path": "tasks/holdout/fin-l3-tech-multi-927/environment/payloads.json",
+      "sha256": "7b9ce4b4d0ce09d948905ce544f253c6cac93ed3819a068ee461bdac85ce5715"
+    },
+    {
+      "path": "tasks/holdout/fin-l3-tech-multi-927/solution/gold.json",
+      "sha256": "7abf5e8af7252e6ab9eaab949ea6aea29b60dcea6b7c8defb9d3bd009417c95c"
+    },
+    {
+      "path": "tasks/holdout/fin-l3-top-925/environment/payloads.json",
+      "sha256": "b2446a67d6b1807ecbe171b0dea66b6147a5730988d0ec7b1ba7ac9c629e7a00"
+    },
+    {
+      "path": "tasks/holdout/fin-l3-top-925/solution/gold.json",
+      "sha256": "da1c71452dcb0f192a3b43620f5dffde7eda52f2906a525140eef72262d4df28"
+    },
+    {
+      "path": "tasks/holdout/fin-l3-top-926/environment/payloads.json",
+      "sha256": "b2446a67d6b1807ecbe171b0dea66b6147a5730988d0ec7b1ba7ac9c629e7a00"
+    },
+    {
+      "path": "tasks/holdout/fin-l3-top-926/solution/gold.json",
+      "sha256": "fc44f633ce23550034068154a5ed6c064e8e7825d88150ee43b286ad21496eda"
+    },
+    {
+      "path": "tasks/holdout/fin-l4-2src-939/environment/payloads.json",
+      "sha256": "8fb04123646de059857accac0c8e2a47d4ac5ea211f51c755d6b5cb2785c1036"
+    },
+    {
+      "path": "tasks/holdout/fin-l4-2src-939/solution/gold.json",
+      "sha256": "a55bc44a8ccf9af7b1b4f9e5e8b64c9f9f7e5870cafb0fdcdeb9be2b925e55e0"
+    },
+    {
+      "path": "tasks/holdout/fin-l4-2src-940/environment/payloads.json",
+      "sha256": "5f582a83ebe2bf454b1bee47fb1f163e448df10c33d66eb82e6931bf28cc5eee"
+    },
+    {
+      "path": "tasks/holdout/fin-l4-2src-940/environment/request_contracts.json",
+      "sha256": "e14ad177349a62347b29bb729f4e3388ab50d26d976eb02aa02bf8c45491295f"
+    },
+    {
+      "path": "tasks/holdout/fin-l4-2src-940/solution/gold.json",
+      "sha256": "b17eac48f1f30485986043da8c45f02d4506759c8d84a0e3e5737af6bc610d29"
+    },
+    {
+      "path": "tasks/holdout/fin-l4-future-931/environment/payloads.json",
+      "sha256": "2ed78e57be4734c1efb7188084e609e794382ebd907c3f372f9b02805e94949b"
+    },
+    {
+      "path": "tasks/holdout/fin-l4-future-931/solution/gold.json",
+      "sha256": "c53ff3ac1bf74a46a29b7fff0b91b59669d8b4e4132c05af0f4269e9c1fa4edb"
+    },
+    {
+      "path": "tasks/holdout/fin-l4-future-932/environment/payloads.json",
+      "sha256": "632bf7303e1c4ba0682359e94377c0147d7d72169c13fa91d62c9dd22f1d5935"
+    },
+    {
+      "path": "tasks/holdout/fin-l4-future-932/solution/gold.json",
+      "sha256": "c7a7589e0c3e480b90bef0088302b1bf92e52c3d293cf6ac1532eb3b8a251c5c"
+    },
+    {
+      "path": "tasks/holdout/fin-l4-future-933/environment/payloads.json",
+      "sha256": "d8bc0abecd0495db6c9b79b9469ef73d76a229eec064aafe83770002f2fd3277"
+    },
+    {
+      "path": "tasks/holdout/fin-l4-future-933/solution/gold.json",
+      "sha256": "b440562821d552e0d258bb74af5b3fcbd1d77af349cb4bd2ad997a6a66adf7b3"
+    },
+    {
+      "path": "tasks/holdout/fin-l4-future-934/environment/payloads.json",
+      "sha256": "6e724aed6de39026019090303dc95158803438613308e97562d8a1b8ed48c809"
+    },
+    {
+      "path": "tasks/holdout/fin-l4-future-934/solution/gold.json",
+      "sha256": "5d5b72d555c09157ccb31ce1a858d09fe4cd9735908b8706e7c531ec2c656ff7"
+    },
+    {
+      "path": "tasks/holdout/fin-l4-narrative-937/environment/payloads.json",
+      "sha256": "e7d964bec30ef406a54f447e7a8894ce157909a6182382859c1fb1e2f700ada5"
+    },
+    {
+      "path": "tasks/holdout/fin-l4-narrative-937/solution/gold.json",
+      "sha256": "aa8c61f6cbf4ad9645b8d05771db7ba0e1c2eebd1a28dcc8fbc211336555f910"
+    },
+    {
+      "path": "tasks/holdout/fin-l4-narrative-938/environment/payloads.json",
+      "sha256": "3daaf2f947f10f4eb2d07fa838492516811850c99a3db58cf732bbf834103792"
+    },
+    {
+      "path": "tasks/holdout/fin-l4-narrative-938/environment/request_contracts.json",
+      "sha256": "e14ad177349a62347b29bb729f4e3388ab50d26d976eb02aa02bf8c45491295f"
+    },
+    {
+      "path": "tasks/holdout/fin-l4-narrative-938/solution/gold.json",
+      "sha256": "538b3cf237b7d9e2e462d330d56698bd2dfe6bcfafe40954a40791fcc71f19d9"
+    },
+    {
+      "path": "tasks/holdout/fin-l4-nonexist-935/environment/payloads.json",
+      "sha256": "1d71b92a1271d7cdd532a23d3a68c0c56198dada7995b30e12aea740e2990e55"
+    },
+    {
+      "path": "tasks/holdout/fin-l4-nonexist-935/solution/gold.json",
+      "sha256": "933377e01366d79c84fe0823b78bda8d53300efdf31ebae943e6fee8e385dbf5"
+    },
+    {
+      "path": "tasks/holdout/fin-l4-nonexist-936/environment/payloads.json",
+      "sha256": "3f0a212617c93ac2b97a0650b26cf42d143d17b01743f2feea03f73251ed7169"
+    },
+    {
+      "path": "tasks/holdout/fin-l4-nonexist-936/solution/gold.json",
+      "sha256": "db826f35b2a357b5b8b41108792f016126adf53187b385a69d56c2862bb54320"
+    },
+    {
+      "path": "tasks/holdout/fin-l5-compare-944/environment/payloads.json",
+      "sha256": "3295ee3228fce43220d78e8c6b29b422a9311243d3dc6a72e01c36d405515e18"
+    },
+    {
+      "path": "tasks/holdout/fin-l5-compare-944/solution/gold.json",
+      "sha256": "07fe62d59ec05bf7695fe77f3f7ecd0c89ec6c281752aad8f00309c01c7ac52f"
+    },
+    {
+      "path": "tasks/holdout/fin-l5-compare-945/environment/payloads.json",
+      "sha256": "bff00ef3fb44f7a704dadf8f94689c0b535b33cb7163d79fcab9a8ef83b54f4d"
+    },
+    {
+      "path": "tasks/holdout/fin-l5-compare-945/solution/gold.json",
+      "sha256": "8892ea8b691ece48971f300ff09c87c8391417e7b5aba2531357daf9245c8201"
+    },
+    {
+      "path": "tasks/holdout/fin-l5-compare-946/environment/payloads.json",
+      "sha256": "057678ae8f95ca9e891512ae5b9a2b5fc3b569b94fc2ca37e3a19a01707165a5"
+    },
+    {
+      "path": "tasks/holdout/fin-l5-compare-946/solution/gold.json",
+      "sha256": "42a92e5f017466359b2b59077faf21501b93ac0cae35f39a71727210eed270e3"
+    },
+    {
+      "path": "tasks/holdout/fin-l5-compare-947/environment/payloads.json",
+      "sha256": "6e724aed6de39026019090303dc95158803438613308e97562d8a1b8ed48c809"
+    },
+    {
+      "path": "tasks/holdout/fin-l5-compare-947/solution/gold.json",
+      "sha256": "bbbf9db93425654c9bf37ae78005b30400bf180f72fdc1715e52742ad6e441b6"
+    },
+    {
+      "path": "tasks/holdout/fin-l5-profile-941/environment/payloads.json",
+      "sha256": "2f4a6565071de52faee0e64e7d9c62552af97a969cf7267dd51849721b476c20"
+    },
+    {
+      "path": "tasks/holdout/fin-l5-profile-941/solution/gold.json",
+      "sha256": "8a75b9afad692924ead355f5906ab23c6af56bd6921ff2b647d6efccb557b428"
+    },
+    {
+      "path": "tasks/holdout/fin-l5-profile-942/environment/payloads.json",
+      "sha256": "146c047928e683706a9c302f05c1168f428eebee34c50733a44b834fe8326f1c"
+    },
+    {
+      "path": "tasks/holdout/fin-l5-profile-942/solution/gold.json",
+      "sha256": "cbc570db4455ec9c7921c38d34bfe305652f24859f18db47ec00f85a4da96a18"
+    },
+    {
+      "path": "tasks/holdout/fin-l5-profile-943/environment/payloads.json",
+      "sha256": "057678ae8f95ca9e891512ae5b9a2b5fc3b569b94fc2ca37e3a19a01707165a5"
+    },
+    {
+      "path": "tasks/holdout/fin-l5-profile-943/solution/gold.json",
+      "sha256": "7da34d344fa8726af8d190712a313cf8013ccb9f4ea5c2453ae10471b59690f0"
+    },
+    {
+      "path": "tasks/holdout/fin-l5-valuation-948/environment/payloads.json",
+      "sha256": "ed3760f90328f6a4457c3a0ed0827129979b3771b15b04f733d81773ecac8560"
+    },
+    {
+      "path": "tasks/holdout/fin-l5-valuation-948/solution/gold.json",
+      "sha256": "8a68ee69a006bd997533e9a1d223031c8a6c959a11e878cff9017e30a59fa7f9"
+    },
+    {
+      "path": "tasks/holdout/fin-l5-valuation-949/environment/payloads.json",
+      "sha256": "e7623500881682447bf730ea605179cdeebc4744b5a9d10351857a51cf9399c1"
+    },
+    {
+      "path": "tasks/holdout/fin-l5-valuation-949/solution/gold.json",
+      "sha256": "72b4dea17df89f5852846a2da64b871e7fb762cd9779d29c67dc1f14bb8d749b"
+    },
+    {
+      "path": "tasks/holdout/fin-l5-valuation-950/environment/payloads.json",
+      "sha256": "b6ff40dfa9c2d74f6eba21d916f12df2d8b0599e7b42841731d19440734aa2e6"
+    },
+    {
+      "path": "tasks/holdout/fin-l5-valuation-950/solution/gold.json",
+      "sha256": "ec222bfe3cf3d1fc2d3199af9f26690d757cb1ce8d5862ff2e73867abfb4c12a"
+    },
+    {
+      "path": "tasks/main/fin-l1-bctc-109/environment/payloads.json",
+      "sha256": "807221df72b3943e15ea466c1091ebfc4c2628faa5827d9ba7a01c28ad289352"
+    },
+    {
+      "path": "tasks/main/fin-l1-bctc-109/solution/gold.json",
+      "sha256": "21f0361598a67b17f9aac21be085c5ed9d7278b6ee57287c18005917ef2f549f"
+    },
+    {
+      "path": "tasks/main/fin-l1-bctc-110/environment/payloads.json",
+      "sha256": "4b54bce803f4ff1e29da2403548fe58563d73af7360eba175c2d9eda20775873"
+    },
+    {
+      "path": "tasks/main/fin-l1-bctc-110/solution/gold.json",
+      "sha256": "684e68d21058ed601c2c6a9c35fe3164150b346954d6faba46cc2be52d45da68"
+    },
+    {
+      "path": "tasks/main/fin-l1-bctc-111/environment/payloads.json",
+      "sha256": "ecb498d7e0e732f4996b88fcb7c7973dc889b2e9ea478e912a91af41fa9681de"
+    },
+    {
+      "path": "tasks/main/fin-l1-bctc-111/solution/gold.json",
+      "sha256": "179d726a77dfa8362676d45b22c1a8467e79cf1dddc157fcdf709292e828d612"
+    },
+    {
+      "path": "tasks/main/fin-l1-bctc-112/environment/payloads.json",
+      "sha256": "6bb3e2980ffc09fd4a909dd01053fb435f80e8a3901eff3174c9ac9c9004e5c6"
+    },
+    {
+      "path": "tasks/main/fin-l1-bctc-112/solution/gold.json",
+      "sha256": "e0e3dd71986155da2ba9fc824e19d15bc9af4f387b5f9749558d7263c1b4915f"
+    },
+    {
+      "path": "tasks/main/fin-l1-bctc-113/environment/payloads.json",
+      "sha256": "bc3ecd38d371c46a9eb87d65d48fcd97c4993b974206c0b44c57c227057a5439"
+    },
+    {
+      "path": "tasks/main/fin-l1-bctc-113/solution/gold.json",
+      "sha256": "e7de707c538329692a000a307fea6291e1537198df9ad144fe18de0bb1353b3e"
+    },
+    {
+      "path": "tasks/main/fin-l1-bctc-114/environment/payloads.json",
+      "sha256": "3b5d1d3a5400d5b8372299c63c574fd6edd9ce75300ab580403aad1b57bd5e7b"
+    },
+    {
+      "path": "tasks/main/fin-l1-bctc-114/solution/gold.json",
+      "sha256": "aedc1a460d633363ab3671f9924a53dd1e5e5186ccc52935046a25e888b3ba58"
+    },
+    {
+      "path": "tasks/main/fin-l1-bctc-115/environment/payloads.json",
+      "sha256": "d2d6286edc369f891b0e6df7fb9cc9292abd1d60018c8eb6c92180231da1dff3"
+    },
+    {
+      "path": "tasks/main/fin-l1-bctc-115/solution/gold.json",
+      "sha256": "68846cfd4b243efb024e03bdcb095021d65512a7192ba221d46ee67be6496776"
+    },
+    {
+      "path": "tasks/main/fin-l1-bctc-116/environment/payloads.json",
+      "sha256": "5f0bbe1901782843db46480749ebf90d592b2e85c8b09ca8c85c7310253775e9"
+    },
+    {
+      "path": "tasks/main/fin-l1-bctc-116/solution/gold.json",
+      "sha256": "14ade021afc9a0ab90c138c62e3b1c41e1931858258b2d52917c9d2746df0f9f"
+    },
+    {
+      "path": "tasks/main/fin-l1-bctc-117/environment/payloads.json",
+      "sha256": "8c28d6192d81bb304953dec467a2de98595c9c4637f2599d15fb2ad771718a85"
+    },
+    {
+      "path": "tasks/main/fin-l1-bctc-117/solution/gold.json",
+      "sha256": "6ea3889cd0aa1f2f246e9dd2a1ec67c8317b192706a254c8a4bac657cbc3972a"
+    },
+    {
+      "path": "tasks/main/fin-l1-bctc-118/environment/payloads.json",
+      "sha256": "2fa8c2c6c169c867d7ad945d7680dbd98864bc5f28f271a15d98242d0afbb0bd"
+    },
+    {
+      "path": "tasks/main/fin-l1-bctc-118/solution/gold.json",
+      "sha256": "078a0b95ff72334ef50f35ac98e2524b566c784b9e6f918dc7b981788c5de1db"
+    },
+    {
+      "path": "tasks/main/fin-l1-bctc-119/environment/payloads.json",
+      "sha256": "ddac3ec1b92e79f1ffce8323a34081f8467bffb2b5dfde3c7404aa61574624ab"
+    },
+    {
+      "path": "tasks/main/fin-l1-bctc-119/solution/gold.json",
+      "sha256": "7a93a411b741150e6dedc8a4e33aadc6a9ca66a9255cffb5b8345001fce1b1f3"
+    },
+    {
+      "path": "tasks/main/fin-l1-bctc-120/environment/payloads.json",
+      "sha256": "006c4869e4deb3e1ca6bf94ec81e1922cdc38c62083b8cc37fdff5bc165aa7b7"
+    },
+    {
+      "path": "tasks/main/fin-l1-bctc-120/solution/gold.json",
+      "sha256": "bab28458f82b5fa6d6cbb9948269cf472070896673c4138f5862e60b76132b69"
+    },
+    {
+      "path": "tasks/main/fin-l1-macro-131/environment/payloads.json",
+      "sha256": "d8bc0abecd0495db6c9b79b9469ef73d76a229eec064aafe83770002f2fd3277"
+    },
+    {
+      "path": "tasks/main/fin-l1-macro-131/solution/gold.json",
+      "sha256": "c0b755167e01de5f165b23cf639e6b8df3e2879b8c6c0940a8467c2bd669288f"
+    },
+    {
+      "path": "tasks/main/fin-l1-macro-132/environment/payloads.json",
+      "sha256": "d8bc0abecd0495db6c9b79b9469ef73d76a229eec064aafe83770002f2fd3277"
+    },
+    {
+      "path": "tasks/main/fin-l1-macro-132/solution/gold.json",
+      "sha256": "3301debc82ab5ae2411d66f9f5dbacaa8c3c68c8fe063fd367210805fcbb522a"
+    },
+    {
+      "path": "tasks/main/fin-l1-macro-133/environment/payloads.json",
+      "sha256": "d8bc0abecd0495db6c9b79b9469ef73d76a229eec064aafe83770002f2fd3277"
+    },
+    {
+      "path": "tasks/main/fin-l1-macro-133/solution/gold.json",
+      "sha256": "9f06067e6ad43319a61d0d2e4164e54a1824f5a30795d9836c1ad07b55b9a030"
+    },
+    {
+      "path": "tasks/main/fin-l1-macro-134/environment/payloads.json",
+      "sha256": "d8bc0abecd0495db6c9b79b9469ef73d76a229eec064aafe83770002f2fd3277"
+    },
+    {
+      "path": "tasks/main/fin-l1-macro-134/solution/gold.json",
+      "sha256": "e7da8326af87442d6c67280b975cd7fe9e313228b12cae6166aa32eaddf7f89e"
+    },
+    {
+      "path": "tasks/main/fin-l1-macro-135/environment/payloads.json",
+      "sha256": "d8bc0abecd0495db6c9b79b9469ef73d76a229eec064aafe83770002f2fd3277"
+    },
+    {
+      "path": "tasks/main/fin-l1-macro-135/solution/gold.json",
+      "sha256": "f822f0060d18e65c3bae88de68ccd1dd93c59cbe7cd77539864caed171c6eca7"
+    },
+    {
+      "path": "tasks/main/fin-l1-macro-136/environment/payloads.json",
+      "sha256": "d8bc0abecd0495db6c9b79b9469ef73d76a229eec064aafe83770002f2fd3277"
+    },
+    {
+      "path": "tasks/main/fin-l1-macro-136/solution/gold.json",
+      "sha256": "8d3d0176ef1caa2cf711fa11b8ae885cf7e3d693cd05cbe634a10eb6efdf2429"
+    },
+    {
+      "path": "tasks/main/fin-l1-macro-137/environment/payloads.json",
+      "sha256": "d8bc0abecd0495db6c9b79b9469ef73d76a229eec064aafe83770002f2fd3277"
+    },
+    {
+      "path": "tasks/main/fin-l1-macro-137/solution/gold.json",
+      "sha256": "1f39ddf35c80ae7f59d954c6f03550fcd650585898a6ea30c7c1eedec3a52323"
+    },
+    {
+      "path": "tasks/main/fin-l1-macro-138/environment/payloads.json",
+      "sha256": "d8bc0abecd0495db6c9b79b9469ef73d76a229eec064aafe83770002f2fd3277"
+    },
+    {
+      "path": "tasks/main/fin-l1-macro-138/solution/gold.json",
+      "sha256": "65abd627816da86b4d30e9e409a5f7c5c1d294621e70d70f44ea5f9f67776d84"
+    },
+    {
+      "path": "tasks/main/fin-l1-macro-139/environment/payloads.json",
+      "sha256": "d8bc0abecd0495db6c9b79b9469ef73d76a229eec064aafe83770002f2fd3277"
+    },
+    {
+      "path": "tasks/main/fin-l1-macro-139/solution/gold.json",
+      "sha256": "e1d5540b3d1b5926f713a6107909c75f708aa67d61c7cd6cf423fcbbea74c358"
+    },
+    {
+      "path": "tasks/main/fin-l1-macro-140/environment/payloads.json",
+      "sha256": "d8bc0abecd0495db6c9b79b9469ef73d76a229eec064aafe83770002f2fd3277"
+    },
+    {
+      "path": "tasks/main/fin-l1-macro-140/solution/gold.json",
+      "sha256": "a59662116a6ad1a4f0ea58dc3c491df43a99fd9e99f2b67a4830d2ae1d052af1"
+    },
+    {
+      "path": "tasks/main/fin-l1-quote-crypto-121/environment/payloads.json",
+      "sha256": "057678ae8f95ca9e891512ae5b9a2b5fc3b569b94fc2ca37e3a19a01707165a5"
+    },
+    {
+      "path": "tasks/main/fin-l1-quote-crypto-121/solution/gold.json",
+      "sha256": "0bf83e1f7a46388afbf7d8d01152155d51ba4d44378867d7d1ab5b25a53a569d"
+    },
+    {
+      "path": "tasks/main/fin-l1-quote-crypto-122/environment/payloads.json",
+      "sha256": "057678ae8f95ca9e891512ae5b9a2b5fc3b569b94fc2ca37e3a19a01707165a5"
+    },
+    {
+      "path": "tasks/main/fin-l1-quote-crypto-122/solution/gold.json",
+      "sha256": "6a1d2f423b67fe5a8c300a3ea532054435a5784d46f8cfad28ecdf723e41b852"
+    },
+    {
+      "path": "tasks/main/fin-l1-quote-crypto-123/environment/payloads.json",
+      "sha256": "057678ae8f95ca9e891512ae5b9a2b5fc3b569b94fc2ca37e3a19a01707165a5"
+    },
+    {
+      "path": "tasks/main/fin-l1-quote-crypto-123/solution/gold.json",
+      "sha256": "184f325583d4e47ffba375305faaeffd59d1b7fa90511dee19e721df66d32401"
+    },
+    {
+      "path": "tasks/main/fin-l1-quote-crypto-124/environment/payloads.json",
+      "sha256": "057678ae8f95ca9e891512ae5b9a2b5fc3b569b94fc2ca37e3a19a01707165a5"
+    },
+    {
+      "path": "tasks/main/fin-l1-quote-crypto-124/solution/gold.json",
+      "sha256": "c39a954bf3a2d3606f4e7244f6703aaa0932d0183ca763a9e13f664bb91fe780"
+    },
+    {
+      "path": "tasks/main/fin-l1-quote-crypto-125/environment/payloads.json",
+      "sha256": "1a1c6ce1a6fe39d4702a41e9ed10dc606d88a7a47b401f2ade5906e1020ea70c"
+    },
+    {
+      "path": "tasks/main/fin-l1-quote-crypto-125/environment/request_contracts.json",
+      "sha256": "5e93088281af70f82de218ba379ba87c2087c0a66785ed1b1d1b3ee5cfb15f57"
+    },
+    {
+      "path": "tasks/main/fin-l1-quote-crypto-125/solution/gold.json",
+      "sha256": "6eaad6a0a8fb39340cb2a851d0a830ef330572e32585df78f3143bdd1ddec1a0"
+    },
+    {
+      "path": "tasks/main/fin-l1-quote-gf-126/environment/payloads.json",
+      "sha256": "6e724aed6de39026019090303dc95158803438613308e97562d8a1b8ed48c809"
+    },
+    {
+      "path": "tasks/main/fin-l1-quote-gf-126/solution/gold.json",
+      "sha256": "c08d61742def85196f873cf90e20b38bd447b19413c3b4749fc16744f25081cc"
+    },
+    {
+      "path": "tasks/main/fin-l1-quote-gf-127/environment/payloads.json",
+      "sha256": "6e724aed6de39026019090303dc95158803438613308e97562d8a1b8ed48c809"
+    },
+    {
+      "path": "tasks/main/fin-l1-quote-gf-127/solution/gold.json",
+      "sha256": "aef0d7cb355a1ce0e33b1ffe7853de70b7ecdd08ba9a1b94d3626acc76869ef2"
+    },
+    {
+      "path": "tasks/main/fin-l1-quote-gf-128/environment/payloads.json",
+      "sha256": "6e724aed6de39026019090303dc95158803438613308e97562d8a1b8ed48c809"
+    },
+    {
+      "path": "tasks/main/fin-l1-quote-gf-128/solution/gold.json",
+      "sha256": "ae8c5cad7a69c19c2e28ae0d406593d55b1123a91787ded818b4f5d57243abba"
+    },
+    {
+      "path": "tasks/main/fin-l1-quote-gf-129/environment/payloads.json",
+      "sha256": "6e724aed6de39026019090303dc95158803438613308e97562d8a1b8ed48c809"
+    },
+    {
+      "path": "tasks/main/fin-l1-quote-gf-129/solution/gold.json",
+      "sha256": "5a2b2d5d9ea4d0dafca5212ad497291f18163ae6c3ae2f7f3b9f26fe5aff301d"
+    },
+    {
+      "path": "tasks/main/fin-l1-quote-gf-130/environment/payloads.json",
+      "sha256": "6e724aed6de39026019090303dc95158803438613308e97562d8a1b8ed48c809"
+    },
+    {
+      "path": "tasks/main/fin-l1-quote-gf-130/solution/gold.json",
+      "sha256": "3c0960ecd7eab300f1be372df2c565fca66631e9d136d9aa471fdc0de61d57bf"
+    },
+    {
+      "path": "tasks/main/fin-l1-quote-vn-101/environment/payloads.json",
+      "sha256": "fb8a39991555e595192cf4190947f4bdccddcbe1f3b9a3da08568a60d4d784f4"
+    },
+    {
+      "path": "tasks/main/fin-l1-quote-vn-101/solution/gold.json",
+      "sha256": "5b71600bd715578c690dfac0e5ebda9fe6755e4372deab94400ff4a1a1667d8a"
+    },
+    {
+      "path": "tasks/main/fin-l1-quote-vn-102/environment/payloads.json",
+      "sha256": "5ae411d92c0f84ff1a04eae4ee6ce8ef7127c9f30101688c91bf7a8944717fd1"
+    },
+    {
+      "path": "tasks/main/fin-l1-quote-vn-102/solution/gold.json",
+      "sha256": "a5c7038cae06967ee03d8f624632f610fdbaafb1db0d5b6a6826f20622f79eb1"
+    },
+    {
+      "path": "tasks/main/fin-l1-quote-vn-103/environment/payloads.json",
+      "sha256": "2caa80cc9914b508afe8b8a71126e43e867e814faf82d4bf1984d3035a0517ce"
+    },
+    {
+      "path": "tasks/main/fin-l1-quote-vn-103/solution/gold.json",
+      "sha256": "8fb85ff9cf728aab4d36e5c08899f6e6885b28a8d851207eed71be6c931dfa17"
+    },
+    {
+      "path": "tasks/main/fin-l1-quote-vn-104/environment/payloads.json",
+      "sha256": "5b191b038f6a6a13d118b0fc5a82a511610d05f842723755a4f66b84f47cf8d2"
+    },
+    {
+      "path": "tasks/main/fin-l1-quote-vn-104/solution/gold.json",
+      "sha256": "b2f489706ab1dad9b9f96ac942e3497695bf9028406b646a1341ab8cbedd44b6"
+    },
+    {
+      "path": "tasks/main/fin-l1-quote-vn-105/environment/payloads.json",
+      "sha256": "a8bb10f915f2cf59339e88fc7875251d65c1307470d14f9dc380ed72a93df702"
+    },
+    {
+      "path": "tasks/main/fin-l1-quote-vn-105/solution/gold.json",
+      "sha256": "bb7f33cd963717bcffa511e63199554f38409babf13044aed104799e2b25766a"
+    },
+    {
+      "path": "tasks/main/fin-l1-quote-vn-106/environment/payloads.json",
+      "sha256": "ad65887916989540c20d6d80cf22e13581a5e27d9217cd0fa89ded3c8a6f9cfc"
+    },
+    {
+      "path": "tasks/main/fin-l1-quote-vn-106/solution/gold.json",
+      "sha256": "825fe1129bbdd2b2a96564c22ecba87fe9240fdd59831771119e2ac6cb4191ff"
+    },
+    {
+      "path": "tasks/main/fin-l1-quote-vn-107/environment/payloads.json",
+      "sha256": "883079910d3406a2e804397e6ed831d3b9646f41ebd14b02d8764f00f019ead0"
+    },
+    {
+      "path": "tasks/main/fin-l1-quote-vn-107/solution/gold.json",
+      "sha256": "c4e9a0b646b320260bc79fa1e3ff68c416559b6c3b8f1ec6dc78bce89d9ea2b6"
+    },
+    {
+      "path": "tasks/main/fin-l1-quote-vn-108/environment/payloads.json",
+      "sha256": "0efe3f152b5b27c22f1c4c17e98a2ae6b97ebe5ea009a5f2ab11e1d6e47c5df1"
+    },
+    {
+      "path": "tasks/main/fin-l1-quote-vn-108/solution/gold.json",
+      "sha256": "7ca3616ab43ed4b7dd87540e56bbf21b35b68600296206ab5e42d8702202402c"
+    },
+    {
+      "path": "tasks/main/fin-l2-crypto-x-166/environment/payloads.json",
+      "sha256": "d8bf304445161d93a1be377ba4abb24f44754c61c91e3780eff24c2965abece8"
+    },
+    {
+      "path": "tasks/main/fin-l2-crypto-x-166/solution/gold.json",
+      "sha256": "571c2b8614e0cc15695942ed77f04d5fa3456b31d06899aaf8bcf111888e14bc"
+    },
+    {
+      "path": "tasks/main/fin-l2-crypto-x-167/environment/payloads.json",
+      "sha256": "d8bf304445161d93a1be377ba4abb24f44754c61c91e3780eff24c2965abece8"
+    },
+    {
+      "path": "tasks/main/fin-l2-crypto-x-167/solution/gold.json",
+      "sha256": "4aba277ec74b3b2c44f0380793d416254fb65350672885eac62ac37ba414c04c"
+    },
+    {
+      "path": "tasks/main/fin-l2-crypto-x-168/environment/payloads.json",
+      "sha256": "d8bf304445161d93a1be377ba4abb24f44754c61c91e3780eff24c2965abece8"
+    },
+    {
+      "path": "tasks/main/fin-l2-crypto-x-168/solution/gold.json",
+      "sha256": "85ef4e8db4ea3da072931353010688372c45aa0608dd630f90a4c4dcad29f811"
+    },
+    {
+      "path": "tasks/main/fin-l2-crypto-x-169/environment/payloads.json",
+      "sha256": "d8bf304445161d93a1be377ba4abb24f44754c61c91e3780eff24c2965abece8"
+    },
+    {
+      "path": "tasks/main/fin-l2-crypto-x-169/solution/gold.json",
+      "sha256": "f137bf22601d20358027de3fbce44ec3119cd34eb29365e8f32579ca7d65ee9d"
+    },
+    {
+      "path": "tasks/main/fin-l2-crypto-x-170/environment/payloads.json",
+      "sha256": "d8bf304445161d93a1be377ba4abb24f44754c61c91e3780eff24c2965abece8"
+    },
+    {
+      "path": "tasks/main/fin-l2-crypto-x-170/solution/gold.json",
+      "sha256": "64672a6fcc889c7a5eaed9823feabc07a7e62e814c67bf1e3b35c3c485a4c472"
+    },
+    {
+      "path": "tasks/main/fin-l2-gf-compare-171/environment/payloads.json",
+      "sha256": "6e724aed6de39026019090303dc95158803438613308e97562d8a1b8ed48c809"
+    },
+    {
+      "path": "tasks/main/fin-l2-gf-compare-171/solution/gold.json",
+      "sha256": "434e604c28710038becedfada35f50723108a359abccf48733e88fe064c61863"
+    },
+    {
+      "path": "tasks/main/fin-l2-gf-compare-172/environment/payloads.json",
+      "sha256": "6e724aed6de39026019090303dc95158803438613308e97562d8a1b8ed48c809"
+    },
+    {
+      "path": "tasks/main/fin-l2-gf-compare-172/solution/gold.json",
+      "sha256": "af41c82aaf1553ed6851a8d17d83bccffa4286feabb89a85ce6e565c3e24cf48"
+    },
+    {
+      "path": "tasks/main/fin-l2-gf-compare-173/environment/payloads.json",
+      "sha256": "6e724aed6de39026019090303dc95158803438613308e97562d8a1b8ed48c809"
+    },
+    {
+      "path": "tasks/main/fin-l2-gf-compare-173/solution/gold.json",
+      "sha256": "ea7f75053b8921fa059cc3233a837705a625965547f72e097c74a82eb084ea7b"
+    },
+    {
+      "path": "tasks/main/fin-l2-gf-compare-174/environment/payloads.json",
+      "sha256": "6e724aed6de39026019090303dc95158803438613308e97562d8a1b8ed48c809"
+    },
+    {
+      "path": "tasks/main/fin-l2-gf-compare-174/solution/gold.json",
+      "sha256": "c72994f814df9c07dba4144494ac3d9a80741dad5adb47f873331b50e2a2ec50"
+    },
+    {
+      "path": "tasks/main/fin-l2-gf-compare-175/environment/payloads.json",
+      "sha256": "6e724aed6de39026019090303dc95158803438613308e97562d8a1b8ed48c809"
+    },
+    {
+      "path": "tasks/main/fin-l2-gf-compare-175/solution/gold.json",
+      "sha256": "26eaac38b0f2806047a6de5a1a438e03dfe06732bd3892c5285860b2b7d13b40"
+    },
+    {
+      "path": "tasks/main/fin-l2-growth-141/environment/payloads.json",
+      "sha256": "ab35eb80103c73d6c77708e79be3c3c7b67a82777646035c9eb3e425125920aa"
+    },
+    {
+      "path": "tasks/main/fin-l2-growth-141/solution/gold.json",
+      "sha256": "60eebaa6b7ba8d4052eda7cc8ce6a411decaea6a36dad29de7cbc741de0014a0"
+    },
+    {
+      "path": "tasks/main/fin-l2-growth-142/environment/payloads.json",
+      "sha256": "2b41596fdc6a336bcaed9c92ac9faf1b713f2f5c9a40684ba6fbd60a120650a0"
+    },
+    {
+      "path": "tasks/main/fin-l2-growth-142/solution/gold.json",
+      "sha256": "427aceaf7c727cfa68a89fcea41988b60c246097b6bddd4c774952a06890a337"
+    },
+    {
+      "path": "tasks/main/fin-l2-growth-143/environment/payloads.json",
+      "sha256": "0860e4740da953d16f7ef0e56c7ba692638f6954a42ee5820c3f93d2e3b240a2"
+    },
+    {
+      "path": "tasks/main/fin-l2-growth-143/solution/gold.json",
+      "sha256": "100741a7c95fa3470a629213cf2a68331119f4276f33096c6d71e463c27e210e"
+    },
+    {
+      "path": "tasks/main/fin-l2-growth-144/environment/payloads.json",
+      "sha256": "c852b39888ea7572821e99df29d878c798798e55b6f05c82c56c3e50f40e4f7b"
+    },
+    {
+      "path": "tasks/main/fin-l2-growth-144/solution/gold.json",
+      "sha256": "06ef1d6c99b60c4c949cdc42e2fa9db2a01d0d96534d0a41cd70ef847de27002"
+    },
+    {
+      "path": "tasks/main/fin-l2-growth-145/environment/payloads.json",
+      "sha256": "f5343736a6ba3915e6373bcbb8f7026d469188926b6a2d2cbeb387ba26cd0c27"
+    },
+    {
+      "path": "tasks/main/fin-l2-growth-145/solution/gold.json",
+      "sha256": "bced03af82f77b28eeddebe0265b4acfd6bcbe7e89aca4447831aa00ddeb9ce9"
+    },
+    {
+      "path": "tasks/main/fin-l2-growth-146/environment/payloads.json",
+      "sha256": "52326a23883dcc861639e6d89540ad07ebcdf6758e5dd9e127bb751377d6f0c3"
+    },
+    {
+      "path": "tasks/main/fin-l2-growth-146/solution/gold.json",
+      "sha256": "f9a8a546df1e85e898c2854c8d467cf3d6c7b8a8a2deb8393e5d7b5aa1d7c83c"
+    },
+    {
+      "path": "tasks/main/fin-l2-growth-147/environment/payloads.json",
+      "sha256": "ddac3ec1b92e79f1ffce8323a34081f8467bffb2b5dfde3c7404aa61574624ab"
+    },
+    {
+      "path": "tasks/main/fin-l2-growth-147/solution/gold.json",
+      "sha256": "d75bb638d9e6bb5dd868fac246f681c9fafee522186205bc4aab90ddd365ef17"
+    },
+    {
+      "path": "tasks/main/fin-l2-growth-148/environment/payloads.json",
+      "sha256": "006c4869e4deb3e1ca6bf94ec81e1922cdc38c62083b8cc37fdff5bc165aa7b7"
+    },
+    {
+      "path": "tasks/main/fin-l2-growth-148/solution/gold.json",
+      "sha256": "6ec2e1e269a9d1e993580c90a340865536cc134112c3ebf1a1f68c3b506d9a8a"
+    },
+    {
+      "path": "tasks/main/fin-l2-macro-calc-176/environment/payloads.json",
+      "sha256": "d8bc0abecd0495db6c9b79b9469ef73d76a229eec064aafe83770002f2fd3277"
+    },
+    {
+      "path": "tasks/main/fin-l2-macro-calc-176/solution/gold.json",
+      "sha256": "06125e708b8df7ca1612e60556dd6afc08114441742b91e40f76d0cff1581df6"
+    },
+    {
+      "path": "tasks/main/fin-l2-macro-calc-177/environment/payloads.json",
+      "sha256": "d8bc0abecd0495db6c9b79b9469ef73d76a229eec064aafe83770002f2fd3277"
+    },
+    {
+      "path": "tasks/main/fin-l2-macro-calc-177/solution/gold.json",
+      "sha256": "5cbfc73bee1f911c5d8aa88959c2f5876a38257d05974aed3752599d330f97f2"
+    },
+    {
+      "path": "tasks/main/fin-l2-macro-calc-178/environment/payloads.json",
+      "sha256": "d8bc0abecd0495db6c9b79b9469ef73d76a229eec064aafe83770002f2fd3277"
+    },
+    {
+      "path": "tasks/main/fin-l2-macro-calc-178/solution/gold.json",
+      "sha256": "95b4dde871136f3c359dfe9f51f3b0e62fe4baa00e572401e2b5c314bd6a2ea2"
+    },
+    {
+      "path": "tasks/main/fin-l2-macro-calc-179/environment/payloads.json",
+      "sha256": "d8bc0abecd0495db6c9b79b9469ef73d76a229eec064aafe83770002f2fd3277"
+    },
+    {
+      "path": "tasks/main/fin-l2-macro-calc-179/solution/gold.json",
+      "sha256": "f8454649b1f8efa5152c33dcb22328da3a38805f48aff204945f880114ee6116"
+    },
+    {
+      "path": "tasks/main/fin-l2-macro-calc-180/environment/payloads.json",
+      "sha256": "d8bc0abecd0495db6c9b79b9469ef73d76a229eec064aafe83770002f2fd3277"
+    },
+    {
+      "path": "tasks/main/fin-l2-macro-calc-180/solution/gold.json",
+      "sha256": "5c9e076067c0031c763a898e51517de99eed5e52979764a1b6ec87f9f60766c8"
+    },
+    {
+      "path": "tasks/main/fin-l2-margin-149/environment/payloads.json",
+      "sha256": "63ff12f8d5be3aa46fbc4b8d7ea7520a782289d4f599afc0ee68e762fb020d5b"
+    },
+    {
+      "path": "tasks/main/fin-l2-margin-149/solution/gold.json",
+      "sha256": "270ece200a80a1553309d214cf35db7a419095d40ba2983892c81e1b455d25bb"
+    },
+    {
+      "path": "tasks/main/fin-l2-margin-150/environment/payloads.json",
+      "sha256": "56e2419f49053c98cd4f8dd6af1276d2a71fb4f3c9cc395e1e8d1dd5183e19e8"
+    },
+    {
+      "path": "tasks/main/fin-l2-margin-150/solution/gold.json",
+      "sha256": "371f8f41420132392b033b43096afc016a7048f626387800c8f983a51772da53"
+    },
+    {
+      "path": "tasks/main/fin-l2-margin-151/environment/payloads.json",
+      "sha256": "60be85cbc9f79dd4ca7743b33bc002dc20d0f1acc65bb1887637ea4ad4d91b33"
+    },
+    {
+      "path": "tasks/main/fin-l2-margin-151/solution/gold.json",
+      "sha256": "d3ea8d8dd88b4cb3ff62f8f3f51ea3531b7aa5b258c0af82dafd076277b7be1c"
+    },
+    {
+      "path": "tasks/main/fin-l2-margin-152/environment/payloads.json",
+      "sha256": "1a9d1a89e3d93e6dbf2d00c581175caac8464abe474a496ace198b696625066b"
+    },
+    {
+      "path": "tasks/main/fin-l2-margin-152/solution/gold.json",
+      "sha256": "f1cd12e218ee868306d3eeb45d635105009691e1c3c7ccfbefdc14876d38ab6d"
+    },
+    {
+      "path": "tasks/main/fin-l2-margin-153/environment/payloads.json",
+      "sha256": "a8b91af579a4afda08325d20d13d20ab44da5fbe1388a6e22dc51ca0a4393eca"
+    },
+    {
+      "path": "tasks/main/fin-l2-margin-153/solution/gold.json",
+      "sha256": "b15495c6700e1d9ba4811ba953370e133aef1fcfc8ff6f73aebe580b2135e394"
+    },
+    {
+      "path": "tasks/main/fin-l2-margin-154/environment/payloads.json",
+      "sha256": "7792cbff04e9d984807a7017a1841576d3659361e2af03918669bb9d086b20a2"
+    },
+    {
+      "path": "tasks/main/fin-l2-margin-154/solution/gold.json",
+      "sha256": "ec325be9aeca0f55e80f267b6dad784c7500e70aa7d75a52ea510e3a5a4973ef"
+    },
+    {
+      "path": "tasks/main/fin-l2-margin-155/environment/payloads.json",
+      "sha256": "3c3116c38aab22e01747a7f4ee790f104d4a7542dfda744503d570679db45838"
+    },
+    {
+      "path": "tasks/main/fin-l2-margin-155/solution/gold.json",
+      "sha256": "47b5855b4886a77384088ea6acf51b03636b6f01d5c3f165b320396d727c22fb"
+    },
+    {
+      "path": "tasks/main/fin-l2-ratio-156/environment/payloads.json",
+      "sha256": "6461be0de7efbd83b7d914312d828aedc32cef3562d4da6429dc25c82c83ac8b"
+    },
+    {
+      "path": "tasks/main/fin-l2-ratio-156/solution/gold.json",
+      "sha256": "072780c7ccf449fef3271ddedf9349323e900c90a21538d94c0984e606a1ff40"
+    },
+    {
+      "path": "tasks/main/fin-l2-ratio-157/environment/payloads.json",
+      "sha256": "735dac62ede355f823bee7f1445e7ff07c348251d5836e1e3dba69245d14c03f"
+    },
+    {
+      "path": "tasks/main/fin-l2-ratio-157/solution/gold.json",
+      "sha256": "2437458318ef803eecf4ad970700e212cca902043929b6745ed7c569a9762ac3"
+    },
+    {
+      "path": "tasks/main/fin-l2-ratio-158/environment/payloads.json",
+      "sha256": "be8af9e204ca0187952ba5b35730293bcb6bd858fd6c47eabca4193a4075ee45"
+    },
+    {
+      "path": "tasks/main/fin-l2-ratio-158/solution/gold.json",
+      "sha256": "262fcf1d420d8e0bf024dee8a62d821d723d5cad04e906fe45a101f562469fbd"
+    },
+    {
+      "path": "tasks/main/fin-l2-ratio-159/environment/payloads.json",
+      "sha256": "7146f70a87b4d00c4f925f1c9c1e045a9f3c6bea9ad52ca231f2777bff8d254a"
+    },
+    {
+      "path": "tasks/main/fin-l2-ratio-159/solution/gold.json",
+      "sha256": "af5d8d8196543ed4693467b11d7f0001796f62ce91fe5fcfea154a2ef711e830"
+    },
+    {
+      "path": "tasks/main/fin-l2-ratio-160/environment/payloads.json",
+      "sha256": "431d0a37dcc8350973bca7d2f2fdfd68219b0264e327dc583e5b82ed83ce4ad2"
+    },
+    {
+      "path": "tasks/main/fin-l2-ratio-160/solution/gold.json",
+      "sha256": "eeb5b8863d87de0b55309d6da42315e9904d0c3c17596ba98cec2d9e747fcca0"
+    },
+    {
+      "path": "tasks/main/fin-l2-tech-161/environment/payloads.json",
+      "sha256": "7191efde250d543fa47694cbaabc5706d69ff3ef46e729ffaf063dfddc95448a"
+    },
+    {
+      "path": "tasks/main/fin-l2-tech-161/solution/gold.json",
+      "sha256": "7c75dc1723781abc2ea6f67dcb13ff84d9de3a34591392376cb91fb67ab89b60"
+    },
+    {
+      "path": "tasks/main/fin-l2-tech-162/environment/payloads.json",
+      "sha256": "afa42c9c3972d74ee1d3dc389ba5c24c051be2b1f91037d087bfc3759e02e6a5"
+    },
+    {
+      "path": "tasks/main/fin-l2-tech-162/solution/gold.json",
+      "sha256": "d47e5af4df23bb26e4df9c3da0302874e4e39734836a45ac0a27483ad3788937"
+    },
+    {
+      "path": "tasks/main/fin-l2-tech-163/environment/payloads.json",
+      "sha256": "3bb0c036d30afe297305571587870c0b1b1a2d9392326ea72c40c46f78fa0099"
+    },
+    {
+      "path": "tasks/main/fin-l2-tech-163/solution/gold.json",
+      "sha256": "c054c212a4302c40638f631241d058ebf38e01011231a041a635048b81542063"
+    },
+    {
+      "path": "tasks/main/fin-l2-tech-164/environment/payloads.json",
+      "sha256": "62bf5948b31b06ec1cfbdbc06c2dced04f2a573e2cddf9a9d704d017061d7a60"
+    },
+    {
+      "path": "tasks/main/fin-l2-tech-164/solution/gold.json",
+      "sha256": "481ad85923dd4e3e3d71b5a20568ea24875245c0642cd487550def0694d3f204"
+    },
+    {
+      "path": "tasks/main/fin-l2-tech-165/environment/payloads.json",
+      "sha256": "d2fd7d295d7e67e16788ccc795b209014833d4688b1b406e72915ccb933f8c10"
+    },
+    {
+      "path": "tasks/main/fin-l2-tech-165/solution/gold.json",
+      "sha256": "cb4f93b0eb561666974147d956c11e513909ccb97943cd0265608ff26599f218"
+    },
+    {
+      "path": "tasks/main/fin-l3-agg-181/environment/payloads.json",
+      "sha256": "5e90a01275cd731a0ce0794296a39216b6374ea1712f1163b137bfe26d081a72"
+    },
+    {
+      "path": "tasks/main/fin-l3-agg-181/solution/gold.json",
+      "sha256": "fb16f11573e817f9815de64d41ad2d4bdba8bce17eb76a20dcd7df6336e746b0"
+    },
+    {
+      "path": "tasks/main/fin-l3-agg-182/environment/payloads.json",
+      "sha256": "ad1f0f1a339fecc528ecee588ce49fc757c333073502376ddcd4eb695e950a6b"
+    },
+    {
+      "path": "tasks/main/fin-l3-agg-182/solution/gold.json",
+      "sha256": "a51d0958fc27f7fcaf638a9b549114fed7953034f656bfc1657cfa3154e53213"
+    },
+    {
+      "path": "tasks/main/fin-l3-agg-183/environment/payloads.json",
+      "sha256": "4ec6a4f2af168b3c45e5a0623fc5580c7d77411c0d654346f2035c8a1b3fa93e"
+    },
+    {
+      "path": "tasks/main/fin-l3-agg-183/solution/gold.json",
+      "sha256": "a985c574635269709f52a09aecfeaa8082eacc334183f1816431108b32497aa2"
+    },
+    {
+      "path": "tasks/main/fin-l3-agg-184/environment/payloads.json",
+      "sha256": "3aca8555c0c04c22fef28f0832df46393a5b11e1398bf0698b432abeba0376ce"
+    },
+    {
+      "path": "tasks/main/fin-l3-agg-184/solution/gold.json",
+      "sha256": "ba98267786556733c8cf138a3a8c6330054d6cd3cf6ac1612f1d5ef981250a4a"
+    },
+    {
+      "path": "tasks/main/fin-l3-agg-185/environment/payloads.json",
+      "sha256": "8e7143d01b44455e27cfde14bc55ae90731048b1db95110770d4c3279e148a86"
+    },
+    {
+      "path": "tasks/main/fin-l3-agg-185/solution/gold.json",
+      "sha256": "335fbda76ae34e7eed08d29fa586375de04e5d6210928a36a37d2fbb474b29f8"
+    },
+    {
+      "path": "tasks/main/fin-l3-agg-186/environment/payloads.json",
+      "sha256": "067c6094929aad887101bba17ad696bd914102ffe79315b804d28aa7cd6ebb1f"
+    },
+    {
+      "path": "tasks/main/fin-l3-agg-186/solution/gold.json",
+      "sha256": "67f57f2031e364b9e218cab23b77f9a34cc457bf76a1f85906a72a0726dda13c"
+    },
+    {
+      "path": "tasks/main/fin-l3-agg-187/environment/payloads.json",
+      "sha256": "6b4594b66bdb0c69625575b43c1cfe507f0719475baa432565ff454c6e258c35"
+    },
+    {
+      "path": "tasks/main/fin-l3-agg-187/solution/gold.json",
+      "sha256": "4093f61658b0abfa07cca8c549ed4dc923961dff2b75b8e6a0d6c3f826fe1b26"
+    },
+    {
+      "path": "tasks/main/fin-l3-agg-188/environment/payloads.json",
+      "sha256": "fc69728bc67004535d4bc0d8edba7eeac0e7ce93e48d406f9684cf87e6d33407"
+    },
+    {
+      "path": "tasks/main/fin-l3-agg-188/solution/gold.json",
+      "sha256": "282039928f212eb7550492810925bd71ad4ab1ffb5e40e3596d59610b0378c2d"
+    },
+    {
+      "path": "tasks/main/fin-l3-crypto-multi-208/environment/payloads.json",
+      "sha256": "057678ae8f95ca9e891512ae5b9a2b5fc3b569b94fc2ca37e3a19a01707165a5"
+    },
+    {
+      "path": "tasks/main/fin-l3-crypto-multi-208/solution/gold.json",
+      "sha256": "f58e1b4d477eacb2bb1480024e8741fe4cf4a1f8d7d9ef21d18ba06844118a88"
+    },
+    {
+      "path": "tasks/main/fin-l3-crypto-multi-209/environment/payloads.json",
+      "sha256": "057678ae8f95ca9e891512ae5b9a2b5fc3b569b94fc2ca37e3a19a01707165a5"
+    },
+    {
+      "path": "tasks/main/fin-l3-crypto-multi-209/solution/gold.json",
+      "sha256": "1186e72f9cdad4999fea6ee02384b31e99dccffe669a7a1cf6e5c1a348cc741a"
+    },
+    {
+      "path": "tasks/main/fin-l3-crypto-multi-210/environment/payloads.json",
+      "sha256": "057678ae8f95ca9e891512ae5b9a2b5fc3b569b94fc2ca37e3a19a01707165a5"
+    },
+    {
+      "path": "tasks/main/fin-l3-crypto-multi-210/solution/gold.json",
+      "sha256": "b2641f188fc42f5ad49a699e5dce37ff7f637829c3b44c0e5d33930a8d0aaf06"
+    },
+    {
+      "path": "tasks/main/fin-l3-crypto-multi-211/environment/payloads.json",
+      "sha256": "057678ae8f95ca9e891512ae5b9a2b5fc3b569b94fc2ca37e3a19a01707165a5"
+    },
+    {
+      "path": "tasks/main/fin-l3-crypto-multi-211/solution/gold.json",
+      "sha256": "a135a6c884fa398b090c26012b49c9decb5a206f08098a2fe77d5c06e74b39d8"
+    },
+    {
+      "path": "tasks/main/fin-l3-crypto-multi-212/environment/payloads.json",
+      "sha256": "057678ae8f95ca9e891512ae5b9a2b5fc3b569b94fc2ca37e3a19a01707165a5"
+    },
+    {
+      "path": "tasks/main/fin-l3-crypto-multi-212/solution/gold.json",
+      "sha256": "32fbdc34d790afb8f3cf890ce2f948550a8ac2296a97d814d6f40496b47ea134"
+    },
+    {
+      "path": "tasks/main/fin-l3-crypto-multi-213/environment/payloads.json",
+      "sha256": "057678ae8f95ca9e891512ae5b9a2b5fc3b569b94fc2ca37e3a19a01707165a5"
+    },
+    {
+      "path": "tasks/main/fin-l3-crypto-multi-213/solution/gold.json",
+      "sha256": "49214bd2026a0e548b3d07aa2e865a0bd314c62131b09c8c9eb0defb962aff84"
+    },
+    {
+      "path": "tasks/main/fin-l3-crypto-multi-214/environment/payloads.json",
+      "sha256": "057678ae8f95ca9e891512ae5b9a2b5fc3b569b94fc2ca37e3a19a01707165a5"
+    },
+    {
+      "path": "tasks/main/fin-l3-crypto-multi-214/solution/gold.json",
+      "sha256": "f1b6de295a6a480409c555c7624a0e8f32a15c816b03412ef5f0ad522e702151"
+    },
+    {
+      "path": "tasks/main/fin-l3-crypto-multi-215/environment/payloads.json",
+      "sha256": "057678ae8f95ca9e891512ae5b9a2b5fc3b569b94fc2ca37e3a19a01707165a5"
+    },
+    {
+      "path": "tasks/main/fin-l3-crypto-multi-215/solution/gold.json",
+      "sha256": "28615686fdbe1f61e80335782935ea9e64a5f1925cd299a8f87fb8482aed666b"
+    },
+    {
+      "path": "tasks/main/fin-l3-index-216/environment/payloads.json",
+      "sha256": "032ee59dea44d7ce71ae077f40f5d8ce7582a9be4478fdcfce931f86e14fd42c"
+    },
+    {
+      "path": "tasks/main/fin-l3-index-216/solution/gold.json",
+      "sha256": "27e7cad4ca4235a0768d562c726ddb129612c775e78a73e4679796a333fad1c8"
+    },
+    {
+      "path": "tasks/main/fin-l3-index-217/environment/payloads.json",
+      "sha256": "3e2cb72a1d26644b5b6db60e6ac5b5d1e37b38b0b177ce1037a2dfd65cdd1ad7"
+    },
+    {
+      "path": "tasks/main/fin-l3-index-217/solution/gold.json",
+      "sha256": "2ba2a90e564d40eaab1cb2ee4c71a042010c8eaf4e7757b7ba7f576648383848"
+    },
+    {
+      "path": "tasks/main/fin-l3-macro-agg-218/environment/payloads.json",
+      "sha256": "d8bc0abecd0495db6c9b79b9469ef73d76a229eec064aafe83770002f2fd3277"
+    },
+    {
+      "path": "tasks/main/fin-l3-macro-agg-218/solution/gold.json",
+      "sha256": "2e5f430391df005673823c8f13a2b61269a3491e748bf01e4846d7b700223109"
+    },
+    {
+      "path": "tasks/main/fin-l3-macro-agg-219/environment/payloads.json",
+      "sha256": "d8bc0abecd0495db6c9b79b9469ef73d76a229eec064aafe83770002f2fd3277"
+    },
+    {
+      "path": "tasks/main/fin-l3-macro-agg-219/solution/gold.json",
+      "sha256": "a722999fbbbb808991be302e9c262d8427bcbf03bb85a12aa25ac7f1e501e261"
+    },
+    {
+      "path": "tasks/main/fin-l3-macro-agg-220/environment/payloads.json",
+      "sha256": "d8bc0abecd0495db6c9b79b9469ef73d76a229eec064aafe83770002f2fd3277"
+    },
+    {
+      "path": "tasks/main/fin-l3-macro-agg-220/solution/gold.json",
+      "sha256": "00e711b5b26746019a93243469c230615f6da298f84ad946f2cd77781d554db7"
+    },
+    {
+      "path": "tasks/main/fin-l3-screen-189/environment/payloads.json",
+      "sha256": "3295ee3228fce43220d78e8c6b29b422a9311243d3dc6a72e01c36d405515e18"
+    },
+    {
+      "path": "tasks/main/fin-l3-screen-189/solution/gold.json",
+      "sha256": "07a0e777c9ce055554b76875f0109a5594f810825d32a0e9a0ed2c086e063475"
+    },
+    {
+      "path": "tasks/main/fin-l3-screen-190/environment/payloads.json",
+      "sha256": "bff00ef3fb44f7a704dadf8f94689c0b535b33cb7163d79fcab9a8ef83b54f4d"
+    },
+    {
+      "path": "tasks/main/fin-l3-screen-190/solution/gold.json",
+      "sha256": "19a7351dccdc61b259171209c4a8e3b2b52d486ee65cb824fc7bc9a769ff859f"
+    },
+    {
+      "path": "tasks/main/fin-l3-screen-191/environment/payloads.json",
+      "sha256": "f44870181d3518ee4f89a07ac809ce95b2f95b3e27c66af4e96eb6ceeb19e2d2"
+    },
+    {
+      "path": "tasks/main/fin-l3-screen-191/solution/gold.json",
+      "sha256": "6963ef7ceddac51b01eeffbdd7020f6ec08a30ce2988f0359880698903164a13"
+    },
+    {
+      "path": "tasks/main/fin-l3-screen-192/environment/payloads.json",
+      "sha256": "0bd2fbf239937f6339375a3b74c14e626923c430bc191b9a6d0c9e0f61482465"
+    },
+    {
+      "path": "tasks/main/fin-l3-screen-192/solution/gold.json",
+      "sha256": "3c14a383bbe1696b2932fb064a3a82da9f35c90673d2d6acc71cdfd9f74af2ce"
+    },
+    {
+      "path": "tasks/main/fin-l3-screen-193/environment/payloads.json",
+      "sha256": "7482995f6d9cf105dd8fab6f4a2a6847b197553c28d9125dbf23595e6813dcbb"
+    },
+    {
+      "path": "tasks/main/fin-l3-screen-193/solution/gold.json",
+      "sha256": "8f1019e140a72ad44389ae75041afa6a7591896b1b29befa26a8663ca76c458c"
+    },
+    {
+      "path": "tasks/main/fin-l3-screen-194/environment/payloads.json",
+      "sha256": "9a6f7ee8f2c3ccec42436b0f8c701c2fa5bb48d54f4fa9bdab0ba5e30c6158e5"
+    },
+    {
+      "path": "tasks/main/fin-l3-screen-194/solution/gold.json",
+      "sha256": "2e1a703221d1937ee7bceda32148d3ccf84108d3ff8e5a2747eb3ca75e69ea97"
+    },
+    {
+      "path": "tasks/main/fin-l3-screen-195/environment/payloads.json",
+      "sha256": "fffbaf55bd1b4f1af5a6602068e0002cbb9d21c762cad0c7c2afc6c09aa0a67f"
+    },
+    {
+      "path": "tasks/main/fin-l3-screen-195/solution/gold.json",
+      "sha256": "225df1cd058fce6f91088d1a9a2b3d28c5e39071b3421f964e0ad640d529b694"
+    },
+    {
+      "path": "tasks/main/fin-l3-screen-196/environment/payloads.json",
+      "sha256": "6d60d2b1ef429d4d80579e8bea9d10cc323e16246a3b6ee768115b8bf2b05edf"
+    },
+    {
+      "path": "tasks/main/fin-l3-screen-196/solution/gold.json",
+      "sha256": "30105319da332e78cc86f288cbe827d70b63d2c2732377b70ed59910091a695b"
+    },
+    {
+      "path": "tasks/main/fin-l3-tech-multi-203/environment/payloads.json",
+      "sha256": "7b9ce4b4d0ce09d948905ce544f253c6cac93ed3819a068ee461bdac85ce5715"
+    },
+    {
+      "path": "tasks/main/fin-l3-tech-multi-203/solution/gold.json",
+      "sha256": "3f23e593f9dddbb11af45694b1c1ab67be2c896dda1a7804114cd61f99e8591c"
+    },
+    {
+      "path": "tasks/main/fin-l3-tech-multi-204/environment/payloads.json",
+      "sha256": "4497a9be9def0f66ddfe9ebbf1f52ca9738f0047c502e1a69e4d8924e8dc0f65"
+    },
+    {
+      "path": "tasks/main/fin-l3-tech-multi-204/solution/gold.json",
+      "sha256": "5189365f6994dfd8c0110dbfb5f9df4d4b86e5c5f00a09138b5bfdfc9fb144df"
+    },
+    {
+      "path": "tasks/main/fin-l3-tech-multi-205/environment/payloads.json",
+      "sha256": "4497a9be9def0f66ddfe9ebbf1f52ca9738f0047c502e1a69e4d8924e8dc0f65"
+    },
+    {
+      "path": "tasks/main/fin-l3-tech-multi-205/solution/gold.json",
+      "sha256": "9773d7108ecb112dec1472e84e5af7998f7dab953439fa21f6b1ce96e57f3aa9"
+    },
+    {
+      "path": "tasks/main/fin-l3-tech-multi-206/environment/payloads.json",
+      "sha256": "3806d89602288ed593d5ff041e1d89048286f413accc5e3022bd415d85e3e546"
+    },
+    {
+      "path": "tasks/main/fin-l3-tech-multi-206/solution/gold.json",
+      "sha256": "47d4f889d6c5cdf1e5a6d4ca54dd9cf002d6a52b165630e76970f405ab163ab8"
+    },
+    {
+      "path": "tasks/main/fin-l3-tech-multi-207/environment/payloads.json",
+      "sha256": "c774c4c749c1f9bcf28ff12f20daf317257fc76063fe8f1e97c95d5f75bacd43"
+    },
+    {
+      "path": "tasks/main/fin-l3-tech-multi-207/solution/gold.json",
+      "sha256": "7aecaac520c94f2b504b0040750d579b2d7d9af5400964977226ac1b8bcbbf51"
+    },
+    {
+      "path": "tasks/main/fin-l3-top-197/environment/payloads.json",
+      "sha256": "b2446a67d6b1807ecbe171b0dea66b6147a5730988d0ec7b1ba7ac9c629e7a00"
+    },
+    {
+      "path": "tasks/main/fin-l3-top-197/solution/gold.json",
+      "sha256": "7e238d715344a081f3f99fbc1626ed031672ee15d872bb93a5fb330f5e5ae390"
+    },
+    {
+      "path": "tasks/main/fin-l3-top-198/environment/payloads.json",
+      "sha256": "b2446a67d6b1807ecbe171b0dea66b6147a5730988d0ec7b1ba7ac9c629e7a00"
+    },
+    {
+      "path": "tasks/main/fin-l3-top-198/solution/gold.json",
+      "sha256": "a530f53571d310ab379cc0534ade53e1a9d246170ba46a5726b12ac16e6d1422"
+    },
+    {
+      "path": "tasks/main/fin-l3-top-199/environment/payloads.json",
+      "sha256": "b2446a67d6b1807ecbe171b0dea66b6147a5730988d0ec7b1ba7ac9c629e7a00"
+    },
+    {
+      "path": "tasks/main/fin-l3-top-199/solution/gold.json",
+      "sha256": "f9b2c967f2df096cbca9186b5451c111e078e39548522188d54fa05226a5b29f"
+    },
+    {
+      "path": "tasks/main/fin-l3-top-200/environment/payloads.json",
+      "sha256": "b2446a67d6b1807ecbe171b0dea66b6147a5730988d0ec7b1ba7ac9c629e7a00"
+    },
+    {
+      "path": "tasks/main/fin-l3-top-200/solution/gold.json",
+      "sha256": "3deb0031260f655c7d5ac42a528a60f61a05bea3da8e3b45695761d3fa144296"
+    },
+    {
+      "path": "tasks/main/fin-l3-top-201/environment/payloads.json",
+      "sha256": "b2446a67d6b1807ecbe171b0dea66b6147a5730988d0ec7b1ba7ac9c629e7a00"
+    },
+    {
+      "path": "tasks/main/fin-l3-top-201/solution/gold.json",
+      "sha256": "468afa808814c1795f71051a9dd6b729d9e149448e1b591d7eb266c0adf14ae4"
+    },
+    {
+      "path": "tasks/main/fin-l3-top-202/environment/payloads.json",
+      "sha256": "b2446a67d6b1807ecbe171b0dea66b6147a5730988d0ec7b1ba7ac9c629e7a00"
+    },
+    {
+      "path": "tasks/main/fin-l3-top-202/solution/gold.json",
+      "sha256": "4a641af7d01cd1401fa4eb22208eae21b6ecfe8c52945eb0c3228a7ff32e75f0"
+    },
+    {
+      "path": "tasks/main/fin-l4-2src-253/environment/payloads.json",
+      "sha256": "6fad2792b6ef3256accc1e4eed074ec30ba2dc243479c872c3745248cfd60268"
+    },
+    {
+      "path": "tasks/main/fin-l4-2src-253/solution/gold.json",
+      "sha256": "e0e924e0f31498d1e0dd385cf74be32c6def47d8154531133acab996997b58c2"
+    },
+    {
+      "path": "tasks/main/fin-l4-2src-254/environment/payloads.json",
+      "sha256": "d30eae748a7085ed00a84c39bbe31a1dcc7c2b0de5e85ccaa8b9ca34ca89fc48"
+    },
+    {
+      "path": "tasks/main/fin-l4-2src-254/solution/gold.json",
+      "sha256": "ec3187a117f166bf0ca28a23073a462cc68b4cc44be183a77a825cc35676f3c9"
+    },
+    {
+      "path": "tasks/main/fin-l4-2src-255/environment/payloads.json",
+      "sha256": "34c492658e60d8646065b650f61b0c8bca3fce24c5cf875c4f9aaf6ab60894e0"
+    },
+    {
+      "path": "tasks/main/fin-l4-2src-255/solution/gold.json",
+      "sha256": "5936a4dad43b88700465dc198ae576122114954a4492d7fc46a0242fe9bebbd4"
+    },
+    {
+      "path": "tasks/main/fin-l4-2src-256/environment/payloads.json",
+      "sha256": "a9a6bda5ce9480cc3f1256363c27fa853c16cccea21015776cbdb855768d8776"
+    },
+    {
+      "path": "tasks/main/fin-l4-2src-256/solution/gold.json",
+      "sha256": "d90103c3b0eb7a412b246dfdd0eafb49585c306ca395f13de897711c27e550f0"
+    },
+    {
+      "path": "tasks/main/fin-l4-2src-257/environment/payloads.json",
+      "sha256": "a83de05b38f6a498d640caf04351f52affc7887e47c18dad593c003d7f4fa91a"
+    },
+    {
+      "path": "tasks/main/fin-l4-2src-257/environment/request_contracts.json",
+      "sha256": "5e93088281af70f82de218ba379ba87c2087c0a66785ed1b1d1b3ee5cfb15f57"
+    },
+    {
+      "path": "tasks/main/fin-l4-2src-257/solution/gold.json",
+      "sha256": "a82207a76955725248cb8ce2c00bc879a6d0ce4783f7f70def53a080438c851d"
+    },
+    {
+      "path": "tasks/main/fin-l4-2src-258/environment/payloads.json",
+      "sha256": "5f582a83ebe2bf454b1bee47fb1f163e448df10c33d66eb82e6931bf28cc5eee"
+    },
+    {
+      "path": "tasks/main/fin-l4-2src-258/environment/request_contracts.json",
+      "sha256": "e14ad177349a62347b29bb729f4e3388ab50d26d976eb02aa02bf8c45491295f"
+    },
+    {
+      "path": "tasks/main/fin-l4-2src-258/solution/gold.json",
+      "sha256": "518df91e90288170d46353ce7d8b9875ffcb8df7e56caf953699af677da7d037"
+    },
+    {
+      "path": "tasks/main/fin-l4-2src-259/environment/payloads.json",
+      "sha256": "6e724aed6de39026019090303dc95158803438613308e97562d8a1b8ed48c809"
+    },
+    {
+      "path": "tasks/main/fin-l4-2src-259/solution/gold.json",
+      "sha256": "4544ba75c7c8b16beae223578a39b6e0933d3013d51f17ab38b4f89c6ab7ad45"
+    },
+    {
+      "path": "tasks/main/fin-l4-2src-260/environment/payloads.json",
+      "sha256": "6e724aed6de39026019090303dc95158803438613308e97562d8a1b8ed48c809"
+    },
+    {
+      "path": "tasks/main/fin-l4-2src-260/solution/gold.json",
+      "sha256": "4b68322a8277c33c6aa973572f5e2cde54df740dd7e3e078742d58867edf1ce1"
+    },
+    {
+      "path": "tasks/main/fin-l4-future-221/environment/payloads.json",
+      "sha256": "807221df72b3943e15ea466c1091ebfc4c2628faa5827d9ba7a01c28ad289352"
+    },
+    {
+      "path": "tasks/main/fin-l4-future-221/solution/gold.json",
+      "sha256": "ca41670d2aea4ab989e28e0ca983ec3f0c8e22ae758491543d36be2933c6069a"
+    },
+    {
+      "path": "tasks/main/fin-l4-future-222/environment/payloads.json",
+      "sha256": "4b54bce803f4ff1e29da2403548fe58563d73af7360eba175c2d9eda20775873"
+    },
+    {
+      "path": "tasks/main/fin-l4-future-222/solution/gold.json",
+      "sha256": "b4c866c1294bdad7db66f11fb50c50f90ffbc349a7c302812aa44a6d5107d06f"
+    },
+    {
+      "path": "tasks/main/fin-l4-future-223/environment/payloads.json",
+      "sha256": "ecb498d7e0e732f4996b88fcb7c7973dc889b2e9ea478e912a91af41fa9681de"
+    },
+    {
+      "path": "tasks/main/fin-l4-future-223/solution/gold.json",
+      "sha256": "b6a3b8aec71f16ff9167b821dfc16c283f1d7adb1a8cd15bfc789662264dfa79"
+    },
+    {
+      "path": "tasks/main/fin-l4-future-224/environment/payloads.json",
+      "sha256": "6bb3e2980ffc09fd4a909dd01053fb435f80e8a3901eff3174c9ac9c9004e5c6"
+    },
+    {
+      "path": "tasks/main/fin-l4-future-224/solution/gold.json",
+      "sha256": "9ead7316ac6c86e5c70e3da0dddc2cdcbf843d3ad0464e838c4303fcbc7d612b"
+    },
+    {
+      "path": "tasks/main/fin-l4-future-225/environment/payloads.json",
+      "sha256": "bc3ecd38d371c46a9eb87d65d48fcd97c4993b974206c0b44c57c227057a5439"
+    },
+    {
+      "path": "tasks/main/fin-l4-future-225/solution/gold.json",
+      "sha256": "500132d507a0bf5a5c77df8ff0231d26dbf9b063530b0078d281140a195cd4d7"
+    },
+    {
+      "path": "tasks/main/fin-l4-future-226/environment/payloads.json",
+      "sha256": "3b5d1d3a5400d5b8372299c63c574fd6edd9ce75300ab580403aad1b57bd5e7b"
+    },
+    {
+      "path": "tasks/main/fin-l4-future-226/solution/gold.json",
+      "sha256": "8b5486d0dd200157c08cceb62f4d830ab8b8365aea4bb1ad2dd4c780f1bfb12e"
+    },
+    {
+      "path": "tasks/main/fin-l4-future-227/environment/payloads.json",
+      "sha256": "d2d6286edc369f891b0e6df7fb9cc9292abd1d60018c8eb6c92180231da1dff3"
+    },
+    {
+      "path": "tasks/main/fin-l4-future-227/solution/gold.json",
+      "sha256": "3a32f2cafd96b5e04afd60e7fd33528af5546df57975a74bf2bdb94dfbce2ed3"
+    },
+    {
+      "path": "tasks/main/fin-l4-future-228/environment/payloads.json",
+      "sha256": "5f0bbe1901782843db46480749ebf90d592b2e85c8b09ca8c85c7310253775e9"
+    },
+    {
+      "path": "tasks/main/fin-l4-future-228/solution/gold.json",
+      "sha256": "15e9f2824f2ebf37788f8c73819d0dffd1a0713c37eb86bd2feef9c25cb23743"
+    },
+    {
+      "path": "tasks/main/fin-l4-future-229/environment/payloads.json",
+      "sha256": "d8bc0abecd0495db6c9b79b9469ef73d76a229eec064aafe83770002f2fd3277"
+    },
+    {
+      "path": "tasks/main/fin-l4-future-229/solution/gold.json",
+      "sha256": "c2a16d7c5cd1903721385f0ce45a9272031f388180a1a942d512c2d558e389fe"
+    },
+    {
+      "path": "tasks/main/fin-l4-future-230/environment/payloads.json",
+      "sha256": "d8bc0abecd0495db6c9b79b9469ef73d76a229eec064aafe83770002f2fd3277"
+    },
+    {
+      "path": "tasks/main/fin-l4-future-230/solution/gold.json",
+      "sha256": "113f01b26784f82220b59ef8dc615f4d7e90a6475a8750e5d74fa0b94e45eb31"
+    },
+    {
+      "path": "tasks/main/fin-l4-future-231/environment/payloads.json",
+      "sha256": "d8bc0abecd0495db6c9b79b9469ef73d76a229eec064aafe83770002f2fd3277"
+    },
+    {
+      "path": "tasks/main/fin-l4-future-231/solution/gold.json",
+      "sha256": "0b2561c58da00d24b4cdaad504e56a0ca6240112ff4e42e0e48c9b4a1a4a2fb1"
+    },
+    {
+      "path": "tasks/main/fin-l4-future-232/environment/payloads.json",
+      "sha256": "6e724aed6de39026019090303dc95158803438613308e97562d8a1b8ed48c809"
+    },
+    {
+      "path": "tasks/main/fin-l4-future-232/solution/gold.json",
+      "sha256": "7bfb182da8d7f3d733e81d7a9a302f6ebc2206cdf0cf298a12aa4365f9b636a5"
+    },
+    {
+      "path": "tasks/main/fin-l4-future-233/environment/payloads.json",
+      "sha256": "6e724aed6de39026019090303dc95158803438613308e97562d8a1b8ed48c809"
+    },
+    {
+      "path": "tasks/main/fin-l4-future-233/solution/gold.json",
+      "sha256": "c4e3aeec9b3ed2a0830fa3229a14c1da8ac6dba560cf4c6e0fb6db53979ac69b"
+    },
+    {
+      "path": "tasks/main/fin-l4-future-234/environment/payloads.json",
+      "sha256": "6e724aed6de39026019090303dc95158803438613308e97562d8a1b8ed48c809"
+    },
+    {
+      "path": "tasks/main/fin-l4-future-234/solution/gold.json",
+      "sha256": "71538097384182d0e20bbd5e0dc0f39608e57e25b8a3c1f80d63ba1b7da38f2b"
+    },
+    {
+      "path": "tasks/main/fin-l4-narrative-244/environment/payloads.json",
+      "sha256": "0413817d9f85b8b6ce0c01cf4dfe1897fc58aa9db85a55e60cc637fa2f157e7c"
+    },
+    {
+      "path": "tasks/main/fin-l4-narrative-244/solution/gold.json",
+      "sha256": "91e842bbadd0058e2a69f2a1048b9621ee522e8fe661e04d01309a57d7382645"
+    },
+    {
+      "path": "tasks/main/fin-l4-narrative-245/environment/payloads.json",
+      "sha256": "56001d4f2fea13b2076d153fd77e5f4ac06c1f4f731d1576efb36e43f42dea61"
+    },
+    {
+      "path": "tasks/main/fin-l4-narrative-245/solution/gold.json",
+      "sha256": "403de06adf2869b670f6fc7008e0397bf8dad9c73eb483f7554197fbc6fdb70a"
+    },
+    {
+      "path": "tasks/main/fin-l4-narrative-246/environment/payloads.json",
+      "sha256": "c250c282e6dfda3642e9a561e0ad959405d0e317eabbd8e88302000e03bbb660"
+    },
+    {
+      "path": "tasks/main/fin-l4-narrative-246/solution/gold.json",
+      "sha256": "1c641f97c5fe12693732122520a746d58d52b0c7ec04dff8cc9b93f1191d6100"
+    },
+    {
+      "path": "tasks/main/fin-l4-narrative-247/environment/payloads.json",
+      "sha256": "6770bc9b036d8167c00814f11b81e304be7719bdcbc26ea59a0ce6cb67770ae7"
+    },
+    {
+      "path": "tasks/main/fin-l4-narrative-247/solution/gold.json",
+      "sha256": "50a18542dd830315b0ef50ffa18406dcb600a8c9d1fb01f2987dd1b2c3c12801"
+    },
+    {
+      "path": "tasks/main/fin-l4-narrative-248/environment/payloads.json",
+      "sha256": "3daaf2f947f10f4eb2d07fa838492516811850c99a3db58cf732bbf834103792"
+    },
+    {
+      "path": "tasks/main/fin-l4-narrative-248/environment/request_contracts.json",
+      "sha256": "e14ad177349a62347b29bb729f4e3388ab50d26d976eb02aa02bf8c45491295f"
+    },
+    {
+      "path": "tasks/main/fin-l4-narrative-248/solution/gold.json",
+      "sha256": "5cdaf3ea0939362c28c758d77b0d35804dce83a91475f3ba14b722f572846a45"
+    },
+    {
+      "path": "tasks/main/fin-l4-narrative-249/environment/payloads.json",
+      "sha256": "1a1c6ce1a6fe39d4702a41e9ed10dc606d88a7a47b401f2ade5906e1020ea70c"
+    },
+    {
+      "path": "tasks/main/fin-l4-narrative-249/environment/request_contracts.json",
+      "sha256": "5e93088281af70f82de218ba379ba87c2087c0a66785ed1b1d1b3ee5cfb15f57"
+    },
+    {
+      "path": "tasks/main/fin-l4-narrative-249/solution/gold.json",
+      "sha256": "f681ce362a9910492cc5b7b6b268c6309eae426845d5fbde932092f9509012e3"
+    },
+    {
+      "path": "tasks/main/fin-l4-narrative-250/environment/payloads.json",
+      "sha256": "7ff5439e3a871fc0996111025189c64049ec7d80f8a5f86d3512fe4b300705d9"
+    },
+    {
+      "path": "tasks/main/fin-l4-narrative-250/solution/gold.json",
+      "sha256": "0de579c4508eebf82fbd2c535355bc075e1d1ddccaa61aee32d05307a1a5d6a5"
+    },
+    {
+      "path": "tasks/main/fin-l4-narrative-251/environment/payloads.json",
+      "sha256": "7ff5439e3a871fc0996111025189c64049ec7d80f8a5f86d3512fe4b300705d9"
+    },
+    {
+      "path": "tasks/main/fin-l4-narrative-251/solution/gold.json",
+      "sha256": "f30a6f9382551d37ecbacb38d134fbb6fc86dba04e632dbc6bb3f16eeda97222"
+    },
+    {
+      "path": "tasks/main/fin-l4-narrative-252/environment/payloads.json",
+      "sha256": "7ff5439e3a871fc0996111025189c64049ec7d80f8a5f86d3512fe4b300705d9"
+    },
+    {
+      "path": "tasks/main/fin-l4-narrative-252/solution/gold.json",
+      "sha256": "b24cef0a6bb5190539d032d128b1a37ce04a6b70d88ddd4f6b046c4ec6f0311b"
+    },
+    {
+      "path": "tasks/main/fin-l4-nonexist-235/environment/payloads.json",
+      "sha256": "6b0d8b8dc0a5d8bcdac5b2c01abeba374320de679d9b3d93b804a5b8d004d82c"
+    },
+    {
+      "path": "tasks/main/fin-l4-nonexist-235/solution/gold.json",
+      "sha256": "2622e2e869bbb811f77eadfd09fcb3baee0c015c4f6b83fe5cb4d1eefa10ce42"
+    },
+    {
+      "path": "tasks/main/fin-l4-nonexist-236/environment/payloads.json",
+      "sha256": "88d629997ebcf82984d4ce583525da4c771ad20eed3b3133fe3fdce0fd544798"
+    },
+    {
+      "path": "tasks/main/fin-l4-nonexist-236/solution/gold.json",
+      "sha256": "5635d94a2b7bb34e9ab4a1e159ad6c2be8ade13aa3ef087bd8a9456771ed1f9b"
+    },
+    {
+      "path": "tasks/main/fin-l4-nonexist-237/environment/payloads.json",
+      "sha256": "8367468176d2147aba18bcbaf47307d66f4ae6ae92cacab297afc375ed351805"
+    },
+    {
+      "path": "tasks/main/fin-l4-nonexist-237/solution/gold.json",
+      "sha256": "7dbcac985c16fc6dc62cc240bd7cfcb5eb5b1a3d65aff36b0d909de53b0da077"
+    },
+    {
+      "path": "tasks/main/fin-l4-nonexist-238/environment/payloads.json",
+      "sha256": "7658ca2f6b5f17aa56164755efb5314c4396ebb9fd91a78dc0e36a09a43f1158"
+    },
+    {
+      "path": "tasks/main/fin-l4-nonexist-238/solution/gold.json",
+      "sha256": "97351d3d90fa0e91a68052f535997f2f9d6e02d67642be5a963f2b4db483ae2c"
+    },
+    {
+      "path": "tasks/main/fin-l4-nonexist-239/environment/payloads.json",
+      "sha256": "6d3e5b56f5ce2283d7e01781e46791dd5ad7e1fffaa64a260994962681d53b10"
+    },
+    {
+      "path": "tasks/main/fin-l4-nonexist-239/solution/gold.json",
+      "sha256": "b6e525ba4d3c2ebb3185ae406947e68ab01209247beaf9ccb46e7d94c8bd39be"
+    },
+    {
+      "path": "tasks/main/fin-l4-nonexist-240/environment/payloads.json",
+      "sha256": "e06cb353890a6df953eed511512365a9dee7b43b9f22ea3ee9619da7343c0acb"
+    },
+    {
+      "path": "tasks/main/fin-l4-nonexist-240/solution/gold.json",
+      "sha256": "14e5d7e9807e343a2993e58c80dda4eab51e015a9a29768651c55d53c46cad5a"
+    },
+    {
+      "path": "tasks/main/fin-l4-nonexist-241/environment/payloads.json",
+      "sha256": "4e7acbf34b050682e6b634a70d21c1fa0df994591839e4c42aecd26eee7e8141"
+    },
+    {
+      "path": "tasks/main/fin-l4-nonexist-241/solution/gold.json",
+      "sha256": "730b9a09fde8e67361f419273e6025b452c3782054916c5825841ac4868aff2f"
+    },
+    {
+      "path": "tasks/main/fin-l4-nonexist-242/environment/payloads.json",
+      "sha256": "97937c295a67f5679ea012139851c8c92b52cc785a0061774913b3ca8cc9780c"
+    },
+    {
+      "path": "tasks/main/fin-l4-nonexist-242/solution/gold.json",
+      "sha256": "764a26addf471b70a0a6fb34d298bedef7780f39e5f57423a9e624490077f250"
+    },
+    {
+      "path": "tasks/main/fin-l4-nonexist-243/environment/payloads.json",
+      "sha256": "896535c1551bbd5d34814dfe90e42300bf157637735b4bd0e6d3ca10fdc53ed7"
+    },
+    {
+      "path": "tasks/main/fin-l4-nonexist-243/solution/gold.json",
+      "sha256": "adfc88c08648cdea1bc024f7bac56c8f4ee752476194d0dd96f936ab4be681d9"
+    },
+    {
+      "path": "tasks/main/fin-l5-compare-275/environment/payloads.json",
+      "sha256": "3295ee3228fce43220d78e8c6b29b422a9311243d3dc6a72e01c36d405515e18"
+    },
+    {
+      "path": "tasks/main/fin-l5-compare-275/solution/gold.json",
+      "sha256": "f3c15d98fb92c2a25327240b981da6fd56a2d9ac873721ab27654beefefba7cf"
+    },
+    {
+      "path": "tasks/main/fin-l5-compare-276/environment/payloads.json",
+      "sha256": "bff00ef3fb44f7a704dadf8f94689c0b535b33cb7163d79fcab9a8ef83b54f4d"
+    },
+    {
+      "path": "tasks/main/fin-l5-compare-276/solution/gold.json",
+      "sha256": "2dc208182a64099197209469b37836ea304371bd9fbc47a54b6cb4c59d3d14e0"
+    },
+    {
+      "path": "tasks/main/fin-l5-compare-277/environment/payloads.json",
+      "sha256": "f44870181d3518ee4f89a07ac809ce95b2f95b3e27c66af4e96eb6ceeb19e2d2"
+    },
+    {
+      "path": "tasks/main/fin-l5-compare-277/solution/gold.json",
+      "sha256": "0ec12aba041826281da4a2373dfe34d7ab32ec44f81bc8fb4a65139ea0552741"
+    },
+    {
+      "path": "tasks/main/fin-l5-compare-278/environment/payloads.json",
+      "sha256": "0bd2fbf239937f6339375a3b74c14e626923c430bc191b9a6d0c9e0f61482465"
+    },
+    {
+      "path": "tasks/main/fin-l5-compare-278/solution/gold.json",
+      "sha256": "8ce65c18b711161fbb99294068c4dc476fa171afd23ae47bc7436107d4a6844c"
+    },
+    {
+      "path": "tasks/main/fin-l5-compare-279/environment/payloads.json",
+      "sha256": "7482995f6d9cf105dd8fab6f4a2a6847b197553c28d9125dbf23595e6813dcbb"
+    },
+    {
+      "path": "tasks/main/fin-l5-compare-279/solution/gold.json",
+      "sha256": "c288d2c73bc1a816e7a272fef460b21c0edc2fc5ec7a1860c3246adf066d668e"
+    },
+    {
+      "path": "tasks/main/fin-l5-compare-280/environment/payloads.json",
+      "sha256": "9a6f7ee8f2c3ccec42436b0f8c701c2fa5bb48d54f4fa9bdab0ba5e30c6158e5"
+    },
+    {
+      "path": "tasks/main/fin-l5-compare-280/solution/gold.json",
+      "sha256": "d70e9f42eba12a713b3d1751103d57aa51ed2cf0e6cd0583483626c91e99ef16"
+    },
+    {
+      "path": "tasks/main/fin-l5-compare-281/environment/payloads.json",
+      "sha256": "fffbaf55bd1b4f1af5a6602068e0002cbb9d21c762cad0c7c2afc6c09aa0a67f"
+    },
+    {
+      "path": "tasks/main/fin-l5-compare-281/solution/gold.json",
+      "sha256": "cb5a87f454a15e47fde67d346404d3d0f6ee0b81d7ee4927d68987fea39a827f"
+    },
+    {
+      "path": "tasks/main/fin-l5-compare-282/environment/payloads.json",
+      "sha256": "6d60d2b1ef429d4d80579e8bea9d10cc323e16246a3b6ee768115b8bf2b05edf"
+    },
+    {
+      "path": "tasks/main/fin-l5-compare-282/solution/gold.json",
+      "sha256": "4e79523796994dcac082fe1d51acb5517d63c0b42e486bea3971155fed2e5a1d"
+    },
+    {
+      "path": "tasks/main/fin-l5-compare-283/environment/payloads.json",
+      "sha256": "057678ae8f95ca9e891512ae5b9a2b5fc3b569b94fc2ca37e3a19a01707165a5"
+    },
+    {
+      "path": "tasks/main/fin-l5-compare-283/solution/gold.json",
+      "sha256": "db7103c5098277e0c148a312ca7e0805fb467e0759224283e47d50ae04b23779"
+    },
+    {
+      "path": "tasks/main/fin-l5-compare-284/environment/payloads.json",
+      "sha256": "057678ae8f95ca9e891512ae5b9a2b5fc3b569b94fc2ca37e3a19a01707165a5"
+    },
+    {
+      "path": "tasks/main/fin-l5-compare-284/solution/gold.json",
+      "sha256": "1bcfe517071e0c8e8951691b8652a5e47c822843008b7e0422b5b63bf9c22d86"
+    },
+    {
+      "path": "tasks/main/fin-l5-compare-285/environment/payloads.json",
+      "sha256": "057678ae8f95ca9e891512ae5b9a2b5fc3b569b94fc2ca37e3a19a01707165a5"
+    },
+    {
+      "path": "tasks/main/fin-l5-compare-285/solution/gold.json",
+      "sha256": "98ef2bcff0942130aeae4c365b886da685f31970d29a4c0ad7614a11fc97f2c9"
+    },
+    {
+      "path": "tasks/main/fin-l5-compare-286/environment/payloads.json",
+      "sha256": "057678ae8f95ca9e891512ae5b9a2b5fc3b569b94fc2ca37e3a19a01707165a5"
+    },
+    {
+      "path": "tasks/main/fin-l5-compare-286/solution/gold.json",
+      "sha256": "c6aa4d44287e022135cfa6470e998677d5734e48ef126b58082e1a04c6cfddb2"
+    },
+    {
+      "path": "tasks/main/fin-l5-compare-287/environment/payloads.json",
+      "sha256": "1ea94fab93037b3630eeb9786033b34cc15b3648ce3df3cdae92ac7d4633ab6d"
+    },
+    {
+      "path": "tasks/main/fin-l5-compare-287/environment/request_contracts.json",
+      "sha256": "dace155313bbcf6f11a7e164d7f5fd13c5fa8bf8033b369f468703a33cb2196d"
+    },
+    {
+      "path": "tasks/main/fin-l5-compare-287/solution/gold.json",
+      "sha256": "8f3ca27659c4715834ad8e7c854fb1328070b39776833fac09d8e0198006f27e"
+    },
+    {
+      "path": "tasks/main/fin-l5-compare-288/environment/payloads.json",
+      "sha256": "6e724aed6de39026019090303dc95158803438613308e97562d8a1b8ed48c809"
+    },
+    {
+      "path": "tasks/main/fin-l5-compare-288/solution/gold.json",
+      "sha256": "41ddaada7ef531d615c6147fc3d6ee26529bdacfb0fb0ccf93ce29f1b851b5ff"
+    },
+    {
+      "path": "tasks/main/fin-l5-compare-289/environment/payloads.json",
+      "sha256": "6e724aed6de39026019090303dc95158803438613308e97562d8a1b8ed48c809"
+    },
+    {
+      "path": "tasks/main/fin-l5-compare-289/solution/gold.json",
+      "sha256": "0e1ed44de0f5a1f32d5a736685233c63caf40a8fa05e4627270be8026caf5d7f"
+    },
+    {
+      "path": "tasks/main/fin-l5-compare-290/environment/payloads.json",
+      "sha256": "6e724aed6de39026019090303dc95158803438613308e97562d8a1b8ed48c809"
+    },
+    {
+      "path": "tasks/main/fin-l5-compare-290/solution/gold.json",
+      "sha256": "74494744de55ba873800ab6d8d9506aa9056372f4b7a4c367ee32663069f90a3"
+    },
+    {
+      "path": "tasks/main/fin-l5-profile-261/environment/payloads.json",
+      "sha256": "c1105a9cf7013020defacf181424c2fae45d69c2e14769bdf9ff1f8e18cd7baf"
+    },
+    {
+      "path": "tasks/main/fin-l5-profile-261/solution/gold.json",
+      "sha256": "8e645eb081beb62e2aab8f6e156a46440284b48476b3f96b4188ab5187dc5b7f"
+    },
+    {
+      "path": "tasks/main/fin-l5-profile-262/environment/payloads.json",
+      "sha256": "ea4f5e709168c331478f99c570196fdd7ed6fda6e9c3122fb5ce2e0f0dbcc9a8"
+    },
+    {
+      "path": "tasks/main/fin-l5-profile-262/solution/gold.json",
+      "sha256": "fec91b492cf6ad6548a30624918c68b2b98b6fd8e07327e6efdb8743ebc0ac04"
+    },
+    {
+      "path": "tasks/main/fin-l5-profile-263/environment/payloads.json",
+      "sha256": "44687915bb42eb667a928220620fe8fc19159d78d7e75d11989588439d080fb2"
+    },
+    {
+      "path": "tasks/main/fin-l5-profile-263/solution/gold.json",
+      "sha256": "428c0570ea35386c3575f7e23655aba61232dd5de740bf2bec7d839eb970618d"
+    },
+    {
+      "path": "tasks/main/fin-l5-profile-264/environment/payloads.json",
+      "sha256": "ba34a4807b439f21100f5fc4ce1050eb829f7a92b6850e05ecfe3f9293e50fac"
+    },
+    {
+      "path": "tasks/main/fin-l5-profile-264/solution/gold.json",
+      "sha256": "2c7f6f32e33f940a002e05570870058263ba3c291fe02178affbc9083abf29e5"
+    },
+    {
+      "path": "tasks/main/fin-l5-profile-265/environment/payloads.json",
+      "sha256": "0c1a2ae3f9764dfe3210a24cd97e499f86a271e8b45d9f6b1d196ab0f578aceb"
+    },
+    {
+      "path": "tasks/main/fin-l5-profile-265/solution/gold.json",
+      "sha256": "a85263fa81ad1a0cbf4cecf05c9db0f10c5ed800f42defc02ff6cd32c5c3968a"
+    },
+    {
+      "path": "tasks/main/fin-l5-profile-266/environment/payloads.json",
+      "sha256": "f0c5fcfe35ea72460d4425381b4c83a98168d1feef0fc4ce45255c08efe72585"
+    },
+    {
+      "path": "tasks/main/fin-l5-profile-266/solution/gold.json",
+      "sha256": "d9a7305082aa908758e022d7fca50b24690d12bc56a49eba13cedc9f1533a862"
+    },
+    {
+      "path": "tasks/main/fin-l5-profile-267/environment/payloads.json",
+      "sha256": "029659807e4d6196a71f719b4864b1d9b45f0e3ef525d0332c3c066819b4bb30"
+    },
+    {
+      "path": "tasks/main/fin-l5-profile-267/solution/gold.json",
+      "sha256": "720f8f23ee41252f2ba3b7b2b895260fae5b227b9daeffdc0773e02b5718c2be"
+    },
+    {
+      "path": "tasks/main/fin-l5-profile-268/environment/payloads.json",
+      "sha256": "9817f0a35694f41fe03d11a5257e1bb9584c08c6dcb66bb8207244e55235e967"
+    },
+    {
+      "path": "tasks/main/fin-l5-profile-268/solution/gold.json",
+      "sha256": "3cf417db1c336f5c53ffc13cc14a4c01533337df1ec81516e2da052ab1d2a236"
+    },
+    {
+      "path": "tasks/main/fin-l5-profile-269/environment/payloads.json",
+      "sha256": "878b186c487ba5e716708c0f68dcdc576d48d97ce17a5ed116a86b78cf7c5323"
+    },
+    {
+      "path": "tasks/main/fin-l5-profile-269/solution/gold.json",
+      "sha256": "718ac9f187ce36a85c80c14c4bec9c9f8ddd9b848137355455f95412f572f2ed"
+    },
+    {
+      "path": "tasks/main/fin-l5-profile-270/environment/payloads.json",
+      "sha256": "4ee78d7da453cdba971e681890aea1a3bae175a3e06cd34cc4d61f66c06fa5ea"
+    },
+    {
+      "path": "tasks/main/fin-l5-profile-270/solution/gold.json",
+      "sha256": "2a53e2610361f7a0c73aa965e7aafd3d19230da275d38040c83a35cd17878e9a"
+    },
+    {
+      "path": "tasks/main/fin-l5-profile-271/environment/payloads.json",
+      "sha256": "df9ea3fd726342a0dada973420912b22030f0575e69709fc9e30e588cc136ae2"
+    },
+    {
+      "path": "tasks/main/fin-l5-profile-271/solution/gold.json",
+      "sha256": "4737d471ca48f8712b833782b3b990ba4b78459f8192b809be2cb7a29d0aaa95"
+    },
+    {
+      "path": "tasks/main/fin-l5-profile-272/environment/payloads.json",
+      "sha256": "6f6428af849ad1f7b87c53f88b46a1de63fbc42f53c716814b8cd1e846a26d98"
+    },
+    {
+      "path": "tasks/main/fin-l5-profile-272/solution/gold.json",
+      "sha256": "146b80396cf07c6aed46b1cd8b14b528715186b2234c4e646429b7bb1b56d567"
+    },
+    {
+      "path": "tasks/main/fin-l5-profile-273/environment/payloads.json",
+      "sha256": "057678ae8f95ca9e891512ae5b9a2b5fc3b569b94fc2ca37e3a19a01707165a5"
+    },
+    {
+      "path": "tasks/main/fin-l5-profile-273/solution/gold.json",
+      "sha256": "002d9f3d1fd49a591a7c5f3a97e68444121734ec27028fbf8d84da77989d9a01"
+    },
+    {
+      "path": "tasks/main/fin-l5-profile-274/environment/payloads.json",
+      "sha256": "057678ae8f95ca9e891512ae5b9a2b5fc3b569b94fc2ca37e3a19a01707165a5"
+    },
+    {
+      "path": "tasks/main/fin-l5-profile-274/solution/gold.json",
+      "sha256": "9a1d757b54197fe484d9b68e21a309a6e214324795ddbe52898e23d6ed8b2f2e"
+    },
+    {
+      "path": "tasks/main/fin-l5-valuation-291/environment/payloads.json",
+      "sha256": "910c3705e165f61bdfde71b664b100763aa3015104e37a029ca7bd745e987218"
+    },
+    {
+      "path": "tasks/main/fin-l5-valuation-291/solution/gold.json",
+      "sha256": "eedba49a040a1d5c94cd8f606cdcfe00e8355737ef44dbd58497126e58ddf52a"
+    },
+    {
+      "path": "tasks/main/fin-l5-valuation-292/environment/payloads.json",
+      "sha256": "2fb795d6665dac1c5332bdc8af14223ed15e0ba031bcf8a37fd7c26bf3bba180"
+    },
+    {
+      "path": "tasks/main/fin-l5-valuation-292/solution/gold.json",
+      "sha256": "32da003a9a574b093e707136d7a180b135dfabaaa4a39e3178740bddc524a0ca"
+    },
+    {
+      "path": "tasks/main/fin-l5-valuation-293/environment/payloads.json",
+      "sha256": "4d613b3f64f8d4fc3f98d9df248e5dcff0cefa47e51ec5373b79675e7f092cdf"
+    },
+    {
+      "path": "tasks/main/fin-l5-valuation-293/solution/gold.json",
+      "sha256": "6523b0a1939afe9b87fca6832c1680e1989b0041cb69dae16647a108c57e0bc3"
+    },
+    {
+      "path": "tasks/main/fin-l5-valuation-294/environment/payloads.json",
+      "sha256": "9541f21819cc110be2b8e79c38208df12b4da9ffdd2c1da9d45b846bf37e476f"
+    },
+    {
+      "path": "tasks/main/fin-l5-valuation-294/solution/gold.json",
+      "sha256": "b7b1420a8e223edd7799bfa7d73b0020f2a7added431ef7f542432d0e60bcd40"
+    },
+    {
+      "path": "tasks/main/fin-l5-valuation-295/environment/payloads.json",
+      "sha256": "7f147cc5616f33e7f185419c992fd875f6ac4960a509254d8f72034e4c5247dc"
+    },
+    {
+      "path": "tasks/main/fin-l5-valuation-295/solution/gold.json",
+      "sha256": "270de13a4d5bd1455095806d771c0e5bf45557d58181abe572590995eee2208c"
+    },
+    {
+      "path": "tasks/main/fin-l5-valuation-296/environment/payloads.json",
+      "sha256": "3d59e30094e5c847d423c604aabb11bd81ce687ca2171bad03f63c3bc4314afe"
+    },
+    {
+      "path": "tasks/main/fin-l5-valuation-296/solution/gold.json",
+      "sha256": "247d95b050eea86c0b0a9aef66168b65ae3f26738d551a6e1895ee0e8010c409"
+    },
+    {
+      "path": "tasks/main/fin-l5-valuation-297/environment/payloads.json",
+      "sha256": "2adce515903bbed94f11a57cb1b9d38c6256912a1e505dd49bd8d01fc3c088b9"
+    },
+    {
+      "path": "tasks/main/fin-l5-valuation-297/solution/gold.json",
+      "sha256": "325c527ad51d68a81a5d08103cb1a8d0082806dfb0c9c69d68f9c2fdf6499dc0"
+    },
+    {
+      "path": "tasks/main/fin-l5-valuation-298/environment/payloads.json",
+      "sha256": "a3784ca1fa495c818f7e60ba24e90d05c60a05e5a1a73ad002141fbf7d42df64"
+    },
+    {
+      "path": "tasks/main/fin-l5-valuation-298/solution/gold.json",
+      "sha256": "4840a1e5356c702dfcd0f468302091eaddf7dae07c481a9d894f6f99c9ef4b18"
+    },
+    {
+      "path": "tasks/main/fin-l5-valuation-299/environment/payloads.json",
+      "sha256": "04b47ddea2599a22724c6c8660863c45ea38331b2441d5700668c018184c9211"
+    },
+    {
+      "path": "tasks/main/fin-l5-valuation-299/solution/gold.json",
+      "sha256": "dfc5e7bb8f15ee05f42a41c647460e9478dc9ef63d19b316df05c1e29aacd47f"
+    },
+    {
+      "path": "tasks/main/fin-l5-valuation-300/environment/payloads.json",
+      "sha256": "b2fb88469e70aaf4681dc7e0cd18b67993081e74350548c44b939cfeee4a6ef4"
+    },
+    {
+      "path": "tasks/main/fin-l5-valuation-300/solution/gold.json",
+      "sha256": "555282d9897c753fe3c267a23a233573feecc81f1e1efc293dfd6fda5236ab85"
+    },
+    {
+      "path": "tasks/pilot/fin-l1-bctc-01/environment/payloads.json",
+      "sha256": "e9c5e43dc5664805b215186c33c36a17a40f9109263b7ebf1a5a61bec507976f"
+    },
+    {
+      "path": "tasks/pilot/fin-l1-bctc-01/environment/request_contracts.json",
+      "sha256": "dd574ecf6a5d9108b56f5cc2563cd686cbc208b22a0d05a3fbd1922251293e4d"
+    },
+    {
+      "path": "tasks/pilot/fin-l1-bctc-01/solution/gold.json",
+      "sha256": "31c966a18da666c3806d08f12c76fa09364cbbb4cc7a6577cb747e5c05b841e6"
+    },
+    {
+      "path": "tasks/pilot/fin-l1-gold-01/environment/payloads.json",
+      "sha256": "55699904bfdc76edb8c9fc1bd1f05798906fb14ace37440f0675cf91a3524fe7"
+    },
+    {
+      "path": "tasks/pilot/fin-l1-gold-01/environment/request_contracts.json",
+      "sha256": "f1cc41a2faf64a978ef0924a8b1fc710faa1f190c80a01d7020a056faabd56d3"
+    },
+    {
+      "path": "tasks/pilot/fin-l1-gold-01/solution/gold.json",
+      "sha256": "02bbf12920deeab615a3c7eedb332055c85072fbb66d550b3f57f0e4242aceda"
+    },
+    {
+      "path": "tasks/pilot/fin-l1-macro-01/environment/payloads.json",
+      "sha256": "37e13e20e0acac8fe7ccd42263b6bd8c9842e5f6f457b2d0b289282c51903f9b"
+    },
+    {
+      "path": "tasks/pilot/fin-l1-macro-01/environment/request_contracts.json",
+      "sha256": "9306bdf31aaa3b9e75627768a0f5f01713f3f41c342f2c9665b0a430839dbffa"
+    },
+    {
+      "path": "tasks/pilot/fin-l1-macro-01/solution/gold.json",
+      "sha256": "325f99076283349c13cf18390a82e2d06471edbb0ac4675d628c2d498dc65931"
+    },
+    {
+      "path": "tasks/pilot/fin-l1-quote-01/environment/payloads.json",
+      "sha256": "cb80cece34c0f94fc32a60a8f2ccd0022f827b72e9d6ccc0496744db39f2c71f"
+    },
+    {
+      "path": "tasks/pilot/fin-l1-quote-01/environment/request_contracts.json",
+      "sha256": "100853d7e6bd95607c3cf66299a98845ea9e23ca21b06b2a95f1fde9d4ac376e"
+    },
+    {
+      "path": "tasks/pilot/fin-l1-quote-01/solution/gold.json",
+      "sha256": "5195bd09ec0c7ddc9f097d66a778cb33a5da8789bc01d528f8126b0ea3c541d2"
+    },
+    {
+      "path": "tasks/pilot/fin-l1-quote-02/environment/payloads.json",
+      "sha256": "f40d9ee2ab68813fb2388acb2064b596ef6bb6287de9ca198e60f34c8f37ac26"
+    },
+    {
+      "path": "tasks/pilot/fin-l1-quote-02/environment/request_contracts.json",
+      "sha256": "c319435018fdf1cf4456156b0b372ae392273ff0a8a85611d47aba1960aae78b"
+    },
+    {
+      "path": "tasks/pilot/fin-l1-quote-02/solution/gold.json",
+      "sha256": "66ca3a798a8dff0abc1d182b5b13ea3872a784f43dfad7dde601f2ac57c13d8f"
+    },
+    {
+      "path": "tasks/pilot/fin-l2-crypto-01/environment/payloads.json",
+      "sha256": "f7c1cc379eec879b9845d7916df12894caffb7fc994f954e68cc5929327406b1"
+    },
+    {
+      "path": "tasks/pilot/fin-l2-crypto-01/environment/request_contracts.json",
+      "sha256": "c75b2ab8fab9e5212f17209be22e8a9ca59d247ad8896d0298fc7176307e7f25"
+    },
+    {
+      "path": "tasks/pilot/fin-l2-crypto-01/solution/gold.json",
+      "sha256": "675120257b48b9e1f534b07d80f710f3e29041a0463f63c10934ea265600e50f"
+    },
+    {
+      "path": "tasks/pilot/fin-l2-gold-01/environment/payloads.json",
+      "sha256": "55699904bfdc76edb8c9fc1bd1f05798906fb14ace37440f0675cf91a3524fe7"
+    },
+    {
+      "path": "tasks/pilot/fin-l2-gold-01/environment/request_contracts.json",
+      "sha256": "f1cc41a2faf64a978ef0924a8b1fc710faa1f190c80a01d7020a056faabd56d3"
+    },
+    {
+      "path": "tasks/pilot/fin-l2-gold-01/solution/gold.json",
+      "sha256": "b9064d9f3e52dbbd0f5e911766562302d7966fcf7d916da0224fce327bbaae03"
+    },
+    {
+      "path": "tasks/pilot/fin-l2-growth-01/environment/payloads.json",
+      "sha256": "b2ccc97e7e34af753586d8471dcebdf2a5dc125fb0fe7353544e9f2c4fde0627"
+    },
+    {
+      "path": "tasks/pilot/fin-l2-growth-01/environment/request_contracts.json",
+      "sha256": "6ef5a91fedac478fd142d0eb337169098ff95bb31630c3140bd75d9c983b9cf3"
+    },
+    {
+      "path": "tasks/pilot/fin-l2-growth-01/solution/gold.json",
+      "sha256": "63e0af7a7514919eddcc5d4ce63b0bc52e650e83bd9f4a737828c8faafa37b86"
+    },
+    {
+      "path": "tasks/pilot/fin-l2-margin-01/environment/payloads.json",
+      "sha256": "0e699394d0d6f073a09da1f65909078669d2ef714ad47130a7a41c5fcb451c88"
+    },
+    {
+      "path": "tasks/pilot/fin-l2-margin-01/environment/request_contracts.json",
+      "sha256": "1851ce69c7551abb138286ad33db7e3d465153a3f19d69932fc575cfa04b9a2e"
+    },
+    {
+      "path": "tasks/pilot/fin-l2-margin-01/solution/gold.json",
+      "sha256": "e183325486d11b7b7c3ec69a7e7a3c707b09920ff1062b4f283dc7cde60a1b4e"
+    },
+    {
+      "path": "tasks/pilot/fin-l2-ratio-01/environment/payloads.json",
+      "sha256": "2da896ac76215261e2d924a1e4065b27e7241c81bbf89292c67dadfe423bcad9"
+    },
+    {
+      "path": "tasks/pilot/fin-l2-ratio-01/environment/request_contracts.json",
+      "sha256": "b4fdeb7657d6a50d313a46a281490f08a9c6295d77b578c6858f959d94213ec8"
+    },
+    {
+      "path": "tasks/pilot/fin-l2-ratio-01/solution/gold.json",
+      "sha256": "3c1ccfe95066c7c7566b8b63df242ab1b93336b7cf57a7d8240e00bdb7f6e3c7"
+    },
+    {
+      "path": "tasks/pilot/fin-l2-tech-01/environment/payloads.json",
+      "sha256": "f334553f17b36b4e092930887e591d2226b804ec31095286cdbcfcedf65f2b32"
+    },
+    {
+      "path": "tasks/pilot/fin-l2-tech-01/environment/request_contracts.json",
+      "sha256": "f445e83aa61b11a02eba85de156bfa6078240573401f717a007ab73ccc7d7ee2"
+    },
+    {
+      "path": "tasks/pilot/fin-l2-tech-01/solution/gold.json",
+      "sha256": "c44761d839535dd08ad1f1e89a45b8a1b91591a40541ddb5453dd9ea5265e526"
+    },
+    {
+      "path": "tasks/pilot/fin-l3-agg-01/environment/payloads.json",
+      "sha256": "aa1f6b5dca589360446eb510873587250c1c7d30f00a026d84e357360a74efd6"
+    },
+    {
+      "path": "tasks/pilot/fin-l3-agg-01/environment/request_contracts.json",
+      "sha256": "569abb2d88fb386e607b10a13defb868eb0f953995e2ce6638ef26b149b4b089"
+    },
+    {
+      "path": "tasks/pilot/fin-l3-agg-01/solution/gold.json",
+      "sha256": "8056f373b7647e27e3aec8229f0522ad3523a006af7250f09542df4648bfc4c0"
+    },
+    {
+      "path": "tasks/pilot/fin-l3-crypto-01/environment/payloads.json",
+      "sha256": "e5d94c946d68e64d53d61d3d7fa89cb3ff273b46e0bbd5acd728c8edec5f8cbd"
+    },
+    {
+      "path": "tasks/pilot/fin-l3-crypto-01/environment/request_contracts.json",
+      "sha256": "1ae8b0af72b0752c748ee667d320d3fbf94b5db4a74f8817b6638b5fd91232cb"
+    },
+    {
+      "path": "tasks/pilot/fin-l3-crypto-01/solution/gold.json",
+      "sha256": "ee7fd06797294204ad7858b8cce7cd4c022a4f2a9392fa1e2d8a8d6b00d77dd3"
+    },
+    {
+      "path": "tasks/pilot/fin-l3-index-01/environment/payloads.json",
+      "sha256": "0b72ae95bd6e663913177a3bd2b4ff09d799a20cd6da40e38cb40dda185712ae"
+    },
+    {
+      "path": "tasks/pilot/fin-l3-index-01/environment/request_contracts.json",
+      "sha256": "234904426b9f4bf720133eb1722e9b3dbb396c03af8b1b39f775ba98b1213fa3"
+    },
+    {
+      "path": "tasks/pilot/fin-l3-index-01/solution/gold.json",
+      "sha256": "551c2d60d73ca527c3671c27cfe7226586ea682190794c235e55f72ccf22ce25"
+    },
+    {
+      "path": "tasks/pilot/fin-l3-screen-01/environment/payloads.json",
+      "sha256": "9d5cd2d9d48cbebfdbb5c67a4f81f87c93362a8c82b52accafd053219d49c7d5"
+    },
+    {
+      "path": "tasks/pilot/fin-l3-screen-01/environment/request_contracts.json",
+      "sha256": "6050605c42c19799eea64de6127aa3a5a8107ea72ea4e26a847c2f30ab638064"
+    },
+    {
+      "path": "tasks/pilot/fin-l3-screen-01/solution/gold.json",
+      "sha256": "3563a80ed6be5f8c686a2fc2b30a4fd7bada7172f7d81eb21ea5fbfbdda3d127"
+    },
+    {
+      "path": "tasks/pilot/fin-l3-tech-multi-01/environment/payloads.json",
+      "sha256": "f334553f17b36b4e092930887e591d2226b804ec31095286cdbcfcedf65f2b32"
+    },
+    {
+      "path": "tasks/pilot/fin-l3-tech-multi-01/environment/request_contracts.json",
+      "sha256": "f445e83aa61b11a02eba85de156bfa6078240573401f717a007ab73ccc7d7ee2"
+    },
+    {
+      "path": "tasks/pilot/fin-l3-tech-multi-01/solution/gold.json",
+      "sha256": "8eb525a67e824283f39c4ff87335ae211f08be333356e5e92ca72f5605dbec09"
+    },
+    {
+      "path": "tasks/pilot/fin-l3-top-01/environment/payloads.json",
+      "sha256": "4262f1f1dc805048658429deb8496dd1ca11546b3ce31c31e9062bb12663d58e"
+    },
+    {
+      "path": "tasks/pilot/fin-l3-top-01/environment/request_contracts.json",
+      "sha256": "6847fab629633bdffe94935f7326543ce3a693d04a94f37811b82b9e9a03dd5c"
+    },
+    {
+      "path": "tasks/pilot/fin-l3-top-01/solution/gold.json",
+      "sha256": "19d4cd3d1e64b6dd5a1afe2913bc63c824d8226e0405db8ffe840ab019360a05"
+    },
+    {
+      "path": "tasks/pilot/fin-l4-2nguon-01/environment/payloads.json",
+      "sha256": "0fe7ffe546c40db88aaa4369834a8d2bf92b38ac85dca1ffea2d53ce68c7320f"
+    },
+    {
+      "path": "tasks/pilot/fin-l4-2nguon-01/environment/request_contracts.json",
+      "sha256": "93f4fc79ff887417769c837cd8ee797d6e3f5d98467d42f92ca056eae307cae9"
+    },
+    {
+      "path": "tasks/pilot/fin-l4-2nguon-01/solution/gold.json",
+      "sha256": "efeb1927752392ae6b8991ed6e3885d096df1dcd87205fc7ab45f0f002fc3066"
+    },
+    {
+      "path": "tasks/pilot/fin-l4-future-01/environment/payloads.json",
+      "sha256": "061aa29d57f44f4215751c88452ab1e36cf8c64bef1462946874c774fb76b61f"
+    },
+    {
+      "path": "tasks/pilot/fin-l4-future-01/environment/request_contracts.json",
+      "sha256": "6fcdea14a2d7d65d35149bfd2ecaf69b56a2c5c5e0a8c568ee74828b74620078"
+    },
+    {
+      "path": "tasks/pilot/fin-l4-future-01/solution/gold.json",
+      "sha256": "15d058b6400c5a753c31d97b6826f6593fb93f46754d84c94ddc547d48a48deb"
+    },
+    {
+      "path": "tasks/pilot/fin-l4-narrative-01/environment/payloads.json",
+      "sha256": "55699904bfdc76edb8c9fc1bd1f05798906fb14ace37440f0675cf91a3524fe7"
+    },
+    {
+      "path": "tasks/pilot/fin-l4-narrative-01/environment/request_contracts.json",
+      "sha256": "f1cc41a2faf64a978ef0924a8b1fc710faa1f190c80a01d7020a056faabd56d3"
+    },
+    {
+      "path": "tasks/pilot/fin-l4-narrative-01/solution/gold.json",
+      "sha256": "2b4e4fc1a2bdeced4dc6c06a1e9b3ec6f0581a83b52483d120bbfd1446589f0d"
+    },
+    {
+      "path": "tasks/pilot/fin-l4-nonexist-01/environment/payloads.json",
+      "sha256": "6b7ff4111a0909abb9acffeb18b02683b8ea682954c7b5d370ad00934c185b36"
+    },
+    {
+      "path": "tasks/pilot/fin-l4-nonexist-01/environment/request_contracts.json",
+      "sha256": "b3082e951e484ef451db9236730ac0b7414b3f6b782f210a8374ef4f55e469b0"
+    },
+    {
+      "path": "tasks/pilot/fin-l4-nonexist-01/solution/gold.json",
+      "sha256": "3cf7123055c207f70583e5574b4287a71a73b14bb540124bb9b18e5549b439dc"
+    },
+    {
+      "path": "tasks/pilot/fin-l5-compare-01/environment/payloads.json",
+      "sha256": "9d5cd2d9d48cbebfdbb5c67a4f81f87c93362a8c82b52accafd053219d49c7d5"
+    },
+    {
+      "path": "tasks/pilot/fin-l5-compare-01/environment/request_contracts.json",
+      "sha256": "6050605c42c19799eea64de6127aa3a5a8107ea72ea4e26a847c2f30ab638064"
+    },
+    {
+      "path": "tasks/pilot/fin-l5-compare-01/solution/gold.json",
+      "sha256": "d70872c14c5f29d2fd40c49c8b72b7236c709426e192354a24a12f55f6d9adfc"
+    },
+    {
+      "path": "tasks/pilot/fin-l5-profile-01/environment/payloads.json",
+      "sha256": "0ef4d20adb9ce375ec2bb743778a603449ac4d342b23778ff125c721775630fb"
+    },
+    {
+      "path": "tasks/pilot/fin-l5-profile-01/environment/request_contracts.json",
+      "sha256": "31e9b8dd487abb0ad6569f1adbc68eb4ef8cd9073d24b0786347c6b59596fd5e"
+    },
+    {
+      "path": "tasks/pilot/fin-l5-profile-01/solution/gold.json",
+      "sha256": "0e4286dcd7b2ee7929c8b333eac2ed988b6f16c436fd54b6b93117bfad771c7b"
+    },
+    {
+      "path": "tasks/pilot/fin-l5-valuation-01/environment/payloads.json",
+      "sha256": "2da896ac76215261e2d924a1e4065b27e7241c81bbf89292c67dadfe423bcad9"
+    },
+    {
+      "path": "tasks/pilot/fin-l5-valuation-01/environment/request_contracts.json",
+      "sha256": "b4fdeb7657d6a50d313a46a281490f08a9c6295d77b578c6858f959d94213ec8"
+    },
+    {
+      "path": "tasks/pilot/fin-l5-valuation-01/solution/gold.json",
+      "sha256": "ba0ad6db22936f6abf305e7e2928c520cac32017475a2f8f85d01ba6936d5934"
+    },
+    {
+      "path": "tasks/smoke/smoke-agg-01/environment/payloads.json",
+      "sha256": "aa1f6b5dca589360446eb510873587250c1c7d30f00a026d84e357360a74efd6"
+    },
+    {
+      "path": "tasks/smoke/smoke-agg-01/environment/request_contracts.json",
+      "sha256": "569abb2d88fb386e607b10a13defb868eb0f953995e2ce6638ef26b149b4b089"
+    },
+    {
+      "path": "tasks/smoke/smoke-agg-01/solution/gold.json",
+      "sha256": "a4f2c8a0a2b3e07cf4c1ba1dc893a6d91af13b509ac43a16859d3dfcdc3d761d"
+    },
+    {
+      "path": "tasks/smoke/smoke-quote-01/environment/payloads.json",
+      "sha256": "cb80cece34c0f94fc32a60a8f2ccd0022f827b72e9d6ccc0496744db39f2c71f"
+    },
+    {
+      "path": "tasks/smoke/smoke-quote-01/environment/request_contracts.json",
+      "sha256": "100853d7e6bd95607c3cf66299a98845ea9e23ca21b06b2a95f1fde9d4ac376e"
+    },
+    {
+      "path": "tasks/smoke/smoke-quote-01/solution/gold.json",
+      "sha256": "c8b31a349b5eed5677eda8722d7a41c2878ec14fa938068ea04e36a0093499fd"
+    },
+    {
+      "path": "tasks/smoke/smoke-trap-01/environment/payloads.json",
+      "sha256": "6b7ff4111a0909abb9acffeb18b02683b8ea682954c7b5d370ad00934c185b36"
+    },
+    {
+      "path": "tasks/smoke/smoke-trap-01/environment/request_contracts.json",
+      "sha256": "b3082e951e484ef451db9236730ac0b7414b3f6b782f210a8374ef4f55e469b0"
+    },
+    {
+      "path": "tasks/smoke/smoke-trap-01/solution/gold.json",
+      "sha256": "32f7366f6436d70161d84fcf94be6f279d03edab7ad94646ff48d67597649b2c"
+    }
+  ]
+}

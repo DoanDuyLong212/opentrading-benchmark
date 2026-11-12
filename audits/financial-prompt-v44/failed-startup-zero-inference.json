@@ -1,0 +1,62 @@
+{
+  "kind": "v44-failed-startup-zero-inference",
+  "checked_at": "2026-11-07T07:41:53.017966+00:00",
+  "seal_sha256": "209426ec7a0c0d2778a4d5e7a524a1973684ec24748f77663115a1a9791e8124",
+  "runs": [
+    {
+      "key": "smoke-bolt",
+      "out": "/home/doanlong/extra/benchmark/experiments/finance-v44-study/results/financial-v44-smoke-bolt-20261107",
+      "files": [
+        {
+          "path": ".driver.lock",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "manifest.json",
+          "bytes": 101344,
+          "sha256": "9fabdd5844b6b74f55bc4db97ceff7d97199319fb8ae3f8681be6dcad16dd95a"
+        }
+      ],
+      "trial_provider_ledger_capture_count": 0
+    },
+    {
+      "key": "smoke-deepseek",
+      "out": "/home/doanlong/extra/benchmark/experiments/finance-v44-study/results/financial-v44-smoke-deepseek-20261107",
+      "files": [
+        {
+          "path": "manifest.json",
+          "bytes": 101356,
+          "sha256": "8c6bb0e90f798841bdecee79c86fc8b540483d6ae63c09acd0ecfc83680f6c99"
+        }
+      ],
+      "trial_provider_ledger_capture_count": 0
+    },
+    {
+      "key": "pilot-bolt",
+      "out": "/home/doanlong/extra/benchmark/experiments/finance-v44-study/results/financial-v44-pilot-bolt-20261107",
+      "files": [
+        {
+          "path": "manifest.json",
+          "bytes": 146677,
+          "sha256": "978ab6636ab15a05dda23fbd95f74beb9e40506a55a6b11977d883e622996c6f"
+        }
+      ],
+      "trial_provider_ledger_capture_count": 0
+    },
+    {
+      "key": "pilot-deepseek",
+      "out": "/home/doanlong/extra/benchmark/experiments/finance-v44-study/results/financial-v44-pilot-deepseek-20261107",
+      "files": [
+        {
+          "path": "manifest.json",
+          "bytes": 146689,
+          "sha256": "f21a9840be5570516f38a5931981c4f83f522fc6b05ee199966fb3bca9c041c7"
+        }
+      ],
+      "trial_provider_ledger_capture_count": 0
+    }
+  ],
+  "zero_inference": true,
+  "reason": "All four registered result trees contain only manifests and optional driver lock, no trials, provider logs, ledgers or captures. Driver failed at prepare_manifest before trial loop."
+}

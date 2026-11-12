@@ -1,0 +1,471 @@
+{
+  "schema_version": 1,
+  "manifest_sha256": "002f5056f4c621f1c50562b0e4018b9acd337b232340ced9afd7d06cc2a20b58",
+  "completion": {
+    "observed_trials": 176,
+    "scheduled_trials": 176,
+    "complete": true
+  },
+  "source_freeze_checks": {
+    "code_matches": true,
+    "harness_matches": true,
+    "protocol_matches": true,
+    "all_task_hashes_match": true
+  },
+  "arms": {
+    "opentrading_baseline": {
+      "success": 12,
+      "semantic": 14,
+      "contract": 12,
+      "grounded": 17,
+      "answered": 43,
+      "dnf": 1,
+      "fp": 0,
+      "false_refusal": 17,
+      "mcp_calls": 65,
+      "mcp_successful": 38,
+      "mcp_rejected": 27,
+      "recovered_after_rejection": 4,
+      "claimed_evidence": 25,
+      "unmatched_claimed_evidence": 0,
+      "requests": 88,
+      "provider_failed": 2,
+      "usage_complete": 43,
+      "n": 44,
+      "diagnostic_categories": {
+        "success": 12,
+        "semantic_or_contract_after_tool": 18,
+        "replay_rejected_no_successful_tool": 13,
+        "provider_failure": 1
+      },
+      "error_types": {
+        "none": 12,
+        "sai_so": 22,
+        "sai_ky": 4,
+        "sai_ket_qua": 2,
+        "khong_tra_loi": 1,
+        "thieu_bang_chung": 2,
+        "sai_nguon": 1
+      },
+      "schema_valid": 43,
+      "observed_complete_usage_input": 307477,
+      "observed_complete_usage_output": 13525,
+      "all_trial_total_tokens": null,
+      "conditional_false_refusal": {
+        "denominator": 39,
+        "denominator_started": 40,
+        "false_refusals": 17,
+        "rate": 0.4358974358974359,
+        "rate_started": 0.425
+      },
+      "conditional_fp": {
+        "n_started": 4,
+        "n_answered": 4,
+        "fp_started": 0,
+        "fp_answered": 0,
+        "rate_started": 0.0,
+        "rate_answered": 0.0
+      },
+      "latency": {
+        "coverage": 1.0,
+        "p50_ms": 14586,
+        "p90_ms": 21873,
+        "valid_answer_p50_ms": 16146,
+        "timeout_rate": 0.0
+      },
+      "upstream_requests": 87
+    },
+    "opentrading_finance": {
+      "success": 12,
+      "semantic": 14,
+      "contract": 12,
+      "grounded": 21,
+      "answered": 43,
+      "dnf": 1,
+      "fp": 0,
+      "false_refusal": 15,
+      "mcp_calls": 66,
+      "mcp_successful": 39,
+      "mcp_rejected": 27,
+      "recovered_after_rejection": 4,
+      "claimed_evidence": 32,
+      "unmatched_claimed_evidence": 2,
+      "requests": 88,
+      "provider_failed": 0,
+      "usage_complete": 44,
+      "n": 44,
+      "diagnostic_categories": {
+        "success": 12,
+        "semantic_or_contract_after_tool": 18,
+        "replay_rejected_no_successful_tool": 13,
+        "missing_or_invalid_json": 1
+      },
+      "error_types": {
+        "none": 12,
+        "sai_so": 20,
+        "sai_ky": 4,
+        "sai_ket_qua": 2,
+        "sai_nguon": 3,
+        "thieu_bang_chung": 2,
+        "invalid_json": 1
+      },
+      "schema_valid": 43,
+      "observed_complete_usage_input": 259187,
+      "observed_complete_usage_output": 16611,
+      "all_trial_total_tokens": 275798,
+      "conditional_false_refusal": {
+        "denominator": 39,
+        "denominator_started": 40,
+        "false_refusals": 15,
+        "rate": 0.38461538461538464,
+        "rate_started": 0.375
+      },
+      "conditional_fp": {
+        "n_started": 4,
+        "n_answered": 4,
+        "fp_started": 0,
+        "fp_answered": 0,
+        "rate_started": 0.0,
+        "rate_answered": 0.0
+      },
+      "latency": {
+        "coverage": 1.0,
+        "p50_ms": 15296,
+        "p90_ms": 22146,
+        "valid_answer_p50_ms": 16456,
+        "timeout_rate": 0.0
+      },
+      "upstream_requests": 88
+    },
+    "opencode": {
+      "success": 14,
+      "semantic": 15,
+      "contract": 14,
+      "grounded": 19,
+      "answered": 43,
+      "dnf": 1,
+      "fp": 0,
+      "false_refusal": 14,
+      "mcp_calls": 66,
+      "mcp_successful": 39,
+      "mcp_rejected": 27,
+      "recovered_after_rejection": 4,
+      "claimed_evidence": 33,
+      "unmatched_claimed_evidence": 5,
+      "requests": 88,
+      "provider_failed": 0,
+      "usage_complete": 44,
+      "n": 44,
+      "diagnostic_categories": {
+        "success": 14,
+        "semantic_or_contract_after_tool": 16,
+        "missing_or_invalid_json": 1,
+        "replay_rejected_no_successful_tool": 13
+      },
+      "error_types": {
+        "none": 14,
+        "sai_so": 19,
+        "sai_ky": 4,
+        "invalid_json": 1,
+        "sai_ket_qua": 2,
+        "sai_nguon": 3,
+        "khong_tra_loi": 1
+      },
+      "schema_valid": 42,
+      "observed_complete_usage_input": 151757,
+      "observed_complete_usage_output": 17398,
+      "all_trial_total_tokens": 169155,
+      "conditional_false_refusal": {
+        "denominator": 39,
+        "denominator_started": 40,
+        "false_refusals": 14,
+        "rate": 0.358974358974359,
+        "rate_started": 0.35
+      },
+      "conditional_fp": {
+        "n_started": 4,
+        "n_answered": 4,
+        "fp_started": 0,
+        "fp_answered": 0,
+        "rate_started": 0.0,
+        "rate_answered": 0.0
+      },
+      "latency": {
+        "coverage": 1.0,
+        "p50_ms": 17443,
+        "p90_ms": 28464,
+        "valid_answer_p50_ms": 17955,
+        "timeout_rate": 0.0
+      },
+      "upstream_requests": 88
+    },
+    "dsh": {
+      "success": 18,
+      "semantic": 18,
+      "contract": 18,
+      "grounded": 24,
+      "answered": 39,
+      "dnf": 5,
+      "fp": 0,
+      "false_refusal": 11,
+      "mcp_calls": 66,
+      "mcp_successful": 41,
+      "mcp_rejected": 25,
+      "recovered_after_rejection": 4,
+      "claimed_evidence": 33,
+      "unmatched_claimed_evidence": 4,
+      "requests": 90,
+      "provider_failed": 2,
+      "usage_complete": 42,
+      "n": 44,
+      "diagnostic_categories": {
+        "success": 18,
+        "provider_failure": 2,
+        "execution_or_transport": 1,
+        "semantic_or_contract_after_tool": 10,
+        "replay_rejected_no_successful_tool": 11,
+        "missing_or_invalid_json": 2
+      },
+      "error_types": {
+        "none": 18,
+        "khong_tra_loi": 2,
+        "invalid_json": 3,
+        "sai_so": 14,
+        "sai_ket_qua": 2,
+        "sai_ky": 3,
+        "sai_nguon": 2
+      },
+      "schema_valid": 39,
+      "observed_complete_usage_input": 112537,
+      "observed_complete_usage_output": 18675,
+      "all_trial_total_tokens": null,
+      "conditional_false_refusal": {
+        "denominator": 35,
+        "denominator_started": 40,
+        "false_refusals": 11,
+        "rate": 0.3142857142857143,
+        "rate_started": 0.275
+      },
+      "conditional_fp": {
+        "n_started": 4,
+        "n_answered": 4,
+        "fp_started": 0,
+        "fp_answered": 0,
+        "rate_started": 0.0,
+        "rate_answered": 0.0
+      },
+      "latency": {
+        "coverage": 1.0,
+        "p50_ms": 23121,
+        "p90_ms": 30869,
+        "valid_answer_p50_ms": 24093,
+        "timeout_rate": 0.0
+      },
+      "upstream_requests": 90
+    }
+  },
+  "promotion_guard": {
+    "passed": true,
+    "fixed_started_denominator_per_condition": 44,
+    "nonregression": true,
+    "strict_quality_improvement": true,
+    "token_tiebreak_available": false,
+    "token_tiebreak_used": false,
+    "reason": "Primary ties 12/44; false refusals improve 17->15; FP0 and DNF1 unchanged. Token tiebreak not required and unavailable for full baseline cohort."
+  },
+  "paired": [
+    {
+      "left": "dsh",
+      "right": "opencode",
+      "paired_tasks": 22,
+      "trial_success_difference": {
+        "estimate": 0.09090909090909091,
+        "ci95": [
+          0.022727272727272728,
+          0.18181818181818182
+        ],
+        "n_clusters": 22,
+        "draws": 2000,
+        "seed": 20261104
+      },
+      "payload_family_sensitivity": {
+        "estimate": 0.09090909090909091,
+        "ci95": [
+          0.022727272727272728,
+          0.16666666666666666
+        ],
+        "n_clusters": 18,
+        "draws": 2000,
+        "seed": 20261104
+      },
+      "stable_mcnemar": {
+        "available": false,
+        "reason": "requires exactly 3 scheduled runs"
+      }
+    },
+    {
+      "left": "dsh",
+      "right": "opentrading_baseline",
+      "paired_tasks": 22,
+      "trial_success_difference": {
+        "estimate": 0.13636363636363635,
+        "ci95": [
+          0.022727272727272728,
+          0.25
+        ],
+        "n_clusters": 22,
+        "draws": 2000,
+        "seed": 20261104
+      },
+      "payload_family_sensitivity": {
+        "estimate": 0.13636363636363635,
+        "ci95": [
+          0.043478260869565216,
+          0.26
+        ],
+        "n_clusters": 18,
+        "draws": 2000,
+        "seed": 20261104
+      },
+      "stable_mcnemar": {
+        "available": false,
+        "reason": "requires exactly 3 scheduled runs"
+      }
+    },
+    {
+      "left": "dsh",
+      "right": "opentrading_finance",
+      "paired_tasks": 22,
+      "trial_success_difference": {
+        "estimate": 0.13636363636363635,
+        "ci95": [
+          0.022727272727272728,
+          0.2727272727272727
+        ],
+        "n_clusters": 22,
+        "draws": 2000,
+        "seed": 20261104
+      },
+      "payload_family_sensitivity": {
+        "estimate": 0.13636363636363635,
+        "ci95": [
+          0.023809523809523808,
+          0.2619047619047619
+        ],
+        "n_clusters": 18,
+        "draws": 2000,
+        "seed": 20261104
+      },
+      "stable_mcnemar": {
+        "available": false,
+        "reason": "requires exactly 3 scheduled runs"
+      }
+    },
+    {
+      "left": "opencode",
+      "right": "opentrading_baseline",
+      "paired_tasks": 22,
+      "trial_success_difference": {
+        "estimate": 0.045454545454545456,
+        "ci95": [
+          -0.06818181818181818,
+          0.18181818181818182
+        ],
+        "n_clusters": 22,
+        "draws": 2000,
+        "seed": 20261104
+      },
+      "payload_family_sensitivity": {
+        "estimate": 0.045454545454545456,
+        "ci95": [
+          -0.06818181818181818,
+          0.18181818181818182
+        ],
+        "n_clusters": 18,
+        "draws": 2000,
+        "seed": 20261104
+      },
+      "stable_mcnemar": {
+        "available": false,
+        "reason": "requires exactly 3 scheduled runs"
+      }
+    },
+    {
+      "left": "opencode",
+      "right": "opentrading_finance",
+      "paired_tasks": 22,
+      "trial_success_difference": {
+        "estimate": 0.045454545454545456,
+        "ci95": [
+          -0.09090909090909091,
+          0.20454545454545456
+        ],
+        "n_clusters": 22,
+        "draws": 2000,
+        "seed": 20261104
+      },
+      "payload_family_sensitivity": {
+        "estimate": 0.045454545454545456,
+        "ci95": [
+          -0.075,
+          0.19047619047619047
+        ],
+        "n_clusters": 18,
+        "draws": 2000,
+        "seed": 20261104
+      },
+      "stable_mcnemar": {
+        "available": false,
+        "reason": "requires exactly 3 scheduled runs"
+      }
+    },
+    {
+      "left": "opentrading_baseline",
+      "right": "opentrading_finance",
+      "paired_tasks": 22,
+      "trial_success_difference": {
+        "estimate": 0.0,
+        "ci95": [
+          -0.06818181818181818,
+          0.06818181818181818
+        ],
+        "n_clusters": 22,
+        "draws": 2000,
+        "seed": 20261104
+      },
+      "payload_family_sensitivity": {
+        "estimate": 0.0,
+        "ci95": [
+          -0.06521739130434782,
+          0.06
+        ],
+        "n_clusters": 18,
+        "draws": 2000,
+        "seed": 20261104
+      },
+      "stable_mcnemar": {
+        "available": false,
+        "reason": "requires exactly 3 scheduled runs"
+      }
+    }
+  ],
+  "resume_smoke": true,
+  "resume_pilot": true,
+  "model": "nvidia/nvidia/nemotron-3.5-bolt-e4b",
+  "total_started": 176,
+  "total_requests": 354,
+  "started_at": "2026-11-05T07:51:47.073275+00:00",
+  "ended_at": "2026-11-05T08:54:18.383815+00:00",
+  "rollout_decision": {
+    "decision": "runtime_only; retain baseline default; finance remains experimental",
+    "registered_guard_result": "PASS unchanged",
+    "additional_postpilot_review": "No primary or semantic improvement; two finance trials with mismatched claimed evidence versus zero baseline. Engineering guard is necessary threshold, not proof of reliability or superiority.",
+    "installation_receipt": "experiments/installed-backups/20261105T091212.728355Z/receipt.json"
+  },
+  "definitions": {
+    "recovered_after_rejection": "Trial containing an MCP status=rejected then a later MCP status=ok; does not assert final answer correct",
+    "mismatched_evidence": "Claimed evidence item not exactly matching all7 authoritative fields of any successful tool call in that attempt",
+    "token_totals": "Only complete-usage trials summed; all-trial total is null when any usage is incomplete"
+  },
+  "total_upstream_requests": 353
+}

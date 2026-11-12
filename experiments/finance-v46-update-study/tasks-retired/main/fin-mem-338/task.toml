@@ -1,0 +1,31 @@
+# Task memory stratum — batch 3 (duyệt user 09/11/2026)
+id = "fin-mem-338"
+title = "Memory — cảnh báo cắt lỗ trên vị thế 2 mã"
+version = 2
+created = "2026-11-09"
+level = "L5"
+family = "L5·M memory"
+financebench_type = "multi-turn memory"
+entity = "MOVERS-ALERT"
+asset = "vn_stock"
+data_zone = "green"
+data_pairs = ["movers:vn30"]
+snapshot_date = "2026-11-01"
+universe_cap = 0
+banned_tools = ["web_search", "web_fetch", "sentiment_score"]
+human_time_band = "15–60 phút"
+time_limit_min = 42
+tools_expected = ["market_movers"]
+mcp_payloads = "environment/payloads.json"
+snapshot_required = true
+split = "main"
+track = "memory_multiturn"
+multiturn = true
+
+confirmatory_eligible = true
+
+[scoring]
+type = "value"
+gold = "solution/gold.json"
+oracle = "solution/oracle.py"
+grader = "tests/grader.py"

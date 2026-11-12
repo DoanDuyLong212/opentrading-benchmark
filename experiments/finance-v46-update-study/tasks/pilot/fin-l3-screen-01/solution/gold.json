@@ -1,0 +1,59 @@
+{
+  "task_id": "fin-l3-screen-01",
+  "scoring": "value",
+  "expects": [
+    {
+      "type": "set",
+      "path": "values.pass",
+      "gold": [
+        "CTG",
+        "MBB"
+      ]
+    },
+    {
+      "type": "period",
+      "path": "period",
+      "accept": [
+        "2025"
+      ]
+    },
+    {
+      "type": "str",
+      "path": "source",
+      "accept": [
+        "peer_compare"
+      ]
+    }
+  ],
+  "solution": {
+    "pass": [
+      "CTG",
+      "MBB"
+    ]
+  },
+  "notes": "Đổi nguồn so với 5.5 (stock_screener chỉ enrich 5/30 symbols, candidates rỗng) → dùng peer_compare universe 5. CTG (ROE 21.23, PE 5.55), MBB (21.57, 6.36); BID ROE 19.43 trượt.",
+  "as_of": "2026-11-01T15:58:02.647158+07:00",
+  "contract_version": 2,
+  "provenance_contract": [
+    {
+      "tool": "peer_compare",
+      "source": "vnstock",
+      "as_of": "2026-11-01T15:58:02.647158+07:00",
+      "matched_entry_id": "peer_compare:0",
+      "response_sha256": "c7bf5f6871f6bf6268ae80f9a927991aac12a683d3d5cab89e4aae5eb9ea043f"
+    }
+  ],
+  "payload_sha256": "9d5cd2d9d48cbebfdbb5c67a4f81f87c93362a8c82b52accafd053219d49c7d5",
+  "provenance_catalog": [
+    {
+      "tool": "peer_compare",
+      "source": "vnstock",
+      "as_of": "2026-11-01T15:58:02.647158+07:00",
+      "matched_entry_id": "peer_compare:0",
+      "response_sha256": "c7bf5f6871f6bf6268ae80f9a927991aac12a683d3d5cab89e4aae5eb9ea043f"
+    }
+  ],
+  "required_payload_keys": [
+    "peer_compare"
+  ]
+}

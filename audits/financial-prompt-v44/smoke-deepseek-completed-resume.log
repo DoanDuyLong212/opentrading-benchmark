@@ -1,0 +1,19 @@
+Model: nvidia/deepseek-ai/deepseek-v4.1-flash | trials=24 | frozen=True | complete=True
+dsh: success/started=16.7% success/answered=33.3% DNF=50.0%
+  stable 0/3 complete tasks, incomplete=0, scheduled runs=2
+  false refusal=0/1 answered; token coverage=50.0%; cost/success=N/A
+  latency ms p50=208815 p90=428979; ledger calls p50=1; errors={'error': 3, 'public_contract_invalid': 2}
+opencode: success/started=0.0% success/answered=0.0% DNF=50.0%
+  stable 0/3 complete tasks, incomplete=0, scheduled runs=2
+  false refusal=0/2 answered; token coverage=66.7%; cost/success=N/A
+  latency ms p50=239024 p90=519191; ledger calls p50=1; errors={'public_contract_invalid': 3, 'error': 2, 'invalid_json': 1}
+opentrading_baseline: success/started=0.0% success/answered=0.0% DNF=50.0%
+  stable 0/3 complete tasks, incomplete=0, scheduled runs=2
+  false refusal=0/2 answered; token coverage=50.0%; cost/success=N/A
+  latency ms p50=245562 p90=359959; ledger calls p50=1; errors={'public_contract_invalid': 3, 'error': 3}
+opentrading_finance: success/started=33.3% success/answered=100.0% DNF=66.7%
+  stable 0/3 complete tasks, incomplete=0, scheduled runs=2
+  false refusal=0/1 answered; token coverage=33.3%; cost/success=N/A
+  latency ms p50=224013 p90=398642; ledger calls p50=1; errors={'error': 4}
+Statistics and coverage: summary.json. Legacy/unfrozen runs are diagnostic only.
+Results: /home/doanlong/extra/benchmark/experiments/finance-v44-study/results/financial-v44-smoke-deepseek-20261107-startupfix1

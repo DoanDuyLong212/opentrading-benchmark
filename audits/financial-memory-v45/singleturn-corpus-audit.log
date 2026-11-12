@@ -1,0 +1,87 @@
+{
+  "splits": {
+    "main": 212,
+    "pilot": 25,
+    "smoke": 3,
+    "devsmoke": 12,
+    "holdout": 0
+  },
+  "checks": {
+    "main_scoring_value": 164,
+    "oracles_checked": 239,
+    "correct_tested": 239,
+    "correct_passed": 239,
+    "mutated_tested": 239,
+    "empty_tested": 239,
+    "wrong_period_tested": 133,
+    "wrong_source_tested": 194,
+    "unknown_symbol_tested": 143,
+    "main_scoring_refusal": 27,
+    "refusal_nonnull_text_tested": 33,
+    "refusal_nonnull_object_tested": 33,
+    "main_scoring_verdict": 9
+  },
+  "counterexamples": {},
+  "oracle_failures": 0,
+  "leaks": 0,
+  "main": {
+    "families": {
+      "L1·B bctc": 12,
+      "L1·C macro": 6,
+      "L1·A quote": 16,
+      "L2·E crypto-xasset": 5,
+      "L2·F fx": 4,
+      "L2·A growth": 8,
+      "L2·G macro-calc": 4,
+      "L2·B margin": 7,
+      "L2·C ratio": 4,
+      "L2·D technical": 4,
+      "L3·B aggregate": 9,
+      "L3·E crypto-multi": 8,
+      "L3·F index": 2,
+      "L3·G macro-agg": 3,
+      "L3·A screen": 8,
+      "L3·D tech-multi": 5,
+      "L3·C movers": 6,
+      "L4·D two-source": 9,
+      "L4·F two-step chain": 4,
+      "L4·E future-period": 16,
+      "L4·I narrative-check": 9,
+      "L4·B nonexistent": 11,
+      "L5·B compare": 16,
+      "L5·A profile": 14,
+      "L5·C valuation": 10
+    },
+    "unique_payload_sets": 118,
+    "unique_envelopes": 137,
+    "missing_check_type": {
+      "str_all": 168,
+      "period": 92,
+      "str": 64,
+      "unit": 110
+    }
+  },
+  "metric_counterexamples": {
+    "dnf_success_answered_over_one": {
+      "n": 2,
+      "dnf": 2,
+      "dnf_rate": 1.0,
+      "success_all": 0.0,
+      "success_answered": null,
+      "n_answered": 0
+    },
+    "missing_output_gets_price": null,
+    "negative_value_dispersion": {
+      "n_tasks_with_spread": 1,
+      "mad_pct": 9.091
+    }
+  },
+  "acceptance": {
+    "all_valid_fixtures_pass": true,
+    "all_adversarial_probes_rejected": true,
+    "oracles_pass": true,
+    "leak_scan_clean": true,
+    "solution_expectation_consistent": true,
+    "independent_source_review_complete": false
+  }
+}

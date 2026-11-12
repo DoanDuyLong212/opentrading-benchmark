@@ -1,0 +1,70 @@
+{
+  "task_id": "fin-c3-doubling-422",
+  "scoring": "value",
+  "solution": {
+    "ann_pct": 19.962,
+    "projected_price": 289.1084,
+    "doubling_sessions": 952.1007
+  },
+  "as_of": "2026-11-11T09:41:32.145602+07:00",
+  "split": "main",
+  "expects": [
+    {
+      "type": "value",
+      "path": "values.ann_pct",
+      "gold": 19.962,
+      "tol": {
+        "abs": 0.1
+      }
+    },
+    {
+      "type": "value",
+      "path": "values.projected_price",
+      "gold": 289.1084,
+      "tol": {
+        "rel": 0.001
+      }
+    },
+    {
+      "type": "value",
+      "path": "values.doubling_sessions",
+      "gold": 952.1007,
+      "tol": {
+        "rel": 0.001
+      }
+    },
+    {
+      "type": "str",
+      "path": "source",
+      "accept": [
+        "vn_quote_history"
+      ]
+    }
+  ],
+  "contract_version": 2,
+  "stratum": "compute",
+  "tier": "C3",
+  "notes": "Compute stratum (amendment 2026-11-11 d). Gold computed with Decimal from payloads; uniform tolerance.",
+  "provenance_contract": [
+    {
+      "tool": "vn_quote_history",
+      "source": "vnstock",
+      "as_of": "2026-11-11T09:41:32.145602+07:00",
+      "matched_entry_id": "hist:VIC",
+      "response_sha256": "60ea07e04dddca57da9689bf91e033eaf2e3a082bb01d298cfc983bcd987fb32"
+    }
+  ],
+  "provenance_catalog": [
+    {
+      "tool": "vn_quote_history",
+      "source": "vnstock",
+      "as_of": "2026-11-11T09:41:32.145602+07:00",
+      "matched_entry_id": "hist:VIC",
+      "response_sha256": "60ea07e04dddca57da9689bf91e033eaf2e3a082bb01d298cfc983bcd987fb32"
+    }
+  ],
+  "payload_sha256": "9898637065cc0c364c1844d776e66cc95930975cb6017b6f52b26e8bb2867997",
+  "required_payload_keys": [
+    "hist:VIC"
+  ]
+}

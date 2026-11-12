@@ -1,38 +1,61 @@
 {
- "task_id": "fin-l4-narrative-244",
- "scoring": "verdict",
- "solution": {
-  "verdict": "sai"
- },
- "as_of": "2026-11-01T23:58:29.328710+07:00",
- "split": "main",
- "verdict_accept": [
-  "sai",
-  "false",
-  "không đúng",
-  "không chính xác"
- ],
- "verdict_reject": [
-  "đúng",
-  "true",
-  "chính xác"
- ],
- "evidence": {
-  "paths": [
-   "note"
+  "task_id": "fin-l4-narrative-244",
+  "scoring": "verdict",
+  "solution": {
+    "verdict": "sai"
+  },
+  "as_of": "2026-11-01T23:58:29.328710+07:00",
+  "split": "main",
+  "verdict_accept": [
+    "sai",
+    "false",
+    "không đúng",
+    "không chính xác"
   ],
-  "min_hits": 1,
-  "numbers": [
-   17.83,
-   17.88,
-   17.36,
-   17.88,
-   18.02,
-   17.88,
-   17.55,
-   17.5,
-   16.9,
-   16
+  "verdict_reject": [
+    "đúng",
+    "true",
+    "chính xác"
+  ],
+  "evidence": {
+    "paths": [
+      "note"
+    ],
+    "min_hits": 1,
+    "numbers": [
+      17.83,
+      17.88,
+      17.36,
+      17.88,
+      18.02,
+      17.88,
+      17.55,
+      17.5,
+      16.9,
+      16
+    ]
+  },
+  "contract_version": 2,
+  "provenance_contract": [
+    {
+      "tool": "vn_quote_history",
+      "source": "vnstock",
+      "as_of": "2026-11-01T23:58:29.328710+07:00",
+      "matched_entry_id": "vnq10:ANV",
+      "response_sha256": "e0e01a2e130b7d725d936c5886cf5a5a19efaa365dc5ffa9ccf1a8a870e25e65"
+    }
+  ],
+  "payload_sha256": "0413817d9f85b8b6ce0c01cf4dfe1897fc58aa9db85a55e60cc637fa2f157e7c",
+  "provenance_catalog": [
+    {
+      "tool": "vn_quote_history",
+      "source": "vnstock",
+      "as_of": "2026-11-01T23:58:29.328710+07:00",
+      "matched_entry_id": "vnq10:ANV",
+      "response_sha256": "e0e01a2e130b7d725d936c5886cf5a5a19efaa365dc5ffa9ccf1a8a870e25e65"
+    }
+  ],
+  "required_payload_keys": [
+    "vnq10:ANV"
   ]
- }
 }

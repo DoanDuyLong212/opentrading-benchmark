@@ -1,7 +1,7 @@
 # Task benchmark harness tài chính — sinh bởi tools/gen_tasks.py
 id = "smoke-trap-01"
 title = "Smoke — Giá mã XYZX"
-version = 1
+version = 2
 created = "2026-11-01"
 level = "SMOKE"
 family = "smoke"
@@ -18,6 +18,8 @@ time_limit_min = 10
 tools_expected = ["symbol_resolve"]
 mcp_payloads = "environment/payloads.json"
 snapshot_required = true
+
+confirmatory_eligible = true
 
 [scoring]
 type = "refusal"

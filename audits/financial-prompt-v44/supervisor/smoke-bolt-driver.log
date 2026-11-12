@@ -1,0 +1,9 @@
+Traceback (most recent call last):
+  File "/home/doanlong/extra/benchmark/experiments/finance-v44-study/tools/run_benchmark.py", line 599, in <module>
+    main()
+  File "/home/doanlong/extra/benchmark/experiments/finance-v44-study/tools/run_benchmark.py", line 558, in main
+    manifest = prepare_manifest(out_dir, settings, tasks, cfg, args.resume)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/doanlong/extra/benchmark/experiments/finance-v44-study/tools/run_manifest.py", line 285, in prepare_manifest
+    raise ValueError('Resume rejected: model, code, tasks, harnesses, schedule or settings changed')
+ValueError: Resume rejected: model, code, tasks, harnesses, schedule or settings changed

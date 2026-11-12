@@ -1,0 +1,23 @@
+{
+  "sdk_without_custom_validator": {
+    "success": true,
+    "meaning": "Pinned SDK jsonSchema without validate callback passes through; this is not evidence of schema validation."
+  },
+  "read_only": true,
+  "external_model_calls": 0,
+  "bun_version": "1.4.4",
+  "tool": "mcp__opentrading__yf_commodities",
+  "source_capture": "/home/doanlong/extra/benchmark/experiments/finance-v45-study/results/financial-memory-v45-mini-20261109-preflight5/episodes/33ff2409409809fb6508/runner/provider-requests/0002-native.json",
+  "source_capture_sha256": "363b48c810e9b5fd35fe38089cbbe02988828cf99d42a81d718c38f5215132f6",
+  "pattern_path": "/anyOf/0/properties/tickers/items/anyOf/6/pattern",
+  "pattern": "^\\s*[bB][tT][cC]\\-[uU][sS][dD]\\s*$",
+  "non_unicode_compiles": true,
+  "unicode_compiles": false,
+  "unicode_error": "SyntaxError: Invalid regular expression: invalid escaped character for Unicode pattern",
+  "actual_native_sdk_success": false,
+  "actual_native_sdk_error": {
+    "name": "AI_TypeValidationError",
+    "message": "Type validation failed: Value: {\"tickers\":[\"GC=F\",\"SI=F\",\"NG=F\",\"HG=F\",\"BZ=F\",\"CL=F\",\"BTC-USD\",\"ETH-USD\",\"SOL-USD\",\"BNB-USD\",\"GBPUSD=X\",\"JPY=X\"],\"period\":\"5d\",\"interval\":\"1d\"}.\nError message: SyntaxError: Invalid regular expression: invalid escaped character for Unicode pattern",
+    "cause": "SyntaxError: Invalid regular expression: invalid escaped character for Unicode pattern"
+  }
+}

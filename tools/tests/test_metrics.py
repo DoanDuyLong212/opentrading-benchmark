@@ -124,8 +124,8 @@ def test_token_normalize_shapes():
 
 
 def test_cost_per_success():
-    trials = [trial(tokens={"input": 1_000_000, "output": 1_000_000}, success=True),
-              trial(tokens={"input": 1_000_000, "output": 1_000_000}, success=False)]
+    trials = [trial(tokens={"input": 1_000_000, "output": 1_000_000, "cache_read": 0}, success=True),
+              trial(tokens={"input": 1_000_000, "output": 1_000_000, "cache_read": 0}, success=False)]
     price = {"input": 0.15, "output": 0.60, "cached": 0.003}  # USD / 1M
     c = M.cost_metrics(trials, price)
     # mỗi trial: 1M*0.15 + 1M*0.60 = 0.75 USD → tổng 1.5

@@ -1,0 +1,64 @@
+{
+ "scoring": "value",
+ "memory_construct": "cross_session_recall_or_update",
+ "solution": {
+  "price": 157.53,
+  "review_state": "quá hạn"
+ },
+ "expects": [
+  {
+   "type": "value",
+   "path": "values.price",
+   "gold": 157.53,
+   "tol": {
+    "rel": 0.005
+   }
+  },
+  {
+   "type": "str",
+   "path": "values.review_state",
+   "accept": [
+    "quá hạn",
+    "hết hạn",
+    "đã quá hạn",
+    "đến hạn",
+    "cần review",
+    "cần rà soát",
+    "qua hạn review"
+   ]
+  },
+  {
+   "type": "period",
+   "path": "period",
+   "accept": [
+    "30/10",
+    "30-10",
+    "30.10",
+    "2026-10-30"
+   ]
+  },
+  {
+   "type": "str",
+   "path": "source",
+   "accept": [
+    "vn_msn_fx_gold"
+   ]
+  }
+ ],
+ "notes": "Thesis session A: USDJPY mua ≤155, review 25/10. Snapshot 30/10 → review ĐÃ QUA (25/10 < 30/10) → 'quá hạn'; giá 157.53 > entry 155 → ngoài vùng mua. Đo thesis lifecycle review_by.",
+ "memory_checks": {},
+ "provenance_contract": [
+  {
+   "tool": "vn_msn_fx_gold",
+   "source": "msn",
+   "as_of": "2026-11-01T21:30:32.261897+07:00",
+   "matched_entry_id": "msn:main",
+   "response_sha256": "519594885077cc5cf1db891f4f2c767af217c37d76c0ec0db33e4bc7ccd196c9"
+  }
+ ],
+ "required_payload_keys": [
+  "msn:main"
+ ],
+ "task_id": "fin-mem-333",
+ "payload_sha256": "dc27ea2e0c6b8ef9d732127be68ca13c21e2aad6ea673d7375874ef0aef96b0e"
+}

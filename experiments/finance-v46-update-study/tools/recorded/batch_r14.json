@@ -1,0 +1,8 @@
+{
+ "recorded_at": "2026-11-01",
+ "note": "Batch r14 — fs:DCM + tech:VGC (HAH unavailable → thay VGC cho l2-tech)",
+ "items": {
+  "fs:DCM": {"tool": "financial_statements", "params": {"symbol": "DCM", "period": "quarter", "periods_n": 4}, "body": {"data": {"symbol": "DCM", "periods": ["Q4/2025", "Q1/2026", "Q2/2026", "Q3/2026"], "rows": [{"name": "Doanh thu thuần", "unit": "VND", "values": {"Q4/2025": 4528368586587, "Q1/2026": 5286049223911, "Q2/2026": 6712190738318, "Q3/2026": 5741500188179}}, {"name": "Lợi nhuận gộp", "unit": "VND", "values": {"Q4/2025": 1252117148733, "Q1/2026": 1346448917206, "Q2/2026": 2000742284819, "Q3/2026": 1098679257692}}, {"name": "LNST thu nhập DN", "unit": "VND", "values": {"Q4/2025": 389453336599, "Q1/2026": 788628607348, "Q2/2026": 1067429042194, "Q3/2026": 432305874841}}, {"name": "LNST của CĐ cty mẹ", "unit": "VND", "values": {"Q4/2025": 390013921869, "Q1/2026": 787796389248, "Q2/2026": 1068063300734, "Q3/2026": 429607637443}}]}, "provenance": {"source": "vietstock", "as_of": "2026-11-01T23:52:44.754515+07:00"}, "availability": "available"}},
+  "tech:VGC": {"tool": "signals_technical", "params": {"symbol": "VGC", "interval": "1D"}, "body": {"data": {"symbol": "VGC", "rsi14": 43.84}, "provenance": {"source": "computed-local", "as_of": "2026-11-01T23:54:19.033081+07:00"}, "availability": "available"}}
+ }
+}

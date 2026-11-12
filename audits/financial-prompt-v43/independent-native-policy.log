@@ -1,0 +1,41 @@
+bun test v1.4.0 (34cbb9a40)
+
+test/finance-policy.test.ts:
+(pass) raw validation does not coerce/default/remove and preserves nested constraints [328.30ms]
+(pass) correction forbids identical arguments and more than one failed changed request [15.74ms]
+(pass) side effects, auth, no-data cannot enter correction eligibility [1.73ms]
+(pass) provenance contract is derived from public user mapping and immutable successful results [7.52ms]
+(pass) baseline registry continues accepting raw object without schema validation [18.78ms]
+(pass) correcting query cannot silently switch requested entity/currency [1.73ms]
+(pass) MCP output policy preserves structured data, deduplicates equivalent JSON, validates without replay [119.68ms]
+(pass) null permitted for requested value does not make source or other fields nullable [1.65ms]
+(pass) scope comparison allows model scalar-to-list repair, batch reorder and readonly supersets without mutating args [7.91ms]
+(pass) unsupported schema keyword fails closed rather than silently weakening validation [3.08ms]
+(pass) successful provenance is an immutable clone of actual structured result [1.31ms]
+(pass) corrected request preserves declared temporal and financial scope [8.22ms]
+(pass) malformed and non-object MCP root contracts fail closed [0.69ms]
+(pass) five parallel initial failures retain five independent correction budgets [8.40ms]
+(pass) ordinary VCB failure and successful BID have isolated retained histories [1.97ms]
+(pass) same-batch duplicates reserve once and failed correction remains exhausted [7.48ms]
+(pass) valid window/metric/statement/period scope cannot silently change in bounded repair [4.78ms]
+(pass) structured code and retryability override misleading prose [4.57ms]
+(pass) public refusal branch bypasses success-only values but retains evidence grounding [72.12ms]
+(pass) C2 schema remains identical in baseline and candidate tool declarations [35.85ms]
+(pass) omitted and explicit defaults cannot reset completed or failed intent identity [2.18ms]
+(pass) C2 metric case and array order equivalence cannot recreate a successful intent [5.92ms]
+(pass) invalid period enum may be corrected while entity and valid statement remain fixed [1.89ms]
+(pass) a later schema-invalid alias cannot erase an already successful entity intent [1.34ms]
+(pass) invalid financial selectors retain meaning and cannot be replaced with another scope [5.10ms]
+(pass) numeric selector type repair is lossless and cannot omit the original year [0.99ms]
+(pass) invalid enum values never collapse into one financial intent [1.29ms]
+(pass) nullable array selectors preserve scalar-to-list meaning from actual C1 union shape [1.14ms]
+(pass) unsafe integer text never aliases a rounded financial selector [0.80ms]
+(pass) public repair annotations cannot erase entity metric or financial-period meaning [6.30ms]
+(pass) date range selectors cannot be erased by a public repair annotation [15.31ms]
+(pass) legacy immediate auth or no-data failure codes are not parameter correction [1.92ms]
+(pass) bounded phase keeps untouched failed intents eligible after one correction succeeds [20.37ms]
+
+ 33 pass
+ 0 fail
+ 119 expect() calls
+Ran 33 tests across 1 file. [2.72s]

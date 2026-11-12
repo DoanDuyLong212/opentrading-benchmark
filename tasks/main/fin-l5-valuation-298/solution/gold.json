@@ -1,44 +1,67 @@
 {
- "task_id": "fin-l5-valuation-298",
- "scoring": "value",
- "solution": {
-  "price": 24050.0,
-  "per": 8.48,
-  "pb": 1.13
- },
- "as_of": "2026-11-01T23:30:15.696843+07:00",
- "split": "main",
- "expects": [
-  {
-   "type": "value",
-   "path": "values.price",
-   "gold": 24050.0,
-   "tol": {
-    "rel": 0.005
-   }
+  "task_id": "fin-l5-valuation-298",
+  "scoring": "value",
+  "solution": {
+    "price": 24050.0,
+    "per": 8.48,
+    "pb": 1.13
   },
-  {
-   "type": "value",
-   "path": "values.per",
-   "gold": 8.48,
-   "tol": {
-    "rel": 0.005
-   }
-  },
-  {
-   "type": "value",
-   "path": "values.pb",
-   "gold": 1.13,
-   "tol": {
-    "rel": 0.005
-   }
-  },
-  {
-   "type": "str",
-   "path": "source",
-   "accept": [
-    "valuation_run"
-   ]
-  }
- ]
+  "as_of": "2026-11-01T23:30:15.696843+07:00",
+  "split": "main",
+  "expects": [
+    {
+      "type": "value",
+      "path": "values.price",
+      "gold": 24050.0,
+      "tol": {
+        "rel": 0.005
+      }
+    },
+    {
+      "type": "value",
+      "path": "values.per",
+      "gold": 8.48,
+      "tol": {
+        "rel": 0.005
+      }
+    },
+    {
+      "type": "value",
+      "path": "values.pb",
+      "gold": 1.13,
+      "tol": {
+        "rel": 0.005
+      }
+    },
+    {
+      "type": "str",
+      "path": "source",
+      "accept": [
+        "valuation_run"
+      ]
+    }
+  ],
+  "contract_version": 2,
+  "provenance_contract": [
+    {
+      "tool": "valuation_run",
+      "source": "computed-local",
+      "as_of": "2026-11-01T23:30:15.696843+07:00",
+      "matched_entry_id": "val:VRE",
+      "response_sha256": "bd1da0b4a683564bad4160686fe13a5e2e8aa9e71ee015a530c04fdfead2d15c"
+    }
+  ],
+  "payload_sha256": "a3784ca1fa495c818f7e60ba24e90d05c60a05e5a1a73ad002141fbf7d42df64",
+  "provenance_catalog": [
+    {
+      "tool": "valuation_run",
+      "source": "computed-local",
+      "as_of": "2026-11-01T23:30:15.696843+07:00",
+      "matched_entry_id": "val:VRE",
+      "response_sha256": "bd1da0b4a683564bad4160686fe13a5e2e8aa9e71ee015a530c04fdfead2d15c"
+    }
+  ],
+  "required_payload_keys": [
+    "val:VRE"
+  ]
 }

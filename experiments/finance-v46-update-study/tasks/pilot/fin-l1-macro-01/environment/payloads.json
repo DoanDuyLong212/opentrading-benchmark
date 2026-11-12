@@ -1,0 +1,83 @@
+{
+  "snapshot_date": "2026-11-01",
+  "note": "Envelope MCP đã ghi lúc tạo task (2026-11-01, trim trường không dùng cho gold; data + provenance + availability giữ nguyên). Benchmark chạy qua snapshot-replay các envelope này — không gọi MCP live.",
+  "tools": {
+    "vs_indicator_data": {
+      "data": {
+        "rows": [
+          {
+            "indicator": "CHỈ SỐ GIÁ TIÊU DÙNG",
+            "period": "Tháng 9/2026",
+            "value": 105.08,
+            "unit": "%",
+            "timeorder": 20260919
+          },
+          {
+            "indicator": "CHỈ SỐ GIÁ TIÊU DÙNG",
+            "period": "Tháng 9/2026",
+            "value": 5.08,
+            "unit": "%",
+            "timeorder": 20260919
+          },
+          {
+            "indicator": "LẠM PHÁT CƠ BẢN",
+            "period": "Tháng 9/2026",
+            "value": 4.45,
+            "unit": "%",
+            "timeorder": 20260919
+          },
+          {
+            "indicator": "Hàng ăn và dịch vụ ăn uống",
+            "period": "Tháng 9/2026",
+            "value": 104.44,
+            "unit": "%",
+            "timeorder": 20260919
+          },
+          {
+            "indicator": "Hàng ăn và dịch vụ ăn uống",
+            "period": "Tháng 9/2026",
+            "value": 4.44,
+            "unit": "%",
+            "timeorder": 20260919
+          },
+          {
+            "indicator": "Giao thông",
+            "period": "Tháng 9/2026",
+            "value": 111.67,
+            "unit": "%",
+            "timeorder": 20260919
+          },
+          {
+            "indicator": "Giao thông",
+            "period": "Tháng 9/2026",
+            "value": 11.67,
+            "unit": "%",
+            "timeorder": 20260919
+          },
+          {
+            "indicator": "Nhà ở và vật liệu xây dựng",
+            "period": "Tháng 9/2026",
+            "value": 106.47,
+            "unit": "%",
+            "timeorder": 20260919
+          },
+          {
+            "indicator": "Hàng hóa và dịch vụ khác",
+            "period": "Tháng 9/2026",
+            "value": 105.82,
+            "unit": "%",
+            "timeorder": 20260919
+          }
+        ]
+      },
+      "provenance": {
+        "source": "vietstock",
+        "as_of": "2026-11-01T15:57:51.287003+07:00",
+        "timezone": "Asia/Ho_Chi_Minh"
+      },
+      "availability": "available",
+      "warnings": [],
+      "_note": "tool trả ~17 chuỗi chỉ số khớp truy vấn 'CPI'; ở đây ghi 9 dòng Tháng 9/2026 đại diện (đủ tạo bẫy nhiều chuỗi: chỉ số gốc 105.08 vs % so T12 5.08 vs lạm phát cơ bản 4.45)"
+    }
+  }
+}

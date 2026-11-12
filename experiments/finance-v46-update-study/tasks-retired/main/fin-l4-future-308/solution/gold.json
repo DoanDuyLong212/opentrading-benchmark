@@ -1,0 +1,86 @@
+{
+  "scoring": "refusal",
+  "solution": {
+    "symbol": "MBS",
+    "last_t": "2026-10-30"
+  },
+  "refusal_tokens": [
+    "chưa công bố",
+    "chưa có",
+    "chưa kết thúc",
+    "không có",
+    "không tồn tại",
+    "chưa phát hành",
+    "chưa đến kỳ",
+    "chưa có số liệu",
+    "không có số liệu",
+    "chưa được công bố",
+    "không có dữ liệu",
+    "không đủ dữ liệu",
+    "không phải phiên giao dịch",
+    "phiên nghỉ",
+    "ngày nghỉ",
+    "nghỉ lễ",
+    "chủ nhật"
+  ],
+  "bonus_numbers": [
+    15.0
+  ],
+  "bonus_strings": [],
+  "notes": "Phiên được hỏi không phải phiên giao dịch (snapshot chỉ có dữ liệu đến 30/10); refusal đúng + nêu phiên gần nhất 15 được cộng bonus. Primary is snapshot availability, not independently retrieved market calendar. Bonus requires structured alternative with exact date/source receipt.",
+  "provenance_contract": [
+    {
+      "tool": "vn_quote_history",
+      "source": "vnstock",
+      "as_of": "2026-11-01T22:40:52.097902+07:00",
+      "matched_entry_id": "vnq:MBS",
+      "response_sha256": "9912b56d3b570352ba134baeaf2791af832ae557d75cabada78290251d6b2ee6"
+    }
+  ],
+  "required_payload_keys": [
+    "vnq:MBS"
+  ],
+  "task_id": "fin-l4-future-308",
+  "payload_sha256": "0b1d1ffa3de38adebd2491e2993b8b72f31beca5af94a15e60019c865a194747",
+  "refusal_assertions": [
+    {
+      "type": "unit",
+      "path": "unit",
+      "accept": [
+        "nghìn đồng"
+      ]
+    },
+    {
+      "type": "period",
+      "path": "period",
+      "accept": [
+        "2026-09-02",
+        "02/09/2026"
+      ]
+    },
+    {
+      "type": "str",
+      "path": "source",
+      "accept": [
+        "vn_quote_history"
+      ]
+    }
+  ],
+  "bonus_assertions": [
+    {
+      "type": "value",
+      "path": "alternative.value",
+      "gold": 15,
+      "tol": {
+        "abs": 0.01
+      }
+    },
+    {
+      "type": "period",
+      "path": "alternative.period",
+      "accept": [
+        "2026-10-30"
+      ]
+    }
+  ]
+}

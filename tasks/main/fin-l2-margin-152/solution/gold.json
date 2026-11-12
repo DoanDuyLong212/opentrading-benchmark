@@ -1,44 +1,67 @@
 {
- "task_id": "fin-l2-margin-152",
- "scoring": "value",
- "solution": {
-  "value": 49.43
- },
- "as_of": "2026-11-01T22:41:32.906277+07:00",
- "split": "main",
- "expects": [
-  {
-   "type": "value",
-   "path": "value",
-   "gold": 49.43,
-   "tol": {
-    "abs": 0.1
-   }
+  "task_id": "fin-l2-margin-152",
+  "scoring": "value",
+  "solution": {
+    "value": 49.43
   },
-  {
-   "type": "unit",
-   "path": "unit",
-   "accept": [
-    "%",
-    "phần trăm"
-   ]
-  },
-  {
-   "type": "period",
-   "path": "period",
-   "accept": [
-    "Q2/2026",
-    "quý 2/2026",
-    "q2 2026",
-    "q2/26"
-   ]
-  },
-  {
-   "type": "str",
-   "path": "source",
-   "accept": [
-    "financial_detail"
-   ]
-  }
- ]
+  "as_of": "2026-11-01T22:41:32.906277+07:00",
+  "split": "main",
+  "expects": [
+    {
+      "type": "value",
+      "path": "value",
+      "gold": 49.43,
+      "tol": {
+        "abs": 0.1
+      }
+    },
+    {
+      "type": "unit",
+      "path": "unit",
+      "accept": [
+        "%",
+        "phần trăm"
+      ]
+    },
+    {
+      "type": "period",
+      "path": "period",
+      "accept": [
+        "Q2/2026",
+        "quý 2/2026",
+        "q2 2026",
+        "q2/26"
+      ]
+    },
+    {
+      "type": "str",
+      "path": "source",
+      "accept": [
+        "financial_detail"
+      ]
+    }
+  ],
+  "contract_version": 2,
+  "provenance_contract": [
+    {
+      "tool": "financial_detail",
+      "source": "vietstock",
+      "as_of": "2026-11-01T22:41:32.906277+07:00",
+      "matched_entry_id": "fd:GMD",
+      "response_sha256": "b3790634a69c7f1f4799b2510ea43d885415ff13e4c5f4f47949d56438154956"
+    }
+  ],
+  "payload_sha256": "1a9d1a89e3d93e6dbf2d00c581175caac8464abe474a496ace198b696625066b",
+  "provenance_catalog": [
+    {
+      "tool": "financial_detail",
+      "source": "vietstock",
+      "as_of": "2026-11-01T22:41:32.906277+07:00",
+      "matched_entry_id": "fd:GMD",
+      "response_sha256": "b3790634a69c7f1f4799b2510ea43d885415ff13e4c5f4f47949d56438154956"
+    }
+  ],
+  "required_payload_keys": [
+    "fd:GMD"
+  ]
 }

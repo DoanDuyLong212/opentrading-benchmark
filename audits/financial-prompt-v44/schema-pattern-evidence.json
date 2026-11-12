@@ -1,0 +1,1551 @@
+{
+  "scope": "offline regex evaluation and read-only joins only; no model calls, package installs, source edits or gate changes",
+  "pattern": "^/data(?:/|$)",
+  "observed_compute_rows": [
+    {
+      "trial_id": "smoke-agg-01__dsh__r1",
+      "mcp_call_id": "bfd3e652-23c7-4a6c-95a2-1529948e7846",
+      "sdk_call_id": "chatcmpl-tool-9c46fa91328ecf5a",
+      "generating_provider_index": 2,
+      "generating_upstream_attempted": true,
+      "generating_status": 200,
+      "ledger_path": "/home/doanlong/extra/benchmark/experiments/finance-v44-study/results/financial-v44-smoke-deepseek-20261107-startupfix1/trials/smoke-agg-01__dsh__r1/attempts/01-8390461e3b66/mcp.jsonl",
+      "error": "''",
+      "wire": [
+        {
+          "kind": "native_request_capture",
+          "path": "/home/doanlong/extra/benchmark/experiments/finance-v44-study/results/financial-v44-smoke-deepseek-20261107-startupfix1/trials/smoke-agg-01__dsh__r1/attempts/01-8390461e3b66/provider-requests/0002-native.json",
+          "pattern": "^/data(?:/|$)",
+          "explicit_mode_flags_anywhere_in_request": [],
+          "tool_choice": null
+        },
+        {
+          "kind": "effective_request_capture",
+          "path": "/home/doanlong/extra/benchmark/experiments/finance-v44-study/results/financial-v44-smoke-deepseek-20261107-startupfix1/trials/smoke-agg-01__dsh__r1/attempts/01-8390461e3b66/provider-requests/0002-effective.json",
+          "pattern": "^/data(?:/|$)",
+          "explicit_mode_flags_anywhere_in_request": [],
+          "tool_choice": null
+        }
+      ],
+      "operands": [
+        {
+          "call_id": "e43001e2-5ede-44ce-a4ee-0ea936d840d6",
+          "path": "/data/",
+          "regex_search": true,
+          "regex_fullmatch": true,
+          "actual_source_numeric_leaf": {
+            "path": "/data/last",
+            "value": 56.3,
+            "unit": "nghìn đồng/cổ phiếu",
+            "date": "2026-10-30",
+            "regex_search": true,
+            "regex_fullmatch": false
+          }
+        }
+      ]
+    },
+    {
+      "trial_id": "smoke-agg-01__dsh__r1",
+      "mcp_call_id": "f6184bea-5038-4714-b33d-7a7af68660cc",
+      "sdk_call_id": "chatcmpl-tool-b79ee843703c65b1",
+      "generating_provider_index": 3,
+      "generating_upstream_attempted": true,
+      "generating_status": 200,
+      "ledger_path": "/home/doanlong/extra/benchmark/experiments/finance-v44-study/results/financial-v44-smoke-deepseek-20261107-startupfix1/trials/smoke-agg-01__dsh__r1/attempts/01-8390461e3b66/mcp.jsonl",
+      "error": "numeric source path must be under /data/",
+      "wire": [
+        {
+          "kind": "native_request_capture",
+          "path": "/home/doanlong/extra/benchmark/experiments/finance-v44-study/results/financial-v44-smoke-deepseek-20261107-startupfix1/trials/smoke-agg-01__dsh__r1/attempts/01-8390461e3b66/provider-requests/0003-native.json",
+          "pattern": "^/data(?:/|$)",
+          "explicit_mode_flags_anywhere_in_request": [],
+          "tool_choice": null
+        },
+        {
+          "kind": "effective_request_capture",
+          "path": "/home/doanlong/extra/benchmark/experiments/finance-v44-study/results/financial-v44-smoke-deepseek-20261107-startupfix1/trials/smoke-agg-01__dsh__r1/attempts/01-8390461e3b66/provider-requests/0003-effective.json",
+          "pattern": "^/data(?:/|$)",
+          "explicit_mode_flags_anywhere_in_request": [],
+          "tool_choice": null
+        }
+      ],
+      "operands": [
+        {
+          "call_id": "e43001e2-5ede-44ce-a4ee-0ea936d840d6",
+          "path": "/data",
+          "regex_search": true,
+          "regex_fullmatch": true,
+          "actual_source_numeric_leaf": {
+            "path": "/data/last",
+            "value": 56.3,
+            "unit": "nghìn đồng/cổ phiếu",
+            "date": "2026-10-30",
+            "regex_search": true,
+            "regex_fullmatch": false
+          }
+        },
+        {
+          "call_id": "24425546-a813-42f6-a511-efe9860f7027",
+          "path": "/data",
+          "regex_search": true,
+          "regex_fullmatch": true,
+          "actual_source_numeric_leaf": {
+            "path": "/data/last",
+            "value": 33.4,
+            "unit": "nghìn đồng/cổ phiếu",
+            "date": "2026-10-30",
+            "regex_search": true,
+            "regex_fullmatch": false
+          }
+        },
+        {
+          "call_id": "26dc5ffb-97d7-42a2-9d8e-85ca9273199c",
+          "path": "/data",
+          "regex_search": true,
+          "regex_fullmatch": true,
+          "actual_source_numeric_leaf": {
+            "path": "/data/last",
+            "value": 30.3,
+            "unit": "nghìn đồng/cổ phiếu",
+            "date": "2026-10-30",
+            "regex_search": true,
+            "regex_fullmatch": false
+          }
+        },
+        {
+          "call_id": "2d8ec855-9d43-4423-b624-ee12c4cc49f3",
+          "path": "/data",
+          "regex_search": true,
+          "regex_fullmatch": true,
+          "actual_source_numeric_leaf": {
+            "path": "/data/last",
+            "value": 21.6,
+            "unit": "nghìn đồng/cổ phiếu",
+            "date": "2026-10-30",
+            "regex_search": true,
+            "regex_fullmatch": false
+          }
+        },
+        {
+          "call_id": "31e725b4-180f-4b7f-a247-c924970bc14a",
+          "path": "/data",
+          "regex_search": true,
+          "regex_fullmatch": true,
+          "actual_source_numeric_leaf": {
+            "path": "/data/last",
+            "value": 19.3,
+            "unit": "nghìn đồng/cổ phiếu",
+            "date": "2026-10-30",
+            "regex_search": true,
+            "regex_fullmatch": false
+          }
+        }
+      ]
+    },
+    {
+      "trial_id": "smoke-agg-01__dsh__r1",
+      "mcp_call_id": "16dbb31d-6ef7-4217-8667-192fc2cb1b02",
+      "sdk_call_id": "chatcmpl-tool-b4cfbac48876e1f5",
+      "generating_provider_index": 4,
+      "generating_upstream_attempted": true,
+      "generating_status": 200,
+      "ledger_path": "/home/doanlong/extra/benchmark/experiments/finance-v44-study/results/financial-v44-smoke-deepseek-20261107-startupfix1/trials/smoke-agg-01__dsh__r1/attempts/01-8390461e3b66/mcp.jsonl",
+      "error": "numeric source path must be under /data/",
+      "wire": [
+        {
+          "kind": "native_request_capture",
+          "path": "/home/doanlong/extra/benchmark/experiments/finance-v44-study/results/financial-v44-smoke-deepseek-20261107-startupfix1/trials/smoke-agg-01__dsh__r1/attempts/01-8390461e3b66/provider-requests/0004-native.json",
+          "pattern": "^/data(?:/|$)",
+          "explicit_mode_flags_anywhere_in_request": [],
+          "tool_choice": null
+        },
+        {
+          "kind": "effective_request_capture",
+          "path": "/home/doanlong/extra/benchmark/experiments/finance-v44-study/results/financial-v44-smoke-deepseek-20261107-startupfix1/trials/smoke-agg-01__dsh__r1/attempts/01-8390461e3b66/provider-requests/0004-effective.json",
+          "pattern": "^/data(?:/|$)",
+          "explicit_mode_flags_anywhere_in_request": [],
+          "tool_choice": null
+        }
+      ],
+      "operands": [
+        {
+          "call_id": "e43001e2-5ede-44ce-a4ee-0ea936d840d6",
+          "path": "/data",
+          "regex_search": true,
+          "regex_fullmatch": true,
+          "actual_source_numeric_leaf": {
+            "path": "/data/last",
+            "value": 56.3,
+            "unit": "nghìn đồng/cổ phiếu",
+            "date": "2026-10-30",
+            "regex_search": true,
+            "regex_fullmatch": false
+          }
+        },
+        {
+          "call_id": "24425546-a813-42f6-a511-efe9860f7027",
+          "path": "/data",
+          "regex_search": true,
+          "regex_fullmatch": true,
+          "actual_source_numeric_leaf": {
+            "path": "/data/last",
+            "value": 33.4,
+            "unit": "nghìn đồng/cổ phiếu",
+            "date": "2026-10-30",
+            "regex_search": true,
+            "regex_fullmatch": false
+          }
+        },
+        {
+          "call_id": "26dc5ffb-97d7-42a2-9d8e-85ca9273199c",
+          "path": "/data",
+          "regex_search": true,
+          "regex_fullmatch": true,
+          "actual_source_numeric_leaf": {
+            "path": "/data/last",
+            "value": 30.3,
+            "unit": "nghìn đồng/cổ phiếu",
+            "date": "2026-10-30",
+            "regex_search": true,
+            "regex_fullmatch": false
+          }
+        },
+        {
+          "call_id": "2d8ec855-9d43-4423-b624-ee12c4cc49f3",
+          "path": "/data",
+          "regex_search": true,
+          "regex_fullmatch": true,
+          "actual_source_numeric_leaf": {
+            "path": "/data/last",
+            "value": 21.6,
+            "unit": "nghìn đồng/cổ phiếu",
+            "date": "2026-10-30",
+            "regex_search": true,
+            "regex_fullmatch": false
+          }
+        },
+        {
+          "call_id": "31e725b4-180f-4b7f-a247-c924970bc14a",
+          "path": "/data",
+          "regex_search": true,
+          "regex_fullmatch": true,
+          "actual_source_numeric_leaf": {
+            "path": "/data/last",
+            "value": 19.3,
+            "unit": "nghìn đồng/cổ phiếu",
+            "date": "2026-10-30",
+            "regex_search": true,
+            "regex_fullmatch": false
+          }
+        }
+      ]
+    },
+    {
+      "trial_id": "smoke-agg-01__dsh__r1",
+      "mcp_call_id": "f678de8c-02a1-4514-8b8e-a51de9e4e06b",
+      "sdk_call_id": "chatcmpl-tool-9c58e7bd3ce5a38d",
+      "generating_provider_index": 5,
+      "generating_upstream_attempted": true,
+      "generating_status": 200,
+      "ledger_path": "/home/doanlong/extra/benchmark/experiments/finance-v44-study/results/financial-v44-smoke-deepseek-20261107-startupfix1/trials/smoke-agg-01__dsh__r1/attempts/01-8390461e3b66/mcp.jsonl",
+      "error": "numeric source path must be under /data/",
+      "wire": [
+        {
+          "kind": "native_request_capture",
+          "path": "/home/doanlong/extra/benchmark/experiments/finance-v44-study/results/financial-v44-smoke-deepseek-20261107-startupfix1/trials/smoke-agg-01__dsh__r1/attempts/01-8390461e3b66/provider-requests/0005-native.json",
+          "pattern": "^/data(?:/|$)",
+          "explicit_mode_flags_anywhere_in_request": [],
+          "tool_choice": null
+        },
+        {
+          "kind": "effective_request_capture",
+          "path": "/home/doanlong/extra/benchmark/experiments/finance-v44-study/results/financial-v44-smoke-deepseek-20261107-startupfix1/trials/smoke-agg-01__dsh__r1/attempts/01-8390461e3b66/provider-requests/0005-effective.json",
+          "pattern": "^/data(?:/|$)",
+          "explicit_mode_flags_anywhere_in_request": [],
+          "tool_choice": null
+        }
+      ],
+      "operands": [
+        {
+          "call_id": "e43001e2-5ede-44ce-a4ee-0ea936d840d6",
+          "path": "/data",
+          "regex_search": true,
+          "regex_fullmatch": true,
+          "actual_source_numeric_leaf": {
+            "path": "/data/last",
+            "value": 56.3,
+            "unit": "nghìn đồng/cổ phiếu",
+            "date": "2026-10-30",
+            "regex_search": true,
+            "regex_fullmatch": false
+          }
+        },
+        {
+          "call_id": "24425546-a813-42f6-a511-efe9860f7027",
+          "path": "/data",
+          "regex_search": true,
+          "regex_fullmatch": true,
+          "actual_source_numeric_leaf": {
+            "path": "/data/last",
+            "value": 33.4,
+            "unit": "nghìn đồng/cổ phiếu",
+            "date": "2026-10-30",
+            "regex_search": true,
+            "regex_fullmatch": false
+          }
+        },
+        {
+          "call_id": "26dc5ffb-97d7-42a2-9d8e-85ca9273199c",
+          "path": "/data",
+          "regex_search": true,
+          "regex_fullmatch": true,
+          "actual_source_numeric_leaf": {
+            "path": "/data/last",
+            "value": 30.3,
+            "unit": "nghìn đồng/cổ phiếu",
+            "date": "2026-10-30",
+            "regex_search": true,
+            "regex_fullmatch": false
+          }
+        },
+        {
+          "call_id": "2d8ec855-9d43-4423-b624-ee12c4cc49f3",
+          "path": "/data",
+          "regex_search": true,
+          "regex_fullmatch": true,
+          "actual_source_numeric_leaf": {
+            "path": "/data/last",
+            "value": 21.6,
+            "unit": "nghìn đồng/cổ phiếu",
+            "date": "2026-10-30",
+            "regex_search": true,
+            "regex_fullmatch": false
+          }
+        },
+        {
+          "call_id": "31e725b4-180f-4b7f-a247-c924970bc14a",
+          "path": "/data",
+          "regex_search": true,
+          "regex_fullmatch": true,
+          "actual_source_numeric_leaf": {
+            "path": "/data/last",
+            "value": 19.3,
+            "unit": "nghìn đồng/cổ phiếu",
+            "date": "2026-10-30",
+            "regex_search": true,
+            "regex_fullmatch": false
+          }
+        }
+      ]
+    },
+    {
+      "trial_id": "smoke-agg-01__opencode__r1",
+      "mcp_call_id": "d70cbdd8-fed3-4233-a119-2db203a1eb9a",
+      "sdk_call_id": "chatcmpl-tool-b91a5a6e00740802",
+      "generating_provider_index": 2,
+      "generating_upstream_attempted": true,
+      "generating_status": 200,
+      "ledger_path": "/home/doanlong/extra/benchmark/experiments/finance-v44-study/results/financial-v44-smoke-deepseek-20261107-startupfix1/trials/smoke-agg-01__opencode__r1/attempts/01-d4af241051d9/mcp.jsonl",
+      "error": "''",
+      "wire": [
+        {
+          "kind": "native_request_capture",
+          "path": "/home/doanlong/extra/benchmark/experiments/finance-v44-study/results/financial-v44-smoke-deepseek-20261107-startupfix1/trials/smoke-agg-01__opencode__r1/attempts/01-d4af241051d9/provider-requests/0002-native.json",
+          "pattern": "^/data(?:/|$)",
+          "explicit_mode_flags_anywhere_in_request": [],
+          "tool_choice": null
+        },
+        {
+          "kind": "effective_request_capture",
+          "path": "/home/doanlong/extra/benchmark/experiments/finance-v44-study/results/financial-v44-smoke-deepseek-20261107-startupfix1/trials/smoke-agg-01__opencode__r1/attempts/01-d4af241051d9/provider-requests/0002-effective.json",
+          "pattern": "^/data(?:/|$)",
+          "explicit_mode_flags_anywhere_in_request": [],
+          "tool_choice": null
+        }
+      ],
+      "operands": [
+        {
+          "call_id": "09a4494c-6f98-4c33-9be7-0fdb60a32d11",
+          "path": "/data/",
+          "regex_search": true,
+          "regex_fullmatch": true,
+          "actual_source_numeric_leaf": {
+            "path": "/data/last",
+            "value": 56.3,
+            "unit": "nghìn đồng/cổ phiếu",
+            "date": "2026-10-30",
+            "regex_search": true,
+            "regex_fullmatch": false
+          }
+        }
+      ]
+    },
+    {
+      "trial_id": "smoke-agg-01__opencode__r1",
+      "mcp_call_id": "3ee85f3d-0d8d-4c5d-8d42-baa3b66f4f20",
+      "sdk_call_id": "chatcmpl-tool-9bc49314eb06e48b",
+      "generating_provider_index": 3,
+      "generating_upstream_attempted": true,
+      "generating_status": 200,
+      "ledger_path": "/home/doanlong/extra/benchmark/experiments/finance-v44-study/results/financial-v44-smoke-deepseek-20261107-startupfix1/trials/smoke-agg-01__opencode__r1/attempts/01-d4af241051d9/mcp.jsonl",
+      "error": "numeric source path must be under /data/",
+      "wire": [
+        {
+          "kind": "native_request_capture",
+          "path": "/home/doanlong/extra/benchmark/experiments/finance-v44-study/results/financial-v44-smoke-deepseek-20261107-startupfix1/trials/smoke-agg-01__opencode__r1/attempts/01-d4af241051d9/provider-requests/0003-native.json",
+          "pattern": "^/data(?:/|$)",
+          "explicit_mode_flags_anywhere_in_request": [],
+          "tool_choice": null
+        },
+        {
+          "kind": "effective_request_capture",
+          "path": "/home/doanlong/extra/benchmark/experiments/finance-v44-study/results/financial-v44-smoke-deepseek-20261107-startupfix1/trials/smoke-agg-01__opencode__r1/attempts/01-d4af241051d9/provider-requests/0003-effective.json",
+          "pattern": "^/data(?:/|$)",
+          "explicit_mode_flags_anywhere_in_request": [],
+          "tool_choice": null
+        }
+      ],
+      "operands": [
+        {
+          "call_id": "09a4494c-6f98-4c33-9be7-0fdb60a32d11",
+          "path": "/data",
+          "regex_search": true,
+          "regex_fullmatch": true,
+          "actual_source_numeric_leaf": {
+            "path": "/data/last",
+            "value": 56.3,
+            "unit": "nghìn đồng/cổ phiếu",
+            "date": "2026-10-30",
+            "regex_search": true,
+            "regex_fullmatch": false
+          }
+        },
+        {
+          "call_id": "b06e4dcd-4220-4601-b5ec-cdcd7d1af8a2",
+          "path": "/data",
+          "regex_search": true,
+          "regex_fullmatch": true,
+          "actual_source_numeric_leaf": {
+            "path": "/data/last",
+            "value": 33.4,
+            "unit": "nghìn đồng/cổ phiếu",
+            "date": "2026-10-30",
+            "regex_search": true,
+            "regex_fullmatch": false
+          }
+        },
+        {
+          "call_id": "f0bf54ff-7603-467b-b5bb-9bbdf4172213",
+          "path": "/data",
+          "regex_search": true,
+          "regex_fullmatch": true,
+          "actual_source_numeric_leaf": {
+            "path": "/data/last",
+            "value": 30.3,
+            "unit": "nghìn đồng/cổ phiếu",
+            "date": "2026-10-30",
+            "regex_search": true,
+            "regex_fullmatch": false
+          }
+        },
+        {
+          "call_id": "c9262d5b-2d74-4055-a266-b9ba182de75c",
+          "path": "/data",
+          "regex_search": true,
+          "regex_fullmatch": true,
+          "actual_source_numeric_leaf": {
+            "path": "/data/last",
+            "value": 21.6,
+            "unit": "nghìn đồng/cổ phiếu",
+            "date": "2026-10-30",
+            "regex_search": true,
+            "regex_fullmatch": false
+          }
+        },
+        {
+          "call_id": "3affb7cb-dd94-455d-aac1-91b4dbffb8f2",
+          "path": "/data",
+          "regex_search": true,
+          "regex_fullmatch": true,
+          "actual_source_numeric_leaf": {
+            "path": "/data/last",
+            "value": 19.3,
+            "unit": "nghìn đồng/cổ phiếu",
+            "date": "2026-10-30",
+            "regex_search": true,
+            "regex_fullmatch": false
+          }
+        }
+      ]
+    },
+    {
+      "trial_id": "smoke-agg-01__opencode__r1",
+      "mcp_call_id": "b0f46b72-4bec-40c2-9286-92e9ae2ddc55",
+      "sdk_call_id": "chatcmpl-tool-813d94614a581f97",
+      "generating_provider_index": 4,
+      "generating_upstream_attempted": true,
+      "generating_status": 200,
+      "ledger_path": "/home/doanlong/extra/benchmark/experiments/finance-v44-study/results/financial-v44-smoke-deepseek-20261107-startupfix1/trials/smoke-agg-01__opencode__r1/attempts/01-d4af241051d9/mcp.jsonl",
+      "error": "numeric source path must be under /data/",
+      "wire": [
+        {
+          "kind": "native_request_capture",
+          "path": "/home/doanlong/extra/benchmark/experiments/finance-v44-study/results/financial-v44-smoke-deepseek-20261107-startupfix1/trials/smoke-agg-01__opencode__r1/attempts/01-d4af241051d9/provider-requests/0004-native.json",
+          "pattern": "^/data(?:/|$)",
+          "explicit_mode_flags_anywhere_in_request": [],
+          "tool_choice": null
+        },
+        {
+          "kind": "effective_request_capture",
+          "path": "/home/doanlong/extra/benchmark/experiments/finance-v44-study/results/financial-v44-smoke-deepseek-20261107-startupfix1/trials/smoke-agg-01__opencode__r1/attempts/01-d4af241051d9/provider-requests/0004-effective.json",
+          "pattern": "^/data(?:/|$)",
+          "explicit_mode_flags_anywhere_in_request": [],
+          "tool_choice": null
+        }
+      ],
+      "operands": [
+        {
+          "call_id": "09a4494c-6f98-4c33-9be7-0fdb60a32d11",
+          "path": "/data",
+          "regex_search": true,
+          "regex_fullmatch": true,
+          "actual_source_numeric_leaf": {
+            "path": "/data/last",
+            "value": 56.3,
+            "unit": "nghìn đồng/cổ phiếu",
+            "date": "2026-10-30",
+            "regex_search": true,
+            "regex_fullmatch": false
+          }
+        },
+        {
+          "call_id": "b06e4dcd-4220-4601-b5ec-cdcd7d1af8a2",
+          "path": "/data",
+          "regex_search": true,
+          "regex_fullmatch": true,
+          "actual_source_numeric_leaf": {
+            "path": "/data/last",
+            "value": 33.4,
+            "unit": "nghìn đồng/cổ phiếu",
+            "date": "2026-10-30",
+            "regex_search": true,
+            "regex_fullmatch": false
+          }
+        },
+        {
+          "call_id": "f0bf54ff-7603-467b-b5bb-9bbdf4172213",
+          "path": "/data",
+          "regex_search": true,
+          "regex_fullmatch": true,
+          "actual_source_numeric_leaf": {
+            "path": "/data/last",
+            "value": 30.3,
+            "unit": "nghìn đồng/cổ phiếu",
+            "date": "2026-10-30",
+            "regex_search": true,
+            "regex_fullmatch": false
+          }
+        },
+        {
+          "call_id": "c9262d5b-2d74-4055-a266-b9ba182de75c",
+          "path": "/data",
+          "regex_search": true,
+          "regex_fullmatch": true,
+          "actual_source_numeric_leaf": {
+            "path": "/data/last",
+            "value": 21.6,
+            "unit": "nghìn đồng/cổ phiếu",
+            "date": "2026-10-30",
+            "regex_search": true,
+            "regex_fullmatch": false
+          }
+        },
+        {
+          "call_id": "3affb7cb-dd94-455d-aac1-91b4dbffb8f2",
+          "path": "/data",
+          "regex_search": true,
+          "regex_fullmatch": true,
+          "actual_source_numeric_leaf": {
+            "path": "/data/last",
+            "value": 19.3,
+            "unit": "nghìn đồng/cổ phiếu",
+            "date": "2026-10-30",
+            "regex_search": true,
+            "regex_fullmatch": false
+          }
+        }
+      ]
+    },
+    {
+      "trial_id": "smoke-agg-01__opencode__r2",
+      "mcp_call_id": "802c1445-692a-4d28-a2fc-0391d08c827c",
+      "sdk_call_id": "chatcmpl-tool-8b1af16ac6f0c419",
+      "generating_provider_index": 2,
+      "generating_upstream_attempted": true,
+      "generating_status": 200,
+      "ledger_path": "/home/doanlong/extra/benchmark/experiments/finance-v44-study/results/financial-v44-smoke-deepseek-20261107-startupfix1/trials/smoke-agg-01__opencode__r2/attempts/01-aea6db80b9ac/mcp.jsonl",
+      "error": "''",
+      "wire": [
+        {
+          "kind": "native_request_capture",
+          "path": "/home/doanlong/extra/benchmark/experiments/finance-v44-study/results/financial-v44-smoke-deepseek-20261107-startupfix1/trials/smoke-agg-01__opencode__r2/attempts/01-aea6db80b9ac/provider-requests/0002-native.json",
+          "pattern": "^/data(?:/|$)",
+          "explicit_mode_flags_anywhere_in_request": [],
+          "tool_choice": null
+        },
+        {
+          "kind": "effective_request_capture",
+          "path": "/home/doanlong/extra/benchmark/experiments/finance-v44-study/results/financial-v44-smoke-deepseek-20261107-startupfix1/trials/smoke-agg-01__opencode__r2/attempts/01-aea6db80b9ac/provider-requests/0002-effective.json",
+          "pattern": "^/data(?:/|$)",
+          "explicit_mode_flags_anywhere_in_request": [],
+          "tool_choice": null
+        }
+      ],
+      "operands": [
+        {
+          "call_id": "b3ad5762-243f-4a1f-a0a2-c0a7668eabaa",
+          "path": "/data/",
+          "regex_search": true,
+          "regex_fullmatch": true,
+          "actual_source_numeric_leaf": {
+            "path": "/data/last",
+            "value": 56.3,
+            "unit": "nghìn đồng/cổ phiếu",
+            "date": "2026-10-30",
+            "regex_search": true,
+            "regex_fullmatch": false
+          }
+        }
+      ]
+    },
+    {
+      "trial_id": "smoke-agg-01__opencode__r2",
+      "mcp_call_id": "3fed5afb-66dd-4985-91fc-48f29939dc45",
+      "sdk_call_id": "chatcmpl-tool-8bf8f26b8bfb1b7e",
+      "generating_provider_index": 3,
+      "generating_upstream_attempted": true,
+      "generating_status": 200,
+      "ledger_path": "/home/doanlong/extra/benchmark/experiments/finance-v44-study/results/financial-v44-smoke-deepseek-20261107-startupfix1/trials/smoke-agg-01__opencode__r2/attempts/01-aea6db80b9ac/mcp.jsonl",
+      "error": "numeric source path must be under /data/",
+      "wire": [
+        {
+          "kind": "native_request_capture",
+          "path": "/home/doanlong/extra/benchmark/experiments/finance-v44-study/results/financial-v44-smoke-deepseek-20261107-startupfix1/trials/smoke-agg-01__opencode__r2/attempts/01-aea6db80b9ac/provider-requests/0003-native.json",
+          "pattern": "^/data(?:/|$)",
+          "explicit_mode_flags_anywhere_in_request": [],
+          "tool_choice": null
+        },
+        {
+          "kind": "effective_request_capture",
+          "path": "/home/doanlong/extra/benchmark/experiments/finance-v44-study/results/financial-v44-smoke-deepseek-20261107-startupfix1/trials/smoke-agg-01__opencode__r2/attempts/01-aea6db80b9ac/provider-requests/0003-effective.json",
+          "pattern": "^/data(?:/|$)",
+          "explicit_mode_flags_anywhere_in_request": [],
+          "tool_choice": null
+        }
+      ],
+      "operands": [
+        {
+          "call_id": "b3ad5762-243f-4a1f-a0a2-c0a7668eabaa",
+          "path": "/data",
+          "regex_search": true,
+          "regex_fullmatch": true,
+          "actual_source_numeric_leaf": {
+            "path": "/data/last",
+            "value": 56.3,
+            "unit": "nghìn đồng/cổ phiếu",
+            "date": "2026-10-30",
+            "regex_search": true,
+            "regex_fullmatch": false
+          }
+        },
+        {
+          "call_id": "5f9e244a-a44a-4fdd-911b-ced1769c007a",
+          "path": "/data",
+          "regex_search": true,
+          "regex_fullmatch": true,
+          "actual_source_numeric_leaf": {
+            "path": "/data/last",
+            "value": 33.4,
+            "unit": "nghìn đồng/cổ phiếu",
+            "date": "2026-10-30",
+            "regex_search": true,
+            "regex_fullmatch": false
+          }
+        },
+        {
+          "call_id": "81ff4a4b-3121-4c13-a7e8-1119deea3147",
+          "path": "/data",
+          "regex_search": true,
+          "regex_fullmatch": true,
+          "actual_source_numeric_leaf": {
+            "path": "/data/last",
+            "value": 30.3,
+            "unit": "nghìn đồng/cổ phiếu",
+            "date": "2026-10-30",
+            "regex_search": true,
+            "regex_fullmatch": false
+          }
+        },
+        {
+          "call_id": "d0312ad8-2afd-4da4-9c53-63ac2abd42d3",
+          "path": "/data",
+          "regex_search": true,
+          "regex_fullmatch": true,
+          "actual_source_numeric_leaf": {
+            "path": "/data/last",
+            "value": 21.6,
+            "unit": "nghìn đồng/cổ phiếu",
+            "date": "2026-10-30",
+            "regex_search": true,
+            "regex_fullmatch": false
+          }
+        },
+        {
+          "call_id": "412b1a4b-3e94-402b-a0ec-18f0b9d533c2",
+          "path": "/data",
+          "regex_search": true,
+          "regex_fullmatch": true,
+          "actual_source_numeric_leaf": {
+            "path": "/data/last",
+            "value": 19.3,
+            "unit": "nghìn đồng/cổ phiếu",
+            "date": "2026-10-30",
+            "regex_search": true,
+            "regex_fullmatch": false
+          }
+        }
+      ]
+    },
+    {
+      "trial_id": "smoke-agg-01__opencode__r2",
+      "mcp_call_id": "90b6e926-e3ea-4548-aa02-1efa6087a889",
+      "sdk_call_id": "chatcmpl-tool-8eb8be0f612d4fe1",
+      "generating_provider_index": 4,
+      "generating_upstream_attempted": true,
+      "generating_status": 200,
+      "ledger_path": "/home/doanlong/extra/benchmark/experiments/finance-v44-study/results/financial-v44-smoke-deepseek-20261107-startupfix1/trials/smoke-agg-01__opencode__r2/attempts/01-aea6db80b9ac/mcp.jsonl",
+      "error": "numeric source path must be under /data/",
+      "wire": [
+        {
+          "kind": "native_request_capture",
+          "path": "/home/doanlong/extra/benchmark/experiments/finance-v44-study/results/financial-v44-smoke-deepseek-20261107-startupfix1/trials/smoke-agg-01__opencode__r2/attempts/01-aea6db80b9ac/provider-requests/0004-native.json",
+          "pattern": "^/data(?:/|$)",
+          "explicit_mode_flags_anywhere_in_request": [],
+          "tool_choice": null
+        },
+        {
+          "kind": "effective_request_capture",
+          "path": "/home/doanlong/extra/benchmark/experiments/finance-v44-study/results/financial-v44-smoke-deepseek-20261107-startupfix1/trials/smoke-agg-01__opencode__r2/attempts/01-aea6db80b9ac/provider-requests/0004-effective.json",
+          "pattern": "^/data(?:/|$)",
+          "explicit_mode_flags_anywhere_in_request": [],
+          "tool_choice": null
+        }
+      ],
+      "operands": [
+        {
+          "call_id": "b3ad5762-243f-4a1f-a0a2-c0a7668eabaa",
+          "path": "/data",
+          "regex_search": true,
+          "regex_fullmatch": true,
+          "actual_source_numeric_leaf": {
+            "path": "/data/last",
+            "value": 56.3,
+            "unit": "nghìn đồng/cổ phiếu",
+            "date": "2026-10-30",
+            "regex_search": true,
+            "regex_fullmatch": false
+          }
+        },
+        {
+          "call_id": "5f9e244a-a44a-4fdd-911b-ced1769c007a",
+          "path": "/data",
+          "regex_search": true,
+          "regex_fullmatch": true,
+          "actual_source_numeric_leaf": {
+            "path": "/data/last",
+            "value": 33.4,
+            "unit": "nghìn đồng/cổ phiếu",
+            "date": "2026-10-30",
+            "regex_search": true,
+            "regex_fullmatch": false
+          }
+        },
+        {
+          "call_id": "81ff4a4b-3121-4c13-a7e8-1119deea3147",
+          "path": "/data",
+          "regex_search": true,
+          "regex_fullmatch": true,
+          "actual_source_numeric_leaf": {
+            "path": "/data/last",
+            "value": 30.3,
+            "unit": "nghìn đồng/cổ phiếu",
+            "date": "2026-10-30",
+            "regex_search": true,
+            "regex_fullmatch": false
+          }
+        },
+        {
+          "call_id": "d0312ad8-2afd-4da4-9c53-63ac2abd42d3",
+          "path": "/data",
+          "regex_search": true,
+          "regex_fullmatch": true,
+          "actual_source_numeric_leaf": {
+            "path": "/data/last",
+            "value": 21.6,
+            "unit": "nghìn đồng/cổ phiếu",
+            "date": "2026-10-30",
+            "regex_search": true,
+            "regex_fullmatch": false
+          }
+        },
+        {
+          "call_id": "412b1a4b-3e94-402b-a0ec-18f0b9d533c2",
+          "path": "/data",
+          "regex_search": true,
+          "regex_fullmatch": true,
+          "actual_source_numeric_leaf": {
+            "path": "/data/last",
+            "value": 19.3,
+            "unit": "nghìn đồng/cổ phiếu",
+            "date": "2026-10-30",
+            "regex_search": true,
+            "regex_fullmatch": false
+          }
+        }
+      ]
+    },
+    {
+      "trial_id": "smoke-agg-01__opentrading_baseline__r1",
+      "mcp_call_id": "f9d9c113-15b8-4370-b508-dd1ae0e9b510",
+      "sdk_call_id": "chatcmpl-tool-80d03d3dd7587864",
+      "generating_provider_index": 2,
+      "generating_upstream_attempted": true,
+      "generating_status": 200,
+      "ledger_path": "/home/doanlong/extra/benchmark/experiments/finance-v44-study/results/financial-v44-smoke-deepseek-20261107-startupfix1/trials/smoke-agg-01__opentrading_baseline__r1/attempts/01-033b32f5f62c/mcp.jsonl",
+      "error": "''",
+      "wire": [
+        {
+          "kind": "native_request_capture",
+          "path": "/home/doanlong/extra/benchmark/experiments/finance-v44-study/results/financial-v44-smoke-deepseek-20261107-startupfix1/trials/smoke-agg-01__opentrading_baseline__r1/attempts/01-033b32f5f62c/provider-requests/0002-native.json",
+          "pattern": "^/data(?:/|$)",
+          "explicit_mode_flags_anywhere_in_request": [],
+          "tool_choice": "auto"
+        },
+        {
+          "kind": "effective_request_capture",
+          "path": "/home/doanlong/extra/benchmark/experiments/finance-v44-study/results/financial-v44-smoke-deepseek-20261107-startupfix1/trials/smoke-agg-01__opentrading_baseline__r1/attempts/01-033b32f5f62c/provider-requests/0002-effective.json",
+          "pattern": "^/data(?:/|$)",
+          "explicit_mode_flags_anywhere_in_request": [],
+          "tool_choice": "auto"
+        }
+      ],
+      "operands": [
+        {
+          "call_id": "e4428e64-4d4c-40ce-81b1-b5fa25c7af16",
+          "path": "/data/",
+          "regex_search": true,
+          "regex_fullmatch": true,
+          "actual_source_numeric_leaf": {
+            "path": "/data/last",
+            "value": 56.3,
+            "unit": "nghìn đồng/cổ phiếu",
+            "date": "2026-10-30",
+            "regex_search": true,
+            "regex_fullmatch": false
+          }
+        }
+      ]
+    },
+    {
+      "trial_id": "smoke-agg-01__opentrading_baseline__r2",
+      "mcp_call_id": "b33478c3-1cb4-4a08-8010-57ae4b8f0159",
+      "sdk_call_id": "chatcmpl-tool-88c86700a5ccc37e",
+      "generating_provider_index": 2,
+      "generating_upstream_attempted": true,
+      "generating_status": 200,
+      "ledger_path": "/home/doanlong/extra/benchmark/experiments/finance-v44-study/results/financial-v44-smoke-deepseek-20261107-startupfix1/trials/smoke-agg-01__opentrading_baseline__r2/attempts/01-dad39aff863e/mcp.jsonl",
+      "error": "''",
+      "wire": [
+        {
+          "kind": "native_request_capture",
+          "path": "/home/doanlong/extra/benchmark/experiments/finance-v44-study/results/financial-v44-smoke-deepseek-20261107-startupfix1/trials/smoke-agg-01__opentrading_baseline__r2/attempts/01-dad39aff863e/provider-requests/0002-native.json",
+          "pattern": "^/data(?:/|$)",
+          "explicit_mode_flags_anywhere_in_request": [],
+          "tool_choice": "auto"
+        },
+        {
+          "kind": "effective_request_capture",
+          "path": "/home/doanlong/extra/benchmark/experiments/finance-v44-study/results/financial-v44-smoke-deepseek-20261107-startupfix1/trials/smoke-agg-01__opentrading_baseline__r2/attempts/01-dad39aff863e/provider-requests/0002-effective.json",
+          "pattern": "^/data(?:/|$)",
+          "explicit_mode_flags_anywhere_in_request": [],
+          "tool_choice": "auto"
+        }
+      ],
+      "operands": [
+        {
+          "call_id": "c21ab384-f8c2-4072-9369-49d22d3362cc",
+          "path": "/data/",
+          "regex_search": true,
+          "regex_fullmatch": true,
+          "actual_source_numeric_leaf": {
+            "path": "/data/last",
+            "value": 56.3,
+            "unit": "nghìn đồng/cổ phiếu",
+            "date": "2026-10-30",
+            "regex_search": true,
+            "regex_fullmatch": false
+          }
+        }
+      ]
+    },
+    {
+      "trial_id": "smoke-agg-01__opentrading_baseline__r2",
+      "mcp_call_id": "938885b3-e9a0-46b9-aa04-773af680355d",
+      "sdk_call_id": "chatcmpl-tool-a5b4e321012a2879",
+      "generating_provider_index": 3,
+      "generating_upstream_attempted": true,
+      "generating_status": 200,
+      "ledger_path": "/home/doanlong/extra/benchmark/experiments/finance-v44-study/results/financial-v44-smoke-deepseek-20261107-startupfix1/trials/smoke-agg-01__opentrading_baseline__r2/attempts/01-dad39aff863e/mcp.jsonl",
+      "error": "numeric source path must be under /data/",
+      "wire": [
+        {
+          "kind": "native_request_capture",
+          "path": "/home/doanlong/extra/benchmark/experiments/finance-v44-study/results/financial-v44-smoke-deepseek-20261107-startupfix1/trials/smoke-agg-01__opentrading_baseline__r2/attempts/01-dad39aff863e/provider-requests/0003-native.json",
+          "pattern": "^/data(?:/|$)",
+          "explicit_mode_flags_anywhere_in_request": [],
+          "tool_choice": "auto"
+        },
+        {
+          "kind": "effective_request_capture",
+          "path": "/home/doanlong/extra/benchmark/experiments/finance-v44-study/results/financial-v44-smoke-deepseek-20261107-startupfix1/trials/smoke-agg-01__opentrading_baseline__r2/attempts/01-dad39aff863e/provider-requests/0003-effective.json",
+          "pattern": "^/data(?:/|$)",
+          "explicit_mode_flags_anywhere_in_request": [],
+          "tool_choice": "auto"
+        }
+      ],
+      "operands": [
+        {
+          "call_id": "c21ab384-f8c2-4072-9369-49d22d3362cc",
+          "path": "/data",
+          "regex_search": true,
+          "regex_fullmatch": true,
+          "actual_source_numeric_leaf": {
+            "path": "/data/last",
+            "value": 56.3,
+            "unit": "nghìn đồng/cổ phiếu",
+            "date": "2026-10-30",
+            "regex_search": true,
+            "regex_fullmatch": false
+          }
+        },
+        {
+          "call_id": "239ce7d8-7273-4719-a3e2-7c9cfa878334",
+          "path": "/data",
+          "regex_search": true,
+          "regex_fullmatch": true,
+          "actual_source_numeric_leaf": {
+            "path": "/data/last",
+            "value": 33.4,
+            "unit": "nghìn đồng/cổ phiếu",
+            "date": "2026-10-30",
+            "regex_search": true,
+            "regex_fullmatch": false
+          }
+        },
+        {
+          "call_id": "be744309-a1a5-46c7-a8e6-66877a42b2ed",
+          "path": "/data",
+          "regex_search": true,
+          "regex_fullmatch": true,
+          "actual_source_numeric_leaf": {
+            "path": "/data/last",
+            "value": 30.3,
+            "unit": "nghìn đồng/cổ phiếu",
+            "date": "2026-10-30",
+            "regex_search": true,
+            "regex_fullmatch": false
+          }
+        },
+        {
+          "call_id": "3a28e165-bf7f-4c7e-b81a-fce6cad247dc",
+          "path": "/data",
+          "regex_search": true,
+          "regex_fullmatch": true,
+          "actual_source_numeric_leaf": {
+            "path": "/data/last",
+            "value": 21.6,
+            "unit": "nghìn đồng/cổ phiếu",
+            "date": "2026-10-30",
+            "regex_search": true,
+            "regex_fullmatch": false
+          }
+        },
+        {
+          "call_id": "cda04824-7df9-46c5-a00b-fc1bc5b45c7f",
+          "path": "/data",
+          "regex_search": true,
+          "regex_fullmatch": true,
+          "actual_source_numeric_leaf": {
+            "path": "/data/last",
+            "value": 19.3,
+            "unit": "nghìn đồng/cổ phiếu",
+            "date": "2026-10-30",
+            "regex_search": true,
+            "regex_fullmatch": false
+          }
+        }
+      ]
+    },
+    {
+      "trial_id": "smoke-agg-01__opentrading_finance__r1",
+      "mcp_call_id": "7e913fa2-b45b-48a8-8f4b-4891b4d98774",
+      "sdk_call_id": "chatcmpl-tool-bd8178cc9be2afeb",
+      "generating_provider_index": 2,
+      "generating_upstream_attempted": true,
+      "generating_status": 200,
+      "ledger_path": "/home/doanlong/extra/benchmark/experiments/finance-v44-study/results/financial-v44-smoke-deepseek-20261107-startupfix1/trials/smoke-agg-01__opentrading_finance__r1/attempts/01-ddb279a46ee6/mcp.jsonl",
+      "error": "''",
+      "wire": [
+        {
+          "kind": "native_request_capture",
+          "path": "/home/doanlong/extra/benchmark/experiments/finance-v44-study/results/financial-v44-smoke-deepseek-20261107-startupfix1/trials/smoke-agg-01__opentrading_finance__r1/attempts/01-ddb279a46ee6/provider-requests/0002-native.json",
+          "pattern": "^/data(?:/|$)",
+          "explicit_mode_flags_anywhere_in_request": [],
+          "tool_choice": "auto"
+        },
+        {
+          "kind": "effective_request_capture",
+          "path": "/home/doanlong/extra/benchmark/experiments/finance-v44-study/results/financial-v44-smoke-deepseek-20261107-startupfix1/trials/smoke-agg-01__opentrading_finance__r1/attempts/01-ddb279a46ee6/provider-requests/0002-effective.json",
+          "pattern": "^/data(?:/|$)",
+          "explicit_mode_flags_anywhere_in_request": [],
+          "tool_choice": "auto"
+        }
+      ],
+      "operands": [
+        {
+          "call_id": "41f4122c-711a-4d75-b514-8aea0fbccff8",
+          "path": "/data/",
+          "regex_search": true,
+          "regex_fullmatch": true,
+          "actual_source_numeric_leaf": {
+            "path": "/data/last",
+            "value": 56.3,
+            "unit": "nghìn đồng/cổ phiếu",
+            "date": "2026-10-30",
+            "regex_search": true,
+            "regex_fullmatch": false
+          }
+        }
+      ]
+    },
+    {
+      "trial_id": "smoke-agg-01__opentrading_finance__r1",
+      "mcp_call_id": "61bb4b6f-93f7-4569-8d8c-fa2d280c350e",
+      "sdk_call_id": "chatcmpl-tool-b12a5933cae278af",
+      "generating_provider_index": 3,
+      "generating_upstream_attempted": true,
+      "generating_status": 200,
+      "ledger_path": "/home/doanlong/extra/benchmark/experiments/finance-v44-study/results/financial-v44-smoke-deepseek-20261107-startupfix1/trials/smoke-agg-01__opentrading_finance__r1/attempts/01-ddb279a46ee6/mcp.jsonl",
+      "error": "numeric source path must be under /data/",
+      "wire": [
+        {
+          "kind": "native_request_capture",
+          "path": "/home/doanlong/extra/benchmark/experiments/finance-v44-study/results/financial-v44-smoke-deepseek-20261107-startupfix1/trials/smoke-agg-01__opentrading_finance__r1/attempts/01-ddb279a46ee6/provider-requests/0003-native.json",
+          "pattern": "^/data(?:/|$)",
+          "explicit_mode_flags_anywhere_in_request": [],
+          "tool_choice": "auto"
+        },
+        {
+          "kind": "effective_request_capture",
+          "path": "/home/doanlong/extra/benchmark/experiments/finance-v44-study/results/financial-v44-smoke-deepseek-20261107-startupfix1/trials/smoke-agg-01__opentrading_finance__r1/attempts/01-ddb279a46ee6/provider-requests/0003-effective.json",
+          "pattern": "^/data(?:/|$)",
+          "explicit_mode_flags_anywhere_in_request": [],
+          "tool_choice": "auto"
+        }
+      ],
+      "operands": [
+        {
+          "call_id": "41f4122c-711a-4d75-b514-8aea0fbccff8",
+          "path": "/data",
+          "regex_search": true,
+          "regex_fullmatch": true,
+          "actual_source_numeric_leaf": {
+            "path": "/data/last",
+            "value": 56.3,
+            "unit": "nghìn đồng/cổ phiếu",
+            "date": "2026-10-30",
+            "regex_search": true,
+            "regex_fullmatch": false
+          }
+        },
+        {
+          "call_id": "a028c283-efda-41f1-985a-e539aeece9a4",
+          "path": "/data",
+          "regex_search": true,
+          "regex_fullmatch": true,
+          "actual_source_numeric_leaf": {
+            "path": "/data/last",
+            "value": 33.4,
+            "unit": "nghìn đồng/cổ phiếu",
+            "date": "2026-10-30",
+            "regex_search": true,
+            "regex_fullmatch": false
+          }
+        },
+        {
+          "call_id": "68da1511-ef0d-4737-8265-1202509d31f5",
+          "path": "/data",
+          "regex_search": true,
+          "regex_fullmatch": true,
+          "actual_source_numeric_leaf": {
+            "path": "/data/last",
+            "value": 30.3,
+            "unit": "nghìn đồng/cổ phiếu",
+            "date": "2026-10-30",
+            "regex_search": true,
+            "regex_fullmatch": false
+          }
+        },
+        {
+          "call_id": "450dfd3b-69b2-4d1f-8289-e48f731b20c4",
+          "path": "/data",
+          "regex_search": true,
+          "regex_fullmatch": true,
+          "actual_source_numeric_leaf": {
+            "path": "/data/last",
+            "value": 21.6,
+            "unit": "nghìn đồng/cổ phiếu",
+            "date": "2026-10-30",
+            "regex_search": true,
+            "regex_fullmatch": false
+          }
+        },
+        {
+          "call_id": "3ecc41dd-4965-484d-b97e-df4aef4fa03d",
+          "path": "/data",
+          "regex_search": true,
+          "regex_fullmatch": true,
+          "actual_source_numeric_leaf": {
+            "path": "/data/last",
+            "value": 19.3,
+            "unit": "nghìn đồng/cổ phiếu",
+            "date": "2026-10-30",
+            "regex_search": true,
+            "regex_fullmatch": false
+          }
+        }
+      ]
+    },
+    {
+      "trial_id": "smoke-agg-01__opentrading_finance__r2",
+      "mcp_call_id": "137fd47d-ba8a-440d-b58c-ebb2db151323",
+      "sdk_call_id": "chatcmpl-tool-bfa41b5b2e790270",
+      "generating_provider_index": 2,
+      "generating_upstream_attempted": true,
+      "generating_status": 200,
+      "ledger_path": "/home/doanlong/extra/benchmark/experiments/finance-v44-study/results/financial-v44-smoke-deepseek-20261107-startupfix1/trials/smoke-agg-01__opentrading_finance__r2/attempts/01-3482089719c5/mcp.jsonl",
+      "error": "''",
+      "wire": [
+        {
+          "kind": "native_request_capture",
+          "path": "/home/doanlong/extra/benchmark/experiments/finance-v44-study/results/financial-v44-smoke-deepseek-20261107-startupfix1/trials/smoke-agg-01__opentrading_finance__r2/attempts/01-3482089719c5/provider-requests/0002-native.json",
+          "pattern": "^/data(?:/|$)",
+          "explicit_mode_flags_anywhere_in_request": [],
+          "tool_choice": "auto"
+        },
+        {
+          "kind": "effective_request_capture",
+          "path": "/home/doanlong/extra/benchmark/experiments/finance-v44-study/results/financial-v44-smoke-deepseek-20261107-startupfix1/trials/smoke-agg-01__opentrading_finance__r2/attempts/01-3482089719c5/provider-requests/0002-effective.json",
+          "pattern": "^/data(?:/|$)",
+          "explicit_mode_flags_anywhere_in_request": [],
+          "tool_choice": "auto"
+        }
+      ],
+      "operands": [
+        {
+          "call_id": "1fd79f48-39e7-4624-9b02-ed9a422bd7a1",
+          "path": "/data/",
+          "regex_search": true,
+          "regex_fullmatch": true,
+          "actual_source_numeric_leaf": {
+            "path": "/data/last",
+            "value": 56.3,
+            "unit": "nghìn đồng/cổ phiếu",
+            "date": "2026-10-30",
+            "regex_search": true,
+            "regex_fullmatch": false
+          }
+        }
+      ]
+    },
+    {
+      "trial_id": "smoke-agg-01__opentrading_finance__r2",
+      "mcp_call_id": "392392df-9fe6-4673-96a2-983845850fa7",
+      "sdk_call_id": "chatcmpl-tool-92f3120d5358c5c6",
+      "generating_provider_index": 3,
+      "generating_upstream_attempted": true,
+      "generating_status": 200,
+      "ledger_path": "/home/doanlong/extra/benchmark/experiments/finance-v44-study/results/financial-v44-smoke-deepseek-20261107-startupfix1/trials/smoke-agg-01__opentrading_finance__r2/attempts/01-3482089719c5/mcp.jsonl",
+      "error": "numeric source path must be under /data/",
+      "wire": [
+        {
+          "kind": "native_request_capture",
+          "path": "/home/doanlong/extra/benchmark/experiments/finance-v44-study/results/financial-v44-smoke-deepseek-20261107-startupfix1/trials/smoke-agg-01__opentrading_finance__r2/attempts/01-3482089719c5/provider-requests/0003-native.json",
+          "pattern": "^/data(?:/|$)",
+          "explicit_mode_flags_anywhere_in_request": [],
+          "tool_choice": "auto"
+        },
+        {
+          "kind": "effective_request_capture",
+          "path": "/home/doanlong/extra/benchmark/experiments/finance-v44-study/results/financial-v44-smoke-deepseek-20261107-startupfix1/trials/smoke-agg-01__opentrading_finance__r2/attempts/01-3482089719c5/provider-requests/0003-effective.json",
+          "pattern": "^/data(?:/|$)",
+          "explicit_mode_flags_anywhere_in_request": [],
+          "tool_choice": "auto"
+        }
+      ],
+      "operands": [
+        {
+          "call_id": "1fd79f48-39e7-4624-9b02-ed9a422bd7a1",
+          "path": "/data",
+          "regex_search": true,
+          "regex_fullmatch": true,
+          "actual_source_numeric_leaf": {
+            "path": "/data/last",
+            "value": 56.3,
+            "unit": "nghìn đồng/cổ phiếu",
+            "date": "2026-10-30",
+            "regex_search": true,
+            "regex_fullmatch": false
+          }
+        },
+        {
+          "call_id": "fabab2a6-ac97-4ec3-9f74-e86911c1ec06",
+          "path": "/data",
+          "regex_search": true,
+          "regex_fullmatch": true,
+          "actual_source_numeric_leaf": {
+            "path": "/data/last",
+            "value": 33.4,
+            "unit": "nghìn đồng/cổ phiếu",
+            "date": "2026-10-30",
+            "regex_search": true,
+            "regex_fullmatch": false
+          }
+        },
+        {
+          "call_id": "f8be76ec-491c-4eba-b274-8baa99a0e3e7",
+          "path": "/data",
+          "regex_search": true,
+          "regex_fullmatch": true,
+          "actual_source_numeric_leaf": {
+            "path": "/data/last",
+            "value": 30.3,
+            "unit": "nghìn đồng/cổ phiếu",
+            "date": "2026-10-30",
+            "regex_search": true,
+            "regex_fullmatch": false
+          }
+        },
+        {
+          "call_id": "40ddcdb8-d6b6-4259-b57e-f095123eb78e",
+          "path": "/data",
+          "regex_search": true,
+          "regex_fullmatch": true,
+          "actual_source_numeric_leaf": {
+            "path": "/data/last",
+            "value": 21.6,
+            "unit": "nghìn đồng/cổ phiếu",
+            "date": "2026-10-30",
+            "regex_search": true,
+            "regex_fullmatch": false
+          }
+        },
+        {
+          "call_id": "763449f0-f734-4161-ae5d-a39853e51745",
+          "path": "/data",
+          "regex_search": true,
+          "regex_fullmatch": true,
+          "actual_source_numeric_leaf": {
+            "path": "/data/last",
+            "value": 19.3,
+            "unit": "nghìn đồng/cổ phiếu",
+            "date": "2026-10-30",
+            "regex_search": true,
+            "regex_fullmatch": false
+          }
+        }
+      ]
+    }
+  ],
+  "capture_hashes": {
+    "/home/doanlong/extra/benchmark/experiments/finance-v44-study/results/financial-v44-smoke-deepseek-20261107-startupfix1/trials/smoke-agg-01__dsh__r1/attempts/01-8390461e3b66/provider-requests/0001-native.json": {
+      "sha256": "5768ec1ac50e87eb5eb3967521fbc241ce27a0155cc8cd210fda9c16f662b3e7",
+      "bytes": 11429
+    },
+    "/home/doanlong/extra/benchmark/experiments/finance-v44-study/results/financial-v44-smoke-deepseek-20261107-startupfix1/trials/smoke-agg-01__dsh__r1/attempts/01-8390461e3b66/provider-requests/0002-native.json": {
+      "sha256": "91faf585004f3871b8d08b8aad6bd296cbc0f90d42a3647630746e7b010d2cb1",
+      "bytes": 16734
+    },
+    "/home/doanlong/extra/benchmark/experiments/finance-v44-study/results/financial-v44-smoke-deepseek-20261107-startupfix1/trials/smoke-agg-01__dsh__r1/attempts/01-8390461e3b66/provider-requests/0003-native.json": {
+      "sha256": "95139fc465247028e6068930403a4c390b01a2179149afc2139947d76ba89cd7",
+      "bytes": 18003
+    },
+    "/home/doanlong/extra/benchmark/experiments/finance-v44-study/results/financial-v44-smoke-deepseek-20261107-startupfix1/trials/smoke-agg-01__dsh__r1/attempts/01-8390461e3b66/provider-requests/0004-native.json": {
+      "sha256": "eb0ced247caeec2d888b40d4470bcb83ee2c97843a83aeebcc1eb55980a006f8",
+      "bytes": 19260
+    },
+    "/home/doanlong/extra/benchmark/experiments/finance-v44-study/results/financial-v44-smoke-deepseek-20261107-startupfix1/trials/smoke-agg-01__dsh__r1/attempts/01-8390461e3b66/provider-requests/0005-native.json": {
+      "sha256": "d8752493e2d02f343fa5ff48a8d0a6cc2a5e331cb5cc5966318c3a763167fa8d",
+      "bytes": 20484
+    },
+    "/home/doanlong/extra/benchmark/experiments/finance-v44-study/results/financial-v44-smoke-deepseek-20261107-startupfix1/trials/smoke-agg-01__dsh__r1/attempts/01-8390461e3b66/provider-requests/0006-native.json": {
+      "sha256": "d9fc4af5aea73793e1e78530b45fd8d4ba83e59f8af4f2fd09629b91442fe1b2",
+      "bytes": 21721
+    },
+    "/home/doanlong/extra/benchmark/experiments/finance-v44-study/results/financial-v44-smoke-deepseek-20261107-startupfix1/trials/smoke-agg-01__dsh__r1/attempts/01-8390461e3b66/provider-requests/0002-effective.json": {
+      "sha256": "d8c993ed3dc47f69905c28804c7c34587df55eebddf80ce53fe9a088b5c95661",
+      "bytes": 18707
+    },
+    "/home/doanlong/extra/benchmark/experiments/finance-v44-study/results/financial-v44-smoke-deepseek-20261107-startupfix1/trials/smoke-agg-01__dsh__r1/attempts/01-8390461e3b66/provider-requests/0003-effective.json": {
+      "sha256": "3f105f154cfd7c8ac5a1b3dc6ad41253d111df7a16b1602f6f22298f1784dacc",
+      "bytes": 20072
+    },
+    "/home/doanlong/extra/benchmark/experiments/finance-v44-study/results/financial-v44-smoke-deepseek-20261107-startupfix1/trials/smoke-agg-01__dsh__r1/attempts/01-8390461e3b66/provider-requests/0004-effective.json": {
+      "sha256": "f0103d03eee5e93780680f695b094d4c2a91b84798b3dae120747261ac9fada6",
+      "bytes": 21391
+    },
+    "/home/doanlong/extra/benchmark/experiments/finance-v44-study/results/financial-v44-smoke-deepseek-20261107-startupfix1/trials/smoke-agg-01__dsh__r1/attempts/01-8390461e3b66/provider-requests/0005-effective.json": {
+      "sha256": "1b48f9297e64ac36a5b38934723ec34c509861ac6838253f8fcf42026bfcc636",
+      "bytes": 22671
+    },
+    "/home/doanlong/extra/benchmark/experiments/finance-v44-study/results/financial-v44-smoke-deepseek-20261107-startupfix1/trials/smoke-agg-01__opencode__r1/attempts/01-d4af241051d9/provider-requests/0001-native.json": {
+      "sha256": "2a56bd1799e71ccf54e56a74c659d9b7076cc85372f59e8a65e8db3f1891b908",
+      "bytes": 13314
+    },
+    "/home/doanlong/extra/benchmark/experiments/finance-v44-study/results/financial-v44-smoke-deepseek-20261107-startupfix1/trials/smoke-agg-01__opencode__r1/attempts/01-d4af241051d9/provider-requests/0002-native.json": {
+      "sha256": "679b890f176ead264681cca2e1a3bb659237831bf6572478b889d0dc0eeaa1c2",
+      "bytes": 18824
+    },
+    "/home/doanlong/extra/benchmark/experiments/finance-v44-study/results/financial-v44-smoke-deepseek-20261107-startupfix1/trials/smoke-agg-01__opencode__r1/attempts/01-d4af241051d9/provider-requests/0003-native.json": {
+      "sha256": "0016c33d1b47b5b19612fa13011df65145c7849ae44065c6ac8f29b3c838ad83",
+      "bytes": 19965
+    },
+    "/home/doanlong/extra/benchmark/experiments/finance-v44-study/results/financial-v44-smoke-deepseek-20261107-startupfix1/trials/smoke-agg-01__opencode__r1/attempts/01-d4af241051d9/provider-requests/0004-native.json": {
+      "sha256": "f81bd66bdf9bf3f16a2ec1224a3929c8eebe7bbfd01f4548278c16bb5aab0f17",
+      "bytes": 21346
+    },
+    "/home/doanlong/extra/benchmark/experiments/finance-v44-study/results/financial-v44-smoke-deepseek-20261107-startupfix1/trials/smoke-agg-01__opencode__r1/attempts/01-d4af241051d9/provider-requests/0005-native.json": {
+      "sha256": "1ea44a65e4b5915aa407191fd0fc111d125d73661023682ef5d172b832fec4f2",
+      "bytes": 22630
+    },
+    "/home/doanlong/extra/benchmark/experiments/finance-v44-study/results/financial-v44-smoke-deepseek-20261107-startupfix1/trials/smoke-agg-01__opencode__r1/attempts/01-d4af241051d9/provider-requests/0002-effective.json": {
+      "sha256": "6867994fba6f1f41117ecb1662d4a1cd5c50c4e679a72fcbc05c1da847c65dd5",
+      "bytes": 20803
+    },
+    "/home/doanlong/extra/benchmark/experiments/finance-v44-study/results/financial-v44-smoke-deepseek-20261107-startupfix1/trials/smoke-agg-01__opencode__r1/attempts/01-d4af241051d9/provider-requests/0003-effective.json": {
+      "sha256": "9fbdf0c2b194ac361fdb194549e08caed038c6ebb89d6367abbe6bed9ea3f903",
+      "bytes": 22000
+    },
+    "/home/doanlong/extra/benchmark/experiments/finance-v44-study/results/financial-v44-smoke-deepseek-20261107-startupfix1/trials/smoke-agg-01__opencode__r1/attempts/01-d4af241051d9/provider-requests/0004-effective.json": {
+      "sha256": "d15fb0356b7f198bbb4e9a9850496a795143f5d344af10004371d91f4e861505",
+      "bytes": 23437
+    },
+    "/home/doanlong/extra/benchmark/experiments/finance-v44-study/results/financial-v44-smoke-deepseek-20261107-startupfix1/trials/smoke-agg-01__opencode__r2/attempts/01-aea6db80b9ac/provider-requests/0001-native.json": {
+      "sha256": "897b00ba9d69d72d1b86ea36ba00874c9a980f65c8878bf2a7ed1625b31d42ef",
+      "bytes": 13314
+    },
+    "/home/doanlong/extra/benchmark/experiments/finance-v44-study/results/financial-v44-smoke-deepseek-20261107-startupfix1/trials/smoke-agg-01__opencode__r2/attempts/01-aea6db80b9ac/provider-requests/0002-native.json": {
+      "sha256": "e45c30995f592c50b2d6b725a53da4a322f5416ead787a15d487f658e5fe21ad",
+      "bytes": 18499
+    },
+    "/home/doanlong/extra/benchmark/experiments/finance-v44-study/results/financial-v44-smoke-deepseek-20261107-startupfix1/trials/smoke-agg-01__opencode__r2/attempts/01-aea6db80b9ac/provider-requests/0003-native.json": {
+      "sha256": "5027c7fc0d8bb3c82b8d9dd57d25c9bd12dfa2208beee650202846cd9a7bcfda",
+      "bytes": 19662
+    },
+    "/home/doanlong/extra/benchmark/experiments/finance-v44-study/results/financial-v44-smoke-deepseek-20261107-startupfix1/trials/smoke-agg-01__opencode__r2/attempts/01-aea6db80b9ac/provider-requests/0004-native.json": {
+      "sha256": "e94618f399b439c7ab3aefef8779e9fede2efe37b31fd795be8ef079619b73a4",
+      "bytes": 21045
+    },
+    "/home/doanlong/extra/benchmark/experiments/finance-v44-study/results/financial-v44-smoke-deepseek-20261107-startupfix1/trials/smoke-agg-01__opencode__r2/attempts/01-aea6db80b9ac/provider-requests/0005-native.json": {
+      "sha256": "8e8821a6d192a087130760a58dc0710e6b2044804f9b4193ae2434c03e900baf",
+      "bytes": 22327
+    },
+    "/home/doanlong/extra/benchmark/experiments/finance-v44-study/results/financial-v44-smoke-deepseek-20261107-startupfix1/trials/smoke-agg-01__opencode__r2/attempts/01-aea6db80b9ac/provider-requests/0002-effective.json": {
+      "sha256": "54efd5436b0859be2d76a34f87006bd29a4157ff576780faadac33b3d08bf7f0",
+      "bytes": 20478
+    },
+    "/home/doanlong/extra/benchmark/experiments/finance-v44-study/results/financial-v44-smoke-deepseek-20261107-startupfix1/trials/smoke-agg-01__opencode__r2/attempts/01-aea6db80b9ac/provider-requests/0003-effective.json": {
+      "sha256": "b5f7fe7d6c0460b2fa57fd2065de51ce4668eb1f960c34d3d0619cafc668acc6",
+      "bytes": 21703
+    },
+    "/home/doanlong/extra/benchmark/experiments/finance-v44-study/results/financial-v44-smoke-deepseek-20261107-startupfix1/trials/smoke-agg-01__opencode__r2/attempts/01-aea6db80b9ac/provider-requests/0004-effective.json": {
+      "sha256": "83154679e9d2f973359b5a5f87e8eb1c3dbff7f628d50dc2ce152a3beff0cc27",
+      "bytes": 23142
+    },
+    "/home/doanlong/extra/benchmark/experiments/finance-v44-study/results/financial-v44-smoke-deepseek-20261107-startupfix1/trials/smoke-agg-01__opentrading_baseline__r1/attempts/01-033b32f5f62c/provider-requests/0001-native.json": {
+      "sha256": "efa1b35d9069a3b6a89d9c6261d6bcfa68149bebe33ba7927135a244c0fd6eb2",
+      "bytes": 21452
+    },
+    "/home/doanlong/extra/benchmark/experiments/finance-v44-study/results/financial-v44-smoke-deepseek-20261107-startupfix1/trials/smoke-agg-01__opentrading_baseline__r1/attempts/01-033b32f5f62c/provider-requests/0002-native.json": {
+      "sha256": "7d3c9aeaa1d6721005415b94414fa475e54539319283dd4b6fed2be32da13548",
+      "bytes": 27910
+    },
+    "/home/doanlong/extra/benchmark/experiments/finance-v44-study/results/financial-v44-smoke-deepseek-20261107-startupfix1/trials/smoke-agg-01__opentrading_baseline__r1/attempts/01-033b32f5f62c/provider-requests/0003-native.json": {
+      "sha256": "60101fec8e8aa66180a8f926e3666df885823f6fa67a65c4e1e7d4cc13240abf",
+      "bytes": 29037
+    },
+    "/home/doanlong/extra/benchmark/experiments/finance-v44-study/results/financial-v44-smoke-deepseek-20261107-startupfix1/trials/smoke-agg-01__opentrading_baseline__r1/attempts/01-033b32f5f62c/provider-requests/0002-effective.json": {
+      "sha256": "9d620f48b0b72bd77bd1cb3d44ffb694c022819266880cd45d0f84fb72589eb5",
+      "bytes": 35427
+    },
+    "/home/doanlong/extra/benchmark/experiments/finance-v44-study/results/financial-v44-smoke-deepseek-20261107-startupfix1/trials/smoke-agg-01__opentrading_baseline__r2/attempts/01-dad39aff863e/provider-requests/0001-native.json": {
+      "sha256": "efa1b35d9069a3b6a89d9c6261d6bcfa68149bebe33ba7927135a244c0fd6eb2",
+      "bytes": 21452
+    },
+    "/home/doanlong/extra/benchmark/experiments/finance-v44-study/results/financial-v44-smoke-deepseek-20261107-startupfix1/trials/smoke-agg-01__opentrading_baseline__r2/attempts/01-dad39aff863e/provider-requests/0002-native.json": {
+      "sha256": "8c3f5ad356d918ab258f60e8826588b6fc1a8a0cc90ee71a00e6794d1ec4a926",
+      "bytes": 27755
+    },
+    "/home/doanlong/extra/benchmark/experiments/finance-v44-study/results/financial-v44-smoke-deepseek-20261107-startupfix1/trials/smoke-agg-01__opentrading_baseline__r2/attempts/01-dad39aff863e/provider-requests/0003-native.json": {
+      "sha256": "cdef8dfe5287aaa7df5a28cd581c7d2c871e76a45686e1e55fd8c2d4a123ad91",
+      "bytes": 28763
+    },
+    "/home/doanlong/extra/benchmark/experiments/finance-v44-study/results/financial-v44-smoke-deepseek-20261107-startupfix1/trials/smoke-agg-01__opentrading_baseline__r2/attempts/01-dad39aff863e/provider-requests/0004-native.json": {
+      "sha256": "513872de2991fd3b9084629e7d814b789041c9523a29548120210a264741a7ed",
+      "bytes": 30047
+    },
+    "/home/doanlong/extra/benchmark/experiments/finance-v44-study/results/financial-v44-smoke-deepseek-20261107-startupfix1/trials/smoke-agg-01__opentrading_baseline__r2/attempts/01-dad39aff863e/provider-requests/0002-effective.json": {
+      "sha256": "eec239be3b57309c4c2d782fd8f210672507469a6dc1ebafe2d2ce2e0eb1e384",
+      "bytes": 35254
+    },
+    "/home/doanlong/extra/benchmark/experiments/finance-v44-study/results/financial-v44-smoke-deepseek-20261107-startupfix1/trials/smoke-agg-01__opentrading_baseline__r2/attempts/01-dad39aff863e/provider-requests/0003-effective.json": {
+      "sha256": "263846fe629a75b72f77f37d9b61733a03b2f1884978392fd23d3067ae16a40b",
+      "bytes": 36318
+    },
+    "/home/doanlong/extra/benchmark/experiments/finance-v44-study/results/financial-v44-smoke-deepseek-20261107-startupfix1/trials/smoke-agg-01__opentrading_finance__r1/attempts/01-ddb279a46ee6/provider-requests/0001-native.json": {
+      "sha256": "04a1bfb63cc3c3ae2bb6ecc90cb1606279ca3e65fed63370f976895121feaa47",
+      "bytes": 12870
+    },
+    "/home/doanlong/extra/benchmark/experiments/finance-v44-study/results/financial-v44-smoke-deepseek-20261107-startupfix1/trials/smoke-agg-01__opentrading_finance__r1/attempts/01-ddb279a46ee6/provider-requests/0002-native.json": {
+      "sha256": "c63deba2b27027439956f6e51cdd4f06d57486d09462d747129529a3e150df42",
+      "bytes": 18719
+    },
+    "/home/doanlong/extra/benchmark/experiments/finance-v44-study/results/financial-v44-smoke-deepseek-20261107-startupfix1/trials/smoke-agg-01__opentrading_finance__r1/attempts/01-ddb279a46ee6/provider-requests/0003-native.json": {
+      "sha256": "95cd01c79b0bc6d2b2de2612f911dc2a65a1e316706e51474b888ec8fe6208e8",
+      "bytes": 19900
+    },
+    "/home/doanlong/extra/benchmark/experiments/finance-v44-study/results/financial-v44-smoke-deepseek-20261107-startupfix1/trials/smoke-agg-01__opentrading_finance__r1/attempts/01-ddb279a46ee6/provider-requests/0004-native.json": {
+      "sha256": "28297810d5491fac7137cd1294e706f15fac6390ca8c193fadfcf2bcfad69b28",
+      "bytes": 21142
+    },
+    "/home/doanlong/extra/benchmark/experiments/finance-v44-study/results/financial-v44-smoke-deepseek-20261107-startupfix1/trials/smoke-agg-01__opentrading_finance__r1/attempts/01-ddb279a46ee6/provider-requests/0005-native.json": {
+      "sha256": "a3f03f585324e3cb22ae716ceaf93ea079a25d6418b239932fa720cdda6200cc",
+      "bytes": 22043
+    },
+    "/home/doanlong/extra/benchmark/experiments/finance-v44-study/results/financial-v44-smoke-deepseek-20261107-startupfix1/trials/smoke-agg-01__opentrading_finance__r1/attempts/01-ddb279a46ee6/provider-requests/0002-effective.json": {
+      "sha256": "749da5f644b414124a5abe16186b609d831b18d4d08b9d865e7bbb071bf0f4b8",
+      "bytes": 21604
+    },
+    "/home/doanlong/extra/benchmark/experiments/finance-v44-study/results/financial-v44-smoke-deepseek-20261107-startupfix1/trials/smoke-agg-01__opentrading_finance__r1/attempts/01-ddb279a46ee6/provider-requests/0003-effective.json": {
+      "sha256": "a2a8871d823ab7716f112b437d06261d282bc914508b699c2eb6ba29f4b5d6e2",
+      "bytes": 22864
+    },
+    "/home/doanlong/extra/benchmark/experiments/finance-v44-study/results/financial-v44-smoke-deepseek-20261107-startupfix1/trials/smoke-agg-01__opentrading_finance__r2/attempts/01-3482089719c5/provider-requests/0001-native.json": {
+      "sha256": "04a1bfb63cc3c3ae2bb6ecc90cb1606279ca3e65fed63370f976895121feaa47",
+      "bytes": 12870
+    },
+    "/home/doanlong/extra/benchmark/experiments/finance-v44-study/results/financial-v44-smoke-deepseek-20261107-startupfix1/trials/smoke-agg-01__opentrading_finance__r2/attempts/01-3482089719c5/provider-requests/0002-native.json": {
+      "sha256": "6544b52af305c2d59904e9bbf3873b99c5e8b04cf5d5fd685a47e6205ab1b1ce",
+      "bytes": 18719
+    },
+    "/home/doanlong/extra/benchmark/experiments/finance-v44-study/results/financial-v44-smoke-deepseek-20261107-startupfix1/trials/smoke-agg-01__opentrading_finance__r2/attempts/01-3482089719c5/provider-requests/0003-native.json": {
+      "sha256": "173ac556665c5ac777808aff9df5635d73493d341b9adc5cb21615c367899a5a",
+      "bytes": 19852
+    },
+    "/home/doanlong/extra/benchmark/experiments/finance-v44-study/results/financial-v44-smoke-deepseek-20261107-startupfix1/trials/smoke-agg-01__opentrading_finance__r2/attempts/01-3482089719c5/provider-requests/0004-native.json": {
+      "sha256": "0a628fd4db36955c95cfd86b4e53cb1fa07c78816716e47db6babd6305fdea36",
+      "bytes": 21094
+    },
+    "/home/doanlong/extra/benchmark/experiments/finance-v44-study/results/financial-v44-smoke-deepseek-20261107-startupfix1/trials/smoke-agg-01__opentrading_finance__r2/attempts/01-3482089719c5/provider-requests/0005-native.json": {
+      "sha256": "9628cd5834edbf70493ad03fd85803461cc6f6a6fa31f35bc88c74947a9a5c9a",
+      "bytes": 21970
+    },
+    "/home/doanlong/extra/benchmark/experiments/finance-v44-study/results/financial-v44-smoke-deepseek-20261107-startupfix1/trials/smoke-agg-01__opentrading_finance__r2/attempts/01-3482089719c5/provider-requests/0002-effective.json": {
+      "sha256": "e04914bf9c4b74bd3b4aca6ecb2afa4a2fa9f994e69014cc9fcfaf3f67ae0ed6",
+      "bytes": 21604
+    },
+    "/home/doanlong/extra/benchmark/experiments/finance-v44-study/results/financial-v44-smoke-deepseek-20261107-startupfix1/trials/smoke-agg-01__opentrading_finance__r2/attempts/01-3482089719c5/provider-requests/0003-effective.json": {
+      "sha256": "2d0a5c55e38381b27eea2de99194633484fad0770bb35350e7c4ba967f1cbd53",
+      "bytes": 22810
+    }
+  },
+  "source_links": [
+    "https://json-schema.org/understanding-json-schema/reference/string",
+    "https://github.com/mlc-ai/xgrammar/issues/838",
+    "https://docs.nvidia.com/nim/large-language-models/1.15.0/structured-generation.html",
+    "https://github.com/dottxt-ai/outlines/issues/1083"
+  ],
+  "summary": {
+    "mcp_attempts": 17,
+    "path_occurrences": {
+      "/data/": 7,
+      "/data": 50
+    },
+    "attempts_by_uniform_path": {
+      "/data/": 7,
+      "/data": 10
+    },
+    "every_recorded_path_search_and_fullmatch": true,
+    "every_actual_source_leaf_search_but_not_fullmatch": true,
+    "every_generating_request_native_and_effective_exact_prefix_pattern": true,
+    "any_explicit_strict_guided_or_response_format_flags": false
+  },
+  "control_paths": [
+    {
+      "path": "",
+      "regex_search": false,
+      "regex_fullmatch": false
+    },
+    {
+      "path": "/",
+      "regex_search": false,
+      "regex_fullmatch": false
+    },
+    {
+      "path": "/data",
+      "regex_search": true,
+      "regex_fullmatch": true
+    },
+    {
+      "path": "/data/",
+      "regex_search": true,
+      "regex_fullmatch": true
+    },
+    {
+      "path": "/data/last",
+      "regex_search": true,
+      "regex_fullmatch": false
+    },
+    {
+      "path": "/data/last_t",
+      "regex_search": true,
+      "regex_fullmatch": false
+    },
+    {
+      "path": "/data/rows/0/values/0",
+      "regex_search": true,
+      "regex_fullmatch": false
+    },
+    {
+      "path": "data/last",
+      "regex_search": false,
+      "regex_fullmatch": false
+    },
+    {
+      "path": "/metadata/last",
+      "regex_search": false,
+      "regex_fullmatch": false
+    }
+  ],
+  "deduction": "For this ASCII pattern, whole-string language is exactly {/data,/data/}; both are nonnumeric containers/absent-empty-key references for the actual quote envelopes. The observed set equals that two-string language. This proves compatibility with the full-match hypothesis, not provider implementation or causality."
+}

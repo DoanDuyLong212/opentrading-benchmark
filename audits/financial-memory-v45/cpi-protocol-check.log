@@ -1,0 +1,151 @@
+.......................................................................F [ 83%]
+F.............                                                           [100%]
+=================================== FAILURES ===================================
+_________ test_original_finance_solution_and_payload_hashes_preserved __________
+
+    def test_original_finance_solution_and_payload_hashes_preserved():
+        # Holdout archive content is not opened. Hash-only payload verification applies all splits.
+        origin=ROOT.parents[1]  # Immutable source audit archive, not model-visible workspace.
+        receipt=json.loads((origin/'audits/contract-v2/migration.json').read_text())
+        with tarfile.open(origin/'audits/contract-v2/v1-task-artifacts.tar.gz') as archive:
+            for member in archive.getmembers():
+                if '/holdout/' in member.name or not member.name.endswith('/solution/gold.json'): continue
+>               before=json.load(archive.extractfile(member));after=json.loads((ROOT/member.name).read_text())
+                                                                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+experiments/finance-v45-study/tools/tests/test_independent_snapshot.py:293: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/usr/lib/python3.12/pathlib.py:1029: in read_text
+    with self.open(mode='r', encoding=encoding, errors=errors) as f:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = PosixPath('/home/doanlong/extra/benchmark/experiments/finance-v45-study/tasks/main/fin-l1-macro-131/solution/gold.json')
+mode = 'r', buffering = -1, encoding = 'locale', errors = None, newline = None
+
+    def open(self, mode='r', buffering=-1, encoding=None,
+             errors=None, newline=None):
+        """
+        Open the file pointed by this path and return a file object, as
+        the built-in open() function does.
+        """
+        if "b" not in mode:
+            encoding = io.text_encoding(encoding)
+>       return io.open(self, mode, buffering, encoding, errors, newline)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       FileNotFoundError: [Errno 2] No such file or directory: '/home/doanlong/extra/benchmark/experiments/finance-v45-study/tasks/main/fin-l1-macro-131/solution/gold.json'
+
+/usr/lib/python3.12/pathlib.py:1015: FileNotFoundError
+________ test_real_stdio_records_schema_invalid_and_wrong_entity_calls _________
+
+tmp_path = PosixPath('/tmp/pytest-of-doanlong/pytest-78/test_real_stdio_records_schema0')
+
+    @pytest.mark.asyncio
+    async def test_real_stdio_records_schema_invalid_and_wrong_entity_calls(tmp_path):
+        import anyio
+        from mcp import ClientSession, StdioServerParameters
+        from mcp.client.stdio import stdio_client
+        task, _, _ = raw_task('main', 'fin-l1-quote-vn-101')
+        ledger=tmp_path/'ledger.jsonl'
+        params=StdioServerParameters(command=sys.executable,
+            args=[str(ROOT/'tools/mcp_snapshot_server.py'), str(task/'environment/payloads.json')],
+            env={**os.environ,'BENCH_MCP_LEDGER':str(ledger)})
+        with anyio.fail_after(25):
+>           async with stdio_client(params) as (read,write):
+
+experiments/finance-v45-study/tools/tests/test_independent_snapshot.py:316: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/usr/lib/python3.12/contextlib.py:231: in __aexit__
+    await self.gen.athrow(value)
+../../.local/lib/python3.12/site-packages/mcp/client/stdio/__init__.py:182: in stdio_client
+    async with (
+../../.local/lib/python3.12/site-packages/anyio/_backends/_asyncio.py:815: in __aexit__
+    raise exc_val
+../../.local/lib/python3.12/site-packages/mcp/client/stdio/__init__.py:182: in stdio_client
+    async with (
+../../.local/lib/python3.12/site-packages/anyio/abc/_resources.py:29: in __aexit__
+    await self.aclose()
+../../.local/lib/python3.12/site-packages/anyio/_backends/_asyncio.py:1131: in aclose
+    await self.wait()
+../../.local/lib/python3.12/site-packages/anyio/_backends/_asyncio.py:1139: in wait
+    return await self._process.wait()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+/usr/lib/python3.12/asyncio/subprocess.py:137: in wait
+    return await self._transport._wait()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <_UnixSubprocessTransport closed pid=6 returncode=-9 stdin=<_UnixWritePipeTransport closed fd=15 closed> stdout=<_UnixReadPipeTransport closed fd=16 closed>>
+
+    async def _wait(self):
+        """Wait until the process exit and return the process return code.
+    
+        This method is a coroutine."""
+        if self._returncode is not None:
+            return self._returncode
+    
+        waiter = self._loop.create_future()
+        self._exit_waiters.append(waiter)
+>       return await waiter
+               ^^^^^^^^^^^^
+E       asyncio.exceptions.CancelledError: Cancelled via cancel scope 7f5a8c8f6670; reason: deadline exceeded
+
+/usr/lib/python3.12/asyncio/base_subprocess.py:230: CancelledError
+
+During handling of the above exception, another exception occurred:
+
+tmp_path = PosixPath('/tmp/pytest-of-doanlong/pytest-78/test_real_stdio_records_schema0')
+
+    @pytest.mark.asyncio
+    async def test_real_stdio_records_schema_invalid_and_wrong_entity_calls(tmp_path):
+        import anyio
+        from mcp import ClientSession, StdioServerParameters
+        from mcp.client.stdio import stdio_client
+        task, _, _ = raw_task('main', 'fin-l1-quote-vn-101')
+        ledger=tmp_path/'ledger.jsonl'
+        params=StdioServerParameters(command=sys.executable,
+            args=[str(ROOT/'tools/mcp_snapshot_server.py'), str(task/'environment/payloads.json')],
+            env={**os.environ,'BENCH_MCP_LEDGER':str(ledger)})
+>       with anyio.fail_after(25):
+
+experiments/finance-v45-study/tools/tests/test_independent_snapshot.py:315: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/usr/lib/python3.12/contextlib.py:158: in __exit__
+    self.gen.throw(value)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+delay = 25, shield = False
+
+    @contextmanager
+    def fail_after(
+        delay: float | None, shield: bool = False
+    ) -> Generator[CancelScope, None, None]:
+        """
+        Create a context manager which raises a :class:`TimeoutError` if does not finish in
+        time.
+    
+        :param delay: maximum allowed time (in seconds) before raising the exception, or
+            ``None`` to disable the timeout
+        :param shield: ``True`` to shield the cancel scope from external cancellation
+        :return: a context manager that yields a cancel scope
+        :rtype: :class:`~typing.ContextManager`\\[:class:`~anyio.CancelScope`\\]
+        :raises NoEventLoopError: if no supported asynchronous event loop is running in the
+            current thread
+    
+        """
+        current_time = get_async_backend().current_time
+        deadline = (current_time() + delay) if delay is not None else math.inf
+        with get_async_backend().create_cancel_scope(
+            deadline=deadline, shield=shield
+        ) as cancel_scope:
+            yield cancel_scope
+    
+        if cancel_scope.cancelled_caught and current_time() >= cancel_scope.deadline:
+>           raise TimeoutError
+E           TimeoutError
+
+../../.local/lib/python3.12/site-packages/anyio/_core/_tasks.py:157: TimeoutError
+=========================== short test summary info ============================
+FAILED experiments/finance-v45-study/tools/tests/test_independent_snapshot.py::test_original_finance_solution_and_payload_hashes_preserved
+FAILED experiments/finance-v45-study/tools/tests/test_independent_snapshot.py::test_real_stdio_records_schema_invalid_and_wrong_entity_calls
+2 failed, 84 passed in 59.96s

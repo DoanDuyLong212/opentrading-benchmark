@@ -1,0 +1,5002 @@
+{
+  "before_head": "e5ce4e1a75a6c430ff8464b867032da18814cee3",
+  "fetched_remote_head": "0a65fa04d0e60ee3d1822de365f2a88dc92eaf2f",
+  "status": "?? docs/eval/agent-harness-evaluation-design.md\n?? docs/memory/design-v2.md\n?? docs/memory/plan-v3-v4.md\n?? research/\n",
+  "files": {
+    ".editorconfig": {
+      "sha256": "ee8ef31aa19d93a77f21ec34ba7c2efed3eed125f01bcc4d2a7be46324a42f98",
+      "bytes": 265,
+      "tracked": true
+    },
+    ".env.example": {
+      "sha256": "c380a5007f83c13d2bfaa2275f4f62295e050fc259d7a73286b7dbb4e2afb8ab",
+      "bytes": 255,
+      "tracked": true
+    },
+    ".gitattributes": {
+      "sha256": "6102414b1e48e2337aa605dcd328e0b0cfe795da35b4de3add66ee6c0c5afc9a",
+      "bytes": 139,
+      "tracked": true
+    },
+    ".github/ISSUE_TEMPLATE/bug_report.yml": {
+      "sha256": "d61f7b205607ab479b812744a5d47910d93500b0cfec0c257696c51439943109",
+      "bytes": 759,
+      "tracked": true
+    },
+    ".github/ISSUE_TEMPLATE/config.yml": {
+      "sha256": "1f103c6a9dd07cd13a9a6f17ace6b813f47747eb9cb7e00488cb2073caaf91bb",
+      "bytes": 28,
+      "tracked": true
+    },
+    ".github/ISSUE_TEMPLATE/feature_request.yml": {
+      "sha256": "704bd494cde2cb324411bef7a3d2e5ced513bbd65dea28d89e2556928bca0951",
+      "bytes": 548,
+      "tracked": true
+    },
+    ".github/dependabot.yml": {
+      "sha256": "9d1a1f71affd8cd058074c3d472a3d0e92667d70060ac5fe6adf43aa5fade9e1",
+      "bytes": 821,
+      "tracked": true
+    },
+    ".github/pull_request_template.md": {
+      "sha256": "97b1abcaa417fc8dacfe6a5e1c458762c7960afc8b94138c5438f49f93356881",
+      "bytes": 577,
+      "tracked": true
+    },
+    ".github/workflows/ci.yml": {
+      "sha256": "63c416417eec3c42ea083df7e02b59392e8d4b98ce2986489635c8027a71e2be",
+      "bytes": 6576,
+      "tracked": true
+    },
+    ".github/workflows/release.yml": {
+      "sha256": "bc43acb7be2c8b17e19cffc20c307d2541489b568e40e0891e6bd16147c8a6d5",
+      "bytes": 4701,
+      "tracked": true
+    },
+    ".gitignore": {
+      "sha256": "67056413b235afb9d230428f55f91d218ebdcd271131ab956854e564047001a8",
+      "bytes": 288,
+      "tracked": true
+    },
+    ".gitleaksignore": {
+      "sha256": "9078314897710cd3fd308fc6d31fc69eaff3ac3b468edf309ebd999dbdd41ca6",
+      "bytes": 192,
+      "tracked": true
+    },
+    "CHANGELOG.md": {
+      "sha256": "a9fb336498696cf11d4d0fa5167871f0d2c9ca31fb17f32286fc9466be732627",
+      "bytes": 13662,
+      "tracked": true
+    },
+    "CONTRIBUTING.md": {
+      "sha256": "fff787dd8e5a1f07ea6bd5940bb9ad807021336e1dafa132e65b4843431972d6",
+      "bytes": 1821,
+      "tracked": true
+    },
+    "LICENSE": {
+      "sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4",
+      "bytes": 11357,
+      "tracked": true
+    },
+    "NOTICE": {
+      "sha256": "973f7b0a36ea6a173cbd1c348da3f1cd7a35a3605b606d5d97b7e6e62aee78e8",
+      "bytes": 223,
+      "tracked": true
+    },
+    "README.en.md": {
+      "sha256": "4684a88e5871a8622a19e495e33b3676a2fb5062f2f7dae35702d5cdc52b30e2",
+      "bytes": 30873,
+      "tracked": true
+    },
+    "README.md": {
+      "sha256": "ad5a04b53bfebf5d5abb872f4857b04e99aff33709baae81a0504b7bd5974ddf",
+      "bytes": 33263,
+      "tracked": true
+    },
+    "SECURITY.md": {
+      "sha256": "c297d749ab915acb427d39a2ff6e8f193166d96295d57bb4c43c21904ac7e987",
+      "bytes": 1132,
+      "tracked": true
+    },
+    "THIRD_PARTY_NOTICES.md": {
+      "sha256": "ac8eacde11c817e332ad9c6ff9c2b71e9ab2a1dc8e20e7d8648977360728fa67",
+      "bytes": 1905,
+      "tracked": true
+    },
+    "agents/bear.md": {
+      "sha256": "c7289fecd07899a5e48968d694240cbde6505ea46da140aee18329396bfb0d14",
+      "bytes": 995,
+      "tracked": true
+    },
+    "agents/bull.md": {
+      "sha256": "92347c92e46f7e61bce8112e205ee7f3af0c3fce27057c7c039805a4388f6715",
+      "bytes": 1029,
+      "tracked": true
+    },
+    "agents/chu-ky-nganh.md": {
+      "sha256": "f482eed0e83cfd362041e113f889018e8262088cfbbefab6415e7bf5b2499570",
+      "bytes": 1304,
+      "tracked": true
+    },
+    "agents/co-ban.md": {
+      "sha256": "72fb47e4082efc4ef378d22d3767a8ed27520c546640ef0d698b0d92790c6cf8",
+      "bytes": 1314,
+      "tracked": true
+    },
+    "agents/dinh-gia.md": {
+      "sha256": "6f96b5419bf445b5c1001cfcf94fc85c17c9db4dbc194e7f03caa8332a7f6ac8",
+      "bytes": 826,
+      "tracked": true
+    },
+    "agents/du-bao-su-kien.md": {
+      "sha256": "ed0faf7ac6f6f94cae9651593bb828bc49182f744c70f4335c311821d985740b",
+      "bytes": 735,
+      "tracked": true
+    },
+    "agents/kiem-chien-luoc.md": {
+      "sha256": "430f140aa921b6777464e59e4fffdc534e70916fc456e0b4cf14d88d9f9be7ad",
+      "bytes": 1344,
+      "tracked": true
+    },
+    "agents/ky-thuat.md": {
+      "sha256": "02b8de4df87da79e798d4d38dab232c196534e701445c323064a4d0b4139d0e8",
+      "bytes": 1832,
+      "tracked": true
+    },
+    "agents/nganh.md": {
+      "sha256": "0b114f536c95bccd754ef4d67a83233fb76f8edf1c752fa782f972b2c62a3986",
+      "bytes": 639,
+      "tracked": true
+    },
+    "agents/nghien-cuu.md": {
+      "sha256": "caa6fe10e43dc179dbd17fe46ed6c56b55d61160ea0ccbade46781ef25076f76",
+      "bytes": 986,
+      "tracked": true
+    },
+    "agents/phan-bien.md": {
+      "sha256": "20807b1428d7fdf581ef0239fb670701ac7d6714ae3faca7e36e90dfedbbdd96",
+      "bytes": 1010,
+      "tracked": true
+    },
+    "agents/rui-ro-thi-truong.md": {
+      "sha256": "d50d73b868f2dcfc49b952bdcce247d85500b1a7004769bc6cae97d46f63c6b7",
+      "bytes": 1378,
+      "tracked": true
+    },
+    "agents/tai-san-toan-cau.md": {
+      "sha256": "da00bb7b6427ea72f161aa0fca02fb44237635a7e3d6c9879d5b4d1078cd691b",
+      "bytes": 999,
+      "tracked": true
+    },
+    "agents/tin-tuc.md": {
+      "sha256": "d223f8d1a92daa4dbbd3337b4e958727adec138f56672be3dc262ef78e6a0321",
+      "bytes": 915,
+      "tracked": true
+    },
+    "agents/tong-hop.md": {
+      "sha256": "f59f62de13e4cb9031802d1a70f286b46bb661bebeba9bb083a8fb4c70d08665",
+      "bytes": 1472,
+      "tracked": true
+    },
+    "agents/tra-cuu.md": {
+      "sha256": "651dd703bd19d6912e34d268e892b9fd52f403d61ddc6b87ed6dd2522e06819c",
+      "bytes": 660,
+      "tracked": true
+    },
+    "agents/vi-mo.md": {
+      "sha256": "49197a787d7179dcb5eee4c4b07d191494b1511ded53fdabf264c8da2e6b7470",
+      "bytes": 750,
+      "tracked": true
+    },
+    "bun.lock": {
+      "sha256": "8dcd6c84f277bf2e615226406d5eec76fac03aa8c00a05ad8d3bc0bc8beb042f",
+      "bytes": 64319,
+      "tracked": true
+    },
+    "bunfig.toml": {
+      "sha256": "a2d7f9a1a4cf00535c67be545ba87351ba98fc50c122a058aba2d021749331ca",
+      "bytes": 82,
+      "tracked": true
+    },
+    "docs/STATUS.md": {
+      "sha256": "bc5393ca2de8ca6ef8148167bd738ad0bb706e51c8056407b59559b6d0b345cc",
+      "bytes": 10158,
+      "tracked": true
+    },
+    "docs/contracts.md": {
+      "sha256": "b34d874703b3e753e1fe02f959029fc5545d71e60be31313301578af75d79780",
+      "bytes": 24780,
+      "tracked": true
+    },
+    "docs/decisions/0001-typescript.md": {
+      "sha256": "652f42fd05c631949108c0a64c3ef6f4be4d7aab7f32c22f875d4a672a07db88",
+      "bytes": 1994,
+      "tracked": true
+    },
+    "docs/desk.md": {
+      "sha256": "6dab13a6a7a79fa2dc5e13b00ab921e92edbc6275472896a71f6c4afacbcb7a2",
+      "bytes": 19632,
+      "tracked": true
+    },
+    "docs/effort.md": {
+      "sha256": "db042b14f0f9be51d006fe958ff8e22460a7948ad7df2c2ae7e1c151ad94326d",
+      "bytes": 3735,
+      "tracked": true
+    },
+    "docs/eval/README.md": {
+      "sha256": "c2c591927d897d2384dab3235c743aaaace4d593afc75c99a30ed66a591ad5a7",
+      "bytes": 3091,
+      "tracked": true
+    },
+    "docs/eval/agent-harness-evaluation-design.md": {
+      "sha256": "18ab347eaa39ad57390ce88dbb21447463ad154d66063d5d293de815cb65feb0",
+      "bytes": 24292,
+      "tracked": false
+    },
+    "docs/eval/pr116-review.md": {
+      "sha256": "5a577ac16aadd2ce643bb9573441af4df098ee4bcb1f070d341f5dd1cf667ae8",
+      "bytes": 7597,
+      "tracked": true
+    },
+    "docs/eval/pr116/live-catalog.json": {
+      "sha256": "253dbf469e248aeb8ef090a64ecf1f4f03b10cd032dc1983604b6094eb4c60b4",
+      "bytes": 124473,
+      "tracked": true
+    },
+    "docs/eval/pr116/live-harness.json": {
+      "sha256": "d852fb08d2b11dfab320fb649d7f876e86cc5d3b0e815c5034315e451fe401d0",
+      "bytes": 414952,
+      "tracked": true
+    },
+    "docs/eval/pr116/summary.json": {
+      "sha256": "3177024c7fc840884e7a9f54c18117642255b5e1f123685f7a495542743588fe",
+      "bytes": 1192,
+      "tracked": true
+    },
+    "docs/eval/runner.md": {
+      "sha256": "0fb48008cfe48cc8218919c86e045d7d09ad4c29afdba1e7acda0c837844384f",
+      "bytes": 8123,
+      "tracked": true
+    },
+    "docs/eval/samples-answer.md": {
+      "sha256": "62f5e29ed06cfe5e1352441877afd8a3e5becde820e4abd6db56ae6ca6ecc13f",
+      "bytes": 12086,
+      "tracked": true
+    },
+    "docs/eval/samples.md": {
+      "sha256": "493b0b6af3a9611d7d232ab827f37e00bdaf7b7c22ef2650f7ad4c8977c13bc4",
+      "bytes": 8869,
+      "tracked": true
+    },
+    "docs/eval/skill-routing.md": {
+      "sha256": "03468a65a7babf882071abe98e11e7c826a112bde8798a93a0ca17e61089b256",
+      "bytes": 2966,
+      "tracked": true
+    },
+    "docs/gemini-limits.md": {
+      "sha256": "ded51c2b6f15887dd98a3380444836d0b5284edf69ea317a8f1db207b35c2da9",
+      "bytes": 9145,
+      "tracked": true
+    },
+    "docs/images/tui-answer.png": {
+      "sha256": "49e3a8aab88318805de32a0bf324227c11be3a6c2b770a1232bf4dbaca6a631a",
+      "bytes": 110059,
+      "tracked": true
+    },
+    "docs/images/tui-home.png": {
+      "sha256": "9582cd0e94201c208b61a82c6e5876ae0cc81b1023d47907b8cd6913c65c0fe6",
+      "bytes": 89799,
+      "tracked": true
+    },
+    "docs/mcp.md": {
+      "sha256": "f3b09873ffa91658f861b47df262a0e67788371d5d57e30e974256ebd4717335",
+      "bytes": 21781,
+      "tracked": true
+    },
+    "docs/memory/co-che-memory.md": {
+      "sha256": "43f9a4b32ca0ee96c773b8f3e6f43a2db632ffb83cc588d433f5f156e867f3f1",
+      "bytes": 16921,
+      "tracked": true
+    },
+    "docs/memory/design-v2.md": {
+      "sha256": "2dda083c4dcbefb999e4f8e0fa5fce7f496fc3e1cb6830212f329e17afefc3e8",
+      "bytes": 95987,
+      "tracked": false
+    },
+    "docs/memory/design-v3.md": {
+      "sha256": "e9018bd0490ecd9487f80e64f3901fb4d93d6aa0c57b6455283e0f67b518fe4d",
+      "bytes": 96295,
+      "tracked": true
+    },
+    "docs/memory/design-v5.md": {
+      "sha256": "94baa885323747ce0111a05e472afa690ebfda01480d06b634d01ec4ca8470e4",
+      "bytes": 48519,
+      "tracked": true
+    },
+    "docs/memory/design.md": {
+      "sha256": "bdeff4144402aa47f4f6cb103032d0ea330a23bc294cda187083e7ef97dc8abe",
+      "bytes": 66498,
+      "tracked": true
+    },
+    "docs/memory/nam-loai-ghi-nho.md": {
+      "sha256": "defd13a1559c245b93c6c875b92e6f06679f5226277ccfb5b12915b42df6f3a7",
+      "bytes": 24997,
+      "tracked": true
+    },
+    "docs/memory/plan-v3-v4.md": {
+      "sha256": "4626d3413cea10ee2b52190647275b5751a0691c143953f49cf66cbd32197077",
+      "bytes": 48244,
+      "tracked": false
+    },
+    "docs/permissions.md": {
+      "sha256": "0c8aa77e71ddb78359e335714e78c0b69903f85cbcb09adac3e9c967422af34b",
+      "bytes": 26078,
+      "tracked": true
+    },
+    "docs/release.md": {
+      "sha256": "503308ddb163f06e41f80c6bca6cfadcf4e06090ea408c975261cd55b1390a9f",
+      "bytes": 4771,
+      "tracked": true
+    },
+    "docs/subagents.md": {
+      "sha256": "615a7e491ccb00beea6f41eb477fae666ee5c95214f708f787e714f5c1af8be5",
+      "bytes": 13722,
+      "tracked": true
+    },
+    "docs/superpowers/plans/2026-10-19-subagent-resilience.md": {
+      "sha256": "a946b6161d54ef1cee1aff83b0773704771706b9054bdf5a5680334ba413decc",
+      "bytes": 31416,
+      "tracked": true
+    },
+    "docs/superpowers/specs/2026-10-07-visualization-design.md": {
+      "sha256": "53724775264507ddc3cadbc8f2a2dc54f5e34a53844cea8124933fd9204e55c0",
+      "bytes": 5123,
+      "tracked": true
+    },
+    "docs/superpowers/specs/2026-10-20-skills-nganh-design.md": {
+      "sha256": "dd785872d4de898cc1dac7e7380344c44b725d94931ca2bfd33336c3ba54499e",
+      "bytes": 8363,
+      "tracked": true
+    },
+    "docs/ui.md": {
+      "sha256": "f3029a3271293e9b9a6a68ef10cf42f72ea5b7e93a89309bbc5bd56e0bca58c6",
+      "bytes": 13535,
+      "tracked": true
+    },
+    "docs/web.md": {
+      "sha256": "63d9ceec19e670024c17cfad836b1d8aad95537d061b5f4b2dc80a3a649703b6",
+      "bytes": 3472,
+      "tracked": true
+    },
+    "examples/mcp-demo/.mcp.json.example": {
+      "sha256": "5637e58ac32318fc22218a8d4742560fb5e703d8eb0d4bd707a27577856ed5fb",
+      "bytes": 116,
+      "tracked": true
+    },
+    "examples/mcp-demo/server.ts": {
+      "sha256": "04e063bae5cb559383781463da3386333b54e613569b28b19f58f775182130dd",
+      "bytes": 3670,
+      "tracked": true
+    },
+    "handbook/architecture/adr/0001-modular-monolith-python.md": {
+      "sha256": "f1e86b704dd174dc801d35b08c0bdcb6bbb36158f4ddfae9590572f0ed6647f3",
+      "bytes": 660,
+      "tracked": true
+    },
+    "handbook/architecture/adr/0002-evidence-first-reports.md": {
+      "sha256": "02d536b873b9604b7e696b0cd2e813f8936b28559c86417fc698fb7efedec03b",
+      "bytes": 493,
+      "tracked": true
+    },
+    "handbook/architecture/adr/0003-read-only-tools.md": {
+      "sha256": "8bd15b180017a6d38c3ccb8e535afe7e137ee9a8ef645e54e960c1710c0a1793",
+      "bytes": 591,
+      "tracked": true
+    },
+    "handbook/architecture/adr/0004-session-event-model.md": {
+      "sha256": "227cc2f8f6c195ae91f8bcafe662ca4e6a094bd35980521e2f3a93ee659af2a0",
+      "bytes": 919,
+      "tracked": true
+    },
+    "handbook/architecture/adr/0005-extension-boundaries.md": {
+      "sha256": "3cc19be595c7a1bcd51d7698b4ef829ea6ca1c7ed7b7dea54d9b5a41a8f8677d",
+      "bytes": 765,
+      "tracked": true
+    },
+    "handbook/architecture/adr/0006-measured-multi-agent-playbooks.md": {
+      "sha256": "2d5bc55c294c21d1425e7fb703ae396303066eddedf937129e361c2922b90b4a",
+      "bytes": 4384,
+      "tracked": true
+    },
+    "handbook/architecture/agent-runtime.md": {
+      "sha256": "6c0833b5f10897e9a82a0b54fb2c6ac3a5367b41ac437f3d26ab27f7d9d30fcc",
+      "bytes": 1369,
+      "tracked": true
+    },
+    "handbook/architecture/architecture.md": {
+      "sha256": "96ca64e683492647c8a2190b0256b764dc4f10b154c287564356fd2130eaae61",
+      "bytes": 2745,
+      "tracked": true
+    },
+    "handbook/contracts/core-contracts.md": {
+      "sha256": "a86d7580e9d1b1ec10161447b9ebb4455cfdb236ee9f1b9eb21b4b6484cea47b",
+      "bytes": 4311,
+      "tracked": true
+    },
+    "handbook/contracts/error-taxonomy.md": {
+      "sha256": "c759e50de94f89e5171cc38297dffc9dc7e5da93599d2beca3083c53a884cb5a",
+      "bytes": 615,
+      "tracked": true
+    },
+    "handbook/contracts/runtime-policies.md": {
+      "sha256": "cc4af4334b7bfb296e0fcce3c404c52a63e4c9961e968bd78e86018158d0d425",
+      "bytes": 2545,
+      "tracked": true
+    },
+    "handbook/engineering/coding-standards.md": {
+      "sha256": "b9c965df0e2171cec4e92791e577c4d2607391fc007f87d1dfc426aa22df85f7",
+      "bytes": 1623,
+      "tracked": true
+    },
+    "handbook/engineering/developer-workflow.md": {
+      "sha256": "7d986b20b2974904122427a12891cac32eec05b3244c04e6039294bca4f5e103",
+      "bytes": 2254,
+      "tracked": true
+    },
+    "handbook/index.md": {
+      "sha256": "ba5911c8e42cd93fb8481ed3749e9739e8ff398ffc7cababeb2a24acad301da7",
+      "bytes": 1729,
+      "tracked": true
+    },
+    "handbook/integrations/adapter-checklist.md": {
+      "sha256": "5bc6838a3059dafb98788da3f581883399de936af49646d3872e3cc311b72259",
+      "bytes": 912,
+      "tracked": true
+    },
+    "handbook/interfaces/cli-tui.md": {
+      "sha256": "c3a3f963d358db9e4e1e8a79228b1f3d90bcd82c272a6d64a346401c694d3622",
+      "bytes": 2106,
+      "tracked": true
+    },
+    "handbook/operations/local-operations.md": {
+      "sha256": "d2ea77ada529e241b73b7a1b1c9885acef7b513558275af76ec2214b6de326d0",
+      "bytes": 1181,
+      "tracked": true
+    },
+    "handbook/product/glossary.md": {
+      "sha256": "50f9d2ab9e2044680ef50738f3a188025d527e083d94c8c1c5fdf1cc85ca123c",
+      "bytes": 855,
+      "tracked": true
+    },
+    "handbook/product/product-scope.md": {
+      "sha256": "5459c22c3e138419d20309531607e914eba31199a762d86d076a6350aa6a1ef5",
+      "bytes": 2054,
+      "tracked": true
+    },
+    "handbook/research/harness-lessons.md": {
+      "sha256": "874cea1835234ff550b71e1295a446a9ffd6125348dbc55e9c8833e731800e9f",
+      "bytes": 6876,
+      "tracked": true
+    },
+    "handbook/roadmap/implementation-roadmap.md": {
+      "sha256": "cf0a48d465930c67a660418068707cad5abe0efafd3ef7e76b12c98e753db56c",
+      "bytes": 2012,
+      "tracked": true
+    },
+    "handbook/templates/adr-template.md": {
+      "sha256": "b8013d3157849cc5314584e0e49208281f3bdac58ebcff2968b72926d7d36b7e",
+      "bytes": 246,
+      "tracked": true
+    },
+    "handbook/templates/feature-spec-template.md": {
+      "sha256": "ad433d15da636116141098cbe991b8275ab4497a78e4c5e19beead4da6c63aad",
+      "bytes": 304,
+      "tracked": true
+    },
+    "handbook/testing/test-strategy.md": {
+      "sha256": "767910522ffdd86baadc1f41c3442b510a706cecbba85b7b9a9485010ca4cb05",
+      "bytes": 1285,
+      "tracked": true
+    },
+    "install.ps1": {
+      "sha256": "56c24e9e1bf25291df3532805f30b4f3f641d02fc0fb701037964b451fdcb2f8",
+      "bytes": 9419,
+      "tracked": true
+    },
+    "install.sh": {
+      "sha256": "10d102d61e9220cff58353bf29cc4d24b98011b049b1ed7cf80353d3619319be",
+      "bytes": 7247,
+      "tracked": true
+    },
+    "market/calendar.json": {
+      "sha256": "7ab728bce98c2c1bb733b068db96cd3680324a3657c0d469d2ac49e4e112a791",
+      "bytes": 1930,
+      "tracked": true
+    },
+    "package.json": {
+      "sha256": "8ddf90966a79375fa9ed2e4a78f52baacc6db8d83dec063f418ab4462df566ef",
+      "bytes": 1639,
+      "tracked": true
+    },
+    "prompts/citations.md": {
+      "sha256": "5c6a69197d3ca59189369d0adfda4385c7b03a8af7c2c67e7d0d1bbbcf78d72a",
+      "bytes": 2229,
+      "tracked": true
+    },
+    "prompts/identity.md": {
+      "sha256": "b8fe73cda14db1b53ddd6687d648aff746e29bd3cca8166d26d32fcb121f6892",
+      "bytes": 2510,
+      "tracked": true
+    },
+    "prompts/style.md": {
+      "sha256": "56e82b54f5fb5e83c6047e4ad1c21ab1ade0427fadfce504e34dc28063d9e2c3",
+      "bytes": 3428,
+      "tracked": true
+    },
+    "prompts/subagent.md": {
+      "sha256": "b8bc6181355d4d557e047d60c0de4347c58888d6b0a41562bf693b63ba89b039",
+      "bytes": 2195,
+      "tracked": true
+    },
+    "prompts/title.md": {
+      "sha256": "8329a2554713df24143cbc5bc2f6dc6ab5df78e0a44392ce6bc887d439c7444e",
+      "bytes": 573,
+      "tracked": true
+    },
+    "prompts/tools.md": {
+      "sha256": "e152c17c19c77059c1f5773c18d818a5820ac9fd25bde089abc7e1e7bee664f9",
+      "bytes": 1454,
+      "tracked": true
+    },
+    "research/asset_surge/data/ADA-USD.json": {
+      "sha256": "cb6728f1e22258c7c6b87a3f8c5f5391ec350a11169d7e72755e77302c9bb19a",
+      "bytes": 388035,
+      "tracked": false
+    },
+    "research/asset_surge/data/BTC-USD.json": {
+      "sha256": "337a2f18b229059f750b3f9d66c01c3f340ad2e764ec5f0fea0003fa527202ea",
+      "bytes": 440446,
+      "tracked": false
+    },
+    "research/asset_surge/data/CPER.json": {
+      "sha256": "6ae3d1ed7271e977394fcfec2633f9b2167d36e915f5be97ea2600add0e68766",
+      "bytes": 398721,
+      "tracked": false
+    },
+    "research/asset_surge/data/DBA.json": {
+      "sha256": "2834c0e08d6f5a290391ed10426ec5c59a6255563fdc50dbba95259e7b133e78",
+      "bytes": 543475,
+      "tracked": false
+    },
+    "research/asset_surge/data/EEM.json": {
+      "sha256": "4a76450d0ad9e925f8666e27b5faaddb516396f3e6092783d6c38790a5fc137c",
+      "bytes": 653780,
+      "tracked": false
+    },
+    "research/asset_surge/data/ETH-USD.json": {
+      "sha256": "03824b548fba48128deed76d07f4edb4974529828a94066b4a9d197b8f1c19ad",
+      "bytes": 363604,
+      "tracked": false
+    },
+    "research/asset_surge/data/GLD.json": {
+      "sha256": "4e42dfd02cc8bfde52a2188d86971c4ea09e8d4f4f6a9f9758205192b9187255",
+      "bytes": 602887,
+      "tracked": false
+    },
+    "research/asset_surge/data/ICLN.json": {
+      "sha256": "1182d111cda9b788310ddcac1debf33f9f7e5b7a2cf9aa32ff220f80c4969143",
+      "bytes": 494971,
+      "tracked": false
+    },
+    "research/asset_surge/data/LTC-USD.json": {
+      "sha256": "56ceaf092f2cac2d40f85faf27cfed8a4e1ecb2ba1e1a7e060001ce136c59448",
+      "bytes": 496425,
+      "tracked": false
+    },
+    "research/asset_surge/data/QQQ.json": {
+      "sha256": "88f0ed15ef2cfda0f42bfe36287a079f8c88768915186ba3674025a2e66f5e2e",
+      "bytes": 745257,
+      "tracked": false
+    },
+    "research/asset_surge/data/SLV.json": {
+      "sha256": "1d1a214a00318424f3118622c744ed68dff7c8cdb72d385adeb523d6c5aad559",
+      "bytes": 568244,
+      "tracked": false
+    },
+    "research/asset_surge/data/SMH.json": {
+      "sha256": "a54182f3ad0cfb7681f467b05c934c86724abb6be7791c87cccd3f0241d6a87d",
+      "bytes": 721238,
+      "tracked": false
+    },
+    "research/asset_surge/data/SOL-USD.json": {
+      "sha256": "5ea978679b9412e4a106224780df6b6bba617d3f0620b0bdea8a4f1e57dae60e",
+      "bytes": 272989,
+      "tracked": false
+    },
+    "research/asset_surge/data/SPY.json": {
+      "sha256": "c3235d1ecd28996a6618abf755d04ecaad102f419671c52ab72184412d637bae",
+      "bytes": 858951,
+      "tracked": false
+    },
+    "research/asset_surge/data/TLT.json": {
+      "sha256": "3951eee0bcf437c1dd710ebeaff7a6c6521433d17c09d8d693a64be5b9094c11",
+      "bytes": 674822,
+      "tracked": false
+    },
+    "research/asset_surge/data/UNG.json": {
+      "sha256": "53783bbca9388592d4062db87d91f1241f88a715dbd43e1b3011ca55bd7a03c2",
+      "bytes": 523932,
+      "tracked": false
+    },
+    "research/asset_surge/data/USO.json": {
+      "sha256": "5a615b6812a56f4ee75d884152308ccedda70c37281c12123e60b6f06a7f01b6",
+      "bytes": 552327,
+      "tracked": false
+    },
+    "research/asset_surge/data/UUP.json": {
+      "sha256": "8dd3a33d9d28482ea78188aff3a5ee5506394d42a762c53e875c398304e21b1c",
+      "bytes": 542668,
+      "tracked": false
+    },
+    "research/asset_surge/data/VNM.json": {
+      "sha256": "c429fe530fcef24a8d927dfb5bf8373dd3d1877ac89043e0a844496e0ceaa9a9",
+      "bytes": 470251,
+      "tracked": false
+    },
+    "research/asset_surge/data/VNQ.json": {
+      "sha256": "5cd341deb9b1beebf5343736e9ccf61bf2ce3fe75261974225bfd54e41b3b542",
+      "bytes": 595473,
+      "tracked": false
+    },
+    "research/asset_surge/data/XBI.json": {
+      "sha256": "04a3aedacfebf522d5be08b9982be04ce548550f78c22fb5bed307f437ec10c8",
+      "bytes": 567936,
+      "tracked": false
+    },
+    "research/asset_surge/data/XRP-USD.json": {
+      "sha256": "232db74fb45296b43672e72701753736b1629cdb829617f7ee144ad9d6c463f8",
+      "bytes": 384617,
+      "tracked": false
+    },
+    "research/asset_surge/data/manifest.json": {
+      "sha256": "252968b92f41923195356b63b8982604bd0bb6892dfbca98a6fcd77b25566bca",
+      "bytes": 11025,
+      "tracked": false
+    },
+    "research/asset_surge/data/prices.csv": {
+      "sha256": "906a1b05d6b00c86d6b518da9922469dde8763a55aa57b5050fe321122ad6e98",
+      "bytes": 224650,
+      "tracked": false
+    },
+    "research/asset_surge/output/REPORT.vi.md": {
+      "sha256": "0f1c26ef459cd5af6f3520a7c02470e7ecd1739b8befd393ba1bdcc281e2edce",
+      "bytes": 4738,
+      "tracked": false
+    },
+    "research/asset_surge/output/backtest_predictions.csv": {
+      "sha256": "9dbdfd9b9a0409a45ff6fb5ce6041c6cbaac2636c5d7d75431a810733f25a2aa",
+      "bytes": 499840,
+      "tracked": false
+    },
+    "research/asset_surge/output/model.joblib": {
+      "sha256": "e579ff4793f542f0a10e8b39334ff2f6f75cffac02d23f1aeb70bf88aafcc49e",
+      "bytes": 289846,
+      "tracked": false
+    },
+    "research/asset_surge/output/probabilities.csv": {
+      "sha256": "1329bbe60d995927ae360d50fe37dba3cb2c10c93402ecded6eacfb81f23b8b6",
+      "bytes": 3658,
+      "tracked": false
+    },
+    "research/asset_surge/output/results.json": {
+      "sha256": "ce58a360f2db785506f375bfbda83b17360c5af30ca779a6872c746080dd10cf",
+      "bytes": 51924,
+      "tracked": false
+    },
+    "research/vietnam_allocation/.gitignore": {
+      "sha256": "13395e8b4d627ad4b9d0e6f26aff16794e62aad93cbdf354308d3de1c40134db",
+      "bytes": 59,
+      "tracked": false
+    },
+    "research/vietnam_allocation/README.vi.md": {
+      "sha256": "588a483c07045df06be40dba4320f18f979091d02bb7b45d2182725bc4f4b428",
+      "bytes": 17834,
+      "tracked": false
+    },
+    "research/vietnam_allocation/audit_data.py": {
+      "sha256": "a666b999975ae91b139d51f212f3979fd4edc66a6750b9290d528ba65310ba19",
+      "bytes": 2363,
+      "tracked": false
+    },
+    "research/vietnam_allocation/confirm.py": {
+      "sha256": "04b63d0e01432e54e8233d1d7a0ee08dbce12655622555935b5bdbc66dee2370",
+      "bytes": 2944,
+      "tracked": false
+    },
+    "research/vietnam_allocation/confirmation.json": {
+      "sha256": "c2212320ae56f9083c3fa3f0ffc09b4e6b10ba223bdef7ec37141d6c4ebbef70",
+      "bytes": 1774,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_ACB.csv": {
+      "sha256": "dae92b3db4f389af9bc1c4381429d2186c79f6e26d44b73afc95fa18928c5a12",
+      "bytes": 9739,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_ACB_daily.csv": {
+      "sha256": "910e8b68ba4a6f024747c53a0abb1a31751050c107c4902a2677e76bb65d757c",
+      "bytes": 82666,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_ANV.csv": {
+      "sha256": "d5a7830b0f5101c1ae0e0faa67d8b248821fd9832eb497bcbb3d971257dfe956",
+      "bytes": 9058,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_ANV_daily.csv": {
+      "sha256": "69adcec63595e51f339ebb277c51950035719252ee7c79f9713f81a75d4d6a61",
+      "bytes": 81588,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_BAF.csv": {
+      "sha256": "2e2881efc55cd7c19dea714da62740f0a06599174a3eff78d8975cf4a439a04e",
+      "bytes": 2549,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_BAF_daily.csv": {
+      "sha256": "54c626ee9a38a6126d3fa017351904327590fb94653eeb5d3b20f8cf5e9d523d",
+      "bytes": 50926,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_BCM.csv": {
+      "sha256": "ee6003e0917cd5f472d6fe9450e62da5559d1c107b64168a31a6c8f510044203",
+      "bytes": 4101,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_BCM_daily.csv": {
+      "sha256": "26c2876ec5cf5ff47547c3d593da197c483772ae077c413b7cb6068cdf220bb1",
+      "bytes": 81375,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_BFC.csv": {
+      "sha256": "d35d3881bb8089108157e0a7dab9c48be89958250b235fd4a3596806fa5793b2",
+      "bytes": 4080,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_BFC_daily.csv": {
+      "sha256": "1a94e58bfe9b790e882355823e583f5a9716adfe2c9bbdf85bd3a6c560c3bb75",
+      "bytes": 81295,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_BIC.csv": {
+      "sha256": "beae387e476a53dd614345f0bbe59c697a54a8eb771b242010a807243635a610",
+      "bytes": 3988,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_BIC_daily.csv": {
+      "sha256": "a6c72bc58fa4371a1e32856ecaae491ee2085a7c1e810f2963ae6255c759fccf",
+      "bytes": 79248,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_BID.csv": {
+      "sha256": "dbd1c408c13702d11635d9db9357f4cc8d4019edc5482642c634ce8cd125912e",
+      "bytes": 4229,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_BID_daily.csv": {
+      "sha256": "1986fca5f0b4edd11046280ac0027b2e42eaca9799db4ea515718899e58a1c0e",
+      "bytes": 84589,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_BMI.csv": {
+      "sha256": "2913e7735a288c08b24575b84e7cf36f97b993996ad84fa2c2de4fc29b6917f4",
+      "bytes": 9699,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_BMI_daily.csv": {
+      "sha256": "49052f391cbc8a61fe107d4cc4711f3c5cbba0d44ae8464c24d352ba715ad341",
+      "bytes": 81920,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_BMP.csv": {
+      "sha256": "7ddac92b39134782d704262f44b6eb6a5b1abefcbe81bf6d0f1586074ca889eb",
+      "bytes": 4194,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_BMP_daily.csv": {
+      "sha256": "ade146fcc480ae9ff35b70dc58bbfedeffaa343485e5c739fd45365ce1fc687b",
+      "bytes": 83821,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_BSI.csv": {
+      "sha256": "02acd506037a1f71748301f9af7f403aca05412bf31b5e3834cf049f90b492d4",
+      "bytes": 4038,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_BSI_daily.csv": {
+      "sha256": "39ff1ed8fd637d2c9d52e7541e3fb44c31c2cea9fe9bde90a913db8aa06d2102",
+      "bytes": 79908,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_BSR.csv": {
+      "sha256": "a75315597de8f727af2b97d3f1b06eead2f17e1c72140179c77939ce0722fe03",
+      "bytes": 4122,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_BSR_daily.csv": {
+      "sha256": "69a692985f33e855a4722b43b5c12836566b959030eca15298ff99811a8c5807",
+      "bytes": 81774,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_BVH.csv": {
+      "sha256": "7816aceb0f0fd999a9799cfa0fc98e5bca5112af4a9759f9f706924a2dec9aef",
+      "bytes": 4144,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_BVH_daily.csv": {
+      "sha256": "0e712d8b4ef548eb185cee0c87c713e1784e3d71b9f0a1b1f159adc5f5aa8ee9",
+      "bytes": 82503,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_BVS.csv": {
+      "sha256": "7461a800c32901efec8447b3310fc5a30db2b4ffd24b20879f2de93d5a11aa46",
+      "bytes": 4018,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_BVS_daily.csv": {
+      "sha256": "2784128e65511884b8a083e9aea1cbff01bacbe136935ac958443eb6a12b996b",
+      "bytes": 79932,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_BWE.csv": {
+      "sha256": "7b9bb36b23babf97d49b88679daa7364531cbb0c10de03b1a2f584dbad304d53",
+      "bytes": 4121,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_BWE_daily.csv": {
+      "sha256": "cd793c5fcae22a0101a0874b52b0eeacbe572ee9fe11bf62cad97c7be50c4371",
+      "bytes": 82440,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_CAP.csv": {
+      "sha256": "346ac2996390bf69426c188415e54340c471607064b3cd374019061b0ceff77c",
+      "bytes": 3896,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_CAP_daily.csv": {
+      "sha256": "b32c90ab2efa1e40d19dd9b7ec43ac0b26875e3ff10218bad23859bfe11caa08",
+      "bytes": 77308,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_CEO.csv": {
+      "sha256": "0d0f508dfb86d649fd181e482201a6f1f390c4cc7d8af2840a573f8aef470291",
+      "bytes": 4101,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_CEO_daily.csv": {
+      "sha256": "f9c4bc42ee471e7f43ea9b25d59eeaece5502930e6328af7a13c535edbd0abe5",
+      "bytes": 81586,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_CHP.csv": {
+      "sha256": "febc6f71b87259af2acb9100e57f892f7a22fa82c46c69607f58870f79b8a076",
+      "bytes": 4006,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_CHP_daily.csv": {
+      "sha256": "7ca38c45b30cd7f8b3bb73f41dfe6f8ef1b4d9df08e6a6feca1fd9bd6781563e",
+      "bytes": 79873,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_CII.csv": {
+      "sha256": "56f488b243d207af16c36d816e07fd566a2be7a8d15eee6f42f61b3eb1816540",
+      "bytes": 4225,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_CII_daily.csv": {
+      "sha256": "0a8b5a18a6aaa5af78e4525f14a822d465b5ad8056943e3cf3de6df26df9de33",
+      "bytes": 84605,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_CMG.csv": {
+      "sha256": "d9df74c952f5f752eafbaefc6d19ff0c98ab3e95a7fc107aa8bb78e193626bad",
+      "bytes": 4077,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_CMG_daily.csv": {
+      "sha256": "59e1050a811fa6b03df7789d7da7411c936e30ce9e2e70271c357ed5a26090d0",
+      "bytes": 81422,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_CTD.csv": {
+      "sha256": "16478bec2969f94cddb303b22c1b79d7d69a55849867285456a2323508878bcd",
+      "bytes": 4172,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_CTD_daily.csv": {
+      "sha256": "6f1f653494aa35462d5fe799e7869d9844c5a070ad4df30a47a1421bf16db923",
+      "bytes": 82949,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_CTG.csv": {
+      "sha256": "439aa3c5fad2e81e634b22365663d892d15dd5a54e8f37e10d7fde3043f8a4a7",
+      "bytes": 4217,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_CTG_daily.csv": {
+      "sha256": "7789c7ec7bf057db7f1fe54017d5f2aa192bde5ffdfed61a6b3db7a571555cf8",
+      "bytes": 84198,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_CTR.csv": {
+      "sha256": "2391d542a12b41bad6267e128e568c3e08d94860ea5dc028dff138ee5b87900b",
+      "bytes": 4158,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_CTR_daily.csv": {
+      "sha256": "e1fb6e2b31bb584fcdfea64ba60355a01befb4171a5e99e19d2590cf78cde78e",
+      "bytes": 82966,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_CTS.csv": {
+      "sha256": "b6781924b5bf35b4dc5f3362a4facc73b38ac8b2c93a484ecb9d7fde5dec1826",
+      "bytes": 3997,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_CTS_daily.csv": {
+      "sha256": "47a1fbf75166d5d9f6a49ba8a2dfa8e179c5e1d555445c99a303693eacc5bf78",
+      "bytes": 79516,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_DBC.csv": {
+      "sha256": "c9b988d75fd5940af84a9e37b76c44cd9dcb8f4c9239c12efab193eb62138735",
+      "bytes": 4107,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_DBC_daily.csv": {
+      "sha256": "3a6c7cff51e2120586094d1f5c315a8f08f5815b888094841bad241caaa22936",
+      "bytes": 82039,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_DBD.csv": {
+      "sha256": "c1b3ae0df503cd2bd64f13cdc1e5e61b1ac0676d2d78b6feb4d9f8c949e51ef7",
+      "bytes": 4086,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_DBD_daily.csv": {
+      "sha256": "24331d7224d48bbc3d83eafa0c05e14f6fe1755f49f00cafaeea839fe641fbd7",
+      "bytes": 81313,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_DCM.csv": {
+      "sha256": "f0dda0c6e41d9775b0312ec55d1d5e730292fe367efc8fcec557612e0c0afd81",
+      "bytes": 4110,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_DCM_daily.csv": {
+      "sha256": "05f4c7adf03310475b400470f36cd5ca15da66d90ba490b10cebf5f76e2ec339",
+      "bytes": 82173,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_DDV.csv": {
+      "sha256": "4e78cee30615c8e75710fa7e3f335ca5f474428f3205a0ba39a3d0d649aa9d9c",
+      "bytes": 3922,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_DDV_daily.csv": {
+      "sha256": "0e91e7b89b46b5db3028abd81199e331557619fb673e9a000bcf638b9bb706f6",
+      "bytes": 78013,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_DGW.csv": {
+      "sha256": "3904092c852cd5d5fe71960f007636627b85e05bf389ee9259dc9c1f35e7f4b1",
+      "bytes": 4109,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_DGW_daily.csv": {
+      "sha256": "90e5889780b6d39a5e184cdcbac329534920147784ac20d62170f9d5aedf0172",
+      "bytes": 81943,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_DHG.csv": {
+      "sha256": "5827ad515450c12fd2575b9c3ea1f5247db6d5a3aa3535262b90555273cb2b5b",
+      "bytes": 4039,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_DHG_daily.csv": {
+      "sha256": "5165e8a452142ee51546eb51a852fb565d5469e73887bd40cb9a33dbcbbf8dda",
+      "bytes": 80366,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_DIG.csv": {
+      "sha256": "25117d328cdda10161d4445336dc5c29f79afcba0f22a75b997805c4914a6437",
+      "bytes": 4178,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_DIG_daily.csv": {
+      "sha256": "7ee9d2d313cf39e891fff6e1791596ebfa61f21f8e9edafb8bcc2a1c4f6eb6d7",
+      "bytes": 83229,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_DNP.csv": {
+      "sha256": "75a86d3cc61d1767454911139ed07a0651464e58cbf1e60b928e04a72eff05db",
+      "bytes": 3641,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_DNP_daily.csv": {
+      "sha256": "18d918bddd5d3a36905ec1c60c7def86b6ebd06f5d8776ce87d20cc16a9f567d",
+      "bytes": 65383,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_DP3.csv": {
+      "sha256": "b6384bf54eb72a6496023241d2c1b29e11e1ef2404fedb5e65867a3301a7d642",
+      "bytes": 3957,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_DP3_daily.csv": {
+      "sha256": "bc341916442bedcda974d617985001fc447a43629ae6ac52819a2239e6884ab0",
+      "bytes": 78286,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_DPM.csv": {
+      "sha256": "7c6fd35520a1ce52f5e1857607eb71c7eb118ad92396d6e733539b19a2e35467",
+      "bytes": 4075,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_DPM_daily.csv": {
+      "sha256": "a3b62a2b3b7e05ffa6722c26682b57a47d3c01450bc38fa5fb35c46ae2e7b628",
+      "bytes": 81792,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_DPR.csv": {
+      "sha256": "0d57bff6337f04b9f28c64fe32a93860db557286707a7cc92ffc27a93bc61168",
+      "bytes": 4097,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_DPR_daily.csv": {
+      "sha256": "3220cdd31af014f4caa3bbe087ce1c60a6e2e5da77deea168d4ef680ab11cfcb",
+      "bytes": 81763,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_DRI.csv": {
+      "sha256": "c7f13ba176130119df2922272f7e362ff264b208d6ba2d1c9b6cc94b018fb6ac",
+      "bytes": 4573,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_DRI_daily.csv": {
+      "sha256": "bcb3ea597173ef0951a055053ce3e79a3bd47e844b400e522466359ef8abc6f5",
+      "bytes": 77852,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_DSE.csv": {
+      "sha256": "430841cc86e81032d88cba09357c4d08041195397edc7e9d43c534ad34787483",
+      "bytes": 1170,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_DSE_daily.csv": {
+      "sha256": "c2aebceafb18e28e15f62efd2482db6fd8545e1b3c20acb1ee0ca5821ce70099",
+      "bytes": 23074,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_DTD.csv": {
+      "sha256": "1267754f8aeed37f2abfda92e4c12a539a1afcb3a43cb2266fdc96c6c2951678",
+      "bytes": 4001,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_DTD_daily.csv": {
+      "sha256": "afe67d9020d4affa3e2a580e896cb34f085236697d45cebebc059555852dd287",
+      "bytes": 79800,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_DVM.csv": {
+      "sha256": "1999b6863ac968e5166196eedc79aa5bc0b4b590aff42f8c31ac93d543b847d3",
+      "bytes": 2041,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_DVM_daily.csv": {
+      "sha256": "cba425b19fa27d084e50fa3543fbcc81a20614ea91dc8f9f51016063a300034b",
+      "bytes": 39737,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_DXG.csv": {
+      "sha256": "39e02e2387948416dc0e93dd489fdd8b95c87733c55948b7a50ce2cf90ad4dcc",
+      "bytes": 4190,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_DXG_daily.csv": {
+      "sha256": "2d3c45d04f8473a3eecf894c97252c994759b1046ef1ac1efe40c604ce1ece92",
+      "bytes": 83295,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_DXP.csv": {
+      "sha256": "2efb538cbcb0f2f32b8a7e31c6cebce8f740ae83ba0eb34ab5006dd32acde2fe",
+      "bytes": 3883,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_DXP_daily.csv": {
+      "sha256": "24135a9561eba0dd95164a662031a8dd5a6d21ca47d2d0dbb9f3295f98161492",
+      "bytes": 77091,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_EIB.csv": {
+      "sha256": "328371ac4d9f971ebc1be5ba3f0b2e53609f29c2ba06ee5040fdf27fa70f4ec0",
+      "bytes": 4142,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_EIB_daily.csv": {
+      "sha256": "385e9eaec1c25411489dffea90385753996d636409bbfa13a121ebd5c9ab23c5",
+      "bytes": 82697,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_ELC.csv": {
+      "sha256": "9f9c06f7fa28037734f461955e9ad8ce03c3f2bbf9a70b4d6a862a67b7194d3d",
+      "bytes": 7593,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_ELC_daily.csv": {
+      "sha256": "7c679026d321acc6a1bd79324a5933dc4272401f0af77b95fe686d31028f6e6f",
+      "bytes": 78418,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_EVF.csv": {
+      "sha256": "b3f279be6aa8859b8888019a9c3ddb52eeaf71a5e5cc9269b8e19d50a686467d",
+      "bytes": 3920,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_EVF_daily.csv": {
+      "sha256": "a4da52446cb2c56bdbad0001b4d92357f3c3623ef46fe73a471ac87631faa992",
+      "bytes": 78045,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_FPT.csv": {
+      "sha256": "6df9f0ab2742e18829de5b7946c949f471a31b08e8042a7eddf31bae83bff24d",
+      "bytes": 4267,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_FPT_daily.csv": {
+      "sha256": "9484fff89d0509b6fb470b51936fce8460689d5ce4ccef03945d5ff1b0c3a542",
+      "bytes": 85306,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_FRT.csv": {
+      "sha256": "636f69cd75d120ea6c0987376db35c6db8963655e60bf3da0c4951bcd0c58e67",
+      "bytes": 4263,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_FRT_daily.csv": {
+      "sha256": "7b2ddebf497dec5339a66217605e9d100ad43e9ea18a676814b822b8bf2b053f",
+      "bytes": 85083,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_FTS.csv": {
+      "sha256": "8c1053bfabb3058fe350e7acfe7e33892e11542db2564113120f848fe5622750",
+      "bytes": 4035,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_FTS_daily.csv": {
+      "sha256": "985a5b0f58032fd091ae52d64adaaa36d8ff6630996669b67b2a4b9c50b5e2e0",
+      "bytes": 80298,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_GAS.csv": {
+      "sha256": "d91d92c861e885da057568e694a897a67d88a893ab4fa007d1e68f9f88f550ff",
+      "bytes": 4204,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_GAS_daily.csv": {
+      "sha256": "eb94fc89ce492df69fc30bd02694b8d3db58056b46e601c45a4f852b595f8c61",
+      "bytes": 83710,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_GEE.csv": {
+      "sha256": "59fb10afe6c2f5760190f9531a3c2ac79d81966e47b5d8184f7e1c8fa2819558",
+      "bytes": 2379,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_GEE_daily.csv": {
+      "sha256": "06999613b93a517ad9c9a7764e16e4f228cd9f15ce30d232fba6a3b05b2e0036",
+      "bytes": 45892,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_GEG.csv": {
+      "sha256": "24ba8f992e93d2ea0e213fbcaaa6d9c9d8e8d990b13e9c181126bfd658448506",
+      "bytes": 4156,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_GEG_daily.csv": {
+      "sha256": "77a4ced91720245b68edd513ccff7a171fef200a38855807ccb85691a06193b2",
+      "bytes": 82756,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_GEL.csv": {
+      "sha256": "072c0a388622a80aa9401f99c37a904b6e27ec77a6b5420565d517d8449046d5",
+      "bytes": 366,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_GEL_daily.csv": {
+      "sha256": "b019b4b177dfc9d4c90bbac84d271cdb6e4a150c76590d9a86b62990bdaf8de4",
+      "bytes": 6418,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_GEX.csv": {
+      "sha256": "3037b92ec1629036d416cf6927fc259f8612911abed413651954115f7fcf26e1",
+      "bytes": 4136,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_GEX_daily.csv": {
+      "sha256": "3182385e46aa73f9785aede0c244dc93105af5a155f01fd98881a69f34967540",
+      "bytes": 82740,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_GIL.csv": {
+      "sha256": "fa7b5e02c4b89d94a73d1c245e67b7011b07a2acd71f69673b12b2c7e2b4dc52",
+      "bytes": 4039,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_GIL_daily.csv": {
+      "sha256": "fb594ccde41380cc0cca18717e8c7daac65bcff75337da22edc5224ae1f40d45",
+      "bytes": 80664,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_GMD.csv": {
+      "sha256": "63b895c7456003cb040fe99072dae6b158b1b750744b80141217ddd281a5b912",
+      "bytes": 4163,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_GMD_daily.csv": {
+      "sha256": "da98df21bcf7ab50945d647c194b33d26f815094002e0a70b4dd2e519020c06e",
+      "bytes": 83349,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_GVR.csv": {
+      "sha256": "2caa1b0419b63fa1e01098b7adb28807156bed9922484b7af7d7bd61263656ba",
+      "bytes": 4148,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_GVR_daily.csv": {
+      "sha256": "efbcc62d2cd442b9ec95269ee6a3230576c70d9c7d4ca7fbd4faac83f65f6eb1",
+      "bytes": 82970,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_HAG.csv": {
+      "sha256": "ea8efe3ccd29f92d51dee87e053308994ec795e3da9e6f4e16f8d5496165d918",
+      "bytes": 3973,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_HAG_daily.csv": {
+      "sha256": "508d179dbb980718f2a547b29f1e4e61a1a1aabff21f901c2901be9bcd8c7afc",
+      "bytes": 79016,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_HCM.csv": {
+      "sha256": "a2accc217314d42311d6ff8f3e2fae51b6559eeebc0ac0f0fc72612ac6608de3",
+      "bytes": 4126,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_HCM_daily.csv": {
+      "sha256": "cd21baaf9ae5a9c7794282ea179ec894a4a4b8ea38b5ee3dcebeceba62159be4",
+      "bytes": 81895,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_HDB.csv": {
+      "sha256": "a33e3fe8fb6c964fa6f6a7d672da81065f4124fe33347b4648d9e528aa77e0e3",
+      "bytes": 4004,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_HDB_daily.csv": {
+      "sha256": "49bb70e459f1713d8313a7deaa8d3cd95f1d021fcf5b36266438c7e48c9600af",
+      "bytes": 79875,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_HDG.csv": {
+      "sha256": "40bb74c665fe0786a006696e0a0df87a0330c031c7a6213a485419b629816813",
+      "bytes": 4119,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_HDG_daily.csv": {
+      "sha256": "154ebb9994eb8d9ecb5478c15f8dd15ff5b518632990e0f0910b6127046f23ac",
+      "bytes": 82393,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_HHV.csv": {
+      "sha256": "57ba0bdd03419dc15eba91b0c2d9cf72f9cb97c79ed73bf02ae86fa73c89a958",
+      "bytes": 4007,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_HHV_daily.csv": {
+      "sha256": "d4208db238c74107c8ed33ceece2a8c553cfed6907b4900261cc5357aa7f0ff8",
+      "bytes": 79065,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_HND.csv": {
+      "sha256": "b922e8c597f6dcd1f8392f28e9c81b683db1cc22a90cfe6cf09d6acefd4e3adb",
+      "bytes": 3966,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_HND_daily.csv": {
+      "sha256": "ebfb6f310273ef6f59d1e9b97937364679fb168abc4bea80eda501e4bf58b97d",
+      "bytes": 78812,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_HPG.csv": {
+      "sha256": "be4f8b9c966763dc98471cd59f5c8bdcc32f7417c4513cb01efd8fbca7e8696d",
+      "bytes": 4210,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_HPG_daily.csv": {
+      "sha256": "cb303059e6928d3b3f1b9e801b55e77f8a93cc0926c34a0e0154fa2aeafc0b90",
+      "bytes": 84253,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_HSG.csv": {
+      "sha256": "9079857d659a5e2fb9eb5b46fd59a985c9f626f40d727c19ff25baadeeb1ef63",
+      "bytes": 4149,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_HSG_daily.csv": {
+      "sha256": "0c4a0ea32f61fc4e849c8cc06c8f7d55cb6246eae0adbcabe59b9ab499b62cf6",
+      "bytes": 83025,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_HT1.csv": {
+      "sha256": "bbe82a3bd775393d7d73be0ceaa0a974715b581a70c141a4058573104af3e972",
+      "bytes": 4147,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_HT1_daily.csv": {
+      "sha256": "5ea287826010b05f70c0f08697df5c15a94fd5da7b95c9b2b05669e7bc37642f",
+      "bytes": 82846,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_HUT.csv": {
+      "sha256": "f4d4b4c7148bdddfc159a20bae28ece2eca2a1c6f836b6744f14db9aa926a6be",
+      "bytes": 4033,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_HUT_daily.csv": {
+      "sha256": "6dae277a6e543ce7ead68c7d0b1b9e52f1443f8d5af8f2856afa75a240d35579",
+      "bytes": 80717,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_IDC.csv": {
+      "sha256": "d5114f92688dacef9295ed863b3bc977988f4596f472128d85f852652cbcb77c",
+      "bytes": 4105,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_IDC_daily.csv": {
+      "sha256": "a8f548e45dd47f80cc3826fca476add01e465d89a10c62a4ca6b08ed1e8abbb6",
+      "bytes": 81563,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_IDV.csv": {
+      "sha256": "aa438d20a8773d4297075ce1a56cfe4f7bf1d78aa67e922a44c202cf18286b61",
+      "bytes": 3961,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_IDV_daily.csv": {
+      "sha256": "1f8e85b5b0c0250e997e2ca97ad1a1f3773c668754bd3b22bfb6a5a2d96448bf",
+      "bytes": 78720,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_IMP.csv": {
+      "sha256": "145c6ff5b8dcb3349bca5189054b6d5b57564d29f28501ba011b05351a9c4460",
+      "bytes": 4056,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_IMP_daily.csv": {
+      "sha256": "5f035b61d38e20a79f5c1c2bef804bc08e110c59d744c571d499c2b0adaab8d9",
+      "bytes": 80469,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_ITD.csv": {
+      "sha256": "edab0a28bec0d0945eed501f01b9cbe2b5e67d42da7f2876767889e2b6b4ba00",
+      "bytes": 6952,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_ITD_daily.csv": {
+      "sha256": "d7c850c3f6178b9748006baaa8e3e261c463496e2df086fcd858cc49c4e8e809",
+      "bytes": 75619,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_KBC.csv": {
+      "sha256": "fb77d0584ec063ea0265dc80a417fcf8b3741b68aa16db39a4311fd6dd0f9afb",
+      "bytes": 4105,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_KBC_daily.csv": {
+      "sha256": "feff0add9200cd712893f8bc0fd36e4adfb1a258fc12d35e455858a65139b20c",
+      "bytes": 82143,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_KDC.csv": {
+      "sha256": "1b0b238cb9b3ee2c4526e18a299f72f1f3cb77d2e3b33370e75bd799a5976f5d",
+      "bytes": 4159,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_KDC_daily.csv": {
+      "sha256": "6ea5089a9bbf3a3568f662dc6e52a2056426b79d937c2d4a1fc2cb42f3725f41",
+      "bytes": 82684,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_KDH.csv": {
+      "sha256": "d2e8cdb2b3792873276e223673448317f5c880179e6fdc747f95d30415cfd5a2",
+      "bytes": 4195,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_KDH_daily.csv": {
+      "sha256": "f78654d5e8d351b16a975f938cf66796b74d642fc3ea448345f205f43a3b5f9c",
+      "bytes": 84202,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_KOS.csv": {
+      "sha256": "9f255811350dac5f8d0c4f8c6388c8877a7a6b4a23c8808237d8fd23f95466bd",
+      "bytes": 3963,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_KOS_daily.csv": {
+      "sha256": "9acf4b1b5c2da2438c2e36171d4485eecaf1bca30ae037487ddd99186719db11",
+      "bytes": 79086,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_L14.csv": {
+      "sha256": "5c0ec25a798a397aa7cbfdc1e360df1fdc6a45761d13b6a36d2aae104b235ca4",
+      "bytes": 4061,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_L14_daily.csv": {
+      "sha256": "ce6287604d86463a03bcef95a751447d67022af4388f875642a032f2f1617a36",
+      "bytes": 80755,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_L18.csv": {
+      "sha256": "b538c64d40c32ec8a046659dcf7499a86f90e25d909ce4461d5dde1604e9ada3",
+      "bytes": 3847,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_L18_daily.csv": {
+      "sha256": "f7c022c2650b3aa88785f1bf51edefcb8ee844fb992493231807e54b2cc38bb2",
+      "bytes": 75811,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_LAS.csv": {
+      "sha256": "80fbca7b416be6c067d72a2166b91cae29d8ac1ec7d84014b4078a8b77be818f",
+      "bytes": 3984,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_LAS_daily.csv": {
+      "sha256": "65b33d4dd620675e0cf6ffc82773fa053c92546c27df52e9891ae42465fabeba",
+      "bytes": 79159,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_LHC.csv": {
+      "sha256": "32a1e7ff2291e348f246d2995b253fe165edbb3114b58d27aba3b7324ece00e4",
+      "bytes": 3872,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_LHC_daily.csv": {
+      "sha256": "4b60f586a982e431871d9b8a6deabbbca6ad3c391cc8d2c74cffa815fb23db06",
+      "bytes": 75937,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_LPB.csv": {
+      "sha256": "dc896cf45833393a6e02e25e3ce7b25e069eebf4af739d7100d6c60d25d5c709",
+      "bytes": 4034,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_LPB_daily.csv": {
+      "sha256": "c6571ba50e33e692e3b0e57b46eac6eabf59291fbbffb9caf007080ff24a642c",
+      "bytes": 80249,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_MBB.csv": {
+      "sha256": "c0634173535df3241b206728487118cc1d4048a7dc09e904ebd1c3724d220025",
+      "bytes": 4091,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_MBB_daily.csv": {
+      "sha256": "df043d431d7d8ad2ce965ba029135cdbfd50c7bc247fc7efe4e7a9231a3fca74",
+      "bytes": 81666,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_MBS.csv": {
+      "sha256": "9b68534eac0e201ab6bf016d41054cd46609522a7981dd47bfadc9f34fd14c59",
+      "bytes": 4008,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_MBS_daily.csv": {
+      "sha256": "1dbe3709567b357aae07da02a836e66b674768be4d5e974a40c66065949dcd39",
+      "bytes": 80010,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_MCH.csv": {
+      "sha256": "673fa2235b2347bbc312f23ba66beeb2498c6e5348ba8e36694641614265d6e2",
+      "bytes": 4146,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_MCH_daily.csv": {
+      "sha256": "78b9239a9e8a88ab394444e183db204627ec6ec7cef33ac9281075b83cebd716",
+      "bytes": 82281,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_MIG.csv": {
+      "sha256": "f8c453094dd8b4c6f2affcc8a8a08f6e1ab82d554c825bac574808eebd7fadb1",
+      "bytes": 3993,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_MIG_daily.csv": {
+      "sha256": "890fada0d2a4c3a0794960055d3a6e337bf9bfd6668c3bc6be69ff3a6ba5ac3b",
+      "bytes": 79448,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_MSB.csv": {
+      "sha256": "0e14bf3aedbaac8646ecf95aa6a176c11a6bf38d4cafb7cc1ff8aea6247c7e49",
+      "bytes": 2921,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_MSB_daily.csv": {
+      "sha256": "719580aa3660961c33566318f0eb44b632e7fe43c648ed463a7ad7ea0e694d4b",
+      "bytes": 57154,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_MSN.csv": {
+      "sha256": "c61110e2283c9e7e19f8b82bfd8ae86b1fb15c26b5ef1fe892a2e9dac692bd1e",
+      "bytes": 4115,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_MSN_daily.csv": {
+      "sha256": "02a314d3cfc13ef335cc4318ae6137f8d2c6e161e6f6ae1ce50d7137db750a36",
+      "bytes": 81833,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_MWG.csv": {
+      "sha256": "3485f391050a984035525f370a16c2410c03894e8ad5b87555cd823e4e5672df",
+      "bytes": 4250,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_MWG_daily.csv": {
+      "sha256": "719d21c235263d096f08919cf5b07a352b7040a4aa575e784807457da8fd00c0",
+      "bytes": 84683,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_NAB.csv": {
+      "sha256": "d3bad638eefd6921e872299b6a4cd14298dc5f290ffdd6d60c113090257a994b",
+      "bytes": 2933,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_NAB_daily.csv": {
+      "sha256": "fef820f584867fc8690ff7b93e203822133bace87149b8f284d56473a5c372d9",
+      "bytes": 57964,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_NDN.csv": {
+      "sha256": "63343ce19adddb4d11f82b48d38c2b76a4835cbf6b3ad6988971b392a7504b78",
+      "bytes": 3913,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_NDN_daily.csv": {
+      "sha256": "2f43c1355eb785a8b6f83e117cafc500b6fe4c57fff1a2d74a28bdfaa8608b6e",
+      "bytes": 77851,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_NFC.csv": {
+      "sha256": "00a11edb1bc8c2c7bf44cd9d0a419213f1b7ea7b08971ce681003222ada78670",
+      "bytes": 3545,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_NFC_daily.csv": {
+      "sha256": "ac97392e694b4f8d3cb12691049f89710b6678b4573df40d690a014d97a76bb3",
+      "bytes": 68456,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_NKG.csv": {
+      "sha256": "ba99a65455213680c7ef4780515974e93d7d5659ddeadbb1222f7898b87d50ec",
+      "bytes": 4116,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_NKG_daily.csv": {
+      "sha256": "1f8c8d35557a2cd5a09cea2e39318088ed946baab9c068fc4cdf56aeb602a410",
+      "bytes": 82166,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_NLG.csv": {
+      "sha256": "584e54bf362ca2a0c61aba6ed6d958fee895120c7e2220b178a7724e1757b06a",
+      "bytes": 4199,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_NLG_daily.csv": {
+      "sha256": "4a77afc729e2127c9e93b87c98651572cf9a51a6f63f6dd65c17abfb18120a2b",
+      "bytes": 84345,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_NT2.csv": {
+      "sha256": "6a2c34bb83e6a6ccc7da7bb71b3063a69f8c7d623de5fcd49c18d0fb0e9f88d9",
+      "bytes": 4159,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_NT2_daily.csv": {
+      "sha256": "63b06d38b18a3720a44c6a21da236a6795fdada52ccfaf0882aa1b1ab0d14ee0",
+      "bytes": 82954,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_NTP.csv": {
+      "sha256": "4c50f332b265d0d2da6f72f5c53f9918fec292ea90f1ce4502d2539dea7080ae",
+      "bytes": 4062,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_NTP_daily.csv": {
+      "sha256": "5d78576c10e705920c544370355f3de70f37ee08c416332ddec448ca684384cd",
+      "bytes": 81063,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_NVL.csv": {
+      "sha256": "41e30c6ee927d37fb590e2c57535ce7a64d9e387b0a1f3d6085f9b4b3b45a858",
+      "bytes": 4227,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_NVL_daily.csv": {
+      "sha256": "9213ddd69a3706d48046f4015f8de80c5ec49a7833e38a5ed85fec73f93f78f6",
+      "bytes": 84638,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_OCB.csv": {
+      "sha256": "0b2a1be1fdf357c5afe591b1abaa2eb0f0a953c06b85fc8e8443a9042038ccb5",
+      "bytes": 2849,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_OCB_daily.csv": {
+      "sha256": "002cead2d6c2e1c5ca5bd750968247172d70115a2aad879cc040eac9b9e65400",
+      "bytes": 55825,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_OIL.csv": {
+      "sha256": "e477cc18902ea61587fe90adfb0a5cc022376ec4141420ad4e2bf02c8ad8e843",
+      "bytes": 4049,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_OIL_daily.csv": {
+      "sha256": "9160aea1bb49b93b66e149a1d0bc32d7491be91cb2bd8c901cf46d0ed2d4e57e",
+      "bytes": 81028,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_PAN.csv": {
+      "sha256": "f9e844a55b27146a1f43111335adead2b185cddfb83390934dcccba67d1a517a",
+      "bytes": 4167,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_PAN_daily.csv": {
+      "sha256": "dbfd7da6950a3adeaaa832c275d4e4cce190cd9edd026ed15b419054113b8003",
+      "bytes": 83027,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_PC1.csv": {
+      "sha256": "f36d21e6a0a160fba92fe24d10a1a7c7feb83b99ddcfe522cb43cac46810f70b",
+      "bytes": 4095,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_PC1_daily.csv": {
+      "sha256": "1a09070fcb1271035b196e7e9a25a72a35702193b327bfe658cb952e020323c2",
+      "bytes": 81646,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_PDR.csv": {
+      "sha256": "3445e3c9f6653327a6855d8f26ab4cbc72295f461aa10921293b8cd5b2551abb",
+      "bytes": 4213,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_PDR_daily.csv": {
+      "sha256": "f935a4a125682ca83fce68f12725942b8ca3321fae66e1219fbaacde0e47d74c",
+      "bytes": 83765,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_PHR.csv": {
+      "sha256": "d18390d283b016d721bde13cbe045e4a9a90037dc5aea91b0d616e4f1092ee72",
+      "bytes": 4187,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_PHR_daily.csv": {
+      "sha256": "d0dfe75f8cc45d82df1783a32936431ab7efd9c2504c502b11a6fa86418a4746",
+      "bytes": 83209,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_PLC.csv": {
+      "sha256": "52d0ef7c25579cf34e5c25485a4330f5dd7c6dd72eefe852d5f8715c915936be",
+      "bytes": 4063,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_PLC_daily.csv": {
+      "sha256": "13f653f4341c64088cc349b77d241a3804894a10224700cbab2a0ab37b9fdcec",
+      "bytes": 80602,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_PLX.csv": {
+      "sha256": "027a60984099abcd902f4e94d68501b6c054b0b75ebb56e975ccaa55b42d0f20",
+      "bytes": 4205,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_PLX_daily.csv": {
+      "sha256": "e3c4939feeeb8f06c4677328cb57f948940385c37bfd227aed0fc5fcffc56e93",
+      "bytes": 84050,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_PNJ.csv": {
+      "sha256": "00a61662c2b64d7909b4bf20b0aba74c56d01c33777eebc679aec463a0684ac5",
+      "bytes": 4171,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_PNJ_daily.csv": {
+      "sha256": "5e3aad034f3bc274ebc63c4264ddad19d4995ee57971876ee6bdad6ea2e1af5b",
+      "bytes": 83204,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_POW.csv": {
+      "sha256": "6963dbfb7e1f6258f716116315844dd0c383934863e8d8137b9a1d99a673afcd",
+      "bytes": 4120,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_POW_daily.csv": {
+      "sha256": "3dfe568827e7865ab954d16d9eda9a1c6618161707c187bd3db6dcc57e173101",
+      "bytes": 81992,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_PPC.csv": {
+      "sha256": "a2981da2c0c3b9a30f712233fb3d8f562504f7e7062475ca8bf7f0146cffe300",
+      "bytes": 4051,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_PPC_daily.csv": {
+      "sha256": "96e998d744543def6787b37e919e929d534f6de9cbc3a62ec2255ae4762e1c19",
+      "bytes": 81423,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_PSD.csv": {
+      "sha256": "562cd9ef1256d541ea526b08fed327e8bedf3a82ba41ca0ea064eaeb1daffbb1",
+      "bytes": 3765,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_PSD_daily.csv": {
+      "sha256": "f9b52cb362971f083a78feaeae75c7c29481c40a8a8d6b84b5b78be6c70dd25c",
+      "bytes": 74213,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_PVB.csv": {
+      "sha256": "e0e96fe9e3dfe565abd8a908457abb811b4070ad3bd56b332c4f49b9bcc89321",
+      "bytes": 3905,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_PVB_daily.csv": {
+      "sha256": "32394b4b51f9623f167848d20172867919353e137fdf040b84e792ce70c8ace6",
+      "bytes": 77988,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_PVC.csv": {
+      "sha256": "041bd68a3bfa20624d5c917bb5e2e92b05b426605011618eb9967bb8e94e52be",
+      "bytes": 3939,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_PVC_daily.csv": {
+      "sha256": "e38cc20610a17ec76f13ac480e61164dad6d4e53b15a0b9587e0dba088bcd577",
+      "bytes": 78591,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_PVD.csv": {
+      "sha256": "45b80b12ff75f508bc6b66a6e93a0fad3e2475324ae3fe9733d9456adbaa17e4",
+      "bytes": 4121,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_PVD_daily.csv": {
+      "sha256": "8d9f940449c7b8ae3c5e5675d87fe1b308b4cf1f075c62a242b6c5794c0919e9",
+      "bytes": 82157,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_PVI.csv": {
+      "sha256": "f467e03b709ab67f3a56c9f5516ef35775af32ad1c5fc9e7eef3aa3e54954a3a",
+      "bytes": 4074,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_PVI_daily.csv": {
+      "sha256": "10d6c208a6f0b9ce0f4a2c448c16ef6c473cdb065e91d70424d7738b49f9e347",
+      "bytes": 81134,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_PVS.csv": {
+      "sha256": "96f5ef2a1e54cb7003f6222834b222ea58e14e2741d9c99063721bb65ce847ca",
+      "bytes": 4213,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_PVS_daily.csv": {
+      "sha256": "fbfe1d5d8794fbd38fbe3ab3089af4b72a3a755dbbf80860550df6747c2fc25e",
+      "bytes": 84392,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_PVT.csv": {
+      "sha256": "2cf1616e789bcf662f4d878e27b2a7e5c6fe2c42c3ca7d838d0ee1a600162caa",
+      "bytes": 4102,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_PVT_daily.csv": {
+      "sha256": "33e891a2ff86a8d4cc77b6d1a80be894a4d2a8983f0b0ed5b0f82d5ee82d2f6a",
+      "bytes": 82181,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_QTP.csv": {
+      "sha256": "787646db77f8196defbe8d7f0416fb3b7d97b7ea68ff022c88efe812ff441023",
+      "bytes": 3955,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_QTP_daily.csv": {
+      "sha256": "e5b440bde0f42e2c4852aa1eb57b3253b475f4caa8149b8cca377da83fd6de03",
+      "bytes": 78237,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_REE.csv": {
+      "sha256": "1c6e82a52ef80bb0bbeaf206e0c6bf27dc35a15ecdfe65f9c144f8e751b5fdca",
+      "bytes": 4179,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_REE_daily.csv": {
+      "sha256": "d3063365469bc9256305e8953a8058f24f3b1c9f011670f43d805893b6d1f03f",
+      "bytes": 83230,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_SAB.csv": {
+      "sha256": "efcb14e72b6ce8fddff6bf38972af62ca26d8c210cd6dd29c1ac1541785cc221",
+      "bytes": 4123,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_SAB_daily.csv": {
+      "sha256": "15785abade2ea7bc58c5adebd44a51a298508b8a573d148d0150abc9c2819004",
+      "bytes": 82496,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_SBA.csv": {
+      "sha256": "93e9766c109b2ac8f02bec588ae5c7afcdd518af93b88dced45427d747c03350",
+      "bytes": 3898,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_SBA_daily.csv": {
+      "sha256": "a643c62904f817eef5c7b69da2fdacc33840ed8c8940c0cd61ac55b8ff3d802f",
+      "bytes": 77644,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_SBT.csv": {
+      "sha256": "8b72efa30d2d363a71b25283586b11ba1f1eb2017856e80bae527418afcf730f",
+      "bytes": 4195,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_SBT_daily.csv": {
+      "sha256": "1b6df505afdcc543193bac813fe4f649bcf5a83701448f4f0b3000094cd7a07f",
+      "bytes": 84222,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_SFG.csv": {
+      "sha256": "3023ddcf08d08ca3fbedd844759af5f59fbbbb52f6e5e0a196daf80db75a5b35",
+      "bytes": 3780,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_SFG_daily.csv": {
+      "sha256": "ee6a875c8ee28b1e7f2a1b3745fa86f4728c24457ad0494374d8500d97acd304",
+      "bytes": 74169,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_SHB.csv": {
+      "sha256": "c58d8b71e2de4cf9f6123a1b334bef3537f074e8a698fd2311fc79423f652d5a",
+      "bytes": 4053,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_SHB_daily.csv": {
+      "sha256": "fe31ae17fd9243af32b41b59599fd56a97b220622f1d79fea1fb69d7bbe20442",
+      "bytes": 80401,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_SHS.csv": {
+      "sha256": "d9e8f5fdfb8be7479781837ec1518419a503919757b9c0985d3e34a5d3a01413",
+      "bytes": 4103,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_SHS_daily.csv": {
+      "sha256": "abd5de0746da8cdd7583f3c12538fac6014b86c322b9ca8da5fb11e86b286b2d",
+      "bytes": 81937,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_SIP.csv": {
+      "sha256": "791b1df306c118b4e5c05c80a585c5131e7e29003814e9ecb12222eaba290c8c",
+      "bytes": 3759,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_SIP_daily.csv": {
+      "sha256": "6835fa0f48c0af406fca60f325da7185969bc29c3c1eada6f3a66fd35d8f12d3",
+      "bytes": 74449,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_SJD.csv": {
+      "sha256": "44b3d46fc2bd3e85b30be67a15529816c3e619526621de66d30537f6c5d53b56",
+      "bytes": 4031,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_SJD_daily.csv": {
+      "sha256": "01be5be4b2cdf711008dc02aa50da472d1ffd775612f11795c152d0fa90a3b13",
+      "bytes": 80396,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_SJS.csv": {
+      "sha256": "e6aed514cc034d433d47916ecdf75146573b1dc7178373a0831be8fe336c93ef",
+      "bytes": 3937,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_SJS_daily.csv": {
+      "sha256": "2ebc968444f249e0dbed9128bcdb8420109e8bab9a2fcdd233fe58026ea13b11",
+      "bytes": 78394,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_SLS.csv": {
+      "sha256": "b20951eab697cca7da2db8a7c1f468913f3a6700535f9cbb1b462d09b0cf2c5c",
+      "bytes": 4171,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_SLS_daily.csv": {
+      "sha256": "43350fc70d8ccbe4a7901c4c9d8419652844d343e8344714aa5c7fc4a6a05632",
+      "bytes": 83217,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_SSB.csv": {
+      "sha256": "f9cab7def4fbe30b84d3bfd9989550904668720cb0d5a71d7bd52ad4cb690002",
+      "bytes": 2935,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_SSB_daily.csv": {
+      "sha256": "408d31eddcda197497d0295f8341d426393dd462e8c5bb5d84614eab3b4c2148",
+      "bytes": 58302,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_SSI.csv": {
+      "sha256": "e57017047eb45b46391088884e362bddb576cdab419a4854f3e727e821077696",
+      "bytes": 4159,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_SSI_daily.csv": {
+      "sha256": "f837a7d2111f8816ecd831861290a4211ade831e051de6b4eadafc5eb9728e61",
+      "bytes": 83515,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_STB.csv": {
+      "sha256": "e9147c862f754a2ca30d729f5091dbb6c97fc2eac173e43526409f92d8fe7f75",
+      "bytes": 4047,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_STB_daily.csv": {
+      "sha256": "194d7d4f8be2509f9d82fc91d5d3a2c3ce4bfe23e79910211f0fd288147d1542",
+      "bytes": 81604,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_TAL.csv": {
+      "sha256": "56ff745c60399eab1f399cae66f645010c4b214d40cf52d1783a04eeea57238d",
+      "bytes": 1420,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_TAL_daily.csv": {
+      "sha256": "e5ca2bab28923998f26e2108fd9a349a3072e13dcaf8c4f72294e4575aff1292",
+      "bytes": 27161,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_TCB.csv": {
+      "sha256": "5ba8b7ad35c66539f7aa1d98129469b588fd09b1737084de4ca977bf86070d95",
+      "bytes": 4223,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_TCB_daily.csv": {
+      "sha256": "c4afeecbfd226e405b0404293199d686bb7b94ab2eac3c18948703f85defc61b",
+      "bytes": 84738,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_TCH.csv": {
+      "sha256": "12441be47c2b37f4ae027e753d4d97bcb91fc038c551771c9152f4c0958bb7b3",
+      "bytes": 4111,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_TCH_daily.csv": {
+      "sha256": "65d53b2dbf34a7a93883ad98dfe5907579ca7a0556a3266c2ed2e44c1fa70c34",
+      "bytes": 81804,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_TCM.csv": {
+      "sha256": "87ad17f56810d3f2acabf928444358107baa87140b202e064bc75bea64ff97ec",
+      "bytes": 4148,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_TCM_daily.csv": {
+      "sha256": "1cd24fd4f8d8fdb2c12adad9c2f88bb84825f010490882406a1c33dc79a527ec",
+      "bytes": 82650,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_TCX.csv": {
+      "sha256": "ab910578f26cc216c5d07b9e0c82df42a7c6b8166001a46e29c53ec7e74d50a2",
+      "bytes": 545,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_TCX_daily.csv": {
+      "sha256": "8cdea453e0cf754be3fc0bdb8120592c80cadcb138ce454718dd99265937acf3",
+      "bytes": 9910,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_TDM.csv": {
+      "sha256": "e6addb8e7ee1458c7b0f2ea37e84c352dfd9040f3f632713a6c43563d4dd1ca6",
+      "bytes": 4077,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_TDM_daily.csv": {
+      "sha256": "dffb2f10737c0e00fdf4bea9f3b9f2ac4666ca780ea28eff25144a5e52eec259",
+      "bytes": 80422,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_TMB.csv": {
+      "sha256": "9dd42c59f41d20e2c7744be94ef41380e56f5bd3f56829e2413f8443bc61b8d3",
+      "bytes": 3854,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_TMB_daily.csv": {
+      "sha256": "903e1c5d30063b9baf4e377d9d0b172ee3c344bafa009605218f7b12d86b1f4b",
+      "bytes": 75715,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_TNG.csv": {
+      "sha256": "da95fd3a9724b5bf82dc43997e55f4c09f82db3699dfd004fe9c161ea1c39a43",
+      "bytes": 4071,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_TNG_daily.csv": {
+      "sha256": "c17bdaf84e5ae06cea87fe70c0812d169ecec99ee656078062e8d8bb47ed3048",
+      "bytes": 81470,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_TPB.csv": {
+      "sha256": "65b6359911bbf6c6da3ffe22625ff5b76a3148046e23647deb4e0f417e7a87bd",
+      "bytes": 4086,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_TPB_daily.csv": {
+      "sha256": "ac5674b1bfec96e6799ed53c32f1f60615e79724f42d4b86678a351827ac5a69",
+      "bytes": 81417,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_TVD.csv": {
+      "sha256": "9fd72144b317ba8e9357cd015a1c56f560a355b0d3219792fbcb9e156001da41",
+      "bytes": 3819,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_TVD_daily.csv": {
+      "sha256": "5a5eaff132c0b0554b3588a2e1df90c2a0feaef350b883e0f7b715fc28af905d",
+      "bytes": 75465,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_VC3.csv": {
+      "sha256": "7f8b79fe02dc1e95c60f4c88ea98f5f5d451ec7b4f85c4ff52eeab269f078dc0",
+      "bytes": 4014,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_VC3_daily.csv": {
+      "sha256": "e931e2f15bbe349a63536b6563fb1d217f04a6e83807d90cd7c0c15c0763c151",
+      "bytes": 80341,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_VCB.csv": {
+      "sha256": "afaee7631173e53e1a428ca14e3e8876ddbda06f5cae14032c401cf1acfbc517",
+      "bytes": 8798,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_VCB_daily.csv": {
+      "sha256": "3c5cda29f3c1b7ebda8151f14324716a708643606a9d91a2798398aa3be81a3e",
+      "bytes": 84130,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_VCG.csv": {
+      "sha256": "def7f2a4654e6f404d181d2dc753dd0c279cb81c22d233cdc517523b642e5058",
+      "bytes": 4220,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_VCG_daily.csv": {
+      "sha256": "9ab82a5afb4bbcc177af08f2a330787733686d4e19327ce2b9613b5ba2a7db8e",
+      "bytes": 84077,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_VCI.csv": {
+      "sha256": "2bc78feb3d27a6a20414e4c22a46770578b6719aa0aed8676e3b2f08bfefacf3",
+      "bytes": 4122,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_VCI_daily.csv": {
+      "sha256": "5265085e9e567f698ec306a6b5e9789aef49bfb506676c2e2ddeb731a2ac3147",
+      "bytes": 82000,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_VCK.csv": {
+      "sha256": "2cd638d847cbcc0c678c6bbd0ca194db0190457fc0e3bb666a0bf030110161a2",
+      "bytes": 457,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_VCK_daily.csv": {
+      "sha256": "181c3debac1e17f54046ed740c1a3d534bded0ac6f024cda66e5af970e026b92",
+      "bytes": 7977,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_VCS.csv": {
+      "sha256": "e173fab8861b969be4b9f740c61b61e0498618ac736b9b63dc20d91ae66c3dee",
+      "bytes": 4102,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_VCS_daily.csv": {
+      "sha256": "09298be077a40087847b4e823b3be0460de24612798013e9624ef63376a3ddb2",
+      "bytes": 82032,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_VDS.csv": {
+      "sha256": "0f7b00932a42c4c308889764c27c2cc61c6e02190d337cbec4e9d63881503820",
+      "bytes": 3955,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_VDS_daily.csv": {
+      "sha256": "2a1de7e726461f39da00fa208f09249aa61cc96a4de667c27a9afdd9c2852e63",
+      "bytes": 78394,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_VFS.csv": {
+      "sha256": "603472b42e2b9175250e0193500f1397da2a638449b38310f5d98426a4439963",
+      "bytes": 3171,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_VFS_daily.csv": {
+      "sha256": "3b420aa206aa4475d7d1215eabe45a4fd1a0fffe0cfab3546b949641519bd568",
+      "bytes": 62818,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_VGC.csv": {
+      "sha256": "bd5cd663796ecb146ec50388e6d24f04b358eeea6fd1c1ff2803e23c9e061b1a",
+      "bytes": 4198,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_VGC_daily.csv": {
+      "sha256": "710108a63d99dc1a1546590e812615d1b8047b57859504f592635977c66ee51e",
+      "bytes": 83269,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_VGI.csv": {
+      "sha256": "b7e6eea0ea4f2325b4cd01b0211e53d16302ac6faabf02f6ca0d6ddfaf4633b2",
+      "bytes": 4195,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_VGI_daily.csv": {
+      "sha256": "b126bfe27d3e8e589eae652b129a61cb0281e81da9916bf4d25fed34d7b4e176",
+      "bytes": 83599,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_VHC.csv": {
+      "sha256": "72bfdee1e06baa5433b7c11cca05f1ab4a80a22e207e24e76106ebf546b9f65c",
+      "bytes": 4147,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_VHC_daily.csv": {
+      "sha256": "a55b2fc9d7a115a88a33d5c7691387875178a618dd66bc922af7c5291b33cf30",
+      "bytes": 82582,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_VHM.csv": {
+      "sha256": "3787662d30a54a5de46a1a8fce435cdcc1b1fdce12d38b47c96ac995f2872de0",
+      "bytes": 4245,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_VHM_daily.csv": {
+      "sha256": "f626f76252bf1cac443336fbcad70d7d96fb7c353e7ccd973aa257506d16de9f",
+      "bytes": 84647,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_VIB.csv": {
+      "sha256": "5624dd959f20e92414c3a6d95ad76000838091e655dae1b6e85966bb8fe34770",
+      "bytes": 4085,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_VIB_daily.csv": {
+      "sha256": "a52592346f8ef2423650e202a0c4b1814d6d82f780822458f914da8e8d4df318",
+      "bytes": 81425,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_VIC.csv": {
+      "sha256": "447caa8d3e34c02bd62bff8a0349c4232a5bdacecc64399a9358b3208abef098",
+      "bytes": 4144,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_VIC_daily.csv": {
+      "sha256": "02f3172c69ccdb8de76df4cf3f5a50be88f65df2b321757277264c9b43cf4cda",
+      "bytes": 83081,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_VIX.csv": {
+      "sha256": "d6b457714202df9b75985a00f76c1e9aba3683cb4651765f6dddb0fe70c06cec",
+      "bytes": 3965,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_VIX_daily.csv": {
+      "sha256": "d47664c4089811578bd0c8b7c3f8da39e50da0e47e433126ec87f67fbac2d9f5",
+      "bytes": 79254,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_VJC.csv": {
+      "sha256": "cadb142f76f23e8fed0fa6b4479d044c470f8c133058de3f34e18a30d801c53c",
+      "bytes": 4273,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_VJC_daily.csv": {
+      "sha256": "f03aa5d0b2ede38ce592af1e49bbf8adf5228536a42960330ab6ef23e1bfad7f",
+      "bytes": 85104,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_VND.csv": {
+      "sha256": "b4ada6608375c2345647425ffd5b7840e56c8458f0a262d093b92ab38acbabfe",
+      "bytes": 4146,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_VND_daily.csv": {
+      "sha256": "109b7e120223389b8430c1985f06ba664b58c738f95ab8c7272321d1a4033387",
+      "bytes": 82513,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_VNM.csv": {
+      "sha256": "09988e7c494525e9e0ebe15357488634725d8b62f8c9be22de99afabfbe1d622",
+      "bytes": 4219,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_VNM_daily.csv": {
+      "sha256": "5878093530ee712b6c293795b669be1876fc1b32dff680e728621376b341e8d2",
+      "bytes": 84525,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_VOS.csv": {
+      "sha256": "c8f14e72c99e364fca0d728eaa23c64a1cd3017e79d481fc6f13e4d2d6493f90",
+      "bytes": 3999,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_VOS_daily.csv": {
+      "sha256": "920a1ace32d1b52a5eda6c801aefeeb6e30b549b013b25d350acfc385894f959",
+      "bytes": 80034,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_VPB.csv": {
+      "sha256": "07202a5a9a88b849eb9f35a4ae19ac16bd91f35c402f798ee1b51c336aa8bdb7",
+      "bytes": 4181,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_VPB_daily.csv": {
+      "sha256": "feebe4c9605fa1c1de23f65262e756f07f576bc1a5f4cfcd8e646ae5e8c03bb1",
+      "bytes": 83693,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_VPI.csv": {
+      "sha256": "3b381058e39652d49991938009dc43e2cfa7a4bf9cb668d897b145fab4a4edcf",
+      "bytes": 4196,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_VPI_daily.csv": {
+      "sha256": "bc2755bc868342d2f923e6cf60d6091bc91ec8b439ea0b5f2bf3165587ea9e8d",
+      "bytes": 84021,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_VPL.csv": {
+      "sha256": "80c2edcb46c33f0c5eaec21952103b424394996cbc93857ae089b57cbd274de0",
+      "bytes": 708,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_VPL_daily.csv": {
+      "sha256": "47a11225bfd421e57f0de033996ab20bd62dc61e8422a60ae1d26ee6c099f9f6",
+      "bytes": 13297,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_VPX.csv": {
+      "sha256": "79d726c22de4e4d892ab6065fc5cbd687a27fd3a3a170e6fc85fb48cebcc5045",
+      "bytes": 442,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_VPX_daily.csv": {
+      "sha256": "8a7afb184ccab333c12ee9716e9431b5cb6032b878016f7fdf0cd0e9fd35ee0a",
+      "bytes": 7898,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_VRE.csv": {
+      "sha256": "8856c70849cb79d907f077b6d7d666bebfe52b96d4c414c8924ecd57d6615dd5",
+      "bytes": 4259,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_VRE_daily.csv": {
+      "sha256": "13ee21820833cbd65b651ceb51a12209eae083db8ca262d9c973ecd611c3dc38",
+      "bytes": 85083,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_VSC.csv": {
+      "sha256": "c5d8b6ad079093b9c330dd0a3213eee77e00923ac3bb86b7911aac041d1421f9",
+      "bytes": 4040,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_VSC_daily.csv": {
+      "sha256": "f5be83178011cd9374f4ea42483e68c0fa367b1c077cf0106a617195867d6d4e",
+      "bytes": 80855,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_VSH.csv": {
+      "sha256": "791f164e777976e5b2a6ae053b3b9c2565e2ace58dd8c178e877893643c18efd",
+      "bytes": 4038,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_VSH_daily.csv": {
+      "sha256": "59515f9636f566f4dcae53014396ed6993c988b9ec16efb009c9e21fbd487553",
+      "bytes": 80302,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_VTP.csv": {
+      "sha256": "de27f917cbc477869d8294d29123c012a3ba01d6a67f69f7a403717a8fab0340",
+      "bytes": 4104,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/backup_vci_monthly_20261028/VN_VTP_daily.csv": {
+      "sha256": "8d16cf4d75fa90043ccd4efa7fcf4b94c50ecc8531f9075f3aa20e15d222adc7",
+      "bytes": 80738,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/bis_fx.xml": {
+      "sha256": "9c820c5cb9a376f2685d0e6e205b443ab308883a2ed7806b042fa0d3049c831f",
+      "bytes": 53005,
+      "tracked": false
+    },
+    "research/vietnam_allocation/data/deposit_source.html": {
+      "sha256": "48bba2c25d8bda6df55810ed9c487b215b671e6f523cde0295035f845813a9a8",
+      "bytes": 291544,
+      "tracked": false
+    },
+    "research/vietnam_allocation/download.py": {
+      "sha256": "f14aad4a227490d37a335fd790341332f9f3bad90c3df542f661e2ce9ee5f16e",
+      "bytes": 11631,
+      "tracked": false
+    },
+    "research/vietnam_allocation/ensemble_test_vnequity.py": {
+      "sha256": "a003d51a9044648f60503950bf91dd52e73ad950fd8ffd794f84e4f7b299b8cf",
+      "bytes": 3738,
+      "tracked": false
+    },
+    "research/vietnam_allocation/experiment.py": {
+      "sha256": "a6e81489460af6e4f8fef63734081ce8f3c826d7cccc4857031466e59c099827",
+      "bytes": 2908,
+      "tracked": false
+    },
+    "research/vietnam_allocation/experiments.json": {
+      "sha256": "33de489b99201eb790febec3663cd3ad1097a3a5348862f3e65c165eb8389e6d",
+      "bytes": 8138,
+      "tracked": false
+    },
+    "research/vietnam_allocation/experiments_partial.json": {
+      "sha256": "33de489b99201eb790febec3663cd3ad1097a3a5348862f3e65c165eb8389e6d",
+      "bytes": 8138,
+      "tracked": false
+    },
+    "research/vietnam_allocation/experiments_v2.json": {
+      "sha256": "e1874e5b30fd2e08165c4e104bbbb5081f68dfac6bb3e557c6908b878277e357",
+      "bytes": 3887,
+      "tracked": false
+    },
+    "research/vietnam_allocation/features.py": {
+      "sha256": "68f5fe972d6b80695e601a133333de4a53f2a3b851ac2920dc31b25ae7cf89dd",
+      "bytes": 14624,
+      "tracked": false
+    },
+    "research/vietnam_allocation/integrate_full_history.py": {
+      "sha256": "60c05161933a58ece25b939a5527470c86056c7e175e332bac81b075f96b8b1f",
+      "bytes": 2678,
+      "tracked": false
+    },
+    "research/vietnam_allocation/model.py": {
+      "sha256": "b6092e1904aa4cf06e95a062963205b65aec5ccab13dde0a4bfcfc71701c0674",
+      "bytes": 27429,
+      "tracked": false
+    },
+    "research/vietnam_allocation/output/REPORT.vi.md": {
+      "sha256": "18b83bb3b1a4c47e791a6ef56c7813f5352bbbe7b0a4c7441e86d746d86b317c",
+      "bytes": 28847,
+      "tracked": false
+    },
+    "research/vietnam_allocation/output/archive/2026-10-28/REPORT.vi.md": {
+      "sha256": "97fd5b33a3a867435629fdd7a912b437d1761559a93f5603653190873f5a5533",
+      "bytes": 18107,
+      "tracked": false
+    },
+    "research/vietnam_allocation/output/archive/2026-10-28/backtest_USD.csv": {
+      "sha256": "4e0df9d747b7fe86201e9820560c7092ff2b48c2d037b20af2fb3abf57ffde6c",
+      "bytes": 1171088,
+      "tracked": false
+    },
+    "research/vietnam_allocation/output/archive/2026-10-28/backtest_VND.csv": {
+      "sha256": "8946d73379bf8ed433013e966502fc902008cd24171f3ffc83c5c50b6019194f",
+      "bytes": 1169980,
+      "tracked": false
+    },
+    "research/vietnam_allocation/output/archive/2026-10-28/calibration_USD.png": {
+      "sha256": "e1db4dfd1e5b404348788216db066bffa3ccd34d3974cd3022c1a75d98be28e4",
+      "bytes": 155598,
+      "tracked": false
+    },
+    "research/vietnam_allocation/output/archive/2026-10-28/calibration_VND.png": {
+      "sha256": "b0483394d284a50ac5cab12a6ea5df647ccefa6f92dd9ca7072acd6d5d3c5a87",
+      "bytes": 155484,
+      "tracked": false
+    },
+    "research/vietnam_allocation/output/archive/2026-10-28/model_USD.joblib": {
+      "sha256": "1f10fe53afeed0ad7a122ed71b2d71aa2a976bc8df59b5f6a84e44df5044bda4",
+      "bytes": 4622112,
+      "tracked": false
+    },
+    "research/vietnam_allocation/output/archive/2026-10-28/model_VND.joblib": {
+      "sha256": "727e88331b04da0cad39f404b50bd043d30c15ae206017a35f10547eb9c6213b",
+      "bytes": 4778336,
+      "tracked": false
+    },
+    "research/vietnam_allocation/output/archive/2026-10-28/probabilities_USD.csv": {
+      "sha256": "e740253a14f9146061ecce52ba5ed069f721aaf91203892fe1d6d5c608319383",
+      "bytes": 12442,
+      "tracked": false
+    },
+    "research/vietnam_allocation/output/archive/2026-10-28/probabilities_USD.png": {
+      "sha256": "46774de03b38a1ab2be3722e872c6021ee9d81cc354bb4156bf260ebb951ae13",
+      "bytes": 428009,
+      "tracked": false
+    },
+    "research/vietnam_allocation/output/archive/2026-10-28/probabilities_VND.csv": {
+      "sha256": "938a8858feb5b688bbd223fad6289c24e8251b40b73511e68e19361a6c3e6fa0",
+      "bytes": 12452,
+      "tracked": false
+    },
+    "research/vietnam_allocation/output/archive/2026-10-28/probabilities_VND.png": {
+      "sha256": "64129747f316bfe6a81d5c504e4771e669961237330ae887148dd5e1d3f3cc28",
+      "bytes": 432202,
+      "tracked": false
+    },
+    "research/vietnam_allocation/output/archive/2026-10-28/results.json": {
+      "sha256": "b20f0f991b6a29955ea05c89f90a426d2608a3f6dafac564445f7c4507c22fcc",
+      "bytes": 237725,
+      "tracked": false
+    },
+    "research/vietnam_allocation/output/archive/2026-10-28_1153/REPORT.vi.md": {
+      "sha256": "b00da66daa04bd25588a5acfbcf59ecfd6f91bf11cdc2e18578dfa35ccee2d99",
+      "bytes": 28193,
+      "tracked": false
+    },
+    "research/vietnam_allocation/output/archive/2026-10-28_1153/backtest_USD.csv": {
+      "sha256": "47c14514467b02b9ca7f519ec87ccb8cdf4341d78f1206d6dff00d64cb1353d2",
+      "bytes": 1382194,
+      "tracked": false
+    },
+    "research/vietnam_allocation/output/archive/2026-10-28_1153/backtest_VND.csv": {
+      "sha256": "c6e03fefe96cb3fc5d8f17d10fed342ef4ed7d4ab6fca6b9ae9e5af6cfd1351f",
+      "bytes": 1392215,
+      "tracked": false
+    },
+    "research/vietnam_allocation/output/archive/2026-10-28_1153/calibration_USD.png": {
+      "sha256": "7c48932f7c7a944ed1a8b2b363e10cc2ccd82059b979d25a07b68b9e3112017a",
+      "bytes": 156056,
+      "tracked": false
+    },
+    "research/vietnam_allocation/output/archive/2026-10-28_1153/calibration_VND.png": {
+      "sha256": "b4fc773d632ba6c5bf58004aabaac3cb79396877ccb8b7c5e53aec9a28dcf7c4",
+      "bytes": 156223,
+      "tracked": false
+    },
+    "research/vietnam_allocation/output/archive/2026-10-28_1153/feature_screening.json": {
+      "sha256": "c4abb437be000906ea582cbb30a38157769356df4883eeda141e33f24a6f4e5f",
+      "bytes": 13916,
+      "tracked": false
+    },
+    "research/vietnam_allocation/output/archive/2026-10-28_1153/model_USD.joblib": {
+      "sha256": "0779ec85c060b15c892dc73af0ce5a5efb556b08ace2b4385f71e4fac0952070",
+      "bytes": 11094316,
+      "tracked": false
+    },
+    "research/vietnam_allocation/output/archive/2026-10-28_1153/model_VND.joblib": {
+      "sha256": "c7dffbdb2b3039a3e70cae30a314c096e69f32c152701e42e5552d5a3866798f",
+      "bytes": 11972194,
+      "tracked": false
+    },
+    "research/vietnam_allocation/output/archive/2026-10-28_1153/probabilities_USD.csv": {
+      "sha256": "69fb885b3e5acc2541f758acf5f97d48250662180f532078555f05a78b539019",
+      "bytes": 14657,
+      "tracked": false
+    },
+    "research/vietnam_allocation/output/archive/2026-10-28_1153/probabilities_USD.png": {
+      "sha256": "911771c54b26ab736ae7d0f6e626ee553eec59689111a78061387273c1cdc96f",
+      "bytes": 506421,
+      "tracked": false
+    },
+    "research/vietnam_allocation/output/archive/2026-10-28_1153/probabilities_VND.csv": {
+      "sha256": "c2a5f4b03a459a966f6a6e34e9c383f3583e0a1f356f899babfafdc6d58eb384",
+      "bytes": 14573,
+      "tracked": false
+    },
+    "research/vietnam_allocation/output/archive/2026-10-28_1153/probabilities_VND.png": {
+      "sha256": "feca5d2304fdcd3030e74ecdce7748f73e8136994b23eb2f833df7ddb0050d1c",
+      "bytes": 507133,
+      "tracked": false
+    },
+    "research/vietnam_allocation/output/archive/2026-10-28_1153/results.json": {
+      "sha256": "b1b78050a12c3091ed7840be0be40db8308ec199e97dcafdf9e55a46403ad332",
+      "bytes": 352839,
+      "tracked": false
+    },
+    "research/vietnam_allocation/output/archive/2026-10-28_1233/REPORT.vi.md": {
+      "sha256": "a415c66af932857aea7d3856a90dca6a72cfc1e04e18833c3fae451efc7f7f8b",
+      "bytes": 28605,
+      "tracked": false
+    },
+    "research/vietnam_allocation/output/archive/2026-10-28_1233/backtest_USD.csv": {
+      "sha256": "03dcbcc2e46ea251d7f9e581c79bd7a4717b8c959965b34816dbde50e377378e",
+      "bytes": 1396147,
+      "tracked": false
+    },
+    "research/vietnam_allocation/output/archive/2026-10-28_1233/backtest_VND.csv": {
+      "sha256": "30570aa55ca3ddf3d7af3fa4ba58d7f5ce1239784d7aba85a71407c69a3c64ec",
+      "bytes": 1398444,
+      "tracked": false
+    },
+    "research/vietnam_allocation/output/archive/2026-10-28_1233/calibration_USD.png": {
+      "sha256": "25995204d8fce906f50faa2140a793318bb8d70735c0adf24c64dd75eef9702d",
+      "bytes": 156004,
+      "tracked": false
+    },
+    "research/vietnam_allocation/output/archive/2026-10-28_1233/calibration_VND.png": {
+      "sha256": "7f213cbab2440261666ca1749a191d2b2b547f14b98af32d3b55e6b15c4efed5",
+      "bytes": 155992,
+      "tracked": false
+    },
+    "research/vietnam_allocation/output/archive/2026-10-28_1233/feature_screening.json": {
+      "sha256": "c4abb437be000906ea582cbb30a38157769356df4883eeda141e33f24a6f4e5f",
+      "bytes": 13916,
+      "tracked": false
+    },
+    "research/vietnam_allocation/output/archive/2026-10-28_1233/model_USD.joblib": {
+      "sha256": "c0aa1d7708b32a6179fd0edad86646b83da6953963c8d55f81515d3dfa08c034",
+      "bytes": 2483866,
+      "tracked": false
+    },
+    "research/vietnam_allocation/output/archive/2026-10-28_1233/model_VND.joblib": {
+      "sha256": "543bdd9f900edccfac547cd9820dfe4c0fd0f290b1fca82c2c6b0cf0d66cf70a",
+      "bytes": 2483866,
+      "tracked": false
+    },
+    "research/vietnam_allocation/output/archive/2026-10-28_1233/probabilities_USD.csv": {
+      "sha256": "12fb72a962d782eb59bde71abbb6bfcf337cdab4e749d2275562ff0dbc727c6b",
+      "bytes": 14685,
+      "tracked": false
+    },
+    "research/vietnam_allocation/output/archive/2026-10-28_1233/probabilities_USD.png": {
+      "sha256": "a2f368c9f28e132d5d9c567e1215e6e149a2640abbc8e0533d97fc254c85df7f",
+      "bytes": 506795,
+      "tracked": false
+    },
+    "research/vietnam_allocation/output/archive/2026-10-28_1233/probabilities_VND.csv": {
+      "sha256": "a3e0c3a73f8f0046e3be0bb8dd05c01130ac054aa91af5885e9f5615c010368f",
+      "bytes": 14648,
+      "tracked": false
+    },
+    "research/vietnam_allocation/output/archive/2026-10-28_1233/probabilities_VND.png": {
+      "sha256": "b2fb3a28aa3fd4254de6f4dfdd95fdaacb627532d58b9c3eb55689ae1ebdb94a",
+      "bytes": 505201,
+      "tracked": false
+    },
+    "research/vietnam_allocation/output/archive/2026-10-28_1233/results.json": {
+      "sha256": "9fab1322e38a54b8514c253ea756eb77a2905c3102cb418b89e04c86e432515a",
+      "bytes": 344187,
+      "tracked": false
+    },
+    "research/vietnam_allocation/output/archive/2026-10-28_1402/REPORT.vi.md": {
+      "sha256": "817e64411eb9dffa89cc5ad6845f8a79d553d239c54c09944e7daf7ca2e4ed2f",
+      "bytes": 28450,
+      "tracked": false
+    },
+    "research/vietnam_allocation/output/archive/2026-10-28_1402/backtest_USD.csv": {
+      "sha256": "9d8a29a10b0b0d0d3854b6a1c6a1a91bcfa0158e80c074f90fe7e2479f48c527",
+      "bytes": 2220339,
+      "tracked": false
+    },
+    "research/vietnam_allocation/output/archive/2026-10-28_1402/backtest_VND.csv": {
+      "sha256": "26fb70b69a14a10c2d7f71314ac9512c42c398af6ce78706ce10b25af05de46f",
+      "bytes": 2219215,
+      "tracked": false
+    },
+    "research/vietnam_allocation/output/archive/2026-10-28_1402/calibration_USD.png": {
+      "sha256": "2b8e691c62442d17ef7d306fd852fff44081f8505f1aa2f68cf41054a4e472f0",
+      "bytes": 155930,
+      "tracked": false
+    },
+    "research/vietnam_allocation/output/archive/2026-10-28_1402/calibration_VND.png": {
+      "sha256": "9fc8d105df40707de434b168e255878cbe28f4bd6e98d98c44553a04053b1e19",
+      "bytes": 155926,
+      "tracked": false
+    },
+    "research/vietnam_allocation/output/archive/2026-10-28_1402/feature_screening.json": {
+      "sha256": "0eb9fddf7ab8686ddc562984750687efed1f4411ef8577c745231e1d314c3c7a",
+      "bytes": 19071,
+      "tracked": false
+    },
+    "research/vietnam_allocation/output/archive/2026-10-28_1402/feature_screening_v2.json": {
+      "sha256": "b453945c6256d615608fec762730183e2de6637a443b7af4622261d618fb51ce",
+      "bytes": 21742,
+      "tracked": false
+    },
+    "research/vietnam_allocation/output/archive/2026-10-28_1402/model_USD.joblib": {
+      "sha256": "d0dfde9a5c45485f4b94e530343ee748d94aeeb51fed44286a6737a7e4e8b965",
+      "bytes": 3601808,
+      "tracked": false
+    },
+    "research/vietnam_allocation/output/archive/2026-10-28_1402/model_VND.joblib": {
+      "sha256": "3aab7553774c8c602820ee819b7aa1ae3a43237a18b06b6e0ea1be95105c7765",
+      "bytes": 3601808,
+      "tracked": false
+    },
+    "research/vietnam_allocation/output/archive/2026-10-28_1402/probabilities_USD.csv": {
+      "sha256": "83db0f25b9ba56e59e474ed5cec8a2cbbb308b673a247f03bfc30b6063911733",
+      "bytes": 14403,
+      "tracked": false
+    },
+    "research/vietnam_allocation/output/archive/2026-10-28_1402/probabilities_USD.png": {
+      "sha256": "cc0573a211f4dff766318e46935ab81a2a1642205cfc9775598fbc29e64b9e04",
+      "bytes": 505126,
+      "tracked": false
+    },
+    "research/vietnam_allocation/output/archive/2026-10-28_1402/probabilities_VND.csv": {
+      "sha256": "6327d81f51ddaa45ae767f34f1e1a3e1490c7c89f753cb0e58c2d8d5e7cb02d1",
+      "bytes": 14353,
+      "tracked": false
+    },
+    "research/vietnam_allocation/output/archive/2026-10-28_1402/probabilities_VND.png": {
+      "sha256": "2b47c12e48b669dc9b1f9c2947ce0877428c32f00aacb92f05b932c9656be8e2",
+      "bytes": 507069,
+      "tracked": false
+    },
+    "research/vietnam_allocation/output/archive/2026-10-28_1402/results.json": {
+      "sha256": "ab42ad1370edb6107ad11cdef115eef239666b9c975c6b5c74fcd03d0aa1d9eb",
+      "bytes": 357087,
+      "tracked": false
+    },
+    "research/vietnam_allocation/output/backtest_USD.csv": {
+      "sha256": "7769c580af9790b1a4ba0bec511eb7ce05873a292b07822fd9c1df2b0f316504",
+      "bytes": 2343620,
+      "tracked": false
+    },
+    "research/vietnam_allocation/output/backtest_VND.csv": {
+      "sha256": "4dab41201a0c4d93a1efbd33f9596f987f5068dbab4b359cd96c36d6e2b97f3c",
+      "bytes": 2347842,
+      "tracked": false
+    },
+    "research/vietnam_allocation/output/calibration_USD.png": {
+      "sha256": "8732e8d74d52135131212585b6b8cec18918b33e2c4283cc2ae1ab5713161d68",
+      "bytes": 156126,
+      "tracked": false
+    },
+    "research/vietnam_allocation/output/calibration_VND.png": {
+      "sha256": "e2e26aa8847cb8bc5103b583226c824c960032fb61645beb032cf268c5606204",
+      "bytes": 155885,
+      "tracked": false
+    },
+    "research/vietnam_allocation/output/feature_screening.json": {
+      "sha256": "1405c1d9ac6445553f35d8b0a6d97b683c96d52a02b855cb6878dc491c2d81ee",
+      "bytes": 25339,
+      "tracked": false
+    },
+    "research/vietnam_allocation/output/probabilities_USD.csv": {
+      "sha256": "7d0b60e1df226d8014986c2d911d9503d51ae4648f71378659dc25a54cb6e640",
+      "bytes": 15183,
+      "tracked": false
+    },
+    "research/vietnam_allocation/output/probabilities_USD.png": {
+      "sha256": "362173229cff1031e1209e25d12c3d38f17e0a23a1fb3ff76248f850705635b5",
+      "bytes": 504963,
+      "tracked": false
+    },
+    "research/vietnam_allocation/output/probabilities_VND.csv": {
+      "sha256": "1041b30a0fa47d250e213a63398a0f27526e709c4e983a58a45f843b6fe44b13",
+      "bytes": 15133,
+      "tracked": false
+    },
+    "research/vietnam_allocation/output/probabilities_VND.png": {
+      "sha256": "d7d7811c6fe117153a0a97aede1e679b7082730304480b45adcbaa7feeab9d74",
+      "bytes": 506659,
+      "tracked": false
+    },
+    "research/vietnam_allocation/output/results.json": {
+      "sha256": "dafd747770d83fac7ae4c2471df1e030e97f4efc6b01db7fbb6742a821a10bda",
+      "bytes": 360788,
+      "tracked": false
+    },
+    "research/vietnam_allocation/plot_results.py": {
+      "sha256": "8a06d8185568981f3ab6e9654d08c9808be642e97066250daf255de778eb051e",
+      "bytes": 3608,
+      "tracked": false
+    },
+    "research/vietnam_allocation/prepare.py": {
+      "sha256": "92d99c6c0d1302e353d0d12bfff6db2fe77d10776cca47c0cc2b45f1debfa4a1",
+      "bytes": 10891,
+      "tracked": false
+    },
+    "research/vietnam_allocation/requirements.txt": {
+      "sha256": "93d506ec34425366af9fb33222df4ab688d3a50923b007ea705d5be51a028ab0",
+      "bytes": 122,
+      "tracked": false
+    },
+    "research/vietnam_allocation/run.py": {
+      "sha256": "fb6bae4f1f483280852186e460dfb8399414c91e3aa7eb0e83a2b8650df70f6c",
+      "bytes": 24518,
+      "tracked": false
+    },
+    "research/vietnam_allocation/tests/test_research.py": {
+      "sha256": "0775515837ebdf3e0531891f4d6e6a9c634e7d1de185ea998a37b26c47d58592",
+      "bytes": 21052,
+      "tracked": false
+    },
+    "research/vietnam_allocation/vn_equity_test.json": {
+      "sha256": "e0100af7277592fa64db76ef1b4b26a1485f1af7a2690fb4ec52ca60baa0c2b7",
+      "bytes": 4199,
+      "tracked": false
+    },
+    "resources/prompts/README.md": {
+      "sha256": "6a1479c57652773136b05da553922d6a882613bda16e384a82093b689dd21d08",
+      "bytes": 273,
+      "tracked": true
+    },
+    "resources/workflows/README.md": {
+      "sha256": "0e2e3eb284f4855991cb483290385f227f4a07192f510489ce3a59c148c0e934",
+      "bytes": 1008,
+      "tracked": true
+    },
+    "scripts/build.ts": {
+      "sha256": "ee3ad24b4552bc11669c6ff86eeea6c370251ad4870186a90c11e0d7ef7aaee2",
+      "bytes": 6188,
+      "tracked": true
+    },
+    "scripts/checksums.ts": {
+      "sha256": "9fadbe27a3dce3d33a866aa99d21eefedf7321465720f05dcf5ccb87ccab4232",
+      "bytes": 905,
+      "tracked": true
+    },
+    "scripts/dev/auto-mode-eval.ts": {
+      "sha256": "e73c135067e4f1feea7940d1fb9fd25246c9eb7a45eb96211b8d876c900ed676",
+      "bytes": 4568,
+      "tracked": true
+    },
+    "scripts/dev/demo-chart.ts": {
+      "sha256": "df460c892bff6287f1c79df547182b84437588499fc2ebcd4602c09ca053a788",
+      "bytes": 5144,
+      "tracked": true
+    },
+    "scripts/dev/demo-colored-chart.tsx": {
+      "sha256": "91d4f5cc1db398544b5349c942822e511d53251d4b29a87fe9cf9779b3da2548",
+      "bytes": 8160,
+      "tracked": true
+    },
+    "scripts/dev/desk-demo-frames.tsx": {
+      "sha256": "c27bc4b53625e9d1544fdb763a9a8f8d432e524dd92b6de89e7324c935074ab5",
+      "bytes": 3795,
+      "tracked": true
+    },
+    "scripts/dev/desk-demo-model.ts": {
+      "sha256": "995185ce42c470a2eae13469080e84fd7ffc151a15bcc626a6fde8f33c32d4de",
+      "bytes": 7669,
+      "tracked": true
+    },
+    "scripts/dev/desk-demo.tsx": {
+      "sha256": "2c28ab4900b387e663d40939c7c700f7299b6432222d853e299a7494c112ef43",
+      "bytes": 1603,
+      "tracked": true
+    },
+    "scripts/dev/desk-eval.ts": {
+      "sha256": "3312d850658d89860bf637b95f0a662fb33718765f574927978b06bff8c1a463",
+      "bytes": 7992,
+      "tracked": true
+    },
+    "scripts/dev/dump-mcp-catalog.py": {
+      "sha256": "3ddcf68924f54ef022117ee11243c85f1a56b07c84b691fd5b785c38e8682ece",
+      "bytes": 1578,
+      "tracked": true
+    },
+    "scripts/dev/fetch-smoke.ts": {
+      "sha256": "adfc0d8b75fabffd277d022d17123e363e40f45abf8e7649e8da5003d106e230",
+      "bytes": 1690,
+      "tracked": true
+    },
+    "scripts/dev/routing-eval.ts": {
+      "sha256": "e7fa327089d7629fd8f5cb2b4200658e828e777d7d4ddde841da10cc8336a846",
+      "bytes": 1619,
+      "tracked": true
+    },
+    "scripts/dev/serve-release.ts": {
+      "sha256": "a32fb9d070ca0923104728dfbf6968f173ac48c71b814915c97ab8f2543aac98",
+      "bytes": 788,
+      "tracked": true
+    },
+    "scripts/dev/session-files.ts": {
+      "sha256": "c2e2e9d9480808b70bb4122d6063f2c23616bde1e4ea3947a70bcc5e842abfcc",
+      "bytes": 414,
+      "tracked": true
+    },
+    "scripts/dev/skill-routing-live-eval.ts": {
+      "sha256": "baa50877ade2e03fad3ce7d8f5d5195b866957d20fc958974a5ecea51d1ddad2",
+      "bytes": 6803,
+      "tracked": true
+    },
+    "scripts/dev/skill-scan.ts": {
+      "sha256": "312153d0332ccf4ffc7a7876d59f33bb21a849c2e0537347e58a224f57b6417c",
+      "bytes": 453,
+      "tracked": true
+    },
+    "scripts/dev/skills-visualization.tsx": {
+      "sha256": "6562a6c0b25e9cfae4b0800315e1ee5a1b48254ade8cf3a1e910da1c3a690fb1",
+      "bytes": 34929,
+      "tracked": true
+    },
+    "scripts/dev/stop-gate-replay.ts": {
+      "sha256": "46c422f488799d843b06952358f6d01967a6072f7d68a3de99c7012cb7c6b4bb",
+      "bytes": 7372,
+      "tracked": true
+    },
+    "scripts/dev/tool-failure-replay.ts": {
+      "sha256": "4f1adeca267a1949c02a5de400143b2e97902b44f508737320b3693c2c5eba1a",
+      "bytes": 5860,
+      "tracked": true
+    },
+    "scripts/dev/web-live.ts": {
+      "sha256": "7113d0750c0534407433feb426a6104acb8d504999fdb4c30c23b3eb75a344f9",
+      "bytes": 813,
+      "tracked": true
+    },
+    "scripts/eval/approvals.ts": {
+      "sha256": "921d4b40318d269a656051348a78bef1ded2fff747d9e9ceaea35aa9157a6403",
+      "bytes": 1190,
+      "tracked": true
+    },
+    "scripts/eval/cassette.ts": {
+      "sha256": "98fedcddaa957ef3e12c023b86950968413c804ae155a0053c6378eff9074333",
+      "bytes": 6631,
+      "tracked": true
+    },
+    "scripts/eval/example-questions.json": {
+      "sha256": "85d4425e5a970da05e869e080e93edd4255549a92f65e99d045165f107b2474c",
+      "bytes": 275,
+      "tracked": true
+    },
+    "scripts/eval/figures.ts": {
+      "sha256": "f1bf231cc9e39fd1dd5207d895f6d26f8b285be1794a9e19b5ead87831f6e1ef",
+      "bytes": 6749,
+      "tracked": true
+    },
+    "scripts/eval/ledger.ts": {
+      "sha256": "82b17a9e8631a44fd8d32f02ef2a56a942e766557648d0bc2ab9d1d33bda1220",
+      "bytes": 2098,
+      "tracked": true
+    },
+    "scripts/eval/read-trace.ts": {
+      "sha256": "d6593333ead392bade668c63e8788f1c2e4a0c7080b504fb09f8be6e40c8938f",
+      "bytes": 3293,
+      "tracked": true
+    },
+    "scripts/eval/run.ts": {
+      "sha256": "5c7664ff7bbdd9228e390663d03d8ef3e5942d0e55183b5942c7ffbf95321d66",
+      "bytes": 5702,
+      "tracked": true
+    },
+    "scripts/eval/runner.ts": {
+      "sha256": "07130c4e8249a6e5be0f84e810c9ddb3826699b9b24e97b90c0a4c65aefaab88",
+      "bytes": 11880,
+      "tracked": true
+    },
+    "scripts/eval/score.ts": {
+      "sha256": "43acab4f847eeda4b90fa169077978d2fad11638e6ce9aded21340afee07962f",
+      "bytes": 2526,
+      "tracked": true
+    },
+    "scripts/eval/scoring.ts": {
+      "sha256": "07e037c7fa0de07b04249730784aab44ee4d052dc7b6df8780a9ef285485fc9d",
+      "bytes": 8876,
+      "tracked": true
+    },
+    "scripts/eval/trace.ts": {
+      "sha256": "97d9a537879ac54079d935943b29218c89fa8ff53ddf7ea97ef3cb5757b6030c",
+      "bytes": 2793,
+      "tracked": true
+    },
+    "scripts/npm.ts": {
+      "sha256": "fd4b6a255c8f14b40c71eaf899bec0fb2cda3ff2c97e6ebb996615ac08c38f0b",
+      "bytes": 5882,
+      "tracked": true
+    },
+    "scripts/npm/launcher.cjs": {
+      "sha256": "9266b715ee8943252de46a8bd6d64d980210b25713fe2d985bc8b1f3c6d0b33a",
+      "bytes": 2415,
+      "tracked": true
+    },
+    "scripts/package.ts": {
+      "sha256": "7a95e23c84d2aa71689edf1208d6ce8c3debd935417d7f1b3de455ed1422ef4a",
+      "bytes": 1779,
+      "tracked": true
+    },
+    "scripts/release-notes.ts": {
+      "sha256": "b4d54c57baad61047ba48b803b7668f8dbde7dafe282980e4af599085152a4bb",
+      "bytes": 1070,
+      "tracked": true
+    },
+    "scripts/targets.ts": {
+      "sha256": "6c6abed01cf36a1e2e2f51f9bf9b13b7182b3c23a9be61acb65bb3da820b6554",
+      "bytes": 856,
+      "tracked": true
+    },
+    "skills/bao-hiem-vn/SKILL.md": {
+      "sha256": "d883b76b0c99c5c8d8602ad54f187dd4c4a0591ad9e4fd13c25f13ae4ba8e6a7",
+      "bytes": 10201,
+      "tracked": true
+    },
+    "skills/bao-hiem-vn/references/kpi.md": {
+      "sha256": "694d4bfdf0b8f2330f218f65792d6ad5167f4843ae4e6f50593d34d88d8ec34c",
+      "bytes": 3852,
+      "tracked": true
+    },
+    "skills/bat-dong-san-vn/SKILL.md": {
+      "sha256": "eb6fbfac7121ae612fb25511a308f5edc5be539909af5299954a904cf1c58577",
+      "bytes": 12304,
+      "tracked": true
+    },
+    "skills/bat-dong-san-vn/references/kpi.md": {
+      "sha256": "f55a844b042334e0c5d9162c02212b0f3eedd76057610b1896710ce5dfb89bfb",
+      "bytes": 3792,
+      "tracked": true
+    },
+    "skills/bat-on-quoc-gia/SKILL.md": {
+      "sha256": "b9d23162f7bdc1ac70ddf6025a618fa431bb0b64c8b38e485cffc3ecf71f4992",
+      "bytes": 3991,
+      "tracked": true
+    },
+    "skills/chu-ky-tai-san-the-gioi/SKILL.md": {
+      "sha256": "ed88f9941b3ac7e2f62c011265cb35488770e8d227c8a418240a3106c90fa4b0",
+      "bytes": 3874,
+      "tracked": true
+    },
+    "skills/chu-ky-tai-san-the-gioi/references/ml-clock.md": {
+      "sha256": "e4daae3b0ef68f66b6dc7a12f2fab9ec77f27709a90151c7d391f85643ccd285",
+      "bytes": 534,
+      "tracked": true
+    },
+    "skills/chu-ky-tai-san-the-gioi/references/refresh.md": {
+      "sha256": "2e9c7375f4f31da72cd6569da8e219acaa3f98fbe4bd876c6952e94d260f6503",
+      "bytes": 722,
+      "tracked": true
+    },
+    "skills/chu-ky-tai-san-the-gioi/references/regime-guide.md": {
+      "sha256": "62a96bda5ccdfa57a5be63b16c5efb6309c370c441aaa9e14a869ceec26caea4",
+      "bytes": 709,
+      "tracked": true
+    },
+    "skills/chu-ky-tai-san-vn/SKILL.md": {
+      "sha256": "25d6c8725b452836a091c50d01d292ca8180bbd5e27ca1fada27a4bfd4c2dd0d",
+      "bytes": 4313,
+      "tracked": true
+    },
+    "skills/chu-ky-tai-san-vn/references/anchors-guide.md": {
+      "sha256": "5ce31d7dfeab03cf4128e5ec24fe6f53b665d1aac25b4d74e5048f86b7c09aa8",
+      "bytes": 1003,
+      "tracked": true
+    },
+    "skills/chu-ky-tai-san-vn/references/flow-map.md": {
+      "sha256": "b5eeb8b5b898b5791be6cdc9f1e547fb9a294b43a9af1c46fbd3b6c53860bdc6",
+      "bytes": 1015,
+      "tracked": true
+    },
+    "skills/chu-ky-tai-san-vn/references/refresh.md": {
+      "sha256": "1ee412e7d836430e13d6ade72658fbfe965b9893a14dc1d6836b42a282f18e98",
+      "bytes": 673,
+      "tracked": true
+    },
+    "skills/chung-khoan-vn/SKILL.md": {
+      "sha256": "54058c0f6e75b479f1a896f4b8e6c073e2a3fd6b4e36c7da977ade20768b6a18",
+      "bytes": 11827,
+      "tracked": true
+    },
+    "skills/chung-khoan-vn/references/kpi.md": {
+      "sha256": "39508ae7b7d6a19583c00f8b88aae06b88e8a5a09d8442d7ff821ccef1a4e1ae",
+      "bytes": 4226,
+      "tracked": true
+    },
+    "skills/co-ban-chuyen-sau/SKILL.md": {
+      "sha256": "06d5cf033a935e40ca20ef82b15fe6e8d190bebd6368f8196402598852f6c63e",
+      "bytes": 7699,
+      "tracked": true
+    },
+    "skills/cong-nghe-vn/SKILL.md": {
+      "sha256": "714ba0f84acdbebbc42c75d401a95bdb468dfd303d791c897ae15cabdd75be29",
+      "bytes": 11432,
+      "tracked": true
+    },
+    "skills/cong-nghe-vn/references/kpi.md": {
+      "sha256": "7883dcbc5ff694dba0e747f44dc5fb8d8d9e2fd4eaba803d85aaa054b2c6714e",
+      "bytes": 3229,
+      "tracked": true
+    },
+    "skills/danh-gia-tinh-hinh-chinh-tri-toan-cau/SKILL.md": {
+      "sha256": "2c628c8413c76b5bfb0d3959a912066fca4835f47daac38781c6861b956e0054",
+      "bytes": 3466,
+      "tracked": true
+    },
+    "skills/danh-gia-tinh-hinh-xung-dot/SKILL.md": {
+      "sha256": "84df675f29e2a246b222b13049719a15ef53ce7b3162c3cdbfe1c2aba1066113",
+      "bytes": 4236,
+      "tracked": true
+    },
+    "skills/danh-gia-truoc-bctc/SKILL.md": {
+      "sha256": "5f9ecdf1217c3d62850ee226ac627f849abd3e175a0131e4a88d65ae740292ed",
+      "bytes": 5366,
+      "tracked": true
+    },
+    "skills/danh-gia-vi-mo-quoc-te/SKILL.md": {
+      "sha256": "5d06a52f9b701f45bcd9513361d6747355efd180f4670cfa2e8aa86479e21207",
+      "bytes": 3707,
+      "tracked": true
+    },
+    "skills/danh-gia-vi-mo-viet-nam/SKILL.md": {
+      "sha256": "bc7b8640bfc058d482cd9829d24add5eb74cd74342c975c6ffae4fc50c8405db",
+      "bytes": 4130,
+      "tracked": true
+    },
+    "skills/dau-khi-vn/SKILL.md": {
+      "sha256": "f0738adeb392d3d37902099cdd99900ee01bb98821f20787ae56455f65643623",
+      "bytes": 12027,
+      "tracked": true
+    },
+    "skills/dau-khi-vn/references/kpi.md": {
+      "sha256": "fb69ce2b5a0b1617d22335bf57146cdc2656ae0eb96156fea61eb9fc06186b6e",
+      "bytes": 3983,
+      "tracked": true
+    },
+    "skills/devil-advocate/SKILL.md": {
+      "sha256": "1304472792a8a1742551db52768eb253690b69adbd2ccbb53aecdf5c114d5601",
+      "bytes": 2399,
+      "tracked": true
+    },
+    "skills/dien-luc-vn/SKILL.md": {
+      "sha256": "8140035a8510a2dbff568bff6f27ef6353951baae5c0ae92b802f7beac1b4f5a",
+      "bytes": 13006,
+      "tracked": true
+    },
+    "skills/dien-luc-vn/references/kpi.md": {
+      "sha256": "b16281eb7e7350769dbf837affebb948e8dea180432416014b0c676b8441ea7f",
+      "bytes": 3839,
+      "tracked": true
+    },
+    "skills/dinh-gia-chuyen-sau/SKILL.md": {
+      "sha256": "9e5929f46516dba34eee5d26c4ff12d4f78dfdc95218e998acc33451c3067e4b",
+      "bytes": 4102,
+      "tracked": true
+    },
+    "skills/dinh-vi-chu-ky-vn/SKILL.md": {
+      "sha256": "0a9ea2fcde3119f331cdb37f6a7018dc038af7d364d569208f166d799d6b0e38",
+      "bytes": 11619,
+      "tracked": true
+    },
+    "skills/dinh-vi-chu-ky-vn/references/market-history.md": {
+      "sha256": "8c7477eab9230cbf720bf7e06b9c546c110baa8dd8c9e8ae2e9bc4a9bb775ccd",
+      "bytes": 3281,
+      "tracked": true
+    },
+    "skills/dinh-vi-chu-ky-vn/references/phase-playbook.md": {
+      "sha256": "5dad0a3204a26df59f9b2affba208e919e719ef95c0368b6f9ff3599a774e3d3",
+      "bytes": 6526,
+      "tracked": true
+    },
+    "skills/dinh-vi-chu-ky-vn/references/refresh.md": {
+      "sha256": "2c53798679ddf846e7b79d2d0e724b95ca0fd578bdfee869b800930bc331459f",
+      "bytes": 6351,
+      "tracked": true
+    },
+    "skills/dinh-vi-chu-ky-vn/references/rotation-chains.md": {
+      "sha256": "accd5ccdeb758c18f1023efe581f5d1df0d3c2f6c07387ad3c1b1ef294ffe8d3",
+      "bytes": 4343,
+      "tracked": true
+    },
+    "skills/dinh-vi-chu-ky-vn/references/seasonality-vn.md": {
+      "sha256": "9624b2c22522595d7bc9457c3978422e990527b0526028208d1260c87a809a27",
+      "bytes": 3243,
+      "tracked": true
+    },
+    "skills/du-doan-fed/SKILL.md": {
+      "sha256": "4f11084bab790c67e460ece223da27b5f8c63d3fc15a713c14b57408264853db",
+      "bytes": 3319,
+      "tracked": true
+    },
+    "skills/du-doan-polymarket/SKILL.md": {
+      "sha256": "087490d8de1a5f3e778410f6620ac3f855e0069728a4008760a611ede153a297",
+      "bytes": 3146,
+      "tracked": true
+    },
+    "skills/explain-term/SKILL.md": {
+      "sha256": "96da429e5cf33c365bc5d4d7e9fd44869a24107556eff41b36fa1f6b541e2fbc",
+      "bytes": 2295,
+      "tracked": true
+    },
+    "skills/hoa-chat-vn/SKILL.md": {
+      "sha256": "ed255bf5e835e18f9833934b1ed1566bc01602655c09f73c44b525a3f9c394bb",
+      "bytes": 11322,
+      "tracked": true
+    },
+    "skills/hoa-chat-vn/references/kpi.md": {
+      "sha256": "f54badae8421d080c5ec169e979b06875ed689b147b03a2b543dc538bcf976c3",
+      "bytes": 3685,
+      "tracked": true
+    },
+    "skills/kiem-chien-luoc-backtest/SKILL.md": {
+      "sha256": "7d09945fa934ede95889158febf86260c525d6e0764a42aa8ebc49205ed1a9b7",
+      "bytes": 4843,
+      "tracked": true
+    },
+    "skills/kiem-tra-nguon-du-lieu/SKILL.md": {
+      "sha256": "3dc436b7325f176a9f9d3391189d97657045730e7259b97e7ecf1faf5d883e06",
+      "bytes": 2986,
+      "tracked": true
+    },
+    "skills/ky-thuat-chuyen-sau/SKILL.md": {
+      "sha256": "b375b54d1e3035f9d40ae04007aa2f64ce14faae68207b5443bb502ad4d269ef",
+      "bytes": 5472,
+      "tracked": true
+    },
+    "skills/ngan-hang-vn/SKILL.md": {
+      "sha256": "3481b3a15903ee68a7e3491e2fb33b46943a25e8854bdea477ec924423ba1921",
+      "bytes": 14394,
+      "tracked": true
+    },
+    "skills/ngan-hang-vn/references/kpi.md": {
+      "sha256": "8acbf10b1d4169ddc18a2c923b2e260f2950f801349c2ab9846843b8395d8448",
+      "bytes": 4448,
+      "tracked": true
+    },
+    "skills/nhip-dap-crypto/SKILL.md": {
+      "sha256": "68ef93b0016822f4c8108f6b6b4ae815af02cef777c28f0612cd9876f25e0354",
+      "bytes": 3017,
+      "tracked": true
+    },
+    "skills/phan-tich-chuyen-sau-1-ma/SKILL.md": {
+      "sha256": "7a782a5519d570a4598a6e5b37f7de5c352cedf6b5bac238b8ba78ca002af998",
+      "bytes": 5648,
+      "tracked": true
+    },
+    "skills/phan-tich-sentiment/SKILL.md": {
+      "sha256": "bdc37cab469ae74d1027345babadbfb5ce1bc7a90f37adf36554fa40b3a9a69b",
+      "bytes": 3364,
+      "tracked": true
+    },
+    "skills/phan-tich-vang-ty-gia/SKILL.md": {
+      "sha256": "964d5214d2f055e9a6f2b3afa7a1edcc58c44eec5f0d96d31357f8f7e8b2ebb2",
+      "bytes": 3521,
+      "tracked": true
+    },
+    "skills/so-sanh-cung-nganh/SKILL.md": {
+      "sha256": "73edbb46169b7d34f7dc965f93e3c0600a077697fa2efea8d90366aef4995de5",
+      "bytes": 3915,
+      "tracked": true
+    },
+    "skills/tao-ho-so/SKILL.md": {
+      "sha256": "d913892824735c8879cc152147a2f9977bad1f75af3c840c7c7199e4bb81dcd0",
+      "bytes": 6503,
+      "tracked": true
+    },
+    "skills/thep-vn/SKILL.md": {
+      "sha256": "5b56a9c703496caabb001838d0a682ff871ef07de40dc11f0a2e43e67ac521ab",
+      "bytes": 12436,
+      "tracked": true
+    },
+    "skills/thep-vn/references/kpi.md": {
+      "sha256": "a5f06a1c7a996e67e7d85bd25027a4df5008e3fffe14e084e516da43ee8fd444",
+      "bytes": 3744,
+      "tracked": true
+    },
+    "skills/tieu-dung-ban-le-vn/SKILL.md": {
+      "sha256": "d9f01d5b78cecc736a3c1c0452aca2127fc0395b82718d749fcc69e4ee8d7ff6",
+      "bytes": 11820,
+      "tracked": true
+    },
+    "skills/tieu-dung-ban-le-vn/references/kpi.md": {
+      "sha256": "dcda6bda4368f3bc243cd3b3fb02b02c2dac5ba9724fd6ba31b7c2de25060553",
+      "bytes": 3549,
+      "tracked": true
+    },
+    "skills/tim-co-hoi-bao-cao-ctck/SKILL.md": {
+      "sha256": "3371e57520c6be6b04e5fdbc8989b08c13ea9ec9a363c0e7eca987f1b9f53d43",
+      "bytes": 4267,
+      "tracked": true
+    },
+    "skills/tim-kiem-tin-tuc/SKILL.md": {
+      "sha256": "cea48765c60e9046483c34480cda26f47adfa5d9d12219c2834d03c7c2af4737",
+      "bytes": 4369,
+      "tracked": true
+    },
+    "skills/tin-tuc-nong-quoc-te/SKILL.md": {
+      "sha256": "b89562a4823de82959a1b829668f6d84b5d554ea34d2ae86fc82d05907d5ca36",
+      "bytes": 2747,
+      "tracked": true
+    },
+    "skills/tin-tuc-nong-viet-nam/SKILL.md": {
+      "sha256": "41b90df5eb773f8bcf106d5ec36dc4399cd939b7ea96b52f5f716b6d96cd0904",
+      "bytes": 3097,
+      "tracked": true
+    },
+    "skills/van-tai-vn/SKILL.md": {
+      "sha256": "b22ab88779952dd3cfd0a458297cb8f5beafd2c0883f9b99f92a00ea1669deb3",
+      "bytes": 12097,
+      "tracked": true
+    },
+    "skills/van-tai-vn/references/kpi.md": {
+      "sha256": "d6c2575d2e6914febeddcabe152fb854b8a211011e2f77b160b509de3654a6e0",
+      "bytes": 3521,
+      "tracked": true
+    },
+    "skills/ve-bieu-do/SKILL.md": {
+      "sha256": "953abe6329916b5e3259283838c9488705fc03540a5280a5eb0932c5e23540e6",
+      "bytes": 2791,
+      "tracked": true
+    },
+    "skills/ve-bieu-do/references/anti-patterns.md": {
+      "sha256": "c080d5680527cfe204e274176c4ed0d2fe5c0c5f70120f4fca7bc7c87b03ba0e",
+      "bytes": 964,
+      "tracked": true
+    },
+    "skills/ve-bieu-do/references/choosing-a-form.md": {
+      "sha256": "714a72f2ccb63166b65c64b75a4af3777a0f18904bad4c659fdabfbd9c5f5809",
+      "bytes": 6533,
+      "tracked": true
+    },
+    "skills/ve-bieu-do/references/comparison.md": {
+      "sha256": "adaf9b97940eedf2a1d5724145e153a91d92130502d1978957b34090c078fda3",
+      "bytes": 1857,
+      "tracked": true
+    },
+    "skills/ve-bieu-do/references/part-to-whole.md": {
+      "sha256": "e356b398a27e1bc037b500cccbe488f1ddd9321b23b3f167f9fc5f49e8d3f2cb",
+      "bytes": 1120,
+      "tracked": true
+    },
+    "skills/ve-bieu-do/references/relationship.md": {
+      "sha256": "6958dcacf61bf97fa649063d9e466ff071dec852029b9e98252e1fb5cea5554b",
+      "bytes": 1073,
+      "tracked": true
+    },
+    "skills/ve-bieu-do/references/time-series.md": {
+      "sha256": "cbe2c8b64ccd537464ae7eb201351ea47162ab7b57f8bed0915999995aef79af",
+      "bytes": 1581,
+      "tracked": true
+    },
+    "skills/vingroup-vn/SKILL.md": {
+      "sha256": "102346521ff5e8e81702d85bb50ddaf73dcb34eb840197672aa35e4981cb9ed2",
+      "bytes": 12532,
+      "tracked": true
+    },
+    "skills/vingroup-vn/references/kpi.md": {
+      "sha256": "edef71e13db28fb99d62ccd7784ac2f109bf510a13cc4c5a402d220200134bae",
+      "bytes": 4320,
+      "tracked": true
+    },
+    "skills/vn-market-basics/SKILL.md": {
+      "sha256": "7897f9c1b87ee84edb97cff19688da75b42897f05e7e6b630b3a5afd039ec1c6",
+      "bytes": 2331,
+      "tracked": true
+    },
+    "skills/xuat-nhap-khau-vn/SKILL.md": {
+      "sha256": "a07b1d529884b9480eeefdaafc9241b9f9edc4672d292c61f412daba883fe76d",
+      "bytes": 13408,
+      "tracked": true
+    },
+    "skills/xuat-nhap-khau-vn/references/kpi.md": {
+      "sha256": "86bfb2f3b496a1c1c2eeb877beaf6f7a17140eb7cc5713bc90e52bf11c877922",
+      "bytes": 3578,
+      "tracked": true
+    },
+    "src/cli/args.ts": {
+      "sha256": "c5074400e89f7692e0d1daa1a35b605c7856eb3e8032a5cbfb55d0adf5652ecf",
+      "bytes": 3312,
+      "tracked": true
+    },
+    "src/cli/install.ts": {
+      "sha256": "0a4fcf5f9dc2e882e8693ce0fa4073b75cba74a8c2bf0176bbbf20dbc21d4c8e",
+      "bytes": 6248,
+      "tracked": true
+    },
+    "src/cli/launcher.bunfig.toml": {
+      "sha256": "fc869384dc5cd58534d3786df0c3cbf116bee26674dca653324130cebd420e9a",
+      "bytes": 272,
+      "tracked": true
+    },
+    "src/cli/mcp.ts": {
+      "sha256": "aed76cb87e89a95c9f85b722c273441a50928df3e651f278e695f91989b1e2b6",
+      "bytes": 21894,
+      "tracked": true
+    },
+    "src/cli/self-check.ts": {
+      "sha256": "8644f8c21b4d018cb67abf0780957f11d4ae3b2f9e6ead51d43d97d5f9978c0d",
+      "bytes": 2694,
+      "tracked": true
+    },
+    "src/cli/update.ts": {
+      "sha256": "19e603491ed77de99207a9dae1a006973bd455537286c586125a9519ed596d10",
+      "bytes": 2971,
+      "tracked": true
+    },
+    "src/core/ablation.ts": {
+      "sha256": "d0fc2fc2c60bd4ccc34c22f20fa8f58a97e4d8f5ff27d1eb577db17519d7b586",
+      "bytes": 554,
+      "tracked": true
+    },
+    "src/core/agent.ts": {
+      "sha256": "eb4e4d7e68463a06b9d8dea3f9db08420e7330ef5d3b287015f5da74cea918c7",
+      "bytes": 65904,
+      "tracked": true
+    },
+    "src/core/agents/loader.ts": {
+      "sha256": "2bfd91eee31f95208fc71a4b96ecde358ceb389a39c1fa3ecfca081f8d6ed8f5",
+      "bytes": 2191,
+      "tracked": true
+    },
+    "src/core/agents/resolve.ts": {
+      "sha256": "995a3c50699f1f0bcfc339b5a1728fb761b9cb6ed08fe6b0655acd4e80150448",
+      "bytes": 1545,
+      "tracked": true
+    },
+    "src/core/agents/schema.ts": {
+      "sha256": "2a82a108c497cebe8570e872dc2e766b3c436df2589103a30467f70f0313de2f",
+      "bytes": 1960,
+      "tracked": true
+    },
+    "src/core/ask.ts": {
+      "sha256": "a8c112bd1b34175d7a78567101a15319ec0891ed23ac16579b2ae286daaec128",
+      "bytes": 4398,
+      "tracked": true
+    },
+    "src/core/auth.ts": {
+      "sha256": "be50020011731841e08011b306a9ea5b53084bc1559e72166b147f1224f7b47a",
+      "bytes": 1788,
+      "tracked": true
+    },
+    "src/core/build-info.ts": {
+      "sha256": "ce7f1806d000ab4efdd857ab9ad3e5669b948d87ffc4f88b4d3ccfb7bf2bf4a0",
+      "bytes": 637,
+      "tracked": true
+    },
+    "src/core/bundle.ts": {
+      "sha256": "4b07ab4b04eff5aaafd37b17fbf44efac3c3f1a2f705e5e48f41b44e0045c38d",
+      "bytes": 3204,
+      "tracked": true
+    },
+    "src/core/catalog.ts": {
+      "sha256": "b483bcb5346900aa3a994c88047a0612b52d771778700c4bf4301305da5e8857",
+      "bytes": 3373,
+      "tracked": true
+    },
+    "src/core/chat.ts": {
+      "sha256": "60a1da85dabb01b487236fd3a1a96512971625906ab631348e1321154111c1ad",
+      "bytes": 6606,
+      "tracked": true
+    },
+    "src/core/compact-marker.ts": {
+      "sha256": "a317cd8db701d239b3f3ae30fe6c2f541c713d01f738d5249812684240c0cf6a",
+      "bytes": 2883,
+      "tracked": true
+    },
+    "src/core/compact.ts": {
+      "sha256": "1f2a75859a4aab615db2aaa7c021750d08e87ac979285728be936bce36e566b1",
+      "bytes": 21336,
+      "tracked": true
+    },
+    "src/core/config.ts": {
+      "sha256": "d86bb0f7405ef92d4d96e8f525a11a9a088fc0b2ad423e2bd57ed3099b2995c9",
+      "bytes": 7998,
+      "tracked": true
+    },
+    "src/core/desk/approval.ts": {
+      "sha256": "15ef6a5d1dbb420a5ba9d80b7a9a0e16f9de91e2291bd2b5ba1b645c50806e1f",
+      "bytes": 2553,
+      "tracked": true
+    },
+    "src/core/desk/engine.ts": {
+      "sha256": "beb8e019c554e899adb98da2e72896898b8677ea71d891f2a122824376b01583",
+      "bytes": 26002,
+      "tracked": true
+    },
+    "src/core/desk/journal.ts": {
+      "sha256": "59c344d09915beb3f2572648c422a4bf17fd357e8d05401976261a33ed63ed81",
+      "bytes": 6369,
+      "tracked": true
+    },
+    "src/core/desk/keyword.ts": {
+      "sha256": "7aa5c5249b3e2a60292d7fe49085f78140bd8f77ef6d1a97e53645d15b992f88",
+      "bytes": 3398,
+      "tracked": true
+    },
+    "src/core/desk/notification.ts": {
+      "sha256": "d4ec0224c2bb4b0967cb7f1fe73d9b9665987ffec6a1e9fab05e2e282e675e87",
+      "bytes": 3433,
+      "tracked": true
+    },
+    "src/core/desk/playbooks/common.ts": {
+      "sha256": "f9e6ba10c05167cb048d0bf9d9eacc3cb52fb9c9b70470c4fcb959af3ad24c9c",
+      "bytes": 2590,
+      "tracked": true
+    },
+    "src/core/desk/playbooks/index.ts": {
+      "sha256": "0375f6640d904d10fa20f5ec95b475bee59ea7df71f2f397d301360e943fe2c2",
+      "bytes": 378,
+      "tracked": true
+    },
+    "src/core/desk/playbooks/kiem-chung.ts": {
+      "sha256": "3eeab84b319162c21d07c63fcddeb2024d196f2e652f0409b65e487120d55b5f",
+      "bytes": 9416,
+      "tracked": true
+    },
+    "src/core/desk/playbooks/nganh.ts": {
+      "sha256": "38250cf33cd46921a88734e6e33ffbc8c97fc5ef28877746181b57077ac6ef72",
+      "bytes": 14350,
+      "tracked": true
+    },
+    "src/core/desk/playbooks/sang-loc.ts": {
+      "sha256": "9fc15e42b112e3d56286a2a7e84c85fc33133e594ec0d57a257c21067ddc4661",
+      "bytes": 14703,
+      "tracked": true
+    },
+    "src/core/desk/playbooks/tranh-bien.ts": {
+      "sha256": "c345dbe0504e9f9b4fcdc8052d450689078924882cfb15a044886e108468372a",
+      "bytes": 10269,
+      "tracked": true
+    },
+    "src/core/desk/sanitize.ts": {
+      "sha256": "f1bd8a0be1e45956d5962db5b108ea2160fc9e2257c23398902636a33ca5b7e3",
+      "bytes": 1622,
+      "tracked": true
+    },
+    "src/core/desk/settings.ts": {
+      "sha256": "8eb109603e217dae59bcd2c0270223a0b2cd4b906d979b1822e4a6b870e66cd4",
+      "bytes": 2087,
+      "tracked": true
+    },
+    "src/core/desk/tool.ts": {
+      "sha256": "369c664ca525a6e887063d153dcc0d59129a4a474aa3f101f58f70066d18fd7a",
+      "bytes": 7310,
+      "tracked": true
+    },
+    "src/core/desk/types.ts": {
+      "sha256": "c71c7c37e59ad81698a2fa950da3f5d57a75c38f2a119f4d7a1a2230e7f99fc3",
+      "bytes": 5580,
+      "tracked": true
+    },
+    "src/core/effort.ts": {
+      "sha256": "43cdc53c5bb3a2cacaa56da30437e499d65efb1b6eb61871542f505a5122d9b2",
+      "bytes": 11155,
+      "tracked": true
+    },
+    "src/core/events.ts": {
+      "sha256": "c57a579751579db1293d138f0a3696921c0d8d84158534936171dc12765d2043",
+      "bytes": 2909,
+      "tracked": true
+    },
+    "src/core/file-lock.ts": {
+      "sha256": "38b93e8d7cff6485370cbd682fb33cca7f45d3f8379bdf7c5650744f7d139d9c",
+      "bytes": 3915,
+      "tracked": true
+    },
+    "src/core/folder-trust.ts": {
+      "sha256": "1ffbf3324ae2db52e34bb6e4265910d08f9b00804502d6161b4020d84995af01",
+      "bytes": 2889,
+      "tracked": true
+    },
+    "src/core/fs/diff.ts": {
+      "sha256": "478af377a44a5c66eba76e1bfe82495af814e1ebb0fcbe9fa220b34f8a11b823",
+      "bytes": 3262,
+      "tracked": true
+    },
+    "src/core/fs/file-index.ts": {
+      "sha256": "b77bf16b6884fb5e181d7f271045bbe781de903c71287b4bcfe334a970035c47",
+      "bytes": 6340,
+      "tracked": true
+    },
+    "src/core/fs/file-state.ts": {
+      "sha256": "011cd1c48bf1f47c63a8ff22836cc08eaeea90eb33a47404d643d16d429e1134",
+      "bytes": 2706,
+      "tracked": true
+    },
+    "src/core/fs/history.ts": {
+      "sha256": "148774da9037daafbd9df53eee0ffaf23d03197e620e2da9550f0df636c655ea",
+      "bytes": 5111,
+      "tracked": true
+    },
+    "src/core/fs/office.ts": {
+      "sha256": "bb3cc70218ccf80059d09f8cacb636bf845131e66261103690f203ee6ee42f39",
+      "bytes": 12564,
+      "tracked": true
+    },
+    "src/core/fs/path-safety.ts": {
+      "sha256": "b0d228ad70376f8543c51185662b11bece864dc063cc8963cffafc1b9d4f5568",
+      "bytes": 13851,
+      "tracked": true
+    },
+    "src/core/fs/scratch-size.ts": {
+      "sha256": "642c4c0a51f1be806c17f7e662976dbafd6f38da4eb84cd4465d086034d47c74",
+      "bytes": 8423,
+      "tracked": true
+    },
+    "src/core/fs/scratch.ts": {
+      "sha256": "0e4da30bbe6be408412a4cb6c879eba9f4a8368bbbe8b352a37e58e5e55d354a",
+      "bytes": 4675,
+      "tracked": true
+    },
+    "src/core/fs/text.ts": {
+      "sha256": "d710e5faf370369ded4f1ae4cd35e02e8217c62e355c5b04d0fa6d67cbe2b28e",
+      "bytes": 3334,
+      "tracked": true
+    },
+    "src/core/fs/walk.ts": {
+      "sha256": "ee02128605333cf263f407ce8becc3185fa42c65503d0ee08aeacd4c0ebb4284",
+      "bytes": 2106,
+      "tracked": true
+    },
+    "src/core/fs/workspace.ts": {
+      "sha256": "4c11fcb8125f7d589021de02f89a583fb9e8f8291b2c7af34525fb1a894c4562",
+      "bytes": 7299,
+      "tracked": true
+    },
+    "src/core/home.ts": {
+      "sha256": "03ac1d02508015b995f582c109c80b434a25d3c69372735ed0bd2a894c07408f",
+      "bytes": 578,
+      "tracked": true
+    },
+    "src/core/hooks.ts": {
+      "sha256": "bca58a5dcdf853c25e319f7d2ab0a13f4b975b135e6167aef5fd690d799bcfde",
+      "bytes": 2792,
+      "tracked": true
+    },
+    "src/core/idle-compact.ts": {
+      "sha256": "b7a4c3221763ac76d2e74dd81deca60ef07b13a0f519e1f20a1007749848c255",
+      "bytes": 2705,
+      "tracked": true
+    },
+    "src/core/loop/failures.ts": {
+      "sha256": "78550ef90892687257f8ddb0610e1f4af373194e1a75259888ca64cb27a3078a",
+      "bytes": 6747,
+      "tracked": true
+    },
+    "src/core/loop/history-shape.ts": {
+      "sha256": "b86a8e6db1b8a030a2c0025936a49474961120c5c14e88930c9d5d6fb18dd18d",
+      "bytes": 2860,
+      "tracked": true
+    },
+    "src/core/loop/stop-gate.ts": {
+      "sha256": "de4abec28fbd4102ce4ebeb07718a3572e4c708093fea3b6a29707c0f391f3b3",
+      "bytes": 19092,
+      "tracked": true
+    },
+    "src/core/mcp/breaker.ts": {
+      "sha256": "1a0ce2cd5e026b455013df0b03d9ccf9c3a0cdde1bd1f539ca3a2d27f7bddd54",
+      "bytes": 1759,
+      "tracked": true
+    },
+    "src/core/mcp/catalog.ts": {
+      "sha256": "46cb6eb6352c746877bf21cd1b72a02151748e413c85fba16e48d605f1fc1a8e",
+      "bytes": 5500,
+      "tracked": true
+    },
+    "src/core/mcp/config.ts": {
+      "sha256": "a95e19a02f2e668ba7175a14b65273ae86149117f18b9775d79aca9bd82438d3",
+      "bytes": 11085,
+      "tracked": true
+    },
+    "src/core/mcp/convert.ts": {
+      "sha256": "35cd0713b5cb1dbeec70a13bf74ea60721cc1bbe1103347380c498104fda9485",
+      "bytes": 2927,
+      "tracked": true
+    },
+    "src/core/mcp/manager.ts": {
+      "sha256": "ce260526de43e306b20237fc88b6e77c299ff62182360de5582eb03be26bc657",
+      "bytes": 56810,
+      "tracked": true
+    },
+    "src/core/mcp/naming.ts": {
+      "sha256": "f3753fe4656f843d803e0b3447593e7fdba17b71caf99b430cb6f63decbefb44",
+      "bytes": 1311,
+      "tracked": true
+    },
+    "src/core/mcp/oauth.ts": {
+      "sha256": "525551c98abe608b6c958b9a8e4cc49d3f517cd2b7509c65d960d34fa95a0ca7",
+      "bytes": 11554,
+      "tracked": true
+    },
+    "src/core/mcp/schema.ts": {
+      "sha256": "434323fd1a8773e4203059077f0d3aafd5fed1eb4758972e558ed3134583ab70",
+      "bytes": 10672,
+      "tracked": true
+    },
+    "src/core/mcp/secrets.ts": {
+      "sha256": "11c5671c255b07e37484db8e6209f53c1701018f8a8ac4d5838a45d917e2f5c9",
+      "bytes": 2696,
+      "tracked": true
+    },
+    "src/core/mcp/trust.ts": {
+      "sha256": "7369d5ff3db3314d274274305da0101c9bb6c825f10a12271282316c0a6abf2f",
+      "bytes": 1992,
+      "tracked": true
+    },
+    "src/core/memory/file-memory.ts": {
+      "sha256": "949c57879615c6d9ef7469c5041139e09690e40108a81daef2ce1877a2d57f7a",
+      "bytes": 7415,
+      "tracked": true
+    },
+    "src/core/memory/types.ts": {
+      "sha256": "bda8fdc25dc3c21676a3ac7034be3c12d26443fd4d3df31c116903c9c5810559",
+      "bytes": 2496,
+      "tracked": true
+    },
+    "src/core/mentions.ts": {
+      "sha256": "6d7dbb6c6cde92a32eae1c5793940cf92714ae76a43e17d0704f079711cbfd7d",
+      "bytes": 13808,
+      "tracked": true
+    },
+    "src/core/model-prefs.ts": {
+      "sha256": "dd5a548e12ea27943750d2989e00772bb67be707f09d85a4de1df21faef1f815",
+      "bytes": 1946,
+      "tracked": true
+    },
+    "src/core/paths.ts": {
+      "sha256": "42834b8374d3bd2905b789aa0b74018b226780d191f13a3669520d068c3b2507",
+      "bytes": 619,
+      "tracked": true
+    },
+    "src/core/permission/auto/classifier.ts": {
+      "sha256": "d6f80873e65b1d40a50d3bf9ba0674e7e8e2610064b71fc7577aaaeb44b86b7e",
+      "bytes": 12620,
+      "tracked": true
+    },
+    "src/core/permission/auto/context.ts": {
+      "sha256": "841e0b43253ae1208d15354e51655f1e6da210239a0f10406439a914326bc41c",
+      "bytes": 4379,
+      "tracked": true
+    },
+    "src/core/permission/auto/index.ts": {
+      "sha256": "926766e6442caa6e6d18a4c8a405ad331b7b2fc4bf3bbf272b87e813f13d6c70",
+      "bytes": 10250,
+      "tracked": true
+    },
+    "src/core/permission/auto/rules.ts": {
+      "sha256": "ae344dc7fb402968c9cc00f3d592080d4d0f65cc2e76f896e0aa26c04202fcfd",
+      "bytes": 9985,
+      "tracked": true
+    },
+    "src/core/permission/auto/transcript.ts": {
+      "sha256": "9d8e018d0e850cf3b7a097afb3e8851a74cc726de59f9ec462c11696d6aaf93b",
+      "bytes": 12177,
+      "tracked": true
+    },
+    "src/core/permission/denial.ts": {
+      "sha256": "55e2fd8c271750e081b805c1476885f0a68b6626b851ba69a56510fdf0ff9716",
+      "bytes": 6310,
+      "tracked": true
+    },
+    "src/core/permission/index.ts": {
+      "sha256": "d5848973496a1cf0fc2a1a9f107fb42e65bbbb777fd77b3043a48ac704e81008",
+      "bytes": 20256,
+      "tracked": true
+    },
+    "src/core/permission/mode.ts": {
+      "sha256": "885702d7599c957eeaabb10fa4b0d9aeb660808c0149fb9687c3412e0f023671",
+      "bytes": 2958,
+      "tracked": true
+    },
+    "src/core/profile.ts": {
+      "sha256": "a3034d81bb7cb698889ae85dec2027b87401455a8e996c651835796e783fd983",
+      "bytes": 2018,
+      "tracked": true
+    },
+    "src/core/prompt/assemble.ts": {
+      "sha256": "1482846782d780f3655969cc9ae40c21f75d264169cfb8bd83de94a62b9d82c7",
+      "bytes": 14735,
+      "tracked": true
+    },
+    "src/core/prompt/budget.ts": {
+      "sha256": "1a2ef5017d9f8ac7f48ff4f219ca4f1bcb3fa893fdad1a523dbe3185da299c6c",
+      "bytes": 2756,
+      "tracked": true
+    },
+    "src/core/prompt/market-clock.ts": {
+      "sha256": "96b419ab2975eaf48004f9b98d882e2a9b0cf58bb5adf7df1221bdd82cebe4a5",
+      "bytes": 3640,
+      "tracked": true
+    },
+    "src/core/providers.ts": {
+      "sha256": "3571c780b7b4ac37e2e4d0e40fb2b61091c68b5747384af86522a5b5d4ed598b",
+      "bytes": 8199,
+      "tracked": true
+    },
+    "src/core/requests.ts": {
+      "sha256": "2e4604d9caa08ec7f80a8d69d8fa675e00d3f0a83fa4eeb4eb4a69d0ec561bf0",
+      "bytes": 958,
+      "tracked": true
+    },
+    "src/core/retry.ts": {
+      "sha256": "f45d40a79c0ce7d28e24b2bfc77c09e9c0ebe50932baed4fd9f98c3f27f00985",
+      "bytes": 11033,
+      "tracked": true
+    },
+    "src/core/runtime.ts": {
+      "sha256": "61fdf7fda29d0f12fc5aaf0bd165a89e9ac287f31642aff51d24b5953b357c52",
+      "bytes": 11301,
+      "tracked": true
+    },
+    "src/core/session/export.ts": {
+      "sha256": "cfe1808f7bfc3f356b7586ebf70bb5ec2c118b375b97be17343e1c2809a76fb2",
+      "bytes": 4843,
+      "tracked": true
+    },
+    "src/core/session/store.ts": {
+      "sha256": "22a8be26436391a4af3c052740e005db1b86ecf3194380a49049a689d578a1f6",
+      "bytes": 18417,
+      "tracked": true
+    },
+    "src/core/session/title.ts": {
+      "sha256": "3968740fca097e2b1fcdbd23cc12d1af80a8f297e283e18ac9da4238bb17fba4",
+      "bytes": 2357,
+      "tracked": true
+    },
+    "src/core/session/transcript.ts": {
+      "sha256": "66161f720040c301e4defe38b0c43a02169922bd3ac24e47f68d137c8f66131b",
+      "bytes": 4499,
+      "tracked": true
+    },
+    "src/core/skills/catalog.ts": {
+      "sha256": "08f3bd6978ec353404075f199c015a765c037149ff6bcf61aecf153c10368a6a",
+      "bytes": 6531,
+      "tracked": true
+    },
+    "src/core/skills/loader.ts": {
+      "sha256": "fa6066228537ad220e2efc57949bff78cf01cc71c7b954048bcb9a595e1be324",
+      "bytes": 2951,
+      "tracked": true
+    },
+    "src/core/skills/schema.ts": {
+      "sha256": "170e1c0c41659e83bd923e0b3d83c66c15840756770d0e57cbb9b2f699f402d9",
+      "bytes": 3151,
+      "tracked": true
+    },
+    "src/core/store.ts": {
+      "sha256": "69e1c442cdd17fa403b269a9b396b93187146ba14189403ad3e80ac6be949b9e",
+      "bytes": 3920,
+      "tracked": true
+    },
+    "src/core/subagents/brief.ts": {
+      "sha256": "2c59fb7bc74b868901728baec40b03afb3cb77d0e75e7103397ddcbf320a470f",
+      "bytes": 2859,
+      "tracked": true
+    },
+    "src/core/subagents/limiter.ts": {
+      "sha256": "f50fab4f0c87c0e0e193139e6db047acadf8020b46815bd61c0a0d24f495570c",
+      "bytes": 2176,
+      "tracked": true
+    },
+    "src/core/subagents/manager.ts": {
+      "sha256": "b9d9e2f24a26eb3e25621bef2af77ede148ec456e2bb839df7307eb4a18b2ece",
+      "bytes": 29494,
+      "tracked": true
+    },
+    "src/core/subagents/model-pick.ts": {
+      "sha256": "9ddafe3710388ffab5554decb7a5264ddabb13b8ed18c47f0b2b061a9ad0bb38",
+      "bytes": 2847,
+      "tracked": true
+    },
+    "src/core/subagents/notification.ts": {
+      "sha256": "f77e34efe8c0da96f3a95f9104fe40898908398bb31553f48210b4c1f29b8ae3",
+      "bytes": 2966,
+      "tracked": true
+    },
+    "src/core/subagents/result.ts": {
+      "sha256": "a0ae7e19222425e008ab63fd8d90dd1f6e860a9da4236f905f7bb2fcafac965b",
+      "bytes": 3788,
+      "tracked": true
+    },
+    "src/core/subagents/sidechain.ts": {
+      "sha256": "d52ef021ebd276f598d2de5ddf1f5b406e2398f22b1484e94345ae19cdf91e77",
+      "bytes": 3007,
+      "tracked": true
+    },
+    "src/core/subagents/structured.ts": {
+      "sha256": "22e1d1e055ba5f6b622420412ab7ff4f3c773bedcc19c4e131034430f5e7d37d",
+      "bytes": 2062,
+      "tracked": true
+    },
+    "src/core/subagents/types.ts": {
+      "sha256": "0f28263c3fe97c569c67d3ec785480f074fae375640560cbaa3df5c87618ecec",
+      "bytes": 3111,
+      "tracked": true
+    },
+    "src/core/tools/builtin/ask-user.ts": {
+      "sha256": "b6b36c2838439dc516d97748e10a3ff2ab58d0bd9808c759e6335aba9ddb96af",
+      "bytes": 2640,
+      "tracked": true
+    },
+    "src/core/tools/builtin/current-time.ts": {
+      "sha256": "1f2d0aace2c1b2d789caf073fa430aea6168312ba26b34226cebff0d500c0b13",
+      "bytes": 1587,
+      "tracked": true
+    },
+    "src/core/tools/builtin/load-skill.ts": {
+      "sha256": "1a711168c5a1ddcb7629090571ecfa33d57df27e5c3a245d2f35607ce5bf4841",
+      "bytes": 3493,
+      "tracked": true
+    },
+    "src/core/tools/builtin/todo-write.ts": {
+      "sha256": "d95b6f3ef2409453be11d0f7923508cdb49d7d7315d4f999ba3185f8c019ba08",
+      "bytes": 3121,
+      "tracked": true
+    },
+    "src/core/tools/builtin/tool-search.ts": {
+      "sha256": "f8ca86b031c653dd1fe9318e374c75ff7a036960e1b7050b62e4d3f4c86f53e8",
+      "bytes": 4835,
+      "tracked": true
+    },
+    "src/core/tools/chart/boxplot.ts": {
+      "sha256": "a85da84cf39e15b034c96b9c5f395e7962e218822ed1aa345293fd1326e0f0e0",
+      "bytes": 2224,
+      "tracked": true
+    },
+    "src/core/tools/chart/compare.ts": {
+      "sha256": "4a9a7480b24a452541200c3a7dd6b1b989a7d7e967824138bb7588ffec181c28",
+      "bytes": 8154,
+      "tracked": true
+    },
+    "src/core/tools/chart/data.ts": {
+      "sha256": "d54b505e75575ce6e2b3b17599ffc4eea94d934bc67f64d14edc654c49dd372d",
+      "bytes": 2002,
+      "tracked": true
+    },
+    "src/core/tools/chart/extract.ts": {
+      "sha256": "455a2637f0bdcda8b4988a11257ad6c68b137098a6375567a06844ff93158e7e",
+      "bytes": 15040,
+      "tracked": true
+    },
+    "src/core/tools/chart/multiline.ts": {
+      "sha256": "97a3a9069b047cf7632e97aa2d41809b8f821070075b1adebbd74d7058ad213c",
+      "bytes": 2629,
+      "tracked": true
+    },
+    "src/core/tools/chart/pie.ts": {
+      "sha256": "1a21d954070bd3e5acabab7bed5e0f22d83f229f9baac10be722d44dbe808d81",
+      "bytes": 1344,
+      "tracked": true
+    },
+    "src/core/tools/chart/render.ts": {
+      "sha256": "8aa68955da4a5cec976aadba136a2af51febdade8e8607f4239a6e1d48a55c34",
+      "bytes": 20293,
+      "tracked": true
+    },
+    "src/core/tools/chart/stacked.ts": {
+      "sha256": "7d7548cca130383ef45724636676c7ff6b13a18d2049d5d6162df55e3b7924fd",
+      "bytes": 1674,
+      "tracked": true
+    },
+    "src/core/tools/chart/summary.ts": {
+      "sha256": "76ec5d9afc2bc3548fdab02dcb867c247940262d53af722c04eb56ae6dadf86f",
+      "bytes": 4223,
+      "tracked": true
+    },
+    "src/core/tools/chart/waterfall.ts": {
+      "sha256": "1762358b7d7c866a03f68415129debaa39499406d855eb4decac93e6e1cd0fdd",
+      "bytes": 2147,
+      "tracked": true
+    },
+    "src/core/tools/errors.ts": {
+      "sha256": "41f02de7c1cea30dc910957315d7658980f4461cdca84c3ab9055a36d174577e",
+      "bytes": 5085,
+      "tracked": true
+    },
+    "src/core/tools/fs/read.ts": {
+      "sha256": "8cf5e13acb06ccab35055a2e49ec1f4bddbda9b190b94d0f5b8ffec3eb49f133",
+      "bytes": 15428,
+      "tracked": true
+    },
+    "src/core/tools/fs/search.ts": {
+      "sha256": "e52bc547b2d67f928eb64c177983320ed627efbe3a40b92f59187dd472cd3199",
+      "bytes": 11874,
+      "tracked": true
+    },
+    "src/core/tools/fs/write.ts": {
+      "sha256": "c96c569ee24e169abbe78c74cb4458974d068a56e6417d13775bb737abb6e602",
+      "bytes": 13689,
+      "tracked": true
+    },
+    "src/core/tools/loaded.ts": {
+      "sha256": "6dcb237c0a3537fc103d46adc7cb2185f454c6c4e03ff7e8278d1ee85668e7d5",
+      "bytes": 2658,
+      "tracked": true
+    },
+    "src/core/tools/loop-guard.ts": {
+      "sha256": "d985f092749c604d5861df5e2e5e999a60f2fc7c04534579bf023bb45d3f73ca",
+      "bytes": 2215,
+      "tracked": true
+    },
+    "src/core/tools/net-dates.ts": {
+      "sha256": "e353088597f5819145cede959243feff1c11bcd5a94c0084e2c83c681e4cbc79",
+      "bytes": 2226,
+      "tracked": true
+    },
+    "src/core/tools/outcome.ts": {
+      "sha256": "1b7dbafb844698edc02976d12326b0237727b91a42444b0ba492ea316ad2e552",
+      "bytes": 5116,
+      "tracked": true
+    },
+    "src/core/tools/patterns.ts": {
+      "sha256": "284eac998f95dd25c32454f3a847420e128e80f8457fa880c746df8f04123318",
+      "bytes": 1126,
+      "tracked": true
+    },
+    "src/core/tools/refs.ts": {
+      "sha256": "9b173df522b8d10bc94144aad7ebb7e7bc66949ceadd47a63e75c4cd7925d8bc",
+      "bytes": 3522,
+      "tracked": true
+    },
+    "src/core/tools/registry.ts": {
+      "sha256": "b0befca6afce0bf1ee86ae619018d18b5ee88893e5196886631b2d178615973d",
+      "bytes": 10752,
+      "tracked": true
+    },
+    "src/core/tools/search.ts": {
+      "sha256": "ffa63dd243f69013f0b9bb329473ea715c21c00562833198e8ad46fd2b048e07",
+      "bytes": 7365,
+      "tracked": true
+    },
+    "src/core/tools/session/history.ts": {
+      "sha256": "5d9c09a7759064b8af04957d9091340c8786108aceebd970a0310b067d98e554",
+      "bytes": 5857,
+      "tracked": true
+    },
+    "src/core/tools/shell/command.ts": {
+      "sha256": "413c6eef0b3d11abf0dbcc8bb62ee0a85ce7bd3fc3340a150e5a817bafb824b8",
+      "bytes": 11557,
+      "tracked": true
+    },
+    "src/core/tools/shell/run.ts": {
+      "sha256": "7479180219500bc2cf6fff63fa3d941b859b54d974cd2168a0ab971b9d5315e8",
+      "bytes": 8252,
+      "tracked": true
+    },
+    "src/core/tools/shell/shell.ts": {
+      "sha256": "e307bfe1e09cfcea2235bac172d0720f4ef2ab208b779222ca675af5e925726f",
+      "bytes": 7922,
+      "tracked": true
+    },
+    "src/core/tools/subagent/spawn.ts": {
+      "sha256": "b8793f9efd7916118cac320b15ed0e8109b22f2b7b4587b80809cd270e5ad8d3",
+      "bytes": 9990,
+      "tracked": true
+    },
+    "src/core/tools/todos.ts": {
+      "sha256": "f25c3f90eab21e0905682092e23a331f21f3d96d50a71b7031eddd8b653900f4",
+      "bytes": 7425,
+      "tracked": true
+    },
+    "src/core/tools/types.ts": {
+      "sha256": "846775ae733ee64e015ee1851a1f0f90b698818d2096ca14b96fcc49a8572dc8",
+      "bytes": 6650,
+      "tracked": true
+    },
+    "src/core/tools/watchlist/local.ts": {
+      "sha256": "ff1b9a6685c0811a4b8e077a8fbc81f994cb6b4eabda3ec39e6481508136057a",
+      "bytes": 10552,
+      "tracked": true
+    },
+    "src/core/tools/watchlist/quotes.ts": {
+      "sha256": "5117ffc499570b991195ca94f34eee176c6884228a4ab2ae503edc1b7bc7de9a",
+      "bytes": 4040,
+      "tracked": true
+    },
+    "src/core/tools/web/convert.ts": {
+      "sha256": "8929db68a50e6e362d24c874062738a7b6fc68f6b14d4d11ff5185d1b1dd0221",
+      "bytes": 4371,
+      "tracked": true
+    },
+    "src/core/tools/web/domains.ts": {
+      "sha256": "5b4e8ae7bdb6fd3c0f5ff13075360f609f645028c5776ff311612cf0b98ec6e7",
+      "bytes": 1668,
+      "tracked": true
+    },
+    "src/core/tools/web/fetch.ts": {
+      "sha256": "eeffae67a271abec2cd942962b415fb7715a375e3622a79691d28354440c5c59",
+      "bytes": 11675,
+      "tracked": true
+    },
+    "src/core/tools/web/net.ts": {
+      "sha256": "e69d2be0712125e73a5a1d02b05b3bf01d4b2fb12ba73c76cc633b948e792740",
+      "bytes": 6733,
+      "tracked": true
+    },
+    "src/core/tools/web/search.ts": {
+      "sha256": "23f70e4ddba068dad902c782cf0f1d69c333cd5b0ad74a33551504dd3486c81c",
+      "bytes": 17509,
+      "tracked": true
+    },
+    "src/core/tools/web/side-model.ts": {
+      "sha256": "fc45ae71dbc655bd00a86ba662d215d1f4188614370f0e9394262abb8ab3a893",
+      "bytes": 9680,
+      "tracked": true
+    },
+    "src/core/tools/wrap.ts": {
+      "sha256": "e7904498c60a0c6a9e2a334c97e21d503a699d2e005c3a8a47fde930752e4212",
+      "bytes": 8686,
+      "tracked": true
+    },
+    "src/core/update.ts": {
+      "sha256": "a78a40c00274bf9df383a4beaf3f031e70b299abb46183f9fd2b250b11a1e4eb",
+      "bytes": 12686,
+      "tracked": true
+    },
+    "src/index.tsx": {
+      "sha256": "17b2dee65f57058f4fa295dfa300c7b3d5ae2c8f2a886646ee4f84695ede7435",
+      "bytes": 2598,
+      "tracked": true
+    },
+    "src/opentui-preload.d.ts": {
+      "sha256": "17f7da8750095c45c61e5414de2ef28bf011a25ed4747dc08a5e451c408e7bbd",
+      "bytes": 138,
+      "tracked": true
+    },
+    "src/tui/activity.tsx": {
+      "sha256": "88a16cd256eb9a6074c4d4503651318a92fa7d53230844ab2cfac774137a9828",
+      "bytes": 6955,
+      "tracked": true
+    },
+    "src/tui/agent-panel.tsx": {
+      "sha256": "2d43d21915f2b0c99b9146dfb4594e6f78a90bc1cb57e6d46f21fc84f4edaa0c",
+      "bytes": 8575,
+      "tracked": true
+    },
+    "src/tui/app.tsx": {
+      "sha256": "3c1395bfc7febfafe6bf45cab6820e486aecbfcfff3daad902f0b5840ded3b90",
+      "bytes": 94307,
+      "tracked": true
+    },
+    "src/tui/approval.tsx": {
+      "sha256": "2bed98599e18ebc2166ab97306c9afd78342c28169e0e3db45b2d0e46141a8bb",
+      "bytes": 13133,
+      "tracked": true
+    },
+    "src/tui/ask.tsx": {
+      "sha256": "a7a9f994452d5ce0bf9610348d31376793069e445d2efa4e05ef835a448368e0",
+      "bytes": 10057,
+      "tracked": true
+    },
+    "src/tui/attention.ts": {
+      "sha256": "ab1afd4cdf9590e8a8ef1baa3bb368efbb0e33b4da0ab576485a9649ca3dbc71",
+      "bytes": 4595,
+      "tracked": true
+    },
+    "src/tui/auto-notice.ts": {
+      "sha256": "05f6bf0ce5badf9aa82118e7498d076e982eb79cac22abfce8e037f77b18d708",
+      "bytes": 1151,
+      "tracked": true
+    },
+    "src/tui/background.tsx": {
+      "sha256": "88924203b38306c1bca916f1c14708652b4981e667a0959372bf0227a896e5cf",
+      "bytes": 6157,
+      "tracked": true
+    },
+    "src/tui/clipboard.ts": {
+      "sha256": "56743eecaf81b6b32326d0cf3cbba68aefdef5a20e79cc506c3e6e5708c81fdd",
+      "bytes": 2987,
+      "tracked": true
+    },
+    "src/tui/commands.ts": {
+      "sha256": "529be2f72a766fc806a67d77c84aea8fa4aca11d091f7a5c672763c7e4a1e1a2",
+      "bytes": 5453,
+      "tracked": true
+    },
+    "src/tui/desk-card.tsx": {
+      "sha256": "1b45a74df914754c7316cd0f41096f685cf7b55a65e25d36fdbc82a65128fb70",
+      "bytes": 14868,
+      "tracked": true
+    },
+    "src/tui/dialogs/agents.tsx": {
+      "sha256": "d0300dcfb6c4d41590989ad33c44b2f971941d4f3cbae3f2a3c83835c6a3d8a8",
+      "bytes": 6440,
+      "tracked": true
+    },
+    "src/tui/dialogs/auto-optin.tsx": {
+      "sha256": "27bc67b1f3dff64e414f1077ab382e2bb424d6adbd16216521f6b528b2a0b312",
+      "bytes": 5056,
+      "tracked": true
+    },
+    "src/tui/dialogs/config.tsx": {
+      "sha256": "6f0d297af82203d21996b9559fd5205e5fb16fbf18ea332cb48d133357e9676f",
+      "bytes": 25440,
+      "tracked": true
+    },
+    "src/tui/dialogs/connect.tsx": {
+      "sha256": "a61e442d82b90650bae68c4b2ecce324a6f0f7d3a71cb709ef9e2e1328a8ddcc",
+      "bytes": 4073,
+      "tracked": true
+    },
+    "src/tui/dialogs/context.tsx": {
+      "sha256": "056312b4a8fae12c462dafef897143f3c800baff66a4acd2af6e566ec071d06b",
+      "bytes": 5710,
+      "tracked": true
+    },
+    "src/tui/dialogs/desk-approval.tsx": {
+      "sha256": "15799185549085729aec44201d95a863961a93cba78dbc77053bbfbd7247d739",
+      "bytes": 5719,
+      "tracked": true
+    },
+    "src/tui/dialogs/desk.tsx": {
+      "sha256": "7ce6cbdfd0c32642734028438367539c51d88bdcd24cdcd44e8d521012ed50cc",
+      "bytes": 12236,
+      "tracked": true
+    },
+    "src/tui/dialogs/effort.tsx": {
+      "sha256": "43c725cf83a1bafdcab9df22a8ae186677ca5a68baa71a24d3b267a3aacc5d2f",
+      "bytes": 6715,
+      "tracked": true
+    },
+    "src/tui/dialogs/folder-trust.tsx": {
+      "sha256": "3e89fb0020073d8eb51d2c3cdc71d055b237eb061589be0ea46de73a0f4c7d55",
+      "bytes": 4309,
+      "tracked": true
+    },
+    "src/tui/dialogs/frame.tsx": {
+      "sha256": "813358414deac57692d43bcf75aa72b379ef448f66bbfda8f371d5abea749830",
+      "bytes": 1515,
+      "tracked": true
+    },
+    "src/tui/dialogs/help.tsx": {
+      "sha256": "ee3160b740013312ac3ecace6336f6e37e9fef6b5cfea7bbc3b2fddabfeea63e",
+      "bytes": 4049,
+      "tracked": true
+    },
+    "src/tui/dialogs/memory.tsx": {
+      "sha256": "821db0f6627f707ac980d214e6962a6920e01f79aa4d0fa2d6ec6e9d4a1f40d8",
+      "bytes": 4062,
+      "tracked": true
+    },
+    "src/tui/dialogs/model-choices.ts": {
+      "sha256": "ccce9cb66d805fe68e5a252ed9285f3d4db25fa2da4cbd43484b4a2348578a38",
+      "bytes": 3756,
+      "tracked": true
+    },
+    "src/tui/dialogs/model.tsx": {
+      "sha256": "c5e110aa671bb7557ac863a7530c268b419a00544a023e81202628f7184bfe70",
+      "bytes": 10526,
+      "tracked": true
+    },
+    "src/tui/dialogs/permissions.tsx": {
+      "sha256": "8b5a878195ef6aa756cb7efd3ed73827881636c34ed0d588c9507539f83ff1d4",
+      "bytes": 9406,
+      "tracked": true
+    },
+    "src/tui/dialogs/picker.tsx": {
+      "sha256": "a3cab62fe3a1a81d45575debf8da9aacd43a481b06b4bdb03a213ce927e75a47",
+      "bytes": 9340,
+      "tracked": true
+    },
+    "src/tui/dialogs/sessions.tsx": {
+      "sha256": "5f6a39d104fcd863d8b6f467e88fe3f6c4d667b673d4ae79bcf269cf7f898eac",
+      "bytes": 3372,
+      "tracked": true
+    },
+    "src/tui/dialogs/skills.tsx": {
+      "sha256": "fdf761e9546a95b73c7a9332aa7ac770ad8e2efd426beb5d6dde20dcc8ca6066",
+      "bytes": 2551,
+      "tracked": true
+    },
+    "src/tui/dialogs/tasks.tsx": {
+      "sha256": "42ca1cc5d29125c362f41ad3b392eea2af20434d40abe961871a5607b9d0554d",
+      "bytes": 6083,
+      "tracked": true
+    },
+    "src/tui/dialogs/tools.tsx": {
+      "sha256": "17b09a536ed88e4d70ae916869dcf05450e416c68c071d23a1f31dbdf00dbebe",
+      "bytes": 4203,
+      "tracked": true
+    },
+    "src/tui/dialogs/watchlist.tsx": {
+      "sha256": "8412f366ad5b7dc3791288a9f884f46b893222ff15ea77e3729b8322b477d8a4",
+      "bytes": 5615,
+      "tracked": true
+    },
+    "src/tui/home.tsx": {
+      "sha256": "a53d25e96d8eef0e96c0257f4dd53884f98009b9539685506888a8a9f579eb8f",
+      "bytes": 3434,
+      "tracked": true
+    },
+    "src/tui/logo.ts": {
+      "sha256": "a412af9e8e5848ff6c88080972c168e23b055ca7d652dfefd7bfee025964feb5",
+      "bytes": 969,
+      "tracked": true
+    },
+    "src/tui/main.tsx": {
+      "sha256": "633ca86da710b142d973a863268d3dc32a8e8b58485444b0c26f9e750f5a9a3e",
+      "bytes": 1477,
+      "tracked": true
+    },
+    "src/tui/mcp/notices.ts": {
+      "sha256": "08a926eac8aa9a39dcf458c3eedfc2c73ee2d1ed494c91b7f3a1df04e5e380bb",
+      "bytes": 1073,
+      "tracked": true
+    },
+    "src/tui/mcp/panel.tsx": {
+      "sha256": "fd3025d09d06f230a8bf208e27bb9ddfbbe7bdb9072ebca14c3da8d28371cb1b",
+      "bytes": 36185,
+      "tracked": true
+    },
+    "src/tui/mode-line.tsx": {
+      "sha256": "0805777fcf445b1d3189b5a26aa082e5a93fb4db137d144b038c003bbf0ab5e7",
+      "bytes": 4661,
+      "tracked": true
+    },
+    "src/tui/notify.ts": {
+      "sha256": "1889493af3458fb87204efbe832c4defe470dfd053efe0ab78809c6eb879a12f",
+      "bytes": 7296,
+      "tracked": true
+    },
+    "src/tui/prompt/editor.ts": {
+      "sha256": "0b4438b1f5b083b71da32834f1626992189d3f91cbab442825be6cc906b228bc",
+      "bytes": 2916,
+      "tracked": true
+    },
+    "src/tui/prompt/history.ts": {
+      "sha256": "02456187b24de214d1a5208b1b2fc4b65936e9f55f75bd7a829c874cc9f7a7b8",
+      "bytes": 6006,
+      "tracked": true
+    },
+    "src/tui/prompt/image.ts": {
+      "sha256": "e894cf6c7180d4d6c5adb4e06cbed5541a49e152f2c755d435550363af418b90",
+      "bytes": 7604,
+      "tracked": true
+    },
+    "src/tui/prompt/input.tsx": {
+      "sha256": "e3c39e44bc3b594928c6e967fd42556c81b242d2cd18ef16dad17ec97393e531",
+      "bytes": 4500,
+      "tracked": true
+    },
+    "src/tui/prompt/keyword.ts": {
+      "sha256": "80a403ff534471c51c4bf10a2372676ccb2e270a2171a9a547742147f31d2660",
+      "bytes": 1443,
+      "tracked": true
+    },
+    "src/tui/prompt/parts.ts": {
+      "sha256": "96ef3f7cdfb5d60cb321fc4644e47dce724dde10bb86e160317694729dfdc415",
+      "bytes": 8096,
+      "tracked": true
+    },
+    "src/tui/scratch.ts": {
+      "sha256": "02a7ad4285b451ccee0d1836d013c991448ad3c1b5cc8f561be4075db0130e72",
+      "bytes": 4162,
+      "tracked": true
+    },
+    "src/tui/scroll.ts": {
+      "sha256": "fa3a6f1f9e8f00c4057735710e5ccefe134dbf346c312dbeb1f2ff28de5a119a",
+      "bytes": 2528,
+      "tracked": true
+    },
+    "src/tui/session.ts": {
+      "sha256": "890de4c6b9e8092d2f50b8211fa0e2648a36ad4a7bcb7b38f6dcbdd1144a2836",
+      "bytes": 8205,
+      "tracked": true
+    },
+    "src/tui/shortcuts.tsx": {
+      "sha256": "4a80c9ae901fa2a348ce0c609d1135a4b692072e59cc0d68022d49d3c156c62a",
+      "bytes": 2953,
+      "tracked": true
+    },
+    "src/tui/state.ts": {
+      "sha256": "7af21235e35a0d08a4b58d99234a723c1173c466921c15e195b155edaee5dff0",
+      "bytes": 12560,
+      "tracked": true
+    },
+    "src/tui/subagent-row.tsx": {
+      "sha256": "545ec072ea24ed5ee413f95d355fdb6d484d6ee9775c4eaa1acdf1842be7e0d3",
+      "bytes": 12538,
+      "tracked": true
+    },
+    "src/tui/suggestions.tsx": {
+      "sha256": "da364dc3881d5128535d47b0545035c665fbdc3bbff17d870ead322b7fc26fab",
+      "bytes": 4173,
+      "tracked": true
+    },
+    "src/tui/theme.ts": {
+      "sha256": "3810458b95b2d47413e4843798aac5518d043d715a647b484ba1e7c4650e1741",
+      "bytes": 3085,
+      "tracked": true
+    },
+    "src/tui/tips.ts": {
+      "sha256": "bc483a403def37575df600d848881e08e29b745365fcd2081e91015c7e21f68a",
+      "bytes": 1426,
+      "tracked": true
+    },
+    "src/tui/toast.tsx": {
+      "sha256": "bb22141bdd2f1eb79733fc15fd09b90586ce4e3735aa747230592010b5ad47cd",
+      "bytes": 1971,
+      "tracked": true
+    },
+    "src/tui/todo-panel.tsx": {
+      "sha256": "1c0dc44dc0457eec3df0596bf11e9ae9c9e37ec22791bd839e6d6ab8ff5931c3",
+      "bytes": 2751,
+      "tracked": true
+    },
+    "src/tui/transcript.tsx": {
+      "sha256": "5a9a72d727ba370cee4fc259b45d1eccf0d6cc6beeb4f3722bb0c7b5437f8c22",
+      "bytes": 19979,
+      "tracked": true
+    },
+    "src/tui/ui/badges.tsx": {
+      "sha256": "69efe88341aad362527c1f465b174b0aa44ab73bcbc1334edbe34e52fdeea286",
+      "bytes": 1423,
+      "tracked": true
+    },
+    "src/tui/ui/chart-box.tsx": {
+      "sha256": "19662200b4ebf2e2fd12c56fd3df9e132b4bc0c9821f586ce8ffc97dd28ecf08",
+      "bytes": 49033,
+      "tracked": true
+    },
+    "src/tui/ui/clock.ts": {
+      "sha256": "86f2e591e89fabb582715b462e3f1c26a1bdb84c500d3179a58aad30cc0ef3f6",
+      "bytes": 2595,
+      "tracked": true
+    },
+    "src/tui/ui/keys.ts": {
+      "sha256": "6204fc549e83c13bc599b7946d06887b23eb728d7d9327323748df7783744316",
+      "bytes": 697,
+      "tracked": true
+    },
+    "src/tui/ui/stream-view.ts": {
+      "sha256": "9a553de31158b07be5eb2aaaf88688444d14dc70add546c4514f1618cfd33c1a",
+      "bytes": 4238,
+      "tracked": true
+    },
+    "src/tui/ui/text.ts": {
+      "sha256": "2b85d682d16ef8fd01eefd98422b776ea17e5b476dd43896e363428a06c2f01c",
+      "bytes": 2798,
+      "tracked": true
+    },
+    "src/tui/ui/tool-detail.tsx": {
+      "sha256": "92075d68753b0a4477e8a59e82d8e354f94044b99dd3307b5ebc352c45c1e47d",
+      "bytes": 3848,
+      "tracked": true
+    },
+    "src/tui/update-notice.ts": {
+      "sha256": "7968a42ecd4bf282208435e4e8f1028f75dc1d8e5a16fcf1d4d7865fd2c17717",
+      "bytes": 1279,
+      "tracked": true
+    },
+    "test/activity.test.tsx": {
+      "sha256": "d964d48cbad857ac1c5813538c32608a954d12f480e1df2d8769a8fd125a588a",
+      "bytes": 5174,
+      "tracked": true
+    },
+    "test/agent-panel.test.tsx": {
+      "sha256": "390861c562dfabccaca17b248bad44ce08f27db820afda63256f6df5f57f6154",
+      "bytes": 4946,
+      "tracked": true
+    },
+    "test/agent-tools.test.ts": {
+      "sha256": "14e9eadef9ea06dd479b1c226a184d5e59996a402266b1372c05f3f9ec1131f9",
+      "bytes": 2903,
+      "tracked": true
+    },
+    "test/agent.test.ts": {
+      "sha256": "b4fbdd8da34754a6a05c49425a456d509facc9afebd79e279b72bc57e79a1795",
+      "bytes": 77132,
+      "tracked": true
+    },
+    "test/agents.test.ts": {
+      "sha256": "e359c936fba3df63349e207865743639b0c91426838bb61c82366cbae0c45a6b",
+      "bytes": 6696,
+      "tracked": true
+    },
+    "test/approval-web.test.tsx": {
+      "sha256": "1f441544bc7a5c4bf8902310e7827134fe4f93180592849d5b0ac8b0728be61b",
+      "bytes": 4074,
+      "tracked": true
+    },
+    "test/ask.test.ts": {
+      "sha256": "c054957bf13f26209db27fa2023748f3a6bfde9b9d1095cbc7f55812760e6c25",
+      "bytes": 4328,
+      "tracked": true
+    },
+    "test/attention.test.ts": {
+      "sha256": "562d3f5287b203b15808fdc7e1b80fcec468a0c9b68d2ae0e4f719fd98c0d7ea",
+      "bytes": 3793,
+      "tracked": true
+    },
+    "test/auto-mode.test.ts": {
+      "sha256": "eba13fbc9333b5f7112c43e6695417e650e26d68f7fbd6ab8126b87b8f77678d",
+      "bytes": 32204,
+      "tracked": true
+    },
+    "test/bundle.test.ts": {
+      "sha256": "e622948f752095a715d91488df0184cbf47082281fc21ecc443c76baae17a134",
+      "bytes": 4072,
+      "tracked": true
+    },
+    "test/chart-refs.test.ts": {
+      "sha256": "9a5c300d285de59136d7a9b1a170aafebbb35e1b1f1a27b587223c49e9b2c7c1",
+      "bytes": 15537,
+      "tracked": true
+    },
+    "test/chart-ui.test.tsx": {
+      "sha256": "ad50b4108fd4d7047339df6a12ce0895b98db07ff877451812120778acb3157e",
+      "bytes": 13293,
+      "tracked": true
+    },
+    "test/chart.test.ts": {
+      "sha256": "c7c42b73d325fe9a739e666a49dc9cb3eab9654a8ed249fa524d3c512ac966de",
+      "bytes": 12540,
+      "tracked": true
+    },
+    "test/cli-args.test.ts": {
+      "sha256": "fef1784284b373684b164b3bd6ee0f20fc03a9a33e3b8468b4c00f2a99808ad5",
+      "bytes": 6325,
+      "tracked": true
+    },
+    "test/clipboard.test.ts": {
+      "sha256": "028a9d0d0985cea838eccb6989067cbcd09da0ea9c3b4ceac783a78f0a02ffbc",
+      "bytes": 3482,
+      "tracked": true
+    },
+    "test/clock.test.ts": {
+      "sha256": "53724d5807d5794852d1ed16931b0302b978d0e613835e03ebbcd592942b62fd",
+      "bytes": 1365,
+      "tracked": true
+    },
+    "test/compact.test.ts": {
+      "sha256": "3f5cd875f8cb0b3764e218a9e83edf3ce954db9cab092e21144632abab159192",
+      "bytes": 20573,
+      "tracked": true
+    },
+    "test/config-save.test.ts": {
+      "sha256": "d9f29b9c856b384304991454263ec75b82fafd2aac9c617b2fcaef71d0faca6b",
+      "bytes": 1966,
+      "tracked": true
+    },
+    "test/denial.test.ts": {
+      "sha256": "f9bf6de7a6d9ca7f7a9bd26514927626bae5a660e8c54d8435b20564f986a94c",
+      "bytes": 12034,
+      "tracked": true
+    },
+    "test/describe-error.test.ts": {
+      "sha256": "a1f8a46f359149561f1a9453751fdcd9e9fb53a3ba0bd8b4bbb7f3fc8080fb85",
+      "bytes": 2770,
+      "tracked": true
+    },
+    "test/desk-engine.test.ts": {
+      "sha256": "f8778ebce50a46cea46a873bbb4ab4563c7dcee0b6aaf3633bf7476e089b0e09",
+      "bytes": 31731,
+      "tracked": true
+    },
+    "test/desk-eval.test.ts": {
+      "sha256": "62720d682f969bd02901a84610cd022195e4b056f7545ace987dbf259d2e18cb",
+      "bytes": 7925,
+      "tracked": true
+    },
+    "test/desk-playbooks.test.ts": {
+      "sha256": "09d672afa2fbb59fad47a9129b7ea4f9718bc729d7a86e8ebbe878444349009d",
+      "bytes": 23033,
+      "tracked": true
+    },
+    "test/desk-tool.test.ts": {
+      "sha256": "6fe4d4736f5c83f464f46983c4b9f3ec7ec340c482b74267707ac9391f370004",
+      "bytes": 8531,
+      "tracked": true
+    },
+    "test/desk-wire.test.ts": {
+      "sha256": "d847ccff6ba98024f688628b8b643781cb890398502bcdfaefb15ee98a65b9ea",
+      "bytes": 3011,
+      "tracked": true
+    },
+    "test/effort.test.ts": {
+      "sha256": "9715062eb3ae7b2fd6d6aad90d8aa34e3c14a3c0dfcc5936e08949d68db884e7",
+      "bytes": 12389,
+      "tracked": true
+    },
+    "test/empty-answer.test.ts": {
+      "sha256": "83ab0399c90b7c052270a54d39247d88827c8949c05e0334b91b2ac9e85a7282",
+      "bytes": 2079,
+      "tracked": true
+    },
+    "test/eval-approvals.test.ts": {
+      "sha256": "f7de47b63478f885d183cb32359786a2a5cb143f45903f3e0def3d9d8c0b53a8",
+      "bytes": 2802,
+      "tracked": true
+    },
+    "test/eval-cassette.test.ts": {
+      "sha256": "3fb0a52c2cbc063f1d1cb7ad2ab1cd697508c1ec3d493837f2b83738644e90e8",
+      "bytes": 5272,
+      "tracked": true
+    },
+    "test/eval-runner.test.ts": {
+      "sha256": "f49a0e269234fa1101c7adf9b28a319b10d208cdc109be40d5459de749a108eb",
+      "bytes": 13409,
+      "tracked": true
+    },
+    "test/eval-score.test.ts": {
+      "sha256": "f7acd2ad9ec4bed6bb28a2a0646c2a0b1fbc5806ff8acd1ced7df64cc84d6b19",
+      "bytes": 8025,
+      "tracked": true
+    },
+    "test/file-index.test.ts": {
+      "sha256": "3ecd44055ff8c8573618ef44f0b028f52a82d6c7f5d17fb5f3bc3bc5eb298dba",
+      "bytes": 4116,
+      "tracked": true
+    },
+    "test/file-lock.test.ts": {
+      "sha256": "63fe23a88bae95f91f58f140a767baa9f4bac44f7bea2c656643fd4847399310",
+      "bytes": 4385,
+      "tracked": true
+    },
+    "test/fixtures/auto-mode/actions.jsonl": {
+      "sha256": "249d5e71ed19df908687dbd901c32cd4e3abf99246dae28354d01a1211f7eb47",
+      "bytes": 24936,
+      "tracked": true
+    },
+    "test/fixtures/desk-eval/cases.json": {
+      "sha256": "1fffb7ecce5a8d18b89298b1264b371cbfcf6b4ccbf4b4c68b04e07feb49c208",
+      "bytes": 8683,
+      "tracked": true
+    },
+    "test/fixtures/eval-routing.json": {
+      "sha256": "237e199d9d2947b3e92c16b272a25f0b610d602b4a75e2444fa8a46f526f3e06",
+      "bytes": 32984,
+      "tracked": true
+    },
+    "test/fixtures/eval/trace-v1.jsonl": {
+      "sha256": "e4acc74f0337b6d50fd25f823a65d3a6cc0766ff22c8f56e9343fe09eb086c52",
+      "bytes": 2893,
+      "tracked": true
+    },
+    "test/fixtures/mcp-catalog/opentrading.json": {
+      "sha256": "3d1856b08f7934f20f8154c247963c8f2fd7084dc234c6792555894be9b8d5ef",
+      "bytes": 137712,
+      "tracked": true
+    },
+    "test/fixtures/mcp-paged-server.ts": {
+      "sha256": "a46a59bfb31f594bd237ce6e48e57f2c19cb00be2e02267744186f739ec3c72b",
+      "bytes": 2059,
+      "tracked": true
+    },
+    "test/fixtures/mcp-results/vn_equity_ohlcv.json": {
+      "sha256": "8842489717a5a3104e921447f0e4557f26b83ebe9d0bdb8e7b93cdd476ccd79a",
+      "bytes": 3495,
+      "tracked": true
+    },
+    "test/fixtures/mcp-results/vn_equity_quote_batch.json": {
+      "sha256": "0e3afe54aafe1ab7d956db7a2f9f4dd74670f202dff69c8e4793cf7592862c87",
+      "bytes": 2325,
+      "tracked": true
+    },
+    "test/fixtures/mcp-results/vn_quote_history.json": {
+      "sha256": "9b871f5103331b9e552ca2a886b57bb0cd5da8429c98e2d0eba1d7e70d24871f",
+      "bytes": 2688,
+      "tracked": true
+    },
+    "test/fixtures/mcp-schemas/context7.json": {
+      "sha256": "730773aa1152a1f1238c512d612c07bc64587e9e5297e5e86dd18fe556718f22",
+      "bytes": 5426,
+      "tracked": true
+    },
+    "test/fixtures/mcp-schemas/filesystem.json": {
+      "sha256": "7898e99e4875935bbbceb355c5f917d4ce3b9689a176a1e7ac1fa46a613148ba",
+      "bytes": 16147,
+      "tracked": true
+    },
+    "test/fixtures/mcp-schemas/opentrading.json": {
+      "sha256": "acbf01b19daffba5608f36d3c368e7eee7db3887f706ba4d9e52e75189a3beac",
+      "bytes": 112407,
+      "tracked": true
+    },
+    "test/fixtures/mcp-schemas/playwright.json": {
+      "sha256": "aee76ca84b8189b09840eb33fd6673dbb13479e57d4064df6f7db8f382cd201c",
+      "bytes": 26358,
+      "tracked": true
+    },
+    "test/fixtures/mcp-tool-names.json": {
+      "sha256": "c5402e10e117c2eb93717d5cd806ad842183f3122c63afd4d4814a3acf435a28",
+      "bytes": 3339,
+      "tracked": true
+    },
+    "test/fixtures/remote-mcp.ts": {
+      "sha256": "0a10b6537587d3e3faccea36a672c2b1b86bee69d41db4adb28bbda01e4c4c94",
+      "bytes": 12838,
+      "tracked": true
+    },
+    "test/fixtures/scripts/watchlist-writer.ts": {
+      "sha256": "49fe78d8425697e3eec964d2e2b4f35e0d0ebda89e0514e04ab2a05737dce19d",
+      "bytes": 348,
+      "tracked": true
+    },
+    "test/folder-trust.test.ts": {
+      "sha256": "6f208dceb1e1486644182cfe41cb316186c2544d2c72393515d36617efc8ecd9",
+      "bytes": 3005,
+      "tracked": true
+    },
+    "test/fs-tools.test.ts": {
+      "sha256": "f2830b406de099a5dffdde13679091825017323242fe615f113fe713fe80f5ac",
+      "bytes": 22333,
+      "tracked": true
+    },
+    "test/fs-write.test.ts": {
+      "sha256": "643313d108ba87305d932e4dcf9fb63abfca226c7130e69e0ebe54a6ee6477f6",
+      "bytes": 20270,
+      "tracked": true
+    },
+    "test/harness-marks.test.ts": {
+      "sha256": "f1a8f635d1a51e35b8d10330fab3edcc73fb76ea3164bbd50ab9159ee4d5e4a2",
+      "bytes": 5851,
+      "tracked": true
+    },
+    "test/helpers/auto-eval.ts": {
+      "sha256": "9c221e9cb4fe232cfca88e9766dc272cab629a10eb8a23ea4bc67dcac483babd",
+      "bytes": 3780,
+      "tracked": true
+    },
+    "test/helpers/desk-eval.ts": {
+      "sha256": "f65586a38528ec0d96dbe455475da0aff104751113e3afb8656a1fad59ae4ad0",
+      "bytes": 11360,
+      "tracked": true
+    },
+    "test/helpers/routing-eval.ts": {
+      "sha256": "e751cb21e6d0644fb58fc5fda0f4e8e1a991fdca5adef3c25be0c4b6cccf9e5e",
+      "bytes": 6440,
+      "tracked": true
+    },
+    "test/helpers/skill-lint.ts": {
+      "sha256": "f6e8cf038e3f9c01d19245d559fc9910b26903c91b67bfb36f17532792b00264",
+      "bytes": 10027,
+      "tracked": true
+    },
+    "test/history-shape.test.ts": {
+      "sha256": "a4c6ff56d8f535a2a86853ba64c4e87494b62634827fab1980df1e19347cd35d",
+      "bytes": 4622,
+      "tracked": true
+    },
+    "test/idle-compact.test.ts": {
+      "sha256": "d0e6999aecc5e1106f286f1ad279c5da815b8e65a74ea67fff98098ab9cacb63",
+      "bytes": 2485,
+      "tracked": true
+    },
+    "test/image-routing.test.ts": {
+      "sha256": "3f64c73f6bf974083f4b24dca4ae5cd175f9b5d9632b069b0bfa41d0009fec30",
+      "bytes": 3813,
+      "tracked": true
+    },
+    "test/install-script.test.ts": {
+      "sha256": "2d2f9ef0f103af91f4dcf5fdb7d304eaf7795c7c031a0053bc8f859147c61a5e",
+      "bytes": 4777,
+      "tracked": true
+    },
+    "test/install-scripts.test.ts": {
+      "sha256": "d0228f1310fc1dc33bb234de1c199ace542bc3225379e485f20496fdae75a0f4",
+      "bytes": 1633,
+      "tracked": true
+    },
+    "test/loop-failures.test.ts": {
+      "sha256": "d5bbac8f0b5dba74f472b85ac43cef876876e78862d92578024fa2e7a88ad627",
+      "bytes": 8141,
+      "tracked": true
+    },
+    "test/loop-guard.test.ts": {
+      "sha256": "b9dd71d042b9b3c9211dd01d4cf115d43c8c40dd40b6285bf3c2d9ec100c9fc2",
+      "bytes": 2968,
+      "tracked": true
+    },
+    "test/markdown.test.tsx": {
+      "sha256": "0a1cc51de0ea6170ba8ba0f3f1f68821e655d916681fbc2281b4e8854c19909b",
+      "bytes": 4234,
+      "tracked": true
+    },
+    "test/mcp-breaker.test.ts": {
+      "sha256": "2d11e7551d4f5c4f0e3f3e83234488ca85a348453bdb2fe3d6653f8f0abd65a6",
+      "bytes": 2809,
+      "tracked": true
+    },
+    "test/mcp-prompts.test.ts": {
+      "sha256": "81f53c11e43ba7f1cf484fe89cc0734e81febb8805093d557963aac681a34864",
+      "bytes": 1660,
+      "tracked": true
+    },
+    "test/mcp-real-results.test.ts": {
+      "sha256": "7bc3b10653cb8f07a1a3a97da433897634373a95739ea5ba23ff431a65304999",
+      "bytes": 2141,
+      "tracked": true
+    },
+    "test/mcp-remote.test.ts": {
+      "sha256": "20ebbc7880aa94e18b8516fc1031c40f92a5bfc1d812d1c0fd8b91aa30147b15",
+      "bytes": 42217,
+      "tracked": true
+    },
+    "test/mcp-schema.test.ts": {
+      "sha256": "19bb061cd2c0cddd941135ce8d2fa85c95959471d1f8b524a28350ed5daac6ec",
+      "bytes": 8065,
+      "tracked": true
+    },
+    "test/mcp.test.ts": {
+      "sha256": "96570790d636c3754754507c3f905c0b50e997ceade872134d118e9a04c72d90",
+      "bytes": 11406,
+      "tracked": true
+    },
+    "test/memory.test.ts": {
+      "sha256": "54b7f79ba972d18fb9bf998a498d20c89084a87218df5231af2db68458a74acd",
+      "bytes": 6586,
+      "tracked": true
+    },
+    "test/mentions.test.ts": {
+      "sha256": "c0d80a742e6e73563a03bdcae072043b9902bf52e523c15c845a2353dff330ec",
+      "bytes": 10911,
+      "tracked": true
+    },
+    "test/model-filter.test.ts": {
+      "sha256": "22320454518640babaafef99347550ee55c04e0d3d10af408eafe101e8f97187",
+      "bytes": 3602,
+      "tracked": true
+    },
+    "test/model-pick.test.ts": {
+      "sha256": "ffc5d5bfd365913f7768662222e6c34b27ade0d4999ef9c642f23dc2a7d12901",
+      "bytes": 3295,
+      "tracked": true
+    },
+    "test/model-picker.test.tsx": {
+      "sha256": "b148411bd2cde115303a12f4272810b18a11f146cf3465f8569ea4f89bfc3671",
+      "bytes": 16298,
+      "tracked": true
+    },
+    "test/net-dates.test.ts": {
+      "sha256": "4edcfb27fb399643d59cb751957382295ba4522b3d412b9cb9ce9c820ef8d637",
+      "bytes": 2538,
+      "tracked": true
+    },
+    "test/notify.test.ts": {
+      "sha256": "b7d4167e10769f36bf21d929442cd8cd5256c783c072e798d6edcd9d46c42160",
+      "bytes": 5327,
+      "tracked": true
+    },
+    "test/npm.test.ts": {
+      "sha256": "b28498b73a799ca93fe963bbfbe4bd0563365270f32c1037bf863dad3e0d5db6",
+      "bytes": 1199,
+      "tracked": true
+    },
+    "test/office.test.ts": {
+      "sha256": "7106777912b2b4e7e4d603c9efc54c8fe5cdffe47f0dfc3075ed1f9074a06d8c",
+      "bytes": 12869,
+      "tracked": true
+    },
+    "test/openrouter-attribution.test.ts": {
+      "sha256": "1bbb8c01fdaad3dea1f1e6cbba214031d001ad54926d10bb3efbf98bafa3b358",
+      "bytes": 2015,
+      "tracked": true
+    },
+    "test/paths.test.ts": {
+      "sha256": "51190d891edc10f50b659d254f4019d6203c5b8e74fd9ee1a168318e6396f554",
+      "bytes": 2083,
+      "tracked": true
+    },
+    "test/permission.test.ts": {
+      "sha256": "df6b0b2f1a81a009fae21f71aaa528e6aac3cd95b674c69e638070cf9aa5ea1a",
+      "bytes": 9322,
+      "tracked": true
+    },
+    "test/prompt-history.test.ts": {
+      "sha256": "6eca933ac0167483402c86df187348f0621a467aa2d445df811b86627eda9ce0",
+      "bytes": 2999,
+      "tracked": true
+    },
+    "test/prompt-parts.test.ts": {
+      "sha256": "fa4e65608b1685b86a0d7ec646ba61707662e19e45a706f8c59066031b4c969b",
+      "bytes": 2233,
+      "tracked": true
+    },
+    "test/prompt.test.ts": {
+      "sha256": "f7dd26bfa80c5bb0706803f22b94df550ac52440bedfd93578b524098d799153",
+      "bytes": 10456,
+      "tracked": true
+    },
+    "test/provider-requests.test.ts": {
+      "sha256": "f96284bed22f7593a81027582978e984be453ea8a54208aa6f961138132674c9",
+      "bytes": 1865,
+      "tracked": true
+    },
+    "test/public-scrub.test.ts": {
+      "sha256": "6f976a4cd5bc23fffabd9c62f335265e170922b70abcbddc4345c2eeb1019460",
+      "bytes": 2491,
+      "tracked": true
+    },
+    "test/release.test.ts": {
+      "sha256": "dd4c5bd1e6f7736a9b87540e18b7bcc39f3f5341200430c4136e5ccb44ff9ff7",
+      "bytes": 1552,
+      "tracked": true
+    },
+    "test/retry-google.test.ts": {
+      "sha256": "57c3be7edd6129c089a1ef0c7b05517e0117e767aebb4667c45da18d45a60719",
+      "bytes": 4158,
+      "tracked": true
+    },
+    "test/retry.test.ts": {
+      "sha256": "0b324f4a9147bdd92185dc5ab1bea18ab2612f8d529352c3280058994297f4d5",
+      "bytes": 9380,
+      "tracked": true
+    },
+    "test/routing-eval.test.ts": {
+      "sha256": "cce3ad6536f2486e9a75ac3dd25dad00358b8fa25d514022b8ca60d955834e81",
+      "bytes": 2939,
+      "tracked": true
+    },
+    "test/safe-write.test.ts": {
+      "sha256": "04150558e4357fa19f146cb88588c187fc07c180a160b1c67674b82289de786c",
+      "bytes": 5054,
+      "tracked": true
+    },
+    "test/scratch-size.test.ts": {
+      "sha256": "562b54e68bafef45391de38e8966b723d8adfeecb289af01281d4116780609a1",
+      "bytes": 6237,
+      "tracked": true
+    },
+    "test/scratch.test.ts": {
+      "sha256": "49137a7ca3b2fd9532b7cc66cd896b78a1cc3fbb1dde3af93b8d840730993929",
+      "bytes": 10142,
+      "tracked": true
+    },
+    "test/scroll.test.tsx": {
+      "sha256": "7817cb2ee7084ca5324a81e3bc6c256b9dd222459b833cf7cd407cdc5af7c3c4",
+      "bytes": 5983,
+      "tracked": true
+    },
+    "test/session-export.test.ts": {
+      "sha256": "a5d55b6554f203e90ac20485dff625a3cd46e915ece07c8aad1283323aafe199",
+      "bytes": 6239,
+      "tracked": true
+    },
+    "test/session-tools.test.ts": {
+      "sha256": "b0f76586bae2a4f65bf6aea0472384ff36bd8c7097e968530fc2256e9def7182",
+      "bytes": 1855,
+      "tracked": true
+    },
+    "test/session.test.ts": {
+      "sha256": "52a698a309420262ec7f00716aff2c354072723afcdb1c39730761ccd99cf1f3",
+      "bytes": 16161,
+      "tracked": true
+    },
+    "test/shell.test.ts": {
+      "sha256": "928a20fe2f15f205f1f8cada283d9b370c3d1fad3ac58498dea8fd48a2e5e843",
+      "bytes": 12609,
+      "tracked": true
+    },
+    "test/skill-lint.test.ts": {
+      "sha256": "96b0c803389d7b915cf8f1d34cb39961392ccc7e9d94109a445bcd12c3c087f8",
+      "bytes": 6823,
+      "tracked": true
+    },
+    "test/skills.test.ts": {
+      "sha256": "834f267ef18b0ffbeb9b38785d85eae75122d0b53736bad9cad596c66f77ae61",
+      "bytes": 20371,
+      "tracked": true
+    },
+    "test/stop-gate.test.ts": {
+      "sha256": "594b402b61acba37deba46a5d2118418a454ede545a6a05883e08796086a4373",
+      "bytes": 13252,
+      "tracked": true
+    },
+    "test/stream-view.test.ts": {
+      "sha256": "7adacb796b20f1e30f61bb341bb239cbd13adb6193a82bae5a020b21b6407591",
+      "bytes": 3817,
+      "tracked": true
+    },
+    "test/structured-output.test.ts": {
+      "sha256": "24ca7ccb9886a49460cc06799018b0aef5f5a0dd9398eb47a62527abb411c3f6",
+      "bytes": 15857,
+      "tracked": true
+    },
+    "test/subagent-brief.test.ts": {
+      "sha256": "abbb291c56564b8fc1916800d95d35acb6781dd98e0dc8ba24e1fd4fc4cfb144",
+      "bytes": 2785,
+      "tracked": true
+    },
+    "test/subagent-limiter.test.ts": {
+      "sha256": "dd512b1500752fddf0b22c988ee072e2e7e026e9d11ae5d17d7c6f04b15e0f6a",
+      "bytes": 6081,
+      "tracked": true
+    },
+    "test/subagent.test.ts": {
+      "sha256": "fb3cc49a1bf5b2aca98eec7efa6446558a0fa35b741dac74f6a2681c8a22be57",
+      "bytes": 37522,
+      "tracked": true
+    },
+    "test/title.test.ts": {
+      "sha256": "d61e144148b32ff0ccf52360112400adcc0a238a91acdc2c4f1cf8063352296f",
+      "bytes": 3687,
+      "tracked": true
+    },
+    "test/toast.test.tsx": {
+      "sha256": "f4a1baf420dbf6d036a3ff797dae8e5103b0ab025acc09e276e8a7cc856b325d",
+      "bytes": 2186,
+      "tracked": true
+    },
+    "test/todos.test.ts": {
+      "sha256": "cffd5ff62169c76d6e9ab02571d7e1151010afca2bb4b5efb00a4cba14f2e470",
+      "bytes": 8907,
+      "tracked": true
+    },
+    "test/tool-desc-lint.test.ts": {
+      "sha256": "2b074a655937fe86ce11f8e8e108d129228cd15d49c3c3b5d9d1ffd570843727",
+      "bytes": 10077,
+      "tracked": true
+    },
+    "test/tool-errors.test.ts": {
+      "sha256": "66828ffe34186109e0603a24c27a5e89fb07e302bd49731428ecae5e2c3f943e",
+      "bytes": 3670,
+      "tracked": true
+    },
+    "test/tool-nudge.test.ts": {
+      "sha256": "b7ff2a2d994c9f386235a5aeb5bfd5e8dae75b7d0a43063da6bec12fa01a8bb1",
+      "bytes": 5718,
+      "tracked": true
+    },
+    "test/tool-outcome.test.ts": {
+      "sha256": "2eb6e222e309bb08f68d46d7cddfa8e159e71f6ddb2ead97b206a7e1d397bb0e",
+      "bytes": 6794,
+      "tracked": true
+    },
+    "test/tool-output.test.ts": {
+      "sha256": "c5d3c3991912b30d2ed41ac316e38d29513b12139dc5a2dd2f25ed7a87493957",
+      "bytes": 2895,
+      "tracked": true
+    },
+    "test/tool-search.test.ts": {
+      "sha256": "ccdc1524b7196d015e5a18d273cf4704cd2ab18bc17e8a456f2f967dfe57e17e",
+      "bytes": 8286,
+      "tracked": true
+    },
+    "test/tools.test.ts": {
+      "sha256": "8bb33c53081e2acad311ed2c6cf437eaf3c322f357df0b5e2ab188d751350586",
+      "bytes": 7987,
+      "tracked": true
+    },
+    "test/tui.test.tsx": {
+      "sha256": "980a3227f874f23a7301871ed8355eee7eb915117ce8ef93d43a288c43079416",
+      "bytes": 190165,
+      "tracked": true
+    },
+    "test/ui-text.test.ts": {
+      "sha256": "30b44be60d435355cb5ec00d19edafb76e8cec20aac67a8557e8ac9036cc4240",
+      "bytes": 2152,
+      "tracked": true
+    },
+    "test/update.test.ts": {
+      "sha256": "0b8627573483a47962e3b720d9cc227e030675c0e19f98cd166fad384d26dc5e",
+      "bytes": 14194,
+      "tracked": true
+    },
+    "test/watchlist-local.test.ts": {
+      "sha256": "df6e56a5cbb3dff1fc42cd90340bd2375fecbeeab92238ee25cb1a9f2f78f938",
+      "bytes": 5958,
+      "tracked": true
+    },
+    "test/web-native.test.ts": {
+      "sha256": "5bb3c956fc20a4a2e29d6261c0f6fafdbb82571d73c41b1d611e8e556e7794f5",
+      "bytes": 2656,
+      "tracked": true
+    },
+    "test/web-quota.test.ts": {
+      "sha256": "c96c7365d669e139d8112f471f54bb04d3841b37e7c3c95fb87f5b67cfbe6eba",
+      "bytes": 6142,
+      "tracked": true
+    },
+    "test/web-tools.test.ts": {
+      "sha256": "ebbf775cfeda27048d54e94d1e304813adc043d29d34da4223c4e51977fd0831",
+      "bytes": 19159,
+      "tracked": true
+    },
+    "tsconfig.json": {
+      "sha256": "bda46b750ed0394c16a2a9c3b8105b4342cbd0fd716ae0da9fefc93c67ecca96",
+      "bytes": 476,
+      "tracked": true
+    }
+  }
+}

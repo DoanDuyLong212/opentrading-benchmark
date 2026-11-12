@@ -1,0 +1,26 @@
+{
+ "snapshot_date": "2026-11-01",
+ "note": "Envelope MCP ghi lúc tạo task. Key = mã payload nội bộ; envelope giữ nguyên data+provenance+availability.",
+ "tools": {
+  "res:QQV9": {
+   "tool": "symbol_resolve",
+   "params": {
+    "query": "QQV9"
+   },
+   "envelope": {
+    "data": {
+     "query": "QQV9",
+     "resolved": null,
+     "candidates": []
+    },
+    "provenance": {
+     "source": "vnstock+local",
+     "as_of": "2026-11-01T21:33:54.663393+07:00",
+     "timezone": "Asia/Ho_Chi_Minh"
+    },
+    "availability": "empty",
+    "warnings": []
+   }
+  }
+ }
+}

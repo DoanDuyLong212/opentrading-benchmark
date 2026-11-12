@@ -1,0 +1,59 @@
+{
+ "snapshot_date": "2026-11-01",
+ "note": "Envelope MCP tái sử dụng nguyên vẹn từ task đã ghi snapshot 2026-11-01 (memory stratum); không capture mới. Nguồn: fin-l3-agg-187",
+ "tools": {
+  "batch:energy1": {
+   "tool": "vn_equity_quote_batch",
+   "params": {
+    "symbols": [
+     "PVS",
+     "PVD",
+     "BSR",
+     "PLX",
+     "POW"
+    ]
+   },
+   "envelope": {
+    "data": {
+     "quotes": [
+      {
+       "symbol": "PVS",
+       "close": 30500,
+       "pct": 0,
+       "vol": 1699200
+      },
+      {
+       "symbol": "PVD",
+       "close": 17950,
+       "pct": -2.17983651226158,
+       "vol": 2262400
+      },
+      {
+       "symbol": "BSR",
+       "close": 27600,
+       "pct": -0.18083182640144665,
+       "vol": 5557900
+      },
+      {
+       "symbol": "PLX",
+       "close": 34000,
+       "pct": 0,
+       "vol": 1746000
+      },
+      {
+       "symbol": "POW",
+       "close": 12200,
+       "pct": -1.6129032258064515,
+       "vol": 3781000
+      }
+     ]
+    },
+    "provenance": {
+     "source": "vnstock",
+     "as_of": "2026-11-01T23:07:49.257317+07:00"
+    },
+    "availability": "available"
+   }
+  }
+ }
+}

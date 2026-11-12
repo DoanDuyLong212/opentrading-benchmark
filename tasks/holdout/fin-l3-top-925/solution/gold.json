@@ -1,34 +1,57 @@
 {
- "task_id": "fin-l3-top-925",
- "scoring": "value",
- "solution": {
-  "value": 1.18
- },
- "as_of": "2026-11-01T21:12:04.261634+07:00",
- "split": "holdout",
- "expects": [
-  {
-   "type": "value",
-   "path": "value",
-   "gold": 1.18,
-   "tol": {
-    "abs": 0.05
-   }
+  "task_id": "fin-l3-top-925",
+  "scoring": "value",
+  "solution": {
+    "value": 1.18
   },
-  {
-   "type": "unit",
-   "path": "unit",
-   "accept": [
-    "%",
-    "phần trăm"
-   ]
-  },
-  {
-   "type": "str",
-   "path": "source",
-   "accept": [
-    "market_movers"
-   ]
-  }
- ]
+  "as_of": "2026-11-01T21:12:04.261634+07:00",
+  "split": "holdout",
+  "expects": [
+    {
+      "type": "value",
+      "path": "value",
+      "gold": 1.18,
+      "tol": {
+        "abs": 0.05
+      }
+    },
+    {
+      "type": "unit",
+      "path": "unit",
+      "accept": [
+        "%",
+        "phần trăm"
+      ]
+    },
+    {
+      "type": "str",
+      "path": "source",
+      "accept": [
+        "market_movers"
+      ]
+    }
+  ],
+  "contract_version": 2,
+  "provenance_contract": [
+    {
+      "tool": "market_movers",
+      "source": "vnstock",
+      "as_of": "2026-11-01T21:12:04.261634+07:00",
+      "matched_entry_id": "movers:vn30",
+      "response_sha256": "a8203b807b243068b924bf83bd810671386c59c2fdac6deabcc1ae9514a634ca"
+    }
+  ],
+  "payload_sha256": "b2446a67d6b1807ecbe171b0dea66b6147a5730988d0ec7b1ba7ac9c629e7a00",
+  "provenance_catalog": [
+    {
+      "tool": "market_movers",
+      "source": "vnstock",
+      "as_of": "2026-11-01T21:12:04.261634+07:00",
+      "matched_entry_id": "movers:vn30",
+      "response_sha256": "a8203b807b243068b924bf83bd810671386c59c2fdac6deabcc1ae9514a634ca"
+    }
+  ],
+  "required_payload_keys": [
+    "movers:vn30"
+  ]
 }

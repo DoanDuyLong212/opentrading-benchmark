@@ -1,0 +1,159 @@
+[
+  {
+    "trial_id": "daede90e19790146ea6e",
+    "model": "nvidia/deepseek-ai/deepseek-v4.1-flash",
+    "arm": "ot_memory_off",
+    "status": "dnf",
+    "reached_B": false,
+    "B_visible_shared_reads": [],
+    "B_updated_rule_shared_visible": false,
+    "native_persistence": {
+      "applicable": false,
+      "verified": true,
+      "reason": "native user notebook must be absent in this condition"
+    },
+    "auto_financial": false
+  },
+  {
+    "trial_id": "7de851b72699fe916510",
+    "model": "nvidia/deepseek-ai/deepseek-v4.1-flash",
+    "arm": "opencode",
+    "status": "completed",
+    "reached_B": true,
+    "B_visible_shared_reads": [
+      {
+        "query": null,
+        "fact_ids": [
+          "roe-active"
+        ]
+      }
+    ],
+    "B_updated_rule_shared_visible": true,
+    "native_persistence": {
+      "applicable": false,
+      "verified": true,
+      "reason": "native user notebook must be absent in this condition"
+    },
+    "auto_financial": true
+  },
+  {
+    "trial_id": "f5b9f0b036a41915385c",
+    "model": "nvidia/nvidia/nemotron-3.5-super-vl-120b-a12b",
+    "arm": "dsh",
+    "status": "completed",
+    "reached_B": true,
+    "B_visible_shared_reads": [
+      {
+        "query": null,
+        "fact_ids": [
+          "roe-active"
+        ]
+      }
+    ],
+    "B_updated_rule_shared_visible": true,
+    "native_persistence": {
+      "applicable": false,
+      "verified": true,
+      "reason": "native user notebook must be absent in this condition"
+    },
+    "auto_financial": true
+  },
+  {
+    "trial_id": "857e11378583ca4f69f2",
+    "model": "nvidia/nvidia/nemotron-3.5-super-vl-120b-a12b",
+    "arm": "opencode",
+    "status": "dnf",
+    "reached_B": false,
+    "B_visible_shared_reads": [],
+    "B_updated_rule_shared_visible": false,
+    "native_persistence": {
+      "applicable": false,
+      "verified": true,
+      "reason": "native user notebook must be absent in this condition"
+    },
+    "auto_financial": false
+  },
+  {
+    "trial_id": "82e207f69d36015f11da",
+    "model": "nvidia/nvidia/nemotron-3.5-super-vl-120b-a12b",
+    "arm": "ot_memory_on",
+    "status": "completed",
+    "reached_B": true,
+    "B_visible_shared_reads": [],
+    "B_updated_rule_shared_visible": false,
+    "native_persistence": {
+      "applicable": true,
+      "verified": true,
+      "failures": [],
+      "actual_entries": 1,
+      "expected_active": 1
+    },
+    "auto_financial": true
+  },
+  {
+    "trial_id": "e5a62f15288014d0bc39",
+    "model": "nvidia/deepseek-ai/deepseek-v4.1-flash",
+    "arm": "dsh",
+    "status": "completed",
+    "reached_B": true,
+    "B_visible_shared_reads": [
+      {
+        "query": "ROE",
+        "fact_ids": [
+          "roe-active"
+        ]
+      }
+    ],
+    "B_updated_rule_shared_visible": true,
+    "native_persistence": {
+      "applicable": false,
+      "verified": true,
+      "reason": "native user notebook must be absent in this condition"
+    },
+    "auto_financial": true
+  },
+  {
+    "trial_id": "a10599b7d657e117c047",
+    "model": "nvidia/deepseek-ai/deepseek-v4.1-flash",
+    "arm": "ot_memory_on",
+    "status": "completed",
+    "reached_B": true,
+    "B_visible_shared_reads": [
+      {
+        "query": null,
+        "fact_ids": [
+          "roe-active"
+        ]
+      }
+    ],
+    "B_updated_rule_shared_visible": true,
+    "native_persistence": {
+      "applicable": true,
+      "verified": true,
+      "failures": [],
+      "actual_entries": 1,
+      "expected_active": 1
+    },
+    "auto_financial": true
+  },
+  {
+    "trial_id": "49e459b9016ba557d1d2",
+    "model": "nvidia/nvidia/nemotron-3.5-super-vl-120b-a12b",
+    "arm": "ot_memory_off",
+    "status": "completed",
+    "reached_B": true,
+    "B_visible_shared_reads": [
+      {
+        "query": "ROE condition ACB STB VPB HDB TPB",
+        "fact_ids": []
+      }
+    ],
+    "B_updated_rule_shared_visible": false,
+    "native_persistence": {
+      "applicable": false,
+      "verified": true,
+      "reason": "native user notebook must be absent in this condition"
+    },
+    "auto_financial": false
+  }
+]

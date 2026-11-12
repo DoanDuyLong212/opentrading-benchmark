@@ -1,0 +1,33 @@
+{
+  "status": "fixture-code-review-pass-full-suite-pending",
+  "reviewer": "v45_independent_review",
+  "independent": true,
+  "method": "Inherited test diffs against frozen v44 originals, reconstruction provenance disclosed for owner before copies, and direct current v45 calculation fixture inspection. No model calls.",
+  "sha256": {
+    "experiments/finance-v45-study/tools/tests/test_v43_study.py": "bf9f28afe5b987ecd7b0cc3fe009d44a46e5e0eef8ca91e55f4b09c927a3a501",
+    "experiments/finance-v45-study/tools/tests/test_v44_gate.py": "1c12b10d081da359b677bef2676e05963ca6b70ca00ea465b561d99418275ec4",
+    "experiments/finance-v45-study/tools/tests/test_public_contract.py": "79ae063db4cfc53b119e4cbb395f2fe6b8a7dda7479326569d00851fd4df1efb",
+    "experiments/finance-v45-study/tools/tests/test_reproducibility.py": "03c82067ff5b7075bd9cadf48025a886468b73968598af80829dfff4ef79e949",
+    "experiments/finance-v45-study/tools/tests/test_snapshot_server.py": "54a71af87230270695eacbf618fcc645c2821d3b1013a8e21a10b1bdc5b58c58",
+    "experiments/finance-v45-study/tools/tests/test_independent_snapshot.py": "3355a124ad85ab835746db35a23d61757fdfb73e1df8041cc416ce4289b696c9",
+    "experiments/finance-v45-study/tools/tests/test_v45_calculate.py": "90ff4462ace7207f4ec5778df2f2427d1c0ed154d9fbd59198c6c36f95c46817"
+  },
+  "checks": {
+    "no_added_skip_xfail": true,
+    "archived_cli_original_assertions_run_fresh_interpreter": true,
+    "first_trial_interception_before_provider": true,
+    "original_archive_gold_values_hashes_verified": true,
+    "removed_tasks_require_registered_archive": true,
+    "v45_gold_payload_edits_require_migration_fingerprint": true,
+    "memory_payloads_require_independent_corpus_hashes": true,
+    "unit_negative_reaches_dimension_guard": true,
+    "actual_mcp_sdk_stdio_client_and_three_call_assertions_retained": true,
+    "owned_stdio_child_cleanup_bounded": true,
+    "temporary_bridge_removed": true
+  },
+  "limitations": [
+    "The request25second deadline is separate from explicit EOF/terminate/kill cleanup of the captured real SDK child. This proves request correctness and controlled cleanup, not natural unassisted SDK shutdown.",
+    "Final full host suite must pass after final test edits; original510PASS27FAIL log retained."
+  ],
+  "external_model_calls": 0
+}

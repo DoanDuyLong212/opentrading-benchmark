@@ -1,0 +1,62 @@
+{
+  "task_id": "fin-m5-revoke-530",
+  "scoring": "value",
+  "solution": {
+    "pass": [
+      "DXG",
+      "NLG"
+    ],
+    "criteria": [
+      "P/B dưới 1"
+    ],
+    "pass_if_revoked_applied": [
+      "NLG"
+    ]
+  },
+  "split": "main",
+  "expects": [
+    {
+      "type": "set",
+      "path": "values.pass",
+      "gold": [
+        "DXG",
+        "NLG"
+      ]
+    },
+    {
+      "type": "str",
+      "path": "source",
+      "accept": [
+        "peer_compare"
+      ]
+    }
+  ],
+  "contract_version": 2,
+  "stratum": "memory",
+  "tier": "M5",
+  "subtier": "M5-revoke",
+  "memory_construct": "M5-revoke",
+  "notes": "Native-memory stratum (amendment 2026-11-11 d).",
+  "provenance_contract": [
+    {
+      "tool": "peer_compare",
+      "source": "vnstock",
+      "as_of": "2026-11-01T23:14:30.802857+07:00",
+      "matched_entry_id": "peer:bds_p",
+      "response_sha256": "ef36e0e04adedd781ea574a1b2784fb46ae01428e2eaf98c8cec9246f1524aa5"
+    }
+  ],
+  "provenance_catalog": [
+    {
+      "tool": "peer_compare",
+      "source": "vnstock",
+      "as_of": "2026-11-01T23:14:30.802857+07:00",
+      "matched_entry_id": "peer:bds_p",
+      "response_sha256": "ef36e0e04adedd781ea574a1b2784fb46ae01428e2eaf98c8cec9246f1524aa5"
+    }
+  ],
+  "payload_sha256": "e217411bcc3663f87337da5300b863d6e5751d8774bb588768f1e14691ef4c96",
+  "required_payload_keys": [
+    "peer:bds_p"
+  ]
+}

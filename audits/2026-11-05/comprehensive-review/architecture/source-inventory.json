@@ -1,0 +1,956 @@
+{
+  "source_files": 127,
+  "all_source_matches_studied_runtime": true,
+  "files": [
+    {
+      "path": "/home/doanlong/OpenTrading/src/cli/mcp.ts",
+      "lines": 477,
+      "sha256": "aed76cb87e89a95c9f85b722c273441a50928df3e651f278e695f91989b1e2b6",
+      "matches_studied_runtime": true
+    },
+    {
+      "path": "/home/doanlong/OpenTrading/src/core/agent.ts",
+      "lines": 971,
+      "sha256": "f1c954e6222cafee3474b809deca5d34b0de6cd0264caf67f845d9cf507bf84d",
+      "matches_studied_runtime": true
+    },
+    {
+      "path": "/home/doanlong/OpenTrading/src/core/agents/loader.ts",
+      "lines": 48,
+      "sha256": "d173adae3ca947d74fc37f28eaa83fd4fa7655831a4a2ef5974663166ca638be",
+      "matches_studied_runtime": true
+    },
+    {
+      "path": "/home/doanlong/OpenTrading/src/core/agents/resolve.ts",
+      "lines": 32,
+      "sha256": "995a3c50699f1f0bcfc339b5a1728fb761b9cb6ed08fe6b0655acd4e80150448",
+      "matches_studied_runtime": true
+    },
+    {
+      "path": "/home/doanlong/OpenTrading/src/core/agents/schema.ts",
+      "lines": 43,
+      "sha256": "e66edd5bf54c2e35d67bdcc92ab9ef64d33876f7bba7819c129d5d5cf160cf31",
+      "matches_studied_runtime": true
+    },
+    {
+      "path": "/home/doanlong/OpenTrading/src/core/ask.ts",
+      "lines": 109,
+      "sha256": "c1ef835c7f8a7f3d976a2b345ba700330cfa90102054829ea773161b8b560580",
+      "matches_studied_runtime": true
+    },
+    {
+      "path": "/home/doanlong/OpenTrading/src/core/auth.ts",
+      "lines": 39,
+      "sha256": "bfb1105a2a5f9fd9b982dbd05a6ad65f60acc914cc78cf11db89c9bb75930a23",
+      "matches_studied_runtime": true
+    },
+    {
+      "path": "/home/doanlong/OpenTrading/src/core/catalog.ts",
+      "lines": 90,
+      "sha256": "a4c14fbe8b4e406c2efab9ae7e3becdd72ef91705d115cc9c885742046671181",
+      "matches_studied_runtime": true
+    },
+    {
+      "path": "/home/doanlong/OpenTrading/src/core/chat.ts",
+      "lines": 93,
+      "sha256": "ba4794483579096301317a53bf5099d190580bab2bcf17c08b9a94e63f399af4",
+      "matches_studied_runtime": true
+    },
+    {
+      "path": "/home/doanlong/OpenTrading/src/core/compact-marker.ts",
+      "lines": 70,
+      "sha256": "a317cd8db701d239b3f3ae30fe6c2f541c713d01f738d5249812684240c0cf6a",
+      "matches_studied_runtime": true
+    },
+    {
+      "path": "/home/doanlong/OpenTrading/src/core/compact.ts",
+      "lines": 279,
+      "sha256": "0aa7db463ce4a40821fef541e69b75056a3e4d8dd3f2a2d0daea6268fcb8c8b6",
+      "matches_studied_runtime": true
+    },
+    {
+      "path": "/home/doanlong/OpenTrading/src/core/config.ts",
+      "lines": 58,
+      "sha256": "7fbaad88f8ba42abd97f32f9a9be573ce1f22ff0c520bef98bafd0b35f6843e6",
+      "matches_studied_runtime": true
+    },
+    {
+      "path": "/home/doanlong/OpenTrading/src/core/events.ts",
+      "lines": 36,
+      "sha256": "c7dd1ea32edd076d2c8e55c1ea7c5a408b4892b77654253e23e46e3262aa06f7",
+      "matches_studied_runtime": true
+    },
+    {
+      "path": "/home/doanlong/OpenTrading/src/core/hooks.ts",
+      "lines": 71,
+      "sha256": "bca58a5dcdf853c25e319f7d2ab0a13f4b975b135e6167aef5fd690d799bcfde",
+      "matches_studied_runtime": true
+    },
+    {
+      "path": "/home/doanlong/OpenTrading/src/core/mcp/catalog.ts",
+      "lines": 135,
+      "sha256": "5e38c20d86c254b31ebcf69916e7ffb2048804d1fceb687657c87786fb62cee7",
+      "matches_studied_runtime": true
+    },
+    {
+      "path": "/home/doanlong/OpenTrading/src/core/mcp/config.ts",
+      "lines": 241,
+      "sha256": "f2a8e25ec37df839ae9fcd9bb17782c8806ea2bb8e76bc19fae83745273fb983",
+      "matches_studied_runtime": true
+    },
+    {
+      "path": "/home/doanlong/OpenTrading/src/core/mcp/convert.ts",
+      "lines": 68,
+      "sha256": "35cd0713b5cb1dbeec70a13bf74ea60721cc1bbe1103347380c498104fda9485",
+      "matches_studied_runtime": true
+    },
+    {
+      "path": "/home/doanlong/OpenTrading/src/core/mcp/manager.ts",
+      "lines": 1134,
+      "sha256": "d7e83f464a3dda02e2b0227bcc00e7dfd1065ed21f6fbd5c32a01db7490c61ee",
+      "matches_studied_runtime": true
+    },
+    {
+      "path": "/home/doanlong/OpenTrading/src/core/mcp/naming.ts",
+      "lines": 21,
+      "sha256": "7499d355d202e50ba6e8e66c655d3f16c471a17db33fc455b768f58bd54c57dc",
+      "matches_studied_runtime": true
+    },
+    {
+      "path": "/home/doanlong/OpenTrading/src/core/mcp/oauth.ts",
+      "lines": 289,
+      "sha256": "525551c98abe608b6c958b9a8e4cc49d3f517cd2b7509c65d960d34fa95a0ca7",
+      "matches_studied_runtime": true
+    },
+    {
+      "path": "/home/doanlong/OpenTrading/src/core/mcp/schema.ts",
+      "lines": 227,
+      "sha256": "434323fd1a8773e4203059077f0d3aafd5fed1eb4758972e558ed3134583ab70",
+      "matches_studied_runtime": true
+    },
+    {
+      "path": "/home/doanlong/OpenTrading/src/core/mcp/secrets.ts",
+      "lines": 83,
+      "sha256": "75880c9d9ea3629bbd8e2eddc60135229b31eab278231b4c86afce0598f4c30a",
+      "matches_studied_runtime": true
+    },
+    {
+      "path": "/home/doanlong/OpenTrading/src/core/mcp/trust.ts",
+      "lines": 55,
+      "sha256": "df50c758347991a3cb204d799fd0f3eeee4a616ef6a8006420a758ba19c2e788",
+      "matches_studied_runtime": true
+    },
+    {
+      "path": "/home/doanlong/OpenTrading/src/core/memory/file-memory.ts",
+      "lines": 163,
+      "sha256": "c3b3f64f1cfb7a7b1d5b982c5054cf3ae2777b6bb606286d52400174be30343c",
+      "matches_studied_runtime": true
+    },
+    {
+      "path": "/home/doanlong/OpenTrading/src/core/memory/types.ts",
+      "lines": 62,
+      "sha256": "ac7a686ba09ebd42f5a2f64d5c41a63fff9fc3c1eb5ab16458b1a9dd6118e752",
+      "matches_studied_runtime": true
+    },
+    {
+      "path": "/home/doanlong/OpenTrading/src/core/paths.ts",
+      "lines": 21,
+      "sha256": "1aed0fb33d1dff8788f31c81def3210907e1aaf72ab46286baa3e70698ab6b51",
+      "matches_studied_runtime": true
+    },
+    {
+      "path": "/home/doanlong/OpenTrading/src/core/permission.ts",
+      "lines": 224,
+      "sha256": "e6a2f30a577cac20c135eebe8dd88c932f9b7533cc9b16e2cb3dac00ddcd86b6",
+      "matches_studied_runtime": true
+    },
+    {
+      "path": "/home/doanlong/OpenTrading/src/core/profile.ts",
+      "lines": 45,
+      "sha256": "a3034d81bb7cb698889ae85dec2027b87401455a8e996c651835796e783fd983",
+      "matches_studied_runtime": true
+    },
+    {
+      "path": "/home/doanlong/OpenTrading/src/core/prompt/assemble.ts",
+      "lines": 270,
+      "sha256": "5c3a7951fd3f83b7bd81dd9d21efce63073efb3cab195584f5238b175e09931a",
+      "matches_studied_runtime": true
+    },
+    {
+      "path": "/home/doanlong/OpenTrading/src/core/prompt/budget.ts",
+      "lines": 56,
+      "sha256": "c190732f87f8f327d6fd7dc9c6efa1cf2f9484499914081f49320364dc20eace",
+      "matches_studied_runtime": true
+    },
+    {
+      "path": "/home/doanlong/OpenTrading/src/core/prompt/market-clock.ts",
+      "lines": 102,
+      "sha256": "7c3901c07956bc849cd56da5a30d3ff7431df49ae9837064829d5535f9c320f6",
+      "matches_studied_runtime": true
+    },
+    {
+      "path": "/home/doanlong/OpenTrading/src/core/providers.ts",
+      "lines": 142,
+      "sha256": "a511e6e46d62dfd9a177b733cbe375f14974461e836dde7e7547d3580164c1bf",
+      "matches_studied_runtime": true
+    },
+    {
+      "path": "/home/doanlong/OpenTrading/src/core/retry.ts",
+      "lines": 193,
+      "sha256": "5d71b581ca3c1c2a68cba94342e6f51fa5f89091bebcca0cd90f20dfed3385a5",
+      "matches_studied_runtime": true
+    },
+    {
+      "path": "/home/doanlong/OpenTrading/src/core/runtime.ts",
+      "lines": 132,
+      "sha256": "dc01a08713d4edc357a5aa7159b6abb52b4eb9cf1dfc6ae7295116274e6acdcb",
+      "matches_studied_runtime": true
+    },
+    {
+      "path": "/home/doanlong/OpenTrading/src/core/session/export.ts",
+      "lines": 99,
+      "sha256": "cb28873b221e8a562b2b9a99b81ab8295374195d1cae47596351a81d9f3a7ccb",
+      "matches_studied_runtime": true
+    },
+    {
+      "path": "/home/doanlong/OpenTrading/src/core/session/store.ts",
+      "lines": 318,
+      "sha256": "509eaf69a3a7a3b85ce0cd01a473d5ee9562d5bd53961aca8afd10656a004901",
+      "matches_studied_runtime": true
+    },
+    {
+      "path": "/home/doanlong/OpenTrading/src/core/session/title.ts",
+      "lines": 60,
+      "sha256": "ec6710ba270c74b5c3165ca3d7499747d8bf72ce3e9a1b65fd4eae3caa905463",
+      "matches_studied_runtime": true
+    },
+    {
+      "path": "/home/doanlong/OpenTrading/src/core/session/transcript.ts",
+      "lines": 84,
+      "sha256": "8ff9e44c09f826b4a5ef7b7ffbe33a2b4169a90eade3a1b0ce9e702cd646bc5c",
+      "matches_studied_runtime": true
+    },
+    {
+      "path": "/home/doanlong/OpenTrading/src/core/skills/catalog.ts",
+      "lines": 123,
+      "sha256": "d9430f72a29c5efff787ab36eccaee70a65e3eeb7cac6bab21b0c5264fa9078e",
+      "matches_studied_runtime": true
+    },
+    {
+      "path": "/home/doanlong/OpenTrading/src/core/skills/loader.ts",
+      "lines": 65,
+      "sha256": "744046491c9e123d7d837051e7b6a0a207655e326b326a4ac2c224eac4b2dc36",
+      "matches_studied_runtime": true
+    },
+    {
+      "path": "/home/doanlong/OpenTrading/src/core/skills/schema.ts",
+      "lines": 74,
+      "sha256": "41461ffe2dae0df8288767acb62b5e5c346b08e51f5f4f68e3c53c428378d04c",
+      "matches_studied_runtime": true
+    },
+    {
+      "path": "/home/doanlong/OpenTrading/src/core/store.ts",
+      "lines": 29,
+      "sha256": "a85dfa8aa9ffd1ee254cb165b2e488b7c3581a80f2e0584f7495b808b2c95523",
+      "matches_studied_runtime": true
+    },
+    {
+      "path": "/home/doanlong/OpenTrading/src/core/subagents/limiter.ts",
+      "lines": 69,
+      "sha256": "f50fab4f0c87c0e0e193139e6db047acadf8020b46815bd61c0a0d24f495570c",
+      "matches_studied_runtime": true
+    },
+    {
+      "path": "/home/doanlong/OpenTrading/src/core/subagents/manager.ts",
+      "lines": 571,
+      "sha256": "49720491d691757cb70a1d1a865d7d24baf21f11cacc41d0dae72d42480540c7",
+      "matches_studied_runtime": true
+    },
+    {
+      "path": "/home/doanlong/OpenTrading/src/core/subagents/model-pick.ts",
+      "lines": 53,
+      "sha256": "403b5a8b39632248c1ae0968c5a15a71b7eefd4d103e02bb60928444b710e020",
+      "matches_studied_runtime": true
+    },
+    {
+      "path": "/home/doanlong/OpenTrading/src/core/subagents/notification.ts",
+      "lines": 59,
+      "sha256": "166204b0c9ace76cb545b9f2e5f6e960005bdceac4d26433d508e3c0d15a760f",
+      "matches_studied_runtime": true
+    },
+    {
+      "path": "/home/doanlong/OpenTrading/src/core/subagents/result.ts",
+      "lines": 91,
+      "sha256": "3fbb453a500ff42c83e47859a3a92cb60ac0172eff2e716f3442599612cf7c5f",
+      "matches_studied_runtime": true
+    },
+    {
+      "path": "/home/doanlong/OpenTrading/src/core/subagents/sidechain.ts",
+      "lines": 90,
+      "sha256": "72b3fd8d952cc9f4f942b878ef0703eb265284911d18bdb5e79ab5119a31cdd9",
+      "matches_studied_runtime": true
+    },
+    {
+      "path": "/home/doanlong/OpenTrading/src/core/subagents/types.ts",
+      "lines": 68,
+      "sha256": "793ef72f82644fa0cfd8fdb3238e0faa14726a5a3dfc2a48178ba5c631d15aff",
+      "matches_studied_runtime": true
+    },
+    {
+      "path": "/home/doanlong/OpenTrading/src/core/tools/builtin/ask-user.ts",
+      "lines": 50,
+      "sha256": "b6b36c2838439dc516d97748e10a3ff2ab58d0bd9808c759e6335aba9ddb96af",
+      "matches_studied_runtime": true
+    },
+    {
+      "path": "/home/doanlong/OpenTrading/src/core/tools/builtin/current-time.ts",
+      "lines": 39,
+      "sha256": "1f2d0aace2c1b2d789caf073fa430aea6168312ba26b34226cebff0d500c0b13",
+      "matches_studied_runtime": true
+    },
+    {
+      "path": "/home/doanlong/OpenTrading/src/core/tools/builtin/load-skill.ts",
+      "lines": 61,
+      "sha256": "1a711168c5a1ddcb7629090571ecfa33d57df27e5c3a245d2f35607ce5bf4841",
+      "matches_studied_runtime": true
+    },
+    {
+      "path": "/home/doanlong/OpenTrading/src/core/tools/builtin/todo-write.ts",
+      "lines": 34,
+      "sha256": "52536e914d238faf6d579acb956d321aecff0a7152e6e020ef721c5ebf3bf217",
+      "matches_studied_runtime": true
+    },
+    {
+      "path": "/home/doanlong/OpenTrading/src/core/tools/builtin/tool-search.ts",
+      "lines": 86,
+      "sha256": "36751a1ed2899fbe0e5a2ef0dd18e15f3f6c283539e552922d4d1f3228d84bd3",
+      "matches_studied_runtime": true
+    },
+    {
+      "path": "/home/doanlong/OpenTrading/src/core/tools/chart/boxplot.ts",
+      "lines": 46,
+      "sha256": "a85da84cf39e15b034c96b9c5f395e7962e218822ed1aa345293fd1326e0f0e0",
+      "matches_studied_runtime": true
+    },
+    {
+      "path": "/home/doanlong/OpenTrading/src/core/tools/chart/compare.ts",
+      "lines": 132,
+      "sha256": "2a355eaca21b0259d49431e9520d7ef3a1cda7b83a490672594072af56bfaea7",
+      "matches_studied_runtime": true
+    },
+    {
+      "path": "/home/doanlong/OpenTrading/src/core/tools/chart/data.ts",
+      "lines": 30,
+      "sha256": "d54b505e75575ce6e2b3b17599ffc4eea94d934bc67f64d14edc654c49dd372d",
+      "matches_studied_runtime": true
+    },
+    {
+      "path": "/home/doanlong/OpenTrading/src/core/tools/chart/extract.ts",
+      "lines": 329,
+      "sha256": "4bc7f9e4738bc9dc5f445522ef06ddff05bb28835042e8490e95110370daabae",
+      "matches_studied_runtime": true
+    },
+    {
+      "path": "/home/doanlong/OpenTrading/src/core/tools/chart/multiline.ts",
+      "lines": 63,
+      "sha256": "97a3a9069b047cf7632e97aa2d41809b8f821070075b1adebbd74d7058ad213c",
+      "matches_studied_runtime": true
+    },
+    {
+      "path": "/home/doanlong/OpenTrading/src/core/tools/chart/pie.ts",
+      "lines": 28,
+      "sha256": "1a21d954070bd3e5acabab7bed5e0f22d83f229f9baac10be722d44dbe808d81",
+      "matches_studied_runtime": true
+    },
+    {
+      "path": "/home/doanlong/OpenTrading/src/core/tools/chart/render.ts",
+      "lines": 401,
+      "sha256": "b6e47204516d7be2118011c14550cd4c4368b7e753c615f66b3ca86cce4f0b16",
+      "matches_studied_runtime": true
+    },
+    {
+      "path": "/home/doanlong/OpenTrading/src/core/tools/chart/stacked.ts",
+      "lines": 32,
+      "sha256": "7d7548cca130383ef45724636676c7ff6b13a18d2049d5d6162df55e3b7924fd",
+      "matches_studied_runtime": true
+    },
+    {
+      "path": "/home/doanlong/OpenTrading/src/core/tools/chart/summary.ts",
+      "lines": 81,
+      "sha256": "76ec5d9afc2bc3548fdab02dcb867c247940262d53af722c04eb56ae6dadf86f",
+      "matches_studied_runtime": true
+    },
+    {
+      "path": "/home/doanlong/OpenTrading/src/core/tools/chart/waterfall.ts",
+      "lines": 41,
+      "sha256": "1762358b7d7c866a03f68415129debaa39499406d855eb4decac93e6e1cd0fdd",
+      "matches_studied_runtime": true
+    },
+    {
+      "path": "/home/doanlong/OpenTrading/src/core/tools/errors.ts",
+      "lines": 127,
+      "sha256": "ca59dfe42e3c7718fe97350a9301eb644c113672222f8af03a818d6858254b09",
+      "matches_studied_runtime": true
+    },
+    {
+      "path": "/home/doanlong/OpenTrading/src/core/tools/loaded.ts",
+      "lines": 53,
+      "sha256": "6dcb237c0a3537fc103d46adc7cb2185f454c6c4e03ff7e8278d1ee85668e7d5",
+      "matches_studied_runtime": true
+    },
+    {
+      "path": "/home/doanlong/OpenTrading/src/core/tools/loop-guard.ts",
+      "lines": 50,
+      "sha256": "cabaf47f939701658f808e9bf112ea5afd22d9cb3221a4a41b346b566cedac8a",
+      "matches_studied_runtime": true
+    },
+    {
+      "path": "/home/doanlong/OpenTrading/src/core/tools/net-dates.ts",
+      "lines": 33,
+      "sha256": "867aa5761e7b8823baa3d4f03150f7106f8312ad66296cc9b2d1a3b2c3a54542",
+      "matches_studied_runtime": true
+    },
+    {
+      "path": "/home/doanlong/OpenTrading/src/core/tools/patterns.ts",
+      "lines": 23,
+      "sha256": "284eac998f95dd25c32454f3a847420e128e80f8457fa880c746df8f04123318",
+      "matches_studied_runtime": true
+    },
+    {
+      "path": "/home/doanlong/OpenTrading/src/core/tools/refs.ts",
+      "lines": 78,
+      "sha256": "f17413316d47b4672061a4c2e6af8a64d26272307300e97a0e555ac99b6aabb7",
+      "matches_studied_runtime": true
+    },
+    {
+      "path": "/home/doanlong/OpenTrading/src/core/tools/registry.ts",
+      "lines": 236,
+      "sha256": "510ab1143ecf32a3f94b72f1e40ec6ef47afdddf141ac3e51cd7749f57838e0e",
+      "matches_studied_runtime": true
+    },
+    {
+      "path": "/home/doanlong/OpenTrading/src/core/tools/search.ts",
+      "lines": 175,
+      "sha256": "660f22a2b2cc62a8e2975ed1b8c9cbbae1aefd4bc061d0335272630cbd4ca3f5",
+      "matches_studied_runtime": true
+    },
+    {
+      "path": "/home/doanlong/OpenTrading/src/core/tools/session/history.ts",
+      "lines": 123,
+      "sha256": "5d9c09a7759064b8af04957d9091340c8786108aceebd970a0310b067d98e554",
+      "matches_studied_runtime": true
+    },
+    {
+      "path": "/home/doanlong/OpenTrading/src/core/tools/subagent/spawn.ts",
+      "lines": 167,
+      "sha256": "58dd053ccd3037f79d342472a949f71ed6ecb7e8d9f1d330a882e580743d91b8",
+      "matches_studied_runtime": true
+    },
+    {
+      "path": "/home/doanlong/OpenTrading/src/core/tools/todos.ts",
+      "lines": 93,
+      "sha256": "bf91c339d09a063118f4cd854f9c35107c4a8d464e80459ef5cf7c56ebcd6594",
+      "matches_studied_runtime": true
+    },
+    {
+      "path": "/home/doanlong/OpenTrading/src/core/tools/types.ts",
+      "lines": 111,
+      "sha256": "063886d6a8edb43c731051753b4a205bd8411b42cb33ac281d3a8000cdf58983",
+      "matches_studied_runtime": true
+    },
+    {
+      "path": "/home/doanlong/OpenTrading/src/core/tools/watchlist/local.ts",
+      "lines": 255,
+      "sha256": "29f43e63d9d91f5c0574952903d9dc8f506de3b9c31cd119093ba810fb875650",
+      "matches_studied_runtime": true
+    },
+    {
+      "path": "/home/doanlong/OpenTrading/src/core/tools/watchlist/quotes.ts",
+      "lines": 92,
+      "sha256": "921f3a49f93c76aa0da0d147e746a7b86a7bf2f37bc0ce271cae349951546a90",
+      "matches_studied_runtime": true
+    },
+    {
+      "path": "/home/doanlong/OpenTrading/src/core/tools/web/convert.ts",
+      "lines": 87,
+      "sha256": "8929db68a50e6e362d24c874062738a7b6fc68f6b14d4d11ff5185d1b1dd0221",
+      "matches_studied_runtime": true
+    },
+    {
+      "path": "/home/doanlong/OpenTrading/src/core/tools/web/domains.ts",
+      "lines": 34,
+      "sha256": "5b4e8ae7bdb6fd3c0f5ff13075360f609f645028c5776ff311612cf0b98ec6e7",
+      "matches_studied_runtime": true
+    },
+    {
+      "path": "/home/doanlong/OpenTrading/src/core/tools/web/fetch.ts",
+      "lines": 165,
+      "sha256": "fb96c89180f642032757746509bd99c8e714ca538a713bed3e9a7baa093a1ef0",
+      "matches_studied_runtime": true
+    },
+    {
+      "path": "/home/doanlong/OpenTrading/src/core/tools/web/net.ts",
+      "lines": 149,
+      "sha256": "e69d2be0712125e73a5a1d02b05b3bf01d4b2fb12ba73c76cc633b948e792740",
+      "matches_studied_runtime": true
+    },
+    {
+      "path": "/home/doanlong/OpenTrading/src/core/tools/web/search.ts",
+      "lines": 341,
+      "sha256": "5cf2f72f0a0575d79eeaf04b3c6c61c6b03a0bf8c60bdfd7118ab68feab7d057",
+      "matches_studied_runtime": true
+    },
+    {
+      "path": "/home/doanlong/OpenTrading/src/core/tools/web/side-model.ts",
+      "lines": 168,
+      "sha256": "efed4edc568cb0273b8296cb36f33b621d10c9157f311d813a4a80e7cbed2f6c",
+      "matches_studied_runtime": true
+    },
+    {
+      "path": "/home/doanlong/OpenTrading/src/core/tools/wrap.ts",
+      "lines": 141,
+      "sha256": "ed0a252d8c802ad47b03e0d238ee39a3bc766e61097d573d08c999317ee30761",
+      "matches_studied_runtime": true
+    },
+    {
+      "path": "/home/doanlong/OpenTrading/src/index.tsx",
+      "lines": 22,
+      "sha256": "6ab84d62a3ec912e1268c06aef8cd7da85c51f801e4ecb2e61d35a75553ece2e",
+      "matches_studied_runtime": true
+    },
+    {
+      "path": "/home/doanlong/OpenTrading/src/tui/app.tsx",
+      "lines": 1251,
+      "sha256": "294ab1ce2751a23d7707091572d860174b22084a4478a690b69691e94be2bf00",
+      "matches_studied_runtime": true
+    },
+    {
+      "path": "/home/doanlong/OpenTrading/src/tui/approval.tsx",
+      "lines": 211,
+      "sha256": "896e222aa09eb62ff94f55ae0e97b70d39b75faf99033f4857e846be2eacbf41",
+      "matches_studied_runtime": true
+    },
+    {
+      "path": "/home/doanlong/OpenTrading/src/tui/ask.tsx",
+      "lines": 244,
+      "sha256": "a7a9f994452d5ce0bf9610348d31376793069e445d2efa4e05ef835a448368e0",
+      "matches_studied_runtime": true
+    },
+    {
+      "path": "/home/doanlong/OpenTrading/src/tui/background.tsx",
+      "lines": 150,
+      "sha256": "ecde7600507f6d40cb4ecafd216bb74ecc11cc8c6e21e219f5fdc362428f2e79",
+      "matches_studied_runtime": true
+    },
+    {
+      "path": "/home/doanlong/OpenTrading/src/tui/clipboard.ts",
+      "lines": 70,
+      "sha256": "56743eecaf81b6b32326d0cf3cbba68aefdef5a20e79cc506c3e6e5708c81fdd",
+      "matches_studied_runtime": true
+    },
+    {
+      "path": "/home/doanlong/OpenTrading/src/tui/commands.ts",
+      "lines": 74,
+      "sha256": "86f90c83236b4eb13fd45069c607febca2df35a3f3a9ee66c6ff4534ed2c0ca2",
+      "matches_studied_runtime": true
+    },
+    {
+      "path": "/home/doanlong/OpenTrading/src/tui/dialogs/agents.tsx",
+      "lines": 123,
+      "sha256": "ab54e9169859b097dfd3328c41439c126ed86c42814e3bbac554e0d3d9947903",
+      "matches_studied_runtime": true
+    },
+    {
+      "path": "/home/doanlong/OpenTrading/src/tui/dialogs/config.tsx",
+      "lines": 258,
+      "sha256": "00b99356f8f67194db776e6793f73cf6e3432d017149efa7b6ae6f737b8415db",
+      "matches_studied_runtime": true
+    },
+    {
+      "path": "/home/doanlong/OpenTrading/src/tui/dialogs/connect.tsx",
+      "lines": 104,
+      "sha256": "f2f356c900e1b2adf74e563eb2273e811a26c2b98280cf459f8e3b9fd30bea37",
+      "matches_studied_runtime": true
+    },
+    {
+      "path": "/home/doanlong/OpenTrading/src/tui/dialogs/context.tsx",
+      "lines": 117,
+      "sha256": "7345eefdfdfacee658bcf9eac07e9d835cc04a4e1c1ae0f6f9c854ed48ba62bc",
+      "matches_studied_runtime": true
+    },
+    {
+      "path": "/home/doanlong/OpenTrading/src/tui/dialogs/frame.tsx",
+      "lines": 46,
+      "sha256": "813358414deac57692d43bcf75aa72b379ef448f66bbfda8f371d5abea749830",
+      "matches_studied_runtime": true
+    },
+    {
+      "path": "/home/doanlong/OpenTrading/src/tui/dialogs/help.tsx",
+      "lines": 80,
+      "sha256": "d8fd010d264c3ca2e6e6199209e03bec1c7b7cf2a0fa5d4392bfea0538e6754d",
+      "matches_studied_runtime": true
+    },
+    {
+      "path": "/home/doanlong/OpenTrading/src/tui/dialogs/memory.tsx",
+      "lines": 87,
+      "sha256": "7334e162357573bb7bb2ee46680ec9ab43a0f34af29880c7997fb5b13578edb8",
+      "matches_studied_runtime": true
+    },
+    {
+      "path": "/home/doanlong/OpenTrading/src/tui/dialogs/model.tsx",
+      "lines": 93,
+      "sha256": "fc4a0f4c09df1761163fa0886a40fcca4dd62acce0b0314be92e172acfac35bc",
+      "matches_studied_runtime": true
+    },
+    {
+      "path": "/home/doanlong/OpenTrading/src/tui/dialogs/picker.tsx",
+      "lines": 171,
+      "sha256": "d5a57b71e3c20070efb26557e547668a48dbc06b39833e3b58d38593ea9d0357",
+      "matches_studied_runtime": true
+    },
+    {
+      "path": "/home/doanlong/OpenTrading/src/tui/dialogs/sessions.tsx",
+      "lines": 66,
+      "sha256": "c35bbb59834f2e1a595cd8c467b9f7bee8e1a947719d3312d3b72728f4bb83e5",
+      "matches_studied_runtime": true
+    },
+    {
+      "path": "/home/doanlong/OpenTrading/src/tui/dialogs/skills.tsx",
+      "lines": 57,
+      "sha256": "9cd45550eebcd29a971ca2386a1ed7721c46d617062ce8e4ced76a6f904ead3b",
+      "matches_studied_runtime": true
+    },
+    {
+      "path": "/home/doanlong/OpenTrading/src/tui/dialogs/tasks.tsx",
+      "lines": 147,
+      "sha256": "ee42404a9f218515606eb3e4b39b23b3eb91fe2c7d85202801de52f562bb9454",
+      "matches_studied_runtime": true
+    },
+    {
+      "path": "/home/doanlong/OpenTrading/src/tui/dialogs/tools.tsx",
+      "lines": 104,
+      "sha256": "17b09a536ed88e4d70ae916869dcf05450e416c68c071d23a1f31dbdf00dbebe",
+      "matches_studied_runtime": true
+    },
+    {
+      "path": "/home/doanlong/OpenTrading/src/tui/dialogs/watchlist.tsx",
+      "lines": 137,
+      "sha256": "70284bfc3170c26638ea673d0938f5043a66954cd2f7999984aa99f48abaa2f5",
+      "matches_studied_runtime": true
+    },
+    {
+      "path": "/home/doanlong/OpenTrading/src/tui/home.tsx",
+      "lines": 70,
+      "sha256": "f3fa4d74074c3dca2e9b81c859f827847b4882a92ac597e782c4c775ca13b3b7",
+      "matches_studied_runtime": true
+    },
+    {
+      "path": "/home/doanlong/OpenTrading/src/tui/logo.ts",
+      "lines": 27,
+      "sha256": "a412af9e8e5848ff6c88080972c168e23b055ca7d652dfefd7bfee025964feb5",
+      "matches_studied_runtime": true
+    },
+    {
+      "path": "/home/doanlong/OpenTrading/src/tui/main.tsx",
+      "lines": 24,
+      "sha256": "e381a5effd61c18052862726cb52b824d7c5978db46d00f6b977c343fb01aa0a",
+      "matches_studied_runtime": true
+    },
+    {
+      "path": "/home/doanlong/OpenTrading/src/tui/mcp/panel.tsx",
+      "lines": 790,
+      "sha256": "27ff909fe828264806067c9b329af35d186cefafa05be4409d73680ecff9fece",
+      "matches_studied_runtime": true
+    },
+    {
+      "path": "/home/doanlong/OpenTrading/src/tui/prompt/editor.ts",
+      "lines": 59,
+      "sha256": "0b4438b1f5b083b71da32834f1626992189d3f91cbab442825be6cc906b228bc",
+      "matches_studied_runtime": true
+    },
+    {
+      "path": "/home/doanlong/OpenTrading/src/tui/prompt/history.ts",
+      "lines": 163,
+      "sha256": "02456187b24de214d1a5208b1b2fc4b65936e9f55f75bd7a829c874cc9f7a7b8",
+      "matches_studied_runtime": true
+    },
+    {
+      "path": "/home/doanlong/OpenTrading/src/tui/prompt/image.ts",
+      "lines": 161,
+      "sha256": "e894cf6c7180d4d6c5adb4e06cbed5541a49e152f2c755d435550363af418b90",
+      "matches_studied_runtime": true
+    },
+    {
+      "path": "/home/doanlong/OpenTrading/src/tui/prompt/input.tsx",
+      "lines": 105,
+      "sha256": "aa424b212133cf4fcfdb50197655807f54b98a479020185fd2ace465de723df4",
+      "matches_studied_runtime": true
+    },
+    {
+      "path": "/home/doanlong/OpenTrading/src/tui/prompt/parts.ts",
+      "lines": 177,
+      "sha256": "b5824af6caac4fc4668cad84a245122a6ac779fe2181c67b5d507d20a9390782",
+      "matches_studied_runtime": true
+    },
+    {
+      "path": "/home/doanlong/OpenTrading/src/tui/session.ts",
+      "lines": 142,
+      "sha256": "38f4238f91e06e0ac67cca55fb8678cec73185546e8755e2414db3d64deb4886",
+      "matches_studied_runtime": true
+    },
+    {
+      "path": "/home/doanlong/OpenTrading/src/tui/state.ts",
+      "lines": 159,
+      "sha256": "d0592d9a68e8aa2165313e360967d8b15a66ad15af05d308c758d4fd68249b55",
+      "matches_studied_runtime": true
+    },
+    {
+      "path": "/home/doanlong/OpenTrading/src/tui/subagent-row.tsx",
+      "lines": 255,
+      "sha256": "fa0c8ed5c3c6c3d9c28ae835419d51445aa91a48a885d646fd6c03311acb7fa1",
+      "matches_studied_runtime": true
+    },
+    {
+      "path": "/home/doanlong/OpenTrading/src/tui/suggestions.tsx",
+      "lines": 71,
+      "sha256": "c8e6139a0e39cd7c66749ef24665e94af03865b3458f483292ec7b030baa3a1b",
+      "matches_studied_runtime": true
+    },
+    {
+      "path": "/home/doanlong/OpenTrading/src/tui/theme.ts",
+      "lines": 84,
+      "sha256": "6aef7809b05c29263aac2388c0558eeb30c1dae32cfa5d09a44af5e5935c1163",
+      "matches_studied_runtime": true
+    },
+    {
+      "path": "/home/doanlong/OpenTrading/src/tui/todo-panel.tsx",
+      "lines": 71,
+      "sha256": "1c0dc44dc0457eec3df0596bf11e9ae9c9e37ec22791bd839e6d6ab8ff5931c3",
+      "matches_studied_runtime": true
+    },
+    {
+      "path": "/home/doanlong/OpenTrading/src/tui/transcript.tsx",
+      "lines": 262,
+      "sha256": "6656ebb41b7adfeee2ffa0afbe740bc1b494acad8dcc1b1b9ccc1a121b4f7ef2",
+      "matches_studied_runtime": true
+    },
+    {
+      "path": "/home/doanlong/OpenTrading/src/tui/ui/badges.tsx",
+      "lines": 34,
+      "sha256": "69efe88341aad362527c1f465b174b0aa44ab73bcbc1334edbe34e52fdeea286",
+      "matches_studied_runtime": true
+    },
+    {
+      "path": "/home/doanlong/OpenTrading/src/tui/ui/chart-box.tsx",
+      "lines": 1110,
+      "sha256": "19662200b4ebf2e2fd12c56fd3df9e132b4bc0c9821f586ce8ffc97dd28ecf08",
+      "matches_studied_runtime": true
+    },
+    {
+      "path": "/home/doanlong/OpenTrading/src/tui/ui/keys.ts",
+      "lines": 23,
+      "sha256": "6204fc549e83c13bc599b7946d06887b23eb728d7d9327323748df7783744316",
+      "matches_studied_runtime": true
+    },
+    {
+      "path": "/home/doanlong/OpenTrading/src/tui/ui/text.ts",
+      "lines": 74,
+      "sha256": "2b85d682d16ef8fd01eefd98422b776ea17e5b476dd43896e363428a06c2f01c",
+      "matches_studied_runtime": true
+    },
+    {
+      "path": "/home/doanlong/OpenTrading/src/tui/ui/tool-detail.tsx",
+      "lines": 86,
+      "sha256": "17e3e00db5ebc1bd1636b1808895baa851b2d725022e3750c248ad7c45aa610e",
+      "matches_studied_runtime": true
+    }
+  ],
+  "generated_legacy_python_cache": [
+    {
+      "path": "/home/doanlong/OpenTrading/src/opentrading/__pycache__/__init__.cpython-312.pyc",
+      "lines": 4,
+      "sha256": "0674bfcba58346a7636521c708bccf04d52b96da5c75a31e718a4e69639fdd3a",
+      "matches_studied_runtime": false
+    },
+    {
+      "path": "/home/doanlong/OpenTrading/src/opentrading/__pycache__/config.cpython-312.pyc",
+      "lines": 42,
+      "sha256": "c796eeecd697015c09e467d486afcb0dfa85290f2f2fe7f5bf4356cb5b1bf7c3",
+      "matches_studied_runtime": false
+    },
+    {
+      "path": "/home/doanlong/OpenTrading/src/opentrading/__pycache__/errors.cpython-312.pyc",
+      "lines": 18,
+      "sha256": "6651de80ed7d89909964c0292d41586eb320f99ce17d580049e223e0e105a846",
+      "matches_studied_runtime": false
+    },
+    {
+      "path": "/home/doanlong/OpenTrading/src/opentrading/adapters/__pycache__/__init__.cpython-312.pyc",
+      "lines": 3,
+      "sha256": "0dad3d76a65f68cbeff718e04eece2a2d0eab60c5e72986e27b4cf76442da402",
+      "matches_studied_runtime": false
+    },
+    {
+      "path": "/home/doanlong/OpenTrading/src/opentrading/adapters/__pycache__/fakes.cpython-312.pyc",
+      "lines": 15,
+      "sha256": "54120cf1c454c16b2a21ede3ad0032eb5fa51cac6f635fca515486b00f1e3c57",
+      "matches_studied_runtime": false
+    },
+    {
+      "path": "/home/doanlong/OpenTrading/src/opentrading/adapters/market_data/__pycache__/__init__.cpython-312.pyc",
+      "lines": 3,
+      "sha256": "bae7e6c8506fbba17233be9ce15e100a3096d90ea97a09d3a5af018f911cb5ae",
+      "matches_studied_runtime": false
+    },
+    {
+      "path": "/home/doanlong/OpenTrading/src/opentrading/adapters/mcp/__pycache__/__init__.cpython-312.pyc",
+      "lines": 3,
+      "sha256": "3177b6e003d8225e59421e78cf4c730fa578516ecbccae9c92d59a895b6f1232",
+      "matches_studied_runtime": false
+    },
+    {
+      "path": "/home/doanlong/OpenTrading/src/opentrading/adapters/mcp/__pycache__/client.cpython-312.pyc",
+      "lines": 236,
+      "sha256": "c2543107c4a563281a5fe91ea6fadc67936b09dacfb4b2c588456e6d59314071",
+      "matches_studied_runtime": false
+    },
+    {
+      "path": "/home/doanlong/OpenTrading/src/opentrading/adapters/providers/__pycache__/__init__.cpython-312.pyc",
+      "lines": 3,
+      "sha256": "9ee90a6ba17a426823cd15f95f4597fbb0ad2d99819e46794986fa96f969daf4",
+      "matches_studied_runtime": false
+    },
+    {
+      "path": "/home/doanlong/OpenTrading/src/opentrading/adapters/storage/__pycache__/__init__.cpython-312.pyc",
+      "lines": 3,
+      "sha256": "3e4b0d1a83776879154421d1b428d77a449408ebd2e66b31da088002279119b6",
+      "matches_studied_runtime": false
+    },
+    {
+      "path": "/home/doanlong/OpenTrading/src/opentrading/application/__pycache__/__init__.cpython-312.pyc",
+      "lines": 3,
+      "sha256": "5943f62a7e03363607f6b0877d2d3df6047c3da58e188bd9c087dcb8402ddad2",
+      "matches_studied_runtime": false
+    },
+    {
+      "path": "/home/doanlong/OpenTrading/src/opentrading/application/__pycache__/diagnostics.cpython-312.pyc",
+      "lines": 17,
+      "sha256": "cdb074c051f0f4883150949617fc63a717db42f90fd503bba37d92252fed5dcf",
+      "matches_studied_runtime": false
+    },
+    {
+      "path": "/home/doanlong/OpenTrading/src/opentrading/bootstrap/__pycache__/__init__.cpython-312.pyc",
+      "lines": 3,
+      "sha256": "e86b0849604347e812bfa259dadd62ea5eabe53374baddfeb249808b464bfb2b",
+      "matches_studied_runtime": false
+    },
+    {
+      "path": "/home/doanlong/OpenTrading/src/opentrading/contracts/__pycache__/__init__.cpython-312.pyc",
+      "lines": 13,
+      "sha256": "3ff44eec5e1e44b92227d8eb180d824a2e1f2f82518334356c29f5bfadafd875",
+      "matches_studied_runtime": false
+    },
+    {
+      "path": "/home/doanlong/OpenTrading/src/opentrading/contracts/__pycache__/events.cpython-312.pyc",
+      "lines": 90,
+      "sha256": "67683f41782c9650b54784f9f346a3cbe772c26615737c8bf028d71d44bd3110",
+      "matches_studied_runtime": false
+    },
+    {
+      "path": "/home/doanlong/OpenTrading/src/opentrading/contracts/__pycache__/json_types.cpython-312.pyc",
+      "lines": 7,
+      "sha256": "890ce46c2976faa1f1d0bb5432890aa1a774b01e335c2dac126e508b0861eef3",
+      "matches_studied_runtime": false
+    },
+    {
+      "path": "/home/doanlong/OpenTrading/src/opentrading/domain/__pycache__/__init__.cpython-312.pyc",
+      "lines": 11,
+      "sha256": "45a5c28b568bdb777fd97c9631eb61c0c2ee85a70e1426651cc9acd8ea69161f",
+      "matches_studied_runtime": false
+    },
+    {
+      "path": "/home/doanlong/OpenTrading/src/opentrading/domain/__pycache__/market.cpython-312.pyc",
+      "lines": 146,
+      "sha256": "722996dba1c01427e7a360c3d978cd7d39e8be3477c04b9266fec02b5d93a449",
+      "matches_studied_runtime": false
+    },
+    {
+      "path": "/home/doanlong/OpenTrading/src/opentrading/interfaces/__pycache__/__init__.cpython-312.pyc",
+      "lines": 3,
+      "sha256": "4242a0b79019c78624bcf5fb6296f8d5743ee3e1b88d7be100cee90b17a247b1",
+      "matches_studied_runtime": false
+    },
+    {
+      "path": "/home/doanlong/OpenTrading/src/opentrading/interfaces/cli/__pycache__/__init__.cpython-312.pyc",
+      "lines": 3,
+      "sha256": "1e9f716bc196d7b47803af01b58ada24fdcba9a2d4a14898a2c9b9a9d0e458f8",
+      "matches_studied_runtime": false
+    },
+    {
+      "path": "/home/doanlong/OpenTrading/src/opentrading/interfaces/cli/__pycache__/app.cpython-312.pyc",
+      "lines": 37,
+      "sha256": "72c8c917fd35a9f8a432bd3a349a8028085ceb5c4fc0c3f097490434861895da",
+      "matches_studied_runtime": false
+    },
+    {
+      "path": "/home/doanlong/OpenTrading/src/opentrading/interfaces/tui/__pycache__/__init__.cpython-312.pyc",
+      "lines": 3,
+      "sha256": "85e9c7265a299b3c6ca78fdaed7255ca413ecab3cc332a9867538f797e3fcb9f",
+      "matches_studied_runtime": false
+    },
+    {
+      "path": "/home/doanlong/OpenTrading/src/opentrading/interfaces/tui/__pycache__/app.cpython-312.pyc",
+      "lines": 23,
+      "sha256": "e820889d437c695663f7e8b7325dcce1ef2a528694d2cc4f629f6d3325c99794",
+      "matches_studied_runtime": false
+    },
+    {
+      "path": "/home/doanlong/OpenTrading/src/opentrading/ports/__pycache__/__init__.cpython-312.pyc",
+      "lines": 3,
+      "sha256": "323686763417b36cb74461f193c39b2a9e5b027f4975e2d93999d547344cad97",
+      "matches_studied_runtime": false
+    },
+    {
+      "path": "/home/doanlong/OpenTrading/src/opentrading/ports/__pycache__/credentials.cpython-312.pyc",
+      "lines": 8,
+      "sha256": "1fe0e2faf944527dcdc8f2f46f63e6206c1ef10126157ac9f9bb236d8935df73",
+      "matches_studied_runtime": false
+    },
+    {
+      "path": "/home/doanlong/OpenTrading/src/opentrading/ports/__pycache__/market_data.cpython-312.pyc",
+      "lines": 10,
+      "sha256": "93d4364d06932f5c64b018d16dbbcb741d1e8b306619c72e931545d5940bf5b0",
+      "matches_studied_runtime": false
+    },
+    {
+      "path": "/home/doanlong/OpenTrading/src/opentrading/ports/__pycache__/provider.cpython-312.pyc",
+      "lines": 87,
+      "sha256": "2d17d6aa517dc84dc8b025f1f90f1a7c47951e765f60a3d11318852c2523b7cd",
+      "matches_studied_runtime": false
+    },
+    {
+      "path": "/home/doanlong/OpenTrading/src/opentrading/ports/__pycache__/session.cpython-312.pyc",
+      "lines": 26,
+      "sha256": "61e25ad6e74667e5613533b2dd0645d7ca7297ef98cf4308e9b3917893f783f7",
+      "matches_studied_runtime": false
+    },
+    {
+      "path": "/home/doanlong/OpenTrading/src/opentrading/ports/__pycache__/tools.cpython-312.pyc",
+      "lines": 40,
+      "sha256": "16817c6d9a00da128cd1bdc0e0d2bd0df963608d40a2052099c64cea55e3d605",
+      "matches_studied_runtime": false
+    },
+    {
+      "path": "/home/doanlong/OpenTrading/src/opentrading/runtime/__pycache__/__init__.cpython-312.pyc",
+      "lines": 3,
+      "sha256": "1ab67705348196d7406e6cefac2a84ea45379ae95215cec68d3891875cfb6112",
+      "matches_studied_runtime": false
+    },
+    {
+      "path": "/home/doanlong/OpenTrading/src/opentrading/runtime/__pycache__/events.cpython-312.pyc",
+      "lines": 8,
+      "sha256": "ce8c2a225293eb544808f739fe8ab75f8186a868879b32332957d56696a69020",
+      "matches_studied_runtime": false
+    }
+  ]
+}

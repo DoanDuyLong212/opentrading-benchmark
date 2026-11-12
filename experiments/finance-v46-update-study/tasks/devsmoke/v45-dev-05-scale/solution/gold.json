@@ -1,0 +1,61 @@
+{
+  "task_id": "v45-dev-05-scale",
+  "scoring": "value",
+  "solution": {
+    "value": 92400.0
+  },
+  "provenance_contract": [
+    {
+      "tool": "vn_quote_history",
+      "source": "synthetic-dev",
+      "as_of": "2026-11-02T09:00:00+07:00",
+      "matched_entry_id": "q:FRT",
+      "response_sha256": "b784502be4dfc496935f1c9e0143a732af47c33173afe60f5e03c864ff03f3a5"
+    }
+  ],
+  "provenance_catalog": [
+    {
+      "tool": "vn_quote_history",
+      "source": "synthetic-dev",
+      "as_of": "2026-11-02T09:00:00+07:00",
+      "matched_entry_id": "q:FRT",
+      "response_sha256": "b784502be4dfc496935f1c9e0143a732af47c33173afe60f5e03c864ff03f3a5"
+    }
+  ],
+  "required_payload_keys": [
+    "q:FRT"
+  ],
+  "payload_sha256": "712ba5ca078dc9a6a7085d2d9c0671d2aeadd20043cc40b9908a2fc67ba90cd6",
+  "fixture_kind": "synthetic_engineering_fixture",
+  "expects": [
+    {
+      "type": "value",
+      "path": "value",
+      "gold": 92400.0,
+      "tol": {
+        "abs": 1e-06
+      }
+    },
+    {
+      "type": "unit",
+      "path": "unit",
+      "accept": [
+        "đồng"
+      ]
+    },
+    {
+      "type": "period",
+      "path": "period",
+      "accept": [
+        "2026-10-29"
+      ]
+    },
+    {
+      "type": "str_all",
+      "path": "source",
+      "accept": [
+        "vn_quote_history"
+      ]
+    }
+  ]
+}

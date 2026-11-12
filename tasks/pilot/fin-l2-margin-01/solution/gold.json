@@ -40,5 +40,28 @@
     "value": 21.71
   },
   "notes": "LN gộp 11,421 / DT thuần 52,614 (đơn vị tỷ đồng) = 21.71%.",
-  "as_of": "2026-11-01T15:54:29.386552+07:00"
+  "as_of": "2026-11-01T15:54:29.386552+07:00",
+  "contract_version": 2,
+  "provenance_contract": [
+    {
+      "tool": "financial_detail",
+      "source": "vietstock",
+      "as_of": "2026-11-01T15:54:29.386552+07:00",
+      "matched_entry_id": "financial_detail:0",
+      "response_sha256": "e269d0ec7ae968d51412a9029a02384d9b5fbec98af629d90983d9df56919419"
+    }
+  ],
+  "payload_sha256": "0e699394d0d6f073a09da1f65909078669d2ef714ad47130a7a41c5fcb451c88",
+  "provenance_catalog": [
+    {
+      "tool": "financial_detail",
+      "source": "vietstock",
+      "as_of": "2026-11-01T15:54:29.386552+07:00",
+      "matched_entry_id": "financial_detail:0",
+      "response_sha256": "e269d0ec7ae968d51412a9029a02384d9b5fbec98af629d90983d9df56919419"
+    }
+  ],
+  "required_payload_keys": [
+    "financial_detail"
+  ]
 }

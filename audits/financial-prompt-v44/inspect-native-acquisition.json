@@ -1,0 +1,1551 @@
+{
+  "pass": true,
+  "source": "/home/doanlong/extra/benchmark/experiments/finance-v44-study/experiments/opentrading-runtime/test-artifacts/v43-independent-acquisition.json",
+  "source_sha256": "6ec63bc44b1500cc8e10452442abb600349bb71b137afdba539720e85f248595",
+  "cases": [
+    {
+      "enabled": false,
+      "mode": "aggregate_zero",
+      "requests": 1,
+      "actual_mcp_executions": 0,
+      "successful_mcp": 0,
+      "local_rejections": 0,
+      "phases": [],
+      "wire_tools_choices": [
+        {
+          "tools": [
+            "mcp__development__entity_resolve",
+            "mcp__development__metric_lookup",
+            "mcp__development__place_order"
+          ],
+          "choice": "auto"
+        }
+      ]
+    },
+    {
+      "enabled": false,
+      "mode": "resolver_zero",
+      "requests": 1,
+      "actual_mcp_executions": 0,
+      "successful_mcp": 0,
+      "local_rejections": 0,
+      "phases": [],
+      "wire_tools_choices": [
+        {
+          "tools": [
+            "mcp__development__entity_resolve",
+            "mcp__development__metric_lookup",
+            "mcp__development__place_order"
+          ],
+          "choice": "auto"
+        }
+      ]
+    },
+    {
+      "enabled": false,
+      "mode": "partial",
+      "requests": 2,
+      "actual_mcp_executions": 1,
+      "successful_mcp": 1,
+      "local_rejections": 0,
+      "phases": [],
+      "wire_tools_choices": [
+        {
+          "tools": [
+            "mcp__development__entity_resolve",
+            "mcp__development__metric_lookup",
+            "mcp__development__place_order"
+          ],
+          "choice": "auto"
+        },
+        {
+          "tools": [
+            "mcp__development__entity_resolve",
+            "mcp__development__metric_lookup",
+            "mcp__development__place_order"
+          ],
+          "choice": "auto"
+        }
+      ]
+    },
+    {
+      "enabled": false,
+      "mode": "empty_partial",
+      "requests": 2,
+      "actual_mcp_executions": 1,
+      "successful_mcp": 1,
+      "local_rejections": 0,
+      "phases": [],
+      "wire_tools_choices": [
+        {
+          "tools": [
+            "mcp__development__entity_resolve",
+            "mcp__development__metric_lookup",
+            "mcp__development__place_order"
+          ],
+          "choice": "auto"
+        },
+        {
+          "tools": [
+            "mcp__development__entity_resolve",
+            "mcp__development__metric_lookup",
+            "mcp__development__place_order"
+          ],
+          "choice": "auto"
+        }
+      ]
+    },
+    {
+      "enabled": false,
+      "mode": "empty",
+      "requests": 2,
+      "actual_mcp_executions": 1,
+      "successful_mcp": 1,
+      "local_rejections": 0,
+      "phases": [],
+      "wire_tools_choices": [
+        {
+          "tools": [
+            "mcp__development__entity_resolve",
+            "mcp__development__metric_lookup",
+            "mcp__development__place_order"
+          ],
+          "choice": "auto"
+        },
+        {
+          "tools": [
+            "mcp__development__entity_resolve",
+            "mcp__development__metric_lookup",
+            "mcp__development__place_order"
+          ],
+          "choice": "auto"
+        }
+      ]
+    },
+    {
+      "enabled": false,
+      "mode": "auth",
+      "requests": 2,
+      "actual_mcp_executions": 1,
+      "successful_mcp": 0,
+      "local_rejections": 0,
+      "phases": [],
+      "wire_tools_choices": [
+        {
+          "tools": [
+            "mcp__development__entity_resolve",
+            "mcp__development__metric_lookup",
+            "mcp__development__place_order"
+          ],
+          "choice": "auto"
+        },
+        {
+          "tools": [
+            "mcp__development__entity_resolve",
+            "mcp__development__metric_lookup",
+            "mcp__development__place_order"
+          ],
+          "choice": "auto"
+        }
+      ]
+    },
+    {
+      "enabled": false,
+      "mode": "query_repair",
+      "requests": 2,
+      "actual_mcp_executions": 1,
+      "successful_mcp": 0,
+      "local_rejections": 0,
+      "phases": [],
+      "wire_tools_choices": [
+        {
+          "tools": [
+            "mcp__development__entity_resolve",
+            "mcp__development__metric_lookup",
+            "mcp__development__place_order"
+          ],
+          "choice": "auto"
+        },
+        {
+          "tools": [
+            "mcp__development__entity_resolve",
+            "mcp__development__metric_lookup",
+            "mcp__development__place_order"
+          ],
+          "choice": "auto"
+        }
+      ]
+    },
+    {
+      "enabled": false,
+      "mode": "duplicate",
+      "requests": 1,
+      "actual_mcp_executions": 0,
+      "successful_mcp": 0,
+      "local_rejections": 0,
+      "phases": [],
+      "wire_tools_choices": [
+        {
+          "tools": [
+            "mcp__development__entity_resolve",
+            "mcp__development__metric_lookup",
+            "mcp__development__place_order"
+          ],
+          "choice": "auto"
+        }
+      ]
+    },
+    {
+      "enabled": false,
+      "mode": "six_sequential",
+      "requests": 1,
+      "actual_mcp_executions": 0,
+      "successful_mcp": 0,
+      "local_rejections": 0,
+      "phases": [],
+      "wire_tools_choices": [
+        {
+          "tools": [
+            "mcp__development__entity_resolve",
+            "mcp__development__metric_lookup",
+            "mcp__development__place_order"
+          ],
+          "choice": "auto"
+        }
+      ]
+    },
+    {
+      "enabled": false,
+      "mode": "clarification",
+      "requests": 1,
+      "actual_mcp_executions": 0,
+      "successful_mcp": 0,
+      "local_rejections": 0,
+      "phases": [],
+      "wire_tools_choices": [
+        {
+          "tools": [
+            "mcp__development__entity_resolve",
+            "mcp__development__metric_lookup",
+            "mcp__development__place_order"
+          ],
+          "choice": "auto"
+        }
+      ]
+    },
+    {
+      "enabled": false,
+      "mode": "shared_cap",
+      "requests": 1,
+      "actual_mcp_executions": 0,
+      "successful_mcp": 0,
+      "local_rejections": 0,
+      "phases": [],
+      "wire_tools_choices": [
+        {
+          "tools": [
+            "mcp__development__entity_resolve",
+            "mcp__development__metric_lookup",
+            "mcp__development__place_order"
+          ],
+          "choice": "auto"
+        }
+      ]
+    },
+    {
+      "enabled": false,
+      "mode": "no_tools",
+      "requests": 1,
+      "actual_mcp_executions": 0,
+      "successful_mcp": 0,
+      "local_rejections": 0,
+      "phases": [],
+      "wire_tools_choices": [
+        {
+          "tools": [],
+          "choice": null
+        }
+      ]
+    },
+    {
+      "enabled": false,
+      "mode": "side_effect_only",
+      "requests": 1,
+      "actual_mcp_executions": 0,
+      "successful_mcp": 0,
+      "local_rejections": 0,
+      "phases": [],
+      "wire_tools_choices": [
+        {
+          "tools": [
+            "mcp__development__place_order"
+          ],
+          "choice": "auto"
+        }
+      ]
+    },
+    {
+      "enabled": false,
+      "mode": "acquisition_query_repair",
+      "requests": 1,
+      "actual_mcp_executions": 0,
+      "successful_mcp": 0,
+      "local_rejections": 0,
+      "phases": [],
+      "wire_tools_choices": [
+        {
+          "tools": [
+            "mcp__development__entity_resolve",
+            "mcp__development__metric_lookup",
+            "mcp__development__place_order"
+          ],
+          "choice": "auto"
+        }
+      ]
+    },
+    {
+      "enabled": false,
+      "mode": "acquisition_then_format",
+      "requests": 1,
+      "actual_mcp_executions": 0,
+      "successful_mcp": 0,
+      "local_rejections": 0,
+      "phases": [],
+      "wire_tools_choices": [
+        {
+          "tools": [
+            "mcp__development__entity_resolve",
+            "mcp__development__metric_lookup",
+            "mcp__development__place_order"
+          ],
+          "choice": "auto"
+        }
+      ]
+    },
+    {
+      "enabled": false,
+      "mode": "query_then_format",
+      "requests": 2,
+      "actual_mcp_executions": 1,
+      "successful_mcp": 0,
+      "local_rejections": 0,
+      "phases": [],
+      "wire_tools_choices": [
+        {
+          "tools": [
+            "mcp__development__entity_resolve",
+            "mcp__development__metric_lookup",
+            "mcp__development__place_order"
+          ],
+          "choice": "auto"
+        },
+        {
+          "tools": [
+            "mcp__development__entity_resolve",
+            "mcp__development__metric_lookup",
+            "mcp__development__place_order"
+          ],
+          "choice": "auto"
+        }
+      ]
+    },
+    {
+      "enabled": false,
+      "mode": "cancel",
+      "requests": 1,
+      "actual_mcp_executions": 0,
+      "successful_mcp": 0,
+      "local_rejections": 0,
+      "phases": [],
+      "wire_tools_choices": [
+        {
+          "tools": [
+            "mcp__development__entity_resolve",
+            "mcp__development__metric_lookup",
+            "mcp__development__place_order"
+          ],
+          "choice": "auto"
+        }
+      ]
+    },
+    {
+      "enabled": true,
+      "mode": "aggregate_zero",
+      "requests": 4,
+      "actual_mcp_executions": 2,
+      "successful_mcp": 2,
+      "local_rejections": 0,
+      "phases": [
+        {
+          "type": "finance-phase",
+          "phase": "bounded_finance_acquisition",
+          "transition": "enter",
+          "reason": "no_actual_evidence_attempt",
+          "availableToolNames": [
+            "mcp__development__entity_resolve",
+            "mcp__development__metric_lookup"
+          ],
+          "toolChoice": "auto",
+          "stepsUsed": 1,
+          "maxSteps": 10,
+          "actualCallIds": []
+        },
+        {
+          "type": "finance-phase",
+          "phase": "bounded_finance_acquisition",
+          "transition": "exit",
+          "reason": "candidate_returned",
+          "availableToolNames": [
+            "mcp__development__entity_resolve",
+            "mcp__development__metric_lookup"
+          ],
+          "toolChoice": "none",
+          "stepsUsed": 4,
+          "maxSteps": 10,
+          "actualCallIds": [
+            "dev-1-0",
+            "dev-2-0"
+          ]
+        }
+      ],
+      "wire_tools_choices": [
+        {
+          "tools": [
+            "mcp__development__entity_resolve",
+            "mcp__development__metric_lookup",
+            "mcp__development__place_order"
+          ],
+          "choice": "auto"
+        },
+        {
+          "tools": [
+            "mcp__development__entity_resolve",
+            "mcp__development__metric_lookup"
+          ],
+          "choice": "auto"
+        },
+        {
+          "tools": [
+            "mcp__development__entity_resolve",
+            "mcp__development__metric_lookup"
+          ],
+          "choice": "auto"
+        },
+        {
+          "tools": [
+            "mcp__development__entity_resolve",
+            "mcp__development__metric_lookup"
+          ],
+          "choice": "auto"
+        }
+      ]
+    },
+    {
+      "enabled": true,
+      "mode": "resolver_zero",
+      "requests": 4,
+      "actual_mcp_executions": 2,
+      "successful_mcp": 2,
+      "local_rejections": 0,
+      "phases": [
+        {
+          "type": "finance-phase",
+          "phase": "bounded_finance_acquisition",
+          "transition": "enter",
+          "reason": "no_actual_evidence_attempt",
+          "availableToolNames": [
+            "mcp__development__entity_resolve",
+            "mcp__development__metric_lookup"
+          ],
+          "toolChoice": "auto",
+          "stepsUsed": 1,
+          "maxSteps": 10,
+          "actualCallIds": []
+        },
+        {
+          "type": "finance-phase",
+          "phase": "bounded_finance_acquisition",
+          "transition": "exit",
+          "reason": "candidate_returned",
+          "availableToolNames": [
+            "mcp__development__entity_resolve",
+            "mcp__development__metric_lookup"
+          ],
+          "toolChoice": "none",
+          "stepsUsed": 4,
+          "maxSteps": 10,
+          "actualCallIds": [
+            "dev-1-0",
+            "dev-2-0"
+          ]
+        }
+      ],
+      "wire_tools_choices": [
+        {
+          "tools": [
+            "mcp__development__entity_resolve",
+            "mcp__development__metric_lookup",
+            "mcp__development__place_order"
+          ],
+          "choice": "auto"
+        },
+        {
+          "tools": [
+            "mcp__development__entity_resolve",
+            "mcp__development__metric_lookup"
+          ],
+          "choice": "auto"
+        },
+        {
+          "tools": [
+            "mcp__development__entity_resolve",
+            "mcp__development__metric_lookup"
+          ],
+          "choice": "auto"
+        },
+        {
+          "tools": [
+            "mcp__development__entity_resolve",
+            "mcp__development__metric_lookup"
+          ],
+          "choice": "auto"
+        }
+      ]
+    },
+    {
+      "enabled": true,
+      "mode": "partial",
+      "requests": 4,
+      "actual_mcp_executions": 2,
+      "successful_mcp": 2,
+      "local_rejections": 0,
+      "phases": [
+        {
+          "type": "finance-phase",
+          "phase": "bounded_finance_acquisition",
+          "transition": "enter",
+          "reason": "candidate_declares_partial_or_missing_support",
+          "availableToolNames": [
+            "mcp__development__entity_resolve",
+            "mcp__development__metric_lookup"
+          ],
+          "toolChoice": "auto",
+          "stepsUsed": 2,
+          "maxSteps": 10,
+          "actualCallIds": [
+            "dev-0-0"
+          ]
+        },
+        {
+          "type": "finance-phase",
+          "phase": "bounded_finance_acquisition",
+          "transition": "exit",
+          "reason": "candidate_returned",
+          "availableToolNames": [
+            "mcp__development__entity_resolve",
+            "mcp__development__metric_lookup"
+          ],
+          "toolChoice": "none",
+          "stepsUsed": 4,
+          "maxSteps": 10,
+          "actualCallIds": [
+            "dev-0-0",
+            "dev-2-0"
+          ]
+        }
+      ],
+      "wire_tools_choices": [
+        {
+          "tools": [
+            "mcp__development__entity_resolve",
+            "mcp__development__metric_lookup",
+            "mcp__development__place_order"
+          ],
+          "choice": "auto"
+        },
+        {
+          "tools": [
+            "mcp__development__entity_resolve",
+            "mcp__development__metric_lookup",
+            "mcp__development__place_order"
+          ],
+          "choice": "auto"
+        },
+        {
+          "tools": [
+            "mcp__development__entity_resolve",
+            "mcp__development__metric_lookup"
+          ],
+          "choice": "auto"
+        },
+        {
+          "tools": [
+            "mcp__development__entity_resolve",
+            "mcp__development__metric_lookup"
+          ],
+          "choice": "auto"
+        }
+      ]
+    },
+    {
+      "enabled": true,
+      "mode": "empty_partial",
+      "requests": 4,
+      "actual_mcp_executions": 2,
+      "successful_mcp": 2,
+      "local_rejections": 0,
+      "phases": [
+        {
+          "type": "finance-phase",
+          "phase": "bounded_finance_acquisition",
+          "transition": "enter",
+          "reason": "candidate_declares_partial_or_missing_support",
+          "availableToolNames": [
+            "mcp__development__entity_resolve",
+            "mcp__development__metric_lookup"
+          ],
+          "toolChoice": "auto",
+          "stepsUsed": 2,
+          "maxSteps": 10,
+          "actualCallIds": [
+            "dev-0-0"
+          ]
+        },
+        {
+          "type": "finance-phase",
+          "phase": "bounded_finance_acquisition",
+          "transition": "exit",
+          "reason": "candidate_returned",
+          "availableToolNames": [
+            "mcp__development__entity_resolve",
+            "mcp__development__metric_lookup"
+          ],
+          "toolChoice": "none",
+          "stepsUsed": 4,
+          "maxSteps": 10,
+          "actualCallIds": [
+            "dev-0-0",
+            "dev-2-0"
+          ]
+        }
+      ],
+      "wire_tools_choices": [
+        {
+          "tools": [
+            "mcp__development__entity_resolve",
+            "mcp__development__metric_lookup",
+            "mcp__development__place_order"
+          ],
+          "choice": "auto"
+        },
+        {
+          "tools": [
+            "mcp__development__entity_resolve",
+            "mcp__development__metric_lookup",
+            "mcp__development__place_order"
+          ],
+          "choice": "auto"
+        },
+        {
+          "tools": [
+            "mcp__development__entity_resolve",
+            "mcp__development__metric_lookup"
+          ],
+          "choice": "auto"
+        },
+        {
+          "tools": [
+            "mcp__development__entity_resolve",
+            "mcp__development__metric_lookup"
+          ],
+          "choice": "auto"
+        }
+      ]
+    },
+    {
+      "enabled": true,
+      "mode": "empty",
+      "requests": 2,
+      "actual_mcp_executions": 1,
+      "successful_mcp": 1,
+      "local_rejections": 0,
+      "phases": [
+        {
+          "type": "finance-phase",
+          "phase": "bounded_finance_acquisition",
+          "transition": "skip",
+          "reason": "actual_empty_response",
+          "availableToolNames": [],
+          "toolChoice": "none",
+          "stepsUsed": 2,
+          "maxSteps": 10,
+          "actualCallIds": [
+            "dev-0-0"
+          ]
+        }
+      ],
+      "wire_tools_choices": [
+        {
+          "tools": [
+            "mcp__development__entity_resolve",
+            "mcp__development__metric_lookup",
+            "mcp__development__place_order"
+          ],
+          "choice": "auto"
+        },
+        {
+          "tools": [
+            "mcp__development__entity_resolve",
+            "mcp__development__metric_lookup",
+            "mcp__development__place_order"
+          ],
+          "choice": "auto"
+        }
+      ]
+    },
+    {
+      "enabled": true,
+      "mode": "auth",
+      "requests": 2,
+      "actual_mcp_executions": 1,
+      "successful_mcp": 0,
+      "local_rejections": 0,
+      "phases": [
+        {
+          "type": "finance-phase",
+          "phase": "bounded_finance_acquisition",
+          "transition": "skip",
+          "reason": "actual_failed_intent_requires_repair_or_terminal",
+          "availableToolNames": [],
+          "toolChoice": "none",
+          "stepsUsed": 2,
+          "maxSteps": 10,
+          "actualCallIds": [
+            "dev-0-0"
+          ]
+        }
+      ],
+      "wire_tools_choices": [
+        {
+          "tools": [
+            "mcp__development__entity_resolve",
+            "mcp__development__metric_lookup",
+            "mcp__development__place_order"
+          ],
+          "choice": "auto"
+        },
+        {
+          "tools": [
+            "mcp__development__entity_resolve",
+            "mcp__development__metric_lookup",
+            "mcp__development__place_order"
+          ],
+          "choice": "auto"
+        }
+      ]
+    },
+    {
+      "enabled": true,
+      "mode": "query_repair",
+      "requests": 4,
+      "actual_mcp_executions": 2,
+      "successful_mcp": 1,
+      "local_rejections": 0,
+      "phases": [
+        {
+          "type": "finance-phase",
+          "phase": "bounded_finance_acquisition",
+          "transition": "skip",
+          "reason": "failed_intent_repair_first",
+          "availableToolNames": [],
+          "toolChoice": "none",
+          "stepsUsed": 2,
+          "maxSteps": 10,
+          "actualCallIds": [
+            "dev-0-0"
+          ]
+        },
+        {
+          "type": "finance-phase",
+          "phase": "bounded_finance_correction",
+          "transition": "enter",
+          "reason": "actual_retryable_failed_intents",
+          "availableToolNames": [
+            "mcp__development__metric_lookup"
+          ],
+          "toolChoice": "auto",
+          "stepsUsed": 2,
+          "maxSteps": 10,
+          "actualCallIds": [
+            "dev-0-0"
+          ]
+        },
+        {
+          "type": "finance-phase",
+          "phase": "bounded_finance_correction",
+          "transition": "exit",
+          "reason": "candidate_returned",
+          "availableToolNames": [
+            "mcp__development__metric_lookup"
+          ],
+          "toolChoice": "none",
+          "stepsUsed": 4,
+          "maxSteps": 10,
+          "actualCallIds": [
+            "dev-0-0",
+            "dev-2-0"
+          ]
+        },
+        {
+          "type": "finance-phase",
+          "phase": "bounded_finance_acquisition",
+          "transition": "skip",
+          "reason": "candidate_has_actual_support",
+          "availableToolNames": [],
+          "toolChoice": "none",
+          "stepsUsed": 4,
+          "maxSteps": 10,
+          "actualCallIds": [
+            "dev-0-0",
+            "dev-2-0"
+          ]
+        }
+      ],
+      "wire_tools_choices": [
+        {
+          "tools": [
+            "mcp__development__entity_resolve",
+            "mcp__development__metric_lookup",
+            "mcp__development__place_order"
+          ],
+          "choice": "auto"
+        },
+        {
+          "tools": [
+            "mcp__development__entity_resolve",
+            "mcp__development__metric_lookup",
+            "mcp__development__place_order"
+          ],
+          "choice": "auto"
+        },
+        {
+          "tools": [
+            "mcp__development__entity_resolve",
+            "mcp__development__metric_lookup",
+            "mcp__development__place_order"
+          ],
+          "choice": "auto"
+        },
+        {
+          "tools": [
+            "mcp__development__entity_resolve",
+            "mcp__development__metric_lookup",
+            "mcp__development__place_order"
+          ],
+          "choice": "none"
+        }
+      ]
+    },
+    {
+      "enabled": true,
+      "mode": "duplicate",
+      "requests": 3,
+      "actual_mcp_executions": 1,
+      "successful_mcp": 1,
+      "local_rejections": 1,
+      "phases": [
+        {
+          "type": "finance-phase",
+          "phase": "bounded_finance_acquisition",
+          "transition": "enter",
+          "reason": "no_actual_evidence_attempt",
+          "availableToolNames": [
+            "mcp__development__entity_resolve",
+            "mcp__development__metric_lookup"
+          ],
+          "toolChoice": "auto",
+          "stepsUsed": 1,
+          "maxSteps": 10,
+          "actualCallIds": []
+        },
+        {
+          "type": "finance-phase",
+          "phase": "bounded_finance_acquisition",
+          "transition": "exit",
+          "reason": "candidate_returned",
+          "availableToolNames": [
+            "mcp__development__entity_resolve",
+            "mcp__development__metric_lookup"
+          ],
+          "toolChoice": "none",
+          "stepsUsed": 3,
+          "maxSteps": 10,
+          "actualCallIds": [
+            "dev-1-0",
+            "dev-1-1"
+          ]
+        }
+      ],
+      "wire_tools_choices": [
+        {
+          "tools": [
+            "mcp__development__entity_resolve",
+            "mcp__development__metric_lookup",
+            "mcp__development__place_order"
+          ],
+          "choice": "auto"
+        },
+        {
+          "tools": [
+            "mcp__development__entity_resolve",
+            "mcp__development__metric_lookup"
+          ],
+          "choice": "auto"
+        },
+        {
+          "tools": [
+            "mcp__development__entity_resolve",
+            "mcp__development__metric_lookup"
+          ],
+          "choice": "auto"
+        }
+      ]
+    },
+    {
+      "enabled": true,
+      "mode": "six_sequential",
+      "requests": 8,
+      "actual_mcp_executions": 6,
+      "successful_mcp": 6,
+      "local_rejections": 0,
+      "phases": [
+        {
+          "type": "finance-phase",
+          "phase": "bounded_finance_acquisition",
+          "transition": "enter",
+          "reason": "no_actual_evidence_attempt",
+          "availableToolNames": [
+            "mcp__development__entity_resolve",
+            "mcp__development__metric_lookup"
+          ],
+          "toolChoice": "auto",
+          "stepsUsed": 1,
+          "maxSteps": 10,
+          "actualCallIds": []
+        },
+        {
+          "type": "finance-phase",
+          "phase": "bounded_finance_acquisition",
+          "transition": "exit",
+          "reason": "candidate_returned",
+          "availableToolNames": [
+            "mcp__development__entity_resolve",
+            "mcp__development__metric_lookup"
+          ],
+          "toolChoice": "none",
+          "stepsUsed": 8,
+          "maxSteps": 10,
+          "actualCallIds": [
+            "dev-1-0",
+            "dev-2-0",
+            "dev-3-0",
+            "dev-4-0",
+            "dev-5-0",
+            "dev-6-0"
+          ]
+        }
+      ],
+      "wire_tools_choices": [
+        {
+          "tools": [
+            "mcp__development__entity_resolve",
+            "mcp__development__metric_lookup",
+            "mcp__development__place_order"
+          ],
+          "choice": "auto"
+        },
+        {
+          "tools": [
+            "mcp__development__entity_resolve",
+            "mcp__development__metric_lookup"
+          ],
+          "choice": "auto"
+        },
+        {
+          "tools": [
+            "mcp__development__entity_resolve",
+            "mcp__development__metric_lookup"
+          ],
+          "choice": "auto"
+        },
+        {
+          "tools": [
+            "mcp__development__entity_resolve",
+            "mcp__development__metric_lookup"
+          ],
+          "choice": "auto"
+        },
+        {
+          "tools": [
+            "mcp__development__entity_resolve",
+            "mcp__development__metric_lookup"
+          ],
+          "choice": "auto"
+        },
+        {
+          "tools": [
+            "mcp__development__entity_resolve",
+            "mcp__development__metric_lookup"
+          ],
+          "choice": "auto"
+        },
+        {
+          "tools": [
+            "mcp__development__entity_resolve",
+            "mcp__development__metric_lookup"
+          ],
+          "choice": "auto"
+        },
+        {
+          "tools": [
+            "mcp__development__entity_resolve",
+            "mcp__development__metric_lookup"
+          ],
+          "choice": "auto"
+        }
+      ]
+    },
+    {
+      "enabled": true,
+      "mode": "clarification",
+      "requests": 1,
+      "actual_mcp_executions": 0,
+      "successful_mcp": 0,
+      "local_rejections": 0,
+      "phases": [
+        {
+          "type": "finance-phase",
+          "phase": "bounded_finance_acquisition",
+          "transition": "skip",
+          "reason": "explicit_missing_input",
+          "availableToolNames": [],
+          "toolChoice": "none",
+          "stepsUsed": 1,
+          "maxSteps": 10,
+          "actualCallIds": []
+        }
+      ],
+      "wire_tools_choices": [
+        {
+          "tools": [
+            "mcp__development__entity_resolve",
+            "mcp__development__metric_lookup",
+            "mcp__development__place_order"
+          ],
+          "choice": "auto"
+        }
+      ]
+    },
+    {
+      "enabled": true,
+      "mode": "shared_cap",
+      "requests": 1,
+      "actual_mcp_executions": 0,
+      "successful_mcp": 0,
+      "local_rejections": 0,
+      "phases": [
+        {
+          "type": "finance-phase",
+          "phase": "bounded_finance_acquisition",
+          "transition": "skip",
+          "reason": "shared_step_cap",
+          "availableToolNames": [
+            "mcp__development__entity_resolve",
+            "mcp__development__metric_lookup"
+          ],
+          "toolChoice": "none",
+          "stepsUsed": 1,
+          "maxSteps": 2,
+          "actualCallIds": []
+        }
+      ],
+      "wire_tools_choices": [
+        {
+          "tools": [
+            "mcp__development__entity_resolve",
+            "mcp__development__metric_lookup",
+            "mcp__development__place_order"
+          ],
+          "choice": "auto"
+        }
+      ]
+    },
+    {
+      "enabled": true,
+      "mode": "no_tools",
+      "requests": 1,
+      "actual_mcp_executions": 0,
+      "successful_mcp": 0,
+      "local_rejections": 0,
+      "phases": [
+        {
+          "type": "finance-phase",
+          "phase": "bounded_finance_acquisition",
+          "transition": "skip",
+          "reason": "no_readonly_tools",
+          "availableToolNames": [],
+          "toolChoice": "none",
+          "stepsUsed": 1,
+          "maxSteps": 10,
+          "actualCallIds": []
+        }
+      ],
+      "wire_tools_choices": [
+        {
+          "tools": [],
+          "choice": null
+        }
+      ]
+    },
+    {
+      "enabled": true,
+      "mode": "side_effect_only",
+      "requests": 1,
+      "actual_mcp_executions": 0,
+      "successful_mcp": 0,
+      "local_rejections": 0,
+      "phases": [
+        {
+          "type": "finance-phase",
+          "phase": "bounded_finance_acquisition",
+          "transition": "skip",
+          "reason": "no_readonly_tools",
+          "availableToolNames": [],
+          "toolChoice": "none",
+          "stepsUsed": 1,
+          "maxSteps": 10,
+          "actualCallIds": []
+        }
+      ],
+      "wire_tools_choices": [
+        {
+          "tools": [
+            "mcp__development__place_order"
+          ],
+          "choice": "auto"
+        }
+      ]
+    },
+    {
+      "enabled": true,
+      "mode": "acquisition_query_repair",
+      "requests": 5,
+      "actual_mcp_executions": 2,
+      "successful_mcp": 1,
+      "local_rejections": 0,
+      "phases": [
+        {
+          "type": "finance-phase",
+          "phase": "bounded_finance_acquisition",
+          "transition": "enter",
+          "reason": "no_actual_evidence_attempt",
+          "availableToolNames": [
+            "mcp__development__entity_resolve",
+            "mcp__development__metric_lookup"
+          ],
+          "toolChoice": "auto",
+          "stepsUsed": 1,
+          "maxSteps": 10,
+          "actualCallIds": []
+        },
+        {
+          "type": "finance-phase",
+          "phase": "bounded_finance_acquisition",
+          "transition": "exit",
+          "reason": "candidate_returned",
+          "availableToolNames": [
+            "mcp__development__entity_resolve",
+            "mcp__development__metric_lookup"
+          ],
+          "toolChoice": "none",
+          "stepsUsed": 3,
+          "maxSteps": 10,
+          "actualCallIds": [
+            "dev-1-0"
+          ]
+        },
+        {
+          "type": "finance-phase",
+          "phase": "bounded_finance_correction",
+          "transition": "enter",
+          "reason": "actual_retryable_failed_intents",
+          "availableToolNames": [
+            "mcp__development__metric_lookup"
+          ],
+          "toolChoice": "auto",
+          "stepsUsed": 3,
+          "maxSteps": 10,
+          "actualCallIds": [
+            "dev-1-0"
+          ]
+        },
+        {
+          "type": "finance-phase",
+          "phase": "bounded_finance_correction",
+          "transition": "exit",
+          "reason": "candidate_returned",
+          "availableToolNames": [
+            "mcp__development__metric_lookup"
+          ],
+          "toolChoice": "none",
+          "stepsUsed": 5,
+          "maxSteps": 10,
+          "actualCallIds": [
+            "dev-1-0",
+            "dev-3-0"
+          ]
+        }
+      ],
+      "wire_tools_choices": [
+        {
+          "tools": [
+            "mcp__development__entity_resolve",
+            "mcp__development__metric_lookup",
+            "mcp__development__place_order"
+          ],
+          "choice": "auto"
+        },
+        {
+          "tools": [
+            "mcp__development__entity_resolve",
+            "mcp__development__metric_lookup"
+          ],
+          "choice": "auto"
+        },
+        {
+          "tools": [
+            "mcp__development__entity_resolve",
+            "mcp__development__metric_lookup"
+          ],
+          "choice": "auto"
+        },
+        {
+          "tools": [
+            "mcp__development__entity_resolve",
+            "mcp__development__metric_lookup",
+            "mcp__development__place_order"
+          ],
+          "choice": "auto"
+        },
+        {
+          "tools": [
+            "mcp__development__entity_resolve",
+            "mcp__development__metric_lookup",
+            "mcp__development__place_order"
+          ],
+          "choice": "none"
+        }
+      ]
+    },
+    {
+      "enabled": true,
+      "mode": "acquisition_then_format",
+      "requests": 4,
+      "actual_mcp_executions": 1,
+      "successful_mcp": 1,
+      "local_rejections": 0,
+      "phases": [
+        {
+          "type": "finance-phase",
+          "phase": "bounded_finance_acquisition",
+          "transition": "enter",
+          "reason": "no_actual_evidence_attempt",
+          "availableToolNames": [
+            "mcp__development__entity_resolve",
+            "mcp__development__metric_lookup"
+          ],
+          "toolChoice": "auto",
+          "stepsUsed": 1,
+          "maxSteps": 10,
+          "actualCallIds": []
+        },
+        {
+          "type": "finance-phase",
+          "phase": "bounded_finance_acquisition",
+          "transition": "exit",
+          "reason": "candidate_returned",
+          "availableToolNames": [
+            "mcp__development__entity_resolve",
+            "mcp__development__metric_lookup"
+          ],
+          "toolChoice": "none",
+          "stepsUsed": 3,
+          "maxSteps": 10,
+          "actualCallIds": [
+            "dev-1-0"
+          ]
+        },
+        {
+          "type": "finance-phase",
+          "phase": "output_format_correction",
+          "transition": "enter",
+          "reason": "public_output_contract_issues",
+          "availableToolNames": [],
+          "toolChoice": "none",
+          "stepsUsed": 3,
+          "maxSteps": 10,
+          "actualCallIds": [
+            "dev-1-0"
+          ]
+        },
+        {
+          "type": "finance-phase",
+          "phase": "output_format_correction",
+          "transition": "exit",
+          "reason": "candidate_returned",
+          "availableToolNames": [],
+          "toolChoice": "none",
+          "stepsUsed": 4,
+          "maxSteps": 10,
+          "actualCallIds": [
+            "dev-1-0"
+          ]
+        }
+      ],
+      "wire_tools_choices": [
+        {
+          "tools": [
+            "mcp__development__entity_resolve",
+            "mcp__development__metric_lookup",
+            "mcp__development__place_order"
+          ],
+          "choice": "auto"
+        },
+        {
+          "tools": [
+            "mcp__development__entity_resolve",
+            "mcp__development__metric_lookup"
+          ],
+          "choice": "auto"
+        },
+        {
+          "tools": [
+            "mcp__development__entity_resolve",
+            "mcp__development__metric_lookup"
+          ],
+          "choice": "auto"
+        },
+        {
+          "tools": [
+            "mcp__development__entity_resolve",
+            "mcp__development__metric_lookup",
+            "mcp__development__place_order"
+          ],
+          "choice": "none"
+        }
+      ]
+    },
+    {
+      "enabled": true,
+      "mode": "query_then_format",
+      "requests": 5,
+      "actual_mcp_executions": 2,
+      "successful_mcp": 1,
+      "local_rejections": 0,
+      "phases": [
+        {
+          "type": "finance-phase",
+          "phase": "bounded_finance_acquisition",
+          "transition": "skip",
+          "reason": "failed_intent_repair_first",
+          "availableToolNames": [],
+          "toolChoice": "none",
+          "stepsUsed": 2,
+          "maxSteps": 10,
+          "actualCallIds": [
+            "dev-0-0"
+          ]
+        },
+        {
+          "type": "finance-phase",
+          "phase": "bounded_finance_correction",
+          "transition": "enter",
+          "reason": "actual_retryable_failed_intents",
+          "availableToolNames": [
+            "mcp__development__metric_lookup"
+          ],
+          "toolChoice": "auto",
+          "stepsUsed": 2,
+          "maxSteps": 10,
+          "actualCallIds": [
+            "dev-0-0"
+          ]
+        },
+        {
+          "type": "finance-phase",
+          "phase": "bounded_finance_correction",
+          "transition": "exit",
+          "reason": "candidate_returned",
+          "availableToolNames": [
+            "mcp__development__metric_lookup"
+          ],
+          "toolChoice": "none",
+          "stepsUsed": 4,
+          "maxSteps": 10,
+          "actualCallIds": [
+            "dev-0-0",
+            "dev-2-0"
+          ]
+        },
+        {
+          "type": "finance-phase",
+          "phase": "bounded_finance_acquisition",
+          "transition": "skip",
+          "reason": "candidate_has_actual_support",
+          "availableToolNames": [],
+          "toolChoice": "none",
+          "stepsUsed": 4,
+          "maxSteps": 10,
+          "actualCallIds": [
+            "dev-0-0",
+            "dev-2-0"
+          ]
+        },
+        {
+          "type": "finance-phase",
+          "phase": "output_format_correction",
+          "transition": "enter",
+          "reason": "public_output_contract_issues",
+          "availableToolNames": [],
+          "toolChoice": "none",
+          "stepsUsed": 4,
+          "maxSteps": 10,
+          "actualCallIds": [
+            "dev-0-0",
+            "dev-2-0"
+          ]
+        },
+        {
+          "type": "finance-phase",
+          "phase": "output_format_correction",
+          "transition": "exit",
+          "reason": "candidate_returned",
+          "availableToolNames": [],
+          "toolChoice": "none",
+          "stepsUsed": 5,
+          "maxSteps": 10,
+          "actualCallIds": [
+            "dev-0-0",
+            "dev-2-0"
+          ]
+        },
+        {
+          "type": "finance-phase",
+          "phase": "bounded_finance_acquisition",
+          "transition": "skip",
+          "reason": "candidate_has_actual_support",
+          "availableToolNames": [],
+          "toolChoice": "none",
+          "stepsUsed": 5,
+          "maxSteps": 10,
+          "actualCallIds": [
+            "dev-0-0",
+            "dev-2-0"
+          ]
+        }
+      ],
+      "wire_tools_choices": [
+        {
+          "tools": [
+            "mcp__development__entity_resolve",
+            "mcp__development__metric_lookup",
+            "mcp__development__place_order"
+          ],
+          "choice": "auto"
+        },
+        {
+          "tools": [
+            "mcp__development__entity_resolve",
+            "mcp__development__metric_lookup",
+            "mcp__development__place_order"
+          ],
+          "choice": "auto"
+        },
+        {
+          "tools": [
+            "mcp__development__entity_resolve",
+            "mcp__development__metric_lookup",
+            "mcp__development__place_order"
+          ],
+          "choice": "auto"
+        },
+        {
+          "tools": [
+            "mcp__development__entity_resolve",
+            "mcp__development__metric_lookup",
+            "mcp__development__place_order"
+          ],
+          "choice": "none"
+        },
+        {
+          "tools": [
+            "mcp__development__entity_resolve",
+            "mcp__development__metric_lookup",
+            "mcp__development__place_order"
+          ],
+          "choice": "none"
+        }
+      ]
+    },
+    {
+      "enabled": true,
+      "mode": "cancel",
+      "requests": 1,
+      "actual_mcp_executions": 0,
+      "successful_mcp": 0,
+      "local_rejections": 0,
+      "phases": [
+        {
+          "type": "finance-phase",
+          "phase": "bounded_finance_acquisition",
+          "transition": "enter",
+          "reason": "no_actual_evidence_attempt",
+          "availableToolNames": [
+            "mcp__development__entity_resolve",
+            "mcp__development__metric_lookup"
+          ],
+          "toolChoice": "auto",
+          "stepsUsed": 1,
+          "maxSteps": 10,
+          "actualCallIds": []
+        },
+        {
+          "type": "finance-phase",
+          "phase": "bounded_finance_acquisition",
+          "transition": "exit",
+          "reason": "cancelled",
+          "availableToolNames": [
+            "mcp__development__entity_resolve",
+            "mcp__development__metric_lookup"
+          ],
+          "toolChoice": "none",
+          "stepsUsed": 1,
+          "maxSteps": 10,
+          "actualCallIds": []
+        }
+      ],
+      "wire_tools_choices": [
+        {
+          "tools": [
+            "mcp__development__entity_resolve",
+            "mcp__development__metric_lookup",
+            "mcp__development__place_order"
+          ],
+          "choice": "auto"
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "scope": "Actual independent-development native SDK request/MCP reconciliation; benchmark gateway/all-four-adapter wire proof is separate."
+}

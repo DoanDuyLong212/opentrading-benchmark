@@ -1,0 +1,33 @@
+# Native-memory stratum — amendment 2026-11-11 (d), tools/build_memory_stratum_20261111.py
+id = "fin-m1-screen-504"
+title = "Memory M1 — lọc 2 tiêu chí cùng phiên (energy_p)"
+version = 3
+created = "2026-11-11"
+level = "M1"
+family = "M1 memory"
+financebench_type = "multi-session memory"
+entity = "peer:energy_p"
+asset = "vn_stock"
+data_zone = "green"
+data_pairs = []
+snapshot_date = "2026-11-01"
+universe_cap = 0
+banned_tools = ["web_search", "web_fetch", "sentiment_score"]
+human_time_band = "15–60 phút"
+time_limit_min = 30
+tools_expected = ["peer_compare"]
+mcp_payloads = "environment/payloads.json"
+snapshot_required = true
+split = "main"
+multiturn = true
+track = "memory_multiturn"
+stratum = "memory"
+tier = "M1"
+subtier = "M1"
+confirmatory_eligible = true
+
+[scoring]
+type = "value"
+gold = "solution/gold.json"
+oracle = "solution/oracle.py"
+grader = "tests/grader.py"

@@ -1,0 +1,74 @@
+{
+ "scoring": "value",
+ "memory_construct": "cross_session_recall_or_update",
+ "solution": {
+  "total_lnst": 1313.85
+ },
+ "expects": [
+  {
+   "type": "value",
+   "path": "values.total_lnst",
+   "gold": 1313.85,
+   "tol": {
+    "abs": 0.05
+   }
+  },
+  {
+   "type": "evidence",
+   "path": "note",
+   "paths": [
+    "note",
+    "values.note"
+   ],
+   "numbers": [],
+   "strings": [
+    "OCB",
+    "DBC"
+   ],
+   "min_hits": 2
+  },
+  {
+   "type": "str_all",
+   "path": "source",
+   "accept": [
+    "financial_statements"
+   ]
+  },
+  {
+   "type": "unit",
+   "path": "unit",
+   "accept": [
+    "tỷ đồng"
+   ]
+  },
+  {
+   "type": "period",
+   "path": "period",
+   "accept": [
+    "Q3/2026",
+    "quý 3/2026",
+    "q3 2026",
+    "q3/26"
+   ]
+  }
+ ],
+ "notes": "Portfolio-update: ban đầu OCB+DBC; lượt sau cập nhật còn OCB. Tổng LNST quý gần nhất của portfolio = LNST OCB Q3/2026 = 1313.85 tỷ; cộng thêm DBC (200.17) → sai. Distractor fs:MSB/LPB.",
+ "memory_checks": {},
+ "provenance_contract": [
+  {
+   "tool": "financial_statements",
+   "source": "vietstock",
+   "as_of": "2026-11-01T22:03:59.101765+07:00",
+   "matched_entry_id": "fs:OCB",
+   "response_sha256": "b78d672bf784516ec5d7584b8166b2c583d7109a8b24285282d463cc648bca1e"
+  }
+ ],
+ "required_payload_keys": [
+  "fs:OCB",
+  "fs:DBC",
+  "fs:MSB",
+  "fs:LPB"
+ ],
+ "task_id": "fin-mem-342",
+ "payload_sha256": "322030b2bf7ec9f0e60e0c8d405e79d1a7397b5ccea47c2dab46d6231ba35600"
+}

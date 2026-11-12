@@ -1,0 +1,112 @@
+{
+  "task_id": "fin-l3-agg-183",
+  "scoring": "value",
+  "solution": {
+    "HSG": 10850.0,
+    "NKG": 11900.0,
+    "POM": 3100.0,
+    "TLH": 3360.0,
+    "VGS": 19300.0,
+    "mean": 9702.0
+  },
+  "as_of": "2026-11-01T23:04:25.600524+07:00",
+  "split": "main",
+  "expects": [
+    {
+      "type": "value",
+      "path": "values.HSG",
+      "gold": 10850.0,
+      "tol": {
+        "rel": 0.005
+      }
+    },
+    {
+      "type": "value",
+      "path": "values.NKG",
+      "gold": 11900.0,
+      "tol": {
+        "rel": 0.005
+      }
+    },
+    {
+      "type": "value",
+      "path": "values.POM",
+      "gold": 3100.0,
+      "tol": {
+        "rel": 0.005
+      }
+    },
+    {
+      "type": "value",
+      "path": "values.TLH",
+      "gold": 3360.0,
+      "tol": {
+        "rel": 0.005
+      }
+    },
+    {
+      "type": "value",
+      "path": "values.VGS",
+      "gold": 19300.0,
+      "tol": {
+        "rel": 0.005
+      }
+    },
+    {
+      "type": "value",
+      "path": "values.mean",
+      "gold": 9702.0,
+      "tol": {
+        "rel": 0.005
+      }
+    },
+    {
+      "type": "unit",
+      "path": "unit",
+      "accept": [
+        "đồng",
+        "VND"
+      ]
+    },
+    {
+      "type": "period",
+      "path": "period",
+      "accept": [
+        "30/10",
+        "30-10",
+        "30.10",
+        "2026-10-30"
+      ]
+    },
+    {
+      "type": "str",
+      "path": "source",
+      "accept": [
+        "vn_equity_quote_batch"
+      ]
+    }
+  ],
+  "contract_version": 2,
+  "provenance_contract": [
+    {
+      "tool": "vn_equity_quote_batch",
+      "source": "vnstock",
+      "as_of": "2026-11-01T23:04:25.600524+07:00",
+      "matched_entry_id": "batch:steel1",
+      "response_sha256": "7add49baf2ac85e28aae833c39247d528112ab910a7cc97a942e2d52d58ce76a"
+    }
+  ],
+  "payload_sha256": "4ec6a4f2af168b3c45e5a0623fc5580c7d77411c0d654346f2035c8a1b3fa93e",
+  "provenance_catalog": [
+    {
+      "tool": "vn_equity_quote_batch",
+      "source": "vnstock",
+      "as_of": "2026-11-01T23:04:25.600524+07:00",
+      "matched_entry_id": "batch:steel1",
+      "response_sha256": "7add49baf2ac85e28aae833c39247d528112ab910a7cc97a942e2d52d58ce76a"
+    }
+  ],
+  "required_payload_keys": [
+    "batch:steel1"
+  ]
+}

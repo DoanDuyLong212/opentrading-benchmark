@@ -1,0 +1,28 @@
+# Task benchmark harness tài chính — sinh bởi tools/gen_tasks.py
+id = "fin-l4-2nguon-01"
+title = "Đối chiếu 2 nguồn giá HPG"
+version = 2
+created = "2026-11-01"
+level = "L4"
+family = "L4·D two-source"
+financebench_type = "cross-source verification"
+entity = "HPG"
+asset = "vn_stock"
+data_zone = "green"
+data_pairs = ["vn_quote_history", "vs_overview_trading"]
+snapshot_date = "2026-11-01"
+universe_cap = 0
+banned_tools = ["web_search", "web_fetch", "sentiment_score"]
+human_time_band = "15–60 phút"
+time_limit_min = 30
+tools_expected = ["vn_quote_history", "vs_overview_trading"]
+mcp_payloads = "environment/payloads.json"
+snapshot_required = true
+
+confirmatory_eligible = true
+
+[scoring]
+type = "value"
+gold = "solution/gold.json"
+oracle = "solution/oracle.py"
+grader = "tests/grader.py"

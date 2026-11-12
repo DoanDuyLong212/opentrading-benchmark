@@ -1,0 +1,299 @@
+{
+  "read_only": true,
+  "source_protocol_grader_modified": false,
+  "external_model_calls": 0,
+  "inventory": {
+    "tasks": 254,
+    "task_tools": 818,
+    "unique_schemas": 156,
+    "invalid_schemas": 6,
+    "affected_task_tools": 65,
+    "affected_tasks": 65,
+    "by_split": {
+      "devsmoke": 2,
+      "main": 60,
+      "memorydev": 1,
+      "pilot": 2
+    },
+    "count_semantics": "Tasks containing an uncompilable declared tool schema; not a claim that every task necessarily calls that tool or must fail."
+  },
+  "bad_schema_groups": [
+    {
+      "id": "0a677090b98379f24ab739fcbe30ba04a547498effcb0b2dd813ef1359c12183",
+      "tools": [
+        "symbol_resolve"
+      ],
+      "task_tools": 1,
+      "bad_pattern_occurrences": 1,
+      "bad_patterns": [
+        "^\\s*[nN][hH][àÀ]\\ [kK][hH][aA][nN][gG]\\ [đĐ][iI][ềỀ][nN]\\s*$"
+      ]
+    },
+    {
+      "id": "4f8a0cca7f40513450b9f6f3e3ec92e8fa9c8ae58cebf596a1bc7ab6f086734d",
+      "tools": [
+        "symbol_resolve"
+      ],
+      "task_tools": 1,
+      "bad_pattern_occurrences": 1,
+      "bad_patterns": [
+        "^\\s*[đĐ][ạẠ][mM]\\ [pP][hH][úÚ]\\ [mM][ỹỸ]\\s*$"
+      ]
+    },
+    {
+      "id": "d55a7074bed61be814807f2397f18d2d2973761ff830656beb57cc29595a58da",
+      "tools": [
+        "vs_indicator_data"
+      ],
+      "task_tools": 16,
+      "bad_pattern_occurrences": 2,
+      "bad_patterns": [
+        "^\\s*2022\\-01\\-01\\s*$",
+        "^\\s*2025\\-12\\-01\\s*$"
+      ]
+    },
+    {
+      "id": "863403bb7a800f6e3b84071d31db66d16ada7e1e6ba40919002a4fd6cabc5e36",
+      "tools": [
+        "yf_commodities"
+      ],
+      "task_tools": 45,
+      "bad_pattern_occurrences": 8,
+      "bad_patterns": [
+        "^\\s*[bB][nN][bB]\\-[uU][sS][dD]\\s*$",
+        "^\\s*[bB][tT][cC]\\-[uU][sS][dD]\\s*$",
+        "^\\s*[eE][tT][hH]\\-[uU][sS][dD]\\s*$",
+        "^\\s*[sS][oO][lL]\\-[uU][sS][dD]\\s*$"
+      ]
+    },
+    {
+      "id": "f4484d51af979f74f8f79f130eb7901f198ce589b2cc0ed85cbfe5d4ad294dd3",
+      "tools": [
+        "vs_indicator_data"
+      ],
+      "task_tools": 1,
+      "bad_pattern_occurrences": 1,
+      "bad_patterns": [
+        "^\\s*2022\\-01\\-01\\s*$"
+      ]
+    },
+    {
+      "id": "01f4293b28ae72ffe3c04cb63b42d091dd0ff914383fe866f9fc481ffcfbfc17",
+      "tools": [
+        "yf_commodities"
+      ],
+      "task_tools": 1,
+      "bad_pattern_occurrences": 2,
+      "bad_patterns": [
+        "^\\s*[bB][tT][cC]\\-[uU][sS][dD]\\s*$"
+      ]
+    }
+  ],
+  "observed": {
+    "run": "/home/doanlong/extra/benchmark/experiments/finance-v45-study/results/financial-memory-v45-mini-20261109-preflight5",
+    "episodes": [
+      {
+        "trial_id": "2873e74f7a4c9a07a25a",
+        "model": "nvidia/nvidia/nemotron-3.5-super-vl-120b-a12b",
+        "arm": "ot_memory_on",
+        "case": "memorydev/mem-dev-stale-current",
+        "status": "completed",
+        "native_regex_tool_failures": [
+          {
+            "log": "/home/doanlong/extra/benchmark/experiments/finance-v45-study/results/financial-memory-v45-mini-20261109-preflight5/episodes/2873e74f7a4c9a07a25a/runner/turn-01.log",
+            "call_id": "call-73efb209-62ba-4d1c-9ed1-bd7b77959e55",
+            "provider_request_index": 2,
+            "output": "Tham số không hợp lệ cho mcp__opentrading__yf_commodities: Type validation failed: Value: {\"tickers\":[\"GC=F\"],\"period\":\"5d\",\"interval\":\"1d\"}.\nError message: SyntaxError: Invalid regular expression: invalid escaped character for Unicode pattern"
+          },
+          {
+            "log": "/home/doanlong/extra/benchmark/experiments/finance-v45-study/results/financial-memory-v45-mini-20261109-preflight5/episodes/2873e74f7a4c9a07a25a/runner/turn-01.log",
+            "call_id": "call-069d5a6f-01c7-41db-86ac-3fd0c77dfe61",
+            "provider_request_index": 3,
+            "output": "Tham số không hợp lệ cho mcp__opentrading__yf_commodities: Type validation failed: Value: {\"tickers\":null,\"period\":\"5d\",\"interval\":\"1d\"}.\nError message: SyntaxError: Invalid regular expression: invalid escaped character for Unicode pattern"
+          },
+          {
+            "log": "/home/doanlong/extra/benchmark/experiments/finance-v45-study/results/financial-memory-v45-mini-20261109-preflight5/episodes/2873e74f7a4c9a07a25a/runner/turn-01.log",
+            "call_id": "call-3242ece7-2757-40c5-9a7d-f51a40bee7f1",
+            "provider_request_index": 4,
+            "output": "Tham số không hợp lệ cho mcp__opentrading__yf_commodities: Type validation failed: Value: {\"period\":\"5d\",\"interval\":\"1d\"}.\nError message: SyntaxError: Invalid regular expression: invalid escaped character for Unicode pattern"
+          },
+          {
+            "log": "/home/doanlong/extra/benchmark/experiments/finance-v45-study/results/financial-memory-v45-mini-20261109-preflight5/episodes/2873e74f7a4c9a07a25a/runner/turn-01.log",
+            "call_id": "call-a538f9a9-e266-40d6-ac72-a5b96f40a7d3",
+            "provider_request_index": 7,
+            "output": "Tham số không hợp lệ cho mcp__opentrading__yf_commodities: Type validation failed: Value: {\"tickers\":[\"GC=F\",\"SI=F\",\"NG=F\",\"HG=F\",\"BZ=F\",\"CL=F\",\"BTC-USD\",\"ETH-USD\",\"SOL-USD\",\"BNB-USD\",\"GBPUSD=X\",\"JPY=X\"],\"period\":\"5d\",\"interval\":\"1d\"}.\nError message: SyntaxError: Invalid regular expression: invalid escaped character for Unicode pattern"
+          }
+        ],
+        "failure_count": 4,
+        "provider_attempts": 9,
+        "observed_upstream_attempts_all_turns": 9,
+        "actual_yf_mcp_executions": 0
+      },
+      {
+        "trial_id": "33ff2409409809fb6508",
+        "model": "nvidia/deepseek-ai/deepseek-v4.1-flash",
+        "arm": "ot_memory_on",
+        "case": "memorydev/mem-dev-stale-current",
+        "status": "completed",
+        "native_regex_tool_failures": [
+          {
+            "log": "/home/doanlong/extra/benchmark/experiments/finance-v45-study/results/financial-memory-v45-mini-20261109-preflight5/episodes/33ff2409409809fb6508/runner/turn-01.log",
+            "call_id": "chatcmpl-tool-95381ea27d4a89f9",
+            "provider_request_index": 3,
+            "output": "Tham số không hợp lệ cho mcp__opentrading__yf_commodities: Type validation failed: Value: {\"tickers\":[\"GC=F\",\"SI=F\",\"NG=F\",\"HG=F\",\"BZ=F\",\"CL=F\",\"BTC-USD\",\"ETH-USD\",\"SOL-USD\",\"BNB-USD\",\"GBPUSD=X\",\"JPY=X\"],\"period\":\"5d\",\"interval\":\"1d\"}.\nError message: SyntaxError: Invalid regular expression: invalid escaped character for Unicode pattern"
+          },
+          {
+            "log": "/home/doanlong/extra/benchmark/experiments/finance-v45-study/results/financial-memory-v45-mini-20261109-preflight5/episodes/33ff2409409809fb6508/runner/turn-01.log",
+            "call_id": "chatcmpl-tool-95dc46dd4d8b5593",
+            "provider_request_index": 4,
+            "output": "Tham số không hợp lệ cho mcp__opentrading__yf_commodities: Type validation failed: Value: {\"tickers\":[\"GC=F\"],\"period\":\"5d\",\"interval\":\"1d\"}.\nError message: SyntaxError: Invalid regular expression: invalid escaped character for Unicode pattern"
+          },
+          {
+            "log": "/home/doanlong/extra/benchmark/experiments/finance-v45-study/results/financial-memory-v45-mini-20261109-preflight5/episodes/33ff2409409809fb6508/runner/turn-01.log",
+            "call_id": "chatcmpl-tool-bcd8f5f20b0de7f4",
+            "provider_request_index": 5,
+            "output": "Tham số không hợp lệ cho mcp__opentrading__yf_commodities: Type validation failed: Value: {\"tickers\":null,\"period\":\"5d\",\"interval\":\"1d\"}.\nError message: SyntaxError: Invalid regular expression: invalid escaped character for Unicode pattern"
+          },
+          {
+            "log": "/home/doanlong/extra/benchmark/experiments/finance-v45-study/results/financial-memory-v45-mini-20261109-preflight5/episodes/33ff2409409809fb6508/runner/turn-01.log",
+            "call_id": "chatcmpl-tool-911939640439b113",
+            "provider_request_index": 6,
+            "output": "Tham số không hợp lệ cho mcp__opentrading__yf_commodities: Type validation failed: Value: {\"tickers\":[\"GC=F\",\"SI=F\",\"NG=F\",\"HG=F\",\"BZ=F\",\"CL=F\",\"BTC-USD\",\"ETH-USD\",\"SOL-USD\",\"BNB-USD\",\"GBPUSD=X\",\"JPY=X\"],\"period\":\"5d\"}.\nError message: SyntaxError: Invalid regular expression: invalid escaped character for Unicode pattern"
+          }
+        ],
+        "failure_count": 4,
+        "provider_attempts": 8,
+        "observed_upstream_attempts_all_turns": 8,
+        "actual_yf_mcp_executions": 0
+      },
+      {
+        "trial_id": "4429f7978497fa2ad270",
+        "model": "nvidia/nvidia/nemotron-3.5-super-vl-120b-a12b",
+        "arm": "ot_memory_off",
+        "case": "memorydev/mem-dev-stale-current",
+        "status": "completed",
+        "native_regex_tool_failures": [
+          {
+            "log": "/home/doanlong/extra/benchmark/experiments/finance-v45-study/results/financial-memory-v45-mini-20261109-preflight5/episodes/4429f7978497fa2ad270/runner/turn-01.log",
+            "call_id": "call-21a31348-97cf-4258-afff-016cda3b2eb0",
+            "provider_request_index": 2,
+            "output": "Tham số không hợp lệ cho mcp__opentrading__yf_commodities: Type validation failed: Value: {\"tickers\":[\"GC=F\",\"SI=F\",\"NG=F\",\"HG=F\",\"BZ=F\",\"CL=F\",\"BTC-USD\",\"ETH-USD\",\"SOL-USD\",\"BNB-USD\",\"GBPUSD=X\",\"JPY=X\"],\"period\":\"5d\",\"interval\":\"1d\"}.\nError message: SyntaxError: Invalid regular expression: invalid escaped character for Unicode pattern"
+          },
+          {
+            "log": "/home/doanlong/extra/benchmark/experiments/finance-v45-study/results/financial-memory-v45-mini-20261109-preflight5/episodes/4429f7978497fa2ad270/runner/turn-01.log",
+            "call_id": "call-a8cc6591-5f39-4ce8-b243-6d68f72b52a8",
+            "provider_request_index": 3,
+            "output": "Tham số không hợp lệ cho mcp__opentrading__yf_commodities: Type validation failed: Value: {}.\nError message: SyntaxError: Invalid regular expression: invalid escaped character for Unicode pattern"
+          },
+          {
+            "log": "/home/doanlong/extra/benchmark/experiments/finance-v45-study/results/financial-memory-v45-mini-20261109-preflight5/episodes/4429f7978497fa2ad270/runner/turn-01.log",
+            "call_id": "call-eb5b8faa-d767-422a-a0d8-2ddc062e1ef7",
+            "provider_request_index": 4,
+            "output": "Tham số không hợp lệ cho mcp__opentrading__yf_commodities: Type validation failed: Value: {\"tickers\":[\"GC=F\"],\"period\":\"5d\",\"interval\":\"1d\"}.\nError message: SyntaxError: Invalid regular expression: invalid escaped character for Unicode pattern"
+          }
+        ],
+        "failure_count": 3,
+        "provider_attempts": 6,
+        "observed_upstream_attempts_all_turns": 6,
+        "actual_yf_mcp_executions": 0
+      },
+      {
+        "trial_id": "9c94afc0a4afcdbce705",
+        "model": "nvidia/deepseek-ai/deepseek-v4.1-flash",
+        "arm": "ot_memory_off",
+        "case": "memorydev/mem-dev-stale-current",
+        "status": "dnf",
+        "native_regex_tool_failures": [
+          {
+            "log": "/home/doanlong/extra/benchmark/experiments/finance-v45-study/results/financial-memory-v45-mini-20261109-preflight5/episodes/9c94afc0a4afcdbce705/runner/turn-01.log",
+            "call_id": "chatcmpl-tool-849760d32059b2a0",
+            "provider_request_index": 3,
+            "output": "Tham số không hợp lệ cho mcp__opentrading__yf_commodities: Type validation failed: Value: {\"tickers\":[\"GC=F\",\"SI=F\",\"NG=F\",\"HG=F\",\"BZ=F\",\"CL=F\",\"BTC-USD\",\"ETH-USD\",\"SOL-USD\",\"BNB-USD\",\"GBPUSD=X\",\"JPY=X\"],\"period\":\"5d\",\"interval\":\"1d\"}.\nError message: SyntaxError: Invalid regular expression: invalid escaped character for Unicode pattern"
+          },
+          {
+            "log": "/home/doanlong/extra/benchmark/experiments/finance-v45-study/results/financial-memory-v45-mini-20261109-preflight5/episodes/9c94afc0a4afcdbce705/runner/turn-01.log",
+            "call_id": "chatcmpl-tool-a09ea56183c06e83",
+            "provider_request_index": 4,
+            "output": "Tham số không hợp lệ cho mcp__opentrading__yf_commodities: Type validation failed: Value: {\"tickers\":[\"GC=F\",\"SI=F\",\"NG=F\",\"HG=F\",\"BZ=F\",\"CL=F\",\"BTC-USD\",\"ETH-USD\",\"SOL-USD\",\"BNB-USD\",\"GBPUSD=X\",\"JPY=X\"],\"period\":\"5d\"}.\nError message: SyntaxError: Invalid regular expression: invalid escaped character for Unicode pattern"
+          },
+          {
+            "log": "/home/doanlong/extra/benchmark/experiments/finance-v45-study/results/financial-memory-v45-mini-20261109-preflight5/episodes/9c94afc0a4afcdbce705/runner/turn-01.log",
+            "call_id": "chatcmpl-tool-946cf3519a975a69",
+            "provider_request_index": 5,
+            "output": "Tham số không hợp lệ cho mcp__opentrading__yf_commodities: Type validation failed: Value: {\"tickers\":[\"GC=F\"],\"period\":\"5d\",\"interval\":\"1d\"}.\nError message: SyntaxError: Invalid regular expression: invalid escaped character for Unicode pattern"
+          },
+          {
+            "log": "/home/doanlong/extra/benchmark/experiments/finance-v45-study/results/financial-memory-v45-mini-20261109-preflight5/episodes/9c94afc0a4afcdbce705/runner/turn-01.log",
+            "call_id": "chatcmpl-tool-a2cd57188c1c5e70",
+            "provider_request_index": 6,
+            "output": "Tham số không hợp lệ cho mcp__opentrading__yf_commodities: Type validation failed: Value: {\"tickers\":null,\"period\":\"5d\",\"interval\":\"1d\"}.\nError message: SyntaxError: Invalid regular expression: invalid escaped character for Unicode pattern"
+          },
+          {
+            "log": "/home/doanlong/extra/benchmark/experiments/finance-v45-study/results/financial-memory-v45-mini-20261109-preflight5/episodes/9c94afc0a4afcdbce705/runner/turn-01.log",
+            "call_id": "chatcmpl-tool-ab83d6e23cb81880",
+            "provider_request_index": 6,
+            "output": "Tham số không hợp lệ cho mcp__opentrading__yf_commodities: Type validation failed: Value: {\"tickers\":[\"GC=F\",\"SI=F\",\"NG=F\",\"HG=F\",\"BZ=F\",\"CL=F\",\"ETH-USD\",\"SOL-USD\",\"BNB-USD\",\"GBPUSD=X\",\"JPY=X\",\"USDVND\"],\"period\":\"5d\",\"interval\":\"1d\"}.\nError message: SyntaxError: Invalid regular expression: invalid escaped character for Unicode pattern"
+          }
+        ],
+        "failure_count": 5,
+        "provider_attempts": 7,
+        "observed_upstream_attempts_all_turns": 7,
+        "actual_yf_mcp_executions": 0
+      }
+    ],
+    "count": 16
+  },
+  "captured_tiny_repro": {
+    "sdk_without_custom_validator": {
+      "success": true,
+      "meaning": "Pinned SDK jsonSchema without validate callback passes through; this is not evidence of schema validation."
+    },
+    "read_only": true,
+    "external_model_calls": 0,
+    "bun_version": "1.4.4",
+    "tool": "mcp__opentrading__yf_commodities",
+    "source_capture": "/home/doanlong/extra/benchmark/experiments/finance-v45-study/results/financial-memory-v45-mini-20261109-preflight5/episodes/33ff2409409809fb6508/runner/provider-requests/0002-native.json",
+    "source_capture_sha256": "363b48c810e9b5fd35fe38089cbbe02988828cf99d42a81d718c38f5215132f6",
+    "pattern_path": "/anyOf/0/properties/tickers/items/anyOf/6/pattern",
+    "pattern": "^\\s*[bB][tT][cC]\\-[uU][sS][dD]\\s*$",
+    "non_unicode_compiles": true,
+    "unicode_compiles": false,
+    "unicode_error": "SyntaxError: Invalid regular expression: invalid escaped character for Unicode pattern",
+    "actual_native_sdk_success": false,
+    "actual_native_sdk_error": {
+      "name": "AI_TypeValidationError",
+      "message": "Type validation failed: Value: {\"tickers\":[\"GC=F\",\"SI=F\",\"NG=F\",\"HG=F\",\"BZ=F\",\"CL=F\",\"BTC-USD\",\"ETH-USD\",\"SOL-USD\",\"BNB-USD\",\"GBPUSD=X\",\"JPY=X\"],\"period\":\"5d\",\"interval\":\"1d\"}.\nError message: SyntaxError: Invalid regular expression: invalid escaped character for Unicode pattern",
+      "cause": "SyntaxError: Invalid regular expression: invalid escaped character for Unicode pattern"
+    }
+  },
+  "source_hashes": {
+    "experiments/finance-v45-study/tools/mcp_snapshot_server.py": "d9c711cb6cc47056e19c032a55b8be358437970b29b398dfd8de6a6e091dc395",
+    "experiments/finance-v45-study/experiments/opentrading-runtime/src/core/finance-policy.ts": "0a2587a4d059d3426e84b90a41c7187b673744bb866ddb567117684f327e6718",
+    "experiments/finance-v45-study/experiments/opentrading-runtime/src/core/tools/registry.ts": "bdaa6c47d273059c612036f17e725e4b1db96bf9e0d2aa950cb20819b2878257"
+  },
+  "qualification": "BLOCK_STATELESS_ADVANCE_INSTRUMENTATION_INTEROPERABILITY; preserve MINI outcomes and raw artifacts, no retrospective repair or quality rerun",
+  "future_version_plan": [
+    "Generate finite string regex patterns with ECMA-262 Unicode-compatible literal escaping, preserving unchanged matcher case/space/array semantics. Do not disable Unicode validation or strip finite constraints.",
+    "Precompile EVERY declared per-task tool schema with actual pinned native FinancePolicyState/AJV and SDK safeValidateTypes before any provider request; include mixed valid/invalid sibling alternatives, spaces, hyphens, dates, Unicode Vietnamese names.",
+    "Check semantically equivalent positive/negative examples against Python matcher and all actual harness validators. Any unsupported schema is an infrastructure admission failure, never a model-repair opportunity.",
+    "Create a separate version/manifest with frozen protocol/grader; run offline complete corpus validation and native local-wire controls before seeking separately authorized inference. Current MINI remains unchanged and excluded from superiority/promotion claims."
+  ],
+  "stateless_baseline_confound": "Native registry attaches AJV validate callback only with financeState; B0/no-financeState uses SDK jsonSchema without a validator, which passes through. Same malformed pattern can therefore handicap B1 against B0 before any financial reasoning. Future stateless comparisons blocked.",
+  "sealed_source_pin_checks": {
+    "tools/mcp_snapshot_server.py": {
+      "actual": "d9c711cb6cc47056e19c032a55b8be358437970b29b398dfd8de6a6e091dc395",
+      "sealed": "d9c711cb6cc47056e19c032a55b8be358437970b29b398dfd8de6a6e091dc395",
+      "matches": true
+    },
+    "experiments/opentrading-runtime/src/core/finance-policy.ts": {
+      "actual": "0a2587a4d059d3426e84b90a41c7187b673744bb866ddb567117684f327e6718",
+      "sealed": "0a2587a4d059d3426e84b90a41c7187b673744bb866ddb567117684f327e6718",
+      "matches": true
+    },
+    "experiments/opentrading-runtime/src/core/tools/registry.ts": {
+      "actual": "bdaa6c47d273059c612036f17e725e4b1db96bf9e0d2aa950cb20819b2878257",
+      "sealed": "bdaa6c47d273059c612036f17e725e4b1db96bf9e0d2aa950cb20819b2878257",
+      "matches": true
+    }
+  }
+}

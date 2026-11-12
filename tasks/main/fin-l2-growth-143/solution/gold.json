@@ -1,44 +1,65 @@
 {
- "task_id": "fin-l2-growth-143",
- "scoring": "value",
- "solution": {
-  "value": 31.52
- },
- "as_of": "2026-11-01T23:48:45.000607+07:00",
- "split": "main",
- "expects": [
-  {
-   "type": "value",
-   "path": "value",
-   "gold": 31.52,
-   "tol": {
-    "abs": 0.1
-   }
+  "task_id": "fin-l2-growth-143",
+  "scoring": "value",
+  "solution": {
+    "value": 31.52
   },
-  {
-   "type": "unit",
-   "path": "unit",
-   "accept": [
-    "%",
-    "phần trăm"
-   ]
-  },
-  {
-   "type": "period",
-   "path": "period",
-   "accept": [
-    "Q3/2026",
-    "quý 3/2026",
-    "q3 2026",
-    "q3/26"
-   ]
-  },
-  {
-   "type": "str",
-   "path": "source",
-   "accept": [
-    "financial_statements"
-   ]
-  }
- ]
+  "as_of": "2026-11-01T23:48:45.000607+07:00",
+  "split": "main",
+  "expects": [
+    {
+      "type": "value",
+      "path": "value",
+      "gold": 31.52,
+      "tol": {
+        "abs": 0.1
+      }
+    },
+    {
+      "type": "unit",
+      "path": "unit",
+      "accept": [
+        "%",
+        "phần trăm"
+      ]
+    },
+    {
+      "type": "period",
+      "path": "period",
+      "accept": [
+        "Q2/2026",
+        "Q3/2026"
+      ]
+    },
+    {
+      "type": "str",
+      "path": "source",
+      "accept": [
+        "financial_statements"
+      ]
+    }
+  ],
+  "contract_version": 2,
+  "provenance_contract": [
+    {
+      "tool": "financial_statements",
+      "source": "vietstock",
+      "as_of": "2026-11-01T23:48:45.000607+07:00",
+      "matched_entry_id": "fs:MSN",
+      "response_sha256": "304693ddd1f6deedade94de7faee3c790357d6ecae844ce0ad1bcb9f3697cce3"
+    }
+  ],
+  "payload_sha256": "0860e4740da953d16f7ef0e56c7ba692638f6954a42ee5820c3f93d2e3b240a2",
+  "provenance_catalog": [
+    {
+      "tool": "financial_statements",
+      "source": "vietstock",
+      "as_of": "2026-11-01T23:48:45.000607+07:00",
+      "matched_entry_id": "fs:MSN",
+      "response_sha256": "304693ddd1f6deedade94de7faee3c790357d6ecae844ce0ad1bcb9f3697cce3"
+    }
+  ],
+  "required_payload_keys": [
+    "fs:MSN"
+  ]
 }

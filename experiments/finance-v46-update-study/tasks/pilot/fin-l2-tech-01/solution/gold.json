@@ -1,0 +1,106 @@
+{
+  "task_id": "fin-l2-tech-01",
+  "scoring": "value",
+  "expects": [
+    {
+      "type": "value",
+      "path": "value",
+      "gold": 44.01,
+      "tol": {
+        "abs": 0.1
+      }
+    },
+    {
+      "type": "unit",
+      "path": "unit",
+      "accept": [
+        "RSI-14",
+        "RSI 14",
+        "RSI",
+        "rsi14"
+      ]
+    },
+    {
+      "type": "period",
+      "path": "period",
+      "accept": [
+        "30/10",
+        "30-10",
+        "30.10",
+        "2026-10-30",
+        "phiên gần nhất",
+        "gần nhất"
+      ]
+    },
+    {
+      "type": "str",
+      "path": "source",
+      "accept": [
+        "signals_technical"
+      ]
+    }
+  ],
+  "solution": {
+    "value": 44.01
+  },
+  "notes": "computed-local từ nến 1D; deterministic theo snapshot.",
+  "as_of": "2026-11-01T15:57:53.193466+07:00",
+  "contract_version": 2,
+  "provenance_contract": [
+    {
+      "tool": "signals_technical",
+      "source": "computed-local",
+      "as_of": "2026-11-01T15:57:53.193466+07:00",
+      "matched_entry_id": "signals_technical:5",
+      "response_sha256": "dca15ffbcdfe0f17ec67f9bc897ae2e42caa94a7d7648d5ae6b0d9445bde15bb"
+    }
+  ],
+  "payload_sha256": "f334553f17b36b4e092930887e591d2226b804ec31095286cdbcfcedf65f2b32",
+  "provenance_catalog": [
+    {
+      "tool": "signals_technical",
+      "source": "computed-local",
+      "as_of": "2026-11-01T15:57:53.193466+07:00",
+      "matched_entry_id": "signals_technical:0",
+      "response_sha256": "3354276e0c5c7870a0ebc8d02f3045976bc813b5230c2ef182843f61bb935384"
+    },
+    {
+      "tool": "signals_technical",
+      "source": "computed-local",
+      "as_of": "2026-11-01T15:57:53.193466+07:00",
+      "matched_entry_id": "signals_technical:1",
+      "response_sha256": "0fc38471e04d2118aad1dc94b5386635552af1fde4c1b68d8e870c6ee8962798"
+    },
+    {
+      "tool": "signals_technical",
+      "source": "computed-local",
+      "as_of": "2026-11-01T15:57:53.193466+07:00",
+      "matched_entry_id": "signals_technical:2",
+      "response_sha256": "bb4a77b9438d9d0fc36e82a14242beedda7c8eabcd402e2f6e8de2abc05cd1b2"
+    },
+    {
+      "tool": "signals_technical",
+      "source": "computed-local",
+      "as_of": "2026-11-01T15:57:53.193466+07:00",
+      "matched_entry_id": "signals_technical:3",
+      "response_sha256": "85802c3e20d76a052357c98cf62807b4aedb916658474504980c11b3ead08281"
+    },
+    {
+      "tool": "signals_technical",
+      "source": "computed-local",
+      "as_of": "2026-11-01T15:57:53.193466+07:00",
+      "matched_entry_id": "signals_technical:4",
+      "response_sha256": "08b44630d3492995e75051dac4dc135abe809c24af54e1cb9239ae1abf497657"
+    },
+    {
+      "tool": "signals_technical",
+      "source": "computed-local",
+      "as_of": "2026-11-01T15:57:53.193466+07:00",
+      "matched_entry_id": "signals_technical:5",
+      "response_sha256": "dca15ffbcdfe0f17ec67f9bc897ae2e42caa94a7d7648d5ae6b0d9445bde15bb"
+    }
+  ],
+  "required_payload_keys": [
+    "signals_technical"
+  ]
+}

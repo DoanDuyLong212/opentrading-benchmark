@@ -1,0 +1,15 @@
+--- CMD ---
+/home/doanlong/.local/bin/dsh --profile benchmark --json -
+
+--- STDOUT ---
+{"type":"session","sessionId":"session-61a01042-1160-4303-99ed-89e32c7b3927","cwd":"/home/doanlong/extra/benchmark/audits/2026-11-05/opentrading-review/capture/dsh/ws"}
+{"type":"status","phase":"turn_start","turn":1}
+{"type":"status","phase":"step_start","turn":1,"step":1}
+{"type":"text","text":"{\"inspection\":\"local capture only\"}"}
+{"type":"status","phase":"step_end","turn":1,"step":1,"usage":{"inputTokens":1,"outputTokens":1,"totalTokens":2}}
+{"type":"status","phase":"turn_end","turn":1,"reason":{"kind":"completed"}}
+{"type":"final","text":"{\"inspection\":\"local capture only\"}"}
+
+
+--- STDERR ---
+

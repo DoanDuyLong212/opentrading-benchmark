@@ -1,0 +1,69 @@
+{
+  "status": "DRAFT_NOT_EXECUTABLE_BEFORE_MODEL_ADMISSION_AND_SEAL",
+  "created_date_local": "2026-11-08",
+  "timezone": "Asia/Bangkok",
+  "base_remote_sha": "0a65fa04d0e60ee3d1822de365f2a88dc92eaf2f",
+  "archived_runs_unchanged": true,
+  "models": [
+    {
+      "provider": "nvidia",
+      "benchmark_key": "nvidia/nvidia/nemotron-3.5-super-vl-120b-a12b",
+      "wire_model": "nvidia/nemotron-3.5-super-vl-120b-a12b",
+      "replaces_for_new_runs": "nvidia/nemotron-3.5-bolt-e4b",
+      "admission_receipt": null,
+      "temperature_candidate": 1.0,
+      "top_p_candidate": 0.95,
+      "reasoning_effective": "UNVERIFIED_REQUIRES_ENDPOINT_CANARY"
+    },
+    {
+      "provider": "nvidia",
+      "benchmark_key": "nvidia/deepseek-ai/deepseek-v4.1-flash",
+      "wire_model": "deepseek-ai/deepseek-v4.1-flash",
+      "admission_receipt": "NEW_BASE_WIRE_AND_RETRY_REVALIDATION_REQUIRED",
+      "temperature_candidate": 0,
+      "top_p_candidate": 1,
+      "reasoning_effective": "UNVERIFIED_REQUIRES_ENDPOINT_CANARY"
+    }
+  ],
+  "retry": {
+    "status": "IMPLEMENTATION_AND_PARITY_PROOF_REQUIRED",
+    "owner": "common_gateway",
+    "same_policy_all_arms_within_model": true,
+    "whole_trial_retries": 0,
+    "max_upstream_attempts_per_logical_request": 3,
+    "backoff_seconds": [
+      4,
+      8
+    ],
+    "retry_after_max_seconds": 60,
+    "eligible_statuses": [
+      429,
+      500,
+      502,
+      503,
+      504
+    ],
+    "only_pre_exposure_transport_failures": true,
+    "daily_quota_or_auth_retry": false,
+    "local_budget_retry": false,
+    "quality_or_format_retry": false,
+    "unknown_usage": "FAIL_CLOSED_UNLESS_PREREGISTERED_VERIFIED_UPPER_RESERVATION",
+    "identical_payload_and_context_required": true,
+    "preserve_all_attempts": true,
+    "native_retry_disable_or_parity_proof_required": true
+  },
+  "caps": {
+    "status": "PROVISIONAL_DIMENSION_BEFORE_SMOKE_SEAL",
+    "upstream_attempts_total_per_trial": 24,
+    "request_timeout_seconds_candidate": 240,
+    "trial_deadline_seconds_candidate": 900,
+    "max_output_tokens": null,
+    "total_token_cap": null
+  },
+  "memory_primary": "none_clean_isolated_default_product",
+  "memory_empty_notebook_regression": "separate_overhead_fixture",
+  "memory_value_claim_requires": "separate_equal_information_multiturn_track",
+  "main_inference_enabled": false,
+  "holdout_inference_enabled": false,
+  "model_calls_this_planning_turn": 0
+}

@@ -1,0 +1,122 @@
+{
+  "pass": false,
+  "complete": true,
+  "external_model_calls": 0,
+  "reports": [
+    {
+      "arm": "ot_memory_off",
+      "mode": "soft-after-turn",
+      "work": "/tmp/v45-memory-pause-ij5hdlis",
+      "external_model_calls": 0,
+      "state": {
+        "version": 1,
+        "model": "nvidia/deepseek-ai/deepseek-v4.1-flash",
+        "condition": "ot_memory_off",
+        "completed_turns": [
+          {
+            "session": "S1",
+            "turn": 0,
+            "final": false,
+            "user_text": "Lấy quote SYN, ghi object JSON với giá và biên nhận nguồn.",
+            "result": {
+              "status": "error",
+              "session_id": null,
+              "notes": "provider request failed; inspect redacted provider ledger",
+              "native_completion": {
+                "outcome": "failed",
+                "unanswered": false,
+                "recoveries": []
+              },
+              "final_text": "",
+              "tokens": null,
+              "provider_requests": 1,
+              "provider_usage": null,
+              "inventory_path": "/tmp/v45-memory-pause-ij5hdlis/runner/inventory.json",
+              "provider_ledger": "/tmp/v45-memory-pause-ij5hdlis/runner/provider.jsonl",
+              "answer_path": null,
+              "answer_candidates": [],
+              "transport_recovered": false,
+              "first_attempt_completed": false,
+              "token_reservations_not_observed_usage": 1056768,
+              "native_derived_ledger": null
+            },
+            "provider_rows_start": 0,
+            "provider_rows_end": 1,
+            "unauthorized_write": false,
+            "native_memory_before": null,
+            "native_memory_after": null
+          }
+        ],
+        "native_sessions": {},
+        "active_seconds": 14.87426645900996,
+        "status": "dnf",
+        "final_text": "",
+        "provider_ledger": "/tmp/v45-memory-pause-ij5hdlis/runner/provider.jsonl",
+        "mcp_ledger": "/tmp/v45-memory-pause-ij5hdlis/runner/mcp.jsonl",
+        "memory_access_ledger": "/tmp/v45-memory-pause-ij5hdlis/runner/memory-access.jsonl",
+        "authorized_user_notebook": "/tmp/v45-memory-pause-ij5hdlis/runner/authorized-user-notebook.json",
+        "usage": null
+      },
+      "requests_before_resume": 1,
+      "pass_": false,
+      "error": "{'version': 1, 'model': 'nvidia/deepseek-ai/deepseek-v4.1-flash', 'condition': 'ot_memory_off', 'completed_turns': [{'session': 'S1', 'turn': 0, 'final': False, 'user_text': 'Lấy quote SYN, ghi object JSON với giá và biên nhận nguồn.', 'result': {'status': 'error', 'session_id': None, 'notes': 'provider request failed; inspect redacted provider ledger', 'native_completion': {'outcome': 'failed', 'unanswered': False, 'recoveries': []}, 'final_text': '', 'tokens': None, 'provider_requests': 1, 'provider_usage': None, 'inventory_path': '/tmp/v45-memory-pause-ij5hdlis/runner/inventory.json', 'provider_ledger': '/tmp/v45-memory-pause-ij5hdlis/runner/provider.jsonl', 'answer_path': None, 'answer_candidates': [], 'transport_recovered': False, 'first_attempt_completed': False, 'token_reservations_not_observed_usage': 1056768, 'native_derived_ledger': None}, 'provider_rows_start': 0, 'provider_rows_end': 1, 'unauthorized_write': False, 'native_memory_before': None, 'native_memory_after': None}], 'native_sessions': {}, 'active_seconds': 14.87426645900996, 'status': 'dnf', 'final_text': '', 'provider_ledger': '/tmp/v45-memory-pause-ij5hdlis/runner/provider.jsonl', 'mcp_ledger': '/tmp/v45-memory-pause-ij5hdlis/runner/mcp.jsonl', 'memory_access_ledger': '/tmp/v45-memory-pause-ij5hdlis/runner/memory-access.jsonl', 'authorized_user_notebook': '/tmp/v45-memory-pause-ij5hdlis/runner/authorized-user-notebook.json', 'usage': None}",
+      "traceback": "Traceback (most recent call last):\n  File \"/home/doanlong/extra/benchmark/audits/financial-memory-v45/verify-memory-pause-wire.py\", line 51, in <module>\n    assert done['status']=='paused'and len(done['completed_turns'])==1,done\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: {'version': 1, 'model': 'nvidia/deepseek-ai/deepseek-v4.1-flash', 'condition': 'ot_memory_off', 'completed_turns': [{'session': 'S1', 'turn': 0, 'final': False, 'user_text': 'Lấy quote SYN, ghi object JSON với giá và biên nhận nguồn.', 'result': {'status': 'error', 'session_id': None, 'notes': 'provider request failed; inspect redacted provider ledger', 'native_completion': {'outcome': 'failed', 'unanswered': False, 'recoveries': []}, 'final_text': '', 'tokens': None, 'provider_requests': 1, 'provider_usage': None, 'inventory_path': '/tmp/v45-memory-pause-ij5hdlis/runner/inventory.json', 'provider_ledger': '/tmp/v45-memory-pause-ij5hdlis/runner/provider.jsonl', 'answer_path': None, 'answer_candidates': [], 'transport_recovered': False, 'first_attempt_completed': False, 'token_reservations_not_observed_usage': 1056768, 'native_derived_ledger': None}, 'provider_rows_start': 0, 'provider_rows_end': 1, 'unauthorized_write': False, 'native_memory_before': None, 'native_memory_after': None}], 'native_sessions': {}, 'active_seconds': 14.87426645900996, 'status': 'dnf', 'final_text': '', 'provider_ledger': '/tmp/v45-memory-pause-ij5hdlis/runner/provider.jsonl', 'mcp_ledger': '/tmp/v45-memory-pause-ij5hdlis/runner/mcp.jsonl', 'memory_access_ledger': '/tmp/v45-memory-pause-ij5hdlis/runner/memory-access.jsonl', 'authorized_user_notebook': '/tmp/v45-memory-pause-ij5hdlis/runner/authorized-user-notebook.json', 'usage': None}\n"
+    },
+    {
+      "arm": "ot_memory_off",
+      "mode": "hard-abort",
+      "work": "/tmp/v45-memory-pause-abreolu1",
+      "external_model_calls": 0,
+      "returned_before_upstream_release": false,
+      "state": {
+        "version": 1,
+        "model": "nvidia/deepseek-ai/deepseek-v4.1-flash",
+        "condition": "ot_memory_off",
+        "completed_turns": [
+          {
+            "session": "S1",
+            "turn": 0,
+            "final": false,
+            "user_text": "Lấy quote SYN, ghi object JSON với giá và biên nhận nguồn.",
+            "result": {
+              "status": "error",
+              "session_id": null,
+              "notes": "Native completion outcome: None",
+              "native_completion": null,
+              "final_text": "",
+              "tokens": null,
+              "provider_requests": 0,
+              "provider_usage": null,
+              "inventory_path": "/tmp/v45-memory-pause-abreolu1/runner/inventory.json",
+              "provider_ledger": "/tmp/v45-memory-pause-abreolu1/runner/provider.jsonl",
+              "answer_path": null,
+              "answer_candidates": [],
+              "transport_recovered": false,
+              "first_attempt_completed": false,
+              "token_reservations_not_observed_usage": 0,
+              "native_derived_ledger": null
+            },
+            "provider_rows_start": 0,
+            "provider_rows_end": 0,
+            "unauthorized_write": false,
+            "native_memory_before": null,
+            "native_memory_after": null
+          }
+        ],
+        "native_sessions": {},
+        "active_seconds": 10.590539174998412,
+        "status": "interrupted",
+        "final_text": "",
+        "provider_ledger": "/tmp/v45-memory-pause-abreolu1/runner/provider.jsonl",
+        "mcp_ledger": "/tmp/v45-memory-pause-abreolu1/runner/mcp.jsonl",
+        "memory_access_ledger": "/tmp/v45-memory-pause-abreolu1/runner/memory-access.jsonl",
+        "authorized_user_notebook": "/tmp/v45-memory-pause-abreolu1/runner/authorized-user-notebook.json",
+        "usage": null
+      },
+      "requests_before_resume": 1,
+      "pass_": true,
+      "terminal_resume_new_calls": 0,
+      "total_local_requests": 1
+    }
+  ]
+}

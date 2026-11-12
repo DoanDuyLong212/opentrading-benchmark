@@ -1,0 +1,18 @@
+{
+  "pid": 2256274,
+  "started_at": "2026-11-07T07:47:20.246543+00:00",
+  "command": [
+    "/usr/bin/python3",
+    "/home/doanlong/extra/benchmark/experiments/finance-v44-study/tools/v44_supervisor.py",
+    "--seal",
+    "/home/doanlong/extra/benchmark/audits/financial-prompt-v44/preinference-seal-startupfix1.json",
+    "--state",
+    "/home/doanlong/extra/benchmark/audits/financial-prompt-v44/supervisor-startupfix1/state.json",
+    "--audit-script",
+    "/home/doanlong/extra/benchmark/audits/financial-prompt-v44/audit-completed-run.py",
+    "--audit-output",
+    "/home/doanlong/extra/benchmark/audits/financial-prompt-v44/independent-evidence.json"
+  ],
+  "state_path": "/home/doanlong/extra/benchmark/audits/financial-prompt-v44/supervisor-startupfix1/state.json",
+  "sealed_cli_preflight": "/home/doanlong/extra/benchmark/audits/financial-prompt-v44/sealed-cli-preflight-startupfix1.json"
+}

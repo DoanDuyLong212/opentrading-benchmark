@@ -1,0 +1,40 @@
+{
+  "manifest": {
+    "version": "v45-synthetic-canary-1",
+    "models": [
+      "deepseek-ai/deepseek-v4.1-flash",
+      "nvidia/nemotron-3.5-super-vl-120b-a12b"
+    ],
+    "treatments": {
+      "prefix": "^/data(?:/|$)",
+      "anchored": "^/data/(?:[^~/]|~[01])+(?:/(?:[^~/]|~[01])+)*$",
+      "none": null
+    },
+    "repeats": 2,
+    "cases": 12,
+    "max_chat_requests": 24,
+    "max_catalog_requests": 1,
+    "max_tokens_per_request": 4096,
+    "request_timeout_seconds": 240,
+    "total_deadline_seconds": 7200,
+    "retries": 0,
+    "synthetic_object": {
+      "data": {
+        "point": 17
+      }
+    },
+    "expected_selector": "/data/point",
+    "sampling": {
+      "deepseek-ai/deepseek-v4.1-flash": {
+        "temperature": 0,
+        "top_p": 1
+      },
+      "nvidia/nemotron-3.5-super-vl-120b-a12b": {
+        "temperature": 1,
+        "top_p": 0.95
+      }
+    },
+    "acceptance": "Admission requires both corrected-pattern and no-pattern repeats: expected model identity, valid function selector /data/point, continuation uses synthetic17, complete usage; pattern treatments reported regardless outcome."
+  },
+  "sha256": "13c5c5982f75bdce5f9f6cc9194d3fe9fb1a3db1a65213263588d56bc3944567"
+}

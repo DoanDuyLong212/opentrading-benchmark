@@ -1,7 +1,7 @@
 # Task benchmark harness tài chính (bộ 200+50) — sinh bởi tools/build_main.py
 id = "fin-l4-future-931"
 title = "POM — Q3/2026 (chưa công bố)"
-version = 1
+version = 2
 created = "2026-11-01"
 level = "L4"
 family = "L4·E future-period"
@@ -19,6 +19,8 @@ tools_expected = ["financial_statements"]
 mcp_payloads = "environment/payloads.json"
 snapshot_required = true
 split = "holdout"
+
+confirmatory_eligible = true
 
 [scoring]
 type = "refusal"

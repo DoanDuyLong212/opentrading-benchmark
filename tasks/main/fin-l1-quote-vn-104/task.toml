@@ -1,7 +1,7 @@
 # Task benchmark harness tài chính (bộ 200+50) — sinh bởi tools/build_main.py
 id = "fin-l1-quote-vn-104"
 title = "Giá đóng cửa VIX"
-version = 1
+version = 2
 created = "2026-11-01"
 level = "L1"
 family = "L1·A quote"
@@ -19,6 +19,8 @@ tools_expected = ["vn_quote_history"]
 mcp_payloads = "environment/payloads.json"
 snapshot_required = true
 split = "main"
+
+confirmatory_eligible = true
 
 [scoring]
 type = "value"

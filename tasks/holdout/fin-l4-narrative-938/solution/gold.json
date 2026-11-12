@@ -1,38 +1,76 @@
 {
- "task_id": "fin-l4-narrative-938",
- "scoring": "verdict",
- "solution": {
-  "verdict": "sai"
- },
- "as_of": "2026-11-01T22:54:50.300938+07:00",
- "split": "holdout",
- "verdict_accept": [
-  "sai",
-  "false",
-  "không đúng",
-  "không chính xác"
- ],
- "verdict_reject": [
-  "đúng",
-  "true",
-  "chính xác"
- ],
- "evidence": {
-  "paths": [
-   "note"
+  "task_id": "fin-l4-narrative-938",
+  "scoring": "value",
+  "solution": {
+    "min_close": 57823683.82,
+    "min_date": "2026-10-31",
+    "range": 3744772.5
+  },
+  "as_of": "2026-11-01T22:54:50.300938+07:00",
+  "split": "holdout",
+  "contract_version": 2,
+  "provenance_contract": [
+    {
+      "tool": "vn_crypto_ohlcv",
+      "source": "vnstock",
+      "as_of": "2026-11-01T22:54:50.300938+07:00",
+      "matched_entry_id": "cohlcv:ETHUSDT",
+      "response_sha256": "5ee1a2d680a88d07995a0897aa1a155596c93ddd0ceeb6c403e3aac582440b32"
+    }
   ],
-  "min_hits": 1,
-  "numbers": [
-   61568456.32,
-   61513961.98,
-   60788317.37,
-   60039197.58,
-   59867898.1,
-   60576132.04,
-   60831414.45,
-   58041555.14,
-   57823683.82,
-   58125401.32
-  ]
- }
+  "payload_sha256": "3daaf2f947f10f4eb2d07fa838492516811850c99a3db58cf732bbf834103792",
+  "provenance_catalog": [
+    {
+      "tool": "vn_crypto_ohlcv",
+      "source": "vnstock",
+      "as_of": "2026-11-01T22:54:50.300938+07:00",
+      "matched_entry_id": "cohlcv:ETHUSDT",
+      "response_sha256": "5ee1a2d680a88d07995a0897aa1a155596c93ddd0ceeb6c403e3aac582440b32"
+    }
+  ],
+  "required_payload_keys": [
+    "cohlcv:ETHUSDT"
+  ],
+  "expects": [
+    {
+      "type": "value",
+      "path": "values.min_close",
+      "gold": 57823683.82,
+      "tol": {
+        "rel": 0.005
+      }
+    },
+    {
+      "type": "period",
+      "path": "values.min_date",
+      "accept": [
+        "2026-10-31",
+        "31/10"
+      ]
+    },
+    {
+      "type": "value",
+      "path": "values.range",
+      "gold": 3744772.5,
+      "tol": {
+        "rel": 0.005
+      }
+    },
+    {
+      "type": "unit",
+      "path": "unit",
+      "accept": [
+        "đồng",
+        "VND"
+      ]
+    },
+    {
+      "type": "str",
+      "path": "source",
+      "accept": [
+        "vn_crypto_ohlcv"
+      ]
+    }
+  ],
+  "notes": "Holdout replacement 2026-11-10: previous question was a verbatim copy of a main task; same frozen payload, new question not asked by any main task."
 }

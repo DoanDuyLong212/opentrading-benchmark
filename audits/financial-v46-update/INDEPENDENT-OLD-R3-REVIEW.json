@@ -1,0 +1,532 @@
+{
+  "schema": "v46-independent-old-r3-review",
+  "scope": "read-only old96; no score rescue, no new modelcalls",
+  "manifest_sha256": "844430b43028b57bad050471000f386f7d1cb7cf389c2911a6910afe276b598e",
+  "trials": 96,
+  "automatic_financial_or_strict_wins_reviewed": 68,
+  "capture_raw_hashes_checked": 670,
+  "capture_or_receipt_errors": [],
+  "protected_code_mismatches": [],
+  "sampling_by_arm": [
+    {
+      "arm": "opencode",
+      "temperature": 1.0,
+      "top_p": 0.95,
+      "max_tokens": 8192,
+      "retry_owner": "common_gateway",
+      "rows": 72
+    },
+    {
+      "arm": "opentrading_finance",
+      "temperature": 1.0,
+      "top_p": 0.95,
+      "max_tokens": 8192,
+      "retry_owner": "common_gateway",
+      "rows": 107
+    },
+    {
+      "arm": "dsh",
+      "temperature": 1.0,
+      "top_p": 0.95,
+      "max_tokens": 8192,
+      "retry_owner": "common_gateway",
+      "rows": 78
+    },
+    {
+      "arm": "opentrading_baseline",
+      "temperature": 1.0,
+      "top_p": 0.95,
+      "max_tokens": 8192,
+      "retry_owner": "common_gateway",
+      "rows": 78
+    }
+  ],
+  "independent_decimal_math": {
+    "growth": "15.00",
+    "margin": "23.00",
+    "ratio": "0.13",
+    "aggregate": "52.86666666666666666666666667",
+    "cross_source": "0.4",
+    "chain": "972",
+    "scale": "92400.0"
+  },
+  "win_reviews": [
+    {
+      "trial_id": "v45-dev-03-growth__opentrading_finance__r1",
+      "numeric_period_unit_narrative_manually_inspected": true,
+      "seven_field_receipts_join": true,
+      "content_decision": "consistent_with_frozen_synthetic_source",
+      "qualification": "generation join audit remains failing; not certified"
+    },
+    {
+      "trial_id": "v45-dev-03-growth__dsh__r1",
+      "numeric_period_unit_narrative_manually_inspected": true,
+      "seven_field_receipts_join": true,
+      "content_decision": "consistent_with_frozen_synthetic_source",
+      "qualification": "generation join audit remains failing; not certified"
+    },
+    {
+      "trial_id": "v45-dev-03-growth__opentrading_baseline__r1",
+      "numeric_period_unit_narrative_manually_inspected": true,
+      "seven_field_receipts_join": true,
+      "content_decision": "consistent_with_frozen_synthetic_source",
+      "qualification": "generation join audit remains failing; not certified"
+    },
+    {
+      "trial_id": "v45-dev-02-resolve__opentrading_finance__r1",
+      "numeric_period_unit_narrative_manually_inspected": true,
+      "seven_field_receipts_join": true,
+      "content_decision": "consistent_with_frozen_synthetic_source",
+      "qualification": "generation join audit remains failing; not certified"
+    },
+    {
+      "trial_id": "v45-dev-02-resolve__dsh__r1",
+      "numeric_period_unit_narrative_manually_inspected": true,
+      "seven_field_receipts_join": true,
+      "content_decision": "consistent_with_frozen_synthetic_source",
+      "qualification": "generation join audit remains failing; not certified"
+    },
+    {
+      "trial_id": "v45-dev-02-resolve__opentrading_baseline__r1",
+      "numeric_period_unit_narrative_manually_inspected": true,
+      "seven_field_receipts_join": true,
+      "content_decision": "consistent_with_frozen_synthetic_source",
+      "qualification": "generation join audit remains failing; not certified"
+    },
+    {
+      "trial_id": "v45-dev-02-resolve__opencode__r1",
+      "numeric_period_unit_narrative_manually_inspected": true,
+      "seven_field_receipts_join": true,
+      "content_decision": "consistent_with_frozen_synthetic_source",
+      "qualification": "generation join audit remains failing; not certified"
+    },
+    {
+      "trial_id": "v45-dev-12-trap-empty__opentrading_finance__r1",
+      "numeric_period_unit_narrative_manually_inspected": true,
+      "seven_field_receipts_join": true,
+      "content_decision": "consistent_with_frozen_synthetic_source",
+      "qualification": "generation join audit remains failing; not certified"
+    },
+    {
+      "trial_id": "v45-dev-10-trap-resolver__dsh__r1",
+      "numeric_period_unit_narrative_manually_inspected": true,
+      "seven_field_receipts_join": true,
+      "content_decision": "consistent_with_frozen_synthetic_source",
+      "qualification": "generation join audit remains failing; not certified"
+    },
+    {
+      "trial_id": "v45-dev-10-trap-resolver__opentrading_baseline__r1",
+      "numeric_period_unit_narrative_manually_inspected": true,
+      "seven_field_receipts_join": true,
+      "content_decision": "consistent_with_frozen_synthetic_source",
+      "qualification": "generation join audit remains failing; not certified"
+    },
+    {
+      "trial_id": "v45-dev-10-trap-resolver__opencode__r1",
+      "numeric_period_unit_narrative_manually_inspected": true,
+      "seven_field_receipts_join": true,
+      "content_decision": "consistent_with_frozen_synthetic_source",
+      "qualification": "generation join audit remains failing; not certified"
+    },
+    {
+      "trial_id": "v45-dev-10-trap-resolver__opentrading_finance__r1",
+      "numeric_period_unit_narrative_manually_inspected": true,
+      "seven_field_receipts_join": true,
+      "content_decision": "consistent_with_frozen_synthetic_source",
+      "qualification": "generation join audit remains failing; not certified"
+    },
+    {
+      "trial_id": "v45-dev-11-trap-period__dsh__r1",
+      "numeric_period_unit_narrative_manually_inspected": true,
+      "seven_field_receipts_join": true,
+      "content_decision": "consistent_with_frozen_synthetic_source",
+      "qualification": "generation join audit remains failing; not certified"
+    },
+    {
+      "trial_id": "v45-dev-01-quote__opentrading_finance__r1",
+      "numeric_period_unit_narrative_manually_inspected": true,
+      "seven_field_receipts_join": true,
+      "content_decision": "consistent_with_frozen_synthetic_source",
+      "qualification": "generation join audit remains failing; not certified"
+    },
+    {
+      "trial_id": "v45-dev-01-quote__opentrading_baseline__r1",
+      "numeric_period_unit_narrative_manually_inspected": true,
+      "seven_field_receipts_join": true,
+      "content_decision": "consistent_with_frozen_synthetic_source",
+      "qualification": "generation join audit remains failing; not certified"
+    },
+    {
+      "trial_id": "v45-dev-01-quote__dsh__r1",
+      "numeric_period_unit_narrative_manually_inspected": true,
+      "seven_field_receipts_join": true,
+      "content_decision": "consistent_with_frozen_synthetic_source",
+      "qualification": "generation join audit remains failing; not certified"
+    },
+    {
+      "trial_id": "v45-dev-01-quote__opencode__r1",
+      "numeric_period_unit_narrative_manually_inspected": true,
+      "seven_field_receipts_join": true,
+      "content_decision": "consistent_with_frozen_synthetic_source",
+      "qualification": "generation join audit remains failing; not certified"
+    },
+    {
+      "trial_id": "v45-dev-09-chain__opencode__r1",
+      "numeric_period_unit_narrative_manually_inspected": true,
+      "seven_field_receipts_join": true,
+      "content_decision": "consistent_with_frozen_synthetic_source",
+      "qualification": "generation join audit remains failing; not certified"
+    },
+    {
+      "trial_id": "v45-dev-09-chain__opentrading_finance__r1",
+      "numeric_period_unit_narrative_manually_inspected": true,
+      "seven_field_receipts_join": true,
+      "content_decision": "consistent_with_frozen_synthetic_source",
+      "qualification": "generation join audit remains failing; not certified"
+    },
+    {
+      "trial_id": "v45-dev-09-chain__opentrading_baseline__r1",
+      "numeric_period_unit_narrative_manually_inspected": true,
+      "seven_field_receipts_join": true,
+      "content_decision": "consistent_with_frozen_synthetic_source",
+      "qualification": "generation join audit remains failing; not certified"
+    },
+    {
+      "trial_id": "v45-dev-05-scale__dsh__r1",
+      "numeric_period_unit_narrative_manually_inspected": true,
+      "seven_field_receipts_join": true,
+      "content_decision": "consistent_with_frozen_synthetic_source",
+      "qualification": "generation join audit remains failing; not certified"
+    },
+    {
+      "trial_id": "v45-dev-05-scale__opencode__r1",
+      "numeric_period_unit_narrative_manually_inspected": true,
+      "seven_field_receipts_join": true,
+      "content_decision": "consistent_with_frozen_synthetic_source",
+      "qualification": "generation join audit remains failing; not certified"
+    },
+    {
+      "trial_id": "v45-dev-05-scale__opentrading_baseline__r1",
+      "numeric_period_unit_narrative_manually_inspected": true,
+      "seven_field_receipts_join": true,
+      "content_decision": "consistent_with_frozen_synthetic_source",
+      "qualification": "generation join audit remains failing; not certified"
+    },
+    {
+      "trial_id": "v45-dev-04-margin__opentrading_finance__r1",
+      "numeric_period_unit_narrative_manually_inspected": true,
+      "seven_field_receipts_join": true,
+      "content_decision": "consistent_with_frozen_synthetic_source",
+      "qualification": "generation join audit remains failing; not certified"
+    },
+    {
+      "trial_id": "v45-dev-04-margin__opentrading_baseline__r1",
+      "numeric_period_unit_narrative_manually_inspected": true,
+      "seven_field_receipts_join": true,
+      "content_decision": "consistent_with_frozen_synthetic_source",
+      "qualification": "generation join audit remains failing; not certified"
+    },
+    {
+      "trial_id": "v45-dev-04-margin__dsh__r1",
+      "numeric_period_unit_narrative_manually_inspected": true,
+      "seven_field_receipts_join": true,
+      "content_decision": "consistent_with_frozen_synthetic_source",
+      "qualification": "generation join audit remains failing; not certified"
+    },
+    {
+      "trial_id": "v45-dev-04-margin__opencode__r1",
+      "numeric_period_unit_narrative_manually_inspected": true,
+      "seven_field_receipts_join": true,
+      "content_decision": "consistent_with_frozen_synthetic_source",
+      "qualification": "generation join audit remains failing; not certified"
+    },
+    {
+      "trial_id": "v45-dev-08-cross-source__opentrading_baseline__r1",
+      "numeric_period_unit_narrative_manually_inspected": true,
+      "seven_field_receipts_join": true,
+      "content_decision": "consistent_with_frozen_synthetic_source",
+      "qualification": "generation join audit remains failing; not certified"
+    },
+    {
+      "trial_id": "v45-dev-08-cross-source__dsh__r1",
+      "numeric_period_unit_narrative_manually_inspected": true,
+      "seven_field_receipts_join": true,
+      "content_decision": "consistent_with_frozen_synthetic_source",
+      "qualification": "generation join audit remains failing; not certified"
+    },
+    {
+      "trial_id": "v45-dev-08-cross-source__opencode__r1",
+      "numeric_period_unit_narrative_manually_inspected": true,
+      "seven_field_receipts_join": true,
+      "content_decision": "consistent_with_frozen_synthetic_source",
+      "qualification": "generation join audit remains failing; not certified"
+    },
+    {
+      "trial_id": "v45-dev-08-cross-source__opentrading_finance__r1",
+      "numeric_period_unit_narrative_manually_inspected": true,
+      "seven_field_receipts_join": true,
+      "content_decision": "consistent_with_frozen_synthetic_source",
+      "qualification": "generation join audit remains failing; not certified"
+    },
+    {
+      "trial_id": "v45-dev-06-ratio__opencode__r1",
+      "numeric_period_unit_narrative_manually_inspected": true,
+      "seven_field_receipts_join": true,
+      "content_decision": "consistent_with_frozen_synthetic_source",
+      "qualification": "generation join audit remains failing; not certified"
+    },
+    {
+      "trial_id": "v45-dev-02-resolve__dsh__r2",
+      "numeric_period_unit_narrative_manually_inspected": true,
+      "seven_field_receipts_join": true,
+      "content_decision": "consistent_with_frozen_synthetic_source",
+      "qualification": "generation join audit remains failing; not certified"
+    },
+    {
+      "trial_id": "v45-dev-02-resolve__opentrading_baseline__r2",
+      "numeric_period_unit_narrative_manually_inspected": true,
+      "seven_field_receipts_join": true,
+      "content_decision": "consistent_with_frozen_synthetic_source",
+      "qualification": "generation join audit remains failing; not certified"
+    },
+    {
+      "trial_id": "v45-dev-02-resolve__opencode__r2",
+      "numeric_period_unit_narrative_manually_inspected": true,
+      "seven_field_receipts_join": true,
+      "content_decision": "consistent_with_frozen_synthetic_source",
+      "qualification": "generation join audit remains failing; not certified"
+    },
+    {
+      "trial_id": "v45-dev-12-trap-empty__opencode__r2",
+      "numeric_period_unit_narrative_manually_inspected": true,
+      "seven_field_receipts_join": true,
+      "content_decision": "consistent_with_frozen_synthetic_source",
+      "qualification": "generation join audit remains failing; not certified"
+    },
+    {
+      "trial_id": "v45-dev-12-trap-empty__dsh__r2",
+      "numeric_period_unit_narrative_manually_inspected": true,
+      "seven_field_receipts_join": true,
+      "content_decision": "consistent_with_frozen_synthetic_source",
+      "qualification": "generation join audit remains failing; not certified"
+    },
+    {
+      "trial_id": "v45-dev-12-trap-empty__opentrading_finance__r2",
+      "numeric_period_unit_narrative_manually_inspected": true,
+      "seven_field_receipts_join": true,
+      "content_decision": "consistent_with_frozen_synthetic_source",
+      "qualification": "generation join audit remains failing; not certified"
+    },
+    {
+      "trial_id": "v45-dev-12-trap-empty__opentrading_baseline__r2",
+      "numeric_period_unit_narrative_manually_inspected": true,
+      "seven_field_receipts_join": true,
+      "content_decision": "consistent_with_frozen_synthetic_source",
+      "qualification": "generation join audit remains failing; not certified"
+    },
+    {
+      "trial_id": "v45-dev-10-trap-resolver__opentrading_baseline__r2",
+      "numeric_period_unit_narrative_manually_inspected": true,
+      "seven_field_receipts_join": true,
+      "content_decision": "consistent_with_frozen_synthetic_source",
+      "qualification": "generation join audit remains failing; not certified"
+    },
+    {
+      "trial_id": "v45-dev-10-trap-resolver__dsh__r2",
+      "numeric_period_unit_narrative_manually_inspected": true,
+      "seven_field_receipts_join": true,
+      "content_decision": "consistent_with_frozen_synthetic_source",
+      "qualification": "generation join audit remains failing; not certified"
+    },
+    {
+      "trial_id": "v45-dev-10-trap-resolver__opentrading_finance__r2",
+      "numeric_period_unit_narrative_manually_inspected": true,
+      "seven_field_receipts_join": true,
+      "content_decision": "consistent_with_frozen_synthetic_source",
+      "qualification": "generation join audit remains failing; not certified"
+    },
+    {
+      "trial_id": "v45-dev-11-trap-period__opentrading_finance__r2",
+      "numeric_period_unit_narrative_manually_inspected": true,
+      "seven_field_receipts_join": true,
+      "content_decision": "consistent_with_frozen_synthetic_source",
+      "qualification": "generation join audit remains failing; not certified"
+    },
+    {
+      "trial_id": "v45-dev-11-trap-period__opentrading_baseline__r2",
+      "numeric_period_unit_narrative_manually_inspected": true,
+      "seven_field_receipts_join": true,
+      "content_decision": "consistent_with_frozen_synthetic_source",
+      "qualification": "generation join audit remains failing; not certified"
+    },
+    {
+      "trial_id": "v45-dev-11-trap-period__dsh__r2",
+      "numeric_period_unit_narrative_manually_inspected": true,
+      "seven_field_receipts_join": true,
+      "content_decision": "consistent_with_frozen_synthetic_source",
+      "qualification": "generation join audit remains failing; not certified"
+    },
+    {
+      "trial_id": "v45-dev-01-quote__opentrading_finance__r2",
+      "numeric_period_unit_narrative_manually_inspected": true,
+      "seven_field_receipts_join": true,
+      "content_decision": "consistent_with_frozen_synthetic_source",
+      "qualification": "generation join audit remains failing; not certified"
+    },
+    {
+      "trial_id": "v45-dev-01-quote__opentrading_baseline__r2",
+      "numeric_period_unit_narrative_manually_inspected": true,
+      "seven_field_receipts_join": true,
+      "content_decision": "consistent_with_frozen_synthetic_source",
+      "qualification": "generation join audit remains failing; not certified"
+    },
+    {
+      "trial_id": "v45-dev-01-quote__dsh__r2",
+      "numeric_period_unit_narrative_manually_inspected": true,
+      "seven_field_receipts_join": true,
+      "content_decision": "consistent_with_frozen_synthetic_source",
+      "qualification": "generation join audit remains failing; not certified"
+    },
+    {
+      "trial_id": "v45-dev-01-quote__opencode__r2",
+      "numeric_period_unit_narrative_manually_inspected": true,
+      "seven_field_receipts_join": true,
+      "content_decision": "consistent_with_frozen_synthetic_source",
+      "qualification": "generation join audit remains failing; not certified"
+    },
+    {
+      "trial_id": "v45-dev-09-chain__opencode__r2",
+      "numeric_period_unit_narrative_manually_inspected": true,
+      "seven_field_receipts_join": true,
+      "content_decision": "consistent_with_frozen_synthetic_source",
+      "qualification": "generation join audit remains failing; not certified"
+    },
+    {
+      "trial_id": "v45-dev-09-chain__opentrading_finance__r2",
+      "numeric_period_unit_narrative_manually_inspected": true,
+      "seven_field_receipts_join": true,
+      "content_decision": "consistent_with_frozen_synthetic_source",
+      "qualification": "generation join audit remains failing; not certified"
+    },
+    {
+      "trial_id": "v45-dev-09-chain__opentrading_baseline__r2",
+      "numeric_period_unit_narrative_manually_inspected": true,
+      "seven_field_receipts_join": true,
+      "content_decision": "consistent_with_frozen_synthetic_source",
+      "qualification": "generation join audit remains failing; not certified"
+    },
+    {
+      "trial_id": "v45-dev-09-chain__dsh__r2",
+      "numeric_period_unit_narrative_manually_inspected": true,
+      "seven_field_receipts_join": true,
+      "content_decision": "consistent_with_frozen_synthetic_source",
+      "qualification": "generation join audit remains failing; not certified"
+    },
+    {
+      "trial_id": "v45-dev-05-scale__opentrading_baseline__r2",
+      "numeric_period_unit_narrative_manually_inspected": true,
+      "seven_field_receipts_join": true,
+      "content_decision": "consistent_with_frozen_synthetic_source",
+      "qualification": "generation join audit remains failing; not certified"
+    },
+    {
+      "trial_id": "v45-dev-05-scale__dsh__r2",
+      "numeric_period_unit_narrative_manually_inspected": true,
+      "seven_field_receipts_join": true,
+      "content_decision": "consistent_with_frozen_synthetic_source",
+      "qualification": "generation join audit remains failing; not certified"
+    },
+    {
+      "trial_id": "v45-dev-05-scale__opentrading_finance__r2",
+      "numeric_period_unit_narrative_manually_inspected": true,
+      "seven_field_receipts_join": true,
+      "content_decision": "consistent_with_frozen_synthetic_source",
+      "qualification": "generation join audit remains failing; not certified"
+    },
+    {
+      "trial_id": "v45-dev-04-margin__opentrading_baseline__r2",
+      "numeric_period_unit_narrative_manually_inspected": true,
+      "seven_field_receipts_join": true,
+      "content_decision": "consistent_with_frozen_synthetic_source",
+      "qualification": "generation join audit remains failing; not certified"
+    },
+    {
+      "trial_id": "v45-dev-04-margin__opencode__r2",
+      "numeric_period_unit_narrative_manually_inspected": true,
+      "seven_field_receipts_join": true,
+      "content_decision": "consistent_with_frozen_synthetic_source",
+      "qualification": "generation join audit remains failing; not certified"
+    },
+    {
+      "trial_id": "v45-dev-04-margin__opentrading_finance__r2",
+      "numeric_period_unit_narrative_manually_inspected": true,
+      "seven_field_receipts_join": true,
+      "content_decision": "consistent_with_frozen_synthetic_source",
+      "qualification": "generation join audit remains failing; not certified"
+    },
+    {
+      "trial_id": "v45-dev-04-margin__dsh__r2",
+      "numeric_period_unit_narrative_manually_inspected": true,
+      "seven_field_receipts_join": true,
+      "content_decision": "consistent_with_frozen_synthetic_source",
+      "qualification": "generation join audit remains failing; not certified"
+    },
+    {
+      "trial_id": "v45-dev-08-cross-source__dsh__r2",
+      "numeric_period_unit_narrative_manually_inspected": true,
+      "seven_field_receipts_join": true,
+      "content_decision": "consistent_with_frozen_synthetic_source",
+      "qualification": "generation join audit remains failing; not certified"
+    },
+    {
+      "trial_id": "v45-dev-08-cross-source__opentrading_baseline__r2",
+      "numeric_period_unit_narrative_manually_inspected": true,
+      "seven_field_receipts_join": true,
+      "content_decision": "consistent_with_frozen_synthetic_source",
+      "qualification": "generation join audit remains failing; not certified"
+    },
+    {
+      "trial_id": "v45-dev-08-cross-source__opencode__r2",
+      "numeric_period_unit_narrative_manually_inspected": true,
+      "seven_field_receipts_join": true,
+      "content_decision": "consistent_with_frozen_synthetic_source",
+      "qualification": "generation join audit remains failing; not certified"
+    },
+    {
+      "trial_id": "v45-dev-08-cross-source__opentrading_finance__r2",
+      "numeric_period_unit_narrative_manually_inspected": true,
+      "seven_field_receipts_join": true,
+      "content_decision": "consistent_with_frozen_synthetic_source",
+      "qualification": "generation join audit remains failing; not certified"
+    },
+    {
+      "trial_id": "v45-dev-06-ratio__opentrading_finance__r2",
+      "numeric_period_unit_narrative_manually_inspected": true,
+      "seven_field_receipts_join": true,
+      "content_decision": "consistent_with_frozen_synthetic_source",
+      "qualification": "generation join audit remains failing; not certified"
+    },
+    {
+      "trial_id": "v45-dev-06-ratio__dsh__r2",
+      "numeric_period_unit_narrative_manually_inspected": true,
+      "seven_field_receipts_join": true,
+      "content_decision": "consistent_with_frozen_synthetic_source",
+      "qualification": "generation join audit remains failing; not certified"
+    },
+    {
+      "trial_id": "v45-dev-03-growth__opentrading_finance__r2",
+      "numeric_period_unit_narrative_manually_inspected": true,
+      "seven_field_receipts_join": true,
+      "content_decision": "consistent_with_frozen_synthetic_source",
+      "qualification": "generation join audit remains failing; not certified"
+    },
+    {
+      "trial_id": "v45-dev-03-growth__opentrading_baseline__r2",
+      "numeric_period_unit_narrative_manually_inspected": true,
+      "seven_field_receipts_join": true,
+      "content_decision": "consistent_with_frozen_synthetic_source",
+      "qualification": "generation join audit remains failing; not certified"
+    }
+  ],
+  "certification": "BLOCKED original instrumentation audit FAIL16; no promotion"
+}

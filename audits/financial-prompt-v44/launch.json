@@ -1,0 +1,26 @@
+{
+  "pid": 2078712,
+  "started_at": "2026-11-07T07:39:45.556246+00:00",
+  "command": [
+    "/usr/bin/python3",
+    "/home/doanlong/extra/benchmark/experiments/finance-v44-study/tools/v44_supervisor.py",
+    "--seal",
+    "/home/doanlong/extra/benchmark/audits/financial-prompt-v44/preinference-seal.json",
+    "--state",
+    "/home/doanlong/extra/benchmark/audits/financial-prompt-v44/supervisor/state.json",
+    "--audit-script",
+    "/home/doanlong/extra/benchmark/audits/financial-prompt-v44/audit-completed-run.py",
+    "--audit-output",
+    "/home/doanlong/extra/benchmark/audits/financial-prompt-v44/independent-evidence.json"
+  ],
+  "state_path": "/home/doanlong/extra/benchmark/audits/financial-prompt-v44/supervisor/state.json",
+  "catalog_preflight": {
+    "checked_at": "2026-11-07T07:39:45.542462+00:00",
+    "http_status": 200,
+    "authorized_models": {
+      "nvidia/nemotron-3.5-bolt-e4b": true,
+      "deepseek-ai/deepseek-v4.1-flash": true
+    },
+    "inference_calls_in_catalog_check": 0
+  }
+}

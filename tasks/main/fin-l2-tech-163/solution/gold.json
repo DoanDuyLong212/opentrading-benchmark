@@ -1,48 +1,71 @@
 {
- "task_id": "fin-l2-tech-163",
- "scoring": "value",
- "solution": {
-  "value": 33.06
- },
- "as_of": "2026-11-01T23:26:05.000000+07:00",
- "split": "main",
- "expects": [
-  {
-   "type": "value",
-   "path": "value",
-   "gold": 33.06,
-   "tol": {
-    "abs": 0.1
-   }
+  "task_id": "fin-l2-tech-163",
+  "scoring": "value",
+  "solution": {
+    "value": 33.06
   },
-  {
-   "type": "unit",
-   "path": "unit",
-   "accept": [
-    "RSI-14",
-    "RSI 14",
-    "RSI",
-    "rsi14"
-   ]
-  },
-  {
-   "type": "period",
-   "path": "period",
-   "accept": [
-    "30/10",
-    "30-10",
-    "30.10",
-    "2026-10-30",
-    "phiên gần nhất",
-    "gần nhất"
-   ]
-  },
-  {
-   "type": "str",
-   "path": "source",
-   "accept": [
-    "signals_technical"
-   ]
-  }
- ]
+  "as_of": "2026-11-01T23:26:05.000000+07:00",
+  "split": "main",
+  "expects": [
+    {
+      "type": "value",
+      "path": "value",
+      "gold": 33.06,
+      "tol": {
+        "abs": 0.1
+      }
+    },
+    {
+      "type": "unit",
+      "path": "unit",
+      "accept": [
+        "RSI-14",
+        "RSI 14",
+        "RSI",
+        "rsi14"
+      ]
+    },
+    {
+      "type": "period",
+      "path": "period",
+      "accept": [
+        "30/10",
+        "30-10",
+        "30.10",
+        "2026-10-30",
+        "phiên gần nhất",
+        "gần nhất"
+      ]
+    },
+    {
+      "type": "str",
+      "path": "source",
+      "accept": [
+        "signals_technical"
+      ]
+    }
+  ],
+  "contract_version": 2,
+  "provenance_contract": [
+    {
+      "tool": "signals_technical",
+      "source": "computed-local",
+      "as_of": "2026-11-01T23:26:05.000000+07:00",
+      "matched_entry_id": "tech:KDC",
+      "response_sha256": "090477638f12a59d026c4f0c2bc6cecce82ae33ba3dbcf35180685c69654236d"
+    }
+  ],
+  "payload_sha256": "3bb0c036d30afe297305571587870c0b1b1a2d9392326ea72c40c46f78fa0099",
+  "provenance_catalog": [
+    {
+      "tool": "signals_technical",
+      "source": "computed-local",
+      "as_of": "2026-11-01T23:26:05.000000+07:00",
+      "matched_entry_id": "tech:KDC",
+      "response_sha256": "090477638f12a59d026c4f0c2bc6cecce82ae33ba3dbcf35180685c69654236d"
+    }
+  ],
+  "required_payload_keys": [
+    "tech:KDC"
+  ]
 }

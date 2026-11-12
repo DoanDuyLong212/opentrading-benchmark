@@ -1,0 +1,41 @@
+{
+  "task_id": "fin-l4-chain-303",
+  "success": true,
+  "fp": 0,
+  "error_type": null,
+  "checks": [
+    {
+      "check": "provenance",
+      "pass": true,
+      "detail": "recorded response identity/provider/as_of coverage and snapshot hash; call IDs independently verified by driver"
+    },
+    {
+      "check": "str:values.symbol",
+      "pass": true,
+      "detail": "answer='FTS' accept=['FTS']"
+    },
+    {
+      "check": "value:values.rsi14",
+      "pass": true,
+      "detail": "answer=35.22 gold=35.22 tol={'abs': 0.1}"
+    },
+    {
+      "check": "value:values.pe",
+      "pass": true,
+      "detail": "answer=27.12 gold=27.12 tol={'rel': 0.005}"
+    },
+    {
+      "check": "period:period",
+      "pass": true,
+      "detail": "period='30/10 / 30-10 / 30.10 / 2026-10-30' accept=['30/10', '30-10', '30.10', '2026-10-30']"
+    },
+    {
+      "check": "str_all:source",
+      "pass": true,
+      "detail": "answer='signals_technical + peer_compare' need_all=['signals_technical', 'peer_compare']"
+    }
+  ],
+  "schema_valid": true,
+  "provenance_correctness": true,
+  "semantic_correctness": true
+}

@@ -1,7 +1,7 @@
 # Task benchmark harness tài chính — sinh bởi tools/gen_tasks.py
 id = "fin-l4-nonexist-01"
 title = "Giá mã XYZX (mã không tồn tại)"
-version = 1
+version = 2
 created = "2026-11-01"
 level = "L4"
 family = "L4·B nonexistent"
@@ -18,6 +18,8 @@ time_limit_min = 20
 tools_expected = ["symbol_resolve"]
 mcp_payloads = "environment/payloads.json"
 snapshot_required = true
+
+confirmatory_eligible = true
 
 [scoring]
 type = "refusal"

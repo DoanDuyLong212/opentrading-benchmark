@@ -1,0 +1,64 @@
+{
+ "snapshot_date": "2026-11-01",
+ "note": "Envelope MCP ghi lúc tạo task. Key = mã payload nội bộ; envelope giữ nguyên data+provenance+availability.",
+ "tools": {
+  "peer:pharma_p": {
+   "tool": "peer_compare",
+   "params": {
+    "symbol": "DHG",
+    "peers": [
+     "IMP",
+     "TRA",
+     "DBD",
+     "DBT"
+    ]
+   },
+   "envelope": {
+    "data": {
+     "rows": [
+      {
+       "symbol": "DHG",
+       "period_label": "2025",
+       "p_e": 15.69,
+       "p_b": 3.23,
+       "roe": 20.71
+      },
+      {
+       "symbol": "IMP",
+       "period_label": "2025",
+       "p_e": 23.16,
+       "p_b": 3.51,
+       "roe": 15.55
+      },
+      {
+       "symbol": "TRA",
+       "period_label": "2025",
+       "p_e": 12.45,
+       "p_b": 1.84,
+       "roe": 16.8
+      },
+      {
+       "symbol": "DBD",
+       "period_label": "2025",
+       "p_e": 15.68,
+       "p_b": 2.66,
+       "roe": 17.21
+      },
+      {
+       "symbol": "DBT",
+       "period_label": "2025",
+       "p_e": 16.51,
+       "p_b": 0.85,
+       "roe": 5.28
+      }
+     ]
+    },
+    "provenance": {
+     "source": "vnstock",
+     "as_of": "2026-11-01T23:14:27.401231+07:00"
+    },
+    "availability": "available"
+   }
+  }
+ }
+}

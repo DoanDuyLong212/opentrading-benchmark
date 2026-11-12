@@ -1,0 +1,16 @@
+{
+ "judge_model": "nvidia/nemotron-3-ultra-550b-a55b:free",
+ "mode": "batch 5",
+ "run": "results/financial-v46u-or15-ds-20261111/deepseek-openrouter-pilot/",
+ "labels": "analysis/or15-manual-judge-20261111.md (strict semantic + manual overrides; 2 ambiguous-wording OT trials excluded; no_answer excluded)",
+ "n": 211,
+ "agreement": 1.0,
+ "cohen_kappa": 1.0,
+ "confusion": {
+  "TP": 198,
+  "FN_judge": 0,
+  "FP_judge": 0,
+  "TN": 13
+ },
+ "disagreements": []
+}

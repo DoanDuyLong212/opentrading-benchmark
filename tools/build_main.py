@@ -202,10 +202,16 @@ COMMON_RULES_TXT = """
 def synthesize(gold, mutate=False):
     """Sinh answer 'đúng' từ gold (để self-test grader), hoặc lệch (mutate)."""
     sc = gold["scoring"]
+    def complete(answer):
+        # Offline grader fixture only; fabricated call IDs never pass driver ledger validation.
+        if gold.get("provenance_contract"):
+            answer["evidence"] = [{**row, "call_id":"offline-fixture", "payload_sha256":gold["payload_sha256"]}
+                                  for row in gold["provenance_contract"]]
+        return answer
     if sc == "refusal":
         if mutate:
             return {"value": 12345, "unit": "đồng", "source": "x"}
-        return {"value": None, "reason": gold.get("refusal_tokens", ["chưa công bố"])[0], "source": "x"}
+        return complete({"value": None, "reason": gold.get("refusal_tokens", ["chưa công bố"])[0], "source": "x"})
     if sc == "verdict":
         ans = {"verdict": gold.get("verdict_accept", ["sai"])[0], "source": "x"}
         ev = gold.get("evidence", {})
@@ -215,7 +221,7 @@ def synthesize(gold, mutate=False):
             ans["note"] += " " + s
         if mutate:
             ans["verdict"] = gold.get("verdict_reject", ["đúng"])[0]
-        return ans
+        return complete(ans)
     ans = {}
 
     def setv(path, val):
@@ -235,7 +241,8 @@ def synthesize(gold, mutate=False):
         elif t == "unit":
             setv(path, exp["accept"][0])
         elif t == "period":
-            setv(path, exp["accept"][0])
+            # Includes both endpoints for comparisons; first alias alone is incomplete.
+            setv(path, " / ".join(dict.fromkeys(exp["accept"])))
         elif t == "tokens":
             setv(path, exp["accept"][0])
         elif t == "set":
@@ -271,7 +278,7 @@ def synthesize(gold, mutate=False):
                         cur = cur.setdefault(part, {})
                     cur[parts[-1]] = "SAI-BET"
                     break
-    return ans
+    return complete(ans)
 
 
 def run_checks(built):
@@ -355,4 +362,6 @@ def main():
 
 
 if __name__ == "__main__":
+    if os.path.exists(os.path.join(ROOT, "audits", "contract-v2", "migration.json")):
+        raise SystemExit("Legacy generator disabled after contract-v2 migration; create a separately versioned task set")
     main()

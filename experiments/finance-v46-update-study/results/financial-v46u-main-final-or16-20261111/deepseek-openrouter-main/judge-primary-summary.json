@@ -1,0 +1,239 @@
+{
+ "run": "/home/doanlong/extra/benchmark/experiments/finance-v46-update-study/results/financial-v46u-main-final-or16-20261111/deepseek-openrouter-main",
+ "definition": "Primary per trial = judge \"correct\"\n                    AND deterministic numeric gate (every value field within the gold tolerance)\n                    AND rule-based anti-fabrication (no numeric value on a refusal trap)\n                    AND not rejected by the independent manual review (review may only REMOVE).\nRefusal traps: FP / correct refusal decided by rule (value null), never by the judge alone.\nAnswerable tasks: false refusal = answer with value null / refusal branch (rule).\nDenominator = every scheduled trial; DNF (no final answer) stays in it, split infra vs other.",
+ "manual_review_applied": true,
+ "trials": 1200,
+ "arms": {
+  "dsh": {
+   "scheduled": 400,
+   "primary_financial_correctness": 362,
+   "primary_rate": 0.905,
+   "strict_success": 358,
+   "raw_format_valid": 382,
+   "dnf": 17,
+   "dnf_infra": 0,
+   "false_positives_on_traps": "0/22",
+   "false_refusals": "0/378",
+   "numeric_gate_vetoes": 0,
+   "manual_rejections": 1,
+   "stable_2of2_tasks": 177,
+   "judge_verdicts": {
+    "partial": 9,
+    "correct": 366,
+    "incorrect": 20,
+    "no_answer": 5
+   },
+   "memory_stale_use": "0/4",
+   "memory_revocation_violation": "0/4",
+   "paired_task_bootstrap": {
+    "diff_vs_opentrading_baseline": -0.0575,
+    "ci95": [
+     -0.0925,
+     -0.0275
+    ]
+   }
+  },
+  "opencode": {
+   "scheduled": 400,
+   "primary_financial_correctness": 352,
+   "primary_rate": 0.88,
+   "strict_success": 350,
+   "raw_format_valid": 398,
+   "dnf": 0,
+   "dnf_infra": 0,
+   "false_positives_on_traps": "0/22",
+   "false_refusals": "18/378",
+   "numeric_gate_vetoes": 0,
+   "manual_rejections": 1,
+   "stable_2of2_tasks": 172,
+   "judge_verdicts": {
+    "correct": 353,
+    "partial": 14,
+    "incorrect": 33
+   },
+   "memory_stale_use": "0/4",
+   "memory_revocation_violation": "0/4",
+   "paired_task_bootstrap": {
+    "diff_vs_opentrading_baseline": -0.0825,
+    "ci95": [
+     -0.1275,
+     -0.0425
+    ]
+   }
+  },
+  "opentrading_baseline": {
+   "scheduled": 400,
+   "primary_financial_correctness": 385,
+   "primary_rate": 0.9625,
+   "strict_success": 384,
+   "raw_format_valid": 396,
+   "dnf": 1,
+   "dnf_infra": 1,
+   "false_positives_on_traps": "0/22",
+   "false_refusals": "0/378",
+   "numeric_gate_vetoes": 1,
+   "manual_rejections": 0,
+   "stable_2of2_tasks": 190,
+   "judge_verdicts": {
+    "correct": 386,
+    "partial": 11,
+    "no_answer": 1,
+    "incorrect": 2
+   },
+   "memory_stale_use": "0/4",
+   "memory_revocation_violation": "0/4"
+  }
+ },
+ "by_stratum": {
+  "compute": {
+   "arms": {
+    "dsh": {
+     "primary": 43,
+     "scheduled": 60,
+     "paired_task_bootstrap": {
+      "diff_vs_opentrading_baseline": -0.1667,
+      "ci95": [
+       -0.3167,
+       -0.0333
+      ]
+     }
+    },
+    "opencode": {
+     "primary": 54,
+     "scheduled": 60,
+     "paired_task_bootstrap": {
+      "diff_vs_opentrading_baseline": 0.0167,
+      "ci95": [
+       -0.05,
+       0.0833
+      ]
+     }
+    },
+    "opentrading_baseline": {
+     "primary": 53,
+     "scheduled": 60
+    }
+   },
+   "tiers": {
+    "C1": {
+     "dsh": "16/16",
+     "opencode": "16/16",
+     "opentrading_baseline": "15/16"
+    },
+    "C2": {
+     "dsh": "16/16",
+     "opencode": "15/16",
+     "opentrading_baseline": "15/16"
+    },
+    "C3": {
+     "dsh": "9/16",
+     "opencode": "15/16",
+     "opentrading_baseline": "16/16"
+    },
+    "C4": {
+     "dsh": "2/12",
+     "opencode": "8/12",
+     "opentrading_baseline": "7/12"
+    }
+   }
+  },
+  "core": {
+   "arms": {
+    "dsh": {
+     "primary": 271,
+     "scheduled": 280,
+     "paired_task_bootstrap": {
+      "diff_vs_opentrading_baseline": -0.0036,
+      "ci95": [
+       -0.0143,
+       0.0071
+      ]
+     }
+    },
+    "opencode": {
+     "primary": 271,
+     "scheduled": 280,
+     "paired_task_bootstrap": {
+      "diff_vs_opentrading_baseline": -0.0036,
+      "ci95": [
+       -0.025,
+       0.0179
+      ]
+     }
+    },
+    "opentrading_baseline": {
+     "primary": 272,
+     "scheduled": 280
+    }
+   },
+   "tiers": {}
+  },
+  "memory": {
+   "arms": {
+    "dsh": {
+     "primary": 48,
+     "scheduled": 60,
+     "paired_task_bootstrap": {
+      "diff_vs_opentrading_baseline": -0.2,
+      "ci95": [
+       -0.3333,
+       -0.0833
+      ]
+     }
+    },
+    "opencode": {
+     "primary": 27,
+     "scheduled": 60,
+     "paired_task_bootstrap": {
+      "diff_vs_opentrading_baseline": -0.55,
+      "ci95": [
+       -0.7167,
+       -0.3667
+      ]
+     }
+    },
+    "opentrading_baseline": {
+     "primary": 60,
+     "scheduled": 60
+    }
+   },
+   "tiers": {
+    "M1": {
+     "dsh": "12/12",
+     "opencode": "12/12",
+     "opentrading_baseline": "12/12"
+    },
+    "M2": {
+     "dsh": "11/12",
+     "opencode": "11/12",
+     "opentrading_baseline": "12/12"
+    },
+    "M3a": {
+     "dsh": "3/8",
+     "opencode": "0/8",
+     "opentrading_baseline": "8/8"
+    },
+    "M3b": {
+     "dsh": "8/8",
+     "opencode": "0/8",
+     "opentrading_baseline": "8/8"
+    },
+    "M4": {
+     "dsh": "6/12",
+     "opencode": "0/12",
+     "opentrading_baseline": "12/12"
+    },
+    "M5-revoke": {
+     "dsh": "4/4",
+     "opencode": "0/4",
+     "opentrading_baseline": "4/4"
+    },
+    "M5-stale": {
+     "dsh": "4/4",
+     "opencode": "4/4",
+     "opentrading_baseline": "4/4"
+    }
+   }
+  }
+ }
+}

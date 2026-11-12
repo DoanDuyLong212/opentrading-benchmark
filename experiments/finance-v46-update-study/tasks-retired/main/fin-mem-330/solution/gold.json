@@ -1,0 +1,23 @@
+{
+  "task_id": "fin-mem-330",
+  "scoring": "refusal",
+  "solution": {
+    "active_threshold": null
+  },
+  "refusal_tokens": [
+    "không còn điều kiện",
+    "chưa có ngưỡng",
+    "thiếu điều kiện",
+    "chưa cung cấp",
+    "không có điều kiện"
+  ],
+  "memory_checks": {
+    "revoked_id": "pe-active",
+    "no_market_assertion": true
+  },
+  "provenance_contract": [],
+  "payload_sha256": "94b03b193fa13bcb1b5f7f5480dc5fd4c8673311b11958705840b994d0e17dd1",
+  "provenance_catalog": [],
+  "required_payload_keys": [],
+  "memory_construct": "revocation_abstention"
+}

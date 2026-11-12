@@ -208,11 +208,12 @@ def gdp_pick(env, period):
 
 
 # === thân oracle ===
-q = {x["symbol"]: x["close"] for x in env('batch:banks1')["data"]["quotes"]}
-vals = [float(q[s]) for s in ['ACB', 'STB', 'VPB', 'HDB', 'TPB']]
-check("mean", round(sum(vals) / len(vals), 2), gold["solution"]["mean"])
-for s, v in zip(['ACB', 'STB', 'VPB', 'HDB', 'TPB'], vals):
-    check(s, v, gold["solution"][s])
+q = {x['symbol']: float(x['close']) for x in env('batch:banks1')['data']['quotes']}
+hi = max(q, key=q.get); lo = min(q, key=q.get)
+check('max', hi, gold['solution']['max_symbol'])
+check('min', lo, gold['solution']['min_symbol'])
+check('spread', q[hi] - q[lo], gold['solution']['spread'])
+check('unique_extremes', sorted(q.values()).count(q[hi]) + sorted(q.values()).count(q[lo]), 2)
 
 if problems:
     print("ORACLE MISMATCH:")

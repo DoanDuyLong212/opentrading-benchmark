@@ -1,64 +1,102 @@
 {
- "task_id": "fin-l4-2src-254",
- "scoring": "value",
- "solution": {
-  "close": 17950.0,
-  "diff": 0.0,
-  "match": true
- },
- "as_of": "2026-11-01T23:07:49.257317+07:00",
- "split": "main",
- "expects": [
-  {
-   "type": "verdict",
-   "path": "verdict",
-   "accept": [
-    "khớp",
-    "match",
-    "giống nhau",
-    "bằng nhau",
-    "không lệch",
-    "không chênh"
-   ],
-   "reject": [
-    "không khớp",
-    "lệch",
-    "khác nhau"
-   ]
+  "task_id": "fin-l4-2src-254",
+  "scoring": "value",
+  "solution": {
+    "close": 17950.0,
+    "diff": 0.0,
+    "match": true
   },
-  {
-   "type": "value",
-   "path": "value",
-   "gold": 17950.0,
-   "tol": {
-    "rel": 0.005
-   }
-  },
-  {
-   "type": "unit",
-   "path": "unit",
-   "accept": [
-    "đồng",
-    "VND"
-   ]
-  },
-  {
-   "type": "period",
-   "path": "period",
-   "accept": [
-    "30/10",
-    "30-10",
-    "30.10",
-    "2026-10-30"
-   ]
-  },
-  {
-   "type": "str_all",
-   "path": "source",
-   "accept": [
-    "vn_quote_history",
-    "vn_equity_quote_batch"
-   ]
-  }
- ]
+  "as_of": "2026-11-01T23:07:49.257317+07:00",
+  "split": "main",
+  "expects": [
+    {
+      "type": "verdict",
+      "path": "verdict",
+      "accept": [
+        "khớp",
+        "match",
+        "giống nhau",
+        "bằng nhau",
+        "không lệch",
+        "không chênh"
+      ],
+      "reject": [
+        "không khớp",
+        "lệch",
+        "khác nhau"
+      ]
+    },
+    {
+      "type": "value",
+      "path": "value",
+      "gold": 17950.0,
+      "tol": {
+        "rel": 0.005
+      }
+    },
+    {
+      "type": "unit",
+      "path": "unit",
+      "accept": [
+        "đồng",
+        "VND"
+      ]
+    },
+    {
+      "type": "period",
+      "path": "period",
+      "accept": [
+        "30/10",
+        "30-10",
+        "30.10",
+        "2026-10-30"
+      ]
+    },
+    {
+      "type": "str_all",
+      "path": "source",
+      "accept": [
+        "vn_quote_history",
+        "vn_equity_quote_batch"
+      ]
+    }
+  ],
+  "contract_version": 2,
+  "provenance_contract": [
+    {
+      "tool": "vn_quote_history",
+      "source": "vnstock",
+      "as_of": "2026-11-01T21:47:23.857482+07:00",
+      "matched_entry_id": "vnq:PVD",
+      "response_sha256": "8a2637647bc8953dc8ead7986eb87a516b27775a4ff2e8b377bba4374aedc33a"
+    },
+    {
+      "tool": "vn_equity_quote_batch",
+      "source": "vnstock",
+      "as_of": "2026-11-01T23:07:49.257317+07:00",
+      "matched_entry_id": "batch:energy1",
+      "response_sha256": "f1bcbfaba4bd41ea63ba9aaa8fb76fbd2fb6dda6831d1ad3bd852fa19fc1302f"
+    }
+  ],
+  "payload_sha256": "d30eae748a7085ed00a84c39bbe31a1dcc7c2b0de5e85ccaa8b9ca34ca89fc48",
+  "provenance_catalog": [
+    {
+      "tool": "vn_quote_history",
+      "source": "vnstock",
+      "as_of": "2026-11-01T21:47:23.857482+07:00",
+      "matched_entry_id": "vnq:PVD",
+      "response_sha256": "8a2637647bc8953dc8ead7986eb87a516b27775a4ff2e8b377bba4374aedc33a"
+    },
+    {
+      "tool": "vn_equity_quote_batch",
+      "source": "vnstock",
+      "as_of": "2026-11-01T23:07:49.257317+07:00",
+      "matched_entry_id": "batch:energy1",
+      "response_sha256": "f1bcbfaba4bd41ea63ba9aaa8fb76fbd2fb6dda6831d1ad3bd852fa19fc1302f"
+    }
+  ],
+  "required_payload_keys": [
+    "batch:energy1",
+    "vnq:PVD"
+  ]
 }

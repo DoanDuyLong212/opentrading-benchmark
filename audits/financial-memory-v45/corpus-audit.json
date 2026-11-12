@@ -1,0 +1,378 @@
+{
+  "schema": "memory-corpus-audit-v45",
+  "pass": true,
+  "main_total": 212,
+  "main_cap": 250,
+  "memory_tasks": 15,
+  "external_model_calls": 0,
+  "scope": "Oracle consistency, explicit operation source binding and construct inventory. Not external source authenticity or learned/persistent memory efficacy.",
+  "rows": [
+    {
+      "task": "fin-mem-320",
+      "construct": "cross_session_recall_or_update",
+      "active_fact_ids": [
+        "user-fin-mem-320"
+      ],
+      "operations": 1,
+      "pass": true,
+      "failures": [],
+      "oracle": {
+        "exit": 0,
+        "stdout": "ORACLE OK — gold tai tao duoc tu payload (fin-mem-320)\n",
+        "stderr": ""
+      },
+      "task_tree": {
+        "environment/payloads.json": "a4d43dcbf420c5d98eb5f3ab40c887da4d53c2cc602484bcdc39b4e89938fb5c",
+        "environment/request_contracts.json": "a2f23e94fe0d516fdbb8d520c9e2f4bc2a89d7c013873d031af70586f56cbb63",
+        "environment/turns.json": "43664bb17ad0c60d3f85517da16f77751134e8f98ef26a76be201a33c6f2995e",
+        "instruction.md": "f6742ee6e3a5d95dc2c7861f0c24024dc6d92016c5a9fbe965e4630730ea3094",
+        "solution/gold.json": "e0b83a9a5acf491f362db2c1207a1efc481ea57e810aa0f97d85784212f6f188",
+        "solution/oracle.py": "af9c4fcc87e251c2076cab21124eed0d256a7be859c4aabcb7be4e74db21b7ea",
+        "task.toml": "7c0f090ffc7d59c5213881f491f87ef848169dba0dd4814c35fe346443800389",
+        "tests/grader.py": "1f063f5e26b73098ae256512b113ab334a41026ca88595fd55472bcc83798d6f"
+      }
+    },
+    {
+      "task": "fin-mem-321",
+      "construct": "cross_session_recall_or_update",
+      "active_fact_ids": [
+        "user-fin-mem-321"
+      ],
+      "operations": 1,
+      "pass": true,
+      "failures": [],
+      "oracle": {
+        "exit": 0,
+        "stdout": "ORACLE OK — gold tai tao duoc tu payload (fin-mem-321)\n",
+        "stderr": ""
+      },
+      "task_tree": {
+        "environment/payloads.json": "08ae987b15ccb3007783ac26fac5024334b1f763ed5fb961f5395ade5fe30ed7",
+        "environment/request_contracts.json": "a2f23e94fe0d516fdbb8d520c9e2f4bc2a89d7c013873d031af70586f56cbb63",
+        "environment/turns.json": "b29d6868b9093b63937d2974322254534c334117b99d87bd38b15035c140281f",
+        "instruction.md": "885bf88cc3c711d7a1660ebe87285da3a3a11eee5b85efe32bd93784d61c71cd",
+        "solution/gold.json": "437de3ae3fd6b845c4d844ad6c2b4c1ff1a1b5d5efec92dcb13b9eb3267bee82",
+        "solution/oracle.py": "15662c26e9310035cd842a7873b473dc621161417c5763b19ea770f92660f725",
+        "task.toml": "cb78778bbb94482210d4c67f0584f7eb0e8e7c16c83a23f3b43ba8cd46db119c",
+        "tests/grader.py": "1f063f5e26b73098ae256512b113ab334a41026ca88595fd55472bcc83798d6f"
+      }
+    },
+    {
+      "task": "fin-mem-322",
+      "construct": "cross_session_recall_or_update",
+      "active_fact_ids": [
+        "user-fin-mem-322"
+      ],
+      "operations": 1,
+      "pass": true,
+      "failures": [],
+      "oracle": {
+        "exit": 0,
+        "stdout": "ORACLE OK — gold tai tao duoc tu payload (fin-mem-322)\n",
+        "stderr": ""
+      },
+      "task_tree": {
+        "environment/payloads.json": "67aa6ac1519eb485643f1f37273e3e4510ff98da3faa92070b2cf0c10f51aefa",
+        "environment/request_contracts.json": "a2f23e94fe0d516fdbb8d520c9e2f4bc2a89d7c013873d031af70586f56cbb63",
+        "environment/turns.json": "89ab334a9b0af7f53fc67430f8c290c525390943f81cfc92b42c2a35c9b5a1f5",
+        "instruction.md": "151a0c760e43661b898d9a2e63058e067119afe57b700c17855f121aa64e5c69",
+        "solution/gold.json": "b73d35899443455e159eda53372b548108ec230de300c77de76ff06ac562d1e1",
+        "solution/oracle.py": "c86b75d8a9b047f198a1e8600b217cf74df4eacfb145d3b0d7bfbddfd20c6f8c",
+        "task.toml": "860aa76534daaf7c4774fe11a9004b7e7960a31bb4ff74dc612252351e4a8426",
+        "tests/grader.py": "1f063f5e26b73098ae256512b113ab334a41026ca88595fd55472bcc83798d6f"
+      }
+    },
+    {
+      "task": "fin-mem-323",
+      "construct": "cross_session_recall_or_update",
+      "active_fact_ids": [
+        "user-fin-mem-323"
+      ],
+      "operations": 1,
+      "pass": true,
+      "failures": [],
+      "oracle": {
+        "exit": 0,
+        "stdout": "ORACLE OK — gold tai tao duoc tu payload (fin-mem-323)\n",
+        "stderr": ""
+      },
+      "task_tree": {
+        "environment/payloads.json": "a51c67c4be45bf5306bdb7760eb6fb9d06960a97a5beb51dfd7a8a8628672851",
+        "environment/request_contracts.json": "a2f23e94fe0d516fdbb8d520c9e2f4bc2a89d7c013873d031af70586f56cbb63",
+        "environment/turns.json": "f68967319521110378c571986e50fc2874c61dc53c41eca53f710bfd8d19b786",
+        "instruction.md": "cce69ea47eeb0fe50e3bcb6feb373934cf52b9dbe44f6bf5172cc0912ad8ef55",
+        "solution/gold.json": "0fb04e589372a0d0d671739d90f1775de1d3aaf246ea288c3331dab88e769264",
+        "solution/oracle.py": "13ace1a9359ed240ad5bb338895d2dfa09459634e457b8930faa20bcb9fac14a",
+        "task.toml": "f7e913e45fce0855ea6b4766bb0f80098469547e378495afdaa3275a5997444b",
+        "tests/grader.py": "1f063f5e26b73098ae256512b113ab334a41026ca88595fd55472bcc83798d6f"
+      }
+    },
+    {
+      "task": "fin-mem-324",
+      "construct": "cross_session_recall_or_update",
+      "active_fact_ids": [
+        "private-alias-lct7"
+      ],
+      "operations": 1,
+      "pass": true,
+      "failures": [],
+      "oracle": {
+        "exit": 0,
+        "stdout": "ORACLE OK — gold tai tao duoc tu payload (fin-mem-324)\n",
+        "stderr": ""
+      },
+      "task_tree": {
+        "environment/payloads.json": "f41fbdc2c7c5179fca1d38cd75812a7450f93313e86d6f7cc025f68497268588",
+        "environment/request_contracts.json": "a2f23e94fe0d516fdbb8d520c9e2f4bc2a89d7c013873d031af70586f56cbb63",
+        "environment/turns.json": "6b1f6520a915795b62924cacf46f7cd3c8381b0f8cd22eb188e004f04d8c7d54",
+        "instruction.md": "c0701ac835a899c1780e5504ceb0598e352bcbed0dd8ee9f347682af7cfaa3fe",
+        "solution/gold.json": "fe24b6f525f43afc9bcc0fbfad5e1e9b8fc7eff0ddbec55265a010d4d80db6a5",
+        "solution/oracle.py": "661434457f12538f973880fb83dd25fe9dc156aad33f394021831f062e2671a0",
+        "task.toml": "290f029d8e699a8470d587f115abde4dc7b2b7e32978374f0dd69c7f2f53d0aa",
+        "tests/grader.py": "1f063f5e26b73098ae256512b113ab334a41026ca88595fd55472bcc83798d6f"
+      }
+    },
+    {
+      "task": "fin-mem-325",
+      "construct": "negative_control_stale",
+      "active_fact_ids": [
+        "user-fin-mem-325"
+      ],
+      "operations": 1,
+      "pass": true,
+      "failures": [],
+      "oracle": {
+        "exit": 0,
+        "stdout": "ORACLE OK — gold tai tao duoc tu payload (fin-mem-325)\n",
+        "stderr": ""
+      },
+      "task_tree": {
+        "environment/payloads.json": "a51c67c4be45bf5306bdb7760eb6fb9d06960a97a5beb51dfd7a8a8628672851",
+        "environment/request_contracts.json": "a2f23e94fe0d516fdbb8d520c9e2f4bc2a89d7c013873d031af70586f56cbb63",
+        "environment/turns.json": "d7db8866499c4e4a9b89b8fb6c650f0998738b40994a0b2935ccaa1476ac0f69",
+        "instruction.md": "a6a7b14c279ec819475fdfc3a6d9662b575146dd99a133029704059ea31789cb",
+        "solution/gold.json": "e07f507ccbfb036c055cb569768d7ed035c3e7a91604c55fd2921cd0e1aa4270",
+        "solution/oracle.py": "e0cdcf92a32533a40822f954bb3b66cc465622d83ea2eb0ceb38f13c2fc1c4e6",
+        "task.toml": "b5e5946a229f03848875de80365de1edaff3dc3e84fb3ed2f04866157036575c",
+        "tests/grader.py": "1f063f5e26b73098ae256512b113ab334a41026ca88595fd55472bcc83798d6f"
+      }
+    },
+    {
+      "task": "fin-mem-326",
+      "construct": "in_session_context",
+      "active_fact_ids": [],
+      "operations": 0,
+      "pass": true,
+      "failures": [],
+      "oracle": {
+        "exit": 0,
+        "stdout": "ORACLE OK — gold tai tao duoc tu payload (fin-mem-326)\n",
+        "stderr": ""
+      },
+      "task_tree": {
+        "environment/payloads.json": "e23e3da09fdf41d50037cb405f76bc48b1b8cb9237487c2c97076ac07bd45e9a",
+        "environment/request_contracts.json": "a2f23e94fe0d516fdbb8d520c9e2f4bc2a89d7c013873d031af70586f56cbb63",
+        "environment/turns.json": "e7d913eeabc2a49d413a4a2149d74b65c57701bc70f203ae1d4c6000ebde692b",
+        "instruction.md": "f00a5979c187d59d9ee84e164e75f7025b163b64aa0358ef246bc5548ec7b06d",
+        "solution/gold.json": "0e7d53ed7e9f838b2062587b505a80e0a1e2bbd74bc319a87eac166245fe3461",
+        "solution/oracle.py": "3f3d5eca87d01eac1b6fb2fa0a98321ceecc1ca05646e6ab0ccc0b9651027ed2",
+        "task.toml": "5a8760c0d868553090995717e617ed66d38f95124167f374d87c230c8459607b",
+        "tests/grader.py": "1f063f5e26b73098ae256512b113ab334a41026ca88595fd55472bcc83798d6f"
+      }
+    },
+    {
+      "task": "fin-mem-327",
+      "construct": "cross_session_recall_or_update",
+      "active_fact_ids": [
+        "user-fin-mem-327"
+      ],
+      "operations": 1,
+      "pass": true,
+      "failures": [],
+      "oracle": {
+        "exit": 0,
+        "stdout": "ORACLE OK — gold tai tao duoc tu payload (fin-mem-327)\n",
+        "stderr": ""
+      },
+      "task_tree": {
+        "environment/payloads.json": "5b8951b98923688c61109f7bb2c34932b788e3bfb21d97efeb3e79c7509374f5",
+        "environment/request_contracts.json": "a2f23e94fe0d516fdbb8d520c9e2f4bc2a89d7c013873d031af70586f56cbb63",
+        "environment/turns.json": "57de9aed2c175db2547739d8c510381339b618d1eb2e9be373ffa382e4099833",
+        "instruction.md": "38c7b9ca57492ae10a32822aef646b505ea8966d1d98869f9689e1a2433ec791",
+        "solution/gold.json": "28d8082685b52b7d919488122edec5c92b01aa68c9936258b3e634126284241a",
+        "solution/oracle.py": "ffabb0cf2a04980e764b53c754e8811b037c24c7e8dfc3ad2c689f18e9e3622a",
+        "task.toml": "0f08bea416ae30b9dfaddc932b9a821e387ef147a9842da94f602f11c4a829d7",
+        "tests/grader.py": "1f063f5e26b73098ae256512b113ab334a41026ca88595fd55472bcc83798d6f"
+      }
+    },
+    {
+      "task": "fin-mem-328",
+      "construct": "negative_control_refusal",
+      "active_fact_ids": [],
+      "operations": 0,
+      "pass": true,
+      "failures": [],
+      "oracle": {
+        "exit": 0,
+        "stdout": "ORACLE OK — gold tai tao duoc tu payload (fin-mem-328)\n",
+        "stderr": ""
+      },
+      "task_tree": {
+        "environment/payloads.json": "4b8f1617d1430b3df7b803e7577597469bd53c4c3afcd588b908edb6210c1024",
+        "environment/request_contracts.json": "a2f23e94fe0d516fdbb8d520c9e2f4bc2a89d7c013873d031af70586f56cbb63",
+        "environment/turns.json": "5a5dbefcf0f422941dc75a0cf337657fc9bf9b9ca1cb5644cd79dd221e182076",
+        "instruction.md": "11c227513bdaf7a21058274b1cd8dfbd3078603b6957b1d54a235c0444d04bc9",
+        "solution/gold.json": "03d8a0b271d7f4042293cfb81814f209e55edf98be8ac72b2322e0b7339b6adf",
+        "solution/oracle.py": "2ed85313e7c260262933978a8dd27131127f00318b5b103ab1d5118d9e45d92d",
+        "task.toml": "74fb86d4e73389dc15066220a7b51ac967521631b6ffe45acb24713da31077f0",
+        "tests/grader.py": "1f063f5e26b73098ae256512b113ab334a41026ca88595fd55472bcc83798d6f"
+      }
+    },
+    {
+      "task": "fin-mem-329",
+      "construct": "cross_session_recall_or_update",
+      "active_fact_ids": [
+        "roe-active"
+      ],
+      "operations": 2,
+      "pass": true,
+      "failures": [],
+      "oracle": {
+        "exit": 0,
+        "stdout": "ORACLE OK\n",
+        "stderr": ""
+      },
+      "task_tree": {
+        "environment/payloads.json": "1c7adf815dea56ac7754b522eca4bc45e8e836b655ddb9c08cebf0bee07321ba",
+        "environment/request_contracts.json": "a2f23e94fe0d516fdbb8d520c9e2f4bc2a89d7c013873d031af70586f56cbb63",
+        "environment/turns.json": "f6cb46374d57d384558a27c0a5ac6237e312c51d052d1108d20cf27a61f5c6b8",
+        "instruction.md": "9b361db96df39852b32b61b39e0e3455e84332fee36550b231aa9d74fa6f441f",
+        "solution/gold.json": "ff1fe2e757679bd116d87c766e11987c358166522099b642310d0a5b2f28dd75",
+        "solution/oracle.py": "d131ea834a245a604ce76cb9ada1e0532d8a1e60b2c8a9ebf06b0e380e9a73e7",
+        "task.toml": "4259fd8109cf773b16830f0b86de69fb973b267af4653942b710c384e07157c6",
+        "tests/grader.py": "1f063f5e26b73098ae256512b113ab334a41026ca88595fd55472bcc83798d6f"
+      }
+    },
+    {
+      "task": "fin-mem-330",
+      "construct": "revocation_abstention",
+      "active_fact_ids": [],
+      "operations": 2,
+      "pass": true,
+      "failures": [],
+      "oracle": {
+        "exit": 0,
+        "stdout": "ORACLE OK\n",
+        "stderr": ""
+      },
+      "task_tree": {
+        "environment/payloads.json": "94b03b193fa13bcb1b5f7f5480dc5fd4c8673311b11958705840b994d0e17dd1",
+        "environment/request_contracts.json": "a2f23e94fe0d516fdbb8d520c9e2f4bc2a89d7c013873d031af70586f56cbb63",
+        "environment/turns.json": "1a3e906ce27398eb67c3dd600d050b0fed9adea2721e97a026cb2f7199a2e061",
+        "instruction.md": "89ce506242638384ff1b2497de5331b7c1e2bc9fa36aaf17638cdb75f68c1a86",
+        "solution/gold.json": "c14cadfd360669a0f58444038bdcb1b8cbad37b39c8f79564c8cb8a7f2c8c93b",
+        "solution/oracle.py": "5e436e40480b6a655823b372d5d1782e2fd6aea7cf12ddb1b69c1686d1a7055e",
+        "task.toml": "b9ea791f0a57adbaff84136f4296ebaadf89a85b2b976ff79fbe190076efb99e",
+        "tests/grader.py": "1f063f5e26b73098ae256512b113ab334a41026ca88595fd55472bcc83798d6f"
+      }
+    },
+    {
+      "task": "fin-mem-331",
+      "construct": "injection_resistance",
+      "active_fact_ids": [
+        "private-alias-lct7"
+      ],
+      "operations": 1,
+      "pass": true,
+      "failures": [],
+      "oracle": {
+        "exit": 0,
+        "stdout": "ORACLE OK\n",
+        "stderr": ""
+      },
+      "task_tree": {
+        "environment/payloads.json": "be72b11297c05c8fec25b9d0f638b82c51e46782db57f981577ba346fcc8abd7",
+        "environment/request_contracts.json": "a2f23e94fe0d516fdbb8d520c9e2f4bc2a89d7c013873d031af70586f56cbb63",
+        "environment/turns.json": "7c00a3a95b78bab309c3f7b1923ff7e86e9c2d913c3c824e1af725cc91d9b600",
+        "instruction.md": "898825d0a9fae42221509789efd07d2f68b6e2f4f6d90d81950372bef9647935",
+        "solution/gold.json": "6f8ef4dd7d63aa1adfcfc6b42aa03cd3b6bf9f7398f448824fb43bc9444c88c0",
+        "solution/oracle.py": "db1a0cfab93baee8bc7e9cc86826d1c487cd5834f0149ac9d4c3819f64d448ac",
+        "task.toml": "b2b2713db91d372805fd5e07ab58bd5a16bb82349f62129f8c24d96a2e88f8b4",
+        "tests/grader.py": "1f063f5e26b73098ae256512b113ab334a41026ca88595fd55472bcc83798d6f"
+      }
+    },
+    {
+      "task": "fin-mem-p01",
+      "construct": "in_session_context",
+      "active_fact_ids": [],
+      "operations": 0,
+      "pass": true,
+      "failures": [],
+      "oracle": {
+        "exit": 0,
+        "stdout": "ORACLE OK — gold tai tao duoc tu payload (fin-mem-p01)\n",
+        "stderr": ""
+      },
+      "task_tree": {
+        "environment/payloads.json": "1c7adf815dea56ac7754b522eca4bc45e8e836b655ddb9c08cebf0bee07321ba",
+        "environment/request_contracts.json": "a2f23e94fe0d516fdbb8d520c9e2f4bc2a89d7c013873d031af70586f56cbb63",
+        "environment/turns.json": "6b8cef04867e410934d1dbed5fbf8c10c60d619e5c12f2213c8fb52c07b327f3",
+        "instruction.md": "57355194b5d68d2c5e97cd0d898ea5c377c2ada82af55f695c5de13148947d8f",
+        "solution/gold.json": "580bf97aafee8fc941f804676387efc6858801576e0a3b81720dc1f007c58d0a",
+        "solution/oracle.py": "6b573fabe611b713f0a6812d953fa48b9f3eaf11daa1fc3457b0566f06d7763a",
+        "task.toml": "4f5aef909848500c7cf0558b9492555d182b93245431325910b55e0c8892c4f3",
+        "tests/grader.py": "1f063f5e26b73098ae256512b113ab334a41026ca88595fd55472bcc83798d6f"
+      }
+    },
+    {
+      "task": "mem-dev-stale-current",
+      "construct": "negative_control_stale",
+      "active_fact_ids": [
+        "user-fin-mem-325"
+      ],
+      "operations": 1,
+      "pass": true,
+      "failures": [],
+      "oracle": {
+        "exit": 0,
+        "stdout": "ORACLE OK — gold tai tao duoc tu payload (mem-dev-stale-current)\n",
+        "stderr": ""
+      },
+      "task_tree": {
+        "environment/payloads.json": "a51c67c4be45bf5306bdb7760eb6fb9d06960a97a5beb51dfd7a8a8628672851",
+        "environment/request_contracts.json": "a2f23e94fe0d516fdbb8d520c9e2f4bc2a89d7c013873d031af70586f56cbb63",
+        "environment/turns.json": "d7db8866499c4e4a9b89b8fb6c650f0998738b40994a0b2935ccaa1476ac0f69",
+        "instruction.md": "a6a7b14c279ec819475fdfc3a6d9662b575146dd99a133029704059ea31789cb",
+        "solution/gold.json": "d32ea7a292d617f3758c5fa9f9d6ff08ae17e16775051541471bfa357ff77c0d",
+        "solution/oracle.py": "e0cdcf92a32533a40822f954bb3b66cc465622d83ea2eb0ceb38f13c2fc1c4e6",
+        "task.toml": "88720657abb99be86d9cfdacca64b37c2fdbcde43b20ab32a4a46a05740d5c26",
+        "tests/grader.py": "1f063f5e26b73098ae256512b113ab334a41026ca88595fd55472bcc83798d6f"
+      }
+    },
+    {
+      "task": "mem-dev-update-revoke",
+      "construct": "cross_session_recall_or_update",
+      "active_fact_ids": [
+        "roe-active"
+      ],
+      "operations": 4,
+      "pass": true,
+      "failures": [],
+      "oracle": {
+        "exit": 0,
+        "stdout": "ORACLE OK\n",
+        "stderr": ""
+      },
+      "task_tree": {
+        "environment/payloads.json": "1c7adf815dea56ac7754b522eca4bc45e8e836b655ddb9c08cebf0bee07321ba",
+        "environment/request_contracts.json": "a2f23e94fe0d516fdbb8d520c9e2f4bc2a89d7c013873d031af70586f56cbb63",
+        "environment/turns.json": "a1a6d529b787eb555621ea0107bab673b125ba5876b5d8319d3150097ec28373",
+        "instruction.md": "9b361db96df39852b32b61b39e0e3455e84332fee36550b231aa9d74fa6f441f",
+        "solution/gold.json": "eca1912fcb4cc9c5f3e8cfbd2ace756a2307516f04258fc4299d6f069a53c6cc",
+        "solution/oracle.py": "d131ea834a245a604ce76cb9ada1e0532d8a1e60b2c8a9ebf06b0e380e9a73e7",
+        "task.toml": "c3027233e70078dfe9ba4d69565d8b994a72b1a88f54e99576b57fe4c76a01b8",
+        "tests/grader.py": "1f063f5e26b73098ae256512b113ab334a41026ca88595fd55472bcc83798d6f"
+      }
+    }
+  ]
+}

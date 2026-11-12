@@ -1,0 +1,58 @@
+{
+  "task_id": "fin-m3-split-515",
+  "scoring": "value",
+  "solution": {
+    "pass": [
+      "PVT"
+    ],
+    "criteria": [
+      "P/E dưới 10",
+      "P/B dưới 1"
+    ]
+  },
+  "split": "main",
+  "expects": [
+    {
+      "type": "set",
+      "path": "values.pass",
+      "gold": [
+        "PVT"
+      ]
+    },
+    {
+      "type": "str",
+      "path": "source",
+      "accept": [
+        "peer_compare"
+      ]
+    }
+  ],
+  "contract_version": 2,
+  "stratum": "memory",
+  "tier": "M3",
+  "subtier": "M3a",
+  "memory_construct": "M3a",
+  "notes": "Native-memory stratum (amendment 2026-11-11 d).",
+  "provenance_contract": [
+    {
+      "tool": "peer_compare",
+      "source": "vnstock",
+      "as_of": "2026-11-01T23:14:37.310336+07:00",
+      "matched_entry_id": "peer:energy_p",
+      "response_sha256": "65e84dc7917423c9b408c2f532b597c1a3ae3efa7a627f43834e1e821f4e3406"
+    }
+  ],
+  "provenance_catalog": [
+    {
+      "tool": "peer_compare",
+      "source": "vnstock",
+      "as_of": "2026-11-01T23:14:37.310336+07:00",
+      "matched_entry_id": "peer:energy_p",
+      "response_sha256": "65e84dc7917423c9b408c2f532b597c1a3ae3efa7a627f43834e1e821f4e3406"
+    }
+  ],
+  "payload_sha256": "773c57078dc5b40feb73ec60f8e26bb18950c448967f5eb0e786328acafaaf52",
+  "required_payload_keys": [
+    "peer:energy_p"
+  ]
+}

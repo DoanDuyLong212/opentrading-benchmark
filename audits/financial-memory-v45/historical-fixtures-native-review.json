@@ -1,0 +1,22 @@
+{
+  "status": "targeted_pass",
+  "tests": 24,
+  "failures": 0,
+  "elapsed_seconds": 32.53,
+  "log": "audits/financial-memory-v45/historical-fixtures-targeted-final.log",
+  "scope": "Historical fixture inputs and interpreter isolation only; no product/native/source/grader or old-study edits",
+  "sha256": {
+    "experiments/finance-v45-study/tools/tests/test_v43_study.py": "bf9f28afe5b987ecd7b0cc3fe009d44a46e5e0eef8ca91e55f4b09c927a3a501",
+    "experiments/finance-v45-study/tools/tests/test_v44_gate.py": "1c12b10d081da359b677bef2676e05963ca6b70ca00ea465b561d99418275ec4",
+    "experiments/finance-v43-study/tools/bench_config.json": "37b71f4f33ce099168d5f537dcf4f2bffe76197dd6a25c15ca0eb8c0465616d3",
+    "experiments/finance-v43-study/tools/bench_config_deepseek.json": "17482089d7452c751e1e75b25e0894c6023a9d8ccc72a46854a9e2e332ddca64",
+    "experiments/finance-v44-study/tools/bench_config.json": "88f56a126fcc7f01ab667e092ec3a996ccde4dc374489ca81aebc513da04b761",
+    "experiments/finance-v44-study/tools/bench_config_deepseek.json": "15c487f4917af6cf5182ce9a05801ac9f2adf02dace3ae6174130363ee5a017a",
+    "experiments/finance-v44-study/tools/tests/test_v44_gate.py": "1872c650feced14ab7f6b22c1ba15f503510a4af5877173ed3c599e6b59611e3",
+    "experiments/finance-v44-study/tools/run_benchmark.py": "ea7549e971ae3d1662e2ef868d733acb589d18b7146b2f50563115f5ef6c806c",
+    "experiments/finance-v44-study/tools/run_manifest.py": "32346933c62d999c7d933bd8218e1bd92aa10d6b335e48330dccd6eb2e97036d"
+  },
+  "no_model_calls": true,
+  "no_skip_xfail": true,
+  "historical_cli_assertions": "Original immutable v44 fixture direct call in fresh interpreter, including presealed manifest fingerprint, actual argparse/settings and execute_trial interception before inference"
+}

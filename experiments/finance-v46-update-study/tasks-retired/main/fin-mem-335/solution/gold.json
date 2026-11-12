@@ -1,0 +1,49 @@
+{
+ "scoring": "value",
+ "memory_construct": "cross_session_recall_or_update",
+ "solution": {
+  "symbol": "PNJ",
+  "pe": 11.61
+ },
+ "expects": [
+  {
+   "type": "str",
+   "path": "values.symbol",
+   "accept": [
+    "PNJ"
+   ]
+  },
+  {
+   "type": "value",
+   "path": "values.pe",
+   "gold": 11.61,
+   "tol": {
+    "rel": 0.01
+   }
+  },
+  {
+   "type": "str",
+   "path": "source",
+   "accept": [
+    "peer_compare"
+   ]
+  }
+ ],
+ "notes": "Chuỗi 2 bước: lượt trước xác định losers-leader từ market_movers (PNJ -3.43/15500); lượt cuối phải NHỚ mã đó và tra P/E trong peer_compare (rổ tiêu dùng). ",
+ "memory_checks": {},
+ "provenance_contract": [
+  {
+   "tool": "peer_compare",
+   "source": "vnstock",
+   "as_of": "2026-11-01T23:08:19.121250+07:00",
+   "matched_entry_id": "peer:cons_p",
+   "response_sha256": "ddba4fdb6bb3c68d89a0cb89bcf91112bcee9fc811750394f7fb157fbdfffa82"
+  }
+ ],
+ "required_payload_keys": [
+  "movers:vn30",
+  "peer:cons_p"
+ ],
+ "task_id": "fin-mem-335",
+ "payload_sha256": "ea1d6e468a6678f0b618008351dab6b367f484c1284deea1b7bf3ab849317d25"
+}

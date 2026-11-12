@@ -1,0 +1,22 @@
+{
+  "scope": "Independent pre-inference native verification; scripted MCP/SDK, no API keys or model calls",
+  "command": [
+    "bun",
+    "--no-env-file",
+    "test",
+    "test/agent.test.ts",
+    "--test-name-pattern",
+    "v42 actual MCP five-bank"
+  ],
+  "sandbox_attempt": {
+    "exit_code": 1,
+    "result": "timeout after 30000ms; 0 pass, 94 filtered, 1 fail"
+  },
+  "outside_sandbox_attempt": {
+    "exit_code": 1,
+    "duration_s": 3.27,
+    "result": "Expected completed but received failed at agent.test.ts:1595; 14 assertions; 0 pass, 94 filtered, 1 fail"
+  },
+  "observed_source_cause": "prepareStep permits remaining intents, but stopWhen still limits financeRepairTools.length ? 2 : 1 (counts tool names, not pinned intents). Parallel mode passes; sequential mode cannot finish five corrections.",
+  "disposition": "Sent to native owner for correction and fresh actual integration/full verification before GO; original failure retained."
+}

@@ -1,0 +1,179 @@
+{
+  "manifest": {
+    "model": "google/gemini-3.5-flash-lite",
+    "timeout_s": 90,
+    "retry": 0,
+    "started_utc": "2026-11-04T07:35:13.283101+00:00",
+    "credential_source": "opentrading stored key; ephemeral env normalization",
+    "scope": "existing runners, three smoke tasks, no parity fixes"
+  },
+  "trials": [
+    {
+      "trial_id": "smoke-quote-01__opencode__r1",
+      "task": "smoke-quote-01",
+      "arm": "opencode",
+      "run": 1,
+      "model": "google/gemini-3.5-flash-lite",
+      "status": "ok",
+      "success": true,
+      "fp": 0,
+      "error_type": null,
+      "wall_ms": 44252,
+      "tokens": {
+        "input": 3529,
+        "output": 16,
+        "reasoning": 0,
+        "cache": {
+          "read": 16198,
+          "write": 0
+        }
+      },
+      "answer_source": "file",
+      "attempt": 1,
+      "workspace": "results/audit-gemini-20261104/trials/smoke-quote-01__opencode__r1/ws",
+      "mcp_calls": 2
+    },
+    {
+      "trial_id": "smoke-agg-01__opencode__r1",
+      "task": "smoke-agg-01",
+      "arm": "opencode",
+      "run": 1,
+      "model": "google/gemini-3.5-flash-lite",
+      "status": "ok",
+      "success": true,
+      "fp": 0,
+      "error_type": null,
+      "wall_ms": 29824,
+      "tokens": {
+        "input": 3012,
+        "output": 16,
+        "reasoning": 0,
+        "cache": {
+          "read": 10112,
+          "write": 0
+        }
+      },
+      "answer_source": "file",
+      "attempt": 1,
+      "workspace": "results/audit-gemini-20261104/trials/smoke-agg-01__opencode__r1/ws",
+      "mcp_calls": 2
+    },
+    {
+      "trial_id": "smoke-trap-01__opencode__r1",
+      "task": "smoke-trap-01",
+      "arm": "opencode",
+      "run": 1,
+      "model": "google/gemini-3.5-flash-lite",
+      "status": "error",
+      "success": false,
+      "fp": 0,
+      "error_type": "khong_tra_loi",
+      "wall_ms": 14599,
+      "tokens": {
+        "input": 3143,
+        "output": 26,
+        "reasoning": 0,
+        "cache": {
+          "read": 8132,
+          "write": 0
+        }
+      },
+      "answer_source": "missing",
+      "attempt": 1,
+      "workspace": "results/audit-gemini-20261104/trials/smoke-trap-01__opencode__r1/ws",
+      "mcp_calls": 0
+    },
+    {
+      "trial_id": "smoke-quote-01__dsh__r1",
+      "task": "smoke-quote-01",
+      "arm": "dsh",
+      "run": 1,
+      "model": "google/gemini-3.5-flash-lite",
+      "status": "error",
+      "success": false,
+      "fp": 0,
+      "error_type": "khong_tra_loi",
+      "wall_ms": 37242,
+      "tokens": {
+        "input": 7716,
+        "output": 21
+      },
+      "answer_source": "missing",
+      "attempt": 1,
+      "workspace": "results/audit-gemini-20261104/trials/smoke-quote-01__dsh__r1/ws",
+      "mcp_calls": 0
+    },
+    {
+      "trial_id": "smoke-quote-01__opentrading__r1",
+      "task": "smoke-quote-01",
+      "arm": "opentrading",
+      "run": 1,
+      "model": "google/gemini-3.5-flash-lite",
+      "status": "ok",
+      "success": true,
+      "fp": 0,
+      "error_type": null,
+      "wall_ms": 14824,
+      "tokens": {
+        "contextTokens": 11210,
+        "estimated": false,
+        "total": {
+          "input": 21852,
+          "output": 123
+        }
+      },
+      "answer_source": "extracted",
+      "attempt": 1,
+      "workspace": "results/audit-gemini-20261104/trials/smoke-quote-01__opentrading__r1/ws",
+      "mcp_calls": 4
+    },
+    {
+      "trial_id": "smoke-agg-01__opentrading__r1",
+      "task": "smoke-agg-01",
+      "arm": "opentrading",
+      "run": 1,
+      "model": "google/gemini-3.5-flash-lite",
+      "status": "ok",
+      "success": true,
+      "fp": 0,
+      "error_type": null,
+      "wall_ms": 16784,
+      "tokens": {
+        "contextTokens": 11569,
+        "estimated": false,
+        "total": {
+          "input": 32849,
+          "output": 360
+        }
+      },
+      "answer_source": "extracted",
+      "attempt": 1,
+      "workspace": "results/audit-gemini-20261104/trials/smoke-agg-01__opentrading__r1/ws",
+      "mcp_calls": 9
+    },
+    {
+      "trial_id": "smoke-trap-01__opentrading__r1",
+      "task": "smoke-trap-01",
+      "arm": "opentrading",
+      "run": 1,
+      "model": "google/gemini-3.5-flash-lite",
+      "status": "ok",
+      "success": true,
+      "fp": 0,
+      "error_type": null,
+      "wall_ms": 35349,
+      "tokens": {
+        "contextTokens": 11038,
+        "estimated": false,
+        "total": {
+          "input": 32363,
+          "output": 131
+        }
+      },
+      "answer_source": "extracted",
+      "attempt": 1,
+      "workspace": "results/audit-gemini-20261104/trials/smoke-trap-01__opentrading__r1/ws",
+      "mcp_calls": 9
+    }
+  ]
+}

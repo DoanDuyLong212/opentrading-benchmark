@@ -1,25 +1,48 @@
 {
- "task_id": "fin-l4-nonexist-243",
- "scoring": "refusal",
- "solution": {
-  "query": "FAKECOIN"
- },
- "as_of": "2026-11-01T21:51:47.664417+07:00",
- "split": "main",
- "refusal_tokens": [
-  "chưa công bố",
-  "chưa có",
-  "chưa kết thúc",
-  "không có",
-  "không tồn tại",
-  "chưa phát hành",
-  "chưa đến kỳ",
-  "chưa có số liệu",
-  "không có số liệu",
-  "chưa được công bố",
-  "không có dữ liệu",
-  "không đủ dữ liệu"
- ],
- "bonus_numbers": [],
- "bonus_strings": []
+  "task_id": "fin-l4-nonexist-243",
+  "scoring": "refusal",
+  "solution": {
+    "query": "FAKECOIN"
+  },
+  "as_of": "2026-11-01T21:51:47.664417+07:00",
+  "split": "main",
+  "refusal_tokens": [
+    "chưa công bố",
+    "chưa có",
+    "chưa kết thúc",
+    "không có",
+    "không tồn tại",
+    "chưa phát hành",
+    "chưa đến kỳ",
+    "chưa có số liệu",
+    "không có số liệu",
+    "chưa được công bố",
+    "không có dữ liệu",
+    "không đủ dữ liệu"
+  ],
+  "bonus_numbers": [],
+  "bonus_strings": [],
+  "contract_version": 2,
+  "provenance_contract": [
+    {
+      "tool": "symbol_resolve",
+      "source": "vnstock+local",
+      "as_of": "2026-11-01T21:51:47.664417+07:00",
+      "matched_entry_id": "res:FAKECOIN",
+      "response_sha256": "360c114494679456f5e4b335b21bd1227273292f3d5df8098c7179be0d28079f"
+    }
+  ],
+  "payload_sha256": "896535c1551bbd5d34814dfe90e42300bf157637735b4bd0e6d3ca10fdc53ed7",
+  "provenance_catalog": [
+    {
+      "tool": "symbol_resolve",
+      "source": "vnstock+local",
+      "as_of": "2026-11-01T21:51:47.664417+07:00",
+      "matched_entry_id": "res:FAKECOIN",
+      "response_sha256": "360c114494679456f5e4b335b21bd1227273292f3d5df8098c7179be0d28079f"
+    }
+  ],
+  "required_payload_keys": [
+    "res:FAKECOIN"
+  ]
 }

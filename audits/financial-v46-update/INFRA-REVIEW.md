@@ -1,0 +1,47 @@
+# v4.6 repair infrastructure review (read-only source/run examination)
+
+Scope: §18 and `experiments/finance-v46-study`, compared with v4.5. No historical artifacts, source, seals, or approvals modified; no inference or production install performed. v4.7 architecture is a proposal only. Existing R3 is diagnostic and must not be resumed or relabeled as the new update.
+
+## Conclusion
+
+The Unicode and parallel-order repairs are sound in direction. Several of the remaining failures are auditor defects, not incorrect financial computation. However, some new reconciliation paths relax execution attribution and do not satisfy fail-closed occurrence authentication. A new version needs both real operational fixes and stricter audit proofs before any fresh smoke. Do not regrade historical raw-format failures as successes.
+
+R3 `super-devsmoke/audit-v45.json`: 96/96 scheduled, audit FAIL, 16 errors. Three `generated_occurrence_inventory` failures account for ten additional cascading source-join errors. Two other source-join failures are rejected invalid arguments whose public code the auditor omits. One pending call is a genuine misspelled tool name.
+
+## Proven defects and minimal fixes
+
+1. **SSE comment preamble breaks the auditor.** `tools/v45_call_binding.py:26` decides SSE using `raw.lstrip().startswith('data:')`. Raw NVIDIA responses actually start `:\n\ndata: {...}` in OC chain r1, OT-fin ratio r2, and OT-fin growth r2. JSON parsing the whole stream raises `Expecting value`. Preserve exact raw SHA, parse SSE using fields/events, ignore comment/heartbeat lines, join multiline data records and handle `[DONE]`; distinguish malformed/truncated stream from valid empty response. Do not silently skip malformed JSON events. Gateway's separate line parser should use the same tested framing implementation to avoid divergent usage/call inventories.
+
+2. **Invalid public request rejection not reconciled.** B0 chain r2 sends `symbol_resolve.limit:"5"`; DSH aggregate r2 sends `columns:"none"`. Ledger authenticates rejected `error_code:invalid_request`, `schema_failure_class:frozen_v3_type_or_shape`. Model sees public rejected result. Auditor checks only private `request not replayable`, `invalid_derivation`, or `unsupported_snapshot_query`, so invents missing execution despite a real failed query. Bind structured `request_rejected:true` plus exact public error code to verified negative ledger, canonical exact function, unmodified arguments, original generation and context. Preserve failed-call cost/classification. This is not missing data or financial evidence.
+
+3. **Unknown tool is genuine model naming error, not automatically infrastructure.** OT-fin aggregate r2 emits `mcp__openttradng__vn_quote_history`; actual tool message is Vietnamese `Không có tool "mcp__openttradng__vn_quote_history".` Auditor only matches English `unknown tool`. Add typed native unknown-tool event at execution and reconcile exact generated name/args/error. Classify against advertised inventory: absent typo = model error; advertised exact name but unavailable = infra. Never canonicalize misspellings to valid tools or accept a receipt for them.
+
+4. **Rejected MCP fallback is too permissive.** Both new auditors search matching ledger function/arguments and call `claim_any_sdk(id)`, without verifying the negative model-visible context for that exact occurrence; the same ledger rejection is not marked consumed and can be reused across repeated generated calls with identical arguments. Remove this bypass. Use one-to-one ledger-to-occurrence assignment with distinct consumed call IDs and temporal/session bounds, fail ambiguous cases. Negative messages must not carry financial receipt/evidence. Unknown-tool and notebook reconciliations likewise require typed or exact schema-validated context, not broad substring searches such as `"facts"`.
+
+5. **Deferred native generation stamps remain a real provenance defect.** Native `agent.ts:1262–63` emits all accumulated financial call-audit and rejection notices after each event. `ot_headless.ts` stamps the *current* last provider ledger row when each historical notice is re-emitted. This can falsely attribute a historical rejection to a later call. Memory auditor unscoped fallback `bindings.claim(...)` can bind a later-session notice to any unclaimed matching generation, rather than proving replay to the original rejected occurrence. Stamp immutable origin at creation (request/generation, SDK ordinal, logical session/turn); subsequent emissions explicitly reference that origin. Auditor must verify an already authenticated original for replay and must not consume another generation as a new rejection. Do not infer original origin from current emission time.
+
+6. **B0/B1 validator confound persists.** `runtime/src/core/tools/registry.ts:207` uses custom Ajv finance validation only when `opts.financeState` exists. B0 uses SDK default JSON schema validation. Unicode fix prevents compile crashes but does not establish equal input acceptance. Put authoritative declared-schema validation in common runtime path for B0/B1; keep finance policy decisions separate. Required validation must reject the same malformed shapes and accept the same finite/default-equivalent cases, without adding B1 prompt/planning behavior to B0. Verify actual SDK, not Python-only semantics.
+
+## Repairs that are supported, with qualifications
+
+- Unicode escaping: `_js_unicode_safe_escape` removes illegal identity escapes while retaining regex syntax escaping and literal controls. Artifact has **156/156 compilation successes, zero bad patterns**. Top-level `bad_schemas:2` actually counts expected validation failure on representative `{}` for required-argument analytics tools. Improve the report to separate compile validity from representative argument validity. Artifact was run with **Bun 1.4.0**, while current registered runtime is 1.4.4: rerun actual pinned runtime with valid positive and invalid negative utility examples.
+- Parallel SDK order: use `assistant_ordinal`, not sorted IDs, for history alignment. Retain this repair. Add shuffled parallel order, duplicate IDs across turns/sessions, and truncated ambiguous history tests.
+- Sampling: memory auditor reads manifest per-model options; preserve actual MINI 1/.95 vs stateless DS 0/1 distinction.
+- One-level OC quote decoding is narrowly reversible and appropriate; restrict it to the declared adapter and test non-wrapper/prose/escaped quotes/newlines. Keep user prompt and cross-session leakage checks.
+- Gateway namespace allowlist addition maintains exact complete inventory and rejects duplicates/unapproved names; no reason to loosen it further.
+- Internal protocol ID compatibility is operationally valid as a versioned compatibility identifier, provided new public study identity, source/inventory fingerprint, seal, manifests and report clearly identify v4.6-update. Renaming every internal v45 symbol is unnecessary; do not hide version identity behind protocol ID.
+
+## Required meaningful tests before new smoke
+
+- SHA-bound real SSE preamble repro; CRLF, comments/heartbeats, data without optional space, multiline event, terminal DONE, malformed/truncated event rejection, raw capture mutation rejection.
+- Exact negative MCP join on invalid_request and unsupported_snapshot_query; two equal calls with only one ledger record must FAIL; wrong SDK ID/function/args/session/request, positive receipt mixed into negative error, missing model-visible rejection must FAIL.
+- Unknown tool Vietnamese/English typed result: misspelled name remains failed and does not create evidence; advertised-but-unregistered exact name classified infrastructure.
+- Native rejection A replayed in B references A immutably; same SDK ID reused for actual B call must not steal A rejection; altered origin stamp fails; current-generation rejection with no matching execution event fails.
+- B0/B1 same actual Ajv/SDK acceptance matrix covering all source schemas, default-equivalent args, invalid stringified numbers, optional null, extra fields, malformed JSON; policy-specific decisions tested separately.
+- All repaired schema positive/negative fixtures through pinned Bun 1.4.4 and actual registry.
+- Read-only new auditor run over preserved v45 MINI and R3 as regression diagnostics, writing into a new review directory; historical outputs unchanged. Score endpoints unchanged unless explicitly recomputed under separately named diagnostic grader, never rescue raw-format failure.
+- Full Python suite, native affected tests/typecheck, authentic 4-arm loopback wire, immutable completed resume 0 call and capture hash/byte/mtime equality, source/inventory/dependency freeze before financial inference.
+
+## Benchmark consequences
+
+R3 financial provisional metrics are OT-B0 18/24, OT-fin 18/24, OC 14/24, DSH 18/24; strict 18/24, 18/24, 13/24, 16/24. OT-fin has one DNF vs B0 zero. These are not a superiority result: manual all-arm verification and audit are not certified, OT-fin ties B0/DSH financially and misses registered smoke thresholds/canary. New v4.6-update must preserve these failures, register its changes first, and use fresh smoke/pilot manifests without quality retries or post-inference repairs. No main/holdout in current user request. A v4.7 proposal should distinguish format compliance, instruction use, computation/units and resource exhaustion from financial information access; approval precedes architecture changes.

@@ -1,0 +1,47 @@
+# Task / snapshot / grader contract v2
+
+This is an explicit mechanical migration of 277 task contracts. The archived `v1-task-artifacts.tar.gz` and `migration.json` preserve pre-change instruction, grader, gold and metadata bytes/hashes. Numerical gold values and original financial payload bytes are unchanged. The same transformation is applied to holdout; no holdout model runs or outcome-dependent tuning were performed.
+
+## Contract
+
+All arms receive the same task instruction and return one final JSON object. Each answer includes `evidence: [{tool, source, as_of, call_id, payload_sha256, matched_entry_id, response_sha256}]`. Top-level `source` names MCP tools; evidence `source` names the actual provider. The grader validates required recorded-response/provider/as-of coverage and both snapshot and response identity. The driver independently joins every claim to a successful record in the final attempt's ledger, including call ID, matched entry ID and response hash. One successful bank call cannot ground answers for five banks sharing a source/timestamp.
+
+Required evidence is derived mechanically from actual `env(name)` calls in the existing trusted oracle, plus explicit entity metadata for historical merged single-symbol captures. Inlined helper definitions do not establish dependencies. A GDP question requires the GDP response; an unrelated CPI catalog entry remains a decoy. A single-symbol RSI question requires that symbol; five-bank aggregation requires all five. Extra evidence is allowed only for catalog responses, and the driver still verifies actual calls. Dependency-only oracle tracing applies identically across all splits and does not change numerical solutions or execute any holdout model trials.
+
+`BENCH_MCP_LEDGER` records one append-only, fsynced JSONL entry for every successful or rejected call. The successful response adds `benchmark_evidence` with call ID, tool, matched entry ID, payload hash, canonical pre-evidence envelope hash, source and as-of. Ledger rows also contain normalized request hash, UTC timestamps and duration. Credential-shaped argument keys are redacted; rejected requests do not supply financial data. Input schema validation runs inside the authoritative replay handler so the MCP SDK cannot reject malformed requests before they reach the ledger.
+
+Frozen real MCP function signatures are in `tools/snapshot_tool_schemas.json`, including source-file hashes. Tool descriptions show available recorded request shapes without results/gold. Required arguments and all explicitly recorded non-default arguments must match; unknown, contradictory, incomplete, malformed or ambiguous requests fail. Batch lists require exact normalized equality; a subset cannot reuse full-batch summaries.
+
+## Recorded-data repairs and limits
+
+Pilot/smoke payloads were stored without request parameters. Explicit `environment/request_contracts.json` sidecars reconstruct entity identity from captured envelopes. Merged bank and RSI captures are split into genuine single-symbol responses at replay time. Original optional capture windows cannot be recovered and remain documented as unknown; no history length or financial value is invented.
+
+Some main recorded `vn_crypto_ohlcv` requests used `days`, which the real MCP API does not accept. Sidecars explicitly correct the replay request to `count`, using the number of captured closes. The original payload/request bytes remain preserved and hashable.
+
+Grading rejects duplicate JSON keys (including nested keys), non-finite/overflowing numbers, booleans as numbers, malformed top-level JSON schemas, missing/non-null refusal values, negated or invented sources, explicitly negated units/indicator lines, contradictory verdict clauses, wrong years (including short date years), wrong/incomplete comparison quarters and contradictory date endpoints. Revenue-growth period contracts now contain both captured quarters; numerical growth gold is unchanged. Valid period aliases, numeric tolerances and source capitalization are retained.
+
+USD and USDT are separate units; USD/VND and VND/USD are not globally collapsed into the same dimensional unit. Fiat USD questions no longer accept USDT merely as an alias. The pilot BTCUSDT quote explicitly requests USDT; its cross-currency exercise explicitly states the 1 USDT = 1 USD calculation premise. These are transparent unit/premise repairs, not changes to stored financial numbers. `migration.json.contract_adjustments` records changed unit/period aliases and narrowed required source entries by task.
+
+CPI captures contain different values such as 105.08 and 5.08 with identical indicator, period and unit labels. A `value < 20` heuristic cannot recover the missing official series dimension. Tasks that depend on such ambiguous rows are marked `confirmatory_eligible = false` with `exclusion_reason = "ambiguous_cpi_series_dimension"` at the TOML root. They remain diagnostic fixtures; GDP tasks with unrelated CPI catalog decoys remain eligible. This quarantine is based on recorded-data ambiguity, never model outcomes.
+
+Narrative tasks that request complete close sequences but whose verdict rubric accepts fewer matching numbers are also diagnostic only, with `exclusion_reason = "incomplete_narrative_evidence_rubric"`. The inherited rubric is preserved for diagnostics rather than treating a single quoted price as complete financial evidence.
+
+`task-quality.json` separates capability labels from historical L1–L5 labels: retrieval, arithmetic, aggregation, evidence checks and synthesis. RSI/P-E extraction is not certified as arithmetic; multiples extraction is not certified as fair-value valuation. No task is automatically certified as multi-hop.
+
+## Verification
+
+Run `python3 tools/audit_benchmark.py` for main/pilot/smoke only. Acceptance requires all correct fixtures to pass, all mutation/empty/adversarial probes to fail, all oracles to pass, no expectation/solution numeric mismatch and no leakage flags. Synthesized evidence uses explicit `offline-fixture` IDs and is only an offline grader fixture, never proof of live tool use.
+
+`task_quality_report.py` checks holdout by byte hashes/counts and eligibility metadata only. Holdout still shares 27 payload files with main. It measures new questions over partly shared data, not a clean unseen-document/entity generalization test. The supported scope is correctness relative to captured snapshots; certification against original financial filings is outside this benchmark and is not an additional technical acceptance gate.
+
+The legacy build generators fail closed after migration to prevent accidental overwriting with old task contracts. New financial data or a new holdout must be a separately versioned dataset.
+
+## Independent verification
+
+`tools/tests/test_independent_snapshot.py` independently recomputes a deterministic sample of 45 main/pilot/smoke tasks using explicit raw-payload selectors and Decimal arithmetic, without importing oracle/generator/synthesized-answer computation. It covers retrieval, consolidated versus parent profit, quarterly growth, GDP QoQ/YoY, currency scaling, gross margins, averages, ranking/filtering, RSI selection, consistency/refusal and profile synthesis. All 45 match the stored solutions within the two-decimal rounding unit. CTD's captured fiscal Q4 is retained rather than reclassified as an unavailable calendar quarter.
+
+The same suite checks the original numerical solution/expectation leaves against the immutable v1 archive for development/main tasks, and checks original payload bytes against Git HEAD for all 277 tasks. It adds direct adversarial cases for duplicate/trailing JSON, overflow, negated units/lines, contradictory verdicts, short wrong years, a single bank call masquerading as five-bank evidence, irrelevant catalog dependencies and CPI quarantine. The real MCP stdio regression verifies that success, wrong-entity rejection and schema-invalid rejection each produce exactly one ledger record.
+
+The combined independent/grader/snapshot command passed 129 tests; subsequent format/quarantine regressions bring focused coverage to 131 test cases, including 45 independent financial computations and format validation of all 277 instruction JSON examples. Confirmatory eligibility is main 178/200, pilot 22/24, smoke 3/3 and holdout 43/50; 19 ambiguous CPI tasks and 12 narrative tasks with incomplete evidence rubrics remain diagnostic. The commands and limits are recorded in `INDEPENDENT-VERIFICATION.md`. The development/main audit passed 227/227 valid fixtures and 227/227 oracles, rejected all mutation/empty/source/period/refusal probes, and found no leaks or numerical expectation/solution mismatch. These offline counts deliberately include diagnostic fixtures and do not imply their confirmatory eligibility.
+
+The final refusal-language repair recognizes Vietnamese passive availability predicates, e.g. `không được tìm thấy` as equivalent to `không tìm thấy`, without task/entity-specific answer matching. This fixes a valid null refusal observed in the first NVIDIA smoke run. Double negation and explicit opposite availability assertions remain rejected; present JSON null, source, period and authoritative evidence requirements are unchanged. Twelve new regression cases bring the combined independent/grader/snapshot suite to 143 passing tests. After regeneration, a second migration refresh changed zero of 1,699 task files; separator whitespace before `[scoring]` is normalized so refresh is byte-idempotent.

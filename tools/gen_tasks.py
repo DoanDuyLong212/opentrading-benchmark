@@ -431,4 +431,6 @@ def main():
 
 
 if __name__ == "__main__":
+    if os.path.exists(os.path.join(ROOT, "audits", "contract-v2", "migration.json")):
+        raise SystemExit("Legacy generator disabled after contract-v2 migration; create a separately versioned task set")
     main()

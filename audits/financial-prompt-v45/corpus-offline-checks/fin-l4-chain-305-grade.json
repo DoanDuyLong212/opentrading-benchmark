@@ -1,0 +1,36 @@
+{
+  "task_id": "fin-l4-chain-305",
+  "success": true,
+  "fp": 0,
+  "error_type": null,
+  "checks": [
+    {
+      "check": "provenance",
+      "pass": true,
+      "detail": "recorded response identity/provider/as_of coverage and snapshot hash; call IDs independently verified by driver"
+    },
+    {
+      "check": "str:values.symbol",
+      "pass": true,
+      "detail": "answer='TPB' accept=['TPB']"
+    },
+    {
+      "check": "value:values.pct_drop",
+      "pass": true,
+      "detail": "answer=-1.94 gold=-1.94 tol={'abs': 0.01}"
+    },
+    {
+      "check": "value:values.lnst_bn",
+      "pass": true,
+      "detail": "answer=2351.2 gold=2351.2 tol={'rel': 0.005}"
+    },
+    {
+      "check": "str_all:source",
+      "pass": true,
+      "detail": "answer='vn_equity_quote_batch + financial_statements' need_all=['vn_equity_quote_batch', 'financial_statements']"
+    }
+  ],
+  "schema_valid": true,
+  "provenance_correctness": true,
+  "semantic_correctness": true
+}

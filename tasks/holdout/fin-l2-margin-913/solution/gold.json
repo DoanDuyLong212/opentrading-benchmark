@@ -1,44 +1,67 @@
 {
- "task_id": "fin-l2-margin-913",
- "scoring": "value",
- "solution": {
-  "value": 10.73
- },
- "as_of": "2026-11-01T22:08:27.470720+07:00",
- "split": "holdout",
- "expects": [
-  {
-   "type": "value",
-   "path": "value",
-   "gold": 10.73,
-   "tol": {
-    "abs": 0.1
-   }
+  "task_id": "fin-l2-margin-913",
+  "scoring": "value",
+  "solution": {
+    "value": 10.73
   },
-  {
-   "type": "unit",
-   "path": "unit",
-   "accept": [
-    "%",
-    "phần trăm"
-   ]
-  },
-  {
-   "type": "period",
-   "path": "period",
-   "accept": [
-    "Q2/2026",
-    "quý 2/2026",
-    "q2 2026",
-    "q2/26"
-   ]
-  },
-  {
-   "type": "str",
-   "path": "source",
-   "accept": [
-    "financial_detail"
-   ]
-  }
- ]
+  "as_of": "2026-11-01T22:08:27.470720+07:00",
+  "split": "holdout",
+  "expects": [
+    {
+      "type": "value",
+      "path": "value",
+      "gold": 10.73,
+      "tol": {
+        "abs": 0.1
+      }
+    },
+    {
+      "type": "unit",
+      "path": "unit",
+      "accept": [
+        "%",
+        "phần trăm"
+      ]
+    },
+    {
+      "type": "period",
+      "path": "period",
+      "accept": [
+        "Q2/2026",
+        "quý 2/2026",
+        "q2 2026",
+        "q2/26"
+      ]
+    },
+    {
+      "type": "str",
+      "path": "source",
+      "accept": [
+        "financial_detail"
+      ]
+    }
+  ],
+  "contract_version": 2,
+  "provenance_contract": [
+    {
+      "tool": "financial_detail",
+      "source": "vietstock",
+      "as_of": "2026-11-01T22:08:27.470720+07:00",
+      "matched_entry_id": "fd:BMI",
+      "response_sha256": "31cb1d2c9b970c9ab67c9dab7733d98643e4948c52a0d4682b67d951fb516446"
+    }
+  ],
+  "payload_sha256": "c719f2dbf9115fbbcee1463d4753c4034f47953577986bc699fe2daf2f37c6af",
+  "provenance_catalog": [
+    {
+      "tool": "financial_detail",
+      "source": "vietstock",
+      "as_of": "2026-11-01T22:08:27.470720+07:00",
+      "matched_entry_id": "fd:BMI",
+      "response_sha256": "31cb1d2c9b970c9ab67c9dab7733d98643e4948c52a0d4682b67d951fb516446"
+    }
+  ],
+  "required_payload_keys": [
+    "fd:BMI"
+  ]
 }

@@ -1,7 +1,7 @@
 # Task benchmark harness tài chính (bộ 200+50) — sinh bởi tools/build_main.py
 id = "fin-l4-nonexist-235"
 title = "Mã ZZZ1 (không tồn tại)"
-version = 1
+version = 2
 created = "2026-11-01"
 level = "L4"
 family = "L4·B nonexistent"
@@ -19,6 +19,8 @@ tools_expected = ["symbol_resolve"]
 mcp_payloads = "environment/payloads.json"
 snapshot_required = true
 split = "main"
+
+confirmatory_eligible = true
 
 [scoring]
 type = "refusal"

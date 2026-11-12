@@ -1,44 +1,67 @@
 {
- "task_id": "fin-l5-valuation-293",
- "scoring": "value",
- "solution": {
-  "price": 13900.0,
-  "per": 14.05,
-  "pb": 0.74
- },
- "as_of": "2026-11-01T23:23:04.890004+07:00",
- "split": "main",
- "expects": [
-  {
-   "type": "value",
-   "path": "values.price",
-   "gold": 13900.0,
-   "tol": {
-    "rel": 0.005
-   }
+  "task_id": "fin-l5-valuation-293",
+  "scoring": "value",
+  "solution": {
+    "price": 13900.0,
+    "per": 14.05,
+    "pb": 0.74
   },
-  {
-   "type": "value",
-   "path": "values.per",
-   "gold": 14.05,
-   "tol": {
-    "rel": 0.005
-   }
-  },
-  {
-   "type": "value",
-   "path": "values.pb",
-   "gold": 0.74,
-   "tol": {
-    "rel": 0.005
-   }
-  },
-  {
-   "type": "str",
-   "path": "source",
-   "accept": [
-    "valuation_run"
-   ]
-  }
- ]
+  "as_of": "2026-11-01T23:23:04.890004+07:00",
+  "split": "main",
+  "expects": [
+    {
+      "type": "value",
+      "path": "values.price",
+      "gold": 13900.0,
+      "tol": {
+        "rel": 0.005
+      }
+    },
+    {
+      "type": "value",
+      "path": "values.per",
+      "gold": 14.05,
+      "tol": {
+        "rel": 0.005
+      }
+    },
+    {
+      "type": "value",
+      "path": "values.pb",
+      "gold": 0.74,
+      "tol": {
+        "rel": 0.005
+      }
+    },
+    {
+      "type": "str",
+      "path": "source",
+      "accept": [
+        "valuation_run"
+      ]
+    }
+  ],
+  "contract_version": 2,
+  "provenance_contract": [
+    {
+      "tool": "valuation_run",
+      "source": "computed-local",
+      "as_of": "2026-11-01T23:23:04.890004+07:00",
+      "matched_entry_id": "val:KDH",
+      "response_sha256": "d79a7a27a0d849567450521cf0fa2d15af044aa9a252fd3a51aa91a52b99493a"
+    }
+  ],
+  "payload_sha256": "4d613b3f64f8d4fc3f98d9df248e5dcff0cefa47e51ec5373b79675e7f092cdf",
+  "provenance_catalog": [
+    {
+      "tool": "valuation_run",
+      "source": "computed-local",
+      "as_of": "2026-11-01T23:23:04.890004+07:00",
+      "matched_entry_id": "val:KDH",
+      "response_sha256": "d79a7a27a0d849567450521cf0fa2d15af044aa9a252fd3a51aa91a52b99493a"
+    }
+  ],
+  "required_payload_keys": [
+    "val:KDH"
+  ]
 }

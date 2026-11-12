@@ -1,0 +1,122 @@
+{
+  "smoke-trap-01__opencode__r1": {
+    "step_usage_records": 2,
+    "summed_input": 11362,
+    "summed_output": 42,
+    "last_step_tokens": {
+      "input": 3143,
+      "output": 26,
+      "reasoning": 0,
+      "cache": {
+        "read": 8132,
+        "write": 0
+      }
+    },
+    "skills_called": [
+      {
+        "id": "brainstorming"
+      }
+    ],
+    "error_flags": {
+      "thought_signature": false,
+      "provider.quota": true,
+      "free_tier_requests": true
+    }
+  },
+  "smoke-trap-01__opentrading__r1": {
+    "step_usage_records": 0,
+    "summed_input": 0,
+    "summed_output": 0,
+    "last_step_tokens": null,
+    "skills_called": [],
+    "error_flags": {
+      "thought_signature": false,
+      "provider.quota": false,
+      "free_tier_requests": false
+    }
+  },
+  "smoke-agg-01__opencode__r1": {
+    "step_usage_records": 9,
+    "summed_input": 41239,
+    "summed_output": 781,
+    "last_step_tokens": {
+      "input": 3012,
+      "output": 16,
+      "reasoning": 0,
+      "cache": {
+        "read": 10112,
+        "write": 0
+      }
+    },
+    "skills_called": [
+      {
+        "id": "brainstorming"
+      }
+    ],
+    "error_flags": {
+      "thought_signature": false,
+      "provider.quota": false,
+      "free_tier_requests": false
+    }
+  },
+  "smoke-quote-01__dsh__r1": {
+    "step_usage_records": 0,
+    "summed_input": 0,
+    "summed_output": 0,
+    "last_step_tokens": null,
+    "skills_called": [],
+    "error_flags": {
+      "thought_signature": true,
+      "provider.quota": false,
+      "free_tier_requests": false
+    }
+  },
+  "smoke-agg-01__opentrading__r1": {
+    "step_usage_records": 0,
+    "summed_input": 0,
+    "summed_output": 0,
+    "last_step_tokens": null,
+    "skills_called": [],
+    "error_flags": {
+      "thought_signature": false,
+      "provider.quota": false,
+      "free_tier_requests": false
+    }
+  },
+  "smoke-quote-01__opencode__r1": {
+    "step_usage_records": 15,
+    "summed_input": 71977,
+    "summed_output": 545,
+    "last_step_tokens": {
+      "input": 3529,
+      "output": 16,
+      "reasoning": 0,
+      "cache": {
+        "read": 16198,
+        "write": 0
+      }
+    },
+    "skills_called": [
+      {
+        "id": "brainstorming"
+      }
+    ],
+    "error_flags": {
+      "thought_signature": false,
+      "provider.quota": false,
+      "free_tier_requests": false
+    }
+  },
+  "smoke-quote-01__opentrading__r1": {
+    "step_usage_records": 0,
+    "summed_input": 0,
+    "summed_output": 0,
+    "last_step_tokens": null,
+    "skills_called": [],
+    "error_flags": {
+      "thought_signature": false,
+      "provider.quota": false,
+      "free_tier_requests": false
+    }
+  }
+}

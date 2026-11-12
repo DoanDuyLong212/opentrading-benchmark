@@ -1,0 +1,52 @@
+{
+  "scoring": "value",
+  "solution": {
+    "pass": [
+      "POW",
+      "PVD"
+    ]
+  },
+  "expects": [
+    {
+      "type": "set",
+      "path": "values.pass",
+      "gold": [
+        "POW",
+        "PVD"
+      ]
+    },
+    {
+      "type": "period",
+      "path": "period",
+      "accept": [
+        "30/10",
+        "30-10",
+        "30.10",
+        "2026-10-30"
+      ]
+    },
+    {
+      "type": "str",
+      "path": "source",
+      "accept": [
+        "vn_equity_quote_batch"
+      ]
+    }
+  ],
+  "notes": "Ràng buộc: giá < 20 nghìn đồng. Close (đồng): PVS 30500 ✗, PVD 17950 ✓, BSR 27600 ✗, PLX 34000 ✗, POW 12200 ✓.",
+  "provenance_contract": [
+    {
+      "tool": "vn_equity_quote_batch",
+      "source": "vnstock",
+      "as_of": "2026-11-01T23:07:49.257317+07:00",
+      "matched_entry_id": "batch:energy1",
+      "response_sha256": "f1bcbfaba4bd41ea63ba9aaa8fb76fbd2fb6dda6831d1ad3bd852fa19fc1302f"
+    }
+  ],
+  "required_payload_keys": [
+    "batch:energy1"
+  ],
+  "task_id": "fin-mem-322",
+  "payload_sha256": "67aa6ac1519eb485643f1f37273e3e4510ff98da3faa92070b2cf0c10f51aefa",
+  "memory_construct": "cross_session_recall_or_update"
+}

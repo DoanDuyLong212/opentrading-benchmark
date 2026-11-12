@@ -1,0 +1,11 @@
+--- test_reproducibility.py.before
++++ experiments/finance-v45-study/tools/tests/test_reproducibility.py
+@@ -19,6 +19,8 @@
+     p = tmp_path/'tasks'/'canary'
+     p.mkdir(parents=True)
+     (p/'environment').mkdir()
++    (p/'solution').mkdir()
++    (p/'solution/gold.json').write_text(json.dumps({'scoring':'value','expects':[]}))
+     (p/'environment'/'payloads.json').write_text(json.dumps({'snapshot_date': '2026-11-01', 'tools': {}}))
+     (p/'instruction.md').write_text('Use MCP and return final JSON.\n```json\n{"value":0,"evidence":[]}\n```')
+     (p/'task.toml').write_text('level = "SMOKE"\ntime_limit_min = 1\n')

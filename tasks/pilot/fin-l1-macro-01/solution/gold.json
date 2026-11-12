@@ -41,5 +41,28 @@
     "value": 5.08
   },
   "notes": "Tool trả nhiều chuỗi cùng khớp 'CPI': chỉ số gốc 105.08, % so T12 5.08, lạm phát cơ bản 4.45, các nhóm ngành... Chỉ 5.08 đúng.",
-  "as_of": "2026-11-01T15:57:51.287003+07:00"
+  "as_of": "2026-11-01T15:57:51.287003+07:00",
+  "contract_version": 2,
+  "provenance_contract": [
+    {
+      "tool": "vs_indicator_data",
+      "source": "vietstock",
+      "as_of": "2026-11-01T15:57:51.287003+07:00",
+      "matched_entry_id": "vs_indicator_data:0",
+      "response_sha256": "b4db163cc09b31f4e03496f298f8ca6ea8e39eb9e8d2bee8aa25db165a165789"
+    }
+  ],
+  "payload_sha256": "37e13e20e0acac8fe7ccd42263b6bd8c9842e5f6f457b2d0b289282c51903f9b",
+  "provenance_catalog": [
+    {
+      "tool": "vs_indicator_data",
+      "source": "vietstock",
+      "as_of": "2026-11-01T15:57:51.287003+07:00",
+      "matched_entry_id": "vs_indicator_data:0",
+      "response_sha256": "b4db163cc09b31f4e03496f298f8ca6ea8e39eb9e8d2bee8aa25db165a165789"
+    }
+  ],
+  "required_payload_keys": [
+    "vs_indicator_data"
+  ]
 }

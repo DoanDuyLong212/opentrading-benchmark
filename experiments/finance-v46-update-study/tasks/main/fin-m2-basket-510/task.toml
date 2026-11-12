@@ -1,0 +1,33 @@
+# Native-memory stratum — amendment 2026-11-11 (d), tools/build_memory_stratum_20261111.py
+id = "fin-m2-basket-510"
+title = "Memory M2 — rổ riêng đặt tên, quay lại phiên"
+version = 3
+created = "2026-11-11"
+level = "M2"
+family = "M2 memory"
+financebench_type = "multi-session memory"
+entity = "batch:tech1"
+asset = "vn_stock"
+data_zone = "green"
+data_pairs = []
+snapshot_date = "2026-11-01"
+universe_cap = 0
+banned_tools = ["web_search", "web_fetch", "sentiment_score"]
+human_time_band = "15–60 phút"
+time_limit_min = 30
+tools_expected = ["vn_equity_quote_batch"]
+mcp_payloads = "environment/payloads.json"
+snapshot_required = true
+split = "main"
+multiturn = true
+track = "memory_multiturn"
+stratum = "memory"
+tier = "M2"
+subtier = "M2"
+confirmatory_eligible = true
+
+[scoring]
+type = "value"
+gold = "solution/gold.json"
+oracle = "solution/oracle.py"
+grader = "tests/grader.py"

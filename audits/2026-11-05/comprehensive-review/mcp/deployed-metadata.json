@@ -1,0 +1,25 @@
+{
+  "endpoint": "https://opentrading-mcp-web.onrender.com/mcp",
+  "operations": [
+    "initialize",
+    "notifications/initialized",
+    "tools/list"
+  ],
+  "financial_or_model_calls": 0,
+  "checked_at_utc": "2026-11-05T09:38:10.830285+00:00",
+  "status": "failed",
+  "error_types": {
+    "type": "ExceptionGroup",
+    "children": [
+      {
+        "type": "ExceptionGroup",
+        "children": [
+          {
+            "type": "McpError",
+            "cause": null
+          }
+        ]
+      }
+    ]
+  }
+}
