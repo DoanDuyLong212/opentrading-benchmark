@@ -1,0 +1,42 @@
+{
+ "schema": "openrouter-free-route-admission",
+ "created": "2026-11-16",
+ "route": "openrouter_free",
+ "model_requested": "nvidia/nemotron-3-ultra-550b-a55b:free",
+ "returned_model": "nvidia/nemotron-3-ultra-550b-a55b:free",
+ "pricing_verified": {
+  "prompt": 0,
+  "completion": 0
+ },
+ "user_budget": "OpenRouter free_model_daily_requests limit 1000/ngày (GET /api/v1/key, 16/11)",
+ "probes": "3/3 PASS (identity, vn_follow, tool_wire)",
+ "user_authorized": true,
+ "external_model_calls": 3,
+ "financial_inference": false,
+ "probes_detail": {
+  "model_requested": "nvidia/nemotron-3-ultra-550b-a55b:free",
+  "probes": [
+   {
+    "probe": "identity",
+    "wall_s": 1.5,
+    "response_model": "nvidia/nemotron-3-ultra-550b-a55b:free",
+    "finish": "stop",
+    "content_ok": true,
+    "usage_present": true
+   },
+   {
+    "probe": "vn_follow",
+    "wall_s": 1.0,
+    "content_head": "4"
+   },
+   {
+    "probe": "tool_wire",
+    "wall_s": 1.4,
+    "tool_called": true,
+    "args_ok": true
+   }
+  ],
+  "returned_model": "nvidia/nemotron-3-ultra-550b-a55b:free",
+  "pass": true
+ }
+}

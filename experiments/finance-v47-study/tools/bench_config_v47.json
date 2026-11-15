@@ -1,13 +1,9 @@
 {
   "protocol": "financial_product_v45",
-  "model": "deepseek/deepseek-v4.1-flash-1017",
+  "model": "nvidia/nemotron-3-ultra-550b-a55b:free",
   "model_stratum": "deepseek-openrouter",
   "allowed_models": [
-    "nvidia/nvidia/nemotron-3.5-super-vl-120b-a12b",
-    "nvidia/deepseek-ai/deepseek-v4.1-flash",
-    "nvidia/nemotron-3.5-super-vl:free",
-    "deepseek/deepseek-v4.1-flash",
-    "deepseek/deepseek-v4.1-flash-1017"
+    "nvidia/nemotron-3-ultra-550b-a55b:free"
   ],
   "allowed_inference_splits": [
     "devsmoke",
@@ -37,24 +33,23 @@
   "provider_options": {
     "temperature": 0,
     "top_p": 1,
-    "context_window": 1048576,
+    "context_window": 1000000,
     "max_output_tokens": null,
     "max_requests": 24,
     "max_total_tokens": 4600000,
     "provider_timeout_s": 240,
     "request_interval_s": 2,
-    "failed_attempt_context_bound": 1048576,
-    "failed_attempt_token_reservation": 1992294,
+    "failed_attempt_context_bound": 1000000,
+    "failed_attempt_token_reservation": 1065536,
     "native_reasoning_capability": true,
     "native_reasoning_mode": "off",
     "effort_note": "none requested; backend thinking not proven disabled",
     "native_bun_binary": "/home/doanlong/extra/benchmark/experiments/toolchains/bun-1.4.4/bun",
     "native_bun_sha256": "10702245766b225e70bbf6235fd6b47214fd94b4760d00ffaed8ab0df57ac235",
-    "provider_route": "openrouter_paid",
-    "openrouter_paid_budget": 10500,
+    "provider_route": "openrouter_free",
     "memory_max_requests": 48,
-    "model_max_output_tokens": 943718,
-    "model_max_output_tokens_source": "OpenRouter models API 2026-11-15: deepseek/deepseek-v4.1-flash-1017 top_provider.max_completion_tokens"
+    "model_max_output_tokens": 65536,
+    "model_max_output_tokens_source": "OpenRouter models API 2026-11-16: nvidia/nemotron-3-ultra-550b-a55b:free top_provider.max_completion_tokens (1 host: Nvidia)"
   },
   "arms_pilot": [
     "opentrading_machine",
