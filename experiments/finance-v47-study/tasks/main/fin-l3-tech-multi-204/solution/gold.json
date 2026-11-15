@@ -1,0 +1,151 @@
+{
+  "task_id": "fin-l3-tech-multi-204",
+  "scoring": "value",
+  "solution": {
+    "symbol": "FTS",
+    "rsi14": 35.22
+  },
+  "as_of": "2026-11-01T23:22:55.502199+07:00",
+  "split": "main",
+  "expects": [
+    {
+      "type": "tokens",
+      "path": "values.symbol",
+      "accept": [
+        "FTS"
+      ],
+      "reject": [
+        "VCI",
+        "VIX",
+        "SHS",
+        "MBS"
+      ]
+    },
+    {
+      "type": "value",
+      "path": "values.rsi14",
+      "gold": 35.22,
+      "tol": {
+        "abs": 0.1
+      }
+    },
+    {
+      "type": "period",
+      "path": "period",
+      "accept": [
+        "30/10",
+        "30-10",
+        "30.10",
+        "2026-10-30",
+        "phiên gần nhất",
+        "gần nhất"
+      ]
+    },
+    {
+      "type": "str",
+      "path": "source",
+      "accept": [
+        "signals_technical"
+      ]
+    },
+    {
+      "type": "evidence",
+      "path": "note",
+      "paths": [
+        "note"
+      ],
+      "numbers": [
+        37.8,
+        44.12,
+        40.08,
+        39.25,
+        35.22
+      ],
+      "strings": [],
+      "min_hits": 2
+    }
+  ],
+  "contract_version": 2,
+  "provenance_contract": [
+    {
+      "tool": "signals_technical",
+      "source": "computed-local",
+      "as_of": "2026-11-01T23:22:54.600606+07:00",
+      "matched_entry_id": "tech:VCI",
+      "response_sha256": "e54044e1460e98996d31225e0ac91682200dc9f9097067e31965411ea8ad4c99"
+    },
+    {
+      "tool": "signals_technical",
+      "source": "computed-local",
+      "as_of": "2026-11-01T23:22:53.108682+07:00",
+      "matched_entry_id": "tech:VIX",
+      "response_sha256": "bef9c6f0e0316155c1c0ec4944dbd440417223111fd803dbffcf0334d3f3325e"
+    },
+    {
+      "tool": "signals_technical",
+      "source": "computed-local",
+      "as_of": "2026-11-01T23:22:55.502199+07:00",
+      "matched_entry_id": "tech:SHS",
+      "response_sha256": "d9f45b93b41886578282a4c73ab9d9b3c3097e314bf7b12e6d42baa82ee8173f"
+    },
+    {
+      "tool": "signals_technical",
+      "source": "computed-local",
+      "as_of": "2026-11-01T23:22:55.202349+07:00",
+      "matched_entry_id": "tech:MBS",
+      "response_sha256": "9470c5ee83ebff3da26190a5668a6f679937879439ebf1b33c42fd1cd50ba588"
+    },
+    {
+      "tool": "signals_technical",
+      "source": "computed-local",
+      "as_of": "2026-11-01T23:22:54.113227+07:00",
+      "matched_entry_id": "tech:FTS",
+      "response_sha256": "a946d0095c894037691d5d203165929b8f4daa0d4a40411e63b06345afeb362e"
+    }
+  ],
+  "payload_sha256": "4497a9be9def0f66ddfe9ebbf1f52ca9738f0047c502e1a69e4d8924e8dc0f65",
+  "provenance_catalog": [
+    {
+      "tool": "signals_technical",
+      "source": "computed-local",
+      "as_of": "2026-11-01T23:22:54.600606+07:00",
+      "matched_entry_id": "tech:VCI",
+      "response_sha256": "e54044e1460e98996d31225e0ac91682200dc9f9097067e31965411ea8ad4c99"
+    },
+    {
+      "tool": "signals_technical",
+      "source": "computed-local",
+      "as_of": "2026-11-01T23:22:53.108682+07:00",
+      "matched_entry_id": "tech:VIX",
+      "response_sha256": "bef9c6f0e0316155c1c0ec4944dbd440417223111fd803dbffcf0334d3f3325e"
+    },
+    {
+      "tool": "signals_technical",
+      "source": "computed-local",
+      "as_of": "2026-11-01T23:22:55.502199+07:00",
+      "matched_entry_id": "tech:SHS",
+      "response_sha256": "d9f45b93b41886578282a4c73ab9d9b3c3097e314bf7b12e6d42baa82ee8173f"
+    },
+    {
+      "tool": "signals_technical",
+      "source": "computed-local",
+      "as_of": "2026-11-01T23:22:55.202349+07:00",
+      "matched_entry_id": "tech:MBS",
+      "response_sha256": "9470c5ee83ebff3da26190a5668a6f679937879439ebf1b33c42fd1cd50ba588"
+    },
+    {
+      "tool": "signals_technical",
+      "source": "computed-local",
+      "as_of": "2026-11-01T23:22:54.113227+07:00",
+      "matched_entry_id": "tech:FTS",
+      "response_sha256": "a946d0095c894037691d5d203165929b8f4daa0d4a40411e63b06345afeb362e"
+    }
+  ],
+  "required_payload_keys": [
+    "tech:FTS",
+    "tech:MBS",
+    "tech:SHS",
+    "tech:VCI",
+    "tech:VIX"
+  ]
+}

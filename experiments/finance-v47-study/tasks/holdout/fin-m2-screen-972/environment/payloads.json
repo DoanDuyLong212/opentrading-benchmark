@@ -1,0 +1,64 @@
+{
+ "snapshot_date": "2026-11-01",
+ "note": "Envelope MCP (snapshot 2026-11-01; lịch sử 120 phiên xem audits/snapshot-extension-2026-11-11).",
+ "tools": {
+  "peer:sec_p": {
+   "tool": "peer_compare",
+   "params": {
+    "symbol": "VIX",
+    "peers": [
+     "VCI",
+     "SHS",
+     "MBS",
+     "FTS"
+    ]
+   },
+   "envelope": {
+    "data": {
+     "rows": [
+      {
+       "symbol": "VIX",
+       "period_label": "2025",
+       "p_e": 6.22,
+       "p_b": 1.61,
+       "roe": 28.85
+      },
+      {
+       "symbol": "VCI",
+       "period_label": "2025",
+       "p_e": 18.96,
+       "p_b": 1.67,
+       "roe": 8.67
+      },
+      {
+       "symbol": "SHS",
+       "period_label": "2025",
+       "p_e": 13.28,
+       "p_b": 1.47,
+       "roe": 11.28
+      },
+      {
+       "symbol": "MBS",
+       "period_label": "2025",
+       "p_e": 13.33,
+       "p_b": 2.14,
+       "roe": 15.18
+      },
+      {
+       "symbol": "FTS",
+       "period_label": "2025",
+       "p_e": 27.12,
+       "p_b": 2.58,
+       "roe": 9.29
+      }
+     ]
+    },
+    "provenance": {
+     "source": "vnstock",
+     "as_of": "2026-11-01T23:08:12.898974+07:00"
+    },
+    "availability": "available"
+   }
+  }
+ }
+}

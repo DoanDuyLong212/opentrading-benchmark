@@ -1,0 +1,51 @@
+{
+  "snapshot_date": "2026-11-01",
+  "note": "Envelope MCP đã ghi lúc tạo task (2026-11-01, trim trường không dùng cho gold; data + provenance + availability giữ nguyên). Benchmark chạy qua snapshot-replay các envelope này — không gọi MCP live.",
+  "tools": {
+    "financial_statements": {
+      "data": {
+        "symbol": "VCB",
+        "period": "quarter",
+        "periods": [
+          "Q4/2025",
+          "Q1/2026",
+          "Q2/2026"
+        ],
+        "statements": {
+          "Kết quả kinh doanh": [
+            {
+              "norm_id": 4378,
+              "name": "Tổng LNST",
+              "unit": "VND",
+              "values": {
+                "Q4/2025": 8633783000000,
+                "Q1/2026": 9462095000000,
+                "Q2/2026": 14550959000000
+              }
+            },
+            {
+              "norm_id": 4380,
+              "name": "LNST của CĐ Ngân hàng mẹ",
+              "unit": "VND",
+              "values": {
+                "Q4/2025": 8629542000000,
+                "Q1/2026": 9456566000000,
+                "Q2/2026": 14542276000000
+              }
+            }
+          ]
+        }
+      },
+      "provenance": {
+        "source": "vietstock",
+        "as_of": "2026-11-01T15:54:29.686603+07:00",
+        "data_time": "2026-11-01T15:06:31.444490+07:00",
+        "timezone": "Asia/Ho_Chi_Minh"
+      },
+      "availability": "available",
+      "warnings": [
+        "dữ liệu lấy lúc 2026-11-01T15:06:31.444490+07:00, dùng lại bản đã lưu"
+      ]
+    }
+  }
+}

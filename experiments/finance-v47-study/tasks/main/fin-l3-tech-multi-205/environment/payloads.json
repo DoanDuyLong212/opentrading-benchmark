@@ -1,0 +1,96 @@
+{
+ "snapshot_date": "2026-11-01",
+ "note": "Envelope MCP ghi lúc tạo task. Key = mã payload nội bộ; envelope giữ nguyên data+provenance+availability.",
+ "tools": {
+  "tech:VCI": {
+   "tool": "signals_technical",
+   "params": {
+    "symbol": "VCI",
+    "interval": "1D"
+   },
+   "envelope": {
+    "data": {
+     "symbol": "VCI",
+     "rsi14": 37.8
+    },
+    "provenance": {
+     "source": "computed-local",
+     "as_of": "2026-11-01T23:22:54.600606+07:00"
+    },
+    "availability": "available"
+   }
+  },
+  "tech:VIX": {
+   "tool": "signals_technical",
+   "params": {
+    "symbol": "VIX",
+    "interval": "1D"
+   },
+   "envelope": {
+    "data": {
+     "symbol": "VIX",
+     "rsi14": 44.12
+    },
+    "provenance": {
+     "source": "computed-local",
+     "as_of": "2026-11-01T23:22:53.108682+07:00"
+    },
+    "availability": "available"
+   }
+  },
+  "tech:SHS": {
+   "tool": "signals_technical",
+   "params": {
+    "symbol": "SHS",
+    "interval": "1D"
+   },
+   "envelope": {
+    "data": {
+     "symbol": "SHS",
+     "rsi14": 40.08
+    },
+    "provenance": {
+     "source": "computed-local",
+     "as_of": "2026-11-01T23:22:55.502199+07:00"
+    },
+    "availability": "available"
+   }
+  },
+  "tech:MBS": {
+   "tool": "signals_technical",
+   "params": {
+    "symbol": "MBS",
+    "interval": "1D"
+   },
+   "envelope": {
+    "data": {
+     "symbol": "MBS",
+     "rsi14": 39.25
+    },
+    "provenance": {
+     "source": "computed-local",
+     "as_of": "2026-11-01T23:22:55.202349+07:00"
+    },
+    "availability": "available"
+   }
+  },
+  "tech:FTS": {
+   "tool": "signals_technical",
+   "params": {
+    "symbol": "FTS",
+    "interval": "1D"
+   },
+   "envelope": {
+    "data": {
+     "symbol": "FTS",
+     "rsi14": 35.22
+    },
+    "provenance": {
+     "source": "computed-local",
+     "as_of": "2026-11-01T23:22:54.113227+07:00"
+    },
+    "availability": "available"
+   }
+  }
+ }
+}

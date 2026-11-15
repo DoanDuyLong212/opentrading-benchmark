@@ -1,0 +1,96 @@
+{
+  "task_id": "fin-c1-rs-802",
+  "scoring": "value",
+  "solution": {
+    "stock_pct": 1.4649,
+    "bench_pct": -1.8336,
+    "relative_pp": 3.2985
+  },
+  "as_of": "2026-11-11T09:41:32.145602+07:00",
+  "split": "pilot",
+  "expects": [
+    {
+      "type": "value",
+      "path": "values.stock_pct",
+      "gold": 1.4649,
+      "tol": {
+        "abs": 0.05
+      }
+    },
+    {
+      "type": "value",
+      "path": "values.bench_pct",
+      "gold": -1.8336,
+      "tol": {
+        "abs": 0.05
+      }
+    },
+    {
+      "type": "value",
+      "path": "values.relative_pp",
+      "gold": 3.2985,
+      "tol": {
+        "abs": 0.05
+      }
+    },
+    {
+      "type": "unit",
+      "path": "unit",
+      "accept": [
+        "điểm %",
+        "điểm phần trăm",
+        "pp",
+        "%"
+      ]
+    },
+    {
+      "type": "str_all",
+      "path": "source",
+      "accept": [
+        "vn_index_ohlcv",
+        "vn_quote_history"
+      ]
+    }
+  ],
+  "contract_version": 2,
+  "stratum": "compute",
+  "tier": "C1",
+  "notes": "Compute stratum (amendment 2026-11-11 d). Gold computed with Decimal from payloads; uniform tolerance.",
+  "provenance_contract": [
+    {
+      "tool": "vn_quote_history",
+      "source": "vnstock",
+      "as_of": "2026-11-11T09:41:32.145602+07:00",
+      "matched_entry_id": "hist:VJC",
+      "response_sha256": "e50bd26f8b82a340a64f1d9716b0cc5c018938a3c8c4c953cc78314ad42ac83a"
+    },
+    {
+      "tool": "vn_index_ohlcv",
+      "source": "vnstock",
+      "as_of": "2026-11-11T09:41:32.145602+07:00",
+      "matched_entry_id": "idx:VNINDEX",
+      "response_sha256": "2780f7cd6c9706bae77d54a0801ae36077b9b07e8435e22a3d2ebaade59a6d4b"
+    }
+  ],
+  "provenance_catalog": [
+    {
+      "tool": "vn_quote_history",
+      "source": "vnstock",
+      "as_of": "2026-11-11T09:41:32.145602+07:00",
+      "matched_entry_id": "hist:VJC",
+      "response_sha256": "e50bd26f8b82a340a64f1d9716b0cc5c018938a3c8c4c953cc78314ad42ac83a"
+    },
+    {
+      "tool": "vn_index_ohlcv",
+      "source": "vnstock",
+      "as_of": "2026-11-11T09:41:32.145602+07:00",
+      "matched_entry_id": "idx:VNINDEX",
+      "response_sha256": "2780f7cd6c9706bae77d54a0801ae36077b9b07e8435e22a3d2ebaade59a6d4b"
+    }
+  ],
+  "payload_sha256": "9bd97c564ee0af3859dd79190ebbbad716bcdaa1af648ebe8e325860a3e0d6d7",
+  "required_payload_keys": [
+    "hist:VJC",
+    "idx:VNINDEX"
+  ]
+}

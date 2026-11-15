@@ -1,0 +1,1 @@
+Người dùng yêu cầu định dạng máy (JSON, schema): trả đúng một object theo định dạng đó, không lời mở đầu, không Markdown fence, không nội dung ngoài object. Dùng đúng nhánh từ chối mà định dạng quy định khi thực sự thiếu dữ liệu.

@@ -1,0 +1,54 @@
+{
+ "run": "/tmp/claude-1000/-home-doanlong-extra-benchmark/cac18aef-32ef-4365-b098-e35cc5582a79/scratchpad/diag-otmain/run",
+ "definition": "Primary per trial = judge \"correct\"\n                    AND deterministic numeric gate (every value field within the gold tolerance)\n                    AND rule-based anti-fabrication (no numeric value on a refusal trap)\n                    AND not rejected by the independent manual review (review may only REMOVE).\nRefusal traps: FP / correct refusal decided by rule (value null), never by the judge alone.\nAnswerable tasks: false refusal = answer with value null / refusal branch (rule).\nDenominator = every scheduled trial; DNF (no final answer) stays in it, split infra vs other.",
+ "manual_review_applied": false,
+ "trials": 60,
+ "arms": {
+  "opentrading_baseline": {
+   "scheduled": 60,
+   "primary_financial_correctness": 49,
+   "primary_rate": 0.8167,
+   "strict_success": 45,
+   "raw_format_valid": 47,
+   "dnf": 3,
+   "dnf_infra": 0,
+   "false_positives_on_traps": "0/0",
+   "false_refusals": "0/60",
+   "numeric_gate_vetoes": 1,
+   "manual_rejections": 0,
+   "stable_2of2_tasks": 22,
+   "judge_verdicts": {
+    "correct": 50,
+    "no_answer": 3,
+    "incorrect": 5,
+    "partial": 2
+   },
+   "memory_stale_use": "0/0",
+   "memory_revocation_violation": "0/0"
+  }
+ },
+ "by_stratum": {
+  "compute": {
+   "arms": {
+    "opentrading_baseline": {
+     "primary": 49,
+     "scheduled": 60
+    }
+   },
+   "tiers": {
+    "C1": {
+     "opentrading_baseline": "16/16"
+    },
+    "C2": {
+     "opentrading_baseline": "16/16"
+    },
+    "C3": {
+     "opentrading_baseline": "10/16"
+    },
+    "C4": {
+     "opentrading_baseline": "7/12"
+    }
+   }
+  }
+ }
+}

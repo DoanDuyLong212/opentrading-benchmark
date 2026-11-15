@@ -1,0 +1,101 @@
+{
+  "task_id": "fin-l5-profile-01",
+  "scoring": "value",
+  "expects": [
+    {
+      "type": "value",
+      "path": "values.revenue_q3_bn",
+      "gold": 52614,
+      "tol": {
+        "rel": 0.005
+      }
+    },
+    {
+      "type": "value",
+      "path": "values.gross_profit_q3_bn",
+      "gold": 11421,
+      "tol": {
+        "rel": 0.005
+      }
+    },
+    {
+      "type": "value",
+      "path": "values.gross_margin_pct",
+      "gold": 21.71,
+      "tol": {
+        "abs": 0.1
+      }
+    },
+    {
+      "type": "value",
+      "path": "values.pe",
+      "gold": 9.75,
+      "tol": {
+        "rel": 0.005
+      }
+    },
+    {
+      "type": "value",
+      "path": "values.market_cap_bn",
+      "gold": 109201.36,
+      "tol": {
+        "rel": 0.005
+      }
+    },
+    {
+      "type": "str_all",
+      "path": "source",
+      "accept": [
+        "financial_detail",
+        "stock_overview"
+      ]
+    }
+  ],
+  "solution": {
+    "revenue_q3_bn": 52614,
+    "gross_profit_q3_bn": 11421,
+    "gross_margin_pct": 21.71,
+    "pe": 9.75,
+    "market_cap_bn": 109201.36
+  },
+  "notes": "MarketCapital 109,201,362,364,000 đ = 109,201.36 tỷ. Nguồn KQKD (financial_detail) và overview (stock_overview) khác base: Revenue LTM trong overview (156,836 tỷ) ≠ DT quý — đề hỏi quý nên phải dùng financial_detail.",
+  "as_of": "2026-11-01T15:59:30.783891+07:00",
+  "contract_version": 2,
+  "provenance_contract": [
+    {
+      "tool": "financial_detail",
+      "source": "vietstock",
+      "as_of": "2026-11-01T15:54:29.386552+07:00",
+      "matched_entry_id": "financial_detail:0",
+      "response_sha256": "e269d0ec7ae968d51412a9029a02384d9b5fbec98af629d90983d9df56919419"
+    },
+    {
+      "tool": "stock_overview",
+      "source": "vietstock",
+      "as_of": "2026-11-01T15:59:30.783891+07:00",
+      "matched_entry_id": "stock_overview:0",
+      "response_sha256": "b4a94485f5dd0ec9b2a681383f40dbb7d960d5f88740c1cbce90f8fd5b36f1a6"
+    }
+  ],
+  "payload_sha256": "0ef4d20adb9ce375ec2bb743778a603449ac4d342b23778ff125c721775630fb",
+  "provenance_catalog": [
+    {
+      "tool": "financial_detail",
+      "source": "vietstock",
+      "as_of": "2026-11-01T15:54:29.386552+07:00",
+      "matched_entry_id": "financial_detail:0",
+      "response_sha256": "e269d0ec7ae968d51412a9029a02384d9b5fbec98af629d90983d9df56919419"
+    },
+    {
+      "tool": "stock_overview",
+      "source": "vietstock",
+      "as_of": "2026-11-01T15:59:30.783891+07:00",
+      "matched_entry_id": "stock_overview:0",
+      "response_sha256": "b4a94485f5dd0ec9b2a681383f40dbb7d960d5f88740c1cbce90f8fd5b36f1a6"
+    }
+  ],
+  "required_payload_keys": [
+    "financial_detail",
+    "stock_overview"
+  ]
+}

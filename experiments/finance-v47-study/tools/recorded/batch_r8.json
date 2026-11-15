@@ -1,0 +1,662 @@
+{
+ "recorded_at": "2026-11-01",
+ "note": "Batch r8 — batch-quote 8 rổ + peer 4 nhóm đầu",
+ "items": {
+  "batch:banks1": {
+   "tool": "vn_equity_quote_batch",
+   "params": {
+    "symbols": [
+     "ACB",
+     "STB",
+     "VPB",
+     "HDB",
+     "TPB"
+    ]
+   },
+   "body": {
+    "data": {
+     "quotes": [
+      {
+       "symbol": "ACB",
+       "close": 21000,
+       "pct": -1.4084507042253522,
+       "vol": 8084100
+      },
+      {
+       "symbol": "STB",
+       "close": 66300,
+       "pct": -0.8968609865470852,
+       "vol": 2640500
+      },
+      {
+       "symbol": "VPB",
+       "close": 22950,
+       "pct": -1.0775862068965518,
+       "vol": 14689300
+      },
+      {
+       "symbol": "HDB",
+       "close": 22400,
+       "pct": -1.3215859030837005,
+       "vol": 12905700
+      },
+      {
+       "symbol": "TPB",
+       "close": 12650,
+       "pct": -1.937984496124031,
+       "vol": 7974000
+      }
+     ]
+    },
+    "provenance": {
+     "source": "vnstock",
+     "as_of": "2026-11-01T23:04:24.002593+07:00"
+    },
+    "availability": "available"
+   }
+  },
+  "batch:sec1": {
+   "tool": "vn_equity_quote_batch",
+   "params": {
+    "symbols": [
+     "VCI",
+     "VIX",
+     "SHS",
+     "MBS",
+     "FTS"
+    ]
+   },
+   "body": {
+    "data": {
+     "quotes": [
+      {
+       "symbol": "VCI",
+       "close": 18500,
+       "pct": -2.631578947368421,
+       "vol": 5920600
+      },
+      {
+       "symbol": "VIX",
+       "close": 12000,
+       "pct": -3.225806451612903,
+       "vol": 27180500
+      },
+      {
+       "symbol": "SHS",
+       "close": 12200,
+       "pct": -1.6129032258064515,
+       "vol": 5371300
+      },
+      {
+       "symbol": "MBS",
+       "close": 15000,
+       "pct": -1.9607843137254901,
+       "vol": 2083700
+      },
+      {
+       "symbol": "FTS",
+       "close": 17900,
+       "pct": -5.039787798408488,
+       "vol": 883000
+      }
+     ]
+    },
+    "provenance": {
+     "source": "vnstock",
+     "as_of": "2026-11-01T23:04:23.767769+07:00"
+    },
+    "availability": "available"
+   }
+  },
+  "batch:steel1": {
+   "tool": "vn_equity_quote_batch",
+   "params": {
+    "symbols": [
+     "HSG",
+     "NKG",
+     "POM",
+     "TLH",
+     "VGS"
+    ]
+   },
+   "body": {
+    "data": {
+     "quotes": [
+      {
+       "symbol": "HSG",
+       "close": 10850,
+       "pct": -2.690582959641256,
+       "vol": 2679900
+      },
+      {
+       "symbol": "NKG",
+       "close": 11900,
+       "pct": -1.6528925619834711,
+       "vol": 6150800
+      },
+      {
+       "symbol": "POM",
+       "close": 3100,
+       "pct": -3.125,
+       "vol": 1210500
+      },
+      {
+       "symbol": "TLH",
+       "close": 3360,
+       "pct": -2.0408163265306123,
+       "vol": 95200
+      },
+      {
+       "symbol": "VGS",
+       "close": 19300,
+       "pct": 0,
+       "vol": 297900
+      }
+     ]
+    },
+    "provenance": {
+     "source": "vnstock",
+     "as_of": "2026-11-01T23:04:25.600524+07:00"
+    },
+    "availability": "available"
+   }
+  },
+  "batch:cons1": {
+   "tool": "vn_equity_quote_batch",
+   "params": {
+    "symbols": [
+     "PNJ",
+     "FRT",
+     "KDC",
+     "MSN",
+     "SBT"
+    ]
+   },
+   "body": {
+    "data": {
+     "quotes": [
+      {
+       "symbol": "PNJ",
+       "close": 15500,
+       "pct": -3.4267912772585665,
+       "vol": 9396300
+      },
+      {
+       "symbol": "FRT",
+       "close": 148700,
+       "pct": 0.6770480704129994,
+       "vol": 586300
+      },
+      {
+       "symbol": "KDC",
+       "close": 50200,
+       "pct": 0,
+       "vol": 159600
+      },
+      {
+       "symbol": "MSN",
+       "close": 70000,
+       "pct": -2.912621359223301,
+       "vol": 5316200
+      },
+      {
+       "symbol": "SBT",
+       "close": 20700,
+       "pct": -0.24096385542168677,
+       "vol": 1098200
+      }
+     ]
+    },
+    "provenance": {
+     "source": "vnstock",
+     "as_of": "2026-11-01T23:04:26.087808+07:00"
+    },
+    "availability": "available"
+   }
+  },
+  "batch:bds1": {
+   "tool": "vn_equity_quote_batch",
+   "params": {
+    "symbols": [
+     "KDH",
+     "NLG",
+     "DXG",
+     "PDR",
+     "KBC"
+    ]
+   },
+   "body": {
+    "data": {
+     "quotes": [
+      {
+       "symbol": "KDH",
+       "close": 13900,
+       "pct": -0.7142857142857143,
+       "vol": 3341400
+      },
+      {
+       "symbol": "NLG",
+       "close": 22000,
+       "pct": -4.3478260869565215,
+       "vol": 1044600
+      },
+      {
+       "symbol": "DXG",
+       "close": 10100,
+       "pct": 2.2267206477732793,
+       "vol": 13497800
+      },
+      {
+       "symbol": "PDR",
+       "close": 11300,
+       "pct": -0.8771929824561403,
+       "vol": 3951700
+      },
+      {
+       "symbol": "KBC",
+       "close": 26000,
+       "pct": -1.8867924528301887,
+       "vol": 1269500
+      }
+     ]
+    },
+    "provenance": {
+     "source": "vnstock",
+     "as_of": "2026-11-01T23:07:49.498325+07:00"
+    },
+    "availability": "available"
+   }
+  },
+  "batch:energy1": {
+   "tool": "vn_equity_quote_batch",
+   "params": {
+    "symbols": [
+     "PVS",
+     "PVD",
+     "BSR",
+     "PLX",
+     "POW"
+    ]
+   },
+   "body": {
+    "data": {
+     "quotes": [
+      {
+       "symbol": "PVS",
+       "close": 30500,
+       "pct": 0,
+       "vol": 1699200
+      },
+      {
+       "symbol": "PVD",
+       "close": 17950,
+       "pct": -2.17983651226158,
+       "vol": 2262400
+      },
+      {
+       "symbol": "BSR",
+       "close": 27600,
+       "pct": -0.18083182640144665,
+       "vol": 5557900
+      },
+      {
+       "symbol": "PLX",
+       "close": 34000,
+       "pct": 0,
+       "vol": 1746000
+      },
+      {
+       "symbol": "POW",
+       "close": 12200,
+       "pct": -1.6129032258064515,
+       "vol": 3781000
+      }
+     ]
+    },
+    "provenance": {
+     "source": "vnstock",
+     "as_of": "2026-11-01T23:07:49.257317+07:00"
+    },
+    "availability": "available"
+   }
+  },
+  "batch:tech1": {
+   "tool": "vn_equity_quote_batch",
+   "params": {
+    "symbols": [
+     "CMG",
+     "ELC",
+     "VGI",
+     "CTR",
+     "FOX"
+    ]
+   },
+   "body": {
+    "data": {
+     "quotes": [
+      {
+       "symbol": "CMG",
+       "close": 18500,
+       "pct": -2.1164021164021163,
+       "vol": 185600
+      },
+      {
+       "symbol": "ELC",
+       "close": 11000,
+       "pct": -1.7857142857142856,
+       "vol": 468400
+      },
+      {
+       "symbol": "VGI",
+       "close": 75500,
+       "pct": -1.6927083333333333,
+       "vol": 252200
+      },
+      {
+       "symbol": "CTR",
+       "close": 67400,
+       "pct": -0.8823529411764706,
+       "vol": 139300
+      },
+      {
+       "symbol": "FOX",
+       "close": 55400,
+       "pct": -1.9469026548672566,
+       "vol": 46400
+      }
+     ]
+    },
+    "provenance": {
+     "source": "vnstock",
+     "as_of": "2026-11-01T23:07:47.319944+07:00"
+    },
+    "availability": "available"
+   }
+  },
+  "batch:util1": {
+   "tool": "vn_equity_quote_batch",
+   "params": {
+    "symbols": [
+     "REE",
+     "PC1",
+     "GEG",
+     "NT2",
+     "SAM"
+    ]
+   },
+   "body": {
+    "data": {
+     "quotes": [
+      {
+       "symbol": "REE",
+       "close": 45400,
+       "pct": -0.21978021978021978,
+       "vol": 244800
+      },
+      {
+       "symbol": "PC1",
+       "close": 18500,
+       "pct": -1.8567639257294428,
+       "vol": 613300
+      },
+      {
+       "symbol": "GEG",
+       "close": 11700,
+       "pct": -1.680672268907563,
+       "vol": 332900
+      },
+      {
+       "symbol": "NT2",
+       "close": 22500,
+       "pct": -1.7467248908296942,
+       "vol": 1207200
+      },
+      {
+       "symbol": "SAM",
+       "close": 6150,
+       "pct": 0.9852216748768473,
+       "vol": 161200
+      }
+     ]
+    },
+    "provenance": {
+     "source": "vnstock",
+     "as_of": "2026-11-01T23:07:47.597828+07:00"
+    },
+    "availability": "available"
+   }
+  },
+  "peer:banks_p": {
+   "tool": "peer_compare",
+   "params": {
+    "symbol": "VPB",
+    "peers": [
+     "ACB",
+     "STB",
+     "HDB",
+     "TPB"
+    ]
+   },
+   "body": {
+    "data": {
+     "rows": [
+      {
+       "symbol": "VPB",
+       "period_label": "2025",
+       "p_e": 9.48,
+       "p_b": 1.26,
+       "roe": 15.49
+      },
+      {
+       "symbol": "ACB",
+       "period_label": "2025",
+       "p_e": 7.43,
+       "p_b": 1.3,
+       "roe": 17.56
+      },
+      {
+       "symbol": "STB",
+       "period_label": "2025",
+       "p_e": 18.41,
+       "p_b": 1.83,
+       "roe": 10.34
+      },
+      {
+       "symbol": "HDB",
+       "period_label": "2025",
+       "p_e": 6.39,
+       "p_b": 1.46,
+       "roe": 25.41
+      },
+      {
+       "symbol": "TPB",
+       "period_label": "2025",
+       "p_e": 6.14,
+       "p_b": 1.03,
+       "roe": 18.53
+      }
+     ]
+    },
+    "provenance": {
+     "source": "vnstock",
+     "as_of": "2026-11-01T23:08:09.776201+07:00"
+    },
+    "availability": "available"
+   }
+  },
+  "peer:sec_p": {
+   "tool": "peer_compare",
+   "params": {
+    "symbol": "VIX",
+    "peers": [
+     "VCI",
+     "SHS",
+     "MBS",
+     "FTS"
+    ]
+   },
+   "body": {
+    "data": {
+     "rows": [
+      {
+       "symbol": "VIX",
+       "period_label": "2025",
+       "p_e": 6.22,
+       "p_b": 1.61,
+       "roe": 28.85
+      },
+      {
+       "symbol": "VCI",
+       "period_label": "2025",
+       "p_e": 18.96,
+       "p_b": 1.67,
+       "roe": 8.67
+      },
+      {
+       "symbol": "SHS",
+       "period_label": "2025",
+       "p_e": 13.28,
+       "p_b": 1.47,
+       "roe": 11.28
+      },
+      {
+       "symbol": "MBS",
+       "period_label": "2025",
+       "p_e": 13.33,
+       "p_b": 2.14,
+       "roe": 15.18
+      },
+      {
+       "symbol": "FTS",
+       "period_label": "2025",
+       "p_e": 27.12,
+       "p_b": 2.58,
+       "roe": 9.29
+      }
+     ]
+    },
+    "provenance": {
+     "source": "vnstock",
+     "as_of": "2026-11-01T23:08:12.898974+07:00"
+    },
+    "availability": "available"
+   }
+  },
+  "peer:steel_p": {
+   "tool": "peer_compare",
+   "params": {
+    "symbol": "HSG",
+    "peers": [
+     "NKG",
+     "POM",
+     "TLH",
+     "VGS"
+    ]
+   },
+   "body": {
+    "data": {
+     "rows": [
+      {
+       "symbol": "HSG",
+       "period_label": "2025",
+       "p_e": 13.31,
+       "p_b": 0.86,
+       "roe": 6.61
+      },
+      {
+       "symbol": "NKG",
+       "period_label": "2025",
+       "p_e": 32.28,
+       "p_b": 0.87,
+       "roe": 2.92
+      },
+      {
+       "symbol": "POM",
+       "period_label": "2025",
+       "p_e": -1.77,
+       "p_b": -2.34,
+       "roe": 392.86
+      },
+      {
+       "symbol": "TLH",
+       "period_label": "2025",
+       "p_e": 104.28,
+       "p_b": 0.42,
+       "roe": 0.41
+      },
+      {
+       "symbol": "VGS",
+       "period_label": "2025",
+       "p_e": 6.85,
+       "p_b": 1.23,
+       "roe": 18.24
+      }
+     ]
+    },
+    "provenance": {
+     "source": "vnstock",
+     "as_of": "2026-11-01T23:08:16.117741+07:00"
+    },
+    "availability": "available"
+   }
+  },
+  "peer:cons_p": {
+   "tool": "peer_compare",
+   "params": {
+    "symbol": "FRT",
+    "peers": [
+     "PNJ",
+     "KDC",
+     "MSN",
+     "SBT"
+    ]
+   },
+   "body": {
+    "data": {
+     "rows": [
+      {
+       "symbol": "FRT",
+       "period_label": "2025",
+       "p_e": 28.2,
+       "p_b": 4.95,
+       "roe": 26.13
+      },
+      {
+       "symbol": "PNJ",
+       "period_label": "2025",
+       "p_e": 11.61,
+       "p_b": 2.49,
+       "roe": 23.06
+      },
+      {
+       "symbol": "KDC",
+       "period_label": "2025",
+       "p_e": 28.85,
+       "p_b": 1.95,
+       "roe": 7.61
+      },
+      {
+       "symbol": "MSN",
+       "period_label": "2025",
+       "p_e": 27.94,
+       "p_b": 2.6,
+       "roe": 12.53
+      },
+      {
+       "symbol": "SBT",
+       "period_label": "2025",
+       "p_e": 27.66,
+       "p_b": 1.77,
+       "roe": 7.49
+      }
+     ]
+    },
+    "provenance": {
+     "source": "vnstock",
+     "as_of": "2026-11-01T23:08:19.121250+07:00"
+    },
+    "availability": "available"
+   }
+  }
+ }
+}

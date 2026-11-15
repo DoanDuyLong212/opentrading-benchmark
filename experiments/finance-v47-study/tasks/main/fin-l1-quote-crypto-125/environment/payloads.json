@@ -1,0 +1,67 @@
+{
+ "snapshot_date": "2026-11-01",
+ "note": "Envelope MCP ghi lúc tạo task. Key = mã payload nội bộ; envelope giữ nguyên data+provenance+availability.",
+ "tools": {
+  "cohlcv:BTCUSDT": {
+   "tool": "vn_crypto_ohlcv",
+   "params": {
+    "symbol": "BTCUSDT",
+    "days": 10
+   },
+   "envelope": {
+    "data": {
+     "symbol": "BTCUSDT",
+     "closes": [
+      {
+       "t": "2026-10-23",
+       "c": 2098009421.9
+      },
+      {
+       "t": "2026-10-24",
+       "c": 2091876245.22
+      },
+      {
+       "t": "2026-10-25",
+       "c": 2084565233.04
+      },
+      {
+       "t": "2026-10-26",
+       "c": 2064779521.25
+      },
+      {
+       "t": "2026-10-27",
+       "c": 2064331712.31
+      },
+      {
+       "t": "2026-10-28",
+       "c": 2084932613.27
+      },
+      {
+       "t": "2026-10-29",
+       "c": 2096866333.96
+      },
+      {
+       "t": "2026-10-30",
+       "c": 2006753439.82
+      },
+      {
+       "t": "2026-10-31",
+       "c": 1991868211.84
+      },
+      {
+       "t": "2026-11-01",
+       "c": 1997971396.28
+      }
+     ]
+    },
+    "provenance": {
+     "source": "vnstock",
+     "as_of": "2026-11-01T22:54:48.999223+07:00",
+     "timezone": "Asia/Ho_Chi_Minh",
+     "data_time": "2026-11-01 00:00:00"
+    },
+    "availability": "available"
+   }
+  }
+ }
+}

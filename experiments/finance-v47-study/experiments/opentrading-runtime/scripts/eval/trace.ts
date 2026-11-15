@@ -1,0 +1,91 @@
+import { appendFileSync, mkdirSync } from "node:fs"
+import path from "node:path"
+
+/**
+ * One line per event, in the order things happened. The scorer reads this format and nothing
+ * else: traces of other harnesses are converted to it, so a field added here must be optional
+ * for them, and any other change bumps the version.
+ */
+export const TRACE_VERSION = 1
+
+interface Asked {
+  /** Question id and repeat number: every event of a run of a question carries them. */
+  q: string
+  rep: number
+}
+
+export type TraceEvent =
+  | {
+      type: "run"
+      trace_version: number
+      harness: string
+      harness_version: string
+      commit?: string
+      prompt_version?: string
+      provider: string
+      model: string
+      started_at: string
+      tools: number
+      /** The permission mode the run used ("read-only" with the unattended list, or "bypass" with --yolo). */
+      permission_mode?: string
+      /** "notebook" (an empty one per question) or "none". */
+      memory?: string
+      settings?: Record<string, unknown>
+    }
+  | (Asked & { type: "question"; group: string; question: string; now: string })
+  | (Asked & { type: "tool_call"; call_id: string; tool: string; input: unknown; step: number })
+  /** What the model was shown, after notices and the output cap. Subagent calls have none. */
+  | (Asked & {
+      type: "tool_result"
+      call_id: string
+      ok: boolean
+      visible: string
+      duration_ms: number
+      /** Only for the `shell` tool: what became of the command (shell-route.ts) and how long it ran. */
+      shell?: { route: "math" | "read-only" | "approved" | "near-miss" | "denied" | "error"; exec_ms?: number }
+    })
+  /** What the tool returned, before any cap: `agent` is set when a subagent made the call. */
+  | (Asked & { type: "tool_raw"; call_id: string; tool: string; input: unknown; ok: boolean; raw: string; agent?: string })
+  | (Asked & { type: "retry"; attempt: number; delay_ms: number; label: string })
+  | (Asked & { type: "notice"; text: string })
+  | (Asked & { type: "error"; message: string; kind?: string })
+  /** The run ended early: questions after this one were not asked. */
+  | { type: "stopped"; reason: "request-cap"; spent: number; cap: number }
+  | (Asked & {
+      type: "answer"
+      /** The answer the harness kept. */
+      text: string
+      /** Everything the user saw stream, drafts the stop gate threw away included. */
+      streamed?: string
+      outcome: string
+      /** Why it was cut. A cap says nothing about the harness; a timeout does. */
+      abort?: "cap" | "timeout"
+      unanswered: boolean
+      recoveries: { kind: string; attempt: number }[]
+      data_gaps: string[]
+      /** What the harness itself measured, to compare with the scorer's untraced figures. */
+      ungrounded?: string[]
+      /** Harness markup the loop took out of the answer (loop/markup.ts). */
+      markup_stripped?: string[]
+      /** The harness wrote the answer: the model gave none and sources failed (loop/failures.ts gapsAnswer). */
+      fallback?: boolean
+      /** Finished model steps, subagents included. */
+      model_steps: number
+      /** Those steps per upstream provider that answered them, when the gateway says (OpenRouter display names). */
+      served_by?: Record<string, number>
+      /** HTTP requests to a model: retries, subagents and side calls included. */
+      requests?: number
+      input_tokens: number
+      /** Of input_tokens, served from the provider's prompt cache (main agent; 0 when not reported). */
+      cache_read_tokens?: number
+      output_tokens: number
+      duration_ms: number
+    })
+
+export type TraceWriter = (event: TraceEvent) => void
+
+/** Appends synchronously: a killed run keeps every line written so far. */
+export function traceFile(file: string): TraceWriter {
+  mkdirSync(path.dirname(file), { recursive: true })
+  return (event) => appendFileSync(file, `${JSON.stringify(event)}\n`)
+}

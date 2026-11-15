@@ -1,0 +1,76 @@
+{
+  "task_id": "fin-m2-basket-510",
+  "scoring": "value",
+  "solution": {
+    "members": [
+      "CMG",
+      "CTR",
+      "FOX"
+    ],
+    "mean_close": 47100.0
+  },
+  "split": "main",
+  "expects": [
+    {
+      "type": "set",
+      "path": "values.members",
+      "gold": [
+        "CMG",
+        "CTR",
+        "FOX"
+      ]
+    },
+    {
+      "type": "value",
+      "path": "values.mean_close",
+      "gold": 47100.0,
+      "tol": {
+        "rel": 0.001
+      }
+    },
+    {
+      "type": "unit",
+      "path": "unit",
+      "accept": [
+        "đồng",
+        "VND",
+        "vnđ"
+      ]
+    },
+    {
+      "type": "str",
+      "path": "source",
+      "accept": [
+        "vn_equity_quote_batch"
+      ]
+    }
+  ],
+  "contract_version": 2,
+  "stratum": "memory",
+  "tier": "M2",
+  "subtier": "M2",
+  "memory_construct": "M2",
+  "notes": "Native-memory stratum (amendment 2026-11-11 d).",
+  "provenance_contract": [
+    {
+      "tool": "vn_equity_quote_batch",
+      "source": "vnstock",
+      "as_of": "2026-11-01T23:07:47.319944+07:00",
+      "matched_entry_id": "batch:tech1",
+      "response_sha256": "03f22c6c1efa1fc4c1edc0ba25d064c7cbb47705f146b0571f0dca72d38790e7"
+    }
+  ],
+  "provenance_catalog": [
+    {
+      "tool": "vn_equity_quote_batch",
+      "source": "vnstock",
+      "as_of": "2026-11-01T23:07:47.319944+07:00",
+      "matched_entry_id": "batch:tech1",
+      "response_sha256": "03f22c6c1efa1fc4c1edc0ba25d064c7cbb47705f146b0571f0dca72d38790e7"
+    }
+  ],
+  "payload_sha256": "1933b831fbd228b0ac98fad303de28ffb8e0fd47b6f3c2f39685fc96acad1982",
+  "required_payload_keys": [
+    "batch:tech1"
+  ]
+}

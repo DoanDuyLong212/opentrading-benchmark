@@ -1,0 +1,79 @@
+{
+ "snapshot_date": "2026-11-01",
+ "note": "Envelope MCP ghi lúc tạo task. Key = mã payload nội bộ; envelope giữ nguyên data+provenance+availability.",
+ "tools": {
+  "vnq:PLX": {
+   "tool": "vn_quote_history",
+   "params": {
+    "symbol": "PLX"
+   },
+   "envelope": {
+    "data": {
+     "symbol": "PLX",
+     "count": 5,
+     "last": 34,
+     "last_t": "2026-10-30"
+    },
+    "provenance": {
+     "source": "vnstock",
+     "as_of": "2026-11-01T21:47:21.466846+07:00",
+     "data_time": "2026-10-30"
+    },
+    "availability": "available"
+   }
+  },
+  "batch:energy1": {
+   "tool": "vn_equity_quote_batch",
+   "params": {
+    "symbols": [
+     "PVS",
+     "PVD",
+     "BSR",
+     "PLX",
+     "POW"
+    ]
+   },
+   "envelope": {
+    "data": {
+     "quotes": [
+      {
+       "symbol": "PVS",
+       "close": 30500,
+       "pct": 0,
+       "vol": 1699200
+      },
+      {
+       "symbol": "PVD",
+       "close": 17950,
+       "pct": -2.17983651226158,
+       "vol": 2262400
+      },
+      {
+       "symbol": "BSR",
+       "close": 27600,
+       "pct": -0.18083182640144665,
+       "vol": 5557900
+      },
+      {
+       "symbol": "PLX",
+       "close": 34000,
+       "pct": 0,
+       "vol": 1746000
+      },
+      {
+       "symbol": "POW",
+       "close": 12200,
+       "pct": -1.6129032258064515,
+       "vol": 3781000
+      }
+     ]
+    },
+    "provenance": {
+     "source": "vnstock",
+     "as_of": "2026-11-01T23:07:49.257317+07:00"
+    },
+    "availability": "available"
+   }
+  }
+ }
+}

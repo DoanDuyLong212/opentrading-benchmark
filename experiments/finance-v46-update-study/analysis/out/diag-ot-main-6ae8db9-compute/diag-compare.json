@@ -1,0 +1,69 @@
+{
+ "old_primary": 53,
+ "new_primary": 49,
+ "n": 60,
+ "delta_pp": -6.666666666666667,
+ "ci95_pp": [
+  -21.666666666666668,
+  6.666666666666667
+ ],
+ "tasks_better": [
+  "fin-c1-chg-402",
+  "fin-c2-ma-409",
+  "fin-c4-stagger-425",
+  "fin-c4-stagger-430"
+ ],
+ "tasks_worse": [
+  "fin-c3-maladder-419",
+  "fin-c3-rschain-423",
+  "fin-c3-volregime-420",
+  "fin-c3-volshare-421",
+  "fin-c4-signal-429"
+ ],
+ "old_stats": {
+  "requests_mean": 7.35,
+  "requests_max": 25,
+  "input_tok_mean": 237989,
+  "cost_usd": 0.609,
+  "wall_p50_s": 26.9,
+  "wall_p90_s": 84.9
+ },
+ "new_stats": {
+  "requests_mean": 3.75,
+  "requests_max": 12,
+  "input_tok_mean": 75875,
+  "cost_usd": 0.5222,
+  "wall_p50_s": 26.2,
+  "wall_p90_s": 94.5
+ },
+ "old_dnf": 1,
+ "new_dnf": 3,
+ "shell": {
+  "calls": 87,
+  "ok": 36,
+  "denied_by_gate": 49,
+  "near_miss_hint": 0,
+  "other_error": 2,
+  "trials_using_shell": 59,
+  "trials_with_ok_shell": 25,
+  "forms": {
+   "python_-c": 4,
+   "awk_printf": 69,
+   "script/heredoc": 13,
+   "awk_other": 1
+  },
+  "forms_ok": {
+   "awk_printf": 36
+  },
+  "loop_guard_hits": 0,
+  "answers_tu_tinh": 21,
+  "answers_dsml_text": 1
+ },
+ "examples_denied": [
+  "python3 -c \"\nimport json,datetime\ncloses=[('2026-05-13',73.43),('2026-05-14',75.6),('2026-05-15',76.08),('2026-05-18',74.15),('2026-05-19',75.6),('2026-05-20',7",
+  "awk 'BEGIN{\ng1=30.82/36.3; g2=12.2/14.2; g3=34.0/38.95;\na1=exp(log(g1)*250/119)-1; a2=exp(log(g2)*250/119)-1; a3=exp(log(g3)*250/119)-1;\ngeo=exp((log(g1)+log(g2",
+  "awk 'BEGIN{s=5049400+1680700+1868200+1676600+2218600+2020600+2592200+2434200+1952800+2096600+2419600+4348600+3116100+3133800+2605700+3032200+3302100+3995000+421",
+  "awk 'BEGIN{\nk=250/119;\nstb=log(66.3/73.5)*k; mwg=log(74.0/81.33)*k; vnm=log(54.44/54.94)*k; sab=log(42.4/43.55)*k;\navg=(stb+mwg+vnm+sab)/4; bench=log(1741.62/18"
+ ],
+ "examples_nearmiss": []
+}

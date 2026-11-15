@@ -1,0 +1,37 @@
+{
+  "task_id": "v45-dev-12-trap-empty",
+  "scoring": "refusal",
+  "solution": {
+    "value": null
+  },
+  "provenance_contract": [
+    {
+      "tool": "vn_quote_history",
+      "source": "synthetic-dev",
+      "as_of": "2026-11-02T09:00:00+07:00",
+      "matched_entry_id": "q:DEVEMPTY",
+      "response_sha256": "e98a2fbb8210faffd782fe6d0ddc133194f77b3a712fab261abe21a1b4ba4c49"
+    }
+  ],
+  "provenance_catalog": [
+    {
+      "tool": "vn_quote_history",
+      "source": "synthetic-dev",
+      "as_of": "2026-11-02T09:00:00+07:00",
+      "matched_entry_id": "q:DEVEMPTY",
+      "response_sha256": "e98a2fbb8210faffd782fe6d0ddc133194f77b3a712fab261abe21a1b4ba4c49"
+    }
+  ],
+  "required_payload_keys": [
+    "q:DEVEMPTY"
+  ],
+  "payload_sha256": "666e93609fbdf4835fa942981f8dca2a37d5e9f184d2f1524dc8cc4402029904",
+  "fixture_kind": "synthetic_engineering_fixture",
+  "refusal_tokens": [
+    "không có dữ liệu",
+    "không tồn tại",
+    "chưa có",
+    "không đủ dữ liệu",
+    "không tìm thấy"
+  ]
+}

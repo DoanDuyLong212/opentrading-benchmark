@@ -1,0 +1,67 @@
+{
+  "task_id": "fin-l2-margin-151",
+  "scoring": "value",
+  "solution": {
+    "value": 9.62
+  },
+  "as_of": "2026-11-01T22:44:39.273108+07:00",
+  "split": "main",
+  "expects": [
+    {
+      "type": "value",
+      "path": "value",
+      "gold": 9.62,
+      "tol": {
+        "abs": 0.1
+      }
+    },
+    {
+      "type": "unit",
+      "path": "unit",
+      "accept": [
+        "%",
+        "phần trăm"
+      ]
+    },
+    {
+      "type": "period",
+      "path": "period",
+      "accept": [
+        "Q3/2026",
+        "quý 3/2026",
+        "q3 2026",
+        "q3/26"
+      ]
+    },
+    {
+      "type": "str",
+      "path": "source",
+      "accept": [
+        "financial_detail"
+      ]
+    }
+  ],
+  "contract_version": 2,
+  "provenance_contract": [
+    {
+      "tool": "financial_detail",
+      "source": "vietstock",
+      "as_of": "2026-11-01T22:44:39.273108+07:00",
+      "matched_entry_id": "fd:PVS",
+      "response_sha256": "b0bf5de915a6c77f53b631c21cc5230bd6ff5938feb1c4ae96b1254c000393b1"
+    }
+  ],
+  "payload_sha256": "60be85cbc9f79dd4ca7743b33bc002dc20d0f1acc65bb1887637ea4ad4d91b33",
+  "provenance_catalog": [
+    {
+      "tool": "financial_detail",
+      "source": "vietstock",
+      "as_of": "2026-11-01T22:44:39.273108+07:00",
+      "matched_entry_id": "fd:PVS",
+      "response_sha256": "b0bf5de915a6c77f53b631c21cc5230bd6ff5938feb1c4ae96b1254c000393b1"
+    }
+  ],
+  "required_payload_keys": [
+    "fd:PVS"
+  ]
+}

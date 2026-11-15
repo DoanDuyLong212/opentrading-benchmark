@@ -1,0 +1,96 @@
+{
+  "task_id": "fin-c1-cmp-408",
+  "scoring": "value",
+  "solution": {
+    "GAS": -0.3831,
+    "PLX": -4.0903,
+    "better": "GAS",
+    "diff_pp": 3.7071
+  },
+  "as_of": "2026-11-11T09:41:32.145602+07:00",
+  "split": "main",
+  "expects": [
+    {
+      "type": "value",
+      "path": "values.GAS",
+      "gold": -0.3831,
+      "tol": {
+        "abs": 0.05
+      }
+    },
+    {
+      "type": "value",
+      "path": "values.PLX",
+      "gold": -4.0903,
+      "tol": {
+        "abs": 0.05
+      }
+    },
+    {
+      "type": "tokens",
+      "path": "values.better",
+      "accept": [
+        "GAS"
+      ],
+      "reject": [
+        "PLX"
+      ]
+    },
+    {
+      "type": "value",
+      "path": "values.diff_pp",
+      "gold": 3.7071,
+      "tol": {
+        "abs": 0.05
+      }
+    },
+    {
+      "type": "str",
+      "path": "source",
+      "accept": [
+        "vn_quote_history"
+      ]
+    }
+  ],
+  "contract_version": 2,
+  "stratum": "compute",
+  "tier": "C1",
+  "notes": "Compute stratum (amendment 2026-11-11 d). Gold computed with Decimal from payloads; uniform tolerance.",
+  "provenance_contract": [
+    {
+      "tool": "vn_quote_history",
+      "source": "vnstock",
+      "as_of": "2026-11-11T09:41:32.145602+07:00",
+      "matched_entry_id": "hist:GAS",
+      "response_sha256": "d6d16f2b6ad801252f476bde5ccfc66c948f4aa048d411a4ef73b34ebf125d7c"
+    },
+    {
+      "tool": "vn_quote_history",
+      "source": "vnstock",
+      "as_of": "2026-11-11T09:41:32.145602+07:00",
+      "matched_entry_id": "hist:PLX",
+      "response_sha256": "5a7fa3661a96aa11c2d5a20bcdff0733b85be413b05914d6212d95cbbcd0efb2"
+    }
+  ],
+  "provenance_catalog": [
+    {
+      "tool": "vn_quote_history",
+      "source": "vnstock",
+      "as_of": "2026-11-11T09:41:32.145602+07:00",
+      "matched_entry_id": "hist:GAS",
+      "response_sha256": "d6d16f2b6ad801252f476bde5ccfc66c948f4aa048d411a4ef73b34ebf125d7c"
+    },
+    {
+      "tool": "vn_quote_history",
+      "source": "vnstock",
+      "as_of": "2026-11-11T09:41:32.145602+07:00",
+      "matched_entry_id": "hist:PLX",
+      "response_sha256": "5a7fa3661a96aa11c2d5a20bcdff0733b85be413b05914d6212d95cbbcd0efb2"
+    }
+  ],
+  "payload_sha256": "46a46c5002c4531bdac26e129d026117615e84f7ecdfb49bb6610bced4b78e53",
+  "required_payload_keys": [
+    "hist:GAS",
+    "hist:PLX"
+  ]
+}

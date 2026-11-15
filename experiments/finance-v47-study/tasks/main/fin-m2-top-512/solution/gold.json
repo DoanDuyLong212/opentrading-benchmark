@@ -1,0 +1,70 @@
+{
+  "task_id": "fin-m2-top-512",
+  "scoring": "value",
+  "solution": {
+    "symbol": "DBD",
+    "value": 17.21,
+    "criteria": [
+      "P/B dưới 3"
+    ]
+  },
+  "split": "main",
+  "expects": [
+    {
+      "type": "tokens",
+      "path": "values.symbol",
+      "accept": [
+        "DBD"
+      ],
+      "reject": [
+        "DHG",
+        "IMP",
+        "TRA",
+        "DBT"
+      ]
+    },
+    {
+      "type": "value",
+      "path": "values.roe",
+      "gold": 17.21,
+      "tol": {
+        "rel": 0.005
+      }
+    },
+    {
+      "type": "str",
+      "path": "source",
+      "accept": [
+        "peer_compare"
+      ]
+    }
+  ],
+  "contract_version": 2,
+  "stratum": "memory",
+  "tier": "M2",
+  "subtier": "M2",
+  "memory_construct": "M2",
+  "notes": "Native-memory stratum (amendment 2026-11-11 d).",
+  "provenance_contract": [
+    {
+      "tool": "peer_compare",
+      "source": "vnstock",
+      "as_of": "2026-11-01T23:14:27.401231+07:00",
+      "matched_entry_id": "peer:pharma_p",
+      "response_sha256": "60178b26a3fef9be9613101eb120c04d5295e7da6d45bd20cf2b08e54ea9c115"
+    }
+  ],
+  "provenance_catalog": [
+    {
+      "tool": "peer_compare",
+      "source": "vnstock",
+      "as_of": "2026-11-01T23:14:27.401231+07:00",
+      "matched_entry_id": "peer:pharma_p",
+      "response_sha256": "60178b26a3fef9be9613101eb120c04d5295e7da6d45bd20cf2b08e54ea9c115"
+    }
+  ],
+  "payload_sha256": "b354bf476a60638c32b3beab66c72f05fb7eaccacb7b19d132f7de6322916442",
+  "required_payload_keys": [
+    "peer:pharma_p"
+  ]
+}

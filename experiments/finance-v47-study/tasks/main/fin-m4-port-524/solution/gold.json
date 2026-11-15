@@ -1,0 +1,134 @@
+{
+  "task_id": "fin-m4-port-524",
+  "scoring": "value",
+  "solution": {
+    "market_value": 116880000.0,
+    "cost": 164000000.0,
+    "pnl": -47120000.0,
+    "pnl_pct": -28.7317
+  },
+  "split": "main",
+  "expects": [
+    {
+      "type": "value",
+      "path": "values.market_value",
+      "gold": 116880000.0,
+      "tol": {
+        "rel": 0.001
+      }
+    },
+    {
+      "type": "value",
+      "path": "values.cost",
+      "gold": 164000000.0,
+      "tol": {
+        "rel": 0.001
+      }
+    },
+    {
+      "type": "value",
+      "path": "values.pnl",
+      "gold": -47120000.0,
+      "tol": {
+        "rel": 0.001
+      }
+    },
+    {
+      "type": "value",
+      "path": "values.pnl_pct",
+      "gold": -28.7317,
+      "tol": {
+        "abs": 0.05
+      }
+    },
+    {
+      "type": "unit",
+      "path": "unit",
+      "accept": [
+        "đồng",
+        "VND",
+        "vnđ"
+      ]
+    },
+    {
+      "type": "str",
+      "path": "source",
+      "accept": [
+        "vn_quote_history"
+      ]
+    }
+  ],
+  "contract_version": 2,
+  "stratum": "memory",
+  "tier": "M4",
+  "subtier": "M4",
+  "memory_construct": "M4",
+  "notes": "Native-memory stratum (amendment 2026-11-11 d).",
+  "provenance_contract": [
+    {
+      "tool": "vn_quote_history",
+      "source": "vnstock",
+      "as_of": "2026-11-11T09:41:32.145602+07:00",
+      "matched_entry_id": "hist:HPG",
+      "response_sha256": "54e400ae73d13a243ba92310402f7ab2b9d4c6ecb8b22ba02ae2c2c12aa7329d"
+    },
+    {
+      "tool": "vn_quote_history",
+      "source": "vnstock",
+      "as_of": "2026-11-11T09:41:32.145602+07:00",
+      "matched_entry_id": "hist:VCB",
+      "response_sha256": "f196ec0abc711eb0f5e917231d39c4e1703b23b8669dd41c0bac66ae4bdff366"
+    },
+    {
+      "tool": "vn_quote_history",
+      "source": "vnstock",
+      "as_of": "2026-11-11T09:41:32.145602+07:00",
+      "matched_entry_id": "hist:FPT",
+      "response_sha256": "1848a2b64cb88877a56bf1cfddcee6397a83136392ab0caaf93843f66099178d"
+    },
+    {
+      "tool": "vn_quote_history",
+      "source": "vnstock",
+      "as_of": "2026-11-11T09:41:32.145602+07:00",
+      "matched_entry_id": "hist:PNJ",
+      "response_sha256": "bb983ec49d6a33ba66d8e1e2ad8280100a58e00e44b635132d2dca586b8ec53c"
+    }
+  ],
+  "provenance_catalog": [
+    {
+      "tool": "vn_quote_history",
+      "source": "vnstock",
+      "as_of": "2026-11-11T09:41:32.145602+07:00",
+      "matched_entry_id": "hist:HPG",
+      "response_sha256": "54e400ae73d13a243ba92310402f7ab2b9d4c6ecb8b22ba02ae2c2c12aa7329d"
+    },
+    {
+      "tool": "vn_quote_history",
+      "source": "vnstock",
+      "as_of": "2026-11-11T09:41:32.145602+07:00",
+      "matched_entry_id": "hist:VCB",
+      "response_sha256": "f196ec0abc711eb0f5e917231d39c4e1703b23b8669dd41c0bac66ae4bdff366"
+    },
+    {
+      "tool": "vn_quote_history",
+      "source": "vnstock",
+      "as_of": "2026-11-11T09:41:32.145602+07:00",
+      "matched_entry_id": "hist:FPT",
+      "response_sha256": "1848a2b64cb88877a56bf1cfddcee6397a83136392ab0caaf93843f66099178d"
+    },
+    {
+      "tool": "vn_quote_history",
+      "source": "vnstock",
+      "as_of": "2026-11-11T09:41:32.145602+07:00",
+      "matched_entry_id": "hist:PNJ",
+      "response_sha256": "bb983ec49d6a33ba66d8e1e2ad8280100a58e00e44b635132d2dca586b8ec53c"
+    }
+  ],
+  "payload_sha256": "ccf56ab15d52b65c29761aee5ea44c8779cd6af417d87d5a870acfe6b2897a63",
+  "required_payload_keys": [
+    "hist:FPT",
+    "hist:HPG",
+    "hist:PNJ",
+    "hist:VCB"
+  ]
+}

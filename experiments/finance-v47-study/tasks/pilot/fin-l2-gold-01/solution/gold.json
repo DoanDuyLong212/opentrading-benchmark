@@ -1,0 +1,85 @@
+{
+  "task_id": "fin-l2-gold-01",
+  "scoring": "value",
+  "expects": [
+    {
+      "type": "value",
+      "path": "value",
+      "gold": 25802,
+      "tol": {
+        "rel": 0.005
+      }
+    },
+    {
+      "type": "unit",
+      "path": "unit",
+      "accept": [
+        "đồng/USD",
+        "đồng",
+        "VND"
+      ]
+    },
+    {
+      "type": "period",
+      "path": "period",
+      "accept": [
+        "30/10",
+        "30-10",
+        "30.10",
+        "2026-10-30"
+      ]
+    },
+    {
+      "type": "evidence",
+      "path": "note",
+      "paths": [
+        "note"
+      ],
+      "numbers": [
+        25799
+      ],
+      "strings": [
+        "+3",
+        "tăng 3",
+        "tang 3"
+      ],
+      "min_hits": 1
+    },
+    {
+      "type": "str",
+      "path": "source",
+      "accept": [
+        "vn_msn_fx_gold"
+      ]
+    }
+  ],
+  "solution": {
+    "value": 25802,
+    "change": 3
+  },
+  "notes": "Đổi đề so với 5.5 (SJC qua vn_retail_gold timeout 01/11) → dùng chuỗi USDVND của vn_msn_fx_gold. 30/10: 25802; 29/10: 25799; +3 đồng.",
+  "as_of": "2026-11-01T15:54:32.785351+07:00",
+  "contract_version": 2,
+  "provenance_contract": [
+    {
+      "tool": "vn_msn_fx_gold",
+      "source": "msn",
+      "as_of": "2026-11-01T15:54:32.785351+07:00",
+      "matched_entry_id": "vn_msn_fx_gold:0",
+      "response_sha256": "80dfedd9bdca6cd670fe64f071a6c135f19ae00b84bddf077bf83ed35bb3a379"
+    }
+  ],
+  "payload_sha256": "55699904bfdc76edb8c9fc1bd1f05798906fb14ace37440f0675cf91a3524fe7",
+  "provenance_catalog": [
+    {
+      "tool": "vn_msn_fx_gold",
+      "source": "msn",
+      "as_of": "2026-11-01T15:54:32.785351+07:00",
+      "matched_entry_id": "vn_msn_fx_gold:0",
+      "response_sha256": "80dfedd9bdca6cd670fe64f071a6c135f19ae00b84bddf077bf83ed35bb3a379"
+    }
+  ],
+  "required_payload_keys": [
+    "vn_msn_fx_gold"
+  ]
+}

@@ -1,0 +1,111 @@
+{
+  "task_id": "fin-l5-compare-945",
+  "scoring": "value",
+  "solution": {
+    "VIX": 6.22,
+    "VCI": 18.96,
+    "SHS": 13.28,
+    "MBS": 13.33,
+    "FTS": 27.12,
+    "ranking": [
+      "VIX",
+      "SHS",
+      "MBS",
+      "VCI",
+      "FTS"
+    ]
+  },
+  "as_of": "2026-11-01T23:08:12.898974+07:00",
+  "split": "holdout",
+  "expects": [
+    {
+      "type": "value",
+      "path": "values.VIX",
+      "gold": 6.22,
+      "tol": {
+        "rel": 0.005
+      }
+    },
+    {
+      "type": "value",
+      "path": "values.VCI",
+      "gold": 18.96,
+      "tol": {
+        "rel": 0.005
+      }
+    },
+    {
+      "type": "value",
+      "path": "values.SHS",
+      "gold": 13.28,
+      "tol": {
+        "rel": 0.005
+      }
+    },
+    {
+      "type": "value",
+      "path": "values.MBS",
+      "gold": 13.33,
+      "tol": {
+        "rel": 0.005
+      }
+    },
+    {
+      "type": "value",
+      "path": "values.FTS",
+      "gold": 27.12,
+      "tol": {
+        "rel": 0.005
+      }
+    },
+    {
+      "type": "list_order",
+      "path": "ranking",
+      "gold": [
+        "VIX",
+        "SHS",
+        "MBS",
+        "VCI",
+        "FTS"
+      ]
+    },
+    {
+      "type": "period",
+      "path": "period",
+      "accept": [
+        "2025"
+      ]
+    },
+    {
+      "type": "str",
+      "path": "source",
+      "accept": [
+        "peer_compare"
+      ]
+    }
+  ],
+  "contract_version": 2,
+  "provenance_contract": [
+    {
+      "tool": "peer_compare",
+      "source": "vnstock",
+      "as_of": "2026-11-01T23:08:12.898974+07:00",
+      "matched_entry_id": "peer:sec_p",
+      "response_sha256": "8be7844f67076412534cd11c22b6c8ad377a2f28de9843d7c4c1576758186a8c"
+    }
+  ],
+  "payload_sha256": "bff00ef3fb44f7a704dadf8f94689c0b535b33cb7163d79fcab9a8ef83b54f4d",
+  "provenance_catalog": [
+    {
+      "tool": "peer_compare",
+      "source": "vnstock",
+      "as_of": "2026-11-01T23:08:12.898974+07:00",
+      "matched_entry_id": "peer:sec_p",
+      "response_sha256": "8be7844f67076412534cd11c22b6c8ad377a2f28de9843d7c4c1576758186a8c"
+    }
+  ],
+  "required_payload_keys": [
+    "peer:sec_p"
+  ],
+  "notes": "Holdout replacement 2026-11-10: previous question was a verbatim copy of a main task; same frozen payload, new question not asked by any main task."
+}

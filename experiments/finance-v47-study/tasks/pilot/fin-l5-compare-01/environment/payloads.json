@@ -1,0 +1,55 @@
+{
+  "snapshot_date": "2026-11-01",
+  "note": "Envelope MCP đã ghi lúc tạo task (2026-11-01, trim trường không dùng cho gold; data + provenance + availability giữ nguyên). Benchmark chạy qua snapshot-replay các envelope này — không gọi MCP live.",
+  "tools": {
+    "peer_compare": {
+      "data": {
+        "note": "P/E, P/B, P/S, EV/EBIT, EV/EBITDA, tỷ suất cổ tức tính theo giá ngày kết thúc từng kỳ báo cáo, KHÔNG phải bội số hiện tại.",
+        "rows": [
+          {
+            "symbol": "VCB",
+            "period_label": "2025",
+            "p_e": 12.66,
+            "p_b": 2.14,
+            "roe": 16.73
+          },
+          {
+            "symbol": "BID",
+            "period_label": "2025",
+            "p_e": 9.11,
+            "p_b": 1.57,
+            "roe": 19.43
+          },
+          {
+            "symbol": "CTG",
+            "period_label": "2025",
+            "p_e": 5.55,
+            "p_b": 1.07,
+            "roe": 21.23
+          },
+          {
+            "symbol": "TCB",
+            "period_label": "2025",
+            "p_e": 9.76,
+            "p_b": 1.38,
+            "roe": 16.03
+          },
+          {
+            "symbol": "MBB",
+            "period_label": "2025",
+            "p_e": 6.36,
+            "p_b": 1.43,
+            "roe": 21.57
+          }
+        ]
+      },
+      "provenance": {
+        "source": "vnstock",
+        "as_of": "2026-11-01T15:58:02.647158+07:00",
+        "timezone": "Asia/Ho_Chi_Minh"
+      },
+      "availability": "available",
+      "warnings": []
+    }
+  }
+}

@@ -1,0 +1,72 @@
+{
+ "snapshot_date": "2026-11-01",
+ "note": "Envelope MCP ghi lúc tạo task. Key = mã payload nội bộ; envelope giữ nguyên data+provenance+availability.",
+ "tools": {
+  "fs:TRA": {
+   "tool": "financial_statements",
+   "params": {
+    "symbol": "TRA",
+    "period": "quarter",
+    "periods_n": 4
+   },
+   "envelope": {
+    "data": {
+     "symbol": "TRA",
+     "periods": [
+      "Q3/2025",
+      "Q4/2025",
+      "Q1/2026",
+      "Q2/2026"
+     ],
+     "rows": [
+      {
+       "name": "Doanh thu thuần",
+       "unit": "VND",
+       "values": {
+        "Q3/2025": 675765960474,
+        "Q4/2025": 749330427556,
+        "Q1/2026": 632846800424,
+        "Q2/2026": 737391538774
+       }
+      },
+      {
+       "name": "Lợi nhuận gộp",
+       "unit": "VND",
+       "values": {
+        "Q3/2025": 399636762146,
+        "Q4/2025": 392345631075,
+        "Q1/2026": 366387919981,
+        "Q2/2026": 414312132950
+       }
+      },
+      {
+       "name": "LNST thu nhập DN",
+       "unit": "VND",
+       "values": {
+        "Q3/2025": 78298719684,
+        "Q4/2025": 77543151517,
+        "Q1/2026": 68246825428,
+        "Q2/2026": 64838250934
+       }
+      },
+      {
+       "name": "LNST của CĐ cty mẹ",
+       "unit": "VND",
+       "values": {
+        "Q3/2025": 68004349873,
+        "Q4/2025": 70777882061,
+        "Q1/2026": 61612959818,
+        "Q2/2026": 57746162046
+       }
+      }
+     ]
+    },
+    "provenance": {
+     "source": "vietstock",
+     "as_of": "2026-11-01T22:08:28.290481+07:00"
+    },
+    "availability": "available"
+   }
+  }
+ }
+}

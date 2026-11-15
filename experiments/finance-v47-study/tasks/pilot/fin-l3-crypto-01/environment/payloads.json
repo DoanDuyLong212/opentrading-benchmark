@@ -1,0 +1,34 @@
+{
+  "snapshot_date": "2026-11-01",
+  "note": "Envelope MCP đã ghi lúc tạo task (2026-11-01, trim trường không dùng cho gold; data + provenance + availability giữ nguyên). Benchmark chạy qua snapshot-replay các envelope này — không gọi MCP live.",
+  "tools": {
+    "yf_commodities": {
+      "data": {
+        "items": [
+          {
+            "ticker": "GC=F",
+            "price": 3898.89990234375,
+            "prev": 4031.39990234375
+          },
+          {
+            "ticker": "CL=F",
+            "price": 104.12000274658203,
+            "prev": 102
+          },
+          {
+            "ticker": "BTC-USD",
+            "price": 78030.3203125,
+            "prev": 77434.75
+          }
+        ]
+      },
+      "provenance": {
+        "source": "yfinance",
+        "as_of": "2026-11-01T15:57:51.193584+07:00",
+        "timezone": "Asia/Ho_Chi_Minh"
+      },
+      "availability": "available",
+      "warnings": []
+    }
+  }
+}

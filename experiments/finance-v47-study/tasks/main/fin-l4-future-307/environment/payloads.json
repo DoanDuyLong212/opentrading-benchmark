@@ -1,0 +1,25 @@
+{
+ "snapshot_date": "2026-11-01",
+ "note": "Envelope MCP tái sử dụng nguyên vẹn từ các task đã ghi snapshot 2026-11-01 (corpus wave-2 stage-1); không có capture mới. Nguồn: quote104",
+ "tools": {
+  "vnq:VIX": {
+   "tool": "vn_quote_history",
+   "params": {
+    "symbol": "VIX"
+   },
+   "envelope": {
+    "data": {
+     "symbol": "VIX",
+     "last": 12,
+     "last_t": "2026-10-30"
+    },
+    "provenance": {
+     "source": "vnstock",
+     "as_of": "2026-11-01T22:40:53.500907+07:00",
+     "data_time": "2026-10-30"
+    },
+    "availability": "available"
+   }
+  }
+ }
+}

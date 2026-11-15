@@ -1,0 +1,65 @@
+{
+  "task_id": "fin-l2-growth-01",
+  "scoring": "value",
+  "expects": [
+    {
+      "type": "value",
+      "path": "value",
+      "gold": -2.03,
+      "tol": {
+        "abs": 0.1
+      }
+    },
+    {
+      "type": "unit",
+      "path": "unit",
+      "accept": [
+        "%",
+        "phần trăm"
+      ]
+    },
+    {
+      "type": "period",
+      "path": "period",
+      "accept": [
+        "Q2/2026",
+        "Q3/2026"
+      ]
+    },
+    {
+      "type": "str",
+      "path": "source",
+      "accept": [
+        "financial_statements"
+      ]
+    }
+  ],
+  "solution": {
+    "value": -2.03
+  },
+  "notes": "Q3/2026 = 18,465,190,628,493; Q2/2026 = 18,847,347,464,988 → -2.03%.",
+  "as_of": "2026-11-01T15:54:29.489141+07:00",
+  "contract_version": 2,
+  "provenance_contract": [
+    {
+      "tool": "financial_statements",
+      "source": "vietstock",
+      "as_of": "2026-11-01T15:54:29.489141+07:00",
+      "matched_entry_id": "financial_statements:0",
+      "response_sha256": "289fd531da3db1102457c4dfccb9a9cfe32a34b8be773931a4dfedb07eebf30a"
+    }
+  ],
+  "payload_sha256": "b2ccc97e7e34af753586d8471dcebdf2a5dc125fb0fe7353544e9f2c4fde0627",
+  "provenance_catalog": [
+    {
+      "tool": "financial_statements",
+      "source": "vietstock",
+      "as_of": "2026-11-01T15:54:29.489141+07:00",
+      "matched_entry_id": "financial_statements:0",
+      "response_sha256": "289fd531da3db1102457c4dfccb9a9cfe32a34b8be773931a4dfedb07eebf30a"
+    }
+  ],
+  "required_payload_keys": [
+    "financial_statements"
+  ]
+}

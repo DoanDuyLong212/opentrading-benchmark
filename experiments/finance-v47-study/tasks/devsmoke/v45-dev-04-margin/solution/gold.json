@@ -1,0 +1,61 @@
+{
+  "task_id": "v45-dev-04-margin",
+  "scoring": "value",
+  "solution": {
+    "value": 23.0
+  },
+  "provenance_contract": [
+    {
+      "tool": "financial_statements",
+      "source": "synthetic-dev",
+      "as_of": "2026-11-02T09:00:00+07:00",
+      "matched_entry_id": "fs:NLG",
+      "response_sha256": "066d6425c61493a18572d367e65968ce2de116e2817acab1910044d8cd928a77"
+    }
+  ],
+  "provenance_catalog": [
+    {
+      "tool": "financial_statements",
+      "source": "synthetic-dev",
+      "as_of": "2026-11-02T09:00:00+07:00",
+      "matched_entry_id": "fs:NLG",
+      "response_sha256": "066d6425c61493a18572d367e65968ce2de116e2817acab1910044d8cd928a77"
+    }
+  ],
+  "required_payload_keys": [
+    "fs:NLG"
+  ],
+  "payload_sha256": "61319f5a9649edbc499449f254355c2e962f2459d8b0b5856515d84ce38aa5b9",
+  "fixture_kind": "synthetic_engineering_fixture",
+  "expects": [
+    {
+      "type": "value",
+      "path": "value",
+      "gold": 23.0,
+      "tol": {
+        "abs": 1e-06
+      }
+    },
+    {
+      "type": "unit",
+      "path": "unit",
+      "accept": [
+        "%"
+      ]
+    },
+    {
+      "type": "period",
+      "path": "period",
+      "accept": [
+        "Q3/2026"
+      ]
+    },
+    {
+      "type": "str_all",
+      "path": "source",
+      "accept": [
+        "financial_statements"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,64 @@
+{
+  "snapshot_date": "2026-11-02",
+  "source_review_status": "synthetic_engineering_fixture",
+  "note": "New pre-registered dev fixtures; no source/gold copied from main or holdout.",
+  "tools": {
+    "q:DGC": {
+      "tool": "vn_quote_history",
+      "params": {
+        "symbol": "DGC",
+        "summary": true
+      },
+      "envelope": {
+        "data": {
+          "symbol": "DGC",
+          "last": 81.7,
+          "last_t": "2026-10-29",
+          "count": 1
+        },
+        "availability": "available",
+        "provenance": {
+          "source": "synthetic-dev",
+          "as_of": "2026-11-02T09:00:00+07:00",
+          "data_time": "2026-10-29",
+          "timezone": "Asia/Ho_Chi_Minh"
+        },
+        "units": {
+          "last": "nghìn đồng"
+        },
+        "warnings": [
+          "Synthetic engineering fixture; not independently captured market data."
+        ]
+      }
+    },
+    "fs:DGC": {
+      "tool": "financial_statements",
+      "params": {
+        "symbol": "DGC",
+        "period": "quarter",
+        "statement": "all",
+        "periods_n": 15
+      },
+      "envelope": {
+        "data": {
+          "symbol": "DGC",
+          "close_same_day": 82.1,
+          "date": "2026-10-29"
+        },
+        "availability": "available",
+        "provenance": {
+          "source": "synthetic-second-source",
+          "as_of": "2026-11-02T09:00:00+07:00",
+          "data_time": "2026-10-29",
+          "timezone": "Asia/Ho_Chi_Minh"
+        },
+        "units": {
+          "close_same_day": "nghìn đồng"
+        },
+        "warnings": [
+          "Synthetic engineering fixture; not independently captured market data."
+        ]
+      }
+    }
+  }
+}

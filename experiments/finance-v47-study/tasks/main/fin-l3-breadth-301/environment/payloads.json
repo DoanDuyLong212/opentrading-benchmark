@@ -1,0 +1,59 @@
+{
+ "snapshot_date": "2026-11-01",
+ "note": "Envelope MCP tái sử dụng nguyên vẹn từ các task đã ghi snapshot 2026-11-01 (corpus wave-2 stage-1); không có capture mới. Nguồn: fin-l3-agg-186",
+ "tools": {
+  "batch:bds1": {
+   "tool": "vn_equity_quote_batch",
+   "params": {
+    "symbols": [
+     "KDH",
+     "NLG",
+     "DXG",
+     "PDR",
+     "KBC"
+    ]
+   },
+   "envelope": {
+    "data": {
+     "quotes": [
+      {
+       "symbol": "KDH",
+       "close": 13900,
+       "pct": -0.7142857142857143,
+       "vol": 3341400
+      },
+      {
+       "symbol": "NLG",
+       "close": 22000,
+       "pct": -4.3478260869565215,
+       "vol": 1044600
+      },
+      {
+       "symbol": "DXG",
+       "close": 10100,
+       "pct": 2.2267206477732793,
+       "vol": 13497800
+      },
+      {
+       "symbol": "PDR",
+       "close": 11300,
+       "pct": -0.8771929824561403,
+       "vol": 3951700
+      },
+      {
+       "symbol": "KBC",
+       "close": 26000,
+       "pct": -1.8867924528301887,
+       "vol": 1269500
+      }
+     ]
+    },
+    "provenance": {
+     "source": "vnstock",
+     "as_of": "2026-11-01T23:07:49.498325+07:00"
+    },
+    "availability": "available"
+   }
+  }
+ }
+}

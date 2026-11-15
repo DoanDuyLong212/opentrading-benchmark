@@ -1,0 +1,10 @@
+{
+ "recorded_at": "2026-11-01",
+ "note": "Batch r5 — vnq EIB,HHV + vnq10 ELC,CTR",
+ "items": {
+  "vnq:EIB": {"tool": "vn_quote_history", "params": {"symbol": "EIB"}, "body": {"data": {"symbol": "EIB", "last": 16.1, "last_t": "2026-10-30"}, "provenance": {"source": "vnstock", "as_of": "2026-11-01T22:37:34.299882+07:00", "data_time": "2026-10-30"}, "availability": "available"}},
+  "vnq:HHV": {"tool": "vn_quote_history", "params": {"symbol": "HHV"}, "body": {"data": {"symbol": "HHV", "last": 9.3, "last_t": "2026-10-30"}, "provenance": {"source": "vnstock", "as_of": "2026-11-01T22:37:33.997151+07:00", "data_time": "2026-10-30"}, "availability": "available"}},
+  "vnq10:ELC": {"tool": "vn_quote_history", "params": {"symbol": "ELC", "days": 10}, "body": {"data": {"symbol": "ELC", "closes": [{"t": "2026-10-19", "c": 11.35}, {"t": "2026-10-20", "c": 11.45}, {"t": "2026-10-21", "c": 11.8}, {"t": "2026-10-22", "c": 11.8}, {"t": "2026-10-23", "c": 11.45}, {"t": "2026-10-26", "c": 11.4}, {"t": "2026-10-27", "c": 11.4}, {"t": "2026-10-28", "c": 11.2}, {"t": "2026-10-29", "c": 11.2}, {"t": "2026-10-30", "c": 11}]}, "provenance": {"source": "vnstock", "as_of": "2026-11-01T22:38:06.001057+07:00", "data_time": "2026-10-30"}, "availability": "available"}},
+  "vnq10:CTR": {"tool": "vn_quote_history", "params": {"symbol": "CTR", "days": 10}, "body": {"data": {"symbol": "CTR", "closes": [{"t": "2026-10-19", "c": 67.8}, {"t": "2026-10-20", "c": 69.3}, {"t": "2026-10-21", "c": 70}, {"t": "2026-10-22", "c": 68.9}, {"t": "2026-10-23", "c": 68.9}, {"t": "2026-10-26", "c": 68.1}, {"t": "2026-10-27", "c": 67.7}, {"t": "2026-10-28", "c": 67.3}, {"t": "2026-10-29", "c": 68}, {"t": "2026-10-30", "c": 67.4}]}, "provenance": {"source": "vnstock", "as_of": "2026-11-01T22:38:06.720378+07:00", "data_time": "2026-10-30"}, "availability": "available"}}
+ }
+}

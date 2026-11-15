@@ -1,0 +1,21 @@
+{
+  "snapshot_date": "2026-11-01",
+  "note": "Envelope MCP đã ghi lúc tạo task (2026-11-01, trim trường không dùng cho gold; data + provenance + availability giữ nguyên). Benchmark chạy qua snapshot-replay các envelope này — không gọi MCP live.",
+  "tools": {
+    "symbol_resolve": {
+      "data": {
+        "query": "XYZX",
+        "resolved": null,
+        "ambiguous": false,
+        "candidates": []
+      },
+      "provenance": {
+        "source": "vnstock+local",
+        "as_of": "2026-11-01T15:57:53.093226+07:00",
+        "timezone": "Asia/Ho_Chi_Minh"
+      },
+      "availability": "empty",
+      "warnings": []
+    }
+  }
+}

@@ -1,0 +1,3240 @@
+{
+  "created_at": "2026-11-13T17:04:14.839524+00:00",
+  "fingerprint": "55769eeda1c3081831f42f22be1b17a110c6d4bfb4936540ab3da7eeca4791bf",
+  "plan": {
+    "code": {
+      "tools/_gen_payloads.py": "6d64ad6cdabaef60bc9e7ad112a18759fe09becebb6b59936f580d874ab5183c",
+      "tools/_gen_tasks_a.py": "64ec744d2aa3aa5f8369b0f42762463eee211d8e1d82af7aacffa03a57ad5bf0",
+      "tools/_gen_tasks_b.py": "92f4118f117d904acbda0d0fc3e676cf6aa61ffa702adec6e7fa581ed7e82639",
+      "tools/_gen_templates.py": "9218ca0311e5f488ffb628e39443e1bc9eeb573ecce66910bd08e1ca918760cb",
+      "tools/analytics_calculate.py": "ecac525fcde4801bf514327115f2a67d19c88c6a640139d8a0387f21e9f01cff",
+      "tools/analytics_compute.py": "10f45bd7a81f1d45ce0accbd853e74f059beb05665c60da3d6bf8b0fdd02aecb",
+      "tools/analyze.py": "5a1e9262a4daf34e99634561c24f0230a4c0292382b852b98d6a9dc4d8ead2e5",
+      "tools/analyze_v42_errors.py": "27000b8398e6506714464de52d34c62ccbd96058f16be69d66a5b831c6eabfdf",
+      "tools/analyze_v43_errors.py": "fbffe38d51ddcce7641f2096ee396bdf45724f353c4f42caa6c97e6db4640857",
+      "tools/apply_gold_audit_20261110.py": "36f797349c9edc0e237a7585aab1461f7686d0cd26262d484ed0e543972b13a3",
+      "tools/apply_main_amendment_20261110.py": "975f081f42e6c34171f61dd5f5ffb48e377d847d30a3db4e0b1859ceab404c9a",
+      "tools/apply_taskset_prune_20261111.py": "c559c77feb82b2347d54d4332ea1d5cc376ac256c104a7fd23e1d22ed1f75a72",
+      "tools/audit_benchmark.py": "7f45992299cd2efe006523242b41c0d5be4ec2ffeb42bb5a1e43ef93dc10fb1c",
+      "tools/audit_provider_probe.py": "4842da03b3d9efcf7e449b1365f961627c9dcc704dce566778c3744d259f913e",
+      "tools/audit_smoke.py": "dd4ff6cefd1bb62a0ce336bc2b837b4e5b52787b0e8eee11aa48ecc427325be6",
+      "tools/audit_v45_memory_corpus.py": "f5f0ae70db620fa1de3a33b3c2767245c4e5d297253846e00f9d80e37bfd0180",
+      "tools/audit_v45_memory_corpus_batch3.py": "8edae12d067b54461a77e10c67d36586f7e3a55633b7818e4e07d1660d64a34d",
+      "tools/audit_v45_memory_run.py": "a133446820d2971c7a57a5d9e6c81388523c56a3b126a0033a34cdd952b9374e",
+      "tools/audit_v45_run.py": "f807f9de224c6dcac57c1d7e5cb0e745938fee9a03d8047f4334e8e8507d334b",
+      "tools/b0_gate.py": "7425f66ef8ddaee624401088ea1946ef936bffdddb58dbab50ce982320aad037",
+      "tools/bench_config.json": "bd336cc3bc48e55c3bf3aec597677354fc23b6e536e1fd6fc84e124fe52f2342",
+      "tools/bench_config_deepseek.json": "9b8df2b17371a9b289a6725ae270925b3118ffdbf7506c7cc7689994562a8a53",
+      "tools/bench_config_deepseek_openrouter.json": "cc898ab340523f25fa360d4418a935683d25de539b024fc82c8e5f6139944052",
+      "tools/bench_config_diag.json": "5b9e572ae3c1d742954d7007413f75f49640750dcf6e327f7ed2a9e42c293ec9",
+      "tools/bench_config_openrouter.json": "087f1e1471fda3d7bbe13a3d41aed7d7d7ccd9075bcd815f3d797ad32d517280",
+      "tools/build_compute_stratum_20261111.py": "1d7bd49cf0febde3502b7cd09f234adfbefd42e7dad0de03844000a9aef59630",
+      "tools/build_holdout_replacements_20261110.py": "5a4e399699717537009ac76a2b044b4bf22aae7a847f4c0fec3bae7afdb9e28a",
+      "tools/build_main.py": "69afbada77e8fc22c2996d212112d4dde4ea1b5d91bf65fa0fd6da02490c7639",
+      "tools/build_memory_stratum_20261111.py": "535e240954decdea268db5d3a175c1747c84953c93a1ae7d98f3a0cdf361ba13",
+      "tools/build_plan.py": "7c9ec9abd98b3a17d04ddb1791150c5310d726c0e2b6f6e9d7dec87e0df12231",
+      "tools/build_v45_devsmoke.py": "36587724b5122824d90d84fbe1574fa506f4f1994bafb0d7f728939b44d978a7",
+      "tools/c2_native_wire_probe.py": "b8573af2ff6ae6bbb8c6f4da4e02e7ca7f54ef51a77507ec797f8c6191ff4843",
+      "tools/check_leaks.py": "2a03fe545612b37d3b869569f9bd4cd43fe62f3821b70270a95f5811465a928b",
+      "tools/compute_hard_templates_20261111.py": "28c3672e4ab47e3e11960c561bc22e9af3b2571f7407824d485e764c7e1cea60",
+      "tools/experiment_conditions.py": "99bc40e5cef7fc3a36b8800df2104347521bb5e80b76c74e65fe62594924f451",
+      "tools/fam_a.py": "8a83c0387cd9a64f86e4afe4bc2579d223031e10ac8814e44b76f68d4385857b",
+      "tools/fam_b.py": "3fcf64ae4999dea81bb8cb8a1af69498448ad946dd1e886da1f059d55adeac9b",
+      "tools/fam_util.py": "137cf82af5a2eeeb9021a8a9051ecf7a358c24439e3f8c4ca67da116c4d224b0",
+      "tools/frozen_v3_grader.py": "79b4960aafa6e078dac3f1bc22f0167d9f811ca1beb106588d5e00482f0728d4",
+      "tools/frozen_v41_grader.py": "4a761ab4f20644d1a845dfdc9535cddffe8f2ebff3f3a8335de02623d8d3ea0d",
+      "tools/gen_tasks.py": "bd5973926f9ad89ea7e31a8617f3019a78c7692b2fdbb8860ed693b88f889e39",
+      "tools/grade_run_llm.py": "c29fbb91017a0c026a42eedebdfdf908a5c9c5dbbc7d20acd4bfc067cf1a2675",
+      "tools/identity_canary.py": "8e37881e0c734c9b9bc4128fd45d6a49657aa792eec8cfbf914b8fbdea3415d3",
+      "tools/intent_audit.py": "26272dad6dc5fa384eaf99ba97efc3e36dc2771d23c0cf42c28fbf2ba062f358",
+      "tools/judge_primary.py": "616af64df0cb73aa68e077e895d9e6fb48e7e6a2785d9e9a66da5e7a077b97cf",
+      "tools/llm_judge.py": "33caa355ff7d7d3cb4fa00d82afd0254d493c81d1dd7cec03e63e87d79980039",
+      "tools/manifest.json": "3ec85e97a838cd978111e5890245e65fff8fee6670b96850bf5f017cb118226f",
+      "tools/mcp_snapshot_server.py": "4ccf98c9e20e6e0d4fc37e805139bd359bfc99b4f060152f74029c50d5bc20bd",
+      "tools/metrics.py": "a5969b1e15c520669b36e725a0a6a490647e98070de8ed094cd9b808bc4cc3c5",
+      "tools/migrate_contract_v2.py": "a32446e4be2ae76f55a9682b0e5285064bb9920632cb5fa0d3163c3a3274688c",
+      "tools/probe_list.json": "b91a7e583e69d810cebbf1f8e93140b63fcd1fcb2c5f20c80bf870df216ba6c5",
+      "tools/prompt_variants/baseline/citations.md": "de9fb1fc83fa4a9754f48d8ac37d78e65b4d24c3dbcca3ddf62ad6ad91a8879b",
+      "tools/prompt_variants/baseline/identity.md": "6c52592f240624e17828155594f6cec14e833710c9c8bf97540e3c5370664742",
+      "tools/prompt_variants/baseline/memory-cards.md": "0e272324666c58e6cb0dabcd29f5a52f219fe1f0c8d515cc2b0c0499699578b1",
+      "tools/prompt_variants/baseline/memory.md": "680e283ecf05662d9e13326df41cabb5f7d6f4bd607fb7c6d0bb8e4d38f96f7d",
+      "tools/prompt_variants/baseline/style.md": "56e82b54f5fb5e83c6047e4ad1c21ab1ade0427fadfce504e34dc28063d9e2c3",
+      "tools/prompt_variants/baseline/subagent.md": "b8bc6181355d4d557e047d60c0de4347c58888d6b0a41562bf693b63ba89b039",
+      "tools/prompt_variants/baseline/title.md": "8329a2554713df24143cbc5bc2f6dc6ab5df78e0a44392ce6bc887d439c7444e",
+      "tools/prompt_variants/baseline/tools.md": "fa6d29ab60f3b1aafcf378aa96c0f1a13a6cee31567d7b544c539210d7b43414",
+      "tools/prompt_variants/finance/citations.md": "15b7164aa4cd147145cd5940197c42c33224edb597bac6a6abaef85db79feaea",
+      "tools/prompt_variants/finance/identity.md": "c0cec92f955694ca68e46c632d2939a7abb2262391c60ab3b4fdd710c6f66da7",
+      "tools/prompt_variants/finance/memory-cards.md": "0e272324666c58e6cb0dabcd29f5a52f219fe1f0c8d515cc2b0c0499699578b1",
+      "tools/prompt_variants/finance/memory.md": "680e283ecf05662d9e13326df41cabb5f7d6f4bd607fb7c6d0bb8e4d38f96f7d",
+      "tools/prompt_variants/finance/style.md": "1b56924d276b017e7c9826dd7fa4e5f9a88586f15d725f490bb52df4e535ed91",
+      "tools/prompt_variants/finance/subagent.md": "b8bc6181355d4d557e047d60c0de4347c58888d6b0a41562bf693b63ba89b039",
+      "tools/prompt_variants/finance/title.md": "8329a2554713df24143cbc5bc2f6dc6ab5df78e0a44392ce6bc887d439c7444e",
+      "tools/prompt_variants/finance/tools.md": "a37824fa7d9bbce872b6c924217a24d66feb35803e577498bb3c3cfa70d4e2a5",
+      "tools/protocol_compat.py": "c9c502f45734bd4926bfc7bc86d101e6650670a12416de0e7feb27c260862a79",
+      "tools/provider_response.py": "ad0fb00e9d2113b26de0bdaf0f6b5602235113885ebc764a7ee93f3120e2ead1",
+      "tools/public_response_contract.py": "fb4013bba95b4c4c2f6c1bec650329f8ba0e289e487c0ce2dabc266530aab5dc",
+      "tools/ready_check.py": "dd40f2fdd7186812f771d48a03a2fba0fc1e0259599bf58fef71a55bc5c66950",
+      "tools/record_snapshot_extension_20261111.py": "ea384978f1eb4a7728a2c74360e9c5562f5a9545a92bd87b45a8c2a4511a4f08",
+      "tools/recorded/batch_r0.json": "7348962cce563176be5dbb01674f67483e8e8f7bb7b73de6e1b6fbb618cf8585",
+      "tools/recorded/batch_r1.json": "a5d03913d780d03db20b50c72e7b9dfb578dac91c364beccf5d8f63a36247412",
+      "tools/recorded/batch_r10.json": "4004c580d0b654d3f6c114c31b244b0430b7035c72532e31742120de772b2f9d",
+      "tools/recorded/batch_r11.json": "c6044e64b35faf23d7a1297b025d76da9392b7a9e67ec42923ca76348550093a",
+      "tools/recorded/batch_r12.json": "72283f52dd01af98e12d95abbba01d458a45aafbb840c24ca098e2b9da427c7c",
+      "tools/recorded/batch_r13.json": "cce5d0b924a006de19c6f6c2498bcb5e4fe8a40d233dd2db62ca174dcad8f589",
+      "tools/recorded/batch_r14.json": "94fbca95d379cd2067cc982270cd76926400b5218305fc509a7a38eaa7da2486",
+      "tools/recorded/batch_r15.json": "6ef0a80fb736a1a4d5c53b80fe5b7d7e4f3ca41e700c2b3e81cb94a30ac2a96e",
+      "tools/recorded/batch_r2.json": "f3d7727b7a3cd81ff43a42a79bf3b0961e808b385e92ac566572e83a276a2acd",
+      "tools/recorded/batch_r3.json": "24f8d49c35d4f0c84d6e06c3defc0560ae34e6467544bd7ab0008b1f0340dd01",
+      "tools/recorded/batch_r4.json": "2d93a8d2ee75e814ac65736ad562e3d905735d060041e30ed30a106dc40cf6b3",
+      "tools/recorded/batch_r5.json": "82eb969c833af0c110832422b73740c379f7ca91491f2f4bdca07e4bc55cbd49",
+      "tools/recorded/batch_r6.json": "9b0ae12ba042dae7c30bb396757e787e906704280c28b81c85256ed94ea9a7ab",
+      "tools/recorded/batch_r7.json": "eb12b7e9a6c65f43ca9aa061ac3c97adc604b2661c19e60fe8456b0f12d1822e",
+      "tools/recorded/batch_r8.json": "931ad585cfdef7e393eff7abf589506485969cbc21f7b6f22c7d20f023119646",
+      "tools/recorded/batch_r9.json": "84c660b2b3f263dcc2b12b75248ce4f7d77e63c4ae8d423cde3c164cc3d905db",
+      "tools/run_benchmark.py": "1a5ca803c91385674fd050535266e2477b5f7fadaa9ebbeaae33dba9e448febc",
+      "tools/run_manifest.py": "70f4089399564ea3ab318d60d695d56d68aac6c58080fa6082dbf8d2b872512a",
+      "tools/run_memory_benchmark.py": "fc66357b2605bd701dfe0fb8c0579c1e1c70e4d64fe65db7dbdbd1f33e970488",
+      "tools/runners/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tools/runners/common.py": "8e7ec922d78735b12f873e2b1a47b22d92b3090d45657533a08acaccefaea653",
+      "tools/runners/dsh_session_search_tools.json": "97e0b181490a36f65f2ed51ff0a29447670c871f9001a803d64e86fb8a8c7114",
+      "tools/runners/isolated.py": "25471307b1b0f29e0e87565cbde3ca39fee9732c5811d60c936aba7507fa293a",
+      "tools/runners/memory_runner.py": "f5196742001af5be8cbcbd007423f0ec75a26dcce8b05928bae1d860792349a6",
+      "tools/runners/memory_schema.ts": "8767da55051e8bb8075686a54f5b38f71ac72e0e305d1ed8bbd1952f5918cc7f",
+      "tools/runners/memory_snapshot_server.py": "4b23c3eeb0efe861606b4d0f4c4a112a6c17fbd8e47b39698f7c606b712aab48",
+      "tools/runners/native_calculate.ts": "6acbfbd1edc446570bafc7b32067934d6cb88ec547c02726fa3f9c1b1bf092f0",
+      "tools/runners/native_final.ts": "7fc2a8fe77d70472185a78b803c603dca359311aba26a6199458179e6ff6e985",
+      "tools/runners/native_fixture.ts": "71a95b3df5b60eaa7f1e99fb29dcfb1ba82436733d50e727c104e4ef76522332",
+      "tools/runners/native_schema.ts": "ed1249bb0075c9e0381d33b54e709e142b4a8e6e144029df924b246456c8d77f",
+      "tools/runners/ot_headless.ts": "f2e1d1ca03a7acc14203dfbcc7ce11747f1c7884f7e25640d0d3ec087a2a5ea5",
+      "tools/runners/ot_memory_admin.ts": "beff1ff40557967875d2b69dd5bff981d5ef8999980748c7bafeb1e8c7c8d790",
+      "tools/runners/ot_memory_headless.ts": "92bdb88ec946dc17b7c9b89ed7084f141df5f457958005cc2b630c3ae3aee9e8",
+      "tools/runners/provider.py": "0582b86ac18e427332e9a050fa47c395fa8e3956ee04852691bd423a1b0a9b0c",
+      "tools/runners/run_dsh.py": "1c4e1d3bc3899ec9fd08c89d86d20df1c8b15dcd215d6aa781c4321da08ea98c",
+      "tools/runners/run_opencode.py": "60330224eab8609ae95d3845d784309628bb211d666ff74b6a472dac041b033d",
+      "tools/runners/run_opentrading.py": "7a0b232bba9054d197745f503f45f09f6ee7b8f0964a6da252ed2d81c555d598",
+      "tools/snapshot_tool_schemas.json": "740974a8e85522137a254df46edffa6b6de536a61e8d98892f3aaeffdb59cad1",
+      "tools/sync_v45_memory_corpus.py": "d477281c24f147bd275b93fb28a4482d06539ab8838b6cdc88b0e9b2edee8e63",
+      "tools/sync_v45_memory_corpus_batch3.py": "95329c7c0349190c52625ddbe71b182f6c8a4c115916b59cdbdad286ba25b03d",
+      "tools/task_quality_report.py": "509ae12b44b03ef38c472506ffea9638cd18a748d21d0302d6ae4ea2c6872a15",
+      "tools/tool_contracts_v4.json": "07e1a7363b31cfa053719933f777c5b5991bb5d65ec5698b7d48f567564684c3",
+      "tools/update_approval_batch3.py": "33449ba9218f52982bbe43e6a973d16f4fa3f83382a1b343ab4966c7f2334863",
+      "tools/update_approval_ds_or.py": "899c9e777f259c5807b5d7268c94619dde9f254528fb4a72c68d93c493c5a396",
+      "tools/v43_gate.py": "e401cb6b7584bde1081f8d99d6ee4b84fde7a62a19a5a6b034f2faad7d6d008d",
+      "tools/v43_supervisor.py": "d68e0c177b04d0da25f36af4c09a1b6da512264a588bfdda82bdcbe399bded5e",
+      "tools/v44_gate.py": "a5546b33e5ed748aeca530fdec7570eb01c922a41593f9933b0b3fe3bd2f75fb",
+      "tools/v44_supervisor.py": "13fead56fb85ad37997bfaadaf5be5e178a0fcf75cdc35867c01c96242b3b438",
+      "tools/v45_call_binding.py": "4f3b338083d4f40f10ec64c59bc68d705fa7cc298140eddff550ecc62a7db084",
+      "tools/v45_control.py": "996b3d17314b9b388a5783aeec9feb556b0e51f248c05c84b57f42302848104b",
+      "tools/v45_final_statistics.py": "a21f316c46fc9e803d8d903b2d5b797b42231ad5c34b8e0f821671f87e53e4b7",
+      "tools/v45_gate.py": "cc6dc324d62550ec6824a7885c80511ceb08a3ad2800ef2dd49123294164bf0b",
+      "tools/v45_grader.py": "0032f4e83888a168fbed44d8bd88f3c0efabdb78f0f653fcd0b94ee035967b0b",
+      "tools/v45_math_audit.py": "f3481c6636c98cbf797a173b4bafdebaa232fabaf25c21389483953cfee13c7c",
+      "tools/v45_memory_metrics.py": "24cbcb84791818ba177784685c433b2ed350ff08194850234059f105069bc965",
+      "tools/v45_memory_review.py": "bef4861284f6933d4ddc850b32ca4777fe07c33890b525a8c677b759e9843a01",
+      "tools/v45_metrics.py": "6355e1ab8bdb46530e811c66297bff7b9fee2bae18e6823c442b6c1ad916cc98",
+      "tools/v45_review.py": "5e82e64e37e88982d6e2349a9c6cf89b7f23c3287cf27abce310647e7cb93d5a",
+      "tools/v45_supervisor.py": "abfc9b82baa75e1e7c478478fc7d8ea16832a9c8680665a28427b7be496df80d",
+      "tools/v45_verify_resume.py": "c4cf6eeb904e80ec1a16ac76d5bf284242f9ca40a1d550f6b8f82b04935ed7f5",
+      "tools/v46_rejection_proof.py": "dd9037a8503348f6de49a17fd3958cf9603c6d55942c0217fbb827264136f937",
+      "tools/verify_nvidia.py": "1acf254d4315742d72897e7b528f6da6dd6dab7edc5f2a0527f4e7b1b5d71d9a",
+      "tools/verify_v45_memory_resume.py": "fd6b6eb5e352933cd4fb51359cb50bec9a62ab9b0fcb64fe76c3a79ad51a871a",
+      "tools/wire_contracts.py": "e5f46aaf450cc9ff012b251752fb8a3077e904b5447cdbc9a62a5af1036585a6"
+    },
+    "config": {
+      "allowed_inference_splits": [
+        "devsmoke",
+        "pilot",
+        "main"
+      ],
+      "allowed_models": [
+        "nvidia/nvidia/nemotron-3.5-super-vl-120b-a12b",
+        "nvidia/deepseek-ai/deepseek-v4.1-flash",
+        "nvidia/nemotron-3.5-super-vl:free",
+        "deepseek/deepseek-v4.1-flash",
+        "deepseek/deepseek-v4.1-flash-1017"
+      ],
+      "arms_holdout": [
+        "opentrading_baseline",
+        "opencode",
+        "dsh"
+      ],
+      "arms_main": [
+        "opentrading_baseline",
+        "opencode",
+        "dsh"
+      ],
+      "arms_pilot": [
+        "opentrading_baseline",
+        "opencode",
+        "dsh"
+      ],
+      "cost_reporting": "OpenRouter usage.cost per request (authoritative); price_per_1m is the published list price and under-estimated or10 billing ~2.8x (0.1284 vs 0.3653 USD for 132 trials)",
+      "diagnostic": "OT main 6ae8db9 compute re-test 2026-11-14; not confirmatory; no seal",
+      "effort": "none",
+      "experiment_protocol": "plans/2026-11-09-v46-update-execution-protocol.md",
+      "experiment_protocol_dependencies": [
+        "plans/2026-11-10-v46u-ot-tool-deadlock-fix.md",
+        "plans/2026-11-10-v46u-judge-primary-amendment.md",
+        "plans/2026-11-10-v46u-main-b0-amendment.md",
+        "plans/2026-11-11-v46u-taskset-revision-amendment.md"
+      ],
+      "gate": "b0_judge_primary",
+      "max_output_tokens": 8192,
+      "max_requests": 24,
+      "max_total_tokens": 3600000,
+      "memory_policy": "none fresh isolatedhome/store/session eachtrial",
+      "memory_trial_timeout_s": 1800,
+      "model": "deepseek/deepseek-v4.1-flash-1017",
+      "model_stratum": "deepseek-openrouter",
+      "opentrading_runtime_root": "/tmp/claude-1000/-home-doanlong-extra-benchmark/cac18aef-32ef-4365-b098-e35cc5582a79/scratchpad/diag-otmain/study/experiments/opentrading-runtime",
+      "price_per_1m": {
+        "cache_read_usd": 0.005,
+        "completion_usd": 0.5,
+        "entitlement": "OpenRouter models API 2026-11-10 (variant -1017, user-chosen); paid credit route",
+        "prompt_usd": 0.006
+      },
+      "protocol": "financial_product_v45",
+      "provider_options": {
+        "context_window": 1048576,
+        "effort_note": "none requested; backend thinking not proven disabled",
+        "failed_attempt_context_bound": 1048576,
+        "failed_attempt_token_reservation": 1056768,
+        "max_output_tokens": 8192,
+        "max_requests": 24,
+        "max_total_tokens": 3600000,
+        "memory_max_requests": 48,
+        "native_bun_binary": "/home/doanlong/extra/benchmark/experiments/toolchains/bun-1.4.4/bun",
+        "native_bun_sha256": "10702245766b225e70bbf6235fd6b47214fd94b4760d00ffaed8ab0df57ac235",
+        "native_reasoning_capability": true,
+        "native_reasoning_mode": "off",
+        "openrouter_paid_budget": 10500,
+        "provider_route": "openrouter_paid",
+        "provider_timeout_s": 240,
+        "request_interval_s": 2,
+        "temperature": 0,
+        "top_p": 1
+      },
+      "provider_timeout_s": 240,
+      "request_interval_s": 2,
+      "runs_main": 2,
+      "runs_pilot": 2,
+      "track": "product native utility capability parity, not identicalschemas",
+      "trial_timeout_s": 900
+    },
+    "harnesses": {
+      "bun": {
+        "binary": "/home/doanlong/extra/benchmark/experiments/toolchains/bun-1.4.4/bun",
+        "sha256": "10702245766b225e70bbf6235fd6b47214fd94b4760d00ffaed8ab0df57ac235",
+        "version": "1.4.4"
+      },
+      "dsh": {
+        "binary": "/home/doanlong/.local/bin/dsh",
+        "runtime_packages": {
+          ".": {
+            "files_sha256": "4d13bcaa1fe4f572d0c502fea164cdf6fb07aece13d8f57ea9f86b15b2891f32",
+            "n_files": 9,
+            "version": "0.2.1-rc.2"
+          },
+          "node_modules/@deepseek-ai/cordis": {
+            "files_sha256": "bc632eb8da7c7b6e35e9b35c68a4adb4b802cd5c4b617b5c26c7dcb438ad39a5",
+            "n_files": 3,
+            "version": "4.0.5"
+          },
+          "node_modules/@deepseek-ai/cordis-plugin-group": {
+            "files_sha256": "883af34de8411b3dfa9b940a152386152b65690943379748c448a7bd4d0ed10b",
+            "n_files": 2,
+            "version": "1.0.5"
+          },
+          "node_modules/@deepseek-ai/cordis-plugin-include": {
+            "files_sha256": "d35d0d27aeb15839fca9dbeed5a6bcee7ed6729829b92c3aa17efb8c43a40651",
+            "n_files": 2,
+            "version": "1.0.10"
+          },
+          "node_modules/@deepseek-ai/cordis-plugin-loader": {
+            "files_sha256": "1ef48aca5f39d4f464bd76827d61571c8e06c784fddd3ab362e24641ccf29600",
+            "n_files": 2,
+            "version": "1.0.6"
+          },
+          "node_modules/@deepseek-ai/cordis-plugin-timer": {
+            "files_sha256": "523516a9f7936ac688639d4619888bd95f6aea4803e5a4c555b7d66f53dfbb5f",
+            "n_files": 4,
+            "version": "1.1.7"
+          },
+          "node_modules/@deepseek-ai/cosmokit": {
+            "files_sha256": "1cc35510a6afce191e45dffe0de5482a0e2ca05823e33b55eb33476d0658fe47",
+            "n_files": 2,
+            "version": "1.8.6"
+          },
+          "node_modules/@deepseek-ai/dsh-acp": {
+            "files_sha256": "65df9f19dae5dd1c97db6ef8e61bd7328de7ea9d9e3f671edcc784b06293b4e4",
+            "n_files": 3,
+            "version": "0.2.1-rc.2"
+          },
+          "node_modules/@deepseek-ai/dsh-acp-app": {
+            "files_sha256": "f8f04b8c4a1c86494eb5f82256a66bb169bd1eeb0c738a989522fd9fbde4fcc0",
+            "n_files": 4,
+            "version": "0.2.1-rc.2"
+          },
+          "node_modules/@deepseek-ai/dsh-agent": {
+            "files_sha256": "3fd70d56dd8c5ca76700fb2d522c308e77d1b89c0073e097e57d1dc6523d7237",
+            "n_files": 5,
+            "version": "0.2.1-rc.2"
+          },
+          "node_modules/@deepseek-ai/dsh-agent-default-model": {
+            "files_sha256": "30882ed57b06fadb22706829b73179617a061389fd2e2ed9e14b48c974008eb2",
+            "n_files": 5,
+            "version": "0.2.1-rc.2"
+          },
+          "node_modules/@deepseek-ai/dsh-agent-instructions": {
+            "files_sha256": "9cff2a897fd39cd03421b251be22821856919884be75642886fd5886b2045fd7",
+            "n_files": 5,
+            "version": "0.2.1-rc.2"
+          },
+          "node_modules/@deepseek-ai/dsh-agent-loop": {
+            "files_sha256": "68738bf10f86ccba4b0cc9ba37ae9c2861215b23c4517565143d28472534cbbd",
+            "n_files": 5,
+            "version": "0.2.1-rc.2"
+          },
+          "node_modules/@deepseek-ai/dsh-agent-preset": {
+            "files_sha256": "b63487066000162a14132f702bfd1ebfb6c3223995700e19a999b1c603e1df4f",
+            "n_files": 13,
+            "version": "0.2.1-rc.2"
+          },
+          "node_modules/@deepseek-ai/dsh-agent-preset-registry": {
+            "files_sha256": "2aafd82688b1bcc0c9c0a68d5cc56aa916d7d92b9e1d080133c54cf93ed3113f",
+            "n_files": 7,
+            "version": "0.2.1-rc.2"
+          },
+          "node_modules/@deepseek-ai/dsh-agent-tool-presentation": {
+            "files_sha256": "0502c03a34b5da7a7315b1484717543bca7ec24c3340ef11552062b772f60836",
+            "n_files": 5,
+            "version": "0.2.1-rc.2"
+          },
+          "node_modules/@deepseek-ai/dsh-anonymous-user-id": {
+            "files_sha256": "bc764c99791ca5ccc812d0e60f70ec395e64d117dbb51b0504b763d5bb940b31",
+            "n_files": 3,
+            "version": "0.2.1-rc.2"
+          },
+          "node_modules/@deepseek-ai/dsh-api-account-controller": {
+            "files_sha256": "575aba50436930f3a9dc28c06d36cd7c4cb350904bc1e49b36c52a4f3fa59cf7",
+            "n_files": 7,
+            "version": "0.2.1-rc.2"
+          },
+          "node_modules/@deepseek-ai/dsh-api-gateway": {
+            "files_sha256": "febeeaf9d453dfd2f089148ed4dd59b5eb90d4959134eeb7a45f2dfabb631df0",
+            "n_files": 7,
+            "version": "0.2.1-rc.2"
+          },
+          "node_modules/@deepseek-ai/dsh-api-job-controller": {
+            "files_sha256": "fef982ba43efbe26af58a1fa673efdba9fefcb6c63ac2016a3ee4046e42d25fc",
+            "n_files": 8,
+            "version": "0.2.1-rc.2"
+          },
+          "node_modules/@deepseek-ai/dsh-api-remote-access": {
+            "files_sha256": "dd6e82f0ae837c0f20291026a865abcf2afd4f4f709f90b33de50d558f053802",
+            "n_files": 6,
+            "version": "0.2.1-rc.2"
+          },
+          "node_modules/@deepseek-ai/dsh-api-remotes": {
+            "files_sha256": "ff7f2a0c3fd353137ad84101c3eb4c92e04afcde8bab16978be5d50643c4207e",
+            "n_files": 6,
+            "version": "0.2.1-rc.2"
+          },
+          "node_modules/@deepseek-ai/dsh-api-session-controller": {
+            "files_sha256": "ac7b40d16ba4231f0d325945cac325498f27e052c54fc1fe4d6f8d73631bc10d",
+            "n_files": 8,
+            "version": "0.2.1-rc.2"
+          },
+          "node_modules/@deepseek-ai/dsh-api-settings-controller": {
+            "files_sha256": "fb96579d9673302b4e9adac7f995f35517cc43fa2949b4ca606f426ddf3b1b12",
+            "n_files": 7,
+            "version": "0.2.1-rc.2"
+          },
+          "node_modules/@deepseek-ai/dsh-api-terminal-controller": {
+            "files_sha256": "7bd8f84ba3c5f16d1ae2dbd69d3c60360968de4b5faac201a3ea0a51707c4806",
+            "n_files": 8,
+            "version": "0.2.1-rc.2"
+          },
+          "node_modules/@deepseek-ai/dsh-api-workspace-controller": {
+            "files_sha256": "f7083e588e6a09853d2cc59ddfcd9f82e5df8d2a4054272b071f7b4c35928450",
+            "n_files": 8,
+            "version": "0.2.1-rc.2"
+          },
+          "node_modules/@deepseek-ai/dsh-api-workspace-files": {
+            "files_sha256": "713b9640f0cb760b5e8b257941e6acd4557225f60988b9561d1beef3cd53ead6",
+            "n_files": 8,
+            "version": "0.2.1-rc.2"
+          },
+          "node_modules/@deepseek-ai/dsh-app-boot": {
+            "files_sha256": "f71d7c015299f6ad09227bc87e73f6c3dc0483abeabc1b7f333d21f1c63875d9",
+            "n_files": 4,
+            "version": "0.2.1-rc.2"
+          },
+          "node_modules/@deepseek-ai/dsh-atomic-write": {
+            "files_sha256": "c7bcc1e12aa26dd91bb08bade7e175d13ce86ef2c3db9261b543dbc7e6366042",
+            "n_files": 3,
+            "version": "0.2.1-rc.2"
+          },
+          "node_modules/@deepseek-ai/dsh-attachment": {
+            "files_sha256": "3d8e26407cf3d9ebaadf630d67d76ce26dd88e890689c89838bd2871610bfba1",
+            "n_files": 3,
+            "version": "0.2.1-rc.2"
+          },
+          "node_modules/@deepseek-ai/dsh-attachment-local": {
+            "files_sha256": "42d6f11bda4b9775105e0d5f587d8caab06622bff0abc7bf48ad122856cd1194",
+            "n_files": 5,
+            "version": "0.2.1-rc.2"
+          },
+          "node_modules/@deepseek-ai/dsh-authorization": {
+            "files_sha256": "c5098d1e0dce9c5a7cb3892e269f9fd283ac9feec28badf446813cde4f8a63b3",
+            "n_files": 5,
+            "version": "0.2.1-rc.2"
+          },
+          "node_modules/@deepseek-ai/dsh-base": {
+            "files_sha256": "e68ef036a8919c1914dbeac49665929849f876b618006dcb80667e98791f9700",
+            "n_files": 4,
+            "version": "0.2.1-rc.2"
+          },
+          "node_modules/@deepseek-ai/dsh-bash-local": {
+            "files_sha256": "b39aad96a73456029931468aaad270756c015750c229f3e277ccd6f960b75b98",
+            "n_files": 3,
+            "version": "0.2.1-rc.2"
+          },
+          "node_modules/@deepseek-ai/dsh-bash-sandbox": {
+            "files_sha256": "b67b5c466413b5d19e98f2afde3220cdf610fa959f49908de4d63df6f9039355",
+            "n_files": 5,
+            "version": "0.2.1-rc.2"
+          },
+          "node_modules/@deepseek-ai/dsh-brand": {
+            "files_sha256": "41e875fff916877c6237ce4abe4b9e63a96d36c2b60fd40c5a02376b932816a7",
+            "n_files": 3,
+            "version": "0.2.1-rc.2"
+          },
+          "node_modules/@deepseek-ai/dsh-chunked-list": {
+            "files_sha256": "c572a27b6df27001a0c30dc6b1499075dd3c3d3de5f704c5a979dc7a052b6771",
+            "n_files": 3,
+            "version": "0.2.1-rc.2"
+          },
+          "node_modules/@deepseek-ai/dsh-client-connection": {
+            "files_sha256": "c4a76267c0312ac572f15da34ded6ce777d8428d644f22e2fd7d791e73d55f26",
+            "n_files": 7,
+            "version": "0.2.1-rc.2"
+          },
+          "node_modules/@deepseek-ai/dsh-client-file-upload": {
+            "files_sha256": "926d1de33ee2b2ade39d8c2c4f7f871886519f6e743ae8e0100462e5a934f6b1",
+            "n_files": 8,
+            "version": "0.2.1-rc.2"
+          },
+          "node_modules/@deepseek-ai/dsh-client-hmr": {
+            "files_sha256": "d40044e4182ccf913545b5287248b0993ebe96c27f32e7c84afb40e61d064b87",
+            "n_files": 6,
+            "version": "0.2.1-rc.2"
+          },
+          "node_modules/@deepseek-ai/dsh-client-locale": {
+            "files_sha256": "75493367e58fd9f252a320fbed7910092e6614f7a6ebfee837a84e7abab67c04",
+            "n_files": 6,
+            "version": "0.2.1-rc.2"
+          },
+          "node_modules/@deepseek-ai/dsh-client-modules": {
+            "files_sha256": "b4fd44183343b9205f6db07c20d9d560dae31f2de92aef9edee011e4ae929ece",
+            "n_files": 6,
+            "version": "0.2.1-rc.2"
+          },
+          "node_modules/@deepseek-ai/dsh-client-product-analytics": {
+            "files_sha256": "941bac5017b103ef7d67a43001887a20f3df7ebcd207a2ed56c964675082b54c",
+            "n_files": 8,
+            "version": "0.2.1-rc.2"
+          },
+          "node_modules/@deepseek-ai/dsh-client-resources": {
+            "files_sha256": "0f5616782a0719a92662a221b10645339ee00f2e518c61fd9dbdfaafe91d2a67",
+            "n_files": 6,
+            "version": "0.2.1-rc.2"
+          },
+          "node_modules/@deepseek-ai/dsh-client-shortcuts": {
+            "files_sha256": "60b2e30ed2d70833df20ea9e006431d578de3804d8a910b04373ee845340b483",
+            "n_files": 7,
+            "version": "0.2.1-rc.2"
+          },
+          "node_modules/@deepseek-ai/dsh-client-ui-agent-preset": {
+            "files_sha256": "1de3c9b7a26d13c56e98f9d5543feda90f9592b03d166676cf2bdc73db5e660c",
+            "n_files": 6,
+            "version": "0.2.1-rc.2"
+          },
+          "node_modules/@deepseek-ai/dsh-client-ui-approval": {
+            "files_sha256": "020073b747104f7387f8da3ce531fdc2f5432d6e29d97238ba8199c110278449",
+            "n_files": 6,
+            "version": "0.2.1-rc.2"
+          },
+          "node_modules/@deepseek-ai/dsh-client-ui-attachment": {
+            "files_sha256": "4f58581d4bbc6e53c94fa38378ea42d86c7dacaebc7da5bdac4bcb3313fbaa86",
+            "n_files": 6,
+            "version": "0.2.1-rc.2"
+          },
+          "node_modules/@deepseek-ai/dsh-client-ui-brand-official": {
+            "files_sha256": "256178a14b69999ea26af119b86b3f857965daf47d59d183405e092808c29b8d",
+            "n_files": 6,
+            "version": "0.2.1-rc.2"
+          },
+          "node_modules/@deepseek-ai/dsh-client-ui-chat": {
+            "files_sha256": "c6e4f7ee6fdac6d5d9f76f3ab5c4009fb2f3366f54f964c865762274189f6afb",
+            "n_files": 6,
+            "version": "0.2.1-rc.2"
+          },
+          "node_modules/@deepseek-ai/dsh-client-ui-commands": {
+            "files_sha256": "840d25c2a26177e2d98dcd3fd4593304bfef93bb383252b0e71b570524a8fb7e",
+            "n_files": 6,
+            "version": "0.2.1-rc.2"
+          },
+          "node_modules/@deepseek-ai/dsh-client-ui-conversation": {
+            "files_sha256": "f124f056e87475f1ac46ef960a47c3e8d0280814cbeffbe02bb4d30bb76054ce",
+            "n_files": 6,
+            "version": "0.2.1-rc.2"
+          },
+          "node_modules/@deepseek-ai/dsh-client-ui-cordis": {
+            "files_sha256": "4c822353fc12995e48413ff59cabfedd1d378198d3386001e1bfbcbed6f965f7",
+            "n_files": 6,
+            "version": "0.2.1-rc.2"
+          },
+          "node_modules/@deepseek-ai/dsh-client-ui-deepseek-model-label-1017": {
+            "files_sha256": "aae58f3860a44f385a622f5c6c8a91bd4cc3f268ac37b8c7ece334f137321080",
+            "n_files": 4,
+            "version": "0.2.1-rc.2"
+          },
+          "node_modules/@deepseek-ai/dsh-client-ui-deliverables": {
+            "files_sha256": "88c2cbb936dffc32203f2b6ec41f6e1074a1297cb27001a40a9df9a4d3ea96ed",
+            "n_files": 6,
+            "version": "0.2.1-rc.2"
+          },
+          "node_modules/@deepseek-ai/dsh-client-ui-directory-picker-browse": {
+            "files_sha256": "605e07f1e59414444962c30be91abd99c3cd91e0088f5069f64b2875037e7dc1",
+            "n_files": 6,
+            "version": "0.2.1-rc.2"
+          },
+          "node_modules/@deepseek-ai/dsh-client-ui-directory-picker-native": {
+            "files_sha256": "6226da050b9c0f16df94e82f790fb98d96917b47611def948233753e6eb4ba75",
+            "n_files": 6,
+            "version": "0.2.1-rc.2"
+          },
+          "node_modules/@deepseek-ai/dsh-client-ui-goal": {
+            "files_sha256": "95f1602db1319978f0ecd68a6a3c5545b9a5c1235dfc35d9173a04a7c1e3382e",
+            "n_files": 6,
+            "version": "0.2.1-rc.2"
+          },
+          "node_modules/@deepseek-ai/dsh-client-ui-input-trigger": {
+            "files_sha256": "1b5e2dc894c384900d602fbad16c5139825e86b95e032119a0477c650203439a",
+            "n_files": 6,
+            "version": "0.2.1-rc.2"
+          },
+          "node_modules/@deepseek-ai/dsh-client-ui-jobs": {
+            "files_sha256": "740f002ec349a461a6b6fd2bc5621bb46e7906c41f74269e8e5b7b778a04b9a4",
+            "n_files": 6,
+            "version": "0.2.1-rc.2"
+          },
+          "node_modules/@deepseek-ai/dsh-client-ui-layout": {
+            "files_sha256": "85327065e0e9b0fdb4b821de3ad22d3fda6bbf16bae9f7c55a72a7f01c8c413e",
+            "n_files": 6,
+            "version": "0.2.1-rc.2"
+          },
+          "node_modules/@deepseek-ai/dsh-client-ui-message-feedback": {
+            "files_sha256": "ecc35793629e6255d9a949d387154b3ebecd9b57e4d475a6aec4c16922fed44f",
+            "n_files": 6,
+            "version": "0.2.1-rc.2"
+          },
+          "node_modules/@deepseek-ai/dsh-client-ui-model-selection": {
+            "files_sha256": "848043a9af99d0d430d2bd28d56a38baa1c04a63f78ba1228c1a86fb9da1b0a4",
+            "n_files": 6,
+            "version": "0.2.1-rc.2"
+          },
+          "node_modules/@deepseek-ai/dsh-client-ui-open-in-app": {
+            "files_sha256": "b752e24fc0e023d3a3a9b22aeddb711f4c09651528a99f8af5df73c5f21a4929",
+            "n_files": 6,
+            "version": "0.2.1-rc.2"
+          },
+          "node_modules/@deepseek-ai/dsh-client-ui-permission-presets": {
+            "files_sha256": "c262cd70aa6520292d927d8873df978ed5cf82ce4bbd0dffb7c353780345a867",
+            "n_files": 6,
+            "version": "0.2.1-rc.2"
+          },
+          "node_modules/@deepseek-ai/dsh-client-ui-plan": {
+            "files_sha256": "d182751e6c908f10038dadb7b105c504594badda24aba2bc6ee0617ea80d07b1",
+            "n_files": 6,
+            "version": "0.2.1-rc.2"
+          },
+          "node_modules/@deepseek-ai/dsh-client-ui-plugin-manager": {
+            "files_sha256": "b31a41a4d36393d976545479d8c97378794da674ce8af67ddf5886137babe870",
+            "n_files": 8,
+            "version": "0.2.1-rc.2"
+          },
+          "node_modules/@deepseek-ai/dsh-client-ui-plugin-market": {
+            "files_sha256": "6b6870be2d69aee04b2a62d2adf6e9f68ff58645f8950bddd2a66b3b30fa218c",
+            "n_files": 4,
+            "version": "0.2.1-rc.2"
+          },
+          "node_modules/@deepseek-ai/dsh-client-ui-reference": {
+            "files_sha256": "7c792466b52fe4a5962dcc448a4fa7d2130eb76049e02fefed58412ed0209f00",
+            "n_files": 6,
+            "version": "0.2.1-rc.2"
+          },
+          "node_modules/@deepseek-ai/dsh-client-ui-renderer": {
+            "files_sha256": "a64a0ef658dbabda2efa7811e5787868f54667af607834f447d936b5cdf43fe8",
+            "n_files": 6,
+            "version": "0.2.1-rc.2"
+          },
+          "node_modules/@deepseek-ai/dsh-client-ui-schedule": {
+            "files_sha256": "a0c96fe36a074a7db7fade69c1739adde9cdeec59f0db6ecf535bba861536edf",
+            "n_files": 6,
+            "version": "0.2.1-rc.2"
+          },
+          "node_modules/@deepseek-ai/dsh-client-ui-secret-mask": {
+            "files_sha256": "fe62a51047ac374a06c14c34d5fb8f9191d6764d16448775f1bd1e1413fe7d03",
+            "n_files": 6,
+            "version": "0.2.1-rc.2"
+          },
+          "node_modules/@deepseek-ai/dsh-client-ui-session": {
+            "files_sha256": "5a1d8e50d761f1fdd3541a770491f57c69a17ffcd102f36aa9947f49b0c6b41a",
+            "n_files": 6,
+            "version": "0.2.1-rc.2"
+          },
+          "node_modules/@deepseek-ai/dsh-client-ui-settings": {
+            "files_sha256": "b55d0d869826f99fc03a32af34cb838da1514bc5b2edd39682ef1d66934c604d",
+            "n_files": 6,
+            "version": "0.2.1-rc.2"
+          },
+          "node_modules/@deepseek-ai/dsh-client-ui-settings-account": {
+            "files_sha256": "867a06476f788472ffda076d927f2a7418d01412eb325674b7274a47415e125c",
+            "n_files": 6,
+            "version": "0.2.1-rc.2"
+          },
+          "node_modules/@deepseek-ai/dsh-client-ui-settings-agent-loop": {
+            "files_sha256": "442f35cb68170778c358541301f95cab464b9434f5e318438d153002da6ae265",
+            "n_files": 6,
+            "version": "0.2.1-rc.2"
+          },
+          "node_modules/@deepseek-ai/dsh-client-ui-settings-general": {
+            "files_sha256": "33363453dc065aaeaeb27507a45e41087c97b1770b8e95cd3c13e4eea8b72b7e",
+            "n_files": 6,
+            "version": "0.2.1-rc.2"
+          },
+          "node_modules/@deepseek-ai/dsh-client-ui-settings-models": {
+            "files_sha256": "e7981bd2ed25654984b9f20851298792c71ef6af80ec04f8ee5ce26e59407600",
+            "n_files": 6,
+            "version": "0.2.1-rc.2"
+          },
+          "node_modules/@deepseek-ai/dsh-client-ui-settings-plugin-inventory": {
+            "files_sha256": "b016deafd4ef7cd69448d8d0cf5a67df0ae97b5858d226c40c404a9b73594203",
+            "n_files": 6,
+            "version": "0.2.1-rc.2"
+          },
+          "node_modules/@deepseek-ai/dsh-client-ui-settings-plugins": {
+            "files_sha256": "36e57457ac07396dcf8c85d36b4107db7018d3d91224323e1c3ff99c7bd9bbf3",
+            "n_files": 6,
+            "version": "0.2.1-rc.2"
+          },
+          "node_modules/@deepseek-ai/dsh-client-ui-settings-session-log": {
+            "files_sha256": "ab3bd3d31809c5211f64f0304ba7c0639ac9a4ffef4885ed2919ff156ecb0651",
+            "n_files": 6,
+            "version": "0.2.1-rc.2"
+          },
+          "node_modules/@deepseek-ai/dsh-client-ui-settings-shell": {
+            "files_sha256": "0756fd80c492313036427e34867f01e36228fbed183240e8cfe2f1e81d9052f9",
+            "n_files": 6,
+            "version": "0.2.1-rc.2"
+          },
+          "node_modules/@deepseek-ai/dsh-client-ui-settings-subagent": {
+            "files_sha256": "19952b4f2f936ecc0da0e801fe3c0c30ab41aa9a67505c875bf893595e933876",
+            "n_files": 6,
+            "version": "0.2.1-rc.2"
+          },
+          "node_modules/@deepseek-ai/dsh-client-ui-settings-web-search": {
+            "files_sha256": "900e22342d9b5037bee4530ddadd5fa88a9b64062f2e8ccd2dc8cecada1a7b50",
+            "n_files": 6,
+            "version": "0.2.1-rc.2"
+          },
+          "node_modules/@deepseek-ai/dsh-client-ui-shortcuts": {
+            "files_sha256": "0c16d11a2981b23b0857ce070a41ac223c22ab88dda26c6ee7a8443354813a6a",
+            "n_files": 6,
+            "version": "0.2.1-rc.2"
+          },
+          "node_modules/@deepseek-ai/dsh-client-ui-sidebar": {
+            "files_sha256": "f219778c1fcb07f29bc8e79cfeea518f32acce6df6bfb850410b60aacba5441f",
+            "n_files": 6,
+            "version": "0.2.1-rc.2"
+          },
+          "node_modules/@deepseek-ai/dsh-client-ui-sidebar-browser": {
+            "files_sha256": "97eff5780acdac2bf18ef5ff8310bcb047c6bf6eaacf6ff085e76deeb62e92ba",
+            "n_files": 6,
+            "version": "0.2.1-rc.2"
+          },
+          "node_modules/@deepseek-ai/dsh-client-ui-sidebar-documentpreview": {
+            "files_sha256": "bf71d155d07d86fd327fc8187ab7b0036cd99bc075ef0682fc95129be402dddc",
+            "n_files": 9,
+            "version": "0.2.1-rc.2"
+          },
+          "node_modules/@deepseek-ai/dsh-client-ui-sidebar-files": {
+            "files_sha256": "f5fcd76c1fbb6cd45f636bd39f1d49c869dd12010c81aa3c8205ef2a679d3ca3",
+            "n_files": 6,
+            "version": "0.2.1-rc.2"
+          },
+          "node_modules/@deepseek-ai/dsh-client-ui-sidebar-right": {
+            "files_sha256": "52caa2f74024ccb278fa758a6459ad2d2cb1593eccc2cfe28595409d53308bc9",
+            "n_files": 6,
+            "version": "0.2.1-rc.2"
+          },
+          "node_modules/@deepseek-ai/dsh-client-ui-sidebar-terminal": {
+            "files_sha256": "04afc24b44c8f9178f0263752f7f322c2370e4a8a8ed3bd78f4ca2bbe36e7792",
+            "n_files": 7,
+            "version": "0.2.1-rc.2"
+          },
+          "node_modules/@deepseek-ai/dsh-client-ui-skill": {
+            "files_sha256": "b0069725f19451bcd471302838b3b4993276409a05b87a8f612a53cb3837fedb",
+            "n_files": 6,
+            "version": "0.2.1-rc.2"
+          },
+          "node_modules/@deepseek-ai/dsh-client-ui-subagent": {
+            "files_sha256": "fe66437379cab8fa0a52b70c023be44daa4193914a077bc08d0e7df5a8b8d6fe",
+            "n_files": 6,
+            "version": "0.2.1-rc.2"
+          },
+          "node_modules/@deepseek-ai/dsh-client-ui-theme": {
+            "files_sha256": "fed53561656d6358fc830f1f2418b545469407ce3c51b6dc6a4e6909f49b2720",
+            "n_files": 6,
+            "version": "0.2.1-rc.2"
+          },
+          "node_modules/@deepseek-ai/dsh-client-ui-tool": {
+            "files_sha256": "b9a376a2cd7a8baaa473f3750f630025c2a5b1130aa556d5f0ad82984074312e",
+            "n_files": 6,
+            "version": "0.2.1-rc.2"
+          },
+          "node_modules/@deepseek-ai/dsh-client-ui-trajectory": {
+            "files_sha256": "356399ccd536488bd84ba8fe577b07f82f9ff6d30f3dedb3268d1319df2f1610",
+            "n_files": 6,
+            "version": "0.2.1-rc.2"
+          },
+          "node_modules/@deepseek-ai/dsh-client-ui-user-questions": {
+            "files_sha256": "f9c12b6a53145335fd8644a1a08bfa63b348b6134d5120ff98830ee6449ac8f0",
+            "n_files": 6,
+            "version": "0.2.1-rc.2"
+          },
+          "node_modules/@deepseek-ai/dsh-client-ui-workflow-run": {
+            "files_sha256": "6e0f8a3cf9e6b17345afd1bfce593f9948d8b7793f9c19ee3a56980789c391b0",
+            "n_files": 6,
+            "version": "0.2.1-rc.2"
+          },
+          "node_modules/@deepseek-ai/dsh-client-ui-workspace": {
+            "files_sha256": "4f6c23d8b0a2fb32ff0a8d0e75d2a89a6c1e58de063ac0c441aa9c95da71f1c9",
+            "n_files": 6,
+            "version": "0.2.1-rc.2"
+          },
+          "node_modules/@deepseek-ai/dsh-cmdline": {
+            "files_sha256": "f5ed3004a71070e9694af507bc35fe42aac76b1d73c11f2a5717cdcd0ef3c8d7",
+            "n_files": 3,
+            "version": "0.2.1-rc.2"
+          },
+          "node_modules/@deepseek-ai/dsh-command-compact": {
+            "files_sha256": "819b8921405cfdc08e529a59c2c9834fbb8d7b8f82143bcbc1ed2a808eb2e7ad",
+            "n_files": 5,
+            "version": "0.2.1-rc.2"
+          },
+          "node_modules/@deepseek-ai/dsh-command-feedback": {
+            "files_sha256": "b46e975ccff550d5227870c08b8a2140e8431d8149539e6ef913486ad72e3695",
+            "n_files": 7,
+            "version": "0.2.1-rc.2"
+          },
+          "node_modules/@deepseek-ai/dsh-command-goal": {
+            "files_sha256": "cad13922ac4481e963294b240f4c4c7707ad184cbf2ca9b453ba603e2b3f8b14",
+            "n_files": 5,
+            "version": "0.2.1-rc.2"
+          },
+          "node_modules/@deepseek-ai/dsh-commands": {
+            "files_sha256": "9d75ec8dc4e22789e93122466180898d8e31e51d5cb85eeee61743ee0cdb892e",
+            "n_files": 7,
+            "version": "0.2.1-rc.2"
+          },
+          "node_modules/@deepseek-ai/dsh-compaction": {
+            "files_sha256": "1da0c8fd5f8142bb34138f7f83476ca8f699fa9d4593fdab4f86266c0d2cdb48",
+            "n_files": 3,
+            "version": "0.2.1-rc.2"
+          },
+          "node_modules/@deepseek-ai/dsh-compaction-basic": {
+            "files_sha256": "0d72b19baf91a6efaf494ece163ed2bbac3e6a33d1409b9d5172ec507cb7de10",
+            "n_files": 5,
+            "version": "0.2.1-rc.2"
+          },
+          "node_modules/@deepseek-ai/dsh-compaction-image-offload": {
+            "files_sha256": "65b369323ed6244db6553ca56e6572ee2952085ec59c1664673c257cba532658",
+            "n_files": 5,
+            "version": "0.2.1-rc.2"
+          },
+          "node_modules/@deepseek-ai/dsh-compaction-tool-result-pruner": {
+            "files_sha256": "bc3e02800aca8b3af24a848578cea5b8fae2d8032d8f1b78f02e3339059780c6",
+            "n_files": 5,
+            "version": "0.2.1-rc.2"
+          },
+          "node_modules/@deepseek-ai/dsh-config-editor": {
+            "files_sha256": "86cf477d5a29a5cffd2ab3cfde0d24d357e9a7eb1ae7c49c8aac6de91111548b",
+            "n_files": 5,
+            "version": "0.2.1-rc.2"
+          },
+          "node_modules/@deepseek-ai/dsh-cordis-client-runner": {
+            "files_sha256": "54cdd99e4254d17a986d31af0b5d23ab5a353a1f96561aefb8fae6f475f6006b",
+            "n_files": 6,
+            "version": "0.2.1-rc.2"
+          },
+          "node_modules/@deepseek-ai/dsh-cordis-host-runner": {
+            "files_sha256": "a8ad531f65695488537cb8b7d7eceef454257d26474a1dd9dd59db39e7333d63",
+            "n_files": 7,
+            "version": "0.2.1-rc.2"
+          },
+          "node_modules/@deepseek-ai/dsh-credentials": {
+            "files_sha256": "b7fedd1e62ff08f5088793b0e20c813d78821677e6d49aa05ad717151f54ddf3",
+            "n_files": 3,
+            "version": "0.2.1-rc.2"
+          },
+          "node_modules/@deepseek-ai/dsh-credentials-local": {
+            "files_sha256": "dd4878cd452d406ad2f4a7497fc2cdba7e12d2fc1b761326b39161192106cded",
+            "n_files": 5,
+            "version": "0.2.1-rc.2"
+          },
+          "node_modules/@deepseek-ai/dsh-deepseek-account": {
+            "files_sha256": "0a2433e6ef617bd30a7fb7288662348b80ccb0c807cff5ff2954ee28f703d66a",
+            "n_files": 3,
+            "version": "0.2.1-rc.2"
+          },
+          "node_modules/@deepseek-ai/dsh-deepseek-account-platform": {
+            "files_sha256": "2efc18124d07db901a081c3379998a607b74ef05114079690f9fd38a97b1aa38",
+            "n_files": 5,
+            "version": "0.2.1-rc.2"
+          },
+          "node_modules/@deepseek-ai/dsh-deepseek-llm-api-extensions": {
+            "files_sha256": "16acffefb54eb4061f386dd57583ec62907257504dbb99fbbd2ef32a5a580de9",
+            "n_files": 5,
+            "version": "0.2.1-rc.2"
+          },
+          "node_modules/@deepseek-ai/dsh-deque": {
+            "files_sha256": "80fbc2fbd65a88fe3c4f3fe796f86faebad384e3d5cd211e38f747b62a542352",
+            "n_files": 3,
+            "version": "0.2.1-rc.2"
+          },
+          "node_modules/@deepseek-ai/dsh-experimental-agent-team": {
+            "files_sha256": "864ff81687018ed13fd9583ff3a00d90dc30cec94dcbccb6081efa316e5dda42",
+            "n_files": 5,
+            "version": "0.2.1-rc.2"
+          },
+          "node_modules/@deepseek-ai/dsh-experimental-agent-team-profile": {
+            "files_sha256": "f4f9610e9d62d3740730b2390c584368ff85350bcaf0bd44340b7ee69d9f772d",
+            "n_files": 6,
+            "version": "0.2.1-rc.2"
+          },
+          "node_modules/@deepseek-ai/dsh-experimental-api-speech-to-text": {
+            "files_sha256": "193f8715f5df66add510099fd508a37eebe05dc34c68252fe909c08112beb81e",
+            "n_files": 7,
+            "version": "0.2.1-rc.2"
+          },
+          "node_modules/@deepseek-ai/dsh-experimental-auto-review": {
+            "files_sha256": "b8da6b6fbae9eb5f78276b9c88d65bb95ff1b1872a1721736f2e743fda554000",
+            "n_files": 6,
+            "version": "0.2.1-rc.2"
+          },
+          "node_modules/@deepseek-ai/dsh-experimental-badge-skill-bundle": {
+            "files_sha256": "d356f6d04dab3cd5db2d9e1ef8cea21fea1bb2a43a131a8c3054623805168db8",
+            "n_files": 6,
+            "version": "0.2.1-rc.2"
+          },
+          "node_modules/@deepseek-ai/dsh-experimental-client-ui-agent-team": {
+            "files_sha256": "c167be5844d366533c5066b9801695073830586f6fc9460a49dc574a8172ac40",
+            "n_files": 6,
+            "version": "0.2.1-rc.2"
+          },
+          "node_modules/@deepseek-ai/dsh-experimental-client-ui-cot-translation": {
+            "files_sha256": "6c24db7c1c707eae2959e5e92377741eb0dbd7a7e121c3469c2ec9c02567aff2",
+            "n_files": 8,
+            "version": "0.2.1-rc.2"
+          },
+          "node_modules/@deepseek-ai/dsh-experimental-client-ui-voice-input": {
+            "files_sha256": "4a63bad053ab259a9a8e623aa38e6962db92a3a9a35207ac4b65d7bc74f7741e",
+            "n_files": 6,
+            "version": "0.2.1-rc.2"
+          },
+          "node_modules/@deepseek-ai/dsh-experimental-cot-translation-bundle": {
+            "files_sha256": "ade981671b55eb9a8942386595cfd427a36dcdbb353b2b528f5e55c43d6d6282",
+            "n_files": 6,
+            "version": "0.2.1-rc.2"
+          },
+          "node_modules/@deepseek-ai/dsh-experimental-inspector": {
+            "files_sha256": "6759cb5d4e5242f96423e6142a2e4439f78b86a95f6fd37d72771bc9a252a7bb",
+            "n_files": 151,
+            "version": "0.2.1-rc.2"
+          },
+          "node_modules/@deepseek-ai/dsh-experimental-inspector-profile": {
+            "files_sha256": "6e0c1f1a159bb4dd6acd17b8b779ac4992916e57e1c737416db3d90b01b710f1",
+            "n_files": 6,
+            "version": "0.2.1-rc.2"
+          },
+          "node_modules/@deepseek-ai/dsh-experimental-plugin-market-bundle": {
+            "files_sha256": "f0ba8ee1106cb70f98145c587a35e8041dd071ab7898091aa4b0fe0fe8214abc",
+            "n_files": 6,
+            "version": "0.2.1-rc.2"
+          },
+          "node_modules/@deepseek-ai/dsh-experimental-ralph-bundle": {
+            "files_sha256": "976565d79d473e096d842886fd457180c185317211c99f8ca617fcd1f0987d0e",
+            "n_files": 6,
+            "version": "0.2.1-rc.2"
+          },
+          "node_modules/@deepseek-ai/dsh-experimental-session-inspector": {
+            "files_sha256": "37f336902f794850eb936d66736709f10c4e7559e783027112d9162516a43b42",
+            "n_files": 6,
+            "version": "0.2.1-rc.2"
+          },
+          "node_modules/@deepseek-ai/dsh-experimental-session-search": {
+            "files_sha256": "90da80c16ca6b55a0f31c9aff852a743d9d8b291cf4556d2849fa524a12fe3ea",
+            "n_files": 6,
+            "version": "0.2.1-rc.2"
+          },
+          "node_modules/@deepseek-ai/dsh-experimental-session-titles-bundle": {
+            "files_sha256": "aea7909fc71be48055ba511a9741f98f965c720325445d64e9f7c794e05f295e",
+            "n_files": 6,
+            "version": "0.2.1-rc.2"
+          },
+          "node_modules/@deepseek-ai/dsh-experimental-speech-to-text": {
+            "files_sha256": "fe81f899a076e05da5c3d100cd8401912385a399358ed8bc34deb35482142f9c",
+            "n_files": 5,
+            "version": "0.2.1-rc.2"
+          },
+          "node_modules/@deepseek-ai/dsh-experimental-speech-to-text-sensevoice": {
+            "files_sha256": "626b384d0310a84bcd978a79630001f342384c04ed35b130103831762b0896b8",
+            "n_files": 7,
+            "version": "0.2.1-rc.2"
+          },
+          "node_modules/@deepseek-ai/dsh-experimental-terminal-bundle": {
+            "files_sha256": "c6ac94aadeae648afacecf7c1be9cfdbeb9d6c0e2d1256642fabe0dda2113926",
+            "n_files": 6,
+            "version": "0.2.1-rc.2"
+          },
+          "node_modules/@deepseek-ai/dsh-experimental-tool-agent-team": {
+            "files_sha256": "f2024cba8eceefbb53c276835e1ad5bc6d500e44d2343bfce94d8d98e5e7273a",
+            "n_files": 5,
+            "version": "0.2.1-rc.2"
+          },
+          "node_modules/@deepseek-ai/dsh-experimental-tool-worktree": {
+            "files_sha256": "d264b2724fae8a4bb8bb9fca1e97f0cc32ca431f1b9552ca8d0656128fa05cd0",
+            "n_files": 6,
+            "version": "0.2.1-rc.2"
+          },
+          "node_modules/@deepseek-ai/dsh-experimental-translator": {
+            "files_sha256": "9eb7edbb8a725bf526dd94bb04eb9fc1cdfc63a3d3234cfc066effd20e3f9f33",
+            "n_files": 3,
+            "version": "0.2.1-rc.2"
+          },
+          "node_modules/@deepseek-ai/dsh-experimental-voice-input-bundle": {
+            "files_sha256": "271773a575712d7d26e93d2ef11a28b8f2ccf854b6856b9a435d412e69be00f1",
+            "n_files": 6,
+            "version": "0.2.1-rc.2"
+          },
+          "node_modules/@deepseek-ai/dsh-experimental-worktree": {
+            "files_sha256": "2924f402bf555121b2e4c04af5b51bf2de51053465fe02752d36ba0d420fc940",
+            "n_files": 3,
+            "version": "0.2.1-rc.2"
+          },
+          "node_modules/@deepseek-ai/dsh-file-reference": {
+            "files_sha256": "d65d97cf1eea0011c5a1b6bd2342e5e5fa5f4b81c68544eb3f00bf4a4a7a1581",
+            "n_files": 3,
+            "version": "0.2.1-rc.2"
+          },
+          "node_modules/@deepseek-ai/dsh-file-reference-local": {
+            "files_sha256": "872a42115df1abfe4d29c5b7b15c23c7eb94b2ee04bff15587c10ba92faa2fb9",
+            "n_files": 5,
+            "version": "0.2.1-rc.2"
+          },
+          "node_modules/@deepseek-ai/dsh-fs": {
+            "files_sha256": "db9da07a8bc8e1eea750887dfb52242b9173aae5d981f0001880f84bb0017b38",
+            "n_files": 3,
+            "version": "0.2.1-rc.2"
+          },
+          "node_modules/@deepseek-ai/dsh-fs-local": {
+            "files_sha256": "8b4ea3580bd9525903049323f501e7f8f919c39c6fd8ee1c4dc41aebe1cc2ee5",
+            "n_files": 3,
+            "version": "0.2.1-rc.2"
+          },
+          "node_modules/@deepseek-ai/dsh-fs-observation-policy": {
+            "files_sha256": "631a09d8eca186da23312b48128b711e4559419d2c29327b5256731bc08a031c",
+            "n_files": 5,
+            "version": "0.2.1-rc.2"
+          },
+          "node_modules/@deepseek-ai/dsh-fs-sandbox": {
+            "files_sha256": "f1e8f0a1c4bf1f3182a06d0f68de5ab72361542ce15aa77c3a60ec6f9242898f",
+            "n_files": 5,
+            "version": "0.2.1-rc.2"
+          },
+          "node_modules/@deepseek-ai/dsh-goal": {
+            "files_sha256": "46f71006cc0a085e1785ac66e047d4edc842f4a2d8438a1fb16cfd539a7f19d9",
+            "n_files": 7,
+            "version": "0.2.1-rc.2"
+          },
+          "node_modules/@deepseek-ai/dsh-goal-round-driver": {
+            "files_sha256": "eb01e9d02e8aa7655060e0e31a148fe85be6f69525bd6aae733f6fc682b96839",
+            "n_files": 5,
+            "version": "0.2.1-rc.2"
+          },
+          "node_modules/@deepseek-ai/dsh-harness-dev-context": {
+            "files_sha256": "dbcec343d6264cb03401381a860c19764341fee61a9068c140942623ee25ee3f",
+            "n_files": 3,
+            "version": "0.2.1-rc.2"
+          },
+          "node_modules/@deepseek-ai/dsh-headless": {
+            "files_sha256": "8215f60eeae3e732b702471d0e213e6e9f7b1c3ff803ea2c3a6353decd252c2d",
+            "n_files": 6,
+            "version": "0.2.1-rc.2"
+          },
+          "node_modules/@deepseek-ai/dsh-hmr": {
+            "files_sha256": "722b1c12c4cab9fc7199e2ac8e883f69e6ab4be89969861c09b515e338b08ee3",
+            "n_files": 5,
+            "version": "0.2.1-rc.2"
+          },
+          "node_modules/@deepseek-ai/dsh-home-paths": {
+            "files_sha256": "10ca8ad46c0f82d594f1da8559482c4bd9b1b8b31dea06a90dd1ec4819c63ace",
+            "n_files": 3,
+            "version": "0.2.1-rc.2"
+          },
+          "node_modules/@deepseek-ai/dsh-host-directory-picker": {
+            "files_sha256": "37f6e9f29b32e492dba6d15a53b94ee1b3bede870ce2229ec27d35bf4f7a2fca",
+            "n_files": 3,
+            "version": "0.2.1-rc.2"
+          },
+          "node_modules/@deepseek-ai/dsh-host-directory-picker-auto": {
+            "files_sha256": "7d55b05d00f3cea19e0f194ab7d5e2e07514d0db66b8f2c70b7070c49671d4c0",
+            "n_files": 5,
+            "version": "0.2.1-rc.2"
+          },
+          "node_modules/@deepseek-ai/dsh-host-directory-picker-browse": {
+            "files_sha256": "1090945b9ba4dd75b4a8b451737879bd9def92f428cb13f22777db2f799a1ebc",
+            "n_files": 5,
+            "version": "0.2.1-rc.2"
+          },
+          "node_modules/@deepseek-ai/dsh-host-directory-picker-native": {
+            "files_sha256": "d40165aa82dcdf51d503df107996cb34b90a54dee919f2c19fe320cbe578f043",
+            "n_files": 6,
+            "version": "0.2.1-rc.2"
+          },
+          "node_modules/@deepseek-ai/dsh-host-frontend-static": {
+            "files_sha256": "bab8cc29880489ab91fea5f93cd721c0ec1ea5a1c08c09e86b81fdced1c77bd6",
+            "n_files": 3,
+            "version": "0.2.1-rc.2"
+          },
+          "node_modules/@deepseek-ai/dsh-host-open-in-app": {
+            "files_sha256": "62df1958df0f0208bc1892881788f98e1e20e10629642940e8b4e7d5244cc544",
+            "n_files": 5,
+            "version": "0.2.1-rc.2"
+          },
+          "node_modules/@deepseek-ai/dsh-host-plugin-inventory": {
+            "files_sha256": "f461de68715ac2fb1ca441521ff2f2e8f7b835fb1aae9bbd4655fe3ac2441b0e",
+            "n_files": 7,
+            "version": "0.2.1-rc.2"
+          },
+          "node_modules/@deepseek-ai/dsh-host-product-telemetry-otel": {
+            "files_sha256": "29ce817df28251950cb14d78e50d0ac16561e7d143626c055372a4af2b7d8011",
+            "n_files": 5,
+            "version": "0.2.1-rc.2"
+          },
+          "node_modules/@deepseek-ai/dsh-host-webserver": {
+            "files_sha256": "e22355d90f3aac47240d28f0f160e0f992ab65fbde18e7ec89148cad22c2fe21",
+            "n_files": 5,
+            "version": "0.2.1-rc.2"
+          },
+          "node_modules/@deepseek-ai/dsh-http-proxy": {
+            "files_sha256": "6529f1eb379d38891680fc3899285f9d876961468e8e3c9b2342a2912ea83331",
+            "n_files": 3,
+            "version": "0.2.1-rc.2"
+          },
+          "node_modules/@deepseek-ai/dsh-jobs": {
+            "files_sha256": "31426864d3d0ae366d3ecccd3ed05d09b874e1b3f277819395a083346c57958b",
+            "n_files": 3,
+            "version": "0.2.1-rc.2"
+          },
+          "node_modules/@deepseek-ai/dsh-jobs-local": {
+            "files_sha256": "a3a35dacaff4c51085054b32c824475135eb50b62af12caf2a72dd91c50af93c",
+            "n_files": 5,
+            "version": "0.2.1-rc.2"
+          },
+          "node_modules/@deepseek-ai/dsh-launch-environment": {
+            "files_sha256": "0cb3f59f4d7547e9c5b28760cc6caee7e5f08e462c0c3f99bccabf5ef066f268",
+            "n_files": 3,
+            "version": "0.2.1-rc.2"
+          },
+          "node_modules/@deepseek-ai/dsh-lazy-require": {
+            "files_sha256": "8952c156a77b10df3710e66d54a1992ed8437dea7a69a0fb695a80a506c141c1",
+            "n_files": 3,
+            "version": "0.2.1-rc.2"
+          },
+          "node_modules/@deepseek-ai/dsh-llm": {
+            "files_sha256": "a0f1000b4b7125916f691562d1e545512a0d00332aa9690f34b3c8d06a0f5f65",
+            "n_files": 7,
+            "version": "0.2.1-rc.2"
+          },
+          "node_modules/@deepseek-ai/dsh-llm-deepseek": {
+            "files_sha256": "05a50a8089e1d6c92efc30e1664deecb89d0211de295d4b05cbe76e0a0f1b0b7",
+            "n_files": 3,
+            "version": "0.2.1-rc.2"
+          },
+          "node_modules/@deepseek-ai/dsh-llm-deepseek-account": {
+            "files_sha256": "5ce02de9d9307bc88aa2ad5ccfbfb868da90764747a42e22b81c3dd8658b853b",
+            "n_files": 5,
+            "version": "0.2.1-rc.2"
+          },
+          "node_modules/@deepseek-ai/dsh-llm-deepseek-api-key": {
+            "files_sha256": "f553c8a088781f5ccfa342609c31bc89e6574ccd0c8398760d9d130fbacff0c5",
+            "n_files": 5,
+            "version": "0.2.1-rc.2"
+          },
+          "node_modules/@deepseek-ai/dsh-llm-pi-ai": {
+            "files_sha256": "ccc9c4c605aa2aa0456474a85cf41e1baaa31f8e7e523f2f11f7bf85fd73963c",
+            "n_files": 5,
+            "version": "0.2.1-rc.2"
+          },
+          "node_modules/@deepseek-ai/dsh-llm-retry": {
+            "files_sha256": "6f1f9fac79ca5be4ccd2e1925124024ad66945235011f74057460e3de210a032",
+            "n_files": 5,
+            "version": "0.2.1-rc.2"
+          },
+          "node_modules/@deepseek-ai/dsh-mcp-client": {
+            "files_sha256": "adb2e68bd61700609fe1fb6ea49686fcc9afb255270ba99faa91473fc4f3444d",
+            "n_files": 3,
+            "version": "0.2.1-rc.2"
+          },
+          "node_modules/@deepseek-ai/dsh-mcp-resources": {
+            "files_sha256": "dd58d22b36078da48a3a5128adf08fecd00d71944dc897ef0f6dfca191575020",
+            "n_files": 5,
+            "version": "0.2.1-rc.2"
+          },
+          "node_modules/@deepseek-ai/dsh-message-feedback": {
+            "files_sha256": "f1b70f6ad0ae6c7654a2973b7e260226abee5dab4601dbe38d406f3dcdd8411e",
+            "n_files": 7,
+            "version": "0.2.1-rc.2"
+          },
+          "node_modules/@deepseek-ai/dsh-native-command": {
+            "files_sha256": "590c8a40b6c3b2edf48b43dff3d5b493e540c64bc089ddd5bb7cde5a11182ecb",
+            "n_files": 3,
+            "version": "0.2.1-rc.2"
+          },
+          "node_modules/@deepseek-ai/dsh-office-to-pdf": {
+            "files_sha256": "66f35be0565eb2ae57408d2e78b118ffe45851d754ae3254daf7d4dc12ed8b33",
+            "n_files": 7,
+            "version": "0.2.1-rc.2"
+          },
+          "node_modules/@deepseek-ai/dsh-otel": {
+            "files_sha256": "2eee64de4d6cd372a02814aca0aa89798ce24341f722a1ae8bc220229ebe00cf",
+            "n_files": 5,
+            "version": "0.2.1-rc.2"
+          },
+          "node_modules/@deepseek-ai/dsh-output-retention": {
+            "files_sha256": "4a5a78d4ec089b527ddabfa854325a3e89ec228c5d8f2fd4e94d427e87b97cf4",
+            "n_files": 3,
+            "version": "0.2.1-rc.2"
+          },
+          "node_modules/@deepseek-ai/dsh-package-manifest": {
+            "files_sha256": "d4b8dca3fb0e8124f8a781abeea38eb6dcb119fa6277e2f42415cdec4aa0f1bc",
+            "n_files": 3,
+            "version": "0.2.1-rc.2"
+          },
+          "node_modules/@deepseek-ai/dsh-permission-presets": {
+            "files_sha256": "73d63061bfcc6fd18df4c3e812bbd0234216d7ea9c82ebbce4aa9abfb5f67f08",
+            "n_files": 7,
+            "version": "0.2.1-rc.2"
+          },
+          "node_modules/@deepseek-ai/dsh-persona": {
+            "files_sha256": "438dcd03b1569eb68188af7f7cb99e5ca56124aed410379806c087cd842c2132",
+            "n_files": 5,
+            "version": "0.2.1-rc.2"
+          },
+          "node_modules/@deepseek-ai/dsh-plan-mode": {
+            "files_sha256": "0c4d4d0d080fdf2ee3574fb4c9da0cb17a37861937967a865c00978233e9a2ee",
+            "n_files": 5,
+            "version": "0.2.1-rc.2"
+          },
+          "node_modules/@deepseek-ai/dsh-plugin-manager": {
+            "files_sha256": "101c0c9729030ed24a142735d4c679376aa976758948d32f79abee361b62ac74",
+            "n_files": 9,
+            "version": "0.2.1-rc.2"
+          },
+          "node_modules/@deepseek-ai/dsh-plugin-market": {
+            "files_sha256": "20d73d96fcf0d9beb7759c04d469e6b2200e9ccb17c95c7dfdecc62e34ca7cab",
+            "n_files": 6,
+            "version": "0.2.1-rc.2"
+          },
+          "node_modules/@deepseek-ai/dsh-plugin-market-index": {
+            "files_sha256": "1297bc9ee98ebdb6f8fe7d53934425de0d222b2e2e750eac5df92f5be9554a70",
+            "n_files": 3,
+            "version": "0.2.1-rc.2"
+          },
+          "node_modules/@deepseek-ai/dsh-plugin-package-inventory-deepseek": {
+            "files_sha256": "ed5d220aaaea17c9633dea352b23e4460a7a348b391db17efedefd36a607326e",
+            "n_files": 5,
+            "version": "0.2.1-rc.2"
+          },
+          "node_modules/@deepseek-ai/dsh-ptc-runtime": {
+            "files_sha256": "40c12b84d3bd112aa3f166153c29fe2e8e462a0ea77b99e785b64af3dac1d34b",
+            "n_files": 3,
+            "version": "0.2.1-rc.2"
+          },
+          "node_modules/@deepseek-ai/dsh-ptc-runtime-node": {
+            "files_sha256": "02f2edda70e100c9ba1f61abd7ef9d4edc31a1864875451e84cb7b4d134c5459",
+            "n_files": 7,
+            "version": "0.2.1-rc.2"
+          },
+          "node_modules/@deepseek-ai/dsh-pwsh-local": {
+            "files_sha256": "40bfeed8f6a5ddbbd7d8be56b35061976fa5c886167f108106f77e8dd3d179b0",
+            "n_files": 3,
+            "version": "0.2.1-rc.2"
+          },
+          "node_modules/@deepseek-ai/dsh-pwsh-sandbox": {
+            "files_sha256": "e84cf5206aa2d6c736c7bfaa9d2c1e4738545c3652fa07d38576813e248622b6",
+            "n_files": 5,
+            "version": "0.2.1-rc.2"
+          },
+          "node_modules/@deepseek-ai/dsh-repeat-tool-reminder": {
+            "files_sha256": "893ac1bdf53316d01cd52b0e287d20a91f5a1a9810902604238c19cc28b987d8",
+            "n_files": 5,
+            "version": "0.2.1-rc.2"
+          },
+          "node_modules/@deepseek-ai/dsh-sandbox": {
+            "files_sha256": "660849ad5fece14fddba30fa366646a9555d82be0f7cfb0c94f6459dad6d4c4b",
+            "n_files": 3,
+            "version": "0.2.1-rc.2"
+          },
+          "node_modules/@deepseek-ai/dsh-sandbox-local": {
+            "files_sha256": "07c7025608249828c6e99835997cb64e5825f3a63974f401bd2bc243eb70f026",
+            "n_files": 5,
+            "version": "0.2.1-rc.2"
+          },
+          "node_modules/@deepseek-ai/dsh-sandbox-policy": {
+            "files_sha256": "8b07f71464e30936a320e05240e00fe89dc18f0bf65b4fc4925c6e70bbadfe6e",
+            "n_files": 5,
+            "version": "0.2.1-rc.2"
+          },
+          "node_modules/@deepseek-ai/dsh-sandbox-windows-acl": {
+            "files_sha256": "c7b6276652dbb597eb9926ac0170ed17588611fe90049bc70402b0b586c8b39d",
+            "n_files": 5,
+            "version": "0.2.1-rc.2"
+          },
+          "node_modules/@deepseek-ai/dsh-schedule": {
+            "files_sha256": "e3f690133bf165844cdb892b030d32e39a972ff472deba09b06fd134cae96d04",
+            "n_files": 7,
+            "version": "0.2.1-rc.2"
+          },
+          "node_modules/@deepseek-ai/dsh-scope": {
+            "files_sha256": "1b232c010c093a7cf00df232545298ea01381b528c90a1027fe432cf9d80df35",
+            "n_files": 3,
+            "version": "0.2.1-rc.2"
+          },
+          "node_modules/@deepseek-ai/dsh-sdk-app": {
+            "files_sha256": "26a2a7b424aa2d4866b73373e16bb7eef57c44caae802d48b0b1375fad2e3784",
+            "n_files": 4,
+            "version": "0.2.1-rc.2"
+          },
+          "node_modules/@deepseek-ai/dsh-sdk-jsonrpc-server": {
+            "files_sha256": "6a10b95b4f7d9bcc18c47bf3e51beaeaa2007398a7b353ed898530447d259431",
+            "n_files": 3,
+            "version": "0.2.1-rc.2"
+          },
+          "node_modules/@deepseek-ai/dsh-sdk-minimal": {
+            "files_sha256": "8c186fa0d44e3b3cb53575559598f52d41891a4d336600eed36693e7943c2a63",
+            "n_files": 4,
+            "version": "0.2.1-rc.2"
+          },
+          "node_modules/@deepseek-ai/dsh-sdk-protocol": {
+            "files_sha256": "2fd7cf28671c1b6c63f7154d6f90f6bf1b31e1b7a6546e385e56a635eda0d353",
+            "n_files": 3,
+            "version": "0.2.1-rc.2"
+          },
+          "node_modules/@deepseek-ai/dsh-session": {
+            "files_sha256": "1ccf8259b4303587dfc0059a1cb8914950c329ca1cc72472d34ec72d4b647b6e",
+            "n_files": 5,
+            "version": "0.2.1-rc.2"
+          },
+          "node_modules/@deepseek-ai/dsh-session-checkpoint-policy": {
+            "files_sha256": "a7c0baf1a7bcdc93f99d4a2f229e3d19ad373b33cb8ba01ab107825e9bc78eba",
+            "n_files": 5,
+            "version": "0.2.1-rc.2"
+          },
+          "node_modules/@deepseek-ai/dsh-session-format": {
+            "files_sha256": "f84c7fe0c26870c2eb79fa13388a49540ac9ead87a41e8484aad52f1a7297b80",
+            "n_files": 3,
+            "version": "0.2.1-rc.2"
+          },
+          "node_modules/@deepseek-ai/dsh-session-format-catalog": {
+            "files_sha256": "90c6288da2064a4f1064f3028bc38163e501d3bec19aeff3d2fd6ce114b5da1b",
+            "n_files": 3,
+            "version": "0.2.1-rc.2"
+          },
+          "node_modules/@deepseek-ai/dsh-session-format-v0-to-v1": {
+            "files_sha256": "76871cfca5e4c5e75a5cbc5ff05bcc0971880622f8b5f546e281d73749e8013f",
+            "n_files": 3,
+            "version": "0.2.1-rc.2"
+          },
+          "node_modules/@deepseek-ai/dsh-session-format-v1-to-v2": {
+            "files_sha256": "fd35ee971a52398928fd5e55543128d07f09ee531327dcce093b11c74b5c245c",
+            "n_files": 3,
+            "version": "0.2.1-rc.2"
+          },
+          "node_modules/@deepseek-ai/dsh-session-format-v2-to-v3": {
+            "files_sha256": "599f8f0201de0e1f8e4d7fd0c7af32947bf70911a0668d8da2c35388d53e86c6",
+            "n_files": 3,
+            "version": "0.2.1-rc.2"
+          },
+          "node_modules/@deepseek-ai/dsh-session-format-v3-to-v4": {
+            "files_sha256": "ce84459d96be0ba04a695715bf37430c7943429f992310e35f249b71f009beb3",
+            "n_files": 3,
+            "version": "0.2.1-rc.2"
+          },
+          "node_modules/@deepseek-ai/dsh-session-log-deepseek": {
+            "files_sha256": "17d2eeb825e7bf0a09493aa50867006d0ec40e1a1e03fff940dc2d37687abeaf",
+            "n_files": 5,
+            "version": "0.2.1-rc.2"
+          },
+          "node_modules/@deepseek-ai/dsh-session-log-export": {
+            "files_sha256": "86a5d3751b53a8e495997f6024ce39d60eba4c88fb07351d0bdaf989a22be922",
+            "n_files": 6,
+            "version": "0.2.1-rc.2"
+          },
+          "node_modules/@deepseek-ai/dsh-session-persistence": {
+            "files_sha256": "656b9327427fafeb31755afae4e351c6af2410810b73013b818e1bc71a0aedf8",
+            "n_files": 3,
+            "version": "0.2.1-rc.2"
+          },
+          "node_modules/@deepseek-ai/dsh-session-persistence-jsonl": {
+            "files_sha256": "1eaa5cb997bf68546f8126e96d505d4ff127c8246f3f2647cd5f84cca0924e47",
+            "n_files": 6,
+            "version": "0.2.1-rc.2"
+          },
+          "node_modules/@deepseek-ai/dsh-session-projection": {
+            "files_sha256": "031bfda0e23460af8b6c02c6db695f3c3655b6c69a65691ff19ddaf47ff8697e",
+            "n_files": 5,
+            "version": "0.2.1-rc.2"
+          },
+          "node_modules/@deepseek-ai/dsh-session-projection-cache": {
+            "files_sha256": "6e69ad9fe335d037b347554416da5c814954ff548ba5ffb92e51dd3d29c054e5",
+            "n_files": 5,
+            "version": "0.2.1-rc.2"
+          },
+          "node_modules/@deepseek-ai/dsh-session-query": {
+            "files_sha256": "e3354ac6cdd3c1194a0c57ff70490948d5acb45016c2634fcb00e03e0c32ac37",
+            "n_files": 3,
+            "version": "0.2.1-rc.2"
+          },
+          "node_modules/@deepseek-ai/dsh-session-query-sqlite": {
+            "files_sha256": "415011279be4f7b19c57db6903c5faa43416fde99d405b3a28bb2204aef8a283",
+            "n_files": 5,
+            "version": "0.2.1-rc.2"
+          },
+          "node_modules/@deepseek-ai/dsh-session-reference": {
+            "files_sha256": "d5197475d4355fc259e567437a91426ff02d1bb051ca5ce16af774ac8251f9d5",
+            "n_files": 7,
+            "version": "0.2.1-rc.2"
+          },
+          "node_modules/@deepseek-ai/dsh-session-stats": {
+            "files_sha256": "0ebfcbdeb0ea00b251cda6db6aa99408ccdeedbded9891e91a4c83e14d5cb078",
+            "n_files": 5,
+            "version": "0.2.1-rc.2"
+          },
+          "node_modules/@deepseek-ai/dsh-session-telemetry": {
+            "files_sha256": "17189628fa0210f01545778ec57991eb8d437fa09fb57b984a4683304d5b3405",
+            "n_files": 3,
+            "version": "0.2.1-rc.2"
+          },
+          "node_modules/@deepseek-ai/dsh-session-telemetry-otel": {
+            "files_sha256": "eb2b282a6bfaf1b62368faf782fbd586d69253b421bc3c1e108f327af43cb2d7",
+            "n_files": 5,
+            "version": "0.2.1-rc.2"
+          },
+          "node_modules/@deepseek-ai/dsh-session-title": {
+            "files_sha256": "ff90f97ba67798d0dfdb094f6dac5df393f471114a6a7ea4fc2cdcd7df5b8a62",
+            "n_files": 5,
+            "version": "0.2.1-rc.2"
+          },
+          "node_modules/@deepseek-ai/dsh-session-title-all-prompts-llm": {
+            "files_sha256": "0229eb89ce6d9bc1742d43274f73e467cdfc386fca4e07e39b77cd8c23e886e7",
+            "n_files": 3,
+            "version": "0.2.1-rc.2"
+          },
+          "node_modules/@deepseek-ai/dsh-session-title-first-prompt-llm": {
+            "files_sha256": "52c78301d6b389688a3d1bf57a9345fd6e6f6dc6c1c093c454b1237c6821e3e3",
+            "n_files": 5,
+            "version": "0.2.1-rc.2"
+          },
+          "node_modules/@deepseek-ai/dsh-session-title-llm": {
+            "files_sha256": "859551fcdf48a5e605b2108e6ac6c746836ced8891eb81571d9d2c5a9b540f09",
+            "n_files": 3,
+            "version": "0.2.1-rc.2"
+          },
+          "node_modules/@deepseek-ai/dsh-session-turn-outline": {
+            "files_sha256": "989e1174cfd477b7de46ae6f1a05be20d4df953afc1f673e208d462089948453",
+            "n_files": 5,
+            "version": "0.2.1-rc.2"
+          },
+          "node_modules/@deepseek-ai/dsh-settings": {
+            "files_sha256": "877a01b769d47563e5b17a00fe589c9c0132b151e3e31d46f56e63581962efd2",
+            "n_files": 5,
+            "version": "0.2.1-rc.2"
+          },
+          "node_modules/@deepseek-ai/dsh-shell": {
+            "files_sha256": "c68f2dd64120b62acc46d1dc8135015aaea6e1da8efda625ee3084f3dcf92860",
+            "n_files": 3,
+            "version": "0.2.1-rc.2"
+          },
+          "node_modules/@deepseek-ai/dsh-shell-env": {
+            "files_sha256": "0355dd9a7f75c57de8eb8e622eada140e23d2b1638c0963d63f8affe2f64007d",
+            "n_files": 5,
+            "version": "0.2.1-rc.2"
+          },
+          "node_modules/@deepseek-ai/dsh-skill": {
+            "files_sha256": "8aeb21c20855f01a8770a46e0cf040437ca206a17af2fe2f581522e0a56491c3",
+            "n_files": 5,
+            "version": "0.2.1-rc.2"
+          },
+          "node_modules/@deepseek-ai/dsh-skill-badge": {
+            "files_sha256": "732b6cad0f11bc5a4730fdbb048c5163acf9a8450332d1c3ec06630949769343",
+            "n_files": 5,
+            "version": "0.2.1-rc.2"
+          },
+          "node_modules/@deepseek-ai/dsh-skill-filesystem": {
+            "files_sha256": "bce75bdd4ccd75dbf2c6d2a51fee8b7ac07c2802e4561b09ebcc851d7cca6347",
+            "n_files": 5,
+            "version": "0.2.1-rc.2"
+          },
+          "node_modules/@deepseek-ai/dsh-skill-office": {
+            "files_sha256": "0dc404378db994a42f1143c26ae575a211b7ae190eb870df08e347f081838758",
+            "n_files": 3,
+            "version": "0.2.1-rc.2"
+          },
+          "node_modules/@deepseek-ai/dsh-spill": {
+            "files_sha256": "3674e0c08daba76ffdaeebad050c2fc68ada6243486aabe70c9cb802c165601e",
+            "n_files": 3,
+            "version": "0.2.1-rc.2"
+          },
+          "node_modules/@deepseek-ai/dsh-spill-local": {
+            "files_sha256": "1e58e6dc29fa9944bb4fea981b4b89d1d640b631ab5de43de58b7f2443a6f8a8",
+            "n_files": 5,
+            "version": "0.2.1-rc.2"
+          },
+          "node_modules/@deepseek-ai/dsh-spill-policy": {
+            "files_sha256": "b39d9846c4fd57683d66f66e1315cebab80a350dad1187a355bda45f22034aa5",
+            "n_files": 5,
+            "version": "0.2.1-rc.2"
+          },
+          "node_modules/@deepseek-ai/dsh-storage": {
+            "files_sha256": "73279998b6e61a4cd1fcd622896e6644a21732bb6217b78b8c0b932999d20184",
+            "n_files": 5,
+            "version": "0.2.1-rc.2"
+          },
+          "node_modules/@deepseek-ai/dsh-storage-domain": {
+            "files_sha256": "17ace965302a5d14c7929ac41987abca923569fe09d76ef45e440df9c51479ba",
+            "n_files": 5,
+            "version": "0.2.1-rc.2"
+          },
+          "node_modules/@deepseek-ai/dsh-storage-json": {
+            "files_sha256": "e6ced79a178b616bb9eeb977c6fdf8b02b3de02fd97c087be3a1d4b1e9602bb4",
+            "n_files": 5,
+            "version": "0.2.1-rc.2"
+          },
+          "node_modules/@deepseek-ai/dsh-subagent": {
+            "files_sha256": "83bc6e28817cb9b293eaf2dac4c2cc16091d9e4fd8c0cb8095ecebf4cf29ba9b",
+            "n_files": 7,
+            "version": "0.2.1-rc.2"
+          },
+          "node_modules/@deepseek-ai/dsh-subagent-fork-in-process": {
+            "files_sha256": "d3e3f0c52c1e8c509ab09948662438d69784d9f342119a91a27b42dfcd5079d2",
+            "n_files": 5,
+            "version": "0.2.1-rc.2"
+          },
+          "node_modules/@deepseek-ai/dsh-subagent-spawn-in-process": {
+            "files_sha256": "0e453409f998e11e18e0f6cc3d444903b929d64342b323339891a25dbac30d13",
+            "n_files": 5,
+            "version": "0.2.1-rc.2"
+          },
+          "node_modules/@deepseek-ai/dsh-subprocess": {
+            "files_sha256": "ab8d053737877c4c4aef514a6f9dba6642fd1b647bd41b8d81826450be303102",
+            "n_files": 4,
+            "version": "0.2.1-rc.2"
+          },
+          "node_modules/@deepseek-ai/dsh-subprocess-local": {
+            "files_sha256": "33bebc39601adbe688733c69bb4f942615dfadf7f0f655f98a3d639a2226bd3e",
+            "n_files": 9,
+            "version": "0.2.1-rc.2"
+          },
+          "node_modules/@deepseek-ai/dsh-system-prompt": {
+            "files_sha256": "04c4fc3c3fa7607988f9a3c3f192885e19ba8efca91c00b1ae488d8e188d71f5",
+            "n_files": 5,
+            "version": "0.2.1-rc.2"
+          },
+          "node_modules/@deepseek-ai/dsh-terminal": {
+            "files_sha256": "61b5710b5d4e2d2c994e354747abb907766ac7d9feaf2d2b36134d81d816068a",
+            "n_files": 5,
+            "version": "0.2.1-rc.2"
+          },
+          "node_modules/@deepseek-ai/dsh-terminal-bash": {
+            "files_sha256": "120c0623db88d7a10673621d8ab6e7ec0d218873787231cfb9515ec9705cea22",
+            "n_files": 5,
+            "version": "0.2.1-rc.2"
+          },
+          "node_modules/@deepseek-ai/dsh-time-context": {
+            "files_sha256": "1298f9c009658adc0d5a27b47f5435c6c8ecf353549eff22f93d9b12c96aab15",
+            "n_files": 5,
+            "version": "0.2.1-rc.2"
+          },
+          "node_modules/@deepseek-ai/dsh-timeout": {
+            "files_sha256": "4afe6c42d4f419120b3852913027a777ffcfc3927a734f86aa29b8d249d14b38",
+            "n_files": 3,
+            "version": "0.2.1-rc.2"
+          },
+          "node_modules/@deepseek-ai/dsh-tmux-context": {
+            "files_sha256": "12bf5d2e8f3a9af0ab3a9d60fb89fd9a9550082cdd88580c4f71f74078fb04ab",
+            "n_files": 3,
+            "version": "0.2.1-rc.2"
+          },
+          "node_modules/@deepseek-ai/dsh-token-meter": {
+            "files_sha256": "292a82a7d63fe2d0c5db6b4c805b1109e9da83fd3858c87cd86a072f0abdbca6",
+            "n_files": 5,
+            "version": "0.2.1-rc.2"
+          },
+          "node_modules/@deepseek-ai/dsh-tool-ask-user": {
+            "files_sha256": "93109733848c6082f294c8cdd975820365ef9b369a56843d0279af73fc07e825",
+            "n_files": 5,
+            "version": "0.2.1-rc.2"
+          },
+          "node_modules/@deepseek-ai/dsh-tool-bash": {
+            "files_sha256": "9e021276cde3375549321612d381b59ceef75c288e05b7fa77cbd4dd1a57f82d",
+            "n_files": 5,
+            "version": "0.2.1-rc.2"
+          },
+          "node_modules/@deepseek-ai/dsh-tool-bash-persistent": {
+            "files_sha256": "b45405573c7eb8e611a7ab4d72c04b01102023a8062a4f8b2ac117c270d30a20",
+            "n_files": 5,
+            "version": "0.2.1-rc.2"
+          },
+          "node_modules/@deepseek-ai/dsh-tool-call-timeout-policy": {
+            "files_sha256": "9fe16434f81c8b6a73ffbb3bdb4b10704f5408a10e9345c11cd2af8e8c867fed",
+            "n_files": 5,
+            "version": "0.2.1-rc.2"
+          },
+          "node_modules/@deepseek-ai/dsh-tool-cordis": {
+            "files_sha256": "1b6e35eaa4f6260c31ddcfca2024c0a894b8ff0a86cbdcc940b8183cd2447a3d",
+            "n_files": 7,
+            "version": "0.2.1-rc.2"
+          },
+          "node_modules/@deepseek-ai/dsh-tool-fs": {
+            "files_sha256": "1707b33688291a56030c99ae3a7f686ea6ea1fc36bd1e8dca415b662a9f0aad8",
+            "n_files": 5,
+            "version": "0.2.1-rc.2"
+          },
+          "node_modules/@deepseek-ai/dsh-tool-fs-search": {
+            "files_sha256": "151b9066e3dda4fe130b57608180295cb25755b7a24317ad17eb82d789b793e0",
+            "n_files": 5,
+            "version": "0.2.1-rc.2"
+          },
+          "node_modules/@deepseek-ai/dsh-tool-goal": {
+            "files_sha256": "9657296dd7bf2cd6e76e0750bff34d522870144c144165e444e1604e80446c89",
+            "n_files": 5,
+            "version": "0.2.1-rc.2"
+          },
+          "node_modules/@deepseek-ai/dsh-tool-jobs": {
+            "files_sha256": "226441e911cd466f35c0e4bc05bbb792b98dcb12674353bba879eba4bbb326ab",
+            "n_files": 5,
+            "version": "0.2.1-rc.2"
+          },
+          "node_modules/@deepseek-ai/dsh-tool-present": {
+            "files_sha256": "93f803154b83db76e4cb7190ac57afa6a6fa5b77323340b08dc026f7438d1612",
+            "n_files": 5,
+            "version": "0.2.1-rc.2"
+          },
+          "node_modules/@deepseek-ai/dsh-tool-pwsh": {
+            "files_sha256": "87aabe1bcf363cc7fca48aa705e7f54c01c82c3820490e33102671b856158255",
+            "n_files": 5,
+            "version": "0.2.1-rc.2"
+          },
+          "node_modules/@deepseek-ai/dsh-tool-pwsh-persistent": {
+            "files_sha256": "cb13a0e606ea803942a2c299f607280689a16dea27439be0a8dfb0206383ace4",
+            "n_files": 5,
+            "version": "0.2.1-rc.2"
+          },
+          "node_modules/@deepseek-ai/dsh-tool-ralph": {
+            "files_sha256": "8eff6b97a5a9bf436576ecf35457648c281e0d571d8003df92e3e2a398a64bfb",
+            "n_files": 5,
+            "version": "0.2.1-rc.2"
+          },
+          "node_modules/@deepseek-ai/dsh-tool-schedule": {
+            "files_sha256": "d6a061cc25150d40afa29648b2432b1b29688d2c2d40c531bbcdf162cb6eaed3",
+            "n_files": 3,
+            "version": "0.2.1-rc.2"
+          },
+          "node_modules/@deepseek-ai/dsh-tool-session-query": {
+            "files_sha256": "e76366f7d7e48b096fd307d151b3957ec9cff7d31c221d4a21ce0ade8ccb98dc",
+            "n_files": 3,
+            "version": "0.2.1-rc.2"
+          },
+          "node_modules/@deepseek-ai/dsh-tool-skill": {
+            "files_sha256": "b80ea4db4aef8201122becbd916fe5c1475580ad85fcc6ed6e118168e063b0d4",
+            "n_files": 5,
+            "version": "0.2.1-rc.2"
+          },
+          "node_modules/@deepseek-ai/dsh-tool-str-replace-editor": {
+            "files_sha256": "eaa2497206660e2a2e32b7187cca45494691b4a339635eedf4588b434c7fcca9",
+            "n_files": 3,
+            "version": "0.2.1-rc.2"
+          },
+          "node_modules/@deepseek-ai/dsh-tool-subagent": {
+            "files_sha256": "b8aa74061af0e90ed3cd059d8b730b8652f79ef293ba48fce9c340e77cfba2bf",
+            "n_files": 8,
+            "version": "0.2.1-rc.2"
+          },
+          "node_modules/@deepseek-ai/dsh-tool-subagent-control": {
+            "files_sha256": "b9a5b43efeca4f263d649e3b41ca4743414333bb239c2ac86afef38449b092c2",
+            "n_files": 7,
+            "version": "0.2.1-rc.2"
+          },
+          "node_modules/@deepseek-ai/dsh-tool-terminal": {
+            "files_sha256": "9a7389ca24bb4fd167e8379c178acc953b297077995b74f7e14ad783e39f32ed",
+            "n_files": 3,
+            "version": "0.2.1-rc.2"
+          },
+          "node_modules/@deepseek-ai/dsh-tool-todo": {
+            "files_sha256": "4df5a0fa387090f80c2eba7de8836b5a42b9eb78380bdc8c38a3a47a85ee76a4",
+            "n_files": 5,
+            "version": "0.2.1-rc.2"
+          },
+          "node_modules/@deepseek-ai/dsh-tool-web": {
+            "files_sha256": "3add4d5c03c892b247b7d5f86eb6fb54de3f951152d37b72968241ce85450061",
+            "n_files": 5,
+            "version": "0.2.1-rc.2"
+          },
+          "node_modules/@deepseek-ai/dsh-tool-workflow": {
+            "files_sha256": "29a000770afd1840efe53c815c1e8ce8f04be9434824650b52955e7973d68a9d",
+            "n_files": 5,
+            "version": "0.2.1-rc.2"
+          },
+          "node_modules/@deepseek-ai/dsh-tool-working-directory": {
+            "files_sha256": "87e8ddd646431d9fa0d5e8cc07c2adb55d14fe8f8ccec579dc2af82d14c830ea",
+            "n_files": 3,
+            "version": "0.2.1-rc.2"
+          },
+          "node_modules/@deepseek-ai/dsh-tool-workspace-dependencies": {
+            "files_sha256": "2fcd1d6c47ac9d1d50fcfb04eedaa448716e23a7b1dc7131025a105718b24267",
+            "n_files": 3,
+            "version": "0.2.1-rc.2"
+          },
+          "node_modules/@deepseek-ai/dsh-tools": {
+            "files_sha256": "3a2ca02ec3058871b9464179bde021aebbb2be07a46822af34d247e3d4b475fd",
+            "n_files": 5,
+            "version": "0.2.1-rc.2"
+          },
+          "node_modules/@deepseek-ai/dsh-typert-loader": {
+            "files_sha256": "f4f710eaaf7a8c8089d92fa740ccba0af693930c9cec35bdfcf544d573fd3550",
+            "n_files": 5,
+            "version": "0.2.1-rc.2"
+          },
+          "node_modules/@deepseek-ai/dsh-typert-protocol": {
+            "files_sha256": "da067ed93aa6fa2417efac1fc51340c8d270f2314ef42e80ff5c0180c54e66bd",
+            "n_files": 3,
+            "version": "0.2.1-rc.2"
+          },
+          "node_modules/@deepseek-ai/dsh-typert-registry": {
+            "files_sha256": "df09b8457fd4caee578c9b1924d5a1b6698981fa87a1c5b85a333a42dc8e64d4",
+            "n_files": 7,
+            "version": "0.2.1-rc.2"
+          },
+          "node_modules/@deepseek-ai/dsh-user-approval": {
+            "files_sha256": "4442c8bc1c394b583d9dfaffb8c3039d1174bdb9d04738991a22551f2e57de33",
+            "n_files": 5,
+            "version": "0.2.1-rc.2"
+          },
+          "node_modules/@deepseek-ai/dsh-user-questions": {
+            "files_sha256": "15422c0320f8b59a8c8f955ec51d1616fb0d32497405538e2f69cced279bf703",
+            "n_files": 7,
+            "version": "0.2.1-rc.2"
+          },
+          "node_modules/@deepseek-ai/dsh-util-code-language": {
+            "files_sha256": "f0f7e0906b73993fd9334fdaf6d207b26c580c5c514cedb75b4663165dcb1145",
+            "n_files": 3,
+            "version": "0.2.1-rc.2"
+          },
+          "node_modules/@deepseek-ai/dsh-util-crypto": {
+            "files_sha256": "8a6c31f1f2b4095f2977a1543415d0cb0a323df7b6ace73c5d486ffe087bc05f",
+            "n_files": 3,
+            "version": "0.2.1-rc.2"
+          },
+          "node_modules/@deepseek-ai/dsh-util-time": {
+            "files_sha256": "77706b28198c270d9e6d9397ab5e74558510276fdec38bbeb26bb54ca8f68d13",
+            "n_files": 3,
+            "version": "0.2.1-rc.2"
+          },
+          "node_modules/@deepseek-ai/dsh-util-values": {
+            "files_sha256": "cca61a05a878e387298c8c886a02d4ff2a11a1a7ee3377e87dbc35834771159d",
+            "n_files": 3,
+            "version": "0.2.1-rc.2"
+          },
+          "node_modules/@deepseek-ai/dsh-util-workspace-path": {
+            "files_sha256": "8cce13349761ed62088853f809602768718d5d32fdf2999d292f5f8be0c2cf13",
+            "n_files": 3,
+            "version": "0.2.1-rc.2"
+          },
+          "node_modules/@deepseek-ai/dsh-web": {
+            "files_sha256": "b3725d327d0a06367f7f0ae5004a60ffbae22c88fe414eabf237a15b910bbc64",
+            "n_files": 5,
+            "version": "0.2.1-rc.2"
+          },
+          "node_modules/@deepseek-ai/dsh-web-app": {
+            "files_sha256": "6599265e43821288f551656b37e48e8d3b6578a4f2ab022800cc240b42ed97cc",
+            "n_files": 14,
+            "version": "0.2.1-rc.2"
+          },
+          "node_modules/@deepseek-ai/dsh-web-deepseek-api": {
+            "files_sha256": "d8f363f21a084ce4f1b6566a6a03a5c8187bdb28d77638d925528f0db486e274",
+            "n_files": 5,
+            "version": "0.2.1-rc.2"
+          },
+          "node_modules/@deepseek-ai/dsh-web-fetch-http": {
+            "files_sha256": "98d5d7e79b0e22b280c2a15a8ec467d436d4c275582941267442a1b1b2a1d77d",
+            "n_files": 5,
+            "version": "0.2.1-rc.2"
+          },
+          "node_modules/@deepseek-ai/dsh-web-frontend": {
+            "files_sha256": "88701fd7c3c741e79f194f964abac99b98791efbaeaf6480e15e18e078d1bfe5",
+            "n_files": 62,
+            "version": "0.2.1-rc.2"
+          },
+          "node_modules/@deepseek-ai/dsh-web-search-deepseek": {
+            "files_sha256": "fae9e028f5f7fbb6d80ca62349548bfde84b05ef139262bb471c6b0ba2adb1cc",
+            "n_files": 5,
+            "version": "0.2.1-rc.2"
+          },
+          "node_modules/@deepseek-ai/dsh-win32-process": {
+            "files_sha256": "da0f3ff9aa36eb771c510618a79906820ebd08eb3a746ddf87bc40c2a2f10e35",
+            "n_files": 3,
+            "version": "0.2.1-rc.2"
+          },
+          "node_modules/@deepseek-ai/dsh-workflow": {
+            "files_sha256": "6ecfe6dbed6db126b022c0aac122ce91097c408c66f7052f540fe1d5f626ecdf",
+            "n_files": 3,
+            "version": "0.2.1-rc.2"
+          },
+          "node_modules/@deepseek-ai/dsh-workflow-ptc": {
+            "files_sha256": "b9d80a3a5b19d7ea603bacee86226a33a3a67e8a652a3371fbe7596acd9c2350",
+            "n_files": 5,
+            "version": "0.2.1-rc.2"
+          },
+          "node_modules/@deepseek-ai/dsh-working-directory": {
+            "files_sha256": "2300f780c5ca1484b0c171acf0ec4e6c161937ad4b5d2dd28c1c737a134a44e2",
+            "n_files": 3,
+            "version": "0.2.1-rc.2"
+          },
+          "node_modules/@deepseek-ai/dsh-workspace": {
+            "files_sha256": "7cb123a4037fed49dcec5ef2953ef12112ec1aae83c36dbb90d1c443ca263ed4",
+            "n_files": 5,
+            "version": "0.2.1-rc.2"
+          },
+          "node_modules/@deepseek-ai/dsh-workspace-changes": {
+            "files_sha256": "ce26af2a9ad609b817c80af4b911765010d385cb695f4cbc20a251a25f3a25c5",
+            "n_files": 5,
+            "version": "0.2.1-rc.2"
+          },
+          "node_modules/@deepseek-ai/libreoffice-kit": {
+            "files_sha256": "6c09042387e4e9f69af70974fd1b58e53eaf172adfc0a8d1a21f6d5acf7927ba",
+            "n_files": 5,
+            "version": "0.1.5"
+          },
+          "node_modules/@deepseek-ai/libreoffice-kit-wasm": {
+            "files_sha256": "0b5ed694c5a01c97e27df406e3487cbb1926f7d014186a8a13f1971585cc00b5",
+            "n_files": 18,
+            "version": "0.1.5"
+          },
+          "node_modules/@deepseek-ai/node-addon-system": {
+            "files_sha256": "8e357b61499a5c65633161643b8924ec458c45540a0d5bb2bcb73b3255ef10f1",
+            "n_files": 4,
+            "version": "0.1.2"
+          },
+          "node_modules/@deepseek-ai/node-addon-system-linux-x64": {
+            "files_sha256": "562d3dfbfeea515da32c30435934af2c27e2631f154c3ae7122a991ebaaf460f",
+            "n_files": 3,
+            "version": "0.1.2"
+          },
+          "node_modules/@deepseek-ai/schemastery": {
+            "files_sha256": "13a94c15539b6fcbd9fef2d59e687c89b93bb77bf8752f0866a09064c6334b29",
+            "n_files": 3,
+            "version": "3.18.5"
+          },
+          "node_modules/@earendil-works/pi-ai": {
+            "files_sha256": "e4599a1321fb7eac172d9f359ca9f7cd7bf00c2e4a173a7e0bf770c4e09c2e9f",
+            "n_files": 242,
+            "version": "1.3.0"
+          },
+          "node_modules/@earendil-works/pi-telemetry": {
+            "files_sha256": "0bdef378e1287a933d1486ee1a1697cf87a1da97fee0dfd19aa4bf923c79c06d",
+            "n_files": 7,
+            "version": "1.3.0"
+          },
+          "node_modules/@modelcontextprotocol/client": {
+            "files_sha256": "df3bb4f69fd5249651873b468b66b5e79a2033b0a600228d6c75d78f6531af9e",
+            "n_files": 25,
+            "version": "2.2.0"
+          },
+          "node_modules/@modelcontextprotocol/core": {
+            "files_sha256": "74b651c7bd03fb3c62bf75849a6a2b1f9ca61886a83bc052c6401b8f099293f0",
+            "n_files": 7,
+            "version": "2.2.0"
+          },
+          "node_modules/openai": {
+            "files_sha256": "605fd06a03e9f47def2ad08cde6ea73906af34154b0aa8c1ad214a194e83b06d",
+            "n_files": 789,
+            "version": "7.19.0"
+          }
+        },
+        "sha256": "80112efe368efb1a39720c7ada0af00442e5131fb2744edaaff8a3e8bb499e6f",
+        "version": "0.2.1-rc.2"
+      },
+      "opencode": {
+        "binary": "/home/doanlong/.opencode/bin/opencode",
+        "sha256": "cf5841e6666aeb469abec8b39ca494cef07a637756454a34a742b2f4996e1675",
+        "version": "opencode v2.1.2"
+      },
+      "opentrading": {
+        "calendar_sha256": "7ab728bce98c2c1bb733b068db96cd3680324a3657c0d469d2ac49e4e112a791",
+        "dependency_files": {
+          "bun.lock": "25a1fda76932c0109bfde5799dae6ce4730f651be5a817d3ba45f2c24bd6d479",
+          "package.json": "394cc84e368129e419fd48c65681861dd3f01a0c5ea4d750b3911d5af8a34141"
+        },
+        "prompt_files": {
+          "prompts/citations.md": "de9fb1fc83fa4a9754f48d8ac37d78e65b4d24c3dbcca3ddf62ad6ad91a8879b",
+          "prompts/identity.md": "6c52592f240624e17828155594f6cec14e833710c9c8bf97540e3c5370664742",
+          "prompts/memory-cards.md": "0e272324666c58e6cb0dabcd29f5a52f219fe1f0c8d515cc2b0c0499699578b1",
+          "prompts/memory.md": "680e283ecf05662d9e13326df41cabb5f7d6f4bd607fb7c6d0bb8e4d38f96f7d",
+          "prompts/style.md": "56e82b54f5fb5e83c6047e4ad1c21ab1ade0427fadfce504e34dc28063d9e2c3",
+          "prompts/subagent.md": "b8bc6181355d4d557e047d60c0de4347c58888d6b0a41562bf693b63ba89b039",
+          "prompts/title.md": "8329a2554713df24143cbc5bc2f6dc6ab5df78e0a44392ce6bc887d439c7444e",
+          "prompts/tools.md": "fa6d29ab60f3b1aafcf378aa96c0f1a13a6cee31567d7b544c539210d7b43414"
+        },
+        "runtime_packages": {
+          "@ai-sdk/alibaba": {
+            "files_sha256": "53a46340f0e974b1e863c395f3bdb8de6e735c49b9f59734211b53c59f4f0327",
+            "n_files": 2,
+            "version": "2.0.82"
+          },
+          "@ai-sdk/anthropic": {
+            "files_sha256": "7cef51f62de5fc20ee7a85e7b30096e88f65af86c2d3a89fb0b0fd415dae710a",
+            "n_files": 3,
+            "version": "4.0.96"
+          },
+          "@ai-sdk/cerebras": {
+            "files_sha256": "d0db0aa4587bb077a73b143adf43107282659528c33ebc645925b030c5abeb82",
+            "n_files": 4,
+            "version": "3.0.84"
+          },
+          "@ai-sdk/cohere": {
+            "files_sha256": "3c6430b90885b79c7e70be478a4bcc00fbcc3cb36bfbbdf1b100abbb16d1946b",
+            "n_files": 2,
+            "version": "4.0.75"
+          },
+          "@ai-sdk/deepinfra": {
+            "files_sha256": "14a096aef02cef87accd453a70b90b11c70b2ed23e31f004b7cfb0408673fbe0",
+            "n_files": 2,
+            "version": "3.0.84"
+          },
+          "@ai-sdk/gateway": {
+            "files_sha256": "ce020827d8401577162de2d1486eef5ef40749389c194a80aa021c0d52f163e5",
+            "n_files": 2,
+            "version": "4.0.135"
+          },
+          "@ai-sdk/google": {
+            "files_sha256": "281b638064c6d3e76749c9733f0b75867f1f8d21171d1b0b8e661ab556a37f6e",
+            "n_files": 3,
+            "version": "4.0.111"
+          },
+          "@ai-sdk/groq": {
+            "files_sha256": "59e7876052497152ca3ad5079f5cc3cb91d3d64dfdaab49ed6115704dbca822a",
+            "n_files": 2,
+            "version": "4.0.76"
+          },
+          "@ai-sdk/mistral": {
+            "files_sha256": "09178bdedac58df663a5ff51813c00a6ba2c8668b5f11f76773b2e8223fcbcc7",
+            "n_files": 2,
+            "version": "4.0.79"
+          },
+          "@ai-sdk/openai": {
+            "files_sha256": "6d607ee07a760d46a47f103d616a4ca9d8e9234552cbc3b17970451391acc4a0",
+            "n_files": 3,
+            "version": "4.0.108"
+          },
+          "@ai-sdk/openai-compatible": {
+            "files_sha256": "9d2f88c543a70d9bf85bf868b1ac7e1e09256463f8d6a946bde7543ac770dd87",
+            "n_files": 3,
+            "version": "3.0.84"
+          },
+          "@ai-sdk/perplexity": {
+            "files_sha256": "158168e43a06b881fd86877ee099e8329dc5112235e364ed04d16057c24e4260",
+            "n_files": 2,
+            "version": "5.0.26"
+          },
+          "@ai-sdk/provider": {
+            "files_sha256": "f8765e952d9762efef18876b7742f25191c8a8b0588b01ce20fcb5319fbde86b",
+            "n_files": 2,
+            "version": "4.0.35"
+          },
+          "@ai-sdk/provider-utils": {
+            "files_sha256": "08e5800358113a29ea3456da810c88d0fca5dd7e956df7b0fd868ce05aaf2a76",
+            "n_files": 5,
+            "version": "5.0.74"
+          },
+          "@ai-sdk/togetherai": {
+            "files_sha256": "171e9428d992d20fd9b6c24381f5339cb11ec97259cfc0a2e5140d00d8018b4f",
+            "n_files": 2,
+            "version": "3.0.85"
+          },
+          "@ai-sdk/vercel": {
+            "files_sha256": "0e44269a2ada972045956a670e3c43b07920a54add9bdb6a69928b6788377fa1",
+            "n_files": 2,
+            "version": "3.0.30"
+          },
+          "@ai-sdk/xai": {
+            "files_sha256": "472fe93e8bafc2c4188a5e5c95ca826ce517cdbdc60710f8a11358e8598a7b11",
+            "n_files": 2,
+            "version": "5.0.38"
+          },
+          "@modelcontextprotocol/sdk": {
+            "files_sha256": "25a2a7eb47b686fc448993ae77cc0dfdf2aa0cdd290a8978a3d80d47e6af1c04",
+            "n_files": 177,
+            "version": "1.32.2"
+          },
+          "ai": {
+            "files_sha256": "0f66d8220454f43432fad55fcf3f80e1c7a55236e5b7f6a1ac533928120790d4",
+            "n_files": 5,
+            "version": "7.0.162"
+          },
+          "ajv": {
+            "files_sha256": "152d23442e767f15ba7b44beef82ece6838d86e4bb68f0d0aaa44a1f7db1df2d",
+            "n_files": 143,
+            "version": "8.18.0"
+          },
+          "fast-deep-equal": {
+            "files_sha256": "4e5c019009b20f21f3535cf662985f038637c36b4517a5a06e4f97b43f8dca5f",
+            "n_files": 5,
+            "version": "3.1.3"
+          },
+          "fast-uri": {
+            "files_sha256": "14d91d9777a6ebc991dfa61dcb5a644db9f142523ebd3d56f474bd357eb5fe16",
+            "n_files": 42,
+            "version": "3.1.9"
+          },
+          "json-schema-traverse": {
+            "files_sha256": "edb99fda322e5e1dc5a0795849e0c3def626febcaf4d9cb576d8e85341512890",
+            "n_files": 9,
+            "version": "1.0.0"
+          },
+          "require-from-string": {
+            "files_sha256": "466b77ea9e209daaeb5b4d40218752fb725a1803252db54b356a44c7fe21d54e",
+            "n_files": 2,
+            "version": "2.0.2"
+          },
+          "zod": {
+            "files_sha256": "65b8733ab0b79d33b9758f794f1917b7120c542342dedd39f5d81c25c8a56602",
+            "n_files": 258,
+            "version": "4.6.7"
+          }
+        },
+        "runtime_root": "/tmp/claude-1000/-home-doanlong-extra-benchmark/cac18aef-32ef-4365-b098-e35cc5582a79/scratchpad/diag-otmain/study/experiments/opentrading-runtime",
+        "source_file_count": 286,
+        "source_sha256": "660c81cb4ff651eaa858829dd7ae57b5d724853185354683c00d3880ffb6421d"
+      },
+      "python": {
+        "binary": "/usr/bin/python3.12",
+        "runtime_packages": {
+          "anyio": {
+            "files_sha256": "e3154b28711685f6909c944130588e0bdd7a5f0fded6a18935488645f7966940",
+            "module_path": "/home/doanlong/.local/lib/python3.12/site-packages/anyio",
+            "n_files": 43,
+            "version": "4.14.0"
+          },
+          "attrs": {
+            "files_sha256": "8cefd4a87cce15e4d27716bf377f5dde8850a54b314bc117d5eab6ec8da4f35c",
+            "module_path": "/home/doanlong/.local/lib/python3.12/site-packages/attrs",
+            "n_files": 6,
+            "version": "26.1.0"
+          },
+          "httpcore": {
+            "files_sha256": "20e746966af52456d0f65c2eacfd1d65f49964672350431569ff354a99ed6cb1",
+            "module_path": "/home/doanlong/.local/lib/python3.12/site-packages/httpcore",
+            "n_files": 31,
+            "version": "1.0.9"
+          },
+          "httpx": {
+            "files_sha256": "957117f6b78a3ecf2dfd73d490f60cf56a745e60303e7d276138df14d993bf5b",
+            "module_path": "/home/doanlong/.local/lib/python3.12/site-packages/httpx",
+            "n_files": 23,
+            "version": "0.28.1"
+          },
+          "jsonschema": {
+            "files_sha256": "16cf937f16b31d0886dcfe873b012410119de5d857a023eaa09ba4373871e77d",
+            "module_path": "/home/doanlong/.local/lib/python3.12/site-packages/jsonschema",
+            "n_files": 37,
+            "version": "4.26.0"
+          },
+          "mcp": {
+            "files_sha256": "6b4651c360f9cc948a5940847c4677275f04b7f14361b683af7c0bfb4024bd75",
+            "module_path": "/home/doanlong/.local/lib/python3.12/site-packages/mcp",
+            "n_files": 110,
+            "version": "1.30.0"
+          },
+          "pydantic": {
+            "files_sha256": "0b73694af01f2f2d22efbcd20c4fda770b846a496f0dee186933b53684a7fc5f",
+            "module_path": "/home/doanlong/.local/lib/python3.12/site-packages/pydantic",
+            "n_files": 105,
+            "version": "2.13.4"
+          },
+          "pydantic-core": {
+            "files_sha256": "dde8822952224939f0cf0ce6c0a839fe0c2b141f04f927fc1f87fce00447f13e",
+            "module_path": "/home/doanlong/.local/lib/python3.12/site-packages/pydantic_core",
+            "n_files": 3,
+            "version": "2.46.4"
+          },
+          "referencing": {
+            "files_sha256": "a4665036162d8ab986f6510538d94ec1c8b0cda224dcf9c8ae622ce3977a54a7",
+            "module_path": "/home/doanlong/.local/lib/python3.12/site-packages/referencing",
+            "n_files": 13,
+            "version": "0.37.0"
+          },
+          "rpds-py": {
+            "files_sha256": "20562e23e168f3b5d787d0d544f212699ba241bbcc70828ea6d4d559e2b1e650",
+            "module_path": "/home/doanlong/.local/lib/python3.12/site-packages/rpds",
+            "n_files": 2,
+            "version": "2026.6.3"
+          }
+        },
+        "sha256": "e50d468e8b0adfb05733f5b87b3cff34829c4a8c1aea50c865aa8bdfe4bb150f",
+        "version": "3.12.3 (main, Aug 31 2026, 10:18:26) [GCC 13.3.0]"
+      }
+    },
+    "protocol": {
+      "dependencies": {
+        "plans/2026-11-10-v46u-judge-primary-amendment.md": "b8ecbd15682c2f8b68fa248fbca604cb1a030d7204699e1d5317b0ed8df76973",
+        "plans/2026-11-10-v46u-main-b0-amendment.md": "3f3c4d5fce2ad4430553881e2452030932195a473e318b3a63b4fa439410660f",
+        "plans/2026-11-10-v46u-ot-tool-deadlock-fix.md": "ec7cc02639bdeb1b05439f73bc2ab5257647e7169b86dd3c7fd25592285c13f3",
+        "plans/2026-11-11-v46u-taskset-revision-amendment.md": "a072b161a19c4791bb2ee271fce7b2a5786ae1739bc9c80bd816081a99bfba11"
+      },
+      "path": "plans/2026-11-09-v46-update-execution-protocol.md",
+      "sha256": "9a57092143afbdaaf56db75eee9aab57e51387d7d8b91bebd76d037427f8263f"
+    },
+    "schedule": [
+      {
+        "arm": "opentrading_baseline",
+        "run": 1,
+        "task": "fin-c2-ann-414",
+        "trial_id": "fin-c2-ann-414__opentrading_baseline__r1"
+      },
+      {
+        "arm": "opentrading_baseline",
+        "run": 1,
+        "task": "fin-c3-geo-424",
+        "trial_id": "fin-c3-geo-424__opentrading_baseline__r1"
+      },
+      {
+        "arm": "opentrading_baseline",
+        "run": 1,
+        "task": "fin-c2-vol-413",
+        "trial_id": "fin-c2-vol-413__opentrading_baseline__r1"
+      },
+      {
+        "arm": "opentrading_baseline",
+        "run": 1,
+        "task": "fin-c3-logann-418",
+        "trial_id": "fin-c3-logann-418__opentrading_baseline__r1"
+      },
+      {
+        "arm": "opentrading_baseline",
+        "run": 1,
+        "task": "fin-c4-rebal-426",
+        "trial_id": "fin-c4-rebal-426__opentrading_baseline__r1"
+      },
+      {
+        "arm": "opentrading_baseline",
+        "run": 1,
+        "task": "fin-c3-volregime-420",
+        "trial_id": "fin-c3-volregime-420__opentrading_baseline__r1"
+      },
+      {
+        "arm": "opentrading_baseline",
+        "run": 1,
+        "task": "fin-c3-doubling-422",
+        "trial_id": "fin-c3-doubling-422__opentrading_baseline__r1"
+      },
+      {
+        "arm": "opentrading_baseline",
+        "run": 1,
+        "task": "fin-c4-logann-427",
+        "trial_id": "fin-c4-logann-427__opentrading_baseline__r1"
+      },
+      {
+        "arm": "opentrading_baseline",
+        "run": 1,
+        "task": "fin-c1-pnl-405",
+        "trial_id": "fin-c1-pnl-405__opentrading_baseline__r1"
+      },
+      {
+        "arm": "opentrading_baseline",
+        "run": 1,
+        "task": "fin-c4-stagger-425",
+        "trial_id": "fin-c4-stagger-425__opentrading_baseline__r1"
+      },
+      {
+        "arm": "opentrading_baseline",
+        "run": 1,
+        "task": "fin-c1-cmp-408",
+        "trial_id": "fin-c1-cmp-408__opentrading_baseline__r1"
+      },
+      {
+        "arm": "opentrading_baseline",
+        "run": 1,
+        "task": "fin-c4-signal-429",
+        "trial_id": "fin-c4-signal-429__opentrading_baseline__r1"
+      },
+      {
+        "arm": "opentrading_baseline",
+        "run": 1,
+        "task": "fin-c1-ratio-403",
+        "trial_id": "fin-c1-ratio-403__opentrading_baseline__r1"
+      },
+      {
+        "arm": "opentrading_baseline",
+        "run": 1,
+        "task": "fin-c4-stagger-430",
+        "trial_id": "fin-c4-stagger-430__opentrading_baseline__r1"
+      },
+      {
+        "arm": "opentrading_baseline",
+        "run": 1,
+        "task": "fin-c1-pct-407",
+        "trial_id": "fin-c1-pct-407__opentrading_baseline__r1"
+      },
+      {
+        "arm": "opentrading_baseline",
+        "run": 1,
+        "task": "fin-c2-ma-416",
+        "trial_id": "fin-c2-ma-416__opentrading_baseline__r1"
+      },
+      {
+        "arm": "opentrading_baseline",
+        "run": 1,
+        "task": "fin-c3-volshare-421",
+        "trial_id": "fin-c3-volshare-421__opentrading_baseline__r1"
+      },
+      {
+        "arm": "opentrading_baseline",
+        "run": 1,
+        "task": "fin-c1-pct-401",
+        "trial_id": "fin-c1-pct-401__opentrading_baseline__r1"
+      },
+      {
+        "arm": "opentrading_baseline",
+        "run": 1,
+        "task": "fin-c3-maladder-419",
+        "trial_id": "fin-c3-maladder-419__opentrading_baseline__r1"
+      },
+      {
+        "arm": "opentrading_baseline",
+        "run": 1,
+        "task": "fin-c1-idx-404",
+        "trial_id": "fin-c1-idx-404__opentrading_baseline__r1"
+      },
+      {
+        "arm": "opentrading_baseline",
+        "run": 1,
+        "task": "fin-c2-rs-412",
+        "trial_id": "fin-c2-rs-412__opentrading_baseline__r1"
+      },
+      {
+        "arm": "opentrading_baseline",
+        "run": 1,
+        "task": "fin-c3-rschain-423",
+        "trial_id": "fin-c3-rschain-423__opentrading_baseline__r1"
+      },
+      {
+        "arm": "opentrading_baseline",
+        "run": 1,
+        "task": "fin-c4-dca-428",
+        "trial_id": "fin-c4-dca-428__opentrading_baseline__r1"
+      },
+      {
+        "arm": "opentrading_baseline",
+        "run": 1,
+        "task": "fin-c1-chg-402",
+        "trial_id": "fin-c1-chg-402__opentrading_baseline__r1"
+      },
+      {
+        "arm": "opentrading_baseline",
+        "run": 1,
+        "task": "fin-c3-geo-417",
+        "trial_id": "fin-c3-geo-417__opentrading_baseline__r1"
+      },
+      {
+        "arm": "opentrading_baseline",
+        "run": 1,
+        "task": "fin-c2-pct-411",
+        "trial_id": "fin-c2-pct-411__opentrading_baseline__r1"
+      },
+      {
+        "arm": "opentrading_baseline",
+        "run": 1,
+        "task": "fin-c2-eqw-415",
+        "trial_id": "fin-c2-eqw-415__opentrading_baseline__r1"
+      },
+      {
+        "arm": "opentrading_baseline",
+        "run": 1,
+        "task": "fin-c1-ratio-406",
+        "trial_id": "fin-c1-ratio-406__opentrading_baseline__r1"
+      },
+      {
+        "arm": "opentrading_baseline",
+        "run": 1,
+        "task": "fin-c2-vol-410",
+        "trial_id": "fin-c2-vol-410__opentrading_baseline__r1"
+      },
+      {
+        "arm": "opentrading_baseline",
+        "run": 1,
+        "task": "fin-c2-ma-409",
+        "trial_id": "fin-c2-ma-409__opentrading_baseline__r1"
+      },
+      {
+        "arm": "opentrading_baseline",
+        "run": 2,
+        "task": "fin-c3-geo-424",
+        "trial_id": "fin-c3-geo-424__opentrading_baseline__r2"
+      },
+      {
+        "arm": "opentrading_baseline",
+        "run": 2,
+        "task": "fin-c2-vol-413",
+        "trial_id": "fin-c2-vol-413__opentrading_baseline__r2"
+      },
+      {
+        "arm": "opentrading_baseline",
+        "run": 2,
+        "task": "fin-c3-logann-418",
+        "trial_id": "fin-c3-logann-418__opentrading_baseline__r2"
+      },
+      {
+        "arm": "opentrading_baseline",
+        "run": 2,
+        "task": "fin-c4-rebal-426",
+        "trial_id": "fin-c4-rebal-426__opentrading_baseline__r2"
+      },
+      {
+        "arm": "opentrading_baseline",
+        "run": 2,
+        "task": "fin-c3-volregime-420",
+        "trial_id": "fin-c3-volregime-420__opentrading_baseline__r2"
+      },
+      {
+        "arm": "opentrading_baseline",
+        "run": 2,
+        "task": "fin-c3-doubling-422",
+        "trial_id": "fin-c3-doubling-422__opentrading_baseline__r2"
+      },
+      {
+        "arm": "opentrading_baseline",
+        "run": 2,
+        "task": "fin-c4-logann-427",
+        "trial_id": "fin-c4-logann-427__opentrading_baseline__r2"
+      },
+      {
+        "arm": "opentrading_baseline",
+        "run": 2,
+        "task": "fin-c1-pnl-405",
+        "trial_id": "fin-c1-pnl-405__opentrading_baseline__r2"
+      },
+      {
+        "arm": "opentrading_baseline",
+        "run": 2,
+        "task": "fin-c4-stagger-425",
+        "trial_id": "fin-c4-stagger-425__opentrading_baseline__r2"
+      },
+      {
+        "arm": "opentrading_baseline",
+        "run": 2,
+        "task": "fin-c1-cmp-408",
+        "trial_id": "fin-c1-cmp-408__opentrading_baseline__r2"
+      },
+      {
+        "arm": "opentrading_baseline",
+        "run": 2,
+        "task": "fin-c4-signal-429",
+        "trial_id": "fin-c4-signal-429__opentrading_baseline__r2"
+      },
+      {
+        "arm": "opentrading_baseline",
+        "run": 2,
+        "task": "fin-c1-ratio-403",
+        "trial_id": "fin-c1-ratio-403__opentrading_baseline__r2"
+      },
+      {
+        "arm": "opentrading_baseline",
+        "run": 2,
+        "task": "fin-c4-stagger-430",
+        "trial_id": "fin-c4-stagger-430__opentrading_baseline__r2"
+      },
+      {
+        "arm": "opentrading_baseline",
+        "run": 2,
+        "task": "fin-c1-pct-407",
+        "trial_id": "fin-c1-pct-407__opentrading_baseline__r2"
+      },
+      {
+        "arm": "opentrading_baseline",
+        "run": 2,
+        "task": "fin-c2-ma-416",
+        "trial_id": "fin-c2-ma-416__opentrading_baseline__r2"
+      },
+      {
+        "arm": "opentrading_baseline",
+        "run": 2,
+        "task": "fin-c3-volshare-421",
+        "trial_id": "fin-c3-volshare-421__opentrading_baseline__r2"
+      },
+      {
+        "arm": "opentrading_baseline",
+        "run": 2,
+        "task": "fin-c1-pct-401",
+        "trial_id": "fin-c1-pct-401__opentrading_baseline__r2"
+      },
+      {
+        "arm": "opentrading_baseline",
+        "run": 2,
+        "task": "fin-c3-maladder-419",
+        "trial_id": "fin-c3-maladder-419__opentrading_baseline__r2"
+      },
+      {
+        "arm": "opentrading_baseline",
+        "run": 2,
+        "task": "fin-c1-idx-404",
+        "trial_id": "fin-c1-idx-404__opentrading_baseline__r2"
+      },
+      {
+        "arm": "opentrading_baseline",
+        "run": 2,
+        "task": "fin-c2-rs-412",
+        "trial_id": "fin-c2-rs-412__opentrading_baseline__r2"
+      },
+      {
+        "arm": "opentrading_baseline",
+        "run": 2,
+        "task": "fin-c3-rschain-423",
+        "trial_id": "fin-c3-rschain-423__opentrading_baseline__r2"
+      },
+      {
+        "arm": "opentrading_baseline",
+        "run": 2,
+        "task": "fin-c4-dca-428",
+        "trial_id": "fin-c4-dca-428__opentrading_baseline__r2"
+      },
+      {
+        "arm": "opentrading_baseline",
+        "run": 2,
+        "task": "fin-c1-chg-402",
+        "trial_id": "fin-c1-chg-402__opentrading_baseline__r2"
+      },
+      {
+        "arm": "opentrading_baseline",
+        "run": 2,
+        "task": "fin-c3-geo-417",
+        "trial_id": "fin-c3-geo-417__opentrading_baseline__r2"
+      },
+      {
+        "arm": "opentrading_baseline",
+        "run": 2,
+        "task": "fin-c2-pct-411",
+        "trial_id": "fin-c2-pct-411__opentrading_baseline__r2"
+      },
+      {
+        "arm": "opentrading_baseline",
+        "run": 2,
+        "task": "fin-c2-eqw-415",
+        "trial_id": "fin-c2-eqw-415__opentrading_baseline__r2"
+      },
+      {
+        "arm": "opentrading_baseline",
+        "run": 2,
+        "task": "fin-c1-ratio-406",
+        "trial_id": "fin-c1-ratio-406__opentrading_baseline__r2"
+      },
+      {
+        "arm": "opentrading_baseline",
+        "run": 2,
+        "task": "fin-c2-vol-410",
+        "trial_id": "fin-c2-vol-410__opentrading_baseline__r2"
+      },
+      {
+        "arm": "opentrading_baseline",
+        "run": 2,
+        "task": "fin-c2-ma-409",
+        "trial_id": "fin-c2-ma-409__opentrading_baseline__r2"
+      },
+      {
+        "arm": "opentrading_baseline",
+        "run": 2,
+        "task": "fin-c2-ann-414",
+        "trial_id": "fin-c2-ann-414__opentrading_baseline__r2"
+      }
+    ],
+    "schema_version": 3,
+    "settings": {
+      "arms": [
+        "opentrading_baseline"
+      ],
+      "clock_policy": "snapshot_as_of; OpenTrading native now pinned; other native clocks observed in wire capture",
+      "conditions": {
+        "opentrading_baseline": {
+          "finance_policy": false,
+          "native_arm": "opentrading",
+          "prompt_variant": "baseline"
+        }
+      },
+      "effort": "none",
+      "freeze_sha256": null,
+      "include_quarantined": false,
+      "max_output_tokens": 8192,
+      "max_requests": 24,
+      "max_total_tokens": 3600000,
+      "model": "deepseek/deepseek-v4.1-flash-1017",
+      "pause": 2.0,
+      "provider_timeout_s": 240.0,
+      "quarantined_tasks": {},
+      "retry": 0,
+      "retry_backoff": 4,
+      "runs": 2,
+      "seed": 20261108,
+      "split": "main",
+      "timeout": 900.0
+    },
+    "task_contracts": {
+      "fin-c1-chg-402": {
+        "answerable_fields": [
+          "value"
+        ],
+        "confirmatory_eligible": true,
+        "exclusion_reason": null,
+        "partial": false,
+        "payload_family_sha256": "b18ac1fe0c1698ba02a9316660cbb696c10fcfa49c204be3dae789dcc31caee3",
+        "required_payload_keys": [
+          "hist:FPT"
+        ],
+        "scoring": "value"
+      },
+      "fin-c1-cmp-408": {
+        "answerable_fields": [
+          "values.GAS",
+          "values.PLX",
+          "values.diff_pp"
+        ],
+        "confirmatory_eligible": true,
+        "exclusion_reason": null,
+        "partial": false,
+        "payload_family_sha256": "46a46c5002c4531bdac26e129d026117615e84f7ecdfb49bb6610bced4b78e53",
+        "required_payload_keys": [
+          "hist:GAS",
+          "hist:PLX"
+        ],
+        "scoring": "value"
+      },
+      "fin-c1-idx-404": {
+        "answerable_fields": [
+          "values.points",
+          "values.pct"
+        ],
+        "confirmatory_eligible": true,
+        "exclusion_reason": null,
+        "partial": false,
+        "payload_family_sha256": "52c96b90cfd1ed6777a318d3ed8f7824bdc39ed888ed089a7dd4895648489c19",
+        "required_payload_keys": [
+          "idx:VNINDEX"
+        ],
+        "scoring": "value"
+      },
+      "fin-c1-pct-401": {
+        "answerable_fields": [
+          "value"
+        ],
+        "confirmatory_eligible": true,
+        "exclusion_reason": null,
+        "partial": false,
+        "payload_family_sha256": "602defde19de084c0f5ea8b88825d753ac50c063f9f1fbcd235a6c94620ec559",
+        "required_payload_keys": [
+          "hist:VCB"
+        ],
+        "scoring": "value"
+      },
+      "fin-c1-pct-407": {
+        "answerable_fields": [
+          "value"
+        ],
+        "confirmatory_eligible": true,
+        "exclusion_reason": null,
+        "partial": false,
+        "payload_family_sha256": "0d72bb64aef0d4b8d934c793a68cc5bf29fef3ed59739b7f01c03da52f82a5b6",
+        "required_payload_keys": [
+          "hist:MWG"
+        ],
+        "scoring": "value"
+      },
+      "fin-c1-pnl-405": {
+        "answerable_fields": [
+          "value"
+        ],
+        "confirmatory_eligible": true,
+        "exclusion_reason": null,
+        "partial": false,
+        "payload_family_sha256": "9c43e876643a9e2da0307918eef06f013ce5dba8a576a0685d06a931b7d22481",
+        "required_payload_keys": [
+          "hist:HPG"
+        ],
+        "scoring": "value"
+      },
+      "fin-c1-ratio-403": {
+        "answerable_fields": [
+          "value"
+        ],
+        "confirmatory_eligible": true,
+        "exclusion_reason": null,
+        "partial": false,
+        "payload_family_sha256": "1b3d72d619e24850bcdab990310c83b3be273ff891745afea125e243811fd95b",
+        "required_payload_keys": [
+          "hist:FPT",
+          "hist:VNM"
+        ],
+        "scoring": "value"
+      },
+      "fin-c1-ratio-406": {
+        "answerable_fields": [
+          "value"
+        ],
+        "confirmatory_eligible": true,
+        "exclusion_reason": null,
+        "partial": false,
+        "payload_family_sha256": "305b1f4129dfa2688bbe0a317f8310266df5569eba709ea2ac7b252e55e0e7b4",
+        "required_payload_keys": [
+          "idx:VN30",
+          "idx:VNINDEX"
+        ],
+        "scoring": "value"
+      },
+      "fin-c2-ann-414": {
+        "answerable_fields": [
+          "values.pct_60",
+          "values.annualized_pct"
+        ],
+        "confirmatory_eligible": true,
+        "exclusion_reason": null,
+        "partial": false,
+        "payload_family_sha256": "71cf80205b4b990d9474caaaa44bd3a851de3d4babb053417eac3aa254a4fa7b",
+        "required_payload_keys": [
+          "hist:VHM"
+        ],
+        "scoring": "value"
+      },
+      "fin-c2-eqw-415": {
+        "answerable_fields": [
+          "values.avg_pct",
+          "values.best_pct"
+        ],
+        "confirmatory_eligible": true,
+        "exclusion_reason": null,
+        "partial": false,
+        "payload_family_sha256": "b781df61a9b19ae13b64b127ac6820e5357488dd9f7e2420d5752e7a3aca8ded",
+        "required_payload_keys": [
+          "hist:ACB",
+          "hist:BID",
+          "hist:VCB"
+        ],
+        "scoring": "value"
+      },
+      "fin-c2-ma-409": {
+        "answerable_fields": [
+          "values.ma",
+          "values.gap_pct"
+        ],
+        "confirmatory_eligible": true,
+        "exclusion_reason": null,
+        "partial": false,
+        "payload_family_sha256": "9ae3b4aad5753ea0ba847a5a677b4ea1bdfc6d03dcc261799f1a34ef4ef26c88",
+        "required_payload_keys": [
+          "hist:TCB"
+        ],
+        "scoring": "value"
+      },
+      "fin-c2-ma-416": {
+        "answerable_fields": [
+          "values.ma",
+          "values.gap_pct"
+        ],
+        "confirmatory_eligible": true,
+        "exclusion_reason": null,
+        "partial": false,
+        "payload_family_sha256": "3f91d5f2affd39cc40e4997fc60ee8b2cdaa41ac25c42b360772334b8a045871",
+        "required_payload_keys": [
+          "hist:SAB"
+        ],
+        "scoring": "value"
+      },
+      "fin-c2-pct-411": {
+        "answerable_fields": [
+          "value"
+        ],
+        "confirmatory_eligible": true,
+        "exclusion_reason": null,
+        "partial": false,
+        "payload_family_sha256": "6213c3ed33f66379b4137c574f8d93c11c5ff0ae875614a82d04556195c68a87",
+        "required_payload_keys": [
+          "hist:MBB"
+        ],
+        "scoring": "value"
+      },
+      "fin-c2-rs-412": {
+        "answerable_fields": [
+          "values.stock_pct",
+          "values.bench_pct",
+          "values.relative_pp"
+        ],
+        "confirmatory_eligible": true,
+        "exclusion_reason": null,
+        "partial": false,
+        "payload_family_sha256": "bfa5948f6b359170074dcbc1cce548aed4e8ce3c0348c47c5a753d200145b643",
+        "required_payload_keys": [
+          "hist:HPG",
+          "idx:VNINDEX"
+        ],
+        "scoring": "value"
+      },
+      "fin-c2-vol-410": {
+        "answerable_fields": [
+          "value"
+        ],
+        "confirmatory_eligible": true,
+        "exclusion_reason": null,
+        "partial": false,
+        "payload_family_sha256": "68b50a732e34effca3b77dcd3730919127ee8bbef3963ae7ca74906a69ec822e",
+        "required_payload_keys": [
+          "hist:SSI"
+        ],
+        "scoring": "value"
+      },
+      "fin-c2-vol-413": {
+        "answerable_fields": [
+          "value"
+        ],
+        "confirmatory_eligible": true,
+        "exclusion_reason": null,
+        "partial": false,
+        "payload_family_sha256": "9898637065cc0c364c1844d776e66cc95930975cb6017b6f52b26e8bb2867997",
+        "required_payload_keys": [
+          "hist:VIC"
+        ],
+        "scoring": "value"
+      },
+      "fin-c3-doubling-422": {
+        "answerable_fields": [
+          "values.ann_pct",
+          "values.projected_price",
+          "values.doubling_sessions"
+        ],
+        "confirmatory_eligible": true,
+        "exclusion_reason": null,
+        "partial": false,
+        "payload_family_sha256": "9898637065cc0c364c1844d776e66cc95930975cb6017b6f52b26e8bb2867997",
+        "required_payload_keys": [
+          "hist:VIC"
+        ],
+        "scoring": "value"
+      },
+      "fin-c3-geo-417": {
+        "answerable_fields": [
+          "values.ann_VCB",
+          "values.ann_HPG",
+          "values.ann_FPT",
+          "values.geo_period_pct",
+          "values.geo_ann_pct"
+        ],
+        "confirmatory_eligible": true,
+        "exclusion_reason": null,
+        "partial": false,
+        "payload_family_sha256": "ea3a22dccd6e5cf5320e9fc915c82f92b633debac79bce11f6a783b27121d1d2",
+        "required_payload_keys": [
+          "hist:FPT",
+          "hist:HPG",
+          "hist:VCB"
+        ],
+        "scoring": "value"
+      },
+      "fin-c3-geo-424": {
+        "answerable_fields": [
+          "values.ann_GVR",
+          "values.ann_POW",
+          "values.ann_PLX",
+          "values.geo_period_pct",
+          "values.geo_ann_pct"
+        ],
+        "confirmatory_eligible": true,
+        "exclusion_reason": null,
+        "partial": false,
+        "payload_family_sha256": "9a2e49f8b39e7cf6f264a67cbb4fcf30202eb02621d06b8bb12545c45781fe97",
+        "required_payload_keys": [
+          "hist:GVR",
+          "hist:PLX",
+          "hist:POW"
+        ],
+        "scoring": "value"
+      },
+      "fin-c3-logann-418": {
+        "answerable_fields": [
+          "values.log_ann_STB",
+          "values.log_ann_MWG",
+          "values.log_ann_VNM",
+          "values.log_ann_SAB",
+          "values.avg_log_ann",
+          "values.bench_log_ann",
+          "values.excess_log_pp",
+          "values.excess_simple_pct"
+        ],
+        "confirmatory_eligible": true,
+        "exclusion_reason": null,
+        "partial": false,
+        "payload_family_sha256": "5dfe56de7895c7b97c9f9a2c26e07950a5828b23cccb42caab2a9e2d26fb5c27",
+        "required_payload_keys": [
+          "hist:MWG",
+          "hist:SAB",
+          "hist:STB",
+          "hist:VNM",
+          "idx:VNINDEX"
+        ],
+        "scoring": "value"
+      },
+      "fin-c3-maladder-419": {
+        "answerable_fields": [
+          "values.VIC.ma20",
+          "values.VIC.ma60",
+          "values.VIC.ma120",
+          "values.VIC.gap20_120_pct",
+          "values.VHM.ma20",
+          "values.VHM.ma60",
+          "values.VHM.ma120",
+          "values.VHM.gap20_120_pct",
+          "values.MSN.ma20",
+          "values.MSN.ma60",
+          "values.MSN.ma120",
+          "values.MSN.gap20_120_pct",
+          "values.GAS.ma20",
+          "values.GAS.ma60",
+          "values.GAS.ma120",
+          "values.GAS.gap20_120_pct",
+          "values.aligned_uptrend"
+        ],
+        "confirmatory_eligible": true,
+        "exclusion_reason": null,
+        "partial": false,
+        "payload_family_sha256": "ea50b3f784eae81fdafbc5bb8e7c2ea83f885b1f7b3d5535fc9e646b22aecbc7",
+        "required_payload_keys": [
+          "hist:GAS",
+          "hist:MSN",
+          "hist:VHM",
+          "hist:VIC"
+        ],
+        "scoring": "value"
+      },
+      "fin-c3-rschain-423": {
+        "answerable_fields": [
+          "values.rs_TCB",
+          "values.rs_MBB",
+          "values.rs_CTG",
+          "values.rs_BID",
+          "values.rs_VCB",
+          "values.avg_rs_pp",
+          "values.excess_ann_pct"
+        ],
+        "confirmatory_eligible": true,
+        "exclusion_reason": null,
+        "partial": false,
+        "payload_family_sha256": "01de4588a8d8235e373cc7ac2270739bb17957ca681d4ca252401c1e88cc2b48",
+        "required_payload_keys": [
+          "hist:BID",
+          "hist:CTG",
+          "hist:MBB",
+          "hist:TCB",
+          "hist:VCB",
+          "idx:VN30"
+        ],
+        "scoring": "value"
+      },
+      "fin-c3-volregime-420": {
+        "answerable_fields": [
+          "values.HPG.avg20",
+          "values.HPG.avg120",
+          "values.HPG.ratio",
+          "values.SSI.avg20",
+          "values.SSI.avg120",
+          "values.SSI.ratio",
+          "values.FPT.avg20",
+          "values.FPT.avg120",
+          "values.FPT.ratio",
+          "values.MWG.avg20",
+          "values.MWG.avg120",
+          "values.MWG.ratio",
+          "values.VNM.avg20",
+          "values.VNM.avg120",
+          "values.VNM.ratio",
+          "ranking"
+        ],
+        "confirmatory_eligible": true,
+        "exclusion_reason": null,
+        "partial": false,
+        "payload_family_sha256": "4233d137981b9641071c318f22416a590c926b6147c0cbf56874397fffa4098a",
+        "required_payload_keys": [
+          "hist:FPT",
+          "hist:HPG",
+          "hist:MWG",
+          "hist:SSI",
+          "hist:VNM"
+        ],
+        "scoring": "value"
+      },
+      "fin-c3-volshare-421": {
+        "answerable_fields": [
+          "values.totals.ACB",
+          "values.totals.STB",
+          "values.totals.VPB",
+          "values.totals.HDB",
+          "values.totals.TPB",
+          "values.grand_total",
+          "values.share_pct.ACB",
+          "values.share_pct.STB",
+          "values.share_pct.VPB",
+          "values.share_pct.HDB",
+          "values.share_pct.TPB"
+        ],
+        "confirmatory_eligible": true,
+        "exclusion_reason": null,
+        "partial": false,
+        "payload_family_sha256": "7b4735bfdb0ecb5516593d661b15a1a09427327d7441176bfdde6c0e1d7955c4",
+        "required_payload_keys": [
+          "hist:ACB",
+          "hist:HDB",
+          "hist:STB",
+          "hist:TPB",
+          "hist:VPB"
+        ],
+        "scoring": "value"
+      },
+      "fin-c4-dca-428": {
+        "answerable_fields": [
+          "values.FPT.shares",
+          "values.FPT.avg_cost",
+          "values.FPT.value",
+          "values.MWG.shares",
+          "values.MWG.avg_cost",
+          "values.MWG.value",
+          "values.VNM.shares",
+          "values.VNM.avg_cost",
+          "values.VNM.value",
+          "values.invested",
+          "values.value",
+          "values.pnl",
+          "values.return_pct"
+        ],
+        "confirmatory_eligible": true,
+        "exclusion_reason": null,
+        "partial": false,
+        "payload_family_sha256": "5c6f27bea68ef76213de07ebd0e7d6677c555249683fdbde67825c7d3b96e15d",
+        "required_payload_keys": [
+          "hist:FPT",
+          "hist:MWG",
+          "hist:VNM"
+        ],
+        "scoring": "value"
+      },
+      "fin-c4-logann-427": {
+        "answerable_fields": [
+          "values.log_ann_VCB",
+          "values.log_ann_BID",
+          "values.log_ann_CTG",
+          "values.log_ann_MBB",
+          "values.log_ann_TCB",
+          "values.log_ann_HPG",
+          "values.log_ann_FPT",
+          "values.log_ann_MWG",
+          "values.log_ann_VNM",
+          "values.log_ann_GAS",
+          "values.avg_log_ann",
+          "values.bench_log_ann",
+          "values.excess_log_pp",
+          "values.excess_simple_pct"
+        ],
+        "confirmatory_eligible": true,
+        "exclusion_reason": null,
+        "partial": false,
+        "payload_family_sha256": "8976f1a2128c89dfe71ec82d20b07a9397af81dd1ad84ae2b8aba9ad940a5a60",
+        "required_payload_keys": [
+          "hist:BID",
+          "hist:CTG",
+          "hist:FPT",
+          "hist:GAS",
+          "hist:HPG",
+          "hist:MBB",
+          "hist:MWG",
+          "hist:TCB",
+          "hist:VCB",
+          "hist:VNM",
+          "idx:VNINDEX"
+        ],
+        "scoring": "value"
+      },
+      "fin-c4-rebal-426": {
+        "answerable_fields": [
+          "values.period1_pct",
+          "values.period2_pct",
+          "values.rebalanced_total_pct",
+          "values.rebalanced_ann_pct",
+          "values.buy_hold_total_pct",
+          "values.rebalance_minus_buyhold_pp"
+        ],
+        "confirmatory_eligible": true,
+        "exclusion_reason": null,
+        "partial": false,
+        "payload_family_sha256": "22afcf4563e1a1d5d5ec50a99e66f1327fb713e219164c21c9c1e6136069b5a5",
+        "required_payload_keys": [
+          "hist:ACB",
+          "hist:BID",
+          "hist:CTG",
+          "hist:MBB",
+          "hist:TCB",
+          "hist:VCB"
+        ],
+        "scoring": "value"
+      },
+      "fin-c4-signal-429": {
+        "answerable_fields": [
+          "values.selected",
+          "values.selected_pct",
+          "values.selected_ann_pct",
+          "values.all_pct",
+          "values.edge_pp"
+        ],
+        "confirmatory_eligible": true,
+        "exclusion_reason": null,
+        "partial": false,
+        "payload_family_sha256": "e32aacd6c50318715c42552e58f5f27040e939a926df263ebbc48121493b190e",
+        "required_payload_keys": [
+          "hist:ACB",
+          "hist:CTG",
+          "hist:HDB",
+          "hist:MBB",
+          "hist:STB",
+          "hist:TCB",
+          "hist:TPB",
+          "hist:VPB"
+        ],
+        "scoring": "value"
+      },
+      "fin-c4-stagger-425": {
+        "answerable_fields": [
+          "values.positions.HPG",
+          "values.positions.FPT",
+          "values.positions.VCB",
+          "values.positions.MWG",
+          "values.positions.GAS",
+          "values.positions.SSI",
+          "values.total_cost",
+          "values.total_value",
+          "values.pnl",
+          "values.value_weighted_ann_pct"
+        ],
+        "confirmatory_eligible": true,
+        "exclusion_reason": null,
+        "partial": false,
+        "payload_family_sha256": "05831dd5ee13764767253122c420758fc641b2bf5005bf6c92eaefa2be687882",
+        "required_payload_keys": [
+          "hist:FPT",
+          "hist:GAS",
+          "hist:HPG",
+          "hist:MWG",
+          "hist:SSI",
+          "hist:VCB"
+        ],
+        "scoring": "value"
+      },
+      "fin-c4-stagger-430": {
+        "answerable_fields": [
+          "values.positions.VIC",
+          "values.positions.VHM",
+          "values.positions.MSN",
+          "values.positions.SAB",
+          "values.positions.VJC",
+          "values.positions.PLX",
+          "values.positions.POW",
+          "values.total_cost",
+          "values.total_value",
+          "values.pnl",
+          "values.value_weighted_ann_pct"
+        ],
+        "confirmatory_eligible": true,
+        "exclusion_reason": null,
+        "partial": false,
+        "payload_family_sha256": "c419fe0ff5de296dee110f1361d5a26bdd5a4fe25f99786bcf758ce16062c655",
+        "required_payload_keys": [
+          "hist:MSN",
+          "hist:PLX",
+          "hist:POW",
+          "hist:SAB",
+          "hist:VHM",
+          "hist:VIC",
+          "hist:VJC"
+        ],
+        "scoring": "value"
+      }
+    },
+    "tasks": {
+      "fin-c1-chg-402": {
+        "environment/payloads.json": "b18ac1fe0c1698ba02a9316660cbb696c10fcfa49c204be3dae789dcc31caee3",
+        "instruction.md": "c4b766624ce36dc5d89db45b1b7f4a6bf1c7e0b6c38f625a5675a3831b7b51eb",
+        "solution/gold.json": "5f7732b17263c100bb7a63f95d712921c34e574f5c04381b98672f7364abb839",
+        "solution/oracle.py": "ce2b1e590baa36b980f6b5af326573d79dfcf0f9acc5ca5a09f37ac7633f0255",
+        "task.toml": "efdb8448bd022417212145dc20329aa23b66a609566c76d1ff13d171574e8031",
+        "tests/grader.py": "0032f4e83888a168fbed44d8bd88f3c0efabdb78f0f653fcd0b94ee035967b0b"
+      },
+      "fin-c1-cmp-408": {
+        "environment/payloads.json": "46a46c5002c4531bdac26e129d026117615e84f7ecdfb49bb6610bced4b78e53",
+        "instruction.md": "731f22f2e05ddc2353deb9a1c3af309fa79c823df86791af34aef4b89a9d38ae",
+        "solution/gold.json": "8277a1d8ce2e7c1169d71e5850cba5ec34edc5f4a3a7eea0ba7263dd9236111d",
+        "solution/oracle.py": "701e9518893d4ff8ea31713ba0d60c5d146f7b66d31da226dab75863bfe23bc3",
+        "task.toml": "a7f8b4e8f35df9c55c263ff9155de5b6dc6e2e40f9500a7c39a571e8a0d110b5",
+        "tests/grader.py": "0032f4e83888a168fbed44d8bd88f3c0efabdb78f0f653fcd0b94ee035967b0b"
+      },
+      "fin-c1-idx-404": {
+        "environment/payloads.json": "52c96b90cfd1ed6777a318d3ed8f7824bdc39ed888ed089a7dd4895648489c19",
+        "instruction.md": "545c20d15a9b553c722eae06f4c44492e616fb5f6cd1c1382615af78a9174ca9",
+        "solution/gold.json": "a8527c5311f9c7e48efa2628419fc9191edbbbf0b5f16573ec5f648ea3415d14",
+        "solution/oracle.py": "5d42e8099858a59cfabda4db8b9f1aed6119e034cebe1cdeff0c1b1f1e2642a6",
+        "task.toml": "ae74e40a2f56ae9b12128ea2e16aadbeb9865b3114eda77f1afbcc9879aa9201",
+        "tests/grader.py": "0032f4e83888a168fbed44d8bd88f3c0efabdb78f0f653fcd0b94ee035967b0b"
+      },
+      "fin-c1-pct-401": {
+        "environment/payloads.json": "602defde19de084c0f5ea8b88825d753ac50c063f9f1fbcd235a6c94620ec559",
+        "instruction.md": "d8fa1ce221ebcc3d369ac700c136982e98eecd6f62a617e5b3576c59e262e520",
+        "solution/gold.json": "5f7682ac4f9749edcfb2b4965ba91a0fa21fe0486a39b64d0022b044cecb97da",
+        "solution/oracle.py": "ada2db4bd96b7e74ea558db7e2e7753f832b83949c0c307fd0f3f8f1ac59225a",
+        "task.toml": "c1cb71a596bdf3b0d87518d8df70827e76f2f8170f7752d146014382fe4db564",
+        "tests/grader.py": "0032f4e83888a168fbed44d8bd88f3c0efabdb78f0f653fcd0b94ee035967b0b"
+      },
+      "fin-c1-pct-407": {
+        "environment/payloads.json": "0d72bb64aef0d4b8d934c793a68cc5bf29fef3ed59739b7f01c03da52f82a5b6",
+        "instruction.md": "408d58ab5f46757c2a25420f5e6010b04d8247863624c66beea320b7458bceca",
+        "solution/gold.json": "e9a746df90b423875d92550fdffa0cd9cbec29053a2a19f8710a025306a7be5a",
+        "solution/oracle.py": "1ec798667f73c79cd0f3f1cbef9926e652a1f8a0478e68634511be859d553b6f",
+        "task.toml": "8b9cbbf9162562566a61176db20a7df8c4a9e95d7f7069036e11ecd5bf5e731b",
+        "tests/grader.py": "0032f4e83888a168fbed44d8bd88f3c0efabdb78f0f653fcd0b94ee035967b0b"
+      },
+      "fin-c1-pnl-405": {
+        "environment/payloads.json": "9c43e876643a9e2da0307918eef06f013ce5dba8a576a0685d06a931b7d22481",
+        "instruction.md": "be6391a92fbae621eeb05fde8214a81cebd1b04c6ca1e97f4f962cde66ead47b",
+        "solution/gold.json": "907a04afb5ab9077b4fc63bbb6b81fc2cde967171de826c644777a967b70ec40",
+        "solution/oracle.py": "72c605943385845225426d054ada3f06a2508212a75ce19b9f85076d9383b69d",
+        "task.toml": "5f6b58a8ff0bbb59eb0c3cb05278c36513e75de77e41551b4b8de15ee8129815",
+        "tests/grader.py": "0032f4e83888a168fbed44d8bd88f3c0efabdb78f0f653fcd0b94ee035967b0b"
+      },
+      "fin-c1-ratio-403": {
+        "environment/payloads.json": "1b3d72d619e24850bcdab990310c83b3be273ff891745afea125e243811fd95b",
+        "instruction.md": "5ce2c4924bdd5139c85b758dc12c66344a360755faa7134b80d2738f335a274d",
+        "solution/gold.json": "b5607d6d5ee646c893db80c9fc3da581bc84954708d5172f6aaca8da01e30678",
+        "solution/oracle.py": "afbe43c35a77daeb92db289b30e6899bee5a7062f61cdb2e2d6228efedf17bc2",
+        "task.toml": "90b46b828241603b7a323be826a401ea1ca8b954ed4efba88c9ed4b9794f8c8e",
+        "tests/grader.py": "0032f4e83888a168fbed44d8bd88f3c0efabdb78f0f653fcd0b94ee035967b0b"
+      },
+      "fin-c1-ratio-406": {
+        "environment/payloads.json": "305b1f4129dfa2688bbe0a317f8310266df5569eba709ea2ac7b252e55e0e7b4",
+        "instruction.md": "b2f3a6e96c731c0b8ce7bd5008121bdc447019ea65ba8deb4dc0d73cb931c452",
+        "solution/gold.json": "4fbd9bb8f6149b1b1b845b075752b718bb9ce3c9154bda36a0eb05e770bbb34f",
+        "solution/oracle.py": "032209fc814c81e1a56e9bf0d00a8343c749fc4603b0476f92019c8dcf9e29b6",
+        "task.toml": "51af0088db51ca35ccf71eabfa4cfedb6c466d227667b67d95d6b1da81c33ee1",
+        "tests/grader.py": "0032f4e83888a168fbed44d8bd88f3c0efabdb78f0f653fcd0b94ee035967b0b"
+      },
+      "fin-c2-ann-414": {
+        "environment/payloads.json": "71cf80205b4b990d9474caaaa44bd3a851de3d4babb053417eac3aa254a4fa7b",
+        "instruction.md": "9160042dbaa68d5cef97feb947eac706a94c9fa0d7bde24aedbc53c676ace8b3",
+        "solution/gold.json": "2f1ad335936d5cedd7768fa8f1bdf869f6b7c5a2975a3f56a9f350241667a544",
+        "solution/oracle.py": "0b67de29a05324bacff17dd36100123b04761d6829bfe520710875d6763cb1ea",
+        "task.toml": "c36741da21c4677bae7475b4d5eba50399ea016205d99e1369d2f0330a22101b",
+        "tests/grader.py": "0032f4e83888a168fbed44d8bd88f3c0efabdb78f0f653fcd0b94ee035967b0b"
+      },
+      "fin-c2-eqw-415": {
+        "environment/payloads.json": "b781df61a9b19ae13b64b127ac6820e5357488dd9f7e2420d5752e7a3aca8ded",
+        "instruction.md": "8047326ba8f4daf364403558f93cb9523013509e526e30946509540a29bb01d6",
+        "solution/gold.json": "4198be83eecb721911832757ced274dbb535e7b0b6ea878484742cefa735219e",
+        "solution/oracle.py": "6311ebea94bab9fb3d1046cfe0749eebf64aa0eb896aa119cec741ee257bd5f8",
+        "task.toml": "0eb68f8c8027e2bccfc7a237f7beccf23fd943e40ed040b0e68f300e0c9654bc",
+        "tests/grader.py": "0032f4e83888a168fbed44d8bd88f3c0efabdb78f0f653fcd0b94ee035967b0b"
+      },
+      "fin-c2-ma-409": {
+        "environment/payloads.json": "9ae3b4aad5753ea0ba847a5a677b4ea1bdfc6d03dcc261799f1a34ef4ef26c88",
+        "instruction.md": "641782c2f01c7d65e8cb593e4e49f82cb24af720100b0a21e8179647a1c9de56",
+        "solution/gold.json": "1dc26113f5f4973d1f9693fc2784771883f0a9a10cba6ffd1816deb4757e54eb",
+        "solution/oracle.py": "06bbaaca9d68b45b0dc9ba17bacb28b5869ee7fad46af9ccffb49bbcf1077c44",
+        "task.toml": "55d3a6ecfbb8d8647d0db719e4ddd6b3b9d5356cc4fc6449444ca6493a99342c",
+        "tests/grader.py": "0032f4e83888a168fbed44d8bd88f3c0efabdb78f0f653fcd0b94ee035967b0b"
+      },
+      "fin-c2-ma-416": {
+        "environment/payloads.json": "3f91d5f2affd39cc40e4997fc60ee8b2cdaa41ac25c42b360772334b8a045871",
+        "instruction.md": "9b47ee2bae8000346252449d524ba29b647b170392cd67c53a46ef762fc4db23",
+        "solution/gold.json": "f8d9bf7095716c7b6c4dcf8558c27d7d6af5559ddff61ee4cf39ddd51c6e9148",
+        "solution/oracle.py": "abbe0f3db654a67729da309c780b5404cdaf2f77b488074f1423b755a58da6e4",
+        "task.toml": "4d0fd249c6ab07094c471e00c3937680dd95411551320c493f26020577461090",
+        "tests/grader.py": "0032f4e83888a168fbed44d8bd88f3c0efabdb78f0f653fcd0b94ee035967b0b"
+      },
+      "fin-c2-pct-411": {
+        "environment/payloads.json": "6213c3ed33f66379b4137c574f8d93c11c5ff0ae875614a82d04556195c68a87",
+        "instruction.md": "d15deabb051c5cc3f438ad7846da3e41281e7085f52496fed118a2bd8420f5cb",
+        "solution/gold.json": "2340727d7702d00702fe7f6fc0441ec7f488cd1b1bfd7d6e6a8e62b1c89ed3e3",
+        "solution/oracle.py": "b2edd0ae6dc7dc4b91e29f1cde7ab0f0be51d13789afe038d2ba545d0327b0de",
+        "task.toml": "22d8c9289c9e81a1a287c7ef75c7feb83bdb2002230bce5f7219be81f583637b",
+        "tests/grader.py": "0032f4e83888a168fbed44d8bd88f3c0efabdb78f0f653fcd0b94ee035967b0b"
+      },
+      "fin-c2-rs-412": {
+        "environment/payloads.json": "bfa5948f6b359170074dcbc1cce548aed4e8ce3c0348c47c5a753d200145b643",
+        "instruction.md": "07bd01f87f51a247ce1fc229b17f45c49912de1cf6fb763f6ad177b517a1b1bd",
+        "solution/gold.json": "14c8970b8d045369dfb1340ef8489c58da98b717a8e634fe571e7ee62341e803",
+        "solution/oracle.py": "e98e336954acc59dfdaea797267b9b56bf67cfbf545957d4cd1175ea5ac5ce06",
+        "task.toml": "bb6f17bf7d41de966f0a772898e9f5df368d30b84dc3d1cf0f9bd3f75be8753e",
+        "tests/grader.py": "0032f4e83888a168fbed44d8bd88f3c0efabdb78f0f653fcd0b94ee035967b0b"
+      },
+      "fin-c2-vol-410": {
+        "environment/payloads.json": "68b50a732e34effca3b77dcd3730919127ee8bbef3963ae7ca74906a69ec822e",
+        "instruction.md": "6a2561adb708ea17ec006f6a14a2d2769d0ad652ea90fa93e6f0bab26c997eee",
+        "solution/gold.json": "2bd6ba32acb481b6544f45ece8c4768f0e9a918b3d1031dea2ce1d50b738d60d",
+        "solution/oracle.py": "af4a4b257500b53315e3a15fa15de58ef38a820edc2ff149f4cb5cedc6a2a167",
+        "task.toml": "ebe9ae5569c7b30f1b64013d213c6d8dc83349c483e832a1eaf2df960932ef62",
+        "tests/grader.py": "0032f4e83888a168fbed44d8bd88f3c0efabdb78f0f653fcd0b94ee035967b0b"
+      },
+      "fin-c2-vol-413": {
+        "environment/payloads.json": "9898637065cc0c364c1844d776e66cc95930975cb6017b6f52b26e8bb2867997",
+        "instruction.md": "792357e772700edf1f06709a87b81a461a67c5c57785472eba8b50795df9535c",
+        "solution/gold.json": "c5c0c50ed30a63014f5e64a120abd479f49244c70b46618a286f0ceb75c3f262",
+        "solution/oracle.py": "d73c89ec909ff3e0dd82834a7512c0567b3b4689d346412e9e5bdabf78c00c8f",
+        "task.toml": "e325d4b72d180dfb7af05575b64e2d424e2aac238d1860129b98ee9256aff413",
+        "tests/grader.py": "0032f4e83888a168fbed44d8bd88f3c0efabdb78f0f653fcd0b94ee035967b0b"
+      },
+      "fin-c3-doubling-422": {
+        "environment/payloads.json": "9898637065cc0c364c1844d776e66cc95930975cb6017b6f52b26e8bb2867997",
+        "instruction.md": "0d2b924c35a34c311e04a27347261b72e673f6a4eeb07c77c6895fe2fc1ee253",
+        "solution/gold.json": "2d087571e4912a5cf9b4acbc559cd89946a2e3ed931b280dbd07736eb4a28abd",
+        "solution/oracle.py": "d09a7305951cbec078ffb506420892ca81ee797b48d21cb913704f0a40ebfcae",
+        "task.toml": "c0b0a9220ace23bca129c0e2bcc2e0dc16f2b1b096cdd90ea957d5ec515b5cf8",
+        "tests/grader.py": "0032f4e83888a168fbed44d8bd88f3c0efabdb78f0f653fcd0b94ee035967b0b"
+      },
+      "fin-c3-geo-417": {
+        "environment/payloads.json": "ea3a22dccd6e5cf5320e9fc915c82f92b633debac79bce11f6a783b27121d1d2",
+        "instruction.md": "fadbcb397b888ea2907eab28926b846291f313dfeb5822c83f04f33356524092",
+        "solution/gold.json": "2e9d629335f271a478fdcee9ff1520d1baf12d9501619c54a171a64d5de0e1a9",
+        "solution/oracle.py": "872c503b285d4bb6642340795fc16e8db50ffae66737f05372f9a691ada2df87",
+        "task.toml": "c0eac6a3e54100359ce7801d749c0dfd187fc497f8e29c22806086e69dec6f17",
+        "tests/grader.py": "0032f4e83888a168fbed44d8bd88f3c0efabdb78f0f653fcd0b94ee035967b0b"
+      },
+      "fin-c3-geo-424": {
+        "environment/payloads.json": "9a2e49f8b39e7cf6f264a67cbb4fcf30202eb02621d06b8bb12545c45781fe97",
+        "instruction.md": "8c1f97413754340d3802c804248b4ac7d8dcb602022ea01015b2b6d27fd2695c",
+        "solution/gold.json": "42cd379c1d647f4132ca365e0c30bb63cd9cc7497fd5386b35d842ca895951aa",
+        "solution/oracle.py": "3f7af5704518f34cdd8e7ff80a6aca93fc18c40798c4b42871774fd766f9f0d3",
+        "task.toml": "d62eba46599f71a7af9d18b277a90b4a98b82cda2aca42cfe934b8348c3ec8d1",
+        "tests/grader.py": "0032f4e83888a168fbed44d8bd88f3c0efabdb78f0f653fcd0b94ee035967b0b"
+      },
+      "fin-c3-logann-418": {
+        "environment/payloads.json": "5dfe56de7895c7b97c9f9a2c26e07950a5828b23cccb42caab2a9e2d26fb5c27",
+        "instruction.md": "c95c61681dfcac627925634f9d6ac9eef01192eebcfa8da7d288b0221b6b179d",
+        "solution/gold.json": "0dc39ea61d68c3b7edcd52aef6b01bff7ad0da65b1c2bca8f98c060d6cd79b00",
+        "solution/oracle.py": "b928d622a3ef64a746cf7a43ad12d0792ad16c169c7fded06bde006585b8e64b",
+        "task.toml": "6473b127cc5478a361286f70801e4e547337b4fae8a5a74b246ffc86ad614726",
+        "tests/grader.py": "0032f4e83888a168fbed44d8bd88f3c0efabdb78f0f653fcd0b94ee035967b0b"
+      },
+      "fin-c3-maladder-419": {
+        "environment/payloads.json": "ea50b3f784eae81fdafbc5bb8e7c2ea83f885b1f7b3d5535fc9e646b22aecbc7",
+        "instruction.md": "9c77dc52dc6a47a4918329c4aa5d7532ecd0f0c922c306eb3eb3739f354521c8",
+        "solution/gold.json": "6307192bc90fe258bb6afc39d93a8240afdf2428d025ebde3984256aa6d73fc2",
+        "solution/oracle.py": "390fcd9a3f7aeeb40a193df4177bf6cc4f03b9015d1d2df593503c724d4f178e",
+        "task.toml": "8870c3d8cd9951b00417a0fe6ab8daa5ca35cee1dbe873bce875327544e3eb9d",
+        "tests/grader.py": "0032f4e83888a168fbed44d8bd88f3c0efabdb78f0f653fcd0b94ee035967b0b"
+      },
+      "fin-c3-rschain-423": {
+        "environment/payloads.json": "01de4588a8d8235e373cc7ac2270739bb17957ca681d4ca252401c1e88cc2b48",
+        "instruction.md": "5ad0c1fd979fd0ea2c6138a88520049e594206d498aef2d0c90f9cc68fec9920",
+        "solution/gold.json": "fd9a97ec1d2f586253ba1bb33b2fd14d364c09089556aa3c6799467569edccf7",
+        "solution/oracle.py": "9d91c0e207e5541daf5947d1a2428a14abbb598ca8854d4f3ac55ee1c2d2efdf",
+        "task.toml": "6748a092c49b4745ead63dc1c5926a3e1cedc2eba038ebb57c2c42130c23ed4b",
+        "tests/grader.py": "0032f4e83888a168fbed44d8bd88f3c0efabdb78f0f653fcd0b94ee035967b0b"
+      },
+      "fin-c3-volregime-420": {
+        "environment/payloads.json": "4233d137981b9641071c318f22416a590c926b6147c0cbf56874397fffa4098a",
+        "instruction.md": "36ae94c394c315afd776481756de188a95887d07ab3a6798c35998b438c59925",
+        "solution/gold.json": "cffcf6cf58226c3aec36cf102b629fe830c9b6bf8a7201a36b7d3e3a146bff90",
+        "solution/oracle.py": "abe6869b9f69a2b2c1c60feda254008aced56961f842e33d1e2f7514dc64cf24",
+        "task.toml": "98d37c43b35f516af54f4cb1a78dbd20c03bd00e165e86bede5c551a72eb87d5",
+        "tests/grader.py": "0032f4e83888a168fbed44d8bd88f3c0efabdb78f0f653fcd0b94ee035967b0b"
+      },
+      "fin-c3-volshare-421": {
+        "environment/payloads.json": "7b4735bfdb0ecb5516593d661b15a1a09427327d7441176bfdde6c0e1d7955c4",
+        "instruction.md": "8e3db6b60d34ff9a74fc5c602629aef2d645dd4f2bcc893893e6b695bd169d3c",
+        "solution/gold.json": "9473216be8361d91606b6fd1c867ee4f8e3f1c325480520414bd9b878da922d5",
+        "solution/oracle.py": "1cbdd59dbda9f22f258dc1cb9cc0c95d3d296ce055e4c36c5a81174d5149dcc0",
+        "task.toml": "1102a798167e4ca514861c6e112b46d47e63a34d2c646b087a6b1fa74994e0ab",
+        "tests/grader.py": "0032f4e83888a168fbed44d8bd88f3c0efabdb78f0f653fcd0b94ee035967b0b"
+      },
+      "fin-c4-dca-428": {
+        "environment/payloads.json": "5c6f27bea68ef76213de07ebd0e7d6677c555249683fdbde67825c7d3b96e15d",
+        "instruction.md": "287aec073ab7df6c04760b1add496966b4e4b70c1ad4c29ac7e7dfc5fb2c6615",
+        "solution/gold.json": "4117678373528905f5f293e0bb3c0b1f294ec2d1f4a7fc91be10e7b69670ab14",
+        "solution/oracle.py": "f20d68e39cb2bb2e48aa301f07e0e0b89c14dfd613f92560cd14c576c3a4b159",
+        "task.toml": "ce5ce40dbc15a7aecbd19958166e41ba45cbf0cda314e900a6ff9adc0e346886",
+        "tests/grader.py": "0032f4e83888a168fbed44d8bd88f3c0efabdb78f0f653fcd0b94ee035967b0b"
+      },
+      "fin-c4-logann-427": {
+        "environment/payloads.json": "8976f1a2128c89dfe71ec82d20b07a9397af81dd1ad84ae2b8aba9ad940a5a60",
+        "instruction.md": "f2312067fe6c361444b6bfbb0e863f2936511a3d2d57e5d1848b85a1006803d2",
+        "solution/gold.json": "b08d21abc4f475c16770e6a21dd9a27e61af1e2661615ecbfcacf66dd3b211ef",
+        "solution/oracle.py": "b00e62da2b4f53af487bd24fa72e9c471da784f453e308f044ad42a33b2269c6",
+        "task.toml": "2abfa2e3b103ca0afc90557d3928ca0d77efbf2f5a91077c30880be5cfa3fab4",
+        "tests/grader.py": "0032f4e83888a168fbed44d8bd88f3c0efabdb78f0f653fcd0b94ee035967b0b"
+      },
+      "fin-c4-rebal-426": {
+        "environment/payloads.json": "22afcf4563e1a1d5d5ec50a99e66f1327fb713e219164c21c9c1e6136069b5a5",
+        "instruction.md": "d53eb30bd7852dc3d64491a2f662d84d4f618b41213ec9acf6ef0daf316a2b4e",
+        "solution/gold.json": "ac586485febe759bff70c9839adfa3548f3ff585e943db1efd93bcc7d60cfdc9",
+        "solution/oracle.py": "911a67ee0336d7f0a45a7c8ff9b347ec093ec3169a1297a84d27691328e3395c",
+        "task.toml": "a3de895f3916b22584305a30c32b024712b7c8f8bd5d2873bd82f3de2ac5f9d9",
+        "tests/grader.py": "0032f4e83888a168fbed44d8bd88f3c0efabdb78f0f653fcd0b94ee035967b0b"
+      },
+      "fin-c4-signal-429": {
+        "environment/payloads.json": "e32aacd6c50318715c42552e58f5f27040e939a926df263ebbc48121493b190e",
+        "instruction.md": "6f552f8d65dde39f0ab9532fc6dc173842e01d2844c94cfbe616bcb2473fcb48",
+        "solution/gold.json": "744679d9142f40c832360e83ee1aab69fd12ac209219cda50c198e981cf1bbf4",
+        "solution/oracle.py": "1b2e955237d2ddf31459552fc5693c4c33be3827030b3ab5b3739f13aea13d26",
+        "task.toml": "5d026984f3dd3475c545496f1a07ed107356373c2900bc49060db84463e177b7",
+        "tests/grader.py": "0032f4e83888a168fbed44d8bd88f3c0efabdb78f0f653fcd0b94ee035967b0b"
+      },
+      "fin-c4-stagger-425": {
+        "environment/payloads.json": "05831dd5ee13764767253122c420758fc641b2bf5005bf6c92eaefa2be687882",
+        "instruction.md": "a3b800ded7ab35c2adffacc34d8b0aaad48b45014c74655430e6ed906341dffc",
+        "solution/gold.json": "b5cafbd7821dee29f668c1a038567ab4b7298ecd87172244ce1b6856baaa85d9",
+        "solution/oracle.py": "730bd96f9e342731ec8cdffe5cd8ccf2683e0b15f869f19590f5bcba40935268",
+        "task.toml": "788a18f57278b4abc3e0cb868b500c3bf3c5642677f0663dffcbc42a64acf8f5",
+        "tests/grader.py": "0032f4e83888a168fbed44d8bd88f3c0efabdb78f0f653fcd0b94ee035967b0b"
+      },
+      "fin-c4-stagger-430": {
+        "environment/payloads.json": "c419fe0ff5de296dee110f1361d5a26bdd5a4fe25f99786bcf758ce16062c655",
+        "instruction.md": "7f93ff702a2b0931fcbf7067e5a833ad34d512e0ade77eed7dcb1ede38b11018",
+        "solution/gold.json": "ed2cee4c3a6d380f158640bac63b552f454f791cd3fb58d20fd2568b48594229",
+        "solution/oracle.py": "f900f6cd0fdb900518cf9d98c1f0da117b734fdc2c472affdabecd8cd9c22aeb",
+        "task.toml": "a97a7b56dd587e3671b5cedb6fa8fc71c971c88e18473457c21b9fade10688eb",
+        "tests/grader.py": "0032f4e83888a168fbed44d8bd88f3c0efabdb78f0f653fcd0b94ee035967b0b"
+      }
+    }
+  }
+}

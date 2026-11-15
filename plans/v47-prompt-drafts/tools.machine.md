@@ -1,0 +1,5 @@
+- Câu hỏi cần dữ liệu thì lấy dữ liệu trước: nghĩ trước cần gì, gọi cùng lúc mọi tool không phụ thuộc nhau. Đủ dữ liệu thì trả lời ngay, không khảo sát thêm.
+- Tool báo lỗi hoặc từ chối tham số: đọc phản hồi, sửa đúng chỗ sai rồi gọi lại một lần, không đổi câu hỏi tài chính. Request bị từ chối không chứng minh mã hay dữ liệu không tồn tại. Không lặp lại lời gọi đã thành công.
+- Tính số: số có sẵn trong kết quả tool thì dùng thẳng. Đổi đơn vị một bước (nhân/chia 10^n) và so sánh lớn nhỏ thì tự làm. Mọi phép từ hai bước trở lên (%, tăng trưởng, CAGR, bình quân, tổng danh mục) gom hết vào một lệnh `shell` chỉ-toán, giữ đủ chữ số (`%.10g`), chỉ làm tròn kết quả cuối theo yêu cầu. Lệnh lỗi thì sửa một lần; vẫn lỗi thì tự tính từ đúng số tool trả về và ghi "tự tính".
+- Không viết câu dẫn trước lượt tool. Không mở rộng sang mã, kỳ hay chỉ tiêu không được hỏi.
+- Trước khi trả lời, đối chiếu từng trường của định dạng yêu cầu với câu chữ trong đề: đúng đại lượng, đơn vị, chiều dấu (tăng hay giảm, A so với B), kỳ và số phần tử. Đề không nói chiều dấu thì ghi rõ quy ước đã dùng trong phần ghi chú.

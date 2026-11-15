@@ -1,0 +1,116 @@
+{
+  "snapshot_date": "2026-11-01",
+  "note": "Envelope MCP đã ghi lúc tạo task (2026-11-01, trim trường không dùng cho gold; data + provenance + availability giữ nguyên). Benchmark chạy qua snapshot-replay các envelope này — không gọi MCP live.",
+  "tools": {
+    "financial_detail": {
+      "data": {
+        "symbol": "MWG",
+        "statement": "KQKD",
+        "unit": "VNDbn",
+        "periods": [
+          "Q4/2025",
+          "Q1/2026",
+          "Q2/2026",
+          "Q3/2026"
+        ],
+        "report_type": "quarter",
+        "rows": [
+          {
+            "name": "3. Doanh thu thuần về bán hàng và cung cấp dịch vụ",
+            "values": [
+              42850,
+              46462,
+              48751,
+              52614
+            ]
+          },
+          {
+            "name": "4. Giá vốn hàng bán",
+            "values": [
+              34804,
+              36752,
+              37942,
+              41192
+            ]
+          },
+          {
+            "name": "5. Lợi nhuận gộp về bán hàng và cung cấp dịch vụ",
+            "values": [
+              8046,
+              9710,
+              10809,
+              11421
+            ]
+          }
+        ]
+      },
+      "provenance": {
+        "source": "vietstock",
+        "as_of": "2026-11-01T15:54:29.386552+07:00",
+        "data_time": "2026-11-01T15:09:29.085370+07:00",
+        "timezone": "Asia/Ho_Chi_Minh"
+      },
+      "availability": "available",
+      "warnings": [
+        "dữ liệu lấy lúc 2026-11-01T15:09:29.085370+07:00, dùng lại bản đã lưu"
+      ],
+      "_note": "unit VNDbn = VND billion = tỷ đồng"
+    },
+    "stock_overview": {
+      "data": {
+        "trading": {
+          "StockCode": "MWG",
+          "TradingDate": "2026-10-30T14:58:49+07:00",
+          "KLCPLH": 1475694086,
+          "KLCPNY": 1477035294,
+          "PriorClosePrice": 75800,
+          "CeilingPrice": 81100,
+          "FloorPrice": 70500,
+          "TotalVol": 2294100,
+          "TotalVal": 170477370000,
+          "MarketCapital": 109201362364000,
+          "HighestPrice": 75700,
+          "LowestPrice": 74000,
+          "OpenPrice": 75400,
+          "LastPrice": 74000,
+          "AvrPrice": 74366,
+          "Change": -1800,
+          "PerChange": -2.37,
+          "Min52W": 61500,
+          "Max52W": 91000,
+          "OutstandingBuy": 141300,
+          "OutstandingSell": 69900,
+          "OwnedRatio": 49,
+          "Dividend": 2000,
+          "Yield": 0.03,
+          "Beta": 1.13,
+          "EPS": 7593,
+          "PE": 9.75,
+          "FEPS": 12.16,
+          "BVPS": 35505,
+          "PB": 2.08,
+          "PS": 2.08,
+          "FreeFloat": 75,
+          "StatusName": "Kết thúc phiên",
+          "Revenue": 156836115054975,
+          "Profit": 11720081124307
+        },
+        "company": {
+          "CompanyName": "CTCP Đầu tư Thế giới Di động",
+          "CatGroup": "HOSE"
+        }
+      },
+      "provenance": {
+        "source": "vietstock",
+        "as_of": "2026-11-01T15:59:30.783891+07:00",
+        "data_time": "2026-11-01T15:09:57.181567+07:00",
+        "timezone": "Asia/Ho_Chi_Minh"
+      },
+      "availability": "available",
+      "warnings": [
+        "dữ liệu lấy lúc 2026-11-01T15:09:57.181567+07:00, dùng lại bản đã lưu"
+      ],
+      "_note": "đơn vị giá/cap: đồng (MarketCapital = 109.201.362.364.000 đ)"
+    }
+  }
+}
