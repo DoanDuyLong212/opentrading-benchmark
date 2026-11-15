@@ -1,0 +1,48 @@
+{
+  "snapshot_date": "2026-11-01",
+  "note": "Envelope MCP đã ghi lúc tạo task (2026-11-01, trim trường không dùng cho gold; data + provenance + availability giữ nguyên). Benchmark chạy qua snapshot-replay các envelope này — không gọi MCP live.",
+  "tools": {
+    "signals_technical": {
+      "data": {
+        "interval": "1D",
+        "rows": [
+          {
+            "symbol": "HPG",
+            "rsi14": 51.9
+          },
+          {
+            "symbol": "HCM",
+            "rsi14": 40.87
+          },
+          {
+            "symbol": "VND",
+            "rsi14": 41.97
+          },
+          {
+            "symbol": "SSI",
+            "rsi14": 39.97
+          },
+          {
+            "symbol": "SHB",
+            "rsi14": 43.57
+          },
+          {
+            "symbol": "VCB",
+            "rsi14": 44.01
+          }
+        ]
+      },
+      "provenance": {
+        "source": "computed-local",
+        "as_of": "2026-11-01T15:57:53.193466+07:00",
+        "data_time": "2026-11-01T14:42:16.848238+07:00",
+        "timezone": "Asia/Ho_Chi_Minh"
+      },
+      "availability": "available",
+      "warnings": [
+        "dữ liệu lấy lúc 2026-11-01T14:42:16.848238+07:00, dùng lại bản đã lưu"
+      ],
+      "_note": "6 lời gọi signals_technical riêng (1 call/symbol), hợp nhất lại để ghi snapshot"
+    }
+  }
+}

@@ -1,0 +1,91 @@
+{
+  "task_id": "v45-dev-07-aggregate",
+  "scoring": "value",
+  "solution": {
+    "value": 52.86666666666667
+  },
+  "provenance_contract": [
+    {
+      "tool": "vn_quote_history",
+      "source": "synthetic-dev",
+      "as_of": "2026-11-02T09:00:00+07:00",
+      "matched_entry_id": "q:DGC",
+      "response_sha256": "1bbab1557f55ed1adea9147bc0c944e961952e5690d5ec0ad70e787fda66dd67"
+    },
+    {
+      "tool": "vn_quote_history",
+      "source": "synthetic-dev",
+      "as_of": "2026-11-02T09:00:00+07:00",
+      "matched_entry_id": "q:DCM",
+      "response_sha256": "4808629dff92155c1aafb846ba27cb2ff87076af68daebceddef326881f37ca5"
+    },
+    {
+      "tool": "vn_quote_history",
+      "source": "synthetic-dev",
+      "as_of": "2026-11-02T09:00:00+07:00",
+      "matched_entry_id": "q:DPM",
+      "response_sha256": "999058725b1fc8fdcb5e4d47f57ddc016e474e3fa1385d497ec51b1710cfb174"
+    }
+  ],
+  "provenance_catalog": [
+    {
+      "tool": "vn_quote_history",
+      "source": "synthetic-dev",
+      "as_of": "2026-11-02T09:00:00+07:00",
+      "matched_entry_id": "q:DGC",
+      "response_sha256": "1bbab1557f55ed1adea9147bc0c944e961952e5690d5ec0ad70e787fda66dd67"
+    },
+    {
+      "tool": "vn_quote_history",
+      "source": "synthetic-dev",
+      "as_of": "2026-11-02T09:00:00+07:00",
+      "matched_entry_id": "q:DCM",
+      "response_sha256": "4808629dff92155c1aafb846ba27cb2ff87076af68daebceddef326881f37ca5"
+    },
+    {
+      "tool": "vn_quote_history",
+      "source": "synthetic-dev",
+      "as_of": "2026-11-02T09:00:00+07:00",
+      "matched_entry_id": "q:DPM",
+      "response_sha256": "999058725b1fc8fdcb5e4d47f57ddc016e474e3fa1385d497ec51b1710cfb174"
+    }
+  ],
+  "required_payload_keys": [
+    "q:DGC",
+    "q:DCM",
+    "q:DPM"
+  ],
+  "payload_sha256": "f1343e3beb51fb9f69323d3a2aaabbfe9affe4ec05c61b1c2a9d797ef4801c6d",
+  "fixture_kind": "synthetic_engineering_fixture",
+  "expects": [
+    {
+      "type": "value",
+      "path": "value",
+      "gold": 52.86666666666667,
+      "tol": {
+        "abs": 1e-06
+      }
+    },
+    {
+      "type": "unit",
+      "path": "unit",
+      "accept": [
+        "nghìn đồng"
+      ]
+    },
+    {
+      "type": "period",
+      "path": "period",
+      "accept": [
+        "2026-10-29"
+      ]
+    },
+    {
+      "type": "str_all",
+      "path": "source",
+      "accept": [
+        "vn_quote_history"
+      ]
+    }
+  ]
+}

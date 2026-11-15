@@ -1,0 +1,112 @@
+{
+  "task_id": "fin-l3-agg-186",
+  "scoring": "value",
+  "solution": {
+    "KDH": 13900.0,
+    "NLG": 22000.0,
+    "DXG": 10100.0,
+    "PDR": 11300.0,
+    "KBC": 26000.0,
+    "mean": 16660.0
+  },
+  "as_of": "2026-11-01T23:07:49.498325+07:00",
+  "split": "main",
+  "expects": [
+    {
+      "type": "value",
+      "path": "values.KDH",
+      "gold": 13900.0,
+      "tol": {
+        "rel": 0.005
+      }
+    },
+    {
+      "type": "value",
+      "path": "values.NLG",
+      "gold": 22000.0,
+      "tol": {
+        "rel": 0.005
+      }
+    },
+    {
+      "type": "value",
+      "path": "values.DXG",
+      "gold": 10100.0,
+      "tol": {
+        "rel": 0.005
+      }
+    },
+    {
+      "type": "value",
+      "path": "values.PDR",
+      "gold": 11300.0,
+      "tol": {
+        "rel": 0.005
+      }
+    },
+    {
+      "type": "value",
+      "path": "values.KBC",
+      "gold": 26000.0,
+      "tol": {
+        "rel": 0.005
+      }
+    },
+    {
+      "type": "value",
+      "path": "values.mean",
+      "gold": 16660.0,
+      "tol": {
+        "rel": 0.005
+      }
+    },
+    {
+      "type": "unit",
+      "path": "unit",
+      "accept": [
+        "đồng",
+        "VND"
+      ]
+    },
+    {
+      "type": "period",
+      "path": "period",
+      "accept": [
+        "30/10",
+        "30-10",
+        "30.10",
+        "2026-10-30"
+      ]
+    },
+    {
+      "type": "str",
+      "path": "source",
+      "accept": [
+        "vn_equity_quote_batch"
+      ]
+    }
+  ],
+  "contract_version": 2,
+  "provenance_contract": [
+    {
+      "tool": "vn_equity_quote_batch",
+      "source": "vnstock",
+      "as_of": "2026-11-01T23:07:49.498325+07:00",
+      "matched_entry_id": "batch:bds1",
+      "response_sha256": "6cf0fc3d07f29c8cf058db39579a3b595e539d9a3f812ccec5da836fc824c4a3"
+    }
+  ],
+  "payload_sha256": "067c6094929aad887101bba17ad696bd914102ffe79315b804d28aa7cd6ebb1f",
+  "provenance_catalog": [
+    {
+      "tool": "vn_equity_quote_batch",
+      "source": "vnstock",
+      "as_of": "2026-11-01T23:07:49.498325+07:00",
+      "matched_entry_id": "batch:bds1",
+      "response_sha256": "6cf0fc3d07f29c8cf058db39579a3b595e539d9a3f812ccec5da836fc824c4a3"
+    }
+  ],
+  "required_payload_keys": [
+    "batch:bds1"
+  ]
+}

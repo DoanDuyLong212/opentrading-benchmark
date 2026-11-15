@@ -1,0 +1,28 @@
+# Task benchmark harness tài chính — sinh bởi tools/gen_tasks.py
+id = "fin-l1-quote-02"
+title = "Giá BTC tại snapshot"
+version = 2
+created = "2026-11-01"
+level = "L1"
+family = "L1·A quote"
+financebench_type = "single-metric extraction"
+entity = "BTCUSDT"
+asset = "crypto"
+data_zone = "yellow"
+data_pairs = []
+snapshot_date = "2026-11-01"
+universe_cap = 0
+banned_tools = ["web_search", "web_fetch", "sentiment_score"]
+human_time_band = "<15 phút"
+time_limit_min = 10
+tools_expected = ["crypto_spot"]
+mcp_payloads = "environment/payloads.json"
+snapshot_required = true
+
+confirmatory_eligible = true
+
+[scoring]
+type = "value"
+gold = "solution/gold.json"
+oracle = "solution/oracle.py"
+grader = "tests/grader.py"

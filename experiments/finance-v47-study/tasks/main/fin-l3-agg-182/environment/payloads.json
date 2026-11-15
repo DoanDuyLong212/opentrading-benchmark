@@ -1,0 +1,59 @@
+{
+ "snapshot_date": "2026-11-01",
+ "note": "Envelope MCP ghi lúc tạo task. Key = mã payload nội bộ; envelope giữ nguyên data+provenance+availability.",
+ "tools": {
+  "batch:sec1": {
+   "tool": "vn_equity_quote_batch",
+   "params": {
+    "symbols": [
+     "VCI",
+     "VIX",
+     "SHS",
+     "MBS",
+     "FTS"
+    ]
+   },
+   "envelope": {
+    "data": {
+     "quotes": [
+      {
+       "symbol": "VCI",
+       "close": 18500,
+       "pct": -2.631578947368421,
+       "vol": 5920600
+      },
+      {
+       "symbol": "VIX",
+       "close": 12000,
+       "pct": -3.225806451612903,
+       "vol": 27180500
+      },
+      {
+       "symbol": "SHS",
+       "close": 12200,
+       "pct": -1.6129032258064515,
+       "vol": 5371300
+      },
+      {
+       "symbol": "MBS",
+       "close": 15000,
+       "pct": -1.9607843137254901,
+       "vol": 2083700
+      },
+      {
+       "symbol": "FTS",
+       "close": 17900,
+       "pct": -5.039787798408488,
+       "vol": 883000
+      }
+     ]
+    },
+    "provenance": {
+     "source": "vnstock",
+     "as_of": "2026-11-01T23:04:23.767769+07:00"
+    },
+    "availability": "available"
+   }
+  }
+ }
+}

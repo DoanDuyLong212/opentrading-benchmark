@@ -1,0 +1,31 @@
+# Compute stratum — amendment 2026-11-11 (d), tools/build_compute_stratum_20261111.py
+id = "fin-c4-rebal-807"
+title = "Tái cân bằng danh mục 6 mã"
+version = 2
+created = "2026-11-11"
+level = "C4"
+family = "C4 compute"
+financebench_type = "numeric computation"
+entity = "FPT+GAS+HPG+MWG+VIC+VNM"
+asset = "vn_stock"
+data_zone = "green"
+data_pairs = []
+snapshot_date = "2026-11-01"
+universe_cap = 0
+banned_tools = ["web_search", "web_fetch", "sentiment_score"]
+human_time_band = "15–60 phút"
+time_limit_min = 60
+tools_expected = ["vn_quote_history"]
+mcp_payloads = "environment/payloads.json"
+snapshot_required = true
+split = "pilot"
+
+confirmatory_eligible = true
+stratum = "compute"
+tier = "C4"
+
+[scoring]
+type = "value"
+gold = "solution/gold.json"
+oracle = "solution/oracle.py"
+grader = "tests/grader.py"

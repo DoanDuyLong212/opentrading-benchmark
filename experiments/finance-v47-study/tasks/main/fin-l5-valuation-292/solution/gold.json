@@ -1,0 +1,67 @@
+{
+  "task_id": "fin-l5-valuation-292",
+  "scoring": "value",
+  "solution": {
+    "price": 241000.0,
+    "per": 164.21,
+    "pb": 12.33
+  },
+  "as_of": "2026-11-01T23:22:58.403330+07:00",
+  "split": "main",
+  "expects": [
+    {
+      "type": "value",
+      "path": "values.price",
+      "gold": 241000.0,
+      "tol": {
+        "rel": 0.005
+      }
+    },
+    {
+      "type": "value",
+      "path": "values.per",
+      "gold": 164.21,
+      "tol": {
+        "rel": 0.005
+      }
+    },
+    {
+      "type": "value",
+      "path": "values.pb",
+      "gold": 12.33,
+      "tol": {
+        "rel": 0.005
+      }
+    },
+    {
+      "type": "str",
+      "path": "source",
+      "accept": [
+        "valuation_run"
+      ]
+    }
+  ],
+  "contract_version": 2,
+  "provenance_contract": [
+    {
+      "tool": "valuation_run",
+      "source": "computed-local",
+      "as_of": "2026-11-01T23:22:58.403330+07:00",
+      "matched_entry_id": "val:VIC",
+      "response_sha256": "b86943e66c7a4990ac7f97245c371f04e4bef6ddb08a3d54661aa5db9e34c2ec"
+    }
+  ],
+  "payload_sha256": "2fb795d6665dac1c5332bdc8af14223ed15e0ba031bcf8a37fd7c26bf3bba180",
+  "provenance_catalog": [
+    {
+      "tool": "valuation_run",
+      "source": "computed-local",
+      "as_of": "2026-11-01T23:22:58.403330+07:00",
+      "matched_entry_id": "val:VIC",
+      "response_sha256": "b86943e66c7a4990ac7f97245c371f04e4bef6ddb08a3d54661aa5db9e34c2ec"
+    }
+  ],
+  "required_payload_keys": [
+    "val:VIC"
+  ]
+}

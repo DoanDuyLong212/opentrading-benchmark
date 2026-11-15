@@ -1,0 +1,87 @@
+{
+  "task_id": "fin-l2-gf-compare-919",
+  "scoring": "value",
+  "solution": {
+    "value": 28832.74,
+    "prev": 28830.15
+  },
+  "as_of": "2026-11-01T21:30:32.261897+07:00",
+  "split": "holdout",
+  "expects": [
+    {
+      "type": "value",
+      "path": "value",
+      "gold": 28832.74,
+      "tol": {
+        "rel": 0.005
+      }
+    },
+    {
+      "type": "unit",
+      "path": "unit",
+      "accept": [
+        "đồng",
+        "VND"
+      ]
+    },
+    {
+      "type": "period",
+      "path": "period",
+      "accept": [
+        "29/10",
+        "29-10",
+        "29.10",
+        "2026-10-29"
+      ]
+    },
+    {
+      "type": "evidence",
+      "path": "note",
+      "paths": [
+        "note"
+      ],
+      "numbers": [
+        28830.15
+      ],
+      "strings": [],
+      "min_hits": 1
+    },
+    {
+      "type": "str",
+      "path": "source",
+      "accept": [
+        "vn_msn_fx_gold"
+      ]
+    }
+  ],
+  "contract_version": 2,
+  "provenance_contract": [
+    {
+      "tool": "vn_msn_fx_gold",
+      "source": "msn",
+      "as_of": "2026-11-01T21:30:32.261897+07:00",
+      "matched_entry_id": "msn:main",
+      "response_sha256": "519594885077cc5cf1db891f4f2c767af217c37d76c0ec0db33e4bc7ccd196c9"
+    }
+  ],
+  "payload_sha256": "6e724aed6de39026019090303dc95158803438613308e97562d8a1b8ed48c809",
+  "provenance_catalog": [
+    {
+      "tool": "vn_msn_fx_gold",
+      "source": "msn",
+      "as_of": "2026-11-01T21:30:32.261897+07:00",
+      "matched_entry_id": "msn:main",
+      "response_sha256": "519594885077cc5cf1db891f4f2c767af217c37d76c0ec0db33e4bc7ccd196c9"
+    },
+    {
+      "tool": "yf_commodities",
+      "source": "yfinance",
+      "as_of": "2026-11-01T21:30:24.862185+07:00",
+      "matched_entry_id": "yf:main",
+      "response_sha256": "572f3a74405981b59b46941a0062d32fb1f9a7843dcec5324fade8aafce5eb22"
+    }
+  ],
+  "required_payload_keys": [
+    "msn:main"
+  ]
+}

@@ -1,0 +1,60 @@
+{
+  "task_id": "fin-l3-screen-191",
+  "scoring": "value",
+  "solution": {
+    "pass": [
+      "POM",
+      "VGS"
+    ],
+    "filter": "ROE > 15% và P/E < 15"
+  },
+  "as_of": "2026-11-01T23:08:16.117741+07:00",
+  "split": "main",
+  "expects": [
+    {
+      "type": "set",
+      "path": "values.pass",
+      "gold": [
+        "POM",
+        "VGS"
+      ]
+    },
+    {
+      "type": "period",
+      "path": "period",
+      "accept": [
+        "2025"
+      ]
+    },
+    {
+      "type": "str",
+      "path": "source",
+      "accept": [
+        "peer_compare"
+      ]
+    }
+  ],
+  "contract_version": 2,
+  "provenance_contract": [
+    {
+      "tool": "peer_compare",
+      "source": "vnstock",
+      "as_of": "2026-11-01T23:08:16.117741+07:00",
+      "matched_entry_id": "peer:steel_p",
+      "response_sha256": "b87224c88e97a18c3fdbcc3e35b34b54430852264b0cc171d39a7040cfed55fb"
+    }
+  ],
+  "payload_sha256": "f44870181d3518ee4f89a07ac809ce95b2f95b3e27c66af4e96eb6ceeb19e2d2",
+  "provenance_catalog": [
+    {
+      "tool": "peer_compare",
+      "source": "vnstock",
+      "as_of": "2026-11-01T23:08:16.117741+07:00",
+      "matched_entry_id": "peer:steel_p",
+      "response_sha256": "b87224c88e97a18c3fdbcc3e35b34b54430852264b0cc171d39a7040cfed55fb"
+    }
+  ],
+  "required_payload_keys": [
+    "peer:steel_p"
+  ]
+}

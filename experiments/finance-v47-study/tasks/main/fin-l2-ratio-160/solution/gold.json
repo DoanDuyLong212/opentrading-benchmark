@@ -1,0 +1,57 @@
+{
+  "task_id": "fin-l2-ratio-160",
+  "scoring": "value",
+  "solution": {
+    "value": 24.7
+  },
+  "as_of": "2026-11-01T23:58:42.323307+07:00",
+  "split": "main",
+  "expects": [
+    {
+      "type": "value",
+      "path": "value",
+      "gold": 24.7,
+      "tol": {
+        "rel": 0.005
+      }
+    },
+    {
+      "type": "unit",
+      "path": "unit",
+      "accept": [
+        "x",
+        "lần"
+      ]
+    },
+    {
+      "type": "str",
+      "path": "source",
+      "accept": [
+        "valuation_run"
+      ]
+    }
+  ],
+  "contract_version": 2,
+  "provenance_contract": [
+    {
+      "tool": "valuation_run",
+      "source": "computed-local",
+      "as_of": "2026-11-01T23:58:42.323307+07:00",
+      "matched_entry_id": "val:VGI",
+      "response_sha256": "b19d791e72d0e7e81458922d7b08f0e5a2703d20f6adfb0524c37a448b5a55b0"
+    }
+  ],
+  "payload_sha256": "431d0a37dcc8350973bca7d2f2fdfd68219b0264e327dc583e5b82ed83ce4ad2",
+  "provenance_catalog": [
+    {
+      "tool": "valuation_run",
+      "source": "computed-local",
+      "as_of": "2026-11-01T23:58:42.323307+07:00",
+      "matched_entry_id": "val:VGI",
+      "response_sha256": "b19d791e72d0e7e81458922d7b08f0e5a2703d20f6adfb0524c37a448b5a55b0"
+    }
+  ],
+  "required_payload_keys": [
+    "val:VGI"
+  ]
+}

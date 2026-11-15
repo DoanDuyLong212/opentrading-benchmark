@@ -1,0 +1,80 @@
+{
+  "protocol": "financial_product_v45",
+  "model": "deepseek/deepseek-v4.1-flash-1017",
+  "model_stratum": "deepseek-openrouter",
+  "allowed_models": [
+    "nvidia/nvidia/nemotron-3.5-super-vl-120b-a12b",
+    "nvidia/deepseek-ai/deepseek-v4.1-flash",
+    "nvidia/nemotron-3.5-super-vl:free",
+    "deepseek/deepseek-v4.1-flash",
+    "deepseek/deepseek-v4.1-flash-1017"
+  ],
+  "allowed_inference_splits": [
+    "devsmoke",
+    "pilot",
+    "main"
+  ],
+  "opentrading_runtime_root": "/home/doanlong/extra/benchmark/experiments/finance-v46-update-study/experiments/opentrading-runtime",
+  "experiment_protocol": "plans/2026-11-09-v46-update-execution-protocol.md",
+  "experiment_protocol_dependencies": [
+    "plans/2026-11-10-v46u-ot-tool-deadlock-fix.md",
+    "plans/2026-11-10-v46u-judge-primary-amendment.md",
+    "plans/2026-11-10-v46u-main-b0-amendment.md",
+    "plans/2026-11-11-v46u-taskset-revision-amendment.md"
+  ],
+  "runs_pilot": 2,
+  "runs_main": 2,
+  "max_requests": 24,
+  "max_output_tokens": 8192,
+  "max_total_tokens": 3600000,
+  "provider_timeout_s": 240,
+  "trial_timeout_s": 900,
+  "request_interval_s": 2,
+  "effort": "none",
+  "price_per_1m": {
+    "prompt_usd": 0.006,
+    "completion_usd": 0.5,
+    "cache_read_usd": 0.005,
+    "entitlement": "OpenRouter models API 2026-11-10 (variant -1017, user-chosen); paid credit route"
+  },
+  "memory_policy": "none fresh isolatedhome/store/session eachtrial",
+  "track": "product native utility capability parity, not identicalschemas",
+  "provider_options": {
+    "temperature": 0,
+    "top_p": 1,
+    "context_window": 1048576,
+    "max_output_tokens": 8192,
+    "max_requests": 24,
+    "max_total_tokens": 3600000,
+    "provider_timeout_s": 240,
+    "request_interval_s": 2,
+    "failed_attempt_context_bound": 1048576,
+    "failed_attempt_token_reservation": 1056768,
+    "native_reasoning_capability": true,
+    "native_reasoning_mode": "off",
+    "effort_note": "none requested; backend thinking not proven disabled",
+    "native_bun_binary": "/home/doanlong/extra/benchmark/experiments/toolchains/bun-1.4.4/bun",
+    "native_bun_sha256": "10702245766b225e70bbf6235fd6b47214fd94b4760d00ffaed8ab0df57ac235",
+    "provider_route": "openrouter_paid",
+    "openrouter_paid_budget": 10500,
+    "memory_max_requests": 48
+  },
+  "arms_pilot": [
+    "opentrading_baseline",
+    "opencode",
+    "dsh"
+  ],
+  "gate": "b0_judge_primary",
+  "arms_main": [
+    "opentrading_baseline",
+    "opencode",
+    "dsh"
+  ],
+  "cost_reporting": "OpenRouter usage.cost per request (authoritative); price_per_1m is the published list price and under-estimated or10 billing ~2.8x (0.1284 vs 0.3653 USD for 132 trials)",
+  "memory_trial_timeout_s": 1800,
+  "arms_holdout": [
+    "opentrading_baseline",
+    "opencode",
+    "dsh"
+  ]
+}

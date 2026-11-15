@@ -1,0 +1,154 @@
+{
+ "snapshot_date": "2026-11-01",
+ "note": "Envelope MCP tái sử dụng nguyên vẹn từ các task đã ghi snapshot 2026-11-01 (corpus wave-2 stage-1); không có capture mới. Nguồn: fin-l3-tech-multi-204 + fin-l5-compare-276",
+ "tools": {
+  "tech:VCI": {
+   "tool": "signals_technical",
+   "params": {
+    "symbol": "VCI",
+    "interval": "1D"
+   },
+   "envelope": {
+    "data": {
+     "symbol": "VCI",
+     "rsi14": 37.8
+    },
+    "provenance": {
+     "source": "computed-local",
+     "as_of": "2026-11-01T23:22:54.600606+07:00"
+    },
+    "availability": "available"
+   }
+  },
+  "tech:VIX": {
+   "tool": "signals_technical",
+   "params": {
+    "symbol": "VIX",
+    "interval": "1D"
+   },
+   "envelope": {
+    "data": {
+     "symbol": "VIX",
+     "rsi14": 44.12
+    },
+    "provenance": {
+     "source": "computed-local",
+     "as_of": "2026-11-01T23:22:53.108682+07:00"
+    },
+    "availability": "available"
+   }
+  },
+  "tech:SHS": {
+   "tool": "signals_technical",
+   "params": {
+    "symbol": "SHS",
+    "interval": "1D"
+   },
+   "envelope": {
+    "data": {
+     "symbol": "SHS",
+     "rsi14": 40.08
+    },
+    "provenance": {
+     "source": "computed-local",
+     "as_of": "2026-11-01T23:22:55.502199+07:00"
+    },
+    "availability": "available"
+   }
+  },
+  "tech:MBS": {
+   "tool": "signals_technical",
+   "params": {
+    "symbol": "MBS",
+    "interval": "1D"
+   },
+   "envelope": {
+    "data": {
+     "symbol": "MBS",
+     "rsi14": 39.25
+    },
+    "provenance": {
+     "source": "computed-local",
+     "as_of": "2026-11-01T23:22:55.202349+07:00"
+    },
+    "availability": "available"
+   }
+  },
+  "tech:FTS": {
+   "tool": "signals_technical",
+   "params": {
+    "symbol": "FTS",
+    "interval": "1D"
+   },
+   "envelope": {
+    "data": {
+     "symbol": "FTS",
+     "rsi14": 35.22
+    },
+    "provenance": {
+     "source": "computed-local",
+     "as_of": "2026-11-01T23:22:54.113227+07:00"
+    },
+    "availability": "available"
+   }
+  },
+  "peer:sec_p": {
+   "tool": "peer_compare",
+   "params": {
+    "symbol": "VIX",
+    "peers": [
+     "VCI",
+     "SHS",
+     "MBS",
+     "FTS"
+    ]
+   },
+   "envelope": {
+    "data": {
+     "rows": [
+      {
+       "symbol": "VIX",
+       "period_label": "2025",
+       "p_e": 6.22,
+       "p_b": 1.61,
+       "roe": 28.85
+      },
+      {
+       "symbol": "VCI",
+       "period_label": "2025",
+       "p_e": 18.96,
+       "p_b": 1.67,
+       "roe": 8.67
+      },
+      {
+       "symbol": "SHS",
+       "period_label": "2025",
+       "p_e": 13.28,
+       "p_b": 1.47,
+       "roe": 11.28
+      },
+      {
+       "symbol": "MBS",
+       "period_label": "2025",
+       "p_e": 13.33,
+       "p_b": 2.14,
+       "roe": 15.18
+      },
+      {
+       "symbol": "FTS",
+       "period_label": "2025",
+       "p_e": 27.12,
+       "p_b": 2.58,
+       "roe": 9.29
+      }
+     ]
+    },
+    "provenance": {
+     "source": "vnstock",
+     "as_of": "2026-11-01T23:08:12.898974+07:00"
+    },
+    "availability": "available"
+   }
+  }
+ }
+}

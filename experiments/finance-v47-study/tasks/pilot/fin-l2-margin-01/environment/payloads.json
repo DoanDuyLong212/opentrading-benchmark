@@ -1,0 +1,60 @@
+{
+  "snapshot_date": "2026-11-01",
+  "note": "Envelope MCP đã ghi lúc tạo task (2026-11-01, trim trường không dùng cho gold; data + provenance + availability giữ nguyên). Benchmark chạy qua snapshot-replay các envelope này — không gọi MCP live.",
+  "tools": {
+    "financial_detail": {
+      "data": {
+        "symbol": "MWG",
+        "statement": "KQKD",
+        "unit": "VNDbn",
+        "periods": [
+          "Q4/2025",
+          "Q1/2026",
+          "Q2/2026",
+          "Q3/2026"
+        ],
+        "report_type": "quarter",
+        "rows": [
+          {
+            "name": "3. Doanh thu thuần về bán hàng và cung cấp dịch vụ",
+            "values": [
+              42850,
+              46462,
+              48751,
+              52614
+            ]
+          },
+          {
+            "name": "4. Giá vốn hàng bán",
+            "values": [
+              34804,
+              36752,
+              37942,
+              41192
+            ]
+          },
+          {
+            "name": "5. Lợi nhuận gộp về bán hàng và cung cấp dịch vụ",
+            "values": [
+              8046,
+              9710,
+              10809,
+              11421
+            ]
+          }
+        ]
+      },
+      "provenance": {
+        "source": "vietstock",
+        "as_of": "2026-11-01T15:54:29.386552+07:00",
+        "data_time": "2026-11-01T15:09:29.085370+07:00",
+        "timezone": "Asia/Ho_Chi_Minh"
+      },
+      "availability": "available",
+      "warnings": [
+        "dữ liệu lấy lúc 2026-11-01T15:09:29.085370+07:00, dùng lại bản đã lưu"
+      ],
+      "_note": "unit VNDbn = VND billion = tỷ đồng"
+    }
+  }
+}

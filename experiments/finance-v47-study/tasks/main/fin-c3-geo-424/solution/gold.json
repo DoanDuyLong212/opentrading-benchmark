@@ -1,0 +1,130 @@
+{
+  "task_id": "fin-c3-geo-424",
+  "scoring": "value",
+  "solution": {
+    "ann_GVR": -29.0937,
+    "ann_POW": -27.3066,
+    "ann_PLX": -24.8394,
+    "geo_period_pct": -13.9687,
+    "geo_ann_pct": -27.1007,
+    "best": "PLX"
+  },
+  "as_of": "2026-11-11T09:41:32.145602+07:00",
+  "split": "main",
+  "expects": [
+    {
+      "type": "value",
+      "path": "values.ann_GVR",
+      "gold": -29.0937,
+      "tol": {
+        "abs": 0.1
+      }
+    },
+    {
+      "type": "value",
+      "path": "values.ann_POW",
+      "gold": -27.3066,
+      "tol": {
+        "abs": 0.1
+      }
+    },
+    {
+      "type": "value",
+      "path": "values.ann_PLX",
+      "gold": -24.8394,
+      "tol": {
+        "abs": 0.1
+      }
+    },
+    {
+      "type": "value",
+      "path": "values.geo_period_pct",
+      "gold": -13.9687,
+      "tol": {
+        "abs": 0.05
+      }
+    },
+    {
+      "type": "value",
+      "path": "values.geo_ann_pct",
+      "gold": -27.1007,
+      "tol": {
+        "abs": 0.1
+      }
+    },
+    {
+      "type": "tokens",
+      "path": "values.best",
+      "accept": [
+        "PLX"
+      ],
+      "reject": [
+        "GVR",
+        "POW"
+      ]
+    },
+    {
+      "type": "str",
+      "path": "source",
+      "accept": [
+        "vn_quote_history"
+      ]
+    }
+  ],
+  "contract_version": 2,
+  "stratum": "compute",
+  "tier": "C3",
+  "notes": "Compute stratum (amendment 2026-11-11 d). Gold computed with Decimal from payloads; uniform tolerance.",
+  "provenance_contract": [
+    {
+      "tool": "vn_quote_history",
+      "source": "vnstock",
+      "as_of": "2026-11-11T09:41:32.145602+07:00",
+      "matched_entry_id": "hist:GVR",
+      "response_sha256": "4e0d8d1035760cb3417372b4896c8ea2ec28190bdc89c3bd5744371511d504d2"
+    },
+    {
+      "tool": "vn_quote_history",
+      "source": "vnstock",
+      "as_of": "2026-11-11T09:41:32.145602+07:00",
+      "matched_entry_id": "hist:PLX",
+      "response_sha256": "5a7fa3661a96aa11c2d5a20bcdff0733b85be413b05914d6212d95cbbcd0efb2"
+    },
+    {
+      "tool": "vn_quote_history",
+      "source": "vnstock",
+      "as_of": "2026-11-11T09:41:32.145602+07:00",
+      "matched_entry_id": "hist:POW",
+      "response_sha256": "5012098ec8d22ef7aacfd5ce7fb7126fa4056f9a449ce9eb0639a3190b6b9041"
+    }
+  ],
+  "provenance_catalog": [
+    {
+      "tool": "vn_quote_history",
+      "source": "vnstock",
+      "as_of": "2026-11-11T09:41:32.145602+07:00",
+      "matched_entry_id": "hist:GVR",
+      "response_sha256": "4e0d8d1035760cb3417372b4896c8ea2ec28190bdc89c3bd5744371511d504d2"
+    },
+    {
+      "tool": "vn_quote_history",
+      "source": "vnstock",
+      "as_of": "2026-11-11T09:41:32.145602+07:00",
+      "matched_entry_id": "hist:PLX",
+      "response_sha256": "5a7fa3661a96aa11c2d5a20bcdff0733b85be413b05914d6212d95cbbcd0efb2"
+    },
+    {
+      "tool": "vn_quote_history",
+      "source": "vnstock",
+      "as_of": "2026-11-11T09:41:32.145602+07:00",
+      "matched_entry_id": "hist:POW",
+      "response_sha256": "5012098ec8d22ef7aacfd5ce7fb7126fa4056f9a449ce9eb0639a3190b6b9041"
+    }
+  ],
+  "payload_sha256": "9a2e49f8b39e7cf6f264a67cbb4fcf30202eb02621d06b8bb12545c45781fe97",
+  "required_payload_keys": [
+    "hist:GVR",
+    "hist:PLX",
+    "hist:POW"
+  ]
+}

@@ -1,0 +1,64 @@
+{
+ "snapshot_date": "2026-11-01",
+ "note": "Envelope MCP ghi lúc tạo task. Key = mã payload nội bộ; envelope giữ nguyên data+provenance+availability.",
+ "tools": {
+  "peer:bds_p": {
+   "tool": "peer_compare",
+   "params": {
+    "symbol": "KDH",
+    "peers": [
+     "NLG",
+     "DXG",
+     "PDR",
+     "KBC"
+    ]
+   },
+   "envelope": {
+    "data": {
+     "rows": [
+      {
+       "symbol": "KDH",
+       "period_label": "2025",
+       "p_e": 31.84,
+       "p_b": 1.67,
+       "roe": 5.82
+      },
+      {
+       "symbol": "NLG",
+       "period_label": "2025",
+       "p_e": 16.72,
+       "p_b": 0.79,
+       "roe": 6.28
+      },
+      {
+       "symbol": "DXG",
+       "period_label": "2025",
+       "p_e": 43.58,
+       "p_b": 0.91,
+       "roe": 2.95
+      },
+      {
+       "symbol": "PDR",
+       "period_label": "2025",
+       "p_e": 33.78,
+       "p_b": 1.48,
+       "roe": 4.41
+      },
+      {
+       "symbol": "KBC",
+       "period_label": "2025",
+       "p_e": 14.26,
+       "p_b": 1.25,
+       "roe": 9.7
+      }
+     ]
+    },
+    "provenance": {
+     "source": "vnstock",
+     "as_of": "2026-11-01T23:14:30.802857+07:00"
+    },
+    "availability": "available"
+   }
+  }
+ }
+}

@@ -1,0 +1,210 @@
+{
+  "task_id": "fin-l5-compare-277",
+  "scoring": "value",
+  "solution": {
+    "HSG": {
+      "pe": 13.31,
+      "pb": 0.86,
+      "roe": 6.61
+    },
+    "NKG": {
+      "pe": 32.28,
+      "pb": 0.87,
+      "roe": 2.92
+    },
+    "POM": {
+      "pe": -1.77,
+      "pb": -2.34,
+      "roe": 392.86
+    },
+    "TLH": {
+      "pe": 104.28,
+      "pb": 0.42,
+      "roe": 0.41
+    },
+    "VGS": {
+      "pe": 6.85,
+      "pb": 1.23,
+      "roe": 18.24
+    },
+    "ranking": [
+      "POM",
+      "VGS",
+      "HSG",
+      "NKG",
+      "TLH"
+    ]
+  },
+  "as_of": "2026-11-01T23:08:16.117741+07:00",
+  "split": "main",
+  "expects": [
+    {
+      "type": "value",
+      "path": "values.HSG.pe",
+      "gold": 13.31,
+      "tol": {
+        "rel": 0.005
+      }
+    },
+    {
+      "type": "value",
+      "path": "values.HSG.pb",
+      "gold": 0.86,
+      "tol": {
+        "rel": 0.005
+      }
+    },
+    {
+      "type": "value",
+      "path": "values.HSG.roe",
+      "gold": 6.61,
+      "tol": {
+        "rel": 0.005
+      }
+    },
+    {
+      "type": "value",
+      "path": "values.NKG.pe",
+      "gold": 32.28,
+      "tol": {
+        "rel": 0.005
+      }
+    },
+    {
+      "type": "value",
+      "path": "values.NKG.pb",
+      "gold": 0.87,
+      "tol": {
+        "rel": 0.005
+      }
+    },
+    {
+      "type": "value",
+      "path": "values.NKG.roe",
+      "gold": 2.92,
+      "tol": {
+        "rel": 0.005
+      }
+    },
+    {
+      "type": "value",
+      "path": "values.POM.pe",
+      "gold": -1.77,
+      "tol": {
+        "rel": 0.005
+      }
+    },
+    {
+      "type": "value",
+      "path": "values.POM.pb",
+      "gold": -2.34,
+      "tol": {
+        "rel": 0.005
+      }
+    },
+    {
+      "type": "value",
+      "path": "values.POM.roe",
+      "gold": 392.86,
+      "tol": {
+        "rel": 0.005
+      }
+    },
+    {
+      "type": "value",
+      "path": "values.TLH.pe",
+      "gold": 104.28,
+      "tol": {
+        "rel": 0.005
+      }
+    },
+    {
+      "type": "value",
+      "path": "values.TLH.pb",
+      "gold": 0.42,
+      "tol": {
+        "rel": 0.005
+      }
+    },
+    {
+      "type": "value",
+      "path": "values.TLH.roe",
+      "gold": 0.41,
+      "tol": {
+        "rel": 0.005
+      }
+    },
+    {
+      "type": "value",
+      "path": "values.VGS.pe",
+      "gold": 6.85,
+      "tol": {
+        "rel": 0.005
+      }
+    },
+    {
+      "type": "value",
+      "path": "values.VGS.pb",
+      "gold": 1.23,
+      "tol": {
+        "rel": 0.005
+      }
+    },
+    {
+      "type": "value",
+      "path": "values.VGS.roe",
+      "gold": 18.24,
+      "tol": {
+        "rel": 0.005
+      }
+    },
+    {
+      "type": "list_order",
+      "path": "ranking",
+      "gold": [
+        "POM",
+        "VGS",
+        "HSG",
+        "NKG",
+        "TLH"
+      ]
+    },
+    {
+      "type": "period",
+      "path": "period",
+      "accept": [
+        "2025"
+      ]
+    },
+    {
+      "type": "str",
+      "path": "source",
+      "accept": [
+        "peer_compare"
+      ]
+    }
+  ],
+  "contract_version": 2,
+  "provenance_contract": [
+    {
+      "tool": "peer_compare",
+      "source": "vnstock",
+      "as_of": "2026-11-01T23:08:16.117741+07:00",
+      "matched_entry_id": "peer:steel_p",
+      "response_sha256": "b87224c88e97a18c3fdbcc3e35b34b54430852264b0cc171d39a7040cfed55fb"
+    }
+  ],
+  "payload_sha256": "f44870181d3518ee4f89a07ac809ce95b2f95b3e27c66af4e96eb6ceeb19e2d2",
+  "provenance_catalog": [
+    {
+      "tool": "peer_compare",
+      "source": "vnstock",
+      "as_of": "2026-11-01T23:08:16.117741+07:00",
+      "matched_entry_id": "peer:steel_p",
+      "response_sha256": "b87224c88e97a18c3fdbcc3e35b34b54430852264b0cc171d39a7040cfed55fb"
+    }
+  ],
+  "required_payload_keys": [
+    "peer:steel_p"
+  ]
+}

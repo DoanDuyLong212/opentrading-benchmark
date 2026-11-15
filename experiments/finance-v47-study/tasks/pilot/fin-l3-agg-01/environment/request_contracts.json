@@ -1,0 +1,54 @@
+{
+  "version": 2,
+  "reconstruction": "entity identity from recorded envelope; original optional capture arguments unavailable",
+  "requests": {
+    "vn_quote_history": [
+      {
+        "params": {
+          "symbol": "VCB"
+        },
+        "select_row": [
+          "banks",
+          "VCB"
+        ]
+      },
+      {
+        "params": {
+          "symbol": "BID"
+        },
+        "select_row": [
+          "banks",
+          "BID"
+        ]
+      },
+      {
+        "params": {
+          "symbol": "CTG"
+        },
+        "select_row": [
+          "banks",
+          "CTG"
+        ]
+      },
+      {
+        "params": {
+          "symbol": "TCB"
+        },
+        "select_row": [
+          "banks",
+          "TCB"
+        ]
+      },
+      {
+        "params": {
+          "symbol": "MBB"
+        },
+        "select_row": [
+          "banks",
+          "MBB"
+        ]
+      }
+    ]
+  },
+  "parameter_corrections": {}
+}

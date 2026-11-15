@@ -1,0 +1,69 @@
+{
+  "version": 2,
+  "reconstruction": "entity identity from recorded envelope; original optional capture arguments unavailable",
+  "requests": {
+    "signals_technical": [
+      {
+        "params": {
+          "symbol": "HPG",
+          "interval": "1D"
+        },
+        "select_row": [
+          "rows",
+          "HPG"
+        ]
+      },
+      {
+        "params": {
+          "symbol": "HCM",
+          "interval": "1D"
+        },
+        "select_row": [
+          "rows",
+          "HCM"
+        ]
+      },
+      {
+        "params": {
+          "symbol": "VND",
+          "interval": "1D"
+        },
+        "select_row": [
+          "rows",
+          "VND"
+        ]
+      },
+      {
+        "params": {
+          "symbol": "SSI",
+          "interval": "1D"
+        },
+        "select_row": [
+          "rows",
+          "SSI"
+        ]
+      },
+      {
+        "params": {
+          "symbol": "SHB",
+          "interval": "1D"
+        },
+        "select_row": [
+          "rows",
+          "SHB"
+        ]
+      },
+      {
+        "params": {
+          "symbol": "VCB",
+          "interval": "1D"
+        },
+        "select_row": [
+          "rows",
+          "VCB"
+        ]
+      }
+    ]
+  },
+  "parameter_corrections": {}
+}

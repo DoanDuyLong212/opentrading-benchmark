@@ -1,0 +1,101 @@
+{
+  "task_id": "fin-l5-profile-261",
+  "scoring": "value",
+  "solution": {
+    "revenue_q_bn": 10471.0,
+    "gross_profit_q_bn": 466.0,
+    "gross_margin_pct": 4.45,
+    "pe": 8.84,
+    "market_cap_bn": 7156.69
+  },
+  "as_of": "2026-11-01T23:14:37.402092+07:00",
+  "split": "main",
+  "expects": [
+    {
+      "type": "value",
+      "path": "values.revenue_q_bn",
+      "gold": 10471.0,
+      "tol": {
+        "rel": 0.005
+      }
+    },
+    {
+      "type": "value",
+      "path": "values.gross_profit_q_bn",
+      "gold": 466.0,
+      "tol": {
+        "rel": 0.005
+      }
+    },
+    {
+      "type": "value",
+      "path": "values.gross_margin_pct",
+      "gold": 4.45,
+      "tol": {
+        "abs": 0.1
+      }
+    },
+    {
+      "type": "value",
+      "path": "values.pe",
+      "gold": 8.84,
+      "tol": {
+        "rel": 0.005
+      }
+    },
+    {
+      "type": "value",
+      "path": "values.market_cap_bn",
+      "gold": 7156.69,
+      "tol": {
+        "rel": 0.005
+      }
+    },
+    {
+      "type": "str_all",
+      "path": "source",
+      "accept": [
+        "financial_detail",
+        "stock_overview"
+      ]
+    }
+  ],
+  "contract_version": 2,
+  "provenance_contract": [
+    {
+      "tool": "stock_overview",
+      "source": "vietstock",
+      "as_of": "2026-11-01T23:14:37.402092+07:00",
+      "matched_entry_id": "ov:CTD",
+      "response_sha256": "b895c9ebb5d7c777c53f913e4c04ba469172e6df3a6c07af4772ab3a610b59cf"
+    },
+    {
+      "tool": "financial_detail",
+      "source": "vietstock",
+      "as_of": "2026-11-01T22:08:27.239278+07:00",
+      "matched_entry_id": "fd:CTD",
+      "response_sha256": "a87ab76f3ca43621ffb746e65fe052707e021164886f8b486995c5810751e71d"
+    }
+  ],
+  "payload_sha256": "c1105a9cf7013020defacf181424c2fae45d69c2e14769bdf9ff1f8e18cd7baf",
+  "provenance_catalog": [
+    {
+      "tool": "stock_overview",
+      "source": "vietstock",
+      "as_of": "2026-11-01T23:14:37.402092+07:00",
+      "matched_entry_id": "ov:CTD",
+      "response_sha256": "b895c9ebb5d7c777c53f913e4c04ba469172e6df3a6c07af4772ab3a610b59cf"
+    },
+    {
+      "tool": "financial_detail",
+      "source": "vietstock",
+      "as_of": "2026-11-01T22:08:27.239278+07:00",
+      "matched_entry_id": "fd:CTD",
+      "response_sha256": "a87ab76f3ca43621ffb746e65fe052707e021164886f8b486995c5810751e71d"
+    }
+  ],
+  "required_payload_keys": [
+    "fd:CTD",
+    "ov:CTD"
+  ]
+}

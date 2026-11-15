@@ -1,0 +1,41 @@
+{
+  "snapshot_date": "2026-11-01",
+  "note": "Envelope MCP đã ghi lúc tạo task (2026-11-01, trim trường không dùng cho gold; data + provenance + availability giữ nguyên). Benchmark chạy qua snapshot-replay các envelope này — không gọi MCP live.",
+  "tools": {
+    "valuation_run": {
+      "data": {
+        "symbol": "FPT",
+        "price": 52700,
+        "method": "per_pb",
+        "price_source": "vnstock.equity_quote_batch",
+        "price_as_of": null,
+        "price_unit": "unverified",
+        "price_adjustment_basis": "unverified",
+        "eps_period": "2025",
+        "eps_frequency": "annual",
+        "eps_basis": "trailing_four_quarters",
+        "eps_unit": "unverified",
+        "eps_adjustment_basis": "unverified",
+        "eps_source": "vnstock trailing EPS, period 2025",
+        "bvps_source": "vnstock BVPS, period 2025",
+        "bvps_period": "2025",
+        "bvps_frequency": "annual",
+        "eps": 6021.21,
+        "bvps": 25679.55,
+        "per": 8.75,
+        "per_basis": "quote_price_over_reported_eps",
+        "pb": 2.05,
+        "pb_basis": "quote_price_over_reported_bvps",
+        "multiple_comparability": "price/EPS units and adjustment bases unverified"
+      },
+      "provenance": {
+        "source": "computed-local",
+        "as_of": "2026-11-01T15:54:35.771025+07:00",
+        "timezone": "Asia/Ho_Chi_Minh"
+      },
+      "availability": "available",
+      "warnings": [],
+      "_note": "cùng mã FPT, vn_fundamentals cho P/E khác (20.96 kỳ Q3/2026) — nguồn khác số khác"
+    }
+  }
+}

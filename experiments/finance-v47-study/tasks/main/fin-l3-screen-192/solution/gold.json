@@ -1,0 +1,58 @@
+{
+  "task_id": "fin-l3-screen-192",
+  "scoring": "value",
+  "solution": {
+    "pass": [
+      "PNJ"
+    ],
+    "filter": "ROE > 15% và P/E < 15"
+  },
+  "as_of": "2026-11-01T23:08:19.121250+07:00",
+  "split": "main",
+  "expects": [
+    {
+      "type": "set",
+      "path": "values.pass",
+      "gold": [
+        "PNJ"
+      ]
+    },
+    {
+      "type": "period",
+      "path": "period",
+      "accept": [
+        "2025"
+      ]
+    },
+    {
+      "type": "str",
+      "path": "source",
+      "accept": [
+        "peer_compare"
+      ]
+    }
+  ],
+  "contract_version": 2,
+  "provenance_contract": [
+    {
+      "tool": "peer_compare",
+      "source": "vnstock",
+      "as_of": "2026-11-01T23:08:19.121250+07:00",
+      "matched_entry_id": "peer:cons_p",
+      "response_sha256": "ddba4fdb6bb3c68d89a0cb89bcf91112bcee9fc811750394f7fb157fbdfffa82"
+    }
+  ],
+  "payload_sha256": "0bd2fbf239937f6339375a3b74c14e626923c430bc191b9a6d0c9e0f61482465",
+  "provenance_catalog": [
+    {
+      "tool": "peer_compare",
+      "source": "vnstock",
+      "as_of": "2026-11-01T23:08:19.121250+07:00",
+      "matched_entry_id": "peer:cons_p",
+      "response_sha256": "ddba4fdb6bb3c68d89a0cb89bcf91112bcee9fc811750394f7fb157fbdfffa82"
+    }
+  ],
+  "required_payload_keys": [
+    "peer:cons_p"
+  ]
+}

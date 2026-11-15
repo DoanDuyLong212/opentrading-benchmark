@@ -1,0 +1,210 @@
+{
+  "task_id": "fin-l5-compare-282",
+  "scoring": "value",
+  "solution": {
+    "DHG": {
+      "pe": 15.69,
+      "pb": 3.23,
+      "roe": 20.71
+    },
+    "IMP": {
+      "pe": 23.16,
+      "pb": 3.51,
+      "roe": 15.55
+    },
+    "TRA": {
+      "pe": 12.45,
+      "pb": 1.84,
+      "roe": 16.8
+    },
+    "DBD": {
+      "pe": 15.68,
+      "pb": 2.66,
+      "roe": 17.21
+    },
+    "DBT": {
+      "pe": 16.51,
+      "pb": 0.85,
+      "roe": 5.28
+    },
+    "ranking": [
+      "DHG",
+      "DBD",
+      "TRA",
+      "IMP",
+      "DBT"
+    ]
+  },
+  "as_of": "2026-11-01T23:14:27.401231+07:00",
+  "split": "main",
+  "expects": [
+    {
+      "type": "value",
+      "path": "values.DHG.pe",
+      "gold": 15.69,
+      "tol": {
+        "rel": 0.005
+      }
+    },
+    {
+      "type": "value",
+      "path": "values.DHG.pb",
+      "gold": 3.23,
+      "tol": {
+        "rel": 0.005
+      }
+    },
+    {
+      "type": "value",
+      "path": "values.DHG.roe",
+      "gold": 20.71,
+      "tol": {
+        "rel": 0.005
+      }
+    },
+    {
+      "type": "value",
+      "path": "values.IMP.pe",
+      "gold": 23.16,
+      "tol": {
+        "rel": 0.005
+      }
+    },
+    {
+      "type": "value",
+      "path": "values.IMP.pb",
+      "gold": 3.51,
+      "tol": {
+        "rel": 0.005
+      }
+    },
+    {
+      "type": "value",
+      "path": "values.IMP.roe",
+      "gold": 15.55,
+      "tol": {
+        "rel": 0.005
+      }
+    },
+    {
+      "type": "value",
+      "path": "values.TRA.pe",
+      "gold": 12.45,
+      "tol": {
+        "rel": 0.005
+      }
+    },
+    {
+      "type": "value",
+      "path": "values.TRA.pb",
+      "gold": 1.84,
+      "tol": {
+        "rel": 0.005
+      }
+    },
+    {
+      "type": "value",
+      "path": "values.TRA.roe",
+      "gold": 16.8,
+      "tol": {
+        "rel": 0.005
+      }
+    },
+    {
+      "type": "value",
+      "path": "values.DBD.pe",
+      "gold": 15.68,
+      "tol": {
+        "rel": 0.005
+      }
+    },
+    {
+      "type": "value",
+      "path": "values.DBD.pb",
+      "gold": 2.66,
+      "tol": {
+        "rel": 0.005
+      }
+    },
+    {
+      "type": "value",
+      "path": "values.DBD.roe",
+      "gold": 17.21,
+      "tol": {
+        "rel": 0.005
+      }
+    },
+    {
+      "type": "value",
+      "path": "values.DBT.pe",
+      "gold": 16.51,
+      "tol": {
+        "rel": 0.005
+      }
+    },
+    {
+      "type": "value",
+      "path": "values.DBT.pb",
+      "gold": 0.85,
+      "tol": {
+        "rel": 0.005
+      }
+    },
+    {
+      "type": "value",
+      "path": "values.DBT.roe",
+      "gold": 5.28,
+      "tol": {
+        "rel": 0.005
+      }
+    },
+    {
+      "type": "list_order",
+      "path": "ranking",
+      "gold": [
+        "DHG",
+        "DBD",
+        "TRA",
+        "IMP",
+        "DBT"
+      ]
+    },
+    {
+      "type": "period",
+      "path": "period",
+      "accept": [
+        "2025"
+      ]
+    },
+    {
+      "type": "str",
+      "path": "source",
+      "accept": [
+        "peer_compare"
+      ]
+    }
+  ],
+  "contract_version": 2,
+  "provenance_contract": [
+    {
+      "tool": "peer_compare",
+      "source": "vnstock",
+      "as_of": "2026-11-01T23:14:27.401231+07:00",
+      "matched_entry_id": "peer:pharma_p",
+      "response_sha256": "60178b26a3fef9be9613101eb120c04d5295e7da6d45bd20cf2b08e54ea9c115"
+    }
+  ],
+  "payload_sha256": "6d60d2b1ef429d4d80579e8bea9d10cc323e16246a3b6ee768115b8bf2b05edf",
+  "provenance_catalog": [
+    {
+      "tool": "peer_compare",
+      "source": "vnstock",
+      "as_of": "2026-11-01T23:14:27.401231+07:00",
+      "matched_entry_id": "peer:pharma_p",
+      "response_sha256": "60178b26a3fef9be9613101eb120c04d5295e7da6d45bd20cf2b08e54ea9c115"
+    }
+  ],
+  "required_payload_keys": [
+    "peer:pharma_p"
+  ]
+}

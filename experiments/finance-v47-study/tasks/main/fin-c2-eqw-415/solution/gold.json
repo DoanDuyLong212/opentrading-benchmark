@@ -1,0 +1,111 @@
+{
+  "task_id": "fin-c2-eqw-415",
+  "scoring": "value",
+  "solution": {
+    "avg_pct": -1.966,
+    "best": "ACB",
+    "best_pct": -0.4739
+  },
+  "as_of": "2026-11-11T09:41:32.145602+07:00",
+  "split": "main",
+  "expects": [
+    {
+      "type": "value",
+      "path": "values.avg_pct",
+      "gold": -1.966,
+      "tol": {
+        "abs": 0.05
+      }
+    },
+    {
+      "type": "tokens",
+      "path": "values.best",
+      "accept": [
+        "ACB"
+      ],
+      "reject": [
+        "VCB",
+        "BID"
+      ]
+    },
+    {
+      "type": "value",
+      "path": "values.best_pct",
+      "gold": -0.4739,
+      "tol": {
+        "abs": 0.05
+      }
+    },
+    {
+      "type": "unit",
+      "path": "unit",
+      "accept": [
+        "%",
+        "phần trăm"
+      ]
+    },
+    {
+      "type": "str",
+      "path": "source",
+      "accept": [
+        "vn_quote_history"
+      ]
+    }
+  ],
+  "contract_version": 2,
+  "stratum": "compute",
+  "tier": "C2",
+  "notes": "Compute stratum (amendment 2026-11-11 d). Gold computed with Decimal from payloads; uniform tolerance.",
+  "provenance_contract": [
+    {
+      "tool": "vn_quote_history",
+      "source": "vnstock",
+      "as_of": "2026-11-11T09:41:32.145602+07:00",
+      "matched_entry_id": "hist:ACB",
+      "response_sha256": "41aa9d71a2bbe22dee000cb42dc39065a1593818dc1194382dddd113db639da8"
+    },
+    {
+      "tool": "vn_quote_history",
+      "source": "vnstock",
+      "as_of": "2026-11-11T09:41:32.145602+07:00",
+      "matched_entry_id": "hist:BID",
+      "response_sha256": "95666bf7190cae7e06737d18dcd2ea11cd76bfbb0c7b02e0f5e9afad3f02c93b"
+    },
+    {
+      "tool": "vn_quote_history",
+      "source": "vnstock",
+      "as_of": "2026-11-11T09:41:32.145602+07:00",
+      "matched_entry_id": "hist:VCB",
+      "response_sha256": "f196ec0abc711eb0f5e917231d39c4e1703b23b8669dd41c0bac66ae4bdff366"
+    }
+  ],
+  "provenance_catalog": [
+    {
+      "tool": "vn_quote_history",
+      "source": "vnstock",
+      "as_of": "2026-11-11T09:41:32.145602+07:00",
+      "matched_entry_id": "hist:ACB",
+      "response_sha256": "41aa9d71a2bbe22dee000cb42dc39065a1593818dc1194382dddd113db639da8"
+    },
+    {
+      "tool": "vn_quote_history",
+      "source": "vnstock",
+      "as_of": "2026-11-11T09:41:32.145602+07:00",
+      "matched_entry_id": "hist:BID",
+      "response_sha256": "95666bf7190cae7e06737d18dcd2ea11cd76bfbb0c7b02e0f5e9afad3f02c93b"
+    },
+    {
+      "tool": "vn_quote_history",
+      "source": "vnstock",
+      "as_of": "2026-11-11T09:41:32.145602+07:00",
+      "matched_entry_id": "hist:VCB",
+      "response_sha256": "f196ec0abc711eb0f5e917231d39c4e1703b23b8669dd41c0bac66ae4bdff366"
+    }
+  ],
+  "payload_sha256": "b781df61a9b19ae13b64b127ac6820e5357488dd9f7e2420d5752e7a3aca8ded",
+  "required_payload_keys": [
+    "hist:ACB",
+    "hist:BID",
+    "hist:VCB"
+  ]
+}

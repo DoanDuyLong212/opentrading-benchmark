@@ -1,0 +1,101 @@
+{
+  "task_id": "fin-l5-profile-263",
+  "scoring": "value",
+  "solution": {
+    "revenue_q_bn": 722.0,
+    "gross_profit_q_bn": 342.0,
+    "gross_margin_pct": 47.37,
+    "pe": 12.41,
+    "market_cap_bn": 5062.78
+  },
+  "as_of": "2026-11-01T23:14:23.825231+07:00",
+  "split": "main",
+  "expects": [
+    {
+      "type": "value",
+      "path": "values.revenue_q_bn",
+      "gold": 722.0,
+      "tol": {
+        "rel": 0.005
+      }
+    },
+    {
+      "type": "value",
+      "path": "values.gross_profit_q_bn",
+      "gold": 342.0,
+      "tol": {
+        "rel": 0.005
+      }
+    },
+    {
+      "type": "value",
+      "path": "values.gross_margin_pct",
+      "gold": 47.37,
+      "tol": {
+        "abs": 0.1
+      }
+    },
+    {
+      "type": "value",
+      "path": "values.pe",
+      "gold": 12.41,
+      "tol": {
+        "rel": 0.005
+      }
+    },
+    {
+      "type": "value",
+      "path": "values.market_cap_bn",
+      "gold": 5062.78,
+      "tol": {
+        "rel": 0.005
+      }
+    },
+    {
+      "type": "str_all",
+      "path": "source",
+      "accept": [
+        "financial_detail",
+        "stock_overview"
+      ]
+    }
+  ],
+  "contract_version": 2,
+  "provenance_contract": [
+    {
+      "tool": "stock_overview",
+      "source": "vietstock",
+      "as_of": "2026-11-01T23:14:23.825231+07:00",
+      "matched_entry_id": "ov:GEG",
+      "response_sha256": "291e1f23e7463fbd9d99695acd836a9cdbfefcd78c8bc71c88d3cb17885a89aa"
+    },
+    {
+      "tool": "financial_detail",
+      "source": "vietstock",
+      "as_of": "2026-11-01T22:41:33.559298+07:00",
+      "matched_entry_id": "fd:GEG",
+      "response_sha256": "dc67ddec3d28d86c1880a4b5ac7c583e1a81c26f567e8301857823467ce47d0f"
+    }
+  ],
+  "payload_sha256": "44687915bb42eb667a928220620fe8fc19159d78d7e75d11989588439d080fb2",
+  "provenance_catalog": [
+    {
+      "tool": "stock_overview",
+      "source": "vietstock",
+      "as_of": "2026-11-01T23:14:23.825231+07:00",
+      "matched_entry_id": "ov:GEG",
+      "response_sha256": "291e1f23e7463fbd9d99695acd836a9cdbfefcd78c8bc71c88d3cb17885a89aa"
+    },
+    {
+      "tool": "financial_detail",
+      "source": "vietstock",
+      "as_of": "2026-11-01T22:41:33.559298+07:00",
+      "matched_entry_id": "fd:GEG",
+      "response_sha256": "dc67ddec3d28d86c1880a4b5ac7c583e1a81c26f567e8301857823467ce47d0f"
+    }
+  ],
+  "required_payload_keys": [
+    "fd:GEG",
+    "ov:GEG"
+  ]
+}

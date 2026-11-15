@@ -1,0 +1,65 @@
+{
+  "task_id": "fin-l3-index-217",
+  "scoring": "value",
+  "solution": {
+    "value": -2.0
+  },
+  "as_of": "2026-11-01T21:30:27.858661+07:00",
+  "split": "main",
+  "expects": [
+    {
+      "type": "value",
+      "path": "value",
+      "gold": -2.0,
+      "tol": {
+        "abs": 0.1
+      }
+    },
+    {
+      "type": "unit",
+      "path": "unit",
+      "accept": [
+        "%",
+        "phần trăm"
+      ]
+    },
+    {
+      "type": "period",
+      "path": "period",
+      "accept": [
+        "19/10",
+        "30/10"
+      ]
+    },
+    {
+      "type": "str",
+      "path": "source",
+      "accept": [
+        "vn_index_ohlcv"
+      ]
+    }
+  ],
+  "contract_version": 2,
+  "provenance_contract": [
+    {
+      "tool": "vn_index_ohlcv",
+      "source": "vnstock",
+      "as_of": "2026-11-01T21:30:27.858661+07:00",
+      "matched_entry_id": "idx:HNXINDEX",
+      "response_sha256": "209b179ef6168d9b5731406aa282260fa19bd226fe4ea677da97d0fd7a6e45ba"
+    }
+  ],
+  "payload_sha256": "3e2cb72a1d26644b5b6db60e6ac5b5d1e37b38b0b177ce1037a2dfd65cdd1ad7",
+  "provenance_catalog": [
+    {
+      "tool": "vn_index_ohlcv",
+      "source": "vnstock",
+      "as_of": "2026-11-01T21:30:27.858661+07:00",
+      "matched_entry_id": "idx:HNXINDEX",
+      "response_sha256": "209b179ef6168d9b5731406aa282260fa19bd226fe4ea677da97d0fd7a6e45ba"
+    }
+  ],
+  "required_payload_keys": [
+    "idx:HNXINDEX"
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "version": 2,
+  "reconstruction": "entity identity from recorded envelope; original optional capture arguments unavailable",
+  "requests": {},
+  "parameter_corrections": {
+    "cohlcv:ETHUSDT": {
+      "params": {
+        "symbol": "ETHUSDT",
+        "count": 10
+      },
+      "reason": "recorded days is not a real tool parameter; count reconstructed from captured closes length"
+    }
+  }
+}

@@ -1,0 +1,33 @@
+# Native-memory stratum — amendment 2026-11-11 (d), tools/build_memory_stratum_20261111.py
+id = "fin-m4-rule-522"
+title = "Memory M4 — tiêu chí đã ghi nhớ tự áp dụng (pharma_p)"
+version = 3
+created = "2026-11-11"
+level = "M4"
+family = "M4 memory"
+financebench_type = "multi-session memory"
+entity = "peer:pharma_p"
+asset = "vn_stock"
+data_zone = "green"
+data_pairs = []
+snapshot_date = "2026-11-01"
+universe_cap = 0
+banned_tools = ["web_search", "web_fetch", "sentiment_score"]
+human_time_band = "15–60 phút"
+time_limit_min = 30
+tools_expected = ["peer_compare"]
+mcp_payloads = "environment/payloads.json"
+snapshot_required = true
+split = "main"
+multiturn = true
+track = "memory_multiturn"
+stratum = "memory"
+tier = "M4"
+subtier = "M4"
+confirmatory_eligible = true
+
+[scoring]
+type = "value"
+gold = "solution/gold.json"
+oracle = "solution/oracle.py"
+grader = "tests/grader.py"

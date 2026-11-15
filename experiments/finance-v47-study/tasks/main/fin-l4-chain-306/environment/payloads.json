@@ -1,0 +1,187 @@
+{
+ "snapshot_date": "2026-11-01",
+ "note": "Envelope MCP tái sử dụng nguyên vẹn từ các task đã ghi snapshot 2026-11-01 (corpus wave-2 stage-1); không có capture mới. Nguồn: fin-l3-top-198 + fin-l2-growth-141",
+ "tools": {
+  "movers:vn30": {
+   "tool": "market_movers",
+   "params": {
+    "top_n": 5,
+    "universe": "vn30"
+   },
+   "envelope": {
+    "data": {
+     "universe": "vn30",
+     "gainers": [
+      {
+       "symbol": "GAS",
+       "close": 78000,
+       "pct": 2.631578947368421,
+       "vol": 985200
+      },
+      {
+       "symbol": "VHM",
+       "close": 63000,
+       "pct": 1.4492753623188406,
+       "vol": 13483800
+      },
+      {
+       "symbol": "NVL",
+       "close": 10400,
+       "pct": 0.4830917874396135,
+       "vol": 14738700
+      },
+      {
+       "symbol": "SAB",
+       "close": 42400,
+       "pct": 0.2364066193853428,
+       "vol": 386900
+      },
+      {
+       "symbol": "BVH",
+       "close": 69000,
+       "pct": 0,
+       "vol": 917400
+      }
+     ],
+     "losers": [
+      {
+       "symbol": "PNJ",
+       "close": 15500,
+       "pct": -3.4267912772585665,
+       "vol": 9396300
+      },
+      {
+       "symbol": "TCB",
+       "close": 21600,
+       "pct": -3.3557046979865772,
+       "vol": 17644300
+      },
+      {
+       "symbol": "LPB",
+       "close": 36100,
+       "pct": -3.2171581769436997,
+       "vol": 2352300
+      },
+      {
+       "symbol": "MSN",
+       "close": 70000,
+       "pct": -2.912621359223301,
+       "vol": 5316200
+      },
+      {
+       "symbol": "BCM",
+       "close": 38400,
+       "pct": -2.9077117572692797,
+       "vol": 492800
+      }
+     ],
+     "volume_leaders": [
+      {
+       "symbol": "HPG",
+       "close": 21000,
+       "pct": -0.9433962264150944,
+       "vol": 24773000
+      },
+      {
+       "symbol": "TCB",
+       "close": 21600,
+       "pct": -3.3557046979865772,
+       "vol": 17644300
+      },
+      {
+       "symbol": "NVL",
+       "close": 10400,
+       "pct": 0.4830917874396135,
+       "vol": 14738700
+      },
+      {
+       "symbol": "VPB",
+       "close": 22950,
+       "pct": -1.0775862068965518,
+       "vol": 14689300
+      },
+      {
+       "symbol": "SSI",
+       "close": 19300,
+       "pct": -1.530612244897959,
+       "vol": 14279200
+      }
+     ]
+    },
+    "provenance": {
+     "source": "vnstock",
+     "as_of": "2026-11-01T21:12:04.261634+07:00",
+     "timezone": "Asia/Ho_Chi_Minh"
+    },
+    "availability": "available",
+    "warnings": []
+   }
+  },
+  "fs:PNJ": {
+   "tool": "financial_statements",
+   "params": {
+    "symbol": "PNJ",
+    "period": "quarter",
+    "periods_n": 4
+   },
+   "envelope": {
+    "data": {
+     "symbol": "PNJ",
+     "periods": [
+      "Q4/2025",
+      "Q1/2026",
+      "Q2/2026",
+      "Q3/2026"
+     ],
+     "rows": [
+      {
+       "name": "Doanh thu thuần",
+       "unit": "VND",
+       "values": {
+        "Q4/2025": 9622992508867,
+        "Q1/2026": 17245230999288,
+        "Q2/2026": 8483734481474,
+        "Q3/2026": 6994690437483
+       }
+      },
+      {
+       "name": "Lợi nhuận gộp",
+       "unit": "VND",
+       "values": {
+        "Q4/2025": 2418656335936,
+        "Q1/2026": 3440905900201,
+        "Q2/2026": 1563258876922,
+        "Q3/2026": 609050226786
+       }
+      },
+      {
+       "name": "LNST thu nhập DN",
+       "unit": "VND",
+       "values": {
+        "Q4/2025": 1218909077096,
+        "Q1/2026": 1467405321344,
+        "Q2/2026": -283029272213,
+        "Q3/2026": -257860943449
+       }
+      },
+      {
+       "name": "LNST của CĐ cty mẹ",
+       "unit": "VND",
+       "values": {
+        "Q4/2025": 1218909077096,
+        "Q1/2026": 1467405321344,
+        "Q2/2026": -282885492395,
+        "Q3/2026": -256865431344
+       }
+      }
+     ]
+    },
+    "provenance": {
+     "source": "vietstock",
+     "as_of": "2026-11-01T22:04:00.535310+07:00"
+    },
+    "availability": "available"
+   }
+  }
+ }
+}

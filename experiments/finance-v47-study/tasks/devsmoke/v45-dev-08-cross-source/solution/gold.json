@@ -1,0 +1,77 @@
+{
+  "task_id": "v45-dev-08-cross-source",
+  "scoring": "value",
+  "solution": {
+    "value": 0.3999999999999915
+  },
+  "provenance_contract": [
+    {
+      "tool": "vn_quote_history",
+      "source": "synthetic-dev",
+      "as_of": "2026-11-02T09:00:00+07:00",
+      "matched_entry_id": "q:DGC",
+      "response_sha256": "1bbab1557f55ed1adea9147bc0c944e961952e5690d5ec0ad70e787fda66dd67"
+    },
+    {
+      "tool": "financial_statements",
+      "source": "synthetic-second-source",
+      "as_of": "2026-11-02T09:00:00+07:00",
+      "matched_entry_id": "fs:DGC",
+      "response_sha256": "f72f986563a0167a94b15661f42e17b14ce7bf1324fd5c1457618e058cf5351c"
+    }
+  ],
+  "provenance_catalog": [
+    {
+      "tool": "vn_quote_history",
+      "source": "synthetic-dev",
+      "as_of": "2026-11-02T09:00:00+07:00",
+      "matched_entry_id": "q:DGC",
+      "response_sha256": "1bbab1557f55ed1adea9147bc0c944e961952e5690d5ec0ad70e787fda66dd67"
+    },
+    {
+      "tool": "financial_statements",
+      "source": "synthetic-second-source",
+      "as_of": "2026-11-02T09:00:00+07:00",
+      "matched_entry_id": "fs:DGC",
+      "response_sha256": "f72f986563a0167a94b15661f42e17b14ce7bf1324fd5c1457618e058cf5351c"
+    }
+  ],
+  "required_payload_keys": [
+    "q:DGC",
+    "fs:DGC"
+  ],
+  "payload_sha256": "31f5b24da5dffaeb587c1a45aab8a7f39fb16fc18a356e5eab444f2cb4c01c01",
+  "fixture_kind": "synthetic_engineering_fixture",
+  "expects": [
+    {
+      "type": "value",
+      "path": "value",
+      "gold": 0.3999999999999915,
+      "tol": {
+        "abs": 1e-06
+      }
+    },
+    {
+      "type": "unit",
+      "path": "unit",
+      "accept": [
+        "nghìn đồng"
+      ]
+    },
+    {
+      "type": "period",
+      "path": "period",
+      "accept": [
+        "2026-10-29"
+      ]
+    },
+    {
+      "type": "str_all",
+      "path": "source",
+      "accept": [
+        "financial_statements",
+        "vn_quote_history"
+      ]
+    }
+  ]
+}

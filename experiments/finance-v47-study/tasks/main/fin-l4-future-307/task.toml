@@ -1,0 +1,29 @@
+# Task benchmark harness tài chính (corpus wave-2 stage-1) — sinh bởi audits/2026-11-07-corpus-wave2
+id = "fin-l4-future-307"
+title = "VIX — phiên 01/11/2026 (Chủ nhật)"
+version = 2
+created = "2026-11-08"
+level = "L4"
+family = "L4·E future-period"
+financebench_type = "unpublished-period refusal"
+entity = "VIX"
+asset = "vn_stock"
+data_zone = "green"
+data_pairs = ["vnq:VIX"]
+snapshot_date = "2026-11-01"
+universe_cap = 0
+banned_tools = ["web_search", "web_fetch", "sentiment_score"]
+human_time_band = "15–60 phút"
+time_limit_min = 30
+tools_expected = ["vn_quote_history"]
+mcp_payloads = "environment/payloads.json"
+snapshot_required = true
+split = "main"
+
+confirmatory_eligible = true
+
+[scoring]
+type = "refusal"
+gold = "solution/gold.json"
+oracle = "solution/oracle.py"
+grader = "tests/grader.py"

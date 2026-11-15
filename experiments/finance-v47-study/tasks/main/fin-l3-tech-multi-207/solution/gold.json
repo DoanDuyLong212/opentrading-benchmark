@@ -1,0 +1,151 @@
+{
+  "task_id": "fin-l3-tech-multi-207",
+  "scoring": "value",
+  "solution": {
+    "symbol": "PVS",
+    "rsi14": 35.86
+  },
+  "as_of": "2026-11-01T23:26:05.000000+07:00",
+  "split": "main",
+  "expects": [
+    {
+      "type": "tokens",
+      "path": "values.symbol",
+      "accept": [
+        "PVS"
+      ],
+      "reject": [
+        "PVD",
+        "BSR",
+        "PLX",
+        "POW"
+      ]
+    },
+    {
+      "type": "value",
+      "path": "values.rsi14",
+      "gold": 35.86,
+      "tol": {
+        "abs": 0.1
+      }
+    },
+    {
+      "type": "period",
+      "path": "period",
+      "accept": [
+        "30/10",
+        "30-10",
+        "30.10",
+        "2026-10-30",
+        "phiên gần nhất",
+        "gần nhất"
+      ]
+    },
+    {
+      "type": "str",
+      "path": "source",
+      "accept": [
+        "signals_technical"
+      ]
+    },
+    {
+      "type": "evidence",
+      "path": "note",
+      "paths": [
+        "note"
+      ],
+      "numbers": [
+        35.86,
+        44.42,
+        38.55,
+        37.34,
+        38.57
+      ],
+      "strings": [],
+      "min_hits": 2
+    }
+  ],
+  "contract_version": 2,
+  "provenance_contract": [
+    {
+      "tool": "signals_technical",
+      "source": "computed-local",
+      "as_of": "2026-11-01T23:26:05.000000+07:00",
+      "matched_entry_id": "tech:PVS",
+      "response_sha256": "87080b8323366da51dffecabe0db8372ad82b9c325952ec3f0bd560644341765"
+    },
+    {
+      "tool": "signals_technical",
+      "source": "computed-local",
+      "as_of": "2026-11-01T23:26:05.000000+07:00",
+      "matched_entry_id": "tech:PVD",
+      "response_sha256": "c8e769998c825ec942c96675c3b1f26e504f3f9d7b12b3f8fa7a60504118940f"
+    },
+    {
+      "tool": "signals_technical",
+      "source": "computed-local",
+      "as_of": "2026-11-01T23:26:05.000000+07:00",
+      "matched_entry_id": "tech:BSR",
+      "response_sha256": "8648a1e7ecd4674e6c57dd2d5c5ad7c4248a2e5bac99ae08db01bcb83e587445"
+    },
+    {
+      "tool": "signals_technical",
+      "source": "computed-local",
+      "as_of": "2026-11-01T23:26:05.000000+07:00",
+      "matched_entry_id": "tech:PLX",
+      "response_sha256": "b035d69ff87d7d6af5e3be8bfd87518c133eb7afae1d05a998662d839a5ab26b"
+    },
+    {
+      "tool": "signals_technical",
+      "source": "computed-local",
+      "as_of": "2026-11-01T23:26:05.000000+07:00",
+      "matched_entry_id": "tech:POW",
+      "response_sha256": "66856d7246ad0ce63615c95b12268e01b1d1c05cd6c7a83aec52c9ea712c45c9"
+    }
+  ],
+  "payload_sha256": "c774c4c749c1f9bcf28ff12f20daf317257fc76063fe8f1e97c95d5f75bacd43",
+  "provenance_catalog": [
+    {
+      "tool": "signals_technical",
+      "source": "computed-local",
+      "as_of": "2026-11-01T23:26:05.000000+07:00",
+      "matched_entry_id": "tech:PVS",
+      "response_sha256": "87080b8323366da51dffecabe0db8372ad82b9c325952ec3f0bd560644341765"
+    },
+    {
+      "tool": "signals_technical",
+      "source": "computed-local",
+      "as_of": "2026-11-01T23:26:05.000000+07:00",
+      "matched_entry_id": "tech:PVD",
+      "response_sha256": "c8e769998c825ec942c96675c3b1f26e504f3f9d7b12b3f8fa7a60504118940f"
+    },
+    {
+      "tool": "signals_technical",
+      "source": "computed-local",
+      "as_of": "2026-11-01T23:26:05.000000+07:00",
+      "matched_entry_id": "tech:BSR",
+      "response_sha256": "8648a1e7ecd4674e6c57dd2d5c5ad7c4248a2e5bac99ae08db01bcb83e587445"
+    },
+    {
+      "tool": "signals_technical",
+      "source": "computed-local",
+      "as_of": "2026-11-01T23:26:05.000000+07:00",
+      "matched_entry_id": "tech:PLX",
+      "response_sha256": "b035d69ff87d7d6af5e3be8bfd87518c133eb7afae1d05a998662d839a5ab26b"
+    },
+    {
+      "tool": "signals_technical",
+      "source": "computed-local",
+      "as_of": "2026-11-01T23:26:05.000000+07:00",
+      "matched_entry_id": "tech:POW",
+      "response_sha256": "66856d7246ad0ce63615c95b12268e01b1d1c05cd6c7a83aec52c9ea712c45c9"
+    }
+  ],
+  "required_payload_keys": [
+    "tech:BSR",
+    "tech:PLX",
+    "tech:POW",
+    "tech:PVD",
+    "tech:PVS"
+  ]
+}

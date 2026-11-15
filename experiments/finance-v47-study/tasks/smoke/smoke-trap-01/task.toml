@@ -1,0 +1,28 @@
+# Task benchmark harness tài chính — sinh bởi tools/gen_tasks.py
+id = "smoke-trap-01"
+title = "Smoke — Giá mã XYZX"
+version = 2
+created = "2026-11-01"
+level = "SMOKE"
+family = "smoke"
+financebench_type = "unanswerable (entity trap)"
+entity = "XYZX"
+asset = "vn_stock"
+data_zone = "green"
+data_pairs = []
+snapshot_date = "2026-11-01"
+universe_cap = 0
+banned_tools = ["web_search", "web_fetch", "sentiment_score"]
+human_time_band = "<15 phút"
+time_limit_min = 10
+tools_expected = ["symbol_resolve"]
+mcp_payloads = "environment/payloads.json"
+snapshot_required = true
+
+confirmatory_eligible = true
+
+[scoring]
+type = "refusal"
+gold = "solution/gold.json"
+oracle = "solution/oracle.py"
+grader = "tests/grader.py"

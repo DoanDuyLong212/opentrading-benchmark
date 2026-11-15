@@ -1,0 +1,68 @@
+{
+ "snapshot_date": "2026-11-01",
+ "note": "Envelope MCP ghi lúc tạo task. Key = mã payload nội bộ; envelope giữ nguyên data+provenance+availability.",
+ "tools": {
+  "idx:VNINDEX": {
+   "tool": "vn_index_ohlcv",
+   "params": {
+    "symbol": "VNINDEX",
+    "count": 10
+   },
+   "envelope": {
+    "data": {
+     "symbol": "VNINDEX",
+     "closes": [
+      {
+       "t": "2026-10-19",
+       "c": 1689.84
+      },
+      {
+       "t": "2026-10-20",
+       "c": 1691.97
+      },
+      {
+       "t": "2026-10-21",
+       "c": 1738.67
+      },
+      {
+       "t": "2026-10-22",
+       "c": 1760.63
+      },
+      {
+       "t": "2026-10-23",
+       "c": 1774.15
+      },
+      {
+       "t": "2026-10-26",
+       "c": 1763.55
+      },
+      {
+       "t": "2026-10-27",
+       "c": 1761.87
+      },
+      {
+       "t": "2026-10-28",
+       "c": 1766.65
+      },
+      {
+       "t": "2026-10-29",
+       "c": 1755.61
+      },
+      {
+       "t": "2026-10-30",
+       "c": 1741.62
+      }
+     ]
+    },
+    "provenance": {
+     "source": "vnstock",
+     "as_of": "2026-11-01T21:11:59.149010+07:00",
+     "timezone": "Asia/Ho_Chi_Minh",
+     "data_time": "2026-10-30 00:00:00"
+    },
+    "availability": "available",
+    "warnings": []
+   }
+  }
+ }
+}

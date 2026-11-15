@@ -1,0 +1,3 @@
+#!/bin/sh
+# v4.7 shared math-only shell (see ../filter.ts). Not a general shell.
+exec "$BENCH_BUN_BIN" "$BENCH_MATHSHELL_FILTER" "$@"
