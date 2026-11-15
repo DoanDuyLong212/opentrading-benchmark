@@ -223,6 +223,24 @@ def audit(out):
      check(tid,'tool_unavailable_reconciled',lambda k=key:require(bool(k),'Unknown-tool call lacks distinct generated occurrence'))
     except ValueError as ue:
      check(tid,'tool_unavailable_reconciled',lambda e=ue:require(False,'Unknown-tool reconciliation: '+str(ue)))
+  # v4.7 (2026-11-15): native shell calls of every arm (OpenTrading/OpenCode `shell`, DSH `bash`)
+  # run behind the shared math-only filter, which journals each `bash -c` in shell.jsonl. A shell call
+  # not already bound as an OpenTrading native execution reconciles when its own result is in later
+  # model context; every journal row must match a generated shell call of this episode. Never evidence.
+  import re as _re
+  shell_tool={'dsh':'bash'}.get(row['arm'],'shell')
+  shell_norm=lambda c:_re.sub(r'^awk -v OFMT=%\.15g -v CONVFMT=%\.15g ','awk ',_re.sub(r'^LC_ALL=C ','',c))
+  for p_call in[g for g in bindings.pending()if g['tool']==shell_tool]:
+   def shell_proof(context,p_call=p_call):return context['tool']==p_call['tool']and context['arguments']==p_call['arguments']and isinstance(context.get('content'),str)
+   if not[c for c in bindings.contexts if c['id']==p_call['id']and shell_proof(c)]:continue
+   key=bindings.claim(p_call['id'],p_call['tool'],p_call['arguments'],shell_proof,scope=p_call.get('scope'))
+   check(tid,'shell_call_reconciled',lambda k=key:require(bool(k),'Shell call lacks distinct generated occurrence'))
+  asked=[shell_norm(g['arguments'].get('command',''))for g in bindings.generated if g['tool']==shell_tool and isinstance(g['arguments'],dict)]
+  for journal_path in sorted(runner.rglob('shell.jsonl')):
+   for record in read_jsonl(journal_path):
+    command=shell_norm(record.get('command')or'')
+    check(tid,'shell_journal_attributed',lambda c=command:require(c in asked,'Shell journal row without a generated call: '+c[:200]))
+    if command in asked:asked.remove(command)
   # Missing notebook access telemetry or validator compilation failures stay
   # uncertified. Do not reconstruct execution from broad prose/SDK-ID matches.
   pending=bindings.pending()

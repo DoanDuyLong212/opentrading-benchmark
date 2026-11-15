@@ -5,6 +5,7 @@ import path from "node:path"
 import type { ModelMessage } from "ai"
 import { z } from "zod"
 import { loadedTools } from "../src/core/tools/loaded"
+import { chartRenderTool } from "../src/core/tools/chart/render"
 import { chunkFor, sse } from "./helpers/chat"
 
 // Isolated state dir before core modules read it.
@@ -673,6 +674,31 @@ test("tool search: the exact name of a deferred tool is loaded by the call itsel
   expect(toolNames(bodies[1])).toContain("mcp__big__t007")
 })
 
+test("a call by a tool name #278 folded away runs as the new tool, its old arguments mapped", async () => {
+  const r = registry()
+  r.register(chartRenderTool())
+  // chart_depth took `depth`; chart_render takes `levels` (1 level per side here).
+  const book = { bids: [{ price: 10, volume: 5 }, { price: 9.9, volume: 3 }], asks: [{ price: 10.1, volume: 4 }, { price: 10.2, volume: 2 }], depth: 1 }
+  script = [{ tool: "chart_depth", args: book }]
+  const events = await collect(runAgent({ history: [], input: "x", skills: [], registry: r }))
+  const end = ends(events)[0]!
+  expect(end.ok).toBe(true)
+  expect(end.output).toContain("10.1")
+  expect(end.output).not.toContain("10.2")
+})
+
+test("a call by a folded-away name whose new tool is deferred loads it and names the field to pass", async () => {
+  const r = bigRegistry(60)
+  r.register(chartRenderTool())
+  script = [{ tool: "chart_compare", args: { from_calls: ["r1", "r2"] } }]
+  const events = await collect(runAgent({ history: [], input: "x", skills: [], registry: r }))
+  const end = ends(events)[0]!
+  expect(end.ok).toBe(false)
+  expect(end.output.startsWith("Đã nạp tool: chart_render\n")).toBe(true)
+  expect(end.output).toContain('kind="compare"')
+  expect(toolNames(bodies[1])).toContain("chart_render")
+})
+
 test("tool search: sessions saved with the SDK's raw error strings still load the tool", () => {
   const old: ModelMessage[] = [
     { role: "assistant", content: [{ type: "tool-call", toolCallId: "c1", toolName: "t005", input: {} }] },
@@ -1194,6 +1220,29 @@ test("read-only sends write_file/edit_file by name only; ask mode declares them;
   expect(userOf(0)).toContain("sửa có hỏi")
 })
 
+// --- Operand note (loop/operands.ts, issue #278 N2) ---
+
+test("after an arithmetic command with a number nothing read holds, the next request carries a one-step note", async () => {
+  const win = process.platform === "win32"
+  const typo = win ? "$e = 1315800000000; $s = 21500000; $e / $s" : "awk 'BEGIN{ e = 1315800000000; s = 21500000; print e / s }'"
+  const right = typo.replace("21500000", "215000000")
+  for (const [command, disabled, expected] of [
+    [typo, undefined, true],
+    [right, undefined, false],
+    [typo, new Set(["operand-note"] as const), false],
+  ] as const) {
+    bodies.length = 0
+    const r = registry()
+    // The result a shell would give; only the command's grammar and the result's first line are read.
+    r.register({ name: "shell", description: "shell", input: z.object({ command: z.string() }), readOnly: true, execute: async () => "[mã thoát 0 · 0.2s · /w]\n61200" })
+    respond = (_body, n) => (n === 0 ? toolCall("shell", { command }, "call_1") : answer("EPS 61.200 đồng."))
+    await collect(runAgent({ history: [], input: "Lợi nhuận sau thuế 1.315.800.000.000 đồng, 215.000.000 cổ phiếu. EPS?", skills: [], registry: r, ...(disabled ? { disabled } : {}) }))
+    const second = lastSent(1)
+    expect([command, disabled?.size ?? 0, second.includes("trong lệnh tính vừa rồi")]).toEqual([command, disabled?.size ?? 0, expected])
+    if (expected) expect(second).toContain("21500000")
+  }
+})
+
 // --- Stop gate (loop/stop-gate.ts): a turn never ends without an answer ---
 
 const toolCall = (name: string, args: object, id = "call_x", text?: string) =>
@@ -1225,6 +1274,27 @@ test("a preamble, a tool, then an empty last step: the empty step is recovered (
   expect(messages.map((m) => m.role)).toEqual(["user", "assistant", "tool", "assistant"])
   expect(done(events).recoveries).toEqual([{ kind: "empty", attempt: 1 }])
   expect(events.some((e) => e.type === "notice" && e.text.includes("dừng khi chưa viết câu trả lời"))).toBe(true)
+  // What history lost, the screen loses too: the retract reaches back past the empty request exactly
+  // when the preamble beside the tool call went from history.
+  const retract = events.find((e) => e.type === "retract") as { steps: number } | undefined
+  const preambleKept = JSON.stringify(messages).includes("Mình sẽ xem giờ trước.")
+  expect(retract?.steps).toBe(preambleKept ? 1 : 2)
+})
+
+test("droppedRequests: the last request's own text is 1; an empty last request after tool calls is 2", async () => {
+  const { droppedRequests } = await import("../src/core/agent")
+  const call = { type: "tool-call" as const, toolCallId: "c", toolName: "current_time", input: {} }
+  const result = { type: "tool-result" as const, toolCallId: "c", toolName: "current_time", output: { type: "text" as const, value: "10:00" } }
+  const withTool: ModelMessage[] = [
+    { role: "assistant", content: [{ type: "text", text: "Mình xem giờ:" }, call] },
+    { role: "tool", content: [result] },
+  ]
+  // Two requests, the second wrote nothing: the preamble of the first is what dropFinalText takes.
+  expect(droppedRequests(withTool, 2)).toBe(2)
+  // A draft beside a closing todo_write ends the run without another request: the text is the last request's.
+  expect(droppedRequests(withTool, 1)).toBe(1)
+  expect(droppedRequests([...withTool, { role: "assistant", content: "Bây giờ là 10:00." }], 2)).toBe(1)
+  expect(droppedRequests([], 1)).toBe(1)
 })
 
 test("an answer that only echoes the todo status (29/10) is recovered, tools allowed, and never stored", async () => {
@@ -1374,6 +1444,35 @@ test("a cut answer (finish length) is continued and joined into one message", as
   expect(messages.map((m) => m.role)).toEqual(["user", "assistant"])
   expect(JSON.stringify(messages[1])).toContain("Phần đầu, phần sau.")
   expect(done(events).recoveries).toEqual([{ kind: "length", attempt: 1 }])
+  // The first half stays in history, so a UI keeps it on screen too.
+  expect(events.some((e) => e.type === "retract")).toBe(false)
+})
+
+test("a dropped step is retracted right before the gate's notice; the text deltas still carry both (eval streamed)", async () => {
+  respond = (_body, n) => (n === 0 ? answer("Mình sẽ lấy giờ hiện tại:") : n === 1 ? toolCall("current_time", {}, "call_r") : n === 2 ? answer("Bây giờ là 10:00.") : undefined)
+  const events = await collect(runAgent({ history: [], input: "mấy giờ rồi", skills: [], registry: registry() }))
+  const kinds = events.map((e) => e.type)
+  const at = kinds.indexOf("retract")
+  expect(at).toBeGreaterThan(0)
+  expect(kinds.filter((k) => k === "retract")).toHaveLength(1)
+  // After the step that wrote the promise ended, before the notice that says why.
+  expect(kinds.slice(0, at)).toContain("step")
+  expect(events[at + 1]).toMatchObject({ type: "notice" })
+  const streamed = events.flatMap((e) => (e.type === "text-delta" ? [e.text] : [])).join("")
+  expect(streamed).toContain("Mình sẽ lấy giờ hiện tại:")
+  expect(streamed).toContain("Bây giờ là 10:00.")
+})
+
+test("with a step cap, the summary step that stands is not retracted", async () => {
+  await saveConfig({ provider: "groq", model: "tooly", maxSteps: 2 })
+  try {
+    respond = (_body, n) => (n === 0 ? toolCall("current_time", {}, "call_c") : n === 1 ? answer("Mình sẽ lấy BCTC quý 3:") : undefined)
+    const events = await collect(runAgent({ history: [], input: "x", skills: [], registry: registry() }))
+    expect(JSON.stringify(done(events).messages.at(-1))).toContain("Mình sẽ lấy BCTC quý 3:")
+    expect(events.some((e) => e.type === "retract")).toBe(false)
+  } finally {
+    await saveConfig({ provider: "groq", model: "tooly", maxSteps: undefined })
+  }
 })
 
 test("answering and closing the todo list in one step ends the turn: no extra request", async () => {
@@ -1690,4 +1789,78 @@ test("v46-update reused SDK id in two actual provider generations has two origin
  expect(replays.map(x=>x.replay_of.origin_provider_request_index)).toEqual([1,2])
  expect(replays.every(x=>x.sdk_call_id==="same-sdk"&&x.replay_of.origin_sdk_call_id==="same-sdk")).toBe(true)
  expect(done(events).unanswered).toBeUndefined()
+})
+
+// --- Request budget (request-budget.ts, issue #278 R3) ---
+
+test("a request budget: a model that keeps calling tools gets the summary step in time and never passes the cap", async () => {
+  // Never answers on its own: every step calls a tool unless tools are off.
+  respond = (body) => (body.tool_choice === "none" ? answer("Tổng kết: HPG chưa đủ dữ liệu.") : toolCall("current_time", {}, `call_${bodies.length}`))
+  const events = await collect(runAgent({ history: [], input: "Giá HPG?", skills: [], registry: registry(), maxRequests: 6 }))
+  const sent = bodies.filter((b) => (b as { stream?: boolean }).stream)
+  expect(sent.length).toBeLessThanOrEqual(6)
+  // The summary request is the last one, with tools off, sent while the reserve was left.
+  expect(sent.at(-1)!.tool_choice).toBe("none")
+  expect(sent.length).toBe(6 - 2 + 1)
+  expect(events.some((e) => e.type === "notice" && e.text.includes("Gần chạm trần 6 request"))).toBe(true)
+  const shown = events.flatMap((e) => (e.type === "text-delta" ? [e.text] : [])).join("")
+  expect(shown).toContain("Tổng kết")
+})
+
+test("a request budget counts retries: rate-limited requests spend it, and nothing is sent past the cap", async () => {
+  failFirst = 3 // three 429s, each a request the retry wrapper sends again
+  // `respond` must stay out of the way while the 429s are served (the fake fetch asks it first).
+  respond = (body, n) => (n < 3 ? undefined : body.tool_choice === "none" ? answer("Tổng kết.") : toolCall("current_time", {}, `call_${bodies.length}`))
+  const events = await collect(runAgent({ history: [], input: "Giá HPG?", skills: [], registry: registry(), maxRequests: 6 }))
+  const sent = bodies.filter((b) => (b as { stream?: boolean }).stream)
+  expect(failFirst).toBe(0) // all three 429s were really served
+  expect(sent.length).toBeLessThanOrEqual(6)
+  expect(events.some((e) => e.type === "retry")).toBe(true)
+})
+
+test("a request budget: when retries spend the reserve the summary is refused, the turn ends with an error, and nothing loops", async () => {
+  // Tool steps until the budget closes, then the summary meets 429s until nothing is left.
+  let summaryTries = 0
+  respond = (body) => {
+    if (body.tool_choice !== "none") return toolCall("current_time", {}, `call_${bodies.length}`)
+    summaryTries++
+    return Response.json({ error: { message: "rate limited" } }, { status: 429 })
+  }
+  const started = Date.now()
+  const events = await collect(runAgent({ history: [], input: "Giá HPG?", skills: [], registry: registry(), maxRequests: 4 }))
+  const sent = bodies.filter((b) => (b as { stream?: boolean }).stream)
+  expect(sent.length).toBe(4)
+  // Two tool steps, then the summary and one retry of it: the third try was refused, not sent.
+  expect(summaryTries).toBe(2)
+  expect(events.some((e) => e.type === "error")).toBe(true)
+  expect(Date.now() - started).toBeLessThan(5_000)
+})
+
+test("a request budget of 1 is honoured: the first step is the answer, tools off", async () => {
+  respond = (body) => (body.tool_choice === "none" ? answer("Chưa lấy dữ liệu: trần 1 request.") : toolCall("current_time", {}, "c"))
+  await collect(runAgent({ history: [], input: "Giá HPG?", skills: [], registry: registry(), maxRequests: 1 }))
+  const sent = bodies.filter((b) => (b as { stream?: boolean }).stream)
+  expect(sent).toHaveLength(1)
+  expect(sent[0]!.tool_choice).toBe("none")
+})
+
+test("a request budget: a stop-gate recovery fits in it, and the budget is released after the turn", async () => {
+  // First an empty answer (the gate sends it back), then a real one.
+  respond = (_body, n) => (n === 0 ? answer("") : answer("HPG 27.100 đồng."))
+  const events = await collect(runAgent({ history: [], input: "Giá HPG?", skills: [], registry: registry(), maxRequests: 3 }))
+  expect(bodies.filter((b) => (b as { stream?: boolean }).stream).length).toBeLessThanOrEqual(3)
+  expect(done(events).unanswered).toBeUndefined()
+  // A later turn without a budget is not limited by the one before.
+  bodies.length = 0
+  respond = (_body, n) => (n < 6 ? toolCall("current_time", {}, `c${n}`) : answer("Xong."))
+  await collect(runAgent({ history: [], input: "Giá HPG?", skills: [], registry: registry() }))
+  expect(bodies.filter((b) => (b as { stream?: boolean }).stream).length).toBe(7)
+})
+
+test("a request budget that is not a whole number of at least 1 is a setup error, before any request", async () => {
+  for (const maxRequests of [Number.NaN, 0, -3, 2.5, Number.POSITIVE_INFINITY]) {
+    bodies.length = 0
+    await expect(collect(runAgent({ history: [], input: "Giá HPG?", skills: [], registry: registry(), maxRequests }))).rejects.toThrow("maxRequests")
+    expect(bodies.filter((b) => (b as { stream?: boolean }).stream)).toHaveLength(0)
+  }
 })

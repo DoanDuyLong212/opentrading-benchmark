@@ -38,7 +38,7 @@ def prepare(ws, task_dir, model, options):
         options['allowed_tool_names'] += ['shell','read_result']
         import subprocess
         sourceenv=dict(env,BENCH_OT_RUNTIME=str(options['opentrading_runtime_root']))
-        got=subprocess.run([options.get('native_bun_binary') or json.loads((TOOLS/'bench_config.json').read_text())['provider_options']['native_bun_binary'],str(TOOLS/'runners/native_schema.ts')],env=sourceenv,capture_output=True,text=True,timeout=30,check=True)
+        got=subprocess.run([options.get('native_bun_binary') or json.loads((TOOLS/'bench_config.json').read_text())['provider_options']['native_bun_binary'],str(TOOLS/'runners/native_schema.ts')]+(['--machine'] if options.get('ot_profile')=='machine' else []),env=sourceenv,capture_output=True,text=True,timeout=30,check=True)
         options['native_tool_definitions']=json.loads(got.stdout)
     gateway = ProviderGateway(model, ledger, options)
     bun_frozen=json.loads((TOOLS/'bench_config.json').read_text())['provider_options']

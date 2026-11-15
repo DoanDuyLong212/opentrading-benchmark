@@ -11,7 +11,7 @@ Denominator = every scheduled trial; DNF (no final answer) stays in it, split in
 
 Sealed in tools/ by the B0 main amendment (2026-11-10).
 
-  python3 tools/judge_primary.py RUN_DIR [--baseline opentrading_baseline] [--draws 2000]
+  python3 tools/judge_primary.py RUN_DIR [--baseline opentrading_machine] [--draws 2000]
 """
 import argparse
 import collections
@@ -210,7 +210,7 @@ def by_stratum(recs, baseline, draws):
     return out
 
 
-def run_dir(run, baseline='opentrading_baseline', draws=2000):
+def run_dir(run, baseline='opentrading_machine', draws=2000):
     run = Path(run).resolve()
     rows = [json.loads(l) for l in (run / 'trials.jsonl').read_text().splitlines() if l.strip()]
     graded = {}
@@ -242,7 +242,7 @@ def run_dir(run, baseline='opentrading_baseline', draws=2000):
 def main():
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument('run_dir')
-    ap.add_argument('--baseline', default='opentrading_baseline')
+    ap.add_argument('--baseline', default='opentrading_machine')
     ap.add_argument('--draws', type=int, default=2000)
     a = ap.parse_args()
     print(json.dumps(run_dir(a.run_dir, a.baseline, a.draws), ensure_ascii=False, indent=1))

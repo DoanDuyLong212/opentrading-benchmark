@@ -80,7 +80,7 @@ def paired(rows, candidate='opentrading_finance', controls=('opentrading_baselin
 
 def operational(rows, contracts):
     """Read recorded artifacts only. No inferred missing usage or causal uptake."""
-    provider=[];source=[];derived=[];native=[];events=[];coverage=[];output_matches=0
+    provider=[];source=[];derived=[];native=[];events=[];coverage=[];output_matches=0;shell=[];shell_trials=[]
     def load(path):
         if not path or not Path(path).exists():return []
         raw=Path(path).read_bytes();lines=raw.splitlines(keepends=True);result=[]
@@ -93,13 +93,16 @@ def operational(rows, contracts):
             result.append(item)
         return result
     for row in rows:
-        trialsource=[];trialderived=[]
+        trialsource=[];trialderived=[];trialshell=[]
         for attempt in row.get('attempts',[]):
             provider+=load(attempt.get('provider_ledger'))
             ledger=load(attempt.get('ledger_path'));source += [x for x in ledger if x.get('tool') not in ('analytics_compute','analytics_calculate')];trialsource+=ledger
             trialderived += [x for x in ledger if x.get('tool') in ('analytics_compute','analytics_calculate')]
             n=load(attempt.get('native_derived_ledger'));native+=n
             trialderived += [x for x in n if x.get('tool') in ('calculate','compute')]
+            # v4.7: every arm computes with its native shell behind the shared filter (runners/mathshell).
+            shell_rows=load(str(Path(attempt.get('workspace','MISSING')).parent/'runner/shell.jsonl')) if attempt.get('workspace') else []
+            shell+=shell_rows;trialshell+=shell_rows
             path=attempt.get('log_path')
             if path and Path(path).exists():
                 for line in Path(path).read_text(errors='replace').splitlines():
@@ -107,6 +110,7 @@ def operational(rows, contracts):
                     except ValueError:continue
                     if isinstance(item,dict):events.append(item)
         derived+=trialderived
+        shell_trials.append({'arm':row.get('arm'),'commands':len(trialshell),'run':sum(x.get('verdict')=='run' for x in trialshell)})
         required=contracts.get(row['task'],{}).get('required_payload_keys',[])
         got={x.get('matched_entry_id') for x in trialsource if x.get('status')=='ok'}
         # Legacy pilot tasks name the key by tool ("financial_statements") while the ledger records "financial_statements:0".
@@ -132,6 +136,7 @@ def operational(rows, contracts):
     repair=[e for e in events if 'repair' in str(e.get('phase','')) or 'correction' in str(e.get('phase',''))]
     return {'required_data_coverage':{'required_entries':req,'retrieved_entries':ret,'rate':ret/req if req else None,'complete_trials':sum(x['complete'] for x in coverage),'trial_details':coverage},
       'computation':{'attempts':len(derived),'successes':sum(x.get('status')=='ok' for x in derived),'native_attempts':sum(x.get('tool') in ('calculate','compute') for x in native),'common_attempts':sum(x.get('tool') in ('analytics_compute','analytics_calculate') for x in derived),'observed_output_value_matches':output_matches,'uptake_definition':'successful derivation numeric output matches one final numeric claim; not causal attribution'},
+      'shell':{'commands':len(shell),'run':sum(x.get('verdict')=='run' for x in shell),'refused':sum(x.get('verdict')=='refused' for x in shell),'trials':len(shell_trials),'trials_with_run':sum(t['run']>0 for t in shell_trials),'trials_without_shell':sum(t['commands']==0 for t in shell_trials),'definition':'v4.7 shared math-only filter journal (runner/shell.jsonl); computation is never financial evidence'},
       'repair':{'phase_events':len(repair),'local_rejections':sum(bool(e.get('localRejection')) or e.get('type')=='local_rejection' for e in events),'execution_events':sum(e.get('type')=='tool-start' and ('repair' in str(e.get('phase','')) or 'correction' in str(e.get('phase',''))) for e in events)},
       'source_lineage':{'source_attempts':len(source),'source_successes':sum(x.get('status')=='ok' for x in source),'derived_attempts':len(derived),'native_ledger_events':len(native)},
       'provider':{'gateway_attempt_rows':len(provider),'actual_upstream_attempts':sum(bool(x.get('upstream_attempted')) for x in provider),'logical_requests':len({(str(x.get('native_request_capture',{}).get('path','')).split('/provider-captures/')[0],x.get('logical_request_id',x.get('index'))) for x in provider}),'usage_known_attempts':len(known),'upstream_usage_unknown_attempts':sum(bool(x.get('upstream_attempted')) and not (isinstance(x.get('usage'),dict) and all(isinstance(x['usage'].get(k),int) and not isinstance(x['usage'].get(k),bool) for k in ('prompt_tokens','completion_tokens'))) for x in provider),'observed_input_lower_bound':sum(x['prompt_tokens'] for x in known),'observed_output_lower_bound':sum(x['completion_tokens'] for x in known),'reserved_tokens_not_observed_usage':sum(x.get('token_reservation',0) for x in provider),'failure_stages':failure,

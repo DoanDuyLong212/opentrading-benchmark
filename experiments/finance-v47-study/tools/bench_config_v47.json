@@ -57,23 +57,23 @@
     "model_max_output_tokens_source": "OpenRouter models API 2026-11-15: deepseek/deepseek-v4.1-flash-1017 top_provider.max_completion_tokens"
   },
   "arms_pilot": [
-    "opentrading_baseline",
+    "opentrading_machine",
     "opencode",
     "dsh"
   ],
   "gate": "b0_judge_primary",
   "arms_main": [
-    "opentrading_baseline",
+    "opentrading_machine",
     "opencode",
     "dsh"
   ],
   "cost_reporting": "OpenRouter usage.cost per request (authoritative); price_per_1m is the published list price and under-estimated or10 billing ~2.8x (0.1284 vs 0.3653 USD for 132 trials)",
   "memory_trial_timeout_s": 1800,
   "arms_holdout": [
-    "opentrading_baseline",
+    "opentrading_machine",
     "opencode",
     "dsh"
   ],
-  "opentrading_runtime_commit": "baa6743c93550555e14b308a96b38efdb3bb3e13",
+  "opentrading_runtime_commit": "8866594f0a4e71eecceab531cb60197e7cfe4e41",
   "shell_policy": "v4.7 option A: each arm native shell tool (OT/OC shell, DSH bash) behind the shared math-only filter tools/runners/mathshell"
 }

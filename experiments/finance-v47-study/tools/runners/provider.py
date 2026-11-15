@@ -180,7 +180,7 @@ def native_tool_allowlist(options):
     if options.get('memory_profile')=='controlled-memory-v1' and options.get('condition')=='ot_memory_on' and options.get('native_arm')=='opentrading':
         allowed.add('memory_read')
     # Amendment 2026-11-11 (d): native-memory stratum, OT B0 with its own notebook read tool.
-    if options.get('memory_profile')=='native-v2' and options.get('condition')=='opentrading_baseline' and options.get('native_arm')=='opentrading':
+    if options.get('memory_profile')=='native-v2' and options.get('condition') in ('opentrading_baseline','opentrading_machine') and options.get('native_arm')=='opentrading':
         allowed.add('memory_read')
     # DSH's opt-in prior-session search tools (memory stratum only; schemas pinned in dsh_session_search_tools.json).
     if options.get('memory_profile')=='native-v2' and options.get('condition')=='dsh' and options.get('native_arm')=='dsh':

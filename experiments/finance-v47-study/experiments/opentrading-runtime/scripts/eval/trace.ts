@@ -76,8 +76,8 @@ export type TraceEvent =
       /** HTTP requests to a model: retries, subagents and side calls included. */
       requests?: number
       input_tokens: number
-      /** Of input_tokens, served from the provider's prompt cache (main agent; 0 when not reported). */
-      cache_read_tokens?: number
+      /** Part of input_tokens the provider read from its prompt cache; absent when no step reported it. */
+      cached_input_tokens?: number
       output_tokens: number
       duration_ms: number
     })
