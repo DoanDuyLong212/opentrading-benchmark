@@ -64,6 +64,11 @@ def run(ws, instruction, task_dir, model, timeout_s, log_path, options=None):
         'models': [{'id': gateway.model, 'contextWindow': int(options.get('context_window',32768)), **({'maxTokens': int(options['max_output_tokens'])} if options.get('max_output_tokens') is not None else {}), 'reasoningEfforts': False}],
         'compat': {'supportsStore': False, 'supportsReasoningEffort': False}}}}},
         {'id': 'agent-default-model', 'config': {'provider': 'nvidia', 'model': gateway.model}},
+        # v4.7 (2026-11-16): nobody is there to answer an approval. DSH asks only to widen its own file
+        # sandbox, and headless with no answerer that request fails closed, while OpenTrading answers "once"
+        # (bypass) and OpenCode allows shell. DSH's own unattended stance is danger-full-access; isolation
+        # comes from the shared no-network Docker sandbox every arm's commands run in (runners/sandbox).
+        {'id': 'sandbox-policy', 'config': {'mode': 'danger-full-access'}},
         {'insert': [{'id': 'mcp-opentrading', 'name': '@deepseek-ai/dsh-mcp-client', 'config': {
             'serverName': 'opentrading', 'transport': 'stdio', 'command': sys.executable,
             'args': [str(SNAPSHOT)], 'env': mcp_env}}]}]

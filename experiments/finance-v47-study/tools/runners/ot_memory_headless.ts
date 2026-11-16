@@ -22,7 +22,10 @@ if(!Number.isFinite(now.getTime()))throw new Error('Invalid snapshot date')
 const memoryChoice=process.env.BENCH_MEMORY_MODE??'none'
 if(!['none','notebook'].includes(memoryChoice))throw new Error('Untrusted memory mode')
 const memory=createMemory(memoryChoice as 'none'|'notebook',home)
-const runtime=initRuntime({cwd:process.cwd(),home,skills:()=>[],memory,scratchpad:false})
+// v4.7 (OpenTrading#311 A2): data results also as ot-data/rN.json in the workspace, which the shell sandbox mounts.
+// clearResults() first: it also drops the export folder initRuntime sets.
+clearResults()
+const runtime=initRuntime({cwd:process.cwd(),home,skills:()=>[],memory,scratchpad:false,resultFiles:'ot-data'})
 const memoryStateFile=process.env.BENCH_MEMORY_STATE
 const logicalSession=process.env.BENCH_MEMORY_SESSION
 if(!memoryStateFile||!logicalSession)throw new Error('Memory episode state/session required')
@@ -33,7 +36,7 @@ const loaded=previous?await loadSession(previous.id,{check:runtime.redaction}):u
 const session=loaded?Session.continue(loaded.summary,loaded.lastTurn):Session.create()
 let history=loaded?.messages??[]
 const sessionId=session.id;const sessionDir=session.dir
-mkdirSync(sessionDir,{recursive:true});clearResults();useResultSession(sessionId,JSON.stringify(history),sessionDir)
+mkdirSync(sessionDir,{recursive:true});useResultSession(sessionId,JSON.stringify(history),sessionDir)
 const hash=(v:unknown)=>createHash('sha256').update(JSON.stringify(v)).digest('hex')
 // v4.7: calculate/compute are gone (#263); OpenTrading computes with its shell behind the shared filter.
 const nativeAllowed=new Set(['shell','read_result'])

@@ -286,6 +286,20 @@ def audit(out):
                     key=bindings.claim(p_call['id'],p_call['tool'],p_call['arguments'],memory_proof)
                     check(tid,'native_memory_read_reconciled',lambda k=key:require(bool(k),'Native memory read lacks distinct generated occurrence'))
                     if key:unknown_outcomes.append({'trial_id':tid,'generation':key,'tool':p_call['tool'],'classification':'native_memory_read','financial_evidence':False})
+            # v4.7 (OpenTrading#311 A2): OpenTrading writes each data result as ot-data/rN.json for scripts. Each
+            # file must be an unmodified copy of a source the MCP ledger recorded (same response digest), so a
+            # file can never stand in for evidence the snapshot did not return. The model may still write its own
+            # files in the workspace; only ot-data is checked, and only OpenTrading writes there.
+            otdata=Path(attempt.get('workspace','MISSING'))/'ot-data'
+            if row['arm'].startswith('opentrading') and otdata.is_dir():
+                from mcp_snapshot_server import digest as _digest
+                recorded={c.get('response_sha256') for c in (calls or []) if c.get('response_sha256')}
+                for f in sorted(otdata.glob('r*.json')):
+                    def copy_of_source(f=f):
+                        obj=json.loads(f.read_text(encoding='utf-8'))
+                        body={k:v for k,v in obj.items() if k!='benchmark_evidence'} if isinstance(obj,dict) else obj
+                        require(_digest(body) in recorded,'ot-data file is not an unmodified recorded MCP response: '+f.name)
+                    check(tid,'ot_data_file_is_source_copy',copy_of_source)
             # v4.7 (2026-11-15): calculate/compute are gone. Every arm computes with its own shell tool
             # (OpenTrading/OpenCode `shell`, DSH `bash`) behind the shared math-only filter
             # (runners/mathshell), which journals every `bash -c` it receives in runner/shell.jsonl.
