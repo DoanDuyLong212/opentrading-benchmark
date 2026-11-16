@@ -89,7 +89,25 @@ Câu từ chối của bộ lọc kèm `mathHint` của OT. Vì vậy OpenCode v
 
 Smoke kiểm tra sau khi sửa (1 lượt, DeepSeek v4.1 flash; `fin-c4-stagger-425`, `fin-l4-chain-305`, `fin-m1-screen-502`): 9/9 trial đúng. `audit_v45_run.py` đạt mọi kiểm tra trừ `completed_resume`; kiểm tra này chỉ có khi chạy qua supervisor.
 
+## Model (16/11)
+- `nvidia/nemotron-3-ultra-550b-a55b:free` qua OpenRouter (route `openrouter_free`). Bản free chỉ có một host (Nvidia), nên host tự được ghim. Context 1M token, output tối đa 65 536.
+- Canary nhận model 3/3 (identity, làm theo tiếng Việt, gọi tool): `audits/model-admission/openrouter__nemotron-3-ultra-550b-a55b-free.json`.
+- **Request free chỉ dùng để test** (smoke ít nhất có thể: 1 task, mỗi arm 1 lượt). Lượt chạy tính điểm làm sau khi mọi nâng cấp xong; khi đó mới chọn route và trần request (hạn mức free là 1 000 request/ngày, còn `OPENROUTER_FREE_REQUEST_BUDGET` = 1 900 tổng).
+
+Smoke tối thiểu với model này (16/11, `fin-c4-stagger-425`, mỗi arm 1 lượt):
+
+| | OT machine | OpenCode | DSH |
+|---|---|---|---|
+| Đúng | không | không | không |
+| Request | 11 | 16 | 15 |
+| Input / output token | 447k / 15k | 809k / 25k | 809k / 30k |
+| Lệnh shell chạy / bị từ chối | 5 / 0 | 10 / 4 | 9 / 4 |
+| Thời gian | 274 s | 348 s | 382 s |
+
+- Cả ba sai cùng một chỗ: lợi suất và giá vốn của GAS (đọc nhầm giá mua). Cùng đề này, DeepSeek v4.1 flash đúng ở cả ba arm. Vậy đây là giới hạn của model, không phải lỗi runner.
+- Model free chậm: một request mất tới 162 s. Lượt đầu của OT bị cắt ở trần 240 s mỗi request (`provider_finish_reason_missing`), nên trần được nâng lên 600 s mỗi request và 1 800 s mỗi trial (`provider_timeout_s`, `trial_timeout_s`). OT được chạy lại một lần với trần mới; số trong bảng là lượt chạy lại.
+- `audit_v45_run.py` đạt ở cả hai lượt, trừ `completed_resume`, kiểm tra chỉ có khi chạy qua supervisor.
+
 ## Việc còn lại trước khi seal
-- Model và nhà cung cấp: chờ quyết định (OpenRouter chưa ghim host; smoke đi qua 7 host khác nhau).
 - Cú pháp lệnh tính: OT biết grammar từ request đầu, hai arm kia chỉ biết sau lần bị từ chối đầu tiên. Chờ quyết định.
 - Seal, rồi pilot.
