@@ -222,19 +222,80 @@ def R(x): return float(round(_D(x), 4))
 for _s in SYMS:
     check('rows_' + _s, len(_rows(_s)), 120)
     check('last_' + _s, _rows(_s)[-1]['t'], '2026-10-30')
-import math, statistics as _st
-def _cl(s, n): return [float(C(s, i)) for i in range(n, -1, -1)]
-def _lr(s, n):
-    x = _cl(s, n)
-    return [math.log(x[i] / x[i - 1]) for i in range(1, len(x))]
+"""Dated close/return contract, embedded verbatim in generated standalone oracles."""
+import datetime
+import math
+import statistics
+
+
+def dated_closes(rows, n, end='2026-10-30', calendar=None):
+    if not isinstance(n, int) or isinstance(n, bool) or n < 1:
+        raise ValueError('window must contain at least one return')
+    dates, values = [], []
+    for row in rows:
+        day = row['t']
+        if not isinstance(day, str) or datetime.date.fromisoformat(day).isoformat() != day:
+            raise ValueError('date must be canonical ISO YYYY-MM-DD')
+        if dates and day <= dates[-1]:
+            raise ValueError('dates must be unique and strictly chronological')
+        raw = row['c']
+        if isinstance(raw, bool):
+            raise ValueError('close must be finite and positive')
+        price = float(raw)
+        if not math.isfinite(price) or price <= 0:
+            raise ValueError('close must be finite and positive')
+        dates.append(day)
+        values.append(price)
+    if len(dates) < n + 1:
+        raise ValueError('insufficient closes: need n+1')
+    if dates[-1] != end:
+        raise ValueError('series must end on declared date')
+    if calendar is not None and dates[-n-1:] != list(calendar)[-n-1:]:
+        raise ValueError('missing or mismatched date in declared window')
+    return list(zip(dates[-n-1:], values[-n-1:]))
+
+
+def dated_returns(points):
+    return [((a[0], b[0]), math.log(b[1] / a[1])) for a, b in zip(points, points[1:])]
+
+
+def paired_returns(left, right):
+    a, b = dated_returns(left), dated_returns(right)
+    if len(a) < 2 or len(a) != len(b):
+        raise ValueError('at least two paired returns required')
+    if [r[0] for r in a] != [r[0] for r in b]:
+        raise ValueError('return date intervals must match exactly')
+    return [r[1] for r in a], [r[1] for r in b]
+
+
+def series_corr(left, right):
+    a, b = paired_returns(left, right)
+    if statistics.variance(a) == 0 or statistics.variance(b) == 0:
+        raise ValueError('correlation requires nonzero variance')
+    return statistics.correlation(a, b)
+
+
+def series_beta(left, right):
+    a, b = paired_returns(left, right)
+    variance = statistics.variance(b)
+    if variance == 0:
+        raise ValueError('benchmark variance must be nonzero')
+    return statistics.covariance(a, b) / variance
+
+_CALENDAR = ['2026-05-13', '2026-05-14', '2026-05-15', '2026-05-18', '2026-05-19', '2026-05-20', '2026-05-21', '2026-05-22', '2026-05-25', '2026-05-26', '2026-05-27', '2026-05-28', '2026-05-29', '2026-06-01', '2026-06-02', '2026-06-03', '2026-06-04', '2026-06-05', '2026-06-08', '2026-06-09', '2026-06-10', '2026-06-11', '2026-06-12', '2026-06-15', '2026-06-16', '2026-06-17', '2026-06-18', '2026-06-19', '2026-06-22', '2026-06-23', '2026-06-24', '2026-06-25', '2026-06-26', '2026-06-29', '2026-06-30', '2026-07-01', '2026-07-02', '2026-07-03', '2026-07-06', '2026-07-07', '2026-07-08', '2026-07-09', '2026-07-10', '2026-07-13', '2026-07-14', '2026-07-15', '2026-07-16', '2026-07-17', '2026-07-20', '2026-07-21', '2026-07-22', '2026-07-23', '2026-07-24', '2026-07-27', '2026-07-28', '2026-07-29', '2026-07-30', '2026-07-31', '2026-08-03', '2026-08-04', '2026-08-05', '2026-08-06', '2026-08-07', '2026-08-10', '2026-08-11', '2026-08-12', '2026-08-13', '2026-08-14', '2026-08-17', '2026-08-18', '2026-08-19', '2026-08-20', '2026-08-21', '2026-08-24', '2026-08-25', '2026-08-26', '2026-08-27', '2026-08-28', '2026-09-03', '2026-09-04', '2026-09-07', '2026-09-08', '2026-09-09', '2026-09-10', '2026-09-11', '2026-09-14', '2026-09-15', '2026-09-16', '2026-09-17', '2026-09-18', '2026-09-21', '2026-09-22', '2026-09-23', '2026-09-24', '2026-09-25', '2026-09-28', '2026-09-29', '2026-09-30', '2026-10-01', '2026-10-02', '2026-10-05', '2026-10-06', '2026-10-07', '2026-10-08', '2026-10-09', '2026-10-12', '2026-10-13', '2026-10-14', '2026-10-15', '2026-10-16', '2026-10-19', '2026-10-20', '2026-10-21', '2026-10-22', '2026-10-23', '2026-10-26', '2026-10-27', '2026-10-28', '2026-10-29', '2026-10-30']
+
+import statistics as _st
+def _points(s, n): return dated_closes(_rows(s), n, calendar=_CALENDAR)
+def _cl(s, n): return [p for d, p in _points(s, n)]
+def _lr(s, n): return [v for interval, v in dated_returns(_points(s, n))]
 def VOL(s, n): return _st.stdev(_lr(s, n)) * math.sqrt(250) * 100
 def DD(s, n):
     peak, worst = -1.0, 0.0
     for p in _cl(s, n):
         peak = max(peak, p); worst = min(worst, p / peak - 1)
     return worst * 100
-def CORR(a, b, n): return _st.correlation(_lr(a, n), _lr(b, n))
-def BETA(a, n): return _st.covariance(_lr(a, n), _lr('VNINDEX', n)) / _st.variance(_lr('VNINDEX', n))
+def CORR(a, b, n): return series_corr(_points(a, n), _points(b, n))
+def BETA(a, n): return series_beta(_points(a, n), _points('VNINDEX', n))
 check('beta', R(BETA('VNM', 60)), gold['solution']['value'])
 
 

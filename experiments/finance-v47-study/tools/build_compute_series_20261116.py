@@ -13,19 +13,24 @@ from pathlib import Path
 STUDY = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(STUDY / 'tools'))
 import build_compute_stratum_20261111 as cs  # noqa: E402
+from series_contract import dated_closes, dated_returns, series_corr, series_beta
+CALENDAR = [r["t"] for r in cs.H["VNINDEX"]]
+SERIES_LIB = (STUDY / "tools/series_contract.py").read_text()
 
 VOL, DD, CORR, BETA = {'abs': 0.1}, {'abs': 0.05}, {'abs': 0.005}, {'abs': 0.01}
 S30 = cs.S30
 
 
+def points(sym, n):
+    return dated_closes(cs.H[sym], n, calendar=CALENDAR)
+
+
 def closes(sym, n):
-    """The n+1 closes ending 30/10 (oldest first)."""
-    return [float(cs.c(sym, i)) for i in range(n, -1, -1)]
+    return [price for day, price in points(sym, n)]
 
 
 def logret(sym, n):
-    x = closes(sym, n)
-    return [math.log(x[i] / x[i - 1]) for i in range(1, len(x))]
+    return [value for interval, value in dated_returns(points(sym, n))]
 
 
 def vol(sym, n):
@@ -41,27 +46,26 @@ def maxdd(sym, n):
 
 
 def corr(a, b, n):
-    return st.correlation(logret(a, n), logret(b, n))
+    return series_corr(points(a, n), points(b, n))
 
 
 def beta(a, n, m='VNINDEX'):
-    ra, rm = logret(a, n), logret(m, n)
-    return st.covariance(ra, rm) / st.variance(rm)
+    return series_beta(points(a, n), points(m, n))
 
 
-LIB = '''import math, statistics as _st
-def _cl(s, n): return [float(C(s, i)) for i in range(n, -1, -1)]
-def _lr(s, n):
-    x = _cl(s, n)
-    return [math.log(x[i] / x[i - 1]) for i in range(1, len(x))]
+LIB = SERIES_LIB + "\n_CALENDAR = %r\n" % CALENDAR + '''
+import statistics as _st
+def _points(s, n): return dated_closes(_rows(s), n, calendar=_CALENDAR)
+def _cl(s, n): return [p for d, p in _points(s, n)]
+def _lr(s, n): return [v for interval, v in dated_returns(_points(s, n))]
 def VOL(s, n): return _st.stdev(_lr(s, n)) * math.sqrt(250) * 100
 def DD(s, n):
     peak, worst = -1.0, 0.0
     for p in _cl(s, n):
         peak = max(peak, p); worst = min(worst, p / peak - 1)
     return worst * 100
-def CORR(a, b, n): return _st.correlation(_lr(a, n), _lr(b, n))
-def BETA(a, n): return _st.covariance(_lr(a, n), _lr('VNINDEX', n)) / _st.variance(_lr('VNINDEX', n))
+def CORR(a, b, n): return series_corr(_points(a, n), _points(b, n))
+def BETA(a, n): return series_beta(_points(a, n), _points('VNINDEX', n))
 '''
 
 

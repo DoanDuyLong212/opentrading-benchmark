@@ -156,3 +156,11 @@ Lý do: ở or16, 154/200 task được cả 3 arm × 2 lượt làm đúng (124
 ## Việc còn lại trước khi seal
 - (Đã xử lý 16/11 bằng sandbox: không còn bộ lọc theo grammar của OT.)
 - Seal, rồi pilot.
+
+## Amendment 2026-11-16: series date contract and S3 clock limitation (#12, #11)
+
+Long-series tasks 431–440 require canonical ISO dates in strictly increasing order, unique dates, finite positive closes, and exactly the declared n+1-date window ending 2026-10-30. The frozen VNINDEX calendar defines the expected dates. Correlation and beta pair the complete (previous date, current date) return intervals; missing dates or mismatched windows are errors, never silently intersected. Generator and standalone generated oracle both enforce this contract. Numeric tolerances and existing gold remain unchanged after recomputation; evidence is in `audits/series-clock-2026-11-16/series-gold-audit.json`.
+
+Native cross-arm clock parity remains unverified. OpenTrading supplies its native snapshot clock API, while OpenCode and DSH have no verified equivalent in this cohort. An instruction containing the snapshot date is not evidence of a native clock pin. No process clock interception or timeout change is introduced. Full first and continuation request observations from all three arms are required before a later amendment can promote S3; `clock_policy.audit_clock_observations` records request hashes and rejects missing or mismatched native dates. Synthetic audit fixtures validate this check; they are not live parity evidence.
+
+All S3 tasks are diagnostic and excluded from comparative primary rates, strata, and bootstrap differences. Existing deterministic S grading still runs and its outcome is retained in trial records and `diagnostic_by_stratum`. Summary fields disclose total, comparative, and diagnostic trial counts. For the registered safety task set this changes comparative denominators from 30 to 24 main tasks and from 8 to 6 holdout tasks per arm per repeat (S3: 6 main + 2 holdout); actual scheduled denominators come from trial records, including DNF. Other strata retain their scheduled denominators. This is the conservative fallback for #11, not a claim of repaired native clock parity.
