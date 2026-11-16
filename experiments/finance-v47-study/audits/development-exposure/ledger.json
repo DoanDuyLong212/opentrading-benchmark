@@ -1,0 +1,145 @@
+{
+  "version": 1,
+  "baseline_commit": "4bbfd385008440acb0cca085cddb751decd06ee5",
+  "compiled_date": "2026-11-16",
+  "scope": "Committed design and capture artifacts only; no provider logs or other-machine run archives were available.",
+  "holdout_exposure_status": "unknown",
+  "cross_machine_status": "unknown",
+  "tasks": [
+    {
+      "task_id": "fin-c4-stagger-425",
+      "original_split": "main",
+      "interpretation": "exploratory; development exposure history must remain visible",
+      "inference_status": "reported_inference",
+      "events": [
+        {
+          "date": "2026-11-15",
+          "run_id": "smoke47c",
+          "model": "deepseek/deepseek-v4.1-flash-1017",
+          "status": "reported_in_design",
+          "evidence": "plans/2026-11-15-v47-study-design.md:48-64,85,90,97-110"
+        },
+        {
+          "date": "2026-11-16",
+          "run_id": "unknown",
+          "model": "nvidia/nemotron-3-ultra-550b-a55b:free",
+          "status": "reported_in_design",
+          "evidence": "plans/2026-11-15-v47-study-design.md:97-110",
+          "note": "Design reports a timeout and OT retry; exact request receipts not available here."
+        }
+      ],
+      "development_change": "Annualized position return wording clarified; subsequent diagnostics on two models.",
+      "evidence": [
+        "plans/2026-11-15-v47-study-design.md:48-64,85,90,97-110"
+      ],
+      "cross_machine_status": "unknown"
+    },
+    {
+      "task_id": "fin-c4-stagger-430",
+      "original_split": "main",
+      "interpretation": "exploratory; development exposure history must remain visible",
+      "inference_status": "unknown",
+      "events": [],
+      "development_change": "Annualized position return wording clarified.",
+      "evidence": [
+        "plans/2026-11-15-v47-study-design.md:85"
+      ],
+      "cross_machine_status": "unknown"
+    },
+    {
+      "task_id": "fin-l4-chain-305",
+      "original_split": "main",
+      "interpretation": "exploratory; development exposure history must remain visible",
+      "inference_status": "reported_inference",
+      "events": [
+        {
+          "date": "2026-11-15",
+          "run_id": "unknown",
+          "model": "deepseek/deepseek-v4.1-flash-1017",
+          "status": "reported_in_design",
+          "evidence": "plans/2026-11-15-v47-study-design.md:63,88,90"
+        }
+      ],
+      "development_change": "Signed pct_drop clarified; subsequent diagnostic reported.",
+      "evidence": [
+        "plans/2026-11-15-v47-study-design.md:63,88,90"
+      ],
+      "cross_machine_status": "unknown"
+    },
+    {
+      "task_id": "fin-l4-chain-306",
+      "original_split": "main",
+      "interpretation": "exploratory; development exposure history must remain visible",
+      "inference_status": "unknown",
+      "events": [],
+      "development_change": "Signed pct_drop clarified.",
+      "evidence": [
+        "plans/2026-11-15-v47-study-design.md:88"
+      ],
+      "cross_machine_status": "unknown"
+    },
+    {
+      "task_id": "fin-l4-2src-259",
+      "original_split": "main",
+      "interpretation": "exploratory; development exposure history must remain visible",
+      "inference_status": "unknown",
+      "events": [],
+      "development_change": "Cross-source percentage denominator clarified.",
+      "evidence": [
+        "plans/2026-11-15-v47-study-design.md:86"
+      ],
+      "cross_machine_status": "unknown"
+    },
+    {
+      "task_id": "fin-l4-2src-260",
+      "original_split": "main",
+      "interpretation": "exploratory; development exposure history must remain visible",
+      "inference_status": "unknown",
+      "events": [],
+      "development_change": "Cross-source percentage denominator clarified.",
+      "evidence": [
+        "plans/2026-11-15-v47-study-design.md:86"
+      ],
+      "cross_machine_status": "unknown"
+    },
+    {
+      "task_id": "fin-l4-2src-302",
+      "original_split": "main",
+      "interpretation": "exploratory; development exposure history must remain visible",
+      "inference_status": "unknown",
+      "events": [],
+      "development_change": "Positive difference wording clarified.",
+      "evidence": [
+        "plans/2026-11-15-v47-study-design.md:87"
+      ],
+      "cross_machine_status": "unknown"
+    },
+    {
+      "task_id": "fin-m1-screen-502",
+      "original_split": "main",
+      "interpretation": "exploratory; development exposure history must remain visible",
+      "inference_status": "reported_inference",
+      "events": [
+        {
+          "date": "2026-11-15",
+          "run_id": "unknown",
+          "model": "deepseek/deepseek-v4.1-flash-1017",
+          "status": "reported_in_design",
+          "evidence": "plans/2026-11-15-v47-study-design.md:64,90"
+        }
+      ],
+      "development_change": "Memory diagnostic reported; no task-specific wording change documented.",
+      "evidence": [
+        "plans/2026-11-15-v47-study-design.md:64,90"
+      ],
+      "cross_machine_status": "unknown"
+    }
+  ],
+  "evidence_sha256": {
+    "plans/2026-11-15-v47-study-design.md": "deb6fbb5f32f396ec50245333b3ac2308a5697a74cef9930725c8de43ce383f2",
+    "plans/v47-fullharness-capture/v47-runner-opencode-8866594.json": "957fb0ebf161ea6bc78fff3aa44db14b590caa0add237164580580eced7204f0",
+    "plans/v47-fullharness-capture/v47-runner-dsh-8866594.json": "300e7770d0bc92876ba0668a3c64143455a009342a32758e95b706d68e93215a",
+    "plans/v47-fullharness-capture/v47-runner-opentrading_machine-8866594.json": "8937cd621fd29806e6d9017109d9a5a55bec9bdbbf036a28c6461433fbce7f63"
+  },
+  "capture_note": "Captured first requests bind stagger-425 to smoke47c; a capture alone does not prove provider completion or success. Design reports success; this ledger does not independently certify those scores."
+}

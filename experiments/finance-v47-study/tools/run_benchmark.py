@@ -48,6 +48,8 @@ def load_config(path=None):
 # ------------------------------------------------------------------ chọn task
 def select_tasks(split, sample=None, seed=None, tasks_filter=None, confirm_holdout=False, include_quarantined=False):
     """Trả list đường dẫn task dir, thứ tự sorted (deterministic)."""
+    from v47_dev_gate import require_dev_split, enabled, validate_dev_task
+    require_dev_split(split)
     if split not in SPLITS:
         raise SystemExit("split phải là 1 trong: %s" % ", ".join(SPLITS))
     if split == "holdout" and not confirm_holdout:
@@ -57,7 +59,12 @@ def select_tasks(split, sample=None, seed=None, tasks_filter=None, confirm_holdo
     if split == "holdout" and not os.path.isdir(os.path.join(ROOT,"tasks","holdout")):
         raise ValueError("v45 holdout is opaque inventory only; no holdout inference in this study")
     root = os.path.join(ROOT, "tasks", split)
+    if tasks_filter and any(not t or os.path.basename(t) != t or t in ('.', '..') for t in tasks_filter):
+        raise ValueError('Task IDs must be plain names within the selected split')
     ids = sorted(d for d in os.listdir(root) if os.path.isdir(os.path.join(root, d)))
+    if enabled():
+        for tid in ids:
+            validate_dev_task(ROOT, os.path.join(root, tid))
     from run_manifest import task_eligibility
     eligibility = {tid: task_eligibility(os.path.join(root, tid)) for tid in ids}
     excluded = {tid: meta['exclusion_reason'] for tid, meta in eligibility.items() if not meta['confirmatory_eligible']}
@@ -217,6 +224,9 @@ def grade_answer(answer_path, task_dir, out_dir, frozen_v3=False, frozen_v41=Fal
 # ------------------------------------------------------------------ runner dispatch
 def run_trial(arm, ws, instruction, task_dir, model, timeout_s, log_path, options=None):
     """Gọi runner của arm; trả dict(status, answer_path, session_id, tokens, wall_ms, notes)."""
+    from v47_dev_gate import enabled, validate_dev_task
+    if enabled():
+        validate_dev_task(ROOT, task_dir)
     from experiment_conditions import condition
     selected = condition(arm)
     options = dict(options or {}, condition=arm, **selected)
@@ -253,6 +263,9 @@ def memory_turns(task_dir):
 
 def run_memory_trial(arm, ws, task_dir, model, timeout_s, log_path, options=None):
     """Amendment 2026-11-11 (d): one native-memory episode as one main trial (same schedule, seal and ledgers)."""
+    from v47_dev_gate import enabled, validate_dev_task
+    if enabled():
+        validate_dev_task(ROOT, task_dir)
     from experiment_conditions import condition
     sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), 'runners'))
     from memory_runner import MemoryEpisode, NATIVE_V2
@@ -544,6 +557,8 @@ def main():
     ap.add_argument("--v44-seal", help="v44 combined compute/acquisition shared seal")
     ap.add_argument("--v43-seal", help="shared two-model pre-inference seal; mandatory for v43 inference")
     args = ap.parse_args()
+    from v47_dev_gate import require_dev_split
+    require_dev_split(args.split)
     cfg = load_config(args.config)
     model = args.model or cfg.get("model")
     if cfg.get("allowed_models") and model not in cfg["allowed_models"]:
@@ -609,7 +624,7 @@ def main():
         if cfg.get('protocol') == FINANCIAL_PROTOCOL:
             from v45_gate import authorize_run
             # v4.7 dev smoke only (BENCH_V47_DEV=1): no seal yet; never for pilot/main/holdout evidence.
-            if os.environ.get('BENCH_V47_DEV')=='1' and args.split not in ('devsmoke','main'):raise ValueError('BENCH_V47_DEV only for devsmoke/selected main smoke tasks')
+            require_dev_split(args.split)
             if not args.v45_seal and os.environ.get('BENCH_V47_DEV')!='1':raise ValueError('v45 inference requires --v45-seal')
             if args.retry != 0:raise ValueError('v45 gateway owns transport retry; whole-trial retry must be zero')
             if os.environ.get('BENCH_V47_DEV')!='1':authorize_run(args.v45_seal, out_dir, args.config, settings, tasks, args.resume)

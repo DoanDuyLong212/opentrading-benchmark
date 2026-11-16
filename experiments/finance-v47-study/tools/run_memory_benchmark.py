@@ -42,7 +42,9 @@ def summary(rows,m,out):
  rows,review=apply_review(out,rows,m)
  return {'review':review,'stage':'await_root_review'if len(rows)==len(m['schedule'])else'in_progress','models':{model:summarize([r for r in rows if r['model']==model],{**m,'schedule':[x for x in m['schedule']if x['model']==model]})for model in sorted({x['model']for x in m['schedule']})}}
 def main():
- ap=argparse.ArgumentParser(description=__doc__);ap.add_argument('--out',required=True);ap.add_argument('--config',default=str(ROOT/'tools/bench_config.json'));ap.add_argument('--plan',action='store_true');ap.add_argument('--execute',action='store_true');ap.add_argument('--approved-manifest-sha256');ap.add_argument('--engineering-approval');ap.add_argument('--stop-after-turns',type=int);a=ap.parse_args();out=Path(a.out).resolve();out.mkdir(parents=True,exist_ok=True);mp=out/'manifest.json'
+ ap=argparse.ArgumentParser(description=__doc__);ap.add_argument('--out',required=True);ap.add_argument('--config',default=str(ROOT/'tools/bench_config.json'));ap.add_argument('--plan',action='store_true');ap.add_argument('--execute',action='store_true');ap.add_argument('--approved-manifest-sha256');ap.add_argument('--engineering-approval');ap.add_argument('--stop-after-turns',type=int);a=ap.parse_args();
+ if a.execute and os.environ.get('BENCH_V47_DEV') == '1':raise SystemExit('BENCH_V47_DEV permits devsmoke only; legacy memory execution is forbidden')
+ out=Path(a.out).resolve();out.mkdir(parents=True,exist_ok=True);mp=out/'manifest.json'
  if a.plan:
   candidate=manifest(json.loads(Path(a.config).read_text()))
   if mp.exists()and json.loads(mp.read_text())!=candidate:raise SystemExit('Existing manifest differs; preserve original and use a separate experiment')
