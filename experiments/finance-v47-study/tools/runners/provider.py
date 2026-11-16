@@ -391,6 +391,9 @@ class ProviderGateway:
             from wire_contracts import schema_constraints
             for definition in native_defs:
                 observed=next((x['function'] for x in body.get('tools',[]) if x.get('function',{}).get('name')==definition['name']),None)
+                # v4.7: OpenTrading offers read_result only once a message names it (OpenTrading#322), so a
+                # native tool may be absent from a request; when present its schema must still be the pinned one.
+                if observed is None and definition['name']=='read_result':continue
                 if observed is None or schema_constraints(observed.get('parameters'))!=schema_constraints(definition.get('inputSchema')):raise ValueError('native utility wire schema changed or missing: '+definition['name'])
             requested_out = body.get('max_tokens', body.get('max_completion_tokens'))
             if self.options.get('max_output_tokens') is None:

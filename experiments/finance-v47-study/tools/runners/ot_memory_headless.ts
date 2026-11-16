@@ -22,7 +22,8 @@ if(!Number.isFinite(now.getTime()))throw new Error('Invalid snapshot date')
 const memoryChoice=process.env.BENCH_MEMORY_MODE??'none'
 if(!['none','notebook'].includes(memoryChoice))throw new Error('Untrusted memory mode')
 const memory=createMemory(memoryChoice as 'none'|'notebook',home)
-const runtime=initRuntime({cwd:process.cwd(),home,skills:()=>[],memory,scratchpad:false})
+// v4.7 (OpenTrading#311 A2): data results also as ot-data/rN.json in the workspace, which the shell sandbox mounts.
+const runtime=initRuntime({cwd:process.cwd(),home,skills:()=>[],memory,scratchpad:false,resultFiles:'ot-data'})
 const memoryStateFile=process.env.BENCH_MEMORY_STATE
 const logicalSession=process.env.BENCH_MEMORY_SESSION
 if(!memoryStateFile||!logicalSession)throw new Error('Memory episode state/session required')
