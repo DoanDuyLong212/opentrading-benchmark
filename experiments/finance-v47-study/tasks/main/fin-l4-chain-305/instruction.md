@@ -1,6 +1,6 @@
 # Chuỗi 2 bước: mã giảm sâu nhất rổ ngân hàng → LNST
 
-Trong rổ ngân hàng **ACB, STB, VPB, HDB, TPB** ở phiên 30/10: mã nào **giảm mạnh nhất** (theo % thay đổi, ghi % vào `pct_drop`)? **Tổng LNST hợp nhất quý gần nhất** của mã đó là bao nhiêu (tỷ đồng)?
+Trong rổ ngân hàng **ACB, STB, VPB, HDB, TPB** ở phiên 30/10: mã nào **giảm mạnh nhất** (theo % thay đổi, ghi % vào `pct_drop`; `pct_drop` là % thay đổi giá giữ nguyên dấu, mã giảm thì số âm, ví dụ `-1.5`)? **Tổng LNST hợp nhất quý gần nhất** của mã đó là bao nhiêu (tỷ đồng)?
 
 ## Yêu cầu trả lời
 Trả lời bằng đúng một object JSON trong phản hồi cuối cùng, theo schema:

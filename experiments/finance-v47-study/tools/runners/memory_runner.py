@@ -10,7 +10,7 @@ ARMS={'ot_memory_on':('opentrading',True),'ot_memory_off':('opentrading',False),
       # Amendment 2026-11-11 (d) native-v2 memory stratum under the main seal: each main arm keeps its own product
       # memory. OT B0 with its native notebook (user /nho form); OpenCode session resume only; DSH session resume plus
       # its opt-in session-search tools. No benchmark-owned notebook tool for anyone.
-      'opentrading_baseline':('opentrading',True)}
+      'opentrading_baseline':('opentrading',True),'opentrading_machine':('opentrading',True)}
 NATIVE_V2='native-v2'
 def digest(x):return hashlib.sha256(json.dumps(x,ensure_ascii=False,sort_keys=True,separators=(',',':')).encode()).hexdigest()
 def save(path,value):
@@ -54,7 +54,8 @@ class MemoryEpisode:
    if self.notebook:self.gateway.options['allowed_tool_names'].append('memory_read')
   if self.v2 and self.native=='dsh':
    pinned=json.loads((TOOLS/'runners/dsh_session_search_tools.json').read_text())['tools']
-   self.gateway.options['native_tool_definitions']=pinned
+   # v4.7: keep the shell definition prepare() pinned (bash behind the shared filter) next to the session tools.
+   self.gateway.options['native_tool_definitions']=[d for d in self.gateway.options.get('native_tool_definitions',[])if d['name']not in{x['name']for x in pinned}]+pinned
    self.gateway.options['allowed_tool_names']+=[d['name']for d in pinned]
   if self.gateway.ledger.exists():
    self.gateway.rows=[json.loads(l)for l in self.gateway.ledger.read_text().splitlines()if l]

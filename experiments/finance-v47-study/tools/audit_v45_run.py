@@ -274,7 +274,7 @@ def audit(out):
             # Amendment 2026-11-11 (d): native-memory stratum. Product memory reads (OT memory_read, DSH session_*
             # search/read tools) are reconciled only for native-memory-v2 tasks, only for the arm that owns the tool,
             # and only when the exact call's tool result appears in later model context. Never financial evidence.
-            native_memory_tools={'opentrading_baseline':{'memory_read'},
+            native_memory_tools={'opentrading_baseline':{'memory_read'},'opentrading_machine':{'memory_read'},
                                  'dsh':{'session_search','session_event_search','session_event_read','session_event_trace','session_trace'}}.get(row['arm'],set())
             turns_file=task/'environment/turns.json'
             is_native_memory=turns_file.is_file() and json.loads(turns_file.read_text()).get('execution_contract')=='native-memory-v2'
@@ -286,6 +286,35 @@ def audit(out):
                     key=bindings.claim(p_call['id'],p_call['tool'],p_call['arguments'],memory_proof)
                     check(tid,'native_memory_read_reconciled',lambda k=key:require(bool(k),'Native memory read lacks distinct generated occurrence'))
                     if key:unknown_outcomes.append({'trial_id':tid,'generation':key,'tool':p_call['tool'],'classification':'native_memory_read','financial_evidence':False})
+            # v4.7 (2026-11-15): calculate/compute are gone. Every arm computes with its own shell tool
+            # (OpenTrading/OpenCode `shell`, DSH `bash`) behind the shared math-only filter
+            # (runners/mathshell), which journals every `bash -c` it receives in runner/shell.jsonl.
+            # A shell call reconciles when its own result is in later model context; a command that
+            # reached the filter consumes exactly one journal row (exact command, after removing the two
+            # OpenTrading-added awk/locale prefixes the filter also removes), and every journal row must
+            # belong to a generated call. Computation is never financial evidence: answer numbers still
+            # need MCP receipts (grounded_answer).
+            shell_tool={'dsh':'bash'}.get(row['arm'],'shell')
+            shell_path=Path(attempt.get('workspace','MISSING')).parent/'runner/shell.jsonl'
+            shell_rows=journal(shell_path) if shell_path.is_file() else []
+            shell_free=list(range(len(shell_rows)))
+            def shell_norm(command):
+                import re as _re
+                return _re.sub(r'^awk -v OFMT=%\.15g -v CONVFMT=%\.15g ','awk ',_re.sub(r'^LC_ALL=C ','',command))
+            for p_call in [g for g in bindings.pending() if g['tool']==shell_tool]:
+                command=p_call['arguments'].get('command') if isinstance(p_call['arguments'],dict) else None
+                def shell_proof(context,p_call=p_call):
+                    return context['tool']==p_call['tool'] and context['arguments']==p_call['arguments'] and isinstance(context.get('content'),str)
+                if not [c for c in bindings.contexts if c['id']==p_call['id'] and shell_proof(c)]:continue
+                key=bindings.claim(p_call['id'],p_call['tool'],p_call['arguments'],shell_proof)
+                check(tid,'shell_call_reconciled',lambda k=key:require(bool(k),'Shell call lacks distinct generated occurrence'))
+                if not key:continue
+                hits=[i for i in shell_free if isinstance(command,str) and shell_norm(shell_rows[i].get('command') or '')==shell_norm(command)]
+                verdict='not_reaching_filter'
+                if hits:
+                    shell_free.remove(hits[0]);verdict=shell_rows[hits[0]].get('verdict')
+                unknown_outcomes.append({'trial_id':tid,'generation':key,'tool':p_call['tool'],'classification':'shell_'+str(verdict),'financial_evidence':False})
+            check(tid,'shell_journal_attributed',lambda:require(not shell_free,'Shell journal rows without a generated call: '+str([shell_rows[i].get('command') for i in shell_free])[:300]))
             pending=bindings.pending()
             if interrupted and pending:partials.append({'trial_id':tid,'check':'generated_call_reconciliation','unexecuted_or_unconsumed_generated_occurrences':pending,'status':'terminal interruption; never treated as evidence'})
             else:check(tid,'generated_call_reconciliation',lambda:require(not pending,'Unbound generated occurrences: '+str(pending)))

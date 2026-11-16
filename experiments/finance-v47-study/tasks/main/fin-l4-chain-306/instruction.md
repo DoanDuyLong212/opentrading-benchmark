@@ -1,6 +1,6 @@
 # Chuỗi 2 bước: mã giảm mạnh nhất VN30 → doanh thu
 
-Theo **`market_movers`**, mã nào **giảm mạnh nhất** rổ VN30 phiên gần nhất (ghi % vào `values.pct_drop`)? **Doanh thu thuần quý gần nhất** của mã đó là bao nhiêu (tỷ đồng)?
+Theo **`market_movers`**, mã nào **giảm mạnh nhất** rổ VN30 phiên gần nhất (ghi % vào `values.pct_drop`; `pct_drop` là % thay đổi giá giữ nguyên dấu, mã giảm thì số âm, ví dụ `-1.5`)? **Doanh thu thuần quý gần nhất** của mã đó là bao nhiêu (tỷ đồng)?
 
 ## Yêu cầu trả lời
 Trả lời bằng đúng một object JSON trong phản hồi cuối cùng, theo schema:

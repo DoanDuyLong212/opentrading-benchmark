@@ -45,13 +45,21 @@ def prepare(ws, task_dir, model, options):
     bun_path=str(Path(options.get('native_bun_binary') or bun_frozen['native_bun_binary']).resolve())
     bun_sha=options.get('native_bun_sha256') or bun_frozen['native_bun_sha256']
     mcp_env = {'BENCH_BUN_BIN':bun_path,'BENCH_BUN_SHA256':bun_sha,'PYTHONPATH': site.getusersitepackages(), 'BENCH_PAYLOADS': str(Path(task_dir).resolve() / 'environment/payloads.json')}
-    # Shared math-only shell (mathshell/filter.ts): first in PATH and $SHELL for every arm.
+    # Shared shell sandbox (sandbox/run.ts, decision 2026-11-16 6b): mathshell/bin first in PATH and
+    # $SHELL for every arm; each command runs unfiltered in a no-network container that sees only this
+    # trial's workspace and its own temp folder.
     if options.get('protocol') == FINANCIAL_PROTOCOL:
         mathshell = TOOLS / 'runners/mathshell'
+        image = options.get('sandbox_image')
+        if not image:
+            raise ValueError('v4.7 shell sandbox image (provider_options.sandbox_image) required')
         env['PATH'] = str(mathshell / 'bin') + os.pathsep + env.get('PATH', '/usr/bin:/bin')
         env['SHELL'] = str(mathshell / 'bin/bash')
         env['BENCH_BUN_BIN'] = bun_path
-        env['BENCH_MATHSHELL_FILTER'] = str(mathshell / 'filter.ts')
+        env['BENCH_SHELL_SANDBOX'] = str(TOOLS / 'runners/sandbox/run.ts')
+        env['BENCH_SANDBOX_IMAGE'] = str(image)
+        env['BENCH_SANDBOX_WORKSPACE'] = str(Path(ws).resolve())
+        env['BENCH_SANDBOX_TMP'] = str(root / 'sandbox-tmp')
         env['BENCH_OT_RUNTIME'] = str(options['opentrading_runtime_root'])
         env['BENCH_SHELL_LEDGER'] = str(root / 'shell.jsonl')
         env['BENCH_SHELL_ARM'] = str(options.get('native_arm') or '')

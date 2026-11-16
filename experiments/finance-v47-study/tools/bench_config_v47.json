@@ -1,13 +1,9 @@
 {
   "protocol": "financial_product_v45",
-  "model": "deepseek/deepseek-v4.1-flash-1017",
+  "model": "nvidia/nemotron-3-ultra-550b-a55b:free",
   "model_stratum": "deepseek-openrouter",
   "allowed_models": [
-    "nvidia/nvidia/nemotron-3.5-super-vl-120b-a12b",
-    "nvidia/deepseek-ai/deepseek-v4.1-flash",
-    "nvidia/nemotron-3.5-super-vl:free",
-    "deepseek/deepseek-v4.1-flash",
-    "deepseek/deepseek-v4.1-flash-1017"
+    "nvidia/nemotron-3-ultra-550b-a55b:free"
   ],
   "allowed_inference_splits": [
     "devsmoke",
@@ -22,8 +18,8 @@
   "max_requests": 24,
   "max_output_tokens": null,
   "max_total_tokens": 4600000,
-  "provider_timeout_s": 240,
-  "trial_timeout_s": 900,
+  "provider_timeout_s": 600,
+  "trial_timeout_s": 1800,
   "request_interval_s": 2,
   "effort": "none",
   "price_per_1m": {
@@ -37,43 +33,44 @@
   "provider_options": {
     "temperature": 0,
     "top_p": 1,
-    "context_window": 1048576,
+    "context_window": 1000000,
     "max_output_tokens": null,
     "max_requests": 24,
     "max_total_tokens": 4600000,
-    "provider_timeout_s": 240,
+    "provider_timeout_s": 600,
     "request_interval_s": 2,
-    "failed_attempt_context_bound": 1048576,
-    "failed_attempt_token_reservation": 1992294,
+    "failed_attempt_context_bound": 1000000,
+    "failed_attempt_token_reservation": 1065536,
     "native_reasoning_capability": true,
     "native_reasoning_mode": "off",
     "effort_note": "none requested; backend thinking not proven disabled",
     "native_bun_binary": "/home/doanlong/extra/benchmark/experiments/toolchains/bun-1.4.4/bun",
     "native_bun_sha256": "10702245766b225e70bbf6235fd6b47214fd94b4760d00ffaed8ab0df57ac235",
-    "provider_route": "openrouter_paid",
-    "openrouter_paid_budget": 10500,
+    "provider_route": "openrouter_free",
     "memory_max_requests": 48,
-    "model_max_output_tokens": 943718,
-    "model_max_output_tokens_source": "OpenRouter models API 2026-11-15: deepseek/deepseek-v4.1-flash-1017 top_provider.max_completion_tokens"
+    "model_max_output_tokens": 65536,
+    "model_max_output_tokens_source": "OpenRouter models API 2026-11-16: nvidia/nemotron-3-ultra-550b-a55b:free top_provider.max_completion_tokens (1 host: Nvidia)",
+    "sandbox_image": "sha256:1094dde1b98a3a9aff5149d2cdb9cc0a32c4db8c814863b3abf82e79e29b73b0",
+    "sandbox_image_source": "tools/runners/sandbox/Dockerfile (docker build -t ot-bench-shell:v47)"
   },
   "arms_pilot": [
-    "opentrading_baseline",
+    "opentrading_machine",
     "opencode",
     "dsh"
   ],
   "gate": "b0_judge_primary",
   "arms_main": [
-    "opentrading_baseline",
+    "opentrading_machine",
     "opencode",
     "dsh"
   ],
   "cost_reporting": "OpenRouter usage.cost per request (authoritative); price_per_1m is the published list price and under-estimated or10 billing ~2.8x (0.1284 vs 0.3653 USD for 132 trials)",
   "memory_trial_timeout_s": 1800,
   "arms_holdout": [
-    "opentrading_baseline",
+    "opentrading_machine",
     "opencode",
     "dsh"
   ],
-  "opentrading_runtime_commit": "baa6743c93550555e14b308a96b38efdb3bb3e13",
-  "shell_policy": "v4.7 option A: each arm native shell tool (OT/OC shell, DSH bash) behind the shared math-only filter tools/runners/mathshell"
+  "opentrading_runtime_commit": "9f7f0c1ea103478a2837d2865319ed94839e1c13",
+  "shell_policy": "v4.7 (2026-11-16, 6b): each arm native shell tool (OT/OC shell, DSH bash), unfiltered, inside a no-network Docker sandbox mounting only the trial workspace and temp (tools/runners/sandbox)"
 }

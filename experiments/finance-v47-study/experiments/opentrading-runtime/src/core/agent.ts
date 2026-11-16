@@ -46,12 +46,18 @@ import { isContextOverflow, pruneAttachments, pruneToolResults, tokensOf } from 
 import { isAttachmentText } from "./mentions"
 import { classifyFailure, retryMiddleware, type RetryNotice, type RetryOptions } from "./retry"
 import { loadedTools } from "./tools/loaded"
+import { RENAMED_TOOLS, renamedInput } from "./tools/renamed"
+import { operandNote, untracedOperands } from "./loop/operands"
+import { mathOnlyCommand } from "./tools/shell/math"
+import { detectShell } from "./tools/shell/run"
 import { modeNote } from "./permission/mode"
 import { NOTE as NOTICE_NOTE } from "./subagents/notification"
 import { currentTodos, retiredNote, retireLeftTodos, todoMark, TODO_WRITE } from "./tools/todos"
 import { FAILURE_STREAK_FINAL, FAILURE_STREAK_STOP, failureNudge, gapsAnswer, turnFailures } from "./loop/failures"
 import { answerAfterTools } from "./loop/history-shape"
 import { markupStreamFilter, stripMarkup, type MarkupFilter } from "./loop/markup"
+import type { PromptProfile } from "./prompt/assemble"
+import { MIN_REQUEST_BUDGET, RequestBudget } from "./request-budget"
 import { answeredAndClosedTodos, figureSources, isEmptyAnswer, isUnfetched, GAPS_RESCUE_START, judgeStop, MAX_RECOVERIES, sourcesFailed, ranDataTool, stripEchoes, ungroundedInTurn, unfetchedFigures, type RecoveryKind, type Verdict } from "./loop/stop-gate"
 import { MAX_TOOLS_PER_REQUEST, modelOutput, stripImages, type BuiltToolSet, type ToolRegistry, type ToolSetOptions } from "./tools/registry"
 import { describeTool, LOADED_PREFIX, resolveToolName } from "./tools/search"
@@ -59,6 +65,9 @@ import { cleanToolErrors, toolErrorText } from "./tools/errors"
 import { TOOL_SEARCH } from "./tools/builtin/tool-search"
 import { LOCAL_SOURCE, type ToolResult } from "./tools/types"
 import type { ChartData } from "./tools/chart/data"
+
+/** A shell command the math grammar takes, for the shell this machine runs (loop/operands.ts). */
+const isArithmetic = (command: string) => mathOnlyCommand(command, detectShell())
 
 /** Unlimited: the turn ends when the model stops calling tools. A cap is opt-in via
  *  config `maxSteps` or the caller's `opts.maxSteps`; when capped, the last step forces a summary. */
@@ -192,7 +201,14 @@ export interface RunOptions {
    * with `subagents.idleMs` set passes it, so a longer idle limit is not undercut by the stall.
    */
   stallMs?: number
+  /** Who reads the answer (prompt/assemble.ts PromptProfile); default the terminal. */
+  profile?: PromptProfile
   maxSteps?: number
+  /**
+   * The caller's cap on model requests for this turn (request-budget.ts): never passed; the loop
+   * answers while it still can. Counted over every request of the process meanwhile.
+   */
+  maxRequests?: number
   /**
    * Auto-compaction threshold (contextLimits). Between tool steps, a request that would reach
    * it goes out with old tool results pruned (no extra request, history untouched); the next
@@ -345,6 +361,18 @@ export function dropFinalText(messages: ModelMessage[]): ModelMessage[] {
   return [...messages.slice(0, index), { ...message, content: parts }, ...messages.slice(index + 1)]
 }
 
+/**
+ * How many of a run's last model requests lose their text in dropFinalText, so a UI takes as many off
+ * the screen: 2 when the last request wrote no message at all (`requests` counts it, the messages do
+ * not), so the text dropped is the one written beside the tool calls of the request before it.
+ */
+export function droppedRequests(response: ModelMessage[], requests: number): 1 | 2 {
+  const index = response.findLastIndex((m) => m.role === "assistant")
+  const assistants = response.filter((m) => m.role === "assistant").length
+  const tail = response.slice(index + 1)
+  return index >= 0 && requests > assistants && tail.length > 0 && tail.every((m) => m.role === "tool") ? 2 : 1
+}
+
 /** A cut answer and its continuation become one assistant message (the nudge between is not kept). */
 export function continueAnswer(kept: ModelMessage[], more: ModelMessage[]): ModelMessage[] {
   const prev = kept.at(-1)
@@ -472,7 +500,7 @@ export function lastReminder(history: readonly ModelMessage[], id: string): stri
  * with its parameters, and the model calls it again instead of spending a tool_search step.
  * `null` = keep the SDK's own error.
  */
-async function repairCall<T extends { toolName: string }>(
+async function repairCall<T extends { toolName: string; input?: string }>(
   registry: ToolRegistry,
   built: BuiltToolSet | undefined,
   active: string[] | undefined,
@@ -483,10 +511,23 @@ async function repairCall<T extends { toolName: string }>(
   if (!built) return null
   const deferring = built.deferring || built.deferred.length > 0
   if (!NoSuchToolError.isInstance(error)) return null
-  const names = resolveToolName(registry, toolCall.toolName).filter((n) => n in built.tools)
+  // A tool #278 folded into another (a resumed conversation, a model copying its history): the call
+  // runs as the new tool with the action/kind the old one stood for. Deferred, it loads like any
+  // deferred tool below, the error naming the field to pass.
+  const renamed = Object.hasOwn(RENAMED_TOOLS, toolCall.toolName) ? RENAMED_TOOLS[toolCall.toolName] : undefined
+  if (renamed && renamed.tool in built.tools && (!active || active.includes(renamed.tool))) {
+    let input: Record<string, unknown> = {}
+    try {
+      const parsed = JSON.parse(toolCall.input || "{}")
+      if (parsed && typeof parsed === "object" && !Array.isArray(parsed)) input = parsed
+    } catch {}
+    return { ...toolCall, toolName: renamed.tool, input: JSON.stringify(renamedInput(renamed, input)) }
+  }
+  const names = renamed && renamed.tool in built.tools ? [renamed.tool] : resolveToolName(registry, toolCall.toolName).filter((n) => n in built.tools)
   if (names.length === 1 && (!active || active.includes(names[0]!))) return { ...toolCall, toolName: names[0]! }
   if (names.length === 1 && deferring) {
     const name = names[0]!
+    const how = renamed ? ` và ${renamed.field}="${renamed.value}" (${toolCall.toolName} đã gộp vào ${name})` : ""
     // Loaded already yet still not active: cut by the per-request cap. Saying "loaded,
     // call again" here would loop.
     if (loaded.includes(name)) {
@@ -499,7 +540,7 @@ async function repairCall<T extends { toolName: string }>(
     throw new Error(
       [
         `${LOADED_PREFIX}${name}`,
-        `Tool ${name} chưa có trong bước này nên chưa chạy; đã nạp xong — gọi lại đúng lệnh với tên ${name}.`,
+        `Tool ${name} chưa có trong bước này nên chưa chạy; đã nạp xong — gọi lại đúng lệnh với tên ${name}${how}.`,
         ...(def ? ["", describeTool(registry, def)] : []),
       ].join("\n"),
     )
@@ -664,8 +705,9 @@ async function* relay(
           const output = part.usage?.outputTokens
           if (input === undefined && output === undefined) break
           outcome.usage = { input: (outcome.usage?.input ?? 0) + (input ?? 0), output: (outcome.usage?.output ?? 0) + (output ?? 0) }
-          const cacheRead = part.usage?.inputTokenDetails?.cacheReadTokens
-          yield { type: "step-usage", inputTokens: input ?? 0, outputTokens: output ?? 0, ...(cacheRead !== undefined ? { cacheReadTokens: cacheRead } : {}) }
+          // Input the provider served from its prompt cache, when it says (#278: 74% of B0's input).
+          const cached = part.usage?.inputTokenDetails?.cacheReadTokens
+          yield { type: "step-usage", inputTokens: input ?? 0, outputTokens: output ?? 0, ...(cached !== undefined ? { cachedInputTokens: cached } : {}) }
           break
         }
         case "text-delta":
@@ -804,7 +846,7 @@ export const DEFAULT_DEFER_MIN_TOOLS = 40
  * Whether deferrable tools (MCP and the optional built-in ones) go out by name only this
  * request (tool search). "auto" defers all of them once they are many (tool choice degrades
  * past ~30–50) or heavy for the context; below that it defers only the `deferByDefault` local
- * tools that turns rarely use (grep/glob, sessions, doctor, send/stop, charts). A subagent's
+ * tools that turns rarely use (grep/glob, sessions, doctor, send/stop). A subagent's
  * tools are already narrowed by its type, so it keeps them visible.
  */
 export function shouldDefer(
@@ -873,6 +915,12 @@ const cap = (text: string | undefined, max: number) =>
 const FILE_TOOLS = ["read_file", "write_file", "shell"]
 const fileTool = (registry: TurnInput["registry"], name: string) => FILE_TOOLS.includes(name) && (name !== "shell" || registry.get(name)?.effect === "shell")
 
+/** `<quyen_tep>`: the workspace and the mode line, naming only the file tools the registry holds. */
+function fileAccessNote(registry: TurnInput["registry"], mode: Parameters<typeof modeNote>[0]): string {
+  const present = new Set(registry.list().map((d) => d.name))
+  return `${registry.workspace!.describe(present)}\n${modeNote(mode, present)}`
+}
+
 async function assembleFor(opts: TurnInput, target: Target | undefined, bound: Bound, extras: TurnExtras = {}) {
   const info = target?.provider.models[target.model]
   const supportsTools = info?.tool_call !== false
@@ -892,6 +940,7 @@ async function assembleFor(opts: TurnInput, target: Target | undefined, bound: B
     sticky: opts.sticky ?? [],
     role: opts.role,
     agentPrompt: opts.agentPrompt,
+    ...(opts.profile ? { profile: opts.profile } : {}),
     // A subagent works for the main agent: no investor profile (bindTurn never reads it for one).
     investorProfile: bound.profile,
     constraints: bound.constraints,
@@ -911,7 +960,7 @@ async function assembleFor(opts: TurnInput, target: Target | undefined, bound: B
     declaredTools: built ? Object.keys(built.tools) : undefined,
     mcpInstructions: opts.serverInstructions?.(),
     todos: currentTodos(opts.history ?? []),
-    fileAccess: toolNames.some((t) => fileTool(opts.registry, t)) && opts.registry.workspace ? `${opts.registry.workspace.describe()}\n${modeNote(mode)}` : undefined,
+    fileAccess: toolNames.some((t) => fileTool(opts.registry, t)) && opts.registry.workspace ? fileAccessNote(opts.registry, mode) : undefined,
     prevFileAccess: lastReminder(opts.history ?? [], "quyen_tep"),
     disabled: opts.disabled,
   }, opts.promptDir === undefined ? undefined : validatePromptDir(opts.promptDir))
@@ -1111,6 +1160,20 @@ export async function previewContext(opts: TurnInput) {
  * always ending in `done` with history that is safe to send back next turn.
  */
 export async function* runAgent(opts: RunOptions): AsyncGenerator<AgentEvent> {
+  // A subagent spends its parent's budget (the parent's counter sees its requests).
+  if (opts.maxRequests === undefined || opts.role === "subagent") return yield* runTurn(opts)
+  // The caller's number as it is: raising a cap of 1 or 2 would pass it. Anything else is a setup
+  // error, thrown before any request: NaN (`Number(process.env.X)` unset) would silently mean no cap.
+  if (!Number.isInteger(opts.maxRequests) || opts.maxRequests < MIN_REQUEST_BUDGET) throw new Error(`maxRequests phải là số nguyên từ ${MIN_REQUEST_BUDGET} trở lên (nhận ${opts.maxRequests}).`)
+  const budget = new RequestBudget(opts.maxRequests)
+  try {
+    yield* runTurn(opts, budget)
+  } finally {
+    budget.dispose()
+  }
+}
+
+async function* runTurn(opts: RunOptions, budget?: RequestBudget): AsyncGenerator<AgentEvent> {
   const sessionId = opts.sessionId ?? ""
   const role = opts.role ?? "main"
   // The profile and the constraints first: a source that failed to read holds the turn (TurnHeldError)
@@ -1211,6 +1274,8 @@ export async function* runAgent(opts: RunOptions): AsyncGenerator<AgentEvent> {
   // Past turns are sent with answers after their tool results (loop/history-shape.ts).
   const { system, request, model, providerOptions } = requestFor(prepared, [...answerAfterTools(opts.history), user], {...notices.options, ...opts.providerRetry})
   let summarized = false
+  /** The summary was forced by the request budget, not the step cap. */
+  let budgetClosed = false
   /** Tool results pruned mid-turn (undefined: not near the threshold). */
   let midTurnPruned: number | undefined
   /** Tokens the mid-turn prune keeps out of the last request; the history still holds them. */
@@ -1231,7 +1296,7 @@ export async function* runAgent(opts: RunOptions): AsyncGenerator<AgentEvent> {
       messages: base,
       tools,
       // A step that answers and closes the todo list ends the turn: no request after it.
-      stopWhen: [isStepCount(Math.max(1, maxSteps - stepsUsed)), answeredAndClosedTodos, ...(opts.finalTool ? [hasToolCall(opts.finalTool)] : [])],
+      stopWhen: [isStepCount(Math.max(1, maxSteps - stepsUsed)), answeredAndClosedTodos, () => budgetClosed, ...(opts.finalTool ? [hasToolCall(opts.finalTool)] : [])],
       // Every step exposes what the conversation has loaded so far, so a tool found by
       // tool_search is callable at the very next step.
       // Last allowed step: keep tools declared (some providers reject tool history otherwise)
@@ -1259,7 +1324,7 @@ export async function* runAgent(opts: RunOptions): AsyncGenerator<AgentEvent> {
         const stopped = failures.streak >= FAILURE_STREAK_STOP
         // A run that must end in its final tool ends there: with tools off it could not.
         const finalNow = stopped && !!opts.finalTool && registryHas(built, opts.finalTool)
-        if (stepsUsed + stepNumber < maxSteps - 1 && !finalNow) {
+        if (stepsUsed + stepNumber < maxSteps - 1 && !finalNow && !budget?.closing) {
           const afterTool = messages.at(-1)?.role === "tool"
           // A route that rejects user words after tool results (nudgeAfterTools) gets the
           // rescue without its text: tools off still makes the model answer.
@@ -1275,7 +1340,10 @@ export async function* runAgent(opts: RunOptions): AsyncGenerator<AgentEvent> {
                   ? undefined
                   : failureNudge(gapRescue ? { gaps: [], streak: failures.streak } : failures)
               : undefined
-          const tail = [base, added].filter(Boolean).join("\n") || undefined
+          // Numbers typed into an arithmetic command that nothing read holds (loop/operands.ts): a
+          // one-step note, on the same routes as the other nudges. The command already ran.
+          const operands = nudge && afterTool && !opts.disabled?.has("operand-note") ? untracedOperands(messages, isArithmetic, [bound.profile, bound.constraints, assembled.context].filter(Boolean).join("\n")) : []
+          const tail = [base, added, operands.length > 0 ? operandNote(operands) : undefined].filter(Boolean).join("\n") || undefined
           const choice = stopped || rescueNow?.toolChoice === "none" || (rescueNow && !tail) ? { toolChoice: "none" as const } : {}
           return { ...(active ? { activeTools: active } : {}), ...choice, messages: tail ? withNudge(messages, tail) : messages }
         }
@@ -1284,6 +1352,7 @@ export async function* runAgent(opts: RunOptions): AsyncGenerator<AgentEvent> {
           return { toolChoice: { type: "tool", toolName: opts.finalTool }, activeTools: [opts.finalTool], messages: withNudge(messages, prompt) }
         }
         summarized = true
+        if (budget?.closing) budgetClosed = true
         return { toolChoice: "none", activeTools: active, messages: withNudge(messages, SUMMARY_PROMPT) }
       },
       experimental_repairToolCall: async ({ toolCall, error }) => {
@@ -1416,7 +1485,7 @@ export async function* runAgent(opts: RunOptions): AsyncGenerator<AgentEvent> {
           opts.disabled,
         )
     // No step left for another run: the cap's summary step had the last word.
-    const capped = stepsUsed >= maxSteps
+    const capped = stepsUsed >= maxSteps || (!!budget && budget.remaining() <= 0)
     const continuing = recoveries.at(-1) === "length"
     // Capped, a step with text is the turn's last word (the summary may well say what is missing).
     if (verdict.action === "accept" || (verdict.action === "continue" && capped && !isEmptyAnswer(last.stepText ?? ""))) {
@@ -1430,6 +1499,8 @@ export async function* runAgent(opts: RunOptions): AsyncGenerator<AgentEvent> {
       // A cut answer stays and the rest is joined onto it; any other broken step is dropped.
       kept = verdict.kind === "length" ? (continuing ? continueAnswer(kept, response) : [...kept, ...response]) : [...kept, ...dropFinalText(response)]
       rescue = { nudge: verdict.nudge, toolChoice: verdict.toolChoice }
+      // 13/11 eval m3: the screen showed the dropped answer and then the new one.
+      if (verdict.kind !== "length") yield { type: "retract", steps: droppedRequests(response, last.steps) }
       yield { type: "notice", text: `${RESCUE_NOTICE[verdict.kind]} Đã nhắc model trả lời tiếp (${recoveries.length}/${Math.max(MAX_RECOVERIES, recoveries.length)}).` }
       continue
     }
@@ -1485,7 +1556,8 @@ export async function* runAgent(opts: RunOptions): AsyncGenerator<AgentEvent> {
       messages = retired.messages
       if (retired.left.length > 0) yield { type: "notice", text: retiredNote(retired.left) }
     }
-    if (summarized) yield { type: "notice", text: `Đã dùng hết ${maxSteps} bước gọi tool; câu trả lời là bản tổng kết.` }
+    if (budgetClosed) yield { type: "notice", text: `Gần chạm trần ${budget!.max} request của lượt; câu trả lời là bản tổng kết.` }
+    else if (summarized) yield { type: "notice", text: `Đã dùng hết ${maxSteps} bước gọi tool; câu trả lời là bản tổng kết.` }
     const tokens = measured ? await lastStepTokens(measured) : undefined
     // Measured on the pruned request: add back what the history still holds, so the next
     // turn sees the real size and compacts.

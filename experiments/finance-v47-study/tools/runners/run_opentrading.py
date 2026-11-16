@@ -47,6 +47,7 @@ def run(ws, instruction, task_dir, model, timeout_s, log_path, options=None):
     env.update(BENCH_OT_RUNTIME=str(RUNTIME_ROOT.resolve()), BENCH_PROMPT_DIR=str(prompts),
                BENCH_AS_OF=gateway.options['snapshot_as_of'],
                BENCH_FINANCE_POLICY='on' if options.get('finance_policy') else 'off',
+               BENCH_OT_PROFILE=options.get('ot_profile') or 'terminal',
                BENCH_NATIVE_LEDGER=str(root/'native-derived.jsonl'), BENCH_PROVIDER_LEDGER=str(gateway.ledger), BENCH_NATIVE_RETRY_MAX='0')
     home = root / 'ot-home'
     (home / 'cache').mkdir(parents=True, exist_ok=True)

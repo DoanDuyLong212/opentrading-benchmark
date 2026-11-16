@@ -11,6 +11,8 @@ const {initRuntime,createMemory,closeMemory}=await import(expectedRoot+'/src/cor
 const {clearResults,useResultSession}=await import(expectedRoot+'/src/core/tools/refs')
 const promptDir=process.env.BENCH_PROMPT_DIR
 if(!promptDir||!['baseline','finance'].map(v=>new URL('../prompt_variants/'+v,import.meta.url).pathname).includes(promptDir))throw new Error('Untrusted prompt locator')
+const profile=process.env.BENCH_OT_PROFILE??'terminal'
+if(!['terminal','machine'].includes(profile))throw new Error('Untrusted prompt profile')
 if(process.env.BENCH_NATIVE_RETRY_MAX!=='0')throw new Error('Native retry must be explicitly disabled; gateway owns retries')
 const home=process.env.OPENTRADING_HOME
 if(!home||resolve(home)!==resolve(process.cwd(),'..','runner','ot-home'))throw new Error('Isolated trial home required')
@@ -38,9 +40,11 @@ const controller=new AbortController();const stop=()=>controller.abort();process
 try{
  await runtime.mcp.start()
  for(const tool of runtime.registry.list())if(tool.source!=='mcp:opentrading'&&!nativeAllowed.has(tool.name))runtime.registry.unregister(tool.name)
- // v4.7 (user decision 2026-11-15): nobody watches a trial, so every approval OpenTrading asks for
- // (a non-arithmetic shell command, the loop guard) is answered "once". Arithmetic written in a form
- // the grammar does not take still gets the tool's rewrite hint first (#289), as in the product.
+ // v4.7 (decision 2026-11-16, 6b): OpenTrading runs as `ot -p --yolo` (bypass): commands run as the
+ // model wrote them, inside the shared no-network sandbox (runners/sandbox/run.ts). What bypass still
+ // keeps for a person (deny rules, outside the workspace, the loop guard) is answered "once": nobody
+ // watches a trial.
+ runtime.permissions.bypassAvailable=true;runtime.permissions.setMode('bypass')
  runtime.permissions.interactive=true
  runtime.permissions.onChange((head:any)=>{if(head)void runtime.permissions.respond(head.id,'once')})
  for(const tool of runtime.registry.list()){
@@ -57,7 +61,7 @@ try{
  if(process.env.BENCH_INVENTORY)await Bun.write(process.env.BENCH_INVENTORY,JSON.stringify({skills:[],memory:memoryChoice,home_isolated:true,session_id:sessionId,native_retry_max:0,tools:inventory},null,2))
  if(!inventory.some(x=>x.source==='mcp:opentrading'))throw new Error('No snapshot source tools')
  let finalText='';let completed=false
- for await(const event of runAgent({history:[],input:Bun.argv.slice(2).join(' '),skills:[],now,clockPolicy:'snapshot',promptDir,stallMs:300000,signal:controller.signal,sessionId,hooks:runtime.hooks,memory:runtime.memory,constraints:runtime.constraints,redaction:runtime.redaction,cards:false,groundedFinancial:true,toolAuditContext:()=>({provider_request_index:providerRequestIndex(),native_session_id:sessionId}),providerRetry:{maxRetries:0},financePolicy:process.env.BENCH_FINANCE_POLICY==='on'?{enabled:true,machineResponse:true,auditContext:()=>({provider_request_index:providerRequestIndex(),native_session_id:sessionId})}:undefined,registry:runtime.registry,serverInstructions:()=>runtime.mcp.instructions()})){
+ for await(const event of runAgent({history:[],input:Bun.argv.slice(2).join(' '),skills:[],now,clockPolicy:'snapshot',promptDir,...(profile==='machine'?{profile:'machine' as const}:{}),stallMs:300000,signal:controller.signal,sessionId,hooks:runtime.hooks,memory:runtime.memory,constraints:runtime.constraints,redaction:runtime.redaction,cards:false,groundedFinancial:true,toolAuditContext:()=>({provider_request_index:providerRequestIndex(),native_session_id:sessionId}),providerRetry:{maxRetries:0},financePolicy:process.env.BENCH_FINANCE_POLICY==='on'?{enabled:true,machineResponse:true,auditContext:()=>({provider_request_index:providerRequestIndex(),native_session_id:sessionId})}:undefined,registry:runtime.registry,serverInstructions:()=>runtime.mcp.instructions()})){
   process.stderr.write(JSON.stringify({...event,provider_request_index:providerRequestIndex()})+'\n')
   if(event.type==='notice'&&event.text.startsWith('{')){try{const row=JSON.parse(event.text);if(row.event?.startsWith('financial_'))record({kind:'native_contract',...row})}catch{}}
   const text=completedFinalText(event);if(text!==undefined){finalText=text;completed=true}

@@ -1,6 +1,6 @@
 # Đối chiếu P/E VGI: valuation_run vs peer_compare
 
-Đối chiếu **P/E của VGI** từ hai nguồn: **`valuation_run`** và **`peer_compare`**. Hai nguồn lệch nhau bao nhiêu **%** (lấy P/E của `valuation_run` làm mẫu số)?
+Đối chiếu **P/E của VGI** từ hai nguồn: **`valuation_run`** và **`peer_compare`**. Hai nguồn lệch nhau bao nhiêu **%** (lấy P/E của `valuation_run` làm mẫu số)? Độ lệch = |P/E `valuation_run` − P/E `peer_compare`| ÷ P/E `valuation_run` × 100, ghi số dương.
 
 ## Yêu cầu trả lời
 Trả lời bằng đúng một object JSON trong phản hồi cuối cùng, theo schema:

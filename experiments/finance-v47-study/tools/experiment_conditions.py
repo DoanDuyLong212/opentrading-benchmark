@@ -8,6 +8,9 @@ CONDITIONS = {
     'opentrading': {'native_arm': 'opentrading', 'prompt_variant': 'finance', 'finance_policy': True},
     'opentrading_baseline': {'native_arm': 'opentrading', 'prompt_variant': 'baseline', 'finance_policy': False},
     'opentrading_finance': {'native_arm': 'opentrading', 'prompt_variant': 'finance', 'finance_policy': True},
+    # v4.7: same runtime and prompts as opentrading_baseline, with OpenTrading's `--profile machine`
+    # (#294: a program reads the answer; no terminal style, short citations). Reported next to baseline.
+    'opentrading_machine': {'native_arm': 'opentrading', 'prompt_variant': 'baseline', 'finance_policy': False, 'ot_profile': 'machine'},
 }
 RUNTIME_ROOT = ROOT / 'experiments' / 'opentrading-runtime'
 

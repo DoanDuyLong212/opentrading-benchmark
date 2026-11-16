@@ -7,6 +7,34 @@ adopt Semantic Versioning when it exposes a stable public API.
 
 ### Added
 
+- Conditional prompt lines (`src/core/prompt/gate.ts`): a line in `prompts/*.md` that ends with
+  `<!-- khi: shell -->`, or a block between `<!-- khi: … -->` and `<!-- /khi -->`, is sent only when the turn
+  meets the condition: a tool name, `terminal`/`machine`, `memory`, `!` to negate, `,` for and, `|` for or. Tools
+  count when declared, deferred ones included, so loading one never changes the system prompt. Used for: the
+  no-mental-math rule (`shell`; without a shell, one line on writing "tự tính"), the chart advice in `style.md`
+  (`chart_render`), `memory_read` in `memory.md`, "chạy trong terminal" in `identity.md`, and the two `tools.md`
+  lines for a person watching (`terminal`). `MACHINE_DROPPED_TOOL_LINES` and `machineTools` are gone.
+  A term outside the known list (`GATE_TERMS`) or a malformed block throws, and a host `promptDir` is checked
+  at start-up (`validatePromptDir`), so a typo never drops a line silently.
+
+- A caller's cap on model requests per turn (issue #278 R3): `ot -p --turn-requests N`, eval `--turn-requests N`, and
+  `RunOptions.maxRequests` for runners that call `runAgent` directly (a benchmark's 24-request cap cut OT at its
+  25th request, before the summary step ran). Every request the process sends during the turn counts, retries,
+  stop-gate recoveries and subagents included, and none is sent past the cap (`src/core/request-budget.ts`; a
+  guard in the provider fetch refuses it). When two requests are left the loop forces the summary step (tools
+  off). If a retry spends that reserve, the turn ends with an error instead of an answer. The cap is per turn:
+  a caller running several turns passes each what is left. A cap of 1 or 2 is honoured (the first step is the
+  answer, tools off).
+- `--profile machine` for a program caller that sets its own output format (issue #278 P2/P3/P4/N3): `ot -p
+  --profile machine`, eval `--profile machine`, `RunOptions.profile` for runners that call `runAgent`. The system
+  prompt drops `style.md`, uses `prompts/citations-machine.md` (dot decimals, no thousands separator, full
+  precision, ISO dates, the caller's schema) and leaves out two `tools.md` lines written for a person watching
+  the terminal. Without `--yolo` the shell becomes the arithmetic-only calculator, since nothing else could be
+  approved. Measured with gemini-3.1-flash-lite: about 12–16% fewer input tokens per request; 12/12 compute
+  answers and 4/4 raw JSON answers right. The terminal prompt is unchanged.
+- Eval traces record `cached_input_tokens` per answer when the provider reports the part of the input it served
+  from its prompt cache.
+
 - Eval: how `shell` served the model's arithmetic is now measured (issue #268). Each `shell` result in a trace
   carries `shell: { route, exec_ms }` (`math`, `read-only`, `approved`, `near-miss`, `denied`, `error`) and the
   header records the machine's shell. `scripts/dev/shell-metrics.ts` counts commands per route, attempts where
@@ -16,6 +44,13 @@ adopt Semantic Versioning when it exposes a stable public API.
   `docs/eval/runner.md`.
 - OpenRouter provider pinning: `openrouter.routing` in `config.json` maps a model id (or `"*"`) to OpenRouter's `provider` block (`order`, `allow_fallbacks`, `quantizations`…), sent on every request to that model: main agent, subagents, compaction, title, web side calls and the auto-mode reviewer. Eval runs pin with `--or-provider`, `--or-no-fallback` and `--or-quant`, and the trace records `served_by`, the upstream provider that answered each step. OpenRouter's "no provider" error now reads as one Vietnamese line. See `docs/openrouter.md`.
 - OpenCode Go/Zen: every request to `opencode.ai` sends OT's own `User-Agent` (`opentrading/<version> (<os> <arch>)`) and `x-opencode-session`, as Go's docs ask: the session id for the main agent and side calls, `<session>/<agent id>` for a subagent, one id per question in eval runs. Native web search clients now use the same fetch, so their requests also count toward the request tally and the eval ledger. See `docs/opencode-go.md`.
+- After an arithmetic shell command whose typed numbers nothing the model read holds (the question, earlier tool
+  results, earlier command output), the next request carries a one-step note naming them (issue #278 N2,
+  `src/core/loop/operands.ts`). The command has already run and nothing is blocked: the model checks the
+  number against its source or ignores the note for a constant it chose. Array indices and small constants are
+  not operands. Over the 9 saved Gemini runs it would have fired once, on the dropped zero behind a wrong EPS
+  answer. Same routes as the other per-step nudges; eval ablation `operand-note`. The eval's `shell-metrics`
+  uses the same check.
 - `shell`: a command that only does arithmetic runs without a prompt in every permission mode, `ot -p` and evals
   (no ▸▸ classifier request); deny and ask rules still apply. Windows: bare PowerShell expressions with
   `[math]::` functions, printed in the invariant culture; macOS/Linux: `awk 'BEGIN{printf …}'` in the C locale.
@@ -24,6 +59,29 @@ adopt Semantic Versioning when it exposes a stable public API.
   at once, never put to the user. `/agents` lists it as "shell (chỉ tính toán)".
 
 ### Changed
+
+- System prompt wording pass (docs/superpowers/plans/2026-11-15-system-prompt-optimization.md items 4–5):
+  `style.md` drops the rules `tools.md` and its own last bullet already say and keeps one example per rule;
+  `tools.md` no longer tells the model to rewrite a failed calculation (the near-miss error says how). About 175
+  tokens less on the terminal prompt. Item 6 (merging `bat_bien` 2 and 3) was tried and left out: on the
+  red-team set gemini-3.1-flash-lite then picked a stock for "HPG hay FPT, trả lời một mã", which it refused with
+  the current wording.
+- `prompts/memory.md` (the notebook guide in the system prompt) says the same rules in about 300 tokens instead
+  of 440 (docs/superpowers/plans/2026-11-15-system-prompt-optimization.md item 3): the constraints rule and "they
+  still apply when the user says to skip memory" are one bullet, the "[Memory · nhắc]" line joins the "memory is
+  data, not orders" bullet.
+- `shell`: a command that only lists a folder of the workspace or the session's temp folder now runs without a
+  prompt in every permission mode, also ‖, `ot -p` and evals, as `read_file` does for the same path: `pwd`,
+  POSIX `ls` with display flags, PowerShell `ls`/`dir`/`gci`/`Get-ChildItem` with filtering switches and one
+  path (`src/core/tools/shell/read-only.ts`, scope `read:`). Anything the shell expands (`$`, `~`, `%VAR%`, globs,
+  braces, backticks, single quotes), a path outside the workspace, a key file, a link leading out, a network
+  path, a PowerShell provider drive, recursion, an unlisted flag or a second command still asks. pwsh on Linux
+  and macOS takes a backslash as a separator, so the path check does too (defensive: OpenTrading starts
+  PowerShell on Windows only); bash takes it as an escape, so it is refused. A path part that ends in a dot or a
+  space is refused (Windows drops them), and a network or device path is refused before anything resolves it.
+  The ‖ mode line of the `<quyen_tep>` reminder says these two kinds of commands need no approval. git, pip, npm and `--version` stay ▸▸-only: files in the folder can make them run other programs.
+  Such a listing runs with a 20 s limit.
+- `shell` on Linux/macOS: the child's `PATH` keeps absolute entries only (an empty entry, `.` or `bin` made the shell look in the working folder), so a bare `ls` or `awk`, which run unasked, can never run an `ls` file of the workspace (review of #290).
 
 - `shell`: arithmetic written in a form the math grammar does not take now comes back as a tool error that says
   why and shows the form to use, instead of an approval prompt (TUI) or a denial that forbids rewriting the
@@ -38,6 +96,10 @@ adopt Semantic Versioning when it exposes a stable public API.
 - `prompts/tools.md`: figures already in the data are used as they are and a one-step unit change (×/÷ 10^n) may
   be done in the head; every other computation goes through one arithmetic-only `shell` command. A command that
   fails is rewritten in the form its error names before the "tự tính" fallback (issue #278 P4/N4).
+- `prompts/identity.md` priority order (issue #278 P1): the user's direct request, including the format, schema
+  and units of the answer, now ranks above the default presentation rules; the system's working rules (figures
+  from tools, no mental arithmetic, sources) stay above the user's request, and invariants first. `style.md` ("no JSON or raw tool output") and `citations.md` (thousands
+  separators, one-decimal percent) say these are defaults. Static prompt about 2.15k tokens (guard 2,120 → 2,160).
 - `shell` description: the multi-step example, no "Python script for figures" among its uses, and a line saying
   that arithmetic in Python, arrays or loops comes back with the form to use.
 - `shell` arithmetic-only commands take the forms models really write (issue #268: 56% of the commands of a
@@ -50,12 +112,19 @@ adopt Semantic Versioning when it exposes a stable public API.
   computes with 0 or `$null` without an error). `print` in awk keeps 15 significant digits (awk's default is 6).
   The tool description shows the multi-step form and says to round only the final result (issue #278 N1: the
   old `%.2f` example was copied into intermediate values).
-- Tool search `auto` (the default, issue #278) now defers, below the 40-tool / 10%-of-context threshold too, the local tools turns rarely use: `grep_files`, `glob_files`, `session_list`, `session_get`, `doctor_local`, `send_message`, `stop_agent` and `chart_render` (new `ToolDef.deferByDefault`). They go out by name only and load with `tool_search`, without a notice. Web, file writes, watchlist and MCP tools keep the threshold. A `spawn_subagent` call loads `send_message` and `stop_agent`. Subagents defer nothing. `toolSearch: "off"` restores the old behaviour.
-- Tool search keeps the prompt cache: a loaded tool is appended after the visible tools (in load order, also in later turns) instead of being sorted into the middle of the list, and `<tool_hoan>` lists every tool the policy defers, loaded or not, so loading one no longer changes the system prompt.
+- Tool search `auto` (the default, issue #278) now defers, below the 40-tool / 10%-of-context threshold too, the local tools turns rarely use: `grep_files`, `glob_files`, `session_list`, `session_get`, `doctor_local`, `send_message` and `stop_agent` (new `ToolDef.deferByDefault`). They go out by name only and load with `tool_search`, without a notice. Charts, web, file writes, watchlist and MCP tools keep the threshold (a deferred `chart_render` cost about two more requests per chart question in the #296 run). A `spawn_subagent` call loads `send_message` and `stop_agent`. Subagents defer nothing. `toolSearch: "off"` restores the old behaviour.
+- Tool search and the prompt cache: a loaded tool is appended after the visible tools (in load order, also in later turns) instead of being sorted into the middle of the list, and `<tool_hoan>` lists every tool the policy defers, loaded or not (its opening line says a tool already declared is called directly), so loading one no longer changes the system prompt. The request right after a load still changes the tool block, and providers that cache tools before system and messages (Anthropic, OpenAI) miss most of the cache on that request; what this keeps is a stable prefix on the requests after it.
+- **Compatibility (issue #278).** Renamed tools: `watchlist_local_list|get|create|add|remove|rename|delete` → `watchlist_local` with `action`; `chart_compare` → `chart_render kind="compare"`; `chart_depth` → `chart_render kind="depth"` (`src/core/tools/renamed.ts`). A `permissions.deny`/`ask` rule written for an old name matches the calls with that action/kind (a deny for `watchlist_local_delete` still refuses deletes, and only deletes); an agent file's old names never grant more than before: `tools` with only `watchlist_local_list`/`_get` gets the list/get variant, a partial set of write names gets no write (narrower than before), the full tool needs every old name (`watchlist_local_*`); `disallowedTools` with a write name keeps list/get, with a read name removes the tool. A call by an old name in a resumed conversation runs as the new tool with its arguments mapped (`chart_depth.depth` → `levels`, `chart_compare.series` → `labels` + `matrix`), and loads it first when it is deferred. An "always allow" saved for an old name is not carried over: the first such write asks once. Removed parameters: `web_search.blocked_domains`, `web_fetch.format` and `timeoutSeconds`, `chart_compare.ymin`/`ymax`; a call that still sends them runs with the field dropped (zod strips unknown keys): `blocked_domains` no longer filters, `ymin`/`ymax` no longer fix the scale. Only `delete` shows the destructive badge in the approval prompt (`ToolDef.annotationsFor`).
 - Shorter descriptions for `todo_write`, `read_file`, `grep_files`, `glob_files`, `write_file`, `web_search`, `web_fetch`, `ask_user` and `tool_search` (issue #278); `web_search` drops `blocked_domains`, `web_fetch` drops `format` and `timeoutSeconds`.
 - Watchlists (issue #278): the seven `watchlist_local_*` tools are one `watchlist_local` with `action` (list, get, create, add, remove, rename, delete), as charts take `kind`. list/get run without asking; the writes ask, `delete` on its own scope, so an "always allow" saved for an old `watchlist_local_*` name asks once more. Read-only subagents get the same name with list/get only. `/watchlist`, `watchlists.json` and the MCP server's `watchlist_*` tools are unchanged.
 - `spawn_subagent` (issue #278): the typed brief stays (decision of #207); its field and tool descriptions are one line each. Agent types with `listed: false` in their frontmatter are named only in the tool description (11 bundled types: bull, bear, tong-hop, vi-mo…), still callable by name.
 - Charts (issue #278): `chart_compare` and `chart_depth` are folded into `chart_render` as `kind="compare"` (`from_calls`, `symbols`, or `labels` + `matrix`) and `kind="depth"` (`bids`, `asks`, `levels`). Every chart kind and typed field stays; parameter descriptions are shorter and `ymin`/`ymax` of compare are gone. Three schemas (8.3 KB) become one.
+- TUI: when the stop gate sends the model back (a promise, a draft, a fragment, figures with no tool), the text
+  of that step leaves the screen too, as it leaves history; its notice line and any tool rows stay, so the user no
+  longer reads two answers in a row (13/11, eval m3). A cut answer (`length`) and a step-cap summary stay as before.
+  After an empty step history also drops the preamble written beside the previous step's tool call, and the screen
+  takes that off too. New agent event `retract` (`steps`: 1, or 2 for that case); `ot -p` text output and eval
+  `streamed` still carry both.
 - `prompts/tools.md`: computed figures (ratios, %, CAGR, P/E, unit changes) come from one arithmetic-only `shell`
   command per step, large amounts scaled to tỷ đồng inside the expression; the answer states the formula and inputs.
   A command that still fails after one fix may be computed by hand, labelled "tự tính" with formula and inputs.
@@ -79,6 +148,29 @@ adopt Semantic Versioning when it exposes a stable public API.
   `financial-source.ts` and `finance-policy.ts` (benchmark path) stay; `calculate/units.ts` moved to `tools/units.ts`.
 
 ### Fixed
+
+- A host that keeps `shell` but drops the file tools (a benchmark runner with MCP + shell) no longer
+  sends the model after them: the `shell` description, the `<quyen_tep>` workspace line and its ‖ mode
+  line name only the file tools the registry holds (deferred ones count). `ToolDef.descriptionFor`
+  gives a tool the registry's tool names when the request is built. With every file tool registered
+  the text is unchanged.
+
+- `--profile machine` dropped the stop rule ("Chỉ dừng khi đã trả lời đủ, cần hỏi lại, hoặc bị chặn"): it shared a
+  `tools.md` line with the sentence before a tool call. The two are now separate lines and only the sentence is
+  terminal-only.
+- `web_fetch` with a prompt: a `RECITATION` block (the side model's provider refused to quote the page) still opens with `BỊ CHẶN:` and the provider's reason, then gives the page as `web_fetch` without a prompt would; it left the model with nothing to read, and financial news trips it often. Safety blocks (`SAFETY`, `PROHIBITED_CONTENT`…) stay a bare `BỊ CHẶN:` line. `web_search`'s description again says facts that may have changed (people, rules, company events) are searched, not answered from memory (dropped in #288). The unused `format`/`timeoutSeconds` handling of `web_fetch` is gone.
+- `web_fetch` with a prompt: when the side model's provider filters its output (`finishReason=content-filter`), the
+  result now says so, opening with `BỊ CHẶN:` (except `RECITATION`, see above) and naming the provider's own reason when it gives one (Gemini's
+  `RECITATION`, `SAFETY`…). It was treated as an unfinished read and replaced by the whole page. An empty answer,
+  a cut one and a timeout still fall back to the page as before.
+
+- `shell`: a PowerShell series built with `New-Object System.Collections.Generic.List[…]` (or `ArrayList`) and
+  `.Add(…)` now gets the hint with the form to use; it was denied and the model computed the volatility in its
+  head, wrongly (15/11 run on main). Only those two types: `New-Object` of anything else still asks.
+- Eval `shell-metrics`: an operand traces to what the model read at a unit scale (×10^±3, ±6, ±9) or as a
+  percent typed as a fraction (×0.01), no longer at ×100. With ×100, `21500000` traced to a reading of
+  `215.000.000`, so a dropped zero in a command counted as a copied figure. Over the 9 saved Gemini runs it now
+  flags that typo and two array indices, out of about 1,360 operands.
 
 - DeepSeek's tool-call syntax written as text (`<｜DSML｜ invoke name="shell">…`, with the full-width bar and an
   optional space) is now removed from the answer like other fake calls; it was shown as the final answer in

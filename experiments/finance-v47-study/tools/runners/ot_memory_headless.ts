@@ -12,6 +12,8 @@ const {clearResults,useResultSession}=await import(expectedRoot+'/src/core/tools
 const {Session,loadSession}=await import(expectedRoot+'/src/core/session/store')
 const promptDir=process.env.BENCH_PROMPT_DIR
 if(!promptDir||!['baseline','finance'].map(v=>new URL('../prompt_variants/'+v,import.meta.url).pathname).includes(promptDir))throw new Error('Untrusted prompt locator')
+const profile=process.env.BENCH_OT_PROFILE??'terminal'
+if(!['terminal','machine'].includes(profile))throw new Error('Untrusted prompt profile')
 if(process.env.BENCH_NATIVE_RETRY_MAX!=='0')throw new Error('Native retry must be explicitly disabled; gateway owns retries')
 const home=process.env.OPENTRADING_HOME
 if(!home||resolve(home)!==resolve(process.cwd(),'..','runner','ot-home'))throw new Error('Isolated trial home required')
@@ -33,7 +35,8 @@ let history=loaded?.messages??[]
 const sessionId=session.id;const sessionDir=session.dir
 mkdirSync(sessionDir,{recursive:true});clearResults();useResultSession(sessionId,JSON.stringify(history),sessionDir)
 const hash=(v:unknown)=>createHash('sha256').update(JSON.stringify(v)).digest('hex')
-const nativeAllowed=new Set(['compute','calculate','read_result'])
+// v4.7: calculate/compute are gone (#263); OpenTrading computes with its shell behind the shared filter.
+const nativeAllowed=new Set(['shell','read_result'])
 if(memoryChoice==='notebook')nativeAllowed.add('memory_read')
 const providerRequestIndex=()=>{
  const path=process.env.BENCH_PROVIDER_LEDGER;if(!path)return undefined
@@ -46,6 +49,13 @@ const controller=new AbortController();const stop=()=>controller.abort();process
 try{
  await runtime.mcp.start()
  for(const tool of runtime.registry.list())if(tool.source!=='mcp:opentrading'&&!nativeAllowed.has(tool.name))runtime.registry.unregister(tool.name)
+ // v4.7 (decision 2026-11-16, 6b): OpenTrading runs as `ot -p --yolo` (bypass): commands run as the
+ // model wrote them, inside the shared no-network sandbox (runners/sandbox/run.ts). What bypass still
+ // keeps for a person (deny rules, outside the workspace, the loop guard) is answered "once": nobody
+ // watches a trial.
+ runtime.permissions.bypassAvailable=true;runtime.permissions.setMode('bypass')
+ runtime.permissions.interactive=true
+ runtime.permissions.onChange((head:any)=>{if(head)void runtime.permissions.respond(head.id,'once')})
  for(const tool of runtime.registry.list()){
   if(tool.source==='mcp:opentrading')continue
   const execute=tool.execute
@@ -60,7 +70,7 @@ try{
  if(process.env.BENCH_INVENTORY)await Bun.write(process.env.BENCH_INVENTORY,JSON.stringify({skills:[],memory:memoryChoice,home_isolated:true,session_id:sessionId,native_retry_max:0,tools:inventory},null,2))
  if(!inventory.some(x=>x.source==='mcp:opentrading'))throw new Error('No snapshot source tools')
  let finalText='';let completed=false;let completedEvent:any;let cardSerial=0
- for await(const event of runAgent({history,input:Bun.argv.slice(2).join(' '),skills:[],now,clockPolicy:'snapshot',promptDir,stallMs:300000,signal:controller.signal,sessionId,hooks:runtime.hooks,memory:runtime.memory,constraints:runtime.constraints,redaction:runtime.redaction,cards:memoryChoice==='notebook',cardOutcomes:loaded?.cards?.map((c:any)=>({id:c.id,kind:c.kind,state:c.state,saved:c.saved})),groundedFinancial:true,toolAuditContext:()=>({provider_request_index:providerRequestIndex(),native_session_id:sessionId,memory_session:logicalSession,memory_turn:Number(process.env.BENCH_MEMORY_TURN??0)}),providerRetry:{maxRetries:0},financePolicy:process.env.BENCH_FINANCE_POLICY==='on'?{enabled:true,machineResponse:process.env.BENCH_MEMORY_FINAL==='1',auditContext:()=>({provider_request_index:providerRequestIndex(),native_session_id:sessionId,memory_session:logicalSession,memory_turn:Number(process.env.BENCH_MEMORY_TURN??0)})}:undefined,registry:runtime.registry,serverInstructions:()=>runtime.mcp.instructions()})){
+ for await(const event of runAgent({history,input:Bun.argv.slice(2).join(' '),skills:[],now,clockPolicy:'snapshot',promptDir,...(profile==='machine'?{profile:'machine' as const}:{}),stallMs:300000,signal:controller.signal,sessionId,hooks:runtime.hooks,memory:runtime.memory,constraints:runtime.constraints,redaction:runtime.redaction,cards:memoryChoice==='notebook',cardOutcomes:loaded?.cards?.map((c:any)=>({id:c.id,kind:c.kind,state:c.state,saved:c.saved})),groundedFinancial:true,toolAuditContext:()=>({provider_request_index:providerRequestIndex(),native_session_id:sessionId,memory_session:logicalSession,memory_turn:Number(process.env.BENCH_MEMORY_TURN??0)}),providerRetry:{maxRetries:0},financePolicy:process.env.BENCH_FINANCE_POLICY==='on'?{enabled:true,machineResponse:process.env.BENCH_MEMORY_FINAL==='1',auditContext:()=>({provider_request_index:providerRequestIndex(),native_session_id:sessionId,memory_session:logicalSession,memory_turn:Number(process.env.BENCH_MEMORY_TURN??0)})}:undefined,registry:runtime.registry,serverInstructions:()=>runtime.mcp.instructions()})){
   process.stderr.write(JSON.stringify({...event,provider_request_index:providerRequestIndex()})+'\n')
   if(event.type==='notice'&&event.text.startsWith('{')){try{const row=JSON.parse(event.text);if(row.event?.startsWith('financial_'))record({kind:'native_contract',...row})}catch{}}
   if(event.type==='card')session.noteCard({...event.card,id:sessionId+':'+session.nextTurn+':'+(++cardSerial)+':pending',turn:session.nextTurn})

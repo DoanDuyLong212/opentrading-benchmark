@@ -1,6 +1,6 @@
 # Đối chiếu 2 nguồn XAUUSD vs GC=F
 
-Đối chiếu giá **XAUUSD** từ hai nguồn: **`vn_msn_fx_gold`** và **`yf_commodities`** (`GC=F`). Hai nguồn lệch nhau bao nhiêu **%**?
+Đối chiếu giá **XAUUSD** từ hai nguồn: **`vn_msn_fx_gold`** và **`yf_commodities`** (`GC=F`). Hai nguồn lệch nhau bao nhiêu **%**? Độ lệch = |giá `yf_commodities` − giá `vn_msn_fx_gold`| ÷ giá `yf_commodities` × 100, ghi số dương.
 
 ## Yêu cầu trả lời
 Trả lời bằng đúng một object JSON trong phản hồi cuối cùng, theo schema:
