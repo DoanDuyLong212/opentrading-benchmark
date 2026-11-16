@@ -7,7 +7,6 @@ import {completedFinalText} from './native_final'
 const expectedRoot=new URL('../../experiments/opentrading-runtime/',import.meta.url).pathname.replace(/\/$/,'')
 if(process.env.BENCH_OT_RUNTIME!==expectedRoot)throw new Error('Untrusted runtime locator')
 const {runAgent}=await import(expectedRoot+'/src/core/agent')
-const {useCalculatorShell}=await import(expectedRoot+'/src/core/tools/shell/shell')
 const {initRuntime,createMemory,closeMemory}=await import(expectedRoot+'/src/core/runtime')
 const {clearResults,useResultSession}=await import(expectedRoot+'/src/core/tools/refs')
 const {Session,loadSession}=await import(expectedRoot+'/src/core/session/store')
@@ -50,9 +49,13 @@ const controller=new AbortController();const stop=()=>controller.abort();process
 try{
  await runtime.mcp.start()
  for(const tool of runtime.registry.list())if(tool.source!=='mcp:opentrading'&&!nativeAllowed.has(tool.name))runtime.registry.unregister(tool.name)
- // v4.7 machine arm: shell is OpenTrading's calculator, as `ot -p --profile machine` without --yolo
- // (#294: nobody approves commands for a program caller). No file-tool hints, no <quyen_tep> reminder.
- if(profile==='machine')useCalculatorShell(runtime.registry)
+ // v4.7 (decision 2026-11-16, 6b): OpenTrading runs as `ot -p --yolo` (bypass): commands run as the
+ // model wrote them, inside the shared no-network sandbox (runners/sandbox/run.ts). What bypass still
+ // keeps for a person (deny rules, outside the workspace, the loop guard) is answered "once": nobody
+ // watches a trial.
+ runtime.permissions.bypassAvailable=true;runtime.permissions.setMode('bypass')
+ runtime.permissions.interactive=true
+ runtime.permissions.onChange((head:any)=>{if(head)void runtime.permissions.respond(head.id,'once')})
  for(const tool of runtime.registry.list()){
   if(tool.source==='mcp:opentrading')continue
   const execute=tool.execute

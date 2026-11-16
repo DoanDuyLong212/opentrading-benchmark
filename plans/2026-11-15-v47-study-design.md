@@ -15,7 +15,7 @@ Thư mục: `experiments/finance-v47-study/`. Chép `tools/` và `tasks/` từ v
 ## Quyết định của người dùng
 | Mục | Quyết định | Cách làm |
 |---|---|---|
-| Công cụ tính | A: shell thật của từng harness, chỉ cho phép phép tính, một bộ lọc chung | `tools/runners/mathshell/`: `bin/bash` và `bin/sh` đứng đầu PATH, `$SHELL` trỏ vào đó. `filter.ts` dùng grammar `mathOnlyCommand` của runtime đã ghim. Lệnh không phải phép tính bị từ chối với cùng một câu cho mọi arm. Mỗi lệnh ghi vào `runner/shell.jsonl` |
+| Công cụ tính | 16/11 (6b): shell thật của từng harness, **không lọc lệnh**, chạy trong sandbox Docker chung | `tools/runners/mathshell/bin/bash`, `bin/sh` đứng đầu PATH và `$SHELL` của mọi arm, chuyển lệnh sang `tools/runners/sandbox/run.ts`. Mỗi lệnh chạy trong một container mới của image ghim (`sandbox/Dockerfile`: python 3.12, numpy 2.1.3, pandas 2.2.3, gawk, bc; id ở `provider_options.sandbox_image`): `--network none`, chỉ mount workspace của trial (cùng đường dẫn) và thư mục tạm riêng (làm `/tmp`), root chỉ-đọc, bỏ mọi capability, giới hạn 2 GB RAM, 2 CPU, 256 tiến trình, 300 s mỗi lệnh. Mỗi lệnh ghi vào `runner/shell.jsonl`. Thay cho bộ lọc chỉ-phép-tính (15/11), vì bộ lọc dùng grammar của OT nên OpenCode và DSH chỉ biết luật sau lần bị từ chối đầu tiên |
 | Trần request | Giữ trần an toàn ở gateway, không đặt trần trong harness | Gateway 24 request/trial. OT không truyền `maxSteps`, OpenCode không đặt `steps` |
 | Trần tổng token | Giữ trần an toàn ở gateway | 4,6M/trial. Nâng từ 3,6M vì mỗi request giờ phải dự trữ đủ output tối đa của model, nên giữ khoảng dùng thực tế gần như or16 (~2,6M) |
 | Trần output | Không giới hạn | Gateway không ép và không chèn `max_tokens`; harness gửi gì thì chuyển nguyên (smoke: OpenCode xin 256 000, DSH 32 768, OT không đặt). Phần dự trữ ngân sách thì giống nhau cho mọi arm (mức tối đa của model), để trần tổng token dừng mọi arm ở cùng một chỗ. OpenCode bắt buộc có `limit.output` nên đặt bằng mức tối đa của model (943 718, OpenRouter). DSH không đặt `maxTokens` |
@@ -25,15 +25,15 @@ Thư mục: `experiments/finance-v47-study/`. Chép `tools/` và `tasks/` từ v
 Quyết định 15/11: **OT chỉ chạy và chỉ tính bản machine.** `arms_pilot`, `arms_main` và `arms_holdout` đều là `opentrading_machine`, `opencode`, `dsh`.
 
 - `opentrading_machine` dùng cùng runtime và prompt baseline, truyền `profile: "machine"` cho `runAgent` qua `BENCH_OT_PROFILE`. Cả runner thường lẫn runner memory đều nhận cờ này. Profile machine bỏ `style.md` và dùng `citations-machine.md`.
-- **Shell là calculator của OT** (`useCalculatorShell`), đúng như `ot -p --profile machine` khi không có `--yolo`: không ai duyệt lệnh cho một chương trình gọi OT. Calculator chỉ chạy phép tính; mô tả của nó không nhắc tool file; và vì không có tool file, OT không gửi `<quyen_tep>` (237 token, từng nhắc `read_file`, `write_file`… không có trong benchmark). Lệnh tính vẫn qua bộ lọc chung như mọi arm. Schema mà gateway ghim lấy từ `native_schema.ts --machine` / `memory_schema.ts --machine`.
+- **Shell đầy đủ, chế độ bypass** (16/11, 6b): runner bật `bypass` như `ot -p --yolo`, nên lệnh chạy đúng như model viết, trong sandbox chung. Phần bypass vẫn giữ cho người dùng (luật deny, ngoài workspace, loop guard) được trả lời "once". Runtime `9f7f0c1` có OpenTrading #308, nên mô tả `shell` và `<quyen_tep>` không nhắc tool file không có trong benchmark. (15/11 từng dùng calculator shell; bỏ khi chuyển sang sandbox.)
 - `opentrading_baseline` (terminal) vẫn đăng ký trong `experiment_conditions.py` để chạy chẩn đoán, nhưng không nằm trong lịch chạy nào. `judge_primary.py` lấy `opentrading_machine` làm baseline mặc định cho phép so cặp.
 - Trần request của OT (`maxRequests`, #293) không dùng: gateway giữ trần chung 24 request cho mọi arm.
 
 ## Cân bằng giữa các arm (thêm theo đề xuất)
 - **OpenCode**: bật plugin `opencode.tool.shell` (thiếu plugin này thì treo) và quyền `shell`. Quyền `doom_loop` đặt allow vì không ai trả lời được câu hỏi này, cho khớp với OT tự duyệt. Workspace được `git init`, vì không có repo git thì tool shell treo trước request đầu (thử với mock ngày 15/11).
 - **DSH**: bật `tool-bash` và các dịch vụ nó cần. Bật lại `repeat-tool-reminder` (mặc định của DSH, ngưỡng 3/5/8), vốn bị tắt ở or16 do không có trong danh sách cho phép.
-- Kiểm bằng mock: cả 3 harness đều gọi `bash -c <lệnh>` qua PATH, nên bộ lọc chung bắt được hết.
-- OT thêm `LC_ALL=C` và `-v OFMT=%.15g -v CONVFMT=%.15g` vào lệnh awk trước khi gọi bash. Bộ lọc bỏ đúng hai dạng này trước khi kiểm. Lợi thế 15 chữ số của `print` là tính năng thật của OT, được giữ nguyên.
+- Kiểm bằng mock: cả 3 harness đều gọi `bash -c <lệnh>` qua PATH, nên sandbox chung nhận hết lệnh.
+- OT thêm `LC_ALL=C` và `-v OFMT=%.15g -v CONVFMT=%.15g` vào lệnh awk chỉ-phép-tính trước khi gọi bash; audit bỏ đúng hai tiền tố này khi so lệnh với journal. In 15 chữ số là tính năng thật của OT, được giữ nguyên.
 
 ## Tool mỗi arm thấy
 | | OT | OpenCode | DSH |
@@ -64,8 +64,8 @@ Smoke sau khi sửa (1 lượt, DeepSeek v4.1 flash, chỉ để kiểm runner):
 | `fin-m1-screen-502` (memory) | có · 5 · 37k | có · 6 · 26k | có · 6 · 30k |
 | Lệnh shell chạy / bị từ chối (cả 3 task) | 2 / 0 | 2 / 1 | 1 / 1 |
 
-## Bộ lọc là khung dựng của benchmark
-Câu từ chối của bộ lọc kèm `mathHint` của OT. Vì vậy OpenCode và DSH biết grammar của OT sau lần bị từ chối đầu tiên; đây là phần do benchmark thêm, không phải hành vi gốc của hai harness.
+## Sandbox là khung dựng của benchmark
+Benchmark chỉ quyết định lệnh chạy ở đâu (không mạng, chỉ thấy workspace), không quyết định lệnh nào được chạy. Từ 16/11 không còn câu từ chối nào do benchmark thêm vào. Đã kiểm bằng tay: numpy và heredoc chạy được, ghi được file trong workspace; `/home` rỗng; không thấy `tools/` của benchmark; không phân giải được tên miền.
 
 ## Đã sửa trước khi seal (15/11)
 - **Audit đọc `shell.jsonl`.**
@@ -108,6 +108,21 @@ Smoke tối thiểu với model này (16/11, `fin-c4-stagger-425`, mỗi arm 1 l
 - Model free chậm: một request mất tới 162 s. Lượt đầu của OT bị cắt ở trần 240 s mỗi request (`provider_finish_reason_missing`), nên trần được nâng lên 600 s mỗi request và 1 800 s mỗi trial (`provider_timeout_s`, `trial_timeout_s`). OT được chạy lại một lần với trần mới; số trong bảng là lượt chạy lại.
 - `audit_v45_run.py` đạt ở cả hai lượt, trừ `completed_resume`, kiểm tra chỉ có khi chạy qua supervisor.
 
+Smoke tối thiểu với sandbox (16/11, cùng đề, mỗi arm 1 lượt):
+
+| | OT machine | OpenCode | DSH |
+|---|---|---|---|
+| Đúng | không | không | không trả lời |
+| Request | 4 (trước: 11) | 4 (trước: 16) | 3 |
+| Input / output token | 144k / 17k | 130k / 13k | — |
+| Lệnh shell | 2 Python, chạy | 1 Python + 1 lệnh khác, chạy | 1 Python, chạy (mã thoát 1: đọc file chưa từng ghi) |
+| Thời gian | 321 s | 218 s | 715 s |
+
+- Không còn lệnh nào bị từ chối; cả ba tự chọn Python, và số request giảm mạnh so với khi có bộ lọc.
+- OT và OpenCode vẫn sai ở GAS, cùng giới hạn của model như trước.
+- DSH: request thứ 3 sinh chữ quá chậm, sau 600 s mới nhận 37 KB, nên bị cắt ở trần chờ provider (`provider_finish_reason_missing`). Đây là độ chậm của model free, không do sandbox. Không chạy lại vì đã chạy mỗi arm một lần.
+- `audit_v45_run.py`: 5/5 lệnh shell được đối chiếu; đạt mọi kiểm tra trừ `completed_resume`.
+
 ## Việc còn lại trước khi seal
-- Cú pháp lệnh tính: OT biết grammar từ request đầu, hai arm kia chỉ biết sau lần bị từ chối đầu tiên. Chờ quyết định.
+- (Đã xử lý 16/11 bằng sandbox: không còn bộ lọc theo grammar của OT.)
 - Seal, rồi pilot.

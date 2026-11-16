@@ -49,7 +49,7 @@ class MemoryEpisode:
    self.gateway.options['allowed_tool_names'] += [p+NAME for p in('opentrading_','mcp__opentrading__','mcp_opentrading_')]
   if self.native=='opentrading':
    bun=self.options.get('native_bun_binary')or str(Path.home()/'.bun/bin/bun')
-   cmd=[bun,str(TOOLS/'runners/memory_schema.ts')]+(['--notebook']if self.notebook else[])+(['--machine']if self.options.get('ot_profile')=='machine'else[])
+   cmd=[bun,str(TOOLS/'runners/memory_schema.ts')]+(['--notebook']if self.notebook else[])
    self.gateway.options['native_tool_definitions']=json.loads(subprocess.run(cmd,capture_output=True,text=True,check=True,timeout=30).stdout)
    if self.notebook:self.gateway.options['allowed_tool_names'].append('memory_read')
   if self.v2 and self.native=='dsh':
