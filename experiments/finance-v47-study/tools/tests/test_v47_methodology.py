@@ -13,9 +13,10 @@ from protocol_compat import FINANCIAL_PROTOCOL
 from run_manifest import digest_json
 
 
-def cohort(tmp_path):
+def cohort(tmp_path,tasks=None):
     schedule,rows=[],[]
-    tasks=['fin-l1-synthetic','fin-s1-synthetic','fin-s2-synthetic']
+    tmp_path.mkdir(parents=True,exist_ok=True)
+    tasks=tasks or ['fin-l1-synthetic','fin-s1-synthetic','fin-s2-synthetic']
     for task in tasks:
         for arm in ('a','b'):
             cell=dict(trial_id=task+'__'+arm+'__r1',task=task,arm=arm,run=1)
@@ -78,6 +79,61 @@ def test_judge_all_s_ignored_even_if_old_row_claims_eligible():
     assert not comparative_eligible('alias',{'stratum':'safety'})
     assert not comparative_eligible('alias',{'tier':'S2'})
     assert not comparative_eligible('alias',{'level':'S1'})
+
+
+def write_task_meta(root, split, task, gold):
+    target = Path(root)/'tasks'/split/task/'solution'
+    target.mkdir(parents=True)
+    (target/'gold.json').write_text(json.dumps(gold))
+
+
+def test_eligibility_uses_task_metadata_not_task_id(tmp_path, monkeypatch):
+    import clock_policy
+    write_task_meta(tmp_path, 'devsmoke', 'dev-alias-001', {'stratum': 'safety', 'tier': 'S1'})
+    write_task_meta(tmp_path, 'devsmoke', 'dev-alias-002', {'stratum': 'compute', 'tier': 'C1'})
+    monkeypatch.setattr(clock_policy, 'STUDY_ROOT', tmp_path)
+    assert not comparative_eligible('dev-alias-001')
+    assert comparative_eligible('dev-alias-002')
+    assert not comparative_eligible('dev-fin-s1-copy')
+    assert comparative_eligible('fin-l1-synthetic')
+
+
+def test_dev_lineage_cycles_terminate(tmp_path, monkeypatch):
+    import clock_policy
+    root = tmp_path
+    for task, origin in (('dev-self', 'dev-self'), ('dev-loop-a', 'dev-loop-b'), ('dev-loop-b', 'dev-loop-a')):
+        d = root/'tasks'/'devsmoke'/task
+        (d/'solution').mkdir(parents=True)
+        (d/'solution'/'gold.json').write_text(json.dumps({'stratum': None, 'tier': None}))
+        (d/'development-lineage.json').write_text(json.dumps({'origin_task_id': origin}))
+    monkeypatch.setattr(clock_policy, 'STUDY_ROOT', root)
+    assert comparative_eligible('dev-self') and comparative_eligible('dev-loop-a')
+
+
+def test_metadata_safety_is_authoritative_over_stale_record(tmp_path, monkeypatch):
+    import clock_policy
+    write_task_meta(tmp_path, 'devsmoke', 'dev-alias-001', {'stratum': 'safety', 'tier': 'S1'})
+    monkeypatch.setattr(clock_policy, 'STUDY_ROOT', tmp_path)
+    assert not comparative_eligible('dev-alias-001', {'stratum': 'core', 'tier': 'L1'})
+
+
+def test_paired_statistics_excludes_safety_alias(tmp_path, monkeypatch):
+    import clock_policy
+    write_task_meta(tmp_path, 'devsmoke', 'dev-alias-001', {'stratum': 'safety', 'tier': 'S1'})
+    monkeypatch.setattr(clock_policy, 'STUDY_ROOT', tmp_path)
+    rows, _ = cohort(tmp_path/'run', tasks=['fin-l1-synthetic', 'dev-alias-001'])
+    paired = metrics.paired_statistics(rows, expected_runs=1)
+    assert paired[0]['paired_tasks'] == 1
+
+
+def test_summary_excludes_safety_alias(tmp_path, monkeypatch):
+    import clock_policy
+    write_task_meta(tmp_path, 'devsmoke', 'dev-alias-001', {'stratum': 'safety', 'tier': 'S1'})
+    monkeypatch.setattr(clock_policy, 'STUDY_ROOT', tmp_path)
+    cohort(tmp_path/'run', tasks=['fin-l1-synthetic', 'dev-alias-001'])
+    summary = metrics.build_summary(str(tmp_path/'run'))
+    assert summary['n_trials'] == 2 and summary['all_observed_trials'] == 4
+    assert summary['safety_diagnostic']['n_trials'] == 2
 
 
 def test_prune_hash_tamper_and_nondestructive_cli(tmp_path):
