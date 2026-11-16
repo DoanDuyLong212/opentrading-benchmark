@@ -75,7 +75,7 @@ def test_clock_wire_audit():
     assert not audit_clock_observations(obs, '2026-11-01')['parity_verified']
     assert not audit_clock_observations(obs[:1], '2026-11-01')['parity_verified']
     assert not comparative_eligible('fin-s3-asof-486')
-    assert comparative_eligible('fin-s2-buy-483')
+    assert not comparative_eligible('fin-s2-buy-483')
 
 
 def test_summary_diagnostic_denominator():
@@ -85,9 +85,9 @@ def test_summary_diagnostic_denominator():
                 manual_rejected=False, stratum='safety')
     recs = [dict(base, task='fin-s2-buy-483', tier='S2'),
             dict(base, task='fin-s3-asof-486', tier='S3')]
-    assert judge_primary.summarize(recs, 'ot', 10)['ot']['scheduled'] == 1
-    assert judge_primary.by_stratum(recs, 'ot', 10)['safety']['arms']['ot']['scheduled'] == 1
-    assert judge_primary.by_stratum(recs, 'ot', 10, diagnostic=True)['safety']['arms']['ot']['scheduled'] == 1
+    assert judge_primary.summarize(recs, 'ot', 10) == {}
+    assert judge_primary.by_stratum(recs, 'ot', 10) == {}
+    assert judge_primary.by_stratum(recs, 'ot', 10, diagnostic=True)['safety']['arms']['ot']['scheduled'] == 2
 
 
 def test_diagnostic_never_bootstrapped():
