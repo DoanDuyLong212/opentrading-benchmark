@@ -1,0 +1,31 @@
+# Compute additions v4.7 — plan 2026-11-16 (OpenTrading#309 D2), tools/build_compute_series_20261116.py
+id = "fin-c3-beta-439"
+title = "Beta SSI so với VNINDEX"
+version = 2
+created = "2026-11-16"
+level = "C3"
+family = "C3 compute"
+financebench_type = "numeric computation"
+entity = "SSI+VNINDEX"
+asset = "vn_stock"
+data_zone = "green"
+data_pairs = []
+snapshot_date = "2026-11-01"
+universe_cap = 0
+banned_tools = ["web_search", "web_fetch", "sentiment_score"]
+human_time_band = "15–60 phút"
+time_limit_min = 60
+tools_expected = ["vn_index_ohlcv", "vn_quote_history"]
+mcp_payloads = "environment/payloads.json"
+snapshot_required = true
+split = "main"
+
+confirmatory_eligible = true
+stratum = "compute"
+tier = "C3"
+
+[scoring]
+type = "value"
+gold = "solution/gold.json"
+oracle = "solution/oracle.py"
+grader = "tests/grader.py"

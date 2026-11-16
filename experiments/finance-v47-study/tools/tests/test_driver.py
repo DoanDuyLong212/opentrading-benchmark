@@ -54,7 +54,8 @@ def test_select_holdout_requires_confirm():
     tasks=rb.select_tasks("holdout", sample=None, seed=None, tasks_filter=None, confirm_holdout=True)
     names=sorted(os.path.basename(t) for t in tasks)
     # Amendment 2026-11-11 (d): holdout = 36 core + 7 compute + 7 native-memory-v2 (old fin-mem retired).
-    assert len(names)==50 and not any(n.startswith('fin-mem-') for n in names)
+    # v4.7 (plan 2026-11-16): + 8 safety-stratum tasks (fin-s*-961..968).
+    assert len(names)==58 and not any(n.startswith('fin-mem-') for n in names)
     assert sum(n.startswith('fin-m') and not n.startswith('fin-mem') for n in names)==7
 
 
