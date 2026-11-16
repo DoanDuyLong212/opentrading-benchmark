@@ -1,0 +1,197 @@
+{
+ "recorded_at": "2026-11-11T09:41:32.145602+07:00",
+ "end": "2026-10-30",
+ "sessions": 120,
+ "method": "Amendment 2026-11-11 (d) D2: record 120-session daily history (data_time <= 2026-10-30) for the compute stratum.\n\nThe opentrading MCP history tools currently fail (MCP server calls the vnstock gen-6 `Market()` API while vnstock\n4.0.4 is installed). History is therefore recorded with the same provider library directly (vnstock Quote, source\nVCI) and stored in the exact `vn_quote_history` / `vn_index_ohlcv` envelope shape, with that fact in provenance.\nEvery session that overlaps an existing frozen snapshot payload must match it exactly, or the symbol is rejected.",
+ "symbols": {
+  "ACB": {
+   "rows": 120,
+   "first": "2026-05-13",
+   "last": "2026-10-30",
+   "frozen_overlap_checked": 0,
+   "mismatches": []
+  },
+  "STB": {
+   "rows": 120,
+   "first": "2026-05-13",
+   "last": "2026-10-30",
+   "frozen_overlap_checked": 0,
+   "mismatches": []
+  },
+  "VPB": {
+   "rows": 120,
+   "first": "2026-05-13",
+   "last": "2026-10-30",
+   "frozen_overlap_checked": 0,
+   "mismatches": []
+  },
+  "HDB": {
+   "rows": 120,
+   "first": "2026-05-13",
+   "last": "2026-10-30",
+   "frozen_overlap_checked": 0,
+   "mismatches": []
+  },
+  "TPB": {
+   "rows": 120,
+   "first": "2026-05-13",
+   "last": "2026-10-30",
+   "frozen_overlap_checked": 0,
+   "mismatches": []
+  },
+  "VCB": {
+   "rows": 120,
+   "first": "2026-05-13",
+   "last": "2026-10-30",
+   "frozen_overlap_checked": 0,
+   "mismatches": []
+  },
+  "BID": {
+   "rows": 120,
+   "first": "2026-05-13",
+   "last": "2026-10-30",
+   "frozen_overlap_checked": 0,
+   "mismatches": []
+  },
+  "CTG": {
+   "rows": 120,
+   "first": "2026-05-13",
+   "last": "2026-10-30",
+   "frozen_overlap_checked": 0,
+   "mismatches": []
+  },
+  "MBB": {
+   "rows": 120,
+   "first": "2026-05-13",
+   "last": "2026-10-30",
+   "frozen_overlap_checked": 0,
+   "mismatches": []
+  },
+  "TCB": {
+   "rows": 120,
+   "first": "2026-05-13",
+   "last": "2026-10-30",
+   "frozen_overlap_checked": 0,
+   "mismatches": []
+  },
+  "HPG": {
+   "rows": 120,
+   "first": "2026-05-13",
+   "last": "2026-10-30",
+   "frozen_overlap_checked": 0,
+   "mismatches": []
+  },
+  "FPT": {
+   "rows": 120,
+   "first": "2026-05-13",
+   "last": "2026-10-30",
+   "frozen_overlap_checked": 0,
+   "mismatches": []
+  },
+  "MWG": {
+   "rows": 120,
+   "first": "2026-05-13",
+   "last": "2026-10-30",
+   "frozen_overlap_checked": 0,
+   "mismatches": []
+  },
+  "VNM": {
+   "rows": 120,
+   "first": "2026-05-13",
+   "last": "2026-10-30",
+   "frozen_overlap_checked": 0,
+   "mismatches": []
+  },
+  "VIC": {
+   "rows": 120,
+   "first": "2026-05-13",
+   "last": "2026-10-30",
+   "frozen_overlap_checked": 0,
+   "mismatches": []
+  },
+  "VHM": {
+   "rows": 120,
+   "first": "2026-05-13",
+   "last": "2026-10-30",
+   "frozen_overlap_checked": 0,
+   "mismatches": []
+  },
+  "MSN": {
+   "rows": 120,
+   "first": "2026-05-13",
+   "last": "2026-10-30",
+   "frozen_overlap_checked": 0,
+   "mismatches": []
+  },
+  "GAS": {
+   "rows": 120,
+   "first": "2026-05-13",
+   "last": "2026-10-30",
+   "frozen_overlap_checked": 0,
+   "mismatches": []
+  },
+  "SAB": {
+   "rows": 120,
+   "first": "2026-05-13",
+   "last": "2026-10-30",
+   "frozen_overlap_checked": 0,
+   "mismatches": []
+  },
+  "VJC": {
+   "rows": 120,
+   "first": "2026-05-13",
+   "last": "2026-10-30",
+   "frozen_overlap_checked": 10,
+   "mismatches": []
+  },
+  "PNJ": {
+   "rows": 120,
+   "first": "2026-05-13",
+   "last": "2026-10-30",
+   "frozen_overlap_checked": 0,
+   "mismatches": []
+  },
+  "SSI": {
+   "rows": 120,
+   "first": "2026-05-13",
+   "last": "2026-10-30",
+   "frozen_overlap_checked": 0,
+   "mismatches": []
+  },
+  "PLX": {
+   "rows": 120,
+   "first": "2026-05-13",
+   "last": "2026-10-30",
+   "frozen_overlap_checked": 0,
+   "mismatches": []
+  },
+  "POW": {
+   "rows": 120,
+   "first": "2026-05-13",
+   "last": "2026-10-30",
+   "frozen_overlap_checked": 0,
+   "mismatches": []
+  },
+  "GVR": {
+   "rows": 120,
+   "first": "2026-05-13",
+   "last": "2026-10-30",
+   "frozen_overlap_checked": 0,
+   "mismatches": []
+  },
+  "VNINDEX": {
+   "rows": 120,
+   "first": "2026-05-13",
+   "last": "2026-10-30",
+   "frozen_overlap_checked": 10,
+   "mismatches": []
+  },
+  "VN30": {
+   "rows": 120,
+   "first": "2026-05-13",
+   "last": "2026-10-30",
+   "frozen_overlap_checked": 0,
+   "mismatches": []
+  }
+ }
+}

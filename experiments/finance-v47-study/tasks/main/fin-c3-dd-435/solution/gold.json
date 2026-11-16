@@ -1,0 +1,87 @@
+{
+  "task_id": "fin-c3-dd-435",
+  "scoring": "value",
+  "solution": {
+    "VIC": -19.1722,
+    "VHM": -25.8974,
+    "deepest": "VHM"
+  },
+  "as_of": "2026-11-11T09:41:32.145602+07:00",
+  "split": "main",
+  "expects": [
+    {
+      "type": "value",
+      "path": "values.VIC",
+      "gold": -19.1722,
+      "tol": {
+        "abs": 0.05
+      }
+    },
+    {
+      "type": "value",
+      "path": "values.VHM",
+      "gold": -25.8974,
+      "tol": {
+        "abs": 0.05
+      }
+    },
+    {
+      "type": "tokens",
+      "path": "values.deepest",
+      "accept": [
+        "VHM"
+      ],
+      "reject": [
+        "VIC"
+      ]
+    },
+    {
+      "type": "str",
+      "path": "source",
+      "accept": [
+        "vn_quote_history"
+      ]
+    }
+  ],
+  "contract_version": 2,
+  "stratum": "compute",
+  "tier": "C3",
+  "notes": "Compute stratum (amendment 2026-11-11 d). Gold computed with Decimal from payloads; uniform tolerance.",
+  "provenance_contract": [
+    {
+      "tool": "vn_quote_history",
+      "source": "vnstock",
+      "as_of": "2026-11-11T09:41:32.145602+07:00",
+      "matched_entry_id": "hist:VHM",
+      "response_sha256": "a76b16103f40894252710e88fb11759e386a8eee41b15ea145fbac77906d857e"
+    },
+    {
+      "tool": "vn_quote_history",
+      "source": "vnstock",
+      "as_of": "2026-11-11T09:41:32.145602+07:00",
+      "matched_entry_id": "hist:VIC",
+      "response_sha256": "60ea07e04dddca57da9689bf91e033eaf2e3a082bb01d298cfc983bcd987fb32"
+    }
+  ],
+  "provenance_catalog": [
+    {
+      "tool": "vn_quote_history",
+      "source": "vnstock",
+      "as_of": "2026-11-11T09:41:32.145602+07:00",
+      "matched_entry_id": "hist:VHM",
+      "response_sha256": "a76b16103f40894252710e88fb11759e386a8eee41b15ea145fbac77906d857e"
+    },
+    {
+      "tool": "vn_quote_history",
+      "source": "vnstock",
+      "as_of": "2026-11-11T09:41:32.145602+07:00",
+      "matched_entry_id": "hist:VIC",
+      "response_sha256": "60ea07e04dddca57da9689bf91e033eaf2e3a082bb01d298cfc983bcd987fb32"
+    }
+  ],
+  "payload_sha256": "4f8cd6f78692e16d24c6f3bee1ef90075e49553114b3e4cd75eec5586a26def1",
+  "required_payload_keys": [
+    "hist:VHM",
+    "hist:VIC"
+  ]
+}

@@ -105,7 +105,8 @@ def test_all_282_development_main_holdout_instructions_have_supported_single_exa
     # Main amendment 2026-11-10: +50 migrated financial holdout tasks (60-task holdout).
     # Amendment 2026-11-11 (d): 114 tasks retired to tasks-retired (not matched by this glob); +88 compute/memory
     # tasks (main 60, holdout 14, pilot 14) -> 306.
-    assert len(instructions) == 306
+    # v4.7 (plan 2026-11-16): main stays 200 (-40 saturated lookups, +30 safety, +10 compute); holdout +8 safety.
+    assert len(instructions) == 314
     for path in instructions:
         assert isinstance(public_success_example(path.read_text()), dict), path
 

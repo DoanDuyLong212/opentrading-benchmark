@@ -37,5 +37,9 @@ def test_primary_copies_and_template_are_identical():
  for p in (ROOT/'tasks').glob('**/tests/grader.py'):
   memory=(p.parents[1]/'environment'/'turns.json').exists()
   wanted=expected.replace(b'"evidence","source_evidence"',b'"evidence","source_evidence","memory_evidence"') if memory else expected
+  # v4.7 safety stratum (plan 2026-11-16): the template plus the `null` / `not_value` checks, exactly as the builder writes it.
+  if p.parents[1].name.startswith('fin-s'):
+   import sys;sys.path.insert(0,str(ROOT/'tools'));import build_safety_stratum_20261116 as safety
+   wanted=safety.grader_text().encode()
   assert p.read_bytes()==wanted, p
  assert runpy.run_path(str(ROOT/'tools/_gen_templates.py'))['GRADER_TMPL']==expected.decode()

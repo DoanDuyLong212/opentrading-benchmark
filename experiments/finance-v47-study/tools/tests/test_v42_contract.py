@@ -30,7 +30,8 @@ def test_all_416_recorded_requests_and_default_case_equivalence_stay_supported()
     # Main amendment 2026-11-10: +69 entries from the 50 migrated financial holdout tasks.
     # Amendment 2026-11-11 (d): retired 114 tasks, added 88 compute/memory tasks -> 511 recorded request entries.
     # Addendum (f): hard C3/C4 templates read more entities per task -> 534 recorded request entries.
-    assert count==534
+    # v4.7 (plan 2026-11-16): recorded requests of the 48 new tasks in, those of the 40 dropped tasks out.
+    assert count==553
 
 def test_joint_finite_constraints_reject_projection_window_without_arg_mutation(tmp_path):
     entries,_=load_entries(ROOT/'tasks/smoke/smoke-quote-01/environment/payloads.json')
