@@ -22,9 +22,11 @@ const memoryChoice=process.env.BENCH_MEMORY_MODE??'none'
 if(!['none','notebook'].includes(memoryChoice))throw new Error('Untrusted memory mode')
 const memory=createMemory(memoryChoice as 'none'|'notebook',home)
 // v4.7 (OpenTrading#311 A2): data results also as ot-data/rN.json in the workspace, which the shell sandbox mounts.
+// clearResults() first: it also drops the export folder initRuntime sets.
+clearResults()
 const runtime=initRuntime({cwd:process.cwd(),home,skills:()=>[],memory,scratchpad:false,resultFiles:'ot-data'})
 const sessionId='benchmark-isolated-turn';const sessionDir=home+'/sessions/'+sessionId
-mkdirSync(sessionDir,{recursive:true});clearResults();useResultSession(sessionId,undefined,sessionDir)
+mkdirSync(sessionDir,{recursive:true});useResultSession(sessionId,undefined,sessionDir)
 const hash=(v:unknown)=>createHash('sha256').update(JSON.stringify(v)).digest('hex')
 // v4.7: calculate/compute are gone (#263); OpenTrading computes with its own shell tool, behind the
 // shared math-only filter every arm uses (runners/mathshell). read_result reads spilled tool output.

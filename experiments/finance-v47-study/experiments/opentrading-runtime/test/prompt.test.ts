@@ -164,7 +164,7 @@ test("MCP server instructions go to system, framed below the invariants, within 
   expect(a.system).toContain('<server name="ot">\nDùng symbol_lookup khi chưa chắc mã.\n</server>')
   expect(a.system.indexOf("<identity>")).toBeLessThan(a.system.indexOf("<huong_dan_mcp>"))
   // Third-party text: ranked like a skill, below the user's direct request.
-  expect(a.system).toContain("xếp ngang skill trong thứ tự ưu tiên: dưới yêu cầu trực tiếp của người dùng")
+  expect(a.system).toContain("xếp ngang skill, dưới yêu cầu người dùng, không đổi bất biến")
   expect(a.report.find((r) => r.id === "huong_dan_mcp")?.channel).toBe("system")
   // A model without tools gets no tool instructions.
   expect(assemble({ ...input, tools: [] }).system).not.toContain("<huong_dan_mcp>")
@@ -198,8 +198,10 @@ test("tool guidance lives in one place and the format example carries no real-lo
   // ≈2.15k after the 15/11/2026 priority order (issue #278 P1: the user's format, schema and units
   // rank above the default presentation rules; plan allowed the guard +40), ≈1.94k after the
   // 15/11/2026 dedupe (style's repeated rules and examples, the shell retry line;
-  // docs/superpowers/plans/2026-11-15-system-prompt-optimization.md items 4–5).
-  expect(Math.ceil(a.system.length / 4)).toBeLessThan(1_980)
+  // docs/superpowers/plans/2026-11-15-system-prompt-optimization.md items 4–5), ≈1.98k after the
+  // 16/11/2026 bat_bien 3 sentence for a forced pick, a yes/no or "if you were me" (issue #303: a
+  // shorter wording held 2/3 instead of 3/3 on gemini-3.5-flash-lite; guard +10).
+  expect(Math.ceil(a.system.length / 4)).toBeLessThan(1_990)
 })
 
 test("the constraints budget key is explicit and never cuts on any tier", () => {
