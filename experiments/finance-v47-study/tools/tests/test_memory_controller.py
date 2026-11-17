@@ -5,7 +5,7 @@ ROOT=Path(__file__).resolve().parents[2]
 sys.path[:0]=[str(ROOT/'tools/runners'),str(ROOT/'tools')]
 from memory_runner import validate_operations
 from memory_snapshot_server import read_notebook
-BUN=ROOT.parent/'toolchains/bun-1.4.4/bun'
+from trusted_bun import trusted_bun
 def test_user_operation_requires_verbatim_explicit_consent():
  state={'entries':{}};text='Nhớ ROE phải trên 12%.';op={'id':'roe','op':'put','kind':'constraint','text':text,'source_text':text,'consent':'explicit_user_request'}
  validate_operations(text,[op],state)
@@ -18,6 +18,7 @@ def test_read_notebook_exposes_only_active_user_facts_with_separate_trace(tmp_pa
  row=json.loads(trace.read_text());assert row['response']==response;assert 'benchmark_evidence'not in response
  assert row['response_sha256']==hashlib.sha256(json.dumps(response,ensure_ascii=False,sort_keys=True,separators=(',',':')).encode()).hexdigest()
 def test_native_user_forms_revision_revoke_and_readonly_audit(tmp_path):
+ BUN=trusted_bun()
  home=tmp_path/'runner/ot-home'
  def call(ops,text='',audit=False):
   r=subprocess.run([str(BUN),str(ROOT/'tools/runners/ot_memory_admin.ts')],input=json.dumps({'home':str(home),'operations':ops,'user_text':text,'audit_only':audit}),text=True,capture_output=True)

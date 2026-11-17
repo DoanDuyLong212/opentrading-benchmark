@@ -121,7 +121,6 @@ def stub(arm,ws,instruction,task_dir,model,timeout_s,log_path,options=None):
 rb.run_trial=stub
 # Control fixture avoids grader/process startup latency and external dependencies.
 rb.grade_answer=lambda *a,**k:{'success':False,'fp':0,'error_type':'fixture','raw':{}}
-import mcp_snapshot_server
 rb.main()
 '''.replace('TOOLS',repr(str(TOOLS))).replace('TASK',repr(str(TOOLS.parent/'tasks/devsmoke/v45-dev-01-quote'))).replace('CALLS',repr(str(calls))))
     cmd=[sys.executable,str(script),'--split','devsmoke','--arms','opencode','--runs','2','--retry','0','--pause','0','--timeout','900','--config',str(cfg),'--out',str(out)]

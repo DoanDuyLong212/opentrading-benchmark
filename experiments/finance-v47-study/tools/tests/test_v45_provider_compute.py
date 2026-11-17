@@ -113,9 +113,9 @@ def test_registered_usage_bound_violation_fatal(tmp_path):
 
 def test_memory_native_whitelist_is_profile_condition_specific():
  from runners.provider import native_tool_allowlist
- assert native_tool_allowlist({})=={'calculate','compute','read_result'}
+ assert native_tool_allowlist({})=={'shell','bash','read_result'}
  valid={'memory_profile':'controlled-memory-v1','condition':'ot_memory_on','native_arm':'opentrading'}
- assert native_tool_allowlist(valid)=={'calculate','compute','read_result','memory_read'}
+ assert native_tool_allowlist(valid)=={'shell','bash','read_result','memory_read'}
  for key in valid:
   bad=dict(valid);bad[key]='wrong';assert 'memory_read'not in native_tool_allowlist(bad)
 

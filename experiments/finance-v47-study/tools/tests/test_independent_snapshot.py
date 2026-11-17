@@ -16,6 +16,7 @@ import sys
 import tarfile
 
 import pytest
+from historical_fixtures import LEGACY_STUDY, RETIRED
 
 ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT / 'tools'))
@@ -44,7 +45,7 @@ CASES = [('pilot', n) for n in PILOT] + [('main', n) for n in MAIN] + [
 
 
 def raw_task(split, name):
-    task = ROOT / 'tasks' / split / name
+    task = RETIRED/split.split('/')[-1]/name if split.startswith('../tasks-retired/') else ROOT/'tasks'/split/name
     payload = json.loads((task / 'environment/payloads.json').read_text())
     # Unwrap file storage only, without importing replay matching or generator logic.
     data = [(v.get('tool', k), v.get('envelope', v)['data']) for k, v in payload['tools'].items()]
@@ -248,7 +249,8 @@ def test_cpi_missing_series_dimension_is_quarantined_but_gdp_decoy_is_safe():
     import tomllib
     for split,name,eligible in [('../tasks-retired/main','fin-l1-macro-133',False),('pilot','fin-l1-macro-01',False),
                                 ('main','fin-l2-macro-calc-176',True)]:
-        meta=tomllib.loads((ROOT/'tasks'/split/name/'task.toml').read_text())
+        task = RETIRED/split.split('/')[-1]/name if split.startswith('../tasks-retired/') else ROOT/'tasks'/split/name
+        meta=tomllib.loads((task/'task.toml').read_text())
         assert meta['confirmatory_eligible'] is eligible
         if not eligible: assert meta['exclusion_reason']=='ambiguous_cpi_series_dimension'
 
@@ -284,6 +286,9 @@ def test_replay_native_defaults_and_exact_request_identity():
 
 
 def test_original_archive_preserved_and_versioned_payload_changes_are_explicit():
+    # The migration receipt belongs to v4.6u; current v4.7 task hashes have
+    # separate generator receipts and lineage, checked below.
+    ROOT = LEGACY_STUDY
     # v1 preservation concerns the original root/archive, not amended v45 gold.
     # Removed wave2 tasks remain mandatory archive checks, never silently skipped.
     origin=ROOT.parents[1]
@@ -386,3 +391,15 @@ async def test_real_stdio_records_schema_invalid_and_wrong_entity_calls(tmp_path
     rows=[json.loads(line) for line in ledger.read_text().splitlines()]
     assert [r['status'] for r in rows]==['ok','rejected','rejected']
     assert len({r['call_id'] for r in rows})==3
+
+
+def test_current_payloads_bound_to_gold_and_dev_lineage():
+    # Integrity assertions over bytes, with no holdout gold values sent to models.
+    for payload in ROOT.glob('tasks/*/*/environment/payloads.json'):
+        task = payload.parents[1]
+        gold = json.loads((task/'solution/gold.json').read_text(encoding='utf-8'))
+        assert gold['payload_sha256'] == hashlib.sha256(payload.read_bytes()).hexdigest(), str(task)
+        lineage = task/'development-lineage.json'
+        if lineage.is_file():
+            receipt = json.loads(lineage.read_text(encoding='utf-8'))
+            assert receipt.get('origin_task_id'), str(task)

@@ -31,8 +31,13 @@ def test_all_copied_graders_match_template_and_frozen_is_original():
  from _gen_templates import GRADER_TMPL
  for path in (ROOT/'tasks').glob('*/*/tests/grader.py'):
   expected=GRADER_TMPL.replace('("evidence","source_evidence")','("evidence","source_evidence","memory_evidence")')if(path.parents[1]/'environment/turns.json').exists()else GRADER_TMPL
-  assert path.read_text()==expected
- assert (ROOT/'tools/frozen_v3_grader.py').read_bytes()==(ROOT.parents[1]/'experiments/finance-v44-study/tools/frozen_v3_grader.py').read_bytes()
+  import tomllib
+  meta=tomllib.loads((path.parents[1]/'task.toml').read_text())
+  if meta.get('stratum')=='safety':
+   from build_safety_stratum_20261116 import grader_text
+   expected=grader_text()
+  assert path.read_text()==expected, str(path)
+ assert (ROOT/'tools/frozen_v3_grader.py').read_bytes()==(ROOT.parent/'finance-v46-update-study/tools/frozen_v3_grader.py').read_bytes()
 def test_condition_policy_is_explicit_and_shared_runtime():
  from experiment_conditions import condition
  assert condition('opentrading_baseline')['finance_policy'] is False

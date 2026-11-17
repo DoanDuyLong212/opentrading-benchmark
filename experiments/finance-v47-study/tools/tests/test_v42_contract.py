@@ -31,7 +31,8 @@ def test_all_416_recorded_requests_and_default_case_equivalence_stay_supported()
     # Amendment 2026-11-11 (d): retired 114 tasks, added 88 compute/memory tasks -> 511 recorded request entries.
     # Addendum (f): hard C3/C4 templates read more entities per task -> 534 recorded request entries.
     # v4.7 (plan 2026-11-16): recorded requests of the 48 new tasks in, those of the 40 dropped tasks out.
-    assert count==553
+    # Three explicit devsmoke copies add nine request entries (Phase 1 lineage).
+    assert count==562
 
 def test_joint_finite_constraints_reject_projection_window_without_arg_mutation(tmp_path):
     entries,_=load_entries(ROOT/'tasks/smoke/smoke-quote-01/environment/payloads.json')
@@ -91,7 +92,7 @@ def test_public_contract_is_uniform_gold_free_and_allows_honest_aggregation_refu
 
 def test_frozen_v41_is_byte_identical_and_newgrading_is_separate(tmp_path):
     from run_benchmark import grade_answer
-    src=ROOT.parent/'finance-v4-current-study/tasks/smoke/smoke-trap-01/tests/grader.py'
+    src=ROOT.parent/'finance-v46-update-study/tools/frozen_v41_grader.py'
     assert (ROOT/'tools/frozen_v41_grader.py').read_bytes()==src.read_bytes()
     task=ROOT/'tasks/smoke/smoke-trap-01'
     gold=json.loads((task/'solution/gold.json').read_text())
