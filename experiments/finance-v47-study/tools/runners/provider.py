@@ -5,6 +5,7 @@ provider fallback, hidden retries or fabricated zero usage. Streaming is buffere
 for reliable usage accounting; end-to-end latency includes that buffering.
 """
 import contextlib
+from decimal import Decimal
 import fcntl
 import hashlib
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
@@ -12,6 +13,9 @@ import json
 import math
 import os
 from pathlib import Path
+import sys
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+from paid_budget import BudgetError, PaidBudget, paid_policy, validate_free_identity, usd, total_usd, fsync_directory
 import secrets
 import threading
 import time
@@ -147,8 +151,14 @@ def valid_count(value):
 def aggregate_usage(rows):
     good = [r['usage'] for r in rows if isinstance(r.get('usage'), dict) and
             all(valid_count(r['usage'].get(k)) for k in ('prompt_tokens', 'completion_tokens'))]
+    attempted = [r for r in rows if r.get('upstream_attempted', True)]
+    observed_costs = [usd(r['measured_cost_usd']) for r in attempted if 'measured_cost_usd' in r]
+    costs = {'measured_cost_usd': str(total_usd(observed_costs)),
+             'cost_requests': len(observed_costs), 'cost_total_requests': len(attempted),
+             'cost_complete': bool(attempted) and len(observed_costs) == len(attempted),
+             'cost_source': 'OpenRouter usage.cost'}
     if not good:
-        return None
+        return {'complete': False, **costs} if observed_costs else None
     cached = [(u.get('prompt_tokens_details') or {}).get('cached_tokens') for u in good]
     cache_complete = len(good) == len(rows) and all(valid_count(c) for c in cached)
     observed_cache = sum(c for c in cached if valid_count(c))
@@ -158,7 +168,7 @@ def aggregate_usage(rows):
             'cache_read': observed_cache if cache_complete else None,
             'cached_observed': observed_cache, 'cache_complete': cache_complete,
             'usage_requests': len(good), 'requests': len(rows),
-            'complete': len(good) == len(rows)}
+            'complete': len(good) == len(rows), **costs}
 
 
 def acquire_rate_lock(fp, deadline):
@@ -217,8 +227,18 @@ class ProviderGateway:
         self.accepted_response_model = self.admission['accepted_response_model']
         if self.options.get('effort', 'none') not in ('none', 'off', None):
             raise ValueError('Requested effort is not verified on all adapters; refusing parity claim')
+        validate_free_identity(model, self.options)
+        self.budget = None
+        policy = paid_policy(model, self.options)
+        if policy is not None:
+            contract = self.options.get('paid_budget_contract')
+            if not contract or contract.get('policy') != policy or not self.options.get('paid_budget_journal'):
+                raise BudgetError('paid gateway requires initialized run-wide budget')
+            self.budget = PaidBudget(self.options['paid_budget_journal'], contract)
         self.key = (os.environ.get('OPENROUTER_KEY') or credential()) \
             if or_route else credential()
+        if policy is not None and hashlib.sha256(self.key.encode()).hexdigest() != policy['key_fingerprint']:
+            raise BudgetError('paid credential differs from dedicated key receipt')
         self.token = secrets.token_hex(24)
         self.ledger = Path(ledger)
         self.ledger.parent.mkdir(parents=True, exist_ok=True)
@@ -302,7 +322,12 @@ class ProviderGateway:
         for secret in (self.key,self.token):
             if secret and secret.encode() in raw:raw=raw.replace(secret.encode(),b'[REDACTED]')
         directory=self.ledger.parent/'provider-responses';directory.mkdir(mode=0o700,exist_ok=True)
-        path=directory/('%04d-%02d.bin'%(logical_id,attempt));path.write_bytes(raw);path.chmod(0o600)
+        path=directory/('%04d-%02d.bin'%(logical_id,attempt))
+        with path.open('wb') as fp:
+            fp.write(raw); fp.flush(); os.fsync(fp.fileno())
+        path.chmod(0o600)
+        fsync_directory(directory)
+        fsync_directory(directory.parent)
         return {'path':str(path.resolve()),'sha256':hashlib.sha256(raw).hexdigest(),'bytes':len(raw)}
 
     def check_control(self):
@@ -342,6 +367,45 @@ class ProviderGateway:
             remaining=end-time.monotonic()
             if remaining<=0:return
             time.sleep(min(.05,remaining))
+
+    def account_response(self, row, payload, stream=None):
+        """Persist account charges before answer validation or retry admission."""
+        from provider_response import response_chunks
+        try:
+            row['usage'] = next((x['usage'] for x in reversed(response_chunks(payload, stream=stream)) if x.get('usage')), None)
+            chunks = response_chunks(payload, stream=stream, parse_float=Decimal)
+            usage = next((x['usage'] for x in reversed(chunks) if x.get('usage')), None)
+            cost = usage.get('cost') if isinstance(usage, dict) else None
+            # Provider cost must be a JSON number, never an asserted string/bool.
+            if not isinstance(cost, (int, float, Decimal)) or isinstance(cost, bool):
+                raise BudgetError('authoritative usage.cost missing or nonnumeric')
+            cost = usd(cost)
+        except (ValueError, UnicodeError):
+            if getattr(self, 'budget', None):
+                raise GatewayFailure('paid_usage_cost_unknown', 'local_budget', 424)
+            return
+        row.update(measured_cost_usd=str(cost), cost_source='OpenRouter usage.cost',
+                   provider_generation_ids=sorted({x['id'] for x in chunks if x.get('id')}))
+        if getattr(self, 'budget', None):
+            try:
+                self.budget.settle(row['budget_attempt_id'], cost,
+                    {'response': row['raw_response_capture'], 'generation_ids': row['provider_generation_ids'],
+                     'request_ids': row.get('response_headers', {})})
+            except BudgetError as exc:
+                raise GatewayFailure(str(exc), 'local_budget', 424)
+            reported = [x['provider'] for x in chunks if x.get('provider') is not None]
+            row['reported_providers'] = reported
+            if reported and any(name != self.budget.contract['policy']['provider_host'] for name in reported):
+                self.budget.halt('reported_provider_host_mismatch')
+                raise GatewayFailure('paid_provider_host_mismatch', 'local_budget', 424)
+        elif self.options.get('provider_route') == 'openrouter_free' and cost != 0:
+            self.free_cost_breach = True
+            stop = self.options.get('free_cost_stop_path')
+            if stop:
+                with Path(stop).open('a') as fp:
+                    fp.write(json.dumps({'error': 'free_route_charged', 'cost_usd': str(cost)}) + '\n')
+                    fp.flush(); os.fsync(fp.fileno())
+            raise GatewayFailure('free_route_charged', 'local_budget', 424)
 
     def handle(self, handler):
         start = time.time()
@@ -396,6 +460,11 @@ class ProviderGateway:
                 if observed is None and definition['name']=='read_result':continue
                 if observed is None or schema_constraints(observed.get('parameters'))!=schema_constraints(definition.get('inputSchema')):raise ValueError('native utility wire schema changed or missing: '+definition['name'])
             requested_out = body.get('max_tokens', body.get('max_completion_tokens'))
+            if getattr(self, 'budget', None):
+                for field in ('max_tokens', 'max_completion_tokens'):
+                    value = body.get(field)
+                    if value is not None and (type(value) is not int or value <= 0):
+                        raise BudgetError('paid requested output cap must be a positive integer or null')
             if self.options.get('max_output_tokens') is None:
                 # v4.7 (user decision 2026-11-15): no output cap. The harness's own request is sent
                 # unchanged (no clamp, nothing injected); budget accounting reserves the model maximum.
@@ -416,6 +485,44 @@ class ProviderGateway:
             row['effective_max_tokens'] = body.get('max_tokens', body.get('max_completion_tokens'))
             if body.get('stream'):
                 body['stream_options'] = {'include_usage': True}
+            if getattr(self, 'budget', None):
+                # Fixed one-completion text bound: unknown extensions require a
+                # separately reviewed bound, never silently inherit this one.
+                pending_values = [body]
+                while pending_values:
+                    value = pending_values.pop()
+                    if isinstance(value, dict):
+                        if 'cache_control' in value:
+                            raise BudgetError('paid upper bound does not authorize explicit cache control')
+                        pending_values.extend(value.values())
+                    elif isinstance(value, list):
+                        pending_values.extend(value)
+                allowed_fields = {'model', 'messages', 'tools', 'tool_choice', 'parallel_tool_calls',
+                    'max_tokens', 'max_completion_tokens', 'temperature', 'top_p', 'stream', 'stream_options',
+                    'stop', 'seed', 'frequency_penalty', 'presence_penalty', 'response_format', 'user',
+                    'metadata', 'n', 'reasoning_effort', 'provider', 'service_tier'}
+                if set(body) - allowed_fields:
+                    raise BudgetError('paid request contains unsupported cost-affecting extensions')
+                if body.get('service_tier', 'default') != 'default':
+                    raise BudgetError('paid upper bound permits default service tier only')
+                # Omission can inherit an account default with different billing.
+                # https://openrouter.ai/docs/guides/features/service-tiers
+                body['service_tier'] = 'default'
+                if 'n' in body and (type(body['n']) is not int or body['n'] != 1):
+                    raise BudgetError('paid upper bound permits exactly one completion')
+                for message in body.get('messages', []):
+                    if not isinstance(message, dict) or set(message) - {'role', 'content', 'name', 'tool_calls', 'tool_call_id', 'refusal', 'reasoning', 'reasoning_details'}:
+                        raise BudgetError('paid message contains unsupported fields')
+                    content = message.get('content')
+                    if isinstance(content, list):
+                        if any(not isinstance(part, dict) or part.get('type') != 'text' or not isinstance(part.get('text'), str)
+                               or not set(part) <= {'type', 'text'} for part in content):
+                            raise BudgetError('paid bound supports text-only message parts')
+                    elif not isinstance(content, (str, type(None))):
+                        raise BudgetError('paid bound supports text-only message content')
+                body['provider'] = {'only': [self.budget.contract['policy']['provider_host']], 'allow_fallbacks': False}
+                body.pop('models', None)
+                body.pop('route', None)
             effective_raw=json.dumps(body).encode()
             fingerprint=hashlib.sha256(effective_raw).hexdigest()
             row['payload_fingerprint']=fingerprint
@@ -439,6 +546,8 @@ class ProviderGateway:
                     raise GatewayFailure('previous_upstream_usage_unknown')
                 used=sum(r.get('token_reservation',0)+sum((r.get('usage') or {}).get(k,0) for k in ('prompt_tokens','completion_tokens')) for r in prior)
                 estimate=len(effective_raw)
+                if getattr(self, 'budget', None) and estimate > int(self.options['failed_attempt_context_bound']):
+                    raise BudgetError('paid input byte upper bound exceeds reviewed context bound')
                 planned_reservation=max(estimate+reserved_out,int(self.options.get('failed_attempt_context_bound') or 0)+reserved_out)
                 row.update(input_budget_estimate_bytes=estimate,next_attempt_reserved_tokens=planned_reservation,token_budget_policy='actual observed usage plus failed-attempt reservations; next attempt reserves declared maximum combined model context plus max output, or larger full UTF8 body estimate')
                 if used+planned_reservation>int(self.options.get('max_total_tokens',3600000)):raise GatewayFailure('local_token_budget_exhausted')
@@ -451,6 +560,14 @@ class ProviderGateway:
                     if pause:self.controlled_wait(pause)
                     rate.seek(0);rate.truncate();rate.write(str(time.time()));rate.flush()
                 self.check_control()
+                if getattr(self, 'free_cost_breach', False) or (self.options.get('free_cost_stop_path') and Path(self.options['free_cost_stop_path']).exists()):
+                    raise GatewayFailure('free_route_charged', 'local_budget', 424)
+                if getattr(self, 'budget', None):
+                    if paid_policy(self.model, self.options) != self.budget.contract['policy']:
+                        raise BudgetError('paid policy changed before dispatch')
+                    row['budget_attempt_id'] = self.budget.reserve({'trial_id': self.options.get('trial_id'),
+                        'arm': self.options.get('condition'), 'model': self.model, 'provider_ledger': str(self.ledger),
+                        'logical_request_id': logical_id, 'transport_attempt': attempt, 'payload_sha256': fingerprint})
                 self.request_count+=1;row['upstream_attempted']=True
                 self.attempt_event({'phase':'before_upstream_dispatch','logical_request_id':logical_id,'transport_attempt':attempt,'upstream_attempt_number':self.request_count,'payload_sha256':fingerprint,'native_request_capture':row['native_request_capture'],'effective_request_capture':row['effective_request_capture'],'time':time.time()})
                 _route = 'openrouter' if self.options.get('provider_route') in ('openrouter_free','openrouter_paid') else 'nvidia'
@@ -486,6 +603,8 @@ class ProviderGateway:
                     status=598;error_text=type(exc).__name__;transient=not payload
                 row.update(response_headers=response_headers,bytes_received=len(payload),raw_response_capture=self.capture_response(payload,logical_id,attempt))
                 self.attempt_event({'phase':'upstream_response_observed','logical_request_id':logical_id,'transport_attempt':attempt,'status':status,'bytes_received':len(payload),'raw_response_capture':row['raw_response_capture'],'time':time.time()})
+                if getattr(self, 'budget', None) or self.options.get('provider_route') == 'openrouter_free':
+                    self.account_response(row, payload, stream=None if transient else bool(body.get('stream')))
                 if transient:
                     # Unknown usage is never assumed zero. Retry requires an explicitly
                     # preregistered upper reservation covering this entire failed attempt.

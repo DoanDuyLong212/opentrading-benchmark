@@ -123,7 +123,23 @@ def build_settings(cfg,split):
     # its registered 3-arm set. Every override is disclosed in the amendment.
     default_arms=['opentrading','opencode','dsh'] if split=='main' else ARMS
     arms=cfg.get('arms_'+split) or default_arms
-    return {'split':split,'seed':20261108,'runs':2,'retry':0,'pause':float(cfg.get('request_interval_s',2)),'retry_backoff':4.0,'timeout':float(cfg['trial_timeout_s']),'effort':'none','max_requests':cfg['max_requests'],'max_output_tokens':cfg['max_output_tokens'],'max_total_tokens':cfg['max_total_tokens'],'model':cfg['model'],'arms':arms,'freeze_sha256':None,'provider_timeout_s':float(cfg['provider_timeout_s']),'conditions':{k:__import__('experiment_conditions').CONDITIONS[k] for k in arms},'clock_policy':'snapshot_as_of; OpenTrading native now pinned; other native clocks observed in wire capture','quarantined_tasks':{p.name:task_eligibility(p)['exclusion_reason'] for p in sorted((ROOT/'tasks'/split).iterdir()) if p.is_dir() and not task_eligibility(p)['confirmatory_eligible']},'include_quarantined':False}
+    settings = {'split':split,'seed':20261108,'runs':2,'retry':0,'pause':float(cfg.get('request_interval_s',2)),'retry_backoff':4.0,'timeout':float(cfg['trial_timeout_s']),'effort':'none','max_requests':cfg['max_requests'],'max_output_tokens':cfg['max_output_tokens'],'max_total_tokens':cfg['max_total_tokens'],'model':cfg['model'],'arms':arms,'freeze_sha256':None,'provider_timeout_s':float(cfg['provider_timeout_s']),'conditions':{k:__import__('experiment_conditions').CONDITIONS[k] for k in arms},'clock_policy':'snapshot_as_of; OpenTrading native now pinned; other native clocks observed in wire capture','quarantined_tasks':{p.name:task_eligibility(p)['exclusion_reason'] for p in sorted((ROOT/'tasks'/split).iterdir()) if p.is_dir() and not task_eligibility(p)['confirmatory_eligible']},'include_quarantined':False}
+
+    from argparse import Namespace
+    from run_benchmark import effective_provider_options, read_task_meta, is_native_memory
+    options = effective_provider_options(Namespace(**settings, budget_usd=cfg.get('provider_options', {}).get('budget_usd')), cfg)
+    settings.update({k: options[k] for k in ('effort','max_requests','max_output_tokens','max_total_tokens','provider_timeout_s')})
+    settings['effective_provider_options'] = options
+    settings['transport_attempts_per_request'] = 3
+    settings['trial_timeouts_s'] = {}
+    for task in sorted((ROOT/'tasks'/split).iterdir()):
+        if not task.is_dir() or not task_eligibility(task)['confirmatory_eligible']: continue
+        timeout = settings['timeout'] or int(read_task_meta(task).get('time_limit_min', '15')) * 60
+        if is_native_memory(task): timeout = int(cfg.get('memory_trial_timeout_s', 2 * timeout))
+        if not __import__('math').isfinite(timeout) or timeout <= 0:
+            raise ValueError('effective whole-trial timeout must be finite and positive')
+        settings['trial_timeouts_s'][task.name] = timeout
+    return settings
 
 
 def seal_runs(configs,out,approval,destination):
@@ -141,7 +157,9 @@ def seal_runs(configs,out,approval,destination):
         splits=['devsmoke','pilot']+(['main'] if cfg.get('gate')=='b0_judge_primary' and approved.get('main_authorized_by_user') is True else [])
         for split in splits:
             settings=build_settings(cfg,split);tasks=[p for p in sorted((ROOT/'tasks'/split).iterdir()) if p.is_dir() and task_eligibility(p)['confirmatory_eligible']];runout=Path(out).resolve()/(cfg['model_stratum']+'-'+split)
-            prepare_manifest(runout,settings,tasks,cfg,False)
+            manifest = prepare_manifest(runout,settings,tasks,cfg,False)
+            from paid_budget import open_run_budget
+            open_run_budget(runout, manifest['fingerprint'], cfg['model'], dict(settings['effective_provider_options']))
             runs.append({'out':str(runout),'config':str(config),'model':cfg['model'],'split':split,'settings':settings,'tasks':[p.name for p in tasks],'state_sha256':state})
     gate=json.loads(Path(configs[0]).read_text()).get('gate') if configs else None
     if approved.get('judge_kappa_file'):protected[str(Path(approved['judge_kappa_file']).resolve())]=hash_file(approved['judge_kappa_file'])

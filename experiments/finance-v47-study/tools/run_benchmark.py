@@ -271,7 +271,7 @@ def run_memory_trial(arm, ws, task_dir, model, timeout_s, log_path, options=None
     from memory_runner import MemoryEpisode, NATIVE_V2
     selected = condition(arm)
     opts = dict(options or {}, condition=arm, **selected, memory_profile=NATIVE_V2, timeout_s=timeout_s,
-                max_requests=int((options or {}).get('memory_max_requests', 48)))
+                max_requests=int((options or {}).get('max_requests', (options or {}).get('memory_max_requests', 48))))
     t0 = time.monotonic()
     try:
         state = MemoryEpisode(ws, task_dir, model, arm, opts).run(memory_turns(task_dir))
@@ -380,8 +380,10 @@ def execute_trial(item, task_dir, out_dir, model, timeout_s, retries=0, backoff_
         ws = make_workspace(os.path.join(attempt_dir, "ws"), task_dir)
         log_path = os.path.join(attempt_dir, "run.log")
         ledger_path = os.path.join(attempt_dir, "mcp.jsonl")
-        opts = dict(options or {}, timeout_s=remaining, mcp_ledger=ledger_path,
+        opts = dict(options or {}, timeout_s=remaining, mcp_ledger=ledger_path, trial_id=item['trial_id'],
                     provider_ledger=os.path.join(attempt_dir, "provider.jsonl"))
+        if is_native_memory(task_dir):
+            opts['max_requests'] = opts.get('memory_max_requests', 48)
         if attempts:
             spent_requests = sum(a.get("provider_requests", a.get("requests", 0)) or 0 for a in attempts)
             spent_tokens = sum_attempt_tokens(attempts)
@@ -524,6 +526,42 @@ def repair_interrupted_append(path):
             os.fsync(handle.fileno())
 
 
+def effective_provider_options(args, cfg):
+    """Resolve once, before authorization/manifest; consumers share this object."""
+    from paid_budget import paid_policy, validate_free_identity, usd
+    options = {k: getattr(args, k) for k in ('effort', 'max_requests', 'max_output_tokens', 'max_total_tokens')}
+    if args.provider_timeout_s is not None:
+        options['provider_timeout_s'] = args.provider_timeout_s
+    options.update(cfg.get('provider_options', {}))
+    options.setdefault('provider_timeout_s', 240)
+    options.setdefault('memory_max_requests', 48)
+    for field in ('max_requests', 'max_total_tokens', 'memory_max_requests'):
+        if not isinstance(options[field], int) or isinstance(options[field], bool) or options[field] <= 0:
+            raise ValueError('effective request/token cap must be a positive integer: ' + field)
+    output = options.get('max_output_tokens')
+    if output is not None and (not isinstance(output, int) or isinstance(output, bool) or output <= 0):
+        raise ValueError('effective output cap must be null or positive integer')
+    import math
+    provider_timeout = options['provider_timeout_s']
+    if isinstance(provider_timeout, bool) or not math.isfinite(provider_timeout) or provider_timeout <= 0:
+        raise ValueError('effective provider timeout must be finite and positive')
+    if args.budget_usd is not None:
+        cap = str(usd(args.budget_usd, positive=True))
+        if options.get('budget_usd') is not None and usd(options['budget_usd']) != usd(cap):
+            raise ValueError('--budget-usd differs from frozen provider_options')
+        options['budget_usd'] = cap
+    elif options.get('provider_route') == 'openrouter_paid':
+        raise ValueError('paid route requires explicit --budget-usd')
+    options['opentrading_runtime_root'] = cfg.get('opentrading_runtime_root')
+    options['protocol'] = cfg.get('protocol')
+    model = args.model or cfg.get('model')
+    paid_policy(model, options, require_current=not getattr(args, 'resume', False))
+    free_admission = validate_free_identity(model, options)
+    if free_admission:
+        options["free_admission_sha256"] = free_admission
+    return options
+
+
 def main():
     import fcntl
     from pathlib import Path
@@ -552,6 +590,7 @@ def main():
     ap.add_argument("--max-total-tokens", type=int, default=48000)
     ap.add_argument("--provider-timeout-s", type=float, default=None,
                     help="override per-request provider timeout (gateway default 45s); pilot/smoke diagnostics only")
+    ap.add_argument("--budget-usd", help="positive run-wide paid allocation; paid routes require reviewed key/bound receipt")
     ap.add_argument("--list-only", action="store_true")
     ap.add_argument("--v45-seal", help="v45 versioned independent engineering seal")
     ap.add_argument("--v44-seal", help="v44 combined compute/acquisition shared seal")
@@ -609,10 +648,21 @@ def main():
             fcntl.flock(lock, fcntl.LOCK_EX | fcntl.LOCK_NB)
         except BlockingIOError:
             raise SystemExit("Another driver owns this output directory")
+        options = effective_provider_options(args, cfg)
+        trial_timeouts = {}
+        for task in tasks:
+            timeout = args.timeout or int(read_task_meta(task).get("time_limit_min", "15")) * 60
+            if is_native_memory(task):
+                timeout = int(cfg.get("memory_trial_timeout_s", 2 * timeout))
+            if not __import__('math').isfinite(timeout) or timeout <= 0:
+                raise ValueError('effective whole-trial timeout must be finite and positive')
+            trial_timeouts[Path(task).name] = timeout
         settings = {k: getattr(args, k) for k in ("split", "seed", "runs", "retry", "pause", "retry_backoff", "timeout", "effort", "max_requests", "max_output_tokens", "max_total_tokens")}
         settings.update(model=model, arms=arms, freeze_sha256=freeze)
-        if args.provider_timeout_s is not None:
-            settings['provider_timeout_s'] = args.provider_timeout_s
+        settings.update({k: options[k] for k in ("effort", "max_requests", "max_output_tokens", "max_total_tokens", "provider_timeout_s")})
+        settings["effective_provider_options"] = dict(options)
+        settings["trial_timeouts_s"] = trial_timeouts
+        settings["transport_attempts_per_request"] = 3
         settings['conditions'] = {name: CONDITIONS[name] for name in arms}
         settings['clock_policy'] = 'snapshot_as_of; OpenTrading native now pinned; other native clocks observed in wire capture'
         from run_manifest import task_eligibility
@@ -651,6 +701,9 @@ def main():
             if not args.resume or not any(item['out'] == out_dir and item['config'] == str(Path(args.config).resolve()) for item in receipt['runs']):
                 raise ValueError('v43 inference must resume one of the two presealed manifests')
         manifest = prepare_manifest(out_dir, settings, tasks, cfg, args.resume)
+        from paid_budget import open_run_budget
+        budget = open_run_budget(out_dir, manifest["fingerprint"], model, options, args.resume, accounting_only=args.resume)
+        options["free_cost_stop_path"] = str(Path(out_dir)/"FREE-ROUTE-CHARGED.jsonl")
         if args.split == "holdout":
             open_holdout(out_dir, freeze, args.resume)
         trials_path = Path(out_dir)/"trials.jsonl"
@@ -664,12 +717,6 @@ def main():
         if not completed <= expected_ids:
             raise ValueError("Existing trial IDs are outside frozen schedule")
         by_task = {os.path.basename(t): t for t in tasks}
-        options = {k: getattr(args, k) for k in ("effort", "max_requests", "max_output_tokens", "max_total_tokens")}
-        if args.provider_timeout_s is not None:
-            options['provider_timeout_s'] = args.provider_timeout_s
-        options['opentrading_runtime_root'] = cfg.get('opentrading_runtime_root')
-        options.update(cfg.get('provider_options', {}))
-        options['protocol'] = cfg.get('protocol')
         from v45_control import PauseController
         control=PauseController(out_dir);control.install()
         control.checkpoint('completed' if completed==expected_ids else 'ready',len(completed),len(expected_ids))
@@ -679,11 +726,13 @@ def main():
                     continue
                 if control.paused():
                     control.checkpoint('paused',len(completed),len(expected_ids));break
+                if budget:
+                    from paid_budget import paid_policy
+                    paid_policy(model, options)
+                    budget.check_available()
                 control.checkpoint('running',len(completed),len(expected_ids),item['trial_id'])
                 task = by_task[item["task"]]
-                timeout = args.timeout or int(read_task_meta(task).get("time_limit_min", "15")) * 60
-                if is_native_memory(task):
-                    timeout = int(cfg.get('memory_trial_timeout_s', 2 * timeout))
+                timeout = trial_timeouts[Path(task).name]
                 row = execute_trial(item, task, out_dir, model, timeout, args.retry, args.retry_backoff, options)
                 row["manifest_sha256"] = manifest["fingerprint"]
                 handle.write(json.dumps(row, ensure_ascii=False) + "\n")
@@ -698,12 +747,23 @@ def main():
                     ledger=attempt.get('provider_ledger')
                     if ledger and Path(ledger).exists():
                         fatal_bound=any(json.loads(line).get('error')=='observed_usage_exceeds_registered_context_bound' for line in Path(ledger).read_text().splitlines() if line.strip()) or fatal_bound
+                if budget:
+                    money = budget.summary()
+                    if money['unknown_requests'] or money['bound_breached'] or money['halted']:
+                        control.checkpoint('blocked_paid_budget', len(completed), len(expected_ids))
+                        blocked_summary = metrics.build_summary(out_dir)
+                        (Path(out_dir)/'summary.json').write_text(json.dumps(blocked_summary, indent=2, ensure_ascii=False))
+                        raise RuntimeError('Cohort STOP: paid charge unresolved or bound breached; preserve journal for reconciliation')
+                if Path(options['free_cost_stop_path']).exists():
+                    raise RuntimeError('Cohort STOP: admitted free route returned nonzero charge')
                 if fatal_bound:
                     control.checkpoint('blocked_registered_context_breach',len(completed),len(expected_ids));raise RuntimeError('Cohort STOP: registered usage context bound breached; never expand budget midrun')
                 if args.pause:
                     time.sleep(args.pause)
         if control.paused() and completed!=expected_ids:control.checkpoint('paused',len(completed),len(expected_ids))
         summary = metrics.build_summary(out_dir)
+        if budget:
+            summary["paid_budget"] = budget.summary()
         (Path(out_dir)/"summary.json").write_text(json.dumps(summary, indent=2, ensure_ascii=False))
         metrics.print_summary(summary)
         print("Results:", out_dir)

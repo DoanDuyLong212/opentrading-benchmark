@@ -14,6 +14,9 @@ SNAPSHOT = TOOLS / 'mcp_snapshot_server.py'
 
 def prepare(ws, task_dir, model, options):
     options = dict(options or {})
+    from paid_budget import paid_policy, validate_free_identity
+    paid_policy(model, options)
+    validate_free_identity(model, options)
     root = Path(ws).resolve().parent / 'runner'
     root.mkdir(parents=True, exist_ok=True)
     env = clean_env(root / 'home')
