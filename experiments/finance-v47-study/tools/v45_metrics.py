@@ -53,8 +53,21 @@ def summarize(rows, manifest, root, _scope='primary'):
         cells=[c for c in schedule if c['arm']==arm]; metrics=counts(cells)
         metrics['per_level']={level:counts([c for c in cells if taskmeta[c['task']].get('level')==level]) for level in sorted({taskmeta[c['task']].get('level','?') for c in cells})}
         metrics['per_family']={family:counts([c for c in cells if taskmeta[c['task']].get('family')==family]) for family in sorted({taskmeta[c['task']].get('family','?') for c in cells})}
-        tasks=sorted({c['task'] for c in cells}); repeats=settings['runs']
-        metrics['stable']={'label':f'{repeats}/{repeats}','scheduled_tasks':len(tasks),'strict_all_repeats':sum(all(indexed.get(c['trial_id'],{}).get('success',False) for c in cells if c['task']==t) for t in tasks),'grounded_all_repeats':sum(all(indexed.get(c['trial_id'],{}).get('grounded_financial_correctness',False) for c in cells if c['task']==t) for t in tasks)}
+        tasks=sorted({c['task'] for c in cells})
+        r_by_s = settings.get('runs_by_stratum')
+        if isinstance(r_by_s, dict):
+            # Heterogeneous schedule: stable requires exactly 2 scheduled replicates (L=1 excluded)
+            eligible_stable_tasks = [t for t in tasks if len([c for c in cells if c['task'] == t]) == 2]
+            metrics['stable'] = {
+                'label': '2/2',
+                'scheduled_tasks': len(tasks),
+                'eligible_tasks': len(eligible_stable_tasks),
+                'strict_all_repeats': sum(all(indexed.get(c['trial_id'], {}).get('success', False) for c in cells if c['task'] == t) for t in eligible_stable_tasks),
+                'grounded_all_repeats': sum(all(indexed.get(c['trial_id'], {}).get('grounded_financial_correctness', False) for c in cells if c['task'] == t) for t in eligible_stable_tasks),
+            }
+        else:
+            repeats = settings.get('runs', 2)
+            metrics['stable'] = {'label': f'{repeats}/{repeats}', 'scheduled_tasks': len(tasks), 'strict_all_repeats': sum(all(indexed.get(c['trial_id'], {}).get('success', False) for c in cells if c['task'] == t) for t in tasks), 'grounded_all_repeats': sum(all(indexed.get(c['trial_id'], {}).get('grounded_financial_correctness', False) for c in cells if c['task'] == t) for t in tasks)}
         metrics['operational']=operational([r for r in rows if r['arm']==arm], contracts)
         result['arms'][arm]=metrics
     result['analysis_scope'] = 'LCM_primary' if _scope == 'primary' else 'S_diagnostic'
