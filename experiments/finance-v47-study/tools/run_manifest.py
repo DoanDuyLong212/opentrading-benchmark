@@ -183,18 +183,41 @@ def task_eligibility(task):
     return {'confirmatory_eligible': eligible, 'exclusion_reason': reason if not eligible else None}
 
 
-def build_schedule(tasks, arms, runs, seed):
-    """Seeded task order and equally cycled permutations of arm execution order."""
+def build_schedule(tasks, arms, runs, seed, runs_by_stratum=None):
+    """Seeded task order and equally cycled permutations of arm execution order.
+    Supports either uniform integer runs or per-stratum runs dict (e.g. {'lookup': 1, 'compute': 2, ...})."""
     for task in tasks:
         if (Path(task)/'task.toml').exists() and task_eligibility(task).get('memory_multiturn') and not task_eligibility(task).get('memory_native_v2'):
             raise ValueError('Memory multi-turn task cannot enter single-turn manifest: '+str(task))
     rng = random.Random(seed)
-    task_ids = sorted(Path(t).name for t in tasks)
+    task_map = {Path(t).name: t for t in tasks}
+    task_ids = sorted(task_map.keys())
     rng.shuffle(task_ids)
-    # Cyclic Latin blocks guarantee equal position counts whenever task/run
-    # blocks are divisible by arm count (44 blocks / 4 pilot conditions).
-    permutations = []
+    if isinstance(runs_by_stratum, dict):
+        from stratum_policy import runs_for_task
+        task_runs = {tid: runs_for_task(task_map[tid], runs_by_stratum, default_runs=runs if isinstance(runs, int) else 1) for tid in task_ids}
+        max_runs = max(task_runs.values()) if task_runs else 1
+        needed = sum(task_runs.values())
+        permutations = []
+        while len(permutations) < needed:
+            base = list(arms)
+            rng.shuffle(base)
+            shifts = list(range(len(base)))
+            rng.shuffle(shifts)
+            permutations.extend(tuple(base[s:]+base[:s]) for s in shifts)
+        schedule = []
+        block = 0
+        for run in range(1, max_runs + 1):
+            eligible = [tid for tid in task_ids if task_runs[tid] >= run]
+            ids = eligible[run-1:] + eligible[:run-1]
+            for tid in ids:
+                for arm in permutations[block]:
+                    schedule.append({'trial_id': f'{tid}__{arm}__r{run}', 'task': tid, 'arm': arm, 'run': run})
+                block += 1
+        return schedule
+
     needed = len(task_ids) * runs
+    permutations = []
     while len(permutations) < needed:
         base = list(arms)
         rng.shuffle(base)
@@ -288,7 +311,7 @@ def prepare_manifest(out_dir, settings, tasks, config, resume=False):
                   'code': code_fingerprint(), 'harnesses': harness_inventory(config),
                   'tasks': {Path(t).name: task_fingerprint(t) for t in tasks},
                   'task_contracts': {Path(t).name: task_contract(t) for t in tasks},
-                  'schedule': build_schedule(tasks, settings['arms'], settings['runs'], settings['seed'])}
+                  'schedule': build_schedule(tasks, settings['arms'], settings['runs'], settings['seed'], runs_by_stratum=settings.get('runs_by_stratum'))}
     if resume:
         if not path.exists():
             raise ValueError('--resume requires manifest.json')
