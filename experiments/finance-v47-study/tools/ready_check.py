@@ -35,7 +35,7 @@ def c_provider(args):
     return available, 'model listed' if available else 'model not in account catalog'
 
 
-def bounded_command(command, timeout_s, cwd=ROOT):
+def bounded_command(command, timeout_s, cwd=ROOT, env=None):
     """A hard deadline also covers blocked SDK shutdown and descendant processes.
 
     Files avoid pipe-draining hangs when a grandchild inherits stdout/stderr.
@@ -43,7 +43,7 @@ def bounded_command(command, timeout_s, cwd=ROOT):
     """
     with tempfile.TemporaryFile() as stdout, tempfile.TemporaryFile() as stderr:
         process = subprocess.Popen(command, cwd=cwd, stdout=stdout, stderr=stderr,
-                                   start_new_session=True)
+                                   start_new_session=True, env=env)
         try:
             code = process.wait(timeout=timeout_s)
         except subprocess.TimeoutExpired:

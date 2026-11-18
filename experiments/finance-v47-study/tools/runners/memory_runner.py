@@ -5,6 +5,8 @@ from pathlib import Path
 import common,isolated,run_opentrading,run_opencode,run_dsh
 from memory_snapshot_server import DEFINITION,NAME
 from provider import aggregate_usage
+from trusted_bun import trusted_bun
+from trusted_toolchain import trusted_tool
 TOOLS=Path(__file__).resolve().parents[1]
 ARMS={'ot_memory_on':('opentrading',True),'ot_memory_off':('opentrading',False),'opencode':('opencode',False),'dsh':('dsh',False),
       # Amendment 2026-11-11 (d) native-v2 memory stratum under the main seal: each main arm keeps its own product
@@ -48,13 +50,13 @@ class MemoryEpisode:
    self.gateway.options['snapshot_tool_definitions'] += [DEFINITION]
    self.gateway.options['allowed_tool_names'] += [p+NAME for p in('opentrading_','mcp__opentrading__','mcp_opentrading_')]
   if self.native=='opentrading':
-   bun=self.options.get('native_bun_binary')or str(Path.home()/'.bun/bin/bun')
+   bun=str(trusted_bun())
    cmd=[bun,str(TOOLS/'runners/memory_schema.ts')]+(['--notebook']if self.notebook else[])
    self.gateway.options['native_tool_definitions']=json.loads(subprocess.run(cmd,capture_output=True,text=True,check=True,timeout=30).stdout)
    if self.notebook:self.gateway.options['allowed_tool_names'].append('memory_read')
   if self.v2 and self.native=='dsh':
    pinned=json.loads((TOOLS/'runners/dsh_session_search_tools.json').read_text())['tools']
-   # v4.7: keep the shell definition prepare() pinned (bash behind the shared filter) next to the session tools.
+   # v4.7: keep the shell definition prepare() pinned (bash inside the shared no-network Docker sandbox) next to the session tools.
    self.gateway.options['native_tool_definitions']=[d for d in self.gateway.options.get('native_tool_definitions',[])if d['name']not in{x['name']for x in pinned}]+pinned
    self.gateway.options['allowed_tool_names']+=[d['name']for d in pinned]
   if self.gateway.ledger.exists():
@@ -80,7 +82,7 @@ class MemoryEpisode:
   elif prior:
    if self.native=='opencode'and'run'in cmd:
     server=cmd[cmd.index('--server')+1]
-    check=subprocess.run([run_opencode.OPENCODE_BIN,'api','--server',server,'session.message.list','--param','sessionID='+prior],cwd=cwd,env=env,capture_output=True,text=True,timeout=8)
+    check=subprocess.run([str(trusted_tool('opencode')),'api','--server',server,'session.message.list','--param','sessionID='+prior],cwd=cwd,env=env,capture_output=True,text=True,timeout=8)
     try:response=json.loads(check.stdout)
     except ValueError:response=None
     messages=response.get('data')if isinstance(response,dict)else response
@@ -108,7 +110,7 @@ class MemoryEpisode:
   return proc.returncode,stdout,stderr,timed
  def native_admin(self,operations,user_text):
   if not self.notebook:return None
-  bun=self.options.get('native_bun_binary')or str(Path.home()/'.bun/bin/bun')
+  bun=str(trusted_bun())
   request={'home':str(self.root/'ot-home'),'operations':operations,'user_text':user_text,'audit_only':not bool(operations)}
   env=dict(self.prepared[1]);env['OPENTRADING_HOME']=str(self.root/'ot-home')
   done=subprocess.run([bun,str(TOOLS/'runners/ot_memory_admin.ts')],input=json.dumps(request,ensure_ascii=False),capture_output=True,text=True,env=env,timeout=30)

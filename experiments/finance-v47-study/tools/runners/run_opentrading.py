@@ -7,7 +7,7 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from common import popen_run
 from isolated import prepare, finish, SNAPSHOT, TOOLS
 
-BUN = os.path.expanduser('~/.bun/bin/bun')
+from trusted_bun import trusted_bun
 
 
 def native_result_status(rc, stderr, timed_out):
@@ -40,7 +40,8 @@ def run(ws, instruction, task_dir, model, timeout_s, log_path, options=None):
     options = {**(options or {}), 'timeout_s': timeout_s}
     root, env, gateway, mcp_env = prepare(ws, task_dir, model, options)
     from experiment_conditions import RUNTIME_ROOT, prompt_directory
-    if not options.get('opentrading_runtime_root') or Path(options['opentrading_runtime_root']).resolve() != RUNTIME_ROOT.resolve():
+    from trusted_toolchain import resolve_runtime
+    if resolve_runtime(options) != RUNTIME_ROOT.resolve():
         raise ValueError('Explicit trusted OpenTrading runtime root required')
     variant = options.get('prompt_variant') or 'finance'
     prompts = prompt_directory(variant)
@@ -67,7 +68,7 @@ def run(ws, instruction, task_dir, model, timeout_s, log_path, options=None):
     env.update(OPENTRADING_HOME=str(home), NVIDIA_API_KEY=gateway.token)
     env['BENCH_INVENTORY'] = str(root / 'native-inventory.json')
     with gateway:
-        rc, out, err, timed_out = popen_run([options.get('native_bun_binary') or BUN, str(TOOLS / 'runners/ot_headless.ts'), instruction],
+        rc, out, err, timed_out = popen_run([str(trusted_bun()), str(TOOLS / 'runners/ot_headless.ts'), instruction],
             cwd=ws, env=env, timeout_s=timeout_s, log_path=log_path)
     native = native_result_status(rc, err, timed_out)
     return finish(root, gateway, {**native, 'final_text': out}, 'opentrading', cfg)
