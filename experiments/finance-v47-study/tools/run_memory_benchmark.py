@@ -44,6 +44,7 @@ def summary(rows,m,out):
 def main():
  ap=argparse.ArgumentParser(description=__doc__);ap.add_argument('--out',required=True);ap.add_argument('--config',default=str(ROOT/'tools/bench_config.json'));ap.add_argument('--plan',action='store_true');ap.add_argument('--execute',action='store_true');ap.add_argument('--approved-manifest-sha256');ap.add_argument('--engineering-approval');ap.add_argument('--stop-after-turns',type=int);a=ap.parse_args();
  if a.execute and os.environ.get('BENCH_V47_DEV') == '1':raise SystemExit('BENCH_V47_DEV permits devsmoke only; legacy memory execution is forbidden')
+ if a.execute and json.loads(Path(a.config).read_text()).get('provider_options',{}).get('provider_route') == 'openrouter_paid':raise SystemExit('Paid legacy memory execution forbidden: use unified run_benchmark --budget-usd and durable run journal')
  out=Path(a.out).resolve();out.mkdir(parents=True,exist_ok=True);mp=out/'manifest.json'
  if a.plan:
   candidate=manifest(json.loads(Path(a.config).read_text()))
@@ -53,6 +54,7 @@ def main():
  if not a.execute:raise SystemExit('Use --plan (zero inference), or --execute with approved manifest hash')
  if not mp.exists()or hashlib.sha256(mp.read_bytes()).hexdigest()!=a.approved_manifest_sha256:raise SystemExit('Exact preapproved manifest hash required')
  m=json.loads(mp.read_text())
+ if m.get('options',{}).get('provider_route') == 'openrouter_paid':raise SystemExit('Paid legacy manifest forbidden: use unified budgeted driver')
  if m['harness_inventory']!=harness_inventory(m['harness_config']):raise SystemExit('Actual harness/runtime/dependencies changed after pin')
  if m['model_admissions']!={model:admission(model[7:])for model in m['model_admissions']}:raise SystemExit('Model admission changed after pin')
  if m['fingerprints']!=fingerprints():raise SystemExit('Source/config/corpus changed after pin; preserve run and re-review a separate pre-inference manifest')

@@ -1,13 +1,13 @@
 """Strict JSON/SSE response decoding shared by gateway and offline provenance audit."""
 import json,re
 
-def response_chunks(payload, *, stream=None):
+def response_chunks(payload, *, stream=None, parse_float=float):
     text = payload.decode('utf-8-sig') if isinstance(payload, bytes) else payload.lstrip('\ufeff')
     if stream is None:
         first = text.lstrip()
         stream = first.startswith((':', 'data:', 'event:', 'id:', 'retry:'))
     if not stream:
-        value = json.loads(text)
+        value = json.loads(text, parse_float=parse_float)
         if not isinstance(value, dict): raise ValueError('Provider JSON must be an object')
         return [value]
     chunks=[]; data=[]; done=False
@@ -17,7 +17,7 @@ def response_chunks(payload, *, stream=None):
         value='\n'.join(data);data=[]
         if value=='[DONE]':done=True;return
         if done:raise ValueError('Provider SSE data after DONE')
-        item=json.loads(value)
+        item=json.loads(value, parse_float=parse_float)
         if not isinstance(item,dict):raise ValueError('Provider SSE data must be an object')
         chunks.append(item)
     lines=re.split(r'\r\n|\r|\n',text)

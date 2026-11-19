@@ -561,6 +561,11 @@ def build_summary(out_dir, price=None, _scope='primary'):
         if complete and _scope == 'primary':result['financial_v45']['paired_task_cluster'] = paired(trials,candidate='opentrading' if settings.get('split')=='main' else 'opentrading_finance',controls=('opencode','dsh') if settings.get('split')=='main' else ('opentrading_baseline','opencode','dsh'),clusters=clusters)
     result['statistics_note'] = 'Task paired bootstrap; payload hash cluster sensitivity; exact McNemar+Holm on complete all-runs-correct tasks. Stable 3/3 is primary only for frozen runs=3.'
     if plan.get('config',{}).get('protocol')==FINANCIAL_PROTOCOL:result['statistics_note']='V45 co-primary strict+grounded financial, stable2/2, task-cluster bootstrap/signflip, payload-cluster sensitivity. Within-model Holm is exploratory; main final family is eight registered comparisons across two models/endpoints/opponents.'
+    if _scope == 'primary' and settings.get('effective_provider_options', {}).get('provider_route') == 'openrouter_paid':
+        from paid_budget import open_run_budget
+        options = dict(settings['effective_provider_options'])
+        budget = open_run_budget(out_dir, result['manifest_sha256'], settings['model'], options, resume=True, accounting_only=True)
+        result['paid_budget'] = budget.summary()
     if _scope == 'primary':
         result['safety_diagnostic'] = build_summary(out_dir, price, _scope='safety')
     return result
