@@ -597,6 +597,7 @@ def main():
     ap.add_argument("--budget-usd", help="positive run-wide paid allocation; paid routes require reviewed key/bound receipt")
     ap.add_argument("--list-only", action="store_true")
     ap.add_argument("--v45-seal", help="v45 versioned independent engineering seal")
+    ap.add_argument("--v47-holdout-receipt", help="v4.7 one-shot holdout opening receipt bound to the seal decision")
     ap.add_argument("--v44-seal", help="v44 combined compute/acquisition shared seal")
     ap.add_argument("--v43-seal", help="shared two-model pre-inference seal; mandatory for v43 inference")
     args = ap.parse_args()
@@ -676,12 +677,20 @@ def main():
                                         and not task_eligibility(p)['confirmatory_eligible']}
         settings['include_quarantined'] = args.include_quarantined
         if cfg.get('protocol') == FINANCIAL_PROTOCOL:
-            from v45_gate import authorize_run
             # v4.7 dev smoke only (BENCH_V47_DEV=1): no seal yet; never for pilot/main/holdout evidence.
             require_dev_split(args.split)
-            if not args.v45_seal and os.environ.get('BENCH_V47_DEV')!='1':raise ValueError('v45 inference requires --v45-seal')
-            if args.retry != 0:raise ValueError('v45 gateway owns transport retry; whole-trial retry must be zero')
-            if os.environ.get('BENCH_V47_DEV')!='1':authorize_run(args.v45_seal, out_dir, args.config, settings, tasks, args.resume)
+            dev_bypass = os.environ.get('BENCH_V47_DEV') == '1'
+            if not args.v45_seal and not dev_bypass:
+                raise ValueError('v45 inference requires --v45-seal')
+            if args.retry != 0:
+                raise ValueError('v45 gateway owns transport retry; whole-trial retry must be zero')
+            selected = None
+            if not dev_bypass:
+                if cfg.get('study_version') == 'v4.7':
+                    from v47_gate import authorize_run
+                else:
+                    from v45_gate import authorize_run
+                selected = authorize_run(args.v45_seal, out_dir, args.config, settings, tasks, args.resume)
         if cfg.get('protocol') == 'financial_compute_acquisition_v44':
             from v44_gate import validate_seal, registered_settings
             if not args.v44_seal:
@@ -709,7 +718,15 @@ def main():
         budget = open_run_budget(out_dir, manifest["fingerprint"], model, options, args.resume, accounting_only=args.resume)
         options["free_cost_stop_path"] = str(Path(out_dir)/"FREE-ROUTE-CHARGED.jsonl")
         if args.split == "holdout":
-            open_holdout(out_dir, freeze, args.resume)
+            if cfg.get('study_version') == 'v4.7':
+                from v47_gate import validate_holdout_receipt
+                if not args.v47_holdout_receipt:
+                    raise ValueError('v4.7 holdout requires a one-shot --v47-holdout-receipt')
+                if not selected:
+                    raise ValueError('v4.7 holdout receipt validation requires an authorized sealed run')
+                validate_holdout_receipt(args.v47_holdout_receipt, args.v45_seal, selected['cohort_id'])
+            else:
+                open_holdout(out_dir, freeze, args.resume)
         trials_path = Path(out_dir)/"trials.jsonl"
         import metrics
         if args.resume:

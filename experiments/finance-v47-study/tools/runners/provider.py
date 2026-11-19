@@ -46,6 +46,18 @@ DIAGNOSTIC_MODELS = {'deepseek-ai/deepseek-v4.1-flash'}  # v43 smoke only; Nov5 
 DIAGNOSTIC_RECEIPT_SHA256 = 'd078ce590717254cc73d423d90345dde070ea2167c5abd2d94f1f6bf988c4f31'
 
 
+def provider_credential(or_route):
+    """Resolve the credential for the selected route; never cross providers."""
+    if or_route:
+        value = os.environ.get('OPENROUTER_KEY') or os.environ.get('OPENROUTER_API_KEY')
+        if not value:
+            # Falling back to the NVIDIA key silently turns a config mistake into
+            # an upstream 401 that looks like a provider failure.
+            raise ValueError('OpenRouter credential missing; set OPENROUTER_KEY (or OPENROUTER_API_KEY)')
+        return value
+    return credential()
+
+
 def credential():
     value = os.environ.get('NVIDIA_API_KEY')
     if value:
@@ -235,8 +247,7 @@ class ProviderGateway:
             if not contract or contract.get('policy') != policy or not self.options.get('paid_budget_journal'):
                 raise BudgetError('paid gateway requires initialized run-wide budget')
             self.budget = PaidBudget(self.options['paid_budget_journal'], contract)
-        self.key = (os.environ.get('OPENROUTER_KEY') or credential()) \
-            if or_route else credential()
+        self.key = provider_credential(or_route)
         if policy is not None and hashlib.sha256(self.key.encode()).hexdigest() != policy['key_fingerprint']:
             raise BudgetError('paid credential differs from dedicated key receipt')
         self.token = secrets.token_hex(24)
