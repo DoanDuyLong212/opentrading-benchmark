@@ -1,0 +1,115 @@
+{
+ "snapshot_date": "2026-11-01",
+ "note": "Envelope MCP tái sử dụng nguyên vẹn từ các task đã ghi snapshot 2026-11-01 (corpus wave-2 stage-1); không có capture mới. Nguồn: fin-l3-agg-181 + fin-l1-bctc-113",
+ "tools": {
+  "batch:banks1": {
+   "tool": "vn_equity_quote_batch",
+   "params": {
+    "symbols": [
+     "ACB",
+     "STB",
+     "VPB",
+     "HDB",
+     "TPB"
+    ]
+   },
+   "envelope": {
+    "data": {
+     "quotes": [
+      {
+       "symbol": "ACB",
+       "close": 21000,
+       "pct": -1.4084507042253522,
+       "vol": 8084100
+      },
+      {
+       "symbol": "STB",
+       "close": 66300,
+       "pct": -0.8968609865470852,
+       "vol": 2640500
+      },
+      {
+       "symbol": "VPB",
+       "close": 22950,
+       "pct": -1.0775862068965518,
+       "vol": 14689300
+      },
+      {
+       "symbol": "HDB",
+       "close": 22400,
+       "pct": -1.3215859030837005,
+       "vol": 12905700
+      },
+      {
+       "symbol": "TPB",
+       "close": 12650,
+       "pct": -1.937984496124031,
+       "vol": 7974000
+      }
+     ]
+    },
+    "provenance": {
+     "source": "vnstock",
+     "as_of": "2026-11-01T23:04:24.002593+07:00"
+    },
+    "availability": "available"
+   }
+  },
+  "fs:TPB": {
+   "tool": "financial_statements",
+   "params": {
+    "symbol": "TPB",
+    "period": "quarter",
+    "periods_n": 4
+   },
+   "envelope": {
+    "data": {
+     "symbol": "TPB",
+     "periods": [
+      "Q4/2025",
+      "Q1/2026",
+      "Q2/2026",
+      "Q3/2026"
+     ],
+     "rows": [
+      {
+       "name": "Thu nhập lãi thuần",
+       "unit": "VND",
+       "values": {
+        "Q4/2025": 3595115000000,
+        "Q1/2026": 3459591000000,
+        "Q2/2026": 3634174000000,
+        "Q3/2026": 4423969000000
+       }
+      },
+      {
+       "name": "Tổng LNST",
+       "unit": "VND",
+       "values": {
+        "Q4/2025": 2542763000000,
+        "Q1/2026": 1682225000000,
+        "Q2/2026": 1890968000000,
+        "Q3/2026": 2351201000000
+       }
+      },
+      {
+       "name": "LNST của CĐ Ngân hàng mẹ",
+       "unit": "VND",
+       "values": {
+        "Q4/2025": 2542761000000,
+        "Q1/2026": 1665697000000,
+        "Q2/2026": 1827543000000,
+        "Q3/2026": 2308904000000
+       }
+      }
+     ]
+    },
+    "provenance": {
+     "source": "vietstock",
+     "as_of": "2026-11-01T23:48:05.276403+07:00"
+    },
+    "availability": "available"
+   }
+  }
+ }
+}
