@@ -51,7 +51,7 @@ của FinDaHuman tại #10/#13/#15/#16/#21/#22. Bản này ghi đúng những g�
   (đã sửa lỗi này; test `test_openrouter_route_never_falls_back_to_nvidia_credential`).
 - Canary Stage 5: tối đa **10 trial devsmoke**, free route, chỉ kiểm vận hành/latency/resume.
   Hiện **chưa chạy được**: cả 3 credential OpenRouter có trên máy trả HTTP 401 tại
-  `GET /api/v1/keys`; cần key hợp lệ trước khi canary.
+  `GET /api/v1/key`; cần key hợp lệ trước khi canary.
 
 ## 5. Lịch chạy theo tầng (runs-by-stratum)
 
