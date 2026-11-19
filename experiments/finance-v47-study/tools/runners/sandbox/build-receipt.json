@@ -1,0 +1,20 @@
+{
+  "architecture": "amd64",
+  "base_reference": "python@sha256:5e2bdb1b0d542d5039cffb8181c65930093949194a65c365dfb1b0fe13a4fa5b",
+  "build_command": "docker build -t ot-bench-shell:v47 tools/runners/sandbox",
+  "built_at": "2026-11-19T04:02:08.763752+00:00",
+  "created": "2026-11-16T10:20:21.774690977+07:00",
+  "docker_server_version": "29.5.2",
+  "dockerfile": "tools/runners/sandbox/Dockerfile",
+  "dockerfile_sha256": "c7104eea3ea0e1e1625b6069d4560b922df1b0f6fedaae5010b904f080a93f6a",
+  "image_id": "sha256:ef5d5c4ae395c6e9fe4d7ea3943f274b453b7e22f4df37a271c745dd020a29f1",
+  "os": "linux",
+  "packages": {
+    "numpy": "2.1.3",
+    "pandas": "2.2.3"
+  },
+  "platform": "linux/amd64",
+  "schema": 1,
+  "scope": "local image provenance; not a registry digest or bit-identical build claim",
+  "tag": "ot-bench-shell:v47"
+}

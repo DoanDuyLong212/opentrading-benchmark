@@ -1,5 +1,6 @@
 {
   "protocol": "financial_product_v45",
+  "study_version": "v4.7",
   "model": "nvidia/nemotron-3-ultra-550b-a55b:free",
   "model_stratum": "deepseek-openrouter",
   "allowed_models": [
@@ -50,8 +51,8 @@
     "memory_max_requests": 48,
     "model_max_output_tokens": 65536,
     "model_max_output_tokens_source": "OpenRouter models API 2026-11-16: nvidia/nemotron-3-ultra-550b-a55b:free top_provider.max_completion_tokens (1 host: Nvidia)",
-    "sandbox_image": "sha256:1094dde1b98a3a9aff5149d2cdb9cc0a32c4db8c814863b3abf82e79e29b73b0",
-    "sandbox_image_source": "tools/runners/sandbox/Dockerfile (docker build -t ot-bench-shell:v47)"
+    "sandbox_image": "sha256:ef5d5c4ae395c6e9fe4d7ea3943f274b453b7e22f4df37a271c745dd020a29f1",
+    "sandbox_image_source": "tools/runners/sandbox/Dockerfile (docker build -t ot-bench-shell:v47); local provenance tools/runners/sandbox/build-receipt.json"
   },
   "arms_pilot": [
     "opentrading_machine",
