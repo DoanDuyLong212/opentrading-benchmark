@@ -230,3 +230,18 @@ def test_or_budget_tick_persists_and_hard_stops_at_1900(tmp_path):
     gate._or_budget_tick(path=counter)
     state = json.loads(counter.read_text())
     assert state['daily'] == 1 and state['total'] == 11, 'daily resets per UTC day; all-time total persists'
+
+
+def test_openrouter_route_never_falls_back_to_nvidia_credential(monkeypatch):
+    import pytest
+    from provider import provider_credential
+    monkeypatch.delenv('OPENROUTER_KEY', raising=False)
+    monkeypatch.delenv('OPENROUTER_API_KEY', raising=False)
+    monkeypatch.setenv('NVIDIA_API_KEY', 'nvidia-only-key')
+    with pytest.raises(ValueError, match='OpenRouter credential missing'):
+        provider_credential(or_route=True)
+    monkeypatch.setenv('OPENROUTER_API_KEY', 'openrouter-api-key')
+    assert provider_credential(or_route=True) == 'openrouter-api-key'
+    monkeypatch.setenv('OPENROUTER_KEY', 'openrouter-key')
+    assert provider_credential(or_route=True) == 'openrouter-key'
+    assert provider_credential(or_route=False) == 'nvidia-only-key'
