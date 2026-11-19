@@ -4,12 +4,17 @@ semantic-only substitute for source-grounded financial correctness.
 """
 import json, math, random, statistics, tomllib
 from pathlib import Path
+from clock_policy import comparative_eligible
 
 
-def summarize(rows, manifest, root):
+def summarize(rows, manifest, root, _scope='primary'):
+    original_rows = rows
     plan=manifest['plan']; settings=plan['settings']; schedule=plan['schedule']
+    selected = lambda tid: comparative_eligible(tid) == (_scope == 'primary')
+    schedule = [c for c in schedule if selected(c['task'])]
+    rows = [r for r in rows if selected(r['task'])]
     indexed={r['trial_id']:r for r in rows}
-    result={'schema':'financial-metrics-v45','complete':len(rows)==len(schedule),'models':sorted({r['model'] for r in rows}), 'arms':{}}
+    result={'schema':'financial-metrics-v45','complete':manifest.get('_cohort_complete', {r['trial_id'] for r in original_rows} == {c['trial_id'] for c in plan['schedule']}), 'analysis_complete':len(rows)==len(schedule),'models':sorted({r['model'] for r in rows}), 'arms':{}}
     if len(result['models'])>1:raise ValueError('Never pool model cohorts')
     taskmeta={}; contracts=plan.get('task_contracts',{})
     for item in schedule:
@@ -52,10 +57,14 @@ def summarize(rows, manifest, root):
         metrics['stable']={'label':f'{repeats}/{repeats}','scheduled_tasks':len(tasks),'strict_all_repeats':sum(all(indexed.get(c['trial_id'],{}).get('success',False) for c in cells if c['task']==t) for t in tasks),'grounded_all_repeats':sum(all(indexed.get(c['trial_id'],{}).get('grounded_financial_correctness',False) for c in cells if c['task']==t) for t in tasks)}
         metrics['operational']=operational([r for r in rows if r['arm']==arm], contracts)
         result['arms'][arm]=metrics
+    result['analysis_scope'] = 'LCM_primary' if _scope == 'primary' else 'S_diagnostic'
+    if _scope == 'primary' and any(not comparative_eligible(c['task']) for c in plan['schedule']):
+        result['safety_diagnostic'] = summarize(original_rows, manifest, root, _scope='safety')
     return result
 
 
 def paired(rows, candidate='opentrading_finance', controls=('opentrading_baseline','opencode','dsh'), draws=10000, clusters=None):
+    rows = [r for r in rows if comparative_eligible(r['task'])]
     output=[]
     by={}
     for row in rows:by.setdefault((row['task'],row['arm']),[]).append(row)

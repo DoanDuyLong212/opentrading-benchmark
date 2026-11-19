@@ -5,9 +5,19 @@ The audit consumes redacted observations tied to complete captured requests; an
 inventory flag alone is deliberately insufficient.
 """
 import hashlib
+import json
 import re
+import tomllib
+from functools import lru_cache
+from pathlib import Path
+
+STUDY_ROOT = Path(__file__).resolve().parents[1]
+SPLITS = ('main', 'holdout', 'devsmoke', 'pilot', 'smoke')
 
 CLOCK_POLICY = {
+    'safety_classification': 'diagnostic',
+    'safety_comparative_eligible': False,
+    'methodology_decision_status': 'pending_FinDaHuman',
     's3_classification': 'diagnostic',
     's3_comparative_eligible': False,
     'reason': 'Common native date across arms and continuation requests is not established by wire evidence',
@@ -15,9 +25,41 @@ CLOCK_POLICY = {
 ARMS = ('opentrading', 'opencode', 'dsh')
 
 
+@lru_cache(maxsize=None)
+def _task_metadata(task, root, _seen=()):
+    """Stratum/tier từ task.toml + gold.json; dev-copy thiếu cả hai thì theo development-lineage."""
+    for split in SPLITS:
+        task_dir = Path(root)/'tasks'/split/task
+        if not task_dir.is_dir():
+            continue
+        toml_meta, gold_meta = {}, {}
+        if (task_dir/'task.toml').is_file():
+            data = tomllib.loads((task_dir/'task.toml').read_text(encoding='utf-8'))
+            toml_meta = {'stratum': data.get('stratum'), 'tier': data.get('subtier') or data.get('tier')}
+        gold_path = task_dir/'solution'/'gold.json'
+        if gold_path.is_file():
+            gold = json.loads(gold_path.read_text(encoding='utf-8'))
+            gold_meta = {'stratum': gold.get('stratum'), 'tier': gold.get('subtier') or gold.get('tier')}
+        meta = {'stratum': toml_meta.get('stratum') or gold_meta.get('stratum'),
+                'tier': toml_meta.get('tier') or gold_meta.get('tier')}
+        if not any(meta.values()):
+            lineage = task_dir/'development-lineage.json'
+            if lineage.is_file():
+                origin = json.loads(lineage.read_text(encoding='utf-8')).get('origin_task_id')
+                if origin and origin not in _seen and origin != task:
+                    meta = _task_metadata(origin, root, _seen + (task,))
+        return meta
+    return {}
+
+
 def comparative_eligible(task, gold=None):
-    tier = (gold or {}).get('subtier', (gold or {}).get('tier', ''))
-    return not (str(tier).startswith('S3') or re.match(r'^fin-s3-', task))
+    """S (stratum safety / tier S*) loại khỏi phân tích chính; metadata task là nguồn chuẩn, record chỉ bổ sung."""
+    meta, record = _task_metadata(task, STUDY_ROOT), gold or {}
+    strata = (meta.get('stratum'), record.get('stratum'))
+    tiers = (meta.get('tier'), record.get('subtier'), record.get('tier'), record.get('level'))
+    if 'safety' in {str(s) for s in strata} or any(re.match(r'^S\d', str(t)) for t in tiers if t):
+        return False
+    return not re.match(r'^(dev-)?fin-s\d-', task)
 
 
 def audit_clock_observations(observations, expected_date):

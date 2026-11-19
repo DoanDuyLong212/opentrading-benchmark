@@ -1,0 +1,4484 @@
+{
+ "source": "experiments/finance-v46-update-study/results/financial-v46u-main-final-or16-20261111/deepseek-openrouter-main",
+ "source_sha256": {
+  "trials.jsonl": "9adf344f57c0e103a2d2c1096818346dc1a989daf84e60fdf47fca32594d602d",
+  "manifest.json": "d229d23220114256f5a7e2b0f604314900bbcb93afdcc1e554bcaf0a305ba592",
+  "judge-primary.jsonl": "6cb9e2f958886b3a7d7bd165dfb7bb9df76b5ee5e448a04df8d246e982509cc1"
+ },
+ "selection_timing": "after or16 outcomes; not prospectively independent",
+ "model": [
+  "deepseek/deepseek-v4.1-flash-1017"
+ ],
+ "price_per_1m_frozen": {
+  "cache_read_usd": 0.005,
+  "completion_usd": 0.5,
+  "entitlement": "OpenRouter models API 2026-11-10 (variant -1017, user-chosen); paid credit route",
+  "prompt_usd": 0.006
+ },
+ "cost_type": "scenario_estimates_only; no measured provider spend or authoritative list-price total",
+ "dropped_ids": [
+  "fin-l1-bctc-112",
+  "fin-l1-bctc-113",
+  "fin-l1-bctc-114",
+  "fin-l1-bctc-115",
+  "fin-l1-macro-140",
+  "fin-l1-quote-crypto-122",
+  "fin-l1-quote-gf-127",
+  "fin-l1-quote-gf-128",
+  "fin-l1-quote-vn-103",
+  "fin-l1-quote-vn-104",
+  "fin-l1-quote-vn-106",
+  "fin-l1-quote-vn-107",
+  "fin-l2-crypto-x-170",
+  "fin-l2-growth-144",
+  "fin-l2-growth-145",
+  "fin-l2-margin-152",
+  "fin-l2-margin-153",
+  "fin-l3-agg-182",
+  "fin-l3-agg-183",
+  "fin-l3-agg-186",
+  "fin-l3-agg-188",
+  "fin-l3-breadth-301",
+  "fin-l3-screen-190",
+  "fin-l3-top-200",
+  "fin-l3-top-201",
+  "fin-l4-2src-253",
+  "fin-l4-2src-254",
+  "fin-l4-2src-255",
+  "fin-l4-2src-256",
+  "fin-l4-future-233",
+  "fin-l4-future-307",
+  "fin-l4-nonexist-239",
+  "fin-l5-compare-276",
+  "fin-l5-compare-278",
+  "fin-l5-compare-279",
+  "fin-l5-profile-265",
+  "fin-l5-profile-273",
+  "fin-l5-profile-274",
+  "fin-l5-valuation-294",
+  "fin-l5-valuation-295"
+ ],
+ "arms": {
+  "dsh": {
+   "trials": 80,
+   "strict_wins": 80,
+   "grounded_wins": 80,
+   "primary_wins": 80,
+   "cost": null,
+   "measured_token_counters": {
+    "input": 700554,
+    "output": 56156,
+    "cache_read": 148350
+   },
+   "token_complete_trials": 80,
+   "cost_scenarios": {
+    "inclusive": {
+     "basis": "estimated_list_price",
+     "coverage": 1.0,
+     "cost_per_trial": 0.000401662175,
+     "cost_total_observed": 0.032132974,
+     "cost_total": 0.032132974,
+     "cost_per_success": 0.000401662175
+    },
+    "exclusive": {
+     "basis": "estimated_list_price",
+     "coverage": 1.0,
+     "cost_per_trial": 0.000412788425,
+     "cost_total_observed": 0.033023074,
+     "cost_total": 0.033023074,
+     "cost_per_success": 0.000412788425
+    }
+   }
+  },
+  "opencode": {
+   "trials": 80,
+   "strict_wins": 80,
+   "grounded_wins": 80,
+   "primary_wins": 80,
+   "cost": null,
+   "measured_token_counters": {
+    "input": 770306,
+    "output": 62040,
+    "cache_read": 222410
+   },
+   "token_complete_trials": 80,
+   "cost_scenarios": {
+    "inclusive": {
+     "basis": "estimated_list_price",
+     "coverage": 1.0,
+     "cost_per_trial": 0.00044274282499999994,
+     "cost_total_observed": 0.035419426,
+     "cost_total": 0.035419426,
+     "cost_per_success": 0.00044274282499999994
+    },
+    "exclusive": {
+     "basis": "estimated_list_price",
+     "coverage": 1.0,
+     "cost_per_trial": 0.000459423575,
+     "cost_total_observed": 0.036753886,
+     "cost_total": 0.036753886,
+     "cost_per_success": 0.000459423575
+    }
+   }
+  },
+  "opentrading_baseline": {
+   "trials": 80,
+   "strict_wins": 80,
+   "grounded_wins": 80,
+   "primary_wins": 80,
+   "cost": null,
+   "measured_token_counters": {
+    "input": 2954363,
+    "output": 75103,
+    "cache_read": 2069026
+   },
+   "token_complete_trials": 80,
+   "cost_scenarios": {
+    "inclusive": {
+     "basis": "estimated_list_price",
+     "coverage": 1.0,
+     "cost_per_trial": 0.00066510815,
+     "cost_total_observed": 0.053208652,
+     "cost_total": 0.053208652,
+     "cost_per_success": 0.00066510815
+    },
+    "exclusive": {
+     "basis": "estimated_list_price",
+     "coverage": 1.0,
+     "cost_per_trial": 0.0008202851000000001,
+     "cost_total_observed": 0.065622808,
+     "cost_total": 0.065622808,
+     "cost_per_success": 0.0008202851000000001
+    }
+   }
+  }
+ },
+ "rows": [
+  {
+   "trial_id": "fin-l1-bctc-112__dsh__r1",
+   "task": "fin-l1-bctc-112",
+   "arm": "dsh",
+   "run": 1,
+   "model": "deepseek/deepseek-v4.1-flash-1017",
+   "success": true,
+   "grounded_financial_correctness": true,
+   "requests": 2,
+   "tokens": {
+    "input": 6242,
+    "output": 497,
+    "reasoning": null,
+    "cache_read": 0,
+    "complete": true
+   },
+   "wall_ms": 14811
+  },
+  {
+   "trial_id": "fin-l1-bctc-112__dsh__r2",
+   "task": "fin-l1-bctc-112",
+   "arm": "dsh",
+   "run": 2,
+   "model": "deepseek/deepseek-v4.1-flash-1017",
+   "success": true,
+   "grounded_financial_correctness": true,
+   "requests": 2,
+   "tokens": {
+    "input": 6242,
+    "output": 569,
+    "reasoning": null,
+    "cache_read": 3072,
+    "complete": true
+   },
+   "wall_ms": 16232
+  },
+  {
+   "trial_id": "fin-l1-bctc-112__opencode__r1",
+   "task": "fin-l1-bctc-112",
+   "arm": "opencode",
+   "run": 1,
+   "model": "deepseek/deepseek-v4.1-flash-1017",
+   "success": true,
+   "grounded_financial_correctness": true,
+   "requests": 2,
+   "tokens": {
+    "input": 7165,
+    "output": 531,
+    "reasoning": null,
+    "cache_read": 3456,
+    "complete": true
+   },
+   "wall_ms": 11299
+  },
+  {
+   "trial_id": "fin-l1-bctc-112__opencode__r2",
+   "task": "fin-l1-bctc-112",
+   "arm": "opencode",
+   "run": 2,
+   "model": "deepseek/deepseek-v4.1-flash-1017",
+   "success": true,
+   "grounded_financial_correctness": true,
+   "requests": 2,
+   "tokens": {
+    "input": 7641,
+    "output": 471,
+    "reasoning": null,
+    "cache_read": 128,
+    "complete": true
+   },
+   "wall_ms": 15820
+  },
+  {
+   "trial_id": "fin-l1-bctc-112__opentrading_baseline__r1",
+   "task": "fin-l1-bctc-112",
+   "arm": "opentrading_baseline",
+   "run": 1,
+   "model": "deepseek/deepseek-v4.1-flash-1017",
+   "success": true,
+   "grounded_financial_correctness": true,
+   "requests": 4,
+   "tokens": {
+    "input": 39526,
+    "output": 831,
+    "reasoning": null,
+    "cache_read": 31360,
+    "complete": true
+   },
+   "wall_ms": 16070
+  },
+  {
+   "trial_id": "fin-l1-bctc-112__opentrading_baseline__r2",
+   "task": "fin-l1-bctc-112",
+   "arm": "opentrading_baseline",
+   "run": 2,
+   "model": "deepseek/deepseek-v4.1-flash-1017",
+   "success": true,
+   "grounded_financial_correctness": true,
+   "requests": 4,
+   "tokens": {
+    "input": 39112,
+    "output": 797,
+    "reasoning": null,
+    "cache_read": 34944,
+    "complete": true
+   },
+   "wall_ms": 17856
+  },
+  {
+   "trial_id": "fin-l1-bctc-113__dsh__r1",
+   "task": "fin-l1-bctc-113",
+   "arm": "dsh",
+   "run": 1,
+   "model": "deepseek/deepseek-v4.1-flash-1017",
+   "success": true,
+   "grounded_financial_correctness": true,
+   "requests": 2,
+   "tokens": {
+    "input": 6697,
+    "output": 524,
+    "reasoning": null,
+    "cache_read": 0,
+    "complete": true
+   },
+   "wall_ms": 10653
+  },
+  {
+   "trial_id": "fin-l1-bctc-113__dsh__r2",
+   "task": "fin-l1-bctc-113",
+   "arm": "dsh",
+   "run": 2,
+   "model": "deepseek/deepseek-v4.1-flash-1017",
+   "success": true,
+   "grounded_financial_correctness": true,
+   "requests": 2,
+   "tokens": {
+    "input": 6275,
+    "output": 617,
+    "reasoning": null,
+    "cache_read": 256,
+    "complete": true
+   },
+   "wall_ms": 12227
+  },
+  {
+   "trial_id": "fin-l1-bctc-113__opencode__r1",
+   "task": "fin-l1-bctc-113",
+   "arm": "opencode",
+   "run": 1,
+   "model": "deepseek/deepseek-v4.1-flash-1017",
+   "success": true,
+   "grounded_financial_correctness": true,
+   "requests": 2,
+   "tokens": {
+    "input": 7172,
+    "output": 612,
+    "reasoning": null,
+    "cache_read": 0,
+    "complete": true
+   },
+   "wall_ms": 13719
+  },
+  {
+   "trial_id": "fin-l1-bctc-113__opencode__r2",
+   "task": "fin-l1-bctc-113",
+   "arm": "opencode",
+   "run": 2,
+   "model": "deepseek/deepseek-v4.1-flash-1017",
+   "success": true,
+   "grounded_financial_correctness": true,
+   "requests": 2,
+   "tokens": {
+    "input": 7169,
+    "output": 478,
+    "reasoning": null,
+    "cache_read": 0,
+    "complete": true
+   },
+   "wall_ms": 13730
+  },
+  {
+   "trial_id": "fin-l1-bctc-113__opentrading_baseline__r1",
+   "task": "fin-l1-bctc-113",
+   "arm": "opentrading_baseline",
+   "run": 1,
+   "model": "deepseek/deepseek-v4.1-flash-1017",
+   "success": true,
+   "grounded_financial_correctness": true,
+   "requests": 5,
+   "tokens": {
+    "input": 48062,
+    "output": 865,
+    "reasoning": null,
+    "cache_read": 43264,
+    "complete": true
+   },
+   "wall_ms": 19053
+  },
+  {
+   "trial_id": "fin-l1-bctc-113__opentrading_baseline__r2",
+   "task": "fin-l1-bctc-113",
+   "arm": "opentrading_baseline",
+   "run": 2,
+   "model": "deepseek/deepseek-v4.1-flash-1017",
+   "success": true,
+   "grounded_financial_correctness": true,
+   "requests": 3,
+   "tokens": {
+    "input": 50037,
+    "output": 795,
+    "reasoning": null,
+    "cache_read": 20352,
+    "complete": true
+   },
+   "wall_ms": 13764
+  },
+  {
+   "trial_id": "fin-l1-bctc-114__dsh__r1",
+   "task": "fin-l1-bctc-114",
+   "arm": "dsh",
+   "run": 1,
+   "model": "deepseek/deepseek-v4.1-flash-1017",
+   "success": true,
+   "grounded_financial_correctness": true,
+   "requests": 2,
+   "tokens": {
+    "input": 6230,
+    "output": 517,
+    "reasoning": null,
+    "cache_read": 0,
+    "complete": true
+   },
+   "wall_ms": 28661
+  },
+  {
+   "trial_id": "fin-l1-bctc-114__dsh__r2",
+   "task": "fin-l1-bctc-114",
+   "arm": "dsh",
+   "run": 2,
+   "model": "deepseek/deepseek-v4.1-flash-1017",
+   "success": true,
+   "grounded_financial_correctness": true,
+   "requests": 3,
+   "tokens": {
+    "input": 9495,
+    "output": 639,
+    "reasoning": null,
+    "cache_read": 3070,
+    "complete": true
+   },
+   "wall_ms": 40022
+  },
+  {
+   "trial_id": "fin-l1-bctc-114__opencode__r1",
+   "task": "fin-l1-bctc-114",
+   "arm": "opencode",
+   "run": 1,
+   "model": "deepseek/deepseek-v4.1-flash-1017",
+   "success": true,
+   "grounded_financial_correctness": true,
+   "requests": 2,
+   "tokens": {
+    "input": 7614,
+    "output": 511,
+    "reasoning": null,
+    "cache_read": 0,
+    "complete": true
+   },
+   "wall_ms": 8345
+  },
+  {
+   "trial_id": "fin-l1-bctc-114__opencode__r2",
+   "task": "fin-l1-bctc-114",
+   "arm": "opencode",
+   "run": 2,
+   "model": "deepseek/deepseek-v4.1-flash-1017",
+   "success": true,
+   "grounded_financial_correctness": true,
+   "requests": 2,
+   "tokens": {
+    "input": 7160,
+    "output": 452,
+    "reasoning": null,
+    "cache_read": 3456,
+    "complete": true
+   },
+   "wall_ms": 13528
+  },
+  {
+   "trial_id": "fin-l1-bctc-114__opentrading_baseline__r1",
+   "task": "fin-l1-bctc-114",
+   "arm": "opentrading_baseline",
+   "run": 1,
+   "model": "deepseek/deepseek-v4.1-flash-1017",
+   "success": true,
+   "grounded_financial_correctness": true,
+   "requests": 4,
+   "tokens": {
+    "input": 49105,
+    "output": 806,
+    "reasoning": null,
+    "cache_read": 25088,
+    "complete": true
+   },
+   "wall_ms": 18783
+  },
+  {
+   "trial_id": "fin-l1-bctc-114__opentrading_baseline__r2",
+   "task": "fin-l1-bctc-114",
+   "arm": "opentrading_baseline",
+   "run": 2,
+   "model": "deepseek/deepseek-v4.1-flash-1017",
+   "success": true,
+   "grounded_financial_correctness": true,
+   "requests": 3,
+   "tokens": {
+    "input": 29018,
+    "output": 619,
+    "reasoning": null,
+    "cache_read": 22400,
+    "complete": true
+   },
+   "wall_ms": 17727
+  },
+  {
+   "trial_id": "fin-l1-bctc-115__dsh__r1",
+   "task": "fin-l1-bctc-115",
+   "arm": "dsh",
+   "run": 1,
+   "model": "deepseek/deepseek-v4.1-flash-1017",
+   "success": true,
+   "grounded_financial_correctness": true,
+   "requests": 2,
+   "tokens": {
+    "input": 6684,
+    "output": 543,
+    "reasoning": null,
+    "cache_read": 0,
+    "complete": true
+   },
+   "wall_ms": 15903
+  },
+  {
+   "trial_id": "fin-l1-bctc-115__dsh__r2",
+   "task": "fin-l1-bctc-115",
+   "arm": "dsh",
+   "run": 2,
+   "model": "deepseek/deepseek-v4.1-flash-1017",
+   "success": true,
+   "grounded_financial_correctness": true,
+   "requests": 2,
+   "tokens": {
+    "input": 6231,
+    "output": 505,
+    "reasoning": null,
+    "cache_read": 2944,
+    "complete": true
+   },
+   "wall_ms": 18346
+  },
+  {
+   "trial_id": "fin-l1-bctc-115__opencode__r1",
+   "task": "fin-l1-bctc-115",
+   "arm": "opencode",
+   "run": 1,
+   "model": "deepseek/deepseek-v4.1-flash-1017",
+   "success": true,
+   "grounded_financial_correctness": true,
+   "requests": 2,
+   "tokens": {
+    "input": 7636,
+    "output": 461,
+    "reasoning": null,
+    "cache_read": 0,
+    "complete": true
+   },
+   "wall_ms": 12665
+  },
+  {
+   "trial_id": "fin-l1-bctc-115__opencode__r2",
+   "task": "fin-l1-bctc-115",
+   "arm": "opencode",
+   "run": 2,
+   "model": "deepseek/deepseek-v4.1-flash-1017",
+   "success": true,
+   "grounded_financial_correctness": true,
+   "requests": 2,
+   "tokens": {
+    "input": 7220,
+    "output": 722,
+    "reasoning": null,
+    "cache_read": 256,
+    "complete": true
+   },
+   "wall_ms": 17039
+  },
+  {
+   "trial_id": "fin-l1-bctc-115__opentrading_baseline__r1",
+   "task": "fin-l1-bctc-115",
+   "arm": "opentrading_baseline",
+   "run": 1,
+   "model": "deepseek/deepseek-v4.1-flash-1017",
+   "success": true,
+   "grounded_financial_correctness": true,
+   "requests": 3,
+   "tokens": {
+    "input": 28892,
+    "output": 600,
+    "reasoning": null,
+    "cache_read": 22272,
+    "complete": true
+   },
+   "wall_ms": 13008
+  },
+  {
+   "trial_id": "fin-l1-bctc-115__opentrading_baseline__r2",
+   "task": "fin-l1-bctc-115",
+   "arm": "opentrading_baseline",
+   "run": 2,
+   "model": "deepseek/deepseek-v4.1-flash-1017",
+   "success": true,
+   "grounded_financial_correctness": true,
+   "requests": 3,
+   "tokens": {
+    "input": 29032,
+    "output": 646,
+    "reasoning": null,
+    "cache_read": 25344,
+    "complete": true
+   },
+   "wall_ms": 14086
+  },
+  {
+   "trial_id": "fin-l1-macro-140__dsh__r1",
+   "task": "fin-l1-macro-140",
+   "arm": "dsh",
+   "run": 1,
+   "model": "deepseek/deepseek-v4.1-flash-1017",
+   "success": true,
+   "grounded_financial_correctness": true,
+   "requests": 2,
+   "tokens": {
+    "input": 26145,
+    "output": 367,
+    "reasoning": null,
+    "cache_read": 12544,
+    "complete": true
+   },
+   "wall_ms": 15427
+  },
+  {
+   "trial_id": "fin-l1-macro-140__dsh__r2",
+   "task": "fin-l1-macro-140",
+   "arm": "dsh",
+   "run": 2,
+   "model": "deepseek/deepseek-v4.1-flash-1017",
+   "success": true,
+   "grounded_financial_correctness": true,
+   "requests": 2,
+   "tokens": {
+    "input": 16449,
+    "output": 369,
+    "reasoning": null,
+    "cache_read": 0,
+    "complete": true
+   },
+   "wall_ms": 11616
+  },
+  {
+   "trial_id": "fin-l1-macro-140__opencode__r1",
+   "task": "fin-l1-macro-140",
+   "arm": "opencode",
+   "run": 1,
+   "model": "deepseek/deepseek-v4.1-flash-1017",
+   "success": true,
+   "grounded_financial_correctness": true,
+   "requests": 2,
+   "tokens": {
+    "input": 7610,
+    "output": 410,
+    "reasoning": null,
+    "cache_read": 3456,
+    "complete": true
+   },
+   "wall_ms": 9470
+  },
+  {
+   "trial_id": "fin-l1-macro-140__opencode__r2",
+   "task": "fin-l1-macro-140",
+   "arm": "opencode",
+   "run": 2,
+   "model": "deepseek/deepseek-v4.1-flash-1017",
+   "success": true,
+   "grounded_financial_correctness": true,
+   "requests": 2,
+   "tokens": {
+    "input": 7352,
+    "output": 355,
+    "reasoning": null,
+    "cache_read": 0,
+    "complete": true
+   },
+   "wall_ms": 9638
+  },
+  {
+   "trial_id": "fin-l1-macro-140__opentrading_baseline__r1",
+   "task": "fin-l1-macro-140",
+   "arm": "opentrading_baseline",
+   "run": 1,
+   "model": "deepseek/deepseek-v4.1-flash-1017",
+   "success": true,
+   "grounded_financial_correctness": true,
+   "requests": 2,
+   "tokens": {
+    "input": 19348,
+    "output": 399,
+    "reasoning": null,
+    "cache_read": 15360,
+    "complete": true
+   },
+   "wall_ms": 11869
+  },
+  {
+   "trial_id": "fin-l1-macro-140__opentrading_baseline__r2",
+   "task": "fin-l1-macro-140",
+   "arm": "opentrading_baseline",
+   "run": 2,
+   "model": "deepseek/deepseek-v4.1-flash-1017",
+   "success": true,
+   "grounded_financial_correctness": true,
+   "requests": 2,
+   "tokens": {
+    "input": 19348,
+    "output": 526,
+    "reasoning": null,
+    "cache_read": 15232,
+    "complete": true
+   },
+   "wall_ms": 13161
+  },
+  {
+   "trial_id": "fin-l1-quote-crypto-122__dsh__r1",
+   "task": "fin-l1-quote-crypto-122",
+   "arm": "dsh",
+   "run": 1,
+   "model": "deepseek/deepseek-v4.1-flash-1017",
+   "success": true,
+   "grounded_financial_correctness": true,
+   "requests": 2,
+   "tokens": {
+    "input": 7533,
+    "output": 566,
+    "reasoning": null,
+    "cache_read": 0,
+    "complete": true
+   },
+   "wall_ms": 13385
+  },
+  {
+   "trial_id": "fin-l1-quote-crypto-122__dsh__r2",
+   "task": "fin-l1-quote-crypto-122",
+   "arm": "dsh",
+   "run": 2,
+   "model": "deepseek/deepseek-v4.1-flash-1017",
+   "success": true,
+   "grounded_financial_correctness": true,
+   "requests": 2,
+   "tokens": {
+    "input": 7441,
+    "output": 486,
+    "reasoning": null,
+    "cache_read": 512,
+    "complete": true
+   },
+   "wall_ms": 15633
+  },
+  {
+   "trial_id": "fin-l1-quote-crypto-122__opencode__r1",
+   "task": "fin-l1-quote-crypto-122",
+   "arm": "opencode",
+   "run": 1,
+   "model": "deepseek/deepseek-v4.1-flash-1017",
+   "success": true,
+   "grounded_financial_correctness": true,
+   "requests": 2,
+   "tokens": {
+    "input": 8370,
+    "output": 504,
+    "reasoning": null,
+    "cache_read": 3840,
+    "complete": true
+   },
+   "wall_ms": 15146
+  },
+  {
+   "trial_id": "fin-l1-quote-crypto-122__opencode__r2",
+   "task": "fin-l1-quote-crypto-122",
+   "arm": "opencode",
+   "run": 2,
+   "model": "deepseek/deepseek-v4.1-flash-1017",
+   "success": true,
+   "grounded_financial_correctness": true,
+   "requests": 2,
+   "tokens": {
+    "input": 8371,
+    "output": 468,
+    "reasoning": null,
+    "cache_read": 3968,
+    "complete": true
+   },
+   "wall_ms": 12056
+  },
+  {
+   "trial_id": "fin-l1-quote-crypto-122__opentrading_baseline__r1",
+   "task": "fin-l1-quote-crypto-122",
+   "arm": "opentrading_baseline",
+   "run": 1,
+   "model": "deepseek/deepseek-v4.1-flash-1017",
+   "success": true,
+   "grounded_financial_correctness": true,
+   "requests": 2,
+   "tokens": {
+    "input": 20056,
+    "output": 495,
+    "reasoning": null,
+    "cache_read": 15872,
+    "complete": true
+   },
+   "wall_ms": 10467
+  },
+  {
+   "trial_id": "fin-l1-quote-crypto-122__opentrading_baseline__r2",
+   "task": "fin-l1-quote-crypto-122",
+   "arm": "opentrading_baseline",
+   "run": 2,
+   "model": "deepseek/deepseek-v4.1-flash-1017",
+   "success": true,
+   "grounded_financial_correctness": true,
+   "requests": 2,
+   "tokens": {
+    "input": 20062,
+    "output": 475,
+    "reasoning": null,
+    "cache_read": 3584,
+    "complete": true
+   },
+   "wall_ms": 13445
+  },
+  {
+   "trial_id": "fin-l1-quote-gf-127__dsh__r1",
+   "task": "fin-l1-quote-gf-127",
+   "arm": "dsh",
+   "run": 1,
+   "model": "deepseek/deepseek-v4.1-flash-1017",
+   "success": true,
+   "grounded_financial_correctness": true,
+   "requests": 3,
+   "tokens": {
+    "input": 16692,
+    "output": 573,
+    "reasoning": null,
+    "cache_read": 3200,
+    "complete": true
+   },
+   "wall_ms": 21403
+  },
+  {
+   "trial_id": "fin-l1-quote-gf-127__dsh__r2",
+   "task": "fin-l1-quote-gf-127",
+   "arm": "dsh",
+   "run": 2,
+   "model": "deepseek/deepseek-v4.1-flash-1017",
+   "success": true,
+   "grounded_financial_correctness": true,
+   "requests": 2,
+   "tokens": {
+    "input": 10977,
+    "output": 414,
+    "reasoning": null,
+    "cache_read": 256,
+    "complete": true
+   },
+   "wall_ms": 16919
+  },
+  {
+   "trial_id": "fin-l1-quote-gf-127__opencode__r1",
+   "task": "fin-l1-quote-gf-127",
+   "arm": "opencode",
+   "run": 1,
+   "model": "deepseek/deepseek-v4.1-flash-1017",
+   "success": true,
+   "grounded_financial_correctness": true,
+   "requests": 3,
+   "tokens": {
+    "input": 15254,
+    "output": 454,
+    "reasoning": null,
+    "cache_read": 5376,
+    "complete": true
+   },
+   "wall_ms": 15547
+  },
+  {
+   "trial_id": "fin-l1-quote-gf-127__opencode__r2",
+   "task": "fin-l1-quote-gf-127",
+   "arm": "opencode",
+   "run": 2,
+   "model": "deepseek/deepseek-v4.1-flash-1017",
+   "success": true,
+   "grounded_financial_correctness": true,
+   "requests": 2,
+   "tokens": {
+    "input": 10253,
+    "output": 426,
+    "reasoning": null,
+    "cache_read": 4608,
+    "complete": true
+   },
+   "wall_ms": 15690
+  },
+  {
+   "trial_id": "fin-l1-quote-gf-127__opentrading_baseline__r1",
+   "task": "fin-l1-quote-gf-127",
+   "arm": "opentrading_baseline",
+   "run": 1,
+   "model": "deepseek/deepseek-v4.1-flash-1017",
+   "success": true,
+   "grounded_financial_correctness": true,
+   "requests": 3,
+   "tokens": {
+    "input": 28702,
+    "output": 486,
+    "reasoning": null,
+    "cache_read": 23808,
+    "complete": true
+   },
+   "wall_ms": 12066
+  },
+  {
+   "trial_id": "fin-l1-quote-gf-127__opentrading_baseline__r2",
+   "task": "fin-l1-quote-gf-127",
+   "arm": "opentrading_baseline",
+   "run": 2,
+   "model": "deepseek/deepseek-v4.1-flash-1017",
+   "success": true,
+   "grounded_financial_correctness": true,
+   "requests": 2,
+   "tokens": {
+    "input": 21400,
+    "output": 446,
+    "reasoning": null,
+    "cache_read": 12416,
+    "complete": true
+   },
+   "wall_ms": 12624
+  },
+  {
+   "trial_id": "fin-l1-quote-gf-128__dsh__r1",
+   "task": "fin-l1-quote-gf-128",
+   "arm": "dsh",
+   "run": 1,
+   "model": "deepseek/deepseek-v4.1-flash-1017",
+   "success": true,
+   "grounded_financial_correctness": true,
+   "requests": 2,
+   "tokens": {
+    "input": 10187,
+    "output": 447,
+    "reasoning": null,
+    "cache_read": 256,
+    "complete": true
+   },
+   "wall_ms": 15652
+  },
+  {
+   "trial_id": "fin-l1-quote-gf-128__dsh__r2",
+   "task": "fin-l1-quote-gf-128",
+   "arm": "dsh",
+   "run": 2,
+   "model": "deepseek/deepseek-v4.1-flash-1017",
+   "success": true,
+   "grounded_financial_correctness": true,
+   "requests": 2,
+   "tokens": {
+    "input": 10170,
+    "output": 438,
+    "reasoning": null,
+    "cache_read": 0,
+    "complete": true
+   },
+   "wall_ms": 13225
+  },
+  {
+   "trial_id": "fin-l1-quote-gf-128__opencode__r1",
+   "task": "fin-l1-quote-gf-128",
+   "arm": "opencode",
+   "run": 1,
+   "model": "deepseek/deepseek-v4.1-flash-1017",
+   "success": true,
+   "grounded_financial_correctness": true,
+   "requests": 2,
+   "tokens": {
+    "input": 11923,
+    "output": 400,
+    "reasoning": null,
+    "cache_read": 5376,
+    "complete": true
+   },
+   "wall_ms": 11682
+  },
+  {
+   "trial_id": "fin-l1-quote-gf-128__opencode__r2",
+   "task": "fin-l1-quote-gf-128",
+   "arm": "opencode",
+   "run": 2,
+   "model": "deepseek/deepseek-v4.1-flash-1017",
+   "success": true,
+   "grounded_financial_correctness": true,
+   "requests": 2,
+   "tokens": {
+    "input": 11968,
+    "output": 645,
+    "reasoning": null,
+    "cache_read": 5632,
+    "complete": true
+   },
+   "wall_ms": 34293
+  },
+  {
+   "trial_id": "fin-l1-quote-gf-128__opentrading_baseline__r1",
+   "task": "fin-l1-quote-gf-128",
+   "arm": "opentrading_baseline",
+   "run": 1,
+   "model": "deepseek/deepseek-v4.1-flash-1017",
+   "success": true,
+   "grounded_financial_correctness": true,
+   "requests": 2,
+   "tokens": {
+    "input": 23605,
+    "output": 448,
+    "reasoning": null,
+    "cache_read": 17408,
+    "complete": true
+   },
+   "wall_ms": 11463
+  },
+  {
+   "trial_id": "fin-l1-quote-gf-128__opentrading_baseline__r2",
+   "task": "fin-l1-quote-gf-128",
+   "arm": "opentrading_baseline",
+   "run": 2,
+   "model": "deepseek/deepseek-v4.1-flash-1017",
+   "success": true,
+   "grounded_financial_correctness": true,
+   "requests": 2,
+   "tokens": {
+    "input": 23597,
+    "output": 446,
+    "reasoning": null,
+    "cache_read": 6272,
+    "complete": true
+   },
+   "wall_ms": 11186
+  },
+  {
+   "trial_id": "fin-l1-quote-vn-103__dsh__r1",
+   "task": "fin-l1-quote-vn-103",
+   "arm": "dsh",
+   "run": 1,
+   "model": "deepseek/deepseek-v4.1-flash-1017",
+   "success": true,
+   "grounded_financial_correctness": true,
+   "requests": 2,
+   "tokens": {
+    "input": 12493,
+    "output": 597,
+    "reasoning": null,
+    "cache_read": 256,
+    "complete": true
+   },
+   "wall_ms": 16748
+  },
+  {
+   "trial_id": "fin-l1-quote-vn-103__dsh__r2",
+   "task": "fin-l1-quote-vn-103",
+   "arm": "dsh",
+   "run": 2,
+   "model": "deepseek/deepseek-v4.1-flash-1017",
+   "success": true,
+   "grounded_financial_correctness": true,
+   "requests": 3,
+   "tokens": {
+    "input": 28698,
+    "output": 428,
+    "reasoning": null,
+    "cache_read": 18944,
+    "complete": true
+   },
+   "wall_ms": 17824
+  },
+  {
+   "trial_id": "fin-l1-quote-vn-103__opencode__r1",
+   "task": "fin-l1-quote-vn-103",
+   "arm": "opencode",
+   "run": 1,
+   "model": "deepseek/deepseek-v4.1-flash-1017",
+   "success": true,
+   "grounded_financial_correctness": true,
+   "requests": 3,
+   "tokens": {
+    "input": 10607,
+    "output": 427,
+    "reasoning": null,
+    "cache_read": 6400,
+    "complete": true
+   },
+   "wall_ms": 14288
+  },
+  {
+   "trial_id": "fin-l1-quote-vn-103__opencode__r2",
+   "task": "fin-l1-quote-vn-103",
+   "arm": "opencode",
+   "run": 2,
+   "model": "deepseek/deepseek-v4.1-flash-1017",
+   "success": true,
+   "grounded_financial_correctness": true,
+   "requests": 2,
+   "tokens": {
+    "input": 19801,
+    "output": 446,
+    "reasoning": null,
+    "cache_read": 9856,
+    "complete": true
+   },
+   "wall_ms": 13487
+  },
+  {
+   "trial_id": "fin-l1-quote-vn-103__opentrading_baseline__r1",
+   "task": "fin-l1-quote-vn-103",
+   "arm": "opentrading_baseline",
+   "run": 1,
+   "model": "deepseek/deepseek-v4.1-flash-1017",
+   "success": true,
+   "grounded_financial_correctness": true,
+   "requests": 3,
+   "tokens": {
+    "input": 27631,
+    "output": 447,
+    "reasoning": null,
+    "cache_read": 23808,
+    "complete": true
+   },
+   "wall_ms": 13895
+  },
+  {
+   "trial_id": "fin-l1-quote-vn-103__opentrading_baseline__r2",
+   "task": "fin-l1-quote-vn-103",
+   "arm": "opentrading_baseline",
+   "run": 2,
+   "model": "deepseek/deepseek-v4.1-flash-1017",
+   "success": true,
+   "grounded_financial_correctness": true,
+   "requests": 2,
+   "tokens": {
+    "input": 18734,
+    "output": 833,
+    "reasoning": null,
+    "cache_read": 15104,
+    "complete": true
+   },
+   "wall_ms": 9858
+  },
+  {
+   "trial_id": "fin-l1-quote-vn-104__dsh__r1",
+   "task": "fin-l1-quote-vn-104",
+   "arm": "dsh",
+   "run": 1,
+   "model": "deepseek/deepseek-v4.1-flash-1017",
+   "success": true,
+   "grounded_financial_correctness": true,
+   "requests": 2,
+   "tokens": {
+    "input": 6137,
+    "output": 541,
+    "reasoning": null,
+    "cache_read": 256,
+    "complete": true
+   },
+   "wall_ms": 18803
+  },
+  {
+   "trial_id": "fin-l1-quote-vn-104__dsh__r2",
+   "task": "fin-l1-quote-vn-104",
+   "arm": "dsh",
+   "run": 2,
+   "model": "deepseek/deepseek-v4.1-flash-1017",
+   "success": true,
+   "grounded_financial_correctness": true,
+   "requests": 2,
+   "tokens": {
+    "input": 6224,
+    "output": 423,
+    "reasoning": null,
+    "cache_read": 0,
+    "complete": true
+   },
+   "wall_ms": 14754
+  },
+  {
+   "trial_id": "fin-l1-quote-vn-104__opencode__r1",
+   "task": "fin-l1-quote-vn-104",
+   "arm": "opencode",
+   "run": 1,
+   "model": "deepseek/deepseek-v4.1-flash-1017",
+   "success": true,
+   "grounded_financial_correctness": true,
+   "requests": 2,
+   "tokens": {
+    "input": 7136,
+    "output": 492,
+    "reasoning": null,
+    "cache_read": 256,
+    "complete": true
+   },
+   "wall_ms": 11749
+  },
+  {
+   "trial_id": "fin-l1-quote-vn-104__opencode__r2",
+   "task": "fin-l1-quote-vn-104",
+   "arm": "opencode",
+   "run": 2,
+   "model": "deepseek/deepseek-v4.1-flash-1017",
+   "success": true,
+   "grounded_financial_correctness": true,
+   "requests": 2,
+   "tokens": {
+    "input": 13425,
+    "output": 991,
+    "reasoning": null,
+    "cache_read": 256,
+    "complete": true
+   },
+   "wall_ms": 21054
+  },
+  {
+   "trial_id": "fin-l1-quote-vn-104__opentrading_baseline__r1",
+   "task": "fin-l1-quote-vn-104",
+   "arm": "opentrading_baseline",
+   "run": 1,
+   "model": "deepseek/deepseek-v4.1-flash-1017",
+   "success": true,
+   "grounded_financial_correctness": true,
+   "requests": 2,
+   "tokens": {
+    "input": 18824,
+    "output": 503,
+    "reasoning": null,
+    "cache_read": 12160,
+    "complete": true
+   },
+   "wall_ms": 17591
+  },
+  {
+   "trial_id": "fin-l1-quote-vn-104__opentrading_baseline__r2",
+   "task": "fin-l1-quote-vn-104",
+   "arm": "opentrading_baseline",
+   "run": 2,
+   "model": "deepseek/deepseek-v4.1-flash-1017",
+   "success": true,
+   "grounded_financial_correctness": true,
+   "requests": 2,
+   "tokens": {
+    "input": 18826,
+    "output": 500,
+    "reasoning": null,
+    "cache_read": 15360,
+    "complete": true
+   },
+   "wall_ms": 11962
+  },
+  {
+   "trial_id": "fin-l1-quote-vn-106__dsh__r1",
+   "task": "fin-l1-quote-vn-106",
+   "arm": "dsh",
+   "run": 1,
+   "model": "deepseek/deepseek-v4.1-flash-1017",
+   "success": true,
+   "grounded_financial_correctness": true,
+   "requests": 2,
+   "tokens": {
+    "input": 6230,
+    "output": 581,
+    "reasoning": null,
+    "cache_read": 3200,
+    "complete": true
+   },
+   "wall_ms": 18024
+  },
+  {
+   "trial_id": "fin-l1-quote-vn-106__dsh__r2",
+   "task": "fin-l1-quote-vn-106",
+   "arm": "dsh",
+   "run": 2,
+   "model": "deepseek/deepseek-v4.1-flash-1017",
+   "success": true,
+   "grounded_financial_correctness": true,
+   "requests": 2,
+   "tokens": {
+    "input": 12457,
+    "output": 399,
+    "reasoning": null,
+    "cache_read": 0,
+    "complete": true
+   },
+   "wall_ms": 16002
+  },
+  {
+   "trial_id": "fin-l1-quote-vn-106__opencode__r1",
+   "task": "fin-l1-quote-vn-106",
+   "arm": "opencode",
+   "run": 1,
+   "model": "deepseek/deepseek-v4.1-flash-1017",
+   "success": true,
+   "grounded_financial_correctness": true,
+   "requests": 2,
+   "tokens": {
+    "input": 13390,
+    "output": 390,
+    "reasoning": null,
+    "cache_read": 0,
+    "complete": true
+   },
+   "wall_ms": 11844
+  },
+  {
+   "trial_id": "fin-l1-quote-vn-106__opencode__r2",
+   "task": "fin-l1-quote-vn-106",
+   "arm": "opencode",
+   "run": 2,
+   "model": "deepseek/deepseek-v4.1-flash-1017",
+   "success": true,
+   "grounded_financial_correctness": true,
+   "requests": 2,
+   "tokens": {
+    "input": 7121,
+    "output": 442,
+    "reasoning": null,
+    "cache_read": 0,
+    "complete": true
+   },
+   "wall_ms": 14813
+  },
+  {
+   "trial_id": "fin-l1-quote-vn-106__opentrading_baseline__r1",
+   "task": "fin-l1-quote-vn-106",
+   "arm": "opentrading_baseline",
+   "run": 1,
+   "model": "deepseek/deepseek-v4.1-flash-1017",
+   "success": true,
+   "grounded_financial_correctness": true,
+   "requests": 3,
+   "tokens": {
+    "input": 28903,
+    "output": 801,
+    "reasoning": null,
+    "cache_read": 24320,
+    "complete": true
+   },
+   "wall_ms": 14827
+  },
+  {
+   "trial_id": "fin-l1-quote-vn-106__opentrading_baseline__r2",
+   "task": "fin-l1-quote-vn-106",
+   "arm": "opentrading_baseline",
+   "run": 2,
+   "model": "deepseek/deepseek-v4.1-flash-1017",
+   "success": true,
+   "grounded_financial_correctness": true,
+   "requests": 3,
+   "tokens": {
+    "input": 28904,
+    "output": 563,
+    "reasoning": null,
+    "cache_read": 20224,
+    "complete": true
+   },
+   "wall_ms": 14143
+  },
+  {
+   "trial_id": "fin-l1-quote-vn-107__dsh__r1",
+   "task": "fin-l1-quote-vn-107",
+   "arm": "dsh",
+   "run": 1,
+   "model": "deepseek/deepseek-v4.1-flash-1017",
+   "success": true,
+   "grounded_financial_correctness": true,
+   "requests": 2,
+   "tokens": {
+    "input": 6134,
+    "output": 335,
+    "reasoning": null,
+    "cache_read": 2944,
+    "complete": true
+   },
+   "wall_ms": 18485
+  },
+  {
+   "trial_id": "fin-l1-quote-vn-107__dsh__r2",
+   "task": "fin-l1-quote-vn-107",
+   "arm": "dsh",
+   "run": 2,
+   "model": "deepseek/deepseek-v4.1-flash-1017",
+   "success": true,
+   "grounded_financial_correctness": true,
+   "requests": 2,
+   "tokens": {
+    "input": 6211,
+    "output": 431,
+    "reasoning": null,
+    "cache_read": 256,
+    "complete": true
+   },
+   "wall_ms": 10939
+  },
+  {
+   "trial_id": "fin-l1-quote-vn-107__opencode__r1",
+   "task": "fin-l1-quote-vn-107",
+   "arm": "opencode",
+   "run": 1,
+   "model": "deepseek/deepseek-v4.1-flash-1017",
+   "success": true,
+   "grounded_financial_correctness": true,
+   "requests": 2,
+   "tokens": {
+    "input": 7114,
+    "output": 385,
+    "reasoning": null,
+    "cache_read": 256,
+    "complete": true
+   },
+   "wall_ms": 32077
+  },
+  {
+   "trial_id": "fin-l1-quote-vn-107__opencode__r2",
+   "task": "fin-l1-quote-vn-107",
+   "arm": "opencode",
+   "run": 2,
+   "model": "deepseek/deepseek-v4.1-flash-1017",
+   "success": true,
+   "grounded_financial_correctness": true,
+   "requests": 2,
+   "tokens": {
+    "input": 7129,
+    "output": 408,
+    "reasoning": null,
+    "cache_read": 0,
+    "complete": true
+   },
+   "wall_ms": 22661
+  },
+  {
+   "trial_id": "fin-l1-quote-vn-107__opentrading_baseline__r1",
+   "task": "fin-l1-quote-vn-107",
+   "arm": "opentrading_baseline",
+   "run": 1,
+   "model": "deepseek/deepseek-v4.1-flash-1017",
+   "success": true,
+   "grounded_financial_correctness": true,
+   "requests": 2,
+   "tokens": {
+    "input": 18827,
+    "output": 451,
+    "reasoning": null,
+    "cache_read": 15104,
+    "complete": true
+   },
+   "wall_ms": 14073
+  },
+  {
+   "trial_id": "fin-l1-quote-vn-107__opentrading_baseline__r2",
+   "task": "fin-l1-quote-vn-107",
+   "arm": "opentrading_baseline",
+   "run": 2,
+   "model": "deepseek/deepseek-v4.1-flash-1017",
+   "success": true,
+   "grounded_financial_correctness": true,
+   "requests": 2,
+   "tokens": {
+    "input": 18824,
+    "output": 497,
+    "reasoning": null,
+    "cache_read": 4096,
+    "complete": true
+   },
+   "wall_ms": 11922
+  },
+  {
+   "trial_id": "fin-l2-crypto-x-170__dsh__r1",
+   "task": "fin-l2-crypto-x-170",
+   "arm": "dsh",
+   "run": 1,
+   "model": "deepseek/deepseek-v4.1-flash-1017",
+   "success": true,
+   "grounded_financial_correctness": true,
+   "requests": 2,
+   "tokens": {
+    "input": 11835,
+    "output": 939,
+    "reasoning": null,
+    "cache_read": 0,
+    "complete": true
+   },
+   "wall_ms": 16460
+  },
+  {
+   "trial_id": "fin-l2-crypto-x-170__dsh__r2",
+   "task": "fin-l2-crypto-x-170",
+   "arm": "dsh",
+   "run": 2,
+   "model": "deepseek/deepseek-v4.1-flash-1017",
+   "success": true,
+   "grounded_financial_correctness": true,
+   "requests": 2,
+   "tokens": {
+    "input": 11862,
+    "output": 1406,
+    "reasoning": null,
+    "cache_read": 8192,
+    "complete": true
+   },
+   "wall_ms": 20175
+  },
+  {
+   "trial_id": "fin-l2-crypto-x-170__opencode__r1",
+   "task": "fin-l2-crypto-x-170",
+   "arm": "opencode",
+   "run": 1,
+   "model": "deepseek/deepseek-v4.1-flash-1017",
+   "success": true,
+   "grounded_financial_correctness": true,
+   "requests": 3,
+   "tokens": {
+    "input": 21558,
+    "output": 2209,
+    "reasoning": null,
+    "cache_read": 13568,
+    "complete": true
+   },
+   "wall_ms": 22603
+  },
+  {
+   "trial_id": "fin-l2-crypto-x-170__opencode__r2",
+   "task": "fin-l2-crypto-x-170",
+   "arm": "opencode",
+   "run": 2,
+   "model": "deepseek/deepseek-v4.1-flash-1017",
+   "success": true,
+   "grounded_financial_correctness": true,
+   "requests": 2,
+   "tokens": {
+    "input": 12893,
+    "output": 1589,
+    "reasoning": null,
+    "cache_read": 5888,
+    "complete": true
+   },
+   "wall_ms": 13807
+  },
+  {
+   "trial_id": "fin-l2-crypto-x-170__opentrading_baseline__r1",
+   "task": "fin-l2-crypto-x-170",
+   "arm": "opentrading_baseline",
+   "run": 1,
+   "model": "deepseek/deepseek-v4.1-flash-1017",
+   "success": true,
+   "grounded_financial_correctness": true,
+   "requests": 7,
+   "tokens": {
+    "input": 96767,
+    "output": 2185,
+    "reasoning": null,
+    "cache_read": 75520,
+    "complete": true
+   },
+   "wall_ms": 40199
+  },
+  {
+   "trial_id": "fin-l2-crypto-x-170__opentrading_baseline__r2",
+   "task": "fin-l2-crypto-x-170",
+   "arm": "opentrading_baseline",
+   "run": 2,
+   "model": "deepseek/deepseek-v4.1-flash-1017",
+   "success": true,
+   "grounded_financial_correctness": true,
+   "requests": 4,
+   "tokens": {
+    "input": 52693,
+    "output": 1273,
+    "reasoning": null,
+    "cache_read": 37120,
+    "complete": true
+   },
+   "wall_ms": 23079
+  },
+  {
+   "trial_id": "fin-l2-growth-144__dsh__r1",
+   "task": "fin-l2-growth-144",
+   "arm": "dsh",
+   "run": 1,
+   "model": "deepseek/deepseek-v4.1-flash-1017",
+   "success": true,
+   "grounded_financial_correctness": true,
+   "requests": 2,
+   "tokens": {
+    "input": 6197,
+    "output": 1368,
+    "reasoning": null,
+    "cache_read": 3072,
+    "complete": true
+   },
+   "wall_ms": 18228
+  },
+  {
+   "trial_id": "fin-l2-growth-144__dsh__r2",
+   "task": "fin-l2-growth-144",
+   "arm": "dsh",
+   "run": 2,
+   "model": "deepseek/deepseek-v4.1-flash-1017",
+   "success": true,
+   "grounded_financial_correctness": true,
+   "requests": 2,
+   "tokens": {
+    "input": 6163,
+    "output": 914,
+    "reasoning": null,
+    "cache_read": 0,
+    "complete": true
+   },
+   "wall_ms": 16450
+  },
+  {
+   "trial_id": "fin-l2-growth-144__opencode__r1",
+   "task": "fin-l2-growth-144",
+   "arm": "opencode",
+   "run": 1,
+   "model": "deepseek/deepseek-v4.1-flash-1017",
+   "success": true,
+   "grounded_financial_correctness": true,
+   "requests": 3,
+   "tokens": {
+    "input": 11940,
+    "output": 1237,
+    "reasoning": null,
+    "cache_read": 4608,
+    "complete": true
+   },
+   "wall_ms": 14614
+  },
+  {
+   "trial_id": "fin-l2-growth-144__opencode__r2",
+   "task": "fin-l2-growth-144",
+   "arm": "opencode",
+   "run": 2,
+   "model": "deepseek/deepseek-v4.1-flash-1017",
+   "success": true,
+   "grounded_financial_correctness": true,
+   "requests": 4,
+   "tokens": {
+    "input": 15666,
+    "output": 1563,
+    "reasoning": null,
+    "cache_read": 10240,
+    "complete": true
+   },
+   "wall_ms": 18127
+  },
+  {
+   "trial_id": "fin-l2-growth-144__opentrading_baseline__r1",
+   "task": "fin-l2-growth-144",
+   "arm": "opentrading_baseline",
+   "run": 1,
+   "model": "deepseek/deepseek-v4.1-flash-1017",
+   "success": true,
+   "grounded_financial_correctness": true,
+   "requests": 5,
+   "tokens": {
+    "input": 52680,
+    "output": 1009,
+    "reasoning": null,
+    "cache_read": 37888,
+    "complete": true
+   },
+   "wall_ms": 16449
+  },
+  {
+   "trial_id": "fin-l2-growth-144__opentrading_baseline__r2",
+   "task": "fin-l2-growth-144",
+   "arm": "opentrading_baseline",
+   "run": 2,
+   "model": "deepseek/deepseek-v4.1-flash-1017",
+   "success": true,
+   "grounded_financial_correctness": true,
+   "requests": 5,
+   "tokens": {
+    "input": 50928,
+    "output": 897,
+    "reasoning": null,
+    "cache_read": 43776,
+    "complete": true
+   },
+   "wall_ms": 17895
+  },
+  {
+   "trial_id": "fin-l2-growth-145__dsh__r1",
+   "task": "fin-l2-growth-145",
+   "arm": "dsh",
+   "run": 1,
+   "model": "deepseek/deepseek-v4.1-flash-1017",
+   "success": true,
+   "grounded_financial_correctness": true,
+   "requests": 2,
+   "tokens": {
+    "input": 7080,
+    "output": 1114,
+    "reasoning": null,
+    "cache_read": 3200,
+    "complete": true
+   },
+   "wall_ms": 18865
+  },
+  {
+   "trial_id": "fin-l2-growth-145__dsh__r2",
+   "task": "fin-l2-growth-145",
+   "arm": "dsh",
+   "run": 2,
+   "model": "deepseek/deepseek-v4.1-flash-1017",
+   "success": true,
+   "grounded_financial_correctness": true,
+   "requests": 2,
+   "tokens": {
+    "input": 6620,
+    "output": 1003,
+    "reasoning": null,
+    "cache_read": 0,
+    "complete": true
+   },
+   "wall_ms": 15751
+  },
+  {
+   "trial_id": "fin-l2-growth-145__opencode__r1",
+   "task": "fin-l2-growth-145",
+   "arm": "opencode",
+   "run": 1,
+   "model": "deepseek/deepseek-v4.1-flash-1017",
+   "success": true,
+   "grounded_financial_correctness": true,
+   "requests": 3,
+   "tokens": {
+    "input": 11947,
+    "output": 2186,
+    "reasoning": null,
+    "cache_read": 4864,
+    "complete": true
+   },
+   "wall_ms": 27382
+  },
+  {
+   "trial_id": "fin-l2-growth-145__opencode__r2",
+   "task": "fin-l2-growth-145",
+   "arm": "opencode",
+   "run": 2,
+   "model": "deepseek/deepseek-v4.1-flash-1017",
+   "success": true,
+   "grounded_financial_correctness": true,
+   "requests": 3,
+   "tokens": {
+    "input": 12517,
+    "output": 2032,
+    "reasoning": null,
+    "cache_read": 0,
+    "complete": true
+   },
+   "wall_ms": 18308
+  },
+  {
+   "trial_id": "fin-l2-growth-145__opentrading_baseline__r1",
+   "task": "fin-l2-growth-145",
+   "arm": "opentrading_baseline",
+   "run": 1,
+   "model": "deepseek/deepseek-v4.1-flash-1017",
+   "success": true,
+   "grounded_financial_correctness": true,
+   "requests": 3,
+   "tokens": {
+    "input": 30989,
+    "output": 538,
+    "reasoning": null,
+    "cache_read": 9856,
+    "complete": true
+   },
+   "wall_ms": 11493
+  },
+  {
+   "trial_id": "fin-l2-growth-145__opentrading_baseline__r2",
+   "task": "fin-l2-growth-145",
+   "arm": "opentrading_baseline",
+   "run": 2,
+   "model": "deepseek/deepseek-v4.1-flash-1017",
+   "success": true,
+   "grounded_financial_correctness": true,
+   "requests": 4,
+   "tokens": {
+    "input": 43745,
+    "output": 772,
+    "reasoning": null,
+    "cache_read": 22016,
+    "complete": true
+   },
+   "wall_ms": 15013
+  },
+  {
+   "trial_id": "fin-l2-margin-152__dsh__r1",
+   "task": "fin-l2-margin-152",
+   "arm": "dsh",
+   "run": 1,
+   "model": "deepseek/deepseek-v4.1-flash-1017",
+   "success": true,
+   "grounded_financial_correctness": true,
+   "requests": 2,
+   "tokens": {
+    "input": 5860,
+    "output": 604,
+    "reasoning": null,
+    "cache_read": 2688,
+    "complete": true
+   },
+   "wall_ms": 16466
+  },
+  {
+   "trial_id": "fin-l2-margin-152__dsh__r2",
+   "task": "fin-l2-margin-152",
+   "arm": "dsh",
+   "run": 2,
+   "model": "deepseek/deepseek-v4.1-flash-1017",
+   "success": true,
+   "grounded_financial_correctness": true,
+   "requests": 2,
+   "tokens": {
+    "input": 5864,
+    "output": 903,
+    "reasoning": null,
+    "cache_read": 0,
+    "complete": true
+   },
+   "wall_ms": 21620
+  },
+  {
+   "trial_id": "fin-l2-margin-152__opencode__r1",
+   "task": "fin-l2-margin-152",
+   "arm": "opencode",
+   "run": 1,
+   "model": "deepseek/deepseek-v4.1-flash-1017",
+   "success": true,
+   "grounded_financial_correctness": true,
+   "requests": 3,
+   "tokens": {
+    "input": 11135,
+    "output": 732,
+    "reasoning": null,
+    "cache_read": 7168,
+    "complete": true
+   },
+   "wall_ms": 12989
+  },
+  {
+   "trial_id": "fin-l2-margin-152__opencode__r2",
+   "task": "fin-l2-margin-152",
+   "arm": "opencode",
+   "run": 2,
+   "model": "deepseek/deepseek-v4.1-flash-1017",
+   "success": true,
+   "grounded_financial_correctness": true,
+   "requests": 3,
+   "tokens": {
+    "input": 11228,
+    "output": 1031,
+    "reasoning": null,
+    "cache_read": 3584,
+    "complete": true
+   },
+   "wall_ms": 22675
+  },
+  {
+   "trial_id": "fin-l2-margin-152__opentrading_baseline__r1",
+   "task": "fin-l2-margin-152",
+   "arm": "opentrading_baseline",
+   "run": 1,
+   "model": "deepseek/deepseek-v4.1-flash-1017",
+   "success": true,
+   "grounded_financial_correctness": true,
+   "requests": 4,
+   "tokens": {
+    "input": 40112,
+    "output": 769,
+    "reasoning": null,
+    "cache_read": 24832,
+    "complete": true
+   },
+   "wall_ms": 14896
+  },
+  {
+   "trial_id": "fin-l2-margin-152__opentrading_baseline__r2",
+   "task": "fin-l2-margin-152",
+   "arm": "opentrading_baseline",
+   "run": 2,
+   "model": "deepseek/deepseek-v4.1-flash-1017",
+   "success": true,
+   "grounded_financial_correctness": true,
+   "requests": 3,
+   "tokens": {
+    "input": 28101,
+    "output": 732,
+    "reasoning": null,
+    "cache_read": 15360,
+    "complete": true
+   },
+   "wall_ms": 16914
+  },
+  {
+   "trial_id": "fin-l2-margin-153__dsh__r1",
+   "task": "fin-l2-margin-153",
+   "arm": "dsh",
+   "run": 1,
+   "model": "deepseek/deepseek-v4.1-flash-1017",
+   "success": true,
+   "grounded_financial_correctness": true,
+   "requests": 2,
+   "tokens": {
+    "input": 5864,
+    "output": 597,
+    "reasoning": null,
+    "cache_read": 256,
+    "complete": true
+   },
+   "wall_ms": 16852
+  },
+  {
+   "trial_id": "fin-l2-margin-153__dsh__r2",
+   "task": "fin-l2-margin-153",
+   "arm": "dsh",
+   "run": 2,
+   "model": "deepseek/deepseek-v4.1-flash-1017",
+   "success": true,
+   "grounded_financial_correctness": true,
+   "requests": 2,
+   "tokens": {
+    "input": 5865,
+    "output": 565,
+    "reasoning": null,
+    "cache_read": 2944,
+    "complete": true
+   },
+   "wall_ms": 15421
+  },
+  {
+   "trial_id": "fin-l2-margin-153__opencode__r1",
+   "task": "fin-l2-margin-153",
+   "arm": "opencode",
+   "run": 1,
+   "model": "deepseek/deepseek-v4.1-flash-1017",
+   "success": true,
+   "grounded_financial_correctness": true,
+   "requests": 2,
+   "tokens": {
+    "input": 6797,
+    "output": 656,
+    "reasoning": null,
+    "cache_read": 256,
+    "complete": true
+   },
+   "wall_ms": 13391
+  },
+  {
+   "trial_id": "fin-l2-margin-153__opencode__r2",
+   "task": "fin-l2-margin-153",
+   "arm": "opencode",
+   "run": 2,
+   "model": "deepseek/deepseek-v4.1-flash-1017",
+   "success": true,
+   "grounded_financial_correctness": true,
+   "requests": 2,
+   "tokens": {
+    "input": 6791,
+    "output": 759,
+    "reasoning": null,
+    "cache_read": 3328,
+    "complete": true
+   },
+   "wall_ms": 15020
+  },
+  {
+   "trial_id": "fin-l2-margin-153__opentrading_baseline__r1",
+   "task": "fin-l2-margin-153",
+   "arm": "opentrading_baseline",
+   "run": 1,
+   "model": "deepseek/deepseek-v4.1-flash-1017",
+   "success": true,
+   "grounded_financial_correctness": true,
+   "requests": 4,
+   "tokens": {
+    "input": 40914,
+    "output": 807,
+    "reasoning": null,
+    "cache_read": 34688,
+    "complete": true
+   },
+   "wall_ms": 14186
+  },
+  {
+   "trial_id": "fin-l2-margin-153__opentrading_baseline__r2",
+   "task": "fin-l2-margin-153",
+   "arm": "opentrading_baseline",
+   "run": 2,
+   "model": "deepseek/deepseek-v4.1-flash-1017",
+   "success": true,
+   "grounded_financial_correctness": true,
+   "requests": 4,
+   "tokens": {
+    "input": 40142,
+    "output": 731,
+    "reasoning": null,
+    "cache_read": 19968,
+    "complete": true
+   },
+   "wall_ms": 16910
+  },
+  {
+   "trial_id": "fin-l3-agg-182__dsh__r1",
+   "task": "fin-l3-agg-182",
+   "arm": "dsh",
+   "run": 1,
+   "model": "deepseek/deepseek-v4.1-flash-1017",
+   "success": true,
+   "grounded_financial_correctness": true,
+   "requests": 2,
+   "tokens": {
+    "input": 6223,
+    "output": 515,
+    "reasoning": null,
+    "cache_read": 0,
+    "complete": true
+   },
+   "wall_ms": 15487
+  },
+  {
+   "trial_id": "fin-l3-agg-182__dsh__r2",
+   "task": "fin-l3-agg-182",
+   "arm": "dsh",
+   "run": 2,
+   "model": "deepseek/deepseek-v4.1-flash-1017",
+   "success": true,
+   "grounded_financial_correctness": true,
+   "requests": 3,
+   "tokens": {
+    "input": 10256,
+    "output": 876,
+    "reasoning": null,
+    "cache_read": 3584,
+    "complete": true
+   },
+   "wall_ms": 22785
+  },
+  {
+   "trial_id": "fin-l3-agg-182__opencode__r1",
+   "task": "fin-l3-agg-182",
+   "arm": "opencode",
+   "run": 1,
+   "model": "deepseek/deepseek-v4.1-flash-1017",
+   "success": true,
+   "grounded_financial_correctness": true,
+   "requests": 2,
+   "tokens": {
+    "input": 7108,
+    "output": 598,
+    "reasoning": null,
+    "cache_read": 256,
+    "complete": true
+   },
+   "wall_ms": 10922
+  },
+  {
+   "trial_id": "fin-l3-agg-182__opencode__r2",
+   "task": "fin-l3-agg-182",
+   "arm": "opencode",
+   "run": 2,
+   "model": "deepseek/deepseek-v4.1-flash-1017",
+   "success": true,
+   "grounded_financial_correctness": true,
+   "requests": 2,
+   "tokens": {
+    "input": 7126,
+    "output": 494,
+    "reasoning": null,
+    "cache_read": 256,
+    "complete": true
+   },
+   "wall_ms": 11046
+  },
+  {
+   "trial_id": "fin-l3-agg-182__opentrading_baseline__r1",
+   "task": "fin-l3-agg-182",
+   "arm": "opentrading_baseline",
+   "run": 1,
+   "model": "deepseek/deepseek-v4.1-flash-1017",
+   "success": true,
+   "grounded_financial_correctness": true,
+   "requests": 4,
+   "tokens": {
+    "input": 49563,
+    "output": 3257,
+    "reasoning": null,
+    "cache_read": 19494,
+    "complete": true
+   },
+   "wall_ms": 39905
+  },
+  {
+   "trial_id": "fin-l3-agg-182__opentrading_baseline__r2",
+   "task": "fin-l3-agg-182",
+   "arm": "opentrading_baseline",
+   "run": 2,
+   "model": "deepseek/deepseek-v4.1-flash-1017",
+   "success": true,
+   "grounded_financial_correctness": true,
+   "requests": 4,
+   "tokens": {
+    "input": 38956,
+    "output": 2267,
+    "reasoning": null,
+    "cache_read": 19580,
+    "complete": true
+   },
+   "wall_ms": 27666
+  },
+  {
+   "trial_id": "fin-l3-agg-183__dsh__r1",
+   "task": "fin-l3-agg-183",
+   "arm": "dsh",
+   "run": 1,
+   "model": "deepseek/deepseek-v4.1-flash-1017",
+   "success": true,
+   "grounded_financial_correctness": true,
+   "requests": 2,
+   "tokens": {
+    "input": 6116,
+    "output": 660,
+    "reasoning": null,
+    "cache_read": 0,
+    "complete": true
+   },
+   "wall_ms": 15907
+  },
+  {
+   "trial_id": "fin-l3-agg-183__dsh__r2",
+   "task": "fin-l3-agg-183",
+   "arm": "dsh",
+   "run": 2,
+   "model": "deepseek/deepseek-v4.1-flash-1017",
+   "success": true,
+   "grounded_financial_correctness": true,
+   "requests": 2,
+   "tokens": {
+    "input": 6797,
+    "output": 609,
+    "reasoning": null,
+    "cache_read": 256,
+    "complete": true
+   },
+   "wall_ms": 13861
+  },
+  {
+   "trial_id": "fin-l3-agg-183__opencode__r1",
+   "task": "fin-l3-agg-183",
+   "arm": "opencode",
+   "run": 1,
+   "model": "deepseek/deepseek-v4.1-flash-1017",
+   "success": true,
+   "grounded_financial_correctness": true,
+   "requests": 2,
+   "tokens": {
+    "input": 6826,
+    "output": 649,
+    "reasoning": null,
+    "cache_read": 3328,
+    "complete": true
+   },
+   "wall_ms": 10696
+  },
+  {
+   "trial_id": "fin-l3-agg-183__opencode__r2",
+   "task": "fin-l3-agg-183",
+   "arm": "opencode",
+   "run": 2,
+   "model": "deepseek/deepseek-v4.1-flash-1017",
+   "success": true,
+   "grounded_financial_correctness": true,
+   "requests": 2,
+   "tokens": {
+    "input": 8635,
+    "output": 591,
+    "reasoning": null,
+    "cache_read": 4224,
+    "complete": true
+   },
+   "wall_ms": 9588
+  },
+  {
+   "trial_id": "fin-l3-agg-183__opentrading_baseline__r1",
+   "task": "fin-l3-agg-183",
+   "arm": "opentrading_baseline",
+   "run": 1,
+   "model": "deepseek/deepseek-v4.1-flash-1017",
+   "success": true,
+   "grounded_financial_correctness": true,
+   "requests": 3,
+   "tokens": {
+    "input": 29207,
+    "output": 765,
+    "reasoning": null,
+    "cache_read": 15360,
+    "complete": true
+   },
+   "wall_ms": 19447
+  },
+  {
+   "trial_id": "fin-l3-agg-183__opentrading_baseline__r2",
+   "task": "fin-l3-agg-183",
+   "arm": "opentrading_baseline",
+   "run": 2,
+   "model": "deepseek/deepseek-v4.1-flash-1017",
+   "success": true,
+   "grounded_financial_correctness": true,
+   "requests": 4,
+   "tokens": {
+    "input": 39144,
+    "output": 1140,
+    "reasoning": null,
+    "cache_read": 25728,
+    "complete": true
+   },
+   "wall_ms": 18630
+  },
+  {
+   "trial_id": "fin-l3-agg-186__dsh__r1",
+   "task": "fin-l3-agg-186",
+   "arm": "dsh",
+   "run": 1,
+   "model": "deepseek/deepseek-v4.1-flash-1017",
+   "success": true,
+   "grounded_financial_correctness": true,
+   "requests": 2,
+   "tokens": {
+    "input": 6061,
+    "output": 436,
+    "reasoning": null,
+    "cache_read": 256,
+    "complete": true
+   },
+   "wall_ms": 12268
+  },
+  {
+   "trial_id": "fin-l3-agg-186__dsh__r2",
+   "task": "fin-l3-agg-186",
+   "arm": "dsh",
+   "run": 2,
+   "model": "deepseek/deepseek-v4.1-flash-1017",
+   "success": true,
+   "grounded_financial_correctness": true,
+   "requests": 2,
+   "tokens": {
+    "input": 6156,
+    "output": 395,
+    "reasoning": null,
+    "cache_read": 3840,
+    "complete": true
+   },
+   "wall_ms": 13037
+  },
+  {
+   "trial_id": "fin-l3-agg-186__opencode__r1",
+   "task": "fin-l3-agg-186",
+   "arm": "opencode",
+   "run": 1,
+   "model": "deepseek/deepseek-v4.1-flash-1017",
+   "success": true,
+   "grounded_financial_correctness": true,
+   "requests": 2,
+   "tokens": {
+    "input": 7869,
+    "output": 477,
+    "reasoning": null,
+    "cache_read": 0,
+    "complete": true
+   },
+   "wall_ms": 10957
+  },
+  {
+   "trial_id": "fin-l3-agg-186__opencode__r2",
+   "task": "fin-l3-agg-186",
+   "arm": "opencode",
+   "run": 2,
+   "model": "deepseek/deepseek-v4.1-flash-1017",
+   "success": true,
+   "grounded_financial_correctness": true,
+   "requests": 2,
+   "tokens": {
+    "input": 7126,
+    "output": 482,
+    "reasoning": null,
+    "cache_read": 0,
+    "complete": true
+   },
+   "wall_ms": 15305
+  },
+  {
+   "trial_id": "fin-l3-agg-186__opentrading_baseline__r1",
+   "task": "fin-l3-agg-186",
+   "arm": "opentrading_baseline",
+   "run": 1,
+   "model": "deepseek/deepseek-v4.1-flash-1017",
+   "success": true,
+   "grounded_financial_correctness": true,
+   "requests": 7,
+   "tokens": {
+    "input": 72083,
+    "output": 1157,
+    "reasoning": null,
+    "cache_read": 67456,
+    "complete": true
+   },
+   "wall_ms": 22353
+  },
+  {
+   "trial_id": "fin-l3-agg-186__opentrading_baseline__r2",
+   "task": "fin-l3-agg-186",
+   "arm": "opentrading_baseline",
+   "run": 2,
+   "model": "deepseek/deepseek-v4.1-flash-1017",
+   "success": true,
+   "grounded_financial_correctness": true,
+   "requests": 3,
+   "tokens": {
+    "input": 29013,
+    "output": 654,
+    "reasoning": null,
+    "cache_read": 18688,
+    "complete": true
+   },
+   "wall_ms": 15746
+  },
+  {
+   "trial_id": "fin-l3-agg-188__dsh__r1",
+   "task": "fin-l3-agg-188",
+   "arm": "dsh",
+   "run": 1,
+   "model": "deepseek/deepseek-v4.1-flash-1017",
+   "success": true,
+   "grounded_financial_correctness": true,
+   "requests": 2,
+   "tokens": {
+    "input": 6130,
+    "output": 439,
+    "reasoning": null,
+    "cache_read": 3072,
+    "complete": true
+   },
+   "wall_ms": 16656
+  },
+  {
+   "trial_id": "fin-l3-agg-188__dsh__r2",
+   "task": "fin-l3-agg-188",
+   "arm": "dsh",
+   "run": 2,
+   "model": "deepseek/deepseek-v4.1-flash-1017",
+   "success": true,
+   "grounded_financial_correctness": true,
+   "requests": 2,
+   "tokens": {
+    "input": 5736,
+    "output": 495,
+    "reasoning": null,
+    "cache_read": 256,
+    "complete": true
+   },
+   "wall_ms": 15913
+  },
+  {
+   "trial_id": "fin-l3-agg-188__opencode__r1",
+   "task": "fin-l3-agg-188",
+   "arm": "opencode",
+   "run": 1,
+   "model": "deepseek/deepseek-v4.1-flash-1017",
+   "success": true,
+   "grounded_financial_correctness": true,
+   "requests": 2,
+   "tokens": {
+    "input": 6836,
+    "output": 640,
+    "reasoning": null,
+    "cache_read": 3328,
+    "complete": true
+   },
+   "wall_ms": 21442
+  },
+  {
+   "trial_id": "fin-l3-agg-188__opencode__r2",
+   "task": "fin-l3-agg-188",
+   "arm": "opencode",
+   "run": 2,
+   "model": "deepseek/deepseek-v4.1-flash-1017",
+   "success": true,
+   "grounded_financial_correctness": true,
+   "requests": 2,
+   "tokens": {
+    "input": 7110,
+    "output": 565,
+    "reasoning": null,
+    "cache_read": 3584,
+    "complete": true
+   },
+   "wall_ms": 21591
+  },
+  {
+   "trial_id": "fin-l3-agg-188__opentrading_baseline__r1",
+   "task": "fin-l3-agg-188",
+   "arm": "opentrading_baseline",
+   "run": 1,
+   "model": "deepseek/deepseek-v4.1-flash-1017",
+   "success": true,
+   "grounded_financial_correctness": true,
+   "requests": 3,
+   "tokens": {
+    "input": 29048,
+    "output": 745,
+    "reasoning": null,
+    "cache_read": 25088,
+    "complete": true
+   },
+   "wall_ms": 22749
+  },
+  {
+   "trial_id": "fin-l3-agg-188__opentrading_baseline__r2",
+   "task": "fin-l3-agg-188",
+   "arm": "opentrading_baseline",
+   "run": 2,
+   "model": "deepseek/deepseek-v4.1-flash-1017",
+   "success": true,
+   "grounded_financial_correctness": true,
+   "requests": 4,
+   "tokens": {
+    "input": 39792,
+    "output": 1235,
+    "reasoning": null,
+    "cache_read": 35584,
+    "complete": true
+   },
+   "wall_ms": 20735
+  },
+  {
+   "trial_id": "fin-l3-breadth-301__dsh__r1",
+   "task": "fin-l3-breadth-301",
+   "arm": "dsh",
+   "run": 1,
+   "model": "deepseek/deepseek-v4.1-flash-1017",
+   "success": true,
+   "grounded_financial_correctness": true,
+   "requests": 2,
+   "tokens": {
+    "input": 6166,
+    "output": 529,
+    "reasoning": null,
+    "cache_read": 3072,
+    "complete": true
+   },
+   "wall_ms": 17147
+  },
+  {
+   "trial_id": "fin-l3-breadth-301__dsh__r2",
+   "task": "fin-l3-breadth-301",
+   "arm": "dsh",
+   "run": 2,
+   "model": "deepseek/deepseek-v4.1-flash-1017",
+   "success": true,
+   "grounded_financial_correctness": true,
+   "requests": 2,
+   "tokens": {
+    "input": 5689,
+    "output": 408,
+    "reasoning": null,
+    "cache_read": 0,
+    "complete": true
+   },
+   "wall_ms": 16201
+  },
+  {
+   "trial_id": "fin-l3-breadth-301__opencode__r1",
+   "task": "fin-l3-breadth-301",
+   "arm": "opencode",
+   "run": 1,
+   "model": "deepseek/deepseek-v4.1-flash-1017",
+   "success": true,
+   "grounded_financial_correctness": true,
+   "requests": 2,
+   "tokens": {
+    "input": 7105,
+    "output": 482,
+    "reasoning": null,
+    "cache_read": 0,
+    "complete": true
+   },
+   "wall_ms": 15054
+  },
+  {
+   "trial_id": "fin-l3-breadth-301__opencode__r2",
+   "task": "fin-l3-breadth-301",
+   "arm": "opencode",
+   "run": 2,
+   "model": "deepseek/deepseek-v4.1-flash-1017",
+   "success": true,
+   "grounded_financial_correctness": true,
+   "requests": 2,
+   "tokens": {
+    "input": 6189,
+    "output": 499,
+    "reasoning": null,
+    "cache_read": 3072,
+    "complete": true
+   },
+   "wall_ms": 13082
+  },
+  {
+   "trial_id": "fin-l3-breadth-301__opentrading_baseline__r1",
+   "task": "fin-l3-breadth-301",
+   "arm": "opentrading_baseline",
+   "run": 1,
+   "model": "deepseek/deepseek-v4.1-flash-1017",
+   "success": true,
+   "grounded_financial_correctness": true,
+   "requests": 2,
+   "tokens": {
+    "input": 40322,
+    "output": 608,
+    "reasoning": null,
+    "cache_read": 19840,
+    "complete": true
+   },
+   "wall_ms": 14076
+  },
+  {
+   "trial_id": "fin-l3-breadth-301__opentrading_baseline__r2",
+   "task": "fin-l3-breadth-301",
+   "arm": "opentrading_baseline",
+   "run": 2,
+   "model": "deepseek/deepseek-v4.1-flash-1017",
+   "success": true,
+   "grounded_financial_correctness": true,
+   "requests": 2,
+   "tokens": {
+    "input": 29550,
+    "output": 651,
+    "reasoning": null,
+    "cache_read": 0,
+    "complete": true
+   },
+   "wall_ms": 10440
+  },
+  {
+   "trial_id": "fin-l3-screen-190__dsh__r1",
+   "task": "fin-l3-screen-190",
+   "arm": "dsh",
+   "run": 1,
+   "model": "deepseek/deepseek-v4.1-flash-1017",
+   "success": true,
+   "grounded_financial_correctness": true,
+   "requests": 3,
+   "tokens": {
+    "input": 10587,
+    "output": 790,
+    "reasoning": null,
+    "cache_read": 512,
+    "complete": true
+   },
+   "wall_ms": 20115
+  },
+  {
+   "trial_id": "fin-l3-screen-190__dsh__r2",
+   "task": "fin-l3-screen-190",
+   "arm": "dsh",
+   "run": 2,
+   "model": "deepseek/deepseek-v4.1-flash-1017",
+   "success": true,
+   "grounded_financial_correctness": true,
+   "requests": 2,
+   "tokens": {
+    "input": 6523,
+    "output": 664,
+    "reasoning": null,
+    "cache_read": 3072,
+    "complete": true
+   },
+   "wall_ms": 19738
+  },
+  {
+   "trial_id": "fin-l3-screen-190__opencode__r1",
+   "task": "fin-l3-screen-190",
+   "arm": "opencode",
+   "run": 1,
+   "model": "deepseek/deepseek-v4.1-flash-1017",
+   "success": true,
+   "grounded_financial_correctness": true,
+   "requests": 3,
+   "tokens": {
+    "input": 12011,
+    "output": 751,
+    "reasoning": null,
+    "cache_read": 3968,
+    "complete": true
+   },
+   "wall_ms": 23774
+  },
+  {
+   "trial_id": "fin-l3-screen-190__opencode__r2",
+   "task": "fin-l3-screen-190",
+   "arm": "opencode",
+   "run": 2,
+   "model": "deepseek/deepseek-v4.1-flash-1017",
+   "success": true,
+   "grounded_financial_correctness": true,
+   "requests": 3,
+   "tokens": {
+    "input": 11751,
+    "output": 699,
+    "reasoning": null,
+    "cache_read": 3840,
+    "complete": true
+   },
+   "wall_ms": 17484
+  },
+  {
+   "trial_id": "fin-l3-screen-190__opentrading_baseline__r1",
+   "task": "fin-l3-screen-190",
+   "arm": "opentrading_baseline",
+   "run": 1,
+   "model": "deepseek/deepseek-v4.1-flash-1017",
+   "success": true,
+   "grounded_financial_correctness": true,
+   "requests": 3,
+   "tokens": {
+    "input": 29238,
+    "output": 777,
+    "reasoning": null,
+    "cache_read": 25216,
+    "complete": true
+   },
+   "wall_ms": 17295
+  },
+  {
+   "trial_id": "fin-l3-screen-190__opentrading_baseline__r2",
+   "task": "fin-l3-screen-190",
+   "arm": "opentrading_baseline",
+   "run": 2,
+   "model": "deepseek/deepseek-v4.1-flash-1017",
+   "success": true,
+   "grounded_financial_correctness": true,
+   "requests": 2,
+   "tokens": {
+    "input": 29519,
+    "output": 721,
+    "reasoning": null,
+    "cache_read": 0,
+    "complete": true
+   },
+   "wall_ms": 10213
+  },
+  {
+   "trial_id": "fin-l3-top-200__dsh__r1",
+   "task": "fin-l3-top-200",
+   "arm": "dsh",
+   "run": 1,
+   "model": "deepseek/deepseek-v4.1-flash-1017",
+   "success": true,
+   "grounded_financial_correctness": true,
+   "requests": 2,
+   "tokens": {
+    "input": 6016,
+    "output": 638,
+    "reasoning": null,
+    "cache_read": 0,
+    "complete": true
+   },
+   "wall_ms": 18345
+  },
+  {
+   "trial_id": "fin-l3-top-200__dsh__r2",
+   "task": "fin-l3-top-200",
+   "arm": "dsh",
+   "run": 2,
+   "model": "deepseek/deepseek-v4.1-flash-1017",
+   "success": true,
+   "grounded_financial_correctness": true,
+   "requests": 2,
+   "tokens": {
+    "input": 6015,
+    "output": 715,
+    "reasoning": null,
+    "cache_read": 2816,
+    "complete": true
+   },
+   "wall_ms": 18235
+  },
+  {
+   "trial_id": "fin-l3-top-200__opencode__r1",
+   "task": "fin-l3-top-200",
+   "arm": "opencode",
+   "run": 1,
+   "model": "deepseek/deepseek-v4.1-flash-1017",
+   "success": true,
+   "grounded_financial_correctness": true,
+   "requests": 2,
+   "tokens": {
+    "input": 6940,
+    "output": 661,
+    "reasoning": null,
+    "cache_read": 3200,
+    "complete": true
+   },
+   "wall_ms": 15516
+  },
+  {
+   "trial_id": "fin-l3-top-200__opencode__r2",
+   "task": "fin-l3-top-200",
+   "arm": "opencode",
+   "run": 2,
+   "model": "deepseek/deepseek-v4.1-flash-1017",
+   "success": true,
+   "grounded_financial_correctness": true,
+   "requests": 2,
+   "tokens": {
+    "input": 7047,
+    "output": 780,
+    "reasoning": null,
+    "cache_read": 3200,
+    "complete": true
+   },
+   "wall_ms": 15398
+  },
+  {
+   "trial_id": "fin-l3-top-200__opentrading_baseline__r1",
+   "task": "fin-l3-top-200",
+   "arm": "opentrading_baseline",
+   "run": 1,
+   "model": "deepseek/deepseek-v4.1-flash-1017",
+   "success": true,
+   "grounded_financial_correctness": true,
+   "requests": 2,
+   "tokens": {
+    "input": 18626,
+    "output": 792,
+    "reasoning": null,
+    "cache_read": 15104,
+    "complete": true
+   },
+   "wall_ms": 11619
+  },
+  {
+   "trial_id": "fin-l3-top-200__opentrading_baseline__r2",
+   "task": "fin-l3-top-200",
+   "arm": "opentrading_baseline",
+   "run": 2,
+   "model": "deepseek/deepseek-v4.1-flash-1017",
+   "success": true,
+   "grounded_financial_correctness": true,
+   "requests": 2,
+   "tokens": {
+    "input": 18584,
+    "output": 735,
+    "reasoning": null,
+    "cache_read": 15872,
+    "complete": true
+   },
+   "wall_ms": 14490
+  },
+  {
+   "trial_id": "fin-l3-top-201__dsh__r1",
+   "task": "fin-l3-top-201",
+   "arm": "dsh",
+   "run": 1,
+   "model": "deepseek/deepseek-v4.1-flash-1017",
+   "success": true,
+   "grounded_financial_correctness": true,
+   "requests": 2,
+   "tokens": {
+    "input": 6067,
+    "output": 739,
+    "reasoning": null,
+    "cache_read": 0,
+    "complete": true
+   },
+   "wall_ms": 17529
+  },
+  {
+   "trial_id": "fin-l3-top-201__dsh__r2",
+   "task": "fin-l3-top-201",
+   "arm": "dsh",
+   "run": 2,
+   "model": "deepseek/deepseek-v4.1-flash-1017",
+   "success": true,
+   "grounded_financial_correctness": true,
+   "requests": 2,
+   "tokens": {
+    "input": 6018,
+    "output": 609,
+    "reasoning": null,
+    "cache_read": 2816,
+    "complete": true
+   },
+   "wall_ms": 31397
+  },
+  {
+   "trial_id": "fin-l3-top-201__opencode__r1",
+   "task": "fin-l3-top-201",
+   "arm": "opencode",
+   "run": 1,
+   "model": "deepseek/deepseek-v4.1-flash-1017",
+   "success": true,
+   "grounded_financial_correctness": true,
+   "requests": 2,
+   "tokens": {
+    "input": 6945,
+    "output": 623,
+    "reasoning": null,
+    "cache_read": 0,
+    "complete": true
+   },
+   "wall_ms": 13429
+  },
+  {
+   "trial_id": "fin-l3-top-201__opencode__r2",
+   "task": "fin-l3-top-201",
+   "arm": "opencode",
+   "run": 2,
+   "model": "deepseek/deepseek-v4.1-flash-1017",
+   "success": true,
+   "grounded_financial_correctness": true,
+   "requests": 2,
+   "tokens": {
+    "input": 6946,
+    "output": 633,
+    "reasoning": null,
+    "cache_read": 3328,
+    "complete": true
+   },
+   "wall_ms": 22151
+  },
+  {
+   "trial_id": "fin-l3-top-201__opentrading_baseline__r1",
+   "task": "fin-l3-top-201",
+   "arm": "opentrading_baseline",
+   "run": 1,
+   "model": "deepseek/deepseek-v4.1-flash-1017",
+   "success": true,
+   "grounded_financial_correctness": true,
+   "requests": 2,
+   "tokens": {
+    "input": 18577,
+    "output": 610,
+    "reasoning": null,
+    "cache_read": 15744,
+    "complete": true
+   },
+   "wall_ms": 12117
+  },
+  {
+   "trial_id": "fin-l3-top-201__opentrading_baseline__r2",
+   "task": "fin-l3-top-201",
+   "arm": "opentrading_baseline",
+   "run": 2,
+   "model": "deepseek/deepseek-v4.1-flash-1017",
+   "success": true,
+   "grounded_financial_correctness": true,
+   "requests": 2,
+   "tokens": {
+    "input": 18630,
+    "output": 706,
+    "reasoning": null,
+    "cache_read": 14848,
+    "complete": true
+   },
+   "wall_ms": 39167
+  },
+  {
+   "trial_id": "fin-l4-2src-253__dsh__r1",
+   "task": "fin-l4-2src-253",
+   "arm": "dsh",
+   "run": 1,
+   "model": "deepseek/deepseek-v4.1-flash-1017",
+   "success": true,
+   "grounded_financial_correctness": true,
+   "requests": 2,
+   "tokens": {
+    "input": 8921,
+    "output": 783,
+    "reasoning": null,
+    "cache_read": 256,
+    "complete": true
+   },
+   "wall_ms": 18991
+  },
+  {
+   "trial_id": "fin-l4-2src-253__dsh__r2",
+   "task": "fin-l4-2src-253",
+   "arm": "dsh",
+   "run": 2,
+   "model": "deepseek/deepseek-v4.1-flash-1017",
+   "success": true,
+   "grounded_financial_correctness": true,
+   "requests": 2,
+   "tokens": {
+    "input": 8890,
+    "output": 797,
+    "reasoning": null,
+    "cache_read": 4224,
+    "complete": true
+   },
+   "wall_ms": 15880
+  },
+  {
+   "trial_id": "fin-l4-2src-253__opencode__r1",
+   "task": "fin-l4-2src-253",
+   "arm": "opencode",
+   "run": 1,
+   "model": "deepseek/deepseek-v4.1-flash-1017",
+   "success": true,
+   "grounded_financial_correctness": true,
+   "requests": 2,
+   "tokens": {
+    "input": 10939,
+    "output": 704,
+    "reasoning": null,
+    "cache_read": 0,
+    "complete": true
+   },
+   "wall_ms": 14005
+  },
+  {
+   "trial_id": "fin-l4-2src-253__opencode__r2",
+   "task": "fin-l4-2src-253",
+   "arm": "opencode",
+   "run": 2,
+   "model": "deepseek/deepseek-v4.1-flash-1017",
+   "success": true,
+   "grounded_financial_correctness": true,
+   "requests": 2,
+   "tokens": {
+    "input": 9942,
+    "output": 842,
+    "reasoning": null,
+    "cache_read": 4608,
+    "complete": true
+   },
+   "wall_ms": 12441
+  },
+  {
+   "trial_id": "fin-l4-2src-253__opentrading_baseline__r1",
+   "task": "fin-l4-2src-253",
+   "arm": "opentrading_baseline",
+   "run": 1,
+   "model": "deepseek/deepseek-v4.1-flash-1017",
+   "success": true,
+   "grounded_financial_correctness": true,
+   "requests": 4,
+   "tokens": {
+    "input": 45629,
+    "output": 1326,
+    "reasoning": null,
+    "cache_read": 28032,
+    "complete": true
+   },
+   "wall_ms": 14267
+  },
+  {
+   "trial_id": "fin-l4-2src-253__opentrading_baseline__r2",
+   "task": "fin-l4-2src-253",
+   "arm": "opentrading_baseline",
+   "run": 2,
+   "model": "deepseek/deepseek-v4.1-flash-1017",
+   "success": true,
+   "grounded_financial_correctness": true,
+   "requests": 5,
+   "tokens": {
+    "input": 59104,
+    "output": 1642,
+    "reasoning": null,
+    "cache_read": 45440,
+    "complete": true
+   },
+   "wall_ms": 25037
+  },
+  {
+   "trial_id": "fin-l4-2src-254__dsh__r1",
+   "task": "fin-l4-2src-254",
+   "arm": "dsh",
+   "run": 1,
+   "model": "deepseek/deepseek-v4.1-flash-1017",
+   "success": true,
+   "grounded_financial_correctness": true,
+   "requests": 2,
+   "tokens": {
+    "input": 8824,
+    "output": 751,
+    "reasoning": null,
+    "cache_read": 0,
+    "complete": true
+   },
+   "wall_ms": 19292
+  },
+  {
+   "trial_id": "fin-l4-2src-254__dsh__r2",
+   "task": "fin-l4-2src-254",
+   "arm": "dsh",
+   "run": 2,
+   "model": "deepseek/deepseek-v4.1-flash-1017",
+   "success": true,
+   "grounded_financial_correctness": true,
+   "requests": 2,
+   "tokens": {
+    "input": 8829,
+    "output": 846,
+    "reasoning": null,
+    "cache_read": 0,
+    "complete": true
+   },
+   "wall_ms": 20077
+  },
+  {
+   "trial_id": "fin-l4-2src-254__opencode__r1",
+   "task": "fin-l4-2src-254",
+   "arm": "opencode",
+   "run": 1,
+   "model": "deepseek/deepseek-v4.1-flash-1017",
+   "success": true,
+   "grounded_financial_correctness": true,
+   "requests": 2,
+   "tokens": {
+    "input": 9760,
+    "output": 805,
+    "reasoning": null,
+    "cache_read": 256,
+    "complete": true
+   },
+   "wall_ms": 11637
+  },
+  {
+   "trial_id": "fin-l4-2src-254__opencode__r2",
+   "task": "fin-l4-2src-254",
+   "arm": "opencode",
+   "run": 2,
+   "model": "deepseek/deepseek-v4.1-flash-1017",
+   "success": true,
+   "grounded_financial_correctness": true,
+   "requests": 2,
+   "tokens": {
+    "input": 9802,
+    "output": 787,
+    "reasoning": null,
+    "cache_read": 4864,
+    "complete": true
+   },
+   "wall_ms": 14272
+  },
+  {
+   "trial_id": "fin-l4-2src-254__opentrading_baseline__r1",
+   "task": "fin-l4-2src-254",
+   "arm": "opentrading_baseline",
+   "run": 1,
+   "model": "deepseek/deepseek-v4.1-flash-1017",
+   "success": true,
+   "grounded_financial_correctness": true,
+   "requests": 4,
+   "tokens": {
+    "input": 45506,
+    "output": 1288,
+    "reasoning": null,
+    "cache_read": 39424,
+    "complete": true
+   },
+   "wall_ms": 20987
+  },
+  {
+   "trial_id": "fin-l4-2src-254__opentrading_baseline__r2",
+   "task": "fin-l4-2src-254",
+   "arm": "opentrading_baseline",
+   "run": 2,
+   "model": "deepseek/deepseek-v4.1-flash-1017",
+   "success": true,
+   "grounded_financial_correctness": true,
+   "requests": 5,
+   "tokens": {
+    "input": 58477,
+    "output": 1614,
+    "reasoning": null,
+    "cache_read": 46848,
+    "complete": true
+   },
+   "wall_ms": 23040
+  },
+  {
+   "trial_id": "fin-l4-2src-255__dsh__r1",
+   "task": "fin-l4-2src-255",
+   "arm": "dsh",
+   "run": 1,
+   "model": "deepseek/deepseek-v4.1-flash-1017",
+   "success": true,
+   "grounded_financial_correctness": true,
+   "requests": 2,
+   "tokens": {
+    "input": 15789,
+    "output": 832,
+    "reasoning": null,
+    "cache_read": 0,
+    "complete": true
+   },
+   "wall_ms": 18515
+  },
+  {
+   "trial_id": "fin-l4-2src-255__dsh__r2",
+   "task": "fin-l4-2src-255",
+   "arm": "dsh",
+   "run": 2,
+   "model": "deepseek/deepseek-v4.1-flash-1017",
+   "success": true,
+   "grounded_financial_correctness": true,
+   "requests": 2,
+   "tokens": {
+    "input": 22963,
+    "output": 764,
+    "reasoning": null,
+    "cache_read": 0,
+    "complete": true
+   },
+   "wall_ms": 14119
+  },
+  {
+   "trial_id": "fin-l4-2src-255__opencode__r1",
+   "task": "fin-l4-2src-255",
+   "arm": "opencode",
+   "run": 1,
+   "model": "deepseek/deepseek-v4.1-flash-1017",
+   "success": true,
+   "grounded_financial_correctness": true,
+   "requests": 2,
+   "tokens": {
+    "input": 16854,
+    "output": 801,
+    "reasoning": null,
+    "cache_read": 128,
+    "complete": true
+   },
+   "wall_ms": 12458
+  },
+  {
+   "trial_id": "fin-l4-2src-255__opencode__r2",
+   "task": "fin-l4-2src-255",
+   "arm": "opencode",
+   "run": 2,
+   "model": "deepseek/deepseek-v4.1-flash-1017",
+   "success": true,
+   "grounded_financial_correctness": true,
+   "requests": 2,
+   "tokens": {
+    "input": 9776,
+    "output": 868,
+    "reasoning": null,
+    "cache_read": 4608,
+    "complete": true
+   },
+   "wall_ms": 15532
+  },
+  {
+   "trial_id": "fin-l4-2src-255__opentrading_baseline__r1",
+   "task": "fin-l4-2src-255",
+   "arm": "opentrading_baseline",
+   "run": 1,
+   "model": "deepseek/deepseek-v4.1-flash-1017",
+   "success": true,
+   "grounded_financial_correctness": true,
+   "requests": 5,
+   "tokens": {
+    "input": 55492,
+    "output": 1837,
+    "reasoning": null,
+    "cache_read": 38912,
+    "complete": true
+   },
+   "wall_ms": 20705
+  },
+  {
+   "trial_id": "fin-l4-2src-255__opentrading_baseline__r2",
+   "task": "fin-l4-2src-255",
+   "arm": "opentrading_baseline",
+   "run": 2,
+   "model": "deepseek/deepseek-v4.1-flash-1017",
+   "success": true,
+   "grounded_financial_correctness": true,
+   "requests": 6,
+   "tokens": {
+    "input": 71727,
+    "output": 2160,
+    "reasoning": null,
+    "cache_read": 64768,
+    "complete": true
+   },
+   "wall_ms": 26567
+  },
+  {
+   "trial_id": "fin-l4-2src-256__dsh__r1",
+   "task": "fin-l4-2src-256",
+   "arm": "dsh",
+   "run": 1,
+   "model": "deepseek/deepseek-v4.1-flash-1017",
+   "success": true,
+   "grounded_financial_correctness": true,
+   "requests": 2,
+   "tokens": {
+    "input": 8837,
+    "output": 820,
+    "reasoning": null,
+    "cache_read": 0,
+    "complete": true
+   },
+   "wall_ms": 15151
+  },
+  {
+   "trial_id": "fin-l4-2src-256__dsh__r2",
+   "task": "fin-l4-2src-256",
+   "arm": "dsh",
+   "run": 2,
+   "model": "deepseek/deepseek-v4.1-flash-1017",
+   "success": true,
+   "grounded_financial_correctness": true,
+   "requests": 2,
+   "tokens": {
+    "input": 15698,
+    "output": 759,
+    "reasoning": null,
+    "cache_read": 0,
+    "complete": true
+   },
+   "wall_ms": 16915
+  },
+  {
+   "trial_id": "fin-l4-2src-256__opencode__r1",
+   "task": "fin-l4-2src-256",
+   "arm": "opencode",
+   "run": 1,
+   "model": "deepseek/deepseek-v4.1-flash-1017",
+   "success": true,
+   "grounded_financial_correctness": true,
+   "requests": 2,
+   "tokens": {
+    "input": 9770,
+    "output": 804,
+    "reasoning": null,
+    "cache_read": 256,
+    "complete": true
+   },
+   "wall_ms": 10969
+  },
+  {
+   "trial_id": "fin-l4-2src-256__opencode__r2",
+   "task": "fin-l4-2src-256",
+   "arm": "opencode",
+   "run": 2,
+   "model": "deepseek/deepseek-v4.1-flash-1017",
+   "success": true,
+   "grounded_financial_correctness": true,
+   "requests": 3,
+   "tokens": {
+    "input": 14842,
+    "output": 1043,
+    "reasoning": null,
+    "cache_read": 5504,
+    "complete": true
+   },
+   "wall_ms": 21127
+  },
+  {
+   "trial_id": "fin-l4-2src-256__opentrading_baseline__r1",
+   "task": "fin-l4-2src-256",
+   "arm": "opentrading_baseline",
+   "run": 1,
+   "model": "deepseek/deepseek-v4.1-flash-1017",
+   "success": true,
+   "grounded_financial_correctness": true,
+   "requests": 6,
+   "tokens": {
+    "input": 70627,
+    "output": 1777,
+    "reasoning": null,
+    "cache_read": 58368,
+    "complete": true
+   },
+   "wall_ms": 19808
+  },
+  {
+   "trial_id": "fin-l4-2src-256__opentrading_baseline__r2",
+   "task": "fin-l4-2src-256",
+   "arm": "opentrading_baseline",
+   "run": 2,
+   "model": "deepseek/deepseek-v4.1-flash-1017",
+   "success": true,
+   "grounded_financial_correctness": true,
+   "requests": 5,
+   "tokens": {
+    "input": 57909,
+    "output": 1652,
+    "reasoning": null,
+    "cache_read": 52096,
+    "complete": true
+   },
+   "wall_ms": 22036
+  },
+  {
+   "trial_id": "fin-l4-future-233__dsh__r1",
+   "task": "fin-l4-future-233",
+   "arm": "dsh",
+   "run": 1,
+   "model": "deepseek/deepseek-v4.1-flash-1017",
+   "success": true,
+   "grounded_financial_correctness": true,
+   "requests": 2,
+   "tokens": {
+    "input": 10986,
+    "output": 1597,
+    "reasoning": null,
+    "cache_read": 256,
+    "complete": true
+   },
+   "wall_ms": 21493
+  },
+  {
+   "trial_id": "fin-l4-future-233__dsh__r2",
+   "task": "fin-l4-future-233",
+   "arm": "dsh",
+   "run": 2,
+   "model": "deepseek/deepseek-v4.1-flash-1017",
+   "success": true,
+   "grounded_financial_correctness": true,
+   "requests": 2,
+   "tokens": {
+    "input": 11012,
+    "output": 1545,
+    "reasoning": null,
+    "cache_read": 4864,
+    "complete": true
+   },
+   "wall_ms": 25874
+  },
+  {
+   "trial_id": "fin-l4-future-233__opencode__r1",
+   "task": "fin-l4-future-233",
+   "arm": "opencode",
+   "run": 1,
+   "model": "deepseek/deepseek-v4.1-flash-1017",
+   "success": true,
+   "grounded_financial_correctness": true,
+   "requests": 2,
+   "tokens": {
+    "input": 9918,
+    "output": 2732,
+    "reasoning": null,
+    "cache_read": 0,
+    "complete": true
+   },
+   "wall_ms": 20615
+  },
+  {
+   "trial_id": "fin-l4-future-233__opencode__r2",
+   "task": "fin-l4-future-233",
+   "arm": "opencode",
+   "run": 2,
+   "model": "deepseek/deepseek-v4.1-flash-1017",
+   "success": true,
+   "grounded_financial_correctness": true,
+   "requests": 2,
+   "tokens": {
+    "input": 11887,
+    "output": 1191,
+    "reasoning": null,
+    "cache_read": 5376,
+    "complete": true
+   },
+   "wall_ms": 29940
+  },
+  {
+   "trial_id": "fin-l4-future-233__opentrading_baseline__r1",
+   "task": "fin-l4-future-233",
+   "arm": "opentrading_baseline",
+   "run": 1,
+   "model": "deepseek/deepseek-v4.1-flash-1017",
+   "success": true,
+   "grounded_financial_correctness": true,
+   "requests": 2,
+   "tokens": {
+    "input": 23543,
+    "output": 565,
+    "reasoning": null,
+    "cache_read": 3712,
+    "complete": true
+   },
+   "wall_ms": 11018
+  },
+  {
+   "trial_id": "fin-l4-future-233__opentrading_baseline__r2",
+   "task": "fin-l4-future-233",
+   "arm": "opentrading_baseline",
+   "run": 2,
+   "model": "deepseek/deepseek-v4.1-flash-1017",
+   "success": true,
+   "grounded_financial_correctness": true,
+   "requests": 3,
+   "tokens": {
+    "input": 28715,
+    "output": 933,
+    "reasoning": null,
+    "cache_read": 25088,
+    "complete": true
+   },
+   "wall_ms": 14731
+  },
+  {
+   "trial_id": "fin-l4-future-307__dsh__r1",
+   "task": "fin-l4-future-307",
+   "arm": "dsh",
+   "run": 1,
+   "model": "deepseek/deepseek-v4.1-flash-1017",
+   "success": true,
+   "grounded_financial_correctness": true,
+   "requests": 2,
+   "tokens": {
+    "input": 6395,
+    "output": 727,
+    "reasoning": null,
+    "cache_read": 3072,
+    "complete": true
+   },
+   "wall_ms": 16762
+  },
+  {
+   "trial_id": "fin-l4-future-307__dsh__r2",
+   "task": "fin-l4-future-307",
+   "arm": "dsh",
+   "run": 2,
+   "model": "deepseek/deepseek-v4.1-flash-1017",
+   "success": true,
+   "grounded_financial_correctness": true,
+   "requests": 2,
+   "tokens": {
+    "input": 12672,
+    "output": 718,
+    "reasoning": null,
+    "cache_read": 0,
+    "complete": true
+   },
+   "wall_ms": 17206
+  },
+  {
+   "trial_id": "fin-l4-future-307__opencode__r1",
+   "task": "fin-l4-future-307",
+   "arm": "opencode",
+   "run": 1,
+   "model": "deepseek/deepseek-v4.1-flash-1017",
+   "success": true,
+   "grounded_financial_correctness": true,
+   "requests": 2,
+   "tokens": {
+    "input": 13687,
+    "output": 708,
+    "reasoning": null,
+    "cache_read": 0,
+    "complete": true
+   },
+   "wall_ms": 9540
+  },
+  {
+   "trial_id": "fin-l4-future-307__opencode__r2",
+   "task": "fin-l4-future-307",
+   "arm": "opencode",
+   "run": 2,
+   "model": "deepseek/deepseek-v4.1-flash-1017",
+   "success": true,
+   "grounded_financial_correctness": true,
+   "requests": 2,
+   "tokens": {
+    "input": 7320,
+    "output": 985,
+    "reasoning": null,
+    "cache_read": 3840,
+    "complete": true
+   },
+   "wall_ms": 11929
+  },
+  {
+   "trial_id": "fin-l4-future-307__opentrading_baseline__r1",
+   "task": "fin-l4-future-307",
+   "arm": "opentrading_baseline",
+   "run": 1,
+   "model": "deepseek/deepseek-v4.1-flash-1017",
+   "success": true,
+   "grounded_financial_correctness": true,
+   "requests": 2,
+   "tokens": {
+    "input": 18984,
+    "output": 901,
+    "reasoning": null,
+    "cache_read": 15744,
+    "complete": true
+   },
+   "wall_ms": 13314
+  },
+  {
+   "trial_id": "fin-l4-future-307__opentrading_baseline__r2",
+   "task": "fin-l4-future-307",
+   "arm": "opentrading_baseline",
+   "run": 2,
+   "model": "deepseek/deepseek-v4.1-flash-1017",
+   "success": true,
+   "grounded_financial_correctness": true,
+   "requests": 2,
+   "tokens": {
+    "input": 18466,
+    "output": 918,
+    "reasoning": null,
+    "cache_read": 15104,
+    "complete": true
+   },
+   "wall_ms": 12939
+  },
+  {
+   "trial_id": "fin-l4-nonexist-239__dsh__r1",
+   "task": "fin-l4-nonexist-239",
+   "arm": "dsh",
+   "run": 1,
+   "model": "deepseek/deepseek-v4.1-flash-1017",
+   "success": true,
+   "grounded_financial_correctness": true,
+   "requests": 2,
+   "tokens": {
+    "input": 5082,
+    "output": 574,
+    "reasoning": null,
+    "cache_read": 0,
+    "complete": true
+   },
+   "wall_ms": 17351
+  },
+  {
+   "trial_id": "fin-l4-nonexist-239__dsh__r2",
+   "task": "fin-l4-nonexist-239",
+   "arm": "dsh",
+   "run": 2,
+   "model": "deepseek/deepseek-v4.1-flash-1017",
+   "success": true,
+   "grounded_financial_correctness": true,
+   "requests": 2,
+   "tokens": {
+    "input": 5081,
+    "output": 516,
+    "reasoning": null,
+    "cache_read": 2560,
+    "complete": true
+   },
+   "wall_ms": 14866
+  },
+  {
+   "trial_id": "fin-l4-nonexist-239__opencode__r1",
+   "task": "fin-l4-nonexist-239",
+   "arm": "opencode",
+   "run": 1,
+   "model": "deepseek/deepseek-v4.1-flash-1017",
+   "success": true,
+   "grounded_financial_correctness": true,
+   "requests": 2,
+   "tokens": {
+    "input": 5985,
+    "output": 368,
+    "reasoning": null,
+    "cache_read": 256,
+    "complete": true
+   },
+   "wall_ms": 12434
+  },
+  {
+   "trial_id": "fin-l4-nonexist-239__opencode__r2",
+   "task": "fin-l4-nonexist-239",
+   "arm": "opencode",
+   "run": 2,
+   "model": "deepseek/deepseek-v4.1-flash-1017",
+   "success": true,
+   "grounded_financial_correctness": true,
+   "requests": 2,
+   "tokens": {
+    "input": 6007,
+    "output": 458,
+    "reasoning": null,
+    "cache_read": 256,
+    "complete": true
+   },
+   "wall_ms": 13051
+  },
+  {
+   "trial_id": "fin-l4-nonexist-239__opentrading_baseline__r1",
+   "task": "fin-l4-nonexist-239",
+   "arm": "opentrading_baseline",
+   "run": 1,
+   "model": "deepseek/deepseek-v4.1-flash-1017",
+   "success": true,
+   "grounded_financial_correctness": true,
+   "requests": 2,
+   "tokens": {
+    "input": 17698,
+    "output": 501,
+    "reasoning": null,
+    "cache_read": 14976,
+    "complete": true
+   },
+   "wall_ms": 11439
+  },
+  {
+   "trial_id": "fin-l4-nonexist-239__opentrading_baseline__r2",
+   "task": "fin-l4-nonexist-239",
+   "arm": "opentrading_baseline",
+   "run": 2,
+   "model": "deepseek/deepseek-v4.1-flash-1017",
+   "success": true,
+   "grounded_financial_correctness": true,
+   "requests": 2,
+   "tokens": {
+    "input": 17688,
+    "output": 493,
+    "reasoning": null,
+    "cache_read": 10752,
+    "complete": true
+   },
+   "wall_ms": 12445
+  },
+  {
+   "trial_id": "fin-l5-compare-276__dsh__r1",
+   "task": "fin-l5-compare-276",
+   "arm": "dsh",
+   "run": 1,
+   "model": "deepseek/deepseek-v4.1-flash-1017",
+   "success": true,
+   "grounded_financial_correctness": true,
+   "requests": 2,
+   "tokens": {
+    "input": 7076,
+    "output": 766,
+    "reasoning": null,
+    "cache_read": 256,
+    "complete": true
+   },
+   "wall_ms": 12218
+  },
+  {
+   "trial_id": "fin-l5-compare-276__dsh__r2",
+   "task": "fin-l5-compare-276",
+   "arm": "dsh",
+   "run": 2,
+   "model": "deepseek/deepseek-v4.1-flash-1017",
+   "success": true,
+   "grounded_financial_correctness": true,
+   "requests": 3,
+   "tokens": {
+    "input": 10984,
+    "output": 819,
+    "reasoning": null,
+    "cache_read": 3840,
+    "complete": true
+   },
+   "wall_ms": 33203
+  },
+  {
+   "trial_id": "fin-l5-compare-276__opencode__r1",
+   "task": "fin-l5-compare-276",
+   "arm": "opencode",
+   "run": 1,
+   "model": "deepseek/deepseek-v4.1-flash-1017",
+   "success": true,
+   "grounded_financial_correctness": true,
+   "requests": 3,
+   "tokens": {
+    "input": 12326,
+    "output": 778,
+    "reasoning": null,
+    "cache_read": 768,
+    "complete": true
+   },
+   "wall_ms": 14746
+  },
+  {
+   "trial_id": "fin-l5-compare-276__opencode__r2",
+   "task": "fin-l5-compare-276",
+   "arm": "opencode",
+   "run": 2,
+   "model": "deepseek/deepseek-v4.1-flash-1017",
+   "success": true,
+   "grounded_financial_correctness": true,
+   "requests": 2,
+   "tokens": {
+    "input": 7922,
+    "output": 666,
+    "reasoning": null,
+    "cache_read": 3928,
+    "complete": true
+   },
+   "wall_ms": 27470
+  },
+  {
+   "trial_id": "fin-l5-compare-276__opentrading_baseline__r1",
+   "task": "fin-l5-compare-276",
+   "arm": "opentrading_baseline",
+   "run": 1,
+   "model": "deepseek/deepseek-v4.1-flash-1017",
+   "success": true,
+   "grounded_financial_correctness": true,
+   "requests": 3,
+   "tokens": {
+    "input": 29521,
+    "output": 797,
+    "reasoning": null,
+    "cache_read": 0,
+    "complete": true
+   },
+   "wall_ms": 13441
+  },
+  {
+   "trial_id": "fin-l5-compare-276__opentrading_baseline__r2",
+   "task": "fin-l5-compare-276",
+   "arm": "opentrading_baseline",
+   "run": 2,
+   "model": "deepseek/deepseek-v4.1-flash-1017",
+   "success": true,
+   "grounded_financial_correctness": true,
+   "requests": 3,
+   "tokens": {
+    "input": 29533,
+    "output": 783,
+    "reasoning": null,
+    "cache_read": 25344,
+    "complete": true
+   },
+   "wall_ms": 18757
+  },
+  {
+   "trial_id": "fin-l5-compare-278__dsh__r1",
+   "task": "fin-l5-compare-278",
+   "arm": "dsh",
+   "run": 1,
+   "model": "deepseek/deepseek-v4.1-flash-1017",
+   "success": true,
+   "grounded_financial_correctness": true,
+   "requests": 3,
+   "tokens": {
+    "input": 11194,
+    "output": 819,
+    "reasoning": null,
+    "cache_read": 6784,
+    "complete": true
+   },
+   "wall_ms": 18699
+  },
+  {
+   "trial_id": "fin-l5-compare-278__dsh__r2",
+   "task": "fin-l5-compare-278",
+   "arm": "dsh",
+   "run": 2,
+   "model": "deepseek/deepseek-v4.1-flash-1017",
+   "success": true,
+   "grounded_financial_correctness": true,
+   "requests": 3,
+   "tokens": {
+    "input": 10832,
+    "output": 827,
+    "reasoning": null,
+    "cache_read": 6784,
+    "complete": true
+   },
+   "wall_ms": 19546
+  },
+  {
+   "trial_id": "fin-l5-compare-278__opencode__r1",
+   "task": "fin-l5-compare-278",
+   "arm": "opencode",
+   "run": 1,
+   "model": "deepseek/deepseek-v4.1-flash-1017",
+   "success": true,
+   "grounded_financial_correctness": true,
+   "requests": 3,
+   "tokens": {
+    "input": 12446,
+    "output": 778,
+    "reasoning": null,
+    "cache_read": 4096,
+    "complete": true
+   },
+   "wall_ms": 14193
+  },
+  {
+   "trial_id": "fin-l5-compare-278__opencode__r2",
+   "task": "fin-l5-compare-278",
+   "arm": "opencode",
+   "run": 2,
+   "model": "deepseek/deepseek-v4.1-flash-1017",
+   "success": true,
+   "grounded_financial_correctness": true,
+   "requests": 3,
+   "tokens": {
+    "input": 12430,
+    "output": 728,
+    "reasoning": null,
+    "cache_read": 3968,
+    "complete": true
+   },
+   "wall_ms": 19309
+  },
+  {
+   "trial_id": "fin-l5-compare-278__opentrading_baseline__r1",
+   "task": "fin-l5-compare-278",
+   "arm": "opentrading_baseline",
+   "run": 1,
+   "model": "deepseek/deepseek-v4.1-flash-1017",
+   "success": true,
+   "grounded_financial_correctness": true,
+   "requests": 3,
+   "tokens": {
+    "input": 29512,
+    "output": 762,
+    "reasoning": null,
+    "cache_read": 13824,
+    "complete": true
+   },
+   "wall_ms": 16169
+  },
+  {
+   "trial_id": "fin-l5-compare-278__opentrading_baseline__r2",
+   "task": "fin-l5-compare-278",
+   "arm": "opentrading_baseline",
+   "run": 2,
+   "model": "deepseek/deepseek-v4.1-flash-1017",
+   "success": true,
+   "grounded_financial_correctness": true,
+   "requests": 2,
+   "tokens": {
+    "input": 19215,
+    "output": 635,
+    "reasoning": null,
+    "cache_read": 15360,
+    "complete": true
+   },
+   "wall_ms": 12025
+  },
+  {
+   "trial_id": "fin-l5-compare-279__dsh__r1",
+   "task": "fin-l5-compare-279",
+   "arm": "dsh",
+   "run": 1,
+   "model": "deepseek/deepseek-v4.1-flash-1017",
+   "success": true,
+   "grounded_financial_correctness": true,
+   "requests": 3,
+   "tokens": {
+    "input": 10857,
+    "output": 803,
+    "reasoning": null,
+    "cache_read": 3712,
+    "complete": true
+   },
+   "wall_ms": 14035
+  },
+  {
+   "trial_id": "fin-l5-compare-279__dsh__r2",
+   "task": "fin-l5-compare-279",
+   "arm": "dsh",
+   "run": 2,
+   "model": "deepseek/deepseek-v4.1-flash-1017",
+   "success": true,
+   "grounded_financial_correctness": true,
+   "requests": 2,
+   "tokens": {
+    "input": 6830,
+    "output": 645,
+    "reasoning": null,
+    "cache_read": 256,
+    "complete": true
+   },
+   "wall_ms": 17682
+  },
+  {
+   "trial_id": "fin-l5-compare-279__opencode__r1",
+   "task": "fin-l5-compare-279",
+   "arm": "opencode",
+   "run": 1,
+   "model": "deepseek/deepseek-v4.1-flash-1017",
+   "success": true,
+   "grounded_financial_correctness": true,
+   "requests": 2,
+   "tokens": {
+    "input": 7951,
+    "output": 616,
+    "reasoning": null,
+    "cache_read": 242,
+    "complete": true
+   },
+   "wall_ms": 19816
+  },
+  {
+   "trial_id": "fin-l5-compare-279__opencode__r2",
+   "task": "fin-l5-compare-279",
+   "arm": "opencode",
+   "run": 2,
+   "model": "deepseek/deepseek-v4.1-flash-1017",
+   "success": true,
+   "grounded_financial_correctness": true,
+   "requests": 2,
+   "tokens": {
+    "input": 7668,
+    "output": 590,
+    "reasoning": null,
+    "cache_read": 3584,
+    "complete": true
+   },
+   "wall_ms": 16556
+  },
+  {
+   "trial_id": "fin-l5-compare-279__opentrading_baseline__r1",
+   "task": "fin-l5-compare-279",
+   "arm": "opentrading_baseline",
+   "run": 1,
+   "model": "deepseek/deepseek-v4.1-flash-1017",
+   "success": true,
+   "grounded_financial_correctness": true,
+   "requests": 2,
+   "tokens": {
+    "input": 19211,
+    "output": 631,
+    "reasoning": null,
+    "cache_read": 15360,
+    "complete": true
+   },
+   "wall_ms": 10365
+  },
+  {
+   "trial_id": "fin-l5-compare-279__opentrading_baseline__r2",
+   "task": "fin-l5-compare-279",
+   "arm": "opentrading_baseline",
+   "run": 2,
+   "model": "deepseek/deepseek-v4.1-flash-1017",
+   "success": true,
+   "grounded_financial_correctness": true,
+   "requests": 3,
+   "tokens": {
+    "input": 29501,
+    "output": 760,
+    "reasoning": null,
+    "cache_read": 24576,
+    "complete": true
+   },
+   "wall_ms": 15979
+  },
+  {
+   "trial_id": "fin-l5-profile-265__dsh__r1",
+   "task": "fin-l5-profile-265",
+   "arm": "dsh",
+   "run": 1,
+   "model": "deepseek/deepseek-v4.1-flash-1017",
+   "success": true,
+   "grounded_financial_correctness": true,
+   "requests": 2,
+   "tokens": {
+    "input": 7375,
+    "output": 987,
+    "reasoning": null,
+    "cache_read": 0,
+    "complete": true
+   },
+   "wall_ms": 15408
+  },
+  {
+   "trial_id": "fin-l5-profile-265__dsh__r2",
+   "task": "fin-l5-profile-265",
+   "arm": "dsh",
+   "run": 2,
+   "model": "deepseek/deepseek-v4.1-flash-1017",
+   "success": true,
+   "grounded_financial_correctness": true,
+   "requests": 2,
+   "tokens": {
+    "input": 7726,
+    "output": 877,
+    "reasoning": null,
+    "cache_read": 0,
+    "complete": true
+   },
+   "wall_ms": 16268
+  },
+  {
+   "trial_id": "fin-l5-profile-265__opencode__r1",
+   "task": "fin-l5-profile-265",
+   "arm": "opencode",
+   "run": 1,
+   "model": "deepseek/deepseek-v4.1-flash-1017",
+   "success": true,
+   "grounded_financial_correctness": true,
+   "requests": 3,
+   "tokens": {
+    "input": 13752,
+    "output": 1100,
+    "reasoning": null,
+    "cache_read": 4864,
+    "complete": true
+   },
+   "wall_ms": 14126
+  },
+  {
+   "trial_id": "fin-l5-profile-265__opencode__r2",
+   "task": "fin-l5-profile-265",
+   "arm": "opencode",
+   "run": 2,
+   "model": "deepseek/deepseek-v4.1-flash-1017",
+   "success": true,
+   "grounded_financial_correctness": true,
+   "requests": 2,
+   "tokens": {
+    "input": 8657,
+    "output": 1016,
+    "reasoning": null,
+    "cache_read": 128,
+    "complete": true
+   },
+   "wall_ms": 18372
+  },
+  {
+   "trial_id": "fin-l5-profile-265__opentrading_baseline__r1",
+   "task": "fin-l5-profile-265",
+   "arm": "opentrading_baseline",
+   "run": 1,
+   "model": "deepseek/deepseek-v4.1-flash-1017",
+   "success": true,
+   "grounded_financial_correctness": true,
+   "requests": 3,
+   "tokens": {
+    "input": 31300,
+    "output": 1049,
+    "reasoning": null,
+    "cache_read": 17024,
+    "complete": true
+   },
+   "wall_ms": 13764
+  },
+  {
+   "trial_id": "fin-l5-profile-265__opentrading_baseline__r2",
+   "task": "fin-l5-profile-265",
+   "arm": "opentrading_baseline",
+   "run": 2,
+   "model": "deepseek/deepseek-v4.1-flash-1017",
+   "success": true,
+   "grounded_financial_correctness": true,
+   "requests": 4,
+   "tokens": {
+    "input": 53458,
+    "output": 1272,
+    "reasoning": null,
+    "cache_read": 28160,
+    "complete": true
+   },
+   "wall_ms": 15455
+  },
+  {
+   "trial_id": "fin-l5-profile-273__dsh__r1",
+   "task": "fin-l5-profile-273",
+   "arm": "dsh",
+   "run": 1,
+   "model": "deepseek/deepseek-v4.1-flash-1017",
+   "success": true,
+   "grounded_financial_correctness": true,
+   "requests": 3,
+   "tokens": {
+    "input": 10765,
+    "output": 874,
+    "reasoning": null,
+    "cache_read": 3968,
+    "complete": true
+   },
+   "wall_ms": 17104
+  },
+  {
+   "trial_id": "fin-l5-profile-273__dsh__r2",
+   "task": "fin-l5-profile-273",
+   "arm": "dsh",
+   "run": 2,
+   "model": "deepseek/deepseek-v4.1-flash-1017",
+   "success": true,
+   "grounded_financial_correctness": true,
+   "requests": 2,
+   "tokens": {
+    "input": 7661,
+    "output": 766,
+    "reasoning": null,
+    "cache_read": 3584,
+    "complete": true
+   },
+   "wall_ms": 34704
+  },
+  {
+   "trial_id": "fin-l5-profile-273__opencode__r1",
+   "task": "fin-l5-profile-273",
+   "arm": "opencode",
+   "run": 1,
+   "model": "deepseek/deepseek-v4.1-flash-1017",
+   "success": true,
+   "grounded_financial_correctness": true,
+   "requests": 2,
+   "tokens": {
+    "input": 8400,
+    "output": 762,
+    "reasoning": null,
+    "cache_read": 3840,
+    "complete": true
+   },
+   "wall_ms": 16543
+  },
+  {
+   "trial_id": "fin-l5-profile-273__opencode__r2",
+   "task": "fin-l5-profile-273",
+   "arm": "opencode",
+   "run": 2,
+   "model": "deepseek/deepseek-v4.1-flash-1017",
+   "success": true,
+   "grounded_financial_correctness": true,
+   "requests": 2,
+   "tokens": {
+    "input": 8378,
+    "output": 882,
+    "reasoning": null,
+    "cache_read": 256,
+    "complete": true
+   },
+   "wall_ms": 15417
+  },
+  {
+   "trial_id": "fin-l5-profile-273__opentrading_baseline__r1",
+   "task": "fin-l5-profile-273",
+   "arm": "opentrading_baseline",
+   "run": 1,
+   "model": "deepseek/deepseek-v4.1-flash-1017",
+   "success": true,
+   "grounded_financial_correctness": true,
+   "requests": 4,
+   "tokens": {
+    "input": 36712,
+    "output": 768,
+    "reasoning": null,
+    "cache_read": 32512,
+    "complete": true
+   },
+   "wall_ms": 14878
+  },
+  {
+   "trial_id": "fin-l5-profile-273__opentrading_baseline__r2",
+   "task": "fin-l5-profile-273",
+   "arm": "opentrading_baseline",
+   "run": 2,
+   "model": "deepseek/deepseek-v4.1-flash-1017",
+   "success": true,
+   "grounded_financial_correctness": true,
+   "requests": 8,
+   "tokens": {
+    "input": 88622,
+    "output": 1464,
+    "reasoning": null,
+    "cache_read": 83200,
+    "complete": true
+   },
+   "wall_ms": 24282
+  },
+  {
+   "trial_id": "fin-l5-profile-274__dsh__r1",
+   "task": "fin-l5-profile-274",
+   "arm": "dsh",
+   "run": 1,
+   "model": "deepseek/deepseek-v4.1-flash-1017",
+   "success": true,
+   "grounded_financial_correctness": true,
+   "requests": 2,
+   "tokens": {
+    "input": 7492,
+    "output": 865,
+    "reasoning": null,
+    "cache_read": 5248,
+    "complete": true
+   },
+   "wall_ms": 16258
+  },
+  {
+   "trial_id": "fin-l5-profile-274__dsh__r2",
+   "task": "fin-l5-profile-274",
+   "arm": "dsh",
+   "run": 2,
+   "model": "deepseek/deepseek-v4.1-flash-1017",
+   "success": true,
+   "grounded_financial_correctness": true,
+   "requests": 2,
+   "tokens": {
+    "input": 7562,
+    "output": 818,
+    "reasoning": null,
+    "cache_read": 0,
+    "complete": true
+   },
+   "wall_ms": 16160
+  },
+  {
+   "trial_id": "fin-l5-profile-274__opencode__r1",
+   "task": "fin-l5-profile-274",
+   "arm": "opencode",
+   "run": 1,
+   "model": "deepseek/deepseek-v4.1-flash-1017",
+   "success": true,
+   "grounded_financial_correctness": true,
+   "requests": 2,
+   "tokens": {
+    "input": 8490,
+    "output": 817,
+    "reasoning": null,
+    "cache_read": 256,
+    "complete": true
+   },
+   "wall_ms": 16389
+  },
+  {
+   "trial_id": "fin-l5-profile-274__opencode__r2",
+   "task": "fin-l5-profile-274",
+   "arm": "opencode",
+   "run": 2,
+   "model": "deepseek/deepseek-v4.1-flash-1017",
+   "success": true,
+   "grounded_financial_correctness": true,
+   "requests": 3,
+   "tokens": {
+    "input": 9830,
+    "output": 847,
+    "reasoning": null,
+    "cache_read": 5888,
+    "complete": true
+   },
+   "wall_ms": 16168
+  },
+  {
+   "trial_id": "fin-l5-profile-274__opentrading_baseline__r1",
+   "task": "fin-l5-profile-274",
+   "arm": "opentrading_baseline",
+   "run": 1,
+   "model": "deepseek/deepseek-v4.1-flash-1017",
+   "success": true,
+   "grounded_financial_correctness": true,
+   "requests": 14,
+   "tokens": {
+    "input": 171775,
+    "output": 3791,
+    "reasoning": null,
+    "cache_read": 161536,
+    "complete": true
+   },
+   "wall_ms": 49737
+  },
+  {
+   "trial_id": "fin-l5-profile-274__opentrading_baseline__r2",
+   "task": "fin-l5-profile-274",
+   "arm": "opentrading_baseline",
+   "run": 2,
+   "model": "deepseek/deepseek-v4.1-flash-1017",
+   "success": true,
+   "grounded_financial_correctness": true,
+   "requests": 3,
+   "tokens": {
+    "input": 51158,
+    "output": 722,
+    "reasoning": null,
+    "cache_read": 18304,
+    "complete": true
+   },
+   "wall_ms": 12841
+  },
+  {
+   "trial_id": "fin-l5-valuation-294__dsh__r1",
+   "task": "fin-l5-valuation-294",
+   "arm": "dsh",
+   "run": 1,
+   "model": "deepseek/deepseek-v4.1-flash-1017",
+   "success": true,
+   "grounded_financial_correctness": true,
+   "requests": 2,
+   "tokens": {
+    "input": 5131,
+    "output": 449,
+    "reasoning": null,
+    "cache_read": 256,
+    "complete": true
+   },
+   "wall_ms": 17376
+  },
+  {
+   "trial_id": "fin-l5-valuation-294__dsh__r2",
+   "task": "fin-l5-valuation-294",
+   "arm": "dsh",
+   "run": 2,
+   "model": "deepseek/deepseek-v4.1-flash-1017",
+   "success": true,
+   "grounded_financial_correctness": true,
+   "requests": 2,
+   "tokens": {
+    "input": 5133,
+    "output": 450,
+    "reasoning": null,
+    "cache_read": 256,
+    "complete": true
+   },
+   "wall_ms": 17630
+  },
+  {
+   "trial_id": "fin-l5-valuation-294__opencode__r1",
+   "task": "fin-l5-valuation-294",
+   "arm": "opencode",
+   "run": 1,
+   "model": "deepseek/deepseek-v4.1-flash-1017",
+   "success": true,
+   "grounded_financial_correctness": true,
+   "requests": 2,
+   "tokens": {
+    "input": 6088,
+    "output": 515,
+    "reasoning": null,
+    "cache_read": 3072,
+    "complete": true
+   },
+   "wall_ms": 13832
+  },
+  {
+   "trial_id": "fin-l5-valuation-294__opencode__r2",
+   "task": "fin-l5-valuation-294",
+   "arm": "opencode",
+   "run": 2,
+   "model": "deepseek/deepseek-v4.1-flash-1017",
+   "success": true,
+   "grounded_financial_correctness": true,
+   "requests": 4,
+   "tokens": {
+    "input": 15369,
+    "output": 1562,
+    "reasoning": null,
+    "cache_read": 8704,
+    "complete": true
+   },
+   "wall_ms": 21161
+  },
+  {
+   "trial_id": "fin-l5-valuation-294__opentrading_baseline__r1",
+   "task": "fin-l5-valuation-294",
+   "arm": "opentrading_baseline",
+   "run": 1,
+   "model": "deepseek/deepseek-v4.1-flash-1017",
+   "success": true,
+   "grounded_financial_correctness": true,
+   "requests": 2,
+   "tokens": {
+    "input": 17746,
+    "output": 546,
+    "reasoning": null,
+    "cache_read": 14848,
+    "complete": true
+   },
+   "wall_ms": 11960
+  },
+  {
+   "trial_id": "fin-l5-valuation-294__opentrading_baseline__r2",
+   "task": "fin-l5-valuation-294",
+   "arm": "opentrading_baseline",
+   "run": 2,
+   "model": "deepseek/deepseek-v4.1-flash-1017",
+   "success": true,
+   "grounded_financial_correctness": true,
+   "requests": 3,
+   "tokens": {
+    "input": 26858,
+    "output": 714,
+    "reasoning": null,
+    "cache_read": 23040,
+    "complete": true
+   },
+   "wall_ms": 13906
+  },
+  {
+   "trial_id": "fin-l5-valuation-295__dsh__r1",
+   "task": "fin-l5-valuation-295",
+   "arm": "dsh",
+   "run": 1,
+   "model": "deepseek/deepseek-v4.1-flash-1017",
+   "success": true,
+   "grounded_financial_correctness": true,
+   "requests": 2,
+   "tokens": {
+    "input": 5092,
+    "output": 1658,
+    "reasoning": null,
+    "cache_read": 0,
+    "complete": true
+   },
+   "wall_ms": 20661
+  },
+  {
+   "trial_id": "fin-l5-valuation-295__dsh__r2",
+   "task": "fin-l5-valuation-295",
+   "arm": "dsh",
+   "run": 2,
+   "model": "deepseek/deepseek-v4.1-flash-1017",
+   "success": true,
+   "grounded_financial_correctness": true,
+   "requests": 2,
+   "tokens": {
+    "input": 4825,
+    "output": 968,
+    "reasoning": null,
+    "cache_read": 2304,
+    "complete": true
+   },
+   "wall_ms": 16059
+  },
+  {
+   "trial_id": "fin-l5-valuation-295__opencode__r1",
+   "task": "fin-l5-valuation-295",
+   "arm": "opencode",
+   "run": 1,
+   "model": "deepseek/deepseek-v4.1-flash-1017",
+   "success": true,
+   "grounded_financial_correctness": true,
+   "requests": 2,
+   "tokens": {
+    "input": 6081,
+    "output": 480,
+    "reasoning": null,
+    "cache_read": 3072,
+    "complete": true
+   },
+   "wall_ms": 13867
+  },
+  {
+   "trial_id": "fin-l5-valuation-295__opencode__r2",
+   "task": "fin-l5-valuation-295",
+   "arm": "opencode",
+   "run": 2,
+   "model": "deepseek/deepseek-v4.1-flash-1017",
+   "success": true,
+   "grounded_financial_correctness": true,
+   "requests": 2,
+   "tokens": {
+    "input": 6386,
+    "output": 1308,
+    "reasoning": null,
+    "cache_read": 128,
+    "complete": true
+   },
+   "wall_ms": 13660
+  },
+  {
+   "trial_id": "fin-l5-valuation-295__opentrading_baseline__r1",
+   "task": "fin-l5-valuation-295",
+   "arm": "opentrading_baseline",
+   "run": 1,
+   "model": "deepseek/deepseek-v4.1-flash-1017",
+   "success": true,
+   "grounded_financial_correctness": true,
+   "requests": 3,
+   "tokens": {
+    "input": 27720,
+    "output": 787,
+    "reasoning": null,
+    "cache_read": 2048,
+    "complete": true
+   },
+   "wall_ms": 13694
+  },
+  {
+   "trial_id": "fin-l5-valuation-295__opentrading_baseline__r2",
+   "task": "fin-l5-valuation-295",
+   "arm": "opentrading_baseline",
+   "run": 2,
+   "model": "deepseek/deepseek-v4.1-flash-1017",
+   "success": true,
+   "grounded_financial_correctness": true,
+   "requests": 3,
+   "tokens": {
+    "input": 27658,
+    "output": 1207,
+    "reasoning": null,
+    "cache_read": 14848,
+    "complete": true
+   },
+   "wall_ms": 12445
+  }
+ ],
+ "cost_unavailable_reason": "Frozen manifest does not declare whether cached input overlaps prompt input; raw counter coverage is complete but price key mapping alone cannot establish cache semantics.",
+ "normalized_price_fields": {
+  "input": 0.006,
+  "output": 0.5,
+  "cached": 0.005
+ }
+}

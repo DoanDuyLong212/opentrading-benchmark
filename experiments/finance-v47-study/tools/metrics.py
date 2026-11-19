@@ -19,6 +19,8 @@ B6 (gộp vào B2) coverage
 """
 from protocol_compat import FINANCIAL_PROTOCOL
 import glob
+import copy
+from clock_policy import comparative_eligible
 import json
 import os
 import re
@@ -443,6 +445,7 @@ def _bootstrap(deltas_by_cluster, draws=2000, seed=20261104):
 
 
 def paired_statistics(trials, expected_runs=3, clusters=None):
+    trials = [t for t in trials if comparative_eligible(t['task'], t)]
     arms = sorted({t['arm'] for t in trials})
     cells = {}
     for t in trials:
@@ -476,7 +479,7 @@ def paired_statistics(trials, expected_runs=3, clusters=None):
     return output
 
 
-def build_summary(out_dir, price=None):
+def build_summary(out_dir, price=None, _scope='primary'):
     trials = load_trials(out_dir)
     models = sorted({t.get('model') for t in trials}, key=str)
     if len(models) > 1:
@@ -508,14 +511,30 @@ def build_summary(out_dir, price=None):
     if plan.get('config',{}).get('protocol')==FINANCIAL_PROTOCOL:
         from v45_review import apply_review
         trials,manual_review_status=apply_review(out_dir,trials,manifest)
+    # Validate and apply review against original sealed artifacts before deriving
+    # analysis-only subsets. The on-disk manifest/fingerprint is never rewritten.
+    all_trial_count = len(trials)
+    cohort_complete = complete
+    analysis_complete = complete
+    select = lambda tid: comparative_eligible(tid) == (_scope == 'primary')
+    trials = [t for t in trials if select(t['task'])]
+    if manifest:
+        plan = copy.deepcopy(plan)
+        plan['schedule'] = [c for c in plan.get('schedule', []) if select(c['task'])]
+        plan['tasks'] = {t: value for t, value in plan.get('tasks', {}).items() if select(t)}
+        plan['task_contracts'] = {t: value for t, value in contracts.items() if select(t)}
+        manifest = dict(manifest, plan=plan, _cohort_complete=cohort_complete)
+        analysis_complete = {t['trial_id'] for t in trials} == {c['trial_id'] for c in plan['schedule']}
     frozen_price = plan.get('config', {}).get('price_per_1m')
     # Historical runs without a manifest remain unpriced; never reprice with live config.
     price = price if price is not None else frozen_price
     result = {'generated_at': __import__('datetime').datetime.now(__import__('datetime').timezone.utc).isoformat(),
               'out_dir': os.path.abspath(out_dir), 'model': models[0] if models else settings.get('model'),
+              'analysis_scope': 'LCM_primary' if _scope == 'primary' else 'S_diagnostic',
+              'all_observed_trials': all_trial_count, 'cohort_complete': cohort_complete,
               'n_trials': len(trials),
               'completion': {'observed_trials': len(trials), 'scheduled_trials': len(plan.get('schedule', [])) if manifest else None,
-                             'complete': complete},
+                             'complete': complete, 'analysis_complete': analysis_complete},
               'manifest_sha256': manifest.get('fingerprint') if manifest else None,
               'legacy_unfrozen': manifest is None, 'partial_tasks': sorted(partial),
               'task_eligibility': {'quarantined_tasks': settings.get('quarantined_tasks', {}),
@@ -534,18 +553,21 @@ def build_summary(out_dir, price=None):
         values['frozen_v3_successes'] = sum(bool(t.get('frozen_v3_success')) for t in ts)
         values['grader_sensitivity_deltas'] = sum(bool(t.get('success')) != bool(t.get('frozen_v3_success')) for t in ts)
         values['semantic_correctness_rate'] = sum(bool(t.get('semantic_correctness')) for t in ts)/len(ts) if ts else None
-    result['paired'] = paired_statistics(trials, expected_runs, clusters)
+    result['paired'] = paired_statistics(trials, expected_runs, clusters) if _scope == 'primary' else {}
     if manifest and plan.get('config', {}).get('protocol') == FINANCIAL_PROTOCOL:
         from v45_metrics import summarize, paired
-        result['financial_v45'] = summarize(trials, manifest, ROOT)
+        result['financial_v45'] = summarize(trials, manifest, ROOT, _scope=_scope)
         result['financial_v45']['manual_financial_review']=manual_review_status
-        if complete:result['financial_v45']['paired_task_cluster'] = paired(trials,candidate='opentrading' if settings.get('split')=='main' else 'opentrading_finance',controls=('opencode','dsh') if settings.get('split')=='main' else ('opentrading_baseline','opencode','dsh'),clusters=clusters)
+        if complete and _scope == 'primary':result['financial_v45']['paired_task_cluster'] = paired(trials,candidate='opentrading' if settings.get('split')=='main' else 'opentrading_finance',controls=('opencode','dsh') if settings.get('split')=='main' else ('opentrading_baseline','opencode','dsh'),clusters=clusters)
     result['statistics_note'] = 'Task paired bootstrap; payload hash cluster sensitivity; exact McNemar+Holm on complete all-runs-correct tasks. Stable 3/3 is primary only for frozen runs=3.'
     if plan.get('config',{}).get('protocol')==FINANCIAL_PROTOCOL:result['statistics_note']='V45 co-primary strict+grounded financial, stable2/2, task-cluster bootstrap/signflip, payload-cluster sensitivity. Within-model Holm is exploratory; main final family is eight registered comparisons across two models/endpoints/opponents.'
+    if _scope == 'primary':
+        result['safety_diagnostic'] = build_summary(out_dir, price, _scope='safety')
     return result
 
 
 def print_summary(summary):
+    print('Analysis: ' + summary.get('analysis_scope', 'legacy'))
     def pct(value):
         return 'N/A' if value is None else '%.1f%%' % (value*100)
     print('Model: %s | trials=%d | frozen=%s | complete=%s' %
@@ -562,6 +584,8 @@ def print_summary(summary):
         print('  latency ms p50=%s p90=%s; ledger calls p50=%s; errors=%s' %
               (m.get('latency', {}).get('p50_ms'), m.get('latency', {}).get('p90_ms'), m['tool_economy']['p50'], m['error_taxonomy']['counts']))
     print('Statistics and coverage: summary.json. Legacy/unfrozen runs are diagnostic only.')
+    if 'safety_diagnostic' in summary:
+        print_summary(summary['safety_diagnostic'])
 
 
 if __name__ == "__main__":
