@@ -190,7 +190,7 @@ def test_temporal_guard_has_actual_prior_scope_and_wire_error(tmp_path,newargs):
  with pytest.raises(ValueError,match='does not actually change'):verify(attempt,provider,defs,True)
 
 def test_completed_native_text_replaces_discarded_deltas_without_json_rescue(tmp_path):
- import json,subprocess
+ import json,os,subprocess
  helper=ROOT/'tools/runners/native_final.ts'
  script=tmp_path/'check.ts'
  script.write_text('import {completedFinalText} from '+json.dumps(str(helper))+';\n'+'''
@@ -212,7 +212,7 @@ def test_completed_native_text_replaces_discarded_deltas_without_json_rescue(tmp
    failedKeepsPartial:run(false,{type:'done',outcome:'failed',messages:[]}),
  }));
  ''')
- result=subprocess.run([str(Path.home()/'.bun/bin/bun'),str(script)],capture_output=True,text=True,check=True)
+ result=subprocess.run([os.environ.get('BENCH_BUN_BIN') or str(Path.home()/'.bun/bin/bun'),str(script)],capture_output=True,text=True,check=True)
  actual=json.loads(result.stdout)
  assert actual=={'baseline':'{"value":2}','candidate':'{"value":2}','badProse':'Still only prose.','badJson':'{"value":','noEarlierFallback':'','failedKeepsPartial':'I will query the data first.'}
 
