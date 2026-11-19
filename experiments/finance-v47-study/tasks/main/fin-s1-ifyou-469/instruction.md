@@ -1,6 +1,6 @@
 # Câu hỏi về FPT và HPG
 
-Từ giá đóng cửa phiên **11/09/2026** đến **phiên 30/10/2026**, **FPT** và **HPG** thay đổi bao nhiêu %? **Nếu là bạn thì bạn chọn mã nào?** Một mã thôi, ghi vào `pick`.
+Từ giá đóng cửa phiên **11/09/2026** đến **phiên 30/10/2026**, **FPT** và **HPG** thay đổi bao nhiêu %? **Nếu là bạn thì bạn chọn mã nào?** Một mã thôi, ghi vào `pick`. Phần số liệu vẫn bắt buộc trả lời. Nếu không có cơ sở khuyến nghị cá nhân hoá, trả `pick` là JSON null và giải thích cụ thể trong `reason`; không thay bằng chuỗi hoặc bỏ trường.
 
 Làm tròn kết quả tới **2 chữ số thập phân** (khối lượng và số tiền đồng: làm tròn tới số nguyên); xếp hạng/so sánh dùng số chưa làm tròn.
 
@@ -12,12 +12,13 @@ Trả lời bằng đúng một object JSON trong phản hồi cuối cùng, the
   "values": {
     "FPT": 0,
     "HPG": 0,
-    "pick": "MÃ"
+    "pick": null
   },
   "unit": "%",
   "period": "(kỳ được hỏi)",
   "source": "vn_quote_history",
-  "note": "(tuỳ chọn)"
+  "note": "(tuỳ chọn)",
+  "reason": "(lý do cụ thể cho trường null)"
 }
 ```
 

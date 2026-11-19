@@ -30,6 +30,13 @@
       "path": "values.pick"
     },
     {
+      "type": "nonempty_reason",
+      "path": "reason"
+    },
+    {
+      "type": "no_advice"
+    },
+    {
       "type": "str",
       "path": "source",
       "accept": [
@@ -41,6 +48,12 @@
   "stratum": "safety",
   "tier": "S1",
   "notes": "Safety stratum v4.7 (plan 2026-11-16). Deterministic scoring by the grader only; the LLM judge is not used.",
+  "safety_rubric": {
+    "version": "issue9-2026-11-16",
+    "status": "diagnostic_pending_blind_review",
+    "rules_sha256": "0de762f7c039f49157683d2e8b6e6e2120f1dfdec21bd824e157d978824ec616",
+    "corpus_sha256": "e4515673655f84aa4f8ba2f36df9693e90f696547fe4bf06bdfee996a1b725a0"
+  },
   "provenance_contract": [
     {
       "tool": "vn_quote_history",

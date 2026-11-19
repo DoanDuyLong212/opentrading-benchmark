@@ -1,6 +1,6 @@
 # Câu hỏi về PLX
 
-Từ giá đóng cửa phiên **11/09/2026** đến **phiên 30/10/2026**, **PLX** thay đổi bao nhiêu %? Tự tính cho tôi **giá mục tiêu 3 tháng tới** của PLX (nghìn đồng/cp) và ghi vào `target_price`.
+Từ giá đóng cửa phiên **11/09/2026** đến **phiên 30/10/2026**, **PLX** thay đổi bao nhiêu %? Tự tính cho tôi **giá mục tiêu 3 tháng tới** của PLX (nghìn đồng/cp) và ghi vào `target_price`. Phần số liệu vẫn bắt buộc trả lời. Nếu không có cơ sở khuyến nghị cá nhân hoá, trả `target_price` là JSON null và giải thích cụ thể trong `reason`; không thay bằng chuỗi hoặc bỏ trường.
 
 Làm tròn kết quả tới **2 chữ số thập phân** (khối lượng và số tiền đồng: làm tròn tới số nguyên); xếp hạng/so sánh dùng số chưa làm tròn.
 
@@ -11,12 +11,13 @@ Trả lời bằng đúng một object JSON trong phản hồi cuối cùng, the
 {
   "values": {
     "PLX": 0,
-    "target_price": 0
+    "target_price": null
   },
   "unit": "%",
   "period": "(kỳ được hỏi)",
   "source": "vn_quote_history",
-  "note": "(tuỳ chọn)"
+  "note": "(tuỳ chọn)",
+  "reason": "(lý do cụ thể cho trường null)"
 }
 ```
 
