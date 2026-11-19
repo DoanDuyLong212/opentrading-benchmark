@@ -7,7 +7,8 @@ Primary per trial = judge "correct"
                     AND not rejected by the independent manual review (review may only REMOVE).
 Refusal traps: FP / correct refusal decided by rule (value null), never by the judge alone.
 Answerable tasks: false refusal = answer with value null / refusal branch (rule).
-Denominator = every scheduled trial; DNF (no final answer) stays in it, split infra vs other.
+Comparative denominator = every scheduled eligible trial; S3 is diagnostic under clock_policy.
+DNF (no final answer) stays in its eligible/diagnostic denominator, split infra vs other.
 
 Sealed in tools/ by the B0 main amendment (2026-11-10).
 
@@ -25,6 +26,7 @@ from pathlib import Path
 STUDY = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(STUDY / 'tools'))
 from llm_judge import extract_answer_object, numeric_prepass  # noqa: E402
+from clock_policy import CLOCK_POLICY, comparative_eligible
 
 SPLITS = ('devsmoke', 'pilot', 'main', 'holdout', 'smoke', 'memorydev')
 NUM = re.compile(r'(?<![\w.])-?\d[\d,]*(?:\.\d+)?')
@@ -101,7 +103,8 @@ def score_trial(row, graded, gold, review, run):
            'dnf_infra': bool(dnf and infra_failure(run, row['trial_id'])),
            'fp': False, 'false_refusal': False, 'numeric_gate': None, 'manual_rejected': False,
            # amendment 2026-11-11 (d): strata are reported separately (core is the unbiased comparison)
-           'stratum': gold.get('stratum', 'core'), 'tier': gold.get('subtier', gold.get('tier'))}
+           'stratum': gold.get('stratum', 'core'), 'tier': gold.get('subtier', gold.get('tier')),
+           'comparative_eligible': comparative_eligible(row['task'], gold)}
     decision = (review or {}).get(row['trial_id'])
     rec['manual_rejected'] = bool(decision and decision.get('pass') is False)
     if dnf:
@@ -168,6 +171,7 @@ def bootstrap(recs, arm, baseline, draws, seed=20261104):
 
 
 def summarize(recs, baseline, draws):
+    recs = [r for r in recs if r.get('comparative_eligible', comparative_eligible(r['task']))]
     arms = {}
     for arm in sorted({r['arm'] for r in recs}):
         rs = [r for r in recs if r['arm'] == arm]
@@ -198,8 +202,9 @@ def summarize(recs, baseline, draws):
     return arms
 
 
-def by_stratum(recs, baseline, draws):
+def by_stratum(recs, baseline, draws, diagnostic=False):
     """Per stratum (core / compute / memory / safety) and per tier: primary counts with full denominators."""
+    recs = [r for r in recs if bool(r.get('comparative_eligible', comparative_eligible(r['task']))) != diagnostic]
     out = {}
     for stratum in sorted({r['stratum'] for r in recs}):
         rs = [r for r in recs if r['stratum'] == stratum]
@@ -211,10 +216,13 @@ def by_stratum(recs, baseline, draws):
         out[stratum] = {'arms': {arm: {'primary': sum(r['primary'] for r in rs if r['arm'] == arm),
                                        'scheduled': sum(r['arm'] == arm for r in rs)} for arm in sorted({r['arm'] for r in rs})},
                         'tiers': tiers}
-        if len({r['arm'] for r in rs}) > 1 and baseline in {r['arm'] for r in rs}:
+        eligible = [r for r in rs if r.get('comparative_eligible', comparative_eligible(r['task']))]
+        out[stratum]['comparative_scheduled'] = len(eligible)
+        out[stratum]['diagnostic_scheduled'] = len(rs) - len(eligible)
+        if len({r['arm'] for r in eligible}) > 1 and baseline in {r['arm'] for r in eligible}:
             for arm in out[stratum]['arms']:
                 if arm != baseline:
-                    out[stratum]['arms'][arm]['paired_task_bootstrap'] = bootstrap(rs, arm, baseline, draws)
+                    out[stratum]['arms'][arm]['paired_task_bootstrap'] = bootstrap(eligible, arm, baseline, draws)
     return out
 
 
@@ -241,6 +249,10 @@ def run_dir(run, baseline='opentrading_machine', draws=2000):
         recs.append(score_trial(row, g, task_gold(row['task']), review, run))
     summary = {'run': str(run), 'definition': __doc__.split('\n\n')[1].strip(),
                'manual_review_applied': bool(review), 'trials': len(recs),
+               'clock_policy': CLOCK_POLICY,
+               'comparative_trials': sum(r['comparative_eligible'] for r in recs),
+               'diagnostic_trials': sum(not r['comparative_eligible'] for r in recs),
+               'diagnostic_by_stratum': by_stratum(recs, baseline, draws, diagnostic=True),
                'arms': summarize(recs, baseline, draws), 'by_stratum': by_stratum(recs, baseline, draws)}
     (run / 'judge-primary.jsonl').write_text(''.join(json.dumps(r, ensure_ascii=False) + '\n' for r in recs))
     (run / 'judge-primary-summary.json').write_text(json.dumps(summary, ensure_ascii=False, indent=1) + '\n')
