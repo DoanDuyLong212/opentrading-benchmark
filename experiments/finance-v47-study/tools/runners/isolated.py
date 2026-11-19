@@ -17,6 +17,10 @@ def prepare(ws, task_dir, model, options):
     from paid_budget import paid_policy, validate_free_identity
     paid_policy(model, options)
     validate_free_identity(model, options)
+    from trusted_bun import trusted_bun
+    from trusted_toolchain import trusted_runtime
+    options['native_bun_binary'] = str(trusted_bun())
+    options['opentrading_runtime_root'] = str(trusted_runtime(options))
     root = Path(ws).resolve().parent / 'runner'
     root.mkdir(parents=True, exist_ok=True)
     env = clean_env(root / 'home')
@@ -31,8 +35,8 @@ def prepare(ws, task_dir, model, options):
     definitions = build_tool_defs(entries)
     options['allowed_tool_names'] = sorted({prefix + item['name'] for item in definitions for prefix in ('opentrading_', 'mcp__opentrading__', 'mcp_opentrading_')})
     options['snapshot_tool_definitions'] = definitions
-    # v4.7 (2026-11-15, option A): every arm gets its own native shell tool, all behind one
-    # math-only filter (mathshell/). OpenTrading keeps read_result for its spilled tool output.
+    # Every arm gets its own native shell tool; commands execute unfiltered
+    # inside the shared no-network Docker sandbox (mathshell/ is the launcher). OpenTrading keeps read_result for its spilled tool output.
     if options.get('native_arm') in ('opencode', 'dsh') and options.get('protocol') == FINANCIAL_PROTOCOL:
         shell_def = json.loads((TOOLS / 'runners/native_shell_tools.json').read_text())[options['native_arm']]
         options['allowed_tool_names'] += [shell_def['name']]
@@ -41,12 +45,11 @@ def prepare(ws, task_dir, model, options):
         options['allowed_tool_names'] += ['shell','read_result']
         import subprocess
         sourceenv=dict(env,BENCH_OT_RUNTIME=str(options['opentrading_runtime_root']))
-        got=subprocess.run([options.get('native_bun_binary') or json.loads((TOOLS/'bench_config.json').read_text())['provider_options']['native_bun_binary'],str(TOOLS/'runners/native_schema.ts')],env=sourceenv,capture_output=True,text=True,timeout=30,check=True)
+        got=subprocess.run([options['native_bun_binary'],str(TOOLS/'runners/native_schema.ts')],env=sourceenv,capture_output=True,text=True,timeout=30,check=True)
         options['native_tool_definitions']=json.loads(got.stdout)
     gateway = ProviderGateway(model, ledger, options)
-    bun_frozen=json.loads((TOOLS/'bench_config.json').read_text())['provider_options']
-    bun_path=str(Path(options.get('native_bun_binary') or bun_frozen['native_bun_binary']).resolve())
-    bun_sha=options.get('native_bun_sha256') or bun_frozen['native_bun_sha256']
+    bun_path=options['native_bun_binary']
+    bun_sha=hashlib.sha256(Path(bun_path).read_bytes()).hexdigest()
     mcp_env = {'BENCH_BUN_BIN':bun_path,'BENCH_BUN_SHA256':bun_sha,'PYTHONPATH': site.getusersitepackages(), 'BENCH_PAYLOADS': str(Path(task_dir).resolve() / 'environment/payloads.json')}
     # Shared shell sandbox (sandbox/run.ts, decision 2026-11-16 6b): mathshell/bin first in PATH and
     # $SHELL for every arm; each command runs unfiltered in a no-network container that sees only this
@@ -73,7 +76,10 @@ def prepare(ws, task_dir, model, options):
 
 
 def finish(root, gateway, result, arm, config):
-    inventory = {'arm': arm, 'model': gateway.model, 'provider': 'nvidia', 'effort': 'none',
+    inventory = {'arm': arm, 'model': gateway.model, 'provider': 'openrouter' if gateway.options.get('provider_route') in ('openrouter_free','openrouter_paid') else 'nvidia',
+                 'provider_route': gateway.options.get('provider_route', 'nvidia'),
+                 'effort': gateway.options.get('effort', 'none'),
+                 'effective_caps': {k:gateway.options.get(k) for k in ('max_requests','max_output_tokens','model_max_output_tokens','max_total_tokens','timeout_s','provider_timeout_s')},
                  'condition': gateway.options.get('condition', arm),
                  'native_arm': gateway.options.get('native_arm', arm),
                  'prompt_variant': gateway.options.get('prompt_variant'),
@@ -89,8 +95,13 @@ def finish(root, gateway, result, arm, config):
                  'snapshot_tool_definitions': gateway.options.get('snapshot_tool_definitions', []),
                  'allowed_tool_names': gateway.options.get('allowed_tool_names', []),
                  'native_system_prompt': True, 'skills': [], 'external_plugins': [],
-                 'tool_policy': 'product track: snapshot MCP + OT native read_result/compute/calculate; no shared calculator (user 2026-11-11: calculation is each harness own capability); memory none; no filesystem/shell/web/subagents',
-                 'isolation': 'isolated HOME/XDG/environment and native tool removal; not OS container',
+                 'tool_policy': {'snapshot_mcp': True, 'shell': 'native commands unfiltered in shared no-network Docker sandbox',
+                                 'native_tools': [d.get('name') for d in gateway.options.get('native_tool_definitions', [])],
+                                 'memory_profile': gateway.options.get('memory_profile', 'none'),
+                                 'external_web_subagents': False},
+                 'isolation': {'native_harness': 'host process with isolated HOME/XDG/environment',
+                               'shell_commands': 'Docker: no network, read-only root, trial workspace/tmp mounts only',
+                               'sandbox_image': gateway.options.get('sandbox_image')},
                  'config': config, 'observed_tool_sets': [r.get('tool_names', []) for r in gateway.rows],
                  'provider_requests': len(gateway.rows),
                  'provider_upstream_requests': sum(bool(r.get('upstream_attempted')) for r in gateway.rows),

@@ -10,10 +10,11 @@ import time
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from common import popen_run
 from isolated import prepare, finish, SNAPSHOT
-OPENCODE_BIN = os.path.expanduser('~/.opencode/bin/opencode')
+from trusted_toolchain import trusted_tool
 
 
 def run(ws, instruction, task_dir, model, timeout_s, log_path, options=None):
+    binary = str(trusted_tool('opencode'))
     options = {**(options or {}), 'timeout_s': timeout_s}
     root, env, gateway, mcp_env = prepare(ws, task_dir, model, options)
     or_route = bool(options.get('provider_route') in ('openrouter_free','openrouter_paid'))
@@ -42,8 +43,8 @@ def run(ws, instruction, task_dir, model, timeout_s, log_path, options=None):
         'providers': {'nvidia': {'package': '@ai-sdk/openai-compatible', 'name': 'NVIDIA controlled gateway',
             'settings': {'apiKey': gateway.token, 'baseURL': gateway.url},
             'models': models}},
-        # v4.7 (option A): OpenCode's own shell tool is on, behind the shared math-only filter
-        # (runners/mathshell, via PATH/$SHELL). doom_loop would ask a user nobody is there to answer:
+        # v4.7 (option A): OpenCode's own shell tool is on, inside the shared no-network Docker sandbox
+        # (runners/mathshell launches each command via PATH/$SHELL). doom_loop would ask a user nobody is there to answer:
         # allowed, as OpenTrading's approvals are answered "once".
         'permissions': [{'action': action, 'resource': '*', 'effect': 'deny'} for action in ('execute','subagent','browser','external_directory','webfetch','websearch','read','write','edit','glob','grep','skill','question','task','todowrite','todoread')]
             + [{'action': 'shell', 'resource': '*', 'effect': 'allow'}, {'action': 'doom_loop', 'resource': '*', 'effect': 'allow'}],
@@ -73,7 +74,7 @@ def run(ws, instruction, task_dir, model, timeout_s, log_path, options=None):
     server = None
     with gateway, open(root / 'opencode-server.log', 'w', encoding='utf-8') as server_log:
         try:
-            server = subprocess.Popen([OPENCODE_BIN, 'serve', '--hostname', '127.0.0.1', '--port', str(port)],
+            server = subprocess.Popen([binary, 'serve', '--hostname', '127.0.0.1', '--port', str(port)],
                 cwd=ws, env=env, stdin=subprocess.DEVNULL, stdout=server_log, stderr=server_log,
                 text=True, start_new_session=True)
             catalog = None
@@ -82,7 +83,7 @@ def run(ws, instruction, task_dir, model, timeout_s, log_path, options=None):
                     raise RuntimeError('native OpenCode server exited during startup')
                 remaining = timeout_s - (time.monotonic() - started)
                 try:
-                    check = subprocess.run([OPENCODE_BIN, 'api', '--server', server_url, 'mcp.list'],
+                    check = subprocess.run([binary, 'api', '--server', server_url, 'mcp.list'],
                         cwd=ws, env=env, capture_output=True, text=True, timeout=max(0.1, min(8, remaining)))
                 except subprocess.TimeoutExpired:
                     continue
@@ -100,7 +101,7 @@ def run(ws, instruction, task_dir, model, timeout_s, log_path, options=None):
             remaining = timeout_s - (time.monotonic() - started)
             if remaining <= 0:
                 raise TimeoutError('trial deadline exhausted during MCP startup')
-            rc, out, err, timed_out = popen_run([OPENCODE_BIN, 'run', '--server', server_url, '--format', 'json',
+            rc, out, err, timed_out = popen_run([binary, 'run', '--server', server_url, '--format', 'json',
                 '--auto', '--title', 'benchmark trial', '-m', model_ref, instruction],
                 cwd=ws, env=env, timeout_s=remaining, log_path=log_path)
         except Exception as exc:

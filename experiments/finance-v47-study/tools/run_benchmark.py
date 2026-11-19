@@ -552,7 +552,11 @@ def effective_provider_options(args, cfg):
         options['budget_usd'] = cap
     elif options.get('provider_route') == 'openrouter_paid':
         raise ValueError('paid route requires explicit --budget-usd')
-    options['opentrading_runtime_root'] = cfg.get('opentrading_runtime_root')
+    if cfg.get('opentrading_runtime_root'):
+        from trusted_toolchain import resolve_runtime
+        options['opentrading_runtime_root'] = str(resolve_runtime(cfg))
+    else:
+        options['opentrading_runtime_root'] = None
     options['protocol'] = cfg.get('protocol')
     model = args.model or cfg.get('model')
     paid_policy(model, options, require_current=not getattr(args, 'resume', False))

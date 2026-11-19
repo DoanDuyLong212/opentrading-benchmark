@@ -106,35 +106,33 @@ def harness_inventory(config=None):
     if config is None:
         config = json.loads((ROOT/'tools/bench_config.json').read_text())
     from experiment_conditions import RUNTIME_ROOT
-    locator = config.get('opentrading_runtime_root')
-    if not locator or Path(locator).resolve() != RUNTIME_ROOT.resolve() or not RUNTIME_ROOT.is_dir():
-        raise ValueError('Explicit trusted OpenTrading experiment runtime root required')
-    commands = {'opencode': ['opencode', '--version'], 'dsh': [str(Path.home()/'.local/bin/dsh'), '--version'],
-                'bun': [config['provider_options']['native_bun_binary'], '--version']}
-    found = {'python': python_runtime_inventory()}
+    from trusted_toolchain import trusted_tool, trusted_runtime, spec
+    from trusted_bun import trusted_bun
+    trusted_runtime(config)
+    paths = {name:trusted_tool(name) for name in ('opencode','node','dsh')}
+    paths['bun'] = trusted_bun()
+    commands = {name:[str(path), '--version'] for name,path in paths.items()}
+    commands['dsh'] = [str(paths['node']),str(paths['dsh']),'--version']
+    found = {'python': python_runtime_inventory(), 'trusted_toolchain':spec()}
     for name, command in commands.items():
-        binary = shutil.which(command[0])
-        item = {'binary': binary, 'sha256': None, 'version': None}
-        if binary:
-            item['sha256'] = hash_file(Path(binary).resolve())
-            try:
-                with tempfile.TemporaryDirectory(prefix='bench-version-') as temp:
-                    env = dict(os.environ, HOME=temp, XDG_CONFIG_HOME=temp+'/config',
-                               XDG_DATA_HOME=temp+'/data', XDG_CACHE_HOME=temp+'/cache', XDG_STATE_HOME=temp+'/state')
-                    result = subprocess.run(command, capture_output=True, text=True, timeout=10, env=env)
-                item['version'] = result.stdout.strip() if result.returncode == 0 else None
-            except (OSError, subprocess.TimeoutExpired):
-                pass
+        binary = paths[name]
+        item = {'binary':str(binary), 'sha256':hash_file(binary), 'version':None}
+        try:
+            with tempfile.TemporaryDirectory(prefix='bench-version-') as temp:
+                env = {'PATH':str(paths['node'].parent)+':/usr/bin:/bin', 'HOME':temp,
+                       'LANG':'C.UTF-8', 'XDG_CONFIG_HOME':temp+'/config',
+                       'XDG_DATA_HOME':temp+'/data', 'XDG_CACHE_HOME':temp+'/cache',
+                       'XDG_STATE_HOME':temp+'/state', 'DSH_TELEMETRY_DISABLED':'1'}
+                result = subprocess.run(command, capture_output=True, text=True, timeout=30, env=env)
+            if result.returncode != 0:
+                raise ValueError('Pinned '+name+' --version failed')
+            item['version'] = result.stdout.strip()
+        except (OSError, subprocess.TimeoutExpired) as exc:
+            raise ValueError('Pinned '+name+' startup failed') from exc
+        if name == 'dsh':
+            item['runtime_tree_sha256'] = spec()['dsh']['tree_sha256']
+            item['dependency_lock_sha256'] = spec()['dsh']['lock_sha256']
         found[name] = item
-        if name == 'dsh' and binary:
-            package = Path(binary).resolve().parent.parent
-            modules = package/'node_modules'
-            selected = [package]
-            for scope in ('@deepseek-ai', '@earendil-works', '@modelcontextprotocol'):
-                selected.extend(p for p in (modules/scope).glob('*') if (p/'package.json').exists())
-            selected.extend(modules/name for name in ('openai',) if (modules/name/'package.json').exists())
-            item['runtime_packages'] = {str(p.relative_to(package)) if p != package else '.':
-                                        installed_package_fingerprint(p) for p in sorted(selected)}
     repo = RUNTIME_ROOT
     source = native_source_fingerprint(repo)
     found['opentrading'] = {'source_sha256': digest_json(source), 'source_file_count':len(source), 'runtime_root': str(repo.resolve()),

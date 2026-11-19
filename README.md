@@ -26,6 +26,22 @@ và [xác minh v2 lịch sử](audits/contract-v2/NVIDIA-VERIFICATION.md).
 `--arms opentrading_baseline,opencode,dsh` và tạo manifest/certificate mới theo gate
 tương ứng. Alias frozen tái lập thí nghiệm không phải prompt default đã triển khai.
 
+## Study v4.7 (đang phát triển, chưa seal)
+
+Entrypoint và hướng dẫn tái lập đầy đủ: [experiments/finance-v47-study/README.md](experiments/finance-v47-study/README.md).
+v4.7 dùng bộ **200 main + 58 holdout** (chia tầng L/C/M/S), runtime OT ghim và
+shell sandbox Docker. Toàn bộ kiểm tra offline — bootstrap toolchain ghim, active
+suite, verifier corpus/oracle/grader, legacy v4.6u — chạy từ clone mới không cần
+credential model; xem [.github/workflows/offline.yml](.github/workflows/offline.yml).
+
+```sh
+python3.12 experiments/finance-v47-study/tools/bootstrap_offline.py --prefix .toolchains --cache .bootstrap-cache
+python3.12 -m pytest -q experiments/finance-v47-study/tools/tests
+```
+
+Main/holdout và mọi lần chạy trả phí vẫn khoá sau seal + duyệt riêng; phần dưới
+mô tả lịch sử v2/v3 và không thay cho gate v4.7.
+
 ## Hợp đồng đánh giá
 
 | Điều kiện | Cách thực thi |

@@ -1,0 +1,38 @@
+{
+  "schema": 1,
+  "platform": "linux-x86_64-glibc",
+  "python": "3.12.3",
+  "artifacts": {
+    "bun": {
+      "version": "1.4.4",
+      "url": "https://github.com/oven-sh/bun/releases/download/bun-v1.4.4/bun-linux-x64.zip",
+      "archive": "bun-linux-x64.zip",
+      "archive_sha256": "bf8ccbfb2b0b80159e0f9a6d15c55317add8077534dbc6130a3edb52fccb395c",
+      "member": "bun-linux-x64/bun",
+      "binary_sha256": "10702245766b225e70bbf6235fd6b47214fd94b4760d00ffaed8ab0df57ac235"
+    },
+    "opencode": {
+      "version": "2.1.2",
+      "url": "https://registry.npmjs.org/@opencode/cli-linux-x64/-/cli-linux-x64-2.1.2.tgz",
+      "archive": "opencode-cli-linux-x64-2.1.2.tgz",
+      "archive_sha256": "2e1c665f5e82e531732329f2a3106672873477506e378b17d30eeabd31d139b3",
+      "member": "package/bin/opencode",
+      "binary_sha256": "cf5841e6666aeb469abec8b39ca494cef07a637756454a34a742b2f4996e1675"
+    },
+    "node": {
+      "version": "26.8.2",
+      "url": "https://nodejs.org/dist/v26.8.2/node-v26.8.2-linux-x64.tar.xz",
+      "archive": "node-v26.8.2-linux-x64.tar.xz",
+      "archive_sha256": "40e1d3225c1c9ae9a2671c98ecb9857e4d5555026394f348645676798840d5c5",
+      "member": "node-v26.8.2-linux-x64",
+      "binary_sha256": "8a22a371fd85aecf5411636574309f6380fbc42694aaf0651a089a8ef9c44e52",
+      "tree_sha256": "b089188b70f2a946f978351ebc97fd7d3e0aafe593efa78bf92b73f96ed97739"
+    }
+  },
+  "dsh": {
+    "version": "0.2.1-rc.2",
+    "lock_sha256": "d384d3c02ecf97a6b29f181273407c3c692d360a8096dc8fa4f236b65cfcb421",
+    "binary_sha256": "80112efe368efb1a39720c7ada0af00442e5131fb2744edaaff8a3e8bb499e6f",
+    "tree_sha256": "f44266493aa89b606dff424adf34b56cc462a36326a56b6aed7297eabc84b7c0"
+  }
+}

@@ -7,7 +7,7 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from common import popen_run
 from isolated import prepare, finish, SNAPSHOT
 
-DSH_BIN = os.path.expanduser('~/.local/bin/dsh')
+from trusted_toolchain import trusted_tool, trusted_dsh_modules
 # Explicit allowlist of core services. Bundle updates do not silently add tools.
 CORE = {'timer', 'llm', 'session', 'session-log-deepseek', 'typert', 'typert-loader',
  'typert-gateway', 'remote-access', 'session-title', 'agent', 'agent-default-model',
@@ -17,7 +17,7 @@ CORE = {'timer', 'llm', 'session', 'session-log-deepseek', 'typert', 'typert-loa
  'spill-local', 'spill-policy', 'session-checkpoint-policy', 'tools', 'system-prompt',
  'agent-loop', 'headless-startup', 'headless-runner',
  # v4.7 (option A): DSH's own `bash` tool and the services it waits for (probe 2026-11-15: only
- # `bash` reaches the model; it runs `bash -c` through PATH, so the shared math-only filter sees it).
+ # `bash` reaches the model; it runs `bash -c` through PATH, so the shared Docker sandbox executes it).
  'subprocess', 'subprocess-local', 'sandbox', 'sandbox-local', 'sandbox-policy', 'bash-sandbox',
  'approval', 'permission', 'shell-env', 'tool-bash', 'working-directory', 'fs-sandbox', 'fs-observation-policy',
  # v4.7: DSH's default loop reminder (thresholds 3/5/8), off in or16 by omission.
@@ -34,6 +34,8 @@ def _events(text):
 
 
 def run(ws, instruction, task_dir, model, timeout_s, log_path, options=None):
+    binary = str(trusted_tool('dsh'))
+    node = str(trusted_tool('node'))
     options = {**(options or {}), 'timeout_s': timeout_s}
     root, env, gateway, mcp_env = prepare(ws, task_dir, model, options)
     home = root / 'dsh-home'
@@ -43,13 +45,13 @@ def run(ws, instruction, task_dir, model, timeout_s, log_path, options=None):
     core = set(CORE)
     if options.get('dsh_session_search'):
         # Amendment 2026-11-11 (d): memory stratum only. DSH's own opt-in prior-session search (five read-only
-        # tools, workspace-cwd authorized) is its native cross-session recall; shell stays disabled.
+        # tools, workspace-cwd authorized) is its native cross-session recall; the native shell remains sandboxed.
         bundles.append('@deepseek-ai/dsh-experimental-session-search')
         core |= SESSION_SEARCH
     (profile / 'package.json').write_text(json.dumps({'name': 'benchmark-isolated', 'private': True,
         'dependencies': {}, 'dsh': {'profile': {'bundles': bundles}}}))
     # Only module resolution is shared, never profiles, settings or plugin lists.
-    installed = Path(DSH_BIN).resolve().parent.parent / 'node_modules'
+    installed = trusted_dsh_modules()
     if not (profile / 'node_modules').exists(): (profile / 'node_modules').symlink_to(installed, target_is_directory=True)
     # Discover shipped entry ids locally and disable everything outside the frozen allowlist.
     # PyYAML cannot parse !!js tags; line-level id extraction is sufficient for bundle rows.
@@ -74,9 +76,10 @@ def run(ws, instruction, task_dir, model, timeout_s, log_path, options=None):
             'args': [str(SNAPSHOT)], 'env': mcp_env}}]}]
     (profile / 'cordis.patch.yml').write_text(json.dumps(patches, indent=2))
     (profile / 'cordis.yml').write_text('[]\n')
+    env['PATH'] = str(Path(node).parent) + os.pathsep + env.get('PATH', '/usr/bin:/bin')
     env.update(DSH_HOME=str(home), NVIDIA_API_KEY=gateway.token, DSH_TELEMETRY_DISABLED='1', DSH_TOOLS_MODE='native')
     with gateway:
-        rc, out, err, timed_out = popen_run([DSH_BIN, '--profile', 'benchmark', '--json', '-'],
+        rc, out, err, timed_out = popen_run([node, binary, '--profile', 'benchmark', '--json', '-'],
             cwd=ws, env=env, timeout_s=timeout_s, log_path=log_path, stdin_text=instruction)
     texts, session = [], None
     for event in _events(out):
