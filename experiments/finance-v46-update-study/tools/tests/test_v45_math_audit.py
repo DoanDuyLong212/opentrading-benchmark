@@ -4,7 +4,7 @@ import pytest
 TOOLS=Path(__file__).resolve().parents[1];sys.path.insert(0,str(TOOLS))
 from v45_math_audit import verify_native,expression,factor
 ROOT=TOOLS.parents[2]
-FIXTURE=ROOT/'audits/financial-prompt-v45/native/derived-fixture.json'
+FIXTURE=TOOLS.parents[1]/'finance-v46-update-study/tools/tests/fixtures/native-derived-synthetic.json'
 
 def fixture():
     f=json.loads(FIXTURE.read_text());return f,{'fixture-server-call':f['raw_source']}

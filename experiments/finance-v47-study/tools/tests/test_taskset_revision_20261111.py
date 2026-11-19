@@ -1,5 +1,7 @@
 """Amendment 2026-11-11 (d): task-set revision, compute stratum, native-memory stratum."""
 import json
+import tomllib
+from historical_fixtures import LEGACY_STUDY, RETIRED
 import subprocess
 import sys
 from pathlib import Path
@@ -16,22 +18,24 @@ NEW = sorted(list((ROOT / 'tasks').glob('*/fin-c[1-4]-*')) + list((ROOT / 'tasks
 
 
 def composition(split):
-    out = {'core': 0, 'compute': 0, 'memory': 0}
-    for p in (ROOT / 'tasks' / split).iterdir():
-        if p.is_dir() and task_eligibility(p)['confirmatory_eligible']:
-            e = task_eligibility(p)
-            out['memory' if e.get('memory_native_v2') else 'compute' if p.name.startswith('fin-c') else 'core'] += 1
+    out = {}
+    for p in (ROOT/'tasks'/split).iterdir():
+        if p.is_dir():
+            meta = tomllib.loads((p/'task.toml').read_text(encoding='utf-8'))
+            stratum = meta.get('stratum', 'lookup')
+            out[stratum] = out.get(stratum, 0) + 1
     return out
 
 
-def test_main_200_and_holdout_50_composition():
-    assert composition('main') == {'core': 140, 'compute': 30, 'memory': 30}
-    assert composition('holdout') == {'core': 36, 'compute': 7, 'memory': 7}
-    prune = json.loads((ROOT / 'audits/taskset-revision-2026-11-11/PRUNE.json').read_text())
+def test_v47_composition_and_preserved_retired_archive():
+    assert composition('main') == {'lookup':100, 'compute':40, 'memory':30, 'safety':30}
+    assert composition('holdout') == {'lookup':36, 'compute':7, 'memory':7, 'safety':8}
+    prune = json.loads((LEGACY_STUDY/'audits/taskset-revision-2026-11-11/PRUNE.json').read_text())
     assert len(prune['splits']['main']['core_kept']) == 140 and len(prune['splits']['holdout']['core_kept']) == 36
     for split in ('main', 'holdout'):
         for r in prune['splits'][split]['retired']:
-            assert (ROOT / 'tasks-retired' / split / r['id']).is_dir() and not (ROOT / 'tasks' / split / r['id']).exists()
+            assert (RETIRED/split/r['id']).is_dir()
+            assert not (ROOT/'tasks'/split/r['id']).exists()
 
 
 @pytest.mark.parametrize('task', NEW, ids=lambda p: p.name)
@@ -70,7 +74,7 @@ def test_native_utilities_are_arm_specific():
     assert 'session_search' in native_tool_allowlist({**base, 'condition': 'dsh', 'native_arm': 'dsh'})
     assert 'session_search' not in native_tool_allowlist({**base, 'condition': 'opencode', 'native_arm': 'opencode'})
     # single-turn financial tasks never expose memory or session tools
-    assert native_tool_allowlist({'condition': 'dsh', 'native_arm': 'dsh'}) == {'calculate', 'compute', 'read_result'}
+    assert native_tool_allowlist({'condition': 'dsh', 'native_arm': 'dsh'}) == {'shell', 'bash', 'read_result'}
     pinned = json.loads((ROOT / 'tools/runners/dsh_session_search_tools.json').read_text())['tools']
     assert sorted(t['name'] for t in pinned) == ['session_event_read', 'session_event_search', 'session_event_trace',
                                                  'session_search', 'session_trace']

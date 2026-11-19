@@ -32,11 +32,12 @@ from pathlib import Path
 import sys
 import time
 import uuid
-from analytics_compute import NAME as COMPUTE_NAME, DEFINITION as COMPUTE_DEFINITION, compute, numeric_candidates
-from analytics_calculate import NAME as CALCULATE_NAME, DEFINITION as CALCULATE_DEFINITION, calculate
+# Historical replay helpers import their engines only when explicitly invoked.
+COMPUTE_NAME = 'analytics_compute'
+CALCULATE_NAME = 'analytics_calculate'
 
 # User decision 2026-11-11: the benchmark exposes data tools only. Calculation is each harness's own
-# capability (OpenTrading native calculate/compute; other arms compute themselves), so the shared
+# capability (native shell/read_result in the v4.7 runtime), so the shared
 # analytics calculators are not advertised and calls to them are unknown tools.
 SHARED_CALCULATORS = False
 from functools import lru_cache
@@ -228,6 +229,8 @@ def build_tool_defs(entries):
             "PRODUCTION API METADATA (capabilities below do not expand this finite snapshot):\n" + definition['description'])
         definitions.append(definition)
     if SHARED_CALCULATORS:
+        from analytics_compute import DEFINITION as COMPUTE_DEFINITION
+        from analytics_calculate import DEFINITION as CALCULATE_DEFINITION
         definitions.append(copy.deepcopy(COMPUTE_DEFINITION))
         definitions.append(copy.deepcopy(CALCULATE_DEFINITION))
     return definitions
@@ -320,7 +323,8 @@ def replay_call(entries, tool, arguments, payload_sha256, ledger_path=None):
 
 
 def replay_compute(arguments, sources, payload_sha256, ledger_path=None):
-    """Derived ledger namespace; never masquerade as recorded upstream receipt."""
+    """Historical derived ledger; never masquerade as recorded upstream receipt."""
+    from analytics_compute import compute, numeric_candidates
     start=time.monotonic();stamp=lambda:dt.datetime.now(dt.timezone.utc).isoformat()
     record={'schema_version':2,'call_id':str(uuid.uuid4()),'tool':COMPUTE_NAME,
             'arguments':arguments,'arguments_sha256':digest(arguments),'payload_sha256':payload_sha256,
@@ -346,6 +350,7 @@ def replay_compute(arguments, sources, payload_sha256, ledger_path=None):
 
 
 def replay_calculate(arguments,sources,derived,payload_sha256,ledger_path=None):
+    from analytics_calculate import calculate
     start=time.monotonic();stamp=lambda:dt.datetime.now(dt.timezone.utc).isoformat()
     record={'schema_version':2,'call_id':str(uuid.uuid4()),'tool':CALCULATE_NAME,'arguments':arguments,'arguments_sha256':digest(arguments),'payload_sha256':payload_sha256,'started_at':stamp(),'matched_entry_id':None,'source':None,'as_of':None,'response_sha256':None,'record_kind':'deterministic_derivation'}
     try:

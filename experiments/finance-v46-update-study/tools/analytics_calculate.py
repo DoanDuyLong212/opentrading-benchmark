@@ -1,7 +1,7 @@
 """Shared native safe calculator, with session-bound financial source/derived refs.
 Model callers never supply numeric values or arbitrary filesystem/code paths.
 """
-import copy,json,math,subprocess,os,hashlib
+import copy,json,math,subprocess,os
 from pathlib import Path
 from analytics_compute import traverse,scope_for,unit_for
 NAME='analytics_calculate'
@@ -10,11 +10,7 @@ SCHEMA={'type':'object','properties':{'expression':{'type':'string','minLength':
 DEFINITION={'name':NAME,'description':'Read-only financial calculator using the SAME native OpenTrading expression/unit engine, never arbitrary code. Supply named variables from successful retrieved original benchmark_evidence.call_id + exact numeric JSON pointer, or a prior analytics_calculate derived_ref via derived_id. No typed financial numbers. expression supports + - * / ^ parentheses and native functions abs,min,max,sqrt,sum,avg,ln,log10,exp; formula constants only 0,1,2,3,4,12,100,252,365. All data values must be referenced. output_unit converts dimensions: a/b with output_unit % already multiplies fraction by100; do not also multiply expression by100. Use explicit alignment: same_period defaults same entity/period/scope; time_series permits distinct periods for same entity/metric; cross_entity_same_period permits named entity comparison at same period. Price per-share scale: nghìn đồng/cổ phiếu -> đồng/cổ phiếu, never strip share dimension; public final quote VND means VND per share only when task declares asset-price convention. Returned derived_ref is NOT upstream evidence; cite original source_evidence receipts. No lookup, shell, files or network.', 'inputSchema':SCHEMA,'annotations':{'readOnlyHint':True,'destructiveHint':False,'idempotentHint':True,'openWorldHint':False}}
 ROOT=Path(__file__).resolve().parents[1]
 SHIM=ROOT/'tools/runners/native_calculate.ts'
-# Explicit frozen controller/config locator, never isolated HOME/PATH lookup.
-_BUN_CONFIG=json.loads((ROOT/'tools/bench_config.json').read_text())['provider_options']
-BUN=Path(os.environ.get('BENCH_BUN_BIN',_BUN_CONFIG['native_bun_binary'])).resolve()
-BUN_SHA256=os.environ.get('BENCH_BUN_SHA256',_BUN_CONFIG['native_bun_sha256'])
-if BUN!=Path(_BUN_CONFIG['native_bun_binary']).resolve() or BUN_SHA256!=_BUN_CONFIG['native_bun_sha256']:raise ValueError('Untrusted native arithmetic binary locator/receipt')
+from trusted_bun import trusted_bun
 
 def raw_unit(env,path):
  _,ancestors=traverse(env,path);key=path.split('/')[-1].replace('~1','/').replace('~0','~');units=env.get('units',{})
@@ -82,8 +78,8 @@ def calculate(args,sources,derived=None):
  roots,variables=roots_for(args['variables'],sources,derived or {})
  validate_alignment(roots,args.get('alignment','same_period'))
  request={'expression':args['expression'],'variables':[{k:r[k] for k in ('name','value','unit')} for r in variables],**{k:args[k] for k in ('output_unit','precision') if k in args}}
- if not SHIM.is_file() or not BUN.is_file():raise ValueError('pinned native calculation runtime missing')
- if hashlib.sha256(BUN.read_bytes()).hexdigest()!=BUN_SHA256:raise ValueError('Pinned native arithmetic binary content changed')
+ BUN=trusted_bun()
+ if not SHIM.is_file():raise ValueError('pinned historical native calculation runtime missing')
  try:result=subprocess.run([str(BUN),str(SHIM)],input=json.dumps(request),text=True,capture_output=True,timeout=15,cwd=ROOT/'experiments/opentrading-runtime',env={k:os.environ[k] for k in ('PATH','LANG','LC_ALL','TZ') if k in os.environ})
  except (OSError,subprocess.TimeoutExpired) as exc:raise ValueError('pinned native arithmetic engine unavailable: '+type(exc).__name__) from exc
  if result.returncode:

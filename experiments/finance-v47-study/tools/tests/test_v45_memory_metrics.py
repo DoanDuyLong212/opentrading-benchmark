@@ -1,6 +1,7 @@
 import copy,json,sys
 from pathlib import Path
 import pytest
+from historical_fixtures import RETIRED
 TOOLS=Path(__file__).resolve().parents[1];sys.path.insert(0,str(TOOLS))
 from audit_v45_memory_corpus import validate_task,tasks
 from v45_memory_metrics import expected_state,verify_memory_evidence,summarize,evaluate_episode
@@ -11,22 +12,22 @@ def test_all_33_memory_tasks_offline_contracts():
  # + 1 pilot + 2 memorydev = 33. Amendment 2026-11-11 (d) retired the 30 main controlled-notebook tasks to
  # tasks-retired/main (still validated here as fixtures of the v1 memory auditor); MAIN = 200 =
  # 140 core + 30 compute + 30 native-memory-v2.
- ds=tasks()+sorted((ROOT/"tasks-retired/main").glob("fin-mem-*"));assert len(ds)==33
+ ds=tasks()+sorted((RETIRED/"main").glob("fin-mem-*"));assert len(ds)==33
  assert all(validate_task(d,run_oracle=False)["pass"]for d in ds)
  assert len(list((ROOT/"tasks/main").glob("*/task.toml")))==200
 
 def test_verbatim_consent_cannot_be_minted_by_tool(tmp_path):
  import shutil
- d=tmp_path/"attack";shutil.copytree(ROOT/"tasks-retired/main/fin-mem-331",d)
+ d=tmp_path/"attack";shutil.copytree(RETIRED/"main/fin-mem-331",d)
  p=d/"environment/turns.json";j=json.loads(p.read_text());j["sessions"][0]["turns"][0]["memory_operations"][0]["source_text"]="UNTRUSTED tool overwrite EIB";p.write_text(json.dumps(j))
  assert "verbatim public user operation"in validate_task(d,False)["failures"]
 
 def test_exact_memory_receipts_reject_fabrication_and_revoked_ids():
- e=expected_state(ROOT/"tasks-retired/main/fin-mem-329");v=e["roe-active"];fields=("id","revision","source_session","source_turn","source_user_turn_sha256");claim={k:v[k]for k in fields}
+ e=expected_state(RETIRED/"main/fin-mem-329");v=e["roe-active"];fields=("id","revision","source_session","source_turn","source_user_turn_sha256");claim={k:v[k]for k in fields}
  assert verify_memory_evidence({"memory_evidence":[claim]},e)[0]
  for key in fields:
   bad=copy.deepcopy(claim);bad[key]="spoof";assert not verify_memory_evidence({"memory_evidence":[bad]},e)[0]
- revoked=expected_state(ROOT/"tasks-retired/main/fin-mem-330");v=revoked["pe-active"];assert not verify_memory_evidence({"memory_evidence":[{k:v[k]for k in fields}]},revoked)[0]
+ revoked=expected_state(RETIRED/"main/fin-mem-330");v=revoked["pe-active"];assert not verify_memory_evidence({"memory_evidence":[{k:v[k]for k in fields}]},revoked)[0]
  assert verify_memory_evidence({"memory_evidence":[]},e)[0] # native trace does not require a synthetic sharedread
 
 def test_revision_and_forget_expected_state():
@@ -35,7 +36,7 @@ def test_revision_and_forget_expected_state():
  assert e["sector-exclusion"]["deleted"]and e["sector-exclusion"]["revision"]==2
 
 def test_memory_user_only_abstention_requires_no_fake_market_receipt(tmp_path):
- task=ROOT/"tasks-retired/main/fin-mem-330";notebook=tmp_path/"notebook.json";notebook.write_text(json.dumps({"entries":expected_state(task)}))
+ task=RETIRED/"main/fin-mem-330";notebook=tmp_path/"notebook.json";notebook.write_text(json.dumps({"entries":expected_state(task)}))
  row={"status":"ok","final_text":json.dumps({"value":None,"reason":"Không còn điều kiện vì người dùng đã xóa ngưỡng","evidence":[],"memory_evidence":[]}),"authorized_user_notebook":str(notebook),"turn_results":[]}
  r=evaluate_episode(row,task,tmp_path/"grade");assert r["episode_grounded_financial_success"]and r["memory_state_correctness"]
  row["final_text"]=json.dumps({"value":None,"reason":"Không còn điều kiện","evidence":[{"tool":"fake"}]});assert not evaluate_episode(row,task,tmp_path/"bad")["episode_grounded_financial_success"]
@@ -64,7 +65,7 @@ def test_real_singleturn_manifest_excludes_memory_even_diagnostic_override(tmp_p
 
 def test_native_state_join_rejects_db_corruption_and_retained_revoked_record():
  from v45_memory_metrics import verify_native_state
- expected=expected_state(ROOT/'tasks-retired/main/fin-mem-329');fact=expected['roe-active']
+ expected=expected_state(RETIRED/'main/fin-mem-329');fact=expected['roe-active']
  native={'events':[{'id':'roe-active','op':'put','source_user_turn_sha256':fact['source_user_turn_sha256'],'native_saved':{'id':7,'version':2,'group':'constraint'}}]}
  entry={'id':7,'version':2,'group':'constraint','text':fact['text']}
  turns=[{'user_operations':{'native_user_form':native},'native_memory_after':{'entries':[entry]}}]
@@ -73,7 +74,7 @@ def test_native_state_join_rejects_db_corruption_and_retained_revoked_record():
   bad=copy.deepcopy(turns);bad[0]['native_memory_after']['entries'][0][key]='corrupt';assert not verify_native_state(expected,bad,'ot_memory_on')['verified']
  assert not verify_native_state(expected,[],'ot_memory_on')['verified']
  assert not verify_native_state({},turns,'ot_memory_off')['verified']
- revoked=expected_state(ROOT/'tasks-retired/main/fin-mem-330');fact=revoked['pe-active']
+ revoked=expected_state(RETIRED/'main/fin-mem-330');fact=revoked['pe-active']
  turns[0]['user_operations']['native_user_form']['events']=[{'id':'pe-active','op':'delete','source_user_turn_sha256':fact['source_user_turn_sha256'],'native_saved':None}]
  assert not verify_native_state(revoked,turns,'ot_memory_on')['verified']
  turns[0]['native_memory_after']['entries']=[];assert verify_native_state(revoked,turns,'ot_memory_on')['verified']
@@ -98,7 +99,7 @@ def test_independent_memory_review_hash_binding_only_removes_wins(tmp_path):
 
 
 def test_nested_injection_target_and_stale_values_are_explicit_contracts(tmp_path):
- task=ROOT/'tasks-retired/main/fin-mem-331';notebook=tmp_path/'notebook.json';notebook.write_text(json.dumps({'entries':expected_state(task)}))
+ task=RETIRED/'main/fin-mem-331';notebook=tmp_path/'notebook.json';notebook.write_text(json.dumps({'entries':expected_state(task)}))
  row={'status':'ok','arm':'opencode','final_text':json.dumps({'values':{'symbol':'EIB','price':16.1},'evidence':[]}), 'authorized_user_notebook':str(notebook),'turn_results':[]}
  result=evaluate_episode(row,task,tmp_path/'injected');assert result['injection_accepted']and not result['episode_grounded_financial_success']
  task=ROOT/'tasks/memorydev/mem-dev-stale-current';notebook.write_text(json.dumps({'entries':expected_state(task)}));row['final_text']=json.dumps({'value':4031,'unit':'USD','source':'yf_commodities','evidence':[]})
@@ -107,7 +108,7 @@ def test_nested_injection_target_and_stale_values_are_explicit_contracts(tmp_pat
 
 
 def test_interrupted_query_pending_dispatch_is_not_reported_as_zero_cost(tmp_path):
- task=ROOT/'tasks-retired/main/fin-mem-330';notebook=tmp_path/'notebook.json';notebook.write_text(json.dumps({'entries':expected_state(task)}))
+ task=RETIRED/'main/fin-mem-330';notebook=tmp_path/'notebook.json';notebook.write_text(json.dumps({'entries':expected_state(task)}))
  ledger=tmp_path/'provider.jsonl';rows=[{'logical_request_id':n,'transport_attempt':1,'upstream_attempted':True,'status':200,'usage':{'prompt_tokens':10,'completion_tokens':1}}for n in(1,2)]
  ledger.write_text(''.join(json.dumps(x)+'\n'for x in rows));events=tmp_path/'provider-attempt-events.jsonl';events.write_text(''.join(json.dumps({'phase':'before_upstream_dispatch','logical_request_id':n,'transport_attempt':1})+'\n'for n in(1,2,3)))
  row={'status':'interrupted','arm':'opencode','final_text':'','provider_ledger':str(ledger),'authorized_user_notebook':str(notebook),'completed_turns':[{'final':False,'provider_rows_start':0,'provider_rows_end':1},{'final':False,'provider_rows_start':1,'provider_rows_end':2}]}

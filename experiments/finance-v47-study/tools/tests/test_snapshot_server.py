@@ -114,7 +114,7 @@ def test_build_tool_defs_mark_readonly_hint():
 
 # ---------------------------------------------------------------- integration: stdio handshake
 @pytest.mark.asyncio
-async def test_stdio_server_roundtrip(tmp_path):
+async def test_stdio_server_roundtrip(tmp_path, monkeypatch):
     """Khởi động server qua stdio thật + gọi tools/list và tools/call qua MCP client."""
     payloads = _load(REPO_TASK)
     pfile = tmp_path / "payloads.json"
@@ -128,23 +128,51 @@ async def test_stdio_server_roundtrip(tmp_path):
         args=[os.path.join(ROOT, "tools", "mcp_snapshot_server.py"), str(pfile)],
         env={**os.environ, "BENCH_PAYLOADS": str(pfile)},
     )
+    import anyio
+    import mcp.client.stdio as transport
+    original_open = transport._create_platform_compatible_process
+    owned = []
+    async def capture_child(*args, **kwargs):
+        child = await original_open(*args, **kwargs)
+        owned.append(child)
+        return child
+    monkeypatch.setattr(transport, '_create_platform_compatible_process', capture_child)
     async with stdio_client(params) as (read, write):
-        async with ClientSession(read, write) as session:
-            await session.initialize()
-            tools = await session.list_tools()
-            assert "vn_quote_history" in [t.name for t in tools.tools]
-            bad = await session.call_tool('vn_quote_history', {'symbol': 'EIB', 'days': 1})
-            assert bad.isError is True
-            diagnostic = json.loads(bad.content[0].text)
-            assert diagnostic['error']['code'] == 'unsupported_snapshot_query'
-            assert diagnostic['error']['snapshot_requests']
-            assert 'benchmark_evidence' not in diagnostic and 'data' not in diagnostic
-            res = await session.call_tool("vn_quote_history", {"symbol": "EIB"})
-            assert res.isError is False
-            text = res.content[0].text
-            data = json.loads(text)
-            assert data["data"]["last"] == pytest.approx(16.1)
-            assert data["provenance"]["as_of"]  # provenance giữ nguyên
+        try:
+            async with ClientSession(read, write) as session:
+                # A dead handshake is a failure, never an unbounded offline run.
+                with anyio.fail_after(30):
+                    await session.initialize()
+                    tools = await session.list_tools()
+                    assert "vn_quote_history" in [t.name for t in tools.tools]
+                    bad = await session.call_tool('vn_quote_history', {'symbol': 'EIB', 'days': 1})
+                    assert bad.isError is True
+                    diagnostic = json.loads(bad.content[0].text)
+                    assert diagnostic['error']['code'] == 'unsupported_snapshot_query'
+                    assert diagnostic['error']['snapshot_requests']
+                    assert 'benchmark_evidence' not in diagnostic and 'data' not in diagnostic
+                    res = await session.call_tool("vn_quote_history", {"symbol": "EIB"})
+                    assert res.isError is False
+                    text = res.content[0].text
+                    data = json.loads(text)
+                    assert data["data"]["last"] == pytest.approx(16.1)
+                    assert data["provenance"]["as_of"]  # provenance giữ nguyên
+        finally:
+            assert len(owned) == 1
+            child = owned[0]
+            with anyio.move_on_after(1, shield=True):
+                if child.stdin:
+                    await child.stdin.aclose()
+                await child.wait()
+            if child.returncode is None:
+                child.terminate()
+                with anyio.move_on_after(2, shield=True):
+                    await child.wait()
+            if child.returncode is None:
+                child.kill()
+                with anyio.fail_after(2, shield=True):
+                    await child.wait()
+            assert child.returncode is not None
 
 @pytest.mark.parametrize('arguments', [
     {'symbol': 'INVENTED'}, {'symbol': 'EIB', 'days': 10},

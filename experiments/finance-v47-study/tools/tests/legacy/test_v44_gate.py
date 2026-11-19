@@ -1,11 +1,11 @@
 import copy,json,sys
 from pathlib import Path
 import pytest
-sys.path.insert(0,str(Path(__file__).resolve().parents[1]))
+sys.path.insert(0,str(Path(__file__).resolve().parents[2]))
 import v44_gate as gate
 import v44_supervisor as supervisor
 import metrics
-ROOT=Path(__file__).resolve().parents[2]
+ROOT=Path(__file__).resolve().parents[3]
 LEGACY=ROOT.parent/'finance-v44-study'
 
 def test_four_phase_commands_and_budgets():
