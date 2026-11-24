@@ -219,3 +219,9 @@ Keep the historical 40 PRUNE IDs and recommend 58 holdout tasks without adding C
 - Audit: OT 0.5.0 viết 3 câu từ chối bằng tiếng Anh (tool không có, loop guard, sai schema); `v46_rejection_proof.py` nay nhận cả hai ngôn ngữ, vẫn khớp chính xác. Sau sửa audit 501 check, chỉ còn `completed_resume` (chỉ có khi chạy qua supervisor).
 - Grader phụ (strict): mẫu `refusal_reason` không xử lý phủ định ("không xác nhận mã tồn tại" bị coi là khẳng định mã tồn tại). Có trong 297 grader main/holdout/pilot. Metric chính không bị ảnh hưởng (task bẫy chấm theo luật `value` null). Cần sửa hoặc ghi hạn chế trước seal.
 - Devsmoke không có task nhóm S và memory dài; hai nhóm này chưa được kiểm ở đây.
+
+**Quyết định và pilot thu nhỏ (24/11, chủ repo):**
+- #10 b (S báo riêng), #13 loại 40 task bão hòa, #15 a (giữ 58 task holdout), #33 holdout chưa từng chạy. Nguồn: comment trên từng issue; ghi trong `DECISIONS.json`. Việc cắt thêm các task main từng bão hòa ở or16 sẽ hỏi riêng trước khi seal main.
+- Pilot thu nhỏ được duyệt: 39 task × 3 arm × **1 lượt** (117 trial) thay vì 2 lượt. Model DeepSeek v4.1 flash 1017, host Pearl Research, key agent riêng; judge Haiku 5.5 trên key cũ.
+- Grader strict sửa (phủ định, "kỳ … chưa tồn tại"); 317 grader sinh lại từ nguồn.
+- Runner: `--prepare-only` tạo manifest và mục run cho seal qua đúng đường tính settings; lần chạy đầu của manifest đã seal mở budget trả phí bình thường, còn resume khi đã có journal/trial vẫn chỉ ghi sổ. Hệ quả cho main: một run trả phí bị dừng giữa chừng hiện không tiêu tiếp được khi resume; cần quyết trước main.

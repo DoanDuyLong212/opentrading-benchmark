@@ -39,6 +39,18 @@ ANSWER_KEYS = ("value", "values", "verdict", "ranking", "reason")
 
 
 # ------------------------------------------------------------------ config
+def budget_resume_mode(out_dir, resume):
+    """Paid budget resume mode for this invocation.
+
+    The first inference of a presealed v4.7 manifest runs with --resume but has neither a paid journal
+    nor trials: it initializes its allocation normally (returns False). With an existing journal or trials,
+    resume stays accounting-only (returns True), exactly as before.
+    """
+    first_sealed_start = bool(resume) and not os.path.exists(os.path.join(out_dir, 'paid-budget.jsonl')) \
+        and not os.path.exists(os.path.join(out_dir, 'trials.jsonl'))
+    return bool(resume) and not first_sealed_start
+
+
 def load_config(path=None):
     path = path or os.path.join(HERE, "bench_config.json")
     with open(path, encoding="utf-8") as f:
@@ -596,6 +608,8 @@ def main():
                     help="override per-request provider timeout (gateway default 45s); pilot/smoke diagnostics only")
     ap.add_argument("--budget-usd", help="positive run-wide paid allocation; paid routes require reviewed key/bound receipt")
     ap.add_argument("--list-only", action="store_true")
+    ap.add_argument("--prepare-only", action="store_true",
+                    help="v4.7: freeze the manifest through the normal settings path and print the seal run entry; no budget, no inference")
     ap.add_argument("--v45-seal", help="v45 versioned independent engineering seal")
     ap.add_argument("--v47-holdout-receipt", help="v4.7 one-shot holdout opening receipt bound to the seal decision")
     ap.add_argument("--v44-seal", help="v44 combined compute/acquisition shared seal")
@@ -680,6 +694,18 @@ def main():
             # v4.7 dev smoke only (BENCH_V47_DEV=1): no seal yet; never for pilot/main/holdout evidence.
             require_dev_split(args.split)
             dev_bypass = os.environ.get('BENCH_V47_DEV') == '1'
+            if args.prepare_only:
+                # v4.7 seal preparation (2026-11-24): the seal must register exactly these settings/tasks,
+                # so derive them here instead of by hand. Stops before credentials are used or any budget opens.
+                if dev_bypass or cfg.get('study_version') != 'v4.7' or args.resume:
+                    raise ValueError('--prepare-only is for a fresh v4.7 sealed run (no dev bypass, no resume)')
+                from run_manifest import digest_json, freeze_state
+                manifest = prepare_manifest(out_dir, settings, tasks, cfg, False)
+                entry = {'out': out_dir, 'config': str(Path(args.config).resolve()), 'split': args.split,
+                         'settings': settings, 'tasks': sorted(Path(t).name for t in tasks),
+                         'state_sha256': digest_json(freeze_state(cfg)), 'manifest_fingerprint': manifest['fingerprint']}
+                print(json.dumps(entry, ensure_ascii=False))
+                return
             if not args.v45_seal and not dev_bypass:
                 raise ValueError('v45 inference requires --v45-seal')
             if args.retry != 0:
@@ -715,7 +741,8 @@ def main():
                 raise ValueError('v43 inference must resume one of the two presealed manifests')
         manifest = prepare_manifest(out_dir, settings, tasks, cfg, args.resume)
         from paid_budget import open_run_budget
-        budget = open_run_budget(out_dir, manifest["fingerprint"], model, options, args.resume, accounting_only=args.resume)
+        budget_resume = budget_resume_mode(out_dir, args.resume)
+        budget = open_run_budget(out_dir, manifest["fingerprint"], model, options, budget_resume, accounting_only=budget_resume)
         options["free_cost_stop_path"] = str(Path(out_dir)/"FREE-ROUTE-CHARGED.jsonl")
         if args.split == "holdout":
             if cfg.get('study_version') == 'v4.7':

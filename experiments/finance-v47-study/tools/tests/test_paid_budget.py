@@ -533,3 +533,25 @@ def test_opencode_reasoning_content_text_only(tmp_path, monkeypatch, value, ok):
     monkeypatch.setattr(provider.urllib.request, 'urlopen', fetch)
     gate.handle(HELPERS['_Handler'](body))
     assert bool(sent) is ok
+
+
+def test_first_sealed_start_initializes_but_true_resume_stays_accounting_only(tmp_path, monkeypatch):
+    import run_benchmark as rb
+    out = tmp_path / 'run'; out.mkdir()
+    assert rb.budget_resume_mode(out, False) is False
+    # presealed manifest, nothing run yet: the allocation opens and can reserve
+    assert rb.budget_resume_mode(out, True) is False
+    gate, body = paid_gateway(tmp_path, monkeypatch)
+    assert gate.budget.reserve({'probe': 1})
+    # a journal (or trials) exists: resume is accounting-only and cannot reserve
+    (out / 'paid-budget.jsonl').write_text('')
+    assert rb.budget_resume_mode(out, True) is True
+    (out / 'paid-budget.jsonl').unlink(); (out / 'trials.jsonl').write_text('')
+    assert rb.budget_resume_mode(out, True) is True
+
+
+def test_halted_journal_still_blocks_reserve(tmp_path, monkeypatch):
+    gate, body = paid_gateway(tmp_path, monkeypatch)
+    gate.budget.halt('reported_provider_host_mismatch')
+    with pytest.raises(pb.BudgetError):
+        gate.budget.reserve({'probe': 1})
