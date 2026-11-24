@@ -2,7 +2,8 @@
   "origin_split": "main",
   "origin_task_id": "fin-c4-stagger-425",
   "origin_sha256": "1ffdcf0c3d06d4752650f9a208950b215d22a8bd91a919fb47feaf48a35b352d",
-  "copy_sha256": "d95cbeebdd61666fc4058260f7452da170aabaffed41ba4219ddc7a7ddf57623",
+  "copy_sha256": "fa924948190dae9916e4bd9ae91c12cba2b042719a7e598b02ecd1d6a9653509",
   "reason": "Explicit copy of previously exposed diagnostic task; no confirmatory interpretation.",
-  "source_commit": "4bbfd385008440acb0cca085cddb751decd06ee5"
+  "source_commit": "4bbfd385008440acb0cca085cddb751decd06ee5",
+  "grader_amendment_20261124": "tests/grader.py regenerated from tools/v45_grader.py: negated resolver claims and \"kỳ ... chưa tồn tại\" no longer fail correct refusals (strict metric only); task data/gold unchanged."
 }

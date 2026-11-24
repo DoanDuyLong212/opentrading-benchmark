@@ -1,13 +1,33 @@
 {
- "schema":"v47-methodology-decisions-draft-v1",
- "status":"pending_FinDaHuman",
- "prepared_date":"2026-11-16",
- "approval":{"reviewer":"FinDaHuman","decision":null,"recorded_at":null,"source_url":null},
- "issues":{
-  "10":{"recommendation":"b: S diagnostic separately; LCM primary; no extra arm in current cohort","decision":null},
-  "13":{"recommendation":"keep original frozen PRUNE 40 IDs; disclose selection after or16","decision":null},
-  "15":{"recommendation":"keep 58 holdout tasks for current economical cohort, no C3 addition; acknowledge public gold","decision":null}
+ "schema": "v47-methodology-decisions-draft-v1",
+ "status": "decided_by_owner",
+ "prepared_date": "2026-11-16",
+ "approval": {
+  "reviewer": "DoanDuyLong212 (owner)",
+  "decision": "recorded",
+  "recorded_at": "2026-11-24",
+  "source_url": "Claude Code session 2026-11-24 (AskUserQuestion answers by the repo owner DoanDuyLong212)",
+  "note": "Issues were addressed to FinDaHuman for review; the owner decided directly."
  },
- "holdout_history":{"all_machine_confirmation":"unknown; owner confirmation required","dev_stage_holdout":"unknown; investigate before seal","fin_mem_96x":"unknown; investigate before seal","claim_unseen_training_data":false},
- "ready_for_seal":false
+ "issues": {
+  "10": {
+   "recommendation": "b: S diagnostic separately; LCM primary; no extra arm in current cohort",
+   "decision": "b: S is diagnostic and reported separately; primary = L/C/M; no extra arm"
+  },
+  "13": {
+   "recommendation": "keep original frozen PRUNE 40 IDs; disclose selection after or16",
+   "decision": "remove: the 40 saturated lookup tasks are dropped as useless; keep only discriminating and hard tasks (owner wording: \"Xoá đi vì vô dụng, chỉ cần các câu có tính phân hoá và khó\"). They are already outside main 200; disclose that the rule was written after or16."
+  },
+  "15": {
+   "recommendation": "keep 58 holdout tasks for current economical cohort, no C3 addition; acknowledge public gold",
+   "decision": "a: keep 58 holdout tasks, no C3 addition, accept public gold; exposure disclosed, no unseen claim"
+  }
+ },
+ "holdout_history": {
+  "all_machine_confirmation": "owner confirms 2026-11-24: the v4.7 holdout has never been run on any machine",
+  "dev_stage_holdout": "covered by the owner confirmation above; no holdout run directory exists on this machine (searched 2026-11-24)",
+  "fin_mem_96x": "v4.6 memory holdout tasks tasks/holdout/fin-mem-960..969 in the legacy tree; not in the v4.7 holdout (0 fin-mem-96x in tasks/holdout); never run per owner",
+  "claim_unseen_training_data": false
+ },
+ "ready_for_seal": true
 }

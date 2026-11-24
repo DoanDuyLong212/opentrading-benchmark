@@ -2,7 +2,8 @@
   "origin_split": "devsmoke",
   "origin_task_id": "v45-dev-05-scale",
   "origin_sha256": "0c4dda0d9768cef476cc42ebda7174b5ab7b3ac33e86ac0bd25914284670ebf8",
-  "copy_sha256": "0c4dda0d9768cef476cc42ebda7174b5ab7b3ac33e86ac0bd25914284670ebf8",
+  "copy_sha256": "1d00ffb87271fd1412e40e31ee923bf17e0530bec5cd1165ad107c205facef0b",
   "reason": "Inherited development fixture from baseline; earlier source/exposure history unknown.",
-  "source_commit": "4bbfd385008440acb0cca085cddb751decd06ee5"
+  "source_commit": "4bbfd385008440acb0cca085cddb751decd06ee5",
+  "grader_amendment_20261124": "tests/grader.py regenerated from tools/v45_grader.py: negated resolver claims and \"kỳ ... chưa tồn tại\" no longer fail correct refusals (strict metric only); task data/gold unchanged."
 }
