@@ -1,0 +1,31 @@
+# Fundamental compute stratum — amendment 2026-11-24, tools/build_finance_stratum_20261124.py
+id = "fin-c5-cagr-985"
+title = "CAGR 2021–2025 DGC/VHC/ANV"
+version = 2
+created = "2026-11-24"
+level = "C5"
+family = "C5 fundamental compute"
+financebench_type = "financial statement analysis"
+entity = "DGC+VHC+ANV"
+asset = "vn_stock"
+data_zone = "green"
+data_pairs = []
+snapshot_date = "2026-11-01"
+universe_cap = 0
+banned_tools = ["web_search", "web_fetch", "sentiment_score"]
+human_time_band = "15–60 phút"
+time_limit_min = 60
+tools_expected = ["financial_statements"]
+mcp_payloads = "environment/payloads.json"
+snapshot_required = true
+split = "holdout"
+
+confirmatory_eligible = true
+stratum = "compute"
+tier = "C5"
+
+[scoring]
+type = "value"
+gold = "solution/gold.json"
+oracle = "solution/oracle.py"
+grader = "tests/grader.py"

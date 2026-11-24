@@ -253,3 +253,12 @@ Pilot +6 task đôi (C5 ×4, M6 ×2): 42 task hợp lệ. Holdout giữ nguyên 
 **Chỉ số đăng ký trước (trước khi chạy main):** ngoài điểm chính gộp L/C/M, báo riêng từng nhóm L, C1–C4, **C5**, M1–M5, **M6** và S (chẩn đoán), kèm bootstrap cặp theo task. OpenCode không có tính năng memory, nên nhóm M/M6 đo cả việc "có tính năng hay không"; không đọc điểm gộp là năng lực tài chính thuần.
 
 **Hạ tầng (24/11):** DSH bị tính thêm ~50 s mỗi lượt do kiểm hash cây `node_modules` lặp lại; đã sửa (kiểm một lần trước khi tính giờ). 11 trial pilot trả phí đã chạy (đã dừng, $0,0196) là chẩn đoán, không dùng làm số liệu. Một run trả phí bị dừng giữa chừng hiện không tiêu tiếp được khi resume (journal chỉ ghi sổ); cần quyết trước khi chạy main dài.
+
+## Amendment 2026-11-24 (c): quyết định của chủ repo sau báo cáo (b)
+
+Chủ repo trả lời: "1 ok. 2 giữ, bổ sung thêm các tasks sao cho tổng main là 200 tasks… 3 thêm. 4 sửa để resume an toàn".
+
+1. **Pilot thu nhỏ trước main**: đồng ý. Chạy sau khi bộ main chốt (vì main còn thêm task, seal chỉ tạo một lần cho bộ cuối).
+2. **Giữ 8 task bẫy từ chối ở main** (`fin-l4-future-221/222/231/232`, `fin-l4-nonexist-235..238`). Chúng được đưa về lại `tasks/main`; `PRUNE2.json` ghi `restored_to_main`, validator kiểm đúng danh sách này. Main hiện 114 (lookup 18, compute 39, memory 27, safety 30). Mục tiêu 200: phần thêm (86) chờ chủ repo chọn nhóm.
+3. **Holdout có bản C5/M6** (sửa quyết định #15a): +8 C5 (`fin-c5-*-981..988`, mỗi họ một task) và +4 M6 (`fin-m6-*-991..994`), mã và ngưỡng khác main. Holdout 70.
+4. **Resume run trả phí an toàn** (`paid_budget.resume_run_budget`, `run_benchmark.open_budget_for_run`): resume tiếp tục tiêu tiền thay vì chỉ ghi sổ, với điều kiện journal và checkpoint khớp, journal thuộc đúng run/manifest, không có halt hay vượt bound. Reservation dở do crash chặn resume, trừ khi chạy với `--reconcile-paid-pending "<lý do>"`: chúng được tính đủ mức trần đã giữ (không bao giờ tính thiếu). Receipt hết 24 h được thay qua `<run>/PAID-RECEIPT-RENEWAL.json` do chủ repo ký (`approved_by`, `decision`); config đã seal không đổi. Receipt mới phải giữ nguyên cap, key, host, model, route, allocation và được ghi vào journal dạng `renew`. Cap tính cộng dồn qua mọi lần resume; key chỉ cần đủ phần cap còn lại. Có trial nhưng mất journal thì từ chối.

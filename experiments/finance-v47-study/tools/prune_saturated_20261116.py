@@ -38,6 +38,8 @@ def validate_prune(receipt=RECEIPT, study=STUDY):
         for task in sorted((Path(study) / 'tasks' / split).iterdir()):
             if not task.is_dir():
                 continue
+            if task.name.startswith(('fin-c5-', 'fin-m6-')):
+                continue  # added by the 2026-11-24 amendment (build_finance_stratum_20261124), not part of this revision
             if split == 'main' and task.name in dropped:
                 raise ValueError('Frozen dropped task has returned to main: ' + task.name)
             inventory[split].append(task.name)

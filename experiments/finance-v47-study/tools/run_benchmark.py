@@ -40,15 +40,32 @@ ANSWER_KEYS = ("value", "values", "verdict", "ranking", "reason")
 
 # ------------------------------------------------------------------ config
 def budget_resume_mode(out_dir, resume):
-    """Paid budget resume mode for this invocation.
+    """Paid budget mode for this invocation: 'init', 'resume' or 'refuse'.
 
     The first inference of a presealed v4.7 manifest runs with --resume but has neither a paid journal
-    nor trials: it initializes its allocation normally (returns False). With an existing journal or trials,
-    resume stays accounting-only (returns True), exactly as before.
+    nor trials: it initializes its allocation ('init'). A resume with an existing journal continues spending
+    through paid_budget.resume_run_budget ('resume'), which re-verifies the journal. Trials without a journal
+    mean the money record is lost: refuse rather than start a fresh allocation.
     """
-    first_sealed_start = bool(resume) and not os.path.exists(os.path.join(out_dir, 'paid-budget.jsonl')) \
-        and not os.path.exists(os.path.join(out_dir, 'trials.jsonl'))
-    return bool(resume) and not first_sealed_start
+    journal = os.path.exists(os.path.join(out_dir, 'paid-budget.jsonl'))
+    trials = os.path.exists(os.path.join(out_dir, 'trials.jsonl'))
+    if not resume or (not journal and not trials):
+        return 'init'
+    return 'resume' if journal else 'refuse'
+
+
+def open_budget_for_run(out_dir, fingerprint, model, options, resume, reconcile=None):
+    from paid_budget import open_run_budget, resume_run_budget, BudgetError
+    mode = budget_resume_mode(out_dir, resume)
+    if reconcile and mode != 'resume':
+        raise ValueError('--reconcile-paid-pending applies only to resuming a run with a paid journal')
+    if mode == 'init':
+        return open_run_budget(out_dir, fingerprint, model, options, False)
+    if options.get('provider_route') != 'openrouter_paid':
+        return open_run_budget(out_dir, fingerprint, model, options, True, accounting_only=True)
+    if mode == 'refuse':
+        raise BudgetError('paid run has trials but no budget journal; explicit reconciliation required')
+    return resume_run_budget(out_dir, fingerprint, model, options, reconcile_pending=reconcile)
 
 
 def load_config(path=None):
@@ -593,6 +610,8 @@ def main():
     ap.add_argument("--runs", type=int, default=1)
     ap.add_argument("--out")
     ap.add_argument("--resume", action="store_true")
+    ap.add_argument("--reconcile-paid-pending", metavar="REASON",
+                    help="on --resume of a paid run: settle reservations left by a crash at their full upper bound")
     ap.add_argument("--confirm-holdout", action="store_true")
     ap.add_argument("--include-quarantined", action="store_true", help="explicit smoke/pilot diagnostics only; never confirmatory")
     ap.add_argument("--freeze-receipt")
@@ -740,9 +759,8 @@ def main():
             if not args.resume or not any(item['out'] == out_dir and item['config'] == str(Path(args.config).resolve()) for item in receipt['runs']):
                 raise ValueError('v43 inference must resume one of the two presealed manifests')
         manifest = prepare_manifest(out_dir, settings, tasks, cfg, args.resume)
-        from paid_budget import open_run_budget
-        budget_resume = budget_resume_mode(out_dir, args.resume)
-        budget = open_run_budget(out_dir, manifest["fingerprint"], model, options, budget_resume, accounting_only=budget_resume)
+        budget = open_budget_for_run(out_dir, manifest["fingerprint"], model, options, args.resume,
+                                     args.reconcile_paid_pending)
         options["free_cost_stop_path"] = str(Path(out_dir)/"FREE-ROUTE-CHARGED.jsonl")
         if args.split == "holdout":
             if cfg.get('study_version') == 'v4.7':

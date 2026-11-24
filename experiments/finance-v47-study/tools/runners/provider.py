@@ -244,9 +244,11 @@ class ProviderGateway:
         policy = paid_policy(model, self.options)
         if policy is not None:
             contract = self.options.get('paid_budget_contract')
-            if not contract or contract.get('policy') != policy or not self.options.get('paid_budget_journal'):
+            if not contract or not self.options.get('paid_budget_journal'):
                 raise BudgetError('paid gateway requires initialized run-wide budget')
             self.budget = PaidBudget(self.options['paid_budget_journal'], contract)
+            if self.budget.policy() != policy:
+                raise BudgetError('paid gateway requires initialized run-wide budget')
         self.key = provider_credential(or_route)
         if policy is not None and hashlib.sha256(self.key.encode()).hexdigest() != policy['key_fingerprint']:
             raise BudgetError('paid credential differs from dedicated key receipt')
@@ -610,7 +612,7 @@ class ProviderGateway:
                 if getattr(self, 'free_cost_breach', False) or (self.options.get('free_cost_stop_path') and Path(self.options['free_cost_stop_path']).exists()):
                     raise GatewayFailure('free_route_charged', 'local_budget', 424)
                 if getattr(self, 'budget', None):
-                    if paid_policy(self.model, self.options) != self.budget.contract['policy']:
+                    if paid_policy(self.model, self.options) != self.budget.policy():
                         raise BudgetError('paid policy changed before dispatch')
                     row['budget_attempt_id'] = self.budget.reserve({'trial_id': self.options.get('trial_id'),
                         'arm': self.options.get('condition'), 'model': self.model, 'provider_ledger': str(self.ledger),

@@ -1822,5 +1822,25 @@
   "lookup": 10,
   "memory": 27,
   "safety": 30
+ },
+ "restored_to_main": {
+  "decision": "owner 2026-11-24 (decision 2: keep the refusal traps in main)",
+  "tasks": [
+   "fin-l4-future-221",
+   "fin-l4-future-222",
+   "fin-l4-future-231",
+   "fin-l4-future-232",
+   "fin-l4-nonexist-235",
+   "fin-l4-nonexist-236",
+   "fin-l4-nonexist-237",
+   "fin-l4-nonexist-238"
+  ],
+  "reason": "saturated in or16 but they are the only main-split fabrication (FP) check"
+ },
+ "main_composition_after_restore": {
+  "compute": 39,
+  "lookup": 18,
+  "memory": 27,
+  "safety": 30
  }
 }

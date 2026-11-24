@@ -6,8 +6,8 @@ or16 runs (v4.6u main, DeepSeek v4.1 flash 1017, judge_primary.jsonl). Retired t
 never deleted); the receipt lists every retired task with its per-arm or16 evidence.
 
 Limitations (disclosed in the amendment): the rule is post-hoc (written after or16), and or16 ran older runtimes
-(OT v4.6u runtime with a native calculator, OpenCode 2.1, DSH 0.2.1). Retiring the 8 saturated refusal traps removes
-the main-split fabrication (FP) check; it remains in holdout and pilot.
+(OT v4.6u runtime with a native calculator, OpenCode 2.1, DSH 0.2.1). The 8 saturated refusal traps were then
+restored to main by owner decision (`restored_to_main`), so main keeps its fabrication (FP) check.
 
     python3 tools/prune_saturated_20261124.py --apply     # select, write receipt, git mv
     python3 tools/prune_saturated_20261124.py             # validate only
@@ -64,16 +64,29 @@ def apply():
     return receipt
 
 
+RESTORED = {'decision': 'owner 2026-11-24 (decision 2: keep the refusal traps in main)',
+            'tasks': ['fin-l4-future-221', 'fin-l4-future-222', 'fin-l4-future-231', 'fin-l4-future-232',
+                      'fin-l4-nonexist-235', 'fin-l4-nonexist-236', 'fin-l4-nonexist-237', 'fin-l4-nonexist-238'],
+            'reason': 'saturated in or16 but they are the only main-split fabrication (FP) check'}
+
+
 def validate():
     receipt = json.loads(RECEIPT.read_text())
+    if receipt.get('restored_to_main') != RESTORED or not set(RESTORED['tasks']) <= set(receipt['retired_refusal_traps']):
+        raise ValueError('PRUNE2 restoration record differs from the owner decision')
     main = {p.name for p in (STUDY / 'tasks/main').iterdir() if p.is_dir()}
-    back = sorted(set(receipt['retired']) & main)
+    missing_back = sorted(set(RESTORED['tasks']) - main)
+    if missing_back:
+        raise ValueError('Restored task not in main: ' + ', '.join(missing_back))
+    retired = [t for t in receipt['retired'] if t not in RESTORED['tasks']]
+    back = sorted(set(retired) & main)
     if back:
         raise ValueError('Retired task returned to main: ' + ', '.join(back))
-    missing = [t for t in receipt['retired'] if not (RETIRED / t / 'task.toml').is_file()]
+    missing = [t for t in retired if not (RETIRED / t / 'task.toml').is_file()]
     if missing:
         raise ValueError('Retired task not archived: ' + ', '.join(missing))
-    return {'valid': True, 'retired': len(receipt['retired']), 'main': len(main), 'composition': composition(STUDY / 'tasks/main')}
+    return {'valid': True, 'retired': len(retired), 'restored': len(RESTORED['tasks']), 'main': len(main),
+            'composition': composition(STUDY / 'tasks/main')}
 
 
 if __name__ == '__main__':

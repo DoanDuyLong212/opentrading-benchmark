@@ -1042,5 +1042,391 @@
    "task.toml": "daba7a458db3da7e101b66ca2d81059d056af79c1b0ff8c597cabc54093d55f3",
    "tests/grader.py": "01cc52fab03d88e483259231299d32d8529ffce86163adcc69c77046869788ca"
   }
+ },
+ "fin-c5-roe-981": {
+  "split": "holdout",
+  "tier": "C5",
+  "solution": {
+   "ANV": 24.1461,
+   "BMP": 43.1816,
+   "DGC": 13.7915,
+   "highest": "BMP"
+  },
+  "files": {
+   "environment/payloads.json": "0fd8160190dbf0ca4dd42177490f751eb3a675db5b45e6fe260b31de32a3bfc1",
+   "instruction.md": "f869e3568dc0e7cbaa8f2c1ba49ac2310fcf64c3c14a7dc0183944ba60d5b777",
+   "solution/gold.json": "5e5983b6588b8fe2394f92107291126fbf467974f751ef2f4386dc25005130e1",
+   "solution/oracle.py": "3c8d90e6349577164d26577e75c835f7837170dbb486725e49ba55c136f3c0f5",
+   "task.toml": "e78f758c8f40fad033b2c0020b8ca75e83fe942eb43a06dda6d19d604b4a8c87",
+   "tests/grader.py": "c806b72a0f040208d17cc96a5578c427877c2bffed3d6200061918057af4b650"
+  }
+ },
+ "fin-c5-oplev-982": {
+  "split": "holdout",
+  "tier": "C5",
+  "solution": {
+   "DBC": {
+    "rev_growth": 16.3507,
+    "op_growth": -24.0228,
+    "op_leverage": -1.4692
+   },
+   "VHC": {
+    "rev_growth": 2.1089,
+    "op_growth": 1.9684,
+    "op_leverage": 0.9334
+   },
+   "SAB": {
+    "rev_growth": -8.8965,
+    "op_growth": 13.5617,
+    "op_leverage": -1.5244
+   },
+   "highest": "VHC"
+  },
+  "files": {
+   "environment/payloads.json": "fc4b3f9c9383fd554c3a07cb7cea6f5a49b98862862178c0df8d27f0e8331776",
+   "instruction.md": "3f19687083b14987ee4bea17caf001b74eb2ac3030aa70107f15c892cc1302c9",
+   "solution/gold.json": "9900b904daed8ea288ae4c99e0753c7d6a04c2632be8190233fa41922b851679",
+   "solution/oracle.py": "46a648e5eca92812ef63f16ab3f2db4927c95cbfcf535c124fba3df36fef608b",
+   "task.toml": "80e820c0a89a780cf5b4e30d859479d77faec179ad85b3fe35c7671838d390f8",
+   "tests/grader.py": "c806b72a0f040208d17cc96a5578c427877c2bffed3d6200061918057af4b650"
+  }
+ },
+ "fin-c5-margin-983": {
+  "split": "holdout",
+  "tier": "C5",
+  "solution": {
+   "BMP": {
+    "gross_now": 47.2427,
+    "gross_prev": 43.856,
+    "gross_change_pp": 3.3867,
+    "op_now": 28.6353,
+    "op_prev": 27.4142
+   },
+   "IMP": {
+    "gross_now": 42.0021,
+    "gross_prev": 39.7243,
+    "gross_change_pp": 2.2779,
+    "op_now": 19.6285,
+    "op_prev": 18.6176
+   },
+   "TRA": {
+    "gross_now": 56.261,
+    "gross_prev": 51.6194,
+    "gross_change_pp": 4.6416,
+    "op_now": 13.5057,
+    "op_prev": 12.5208
+   },
+   "best_gross_improvement": "TRA"
+  },
+  "files": {
+   "environment/payloads.json": "2d8e9c492bc948b2ceb0579df9d7cc6d86883ce7c9887c4bf22a09422c3f0622",
+   "instruction.md": "045ca1bbdc0ab1eb18bb8af9fecde83ad7a6c50514ede9b69381565a17a539e1",
+   "solution/gold.json": "f26261e1ef3351d5ad916bd249fd3ea5b19e56e8262588582749dbb255327ef5",
+   "solution/oracle.py": "ab4446d5f50aa0e3842dfb1e074db7d417bc02650d0e0cd723272fdc53c0d682",
+   "task.toml": "6a2e37fd5843734e3c3f165817e1749abf0e4bf9d2dd009e02d76cd017406432",
+   "tests/grader.py": "c806b72a0f040208d17cc96a5578c427877c2bffed3d6200061918057af4b650"
+  }
+ },
+ "fin-c5-dupont-984": {
+  "split": "holdout",
+  "tier": "C5",
+  "solution": {
+   "NTP": {
+    "net_margin": 14.7073,
+    "asset_turnover": 1.0029,
+    "equity_multiplier": 1.7045,
+    "roe": 25.1417
+   },
+   "BMP": {
+    "net_margin": 22.3018,
+    "asset_turnover": 1.6748,
+    "equity_multiplier": 1.1793,
+    "roe": 44.0473
+   },
+   "driver": "turnover"
+  },
+  "files": {
+   "environment/payloads.json": "63dc671a764283c9ef4433e6490b69b7811c393e152abfbd1cff8aa134505b84",
+   "instruction.md": "7d89a3024fdd9cfa785fdbb5011448f5d425c04938e05d13f59a9d1f32f7c7b6",
+   "solution/gold.json": "74815571bd4b6564ced5a4161b0488a2c8079b7b856a7d3ae0f9d088ed146695",
+   "solution/oracle.py": "a5d554fd02189d404cda227e446a16de836d4f3ad38f96411a4dc35ed00fa22c",
+   "task.toml": "98100907cabab38511298e1e0c85699c16192b35665cc8673496a542beff6bcf",
+   "tests/grader.py": "c806b72a0f040208d17cc96a5578c427877c2bffed3d6200061918057af4b650"
+  }
+ },
+ "fin-c5-cagr-985": {
+  "split": "holdout",
+  "tier": "C5",
+  "solution": {
+   "DGC": {
+    "revenue_cagr": 4.2083,
+    "profit_cagr": 5.7832
+   },
+   "VHC": {
+    "revenue_cagr": 7.3424,
+    "profit_cagr": 6.5845
+   },
+   "ANV": {
+    "revenue_cagr": 18.7658,
+    "profit_cagr": 66.9228
+   },
+   "highest_profit_cagr": "ANV"
+  },
+  "files": {
+   "environment/payloads.json": "ae4387126d281c4ca9f8cb90e10cf0d37487a6f9905b475187873cc5672ea9e4",
+   "instruction.md": "a8547a4dc103dc9d37b50ab784ccfacde8f708aa781984364a22ec1fa96687e2",
+   "solution/gold.json": "09248df646c313a20bfad6e3970d9b028ae912e6ec8b280e543c3f3f858fef96",
+   "solution/oracle.py": "9a6052ba3bf73daf6dc303992ae799191dd4b14bc18e84b817158a47b4c6e7d6",
+   "task.toml": "89f9c5612edf12681fe318f8022c71faecb525baf5e27031915d5efc8d7108e7",
+   "tests/grader.py": "c806b72a0f040208d17cc96a5578c427877c2bffed3d6200061918057af4b650"
+  }
+ },
+ "fin-c5-lev-986": {
+  "split": "holdout",
+  "tier": "C5",
+  "solution": {
+   "PC1": {
+    "de_now": 1.7157,
+    "de_prev": 1.8251,
+    "de_change": -0.1093,
+    "current_ratio": 1.3908
+   },
+   "DXG": {
+    "de_now": 0.8836,
+    "de_prev": 0.7284,
+    "de_change": 0.1551,
+    "current_ratio": 2.2594
+   },
+   "NLG": {
+    "de_now": 0.7516,
+    "de_prev": 0.9843,
+    "de_change": -0.2327,
+    "current_ratio": 2.9515
+   },
+   "most_deleveraged": "NLG"
+  },
+  "files": {
+   "environment/payloads.json": "b4474ed52da6f2243342751acdb3403903f7cfe9992452afd7e152b18ed6f7a8",
+   "instruction.md": "ef025fc0715099b813e148e36c4e39a7885b44197999dec997f152ba3a608845",
+   "solution/gold.json": "3655a9d799a35a0fb4c23c574a7326b4c766951a88c575b12c22824dcb650f9a",
+   "solution/oracle.py": "3cd32e8151d3ed3209d53163e4a719c749aaa1b21f484bc3b0c3d79d362c42c5",
+   "task.toml": "a8be6f0fe7fb6a10173ac498048cf2a43475d75ce25c370ff8b86d128add0219",
+   "tests/grader.py": "c806b72a0f040208d17cc96a5578c427877c2bffed3d6200061918057af4b650"
+  }
+ },
+ "fin-c5-yoy-987": {
+  "split": "holdout",
+  "tier": "C5",
+  "solution": {
+   "BMP": {
+    "revenue_yoy": 0.8738,
+    "profit_yoy": 11.303
+   },
+   "ANV": {
+    "revenue_yoy": 12.2124,
+    "profit_yoy": -59.4757
+   },
+   "DBC": {
+    "revenue_yoy": 11.3281,
+    "profit_yoy": -42.9712
+   },
+   "PVD": {
+    "revenue_yoy": 24.6008,
+    "profit_yoy": -32.1289
+   },
+   "profit_outgrows_revenue": [
+    "BMP"
+   ]
+  },
+  "files": {
+   "environment/payloads.json": "67b2106d51f2c9673821e68ee070ac2f9924b6e087aff045901d0938bf121ea8",
+   "instruction.md": "e0f1d5293e821109b689cf550cc4fb561c36ef06fd4b43e48f87bb344390039c",
+   "solution/gold.json": "74208c3b043d82e37338729a601e59d2304a989994f2896e8c85b214a1a6b503",
+   "solution/oracle.py": "5ab4c66d90df2b8b943c592260b1c51f5d2ec9ffe7ade7f9e3054bfae257b35e",
+   "task.toml": "73210a5d56ffbb655db23305ca7cf91a2cf695a382f82e00eb19c241ba566ec8",
+   "tests/grader.py": "c806b72a0f040208d17cc96a5578c427877c2bffed3d6200061918057af4b650"
+  }
+ },
+ "fin-c5-sector-988": {
+  "split": "holdout",
+  "tier": "C5",
+  "solution": {
+   "group_margin_now": 3.131,
+   "group_margin_prev": 3.8421,
+   "change_pp": -0.7111,
+   "group_profit_ttm_bn": 19126.1468,
+   "largest_change": "PLX"
+  },
+  "files": {
+   "environment/payloads.json": "19ea42a680881161466a94f4678c73df73cef2ddd3a5b931c63fba4be4caeff4",
+   "instruction.md": "ccbac5f7450f6d7603650dc8c68d806e7da5c91b823fd137ff9643681bc5f1b7",
+   "solution/gold.json": "f07bc531c0b463417e385c270f7740e19771dcda336a8cf6a0a1b31a1743012d",
+   "solution/oracle.py": "1d76305381dd84bb5a0f89ce5ad9f2b6b7f377831bfee3277a95b0b1ef6d42c4",
+   "task.toml": "0a3245b12f3a5b0171fcd38d38781a10f0e5ac3fcdc8bd0f3e8b92ca489b1943",
+   "tests/grader.py": "c806b72a0f040208d17cc96a5578c427877c2bffed3d6200061918057af4b650"
+  }
+ },
+ "fin-m6-conv-991": {
+  "split": "holdout",
+  "tier": "M6a",
+  "solution": {
+   "pass": [
+    "ANV",
+    "BMP",
+    "DPM"
+   ],
+   "convention": "ttm",
+   "roe_min": 15,
+   "debt_max": 50,
+   "values": {
+    "BMP": {
+     "roe": 43.1816,
+     "debt_ratio": 15.0013
+    },
+    "POW": {
+     "roe": 15.41,
+     "debt_ratio": 58.005
+    },
+    "DPM": {
+     "roe": 15.3015,
+     "debt_ratio": 37.5806
+    },
+    "ANV": {
+     "roe": 24.1461,
+     "debt_ratio": 40.0488
+    }
+   }
+  },
+  "files": {
+   "environment/payloads.json": "f0f4c862ed2113a705f98887a7a760d9790d4d1236e09787b4e28f0ab70521f5",
+   "environment/turns.json": "9ede1f06db9d604498efea8a869b072d1b86b71ae5fd7291f06f61ece33d8389",
+   "instruction.md": "1891f4a26c5451641c6d99385fed92730ef2d363b1bf6b02aa850e7f82f9c662",
+   "solution/gold.json": "4a456a22c29763784cbf7346304121648f4a22c3e9945cbb760e0e74cbccec1f",
+   "solution/oracle.py": "f2ebe7a8deb1b8b5b6745cc1f1750c8a3312f1ad1dd85729aa7a072679a5d91f",
+   "task.toml": "04acdba19881ca3665390b7b15e543ee7fb37cd175a678beb89174db041e9f43",
+   "tests/grader.py": "01cc52fab03d88e483259231299d32d8529ffce86163adcc69c77046869788ca"
+  }
+ },
+ "fin-m6-conv-992": {
+  "split": "holdout",
+  "tier": "M6a",
+  "solution": {
+   "pass": [
+    "DBC",
+    "DGC"
+   ],
+   "convention": "fy",
+   "roe_min": 15,
+   "debt_max": 55,
+   "values": {
+    "DBC": {
+     "roe": 18.6734,
+     "debt_ratio": 51.9506
+    },
+    "DGC": {
+     "roe": 19.455,
+     "debt_ratio": 15.7218
+    },
+    "GMD": {
+     "roe": 11.7683,
+     "debt_ratio": 26.5938
+    },
+    "HPG": {
+     "roe": 11.7765,
+     "debt_ratio": 49.2646
+    }
+   }
+  },
+  "files": {
+   "environment/payloads.json": "78197ef6da079e790e49bdb75417862251b01e1c48316bd2fc0097a93e5372b7",
+   "environment/turns.json": "e506db3f334b34cedcd79c7ca0677e26e550c57e6eb21bea76f24ada91a0b2da",
+   "instruction.md": "d6cb1738db3483f2309a522abdde07fa923d4da562207d4498ee7c8415222d60",
+   "solution/gold.json": "077d15c9cb4a3f4a8fcd3d55472fbcb882b07a0fa6d8fbd999aaaa09014c8a1a",
+   "solution/oracle.py": "830c2c848c7a30a8dfba8ff785aeab0a2ce297e8c97b8c7949fdfc5dc2a4afd6",
+   "task.toml": "bb41a470f8be01e1a5720e96628537217d1e46182c280d17ce2058bc94bfc1ae",
+   "tests/grader.py": "01cc52fab03d88e483259231299d32d8529ffce86163adcc69c77046869788ca"
+  }
+ },
+ "fin-m6-upd-993": {
+  "split": "holdout",
+  "tier": "M6b",
+  "solution": {
+   "pass": [
+    "DHG",
+    "SAB",
+    "VGS"
+   ],
+   "convention": "fy",
+   "roe_min": 12,
+   "debt_max": 65,
+   "values": {
+    "VGS": {
+     "roe": 16.7485,
+     "debt_ratio": 63.2161
+    },
+    "PC1": {
+     "roe": 11.7305,
+     "debt_ratio": 63.1772
+    },
+    "SAB": {
+     "roe": 19.2329,
+     "debt_ratio": 32.3661
+    },
+    "DHG": {
+     "roe": 20.6019,
+     "debt_ratio": 31.7034
+    }
+   }
+  },
+  "files": {
+   "environment/payloads.json": "04631a8144f1663770aa056cac4a8f0c7eae4833a80d4dd8a935c85cc527eea1",
+   "environment/turns.json": "5d74bdbc664ef2723f271f31cfc17f7a0850f3173366fc0d9db3358333121d86",
+   "instruction.md": "d14c3b253f27ba314a1f54b976e246249a6b60da5757959ccc52b30490359673",
+   "solution/gold.json": "0a042743bbafcca2f84eda554e648c55f33dedf9485f4e56d79bfc8dcd0dca6d",
+   "solution/oracle.py": "6209295aa828d1ec7d6ef9886365c9d82bbc73c1cbecc6aeef7c1ab05f149dcb",
+   "task.toml": "911d00c5ba30fd67f2beb0cc0bab3750abbddf38aa39b933dd8eccff935ed532",
+   "tests/grader.py": "01cc52fab03d88e483259231299d32d8529ffce86163adcc69c77046869788ca"
+  }
+ },
+ "fin-m6-rev-994": {
+  "split": "holdout",
+  "tier": "M6c",
+  "solution": {
+   "pass": [
+    "FRT",
+    "MSN",
+    "REE"
+   ],
+   "convention": "ttm",
+   "roe_min": 10,
+   "debt_max": null,
+   "values": {
+    "VJC": {
+     "roe": 8.6684,
+     "debt_ratio": 82.2946
+    },
+    "MSN": {
+     "roe": 15.6382,
+     "debt_ratio": 65.3274
+    },
+    "FRT": {
+     "roe": 24.0526,
+     "debt_ratio": 78.1214
+    },
+    "REE": {
+     "roe": 10.7252,
+     "debt_ratio": 37.6799
+    }
+   }
+  },
+  "files": {
+   "environment/payloads.json": "454eda1b9dcdfecafd7dd2a64b9892794e1113a61db1788ddc402a6876cca84f",
+   "environment/turns.json": "f3763777c529f35723ceaed728b1e9866dcd65cfb89a0652b290052ec03de001",
+   "instruction.md": "83862217c40c0bcafd201814a82e2d49578844c4b242ef278b946656c535f88b",
+   "solution/gold.json": "d72a5c6b77025bcc1d07fc858e4c5be0f9da602097ea9393a008d3384df12b98",
+   "solution/oracle.py": "3dae73907895071f186a68114736e81b1f525514508ef85919677f475ea8d8c7",
+   "task.toml": "36a446fc85ddd37e5d2ca2bf2a2ad713f0e1137b18dd35daac5b8368df4fcb72",
+   "tests/grader.py": "01cc52fab03d88e483259231299d32d8529ffce86163adcc69c77046869788ca"
+  }
  }
 }

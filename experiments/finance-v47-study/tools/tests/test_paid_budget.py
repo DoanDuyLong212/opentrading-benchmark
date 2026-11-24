@@ -535,19 +535,96 @@ def test_opencode_reasoning_content_text_only(tmp_path, monkeypatch, value, ok):
     assert bool(sent) is ok
 
 
-def test_first_sealed_start_initializes_but_true_resume_stays_accounting_only(tmp_path, monkeypatch):
+def test_budget_mode_init_resume_refuse(tmp_path):
     import run_benchmark as rb
     out = tmp_path / 'run'; out.mkdir()
-    assert rb.budget_resume_mode(out, False) is False
-    # presealed manifest, nothing run yet: the allocation opens and can reserve
-    assert rb.budget_resume_mode(out, True) is False
-    gate, body = paid_gateway(tmp_path, monkeypatch)
-    assert gate.budget.reserve({'probe': 1})
-    # a journal (or trials) exists: resume is accounting-only and cannot reserve
+    assert rb.budget_resume_mode(out, False) == 'init'
+    assert rb.budget_resume_mode(out, True) == 'init'          # presealed manifest, nothing run yet
     (out / 'paid-budget.jsonl').write_text('')
-    assert rb.budget_resume_mode(out, True) is True
+    assert rb.budget_resume_mode(out, True) == 'resume'
     (out / 'paid-budget.jsonl').unlink(); (out / 'trials.jsonl').write_text('')
-    assert rb.budget_resume_mode(out, True) is True
+    assert rb.budget_resume_mode(out, True) == 'refuse'        # trials but the money record is gone
+
+
+def _renew_receipt(tmp_path, options, receipt, name, **change):
+    receipt = {**receipt, **change}
+    path = tmp_path / name; path.write_text(json.dumps(receipt))
+    return {'paid_budget_receipt': str(path), 'paid_budget_receipt_sha256': hashlib.sha256(path.read_bytes()).hexdigest(),
+            'approved_by': 'owner-test', 'decision': 'synthetic'}
+
+
+def test_paid_resume_spends_and_keeps_cumulative_cap(tmp_path):
+    import run_benchmark as rb
+    options, receipt = policy_fixture(tmp_path, cap='1', bound='.4')
+    out = tmp_path / 'run'
+    budget = rb.open_budget_for_run(out, 'f'*64, MODEL, options, False)
+    budget.settle(budget.reserve({'t': 1}), '.3', {})
+    resumed = rb.open_budget_for_run(out, 'f'*64, MODEL, dict(options), True)
+    assert not resumed.read_only
+    resumed.settle(resumed.reserve({'t': 2}), '.3', {})
+    resumed.settle(resumed.reserve({'t': 3}), '.3', {})        # .6 + .4 = 1.0: exactly at the cap is allowed
+    again = rb.open_budget_for_run(out, 'f'*64, MODEL, dict(options), True)
+    with pytest.raises(pb.BudgetError, match='exhausted'):
+        again.reserve({'t': 4})                                  # .9 + .4 > 1 across resumes
+    assert again.summary()['measured_cost_usd'] == '0.9'
+
+
+def test_paid_resume_refuses_other_manifest_pending_halt(tmp_path):
+    import run_benchmark as rb
+    options, _ = policy_fixture(tmp_path, cap='2', bound='.4')
+    out = tmp_path / 'run'
+    budget = rb.open_budget_for_run(out, 'f'*64, MODEL, options, False)
+    with pytest.raises(pb.BudgetError, match='another run'):
+        rb.open_budget_for_run(out, 'e'*64, MODEL, dict(options), True)
+    budget.reserve({'crash': 1})                                  # crash between reserve and settle
+    with pytest.raises(pb.BudgetError, match='unresolved'):
+        rb.open_budget_for_run(out, 'f'*64, MODEL, dict(options), True)
+    resumed = rb.open_budget_for_run(out, 'f'*64, MODEL, dict(options), True, 'driver killed mid-request')
+    money = resumed.summary()
+    assert money['measured_cost_usd'] == '0.4' and money['unknown_requests'] == 0   # counted at full bound
+    resumed.halt('reported_provider_host_mismatch')
+    with pytest.raises(pb.BudgetError, match='halt'):
+        rb.open_budget_for_run(out, 'f'*64, MODEL, dict(options), True)
+
+
+def test_paid_resume_receipt_renewal(tmp_path):
+    import run_benchmark as rb
+    options, receipt = policy_fixture(tmp_path, cap='1', bound='.4')
+    out = tmp_path / 'run'
+    budget = rb.open_budget_for_run(out, 'f'*64, MODEL, options, False)
+    budget.settle(budget.reserve({'t': 1}), '.3', {})
+    # receipt expired: plain resume refuses, the sealed config is not edited
+    old = datetime.now(timezone.utc) - timedelta(hours=30)
+    stale = _renew_receipt(tmp_path, options, receipt, 'stale.json', verified_at=old.isoformat(),
+                           expires_at=(old+timedelta(hours=1)).isoformat())
+    expired = {**options, **{k: stale[k] for k in ('paid_budget_receipt', 'paid_budget_receipt_sha256')}}
+    with pytest.raises(pb.BudgetError, match='current'):
+        rb.open_budget_for_run(out, 'f'*64, MODEL, dict(expired), True)
+    # owner renewal: key now has .75 left, enough for the remaining .7 of the cap; bound changes are allowed
+    key = {**receipt['key_limit'], 'limit_remaining': .75, 'usage': .3}
+    (out / pb.RENEWAL_FILE).write_text(json.dumps(_renew_receipt(tmp_path, options, receipt, 'r2.json',
+                                                                 key_limit=key, attempt_upper_bound_usd='.35')))
+    resumed = rb.open_budget_for_run(out, 'f'*64, MODEL, dict(expired), True)
+    assert resumed.policy()['attempt_upper_bound_usd'] == '0.35'
+    resumed.settle(resumed.reserve({'t': 2}), '.3', {})
+    rows = [json.loads(line) for line in (out / 'paid-budget.jsonl').read_text().splitlines()]
+    assert [r['kind'] for r in rows].count('renew') == 1
+    # a renewal may not change identity (host / key / cap)
+    for change in ({'provider_host': 'other-host'}, {'key_fingerprint': 'c'*64}):
+        (out / pb.RENEWAL_FILE).write_text(json.dumps(_renew_receipt(tmp_path, options, receipt, 'bad.json', key_limit=key, **change)))
+        with pytest.raises(pb.BudgetError):
+            rb.open_budget_for_run(out, 'f'*64, MODEL, dict(expired), True)
+    unapproved = _renew_receipt(tmp_path, options, receipt, 'r3.json', key_limit=key); unapproved.pop('approved_by')
+    (out / pb.RENEWAL_FILE).write_text(json.dumps(unapproved))
+    with pytest.raises(pb.BudgetError, match='approved_by'):
+        rb.open_budget_for_run(out, 'f'*64, MODEL, dict(expired), True)
+
+
+def test_reconcile_flag_needs_paid_journal(tmp_path):
+    import run_benchmark as rb
+    options, _ = policy_fixture(tmp_path)
+    with pytest.raises(ValueError, match='reconcile'):
+        rb.open_budget_for_run(tmp_path / 'run', 'f'*64, MODEL, options, False, 'x')
 
 
 def test_halted_journal_still_blocks_reserve(tmp_path, monkeypatch):

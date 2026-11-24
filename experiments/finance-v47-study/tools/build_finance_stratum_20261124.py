@@ -338,11 +338,21 @@ def build():
              dupont_task('fin-c5-dupont-683', 'PNJ', 'DHG'), yoy_task('fin-c5-yoy-684', ['DCM', 'GAS', 'NTP', 'MWG']),
              m6('fin-m6-conv-691', 'pilot', 'M6a', 'Memory M6a — quy ước ROE TTM và ngưỡng (TRA/VHC/IMP/HAH)', ['TRA', 'VHC', 'IMP', 'HAH'], 'ttm', 15, 35, 1),
              m6('fin-m6-upd-692', 'pilot', 'M6b', 'Memory M6b — cập nhật ngưỡng nợ (GMD/GVR/REE/DGC)', ['GMD', 'GVR', 'REE', 'DGC'], 'fy', 9, 30, 2, update=40)]
-    for t in main:
-        t.setdefault('split', 'main')
-    for t in pilot:
-        t.setdefault('split', 'pilot')
-    return main, pilot
+    # Holdout twins (owner decision 2026-11-24, #15 amended): one C5 per family and one M6 per sub-tier,
+    # on symbol sets and thresholds not used by main; sealed like the rest of holdout.
+    holdout = [roe_ttm_task('fin-c5-roe-981', ['ANV', 'BMP', 'DGC']), oplev_task('fin-c5-oplev-982', ['DBC', 'VHC', 'SAB']),
+               margin_task('fin-c5-margin-983', ['BMP', 'IMP', 'TRA']), dupont_task('fin-c5-dupont-984', 'NTP', 'BMP'),
+               cagr_task('fin-c5-cagr-985', ['DGC', 'VHC', 'ANV']), leverage_task('fin-c5-lev-986', ['PC1', 'DXG', 'NLG']),
+               yoy_task('fin-c5-yoy-987', ['BMP', 'ANV', 'DBC', 'PVD']),
+               sector_task('fin-c5-sector-988', ['PVD', 'PVS', 'PLX', 'GAS'], 'dầu khí'),
+               m6('fin-m6-conv-991', 'holdout', 'M6a', 'Memory M6a — quy ước ROE TTM và ngưỡng (BMP/POW/DPM/ANV)', ['BMP', 'POW', 'DPM', 'ANV'], 'ttm', 15, 50, 1),
+               m6('fin-m6-conv-992', 'holdout', 'M6a', 'Memory M6a — quy ước ROE năm 2025 và ngưỡng (DBC/DGC/GMD/HPG)', ['DBC', 'DGC', 'GMD', 'HPG'], 'fy', 15, 55, 2),
+               m6('fin-m6-upd-993', 'holdout', 'M6b', 'Memory M6b — cập nhật ngưỡng nợ (VGS/PC1/SAB/DHG)', ['VGS', 'PC1', 'SAB', 'DHG'], 'fy', 12, 50, 0, update=65),
+               m6('fin-m6-rev-994', 'holdout', 'M6c', 'Memory M6c — bỏ tiêu chí nợ (VJC/MSN/FRT/REE)', ['VJC', 'MSN', 'FRT', 'REE'], 'ttm', 10, 55, 1, revoke='crit-debt')]
+    for split, specs in (('main', main), ('pilot', pilot), ('holdout', holdout)):
+        for t in specs:
+            t.setdefault('split', split)
+    return main, pilot, holdout
 
 
 def write_c5(split, s):
@@ -405,10 +415,11 @@ def write_m6(t):
 
 
 def main():
-    main_specs, pilot_specs = build()
-    assert len(main_specs) == 26 and len(pilot_specs) == 6 and len({t['tid'] for t in main_specs + pilot_specs}) == 32
+    main_specs, pilot_specs, hold_specs = build()
+    every = main_specs + pilot_specs + hold_specs
+    assert (len(main_specs), len(pilot_specs), len(hold_specs)) == (26, 6, 12) and len({t['tid'] for t in every}) == 44
     receipt = {}
-    for t in main_specs + pilot_specs:
+    for t in every:
         d = write_c5(t['split'], t) if t['kind'] == 'C5' else write_m6(t)
         sol = t['solution'] if t['kind'] == 'C5' else t['q']['solution']
         receipt[t['tid']] = {'split': t['split'], 'tier': t.get('subtier', t['tier']), 'solution': sol,
