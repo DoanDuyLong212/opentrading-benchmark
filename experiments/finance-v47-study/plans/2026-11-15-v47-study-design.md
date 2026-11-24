@@ -193,12 +193,29 @@ Keep the historical 40 PRUNE IDs and recommend 58 holdout tasks without adding C
 - Giới hạn: đây không phải mẫu gán nhãn tay các ca judge và grader bất đồng như `or16-main-kappa.json` (kappa 0,85 của Nemotron), vì thư mục trial or16 đã bị xoá và mọi câu trả lời có nhãn còn khôi phục được đều là ca đúng. Ca biên (partial, cách diễn đạt, quy ước dấu) chưa được đo. Trước khi seal: gán nhãn tay các ca bất đồng ở pilot và tính kappa cho Haiku; `judge_kappa_file` của seal trỏ tới file đó.
 - Haiku là route trả phí, không có biến thể `:free`. Holdout (`deny_data_collection`) đã thử 1 lượt: route được (provider "Claude Platform on AWS"). Trần chi mỗi process: `JUDGE_MAX_USD` (mặc định 3), có test. Ước tính chấm 1 200 trial khoảng $0,5–1.
 
-**Model làm bài: `deepseek/deepseek-v4.1-flash-1017` qua OpenRouter trả phí** (người dùng 24/11; cùng model với or16 v4.6u). Nemotron `:free` chỉ còn dùng cho dev smoke miễn phí.
+**Model làm bài: `deepseek/deepseek-v4.1-flash-1017` qua OpenRouter trả phí** (người dùng 24/11; cùng model với or16 v4.6u). Dev smoke miễn phí dùng `nvidia/nemotron-3.5-super-vl:free` qua `tools/bench_config_v47_devfree.json` (bản sao config chính, chỉ khác model, route, trần output).
 - `bench_config_v47.json`: `model`, `allowed_models`, `provider_route: openrouter_paid`, `model_max_output_tokens` 393 216 (top_provider ngày 24/11; các host từ 131 072 tới 943 718), `price_per_1m` giá niêm yết cấp model 0,03 / 0,2 USD mỗi 1M (giá host từ 0,025 tới 0,6 / 0,1 tới 2,4). Admission DeepSeek có sẵn: `audits/model-admission/deepseek__deepseek-v4.1-flash-1017-openrouter.json`.
 - Route trả phí đóng cho tới khi có receipt (`paid_budget_receipt` và `_sha256` đang để `null`): receipt đã review ≤ 24 giờ, key riêng, ghim một provider host, cận trên mỗi attempt; chạy với `--budget-usd`. Có test xác nhận config hiện tại bị chặn khi chưa có receipt.
 - Chi phí tham chiếu: or16 main (1 200 trial, cùng model) tốn $3,41 tiền agent.
 
 **Smoke 24/11 với bộ ghim mới** (`dev-fin-c4-stagger-425`, Nemotron `:free`, mỗi arm 1 lượt, $0) và sửa runner:
 - OT 6d63a91: đúng, 6 request.
-- OpenCode 2.4.1: plugin `opencode.tools` nay đăng ký `opencode_models`, `opencode_session_move/rename`, `opencode_worktree_create/list` không qua quyền nào, nên gateway chặn ("unregistered tool exposed to model"). Đã bỏ plugin này; model chỉ còn thấy MCP + `shell`. OpenCode 2.4.1 còn tự dừng sau 300 s không có header (mặc định `headerTimeout`); đã đặt `headerTimeout` = `provider_timeout_s` của gateway (600 s), trần chung của mọi arm. Lượt chạy xác nhận sau sửa này bị dừng theo yêu cầu người dùng (không chạy thêm), nên **chưa có trial OpenCode trọn vẹn trên 2.4.1**.
+- OpenCode 2.4.1: plugin `opencode.tools` nay đăng ký `opencode_models`, `opencode_session_move/rename`, `opencode_worktree_create/list` không qua quyền nào, nên gateway chặn ("unregistered tool exposed to model"). Đã bỏ plugin này; model chỉ còn thấy MCP + `shell`. OpenCode 2.4.1 còn tự dừng sau 300 s không có header (mặc định `headerTimeout`); đã đặt `headerTimeout` = `provider_timeout_s` của gateway (600 s), trần chung của mọi arm. Đã xác nhận ở lượt free-v2 bên dưới.
 - DSH 0.2.2-rc.5: permission preset không còn tự suy ra từ mặc định, phải đặt `permission.defaultPreset = danger-full-access` (đúng tư thế không người duyệt đã chọn); executor native tách thành entry `tool-executor-native`, đã thêm vào `CORE`. Sau sửa, DSH chạy với đúng `bash` + MCP, 8 request; câu trả lời `invalid_json` vì model in JSON bằng `cat` trong bash thay vì đặt vào câu trả lời cuối (hành vi model, không phải lỗi runner).
+
+**Kiểm free-v2 (24/11, `nemotron-3.5-super-vl:free`, $0): 6 task devsmoke × 3 arm, 18/18 `status ok`, 0 DNF.**
+
+| Task | OT machine | OpenCode 2.4.1 | DSH 0.2.2 |
+|---|---|---|---|
+| v45-dev-01-quote | đúng | đúng | đúng |
+| v45-dev-07-aggregate | đúng | invalid_json | đúng |
+| v45-dev-09-chain | đúng | invalid_json | đúng |
+| v45-dev-10-trap-resolver | đúng | đúng | sai (grader, xem dưới) |
+| dev-fin-c4-stagger-425 | invalid_json | sai số | invalid_json |
+| dev-fin-m1-screen-502 (memory) | đúng | đúng | đúng |
+
+- `invalid_json` là model nhẹ viết đoạn văn trước JSON; nội dung số đúng ở các ca đã đọc. Không phải lỗi runner.
+- Công bằng: cả 3 arm nhận đề nguyên văn (OpenCode và DSH byte-giống nhau); schema MCP giống hệt (sha256); temperature 0, top_p 1; trần gateway chung (24 request, 4,6M token, 600 s); mọi lệnh shell (OT 4, OpenCode 4, DSH 9) chạy trong image sandbox `ef5d5c4a…`. Mỗi harness tự thêm context runtime của mình (OT: workspace, chế độ bypass, `ot-data`; DSH: thư mục, chính sách file) và tự xin `max_tokens` (OT không đặt, OpenCode bằng trần model, DSH 128 000): hành vi thật của từng sản phẩm.
+- Audit: OT 0.5.0 viết 3 câu từ chối bằng tiếng Anh (tool không có, loop guard, sai schema); `v46_rejection_proof.py` nay nhận cả hai ngôn ngữ, vẫn khớp chính xác. Sau sửa audit 501 check, chỉ còn `completed_resume` (chỉ có khi chạy qua supervisor).
+- Grader phụ (strict): mẫu `refusal_reason` không xử lý phủ định ("không xác nhận mã tồn tại" bị coi là khẳng định mã tồn tại). Có trong 297 grader main/holdout/pilot. Metric chính không bị ảnh hưởng (task bẫy chấm theo luật `value` null). Cần sửa hoặc ghi hạn chế trước seal.
+- Devsmoke không có task nhóm S và memory dài; hai nhóm này chưa được kiểm ở đây.
