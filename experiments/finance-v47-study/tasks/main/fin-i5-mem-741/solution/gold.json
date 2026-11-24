@@ -1,0 +1,345 @@
+{
+  "subtier": "I5-exclude",
+  "memory_construct": "I5-exclude",
+  "task_id": "fin-i5-mem-741",
+  "scoring": "outcome",
+  "solution": {
+    "type": "I5",
+    "candidates": [
+      "VCB",
+      "MBB",
+      "VHM",
+      "KDH",
+      "FPT",
+      "HPG",
+      "GAS",
+      "MWG"
+    ],
+    "allowed": [
+      "FPT",
+      "HPG",
+      "GAS",
+      "MWG"
+    ],
+    "entry_date": "2026-10-30",
+    "end_date": "2026-11-23",
+    "passing_sets": [
+      [
+        "HPG"
+      ],
+      [
+        "MWG"
+      ]
+    ],
+    "answer_size": 1,
+    "chance_base_rate": 0.5,
+    "outcomes": {
+      "VCB": {
+        "entry": 56.3,
+        "end_close": 50.3,
+        "peak_close": 54.8,
+        "low_close": 50.2,
+        "ret": -10.6572,
+        "peak": -2.6643,
+        "low": -10.8348
+      },
+      "MBB": {
+        "entry": 19.3,
+        "end_close": 18.1,
+        "peak_close": 19.5,
+        "low_close": 18.1,
+        "ret": -6.2176,
+        "peak": 1.0363,
+        "low": -6.2176
+      },
+      "VHM": {
+        "entry": 63.0,
+        "end_close": 61.5,
+        "peak_close": 63.3,
+        "low_close": 60.4,
+        "ret": -2.381,
+        "peak": 0.4762,
+        "low": -4.127
+      },
+      "KDH": {
+        "entry": 13.9,
+        "end_close": 15.35,
+        "peak_close": 16.15,
+        "low_close": 13.0,
+        "ret": 10.4317,
+        "peak": 16.1871,
+        "low": -6.4748
+      },
+      "FPT": {
+        "entry": 52.7,
+        "end_close": 46.85,
+        "peak_close": 53.9,
+        "low_close": 45.0,
+        "ret": -11.1006,
+        "peak": 2.277,
+        "low": -14.611
+      },
+      "HPG": {
+        "entry": 21.0,
+        "end_close": 20.4,
+        "peak_close": 21.7,
+        "low_close": 20.4,
+        "ret": -2.8571,
+        "peak": 3.3333,
+        "low": -2.8571
+      },
+      "GAS": {
+        "entry": 78.0,
+        "end_close": 69.3,
+        "peak_close": 77.0,
+        "low_close": 69.3,
+        "ret": -11.1538,
+        "peak": -1.2821,
+        "low": -11.1538
+      },
+      "MWG": {
+        "entry": 74.0,
+        "end_close": 70.9,
+        "peak_close": 75.0,
+        "low_close": 70.9,
+        "ret": -4.1892,
+        "peak": 1.3514,
+        "low": -4.1892
+      }
+    },
+    "vnindex_ret": -2.5539,
+    "post_sha256": "fdfa27527f56099a0534909f9abd1a7d69cb5b616b857aacd8755654d522f06c"
+  },
+  "as_of": "2026-11-24T18:51:22.395329+07:00",
+  "split": "main",
+  "expects": [
+    {
+      "type": "set_in",
+      "path": "values.pick",
+      "size": 1,
+      "accept_sets": [
+        [
+          "HPG"
+        ],
+        [
+          "MWG"
+        ]
+      ]
+    },
+    {
+      "type": "str",
+      "path": "source",
+      "accept": [
+        "vn_quote_history"
+      ]
+    }
+  ],
+  "contract_version": 2,
+  "stratum": "investor",
+  "tier": "I5",
+  "notes": "Investor stratum (amendment 2026-11-24 d): primary = pre-registered outcome rule on recorded post-snapshot closes (tools/investor_specs_20261124.py).",
+  "provenance_contract": [
+    {
+      "tool": "vn_quote_history",
+      "source": "vnstock",
+      "as_of": "2026-11-24T18:51:22.395329+07:00",
+      "matched_entry_id": "hist:VCB",
+      "response_sha256": "e12429c59c765cdd04cd74c65106cf6ec9e2eb769a112544d8dadea37aab6651"
+    },
+    {
+      "tool": "vn_quote_history",
+      "source": "vnstock",
+      "as_of": "2026-11-24T18:51:22.395329+07:00",
+      "matched_entry_id": "hist:MBB",
+      "response_sha256": "7769a3b4163c49a387f44715b8adaa720b62a6381f90fe80a485576514fe94f0"
+    },
+    {
+      "tool": "vn_quote_history",
+      "source": "vnstock",
+      "as_of": "2026-11-24T18:51:22.395329+07:00",
+      "matched_entry_id": "hist:VHM",
+      "response_sha256": "4cb4b2eedc6e72d217b0fe0004a826d53b504476e08641382aae1459d5e9b197"
+    },
+    {
+      "tool": "vn_quote_history",
+      "source": "vnstock",
+      "as_of": "2026-11-24T18:51:22.395329+07:00",
+      "matched_entry_id": "hist:KDH",
+      "response_sha256": "81af8321a51d7f82925596f1175be116aa399f749af319a690d5bdf3076b56ad"
+    },
+    {
+      "tool": "vn_quote_history",
+      "source": "vnstock",
+      "as_of": "2026-11-24T18:51:22.395329+07:00",
+      "matched_entry_id": "hist:FPT",
+      "response_sha256": "4464dee59ae17da1e0236cb2b0020ba9f94a1e53d9894062e07a54fadd2059af"
+    },
+    {
+      "tool": "vn_quote_history",
+      "source": "vnstock",
+      "as_of": "2026-11-24T18:51:22.395329+07:00",
+      "matched_entry_id": "hist:HPG",
+      "response_sha256": "d178254d4419f42e171d5b574ce7563a9de28a6b847497aad059d781aa09554b"
+    },
+    {
+      "tool": "vn_quote_history",
+      "source": "vnstock",
+      "as_of": "2026-11-24T18:51:22.395329+07:00",
+      "matched_entry_id": "hist:GAS",
+      "response_sha256": "9de2916972ae66f1144f4bac2be80a61b7e0685591cec9d59c1efa50e271dd2f"
+    },
+    {
+      "tool": "vn_quote_history",
+      "source": "vnstock",
+      "as_of": "2026-11-24T18:51:22.395329+07:00",
+      "matched_entry_id": "hist:MWG",
+      "response_sha256": "7218aa99fb0b95b0e8c5b17015a0d7202ba18ceb3fba0d632eccc81b173df700"
+    }
+  ],
+  "provenance_catalog": [
+    {
+      "tool": "financial_statements",
+      "source": "vietstock",
+      "as_of": "2026-11-24T15:51:30.168761+07:00",
+      "matched_entry_id": "fs:FPT:q:CDKT",
+      "response_sha256": "eb41a1d6c0a699f0857b9c5f97d3eaafd3a9186a37719b665741155017e88b4d"
+    },
+    {
+      "tool": "financial_statements",
+      "source": "vietstock",
+      "as_of": "2026-11-24T15:51:30.168761+07:00",
+      "matched_entry_id": "fs:FPT:q:KQKD",
+      "response_sha256": "f1e58b629e5a4a84d543bf3248cdba177f13e5c975030cf2564acef626f16f9d"
+    },
+    {
+      "tool": "financial_statements",
+      "source": "vietstock",
+      "as_of": "2026-11-24T15:51:30.168761+07:00",
+      "matched_entry_id": "fs:GAS:q:CDKT",
+      "response_sha256": "55316286743ff97fae4e8cc874aabbc57a603346d0e4c8a2cfffc5bfdb19f000"
+    },
+    {
+      "tool": "financial_statements",
+      "source": "vietstock",
+      "as_of": "2026-11-24T15:51:30.168761+07:00",
+      "matched_entry_id": "fs:GAS:q:KQKD",
+      "response_sha256": "c391dbf2c3de232a5a2e00aad3d6c59b9d3ebaaf7607921d8fdcedc431f6530f"
+    },
+    {
+      "tool": "financial_statements",
+      "source": "vietstock",
+      "as_of": "2026-11-24T15:51:30.168761+07:00",
+      "matched_entry_id": "fs:HPG:q:CDKT",
+      "response_sha256": "86533d754c2a19834827d53bedeb325971e1f044ace2e97c131ebf8cb9bf425f"
+    },
+    {
+      "tool": "financial_statements",
+      "source": "vietstock",
+      "as_of": "2026-11-24T15:51:30.168761+07:00",
+      "matched_entry_id": "fs:HPG:q:KQKD",
+      "response_sha256": "75f546c453b8bd8039b5c17cd411231ce1a801cbb7c46465733ee7c48aa14812"
+    },
+    {
+      "tool": "financial_statements",
+      "source": "vietstock",
+      "as_of": "2026-11-24T15:51:30.168761+07:00",
+      "matched_entry_id": "fs:KDH:q:CDKT",
+      "response_sha256": "27bede1cda4c6365c4b844675ba0b8fe0d27731446a7082fce0813698b0e2894"
+    },
+    {
+      "tool": "financial_statements",
+      "source": "vietstock",
+      "as_of": "2026-11-24T15:51:30.168761+07:00",
+      "matched_entry_id": "fs:KDH:q:KQKD",
+      "response_sha256": "8cc7c9081c66dcde16c50ab4e4f0f17fb9fdd8ba97fb92ef4f0b90851c878895"
+    },
+    {
+      "tool": "financial_statements",
+      "source": "vietstock",
+      "as_of": "2026-11-24T15:51:30.168761+07:00",
+      "matched_entry_id": "fs:MWG:q:CDKT",
+      "response_sha256": "54104e78627e90db40aa5a344d24964f5a92038a463e76ec26d0953d9eee9132"
+    },
+    {
+      "tool": "financial_statements",
+      "source": "vietstock",
+      "as_of": "2026-11-24T15:51:30.168761+07:00",
+      "matched_entry_id": "fs:MWG:q:KQKD",
+      "response_sha256": "b431b83d27159980da116aac27b4fbdbf1cc7ae5a3640d2c4364a8a76fedcd3a"
+    },
+    {
+      "tool": "vn_quote_history",
+      "source": "vnstock",
+      "as_of": "2026-11-24T18:51:22.395329+07:00",
+      "matched_entry_id": "hist:FPT",
+      "response_sha256": "4464dee59ae17da1e0236cb2b0020ba9f94a1e53d9894062e07a54fadd2059af"
+    },
+    {
+      "tool": "vn_quote_history",
+      "source": "vnstock",
+      "as_of": "2026-11-24T18:51:22.395329+07:00",
+      "matched_entry_id": "hist:GAS",
+      "response_sha256": "9de2916972ae66f1144f4bac2be80a61b7e0685591cec9d59c1efa50e271dd2f"
+    },
+    {
+      "tool": "vn_quote_history",
+      "source": "vnstock",
+      "as_of": "2026-11-24T18:51:22.395329+07:00",
+      "matched_entry_id": "hist:HPG",
+      "response_sha256": "d178254d4419f42e171d5b574ce7563a9de28a6b847497aad059d781aa09554b"
+    },
+    {
+      "tool": "vn_quote_history",
+      "source": "vnstock",
+      "as_of": "2026-11-24T18:51:22.395329+07:00",
+      "matched_entry_id": "hist:KDH",
+      "response_sha256": "81af8321a51d7f82925596f1175be116aa399f749af319a690d5bdf3076b56ad"
+    },
+    {
+      "tool": "vn_quote_history",
+      "source": "vnstock",
+      "as_of": "2026-11-24T18:51:22.395329+07:00",
+      "matched_entry_id": "hist:MBB",
+      "response_sha256": "7769a3b4163c49a387f44715b8adaa720b62a6381f90fe80a485576514fe94f0"
+    },
+    {
+      "tool": "vn_quote_history",
+      "source": "vnstock",
+      "as_of": "2026-11-24T18:51:22.395329+07:00",
+      "matched_entry_id": "hist:MWG",
+      "response_sha256": "7218aa99fb0b95b0e8c5b17015a0d7202ba18ceb3fba0d632eccc81b173df700"
+    },
+    {
+      "tool": "vn_quote_history",
+      "source": "vnstock",
+      "as_of": "2026-11-24T18:51:22.395329+07:00",
+      "matched_entry_id": "hist:VCB",
+      "response_sha256": "e12429c59c765cdd04cd74c65106cf6ec9e2eb769a112544d8dadea37aab6651"
+    },
+    {
+      "tool": "vn_quote_history",
+      "source": "vnstock",
+      "as_of": "2026-11-24T18:51:22.395329+07:00",
+      "matched_entry_id": "hist:VHM",
+      "response_sha256": "4cb4b2eedc6e72d217b0fe0004a826d53b504476e08641382aae1459d5e9b197"
+    },
+    {
+      "tool": "vn_index_ohlcv",
+      "source": "vnstock",
+      "as_of": "2026-11-24T18:51:22.395329+07:00",
+      "matched_entry_id": "idx:VNINDEX",
+      "response_sha256": "b488774051825141515f6c44fb7e9ac3d3d882c5acae3b029ed0b81a7e15a560"
+    }
+  ],
+  "payload_sha256": "2f51eb0efbc4d9cd0ee3902dc080f9ac2d43d41d577159413e133f9d77c863ba",
+  "required_payload_keys": [
+    "hist:FPT",
+    "hist:GAS",
+    "hist:HPG",
+    "hist:KDH",
+    "hist:MBB",
+    "hist:MWG",
+    "hist:VCB",
+    "hist:VHM"
+  ]
+}

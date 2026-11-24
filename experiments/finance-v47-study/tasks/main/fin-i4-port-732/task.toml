@@ -1,0 +1,31 @@
+# Investor stratum — amendment 2026-11-24 (d), tools/build_investor_stratum_20261124.py
+id = "fin-i4-port-732"
+title = "Nhà đầu tư I4 — dựng danh mục"
+version = 2
+created = "2026-11-24"
+level = "I4"
+family = "I4 investor"
+financebench_type = "investment decision (outcome-scored)"
+entity = "SSI+VHM+VIC+DGC+REE+GMD+PNJ+POW"
+asset = "vn_stock"
+data_zone = "green"
+data_pairs = []
+snapshot_date = "2026-11-01"
+universe_cap = 0
+banned_tools = ["web_search", "web_fetch", "sentiment_score"]
+human_time_band = "15–60 phút"
+time_limit_min = 60
+tools_expected = ["financial_statements", "vn_index_ohlcv", "vn_quote_history"]
+mcp_payloads = "environment/payloads.json"
+snapshot_required = true
+split = "main"
+
+confirmatory_eligible = true
+stratum = "investor"
+tier = "I4"
+
+[scoring]
+type = "outcome"
+gold = "solution/gold.json"
+oracle = "solution/oracle.py"
+grader = "tests/grader.py"

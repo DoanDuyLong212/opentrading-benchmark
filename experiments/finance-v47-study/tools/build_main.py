@@ -251,6 +251,9 @@ def synthesize(gold, mutate=False):
             setv(path, list(exp["gold"]))
         elif t == "list_order":
             setv(path, list(exp["gold"]))
+        elif t == "set_in":
+            first = list(exp["accept_sets"][0])
+            setv(path, first[0] if exp["size"] == 1 else first)
         elif t == "str":
             setv(path, exp["accept"][0])
         elif t == "str_all":
@@ -266,7 +269,7 @@ def synthesize(gold, mutate=False):
             # mutate kiểu set/list_order/str/verdict/tokens
             for e in gold.get("expects", []):
                 p = e.get("path", "value")
-                if e["type"] in ("set", "list_order"):
+                if e["type"] in ("set", "list_order", "set_in"):
                     cur = ans
                     parts = p.split(".")
                     for part in parts[:-1]:

@@ -171,7 +171,7 @@ def task_eligibility(task):
     if metadata.get('multiturn') is True or metadata.get('track')=='memory_multiturn' or (Path(task)/'environment/turns.json').exists():
         turns = Path(task)/'environment/turns.json'
         contract = json.loads(turns.read_text()).get('execution_contract') if turns.exists() else None
-        if contract == NATIVE_MEMORY_CONTRACT and metadata.get('stratum') == 'memory':
+        if contract == NATIVE_MEMORY_CONTRACT and metadata.get('stratum') in ('memory', 'investor'):
             # Amendment 2026-11-11 (d): native-memory tasks run inside the main schedule (same seal/supervisor),
             # executed turn by turn through runners/memory_runner.py (profile native-v2).
             return {'confirmatory_eligible': True, 'exclusion_reason': None, 'memory_multiturn': True, 'memory_native_v2': True}
