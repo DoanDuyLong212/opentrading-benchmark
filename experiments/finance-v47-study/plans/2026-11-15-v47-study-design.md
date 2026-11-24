@@ -171,3 +171,24 @@ All S3 tasks are diagnostic and excluded from comparative primary rates, strata,
 Recommendation (b) is L/C/M primary and all S diagnostic, with separate overall/stratum/tier outcomes and cost accounting; no extra arm in this cohort. The actual analysis code excludes S1/S2/S3 from comparative summaries and paired/bootstrap endpoints. Task denominators are 170 main / 50 holdout primary and 30 main / 8 holdout diagnostic per arm/repeat. Full scheduled-cohort completion remains a separate requirement from analysis-subset completion. This supersedes the earlier S3-only denominator description for analysis, without claiming native clock parity.
 
 Keep the historical 40 PRUNE IDs and recommend 58 holdout tasks without adding C3 mid-cohort. The selection was after or16 and does not establish prospective model-independent neutrality. Public gold remains a disclosed limitation. Cross-machine history including dev-stage/holdout and fin-mem-96x is unknown pending owner confirmation. No recorded approval or inference authorization is asserted. See `experiments/finance-v47-study/docs/methodology-decisions-issues10-13-15.md` and its DECISIONS.json for the full packet, source-backed or16 extract, cost uncertainty and required choices. Issues #10/#13/#15 remain open pending recorded FinDaHuman decisions and later seal checks.
+
+## Amendment 2026-11-24: ghim lại runtime và đổi judge
+
+**Ghim lại theo bản hiện hành của 3 harness** (người dùng 24/11: OpenTrading đã xong):
+
+| | Trước | Sau | Nguồn |
+|---|---|---|---|
+| OpenTrading | `4688a94` (main có PR #8 `bd05b85` chưa merge) | `6d63a91` (main sau release 0.5.0, #436) | `experiments/opentrading-runtime.SHA`, `tools/bootstrap/runtime-source.json`, `opentrading_runtime_commit` |
+| OpenCode | 2.1.2 | 2.4.1 (`@opencode/cli-linux-x64` dist-tag `latest`; npm integrity sha512 khớp) | `tools/bootstrap/toolchain-receipts.json` |
+| DSH | 0.2.1-rc.2 | 0.2.2-rc.5 (dist-tag `latest`) | `tools/bootstrap/dsh/package*.json`, receipt `dsh` |
+| Bun, Node | 1.4.4, 26.8.2 | không đổi | |
+
+- Runtime vendor là `git archive` của OpenTrading `6d63a91`, bỏ `.env.example` như bản trước. `tools/prompt_variants/baseline/` chép lại từ `prompts/` của runtime, `baseline.SHA256SUMS` làm mới.
+- Prompt OT đổi nhiều (chuỗi dịch sang tiếng Anh #355–#361 và các PR sau 4688a94), nên bảng token system prompt ở trên là số của runtime cũ; đo lại ở smoke.
+- Bootstrap từ prefix rỗng chạy qua với receipt mới (tree DSH tái lập được, runtime OT `bun install --frozen-lockfile` không đổi input). `tools/tests` 1035 passed; `verify_offline.py` pass (317 task, 1660 mutation).
+
+**Judge: `anthropic/claude-haiku-5.5` thay `nvidia/nemotron-3-ultra-550b-a55b:free`** (`tools/llm_judge.py`, ghi đè được bằng `JUDGE_MODEL`).
+- Lý do: người dùng chọn Haiku 5.5 vì điểm phân loại cao. Ngoài ra, ở v4.7 Nemotron vừa là model của cả 3 arm vừa là judge, tức tự chấm bài của mình; Haiku khác họ với model đang test.
+- Hiệu chuẩn (`audits/judge-calibration-2026-11-24/`): 200 lượt, gồm câu trả lời thật đã được review là đúng cộng các bản sửa có kiểm soát (lệch 25%, lệch 3 lần tolerance, sai bậc ×1000, từ chối mà vẫn đưa số; và lệch nửa tolerance, vẫn đúng). Haiku đúng 200/200 (kappa 1,0); Nemotron trên cùng bộ cũng 200/200. Chi phí Haiku $0,083, khoảng $0,0004 mỗi lượt chấm.
+- Giới hạn: đây không phải mẫu gán nhãn tay các ca judge và grader bất đồng như `or16-main-kappa.json` (kappa 0,85 của Nemotron), vì thư mục trial or16 đã bị xoá và mọi câu trả lời có nhãn còn khôi phục được đều là ca đúng. Ca biên (partial, cách diễn đạt, quy ước dấu) chưa được đo. Trước khi seal: gán nhãn tay các ca bất đồng ở pilot và tính kappa cho Haiku; `judge_kappa_file` của seal trỏ tới file đó.
+- Haiku là route trả phí, không có biến thể `:free`. Holdout (`deny_data_collection`) đã thử 1 lượt: route được (provider "Claude Platform on AWS"). Trần chi mỗi process: `JUDGE_MAX_USD` (mặc định 3), có test. Ước tính chấm 1 200 trial khoảng $0,5–1.

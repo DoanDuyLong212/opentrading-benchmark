@@ -6,7 +6,7 @@ import { AutoReviewer } from "../src/core/permission/auto"
 import { toolErrorText } from "../src/core/tools/errors"
 import type { ToolDef } from "../src/core/tools/types"
 
-const NO_WORKAROUND = "Đừng làm đúng việc này bằng tool hay lệnh khác"
+const NO_WORKAROUND = "Do not do this same thing with another tool or command"
 const subagent = { type: "tra-cuu", id: "a1", description: "tra cứu" }
 
 test("a classifier block: summary on line 1, then no-workaround, go on with other work, stop, and how the user allows it", () => {
@@ -15,15 +15,31 @@ test("a classifier block: summary on line 1, then no-workaround, go on with othe
   expect(first).toBe(`${AUTO_BLOCK_PREFIX}shell [Git phá huỷ]: Xoá nhánh remote khi người dùng chưa nêu tên nhánh.`)
   const guidance = rest.join("\n\n")
   expect(guidance).toContain(NO_WORKAROUND)
-  expect(guidance).toContain("write_file, edit_file, tool MCP, subagent")
-  expect(guidance).toContain("làm tiếp")
-  expect(guidance).toContain("DỪNG")
+  expect(guidance).toContain("write_file, edit_file, an MCP tool, a subagent")
+  expect(guidance).toContain("Carry on")
+  expect(guidance).toContain("STOP")
   // The user changes permissions; the model never edits them itself (a hard deny).
-  expect(guidance).toContain("người dùng tự làm; bạn đừng tự sửa cấu hình quyền")
+  expect(guidance).toContain("the user does this; never change the permission settings yourself")
   expect(guidance).toContain("/permissions")
   // One final period whatever the classifier wrote; fits the tool-error cap with room to spare.
   expect(blockedMessage("shell", { reason: "Ghi đè file. " }).split("\n")[0]).toBe(`${AUTO_BLOCK_PREFIX}shell: Ghi đè file.`)
   expect(text.length).toBeLessThan(1_500)
+})
+
+test("a hard-deny block names no way to allow it: a message or an allow rule would not clear it (#411)", () => {
+  const block = { label: "Giao dịch thật", reason: "Đặt lệnh mua thật.", hard: true }
+  const main = blockedMessage("shell", block)
+  expect(main.split("\n\n")[0]).toBe(`${AUTO_BLOCK_PREFIX}shell [Giao dịch thật]: Đặt lệnh mua thật.`)
+  expect(main).toContain(NO_WORKAROUND)
+  expect(main).toContain("does not clear it")
+  expect(main).toContain("Do not ask the user to allow it")
+  const agent = blockedMessage("shell", block, subagent)
+  expect(agent).toContain("state in your result")
+  for (const text of [main, agent]) {
+    expect(text).not.toContain("How to allow it")
+    expect(text).not.toContain("/permissions")
+    expect(text.length).toBeLessThan(1_500)
+  }
 })
 
 test("the tool-error cleaner keeps the summary line and the guidance", () => {
@@ -34,8 +50,8 @@ test("the tool-error cleaner keeps the summary line and the guidance", () => {
 test("a subagent is told to report the block in its result, not to ask the user", () => {
   const text = deniedMessage({ reason: "classifier", auto: { reason: "Gửi file ra host lạ." } }, { tool: "shell", agent: subagent })
   expect(text).toContain(NO_WORKAROUND)
-  expect(text).toContain("ghi rõ trong kết quả")
-  expect(text).not.toContain("DỪNG")
+  expect(text).toContain("state in your result")
+  expect(text).not.toContain("STOP")
 })
 
 test("every denial says not to reach the same effect another way; a plain user 'no' still asks the user", () => {
@@ -44,12 +60,12 @@ test("every denial says not to reach the same effect another way; a plain user '
   }
   const no = deniedMessage({ reason: "user" }, { tool: "shell" })
   expect(no.startsWith(USER_DENY_PREFIX)).toBe(true)
-  expect(no).toContain("hỏi người dùng muốn làm gì khác")
-  expect(no).not.toContain("làm tiếp")
+  expect(no).toContain("ask the user what else they want")
+  expect(no).not.toContain("Carry on")
   // The rule text no longer says "do it another way".
   expect(deniedMessage({ reason: "rule" }, { tool: "shell" })).not.toContain("làm cách khác")
   // Cancelled and an unsaved "always" are not refusals of the action.
-  expect(deniedMessage({ reason: "cancelled" })).toBe("Lời gọi tool đã bị huỷ.")
+  expect(deniedMessage({ reason: "cancelled" })).toBe("The tool call was cancelled.")
   expect(deniedMessage({ reason: "unsaved", message: "EACCES" })).not.toContain(NO_WORKAROUND)
 })
 
@@ -100,7 +116,7 @@ test("the third block goes to the user; their 'no' tells the model what auto mod
   const decision = await pending
   expect(decision).toMatchObject({ allow: false, reason: "user", auto: { label: "Gửi dữ liệu ra ngoài" } })
   const text = deniedMessage(decision, { tool: "mcp__x__create" })
-  expect(text.split("\n")[0]).toBe(`${USER_DENY_PREFIX} (auto mode đã chặn [Gửi dữ liệu ra ngoài]: Gửi ra ngoài).`)
+  expect(text.split("\n")[0]).toBe(`${USER_DENY_PREFIX} (auto mode had blocked it [Gửi dữ liệu ra ngoài]: Gửi ra ngoài).`)
   expect(text).toContain(NO_WORKAROUND)
 })
 
@@ -121,7 +137,7 @@ test("headless: a block handed to the user is a block; a quota hand-off carries 
   await quota.respond(head.id, "deny")
   const decision = await pending
   expect(decision.auto).toBeUndefined()
-  expect(deniedMessage(decision, { tool: "mcp__x__create" })).not.toContain("auto mode đã chặn")
+  expect(deniedMessage(decision, { tool: "mcp__x__create" })).not.toContain("auto mode had blocked it")
 })
 
 // ── the classifier's log: what did not run, until the user's next message ─────
@@ -162,6 +178,24 @@ test("the gate marks auto-mode blocks, user refusals and deny rules; approving a
   await ruled.refreshRules()
   expect((await ruled.check(mcpWrite, {}, signal())).reason).toBe("rule")
   expect(ruled.auto!.log.all().at(-1)).toMatchObject({ kind: "denied", by: "deny_rule" })
+})
+
+test("a hard-deny verdict carries the flag through the gate, /permissions and the hand-off; a soft one does not", async () => {
+  const HARD = ["<block>yes</block>", "<block>yes</block><rule> real trading </rule><reason>Đặt lệnh thật.</reason>"]
+  const gate = autoGate([...HARD, ...BLOCK, ...HARD])
+  gate.interactive = true
+  const hard = await gate.check(mcpWrite, { a: 1 }, signal())
+  expect(hard).toMatchObject({ allow: false, reason: "classifier", auto: { hard: true, reason: "Đặt lệnh thật." } })
+  expect(deniedMessage(hard as never, { tool: "x" })).not.toContain("How to allow it")
+  expect(gate.auto!.recent[0]).toMatchObject({ hard: true })
+  const soft = await gate.check(mcpWrite, { a: 2 }, signal())
+  expect((soft as { auto?: { hard?: boolean } }).auto?.hard).toBeUndefined()
+  expect(deniedMessage(soft as never, { tool: "x" })).toContain("How to allow it")
+  // The third in a row goes to the user: their own click still decides.
+  const pending = gate.check(mcpWrite, { a: 3 }, signal())
+  await tick()
+  await gate.respond(gate.head()!.id, "once")
+  expect((await pending).allow).toBe(true)
 })
 
 test("a hand-off the user approves is logged as their answer", async () => {

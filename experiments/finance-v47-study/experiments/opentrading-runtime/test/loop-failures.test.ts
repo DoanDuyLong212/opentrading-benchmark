@@ -53,6 +53,22 @@ test("every failure the harness writes gets its class", () => {
     ['MCP server "ot" đang lỗi kết nối liên tiếp nên lần gọi này chưa được gửi đi.', "transport"],
     ['MCP server "ot" chưa kết nối: x. Xem /mcp.', "transport"],
     ["Error executing tool x: boom", "tool-error"],
+    ['MCP server "ot" is restarting and did not reconnect within 30s. Wait a while and try again; do not call it repeatedly.', "transport"],
+    ['MCP server "ot" failed: upstream answered HTTP 502: [HTML error page "502 Bad Gateway"] [HTTP 502, code -32603]', "transport"],
+    ['MCP server "ot" failed: bad symbol [HTTP 400]', "tool-error"],
+    // Denials and the loader line in both languages: sessions saved before 20/11/2026 hold the Vietnamese.
+    ["Auto mode blocked shell [Git phá huỷ]: x.", "denied"],
+    ["Auto mode chặn shell [Git phá huỷ]: x.", "denied"],
+    ["The user declined to run this tool.", "denied"],
+    ["Người dùng từ chối chạy tool này.", "denied"],
+    ["A block rule of the user's (permissions.deny) does not allow shell.", "denied"],
+    ["Quy tắc chặn của người dùng (permissions.deny) không cho chạy shell.", "denied"],
+    ["Could not run: unusual path form: an 8.3 short name (PROGRA~1).", "denied"],
+    ["Không chạy được: đường dẫn dạng lạ: tên ngắn 8.3 (PROGRA~1).", "denied"],
+    ["Tools loaded: mcp__ot__x\nTool mcp__ot__x was not in this step", "deferred"],
+    ["Đã nạp tool: mcp__ot__x\nTool mcp__ot__x chưa có trong bước này nên chưa chạy", "deferred"],
+    ["Cancelled.", "aborted"],
+    ["Tool interrupted because the previous session ended midway.", "aborted"],
   ]
   for (const [text, outcome] of cases) expect([text, classifyOutcome(false, text)]).toEqual([text, outcome])
   expect(classifyOutcome(true, "giá 98.5")).toBe("ok")
@@ -143,7 +159,7 @@ test("loads and denials neither add to the streak nor break it", () => {
 test("the reminder names the gaps, and the streak only once", () => {
   expect(failureNudge({ gaps: [], streak: 0 })).toBeUndefined()
   expect(failureNudge({ gaps: ["a", "b"], streak: 1 })).toContain("a, b")
-  expect(failureNudge({ gaps: [], streak: FAILURE_STREAK_NUDGE })).toContain("bước liên tiếp")
+  expect(failureNudge({ gaps: [], streak: FAILURE_STREAK_NUDGE })).toContain("steps in a row")
   expect(failureNudge({ gaps: [], streak: FAILURE_STREAK_NUDGE + 1 })).toBeUndefined()
 })
 
@@ -167,4 +183,39 @@ test("gapsAnswer names every gap and states no figure", async () => {
   const text = gapsAnswer(["vn_quote_history", "market_candles_batch"])
   expect(text).toContain("vn_quote_history, market_candles_batch")
   expect(text).not.toMatch(/\d/)
+})
+
+const REPLAY_MISS = '[replay] Không có trong bản ghi: {"name":"vn_ratios"}'
+
+test("#414: a data tool's own error (isError) is listed apart from the gaps", () => {
+  const failures = turnFailures(turn(
+    step({ tool: "mcp__ot__vn_ratios", error: REPLAY_MISS }, { tool: "mcp__ot__vn_ratios", input: { s: "BID" }, error: REPLAY_MISS }),
+    step({ tool: "web_fetch", error: "404 Not Found" }, { tool: "shell", error: "exit 1" }),
+  ))
+  expect(failures.errored).toEqual(["vn_ratios", "web_fetch"])
+  // Not a lost source: the UI line, subagent results and eval thresholds read the gaps.
+  expect(failures.gaps).toEqual([])
+  expect(failures.fetched).toBe(false)
+})
+
+test("#414: bad arguments are not an errored source: the model can fix the call", () => {
+  expect(turnFailures(turn(step({ tool: "mcp__ot__a", error: "Invalid arguments for a:\n- f: required" }))).errored).toEqual([])
+})
+
+test("#414: gapsAnswer names tools that returned errors without calling them a source outage", async () => {
+  const { gapsAnswer } = await import("../src/core/loop/failures")
+  expect(gapsAnswer(["a"])).toBe(gapsAnswer(["a"], []))
+  const text = gapsAnswer([], ["vn_ratios", "vn_quote"])
+  expect(text).toContain("vn_ratios, vn_quote")
+  expect(text).toContain("tool báo lỗi")
+  expect(text).not.toMatch(/\d/)
+  expect(gapsAnswer(["vn_quote_history"], ["vn_ratios"])).toContain("vn_quote_history, vn_ratios")
+})
+
+test("#414 review: with only tools that returned errors, the harness's answer names no outage and no wait", async () => {
+  const { gapsAnswer } = await import("../src/core/loop/failures")
+  const text = gapsAnswer([], ["vn_ratios"])
+  expect(text).not.toContain("nguồn lỗi")
+  expect(text).not.toContain("quá thời gian")
+  expect(text).not.toContain("ít phút")
 })

@@ -1,6 +1,7 @@
 import path from "node:path"
 import { UnauthorizedError } from "@modelcontextprotocol/sdk/client/auth.js"
 import { Client } from "@modelcontextprotocol/sdk/client/index.js"
+import { appVersion } from "../build-info"
 import { SSEClientTransport, SseError } from "@modelcontextprotocol/sdk/client/sse.js"
 import { StdioClientTransport } from "@modelcontextprotocol/sdk/client/stdio.js"
 import { StreamableHTTPClientTransport, StreamableHTTPError } from "@modelcontextprotocol/sdk/client/streamableHttp.js"
@@ -35,9 +36,10 @@ import {
   type ServerEntry,
   toolAllowed,
 } from "./config"
-import { ServerBreaker } from "./breaker"
+import { ServerBreaker, type BreakerEvent } from "./breaker"
 import { isDataServer } from "./catalog"
 import { blockToParts, resultToOutput } from "./convert"
+import { MAX_MODEL_ERROR, McpModelError, modelErrorText } from "./errors"
 import { serverPrefix, toolName } from "./naming"
 import { McpOAuthProvider, NeedsAuthError, oauthStatus, openBrowser, startCallbackServer } from "./oauth"
 import { clearOAuth, secretEnv, setSecretEnv } from "./secrets"
@@ -174,6 +176,9 @@ interface Live {
 }
 
 export interface McpManagerOptions {
+  /** Eval-only breaker threshold and event sink. */
+  breakerThreshold?: number
+  onBreakerEvent?: (server: string, event: BreakerEvent) => void
   home: string
   cwd: string
   trustFile: string
@@ -221,14 +226,14 @@ export function mcpToolFields(
     // Claude Code's convention: a server marks its core tools to skip deferral.
     deferrable: !alwaysLoad && meta[ALWAYS_LOAD_META] !== true,
     searchHint: hint || undefined,
-    description: (tool.description ?? `Tool ${tool.name} của MCP server ${server}.`).slice(0, MAX_DESCRIPTION),
+    description: (tool.description ?? `Tool ${tool.name} of MCP server ${server}.`).slice(0, MAX_DESCRIPTION),
   }
 }
 
 function capInstructions(text: string | undefined) {
   const trimmed = text?.trim()
   if (!trimmed) return undefined
-  return trimmed.length > MAX_INSTRUCTIONS ? trimmed.slice(0, MAX_INSTRUCTIONS) + "… [đã cắt]" : trimmed
+  return trimmed.length > MAX_INSTRUCTIONS ? trimmed.slice(0, MAX_INSTRUCTIONS) + "… [cut]" : trimmed
 }
 const LOGIN_TIMEOUT_MS = 5 * 60_000
 const RETRYABLE_STATUS = new Set([408, 429, 500, 502, 503, 504])
@@ -254,6 +259,29 @@ export function cleanErrorText(text: string): string {
 }
 
 const errorText = (error: unknown) => cleanErrorText(error instanceof Error ? error.message : String(error))
+const rawMessage = (error: unknown) => (error instanceof Error ? error.message : String(error))
+
+/**
+ * Run a model-facing MCP tool and make whatever it throws safe for the model (#326): our own
+ * worded errors pass as they are; anything else (a stdio server's stack trace, a JSON-RPC
+ * error, a non-retryable HTTP answer with an HTML page) becomes one short English line that
+ * keeps its codes.
+ */
+async function forModel<T>(server: string | undefined, signal: AbortSignal, run: () => Promise<T>): Promise<T> {
+  try {
+    return await run()
+  } catch (error) {
+    if (signal.aborted || error instanceof McpModelError) throw error
+    const prefix = server ? `MCP server "${server.slice(0, 40)}" failed: ` : "MCP resources failed: "
+    throw new McpModelError(prefix + modelErrorText(rawMessage(error), { status: httpStatus(error), max: MAX_MODEL_ERROR - prefix.length }))
+  }
+}
+
+/** The model's side of an auth failure; the /mcp panel gets the Vietnamese authHint. */
+function authForModel(name: string, error: unknown) {
+  const status = httpStatus(error)
+  return `MCP server "${name}" rejected the credentials${status ? ` (HTTP ${status})` : ""}: the user must sign in again or fix the token in /mcp. Do not call this server's tools again this turn; answer with the data you have and state what is missing.`
+}
 const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms))
 
 class TimeoutError extends Error {}
@@ -332,10 +360,10 @@ function isRetryable(error: unknown) {
 /** Resolves after `ms`, or rejects as soon as `signal` aborts. */
 function pause(ms: number, signal: AbortSignal) {
   return new Promise<void>((resolve, reject) => {
-    if (signal.aborted) return reject(new Error("Đã huỷ."))
+    if (signal.aborted) return reject(new Error("Cancelled."))
     const onAbort = () => {
       clearTimeout(timer)
-      reject(new Error("Đã huỷ."))
+      reject(new Error("Cancelled."))
     }
     const timer = setTimeout(() => {
       signal.removeEventListener("abort", onAbort)
@@ -755,7 +783,8 @@ export class McpManager {
     if (now && this.statuses.get(name)?.state === "connected") return now
     const entry = this.entries.get(name)
     const stuck = (s?: McpServerStatus) => !s || s.state === "disabled" || s.state === "needs-auth" || s.state === "untrusted"
-    const notConnected = (s?: McpServerStatus) => new Error(`MCP server "${name}" chưa kết nối${s?.error ? `: ${s.error}` : ""}. Xem /mcp.`)
+    // The state, not the status error: that one is the /mcp line, written in Vietnamese for the user.
+    const notConnected = (s?: McpServerStatus) => new McpModelError(`MCP server "${name}" is not connected${s ? ` (${s.state})` : ""}; the user can see why in /mcp.`)
     const status = this.statuses.get(name)
     if (!entry?.config || !isRemote(entry.config) || stuck(status)) throw notConnected(status)
     // Failed for good (e.g. it was still down when the app started): start trying again.
@@ -777,14 +806,14 @@ export class McpManager {
         if (live && s?.state === "connected") finish(() => resolve(live))
         else if (stuck(s)) finish(() => reject(notConnected(s)))
       }
-      const onAbort = () => finish(() => reject(new Error("Đã huỷ.")))
+      const onAbort = () => finish(() => reject(new Error("Cancelled.")))
       if (signal.aborted) return onAbort()
       timer = setTimeout(
         () =>
           finish(() =>
             reject(
-              new Error(
-                `MCP server "${name}" đang khởi động lại, chưa kết nối lại được sau ${Math.round(waitMs / 1000)}s. Đợi thêm một lúc rồi thử lại, đừng gọi lặp liên tục.`,
+              new McpModelError(
+                `MCP server "${name}" is restarting and did not reconnect within ${Math.round(waitMs / 1000)}s. Wait a while and try again; do not call it repeatedly.`,
               ),
             ),
           ),
@@ -816,7 +845,7 @@ export class McpManager {
 
   private breaker(name: string) {
     let breaker = this.breakers.get(name)
-    if (!breaker) this.breakers.set(name, (breaker = new ServerBreaker(this.opts.breakerOpenMs, this.opts.breakerNow)))
+    if (!breaker) this.breakers.set(name, (breaker = new ServerBreaker(this.opts.breakerOpenMs, this.opts.breakerNow, this.opts.breakerThreshold, (event) => this.opts.onBreakerEvent?.(name, event))))
     return breaker
   }
 
@@ -838,7 +867,7 @@ export class McpManager {
       for (let i = 0; ; i++) {
         const real = () => this.transport(entry, config, kind, stderr)
         const transport = this.opts.transport?.(entry.name, real) ?? real()
-        const client = new Client({ name: "opentrading", version: "0.1.0" }, { capabilities: {} })
+        const client = new Client({ name: "opentrading", version: appVersion }, { capabilities: {} })
         try {
           const left = Math.max(1, deadline - Date.now())
           await withTimeout(client.connect(transport), left, `Kết nối quá ${timeoutMs / 1000}s.`)
@@ -944,7 +973,7 @@ export class McpManager {
       await provider.invalidateCredentials("tokens")
       const kind = this.statuses.get(name)?.transport === "sse" || remote.type === "sse" ? "sse" : "http"
       const transport = this.transport(entry, remote, kind, [], provider) as StreamableHTTPClientTransport | SSEClientTransport
-      const client = new Client({ name: "opentrading", version: "0.1.0" }, { capabilities: {} })
+      const client = new Client({ name: "opentrading", version: appVersion }, { capabilities: {} })
       try {
         await client.connect(transport)
       } catch (error) {
@@ -1034,7 +1063,7 @@ export class McpManager {
         timeoutMs: (tool.annotations?.readOnlyHint ? 2 : 1) * toolTimeoutMs + startupTimeoutMs + 5_000,
         maxOutputChars: config.maxOutputChars,
         summarize: (input) => `${name} · ${tool.name}(${compactArgs(input)})`,
-        execute: async (input, ctx) => {
+        execute: (input, ctx) => forModel(name, ctx.signal, async () => {
           const args = (input as Record<string, unknown>) ?? {}
           // A plain request instead of client.callTool: callTool checks structuredContent
           // against the tool's outputSchema and throws on a mismatch — after the tool ran.
@@ -1075,80 +1104,85 @@ export class McpManager {
           const breaker = isRemote(config) ? this.breaker(name) : undefined
           const refused = breaker?.admit()
           if (refused !== undefined) {
-            throw new Error(
-              `MCP server "${name}" đang lỗi kết nối liên tiếp nên lần gọi này chưa được gửi đi. Thử lại sau ${Math.ceil(refused / 1000)} giây; lúc này đừng gọi tool của server này, hãy trả lời bằng dữ liệu đã có và nêu phần còn thiếu.`,
+            throw new McpModelError(
+              `MCP server "${name}" is failing to connect repeatedly, so this call was not sent. Try again after ${Math.ceil(refused / 1000)} seconds; for now do not call this server's tools — answer with the data you have and state what is missing.`,
             )
           }
+          const probeToken = breaker?.probeToken
           const retryDelays = this.opts.callRetryDelaysMs ?? [1000, 3000]
           // Only read-only calls are retried: a write may already have run on the server.
           const retries = isRemote(config) && tool.annotations?.readOnlyHint ? retryDelays.length : 0
-          for (let attempt = 0; ; attempt++) {
-            const live = await this.ready(name, startupTimeoutMs, ctx.signal).catch((error: unknown) => {
-              // Still down after the wait for a reconnect, not a server that needs the user.
-              if (!ctx.signal.aborted && this.reconnecting.has(name)) breaker?.failure()
-              throw error
-            })
-            let result: Awaited<ReturnType<typeof call>>
-            try {
-              result = await limited(live)
-            } catch (error) {
-              if (ctx.signal.aborted) throw error
-              if (isRemote(config) && isAuthError(error)) {
-                this.set(name, { state: "needs-auth", error: authHint(name, config, error) })
-                throw new Error(authHint(name, config, error))
-              }
-              if (isRemote(config) && isSessionExpired(error) && attempt === 0) {
-                // Session expired on the server: initialize again and retry exactly once.
-                // Parallel calls that all hit the 404 share one restart instead of killing
-                // each other's fresh session.
-                await this.restartShared(name)
+          try {
+            for (let attempt = 0; ; attempt++) {
+              const live = await this.ready(name, startupTimeoutMs, ctx.signal).catch((error: unknown) => {
+                // Still down after the wait for a reconnect, not a server that needs the user.
+                if (!ctx.signal.aborted && this.reconnecting.has(name)) breaker?.failure(probeToken)
+                throw error
+              })
+              let result: Awaited<ReturnType<typeof call>>
+              try {
+                result = await limited(live)
+              } catch (error) {
+                if (ctx.signal.aborted) throw error
+                if (isRemote(config) && isAuthError(error)) {
+                  this.set(name, { state: "needs-auth", error: authHint(name, config, error) })
+                  throw new McpModelError(authForModel(name, error))
+                }
+                if (isRemote(config) && isSessionExpired(error) && attempt === 0) {
+                  // Session expired on the server: initialize again and retry exactly once.
+                  // Parallel calls that all hit the 404 share one restart instead of killing
+                  // each other's fresh session.
+                  await this.restartShared(name)
+                  continue
+                }
+                if (isRemote(config) && isQuotaExceeded(error)) {
+                  breaker?.success()
+                  const wait = retryAfterMs(error)
+                  const reset = wait === undefined ? "" : ` (around ${new Date(Date.now() + wait).toLocaleTimeString("en-GB", { hour: "2-digit", minute: "2-digit" })} local time)`
+                  throw new McpModelError(`MCP server "${name}": the daily quota is exhausted; no automatic retry. Call again after the quota resets${reset}.`)
+                }
+                if (!isRemote(config) || !isRetryable(error)) throw error
+                const wait = retryAfterMs(error)
+                if (wait !== undefined && wait <= MAX_RETRY_AFTER_MS) {
+                  this.cooldowns.set(name, Math.max(this.cooldowns.get(name) ?? 0, Date.now() + wait))
+                }
+                // The connection itself died: reconnect in the background; the next attempt
+                // (or the model's next call) waits for it in `ready`. A 503 with retry_after is
+                // a live server shedding load, not a host restarting: no probe.
+                if (isConnectionLost(error)) live.drop?.()
+                else if ([502, 503, 504].includes(httpStatus(error) ?? 0) && wait === undefined) await this.probe(live)
+                if (attempt >= retries || (wait !== undefined && wait > MAX_RETRY_AFTER_MS)) {
+                  const status = httpStatus(error)
+                  // A rate limit or a pause the server asked for comes from a server that is up.
+                  if (status === 429 || wait !== undefined) breaker?.success()
+                  else breaker?.failure(probeToken)
+                  const why = status ? `HTTP ${status}` : modelErrorText(rawMessage(error), { max: 120 })
+                  const what = status === 429 ? `is rate-limited (${why})` : `has a temporary error (${why}) — it may be restarting or overloaded`
+                  const later = wait === undefined ? "" : ` The server asks to wait ${Math.ceil(wait / 1000)} seconds before calling again.`
+                  // A retry_after refusal came before the tool ran: nothing was written to check.
+                  const next = wait === undefined ? " Calling again at once rarely helps; use another source or answer with the data you have and state what is missing." : ""
+                  const tail =
+                    attempt > 0
+                      ? ` Retried ${attempt} times.${next}`
+                      : tool.annotations?.readOnlyHint
+                        ? next
+                        : wait === undefined
+                          ? " This tool may write data, so it is not retried automatically; check its effects before calling again."
+                          : " This tool may write data, so it is not retried automatically; the server refused before running it, so it can be called again after waiting."
+                  throw new McpModelError(`MCP server "${name}" ${what}.${later}${tail}`)
+                }
+                await pause(wait ?? retryDelays[attempt]!, ctx.signal)
                 continue
               }
-              if (isRemote(config) && isQuotaExceeded(error)) {
-                breaker?.success()
-                const wait = retryAfterMs(error)
-                const reset = wait === undefined ? "" : ` (khoảng ${new Date(Date.now() + wait).toLocaleTimeString("vi-VN", { hour: "2-digit", minute: "2-digit" })})`
-                throw new Error(`MCP server "${name}" đã hết quota trong ngày; không tự thử lại. Gọi lại sau khi quota được đặt lại${reset}.`)
-              }
-              if (!isRemote(config) || !isRetryable(error)) throw error
-              const wait = retryAfterMs(error)
-              if (wait !== undefined && wait <= MAX_RETRY_AFTER_MS) {
-                this.cooldowns.set(name, Math.max(this.cooldowns.get(name) ?? 0, Date.now() + wait))
-              }
-              // The connection itself died: reconnect in the background; the next attempt
-              // (or the model's next call) waits for it in `ready`. A 503 with retry_after is
-              // a live server shedding load, not a host restarting: no probe.
-              if (isConnectionLost(error)) live.drop?.()
-              else if ([502, 503, 504].includes(httpStatus(error) ?? 0) && wait === undefined) await this.probe(live)
-              if (attempt >= retries || (wait !== undefined && wait > MAX_RETRY_AFTER_MS)) {
-                const status = httpStatus(error)
-                // A rate limit or a pause the server asked for comes from a server that is up.
-                if (status === 429 || wait !== undefined) breaker?.success()
-                else breaker?.failure()
-                const why = status ? `HTTP ${status}` : errorText(error)
-                const what = status === 429 ? `bị giới hạn tốc độ (${why})` : `lỗi tạm thời (${why}) — có thể đang khởi động lại hoặc quá tải`
-                const later = wait === undefined ? "" : ` Server yêu cầu chờ ${Math.ceil(wait / 1000)} giây trước khi gọi lại.`
-                // A retry_after refusal came before the tool ran: nothing was written to check.
-                const next = wait === undefined ? " Gọi lại ngay thường không giúp được; dùng nguồn khác hoặc trả lời bằng dữ liệu đã có và nêu phần còn thiếu." : ""
-                const tail =
-                  attempt > 0
-                    ? ` Đã thử lại ${attempt} lần.${next}`
-                    : tool.annotations?.readOnlyHint
-                      ? next
-                      : wait === undefined
-                        ? " Tool này có thể ghi dữ liệu nên không tự thử lại; kiểm tra kết quả trước khi gọi lại."
-                        : " Tool này có thể ghi dữ liệu nên không tự thử lại; server đã từ chối trước khi chạy nên có thể gọi lại sau khi chờ."
-                throw new Error(`MCP server "${name}" ${what}.${later}${tail}`)
-              }
-              await pause(wait ?? retryDelays[attempt]!, ctx.signal)
-              continue
+              // Outside the try: an error the tool itself reports (isError) is an answer, not a
+              // dead connection, even when its text says "ECONNRESET".
+              breaker?.success()
+              return resultToOutput(result)
             }
-            // Outside the try: an error the tool itself reports (isError) is an answer, not a
-            // dead connection, even when its text says "ECONNRESET".
-            breaker?.success()
-            return resultToOutput(result)
+          } finally {
+            if (probeToken !== undefined) breaker?.abandon(probeToken)
           }
-        },
+        }),
       })
     }
     this.set(name, { tools: registered, hiddenTools: hidden, capped: this.withCap(name, "tools", toolsCapped) })
@@ -1180,12 +1214,12 @@ export class McpManager {
    */
   async getPrompt(server: string, prompt: string, args: Record<string, string>) {
     const live = this.live.get(server)
-    if (!live) throw new Error(`MCP server "${server}" chưa kết nối. Xem /mcp.`)
+    if (!live) throw new Error(`MCP server "${server}" is not connected. See /mcp.`)
     const result = await live.client.request({ method: "prompts/get", params: { name: prompt, arguments: args } }, LooseGetPrompt)
     const parts = result.messages.map((m) => {
       const { text, image } = blockToParts(m.content as Parameters<typeof blockToParts>[0])
-      const body = text ?? (image ? `[ảnh ${image.mediaType} — chưa hỗ trợ trong prompt]` : "")
-      return m.role === "user" ? body : `(${m.role === "assistant" ? "gợi ý của server" : m.role}) ${body}`
+      const body = text ?? (image ? `[image ${image.mediaType} — not supported in prompts]` : "")
+      return m.role === "user" ? body : `(${m.role === "assistant" ? "the server's suggestion" : m.role}) ${body}`
     })
     return parts.filter(Boolean).join("\n\n")
   }
@@ -1200,26 +1234,34 @@ export class McpManager {
       name: "list_mcp_resources",
       source: "mcp:resources",
       description:
-        "Liệt kê tài nguyên (file, tài liệu, bảng dữ liệu…) mà các MCP server cung cấp: server, uri, tên, mô tả. Đọc nội dung bằng read_mcp_resource.",
-      input: { type: "object", properties: { server: { type: "string", description: "Tên server; bỏ trống = mọi server" } } },
+        "Lists the resources (files, documents, data tables…) MCP servers provide: server, uri, name, description. Read the content with read_mcp_resource. Use when you need a server's documents rather than its tools.",
+      input: { type: "object", properties: { server: { type: "string", description: "Server name; empty = every server" } } },
       readOnly: true,
       summarize: (input: { server?: string }) => `list_mcp_resources(${input?.server ?? ""})`,
-      execute: async (input: { server?: string }) => JSON.stringify(await this.listResources(input?.server), null, 2),
+      execute: (input: { server?: string }, ctx) =>
+        forModel(input?.server || undefined, ctx.signal, async () => JSON.stringify(await this.listResources(input?.server), null, 2)),
     })
     this.registry.register({
       name: "read_mcp_resource",
       source: "mcp:resources",
-      description: "Đọc nội dung một tài nguyên MCP theo server và uri (lấy từ list_mcp_resources).",
+      description: "Reads one MCP resource by server and uri (from list_mcp_resources). Use when you need a listed resource's content.",
       input: { type: "object", properties: { server: { type: "string" }, uri: { type: "string" } }, required: ["server", "uri"] },
       readOnly: true,
+      // The uri is free text sent to that server, like a tool's arguments: a server other than the
+      // data server is reviewed in ▸▸ and logged, as its "read-only" tools are (#413).
+      autoReview: (input: { server?: string }) => !this.isDataServer(input?.server ?? ""),
+      mcpServer: (input: { server?: string }) => {
+        const entry = this.entries.get(input?.server ?? "")
+        return entry && { server: entry.name, trusted: isDataServer(entry.scope, entry.config) }
+      },
       summarize: (input: { server?: string; uri?: string }) => `read_mcp_resource(${input?.server ?? ""} ${input?.uri ?? ""})`,
-      execute: (input: { server: string; uri: string }) => this.readResource(input.server, input.uri),
+      execute: (input: { server: string; uri: string }, ctx) => forModel(input.server, ctx.signal, () => this.readResource(input.server, input.uri)),
     })
   }
 
   async listResources(server?: string) {
     const targets = this.status().filter((s) => s.state === "connected" && s.resources && (!server || s.name === server))
-    if (server && targets.length === 0) throw new Error(`Server "${server}" không có tài nguyên hoặc chưa kết nối.`)
+    if (server && targets.length === 0) throw new McpModelError(`MCP server "${server}" has no resources or is not connected.`)
     const out: { server: string; uri: string; name?: string; description?: string; mimeType?: string }[] = []
     for (const s of targets) {
       const live = this.live.get(s.name)
@@ -1237,7 +1279,7 @@ export class McpManager {
 
   async readResource(server: string, uri: string) {
     const live = this.live.get(server)
-    if (!live) throw new Error(`MCP server "${server}" chưa kết nối. Xem /mcp.`)
+    if (!live) throw new McpModelError(`MCP server "${server}" is not connected. See /mcp.`)
     const result = await live.client.request({ method: "resources/read", params: { uri } }, LooseReadResource)
     return resultToOutput({ content: result.contents.map((c) => ({ type: "resource", resource: c })) })
   }

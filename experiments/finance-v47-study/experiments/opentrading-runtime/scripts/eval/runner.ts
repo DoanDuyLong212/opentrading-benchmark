@@ -1,11 +1,13 @@
 import { setConversation } from "../../src/core/conversation"
-import { copyFile, mkdir, rm, writeFile } from "node:fs/promises"
+import { createHash } from "node:crypto"
+import { copyFile, mkdir, readFile, rm, writeFile } from "node:fs/promises"
 import path from "node:path"
 import type { ModelMessage } from "ai"
 import { z } from "zod"
 import { ABLATIONS, type Ablation, type Ablations } from "../../src/core/ablation"
 import { runAgent } from "../../src/core/agent"
 import type { Target } from "../../src/core/chat"
+import type { Effort } from "../../src/core/effort"
 import { cleanRouting, type OpenRouterRouting } from "../../src/core/openrouter-routing"
 import { promptVersion, type PromptProfile } from "../../src/core/prompt/assemble"
 import { onModelRequest } from "../../src/core/requests"
@@ -21,6 +23,8 @@ import type { RequestLedger } from "./ledger"
 import { SHELL_TOOL, shellExecMs, shellRoute } from "./shell-route"
 import { useCalculatorShell } from "../../src/core/tools/shell/shell"
 import { TRACE_VERSION, type TraceEvent, type TraceWriter } from "./trace"
+import type { FailureThresholds } from "../../src/core/loop/failures"
+import type { BreakerEvent } from "../../src/core/mcp/breaker"
 
 const QUESTIONS = z
   .array(
@@ -73,13 +77,28 @@ export function parseAblations(list: string[]): Ablated {
  */
 export const skillsFor = (skills: Skill[], ablated?: Ablated) => (ablated?.setup.has("skills") ? [] : skills)
 
-/** A run's own home: same model and connections as `from`, none of the user's other state. */
-export async function prepareHome(from: string, to: string, target: { provider: string; model: string }, ablated?: Ablated, routing?: OpenRouterRouting) {
+/** What a run sets beyond the model (#338): stated by its flags, never read from the user's own config. */
+export interface HomeOptions {
+  /** Reasoning effort written into the run's config (`--effort`). */
+  effort?: Effort
+  /** A fixture copied as the run's INVESTOR.md (`--investor`); the user's own profile never is. */
+  investor?: string
+}
+
+/**
+ * A run's own home: same model and connections as `from`, none of the user's other state.
+ * Returns the sha256 of the investor fixture, when one is given, for the trace.
+ */
+export async function prepareHome(from: string, to: string, target: { provider: string; model: string }, ablated?: Ablated, routing?: OpenRouterRouting, options: HomeOptions = {}) {
   await mkdir(path.join(to, "cache"), { recursive: true })
   for (const file of HOME_FILES) await copyFile(path.join(from, file), path.join(to, file)).catch(() => {})
   // The pin comes from this run's flags only, never from the user's config: a run states it.
   const pin = routing ? { openrouter: { routing: { [target.model]: routing } } } : {}
-  await writeFile(path.join(to, "config.json"), JSON.stringify({ ...target, ...(ablated?.setup.has("tool-deferral") ? { toolSearch: "off" } : {}), ...pin }))
+  await writeFile(path.join(to, "config.json"), JSON.stringify({ ...target, ...(options.effort ? { effort: options.effort } : {}), ...(ablated?.setup.has("tool-deferral") ? { toolSearch: "off" } : {}), ...pin }))
+  if (!options.investor) return {}
+  const body = await readFile(options.investor)
+  await writeFile(path.join(to, "INVESTOR.md"), body)
+  return { investorSha256: createHash("sha256").update(body).digest("hex") }
 }
 
 /** Finished model steps per upstream provider over a trace's answers (OpenRouter's `served_by`). */
@@ -151,6 +170,9 @@ export function observeTools(registry: ToolRegistry, seen: WeakSet<ToolDef>, ask
 }
 
 export interface EvalRun {
+  failureThresholds?: FailureThresholds
+  breakerEvents?: { server: string; event: BreakerEvent }[]
+  httpCap?: { readonly capped: boolean; readonly refused: boolean; readonly sent: number; cap: number }
   runtime: Runtime
   /** Prefix of each question's conversation id (`eval-<stamp>-<q>#<rep>`); set by runEval when missing. */
   conversationStamp?: string
@@ -235,6 +257,10 @@ export async function runEval(run: EvalRun) {
   try {
     for (let rep = 1; rep <= (run.repeat ?? 1); rep++) {
       for (const question of run.questions) {
+        if (run.httpCap?.capped) {
+          write({ type: "stopped", reason: "request-cap", spent: run.httpCap.sent, cap: run.httpCap.cap })
+          return
+        }
         if (ledger?.exhausted) {
           write({ type: "stopped", reason: "request-cap", spent: ledger.spent, cap: ledger.cap })
           return
@@ -247,6 +273,7 @@ export async function runEval(run: EvalRun) {
           else registry.unregister(def.name)
         }
         asked = { q: question.id, rep }
+        if (run.breakerEvents) run.breakerEvents.length = 0
         observeTools(
           registry,
           seen,
@@ -328,8 +355,11 @@ async function ask(run: EvalRun, question: EvalQuestion, asked: Asked, now: Date
       target: run.target,
       now,
       disabled: run.ablated?.loop,
+      failureThresholds: run.failureThresholds,
+      onFailurePolicy: (event) => say({ type: "notice", ...asked, text: `Failure policy: ${event.action} at streak ${event.streak}, step ${event.step}.`, failure_policy: event }),
       signal: AbortSignal.any([timeout, meter.capped.signal]),
     })) {
+      for (const event of run.breakerEvents?.splice(0) ?? []) say({ type: "notice", ...asked, text: `MCP breaker ${event.server}: ${event.event}.`, breaker: event })
       if (event.type === "text-delta") result.streamed += event.text
       else if (event.type === "tool-start") {
         if (event.name === SHELL_TOOL) shellInputs.set(event.callId, event.input)
@@ -366,6 +396,7 @@ async function ask(run: EvalRun, question: EvalQuestion, asked: Asked, now: Date
   // A background subagent must not write into the next question's trace.
   runtime.subagents.stopAll()
   await runtime.subagents.flush()
+  for (const event of run.breakerEvents?.splice(0) ?? []) say({ type: "notice", ...asked, text: `MCP breaker ${event.server}: ${event.event}.`, breaker: event })
   for (const view of runtime.subagents.list()) {
     if (before.has(view.id)) continue
     result.steps += view.requests ?? 0
@@ -379,7 +410,7 @@ async function ask(run: EvalRun, question: EvalQuestion, asked: Asked, now: Date
     text: result.text.trim(),
     streamed: result.streamed.trim(),
     outcome: result.outcome,
-    ...(meter.capped.signal.aborted ? { abort: "cap" as const } : timeout.aborted ? { abort: "timeout" as const } : {}),
+    ...(meter.capped.signal.aborted || run.httpCap?.refused ? { abort: "cap" as const } : timeout.aborted ? { abort: "timeout" as const } : {}),
     unanswered: result.unanswered,
     recoveries: result.recoveries,
     data_gaps: result.gaps,

@@ -47,7 +47,7 @@ export type TraceEvent =
   /** What the tool returned, before any cap: `agent` is set when a subagent made the call. */
   | (Asked & { type: "tool_raw"; call_id: string; tool: string; input: unknown; ok: boolean; raw: string; agent?: string })
   | (Asked & { type: "retry"; attempt: number; delay_ms: number; label: string })
-  | (Asked & { type: "notice"; text: string })
+  | (Asked & { type: "notice"; text: string; failure_policy?: { action: "nudge" | "stop"; streak: number; step: number }; breaker?: { server: string; event: import("../../src/core/mcp/breaker").BreakerEvent } })
   | (Asked & { type: "error"; message: string; kind?: string })
   /** The run ended early: questions after this one were not asked. */
   | { type: "stopped"; reason: "request-cap"; spent: number; cap: number }
@@ -67,7 +67,7 @@ export type TraceEvent =
       ungrounded?: string[]
       /** Harness markup the loop took out of the answer (loop/markup.ts). */
       markup_stripped?: string[]
-      /** The harness wrote the answer: the model gave none and sources failed (loop/failures.ts gapsAnswer). */
+      /** The harness wrote the answer: the model gave none (or only echoed a reminder) and no data tool brought data (loop/failures.ts gapsAnswer). */
       fallback?: boolean
       /** Finished model steps, subagents included. */
       model_steps: number

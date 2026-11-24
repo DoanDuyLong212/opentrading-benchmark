@@ -16,7 +16,7 @@ import { dataDir } from "./paths"
 import type { Skill } from "./skills/schema"
 import { currentTimeTool } from "./tools/builtin/current-time"
 import { readResultTool } from "./tools/builtin/read-result"
-import { loadSkillTool } from "./tools/builtin/load-skill"
+import { loadSkillTool, loadableSkillNames } from "./tools/builtin/load-skill"
 import { chartRenderTool } from "./tools/chart/render"
 import { doctorLocalTool, sessionHistoryTools } from "./tools/session/history"
 import { sendMessageTool, spawnSubagentTool, stopAgentTool } from "./tools/subagent/spawn"
@@ -92,6 +92,8 @@ export interface Runtime {
   history: FileHistory
   /** ▸▸ auto mode's reviewer; also the log of the user's words and the agent's actions. */
   auto: AutoReviewer
+  /** The shell tool runs in the OS sandbox (tools/shell/sandbox.ts): fixed for the session. */
+  shellSandbox: boolean
 }
 
 export type MemoryChoice = "none" | "notebook"
@@ -134,6 +136,13 @@ export function initRuntime(opts: {
   resultFiles?: string
   /** See `McpManagerOptions.transport`. */
   mcpTransport?: McpManagerOptions["transport"]
+  mcpBreakerThreshold?: McpManagerOptions["breakerThreshold"]
+  onMcpBreakerEvent?: McpManagerOptions["onBreakerEvent"]
+  /**
+   * Run the shell tool in the OS sandbox (`--sandbox`, or config `shell.sandbox`; tools/shell/sandbox.ts).
+   * Read once here: a command can never turn it off during the session.
+   */
+  sandbox?: boolean
 }): Runtime {
   const home = opts.home ?? dataDir()
   const registry = new ToolRegistry()
@@ -171,7 +180,7 @@ export function initRuntime(opts: {
   registry.register(grepFilesTool(workspace))
   registry.register(writeFileTool({ workspace, state: files, history }))
   registry.register(editFileTool({ workspace, state: files, history }))
-  registry.register(shellTool(workspace))
+  registry.register(shellTool(workspace, { sandbox: opts.sandbox === true }))
   registry.register(
     loadSkillTool(
       opts.skills,
@@ -195,6 +204,8 @@ export function initRuntime(opts: {
     cwd: opts.cwd ?? process.cwd(),
     trustFile: path.join(home, "mcp-trust.json"),
     transport: opts.mcpTransport,
+    breakerThreshold: opts.mcpBreakerThreshold,
+    onBreakerEvent: opts.onMcpBreakerEvent,
   })
   registry.register(
     doctorLocalTool({
@@ -212,7 +223,13 @@ export function initRuntime(opts: {
       },
     }),
   )
-  registry.register(toolSearchTool(registry, () => mcp.status().filter((s) => s.state === "connecting").map((s) => s.name)))
+  registry.register(
+    toolSearchTool(
+      registry,
+      () => mcp.status().filter((s) => s.state === "connecting").map((s) => s.name),
+      () => loadableSkillNames(opts.skills(), new Set(registry.list().map((d) => d.name))),
+    ),
+  )
   const git = new GitContext()
   const auto = new AutoReviewer({
     target: async () => {
@@ -239,7 +256,7 @@ export function initRuntime(opts: {
     profile: async () => profileForClassifier(await readFile(path.join(home, "INVESTOR.md"), "utf8").catch(() => undefined)),
   })
   permissions.auto = auto
-  questions.onAnswered = (qs, answers) => auto.log.answer(qs.map((q) => `${q.question} → ${answers[q.question] ?? "(bỏ qua)"}`).join("\n"))
+  questions.onAnswered = (qs, answers) => auto.log.answer(qs.map((q) => `${q.question} → ${answers[q.question] ?? "(skipped)"}`).join("\n"))
   const constraints = createConstraintReader(path.join(home, "memory.db"))
   const subagents = new SubagentManager({
     parent: registry,
@@ -260,7 +277,7 @@ export function initRuntime(opts: {
     waiver: () => runtime.turnWaiver,
   })
   const deskApprovals = new DeskApprovals()
-  const runtime: Runtime = { registry, permissions, questions, mcp, hooks: new HookBus(), memory: new NoopMemory(), constraints, redaction, subagents, desk, deskApprovals, agents: [], home, workspace, files, history, auto }
+  const runtime: Runtime = { registry, permissions, questions, mcp, hooks: new HookBus(), memory: new NoopMemory(), constraints, redaction, subagents, desk, deskApprovals, agents: [], home, workspace, files, history, auto, shellSandbox: opts.sandbox === true }
   registry.register(deskRunTool({ engine: desk, approvals: deskApprovals, playbooks: () => PLAYBOOKS, optIn: () => runtime.deskOptIn, mode: () => permissions.mode }))
   switchMemory(runtime, opts.memory ?? new NoopMemory())
   return runtime

@@ -116,3 +116,31 @@ def test_holdout_judge_never_uses_free_endpoint_and_denies_data_collection():
     r = j.call_judge('x', model=j.JUDGE_MODEL_PAID + ':free', key='k', post=post, deny_data_collection=True)
     assert r['verdict'] == 'correct'
     assert bodies[0]['model'] == j.JUDGE_MODEL_PAID and bodies[0]['provider'] == {'data_collection': 'deny'}
+
+
+def test_default_judge_is_haiku_paid_and_not_the_v47_agent_model(monkeypatch):
+    import importlib
+    import llm_judge as j
+    monkeypatch.delenv('JUDGE_MODEL', raising=False)
+    j = importlib.reload(j)
+    assert j.JUDGE_MODEL == 'anthropic/claude-haiku-5.5'
+    assert not j.JUDGE_MODEL.endswith(':free')
+    config = json.loads((Path(__file__).resolve().parents[1] / 'bench_config_v47.json').read_text())
+    assert j.JUDGE_MODEL.split(':')[0] != config['model'].split(':')[0]
+
+
+def test_judge_spend_cap_stops_before_the_next_call(monkeypatch):
+    import llm_judge as j
+    calls = []
+    def post(body, key, timeout):
+        calls.append(1)
+        return {'model': body['model'], 'choices': [{'message': {'content': '{"verdict":"correct","reason":"ok"}'},
+                                                     'finish_reason': 'stop'}], 'usage': {'cost': 0.6}}
+    monkeypatch.setattr(j, 'JUDGE_MAX_USD', 1.0)
+    monkeypatch.setattr(j, 'SPENT_USD', [0.0])
+    assert j.call_judge('x', model=j.JUDGE_MODEL_PAID, key='k', post=post)['verdict'] == 'correct'
+    assert j.call_judge('x', model=j.JUDGE_MODEL_PAID, key='k', post=post)['verdict'] == 'correct'
+    import pytest
+    with pytest.raises(RuntimeError, match='spend cap'):
+        j.call_judge('x', model=j.JUDGE_MODEL_PAID, key='k', post=post)
+    assert len(calls) == 2

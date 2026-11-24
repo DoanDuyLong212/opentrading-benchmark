@@ -1,15 +1,16 @@
 import { render } from "@opentui/solid"
-import { loadConfig, memoryChoiceOf } from "../core/config"
+import { loadConfig, memoryChoiceOf, shellSandboxOn } from "../core/config"
 import { createMemory, initRuntime } from "../core/runtime"
 import { App } from "./app"
+import { hyperlinkEnvironment } from "./file-links"
 import { requestExit, setState, state } from "./state"
 import { startMode } from "../core/permission/mode"
 import { color } from "./theme"
 
 /** Boot the TUI. Kept out of src/index.tsx so `opentrading mcp …` never needs a JSX runtime. */
-export async function startTui(resume: string | undefined, opts: { yolo?: boolean } = {}) {
+export async function startTui(resume: string | undefined, opts: { yolo?: boolean; sandbox?: boolean } = {}) {
   const config = await loadConfig()
-  const runtime = initRuntime({ skills: () => state.skills, memory: createMemory(memoryChoiceOf(config)), workspaceDirs: config.workspace?.dirs, scratchpad: {}, resultFiles: config.results?.exportDir })
+  const runtime = initRuntime({ skills: () => state.skills, memory: createMemory(memoryChoiceOf(config)), workspaceDirs: config.workspace?.dirs, scratchpad: {}, resultFiles: config.results?.exportDir, sandbox: shellSandboxOn(config, opts.sandbox) })
   if (runtime.workspace.scratch) runtime.workspace.scratch.enabled = config.scratchpad?.enabled !== false
   // ▸▸ auto never accepted (set by hand or in /config) opens as ▸; the app asks first.
   runtime.permissions.setMode(startMode(config.permissions))
@@ -28,5 +29,7 @@ export async function startTui(resume: string | undefined, opts: { yolo?: boolea
     exitOnCtrlC: false,
     targetFps: 30,
     backgroundColor: color.bg,
+    // OPENTRADING_HYPERLINKS=1: file links on where the terminal cannot be detected (#345).
+    environment: hyperlinkEnvironment(),
   })
 }

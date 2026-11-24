@@ -2,7 +2,7 @@ import type { Ablations } from "../ablation"
 import { isCallTag, stripMarkup } from "./markup"
 import { answerFigures, sourceNumbers, tracesTo, ungroundedFigures } from "./figures"
 import type { ModelMessage, StepResult, ToolSet } from "ai"
-import { hasOpenTodos, LEGACY_TODO_PREFIX, TODO_PREFIX, TODO_WRITE, type Todo } from "../tools/todos"
+import { hasOpenTodos, LEGACY_TODO_PREFIX, TODO_PREFIX, TODO_WRITE, VI_TODO_PREFIX, type Todo } from "../tools/todos"
 
 /**
  * When a turn may end. Every harness read (Claude Code, Codex, opencode, Gemini CLI) ends a
@@ -17,12 +17,14 @@ import { hasOpenTodos, LEGACY_TODO_PREFIX, TODO_PREFIX, TODO_WRITE, type Todo } 
 /** Recovery requests a turn may spend at most: the gate never loops. */
 export const MAX_RECOVERIES = 2
 
-export type RecoveryKind = "malformed" | "text-call" | "length" | "empty" | "promise" | "fragment" | "unfetched" | "draft"
+export type RecoveryKind = "malformed" | "text-call" | "length" | "empty" | "promise" | "fragment" | "unfetched" | "draft" | "question-echo" | "nudge-echo"
 
 /** What the last request's final step produced. */
 export interface LastStep {
   /** Text of that step only (an earlier step's preamble is not an answer). */
   text: string
+  /** What the user typed this turn, to spot an answer that only repeats it. */
+  userText?: string
   /** Tools it called. */
   toolNames: string[]
   /** The SDK's unified finish reason (stop, length, content-filter…). */
@@ -45,6 +47,8 @@ export interface LastStep {
   usableData?: boolean
   /** A data tool (MCP, web) returned data in this turn. */
   fetchedData?: boolean
+  /** Data tools that returned an error of their own this turn (loop/failures.ts errored). */
+  errored?: readonly string[]
   /** Figures presented as fetched data with nothing behind them (see unfetchedFigures). */
   unfetched?: number
 }
@@ -61,7 +65,7 @@ const MALFORMED = /^(MALFORMED_FUNCTION_CALL|UNEXPECTED_TOOL_CALL)$/i
 const BLOCKED = /^(SAFETY|RECITATION|BLOCKLIST|PROHIBITED_CONTENT|SPII|IMAGE_SAFETY|LANGUAGE)$/i
 
 export const RESCUE_MALFORMED =
-  "<nhac_nho>\nLời gọi tool vừa rồi sai định dạng nên không chạy. Gọi lại tool đúng tham số, hoặc trả lời người dùng nếu đã đủ dữ liệu.\n</nhac_nho>"
+  "<nhac_nho>\nThe last tool call was malformed, so it did not run. Call the tool again with valid arguments, or answer the user if you have enough data.\n</nhac_nho>"
 /**
  * The step was only a tool call written as text (DeepSeek's DSML in issues #268 and #278, a
  * `<tool_call>` block): markup.ts took it out and nothing ran. Tools stay on. The empty-answer
@@ -69,44 +73,157 @@ export const RESCUE_MALFORMED =
  * meant to run in its head.
  */
 export const RESCUE_TEXT_CALL =
-  "<nhac_nho>\nLời gọi tool vừa rồi được viết thành chữ trong câu trả lời nên chưa chạy. Gọi lại tool đó bằng tool call ngay trong bước này, hoặc trả lời người dùng nếu đã đủ dữ liệu. Không viết thẻ lời gọi tool thành chữ.\n</nhac_nho>"
+  "<nhac_nho>\nThe last tool call was written out as text in the answer, so it did not run. Make that call as a real tool call in this step, or answer the user if you have enough data. Never write tool-call tags as text.\n</nhac_nho>"
 export const RESCUE_LENGTH =
-  "<nhac_nho>\nCâu trả lời bị cắt vì chạm giới hạn độ dài output. Viết tiếp ngay từ chỗ dừng: không xin lỗi, không tóm tắt lại phần đã viết.\n</nhac_nho>"
+  "<nhac_nho>\nThe answer was cut off at the output length limit. Continue right where it stopped: no apology, no recap of what was written.\n</nhac_nho>"
 /** Gemini CLI's nudge after an empty answer: the answer, or a tool when data is missing. */
 export const RESCUE_EMPTY =
-  "<nhac_nho>\nBạn chưa viết câu trả lời nào cho người dùng. Trả lời ngay dựa trên dữ liệu đã có, hoặc gọi tool nếu còn thiếu dữ liệu. Không viết dòng trạng thái việc cần làm.\n</nhac_nho>"
+  "<nhac_nho>\nYou have not written any answer for the user. Answer now from the data you have, or call a tool if data is missing. Do not write a task-status line.\n</nhac_nho>"
 export const RESCUE_PROMISE =
-  "<nhac_nho>\nBước trước kết thúc mà không gọi tool nào. Thiếu dữ liệu thì gọi tool ngay trong bước này; đủ rồi thì trả lời người dùng.\n</nhac_nho>"
+  "<nhac_nho>\nThe last step ended without any tool call. If data is missing, call a tool in this step; if you have enough, answer the user.\n</nhac_nho>"
 export const RESCUE_FRAGMENT =
-  "<nhac_nho>\nTrả lời trực tiếp tin nhắn mới nhất của người dùng ở trên; gọi tool nếu cần dữ liệu.\n</nhac_nho>"
+  "<nhac_nho>\nAnswer the user's latest message above directly; call tools if you need data.\n</nhac_nho>"
 export const RESCUE_UNFETCHED =
-  "<nhac_nho>\nLượt này chưa có tool nào chạy. Gọi tool lấy dữ liệu ngay trong bước này rồi mới viết số liệu; không lấy được thì nói rõ là thiếu dữ liệu và không viết số.\n</nhac_nho>"
+  "<nhac_nho>\nNo tool has run in this turn. Call a tool for the data in this step before writing any figures; if it cannot be fetched, say the data is missing and write no numbers.\n</nhac_nho>"
 export const RESCUE_DRAFT =
-  "<nhac_nho>\nBạn chưa viết câu trả lời cho người dùng. Viết ngay câu trả lời hoàn chỉnh từ kết quả tool ở trên, theo cấu trúc của skill đã nạp; mục nào chưa có dữ liệu thì ghi rõ là thiếu. Không viết dàn ý, kế hoạch hay tên tool.\n</nhac_nho>"
+  "<nhac_nho>\nYou have not written the answer for the user. Write the complete answer now from the tool results above, following the loaded skill's structure; mark any section without data as missing. Do not write an outline, a plan or tool names.\n</nhac_nho>"
 /** A draft written before any data came: fetch first, or answer. */
 export const RESCUE_DRAFT_FETCH =
-  "<nhac_nho>\nBạn chưa viết câu trả lời cho người dùng và lượt này chưa lấy dữ liệu nào. Gọi tool lấy dữ liệu ngay trong bước này rồi trả lời; không viết dàn ý, kế hoạch hay tên tool.\n</nhac_nho>"
+  "<nhac_nho>\nYou have not written the answer for the user and no data was fetched this turn. Call tools for the data in this step, then answer; do not write an outline, a plan or tool names.\n</nhac_nho>"
+/**
+ * The tools-off steps' arithmetic (#327): no `shell` here, so a figure still missing is worked
+ * out in the answer itself, every input written out and the result marked as the model's own
+ * estimate. "tự tính" keeps figures.ts DERIVED and the NOT_FETCHED source check reading it.
+ */
+export const ESTIMATE_RULE = 'If a figure still has to be computed, work it out from exactly the numbers the tools returned: write the formula with every input number, and mark the result "tự tính, ước tính".'
 /** Tools off (it brought 2.5-flash-lite's empty answers back). */
-export const RESCUE_EMPTY_FINAL = "Hãy trả lời câu hỏi của người dùng dựa trên kết quả tool ở trên. Không gọi thêm tool. Số cần tính mà chưa tính được thì tự tính từ đúng các số tool đã trả về và ghi rõ công thức cùng từng số đầu vào."
+export const RESCUE_EMPTY_FINAL = `Answer the user's question from the tool results above. Call no more tools. ${ESTIMATE_RULE}`
 
-/** Data sources failed this turn and none brought data (a clock or file tool may still have run). */
-export const sourcesFailed = (last: Pick<LastStep, "gaps" | "fetchedData">) => !!last.gaps?.length && last.fetchedData === false
+/** What a turn that fetched no data is missing: failed sources, and data tools that returned errors. */
+export interface NoData {
+  gaps: string[]
+  errored: string[]
+}
+
+/**
+ * The data tools a turn called with nothing to show for it; undefined when some data came back.
+ * Failed sources count when no data tool brought data (a clock or file tool may still have run),
+ * as before. Tools that returned errors of their own count only when nothing else gave anything to
+ * answer from (#414: with only MCP errors the rescue asked for an answer "from the tool results
+ * above", the model had nothing to write and echoed the instruction).
+ */
+export function noDataFrom(last: Pick<LastStep, "gaps" | "errored" | "fetchedData" | "usableData">): NoData | undefined {
+  if (last.fetchedData !== false) return undefined
+  const gaps = [...(last.gaps ?? [])]
+  const errored = last.usableData ? [] : (last.errored ?? []).filter((name) => !gaps.includes(name))
+  return gaps.length > 0 || errored.length > 0 ? { gaps, errored } : undefined
+}
 
 /** How the gap rescue starts: the loop leaves out the failure reminder beside it (same gaps). */
-export const GAPS_RESCUE_START = "<nhac_nho>\nCác nguồn sau chưa trả dữ liệu trong lượt này:"
+export const GAPS_RESCUE_START = "<nhac_nho>\nThese sources returned no data this turn:"
 
 /**
  * An empty answer when every data source of the turn failed: answer about what is missing. 13/11
  * eval m6: after this rescue the model wrote "Mình đang thực hiện các bước khắc phục để kết nối
  * lại với nguồn dữ liệu mới", work nothing in the harness does, hence the clause against it.
+ *
+ * Tools that returned errors of their own (#414) are not called an outage: the error may come from
+ * the call's arguments, so the answer quotes what the tool said, and with tools on (`retry`) a
+ * corrected call is allowed.
  */
-export function rescueGaps(gaps: readonly string[]): string {
-  return `${GAPS_RESCUE_START} ${gaps.join(", ")}. Viết ngay câu trả lời cho người dùng: nói rõ phần nào chưa lấy được và vì sao (nguồn lỗi, quá thời gian), dùng phần dữ liệu khác nếu đã có, không tự điền số cho phần thiếu, gợi ý thử lại sau. Không viết là bạn đang khắc phục hay kết nối lại nguồn. Không viết dòng nhắc việc hay thẻ hệ thống.\n</nhac_nho>`
+export function rescueGaps(gaps: readonly string[], errored: readonly string[] = [], { retry = false } = {}): string {
+  const names = [...new Set([...gaps, ...errored])].join(", ")
+  if (errored.length === 0)
+    return `${GAPS_RESCUE_START} ${names}. Write the answer for the user now: say which parts could not be fetched and why (source error, timeout), use the other data you have, never fill in numbers for the missing parts, suggest trying again later. Do not say you are fixing or reconnecting the source. Do not write reminder lines or system tags.\n</nhac_nho>`
+  const fix = retry ? " If an error came from your call's arguments, call the tool again with corrected arguments instead." : ""
+  return `${GAPS_RESCUE_START} ${names}.${fix} Write the answer for the user now, in the user's language: say which parts could not be fetched and what the tool's error said, use the other data you have, never fill in numbers for the missing parts. Do not call a source down unless its error says so. Do not say you are fixing or reconnecting the source. Do not write reminder lines or system tags.\n</nhac_nho>`
 }
+
+/** The answer only restated a harness instruction (#414), in a turn with something to answer from. */
+export const RESCUE_NUDGE_ECHO =
+  "<nhac_nho>\nYour last reply repeated an instruction instead of answering. Write the answer for the user now, in the user's language, from the tool results above; say which parts are missing and write no figures for them. Do not write instructions.\n</nhac_nho>"
 
 /** Last empty-answer rescue: data is in the turn, write the final answer now. */
 export const RESCUE_ANSWER_NOW =
-  "Viết NGAY câu trả lời cuối cùng cho người dùng, đúng định dạng được yêu cầu, chỉ dùng các số tool đã trả về ở trên (số chưa tính được thì tự tính và ghi công thức cùng từng số đầu vào). Không suy luận dài, không gọi tool, không trả lời rỗng."
+  `Write the final answer for the user NOW, in the requested format, using only the numbers the tools returned above. ${ESTIMATE_RULE} No long reasoning, no tool calls, no empty answer.`
+
+/** Asking the user something: "bạn muốn…", "anh/chị cần…", a choice ("… hay …"), "do you mean". */
+const ASKS_USER = /(?<![\p{L}\p{N}])((bạn|anh|chị|quý khách)\s+(\p{L}+\s+)?(muốn|cần|định|đang|hỏi|nói|ý|quan tâm)|hay(?!\p{L})|hoặc|(do|did|would|should)\s+(you|i))(?![\p{L}\p{N}])/iu
+/** Share of an echoed sentence's words that must come from the question. */
+const ECHO_OVERLAP = 0.7
+
+/**
+ * The whole answer is the user's question again (#415: gemini-2.5-flash-lite, after a web_fetch).
+ * Only bare questions count. One that adds a figure the question lacks, offers a choice or speaks
+ * to the user is a clarification, and the user must see it.
+ */
+function echoesQuestion(answer: string, question: string): boolean {
+  const text = answer.trim()
+  if (!text.endsWith("?") || /[.!。！？]/u.test(text) || ASKS_USER.test(text.normalize("NFC"))) return false
+  const words = (value: string) => value.normalize("NFC").toLocaleLowerCase().match(/[\p{L}\p{N}]+/gu) ?? []
+  const original = new Set(words(question.replace(/https?:\/\/\S+/g, "")))
+  const parts = text.split("?").map(words).filter((part) => part.length > 0)
+  return original.size >= 4 && parts.length > 0 && parts.every((part) => {
+    const distinct = new Set(part)
+    if ([...distinct].some((word) => /\p{N}/u.test(word) && !original.has(word))) return false
+    const overlap = [...distinct].filter((word) => original.has(word)).length
+    return overlap >= 4 && overlap / distinct.size >= ECHO_OVERLAP
+  })
+}
+
+/**
+ * Verbs of reporting an instruction starts with. Verbs that also start advice to the user ("use",
+ * "call", "provide", "keep") are left out. Most are nouns too ("State Bank…", "Report date…",
+ * "Answer:"), hence the word an order goes on with (REPORT_TO).
+ */
+const REPORT = "state|say|report|write|answer|mention|reply|respond|explain|indicate|tell|inform"
+const REPORT_TO = "clearly|plainly|explicitly|briefly|which|what|that|whether|the|an?|this|no|now|only|any|all|each|it|in|from|with"
+/** What an instruction forbids: filling in, making up. "Do not buy…" is advice. */
+const FORBID = "write|fill|invent|guess|estimate|make up|fabricate|repeat|include|mention|state|report|claim|call|use"
+/** A sentence in the imperative, maybe after a condition: "If no data is available…, state…". */
+const IMPERATIVE = new RegExp(String.raw`^((if|when|where|for)\s[^.;:!?]{1,160}?,\s*(then\s+)?)?((do not|don['’]t|never)\s+(${FORBID})|(clearly\s+)?(${REPORT})\s+(${REPORT_TO}))(?![\p{L}\p{N}])`, "iu")
+/** What harness instructions are about: "data" or "results" alone also fit advice to the user. */
+const HARNESS_TOPIC = /(?<![\p{L}\p{N}])(no data|missing|unavailable|not available|tools?|the user|the answer)(?![\p{L}\p{N}])/iu
+/** The model speaks for itself: an answer, not an order to it. */
+const FIRST_PERSON = /(?<![\p{L}\p{N}])(I|me|my|we|our)(?![\p{L}\p{N}])/u
+/** Above this, the text is an answer of its own. */
+export const INSTRUCTION_MAX_CHARS = 400
+
+const sentencesOf = (text: string) =>
+  text
+    .split(/(?<=[.!?])\s+|\n+/)
+    // A list marker ("1.", "-") left alone by the split is no sentence.
+    .map((s) => s.replace(/^[\s>*_•-]+|^\d+[.)]\s*/g, "").trim())
+    .filter(Boolean)
+
+/**
+ * The whole answer reads as an instruction to the model about a missing answer, not as an answer
+ * (#414: "If no data is available for any part, state clearly what is missing."): every sentence is
+ * an English order to report. Quoted text is left out (an instruction may quote the sentence to
+ * write). Any other sentence, a figure or a first person makes it an answer.
+ */
+export function echoesInstruction(text: string): boolean {
+  const body = stripEchoes(invisible(text)).normalize("NFC").trim().replace(/^["“]([^"“”]*)["”]$/, "$1")
+  if (!body || body.length > INSTRUCTION_MAX_CHARS) return false
+  const unquoted = body.replace(/"[^"\n]*"|“[^”\n]*”/g, "")
+  if (!HARNESS_TOPIC.test(unquoted) || FIRST_PERSON.test(unquoted) || answerFigures(unquoted).length > 0) return false
+  const sentences = sentencesOf(unquoted)
+  return sentences.length > 0 && sentences.every((sentence) => IMPERATIVE.test(sentence))
+}
+
+const words = (text: string) => (text.toLowerCase().match(/[\p{L}\p{N}]+/gu) ?? []).join(" ")
+/** Every sentence the rescues are made of. */
+const RESCUE_SENTENCES =
+  [RESCUE_EMPTY, RESCUE_PROMISE, RESCUE_FRAGMENT, RESCUE_UNFETCHED, RESCUE_DRAFT, RESCUE_DRAFT_FETCH, RESCUE_EMPTY_FINAL, RESCUE_NUDGE_ECHO, RESCUE_ANSWER_NOW, RESCUE_MALFORMED, RESCUE_TEXT_CALL, rescueGaps([]), rescueGaps([], ["x"], { retry: true })]
+    .flatMap((nudge) => sentencesOf(nudge.replace(/<\/?nhac_nho>/g, "")))
+    .map(words)
+
+/** The whole answer is sentences of the harness's own rescues, word for word, maybe cut short (#414). */
+export function copiesRescue(text: string): boolean {
+  const body = stripEchoes(invisible(text)).normalize("NFC").replace(/^\s*These sources returned no data this turn:[^.\n]*\./, "")
+  const sentences = sentencesOf(body).map(words).filter(Boolean)
+  return sentences.length > 0 && sentences.every((sentence) => sentence.split(" ").length >= 4 && RESCUE_SENTENCES.some((rescue) => `${rescue} `.startsWith(`${sentence} `)))
+}
 
 export function judgeStop(last: LastStep, done: readonly RecoveryKind[], disabled?: Ablations): Verdict {
   // Still calling tools: the step cap ended the run, and its summary step has its own rules.
@@ -133,9 +250,12 @@ export function judgeStop(last: LastStep, done: readonly RecoveryKind[], disable
     // Every source failed (13/11 eval m6, m3): "answer from the tool results" left the model nothing
     // to write, so it answered empty again. Ask for the answer about what is missing instead, tools
     // off first (the calls were already retried), then on (it may try another source).
-    const failedOnly = sourcesFailed(last)
-    if (failedOnly && left > 0 && !disabled?.has("gate-empty"))
-      return { action: "continue", kind: "empty", nudge: rescueGaps(last.gaps!), toolChoice: used("empty") === 0 ? "none" : "auto" }
+    const failed = noDataFrom(last)
+    const failedOnly = !!failed
+    if (failed && left > 0 && !disabled?.has("gate-empty")) {
+      const retry = used("empty") > 0
+      return { action: "continue", kind: "empty", nudge: rescueGaps(failed.gaps, failed.errored, { retry }), toolChoice: retry ? "auto" : "none" }
+    }
     // Pilot or15 fin-l5-profile-01: after a tool loop both rescues came back reasoning-only, the turn ended with
     // fetched data and no answer. One last, answer-only rescue with tools off when the turn has data.
     const hasData = !failedOnly && (last.usableData ?? last.dataInTurn)
@@ -155,6 +275,22 @@ export function judgeStop(last: LastStep, done: readonly RecoveryKind[], disable
   // The step ended on its own: no tool, or only a todo_write beside the answer. That one finishes
   // as "tool-calls" (the SDK's name for Gemini's STOP with a function call), not "stop".
   const finished = last.toolNames.every((name) => name === TODO_WRITE) && ["stop", "tool-calls"].includes(last.finish ?? "stop")
+  if (finished && !continuing && last.fetchedData && last.userText && !disabled?.has("gate-question-echo") && echoesQuestion(last.text, last.userText)) {
+    if (left > 0 && used("question-echo") === 0) return { action: "continue", kind: "question-echo", nudge: RESCUE_EMPTY_FINAL, toolChoice: "none" }
+    return { action: "give-up", kind: "question-echo" }
+  }
+  // Restated a harness instruction instead of answering (#414): once, tools off. Judged only after a
+  // rescue. A copy of a rescue is never an answer; a paraphrase counts only when every data call of
+  // the turn failed: with data there, or no data tool called, an English order may be the answer.
+  const unserved = last.fetchedData === false && ((last.gaps?.length ?? 0) > 0 || (last.errored?.length ?? 0) > 0)
+  if (finished && !continuing && done.length > 0 && !disabled?.has("gate-nudge-echo") && (copiesRescue(last.text) || (unserved && echoesInstruction(last.text)))) {
+    if (left <= 0 || used("nudge-echo") > 0) return { action: "give-up", kind: "nudge-echo" }
+    // No tool ran: the answer may need one.
+    if (!last.toolsInTurn) return { action: "continue", kind: "nudge-echo", nudge: RESCUE_EMPTY, toolChoice: "auto" }
+    // The nudge is not stored, so with nothing fetched it names what failed again.
+    const failed = noDataFrom(last)
+    return { action: "continue", kind: "nudge-echo", nudge: failed ? rescueGaps(failed.gaps, failed.errored) : RESCUE_NUDGE_ECHO, toolChoice: "none" }
+  }
   // Wrote its own working notes (an outline, "chưa lấy… sẽ", a todo_write to call) as the answer,
   // once. With data fetched, tools off: write the answer from it. Without, it may fetch first.
   if (finished && !continuing && isDraft(last.text) && once("draft")) {
@@ -182,7 +318,7 @@ export function judgeStop(last: LastStep, done: readonly RecoveryKind[], disable
  * prefix, the TUI's one-line label, "(Đã hoàn thành các việc cần làm)".
  */
 const ECHO_LINE = new RegExp(
-  `^(${escape(TODO_PREFIX)}|${escape(LEGACY_TODO_PREFIX)}|Cập nhật việc cần làm|Đã hoàn thành (hết |tất cả |toàn bộ )?(các )?việc cần làm|Đã đóng (danh sách )?việc cần làm)`,
+  `^(${escape(TODO_PREFIX)}|${escape(VI_TODO_PREFIX)}|${escape(LEGACY_TODO_PREFIX)}|Cập nhật việc cần làm|Đã hoàn thành (hết |tất cả |toàn bộ )?(các )?việc cần làm|Đã đóng (danh sách )?việc cần làm)`,
   "i",
 )
 /** A rendered todo item (renderTodos): only dropped next to an echoed status line. */

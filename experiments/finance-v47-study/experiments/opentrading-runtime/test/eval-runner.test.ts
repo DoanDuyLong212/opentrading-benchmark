@@ -22,6 +22,7 @@ const { TRACE_VERSION } = await import("../scripts/eval/trace")
 const { readTrace } = await import("../scripts/eval/read-trace")
 const { shellMetrics } = await import("../scripts/eval/shell-metrics")
 const { ledgerFile, RequestLedger, spentToday } = await import("../scripts/eval/ledger")
+const { requestCap } = await import("../scripts/eval/request-cap")
 type TraceEvent = import("../scripts/eval/trace").TraceEvent
 
 const CATALOG = {
@@ -34,7 +35,7 @@ const CATALOG = {
   },
 }
 
-type Body = { stream?: boolean; messages: { role: string; content?: unknown }[]; tools?: { function: { name: string } }[] }
+type Body = { stream?: boolean; messages: { role: string; content?: unknown }[]; tools?: { function: { name: string } }[]; tool_choice?: unknown }
 const bodies: Body[] = []
 /** Streamed requests fail with this status instead of answering. */
 let failStatus: number | undefined
@@ -46,6 +47,7 @@ let hang = false
 let failFirst = 0
 /** Shell commands the model sends, one per request, before it answers. */
 let commands: string[] | undefined
+let failedSourceCalls = false
 
 const chunk = chunkFor("tooly")
 
@@ -62,6 +64,14 @@ globalThis.fetch = (async (input: RequestInfo | URL, init?: RequestInit) => {
   if (failFirst > 0) {
     failFirst--
     return Response.json({ error: { message: "rate limited" } }, { status: 429 })
+  }
+  if (failedSourceCalls) {
+    const calls = body.messages.filter((m) => m.role === "tool").length
+    if (body.tool_choice === "none" || bodies.length > 8) return sse([chunk({ role: "assistant", content: "Không lấy được dữ liệu." }), chunk({}, "stop")])
+    return sse([
+      chunk({ role: "assistant", tool_calls: [{ index: 0, id: `source_${calls}`, type: "function", function: { name: "mcp__data__source", arguments: JSON.stringify({ attempt: calls }) } }] }),
+      chunk({}, "tool_calls"),
+    ])
   }
   if (commands) {
     const calls = body.messages.filter((m) => m.role === "tool").length
@@ -96,6 +106,7 @@ beforeEach(() => {
   failFirst = 0
   hang = false
   commands = undefined
+  failedSourceCalls = false
 })
 
 const LONG = "x".repeat(40_000)
@@ -121,6 +132,42 @@ async function run(questions: ReturnType<typeof parseQuestions>, repeat = 1, led
 
 const question = (id: string, group: "A" | "F" = "A") => ({ id, group, question: "Giá FPT?", now: "2026-03-10T10:00:00+07:00" })
 const of = <T extends TraceEvent["type"]>(events: TraceEvent[], type: T) => events.filter((e): e is Extract<TraceEvent, { type: T }> => e.type === type)
+
+test("eval trace records the configured nudge and stop on the real agent loop", async () => {
+  failedSourceCalls = true
+  const runtime = initRuntime({ home, cwd: home, skills: () => [] })
+  runtime.registry.register({ name: "mcp__data__source", description: "source", input: z.object({ attempt: z.number() }), readOnly: true, execute: async () => { throw new Error('MCP server "data" has a temporary error (HTTP 503)') } })
+  const events: TraceEvent[] = []
+  const target = await resolveTarget({ provider: "groq", model: "tooly" })
+  const cap = requestCap(12)
+  try {
+    await runEval({ runtime, skills: [], target, questions: parseQuestions(JSON.stringify([question("thresholds")])), write: (e) => events.push(e), version: "0.0.0", timeoutMs: 5000, failureThresholds: { nudge: 2, stop: 4 }, settings: { failure_thresholds: { nudge: 2, stop: 4, breaker: 3 } } })
+  } finally {
+    cap.stop()
+  }
+  expect(of(events, "run")[0]?.settings?.failure_thresholds).toEqual({ nudge: 2, stop: 4, breaker: 3 })
+  expect(of(events, "notice").flatMap((event) => event.failure_policy ? [event.failure_policy] : [])).toEqual([{ action: "nudge", streak: 2, step: 2 }, { action: "stop", streak: 4, step: 4 }])
+  expect(of(events, "tool_result")).toHaveLength(4)
+  expect(of(events, "answer")[0]?.data_gaps).toEqual(["source"])
+  expect(readTrace(events.map((event) => JSON.stringify(event)).join("\n")).attempts).toHaveLength(1)
+})
+
+test("the HTTP cap is recorded when the next request is refused", async () => {
+  const runtime = initRuntime({ home, cwd: home, skills: () => [] })
+  runtime.registry.register({ name: "fake_quote", description: "quote", input: z.object({}), readOnly: true, execute: async () => "42" })
+  const events: TraceEvent[] = []
+  const target = await resolveTarget({ provider: "groq", model: "tooly" })
+  const cap = requestCap(1)
+  try {
+    await runEval({ runtime, skills: [], target, questions: parseQuestions(JSON.stringify([question("cap"), question("later")])), write: (e) => events.push(e), version: "0.0.0", timeoutMs: 5000, httpCap: { get capped() { return cap.capped }, get refused() { return cap.refused }, get sent() { return cap.sent }, cap: 1 } })
+    expect(cap.sent).toBe(1)
+    expect(cap.refused).toBe(true)
+    expect(of(events, "answer")[0]?.abort).toBe("cap")
+    expect(of(events, "stopped")).toEqual([{ type: "stopped", reason: "request-cap", spent: 1, cap: 1 }])
+  } finally {
+    cap.stop()
+  }
+})
 
 test("the trace holds what the model saw and what the tool really returned", async () => {
   const { events } = await run([question("q1")])
@@ -284,10 +331,10 @@ test("--memory notebook: each question gets an empty notebook (guide in the prom
     const system = streamed.map((b) => JSON.stringify(b.messages.find((m) => m.role === "system")?.content ?? ""))
     const offered = streamed.map((b) => (b.tools ?? []).some((t) => t.function.name === "memory_read"))
     if (memory === "notebook") {
-      expect(system.every((s) => s.includes("Sổ ghi nhớ là ghi chép"))).toBe(true)
+      expect(system.every((s) => s.includes("The notebook (sổ ghi nhớ) holds notes"))).toBe(true)
       expect(offered.some(Boolean)).toBe(true)
     } else {
-      expect(system.some((s) => s.includes("Sổ ghi nhớ là ghi chép"))).toBe(false)
+      expect(system.some((s) => s.includes("The notebook (sổ ghi nhớ) holds notes"))).toBe(false)
       expect(offered.some(Boolean)).toBe(false)
     }
     expect(opened).toEqual([memory, memory])
@@ -308,10 +355,10 @@ test("a rule switched off stays off, notice included, and the rest still run", a
 test("the nudge after tool results can go, alone or with only its todo part", async () => {
   const sent = () => JSON.stringify(bodies.at(-1)!.messages)
   await run([question("q1")])
-  expect(sent()).toContain("Nếu còn cần dữ liệu, gọi cùng lúc")
+  expect(sent()).toContain("If you still need data, call every independent tool at once")
   bodies.length = 0
   await run([question("q1")], 1, undefined, parseAblations(["tool-nudge"]))
-  expect(sent()).not.toContain("Nếu còn cần dữ liệu, gọi cùng lúc")
+  expect(sent()).not.toContain("If you still need data, call every independent tool at once")
 })
 
 test("setup ablations take their tools away and reach the config", async () => {
@@ -358,6 +405,22 @@ test("prepareHome copies connections, not the user's profile, and pins the model
   expect(await readFile(path.join(to, "auth.json"), "utf8")).toBe("{}")
   expect(await Bun.file(path.join(to, "INVESTOR.md")).exists()).toBe(false)
   expect(JSON.parse(await readFile(path.join(to, "config.json"), "utf8"))).toEqual({ provider: "groq", model: "tooly" })
+  await rm(from, { recursive: true, force: true })
+  await rm(to, { recursive: true, force: true })
+})
+
+test("#338: --effort is written into the run's own config and --investor copies a fixture with its sha256", async () => {
+  const from = await mkdtemp(path.join(os.tmpdir(), "ot-eval-from-"))
+  const to = await mkdtemp(path.join(os.tmpdir(), "ot-eval-to-"))
+  const fixture = path.join(from, "investor-fixture.md")
+  await writeFile(path.join(from, "INVESTOR.md"), "hồ sơ riêng của người chạy")
+  await writeFile(fixture, "Hồ sơ cố định: dài hạn, ngân hàng")
+  const { investorSha256 } = await prepareHome(from, to, { provider: "groq", model: "tooly" }, undefined, undefined, { effort: "high", investor: fixture })
+  expect(JSON.parse(await readFile(path.join(to, "config.json"), "utf8"))).toEqual({ provider: "groq", model: "tooly", effort: "high" })
+  expect(await readFile(path.join(to, "INVESTOR.md"), "utf8")).toBe("Hồ sơ cố định: dài hạn, ngân hàng")
+  expect(investorSha256).toBe(new Bun.CryptoHasher("sha256").update("Hồ sơ cố định: dài hạn, ngân hàng").digest("hex"))
+  // Without the flags: no effort, no profile, whatever the user's own config says.
+  expect(await prepareHome(from, to, { provider: "groq", model: "tooly" })).toEqual({})
   await rm(from, { recursive: true, force: true })
   await rm(to, { recursive: true, force: true })
 })

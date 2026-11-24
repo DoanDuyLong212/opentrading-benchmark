@@ -7,6 +7,8 @@ import path from "node:path"
 import type { ModelMessage } from "ai"
 import { samePathKey } from "../fs/path-safety"
 import { dataDir } from "../paths"
+import { loadConfig } from "../config"
+import { imagesDirOf, restoreImages, SESSION_IMAGES_MAX_BYTES, storedBytes, userImages, writeImages, type ImageRef, type PendingImage } from "./images"
 import type { ChartData } from "../tools/chart/data"
 import { memoryLines } from "../memory/notebook/history-blocks"
 import type { RedactionCheck } from "../memory/redaction/check"
@@ -36,7 +38,13 @@ export type SessionEntry =
       promptVersion?: string
       skills?: { name: string; version?: string }[]
     }
-  | { type: "message"; ts: string; message: ModelMessage }
+  | {
+      type: "message"
+      ts: string
+      /** User images are a text placeholder here; `images` names the stored copies (images.ts, #344). */
+      message: ModelMessage
+      images?: ImageRef[]
+    }
   | {
       type: "turn_end"
       ts: string
@@ -59,7 +67,7 @@ export type SessionEntry =
    * The history was compacted: `messages` replaces everything before it for the model. The
    * earlier `message` entries stay in the file, so the transcript can still show them.
    */
-  | { type: "compact"; ts: string; trigger: "auto" | "manual"; before: number; after: number; messages: ModelMessage[] }
+  | { type: "compact"; ts: string; trigger: "auto" | "manual"; before: number; after: number; messages: ModelMessage[]; images?: ImageRef[] }
   /**
    * A chart drawn for a tool call: the model only got a summary (and a `from_call` chart's
    * input holds just a ref), so the picture is kept here for the transcript on resume.
@@ -221,9 +229,12 @@ export interface TurnInfo {
  * One write waiting in a session's queue: a turn or a compaction, its lines built when it was
  * queued. A turn keeps its first user text (the fallback title), not its messages.
  */
+/** A line whose user images are written with it, and get their refs once on disk (images.ts). */
+type LineImages = { line: SessionEntry & { images?: ImageRef[] }; pending: PendingImage[] }
+
 type Part =
-  | { kind: "turn"; turn: number; ts: string; firstText: string; info: SessionInfo & TurnInfo; lines: SessionEntry[] }
-  | { kind: "compact"; lines: SessionEntry[] }
+  | { kind: "turn"; turn: number; ts: string; firstText: string; info: SessionInfo & TurnInfo; lines: SessionEntry[]; images?: LineImages[] }
+  | { kind: "compact"; lines: SessionEntry[]; images?: LineImages[] }
   | { kind: "redact"; lines: SessionEntry[] }
   | { kind: "card"; lines: SessionEntry[] }
 
@@ -317,6 +328,8 @@ export class Session {
   private indexInfo: { updatedAt: string; provider?: string; model?: string; cwd: string } | undefined
   private stopped = false
   private lastError: Error | undefined
+  /** Bytes in this session's image folder; read from disk at the first image written. */
+  private imageBytes: number | undefined
 
   private constructor(
     readonly id: string,
@@ -415,8 +428,9 @@ export class Session {
     if (!this.file && this.queuedTurns === 0) return Promise.resolve(this.receipt([]))
     const ts = new Date().toISOString()
     const line: SessionEntry = { type: "compact", ts, ...entry, messages: stripImages(entry.messages) }
+    const pending = userImages(entry.messages)
     // A stopped session never writes again: count the compaction, keep none of its content.
-    this.queue.push({ kind: "compact", lines: this.stopped ? [] : [line] })
+    this.queue.push({ kind: "compact", lines: this.stopped ? [] : [line], images: pending.length > 0 ? [{ line, pending }] : undefined })
     return this.drain()
   }
 
@@ -441,8 +455,15 @@ export class Session {
   appendTurn(messages: ModelMessage[], info: SessionInfo & TurnInfo): Promise<SaveReceipt> {
     const ts = new Date().toISOString()
     const lines: SessionEntry[] = []
-    // Screenshots would bloat the file by megabytes per turn; keep a text placeholder.
-    for (const message of stripImages(messages)) lines.push({ type: "message", ts, message })
+    const images: LineImages[] = []
+    // Screenshots would bloat the file by megabytes per turn: a text placeholder, and the image in its own file.
+    const stripped = stripImages(messages)
+    stripped.forEach((message, i) => {
+      const line: SessionEntry = { type: "message", ts, message }
+      lines.push(line)
+      const pending = userImages([messages[i]!])
+      if (pending.length > 0) images.push({ line, pending })
+    })
     for (const chart of this.pendingCharts.splice(0)) lines.push({ type: "chart", ts, ...chart })
     for (const text of this.pendingHarness.splice(0)) lines.push({ type: "harness", ts, text })
     for (const card of this.pendingCards.splice(0)) lines.push({ type: "card", ts, ...card, state: "pending" })
@@ -462,7 +483,7 @@ export class Session {
     })
     const firstText = messages.map(userText).find((t) => t.trim()) ?? ""
     // A stopped session never writes again: keep the turn's number for the receipt, not its content.
-    this.queue.push({ kind: "turn", turn, ts, firstText, info, lines: this.stopped ? [] : lines })
+    this.queue.push({ kind: "turn", turn, ts, firstText, info, lines: this.stopped ? [] : lines, images: images.length > 0 && !this.stopped ? images : undefined })
     return this.drain()
   }
 
@@ -493,70 +514,102 @@ export class Session {
     }
   }
 
+  /** Writes the user images of a part next to the session and gives each line the refs of what is stored. */
+  private async storeImages(file: string, images: LineImages[]) {
+    if ((await loadConfig()).sessions?.images === false) return
+    const dir = path.join(sessionsDir(), imagesDirOf(file))
+    this.imageBytes ??= await storedBytes(dir)
+    for (const { line, pending } of images) {
+      const { refs, written } = await writeImages(dir, pending, SESSION_IMAGES_MAX_BYTES - this.imageBytes)
+      this.imageBytes += written
+      if (refs.length > 0) line.images = refs
+    }
+  }
+
   private async write(): Promise<SaveReceipt> {
     const saved: number[] = []
-    let error: Error | undefined
-    // Once a failed write could not be cut back, appending more would build on a partial line.
-    while (!this.stopped && this.queue.length > 0) {
-      const part = this.queue[0]!
-      const lines = [...part.lines]
-      const file = this.file ?? path.join(this.createdAt.slice(0, 4), this.createdAt.slice(5, 7), `${this.id}.jsonl`)
-      // The meta line goes with the first write that succeeds, so the file always starts with it.
-      if (!this.file && part.kind === "turn") {
-        const { info } = part
-        lines.unshift({
-          type: "meta",
-          format: SESSION_FORMAT,
+    let partError: Error | undefined
+    let indexError: Error | undefined
+    // A loop: a turn, compaction, redact or card line queued while the index line is being written
+    // is written here too. Nothing failed for it, so the receipt must not count it as unsaved, and
+    // flush() must not resolve (session switched, file read back) before it is on disk.
+    do {
+      // Once a failed write could not be cut back, appending more would build on a partial line.
+      while (!this.stopped && this.queue.length > 0) {
+        const part = this.queue[0]!
+        const lines = [...part.lines]
+        const file = this.file ?? path.join(this.createdAt.slice(0, 4), this.createdAt.slice(5, 7), `${this.id}.jsonl`)
+        // The meta line goes with the first write that succeeds, so the file always starts with it.
+        if (!this.file && part.kind === "turn") {
+          const { info } = part
+          lines.unshift({
+            type: "meta",
+            format: SESSION_FORMAT,
+            id: this.id,
+            createdAt: this.createdAt,
+            cwd: info.cwd,
+            promptVersion: info.promptVersion,
+            skills: info.skills,
+          })
+        }
+        // The images first, so a line names only what is on disk. Failing to store one never fails the turn.
+        if ((part.kind === "turn" || part.kind === "compact") && part.images) {
+          await this.storeImages(file, part.images).catch(() => {})
+          part.images = undefined
+        }
+        try {
+          await appendLines(path.join(sessionsDir(), file), lines.map((l) => JSON.stringify(l)).join("\n") + "\n", true)
+        } catch (caught) {
+          if (caught instanceof StoppedError) {
+            this.stopped = true
+            partError = caught.cause
+            for (const waiting of this.queue) waiting.lines = []
+          } else partError = asError(caught)
+          break
+        }
+        this.file = file
+        this.queue.shift()
+        if (part.kind === "turn") {
+          this.turns++
+          saved.push(part.turn)
+          if (!this.title) this.title = part.firstText.replace(/\s+/g, " ").trim().slice(0, 60) || "(không tiêu đề)"
+          const { provider, model, cwd } = part.info
+          this.indexInfo = { updatedAt: part.ts, provider, model, cwd }
+          this.indexWanted++
+        }
+      }
+      // Only the latest attempt counts: the index line is written again after each round of parts.
+      indexError = undefined
+      // Written even when a later part failed, so the turns already on disk show in /sessions.
+      // A loop: a title that arrives while a line is being written (setTitle from the first turn's
+      // fire-and-forget retitle) leaves the index pending after a successful write. Writing again
+      // here, with the new title, keeps this receipt from reporting an index failure that never
+      // happened (#396). It stops at the first failed write; that one is retried on the next write.
+      while (this.indexPending && this.file && this.indexInfo) {
+        const covers = this.indexWanted
+        const summary: SessionSummary = {
           id: this.id,
+          file: this.file.split(path.sep).join("/"),
+          title: this.title,
           createdAt: this.createdAt,
-          cwd: info.cwd,
-          promptVersion: info.promptVersion,
-          skills: info.skills,
-        })
+          ...this.indexInfo,
+          turns: this.turns,
+        }
+        try {
+          // Not cut back on failure: a duplicate index line is harmless (the last one per id wins).
+          // Limit: two windows appending to index.jsonl at once, A may read the last byte while B
+          // is mid-line and put a newline into B's line. That line heals on B's next turn, since
+          // every turn writes its index line again.
+          await appendLines(indexFile(), JSON.stringify(summary) + "\n", false)
+          this.indexWritten = covers
+        } catch (caught) {
+          indexError = asError(caught)
+          break
+        }
       }
-      try {
-        await appendLines(path.join(sessionsDir(), file), lines.map((l) => JSON.stringify(l)).join("\n") + "\n", true)
-      } catch (caught) {
-        if (caught instanceof StoppedError) {
-          this.stopped = true
-          error = caught.cause
-          for (const waiting of this.queue) waiting.lines = []
-        } else error = asError(caught)
-        break
-      }
-      this.file = file
-      this.queue.shift()
-      if (part.kind === "turn") {
-        this.turns++
-        saved.push(part.turn)
-        if (!this.title) this.title = part.firstText.replace(/\s+/g, " ").trim().slice(0, 60) || "(không tiêu đề)"
-        const { provider, model, cwd } = part.info
-        this.indexInfo = { updatedAt: part.ts, provider, model, cwd }
-        this.indexWanted++
-      }
-    }
-    // Written even when a later part failed, so the turns already on disk show in /sessions.
-    if (this.indexPending && this.file && this.indexInfo) {
-      const covers = this.indexWanted
-      const summary: SessionSummary = {
-        id: this.id,
-        file: this.file.split(path.sep).join("/"),
-        title: this.title,
-        createdAt: this.createdAt,
-        ...this.indexInfo,
-        turns: this.turns,
-      }
-      try {
-        // Not cut back on failure: a duplicate index line is harmless (the last one per id wins).
-        // Limit: two windows appending to index.jsonl at once, A may read the last byte while B
-        // is mid-line and put a newline into B's line. That line heals on B's next turn, since
-        // every turn writes its index line again.
-        await appendLines(indexFile(), JSON.stringify(summary) + "\n", false)
-        this.indexWritten = covers
-      } catch (caught) {
-        error ??= asError(caught)
-      }
-    }
+      // A part that could not be written blocks those behind it until the next write.
+    } while (!partError && !this.stopped && this.queue.length > 0)
+    const error = partError ?? indexError
     if (error) this.lastError = error
     // Nothing left failing: an old error must not show up in a later receipt.
     else if (!this.stopped && !this.indexWaiting && this.queue.length === 0) this.lastError = undefined
@@ -633,6 +686,11 @@ export interface LoadedSession {
    * before the card (the card follows its turn's answer).
    */
   cards: LoadedCard[]
+  /**
+   * The "! N nguồn lỗi" line of each turn that recorded data gaps, in file order. `at`: how many `display`
+   * messages come before it (it follows its turn's answer, before that turn's card).
+   */
+  gaps: LoadedGaps[]
   redaction: {
     /** Redact lines in the file that were applied. */
     fromFile: number
@@ -647,6 +705,11 @@ export interface LoadedCard {
   card: Card
   state: CardState
   saved?: CardOutcome["saved"]
+  at: number
+}
+
+export interface LoadedGaps {
+  gaps: string[]
   at: number
 }
 
@@ -672,6 +735,7 @@ export async function loadSession(id: string, opts: { check?: RedactionCheck } =
   const summary = (await listSessions()).find((s) => s.id === id || s.id.startsWith(id))
   if (!summary) throw new Error(`Không tìm thấy phiên "${id}". Gõ /sessions để xem danh sách.`)
   const text = await readFile(path.join(sessionsDir(), summary.file), "utf8")
+  const imagesDir = path.join(sessionsDir(), imagesDirOf(summary.file))
   let meta: LoadedSession["meta"]
   let raw: ModelMessage[] = []
   let shown: ModelMessage[] = []
@@ -681,6 +745,7 @@ export async function loadSession(id: string, opts: { check?: RedactionCheck } =
   let lastTurn = 0
   let fromFile = 0
   const cards = new Map<string, LoadedCard & { after?: ModelMessage }>()
+  const gaps: (LoadedGaps & { after?: ModelMessage })[] = []
   for (const line of text.split("\n")) {
     if (!line.trim()) continue
     try {
@@ -689,9 +754,13 @@ export async function loadSession(id: string, opts: { check?: RedactionCheck } =
       else if (entry.type === "message") {
         // A damaged message is dropped alone; the rest of the session still loads.
         if (!isStoredMessage(entry.message)) continue
-        raw.push(entry.message)
-        shown.push(entry.message)
+        // The user's images back where their placeholders are (#344); a missing file keeps the placeholder.
+        const message = entry.images ? restoreImages([entry.message], entry.images, imagesDir)[0]! : entry.message
+        raw.push(message)
+        shown.push(message)
       } else if (entry.type === "compact" && Array.isArray(entry.messages)) {
+        // Refs index the stored list: restored before damaged messages are dropped.
+        if (entry.images) entry.messages = restoreImages(entry.messages, entry.images, imagesDir)
         entry.messages = entry.messages.filter(isStoredMessage)
         raw = [...entry.messages]
         // The marker and summary (absent when only tool results were pruned).
@@ -701,6 +770,8 @@ export async function loadSession(id: string, opts: { check?: RedactionCheck } =
         // A line with its number says it; an older one is the previous number plus one.
         lastTurn = Number.isInteger(entry.turn) && entry.turn! > 0 ? entry.turn! : lastTurn + 1
         if (entry.contextTokens !== undefined) contextTokens = entry.contextTokens
+        const names = Array.isArray(entry.dataGaps) ? entry.dataGaps.filter((g): g is string => typeof g === "string") : []
+        if (names.length > 0) gaps.push({ gaps: names, at: shown.length, after: shown.at(-1) })
       } else if (entry.type === "chart" && entry.callId && entry.data) charts.set(entry.callId, entry.data)
       else if (entry.type === "harness" && typeof entry.text === "string") harness.push(entry.text)
       else if (entry.type === "card" && typeof entry.id === "string" && CARD_STATES.has(entry.state)) {
@@ -739,11 +810,12 @@ export async function loadSession(id: string, opts: { check?: RedactionCheck } =
   const { messages, patched } = closeDanglingToolCalls(raw)
   const display = closeDanglingToolCalls(shown).messages
   // Closing dangling calls may insert results: a card stays after the message it followed.
-  const placed = [...cards.values()].map(({ after, ...c }) => {
+  const place = <T extends { at: number; after?: ModelMessage }>({ after, ...c }: T) => {
     const i = after ? display.indexOf(after) : -1
     return { ...c, at: i >= 0 ? i + 1 : Math.min(c.at, display.length) }
-  })
-  return { summary, meta, messages, display, contextTokens, patched, charts, harness, lastTurn, cards: placed, redaction }
+  }
+  const placed = [...cards.values()].map(place)
+  return { summary, meta, messages, display, contextTokens, patched, charts, harness, lastTurn, cards: placed, gaps: gaps.map(place), redaction }
 }
 
 /**
@@ -752,7 +824,7 @@ export async function loadSession(id: string, opts: { check?: RedactionCheck } =
  * `ensure_call_outputs_present`), and drop results whose call is missing. `reason`
  * lets an aborted turn say so instead of blaming a finished session.
  */
-export function closeDanglingToolCalls(messages: ModelMessage[], reason = "Tool bị ngắt vì phiên trước kết thúc giữa chừng."): { messages: ModelMessage[]; patched: number } {
+export function closeDanglingToolCalls(messages: ModelMessage[], reason = "Tool interrupted because the previous session ended midway."): { messages: ModelMessage[]; patched: number } {
   const results = new Set<string>()
   const calls = new Set<string>()
   for (const m of messages) {
