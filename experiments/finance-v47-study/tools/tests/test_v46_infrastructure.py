@@ -124,3 +124,21 @@ def test_seal_cannot_self_authorize_diagnostic_pilot_or_main(tmp_path):
  with pytest.raises(ValueError,match='Diagnostic pilot authorization'):validate_seal(p)
  seal['diagnostic_pilot_authorized']=False;seal['runs']=[{'split':'main'}];p.write_text(json.dumps(seal))
  with pytest.raises(ValueError,match='smoke/pilot only'):validate_seal(p)
+
+
+def test_ot_english_runtime_wording_is_reconciled_exactly():
+    # OpenTrading 0.5.0 (#357/#359) words its native rejections in English; the Vietnamese forms stay valid
+    # for historical runs, and the match is still exact (tool name, count, rejected value).
+    from v46_rejection_proof import loop_guard_count, schema_rejection_context
+    assert unknown_context('No tool "typo".', 'typo')
+    assert not unknown_context('No tool "typo".', 'correct')
+    loop = ('The user stopped a loop: you called shell with the same arguments 3 times in a row. '
+            'Do not make this call again; try another way or answer with the data you have.')
+    assert loop_guard_count(loop, 'shell') == 3 and loop_guard_count('Error: ' + loop, 'shell') == 3
+    assert loop_guard_count(loop, 'read_result') is None
+    args = {'symbol': 'CMG', 'metrics': ['pe', 'roe']}
+    text = ('Invalid arguments for mcp__opentrading__peer_compare: Type validation failed: Value: '
+            '{"symbol":"CMG","metrics":["pe","roe"]}.\nError message: Error: invalid_argument: data/metrics must be equal to constant')
+    assert schema_rejection_context(text, 'mcp__opentrading__peer_compare', args)
+    assert not schema_rejection_context(text, 'mcp__opentrading__peer_compare', {'symbol': 'CMG', 'metrics': None})
+    assert not schema_rejection_context(text, 'mcp__opentrading__vn_quote_history', args)
