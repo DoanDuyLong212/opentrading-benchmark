@@ -54,9 +54,25 @@ def budget_resume_mode(out_dir, resume):
     return 'resume' if journal else 'refuse'
 
 
-def open_budget_for_run(out_dir, fingerprint, model, options, resume, reconcile=None):
-    from paid_budget import open_run_budget, resume_run_budget, BudgetError
+def scheduled_trials_remaining(out_dir, manifest):
+    done = set()
+    path = os.path.join(out_dir, 'trials.jsonl')
+    if os.path.exists(path):
+        with open(path, encoding='utf-8') as fp:
+            for line in fp:
+                try:
+                    done.add(json.loads(line)['trial_id'])
+                except (ValueError, KeyError, TypeError):
+                    pass
+    return any(item['trial_id'] not in done for item in manifest['plan']['schedule'])
+
+
+def open_budget_for_run(out_dir, fingerprint, model, options, resume, reconcile=None, remaining=True):
+    from paid_budget import open_run_budget, read_run_budget, resume_run_budget, BudgetError
     mode = budget_resume_mode(out_dir, resume)
+    if mode == 'resume' and not remaining and not reconcile and options.get('provider_route') == 'openrouter_paid':
+        # Completed run: nothing left to dispatch, so re-summarizing needs no current receipt.
+        return read_run_budget(out_dir, fingerprint, options)
     if reconcile and mode != 'resume':
         raise ValueError('--reconcile-paid-pending applies only to resuming a run with a paid journal')
     if mode == 'init':
@@ -760,7 +776,7 @@ def main():
                 raise ValueError('v43 inference must resume one of the two presealed manifests')
         manifest = prepare_manifest(out_dir, settings, tasks, cfg, args.resume)
         budget = open_budget_for_run(out_dir, manifest["fingerprint"], model, options, args.resume,
-                                     args.reconcile_paid_pending)
+                                     args.reconcile_paid_pending, scheduled_trials_remaining(out_dir, manifest))
         options["free_cost_stop_path"] = str(Path(out_dir)/"FREE-ROUTE-CHARGED.jsonl")
         if args.split == "holdout":
             if cfg.get('study_version') == 'v4.7':

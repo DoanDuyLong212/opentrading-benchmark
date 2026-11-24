@@ -339,7 +339,14 @@ class PaidBudget:
         with self.locked():
             rows = self._read()
             pending, settled, measured, breach = self._state(rows)
+            bounded = [r for r in settled.values() if (r.get('evidence') or {}).get('reconciled') == 'upper_bound']
+            # measured_cost_usd stays the conservative total used for the cap; reconciled crash leftovers are counted
+            # at their reserved upper bound and are not observed provider charges.
             return {'measured_cost_usd': str(measured), 'settled_requests': len(settled),
+                    'observed_cost_usd': str(total_usd(usd(r['cost_usd']) for r in settled.values() if r not in bounded)),
+                    'reconciled_upper_bound_requests': len(bounded),
+                    'reconciled_upper_bound_usd': str(total_usd(usd(r['cost_usd']) for r in bounded)),
+                    'receipt_renewals': sum(r['kind'] == 'renew' for r in rows),
                     'reserved_usd': str(total_usd(pending.values())),
                     'unknown_requests': len(pending), 'complete': not pending,
                     'bound_breached': breach, 'halted': any(r['kind'] == 'halt' for r in rows),
@@ -362,6 +369,25 @@ def renewed_policy(original, policy):
 RENEWAL_FILE = 'PAID-RECEIPT-RENEWAL.json'
 
 
+def _journal_contract(out, manifest_fingerprint):
+    head = json.loads((out / 'paid-budget.jsonl').read_text().splitlines()[0])
+    contract = head.get('contract') or {}
+    if contract.get('manifest_sha256') != manifest_fingerprint or contract.get('run') != str(out):
+        raise BudgetError('paid journal belongs to another run or manifest')
+    return contract
+
+
+def read_run_budget(out_dir, manifest_fingerprint, options):
+    """Accounting-only view of an existing journal, keyed by its own init contract (any receipt may have expired)."""
+    out = Path(out_dir).resolve()
+    contract = _journal_contract(out, manifest_fingerprint)
+    budget = PaidBudget(out / 'paid-budget.jsonl', contract)
+    budget.read_only = True
+    options['paid_budget_journal'] = str(out / 'paid-budget.jsonl')
+    options['paid_budget_contract'] = contract
+    return budget
+
+
 def resume_run_budget(out_dir, manifest_fingerprint, model, options, *, reconcile_pending=None):
     """Resume a paid run that already has a journal, with spending enabled.
 
@@ -375,10 +401,7 @@ def resume_run_budget(out_dir, manifest_fingerprint, model, options, *, reconcil
     path = out / 'paid-budget.jsonl'
     if options.get('provider_route') != 'openrouter_paid':
         return open_run_budget(out_dir, manifest_fingerprint, model, options, True, accounting_only=False)
-    head = json.loads(path.read_text().splitlines()[0])
-    contract = head.get('contract') or {}
-    if contract.get('manifest_sha256') != manifest_fingerprint or contract.get('run') != str(out):
-        raise BudgetError('paid journal belongs to another run or manifest')
+    contract = _journal_contract(out, manifest_fingerprint)
     renewal = out / RENEWAL_FILE
     if renewal.exists():
         doc = json.loads(renewal.read_text())

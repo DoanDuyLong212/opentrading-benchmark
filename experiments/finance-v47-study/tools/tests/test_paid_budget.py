@@ -582,6 +582,7 @@ def test_paid_resume_refuses_other_manifest_pending_halt(tmp_path):
     resumed = rb.open_budget_for_run(out, 'f'*64, MODEL, dict(options), True, 'driver killed mid-request')
     money = resumed.summary()
     assert money['measured_cost_usd'] == '0.4' and money['unknown_requests'] == 0   # counted at full bound
+    assert money['observed_cost_usd'] == '0' and money['reconciled_upper_bound_requests'] == 1
     resumed.halt('reported_provider_host_mismatch')
     with pytest.raises(pb.BudgetError, match='halt'):
         rb.open_budget_for_run(out, 'f'*64, MODEL, dict(options), True)
@@ -618,6 +619,22 @@ def test_paid_resume_receipt_renewal(tmp_path):
     (out / pb.RENEWAL_FILE).write_text(json.dumps(unapproved))
     with pytest.raises(pb.BudgetError, match='approved_by'):
         rb.open_budget_for_run(out, 'f'*64, MODEL, dict(expired), True)
+
+
+def test_completed_run_resume_after_receipt_expiry_is_accounting_only(tmp_path):
+    import run_benchmark as rb
+    options, receipt = policy_fixture(tmp_path)
+    out = tmp_path / 'run'
+    budget = rb.open_budget_for_run(out, 'f'*64, MODEL, options, False)
+    budget.settle(budget.reserve({'t': 1}), '.1', {})
+    old = datetime.now(timezone.utc) - timedelta(hours=30)
+    stale = _renew_receipt(tmp_path, options, receipt, 'stale.json', verified_at=old.isoformat(),
+                           expires_at=(old+timedelta(hours=1)).isoformat())
+    expired = {**options, **{k: stale[k] for k in ('paid_budget_receipt', 'paid_budget_receipt_sha256')}}
+    done = rb.open_budget_for_run(out, 'f'*64, MODEL, dict(expired), True, remaining=False)
+    assert done.read_only and done.summary()['measured_cost_usd'] == '0.1'
+    with pytest.raises(pb.BudgetError, match='current'):
+        rb.open_budget_for_run(out, 'f'*64, MODEL, dict(expired), True, remaining=True)
 
 
 def test_reconcile_flag_needs_paid_journal(tmp_path):
