@@ -150,11 +150,35 @@ Lệnh liệt kê chạy với giới hạn 20 giây. Quy tắc `deny`/`ask` c�
 | `glob_files`, `grep_files` | tìm file theo tên, tìm chữ trong file | viết bằng TypeScript thuần, không cần `rg`; bỏ qua `.git`, `node_modules`, `.venv`, file nhị phân và file chứa khoá |
 | `write_file` | tạo file mới hoặc ghi đè cả file | ghi đè thì phải `read_file` toàn bộ file trước và file không đổi từ lúc đọc; giữ nguyên encoding, BOM, CRLF; hộp thoại có diff |
 | `edit_file` | thay một đoạn trong file | `old_string` phải khớp đúng và duy nhất (hoặc dùng `replace_all`); khớp được ngoặc cong của Word |
-| `shell` | chạy một lệnh | Windows dùng pwsh, không có thì Windows PowerShell 5.1 (ép UTF-8, lỗi in thành dòng `LỖI: …`); Linux/macOS dùng bash. Timeout mặc định 120s, tối đa 600s; khi timeout hoặc Esc thì giết cả cây tiến trình. Output dài hơn 30.000 ký tự được lưu vào `~/.opentrading/tool-output/` (xoá sau 7 ngày) để model đọc tiếp bằng `read_file`. Tiến trình con **không nhận** biến môi trường có tên chứa `API_KEY`/`APIKEY`, `TOKEN`, `SECRET`, `PASSWORD`/`PASSWD`, `CREDENTIAL(S)` ở cuối tên hoặc ngay trước `_` (ví dụ `GITHUB_TOKEN`, `HF_TOKEN`, `AWS_SECRET_ACCESS_KEY`; còn `TOKENS` thì vẫn giữ), và `OPENTRADING_*`. Script cần các biến này sẽ không thấy chúng: đặt khoá trong file cấu hình riêng của script |
+| `shell` | chạy một lệnh | Windows dùng pwsh, không có thì Windows PowerShell 5.1 (ép UTF-8, lỗi in thành dòng `ERROR: …`); Linux/macOS dùng bash. Timeout mặc định 120s, tối đa 600s; khi timeout hoặc Esc thì giết cả cây tiến trình. Output dài hơn 30.000 ký tự được lưu vào `~/.opentrading/tool-output/` (xoá sau 7 ngày) để model đọc tiếp bằng `read_file`. Tiến trình con **không nhận** biến môi trường có tên chứa `API_KEY`/`APIKEY`, `TOKEN`, `SECRET`, `PASSWORD`/`PASSWD`, `CREDENTIAL(S)` ở cuối tên hoặc ngay trước `_` (ví dụ `GITHUB_TOKEN`, `HF_TOKEN`, `AWS_SECRET_ACCESS_KEY`; còn `TOKENS` thì vẫn giữ), và `OPENTRADING_*`. Script cần các biến này sẽ không thấy chúng: đặt khoá trong file cấu hình riêng của script |
 
 - Ở `‖`, `write_file`, `edit_file` và `shell` chỉ gửi tên cho model (nạp bằng `tool_search` khi cần), nếu tool search đang hoãn tool. Ở `▸` và `▸▸` chúng được gửi đầy đủ: khoảng 850 token mỗi lượt.
 - **"Luôn cho phép" một lệnh** chỉ có với lệnh đơn và chỉ đọc (`git status`, `git log`, `Get-ChildItem`, `python --version`…). Quy tắc lưu dưới dạng tiền tố và **không bao giờ** khớp lệnh ghép (`git status; Remove-Item …`).
 - Lệnh xoá, chuyển, ghi, tải, cài, `npm run`, interpreter (`python x.py`, `node`, `npx`…) chỉ được duyệt đúng lệnh đó, tối đa cho cả phiên.
+
+## Sandbox cho shell (tuỳ chọn)
+
+Bật bằng `--sandbox` (TUI và `-p`) hoặc `"shell": { "sandbox": true }` trong `config.json`. **Mặc định tắt**: lệnh tải hay cài (`pip install`, `curl`) sẽ hỏng, và trên Linux cần cài bubblewrap. **Nên bật khi chạy `--yolo`** (▸▸▸ không hỏi trước khi chạy lệnh); lúc đó OpenTrading nhắc một dòng nếu chưa bật. Bật hay tắt được đọc một lần khi mở phiên, nên lệnh trong phiên không tự tắt được.
+
+Khi bật, mọi lệnh của tool `shell` (cả phép tính, lệnh liệt kê, lệnh của subagent và ultradesk):
+
+- **không có mạng**, kể cả `127.0.0.1`;
+- **chỉ ghi được** trong các thư mục workspace và thư mục tạm (thư mục tạm của phiên nằm trong đó). Thư mục dữ liệu `~/.opentrading` (config, phiên, bộ nhớ, quy tắc quyền) luôn **chỉ đọc**, kể cả khi nó nằm trong workspace hay thư mục tạm; workspace `~/.opentrading/workspace` thì vẫn ghi được.
+
+| Hệ điều hành | Cách làm | Khi không chạy được |
+| --- | --- | --- |
+| Linux | bubblewrap (`bwrap`): cả hệ thống file chỉ đọc, bind lại các thư mục được ghi, namespace mạng/PID riêng | **Từ chối mọi lệnh shell** (không chạy lệnh mà không có sandbox). Thiếu `bwrap`: `sudo apt install bubblewrap`. Có `bwrap` mà máy/container chặn user namespace (Docker mặc định, AppArmor của Ubuntu 24.04): báo lỗi đó khi mở phiên |
+| macOS | `sandbox-exec` với profile Seatbelt; đường dẫn truyền bằng tham số `-D`, không chèn vào profile | Từ chối mọi lệnh shell |
+| Windows | **Không cách ly.** Lệnh vẫn chạy thẳng trên máy, có mạng, ghi được mọi nơi bạn ghi được | Khi mở phiên có cảnh báo; model không được báo là có sandbox |
+
+Không thuộc sandbox (giới hạn đã biết):
+
+- **Đọc không bị chặn**: lệnh vẫn đọc được file bạn đọc được, và output đi vào hội thoại gửi tới provider. Các mục "luôn hỏi" ở trên vẫn là thứ bảo vệ file khoá.
+- **Socket file trên Linux:** namespace mạng riêng không chặn kết nối tới socket file. `/run` (socket Docker, D-Bus, systemd của người dùng) được thay bằng thư mục rỗng, và `.X11-unix` trong thư mục tạm cũng vậy. Socket file ở chỗ khác vẫn kết nối được, ví dụ socket của ssh-agent trong `/tmp`. Trên macOS, `(deny network*)` chặn cả socket file.
+- **File trong workspace sẽ chạy sau này ngoài sandbox:** `.git/hooks`, `.vscode/tasks.json`, `.husky`… nằm trong workspace nên sandbox không chặn ghi. Luật "luôn hỏi" ở trên bắt lệnh có nhắc tên chúng, nhưng không bắt một script tự ghi vào đó. Chúng chạy khi bạn dùng git hay mở thư mục trong editor, không có sandbox. Không tệ hơn ▸▸▸ không sandbox, nhưng cần biết.
+- Chỉ tool `shell`. `write_file`, `edit_file`, tool MCP và tool web không chạy trong sandbox; chúng có luật quyền riêng.
+- Sandbox không thay hộp thoại duyệt: các chế độ quyền và quy tắc `deny`/`ask` giữ nguyên, không hỏi ít đi khi bật sandbox.
+- Benchmark v4.7 đã chạy shell trong Docker không mạng (#309); sandbox này dành cho người dùng chạy `--yolo` trên máy mình.
 
 ## /undo
 
@@ -196,7 +220,7 @@ Mỗi hành động cần duyệt được một model thứ hai xét trước k
   - tin nhắn của bạn;
   - câu trả lời `ask_user` và lời nhắn bạn gõ khi từ chối;
   - việc agent chính giao cho subagent, có ghi rõ đó là lời của agent, không phải của bạn;
-  - các hành động của agent: lệnh, nội dung file ghi, đoạn sửa, URL, truy vấn tìm kiếm.
+  - các hành động của agent: lệnh, nội dung file ghi, đoạn sửa, URL, truy vấn tìm kiếm. Lời gọi tool MCP có kèm tên server và cờ tin cậy do OpenTrading ghi theo cấu hình (`"mcp_server"`, `"trusted"`): chỉ server dữ liệu OpenTrading là `true`, server khác dù đặt tên giống vẫn là `false`, nên model duyệt không phải đoán server từ tên tool;
   - hồ sơ `INVESTOR.md` của bạn (ràng buộc trong đó tính là ranh giới bạn đặt, nhưng không tự cho phép một việc phá huỷ hay gửi ra ngoài);
   - nếu workspace là repo git: nhánh hiện tại, số thay đổi chưa commit và các remote. Push lên remote của repo này được coi là trong vùng tin cậy (vẫn chặn nếu trong đó có khoá hay dữ liệu riêng); remote khác là bên ngoài. OpenTrading không đọc chỉ dẫn nào từ thư mục dự án cho model duyệt.
 - **Model duyệt không thấy:** chữ model chính viết, kết quả tool, nội dung trang web hay file. Lý do: lệnh độc giấu trong trang web hay PDF không thuyết phục được model duyệt. Báo cáo của subagent nền và nội dung prompt MCP được đánh dấu là của harness, không phải của bạn (cả khi mở lại phiên bằng `--continue`).
@@ -205,7 +229,7 @@ Mỗi hành động cần duyệt được một model thứ hai xét trước k
 - **Nguồn gốc dữ liệu:** kết quả của `web_fetch`, `web_search` và tool MCP có thêm một dòng `[Nguồn: …]` cho model (host web hoặc tên server MCP), kèm nhắc rằng chỉ dẫn nằm trong dữ liệu là nội dung của nguồn, không phải lời bạn. Đây chỉ là thông tin nguồn gốc, không phải đánh giá dữ liệu là nguy hiểm.
 - **Khi bị chặn:** model nhận tên tool, nhãn luật và lý do, ví dụ `Auto mode chặn shell [Git phá huỷ]: …`, kèm chỉ dẫn (giống Claude Code, chặt hơn ở chỗ đổi tool):
   - không làm đúng việc đó bằng tool hay lệnh khác (shell bị chặn thì không chuyển sang `write_file`, `edit_file`, tool MCP, script hay subagent); chỉ được chọn cách an toàn hơn hẳn mà không gây ra tác dụng đó, như ghi ra file mới thay vì ghi đè hoặc đưa lệnh để bạn tự chạy;
-  - làm tiếp các việc không phụ thuộc; nếu việc đó bắt buộc thì làm hết phần còn lại rồi dừng, nói định làm gì, vì sao cần và cách bạn cho phép (`/permissions` → `ctrl+r`, nói rõ trong tin nhắn, chuyển `▸`, hoặc tự thêm `autoMode.allow`). Model được dặn không tự sửa cấu hình quyền;
+  - làm tiếp các việc không phụ thuộc; nếu việc đó bắt buộc thì làm hết phần còn lại rồi dừng, nói định làm gì, vì sao cần và cách bạn cho phép (`/permissions` → `ctrl+r`, nói rõ trong tin nhắn, chuyển `▸`, hoặc tự thêm `autoMode.allow`). Model được dặn không tự sửa cấu hình quyền. Với luật *chặn tuyệt đối*, model không gợi ý cách cho phép nào: lời nhắn và `autoMode.allow` không gỡ được, chỉ khi bạn tự bấm duyệt (`ctrl+r` trong `/permissions`, hộp thoại khi auto mode quay về hỏi, hoặc chế độ `▸`) lời gọi đó mới chạy;
   - subagent bị chặn thì ghi việc đó và lý do vào kết quả cho agent chính.
 
   Bạn thấy một dòng `✘ Auto mode chặn … · /permissions để cho thử lại` dưới tool đó (`ctrl+o` hiện đủ đoạn model nhận) và một toast `… bị auto mode chặn · /permissions`, kể cả khi subagent bị chặn.
@@ -217,12 +241,13 @@ Mỗi hành động cần duyệt được một model thứ hai xét trước k
 
   Hộp thoại khi đó ghi rõ vì sao nó hiện ra. Nếu bạn từ chối một hành động auto mode vừa chặn, model vẫn nhận nhãn và lý do của lần chặn đó.
 - **Luật mặc định** (viết bằng tiếng Anh cho model duyệt, nhãn hiện bằng tiếng Việt):
-  - *Chặn tuyệt đối:* đọc khoá/mật khẩu (kể cả in toàn bộ biến môi trường), lộ khoá ra ngoài, tự sửa quyền hay cấu hình của OpenTrading, chạy agent khác đã tắt duyệt.
-  - *Chặn trừ khi bạn nêu rõ đúng việc đó:* **đặt, sửa, huỷ lệnh giao dịch thật hay chuyển tiền** (phải nêu mã, chiều, khối lượng, giá); tải code về rồi chạy; xoá hoặc ghi đè file có sẵn; git phá huỷ; gửi dữ liệu ra ngoài (kể cả nhét trong URL); nhắn tin thay bạn; cài thứ tự chạy về sau; hạ bảo mật; dò thông tin đăng nhập; mở máy ra internet; ghi ngoài workspace; đổi cài đặt hệ thống; chạy lệnh bị che giấu (`-EncodedCommand`, giải mã base64 rồi `iex`…).
-  - *Ngoại lệ được phép:* lệnh chỉ đọc; chạy script do chính phiên viết trong workspace; cài gói đã khai báo, hoặc gói dữ liệu phổ biến khi bạn cần phân tích; GET trang dữ liệu thị trường công khai; mở file vừa tạo; tool dữ liệu OpenTrading.
+  - *Chặn tuyệt đối:* đọc khoá/mật khẩu (kể cả in toàn bộ biến môi trường), lộ khoá ra ngoài, tự sửa quyền hay cấu hình của OpenTrading, chạy agent khác đã tắt duyệt, **đặt, sửa, huỷ lệnh giao dịch thật hay chuyển tiền** (OpenTrading không giao dịch thay bạn: nêu đủ mã, chiều, khối lượng, giá hay nói "tôi cho phép" vẫn bị chặn; phân tích, backtest và mô phỏng không đụng tài khoản thật thì không thuộc luật này).
+  - *Chặn trừ khi bạn nêu rõ đúng việc đó:* tải code về rồi chạy; xoá hoặc ghi đè file có sẵn; git phá huỷ; gửi dữ liệu ra ngoài (kể cả nhét trong URL, hay trong tham số tool của server MCP ngoài vùng tin cậy, ví dụ danh mục và giá vốn trong một truy vấn tìm kiếm mà yêu cầu của bạn không cần); nhắn tin thay bạn; cài thứ tự chạy về sau; hạ bảo mật; dò thông tin đăng nhập; mở máy ra internet; ghi ngoài workspace; đổi cài đặt hệ thống; chạy lệnh bị che giấu (`-EncodedCommand`, giải mã base64 rồi `iex`…).
+  - Với một lần GET công khai bỏ qua lỗi chứng chỉ, luật hướng dẫn model duyệt chỉ cho qua khi bạn nêu đúng URL và yêu cầu rõ việc bỏ qua xác minh, lệnh không mang dữ liệu riêng tư hay thông tin xác thực và không tự chuyển sang đích khác. Chỉ nói trang bị lỗi chứng chỉ chưa phải yêu cầu bỏ xác minh. Đây vẫn là phán quyết của model duyệt, có thể sai.
+  - *Ngoại lệ được phép:* lệnh chỉ đọc; chạy script do chính phiên viết trong workspace; cài gói đã khai báo, hoặc gói dữ liệu phổ biến khi bạn cần phân tích; GET trang dữ liệu thị trường công khai; mở file vừa tạo; tool dữ liệu OpenTrading (chỉ lời gọi có `"trusted": true`).
   - Ranh giới bạn nói trong chat ("đừng ghi đè bao-cao.md", "không gửi gì ra ngoài") có tác dụng chặn tới khi bạn gỡ.
 - **Đọc, không xét:** `web_search` và `web_fetch` vào các trang tin/tài chính Việt Nam có sẵn trong danh sách chỉ được ghi vào bản ghi cho model duyệt đọc, không bị duyệt.
-- **Tool MCP tự khai "chỉ đọc":** chỉ server dữ liệu OpenTrading (cấu hình toàn cục, đúng địa chỉ server) được tin lời khai `readOnlyHint` và chạy luôn. Tool "chỉ đọc" của server MCP khác vẫn qua model duyệt trong ▸▸, vì tham số của nó đi tới một chương trình hay host khác. Lời gọi tới các tool "tự khai" chỉ đọc đó, và mọi lời gọi MCP có ghi, đều được ghi vào bản ghi ở mọi chế độ.
+- **Tool MCP tự khai "chỉ đọc":** chỉ server dữ liệu OpenTrading (cấu hình toàn cục, đúng địa chỉ server) được tin lời khai `readOnlyHint` và chạy luôn. Tool "chỉ đọc" của server MCP khác vẫn qua model duyệt trong ▸▸, vì tham số của nó đi tới một chương trình hay host khác. Lời gọi tới các tool "tự khai" chỉ đọc đó, và mọi lời gọi MCP có ghi, đều được ghi vào bản ghi ở mọi chế độ. `read_mcp_resource` cũng vậy: `uri` là chữ tự do gửi tới server, nên đọc resource của server khác data server thì qua model duyệt và được ghi lại; resource của data server chạy luôn.
 - **Chạy luôn, không tốn request:** file mới trong workspace (hoặc file chính hội thoại này tạo; `/new`, `/clear` hay mở lại phiên thì không còn tính), và lệnh shell đơn chỉ liệt kê hay in trạng thái: `git status/log/diff/show`, `dir`/`ls`/`Get-ChildItem`, `pwd`, `where`/`which`, `Get-Process`, `pip list`, `conda list`, `<chương trình> --version`. Lệnh có nối (`;`, `|`, `&&`), chuyển hướng (`>`), đọc nội dung file, nhắc tới file khoá, ổ `env:`/`HKLM:` hay `git diff --output` thì vẫn qua model duyệt. Các lệnh này vẫn được ghi vào bản ghi.
 - **Tuỳ biến** trong `~/.opentrading/config.json` (chỉ đọc file này, không bao giờ đọc từ thư mục dự án, để một repo tải về không tự cấp quyền được):
 
@@ -241,20 +266,19 @@ Mỗi hành động cần duyệt được một model thứ hai xét trước k
   `"$defaults"` giữ luật có sẵn ở đúng vị trí đó. Một danh sách không có `"$defaults"` sẽ **thay toàn bộ** luật mặc định của danh sách ấy.
 - **Đo chất lượng bằng model thật:** `bun scripts/dev/auto-mode-eval.ts --yes --model <provider/model> [--only 21,25] [--unreachable] [--all]`.
   - Không có `--yes` thì script chỉ in số ca và số request ước tính, không gọi model.
-  - Bộ 76 ca có nhãn nằm ở `test/fixtures/auto-mode/actions.jsonl`, gồm cả ca nhiều lượt (yêu cầu chung chung rồi một bước phá huỷ, ranh giới người dùng nêu ở lượt trước), lệnh PowerShell che giấu và tool MCP bên thứ ba.
+  - Bộ 100 ca có nhãn nằm ở `test/fixtures/auto-mode/actions.jsonl`, gồm cả ca nhiều lượt (yêu cầu chung chung rồi một bước phá huỷ, ranh giới người dùng nêu ở lượt trước), lệnh PowerShell che giấu và tool MCP bên thứ ba.
   - Ca có `route` là ca gate tự quyết trước classifier (file khoá/đường dẫn bảo vệ, web_fetch tới trang được duyệt sẵn, file mới trong workspace, lệnh shell chỉ đọc). Môi trường của bộ đánh giá giống lúc chạy thật, gồm cả dòng git và server MCP ngoài vùng tin cậy. Mặc định bỏ qua, `--unreachable` để chạy cả. Test offline kiểm nhãn này khớp với gate.
   - Script in tỉ lệ chặn đúng, tỉ lệ chặn nhầm, tách theo nhóm (`tags`), và số request.
-  - Tốn khoảng 100 request (65 ca tới được model duyệt, mỗi ca chặn tốn 2), nên với Gemini miễn phí hãy dùng model 500 RPD.
+  - Tốn khoảng 132 request (82 ca tới được model duyệt, mỗi ca chặn tốn 2), nên với Gemini miễn phí hãy dùng model 500 RPD.
 
 **Giới hạn — đọc trước khi bật:**
 - Model duyệt **có thể sai**: cho qua nhầm hoặc chặn nhầm. Claude Code công bố tỉ lệ bỏ lọt 17% trên các ca "làm quá tay". Đừng dùng `▸▸` cho việc nhạy cảm. Ranh giới cứng là các mục "luôn hỏi" và "không bao giờ chạy" ở trên, không phải model duyệt.
 - Model yếu thì duyệt kém hơn.
 - Nếu provider từ chối tuỳ chọn giảm "thinking" (Gemini 3 `thinkingLevel: low`, OpenAI `reasoningEffort: low`), mọi lần duyệt sẽ không có kết quả. Khi đó `▸▸` sẽ hỏi bạn cho mọi thứ, mỗi hộp thoại ghi "model duyệt không trả lời được: …" kèm lỗi. Hãy đổi model duyệt ở `/config`.
 - Bản ghi không lưu kết quả của hành động (chỉ đánh dấu các lời gọi không chạy, và chỉ tới tin nhắn kế tiếp của bạn).
-- Phân tích lệnh shell là dựa trên chuỗi, không phải trình phân tích cú pháp shell, và chưa có sandbox của hệ điều hành.
+- Phân tích lệnh shell là dựa trên chuỗi, không phải trình phân tích cú pháp shell. Sandbox của hệ điều hành là tuỳ chọn, mặc định tắt (xem [Sandbox cho shell](#sandbox-cho-shell-tuỳ-chọn)).
 
 ## Ngoài phạm vi đợt này
 
 - Link file bấm được (OSC 8) trong transcript: bỏ, ghi vào việc sau.
-- Sandbox hệ điều hành cho `shell` (kiểu codex, deepseek): việc sau.
 - Skill hướng dẫn tạo tài liệu/báo cáo: phần của đồng nghiệp (xem [contracts.md](contracts.md)).

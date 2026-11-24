@@ -205,7 +205,7 @@ def verify_mcp_attempt(task, attempt, allow_empty=False):
     return rows
 
 
-def verify_request_capture(request, expected_temperature=0, expected_top_p=1):
+def verify_request_capture(request, expected_temperature=0, expected_top_p=1, paid_provider_host=None):
     from run_manifest import hash_file, digest_json
     import hashlib
     native_body = None
@@ -241,6 +241,12 @@ def verify_request_capture(request, expected_temperature=0, expected_top_p=1):
             native_body = body
         else:
             permitted = {'temperature', 'top_p', 'max_tokens', 'max_completion_tokens', 'stream_options'}
+            if paid_provider_host is not None:
+                # Paid route (provider.py): the gateway forces the default service tier and pins the
+                # receipt's provider host without fallback; nothing else may change.
+                if body.get('service_tier') != 'default' or body.get('provider') != {'only': [paid_provider_host], 'allow_fallbacks': False}:
+                    raise ValueError('Paid effective body lacks the pinned host or default service tier')
+                permitted = permitted | {'service_tier', 'provider'}
             if {k:v for k,v in body.items() if k not in permitted} != {k:v for k,v in native_body.items() if k not in permitted}:
                 raise ValueError('Provider effective body changed outside declared sampling/cap rewrites')
             if body.get('max_tokens') != request.get('effective_max_tokens'):
@@ -594,7 +600,7 @@ def validate_live_run(out_dir, config, model):
                 raise ValueError('Runtime condition/variant binding failed')
             expected_as_of = json.loads((task/'environment/payloads.json').read_text())['snapshot_date']
             clock = inventory.get('clock_policy') or {}
-            if clock.get('answer_as_of') != expected_as_of or clock.get('native_now_pinned') is not (row['arm'] == 'opentrading'):
+            if clock.get('answer_as_of') != expected_as_of or clock.get('native_now_pinned') is not True:
                 raise ValueError('Runtime snapshot clock policy binding failed')
             if row['arm'] == 'opentrading':
                 from run_manifest import hash_file

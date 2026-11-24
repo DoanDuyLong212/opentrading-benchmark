@@ -74,7 +74,7 @@ def test_clock_wire_audit():
     obs[-1]['native_date'] = '2026-11-16'
     assert not audit_clock_observations(obs, '2026-11-01')['parity_verified']
     assert not audit_clock_observations(obs[:1], '2026-11-01')['parity_verified']
-    assert not comparative_eligible('fin-s3-asof-486')
+    assert comparative_eligible('fin-s3-asof-486')  # robustness, pooled since amendment 2026-11-24 (f)
     assert not comparative_eligible('fin-s2-buy-483')
 
 

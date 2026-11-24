@@ -244,9 +244,11 @@ class ProviderGateway:
         policy = paid_policy(model, self.options)
         if policy is not None:
             contract = self.options.get('paid_budget_contract')
-            if not contract or contract.get('policy') != policy or not self.options.get('paid_budget_journal'):
+            if not contract or not self.options.get('paid_budget_journal'):
                 raise BudgetError('paid gateway requires initialized run-wide budget')
             self.budget = PaidBudget(self.options['paid_budget_journal'], contract)
+            if self.budget.policy() != policy:
+                raise BudgetError('paid gateway requires initialized run-wide budget')
         self.key = provider_credential(or_route)
         if policy is not None and hashlib.sha256(self.key.encode()).hexdigest() != policy['key_fingerprint']:
             raise BudgetError('paid credential differs from dedicated key receipt')
@@ -379,9 +381,41 @@ class ProviderGateway:
             if remaining<=0:return
             time.sleep(min(.05,remaining))
 
-    def account_response(self, row, payload, stream=None):
+    @staticmethod
+    def pre_generation_http_error(status, payload):
+        """An upstream HTTP error whose body is only an error object: no choices, usage or generation id.
+
+        OpenRouter bills generations; a request refused before generation (e.g. 429 rate limit) has none.
+        Anything else (streams, partial output, usage present, unparseable bodies) stays cost-unknown.
+        """
+        if not isinstance(status, int) or status < 400:
+            return None
+        try:
+            obj = json.loads(payload.decode('utf-8'))
+        except (ValueError, UnicodeError, AttributeError):
+            return None
+        if not isinstance(obj, dict) or not isinstance(obj.get('error'), dict):
+            return None
+        if any(k in obj for k in ('choices', 'usage', 'id', 'model')):
+            return None
+        meta = obj['error'].get('metadata') if isinstance(obj['error'].get('metadata'), dict) else {}
+        return {'kind': 'pre_generation_http_error', 'http_status': status, 'error_code': obj['error'].get('code'),
+                'provider_name': meta.get('provider_name'), 'provider_error_code': meta.get('provider_error_code')}
+
+    def account_response(self, row, payload, stream=None, http_status=None):
         """Persist account charges before answer validation or retry admission."""
         from provider_response import response_chunks
+        refused = self.pre_generation_http_error(http_status, payload) if getattr(self, 'budget', None) else None
+        if refused is not None:
+            row.update(measured_cost_usd='0', cost_source='pre-generation upstream HTTP error (no generation billed)',
+                       provider_generation_ids=[])
+            try:
+                self.budget.settle(row['budget_attempt_id'], 0,
+                    {'response': row['raw_response_capture'], 'generation_ids': [], 'no_generation': refused,
+                     'request_ids': row.get('response_headers', {})})
+            except BudgetError as exc:
+                raise GatewayFailure(str(exc), 'local_budget', 424)
+            return
         try:
             row['usage'] = next((x['usage'] for x in reversed(response_chunks(payload, stream=stream)) if x.get('usage')), None)
             chunks = response_chunks(payload, stream=stream, parse_float=Decimal)
@@ -522,8 +556,12 @@ class ProviderGateway:
                 if 'n' in body and (type(body['n']) is not int or body['n'] != 1):
                     raise BudgetError('paid upper bound permits exactly one completion')
                 for message in body.get('messages', []):
-                    if not isinstance(message, dict) or set(message) - {'role', 'content', 'name', 'tool_calls', 'tool_call_id', 'refusal', 'reasoning', 'reasoning_details'}:
+                    # 'reasoning_content': OpenCode 2.4 echoes DeepSeek's reasoning text on assistant turns
+                    # (empty with reasoning off); text input only, inside the context bound.
+                    if not isinstance(message, dict) or set(message) - {'role', 'content', 'name', 'tool_calls', 'tool_call_id', 'refusal', 'reasoning', 'reasoning_details', 'reasoning_content'}:
                         raise BudgetError('paid message contains unsupported fields')
+                    if not isinstance(message.get('reasoning_content', ''), (str, type(None))):
+                        raise BudgetError('paid bound supports text-only reasoning_content')
                     content = message.get('content')
                     if isinstance(content, list):
                         if any(not isinstance(part, dict) or part.get('type') != 'text' or not isinstance(part.get('text'), str)
@@ -574,7 +612,7 @@ class ProviderGateway:
                 if getattr(self, 'free_cost_breach', False) or (self.options.get('free_cost_stop_path') and Path(self.options['free_cost_stop_path']).exists()):
                     raise GatewayFailure('free_route_charged', 'local_budget', 424)
                 if getattr(self, 'budget', None):
-                    if paid_policy(self.model, self.options) != self.budget.contract['policy']:
+                    if paid_policy(self.model, self.options) != self.budget.policy():
                         raise BudgetError('paid policy changed before dispatch')
                     row['budget_attempt_id'] = self.budget.reserve({'trial_id': self.options.get('trial_id'),
                         'arm': self.options.get('condition'), 'model': self.model, 'provider_ledger': str(self.ledger),
@@ -615,7 +653,8 @@ class ProviderGateway:
                 row.update(response_headers=response_headers,bytes_received=len(payload),raw_response_capture=self.capture_response(payload,logical_id,attempt))
                 self.attempt_event({'phase':'upstream_response_observed','logical_request_id':logical_id,'transport_attempt':attempt,'status':status,'bytes_received':len(payload),'raw_response_capture':row['raw_response_capture'],'time':time.time()})
                 if getattr(self, 'budget', None) or self.options.get('provider_route') == 'openrouter_free':
-                    self.account_response(row, payload, stream=None if transient else bool(body.get('stream')))
+                    self.account_response(row, payload, stream=None if transient else bool(body.get('stream')),
+                                          http_status=status if transient and status != 598 else None)
                 if transient:
                     # Unknown usage is never assumed zero. Retry requires an explicitly
                     # preregistered upper reservation covering this entire failed attempt.

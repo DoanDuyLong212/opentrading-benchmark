@@ -389,15 +389,26 @@ def test_expired_receipt_allows_accounting_only_but_no_new_dispatch(tmp_path, mo
     assert budget.path.read_bytes() == before
 
 
-def test_active_free_admission_bound_and_not_arbitrary_route_flag():
-    cfg = json.loads((TOOLS/'bench_config_v47.json').read_text())
-    options = cfg['provider_options']
-    sha = pb.validate_free_identity(cfg['model'], options)
-    assert len(sha) == 64 and options['model_max_output_tokens'] == 65536
+def test_free_admission_bound_and_not_arbitrary_route_flag():
+    # Free dev-smoke identity (Nemotron :free); the active v4.7 config is the paid DeepSeek route below.
+    free = 'nvidia/nemotron-3-ultra-550b-a55b:free'
+    options = {'provider_route': 'openrouter_free', 'model_max_output_tokens': 65536}
+    sha = pb.validate_free_identity(free, options)
+    assert len(sha) == 64
     with pytest.raises(pb.BudgetError):
-        pb.validate_free_identity(cfg['model'], {**options, 'free_admission_sha256':'0'*64})
+        pb.validate_free_identity(free, {**options, 'free_admission_sha256':'0'*64})
     with pytest.raises(pb.BudgetError):
         pb.validate_free_identity('arbitrary/paid:free', options)
+
+
+def test_active_v47_config_is_paid_deepseek_and_fails_closed_without_receipt():
+    cfg = json.loads((TOOLS/'bench_config_v47.json').read_text())
+    options = cfg['provider_options']
+    assert cfg['model'] == 'deepseek/deepseek-v4.1-flash-1017' and cfg['allowed_models'] == [cfg['model']]
+    assert options['provider_route'] == 'openrouter_paid'
+    assert pb.validate_free_identity(cfg['model'], options) is None
+    with pytest.raises(pb.BudgetError):
+        pb.paid_policy(cfg['model'], {**options, 'budget_usd': '1'})
 
 
 @pytest.mark.parametrize('extension', [{'n':8}, {'n':True}, {'service_tier':'priority'}, {'service_tier':'auto'}, {'speed':'fast'}, {'preset':'priority-fixture'}, {'best_of':4}, {'reasoning':{'max_tokens':100000}}, {'unreviewed_extension':True}])
@@ -461,3 +472,180 @@ def test_paid_invalid_requested_output_cap_never_dispatches(tmp_path, monkeypatc
     gate.handle(HELPERS['_Handler'](body))
     assert gate.rows[-1]['status'] == 424 and not gate.rows[-1]['upstream_attempted']
     assert gate.budget.summary()['unknown_requests'] == 0
+
+
+def _http_error(status, raw, retry_after='0'):
+    import io, urllib.error
+    return urllib.error.HTTPError('https://openrouter.ai/api/v1/chat/completions', status, 'err',
+                                  {'Retry-After': retry_after}, io.BytesIO(raw))
+
+
+def test_pre_generation_rate_limit_settles_zero_then_retries(tmp_path, monkeypatch):
+    # Live 2026-11-24 (Tenstorrent): HTTP 429 with only an error object; no generation, nothing billed.
+    gate, body = paid_gateway(tmp_path, monkeypatch)
+    gate.options['failed_attempt_token_reservation'] = 5000
+    monkeypatch.setattr(provider, 'retry_delay', lambda *a, **k: 0)
+    limited = json.dumps({'error': {'message': 'Provider returned error', 'code': 429, 'metadata': {
+        'provider_name': 'synthetic-offline-host', 'provider_error_code': 'rate_limit_exceeded'}},
+        'user_id': 'u'}).encode()
+    calls = []
+    def fetch(*_, **__):
+        calls.append(1)
+        if len(calls) == 1: raise _http_error(429, limited)
+        return Response(raw_response('.2'))
+    monkeypatch.setattr(provider.urllib.request, 'urlopen', fetch)
+    handler = HELPERS['_Handler'](body); gate.handle(handler)
+    assert len(calls) == 2 and handler.response_status == 200
+    summary = gate.budget.summary()
+    assert summary['unknown_requests'] == 0 and summary['measured_cost_usd'] == '0.2'
+
+
+@pytest.mark.parametrize('raw', [
+    b'not json',
+    json.dumps({'error': {'code': 502}, 'choices': []}).encode(),
+    json.dumps({'id': 'gen-1', 'error': {'code': 502}}).encode(),
+])
+def test_http_error_with_possible_generation_stays_cost_unknown(tmp_path, monkeypatch, raw):
+    gate, body = paid_gateway(tmp_path, monkeypatch)
+    def fetch(*_, **__): raise _http_error(502, raw)
+    monkeypatch.setattr(provider.urllib.request, 'urlopen', fetch)
+    gate.handle(HELPERS['_Handler'](body))
+    assert gate.rows[-1]['error'] == 'paid_usage_cost_unknown'
+    assert gate.budget.summary()['unknown_requests'] == 1
+
+
+def test_http_error_carrying_cost_is_billed_not_zeroed(tmp_path, monkeypatch):
+    gate, body = paid_gateway(tmp_path, monkeypatch)
+    raw = json.dumps({'error': {'code': 502}, 'usage': {'cost': 0.1}}).encode()
+    def fetch(*_, **__): raise _http_error(502, raw)
+    monkeypatch.setattr(provider.urllib.request, 'urlopen', fetch)
+    gate.handle(HELPERS['_Handler'](body))
+    assert gate.budget.summary()['measured_cost_usd'] == '0.1'
+
+
+@pytest.mark.parametrize('value,ok', [('', True), ('thought', True), (None, True), ({'x': 1}, False), (['a'], False)])
+def test_opencode_reasoning_content_text_only(tmp_path, monkeypatch, value, ok):
+    gate, body = paid_gateway(tmp_path, monkeypatch)
+    body['messages'].append({'role': 'assistant', 'content': 'x', 'reasoning_content': value})
+    body['messages'].append({'role': 'user', 'content': 'next'})
+    sent = []
+    def fetch(*_, **__): sent.append(1); return Response(raw_response('.2'))
+    monkeypatch.setattr(provider.urllib.request, 'urlopen', fetch)
+    gate.handle(HELPERS['_Handler'](body))
+    assert bool(sent) is ok
+
+
+def test_budget_mode_init_resume_refuse(tmp_path):
+    import run_benchmark as rb
+    out = tmp_path / 'run'; out.mkdir()
+    assert rb.budget_resume_mode(out, False) == 'init'
+    assert rb.budget_resume_mode(out, True) == 'init'          # presealed manifest, nothing run yet
+    (out / 'paid-budget.jsonl').write_text('')
+    assert rb.budget_resume_mode(out, True) == 'resume'
+    (out / 'paid-budget.jsonl').unlink(); (out / 'trials.jsonl').write_text('')
+    assert rb.budget_resume_mode(out, True) == 'refuse'        # trials but the money record is gone
+
+
+def _renew_receipt(tmp_path, options, receipt, name, **change):
+    receipt = {**receipt, **change}
+    path = tmp_path / name; path.write_text(json.dumps(receipt))
+    return {'paid_budget_receipt': str(path), 'paid_budget_receipt_sha256': hashlib.sha256(path.read_bytes()).hexdigest(),
+            'approved_by': 'owner-test', 'decision': 'synthetic'}
+
+
+def test_paid_resume_spends_and_keeps_cumulative_cap(tmp_path):
+    import run_benchmark as rb
+    options, receipt = policy_fixture(tmp_path, cap='1', bound='.4')
+    out = tmp_path / 'run'
+    budget = rb.open_budget_for_run(out, 'f'*64, MODEL, options, False)
+    budget.settle(budget.reserve({'t': 1}), '.3', {})
+    resumed = rb.open_budget_for_run(out, 'f'*64, MODEL, dict(options), True)
+    assert not resumed.read_only
+    resumed.settle(resumed.reserve({'t': 2}), '.3', {})
+    resumed.settle(resumed.reserve({'t': 3}), '.3', {})        # .6 + .4 = 1.0: exactly at the cap is allowed
+    again = rb.open_budget_for_run(out, 'f'*64, MODEL, dict(options), True)
+    with pytest.raises(pb.BudgetError, match='exhausted'):
+        again.reserve({'t': 4})                                  # .9 + .4 > 1 across resumes
+    assert again.summary()['measured_cost_usd'] == '0.9'
+
+
+def test_paid_resume_refuses_other_manifest_pending_halt(tmp_path):
+    import run_benchmark as rb
+    options, _ = policy_fixture(tmp_path, cap='2', bound='.4')
+    out = tmp_path / 'run'
+    budget = rb.open_budget_for_run(out, 'f'*64, MODEL, options, False)
+    with pytest.raises(pb.BudgetError, match='another run'):
+        rb.open_budget_for_run(out, 'e'*64, MODEL, dict(options), True)
+    budget.reserve({'crash': 1})                                  # crash between reserve and settle
+    with pytest.raises(pb.BudgetError, match='unresolved'):
+        rb.open_budget_for_run(out, 'f'*64, MODEL, dict(options), True)
+    resumed = rb.open_budget_for_run(out, 'f'*64, MODEL, dict(options), True, 'driver killed mid-request')
+    money = resumed.summary()
+    assert money['measured_cost_usd'] == '0.4' and money['unknown_requests'] == 0   # counted at full bound
+    assert money['observed_cost_usd'] == '0' and money['reconciled_upper_bound_requests'] == 1
+    resumed.halt('reported_provider_host_mismatch')
+    with pytest.raises(pb.BudgetError, match='halt'):
+        rb.open_budget_for_run(out, 'f'*64, MODEL, dict(options), True)
+
+
+def test_paid_resume_receipt_renewal(tmp_path):
+    import run_benchmark as rb
+    options, receipt = policy_fixture(tmp_path, cap='1', bound='.4')
+    out = tmp_path / 'run'
+    budget = rb.open_budget_for_run(out, 'f'*64, MODEL, options, False)
+    budget.settle(budget.reserve({'t': 1}), '.3', {})
+    # receipt expired: plain resume refuses, the sealed config is not edited
+    old = datetime.now(timezone.utc) - timedelta(hours=30)
+    stale = _renew_receipt(tmp_path, options, receipt, 'stale.json', verified_at=old.isoformat(),
+                           expires_at=(old+timedelta(hours=1)).isoformat())
+    expired = {**options, **{k: stale[k] for k in ('paid_budget_receipt', 'paid_budget_receipt_sha256')}}
+    with pytest.raises(pb.BudgetError, match='current'):
+        rb.open_budget_for_run(out, 'f'*64, MODEL, dict(expired), True)
+    # owner renewal: key now has .75 left, enough for the remaining .7 of the cap; bound changes are allowed
+    key = {**receipt['key_limit'], 'limit_remaining': .75, 'usage': .3}
+    (out / pb.RENEWAL_FILE).write_text(json.dumps(_renew_receipt(tmp_path, options, receipt, 'r2.json',
+                                                                 key_limit=key, attempt_upper_bound_usd='.35')))
+    resumed = rb.open_budget_for_run(out, 'f'*64, MODEL, dict(expired), True)
+    assert resumed.policy()['attempt_upper_bound_usd'] == '0.35'
+    resumed.settle(resumed.reserve({'t': 2}), '.3', {})
+    rows = [json.loads(line) for line in (out / 'paid-budget.jsonl').read_text().splitlines()]
+    assert [r['kind'] for r in rows].count('renew') == 1
+    # a renewal may not change identity (host / key / cap)
+    for change in ({'provider_host': 'other-host'}, {'key_fingerprint': 'c'*64}):
+        (out / pb.RENEWAL_FILE).write_text(json.dumps(_renew_receipt(tmp_path, options, receipt, 'bad.json', key_limit=key, **change)))
+        with pytest.raises(pb.BudgetError):
+            rb.open_budget_for_run(out, 'f'*64, MODEL, dict(expired), True)
+    unapproved = _renew_receipt(tmp_path, options, receipt, 'r3.json', key_limit=key); unapproved.pop('approved_by')
+    (out / pb.RENEWAL_FILE).write_text(json.dumps(unapproved))
+    with pytest.raises(pb.BudgetError, match='approved_by'):
+        rb.open_budget_for_run(out, 'f'*64, MODEL, dict(expired), True)
+
+
+def test_completed_run_resume_after_receipt_expiry_is_accounting_only(tmp_path):
+    import run_benchmark as rb
+    options, receipt = policy_fixture(tmp_path)
+    out = tmp_path / 'run'
+    budget = rb.open_budget_for_run(out, 'f'*64, MODEL, options, False)
+    budget.settle(budget.reserve({'t': 1}), '.1', {})
+    old = datetime.now(timezone.utc) - timedelta(hours=30)
+    stale = _renew_receipt(tmp_path, options, receipt, 'stale.json', verified_at=old.isoformat(),
+                           expires_at=(old+timedelta(hours=1)).isoformat())
+    expired = {**options, **{k: stale[k] for k in ('paid_budget_receipt', 'paid_budget_receipt_sha256')}}
+    done = rb.open_budget_for_run(out, 'f'*64, MODEL, dict(expired), True, remaining=False)
+    assert done.read_only and done.summary()['measured_cost_usd'] == '0.1'
+    with pytest.raises(pb.BudgetError, match='current'):
+        rb.open_budget_for_run(out, 'f'*64, MODEL, dict(expired), True, remaining=True)
+
+
+def test_reconcile_flag_needs_paid_journal(tmp_path):
+    import run_benchmark as rb
+    options, _ = policy_fixture(tmp_path)
+    with pytest.raises(ValueError, match='reconcile'):
+        rb.open_budget_for_run(tmp_path / 'run', 'f'*64, MODEL, options, False, 'x')
+
+
+def test_halted_journal_still_blocks_reserve(tmp_path, monkeypatch):
+    gate, body = paid_gateway(tmp_path, monkeypatch)
+    gate.budget.halt('reported_provider_host_mismatch')
+    with pytest.raises(pb.BudgetError):
+        gate.budget.reserve({'probe': 1})

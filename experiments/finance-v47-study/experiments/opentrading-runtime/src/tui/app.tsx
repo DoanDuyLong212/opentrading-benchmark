@@ -20,7 +20,7 @@ import {
 import { estimateTokens } from "../core/prompt/budget"
 import { acceptsImageInput } from "../core/agent"
 import { attachMentions, mentionText } from "../core/mentions"
-import { FileIndex, INDEX_MISS_MS, matchPaths } from "../core/fs/file-index"
+import { INDEX_MISS_MS, matchPaths, WorkspaceIndex } from "../core/fs/file-index"
 import { connectedProviders } from "../core/auth"
 import { describeError } from "../core/chat"
 import { TurnHeldError, type BoundSource, type Waiver } from "../core/memory/binding/bind"
@@ -100,6 +100,7 @@ import { ShortcutsPane } from "./shortcuts"
 import { loadModelPrefs } from "../core/model-prefs"
 import { AgentPanel, isDeskRow, panelAgents } from "./agent-panel"
 import { AutoOptInDialog } from "./dialogs/auto-optin"
+import { probeSandbox, sandboxNotice } from "../core/tools/shell/sandbox"
 import { YoloWarningDialog } from "./dialogs/yolo-warning"
 import { FolderTrustDialog } from "./dialogs/folder-trust"
 import { announceMcp } from "./mcp/notices"
@@ -111,12 +112,14 @@ import { color, promptStyle } from "./theme"
 import { cleanSelection, writeClipboard } from "./clipboard"
 import { ArgumentHint, commandItem, Suggestions } from "./suggestions"
 import { Transcript } from "./transcript"
+import { setLinkRoots } from "./file-links"
 import { scrollSetting, scrollTranscript } from "./scroll"
 import { TodoPanel } from "./todo-panel"
-import { PromptInput } from "./prompt/input"
+import { PromptInput, undoKeyKind } from "./prompt/input"
 import { addHistory, HistoryCursor, loadHistory, pastesFor, searchHistory } from "./prompt/history"
 import { imagePath, MAX_IMAGE_BASE64, readClipboardImage, readImageFile, type PromptImage } from "./prompt/image"
 import { isLargePaste, offsetSlice, offsetWidth, pasteLabel, PromptParts, type DraftSnapshot, type ExpandedPrompt } from "./prompt/parts"
+import { BURST_HOLD_MS, PasteBurst } from "./prompt/burst"
 import { editInEditor } from "./prompt/editor"
 import { TODO_WRITE, TodoWriteInput } from "../core/tools/todos"
 import { gapsLine } from "../core/loop/failures"
@@ -923,7 +926,11 @@ export function App(props: {
    * copied. `keep` leaves the highlight in place.
    */
   function copySelection(keep = false) {
-    const text = cleanSelection(renderer.getSelection()?.getSelectedText() ?? "")
+    // Inside the prompt a pill copies as what it holds, not as its label (#353).
+    const selected = renderer.getSelection()?.selectedRenderables ?? []
+    const inPrompt = !!input && input.hasSelection() && selected.length > 0 && selected.every((r) => r === input)
+    const range = inPrompt ? input!.getSelection() : null
+    const text = range ? parts.copyText(range.start, range.end) : cleanSelection(renderer.getSelection()?.getSelectedText() ?? "")
     if (!keep) renderer.clearSelection()
     if (!text) return false
     writeClipboard(text, (t) => renderer.copyToClipboardOSC52(t))
@@ -1085,6 +1092,7 @@ export function App(props: {
       tips: config.ui?.tips !== false,
       askEffort: config.ui?.askEffort !== false,
       terminalNotify: config.ui?.terminalNotify !== false,
+      pasteBurst: config.ui?.pasteBurst === true,
       scroll: scrollSetting(config.ui),
       autoCompactOff: config.autoCompact === "off",
       // The raw setting: "Tự nén hội thoại" off is state.autoCompactOff, which the timer follows.
@@ -1116,6 +1124,9 @@ export function App(props: {
     // A config still naming the removed legacy memory: written back as the notebook and said once (spec 007).
     const moved = await migrateLegacyMemory(props.runtime.home).catch(() => undefined)
     if (moved) pushLine({ kind: "info", text: moved })
+    // The shell sandbox (#352): said once at start, a warning when it cannot isolate (Windows) or cannot run.
+    const sandboxLine = sandboxNotice(props.runtime.shellSandbox, props.runtime.shellSandbox ? probeSandbox() : undefined, { bypass: props.runtime.permissions.bypassAvailable })
+    if (sandboxLine) pushLine({ kind: sandboxLine.level, text: sandboxLine.text })
     // A notebook that did not open says why at once (chat still works); it is also in /config and /memory.
     if (props.runtime.memory.id === "notebook") {
       for (const problem of props.runtime.memory.problems?.() ?? []) pushLine({ kind: "error", text: problem })
@@ -1161,7 +1172,10 @@ export function App(props: {
    * the draft changes.
    */
   const [cursor, setCursor] = createSignal(0)
-  const fileIndex = new FileIndex(props.runtime.workspace.primary, props.runtime.workspace.env())
+  // Every root: /add-dir folders are indexed too, by absolute path (#345).
+  const fileIndex = new WorkspaceIndex(() => props.runtime.workspace.roots(), props.runtime.workspace.env())
+  // Paths in the transcript link to files of the same roots (OSC 8).
+  setLinkRoots(() => props.runtime.workspace.roots())
   const [indexed, setIndexed] = createSignal(0)
   const mention = createMemo(() => {
     const d = draft()
@@ -1371,6 +1385,11 @@ export function App(props: {
       say(`/${command.name}: ${error instanceof Error ? error.message : String(error)}`, "error")
     }
   }
+
+  /** Keys typed faster than anyone types: a paste without bracketed paste (#353). */
+  const burst = new PasteBurst()
+  let heldEnter: ReturnType<typeof setTimeout> | undefined
+  onCleanup(() => clearTimeout(heldEnter))
 
   /** Pills in the prompt: `[Pasted text #1 +49 lines]`, `[Image #2]`, `@src/x.ts`. */
   const parts = new PromptParts(
@@ -1712,7 +1731,7 @@ export function App(props: {
     const playbook = PLAYBOOKS.find((p) => p.meta.name === cmd.name)
     if (playbook) {
       if (!cmd.args) return say(`Dùng: /${playbook.meta.name} <yêu cầu>`, "error")
-      const text = `Chạy playbook ultradesk ${playbook.meta.name} cho yêu cầu sau (gọi desk_run với args đúng schema): ${cmd.args}`
+      const text = `Run the ultradesk playbook ${playbook.meta.name} for the request below (call desk_run with arguments matching its schema): ${cmd.args}`
       // The transcript shows the start of a long pasted argument; the model gets all of it.
       const outgoing = { text, display: `/${playbook.meta.name} ${truncate(cmd.args.replace(/\s+/g, " "), 200)}`, desk: "command" as const }
       if (state.streaming) return void setState("queue", (q) => [...q, { ...outgoing, images: [], saved: {} }])
@@ -1892,6 +1911,16 @@ export function App(props: {
 
   useKeyboard((evt) => {
     if (evt.eventType === "release") return
+    // Text an undo or redo brings back is not swept; an undo after a sweep takes back the cut too (#353).
+    parts.undoing = undoKeyKind(evt) ?? false
+    // An Enter held back as part of a paste (below): a key right behind it means it was a line break.
+    if (heldEnter !== undefined) {
+      clearTimeout(heldEnter)
+      heldEnter = undefined
+      input?.newLine()
+    }
+    // Keys that type a character feed the paste-burst detector (#353).
+    if (!evt.ctrl && !evt.meta && evt.sequence?.length === 1 && evt.sequence >= " ") burst.key()
     // Typing is not being away.
     idleTimer.poke()
     if (search() && !owner() && !state.dialog) return searchKey(evt)
@@ -1909,6 +1938,18 @@ export function App(props: {
     }
     if (owner() || state.dialog) return
     if (state.panelFocus !== undefined) return panelKey(evt)
+    // A terminal without bracketed paste types a paste out key by key (#353). An Enter inside such a
+    // burst waits BURST_HOLD_MS: more keys behind it make it a line break (above); none, and it sends,
+    // so keys a busy app received all at once still end in a send.
+    const plainEnter = (evt.name === "return" || evt.name === "kpenter") && !evt.ctrl && !evt.meta && !evt.shift
+    if (plainEnter && state.pasteBurst && input && !search() && suggestions().length === 0 && fileMatches().length === 0 && burst.enterIsPaste()) {
+      evt.preventDefault()
+      heldEnter = setTimeout(() => {
+        heldEnter = undefined
+        submit()
+      }, BURST_HOLD_MS)
+      return
+    }
     // The chat scrolls from the keyboard too (opencode): PageUp/PageDown half a screen,
     // Ctrl+Home/Ctrl+End to the start/end (plain Home/End stay with the prompt).
     const move =
@@ -2164,6 +2205,8 @@ export function App(props: {
             state.streaming ? "đang trả lời… esc để dừng · enter để xếp hàng tin tiếp" : "Hỏi về thị trường, hoặc gõ / để xem lệnh · ↑ lịch sử · ctrl+j xuống dòng"
           }
           onChange={(v) => {
+            // A pill cut in part (Ctrl+W, a selection) goes whole (#353); the sweep's own change comes back here.
+            if (parts.sweep() > 0) v = input?.plainText ?? v
             if (input) setCursor(input.cursorOffset)
             if (v === draft()) return
             setDraft(v)

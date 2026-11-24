@@ -7,8 +7,10 @@ question line and only gold['solution'] (refusal tasks looked like {"query":...}
 
 Design (MT-Bench reference-guided single-answer grading; FinanceBench-style value
 tolerance):
-  * Judge model: OpenRouter ``nvidia/nemotron-3-ultra-550b-a55b`` (different family
-    from the DeepSeek agent under test), temperature 0.
+  * Judge model: OpenRouter ``anthropic/claude-haiku-5.5``, temperature 0 (amendment
+    2026-11-24). Until then it was ``nvidia/nemotron-3-ultra-550b-a55b``, which in v4.7
+    is also the agent under test, so it graded its own answers. Haiku is a different
+    family from every v4.7 arm model. Calibration: plans/2026-11-15-v47-study-design.md.
   * Judge sees the full public question + answer schema, the scoring type, every
     expected field with its tolerance/accept/reject lists, refusal tokens, verdict
     tokens and the gold notes, plus the full final answer text.
@@ -28,13 +30,17 @@ import urllib.error
 import urllib.request
 from pathlib import Path
 
-JUDGE_MODEL_PAID = 'nvidia/nemotron-3-ultra-550b-a55b'
-# User 2026-11-10: use the free variant (same checkpoint family, free_model_daily_requests quota)
-# until exhausted; on quota/rate-limit errors the call falls back to the paid id.
-JUDGE_MODEL = os.environ.get('JUDGE_MODEL', JUDGE_MODEL_PAID + ':free')
+# User 2026-11-24: Haiku 5.5 replaces Nemotron 3 Ultra (the v4.7 agent model) as judge.
+# Paid only: there is no :free variant, so the :free fallback in call_judge never fires.
+JUDGE_MODEL_PAID = 'anthropic/claude-haiku-5.5'
+JUDGE_MODEL = os.environ.get('JUDGE_MODEL', JUDGE_MODEL_PAID)
 OPENROUTER_URL = 'https://openrouter.ai/api/v1/chat/completions'
-PRICE_PER_1M = {'prompt_usd': 0.6, 'completion_usd': 2.4,
-                'source': 'OpenRouter /api/v1/models 2026-11-10'}
+PRICE_PER_1M = {'prompt_usd': 0.1, 'completion_usd': 0.5,
+                'source': 'OpenRouter /api/v1/models 2026-11-24'}
+# Paid judge: stop before a call once this process has spent JUDGE_MAX_USD (OpenRouter
+# usage.cost, else list price). A resumed run starts a new count; cached verdicts cost 0.
+JUDGE_MAX_USD = float(os.environ.get('JUDGE_MAX_USD', '3'))
+SPENT_USD = [0.0]
 MAX_ANSWER_CHARS = 24000
 VERDICTS = ('correct', 'partial', 'incorrect')
 
@@ -192,7 +198,7 @@ def parse_verdict(text):
 
 def call_judge(user, *, model=JUDGE_MODEL, key=None, max_tokens=8000, timeout=300, retries=3, post=_post,
                deny_data_collection=False, system=None, parser=None):
-    """Free variant first; on 402/429 (free quota or rate limit) retry once on the paid id.
+    """One call; a :free model id retries once on the paid id after 402/429 (free quota or rate limit).
 
     deny_data_collection (used for the sealed holdout): paid id only, OpenRouter provider
     preference data_collection=deny, never the free endpoint."""
@@ -217,6 +223,8 @@ def _call_once(user, *, model, key, max_tokens, timeout, retries, post, provider
     key = key or openrouter_key()
     last_error = None
     for attempt in range(retries + 1):
+        if SPENT_USD[0] >= JUDGE_MAX_USD:
+            raise RuntimeError('judge spend cap reached: %.4f >= JUDGE_MAX_USD=%.2f' % (SPENT_USD[0], JUDGE_MAX_USD))
         try:
             data = post(body, key, timeout)
         except urllib.error.HTTPError as exc:
@@ -235,6 +243,7 @@ def _call_once(user, *, model, key, max_tokens, timeout, retries, post, provider
         message = choice.get('message') or {}
         text = message.get('content') or ''
         usage = data.get('usage') or {}
+        SPENT_USD[0] += usage['cost'] if isinstance(usage.get('cost'), (int, float)) else usage_cost(usage)
         result = {'returned_model': data.get('model'), 'provider': data.get('provider'),
                   'finish_reason': choice.get('finish_reason'), 'usage': usage, 'attempts': attempt + 1}
         if parser is not None:

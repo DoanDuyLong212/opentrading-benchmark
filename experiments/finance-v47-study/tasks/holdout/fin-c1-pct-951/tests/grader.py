@@ -174,13 +174,18 @@ def refusal_hit(text, accept, resolver_empty=False):
         # Remove legacy negative claims before detecting their positive opposite.
         for token in sorted(accept,key=lambda t:len(norm_text(t)),reverse=True):
             rest = re.sub(r"(?<!\w)"+re.escape(norm_text(token))+r"(?!\w)"," ",rest)
-        if re.search(r"\b(?:(?:symbol|ticker|ma)(?: [a-z0-9]+)? (?:hop le|valid|ton tai|da duoc phan giai)|(?:da|van|co) (?:phan giai|giai ma|xac dinh|nhan dien|anh xa)(?: duoc)?|(?:successfully )?(?:resolves? to|resolved to|recognized as)|valid (?:symbol|ticker))\b",rest):
-            bad.append('contradictory resolved symbol')
+        # v4.7 fix (2026-11-24): a positive claim governed by a preceding negation ("resolver không xác nhận
+        # mã tồn tại", "does not confirm the ticker is valid") restates the refusal; it is not a contradiction.
+        for claim in re.finditer(r"\b(?:(?:symbol|ticker|ma)(?: (?!(?:khong|chua|chang|not)\b)[a-z0-9]+)? (?:hop le|valid|ton tai|da duoc phan giai)|(?:da|van|co) (?:phan giai|giai ma|xac dinh|nhan dien|anh xa)(?: duoc)?|(?:successfully )?(?:resolves? to|resolved to|recognized as)|valid (?:symbol|ticker))\b",rest):
+            if not re.search(r"\b(?:khong|chua|chang|not|no)(?: [a-z]+){0,2}\s*$",rest[:claim.start()]):
+                bad.append('contradictory resolved symbol')
+                break
         if re.search(r"\b(?:not recorded|not_recorded|unsupported|request rejected|tool error|loi tool|loi cong cu|loi tham so|invalid (?:arguments?|parameters?)|request bi tu choi|truy van bi tu choi|tham so (?:sai|khong hop le)|khong ho tro truy van)\b",n):
             bad.append('query rejection is not empty resolver evidence')
     availability_patterns = [
         r"\b(?:khong|chua) co (?:du lieu|so lieu|ky|quy|bao cao|gia|nen gia|trong snapshot|trong du lieu)\b",
-        r"\b(?:ky|quy|thang|nam|bao cao|du lieu|so lieu)(?: [a-z0-9]+){0,4} (?:khong|chua) (?:co|duoc cong bo|cong bo|phat hanh|duoc ghi nhan)\b",
+        # v4.7 fix (2026-11-24): "kỳ Q4/2026 chưa tồn tại" is the same availability claim.
+        r"\b(?:ky|quy|thang|nam|bao cao|du lieu|so lieu)(?: [a-z0-9]+){0,4} (?:khong|chua) (?:co|ton tai|duoc cong bo|cong bo|phat hanh|duoc ghi nhan)\b",
         r"\b(?:chua|khong) (?:duoc )?(?:cong bo|phat hanh|ghi nhan) (?:du lieu|so lieu|bao cao|ky|quy)\b",
         r"\b(?:no (?:data|quotes?|reports?|records?|periods?) (?:is |are )?(?:available|present|published|recorded)|(?:data|reports?|periods?) (?:is |are |was |were )?(?:missing|unavailable|not published|not present))\b",
     ]
@@ -395,6 +400,7 @@ ERR_BY_TYPE = {
     "period": "sai_ky",
     "tokens": "sai_chi_tieu",
     "set": "sai_ket_qua",
+    "set_in": "sai_ket_qua",
     "list_order": "sai_ket_qua",
     "str": "sai_nguon",
     "str_all": "sai_nguon",
@@ -565,6 +571,18 @@ def main():
                 return sorted(str(i).strip().upper() for i in (x or []) if str(i).strip())
             ok = isinstance(got, (str, list)) and sset(got) == sorted(s.upper() for s in exp["gold"])
             detail = "answer=%s gold=%s" % (sset(got), exp["gold"])
+        elif t == "set_in":
+            # Investor stratum (amendment 2026-11-24 d): the answered symbol set must equal one of the
+            # pre-computed passing sets (outcome rule applied offline to recorded post-snapshot closes).
+            def sset_in(x):
+                if isinstance(x, str):
+                    x = re.split(r"[,;|\s]+", x.strip())
+                return sorted({str(i).strip().upper() for i in (x or []) if str(i).strip()})
+            raw_n = len(got) if isinstance(got, list) else -1
+            ans_set = sset_in(got) if isinstance(got, (str, list)) else []
+            ok = (isinstance(got, (str, list)) and len(ans_set) == exp["size"] and (raw_n in (-1, exp["size"]))
+                  and ans_set in [sorted(s) for s in exp["accept_sets"]])
+            detail = "answer=%s size=%s passing_sets=%d" % (ans_set, exp["size"], len(exp["accept_sets"]))
         elif t == "list_order":
             gl = [str(x).strip().upper() for x in got] if isinstance(got, list) else []
             ok = gl == [s.upper() for s in exp["gold"]]

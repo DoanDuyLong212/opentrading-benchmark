@@ -88,6 +88,7 @@ ot D:\Dau-tu             # mở ở thư mục khác
 ot -c                    # mở lại phiên mới nhất của thư mục này
 ot -r <id>               # mở lại một phiên cụ thể
 ot --yolo                # ▸▸▸ bỏ qua quyền (hộp cảnh báo đỏ mỗi lần mở)
+ot --yolo --sandbox      # thêm sandbox cho shell: không mạng, chỉ ghi trong workspace (Linux/macOS)
 ot -p "Giá FPT hôm nay?" # một lượt không giao diện, in câu trả lời rồi thoát
 ot -p "…" --yolo --model openrouter/deepseek/deepseek-v4.1-flash-1017 --output-format json
 ot mcp list              # quản lý MCP server không cần mở TUI (ot mcp --help)
@@ -315,7 +316,7 @@ Bốn chế độ quyền, đổi bằng `shift+tab`:
 | `▸▸ tự động` | Một model phụ duyệt từng hành động thay bạn (cần bật một lần) |
 | `▸▸▸ bỏ qua quyền` | Chỉ khi mở bằng `ot --yolo`: không hỏi gì, có hộp cảnh báo đỏ mỗi lần mở |
 
-File chứa khoá/mật khẩu, cấu hình OpenTrading và việc ghi ra ngoài workspace luôn hỏi bạn. `/undo` hoàn tác thay đổi file của agent. Xem [docs/permissions.md](docs/permissions.md).
+File chứa khoá/mật khẩu, cấu hình OpenTrading và việc ghi ra ngoài workspace luôn hỏi bạn. `/undo` hoàn tác thay đổi file của agent. Xem [docs/permissions.md](docs/permissions.md). Lệnh shell có thể chạy trong sandbox của hệ điều hành (`--sandbox` hoặc `shell.sandbox` trong config, mặc định tắt; Windows chưa cách ly): xem [Sandbox cho shell](docs/permissions.md#sandbox-cho-shell-tuỳ-chọn).
 
 ## Subagent
 
@@ -362,6 +363,8 @@ Hầu hết cài đặt chỉnh trong TUI (`/config`, `/effort`, `/model`, `/per
 | `sessions/`, `exports/`, `memory/`, `agents/`, `skills/` | Phiên, file xuất, memory, loại agent và skill của bạn |
 | `bin/` | `opentrading` và `ot` khi cài bằng script (đổi chỗ bằng `OPENTRADING_INSTALL_DIR`) |
 | `bundled/`, `cache/` | Skill/agent/prompt có sẵn mà binary giải ra cho mỗi phiên bản; cache danh sách model, kết quả kiểm tra bản mới |
+
+Trong `/config`, mục "Tìm web qua Exa / Parallel MCP" (`webSearchHostedMcp`) **mặc định tắt**. Khi bật, câu tìm kiếm có thể được gửi tới hai bên thứ ba là Exa (`mcp.exa.ai`) hoặc Parallel (`search.parallel.ai`) khi tìm kiếm của provider và các API có key không trả kết quả, trước khi dùng DuckDuckGo. Câu tìm kiếm có thể để lộ mã bạn đang quan tâm. Hai dịch vụ có giới hạn lượt miễn phí và không cần API key.
 
 Khoá của `desk`: [docs/desk.md](docs/desk.md#cài-đặt-configjson--desk).
 

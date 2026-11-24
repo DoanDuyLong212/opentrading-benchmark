@@ -23,7 +23,9 @@ def test_select_all_pilot_sorted():
     tasks = rb.select_tasks("pilot", sample=None, seed=None, tasks_filter=None)
     ids = [os.path.basename(t) for t in tasks]
     # Amendment 2026-11-11 (d): 22 core + 8 compute + 6 native-memory-v2 pilot tasks.
-    assert len(ids) == 36 and ids == sorted(ids)
+    # 36 + 6 pilot twins of the 2026-11-24 C5/M6 strata (fin-c5-68x, fin-m6-69x).
+    # amendment 2026-11-24 (d): +11 pilot twins of groups A-E and I (53).
+    assert len(ids) == 54 and ids == sorted(ids)  # +1 R twin (amendment 24/11 f)
     assert 'fin-l1-macro-01' not in ids  # ambiguous CPI series is quarantined
     assert 'fin-l4-narrative-01' not in ids  # incomplete narrative evidence rubric
 
@@ -55,8 +57,8 @@ def test_select_holdout_requires_confirm():
     names=sorted(os.path.basename(t) for t in tasks)
     # Amendment 2026-11-11 (d): holdout = 36 core + 7 compute + 7 native-memory-v2 (old fin-mem retired).
     # v4.7 (plan 2026-11-16): + 8 safety-stratum tasks (fin-s*-961..968).
-    assert len(names)==58 and not any(n.startswith('fin-mem-') for n in names)
-    assert sum(n.startswith('fin-m') and not n.startswith('fin-mem') for n in names)==7
+    assert len(names)==70 and not any(n.startswith('fin-mem-') for n in names)
+    assert sum(n.startswith('fin-m') and not n.startswith('fin-mem') for n in names)==11
 
 
 # ---------------------------------------------------------------- workspace

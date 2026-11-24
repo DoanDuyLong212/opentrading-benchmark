@@ -6,6 +6,10 @@ import type { PromptImage } from "./image"
  * `[Image #2]` — like Claude Code. Each pill is a virtual extmark: the cursor jumps over it
  * and one Backspace deletes all of it (OpenTUI does both). The full text is put back when
  * the prompt is sent.
+ *
+ * OpenTUI 0.9 drops a virtual extmark when an edit removes only part of it, so each pill also
+ * has a plain (non-virtual) span mark over the same range: the buffer shrinks that one instead,
+ * which is how a cut pill is still found and swept. Undo brings both back.
  */
 export type PastePart =
   | { kind: "text"; text: string }
@@ -64,9 +68,11 @@ export type ExpandedPrompt = { text: string; images: PromptImage[]; pastes: Reco
 
 export class PromptParts {
   private parts = new Map<number, PastePart>()
-  private marks = new Map<number, number>()
+  /** Span mark id → pill id. */
+  private spans = new Map<number, number>()
   private nextId = 1
   private typeId: number | undefined
+  private spanTypeId: number | undefined
 
   constructor(
     private input: () => TextareaRenderable | undefined,
@@ -80,15 +86,16 @@ export class PromptParts {
     return this.typeId
   }
 
+  private spanType(input: TextareaRenderable) {
+    this.spanTypeId ??= input.extmarks.registerType("prompt-part-span")
+    return this.spanTypeId
+  }
+
   private mark(input: TextareaRenderable, start: number, label: string, id: number, file = false) {
-    const mark = input.extmarks.create({
-      start,
-      end: start + offsetWidth(label),
-      virtual: true,
-      styleId: file ? this.fileStyleId() : this.styleId(),
-      typeId: this.type(input),
-    })
-    this.marks.set(mark, id)
+    const end = start + offsetWidth(label)
+    input.extmarks.create({ start, end, virtual: true, styleId: file ? this.fileStyleId() : this.styleId(), typeId: this.type(input) })
+    const span = input.extmarks.create({ start, end, virtual: false, typeId: this.spanType(input) })
+    this.spans.set(span, id)
   }
 
   /** Put a pill at the cursor (and a space after it, so typing goes on after it). */
@@ -106,18 +113,123 @@ export class PromptParts {
     return label
   }
 
+  /** Each pill's mark with what it covers now: intact or cut. */
+  private all() {
+    const input = this.input()
+    if (!input || this.spanTypeId === undefined) return []
+    const text = input.plainText
+    return input.extmarks.getAllForTypeId(this.spanTypeId).flatMap((m) => {
+      const id = this.spans.get(m.id)
+      const part = id === undefined ? undefined : this.parts.get(id)
+      if (id === undefined || !part) return []
+      const slice = offsetSlice(text, m.start, m.end)
+      return [{ mark: m.id, start: m.start, end: m.end, id, part, intact: slice === labelOf(id, part) }]
+    })
+  }
+
+  private sweeping = false
+  /**
+   * Set by the key handler while an undo or redo key is handled ("undo" / "redo"; `true` counts as
+   * "undo"): the text it brings back is not swept, it is paired with the sweep's own steps instead.
+   */
+  undoing: boolean | "undo" | "redo" = false
+  /** Undo steps the last sweep added (one per pill it removed), still to pair with an undo. */
+  private swept = 0
+  /** Sweep steps an undo took back, still to pair with a redo. */
+  private unswept = 0
+  /**
+   * The box's text right after the sweep's own edits. Change events can come after the edit that
+   * caused them: one that finds this text is the sweep's echo, not a new edit, and keeps the counts.
+   */
+  private after: string | undefined
+
+  /**
+   * A pill is one thing (#353): an edit that cut part of it (Ctrl+W, Alt+Backspace, a selection
+   * that took half of it) removes the rest too, instead of leaving its label as plain text.
+   * Called after every change of the box. The sweep is its own undo step, so one Ctrl+Z after it
+   * takes back both (the box never shows half a label), and one Ctrl+Y does both again.
+   * Returns how many extra edits it made (pills removed, or steps undone/redone), 0 when none.
+   */
+  sweep(): number {
+    const input = this.input()
+    if (!input || this.sweeping) return 0
+    if (this.undoing) return this.pair(input, this.undoing === "redo" ? "redo" : "undo")
+    if (this.after !== undefined && input.plainText === this.after) return 0
+    this.after = undefined
+    this.swept = 0
+    this.unswept = 0
+    // A mark with nothing left under it is gone already; one with text left is a cut pill.
+    const cut = this.all().filter((m) => !m.intact && m.end > m.start)
+    if (cut.length === 0) return 0
+    this.sweeping = true
+    try {
+      // Right to left: removing one leaves the offsets of those before it as they were. Only the
+      // text goes: the mark's entry and the pill's content stay, so Ctrl+Z brings the pill back whole.
+      for (const m of cut.sort((a, b) => b.start - a.start)) {
+        input.setSelection(m.start, m.end)
+        input.deleteSelection()
+      }
+    } finally {
+      this.sweeping = false
+    }
+    this.swept = cut.length
+    this.after = input.plainText
+    return cut.length
+  }
+
+  /**
+   * An undo right after a sweep took back one of its steps: take back the rest and the edit that
+   * cut the pill, so the pill is whole again in one key. A redo of that edit does the sweep again.
+   */
+  private pair(input: TextareaRenderable, kind: "undo" | "redo"): number {
+    const n = kind === "undo" ? this.swept : this.unswept
+    if (n === 0) return 0
+    this.sweeping = true
+    try {
+      for (let i = 0; i < n; i++) if (!(kind === "undo" ? input.undo() : input.redo())) break
+    } finally {
+      this.sweeping = false
+    }
+    if (kind === "undo") {
+      this.swept = 0
+      this.unswept = n
+    } else {
+      this.unswept = 0
+      this.swept = n
+    }
+    this.after = input.plainText
+    return n
+  }
+
+  /**
+   * What a copy of the box between two offsets holds (#353): each whole pill in it is what it
+   * stands for (the pasted text, the file mention), not its label. An image stays its label: a
+   * terminal clipboard holds text.
+   */
+  copyText(start: number, end: number): string {
+    const input = this.input()
+    const text = input?.plainText ?? ""
+    let out = ""
+    let at = start
+    for (const m of this.live().filter((m) => m.start >= start && m.end <= end)) {
+      out += offsetSlice(text, at, m.start) + (m.part.kind === "text" ? m.part.text : m.part.kind === "file" ? m.part.mention : imageLabel(m.id))
+      at = m.end
+    }
+    return out + offsetSlice(text, at, end)
+  }
+
   /** Pills still in the prompt and still intact, left to right. */
   private live() {
     const input = this.input()
-    if (!input || this.typeId === undefined) return []
+    if (!input || this.spanTypeId === undefined) return []
     const text = input.plainText
     return input.extmarks
-      .getAllForTypeId(this.typeId)
-      .map((m) => ({ start: m.start, end: m.end, id: this.marks.get(m.id), slice: offsetSlice(text, m.start, m.end) }))
+      .getAllForTypeId(this.spanTypeId)
+      .map((m) => ({ start: m.start, end: m.end, id: this.spans.get(m.id), slice: offsetSlice(text, m.start, m.end) }))
       .flatMap((m) => {
         const part = m.id === undefined ? undefined : this.parts.get(m.id)
         if (!part || m.id === undefined) return []
-        // Partly deleted (Ctrl+W, a selection): what is left is plain text.
+        // Partly deleted and not swept yet (sweep() runs on the next change): not a pill any more.
         return m.slice === labelOf(m.id, part) ? [{ ...m, id: m.id, part }] : []
       })
       .sort((a, b) => a.start - b.start)
@@ -158,7 +270,7 @@ export class PromptParts {
   /** Forget the pills (the text was replaced). Numbers keep counting up, as in Claude Code. */
   reset() {
     this.parts.clear()
-    this.marks.clear()
+    this.spans.clear()
   }
 
   /**

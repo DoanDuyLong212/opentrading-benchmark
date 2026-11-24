@@ -14,6 +14,7 @@ def test_all_33_memory_tasks_offline_contracts():
  # 140 core + 30 compute + 30 native-memory-v2.
  ds=tasks()+sorted((RETIRED/"main").glob("fin-mem-*"));assert len(ds)==33
  assert all(validate_task(d,run_oracle=False)["pass"]for d in ds)
+ # PRUNE2 (2026-11-24) retired 120 or16-saturated main tasks and added 26 (C5 16, M6 10), then 8 refusal traps restored: main = 114.
  assert len(list((ROOT/"tasks/main").glob("*/task.toml")))==200
 
 def test_verbatim_consent_cannot_be_minted_by_tool(tmp_path):
@@ -52,7 +53,9 @@ def test_missing_and_dnf_remain_scheduled_no_model_pool():
 def test_real_singleturn_manifest_excludes_memory_even_diagnostic_override(tmp_path,monkeypatch):
  import run_benchmark as rb,run_manifest as rm
  # Amendment 2026-11-11 (d): native-memory-v2 tasks enter the main schedule; v1 fin-mem tasks never do.
- for split,count,arms,expected in [('pilot',36,4,288),('main',200,3,1200)]:
+ # Amendment 2026-11-24: pilot +6 C5/M6 twins (42); main after PRUNE2 + C5/M6 = 106, +8 restored refusal traps = 114;
+ # amendment 2026-11-24 (d): +86 (A 24, B 20, C 10, D 8, E 4, I 20) = 200; pilot +11 twins (53 selectable).
+ for split,count,arms,expected in [('pilot',54,4,432),('main',200,3,1200)]:
   selected=rb.select_tasks(split)
   assert len(selected)==count and not any('fin-mem-'in str(p)for p in selected)
   monkeypatch.setattr(rm,'harness_inventory',lambda cfg:{})

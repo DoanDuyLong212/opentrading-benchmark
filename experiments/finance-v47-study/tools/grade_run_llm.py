@@ -2,7 +2,7 @@
 """Secondary LLM-judge grading for one completed run directory.
 
 Reads trials.jsonl, picks the final text of the attempt the driver actually graded,
-judges it with tools/llm_judge.py (OpenRouter Nemotron Ultra) and writes, next to
+judges it with tools/llm_judge.py (OpenRouter Claude Haiku 5.5) and writes, next to
 the sealed artifacts (never modifying them):
 
   llm-graded.jsonl           one row per trial (append-only; --resume skips done rows)

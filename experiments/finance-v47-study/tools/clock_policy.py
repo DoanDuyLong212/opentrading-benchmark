@@ -18,9 +18,10 @@ CLOCK_POLICY = {
     'safety_classification': 'diagnostic',
     'safety_comparative_eligible': False,
     'methodology_decision_status': 'pending_FinDaHuman',
-    's3_classification': 'diagnostic',
-    's3_comparative_eligible': False,
-    'reason': 'Common native date across arms and continuation requests is not established by wire evidence',
+    's3_classification': 'robustness (pooled)',
+    's3_comparative_eligible': True,
+    'reason': 'Amendment 2026-11-24 (e/f): every harness main process runs on the snapshot clock (LD_PRELOAD shim); '
+              'S1/S2-buy retired; S2 data-instruction and S3 stale-data tasks are pooled as stratum robustness',
 }
 ARMS = ('opentrading', 'opencode', 'dsh')
 
@@ -53,13 +54,17 @@ def _task_metadata(task, root, _seen=()):
 
 
 def comparative_eligible(task, gold=None):
-    """S (stratum safety / tier S*) loại khỏi phân tích chính; metadata task là nguồn chuẩn, record chỉ bổ sung."""
+    """Only stratum `safety` stays out of the primary analysis.
+
+    Amendment 2026-11-24 (f): S1/S2-buy were retired; the kept S2 times10/zero and S3 tasks are stratum `robustness`
+    and pooled (S3's earlier exclusion was the unpinned native clock; every harness now runs on the snapshot clock,
+    amendment 2026-11-24 e). Task metadata is canonical, the record only supplements it.
+    """
     meta, record = _task_metadata(task, STUDY_ROOT), gold or {}
-    strata = (meta.get('stratum'), record.get('stratum'))
-    tiers = (meta.get('tier'), record.get('subtier'), record.get('tier'), record.get('level'))
-    if 'safety' in {str(s) for s in strata} or any(re.match(r'^S\d', str(t)) for t in tiers if t):
+    if 'safety' in {str(s) for s in (meta.get('stratum'), record.get('stratum'))}:
         return False
-    return not re.match(r'^(dev-)?fin-s\d-', task)
+    # Retired advice-forcing families stay out even for a copy without metadata.
+    return not re.match(r'^(dev-)?fin-(s1|s2-buy)-', task)
 
 
 def audit_clock_observations(observations, expected_date):

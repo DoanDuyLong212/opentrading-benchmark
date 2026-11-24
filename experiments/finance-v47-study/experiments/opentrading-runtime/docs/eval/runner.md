@@ -15,6 +15,7 @@ Each question has an `id`, a `group` (A–F), the `question`, and `now`, the mom
 
 - A temporary home holds only `auth.json`, the MCP files and the model catalog, plus a `config.json` naming the model. The investor profile, the user's memory and user skills stay out.
 - `--memory notebook|none` is required, like `--model`. `notebook` opens an empty notebook in the run's home before each question: the memory guide goes into the system prompt and `memory_read` is offered, and nothing a question leaves in it reaches the next. Suggestion cards stay off. `none` is the product default. The header records `memory`, and so do the `settings`. Since memory changes the prompt and the tools, record a baseline per setting and never compare across them. The home is deleted at the end, because it holds a copy of the keys.
+- `--effort low|medium|high|xhigh|max` (optional) writes the reasoning effort into the run's own config. Without it the run uses the model's default: the runner never reads the effort from your own `config.json`, because the run has its own home. `settings.effort` records what the run used. `--investor file.md` (optional) copies a fixed profile as the run's `INVESTOR.md`, and `settings.investor_sha256` records its hash. Your own `INVESTOR.md` is never copied (#338).
 - The working folder is empty, so project skills, agents and `.mcp.json` do not apply.
 - `now` reaches the prompt's date, `current_time` and subagents. Web tools still use the real date.
 - Refs are cleared before each question, and each question starts with no history.
@@ -78,7 +79,7 @@ bun scripts/dev/shell-replay.ts test/fixtures/shell-commands.jsonl [--ask]
 
 | Name | Without it |
 |---|---|
-| `gate-empty`, `gate-length`, `gate-malformed`, `gate-text-call`, `gate-promise`, `gate-unfetched`, `gate-fragment` | That stop-gate rule never sends the model back. An empty or malformed answer ends the turn unanswered. |
+| `gate-empty`, `gate-length`, `gate-malformed`, `gate-text-call`, `gate-promise`, `gate-unfetched`, `gate-fragment`, `gate-draft`, `gate-question-echo`, `gate-nudge-echo` | That stop-gate rule never sends the model back. An empty or malformed answer ends the turn unanswered. |
 | `operand-note` | No note after an arithmetic command with a typed number nothing read holds. |
 | `strip-echoes` | Echoed todo lines stay in the saved messages. The gate's own reading of an answer still strips them. |
 | `strip-markup` | Harness markup (`<nhac_nho>`, tool calls written as text, `<thought>` notes; see `src/core/loop/markup.ts`) stays in the stream and the saved messages. The gate's own reading of an answer still strips it. |
@@ -93,6 +94,10 @@ bun scripts/dev/shell-replay.ts test/fixtures/shell-commands.jsonl [--ask]
 `identity.md` and `style.md` have no switch, so `citations-prompt,skills` removes the citation rules and the skills, not every domain instruction. Every run also goes without the investor profile, while the thesis's "same domain instructions" baseline adds it: decide how to compare the two before reporting that row. `answerAfterTools` has no switch: it reshapes past turns, and every question here is a first turn.
 
 ## Request cap
+
+For failure-policy experiments, `--failure-streak nudge=2,stop=4` changes the reminder and stop thresholds only for the eval, and `--breaker-threshold 3` sets the connection-breaker threshold. Both accept positive integers; nudge must be below stop. Without flags the production defaults are 4/8/3. The run header records `settings.failure_thresholds`. Notice lines carry optional structured `failure_policy` and `breaker` fields, so existing trace readers continue to accept them. A tool's MCP `isError` is a tool failure, not a connection-breaker failure.
+
+`--http-request-cap N` is a hard limit for the entire process at the provider's fetch, including retries, subagents and side models. It refuses the next request before sending it; unlike `--turn-requests`, it does not reserve a request to summarize. Use one fresh process per comparison so breaker state does not carry over.
 
 Every model request is counted at the provider's fetch and added to `<home>/usage/YYYY-MM-DD.json`, by the `provider/model` it went to, in the real home. `--max-requests` (default 500) is a cap for the `--model` model for the day, across runs; a side model on another provider is booked under its own name and does not spend it. The run stops before the next question at the cap, and a question that reaches it mid-way is aborted; a `stopped` line records it. The ledger counts only eval runs, not requests made in the TUI, and the day is the local day, while a provider's quota may reset at another hour.
 

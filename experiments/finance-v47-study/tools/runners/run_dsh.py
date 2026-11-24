@@ -21,7 +21,9 @@ CORE = {'timer', 'llm', 'session', 'session-log-deepseek', 'typert', 'typert-loa
  'subprocess', 'subprocess-local', 'sandbox', 'sandbox-local', 'sandbox-policy', 'bash-sandbox',
  'approval', 'permission', 'shell-env', 'tool-bash', 'working-directory', 'fs-sandbox', 'fs-observation-policy',
  # v4.7: DSH's default loop reminder (thresholds 3/5/8), off in or16 by omission.
- 'repeat-tool-reminder'}
+ 'repeat-tool-reminder',
+ # DSH 0.2.2 moved the native tool executor (DSH_TOOLS_MODE=native) into its own entry (smoke 2026-11-24).
+ 'tool-executor-native'}
 
 SESSION_SEARCH = {'optional-session-search', 'optional-session-query-sqlite', 'optional-tool-session-query'}
 
@@ -71,6 +73,8 @@ def run(ws, instruction, task_dir, model, timeout_s, log_path, options=None):
         # (bypass) and OpenCode allows shell. DSH's own unattended stance is danger-full-access; isolation
         # comes from the shared no-network Docker sandbox every arm's commands run in (runners/sandbox).
         {'id': 'sandbox-policy', 'config': {'mode': 'danger-full-access'}},
+        # DSH 0.2.2: permission presets no longer infer a preset from these defaults; name it (smoke 2026-11-24).
+        {'id': 'permission', 'config': {'defaultPreset': 'danger-full-access'}},
         {'insert': [{'id': 'mcp-opentrading', 'name': '@deepseek-ai/dsh-mcp-client', 'config': {
             'serverName': 'opentrading', 'transport': 'stdio', 'command': sys.executable,
             'args': [str(SNAPSHOT)], 'env': mcp_env}}]}]

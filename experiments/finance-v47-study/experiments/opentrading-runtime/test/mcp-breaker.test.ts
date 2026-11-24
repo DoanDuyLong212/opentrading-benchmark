@@ -23,6 +23,20 @@ test("calls pass until the threshold, then are refused with the time left", () =
   expect(b.admit()).toBe(15_000)
 })
 
+test("eval breaker threshold is isolated and emits each transition", () => {
+  let now = 1000
+  const events: string[] = []
+  const b = new ServerBreaker(100, () => now, 2, (event) => events.push(event))
+  b.failure()
+  expect(b.admit()).toBeUndefined()
+  b.failure()
+  expect(b.admit()).toBe(100)
+  now += 100
+  expect(b.admit()).toBeUndefined()
+  b.success()
+  expect(events).toEqual(["opened", "refused", "probe", "closed"])
+})
+
 test("an answer from the server resets the count", () => {
   const { b } = breaker()
   b.failure()
@@ -70,6 +84,44 @@ test("a reconnect lets the next call test it at once, and only that one", () => 
   b.reconnected()
   expect(b.admit()).toBeUndefined()
   expect(b.admit()).toBe(60_000)
+})
+
+test("a reconnect while a probe waits does not admit another probe", () => {
+  const { b, clock } = breaker()
+  trip(b)
+  clock.now += 60_000
+  expect(b.admit()).toBeUndefined()
+  b.reconnected()
+  expect(b.admit()).toBe(60_000)
+  clock.now += 60_000
+  expect(b.admit()).toBeUndefined()
+})
+
+test("an older call failing during a probe cannot make a reconnect admit another probe", () => {
+  const { b, clock } = breaker()
+  trip(b)
+  clock.now += 60_000
+  expect(b.admit()).toBeUndefined()
+  const probe = b.probeToken
+  b.failure()
+  b.reconnected()
+  expect(b.admit()).toBe(60_000)
+  b.failure(probe)
+  b.reconnected()
+  expect(b.admit()).toBeUndefined()
+  expect(b.probeToken).not.toBe(probe)
+})
+
+test("a probe that ends without a verdict does not hold back a later reconnect", () => {
+  const { b, clock } = breaker()
+  trip(b)
+  clock.now += 60_000
+  expect(b.admit()).toBeUndefined()
+  b.abandon(b.probeToken!)
+  // Still open: the next call waits, unless the connection comes back.
+  expect(b.admit()).toBe(60_000)
+  b.reconnected()
+  expect(b.admit()).toBeUndefined()
 })
 
 test("a reconnect means nothing while it is closed", () => {

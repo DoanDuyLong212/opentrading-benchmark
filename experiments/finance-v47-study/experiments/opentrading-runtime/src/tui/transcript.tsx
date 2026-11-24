@@ -11,12 +11,13 @@ import { CardRow } from "./card-row"
 import { useSpinner } from "./ui/clock"
 import { fmtElapsed } from "./activity"
 import { LEGACY_TODO_PREFIX, TODO_PREFIX } from "../core/tools/todos"
-import { LOADED_PREFIX } from "../core/tools/search"
+import { loadedPrefixOf } from "../core/tools/search"
 import { SOURCE_FAILED_PREFIX } from "../core/tools/outcome"
-import { AUTO_BLOCK_PREFIX, USER_DENY_PREFIX, userNoteOf } from "../core/permission/denial"
+import { AUTO_BLOCK_PREFIXES, prefixOf, USER_DENY_PREFIXES, userNoteOf } from "../core/permission/denial"
 import { isSpawn, SubagentRow } from "./subagent-row"
 import { DESK_RUN } from "../core/desk/tool"
 import { DeskCard, deskRunIdOf, isLiveRun, runSummary } from "./desk-card"
+import { linkMarkdown, linkSegments, useLinks } from "./file-links"
 
 /**
  * The conversation, in Claude Code's style:
@@ -56,22 +57,24 @@ function summary(line: ToolLine): { tone: "ok" | "denied" | "answers" | "warning
   if (line.status === "ok" && (out.startsWith(TODO_PREFIX) || out.startsWith(LEGACY_TODO_PREFIX)) && !state.expandTools) return { tone: "ok", lines: [] }
   // A deferred tool called before loading: the call loaded it. One sentence; ctrl+o shows the
   // parameters the model got with it.
-  if (line.status === "error" && out.startsWith(LOADED_PREFIX) && !state.expandTools) {
+  if (line.status === "error" && loadedPrefixOf(out) && !state.expandTools) {
     return { tone: "ok", lines: [out.split("\n")[1] ?? out], wrap: true }
   }
   // The live card under the row says the rest.
   if (line.name === DESK_RUN && line.status === "ok" && deskRunIdOf(out)) return { tone: "ok", lines: [out.split("\n")[0] ?? out] }
   // Auto mode's block: its summary line; ctrl+o shows what the model was told.
-  if (line.status === "error" && out.startsWith(AUTO_BLOCK_PREFIX) && !state.expandTools) {
+  // Both languages: sessions saved before 20/11/2026 hold the Vietnamese prefixes.
+  if (line.status === "error" && prefixOf(out, AUTO_BLOCK_PREFIXES) && !state.expandTools) {
     return { tone: "denied", lines: [`✘ ${out.split("\n")[0]} · /permissions để cho thử lại`], wrap: true }
   }
-  if (line.status === "error" && out.startsWith(USER_DENY_PREFIX)) {
+  const denied = line.status === "error" ? prefixOf(out, USER_DENY_PREFIXES) : undefined
+  if (denied) {
     const note = userNoteOf(out)
     // A hand-off the user refused keeps auto mode's reason: "(auto mode đã chặn [nhãn]: lý do)".
-    const auto = /^ \(auto mode đã chặn[^\n]*\)(?=\.)/.exec(out.slice(USER_DENY_PREFIX.length))?.[0] ?? ""
+    const auto = /^ \(auto mode (?:had blocked it|đã chặn)[^\n]*\)(?=\.)/.exec(out.slice(denied.length))?.[0] ?? ""
     return { tone: "denied", lines: [`✘ Đã từ chối${auto}${note ? ` — "${note}"` : ""}`], wrap: Boolean(auto) }
   }
-  if (line.status === "ok" && out.startsWith("Người dùng đã trả lời:")) {
+  if (line.status === "ok" && (out.startsWith("The user answered:") || out.startsWith("Người dùng đã trả lời:"))) {
     const pairs = [...out.matchAll(/("(?:[^"\\]|\\.)*")=("(?:[^"\\]|\\.)*")/g)].map((m) => `· ${JSON.parse(m[1]!)} → ${JSON.parse(m[2]!)}`)
     if (pairs.length > 0) return { tone: "answers", lines: pairs }
   }
@@ -97,7 +100,7 @@ function ToolRow(props: { line: ToolLine; first: boolean; width: number }) {
     preview(props.line.output ?? "", state.expandTools, props.line.status === "error" ? COLLAPSED_ERROR_LINES : COLLAPSED_LINES)
   const textWidth = () => Math.max(10, props.width - RESULT.length)
   // A deferred tool the call just loaded is not a failure: grey, not red.
-  const loaded = () => (props.line.output ?? "").startsWith(LOADED_PREFIX)
+  const loaded = () => Boolean(loadedPrefixOf(props.line.output ?? ""))
   const outColor = () => (props.line.status === "error" && !loaded() ? color.giam : color.tx3)
 
   /** First result line gets "  ⎿  ", the rest line up under it. */
@@ -108,7 +111,7 @@ function ToolRow(props: { line: ToolLine; first: boolean; width: number }) {
       <box flexDirection="row" height={1}>
         <Gutter glyph={dot()} fg={dotColor()} />
         <text wrapMode="none">
-          <span style={{ fg: color.tx, bold: true }}>{truncate(props.line.label, props.width - 14)}</span>
+          <Linked text={truncate(props.line.label, props.width - 14)} fg={color.tx} bold />
           <span style={{ fg: color.tx3 }}>{duration(props.line.durationMs)}</span>
         </text>
       </box>
@@ -196,9 +199,31 @@ function ResultLine(props: { prefix: string; text: string; fg: string; wrap?: bo
         {props.prefix}
       </text>
       <text fg={props.fg} wrapMode={props.wrap ? "word" : "none"} flexGrow={props.wrap ? 1 : 0} flexShrink={props.wrap ? 1 : 0}>
-        {props.text}
+        <Linked text={props.text} fg={props.fg} />
       </text>
     </box>
+  )
+}
+
+/**
+ * Text whose file paths are OSC 8 links (#345) while the terminal takes them; the plain text otherwise.
+ * Goes inside a <text>.
+ */
+function Linked(props: { text: string; fg: string; bold?: boolean }) {
+  const links = useLinks(useRenderer())
+  const parts = createMemo(() => (links() ? linkSegments(props.text) : [{ text: props.text }]))
+  return (
+    <For each={parts()}>
+      {(part) =>
+        part.href ? (
+          <a href={part.href} style={{ fg: props.fg, bold: props.bold, underline: true }}>
+            {part.text}
+          </a>
+        ) : (
+          <span style={{ fg: props.fg, bold: props.bold }}>{part.text}</span>
+        )
+      }
+    </For>
   )
 }
 
@@ -265,7 +290,7 @@ function Row(props: { line: Line; prev?: Line; index: number; width: number }) {
       <Match when={props.line.kind === "agent-notice" && props.line}>
         {(line) => {
           const l = line() as Extract<Line, { kind: "agent-notice" }>
-          const fg = l.status === "xong" || l.status === "completed" ? color.tang : l.status === "lỗi" || l.status === "failed" ? color.giam : color.tx3
+          const fg = l.status === "xong" || l.status === "completed" || l.status === "done" ? color.tang : l.status === "lỗi" || l.status === "failed" ? color.giam : color.tx3
           return <Hanging glyph="◆" glyphColor={fg} text={l.text} fg={color.tx2} />
         }}
       </Match>
@@ -293,7 +318,9 @@ function Row(props: { line: Line; prev?: Line; index: number; width: number }) {
  * string only when that changes, so a token inside an unfinished heading costs nothing.
  */
 function AssistantRow(props: { line: Extract<Line, { kind: "assistant" }> }) {
-  const scene = useRenderer().nativeScene
+  const renderer = useRenderer()
+  const scene = renderer.nativeScene
+  const links = useLinks(renderer)
   const view = createMemo(() => streamView(props.line.text, props.line.done), undefined, {
     equals: (a, b) => a.markdown === b.markdown && a.heldTableRows === b.heldTableRows,
   })
@@ -303,18 +330,17 @@ function AssistantRow(props: { line: Extract<Line, { kind: "assistant" }> }) {
       <box flexDirection="column" flexGrow={1} flexShrink={1}>
         <Show when={view().markdown}>
           {/* Props are applied in order: content last, or nested list items are built
-              before the style and block mode reach them (their highlight then fails raw). */}
+              before the style reaches them (their highlight then fails raw). */}
           <markdown
             flexGrow={1}
             flexShrink={1}
             syntaxStyle={markdownStyle(scene)}
-            internalBlockMode="top-level"
             conceal
             fg={color.tx}
             bg={color.bg}
             tableOptions={{ style: "grid" }}
             streaming={!props.line.done}
-            content={view().markdown}
+            content={links() && props.line.done ? linkMarkdown(view().markdown) : view().markdown}
           />
         </Show>
         {/* Outside <markdown>: there the text would be parsed. */}

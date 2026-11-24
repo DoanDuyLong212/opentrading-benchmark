@@ -105,7 +105,10 @@ def paid_policy(model, options, *, require_current=True):
     if key.get('limit_reset') is not None or 'limit_reset' not in key:
         raise BudgetError('paid key limit must be lifetime, without reset')
     limit, remaining, used = (usd(key.get(k)) for k in ('limit', 'limit_remaining', 'usage'))
-    if not (0 < cap <= remaining <= limit) or total_usd([used, remaining]) > limit:
+    # On a resumed run the receipt is renewed after part of the cap was already measured; the key then
+    # only has to cover what is left of this run's cap (prior spend comes from the run's own journal).
+    prior = usd(options.get('_paid_prior_spend_usd', 0))
+    if not (0 < cap <= total_usd([remaining, prior]) and remaining <= limit) or total_usd([used, remaining]) > limit:
         raise BudgetError('paid allocation exceeds verified remaining key limit')
     if receipt.get('dedicated_key') is not True or receipt.get('byok_disabled') is not True:
         raise BudgetError('paid receipt requires dedicated key and BYOK disabled')
@@ -228,6 +231,11 @@ class PaidBudget:
                 if not isinstance(row.get('reason'), str) or not row['reason']:
                     raise BudgetError('invalid paid halt event')
                 continue
+            if row['kind'] == 'renew':
+                if pending:
+                    raise BudgetError('paid receipt renewed with an unresolved reservation')
+                renewed_policy(self.contract['policy'], row.get('policy'))
+                continue
             identity = row['attempt_id']
             if row['kind'] == 'reserve':
                 if identity in pending or identity in settled:
@@ -245,13 +253,21 @@ class PaidBudget:
         breach = breach or measured > usd(self.contract['policy']['cap_usd'])
         return pending, settled, measured, breach
 
+    def policy(self, rows=None):
+        """Effective policy: the init contract's, or the latest renewed receipt's (same immutable identity)."""
+        if rows is None:
+            with self.locked():
+                rows = self._read()
+        renewals = [r['policy'] for r in rows if r['kind'] == 'renew']
+        return renewals[-1] if renewals else self.contract['policy']
+
     def check_available(self):
         with self.locked():
             rows = self._read()
             pending, _, measured, breach = self._state(rows)
             if pending or breach or any(r['kind'] == 'halt' for r in rows):
                 raise BudgetError('paid dispatch blocked: unresolved charge or measured bound breach')
-            if total_usd([measured, usd(self.contract['policy']['attempt_upper_bound_usd'])]) > usd(self.contract['policy']['cap_usd']):
+            if total_usd([measured, usd(self.policy(rows)['attempt_upper_bound_usd'])]) > usd(self.contract['policy']['cap_usd']):
                 raise BudgetError('paid USD budget exhausted')
 
     def reserve(self, metadata):
@@ -259,7 +275,7 @@ class PaidBudget:
         with self.locked():
             rows = self._read()
             pending, _, measured, breach = self._state(rows)
-            bound = usd(self.contract['policy']['attempt_upper_bound_usd'], positive=True)
+            bound = usd(self.policy(rows)['attempt_upper_bound_usd'], positive=True)
             if pending or breach or any(r['kind'] == 'halt' for r in rows):
                 raise BudgetError('paid dispatch blocked: unresolved charge or measured bound breach')
             if total_usd([measured, *pending.values(), bound]) > usd(self.contract['policy']['cap_usd']):
@@ -285,6 +301,33 @@ class PaidBudget:
             if self._state(rows + [{**event}])[3]:
                 raise BudgetError('measured paid charge breached approved upper bound; cohort stopped')
 
+    def renew(self, policy):
+        """Record a newly reviewed receipt for the same run (resume after the 24 h receipt window)."""
+        if self.read_only: raise BudgetError("accounting-only budget cannot mutate")
+        with self.locked():
+            rows = self._read()
+            pending, _, measured, breach = self._state(rows)
+            if pending or breach or any(r['kind'] == 'halt' for r in rows):
+                raise BudgetError('paid resume blocked: unresolved charge, halt or measured bound breach')
+            renewed_policy(self.contract['policy'], policy)
+            if policy != self.policy(rows):
+                self._append(rows, {'kind': 'renew', 'policy': policy, 'measured_before_usd': str(measured)})
+
+    def reconcile_pending(self, reason):
+        """Settle every reservation left by a crash at its full reserved upper bound (never under-counts)."""
+        if self.read_only: raise BudgetError("accounting-only budget cannot mutate")
+        if not isinstance(reason, str) or not reason:
+            raise BudgetError('reconciliation needs a reason')
+        with self.locked():
+            rows = self._read()
+            pending, _, _, _ = self._state(rows)
+            for identity, reserved in sorted(pending.items()):
+                event = {'kind': 'settle', 'attempt_id': identity, 'cost_usd': str(reserved),
+                         'evidence': {'reconciled': 'upper_bound', 'reason': reason}}
+                self._append(rows, event)
+                rows = self._read()
+            return len(pending)
+
     def halt(self, reason):
         if self.read_only: raise BudgetError("accounting-only budget cannot mutate")
         with self.locked():
@@ -296,14 +339,90 @@ class PaidBudget:
         with self.locked():
             rows = self._read()
             pending, settled, measured, breach = self._state(rows)
+            bounded = [r for r in settled.values() if (r.get('evidence') or {}).get('reconciled') == 'upper_bound']
+            # measured_cost_usd stays the conservative total used for the cap; reconciled crash leftovers are counted
+            # at their reserved upper bound and are not observed provider charges.
             return {'measured_cost_usd': str(measured), 'settled_requests': len(settled),
+                    'observed_cost_usd': str(total_usd(usd(r['cost_usd']) for r in settled.values() if r not in bounded)),
+                    'reconciled_upper_bound_requests': len(bounded),
+                    'reconciled_upper_bound_usd': str(total_usd(usd(r['cost_usd']) for r in bounded)),
+                    'receipt_renewals': sum(r['kind'] == 'renew' for r in rows),
                     'reserved_usd': str(total_usd(pending.values())),
                     'unknown_requests': len(pending), 'complete': not pending,
                     'bound_breached': breach, 'halted': any(r['kind'] == 'halt' for r in rows),
                     'halt_reasons': [r['reason'] for r in rows if r['kind'] == 'halt'], 'source': 'OpenRouter usage.cost'}
 
 
+IMMUTABLE_POLICY = ('cap_usd', 'key_fingerprint', 'allocation_path', 'provider_host', 'model', 'route', 'service_tier')
+
+
+def renewed_policy(original, policy):
+    if not isinstance(policy, dict) or set(policy) != set(original):
+        raise BudgetError('renewed paid policy has a different shape')
+    changed = [k for k in IMMUTABLE_POLICY if policy.get(k) != original.get(k)]
+    if changed:
+        raise BudgetError('renewed paid receipt changes run identity: ' + ', '.join(changed))
+    usd(policy['attempt_upper_bound_usd'], positive=True)
+    return policy
+
+
+RENEWAL_FILE = 'PAID-RECEIPT-RENEWAL.json'
+
+
+def _journal_contract(out, manifest_fingerprint):
+    head = json.loads((out / 'paid-budget.jsonl').read_text().splitlines()[0])
+    contract = head.get('contract') or {}
+    if contract.get('manifest_sha256') != manifest_fingerprint or contract.get('run') != str(out):
+        raise BudgetError('paid journal belongs to another run or manifest')
+    return contract
+
+
+def read_run_budget(out_dir, manifest_fingerprint, options):
+    """Accounting-only view of an existing journal, keyed by its own init contract (any receipt may have expired)."""
+    out = Path(out_dir).resolve()
+    contract = _journal_contract(out, manifest_fingerprint)
+    budget = PaidBudget(out / 'paid-budget.jsonl', contract)
+    budget.read_only = True
+    options['paid_budget_journal'] = str(out / 'paid-budget.jsonl')
+    options['paid_budget_contract'] = contract
+    return budget
+
+
+def resume_run_budget(out_dir, manifest_fingerprint, model, options, *, reconcile_pending=None):
+    """Resume a paid run that already has a journal, with spending enabled.
+
+    Safe by construction: the journal chain and checkpoint must verify; the init contract must be this
+    run and this manifest; halts and bound breaches stay blocking; crash leftovers (pending reservations)
+    block unless explicitly reconciled at their full reserved bound. A receipt older than 24 h is replaced
+    only through an owner-written <run>/PAID-RECEIPT-RENEWAL.json (the sealed config stays unchanged), and
+    the renewed receipt must keep cap, key, host, model, route and allocation; it is journaled as 'renew'.
+    """
+    out = Path(out_dir).resolve()
+    path = out / 'paid-budget.jsonl'
+    if options.get('provider_route') != 'openrouter_paid':
+        return open_run_budget(out_dir, manifest_fingerprint, model, options, True, accounting_only=False)
+    contract = _journal_contract(out, manifest_fingerprint)
+    renewal = out / RENEWAL_FILE
+    if renewal.exists():
+        doc = json.loads(renewal.read_text())
+        if not doc.get('approved_by') or not doc.get('decision'):
+            raise BudgetError('paid receipt renewal needs approved_by and decision')
+        options['paid_budget_receipt'] = doc['paid_budget_receipt']
+        options['paid_budget_receipt_sha256'] = doc['paid_budget_receipt_sha256']
+    budget = PaidBudget(path, contract)
+    if reconcile_pending:
+        budget.reconcile_pending(reconcile_pending)
+    measured = budget._state(budget._read())[2]
+    options['_paid_prior_spend_usd'] = str(measured)
+    policy = paid_policy(model, options)
+    budget.renew(policy)
+    options['paid_budget_journal'] = str(path)
+    options['paid_budget_contract'] = contract
+    return budget
+
+
 def open_run_budget(out_dir, manifest_fingerprint, model, options, resume=False, *, accounting_only=False):
+    options.pop('_paid_prior_spend_usd', None)
     policy = paid_policy(model, options, require_current=not accounting_only)
     if accounting_only and not resume:
         raise BudgetError("accounting-only access cannot initialize an allocation")

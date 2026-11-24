@@ -57,9 +57,30 @@ def trusted_tool(name):
             launcher = modules/'@deepseek-ai/dsh/lib/bin.js'
             if path != launcher.resolve() or sha256(modules.parent/'package-lock.json') != anchor['dsh']['lock_sha256']:
                 raise ValueError('Pinned DSH launcher/module root or lock mismatch')
-        if tree_digest(root) != expected_tree:
-            raise ValueError('Pinned '+name+' installed package tree SHA256 mismatch')
+        # 2026-11-24: hashing the whole DSH tree costs ~25 s and ran on every call (2x per DSH turn),
+        # inflating DSH wall time. Verify the full digest once per process; afterwards re-verify cheaply that
+        # no file in the tree changed (path, size, mtime_ns) since that verified digest.
+        stamp = _tree_stamp(root)
+        if _VERIFIED_TREES.get((str(root), expected_tree)) != stamp:
+            if tree_digest(root) != expected_tree:
+                raise ValueError('Pinned '+name+' installed package tree SHA256 mismatch')
+            _VERIFIED_TREES[(str(root), expected_tree)] = stamp
     return path
+
+
+_VERIFIED_TREES = {}
+
+
+def _tree_stamp(root):
+    """Cheap change detector for a tree whose full SHA256 digest was already verified in this process."""
+    entries = []
+    for current, dirs, files in os.walk(root):
+        dirs.sort()
+        for name in sorted(files):
+            item = os.path.join(current, name)
+            st = os.lstat(item)
+            entries.append((item, st.st_size, st.st_mtime_ns, st.st_mode))
+    return hashlib.sha256(repr(entries).encode()).hexdigest()
 
 
 def trusted_dsh_modules():

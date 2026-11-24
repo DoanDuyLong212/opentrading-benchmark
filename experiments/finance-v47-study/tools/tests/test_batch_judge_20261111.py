@@ -6,6 +6,8 @@ sys.path.insert(0, str(ROOT / 'tools'))
 import llm_judge  # noqa: E402
 
 T = ROOT / 'tasks/main/fin-c1-pct-401'
+if not T.is_dir():  # retired by the 2026-11-24 prune; same files
+    T = ROOT / 'tasks-retired/main/fin-c1-pct-401'
 G = json.loads((T / 'solution/gold.json').read_text())
 
 

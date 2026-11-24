@@ -1,0 +1,697 @@
+{
+  "task_id": "fin-i4-port-754",
+  "scoring": "outcome",
+  "solution": {
+    "type": "I4",
+    "candidates": [
+      "BID",
+      "CTG",
+      "HDB",
+      "TPB",
+      "VND",
+      "HCM",
+      "KDC",
+      "DBC"
+    ],
+    "allowed": null,
+    "entry_date": "2026-10-30",
+    "end_date": "2026-11-23",
+    "passing_sets": [
+      [
+        "BID",
+        "CTG",
+        "DBC",
+        "VND"
+      ],
+      [
+        "BID",
+        "DBC",
+        "HDB",
+        "VND"
+      ],
+      [
+        "BID",
+        "DBC",
+        "TPB",
+        "VND"
+      ],
+      [
+        "BID",
+        "DBC",
+        "HCM",
+        "VND"
+      ],
+      [
+        "BID",
+        "DBC",
+        "KDC",
+        "VND"
+      ],
+      [
+        "CTG",
+        "HDB",
+        "TPB",
+        "VND"
+      ],
+      [
+        "CTG",
+        "DBC",
+        "HDB",
+        "TPB"
+      ],
+      [
+        "CTG",
+        "HCM",
+        "HDB",
+        "VND"
+      ],
+      [
+        "CTG",
+        "HDB",
+        "KDC",
+        "VND"
+      ],
+      [
+        "CTG",
+        "DBC",
+        "HDB",
+        "VND"
+      ],
+      [
+        "CTG",
+        "DBC",
+        "HCM",
+        "HDB"
+      ],
+      [
+        "CTG",
+        "DBC",
+        "HDB",
+        "KDC"
+      ],
+      [
+        "CTG",
+        "HCM",
+        "TPB",
+        "VND"
+      ],
+      [
+        "CTG",
+        "KDC",
+        "TPB",
+        "VND"
+      ],
+      [
+        "CTG",
+        "DBC",
+        "TPB",
+        "VND"
+      ],
+      [
+        "CTG",
+        "DBC",
+        "HCM",
+        "TPB"
+      ],
+      [
+        "CTG",
+        "DBC",
+        "KDC",
+        "TPB"
+      ],
+      [
+        "CTG",
+        "HCM",
+        "KDC",
+        "VND"
+      ],
+      [
+        "CTG",
+        "DBC",
+        "HCM",
+        "VND"
+      ],
+      [
+        "CTG",
+        "DBC",
+        "KDC",
+        "VND"
+      ],
+      [
+        "CTG",
+        "DBC",
+        "HCM",
+        "KDC"
+      ],
+      [
+        "HCM",
+        "HDB",
+        "TPB",
+        "VND"
+      ],
+      [
+        "HDB",
+        "KDC",
+        "TPB",
+        "VND"
+      ],
+      [
+        "DBC",
+        "HDB",
+        "TPB",
+        "VND"
+      ],
+      [
+        "DBC",
+        "HCM",
+        "HDB",
+        "TPB"
+      ],
+      [
+        "DBC",
+        "HDB",
+        "KDC",
+        "TPB"
+      ],
+      [
+        "HCM",
+        "HDB",
+        "KDC",
+        "VND"
+      ],
+      [
+        "DBC",
+        "HCM",
+        "HDB",
+        "VND"
+      ],
+      [
+        "DBC",
+        "HDB",
+        "KDC",
+        "VND"
+      ],
+      [
+        "DBC",
+        "HCM",
+        "HDB",
+        "KDC"
+      ],
+      [
+        "HCM",
+        "KDC",
+        "TPB",
+        "VND"
+      ],
+      [
+        "DBC",
+        "HCM",
+        "TPB",
+        "VND"
+      ],
+      [
+        "DBC",
+        "KDC",
+        "TPB",
+        "VND"
+      ],
+      [
+        "DBC",
+        "HCM",
+        "KDC",
+        "TPB"
+      ],
+      [
+        "DBC",
+        "HCM",
+        "KDC",
+        "VND"
+      ]
+    ],
+    "answer_size": 4,
+    "chance_base_rate": 0.5,
+    "outcomes": {
+      "BID": {
+        "entry": 33.4,
+        "end_close": 30.1,
+        "peak_close": 32.45,
+        "low_close": 30.05,
+        "ret": -9.8802,
+        "peak": -2.8443,
+        "low": -10.0299
+      },
+      "CTG": {
+        "entry": 30.3,
+        "end_close": 30.35,
+        "peak_close": 31.9,
+        "low_close": 29.75,
+        "ret": 0.165,
+        "peak": 5.2805,
+        "low": -1.8152
+      },
+      "HDB": {
+        "entry": 22.4,
+        "end_close": 21.8,
+        "peak_close": 22.6,
+        "low_close": 21.8,
+        "ret": -2.6786,
+        "peak": 0.8929,
+        "low": -2.6786
+      },
+      "TPB": {
+        "entry": 12.65,
+        "end_close": 12.35,
+        "peak_close": 13.1,
+        "low_close": 12.35,
+        "ret": -2.3715,
+        "peak": 3.5573,
+        "low": -2.3715
+      },
+      "VND": {
+        "entry": 13.4,
+        "end_close": 14.45,
+        "peak_close": 14.95,
+        "low_close": 13.05,
+        "ret": 7.8358,
+        "peak": 11.5672,
+        "low": -2.6119
+      },
+      "HCM": {
+        "entry": 23.2,
+        "end_close": 23.0,
+        "peak_close": 24.25,
+        "low_close": 22.95,
+        "ret": -0.8621,
+        "peak": 4.5259,
+        "low": -1.0776
+      },
+      "KDC": {
+        "entry": 50.2,
+        "end_close": 50.0,
+        "peak_close": 50.4,
+        "low_close": 50.0,
+        "ret": -0.3984,
+        "peak": 0.3984,
+        "low": -0.3984
+      },
+      "DBC": {
+        "entry": 15.4,
+        "end_close": 16.4,
+        "peak_close": 16.95,
+        "low_close": 15.2,
+        "ret": 6.4935,
+        "peak": 10.0649,
+        "low": -1.2987
+      }
+    },
+    "vnindex_ret": -2.5539,
+    "post_sha256": "fdfa27527f56099a0534909f9abd1a7d69cb5b616b857aacd8755654d522f06c"
+  },
+  "as_of": "2026-11-24T18:51:22.395329+07:00",
+  "split": "pilot",
+  "expects": [
+    {
+      "type": "set_in",
+      "path": "values.portfolio",
+      "size": 4,
+      "accept_sets": [
+        [
+          "BID",
+          "CTG",
+          "DBC",
+          "VND"
+        ],
+        [
+          "BID",
+          "DBC",
+          "HDB",
+          "VND"
+        ],
+        [
+          "BID",
+          "DBC",
+          "TPB",
+          "VND"
+        ],
+        [
+          "BID",
+          "DBC",
+          "HCM",
+          "VND"
+        ],
+        [
+          "BID",
+          "DBC",
+          "KDC",
+          "VND"
+        ],
+        [
+          "CTG",
+          "HDB",
+          "TPB",
+          "VND"
+        ],
+        [
+          "CTG",
+          "DBC",
+          "HDB",
+          "TPB"
+        ],
+        [
+          "CTG",
+          "HCM",
+          "HDB",
+          "VND"
+        ],
+        [
+          "CTG",
+          "HDB",
+          "KDC",
+          "VND"
+        ],
+        [
+          "CTG",
+          "DBC",
+          "HDB",
+          "VND"
+        ],
+        [
+          "CTG",
+          "DBC",
+          "HCM",
+          "HDB"
+        ],
+        [
+          "CTG",
+          "DBC",
+          "HDB",
+          "KDC"
+        ],
+        [
+          "CTG",
+          "HCM",
+          "TPB",
+          "VND"
+        ],
+        [
+          "CTG",
+          "KDC",
+          "TPB",
+          "VND"
+        ],
+        [
+          "CTG",
+          "DBC",
+          "TPB",
+          "VND"
+        ],
+        [
+          "CTG",
+          "DBC",
+          "HCM",
+          "TPB"
+        ],
+        [
+          "CTG",
+          "DBC",
+          "KDC",
+          "TPB"
+        ],
+        [
+          "CTG",
+          "HCM",
+          "KDC",
+          "VND"
+        ],
+        [
+          "CTG",
+          "DBC",
+          "HCM",
+          "VND"
+        ],
+        [
+          "CTG",
+          "DBC",
+          "KDC",
+          "VND"
+        ],
+        [
+          "CTG",
+          "DBC",
+          "HCM",
+          "KDC"
+        ],
+        [
+          "HCM",
+          "HDB",
+          "TPB",
+          "VND"
+        ],
+        [
+          "HDB",
+          "KDC",
+          "TPB",
+          "VND"
+        ],
+        [
+          "DBC",
+          "HDB",
+          "TPB",
+          "VND"
+        ],
+        [
+          "DBC",
+          "HCM",
+          "HDB",
+          "TPB"
+        ],
+        [
+          "DBC",
+          "HDB",
+          "KDC",
+          "TPB"
+        ],
+        [
+          "HCM",
+          "HDB",
+          "KDC",
+          "VND"
+        ],
+        [
+          "DBC",
+          "HCM",
+          "HDB",
+          "VND"
+        ],
+        [
+          "DBC",
+          "HDB",
+          "KDC",
+          "VND"
+        ],
+        [
+          "DBC",
+          "HCM",
+          "HDB",
+          "KDC"
+        ],
+        [
+          "HCM",
+          "KDC",
+          "TPB",
+          "VND"
+        ],
+        [
+          "DBC",
+          "HCM",
+          "TPB",
+          "VND"
+        ],
+        [
+          "DBC",
+          "KDC",
+          "TPB",
+          "VND"
+        ],
+        [
+          "DBC",
+          "HCM",
+          "KDC",
+          "TPB"
+        ],
+        [
+          "DBC",
+          "HCM",
+          "KDC",
+          "VND"
+        ]
+      ]
+    }
+  ],
+  "contract_version": 2,
+  "stratum": "investor",
+  "tier": "I4",
+  "notes": "Investor stratum (amendment 2026-11-24 d): primary = pre-registered outcome rule on recorded post-snapshot closes (tools/investor_specs_20261124.py).",
+  "provenance_contract": [
+    {
+      "tool": "vn_quote_history",
+      "source": "vnstock",
+      "as_of": "2026-11-24T18:51:22.395329+07:00",
+      "matched_entry_id": "hist:BID",
+      "response_sha256": "76df32e8f558bddbc5ff1feca3a627499c0a0b5cf032ccf773c25b859f43830a"
+    },
+    {
+      "tool": "vn_quote_history",
+      "source": "vnstock",
+      "as_of": "2026-11-24T18:51:22.395329+07:00",
+      "matched_entry_id": "hist:CTG",
+      "response_sha256": "cad3c21af7ff7b33b73a825a38537b162e777d2ea6030c920f64e5454f2d162e"
+    },
+    {
+      "tool": "vn_quote_history",
+      "source": "vnstock",
+      "as_of": "2026-11-24T18:51:22.395329+07:00",
+      "matched_entry_id": "hist:HDB",
+      "response_sha256": "ed842cf704c90ca719654912319f164da1e48add06017c4cadcc88a4ba8e561d"
+    },
+    {
+      "tool": "vn_quote_history",
+      "source": "vnstock",
+      "as_of": "2026-11-24T18:51:22.395329+07:00",
+      "matched_entry_id": "hist:TPB",
+      "response_sha256": "a88af955aca0b36a700a3b18f492ec90cd69514081eedfd142995cf50d824d47"
+    },
+    {
+      "tool": "vn_quote_history",
+      "source": "vnstock",
+      "as_of": "2026-11-24T18:51:22.395329+07:00",
+      "matched_entry_id": "hist:VND",
+      "response_sha256": "a772af8246744a8eb52a5348790e42d55978e7f06f5bef98ca689a012b5808c2"
+    },
+    {
+      "tool": "vn_quote_history",
+      "source": "vnstock",
+      "as_of": "2026-11-24T18:51:22.395329+07:00",
+      "matched_entry_id": "hist:HCM",
+      "response_sha256": "031af667a83e5486179a642e1a95033d6332653e4e1de16b724c7521f7a0fb2d"
+    },
+    {
+      "tool": "vn_quote_history",
+      "source": "vnstock",
+      "as_of": "2026-11-24T18:51:22.395329+07:00",
+      "matched_entry_id": "hist:KDC",
+      "response_sha256": "4677489cb888d81efdb97c2bf4f13dc4adc078221f6ca1b810addcf1713186db"
+    },
+    {
+      "tool": "vn_quote_history",
+      "source": "vnstock",
+      "as_of": "2026-11-24T18:51:22.395329+07:00",
+      "matched_entry_id": "hist:DBC",
+      "response_sha256": "dc1977ec4f8f15e0080c8e722275fc1b4274488b4ddee6b8cd598f1e29546d66"
+    }
+  ],
+  "provenance_catalog": [
+    {
+      "tool": "financial_statements",
+      "source": "vietstock",
+      "as_of": "2026-11-24T15:51:30.168761+07:00",
+      "matched_entry_id": "fs:DBC:q:CDKT",
+      "response_sha256": "c07d366f6afd0d45abdf8bd2fd79977ff098800b99202fcd699e89a902938b84"
+    },
+    {
+      "tool": "financial_statements",
+      "source": "vietstock",
+      "as_of": "2026-11-24T15:51:30.168761+07:00",
+      "matched_entry_id": "fs:DBC:q:KQKD",
+      "response_sha256": "21da3c89c5dce49b5106160308d5453b98da04cbc50a689b9262378a9e1507b7"
+    },
+    {
+      "tool": "financial_statements",
+      "source": "vietstock",
+      "as_of": "2026-11-24T15:51:30.168761+07:00",
+      "matched_entry_id": "fs:KDC:q:CDKT",
+      "response_sha256": "558cb198f6808b6baf4a0b6ab6819f3dfd9744bf1070b78eb0b9f68314cdfdd8"
+    },
+    {
+      "tool": "financial_statements",
+      "source": "vietstock",
+      "as_of": "2026-11-24T15:51:30.168761+07:00",
+      "matched_entry_id": "fs:KDC:q:KQKD",
+      "response_sha256": "be4ae5d19cb4fadec31372dc47e50474f428083efcef8c714258546b83382809"
+    },
+    {
+      "tool": "vn_quote_history",
+      "source": "vnstock",
+      "as_of": "2026-11-24T18:51:22.395329+07:00",
+      "matched_entry_id": "hist:BID",
+      "response_sha256": "76df32e8f558bddbc5ff1feca3a627499c0a0b5cf032ccf773c25b859f43830a"
+    },
+    {
+      "tool": "vn_quote_history",
+      "source": "vnstock",
+      "as_of": "2026-11-24T18:51:22.395329+07:00",
+      "matched_entry_id": "hist:CTG",
+      "response_sha256": "cad3c21af7ff7b33b73a825a38537b162e777d2ea6030c920f64e5454f2d162e"
+    },
+    {
+      "tool": "vn_quote_history",
+      "source": "vnstock",
+      "as_of": "2026-11-24T18:51:22.395329+07:00",
+      "matched_entry_id": "hist:DBC",
+      "response_sha256": "dc1977ec4f8f15e0080c8e722275fc1b4274488b4ddee6b8cd598f1e29546d66"
+    },
+    {
+      "tool": "vn_quote_history",
+      "source": "vnstock",
+      "as_of": "2026-11-24T18:51:22.395329+07:00",
+      "matched_entry_id": "hist:HCM",
+      "response_sha256": "031af667a83e5486179a642e1a95033d6332653e4e1de16b724c7521f7a0fb2d"
+    },
+    {
+      "tool": "vn_quote_history",
+      "source": "vnstock",
+      "as_of": "2026-11-24T18:51:22.395329+07:00",
+      "matched_entry_id": "hist:HDB",
+      "response_sha256": "ed842cf704c90ca719654912319f164da1e48add06017c4cadcc88a4ba8e561d"
+    },
+    {
+      "tool": "vn_quote_history",
+      "source": "vnstock",
+      "as_of": "2026-11-24T18:51:22.395329+07:00",
+      "matched_entry_id": "hist:KDC",
+      "response_sha256": "4677489cb888d81efdb97c2bf4f13dc4adc078221f6ca1b810addcf1713186db"
+    },
+    {
+      "tool": "vn_quote_history",
+      "source": "vnstock",
+      "as_of": "2026-11-24T18:51:22.395329+07:00",
+      "matched_entry_id": "hist:TPB",
+      "response_sha256": "a88af955aca0b36a700a3b18f492ec90cd69514081eedfd142995cf50d824d47"
+    },
+    {
+      "tool": "vn_quote_history",
+      "source": "vnstock",
+      "as_of": "2026-11-24T18:51:22.395329+07:00",
+      "matched_entry_id": "hist:VND",
+      "response_sha256": "a772af8246744a8eb52a5348790e42d55978e7f06f5bef98ca689a012b5808c2"
+    },
+    {
+      "tool": "vn_index_ohlcv",
+      "source": "vnstock",
+      "as_of": "2026-11-24T18:51:22.395329+07:00",
+      "matched_entry_id": "idx:VNINDEX",
+      "response_sha256": "b488774051825141515f6c44fb7e9ac3d3d882c5acae3b029ed0b81a7e15a560"
+    }
+  ],
+  "payload_sha256": "402bcd0b85c0871a2cd353dadef95ab76fe97952a7cb19d795bcc67547d1749d",
+  "required_payload_keys": [
+    "hist:BID",
+    "hist:CTG",
+    "hist:DBC",
+    "hist:HCM",
+    "hist:HDB",
+    "hist:KDC",
+    "hist:TPB",
+    "hist:VND"
+  ]
+}

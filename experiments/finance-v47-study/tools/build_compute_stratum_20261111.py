@@ -22,6 +22,8 @@ EXT = STUDY / 'audits/snapshot-extension-2026-11-11'
 H = json.loads((EXT / 'history-120.json').read_text())
 REC = json.loads((EXT / 'RECEIPT.json').read_text())
 TEMPLATE = STUDY / 'tasks/main/fin-l3-index-216'
+if not TEMPLATE.is_dir():  # retired by the 2026-11-24 prune; the template files are unchanged there
+    TEMPLATE = STUDY / 'tasks-retired/main/fin-l3-index-216'
 INDEXES = {'VNINDEX', 'VN30'}
 S30 = 'phiên 30/10/2026'
 PERIOD_END = ['30/10', '30-10', '30.10', '2026-10-30']

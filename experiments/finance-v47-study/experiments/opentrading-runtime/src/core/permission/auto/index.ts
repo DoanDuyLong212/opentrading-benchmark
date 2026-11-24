@@ -1,8 +1,8 @@
 import type { Target } from "../../chat"
 import type { AgentOrigin, ToolDef } from "../../tools/types"
 import { classify, type ClassifierDeps, type Verdict } from "./classifier"
-import { labelVi, type AutoModeConfig } from "./rules"
-import { ActionLog, compactInput } from "./transcript"
+import { isHardDeny, labelVi, type AutoModeConfig } from "./rules"
+import { ActionLog, compactInput, mcpServerOf, type McpServer } from "./transcript"
 
 export { ActionLog } from "./transcript"
 
@@ -24,12 +24,13 @@ export const QUOTA_PAUSE_MS = 10 * 60_000
 
 export type Review =
   | { decision: "allow" }
-  | { decision: "block"; label?: string; reason: string }
+  /** `hard`: a hard-deny rule (the user's message or an allow rule does not clear it). */
+  | { decision: "block"; label?: string; reason: string; hard?: boolean }
   /**
    * Ask the user instead, and say why (shown in the prompt). `blocked`: this call was blocked
    * (the one that reached the limit), so a "no" from the user keeps the classifier's reason.
    */
-  | { decision: "ask"; why: string; blocked?: { label?: string; reason: string } }
+  | { decision: "ask"; why: string; blocked?: { label?: string; reason: string; hard?: boolean } }
 
 export interface Denial {
   at: number
@@ -38,8 +39,12 @@ export interface Denial {
   summary: string
   label?: string
   reason: string
+  /** Blocked by a hard-deny rule. */
+  hard?: boolean
   /** Key of a one-time retry the user may grant. */
   key: string
+  /** The call's MCP server (mcpServerOf), so a granted retry is logged with it. */
+  mcp?: McpServer
 }
 
 export interface ReviewerDeps {
@@ -118,8 +123,8 @@ export class AutoReviewer {
     const tag = `${agent.type}#${agent.id}`
     // Only reads of trusted data: nothing to look back over (a desk run of research agents costs nothing).
     if (!this.log.all().some((e) => e.kind === "action" && e.agent === tag && e.effect)) return undefined
-    const unreviewed = (why: string) => `[auto mode] Chưa rà được các hành động của subagent ${tag} (${why}).`
-    if (this.paused()) return unreviewed("model duyệt đang tạm dừng vì hết quota")
+    const unreviewed = (why: string) => `[auto mode] The actions of subagent ${tag} could not be reviewed (${why}).`
+    if (this.paused()) return unreviewed("the reviewing model is paused: its quota is exhausted")
     const target = await this.deps.target().catch(() => undefined)
     if (!target) return undefined
     let verdict: Verdict
@@ -161,7 +166,7 @@ export class AutoReviewer {
    */
   grantRetry(denial: Denial) {
     this.retries.add(denial.key)
-    this.log.approved(denial.tool, denial.summary)
+    this.log.approved(denial.tool, denial.summary, undefined, denial.mcp)
   }
 
   async review(def: ToolDef, input: unknown, agent: AgentOrigin | undefined, signal: AbortSignal): Promise<Review> {
@@ -175,14 +180,22 @@ export class AutoReviewer {
     if (paused) return { decision: "ask", why: `model duyệt hết quota, tạm hỏi bạn tới ${hhmm(paused)}` }
     const target = await this.deps.target().catch(() => undefined)
     if (!target) return { decision: "ask", why: "chưa có model để duyệt (gõ /model)" }
+    const mcp = mcpServerOf(def, input)
     let verdict: Verdict
+    let config: AutoModeConfig | undefined
     try {
+      config = await this.deps.config()
       verdict = await classify(
         {
           transcript: this.log.render(),
-          action: { tool: def.name, input: compact, ...(agent ? { agent: `${agent.type}#${agent.id}` } : {}) },
+          action: {
+            tool: def.name,
+            input: compact,
+            ...(agent ? { agent: `${agent.type}#${agent.id}` } : {}),
+            ...(mcp ? { mcp } : {}),
+          },
           environment: await this.deps.environment(),
-          config: await this.deps.config(),
+          config,
           profile: await this.deps.profile?.().catch(() => undefined),
         },
         target,
@@ -213,7 +226,8 @@ export class AutoReviewer {
     this.consecutive++
     this.total++
     const label = verdict.rule ? labelVi(verdict.rule) : undefined
-    this.recent.unshift({ at: this.now(), tool: def.name, summary: compact.slice(0, 200), label, reason: verdict.reason, key })
+    const hard = isHardDeny(verdict.rule, config) ? { hard: true } : {}
+    this.recent.unshift({ at: this.now(), tool: def.name, summary: compact.slice(0, 200), label, reason: verdict.reason, ...hard, key, ...(mcp ? { mcp } : {}) })
     this.recent.splice(20)
     this.emit()
     // At the limit this block is not final: the user decides, so a run of false blocks ends here.
@@ -221,18 +235,18 @@ export class AutoReviewer {
       return {
         decision: "ask",
         why: `auto mode chặn ${label ? `[${label}] ` : ""}${verdict.reason} — đã chặn ${this.consecutive >= MAX_CONSECUTIVE ? `${this.consecutive} lần liên tiếp` : `${this.total} lần`}, bạn quyết định`,
-        blocked: { ...(label ? { label } : {}), reason: verdict.reason },
+        blocked: { ...(label ? { label } : {}), reason: verdict.reason, ...hard },
       }
     }
     this.log.denied(def, input, "auto_mode", verdict.rule, agent)
-    return { decision: "block", label, reason: verdict.reason }
+    return { decision: "block", label, reason: verdict.reason, ...hard }
   }
 }
 
 /** What the main agent reads in front of a sub-agent's result when its actions were flagged (a warning, not a block). */
 export function handoffWarning(agent: string, label: string | undefined, reason: string) {
   return (
-    `[Cảnh báo an toàn từ auto mode] Model duyệt cho rằng subagent ${agent} đã làm việc vượt yêu cầu${label ? ` [${label}]` : ""}: ${reason}. ` +
-    "Kết quả bên dưới vẫn được giữ nguyên. Kiểm tra lại các thay đổi của subagent trước khi dựa vào nó, và báo người dùng nếu cần."
+    `[Auto mode safety warning] The reviewing model judged that subagent ${agent} went beyond its task${label ? ` [${label}]` : ""}: ${reason}. ` +
+    "The result below is kept as it is. Check the subagent's changes before relying on it, and tell the user if needed."
   )
 }

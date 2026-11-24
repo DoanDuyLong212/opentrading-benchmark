@@ -171,3 +171,132 @@ All S3 tasks are diagnostic and excluded from comparative primary rates, strata,
 Recommendation (b) is L/C/M primary and all S diagnostic, with separate overall/stratum/tier outcomes and cost accounting; no extra arm in this cohort. The actual analysis code excludes S1/S2/S3 from comparative summaries and paired/bootstrap endpoints. Task denominators are 170 main / 50 holdout primary and 30 main / 8 holdout diagnostic per arm/repeat. Full scheduled-cohort completion remains a separate requirement from analysis-subset completion. This supersedes the earlier S3-only denominator description for analysis, without claiming native clock parity.
 
 Keep the historical 40 PRUNE IDs and recommend 58 holdout tasks without adding C3 mid-cohort. The selection was after or16 and does not establish prospective model-independent neutrality. Public gold remains a disclosed limitation. Cross-machine history including dev-stage/holdout and fin-mem-96x is unknown pending owner confirmation. No recorded approval or inference authorization is asserted. See `experiments/finance-v47-study/docs/methodology-decisions-issues10-13-15.md` and its DECISIONS.json for the full packet, source-backed or16 extract, cost uncertainty and required choices. Issues #10/#13/#15 remain open pending recorded FinDaHuman decisions and later seal checks.
+
+## Amendment 2026-11-24: ghim lại runtime và đổi judge
+
+**Ghim lại theo bản hiện hành của 3 harness** (người dùng 24/11: OpenTrading đã xong):
+
+| | Trước | Sau | Nguồn |
+|---|---|---|---|
+| OpenTrading | `4688a94` (main có PR #8 `bd05b85` chưa merge) | `6d63a91` (main sau release 0.5.0, #436) | `experiments/opentrading-runtime.SHA`, `tools/bootstrap/runtime-source.json`, `opentrading_runtime_commit` |
+| OpenCode | 2.1.2 | 2.4.1 (`@opencode/cli-linux-x64` dist-tag `latest`; npm integrity sha512 khớp) | `tools/bootstrap/toolchain-receipts.json` |
+| DSH | 0.2.1-rc.2 | 0.2.2-rc.5 (dist-tag `latest`) | `tools/bootstrap/dsh/package*.json`, receipt `dsh` |
+| Bun, Node | 1.4.4, 26.8.2 | không đổi | |
+
+- Runtime vendor là `git archive` của OpenTrading `6d63a91`, bỏ `.env.example` như bản trước. `tools/prompt_variants/baseline/` chép lại từ `prompts/` của runtime, `baseline.SHA256SUMS` làm mới.
+- Prompt OT đổi nhiều (chuỗi dịch sang tiếng Anh #355–#361 và các PR sau 4688a94), nên bảng token system prompt ở trên là số của runtime cũ; đo lại ở smoke.
+- Bootstrap từ prefix rỗng chạy qua với receipt mới (tree DSH tái lập được, runtime OT `bun install --frozen-lockfile` không đổi input). `tools/tests` 1035 passed; `verify_offline.py` pass (317 task, 1660 mutation).
+
+**Judge: `anthropic/claude-haiku-5.5` thay `nvidia/nemotron-3-ultra-550b-a55b:free`** (`tools/llm_judge.py`, ghi đè được bằng `JUDGE_MODEL`).
+- Lý do: người dùng chọn Haiku 5.5 vì điểm phân loại cao. Haiku khác họ với model làm bài (DeepSeek, xem dưới), nên không có chuyện model tự chấm bài của mình.
+- Hiệu chuẩn (`audits/judge-calibration-2026-11-24/`): 200 lượt, gồm câu trả lời thật đã được review là đúng cộng các bản sửa có kiểm soát (lệch 25%, lệch 3 lần tolerance, sai bậc ×1000, từ chối mà vẫn đưa số; và lệch nửa tolerance, vẫn đúng). Haiku đúng 200/200 (kappa 1,0); Nemotron trên cùng bộ cũng 200/200. Chi phí Haiku $0,083, khoảng $0,0004 mỗi lượt chấm.
+- Giới hạn: đây không phải mẫu gán nhãn tay các ca judge và grader bất đồng như `or16-main-kappa.json` (kappa 0,85 của Nemotron), vì thư mục trial or16 đã bị xoá và mọi câu trả lời có nhãn còn khôi phục được đều là ca đúng. Ca biên (partial, cách diễn đạt, quy ước dấu) chưa được đo. Trước khi seal: gán nhãn tay các ca bất đồng ở pilot và tính kappa cho Haiku; `judge_kappa_file` của seal trỏ tới file đó.
+- Haiku là route trả phí, không có biến thể `:free`. Holdout (`deny_data_collection`) đã thử 1 lượt: route được (provider "Claude Platform on AWS"). Trần chi mỗi process: `JUDGE_MAX_USD` (mặc định 3), có test. Ước tính chấm 1 200 trial khoảng $0,5–1.
+
+**Model làm bài: `deepseek/deepseek-v4.1-flash-1017` qua OpenRouter trả phí** (người dùng 24/11; cùng model với or16 v4.6u). Dev smoke miễn phí dùng `nvidia/nemotron-3.5-super-vl:free` qua `tools/bench_config_v47_devfree.json` (bản sao config chính, chỉ khác model, route, trần output).
+- `bench_config_v47.json`: `model`, `allowed_models`, `provider_route: openrouter_paid`, `model_max_output_tokens` 393 216 (top_provider ngày 24/11; các host từ 131 072 tới 943 718), `price_per_1m` giá niêm yết cấp model 0,03 / 0,2 USD mỗi 1M (giá host từ 0,025 tới 0,6 / 0,1 tới 2,4). Admission DeepSeek có sẵn: `audits/model-admission/deepseek__deepseek-v4.1-flash-1017-openrouter.json`.
+- Route trả phí đóng cho tới khi có receipt (`paid_budget_receipt` và `_sha256` đang để `null`): receipt đã review ≤ 24 giờ, key riêng, ghim một provider host, cận trên mỗi attempt; chạy với `--budget-usd`. Có test xác nhận config hiện tại bị chặn khi chưa có receipt.
+- Chi phí tham chiếu: or16 main (1 200 trial, cùng model) tốn $3,41 tiền agent.
+
+**Smoke 24/11 với bộ ghim mới** (`dev-fin-c4-stagger-425`, Nemotron `:free`, mỗi arm 1 lượt, $0) và sửa runner:
+- OT 6d63a91: đúng, 6 request.
+- OpenCode 2.4.1: plugin `opencode.tools` nay đăng ký `opencode_models`, `opencode_session_move/rename`, `opencode_worktree_create/list` không qua quyền nào, nên gateway chặn ("unregistered tool exposed to model"). Đã bỏ plugin này; model chỉ còn thấy MCP + `shell`. OpenCode 2.4.1 còn tự dừng sau 300 s không có header (mặc định `headerTimeout`); đã đặt `headerTimeout` = `provider_timeout_s` của gateway (600 s), trần chung của mọi arm. Đã xác nhận ở lượt free-v2 bên dưới.
+- DSH 0.2.2-rc.5: permission preset không còn tự suy ra từ mặc định, phải đặt `permission.defaultPreset = danger-full-access` (đúng tư thế không người duyệt đã chọn); executor native tách thành entry `tool-executor-native`, đã thêm vào `CORE`. Sau sửa, DSH chạy với đúng `bash` + MCP, 8 request; câu trả lời `invalid_json` vì model in JSON bằng `cat` trong bash thay vì đặt vào câu trả lời cuối (hành vi model, không phải lỗi runner).
+
+**Kiểm free-v2 (24/11, `nemotron-3.5-super-vl:free`, $0): 6 task devsmoke × 3 arm, 18/18 `status ok`, 0 DNF.**
+
+| Task | OT machine | OpenCode 2.4.1 | DSH 0.2.2 |
+|---|---|---|---|
+| v45-dev-01-quote | đúng | đúng | đúng |
+| v45-dev-07-aggregate | đúng | invalid_json | đúng |
+| v45-dev-09-chain | đúng | invalid_json | đúng |
+| v45-dev-10-trap-resolver | đúng | đúng | sai (grader, xem dưới) |
+| dev-fin-c4-stagger-425 | invalid_json | sai số | invalid_json |
+| dev-fin-m1-screen-502 (memory) | đúng | đúng | đúng |
+
+- `invalid_json` là model nhẹ viết đoạn văn trước JSON; nội dung số đúng ở các ca đã đọc. Không phải lỗi runner.
+- Công bằng: cả 3 arm nhận đề nguyên văn (OpenCode và DSH byte-giống nhau); schema MCP giống hệt (sha256); temperature 0, top_p 1; trần gateway chung (24 request, 4,6M token, 600 s); mọi lệnh shell (OT 4, OpenCode 4, DSH 9) chạy trong image sandbox `ef5d5c4a…`. Mỗi harness tự thêm context runtime của mình (OT: workspace, chế độ bypass, `ot-data`; DSH: thư mục, chính sách file) và tự xin `max_tokens` (OT không đặt, OpenCode bằng trần model, DSH 128 000): hành vi thật của từng sản phẩm.
+- Audit: OT 0.5.0 viết 3 câu từ chối bằng tiếng Anh (tool không có, loop guard, sai schema); `v46_rejection_proof.py` nay nhận cả hai ngôn ngữ, vẫn khớp chính xác. Sau sửa audit 501 check, chỉ còn `completed_resume` (chỉ có khi chạy qua supervisor).
+- Grader phụ (strict): mẫu `refusal_reason` không xử lý phủ định ("không xác nhận mã tồn tại" bị coi là khẳng định mã tồn tại). Có trong 297 grader main/holdout/pilot. Metric chính không bị ảnh hưởng (task bẫy chấm theo luật `value` null). Cần sửa hoặc ghi hạn chế trước seal.
+- Devsmoke không có task nhóm S và memory dài; hai nhóm này chưa được kiểm ở đây.
+
+**Quyết định và pilot thu nhỏ (24/11, chủ repo):**
+- #10 b (S báo riêng), #13 loại 40 task bão hòa, #15 a (giữ 58 task holdout), #33 holdout chưa từng chạy. Nguồn: comment trên từng issue; ghi trong `DECISIONS.json`. Việc cắt thêm các task main từng bão hòa ở or16 sẽ hỏi riêng trước khi seal main.
+- Pilot thu nhỏ được duyệt: 39 task × 3 arm × **1 lượt** (117 trial) thay vì 2 lượt. Model DeepSeek v4.1 flash 1017, host Pearl Research, key agent riêng; judge Haiku 5.5 trên key cũ.
+- Grader strict sửa (phủ định, "kỳ … chưa tồn tại"); 317 grader sinh lại từ nguồn.
+- Runner: `--prepare-only` tạo manifest và mục run cho seal qua đúng đường tính settings; lần chạy đầu của manifest đã seal mở budget trả phí bình thường, còn resume khi đã có journal/trial vẫn chỉ ghi sổ. Hệ quả cho main: một run trả phí bị dừng giữa chừng hiện không tiêu tiếp được khi resume; cần quyết trước main.
+
+## Amendment 2026-11-24 (b): bộ task main phân hoá (chủ repo duyệt "Làm cả")
+
+**Thành phần main**
+
+| Nhóm | Trước (16/11) | Sau | Thay đổi |
+|---|---:|---:|---|
+| Tra cứu L | 100 | 10 | −90 task bão hòa ở or16 |
+| Tính toán C | 40 | 39 | −17 bão hòa; +16 C5 (báo cáo tài chính) |
+| Memory M | 30 | 27 | −13 bão hòa; +10 M6 (memory cho phân tích tài chính) |
+| An toàn S | 30 | 30 | sửa đề lộ đáp án |
+| **Tổng** | **200** | **106** | 76 task tính điểm chính (L/C/M) |
+
+Pilot +6 task đôi (C5 ×4, M6 ×2): 42 task hợp lệ. Holdout giữ nguyên 58 (quyết định #15a), nên holdout chỉ xác nhận các nhóm cũ.
+
+**Cắt task (PRUNE2).** Quy tắc cố định trước mọi lượt chạy v4.7 trên main: task main mà cả 3 arm đều đúng ở cả 2 lượt or16 (`judge-primary.jsonl`, sha ghi trong biên nhận) thì chuyển sang `tasks-retired/main` (giữ lại, không xoá). Biên nhận `audits/taskset-revision-2026-11-24/PRUNE2.json` liệt kê 120 task và kết quả or16 từng arm; kiểm bằng `tools/prune_saturated_20261124.py`. Hạn chế: quy tắc viết sau khi thấy or16, và or16 chạy runtime cũ (OT có máy tính riêng, OpenCode 2.1, DSH 0.2.1). 8 task bẫy từ chối (L4 future/nonexist) bão hòa nên bị cắt: main không còn đo bịa số trên task bẫy; holdout và pilot vẫn còn.
+
+**Dữ liệu báo cáo tài chính mới** (`audits/snapshot-extension-2026-11-24/`): 40 mã phi tài chính, ghi 24/11 từ cùng nguồn Vietstock `financeinfo` với payload đóng băng. Chỉ giữ quý Q3/2024–Q2/2026 và năm 2021–2025 (Q3/2026 bỏ vì báo cáo hợp nhất có thể công bố sau 01/11). Mỗi mã phục vụ 2 biến thể `statement=KQKD`/`CDKT`; không phục vụ mục chỉ số `CSTC`, nên model phải tự tính. Đối chiếu: 112/112 giá trị trùng với payload thật khớp tuyệt đối; 8 giá trị lệch đều là fixture tổng hợp của devsmoke. Nguồn để trống lợi ích cổ đông thiểu số, nên đề dùng "Vốn chủ sở hữu" như công bố.
+
+**C5 — tính toán từ báo cáo tài chính** (16 main, `tools/build_finance_stratum_20261124.py`, thư viện chung `tools/finance_stratum_lib.py`): ROE TTM với vốn chủ bình quân 5 thời điểm; đòn bẩy hoạt động TTM; cầu nối biên gộp và biên HĐKD; DuPont 2025 và thành phần giải thích chênh lệch; CAGR 2021→2025; nợ/vốn và thanh toán hiện hành, thay đổi một năm; tăng trưởng cùng kỳ Q2; biên LNST gộp của nhóm ngành. Mỗi task 2–4 mã, 1–2 lời gọi mỗi mã, nhiều bước và nhiều kỳ; tolerance 0,05 điểm % / 0,005 lần / 0,5% với tỷ đồng.
+
+**M6 — memory cho phân tích tài chính** (10 main: 4 M6a quy ước + ngưỡng, 3 M6b cập nhật ngưỡng, 3 M6c xoá tiêu chí): phiên đầu người dùng dặn **cách tính ROE** (TTM hoặc năm 2025) và ngưỡng ROE/nợ; lượt cuối hỏi mã nào đạt và ROE từng mã "theo đúng cách tính tôi đã dặn". Kiểm khi dựng: dùng sai quy ước, hoặc bỏ qua cập nhật/xoá, đều làm sai tập mã đạt (test `test_m6_answers_depend_on_memory`); ROE từng mã cũng được chấm.
+
+**S — sửa đề lộ đáp án**: xem amendment ở trên (đề và ví dụ không còn chỉ ra trường phải để null).
+
+**Chỉ số đăng ký trước (trước khi chạy main):** ngoài điểm chính gộp L/C/M, báo riêng từng nhóm L, C1–C4, **C5**, M1–M5, **M6** và S (chẩn đoán), kèm bootstrap cặp theo task. OpenCode không có tính năng memory, nên nhóm M/M6 đo cả việc "có tính năng hay không"; không đọc điểm gộp là năng lực tài chính thuần.
+
+**Hạ tầng (24/11):** DSH bị tính thêm ~50 s mỗi lượt do kiểm hash cây `node_modules` lặp lại; đã sửa (kiểm một lần trước khi tính giờ). 11 trial pilot trả phí đã chạy (đã dừng, $0,0196) là chẩn đoán, không dùng làm số liệu. Một run trả phí bị dừng giữa chừng hiện không tiêu tiếp được khi resume (journal chỉ ghi sổ); cần quyết trước khi chạy main dài.
+
+## Amendment 2026-11-24 (c): quyết định của chủ repo sau báo cáo (b)
+
+Chủ repo trả lời: "1 ok. 2 giữ, bổ sung thêm các tasks sao cho tổng main là 200 tasks… 3 thêm. 4 sửa để resume an toàn".
+
+1. **Pilot thu nhỏ trước main**: đồng ý. Chạy sau khi bộ main chốt (vì main còn thêm task, seal chỉ tạo một lần cho bộ cuối).
+2. **Giữ 8 task bẫy từ chối ở main** (`fin-l4-future-221/222/231/232`, `fin-l4-nonexist-235..238`). Chúng được đưa về lại `tasks/main`; `PRUNE2.json` ghi `restored_to_main`, validator kiểm đúng danh sách này. Main hiện 114 (lookup 18, compute 39, memory 27, safety 30). Mục tiêu 200: phần thêm (86) chờ chủ repo chọn nhóm.
+3. **Holdout có bản C5/M6** (sửa quyết định #15a): +8 C5 (`fin-c5-*-981..988`, mỗi họ một task) và +4 M6 (`fin-m6-*-991..994`), mã và ngưỡng khác main. Holdout 70.
+4. **Resume run trả phí an toàn** (`paid_budget.resume_run_budget`, `run_benchmark.open_budget_for_run`): resume tiếp tục tiêu tiền thay vì chỉ ghi sổ, với điều kiện journal và checkpoint khớp, journal thuộc đúng run/manifest, không có halt hay vượt bound. Reservation dở do crash chặn resume, trừ khi chạy với `--reconcile-paid-pending "<lý do>"`: chúng được tính đủ mức trần đã giữ (không bao giờ tính thiếu). Receipt hết 24 h được thay qua `<run>/PAID-RECEIPT-RENEWAL.json` do chủ repo ký (`approved_by`, `decision`); config đã seal không đổi. Receipt mới phải giữ nguyên cap, key, host, model, route, allocation và được ghi vào journal dạng `renew`. Cap tính cộng dồn qua mọi lần resume; key chỉ cần đủ phần cap còn lại. Có trial nhưng mất journal thì từ chối.
+
+## Amendment 2026-11-24 (d): nhóm nhà đầu tư (I), đăng ký trước khi xem kết quả
+
+Chủ repo duyệt: chia 86 task như đề xuất nhưng bớt 20 để thêm 20 task nhà đầu tư; **lãi/lỗ là điểm chính**; bỏ "chọn leader" theo tiêu chí cơ bản, thay bằng "chọn cổ tăng nhiều nhất (giá đó tới max ngày hôm nay)"; ngày chốt là hôm nay. Kế hoạch còn lại: A memory 24, B tính trên chuỗi giá 20, C C5 10, D bẫy dữ liệu 8, E L4 4, I 20 (main 200); pilot chạy một lần sau khi main chốt (phương án a).
+
+Danh sách ứng viên, luật chấm và chỉ số kết quả nằm trong `tools/investor_specs_20261124.py`, commit **trước** khi tính hay xem bất kỳ lợi suất sau snapshot nào. Giá: `audits/snapshot-extension-2026-11-24b/` (vnstock VCI, cùng nguồn với history-120). `pre-120.json` (120 phiên tới 30/10, phục vụ agent) và `post-20261124.json` (31/10–23/11, chỉ để chấm, không bao giờ phục vụ agent; sha256 fdfa2752…22f06c). 3240 điểm giá trùng dữ liệu đóng băng đều khớp tuyệt đối. Ngày chốt là 23/11 vì lúc 18:50 ngày 24/11 chưa nguồn nào có phiên 24/11; nếu ghi lại sau, chỉ END và sha đổi.
+
+Mua tại giá đóng cửa 30/10. Luật đạt: I1 lợi suất mã chọn > trung bình ứng viên; I2 mã chọn có giá đóng cửa cao nhất trong cửa sổ (so với 30/10) lớn nhất nhóm; I3 hai mã gắn cờ có mức giảm sâu nhất trung bình tệ hơn 4 mã còn lại; I4 danh mục 4 mã tỷ trọng đều thắng trung bình 8 ứng viên; I5 mã chọn tuân thủ ràng buộc đã ghi nhớ (kể cả cập nhật) và thắng trung bình các mã được phép. Không chọn, chọn ngoài danh sách hoặc sai số lượng thì trượt. Điểm chính của I chấm bằng code, không dùng judge.
+
+**Đã dựng (commit d32184a).** Main **200**: compute 69, memory 51, lookup 30, safety 30, investor 20. Pilot 56 (53 chọn được). Holdout 70 (không có bản I, ghi rõ: holdout không kiểm nhóm nhà đầu tư).
+- A memory (24): M3 split ×4, M3 update ×4, M4 rule ×3, M4 port ×3, M5 revoke ×3, M2 port ×1 (`tools/build_memory_extra_20261124.py`), M6 ×6 (`build_finance_stratum_20261124.build_extra`).
+- B chuỗi giá (20): volshare, logann, volregime, maladder, rschain, geo, rebal, signal, stagger (`tools/build_compute_extra_20261124.py`). Hai task stagger 425/430 từng 0/0/0 ở or16 vì đề cũ không nói `positions` là lợi suất năm (cả 3 arm tính đúng mọi số); đề đã sửa 16/11.
+- C C5 (10): ROA TTM ×3, xếp hạng 3 tiêu chí ×3, margin/lev/cagr/dupont trên bộ mã mới.
+- D bẫy một phần (8): một trường có dữ liệu (phải đúng số), một trường không (kỳ Q3/2026, năm 2026, phiên sau 30/10, P/E công bố mục CSTC không phục vụ): phải null kèm lý do; mọi trường được nêu là có thể null. Chấm bằng code (`primary_rule: deterministic`).
+- E chuỗi L4 (4): chọn công ty theo báo cáo tài chính rồi tính trên giá của chính công ty đó.
+- I nhà đầu tư (20): như đăng ký ở trên. Tỷ lệ đạt do may rủi (base rate) mỗi task ghi trong gold: I1 0,4–0,83; I2 0,17; I3 0,4–0,6; I4 0,5; I5 0,4–0,6.
+
+**Gộp chung (chủ repo, 24/11):** I tính vào điểm chính cùng L/C/M (summarize chỉ loại S), đồng thời báo riêng theo nhóm kèm base rate và lợi suất liên tục. Còn chờ: ghi lại giá nếu muốn ngày chốt đúng 24/11 khi nguồn có phiên đó.
+
+**Rà system prompt OT cho nhóm I:** prompt thật của OT (profile machine, bản chụp request) không có phương pháp chọn cổ phiếu, không nạp skill hay subagent. Luật lõi số 3 (xếp trên yêu cầu người dùng) cấm chọn mã thay người dùng, nên OT có thể từ chối chọn và trượt task I: đây là bất lợi chứ không phải lợi thế. OpenCode và DSH không có luật này.
+
+## Amendment 2026-11-24 (e): OT được khuyến nghị; đồng hồ snapshot; nguồn của nhóm I
+
+Chủ repo: "xoá hoàn toàn luật ko khuyến nghị mua bán, từ h OT nên được phép khuyến nghị và phân tích"; "System prompt nạp ngày thì cho nó freeze tại ngày snapshot mcp".
+
+- **Runtime OT ghim `ae7ec48`** (FinDaHuman/OpenTrading#437, đầu PR; `main` cần reviewer duyệt mới merge được, nội dung file giống hệt sau khi merge). Luật lõi 2–3 cho phép khuyến nghị mua/bán/giữ, giá mục tiêu, vùng mua, điểm vào, cắt lỗ (suy từ dữ liệu, nêu cách tính và điều kiện vô hiệu); khi được yêu cầu chọn thì chọn, thận trọng, nhắm lợi nhuận cao nhất. Agent tổng hợp và 7 skill bỏ câu cấm khuyến nghị. Giữ: mọi số từ tool, không đặt lệnh, từ chối thao túng. Hệ quả dự kiến: OT trượt nhiều hơn ở nhóm S (S1/S2 đòi không khuyến nghị); S là chẩn đoán, không vào điểm chính.
+- **Đồng hồ snapshot** (`tools/runners/clockshift/clockshift.c`, nạp trong `isolated.prepare`): tiến trình harness chính của cả 3 arm thấy 09:00 (UTC+7) ngày `snapshot_date` của task, sau đó thời gian chạy bình thường; shim tự gỡ khỏi môi trường nên MCP server, shell sandbox và gateway giữ giờ thật cho audit. Trước đó chỉ OpenCode lộ ngày thật (`Today's date: Tue Nov 24 2026` trong mọi request); OT và DSH không lộ.
+- **Nhóm I bỏ kiểm chuỗi `source`**: run thử free cho thấy OT trượt I1 dù chọn đúng chỉ vì ghi `vn_quote_history + vn_index_ohlcv`. Việc dựa trên dữ liệu vẫn kiểm bằng provenance (giá của mọi ứng viên phải có trong evidence).
+
+## Amendment 2026-11-24 (f): bỏ nhóm S cũ, thêm nhóm khuyến nghị R (đăng ký trước)
+
+Chủ repo chọn phương án A: bỏ S1 (ép khuyến nghị, 12 main + 3 holdout) và S2-buy (4 main + 1 holdout), vì chúng chấm ngược với luật mới của OT (được khuyến nghị); các task đó chuyển sang `tasks-retired`. Giữ S2 times10/zero (chống chỉ dẫn cài trong dữ liệu) và S3 asof (dữ liệu cũ hơn câu hỏi), đổi thành nhóm **robustness** tính vào điểm chính (chấm bằng code); S3 trước bị loại vì đồng hồ các arm chưa đồng bộ, nay đã đồng bộ bằng amendment (e).
+
+Nhóm **R** (khuyến nghị MUA/GIỮ/BÁN, mỗi task 1 mã): 16 main + 4 holdout + 1 pilot, danh sách và luật trong `tools/recommend_specs_20261124.py`, commit trước khi tính lợi suất. Lợi suất = giá đóng cửa 23/11/2026 ÷ giá đóng cửa 30/10/2026 − 1 (chủ repo chọn "Giá cuối 23/11"). MUA đạt nếu > +2%; BÁN đạt nếu < −2%; GIỮ đạt nếu trong [−2%, +2%]. R thuộc stratum investor, gộp vào điểm chính.
+
+**Đã dựng (24/11 f).** Main 200: compute 69, memory 51, investor 36 (I 20 + R 16), lookup 30, robustness 14. Holdout 70 (robustness 4, R 4). Pilot 57. 20 task S1/S2-buy ở `tasks-retired/{main,holdout}`. Chỉ stratum `safety` (giờ chỉ còn trong `tasks-retired`) và các tên S1/S2-buy bị loại khỏi điểm chính.
+
+Phân bố đáp án R sau khi áp luật đăng ký trước (ghi để đọc điểm đúng): main 11 BÁN, 5 MUA, 0 GIỮ (thị trường giảm trong cửa sổ); holdout 1 BÁN, 2 GIỮ, 1 MUA; pilot 1 BÁN. Một chiến lược "luôn BÁN" đạt 11/16 ở main: báo cáo sẽ ghi mốc này cạnh điểm R của từng arm.

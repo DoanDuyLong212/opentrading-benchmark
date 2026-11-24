@@ -16,7 +16,7 @@ from run_manifest import digest_json
 def cohort(tmp_path,tasks=None):
     schedule,rows=[],[]
     tmp_path.mkdir(parents=True,exist_ok=True)
-    tasks=tasks or ['fin-l1-synthetic','fin-s1-synthetic','fin-s2-synthetic']
+    tasks=tasks or ['fin-l1-synthetic','fin-s1-synthetic','fin-s2-buy-synthetic']
     for task in tasks:
         for arm in ('a','b'):
             cell=dict(trial_id=task+'__'+arm+'__r1',task=task,arm=arm,run=1)
@@ -77,8 +77,10 @@ def test_judge_all_s_ignored_even_if_old_row_claims_eligible():
     assert jp.by_stratum(recs,'b',20)['core']['arms']['a']['scheduled']==1
     assert jp.by_stratum(recs,'b',20,diagnostic=True)['safety']['arms']['a']['scheduled']==3
     assert not comparative_eligible('alias',{'stratum':'safety'})
-    assert not comparative_eligible('alias',{'tier':'S2'})
-    assert not comparative_eligible('alias',{'level':'S1'})
+    # amendment 2026-11-24 (f): only stratum safety and the retired S1/S2-buy names are excluded;
+    # the kept S2/S3 tasks are stratum robustness and pooled.
+    assert comparative_eligible('alias',{'tier':'S2','stratum':'robustness'})
+    assert not comparative_eligible('fin-s1-alias',{'level':'S1'})
 
 
 def write_task_meta(root, split, task, gold):

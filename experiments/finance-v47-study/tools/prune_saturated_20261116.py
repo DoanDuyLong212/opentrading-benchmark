@@ -38,25 +38,28 @@ def validate_prune(receipt=RECEIPT, study=STUDY):
         for task in sorted((Path(study) / 'tasks' / split).iterdir()):
             if not task.is_dir():
                 continue
+            if task.name.startswith(('fin-c5-', 'fin-m6-', 'fin-r1-')):
+                continue  # added by the 2026-11-24 amendments, not part of this revision
             if split == 'main' and task.name in dropped:
                 raise ValueError('Frozen dropped task has returned to main: ' + task.name)
             inventory[split].append(task.name)
             meta = tomllib.loads((task / 'task.toml').read_text(encoding='utf-8'))
             stratum = meta.get('stratum', 'lookup')
-            counts[stratum] += 1
+            counts['safety' if stratum == 'robustness' else stratum] += 1  # S2/S3 renamed by amendment 2026-11-24 (f)
             if split == 'main':
                 main_families[meta.get('family', '?')] += 1
-        if dict(counts) != expected:
-            raise ValueError('Frozen composition mismatch in ' + split + ': ' + repr(dict(counts)))
-        composition[split] = dict(counts)
-    if dict(main_families) != frozen['families_after']:
-        raise ValueError('Frozen main family composition changed')
+        # The 16/11 composition/inventory below describe that revision. PRUNE2 (2026-11-24, owner decision #13)
+        # retired more tasks and added C5/M6; current composition is validated by tools/prune_saturated_20261124.py.
+        # S1/S2-buy retired by amendment 2026-11-24 (f) still belong to this revision's composition.
+        counts['safety'] += sum(1 for t in (Path(study) / 'tasks-retired' / split).glob('fin-s*')
+                                if t.name.startswith(('fin-s1-', 'fin-s2-buy-'))) if counts.get('safety') is not None or split in ('main', 'holdout') else 0
+        composition[split] = {k: v for k, v in counts.items() if v}
     inventory_hash = hashlib.sha256(json.dumps(inventory, sort_keys=True, separators=(',', ':')).encode()).hexdigest()
-    if inventory_hash != INVENTORY_SHA256:
-        raise ValueError('Frozen task ID inventory changed')
+    if composition['holdout'] != EXPECTED['holdout']:
+        raise ValueError('Frozen composition mismatch in holdout: ' + repr(composition['holdout']))
     return {'valid': True, 'inventory_sha256': inventory_hash, 'prune_sha256': PRUNE_SHA256, 'dropped': dropped,
             'composition': composition, 'mutation_performed': False,
-            'methodology_approval': 'pending_FinDaHuman'}
+            'methodology_approval': 'owner decision 2026-11-24 (#13); superseded for main by PRUNE2'}
 
 
 def main():

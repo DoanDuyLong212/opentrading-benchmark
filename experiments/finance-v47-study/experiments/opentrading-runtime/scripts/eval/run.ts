@@ -4,6 +4,7 @@ import path from "node:path"
 import { agentRoots, loadAgents } from "../../src/core/agents/loader"
 import { resolveTarget } from "../../src/core/chat"
 import { loadConfig } from "../../src/core/config"
+import { EFFORT_LEVELS, isEffort, type Effort } from "../../src/core/effort"
 import { dataDir } from "../../src/core/paths"
 import { initRuntime, setAgents } from "../../src/core/runtime"
 import { loadSkills, skillRoots } from "../../src/core/skills/loader"
@@ -15,6 +16,9 @@ import { ledgerFile, RequestLedger, spentToday } from "./ledger"
 import { describeRouting } from "../../src/core/openrouter-routing"
 import { parseAblations, parseQuestions, prepareHome, routingFromFlags, runEval, servedSummary, skillsFor } from "./runner"
 import { traceFile, type TraceEvent } from "./trace"
+import { parseFailureThresholds } from "./failure-thresholds"
+import { requestCap } from "./request-cap"
+import type { BreakerEvent } from "../../src/core/mcp/breaker"
 
 /**
  * Runs a question set through the real agent loop and writes a JSONL trace. Spends the user's
@@ -27,9 +31,15 @@ import { traceFile, type TraceEvent } from "./trace"
  *            [--mcp-record tape.jsonl | --mcp-replay tape.jsonl] [--ablate a,b] [--yolo]
  *   --max-requests  trần request của model này trong ngày, cộng dồn qua các lần chạy
  *   --turn-requests trần request của mỗi câu (như trần của benchmark); gần chạm thì model tổng kết
+ *   --http-request-cap trần cứng mọi request model của tiến trình, kể cả retry và side-model
+ *   --failure-streak nudge=2,stop=4  đổi ngưỡng nhắc/dừng chỉ trong eval
+ *   --breaker-threshold 3  đổi số lỗi kết nối trước khi breaker mở chỉ trong eval
  *   --mcp-record    ghi câu trả lời MCP; câu đã có trong file thì không gọi server nữa
  *   --mcp-replay    chỉ dùng file đã ghi, không gọi server MCP
  *   --ablate        tắt từng phần của harness để đo (xem docs/eval/runner.md)
+ *   --effort        mức suy luận của lần chạy (low|medium|high|xhigh|max), ghi vào config tạm; không nêu thì
+ *                   dùng mặc định của model, không đọc effort trong config của người chạy (#338)
+ *   --investor      file hồ sơ nhà đầu tư cố định, chép thành INVESTOR.md của lần chạy; trace ghi sha256
  *   --memory        notebook: mỗi câu một sổ ghi nhớ rỗng (prompt có hướng dẫn memory, tool memory_read);
  *                   none: không memory (mặc định của sản phẩm). Bắt buộc nêu rõ, như --model.
  *   --yolo          chế độ ▸▸▸ bỏ qua quyền thay cho danh sách duyệt hẹp (chỉ web_fetch)
@@ -68,6 +78,13 @@ if (profileArg !== undefined && profileArg !== "machine" && profileArg !== "term
 const profile = profileArg === "machine" ? ("machine" as const) : undefined
 const turnRequests = arg("--turn-requests") === undefined ? undefined : Number(arg("--turn-requests"))
 if (turnRequests !== undefined && !(Number.isInteger(turnRequests) && turnRequests >= MIN_REQUEST_BUDGET)) stop(`--turn-requests cần số nguyên từ ${MIN_REQUEST_BUDGET} trở lên.`)
+for (const flag of ["--failure-streak", "--breaker-threshold", "--http-request-cap"]) {
+  if (process.argv.includes(flag) && (!arg(flag) || arg(flag)!.startsWith("--"))) stop(`Thiếu giá trị ${flag}.`)
+}
+const thresholds = parseFailureThresholds(arg("--failure-streak"), arg("--breaker-threshold"))
+const httpCapText = arg("--http-request-cap")
+const httpCap = httpCapText === undefined ? undefined : /^\d+$/.test(httpCapText) ? Number(httpCapText) : NaN
+if (httpCap !== undefined && (!Number.isSafeInteger(httpCap) || httpCap < 1)) stop("--http-request-cap cần số nguyên dương.")
 const record = arg("--mcp-record")
 const replay = arg("--mcp-replay")
 if (record && replay) stop("Chỉ dùng một trong --mcp-record và --mcp-replay.")
@@ -79,6 +96,11 @@ const ablate = arg("--ablate")?.split(",") ?? []
 const ablated = parseAblations(ablate)
 const yolo = process.argv.includes("--yolo")
 const resultFiles = arg("--result-files")
+const effortArg = arg("--effort")
+if (effortArg !== undefined && !isEffort(effortArg)) stop(`--effort chỉ nhận ${EFFORT_LEVELS.join(", ")} (nhận "${effortArg}").`)
+const investorArg = arg("--investor")
+const investor = investorArg ? path.resolve(investorArg) : undefined
+if (investor && !(await Bun.file(investor).exists())) stop(`Không thấy file --investor: ${investor}`)
 const memoryArg = arg("--memory") ?? stop("Thiếu --memory notebook|none: mỗi lần chạy phải nêu rõ có memory hay không.")
 const memory = memoryArg === "notebook" || memoryArg === "none" ? memoryArg : stop(`--memory chỉ nhận notebook hoặc none (nhận "${memoryArg}").`)
 const questions = parseQuestions(await readFile(file, "utf8")).filter((q) => !only || only.includes(q.id))
@@ -101,7 +123,7 @@ const home = await mkdtemp(path.join(os.tmpdir(), "ot-eval-"))
 const work = path.join(home, "work")
 const commit = (await Bun.$`git rev-parse --short HEAD`.cwd(import.meta.dir).quiet().nothrow().text()).trim()
 await mkdir(work)
-await prepareHome(realHome, home, model, ablated, routing)
+const { investorSha256 } = await prepareHome(realHome, home, model, ablated, routing, { ...(effortArg ? { effort: effortArg as Effort } : {}), ...(investor ? { investor } : {}) })
 process.env.OPENTRADING_HOME = home
 const requests = await RequestLedger.open(ledger, pick, cap)
 // The home holds a copy of the keys, and requests already sent are spent quota.
@@ -113,7 +135,9 @@ process.on("SIGINT", () => {
 })
 
 const { skills } = await loadSkills(skillRoots(work, { project: false }))
-const runtime = initRuntime({ home, cwd: work, resultFiles, skills: () => skillsFor(skills, ablated), mcpTransport: cassette && ((server, real) => cassette.transport(server, real)) })
+const breakerEvents: { server: string; event: BreakerEvent }[] = []
+const runtime = initRuntime({ home, cwd: work, resultFiles, skills: () => skillsFor(skills, ablated), mcpTransport: cassette && ((server, real) => cassette.transport(server, real)), mcpBreakerThreshold: thresholds.breaker, onMcpBreakerEvent: (server, event) => breakerEvents.push({ server, event }) })
+const hardCap = httpCap === undefined ? undefined : requestCap(httpCap)
 try {
   setAgents(runtime, (await loadAgents(agentRoots(work, { project: false }))).agents)
   await runtime.mcp.start()
@@ -122,7 +146,7 @@ try {
   const target = await resolveTarget(model)
   const { effort, toolSearch, maxSteps } = await loadConfig()
   // The shell decides which arithmetic form runs unasked (awk on bash/sh, expressions on PowerShell).
-  const settings = { effort, toolSearch, maxSteps, ablate, memory, shell: detectShell().kind, profile: profile ?? "terminal", ...(turnRequests !== undefined ? { turn_requests: turnRequests } : {}), permissions: yolo ? "bypass" : "unattended", ...(resultFiles ? { result_files: resultFiles } : {}), mcp: cassette?.mode ?? "live", ...(routing ? { openrouter_routing: routing } : {}), ...(tape ? { mcp_tape: path.basename(tape), mcp_answers: cassette!.size } : {}) }
+  const settings = { effort, failure_thresholds: thresholds, ...(httpCap !== undefined ? { http_request_cap: httpCap } : {}), ...(investorSha256 ? { investor_sha256: investorSha256 } : {}), toolSearch, maxSteps, ablate, memory, shell: detectShell().kind, profile: profile ?? "terminal", ...(turnRequests !== undefined ? { turn_requests: turnRequests } : {}), permissions: yolo ? "bypass" : "unattended", ...(resultFiles ? { result_files: resultFiles } : {}), mcp: cassette?.mode ?? "live", ...(routing ? { openrouter_routing: routing } : {}), ...(tape ? { mcp_tape: path.basename(tape), mcp_answers: cassette!.size } : {}) }
   // Tallied from this run's own answers: --out may name a file that already holds earlier runs.
   const answers: TraceEvent[] = []
   const toFile = traceFile(out)
@@ -130,12 +154,13 @@ try {
     if (event.type === "answer") answers.push(event)
     toFile(event)
   }
-  await runEval({ runtime, skills, target, questions, repeat, timeoutMs: minutes * 60_000, write, version: pkg.version, commit, settings, ledger: requests, ablated, yolo, memory, ...(profile ? { profile } : {}), ...(turnRequests !== undefined ? { turnRequests } : {}) })
+  await runEval({ runtime, skills, target, questions, repeat, timeoutMs: minutes * 60_000, write, version: pkg.version, commit, settings, ledger: requests, ablated, yolo, memory, failureThresholds: thresholds, breakerEvents, ...(hardCap && httpCap !== undefined ? { httpCap: { get capped() { return hardCap.capped }, get refused() { return hardCap.refused }, get sent() { return hardCap.sent }, cap: httpCap } } : {}), ...(profile ? { profile } : {}), ...(turnRequests !== undefined ? { turnRequests } : {}) })
   console.log(`Trace: ${out}`)
   const served = servedSummary(answers)
   if (Object.keys(served).length > 0) console.log(`Provider đã trả lời (số bước): ${Object.entries(served).map(([by, n]) => `${by} ${n}`).join(", ")}`)
   if (cassette?.misses) console.log(`${cassette.misses} yêu cầu MCP không có trong bản ghi: lần chạy này không hoàn toàn trên dữ liệu cố định.`)
 } finally {
+  hardCap?.stop()
   await runtime.mcp.stop()
   await rm(home, { recursive: true, force: true })
 }

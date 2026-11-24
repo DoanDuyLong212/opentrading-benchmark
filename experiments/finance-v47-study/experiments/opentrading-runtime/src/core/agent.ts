@@ -17,6 +17,7 @@ import {
   type ToolResultPart,
   type ToolSet,
   wrapLanguageModel,
+  type LanguageModelMiddleware,
 } from "ai"
 import { ChatSetupError, describeError, resolveTarget, type Target } from "./chat"
 import { effortOptions, isEffort, mergeProviderOptions, type Effort } from "./effort"
@@ -55,12 +56,12 @@ import { detectShell } from "./tools/shell/run"
 import { modeNote } from "./permission/mode"
 import { NOTE as NOTICE_NOTE } from "./subagents/notification"
 import { currentTodos, retiredNote, retireLeftTodos, todoMark, TODO_WRITE } from "./tools/todos"
-import { FAILURE_STREAK_FINAL, FAILURE_STREAK_STOP, failureNudge, gapsAnswer, turnFailures } from "./loop/failures"
+import { FAILURE_STREAK_FINAL, FAILURE_STREAK_NUDGE, FAILURE_STREAK_STOP, failureNudge, gapsAnswer, turnFailures, type FailureThresholds } from "./loop/failures"
 import { answerAfterTools } from "./loop/history-shape"
 import { markupStreamFilter, stripMarkup, type MarkupFilter } from "./loop/markup"
 import type { PromptProfile } from "./prompt/assemble"
-import { MIN_REQUEST_BUDGET, RequestBudget } from "./request-budget"
-import { answeredAndClosedTodos, figureSources, isEmptyAnswer, isUnfetched, GAPS_RESCUE_START, judgeStop, MAX_RECOVERIES, sourcesFailed, ranDataTool, stripEchoes, ungroundedInTurn, unfetchedFigures, type RecoveryKind, type Verdict } from "./loop/stop-gate"
+import { activeBudget, MIN_REQUEST_BUDGET, RequestBudget, type TurnBudget } from "./request-budget"
+import { answeredAndClosedTodos, figureSources, isEmptyAnswer, isUnfetched, GAPS_RESCUE_START, judgeStop, MAX_RECOVERIES, noDataFrom, ranDataTool, stripEchoes, ungroundedInTurn, unfetchedFigures, type RecoveryKind, type Verdict } from "./loop/stop-gate"
 import { MAX_TOOLS_PER_REQUEST, modelOutput, stripImages, type BuiltToolSet, type ToolRegistry, type ToolSetOptions } from "./tools/registry"
 import { describeTool, LOADED_PREFIX, resolveToolName } from "./tools/search"
 import { cleanToolErrors, toolErrorText } from "./tools/errors"
@@ -76,7 +77,7 @@ const isArithmetic = (command: string) => mathOnlyCommand(command, detectShell()
 export const DEFAULT_MAX_STEPS = Number.POSITIVE_INFINITY
 
 const SUMMARY_PROMPT =
-  "Đã hết số lượt gọi tool cho câu hỏi này. Không gọi thêm tool. Hãy tổng kết câu trả lời dựa trên dữ liệu đã có, nói rõ phần nào còn thiếu."
+  "The tool-call budget for this question is used up. Call no more tools. Write the answer from the data you have, saying which parts are missing."
 
 /**
  * No stream part at all for this long: the request is stalled, not slow. Codex and opencode
@@ -102,7 +103,7 @@ const stallMessage = (ms: number) =>
  * the request, so the cached prefix is unchanged.
  */
 export const TOOL_NUDGE =
-  "<nhac_nho>\nNếu còn cần dữ liệu, gọi cùng lúc mọi tool không phụ thuộc nhau. Khi trả lời: ngày tuyệt đối, mỗi cột một đơn vị, số dòng khớp lời nói, mỗi số có nguồn.\n</nhac_nho>"
+  "<nhac_nho>\nIf you still need data, call every independent tool at once. When answering: absolute dates, one unit per column, row counts matching the text, a source for every figure.\n</nhac_nho>"
 
 /** Model steps since the last todo_write call in this request: past this, the list is likely behind. */
 export const TODO_BEHIND_STEPS = 2
@@ -121,10 +122,10 @@ export function toolNudge(messages: readonly ModelMessage[]): string {
   const running = open.find((t) => t.status === "in_progress")
   const since = stepsSinceTodoWrite(messages)
   const behind =
-    running && since >= TODO_BEHIND_STEPS ? `\nĐã ${since} bước chưa cập nhật danh sách: nếu dữ liệu cho "${running.content}" đã có ở trên thì đánh completed ngay.` : ""
+    running && since >= TODO_BEHIND_STEPS ? `\nThe list has not been updated for ${since} steps: if the data for "${running.content}" is already above, mark it completed now.` : ""
   return TOOL_NUDGE.replace(
     "\n</nhac_nho>",
-    `\nViệc cần làm còn mở:\n${items}${behind}\nCập nhật trạng thái bằng todo_write CÙNG lượt với các tool tiếp theo. Khi viết câu trả lời cuối, gọi todo_write đóng danh sách trong cùng bước đó.\n</nhac_nho>`,
+    `\nOpen tasks:\n${items}${behind}\nUpdate their status with todo_write in the SAME round as the next tools. When writing the final answer, call todo_write to close the list in that same step.\n</nhac_nho>`,
   )
 }
 
@@ -166,6 +167,9 @@ export function nudgeAfterTools(target: TargetLike | undefined): boolean {
 export { REMINDER_TAG }
 
 export interface RunOptions {
+  /** Eval-only override and observer for failure thresholds. */
+  failureThresholds?: FailureThresholds
+  onFailurePolicy?: (event: { action: "nudge" | "stop"; streak: number; step: number }) => void
   providerRetry?: Pick<RetryOptions, "maxRetries">
   groundedFinancial?: boolean
   financePolicy?: FinancePolicyOptions
@@ -280,7 +284,7 @@ function stringify(value: unknown) {
   // A tool's own result: show its text; images are never dumped as base64 into the UI.
   if (value && typeof value === "object" && "output" in value && typeof (value as ToolResult).output === "string") {
     const r = value as ToolResult
-    return r.images?.length ? `${r.output}\n[${r.images.length} ảnh]` : r.output
+    return r.images?.length ? `${r.output}\n[${r.images.length} images]` : r.output
   }
   try {
     return JSON.stringify(value, null, 2)
@@ -340,6 +344,8 @@ const RESCUE_NOTICE: Record<RecoveryKind, string> = {
   fragment: "Câu trả lời bị cụt đầu (model viết tiếp câu cũ thay vì trả lời tin nhắn mới).",
   unfetched: "Câu trả lời trên ghi số liệu kèm nguồn nhưng chưa gọi tool nào: đừng dùng các số đó.",
   draft: "Model viết bản nháp (dàn ý, việc sẽ làm) thay vì câu trả lời.",
+  "question-echo": "Model chỉ lặp lại câu hỏi thay vì trả lời.",
+  "nudge-echo": "Model chép lại lời nhắc của harness thay vì trả lời.",
 }
 
 type AssistantMessage = Extract<ModelMessage, { role: "assistant" }>
@@ -529,12 +535,12 @@ async function repairCall<T extends { toolName: string; input?: string }>(
   if (names.length === 1 && (!active || active.includes(names[0]!))) return { ...toolCall, toolName: names[0]! }
   if (names.length === 1 && deferring) {
     const name = names[0]!
-    const how = renamed ? ` và ${renamed.field}="${renamed.value}" (${toolCall.toolName} đã gộp vào ${name})` : ""
+    const how = renamed ? ` and ${renamed.field}="${renamed.value}" (${toolCall.toolName} was merged into ${name})` : ""
     // Loaded already yet still not active: cut by the per-request cap. Saying "loaded,
     // call again" here would loop.
     if (loaded.includes(name)) {
       throw new Error(
-        `Tool ${name} đã nạp nhưng không gửi kèm được trong bước này: đã chạm trần ${MAX_TOOLS_PER_REQUEST} tool mỗi lần gọi model. Dùng các tool đang có để trả lời.`,
+        `Tool ${name} is loaded but could not be sent with this step: the cap of ${MAX_TOOLS_PER_REQUEST} tools per model call is reached. Answer with the tools you have.`,
       )
     }
     const def = registry.get(name)
@@ -542,14 +548,14 @@ async function repairCall<T extends { toolName: string; input?: string }>(
     throw new Error(
       [
         `${LOADED_PREFIX}${name}`,
-        `Tool ${name} chưa có trong bước này nên chưa chạy; đã nạp xong — gọi lại đúng lệnh với tên ${name}${how}.`,
+        `Tool ${name} was not in this step, so it did not run; it is loaded now — make the same call again with the name ${name}${how}.`,
         ...(def ? ["", describeTool(registry, def)] : []),
       ].join("\n"),
     )
   }
   if (!deferring) return null
-  const many = names.length > 1 ? ` Tên này khớp nhiều tool: ${names.join(", ")}.` : ""
-  throw new Error(`Không có tool "${toolCall.toolName}".${many} Gọi tool_search (query "select:<tên>" hoặc từ khoá) để nạp tool rồi gọi lại.`)
+  const many = names.length > 1 ? ` This name matches several tools: ${names.join(", ")}.` : ""
+  throw new Error(`No tool "${toolCall.toolName}".${many} Call tool_search (query "select:<name>" or keywords) to load the tool, then call again.`)
 }
 
 interface Outcome {
@@ -848,7 +854,7 @@ export const DEFAULT_DEFER_MIN_TOOLS = 40
  * Whether deferrable tools (MCP and the optional built-in ones) go out by name only this
  * request (tool search). "auto" defers all of them once they are many (tool choice degrades
  * past ~30–50) or heavy for the context; below that it defers only the `deferByDefault` local
- * tools that turns rarely use (grep/glob, sessions, doctor, send/stop). A subagent's
+ * tools that turns rarely use (grep, sessions, send/stop; glob_files and doctor_local stay visible, #317). A subagent's
  * tools are already narrowed by its type, so it keeps them visible.
  */
 export function shouldDefer(
@@ -886,14 +892,35 @@ export function deferredByServer(registry: ToolRegistry, names: string[]) {
  * Tools the model may call at a step: the visible set plus deferred tools the conversation
  * loaded (tool_search results, load_skill, direct calls). Undefined = no narrowing.
  */
+/**
+ * Tools offered only once a message names them (issue #309 B2). `read_result` reads back a result the
+ * conversation no longer holds, and every way to need it names it: a pruned result's line, the compaction
+ * summary, a capped table's note. Declared from the start (so it never shifts the declared set), it costs
+ * its ~200 tokens only in requests that can use it: in or16, 10 of 309 OpenTrading trials called it.
+ */
+export const ON_MENTION_TOOLS = ["read_result"]
+
+const textOfMessage = (m: ModelMessage): string =>
+  typeof m.content === "string" ? m.content : JSON.stringify(m.content)
+
+/** The on-mention tools no message names yet. */
+function unmentioned(built: BuiltToolSet, messages: readonly ModelMessage[]): Set<string> {
+  const pending = ON_MENTION_TOOLS.filter((n) => n in built.tools)
+  if (pending.length === 0) return new Set()
+  const named = new Set<string>()
+  for (const m of messages) for (const n of pending) if (!named.has(n) && textOfMessage(m).includes(n)) named.add(n)
+  return new Set(pending.filter((n) => !named.has(n)))
+}
+
 export function activeFor(built: BuiltToolSet | undefined, messages: readonly ModelMessage[]): string[] | undefined {
   if (!built) return undefined
-  // Nothing deferred and nothing cut: every declared tool is callable. (With search on, a
-  // history that loaded more than the cap declares them all; the cap must still apply.)
-  if (built.deferred.length === 0 && built.names.length === Object.keys(built.tools).length) return undefined
+  const hidden = unmentioned(built, messages)
+  // Nothing deferred, nothing cut, nothing waiting to be named: every declared tool is callable.
+  // (With search on, a history that loaded more than the cap declares them all; the cap must still apply.)
+  if (built.deferred.length === 0 && built.names.length === Object.keys(built.tools).length && hidden.size === 0) return undefined
   const visible = new Set(built.names)
   const extra = loadedTools(messages).filter((n) => !visible.has(n) && n in built.tools)
-  return [...built.names, ...extra].slice(0, MAX_TOOLS_PER_REQUEST)
+  return [...built.names, ...extra].filter((n) => !hidden.has(n)).slice(0, MAX_TOOLS_PER_REQUEST)
 }
 
 type TurnInput = Omit<RunOptions, "history" | "signal" | "maxSteps"> & {
@@ -925,7 +952,7 @@ export function fileAccessNote(registry: TurnInput["registry"], mode: Parameters
   const files = resultExportDir()
   const shown = files && workspace.contains(files) ? path.relative(workspace.primary, files) || "." : files
   const filesLine = shown
-    ? `Kết quả dữ liệu có nhãn [ref rN] có bản JSON đầy đủ ở ${shown}/rN.json: phép tính trên chuỗi số thì để script đọc file đó, không chép tay số.`
+    ? `Data results labelled [ref rN] have the full JSON at ${shown}/rN.json: for calculations on a series, have a script read that file; do not copy numbers by hand.`
     : undefined
   return [workspace.describe(present), filesLine, modeNote(mode, present, profile)].filter(Boolean).join("\n")
 }
@@ -1009,6 +1036,45 @@ async function prepare(opts: TurnInput, bound: Bound, extras: TurnExtras): Promi
   }
 }
 
+/** Messages that carry an Anthropic cache breakpoint: the last two (with the system prompt, 3 of the 4 allowed). */
+export const CACHED_TAIL_MESSAGES = 2
+
+/** A message without a cache mark an earlier step left on it. */
+function unmarked<M extends { providerOptions?: Record<string, unknown> }>(m: M): M {
+  const anthropic = m.providerOptions?.anthropic as Record<string, unknown> | undefined
+  if (!anthropic || !("cacheControl" in anthropic)) return m
+  const { cacheControl: _, ...rest } = anthropic
+  return { ...m, providerOptions: { ...m.providerOptions, anthropic: rest } }
+}
+
+/**
+ * Anthropic cache breakpoints on the last messages of a request (copies: the history is not
+ * changed). Marks on older messages are taken off, so a request holds at most `count` of them
+ * besides the system prompt's (Anthropic allows 4). The SDK puts a message's cacheControl on its
+ * last content part.
+ */
+export function withCacheMarks<M extends { role: string; providerOptions?: Record<string, unknown> }>(messages: M[], count = CACHED_TAIL_MESSAGES): M[] {
+  const from = Math.max(0, messages.length - count)
+  return messages.map((m, i) =>
+    m.role === "system"
+      ? m
+      : i < from
+        ? unmarked(m)
+        : { ...m, providerOptions: { ...m.providerOptions, anthropic: { ...(m.providerOptions?.anthropic as object | undefined), cacheControl: { type: "ephemeral" } } } },
+  )
+}
+
+/**
+ * The cache marks on every request the model sends, each step of a turn included (#333). Marking
+ * the turn's first request only (requestFor) left the tool calls and results of later steps out
+ * of the cache: prepareStep rebuilds each step's messages from the first request's. As a model
+ * middleware the marks follow the end of each step's prompt, so each step reads the previous
+ * step's whole prompt from cache.
+ */
+export const anthropicCacheMiddleware = (count = CACHED_TAIL_MESSAGES): LanguageModelMiddleware => ({
+  transformParams: async ({ params }) => ({ ...params, prompt: withCacheMarks(params.prompt, count) }),
+})
+
 /**
  * The request as sent: placeholders for images the model cannot see, the user/session
  * context on the first user message, the cache mark for Anthropic, and the tools visible
@@ -1017,14 +1083,19 @@ async function prepare(opts: TurnInput, bound: Bound, extras: TurnExtras): Promi
 function requestFor(p: Prepared, messages: ModelMessage[], retry: RetryOptions = {}) {
   // After /model to a model without vision, earlier screenshots become placeholders.
   const visible = p.images && p.userImages ? messages : stripImages(messages, { tool: !p.images, user: !p.userImages })
+  const anthropic = p.target.provider.npm === "@ai-sdk/anthropic"
+  // Anthropic caches only where asked: the static system prompt is marked here, the end of each
+  // step's prompt by anthropicCacheMiddleware (#333). Others cache by prefix.
   const request = withContext(visible, p.assembled.context)
-  // Anthropic caches only where asked: mark the static system prompt. Others cache by prefix.
-  const system: string | SystemModelMessage =
-    p.target.provider.npm === "@ai-sdk/anthropic"
-      ? { role: "system", content: p.assembled.system, providerOptions: { anthropic: { cacheControl: { type: "ephemeral" } } } }
-      : p.assembled.system
+  const system: string | SystemModelMessage = anthropic
+    ? { role: "system", content: p.assembled.system, providerOptions: { anthropic: { cacheControl: { type: "ephemeral" } } } }
+    : p.assembled.system
   // Requests are retried by kind of failure (retry.ts); the SDK's own retry stays off.
-  const model = wrapLanguageModel({ model: languageModel(p.target.provider, p.target.model, p.target.apiKey, { routing: p.target.routing, conversation: p.conversation }), middleware: retryMiddleware(retry) })
+  // The cache marks are set per step (anthropicCacheMiddleware), inside the retry: a retry resends the same prompt.
+  const model = wrapLanguageModel({
+    model: languageModel(p.target.provider, p.target.model, p.target.apiKey, { routing: p.target.routing, conversation: p.conversation }),
+    middleware: anthropic ? [retryMiddleware(retry), anthropicCacheMiddleware()] : retryMiddleware(retry),
+  })
   const providerOptions = mergeProviderOptions(thoughtOptions(p.target), effortOptions(p.target, p.effort))
   return { system, request, model, active: activeFor(p.built, request), providerOptions }
 }
@@ -1068,8 +1139,12 @@ function stepSize(usage: LanguageModelUsage | undefined, messages: readonly Mode
   return usage.inputTokens + (usage.outputTokens ?? 0) + tokensOf(messages.slice(answeredAt + 1))
 }
 
-const estimateRequest = (system: string | SystemModelMessage, messages: ModelMessage[], toolTokens = 0) =>
-  estimateTokens(JSON.stringify([system, ...messages])) + toolTokens
+/**
+ * The next request's size when the provider reported no usage. An image counts as IMAGE_TOKENS
+ * (tokensOf), not as its base64: a 1 MB screenshot is ~1.6k tokens, not ~350k (#332).
+ */
+export const estimateRequest = (system: string | SystemModelMessage, messages: ModelMessage[], toolTokens = 0) =>
+  estimateTokens(typeof system === "string" ? system : JSON.stringify(system)) + tokensOf(messages) + toolTokens
 
 /**
  * Compaction step 2: the model condenses `head` (older turns) into a structured summary.
@@ -1169,8 +1244,10 @@ export async function previewContext(opts: TurnInput) {
  * always ending in `done` with history that is safe to send back next turn.
  */
 export async function* runAgent(opts: RunOptions): AsyncGenerator<AgentEvent> {
-  // A subagent spends its parent's budget (the parent's counter sees its requests).
-  if (opts.maxRequests === undefined || opts.role === "subagent") return yield* runTurn(opts)
+  // A subagent spends its parent's budget (the parent's counter sees its requests), less the reserve
+  // kept for the parent's answer: its view closes early enough for its own summary (#328).
+  if (opts.role === "subagent") return yield* runTurn(opts, activeBudget()?.forChild())
+  if (opts.maxRequests === undefined) return yield* runTurn(opts)
   // The caller's number as it is: raising a cap of 1 or 2 would pass it. Anything else is a setup
   // error, thrown before any request: NaN (`Number(process.env.X)` unset) would silently mean no cap.
   if (!Number.isInteger(opts.maxRequests) || opts.maxRequests < MIN_REQUEST_BUDGET) throw new Error(`maxRequests phải là số nguyên từ ${MIN_REQUEST_BUDGET} trở lên (nhận ${opts.maxRequests}).`)
@@ -1182,9 +1259,11 @@ export async function* runAgent(opts: RunOptions): AsyncGenerator<AgentEvent> {
   }
 }
 
-async function* runTurn(opts: RunOptions, budget?: RequestBudget): AsyncGenerator<AgentEvent> {
+async function* runTurn(opts: RunOptions, budget?: TurnBudget): AsyncGenerator<AgentEvent> {
   const sessionId = opts.sessionId ?? ""
   const role = opts.role ?? "main"
+  // Subagents started during this turn run with its prompt profile (#328): the manager reads it here.
+  if (role !== "subagent") opts.registry.turnProfile = opts.profile
   // The profile and the constraints first: a source that failed to read holds the turn (TurnHeldError)
   // before the model is resolved and before any hook runs, so a retry after the user chooses does not
   // run the hooks twice. Read once per turn: the stop gate's reruns reuse this turn's system part.
@@ -1330,7 +1409,7 @@ async function* runTurn(opts: RunOptions, budget?: RequestBudget): AsyncGenerato
         active = activeFor(built, messages)
         loaded = loadedTools(messages)
         const failures = turnFailures(messages)
-        const stopped = failures.streak >= FAILURE_STREAK_STOP
+        const stopped = failures.streak >= (opts.failureThresholds?.stop ?? FAILURE_STREAK_STOP)
         // A run that must end in its final tool ends there: with tools off it could not.
         const finalNow = stopped && !!opts.finalTool && registryHas(built, opts.finalTool)
         if (stepsUsed + stepNumber < maxSteps - 1 && !finalNow && !budget?.closing) {
@@ -1347,12 +1426,14 @@ async function* runTurn(opts: RunOptions, budget?: RequestBudget): AsyncGenerato
                 ? FAILURE_STREAK_FINAL
                 : opts.disabled?.has("failure-nudge")
                   ? undefined
-                  : failureNudge(gapRescue ? { gaps: [], streak: failures.streak } : failures)
+                  : failureNudge(gapRescue ? { gaps: [], streak: failures.streak } : failures, opts.failureThresholds?.nudge)
               : undefined
           // Numbers typed into an arithmetic command that nothing read holds (loop/operands.ts): a
           // one-step note, on the same routes as the other nudges. The command already ran.
           const operands = nudge && afterTool && !opts.disabled?.has("operand-note") ? untracedOperands(messages, isArithmetic, [bound.profile, bound.constraints, assembled.context].filter(Boolean).join("\n")) : []
           const tail = [base, added, operands.length > 0 ? operandNote(operands) : undefined].filter(Boolean).join("\n") || undefined
+          if (stopped) opts.onFailurePolicy?.({ action: "stop", streak: failures.streak, step: stepsUsed + stepNumber })
+          else if (added && failures.streak === (opts.failureThresholds?.nudge ?? FAILURE_STREAK_NUDGE)) opts.onFailurePolicy?.({ action: "nudge", streak: failures.streak, step: stepsUsed + stepNumber })
           const choice = stopped || rescueNow?.toolChoice === "none" || (rescueNow && !tail) ? { toolChoice: "none" as const } : {}
           return { ...(active ? { activeTools: active } : {}), ...choice, messages: tail ? withNudge(messages, tail) : messages }
         }
@@ -1478,6 +1559,7 @@ async function* runTurn(opts: RunOptions, budget?: RequestBudget): AsyncGenerato
       : judgeStop(
           {
             text: last.stepText ?? "",
+            userText: visibleUserText(user),
             toolNames: last.stepTools ?? [],
             finish: last.finish,
             rawFinish: last.rawFinish,
@@ -1488,6 +1570,7 @@ async function* runTurn(opts: RunOptions, budget?: RequestBudget): AsyncGenerato
             gaps: failures.gaps,
             usableData: failures.usable,
             fetchedData: failures.fetched,
+            errored: failures.errored,
             unfetched,
           },
           recoveries,
@@ -1497,7 +1580,9 @@ async function* runTurn(opts: RunOptions, budget?: RequestBudget): AsyncGenerato
     const capped = stepsUsed >= maxSteps || (!!budget && budget.remaining() <= 0)
     const continuing = recoveries.at(-1) === "length"
     // Capped, a step with text is the turn's last word (the summary may well say what is missing).
-    if (verdict.action === "accept" || (verdict.action === "continue" && capped && !isEmptyAnswer(last.stepText ?? ""))) {
+    // An echo is never the answer, capped or not.
+    const echo = verdict.action === "continue" && (verdict.kind === "question-echo" || verdict.kind === "nudge-echo")
+    if (verdict.action === "accept" || (verdict.action === "continue" && !echo && capped && !isEmptyAnswer(last.stepText ?? ""))) {
       messages = continuing ? continueAnswer(kept, response) : [...kept, ...response]
       // Out of recoveries, the answer stands: the user still hears that nothing backs its figures.
       if (!opts.finalTool && !continuing && isUnfetched({ unfetched })) yield { type: "notice", text: "Câu trả lời ghi số liệu kèm nguồn nhưng lượt này không có tool nào chạy: các số đó chưa được kiểm chứng." }
@@ -1515,12 +1600,16 @@ async function* runTurn(opts: RunOptions, budget?: RequestBudget): AsyncGenerato
     }
     // Gave up: say why, and keep a placeholder so the session file shows what happened.
     unanswered = true
-    // Every source failed and the model wrote nothing: the harness says what is missing, no figure.
+    if (verdict.kind === "question-echo" || verdict.kind === "nudge-echo") yield { type: "retract", steps: droppedRequests(response, last.steps) }
+    // Every data call failed or errored and the model wrote nothing, or only an echoed instruction
+    // (#414): the harness says what is missing, no figure.
     // Not on a machine-response run (finance): its answer has a contract of its own.
-    if (verdict.kind === "empty" && !finance && sourcesFailed({ gaps: failures.gaps, fetchedData: failures.fetched })) {
-      const text = gapsAnswer(failures.gaps)
+    const failed = noDataFrom({ gaps: failures.gaps, errored: failures.errored, fetchedData: failures.fetched, usableData: failures.usable })
+    if ((verdict.kind === "empty" || verdict.kind === "nudge-echo") && !finance && failed) {
+      const text = gapsAnswer(failed.gaps, failed.errored)
       yield { type: "text-delta", text }
-      yield { type: "notice", text: "Model không viết được câu trả lời khi nguồn dữ liệu lỗi; câu trên do OpenTrading tự ghi phần còn thiếu." }
+      const what = verdict.kind === "nudge-echo" ? "Model chỉ chép lại lời nhắc của harness" : "Model không viết được câu trả lời"
+      yield { type: "notice", text: `${what} khi không lấy được dữ liệu; câu trên do OpenTrading tự ghi phần còn thiếu.` }
       fallback = true
       messages = [...kept, ...dropFinalText(response), { role: "assistant", content: text }]
       break
@@ -1530,7 +1619,11 @@ async function* runTurn(opts: RunOptions, budget?: RequestBudget): AsyncGenerato
     const usedTools = [...kept, ...response].some((m) => m.role === "tool")
     yield {
       type: "notice",
-      text: usedTools
+      text: verdict.kind === "question-echo"
+        ? "Model chỉ lặp lại câu hỏi và chưa trả lời. Kết quả tool ở phía trên; thử hỏi lại hoặc đổi model."
+        : verdict.kind === "nudge-echo"
+        ? `Model chỉ chép lại lời nhắc của harness và chưa trả lời.${usedTools ? " Kết quả tool ở phía trên; thử" : " Thử"} hỏi lại hoặc đổi model.`
+        : usedTools
         ? `Model không trả lời sau khi gọi tool (câu trả lời rỗng).${reason} Kết quả tool ở phía trên; thử hỏi lại hoặc đổi model.`
         : `Model trả về câu trả lời rỗng.${reason} Thử hỏi lại hoặc đổi model.`,
     }
@@ -1603,7 +1696,7 @@ async function* runTurn(opts: RunOptions, budget?: RequestBudget): AsyncGenerato
   // as sent.
   const text = outcome.text && stripCardBlocks(markupTags ? stripMarkup(outcome.text).text : outcome.text).text
   // A stopped or failed turn has no card, and its card blocks never reach history either (spec 007).
-  const cut = closeDanglingToolCalls(outcome.progress, "Tool bị ngắt vì lượt bị dừng giữa chừng.").messages
+  const cut = closeDanglingToolCalls(outcome.progress, "Tool interrupted because the turn was stopped midway.").messages
   const progress = stripCardMessages(markupTags ? stripEchoMessages(cut, { echoes: false }) : cut).messages
   // No square brackets: the markdown renderer read "[Đã dừng]" as a link. The closed steps
   // already carry their text, so the trailing note appears only when nothing else closes the

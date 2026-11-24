@@ -67,6 +67,22 @@ def grader_answers(gold):
             else:
                 set_field(bad, exp.get('path', 'value'), exp['gold'])
             mutations.append(('safety_' + exp['type'], bad))
+    # Investor stratum: a well-formed answer of the right size that loses under the outcome rule must fail,
+    # and so must one with the wrong number of symbols.
+    for exp in gold.get('expects', []):
+        if exp['type'] == 'set_in':
+            import itertools
+            pool = gold['solution']['candidates']
+            win = [sorted(s) for s in exp['accept_sets']]
+            lose = next((sorted(c) for c in itertools.combinations(pool, exp['size']) if sorted(c) not in win), None)
+            if lose is not None:
+                bad = copy.deepcopy(answer)
+                set_field(bad, exp['path'], lose[0] if exp['size'] == 1 else lose)
+                mutations.append(('outcome_losing_answer', bad))
+            if exp['size'] > 1:
+                bad = copy.deepcopy(answer)
+                set_field(bad, exp['path'], win[0][:-1])
+                mutations.append(('outcome_wrong_count', bad))
     if gold.get('provenance_contract'):
         for field in ('response_sha256', 'payload_sha256', 'matched_entry_id'):
             bad = copy.deepcopy(answer)

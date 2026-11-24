@@ -1,10 +1,10 @@
 {
   "protocol": "financial_product_v45",
   "study_version": "v4.7",
-  "model": "nvidia/nemotron-3-ultra-550b-a55b:free",
+  "model": "deepseek/deepseek-v4.1-flash-1017",
   "model_stratum": "deepseek-openrouter",
   "allowed_models": [
-    "nvidia/nemotron-3-ultra-550b-a55b:free"
+    "deepseek/deepseek-v4.1-flash-1017"
   ],
   "allowed_inference_splits": [
     "devsmoke",
@@ -24,35 +24,38 @@
   "request_interval_s": 2,
   "effort": "none",
   "price_per_1m": {
-    "prompt_usd": 0.006,
-    "completion_usd": 0.5,
-    "cache_read_usd": 0.005,
-    "entitlement": "OpenRouter models API 2026-11-10 (variant -1017, user-chosen); paid credit route"
+    "prompt_usd": 0.03,
+    "completion_usd": 0.2,
+    "cache_read_usd": 0.001,
+    "entitlement": "OpenRouter models API 2026-11-24, model-level list price for deepseek/deepseek-v4.1-flash-1017; hosts range 0.025-0.6 / 0.1-2.4 USD per 1M; the billed price is the pinned host in the paid receipt"
   },
   "memory_policy": "none fresh isolatedhome/store/session eachtrial",
   "track": "product native utility capability parity, not identicalschemas",
   "provider_options": {
     "temperature": 0,
     "top_p": 1,
-    "context_window": 1000000,
+    "context_window": 1048576,
     "max_output_tokens": null,
     "max_requests": 24,
     "max_total_tokens": 4600000,
     "provider_timeout_s": 600,
     "request_interval_s": 2,
-    "failed_attempt_context_bound": 1000000,
-    "failed_attempt_token_reservation": 1065536,
+    "failed_attempt_context_bound": 1048576,
+    "failed_attempt_token_reservation": 1441792,
     "native_reasoning_capability": true,
     "native_reasoning_mode": "off",
     "effort_note": "none requested; backend thinking not proven disabled",
     "native_bun_binary": "../../.toolchains/bun/bin/bun",
     "native_bun_sha256": "10702245766b225e70bbf6235fd6b47214fd94b4760d00ffaed8ab0df57ac235",
-    "provider_route": "openrouter_free",
+    "provider_route": "openrouter_paid",
     "memory_max_requests": 48,
-    "model_max_output_tokens": 65536,
-    "model_max_output_tokens_source": "OpenRouter models API 2026-11-16: nvidia/nemotron-3-ultra-550b-a55b:free top_provider.max_completion_tokens (1 host: Nvidia)",
+    "model_max_output_tokens": 393216,
+    "model_max_output_tokens_source": "OpenRouter models API 2026-11-24: deepseek/deepseek-v4.1-flash-1017 top_provider.max_completion_tokens (hosts range 131072-943718; re-check for the pinned host)",
     "sandbox_image": "sha256:ef5d5c4ae395c6e9fe4d7ea3943f274b453b7e22f4df37a271c745dd020a29f1",
-    "sandbox_image_source": "tools/runners/sandbox/Dockerfile (docker build -t ot-bench-shell:v47); local provenance tools/runners/sandbox/build-receipt.json"
+    "sandbox_image_source": "tools/runners/sandbox/Dockerfile (docker build -t ot-bench-shell:v47); local provenance tools/runners/sandbox/build-receipt.json",
+    "paid_budget_receipt": null,
+    "paid_budget_receipt_sha256": null,
+    "paid_route_note": "Paid admission is fail-closed until a reviewed receipt (<=24h, dedicated key, pinned provider host, per-attempt upper bound) is written and its sha256 recorded here, and run_benchmark gets --budget-usd. See plans/2026-11-17-paid-budget-offline.md."
   },
   "arms_pilot": [
     "opentrading_machine",
@@ -72,6 +75,6 @@
     "opencode",
     "dsh"
   ],
-  "opentrading_runtime_commit": "4688a94ec674b3612c7829ee0f96e106c040aad7",
+  "opentrading_runtime_commit": "ae7ec48b3299994b75bed9be12d37e0c4be61e8a",
   "shell_policy": "v4.7 (2026-11-16, 6b): each arm native shell tool (OT/OC shell, DSH bash), unfiltered, inside a no-network Docker sandbox mounting only the trial workspace and temp (tools/runners/sandbox)"
 }

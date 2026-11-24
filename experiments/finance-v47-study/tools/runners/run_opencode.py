@@ -38,10 +38,15 @@ def run(ws, instruction, task_dir, model, timeout_s, log_path, options=None):
         entry['modelID'] = gateway.model
         models[gateway.model.split('/', 1)[1]] = entry
     cfg = {'$schema': 'https://opencode.ai/config.json',
-        'plugins': ['-*', 'opencode.agent', 'opencode.config.agent', 'opencode.config.mcp', 'opencode.config.provider', 'opencode.provider.dynamic', 'opencode.provider.nvidia', 'opencode.tools', 'opencode.tool.shell'],
+        'plugins': ['-*', 'opencode.agent', 'opencode.config.agent', 'opencode.config.mcp', 'opencode.config.provider', 'opencode.provider.dynamic', 'opencode.provider.nvidia', 'opencode.tool.shell'],
+        # OpenCode 2.4: 'opencode.tools' registers opencode_session_*/worktree_*/models tools with no
+        # permission gate, outside the snapshot+shell tool set; it is left off (smoke 2026-11-24).
         'agents': {'title': {'disabled': True}, 'summary': {'disabled': True}, 'compaction': {'disabled': True}},
         'providers': {'nvidia': {'package': '@ai-sdk/openai-compatible', 'name': 'NVIDIA controlled gateway',
-            'settings': {'apiKey': gateway.token, 'baseURL': gateway.url},
+            # OpenCode 2.4 aborts after 300 s without response headers (default headerTimeout); the gateway's
+            # provider_timeout_s is the common per-request cap for every arm, so OpenCode waits as long.
+            'settings': {'apiKey': gateway.token, 'baseURL': gateway.url,
+                         'headerTimeout': int(float(options.get('provider_timeout_s') or 600) * 1000)},
             'models': models}},
         # v4.7 (option A): OpenCode's own shell tool is on, inside the shared no-network Docker sandbox
         # (runners/mathshell launches each command via PATH/$SHELL). doom_loop would ask a user nobody is there to answer:

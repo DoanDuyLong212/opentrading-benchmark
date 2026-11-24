@@ -124,3 +124,52 @@ def test_seal_cannot_self_authorize_diagnostic_pilot_or_main(tmp_path):
  with pytest.raises(ValueError,match='Diagnostic pilot authorization'):validate_seal(p)
  seal['diagnostic_pilot_authorized']=False;seal['runs']=[{'split':'main'}];p.write_text(json.dumps(seal))
  with pytest.raises(ValueError,match='smoke/pilot only'):validate_seal(p)
+
+
+def test_ot_english_runtime_wording_is_reconciled_exactly():
+    # OpenTrading 0.5.0 (#357/#359) words its native rejections in English; the Vietnamese forms stay valid
+    # for historical runs, and the match is still exact (tool name, count, rejected value).
+    from v46_rejection_proof import loop_guard_count, schema_rejection_context
+    assert unknown_context('No tool "typo".', 'typo')
+    assert not unknown_context('No tool "typo".', 'correct')
+    loop = ('The user stopped a loop: you called shell with the same arguments 3 times in a row. '
+            'Do not make this call again; try another way or answer with the data you have.')
+    assert loop_guard_count(loop, 'shell') == 3 and loop_guard_count('Error: ' + loop, 'shell') == 3
+    assert loop_guard_count(loop, 'read_result') is None
+    args = {'symbol': 'CMG', 'metrics': ['pe', 'roe']}
+    text = ('Invalid arguments for mcp__opentrading__peer_compare: Type validation failed: Value: '
+            '{"symbol":"CMG","metrics":["pe","roe"]}.\nError message: Error: invalid_argument: data/metrics must be equal to constant')
+    assert schema_rejection_context(text, 'mcp__opentrading__peer_compare', args)
+    assert not schema_rejection_context(text, 'mcp__opentrading__peer_compare', {'symbol': 'CMG', 'metrics': None})
+    assert not schema_rejection_context(text, 'mcp__opentrading__vn_quote_history', args)
+
+
+def test_paid_wire_permits_only_pinned_host_and_default_tier(tmp_path):
+    import hashlib, json as _j
+    from ready_check import verify_request_capture
+    from run_manifest import digest_json
+    def paths(value, prefix='$'):
+        found = [prefix]
+        if isinstance(value, dict):
+            for k, v in value.items(): found.extend(paths(v, prefix + '.' + k))
+        elif isinstance(value, list):
+            for i, v in enumerate(value): found.extend(paths(v, prefix + '[%d]' % i))
+        return found
+    def cap(name, body):
+        raw = _j.dumps(body).encode(); f = tmp_path / name; f.write_bytes(raw)
+        return {'path': str(f), 'raw_sha256': hashlib.sha256(raw).hexdigest(), 'canonical_sha256': digest_json(body), 'field_paths': paths(body)}
+    native = {'model': 'm', 'messages': [{'role': 'user', 'content': 'x'}], 'tools': [], 'stream': True}
+    def request(effective):
+        return {'request_model': 'm', 'tool_names': [], 'effective_max_tokens': None,
+                'message_sha256': hashlib.sha256(_j.dumps(native['messages'], sort_keys=True).encode()).hexdigest(),
+                'tool_schema_sha256': hashlib.sha256(_j.dumps([], sort_keys=True, ensure_ascii=False).encode()).hexdigest(),
+                'native_request_capture': cap('n.json', native), 'effective_request_capture': cap('e.json', effective)}
+    pinned = {**native, 'temperature': 0, 'top_p': 1, 'service_tier': 'default', 'provider': {'only': ['Host'], 'allow_fallbacks': False}}
+    verify_request_capture(request(pinned), 0, 1, 'Host')
+    for bad in ({**pinned, 'provider': {'only': ['Other'], 'allow_fallbacks': False}},
+                {**pinned, 'provider': {'only': ['Host'], 'allow_fallbacks': True}},
+                {**pinned, 'service_tier': 'priority'}, {**pinned, 'seed': 1}):
+        with pytest.raises(ValueError):
+            verify_request_capture(request(bad), 0, 1, 'Host')
+    with pytest.raises(ValueError):
+        verify_request_capture(request(pinned), 0, 1)

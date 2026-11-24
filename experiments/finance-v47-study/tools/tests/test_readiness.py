@@ -62,7 +62,7 @@ def smoke(tmp_path, monkeypatch):
                      'observed_tool_sets': [names]}
         from experiment_conditions import condition, prompt_directory
         inventory.update(condition=item['arm'], **condition(item['arm']))
-        inventory['clock_policy'] = {'answer_as_of': '2026-11-01', 'native_now_pinned': item['arm'] == 'opentrading'}
+        inventory['clock_policy'] = {'answer_as_of': '2026-11-01', 'native_now_pinned': True}
         if item['arm'] == 'opentrading':
             prompt_dir = prompt_directory('finance')
             inventory.update(prompt_directory=str(prompt_dir), prompt_files={p.name: RM.hash_file(p) for p in sorted(prompt_dir.glob('*.md'))})

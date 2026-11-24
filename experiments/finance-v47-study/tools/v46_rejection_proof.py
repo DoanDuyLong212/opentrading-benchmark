@@ -49,6 +49,8 @@ def unknown_context(content,name):
     return text in (
         f'unknown tool "{name}"',f'Unknown tool "{name}"',
         f'Không có tool "{name}".',
+        # OpenTrading >= 37f4736 (#359, English runtime text): errors.ts toolErrorText.
+        f'No tool "{name}".',
     )
 
 def bind_source(bindings,record,proof):
@@ -69,8 +71,11 @@ def bind_source(bindings,record,proof):
 
 
 import re as _re
-_LOOP = _re.compile(r'^Người dùng dừng vòng lặp: bạn đã gọi (?P<name>\S+) với cùng tham số (?P<count>\d+) lần liên tiếp\. '
-                    r'Đừng gọi lại lời gọi này; đổi cách khác hoặc trả lời bằng dữ liệu đã có\.')
+_LOOP = _re.compile(r'^(?:Người dùng dừng vòng lặp: bạn đã gọi (?P<name>\S+) với cùng tham số (?P<count>\d+) lần liên tiếp\. '
+                    r'Đừng gọi lại lời gọi này; đổi cách khác hoặc trả lời bằng dữ liệu đã có\.'
+                    # OpenTrading >= 37f4736 (#359): loop-guard.ts loopDenied in English.
+                    r'|The user stopped a loop: you called (?P<name_en>\S+) with the same arguments (?P<count_en>\d+) times in a row\. '
+                    r'Do not make this call again; try another way or answer with the data you have\.)')
 
 
 def loop_guard_count(content, name):
@@ -86,9 +91,9 @@ def loop_guard_count(content, name):
     if text.startswith('Error: '):
         text = text[len('Error: '):].strip()
     m = _LOOP.match(text)
-    if not m or m.group('name') != name:
+    if not m or (m.group('name') or m.group('name_en')) != name:
         return None
-    count = int(m.group('count'))
+    count = int(m.group('count') or m.group('count_en'))
     return count if count >= 3 else None
 
 
@@ -102,8 +107,11 @@ def schema_rejection_context(content, name, arguments):
         return False
     import json as _json
     text = content.strip()
-    head = 'Tham số không hợp lệ cho %s: Type validation failed: Value: ' % name
-    if not text.startswith(head):
+    # OpenTrading >= 67a3498 (#357) words the prefix in English (errors.ts invalidInput).
+    heads = ('Tham số không hợp lệ cho %s: Type validation failed: Value: ' % name,
+             'Invalid arguments for %s: Type validation failed: Value: ' % name)
+    head = next((h for h in heads if text.startswith(h)), None)
+    if head is None:
         return False
     rest = text[len(head):]
     try:
