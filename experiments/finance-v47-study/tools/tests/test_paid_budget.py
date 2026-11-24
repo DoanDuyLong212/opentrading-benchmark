@@ -389,15 +389,26 @@ def test_expired_receipt_allows_accounting_only_but_no_new_dispatch(tmp_path, mo
     assert budget.path.read_bytes() == before
 
 
-def test_active_free_admission_bound_and_not_arbitrary_route_flag():
-    cfg = json.loads((TOOLS/'bench_config_v47.json').read_text())
-    options = cfg['provider_options']
-    sha = pb.validate_free_identity(cfg['model'], options)
-    assert len(sha) == 64 and options['model_max_output_tokens'] == 65536
+def test_free_admission_bound_and_not_arbitrary_route_flag():
+    # Free dev-smoke identity (Nemotron :free); the active v4.7 config is the paid DeepSeek route below.
+    free = 'nvidia/nemotron-3-ultra-550b-a55b:free'
+    options = {'provider_route': 'openrouter_free', 'model_max_output_tokens': 65536}
+    sha = pb.validate_free_identity(free, options)
+    assert len(sha) == 64
     with pytest.raises(pb.BudgetError):
-        pb.validate_free_identity(cfg['model'], {**options, 'free_admission_sha256':'0'*64})
+        pb.validate_free_identity(free, {**options, 'free_admission_sha256':'0'*64})
     with pytest.raises(pb.BudgetError):
         pb.validate_free_identity('arbitrary/paid:free', options)
+
+
+def test_active_v47_config_is_paid_deepseek_and_fails_closed_without_receipt():
+    cfg = json.loads((TOOLS/'bench_config_v47.json').read_text())
+    options = cfg['provider_options']
+    assert cfg['model'] == 'deepseek/deepseek-v4.1-flash-1017' and cfg['allowed_models'] == [cfg['model']]
+    assert options['provider_route'] == 'openrouter_paid'
+    assert pb.validate_free_identity(cfg['model'], options) is None
+    with pytest.raises(pb.BudgetError):
+        pb.paid_policy(cfg['model'], {**options, 'budget_usd': '1'})
 
 
 @pytest.mark.parametrize('extension', [{'n':8}, {'n':True}, {'service_tier':'priority'}, {'service_tier':'auto'}, {'speed':'fast'}, {'preset':'priority-fixture'}, {'best_of':4}, {'reasoning':{'max_tokens':100000}}, {'unreviewed_extension':True}])
