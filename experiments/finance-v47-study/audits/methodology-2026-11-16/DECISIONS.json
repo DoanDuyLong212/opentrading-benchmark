@@ -48,6 +48,28 @@
   "pilot": "approved; runs once the main taskset is final (freeze_state hashes every split, so a seal now would be voided by the main additions)",
   "13_refusal_traps": "kept in main: 8 saturated L4 future/nonexist traps restored (PRUNE2.json restored_to_main); main 114; target 200 pending owner choice of families",
   "15": "amended from a: holdout gets C5/M6 twins (+8 C5 fin-c5-*-981..988, +4 M6 fin-m6-*-991..994); holdout 70",
-  "paid_resume": "resume spends via paid_budget.resume_run_budget; crash leftovers settled at full reserved bound only with --reconcile-paid-pending; expired receipt replaced through owner-signed <run>/PAID-RECEIPT-RENEWAL.json (sealed config unchanged; identity fields immutable; journaled as renew)"
+  "paid_resume": "resume spends via paid_budget.resume_run_budget; crash leftovers settled at full reserved bound only with --reconcile-paid-pending; expired receipt replaced through owner-signed <run>/PAID-RECEIPT-RENEWAL.json (sealed config unchanged; identity fields immutable; journaled as renew)",
+  "investor_and_200": {
+   "owner_wording": "1 ok. 2 lãi lỗ điểm chính, nhưng đừng dùng tiêu chí cơ bản xác định leader, bỏ leader đi thay bằng chọn cổ tăng nhiều nhất ( giá đó tới max ngày hôm nay ). 3 hôm nay",
+   "main_total": 200,
+   "groups": {
+    "A_memory": 24,
+    "B_series_compute": 20,
+    "C_c5": 10,
+    "D_partial_traps": 8,
+    "E_l4_chain": 4,
+    "I_investor": 20
+   },
+   "investor_primary": "P/L outcome (owner); rules pre-registered in tools/investor_specs_20261124.py (commit fd33f66) before any return was computed",
+   "end_date": "2026-11-23 (no source had a 24/11 session at 18:50 on 24/11)",
+   "pending": [
+    "re-record end date 24/11 when available"
+   ],
+   "pooling": {
+    "decision": "pooled into the primary score with L/C/M (owner: \"Gộp chung\"); also reported as its own stratum with base rates",
+    "implementation": "judge_primary.summarize excludes only safety (clock_policy.comparative_eligible), so investor is pooled as is"
+   },
+   "ot_prompt_review": "OT machine-profile system prompt (captured request, OT 6d63a91) has no investor/stock-selection method, no skill or subagent; bat_bien rule 3 (ranked above the user request) forbids choosing a ticker for the user, so OT may refuse I picks: a disadvantage, not an advantage. OpenCode/DSH prompts carry no such rule."
+  }
  }
 }

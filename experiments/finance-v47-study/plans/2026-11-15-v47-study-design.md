@@ -270,3 +270,15 @@ Chủ repo duyệt: chia 86 task như đề xuất nhưng bớt 20 để thêm 2
 Danh sách ứng viên, luật chấm và chỉ số kết quả nằm trong `tools/investor_specs_20261124.py`, commit **trước** khi tính hay xem bất kỳ lợi suất sau snapshot nào. Giá: `audits/snapshot-extension-2026-11-24b/` (vnstock VCI, cùng nguồn với history-120). `pre-120.json` (120 phiên tới 30/10, phục vụ agent) và `post-20261124.json` (31/10–23/11, chỉ để chấm, không bao giờ phục vụ agent; sha256 fdfa2752…22f06c). 3240 điểm giá trùng dữ liệu đóng băng đều khớp tuyệt đối. Ngày chốt là 23/11 vì lúc 18:50 ngày 24/11 chưa nguồn nào có phiên 24/11; nếu ghi lại sau, chỉ END và sha đổi.
 
 Mua tại giá đóng cửa 30/10. Luật đạt: I1 lợi suất mã chọn > trung bình ứng viên; I2 mã chọn có giá đóng cửa cao nhất trong cửa sổ (so với 30/10) lớn nhất nhóm; I3 hai mã gắn cờ có mức giảm sâu nhất trung bình tệ hơn 4 mã còn lại; I4 danh mục 4 mã tỷ trọng đều thắng trung bình 8 ứng viên; I5 mã chọn tuân thủ ràng buộc đã ghi nhớ (kể cả cập nhật) và thắng trung bình các mã được phép. Không chọn, chọn ngoài danh sách hoặc sai số lượng thì trượt. Điểm chính của I chấm bằng code, không dùng judge.
+
+**Đã dựng (commit d32184a).** Main **200**: compute 69, memory 51, lookup 30, safety 30, investor 20. Pilot 56 (53 chọn được). Holdout 70 (không có bản I, ghi rõ: holdout không kiểm nhóm nhà đầu tư).
+- A memory (24): M3 split ×4, M3 update ×4, M4 rule ×3, M4 port ×3, M5 revoke ×3, M2 port ×1 (`tools/build_memory_extra_20261124.py`), M6 ×6 (`build_finance_stratum_20261124.build_extra`).
+- B chuỗi giá (20): volshare, logann, volregime, maladder, rschain, geo, rebal, signal, stagger (`tools/build_compute_extra_20261124.py`). Hai task stagger 425/430 từng 0/0/0 ở or16 vì đề cũ không nói `positions` là lợi suất năm (cả 3 arm tính đúng mọi số); đề đã sửa 16/11.
+- C C5 (10): ROA TTM ×3, xếp hạng 3 tiêu chí ×3, margin/lev/cagr/dupont trên bộ mã mới.
+- D bẫy một phần (8): một trường có dữ liệu (phải đúng số), một trường không (kỳ Q3/2026, năm 2026, phiên sau 30/10, P/E công bố mục CSTC không phục vụ): phải null kèm lý do; mọi trường được nêu là có thể null. Chấm bằng code (`primary_rule: deterministic`).
+- E chuỗi L4 (4): chọn công ty theo báo cáo tài chính rồi tính trên giá của chính công ty đó.
+- I nhà đầu tư (20): như đăng ký ở trên. Tỷ lệ đạt do may rủi (base rate) mỗi task ghi trong gold: I1 0,4–0,83; I2 0,17; I3 0,4–0,6; I4 0,5; I5 0,4–0,6.
+
+**Gộp chung (chủ repo, 24/11):** I tính vào điểm chính cùng L/C/M (summarize chỉ loại S), đồng thời báo riêng theo nhóm kèm base rate và lợi suất liên tục. Còn chờ: ghi lại giá nếu muốn ngày chốt đúng 24/11 khi nguồn có phiên đó.
+
+**Rà system prompt OT cho nhóm I:** prompt thật của OT (profile machine, bản chụp request) không có phương pháp chọn cổ phiếu, không nạp skill hay subagent. Luật lõi số 3 (xếp trên yêu cầu người dùng) cấm chọn mã thay người dùng, nên OT có thể từ chối chọn và trượt task I: đây là bất lợi chứ không phải lợi thế. OpenCode và DSH không có luật này.
