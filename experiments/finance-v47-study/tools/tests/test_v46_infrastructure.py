@@ -142,3 +142,34 @@ def test_ot_english_runtime_wording_is_reconciled_exactly():
     assert schema_rejection_context(text, 'mcp__opentrading__peer_compare', args)
     assert not schema_rejection_context(text, 'mcp__opentrading__peer_compare', {'symbol': 'CMG', 'metrics': None})
     assert not schema_rejection_context(text, 'mcp__opentrading__vn_quote_history', args)
+
+
+def test_paid_wire_permits_only_pinned_host_and_default_tier(tmp_path):
+    import hashlib, json as _j
+    from ready_check import verify_request_capture
+    from run_manifest import digest_json
+    def paths(value, prefix='$'):
+        found = [prefix]
+        if isinstance(value, dict):
+            for k, v in value.items(): found.extend(paths(v, prefix + '.' + k))
+        elif isinstance(value, list):
+            for i, v in enumerate(value): found.extend(paths(v, prefix + '[%d]' % i))
+        return found
+    def cap(name, body):
+        raw = _j.dumps(body).encode(); f = tmp_path / name; f.write_bytes(raw)
+        return {'path': str(f), 'raw_sha256': hashlib.sha256(raw).hexdigest(), 'canonical_sha256': digest_json(body), 'field_paths': paths(body)}
+    native = {'model': 'm', 'messages': [{'role': 'user', 'content': 'x'}], 'tools': [], 'stream': True}
+    def request(effective):
+        return {'request_model': 'm', 'tool_names': [], 'effective_max_tokens': None,
+                'message_sha256': hashlib.sha256(_j.dumps(native['messages'], sort_keys=True).encode()).hexdigest(),
+                'tool_schema_sha256': hashlib.sha256(_j.dumps([], sort_keys=True, ensure_ascii=False).encode()).hexdigest(),
+                'native_request_capture': cap('n.json', native), 'effective_request_capture': cap('e.json', effective)}
+    pinned = {**native, 'temperature': 0, 'top_p': 1, 'service_tier': 'default', 'provider': {'only': ['Host'], 'allow_fallbacks': False}}
+    verify_request_capture(request(pinned), 0, 1, 'Host')
+    for bad in ({**pinned, 'provider': {'only': ['Other'], 'allow_fallbacks': False}},
+                {**pinned, 'provider': {'only': ['Host'], 'allow_fallbacks': True}},
+                {**pinned, 'service_tier': 'priority'}, {**pinned, 'seed': 1}):
+        with pytest.raises(ValueError):
+            verify_request_capture(request(bad), 0, 1, 'Host')
+    with pytest.raises(ValueError):
+        verify_request_capture(request(pinned), 0, 1)

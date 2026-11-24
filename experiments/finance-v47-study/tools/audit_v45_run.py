@@ -45,6 +45,11 @@ def audit(out):
     out=Path(out).resolve();m=json.loads((out/'manifest.json').read_text());plan=m['plan'];cfg=plan['config'];rows=load_trials(out);errors=[];checks=[];accepted_amendments=[]
     if not validate_trial_rows(rows,m):errors.append({'check':'complete','error':'Schedule incomplete'})
     resume_path=out/'completed-resume-proof.json'
+    # Paid route: the pinned provider host comes from the run's own budget journal contract (init row).
+    paid_host=None
+    if (out/'paid-budget.jsonl').is_file():
+        init=json.loads((out/'paid-budget.jsonl').read_text().splitlines()[0])
+        paid_host=init['contract']['policy']['provider_host']
     amendment_path=out.parent.parent.parent/'audits/seal/SEAL-DRIFT-AMENDMENT-20261109.json'
     if not resume_path.is_file():
         # v4.6-update fix (user-authorized amendment): the supervisor's
@@ -116,7 +121,7 @@ def audit(out):
             for request in provider:
                 # Pre-native local rejection may legitimately lack effective body.
                 if request.get('effective_request_capture'):
-                    check(tid,'native_effective_wire',lambda r=request:verify_request_capture(r,cfg.get('provider_options',{}).get('temperature',0),cfg.get('provider_options',{}).get('top_p',1)))
+                    check(tid,'native_effective_wire',lambda r=request:verify_request_capture(r,cfg.get('provider_options',{}).get('temperature',0),cfg.get('provider_options',{}).get('top_p',1),paid_host))
                 if request.get('status')==200:
                     # Fix #7b (2026-11-10): the OR :free route sends the FULL model
                     # id in the request body and its runtime admission contract
@@ -314,7 +319,14 @@ def audit(out):
             shell_free=list(range(len(shell_rows)))
             def shell_norm(command):
                 import re as _re
-                return _re.sub(r'^awk -v OFMT=%\.15g -v CONVFMT=%\.15g ','awk ',_re.sub(r'^LC_ALL=C ','',command))
+                command=_re.sub(r'^awk -v OFMT=%\.15g -v CONVFMT=%\.15g ','awk ',_re.sub(r'^LC_ALL=C ','',command))
+                # OpenTrading >= 0.5.0 (shell/math.ts spacedOperators) spaces binary +/- in the awk
+                # program outside string literals before running it; apply the same rewrite to both sides.
+                start,end=command.find("'"),command.rfind("'")
+                if start<0 or end<=start:return command
+                parts=_re.split(r'("[^"]*")',command[start+1:end])
+                program=''.join(part if i%2 else _re.sub(r'([0-9.)])\s*([+-])\s*',r'\1 \2 ',part) for i,part in enumerate(parts))
+                return command[:start+1]+program+command[end:]
             for p_call in [g for g in bindings.pending() if g['tool']==shell_tool]:
                 command=p_call['arguments'].get('command') if isinstance(p_call['arguments'],dict) else None
                 def shell_proof(context,p_call=p_call):

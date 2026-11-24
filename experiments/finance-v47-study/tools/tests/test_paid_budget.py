@@ -472,3 +472,64 @@ def test_paid_invalid_requested_output_cap_never_dispatches(tmp_path, monkeypatc
     gate.handle(HELPERS['_Handler'](body))
     assert gate.rows[-1]['status'] == 424 and not gate.rows[-1]['upstream_attempted']
     assert gate.budget.summary()['unknown_requests'] == 0
+
+
+def _http_error(status, raw, retry_after='0'):
+    import io, urllib.error
+    return urllib.error.HTTPError('https://openrouter.ai/api/v1/chat/completions', status, 'err',
+                                  {'Retry-After': retry_after}, io.BytesIO(raw))
+
+
+def test_pre_generation_rate_limit_settles_zero_then_retries(tmp_path, monkeypatch):
+    # Live 2026-11-24 (Tenstorrent): HTTP 429 with only an error object; no generation, nothing billed.
+    gate, body = paid_gateway(tmp_path, monkeypatch)
+    gate.options['failed_attempt_token_reservation'] = 5000
+    monkeypatch.setattr(provider, 'retry_delay', lambda *a, **k: 0)
+    limited = json.dumps({'error': {'message': 'Provider returned error', 'code': 429, 'metadata': {
+        'provider_name': 'synthetic-offline-host', 'provider_error_code': 'rate_limit_exceeded'}},
+        'user_id': 'u'}).encode()
+    calls = []
+    def fetch(*_, **__):
+        calls.append(1)
+        if len(calls) == 1: raise _http_error(429, limited)
+        return Response(raw_response('.2'))
+    monkeypatch.setattr(provider.urllib.request, 'urlopen', fetch)
+    handler = HELPERS['_Handler'](body); gate.handle(handler)
+    assert len(calls) == 2 and handler.response_status == 200
+    summary = gate.budget.summary()
+    assert summary['unknown_requests'] == 0 and summary['measured_cost_usd'] == '0.2'
+
+
+@pytest.mark.parametrize('raw', [
+    b'not json',
+    json.dumps({'error': {'code': 502}, 'choices': []}).encode(),
+    json.dumps({'id': 'gen-1', 'error': {'code': 502}}).encode(),
+])
+def test_http_error_with_possible_generation_stays_cost_unknown(tmp_path, monkeypatch, raw):
+    gate, body = paid_gateway(tmp_path, monkeypatch)
+    def fetch(*_, **__): raise _http_error(502, raw)
+    monkeypatch.setattr(provider.urllib.request, 'urlopen', fetch)
+    gate.handle(HELPERS['_Handler'](body))
+    assert gate.rows[-1]['error'] == 'paid_usage_cost_unknown'
+    assert gate.budget.summary()['unknown_requests'] == 1
+
+
+def test_http_error_carrying_cost_is_billed_not_zeroed(tmp_path, monkeypatch):
+    gate, body = paid_gateway(tmp_path, monkeypatch)
+    raw = json.dumps({'error': {'code': 502}, 'usage': {'cost': 0.1}}).encode()
+    def fetch(*_, **__): raise _http_error(502, raw)
+    monkeypatch.setattr(provider.urllib.request, 'urlopen', fetch)
+    gate.handle(HELPERS['_Handler'](body))
+    assert gate.budget.summary()['measured_cost_usd'] == '0.1'
+
+
+@pytest.mark.parametrize('value,ok', [('', True), ('thought', True), (None, True), ({'x': 1}, False), (['a'], False)])
+def test_opencode_reasoning_content_text_only(tmp_path, monkeypatch, value, ok):
+    gate, body = paid_gateway(tmp_path, monkeypatch)
+    body['messages'].append({'role': 'assistant', 'content': 'x', 'reasoning_content': value})
+    body['messages'].append({'role': 'user', 'content': 'next'})
+    sent = []
+    def fetch(*_, **__): sent.append(1); return Response(raw_response('.2'))
+    monkeypatch.setattr(provider.urllib.request, 'urlopen', fetch)
+    gate.handle(HELPERS['_Handler'](body))
+    assert bool(sent) is ok
