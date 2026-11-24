@@ -12,6 +12,31 @@ TOOLS = Path(__file__).resolve().parents[1]
 SNAPSHOT = TOOLS / 'mcp_snapshot_server.py'
 
 
+CLOCKSHIFT_SRC = TOOLS / 'runners/clockshift/clockshift.c'
+
+
+def snapshot_clock_library():
+    """Build (once per source hash) the LD_PRELOAD wall-clock shim; amendment 2026-11-24 (e)."""
+    import subprocess
+    sha = hashlib.sha256(CLOCKSHIFT_SRC.read_bytes()).hexdigest()
+    out = CLOCKSHIFT_SRC.parent / '.build' / ('clockshift-%s.so' % sha[:16])
+    if not out.exists():
+        out.parent.mkdir(exist_ok=True)
+        tmp = out.with_suffix('.tmp')
+        subprocess.run(['gcc', '-O2', '-shared', '-fPIC', '-o', str(tmp), str(CLOCKSHIFT_SRC), '-ldl'], check=True, timeout=60)
+        os.replace(tmp, out)
+    return out, sha
+
+
+def snapshot_clock_env(task_dir):
+    """Harness main process sees 09:00 Asia/Ho_Chi_Minh on the task's snapshot_date, then time runs normally."""
+    from datetime import datetime, timedelta, timezone
+    snap = json.loads((Path(task_dir).resolve() / 'environment/payloads.json').read_text()).get('snapshot_date') or '2026-11-01'
+    epoch = int(datetime.fromisoformat(snap + 'T09:00:00').replace(tzinfo=timezone(timedelta(hours=7))).timestamp())
+    lib, sha = snapshot_clock_library()
+    return {'LD_PRELOAD': str(lib), 'CLOCKSHIFT_TARGET_EPOCH': str(epoch)}, {'snapshot_date': snap, 'epoch': epoch, 'source_sha256': sha}
+
+
 def prepare(ws, task_dir, model, options):
     options = dict(options or {})
     from paid_budget import paid_policy, validate_free_identity
@@ -72,6 +97,9 @@ def prepare(ws, task_dir, model, options):
     evidence = options.get('mcp_ledger') or os.environ.get('BENCH_MCP_LEDGER')
     if evidence:
         mcp_env['BENCH_MCP_LEDGER'] = str(Path(evidence).resolve())
+    clock_env, clock = snapshot_clock_env(task_dir)
+    env.update(clock_env)
+    gateway.options['snapshot_clock'] = clock
     return root, env, gateway, mcp_env
 
 
@@ -85,7 +113,8 @@ def finish(root, gateway, result, arm, config):
                  'prompt_variant': gateway.options.get('prompt_variant'),
                  'finance_policy': gateway.options.get('finance_policy', False),
                  'clock_policy': {'answer_as_of': gateway.options.get('snapshot_as_of'),
-                                  'native_now_pinned': arm == 'opentrading',
+                                  'native_now_pinned': True,
+                                  'snapshot_clock': gateway.options.get('snapshot_clock'),
                                   'cross_arm_native_date_parity_verified': False,
                                   's3_comparative_eligible': False,
                                   'effective_native_date': None,

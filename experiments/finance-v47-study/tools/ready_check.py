@@ -600,7 +600,7 @@ def validate_live_run(out_dir, config, model):
                 raise ValueError('Runtime condition/variant binding failed')
             expected_as_of = json.loads((task/'environment/payloads.json').read_text())['snapshot_date']
             clock = inventory.get('clock_policy') or {}
-            if clock.get('answer_as_of') != expected_as_of or clock.get('native_now_pinned') is not (row['arm'] == 'opentrading'):
+            if clock.get('answer_as_of') != expected_as_of or clock.get('native_now_pinned') is not True:
                 raise ValueError('Runtime snapshot clock policy binding failed')
             if row['arm'] == 'opentrading':
                 from run_manifest import hash_file
