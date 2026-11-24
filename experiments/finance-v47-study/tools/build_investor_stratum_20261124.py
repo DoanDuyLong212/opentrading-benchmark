@@ -192,8 +192,9 @@ def spec_gold(spec):
            'chance_base_rate': round(len(sets) / total, 4),
            'outcomes': {s: {k: (round(float(v), 4) if k in ('ret', 'peak', 'low') else v) for k, v in o.items()} for s, o in oc.items()},
            'vnindex_ret': round(float(idx['ret']), 4), 'post_sha256': SP.POST_SHA256}
-    expects = [{'type': 'set_in', 'path': path, 'size': size, 'accept_sets': sets},
-               {'type': 'str', 'path': 'source', 'accept': ['vn_quote_history']}]
+    # No `source` string check: agents may add the optional VN-Index or statements; grounding is enforced by the
+    # provenance contract (every candidate's price history must be in the answer evidence).
+    expects = [{'type': 'set_in', 'path': path, 'size': size, 'accept_sets': sets}]
     contract_keys = ['hist:' + s for s in spec['cands']]
     return tools, q, example, sol, expects, contract_keys
 

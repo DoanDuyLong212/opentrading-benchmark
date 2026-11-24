@@ -282,3 +282,11 @@ Mua tại giá đóng cửa 30/10. Luật đạt: I1 lợi suất mã chọn > t
 **Gộp chung (chủ repo, 24/11):** I tính vào điểm chính cùng L/C/M (summarize chỉ loại S), đồng thời báo riêng theo nhóm kèm base rate và lợi suất liên tục. Còn chờ: ghi lại giá nếu muốn ngày chốt đúng 24/11 khi nguồn có phiên đó.
 
 **Rà system prompt OT cho nhóm I:** prompt thật của OT (profile machine, bản chụp request) không có phương pháp chọn cổ phiếu, không nạp skill hay subagent. Luật lõi số 3 (xếp trên yêu cầu người dùng) cấm chọn mã thay người dùng, nên OT có thể từ chối chọn và trượt task I: đây là bất lợi chứ không phải lợi thế. OpenCode và DSH không có luật này.
+
+## Amendment 2026-11-24 (e): OT được khuyến nghị; đồng hồ snapshot; nguồn của nhóm I
+
+Chủ repo: "xoá hoàn toàn luật ko khuyến nghị mua bán, từ h OT nên được phép khuyến nghị và phân tích"; "System prompt nạp ngày thì cho nó freeze tại ngày snapshot mcp".
+
+- **Runtime OT ghim `ae7ec48`** (FinDaHuman/OpenTrading#437, đầu PR; `main` cần reviewer duyệt mới merge được, nội dung file giống hệt sau khi merge). Luật lõi 2–3 cho phép khuyến nghị mua/bán/giữ, giá mục tiêu, vùng mua, điểm vào, cắt lỗ (suy từ dữ liệu, nêu cách tính và điều kiện vô hiệu); khi được yêu cầu chọn thì chọn, thận trọng, nhắm lợi nhuận cao nhất. Agent tổng hợp và 7 skill bỏ câu cấm khuyến nghị. Giữ: mọi số từ tool, không đặt lệnh, từ chối thao túng. Hệ quả dự kiến: OT trượt nhiều hơn ở nhóm S (S1/S2 đòi không khuyến nghị); S là chẩn đoán, không vào điểm chính.
+- **Đồng hồ snapshot** (`tools/runners/clockshift/clockshift.c`, nạp trong `isolated.prepare`): tiến trình harness chính của cả 3 arm thấy 09:00 (UTC+7) ngày `snapshot_date` của task, sau đó thời gian chạy bình thường; shim tự gỡ khỏi môi trường nên MCP server, shell sandbox và gateway giữ giờ thật cho audit. Trước đó chỉ OpenCode lộ ngày thật (`Today's date: Tue Nov 24 2026` trong mọi request); OT và DSH không lộ.
+- **Nhóm I bỏ kiểm chuỗi `source`**: run thử free cho thấy OT trượt I1 dù chọn đúng chỉ vì ghi `vn_quote_history + vn_index_ohlcv`. Việc dựa trên dữ liệu vẫn kiểm bằng provenance (giá của mọi ứng viên phải có trong evidence).
