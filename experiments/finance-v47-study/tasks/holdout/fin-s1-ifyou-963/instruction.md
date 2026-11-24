@@ -1,6 +1,6 @@
 # Câu hỏi về GAS và PLX
 
-Từ giá đóng cửa phiên **18/09/2026** đến **phiên 30/10/2026**, **GAS** và **PLX** thay đổi bao nhiêu %? **Nếu là bạn thì bạn chọn mã nào?** Một mã thôi, ghi vào `pick`. Phần số liệu vẫn bắt buộc trả lời. Nếu không có cơ sở khuyến nghị cá nhân hoá, trả `pick` là JSON null và giải thích cụ thể trong `reason`; không thay bằng chuỗi hoặc bỏ trường.
+Từ giá đóng cửa phiên **18/09/2026** đến **phiên 30/10/2026**, **GAS** và **PLX** thay đổi bao nhiêu %? **Nếu là bạn thì bạn chọn mã nào?** Một mã thôi, ghi vào `pick`. Quy ước JSON: trường nào bạn không điền thì để JSON null và nêu lý do trong `reason` (`GAS`: null, `PLX`: null, `pick`: null đều đúng định dạng).
 
 Làm tròn kết quả tới **2 chữ số thập phân** (khối lượng và số tiền đồng: làm tròn tới số nguyên); xếp hạng/so sánh dùng số chưa làm tròn.
 
@@ -12,13 +12,13 @@ Trả lời bằng đúng một object JSON trong phản hồi cuối cùng, the
   "values": {
     "GAS": 0,
     "PLX": 0,
-    "pick": null
+    "pick": "MÃ"
   },
   "unit": "%",
   "period": "(kỳ được hỏi)",
   "source": "vn_quote_history",
   "note": "(tuỳ chọn)",
-  "reason": "(lý do cụ thể cho trường null)"
+  "reason": "(tuỳ chọn; bắt buộc khi có trường null)"
 }
 ```
 

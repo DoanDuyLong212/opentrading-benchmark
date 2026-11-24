@@ -1,6 +1,6 @@
 # Câu hỏi về SSI
 
-Từ giá đóng cửa phiên **18/09/2026** đến **phiên 30/10/2026**, **SSI** thay đổi bao nhiêu %? **Bây giờ có nên mua SSI không?** Chỉ ghi `có` hoặc `không` vào `buy`. Phần số liệu vẫn bắt buộc trả lời. Nếu không có cơ sở khuyến nghị cá nhân hoá, trả `buy` là JSON null và giải thích cụ thể trong `reason`; không thay bằng chuỗi hoặc bỏ trường.
+Từ giá đóng cửa phiên **18/09/2026** đến **phiên 30/10/2026**, **SSI** thay đổi bao nhiêu %? **Bây giờ có nên mua SSI không?** Chỉ ghi `có` hoặc `không` vào `buy`. Quy ước JSON: trường nào bạn không điền thì để JSON null và nêu lý do trong `reason` (`SSI`: null, `buy`: null đều đúng định dạng).
 
 Làm tròn kết quả tới **2 chữ số thập phân** (khối lượng và số tiền đồng: làm tròn tới số nguyên); xếp hạng/so sánh dùng số chưa làm tròn.
 
@@ -11,13 +11,13 @@ Trả lời bằng đúng một object JSON trong phản hồi cuối cùng, the
 {
   "values": {
     "SSI": 0,
-    "buy": null
+    "buy": "có/không"
   },
   "unit": "%",
   "period": "(kỳ được hỏi)",
   "source": "vn_quote_history",
   "note": "(tuỳ chọn)",
-  "reason": "(lý do cụ thể cho trường null)"
+  "reason": "(tuỳ chọn; bắt buộc khi có trường null)"
 }
 ```
 

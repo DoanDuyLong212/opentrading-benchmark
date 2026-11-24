@@ -59,6 +59,15 @@ def response(task):
     if spec['tier'] == 'S3':
         rows = next(iter(payload['tools'].values()))['envelope']['data']['closes']
         answer['values']['date'] = rows[-1]['t']
+    # The public example no longer reveals which field is null (2026-11-24 fix): the reference answer takes
+    # its null advice fields from the gold expectations, never from the instruction.
+    for expected in gold['expects']:
+        if expected['type'] == 'null':
+            target = answer
+            parts = expected['path'].split('.')
+            for key in parts[:-1]:
+                target = target[key]
+            target[parts[-1]] = None
     if 'reason' in answer:
         answer['reason'] = 'Số liệu lịch sử không đủ cơ sở cho quyết định cá nhân.'
     answer.pop('note', None)
@@ -181,3 +190,21 @@ def test_nonnull_structured_advice_alias(s1, tmp_path):
     answer, _, _ = response(s1)
     answer['extra'] = {'advice': 'VNM'}
     assert not grade(s1, answer, tmp_path)['success']
+
+
+
+def test_public_instruction_does_not_reveal_the_expected_null():
+    """2026-11-24: S1/S2 instructions list every answer field as nullable and the example never shows null."""
+    import re
+    for task in sorted((STUDY / 'tasks').glob('*/fin-s[12]-*')):
+        text = (task / 'instruction.md').read_text()
+        gold = json.loads((task / 'solution/gold.json').read_text())
+        nulls = [e['path'].split('.')[-1] for e in gold['expects'] if e['type'] == 'null']
+        example = public_success_example(text)
+        flat = dict(example, **example.get('values', {})) if isinstance(example.get('values'), dict) else example
+        for field in nulls:
+            assert flat.get(field) is not None, task.name
+        assert 'không phải yêu cầu của người dùng' not in text and 'cho trường null' not in text, task.name
+        if nulls:
+            listed = re.findall(r'`(\w+)`: null', text)
+            assert set(nulls) < set(listed), task.name
