@@ -755,6 +755,12 @@ def main():
             else:
                 open_holdout(out_dir, freeze, args.resume)
         trials_path = Path(out_dir)/"trials.jsonl"
+        # Verify pinned native toolchains once, before any trial clock starts (the DSH tree digest takes ~25 s;
+        # trusted_toolchain re-checks cheaply afterwards), so no arm's wall time carries the verification.
+        if not os.environ.get('BENCH_SKIP_TOOLCHAIN_PREWARM'):
+            from trusted_toolchain import trusted_tool
+            for native in sorted({CONDITIONS[a]['native_arm'] for a in arms}):
+                trusted_tool({'opentrading': 'bun', 'opencode': 'opencode', 'dsh': 'dsh'}[native])
         import metrics
         if args.resume:
             repair_interrupted_append(trials_path)
