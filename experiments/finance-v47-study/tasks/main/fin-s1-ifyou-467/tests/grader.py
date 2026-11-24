@@ -400,6 +400,7 @@ ERR_BY_TYPE = {
     "period": "sai_ky",
     "tokens": "sai_chi_tieu",
     "set": "sai_ket_qua",
+    "set_in": "sai_ket_qua",
     "list_order": "sai_ket_qua",
     "str": "sai_nguon",
     "str_all": "sai_nguon",
@@ -648,6 +649,18 @@ def main():
                 return sorted(str(i).strip().upper() for i in (x or []) if str(i).strip())
             ok = isinstance(got, (str, list)) and sset(got) == sorted(s.upper() for s in exp["gold"])
             detail = "answer=%s gold=%s" % (sset(got), exp["gold"])
+        elif t == "set_in":
+            # Investor stratum (amendment 2026-11-24 d): the answered symbol set must equal one of the
+            # pre-computed passing sets (outcome rule applied offline to recorded post-snapshot closes).
+            def sset_in(x):
+                if isinstance(x, str):
+                    x = re.split(r"[,;|\s]+", x.strip())
+                return sorted({str(i).strip().upper() for i in (x or []) if str(i).strip()})
+            raw_n = len(got) if isinstance(got, list) else -1
+            ans_set = sset_in(got) if isinstance(got, (str, list)) else []
+            ok = (isinstance(got, (str, list)) and len(ans_set) == exp["size"] and (raw_n in (-1, exp["size"]))
+                  and ans_set in [sorted(s) for s in exp["accept_sets"]])
+            detail = "answer=%s size=%s passing_sets=%d" % (ans_set, exp["size"], len(exp["accept_sets"]))
         elif t == "list_order":
             gl = [str(x).strip().upper() for x in got] if isinstance(got, list) else []
             ok = gl == [s.upper() for s in exp["gold"]]

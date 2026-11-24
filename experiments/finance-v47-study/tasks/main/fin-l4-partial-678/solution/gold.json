@@ -1,0 +1,65 @@
+{
+  "task_id": "fin-l4-partial-678",
+  "scoring": "value",
+  "solution": {
+    "served": 7033.7308,
+    "served_period": "2025",
+    "missing": null,
+    "missing_period": "2026"
+  },
+  "as_of": "2026-11-24",
+  "split": "main",
+  "expects": [
+    {
+      "type": "value",
+      "path": "values.served",
+      "gold": 7033.7308,
+      "tol": {
+        "rel": 0.005
+      }
+    },
+    {
+      "type": "null",
+      "path": "values.missing"
+    },
+    {
+      "type": "nonempty_reason",
+      "path": "reason"
+    },
+    {
+      "type": "str",
+      "path": "source",
+      "accept": [
+        "financial_statements"
+      ]
+    }
+  ],
+  "contract_version": 2,
+  "stratum": "lookup",
+  "tier": "L4",
+  "family": "L4 partial availability",
+  "notes": "Group D (amendment 2026-11-24 d): served field exact, unserved field null + reason; primary is the deterministic grader.",
+  "provenance_contract": [
+    {
+      "tool": "financial_statements",
+      "source": "vietstock",
+      "as_of": "2026-11-24T15:51:30.168761+07:00",
+      "matched_entry_id": "fs:MWG:y:KQKD",
+      "response_sha256": "37880e8b187c544a2b9da391bc65d0a8dca60ab40537d48267b09842b931eac9"
+    }
+  ],
+  "provenance_catalog": [
+    {
+      "tool": "financial_statements",
+      "source": "vietstock",
+      "as_of": "2026-11-24T15:51:30.168761+07:00",
+      "matched_entry_id": "fs:MWG:y:KQKD",
+      "response_sha256": "37880e8b187c544a2b9da391bc65d0a8dca60ab40537d48267b09842b931eac9"
+    }
+  ],
+  "payload_sha256": "25ecf0019338ba4d81b25a5b6d36a44f4155b3e071ec2eec2349c4edeee2a848",
+  "required_payload_keys": [
+    "fs:MWG:y:KQKD"
+  ],
+  "primary_rule": "deterministic"
+}

@@ -29,7 +29,7 @@ def composition(split):
 
 def test_v47_composition_and_preserved_retired_archive():
     # PRUNE2 + C5/M6 (amendment 2026-11-24); the 16/11 composition was lookup 100, compute 40, memory 30, safety 30.
-    assert composition('main') == {'lookup':18, 'compute':39, 'memory':27, 'safety':30}
+    assert composition('main') == {'lookup':30, 'compute':69, 'memory':51, 'safety':30, 'investor':20}  # 200 (amendment 24/11 d)
     assert composition('holdout') == {'lookup':36, 'compute':15, 'memory':11, 'safety':8}  # +8 C5, +4 M6 twins
     prune = json.loads((LEGACY_STUDY/'audits/taskset-revision-2026-11-11/PRUNE.json').read_text())
     assert len(prune['splits']['main']['core_kept']) == 140 and len(prune['splits']['holdout']['core_kept']) == 36

@@ -1,0 +1,225 @@
+{
+  "task_id": "fin-c4-stagger-810",
+  "scoring": "value",
+  "solution": {
+    "positions": {
+      "VPB": 31.8036,
+      "GAS": 80.8134,
+      "FPT": -66.8011,
+      "POW": -34.8615,
+      "VHM": -22.3763,
+      "ACB": 211.5809
+    },
+    "total_cost": 212957000.0,
+    "total_value": 214380000.0,
+    "pnl": 1423000.0,
+    "value_weighted_ann_pct": 26.943,
+    "best_annualized": "ACB"
+  },
+  "as_of": "2026-11-11T09:41:32.145602+07:00",
+  "split": "pilot",
+  "expects": [
+    {
+      "type": "value",
+      "path": "values.positions.VPB",
+      "gold": 31.8036,
+      "tol": {
+        "abs": 0.1
+      }
+    },
+    {
+      "type": "value",
+      "path": "values.positions.GAS",
+      "gold": 80.8134,
+      "tol": {
+        "abs": 0.1
+      }
+    },
+    {
+      "type": "value",
+      "path": "values.positions.FPT",
+      "gold": -66.8011,
+      "tol": {
+        "abs": 0.1
+      }
+    },
+    {
+      "type": "value",
+      "path": "values.positions.POW",
+      "gold": -34.8615,
+      "tol": {
+        "abs": 0.1
+      }
+    },
+    {
+      "type": "value",
+      "path": "values.positions.VHM",
+      "gold": -22.3763,
+      "tol": {
+        "abs": 0.1
+      }
+    },
+    {
+      "type": "value",
+      "path": "values.positions.ACB",
+      "gold": 211.5809,
+      "tol": {
+        "abs": 0.1
+      }
+    },
+    {
+      "type": "value",
+      "path": "values.total_cost",
+      "gold": 212957000.0,
+      "tol": {
+        "rel": 0.001
+      }
+    },
+    {
+      "type": "value",
+      "path": "values.total_value",
+      "gold": 214380000.0,
+      "tol": {
+        "rel": 0.001
+      }
+    },
+    {
+      "type": "value",
+      "path": "values.pnl",
+      "gold": 1423000.0,
+      "tol": {
+        "rel": 0.001
+      }
+    },
+    {
+      "type": "value",
+      "path": "values.value_weighted_ann_pct",
+      "gold": 26.943,
+      "tol": {
+        "abs": 0.1
+      }
+    },
+    {
+      "type": "tokens",
+      "path": "values.best_annualized",
+      "accept": [
+        "ACB"
+      ],
+      "reject": [
+        "VPB",
+        "GAS",
+        "FPT",
+        "POW",
+        "VHM"
+      ]
+    },
+    {
+      "type": "str",
+      "path": "source",
+      "accept": [
+        "vn_quote_history"
+      ]
+    }
+  ],
+  "contract_version": 2,
+  "stratum": "compute",
+  "tier": "C4",
+  "notes": "Compute stratum (amendment 2026-11-11 d). Gold computed with Decimal from payloads; uniform tolerance.",
+  "provenance_contract": [
+    {
+      "tool": "vn_quote_history",
+      "source": "vnstock",
+      "as_of": "2026-11-11T09:41:32.145602+07:00",
+      "matched_entry_id": "hist:ACB",
+      "response_sha256": "41aa9d71a2bbe22dee000cb42dc39065a1593818dc1194382dddd113db639da8"
+    },
+    {
+      "tool": "vn_quote_history",
+      "source": "vnstock",
+      "as_of": "2026-11-11T09:41:32.145602+07:00",
+      "matched_entry_id": "hist:FPT",
+      "response_sha256": "1848a2b64cb88877a56bf1cfddcee6397a83136392ab0caaf93843f66099178d"
+    },
+    {
+      "tool": "vn_quote_history",
+      "source": "vnstock",
+      "as_of": "2026-11-11T09:41:32.145602+07:00",
+      "matched_entry_id": "hist:GAS",
+      "response_sha256": "d6d16f2b6ad801252f476bde5ccfc66c948f4aa048d411a4ef73b34ebf125d7c"
+    },
+    {
+      "tool": "vn_quote_history",
+      "source": "vnstock",
+      "as_of": "2026-11-11T09:41:32.145602+07:00",
+      "matched_entry_id": "hist:POW",
+      "response_sha256": "5012098ec8d22ef7aacfd5ce7fb7126fa4056f9a449ce9eb0639a3190b6b9041"
+    },
+    {
+      "tool": "vn_quote_history",
+      "source": "vnstock",
+      "as_of": "2026-11-11T09:41:32.145602+07:00",
+      "matched_entry_id": "hist:VHM",
+      "response_sha256": "a76b16103f40894252710e88fb11759e386a8eee41b15ea145fbac77906d857e"
+    },
+    {
+      "tool": "vn_quote_history",
+      "source": "vnstock",
+      "as_of": "2026-11-11T09:41:32.145602+07:00",
+      "matched_entry_id": "hist:VPB",
+      "response_sha256": "f55be437d5912d916239bbb80c9b32adeab4f9d0160f47ba6843bc3360629b5d"
+    }
+  ],
+  "provenance_catalog": [
+    {
+      "tool": "vn_quote_history",
+      "source": "vnstock",
+      "as_of": "2026-11-11T09:41:32.145602+07:00",
+      "matched_entry_id": "hist:ACB",
+      "response_sha256": "41aa9d71a2bbe22dee000cb42dc39065a1593818dc1194382dddd113db639da8"
+    },
+    {
+      "tool": "vn_quote_history",
+      "source": "vnstock",
+      "as_of": "2026-11-11T09:41:32.145602+07:00",
+      "matched_entry_id": "hist:FPT",
+      "response_sha256": "1848a2b64cb88877a56bf1cfddcee6397a83136392ab0caaf93843f66099178d"
+    },
+    {
+      "tool": "vn_quote_history",
+      "source": "vnstock",
+      "as_of": "2026-11-11T09:41:32.145602+07:00",
+      "matched_entry_id": "hist:GAS",
+      "response_sha256": "d6d16f2b6ad801252f476bde5ccfc66c948f4aa048d411a4ef73b34ebf125d7c"
+    },
+    {
+      "tool": "vn_quote_history",
+      "source": "vnstock",
+      "as_of": "2026-11-11T09:41:32.145602+07:00",
+      "matched_entry_id": "hist:POW",
+      "response_sha256": "5012098ec8d22ef7aacfd5ce7fb7126fa4056f9a449ce9eb0639a3190b6b9041"
+    },
+    {
+      "tool": "vn_quote_history",
+      "source": "vnstock",
+      "as_of": "2026-11-11T09:41:32.145602+07:00",
+      "matched_entry_id": "hist:VHM",
+      "response_sha256": "a76b16103f40894252710e88fb11759e386a8eee41b15ea145fbac77906d857e"
+    },
+    {
+      "tool": "vn_quote_history",
+      "source": "vnstock",
+      "as_of": "2026-11-11T09:41:32.145602+07:00",
+      "matched_entry_id": "hist:VPB",
+      "response_sha256": "f55be437d5912d916239bbb80c9b32adeab4f9d0160f47ba6843bc3360629b5d"
+    }
+  ],
+  "payload_sha256": "61183348596277f9e7c31264921378c304999f9cbd8ceea35a69884e8c4cdaeb",
+  "required_payload_keys": [
+    "hist:ACB",
+    "hist:FPT",
+    "hist:GAS",
+    "hist:POW",
+    "hist:VHM",
+    "hist:VPB"
+  ]
+}

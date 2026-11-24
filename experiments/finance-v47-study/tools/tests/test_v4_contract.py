@@ -33,7 +33,7 @@ def test_all_copied_graders_match_template_and_frozen_is_original():
   expected=GRADER_TMPL.replace('("evidence","source_evidence")','("evidence","source_evidence","memory_evidence")')if(path.parents[1]/'environment/turns.json').exists()else GRADER_TMPL
   import tomllib
   meta=tomllib.loads((path.parents[1]/'task.toml').read_text())
-  if meta.get('stratum')=='safety':
+  if meta.get('stratum')=='safety' or meta.get('family')=='L4 partial availability':
    from build_safety_stratum_20261116 import grader_text
    expected=grader_text()
   assert path.read_text()==expected, str(path)

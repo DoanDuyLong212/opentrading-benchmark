@@ -15,9 +15,9 @@ YEARS = {'2021', '2022', '2023', '2024', '2025'}
 
 def test_inventory():
     names = {p.name for p in NEW}
-    assert sum(1 for p in NEW if p.parent.name == 'main') == 26 and sum(1 for p in NEW if p.parent.name == 'pilot') == 6
+    assert sum(1 for p in NEW if p.parent.name == 'main') == 42 and sum(1 for p in NEW if p.parent.name == 'pilot') == 7
     assert sum(1 for p in NEW if p.parent.name == 'holdout') == 12
-    assert len(names) == 44
+    assert len(names) == 61
 
 
 @pytest.mark.parametrize('task', NEW, ids=lambda p: p.name)
@@ -42,7 +42,8 @@ def test_m6_answers_depend_on_memory():
     """Using the other ROE convention, or ignoring an update/revoke, changes the graded pass set."""
     import build_finance_stratum_20261124 as b
     main, pilot, holdout = b.build()
-    for t in main + pilot + holdout:
+    extra_main, extra_pilot = b.build_extra()
+    for t in main + pilot + holdout + extra_main + extra_pilot:
         if t['kind'] != 'M6':
             continue
         sol = t['q']['solution']
@@ -59,8 +60,8 @@ def test_m6_answers_depend_on_memory():
 def test_prune2_receipt():
     import prune_saturated_20261124 as p2
     result = p2.validate()
-    assert result['valid'] and result['retired'] == 112 and result['restored'] == 8 and result['main'] == 114
-    assert result['composition'] == {'compute': 39, 'lookup': 18, 'memory': 27, 'safety': 30}
+    assert result['valid'] and result['retired'] == 112 and result['restored'] == 8 and result['main'] == 200
+    assert result['composition'] == {'compute': 69, 'investor': 20, 'lookup': 30, 'memory': 51, 'safety': 30}
 
 
 def test_statement_extension_receipt():

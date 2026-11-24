@@ -48,6 +48,13 @@ def payloads(syms, needs):
     return {'fs:%s:%s:%s' % (s, f, st): envelope(s, f, st) for s in syms for f, st in sorted(needs)}
 
 
+SECTION_OF = {n: st for st, names in (('KQKD', ('Doanh thu thuần', 'Lợi nhuận gộp', 'LN thuần từ HĐKD', 'LNST thu nhập DN',
+                                                  'LNST của CĐ cty mẹ')),
+                                       ('CDKT', ('Tài sản ngắn hạn', 'Tổng tài sản', 'Nợ phải trả', 'Nợ ngắn hạn', 'Vốn chủ sở hữu')))
+              for n in names}
+LIB_NAMES = {'REV': 'Doanh thu thuần', 'GP': 'Lợi nhuận gộp', 'OP': 'LN thuần từ HĐKD', 'NIP': 'LNST của CĐ cty mẹ'}
+
+
 class Ctx:
     """Executes the shared library against an in-memory payload set (the oracle runs the same code on disk)."""
     def __init__(self, tools):
@@ -249,6 +256,75 @@ def sector_task(tid, syms, sector):
     return c5(tid, 'Biên LNST nhóm %s' % sector, q, ex, sol, exp, oracle, syms, {('q', 'KQKD')})
 
 
+def roa_task(tid, syms):
+    needs = {('q', 'KQKD'), ('q', 'CDKT')}
+    tools = payloads(syms, needs); c = Ctx(tools)
+    roa = {s: c.roa_ttm(s) for s in syms}; roe = {s: c.roe_ttm(s) for s in syms}
+    lev = {s: roe[s] / roa[s] for s in syms}; top = max(syms, key=roa.get)
+    q = ('Với **%s**: tính cho từng mã **ROA TTM** (%%) = tổng LNST %s ÷ **bình quân tổng tài sản tại 5 thời điểm cuối quý '
+         'Q2/2025, Q3/2025, Q4/2025, Q1/2026, Q2/2026** × 100; **ROE TTM** (%%) cùng cách nhưng mẫu số là bình quân vốn chủ sở '
+         'hữu tại 5 thời điểm đó; và **hệ số ROE/ROA** (lần). %sMã nào có ROA TTM cao nhất?' % (', '.join(syms), TTM_TXT, DEF_EQ))
+    ex = {'values': {s: {'roa': 0, 'roe': 0, 'roe_to_roa': 0} for s in syms} | {'highest_roa': 'MÃ'},
+          'unit': '% / lần', 'period': '(kỳ được hỏi)', 'source': TOOL, 'note': '(tuỳ chọn)'}
+    exp = []
+    for s in syms:
+        exp += [val('values.%s.roa' % s, roa[s], PCT), val('values.%s.roe' % s, roe[s], PCT),
+                val('values.%s.roe_to_roa' % s, lev[s], RATIO)]
+    exp.append(tokens('values.highest_roa', top, syms))
+    oracle = ''.join("check('roa_%s', R(roa_ttm('%s')), gold['solution']['%s']['roa'])\n"
+                     "check('roe_%s', R(roe_ttm('%s')), gold['solution']['%s']['roe'])\n" % (s, s, s, s, s, s) for s in syms) + \
+        "check('highest', max(%r, key=roa_ttm), gold['solution']['highest_roa'])\n" % (syms,)
+    sol = {s: {'roa': r4(roa[s]), 'roe': r4(roe[s]), 'roe_to_roa': r4(lev[s])} for s in syms} | {'highest_roa': top}
+    return c5(tid, 'ROA TTM %s' % '/'.join(syms), q, ex, sol, exp, oracle, syms, needs)
+
+
+def rank_task(tid, syms):
+    needs = {('q', 'KQKD'), ('q', 'CDKT')}
+    tools = payloads(syms, needs); c = Ctx(tools)
+    roe = {s: c.roe_ttm(s) for s in syms}; g = {s: c.rev_growth_ttm(s) for s in syms}; dr = {s: c.debt_ratio(s) for s in syms}
+    order = c.composite_rank(syms)
+    q = ('Xếp hạng **%s** theo chấm điểm 3 tiêu chí. Với mỗi mã tính: **ROE TTM** (%%) = tổng LNST %s ÷ bình quân vốn chủ sở hữu '
+         'tại 5 thời điểm cuối quý Q2/2025–Q2/2026 × 100; **tăng trưởng doanh thu thuần TTM** (%%) = doanh thu %s so với %s; '
+         '**tỷ lệ nợ phải trả ÷ tổng tài sản** cuối Q2/2026 (%%). Mỗi tiêu chí xếp hạng 1..%d (ROE và tăng trưởng: cao nhất hạng 1; '
+         'tỷ lệ nợ: thấp nhất hạng 1). **Điểm** = tổng 3 hạng; xếp từ điểm thấp nhất; bằng điểm thì mã có ROE TTM cao hơn đứng '
+         'trước. %s' % (', '.join(syms), TTM_TXT, TTM_TXT, PRIOR_TXT, len(syms), DEF_EQ))
+    ex = {'values': {s: {'roe': 0, 'rev_growth': 0, 'debt_ratio': 0} for s in syms}, 'ranking': ['MÃ1', '...'],
+          'unit': '%', 'period': '(kỳ được hỏi)', 'source': TOOL, 'note': '(tuỳ chọn)'}
+    exp = []
+    for s in syms:
+        exp += [val('values.%s.roe' % s, roe[s], PCT), val('values.%s.rev_growth' % s, g[s], PCT),
+                val('values.%s.debt_ratio' % s, dr[s], PCT)]
+    exp.append({'type': 'list_order', 'path': 'ranking', 'gold': order})
+    oracle = "check('ranking', composite_rank(%r), gold['solution']['ranking'])\n" % (syms,)
+    sol = {'values': {s: {'roe': r4(roe[s]), 'rev_growth': r4(g[s]), 'debt_ratio': r4(dr[s])} for s in syms}, 'ranking': order}
+    return c5(tid, 'Xếp hạng 3 tiêu chí %s' % '/'.join(syms), q, ex, sol, exp, oracle, syms, needs)
+
+
+def build_extra():
+    """Amendment 2026-11-24 (d), group C: 10 more C5 main (ROA, composite ranking, and four existing families on new
+    sets) + 1 pilot twin."""
+    main = [roa_task('fin-c5-roa-641', ['VNM', 'SAB', 'MSN']), roa_task('fin-c5-roa-642', ['FPT', 'MWG', 'FRT']),
+            roa_task('fin-c5-roa-643', ['GAS', 'PLX', 'PVS']),
+            rank_task('fin-c5-rank-644', ['HPG', 'HSG', 'NKG', 'DGC', 'DCM', 'DPM']),
+            rank_task('fin-c5-rank-645', ['VNM', 'SAB', 'MSN', 'KDC', 'DBC', 'VHC']),
+            rank_task('fin-c5-rank-646', ['FPT', 'MWG', 'PNJ', 'FRT', 'REE', 'GMD']),
+            margin_task('fin-c5-margin-647', ['MWG', 'FRT', 'PNJ']), leverage_task('fin-c5-lev-648', ['VJC', 'HAH', 'GMD']),
+            cagr_task('fin-c5-cagr-649', ['VNM', 'DHG', 'IMP']), dupont_task('fin-c5-dupont-650', 'HPG', 'DGC')]
+    # group A (memory): 6 more M6
+    main += [m6('fin-m6-conv-661', 'main', 'M6a', 'Memory M6a — quy ước ROE TTM và ngưỡng (VNM/SAB/KDC/DBC)', ['VNM', 'SAB', 'KDC', 'DBC'], 'ttm', 19.5, 50, 1),
+             m6('fin-m6-conv-662', 'main', 'M6a', 'Memory M6a — quy ước ROE năm 2025 và ngưỡng (ANV/HAH/NTP/DHG)', ['ANV', 'HAH', 'NTP', 'DHG'], 'fy', 22.5, 45, 2),
+             m6('fin-m6-upd-663', 'main', 'M6b', 'Memory M6b — cập nhật ngưỡng nợ (GMD/IMP/TRA/DPM)', ['GMD', 'IMP', 'TRA', 'DPM'], 'ttm', 15, 25, 0, update=35),
+             m6('fin-m6-upd-664', 'main', 'M6b', 'Memory M6b — cập nhật ngưỡng nợ (FPT/PNJ/SAB/GAS)', ['FPT', 'PNJ', 'SAB', 'GAS'], 'fy', 20, 35, 1, update=45),
+             m6('fin-m6-rev-665', 'main', 'M6c', 'Memory M6c — bỏ tiêu chí nợ (PC1/PVS/VGS/POW)', ['PC1', 'PVS', 'VGS', 'POW'], 'ttm', 13, 60, 2, revoke='crit-debt'),
+             m6('fin-m6-rev-666', 'main', 'M6c', 'Memory M6c — bỏ tiêu chí nợ (MWG/VCG/FRT/DCM)', ['MWG', 'VCG', 'FRT', 'DCM'], 'fy', 18, 60, 0, revoke='crit-debt')]
+    pilot = [rank_task('fin-c5-rank-685', ['ANV', 'VHC', 'DBC', 'BMP', 'NTP', 'TRA'])]
+    for t in main:
+        t.setdefault('split', 'main')
+    for t in pilot:
+        t.setdefault('split', 'pilot')
+    return main, pilot
+
+
 # ------------------------------------------------------------------ M6: finance-analysis memory
 CONV = {
     'ttm': ('Khi tính ROE cho tôi, luôn dùng **ROE TTM** = tổng LNST của CĐ cty mẹ 4 quý Q3/2025–Q2/2026 ÷ bình quân vốn chủ sở hữu '
@@ -416,8 +492,10 @@ def write_m6(t):
 
 def main():
     main_specs, pilot_specs, hold_specs = build()
+    extra_main, extra_pilot = build_extra()
+    main_specs, pilot_specs = main_specs + extra_main, pilot_specs + extra_pilot
     every = main_specs + pilot_specs + hold_specs
-    assert (len(main_specs), len(pilot_specs), len(hold_specs)) == (26, 6, 12) and len({t['tid'] for t in every}) == 44
+    assert (len(main_specs), len(pilot_specs), len(hold_specs)) == (42, 7, 12) and len({t['tid'] for t in every}) == 61
     receipt = {}
     for t in every:
         d = write_c5(t['split'], t) if t['kind'] == 'C5' else write_m6(t)

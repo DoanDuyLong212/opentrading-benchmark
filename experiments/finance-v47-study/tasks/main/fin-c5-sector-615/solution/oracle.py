@@ -315,6 +315,24 @@ def current_ratio(sym, period='Q2/2026'):
 def R(x):
     return float(round(_D(x), 4))
 
+
+def roa_ttm(sym):
+    return ttm(sym, NIP) / avg(item(sym, 'q', TA, p) for p in EQ_POINTS) * 100
+
+
+def rev_growth_ttm(sym):
+    return pct(ttm(sym, REV), ttm(sym, REV, PRIOR_TTM))
+
+
+def composite_rank(syms):
+    """Rank-sum of ROE TTM (high best), revenue growth TTM (high best) and debt ratio Q2/2026 (low best).
+    Lower sum ranks first; ties go to the higher ROE TTM."""
+    def ranks(key, reverse):
+        order = sorted(syms, key=key, reverse=reverse)
+        return {s: order.index(s) + 1 for s in syms}
+    a, b, c = ranks(roe_ttm, True), ranks(rev_growth_ttm, True), ranks(debt_ratio, False)
+    return sorted(syms, key=lambda s: (a[s] + b[s] + c[s], -roe_ttm(s)))
+
 _S = ['HPG', 'HSG', 'NKG', 'GVR']
 def _agg(qs): return sum(ttm(s, NIP, qs) for s in _S) / sum(ttm(s, REV, qs) for s in _S) * 100
 check('now', R(_agg(TTM)), gold['solution']['group_margin_now'])

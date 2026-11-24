@@ -2,8 +2,9 @@
   "origin_split": "devsmoke",
   "origin_task_id": "v45-dev-10-trap-resolver",
   "origin_sha256": "36873a28868af26700bc70f92a65c29a87f18d7ade46391b11ae785999090123",
-  "copy_sha256": "3c3166530b4b142a064a595d1712608afe90237d025dac7ff2ca45491c0a9f0e",
+  "copy_sha256": "b3b640e34ee5949f59fd573cd0f661eda06f209ece09e1791e5e8484b7eb4d04",
   "reason": "Inherited development fixture from baseline; earlier source/exposure history unknown.",
   "source_commit": "4bbfd385008440acb0cca085cddb751decd06ee5",
-  "grader_amendment_20261124": "tests/grader.py regenerated from tools/v45_grader.py: negated resolver claims and \"kỳ ... chưa tồn tại\" no longer fail correct refusals (strict metric only); task data/gold unchanged."
+  "grader_amendment_20261124": "tests/grader.py regenerated from tools/v45_grader.py: negated resolver claims and \"kỳ ... chưa tồn tại\" no longer fail correct refusals (strict metric only); task data/gold unchanged.",
+  "grader_amendment_20261124b": "tests/grader.py regenerated from tools/v45_grader.py: new expect type set_in (investor stratum) only; no existing check changed; task data/gold unchanged."
 }
