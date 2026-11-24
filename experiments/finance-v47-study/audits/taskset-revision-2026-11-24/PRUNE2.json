@@ -1,0 +1,1826 @@
+{
+ "schema": "v47-prune2-20261124",
+ "rule": "every arm primary-correct in both or16 runs",
+ "decision": "owner 2026-11-24, issue #13 comment https://github.com/DoanDuyLong212/opentrading-benchmark/issues/13#issuecomment-7125742490",
+ "or16_judge_primary_sha256": "6cb9e2f958886b3a7d7bd165dfb7bb9df76b5ee5e448a04df8d246e982509cc1",
+ "retired": [
+  "fin-c1-cmp-408",
+  "fin-c1-idx-404",
+  "fin-c1-pct-401",
+  "fin-c1-pct-407",
+  "fin-c1-pnl-405",
+  "fin-c1-ratio-403",
+  "fin-c1-ratio-406",
+  "fin-c2-eqw-415",
+  "fin-c2-ma-416",
+  "fin-c2-pct-411",
+  "fin-c2-rs-412",
+  "fin-c2-vol-410",
+  "fin-c2-vol-413",
+  "fin-c3-doubling-422",
+  "fin-c3-geo-417",
+  "fin-c3-rschain-423",
+  "fin-c4-dca-428",
+  "fin-l1-bctc-109",
+  "fin-l1-bctc-110",
+  "fin-l1-bctc-111",
+  "fin-l1-macro-137",
+  "fin-l1-macro-138",
+  "fin-l1-macro-139",
+  "fin-l1-quote-crypto-121",
+  "fin-l1-quote-crypto-125",
+  "fin-l1-quote-gf-126",
+  "fin-l1-quote-vn-101",
+  "fin-l2-crypto-x-166",
+  "fin-l2-crypto-x-167",
+  "fin-l2-crypto-x-168",
+  "fin-l2-crypto-x-169",
+  "fin-l2-gf-compare-172",
+  "fin-l2-gf-compare-173",
+  "fin-l2-gf-compare-174",
+  "fin-l2-gf-compare-175",
+  "fin-l2-growth-141",
+  "fin-l2-growth-142",
+  "fin-l2-macro-calc-176",
+  "fin-l2-macro-calc-180",
+  "fin-l2-margin-149",
+  "fin-l2-margin-150",
+  "fin-l2-margin-151",
+  "fin-l2-ratio-157",
+  "fin-l2-ratio-158",
+  "fin-l2-ratio-159",
+  "fin-l2-ratio-160",
+  "fin-l2-tech-162",
+  "fin-l2-tech-163",
+  "fin-l2-tech-164",
+  "fin-l2-tech-165",
+  "fin-l3-agg-181",
+  "fin-l3-agg-184",
+  "fin-l3-agg-185",
+  "fin-l3-agg-187",
+  "fin-l3-crypto-multi-208",
+  "fin-l3-crypto-multi-209",
+  "fin-l3-crypto-multi-210",
+  "fin-l3-crypto-multi-211",
+  "fin-l3-crypto-multi-212",
+  "fin-l3-crypto-multi-213",
+  "fin-l3-crypto-multi-214",
+  "fin-l3-index-216",
+  "fin-l3-index-217",
+  "fin-l3-macro-agg-220",
+  "fin-l3-screen-189",
+  "fin-l3-screen-192",
+  "fin-l3-screen-193",
+  "fin-l3-tech-multi-203",
+  "fin-l3-tech-multi-204",
+  "fin-l3-tech-multi-205",
+  "fin-l3-tech-multi-206",
+  "fin-l3-tech-multi-207",
+  "fin-l3-top-197",
+  "fin-l3-top-198",
+  "fin-l3-top-199",
+  "fin-l4-2src-257",
+  "fin-l4-2src-258",
+  "fin-l4-chain-303",
+  "fin-l4-chain-304",
+  "fin-l4-future-221",
+  "fin-l4-future-222",
+  "fin-l4-future-231",
+  "fin-l4-future-232",
+  "fin-l4-nonexist-235",
+  "fin-l4-nonexist-236",
+  "fin-l4-nonexist-237",
+  "fin-l4-nonexist-238",
+  "fin-l5-compare-275",
+  "fin-l5-compare-277",
+  "fin-l5-compare-280",
+  "fin-l5-compare-281",
+  "fin-l5-compare-282",
+  "fin-l5-compare-283",
+  "fin-l5-compare-284",
+  "fin-l5-compare-286",
+  "fin-l5-compare-287",
+  "fin-l5-compare-288",
+  "fin-l5-compare-289",
+  "fin-l5-compare-290",
+  "fin-l5-profile-261",
+  "fin-l5-profile-262",
+  "fin-l5-profile-263",
+  "fin-l5-profile-264",
+  "fin-l5-valuation-291",
+  "fin-l5-valuation-292",
+  "fin-l5-valuation-293",
+  "fin-l5-valuation-300",
+  "fin-m1-port-506",
+  "fin-m1-screen-501",
+  "fin-m1-screen-502",
+  "fin-m1-screen-503",
+  "fin-m1-screen-504",
+  "fin-m1-screen-505",
+  "fin-m2-basket-510",
+  "fin-m2-screen-507",
+  "fin-m2-screen-508",
+  "fin-m2-screen-509",
+  "fin-m2-top-512",
+  "fin-m5-stale-527",
+  "fin-m5-stale-528"
+ ],
+ "evidence": {
+  "fin-c1-cmp-408": {
+   "dsh": [
+    true,
+    true
+   ],
+   "opencode": [
+    true,
+    true
+   ],
+   "opentrading_baseline": [
+    true,
+    true
+   ]
+  },
+  "fin-c1-idx-404": {
+   "dsh": [
+    true,
+    true
+   ],
+   "opencode": [
+    true,
+    true
+   ],
+   "opentrading_baseline": [
+    true,
+    true
+   ]
+  },
+  "fin-c1-pct-401": {
+   "dsh": [
+    true,
+    true
+   ],
+   "opencode": [
+    true,
+    true
+   ],
+   "opentrading_baseline": [
+    true,
+    true
+   ]
+  },
+  "fin-c1-pct-407": {
+   "dsh": [
+    true,
+    true
+   ],
+   "opencode": [
+    true,
+    true
+   ],
+   "opentrading_baseline": [
+    true,
+    true
+   ]
+  },
+  "fin-c1-pnl-405": {
+   "dsh": [
+    true,
+    true
+   ],
+   "opencode": [
+    true,
+    true
+   ],
+   "opentrading_baseline": [
+    true,
+    true
+   ]
+  },
+  "fin-c1-ratio-403": {
+   "dsh": [
+    true,
+    true
+   ],
+   "opencode": [
+    true,
+    true
+   ],
+   "opentrading_baseline": [
+    true,
+    true
+   ]
+  },
+  "fin-c1-ratio-406": {
+   "dsh": [
+    true,
+    true
+   ],
+   "opencode": [
+    true,
+    true
+   ],
+   "opentrading_baseline": [
+    true,
+    true
+   ]
+  },
+  "fin-c2-eqw-415": {
+   "dsh": [
+    true,
+    true
+   ],
+   "opencode": [
+    true,
+    true
+   ],
+   "opentrading_baseline": [
+    true,
+    true
+   ]
+  },
+  "fin-c2-ma-416": {
+   "dsh": [
+    true,
+    true
+   ],
+   "opencode": [
+    true,
+    true
+   ],
+   "opentrading_baseline": [
+    true,
+    true
+   ]
+  },
+  "fin-c2-pct-411": {
+   "dsh": [
+    true,
+    true
+   ],
+   "opencode": [
+    true,
+    true
+   ],
+   "opentrading_baseline": [
+    true,
+    true
+   ]
+  },
+  "fin-c2-rs-412": {
+   "dsh": [
+    true,
+    true
+   ],
+   "opencode": [
+    true,
+    true
+   ],
+   "opentrading_baseline": [
+    true,
+    true
+   ]
+  },
+  "fin-c2-vol-410": {
+   "dsh": [
+    true,
+    true
+   ],
+   "opencode": [
+    true,
+    true
+   ],
+   "opentrading_baseline": [
+    true,
+    true
+   ]
+  },
+  "fin-c2-vol-413": {
+   "dsh": [
+    true,
+    true
+   ],
+   "opencode": [
+    true,
+    true
+   ],
+   "opentrading_baseline": [
+    true,
+    true
+   ]
+  },
+  "fin-c3-doubling-422": {
+   "dsh": [
+    true,
+    true
+   ],
+   "opencode": [
+    true,
+    true
+   ],
+   "opentrading_baseline": [
+    true,
+    true
+   ]
+  },
+  "fin-c3-geo-417": {
+   "dsh": [
+    true,
+    true
+   ],
+   "opencode": [
+    true,
+    true
+   ],
+   "opentrading_baseline": [
+    true,
+    true
+   ]
+  },
+  "fin-c3-rschain-423": {
+   "dsh": [
+    true,
+    true
+   ],
+   "opencode": [
+    true,
+    true
+   ],
+   "opentrading_baseline": [
+    true,
+    true
+   ]
+  },
+  "fin-c4-dca-428": {
+   "dsh": [
+    true,
+    true
+   ],
+   "opencode": [
+    true,
+    true
+   ],
+   "opentrading_baseline": [
+    true,
+    true
+   ]
+  },
+  "fin-l1-bctc-109": {
+   "dsh": [
+    true,
+    true
+   ],
+   "opencode": [
+    true,
+    true
+   ],
+   "opentrading_baseline": [
+    true,
+    true
+   ]
+  },
+  "fin-l1-bctc-110": {
+   "dsh": [
+    true,
+    true
+   ],
+   "opencode": [
+    true,
+    true
+   ],
+   "opentrading_baseline": [
+    true,
+    true
+   ]
+  },
+  "fin-l1-bctc-111": {
+   "dsh": [
+    true,
+    true
+   ],
+   "opencode": [
+    true,
+    true
+   ],
+   "opentrading_baseline": [
+    true,
+    true
+   ]
+  },
+  "fin-l1-macro-137": {
+   "dsh": [
+    true,
+    true
+   ],
+   "opencode": [
+    true,
+    true
+   ],
+   "opentrading_baseline": [
+    true,
+    true
+   ]
+  },
+  "fin-l1-macro-138": {
+   "dsh": [
+    true,
+    true
+   ],
+   "opencode": [
+    true,
+    true
+   ],
+   "opentrading_baseline": [
+    true,
+    true
+   ]
+  },
+  "fin-l1-macro-139": {
+   "dsh": [
+    true,
+    true
+   ],
+   "opencode": [
+    true,
+    true
+   ],
+   "opentrading_baseline": [
+    true,
+    true
+   ]
+  },
+  "fin-l1-quote-crypto-121": {
+   "dsh": [
+    true,
+    true
+   ],
+   "opencode": [
+    true,
+    true
+   ],
+   "opentrading_baseline": [
+    true,
+    true
+   ]
+  },
+  "fin-l1-quote-crypto-125": {
+   "dsh": [
+    true,
+    true
+   ],
+   "opencode": [
+    true,
+    true
+   ],
+   "opentrading_baseline": [
+    true,
+    true
+   ]
+  },
+  "fin-l1-quote-gf-126": {
+   "dsh": [
+    true,
+    true
+   ],
+   "opencode": [
+    true,
+    true
+   ],
+   "opentrading_baseline": [
+    true,
+    true
+   ]
+  },
+  "fin-l1-quote-vn-101": {
+   "dsh": [
+    true,
+    true
+   ],
+   "opencode": [
+    true,
+    true
+   ],
+   "opentrading_baseline": [
+    true,
+    true
+   ]
+  },
+  "fin-l2-crypto-x-166": {
+   "dsh": [
+    true,
+    true
+   ],
+   "opencode": [
+    true,
+    true
+   ],
+   "opentrading_baseline": [
+    true,
+    true
+   ]
+  },
+  "fin-l2-crypto-x-167": {
+   "dsh": [
+    true,
+    true
+   ],
+   "opencode": [
+    true,
+    true
+   ],
+   "opentrading_baseline": [
+    true,
+    true
+   ]
+  },
+  "fin-l2-crypto-x-168": {
+   "dsh": [
+    true,
+    true
+   ],
+   "opencode": [
+    true,
+    true
+   ],
+   "opentrading_baseline": [
+    true,
+    true
+   ]
+  },
+  "fin-l2-crypto-x-169": {
+   "dsh": [
+    true,
+    true
+   ],
+   "opencode": [
+    true,
+    true
+   ],
+   "opentrading_baseline": [
+    true,
+    true
+   ]
+  },
+  "fin-l2-gf-compare-172": {
+   "dsh": [
+    true,
+    true
+   ],
+   "opencode": [
+    true,
+    true
+   ],
+   "opentrading_baseline": [
+    true,
+    true
+   ]
+  },
+  "fin-l2-gf-compare-173": {
+   "dsh": [
+    true,
+    true
+   ],
+   "opencode": [
+    true,
+    true
+   ],
+   "opentrading_baseline": [
+    true,
+    true
+   ]
+  },
+  "fin-l2-gf-compare-174": {
+   "dsh": [
+    true,
+    true
+   ],
+   "opencode": [
+    true,
+    true
+   ],
+   "opentrading_baseline": [
+    true,
+    true
+   ]
+  },
+  "fin-l2-gf-compare-175": {
+   "dsh": [
+    true,
+    true
+   ],
+   "opencode": [
+    true,
+    true
+   ],
+   "opentrading_baseline": [
+    true,
+    true
+   ]
+  },
+  "fin-l2-growth-141": {
+   "dsh": [
+    true,
+    true
+   ],
+   "opencode": [
+    true,
+    true
+   ],
+   "opentrading_baseline": [
+    true,
+    true
+   ]
+  },
+  "fin-l2-growth-142": {
+   "dsh": [
+    true,
+    true
+   ],
+   "opencode": [
+    true,
+    true
+   ],
+   "opentrading_baseline": [
+    true,
+    true
+   ]
+  },
+  "fin-l2-macro-calc-176": {
+   "dsh": [
+    true,
+    true
+   ],
+   "opencode": [
+    true,
+    true
+   ],
+   "opentrading_baseline": [
+    true,
+    true
+   ]
+  },
+  "fin-l2-macro-calc-180": {
+   "dsh": [
+    true,
+    true
+   ],
+   "opencode": [
+    true,
+    true
+   ],
+   "opentrading_baseline": [
+    true,
+    true
+   ]
+  },
+  "fin-l2-margin-149": {
+   "dsh": [
+    true,
+    true
+   ],
+   "opencode": [
+    true,
+    true
+   ],
+   "opentrading_baseline": [
+    true,
+    true
+   ]
+  },
+  "fin-l2-margin-150": {
+   "dsh": [
+    true,
+    true
+   ],
+   "opencode": [
+    true,
+    true
+   ],
+   "opentrading_baseline": [
+    true,
+    true
+   ]
+  },
+  "fin-l2-margin-151": {
+   "dsh": [
+    true,
+    true
+   ],
+   "opencode": [
+    true,
+    true
+   ],
+   "opentrading_baseline": [
+    true,
+    true
+   ]
+  },
+  "fin-l2-ratio-157": {
+   "dsh": [
+    true,
+    true
+   ],
+   "opencode": [
+    true,
+    true
+   ],
+   "opentrading_baseline": [
+    true,
+    true
+   ]
+  },
+  "fin-l2-ratio-158": {
+   "dsh": [
+    true,
+    true
+   ],
+   "opencode": [
+    true,
+    true
+   ],
+   "opentrading_baseline": [
+    true,
+    true
+   ]
+  },
+  "fin-l2-ratio-159": {
+   "dsh": [
+    true,
+    true
+   ],
+   "opencode": [
+    true,
+    true
+   ],
+   "opentrading_baseline": [
+    true,
+    true
+   ]
+  },
+  "fin-l2-ratio-160": {
+   "dsh": [
+    true,
+    true
+   ],
+   "opencode": [
+    true,
+    true
+   ],
+   "opentrading_baseline": [
+    true,
+    true
+   ]
+  },
+  "fin-l2-tech-162": {
+   "dsh": [
+    true,
+    true
+   ],
+   "opencode": [
+    true,
+    true
+   ],
+   "opentrading_baseline": [
+    true,
+    true
+   ]
+  },
+  "fin-l2-tech-163": {
+   "dsh": [
+    true,
+    true
+   ],
+   "opencode": [
+    true,
+    true
+   ],
+   "opentrading_baseline": [
+    true,
+    true
+   ]
+  },
+  "fin-l2-tech-164": {
+   "dsh": [
+    true,
+    true
+   ],
+   "opencode": [
+    true,
+    true
+   ],
+   "opentrading_baseline": [
+    true,
+    true
+   ]
+  },
+  "fin-l2-tech-165": {
+   "dsh": [
+    true,
+    true
+   ],
+   "opencode": [
+    true,
+    true
+   ],
+   "opentrading_baseline": [
+    true,
+    true
+   ]
+  },
+  "fin-l3-agg-181": {
+   "dsh": [
+    true,
+    true
+   ],
+   "opencode": [
+    true,
+    true
+   ],
+   "opentrading_baseline": [
+    true,
+    true
+   ]
+  },
+  "fin-l3-agg-184": {
+   "dsh": [
+    true,
+    true
+   ],
+   "opencode": [
+    true,
+    true
+   ],
+   "opentrading_baseline": [
+    true,
+    true
+   ]
+  },
+  "fin-l3-agg-185": {
+   "dsh": [
+    true,
+    true
+   ],
+   "opencode": [
+    true,
+    true
+   ],
+   "opentrading_baseline": [
+    true,
+    true
+   ]
+  },
+  "fin-l3-agg-187": {
+   "dsh": [
+    true,
+    true
+   ],
+   "opencode": [
+    true,
+    true
+   ],
+   "opentrading_baseline": [
+    true,
+    true
+   ]
+  },
+  "fin-l3-crypto-multi-208": {
+   "dsh": [
+    true,
+    true
+   ],
+   "opencode": [
+    true,
+    true
+   ],
+   "opentrading_baseline": [
+    true,
+    true
+   ]
+  },
+  "fin-l3-crypto-multi-209": {
+   "dsh": [
+    true,
+    true
+   ],
+   "opencode": [
+    true,
+    true
+   ],
+   "opentrading_baseline": [
+    true,
+    true
+   ]
+  },
+  "fin-l3-crypto-multi-210": {
+   "dsh": [
+    true,
+    true
+   ],
+   "opencode": [
+    true,
+    true
+   ],
+   "opentrading_baseline": [
+    true,
+    true
+   ]
+  },
+  "fin-l3-crypto-multi-211": {
+   "dsh": [
+    true,
+    true
+   ],
+   "opencode": [
+    true,
+    true
+   ],
+   "opentrading_baseline": [
+    true,
+    true
+   ]
+  },
+  "fin-l3-crypto-multi-212": {
+   "dsh": [
+    true,
+    true
+   ],
+   "opencode": [
+    true,
+    true
+   ],
+   "opentrading_baseline": [
+    true,
+    true
+   ]
+  },
+  "fin-l3-crypto-multi-213": {
+   "dsh": [
+    true,
+    true
+   ],
+   "opencode": [
+    true,
+    true
+   ],
+   "opentrading_baseline": [
+    true,
+    true
+   ]
+  },
+  "fin-l3-crypto-multi-214": {
+   "dsh": [
+    true,
+    true
+   ],
+   "opencode": [
+    true,
+    true
+   ],
+   "opentrading_baseline": [
+    true,
+    true
+   ]
+  },
+  "fin-l3-index-216": {
+   "dsh": [
+    true,
+    true
+   ],
+   "opencode": [
+    true,
+    true
+   ],
+   "opentrading_baseline": [
+    true,
+    true
+   ]
+  },
+  "fin-l3-index-217": {
+   "dsh": [
+    true,
+    true
+   ],
+   "opencode": [
+    true,
+    true
+   ],
+   "opentrading_baseline": [
+    true,
+    true
+   ]
+  },
+  "fin-l3-macro-agg-220": {
+   "dsh": [
+    true,
+    true
+   ],
+   "opencode": [
+    true,
+    true
+   ],
+   "opentrading_baseline": [
+    true,
+    true
+   ]
+  },
+  "fin-l3-screen-189": {
+   "dsh": [
+    true,
+    true
+   ],
+   "opencode": [
+    true,
+    true
+   ],
+   "opentrading_baseline": [
+    true,
+    true
+   ]
+  },
+  "fin-l3-screen-192": {
+   "dsh": [
+    true,
+    true
+   ],
+   "opencode": [
+    true,
+    true
+   ],
+   "opentrading_baseline": [
+    true,
+    true
+   ]
+  },
+  "fin-l3-screen-193": {
+   "dsh": [
+    true,
+    true
+   ],
+   "opencode": [
+    true,
+    true
+   ],
+   "opentrading_baseline": [
+    true,
+    true
+   ]
+  },
+  "fin-l3-tech-multi-203": {
+   "dsh": [
+    true,
+    true
+   ],
+   "opencode": [
+    true,
+    true
+   ],
+   "opentrading_baseline": [
+    true,
+    true
+   ]
+  },
+  "fin-l3-tech-multi-204": {
+   "dsh": [
+    true,
+    true
+   ],
+   "opencode": [
+    true,
+    true
+   ],
+   "opentrading_baseline": [
+    true,
+    true
+   ]
+  },
+  "fin-l3-tech-multi-205": {
+   "dsh": [
+    true,
+    true
+   ],
+   "opencode": [
+    true,
+    true
+   ],
+   "opentrading_baseline": [
+    true,
+    true
+   ]
+  },
+  "fin-l3-tech-multi-206": {
+   "dsh": [
+    true,
+    true
+   ],
+   "opencode": [
+    true,
+    true
+   ],
+   "opentrading_baseline": [
+    true,
+    true
+   ]
+  },
+  "fin-l3-tech-multi-207": {
+   "dsh": [
+    true,
+    true
+   ],
+   "opencode": [
+    true,
+    true
+   ],
+   "opentrading_baseline": [
+    true,
+    true
+   ]
+  },
+  "fin-l3-top-197": {
+   "dsh": [
+    true,
+    true
+   ],
+   "opencode": [
+    true,
+    true
+   ],
+   "opentrading_baseline": [
+    true,
+    true
+   ]
+  },
+  "fin-l3-top-198": {
+   "dsh": [
+    true,
+    true
+   ],
+   "opencode": [
+    true,
+    true
+   ],
+   "opentrading_baseline": [
+    true,
+    true
+   ]
+  },
+  "fin-l3-top-199": {
+   "dsh": [
+    true,
+    true
+   ],
+   "opencode": [
+    true,
+    true
+   ],
+   "opentrading_baseline": [
+    true,
+    true
+   ]
+  },
+  "fin-l4-2src-257": {
+   "dsh": [
+    true,
+    true
+   ],
+   "opencode": [
+    true,
+    true
+   ],
+   "opentrading_baseline": [
+    true,
+    true
+   ]
+  },
+  "fin-l4-2src-258": {
+   "dsh": [
+    true,
+    true
+   ],
+   "opencode": [
+    true,
+    true
+   ],
+   "opentrading_baseline": [
+    true,
+    true
+   ]
+  },
+  "fin-l4-chain-303": {
+   "dsh": [
+    true,
+    true
+   ],
+   "opencode": [
+    true,
+    true
+   ],
+   "opentrading_baseline": [
+    true,
+    true
+   ]
+  },
+  "fin-l4-chain-304": {
+   "dsh": [
+    true,
+    true
+   ],
+   "opencode": [
+    true,
+    true
+   ],
+   "opentrading_baseline": [
+    true,
+    true
+   ]
+  },
+  "fin-l4-future-221": {
+   "dsh": [
+    true,
+    true
+   ],
+   "opencode": [
+    true,
+    true
+   ],
+   "opentrading_baseline": [
+    true,
+    true
+   ]
+  },
+  "fin-l4-future-222": {
+   "dsh": [
+    true,
+    true
+   ],
+   "opencode": [
+    true,
+    true
+   ],
+   "opentrading_baseline": [
+    true,
+    true
+   ]
+  },
+  "fin-l4-future-231": {
+   "dsh": [
+    true,
+    true
+   ],
+   "opencode": [
+    true,
+    true
+   ],
+   "opentrading_baseline": [
+    true,
+    true
+   ]
+  },
+  "fin-l4-future-232": {
+   "dsh": [
+    true,
+    true
+   ],
+   "opencode": [
+    true,
+    true
+   ],
+   "opentrading_baseline": [
+    true,
+    true
+   ]
+  },
+  "fin-l4-nonexist-235": {
+   "dsh": [
+    true,
+    true
+   ],
+   "opencode": [
+    true,
+    true
+   ],
+   "opentrading_baseline": [
+    true,
+    true
+   ]
+  },
+  "fin-l4-nonexist-236": {
+   "dsh": [
+    true,
+    true
+   ],
+   "opencode": [
+    true,
+    true
+   ],
+   "opentrading_baseline": [
+    true,
+    true
+   ]
+  },
+  "fin-l4-nonexist-237": {
+   "dsh": [
+    true,
+    true
+   ],
+   "opencode": [
+    true,
+    true
+   ],
+   "opentrading_baseline": [
+    true,
+    true
+   ]
+  },
+  "fin-l4-nonexist-238": {
+   "dsh": [
+    true,
+    true
+   ],
+   "opencode": [
+    true,
+    true
+   ],
+   "opentrading_baseline": [
+    true,
+    true
+   ]
+  },
+  "fin-l5-compare-275": {
+   "dsh": [
+    true,
+    true
+   ],
+   "opencode": [
+    true,
+    true
+   ],
+   "opentrading_baseline": [
+    true,
+    true
+   ]
+  },
+  "fin-l5-compare-277": {
+   "dsh": [
+    true,
+    true
+   ],
+   "opencode": [
+    true,
+    true
+   ],
+   "opentrading_baseline": [
+    true,
+    true
+   ]
+  },
+  "fin-l5-compare-280": {
+   "dsh": [
+    true,
+    true
+   ],
+   "opencode": [
+    true,
+    true
+   ],
+   "opentrading_baseline": [
+    true,
+    true
+   ]
+  },
+  "fin-l5-compare-281": {
+   "dsh": [
+    true,
+    true
+   ],
+   "opencode": [
+    true,
+    true
+   ],
+   "opentrading_baseline": [
+    true,
+    true
+   ]
+  },
+  "fin-l5-compare-282": {
+   "dsh": [
+    true,
+    true
+   ],
+   "opencode": [
+    true,
+    true
+   ],
+   "opentrading_baseline": [
+    true,
+    true
+   ]
+  },
+  "fin-l5-compare-283": {
+   "dsh": [
+    true,
+    true
+   ],
+   "opencode": [
+    true,
+    true
+   ],
+   "opentrading_baseline": [
+    true,
+    true
+   ]
+  },
+  "fin-l5-compare-284": {
+   "dsh": [
+    true,
+    true
+   ],
+   "opencode": [
+    true,
+    true
+   ],
+   "opentrading_baseline": [
+    true,
+    true
+   ]
+  },
+  "fin-l5-compare-286": {
+   "dsh": [
+    true,
+    true
+   ],
+   "opencode": [
+    true,
+    true
+   ],
+   "opentrading_baseline": [
+    true,
+    true
+   ]
+  },
+  "fin-l5-compare-287": {
+   "dsh": [
+    true,
+    true
+   ],
+   "opencode": [
+    true,
+    true
+   ],
+   "opentrading_baseline": [
+    true,
+    true
+   ]
+  },
+  "fin-l5-compare-288": {
+   "dsh": [
+    true,
+    true
+   ],
+   "opencode": [
+    true,
+    true
+   ],
+   "opentrading_baseline": [
+    true,
+    true
+   ]
+  },
+  "fin-l5-compare-289": {
+   "dsh": [
+    true,
+    true
+   ],
+   "opencode": [
+    true,
+    true
+   ],
+   "opentrading_baseline": [
+    true,
+    true
+   ]
+  },
+  "fin-l5-compare-290": {
+   "dsh": [
+    true,
+    true
+   ],
+   "opencode": [
+    true,
+    true
+   ],
+   "opentrading_baseline": [
+    true,
+    true
+   ]
+  },
+  "fin-l5-profile-261": {
+   "dsh": [
+    true,
+    true
+   ],
+   "opencode": [
+    true,
+    true
+   ],
+   "opentrading_baseline": [
+    true,
+    true
+   ]
+  },
+  "fin-l5-profile-262": {
+   "dsh": [
+    true,
+    true
+   ],
+   "opencode": [
+    true,
+    true
+   ],
+   "opentrading_baseline": [
+    true,
+    true
+   ]
+  },
+  "fin-l5-profile-263": {
+   "dsh": [
+    true,
+    true
+   ],
+   "opencode": [
+    true,
+    true
+   ],
+   "opentrading_baseline": [
+    true,
+    true
+   ]
+  },
+  "fin-l5-profile-264": {
+   "dsh": [
+    true,
+    true
+   ],
+   "opencode": [
+    true,
+    true
+   ],
+   "opentrading_baseline": [
+    true,
+    true
+   ]
+  },
+  "fin-l5-valuation-291": {
+   "dsh": [
+    true,
+    true
+   ],
+   "opencode": [
+    true,
+    true
+   ],
+   "opentrading_baseline": [
+    true,
+    true
+   ]
+  },
+  "fin-l5-valuation-292": {
+   "dsh": [
+    true,
+    true
+   ],
+   "opencode": [
+    true,
+    true
+   ],
+   "opentrading_baseline": [
+    true,
+    true
+   ]
+  },
+  "fin-l5-valuation-293": {
+   "dsh": [
+    true,
+    true
+   ],
+   "opencode": [
+    true,
+    true
+   ],
+   "opentrading_baseline": [
+    true,
+    true
+   ]
+  },
+  "fin-l5-valuation-300": {
+   "dsh": [
+    true,
+    true
+   ],
+   "opencode": [
+    true,
+    true
+   ],
+   "opentrading_baseline": [
+    true,
+    true
+   ]
+  },
+  "fin-m1-port-506": {
+   "dsh": [
+    true,
+    true
+   ],
+   "opencode": [
+    true,
+    true
+   ],
+   "opentrading_baseline": [
+    true,
+    true
+   ]
+  },
+  "fin-m1-screen-501": {
+   "dsh": [
+    true,
+    true
+   ],
+   "opencode": [
+    true,
+    true
+   ],
+   "opentrading_baseline": [
+    true,
+    true
+   ]
+  },
+  "fin-m1-screen-502": {
+   "dsh": [
+    true,
+    true
+   ],
+   "opencode": [
+    true,
+    true
+   ],
+   "opentrading_baseline": [
+    true,
+    true
+   ]
+  },
+  "fin-m1-screen-503": {
+   "dsh": [
+    true,
+    true
+   ],
+   "opencode": [
+    true,
+    true
+   ],
+   "opentrading_baseline": [
+    true,
+    true
+   ]
+  },
+  "fin-m1-screen-504": {
+   "dsh": [
+    true,
+    true
+   ],
+   "opencode": [
+    true,
+    true
+   ],
+   "opentrading_baseline": [
+    true,
+    true
+   ]
+  },
+  "fin-m1-screen-505": {
+   "dsh": [
+    true,
+    true
+   ],
+   "opencode": [
+    true,
+    true
+   ],
+   "opentrading_baseline": [
+    true,
+    true
+   ]
+  },
+  "fin-m2-basket-510": {
+   "dsh": [
+    true,
+    true
+   ],
+   "opencode": [
+    true,
+    true
+   ],
+   "opentrading_baseline": [
+    true,
+    true
+   ]
+  },
+  "fin-m2-screen-507": {
+   "dsh": [
+    true,
+    true
+   ],
+   "opencode": [
+    true,
+    true
+   ],
+   "opentrading_baseline": [
+    true,
+    true
+   ]
+  },
+  "fin-m2-screen-508": {
+   "dsh": [
+    true,
+    true
+   ],
+   "opencode": [
+    true,
+    true
+   ],
+   "opentrading_baseline": [
+    true,
+    true
+   ]
+  },
+  "fin-m2-screen-509": {
+   "dsh": [
+    true,
+    true
+   ],
+   "opencode": [
+    true,
+    true
+   ],
+   "opentrading_baseline": [
+    true,
+    true
+   ]
+  },
+  "fin-m2-top-512": {
+   "dsh": [
+    true,
+    true
+   ],
+   "opencode": [
+    true,
+    true
+   ],
+   "opentrading_baseline": [
+    true,
+    true
+   ]
+  },
+  "fin-m5-stale-527": {
+   "dsh": [
+    true,
+    true
+   ],
+   "opencode": [
+    true,
+    true
+   ],
+   "opentrading_baseline": [
+    true,
+    true
+   ]
+  },
+  "fin-m5-stale-528": {
+   "dsh": [
+    true,
+    true
+   ],
+   "opencode": [
+    true,
+    true
+   ],
+   "opentrading_baseline": [
+    true,
+    true
+   ]
+  }
+ },
+ "retired_refusal_traps": [
+  "fin-l4-future-221",
+  "fin-l4-future-222",
+  "fin-l4-future-231",
+  "fin-l4-future-232",
+  "fin-l4-nonexist-235",
+  "fin-l4-nonexist-236",
+  "fin-l4-nonexist-237",
+  "fin-l4-nonexist-238"
+ ],
+ "main_composition_after": {
+  "compute": 39,
+  "lookup": 10,
+  "memory": 27,
+  "safety": 30
+ }
+}

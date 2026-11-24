@@ -107,7 +107,8 @@ def test_all_282_development_main_holdout_instructions_have_supported_single_exa
     # tasks (main 60, holdout 14, pilot 14) -> 306.
     # v4.7 (plan 2026-11-16): main stays 200 (-40 saturated lookups, +30 safety, +10 compute); holdout +8 safety.
     # Phase 1 adds three explicit devsmoke copies with development lineage.
-    assert len(instructions) == 317
+    # Amendment 2026-11-24: PRUNE2 retired 120 main tasks; +32 C5/M6 tasks (main 26, pilot 6) -> 229.
+    assert len(instructions) == 229
     for path in instructions:
         assert isinstance(public_success_example(path.read_text()), dict), path
 

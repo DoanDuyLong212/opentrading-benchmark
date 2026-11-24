@@ -46,6 +46,8 @@ CASES = [('pilot', n) for n in PILOT] + [('main', n) for n in MAIN] + [
 
 def raw_task(split, name):
     task = RETIRED/split.split('/')[-1]/name if split.startswith('../tasks-retired/') else ROOT/'tasks'/split/name
+    if not task.exists():  # retired by PRUNE2 (2026-11-24); fixtures are unchanged there
+        task = ROOT/'tasks-retired'/split/name
     payload = json.loads((task / 'environment/payloads.json').read_text())
     # Unwrap file storage only, without importing replay matching or generator logic.
     data = [(v.get('tool', k), v.get('envelope', v)['data']) for k, v in payload['tools'].items()]
@@ -250,6 +252,8 @@ def test_cpi_missing_series_dimension_is_quarantined_but_gdp_decoy_is_safe():
     for split,name,eligible in [('../tasks-retired/main','fin-l1-macro-133',False),('pilot','fin-l1-macro-01',False),
                                 ('main','fin-l2-macro-calc-176',True)]:
         task = RETIRED/split.split('/')[-1]/name if split.startswith('../tasks-retired/') else ROOT/'tasks'/split/name
+        if not task.exists():  # retired by PRUNE2 (2026-11-24)
+            task = ROOT/'tasks-retired'/split/name
         meta=tomllib.loads((task/'task.toml').read_text())
         assert meta['confirmatory_eligible'] is eligible
         if not eligible: assert meta['exclusion_reason']=='ambiguous_cpi_series_dimension'

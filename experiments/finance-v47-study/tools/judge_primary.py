@@ -33,10 +33,11 @@ NUM = re.compile(r'(?<![\w.])-?\d[\d,]*(?:\.\d+)?')
 
 
 def task_gold(task):
-    for split in SPLITS:
-        p = STUDY / 'tasks' / split / task / 'solution/gold.json'
-        if p.is_file():
-            return json.loads(p.read_text(encoding='utf-8'))
+    for base in ('tasks', 'tasks-retired'):  # retired tasks stay readable for historical runs
+        for split in SPLITS:
+            p = STUDY / base / split / task / 'solution/gold.json'
+            if p.is_file():
+                return json.loads(p.read_text(encoding='utf-8'))
     raise FileNotFoundError(task)
 
 

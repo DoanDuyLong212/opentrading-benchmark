@@ -32,7 +32,8 @@ def test_all_416_recorded_requests_and_default_case_equivalence_stay_supported()
     # Addendum (f): hard C3/C4 templates read more entities per task -> 534 recorded request entries.
     # v4.7 (plan 2026-11-16): recorded requests of the 48 new tasks in, those of the 40 dropped tasks out.
     # Three explicit devsmoke copies add nine request entries (Phase 1 lineage).
-    assert count==562
+    # Amendment 2026-11-24: PRUNE2 removes the retired tasks' entries; C5/M6 add KQKD/CDKT statement variants -> 579.
+    assert count==579
 
 def test_joint_finite_constraints_reject_projection_window_without_arg_mutation(tmp_path):
     entries,_=load_entries(ROOT/'tasks/smoke/smoke-quote-01/environment/payloads.json')

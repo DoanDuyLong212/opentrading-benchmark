@@ -225,3 +225,31 @@ Keep the historical 40 PRUNE IDs and recommend 58 holdout tasks without adding C
 - Pilot thu nhỏ được duyệt: 39 task × 3 arm × **1 lượt** (117 trial) thay vì 2 lượt. Model DeepSeek v4.1 flash 1017, host Pearl Research, key agent riêng; judge Haiku 5.5 trên key cũ.
 - Grader strict sửa (phủ định, "kỳ … chưa tồn tại"); 317 grader sinh lại từ nguồn.
 - Runner: `--prepare-only` tạo manifest và mục run cho seal qua đúng đường tính settings; lần chạy đầu của manifest đã seal mở budget trả phí bình thường, còn resume khi đã có journal/trial vẫn chỉ ghi sổ. Hệ quả cho main: một run trả phí bị dừng giữa chừng hiện không tiêu tiếp được khi resume; cần quyết trước main.
+
+## Amendment 2026-11-24 (b): bộ task main phân hoá (chủ repo duyệt "Làm cả")
+
+**Thành phần main**
+
+| Nhóm | Trước (16/11) | Sau | Thay đổi |
+|---|---:|---:|---|
+| Tra cứu L | 100 | 10 | −90 task bão hòa ở or16 |
+| Tính toán C | 40 | 39 | −17 bão hòa; +16 C5 (báo cáo tài chính) |
+| Memory M | 30 | 27 | −13 bão hòa; +10 M6 (memory cho phân tích tài chính) |
+| An toàn S | 30 | 30 | sửa đề lộ đáp án |
+| **Tổng** | **200** | **106** | 76 task tính điểm chính (L/C/M) |
+
+Pilot +6 task đôi (C5 ×4, M6 ×2): 42 task hợp lệ. Holdout giữ nguyên 58 (quyết định #15a), nên holdout chỉ xác nhận các nhóm cũ.
+
+**Cắt task (PRUNE2).** Quy tắc cố định trước mọi lượt chạy v4.7 trên main: task main mà cả 3 arm đều đúng ở cả 2 lượt or16 (`judge-primary.jsonl`, sha ghi trong biên nhận) thì chuyển sang `tasks-retired/main` (giữ lại, không xoá). Biên nhận `audits/taskset-revision-2026-11-24/PRUNE2.json` liệt kê 120 task và kết quả or16 từng arm; kiểm bằng `tools/prune_saturated_20261124.py`. Hạn chế: quy tắc viết sau khi thấy or16, và or16 chạy runtime cũ (OT có máy tính riêng, OpenCode 2.1, DSH 0.2.1). 8 task bẫy từ chối (L4 future/nonexist) bão hòa nên bị cắt: main không còn đo bịa số trên task bẫy; holdout và pilot vẫn còn.
+
+**Dữ liệu báo cáo tài chính mới** (`audits/snapshot-extension-2026-11-24/`): 40 mã phi tài chính, ghi 24/11 từ cùng nguồn Vietstock `financeinfo` với payload đóng băng. Chỉ giữ quý Q3/2024–Q2/2026 và năm 2021–2025 (Q3/2026 bỏ vì báo cáo hợp nhất có thể công bố sau 01/11). Mỗi mã phục vụ 2 biến thể `statement=KQKD`/`CDKT`; không phục vụ mục chỉ số `CSTC`, nên model phải tự tính. Đối chiếu: 112/112 giá trị trùng với payload thật khớp tuyệt đối; 8 giá trị lệch đều là fixture tổng hợp của devsmoke. Nguồn để trống lợi ích cổ đông thiểu số, nên đề dùng "Vốn chủ sở hữu" như công bố.
+
+**C5 — tính toán từ báo cáo tài chính** (16 main, `tools/build_finance_stratum_20261124.py`, thư viện chung `tools/finance_stratum_lib.py`): ROE TTM với vốn chủ bình quân 5 thời điểm; đòn bẩy hoạt động TTM; cầu nối biên gộp và biên HĐKD; DuPont 2025 và thành phần giải thích chênh lệch; CAGR 2021→2025; nợ/vốn và thanh toán hiện hành, thay đổi một năm; tăng trưởng cùng kỳ Q2; biên LNST gộp của nhóm ngành. Mỗi task 2–4 mã, 1–2 lời gọi mỗi mã, nhiều bước và nhiều kỳ; tolerance 0,05 điểm % / 0,005 lần / 0,5% với tỷ đồng.
+
+**M6 — memory cho phân tích tài chính** (10 main: 4 M6a quy ước + ngưỡng, 3 M6b cập nhật ngưỡng, 3 M6c xoá tiêu chí): phiên đầu người dùng dặn **cách tính ROE** (TTM hoặc năm 2025) và ngưỡng ROE/nợ; lượt cuối hỏi mã nào đạt và ROE từng mã "theo đúng cách tính tôi đã dặn". Kiểm khi dựng: dùng sai quy ước, hoặc bỏ qua cập nhật/xoá, đều làm sai tập mã đạt (test `test_m6_answers_depend_on_memory`); ROE từng mã cũng được chấm.
+
+**S — sửa đề lộ đáp án**: xem amendment ở trên (đề và ví dụ không còn chỉ ra trường phải để null).
+
+**Chỉ số đăng ký trước (trước khi chạy main):** ngoài điểm chính gộp L/C/M, báo riêng từng nhóm L, C1–C4, **C5**, M1–M5, **M6** và S (chẩn đoán), kèm bootstrap cặp theo task. OpenCode không có tính năng memory, nên nhóm M/M6 đo cả việc "có tính năng hay không"; không đọc điểm gộp là năng lực tài chính thuần.
+
+**Hạ tầng (24/11):** DSH bị tính thêm ~50 s mỗi lượt do kiểm hash cây `node_modules` lặp lại; đã sửa (kiểm một lần trước khi tính giờ). 11 trial pilot trả phí đã chạy (đã dừng, $0,0196) là chẩn đoán, không dùng làm số liệu. Một run trả phí bị dừng giữa chừng hiện không tiêu tiếp được khi resume (journal chỉ ghi sổ); cần quyết trước khi chạy main dài.

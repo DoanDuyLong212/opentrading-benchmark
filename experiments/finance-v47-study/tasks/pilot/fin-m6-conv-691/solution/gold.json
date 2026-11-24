@@ -1,0 +1,246 @@
+{
+  "task_id": "fin-m6-conv-691",
+  "scoring": "value",
+  "solution": {
+    "pass": [
+      "IMP",
+      "TRA"
+    ],
+    "convention": "ttm",
+    "roe_min": 15,
+    "debt_max": 35,
+    "values": {
+      "TRA": {
+        "roe": 15.9834,
+        "debt_ratio": 31.2213
+      },
+      "VHC": {
+        "roe": 13.8979,
+        "debt_ratio": 27.6951
+      },
+      "IMP": {
+        "roe": 15.8772,
+        "debt_ratio": 20.5522
+      },
+      "HAH": {
+        "roe": 23.4464,
+        "debt_ratio": 40.6538
+      }
+    }
+  },
+  "split": "pilot",
+  "expects": [
+    {
+      "type": "set",
+      "path": "values.pass",
+      "gold": [
+        "IMP",
+        "TRA"
+      ]
+    },
+    {
+      "type": "value",
+      "path": "values.TRA.roe",
+      "gold": 15.9834,
+      "tol": {
+        "abs": 0.05
+      }
+    },
+    {
+      "type": "value",
+      "path": "values.TRA.debt_ratio",
+      "gold": 31.2213,
+      "tol": {
+        "abs": 0.05
+      }
+    },
+    {
+      "type": "value",
+      "path": "values.VHC.roe",
+      "gold": 13.8979,
+      "tol": {
+        "abs": 0.05
+      }
+    },
+    {
+      "type": "value",
+      "path": "values.VHC.debt_ratio",
+      "gold": 27.6951,
+      "tol": {
+        "abs": 0.05
+      }
+    },
+    {
+      "type": "value",
+      "path": "values.IMP.roe",
+      "gold": 15.8772,
+      "tol": {
+        "abs": 0.05
+      }
+    },
+    {
+      "type": "value",
+      "path": "values.IMP.debt_ratio",
+      "gold": 20.5522,
+      "tol": {
+        "abs": 0.05
+      }
+    },
+    {
+      "type": "value",
+      "path": "values.HAH.roe",
+      "gold": 23.4464,
+      "tol": {
+        "abs": 0.05
+      }
+    },
+    {
+      "type": "value",
+      "path": "values.HAH.debt_ratio",
+      "gold": 40.6538,
+      "tol": {
+        "abs": 0.05
+      }
+    },
+    {
+      "type": "str",
+      "path": "source",
+      "accept": [
+        "financial_statements"
+      ]
+    }
+  ],
+  "contract_version": 2,
+  "stratum": "memory",
+  "tier": "M6",
+  "subtier": "M6a",
+  "memory_construct": "M6a",
+  "notes": "Finance-analysis memory stratum (amendment 2026-11-24): remembered ROE convention + thresholds.",
+  "provenance_contract": [
+    {
+      "tool": "financial_statements",
+      "source": "vietstock",
+      "as_of": "2026-11-24T15:51:30.168761+07:00",
+      "matched_entry_id": "fs:TRA:q:CDKT",
+      "response_sha256": "a1372ec523309b5d5a4ea41f06cc62a68e1e20f8dceda7ff14654657d8140fb5"
+    },
+    {
+      "tool": "financial_statements",
+      "source": "vietstock",
+      "as_of": "2026-11-24T15:51:30.168761+07:00",
+      "matched_entry_id": "fs:TRA:q:KQKD",
+      "response_sha256": "65ed8f2c7f642204a38d157ab7620fdb405f4ce56b5b46c2eef0971f08bf93d9"
+    },
+    {
+      "tool": "financial_statements",
+      "source": "vietstock",
+      "as_of": "2026-11-24T15:51:30.168761+07:00",
+      "matched_entry_id": "fs:VHC:q:CDKT",
+      "response_sha256": "2325cbeca559c0b0f7189eda31c55894c9ae604c1c4390ac4613e57796ad4e6c"
+    },
+    {
+      "tool": "financial_statements",
+      "source": "vietstock",
+      "as_of": "2026-11-24T15:51:30.168761+07:00",
+      "matched_entry_id": "fs:VHC:q:KQKD",
+      "response_sha256": "a65bb9d887eb1a97b115e9d08471561cfaff533abd8711d7a89e08337cb5bccd"
+    },
+    {
+      "tool": "financial_statements",
+      "source": "vietstock",
+      "as_of": "2026-11-24T15:51:30.168761+07:00",
+      "matched_entry_id": "fs:IMP:q:CDKT",
+      "response_sha256": "65701cedd8721098ef670c2fe1f950c5b1ec54a1d5cd79da0ad55d339b901712"
+    },
+    {
+      "tool": "financial_statements",
+      "source": "vietstock",
+      "as_of": "2026-11-24T15:51:30.168761+07:00",
+      "matched_entry_id": "fs:IMP:q:KQKD",
+      "response_sha256": "7b4201e599a0053bcac94c59f390d6f489ce2ab763ca937add6827e536b44693"
+    },
+    {
+      "tool": "financial_statements",
+      "source": "vietstock",
+      "as_of": "2026-11-24T15:51:30.168761+07:00",
+      "matched_entry_id": "fs:HAH:q:CDKT",
+      "response_sha256": "493a9705f0b33db97e8352121788397497381388a8a475577799b1f2ad10e9d8"
+    },
+    {
+      "tool": "financial_statements",
+      "source": "vietstock",
+      "as_of": "2026-11-24T15:51:30.168761+07:00",
+      "matched_entry_id": "fs:HAH:q:KQKD",
+      "response_sha256": "0cfb86c69a131f2ad6a96aeed8c531f386a3039ea4900f58c7839d8f288dba5d"
+    }
+  ],
+  "provenance_catalog": [
+    {
+      "tool": "financial_statements",
+      "source": "vietstock",
+      "as_of": "2026-11-24T15:51:30.168761+07:00",
+      "matched_entry_id": "fs:TRA:q:CDKT",
+      "response_sha256": "a1372ec523309b5d5a4ea41f06cc62a68e1e20f8dceda7ff14654657d8140fb5"
+    },
+    {
+      "tool": "financial_statements",
+      "source": "vietstock",
+      "as_of": "2026-11-24T15:51:30.168761+07:00",
+      "matched_entry_id": "fs:TRA:q:KQKD",
+      "response_sha256": "65ed8f2c7f642204a38d157ab7620fdb405f4ce56b5b46c2eef0971f08bf93d9"
+    },
+    {
+      "tool": "financial_statements",
+      "source": "vietstock",
+      "as_of": "2026-11-24T15:51:30.168761+07:00",
+      "matched_entry_id": "fs:VHC:q:CDKT",
+      "response_sha256": "2325cbeca559c0b0f7189eda31c55894c9ae604c1c4390ac4613e57796ad4e6c"
+    },
+    {
+      "tool": "financial_statements",
+      "source": "vietstock",
+      "as_of": "2026-11-24T15:51:30.168761+07:00",
+      "matched_entry_id": "fs:VHC:q:KQKD",
+      "response_sha256": "a65bb9d887eb1a97b115e9d08471561cfaff533abd8711d7a89e08337cb5bccd"
+    },
+    {
+      "tool": "financial_statements",
+      "source": "vietstock",
+      "as_of": "2026-11-24T15:51:30.168761+07:00",
+      "matched_entry_id": "fs:IMP:q:CDKT",
+      "response_sha256": "65701cedd8721098ef670c2fe1f950c5b1ec54a1d5cd79da0ad55d339b901712"
+    },
+    {
+      "tool": "financial_statements",
+      "source": "vietstock",
+      "as_of": "2026-11-24T15:51:30.168761+07:00",
+      "matched_entry_id": "fs:IMP:q:KQKD",
+      "response_sha256": "7b4201e599a0053bcac94c59f390d6f489ce2ab763ca937add6827e536b44693"
+    },
+    {
+      "tool": "financial_statements",
+      "source": "vietstock",
+      "as_of": "2026-11-24T15:51:30.168761+07:00",
+      "matched_entry_id": "fs:HAH:q:CDKT",
+      "response_sha256": "493a9705f0b33db97e8352121788397497381388a8a475577799b1f2ad10e9d8"
+    },
+    {
+      "tool": "financial_statements",
+      "source": "vietstock",
+      "as_of": "2026-11-24T15:51:30.168761+07:00",
+      "matched_entry_id": "fs:HAH:q:KQKD",
+      "response_sha256": "0cfb86c69a131f2ad6a96aeed8c531f386a3039ea4900f58c7839d8f288dba5d"
+    }
+  ],
+  "payload_sha256": "db1439883abe6aac172f4841cafee811055c32d13f6396050735e04c33050462",
+  "required_payload_keys": [
+    "fs:HAH:q:CDKT",
+    "fs:HAH:q:KQKD",
+    "fs:IMP:q:CDKT",
+    "fs:IMP:q:KQKD",
+    "fs:TRA:q:CDKT",
+    "fs:TRA:q:KQKD",
+    "fs:VHC:q:CDKT",
+    "fs:VHC:q:KQKD"
+  ]
+}

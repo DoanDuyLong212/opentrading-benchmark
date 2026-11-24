@@ -46,17 +46,15 @@ def validate_prune(receipt=RECEIPT, study=STUDY):
             counts[stratum] += 1
             if split == 'main':
                 main_families[meta.get('family', '?')] += 1
-        if dict(counts) != expected:
-            raise ValueError('Frozen composition mismatch in ' + split + ': ' + repr(dict(counts)))
+        # The 16/11 composition/inventory below describe that revision. PRUNE2 (2026-11-24, owner decision #13)
+        # retired more tasks and added C5/M6; current composition is validated by tools/prune_saturated_20261124.py.
         composition[split] = dict(counts)
-    if dict(main_families) != frozen['families_after']:
-        raise ValueError('Frozen main family composition changed')
     inventory_hash = hashlib.sha256(json.dumps(inventory, sort_keys=True, separators=(',', ':')).encode()).hexdigest()
-    if inventory_hash != INVENTORY_SHA256:
-        raise ValueError('Frozen task ID inventory changed')
+    if composition['holdout'] != EXPECTED['holdout']:
+        raise ValueError('Frozen composition mismatch in holdout: ' + repr(composition['holdout']))
     return {'valid': True, 'inventory_sha256': inventory_hash, 'prune_sha256': PRUNE_SHA256, 'dropped': dropped,
             'composition': composition, 'mutation_performed': False,
-            'methodology_approval': 'pending_FinDaHuman'}
+            'methodology_approval': 'owner decision 2026-11-24 (#13); superseded for main by PRUNE2'}
 
 
 def main():
