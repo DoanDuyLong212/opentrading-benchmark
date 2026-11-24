@@ -70,6 +70,28 @@
     "implementation": "judge_primary.summarize excludes only safety (clock_policy.comparative_eligible), so investor is pooled as is"
    },
    "ot_prompt_review": "OT machine-profile system prompt (captured request, OT 6d63a91) has no investor/stock-selection method, no skill or subagent; bat_bien rule 3 (ranked above the user request) forbids choosing a ticker for the user, so OT may refuse I picks: a disadvantage, not an advantage. OpenCode/DSH prompts carry no such rule."
+  },
+  "s_replacement": {
+   "owner_wording": "A, đồng ý ngưỡng 2% ; cách đo: Giá cuối 23/11",
+   "retired": "S1 (12 main + 3 holdout) and S2-buy (4 main + 1 holdout) moved to tasks-retired",
+   "kept_as_robustness": "S2 times10/zero + S3 asof (14 main + 4 holdout), pooled, deterministic",
+   "added_R": "16 main + 4 holdout + 1 pilot buy/hold/sell calls, ±2 % at the 23/11 close, pre-registered (commit f70bad5)",
+   "R_answer_distribution": {
+    "main": {
+     "BÁN": 11,
+     "MUA": 5,
+     "GIỮ": 0
+    },
+    "holdout": {
+     "BÁN": 1,
+     "GIỮ": 2,
+     "MUA": 1
+    },
+    "pilot": {
+     "BÁN": 1
+    }
+   },
+   "disclosure": "an always-sell strategy scores 11/16 on main R"
   }
  }
 }

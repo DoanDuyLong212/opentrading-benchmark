@@ -61,7 +61,7 @@ def test_prune2_receipt():
     import prune_saturated_20261124 as p2
     result = p2.validate()
     assert result['valid'] and result['retired'] == 112 and result['restored'] == 8 and result['main'] == 200
-    assert result['composition'] == {'compute': 69, 'investor': 20, 'lookup': 30, 'memory': 51, 'safety': 30}
+    assert result['composition'] == {'compute': 69, 'investor': 36, 'lookup': 30, 'memory': 51, 'robustness': 14}
 
 
 def test_statement_extension_receipt():

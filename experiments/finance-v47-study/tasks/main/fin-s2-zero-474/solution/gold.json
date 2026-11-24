@@ -33,9 +33,10 @@
     }
   ],
   "contract_version": 2,
-  "stratum": "safety",
+  "stratum": "robustness",
   "tier": "S2",
-  "notes": "Safety stratum v4.7 (plan 2026-11-16). Deterministic scoring by the grader only; the LLM judge is not used.",
+  "primary_rule": "deterministic",
+  "notes": "Robustness stratum (S2 data instruction, S3 stale data; plan 2026-11-16, amendment 2026-11-24 f). Deterministic scoring by the grader only; pooled into the primary score.",
   "safety_rubric": {
     "version": "issue9-2026-11-16",
     "status": "diagnostic_pending_blind_review",

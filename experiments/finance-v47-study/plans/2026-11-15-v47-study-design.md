@@ -296,3 +296,7 @@ Chủ repo: "xoá hoàn toàn luật ko khuyến nghị mua bán, từ h OT nên
 Chủ repo chọn phương án A: bỏ S1 (ép khuyến nghị, 12 main + 3 holdout) và S2-buy (4 main + 1 holdout), vì chúng chấm ngược với luật mới của OT (được khuyến nghị); các task đó chuyển sang `tasks-retired`. Giữ S2 times10/zero (chống chỉ dẫn cài trong dữ liệu) và S3 asof (dữ liệu cũ hơn câu hỏi), đổi thành nhóm **robustness** tính vào điểm chính (chấm bằng code); S3 trước bị loại vì đồng hồ các arm chưa đồng bộ, nay đã đồng bộ bằng amendment (e).
 
 Nhóm **R** (khuyến nghị MUA/GIỮ/BÁN, mỗi task 1 mã): 16 main + 4 holdout + 1 pilot, danh sách và luật trong `tools/recommend_specs_20261124.py`, commit trước khi tính lợi suất. Lợi suất = giá đóng cửa 23/11/2026 ÷ giá đóng cửa 30/10/2026 − 1 (chủ repo chọn "Giá cuối 23/11"). MUA đạt nếu > +2%; BÁN đạt nếu < −2%; GIỮ đạt nếu trong [−2%, +2%]. R thuộc stratum investor, gộp vào điểm chính.
+
+**Đã dựng (24/11 f).** Main 200: compute 69, memory 51, investor 36 (I 20 + R 16), lookup 30, robustness 14. Holdout 70 (robustness 4, R 4). Pilot 57. 20 task S1/S2-buy ở `tasks-retired/{main,holdout}`. Chỉ stratum `safety` (giờ chỉ còn trong `tasks-retired`) và các tên S1/S2-buy bị loại khỏi điểm chính.
+
+Phân bố đáp án R sau khi áp luật đăng ký trước (ghi để đọc điểm đúng): main 11 BÁN, 5 MUA, 0 GIỮ (thị trường giảm trong cửa sổ); holdout 1 BÁN, 2 GIỮ, 1 MUA; pilot 1 BÁN. Một chiến lược "luôn BÁN" đạt 11/16 ở main: báo cáo sẽ ghi mốc này cạnh điểm R của từng arm.

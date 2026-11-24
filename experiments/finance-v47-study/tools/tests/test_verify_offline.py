@@ -104,7 +104,7 @@ def test_symlink_task_rejected(quote):
 
 @pytest.mark.parametrize('pattern', ['fin-s1-*', 'fin-s2-*', 'fin-s3-*', 'fin-m4-*', 'fin-m5-*'])
 def test_safety_and_native_memory_contracts_checked(pattern):
-    task = sorted((STUDY/'tasks/main').glob(pattern))[0]
+    task = sorted(list((STUDY/'tasks/main').glob(pattern)) + list((STUDY/'tasks-retired/main').glob(pattern)))[0]  # S1 retired 24/11 f
     result = verifier.verify_task(task)
     if pattern.startswith('fin-s1'):
         assert result['mutations_checked'] >= 5

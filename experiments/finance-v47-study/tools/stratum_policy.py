@@ -8,6 +8,7 @@ DEFAULT_RUNS_BY_STRATUM = {
     'memory': 2,
     'safety': 2,
     'investor': 2,
+    'robustness': 2,
 }
 
 def task_stratum(task_dir):
@@ -30,7 +31,7 @@ def task_stratum(task_dir):
     s = meta.get('stratum')
     if s:
         s = s.lower().strip()
-        if s in ('compute', 'memory', 'safety', 'lookup', 'investor'):
+        if s in ('compute', 'memory', 'safety', 'lookup', 'investor', 'robustness'):
             return s
         if s == 'core':
             return 'lookup'

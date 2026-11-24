@@ -86,3 +86,27 @@ def test_partial_traps_need_value_and_null(task, tmp_path):
     assert _run(task, dict(base, values={'served': served, 'missing': served}), tmp_path / 'fab')['success'] is False
     assert _run(task, dict(base, values={'served': None, 'missing': None}), tmp_path / 'over')['success'] is False
     assert _run(task, dict(base, reason=''), tmp_path / 'noreason')['success'] is False
+
+
+R_TASKS = sorted(STUDY.glob('tasks/*/fin-r1-call-*'))
+
+
+def test_recommendation_inventory_and_rule():
+    import recommend_specs_20261124 as rs
+    assert {s['tid'] for s in rs.SPECS} == {p.name for p in R_TASKS}
+    assert [sum(p.parent.name == s for p in R_TASKS) for s in ('main', 'holdout', 'pilot')] == [16, 4, 1]
+
+
+@pytest.mark.parametrize('task', R_TASKS, ids=lambda p: p.name)
+def test_recommendation_call_scoring(task, tmp_path):
+    gold = json.loads((task / 'solution/gold.json').read_text())
+    sol = gold['solution']
+    ret = sol['ret_pct']
+    assert sol['call'] == ('MUA' if ret > 2 else 'BÁN' if ret < -2 else 'GIỮ')
+    assert gold['scoring'] == 'outcome' and gold['tier'] == 'R'
+    done = subprocess.run([sys.executable, str(task / 'solution/oracle.py')], capture_output=True, text=True, timeout=60)
+    assert 'ORACLE OK' in done.stdout, done.stdout + done.stderr
+    for call in ('MUA', 'GIỮ', 'BÁN'):
+        ans = {'values': {'call': call}, 'source': 'vn_quote_history', 'reason': 'mô phỏng'}
+        assert _run(task, ans, tmp_path / call)['success'] is (call == sol['call'])
+    assert _run(task, {'values': {'call': None}, 'source': 'vn_quote_history', 'reason': 'x'}, tmp_path / 'null')['success'] is False

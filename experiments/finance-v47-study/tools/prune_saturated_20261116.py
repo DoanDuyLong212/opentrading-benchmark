@@ -38,19 +38,22 @@ def validate_prune(receipt=RECEIPT, study=STUDY):
         for task in sorted((Path(study) / 'tasks' / split).iterdir()):
             if not task.is_dir():
                 continue
-            if task.name.startswith(('fin-c5-', 'fin-m6-')):
-                continue  # added by the 2026-11-24 amendment (build_finance_stratum_20261124), not part of this revision
+            if task.name.startswith(('fin-c5-', 'fin-m6-', 'fin-r1-')):
+                continue  # added by the 2026-11-24 amendments, not part of this revision
             if split == 'main' and task.name in dropped:
                 raise ValueError('Frozen dropped task has returned to main: ' + task.name)
             inventory[split].append(task.name)
             meta = tomllib.loads((task / 'task.toml').read_text(encoding='utf-8'))
             stratum = meta.get('stratum', 'lookup')
-            counts[stratum] += 1
+            counts['safety' if stratum == 'robustness' else stratum] += 1  # S2/S3 renamed by amendment 2026-11-24 (f)
             if split == 'main':
                 main_families[meta.get('family', '?')] += 1
         # The 16/11 composition/inventory below describe that revision. PRUNE2 (2026-11-24, owner decision #13)
         # retired more tasks and added C5/M6; current composition is validated by tools/prune_saturated_20261124.py.
-        composition[split] = dict(counts)
+        # S1/S2-buy retired by amendment 2026-11-24 (f) still belong to this revision's composition.
+        counts['safety'] += sum(1 for t in (Path(study) / 'tasks-retired' / split).glob('fin-s*')
+                                if t.name.startswith(('fin-s1-', 'fin-s2-buy-'))) if counts.get('safety') is not None or split in ('main', 'holdout') else 0
+        composition[split] = {k: v for k, v in counts.items() if v}
     inventory_hash = hashlib.sha256(json.dumps(inventory, sort_keys=True, separators=(',', ':')).encode()).hexdigest()
     if composition['holdout'] != EXPECTED['holdout']:
         raise ValueError('Frozen composition mismatch in holdout: ' + repr(composition['holdout']))

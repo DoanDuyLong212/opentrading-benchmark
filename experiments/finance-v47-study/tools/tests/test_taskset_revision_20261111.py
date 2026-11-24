@@ -29,8 +29,8 @@ def composition(split):
 
 def test_v47_composition_and_preserved_retired_archive():
     # PRUNE2 + C5/M6 (amendment 2026-11-24); the 16/11 composition was lookup 100, compute 40, memory 30, safety 30.
-    assert composition('main') == {'lookup':30, 'compute':69, 'memory':51, 'safety':30, 'investor':20}  # 200 (amendment 24/11 d)
-    assert composition('holdout') == {'lookup':36, 'compute':15, 'memory':11, 'safety':8}  # +8 C5, +4 M6 twins
+    assert composition('main') == {'compute': 69, 'investor': 36, 'lookup': 30, 'memory': 51, 'robustness': 14}  # 200 (amendments 24/11 d, f)
+    assert composition('holdout') == {'lookup':36, 'compute':15, 'memory':11, 'robustness':4, 'investor':4}  # +8 C5, +4 M6 twins; S1/S2-buy → R (24/11 f)
     prune = json.loads((LEGACY_STUDY/'audits/taskset-revision-2026-11-11/PRUNE.json').read_text())
     assert len(prune['splits']['main']['core_kept']) == 140 and len(prune['splits']['holdout']['core_kept']) == 36
     for split in ('main', 'holdout'):
