@@ -1,4 +1,4 @@
-{
+﻿{
   "task_id": "fin-l4-partial-673",
   "scoring": "value",
   "solution": {
@@ -7,7 +7,7 @@
     "missing": null,
     "missing_period": "Q3/2026"
   },
-  "as_of": "2026-11-24",
+  "as_of": "2026-11-25",
   "split": "main",
   "expects": [
     {
@@ -38,12 +38,12 @@
   "stratum": "lookup",
   "tier": "L4",
   "family": "L4 partial availability",
-  "notes": "Group D (amendment 2026-11-24 d): served field exact, unserved field null + reason; primary is the deterministic grader.",
+  "notes": "Group D (amendment 2026-11-25 d): served field exact, unserved field null + reason; primary is the deterministic grader.",
   "provenance_contract": [
     {
       "tool": "financial_statements",
       "source": "vietstock",
-      "as_of": "2026-11-24T15:51:30.168761+07:00",
+      "as_of": "2026-11-25T15:51:30.168761+07:00",
       "matched_entry_id": "fs:VNM:q:KQKD",
       "response_sha256": "c3388be0499372708aae6c914cf964b197edc3779d1a6bf79d1ca2325d8dd323"
     }
@@ -52,7 +52,7 @@
     {
       "tool": "financial_statements",
       "source": "vietstock",
-      "as_of": "2026-11-24T15:51:30.168761+07:00",
+      "as_of": "2026-11-25T15:51:30.168761+07:00",
       "matched_entry_id": "fs:VNM:q:KQKD",
       "response_sha256": "c3388be0499372708aae6c914cf964b197edc3779d1a6bf79d1ca2325d8dd323"
     }

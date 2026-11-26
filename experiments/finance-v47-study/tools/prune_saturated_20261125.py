@@ -9,8 +9,8 @@ Limitations (disclosed in the amendment): the rule is post-hoc (written after or
 (OT v4.6u runtime with a native calculator, OpenCode 2.1, DSH 0.2.1). The 8 saturated refusal traps were then
 restored to main by owner decision (`restored_to_main`), so main keeps its fabrication (FP) check.
 
-    python3 tools/prune_saturated_20261124.py --apply     # select, write receipt, git mv
-    python3 tools/prune_saturated_20261124.py             # validate only
+    python3 tools/prune_saturated_20261125.py --apply     # select, write receipt, git mv
+    python3 tools/prune_saturated_20261125.py             # validate only
 """
 import argparse, collections, hashlib, json, subprocess, tomllib
 from pathlib import Path
@@ -51,7 +51,7 @@ def apply():
     RETIRED.mkdir(parents=True, exist_ok=True)
     for tid in retired:
         subprocess.run(['git', 'mv', str(STUDY / 'tasks/main' / tid), str(RETIRED / tid)], check=True, cwd=STUDY)
-    receipt = {'schema': 'v47-prune2-20261124', 'rule': 'every arm primary-correct in both or16 runs',
+    receipt = {'schema': 'v47-prune2-20261125', 'rule': 'every arm primary-correct in both or16 runs',
                'decision': 'owner 2026-11-25, issue #13 comment https://github.com/DoanDuyLong212/opentrading-benchmark/issues/13#issuecomment-7125742490',
                'or16_judge_primary_sha256': hashlib.sha256(OR16.read_bytes()).hexdigest(),
                'retired': retired,

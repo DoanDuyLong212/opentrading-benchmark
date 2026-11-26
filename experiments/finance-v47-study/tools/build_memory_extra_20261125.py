@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """Amendment 2026-11-25 (d), group A: 18 more multi-session memory tasks (M2-M5) for main + 1 pilot twin.
-(The 6 more M6 finance-memory tasks of group A are built by build_finance_stratum_20261124.build_extra.)
+(The 6 more M6 finance-memory tasks of group A are built by build_finance_stratum_20261125.build_extra.)
 
 Families from or16 evidence (OT 100%% vs OpenCode 0%% on M3 split/update, M4 rule/portfolio, M5 revoke, M2 portfolio).
 Same peer_compare / vn_quote_history payloads, layouts and grader as the 2026-11-11 memory stratum
@@ -115,7 +115,7 @@ def main():
         d = ms.write(t)
         toml = (d / 'task.toml').read_text(encoding='utf-8')
         toml = toml.replace('# Native-memory stratum — amendment 2026-11-11 (d), tools/build_memory_stratum_20261111.py',
-                            '# Native-memory stratum (group A) — amendment 2026-11-25 (d), tools/build_memory_extra_20261124.py')
+                            '# Native-memory stratum (group A) — amendment 2026-11-25 (d), tools/build_memory_extra_20261125.py')
         toml = re.sub(r'^created = ".*"$', 'created = "%s"' % CREATED, toml, flags=re.M)
         (d / 'task.toml').write_text(toml, encoding='utf-8')
         receipt[t['tid']] = {'split': t['split'], 'tier': t['subtier'], 'solution': t['q']['solution'],

@@ -1,4 +1,4 @@
-{
+﻿{
   "task_id": "fin-l4-partial-676",
   "scoring": "value",
   "solution": {
@@ -6,7 +6,7 @@
     "missing": null,
     "missing_item": "P/E cơ bản (mục Chỉ số tài chính không được phục vụ)"
   },
-  "as_of": "2026-11-24",
+  "as_of": "2026-11-25",
   "split": "main",
   "expects": [
     {
@@ -37,12 +37,12 @@
   "stratum": "lookup",
   "tier": "L4",
   "family": "L4 partial availability",
-  "notes": "Group D (amendment 2026-11-24 d): served field exact, unserved field null + reason; primary is the deterministic grader.",
+  "notes": "Group D (amendment 2026-11-25 d): served field exact, unserved field null + reason; primary is the deterministic grader.",
   "provenance_contract": [
     {
       "tool": "financial_statements",
       "source": "vietstock",
-      "as_of": "2026-11-24T15:51:30.168761+07:00",
+      "as_of": "2026-11-25T15:51:30.168761+07:00",
       "matched_entry_id": "fs:GAS:q:KQKD",
       "response_sha256": "c391dbf2c3de232a5a2e00aad3d6c59b9d3ebaaf7607921d8fdcedc431f6530f"
     }
@@ -51,7 +51,7 @@
     {
       "tool": "financial_statements",
       "source": "vietstock",
-      "as_of": "2026-11-24T15:51:30.168761+07:00",
+      "as_of": "2026-11-25T15:51:30.168761+07:00",
       "matched_entry_id": "fs:GAS:q:KQKD",
       "response_sha256": "c391dbf2c3de232a5a2e00aad3d6c59b9d3ebaaf7607921d8fdcedc431f6530f"
     }

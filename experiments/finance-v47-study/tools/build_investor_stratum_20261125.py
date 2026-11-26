@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Investor stratum (I), amendment 2026-11-25 (d). Specs and rules: tools/investor_specs_20261124.py (pre-registered).
+"""Investor stratum (I), amendment 2026-11-25 (d). Specs and rules: tools/investor_specs_20261125.py (pre-registered).
 
 Agents see only snapshot data (120 sessions to 30/10/2026, quarterly statements to Q2/2026, VN-Index). Gold applies
 the pre-registered outcome rule to recorded post-snapshot closes (31/10..END), which never enter a payload, and
@@ -13,12 +13,12 @@ from pathlib import Path
 STUDY = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(STUDY / 'tools'))
 import build_compute_stratum_20261111 as cs  # noqa: E402
-import build_finance_stratum_20261124 as bfs  # noqa: E402
+import build_finance_stratum_20261125 as bfs  # noqa: E402
 import build_memory_stratum_20261111 as ms  # noqa: E402
-import investor_specs_20261124 as SP  # noqa: E402
+import investor_specs_20261125 as SP  # noqa: E402
 
 EXT = STUDY / 'audits/snapshot-extension-2026-11-25b'
-POST_FILE = EXT / 'post-20261124.json'
+POST_FILE = EXT / 'post-20261125.json'
 PRE_FILE = EXT / 'pre-120.json'
 CREATED = '2026-11-25'
 INDEX = 'VNINDEX'
@@ -209,7 +209,7 @@ def finish_gold(d, spec, sol, expects, tools, contract_keys, base):
     gold = dict(base, task_id=spec['tid'], scoring='outcome', solution=sol, as_of=REC['recorded_at'], split=spec['split'],
                 expects=expects, contract_version=2, stratum='investor', tier=spec['type'],
                 notes='Investor stratum (amendment 2026-11-25 d): primary = pre-registered outcome rule on recorded '
-                      'post-snapshot closes (tools/investor_specs_20261124.py).',
+                      'post-snapshot closes (tools/investor_specs_20261125.py).',
                 provenance_contract=provenance(tools, contract_keys), provenance_catalog=provenance(tools, sorted(tools)),
                 payload_sha256=hashlib.sha256((d / 'environment/payloads.json').read_bytes()).hexdigest(),
                 required_payload_keys=sorted(contract_keys))
@@ -239,7 +239,7 @@ def write_single(spec):
     (d / 'solution/oracle.py').write_text(pre + mark + ORACLE + '\n\nif problems:' + tail, encoding='utf-8')
     toml = (cs.TEMPLATE / 'task.toml').read_text(encoding='utf-8')
     toml = toml.replace('# Task benchmark harness tài chính (bộ 200+50) — sinh bởi tools/build_main.py',
-                        '# Investor stratum — amendment 2026-11-25 (d), tools/build_investor_stratum_20261124.py')
+                        '# Investor stratum — amendment 2026-11-25 (d), tools/build_investor_stratum_20261125.py')
     for k, v in (('id', spec['tid']), ('title', title.replace('"', "'")), ('created', CREATED), ('level', spec['type']),
                  ('family', '%s investor' % spec['type']), ('financebench_type', 'investment decision (outcome-scored)'),
                  ('entity', '+'.join(spec['cands'])), ('split', spec['split'])):
@@ -276,7 +276,7 @@ def write_memory(spec):
     finish_gold(d, spec, sol, expects, tools, keys, base)
     toml = (d / 'task.toml').read_text(encoding='utf-8')
     toml = toml.replace('# Native-memory stratum — amendment 2026-11-11 (d), tools/build_memory_stratum_20261111.py',
-                        '# Investor stratum (memory) — amendment 2026-11-25 (d), tools/build_investor_stratum_20261124.py')
+                        '# Investor stratum (memory) — amendment 2026-11-25 (d), tools/build_investor_stratum_20261125.py')
     toml = re.sub(r'^created = ".*"$', 'created = "%s"' % CREATED, toml, flags=re.M)
     toml = re.sub(r'^family = ".*"$', 'family = "I5 investor memory"', toml, flags=re.M)
     toml = re.sub(r'^stratum = ".*"$', 'stratum = "investor"', toml, flags=re.M)

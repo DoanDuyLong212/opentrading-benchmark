@@ -3,11 +3,11 @@
 
 Written and committed BEFORE any post-snapshot return was computed or viewed. Candidate sets were chosen by sector
 from the symbols recorded in audits/snapshot-extension-2026-11-25b/pre-120.json; the builder reads
-post-20261124.json only after this file is committed (POST_SHA256 pins the exact outcome file).
+post-20261125.json only after this file is committed (POST_SHA256 pins the exact outcome file).
 
 Entry: close of 30/10/2026 (last session of the 2026-11-01 MCP snapshot). Window: sessions 31/10..END.
 END = 2026-11-23: the owner asked for 25/11, but at 18:50 on 25/11 no source had a 25/11 session (see
-tools/record_prices_20261124.py). Re-recording later only changes END and POST_SHA256; rules and sets stay fixed.
+tools/record_prices_20261125.py). Re-recording later only changes END and POST_SHA256; rules and sets stay fixed.
 
 Outcome metrics (all from daily closes, never intraday):
   ret(s)  = close(END) / close(30/10) - 1                      (hold to END)

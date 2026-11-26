@@ -3,7 +3,7 @@ buy/hold/sell recommendation tasks), threshold 2 %, measured at the last close (
 
 Written and committed BEFORE any post-snapshot return of these tickers was computed or viewed. One ticker per task,
 chosen by sector spread from audits/snapshot-extension-2026-11-25b/pre-120.json. Same outcome file and hash as the
-investor stratum (investor_specs_20261124.POST_SHA256).
+investor stratum (investor_specs_20261125.POST_SHA256).
 
 Entry: close of 30/10/2026. Exit: close of END (2026-11-23). ret = close(END) / close(30/10) - 1.
   MUA (buy)  passes iff ret >  +2 %

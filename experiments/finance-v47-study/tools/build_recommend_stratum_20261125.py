@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Recommendation stratum (R), amendment 2026-11-25 (f). Specs and rule: tools/recommend_specs_20261124.py (pre-registered).
+"""Recommendation stratum (R), amendment 2026-11-25 (f). Specs and rule: tools/recommend_specs_20261125.py (pre-registered).
 
 One ticker per task; the agent sees snapshot data only (120 sessions to 30/10/2026, its quarterly statements when
 recorded, VN-Index) and answers MUA / GIỮ / BÁN for the holding window to END. Gold applies the pre-registered
@@ -12,9 +12,9 @@ from pathlib import Path
 STUDY = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(STUDY / 'tools'))
 import build_compute_stratum_20261111 as cs  # noqa: E402
-import build_investor_stratum_20261124 as inv  # noqa: E402
-import investor_specs_20261124 as ISP  # noqa: E402
-import recommend_specs_20261124 as SP  # noqa: E402
+import build_investor_stratum_20261125 as inv  # noqa: E402
+import investor_specs_20261125 as ISP  # noqa: E402
+import recommend_specs_20261125 as SP  # noqa: E402
 
 END_VN = '/'.join(reversed(ISP.END.split('-')))
 
@@ -68,7 +68,7 @@ def write(spec):
     gold = {'task_id': spec['tid'], 'scoring': 'outcome', 'solution': sol, 'as_of': inv.REC['recorded_at'], 'split': spec['split'],
             'expects': expects, 'contract_version': 2, 'stratum': 'investor', 'tier': 'R',
             'notes': 'Recommendation stratum (amendment 2026-11-25 f): primary = pre-registered ±2 % rule on the recorded '
-                     'close of END (tools/recommend_specs_20261124.py).',
+                     'close of END (tools/recommend_specs_20261125.py).',
             'provenance_contract': inv.provenance(tools, keys), 'provenance_catalog': inv.provenance(tools, sorted(tools)),
             'payload_sha256': hashlib.sha256((d / 'environment/payloads.json').read_bytes()).hexdigest(),
             'required_payload_keys': keys}
@@ -80,7 +80,7 @@ def write(spec):
     (d / 'solution/oracle.py').write_text(pre + mark + ORACLE + '\n\nif problems:' + tail, encoding='utf-8')
     toml = (cs.TEMPLATE / 'task.toml').read_text(encoding='utf-8')
     toml = toml.replace('# Task benchmark harness tài chính (bộ 200+50) — sinh bởi tools/build_main.py',
-                        '# Recommendation stratum — amendment 2026-11-25 (f), tools/build_recommend_stratum_20261124.py')
+                        '# Recommendation stratum — amendment 2026-11-25 (f), tools/build_recommend_stratum_20261125.py')
     for k, v in (('id', spec['tid']), ('title', title), ('created', '2026-11-25'), ('level', 'R'), ('family', 'R recommendation'),
                  ('financebench_type', 'buy/hold/sell call (outcome-scored)'), ('entity', sym), ('split', spec['split'])):
         toml = re.sub(r'^%s = ".*"$' % k, '%s = "%s"' % (k, v), toml, flags=re.M)

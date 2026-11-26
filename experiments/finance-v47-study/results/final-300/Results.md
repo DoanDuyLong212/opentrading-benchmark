@@ -4,7 +4,7 @@
 
 | Hạng mục | Giá trị |
 |---|---|
-| Harness | **OpenTrading** (profile `machine`, runtime `ae7ec48`), **OpenCode**, **DSH** |
+| Harness | **OpenTrading** (profile `machine`, runtime `7319264`), **OpenCode**, **DSH** |
 | Model agent (chung) | `deepseek/deepseek-v4.1-flash-1017` qua OpenRouter, temperature 0 |
 | Bộ đề | **300 task tiếng Việt × 3 harness × 1 lượt = 900 trial** ([`tasks/`](tasks/), sha256 từng task trong [`tasks.sha256.json`](tasks.sha256.json)) |
 | Nhóm task | compute 79 · investor 36 · lookup 112 · memory 59 · robustness 14 |

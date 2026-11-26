@@ -1,4 +1,4 @@
-{
+﻿{
   "task_id": "fin-l4-partial-674",
   "scoring": "value",
   "solution": {
@@ -7,7 +7,7 @@
     "missing": null,
     "missing_date": "06/11/2026"
   },
-  "as_of": "2026-11-24",
+  "as_of": "2026-11-25",
   "split": "main",
   "expects": [
     {
@@ -38,12 +38,12 @@
   "stratum": "lookup",
   "tier": "L4",
   "family": "L4 partial availability",
-  "notes": "Group D (amendment 2026-11-24 d): served field exact, unserved field null + reason; primary is the deterministic grader.",
+  "notes": "Group D (amendment 2026-11-25 d): served field exact, unserved field null + reason; primary is the deterministic grader.",
   "provenance_contract": [
     {
       "tool": "vn_quote_history",
       "source": "vnstock",
-      "as_of": "2026-11-24T18:51:22.395329+07:00",
+      "as_of": "2026-11-25T18:51:22.395329+07:00",
       "matched_entry_id": "hist:SSI",
       "response_sha256": "09e8084ce9cf5a5acbcd0cb7011af091d5d3ed0bb053c851722a98982bbfa786"
     }
@@ -52,7 +52,7 @@
     {
       "tool": "vn_quote_history",
       "source": "vnstock",
-      "as_of": "2026-11-24T18:51:22.395329+07:00",
+      "as_of": "2026-11-25T18:51:22.395329+07:00",
       "matched_entry_id": "hist:SSI",
       "response_sha256": "09e8084ce9cf5a5acbcd0cb7011af091d5d3ed0bb053c851722a98982bbfa786"
     }

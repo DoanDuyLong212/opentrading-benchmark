@@ -11,10 +11,10 @@ PARTIAL = sorted(STUDY.glob('tasks/*/fin-l4-partial-*'))
 
 
 def test_inventory_and_preregistration():
-    import investor_specs_20261124 as sp
+    import investor_specs_20261125 as sp
     assert len([p for p in INV if p.parent.name == 'main']) == 20 and len([p for p in INV if p.parent.name == 'pilot']) == 5
     ext = STUDY / 'audits/snapshot-extension-2026-11-25b'
-    assert hashlib.sha256((ext / 'post-20261124.json').read_bytes()).hexdigest() == sp.POST_SHA256
+    assert hashlib.sha256((ext / 'post-20261125.json').read_bytes()).hexdigest() == sp.POST_SHA256
     assert hashlib.sha256((ext / 'pre-120.json').read_bytes()).hexdigest() == sp.PRE_SHA256
     assert {s['tid'] for s in sp.SPECS} == {p.name for p in INV}
 
@@ -27,7 +27,7 @@ def test_no_post_snapshot_data_served_and_oracle(task):
             assert row['t'] <= '2026-10-30'
         assert 'Q3/2026' not in entry['envelope']['data'].get('periods', [])
     text = (task / 'instruction.md').read_text() + (task / 'environment/payloads.json').read_text()
-    post = json.loads((STUDY / 'audits/snapshot-extension-2026-11-25b/post-20261124.json').read_text())
+    post = json.loads((STUDY / 'audits/snapshot-extension-2026-11-25b/post-20261125.json').read_text())
     gold = json.loads((task / 'solution/gold.json').read_text())
     for s in gold['solution']['candidates']:
         assert '"t": "%s"' % post[s][-1]['t'] not in text
@@ -92,7 +92,7 @@ R_TASKS = sorted(STUDY.glob('tasks/*/fin-r1-call-*'))
 
 
 def test_recommendation_inventory_and_rule():
-    import recommend_specs_20261124 as rs
+    import recommend_specs_20261125 as rs
     assert {s['tid'] for s in rs.SPECS} == {p.name for p in R_TASKS}
     assert [sum(p.parent.name == s for p in R_TASKS) for s in ('main', 'holdout', 'pilot')] == [16, 4, 1]
 

@@ -6,7 +6,7 @@ Two windows per symbol, both from vnstock Quote (source VCI), the same provider 
          at 18:50 on 25/11 no source had a 25/11 session (VCI daily bars end 23/11; the DNSE board's last match is
          23/11 14:45), so the window ends at the latest recorded session, 23/11.
 Every pre-window session that overlaps history-120 or a frozen task payload must match exactly, or the symbol is rejected.
-    python3 tools/record_prices_20261124.py
+    python3 tools/record_prices_20261125.py
 """
 import contextlib, datetime, glob, io, json, sys
 from pathlib import Path
@@ -72,7 +72,7 @@ def main():
         pre[sym], post[sym] = a, b
         print(sym, 'post', len(b), 'overlap', receipt['symbols'][sym]['frozen_overlap_checked'])
     (OUT / 'pre-120.json').write_text(json.dumps(pre, ensure_ascii=False))
-    (OUT / 'post-20261124.json').write_text(json.dumps(post, ensure_ascii=False))
+    (OUT / 'post-20261125.json').write_text(json.dumps(post, ensure_ascii=False))
     (OUT / 'RECEIPT.json').write_text(json.dumps(receipt, ensure_ascii=False, indent=1))
     print('kept', len(pre), 'rejected', len(receipt['rejected']))
 

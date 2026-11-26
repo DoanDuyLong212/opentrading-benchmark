@@ -6,7 +6,7 @@ rows labelled human_correct with a recorded answer. Negatives: the same answers 
 one gold `value` field moved 25% off gold (refusal tasks: a fabricated number).
 Writes per-call rows and a summary (agreement, Cohen kappa, confusion) per model.
 
-  python3 judge_calib.py OUT_DIR MODEL [MODEL...] [--n 40] [--seed 20261124]
+  python3 judge_calib.py OUT_DIR MODEL [MODEL...] [--n 40] [--seed 20261125]
 """
 import argparse
 import concurrent.futures as cf
@@ -147,7 +147,7 @@ def main():
     ap.add_argument('out')
     ap.add_argument('models', nargs='+')
     ap.add_argument('--n', type=int, default=40)
-    ap.add_argument('--seed', type=int, default=20261124)
+    ap.add_argument('--seed', type=int, default=20261125)
     ap.add_argument('--workers', type=int, default=4)
     ap.add_argument('--hard', action='store_true')
     a = ap.parse_args()

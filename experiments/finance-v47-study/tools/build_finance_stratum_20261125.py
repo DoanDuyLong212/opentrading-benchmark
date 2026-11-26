@@ -462,7 +462,7 @@ def write_c5(split, s):
     (d / 'solution/oracle.py').write_text(pre + mark + LIB + '\n' + s['oracle'] + '\n\nif problems:' + tail, encoding='utf-8')
     toml = (cs.TEMPLATE / 'task.toml').read_text(encoding='utf-8')
     toml = toml.replace('# Task benchmark harness tài chính (bộ 200+50) — sinh bởi tools/build_main.py',
-                        '# Fundamental compute stratum — amendment 2026-11-25, tools/build_finance_stratum_20261124.py')
+                        '# Fundamental compute stratum — amendment 2026-11-25, tools/build_finance_stratum_20261125.py')
     for k, v in (('id', s['tid']), ('title', s['title'].replace('"', "'")), ('created', CREATED), ('level', 'C5'),
                  ('family', 'C5 fundamental compute'), ('financebench_type', 'financial statement analysis'),
                  ('entity', '+'.join(s['syms'])), ('split', split)):
@@ -477,7 +477,7 @@ def write_m6(t):
     d = ms.write(t)
     toml = (d / 'task.toml').read_text(encoding='utf-8')
     toml = toml.replace('# Native-memory stratum — amendment 2026-11-11 (d), tools/build_memory_stratum_20261111.py',
-                        '# Finance-analysis memory stratum — amendment 2026-11-25, tools/build_finance_stratum_20261124.py')
+                        '# Finance-analysis memory stratum — amendment 2026-11-25, tools/build_finance_stratum_20261125.py')
     toml = re.sub(r'^created = ".*"$', 'created = "%s"' % CREATED, toml, flags=re.M)
     toml = re.sub(r'^family = ".*"$', 'family = "M6 finance memory"', toml, flags=re.M)
     (d / 'task.toml').write_text(toml, encoding='utf-8')

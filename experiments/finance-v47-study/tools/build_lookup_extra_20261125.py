@@ -16,8 +16,8 @@ from pathlib import Path
 STUDY = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(STUDY / 'tools'))
 import build_compute_stratum_20261111 as cs  # noqa: E402
-import build_finance_stratum_20261124 as bfs  # noqa: E402
-import build_investor_stratum_20261124 as inv  # noqa: E402
+import build_finance_stratum_20261125 as bfs  # noqa: E402
+import build_investor_stratum_20261125 as inv  # noqa: E402
 import build_safety_stratum_20261116 as bss  # noqa: E402
 
 CREATED = '2026-11-25'
@@ -216,7 +216,7 @@ def write(split, s, kind):
     (d / 'solution/oracle.py').write_text(pre + mark + s['oracle'] + '\n\nif problems:' + tail, encoding='utf-8')
     toml = (cs.TEMPLATE / 'task.toml').read_text(encoding='utf-8')
     toml = toml.replace('# Task benchmark harness tài chính (bộ 200+50) — sinh bởi tools/build_main.py',
-                        '# Group %s — amendment 2026-11-25 (d), tools/build_lookup_extra_20261124.py' % kind)
+                        '# Group %s — amendment 2026-11-25 (d), tools/build_lookup_extra_20261125.py' % kind)
     syms = sorted({e['params']['symbol'] for e in s['tools'].values()})
     for k, v in (('id', s['tid']), ('title', s['title'].replace('"', "'")), ('created', CREATED), ('level', 'L4'),
                  ('family', gold['family']), ('financebench_type', 'partial availability' if kind == 'D' else 'multi-step retrieval'),

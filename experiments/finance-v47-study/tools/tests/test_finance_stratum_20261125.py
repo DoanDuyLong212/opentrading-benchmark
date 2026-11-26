@@ -40,7 +40,7 @@ def test_oracle_and_payload_rules(task):
 
 def test_m6_answers_depend_on_memory():
     """Using the other ROE convention, or ignoring an update/revoke, changes the graded pass set."""
-    import build_finance_stratum_20261124 as b
+    import build_finance_stratum_20261125 as b
     main, pilot, holdout = b.build()
     extra_main, extra_pilot = b.build_extra()
     for t in main + pilot + holdout + extra_main + extra_pilot:
@@ -58,7 +58,7 @@ def test_m6_answers_depend_on_memory():
 
 
 def test_prune2_receipt():
-    import prune_saturated_20261124 as p2
+    import prune_saturated_20261125 as p2
     result = p2.validate()
     assert result['valid'] and result['retired'] == 112 and result['restored'] == 8 and result['main'] == 200
     assert result['composition'] == {'compute': 69, 'investor': 36, 'lookup': 30, 'memory': 51, 'robustness': 14}

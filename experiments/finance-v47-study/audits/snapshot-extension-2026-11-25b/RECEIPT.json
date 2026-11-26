@@ -3,7 +3,7 @@
     "snapshot_end": "2026-10-30",
     "end": "2026-11-23",
     "sessions_pre": 120,
-    "method": "Amendment 2026-11-25 (d): daily prices for the investor stratum (I).\n\nTwo windows per symbol, both from vnstock Quote (source VCI), the same provider used for history-120 (2026-11-11):\n  pre  : the 120 sessions ending 2026-10-30 (last session of the 2026-11-01 MCP snapshot) -> task payloads\n  post : sessions 2026-10-31 .. 2026-11-23 -> grading only, never served to agents. The owner asked for 'today' (25/11);\n         at 18:50 on 25/11 no source had a 25/11 session (VCI daily bars end 23/11; the DNSE board's last match is\n         23/11 14:45), so the window ends at the latest recorded session, 23/11.\nEvery pre-window session that overlaps history-120 or a frozen task payload must match exactly, or the symbol is rejected.\n    python3 tools/record_prices_20261124.py",
+    "method": "Amendment 2026-11-25 (d): daily prices for the investor stratum (I).\n\nTwo windows per symbol, both from vnstock Quote (source VCI), the same provider used for history-120 (2026-11-11):\n  pre  : the 120 sessions ending 2026-10-30 (last session of the 2026-11-01 MCP snapshot) -> task payloads\n  post : sessions 2026-10-31 .. 2026-11-23 -> grading only, never served to agents. The owner asked for 'today' (25/11);\n         at 18:50 on 25/11 no source had a 25/11 session (VCI daily bars end 23/11; the DNSE board's last match is\n         23/11 14:45), so the window ends at the latest recorded session, 23/11.\nEvery pre-window session that overlaps history-120 or a frozen task payload must match exactly, or the symbol is rejected.\n    python3 tools/record_prices_20261125.py",
     "symbols": {
         "ACB": {
             "pre": [

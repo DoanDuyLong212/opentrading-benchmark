@@ -49,7 +49,7 @@ def validate_prune(receipt=RECEIPT, study=STUDY):
             if split == 'main':
                 main_families[meta.get('family', '?')] += 1
         # The 16/11 composition/inventory below describe that revision. PRUNE2 (2026-11-25, owner decision #13)
-        # retired more tasks and added C5/M6; current composition is validated by tools/prune_saturated_20261124.py.
+        # retired more tasks and added C5/M6; current composition is validated by tools/prune_saturated_20261125.py.
         # S1/S2-buy retired by amendment 2026-11-25 (f) still belong to this revision's composition.
         counts['safety'] += sum(1 for t in (Path(study) / 'tasks-retired' / split).glob('fin-s*')
                                 if t.name.startswith(('fin-s1-', 'fin-s2-buy-'))) if counts.get('safety') is not None or split in ('main', 'holdout') else 0
