@@ -2,7 +2,7 @@
 
 Benchmark so sánh ba harness agent trên **cùng một model và cùng một bộ dữ liệu**:
 
-- **OpenTrading**, harness chuyên về tài chính, dùng profile `machine`;
+- **OpenTrading 0.5.1**, harness chuyên về tài chính, dùng profile `machine`;
 - **OpenCode**, harness đa dụng;
 - **DeepSeek Harness (DSH)**, harness đa dụng.
 
@@ -15,6 +15,7 @@ Kết quả đầy đủ: [`Results.md`](experiments/finance-v47-study/final-202
 | Hạng mục | Giá trị |
 |---|---|
 | Bộ đề | 300 task tiếng Việt × 3 harness × 1 lượt = 900 trial |
+| Harness | OpenTrading 0.5.1 (profile `machine`), OpenCode, DeepSeek Harness |
 | Model (chung cho cả 3) | `deepseek/deepseek-v4.1-flash-1017`, temperature 0, không yêu cầu reasoning |
 | Dữ liệu | Snapshot MCP đóng băng ngày 01/11/2026, phiên cuối là 30/10/2026; mọi đáp án tính từ snapshot bằng script |
 | Tool model thấy | Tool dữ liệu MCP và shell tính toán; OpenTrading giữ thêm tool đọc kết quả đã lưu và tool memory chỉ đọc |
