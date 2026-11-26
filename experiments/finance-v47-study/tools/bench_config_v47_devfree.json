@@ -48,7 +48,7 @@
     "provider_route": "openrouter_free",
     "memory_max_requests": 48,
     "model_max_output_tokens": 131072,
-    "model_max_output_tokens_source": "OpenRouter models API 2026-11-24: nvidia/nemotron-3.5-super-vl:free top_provider.max_completion_tokens",
+    "model_max_output_tokens_source": "OpenRouter models API 2026-11-25: nvidia/nemotron-3.5-super-vl:free top_provider.max_completion_tokens",
     "sandbox_image": "sha256:ef5d5c4ae395c6e9fe4d7ea3943f274b453b7e22f4df37a271c745dd020a29f1",
     "sandbox_image_source": "tools/runners/sandbox/Dockerfile (docker build -t ot-bench-shell:v47); local provenance tools/runners/sandbox/build-receipt.json"
   },

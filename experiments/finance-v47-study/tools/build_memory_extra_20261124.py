@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Amendment 2026-11-24 (d), group A: 18 more multi-session memory tasks (M2-M5) for main + 1 pilot twin.
+"""Amendment 2026-11-25 (d), group A: 18 more multi-session memory tasks (M2-M5) for main + 1 pilot twin.
 (The 6 more M6 finance-memory tasks of group A are built by build_finance_stratum_20261124.build_extra.)
 
 Families from or16 evidence (OT 100%% vs OpenCode 0%% on M3 split/update, M4 rule/portfolio, M5 revoke, M2 portfolio).
@@ -14,7 +14,7 @@ STUDY = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(STUDY / 'tools'))
 import build_memory_stratum_20261111 as ms  # noqa: E402
 
-CREATED = '2026-11-24'
+CREATED = '2026-11-25'
 
 
 def pick_update_k(key, k):
@@ -115,13 +115,13 @@ def main():
         d = ms.write(t)
         toml = (d / 'task.toml').read_text(encoding='utf-8')
         toml = toml.replace('# Native-memory stratum — amendment 2026-11-11 (d), tools/build_memory_stratum_20261111.py',
-                            '# Native-memory stratum (group A) — amendment 2026-11-24 (d), tools/build_memory_extra_20261124.py')
+                            '# Native-memory stratum (group A) — amendment 2026-11-25 (d), tools/build_memory_extra_20261124.py')
         toml = re.sub(r'^created = ".*"$', 'created = "%s"' % CREATED, toml, flags=re.M)
         (d / 'task.toml').write_text(toml, encoding='utf-8')
         receipt[t['tid']] = {'split': t['split'], 'tier': t['subtier'], 'solution': t['q']['solution'],
                              'files': {str(p.relative_to(d)): hashlib.sha256(p.read_bytes()).hexdigest()
                                        for p in sorted(d.rglob('*')) if p.is_file()}}
-    (STUDY / 'audits/taskset-revision-2026-11-24/MEMORY-EXTRA-BUILD.json').write_text(json.dumps(receipt, ensure_ascii=False, indent=1) + '\n')
+    (STUDY / 'audits/taskset-revision-2026-11-25/MEMORY-EXTRA-BUILD.json').write_text(json.dumps(receipt, ensure_ascii=False, indent=1) + '\n')
     for k, v in receipt.items():
         print(k, v['split'], v['tier'], json.dumps(v['solution'], ensure_ascii=False)[:130])
 

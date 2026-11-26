@@ -16,7 +16,7 @@ CLOCKSHIFT_SRC = TOOLS / 'runners/clockshift/clockshift.c'
 
 
 def snapshot_clock_library():
-    """Build (once per source hash) the LD_PRELOAD wall-clock shim; amendment 2026-11-24 (e)."""
+    """Build (once per source hash) the LD_PRELOAD wall-clock shim; amendment 2026-11-25 (e)."""
     import subprocess
     sha = hashlib.sha256(CLOCKSHIFT_SRC.read_bytes()).hexdigest()
     out = CLOCKSHIFT_SRC.parent / '.build' / ('clockshift-%s.so' % sha[:16])
@@ -118,7 +118,7 @@ def finish(root, gateway, result, arm, config):
                                   'cross_arm_native_date_parity_verified': bool(gateway.options.get('snapshot_clock')),
                                   's3_comparative_eligible': True,
                                   'effective_native_date': (gateway.options.get('snapshot_clock') or {}).get('snapshot_date'),
-                                  'effective_native_date_evidence': 'LD_PRELOAD snapshot clock in the harness main process (amendment 2026-11-24 e)',
+                                  'effective_native_date_evidence': 'LD_PRELOAD snapshot clock in the harness main process (amendment 2026-11-25 e)',
                                   'native_stall_ms': 300000 if arm == 'opentrading' else None,
                                   'native_clock_limitation': None},
                  'snapshot_tool_definitions': gateway.options.get('snapshot_tool_definitions', []),

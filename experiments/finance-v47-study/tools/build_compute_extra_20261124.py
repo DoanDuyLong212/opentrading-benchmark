@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Amendment 2026-11-24 (d), group B: 20 more hard price-series compute tasks (main) + 2 pilot twins.
+"""Amendment 2026-11-25 (d), group B: 20 more hard price-series compute tasks (main) + 2 pilot twins.
 
 Families chosen from or16 evidence (arms split on C3/C4 multi-step series work: volume share, log-annualized vs
 benchmark, volatility regime, MA ladder, relative-strength chain, geometric annualization, rebalancing, signal
@@ -56,7 +56,7 @@ def main():
             receipt[s['tid']] = {'split': split, 'solution': s['solution'],
                                  'files': {str(f.relative_to(d)): hashlib.sha256(f.read_bytes()).hexdigest()
                                            for f in sorted(d.rglob('*')) if f.is_file()}}
-    (STUDY / 'audits/taskset-revision-2026-11-24/COMPUTE-EXTRA-BUILD.json').write_text(json.dumps(receipt, ensure_ascii=False, indent=1) + '\n')
+    (STUDY / 'audits/taskset-revision-2026-11-25/COMPUTE-EXTRA-BUILD.json').write_text(json.dumps(receipt, ensure_ascii=False, indent=1) + '\n')
     for k, v in receipt.items():
         print(k, v['split'], json.dumps(v['solution'], ensure_ascii=False)[:120])
 

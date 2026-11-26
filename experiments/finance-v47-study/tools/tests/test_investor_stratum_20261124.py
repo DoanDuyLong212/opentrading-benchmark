@@ -1,4 +1,4 @@
-"""Amendment 2026-11-24 (d): investor stratum (I) and groups A-E."""
+"""Amendment 2026-11-25 (d): investor stratum (I) and groups A-E."""
 import hashlib, json, subprocess, sys
 from pathlib import Path
 
@@ -13,7 +13,7 @@ PARTIAL = sorted(STUDY.glob('tasks/*/fin-l4-partial-*'))
 def test_inventory_and_preregistration():
     import investor_specs_20261124 as sp
     assert len([p for p in INV if p.parent.name == 'main']) == 20 and len([p for p in INV if p.parent.name == 'pilot']) == 5
-    ext = STUDY / 'audits/snapshot-extension-2026-11-24b'
+    ext = STUDY / 'audits/snapshot-extension-2026-11-25b'
     assert hashlib.sha256((ext / 'post-20261124.json').read_bytes()).hexdigest() == sp.POST_SHA256
     assert hashlib.sha256((ext / 'pre-120.json').read_bytes()).hexdigest() == sp.PRE_SHA256
     assert {s['tid'] for s in sp.SPECS} == {p.name for p in INV}
@@ -27,7 +27,7 @@ def test_no_post_snapshot_data_served_and_oracle(task):
             assert row['t'] <= '2026-10-30'
         assert 'Q3/2026' not in entry['envelope']['data'].get('periods', [])
     text = (task / 'instruction.md').read_text() + (task / 'environment/payloads.json').read_text()
-    post = json.loads((STUDY / 'audits/snapshot-extension-2026-11-24b/post-20261124.json').read_text())
+    post = json.loads((STUDY / 'audits/snapshot-extension-2026-11-25b/post-20261124.json').read_text())
     gold = json.loads((task / 'solution/gold.json').read_text())
     for s in gold['solution']['candidates']:
         assert '"t": "%s"' % post[s][-1]['t'] not in text

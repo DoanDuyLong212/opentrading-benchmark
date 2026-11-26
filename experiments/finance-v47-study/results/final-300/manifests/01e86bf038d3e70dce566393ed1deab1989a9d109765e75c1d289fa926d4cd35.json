@@ -1,5 +1,5 @@
 {
-  "created_at": "2026-11-24T14:36:26.745961+00:00",
+  "created_at": "2026-11-25T14:36:26.745961+00:00",
   "fingerprint": "01e86bf038d3e70dce566393ed1deab1989a9d109765e75c1d289fa926d4cd35",
   "plan": {
     "code": {
@@ -204,7 +204,7 @@
         "opencode",
         "dsh"
       ],
-      "config_note": "v4.7 main 2026-11-24: bench_config_v47.json + reviewed paid receipt (host Pearl Research, key OPENROUTER_KEY_2); cap $6.0 leaves ~$1.4 for holdout.",
+      "config_note": "v4.7 main 2026-11-25: bench_config_v47.json + reviewed paid receipt (host Pearl Research, key OPENROUTER_KEY_2); cap $6.0 leaves ~$1.4 for holdout.",
       "cost_reporting": "OpenRouter usage.cost per request (authoritative); price_per_1m is the published list price and under-estimated or10 billing ~2.8x (0.1284 vs 0.3653 USD for 132 trials)",
       "effort": "none",
       "experiment_protocol": "plans/2026-11-15-v47-study-design.md",
@@ -222,7 +222,7 @@
       "price_per_1m": {
         "cache_read_usd": 0.001,
         "completion_usd": 0.2,
-        "entitlement": "OpenRouter models API 2026-11-24, model-level list price for deepseek/deepseek-v4.1-flash-1017; hosts range 0.025-0.6 / 0.1-2.4 USD per 1M; the billed price is the pinned host in the paid receipt",
+        "entitlement": "OpenRouter models API 2026-11-25, model-level list price for deepseek/deepseek-v4.1-flash-1017; hosts range 0.025-0.6 / 0.1-2.4 USD per 1M; the billed price is the pinned host in the paid receipt",
         "prompt_usd": 0.03
       },
       "protocol": "financial_product_v45",
@@ -236,7 +236,7 @@
         "max_total_tokens": 4600000,
         "memory_max_requests": 48,
         "model_max_output_tokens": 393216,
-        "model_max_output_tokens_source": "OpenRouter models API 2026-11-24: deepseek/deepseek-v4.1-flash-1017 top_provider.max_completion_tokens (hosts range 131072-943718; re-check for the pinned host)",
+        "model_max_output_tokens_source": "OpenRouter models API 2026-11-25: deepseek/deepseek-v4.1-flash-1017 top_provider.max_completion_tokens (hosts range 131072-943718; re-check for the pinned host)",
         "native_bun_binary": "../../.toolchains/bun/bin/bun",
         "native_bun_sha256": "10702245766b225e70bbf6235fd6b47214fd94b4760d00ffaed8ab0df57ac235",
         "native_reasoning_capability": true,
@@ -7781,7 +7781,7 @@
         "max_total_tokens": 4600000,
         "memory_max_requests": 48,
         "model_max_output_tokens": 393216,
-        "model_max_output_tokens_source": "OpenRouter models API 2026-11-24: deepseek/deepseek-v4.1-flash-1017 top_provider.max_completion_tokens (hosts range 131072-943718; re-check for the pinned host)",
+        "model_max_output_tokens_source": "OpenRouter models API 2026-11-25: deepseek/deepseek-v4.1-flash-1017 top_provider.max_completion_tokens (hosts range 131072-943718; re-check for the pinned host)",
         "native_bun_binary": "../../.toolchains/bun/bin/bun",
         "native_bun_sha256": "10702245766b225e70bbf6235fd6b47214fd94b4760d00ffaed8ab0df57ac235",
         "native_reasoning_capability": true,

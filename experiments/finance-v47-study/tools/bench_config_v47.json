@@ -27,7 +27,7 @@
     "prompt_usd": 0.03,
     "completion_usd": 0.2,
     "cache_read_usd": 0.001,
-    "entitlement": "OpenRouter models API 2026-11-24, model-level list price for deepseek/deepseek-v4.1-flash-1017; hosts range 0.025-0.6 / 0.1-2.4 USD per 1M; the billed price is the pinned host in the paid receipt"
+    "entitlement": "OpenRouter models API 2026-11-25, model-level list price for deepseek/deepseek-v4.1-flash-1017; hosts range 0.025-0.6 / 0.1-2.4 USD per 1M; the billed price is the pinned host in the paid receipt"
   },
   "memory_policy": "none fresh isolatedhome/store/session eachtrial",
   "track": "product native utility capability parity, not identicalschemas",
@@ -50,7 +50,7 @@
     "provider_route": "openrouter_paid",
     "memory_max_requests": 48,
     "model_max_output_tokens": 393216,
-    "model_max_output_tokens_source": "OpenRouter models API 2026-11-24: deepseek/deepseek-v4.1-flash-1017 top_provider.max_completion_tokens (hosts range 131072-943718; re-check for the pinned host)",
+    "model_max_output_tokens_source": "OpenRouter models API 2026-11-25: deepseek/deepseek-v4.1-flash-1017 top_provider.max_completion_tokens (hosts range 131072-943718; re-check for the pinned host)",
     "sandbox_image": "sha256:ef5d5c4ae395c6e9fe4d7ea3943f274b453b7e22f4df37a271c745dd020a29f1",
     "sandbox_image_source": "tools/runners/sandbox/Dockerfile (docker build -t ot-bench-shell:v47); local provenance tools/runners/sandbox/build-receipt.json",
     "paid_budget_receipt": null,

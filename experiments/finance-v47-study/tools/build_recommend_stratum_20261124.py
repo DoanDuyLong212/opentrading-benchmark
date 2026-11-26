@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Recommendation stratum (R), amendment 2026-11-24 (f). Specs and rule: tools/recommend_specs_20261124.py (pre-registered).
+"""Recommendation stratum (R), amendment 2026-11-25 (f). Specs and rule: tools/recommend_specs_20261124.py (pre-registered).
 
 One ticker per task; the agent sees snapshot data only (120 sessions to 30/10/2026, its quarterly statements when
 recorded, VN-Index) and answers MUA / GIỮ / BÁN for the holding window to END. Gold applies the pre-registered
@@ -46,8 +46,8 @@ def write(spec):
         shutil.rmtree(d)
     (d / 'environment').mkdir(parents=True); (d / 'solution').mkdir(); (d / 'tests').mkdir()
     shutil.copy(STUDY / 'tools/v45_grader.py', d / 'tests/grader.py')
-    pl = {'snapshot_date': '2026-11-01', 'note': 'Giá 120 phiên tới 30/10/2026 (audits/snapshot-extension-2026-11-24b) và '
-          'báo cáo quý tới Q2/2026 (audits/snapshot-extension-2026-11-24).', 'tools': tools}
+    pl = {'snapshot_date': '2026-11-01', 'note': 'Giá 120 phiên tới 30/10/2026 (audits/snapshot-extension-2026-11-25b) và '
+          'báo cáo quý tới Q2/2026 (audits/snapshot-extension-2026-11-25).', 'tools': tools}
     (d / 'environment/payloads.json').write_text(json.dumps(pl, ensure_ascii=False, indent=1) + '\n')
     q = (inv.HEADER + '\n\n' +
          'Đưa ra **khuyến nghị** cho **%s** với khung nắm giữ từ giá đóng cửa 30/10/2026 tới giá đóng cửa phiên **%s**: '
@@ -67,7 +67,7 @@ def write(spec):
     keys = ['hist:' + sym]
     gold = {'task_id': spec['tid'], 'scoring': 'outcome', 'solution': sol, 'as_of': inv.REC['recorded_at'], 'split': spec['split'],
             'expects': expects, 'contract_version': 2, 'stratum': 'investor', 'tier': 'R',
-            'notes': 'Recommendation stratum (amendment 2026-11-24 f): primary = pre-registered ±2 % rule on the recorded '
+            'notes': 'Recommendation stratum (amendment 2026-11-25 f): primary = pre-registered ±2 % rule on the recorded '
                      'close of END (tools/recommend_specs_20261124.py).',
             'provenance_contract': inv.provenance(tools, keys), 'provenance_catalog': inv.provenance(tools, sorted(tools)),
             'payload_sha256': hashlib.sha256((d / 'environment/payloads.json').read_bytes()).hexdigest(),
@@ -80,8 +80,8 @@ def write(spec):
     (d / 'solution/oracle.py').write_text(pre + mark + ORACLE + '\n\nif problems:' + tail, encoding='utf-8')
     toml = (cs.TEMPLATE / 'task.toml').read_text(encoding='utf-8')
     toml = toml.replace('# Task benchmark harness tài chính (bộ 200+50) — sinh bởi tools/build_main.py',
-                        '# Recommendation stratum — amendment 2026-11-24 (f), tools/build_recommend_stratum_20261124.py')
-    for k, v in (('id', spec['tid']), ('title', title), ('created', '2026-11-24'), ('level', 'R'), ('family', 'R recommendation'),
+                        '# Recommendation stratum — amendment 2026-11-25 (f), tools/build_recommend_stratum_20261124.py')
+    for k, v in (('id', spec['tid']), ('title', title), ('created', '2026-11-25'), ('level', 'R'), ('family', 'R recommendation'),
                  ('financebench_type', 'buy/hold/sell call (outcome-scored)'), ('entity', sym), ('split', spec['split'])):
         toml = re.sub(r'^%s = ".*"$' % k, '%s = "%s"' % (k, v), toml, flags=re.M)
     toml = re.sub(r'^tools_expected = .*$', 'tools_expected = %s' % json.dumps(sorted({e['tool'] for e in tools.values()})), toml, flags=re.M)
@@ -100,7 +100,7 @@ def main():
         receipt['tasks'][spec['tid']] = {'split': spec['split'], 'symbol': sol['symbol'], 'call': sol['call'],
                                          'files': {str(p.relative_to(d)): hashlib.sha256(p.read_bytes()).hexdigest()
                                                    for p in sorted(d.rglob('*')) if p.is_file()}}
-    (STUDY / 'audits/taskset-revision-2026-11-24/RECOMMEND-BUILD.json').write_text(json.dumps(receipt, ensure_ascii=False, indent=1) + '\n')
+    (STUDY / 'audits/taskset-revision-2026-11-25/RECOMMEND-BUILD.json').write_text(json.dumps(receipt, ensure_ascii=False, indent=1) + '\n')
     from collections import Counter
     for split in ('main', 'holdout', 'pilot'):
         print(split, dict(Counter(v['call'] for v in receipt['tasks'].values() if v['split'] == split)))

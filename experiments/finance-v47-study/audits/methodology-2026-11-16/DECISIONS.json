@@ -1,97 +1,97 @@
 {
- "schema": "v47-methodology-decisions-draft-v1",
- "status": "decided_by_owner",
- "prepared_date": "2026-11-16",
- "approval": {
-  "reviewer": "DoanDuyLong212 (owner)",
-  "decision": "recorded",
-  "recorded_at": "2026-11-24",
-  "source_url": {
-   "10": "https://github.com/DoanDuyLong212/opentrading-benchmark/issues/10#issuecomment-7125741919",
-   "13": "https://github.com/DoanDuyLong212/opentrading-benchmark/issues/13#issuecomment-7125742490",
-   "15": "https://github.com/DoanDuyLong212/opentrading-benchmark/issues/15#issuecomment-7125743049",
-   "33": "https://github.com/DoanDuyLong212/opentrading-benchmark/issues/33#issuecomment-7125743643"
-  },
-  "note": "Issues were addressed to FinDaHuman for review; the owner decided directly."
- },
- "issues": {
-  "10": {
-   "recommendation": "b: S diagnostic separately; LCM primary; no extra arm in current cohort",
-   "decision": "b: S is diagnostic and reported separately; primary = L/C/M; no extra arm",
-   "source_url": "https://github.com/DoanDuyLong212/opentrading-benchmark/issues/10#issuecomment-7125741919"
-  },
-  "13": {
-   "recommendation": "keep original frozen PRUNE 40 IDs; disclose selection after or16",
-   "decision": "remove: the 40 saturated lookup tasks are dropped as useless; keep only discriminating and hard tasks (owner wording: \"Xoá đi vì vô dụng, chỉ cần các câu có tính phân hoá và khó\"). They are already outside main 200; disclose that the rule was written after or16.",
-   "source_url": "https://github.com/DoanDuyLong212/opentrading-benchmark/issues/13#issuecomment-7125742490",
-   "amended_2026_11_24": "kept in main: 8 saturated L4 future/nonexist traps restored (PRUNE2.json restored_to_main); main 114; target 200 pending owner choice of families"
-  },
-  "15": {
-   "recommendation": "keep 58 holdout tasks for current economical cohort, no C3 addition; acknowledge public gold",
-   "decision": "a: keep 58 holdout tasks, no C3 addition, accept public gold; exposure disclosed, no unseen claim",
-   "source_url": "https://github.com/DoanDuyLong212/opentrading-benchmark/issues/15#issuecomment-7125743049",
-   "amended_2026_11_24": "amended from a: holdout gets C5/M6 twins (+8 C5 fin-c5-*-981..988, +4 M6 fin-m6-*-991..994); holdout 70"
-  }
- },
- "holdout_history": {
-  "all_machine_confirmation": "owner confirms 2026-11-24: the v4.7 holdout has never been run on any machine",
-  "dev_stage_holdout": "covered by the owner confirmation above; no holdout run directory exists on this machine (searched 2026-11-24)",
-  "fin_mem_96x": "v4.6 memory holdout tasks tasks/holdout/fin-mem-960..969 in the legacy tree; not in the v4.7 holdout (0 fin-mem-96x in tasks/holdout); never run per owner",
-  "claim_unseen_training_data": false,
-  "source_url": "https://github.com/DoanDuyLong212/opentrading-benchmark/issues/33#issuecomment-7125743643"
- },
- "ready_for_seal": true,
- "ready_for_seal_scope": "pilot seal only; main seal additionally needs the owner answer on pruning further or16-saturated main tasks (#13 wording)",
- "amendments_2026_11_24": {
-  "owner_wording": "1 ok. 2 giữ, bổ sung thêm các tasks sao cho tổng main là 200 tasks, gợi ý thêm tasks j để tôi quyết. 3 thêm. 4 sửa để resume an toàn",
-  "channel": "Claude Code session 2026-11-24 (owner)",
-  "pilot": "approved; runs once the main taskset is final (freeze_state hashes every split, so a seal now would be voided by the main additions)",
-  "13_refusal_traps": "kept in main: 8 saturated L4 future/nonexist traps restored (PRUNE2.json restored_to_main); main 114; target 200 pending owner choice of families",
-  "15": "amended from a: holdout gets C5/M6 twins (+8 C5 fin-c5-*-981..988, +4 M6 fin-m6-*-991..994); holdout 70",
-  "paid_resume": "resume spends via paid_budget.resume_run_budget; crash leftovers settled at full reserved bound only with --reconcile-paid-pending; expired receipt replaced through owner-signed <run>/PAID-RECEIPT-RENEWAL.json (sealed config unchanged; identity fields immutable; journaled as renew)",
-  "investor_and_200": {
-   "owner_wording": "1 ok. 2 lãi lỗ điểm chính, nhưng đừng dùng tiêu chí cơ bản xác định leader, bỏ leader đi thay bằng chọn cổ tăng nhiều nhất ( giá đó tới max ngày hôm nay ). 3 hôm nay",
-   "main_total": 200,
-   "groups": {
-    "A_memory": 24,
-    "B_series_compute": 20,
-    "C_c5": 10,
-    "D_partial_traps": 8,
-    "E_l4_chain": 4,
-    "I_investor": 20
-   },
-   "investor_primary": "P/L outcome (owner); rules pre-registered in tools/investor_specs_20261124.py (commit fd33f66) before any return was computed",
-   "end_date": "2026-11-23 (no source had a 24/11 session at 18:50 on 24/11)",
-   "pending": [
-    "re-record end date 24/11 when available"
-   ],
-   "pooling": {
-    "decision": "pooled into the primary score with L/C/M (owner: \"Gộp chung\"); also reported as its own stratum with base rates",
-    "implementation": "judge_primary.summarize excludes only safety (clock_policy.comparative_eligible), so investor is pooled as is"
-   },
-   "ot_prompt_review": "OT machine-profile system prompt (captured request, OT 6d63a91) has no investor/stock-selection method, no skill or subagent; bat_bien rule 3 (ranked above the user request) forbids choosing a ticker for the user, so OT may refuse I picks: a disadvantage, not an advantage. OpenCode/DSH prompts carry no such rule."
-  },
-  "s_replacement": {
-   "owner_wording": "A, đồng ý ngưỡng 2% ; cách đo: Giá cuối 23/11",
-   "retired": "S1 (12 main + 3 holdout) and S2-buy (4 main + 1 holdout) moved to tasks-retired",
-   "kept_as_robustness": "S2 times10/zero + S3 asof (14 main + 4 holdout), pooled, deterministic",
-   "added_R": "16 main + 4 holdout + 1 pilot buy/hold/sell calls, ±2 % at the 23/11 close, pre-registered (commit f70bad5)",
-   "R_answer_distribution": {
-    "main": {
-     "BÁN": 11,
-     "MUA": 5,
-     "GIỮ": 0
+    "schema": "v47-methodology-decisions-draft-v1",
+    "status": "decided_by_owner",
+    "prepared_date": "2026-11-16",
+    "approval": {
+        "reviewer": "DoanDuyLong212 (owner)",
+        "decision": "recorded",
+        "recorded_at": "2026-11-25",
+        "source_url": {
+            "10": "https://github.com/DoanDuyLong212/opentrading-benchmark/issues/10#issuecomment-7125741919",
+            "13": "https://github.com/DoanDuyLong212/opentrading-benchmark/issues/13#issuecomment-7125742490",
+            "15": "https://github.com/DoanDuyLong212/opentrading-benchmark/issues/15#issuecomment-7125743049",
+            "33": "https://github.com/DoanDuyLong212/opentrading-benchmark/issues/33#issuecomment-7125743643"
+        },
+        "note": "Issues were addressed to FinDaHuman for review; the owner decided directly."
     },
-    "holdout": {
-     "BÁN": 1,
-     "GIỮ": 2,
-     "MUA": 1
+    "issues": {
+        "10": {
+            "recommendation": "b: S diagnostic separately; LCM primary; no extra arm in current cohort",
+            "decision": "b: S is diagnostic and reported separately; primary = L/C/M; no extra arm",
+            "source_url": "https://github.com/DoanDuyLong212/opentrading-benchmark/issues/10#issuecomment-7125741919"
+        },
+        "13": {
+            "recommendation": "keep original frozen PRUNE 40 IDs; disclose selection after or16",
+            "decision": "remove: the 40 saturated lookup tasks are dropped as useless; keep only discriminating and hard tasks (owner wording: \"Xoá đi vì vô dụng, chỉ cần các câu có tính phân hoá và khó\"). They are already outside main 200; disclose that the rule was written after or16.",
+            "source_url": "https://github.com/DoanDuyLong212/opentrading-benchmark/issues/13#issuecomment-7125742490",
+            "amended_2026_11_24": "kept in main: 8 saturated L4 future/nonexist traps restored (PRUNE2.json restored_to_main); main 114; target 200 pending owner choice of families"
+        },
+        "15": {
+            "recommendation": "keep 58 holdout tasks for current economical cohort, no C3 addition; acknowledge public gold",
+            "decision": "a: keep 58 holdout tasks, no C3 addition, accept public gold; exposure disclosed, no unseen claim",
+            "source_url": "https://github.com/DoanDuyLong212/opentrading-benchmark/issues/15#issuecomment-7125743049",
+            "amended_2026_11_24": "amended from a: holdout gets C5/M6 twins (+8 C5 fin-c5-*-981..988, +4 M6 fin-m6-*-991..994); holdout 70"
+        }
     },
-    "pilot": {
-     "BÁN": 1
+    "holdout_history": {
+        "all_machine_confirmation": "owner confirms 2026-11-25: the v4.7 holdout has never been run on any machine",
+        "dev_stage_holdout": "covered by the owner confirmation above; no holdout run directory exists on this machine (searched 2026-11-25)",
+        "fin_mem_96x": "v4.6 memory holdout tasks tasks/holdout/fin-mem-960..969 in the legacy tree; not in the v4.7 holdout (0 fin-mem-96x in tasks/holdout); never run per owner",
+        "claim_unseen_training_data": false,
+        "source_url": "https://github.com/DoanDuyLong212/opentrading-benchmark/issues/33#issuecomment-7125743643"
+    },
+    "ready_for_seal": true,
+    "ready_for_seal_scope": "pilot seal only; main seal additionally needs the owner answer on pruning further or16-saturated main tasks (#13 wording)",
+    "amendments_2026_11_24": {
+        "owner_wording": "1 ok. 2 giữ, bổ sung thêm các tasks sao cho tổng main là 200 tasks, gợi ý thêm tasks j để tôi quyết. 3 thêm. 4 sửa để resume an toàn",
+        "channel": "Claude Code session 2026-11-25 (owner)",
+        "pilot": "approved; runs once the main taskset is final (freeze_state hashes every split, so a seal now would be voided by the main additions)",
+        "13_refusal_traps": "kept in main: 8 saturated L4 future/nonexist traps restored (PRUNE2.json restored_to_main); main 114; target 200 pending owner choice of families",
+        "15": "amended from a: holdout gets C5/M6 twins (+8 C5 fin-c5-*-981..988, +4 M6 fin-m6-*-991..994); holdout 70",
+        "paid_resume": "resume spends via paid_budget.resume_run_budget; crash leftovers settled at full reserved bound only with --reconcile-paid-pending; expired receipt replaced through owner-signed <run>/PAID-RECEIPT-RENEWAL.json (sealed config unchanged; identity fields immutable; journaled as renew)",
+        "investor_and_200": {
+            "owner_wording": "1 ok. 2 lãi lỗ điểm chính, nhưng đừng dùng tiêu chí cơ bản xác định leader, bỏ leader đi thay bằng chọn cổ tăng nhiều nhất ( giá đó tới max ngày hôm nay ). 3 hôm nay",
+            "main_total": 200,
+            "groups": {
+                "A_memory": 24,
+                "B_series_compute": 20,
+                "C_c5": 10,
+                "D_partial_traps": 8,
+                "E_l4_chain": 4,
+                "I_investor": 20
+            },
+            "investor_primary": "P/L outcome (owner); rules pre-registered in tools/investor_specs_20261124.py (commit fd33f66) before any return was computed",
+            "end_date": "2026-11-23 (no source had a 25/11 session at 18:50 on 25/11)",
+            "pending": [
+                "re-record end date 25/11 when available"
+            ],
+            "pooling": {
+                "decision": "pooled into the primary score with L/C/M (owner: \"Gộp chung\"); also reported as its own stratum with base rates",
+                "implementation": "judge_primary.summarize excludes only safety (clock_policy.comparative_eligible), so investor is pooled as is"
+            },
+            "ot_prompt_review": "OT machine-profile system prompt (captured request, OT 6d63a91) has no investor/stock-selection method, no skill or subagent; bat_bien rule 3 (ranked above the user request) forbids choosing a ticker for the user, so OT may refuse I picks: a disadvantage, not an advantage. OpenCode/DSH prompts carry no such rule."
+        },
+        "s_replacement": {
+            "owner_wording": "A, đồng ý ngưỡng 2% ; cách đo: Giá cuối 23/11",
+            "retired": "S1 (12 main + 3 holdout) and S2-buy (4 main + 1 holdout) moved to tasks-retired",
+            "kept_as_robustness": "S2 times10/zero + S3 asof (14 main + 4 holdout), pooled, deterministic",
+            "added_R": "16 main + 4 holdout + 1 pilot buy/hold/sell calls, ±2 % at the 23/11 close, pre-registered (commit f70bad5)",
+            "R_answer_distribution": {
+                "main": {
+                    "BÁN": 11,
+                    "MUA": 5,
+                    "GIỮ": 0
+                },
+                "holdout": {
+                    "BÁN": 1,
+                    "GIỮ": 2,
+                    "MUA": 1
+                },
+                "pilot": {
+                    "BÁN": 1
+                }
+            },
+            "disclosure": "an always-sell strategy scores 11/16 on main R"
+        }
     }
-   },
-   "disclosure": "an always-sell strategy scores 11/16 on main R"
-  }
- }
 }

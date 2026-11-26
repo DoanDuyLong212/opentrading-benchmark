@@ -1,10 +1,10 @@
-"""Amendment 2026-11-24: record quarterly and annual financial statements for the fundamental compute (C5) and
+"""Amendment 2026-11-25: record quarterly and annual financial statements for the fundamental compute (C5) and
 finance-memory (M6) strata.
 
 Run with the opentrading-mcp environment (its Vietstock `financeinfo` provider, the same no-JWT source the frozen
 `financial_statements` payloads came from):
     cd ~/MCP-server && set -a && . ./.env && set +a && \
-    uv run --frozen python <study>/tools/record_statements_20261124.py <study>/audits/snapshot-extension-2026-11-24/raw.json
+    uv run --frozen python <study>/tools/record_statements_20261124.py <study>/audits/snapshot-extension-2026-11-25/raw.json
 Raw provider output is stored unmodified; period filtering, cross-checks and envelopes are done by the task builder.
 """
 import json, sys, time

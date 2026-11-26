@@ -40,7 +40,7 @@ def run(ws, instruction, task_dir, model, timeout_s, log_path, options=None):
     cfg = {'$schema': 'https://opencode.ai/config.json',
         'plugins': ['-*', 'opencode.agent', 'opencode.config.agent', 'opencode.config.mcp', 'opencode.config.provider', 'opencode.provider.dynamic', 'opencode.provider.nvidia', 'opencode.tool.shell'],
         # OpenCode 2.4: 'opencode.tools' registers opencode_session_*/worktree_*/models tools with no
-        # permission gate, outside the snapshot+shell tool set; it is left off (smoke 2026-11-24).
+        # permission gate, outside the snapshot+shell tool set; it is left off (smoke 2026-11-25).
         'agents': {'title': {'disabled': True}, 'summary': {'disabled': True}, 'compaction': {'disabled': True}},
         'providers': {'nvidia': {'package': '@ai-sdk/openai-compatible', 'name': 'NVIDIA controlled gateway',
             # OpenCode 2.4 aborts after 300 s without response headers (default headerTimeout); the gateway's

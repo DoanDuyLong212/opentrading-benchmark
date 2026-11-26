@@ -1,4 +1,4 @@
-"""Amendment 2026-11-24: fundamental compute (C5), finance memory (M6), PRUNE2 and the statement extension."""
+"""Amendment 2026-11-25: fundamental compute (C5), finance memory (M6), PRUNE2 and the statement extension."""
 import json
 import subprocess
 import sys
@@ -65,7 +65,7 @@ def test_prune2_receipt():
 
 
 def test_statement_extension_receipt():
-    receipt = json.loads((STUDY / 'audits/snapshot-extension-2026-11-24/RECEIPT.json').read_text())
+    receipt = json.loads((STUDY / 'audits/snapshot-extension-2026-11-25/RECEIPT.json').read_text())
     check = receipt['cross_check']
     assert check['matches'] > 100 and check['mismatches_with_real_snapshot'] == 0
     assert all(any(s.startswith('synthetic') for s in m['frozen_source']) for m in check['mismatches'])

@@ -1,4 +1,4 @@
-"""Shared, payload-only computations for the 2026-11-24 fundamental (C5) and finance-memory (M6) strata.
+"""Shared, payload-only computations for the 2026-11-25 fundamental (C5) and finance-memory (M6) strata.
 
 This file is embedded verbatim into every generated oracle (it needs only `env(key)` from the oracle template),
 so gold and oracle come from one definition. Every input is read from the task's own frozen payload envelopes.

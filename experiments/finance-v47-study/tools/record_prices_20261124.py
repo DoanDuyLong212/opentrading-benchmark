@@ -1,9 +1,9 @@
-"""Amendment 2026-11-24 (d): daily prices for the investor stratum (I).
+"""Amendment 2026-11-25 (d): daily prices for the investor stratum (I).
 
 Two windows per symbol, both from vnstock Quote (source VCI), the same provider used for history-120 (2026-11-11):
   pre  : the 120 sessions ending 2026-10-30 (last session of the 2026-11-01 MCP snapshot) -> task payloads
-  post : sessions 2026-10-31 .. 2026-11-23 -> grading only, never served to agents. The owner asked for 'today' (24/11);
-         at 18:50 on 24/11 no source had a 24/11 session (VCI daily bars end 23/11; the DNSE board's last match is
+  post : sessions 2026-10-31 .. 2026-11-23 -> grading only, never served to agents. The owner asked for 'today' (25/11);
+         at 18:50 on 25/11 no source had a 25/11 session (VCI daily bars end 23/11; the DNSE board's last match is
          23/11 14:45), so the window ends at the latest recorded session, 23/11.
 Every pre-window session that overlaps history-120 or a frozen task payload must match exactly, or the symbol is rejected.
     python3 tools/record_prices_20261124.py
@@ -12,7 +12,7 @@ import contextlib, datetime, glob, io, json, sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-OUT = ROOT / 'audits/snapshot-extension-2026-11-24b'
+OUT = ROOT / 'audits/snapshot-extension-2026-11-25b'
 SNAP_END, END, N = '2026-10-30', '2026-11-23', 120
 STOCKS = sorted(set(
     'ACB BID CTG MBB TCB VCB STB VPB HDB TPB SSI VND HCM VCI SHS HPG HSG NKG MWG FRT PNJ DGW GAS PLX PVS PVD DCM DPM DGC '

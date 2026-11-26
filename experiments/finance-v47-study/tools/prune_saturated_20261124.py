@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Second prune, owner decision 2026-11-24 (#13: "Xoá đi vì vô dụng, chỉ cần các câu có tính phân hoá và khó").
+"""Second prune, owner decision 2026-11-25 (#13: "Xoá đi vì vô dụng, chỉ cần các câu có tính phân hoá và khó").
 
 Rule (fixed before any v4.7 inference on main): a main task is retired when every arm scored primary-correct in both
 or16 runs (v4.6u main, DeepSeek v4.1 flash 1017, judge_primary.jsonl). Retired tasks move to tasks-retired/main (kept,
@@ -17,7 +17,7 @@ from pathlib import Path
 
 STUDY = Path(__file__).resolve().parents[1]
 OR16 = STUDY.parent / 'finance-v46-update-study/results/financial-v46u-main-final-or16-20261111/deepseek-openrouter-main/judge-primary.jsonl'
-OUT = STUDY / 'audits/taskset-revision-2026-11-24'
+OUT = STUDY / 'audits/taskset-revision-2026-11-25'
 RECEIPT = OUT / 'PRUNE2.json'
 RETIRED = STUDY / 'tasks-retired/main'
 
@@ -52,7 +52,7 @@ def apply():
     for tid in retired:
         subprocess.run(['git', 'mv', str(STUDY / 'tasks/main' / tid), str(RETIRED / tid)], check=True, cwd=STUDY)
     receipt = {'schema': 'v47-prune2-20261124', 'rule': 'every arm primary-correct in both or16 runs',
-               'decision': 'owner 2026-11-24, issue #13 comment https://github.com/DoanDuyLong212/opentrading-benchmark/issues/13#issuecomment-7125742490',
+               'decision': 'owner 2026-11-25, issue #13 comment https://github.com/DoanDuyLong212/opentrading-benchmark/issues/13#issuecomment-7125742490',
                'or16_judge_primary_sha256': hashlib.sha256(OR16.read_bytes()).hexdigest(),
                'retired': retired,
                'evidence': {t: {arm: v for arm, v in sorted(sc[t].items())} for t in retired},
@@ -64,7 +64,7 @@ def apply():
     return receipt
 
 
-RESTORED = {'decision': 'owner 2026-11-24 (decision 2: keep the refusal traps in main)',
+RESTORED = {'decision': 'owner 2026-11-25 (decision 2: keep the refusal traps in main)',
             'tasks': ['fin-l4-future-221', 'fin-l4-future-222', 'fin-l4-future-231', 'fin-l4-future-232',
                       'fin-l4-nonexist-235', 'fin-l4-nonexist-236', 'fin-l4-nonexist-237', 'fin-l4-nonexist-238'],
             'reason': 'saturated in or16 but they are the only main-split fabrication (FP) check'}

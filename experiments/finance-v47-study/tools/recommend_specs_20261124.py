@@ -1,8 +1,8 @@
-"""Pre-registered recommendation stratum (R), amendment 2026-11-24 (f). Owner: option A (replace S1/S2-buy with
+"""Pre-registered recommendation stratum (R), amendment 2026-11-25 (f). Owner: option A (replace S1/S2-buy with
 buy/hold/sell recommendation tasks), threshold 2 %, measured at the last close ("Giá cuối 23/11").
 
 Written and committed BEFORE any post-snapshot return of these tickers was computed or viewed. One ticker per task,
-chosen by sector spread from audits/snapshot-extension-2026-11-24b/pre-120.json. Same outcome file and hash as the
+chosen by sector spread from audits/snapshot-extension-2026-11-25b/pre-120.json. Same outcome file and hash as the
 investor stratum (investor_specs_20261124.POST_SHA256).
 
 Entry: close of 30/10/2026. Exit: close of END (2026-11-23). ret = close(END) / close(30/10) - 1.

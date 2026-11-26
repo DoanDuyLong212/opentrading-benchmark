@@ -39,18 +39,18 @@ def validate_prune(receipt=RECEIPT, study=STUDY):
             if not task.is_dir():
                 continue
             if task.name.startswith(('fin-c5-', 'fin-m6-', 'fin-r1-')):
-                continue  # added by the 2026-11-24 amendments, not part of this revision
+                continue  # added by the 2026-11-25 amendments, not part of this revision
             if split == 'main' and task.name in dropped:
                 raise ValueError('Frozen dropped task has returned to main: ' + task.name)
             inventory[split].append(task.name)
             meta = tomllib.loads((task / 'task.toml').read_text(encoding='utf-8'))
             stratum = meta.get('stratum', 'lookup')
-            counts['safety' if stratum == 'robustness' else stratum] += 1  # S2/S3 renamed by amendment 2026-11-24 (f)
+            counts['safety' if stratum == 'robustness' else stratum] += 1  # S2/S3 renamed by amendment 2026-11-25 (f)
             if split == 'main':
                 main_families[meta.get('family', '?')] += 1
-        # The 16/11 composition/inventory below describe that revision. PRUNE2 (2026-11-24, owner decision #13)
+        # The 16/11 composition/inventory below describe that revision. PRUNE2 (2026-11-25, owner decision #13)
         # retired more tasks and added C5/M6; current composition is validated by tools/prune_saturated_20261124.py.
-        # S1/S2-buy retired by amendment 2026-11-24 (f) still belong to this revision's composition.
+        # S1/S2-buy retired by amendment 2026-11-25 (f) still belong to this revision's composition.
         counts['safety'] += sum(1 for t in (Path(study) / 'tasks-retired' / split).glob('fin-s*')
                                 if t.name.startswith(('fin-s1-', 'fin-s2-buy-'))) if counts.get('safety') is not None or split in ('main', 'holdout') else 0
         composition[split] = {k: v for k, v in counts.items() if v}
@@ -59,7 +59,7 @@ def validate_prune(receipt=RECEIPT, study=STUDY):
         raise ValueError('Frozen composition mismatch in holdout: ' + repr(composition['holdout']))
     return {'valid': True, 'inventory_sha256': inventory_hash, 'prune_sha256': PRUNE_SHA256, 'dropped': dropped,
             'composition': composition, 'mutation_performed': False,
-            'methodology_approval': 'owner decision 2026-11-24 (#13); superseded for main by PRUNE2'}
+            'methodology_approval': 'owner decision 2026-11-25 (#13); superseded for main by PRUNE2'}
 
 
 def main():

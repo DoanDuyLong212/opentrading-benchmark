@@ -1,4 +1,4 @@
-"""Strict grader fix 2026-11-24: correct refusals seen in the paid devsmoke run must pass; contradictions must not."""
+"""Strict grader fix 2026-11-25: correct refusals seen in the paid devsmoke run must pass; contradictions must not."""
 import sys
 from pathlib import Path
 

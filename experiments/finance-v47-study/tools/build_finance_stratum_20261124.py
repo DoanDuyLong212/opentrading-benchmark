@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
-"""v4.7 taskset revision 2026-11-24 (owner-approved): fundamental compute (C5) and finance-analysis memory (M6).
+"""v4.7 taskset revision 2026-11-25 (owner-approved): fundamental compute (C5) and finance-analysis memory (M6).
 
-Data: quarterly (Q3/2024..Q2/2026) and annual (FY2021..FY2025) financial statements recorded 2026-11-24 from the same
-Vietstock `financeinfo` source as the frozen `financial_statements` payloads (audits/snapshot-extension-2026-11-24).
+Data: quarterly (Q3/2024..Q2/2026) and annual (FY2021..FY2025) financial statements recorded 2026-11-25 from the same
+Vietstock `financeinfo` source as the frozen `financial_statements` payloads (audits/snapshot-extension-2026-11-25).
 Periods after Q2/2026 are excluded so nothing published after the 2026-11-01 snapshot can enter a task. Each symbol
 is served as two recorded variants, statement=KQKD and statement=CDKT; the provider's ratio section (CSTC) is not
 served, so ratios are computed from the statements as each question defines them.
@@ -21,14 +21,14 @@ sys.path.insert(0, str(STUDY / 'tools'))
 import build_compute_stratum_20261111 as cs  # noqa: E402  (shared writer conventions, template, ROUNDING)
 import build_memory_stratum_20261111 as ms  # noqa: E402  (session/turn helpers)
 
-RAW = json.loads((STUDY / 'audits/snapshot-extension-2026-11-24/raw.json').read_text(encoding='utf-8'))
+RAW = json.loads((STUDY / 'audits/snapshot-extension-2026-11-25/raw.json').read_text(encoding='utf-8'))
 LIB = (STUDY / 'tools/finance_stratum_lib.py').read_text(encoding='utf-8')
 Q = ['Q3/2024', 'Q4/2024', 'Q1/2025', 'Q2/2025', 'Q3/2025', 'Q4/2025', 'Q1/2026', 'Q2/2026']
 Y = ['2021', '2022', '2023', '2024', '2025']
 SECTION = {'KQKD': 'Kết quả kinh doanh', 'CDKT': 'Báo cáo tình hình tài chính'}
 PCT, RATIO, MONEY = {'abs': 0.05}, {'abs': 0.005}, {'rel': 0.005}
 TOOL = 'financial_statements'
-CREATED = '2026-11-24'
+CREATED = '2026-11-25'
 
 
 def envelope(sym, freq, statement):
@@ -38,7 +38,7 @@ def envelope(sym, freq, statement):
     return {'tool': TOOL, 'params': {'symbol': sym, 'period': period, 'statement': statement, 'periods_n': len(keep)},
             'envelope': {'data': {'symbol': sym, 'period': period, 'periods': keep, 'statements': {SECTION[statement]: rows}},
                          'provenance': {'source': 'vietstock', 'as_of': RAW['recorded_at'], 'timezone': 'Asia/Ho_Chi_Minh',
-                                        'note': 'Ghi 2026-11-24 từ cùng nguồn financeinfo; chỉ giữ kỳ đã công bố trước '
+                                        'note': 'Ghi 2026-11-25 từ cùng nguồn financeinfo; chỉ giữ kỳ đã công bố trước '
                                                 'snapshot 2026-11-01 (quý tới Q2/2026, năm tới 2025).'},
                          'availability': 'available'}}
 
@@ -301,7 +301,7 @@ def rank_task(tid, syms):
 
 
 def build_extra():
-    """Amendment 2026-11-24 (d), group C: 10 more C5 main (ROA, composite ranking, and four existing families on new
+    """Amendment 2026-11-25 (d), group C: 10 more C5 main (ROA, composite ranking, and four existing families on new
     sets) + 1 pilot twin."""
     main = [roa_task('fin-c5-roa-641', ['VNM', 'SAB', 'MSN']), roa_task('fin-c5-roa-642', ['FPT', 'MWG', 'FRT']),
             roa_task('fin-c5-roa-643', ['GAS', 'PLX', 'PVS']),
@@ -414,7 +414,7 @@ def build():
              dupont_task('fin-c5-dupont-683', 'PNJ', 'DHG'), yoy_task('fin-c5-yoy-684', ['DCM', 'GAS', 'NTP', 'MWG']),
              m6('fin-m6-conv-691', 'pilot', 'M6a', 'Memory M6a — quy ước ROE TTM và ngưỡng (TRA/VHC/IMP/HAH)', ['TRA', 'VHC', 'IMP', 'HAH'], 'ttm', 15, 35, 1),
              m6('fin-m6-upd-692', 'pilot', 'M6b', 'Memory M6b — cập nhật ngưỡng nợ (GMD/GVR/REE/DGC)', ['GMD', 'GVR', 'REE', 'DGC'], 'fy', 9, 30, 2, update=40)]
-    # Holdout twins (owner decision 2026-11-24, #15 amended): one C5 per family and one M6 per sub-tier,
+    # Holdout twins (owner decision 2026-11-25, #15 amended): one C5 per family and one M6 per sub-tier,
     # on symbol sets and thresholds not used by main; sealed like the rest of holdout.
     holdout = [roe_ttm_task('fin-c5-roe-981', ['ANV', 'BMP', 'DGC']), oplev_task('fin-c5-oplev-982', ['DBC', 'VHC', 'SAB']),
                margin_task('fin-c5-margin-983', ['BMP', 'IMP', 'TRA']), dupont_task('fin-c5-dupont-984', 'NTP', 'BMP'),
@@ -438,8 +438,8 @@ def write_c5(split, s):
     (d / 'environment').mkdir(parents=True); (d / 'solution').mkdir(); (d / 'tests').mkdir()
     shutil.copy(cs.TEMPLATE / 'tests/grader.py', d / 'tests/grader.py')
     tools = payloads(s['syms'], s['needs'])
-    pl = {'snapshot_date': '2026-11-01', 'note': 'Envelope MCP financial_statements ghi 2026-11-24 (kỳ ≤ Q2/2026, năm ≤ 2025); '
-          'xem audits/snapshot-extension-2026-11-24/RECEIPT.json.', 'tools': tools}
+    pl = {'snapshot_date': '2026-11-01', 'note': 'Envelope MCP financial_statements ghi 2026-11-25 (kỳ ≤ Q2/2026, năm ≤ 2025); '
+          'xem audits/snapshot-extension-2026-11-25/RECEIPT.json.', 'tools': tools}
     (d / 'environment/payloads.json').write_text(json.dumps(pl, ensure_ascii=False, indent=1) + '\n')
     tmpl = (cs.TEMPLATE / 'instruction.md').read_text(encoding='utf-8')
     contract = tmpl[tmpl.index('## Ràng buộc chung'):]
@@ -450,7 +450,7 @@ def write_c5(split, s):
              'response_sha256': cs.digest(e['envelope'])} for k, e in tools.items()]
     gold = {'task_id': s['tid'], 'scoring': 'value', 'solution': s['solution'], 'as_of': RAW['recorded_at'], 'split': split,
             'expects': s['expects'], 'contract_version': 2, 'stratum': 'compute', 'tier': 'C5',
-            'notes': 'Fundamental compute stratum (amendment 2026-11-24). Gold from tools/finance_stratum_lib.py on the task payloads.',
+            'notes': 'Fundamental compute stratum (amendment 2026-11-25). Gold from tools/finance_stratum_lib.py on the task payloads.',
             'provenance_contract': prov, 'provenance_catalog': prov,
             'payload_sha256': hashlib.sha256((d / 'environment/payloads.json').read_bytes()).hexdigest(),
             'required_payload_keys': sorted(tools)}
@@ -462,7 +462,7 @@ def write_c5(split, s):
     (d / 'solution/oracle.py').write_text(pre + mark + LIB + '\n' + s['oracle'] + '\n\nif problems:' + tail, encoding='utf-8')
     toml = (cs.TEMPLATE / 'task.toml').read_text(encoding='utf-8')
     toml = toml.replace('# Task benchmark harness tài chính (bộ 200+50) — sinh bởi tools/build_main.py',
-                        '# Fundamental compute stratum — amendment 2026-11-24, tools/build_finance_stratum_20261124.py')
+                        '# Fundamental compute stratum — amendment 2026-11-25, tools/build_finance_stratum_20261124.py')
     for k, v in (('id', s['tid']), ('title', s['title'].replace('"', "'")), ('created', CREATED), ('level', 'C5'),
                  ('family', 'C5 fundamental compute'), ('financebench_type', 'financial statement analysis'),
                  ('entity', '+'.join(s['syms'])), ('split', split)):
@@ -477,15 +477,15 @@ def write_m6(t):
     d = ms.write(t)
     toml = (d / 'task.toml').read_text(encoding='utf-8')
     toml = toml.replace('# Native-memory stratum — amendment 2026-11-11 (d), tools/build_memory_stratum_20261111.py',
-                        '# Finance-analysis memory stratum — amendment 2026-11-24, tools/build_finance_stratum_20261124.py')
+                        '# Finance-analysis memory stratum — amendment 2026-11-25, tools/build_finance_stratum_20261124.py')
     toml = re.sub(r'^created = ".*"$', 'created = "%s"' % CREATED, toml, flags=re.M)
     toml = re.sub(r'^family = ".*"$', 'family = "M6 finance memory"', toml, flags=re.M)
     (d / 'task.toml').write_text(toml, encoding='utf-8')
     gold = json.loads((d / 'solution/gold.json').read_text())
-    gold['notes'] = 'Finance-analysis memory stratum (amendment 2026-11-24): remembered ROE convention + thresholds.'
+    gold['notes'] = 'Finance-analysis memory stratum (amendment 2026-11-25): remembered ROE convention + thresholds.'
     (d / 'solution/gold.json').write_text(json.dumps(gold, ensure_ascii=False, indent=2) + '\n')
     turns = json.loads((d / 'environment/turns.json').read_text())
-    turns['note'] = 'Finance-analysis memory (amendment 2026-11-24). Same sessions for every arm; memory_command = OT /nho form, chat for others.'
+    turns['note'] = 'Finance-analysis memory (amendment 2026-11-25). Same sessions for every arm; memory_command = OT /nho form, chat for others.'
     (d / 'environment/turns.json').write_text(json.dumps(turns, ensure_ascii=False, indent=1) + '\n')
     return d
 
@@ -503,7 +503,7 @@ def main():
         receipt[t['tid']] = {'split': t['split'], 'tier': t.get('subtier', t['tier']), 'solution': sol,
                              'files': {str(p.relative_to(d)): hashlib.sha256(p.read_bytes()).hexdigest()
                                        for p in sorted(d.rglob('*')) if p.is_file()}}
-    out = STUDY / 'audits/taskset-revision-2026-11-24'
+    out = STUDY / 'audits/taskset-revision-2026-11-25'
     out.mkdir(parents=True, exist_ok=True)
     (out / 'FINANCE-BUILD.json').write_text(json.dumps(receipt, ensure_ascii=False, indent=1) + '\n')
     for k, v in receipt.items():

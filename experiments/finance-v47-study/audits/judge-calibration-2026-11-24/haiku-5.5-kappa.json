@@ -1,25 +1,25 @@
 {
- "judge_model": "anthropic/claude-haiku-5.5",
- "date": "2026-11-24",
- "mode": "single-answer (llm_judge.judge_answer), temperature 0",
- "design": "controlled calibration: real answers that a reviewer labelled correct (v4.6u or16 review-evidence excerpts + or10 sample) and controlled copies of the same answers: value 25% off gold, value 3x the tolerance band off gold, unit scale x1000, refusal answered with a number (all incorrect), and value moved half the tolerance band (still correct)",
- "n": 200,
- "agreement": 1.0,
- "cohen_kappa": 1.0,
- "confusion": {
-  "TP": 100,
-  "FN_judge": 0,
-  "FP_judge": 0,
-  "TN": 100
- },
- "cost_usd": 0.083,
- "comparison": {
-  "nvidia/nemotron-3-ultra-550b-a55b:free": "same items: agreement 1.0, kappa 1.0 (easy 80, hard 120)"
- },
- "caveat": "Not a hand-labelled sample of judge-vs-grader disagreements: the or16 trial directories were deleted, and every recoverable labelled answer was correct. This shows Haiku separates correct from controlled wrong answers as well as Nemotron did; it does not measure borderline cases (partial answers, wording, sign convention). Re-check with hand labels on pilot disagreements before seal.",
- "files": [
-  "easy/summary.json",
-  "hard/summary.json",
-  "judge_calib.py"
- ]
+    "judge_model": "anthropic/claude-haiku-5.5",
+    "date": "2026-11-25",
+    "mode": "single-answer (llm_judge.judge_answer), temperature 0",
+    "design": "controlled calibration: real answers that a reviewer labelled correct (v4.6u or16 review-evidence excerpts + or10 sample) and controlled copies of the same answers: value 25% off gold, value 3x the tolerance band off gold, unit scale x1000, refusal answered with a number (all incorrect), and value moved half the tolerance band (still correct)",
+    "n": 200,
+    "agreement": 1.0,
+    "cohen_kappa": 1.0,
+    "confusion": {
+        "TP": 100,
+        "FN_judge": 0,
+        "FP_judge": 0,
+        "TN": 100
+    },
+    "cost_usd": 0.083,
+    "comparison": {
+        "nvidia/nemotron-3-ultra-550b-a55b:free": "same items: agreement 1.0, kappa 1.0 (easy 80, hard 120)"
+    },
+    "caveat": "Not a hand-labelled sample of judge-vs-grader disagreements: the or16 trial directories were deleted, and every recoverable labelled answer was correct. This shows Haiku separates correct from controlled wrong answers as well as Nemotron did; it does not measure borderline cases (partial answers, wording, sign convention). Re-check with hand labels on pilot disagreements before seal.",
+    "files": [
+        "easy/summary.json",
+        "hard/summary.json",
+        "judge_calib.py"
+    ]
 }

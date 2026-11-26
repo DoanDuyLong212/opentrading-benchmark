@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Amendment 2026-11-24 (d): group D (8 partial-availability traps) and group E (4 L4 chains), main + 1 pilot each.
+"""Amendment 2026-11-25 (d): group D (8 partial-availability traps) and group E (4 L4 chains), main + 1 pilot each.
 
 D: each question mixes a field the snapshot serves with one it cannot serve (a quarter/year not yet published at the
    2026-11-01 snapshot, a session after 30/10/2026, or the provider's ratio section that is not served). The served
@@ -20,7 +20,7 @@ import build_finance_stratum_20261124 as bfs  # noqa: E402
 import build_investor_stratum_20261124 as inv  # noqa: E402
 import build_safety_stratum_20261116 as bss  # noqa: E402
 
-CREATED = '2026-11-24'
+CREATED = '2026-11-25'
 BN = D(10) ** 9
 MONEY = {'rel': 0.005}
 PCT = {'abs': 0.05}
@@ -182,8 +182,8 @@ def write(split, s, kind):
         (d / 'tests/grader.py').write_text(bss.grader_text(), encoding='utf-8')
     else:
         shutil.copy(STUDY / 'tools/v45_grader.py', d / 'tests/grader.py')
-    pl = {'snapshot_date': '2026-11-01', 'note': 'Báo cáo quý tới Q2/2026, năm tới 2025 (audits/snapshot-extension-2026-11-24); '
-          'giá 120 phiên tới 30/10/2026 (audits/snapshot-extension-2026-11-24b).', 'tools': s['tools']}
+    pl = {'snapshot_date': '2026-11-01', 'note': 'Báo cáo quý tới Q2/2026, năm tới 2025 (audits/snapshot-extension-2026-11-25); '
+          'giá 120 phiên tới 30/10/2026 (audits/snapshot-extension-2026-11-25b).', 'tools': s['tools']}
     (d / 'environment/payloads.json').write_text(json.dumps(pl, ensure_ascii=False, indent=1) + '\n')
     tmpl = (cs.TEMPLATE / 'instruction.md').read_text(encoding='utf-8')
     rounding = '' if kind == 'D' else '\n\n' + cs.ROUNDING
@@ -198,11 +198,11 @@ def write(split, s, kind):
         contract = [p for p in prov if not p['matched_entry_id'].startswith('hist:') or p['matched_entry_id'] == 'hist:' + s['solution']['symbol']]
     else:
         contract = prov
-    gold = {'task_id': s['tid'], 'scoring': 'value', 'solution': s['solution'], 'as_of': '2026-11-24', 'split': split,
+    gold = {'task_id': s['tid'], 'scoring': 'value', 'solution': s['solution'], 'as_of': '2026-11-25', 'split': split,
             'expects': s['expects'], 'contract_version': 2, 'stratum': 'lookup', 'tier': 'L4',
             'family': 'L4 partial availability' if kind == 'D' else 'L4 chain',
-            'notes': ('Group D (amendment 2026-11-24 d): served field exact, unserved field null + reason; primary is the '
-                      'deterministic grader.' if kind == 'D' else 'Group E (amendment 2026-11-24 d): two-tool chain.'),
+            'notes': ('Group D (amendment 2026-11-25 d): served field exact, unserved field null + reason; primary is the '
+                      'deterministic grader.' if kind == 'D' else 'Group E (amendment 2026-11-25 d): two-tool chain.'),
             'provenance_contract': contract, 'provenance_catalog': prov,
             'payload_sha256': hashlib.sha256((d / 'environment/payloads.json').read_bytes()).hexdigest(),
             'required_payload_keys': sorted(p['matched_entry_id'] for p in contract)}
@@ -216,7 +216,7 @@ def write(split, s, kind):
     (d / 'solution/oracle.py').write_text(pre + mark + s['oracle'] + '\n\nif problems:' + tail, encoding='utf-8')
     toml = (cs.TEMPLATE / 'task.toml').read_text(encoding='utf-8')
     toml = toml.replace('# Task benchmark harness tài chính (bộ 200+50) — sinh bởi tools/build_main.py',
-                        '# Group %s — amendment 2026-11-24 (d), tools/build_lookup_extra_20261124.py' % kind)
+                        '# Group %s — amendment 2026-11-25 (d), tools/build_lookup_extra_20261124.py' % kind)
     syms = sorted({e['params']['symbol'] for e in s['tools'].values()})
     for k, v in (('id', s['tid']), ('title', s['title'].replace('"', "'")), ('created', CREATED), ('level', 'L4'),
                  ('family', gold['family']), ('financebench_type', 'partial availability' if kind == 'D' else 'multi-step retrieval'),
@@ -238,7 +238,7 @@ def main():
             receipt[s['tid']] = {'split': split, 'group': kind, 'solution': s['solution'],
                                  'files': {str(f.relative_to(d)): hashlib.sha256(f.read_bytes()).hexdigest()
                                            for f in sorted(d.rglob('*')) if f.is_file()}}
-    (STUDY / 'audits/taskset-revision-2026-11-24/LOOKUP-EXTRA-BUILD.json').write_text(json.dumps(receipt, ensure_ascii=False, indent=1) + '\n')
+    (STUDY / 'audits/taskset-revision-2026-11-25/LOOKUP-EXTRA-BUILD.json').write_text(json.dumps(receipt, ensure_ascii=False, indent=1) + '\n')
     for k, v in receipt.items():
         print(k, v['split'], v['group'], json.dumps(v['solution'], ensure_ascii=False)[:150])
 

@@ -1,166 +1,166 @@
 {
- "schema": "snapshot-extension-v1",
- "recorded_at": "2026-11-24T15:51:30.168761+07:00",
- "raw_file": "raw.json",
- "raw_sha256": "ec7c11086a5a3dee903e35dd630383dda2e9143a4555e9a71c6cefff116c1ea0",
- "source": "vietstock financeinfo (opentrading-mcp providers.vietstock.financeinfo + align_financeinfo, statement=all, periods_n=12)",
- "symbols": [
-  "ANV",
-  "BMP",
-  "CTD",
-  "DBC",
-  "DCM",
-  "DGC",
-  "DHG",
-  "DPM",
-  "DXG",
-  "FPT",
-  "FRT",
-  "GAS",
-  "GEX",
-  "GMD",
-  "GVR",
-  "HAH",
-  "HPG",
-  "HSG",
-  "IMP",
-  "KDC",
-  "KDH",
-  "MSN",
-  "MWG",
-  "NKG",
-  "NLG",
-  "NTP",
-  "PC1",
-  "PLX",
-  "PNJ",
-  "POW",
-  "PVD",
-  "PVS",
-  "REE",
-  "SAB",
-  "TRA",
-  "VCG",
-  "VGS",
-  "VHC",
-  "VJC",
-  "VNM"
- ],
- "errors": {},
- "period_rule": "quarters Q3/2024..Q2/2026 and years 2021..2025 only; Q3/2026 dropped because consolidated Q3 reports can publish after the 2026-11-01 snapshot",
- "served_variants": "statement=KQKD and statement=CDKT per symbol and period type; the CSTC ratio section is not served",
- "minority_interest": "Lợi ích của CĐ thiểu số is empty (null) for every period in this source; tasks use Vốn chủ sở hữu as published",
- "cross_check": {
-  "note": "recorded values vs every earlier frozen financial_statements payload (v4.7 tasks incl. retired, v4.6u tasks); the new C5/M6 tasks are excluded",
-  "matches": 112,
-  "mismatches_with_real_snapshot": 0,
-  "mismatches_with_synthetic_devsmoke_fixtures": 8,
-  "mismatches": [
-   {
-    "symbol": "DGC",
-    "period_type": "quarter",
-    "row": "Doanh thu thuần",
-    "period": "Q2/2026",
-    "recorded": 2415414034358.0,
-    "frozen": [
-     420
+    "schema": "snapshot-extension-v1",
+    "recorded_at": "2026-11-25T15:51:30.168761+07:00",
+    "raw_file": "raw.json",
+    "raw_sha256": "ec7c11086a5a3dee903e35dd630383dda2e9143a4555e9a71c6cefff116c1ea0",
+    "source": "vietstock financeinfo (opentrading-mcp providers.vietstock.financeinfo + align_financeinfo, statement=all, periods_n=12)",
+    "symbols": [
+        "ANV",
+        "BMP",
+        "CTD",
+        "DBC",
+        "DCM",
+        "DGC",
+        "DHG",
+        "DPM",
+        "DXG",
+        "FPT",
+        "FRT",
+        "GAS",
+        "GEX",
+        "GMD",
+        "GVR",
+        "HAH",
+        "HPG",
+        "HSG",
+        "IMP",
+        "KDC",
+        "KDH",
+        "MSN",
+        "MWG",
+        "NKG",
+        "NLG",
+        "NTP",
+        "PC1",
+        "PLX",
+        "PNJ",
+        "POW",
+        "PVD",
+        "PVS",
+        "REE",
+        "SAB",
+        "TRA",
+        "VCG",
+        "VGS",
+        "VHC",
+        "VJC",
+        "VNM"
     ],
-    "frozen_source": [
-     "synthetic-dev"
-    ]
-   },
-   {
-    "symbol": "DGC",
-    "period_type": "quarter",
-    "row": "Doanh thu thuần",
-    "period": "Q3/2026",
-    "recorded": 2469452018045.0,
-    "frozen": [
-     483
-    ],
-    "frozen_source": [
-     "synthetic-dev"
-    ]
-   },
-   {
-    "symbol": "DPM",
-    "period_type": "quarter",
-    "row": "Doanh thu thuần",
-    "period": "Q2/2026",
-    "recorded": 6985757951118.0,
-    "frozen": [
-     810000000000
-    ],
-    "frozen_source": [
-     "synthetic-dev"
-    ]
-   },
-   {
-    "symbol": "DPM",
-    "period_type": "quarter",
-    "row": "Doanh thu thuần",
-    "period": "Q3/2026",
-    "recorded": 4127957832260.0,
-    "frozen": [
-     972000000000
-    ],
-    "frozen_source": [
-     "synthetic-dev"
-    ]
-   },
-   {
-    "symbol": "NLG",
-    "period_type": "quarter",
-    "row": "Doanh thu thuần",
-    "period": "Q2/2026",
-    "recorded": 415142651112.0,
-    "frozen": [
-     300
-    ],
-    "frozen_source": [
-     "synthetic-dev"
-    ]
-   },
-   {
-    "symbol": "NLG",
-    "period_type": "quarter",
-    "row": "Doanh thu thuần",
-    "period": "Q3/2026",
-    "recorded": 327684860843.0,
-    "frozen": [
-     400
-    ],
-    "frozen_source": [
-     "synthetic-dev"
-    ]
-   },
-   {
-    "symbol": "NLG",
-    "period_type": "quarter",
-    "row": "Lợi nhuận gộp",
-    "period": "Q2/2026",
-    "recorded": 236820552903.0,
-    "frozen": [
-     60
-    ],
-    "frozen_source": [
-     "synthetic-dev"
-    ]
-   },
-   {
-    "symbol": "NLG",
-    "period_type": "quarter",
-    "row": "Lợi nhuận gộp",
-    "period": "Q3/2026",
-    "recorded": 151160292054.0,
-    "frozen": [
-     92
-    ],
-    "frozen_source": [
-     "synthetic-dev"
-    ]
-   }
-  ]
- },
- "leakage": "no task uses a period after Q2/2026 or year after 2025"
+    "errors": {},
+    "period_rule": "quarters Q3/2024..Q2/2026 and years 2021..2025 only; Q3/2026 dropped because consolidated Q3 reports can publish after the 2026-11-01 snapshot",
+    "served_variants": "statement=KQKD and statement=CDKT per symbol and period type; the CSTC ratio section is not served",
+    "minority_interest": "Lợi ích của CĐ thiểu số is empty (null) for every period in this source; tasks use Vốn chủ sở hữu as published",
+    "cross_check": {
+        "note": "recorded values vs every earlier frozen financial_statements payload (v4.7 tasks incl. retired, v4.6u tasks); the new C5/M6 tasks are excluded",
+        "matches": 112,
+        "mismatches_with_real_snapshot": 0,
+        "mismatches_with_synthetic_devsmoke_fixtures": 8,
+        "mismatches": [
+            {
+                "symbol": "DGC",
+                "period_type": "quarter",
+                "row": "Doanh thu thuần",
+                "period": "Q2/2026",
+                "recorded": 2415414034358.0,
+                "frozen": [
+                    420
+                ],
+                "frozen_source": [
+                    "synthetic-dev"
+                ]
+            },
+            {
+                "symbol": "DGC",
+                "period_type": "quarter",
+                "row": "Doanh thu thuần",
+                "period": "Q3/2026",
+                "recorded": 2469452018045.0,
+                "frozen": [
+                    483
+                ],
+                "frozen_source": [
+                    "synthetic-dev"
+                ]
+            },
+            {
+                "symbol": "DPM",
+                "period_type": "quarter",
+                "row": "Doanh thu thuần",
+                "period": "Q2/2026",
+                "recorded": 6985757951118.0,
+                "frozen": [
+                    810000000000
+                ],
+                "frozen_source": [
+                    "synthetic-dev"
+                ]
+            },
+            {
+                "symbol": "DPM",
+                "period_type": "quarter",
+                "row": "Doanh thu thuần",
+                "period": "Q3/2026",
+                "recorded": 4127957832260.0,
+                "frozen": [
+                    972000000000
+                ],
+                "frozen_source": [
+                    "synthetic-dev"
+                ]
+            },
+            {
+                "symbol": "NLG",
+                "period_type": "quarter",
+                "row": "Doanh thu thuần",
+                "period": "Q2/2026",
+                "recorded": 415142651112.0,
+                "frozen": [
+                    300
+                ],
+                "frozen_source": [
+                    "synthetic-dev"
+                ]
+            },
+            {
+                "symbol": "NLG",
+                "period_type": "quarter",
+                "row": "Doanh thu thuần",
+                "period": "Q3/2026",
+                "recorded": 327684860843.0,
+                "frozen": [
+                    400
+                ],
+                "frozen_source": [
+                    "synthetic-dev"
+                ]
+            },
+            {
+                "symbol": "NLG",
+                "period_type": "quarter",
+                "row": "Lợi nhuận gộp",
+                "period": "Q2/2026",
+                "recorded": 236820552903.0,
+                "frozen": [
+                    60
+                ],
+                "frozen_source": [
+                    "synthetic-dev"
+                ]
+            },
+            {
+                "symbol": "NLG",
+                "period_type": "quarter",
+                "row": "Lợi nhuận gộp",
+                "period": "Q3/2026",
+                "recorded": 151160292054.0,
+                "frozen": [
+                    92
+                ],
+                "frozen_source": [
+                    "synthetic-dev"
+                ]
+            }
+        ]
+    },
+    "leakage": "no task uses a period after Q2/2026 or year after 2025"
 }

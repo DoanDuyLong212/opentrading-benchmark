@@ -1,4 +1,4 @@
-/* Snapshot clock for the harness process (amendment 2026-11-24 e, owner: "freeze tại ngày snapshot mcp").
+/* Snapshot clock for the harness process (amendment 2026-11-25 e, owner: "freeze tại ngày snapshot mcp").
  *
  * LD_PRELOAD into the harness's main process only. On load the wall clock is shifted so that it reads
  * CLOCKSHIFT_TARGET_EPOCH (seconds) at that instant and then advances normally; monotonic clocks are untouched

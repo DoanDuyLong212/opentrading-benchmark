@@ -26,7 +26,7 @@ import build_compute_stratum_20261111 as CS  # noqa: E402
 
 CONTRACT = 'native-memory-v2'
 TEMPLATE = STUDY / 'tasks/main/fin-l3-index-216'
-if not TEMPLATE.is_dir():  # retired by the 2026-11-24 prune; the template files are unchanged there
+if not TEMPLATE.is_dir():  # retired by the 2026-11-25 prune; the template files are unchanged there
     TEMPLATE = STUDY / 'tasks-retired/main/fin-l3-index-216'
 PEER_SRC = {'banks_p': 'holdout/fin-l3-screen-923', 'sec_p': 'holdout/fin-l3-screen-924', 'cons_p': 'main/fin-l3-screen-192',
             'tech_p': 'main/fin-l3-screen-193', 'bds_p': 'main/fin-l5-compare-280', 'energy_p': 'main/fin-l5-compare-281',

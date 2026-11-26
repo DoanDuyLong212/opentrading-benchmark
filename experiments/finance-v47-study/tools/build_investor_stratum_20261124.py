@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Investor stratum (I), amendment 2026-11-24 (d). Specs and rules: tools/investor_specs_20261124.py (pre-registered).
+"""Investor stratum (I), amendment 2026-11-25 (d). Specs and rules: tools/investor_specs_20261124.py (pre-registered).
 
 Agents see only snapshot data (120 sessions to 30/10/2026, quarterly statements to Q2/2026, VN-Index). Gold applies
 the pre-registered outcome rule to recorded post-snapshot closes (31/10..END), which never enter a payload, and
@@ -17,10 +17,10 @@ import build_finance_stratum_20261124 as bfs  # noqa: E402
 import build_memory_stratum_20261111 as ms  # noqa: E402
 import investor_specs_20261124 as SP  # noqa: E402
 
-EXT = STUDY / 'audits/snapshot-extension-2026-11-24b'
+EXT = STUDY / 'audits/snapshot-extension-2026-11-25b'
 POST_FILE = EXT / 'post-20261124.json'
 PRE_FILE = EXT / 'pre-120.json'
-CREATED = '2026-11-24'
+CREATED = '2026-11-25'
 INDEX = 'VNINDEX'
 
 
@@ -208,7 +208,7 @@ def provenance(tools, keys):
 def finish_gold(d, spec, sol, expects, tools, contract_keys, base):
     gold = dict(base, task_id=spec['tid'], scoring='outcome', solution=sol, as_of=REC['recorded_at'], split=spec['split'],
                 expects=expects, contract_version=2, stratum='investor', tier=spec['type'],
-                notes='Investor stratum (amendment 2026-11-24 d): primary = pre-registered outcome rule on recorded '
+                notes='Investor stratum (amendment 2026-11-25 d): primary = pre-registered outcome rule on recorded '
                       'post-snapshot closes (tools/investor_specs_20261124.py).',
                 provenance_contract=provenance(tools, contract_keys), provenance_catalog=provenance(tools, sorted(tools)),
                 payload_sha256=hashlib.sha256((d / 'environment/payloads.json').read_bytes()).hexdigest(),
@@ -223,8 +223,8 @@ def write_single(spec):
         shutil.rmtree(d)
     (d / 'environment').mkdir(parents=True); (d / 'solution').mkdir(); (d / 'tests').mkdir()
     shutil.copy(STUDY / 'tools/v45_grader.py', d / 'tests/grader.py')
-    pl = {'snapshot_date': '2026-11-01', 'note': 'Giá 120 phiên tới 30/10/2026 (audits/snapshot-extension-2026-11-24b) và '
-          'báo cáo quý tới Q2/2026 (audits/snapshot-extension-2026-11-24).', 'tools': tools}
+    pl = {'snapshot_date': '2026-11-01', 'note': 'Giá 120 phiên tới 30/10/2026 (audits/snapshot-extension-2026-11-25b) và '
+          'báo cáo quý tới Q2/2026 (audits/snapshot-extension-2026-11-25).', 'tools': tools}
     (d / 'environment/payloads.json').write_text(json.dumps(pl, ensure_ascii=False, indent=1) + '\n')
     title = 'Nhà đầu tư %s — %s' % (spec['type'], TYPE_NAME[spec['type']]) + (' (%s)' % spec['sector'] if spec.get('sector') else '')
     tmpl = (cs.TEMPLATE / 'instruction.md').read_text(encoding='utf-8')
@@ -239,7 +239,7 @@ def write_single(spec):
     (d / 'solution/oracle.py').write_text(pre + mark + ORACLE + '\n\nif problems:' + tail, encoding='utf-8')
     toml = (cs.TEMPLATE / 'task.toml').read_text(encoding='utf-8')
     toml = toml.replace('# Task benchmark harness tài chính (bộ 200+50) — sinh bởi tools/build_main.py',
-                        '# Investor stratum — amendment 2026-11-24 (d), tools/build_investor_stratum_20261124.py')
+                        '# Investor stratum — amendment 2026-11-25 (d), tools/build_investor_stratum_20261124.py')
     for k, v in (('id', spec['tid']), ('title', title.replace('"', "'")), ('created', CREATED), ('level', spec['type']),
                  ('family', '%s investor' % spec['type']), ('financebench_type', 'investment decision (outcome-scored)'),
                  ('entity', '+'.join(spec['cands'])), ('split', spec['split'])):
@@ -276,14 +276,14 @@ def write_memory(spec):
     finish_gold(d, spec, sol, expects, tools, keys, base)
     toml = (d / 'task.toml').read_text(encoding='utf-8')
     toml = toml.replace('# Native-memory stratum — amendment 2026-11-11 (d), tools/build_memory_stratum_20261111.py',
-                        '# Investor stratum (memory) — amendment 2026-11-24 (d), tools/build_investor_stratum_20261124.py')
+                        '# Investor stratum (memory) — amendment 2026-11-25 (d), tools/build_investor_stratum_20261124.py')
     toml = re.sub(r'^created = ".*"$', 'created = "%s"' % CREATED, toml, flags=re.M)
     toml = re.sub(r'^family = ".*"$', 'family = "I5 investor memory"', toml, flags=re.M)
     toml = re.sub(r'^stratum = ".*"$', 'stratum = "investor"', toml, flags=re.M)
     toml = re.sub(r'^type = "value"$', 'type = "outcome"', toml, flags=re.M)
     (d / 'task.toml').write_text(toml, encoding='utf-8')
     turns = json.loads((d / 'environment/turns.json').read_text())
-    turns['note'] = 'Investor memory (amendment 2026-11-24 d). Same sessions for every arm; memory_command = OT /nho form, chat for others.'
+    turns['note'] = 'Investor memory (amendment 2026-11-25 d). Same sessions for every arm; memory_command = OT /nho form, chat for others.'
     (d / 'environment/turns.json').write_text(json.dumps(turns, ensure_ascii=False, indent=1) + '\n')
     return d, sol
 
@@ -297,7 +297,7 @@ def main():
                                          'chance_base_rate': sol['chance_base_rate'],
                                          'files': {str(p.relative_to(d)): hashlib.sha256(p.read_bytes()).hexdigest()
                                                    for p in sorted(d.rglob('*')) if p.is_file()}}
-    out = STUDY / 'audits/taskset-revision-2026-11-24'
+    out = STUDY / 'audits/taskset-revision-2026-11-25'
     (out / 'INVESTOR-BUILD.json').write_text(json.dumps(receipt, ensure_ascii=False, indent=1) + '\n')
     for k, v in receipt['tasks'].items():
         print(k, v['split'], v['type'], 'passing', len(v['passing_sets']), 'base', v['chance_base_rate'])
