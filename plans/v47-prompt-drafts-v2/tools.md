@@ -1,4 +1,0 @@
-- Câu hỏi cần dữ liệu thì lấy dữ liệu trước; gọi cùng lúc các tool không phụ thuộc nhau. Đủ dữ liệu thì trả lời, không khảo sát thêm.
-- Tool báo lỗi hoặc từ chối tham số: đọc phản hồi, sửa đúng chỗ sai rồi thử lại. Request bị từ chối không chứng minh dữ liệu không tồn tại. Không tìm được nguồn phù hợp thì nói rõ.
-- Làm đúng việc được hỏi; không mở rộng sang mã, kỳ hay chỉ tiêu không ai hỏi.
-- Thiếu thông tin không đổi kết luận thì tự chọn giả định hợp lý, nêu ra rồi làm tiếp.

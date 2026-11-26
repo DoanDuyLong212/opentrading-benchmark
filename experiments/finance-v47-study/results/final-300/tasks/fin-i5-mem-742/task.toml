@@ -1,0 +1,33 @@
+# Investor stratum (memory) — amendment 2026-11-24 (d), tools/build_investor_stratum_20261124.py
+id = "fin-i5-mem-742"
+title = "Nhà đầu tư I5 — ràng buộc ghi nhớ (cập nhật ràng buộc)"
+version = 3
+created = "2026-11-24"
+level = "I5"
+family = "I5 investor memory"
+financebench_type = "multi-session memory"
+entity = "fs:GAS:q:CDKT+fs:GAS:q:KQKD+fs:HPG:q:CDKT+fs:HPG:q:KQKD+fs:HSG:q:CDKT+fs:HSG:q:KQKD+fs:PLX:q:CDKT+fs:PLX:q:KQKD+fs:PVS:q:CDKT+fs:PVS:q:KQKD+fs:REE:q:CDKT+fs:REE:q:KQKD+hist:GAS+hist:HPG+hist:HSG+hist:PLX+hist:PVS+hist:REE+hist:SSI+hist:VND+idx:VNINDEX"
+asset = "vn_stock"
+data_zone = "green"
+data_pairs = []
+snapshot_date = "2026-11-01"
+universe_cap = 0
+banned_tools = ["web_search", "web_fetch", "sentiment_score"]
+human_time_band = "15–60 phút"
+time_limit_min = 30
+tools_expected = ["financial_statements", "vn_index_ohlcv", "vn_quote_history"]
+mcp_payloads = "environment/payloads.json"
+snapshot_required = true
+split = "main"
+multiturn = true
+track = "memory_multiturn"
+stratum = "investor"
+tier = "I5"
+subtier = "I5-update"
+confirmatory_eligible = true
+
+[scoring]
+type = "outcome"
+gold = "solution/gold.json"
+oracle = "solution/oracle.py"
+grader = "tests/grader.py"

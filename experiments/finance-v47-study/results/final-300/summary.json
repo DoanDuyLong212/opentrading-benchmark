@@ -1,0 +1,481 @@
+{
+ "tasks": 300,
+ "trials": 900,
+ "arms": {
+  "opentrading_machine": {
+   "primary": 279,
+   "primary_rate": 0.93,
+   "by_stratum": {
+    "compute": [
+     78,
+     79
+    ],
+    "investor": [
+     19,
+     36
+    ],
+    "lookup": [
+     110,
+     112
+    ],
+    "memory": [
+     58,
+     59
+    ],
+    "robustness": [
+     14,
+     14
+    ]
+   },
+   "by_family": {
+    "C1": [
+     8,
+     8
+    ],
+    "C2": [
+     8,
+     8
+    ],
+    "C3": [
+     27,
+     27
+    ],
+    "C4": [
+     13,
+     13
+    ],
+    "C5": [
+     22,
+     23
+    ],
+    "I1": [
+     4,
+     5
+    ],
+    "I2": [
+     0,
+     4
+    ],
+    "I3": [
+     4,
+     5
+    ],
+    "I4": [
+     3,
+     3
+    ],
+    "I5": [
+     1,
+     3
+    ],
+    "L2": [
+     13,
+     13
+    ],
+    "L3": [
+     35,
+     36
+    ],
+    "L4": [
+     33,
+     34
+    ],
+    "L5": [
+     29,
+     29
+    ],
+    "M1": [
+     6,
+     6
+    ],
+    "M2": [
+     6,
+     7
+    ],
+    "M3": [
+     15,
+     15
+    ],
+    "M4": [
+     11,
+     11
+    ],
+    "M5": [
+     7,
+     7
+    ],
+    "M6": [
+     13,
+     13
+    ],
+    "R1": [
+     7,
+     16
+    ],
+    "S2": [
+     8,
+     8
+    ],
+    "S3": [
+     6,
+     6
+    ]
+   },
+   "verdicts": {
+    "correct": 279,
+    "partial": 2,
+    "incorrect": 18,
+    "no_answer": 1
+   },
+   "format_valid": 299,
+   "dnf": 1,
+   "false_refusal": [
+    0,
+    289
+   ],
+   "answer_on_refusal_task": [
+    0,
+    11
+   ],
+   "numeric_gate_veto": 1,
+   "cost_total_usd": 0.6803,
+   "cost_measured_trials": 300,
+   "cost_per_trial_usd": 0.00227,
+   "cost_per_success_usd": 0.00244,
+   "tokens_in_avg": 55902,
+   "tokens_out_avg": 2956,
+   "requests_avg": 3.79,
+   "mcp_calls_avg": 3.41,
+   "wall_p50_s": 36.2,
+   "wall_p90_s": 95.1,
+   "trials_over_5min": 1
+  },
+  "opencode": {
+   "primary": 245,
+   "primary_rate": 0.8167,
+   "by_stratum": {
+    "compute": [
+     75,
+     79
+    ],
+    "investor": [
+     16,
+     36
+    ],
+    "lookup": [
+     110,
+     112
+    ],
+    "memory": [
+     30,
+     59
+    ],
+    "robustness": [
+     14,
+     14
+    ]
+   },
+   "by_family": {
+    "C1": [
+     8,
+     8
+    ],
+    "C2": [
+     8,
+     8
+    ],
+    "C3": [
+     26,
+     27
+    ],
+    "C4": [
+     12,
+     13
+    ],
+    "C5": [
+     21,
+     23
+    ],
+    "I1": [
+     2,
+     5
+    ],
+    "I2": [
+     0,
+     4
+    ],
+    "I3": [
+     1,
+     5
+    ],
+    "I4": [
+     1,
+     3
+    ],
+    "I5": [
+     2,
+     3
+    ],
+    "L2": [
+     13,
+     13
+    ],
+    "L3": [
+     35,
+     36
+    ],
+    "L4": [
+     33,
+     34
+    ],
+    "L5": [
+     29,
+     29
+    ],
+    "M1": [
+     6,
+     6
+    ],
+    "M2": [
+     7,
+     7
+    ],
+    "M3": [
+     3,
+     15
+    ],
+    "M4": [
+     1,
+     11
+    ],
+    "M5": [
+     3,
+     7
+    ],
+    "M6": [
+     10,
+     13
+    ],
+    "R1": [
+     10,
+     16
+    ],
+    "S2": [
+     8,
+     8
+    ],
+    "S3": [
+     6,
+     6
+    ]
+   },
+   "verdicts": {
+    "correct": 248,
+    "partial": 8,
+    "incorrect": 38,
+    "no_answer": 6
+   },
+   "format_valid": 288,
+   "dnf": 6,
+   "false_refusal": [
+    10,
+    289
+   ],
+   "answer_on_refusal_task": [
+    0,
+    11
+   ],
+   "numeric_gate_veto": 15,
+   "cost_total_usd": 1.2529,
+   "cost_measured_trials": 181,
+   "cost_per_trial_usd": 0.00418,
+   "cost_per_success_usd": 0.00511,
+   "tokens_in_avg": 114653,
+   "tokens_out_avg": 7361,
+   "requests_avg": 6.85,
+   "mcp_calls_avg": 4.55,
+   "wall_p50_s": 47.5,
+   "wall_p90_s": 294.1,
+   "trials_over_5min": 30
+  },
+  "dsh": {
+   "primary": 266,
+   "primary_rate": 0.8867,
+   "by_stratum": {
+    "compute": [
+     76,
+     79
+    ],
+    "investor": [
+     16,
+     36
+    ],
+    "lookup": [
+     110,
+     112
+    ],
+    "memory": [
+     50,
+     59
+    ],
+    "robustness": [
+     14,
+     14
+    ]
+   },
+   "by_family": {
+    "C1": [
+     8,
+     8
+    ],
+    "C2": [
+     8,
+     8
+    ],
+    "C3": [
+     27,
+     27
+    ],
+    "C4": [
+     12,
+     13
+    ],
+    "C5": [
+     21,
+     23
+    ],
+    "I1": [
+     2,
+     5
+    ],
+    "I2": [
+     0,
+     4
+    ],
+    "I3": [
+     2,
+     5
+    ],
+    "I4": [
+     3,
+     3
+    ],
+    "I5": [
+     1,
+     3
+    ],
+    "L2": [
+     13,
+     13
+    ],
+    "L3": [
+     36,
+     36
+    ],
+    "L4": [
+     32,
+     34
+    ],
+    "L5": [
+     29,
+     29
+    ],
+    "M1": [
+     6,
+     6
+    ],
+    "M2": [
+     7,
+     7
+    ],
+    "M3": [
+     13,
+     15
+    ],
+    "M4": [
+     9,
+     11
+    ],
+    "M5": [
+     6,
+     7
+    ],
+    "M6": [
+     9,
+     13
+    ],
+    "R1": [
+     8,
+     16
+    ],
+    "S2": [
+     8,
+     8
+    ],
+    "S3": [
+     6,
+     6
+    ]
+   },
+   "verdicts": {
+    "correct": 268,
+    "partial": 6,
+    "incorrect": 21,
+    "no_answer": 5
+   },
+   "format_valid": 285,
+   "dnf": 6,
+   "false_refusal": [
+    0,
+    289
+   ],
+   "answer_on_refusal_task": [
+    0,
+    11
+   ],
+   "numeric_gate_veto": 5,
+   "cost_total_usd": 1.1941,
+   "cost_measured_trials": 181,
+   "cost_per_trial_usd": 0.00398,
+   "cost_per_success_usd": 0.00449,
+   "tokens_in_avg": 116100,
+   "tokens_out_avg": 6476,
+   "requests_avg": 7.24,
+   "mcp_calls_avg": 4.18,
+   "wall_p50_s": 31.3,
+   "wall_p90_s": 218.4,
+   "trials_over_5min": 17
+  }
+ },
+ "paired_vs_opentrading": {
+  "opencode": {
+   "ot_wins": 40,
+   "ot_losses": 6,
+   "p_two_sided_sign": 3.1028037028590916e-07
+  },
+  "dsh": {
+   "ot_wins": 19,
+   "ot_losses": 6,
+   "p_two_sided_sign": 0.01463329792022705
+  }
+ },
+ "all_fail_tasks": [
+  "fin-c5-lev-611",
+  "fin-i1-pick-703",
+  "fin-i2-maxgain-711",
+  "fin-i2-maxgain-712",
+  "fin-i2-maxgain-713",
+  "fin-i2-maxgain-714",
+  "fin-i3-risk-723",
+  "fin-i5-mem-742",
+  "fin-r1-call-771",
+  "fin-r1-call-772",
+  "fin-r1-call-777",
+  "fin-r1-call-784"
+ ],
+ "ot_only_fail_tasks": [
+  "fin-i5-mem-743",
+  "fin-m2-screen-507",
+  "fin-r1-call-781"
+ ]
+}

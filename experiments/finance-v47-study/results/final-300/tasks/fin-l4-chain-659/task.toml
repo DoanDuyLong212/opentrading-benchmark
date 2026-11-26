@@ -1,0 +1,31 @@
+# Group E — amendment 2026-11-24 (d), tools/build_lookup_extra_20261124.py
+id = "fin-l4-chain-659"
+title = "Chuỗi 2 bước KDH/NLG/DXG/CTD"
+version = 2
+created = "2026-11-24"
+level = "L4"
+family = "L4 chain"
+financebench_type = "multi-step retrieval"
+entity = "CTD+DXG+KDH+NLG"
+asset = "vn_stock"
+data_zone = "green"
+data_pairs = []
+snapshot_date = "2026-11-01"
+universe_cap = 0
+banned_tools = ["web_search", "web_fetch", "sentiment_score"]
+human_time_band = "15–60 phút"
+time_limit_min = 60
+tools_expected = ["financial_statements", "vn_quote_history"]
+mcp_payloads = "environment/payloads.json"
+snapshot_required = true
+split = "main"
+
+confirmatory_eligible = true
+stratum = "lookup"
+tier = "L4"
+
+[scoring]
+type = "value"
+gold = "solution/gold.json"
+oracle = "solution/oracle.py"
+grader = "tests/grader.py"

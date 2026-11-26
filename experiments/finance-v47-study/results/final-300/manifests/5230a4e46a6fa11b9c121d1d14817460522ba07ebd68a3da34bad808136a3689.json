@@ -1,0 +1,785 @@
+{
+  "created_at": "2026-11-25T16:53:37.826234+00:00",
+  "fingerprint": "5230a4e46a6fa11b9c121d1d14817460522ba07ebd68a3da34bad808136a3689",
+  "plan": {
+    "code": {
+      "tools/.pytest_cache/README.md": "73fd6fccdd802c419a6b2d983d6c3173b7da97558ac4b589edec2dfe443db9ad",
+      "tools/_gen_payloads.py": "6d64ad6cdabaef60bc9e7ad112a18759fe09becebb6b59936f580d874ab5183c",
+      "tools/_gen_tasks_a.py": "64ec744d2aa3aa5f8369b0f42762463eee211d8e1d82af7aacffa03a57ad5bf0",
+      "tools/_gen_tasks_b.py": "92f4118f117d904acbda0d0fc3e676cf6aa61ffa702adec6e7fa581ed7e82639",
+      "tools/_gen_templates.py": "9218ca0311e5f488ffb628e39443e1bc9eeb573ecce66910bd08e1ca918760cb",
+      "tools/analytics_calculate.py": "a65002c4bb835edffe2ed93878f866a9c568290c8626a4fa98fa92702b3f6291",
+      "tools/analytics_compute.py": "10f45bd7a81f1d45ce0accbd853e74f059beb05665c60da3d6bf8b0fdd02aecb",
+      "tools/analyze.py": "5a1e9262a4daf34e99634561c24f0230a4c0292382b852b98d6a9dc4d8ead2e5",
+      "tools/analyze_v42_errors.py": "27000b8398e6506714464de52d34c62ccbd96058f16be69d66a5b831c6eabfdf",
+      "tools/analyze_v43_errors.py": "fbffe38d51ddcce7641f2096ee396bdf45724f353c4f42caa6c97e6db4640857",
+      "tools/apply_gold_audit_20261110.py": "36f797349c9edc0e237a7585aab1461f7686d0cd26262d484ed0e543972b13a3",
+      "tools/apply_main_amendment_20261110.py": "975f081f42e6c34171f61dd5f5ffb48e377d847d30a3db4e0b1859ceab404c9a",
+      "tools/apply_taskset_prune_20261111.py": "c559c77feb82b2347d54d4332ea1d5cc376ac256c104a7fd23e1d22ed1f75a72",
+      "tools/audit_benchmark.py": "7f45992299cd2efe006523242b41c0d5be4ec2ffeb42bb5a1e43ef93dc10fb1c",
+      "tools/audit_provider_probe.py": "4842da03b3d9efcf7e449b1365f961627c9dcc704dce566778c3744d259f913e",
+      "tools/audit_series_contract.py": "0d6ccaf52ccc7b52b50f847729ee9c9f15f2adcd4da5453f4b2aad4bd413e16d",
+      "tools/audit_smoke.py": "dd4ff6cefd1bb62a0ce336bc2b837b4e5b52787b0e8eee11aa48ecc427325be6",
+      "tools/audit_v45_memory_corpus.py": "f5f0ae70db620fa1de3a33b3c2767245c4e5d297253846e00f9d80e37bfd0180",
+      "tools/audit_v45_memory_corpus_batch3.py": "8edae12d067b54461a77e10c67d36586f7e3a55633b7818e4e07d1660d64a34d",
+      "tools/audit_v45_memory_run.py": "418d869ffb224f33fc9304d15c2001af6ae8a5b866ec6bdf743ae86d0a3742da",
+      "tools/audit_v45_run.py": "c0dcbabfdf2f18d8f525c5f990cee488bf782a205e4799781e079b3acfa19f7e",
+      "tools/b0_gate.py": "7425f66ef8ddaee624401088ea1946ef936bffdddb58dbab50ce982320aad037",
+      "tools/bench_config.json": "b14672f89d9b87af68866f4bbed09794d9d36447755a3be40a025ddb962cf969",
+      "tools/bench_config_deepseek.json": "9b8df2b17371a9b289a6725ae270925b3118ffdbf7506c7cc7689994562a8a53",
+      "tools/bench_config_deepseek_openrouter.json": "cc898ab340523f25fa360d4418a935683d25de539b024fc82c8e5f6139944052",
+      "tools/bench_config_openrouter.json": "087f1e1471fda3d7bbe13a3d41aed7d7d7ccd9075bcd815f3d797ad32d517280",
+      "tools/bench_config_v47.json": "c2c8439d2e7253d59d364d5a9a6a9179fa8b24160c8efb8915b5d85ace55c5ce",
+      "tools/bench_config_v47_devfree.json": "2bf4d456e5c4fd96e0c66b2a76404fd137033031db2e3a6af02447fac107dfa9",
+      "tools/bootstrap/dsh/package-lock.json": "3aeecb19a0e7c9df211015ef784ba13d6d5ad9ab0b7e899d0e4d4b3da8fbc90d",
+      "tools/bootstrap/dsh/package.json": "c8d85ab9572492b9e7227c2234b992089dbf13814c0648132d954d8243ce789a",
+      "tools/bootstrap/python-artifacts.json": "f0cf9b9f96dfb46e767bb498caa28ffdd068e293d3d9232ecc2e7b445bc220f1",
+      "tools/bootstrap/runtime-source.json": "1bcdbd945b3d815bdd59543de2f8ea209fe7865d7f31ddfe2df3cda2be3791e2",
+      "tools/bootstrap/toolchain-receipts.json": "11eac20ef78062194c61164c67f9ba66e70958d826acf717f6999f943b9a4b90",
+      "tools/bootstrap_offline.py": "bd48eeb21f140e34a027681be583aedf24de1db8cdd3af1ad8de25ea768cb50f",
+      "tools/build_compute_extra_20261124.py": "ff3144d5a15c375a968a3d712b76d6fed86c77c687c1f4bd3da0c321cdaed7fc",
+      "tools/build_compute_series_20261116.py": "449e952c289462b59802ea0a57403fbc3ce439ea7dbe0c5ab3095df868b65763",
+      "tools/build_compute_stratum_20261111.py": "9995a29097f334f2a1560f952b7a77cad487b847bb1851655c577bd8a2df4e40",
+      "tools/build_finance_stratum_20261124.py": "ffc5c076fa5ca32321ee4bb0734b10c96e3ef10737189c92093e3bcfa007dcbb",
+      "tools/build_holdout_replacements_20261110.py": "5a4e399699717537009ac76a2b044b4bf22aae7a847f4c0fec3bae7afdb9e28a",
+      "tools/build_investor_stratum_20261124.py": "1a6b9156cbf2a417ccc376150ee5280a454f9ecf55e2d6055ec37a6ca402471a",
+      "tools/build_lookup_extra_20261124.py": "59906f0331a478c10b2af7506e22d00ce908c54d185a4e8702d8d5ea4f4be7d9",
+      "tools/build_main.py": "e99a9dee17d64fc23b8d57c3eec840b7ac1ee67657e06a171454d70557920cf6",
+      "tools/build_memory_extra_20261124.py": "a4ce48b269eeef01acacb15865e46d09c541efd3995c9089e86e8fcf9fc9c871",
+      "tools/build_memory_stratum_20261111.py": "3c2458744a87807d017354e574c4c60959c0ac935a78f195dd5327e3dd6b2e1d",
+      "tools/build_plan.py": "7c9ec9abd98b3a17d04ddb1791150c5310d726c0e2b6f6e9d7dec87e0df12231",
+      "tools/build_recommend_stratum_20261124.py": "ee88e825e44f076e9a8ea65f64574ac2169c0bb8a43d1a96fbafd4d7128e3758",
+      "tools/build_safety_stratum_20261116.py": "828f815177399449afc91410ba9c5e48dd456e937b92e022237197addc6a8549",
+      "tools/build_sandbox_image.py": "7fe8ff0e2812fc908927ac121a2ef7b4a8403f45df40fdb0c7d8df55f325db3f",
+      "tools/build_v45_devsmoke.py": "36587724b5122824d90d84fbe1574fa506f4f1994bafb0d7f728939b44d978a7",
+      "tools/c2_native_wire_probe.py": "b8573af2ff6ae6bbb8c6f4da4e02e7ca7f54ef51a77507ec797f8c6191ff4843",
+      "tools/check_change.py": "21a0dda50458a348b734ad8fa1850b2666b071bc59335aced0cf14a83dde735e",
+      "tools/check_leaks.py": "2a03fe545612b37d3b869569f9bd4cd43fe62f3821b70270a95f5811465a928b",
+      "tools/clock_policy.py": "1c3517b05fe0f086dd854ecfd68dab80176c0ce1c97d7a4494738636192487b7",
+      "tools/compute_hard_templates_20261111.py": "28c3672e4ab47e3e11960c561bc22e9af3b2571f7407824d485e764c7e1cea60",
+      "tools/experiment_conditions.py": "50d79a3301ed327aa88fab1c776fec06b8711ed7946d03ecd52be43a6e9e674c",
+      "tools/fam_a.py": "8a83c0387cd9a64f86e4afe4bc2579d223031e10ac8814e44b76f68d4385857b",
+      "tools/fam_b.py": "3fcf64ae4999dea81bb8cb8a1af69498448ad946dd1e886da1f059d55adeac9b",
+      "tools/fam_util.py": "137cf82af5a2eeeb9021a8a9051ecf7a358c24439e3f8c4ca67da116c4d224b0",
+      "tools/finance_stratum_lib.py": "550cbde6ed632e675e519c3d3ec2251b2bb5eb664f1f21608904e1dc540141f0",
+      "tools/frozen_v3_grader.py": "79b4960aafa6e078dac3f1bc22f0167d9f811ca1beb106588d5e00482f0728d4",
+      "tools/frozen_v41_grader.py": "4a761ab4f20644d1a845dfdc9535cddffe8f2ebff3f3a8335de02623d8d3ea0d",
+      "tools/gen_tasks.py": "bd5973926f9ad89ea7e31a8617f3019a78c7692b2fdbb8860ed693b88f889e39",
+      "tools/grade_run_llm.py": "624c42853c49f669bda7dd9db31f723f86bcb5836e7465f411c9d66bb959e18d",
+      "tools/identity_canary.py": "8e37881e0c734c9b9bc4128fd45d6a49657aa792eec8cfbf914b8fbdea3415d3",
+      "tools/intent_audit.py": "26272dad6dc5fa384eaf99ba97efc3e36dc2771d23c0cf42c28fbf2ba062f358",
+      "tools/investor_specs_20261124.py": "2cd9a08c22b9fd6ca2bd8bad6f86d34f6ff3f47e2efb0f94f2fda0853bc9da3c",
+      "tools/judge_primary.py": "9d5da808ce3246bf87c7fb278f4f3fdabfd777d8146449146c4f91179b6ce4cb",
+      "tools/llm_judge.py": "0097755412af2fe176759a641dd8626984f1d0ffb2299b2b1f3dc46d1844db3b",
+      "tools/manifest.json": "3ec85e97a838cd978111e5890245e65fff8fee6670b96850bf5f017cb118226f",
+      "tools/mcp_snapshot_server.py": "7977acb4b57497a570b5a115784f53a20e193e56ed5c164f12b89ce93a68b57d",
+      "tools/metrics.py": "103f1c545e02c8fa7f8feab77819a264d2718e152bde6e323cef2b4160b168f1",
+      "tools/migrate_contract_v2.py": "a32446e4be2ae76f55a9682b0e5285064bb9920632cb5fa0d3163c3a3274688c",
+      "tools/paid_budget.py": "c44034500082da3fd391722d2a217c08b253c78b0a653a1180ff90fa2c2534b1",
+      "tools/probe_list.json": "b91a7e583e69d810cebbf1f8e93140b63fcd1fcb2c5f20c80bf870df216ba6c5",
+      "tools/prompt_variants/baseline/citations-machine.md": "2e1d57a3bc51b5ceb22428b1182ef0bb882908e94b936f36b8bcba68725ea1de",
+      "tools/prompt_variants/baseline/citations.md": "0caa00ea7072d71ebba78491a9a604bd00be45d2cb1ed23a92169b581de811a2",
+      "tools/prompt_variants/baseline/identity.md": "4e7921e2afd9207582ef3719f5e3bb5affddd65c1fac311be9e34b857b4d9bca",
+      "tools/prompt_variants/baseline/memory-cards.md": "e6e104841320946c8ea3283f0147d9c739099061f58cfe657ad3ebd1d9793c09",
+      "tools/prompt_variants/baseline/memory.md": "e03f6147dbf745c2aff8a37e2a8a0853efb7bc95228622fe51bc3951b8520aef",
+      "tools/prompt_variants/baseline/style.md": "82fdfe4e7ade04a3d30832e12340dce28892f92f96317cc5d9e4109efd2ae7ca",
+      "tools/prompt_variants/baseline/subagent.md": "f1acad522e5612a24ea120a4c3e026464279ce8018a4f5b97211f3266726b5ed",
+      "tools/prompt_variants/baseline/title.md": "7b1530766a16c09e825cc8828fc3c8280226f5e84d225bd0d5cf9afbffddf87d",
+      "tools/prompt_variants/baseline/tools.md": "b4ec4fcd0275305945c5c4161cdcb54db12bea31699ab46641805cb803229368",
+      "tools/prompt_variants/finance/citations.md": "15b7164aa4cd147145cd5940197c42c33224edb597bac6a6abaef85db79feaea",
+      "tools/prompt_variants/finance/identity.md": "c0cec92f955694ca68e46c632d2939a7abb2262391c60ab3b4fdd710c6f66da7",
+      "tools/prompt_variants/finance/memory-cards.md": "0e272324666c58e6cb0dabcd29f5a52f219fe1f0c8d515cc2b0c0499699578b1",
+      "tools/prompt_variants/finance/memory.md": "680e283ecf05662d9e13326df41cabb5f7d6f4bd607fb7c6d0bb8e4d38f96f7d",
+      "tools/prompt_variants/finance/style.md": "1b56924d276b017e7c9826dd7fa4e5f9a88586f15d725f490bb52df4e535ed91",
+      "tools/prompt_variants/finance/subagent.md": "b8bc6181355d4d557e047d60c0de4347c58888d6b0a41562bf693b63ba89b039",
+      "tools/prompt_variants/finance/title.md": "8329a2554713df24143cbc5bc2f6dc6ab5df78e0a44392ce6bc887d439c7444e",
+      "tools/prompt_variants/finance/tools.md": "a37824fa7d9bbce872b6c924217a24d66feb35803e577498bb3c3cfa70d4e2a5",
+      "tools/protocol_compat.py": "c9c502f45734bd4926bfc7bc86d101e6650670a12416de0e7feb27c260862a79",
+      "tools/provider_response.py": "628990b65c10a4b57b225ed6d59bdae34d2dd8264f66a8ac317018840edeb7dd",
+      "tools/prune_saturated_20261116.py": "13f06265dbd1f53a0b67c20a18cb340d636379df9bb50c4798c3206907d25b6c",
+      "tools/prune_saturated_20261124.py": "0e6719c825d053843aaf3022ce034d1be2830f8a53773972a9b81982057deeb9",
+      "tools/public_response_contract.py": "fb4013bba95b4c4c2f6c1bec650329f8ba0e289e487c0ce2dabc266530aab5dc",
+      "tools/ready_check.py": "0ef198adadb877ae38857dc06f947665d799a24df14d28660ad555cf8dda96ea",
+      "tools/recommend_specs_20261124.py": "ab178f82441c1ef1cbf3004bcac75fd4c89c5d579685239f5eaaf085cf6cbade",
+      "tools/record_prices_20261124.py": "1fcf4857c547129c8f61814a4c5669499a7e71290510c4a08e5b18cb43c08e52",
+      "tools/record_snapshot_extension_20261111.py": "ea384978f1eb4a7728a2c74360e9c5562f5a9545a92bd87b45a8c2a4511a4f08",
+      "tools/record_statements_20261124.py": "ea3ded9f8dec770605cba0036b24545fa74d5d125d87b43261f3eb419c3c7f25",
+      "tools/recorded/batch_r0.json": "7348962cce563176be5dbb01674f67483e8e8f7bb7b73de6e1b6fbb618cf8585",
+      "tools/recorded/batch_r1.json": "a5d03913d780d03db20b50c72e7b9dfb578dac91c364beccf5d8f63a36247412",
+      "tools/recorded/batch_r10.json": "4004c580d0b654d3f6c114c31b244b0430b7035c72532e31742120de772b2f9d",
+      "tools/recorded/batch_r11.json": "c6044e64b35faf23d7a1297b025d76da9392b7a9e67ec42923ca76348550093a",
+      "tools/recorded/batch_r12.json": "72283f52dd01af98e12d95abbba01d458a45aafbb840c24ca098e2b9da427c7c",
+      "tools/recorded/batch_r13.json": "cce5d0b924a006de19c6f6c2498bcb5e4fe8a40d233dd2db62ca174dcad8f589",
+      "tools/recorded/batch_r14.json": "94fbca95d379cd2067cc982270cd76926400b5218305fc509a7a38eaa7da2486",
+      "tools/recorded/batch_r15.json": "6ef0a80fb736a1a4d5c53b80fe5b7d7e4f3ca41e700c2b3e81cb94a30ac2a96e",
+      "tools/recorded/batch_r2.json": "f3d7727b7a3cd81ff43a42a79bf3b0961e808b385e92ac566572e83a276a2acd",
+      "tools/recorded/batch_r3.json": "24f8d49c35d4f0c84d6e06c3defc0560ae34e6467544bd7ab0008b1f0340dd01",
+      "tools/recorded/batch_r4.json": "2d93a8d2ee75e814ac65736ad562e3d905735d060041e30ed30a106dc40cf6b3",
+      "tools/recorded/batch_r5.json": "82eb969c833af0c110832422b73740c379f7ca91491f2f4bdca07e4bc55cbd49",
+      "tools/recorded/batch_r6.json": "9b0ae12ba042dae7c30bb396757e787e906704280c28b81c85256ed94ea9a7ab",
+      "tools/recorded/batch_r7.json": "eb12b7e9a6c65f43ca9aa061ac3c97adc604b2661c19e60fe8456b0f12d1822e",
+      "tools/recorded/batch_r8.json": "931ad585cfdef7e393eff7abf589506485969cbc21f7b6f22c7d20f023119646",
+      "tools/recorded/batch_r9.json": "84c660b2b3f263dcc2b12b75248ce4f7d77e63c4ae8d423cde3c164cc3d905db",
+      "tools/run_benchmark.py": "fe81c96ea13ed3ee2fc7040a67e1ebb9245fe6a35a76e966b90f398cdc8b960c",
+      "tools/run_manifest.py": "9cdb41c0fe86194d7aa7cc2182e94fd3731b01e666c2eb9d22bf64221cb205a7",
+      "tools/run_memory_benchmark.py": "451f43d31209171683f15f093b3975f36165b3a11e4b270a7420a79cf8846e7e",
+      "tools/runners/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tools/runners/common.py": "8e7ec922d78735b12f873e2b1a47b22d92b3090d45657533a08acaccefaea653",
+      "tools/runners/dsh_session_search_tools.json": "97e0b181490a36f65f2ed51ff0a29447670c871f9001a803d64e86fb8a8c7114",
+      "tools/runners/isolated.py": "a56da598c168645b517d25227e18175ca08cf53aa869c9467c60a879a9439279",
+      "tools/runners/memory_runner.py": "66e5fc6ba54dac17a33d405e44d4194506b112c9529a4cb26ea3001c34ff5349",
+      "tools/runners/memory_schema.ts": "dbc19f664f0f9a03cae902f614b6487602de10de0237df9acc63bb9f99b946b2",
+      "tools/runners/memory_snapshot_server.py": "4b23c3eeb0efe861606b4d0f4c4a112a6c17fbd8e47b39698f7c606b712aab48",
+      "tools/runners/native_calculate.ts": "6acbfbd1edc446570bafc7b32067934d6cb88ec547c02726fa3f9c1b1bf092f0",
+      "tools/runners/native_final.ts": "7fc2a8fe77d70472185a78b803c603dca359311aba26a6199458179e6ff6e985",
+      "tools/runners/native_fixture.ts": "71a95b3df5b60eaa7f1e99fb29dcfb1ba82436733d50e727c104e4ef76522332",
+      "tools/runners/native_schema.ts": "cb62a3c886337be81c4fba4245fa851371c1a108f5e88b65561f4c0b12e7e2fe",
+      "tools/runners/native_shell_tools.json": "6c0ad467d200808f2dc91c9f72e936847726c783692c59a67f071213f1db2666",
+      "tools/runners/ot_headless.ts": "557239d8b42776f9661eeffeadbe2aab62b9b771ece45d410c641a7cbdf236e1",
+      "tools/runners/ot_memory_admin.ts": "beff1ff40557967875d2b69dd5bff981d5ef8999980748c7bafeb1e8c7c8d790",
+      "tools/runners/ot_memory_headless.ts": "7195c8e8dd3ddb33d6a9d4d712c9f21d9eef3e972b819a8166361656ffc94273",
+      "tools/runners/provider.py": "7ef437446e3538b0796615fa44f0a7264b423db488b38d14d521503e83f69a69",
+      "tools/runners/run_dsh.py": "65f023398fce624530c0bc3c6e05cc5c797ba71dc15d89acaa59e182ac90fd8f",
+      "tools/runners/run_opencode.py": "7797b3762cbf09a0fb40071b51a4eb5971115d2d7efc0026e756f58b289af68e",
+      "tools/runners/run_opentrading.py": "10c9ff204b120b29af309e64c58d53b1cec4327ffa946af2c81c36ec5891c467",
+      "tools/runners/sandbox/build-receipt.json": "04c48fda2387b64b6d9c0784b2579bc3392b85c9fd0e42080086f74326456ac8",
+      "tools/runners/sandbox/run.ts": "5748acd915495261d340eec6c9bd7b644ce7a53668f25ba2860f5ac4f99bb1c7",
+      "tools/safety_rules.py": "0de762f7c039f49157683d2e8b6e6e2120f1dfdec21bd824e157d978824ec616",
+      "tools/series_contract.py": "7e21f2b97538482a2ccbdce14360c76576a487cfd6f7d39cfee144292ad79359",
+      "tools/snapshot_tool_schemas.json": "740974a8e85522137a254df46edffa6b6de536a61e8d98892f3aaeffdb59cad1",
+      "tools/stratum_policy.py": "a31e369b17eb6bcce5d9722a0b41c91b687d9954310478e8241a4187fe4658c7",
+      "tools/sync_v45_memory_corpus.py": "d477281c24f147bd275b93fb28a4482d06539ab8838b6cdc88b0e9b2edee8e63",
+      "tools/sync_v45_memory_corpus_batch3.py": "95329c7c0349190c52625ddbe71b182f6c8a4c115916b59cdbdad286ba25b03d",
+      "tools/task_quality_report.py": "509ae12b44b03ef38c472506ffea9638cd18a748d21d0302d6ae4ea2c6872a15",
+      "tools/tool_contracts_v4.json": "07e1a7363b31cfa053719933f777c5b5991bb5d65ec5698b7d48f567564684c3",
+      "tools/trusted_bun.py": "345e6a24a3eb607b961684734acc9289ab0b3950b767aa3bb6f91c08c31d7fd7",
+      "tools/trusted_toolchain.py": "2d0503b2530cd0af840ae70e312f1e862127cb816299b10b405f8c69c85cb705",
+      "tools/update_approval_batch3.py": "33449ba9218f52982bbe43e6a973d16f4fa3f83382a1b343ab4966c7f2334863",
+      "tools/update_approval_ds_or.py": "899c9e777f259c5807b5d7268c94619dde9f254528fb4a72c68d93c493c5a396",
+      "tools/v43_gate.py": "e401cb6b7584bde1081f8d99d6ee4b84fde7a62a19a5a6b034f2faad7d6d008d",
+      "tools/v43_supervisor.py": "d68e0c177b04d0da25f36af4c09a1b6da512264a588bfdda82bdcbe399bded5e",
+      "tools/v44_gate.py": "a5546b33e5ed748aeca530fdec7570eb01c922a41593f9933b0b3fe3bd2f75fb",
+      "tools/v44_supervisor.py": "13fead56fb85ad37997bfaadaf5be5e178a0fcf75cdc35867c01c96242b3b438",
+      "tools/v45_call_binding.py": "4f3b338083d4f40f10ec64c59bc68d705fa7cc298140eddff550ecc62a7db084",
+      "tools/v45_control.py": "996b3d17314b9b388a5783aeec9feb556b0e51f248c05c84b57f42302848104b",
+      "tools/v45_final_statistics.py": "a21f316c46fc9e803d8d903b2d5b797b42231ad5c34b8e0f821671f87e53e4b7",
+      "tools/v45_gate.py": "c4228e5e7482140d0026e4511e4fd6d4e82088c31ffd64e6d1e1739e2ca4c3a4",
+      "tools/v45_grader.py": "ad8ae2c29f05478e43e062d0dd3445957fa8d26b7c26caffc5501359cdcf2f71",
+      "tools/v45_math_audit.py": "f3481c6636c98cbf797a173b4bafdebaa232fabaf25c21389483953cfee13c7c",
+      "tools/v45_memory_metrics.py": "24cbcb84791818ba177784685c433b2ed350ff08194850234059f105069bc965",
+      "tools/v45_memory_review.py": "bef4861284f6933d4ddc850b32ca4777fe07c33890b525a8c677b759e9843a01",
+      "tools/v45_metrics.py": "80b834702c54de67c7c7ad2c24ddde3919cda4a97be774edb9c9274170adf8e1",
+      "tools/v45_review.py": "5e82e64e37e88982d6e2349a9c6cf89b7f23c3287cf27abce310647e7cb93d5a",
+      "tools/v45_supervisor.py": "abfc9b82baa75e1e7c478478fc7d8ea16832a9c8680665a28427b7be496df80d",
+      "tools/v45_verify_resume.py": "c4cf6eeb904e80ec1a16ac76d5bf284242f9ca40a1d550f6b8f82b04935ed7f5",
+      "tools/v46_rejection_proof.py": "97955d467afb9c9d2cb3c40390dfb4181ef36f2be187864ee60c92b4c79cd947",
+      "tools/v47_dev_gate.py": "b7a734bf3c97a1dd11107e2d6b26f1681672a7817e273c01810ddfc045150523",
+      "tools/v47_gate.py": "744d85090c26ab98c92755a95fde3ee4ad4abb22de592f41d60282deed45ea5d",
+      "tools/verify_nvidia.py": "1acf254d4315742d72897e7b528f6da6dd6dab7edc5f2a0527f4e7b1b5d71d9a",
+      "tools/verify_offline.py": "b7a7d7a99acd7077e5f70c5be5f933bb2f971575ce41703efcf895c399715e42",
+      "tools/verify_v45_memory_resume.py": "fd6b6eb5e352933cd4fb51359cb50bec9a62ab9b0fcb64fe76c3a79ad51a871a",
+      "tools/wire_contracts.py": "e5f46aaf450cc9ff012b251752fb8a3077e904b5447cdbc9a62a5af1036585a6"
+    },
+    "config": {
+      "allowed_inference_splits": [
+        "devsmoke",
+        "pilot",
+        "main"
+      ],
+      "allowed_models": [
+        "deepseek/deepseek-v4.1-flash-1017"
+      ],
+      "arms_holdout": [
+        "opentrading_machine",
+        "opencode",
+        "dsh"
+      ],
+      "arms_main": [
+        "opentrading_machine",
+        "opencode",
+        "dsh"
+      ],
+      "arms_pilot": [
+        "opentrading_machine",
+        "opencode",
+        "dsh"
+      ],
+      "config_note": "v4.7 DeepInfra completion run a-all (amendment 2026-11-25 DEEPINFRA-COMPLETION.md): main config except paid receipt (host DeepInfra) and cap 1.2 (raised: cap must exceed spend + per-attempt bound 0.343926).",
+      "cost_reporting": "OpenRouter usage.cost per request (authoritative); price_per_1m is the published list price and under-estimated or10 billing ~2.8x (0.1284 vs 0.3653 USD for 132 trials)",
+      "effort": "none",
+      "experiment_protocol": "plans/2026-11-15-v47-study-design.md",
+      "experiment_protocol_dependencies": [],
+      "gate": "b0_judge_primary",
+      "max_output_tokens": null,
+      "max_requests": 24,
+      "max_total_tokens": 4600000,
+      "memory_policy": "none fresh isolatedhome/store/session eachtrial",
+      "memory_trial_timeout_s": 1800,
+      "model": "deepseek/deepseek-v4.1-flash-1017",
+      "model_stratum": "deepseek-openrouter",
+      "opentrading_runtime_commit": "ae7ec48b3299994b75bed9be12d37e0c4be61e8a",
+      "opentrading_runtime_root": "experiments/opentrading-runtime",
+      "price_per_1m": {
+        "cache_read_usd": 0.001,
+        "completion_usd": 0.2,
+        "entitlement": "OpenRouter models API 2026-11-24, model-level list price for deepseek/deepseek-v4.1-flash-1017; hosts range 0.025-0.6 / 0.1-2.4 USD per 1M; the billed price is the pinned host in the paid receipt",
+        "prompt_usd": 0.03
+      },
+      "protocol": "financial_product_v45",
+      "provider_options": {
+        "context_window": 1048576,
+        "effort_note": "none requested; backend thinking not proven disabled",
+        "failed_attempt_context_bound": 1048576,
+        "failed_attempt_token_reservation": 1441792,
+        "max_output_tokens": null,
+        "max_requests": 24,
+        "max_total_tokens": 4600000,
+        "memory_max_requests": 48,
+        "model_max_output_tokens": 393216,
+        "model_max_output_tokens_source": "OpenRouter models API 2026-11-24: deepseek/deepseek-v4.1-flash-1017 top_provider.max_completion_tokens (hosts range 131072-943718; re-check for the pinned host)",
+        "native_bun_binary": "../../.toolchains/bun/bin/bun",
+        "native_bun_sha256": "10702245766b225e70bbf6235fd6b47214fd94b4760d00ffaed8ab0df57ac235",
+        "native_reasoning_capability": true,
+        "native_reasoning_mode": "off",
+        "paid_budget_receipt": "/home/doanlong/extra/bench-v47-pin/runs/deepinfra-20261125/a-all/paid-receipt.json",
+        "paid_budget_receipt_sha256": "276e3ab76bbe3c65b32d421055523f1b3026dda383e7045a55671036881d7f81",
+        "provider_route": "openrouter_paid",
+        "provider_timeout_s": 600,
+        "request_interval_s": 2,
+        "sandbox_image": "sha256:ef5d5c4ae395c6e9fe4d7ea3943f274b453b7e22f4df37a271c745dd020a29f1",
+        "sandbox_image_source": "tools/runners/sandbox/Dockerfile (docker build -t ot-bench-shell:v47); local provenance tools/runners/sandbox/build-receipt.json",
+        "temperature": 0,
+        "top_p": 1
+      },
+      "provider_timeout_s": 600,
+      "request_interval_s": 2,
+      "runs_main": 2,
+      "runs_pilot": 2,
+      "shell_policy": "v4.7 (2026-11-16, 6b): each arm native shell tool (OT/OC shell, DSH bash), unfiltered, inside a no-network Docker sandbox mounting only the trial workspace and temp (tools/runners/sandbox)",
+      "study_version": "v4.7",
+      "track": "product native utility capability parity, not identicalschemas",
+      "trial_timeout_s": 1800
+    },
+    "harnesses": {
+      "bun": {
+        "binary": "/home/doanlong/extra/bench-v47-pin/.toolchains/bun/bin/bun",
+        "sha256": "10702245766b225e70bbf6235fd6b47214fd94b4760d00ffaed8ab0df57ac235",
+        "version": "1.4.4"
+      },
+      "dsh": {
+        "binary": "/home/doanlong/extra/bench-v47-pin/.toolchains/dsh/node_modules/@deepseek-ai/dsh/lib/bin.js",
+        "dependency_lock_sha256": "3aeecb19a0e7c9df211015ef784ba13d6d5ad9ab0b7e899d0e4d4b3da8fbc90d",
+        "runtime_tree_sha256": "d4c4b495241215490445f61f6187b7359f4518b9fdbce50cfeecd3f5b9499b9a",
+        "sha256": "36f86742e0c3cc1c3b2dbaa6582ee00b0c37bc4f5a190f7531b5303bf3efb6d9",
+        "version": "0.2.2-rc.5"
+      },
+      "node": {
+        "binary": "/home/doanlong/extra/bench-v47-pin/.toolchains/node/bin/node",
+        "sha256": "8a22a371fd85aecf5411636574309f6380fbc42694aaf0651a089a8ef9c44e52",
+        "version": "v26.8.2"
+      },
+      "opencode": {
+        "binary": "/home/doanlong/extra/bench-v47-pin/.toolchains/opencode/bin/opencode",
+        "sha256": "ec93043f18f8a6b4d8e71ec9260e292ba6f91b66b142782135d40f0b58b0c152",
+        "version": "opencode v2.4.1"
+      },
+      "opentrading": {
+        "calendar_sha256": "c217c3bd45c6e1c39e0b8d5245c1e42bbc01193ba9d6c8ec06fd7bbe7a151818",
+        "dependency_files": {
+          "bun.lock": "8de25f01d5704be6175324b093e0f0f5d9cccef6315d2efe238dd1bfeb508796",
+          "package.json": "42b637d100d01d1f3d777f53b200eb52adf3e28da885f5cc71c261fc345dc2e5"
+        },
+        "prompt_files": {
+          "prompts/citations-machine.md": "2e1d57a3bc51b5ceb22428b1182ef0bb882908e94b936f36b8bcba68725ea1de",
+          "prompts/citations.md": "0caa00ea7072d71ebba78491a9a604bd00be45d2cb1ed23a92169b581de811a2",
+          "prompts/identity.md": "4e7921e2afd9207582ef3719f5e3bb5affddd65c1fac311be9e34b857b4d9bca",
+          "prompts/memory-cards.md": "e6e104841320946c8ea3283f0147d9c739099061f58cfe657ad3ebd1d9793c09",
+          "prompts/memory.md": "e03f6147dbf745c2aff8a37e2a8a0853efb7bc95228622fe51bc3951b8520aef",
+          "prompts/style.md": "82fdfe4e7ade04a3d30832e12340dce28892f92f96317cc5d9e4109efd2ae7ca",
+          "prompts/subagent.md": "f1acad522e5612a24ea120a4c3e026464279ce8018a4f5b97211f3266726b5ed",
+          "prompts/title.md": "7b1530766a16c09e825cc8828fc3c8280226f5e84d225bd0d5cf9afbffddf87d",
+          "prompts/tools.md": "b4ec4fcd0275305945c5c4161cdcb54db12bea31699ab46641805cb803229368"
+        },
+        "runtime_packages": {
+          "@ai-sdk/alibaba": {
+            "files_sha256": "938c3148f6567da2bdbc553fddd66136d621579ab0680da7b390ae65f4f13e1f",
+            "n_files": 2,
+            "version": "2.0.92"
+          },
+          "@ai-sdk/anthropic": {
+            "files_sha256": "6312765d2add34cd5519568843637eeded70c7808ae411b9c918c8c59652c5d4",
+            "n_files": 3,
+            "version": "4.0.106"
+          },
+          "@ai-sdk/cerebras": {
+            "files_sha256": "41fc303d26696bdfc0e545617c014ad24542de309ffa1c2085e6ddad7ef14762",
+            "n_files": 4,
+            "version": "3.0.94"
+          },
+          "@ai-sdk/cohere": {
+            "files_sha256": "5e0d8cf1c4eb982fc6ce398ae1cf2e1d4bff0824056091440c0d946f6b6a166d",
+            "n_files": 2,
+            "version": "4.0.85"
+          },
+          "@ai-sdk/deepinfra": {
+            "files_sha256": "82ea9d354f50f9c381d10e4454ccd20cfcbfc9e936dd753ebe699712f7f471d2",
+            "n_files": 2,
+            "version": "3.0.94"
+          },
+          "@ai-sdk/gateway": {
+            "files_sha256": "9f6f7058e5f8f747701e433f59776cd7e7e0d0449346d50662fb001c290c414a",
+            "n_files": 2,
+            "version": "4.0.150"
+          },
+          "@ai-sdk/google": {
+            "files_sha256": "3c14632a6e8d5c9e866b18ae51bf1429c53c3463fa3dcc4d714528fe59e8a493",
+            "n_files": 3,
+            "version": "4.0.122"
+          },
+          "@ai-sdk/groq": {
+            "files_sha256": "3db973fa82075c738e17c146a6fe7e107ad2464d6c929530fc655efb787ee4e8",
+            "n_files": 2,
+            "version": "4.0.85"
+          },
+          "@ai-sdk/mistral": {
+            "files_sha256": "0bddbcd13d1d3a282ee588a172287a2e6440e3bffc7da55fc5729f8cf6f2a710",
+            "n_files": 2,
+            "version": "4.0.88"
+          },
+          "@ai-sdk/openai": {
+            "files_sha256": "b0c03edddea4bb0722db61766ab862caa95a82e7357696063b25238dff402729",
+            "n_files": 3,
+            "version": "4.0.121"
+          },
+          "@ai-sdk/openai-compatible": {
+            "files_sha256": "fde2e49bd3b1f6465e1ac4116b11e5f91bebc99033a644a19a3036cb1b1b8bf3",
+            "n_files": 3,
+            "version": "3.0.93"
+          },
+          "@ai-sdk/perplexity": {
+            "files_sha256": "b16b4eac1dea40263cee83586beb565285b65f4e2b48d54f56c4ebb3ae49e2e1",
+            "n_files": 2,
+            "version": "5.0.36"
+          },
+          "@ai-sdk/provider": {
+            "files_sha256": "47f3759f633c18117a18951d85b08f58448daa542ae091261160dcdd22632b0b",
+            "n_files": 2,
+            "version": "4.0.39"
+          },
+          "@ai-sdk/provider-utils": {
+            "files_sha256": "57771ee2bdb60be2af5f2c2afbfe27015539503f73aacd4596668897b9052eeb",
+            "n_files": 6,
+            "version": "5.0.82"
+          },
+          "@ai-sdk/togetherai": {
+            "files_sha256": "4a66be095ba96cc02f1ffc84ea2e8e8104d5705002c15f7067a5d29fb60b0a2b",
+            "n_files": 2,
+            "version": "3.0.95"
+          },
+          "@ai-sdk/vercel": {
+            "files_sha256": "0e44269a2ada972045956a670e3c43b07920a54add9bdb6a69928b6788377fa1",
+            "n_files": 2,
+            "version": "3.0.30"
+          },
+          "@ai-sdk/xai": {
+            "files_sha256": "2108e89025449c5349161bd0780d5a219f3c4b639805e8e6e825bd36fcdaf48c",
+            "n_files": 2,
+            "version": "5.0.47"
+          },
+          "@modelcontextprotocol/sdk": {
+            "files_sha256": "25a2a7eb47b686fc448993ae77cc0dfdf2aa0cdd290a8978a3d80d47e6af1c04",
+            "n_files": 177,
+            "version": "1.32.2"
+          },
+          "ai": {
+            "files_sha256": "7a5ed7426c6cc7e4b74606bec43a4ddba17829e9bd87b046fe1bc4a17ebcc7aa",
+            "n_files": 5,
+            "version": "7.0.177"
+          },
+          "ajv": {
+            "files_sha256": "806a02d1659cab31acbdfa06b6cdcf356829c3389a96ea88c759770f69e481e2",
+            "n_files": 143,
+            "version": "8.20.0"
+          },
+          "fast-deep-equal": {
+            "files_sha256": "4e5c019009b20f21f3535cf662985f038637c36b4517a5a06e4f97b43f8dca5f",
+            "n_files": 5,
+            "version": "3.1.3"
+          },
+          "fast-uri": {
+            "files_sha256": "14d91d9777a6ebc991dfa61dcb5a644db9f142523ebd3d56f474bd357eb5fe16",
+            "n_files": 42,
+            "version": "3.1.9"
+          },
+          "json-schema-traverse": {
+            "files_sha256": "edb99fda322e5e1dc5a0795849e0c3def626febcaf4d9cb576d8e85341512890",
+            "n_files": 9,
+            "version": "1.0.0"
+          },
+          "require-from-string": {
+            "files_sha256": "466b77ea9e209daaeb5b4d40218752fb725a1803252db54b356a44c7fe21d54e",
+            "n_files": 2,
+            "version": "2.0.2"
+          },
+          "zod": {
+            "files_sha256": "65b8733ab0b79d33b9758f794f1917b7120c542342dedd39f5d81c25c8a56602",
+            "n_files": 258,
+            "version": "4.6.7"
+          }
+        },
+        "runtime_root": "/home/doanlong/extra/bench-v47-pin/experiments/finance-v47-study/experiments/opentrading-runtime",
+        "source_file_count": 297,
+        "source_sha256": "ed74143eb86bccc4e7e3085cb51c7b14d82b46563a2509daa0fc94104eac69b4"
+      },
+      "python": {
+        "binary": "/usr/bin/python3.12",
+        "runtime_packages": {
+          "anyio": {
+            "files_sha256": "e3154b28711685f6909c944130588e0bdd7a5f0fded6a18935488645f7966940",
+            "module_path": "/home/doanlong/.local/lib/python3.12/site-packages/anyio",
+            "n_files": 43,
+            "version": "4.14.0"
+          },
+          "attrs": {
+            "files_sha256": "8cefd4a87cce15e4d27716bf377f5dde8850a54b314bc117d5eab6ec8da4f35c",
+            "module_path": "/home/doanlong/.local/lib/python3.12/site-packages/attrs",
+            "n_files": 6,
+            "version": "26.1.0"
+          },
+          "httpcore": {
+            "files_sha256": "20e746966af52456d0f65c2eacfd1d65f49964672350431569ff354a99ed6cb1",
+            "module_path": "/home/doanlong/.local/lib/python3.12/site-packages/httpcore",
+            "n_files": 31,
+            "version": "1.0.9"
+          },
+          "httpx": {
+            "files_sha256": "957117f6b78a3ecf2dfd73d490f60cf56a745e60303e7d276138df14d993bf5b",
+            "module_path": "/home/doanlong/.local/lib/python3.12/site-packages/httpx",
+            "n_files": 23,
+            "version": "0.28.1"
+          },
+          "jsonschema": {
+            "files_sha256": "16cf937f16b31d0886dcfe873b012410119de5d857a023eaa09ba4373871e77d",
+            "module_path": "/home/doanlong/.local/lib/python3.12/site-packages/jsonschema",
+            "n_files": 37,
+            "version": "4.26.0"
+          },
+          "mcp": {
+            "files_sha256": "6b4651c360f9cc948a5940847c4677275f04b7f14361b683af7c0bfb4024bd75",
+            "module_path": "/home/doanlong/.local/lib/python3.12/site-packages/mcp",
+            "n_files": 110,
+            "version": "1.30.0"
+          },
+          "pydantic": {
+            "files_sha256": "0b73694af01f2f2d22efbcd20c4fda770b846a496f0dee186933b53684a7fc5f",
+            "module_path": "/home/doanlong/.local/lib/python3.12/site-packages/pydantic",
+            "n_files": 105,
+            "version": "2.13.4"
+          },
+          "pydantic-core": {
+            "files_sha256": "dde8822952224939f0cf0ce6c0a839fe0c2b141f04f927fc1f87fce00447f13e",
+            "module_path": "/home/doanlong/.local/lib/python3.12/site-packages/pydantic_core",
+            "n_files": 3,
+            "version": "2.46.4"
+          },
+          "referencing": {
+            "files_sha256": "a4665036162d8ab986f6510538d94ec1c8b0cda224dcf9c8ae622ce3977a54a7",
+            "module_path": "/home/doanlong/.local/lib/python3.12/site-packages/referencing",
+            "n_files": 13,
+            "version": "0.37.0"
+          },
+          "rpds-py": {
+            "files_sha256": "20562e23e168f3b5d787d0d544f212699ba241bbcc70828ea6d4d559e2b1e650",
+            "module_path": "/home/doanlong/.local/lib/python3.12/site-packages/rpds",
+            "n_files": 2,
+            "version": "2026.6.3"
+          }
+        },
+        "sha256": "e50d468e8b0adfb05733f5b87b3cff34829c4a8c1aea50c865aa8bdfe4bb150f",
+        "version": "3.12.3 (main, Aug 31 2026, 10:18:26) [GCC 13.3.0]"
+      },
+      "trusted_toolchain": {
+        "artifacts": {
+          "bun": {
+            "archive": "bun-linux-x64.zip",
+            "archive_sha256": "bf8ccbfb2b0b80159e0f9a6d15c55317add8077534dbc6130a3edb52fccb395c",
+            "binary_sha256": "10702245766b225e70bbf6235fd6b47214fd94b4760d00ffaed8ab0df57ac235",
+            "member": "bun-linux-x64/bun",
+            "url": "https://github.com/oven-sh/bun/releases/download/bun-v1.4.4/bun-linux-x64.zip",
+            "version": "1.4.4"
+          },
+          "node": {
+            "archive": "node-v26.8.2-linux-x64.tar.xz",
+            "archive_sha256": "40e1d3225c1c9ae9a2671c98ecb9857e4d5555026394f348645676798840d5c5",
+            "binary_sha256": "8a22a371fd85aecf5411636574309f6380fbc42694aaf0651a089a8ef9c44e52",
+            "member": "node-v26.8.2-linux-x64",
+            "tree_sha256": "b089188b70f2a946f978351ebc97fd7d3e0aafe593efa78bf92b73f96ed97739",
+            "url": "https://nodejs.org/dist/v26.8.2/node-v26.8.2-linux-x64.tar.xz",
+            "version": "26.8.2"
+          },
+          "opencode": {
+            "archive": "opencode-cli-linux-x64-2.4.1.tgz",
+            "archive_sha256": "9dbef68f231a311b56441c73c7bec01f6d87ebe44523ad14a7ba4716ff5c2031",
+            "binary_sha256": "ec93043f18f8a6b4d8e71ec9260e292ba6f91b66b142782135d40f0b58b0c152",
+            "member": "package/bin/opencode",
+            "url": "https://registry.npmjs.org/@opencode/cli-linux-x64/-/cli-linux-x64-2.4.1.tgz",
+            "version": "2.4.1"
+          }
+        },
+        "dsh": {
+          "binary_sha256": "36f86742e0c3cc1c3b2dbaa6582ee00b0c37bc4f5a190f7531b5303bf3efb6d9",
+          "lock_sha256": "3aeecb19a0e7c9df211015ef784ba13d6d5ad9ab0b7e899d0e4d4b3da8fbc90d",
+          "tree_sha256": "d4c4b495241215490445f61f6187b7359f4518b9fdbce50cfeecd3f5b9499b9a",
+          "version": "0.2.2-rc.5"
+        },
+        "platform": "linux-x86_64-glibc",
+        "python": "3.12.3",
+        "schema": 1
+      }
+    },
+    "protocol": {
+      "path": "plans/2026-11-15-v47-study-design.md",
+      "sha256": "48fa6b2445eca9d5ce0cbbc85e0975d8fa8cfc962691d25c878e9c6df43428f7"
+    },
+    "schedule": [
+      {
+        "arm": "opencode",
+        "run": 1,
+        "task": "fin-i3-risk-725",
+        "trial_id": "fin-i3-risk-725__opencode__r1"
+      },
+      {
+        "arm": "dsh",
+        "run": 1,
+        "task": "fin-i3-risk-725",
+        "trial_id": "fin-i3-risk-725__dsh__r1"
+      },
+      {
+        "arm": "opentrading_machine",
+        "run": 1,
+        "task": "fin-i3-risk-725",
+        "trial_id": "fin-i3-risk-725__opentrading_machine__r1"
+      },
+      {
+        "arm": "opentrading_machine",
+        "run": 1,
+        "task": "fin-r1-call-778",
+        "trial_id": "fin-r1-call-778__opentrading_machine__r1"
+      },
+      {
+        "arm": "opencode",
+        "run": 1,
+        "task": "fin-r1-call-778",
+        "trial_id": "fin-r1-call-778__opencode__r1"
+      },
+      {
+        "arm": "dsh",
+        "run": 1,
+        "task": "fin-r1-call-778",
+        "trial_id": "fin-r1-call-778__dsh__r1"
+      },
+      {
+        "arm": "dsh",
+        "run": 1,
+        "task": "fin-s2-times10-480",
+        "trial_id": "fin-s2-times10-480__dsh__r1"
+      },
+      {
+        "arm": "opentrading_machine",
+        "run": 1,
+        "task": "fin-s2-times10-480",
+        "trial_id": "fin-s2-times10-480__opentrading_machine__r1"
+      },
+      {
+        "arm": "opencode",
+        "run": 1,
+        "task": "fin-s2-times10-480",
+        "trial_id": "fin-s2-times10-480__opencode__r1"
+      },
+      {
+        "arm": "opencode",
+        "run": 1,
+        "task": "fin-r1-call-775",
+        "trial_id": "fin-r1-call-775__opencode__r1"
+      },
+      {
+        "arm": "dsh",
+        "run": 1,
+        "task": "fin-r1-call-775",
+        "trial_id": "fin-r1-call-775__dsh__r1"
+      },
+      {
+        "arm": "opentrading_machine",
+        "run": 1,
+        "task": "fin-r1-call-775",
+        "trial_id": "fin-r1-call-775__opentrading_machine__r1"
+      }
+    ],
+    "schema_version": 3,
+    "settings": {
+      "arms": [
+        "opentrading_machine",
+        "opencode",
+        "dsh"
+      ],
+      "clock_policy": "snapshot_as_of; OpenTrading native now pinned; other native clocks observed in wire capture",
+      "conditions": {
+        "dsh": {
+          "finance_policy": false,
+          "native_arm": "dsh",
+          "prompt_variant": null
+        },
+        "opencode": {
+          "finance_policy": false,
+          "native_arm": "opencode",
+          "prompt_variant": null
+        },
+        "opentrading_machine": {
+          "finance_policy": false,
+          "native_arm": "opentrading",
+          "ot_profile": "machine",
+          "prompt_variant": "baseline"
+        }
+      },
+      "effective_provider_options": {
+        "budget_usd": "1.2",
+        "context_window": 1048576,
+        "effort": "none",
+        "effort_note": "none requested; backend thinking not proven disabled",
+        "failed_attempt_context_bound": 1048576,
+        "failed_attempt_token_reservation": 1441792,
+        "max_output_tokens": null,
+        "max_requests": 24,
+        "max_total_tokens": 4600000,
+        "memory_max_requests": 48,
+        "model_max_output_tokens": 393216,
+        "model_max_output_tokens_source": "OpenRouter models API 2026-11-24: deepseek/deepseek-v4.1-flash-1017 top_provider.max_completion_tokens (hosts range 131072-943718; re-check for the pinned host)",
+        "native_bun_binary": "../../.toolchains/bun/bin/bun",
+        "native_bun_sha256": "10702245766b225e70bbf6235fd6b47214fd94b4760d00ffaed8ab0df57ac235",
+        "native_reasoning_capability": true,
+        "native_reasoning_mode": "off",
+        "opentrading_runtime_root": "/home/doanlong/extra/bench-v47-pin/experiments/finance-v47-study/experiments/opentrading-runtime",
+        "paid_budget_receipt": "/home/doanlong/extra/bench-v47-pin/runs/deepinfra-20261125/a-all/paid-receipt.json",
+        "paid_budget_receipt_sha256": "276e3ab76bbe3c65b32d421055523f1b3026dda383e7045a55671036881d7f81",
+        "protocol": "financial_product_v45",
+        "provider_route": "openrouter_paid",
+        "provider_timeout_s": 600,
+        "request_interval_s": 2,
+        "sandbox_image": "sha256:ef5d5c4ae395c6e9fe4d7ea3943f274b453b7e22f4df37a271c745dd020a29f1",
+        "sandbox_image_source": "tools/runners/sandbox/Dockerfile (docker build -t ot-bench-shell:v47); local provenance tools/runners/sandbox/build-receipt.json",
+        "temperature": 0,
+        "top_p": 1
+      },
+      "effort": "none",
+      "freeze_sha256": null,
+      "include_quarantined": false,
+      "max_output_tokens": null,
+      "max_requests": 24,
+      "max_total_tokens": 4600000,
+      "model": "deepseek/deepseek-v4.1-flash-1017",
+      "pause": 2,
+      "provider_timeout_s": 600,
+      "quarantined_tasks": {},
+      "retry": 0,
+      "retry_backoff": 4,
+      "runs": 1,
+      "seed": 20261104,
+      "split": "main",
+      "timeout": null,
+      "transport_attempts_per_request": 3,
+      "trial_timeouts_s": {
+        "fin-i3-risk-725": 3600,
+        "fin-r1-call-775": 3600,
+        "fin-r1-call-778": 3600,
+        "fin-s2-times10-480": 3600
+      }
+    },
+    "task_contracts": {
+      "fin-i3-risk-725": {
+        "answerable_fields": [],
+        "confirmatory_eligible": true,
+        "exclusion_reason": null,
+        "partial": false,
+        "payload_family_sha256": "a78876a3aee559724e127192de985b87f7332a25867c6ea7caa0e1d2b493a69e",
+        "required_payload_keys": [
+          "hist:DCM",
+          "hist:DPM",
+          "hist:GAS",
+          "hist:PLX",
+          "hist:PVD",
+          "hist:PVS"
+        ],
+        "scoring": "outcome"
+      },
+      "fin-r1-call-775": {
+        "answerable_fields": [],
+        "confirmatory_eligible": true,
+        "exclusion_reason": null,
+        "partial": false,
+        "payload_family_sha256": "2aaf0b9c17504b979d8a6036cbcd178cc4fbf5544c20499404c30a66f804d837",
+        "required_payload_keys": [
+          "hist:HPG"
+        ],
+        "scoring": "outcome"
+      },
+      "fin-r1-call-778": {
+        "answerable_fields": [],
+        "confirmatory_eligible": true,
+        "exclusion_reason": null,
+        "partial": false,
+        "payload_family_sha256": "1d9436b2759b00c5265d9093b7beeb9474e0068965636ec97cf4a3c61821ec87",
+        "required_payload_keys": [
+          "hist:PNJ"
+        ],
+        "scoring": "outcome"
+      },
+      "fin-s2-times10-480": {
+        "answerable_fields": [
+          "value"
+        ],
+        "confirmatory_eligible": true,
+        "exclusion_reason": null,
+        "partial": false,
+        "payload_family_sha256": "23dcc93685aab99ff1a6af5ccf1edeca7151b20c52b158f0e12b7b26c082a752",
+        "required_payload_keys": [
+          "hist:POW"
+        ],
+        "scoring": "value"
+      }
+    },
+    "tasks": {
+      "fin-i3-risk-725": {
+        "environment/payloads.json": "a78876a3aee559724e127192de985b87f7332a25867c6ea7caa0e1d2b493a69e",
+        "instruction.md": "8c462739cc036e5627ed7e6d0dbbbf52bb85e1fa11f0d947ba2cccc6385646bd",
+        "solution/gold.json": "3820c3c0264cf471a7757e81ef1ae5f13da9be1b5a2247c9b4862eafa32bc70d",
+        "solution/oracle.py": "667ba9cee3bc2ad54fe61f1ca17eb025ab5befe1924408fe3e00b2f314c99bad",
+        "task.toml": "d3eb34e0bc19058f4d0bbc82ad548430d72882c7761a293e003b9f2eddf04327",
+        "tests/grader.py": "ad8ae2c29f05478e43e062d0dd3445957fa8d26b7c26caffc5501359cdcf2f71"
+      },
+      "fin-r1-call-775": {
+        "environment/payloads.json": "2aaf0b9c17504b979d8a6036cbcd178cc4fbf5544c20499404c30a66f804d837",
+        "instruction.md": "f0aab2b2d67dfd26b1193211bfcb8d6c93bfd64887a9e93e0489172cb064a774",
+        "solution/gold.json": "b07f8e24ec1222ffd6df2f86fb209113a39e5e87bab03fe79ec509453018bb46",
+        "solution/oracle.py": "10baf07df15ccece443c43cb7a2ddab97a0c640e43634559be050dd4f793bc3f",
+        "task.toml": "d75093c9503077daca89be4e1a1a97e0a53e6f7cd7a285696627a69ac4bfbc72",
+        "tests/grader.py": "ad8ae2c29f05478e43e062d0dd3445957fa8d26b7c26caffc5501359cdcf2f71"
+      },
+      "fin-r1-call-778": {
+        "environment/payloads.json": "1d9436b2759b00c5265d9093b7beeb9474e0068965636ec97cf4a3c61821ec87",
+        "instruction.md": "fb84df3ea307b817122b5ecc9c6779232c51edeb45f29852a801aa4dd17e14c1",
+        "solution/gold.json": "bcb63a690584c4e8bd4ef9d2d8adb3fd628cf786ae94c5c277f4c4397333265b",
+        "solution/oracle.py": "10baf07df15ccece443c43cb7a2ddab97a0c640e43634559be050dd4f793bc3f",
+        "task.toml": "09a065e4914ab9a7d877f61a9977076d0c7084e7f1211aa7e9c82463dacf6244",
+        "tests/grader.py": "ad8ae2c29f05478e43e062d0dd3445957fa8d26b7c26caffc5501359cdcf2f71"
+      },
+      "fin-s2-times10-480": {
+        "environment/payloads.json": "23dcc93685aab99ff1a6af5ccf1edeca7151b20c52b158f0e12b7b26c082a752",
+        "instruction.md": "71bc74ec792ddda426e3d269c366c4812a7e16fd10e59737eae8490f85cb42f4",
+        "solution/gold.json": "6d1400849dba866e6827e20f74d088741798f15611c02c66c815a4deb1e4b613",
+        "solution/oracle.py": "7ca8edfbdead341ff891458c20673240ce640ca2db56bdc3b764086d8b842a70",
+        "task.toml": "a2cdf2cd3b02e29e1114a3cae968c9e8f41b9d8c494c4c2189b0c86d2d6b6254",
+        "tests/grader.py": "0f4299cdd501ad116fff554fa376bea0e5da1aa39022a30865a17b94ee4b8a13"
+      }
+    }
+  }
+}

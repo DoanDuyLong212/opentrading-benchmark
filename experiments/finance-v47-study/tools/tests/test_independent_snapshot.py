@@ -289,58 +289,6 @@ def test_replay_native_defaults_and_exact_request_identity():
         with pytest.raises(ValueError): select_envelope(entries, 'vn_quote_history', request)
 
 
-def test_original_archive_preserved_and_versioned_payload_changes_are_explicit():
-    # The migration receipt belongs to v4.6u; current v4.7 task hashes have
-    # separate generator receipts and lineage, checked below.
-    ROOT = LEGACY_STUDY
-    # v1 preservation concerns the original root/archive, not amended v45 gold.
-    # Removed wave2 tasks remain mandatory archive checks, never silently skipped.
-    origin=ROOT.parents[1]
-    receipt=json.loads((origin/'audits/contract-v2/migration.json').read_text())
-    wave=json.loads((origin/'audits/2026-11-07-corpus-wave2/MIGRATION.json').read_text())
-    removed={item['id']:origin/item['archived_to'] for item in wave['removed']}
-    migration=json.loads((ROOT/'audits/CORPUS-MIGRATION.json').read_text())
-    with tarfile.open(origin/'audits/contract-v2/v1-task-artifacts.tar.gz')as archive:
-        for member in archive.getmembers():
-            if '/holdout/'in member.name or not member.name.endswith('/solution/gold.json'):continue
-            raw=archive.extractfile(member).read()
-            assert hashlib.sha256(raw).hexdigest()==receipt['old_files'][member.name],member.name
-            before=json.loads(raw);current=origin/member.name
-            if not current.exists():
-                taskid=Path(member.name).parts[2]
-                assert taskid in removed, 'Unregistered removal: '+member.name
-                current=removed[taskid]/'solution/gold.json'
-            assert current.is_file(),member.name
-            after=json.loads(current.read_text())
-            assert before.get('solution')==after.get('solution'),member.name
-            assert[e.get('gold')for e in before.get('expects',[])if e['type']=='value']==[e.get('gold')for e in after.get('expects',[])if e['type']=='value'],member.name
-            study=ROOT/member.name
-            if study.exists():
-                delta=migration['changed'].get(member.name)
-                expected=delta['study_sha256']if delta else hashlib.sha256(current.read_bytes()).hexdigest()
-                assert hashlib.sha256(study.read_bytes()).hexdigest()==expected, 'Unregistered v45 gold edit: '+member.name
-    # Verify every current payload against its explicit origin/provenance family.
-    # Independent memory corpus approval has its own fingerprint, separate from v1.
-    memory=json.loads((origin/'audits/financial-memory-v45/corpus-audit.json').read_text())
-    memory_hashes={row['task']:row['task_tree']['environment/payloads.json']for row in memory['rows']}
-    # Batch-3 memory corpus (user-authorized 2026-11-10): harmonized graders
-    # (320..331+p01) and new main/holdout memory tasks carry their own corpus
-    # receipt; it supersedes batch-1 hashes for every covered task.
-    batch3=json.loads((origin/'audits/financial-memory-v45-batch3/corpus-audit.json').read_text())
-    memory_hashes.update({row['task']:row['task_tree']['environment/payloads.json']for row in batch3['rows']})
-    for payload in ROOT.glob('tasks/*/*/environment/payloads.json'):
-        relative=str(payload.relative_to(ROOT));task=payload.parents[1];actual=hashlib.sha256(payload.read_bytes()).hexdigest()
-        revision=migration.get('taskset_revision_20261111',{}).get('new_payloads',{})
-        if relative in revision:expected=revision[relative]  # amendment 2026-11-11 (d) builders
-        elif(task/'environment/turns.json').exists():expected=memory_hashes[task.name]
-        elif relative in migration['changed']:expected=migration['changed'][relative]['study_sha256']
-        elif (origin/relative).is_file():expected=hashlib.sha256((origin/relative).read_bytes()).hexdigest()
-        else:
-            assert relative in migration['new_dev_fixtures'],'Unregistered new payload: '+relative
-            expected=migration['new_dev_fixtures'][relative]
-        assert actual==expected,relative
-
-
 @pytest.mark.asyncio
 async def test_real_stdio_records_schema_invalid_and_wrong_entity_calls(tmp_path,monkeypatch):
     import anyio

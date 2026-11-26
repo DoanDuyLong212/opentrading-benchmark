@@ -1,0 +1,300 @@
+{
+ "snapshot_date": "2026-11-01",
+ "note": "Envelope MCP financial_statements ghi 2026-11-24 (kỳ ≤ Q2/2026, năm ≤ 2025); xem audits/snapshot-extension-2026-11-24/RECEIPT.json.",
+ "tools": {
+  "fs:VNM:y:KQKD": {
+   "tool": "financial_statements",
+   "params": {
+    "symbol": "VNM",
+    "period": "year",
+    "statement": "KQKD",
+    "periods_n": 5
+   },
+   "envelope": {
+    "data": {
+     "symbol": "VNM",
+     "period": "year",
+     "periods": [
+      "2021",
+      "2022",
+      "2023",
+      "2024",
+      "2025"
+     ],
+     "statements": {
+      "Kết quả kinh doanh": [
+       {
+        "norm_id": 2216,
+        "name": "Doanh thu thuần",
+        "name_en": "Net revenue",
+        "unit": "VND",
+        "values": {
+         "2021": 60919164846146.0,
+         "2022": 59956247197418.0,
+         "2023": 60368915511505.0,
+         "2024": 61782609528445.0,
+         "2025": 63645886756227.0
+        }
+       },
+       {
+        "norm_id": 2217,
+        "name": "Lợi nhuận gộp",
+        "name_en": "Gross profit",
+        "unit": "VND",
+        "values": {
+         "2021": 26278301492307.0,
+         "2022": 23897231506707.0,
+         "2023": 24544731615410.0,
+         "2024": 25590176323124.0,
+         "2025": 26209474194531.0
+        }
+       },
+       {
+        "norm_id": 2208,
+        "name": "LN thuần từ HĐKD",
+        "name_en": "Operating profit",
+        "unit": "VND",
+        "values": {
+         "2021": 12727619820191.0,
+         "2022": 10491064827100.0,
+         "2023": 10903632881807.0,
+         "2024": 11593977638387.0,
+         "2025": 11659774989463.0
+        }
+       },
+       {
+        "norm_id": 2212,
+        "name": "LNST thu nhập DN",
+        "name_en": "Profit after tax",
+        "unit": "VND",
+        "values": {
+         "2021": 10632535972478.0,
+         "2022": 8577575319708.0,
+         "2023": 9019354165051.0,
+         "2024": 9452892989948.0,
+         "2025": 9413589732469.0
+        }
+       },
+       {
+        "norm_id": 2214,
+        "name": "LNST của CĐ cty mẹ",
+        "name_en": "Net profit",
+        "unit": "VND",
+        "values": {
+         "2021": 10532477099899.0,
+         "2022": 8516023694342.0,
+         "2023": 8873812416864.0,
+         "2024": 9392310356250.0,
+         "2025": 9410201646692.0
+        }
+       }
+      ]
+     }
+    },
+    "provenance": {
+     "source": "vietstock",
+     "as_of": "2026-11-24T15:51:30.168761+07:00",
+     "timezone": "Asia/Ho_Chi_Minh",
+     "note": "Ghi 2026-11-24 từ cùng nguồn financeinfo; chỉ giữ kỳ đã công bố trước snapshot 2026-11-01 (quý tới Q2/2026, năm tới 2025)."
+    },
+    "availability": "available"
+   }
+  },
+  "fs:DHG:y:KQKD": {
+   "tool": "financial_statements",
+   "params": {
+    "symbol": "DHG",
+    "period": "year",
+    "statement": "KQKD",
+    "periods_n": 5
+   },
+   "envelope": {
+    "data": {
+     "symbol": "DHG",
+     "period": "year",
+     "periods": [
+      "2021",
+      "2022",
+      "2023",
+      "2024",
+      "2025"
+     ],
+     "statements": {
+      "Kết quả kinh doanh": [
+       {
+        "norm_id": 2216,
+        "name": "Doanh thu thuần",
+        "name_en": "Net revenue",
+        "unit": "VND",
+        "values": {
+         "2021": 4003170417099.0,
+         "2022": 4676016007827.0,
+         "2023": 5015395040721.0,
+         "2024": 4884867655092.0,
+         "2025": 5266962684050.0
+        }
+       },
+       {
+        "norm_id": 2217,
+        "name": "Lợi nhuận gộp",
+        "name_en": "Gross profit",
+        "unit": "VND",
+        "values": {
+         "2021": 1920910592185.0,
+         "2022": 2257494943128.0,
+         "2023": 2343545043335.0,
+         "2024": 2137766133150.0,
+         "2025": 2506368755119.0
+        }
+       },
+       {
+        "norm_id": 2208,
+        "name": "LN thuần từ HĐKD",
+        "name_en": "Operating profit",
+        "unit": "VND",
+        "values": {
+         "2021": 884532141253.0,
+         "2022": 1112057633706.0,
+         "2023": 1179262520803.0,
+         "2024": 978656370753.0,
+         "2025": 1004314037466.0
+        }
+       },
+       {
+        "norm_id": 2212,
+        "name": "LNST thu nhập DN",
+        "name_en": "Profit after tax",
+        "unit": "VND",
+        "values": {
+         "2021": 776284793787.0,
+         "2022": 988454646072.0,
+         "2023": 1050662658695.0,
+         "2024": 778920119960.0,
+         "2025": 852354107582.0
+        }
+       },
+       {
+        "norm_id": 2214,
+        "name": "LNST của CĐ cty mẹ",
+        "name_en": "Net profit",
+        "unit": "VND",
+        "values": {
+         "2021": 777219726033.0,
+         "2022": 988454646072.0,
+         "2023": 1050662658695.0,
+         "2024": 778920119960.0,
+         "2025": 852354107582.0
+        }
+       }
+      ]
+     }
+    },
+    "provenance": {
+     "source": "vietstock",
+     "as_of": "2026-11-24T15:51:30.168761+07:00",
+     "timezone": "Asia/Ho_Chi_Minh",
+     "note": "Ghi 2026-11-24 từ cùng nguồn financeinfo; chỉ giữ kỳ đã công bố trước snapshot 2026-11-01 (quý tới Q2/2026, năm tới 2025)."
+    },
+    "availability": "available"
+   }
+  },
+  "fs:IMP:y:KQKD": {
+   "tool": "financial_statements",
+   "params": {
+    "symbol": "IMP",
+    "period": "year",
+    "statement": "KQKD",
+    "periods_n": 5
+   },
+   "envelope": {
+    "data": {
+     "symbol": "IMP",
+     "period": "year",
+     "periods": [
+      "2021",
+      "2022",
+      "2023",
+      "2024",
+      "2025"
+     ],
+     "statements": {
+      "Kết quả kinh doanh": [
+       {
+        "norm_id": 2216,
+        "name": "Doanh thu thuần",
+        "name_en": "Net revenue",
+        "unit": "VND",
+        "values": {
+         "2021": 1266596707350.0,
+         "2022": 1643706514646.0,
+         "2023": 1994036910377.0,
+         "2024": 2205119938413.0,
+         "2025": 2441085482086.0
+        }
+       },
+       {
+        "norm_id": 2217,
+        "name": "Lợi nhuận gộp",
+        "name_en": "Gross profit",
+        "unit": "VND",
+        "values": {
+         "2021": 488001326263.0,
+         "2022": 697355250216.0,
+         "2023": 810535731199.0,
+         "2024": 855557152690.0,
+         "2025": 1001564116197.0
+        }
+       },
+       {
+        "norm_id": 2208,
+        "name": "LN thuần từ HĐKD",
+        "name_en": "Operating profit",
+        "unit": "VND",
+        "values": {
+         "2021": 234475310667.0,
+         "2022": 290633028580.0,
+         "2023": 374406554691.0,
+         "2024": 403284767405.0,
+         "2025": 445002831189.0
+        }
+       },
+       {
+        "norm_id": 2212,
+        "name": "LNST thu nhập DN",
+        "name_en": "Profit after tax",
+        "unit": "VND",
+        "values": {
+         "2021": 189094874963.0,
+         "2022": 223540317602.0,
+         "2023": 299556005542.0,
+         "2024": 320862393082.0,
+         "2025": 349138023396.0
+        }
+       },
+       {
+        "norm_id": 2214,
+        "name": "LNST của CĐ cty mẹ",
+        "name_en": "Net profit",
+        "unit": "VND",
+        "values": {
+         "2021": 189094874963.0,
+         "2022": 223540317602.0,
+         "2023": 299556005542.0,
+         "2024": 320862393082.0,
+         "2025": 349138023396.0
+        }
+       }
+      ]
+     }
+    },
+    "provenance": {
+     "source": "vietstock",
+     "as_of": "2026-11-24T15:51:30.168761+07:00",
+     "timezone": "Asia/Ho_Chi_Minh",
+     "note": "Ghi 2026-11-24 từ cùng nguồn financeinfo; chỉ giữ kỳ đã công bố trước snapshot 2026-11-01 (quý tới Q2/2026, năm tới 2025)."
+    },
+    "availability": "available"
+   }
+  }
+ }
+}
