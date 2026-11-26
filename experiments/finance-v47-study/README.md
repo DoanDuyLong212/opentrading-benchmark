@@ -1,6 +1,6 @@
 # Finance v4.7 study
 
-**Chưa seal.** Chỉ dùng cho dev smoke: `BENCH_V47_DEV=1 python3 tools/run_benchmark.py --config tools/bench_config_v47.json ...`. Thiết kế và các quyết định: `plans/2026-11-15-v47-study-design.md`.
+Kết quả cuối (300 task, judge Claude Haiku 5.5): [`final-20261126/Results.md`](final-20261126/Results.md). Config chạy: `tools/bench_config_v47.json`. Thiết kế và các quyết định: `plans/2026-11-15-v47-study-design.md`.
 
 - Runtime OpenTrading: `experiments/opentrading-runtime/`, commit ở `experiments/opentrading-runtime.SHA` (dependency cài tại chỗ, không symlink).
 - Prompt OT: `tools/prompt_variants/baseline/` là bản chép nguyên văn `prompts/` của runtime; hash nằm trong `baseline.SHA256SUMS`.

@@ -1,195 +1,87 @@
-# Benchmark harness tài chính Việt Nam — v2
+# Benchmark harness tài chính Việt Nam — v4.7
 
-Đối chiếu OpenTrading, OpenCode và DeepSeek Harness (DSH) trên cùng model/provider,
-ngân sách, MCP snapshot và hợp đồng đầu ra. Benchmark đo **hỏi đáp tài chính có căn cứ
-trong snapshot**, không chứng nhận độ chính xác của báo cáo tài chính gốc hay hiệu quả
-đầu tư thực tế. Xem [khung đăng ký v2](PRE-REGISTER.md) và [audit lịch sử 04/11](audits/2026-11-04/REVIEW.md).
+Benchmark so sánh ba harness agent trên **cùng một model và cùng một bộ dữ liệu**:
 
-Bộ đề gồm **200 main, 50 holdout, 24 pilot và 3 smoke**, từ L1 trích xuất đến L5 nhiều
-phần. Không dùng kết quả smoke/pilot hoặc các lần chạy cũ để tuyên bố harness thắng.
-Sau khi cách ly các câu CPI chưa xác định rõ chiều của chỉ tiêu và rubric narrative
-chưa kiểm tra đủ dữ kiện được hỏi, mặc định còn **178 main, 43 holdout, 22 pilot và
-3 smoke** đủ điều kiện chạy; lần lượt có 22, 7, 2 và 0 câu chỉ dành cho chẩn đoán.
-Các kết quả trước v2 dùng grader/parity/telemetry cũ chỉ có giá trị chẩn đoán.
+- **OpenTrading**, harness chuyên về tài chính, dùng profile `machine`;
+- **OpenCode**, harness đa dụng;
+- **DeepSeek Harness (DSH)**, harness đa dụng.
 
-Trạng thái mới ngày 05/11/2026: **250 regression tests và 4/4 offline checks đạt**;
-smoke v3 hoàn tất **18/18 trial**, primary grounded đúng 10/18. Pilot mới hoàn tất
-**176/176 trial**: OT finance 12/44, OT baseline 12/44, OpenCode 14/44, DSH 18/44.
-Finance giảm false refusal 17→15 nhưng chưa tăng primary/semantic; không chứng minh
-thắng hai đối chứng. Sau review chỉ cài runtime fixes vào OpenTrading gốc, giữ prompt
-baseline mặc định. Candidate finance vẫn là thử nghiệm. Certificate mới và resume
-smoke/pilot đạt, không thêm request/trial. Xem [báo cáo v3 đầy đủ](audits/financial-prompt-v3/REPORT.md)
-và [xác minh v2 lịch sử](audits/contract-v2/NVIDIA-VERIFICATION.md).
+Câu hỏi đặt ra: khi model và dữ liệu giữ nguyên, chỉ thay harness, thì câu trả lời tài chính đúng hơn, nhanh hơn và rẻ hơn đến mức nào.
 
-**Lưu ý alias:** bản thí nghiệm v3 đã frozen vẫn chọn finance cho `opentrading`
-(cả `--arms all`). Để chạy so sánh prompt default thực tế đang giữ lại, ghi rõ
-`--arms opentrading_baseline,opencode,dsh` và tạo manifest/certificate mới theo gate
-tương ứng. Alias frozen tái lập thí nghiệm không phải prompt default đã triển khai.
+Kết quả đầy đủ: [`Results.md`](experiments/finance-v47-study/final-20261126/Results.md).
 
-## Study v4.7 (đang phát triển, chưa seal)
+## Cấu hình
 
-Entrypoint và hướng dẫn tái lập đầy đủ: [experiments/finance-v47-study/README.md](experiments/finance-v47-study/README.md).
-v4.7 dùng bộ **200 main + 58 holdout** (chia tầng L/C/M/S), runtime OT ghim và
-shell sandbox Docker. Toàn bộ kiểm tra offline — bootstrap toolchain ghim, active
-suite, verifier corpus/oracle/grader, legacy v4.6u — chạy từ clone mới không cần
-credential model; xem [.github/workflows/offline.yml](.github/workflows/offline.yml).
-
-```sh
-python3.12 experiments/finance-v47-study/tools/bootstrap_offline.py --prefix .toolchains --cache .bootstrap-cache
-python3.12 -m pytest -q experiments/finance-v47-study/tools/tests
-```
-
-Main/holdout và mọi lần chạy trả phí vẫn khoá sau seal + duyệt riêng; phần dưới
-mô tả lịch sử v2/v3 và không thay cho gate v4.7.
-
-## Hợp đồng đánh giá
-
-| Điều kiện | Cách thực thi |
+| Hạng mục | Giá trị |
 |---|---|
-| Dữ liệu | Replay offline; schema tool đóng băng, định danh sai hoặc request không ghi nhận bị từ chối. Tool công bố các request có thể replay. |
-| Tool và state | Profile/config/session riêng từng attempt; không user skills, external plugins, memory hoặc web trong track kiểm soát. Runtime inventory lưu tool schema thực gửi provider. Native system prompt của harness được giữ. |
-| Model/effort | Chỉ route NVIDIA đã triển khai, `effort=none`. Default hiện tại là model nhỏ phục vụ kiểm tra. Go/DeepSeek medium là kế hoạch tương lai, bị chặn cho đến khi adapter được xác minh. |
-| Output | Cả ba arm trả JSON cuối cùng; driver chuẩn hóa cùng cách. Không cứu đáp án từ file hoặc write-tool input. Nhiều JSON đáp án mâu thuẫn bị từ chối. |
-| Ngân sách | Giới hạn toàn trial gồm mọi attempt và backoff; cap request, output/request và tổng token. Retry chỉ lỗi provider tạm thời có bằng chứng, không retry mọi runner error. |
-| Evidence | `evidence:[{tool,source,as_of,call_id,payload_sha256,matched_entry_id,response_sha256}]`. Grader đối chiếu provenance đã đóng băng; driver nối từng evidence với lời gọi **thành công thật** trong ledger của attempt đó, đúng entry và đúng response. |
-| Lịch và resume | Task order seeded; arm orders xoay qua các hoán vị cân bằng. Manifest giữ nguyên lịch, code, config, task, version/hash harness và giá. `--resume` chỉ chấp nhận đúng manifest. |
+| Bộ đề | 300 task tiếng Việt × 3 harness × 1 lượt = 900 trial |
+| Model (chung cho cả 3) | `deepseek/deepseek-v4.1-flash-1017`, temperature 0, không yêu cầu reasoning |
+| Dữ liệu | Snapshot MCP đóng băng ngày 01/11/2026, phiên cuối là 30/10/2026; mọi đáp án tính từ snapshot bằng script |
+| Tool model thấy | Tool dữ liệu MCP và shell tính toán; OpenTrading giữ thêm tool đọc kết quả đã lưu và tool memory chỉ đọc |
+| Chấm điểm | Grader xác định, judge **Claude Haiku 5.5**, rồi duyệt tay |
+| Task investor | Mua giả định tại giá đóng cửa 30/10/2026, chấm theo giá đóng cửa 23/11/2026 |
 
-Payload/gold nằm ngoài workspace và không là tool cho agent. Đây là cách ly công cụ và
-cấu hình, không phải chứng minh mọi tiến trình thù địch đã bị sandbox ở mức OS. JSON
-provenance xác minh việc dùng snapshot; tự ghi tên nguồn không đủ để được primary pass.
+Một trial **đạt** khi thoả cả bốn điều kiện:
 
-## Metrics
+1. Judge chấm là đúng.
+2. Mọi số nằm trong sai số cho phép.
+3. Câu có đáp án là từ chối thì không được đưa ra số nào.
+4. Không bị loại khi duyệt tay. Duyệt tay chỉ có thể loại một trial, không bao giờ nâng nó thành đạt.
 
-Không cộng các cột thành một điểm tổng.
+Mẫu số là toàn bộ trial: trial không có câu trả lời cuối vẫn tính là không đạt.
 
-| Metric | Định nghĩa |
+## Kết quả
+
+| Nhóm | Task | **OpenTrading** | OpenCode | DSH |
+|---|---:|---:|---:|---:|
+| Compute | 79 | **78** | 75 | 76 |
+| Investor | 36 | **19** | 16 | 16 |
+| Lookup | 112 | 110 | 110 | 110 |
+| Memory | 59 | **58** | 30 | 50 |
+| Robustness | 14 | 14 | 14 | 14 |
+| **Tổng** | **300** | **279 (93,0%)** | 245 (81,7%) | 266 (88,7%) |
+
+So sánh từng cặp trên cùng task bằng kiểm định dấu chính xác, hai phía:
+
+- OpenTrading so với OpenCode: thắng 40, thua 6, p ≈ 3,1·10⁻⁷.
+- OpenTrading so với DSH: thắng 19, thua 6, p ≈ 0,015.
+
+| Thời gian, chi phí, độ tin cậy | **OpenTrading** | OpenCode | DSH |
+|---|---:|---:|---:|
+| Thời gian một trial, trung vị (s) | 36 | 47 | 31 |
+| Thời gian một trial, p90 (s) | **97** | 300 | 228 |
+| Trial dài hơn 5 phút | **1** | 30 | 17 |
+| Request model / trial (trung bình) | **3,8** | 6,8 | 7,2 |
+| Tổng chi phí (USD) | **0,68** | 1,29 | 1,23 |
+| Chi phí / câu đúng (USD) | **0,0024** | 0,0053 | 0,0046 |
+| Trả lời đúng định dạng | **299** | 288 | 285 |
+| Từ chối sai (trên 289 câu có đáp án) | **0** | 10 | 0 |
+| Đưa số ở câu phải từ chối (trên 11 câu) | 0 | 0 | 0 |
+| Số nằm ngoài sai số | **1** | 15 | 5 |
+
+Chi phí là số tiền nhà cung cấp model báo cho từng request. Riêng OpenCode và DSH ở 100 task, chi phí được ước tính từ số token theo cùng bảng giá.
+
+**Tóm tắt kết quả:**
+
+- Ở nhóm compute, lookup và robustness, ba harness chênh nhau không quá ba task.
+- Khác biệt chủ yếu nằm ở **memory**: OpenTrading áp dụng đúng quy tắc người dùng đã dặn ở phiên trước, kể cả quy tắc đã được cập nhật hoặc thu hồi, ở 58/59 task.
+- OpenTrading chậm hơn ở các câu tra cứu ngắn, vì prompt hệ thống và bộ tool của nó lớn hơn. Ngược lại, nó nhanh hơn hẳn ở task dài, nhiều bước.
+- Không harness nào vượt chiến lược "luôn bán", vốn đạt 11/16 câu khuyến nghị mua, giữ, bán trong giai đoạn thị trường giảm này.
+
+## Giới hạn
+
+- Mỗi task chỉ chạy một lượt cho mỗi harness, nên benchmark không đo được độ ổn định khi chạy lại.
+- Nhóm investor chỉ phản ánh một giai đoạn thị trường giảm kéo dài ba tuần (31/10–23/11/2026). Nên xem đây là tín hiệu, không phải thước đo năng lực đầu tư.
+- Task memory do chính nhóm phát triển memory của OpenTrading viết.
+- Judge chỉ được kiểm trước trên các câu rõ đúng và rõ sai: 200 câu có kiểm soát, Cohen's κ = 1,0.
+
+## Cấu trúc repo
+
+| Đường dẫn | Nội dung |
 |---|---|
-| Primary success | JSON/schema và mọi check bắt buộc đúng, evidence nối ledger thật, process thành công trong thời hạn; mẫu số mọi trial đã bắt đầu. |
-| Task bị cách ly | `task.toml` ghi `confirmatory_eligible=false` và `exclusion_reason`; mặc định loại trước khi sample ở mọi split, ghi số lượng/lý do trong manifest, summary và freeze. `--include-quarantined` chỉ dành cho chẩn đoán smoke/pilot, không được cấp certificate. |
-| Certificate vận hành | Mọi trial đúng model/catalog, hoàn tất trong budget, usage đủ và ledger replay hợp lệ. Chọn tham số bị snapshot từ chối hoặc model không gọi tool vẫn là lỗi chất lượng; 0 call cần telemetry chứng minh. Mỗi arm phải có canary tool thành công và đáp án primary grounded đúng. Không chứng nhận accuracy của model nhỏ. Xem protocol `operational_parity_v3` trong PRE-REGISTER. |
-| Semantic correctness | Check nội dung tài chính riêng, giúp phân biệt lỗi kiến thức/tính toán với lỗi schema/provenance/harness. |
-| Stable-correct 3/3 | Task đúng cả ba lần độc lập. Báo riêng task đủ ba lần và task thiếu run; **không phải xác suất đúng khi dùng một lần**. Smoke một run không tạo endpoint 3/3. |
-| Bịa trên unanswerable | FP trên task refusal, báo mẫu số started và answered, kèm DNF. |
-| Từ chối oan | Null/từ chối ở trường được hỏi có đáp án trong gold. Không suy ra refusal vì thiếu scalar khi đáp án là set/ranking; không loại toàn task vì một trường khác partial. |
-| Thời gian | End-to-end p50/p90, valid-answer latency, timeout; bao gồm attempts/backoff. |
-| Token/cost | Tổng usage mọi request/attempt, coverage từng trường. Thiếu usage là N/A. Chỉ dùng bảng giá nằm trong manifest; input/cache cần semantics rõ. Subscription/allowance/cash spend không bị đồng nhất với list-price estimate. |
-| Chẩn đoán | Per-check, error taxonomy, calls từ ledger, retry, bonus replacement, MAD/abs(median) theo task trên đáp án pass. |
+| `experiments/finance-v47-study/final-20261126/` | Kết quả cuối: `Results.md`, `FINAL-300-corrected.json` (kết quả từng trial sau khi chấm), `HAIKU-FINAL-300-report.json`, các amendment và script tạo báo cáo |
+| `experiments/finance-v47-study/tasks/main/` | 200 task, mỗi task gồm đề, đáp án và grader; danh sách 100 task còn lại nằm trong `final-20261126/amendments/BLOCK-B-300-20261125.json` |
+| `experiments/finance-v47-study/tools/` | Runner, gateway, judge, config `bench_config_v47.json` |
+| `experiments/finance-v47-study/README.md` | Cách dựng toolchain ghim và kiểm tra offline |
 
-Phân tích so sánh dùng paired bootstrap **theo task**, thêm sensitivity theo hash payload
-trùng; exact McNemar trên endpoint stable 3/3 đủ cặp và Holm cho các cặp arm. Không coi
-600 trial là 600 quan sát độc lập. Incomplete run và số cặp đủ dữ liệu phải được báo.
-Dữ liệu lịch sử không có manifest không được gắn lại model/giá từ config mới; trộn model
-trong cùng thư mục bị từ chối.
-
-## Chạy kiểm tra bằng NVIDIA model nhỏ
-
-Cần Python có `mcp`, `jsonschema`, `pytest`, ba harness đã cài và `NVIDIA_API_KEY` trong
-môi trường. Key không được ghi vào manifest/config/log. Chạy tại thư mục benchmark:
-
-```bash
-# Offline mặc định, không gọi provider và không sửa auth/profile người dùng.
-python3 tools/ready_check.py
-python3 -m pytest tools/tests -q
-
-# Discovery NVIDIA chỉ khi yêu cầu rõ tùy chọn này.
-python3 tools/ready_check.py --provider-probe
-
-# Smoke 3 câu × 3 arm × 2 run: kiểm tra lặp ổn định, không xếp hạng.
-python3 tools/run_benchmark.py --split smoke --runs 2 \
-  --timeout 180 --max-requests 24 --max-output-tokens 2048 \
-  --max-total-tokens 48000 --retry 1 --retry-backoff 4 --pause 2 \
-  --effort none --out results/v2-smoke
-
-# Tiếp tục chính xác lần chạy bị gián đoạn: giữ nguyên mọi tùy chọn trên và thêm --resume.
-# Driver bỏ qua row đã hoàn tất; attempt đã có kết quả sẽ finalize mà không gọi model lại.
-# Attempt bị ngắt giữa request thành terminal interrupted với usage chưa biết=N/A.
-```
-
-`--config PATH` chọn config khác; `--model` được phép cho smoke/pilot, nhưng khi dùng
-freeze phải trùng model đã chứng nhận trong config. `--tasks id1,id2`, `--sample N`,
-`--seed S` và `--arms ...` được đóng băng trong manifest. Chạy tuần tự; gateway dùng
-rate limiter chung. Chưa mua Go: không gọi Beam hay DeepSeek trả phí trong kiểm tra.
-
-## Pilot, freeze và main/holdout
-
-Pilot dùng model nhỏ để kiểm tra vận hành, metrics và thời gian. Trước nghiên cứu chính,
-chốt **một** model/provider/effort được hỗ trợ, config và subset nếu cần, rồi chạy lại smoke
-đúng cấu hình đó. Giữ nguyên code/config/harness/task từ smoke đến khi cấp certificate.
-
-```bash
-# Certificate đòi full regression pass + artifact smoke đủ 3 câu × 3 arm × ít nhất 2 run,
-# schema/tool/evidence hoạt động và runtime inventory đúng model/config/code hiện tại.
-python3 tools/ready_check.py --config tools/bench_config.json \
-  --live-run results/v2-smoke --certificate results/v2-ready.json
-
-python3 tools/run_manifest.py --config tools/bench_config.json \
-  --certificate results/v2-ready.json --output results/v2-freeze.json
-
-python3 tools/run_benchmark.py --split main --runs 3 \
-  --freeze-receipt results/v2-freeze.json --out results/v2-main
-
-# Chỉ thực hiện khi bắt đầu lần xác nhận cuối cùng đã lên lịch.
-python3 tools/run_benchmark.py --split holdout --runs 3 --confirm-holdout \
-  --freeze-receipt results/v2-freeze.json --out results/v2-holdout
-```
-
-Offline xanh **không** tự chứng minh runtime parity. Certificate kiểm tra artifact live
-chứ không dựa vào cờ xác nhận. Main/holdout bị chặn nếu certificate, model, code, task,
-harness hoặc config thay đổi. Hash bao gồm mọi split; không chạy model holdout trong
-phát triển. Holdout có receipt mở một lần tại `results/holdout-open-v2.json`; chỉ
-`--resume` đúng run đó được chấp nhận sau khi mở. Không xóa receipt để chạy thử lại.
-
-Nếu route Go/effort medium được triển khai sau này, phải kiểm tra tương đương khả năng
-và budget cho cả ba arm trước khi đổi cấu hình. Không lấy kết quả model nhỏ làm ước
-lượng chất lượng của DeepSeek. Scope `real_world_filings_accuracy` cần quy trình đối
-chiếu tài liệu gốc riêng; certificate hiện tại chỉ hỗ trợ `snapshot_grounded_financial_qa`.
-
-## Artifacts và kiểm toán
-
-```text
-results/<run>/
-  manifest.json                  # kế hoạch bất biến, hashes, giá, schedule, scoring metadata
-  trials.jsonl                   # một row/trial; duplicate/corruption không bị bỏ qua âm thầm
-  summary.json                   # coverage, completeness, metrics, paired statistics
-  trials/<task>__<arm>__r<run>/
-    state.json                   # thời điểm và whole-trial budget bền vững
-    grade.json
-    attempts/<number>-<nonce>/
-      ws/instruction.md
-      ws/answer.json             # driver sinh từ final_text nếu hợp lệ
-      run.log
-      mcp.jsonl                  # lời gọi thực, request/response hashes và provenance
-      provider.jsonl             # provider requests và usage, không chứa key
-      result.json                # kết quả attempt phục vụ recovery không gọi lại
-      runner/                    # config/runtime inventory của adapter
-```
-
-```bash
-python3 tools/analyze.py results/v2-smoke
-python3 tools/analyze.py results/v2-smoke --json
-```
-
-`--resume` khóa độc quyền thư mục run, không thêm row trùng và không nạp đáp án attempt
-cũ vào session mới. JSONL cuối bị cắt do crash được lưu riêng trước khi phục hồi; dòng
-sai ở giữa vẫn làm phân tích dừng để tránh mất dữ liệu. Các artifacts gồm prompt/đáp án
-và số đo sử dụng, cần giữ cùng manifest khi chia sẻ kết quả.
-
-## Kế hoạch một tuần
-
-1. Ngày 1–2: regression/adversarial, replay đúng/sai tham số, kiểm tra đơn vị/công thức và
-   ambiguity của main/pilot, smoke NVIDIA cả ba arm. Không mở holdout bằng model.
-2. Ngày 3: pilot có lặp để đo completion, p90 thời gian, request/token và tần suất lỗi;
-   quyết định trước main có đủ 178 task đủ điều kiện hay dùng subset phân tầng đã lưu ID/seed.
-3. Ngày 4: chốt model/config/metrics/subset, chạy canary đúng cấu hình, cấp certificate
-   và freeze. Việc mua Go chỉ thực hiện sau khi xác minh adapter/effort.
-4. Ngày 4–6: main ba lần/task/arm; dùng resume khi gián đoạn; giữ thời gian dự phòng
-   quota/recovery. Main + holdout đủ điều kiện cần 1.989 trial nếu mỗi task/arm chạy
-   ba lần; thời gian cần tính từ pilot, không ngoại suy từ smoke hoặc hứa đủ trong tuần.
-5. Ngày 7: mở holdout một lần nếu main và lịch còn đủ; phân tích paired, CI,
-   completeness, payload overlap/family sensitivity; ghi rõ mọi giới hạn.
-
-Đừng điều chỉnh đề/grader theo kết quả holdout. Payload tái sử dụng khiến tính độc lập
-hạn chế; sensitivity theo nhóm không thay thế một holdout dữ liệu hoàn toàn mới.
-Các kiểm tra pipeline không chứng minh bộ câu hỏi đại diện đầy đủ nghiệp vụ tài chính
-Việt Nam: cần bổ sung sau nghiên cứu các case niên độ, báo cáo hợp nhất/riêng lẻ,
-điều chỉnh corporate actions, missing fields và tài liệu gốc có page/line evidence.
+Khi tái lập, đọc [`experiments/finance-v47-study/README.md`](experiments/finance-v47-study/README.md). Các bước kiểm tra offline không cần credential model.
