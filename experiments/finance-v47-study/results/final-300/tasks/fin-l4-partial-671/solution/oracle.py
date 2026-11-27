@@ -1,4 +1,4 @@
-﻿#!/usr/bin/env python3
+#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """Oracle — tái tạo gold từ environment/payloads.json (self-contained)."""
 import json

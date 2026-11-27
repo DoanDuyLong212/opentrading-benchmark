@@ -1,790 +1,790 @@
 {
-    "recorded_at": "2026-11-25T18:51:22.395329+07:00",
-    "snapshot_end": "2026-10-30",
-    "end": "2026-11-23",
-    "sessions_pre": 120,
-    "method": "Amendment 2026-11-25 (d): daily prices for the investor stratum (I).\n\nTwo windows per symbol, both from vnstock Quote (source VCI), the same provider used for history-120 (2026-11-11):\n  pre  : the 120 sessions ending 2026-10-30 (last session of the 2026-11-01 MCP snapshot) -> task payloads\n  post : sessions 2026-10-31 .. 2026-11-23 -> grading only, never served to agents. The owner asked for 'today' (25/11);\n         at 18:50 on 25/11 no source had a 25/11 session (VCI daily bars end 23/11; the DNSE board's last match is\n         23/11 14:45), so the window ends at the latest recorded session, 23/11.\nEvery pre-window session that overlaps history-120 or a frozen task payload must match exactly, or the symbol is rejected.\n    python3 tools/record_prices_20261125.py",
-    "symbols": {
-        "ACB": {
-            "pre": [
-                "2026-05-13",
-                "2026-10-30"
-            ],
-            "post": [
-                "2026-11-02",
-                "2026-11-23",
-                16
-            ],
-            "frozen_overlap_checked": 120,
-            "mismatches": []
-        },
-        "ANV": {
-            "pre": [
-                "2026-05-13",
-                "2026-10-30"
-            ],
-            "post": [
-                "2026-11-02",
-                "2026-11-23",
-                16
-            ],
-            "frozen_overlap_checked": 0,
-            "mismatches": []
-        },
-        "BID": {
-            "pre": [
-                "2026-05-13",
-                "2026-10-30"
-            ],
-            "post": [
-                "2026-11-02",
-                "2026-11-23",
-                16
-            ],
-            "frozen_overlap_checked": 120,
-            "mismatches": []
-        },
-        "BMP": {
-            "pre": [
-                "2026-05-13",
-                "2026-10-30"
-            ],
-            "post": [
-                "2026-11-02",
-                "2026-11-23",
-                16
-            ],
-            "frozen_overlap_checked": 0,
-            "mismatches": []
-        },
-        "CTD": {
-            "pre": [
-                "2026-05-13",
-                "2026-10-30"
-            ],
-            "post": [
-                "2026-11-02",
-                "2026-11-23",
-                16
-            ],
-            "frozen_overlap_checked": 0,
-            "mismatches": []
-        },
-        "CTG": {
-            "pre": [
-                "2026-05-13",
-                "2026-10-30"
-            ],
-            "post": [
-                "2026-11-02",
-                "2026-11-23",
-                16
-            ],
-            "frozen_overlap_checked": 120,
-            "mismatches": []
-        },
-        "DBC": {
-            "pre": [
-                "2026-05-13",
-                "2026-10-30"
-            ],
-            "post": [
-                "2026-11-02",
-                "2026-11-23",
-                16
-            ],
-            "frozen_overlap_checked": 0,
-            "mismatches": []
-        },
-        "DCM": {
-            "pre": [
-                "2026-05-13",
-                "2026-10-30"
-            ],
-            "post": [
-                "2026-11-02",
-                "2026-11-23",
-                16
-            ],
-            "frozen_overlap_checked": 0,
-            "mismatches": []
-        },
-        "DGC": {
-            "pre": [
-                "2026-05-13",
-                "2026-10-30"
-            ],
-            "post": [
-                "2026-11-02",
-                "2026-11-23",
-                16
-            ],
-            "frozen_overlap_checked": 0,
-            "mismatches": []
-        },
-        "DGW": {
-            "pre": [
-                "2026-05-13",
-                "2026-10-30"
-            ],
-            "post": [
-                "2026-11-02",
-                "2026-11-23",
-                16
-            ],
-            "frozen_overlap_checked": 0,
-            "mismatches": []
-        },
-        "DHG": {
-            "pre": [
-                "2026-05-13",
-                "2026-10-30"
-            ],
-            "post": [
-                "2026-11-02",
-                "2026-11-23",
-                16
-            ],
-            "frozen_overlap_checked": 0,
-            "mismatches": []
-        },
-        "DPM": {
-            "pre": [
-                "2026-05-13",
-                "2026-10-30"
-            ],
-            "post": [
-                "2026-11-02",
-                "2026-11-23",
-                16
-            ],
-            "frozen_overlap_checked": 0,
-            "mismatches": []
-        },
-        "DXG": {
-            "pre": [
-                "2026-05-13",
-                "2026-10-30"
-            ],
-            "post": [
-                "2026-11-02",
-                "2026-11-23",
-                16
-            ],
-            "frozen_overlap_checked": 0,
-            "mismatches": []
-        },
-        "FPT": {
-            "pre": [
-                "2026-05-13",
-                "2026-10-30"
-            ],
-            "post": [
-                "2026-11-02",
-                "2026-11-23",
-                16
-            ],
-            "frozen_overlap_checked": 120,
-            "mismatches": []
-        },
-        "FRT": {
-            "pre": [
-                "2026-05-13",
-                "2026-10-30"
-            ],
-            "post": [
-                "2026-11-02",
-                "2026-11-23",
-                16
-            ],
-            "frozen_overlap_checked": 0,
-            "mismatches": []
-        },
-        "GAS": {
-            "pre": [
-                "2026-05-13",
-                "2026-10-30"
-            ],
-            "post": [
-                "2026-11-02",
-                "2026-11-23",
-                16
-            ],
-            "frozen_overlap_checked": 120,
-            "mismatches": []
-        },
-        "GEX": {
-            "pre": [
-                "2026-05-13",
-                "2026-10-30"
-            ],
-            "post": [
-                "2026-11-02",
-                "2026-11-23",
-                16
-            ],
-            "frozen_overlap_checked": 0,
-            "mismatches": []
-        },
-        "GMD": {
-            "pre": [
-                "2026-05-13",
-                "2026-10-30"
-            ],
-            "post": [
-                "2026-11-02",
-                "2026-11-23",
-                16
-            ],
-            "frozen_overlap_checked": 0,
-            "mismatches": []
-        },
-        "GVR": {
-            "pre": [
-                "2026-05-13",
-                "2026-10-30"
-            ],
-            "post": [
-                "2026-11-02",
-                "2026-11-23",
-                16
-            ],
-            "frozen_overlap_checked": 120,
-            "mismatches": []
-        },
-        "HAH": {
-            "pre": [
-                "2026-05-13",
-                "2026-10-30"
-            ],
-            "post": [
-                "2026-11-02",
-                "2026-11-23",
-                16
-            ],
-            "frozen_overlap_checked": 0,
-            "mismatches": []
-        },
-        "HCM": {
-            "pre": [
-                "2026-05-13",
-                "2026-10-30"
-            ],
-            "post": [
-                "2026-11-02",
-                "2026-11-23",
-                16
-            ],
-            "frozen_overlap_checked": 0,
-            "mismatches": []
-        },
-        "HDB": {
-            "pre": [
-                "2026-05-13",
-                "2026-10-30"
-            ],
-            "post": [
-                "2026-11-02",
-                "2026-11-23",
-                16
-            ],
-            "frozen_overlap_checked": 120,
-            "mismatches": []
-        },
-        "HPG": {
-            "pre": [
-                "2026-05-13",
-                "2026-10-30"
-            ],
-            "post": [
-                "2026-11-02",
-                "2026-11-23",
-                16
-            ],
-            "frozen_overlap_checked": 120,
-            "mismatches": []
-        },
-        "HSG": {
-            "pre": [
-                "2026-05-13",
-                "2026-10-30"
-            ],
-            "post": [
-                "2026-11-02",
-                "2026-11-23",
-                16
-            ],
-            "frozen_overlap_checked": 0,
-            "mismatches": []
-        },
-        "IMP": {
-            "pre": [
-                "2026-05-13",
-                "2026-10-30"
-            ],
-            "post": [
-                "2026-11-02",
-                "2026-11-23",
-                16
-            ],
-            "frozen_overlap_checked": 0,
-            "mismatches": []
-        },
-        "KDC": {
-            "pre": [
-                "2026-05-13",
-                "2026-10-30"
-            ],
-            "post": [
-                "2026-11-02",
-                "2026-11-23",
-                16
-            ],
-            "frozen_overlap_checked": 0,
-            "mismatches": []
-        },
-        "KDH": {
-            "pre": [
-                "2026-05-13",
-                "2026-10-30"
-            ],
-            "post": [
-                "2026-11-02",
-                "2026-11-23",
-                16
-            ],
-            "frozen_overlap_checked": 0,
-            "mismatches": []
-        },
-        "MBB": {
-            "pre": [
-                "2026-05-13",
-                "2026-10-30"
-            ],
-            "post": [
-                "2026-11-02",
-                "2026-11-23",
-                16
-            ],
-            "frozen_overlap_checked": 120,
-            "mismatches": []
-        },
-        "MSN": {
-            "pre": [
-                "2026-05-13",
-                "2026-10-30"
-            ],
-            "post": [
-                "2026-11-02",
-                "2026-11-23",
-                16
-            ],
-            "frozen_overlap_checked": 120,
-            "mismatches": []
-        },
-        "MWG": {
-            "pre": [
-                "2026-05-13",
-                "2026-10-30"
-            ],
-            "post": [
-                "2026-11-02",
-                "2026-11-23",
-                16
-            ],
-            "frozen_overlap_checked": 120,
-            "mismatches": []
-        },
-        "NKG": {
-            "pre": [
-                "2026-05-13",
-                "2026-10-30"
-            ],
-            "post": [
-                "2026-11-02",
-                "2026-11-23",
-                16
-            ],
-            "frozen_overlap_checked": 0,
-            "mismatches": []
-        },
-        "NLG": {
-            "pre": [
-                "2026-05-13",
-                "2026-10-30"
-            ],
-            "post": [
-                "2026-11-02",
-                "2026-11-23",
-                16
-            ],
-            "frozen_overlap_checked": 0,
-            "mismatches": []
-        },
-        "NTP": {
-            "pre": [
-                "2026-05-13",
-                "2026-10-30"
-            ],
-            "post": [
-                "2026-11-02",
-                "2026-11-23",
-                16
-            ],
-            "frozen_overlap_checked": 0,
-            "mismatches": []
-        },
-        "PC1": {
-            "pre": [
-                "2026-05-13",
-                "2026-10-30"
-            ],
-            "post": [
-                "2026-11-02",
-                "2026-11-23",
-                16
-            ],
-            "frozen_overlap_checked": 0,
-            "mismatches": []
-        },
-        "PLX": {
-            "pre": [
-                "2026-05-13",
-                "2026-10-30"
-            ],
-            "post": [
-                "2026-11-02",
-                "2026-11-23",
-                16
-            ],
-            "frozen_overlap_checked": 120,
-            "mismatches": []
-        },
-        "PNJ": {
-            "pre": [
-                "2026-05-13",
-                "2026-10-30"
-            ],
-            "post": [
-                "2026-11-02",
-                "2026-11-23",
-                16
-            ],
-            "frozen_overlap_checked": 120,
-            "mismatches": []
-        },
-        "POW": {
-            "pre": [
-                "2026-05-13",
-                "2026-10-30"
-            ],
-            "post": [
-                "2026-11-02",
-                "2026-11-23",
-                16
-            ],
-            "frozen_overlap_checked": 120,
-            "mismatches": []
-        },
-        "PVD": {
-            "pre": [
-                "2026-05-13",
-                "2026-10-30"
-            ],
-            "post": [
-                "2026-11-02",
-                "2026-11-23",
-                16
-            ],
-            "frozen_overlap_checked": 0,
-            "mismatches": []
-        },
-        "PVS": {
-            "pre": [
-                "2026-05-13",
-                "2026-10-30"
-            ],
-            "post": [
-                "2026-11-02",
-                "2026-11-23",
-                16
-            ],
-            "frozen_overlap_checked": 0,
-            "mismatches": []
-        },
-        "REE": {
-            "pre": [
-                "2026-05-13",
-                "2026-10-30"
-            ],
-            "post": [
-                "2026-11-02",
-                "2026-11-23",
-                16
-            ],
-            "frozen_overlap_checked": 0,
-            "mismatches": []
-        },
-        "SAB": {
-            "pre": [
-                "2026-05-13",
-                "2026-10-30"
-            ],
-            "post": [
-                "2026-11-02",
-                "2026-11-23",
-                16
-            ],
-            "frozen_overlap_checked": 120,
-            "mismatches": []
-        },
-        "SHS": {
-            "pre": [
-                "2026-05-13",
-                "2026-10-30"
-            ],
-            "post": [
-                "2026-11-02",
-                "2026-11-23",
-                16
-            ],
-            "frozen_overlap_checked": 0,
-            "mismatches": []
-        },
-        "SSI": {
-            "pre": [
-                "2026-05-13",
-                "2026-10-30"
-            ],
-            "post": [
-                "2026-11-02",
-                "2026-11-23",
-                16
-            ],
-            "frozen_overlap_checked": 120,
-            "mismatches": []
-        },
-        "STB": {
-            "pre": [
-                "2026-05-13",
-                "2026-10-30"
-            ],
-            "post": [
-                "2026-11-02",
-                "2026-11-23",
-                16
-            ],
-            "frozen_overlap_checked": 120,
-            "mismatches": []
-        },
-        "TCB": {
-            "pre": [
-                "2026-05-13",
-                "2026-10-30"
-            ],
-            "post": [
-                "2026-11-02",
-                "2026-11-23",
-                16
-            ],
-            "frozen_overlap_checked": 120,
-            "mismatches": []
-        },
-        "TPB": {
-            "pre": [
-                "2026-05-13",
-                "2026-10-30"
-            ],
-            "post": [
-                "2026-11-02",
-                "2026-11-23",
-                16
-            ],
-            "frozen_overlap_checked": 120,
-            "mismatches": []
-        },
-        "TRA": {
-            "pre": [
-                "2026-05-13",
-                "2026-10-30"
-            ],
-            "post": [
-                "2026-11-02",
-                "2026-11-23",
-                16
-            ],
-            "frozen_overlap_checked": 0,
-            "mismatches": []
-        },
-        "VCB": {
-            "pre": [
-                "2026-05-13",
-                "2026-10-30"
-            ],
-            "post": [
-                "2026-11-02",
-                "2026-11-23",
-                16
-            ],
-            "frozen_overlap_checked": 120,
-            "mismatches": []
-        },
-        "VCG": {
-            "pre": [
-                "2026-05-13",
-                "2026-10-30"
-            ],
-            "post": [
-                "2026-11-02",
-                "2026-11-23",
-                16
-            ],
-            "frozen_overlap_checked": 0,
-            "mismatches": []
-        },
-        "VCI": {
-            "pre": [
-                "2026-05-13",
-                "2026-10-30"
-            ],
-            "post": [
-                "2026-11-02",
-                "2026-11-23",
-                16
-            ],
-            "frozen_overlap_checked": 0,
-            "mismatches": []
-        },
-        "VGS": {
-            "pre": [
-                "2026-05-13",
-                "2026-10-30"
-            ],
-            "post": [
-                "2026-11-02",
-                "2026-11-23",
-                16
-            ],
-            "frozen_overlap_checked": 0,
-            "mismatches": []
-        },
-        "VHC": {
-            "pre": [
-                "2026-05-13",
-                "2026-10-30"
-            ],
-            "post": [
-                "2026-11-02",
-                "2026-11-23",
-                16
-            ],
-            "frozen_overlap_checked": 0,
-            "mismatches": []
-        },
-        "VHM": {
-            "pre": [
-                "2026-05-13",
-                "2026-10-30"
-            ],
-            "post": [
-                "2026-11-02",
-                "2026-11-23",
-                16
-            ],
-            "frozen_overlap_checked": 120,
-            "mismatches": []
-        },
-        "VIC": {
-            "pre": [
-                "2026-05-13",
-                "2026-10-30"
-            ],
-            "post": [
-                "2026-11-02",
-                "2026-11-23",
-                16
-            ],
-            "frozen_overlap_checked": 120,
-            "mismatches": []
-        },
-        "VJC": {
-            "pre": [
-                "2026-05-13",
-                "2026-10-30"
-            ],
-            "post": [
-                "2026-11-02",
-                "2026-11-23",
-                16
-            ],
-            "frozen_overlap_checked": 120,
-            "mismatches": []
-        },
-        "VND": {
-            "pre": [
-                "2026-05-13",
-                "2026-10-30"
-            ],
-            "post": [
-                "2026-11-02",
-                "2026-11-23",
-                16
-            ],
-            "frozen_overlap_checked": 0,
-            "mismatches": []
-        },
-        "VNM": {
-            "pre": [
-                "2026-05-13",
-                "2026-10-30"
-            ],
-            "post": [
-                "2026-11-02",
-                "2026-11-23",
-                16
-            ],
-            "frozen_overlap_checked": 120,
-            "mismatches": []
-        },
-        "VPB": {
-            "pre": [
-                "2026-05-13",
-                "2026-10-30"
-            ],
-            "post": [
-                "2026-11-02",
-                "2026-11-23",
-                16
-            ],
-            "frozen_overlap_checked": 120,
-            "mismatches": []
-        },
-        "VNINDEX": {
-            "pre": [
-                "2026-05-13",
-                "2026-10-30"
-            ],
-            "post": [
-                "2026-11-02",
-                "2026-11-23",
-                16
-            ],
-            "frozen_overlap_checked": 120,
-            "mismatches": []
-        },
-        "VN30": {
-            "pre": [
-                "2026-05-13",
-                "2026-10-30"
-            ],
-            "post": [
-                "2026-11-02",
-                "2026-11-23",
-                16
-            ],
-            "frozen_overlap_checked": 120,
-            "mismatches": []
-        }
-    },
-    "rejected": {}
+ "recorded_at": "2026-11-25T18:51:22.395329+07:00",
+ "snapshot_end": "2026-10-30",
+ "end": "2026-11-23",
+ "sessions_pre": 120,
+ "method": "Amendment 2026-11-25 (d): daily prices for the investor stratum (I).\n\nTwo windows per symbol, both from vnstock Quote (source VCI), the same provider used for history-120 (2026-11-11):\n  pre  : the 120 sessions ending 2026-10-30 (last session of the 2026-11-01 MCP snapshot) -> task payloads\n  post : sessions 2026-10-31 .. 2026-11-23 -> grading only, never served to agents. The owner asked for 'today' (25/11);\n         at 18:50 on 25/11 no source had a 25/11 session (VCI daily bars end 23/11; the DNSE board's last match is\n         23/11 14:45), so the window ends at the latest recorded session, 23/11.\nEvery pre-window session that overlaps history-120 or a frozen task payload must match exactly, or the symbol is rejected.\n    python3 tools/record_prices_20261125.py",
+ "symbols": {
+  "ACB": {
+   "pre": [
+    "2026-05-13",
+    "2026-10-30"
+   ],
+   "post": [
+    "2026-11-02",
+    "2026-11-23",
+    16
+   ],
+   "frozen_overlap_checked": 120,
+   "mismatches": []
+  },
+  "ANV": {
+   "pre": [
+    "2026-05-13",
+    "2026-10-30"
+   ],
+   "post": [
+    "2026-11-02",
+    "2026-11-23",
+    16
+   ],
+   "frozen_overlap_checked": 0,
+   "mismatches": []
+  },
+  "BID": {
+   "pre": [
+    "2026-05-13",
+    "2026-10-30"
+   ],
+   "post": [
+    "2026-11-02",
+    "2026-11-23",
+    16
+   ],
+   "frozen_overlap_checked": 120,
+   "mismatches": []
+  },
+  "BMP": {
+   "pre": [
+    "2026-05-13",
+    "2026-10-30"
+   ],
+   "post": [
+    "2026-11-02",
+    "2026-11-23",
+    16
+   ],
+   "frozen_overlap_checked": 0,
+   "mismatches": []
+  },
+  "CTD": {
+   "pre": [
+    "2026-05-13",
+    "2026-10-30"
+   ],
+   "post": [
+    "2026-11-02",
+    "2026-11-23",
+    16
+   ],
+   "frozen_overlap_checked": 0,
+   "mismatches": []
+  },
+  "CTG": {
+   "pre": [
+    "2026-05-13",
+    "2026-10-30"
+   ],
+   "post": [
+    "2026-11-02",
+    "2026-11-23",
+    16
+   ],
+   "frozen_overlap_checked": 120,
+   "mismatches": []
+  },
+  "DBC": {
+   "pre": [
+    "2026-05-13",
+    "2026-10-30"
+   ],
+   "post": [
+    "2026-11-02",
+    "2026-11-23",
+    16
+   ],
+   "frozen_overlap_checked": 0,
+   "mismatches": []
+  },
+  "DCM": {
+   "pre": [
+    "2026-05-13",
+    "2026-10-30"
+   ],
+   "post": [
+    "2026-11-02",
+    "2026-11-23",
+    16
+   ],
+   "frozen_overlap_checked": 0,
+   "mismatches": []
+  },
+  "DGC": {
+   "pre": [
+    "2026-05-13",
+    "2026-10-30"
+   ],
+   "post": [
+    "2026-11-02",
+    "2026-11-23",
+    16
+   ],
+   "frozen_overlap_checked": 0,
+   "mismatches": []
+  },
+  "DGW": {
+   "pre": [
+    "2026-05-13",
+    "2026-10-30"
+   ],
+   "post": [
+    "2026-11-02",
+    "2026-11-23",
+    16
+   ],
+   "frozen_overlap_checked": 0,
+   "mismatches": []
+  },
+  "DHG": {
+   "pre": [
+    "2026-05-13",
+    "2026-10-30"
+   ],
+   "post": [
+    "2026-11-02",
+    "2026-11-23",
+    16
+   ],
+   "frozen_overlap_checked": 0,
+   "mismatches": []
+  },
+  "DPM": {
+   "pre": [
+    "2026-05-13",
+    "2026-10-30"
+   ],
+   "post": [
+    "2026-11-02",
+    "2026-11-23",
+    16
+   ],
+   "frozen_overlap_checked": 0,
+   "mismatches": []
+  },
+  "DXG": {
+   "pre": [
+    "2026-05-13",
+    "2026-10-30"
+   ],
+   "post": [
+    "2026-11-02",
+    "2026-11-23",
+    16
+   ],
+   "frozen_overlap_checked": 0,
+   "mismatches": []
+  },
+  "FPT": {
+   "pre": [
+    "2026-05-13",
+    "2026-10-30"
+   ],
+   "post": [
+    "2026-11-02",
+    "2026-11-23",
+    16
+   ],
+   "frozen_overlap_checked": 120,
+   "mismatches": []
+  },
+  "FRT": {
+   "pre": [
+    "2026-05-13",
+    "2026-10-30"
+   ],
+   "post": [
+    "2026-11-02",
+    "2026-11-23",
+    16
+   ],
+   "frozen_overlap_checked": 0,
+   "mismatches": []
+  },
+  "GAS": {
+   "pre": [
+    "2026-05-13",
+    "2026-10-30"
+   ],
+   "post": [
+    "2026-11-02",
+    "2026-11-23",
+    16
+   ],
+   "frozen_overlap_checked": 120,
+   "mismatches": []
+  },
+  "GEX": {
+   "pre": [
+    "2026-05-13",
+    "2026-10-30"
+   ],
+   "post": [
+    "2026-11-02",
+    "2026-11-23",
+    16
+   ],
+   "frozen_overlap_checked": 0,
+   "mismatches": []
+  },
+  "GMD": {
+   "pre": [
+    "2026-05-13",
+    "2026-10-30"
+   ],
+   "post": [
+    "2026-11-02",
+    "2026-11-23",
+    16
+   ],
+   "frozen_overlap_checked": 0,
+   "mismatches": []
+  },
+  "GVR": {
+   "pre": [
+    "2026-05-13",
+    "2026-10-30"
+   ],
+   "post": [
+    "2026-11-02",
+    "2026-11-23",
+    16
+   ],
+   "frozen_overlap_checked": 120,
+   "mismatches": []
+  },
+  "HAH": {
+   "pre": [
+    "2026-05-13",
+    "2026-10-30"
+   ],
+   "post": [
+    "2026-11-02",
+    "2026-11-23",
+    16
+   ],
+   "frozen_overlap_checked": 0,
+   "mismatches": []
+  },
+  "HCM": {
+   "pre": [
+    "2026-05-13",
+    "2026-10-30"
+   ],
+   "post": [
+    "2026-11-02",
+    "2026-11-23",
+    16
+   ],
+   "frozen_overlap_checked": 0,
+   "mismatches": []
+  },
+  "HDB": {
+   "pre": [
+    "2026-05-13",
+    "2026-10-30"
+   ],
+   "post": [
+    "2026-11-02",
+    "2026-11-23",
+    16
+   ],
+   "frozen_overlap_checked": 120,
+   "mismatches": []
+  },
+  "HPG": {
+   "pre": [
+    "2026-05-13",
+    "2026-10-30"
+   ],
+   "post": [
+    "2026-11-02",
+    "2026-11-23",
+    16
+   ],
+   "frozen_overlap_checked": 120,
+   "mismatches": []
+  },
+  "HSG": {
+   "pre": [
+    "2026-05-13",
+    "2026-10-30"
+   ],
+   "post": [
+    "2026-11-02",
+    "2026-11-23",
+    16
+   ],
+   "frozen_overlap_checked": 0,
+   "mismatches": []
+  },
+  "IMP": {
+   "pre": [
+    "2026-05-13",
+    "2026-10-30"
+   ],
+   "post": [
+    "2026-11-02",
+    "2026-11-23",
+    16
+   ],
+   "frozen_overlap_checked": 0,
+   "mismatches": []
+  },
+  "KDC": {
+   "pre": [
+    "2026-05-13",
+    "2026-10-30"
+   ],
+   "post": [
+    "2026-11-02",
+    "2026-11-23",
+    16
+   ],
+   "frozen_overlap_checked": 0,
+   "mismatches": []
+  },
+  "KDH": {
+   "pre": [
+    "2026-05-13",
+    "2026-10-30"
+   ],
+   "post": [
+    "2026-11-02",
+    "2026-11-23",
+    16
+   ],
+   "frozen_overlap_checked": 0,
+   "mismatches": []
+  },
+  "MBB": {
+   "pre": [
+    "2026-05-13",
+    "2026-10-30"
+   ],
+   "post": [
+    "2026-11-02",
+    "2026-11-23",
+    16
+   ],
+   "frozen_overlap_checked": 120,
+   "mismatches": []
+  },
+  "MSN": {
+   "pre": [
+    "2026-05-13",
+    "2026-10-30"
+   ],
+   "post": [
+    "2026-11-02",
+    "2026-11-23",
+    16
+   ],
+   "frozen_overlap_checked": 120,
+   "mismatches": []
+  },
+  "MWG": {
+   "pre": [
+    "2026-05-13",
+    "2026-10-30"
+   ],
+   "post": [
+    "2026-11-02",
+    "2026-11-23",
+    16
+   ],
+   "frozen_overlap_checked": 120,
+   "mismatches": []
+  },
+  "NKG": {
+   "pre": [
+    "2026-05-13",
+    "2026-10-30"
+   ],
+   "post": [
+    "2026-11-02",
+    "2026-11-23",
+    16
+   ],
+   "frozen_overlap_checked": 0,
+   "mismatches": []
+  },
+  "NLG": {
+   "pre": [
+    "2026-05-13",
+    "2026-10-30"
+   ],
+   "post": [
+    "2026-11-02",
+    "2026-11-23",
+    16
+   ],
+   "frozen_overlap_checked": 0,
+   "mismatches": []
+  },
+  "NTP": {
+   "pre": [
+    "2026-05-13",
+    "2026-10-30"
+   ],
+   "post": [
+    "2026-11-02",
+    "2026-11-23",
+    16
+   ],
+   "frozen_overlap_checked": 0,
+   "mismatches": []
+  },
+  "PC1": {
+   "pre": [
+    "2026-05-13",
+    "2026-10-30"
+   ],
+   "post": [
+    "2026-11-02",
+    "2026-11-23",
+    16
+   ],
+   "frozen_overlap_checked": 0,
+   "mismatches": []
+  },
+  "PLX": {
+   "pre": [
+    "2026-05-13",
+    "2026-10-30"
+   ],
+   "post": [
+    "2026-11-02",
+    "2026-11-23",
+    16
+   ],
+   "frozen_overlap_checked": 120,
+   "mismatches": []
+  },
+  "PNJ": {
+   "pre": [
+    "2026-05-13",
+    "2026-10-30"
+   ],
+   "post": [
+    "2026-11-02",
+    "2026-11-23",
+    16
+   ],
+   "frozen_overlap_checked": 120,
+   "mismatches": []
+  },
+  "POW": {
+   "pre": [
+    "2026-05-13",
+    "2026-10-30"
+   ],
+   "post": [
+    "2026-11-02",
+    "2026-11-23",
+    16
+   ],
+   "frozen_overlap_checked": 120,
+   "mismatches": []
+  },
+  "PVD": {
+   "pre": [
+    "2026-05-13",
+    "2026-10-30"
+   ],
+   "post": [
+    "2026-11-02",
+    "2026-11-23",
+    16
+   ],
+   "frozen_overlap_checked": 0,
+   "mismatches": []
+  },
+  "PVS": {
+   "pre": [
+    "2026-05-13",
+    "2026-10-30"
+   ],
+   "post": [
+    "2026-11-02",
+    "2026-11-23",
+    16
+   ],
+   "frozen_overlap_checked": 0,
+   "mismatches": []
+  },
+  "REE": {
+   "pre": [
+    "2026-05-13",
+    "2026-10-30"
+   ],
+   "post": [
+    "2026-11-02",
+    "2026-11-23",
+    16
+   ],
+   "frozen_overlap_checked": 0,
+   "mismatches": []
+  },
+  "SAB": {
+   "pre": [
+    "2026-05-13",
+    "2026-10-30"
+   ],
+   "post": [
+    "2026-11-02",
+    "2026-11-23",
+    16
+   ],
+   "frozen_overlap_checked": 120,
+   "mismatches": []
+  },
+  "SHS": {
+   "pre": [
+    "2026-05-13",
+    "2026-10-30"
+   ],
+   "post": [
+    "2026-11-02",
+    "2026-11-23",
+    16
+   ],
+   "frozen_overlap_checked": 0,
+   "mismatches": []
+  },
+  "SSI": {
+   "pre": [
+    "2026-05-13",
+    "2026-10-30"
+   ],
+   "post": [
+    "2026-11-02",
+    "2026-11-23",
+    16
+   ],
+   "frozen_overlap_checked": 120,
+   "mismatches": []
+  },
+  "STB": {
+   "pre": [
+    "2026-05-13",
+    "2026-10-30"
+   ],
+   "post": [
+    "2026-11-02",
+    "2026-11-23",
+    16
+   ],
+   "frozen_overlap_checked": 120,
+   "mismatches": []
+  },
+  "TCB": {
+   "pre": [
+    "2026-05-13",
+    "2026-10-30"
+   ],
+   "post": [
+    "2026-11-02",
+    "2026-11-23",
+    16
+   ],
+   "frozen_overlap_checked": 120,
+   "mismatches": []
+  },
+  "TPB": {
+   "pre": [
+    "2026-05-13",
+    "2026-10-30"
+   ],
+   "post": [
+    "2026-11-02",
+    "2026-11-23",
+    16
+   ],
+   "frozen_overlap_checked": 120,
+   "mismatches": []
+  },
+  "TRA": {
+   "pre": [
+    "2026-05-13",
+    "2026-10-30"
+   ],
+   "post": [
+    "2026-11-02",
+    "2026-11-23",
+    16
+   ],
+   "frozen_overlap_checked": 0,
+   "mismatches": []
+  },
+  "VCB": {
+   "pre": [
+    "2026-05-13",
+    "2026-10-30"
+   ],
+   "post": [
+    "2026-11-02",
+    "2026-11-23",
+    16
+   ],
+   "frozen_overlap_checked": 120,
+   "mismatches": []
+  },
+  "VCG": {
+   "pre": [
+    "2026-05-13",
+    "2026-10-30"
+   ],
+   "post": [
+    "2026-11-02",
+    "2026-11-23",
+    16
+   ],
+   "frozen_overlap_checked": 0,
+   "mismatches": []
+  },
+  "VCI": {
+   "pre": [
+    "2026-05-13",
+    "2026-10-30"
+   ],
+   "post": [
+    "2026-11-02",
+    "2026-11-23",
+    16
+   ],
+   "frozen_overlap_checked": 0,
+   "mismatches": []
+  },
+  "VGS": {
+   "pre": [
+    "2026-05-13",
+    "2026-10-30"
+   ],
+   "post": [
+    "2026-11-02",
+    "2026-11-23",
+    16
+   ],
+   "frozen_overlap_checked": 0,
+   "mismatches": []
+  },
+  "VHC": {
+   "pre": [
+    "2026-05-13",
+    "2026-10-30"
+   ],
+   "post": [
+    "2026-11-02",
+    "2026-11-23",
+    16
+   ],
+   "frozen_overlap_checked": 0,
+   "mismatches": []
+  },
+  "VHM": {
+   "pre": [
+    "2026-05-13",
+    "2026-10-30"
+   ],
+   "post": [
+    "2026-11-02",
+    "2026-11-23",
+    16
+   ],
+   "frozen_overlap_checked": 120,
+   "mismatches": []
+  },
+  "VIC": {
+   "pre": [
+    "2026-05-13",
+    "2026-10-30"
+   ],
+   "post": [
+    "2026-11-02",
+    "2026-11-23",
+    16
+   ],
+   "frozen_overlap_checked": 120,
+   "mismatches": []
+  },
+  "VJC": {
+   "pre": [
+    "2026-05-13",
+    "2026-10-30"
+   ],
+   "post": [
+    "2026-11-02",
+    "2026-11-23",
+    16
+   ],
+   "frozen_overlap_checked": 120,
+   "mismatches": []
+  },
+  "VND": {
+   "pre": [
+    "2026-05-13",
+    "2026-10-30"
+   ],
+   "post": [
+    "2026-11-02",
+    "2026-11-23",
+    16
+   ],
+   "frozen_overlap_checked": 0,
+   "mismatches": []
+  },
+  "VNM": {
+   "pre": [
+    "2026-05-13",
+    "2026-10-30"
+   ],
+   "post": [
+    "2026-11-02",
+    "2026-11-23",
+    16
+   ],
+   "frozen_overlap_checked": 120,
+   "mismatches": []
+  },
+  "VPB": {
+   "pre": [
+    "2026-05-13",
+    "2026-10-30"
+   ],
+   "post": [
+    "2026-11-02",
+    "2026-11-23",
+    16
+   ],
+   "frozen_overlap_checked": 120,
+   "mismatches": []
+  },
+  "VNINDEX": {
+   "pre": [
+    "2026-05-13",
+    "2026-10-30"
+   ],
+   "post": [
+    "2026-11-02",
+    "2026-11-23",
+    16
+   ],
+   "frozen_overlap_checked": 120,
+   "mismatches": []
+  },
+  "VN30": {
+   "pre": [
+    "2026-05-13",
+    "2026-10-30"
+   ],
+   "post": [
+    "2026-11-02",
+    "2026-11-23",
+    16
+   ],
+   "frozen_overlap_checked": 120,
+   "mismatches": []
+  }
+ },
+ "rejected": {}
 }

@@ -4,7 +4,7 @@
 
 | Hạng mục | Giá trị |
 |---|---|
-| Harness | **OpenTrading** (profile `machine`, runtime `7319264`), **OpenCode**, **DSH** |
+| Harness | **OpenTrading** (profile `machine`, 0.5.0 + #437, runtime `ae7ec48`), **OpenCode**, **DSH** |
 | Model agent (chung) | `deepseek/deepseek-v4.1-flash-1017` qua OpenRouter, temperature 0 |
 | Bộ đề | **300 task tiếng Việt × 3 harness × 1 lượt = 900 trial** ([`tasks/`](tasks/), sha256 từng task trong [`tasks.sha256.json`](tasks.sha256.json)) |
 | Nhóm task | compute 79 · investor 36 · lookup 112 · memory 59 · robustness 14 |
@@ -139,4 +139,4 @@ Chi phí là số tiền OpenRouter báo cho từng request. \*Ở 119 trial c�
 | `tasks/` | 300 task (đề, dữ liệu snapshot, đáp án, grader) |
 | `summary.json`, `summarize.py` | Mọi số trong báo cáo này; chạy `python3 summarize.py` để tính lại |
 
-sha256: `trials.jsonl` `296339fe3d19763d139b6925e297db29835462fe9f47e5e62093709b4902f070` · `judge.jsonl` `bb896a6fcb3aa618a3986b9230448290a25a5bbd687af22c2b52901a9261c3fd`
+sha256: `trials.jsonl` `edcce3a26b00cc493a87104965a2446624914aa42edea244b7e3ebc4e0daa846` · `judge.jsonl` `bb896a6fcb3aa618a3986b9230448290a25a5bbd687af22c2b52901a9261c3fd`

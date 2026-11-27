@@ -47,94 +47,24 @@
   ],
   "exchanges": {
     "HOSE": [
-      {
-        "from": "09:00",
-        "to": "09:15",
-        "phase": "ATO",
-        "label": "opening call auction (ATO)"
-      },
-      {
-        "from": "09:15",
-        "to": "11:30",
-        "phase": "continuous",
-        "label": "continuous matching (morning)"
-      },
-      {
-        "from": "11:30",
-        "to": "13:00",
-        "phase": "break",
-        "label": "lunch break"
-      },
-      {
-        "from": "13:00",
-        "to": "14:30",
-        "phase": "continuous",
-        "label": "continuous matching (afternoon)"
-      },
-      {
-        "from": "14:30",
-        "to": "14:45",
-        "phase": "ATC",
-        "label": "closing call auction (ATC)"
-      },
-      {
-        "from": "14:45",
-        "to": "15:00",
-        "phase": "put-through",
-        "label": "put-through trades only"
-      }
+      { "from": "09:00", "to": "09:15", "phase": "ATO", "label": "opening call auction (ATO)" },
+      { "from": "09:15", "to": "11:30", "phase": "continuous", "label": "continuous matching (morning)" },
+      { "from": "11:30", "to": "13:00", "phase": "break", "label": "lunch break" },
+      { "from": "13:00", "to": "14:30", "phase": "continuous", "label": "continuous matching (afternoon)" },
+      { "from": "14:30", "to": "14:45", "phase": "ATC", "label": "closing call auction (ATC)" },
+      { "from": "14:45", "to": "15:00", "phase": "put-through", "label": "put-through trades only" }
     ],
     "HNX": [
-      {
-        "from": "09:00",
-        "to": "11:30",
-        "phase": "continuous",
-        "label": "continuous matching (morning)"
-      },
-      {
-        "from": "11:30",
-        "to": "13:00",
-        "phase": "break",
-        "label": "lunch break"
-      },
-      {
-        "from": "13:00",
-        "to": "14:30",
-        "phase": "continuous",
-        "label": "continuous matching (afternoon)"
-      },
-      {
-        "from": "14:30",
-        "to": "14:45",
-        "phase": "ATC",
-        "label": "closing call auction (ATC)"
-      },
-      {
-        "from": "14:45",
-        "to": "15:00",
-        "phase": "post-close",
-        "label": "post-close session (PLO)"
-      }
+      { "from": "09:00", "to": "11:30", "phase": "continuous", "label": "continuous matching (morning)" },
+      { "from": "11:30", "to": "13:00", "phase": "break", "label": "lunch break" },
+      { "from": "13:00", "to": "14:30", "phase": "continuous", "label": "continuous matching (afternoon)" },
+      { "from": "14:30", "to": "14:45", "phase": "ATC", "label": "closing call auction (ATC)" },
+      { "from": "14:45", "to": "15:00", "phase": "post-close", "label": "post-close session (PLO)" }
     ],
     "UPCoM": [
-      {
-        "from": "09:00",
-        "to": "11:30",
-        "phase": "continuous",
-        "label": "continuous matching (morning)"
-      },
-      {
-        "from": "11:30",
-        "to": "13:00",
-        "phase": "break",
-        "label": "lunch break"
-      },
-      {
-        "from": "13:00",
-        "to": "15:00",
-        "phase": "continuous",
-        "label": "continuous matching (afternoon)"
-      }
+      { "from": "09:00", "to": "11:30", "phase": "continuous", "label": "continuous matching (morning)" },
+      { "from": "11:30", "to": "13:00", "phase": "break", "label": "lunch break" },
+      { "from": "13:00", "to": "15:00", "phase": "continuous", "label": "continuous matching (afternoon)" }
     ]
   }
 }

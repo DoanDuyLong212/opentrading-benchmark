@@ -1,51 +1,51 @@
 {
-    "design": "real human-labelled correct answers (or16 excerpt / or10 answer) + one controlled wrong copy each",
-    "n_items": 120,
-    "seed": 20261125,
-    "models": {
-        "anthropic/claude-haiku-5.5": {
-            "n": 120,
-            "agreement": 1.0,
-            "cohen_kappa": 1.0,
-            "confusion": {
-                "TP": 60,
-                "FN_judge": 0,
-                "FP_judge": 0,
-                "TN": 60
-            },
-            "errors": 0,
-            "cost_usd": 0.0506,
-            "returned_models": [
-                "anthropic/claude-haiku-5.5"
-            ],
-            "by_kind": {
-                "inside_half_tol": 30,
-                "near_miss_3x_tol": 30,
-                "real_correct": 30,
-                "scale_x1000": 30
-            }
-        },
-        "nvidia/nemotron-3-ultra-550b-a55b:free": {
-            "n": 120,
-            "agreement": 1.0,
-            "cohen_kappa": 1.0,
-            "confusion": {
-                "TP": 60,
-                "FN_judge": 0,
-                "FP_judge": 0,
-                "TN": 60
-            },
-            "errors": 0,
-            "cost_usd": 0.0,
-            "returned_models": [
-                "nvidia/nemotron-3-ultra-550b-a55b:free"
-            ],
-            "by_kind": {
-                "inside_half_tol": 30,
-                "near_miss_3x_tol": 30,
-                "real_correct": 30,
-                "scale_x1000": 30
-            }
-        }
-    }
+ "design": "real human-labelled correct answers (or16 excerpt / or10 answer) + one controlled wrong copy each",
+ "n_items": 120,
+ "seed": 20261125,
+ "models": {
+  "anthropic/claude-haiku-5.5": {
+   "n": 120,
+   "agreement": 1.0,
+   "cohen_kappa": 1.0,
+   "confusion": {
+    "TP": 60,
+    "FN_judge": 0,
+    "FP_judge": 0,
+    "TN": 60
+   },
+   "errors": 0,
+   "cost_usd": 0.0506,
+   "returned_models": [
+    "anthropic/claude-haiku-5.5"
+   ],
+   "by_kind": {
+    "inside_half_tol": 30,
+    "near_miss_3x_tol": 30,
+    "real_correct": 30,
+    "scale_x1000": 30
+   }
+  },
+  "nvidia/nemotron-3-ultra-550b-a55b:free": {
+   "n": 120,
+   "agreement": 1.0,
+   "cohen_kappa": 1.0,
+   "confusion": {
+    "TP": 60,
+    "FN_judge": 0,
+    "FP_judge": 0,
+    "TN": 60
+   },
+   "errors": 0,
+   "cost_usd": 0.0,
+   "returned_models": [
+    "nvidia/nemotron-3-ultra-550b-a55b:free"
+   ],
+   "by_kind": {
+    "inside_half_tol": 30,
+    "near_miss_3x_tol": 30,
+    "real_correct": 30,
+    "scale_x1000": 30
+   }
+  }
+ }
 }

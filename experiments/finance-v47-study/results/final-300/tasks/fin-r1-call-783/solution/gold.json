@@ -1,4 +1,4 @@
-﻿{
+{
   "task_id": "fin-r1-call-783",
   "scoring": "outcome",
   "solution": {
@@ -38,7 +38,7 @@
       "source": "vnstock",
       "as_of": "2026-11-25T18:51:22.395329+07:00",
       "matched_entry_id": "hist:VHM",
-      "response_sha256": "4cb4b2eedc6e72d217b0fe0004a826d53b504476e08641382aae1459d5e9b197"
+      "response_sha256": "8c9e84a4c1cda396b37beb578be95f235b00863c179cd6a80ffc647cb340cfc0"
     }
   ],
   "provenance_catalog": [
@@ -47,17 +47,17 @@
       "source": "vnstock",
       "as_of": "2026-11-25T18:51:22.395329+07:00",
       "matched_entry_id": "hist:VHM",
-      "response_sha256": "4cb4b2eedc6e72d217b0fe0004a826d53b504476e08641382aae1459d5e9b197"
+      "response_sha256": "8c9e84a4c1cda396b37beb578be95f235b00863c179cd6a80ffc647cb340cfc0"
     },
     {
       "tool": "vn_index_ohlcv",
       "source": "vnstock",
       "as_of": "2026-11-25T18:51:22.395329+07:00",
       "matched_entry_id": "idx:VNINDEX",
-      "response_sha256": "b488774051825141515f6c44fb7e9ac3d3d882c5acae3b029ed0b81a7e15a560"
+      "response_sha256": "9e3728dbbf0ef9b88bb5e5887181997e807203cb16d6fd17aa857ba86a0bfd3f"
     }
   ],
-  "payload_sha256": "3688b48e5a54d64f4d96813fb43560a28dc6392b20f34a0e0cf46f042df0b8e5",
+  "payload_sha256": "82f7b462a2b19a6030c5b56521f6000ee502731d715b7fb74be8e7ec38e1250a",
   "required_payload_keys": [
     "hist:VHM"
   ]
