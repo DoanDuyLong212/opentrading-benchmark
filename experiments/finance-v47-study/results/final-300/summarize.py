@@ -16,7 +16,7 @@ PRICE = {'prompt': 0.03, 'cache_read': 0.001, 'completion': 0.2}
 
 
 def rows(name):
-    return [json.loads(l) for l in (HERE / name).read_text().splitlines() if l.strip()]
+    return [json.loads(l) for l in (HERE / name).read_text(encoding='utf-8-sig').splitlines() if l.strip()]
 
 
 def cost(t):
