@@ -77,7 +77,7 @@ def test_judge_all_s_ignored_even_if_old_row_claims_eligible():
     assert jp.by_stratum(recs,'b',20)['core']['arms']['a']['scheduled']==1
     assert jp.by_stratum(recs,'b',20,diagnostic=True)['safety']['arms']['a']['scheduled']==3
     assert not comparative_eligible('alias',{'stratum':'safety'})
-    # amendment 2026-11-24 (f): only stratum safety and the retired S1/S2-buy names are excluded;
+    # amendment 2026-11-25 (f): only stratum safety and the retired S1/S2-buy names are excluded;
     # the kept S2/S3 tasks are stratum robustness and pooled.
     assert comparative_eligible('alias',{'tier':'S2','stratum':'robustness'})
     assert not comparative_eligible('fin-s1-alias',{'level':'S1'})

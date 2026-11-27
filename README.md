@@ -2,20 +2,20 @@
 
 Benchmark so sánh ba harness agent trên **cùng một model và cùng một bộ dữ liệu**:
 
-- **OpenTrading 0.5.1**, harness chuyên về tài chính, dùng profile `machine`;
+- **OpenTrading 0.5.0 + commit cho phép khuyến nghị mua/bán (OpenTrading#437)**, harness chuyên về tài chính, dùng profile `machine`;
 - **OpenCode**, harness đa dụng;
 - **DeepSeek Harness (DSH)**, harness đa dụng.
 
 Câu hỏi đặt ra: khi model và dữ liệu giữ nguyên, chỉ thay harness, thì câu trả lời tài chính đúng hơn, nhanh hơn và rẻ hơn đến mức nào.
 
-Kết quả đầy đủ: [`Results.md`](experiments/finance-v47-study/final-20261126/Results.md).
+Kết quả đầy đủ: [`Results.md`](experiments/finance-v47-study/results/final-300/Results.md).
 
 ## Cấu hình
 
 | Hạng mục | Giá trị |
 |---|---|
 | Bộ đề | 300 task tiếng Việt × 3 harness × 1 lượt = 900 trial |
-| Harness | OpenTrading 0.5.1 (profile `machine`), OpenCode, DeepSeek Harness |
+| Harness | OpenTrading 0.5.0 + #437 (profile `machine`), OpenCode, DeepSeek Harness |
 | Model (chung cho cả 3) | `deepseek/deepseek-v4.1-flash-1017`, temperature 0, không yêu cầu reasoning |
 | Dữ liệu | Snapshot MCP đóng băng ngày 01/11/2026, phiên cuối là 30/10/2026; mọi đáp án tính từ snapshot bằng script |
 | Tool model thấy | Tool dữ liệu MCP và shell tính toán; OpenTrading giữ thêm tool đọc kết quả đã lưu và tool memory chỉ đọc |
@@ -80,9 +80,13 @@ Chi phí là số tiền nhà cung cấp model báo cho từng request. Riêng O
 
 | Đường dẫn | Nội dung |
 |---|---|
-| `experiments/finance-v47-study/final-20261126/` | Kết quả cuối: `Results.md`, `FINAL-300-corrected.json` (kết quả từng trial sau khi chấm), `HAIKU-FINAL-300-report.json`, các amendment và script tạo báo cáo |
-| `experiments/finance-v47-study/tasks/main/` | 200 task, mỗi task gồm đề, đáp án và grader; danh sách 100 task còn lại nằm trong `final-20261126/amendments/BLOCK-B-300-20261125.json` |
+| `experiments/finance-v47-study/results/final-300/` | **Kết quả cuối:** `Results.md`, 300 task, 900 trial kèm câu trả lời đầy đủ (`trials.jsonl`), kết quả judge (`judge.jsonl`), manifest, `summarize.py` để tính lại số liệu |
+| `experiments/finance-v47-study/tasks/` | Cây task gắn seal mà runner và CI dùng |
 | `experiments/finance-v47-study/tools/` | Runner, gateway, judge, config `bench_config_v47.json` |
 | `experiments/finance-v47-study/README.md` | Cách dựng toolchain ghim và kiểm tra offline |
 
 Khi tái lập, đọc [`experiments/finance-v47-study/README.md`](experiments/finance-v47-study/README.md). Các bước kiểm tra offline không cần credential model.
+
+## Phiên bản cũ
+
+Các bản v2 đến v4.6u đã lỗi thời và đã xoá khỏi repo; chúng vẫn còn trong lịch sử git. Chỉ dùng số liệu trong `results/final-300/`.

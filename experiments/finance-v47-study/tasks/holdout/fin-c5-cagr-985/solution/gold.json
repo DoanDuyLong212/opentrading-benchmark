@@ -16,7 +16,7 @@
     },
     "highest_profit_cagr": "ANV"
   },
-  "as_of": "2026-11-24T15:51:30.168761+07:00",
+  "as_of": "2026-11-25T15:51:30.168761+07:00",
   "split": "holdout",
   "expects": [
     {
@@ -89,54 +89,54 @@
   "contract_version": 2,
   "stratum": "compute",
   "tier": "C5",
-  "notes": "Fundamental compute stratum (amendment 2026-11-24). Gold from tools/finance_stratum_lib.py on the task payloads.",
+  "notes": "Fundamental compute stratum (amendment 2026-11-25). Gold from tools/finance_stratum_lib.py on the task payloads.",
   "provenance_contract": [
     {
       "tool": "financial_statements",
       "source": "vietstock",
-      "as_of": "2026-11-24T15:51:30.168761+07:00",
+      "as_of": "2026-11-25T15:51:30.168761+07:00",
       "matched_entry_id": "fs:DGC:y:KQKD",
-      "response_sha256": "972636ca8a7c403584c693ea14e513a900928acb9b24fafac844fbe53319200f"
+      "response_sha256": "ab330fd49590142e3cb35eccb28600f318043e902eba9943c7b4dfad5540feea"
     },
     {
       "tool": "financial_statements",
       "source": "vietstock",
-      "as_of": "2026-11-24T15:51:30.168761+07:00",
+      "as_of": "2026-11-25T15:51:30.168761+07:00",
       "matched_entry_id": "fs:VHC:y:KQKD",
-      "response_sha256": "413eadc816ca52403f007aa1281debae20239217fc0647255d302b22d3775778"
+      "response_sha256": "d1d60fb60ef64628ccf9e11a1d0902a5814ae9401cdb37179997a1e9073b6433"
     },
     {
       "tool": "financial_statements",
       "source": "vietstock",
-      "as_of": "2026-11-24T15:51:30.168761+07:00",
+      "as_of": "2026-11-25T15:51:30.168761+07:00",
       "matched_entry_id": "fs:ANV:y:KQKD",
-      "response_sha256": "7b64c0870a5a5e17f9f1c5e9cbef0fce5866fc439c7751b69a0c7f49333711bd"
+      "response_sha256": "7b27eaffa847cf45912e1e20884df170ab2e8391612e37c527a3a9133f926f1d"
     }
   ],
   "provenance_catalog": [
     {
       "tool": "financial_statements",
       "source": "vietstock",
-      "as_of": "2026-11-24T15:51:30.168761+07:00",
+      "as_of": "2026-11-25T15:51:30.168761+07:00",
       "matched_entry_id": "fs:DGC:y:KQKD",
-      "response_sha256": "972636ca8a7c403584c693ea14e513a900928acb9b24fafac844fbe53319200f"
+      "response_sha256": "ab330fd49590142e3cb35eccb28600f318043e902eba9943c7b4dfad5540feea"
     },
     {
       "tool": "financial_statements",
       "source": "vietstock",
-      "as_of": "2026-11-24T15:51:30.168761+07:00",
+      "as_of": "2026-11-25T15:51:30.168761+07:00",
       "matched_entry_id": "fs:VHC:y:KQKD",
-      "response_sha256": "413eadc816ca52403f007aa1281debae20239217fc0647255d302b22d3775778"
+      "response_sha256": "d1d60fb60ef64628ccf9e11a1d0902a5814ae9401cdb37179997a1e9073b6433"
     },
     {
       "tool": "financial_statements",
       "source": "vietstock",
-      "as_of": "2026-11-24T15:51:30.168761+07:00",
+      "as_of": "2026-11-25T15:51:30.168761+07:00",
       "matched_entry_id": "fs:ANV:y:KQKD",
-      "response_sha256": "7b64c0870a5a5e17f9f1c5e9cbef0fce5866fc439c7751b69a0c7f49333711bd"
+      "response_sha256": "7b27eaffa847cf45912e1e20884df170ab2e8391612e37c527a3a9133f926f1d"
     }
   ],
-  "payload_sha256": "ae4387126d281c4ca9f8cb90e10cf0d37487a6f9905b475187873cc5672ea9e4",
+  "payload_sha256": "2554d61206076b7ff327e130b7ee07732607f6de44ad2e56bcb46132b155b836",
   "required_payload_keys": [
     "fs:ANV:y:KQKD",
     "fs:DGC:y:KQKD",

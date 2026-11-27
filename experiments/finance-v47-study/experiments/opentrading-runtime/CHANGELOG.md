@@ -14,7 +14,7 @@ adopt Semantic Versioning when it exposes a stable public API.
   program such as Git Bash; it now reads the machine's CPU. `ot update` keeps the build it finds, so run the install
   script once more to move to the ARM64 build.
 
-## [0.5.0] — 2026-11-24
+## [0.5.0] — 2026-11-25
 
 Model-facing text (system prompt, tool and skill descriptions, skill bodies and references, runtime notices) is in
 English while everything the user reads stays Vietnamese, much cheaper requests (DeepSeek: system prompt −31%,

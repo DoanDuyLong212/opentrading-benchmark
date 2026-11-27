@@ -38,7 +38,7 @@ def test_primary_copies_and_template_are_identical():
   memory=(p.parents[1]/'environment'/'turns.json').exists()
   wanted=expected.replace(b'"evidence","source_evidence"',b'"evidence","source_evidence","memory_evidence"') if memory else expected
   # v4.7 safety stratum (plan 2026-11-16): the template plus the `null` / `not_value` checks, exactly as the builder writes it.
-  # Group D partial-availability traps (amendment 2026-11-24 d) use the same S-grader variant for null/nonempty_reason.
+  # Group D partial-availability traps (amendment 2026-11-25 d) use the same S-grader variant for null/nonempty_reason.
   if p.parents[1].name.startswith(('fin-s', 'fin-l4-partial-')):
    import sys;sys.path.insert(0,str(ROOT/'tools'));import build_safety_stratum_20261116 as safety
    wanted=safety.grader_text().encode()

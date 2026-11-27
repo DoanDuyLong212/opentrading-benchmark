@@ -1,0 +1,2104 @@
+{
+ "fin-c5-roe-601": {
+  "split": "main",
+  "tier": "C5",
+  "solution": {
+   "VNM": 30.3719,
+   "FPT": 24.0696,
+   "MWG": 29.4706,
+   "highest": "VNM"
+  },
+  "files": {
+   "environment/payloads.json": "bff33df45957cf62782a5681a7adbe37cf3487df71519b499c45a6a01584514b",
+   "instruction.md": "7cf72dbc1b6cb9b16e477705f2757acd7d73852b5682bbe4f4549c4baa31dde8",
+   "solution/gold.json": "41c733b58b9e67ef2c443d24a3514c7b519b7af002f9be8b163d63dfa633a1bc",
+   "solution/oracle.py": "4b878404b5a5d1f15f80c54a3649b8492686ca3f014c213e3a2a63708aac8b9b",
+   "task.toml": "69672165fe71c862384684eb71ff0e03684a1470a2883b302a1e6b88604a2886",
+   "tests/grader.py": "1c08f2b8049f9fb91f8e7abbe52335f945a9a4a9c7653a83debf86c65bb99ead"
+  }
+ },
+ "fin-c5-roe-602": {
+  "split": "main",
+  "tier": "C5",
+  "solution": {
+   "HPG": 17.5231,
+   "GAS": 18.4851,
+   "DCM": 23.568,
+   "highest": "DCM"
+  },
+  "files": {
+   "environment/payloads.json": "58d9308ff190294a93d0fd1f0f60a6599b5cdd1c45c5ec1446730e7feca84c42",
+   "instruction.md": "bd4202b16a58434589180e8036fe5c10e019def86d7695e5a76b63de85a28f76",
+   "solution/gold.json": "452c28e1e3c680c00517e188fc4d2d673aa5a94f2966e5f161cc0f8b8e0366f6",
+   "solution/oracle.py": "338a4919d9e28870eebd178f55e5036f334812c9fab4c8e6f8870939fd0ae010",
+   "task.toml": "4cccb5efc17401aec0ee60e06a0b3dd967307203878f864758eb33e7f4075d13",
+   "tests/grader.py": "1c08f2b8049f9fb91f8e7abbe52335f945a9a4a9c7653a83debf86c65bb99ead"
+  }
+ },
+ "fin-c5-oplev-603": {
+  "split": "main",
+  "tier": "C5",
+  "solution": {
+   "MWG": {
+    "rev_growth": 24.8749,
+    "op_growth": 91.5953,
+    "op_leverage": 3.6822
+   },
+   "PNJ": {
+    "rev_growth": 32.0663,
+    "op_growth": 41.1122,
+    "op_leverage": 1.2821
+   },
+   "GVR": {
+    "rev_growth": 17.529,
+    "op_growth": 19.2117,
+    "op_leverage": 1.096
+   },
+   "highest": "MWG"
+  },
+  "files": {
+   "environment/payloads.json": "1a77af26c139c7b854cc4264f7bb3855cac14b53e28ae76731d0e1ecd1fd5c9f",
+   "instruction.md": "2a5fa7ff097475fdb3973ca7d70e02720776f0ec3444bf6258168ce28c830f5d",
+   "solution/gold.json": "264d6128ab9e2ac8ed0506cda766e93c9b871650f87a95f062e8c4d099232db4",
+   "solution/oracle.py": "8f401d3362b7ffe47df825c9c9864786bdadab75915d0546152fd3195c7a602b",
+   "task.toml": "d8a3c986c643fdd05650d4089e705e82f70d3805771db76907c56851637c6434",
+   "tests/grader.py": "1c08f2b8049f9fb91f8e7abbe52335f945a9a4a9c7653a83debf86c65bb99ead"
+  }
+ },
+ "fin-c5-oplev-604": {
+  "split": "main",
+  "tier": "C5",
+  "solution": {
+   "HPG": {
+    "rev_growth": 34.2755,
+    "op_growth": 74.6825,
+    "op_leverage": 2.1789
+   },
+   "DCM": {
+    "rev_growth": 19.7805,
+    "op_growth": 61.2879,
+    "op_leverage": 3.0984
+   },
+   "REE": {
+    "rev_growth": 15.4498,
+    "op_growth": 12.9767,
+    "op_leverage": 0.8399
+   },
+   "highest": "DCM"
+  },
+  "files": {
+   "environment/payloads.json": "7ce26681dec412ba36e25688513c3cfa213fd562e7da8c80d166700070cc36ea",
+   "instruction.md": "3b4f699be461f7bdcd47ceccacdb14ec673d0df8338c4018c2793c4e7a902db2",
+   "solution/gold.json": "18a41453824c538b33820dec2112ceea810266793de727589c0125b8de3df39e",
+   "solution/oracle.py": "8533d258787f8b61fe93edf2b5166da62fc338b58bf3c686d49393aab065b54f",
+   "task.toml": "67ae51d40cef462d08a93ec49e8d7e53e161462ddad0a47326ebfa09f1bffd40",
+   "tests/grader.py": "1c08f2b8049f9fb91f8e7abbe52335f945a9a4a9c7653a83debf86c65bb99ead"
+  }
+ },
+ "fin-c5-margin-605": {
+  "split": "main",
+  "tier": "C5",
+  "solution": {
+   "VNM": {
+    "gross_now": 42.1516,
+    "gross_prev": 40.9459,
+    "gross_change_pp": 1.2057,
+    "op_now": 19.5577,
+    "op_prev": 17.5065
+   },
+   "SAB": {
+    "gross_now": 37.7513,
+    "gross_prev": 31.1375,
+    "gross_change_pp": 6.6138,
+    "op_now": 22.6877,
+    "op_prev": 18.2009
+   },
+   "DHG": {
+    "gross_now": 48.9553,
+    "gross_prev": 46.5426,
+    "gross_change_pp": 2.4127,
+    "op_now": 21.7464,
+    "op_prev": 21.9447
+   },
+   "best_gross_improvement": "SAB"
+  },
+  "files": {
+   "environment/payloads.json": "0f2b47a826d3c256f2a859ced0552e5b2248e537624666c9dd4d090f2902bb54",
+   "instruction.md": "462e57d54aef9547539212aa2a5100e71dbc8ef2428ee94b23b32f3477adcc99",
+   "solution/gold.json": "b881bdc902bb536c59d1a81d2976d1093e8bedd9d81733e6c11233cb999bbd0a",
+   "solution/oracle.py": "9e343e088fcb4a8d07b71371d618a08c39a44826ae61e31f0a403cb3650b641d",
+   "task.toml": "cce53ffa94f9ce0a9c871a396670b80ed137c2d96230a77cde97fa812db5c977",
+   "tests/grader.py": "1c08f2b8049f9fb91f8e7abbe52335f945a9a4a9c7653a83debf86c65bb99ead"
+  }
+ },
+ "fin-c5-margin-606": {
+  "split": "main",
+  "tier": "C5",
+  "solution": {
+   "HPG": {
+    "gross_now": 16.4374,
+    "gross_prev": 14.8683,
+    "gross_change_pp": 1.569,
+    "op_now": 14.1612,
+    "op_prev": 10.8855
+   },
+   "DPM": {
+    "gross_now": 20.2144,
+    "gross_prev": 14.7057,
+    "gross_change_pp": 5.5087,
+    "op_now": 11.0885,
+    "op_prev": 5.8232
+   },
+   "NTP": {
+    "gross_now": 33.0229,
+    "gross_prev": 30.8325,
+    "gross_change_pp": 2.1904,
+    "op_now": 20.2882,
+    "op_prev": 17.5839
+   },
+   "best_gross_improvement": "DPM"
+  },
+  "files": {
+   "environment/payloads.json": "f9d51c9519c24a19083f8f45b6c93849dec1280f5386a738da309bacae28a4ea",
+   "instruction.md": "ad4789a4a3c8e1c11199acd912388c3fb99fbefde4e27aeeac862120482c1ec0",
+   "solution/gold.json": "c821f1ded61cac7b755d0e007b1d0da4a2334cb3f93d8ee5880da23f3fe20306",
+   "solution/oracle.py": "5777a33b5bf5eff2aed00572948b1a770ba9e15b2b2e73e8709b43afda7d33ba",
+   "task.toml": "703b74e08f6ce44eae73a4070e28cbdd237104b4252993946cd4fd34490a9eba",
+   "tests/grader.py": "1c08f2b8049f9fb91f8e7abbe52335f945a9a4a9c7653a83debf86c65bb99ead"
+  }
+ },
+ "fin-c5-dupont-607": {
+  "split": "main",
+  "tier": "C5",
+  "solution": {
+   "MWG": {
+    "net_margin": 4.5109,
+    "asset_turnover": 2.02,
+    "equity_multiplier": 2.5186,
+    "roe": 22.9494
+   },
+   "FPT": {
+    "net_margin": 13.3729,
+    "asset_turnover": 0.8756,
+    "equity_multiplier": 2.015,
+    "roe": 23.595
+   },
+   "driver": "margin"
+  },
+  "files": {
+   "environment/payloads.json": "72ffaeca95aba8cbe525934fc151d031a7200e94b124d6c0f4c7710f790c10f5",
+   "instruction.md": "57b53d43706cb49cdba41f4a7e060afc83374bf7f7370980c691bc8950ecc3bd",
+   "solution/gold.json": "a2e42c9221f85f6f4bf10d841f6632cbadf353b1b87b911b67b6838b074e8636",
+   "solution/oracle.py": "aafe1a01a5759a648e2631c8d566efc60409a1ddf204edc815b23944973c89a0",
+   "task.toml": "b57b1942ba8ea6a1962f3050ff8f7fd09bec6fe8da5a643656831e0560496fe4",
+   "tests/grader.py": "1c08f2b8049f9fb91f8e7abbe52335f945a9a4a9c7653a83debf86c65bb99ead"
+  }
+ },
+ "fin-c5-dupont-608": {
+  "split": "main",
+  "tier": "C5",
+  "solution": {
+   "VNM": {
+    "net_margin": 14.7852,
+    "asset_turnover": 1.1747,
+    "equity_multiplier": 1.5336,
+    "roe": 26.6361
+   },
+   "SAB": {
+    "net_margin": 17.0871,
+    "asset_turnover": 0.7841,
+    "equity_multiplier": 1.3921,
+    "roe": 18.6502
+   },
+   "driver": "turnover"
+  },
+  "files": {
+   "environment/payloads.json": "270c094c157b77a5d73043784038e3d952e84c89b3fde8c91a8deec2d13dd540",
+   "instruction.md": "d95db7770f243bb66f8f57db9347910ab3083e064bfb0b7cbd0d01409b110c0f",
+   "solution/gold.json": "05d74e52dc275c720409214be2840e6b9dc023534d79a3a6df7eff1f8b351ae6",
+   "solution/oracle.py": "c925036808be3268d8867f6ec38f988099ac4c1a77eb62595bc2e75e81d6358b",
+   "task.toml": "3a45faa248347a4a8dd11ce1b9d9919ba525dc88a7590e55993609ffb1b69519",
+   "tests/grader.py": "1c08f2b8049f9fb91f8e7abbe52335f945a9a4a9c7653a83debf86c65bb99ead"
+  }
+ },
+ "fin-c5-cagr-609": {
+  "split": "main",
+  "tier": "C5",
+  "solution": {
+   "FPT": {
+    "revenue_cagr": 18.4165,
+    "profit_cagr": 21.2546
+   },
+   "PNJ": {
+    "revenue_cagr": 15.6571,
+    "profit_cagr": 28.7599
+   },
+   "GMD": {
+    "revenue_cagr": 16.745,
+    "profit_cagr": 30.1332
+   },
+   "highest_profit_cagr": "GMD"
+  },
+  "files": {
+   "environment/payloads.json": "1fffa050894f8e81df3e83c84fbed619a5f0a9403e5f839767b04bb4ef93fe8d",
+   "instruction.md": "3b02ba8f636bdf5fc94c059a3f42235f66098828fca996c6f9f5b9765082b972",
+   "solution/gold.json": "852d609c12f962713a5a98ae8f17af873ff975e0d2d9e8c8a9a5b83a2301f197",
+   "solution/oracle.py": "f5d8dfdbcc2feae3a9fb39ca63043fbd66ade3fe2df1ccf54e3f7e0896b1265c",
+   "task.toml": "0a5cd4d00cc46c03aa9e14a423a982f0e486a5bb2a3c35aee3da23e2ac9128f8",
+   "tests/grader.py": "1c08f2b8049f9fb91f8e7abbe52335f945a9a4a9c7653a83debf86c65bb99ead"
+  }
+ },
+ "fin-c5-cagr-610": {
+  "split": "main",
+  "tier": "C5",
+  "solution": {
+   "REE": {
+    "revenue_cagr": 14.5738,
+    "profit_cagr": 8.0568
+   },
+   "HAH": {
+    "revenue_cagr": 27.0279,
+    "profit_cagr": 28.2826
+   },
+   "NTP": {
+    "revenue_cagr": 8.7672,
+    "profit_cagr": 20.7027
+   },
+   "highest_profit_cagr": "HAH"
+  },
+  "files": {
+   "environment/payloads.json": "cdf3cfb6cf3b29318e8bc35bb2230a2b1ac7c22b70b1bcc3ecbf168f6d943377",
+   "instruction.md": "0463105397eaad5620bf3e535dc0d7bee10760d847e582e68d397675f6fc92cf",
+   "solution/gold.json": "8f7aee7447aee0df4d1edf22fb476e4041603f3a733d3f7acc98e24b05b1a656",
+   "solution/oracle.py": "f41afa184a83b0c1a45b13b4a11d1a55235ac7b07a222b02d9c8efad75b82cfe",
+   "task.toml": "b2d04e46cd4a8f8cff0d9e83e8fd290d50ba39aa5b6cfa8a461fb0f40c970aba",
+   "tests/grader.py": "1c08f2b8049f9fb91f8e7abbe52335f945a9a4a9c7653a83debf86c65bb99ead"
+  }
+ },
+ "fin-c5-lev-611": {
+  "split": "main",
+  "tier": "C5",
+  "solution": {
+   "FPT": {
+    "de_now": 0.7986,
+    "de_prev": 1.0464,
+    "de_change": -0.2478,
+    "current_ratio": 1.5563
+   },
+   "FRT": {
+    "de_now": 3.5707,
+    "de_prev": 4.4268,
+    "de_change": -0.8561,
+    "current_ratio": 1.1892
+   },
+   "VCG": {
+    "de_now": 1.2452,
+    "de_prev": 1.6436,
+    "de_change": -0.3984,
+    "current_ratio": 1.5457
+   },
+   "most_deleveraged": "FRT"
+  },
+  "files": {
+   "environment/payloads.json": "e87449d0b775af35d74b728db3271874c084daa4253dd027f36a8a40866cd651",
+   "instruction.md": "b379f366ec5b5380e29ef6cb07070cf812381ffd8b61d0d6343c428d700681eb",
+   "solution/gold.json": "8a860fdf68a73b813324aecba01de9d98ee5326bcad7ce69a657d86b7d5370b0",
+   "solution/oracle.py": "de847df7d30903c0a5ee0143d51ecfff127bf477b84b4cd58bd563ccefcbac19",
+   "task.toml": "23156d45313a57435e92a26e2cb22709fb72b393f71fcd4b96e39dd21ca725ce",
+   "tests/grader.py": "1c08f2b8049f9fb91f8e7abbe52335f945a9a4a9c7653a83debf86c65bb99ead"
+  }
+ },
+ "fin-c5-lev-612": {
+  "split": "main",
+  "tier": "C5",
+  "solution": {
+   "GAS": {
+    "de_now": 0.4642,
+    "de_prev": 0.2888,
+    "de_change": 0.1755,
+    "current_ratio": 2.8657
+   },
+   "HSG": {
+    "de_now": 1.0231,
+    "de_prev": 0.5514,
+    "de_change": 0.4718,
+    "current_ratio": 1.2752
+   },
+   "KDH": {
+    "de_now": 0.9761,
+    "de_prev": 0.5858,
+    "de_change": 0.3904,
+    "current_ratio": 10.0587
+   },
+   "most_deleveraged": "GAS"
+  },
+  "files": {
+   "environment/payloads.json": "b2e51204a795e9cb4f73614cbe8fd6d5c68435b20ad5f59081b6ae8fae5e472f",
+   "instruction.md": "e09994483662fc7416f3191acbbf6d2db2a22e198667eec900356a164d38d162",
+   "solution/gold.json": "c7ea9c8f757f481f3e4df3f75ea17898976aef0eebf2007c0452a4670c450527",
+   "solution/oracle.py": "6a993a119da8615b8681a3eab249d9b8d389cd0874958f647222166de159cad8",
+   "task.toml": "6b0926d6002332604d9bccd67c7733f0e3f983072e67464896137bd4a364334c",
+   "tests/grader.py": "1c08f2b8049f9fb91f8e7abbe52335f945a9a4a9c7653a83debf86c65bb99ead"
+  }
+ },
+ "fin-c5-yoy-613": {
+  "split": "main",
+  "tier": "C5",
+  "solution": {
+   "VNM": {
+    "revenue_yoy": 12.6924,
+    "profit_yoy": 27.9823
+   },
+   "SAB": {
+    "revenue_yoy": 1.2301,
+    "profit_yoy": -3.3718
+   },
+   "FPT": {
+    "revenue_yoy": -17.0602,
+    "profit_yoy": 13.7422
+   },
+   "HPG": {
+    "revenue_yoy": 53.601,
+    "profit_yoy": 49.6685
+   },
+   "profit_outgrows_revenue": [
+    "FPT",
+    "VNM"
+   ]
+  },
+  "files": {
+   "environment/payloads.json": "a8e57551417ee4a8327c9d57d53680788339d5fb437cc36acd68ec518e214838",
+   "instruction.md": "a70b980ca522c86f89ee086ba13748cd2846330397e2ddedf6ecab6c9d654300",
+   "solution/gold.json": "34ea35dd06b28a5c31f248a6e887b78c314de2d36326607da33a864d28e8c846",
+   "solution/oracle.py": "0e2e7449b9115d491ed34478ef12bb277e3e14e707164ab3967e37572df53a0e",
+   "task.toml": "a30f6597e153ed1b780ab948b72006fc42784a2e63b6730c0ead1df243e24b54",
+   "tests/grader.py": "1c08f2b8049f9fb91f8e7abbe52335f945a9a4a9c7653a83debf86c65bb99ead"
+  }
+ },
+ "fin-c5-yoy-614": {
+  "split": "main",
+  "tier": "C5",
+  "solution": {
+   "DHG": {
+    "revenue_yoy": 15.1079,
+    "profit_yoy": 26.076
+   },
+   "GVR": {
+    "revenue_yoy": 17.9616,
+    "profit_yoy": 63.0193
+   },
+   "REE": {
+    "revenue_yoy": -3.4657,
+    "profit_yoy": 1.3562
+   },
+   "VHC": {
+    "revenue_yoy": 7.8557,
+    "profit_yoy": -5.9191
+   },
+   "profit_outgrows_revenue": [
+    "DHG",
+    "GVR",
+    "REE"
+   ]
+  },
+  "files": {
+   "environment/payloads.json": "477654603987a26fbe205151973a2ca06ed43986e81587ab7ae9110735ae49e0",
+   "instruction.md": "16f36b32be8b697de39f5b73c44cddeb543f9f69bc824cd51d8243a0ab906b93",
+   "solution/gold.json": "cdd25b6315d2ec015455e7b02b938b5f9802522370d2651822341232ab5d4540",
+   "solution/oracle.py": "c65703a397c136211f5fcf98e226fc9e3b73f8cdc6572f11d64a8f96b07f3618",
+   "task.toml": "1b1d1231fb2320eafa8e99a027d399e9fa127caca7f30703e2586f3e5b035870",
+   "tests/grader.py": "1c08f2b8049f9fb91f8e7abbe52335f945a9a4a9c7653a83debf86c65bb99ead"
+  }
+ },
+ "fin-c5-sector-615": {
+  "split": "main",
+  "tier": "C5",
+  "solution": {
+   "group_margin_now": 11.4479,
+   "group_margin_prev": 8.6169,
+   "change_pp": 2.831,
+   "group_profit_ttm_bn": 31358.3832,
+   "largest_change": "HPG"
+  },
+  "files": {
+   "environment/payloads.json": "752359e7e68e922f2b750a4b82a81966b7f63151b2151328175fbbaf0115b6cc",
+   "instruction.md": "26f8458e396d1cc4e73d6e0b48f2ec729abcbb07e4f7edbdb3500c87fa28b720",
+   "solution/gold.json": "fc990536ae31c8f58e0e13d71cb21b12d0b4de896e88e8e4bb16d65070aba137",
+   "solution/oracle.py": "764a15ee019568b9b5e13100da15854c03242d0fbc9b5ef619a6fffe9127986c",
+   "task.toml": "847ecc232b173fa94abcb83eda03b5d9556611bbfbc4995384e7cbb878a87d1d",
+   "tests/grader.py": "1c08f2b8049f9fb91f8e7abbe52335f945a9a4a9c7653a83debf86c65bb99ead"
+  }
+ },
+ "fin-c5-sector-616": {
+  "split": "main",
+  "tier": "C5",
+  "solution": {
+   "group_margin_now": 11.5654,
+   "group_margin_prev": 8.6322,
+   "change_pp": 2.9332,
+   "group_profit_ttm_bn": 23291.7064,
+   "largest_change": "MSN"
+  },
+  "files": {
+   "environment/payloads.json": "ba7575f77ed6d7062ca9a788a6dd12778d0808dd463b21b1948f86f0df8f05f9",
+   "instruction.md": "2bae2bb0cb90bfb5fbb91f690cf7e8ffde8474c6d0af3e49234ae93ed90d38c2",
+   "solution/gold.json": "a130ec55d10815649f079ce7bca2904a93810a0825b9f367d3de2bfce3b22614",
+   "solution/oracle.py": "b9224562b2f67ce3d45bb8603a12ad70124583dbfe28ca985dc2cb435b0c3e86",
+   "task.toml": "cecf307541e7cea7fdd48b8c103ee342e162069ddb5d4739824aa1c37ec4b01a",
+   "tests/grader.py": "1c08f2b8049f9fb91f8e7abbe52335f945a9a4a9c7653a83debf86c65bb99ead"
+  }
+ },
+ "fin-m6-conv-621": {
+  "split": "main",
+  "tier": "M6a",
+  "solution": {
+   "pass": [
+    "GMD",
+    "HPG",
+    "POW"
+   ],
+   "convention": "ttm",
+   "roe_min": 15,
+   "debt_max": 60,
+   "values": {
+    "POW": {
+     "roe": 15.41,
+     "debt_ratio": 58.005
+    },
+    "MSN": {
+     "roe": 15.6382,
+     "debt_ratio": 65.3274
+    },
+    "HPG": {
+     "roe": 17.5231,
+     "debt_ratio": 49.2646
+    },
+    "GMD": {
+     "roe": 16.8712,
+     "debt_ratio": 26.5938
+    }
+   }
+  },
+  "files": {
+   "environment/payloads.json": "56a0711243b9b51dc8dc1c5074746fc3c4138402811194d037e8f03e117a01ea",
+   "environment/turns.json": "966883168abbfef9b1b2bb81dc0bd7b991688023e52156e2613a218b83b9f28e",
+   "instruction.md": "4910012a69837b7e610627e79a988f249a247b49e86cfa3fafdf7d6358a59532",
+   "solution/gold.json": "9575ba5c9978bfd500e2fe52530902c6955686385567064c5171775d08dbe89c",
+   "solution/oracle.py": "f3c83d95a293796563fde217963e925f85e36f7ef634da034700aebb65b460c6",
+   "task.toml": "6b152492c5194e6b3cd5cc5730dd325d29e34c86b3e8fe395408acb48fa3b348",
+   "tests/grader.py": "21fb599a710c5f936cdba59384c33bedbfcc279f76a0a7c2a6d371772cc6a608"
+  }
+ },
+ "fin-m6-conv-622": {
+  "split": "main",
+  "tier": "M6a",
+  "solution": {
+   "pass": [
+    "MWG",
+    "NTP"
+   ],
+   "convention": "fy",
+   "roe_min": 20,
+   "debt_max": 70,
+   "values": {
+    "DCM": {
+     "roe": 18.1559,
+     "debt_ratio": 47.343
+    },
+    "NTP": {
+     "roe": 23.462,
+     "debt_ratio": 40.9339
+    },
+    "FRT": {
+     "roe": 15.4671,
+     "debt_ratio": 78.1214
+    },
+    "MWG": {
+     "roe": 21.2012,
+     "debt_ratio": 65.3516
+    }
+   }
+  },
+  "files": {
+   "environment/payloads.json": "1746880780de8128a307cc417982313caebae77629a2db83b5b5ca0d32ef354b",
+   "environment/turns.json": "45c2558ba2eb407e9a9d1f5c6fcaac88edf4a95dccd5dadb11b4fc82aaefae4d",
+   "instruction.md": "c890afec7c096d330778d29c10ac706c1f945bf9a104c0cbae5cb2d94bddac96",
+   "solution/gold.json": "8cf0967ba1838113b7502375ae3ae6a97b0154ad8b1cc193f5219104fdc46a4f",
+   "solution/oracle.py": "c8c4d9128b4337b1071366312ad17d3d29779168fc69e2337444590794aad52f",
+   "task.toml": "7f30a041fb8284af8d0e6a3d84cf72fac1240a63baa547996d2b6ee6ce0f94b6",
+   "tests/grader.py": "21fb599a710c5f936cdba59384c33bedbfcc279f76a0a7c2a6d371772cc6a608"
+  }
+ },
+ "fin-m6-conv-623": {
+  "split": "main",
+  "tier": "M6a",
+  "solution": {
+   "pass": [
+    "DPM",
+    "SAB"
+   ],
+   "convention": "ttm",
+   "roe_min": 12,
+   "debt_max": 50,
+   "values": {
+    "DPM": {
+     "roe": 15.3015,
+     "debt_ratio": 37.5806
+    },
+    "GVR": {
+     "roe": 11.6052,
+     "debt_ratio": 25.9047
+    },
+    "SAB": {
+     "roe": 20.5745,
+     "debt_ratio": 32.3661
+    },
+    "VCG": {
+     "roe": 33.1824,
+     "debt_ratio": 55.46
+    }
+   }
+  },
+  "files": {
+   "environment/payloads.json": "7415cd99b8bc8a1ea92ce6c1beb3e6b36aa1d70545bc9bdef5ff552b923ea1a8",
+   "environment/turns.json": "ea822de6cc9a6c66abecbe75db22de5744fdfdde0a2d50dd379edb26be61e01c",
+   "instruction.md": "613e01f6c3be6b3bbdb642c26632d48d57464b707848495b2f2cfa086b0a1e22",
+   "solution/gold.json": "3e876e20b697d245d5ca75f711f8a2485cf140d738089073db88308185fb675c",
+   "solution/oracle.py": "2ef6e41a4268953815feb17f15860e960f13233581dacebbf0f057f1ba7dea6a",
+   "task.toml": "0811a286c808bb5d0e80052810ff211687983f291580ad1d06b4357a3d267952",
+   "tests/grader.py": "21fb599a710c5f936cdba59384c33bedbfcc279f76a0a7c2a6d371772cc6a608"
+  }
+ },
+ "fin-m6-conv-624": {
+  "split": "main",
+  "tier": "M6a",
+  "solution": {
+   "pass": [
+    "DHG",
+    "PNJ"
+   ],
+   "convention": "fy",
+   "roe_min": 15,
+   "debt_max": 50,
+   "values": {
+    "HPG": {
+     "roe": 11.7765,
+     "debt_ratio": 49.2646
+    },
+    "PNJ": {
+     "roe": 21.3071,
+     "debt_ratio": 33.8053
+    },
+    "DHG": {
+     "roe": 20.6019,
+     "debt_ratio": 31.7034
+    },
+    "KDH": {
+     "roe": 4.9398,
+     "debt_ratio": 49.3961
+    }
+   }
+  },
+  "files": {
+   "environment/payloads.json": "17879d70562ed02b8f1fa087b00486e790266c13375e002015e2318e33cd358e",
+   "environment/turns.json": "9d1c741ede60ddafc0a4c279262f7322c10dfdb3502f27c96025144688175d26",
+   "instruction.md": "c6fc01d5b55ba7c961d611d73e82e688822f4e5cdb496fd9f067c8ae2dc00fd0",
+   "solution/gold.json": "895b1fc8564850c6daf857f40ff76ec06ba16fee0a1c4437f22df4dd7356009b",
+   "solution/oracle.py": "aa54c4e72cd1f4d72c2de1221802d885a876e66638a8ce4c4318e8761726b79f",
+   "task.toml": "dda790f5c4c7d41ba7845eabde34295bd0e1d646ff347099cd82a74722f8008a",
+   "tests/grader.py": "21fb599a710c5f936cdba59384c33bedbfcc279f76a0a7c2a6d371772cc6a608"
+  }
+ },
+ "fin-m6-upd-625": {
+  "split": "main",
+  "tier": "M6b",
+  "solution": {
+   "pass": [
+    "GAS",
+    "PC1",
+    "VNM"
+   ],
+   "convention": "ttm",
+   "roe_min": 12,
+   "debt_max": 70,
+   "values": {
+    "VNM": {
+     "roe": 30.3719,
+     "debt_ratio": 37.9196
+    },
+    "GAS": {
+     "roe": 18.4851,
+     "debt_ratio": 31.7053
+    },
+    "PLX": {
+     "roe": 11.2115,
+     "debt_ratio": 66.8243
+    },
+    "PC1": {
+     "roe": 13.6687,
+     "debt_ratio": 63.1772
+    }
+   }
+  },
+  "files": {
+   "environment/payloads.json": "ff87883989bc77a98665d61909fcec66b8141cb28856aaabbbcd96f2fc34f888",
+   "environment/turns.json": "862496aa225008552c40766f5327cff6ddcfac6767c2c6775aa347d6b722fec6",
+   "instruction.md": "a620e5253d026992810dca8cd4ee7d994312750b5ce9f68a4fd67b223231d09c",
+   "solution/gold.json": "138a96b7c457a29b6afe100a0db956d83489bd824e15fb8e7d838c0277cc11ba",
+   "solution/oracle.py": "37e3bdbc7683aa0ddf1a3f900539b359016442561117e459f5e3c19c77fc2d5d",
+   "task.toml": "f99d3959b3553205f3298e3e96fae4943eece13643f4e0c5ed55190b533ef7d5",
+   "tests/grader.py": "21fb599a710c5f936cdba59384c33bedbfcc279f76a0a7c2a6d371772cc6a608"
+  }
+ },
+ "fin-m6-upd-626": {
+  "split": "main",
+  "tier": "M6b",
+  "solution": {
+   "pass": [
+    "HAH"
+   ],
+   "convention": "fy",
+   "roe_min": 10.5,
+   "debt_max": 42,
+   "values": {
+    "FPT": {
+     "roe": 21.4321,
+     "debt_ratio": 44.4006
+    },
+    "REE": {
+     "roe": 10.1995,
+     "debt_ratio": 37.6799
+    },
+    "HAH": {
+     "roe": 22.3644,
+     "debt_ratio": 40.6538
+    },
+    "PVS": {
+     "roe": 11.3918,
+     "debt_ratio": 61.1824
+    }
+   }
+  },
+  "files": {
+   "environment/payloads.json": "88e9cd7d5b1dd03219e10d4cea658b453650babb7fc46bf2a42008903926cd19",
+   "environment/turns.json": "c800d1852d1bf01d92a8a3ef27199c397ebb4f7fbd18681226f1013e7f59183f",
+   "instruction.md": "711ce8b12798257e65dbb97327b8d7c494f55d68600667787bb265d078941b7b",
+   "solution/gold.json": "0d37df9a3d8f6479d112857c8f0cb378caa9bee279b1a22dc5df7381d75fb00b",
+   "solution/oracle.py": "525a8909e7c1c3580700910950fb0f396cd7f3eb6e77266a787e0452b3e4868b",
+   "task.toml": "0c142d40cd0b6c2e9246145ae0bb5823a3f1b29eef63ee98ee56509c6597317c",
+   "tests/grader.py": "21fb599a710c5f936cdba59384c33bedbfcc279f76a0a7c2a6d371772cc6a608"
+  }
+ },
+ "fin-m6-upd-627": {
+  "split": "main",
+  "tier": "M6b",
+  "solution": {
+   "pass": [
+    "DCM",
+    "IMP",
+    "MWG"
+   ],
+   "convention": "ttm",
+   "roe_min": 15.5,
+   "debt_max": 70,
+   "values": {
+    "MWG": {
+     "roe": 29.4706,
+     "debt_ratio": 65.3516
+    },
+    "FRT": {
+     "roe": 24.0526,
+     "debt_ratio": 78.1214
+    },
+    "DCM": {
+     "roe": 23.568,
+     "debt_ratio": 47.343
+    },
+    "IMP": {
+     "roe": 15.8772,
+     "debt_ratio": 20.5522
+    }
+   }
+  },
+  "files": {
+   "environment/payloads.json": "ea7f4a3b0c7c614a8ce85698602de94ceaf9835c2b81259af7fc4dd1131a8a38",
+   "environment/turns.json": "e3be9f09968e357d283173fd94a4c67908d131eb778f578996bc68d01f7c62d0",
+   "instruction.md": "bf5d4c80fcad4a16ba70b197c2e22058251cc9adcf6342d445a020b1d5c97ca1",
+   "solution/gold.json": "4872c2b1b10172b18627377bb6540ed35af8ef4ff30bd2694f1dd75b1c2ce34e",
+   "solution/oracle.py": "463ec82f9beaa1be916850a3443adf080258e685fd4dbe7dd128902dce8b8ee0",
+   "task.toml": "99ee43250bc34dc2577c2ea9fe05457461063daf0b41eae559eaf913ebe33397",
+   "tests/grader.py": "21fb599a710c5f936cdba59384c33bedbfcc279f76a0a7c2a6d371772cc6a608"
+  }
+ },
+ "fin-m6-rev-628": {
+  "split": "main",
+  "tier": "M6c",
+  "solution": {
+   "pass": [
+    "HPG",
+    "MSN",
+    "PLX"
+   ],
+   "convention": "ttm",
+   "roe_min": 11,
+   "debt_max": null,
+   "values": {
+    "MSN": {
+     "roe": 15.6382,
+     "debt_ratio": 65.3274
+    },
+    "PLX": {
+     "roe": 11.2115,
+     "debt_ratio": 66.8243
+    },
+    "VJC": {
+     "roe": 8.6684,
+     "debt_ratio": 82.2946
+    },
+    "HPG": {
+     "roe": 17.5231,
+     "debt_ratio": 49.2646
+    }
+   }
+  },
+  "files": {
+   "environment/payloads.json": "d72b51b38dde6ba64c9860f517d85b62762d09d8c0b7dffa9a351f2ac5c1a21c",
+   "environment/turns.json": "98f3cfe410486a5fd9f44ad1a42a3b70723b129556da5b1a67f5c90d0ce88b77",
+   "instruction.md": "37a9b229169aaaccdb65aa1471868829b2f2733c6007d29313689be9163aa29b",
+   "solution/gold.json": "a345c386cfb3202b995b5d85bfaa1d67ab6fd98daa0f60c034b539d6dee60a74",
+   "solution/oracle.py": "103e6baf94428ad982829b44dbfb5a7a3ceabcaebe86e22b66d43b1364fc028d",
+   "task.toml": "05b3230fec2062863da7a052f77472c544b7d0a23e823066f6a34eda5a86c516",
+   "tests/grader.py": "21fb599a710c5f936cdba59384c33bedbfcc279f76a0a7c2a6d371772cc6a608"
+  }
+ },
+ "fin-m6-rev-629": {
+  "split": "main",
+  "tier": "M6c",
+  "solution": {
+   "pass": [
+    "MWG",
+    "PNJ",
+    "VGS"
+   ],
+   "convention": "fy",
+   "roe_min": 16,
+   "debt_max": null,
+   "values": {
+    "FRT": {
+     "roe": 15.4671,
+     "debt_ratio": 78.1214
+    },
+    "MWG": {
+     "roe": 21.2012,
+     "debt_ratio": 65.3516
+    },
+    "VGS": {
+     "roe": 16.7485,
+     "debt_ratio": 63.2161
+    },
+    "PNJ": {
+     "roe": 21.3071,
+     "debt_ratio": 33.8053
+    }
+   }
+  },
+  "files": {
+   "environment/payloads.json": "510860e0dcc2f4d5a46757d4f53cd13ccbe15b0e3c665617131d38b958869041",
+   "environment/turns.json": "a47d69600c542dce4abfd5de76a622550f9f0bd0cd14b8a37bbbd1622a736a0e",
+   "instruction.md": "221b2de4aa220e07fe8804ddc8da41c756ba925307d86d3ca7d172189fd52a54",
+   "solution/gold.json": "fdea531e028492418be09cb8e56c2244c0dc8c43b372617ca02ae5810879b552",
+   "solution/oracle.py": "395fe7bd2d2d0ac57b7755d78357ae69fb431eb5b671fe63e1250204c828e42b",
+   "task.toml": "35ff1b87b594d6bca39f06e8852c62ff0c40dbeec500c36b4cecc72c3650e4cf",
+   "tests/grader.py": "21fb599a710c5f936cdba59384c33bedbfcc279f76a0a7c2a6d371772cc6a608"
+  }
+ },
+ "fin-m6-rev-630": {
+  "split": "main",
+  "tier": "M6c",
+  "solution": {
+   "pass": [
+    "POW",
+    "PVS"
+   ],
+   "convention": "ttm",
+   "roe_min": 10,
+   "debt_max": null,
+   "values": {
+    "GEX": {
+     "roe": 4.6942,
+     "debt_ratio": 59.7393
+    },
+    "POW": {
+     "roe": 15.41,
+     "debt_ratio": 58.005
+    },
+    "PVS": {
+     "roe": 12.9439,
+     "debt_ratio": 61.1824
+    },
+    "CTD": {
+     "roe": 8.5105,
+     "debt_ratio": 72.7505
+    }
+   }
+  },
+  "files": {
+   "environment/payloads.json": "bd2b0fb3f1295b21b60c4554a85a07040d079eca7c253e2c16b234818d0c9435",
+   "environment/turns.json": "d9000d003dfce3b5e5244debf4bc2193308c1841320fa241985060e6278e8db1",
+   "instruction.md": "a67b9dca58674f90e655aa345b9d8adfdd8393a857a984f463c5f2a2a5206164",
+   "solution/gold.json": "663d4637b493ad4856531a9ff7747ed0ffd420456fc866419f1906bca0935785",
+   "solution/oracle.py": "cde5bdf3d632f57ebe08b5a28a5cfc873f3c1f713d3666fee90638a591abecf7",
+   "task.toml": "2b3ba71a4b1ff66025fa067a90a4ef72270d9ba953c87370947880656a5c8ec0",
+   "tests/grader.py": "21fb599a710c5f936cdba59384c33bedbfcc279f76a0a7c2a6d371772cc6a608"
+  }
+ },
+ "fin-c5-roa-641": {
+  "split": "main",
+  "tier": "C5",
+  "solution": {
+   "VNM": {
+    "roa": 19.7776,
+    "roe": 30.3719,
+    "roe_to_roa": 1.5357
+   },
+   "SAB": {
+    "roa": 14.9461,
+    "roe": 20.5745,
+    "roe_to_roa": 1.3766
+   },
+   "MSN": {
+    "roa": 5.4471,
+    "roe": 15.6382,
+    "roe_to_roa": 2.8709
+   },
+   "highest_roa": "VNM"
+  },
+  "files": {
+   "environment/payloads.json": "ffab9ba4e33c830c946b1e75fba2419f07d5bf539d90e95f0acc21e12d740404",
+   "instruction.md": "8996a82ce4bcdd44958e343af0fdc67b7ebfaeca036438f1d900bfc6cec54ebe",
+   "solution/gold.json": "a49e88df75e5fea2779c543366c49c5f23b6fb2e0a883fa6c259d76ed6b2245a",
+   "solution/oracle.py": "05d888fc452b8df046afe6e960e839ad0fbff833408cf8eb5afdf17b5a521adc",
+   "task.toml": "e7e5eb8dbd709bb2430f714a2497d201826e7e20a4711496ccddcb6fbd86c8b9",
+   "tests/grader.py": "1c08f2b8049f9fb91f8e7abbe52335f945a9a4a9c7653a83debf86c65bb99ead"
+  }
+ },
+ "fin-c5-roa-642": {
+  "split": "main",
+  "tier": "C5",
+  "solution": {
+   "FPT": {
+    "roa": 12.6568,
+    "roe": 24.0696,
+    "roe_to_roa": 1.9017
+   },
+   "MWG": {
+    "roa": 11.3548,
+    "roe": 29.4706,
+    "roe_to_roa": 2.5954
+   },
+   "FRT": {
+    "roa": 4.9425,
+    "roe": 24.0526,
+    "roe_to_roa": 4.8665
+   },
+   "highest_roa": "FPT"
+  },
+  "files": {
+   "environment/payloads.json": "782b7bfee7a576c84810bc630bb927261268b5e5e9bdf9996b4d6a4fabe06c4e",
+   "instruction.md": "d24760856f3ea1fe10a9f4f04e260d99a9e4d15df75ef2a61d2a371c9ed8ba06",
+   "solution/gold.json": "bd1b462ebf5e1a2ea055deb189597f76a98bb30479dc3a4d67c3e640779ba26f",
+   "solution/oracle.py": "00ce75abc24a82965089959f259ff5ad00b839fa87a596418a1ccfd1958eb157",
+   "task.toml": "f5b93fc5dd112cec3cbf7af6477cabddf4774e01a9ee878a38bb8856b630835c",
+   "tests/grader.py": "1c08f2b8049f9fb91f8e7abbe52335f945a9a4a9c7653a83debf86c65bb99ead"
+  }
+ },
+ "fin-c5-roa-643": {
+  "split": "main",
+  "tier": "C5",
+  "solution": {
+   "GAS": {
+    "roa": 13.4634,
+    "roe": 18.4851,
+    "roe_to_roa": 1.373
+   },
+   "PLX": {
+    "roa": 3.5314,
+    "roe": 11.2115,
+    "roe_to_roa": 3.1748
+   },
+   "PVS": {
+    "roa": 5.2537,
+    "roe": 12.9439,
+    "roe_to_roa": 2.4638
+   },
+   "highest_roa": "GAS"
+  },
+  "files": {
+   "environment/payloads.json": "1b07aa14c14faf4b1d2339c83d827a807e956cd7cababc62df67268ca736733e",
+   "instruction.md": "3f589bf8e9e0702e853efcd63fcab35a9fac5eeaad3e0f460738a6fd2e9bf207",
+   "solution/gold.json": "ddde144130f12f3be13d8d32f6f468682383077678d827f26d0ce8389cc13d2c",
+   "solution/oracle.py": "9e260681847352c2de29f048c748acc6f53558c6c7d180b8e3177334398e43bb",
+   "task.toml": "e8fbc6e11098301b77bfe55626160227dd71d5bab890e190d2182d1fe979507f",
+   "tests/grader.py": "1c08f2b8049f9fb91f8e7abbe52335f945a9a4a9c7653a83debf86c65bb99ead"
+  }
+ },
+ "fin-c5-rank-644": {
+  "split": "main",
+  "tier": "C5",
+  "solution": {
+   "values": {
+    "HPG": {
+     "roe": 17.5231,
+     "rev_growth": 34.2755,
+     "debt_ratio": 49.2646
+    },
+    "HSG": {
+     "roe": 4.7534,
+     "rev_growth": -11.1216,
+     "debt_ratio": 50.5715
+    },
+    "NKG": {
+     "roe": 2.184,
+     "rev_growth": -18.4262,
+     "debt_ratio": 58.5403
+    },
+    "DGC": {
+     "roe": 13.7915,
+     "rev_growth": -5.4626,
+     "debt_ratio": 15.7218
+    },
+    "DCM": {
+     "roe": 23.568,
+     "rev_growth": 19.7805,
+     "debt_ratio": 47.343
+    },
+    "DPM": {
+     "roe": 15.3015,
+     "rev_growth": 26.1121,
+     "debt_ratio": 37.5806
+    }
+   },
+   "ranking": [
+    "DCM",
+    "HPG",
+    "DPM",
+    "DGC",
+    "HSG",
+    "NKG"
+   ]
+  },
+  "files": {
+   "environment/payloads.json": "f04218482eea803462c5b7c8f66e7f397e29352e1f00f9f476e7e29dc4b827c2",
+   "instruction.md": "465970083087112e78e3c8db4759ca0d3c3be7251e291893d050f0fbefefcbff",
+   "solution/gold.json": "aa74f3e10b136cf3d8e0543974b52cbcf9331d8bb7684eb78e8262b09bbf876c",
+   "solution/oracle.py": "97d2c95e965e2ade2d1b2f26f249dee0adbb63e55dcf68b6b691bef1f2f81737",
+   "task.toml": "ef303e0dda7e3ebf0a0e52e1fe965ad77402abd88d743a6f1c11748d667e1b06",
+   "tests/grader.py": "1c08f2b8049f9fb91f8e7abbe52335f945a9a4a9c7653a83debf86c65bb99ead"
+  }
+ },
+ "fin-c5-rank-645": {
+  "split": "main",
+  "tier": "C5",
+  "solution": {
+   "values": {
+    "VNM": {
+     "roe": 30.3719,
+     "rev_growth": 13.6951,
+     "debt_ratio": 37.9196
+    },
+    "SAB": {
+     "roe": 20.5745,
+     "rev_growth": -8.8965,
+     "debt_ratio": 32.3661
+    },
+    "MSN": {
+     "roe": 15.6382,
+     "rev_growth": 18.6081,
+     "debt_ratio": 65.3274
+    },
+    "KDC": {
+     "roe": 6.9272,
+     "rev_growth": 3.1002,
+     "debt_ratio": 49.0213
+    },
+    "DBC": {
+     "roe": 14.2444,
+     "rev_growth": 16.3507,
+     "debt_ratio": 51.9506
+    },
+    "VHC": {
+     "roe": 13.8979,
+     "rev_growth": 2.1089,
+     "debt_ratio": 27.6951
+    }
+   },
+   "ranking": [
+    "VNM",
+    "SAB",
+    "MSN",
+    "DBC",
+    "VHC",
+    "KDC"
+   ]
+  },
+  "files": {
+   "environment/payloads.json": "79861b7acbd6fd24be0317c0a3c16016853b9935c764ebde94a88037ee6e22ff",
+   "instruction.md": "500df4efac59f35a9cb92868f385e065234f6f2df59689c3ece6f9cb331625c8",
+   "solution/gold.json": "7a925a42283267df216190535d35ad86e297c76e378410ca162003a979168df4",
+   "solution/oracle.py": "9e80451efe7fb81e3ba28947355d9de3bdf14a536f8e7ef44bd4a835d43eb3a0",
+   "task.toml": "f9bf5e622d0251449bd81bdbf78cbfeb50a71e4759576ee8bca20addcd26ecb3",
+   "tests/grader.py": "1c08f2b8049f9fb91f8e7abbe52335f945a9a4a9c7653a83debf86c65bb99ead"
+  }
+ },
+ "fin-c5-rank-646": {
+  "split": "main",
+  "tier": "C5",
+  "solution": {
+   "values": {
+    "FPT": {
+     "roe": 24.0696,
+     "rev_growth": -3.7693,
+     "debt_ratio": 44.4006
+    },
+    "MWG": {
+     "roe": 29.4706,
+     "rev_growth": 24.8749,
+     "debt_ratio": 65.3516
+    },
+    "PNJ": {
+     "roe": 22.1121,
+     "rev_growth": 32.0663,
+     "debt_ratio": 33.8053
+    },
+    "FRT": {
+     "roe": 24.0526,
+     "rev_growth": 30.9291,
+     "debt_ratio": 78.1214
+    },
+    "REE": {
+     "roe": 10.7252,
+     "rev_growth": 15.4498,
+     "debt_ratio": 37.6799
+    },
+    "GMD": {
+     "roe": 16.8712,
+     "rev_growth": 17.2314,
+     "debt_ratio": 26.5938
+    }
+   },
+   "ranking": [
+    "PNJ",
+    "MWG",
+    "GMD",
+    "FRT",
+    "FPT",
+    "REE"
+   ]
+  },
+  "files": {
+   "environment/payloads.json": "db8be8d268f7687d6bf90eb0ac8f569072130fc11b8bdb9397aa47256c22ace7",
+   "instruction.md": "dc821c8adddec428bb2acf469e1c4a167479f2745970a81c11ce7918f611a8ea",
+   "solution/gold.json": "f3149b473cbd1d2f23abccd8705558e8455767c82c6ec82beb6abec0d4b453db",
+   "solution/oracle.py": "191d5806691028ef3f9b3c203acd4e58be0443f65aa8af1f61056ebdffa3174a",
+   "task.toml": "fa84bfa3b10026d69fad9347ac5b6d6c70f9dabde3ca86eb916546713c4940f2",
+   "tests/grader.py": "1c08f2b8049f9fb91f8e7abbe52335f945a9a4a9c7653a83debf86c65bb99ead"
+  }
+ },
+ "fin-c5-margin-647": {
+  "split": "main",
+  "tier": "C5",
+  "solution": {
+   "MWG": {
+    "gross_now": 20.2588,
+    "gross_prev": 19.8266,
+    "gross_change_pp": 0.4323,
+    "op_now": 6.7827,
+    "op_prev": 4.4207
+   },
+   "FRT": {
+    "gross_now": 19.688,
+    "gross_prev": 19.0723,
+    "gross_change_pp": 0.6157,
+    "op_now": 3.0038,
+    "op_prev": 1.8566
+   },
+   "PNJ": {
+    "gross_now": 20.7647,
+    "gross_prev": 20.4181,
+    "gross_change_pp": 0.3466,
+    "op_now": 8.3746,
+    "op_prev": 7.8377
+   },
+   "best_gross_improvement": "FRT"
+  },
+  "files": {
+   "environment/payloads.json": "dd7349f72697056e2fa87cb9f8306813dafa92a275b81d587c401a69e5b159f9",
+   "instruction.md": "e973555555c58989857845f9a2ff12d669f5b678a1e66446c6c90b6e4d886e9e",
+   "solution/gold.json": "344f0a5c5ffdfd73e3e9db3f8c5016ec403efa1881a130470891e34abcbfc722",
+   "solution/oracle.py": "db68532e408c7b2db681081828c0ab962b1c07eeffdb0ca649cfe4923164448c",
+   "task.toml": "375624aa34125eb2b6f46c6656c4b36d873f5407d7173a3e4f84132e010c06cd",
+   "tests/grader.py": "1c08f2b8049f9fb91f8e7abbe52335f945a9a4a9c7653a83debf86c65bb99ead"
+  }
+ },
+ "fin-c5-lev-648": {
+  "split": "main",
+  "tier": "C5",
+  "solution": {
+   "VJC": {
+    "de_now": 4.648,
+    "de_prev": 3.7045,
+    "de_change": 0.9435,
+    "current_ratio": 1.1067
+   },
+   "HAH": {
+    "de_now": 0.685,
+    "de_prev": 0.69,
+    "de_change": -0.0049,
+    "current_ratio": 1.1468
+   },
+   "GMD": {
+    "de_now": 0.3623,
+    "de_prev": 0.3943,
+    "de_change": -0.032,
+    "current_ratio": 2.4151
+   },
+   "most_deleveraged": "GMD"
+  },
+  "files": {
+   "environment/payloads.json": "923914c9d9e708025b109ce2c933404754d19aeec85834c002aa5015791fcff7",
+   "instruction.md": "adc7ae5902bf25e3ffa71873ca7315e04f0422b0f00ae67ef87d9be31be982a1",
+   "solution/gold.json": "a1a72d51d89fa25f7850f48ef08107414df024dd2d6001b90e14f929858b43f6",
+   "solution/oracle.py": "1f5526821ef87a181152b7b0ed1a211f2870c4f62905baf10fa8021cd1e2fee1",
+   "task.toml": "d850af3dc57dce04d0cb65f407feb69aa037d0f250928ccb94598a900e7312c4",
+   "tests/grader.py": "1c08f2b8049f9fb91f8e7abbe52335f945a9a4a9c7653a83debf86c65bb99ead"
+  }
+ },
+ "fin-c5-cagr-649": {
+  "split": "main",
+  "tier": "C5",
+  "solution": {
+   "VNM": {
+    "revenue_cagr": 1.1007,
+    "profit_cagr": -2.7774
+   },
+   "DHG": {
+    "revenue_cagr": 7.0999,
+    "profit_cagr": 2.3338
+   },
+   "IMP": {
+    "revenue_cagr": 17.8246,
+    "profit_cagr": 16.568
+   },
+   "highest_profit_cagr": "IMP"
+  },
+  "files": {
+   "environment/payloads.json": "223b8dda65cffb274b62fbc52eba67d00f6fcea211794b1e3a6604bc34406dbc",
+   "instruction.md": "5f125e8605328ba09e6af03f33627d145f93dd78da664d746acd9425f3be2b35",
+   "solution/gold.json": "e1636572e09d017f999ca17cfd9a0e2191eb4cac09a083ea7565788357e0cbc5",
+   "solution/oracle.py": "477f55f568add6bfd381e8fa28967817ab2665ff231fbfb509b212f9440c04dd",
+   "task.toml": "835f25e48a696c7738f1c5792905bff3784697ce68d0b0b7752b86d7be4ea126",
+   "tests/grader.py": "1c08f2b8049f9fb91f8e7abbe52335f945a9a4a9c7653a83debf86c65bb99ead"
+  }
+ },
+ "fin-c5-dupont-650": {
+  "split": "main",
+  "tier": "C5",
+  "solution": {
+   "HPG": {
+    "net_margin": 9.8985,
+    "asset_turnover": 0.6473,
+    "equity_multiplier": 1.962,
+    "roe": 12.5703
+   },
+   "DGC": {
+    "net_margin": 26.5521,
+    "asset_turnover": 0.637,
+    "equity_multiplier": 1.2163,
+    "roe": 20.5725
+   },
+   "driver": "margin"
+  },
+  "files": {
+   "environment/payloads.json": "f97b9df86e3a50b713127505d3269f7308c97c90d86565fdb1b69ec1ff3bc4d4",
+   "instruction.md": "14f166fd72481ff55c8d289798afd6c57da8937d7029d5da9c4651da65bad1da",
+   "solution/gold.json": "27201e36994ff0ae64116cc6d27cd682242097e79957119d80e03dbe045a65c2",
+   "solution/oracle.py": "dd0d153b8f87e596cda05a90f1b33f0aa8bf65d28d4483d35466431fb7496aef",
+   "task.toml": "81f0237b03782f5dd441376f6e30e544a97556bfc430bfd4f951997eb3064a7f",
+   "tests/grader.py": "1c08f2b8049f9fb91f8e7abbe52335f945a9a4a9c7653a83debf86c65bb99ead"
+  }
+ },
+ "fin-m6-conv-661": {
+  "split": "main",
+  "tier": "M6a",
+  "solution": {
+   "pass": [
+    "SAB",
+    "VNM"
+   ],
+   "convention": "ttm",
+   "roe_min": 19.5,
+   "debt_max": 50,
+   "values": {
+    "VNM": {
+     "roe": 30.3719,
+     "debt_ratio": 37.9196
+    },
+    "SAB": {
+     "roe": 20.5745,
+     "debt_ratio": 32.3661
+    },
+    "KDC": {
+     "roe": 6.9272,
+     "debt_ratio": 49.0213
+    },
+    "DBC": {
+     "roe": 14.2444,
+     "debt_ratio": 51.9506
+    }
+   }
+  },
+  "files": {
+   "environment/payloads.json": "9f23069b02fae1242338d2265d30b19026113cfa28b2a400fd387c67f603cdc9",
+   "environment/turns.json": "60d9cf238fa2d5ed00a7b08a7c4f6619d626eb861034781b9392dd299564a44e",
+   "instruction.md": "e01177c41cf1ebf9ce0e48f72e64ee9a3f749a80fb743fc7319e40ba32b335c6",
+   "solution/gold.json": "af4309f5648105c7c969c0f414b24e9342cae24b1a600a089fed2cf51022469b",
+   "solution/oracle.py": "5ccc344f0cf033f31e3de18dfc2f0fec875fbdc9d6933db078a1e9b365aaed6f",
+   "task.toml": "857d4c2509e1c7e485dfbc1ec4cdabec5d534a464fb59a5d20e708aa0b6297d6",
+   "tests/grader.py": "21fb599a710c5f936cdba59384c33bedbfcc279f76a0a7c2a6d371772cc6a608"
+  }
+ },
+ "fin-m6-conv-662": {
+  "split": "main",
+  "tier": "M6a",
+  "solution": {
+   "pass": [
+    "ANV",
+    "NTP"
+   ],
+   "convention": "fy",
+   "roe_min": 22.5,
+   "debt_max": 45,
+   "values": {
+    "ANV": {
+     "roe": 28.339,
+     "debt_ratio": 40.0488
+    },
+    "HAH": {
+     "roe": 22.3644,
+     "debt_ratio": 40.6538
+    },
+    "NTP": {
+     "roe": 23.462,
+     "debt_ratio": 40.9339
+    },
+    "DHG": {
+     "roe": 20.6019,
+     "debt_ratio": 31.7034
+    }
+   }
+  },
+  "files": {
+   "environment/payloads.json": "39d27a60f5651a16e0872caea8dfdca1fef23cf701e88e9386ef4fae22602bb3",
+   "environment/turns.json": "575f1fe7857d6f46663eb680e6ca9222a317a16ef154cd95bacd20457eb6129a",
+   "instruction.md": "637ae51749fb69ada433d8ddf4243038a19e55f19f70bb6ce849777230d49559",
+   "solution/gold.json": "780112af89d4818f3f307a75a2fb61cde6476fa92a3b6c63d3320c9d493a4435",
+   "solution/oracle.py": "6760ec9bc6974a53cd77f393fcbee1870ae95413f823b51b9b459010c93accb8",
+   "task.toml": "fdcc5d5c33f6c1eb70f07c062ed60d60d6333a1d228c1234fd8ea8a75b388606",
+   "tests/grader.py": "21fb599a710c5f936cdba59384c33bedbfcc279f76a0a7c2a6d371772cc6a608"
+  }
+ },
+ "fin-m6-upd-663": {
+  "split": "main",
+  "tier": "M6b",
+  "solution": {
+   "pass": [
+    "GMD",
+    "IMP",
+    "TRA"
+   ],
+   "convention": "ttm",
+   "roe_min": 15,
+   "debt_max": 35,
+   "values": {
+    "GMD": {
+     "roe": 16.8712,
+     "debt_ratio": 26.5938
+    },
+    "IMP": {
+     "roe": 15.8772,
+     "debt_ratio": 20.5522
+    },
+    "TRA": {
+     "roe": 15.9834,
+     "debt_ratio": 31.2213
+    },
+    "DPM": {
+     "roe": 15.3015,
+     "debt_ratio": 37.5806
+    }
+   }
+  },
+  "files": {
+   "environment/payloads.json": "944fd9969c822f6d7726027f944532fac8cd080336c5ce8db0e7f24374f7a5db",
+   "environment/turns.json": "efad1b5a37fcc8f525a4a6f855ed541ab9740adf3a5a1a18ec9d685377a64785",
+   "instruction.md": "33c525adae2f21e419e59988ac09e5b3aa856b3bd9f6423421d347702baa5e20",
+   "solution/gold.json": "0c6998809214438e411b4361c7cdfe54fdbe59c088f04c489509ae803fd1e1ca",
+   "solution/oracle.py": "d276d7c5a8375819f78dd4608475589cf0fd49bcae1be58e70f8469207cc41f8",
+   "task.toml": "e85bab3040bba0fa276cc3e7ea7fc50402e9e4551ccf630f828cb1e06836b2c2",
+   "tests/grader.py": "21fb599a710c5f936cdba59384c33bedbfcc279f76a0a7c2a6d371772cc6a608"
+  }
+ },
+ "fin-m6-upd-664": {
+  "split": "main",
+  "tier": "M6b",
+  "solution": {
+   "pass": [
+    "FPT",
+    "PNJ"
+   ],
+   "convention": "fy",
+   "roe_min": 20,
+   "debt_max": 45,
+   "values": {
+    "FPT": {
+     "roe": 21.4321,
+     "debt_ratio": 44.4006
+    },
+    "PNJ": {
+     "roe": 21.3071,
+     "debt_ratio": 33.8053
+    },
+    "SAB": {
+     "roe": 19.2329,
+     "debt_ratio": 32.3661
+    },
+    "GAS": {
+     "roe": 16.8718,
+     "debt_ratio": 31.7053
+    }
+   }
+  },
+  "files": {
+   "environment/payloads.json": "a3b032e77b2c1484952fe8ce336934411ff9c4f5d557bf712e3b41fac0e94ecc",
+   "environment/turns.json": "f21e85c599dd8bcc3d23ed0c0411b77df091d46a2f43f16f1a2a6387238ed2df",
+   "instruction.md": "83d82f09ba8f0b343680ea311da5135c278b8dac28d8f1ee6d8f6bbaa3198450",
+   "solution/gold.json": "52cf29493003d0f656c16bd40ac81cf641a2aa5115bf5394aa11e92d8568b853",
+   "solution/oracle.py": "4da007cd54c7dfe05c482479c44eed05a40863bc0c1252d9b9d3d8e5d39f3eaa",
+   "task.toml": "1b27bfba153deb5e3a9bdbdc7407d8919bdef5c82b19e8ebe1a894948c3fc63a",
+   "tests/grader.py": "21fb599a710c5f936cdba59384c33bedbfcc279f76a0a7c2a6d371772cc6a608"
+  }
+ },
+ "fin-m6-rev-665": {
+  "split": "main",
+  "tier": "M6c",
+  "solution": {
+   "pass": [
+    "PC1",
+    "POW",
+    "VGS"
+   ],
+   "convention": "ttm",
+   "roe_min": 13,
+   "debt_max": null,
+   "values": {
+    "PC1": {
+     "roe": 13.6687,
+     "debt_ratio": 63.1772
+    },
+    "PVS": {
+     "roe": 12.9439,
+     "debt_ratio": 61.1824
+    },
+    "VGS": {
+     "roe": 19.2069,
+     "debt_ratio": 63.2161
+    },
+    "POW": {
+     "roe": 15.41,
+     "debt_ratio": 58.005
+    }
+   }
+  },
+  "files": {
+   "environment/payloads.json": "b31c18edda2b032bad73dfcac2fa9ac1a4c990d285a9f267948796fb9863345a",
+   "environment/turns.json": "55344ce04bdab4e92c77a47861fd618f225f1e2e17c03262e1e83101789204fd",
+   "instruction.md": "d9fc63f4231560c0b6c9b05692d801f292d3df20b484bb65c0ecc91ca349602d",
+   "solution/gold.json": "1e9fc0a0e9256aee104386e91e066377680ba9f5c63a535e6ab9ddef3a54f882",
+   "solution/oracle.py": "546086fe80a254894e0d8ac7024839aa06afafa397dfb20c830f8c03f79276bf",
+   "task.toml": "3b8dcc7a1b49d8c6a1ce6b96647ea4b1a873784d310c590e2f8062d1c4231e24",
+   "tests/grader.py": "21fb599a710c5f936cdba59384c33bedbfcc279f76a0a7c2a6d371772cc6a608"
+  }
+ },
+ "fin-m6-rev-666": {
+  "split": "main",
+  "tier": "M6c",
+  "solution": {
+   "pass": [
+    "DCM",
+    "MWG",
+    "VCG"
+   ],
+   "convention": "fy",
+   "roe_min": 18,
+   "debt_max": null,
+   "values": {
+    "MWG": {
+     "roe": 21.2012,
+     "debt_ratio": 65.3516
+    },
+    "VCG": {
+     "roe": 29.3645,
+     "debt_ratio": 55.46
+    },
+    "FRT": {
+     "roe": 15.4671,
+     "debt_ratio": 78.1214
+    },
+    "DCM": {
+     "roe": 18.1559,
+     "debt_ratio": 47.343
+    }
+   }
+  },
+  "files": {
+   "environment/payloads.json": "467607025c9953f065a7d27c6dd1649ed84857b26c1e2d07f7bbdc05eadf2911",
+   "environment/turns.json": "48aa72b151b0f746fa8986d607d3de26174eca68b2bc659804f9fc6e082b959d",
+   "instruction.md": "b6d46397fd665b674e2e590203c4ab5f975b41054ef0d5196e75e99e28529cae",
+   "solution/gold.json": "d132fe87bbe8da4ce7339b419531fcdffba16cbb5bdde76e2b360060b9b6ea72",
+   "solution/oracle.py": "6e79613b2b3d5c1f021f217b66aed04df84eb551011a8cad8ffcde89e1986a9a",
+   "task.toml": "425890868da31853bac6239a111c6d6ac22599f463f36af5ceef5f88e4675765",
+   "tests/grader.py": "21fb599a710c5f936cdba59384c33bedbfcc279f76a0a7c2a6d371772cc6a608"
+  }
+ },
+ "fin-c5-roe-681": {
+  "split": "pilot",
+  "tier": "C5",
+  "solution": {
+   "DHG": 25.4362,
+   "IMP": 15.8772,
+   "TRA": 15.9834,
+   "highest": "DHG"
+  },
+  "files": {
+   "environment/payloads.json": "849445ce6476bb11ae28578f7e42d7deebef6c15411f086a5fe922c77108e68c",
+   "instruction.md": "bdb0e5f055f69e48c763be13d16f4ee1e7e57bf35958291a6f6234f36cdc1a41",
+   "solution/gold.json": "1ce5efe96ad90abb0565c2934d372dcf46cab2b4b4814c57d1673fb4bd3d6111",
+   "solution/oracle.py": "8fc45536afa67e36fdf2f75304c96471d6b1f4ad1633dfec44e32a207c1dfa59",
+   "task.toml": "92ceed400606a2931aaa229b40dc2f31b3da2506ad654c6c851b5bdc45850b6b",
+   "tests/grader.py": "1c08f2b8049f9fb91f8e7abbe52335f945a9a4a9c7653a83debf86c65bb99ead"
+  }
+ },
+ "fin-c5-oplev-682": {
+  "split": "pilot",
+  "tier": "C5",
+  "solution": {
+   "GMD": {
+    "rev_growth": 17.2314,
+    "op_growth": 49.2422,
+    "op_leverage": 2.8577
+   },
+   "NTP": {
+    "rev_growth": 13.5039,
+    "op_growth": 30.9605,
+    "op_leverage": 2.2927
+   },
+   "HAH": {
+    "rev_growth": 13.8571,
+    "op_growth": 20.2025,
+    "op_leverage": 1.4579
+   },
+   "highest": "GMD"
+  },
+  "files": {
+   "environment/payloads.json": "3ca2f2c87817a624d2c025176a974ebeb770454fdc472cf14f049d8ae2959d3f",
+   "instruction.md": "d62327c48618b69f74e744a73e5eb78caf32ac1cf1f66cb5b67f4c310f4d6e4a",
+   "solution/gold.json": "b5507a218cad33d8f0dd2f08a146fb9dd2654c04ffc0c20683825894f4c2b9d8",
+   "solution/oracle.py": "554b9d857f010d7d277ea9f6a6ec2fe102dc8a6b9e60f167d04e89f70fe535ac",
+   "task.toml": "7bc348119ad3ea93fc039bf6b048e7dcae9857ef96e77b9dfb8abd5f0ffaa739",
+   "tests/grader.py": "1c08f2b8049f9fb91f8e7abbe52335f945a9a4a9c7653a83debf86c65bb99ead"
+  }
+ },
+ "fin-c5-dupont-683": {
+  "split": "pilot",
+  "tier": "C5",
+  "solution": {
+   "PNJ": {
+    "net_margin": 8.087,
+    "asset_turnover": 1.8718,
+    "equity_multiplier": 1.5235,
+    "roe": 23.0613
+   },
+   "DHG": {
+    "net_margin": 16.183,
+    "asset_turnover": 0.9462,
+    "equity_multiplier": 1.3524,
+    "roe": 20.7083
+   },
+   "driver": "margin"
+  },
+  "files": {
+   "environment/payloads.json": "9e1e2eb582fa706046c7c3857f7ca30718db6736b1cd8a3b6813a9c2e0108fc4",
+   "instruction.md": "4058990e2bb24ee2911e9e61e7d9217f6dd95fc22915fa59391fdfef52e960d3",
+   "solution/gold.json": "c388628be26b256f5991a3b62ac88ba929da90fc68c82fecfc42bb703c026e95",
+   "solution/oracle.py": "e51f559d1824a88e9e2e2558e94ca19118e4bea76352600e182c130b7ecf6d2d",
+   "task.toml": "c7f75cf5cb674ea3f91694e44925d71b06605425158cb6dea19ef1543b294076",
+   "tests/grader.py": "1c08f2b8049f9fb91f8e7abbe52335f945a9a4a9c7653a83debf86c65bb99ead"
+  }
+ },
+ "fin-c5-yoy-684": {
+  "split": "pilot",
+  "tier": "C5",
+  "solution": {
+   "DCM": {
+    "revenue_yoy": 11.1792,
+    "profit_yoy": 32.7325
+   },
+   "GAS": {
+    "revenue_yoy": 43.7784,
+    "profit_yoy": 23.2187
+   },
+   "NTP": {
+    "revenue_yoy": 8.8621,
+    "profit_yoy": 48.998
+   },
+   "MWG": {
+    "revenue_yoy": 29.5888,
+    "profit_yoy": 100.3795
+   },
+   "profit_outgrows_revenue": [
+    "DCM",
+    "MWG",
+    "NTP"
+   ]
+  },
+  "files": {
+   "environment/payloads.json": "a9989c91eab8e6c8c9b9ee90ba3eccc0eb3f194423b1cbafa8d915539ca4e7c5",
+   "instruction.md": "bccc6a15699383eb776ad310b7d1f1ed1dc3cfdee5942af7245f42c70eb8f115",
+   "solution/gold.json": "90e4394cdcf20d481706baed04c019f77b7bc8fb7b62e7176dc1a694ed2574a5",
+   "solution/oracle.py": "0a05454512705956cb388fc0f1e7347ac301b239dc1d17728df5e15fa7b12745",
+   "task.toml": "81fd2197c85eb25ed2626fd763089dbda80a708f7d05725749084bea1b538ac5",
+   "tests/grader.py": "1c08f2b8049f9fb91f8e7abbe52335f945a9a4a9c7653a83debf86c65bb99ead"
+  }
+ },
+ "fin-m6-conv-691": {
+  "split": "pilot",
+  "tier": "M6a",
+  "solution": {
+   "pass": [
+    "IMP",
+    "TRA"
+   ],
+   "convention": "ttm",
+   "roe_min": 15,
+   "debt_max": 35,
+   "values": {
+    "TRA": {
+     "roe": 15.9834,
+     "debt_ratio": 31.2213
+    },
+    "VHC": {
+     "roe": 13.8979,
+     "debt_ratio": 27.6951
+    },
+    "IMP": {
+     "roe": 15.8772,
+     "debt_ratio": 20.5522
+    },
+    "HAH": {
+     "roe": 23.4464,
+     "debt_ratio": 40.6538
+    }
+   }
+  },
+  "files": {
+   "environment/payloads.json": "7faee02e42991467cfd116a447119c890395fc5de21eb9033c0498723432b5e6",
+   "environment/turns.json": "817d4642612150d2a40dfafeff5e91bf2426f808eac50e4713f3d9e3c0e97a69",
+   "instruction.md": "9782036833aed48c9d8469eff4d2499b78c6d11f1c3a62f28e0d39030d922093",
+   "solution/gold.json": "bf58b6220a7d6c6a4d92f5dd75648d391af0ef2eb38ab79d021c09c98cb3ba91",
+   "solution/oracle.py": "325b82c222788dbba677c4c89320f279e428b22aa08bd8526021924deb443e1c",
+   "task.toml": "a28438660c16875d4a99992ec514f35ecaf88a5df905b9a3f37d10e2ae760ef7",
+   "tests/grader.py": "21fb599a710c5f936cdba59384c33bedbfcc279f76a0a7c2a6d371772cc6a608"
+  }
+ },
+ "fin-m6-upd-692": {
+  "split": "pilot",
+  "tier": "M6b",
+  "solution": {
+   "pass": [
+    "DGC",
+    "GMD",
+    "REE"
+   ],
+   "convention": "fy",
+   "roe_min": 9,
+   "debt_max": 40,
+   "values": {
+    "GMD": {
+     "roe": 11.7683,
+     "debt_ratio": 26.5938
+    },
+    "GVR": {
+     "roe": 8.5505,
+     "debt_ratio": 25.9047
+    },
+    "REE": {
+     "roe": 10.1995,
+     "debt_ratio": 37.6799
+    },
+    "DGC": {
+     "roe": 19.455,
+     "debt_ratio": 15.7218
+    }
+   }
+  },
+  "files": {
+   "environment/payloads.json": "e3cc52e1ac09b26702e43ad849d0560557239d4953f3d3df6a05e9f85b0fccda",
+   "environment/turns.json": "a852de1fe475104710365eca3b094c2a308f41cb7f300de01e15cf366611b773",
+   "instruction.md": "15a21d6b399a728b986ae26385d833721d7c47619a0fc10a05ef751e4d81da38",
+   "solution/gold.json": "d4d2913fd071e64773ee2d155fc58e99b733fda2019299810c48efa97ccf7a6f",
+   "solution/oracle.py": "43bf5706692b0f6d7c942c506d900c1570360b054b101b3d58eb721c425ba501",
+   "task.toml": "340fd7319b96aaf48e7ba53b4aaf94504cb8191211069f5a1040668cb93bcca6",
+   "tests/grader.py": "21fb599a710c5f936cdba59384c33bedbfcc279f76a0a7c2a6d371772cc6a608"
+  }
+ },
+ "fin-c5-rank-685": {
+  "split": "pilot",
+  "tier": "C5",
+  "solution": {
+   "values": {
+    "ANV": {
+     "roe": 24.1461,
+     "rev_growth": 42.6973,
+     "debt_ratio": 40.0488
+    },
+    "VHC": {
+     "roe": 13.8979,
+     "rev_growth": 2.1089,
+     "debt_ratio": 27.6951
+    },
+    "DBC": {
+     "roe": 14.2444,
+     "rev_growth": 16.3507,
+     "debt_ratio": 51.9506
+    },
+    "BMP": {
+     "roe": 43.1816,
+     "rev_growth": 8.6269,
+     "debt_ratio": 15.0013
+    },
+    "NTP": {
+     "roe": 28.9167,
+     "rev_growth": 13.5039,
+     "debt_ratio": 40.9339
+    },
+    "TRA": {
+     "roe": 15.9834,
+     "rev_growth": 15.0637,
+     "debt_ratio": 31.2213
+    }
+   },
+   "ranking": [
+    "BMP",
+    "ANV",
+    "TRA",
+    "NTP",
+    "DBC",
+    "VHC"
+   ]
+  },
+  "files": {
+   "environment/payloads.json": "6726154a46235fbbe243aa3eddc1f7ea7026444a83c18e47ded9aa53b99454c7",
+   "instruction.md": "ada14220d9b1aa97595633725f26be4433c7a0bb37b2754137226bf713e95d83",
+   "solution/gold.json": "b3f52a2ad4c012b1e00313cd184961ab002bd466d7f99666ba56d688b7fca2b0",
+   "solution/oracle.py": "0df242dcb90da512320aae51df8bb4ab43d12f29429adda798c306e59394a14e",
+   "task.toml": "960fcbab1a4334ad1b71ea227e0d2ba290330fc0d89a4fc6edddee8cebed7d22",
+   "tests/grader.py": "1c08f2b8049f9fb91f8e7abbe52335f945a9a4a9c7653a83debf86c65bb99ead"
+  }
+ },
+ "fin-c5-roe-981": {
+  "split": "holdout",
+  "tier": "C5",
+  "solution": {
+   "ANV": 24.1461,
+   "BMP": 43.1816,
+   "DGC": 13.7915,
+   "highest": "BMP"
+  },
+  "files": {
+   "environment/payloads.json": "51fd0eaeda340889c221b0d06b8aa913414a75789d09ffdbf6cc920fe6ad5595",
+   "instruction.md": "f869e3568dc0e7cbaa8f2c1ba49ac2310fcf64c3c14a7dc0183944ba60d5b777",
+   "solution/gold.json": "84e69123bd0ac38b8094ba5f8807402a9ba13ef7112fff8ae219524489c31503",
+   "solution/oracle.py": "6ffa1ce2498bac25ebe61683294759c2edcd7dd04f50a52be19e602d1dd09d5b",
+   "task.toml": "2d89e1fbe59c2c73481104a2b228d57b0af0f7c170372a88b5e9c7ed87d09f63",
+   "tests/grader.py": "1c08f2b8049f9fb91f8e7abbe52335f945a9a4a9c7653a83debf86c65bb99ead"
+  }
+ },
+ "fin-c5-oplev-982": {
+  "split": "holdout",
+  "tier": "C5",
+  "solution": {
+   "DBC": {
+    "rev_growth": 16.3507,
+    "op_growth": -24.0228,
+    "op_leverage": -1.4692
+   },
+   "VHC": {
+    "rev_growth": 2.1089,
+    "op_growth": 1.9684,
+    "op_leverage": 0.9334
+   },
+   "SAB": {
+    "rev_growth": -8.8965,
+    "op_growth": 13.5617,
+    "op_leverage": -1.5244
+   },
+   "highest": "VHC"
+  },
+  "files": {
+   "environment/payloads.json": "14ece80a76a2f550575b0dc19ed25f24966b0d68134402a7d33d4a24cf51649e",
+   "instruction.md": "3f19687083b14987ee4bea17caf001b74eb2ac3030aa70107f15c892cc1302c9",
+   "solution/gold.json": "fba34d495178a4487b00daec2f9f2669ac1e984b80aa13d4c58bd1e5d761fb60",
+   "solution/oracle.py": "ead9d208568b34c85bb9c224fda829fbd9e66301d86da0c90620071f0faa3bf7",
+   "task.toml": "04749e3c61f105de34e0e0ad2a7c5a00ec8c06402b0c6869d3a46ac93422722b",
+   "tests/grader.py": "1c08f2b8049f9fb91f8e7abbe52335f945a9a4a9c7653a83debf86c65bb99ead"
+  }
+ },
+ "fin-c5-margin-983": {
+  "split": "holdout",
+  "tier": "C5",
+  "solution": {
+   "BMP": {
+    "gross_now": 47.2427,
+    "gross_prev": 43.856,
+    "gross_change_pp": 3.3867,
+    "op_now": 28.6353,
+    "op_prev": 27.4142
+   },
+   "IMP": {
+    "gross_now": 42.0021,
+    "gross_prev": 39.7243,
+    "gross_change_pp": 2.2779,
+    "op_now": 19.6285,
+    "op_prev": 18.6176
+   },
+   "TRA": {
+    "gross_now": 56.261,
+    "gross_prev": 51.6194,
+    "gross_change_pp": 4.6416,
+    "op_now": 13.5057,
+    "op_prev": 12.5208
+   },
+   "best_gross_improvement": "TRA"
+  },
+  "files": {
+   "environment/payloads.json": "a713537619e7aa07bdb85d376b1134cf6f32267a169dcd337e986139647c5d1e",
+   "instruction.md": "045ca1bbdc0ab1eb18bb8af9fecde83ad7a6c50514ede9b69381565a17a539e1",
+   "solution/gold.json": "d5740601a4c30d3c3f3206a9564a93440ac30d82e4f7466b1068c19f37c7ef5c",
+   "solution/oracle.py": "4345ad4dc948d9840e556798040318976e9c92eef28a36fee5f2349dec3ba44d",
+   "task.toml": "aad1145a04cc1fc7f3e4127754f4a982a4311927632a6d863407fd990fb3f39f",
+   "tests/grader.py": "1c08f2b8049f9fb91f8e7abbe52335f945a9a4a9c7653a83debf86c65bb99ead"
+  }
+ },
+ "fin-c5-dupont-984": {
+  "split": "holdout",
+  "tier": "C5",
+  "solution": {
+   "NTP": {
+    "net_margin": 14.7073,
+    "asset_turnover": 1.0029,
+    "equity_multiplier": 1.7045,
+    "roe": 25.1417
+   },
+   "BMP": {
+    "net_margin": 22.3018,
+    "asset_turnover": 1.6748,
+    "equity_multiplier": 1.1793,
+    "roe": 44.0473
+   },
+   "driver": "turnover"
+  },
+  "files": {
+   "environment/payloads.json": "af5125ac1a1c68e03d4ea89c0723d81663c25469feee3522cba15306801526a9",
+   "instruction.md": "7d89a3024fdd9cfa785fdbb5011448f5d425c04938e05d13f59a9d1f32f7c7b6",
+   "solution/gold.json": "5070f966cc6aa00c8bc2f2de1637fb0e7468e42cc4f164d0de22cf2df32b422a",
+   "solution/oracle.py": "a024bc6a0dd9a98aa70a2493b8917410caf54145fbb8f4d15dd7d95f061abd79",
+   "task.toml": "58690e1cc9ddd3d50927876e2d46675c8f902f5580844fa10a138cdf46ed03e8",
+   "tests/grader.py": "1c08f2b8049f9fb91f8e7abbe52335f945a9a4a9c7653a83debf86c65bb99ead"
+  }
+ },
+ "fin-c5-cagr-985": {
+  "split": "holdout",
+  "tier": "C5",
+  "solution": {
+   "DGC": {
+    "revenue_cagr": 4.2083,
+    "profit_cagr": 5.7832
+   },
+   "VHC": {
+    "revenue_cagr": 7.3424,
+    "profit_cagr": 6.5845
+   },
+   "ANV": {
+    "revenue_cagr": 18.7658,
+    "profit_cagr": 66.9228
+   },
+   "highest_profit_cagr": "ANV"
+  },
+  "files": {
+   "environment/payloads.json": "2554d61206076b7ff327e130b7ee07732607f6de44ad2e56bcb46132b155b836",
+   "instruction.md": "a8547a4dc103dc9d37b50ab784ccfacde8f708aa781984364a22ec1fa96687e2",
+   "solution/gold.json": "763bb1d8cc209f412bcfabf9ff2371c7f22a90a8bb411b0c24318ab00b293c4e",
+   "solution/oracle.py": "6ae68cede18fd5fa68639e3ec78e20c6762dd1b2b370c255775ac30ecc68239f",
+   "task.toml": "6d3ea99dae6c8d42dcd42008e4294737ba7bf657c39b23b6b807a4a1832464e8",
+   "tests/grader.py": "1c08f2b8049f9fb91f8e7abbe52335f945a9a4a9c7653a83debf86c65bb99ead"
+  }
+ },
+ "fin-c5-lev-986": {
+  "split": "holdout",
+  "tier": "C5",
+  "solution": {
+   "PC1": {
+    "de_now": 1.7157,
+    "de_prev": 1.8251,
+    "de_change": -0.1093,
+    "current_ratio": 1.3908
+   },
+   "DXG": {
+    "de_now": 0.8836,
+    "de_prev": 0.7284,
+    "de_change": 0.1551,
+    "current_ratio": 2.2594
+   },
+   "NLG": {
+    "de_now": 0.7516,
+    "de_prev": 0.9843,
+    "de_change": -0.2327,
+    "current_ratio": 2.9515
+   },
+   "most_deleveraged": "NLG"
+  },
+  "files": {
+   "environment/payloads.json": "d743582ea9628921efa365bfa6b451b19d4aee1f91567e2385121d80eee39cd5",
+   "instruction.md": "ef025fc0715099b813e148e36c4e39a7885b44197999dec997f152ba3a608845",
+   "solution/gold.json": "1925f983f9ce964eb63e479713ff486717bfceda19664e16fa89ea19c60fac1e",
+   "solution/oracle.py": "37288274f3c1c97238b2c158a3b809c43f6d201bb9cdc1ebce352eaeafb8846b",
+   "task.toml": "572fe8305252f884d7940d21465d0a6494d2ea15565c71066815f5bb3d959060",
+   "tests/grader.py": "1c08f2b8049f9fb91f8e7abbe52335f945a9a4a9c7653a83debf86c65bb99ead"
+  }
+ },
+ "fin-c5-yoy-987": {
+  "split": "holdout",
+  "tier": "C5",
+  "solution": {
+   "BMP": {
+    "revenue_yoy": 0.8738,
+    "profit_yoy": 11.303
+   },
+   "ANV": {
+    "revenue_yoy": 12.2124,
+    "profit_yoy": -59.4757
+   },
+   "DBC": {
+    "revenue_yoy": 11.3281,
+    "profit_yoy": -42.9712
+   },
+   "PVD": {
+    "revenue_yoy": 24.6008,
+    "profit_yoy": -32.1289
+   },
+   "profit_outgrows_revenue": [
+    "BMP"
+   ]
+  },
+  "files": {
+   "environment/payloads.json": "952b7d1e33012a7c046f7c83baed7e85e1c41dc6a845d7128a9caabd5b28c97d",
+   "instruction.md": "e0f1d5293e821109b689cf550cc4fb561c36ef06fd4b43e48f87bb344390039c",
+   "solution/gold.json": "b9ba75cc3a21af640a365357630ef01c5c2869dd184a26b0db71d47d48b55343",
+   "solution/oracle.py": "c5b720b5cafc24b5abfb743a5c893b1132f0c08fcc9446009682fcab25fe93ee",
+   "task.toml": "881e7c04ba0fec9ac03fc94a05d3a58de5fdcb42b4b13bc04518cabad5e3e4a5",
+   "tests/grader.py": "1c08f2b8049f9fb91f8e7abbe52335f945a9a4a9c7653a83debf86c65bb99ead"
+  }
+ },
+ "fin-c5-sector-988": {
+  "split": "holdout",
+  "tier": "C5",
+  "solution": {
+   "group_margin_now": 3.131,
+   "group_margin_prev": 3.8421,
+   "change_pp": -0.7111,
+   "group_profit_ttm_bn": 19126.1468,
+   "largest_change": "PLX"
+  },
+  "files": {
+   "environment/payloads.json": "f7ebe8bd20d72df457070ddcaa4c59879abca65c1d6f1ab854acec212255d0a9",
+   "instruction.md": "ccbac5f7450f6d7603650dc8c68d806e7da5c91b823fd137ff9643681bc5f1b7",
+   "solution/gold.json": "9ce78e9c71c9082e49ed8bc35f4a796ff85232efe85229a067418bd40f52d02e",
+   "solution/oracle.py": "d3c82288cd1602708542eb32af5b4b5c201ed3e97c87d964b2d54b871157d3f8",
+   "task.toml": "4a0c2496293766e1e79dfd7fcbe1606fb439d8d38f8649998de152caa7e1a21a",
+   "tests/grader.py": "1c08f2b8049f9fb91f8e7abbe52335f945a9a4a9c7653a83debf86c65bb99ead"
+  }
+ },
+ "fin-m6-conv-991": {
+  "split": "holdout",
+  "tier": "M6a",
+  "solution": {
+   "pass": [
+    "ANV",
+    "BMP",
+    "DPM"
+   ],
+   "convention": "ttm",
+   "roe_min": 15,
+   "debt_max": 50,
+   "values": {
+    "BMP": {
+     "roe": 43.1816,
+     "debt_ratio": 15.0013
+    },
+    "POW": {
+     "roe": 15.41,
+     "debt_ratio": 58.005
+    },
+    "DPM": {
+     "roe": 15.3015,
+     "debt_ratio": 37.5806
+    },
+    "ANV": {
+     "roe": 24.1461,
+     "debt_ratio": 40.0488
+    }
+   }
+  },
+  "files": {
+   "environment/payloads.json": "ec0448568856948f1c951ae31f8b6d3960bc03a071818e3d542909e80a79bfb8",
+   "environment/turns.json": "f4f5de75c55005f437dbf660d050a051b17c4d82953c57eafcc75286038c377c",
+   "instruction.md": "1891f4a26c5451641c6d99385fed92730ef2d363b1bf6b02aa850e7f82f9c662",
+   "solution/gold.json": "b7c8395e1864d98f54987711c40a978cd4671765a4779e89426951058bad1964",
+   "solution/oracle.py": "17da4e28bd6f319d50a353afc96255ee5cc49e9807616e0a13cbcaf4432cb04c",
+   "task.toml": "9bdf16c0c527f644c44f1cfc84743fa84ef5769a47c8d2bf47473ef9ca48b453",
+   "tests/grader.py": "21fb599a710c5f936cdba59384c33bedbfcc279f76a0a7c2a6d371772cc6a608"
+  }
+ },
+ "fin-m6-conv-992": {
+  "split": "holdout",
+  "tier": "M6a",
+  "solution": {
+   "pass": [
+    "DBC",
+    "DGC"
+   ],
+   "convention": "fy",
+   "roe_min": 15,
+   "debt_max": 55,
+   "values": {
+    "DBC": {
+     "roe": 18.6734,
+     "debt_ratio": 51.9506
+    },
+    "DGC": {
+     "roe": 19.455,
+     "debt_ratio": 15.7218
+    },
+    "GMD": {
+     "roe": 11.7683,
+     "debt_ratio": 26.5938
+    },
+    "HPG": {
+     "roe": 11.7765,
+     "debt_ratio": 49.2646
+    }
+   }
+  },
+  "files": {
+   "environment/payloads.json": "9b462a44966b9817107760c0ec0b089c554ff437952f3f256f9001a019744fe2",
+   "environment/turns.json": "14bdb838239cbbdf715d9a92f122e58f04904f7e31790059cd786bf8f4414484",
+   "instruction.md": "d6cb1738db3483f2309a522abdde07fa923d4da562207d4498ee7c8415222d60",
+   "solution/gold.json": "f353ea9d842720981f2a2652328d30fb40af7545e8b8d8bac3a521541ad87c03",
+   "solution/oracle.py": "101e41b71bd06165ea6523dead9f27e8279351c391034f0e17af427952eaab98",
+   "task.toml": "9e0af92328df985e491637d0e2fea597fdf713d7fef194464b1d3ee2fa35a4be",
+   "tests/grader.py": "21fb599a710c5f936cdba59384c33bedbfcc279f76a0a7c2a6d371772cc6a608"
+  }
+ },
+ "fin-m6-upd-993": {
+  "split": "holdout",
+  "tier": "M6b",
+  "solution": {
+   "pass": [
+    "DHG",
+    "SAB",
+    "VGS"
+   ],
+   "convention": "fy",
+   "roe_min": 12,
+   "debt_max": 65,
+   "values": {
+    "VGS": {
+     "roe": 16.7485,
+     "debt_ratio": 63.2161
+    },
+    "PC1": {
+     "roe": 11.7305,
+     "debt_ratio": 63.1772
+    },
+    "SAB": {
+     "roe": 19.2329,
+     "debt_ratio": 32.3661
+    },
+    "DHG": {
+     "roe": 20.6019,
+     "debt_ratio": 31.7034
+    }
+   }
+  },
+  "files": {
+   "environment/payloads.json": "4c5704fd2d33464f3ebb3fd15fa95dfa9c8f174e132d77283bac8b517eef1b35",
+   "environment/turns.json": "f04a854bf821cd59bcd55638459bd9ec495d643832067673b75d114f9c3ed5fd",
+   "instruction.md": "d14c3b253f27ba314a1f54b976e246249a6b60da5757959ccc52b30490359673",
+   "solution/gold.json": "244f7cf703d7ef4c7ca8b9f8852cd4c12eeb3c5ebb2389c24628f5d1b5b5e18c",
+   "solution/oracle.py": "6ce9ba79ae259c2e370d61a0d1adbf9acccfc972de5e9df6e1f211ecf520d5f8",
+   "task.toml": "9a8fb2d94a4d5d3de322a26731974358eebcc1f03afa9aedbd463300d1687948",
+   "tests/grader.py": "21fb599a710c5f936cdba59384c33bedbfcc279f76a0a7c2a6d371772cc6a608"
+  }
+ },
+ "fin-m6-rev-994": {
+  "split": "holdout",
+  "tier": "M6c",
+  "solution": {
+   "pass": [
+    "FRT",
+    "MSN",
+    "REE"
+   ],
+   "convention": "ttm",
+   "roe_min": 10,
+   "debt_max": null,
+   "values": {
+    "VJC": {
+     "roe": 8.6684,
+     "debt_ratio": 82.2946
+    },
+    "MSN": {
+     "roe": 15.6382,
+     "debt_ratio": 65.3274
+    },
+    "FRT": {
+     "roe": 24.0526,
+     "debt_ratio": 78.1214
+    },
+    "REE": {
+     "roe": 10.7252,
+     "debt_ratio": 37.6799
+    }
+   }
+  },
+  "files": {
+   "environment/payloads.json": "8692ba56a2c5d7db1d29ee2debdc1f0df1cfc2f47a6612d954acf03df887a239",
+   "environment/turns.json": "297223f9d2ce904c8475a147b5f978f6bc054641f397f4430f983cfbb3410408",
+   "instruction.md": "83862217c40c0bcafd201814a82e2d49578844c4b242ef278b946656c535f88b",
+   "solution/gold.json": "3388509705bd0f6adc407b9ed187a7fef15a4d1923ef06f9c76ead0a5c54c4f5",
+   "solution/oracle.py": "4f74452c0a566932b4b408ede3608bff50c822df9230f3b503e019987ff29906",
+   "task.toml": "00e48123cb770cbfaa31d76bbb9b0816c14fd1aa34f6b20b2b82b9b80d47d524",
+   "tests/grader.py": "21fb599a710c5f936cdba59384c33bedbfcc279f76a0a7c2a6d371772cc6a608"
+  }
+ }
+}

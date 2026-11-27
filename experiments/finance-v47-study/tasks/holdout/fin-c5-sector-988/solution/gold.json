@@ -8,7 +8,7 @@
     "group_profit_ttm_bn": 19126.1468,
     "largest_change": "PLX"
   },
-  "as_of": "2026-11-24T15:51:30.168761+07:00",
+  "as_of": "2026-11-25T15:51:30.168761+07:00",
   "split": "holdout",
   "expects": [
     {
@@ -66,68 +66,68 @@
   "contract_version": 2,
   "stratum": "compute",
   "tier": "C5",
-  "notes": "Fundamental compute stratum (amendment 2026-11-24). Gold from tools/finance_stratum_lib.py on the task payloads.",
+  "notes": "Fundamental compute stratum (amendment 2026-11-25). Gold from tools/finance_stratum_lib.py on the task payloads.",
   "provenance_contract": [
     {
       "tool": "financial_statements",
       "source": "vietstock",
-      "as_of": "2026-11-24T15:51:30.168761+07:00",
+      "as_of": "2026-11-25T15:51:30.168761+07:00",
       "matched_entry_id": "fs:PVD:q:KQKD",
-      "response_sha256": "e142b43dfd8f1f515f19df0a1bbe2539ab6b0c32e37a548fb88d35a665f23709"
+      "response_sha256": "b4f87cef13f08383f92b6249513f03431216044356a8d550ff6d5a7ef34f9bfc"
     },
     {
       "tool": "financial_statements",
       "source": "vietstock",
-      "as_of": "2026-11-24T15:51:30.168761+07:00",
+      "as_of": "2026-11-25T15:51:30.168761+07:00",
       "matched_entry_id": "fs:PVS:q:KQKD",
-      "response_sha256": "46ad4f0f2484edbabf8d1c2f4060d1003af01efd98bd40febd1f753474fd1104"
+      "response_sha256": "eb20dcd222910ba123189ecb9749709f81484ca816f5ecf9084387738bbecd3b"
     },
     {
       "tool": "financial_statements",
       "source": "vietstock",
-      "as_of": "2026-11-24T15:51:30.168761+07:00",
+      "as_of": "2026-11-25T15:51:30.168761+07:00",
       "matched_entry_id": "fs:PLX:q:KQKD",
-      "response_sha256": "48313a74bf6d3dee9e83cd5131cf5b7c52ce45a4de54fa401673af5a63fc7d55"
+      "response_sha256": "c0b67a0c1335c922d3fe72e9880afc84806c969829046a5b94872f1b02d2199c"
     },
     {
       "tool": "financial_statements",
       "source": "vietstock",
-      "as_of": "2026-11-24T15:51:30.168761+07:00",
+      "as_of": "2026-11-25T15:51:30.168761+07:00",
       "matched_entry_id": "fs:GAS:q:KQKD",
-      "response_sha256": "c391dbf2c3de232a5a2e00aad3d6c59b9d3ebaaf7607921d8fdcedc431f6530f"
+      "response_sha256": "be82d0cfacfac3733af3aee88ca90d638188c62611dff0256e170960299875b9"
     }
   ],
   "provenance_catalog": [
     {
       "tool": "financial_statements",
       "source": "vietstock",
-      "as_of": "2026-11-24T15:51:30.168761+07:00",
+      "as_of": "2026-11-25T15:51:30.168761+07:00",
       "matched_entry_id": "fs:PVD:q:KQKD",
-      "response_sha256": "e142b43dfd8f1f515f19df0a1bbe2539ab6b0c32e37a548fb88d35a665f23709"
+      "response_sha256": "b4f87cef13f08383f92b6249513f03431216044356a8d550ff6d5a7ef34f9bfc"
     },
     {
       "tool": "financial_statements",
       "source": "vietstock",
-      "as_of": "2026-11-24T15:51:30.168761+07:00",
+      "as_of": "2026-11-25T15:51:30.168761+07:00",
       "matched_entry_id": "fs:PVS:q:KQKD",
-      "response_sha256": "46ad4f0f2484edbabf8d1c2f4060d1003af01efd98bd40febd1f753474fd1104"
+      "response_sha256": "eb20dcd222910ba123189ecb9749709f81484ca816f5ecf9084387738bbecd3b"
     },
     {
       "tool": "financial_statements",
       "source": "vietstock",
-      "as_of": "2026-11-24T15:51:30.168761+07:00",
+      "as_of": "2026-11-25T15:51:30.168761+07:00",
       "matched_entry_id": "fs:PLX:q:KQKD",
-      "response_sha256": "48313a74bf6d3dee9e83cd5131cf5b7c52ce45a4de54fa401673af5a63fc7d55"
+      "response_sha256": "c0b67a0c1335c922d3fe72e9880afc84806c969829046a5b94872f1b02d2199c"
     },
     {
       "tool": "financial_statements",
       "source": "vietstock",
-      "as_of": "2026-11-24T15:51:30.168761+07:00",
+      "as_of": "2026-11-25T15:51:30.168761+07:00",
       "matched_entry_id": "fs:GAS:q:KQKD",
-      "response_sha256": "c391dbf2c3de232a5a2e00aad3d6c59b9d3ebaaf7607921d8fdcedc431f6530f"
+      "response_sha256": "be82d0cfacfac3733af3aee88ca90d638188c62611dff0256e170960299875b9"
     }
   ],
-  "payload_sha256": "19ea42a680881161466a94f4678c73df73cef2ddd3a5b931c63fba4be4caeff4",
+  "payload_sha256": "f7ebe8bd20d72df457070ddcaa4c59879abca65c1d6f1ab854acec212255d0a9",
   "required_payload_keys": [
     "fs:GAS:q:KQKD",
     "fs:PLX:q:KQKD",

@@ -13,7 +13,7 @@ STUDY = Path(__file__).resolve().parents[2]
 
 
 def task_path(name):
-    """S1/S2-buy were retired by amendment 2026-11-24 (f); their grader logic is still tested from the archive."""
+    """S1/S2-buy were retired by amendment 2026-11-25 (f); their grader logic is still tested from the archive."""
     for root in ('tasks/main', 'tasks-retired/main'):
         if (STUDY / root / name).is_dir():
             return STUDY / root / name
@@ -69,7 +69,7 @@ def response(task):
     if spec['tier'] == 'S3':
         rows = next(iter(payload['tools'].values()))['envelope']['data']['closes']
         answer['values']['date'] = rows[-1]['t']
-    # The public example no longer reveals which field is null (2026-11-24 fix): the reference answer takes
+    # The public example no longer reveals which field is null (2026-11-25 fix): the reference answer takes
     # its null advice fields from the gold expectations, never from the instruction.
     for expected in gold['expects']:
         if expected['type'] == 'null':
@@ -204,7 +204,7 @@ def test_nonnull_structured_advice_alias(s1, tmp_path):
 
 
 def test_public_instruction_does_not_reveal_the_expected_null():
-    """2026-11-24: S1/S2 instructions list every answer field as nullable and the example never shows null."""
+    """2026-11-25: S1/S2 instructions list every answer field as nullable and the example never shows null."""
     import re
     for task in sorted(list((STUDY / 'tasks').glob('*/fin-s[12]-*')) + list((STUDY / 'tasks-retired').glob('*/fin-s[12]-*'))):
         text = (task / 'instruction.md').read_text()

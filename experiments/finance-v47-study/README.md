@@ -1,6 +1,6 @@
 # Finance v4.7 study
 
-Kết quả cuối (300 task, judge Claude Haiku 5.5): [`final-20261126/Results.md`](final-20261126/Results.md). Config chạy: `tools/bench_config_v47.json`. Thiết kế và các quyết định: `plans/2026-11-15-v47-study-design.md`.
+Kết quả cuối (300 task): [`results/final-300/Results.md`](results/final-300/Results.md). Config chạy: `tools/bench_config_v47.json`. Thiết kế và các quyết định: `plans/2026-11-15-v47-study-design.md`.
 
 - Runtime OpenTrading: `experiments/opentrading-runtime/`, commit ở `experiments/opentrading-runtime.SHA` (dependency cài tại chỗ, không symlink).
 - Prompt OT: `tools/prompt_variants/baseline/` là bản chép nguyên văn `prompts/` của runtime; hash nằm trong `baseline.SHA256SUMS`.
@@ -48,26 +48,10 @@ python3.12 experiments/finance-v47-study/tools/verify_offline.py \
 `tools/trusted_toolchain.py`, nên manifest chỉ ghi nhận đúng bytes sẽ thực thi.
 `BENCH_BUN_BIN` chỉ đổi vị trí, không đổi hash tin cậy.
 
-## Kiểm lịch sử v4.6u (job riêng)
-
-```sh
-cd experiments/finance-v46-update-study/experiments/opentrading-runtime
-$OLDPWD/.toolchains/bun/bin/bun install --frozen-lockfile   # dùng Bun đã ghim
-cd -
-BENCH_BUN_BIN=$PWD/.toolchains/bun/bin/bun python3.12 -m pytest -q \
-  experiments/finance-v46-update-study/tools/tests/test_v45_calculate.py \
-  experiments/finance-v46-update-study/tools/tests/test_v45_math_audit.py
-```
-
-Test lịch sử whole-study (`tools/tests/legacy`) cần snapshot v4.2/v4.3/v4.4
-không phân phối trong repo; không skip/xfail — chạy riêng và báo thiếu
-prerequisite trung thực (`tools/tests/legacy/README.md`).
-
 ## CI offline
 
-`.github/workflows/offline.yml` chạy 4 job không secret: active suite + verifier,
-legacy v4.6u, bootstrap toolchain + verify receipt, và build/smoke shell sandbox
-no-network. Không job nào gửi gold holdout tới provider.
+`.github/workflows/offline.yml` chạy 3 job không secret: active suite + verifier,
+bootstrap toolchain + verify receipt, và build/smoke shell sandbox no-network. Không job nào gửi gold holdout tới provider.
 
 ## Cổng chạy và ngân sách
 

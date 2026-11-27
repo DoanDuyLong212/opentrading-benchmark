@@ -1,0 +1,112 @@
+{
+  "task_id": "fin-c3-vol-433",
+  "scoring": "value",
+  "solution": {
+    "GAS": 39.8064,
+    "PLX": 35.4853,
+    "POW": 18.3838,
+    "highest": "GAS"
+  },
+  "as_of": "2026-11-11T09:41:32.145602+07:00",
+  "split": "main",
+  "expects": [
+    {
+      "type": "value",
+      "path": "values.GAS",
+      "gold": 39.8064,
+      "tol": {
+        "abs": 0.1
+      }
+    },
+    {
+      "type": "value",
+      "path": "values.PLX",
+      "gold": 35.4853,
+      "tol": {
+        "abs": 0.1
+      }
+    },
+    {
+      "type": "value",
+      "path": "values.POW",
+      "gold": 18.3838,
+      "tol": {
+        "abs": 0.1
+      }
+    },
+    {
+      "type": "tokens",
+      "path": "values.highest",
+      "accept": [
+        "GAS"
+      ],
+      "reject": [
+        "PLX",
+        "POW"
+      ]
+    },
+    {
+      "type": "str",
+      "path": "source",
+      "accept": [
+        "vn_quote_history"
+      ]
+    }
+  ],
+  "contract_version": 2,
+  "stratum": "compute",
+  "tier": "C3",
+  "notes": "Compute stratum (amendment 2026-11-11 d). Gold computed with Decimal from payloads; uniform tolerance.",
+  "provenance_contract": [
+    {
+      "tool": "vn_quote_history",
+      "source": "vnstock",
+      "as_of": "2026-11-11T09:41:32.145602+07:00",
+      "matched_entry_id": "hist:GAS",
+      "response_sha256": "d6d16f2b6ad801252f476bde5ccfc66c948f4aa048d411a4ef73b34ebf125d7c"
+    },
+    {
+      "tool": "vn_quote_history",
+      "source": "vnstock",
+      "as_of": "2026-11-11T09:41:32.145602+07:00",
+      "matched_entry_id": "hist:PLX",
+      "response_sha256": "5a7fa3661a96aa11c2d5a20bcdff0733b85be413b05914d6212d95cbbcd0efb2"
+    },
+    {
+      "tool": "vn_quote_history",
+      "source": "vnstock",
+      "as_of": "2026-11-11T09:41:32.145602+07:00",
+      "matched_entry_id": "hist:POW",
+      "response_sha256": "5012098ec8d22ef7aacfd5ce7fb7126fa4056f9a449ce9eb0639a3190b6b9041"
+    }
+  ],
+  "provenance_catalog": [
+    {
+      "tool": "vn_quote_history",
+      "source": "vnstock",
+      "as_of": "2026-11-11T09:41:32.145602+07:00",
+      "matched_entry_id": "hist:GAS",
+      "response_sha256": "d6d16f2b6ad801252f476bde5ccfc66c948f4aa048d411a4ef73b34ebf125d7c"
+    },
+    {
+      "tool": "vn_quote_history",
+      "source": "vnstock",
+      "as_of": "2026-11-11T09:41:32.145602+07:00",
+      "matched_entry_id": "hist:PLX",
+      "response_sha256": "5a7fa3661a96aa11c2d5a20bcdff0733b85be413b05914d6212d95cbbcd0efb2"
+    },
+    {
+      "tool": "vn_quote_history",
+      "source": "vnstock",
+      "as_of": "2026-11-11T09:41:32.145602+07:00",
+      "matched_entry_id": "hist:POW",
+      "response_sha256": "5012098ec8d22ef7aacfd5ce7fb7126fa4056f9a449ce9eb0639a3190b6b9041"
+    }
+  ],
+  "payload_sha256": "5f47d5876b3b062864442561e1691e27fb5bb42b9504fc1fe46b63f8ea6aa102",
+  "required_payload_keys": [
+    "hist:GAS",
+    "hist:PLX",
+    "hist:POW"
+  ]
+}

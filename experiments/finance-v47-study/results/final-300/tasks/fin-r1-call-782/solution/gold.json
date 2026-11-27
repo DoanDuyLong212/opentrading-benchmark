@@ -1,0 +1,78 @@
+{
+  "task_id": "fin-r1-call-782",
+  "scoring": "outcome",
+  "solution": {
+    "symbol": "DGC",
+    "call": "BÁN",
+    "threshold_pct": 2,
+    "entry": 33.3,
+    "end_close": 30.55,
+    "entry_date": "2026-10-30",
+    "end_date": "2026-11-23",
+    "ret_pct": -8.2583,
+    "vnindex_ret": -2.5539,
+    "post_sha256": "fdfa27527f56099a0534909f9abd1a7d69cb5b616b857aacd8755654d522f06c"
+  },
+  "as_of": "2026-11-25T18:51:22.395329+07:00",
+  "split": "main",
+  "expects": [
+    {
+      "type": "tokens",
+      "path": "values.call",
+      "accept": [
+        "BÁN"
+      ],
+      "reject": [
+        "MUA",
+        "GIỮ"
+      ]
+    }
+  ],
+  "contract_version": 2,
+  "stratum": "investor",
+  "tier": "R",
+  "notes": "Recommendation stratum (amendment 2026-11-25 f): primary = pre-registered ±2 % rule on the recorded close of END (tools/recommend_specs_20261125.py).",
+  "provenance_contract": [
+    {
+      "tool": "vn_quote_history",
+      "source": "vnstock",
+      "as_of": "2026-11-25T18:51:22.395329+07:00",
+      "matched_entry_id": "hist:DGC",
+      "response_sha256": "660c5f168e00d21e7e1b457fd81157b8b1242480fd35f210ed2e76f0297b1046"
+    }
+  ],
+  "provenance_catalog": [
+    {
+      "tool": "financial_statements",
+      "source": "vietstock",
+      "as_of": "2026-11-25T15:51:30.168761+07:00",
+      "matched_entry_id": "fs:DGC:q:CDKT",
+      "response_sha256": "bff531405347d0af38fb5ce281eecd9015d0bd97a73a27c129ebb27149f49212"
+    },
+    {
+      "tool": "financial_statements",
+      "source": "vietstock",
+      "as_of": "2026-11-25T15:51:30.168761+07:00",
+      "matched_entry_id": "fs:DGC:q:KQKD",
+      "response_sha256": "0f6f689a464cb3ee54b5866626c830bc8304c4a6aac38a3cb3721122f66305d4"
+    },
+    {
+      "tool": "vn_quote_history",
+      "source": "vnstock",
+      "as_of": "2026-11-25T18:51:22.395329+07:00",
+      "matched_entry_id": "hist:DGC",
+      "response_sha256": "660c5f168e00d21e7e1b457fd81157b8b1242480fd35f210ed2e76f0297b1046"
+    },
+    {
+      "tool": "vn_index_ohlcv",
+      "source": "vnstock",
+      "as_of": "2026-11-25T18:51:22.395329+07:00",
+      "matched_entry_id": "idx:VNINDEX",
+      "response_sha256": "9e3728dbbf0ef9b88bb5e5887181997e807203cb16d6fd17aa857ba86a0bfd3f"
+    }
+  ],
+  "payload_sha256": "b01fb8ab258953b08453bb3ed36b1b6dc0b2a135ce6d78b4714d3b6028cfb5f6",
+  "required_payload_keys": [
+    "hist:DGC"
+  ]
+}

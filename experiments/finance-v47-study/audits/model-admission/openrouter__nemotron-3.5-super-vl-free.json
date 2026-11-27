@@ -1,6 +1,6 @@
 {
  "schema": "openrouter-free-route-admission",
- "created": "2026-11-24",
+ "created": "2026-11-25",
  "route": "openrouter_free",
  "model_requested": "nvidia/nemotron-3.5-super-vl:free",
  "returned_model": "nvidia/nemotron-3.5-super-vl:free",
@@ -11,7 +11,7 @@
  "user_budget": "OpenRouter free_model_daily_requests limit 1000/ngày; dev smoke only",
  "probes": "3/3 PASS (identity, vn_follow, tool_wire)",
  "user_authorized": true,
- "authorization_note": "Người dùng 24/11: dùng model free nhẹ hơn Nemotron Ultra để test, tránh phí",
+ "authorization_note": "Người dùng 25/11: dùng model free nhẹ hơn Nemotron Ultra để test, tránh phí",
  "external_model_calls": 3,
  "financial_inference": false,
  "probes_detail": {

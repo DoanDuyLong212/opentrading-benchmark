@@ -16,7 +16,7 @@ sys.path.insert(0, os.path.join(ROOT, "tools"))
 from mcp_snapshot_server import build_tool_defs, select_envelope  # noqa: E402
 
 REPO_TASK = os.path.join(ROOT, "tasks", "main", "fin-l1-quote-vn-101", "environment", "payloads.json")
-if not os.path.exists(REPO_TASK):  # retired by PRUNE2 (2026-11-24); same recorded payload
+if not os.path.exists(REPO_TASK):  # retired by PRUNE2 (2026-11-25); same recorded payload
     REPO_TASK = os.path.join(ROOT, "tasks-retired", "main", "fin-l1-quote-vn-101", "environment", "payloads.json")
 
 

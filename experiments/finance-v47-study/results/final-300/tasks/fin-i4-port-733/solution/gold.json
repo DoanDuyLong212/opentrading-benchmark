@@ -1,0 +1,753 @@
+{
+  "task_id": "fin-i4-port-733",
+  "scoring": "outcome",
+  "solution": {
+    "type": "I4",
+    "candidates": [
+      "ACB",
+      "VPB",
+      "DXG",
+      "HSG",
+      "PVS",
+      "DCM",
+      "FRT",
+      "VJC"
+    ],
+    "allowed": null,
+    "entry_date": "2026-10-30",
+    "end_date": "2026-11-23",
+    "passing_sets": [
+      [
+        "ACB",
+        "DXG",
+        "HSG",
+        "VPB"
+      ],
+      [
+        "ACB",
+        "DXG",
+        "FRT",
+        "VPB"
+      ],
+      [
+        "ACB",
+        "DXG",
+        "VJC",
+        "VPB"
+      ],
+      [
+        "ACB",
+        "FRT",
+        "VJC",
+        "VPB"
+      ],
+      [
+        "ACB",
+        "DCM",
+        "DXG",
+        "HSG"
+      ],
+      [
+        "ACB",
+        "DXG",
+        "FRT",
+        "HSG"
+      ],
+      [
+        "ACB",
+        "DXG",
+        "HSG",
+        "VJC"
+      ],
+      [
+        "ACB",
+        "DXG",
+        "FRT",
+        "PVS"
+      ],
+      [
+        "ACB",
+        "DXG",
+        "PVS",
+        "VJC"
+      ],
+      [
+        "ACB",
+        "DCM",
+        "DXG",
+        "FRT"
+      ],
+      [
+        "ACB",
+        "DCM",
+        "DXG",
+        "VJC"
+      ],
+      [
+        "ACB",
+        "DXG",
+        "FRT",
+        "VJC"
+      ],
+      [
+        "ACB",
+        "FRT",
+        "HSG",
+        "VJC"
+      ],
+      [
+        "ACB",
+        "FRT",
+        "PVS",
+        "VJC"
+      ],
+      [
+        "ACB",
+        "DCM",
+        "FRT",
+        "VJC"
+      ],
+      [
+        "DXG",
+        "FRT",
+        "HSG",
+        "VPB"
+      ],
+      [
+        "DXG",
+        "HSG",
+        "VJC",
+        "VPB"
+      ],
+      [
+        "DXG",
+        "FRT",
+        "PVS",
+        "VPB"
+      ],
+      [
+        "DXG",
+        "PVS",
+        "VJC",
+        "VPB"
+      ],
+      [
+        "DCM",
+        "DXG",
+        "FRT",
+        "VPB"
+      ],
+      [
+        "DCM",
+        "DXG",
+        "VJC",
+        "VPB"
+      ],
+      [
+        "DXG",
+        "FRT",
+        "VJC",
+        "VPB"
+      ],
+      [
+        "FRT",
+        "HSG",
+        "VJC",
+        "VPB"
+      ],
+      [
+        "DCM",
+        "FRT",
+        "VJC",
+        "VPB"
+      ],
+      [
+        "DXG",
+        "FRT",
+        "HSG",
+        "PVS"
+      ],
+      [
+        "DXG",
+        "HSG",
+        "PVS",
+        "VJC"
+      ],
+      [
+        "DCM",
+        "DXG",
+        "FRT",
+        "HSG"
+      ],
+      [
+        "DCM",
+        "DXG",
+        "HSG",
+        "VJC"
+      ],
+      [
+        "DXG",
+        "FRT",
+        "HSG",
+        "VJC"
+      ],
+      [
+        "DCM",
+        "DXG",
+        "FRT",
+        "PVS"
+      ],
+      [
+        "DCM",
+        "DXG",
+        "PVS",
+        "VJC"
+      ],
+      [
+        "DXG",
+        "FRT",
+        "PVS",
+        "VJC"
+      ],
+      [
+        "DCM",
+        "DXG",
+        "FRT",
+        "VJC"
+      ],
+      [
+        "FRT",
+        "HSG",
+        "PVS",
+        "VJC"
+      ],
+      [
+        "DCM",
+        "FRT",
+        "HSG",
+        "VJC"
+      ]
+    ],
+    "answer_size": 4,
+    "chance_base_rate": 0.5,
+    "outcomes": {
+      "ACB": {
+        "entry": 21.0,
+        "end_close": 19.75,
+        "peak_close": 20.7,
+        "low_close": 19.6,
+        "ret": -5.9524,
+        "peak": -1.4286,
+        "low": -6.6667
+      },
+      "VPB": {
+        "entry": 22.95,
+        "end_close": 20.45,
+        "peak_close": 22.55,
+        "low_close": 20.45,
+        "ret": -10.8932,
+        "peak": -1.7429,
+        "low": -10.8932
+      },
+      "DXG": {
+        "entry": 10.1,
+        "end_close": 10.85,
+        "peak_close": 11.4,
+        "low_close": 9.86,
+        "ret": 7.4257,
+        "peak": 12.8713,
+        "low": -2.3762
+      },
+      "HSG": {
+        "entry": 10.85,
+        "end_close": 10.15,
+        "peak_close": 11.1,
+        "low_close": 10.15,
+        "ret": -6.4516,
+        "peak": 2.3041,
+        "low": -6.4516
+      },
+      "PVS": {
+        "entry": 30.5,
+        "end_close": 26.9,
+        "peak_close": 30.3,
+        "low_close": 26.6,
+        "ret": -11.8033,
+        "peak": -0.6557,
+        "low": -12.7869
+      },
+      "DCM": {
+        "entry": 33.3,
+        "end_close": 30.55,
+        "peak_close": 33.0,
+        "low_close": 29.9,
+        "ret": -8.2583,
+        "peak": -0.9009,
+        "low": -10.2102
+      },
+      "FRT": {
+        "entry": 148.7,
+        "end_close": 148.0,
+        "peak_close": 149.4,
+        "low_close": 138.3,
+        "ret": -0.4707,
+        "peak": 0.4707,
+        "low": -6.9939
+      },
+      "VJC": {
+        "entry": 131.6,
+        "end_close": 137.3,
+        "peak_close": 139.4,
+        "low_close": 132.2,
+        "ret": 4.3313,
+        "peak": 5.9271,
+        "low": 0.4559
+      }
+    },
+    "vnindex_ret": -2.5539,
+    "post_sha256": "fdfa27527f56099a0534909f9abd1a7d69cb5b616b857aacd8755654d522f06c"
+  },
+  "as_of": "2026-11-25T18:51:22.395329+07:00",
+  "split": "main",
+  "expects": [
+    {
+      "type": "set_in",
+      "path": "values.portfolio",
+      "size": 4,
+      "accept_sets": [
+        [
+          "ACB",
+          "DXG",
+          "HSG",
+          "VPB"
+        ],
+        [
+          "ACB",
+          "DXG",
+          "FRT",
+          "VPB"
+        ],
+        [
+          "ACB",
+          "DXG",
+          "VJC",
+          "VPB"
+        ],
+        [
+          "ACB",
+          "FRT",
+          "VJC",
+          "VPB"
+        ],
+        [
+          "ACB",
+          "DCM",
+          "DXG",
+          "HSG"
+        ],
+        [
+          "ACB",
+          "DXG",
+          "FRT",
+          "HSG"
+        ],
+        [
+          "ACB",
+          "DXG",
+          "HSG",
+          "VJC"
+        ],
+        [
+          "ACB",
+          "DXG",
+          "FRT",
+          "PVS"
+        ],
+        [
+          "ACB",
+          "DXG",
+          "PVS",
+          "VJC"
+        ],
+        [
+          "ACB",
+          "DCM",
+          "DXG",
+          "FRT"
+        ],
+        [
+          "ACB",
+          "DCM",
+          "DXG",
+          "VJC"
+        ],
+        [
+          "ACB",
+          "DXG",
+          "FRT",
+          "VJC"
+        ],
+        [
+          "ACB",
+          "FRT",
+          "HSG",
+          "VJC"
+        ],
+        [
+          "ACB",
+          "FRT",
+          "PVS",
+          "VJC"
+        ],
+        [
+          "ACB",
+          "DCM",
+          "FRT",
+          "VJC"
+        ],
+        [
+          "DXG",
+          "FRT",
+          "HSG",
+          "VPB"
+        ],
+        [
+          "DXG",
+          "HSG",
+          "VJC",
+          "VPB"
+        ],
+        [
+          "DXG",
+          "FRT",
+          "PVS",
+          "VPB"
+        ],
+        [
+          "DXG",
+          "PVS",
+          "VJC",
+          "VPB"
+        ],
+        [
+          "DCM",
+          "DXG",
+          "FRT",
+          "VPB"
+        ],
+        [
+          "DCM",
+          "DXG",
+          "VJC",
+          "VPB"
+        ],
+        [
+          "DXG",
+          "FRT",
+          "VJC",
+          "VPB"
+        ],
+        [
+          "FRT",
+          "HSG",
+          "VJC",
+          "VPB"
+        ],
+        [
+          "DCM",
+          "FRT",
+          "VJC",
+          "VPB"
+        ],
+        [
+          "DXG",
+          "FRT",
+          "HSG",
+          "PVS"
+        ],
+        [
+          "DXG",
+          "HSG",
+          "PVS",
+          "VJC"
+        ],
+        [
+          "DCM",
+          "DXG",
+          "FRT",
+          "HSG"
+        ],
+        [
+          "DCM",
+          "DXG",
+          "HSG",
+          "VJC"
+        ],
+        [
+          "DXG",
+          "FRT",
+          "HSG",
+          "VJC"
+        ],
+        [
+          "DCM",
+          "DXG",
+          "FRT",
+          "PVS"
+        ],
+        [
+          "DCM",
+          "DXG",
+          "PVS",
+          "VJC"
+        ],
+        [
+          "DXG",
+          "FRT",
+          "PVS",
+          "VJC"
+        ],
+        [
+          "DCM",
+          "DXG",
+          "FRT",
+          "VJC"
+        ],
+        [
+          "FRT",
+          "HSG",
+          "PVS",
+          "VJC"
+        ],
+        [
+          "DCM",
+          "FRT",
+          "HSG",
+          "VJC"
+        ]
+      ]
+    }
+  ],
+  "contract_version": 2,
+  "stratum": "investor",
+  "tier": "I4",
+  "notes": "Investor stratum (amendment 2026-11-25 d): primary = pre-registered outcome rule on recorded post-snapshot closes (tools/investor_specs_20261125.py).",
+  "provenance_contract": [
+    {
+      "tool": "vn_quote_history",
+      "source": "vnstock",
+      "as_of": "2026-11-25T18:51:22.395329+07:00",
+      "matched_entry_id": "hist:ACB",
+      "response_sha256": "d6f99a71da5d81ded4ca358bb7b069c0c38dd6144404b18a7d141bed0218f93a"
+    },
+    {
+      "tool": "vn_quote_history",
+      "source": "vnstock",
+      "as_of": "2026-11-25T18:51:22.395329+07:00",
+      "matched_entry_id": "hist:VPB",
+      "response_sha256": "1d2d3f238cfbbb56206dd2413d836213d5b280a01334d40b7102059c142f4086"
+    },
+    {
+      "tool": "vn_quote_history",
+      "source": "vnstock",
+      "as_of": "2026-11-25T18:51:22.395329+07:00",
+      "matched_entry_id": "hist:DXG",
+      "response_sha256": "2bf21a975859c087f5a744e77b85d1ddf0b1cf64ebba9fa5140da984616bb96b"
+    },
+    {
+      "tool": "vn_quote_history",
+      "source": "vnstock",
+      "as_of": "2026-11-25T18:51:22.395329+07:00",
+      "matched_entry_id": "hist:HSG",
+      "response_sha256": "3a6b2757982d112499d941cfaa6853a150d5f606f4cd4b9a021c143b43e0638e"
+    },
+    {
+      "tool": "vn_quote_history",
+      "source": "vnstock",
+      "as_of": "2026-11-25T18:51:22.395329+07:00",
+      "matched_entry_id": "hist:PVS",
+      "response_sha256": "92266f1a1ae505abb3fc850ff85d2d73a43a30bd5f15b7618c051e064967a2db"
+    },
+    {
+      "tool": "vn_quote_history",
+      "source": "vnstock",
+      "as_of": "2026-11-25T18:51:22.395329+07:00",
+      "matched_entry_id": "hist:DCM",
+      "response_sha256": "b4d9ff40edb6897c47d02686348349c3b021554282a721d5fc99cb89d09a4e57"
+    },
+    {
+      "tool": "vn_quote_history",
+      "source": "vnstock",
+      "as_of": "2026-11-25T18:51:22.395329+07:00",
+      "matched_entry_id": "hist:FRT",
+      "response_sha256": "fe56466e63ae342fb391acab49d0dc0545333cbbbe256510d9d8c3a5e866ec3a"
+    },
+    {
+      "tool": "vn_quote_history",
+      "source": "vnstock",
+      "as_of": "2026-11-25T18:51:22.395329+07:00",
+      "matched_entry_id": "hist:VJC",
+      "response_sha256": "3dee558e4fef238220b3588daf8b1b45c656502f1c845709fd565d531e80287b"
+    }
+  ],
+  "provenance_catalog": [
+    {
+      "tool": "financial_statements",
+      "source": "vietstock",
+      "as_of": "2026-11-25T15:51:30.168761+07:00",
+      "matched_entry_id": "fs:DCM:q:CDKT",
+      "response_sha256": "8e3311328323e9bb382502078554e11fc1c0477821f247cbc90ba4db7cd21b78"
+    },
+    {
+      "tool": "financial_statements",
+      "source": "vietstock",
+      "as_of": "2026-11-25T15:51:30.168761+07:00",
+      "matched_entry_id": "fs:DCM:q:KQKD",
+      "response_sha256": "5231519b4de85134c92808ba90f984eb3a60a7711ba5ff849aedeeda9d3fef4e"
+    },
+    {
+      "tool": "financial_statements",
+      "source": "vietstock",
+      "as_of": "2026-11-25T15:51:30.168761+07:00",
+      "matched_entry_id": "fs:DXG:q:CDKT",
+      "response_sha256": "5d4744df4538b4a4e74bed4fafee902023244dca197f1161e266d76f3c7d5e0b"
+    },
+    {
+      "tool": "financial_statements",
+      "source": "vietstock",
+      "as_of": "2026-11-25T15:51:30.168761+07:00",
+      "matched_entry_id": "fs:DXG:q:KQKD",
+      "response_sha256": "933394b75e6ec7d12b8a15cd151ca68ab63adfafe3cde4fcde4b3ee0a0fe22b1"
+    },
+    {
+      "tool": "financial_statements",
+      "source": "vietstock",
+      "as_of": "2026-11-25T15:51:30.168761+07:00",
+      "matched_entry_id": "fs:FRT:q:CDKT",
+      "response_sha256": "6203c1b94be3970c4ea0bff65931a50e89290e59e4dff6ee038c5d80d797d17a"
+    },
+    {
+      "tool": "financial_statements",
+      "source": "vietstock",
+      "as_of": "2026-11-25T15:51:30.168761+07:00",
+      "matched_entry_id": "fs:FRT:q:KQKD",
+      "response_sha256": "d160fd092a9e35f1e80210d250a2934a52cba17d2475a9845f067bb7d63cda83"
+    },
+    {
+      "tool": "financial_statements",
+      "source": "vietstock",
+      "as_of": "2026-11-25T15:51:30.168761+07:00",
+      "matched_entry_id": "fs:HSG:q:CDKT",
+      "response_sha256": "ff20228dc35a160f6bf1e748d13d337844d1aa78d1343fa5af96c570c38752bb"
+    },
+    {
+      "tool": "financial_statements",
+      "source": "vietstock",
+      "as_of": "2026-11-25T15:51:30.168761+07:00",
+      "matched_entry_id": "fs:HSG:q:KQKD",
+      "response_sha256": "b4cc9ae7c5688c0b141f6ece86c381c4e5341670899fc5a528c892e3b56a1fe7"
+    },
+    {
+      "tool": "financial_statements",
+      "source": "vietstock",
+      "as_of": "2026-11-25T15:51:30.168761+07:00",
+      "matched_entry_id": "fs:PVS:q:CDKT",
+      "response_sha256": "ee137e923ef5bee3780e95ed0e6982d47c2ef760b34ab13daf56aab17b7d783f"
+    },
+    {
+      "tool": "financial_statements",
+      "source": "vietstock",
+      "as_of": "2026-11-25T15:51:30.168761+07:00",
+      "matched_entry_id": "fs:PVS:q:KQKD",
+      "response_sha256": "eb20dcd222910ba123189ecb9749709f81484ca816f5ecf9084387738bbecd3b"
+    },
+    {
+      "tool": "financial_statements",
+      "source": "vietstock",
+      "as_of": "2026-11-25T15:51:30.168761+07:00",
+      "matched_entry_id": "fs:VJC:q:CDKT",
+      "response_sha256": "bc1ade1f24e4ac5f969b1c3274cc3546b46fa2e80c87fa8aed9c97c63dbbfeb4"
+    },
+    {
+      "tool": "financial_statements",
+      "source": "vietstock",
+      "as_of": "2026-11-25T15:51:30.168761+07:00",
+      "matched_entry_id": "fs:VJC:q:KQKD",
+      "response_sha256": "f1aadfbf08ee6257248d9d1563194f51bbf73c02a586ba150dbc245ad9920da3"
+    },
+    {
+      "tool": "vn_quote_history",
+      "source": "vnstock",
+      "as_of": "2026-11-25T18:51:22.395329+07:00",
+      "matched_entry_id": "hist:ACB",
+      "response_sha256": "d6f99a71da5d81ded4ca358bb7b069c0c38dd6144404b18a7d141bed0218f93a"
+    },
+    {
+      "tool": "vn_quote_history",
+      "source": "vnstock",
+      "as_of": "2026-11-25T18:51:22.395329+07:00",
+      "matched_entry_id": "hist:DCM",
+      "response_sha256": "b4d9ff40edb6897c47d02686348349c3b021554282a721d5fc99cb89d09a4e57"
+    },
+    {
+      "tool": "vn_quote_history",
+      "source": "vnstock",
+      "as_of": "2026-11-25T18:51:22.395329+07:00",
+      "matched_entry_id": "hist:DXG",
+      "response_sha256": "2bf21a975859c087f5a744e77b85d1ddf0b1cf64ebba9fa5140da984616bb96b"
+    },
+    {
+      "tool": "vn_quote_history",
+      "source": "vnstock",
+      "as_of": "2026-11-25T18:51:22.395329+07:00",
+      "matched_entry_id": "hist:FRT",
+      "response_sha256": "fe56466e63ae342fb391acab49d0dc0545333cbbbe256510d9d8c3a5e866ec3a"
+    },
+    {
+      "tool": "vn_quote_history",
+      "source": "vnstock",
+      "as_of": "2026-11-25T18:51:22.395329+07:00",
+      "matched_entry_id": "hist:HSG",
+      "response_sha256": "3a6b2757982d112499d941cfaa6853a150d5f606f4cd4b9a021c143b43e0638e"
+    },
+    {
+      "tool": "vn_quote_history",
+      "source": "vnstock",
+      "as_of": "2026-11-25T18:51:22.395329+07:00",
+      "matched_entry_id": "hist:PVS",
+      "response_sha256": "92266f1a1ae505abb3fc850ff85d2d73a43a30bd5f15b7618c051e064967a2db"
+    },
+    {
+      "tool": "vn_quote_history",
+      "source": "vnstock",
+      "as_of": "2026-11-25T18:51:22.395329+07:00",
+      "matched_entry_id": "hist:VJC",
+      "response_sha256": "3dee558e4fef238220b3588daf8b1b45c656502f1c845709fd565d531e80287b"
+    },
+    {
+      "tool": "vn_quote_history",
+      "source": "vnstock",
+      "as_of": "2026-11-25T18:51:22.395329+07:00",
+      "matched_entry_id": "hist:VPB",
+      "response_sha256": "1d2d3f238cfbbb56206dd2413d836213d5b280a01334d40b7102059c142f4086"
+    },
+    {
+      "tool": "vn_index_ohlcv",
+      "source": "vnstock",
+      "as_of": "2026-11-25T18:51:22.395329+07:00",
+      "matched_entry_id": "idx:VNINDEX",
+      "response_sha256": "9e3728dbbf0ef9b88bb5e5887181997e807203cb16d6fd17aa857ba86a0bfd3f"
+    }
+  ],
+  "payload_sha256": "4d2cf81a03c721600f7440a7ee115c2780a332463a02a64aa626c3fe12296fc4",
+  "required_payload_keys": [
+    "hist:ACB",
+    "hist:DCM",
+    "hist:DXG",
+    "hist:FRT",
+    "hist:HSG",
+    "hist:PVS",
+    "hist:VJC",
+    "hist:VPB"
+  ]
+}

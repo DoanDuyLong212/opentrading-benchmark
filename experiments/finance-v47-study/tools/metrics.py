@@ -100,7 +100,7 @@ def resolve_task_dir(task_id):
         d = os.path.join(ROOT, "tasks", split, task_id)
         if os.path.isdir(d):
             return d
-    # Tasks retired by a later taskset revision (e.g. PRUNE2 2026-11-24) stay readable for historical runs.
+    # Tasks retired by a later taskset revision (e.g. PRUNE2 2026-11-25) stay readable for historical runs.
     for split in SPLITS:
         d = os.path.join(ROOT, "tasks-retired", split, task_id)
         if os.path.isdir(d):

@@ -1,0 +1,33 @@
+# Finance-analysis memory stratum — amendment 2026-11-25, tools/build_finance_stratum_20261125.py
+id = "fin-m6-upd-664"
+title = "Memory M6b — cập nhật ngưỡng nợ (FPT/PNJ/SAB/GAS)"
+version = 3
+created = "2026-11-25"
+level = "M6"
+family = "M6 finance memory"
+financebench_type = "multi-session memory"
+entity = "fs:FPT:q:CDKT+fs:FPT:q:KQKD+fs:FPT:y:CDKT+fs:FPT:y:KQKD+fs:GAS:q:CDKT+fs:GAS:q:KQKD+fs:GAS:y:CDKT+fs:GAS:y:KQKD+fs:PNJ:q:CDKT+fs:PNJ:q:KQKD+fs:PNJ:y:CDKT+fs:PNJ:y:KQKD+fs:SAB:q:CDKT+fs:SAB:q:KQKD+fs:SAB:y:CDKT+fs:SAB:y:KQKD"
+asset = "vn_stock"
+data_zone = "green"
+data_pairs = []
+snapshot_date = "2026-11-01"
+universe_cap = 0
+banned_tools = ["web_search", "web_fetch", "sentiment_score"]
+human_time_band = "15–60 phút"
+time_limit_min = 30
+tools_expected = ["financial_statements"]
+mcp_payloads = "environment/payloads.json"
+snapshot_required = true
+split = "main"
+multiturn = true
+track = "memory_multiturn"
+stratum = "memory"
+tier = "M6"
+subtier = "M6b"
+confirmatory_eligible = true
+
+[scoring]
+type = "value"
+gold = "solution/gold.json"
+oracle = "solution/oracle.py"
+grader = "tests/grader.py"

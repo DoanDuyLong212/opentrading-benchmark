@@ -730,7 +730,7 @@ def main():
             require_dev_split(args.split)
             dev_bypass = os.environ.get('BENCH_V47_DEV') == '1'
             if args.prepare_only:
-                # v4.7 seal preparation (2026-11-24): the seal must register exactly these settings/tasks,
+                # v4.7 seal preparation (2026-11-25): the seal must register exactly these settings/tasks,
                 # so derive them here instead of by hand. Stops before credentials are used or any budget opens.
                 if dev_bypass or cfg.get('study_version') != 'v4.7' or args.resume:
                     raise ValueError('--prepare-only is for a fresh v4.7 sealed run (no dev bypass, no resume)')

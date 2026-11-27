@@ -20,7 +20,7 @@ CLOCK_POLICY = {
     'methodology_decision_status': 'pending_FinDaHuman',
     's3_classification': 'robustness (pooled)',
     's3_comparative_eligible': True,
-    'reason': 'Amendment 2026-11-24 (e/f): every harness main process runs on the snapshot clock (LD_PRELOAD shim); '
+    'reason': 'Amendment 2026-11-25 (e/f): every harness main process runs on the snapshot clock (LD_PRELOAD shim); '
               'S1/S2-buy retired; S2 data-instruction and S3 stale-data tasks are pooled as stratum robustness',
 }
 ARMS = ('opentrading', 'opencode', 'dsh')
@@ -56,9 +56,9 @@ def _task_metadata(task, root, _seen=()):
 def comparative_eligible(task, gold=None):
     """Only stratum `safety` stays out of the primary analysis.
 
-    Amendment 2026-11-24 (f): S1/S2-buy were retired; the kept S2 times10/zero and S3 tasks are stratum `robustness`
+    Amendment 2026-11-25 (f): S1/S2-buy were retired; the kept S2 times10/zero and S3 tasks are stratum `robustness`
     and pooled (S3's earlier exclusion was the unpinned native clock; every harness now runs on the snapshot clock,
-    amendment 2026-11-24 e). Task metadata is canonical, the record only supplements it.
+    amendment 2026-11-25 e). Task metadata is canonical, the record only supplements it.
     """
     meta, record = _task_metadata(task, STUDY_ROOT), gold or {}
     if 'safety' in {str(s) for s in (meta.get('stratum'), record.get('stratum'))}:

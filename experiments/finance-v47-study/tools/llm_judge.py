@@ -8,7 +8,7 @@ question line and only gold['solution'] (refusal tasks looked like {"query":...}
 Design (MT-Bench reference-guided single-answer grading; FinanceBench-style value
 tolerance):
   * Judge model: OpenRouter ``anthropic/claude-haiku-5.5``, temperature 0 (amendment
-    2026-11-24). Until then it was ``nvidia/nemotron-3-ultra-550b-a55b``, which in v4.7
+    2026-11-25). Until then it was ``nvidia/nemotron-3-ultra-550b-a55b``, which in v4.7
     is also the agent under test, so it graded its own answers. Haiku is a different
     family from every v4.7 arm model. Calibration: plans/2026-11-15-v47-study-design.md.
   * Judge sees the full public question + answer schema, the scoring type, every
@@ -30,13 +30,13 @@ import urllib.error
 import urllib.request
 from pathlib import Path
 
-# User 2026-11-24: Haiku 5.5 replaces Nemotron 3 Ultra (the v4.7 agent model) as judge.
+# User 2026-11-25: Haiku 5.5 replaces Nemotron 3 Ultra (the v4.7 agent model) as judge.
 # Paid only: there is no :free variant, so the :free fallback in call_judge never fires.
 JUDGE_MODEL_PAID = 'anthropic/claude-haiku-5.5'
 JUDGE_MODEL = os.environ.get('JUDGE_MODEL', JUDGE_MODEL_PAID)
 OPENROUTER_URL = 'https://openrouter.ai/api/v1/chat/completions'
 PRICE_PER_1M = {'prompt_usd': 0.1, 'completion_usd': 0.5,
-                'source': 'OpenRouter /api/v1/models 2026-11-24'}
+                'source': 'OpenRouter /api/v1/models 2026-11-25'}
 # Paid judge: stop before a call once this process has spent JUDGE_MAX_USD (OpenRouter
 # usage.cost, else list price). A resumed run starts a new count; cached verdicts cost 0.
 JUDGE_MAX_USD = float(os.environ.get('JUDGE_MAX_USD', '3'))

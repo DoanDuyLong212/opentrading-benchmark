@@ -1,0 +1,1497 @@
+{
+ "post_sha256": "fdfa27527f56099a0534909f9abd1a7d69cb5b616b857aacd8755654d522f06c",
+ "pre_sha256": "8aa406b70be853bf70386e8043516be47d7b8e27af94271e71991d9298f5de57",
+ "tasks": {
+  "fin-i1-pick-701": {
+   "split": "main",
+   "type": "I1",
+   "passing_sets": [
+    [
+     "CTG"
+    ],
+    [
+     "TCB"
+    ],
+    [
+     "ACB"
+    ]
+   ],
+   "chance_base_rate": 0.5,
+   "files": {
+    "environment/payloads.json": "96826e5fadb2d4a36e6d4c0ed4da70a3bbfea863d982e8f3cff30114877388d2",
+    "instruction.md": "200bde5ea5a5ba4c6b1f9d485a8ec08fba89ed62b8b10d76ec5ab30d9a5a75ca",
+    "solution/gold.json": "890443e3e444524d3b0e711edd3da6e465d06c31cf1246cdf5de3e4ce601aaa3",
+    "solution/oracle.py": "667ba9cee3bc2ad54fe61f1ca17eb025ab5befe1924408fe3e00b2f314c99bad",
+    "task.toml": "51a0f0d8198065b30fb0fa693a2cfc5cf5083c494d60507f15c8574126a83ba0",
+    "tests/grader.py": "1c08f2b8049f9fb91f8e7abbe52335f945a9a4a9c7653a83debf86c65bb99ead"
+   }
+  },
+  "fin-i1-pick-702": {
+   "split": "main",
+   "type": "I1",
+   "passing_sets": [
+    [
+     "VND"
+    ],
+    [
+     "SHS"
+    ]
+   ],
+   "chance_base_rate": 0.4,
+   "files": {
+    "environment/payloads.json": "552dd895b95bf43aa22f92932548624f0f44e69090cc9780f4198287e9284345",
+    "instruction.md": "1c16ad5fd7385d75e6c9971d35ec850cce637a424df315ba20731a5f6d0d26f0",
+    "solution/gold.json": "952356881bdd56e288e6dd25fbe66bc019cb79db7d324845062be7e2c2f74b64",
+    "solution/oracle.py": "667ba9cee3bc2ad54fe61f1ca17eb025ab5befe1924408fe3e00b2f314c99bad",
+    "task.toml": "747d94b848898a665d1d7537a326441c7c5f0d41254744d38b0affaea52a733d",
+    "tests/grader.py": "1c08f2b8049f9fb91f8e7abbe52335f945a9a4a9c7653a83debf86c65bb99ead"
+   }
+  },
+  "fin-i1-pick-703": {
+   "split": "main",
+   "type": "I1",
+   "passing_sets": [
+    [
+     "KDH"
+    ],
+    [
+     "NLG"
+    ],
+    [
+     "DXG"
+    ]
+   ],
+   "chance_base_rate": 0.6,
+   "files": {
+    "environment/payloads.json": "df2020af2529bed6d69ddbeb7608a26f3827b05201ec74586020031016709762",
+    "instruction.md": "1cb0226bfa208e93c78dc7e04d7464f283bb38913a6b6bf8db8b8c761cb5949e",
+    "solution/gold.json": "33cdc5152d404b462259cc279571271f44d7065dfdc0c7ad25277750d966ae26",
+    "solution/oracle.py": "667ba9cee3bc2ad54fe61f1ca17eb025ab5befe1924408fe3e00b2f314c99bad",
+    "task.toml": "57240be494cf7678ff1a608e8176b692530bb561f66b74b60e4f5e9aae3aec93",
+    "tests/grader.py": "1c08f2b8049f9fb91f8e7abbe52335f945a9a4a9c7653a83debf86c65bb99ead"
+   }
+  },
+  "fin-i1-pick-704": {
+   "split": "main",
+   "type": "I1",
+   "passing_sets": [
+    [
+     "HPG"
+    ],
+    [
+     "NKG"
+    ],
+    [
+     "BMP"
+    ]
+   ],
+   "chance_base_rate": 0.6,
+   "files": {
+    "environment/payloads.json": "933911b9e61a84a7326c4e6f9cc4b38ee9b4c1cf5bc1512843886dabb4ec112b",
+    "instruction.md": "8479e3879b74c26fad7876358d039681b553f3d57340c7d3a9188aec1fa4957f",
+    "solution/gold.json": "51b7f527101f7912ed1b2bbaa9e33e25f0cdddd535949b5c4c7dd105f77ef412",
+    "solution/oracle.py": "667ba9cee3bc2ad54fe61f1ca17eb025ab5befe1924408fe3e00b2f314c99bad",
+    "task.toml": "89530d6e1cea5af804061c0f831fa649cfbaf806381e38ed382c04cfb029476a",
+    "tests/grader.py": "1c08f2b8049f9fb91f8e7abbe52335f945a9a4a9c7653a83debf86c65bb99ead"
+   }
+  },
+  "fin-i1-pick-705": {
+   "split": "main",
+   "type": "I1",
+   "passing_sets": [
+    [
+     "VNM"
+    ],
+    [
+     "SAB"
+    ],
+    [
+     "MSN"
+    ],
+    [
+     "KDC"
+    ],
+    [
+     "MWG"
+    ]
+   ],
+   "chance_base_rate": 0.8333,
+   "files": {
+    "environment/payloads.json": "f52cf14d63477cb28ddc5d902dc8f452628bb25333b5fe08c0bb090221e54997",
+    "instruction.md": "0f2986cf62daac9f2a523be6c95ceb9f6936cc32485ed1d0366b147ebeeadafa",
+    "solution/gold.json": "de51dfcb2731349eff9988c061c576d029d599bf858b13fd9dba7ddce39d839e",
+    "solution/oracle.py": "667ba9cee3bc2ad54fe61f1ca17eb025ab5befe1924408fe3e00b2f314c99bad",
+    "task.toml": "c92b7149644195463e3481606c25772c942d2715acd3fb5ce7ab75325dc5aa00",
+    "tests/grader.py": "1c08f2b8049f9fb91f8e7abbe52335f945a9a4a9c7653a83debf86c65bb99ead"
+   }
+  },
+  "fin-i2-maxgain-711": {
+   "split": "main",
+   "type": "I2",
+   "passing_sets": [
+    [
+     "REE"
+    ]
+   ],
+   "chance_base_rate": 0.1667,
+   "files": {
+    "environment/payloads.json": "8803827e7f5575443956ea6c8fb674b8ba27e87c5ff3cae88adfee03b156b0d3",
+    "instruction.md": "7556c6eb755130c2be9dcce63490502e09113966866480b30893d06d99e531ff",
+    "solution/gold.json": "7bc51450962ed3c2b0665a87050d945e27cff70bf789ee93e9ed1e6c88ffac5a",
+    "solution/oracle.py": "667ba9cee3bc2ad54fe61f1ca17eb025ab5befe1924408fe3e00b2f314c99bad",
+    "task.toml": "2c5e83bc28695a1476940e4e92c6c13cd65cf9539fcc8243a6609d7a65d50f29",
+    "tests/grader.py": "1c08f2b8049f9fb91f8e7abbe52335f945a9a4a9c7653a83debf86c65bb99ead"
+   }
+  },
+  "fin-i2-maxgain-712": {
+   "split": "main",
+   "type": "I2",
+   "passing_sets": [
+    [
+     "SHS"
+    ]
+   ],
+   "chance_base_rate": 0.1667,
+   "files": {
+    "environment/payloads.json": "897c498e2e3c0224128119303f21d022ce5b3a2ddddd464f2e6b05b3cae5033a",
+    "instruction.md": "1dd7ccdaf3366fb7fe5d98c67edd53509a7966703140a8cca3fdfb555dea9d30",
+    "solution/gold.json": "844288d5c90b20edc3bf5b314d87b48cd980e24bac6d19ffb1f57e94f4822720",
+    "solution/oracle.py": "667ba9cee3bc2ad54fe61f1ca17eb025ab5befe1924408fe3e00b2f314c99bad",
+    "task.toml": "866fd16f6ffb24baa19f9451a7fbcd83072e3bc1b2b6bd030c24222f1aecb85c",
+    "tests/grader.py": "1c08f2b8049f9fb91f8e7abbe52335f945a9a4a9c7653a83debf86c65bb99ead"
+   }
+  },
+  "fin-i2-maxgain-713": {
+   "split": "main",
+   "type": "I2",
+   "passing_sets": [
+    [
+     "POW"
+    ]
+   ],
+   "chance_base_rate": 0.1667,
+   "files": {
+    "environment/payloads.json": "e7dde72af55262a883d9c42c8fe606104781f11a6c88fa63d7711c5bba6938ef",
+    "instruction.md": "203ceee2af405b42932c89515182107e959c1408e7a5135c597ae5677a409af7",
+    "solution/gold.json": "fb6b7c16bebdb6ce46e384d7b34e0e55c34165653e00426a89cdbd14228fcf90",
+    "solution/oracle.py": "667ba9cee3bc2ad54fe61f1ca17eb025ab5befe1924408fe3e00b2f314c99bad",
+    "task.toml": "3e3b8206a2a7d95f8e48198f480f0e9e25bb9dbbde35d4eec4bb319651011dba",
+    "tests/grader.py": "1c08f2b8049f9fb91f8e7abbe52335f945a9a4a9c7653a83debf86c65bb99ead"
+   }
+  },
+  "fin-i2-maxgain-714": {
+   "split": "main",
+   "type": "I2",
+   "passing_sets": [
+    [
+     "ANV"
+    ]
+   ],
+   "chance_base_rate": 0.1667,
+   "files": {
+    "environment/payloads.json": "a34eb82ed7fa678784773f810d3ce4ce050786cacb8a8e2fd56e557a491b84e0",
+    "instruction.md": "de3519679c00ff9aa7149cd59c5e816ab9c2007eda0f38142e887184f82c0531",
+    "solution/gold.json": "df8e78d41cd6876d5543d6f16a1b66a3ff735e4cd7454b86694fd64206d1f6af",
+    "solution/oracle.py": "667ba9cee3bc2ad54fe61f1ca17eb025ab5befe1924408fe3e00b2f314c99bad",
+    "task.toml": "6c76af6a8f1af315b5036d10f0e17effb0085edbbb2de3f008e1ff04d6f121fc",
+    "tests/grader.py": "1c08f2b8049f9fb91f8e7abbe52335f945a9a4a9c7653a83debf86c65bb99ead"
+   }
+  },
+  "fin-i3-risk-721": {
+   "split": "main",
+   "type": "I3",
+   "passing_sets": [
+    [
+     "DXG",
+     "NLG"
+    ],
+    [
+     "DXG",
+     "KDH"
+    ],
+    [
+     "KDH",
+     "NLG"
+    ],
+    [
+     "NLG",
+     "VCG"
+    ],
+    [
+     "NLG",
+     "PC1"
+    ],
+    [
+     "KDH",
+     "VCG"
+    ],
+    [
+     "CTD",
+     "KDH"
+    ],
+    [
+     "KDH",
+     "PC1"
+    ]
+   ],
+   "chance_base_rate": 0.5333,
+   "files": {
+    "environment/payloads.json": "880d8f9fe10052ce24cebd943d7b0c0d86b1547c01d8b8fb036d16a9ce96aaf7",
+    "instruction.md": "87042a013d052b47a1d8c826819756a16cbdef5ab716486aada2c230806db827",
+    "solution/gold.json": "14eab995600ee11daea5b0bac2f5cc1ef3039180933ad844dceae1eccee5d3fb",
+    "solution/oracle.py": "667ba9cee3bc2ad54fe61f1ca17eb025ab5befe1924408fe3e00b2f314c99bad",
+    "task.toml": "76584f85997269843a659f9d565667539dbbb5ff5866b83fab96259cfd3a4a33",
+    "tests/grader.py": "1c08f2b8049f9fb91f8e7abbe52335f945a9a4a9c7653a83debf86c65bb99ead"
+   }
+  },
+  "fin-i3-risk-722": {
+   "split": "main",
+   "type": "I3",
+   "passing_sets": [
+    [
+     "GEX",
+     "HSG"
+    ],
+    [
+     "HSG",
+     "VGS"
+    ],
+    [
+     "GEX",
+     "NKG"
+    ],
+    [
+     "GEX",
+     "HPG"
+    ],
+    [
+     "GEX",
+     "POW"
+    ],
+    [
+     "GEX",
+     "VGS"
+    ]
+   ],
+   "chance_base_rate": 0.4,
+   "files": {
+    "environment/payloads.json": "03d21abe1dcd13d626025c6975dfda42a00e0f77d9e72899d75bdf8978d0eb37",
+    "instruction.md": "f8882c2dba5c77b2cacc489ec07807eb4f10340118e20222ec22ecc089138c69",
+    "solution/gold.json": "3b05500b5062dd1b953706120dc03ac6aceb658a16fd808f9212189670e27ec7",
+    "solution/oracle.py": "667ba9cee3bc2ad54fe61f1ca17eb025ab5befe1924408fe3e00b2f314c99bad",
+    "task.toml": "0faba221786e724e5a6cf0b9f5cfdce9887d50d3516b60cdcfd0c2bfd40df8ed",
+    "tests/grader.py": "1c08f2b8049f9fb91f8e7abbe52335f945a9a4a9c7653a83debf86c65bb99ead"
+   }
+  },
+  "fin-i3-risk-723": {
+   "split": "main",
+   "type": "I3",
+   "passing_sets": [
+    [
+     "HCM",
+     "SSI"
+    ],
+    [
+     "SSI",
+     "VND"
+    ],
+    [
+     "SSI",
+     "STB"
+    ],
+    [
+     "VCI",
+     "VND"
+    ],
+    [
+     "HCM",
+     "VND"
+    ],
+    [
+     "HCM",
+     "STB"
+    ],
+    [
+     "STB",
+     "VND"
+    ]
+   ],
+   "chance_base_rate": 0.4667,
+   "files": {
+    "environment/payloads.json": "a702841034b268d5732e1641a0a3263b194692c619b0ff37e85796dd7ad049ad",
+    "instruction.md": "7720b5ef384946aac1df277f1c06df612f8fc40986ec5ca6d04ca475cfd4f7fa",
+    "solution/gold.json": "312fa94d79824001a5c4386b0ee4f428b17a9031b064cc6e9dfc4ff937e37115",
+    "solution/oracle.py": "667ba9cee3bc2ad54fe61f1ca17eb025ab5befe1924408fe3e00b2f314c99bad",
+    "task.toml": "85384f1809cb77088ef7bfaa06285e66b7f8f0be299c0f19a7e8002818687e2c",
+    "tests/grader.py": "1c08f2b8049f9fb91f8e7abbe52335f945a9a4a9c7653a83debf86c65bb99ead"
+   }
+  },
+  "fin-i3-risk-724": {
+   "split": "main",
+   "type": "I3",
+   "passing_sets": [
+    [
+     "FRT",
+     "PNJ"
+    ],
+    [
+     "FRT",
+     "HAH"
+    ],
+    [
+     "DGW",
+     "PNJ"
+    ],
+    [
+     "DGW",
+     "HAH"
+    ],
+    [
+     "MWG",
+     "PNJ"
+    ],
+    [
+     "PNJ",
+     "VJC"
+    ],
+    [
+     "HAH",
+     "PNJ"
+    ]
+   ],
+   "chance_base_rate": 0.4667,
+   "files": {
+    "environment/payloads.json": "dbc9373d92baa5c835fb117ec854bfefbbb085a53e2fdde1e581de56644e1c6f",
+    "instruction.md": "8292c6477960d6fdced3a15ee0ee2fd99b90febe8abcda9e673a671098efaa33",
+    "solution/gold.json": "63a64902187383abf086dd71f04edd268a36212ea3361f5e1c022881a1b64ee6",
+    "solution/oracle.py": "667ba9cee3bc2ad54fe61f1ca17eb025ab5befe1924408fe3e00b2f314c99bad",
+    "task.toml": "2919c50556601e996d3c9ba3160b7ce595f767ef1ecc48da436d7929270eccf6",
+    "tests/grader.py": "1c08f2b8049f9fb91f8e7abbe52335f945a9a4a9c7653a83debf86c65bb99ead"
+   }
+  },
+  "fin-i3-risk-725": {
+   "split": "main",
+   "type": "I3",
+   "passing_sets": [
+    [
+     "PVD",
+     "PVS"
+    ],
+    [
+     "GAS",
+     "PVD"
+    ],
+    [
+     "PLX",
+     "PVD"
+    ],
+    [
+     "DCM",
+     "PVD"
+    ],
+    [
+     "DPM",
+     "PVD"
+    ],
+    [
+     "GAS",
+     "PVS"
+    ],
+    [
+     "PLX",
+     "PVS"
+    ],
+    [
+     "DCM",
+     "PVS"
+    ],
+    [
+     "DPM",
+     "PVS"
+    ]
+   ],
+   "chance_base_rate": 0.6,
+   "files": {
+    "environment/payloads.json": "bd1a08cc925e36262780673bec6155e98cba884c2bcbfd2b70fdebb76a78ee06",
+    "instruction.md": "8c462739cc036e5627ed7e6d0dbbbf52bb85e1fa11f0d947ba2cccc6385646bd",
+    "solution/gold.json": "5aa2dd615207d62408021b453ee5ae1b000731af312832a1d1138f344ae08d95",
+    "solution/oracle.py": "667ba9cee3bc2ad54fe61f1ca17eb025ab5befe1924408fe3e00b2f314c99bad",
+    "task.toml": "2a0942f0c0bf83d1f8b9e32163b6bda76470ccf93aa398db14c74bf1049ba16c",
+    "tests/grader.py": "1c08f2b8049f9fb91f8e7abbe52335f945a9a4a9c7653a83debf86c65bb99ead"
+   }
+  },
+  "fin-i4-port-731": {
+   "split": "main",
+   "type": "I4",
+   "passing_sets": [
+    [
+     "HPG",
+     "MBB",
+     "TCB",
+     "VCB"
+    ],
+    [
+     "MBB",
+     "MWG",
+     "TCB",
+     "VCB"
+    ],
+    [
+     "MBB",
+     "TCB",
+     "VCB",
+     "VNM"
+    ],
+    [
+     "HPG",
+     "MWG",
+     "TCB",
+     "VCB"
+    ],
+    [
+     "HPG",
+     "TCB",
+     "VCB",
+     "VNM"
+    ],
+    [
+     "MWG",
+     "TCB",
+     "VCB",
+     "VNM"
+    ],
+    [
+     "HPG",
+     "MBB",
+     "MWG",
+     "VCB"
+    ],
+    [
+     "HPG",
+     "MBB",
+     "VCB",
+     "VNM"
+    ],
+    [
+     "MBB",
+     "MWG",
+     "VCB",
+     "VNM"
+    ],
+    [
+     "HPG",
+     "MWG",
+     "VCB",
+     "VNM"
+    ],
+    [
+     "FPT",
+     "HPG",
+     "MBB",
+     "TCB"
+    ],
+    [
+     "FPT",
+     "MBB",
+     "MWG",
+     "TCB"
+    ],
+    [
+     "FPT",
+     "MBB",
+     "TCB",
+     "VNM"
+    ],
+    [
+     "HPG",
+     "MBB",
+     "MWG",
+     "TCB"
+    ],
+    [
+     "GAS",
+     "HPG",
+     "MBB",
+     "TCB"
+    ],
+    [
+     "HPG",
+     "MBB",
+     "TCB",
+     "VNM"
+    ],
+    [
+     "GAS",
+     "MBB",
+     "MWG",
+     "TCB"
+    ],
+    [
+     "MBB",
+     "MWG",
+     "TCB",
+     "VNM"
+    ],
+    [
+     "GAS",
+     "MBB",
+     "TCB",
+     "VNM"
+    ],
+    [
+     "FPT",
+     "HPG",
+     "MWG",
+     "TCB"
+    ],
+    [
+     "FPT",
+     "HPG",
+     "TCB",
+     "VNM"
+    ],
+    [
+     "FPT",
+     "MWG",
+     "TCB",
+     "VNM"
+    ],
+    [
+     "GAS",
+     "HPG",
+     "MWG",
+     "TCB"
+    ],
+    [
+     "HPG",
+     "MWG",
+     "TCB",
+     "VNM"
+    ],
+    [
+     "GAS",
+     "HPG",
+     "TCB",
+     "VNM"
+    ],
+    [
+     "GAS",
+     "MWG",
+     "TCB",
+     "VNM"
+    ],
+    [
+     "FPT",
+     "HPG",
+     "MBB",
+     "MWG"
+    ],
+    [
+     "FPT",
+     "HPG",
+     "MBB",
+     "VNM"
+    ],
+    [
+     "FPT",
+     "MBB",
+     "MWG",
+     "VNM"
+    ],
+    [
+     "GAS",
+     "HPG",
+     "MBB",
+     "MWG"
+    ],
+    [
+     "HPG",
+     "MBB",
+     "MWG",
+     "VNM"
+    ],
+    [
+     "GAS",
+     "HPG",
+     "MBB",
+     "VNM"
+    ],
+    [
+     "GAS",
+     "MBB",
+     "MWG",
+     "VNM"
+    ],
+    [
+     "FPT",
+     "HPG",
+     "MWG",
+     "VNM"
+    ],
+    [
+     "GAS",
+     "HPG",
+     "MWG",
+     "VNM"
+    ]
+   ],
+   "chance_base_rate": 0.5,
+   "files": {
+    "environment/payloads.json": "ad27ef06173032648a321cafee740941f9d1251a2530e154b70cdfa2282ac185",
+    "instruction.md": "15c1969d5449a75c58f7123884eff0ef5cb5815578b52d252d9b9a83c48d3474",
+    "solution/gold.json": "e69774fee95fb40998a47e8a30d1e32f7929cca2b1bafbace3662a08df074d5a",
+    "solution/oracle.py": "667ba9cee3bc2ad54fe61f1ca17eb025ab5befe1924408fe3e00b2f314c99bad",
+    "task.toml": "c59994c489bdea1264226507173ca04c7f98f1fd05c819033a663636d8fee24b",
+    "tests/grader.py": "1c08f2b8049f9fb91f8e7abbe52335f945a9a4a9c7653a83debf86c65bb99ead"
+   }
+  },
+  "fin-i4-port-732": {
+   "split": "main",
+   "type": "I4",
+   "passing_sets": [
+    [
+     "REE",
+     "SSI",
+     "VHM",
+     "VIC"
+    ],
+    [
+     "GMD",
+     "SSI",
+     "VHM",
+     "VIC"
+    ],
+    [
+     "POW",
+     "SSI",
+     "VHM",
+     "VIC"
+    ],
+    [
+     "DGC",
+     "REE",
+     "SSI",
+     "VHM"
+    ],
+    [
+     "DGC",
+     "POW",
+     "SSI",
+     "VHM"
+    ],
+    [
+     "GMD",
+     "REE",
+     "SSI",
+     "VHM"
+    ],
+    [
+     "POW",
+     "REE",
+     "SSI",
+     "VHM"
+    ],
+    [
+     "GMD",
+     "POW",
+     "SSI",
+     "VHM"
+    ],
+    [
+     "DGC",
+     "REE",
+     "SSI",
+     "VIC"
+    ],
+    [
+     "DGC",
+     "GMD",
+     "SSI",
+     "VIC"
+    ],
+    [
+     "DGC",
+     "POW",
+     "SSI",
+     "VIC"
+    ],
+    [
+     "GMD",
+     "REE",
+     "SSI",
+     "VIC"
+    ],
+    [
+     "POW",
+     "REE",
+     "SSI",
+     "VIC"
+    ],
+    [
+     "GMD",
+     "POW",
+     "SSI",
+     "VIC"
+    ],
+    [
+     "PNJ",
+     "POW",
+     "SSI",
+     "VIC"
+    ],
+    [
+     "DGC",
+     "GMD",
+     "REE",
+     "SSI"
+    ],
+    [
+     "DGC",
+     "POW",
+     "REE",
+     "SSI"
+    ],
+    [
+     "DGC",
+     "GMD",
+     "POW",
+     "SSI"
+    ],
+    [
+     "GMD",
+     "POW",
+     "REE",
+     "SSI"
+    ],
+    [
+     "PNJ",
+     "POW",
+     "REE",
+     "SSI"
+    ],
+    [
+     "GMD",
+     "PNJ",
+     "POW",
+     "SSI"
+    ],
+    [
+     "DGC",
+     "POW",
+     "VHM",
+     "VIC"
+    ],
+    [
+     "GMD",
+     "REE",
+     "VHM",
+     "VIC"
+    ],
+    [
+     "POW",
+     "REE",
+     "VHM",
+     "VIC"
+    ],
+    [
+     "GMD",
+     "POW",
+     "VHM",
+     "VIC"
+    ],
+    [
+     "DGC",
+     "POW",
+     "REE",
+     "VHM"
+    ],
+    [
+     "DGC",
+     "GMD",
+     "POW",
+     "VHM"
+    ],
+    [
+     "GMD",
+     "POW",
+     "REE",
+     "VHM"
+    ],
+    [
+     "DGC",
+     "GMD",
+     "REE",
+     "VIC"
+    ],
+    [
+     "DGC",
+     "POW",
+     "REE",
+     "VIC"
+    ],
+    [
+     "DGC",
+     "GMD",
+     "POW",
+     "VIC"
+    ],
+    [
+     "GMD",
+     "POW",
+     "REE",
+     "VIC"
+    ],
+    [
+     "PNJ",
+     "POW",
+     "REE",
+     "VIC"
+    ],
+    [
+     "DGC",
+     "GMD",
+     "POW",
+     "REE"
+    ],
+    [
+     "GMD",
+     "PNJ",
+     "POW",
+     "REE"
+    ]
+   ],
+   "chance_base_rate": 0.5,
+   "files": {
+    "environment/payloads.json": "cdb9fab87a39dfa135b530a7e909ee7e964eada4314f28aec7219061a259ca93",
+    "instruction.md": "d4036f0d479d9bc269d58e9ede39cecaeece1875634c4f848eddc20d351b6916",
+    "solution/gold.json": "85c03a24957629d962cbfc03fa23738dc6b24f0ea98e3d3569585743a722bb87",
+    "solution/oracle.py": "667ba9cee3bc2ad54fe61f1ca17eb025ab5befe1924408fe3e00b2f314c99bad",
+    "task.toml": "fc47c4e518c8a655aaa66cf49ef57ce2c42e980f3dd0f7102b7116f750c459c0",
+    "tests/grader.py": "1c08f2b8049f9fb91f8e7abbe52335f945a9a4a9c7653a83debf86c65bb99ead"
+   }
+  },
+  "fin-i4-port-733": {
+   "split": "main",
+   "type": "I4",
+   "passing_sets": [
+    [
+     "ACB",
+     "DXG",
+     "HSG",
+     "VPB"
+    ],
+    [
+     "ACB",
+     "DXG",
+     "FRT",
+     "VPB"
+    ],
+    [
+     "ACB",
+     "DXG",
+     "VJC",
+     "VPB"
+    ],
+    [
+     "ACB",
+     "FRT",
+     "VJC",
+     "VPB"
+    ],
+    [
+     "ACB",
+     "DCM",
+     "DXG",
+     "HSG"
+    ],
+    [
+     "ACB",
+     "DXG",
+     "FRT",
+     "HSG"
+    ],
+    [
+     "ACB",
+     "DXG",
+     "HSG",
+     "VJC"
+    ],
+    [
+     "ACB",
+     "DXG",
+     "FRT",
+     "PVS"
+    ],
+    [
+     "ACB",
+     "DXG",
+     "PVS",
+     "VJC"
+    ],
+    [
+     "ACB",
+     "DCM",
+     "DXG",
+     "FRT"
+    ],
+    [
+     "ACB",
+     "DCM",
+     "DXG",
+     "VJC"
+    ],
+    [
+     "ACB",
+     "DXG",
+     "FRT",
+     "VJC"
+    ],
+    [
+     "ACB",
+     "FRT",
+     "HSG",
+     "VJC"
+    ],
+    [
+     "ACB",
+     "FRT",
+     "PVS",
+     "VJC"
+    ],
+    [
+     "ACB",
+     "DCM",
+     "FRT",
+     "VJC"
+    ],
+    [
+     "DXG",
+     "FRT",
+     "HSG",
+     "VPB"
+    ],
+    [
+     "DXG",
+     "HSG",
+     "VJC",
+     "VPB"
+    ],
+    [
+     "DXG",
+     "FRT",
+     "PVS",
+     "VPB"
+    ],
+    [
+     "DXG",
+     "PVS",
+     "VJC",
+     "VPB"
+    ],
+    [
+     "DCM",
+     "DXG",
+     "FRT",
+     "VPB"
+    ],
+    [
+     "DCM",
+     "DXG",
+     "VJC",
+     "VPB"
+    ],
+    [
+     "DXG",
+     "FRT",
+     "VJC",
+     "VPB"
+    ],
+    [
+     "FRT",
+     "HSG",
+     "VJC",
+     "VPB"
+    ],
+    [
+     "DCM",
+     "FRT",
+     "VJC",
+     "VPB"
+    ],
+    [
+     "DXG",
+     "FRT",
+     "HSG",
+     "PVS"
+    ],
+    [
+     "DXG",
+     "HSG",
+     "PVS",
+     "VJC"
+    ],
+    [
+     "DCM",
+     "DXG",
+     "FRT",
+     "HSG"
+    ],
+    [
+     "DCM",
+     "DXG",
+     "HSG",
+     "VJC"
+    ],
+    [
+     "DXG",
+     "FRT",
+     "HSG",
+     "VJC"
+    ],
+    [
+     "DCM",
+     "DXG",
+     "FRT",
+     "PVS"
+    ],
+    [
+     "DCM",
+     "DXG",
+     "PVS",
+     "VJC"
+    ],
+    [
+     "DXG",
+     "FRT",
+     "PVS",
+     "VJC"
+    ],
+    [
+     "DCM",
+     "DXG",
+     "FRT",
+     "VJC"
+    ],
+    [
+     "FRT",
+     "HSG",
+     "PVS",
+     "VJC"
+    ],
+    [
+     "DCM",
+     "FRT",
+     "HSG",
+     "VJC"
+    ]
+   ],
+   "chance_base_rate": 0.5,
+   "files": {
+    "environment/payloads.json": "4d2cf81a03c721600f7440a7ee115c2780a332463a02a64aa626c3fe12296fc4",
+    "instruction.md": "d2468add9b32ac2bcf36671dee1153dbfd65e8840eb728753092608d08460102",
+    "solution/gold.json": "c4eb45923258eaa949b46a72b4d183a590063cb473ed1c54ed735c5388f69b80",
+    "solution/oracle.py": "667ba9cee3bc2ad54fe61f1ca17eb025ab5befe1924408fe3e00b2f314c99bad",
+    "task.toml": "4765f4308669c4053ed97939c4b09e2c2adad677658875b1c8f6fcaaa4a2a667",
+    "tests/grader.py": "1c08f2b8049f9fb91f8e7abbe52335f945a9a4a9c7653a83debf86c65bb99ead"
+   }
+  },
+  "fin-i5-mem-741": {
+   "split": "main",
+   "type": "I5",
+   "passing_sets": [
+    [
+     "HPG"
+    ],
+    [
+     "MWG"
+    ]
+   ],
+   "chance_base_rate": 0.5,
+   "files": {
+    "environment/payloads.json": "2d09aed80f3679b246056500d725ebe0a420de15c8bf5048da0b48cd4787f585",
+    "environment/turns.json": "bd5a56025556fb14c4265d8a9f8d29743c1088c760cdb2d71bf263fe2d1a1747",
+    "instruction.md": "029bde35a0933f0cff1de9d354f91d5aa5928e158786f512768f906d195cca5b",
+    "solution/gold.json": "9bb285fdd5addfaa57422b3efcc25aeba52ee07dab9a277af67c9c80aab8e8a9",
+    "solution/oracle.py": "667ba9cee3bc2ad54fe61f1ca17eb025ab5befe1924408fe3e00b2f314c99bad",
+    "task.toml": "23b9522fd5df621e5bc309583bb54abb928aef9f57d4e61223e5d96d933377a9",
+    "tests/grader.py": "21fb599a710c5f936cdba59384c33bedbfcc279f76a0a7c2a6d371772cc6a608"
+   }
+  },
+  "fin-i5-mem-742": {
+   "split": "main",
+   "type": "I5",
+   "passing_sets": [
+    [
+     "SSI"
+    ],
+    [
+     "VND"
+    ],
+    [
+     "REE"
+    ]
+   ],
+   "chance_base_rate": 0.6,
+   "files": {
+    "environment/payloads.json": "9213ff41255b9940677e7c7746cff881395db4c0d678a6126fdf767214c43922",
+    "environment/turns.json": "3ad16480ae70c3d936dfd5eca948b0ec4fcaba554714c2247e52206f2644d91b",
+    "instruction.md": "5754d316236fe7ee0cf229af42d3fa67ee61553b5e51e2738516abe1087eb541",
+    "solution/gold.json": "30ad1ed64bf0ea0788ed6b405bf1033a604e523940beb43089dee8cd9ca33365",
+    "solution/oracle.py": "667ba9cee3bc2ad54fe61f1ca17eb025ab5befe1924408fe3e00b2f314c99bad",
+    "task.toml": "111353808534d8752dbd9623b1c2b8cdf1327f08f8cbaa8cefd24ffe70350871",
+    "tests/grader.py": "21fb599a710c5f936cdba59384c33bedbfcc279f76a0a7c2a6d371772cc6a608"
+   }
+  },
+  "fin-i5-mem-743": {
+   "split": "main",
+   "type": "I5",
+   "passing_sets": [
+    [
+     "TCB"
+    ],
+    [
+     "SAB"
+    ]
+   ],
+   "chance_base_rate": 0.4,
+   "files": {
+    "environment/payloads.json": "0cebf25f3411a763c6518fbf7bd7ebb6cd27509bc3106d8941c74b63b05c6940",
+    "environment/turns.json": "f0eb1504b3f763d675aa6d6f1f32d0f946e852a69e625bb60323cbc61678ed2b",
+    "instruction.md": "a2652667e04f76c2f167543b0cb1e4bbd2c2317ea64e10be9bb5d555207e6eb7",
+    "solution/gold.json": "cb9c44df2901d4e9d8aa420516bf4e4e2744b0e27a91c3a5faa8605151124a1e",
+    "solution/oracle.py": "667ba9cee3bc2ad54fe61f1ca17eb025ab5befe1924408fe3e00b2f314c99bad",
+    "task.toml": "d4fc6edf088b07b427e07ef4bb8b49a059250be61da7825a316cc43ba0e22c9e",
+    "tests/grader.py": "21fb599a710c5f936cdba59384c33bedbfcc279f76a0a7c2a6d371772cc6a608"
+   }
+  },
+  "fin-i1-pick-751": {
+   "split": "pilot",
+   "type": "I1",
+   "passing_sets": [
+    [
+     "PLX"
+    ],
+    [
+     "PVD"
+    ]
+   ],
+   "chance_base_rate": 0.5,
+   "files": {
+    "environment/payloads.json": "45beffe9e65bde0fff968f04870f8ff76d6a077cd6c74cad40958979e0cf38d6",
+    "instruction.md": "15be4be2db29ec0f58a3f469e1f6ed84153fab81b5f3ccaf4111e47085fcdfdd",
+    "solution/gold.json": "63c517358a5f27c431c9a9e5a7b67fdd6ed7e33e30cb8003f47157d8da43d93c",
+    "solution/oracle.py": "667ba9cee3bc2ad54fe61f1ca17eb025ab5befe1924408fe3e00b2f314c99bad",
+    "task.toml": "ed45673fd6167f2b68cab9d01e609777393f57dc13449b747f65cf4343a28687",
+    "tests/grader.py": "1c08f2b8049f9fb91f8e7abbe52335f945a9a4a9c7653a83debf86c65bb99ead"
+   }
+  },
+  "fin-i2-maxgain-752": {
+   "split": "pilot",
+   "type": "I2",
+   "passing_sets": [
+    [
+     "VGS"
+    ]
+   ],
+   "chance_base_rate": 0.1667,
+   "files": {
+    "environment/payloads.json": "ffb94e7b9dac3136fed735ea36312181272579d14d18f6fdead9c03e090e730a",
+    "instruction.md": "02f3bfc085a308b5af20bab827e30f49db608968334ed70e710d67d64f979ce6",
+    "solution/gold.json": "5cb55d428b4371363a8ec8e190639f0a4c00cd57b16dd02364d1a3a3b05acadf",
+    "solution/oracle.py": "667ba9cee3bc2ad54fe61f1ca17eb025ab5befe1924408fe3e00b2f314c99bad",
+    "task.toml": "dde97a3f144a896c0067c5a1392904ff5009d0494cdd61c5740a0cf9ac4959cd",
+    "tests/grader.py": "1c08f2b8049f9fb91f8e7abbe52335f945a9a4a9c7653a83debf86c65bb99ead"
+   }
+  },
+  "fin-i3-risk-753": {
+   "split": "pilot",
+   "type": "I3",
+   "passing_sets": [
+    [
+     "DGC",
+     "VHM"
+    ],
+    [
+     "GVR",
+     "VHM"
+    ],
+    [
+     "DGC",
+     "VIC"
+    ],
+    [
+     "GVR",
+     "VIC"
+    ],
+    [
+     "DGC",
+     "GVR"
+    ],
+    [
+     "GVR",
+     "REE"
+    ],
+    [
+     "GVR",
+     "SAB"
+    ]
+   ],
+   "chance_base_rate": 0.4667,
+   "files": {
+    "environment/payloads.json": "ed303441aabb516894ca9bf68d92f86b03606ba0458227da9e65f88abaa641b1",
+    "instruction.md": "98c2f6fd609df8b5f59dadf23684ddd5f4f5d3086dc56edd18a6c6d075ee8a7e",
+    "solution/gold.json": "8e6588db2e2951f787721c7f6b3271aacd97f2c00a5df68c9c68013382d7d99b",
+    "solution/oracle.py": "667ba9cee3bc2ad54fe61f1ca17eb025ab5befe1924408fe3e00b2f314c99bad",
+    "task.toml": "f5e70a7879c3487eb59743894d1dbe271b86a0f7f79dea36837e68f9c1b0a7d0",
+    "tests/grader.py": "1c08f2b8049f9fb91f8e7abbe52335f945a9a4a9c7653a83debf86c65bb99ead"
+   }
+  },
+  "fin-i4-port-754": {
+   "split": "pilot",
+   "type": "I4",
+   "passing_sets": [
+    [
+     "BID",
+     "CTG",
+     "DBC",
+     "VND"
+    ],
+    [
+     "BID",
+     "DBC",
+     "HDB",
+     "VND"
+    ],
+    [
+     "BID",
+     "DBC",
+     "TPB",
+     "VND"
+    ],
+    [
+     "BID",
+     "DBC",
+     "HCM",
+     "VND"
+    ],
+    [
+     "BID",
+     "DBC",
+     "KDC",
+     "VND"
+    ],
+    [
+     "CTG",
+     "HDB",
+     "TPB",
+     "VND"
+    ],
+    [
+     "CTG",
+     "DBC",
+     "HDB",
+     "TPB"
+    ],
+    [
+     "CTG",
+     "HCM",
+     "HDB",
+     "VND"
+    ],
+    [
+     "CTG",
+     "HDB",
+     "KDC",
+     "VND"
+    ],
+    [
+     "CTG",
+     "DBC",
+     "HDB",
+     "VND"
+    ],
+    [
+     "CTG",
+     "DBC",
+     "HCM",
+     "HDB"
+    ],
+    [
+     "CTG",
+     "DBC",
+     "HDB",
+     "KDC"
+    ],
+    [
+     "CTG",
+     "HCM",
+     "TPB",
+     "VND"
+    ],
+    [
+     "CTG",
+     "KDC",
+     "TPB",
+     "VND"
+    ],
+    [
+     "CTG",
+     "DBC",
+     "TPB",
+     "VND"
+    ],
+    [
+     "CTG",
+     "DBC",
+     "HCM",
+     "TPB"
+    ],
+    [
+     "CTG",
+     "DBC",
+     "KDC",
+     "TPB"
+    ],
+    [
+     "CTG",
+     "HCM",
+     "KDC",
+     "VND"
+    ],
+    [
+     "CTG",
+     "DBC",
+     "HCM",
+     "VND"
+    ],
+    [
+     "CTG",
+     "DBC",
+     "KDC",
+     "VND"
+    ],
+    [
+     "CTG",
+     "DBC",
+     "HCM",
+     "KDC"
+    ],
+    [
+     "HCM",
+     "HDB",
+     "TPB",
+     "VND"
+    ],
+    [
+     "HDB",
+     "KDC",
+     "TPB",
+     "VND"
+    ],
+    [
+     "DBC",
+     "HDB",
+     "TPB",
+     "VND"
+    ],
+    [
+     "DBC",
+     "HCM",
+     "HDB",
+     "TPB"
+    ],
+    [
+     "DBC",
+     "HDB",
+     "KDC",
+     "TPB"
+    ],
+    [
+     "HCM",
+     "HDB",
+     "KDC",
+     "VND"
+    ],
+    [
+     "DBC",
+     "HCM",
+     "HDB",
+     "VND"
+    ],
+    [
+     "DBC",
+     "HDB",
+     "KDC",
+     "VND"
+    ],
+    [
+     "DBC",
+     "HCM",
+     "HDB",
+     "KDC"
+    ],
+    [
+     "HCM",
+     "KDC",
+     "TPB",
+     "VND"
+    ],
+    [
+     "DBC",
+     "HCM",
+     "TPB",
+     "VND"
+    ],
+    [
+     "DBC",
+     "KDC",
+     "TPB",
+     "VND"
+    ],
+    [
+     "DBC",
+     "HCM",
+     "KDC",
+     "TPB"
+    ],
+    [
+     "DBC",
+     "HCM",
+     "KDC",
+     "VND"
+    ]
+   ],
+   "chance_base_rate": 0.5,
+   "files": {
+    "environment/payloads.json": "042211d9548e26853336a358e733326a27cd30868fc2b36e157259e983904150",
+    "instruction.md": "1c501a05efc14eb9a8c8fb8da8f964e3d94b8cd6a06f613441535e4b6971ac67",
+    "solution/gold.json": "f7315383fdb003904c69f7cba0add8c86625e122c639ce1d34d2aa49d1840d92",
+    "solution/oracle.py": "667ba9cee3bc2ad54fe61f1ca17eb025ab5befe1924408fe3e00b2f314c99bad",
+    "task.toml": "0a90e54aa60ad2a6b43b58a3d99d7ddddb9085ed5a0d48186f60f4d07c846b93",
+    "tests/grader.py": "1c08f2b8049f9fb91f8e7abbe52335f945a9a4a9c7653a83debf86c65bb99ead"
+   }
+  },
+  "fin-i5-mem-755": {
+   "split": "pilot",
+   "type": "I5",
+   "passing_sets": [
+    [
+     "HPG"
+    ],
+    [
+     "VNM"
+    ]
+   ],
+   "chance_base_rate": 0.6667,
+   "files": {
+    "environment/payloads.json": "c0ab12ddad0e6351faea6bc9e5e5a239829405ad285d0e3e6a9fea9a8f53fee3",
+    "environment/turns.json": "c13ec689c67b21efc2f65e95847d9bf712f50035b5ebaf4fac8a98104f0321f6",
+    "instruction.md": "f3086653a35477ad3af4c280747dc741fb63711646f9c7f428bfd75f99368c92",
+    "solution/gold.json": "860f292fb4acc3548cb1cc36449701e1c7aeae04d251af87dd756235752cd720",
+    "solution/oracle.py": "667ba9cee3bc2ad54fe61f1ca17eb025ab5befe1924408fe3e00b2f314c99bad",
+    "task.toml": "e43e7059cf6ddf8e93a07232e24ed9075d0f7ebef074a7523fa78071e9902871",
+    "tests/grader.py": "21fb599a710c5f936cdba59384c33bedbfcc279f76a0a7c2a6d371772cc6a608"
+   }
+  }
+ }
+}

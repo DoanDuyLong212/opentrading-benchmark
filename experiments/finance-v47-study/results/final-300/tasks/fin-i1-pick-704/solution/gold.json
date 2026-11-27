@@ -1,0 +1,262 @@
+{
+  "task_id": "fin-i1-pick-704",
+  "scoring": "outcome",
+  "solution": {
+    "type": "I1",
+    "candidates": [
+      "HPG",
+      "HSG",
+      "NKG",
+      "GVR",
+      "BMP"
+    ],
+    "allowed": null,
+    "entry_date": "2026-10-30",
+    "end_date": "2026-11-23",
+    "passing_sets": [
+      [
+        "HPG"
+      ],
+      [
+        "NKG"
+      ],
+      [
+        "BMP"
+      ]
+    ],
+    "answer_size": 1,
+    "chance_base_rate": 0.6,
+    "outcomes": {
+      "HPG": {
+        "entry": 21.0,
+        "end_close": 20.4,
+        "peak_close": 21.7,
+        "low_close": 20.4,
+        "ret": -2.8571,
+        "peak": 3.3333,
+        "low": -2.8571
+      },
+      "HSG": {
+        "entry": 10.85,
+        "end_close": 10.15,
+        "peak_close": 11.1,
+        "low_close": 10.15,
+        "ret": -6.4516,
+        "peak": 2.3041,
+        "low": -6.4516
+      },
+      "NKG": {
+        "entry": 11.9,
+        "end_close": 12.15,
+        "peak_close": 12.6,
+        "low_close": 11.7,
+        "ret": 2.1008,
+        "peak": 5.8824,
+        "low": -1.6807
+      },
+      "GVR": {
+        "entry": 30.82,
+        "end_close": 27.85,
+        "peak_close": 29.79,
+        "low_close": 27.2,
+        "ret": -9.6366,
+        "peak": -3.342,
+        "low": -11.7456
+      },
+      "BMP": {
+        "entry": 131.01,
+        "end_close": 130.0,
+        "peak_close": 131.39,
+        "low_close": 128.0,
+        "ret": -0.7709,
+        "peak": 0.2901,
+        "low": -2.2975
+      }
+    },
+    "vnindex_ret": -2.5539,
+    "post_sha256": "fdfa27527f56099a0534909f9abd1a7d69cb5b616b857aacd8755654d522f06c"
+  },
+  "as_of": "2026-11-25T18:51:22.395329+07:00",
+  "split": "main",
+  "expects": [
+    {
+      "type": "set_in",
+      "path": "values.pick",
+      "size": 1,
+      "accept_sets": [
+        [
+          "HPG"
+        ],
+        [
+          "NKG"
+        ],
+        [
+          "BMP"
+        ]
+      ]
+    }
+  ],
+  "contract_version": 2,
+  "stratum": "investor",
+  "tier": "I1",
+  "notes": "Investor stratum (amendment 2026-11-25 d): primary = pre-registered outcome rule on recorded post-snapshot closes (tools/investor_specs_20261125.py).",
+  "provenance_contract": [
+    {
+      "tool": "vn_quote_history",
+      "source": "vnstock",
+      "as_of": "2026-11-25T18:51:22.395329+07:00",
+      "matched_entry_id": "hist:HPG",
+      "response_sha256": "4d1d0d34f6c7de503eb3017460ed3be550493189fc17e30f6d94c70e7d28aca9"
+    },
+    {
+      "tool": "vn_quote_history",
+      "source": "vnstock",
+      "as_of": "2026-11-25T18:51:22.395329+07:00",
+      "matched_entry_id": "hist:HSG",
+      "response_sha256": "3a6b2757982d112499d941cfaa6853a150d5f606f4cd4b9a021c143b43e0638e"
+    },
+    {
+      "tool": "vn_quote_history",
+      "source": "vnstock",
+      "as_of": "2026-11-25T18:51:22.395329+07:00",
+      "matched_entry_id": "hist:NKG",
+      "response_sha256": "844472a66c18341f1dc7b63209ec4f0051d22b30e7d9a0db100eddef69246071"
+    },
+    {
+      "tool": "vn_quote_history",
+      "source": "vnstock",
+      "as_of": "2026-11-25T18:51:22.395329+07:00",
+      "matched_entry_id": "hist:GVR",
+      "response_sha256": "1d75db241f246ba1ac672ae83b0ed4cddb7fd25ffc5267c991cf82ae6d2b15da"
+    },
+    {
+      "tool": "vn_quote_history",
+      "source": "vnstock",
+      "as_of": "2026-11-25T18:51:22.395329+07:00",
+      "matched_entry_id": "hist:BMP",
+      "response_sha256": "4c611eba429d1c770efd2daccc79f89cc20271f878d44b71701c77ec34e772cf"
+    }
+  ],
+  "provenance_catalog": [
+    {
+      "tool": "financial_statements",
+      "source": "vietstock",
+      "as_of": "2026-11-25T15:51:30.168761+07:00",
+      "matched_entry_id": "fs:BMP:q:CDKT",
+      "response_sha256": "f2de8e62f04645f69aadaf752508d321dba15463cd590666c7533497e5b52b8a"
+    },
+    {
+      "tool": "financial_statements",
+      "source": "vietstock",
+      "as_of": "2026-11-25T15:51:30.168761+07:00",
+      "matched_entry_id": "fs:BMP:q:KQKD",
+      "response_sha256": "50a23867f8ccddd352a747b5a02fe553d0bbe3d818e5d65783081c57cbed8818"
+    },
+    {
+      "tool": "financial_statements",
+      "source": "vietstock",
+      "as_of": "2026-11-25T15:51:30.168761+07:00",
+      "matched_entry_id": "fs:GVR:q:CDKT",
+      "response_sha256": "52c439bad2e1cdcd8d77f1f844991daeb90b772f2d3de4a6e64a54beb0b17582"
+    },
+    {
+      "tool": "financial_statements",
+      "source": "vietstock",
+      "as_of": "2026-11-25T15:51:30.168761+07:00",
+      "matched_entry_id": "fs:GVR:q:KQKD",
+      "response_sha256": "3380b82aa62f55f82c7d249e18305949f7be7ef66b3d356a17249f5914b18e81"
+    },
+    {
+      "tool": "financial_statements",
+      "source": "vietstock",
+      "as_of": "2026-11-25T15:51:30.168761+07:00",
+      "matched_entry_id": "fs:HPG:q:CDKT",
+      "response_sha256": "b2059e521726363803dae90f44183c4ebb17f8339c0e628dd3727763b8d2ba95"
+    },
+    {
+      "tool": "financial_statements",
+      "source": "vietstock",
+      "as_of": "2026-11-25T15:51:30.168761+07:00",
+      "matched_entry_id": "fs:HPG:q:KQKD",
+      "response_sha256": "8d4ee5cccfc28d69de0d4942f3fcbd2670997ce50c242ebfa331af0ba6d9244f"
+    },
+    {
+      "tool": "financial_statements",
+      "source": "vietstock",
+      "as_of": "2026-11-25T15:51:30.168761+07:00",
+      "matched_entry_id": "fs:HSG:q:CDKT",
+      "response_sha256": "ff20228dc35a160f6bf1e748d13d337844d1aa78d1343fa5af96c570c38752bb"
+    },
+    {
+      "tool": "financial_statements",
+      "source": "vietstock",
+      "as_of": "2026-11-25T15:51:30.168761+07:00",
+      "matched_entry_id": "fs:HSG:q:KQKD",
+      "response_sha256": "b4cc9ae7c5688c0b141f6ece86c381c4e5341670899fc5a528c892e3b56a1fe7"
+    },
+    {
+      "tool": "financial_statements",
+      "source": "vietstock",
+      "as_of": "2026-11-25T15:51:30.168761+07:00",
+      "matched_entry_id": "fs:NKG:q:CDKT",
+      "response_sha256": "57c453f16faecead8bfbd17e1764494782d4b2939ee7c6fd9be9e0b01f8f3c1d"
+    },
+    {
+      "tool": "financial_statements",
+      "source": "vietstock",
+      "as_of": "2026-11-25T15:51:30.168761+07:00",
+      "matched_entry_id": "fs:NKG:q:KQKD",
+      "response_sha256": "666d72d0a29d4043ba5d12a816f0059e9a031c0b1a9c1311ee55e023995dc9e1"
+    },
+    {
+      "tool": "vn_quote_history",
+      "source": "vnstock",
+      "as_of": "2026-11-25T18:51:22.395329+07:00",
+      "matched_entry_id": "hist:BMP",
+      "response_sha256": "4c611eba429d1c770efd2daccc79f89cc20271f878d44b71701c77ec34e772cf"
+    },
+    {
+      "tool": "vn_quote_history",
+      "source": "vnstock",
+      "as_of": "2026-11-25T18:51:22.395329+07:00",
+      "matched_entry_id": "hist:GVR",
+      "response_sha256": "1d75db241f246ba1ac672ae83b0ed4cddb7fd25ffc5267c991cf82ae6d2b15da"
+    },
+    {
+      "tool": "vn_quote_history",
+      "source": "vnstock",
+      "as_of": "2026-11-25T18:51:22.395329+07:00",
+      "matched_entry_id": "hist:HPG",
+      "response_sha256": "4d1d0d34f6c7de503eb3017460ed3be550493189fc17e30f6d94c70e7d28aca9"
+    },
+    {
+      "tool": "vn_quote_history",
+      "source": "vnstock",
+      "as_of": "2026-11-25T18:51:22.395329+07:00",
+      "matched_entry_id": "hist:HSG",
+      "response_sha256": "3a6b2757982d112499d941cfaa6853a150d5f606f4cd4b9a021c143b43e0638e"
+    },
+    {
+      "tool": "vn_quote_history",
+      "source": "vnstock",
+      "as_of": "2026-11-25T18:51:22.395329+07:00",
+      "matched_entry_id": "hist:NKG",
+      "response_sha256": "844472a66c18341f1dc7b63209ec4f0051d22b30e7d9a0db100eddef69246071"
+    },
+    {
+      "tool": "vn_index_ohlcv",
+      "source": "vnstock",
+      "as_of": "2026-11-25T18:51:22.395329+07:00",
+      "matched_entry_id": "idx:VNINDEX",
+      "response_sha256": "9e3728dbbf0ef9b88bb5e5887181997e807203cb16d6fd17aa857ba86a0bfd3f"
+    }
+  ],
+  "payload_sha256": "933911b9e61a84a7326c4e6f9cc4b38ee9b4c1cf5bc1512843886dabb4ec112b",
+  "required_payload_keys": [
+    "hist:BMP",
+    "hist:GVR",
+    "hist:HPG",
+    "hist:HSG",
+    "hist:NKG"
+  ]
+}

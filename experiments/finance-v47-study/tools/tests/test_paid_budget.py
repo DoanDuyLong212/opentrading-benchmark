@@ -481,7 +481,7 @@ def _http_error(status, raw, retry_after='0'):
 
 
 def test_pre_generation_rate_limit_settles_zero_then_retries(tmp_path, monkeypatch):
-    # Live 2026-11-24 (Tenstorrent): HTTP 429 with only an error object; no generation, nothing billed.
+    # Live 2026-11-25 (Tenstorrent): HTTP 429 with only an error object; no generation, nothing billed.
     gate, body = paid_gateway(tmp_path, monkeypatch)
     gate.options['failed_attempt_token_reservation'] = 5000
     monkeypatch.setattr(provider, 'retry_delay', lambda *a, **k: 0)

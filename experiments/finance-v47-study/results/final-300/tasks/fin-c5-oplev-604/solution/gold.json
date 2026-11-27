@@ -1,0 +1,172 @@
+{
+  "task_id": "fin-c5-oplev-604",
+  "scoring": "value",
+  "solution": {
+    "HPG": {
+      "rev_growth": 34.2755,
+      "op_growth": 74.6825,
+      "op_leverage": 2.1789
+    },
+    "DCM": {
+      "rev_growth": 19.7805,
+      "op_growth": 61.2879,
+      "op_leverage": 3.0984
+    },
+    "REE": {
+      "rev_growth": 15.4498,
+      "op_growth": 12.9767,
+      "op_leverage": 0.8399
+    },
+    "highest": "DCM"
+  },
+  "as_of": "2026-11-25T15:51:30.168761+07:00",
+  "split": "main",
+  "expects": [
+    {
+      "type": "value",
+      "path": "values.HPG.rev_growth",
+      "gold": 34.2755,
+      "tol": {
+        "abs": 0.05
+      }
+    },
+    {
+      "type": "value",
+      "path": "values.HPG.op_growth",
+      "gold": 74.6825,
+      "tol": {
+        "abs": 0.05
+      }
+    },
+    {
+      "type": "value",
+      "path": "values.HPG.op_leverage",
+      "gold": 2.1789,
+      "tol": {
+        "abs": 0.01
+      }
+    },
+    {
+      "type": "value",
+      "path": "values.DCM.rev_growth",
+      "gold": 19.7805,
+      "tol": {
+        "abs": 0.05
+      }
+    },
+    {
+      "type": "value",
+      "path": "values.DCM.op_growth",
+      "gold": 61.2879,
+      "tol": {
+        "abs": 0.05
+      }
+    },
+    {
+      "type": "value",
+      "path": "values.DCM.op_leverage",
+      "gold": 3.0984,
+      "tol": {
+        "abs": 0.01
+      }
+    },
+    {
+      "type": "value",
+      "path": "values.REE.rev_growth",
+      "gold": 15.4498,
+      "tol": {
+        "abs": 0.05
+      }
+    },
+    {
+      "type": "value",
+      "path": "values.REE.op_growth",
+      "gold": 12.9767,
+      "tol": {
+        "abs": 0.05
+      }
+    },
+    {
+      "type": "value",
+      "path": "values.REE.op_leverage",
+      "gold": 0.8399,
+      "tol": {
+        "abs": 0.01
+      }
+    },
+    {
+      "type": "tokens",
+      "path": "values.highest",
+      "accept": [
+        "DCM"
+      ],
+      "reject": [
+        "HPG",
+        "REE"
+      ]
+    },
+    {
+      "type": "str",
+      "path": "source",
+      "accept": [
+        "financial_statements"
+      ]
+    }
+  ],
+  "contract_version": 2,
+  "stratum": "compute",
+  "tier": "C5",
+  "notes": "Fundamental compute stratum (amendment 2026-11-25). Gold from tools/finance_stratum_lib.py on the task payloads.",
+  "provenance_contract": [
+    {
+      "tool": "financial_statements",
+      "source": "vietstock",
+      "as_of": "2026-11-25T15:51:30.168761+07:00",
+      "matched_entry_id": "fs:HPG:q:KQKD",
+      "response_sha256": "8d4ee5cccfc28d69de0d4942f3fcbd2670997ce50c242ebfa331af0ba6d9244f"
+    },
+    {
+      "tool": "financial_statements",
+      "source": "vietstock",
+      "as_of": "2026-11-25T15:51:30.168761+07:00",
+      "matched_entry_id": "fs:DCM:q:KQKD",
+      "response_sha256": "5231519b4de85134c92808ba90f984eb3a60a7711ba5ff849aedeeda9d3fef4e"
+    },
+    {
+      "tool": "financial_statements",
+      "source": "vietstock",
+      "as_of": "2026-11-25T15:51:30.168761+07:00",
+      "matched_entry_id": "fs:REE:q:KQKD",
+      "response_sha256": "0630b9832f5d63a6473c4f6c9f2826e9a6e967f7c11160aae87bda1fe0799612"
+    }
+  ],
+  "provenance_catalog": [
+    {
+      "tool": "financial_statements",
+      "source": "vietstock",
+      "as_of": "2026-11-25T15:51:30.168761+07:00",
+      "matched_entry_id": "fs:HPG:q:KQKD",
+      "response_sha256": "8d4ee5cccfc28d69de0d4942f3fcbd2670997ce50c242ebfa331af0ba6d9244f"
+    },
+    {
+      "tool": "financial_statements",
+      "source": "vietstock",
+      "as_of": "2026-11-25T15:51:30.168761+07:00",
+      "matched_entry_id": "fs:DCM:q:KQKD",
+      "response_sha256": "5231519b4de85134c92808ba90f984eb3a60a7711ba5ff849aedeeda9d3fef4e"
+    },
+    {
+      "tool": "financial_statements",
+      "source": "vietstock",
+      "as_of": "2026-11-25T15:51:30.168761+07:00",
+      "matched_entry_id": "fs:REE:q:KQKD",
+      "response_sha256": "0630b9832f5d63a6473c4f6c9f2826e9a6e967f7c11160aae87bda1fe0799612"
+    }
+  ],
+  "payload_sha256": "7ce26681dec412ba36e25688513c3cfa213fd562e7da8c80d166700070cc36ea",
+  "required_payload_keys": [
+    "fs:DCM:q:KQKD",
+    "fs:HPG:q:KQKD",
+    "fs:REE:q:KQKD"
+  ]
+}

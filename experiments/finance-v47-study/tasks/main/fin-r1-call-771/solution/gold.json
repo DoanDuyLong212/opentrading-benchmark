@@ -13,7 +13,7 @@
     "vnindex_ret": -2.5539,
     "post_sha256": "fdfa27527f56099a0534909f9abd1a7d69cb5b616b857aacd8755654d522f06c"
   },
-  "as_of": "2026-11-24T18:51:22.395329+07:00",
+  "as_of": "2026-11-25T18:51:22.395329+07:00",
   "split": "main",
   "expects": [
     {
@@ -31,33 +31,33 @@
   "contract_version": 2,
   "stratum": "investor",
   "tier": "R",
-  "notes": "Recommendation stratum (amendment 2026-11-24 f): primary = pre-registered ±2 % rule on the recorded close of END (tools/recommend_specs_20261124.py).",
+  "notes": "Recommendation stratum (amendment 2026-11-25 f): primary = pre-registered ±2 % rule on the recorded close of END (tools/recommend_specs_20261125.py).",
   "provenance_contract": [
     {
       "tool": "vn_quote_history",
       "source": "vnstock",
-      "as_of": "2026-11-24T18:51:22.395329+07:00",
+      "as_of": "2026-11-25T18:51:22.395329+07:00",
       "matched_entry_id": "hist:VCB",
-      "response_sha256": "e12429c59c765cdd04cd74c65106cf6ec9e2eb769a112544d8dadea37aab6651"
+      "response_sha256": "400f44219efc9d6e0a2711fdf21c6673cd717aed80f1b77476e183f1f354a632"
     }
   ],
   "provenance_catalog": [
     {
       "tool": "vn_quote_history",
       "source": "vnstock",
-      "as_of": "2026-11-24T18:51:22.395329+07:00",
+      "as_of": "2026-11-25T18:51:22.395329+07:00",
       "matched_entry_id": "hist:VCB",
-      "response_sha256": "e12429c59c765cdd04cd74c65106cf6ec9e2eb769a112544d8dadea37aab6651"
+      "response_sha256": "400f44219efc9d6e0a2711fdf21c6673cd717aed80f1b77476e183f1f354a632"
     },
     {
       "tool": "vn_index_ohlcv",
       "source": "vnstock",
-      "as_of": "2026-11-24T18:51:22.395329+07:00",
+      "as_of": "2026-11-25T18:51:22.395329+07:00",
       "matched_entry_id": "idx:VNINDEX",
-      "response_sha256": "b488774051825141515f6c44fb7e9ac3d3d882c5acae3b029ed0b81a7e15a560"
+      "response_sha256": "9e3728dbbf0ef9b88bb5e5887181997e807203cb16d6fd17aa857ba86a0bfd3f"
     }
   ],
-  "payload_sha256": "d03341968734d8846c0799a357a9d97647a13a44fd7531fc0e1636244752cc8f",
+  "payload_sha256": "c4225dfff76e4fad184eb44398633d61bb62d96b59e3edde17ca85d8f7d78c20",
   "required_payload_keys": [
     "hist:VCB"
   ]

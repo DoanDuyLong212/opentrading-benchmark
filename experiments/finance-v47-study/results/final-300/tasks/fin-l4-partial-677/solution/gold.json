@@ -1,0 +1,64 @@
+{
+  "task_id": "fin-l4-partial-677",
+  "scoring": "value",
+  "solution": {
+    "served": 2170.7705,
+    "missing": null,
+    "missing_item": "P/E cơ bản (mục Chỉ số tài chính không được phục vụ)"
+  },
+  "as_of": "2026-11-25",
+  "split": "main",
+  "expects": [
+    {
+      "type": "value",
+      "path": "values.served",
+      "gold": 2170.7705,
+      "tol": {
+        "rel": 0.005
+      }
+    },
+    {
+      "type": "null",
+      "path": "values.missing"
+    },
+    {
+      "type": "nonempty_reason",
+      "path": "reason"
+    },
+    {
+      "type": "str",
+      "path": "source",
+      "accept": [
+        "financial_statements"
+      ]
+    }
+  ],
+  "contract_version": 2,
+  "stratum": "lookup",
+  "tier": "L4",
+  "family": "L4 partial availability",
+  "notes": "Group D (amendment 2026-11-25 d): served field exact, unserved field null + reason; primary is the deterministic grader.",
+  "provenance_contract": [
+    {
+      "tool": "financial_statements",
+      "source": "vietstock",
+      "as_of": "2026-11-25T15:51:30.168761+07:00",
+      "matched_entry_id": "fs:DGC:q:KQKD",
+      "response_sha256": "0f6f689a464cb3ee54b5866626c830bc8304c4a6aac38a3cb3721122f66305d4"
+    }
+  ],
+  "provenance_catalog": [
+    {
+      "tool": "financial_statements",
+      "source": "vietstock",
+      "as_of": "2026-11-25T15:51:30.168761+07:00",
+      "matched_entry_id": "fs:DGC:q:KQKD",
+      "response_sha256": "0f6f689a464cb3ee54b5866626c830bc8304c4a6aac38a3cb3721122f66305d4"
+    }
+  ],
+  "payload_sha256": "f1315982d8fccd2807c798168fd53f4fa5c1b97df58f1371fbf06294b858e242",
+  "required_payload_keys": [
+    "fs:DGC:q:KQKD"
+  ],
+  "primary_rule": "deterministic"
+}

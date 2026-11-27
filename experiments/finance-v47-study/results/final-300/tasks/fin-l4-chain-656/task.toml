@@ -1,0 +1,31 @@
+# Group E — amendment 2026-11-25 (d), tools/build_lookup_extra_20261125.py
+id = "fin-l4-chain-656"
+title = "Chuỗi 2 bước DGC/DCM/DPM/BMP"
+version = 2
+created = "2026-11-25"
+level = "L4"
+family = "L4 chain"
+financebench_type = "multi-step retrieval"
+entity = "BMP+DCM+DGC+DPM"
+asset = "vn_stock"
+data_zone = "green"
+data_pairs = []
+snapshot_date = "2026-11-01"
+universe_cap = 0
+banned_tools = ["web_search", "web_fetch", "sentiment_score"]
+human_time_band = "15–60 phút"
+time_limit_min = 60
+tools_expected = ["financial_statements", "vn_quote_history"]
+mcp_payloads = "environment/payloads.json"
+snapshot_required = true
+split = "main"
+
+confirmatory_eligible = true
+stratum = "lookup"
+tier = "L4"
+
+[scoring]
+type = "value"
+gold = "solution/gold.json"
+oracle = "solution/oracle.py"
+grader = "tests/grader.py"

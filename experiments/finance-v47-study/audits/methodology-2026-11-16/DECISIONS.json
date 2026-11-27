@@ -5,7 +5,7 @@
  "approval": {
   "reviewer": "DoanDuyLong212 (owner)",
   "decision": "recorded",
-  "recorded_at": "2026-11-24",
+  "recorded_at": "2026-11-25",
   "source_url": {
    "10": "https://github.com/DoanDuyLong212/opentrading-benchmark/issues/10#issuecomment-7125741919",
    "13": "https://github.com/DoanDuyLong212/opentrading-benchmark/issues/13#issuecomment-7125742490",
@@ -34,8 +34,8 @@
   }
  },
  "holdout_history": {
-  "all_machine_confirmation": "owner confirms 2026-11-24: the v4.7 holdout has never been run on any machine",
-  "dev_stage_holdout": "covered by the owner confirmation above; no holdout run directory exists on this machine (searched 2026-11-24)",
+  "all_machine_confirmation": "owner confirms 2026-11-25: the v4.7 holdout has never been run on any machine",
+  "dev_stage_holdout": "covered by the owner confirmation above; no holdout run directory exists on this machine (searched 2026-11-25)",
   "fin_mem_96x": "v4.6 memory holdout tasks tasks/holdout/fin-mem-960..969 in the legacy tree; not in the v4.7 holdout (0 fin-mem-96x in tasks/holdout); never run per owner",
   "claim_unseen_training_data": false,
   "source_url": "https://github.com/DoanDuyLong212/opentrading-benchmark/issues/33#issuecomment-7125743643"
@@ -44,7 +44,7 @@
  "ready_for_seal_scope": "pilot seal only; main seal additionally needs the owner answer on pruning further or16-saturated main tasks (#13 wording)",
  "amendments_2026_11_24": {
   "owner_wording": "1 ok. 2 giữ, bổ sung thêm các tasks sao cho tổng main là 200 tasks, gợi ý thêm tasks j để tôi quyết. 3 thêm. 4 sửa để resume an toàn",
-  "channel": "Claude Code session 2026-11-24 (owner)",
+  "channel": "Claude Code session 2026-11-25 (owner)",
   "pilot": "approved; runs once the main taskset is final (freeze_state hashes every split, so a seal now would be voided by the main additions)",
   "13_refusal_traps": "kept in main: 8 saturated L4 future/nonexist traps restored (PRUNE2.json restored_to_main); main 114; target 200 pending owner choice of families",
   "15": "amended from a: holdout gets C5/M6 twins (+8 C5 fin-c5-*-981..988, +4 M6 fin-m6-*-991..994); holdout 70",
@@ -60,10 +60,10 @@
     "E_l4_chain": 4,
     "I_investor": 20
    },
-   "investor_primary": "P/L outcome (owner); rules pre-registered in tools/investor_specs_20261124.py (commit fd33f66) before any return was computed",
-   "end_date": "2026-11-23 (no source had a 24/11 session at 18:50 on 24/11)",
+   "investor_primary": "P/L outcome (owner); rules pre-registered in tools/investor_specs_20261125.py (commit fd33f66) before any return was computed",
+   "end_date": "2026-11-23 (no source had a 25/11 session at 18:50 on 25/11)",
    "pending": [
-    "re-record end date 24/11 when available"
+    "re-record end date 25/11 when available"
    ],
    "pooling": {
     "decision": "pooled into the primary score with L/C/M (owner: \"Gộp chung\"); also reported as its own stratum with base rates",

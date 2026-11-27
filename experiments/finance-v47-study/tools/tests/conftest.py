@@ -4,6 +4,3 @@ import sys
 TOOLS = Path(__file__).resolve().parents[1]
 sys.path[:0] = [str(TOOLS), str(TOOLS/'runners')]
 
-# Whole-study historical contracts need snapshots not distributed with v4.7.
-# Run explicitly by naming tools/tests/legacy; see legacy/README.md.
-collect_ignore = ['legacy']

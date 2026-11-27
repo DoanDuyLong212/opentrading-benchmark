@@ -7,7 +7,7 @@
     "missing": null,
     "missing_period": "Q3/2026"
   },
-  "as_of": "2026-11-24",
+  "as_of": "2026-11-25",
   "split": "pilot",
   "expects": [
     {
@@ -38,26 +38,26 @@
   "stratum": "lookup",
   "tier": "L4",
   "family": "L4 partial availability",
-  "notes": "Group D (amendment 2026-11-24 d): served field exact, unserved field null + reason; primary is the deterministic grader.",
+  "notes": "Group D (amendment 2026-11-25 d): served field exact, unserved field null + reason; primary is the deterministic grader.",
   "provenance_contract": [
     {
       "tool": "financial_statements",
       "source": "vietstock",
-      "as_of": "2026-11-24T15:51:30.168761+07:00",
+      "as_of": "2026-11-25T15:51:30.168761+07:00",
       "matched_entry_id": "fs:PNJ:q:KQKD",
-      "response_sha256": "636e093ea6a49e682ac9cf2f02799c66e6a5f83cd4f32afbdf141f5c2fa919a7"
+      "response_sha256": "d3ab68a7d2b16ed09d4b3d0b7098820f3f5b7b7b3d77af81e79bcdd8684597a8"
     }
   ],
   "provenance_catalog": [
     {
       "tool": "financial_statements",
       "source": "vietstock",
-      "as_of": "2026-11-24T15:51:30.168761+07:00",
+      "as_of": "2026-11-25T15:51:30.168761+07:00",
       "matched_entry_id": "fs:PNJ:q:KQKD",
-      "response_sha256": "636e093ea6a49e682ac9cf2f02799c66e6a5f83cd4f32afbdf141f5c2fa919a7"
+      "response_sha256": "d3ab68a7d2b16ed09d4b3d0b7098820f3f5b7b7b3d77af81e79bcdd8684597a8"
     }
   ],
-  "payload_sha256": "022f3fdd73547fcbefc80b8255399bf049e461364ed3082496d5bff2766aaa81",
+  "payload_sha256": "d94a2fb8f2899b5c0ac7bcfcc39c1afce8173260080a9042ed75810cdc16bfe5",
   "required_payload_keys": [
     "fs:PNJ:q:KQKD"
   ],

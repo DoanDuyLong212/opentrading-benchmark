@@ -13,7 +13,7 @@
     "vnindex_ret": -2.5539,
     "post_sha256": "fdfa27527f56099a0534909f9abd1a7d69cb5b616b857aacd8755654d522f06c"
   },
-  "as_of": "2026-11-24T18:51:22.395329+07:00",
+  "as_of": "2026-11-25T18:51:22.395329+07:00",
   "split": "holdout",
   "expects": [
     {
@@ -31,47 +31,47 @@
   "contract_version": 2,
   "stratum": "investor",
   "tier": "R",
-  "notes": "Recommendation stratum (amendment 2026-11-24 f): primary = pre-registered ±2 % rule on the recorded close of END (tools/recommend_specs_20261124.py).",
+  "notes": "Recommendation stratum (amendment 2026-11-25 f): primary = pre-registered ±2 % rule on the recorded close of END (tools/recommend_specs_20261125.py).",
   "provenance_contract": [
     {
       "tool": "vn_quote_history",
       "source": "vnstock",
-      "as_of": "2026-11-24T18:51:22.395329+07:00",
+      "as_of": "2026-11-25T18:51:22.395329+07:00",
       "matched_entry_id": "hist:GMD",
-      "response_sha256": "5252e0b5504bd2db3543ad76705322a990e7ee70fa0df554df351b57249918ac"
+      "response_sha256": "acbea2245ecde116a83efb3d889f1437d53e17896bfd918bb2b578958ed51634"
     }
   ],
   "provenance_catalog": [
     {
       "tool": "financial_statements",
       "source": "vietstock",
-      "as_of": "2026-11-24T15:51:30.168761+07:00",
+      "as_of": "2026-11-25T15:51:30.168761+07:00",
       "matched_entry_id": "fs:GMD:q:CDKT",
-      "response_sha256": "777994a9ac541676cd9ae6d93689239284954825fb18a83bce7ee6e005747fe8"
+      "response_sha256": "230ba157e74f2bfa83e3f4ef20f39ff741be4603cb7cbc8e6ae257b643dce399"
     },
     {
       "tool": "financial_statements",
       "source": "vietstock",
-      "as_of": "2026-11-24T15:51:30.168761+07:00",
+      "as_of": "2026-11-25T15:51:30.168761+07:00",
       "matched_entry_id": "fs:GMD:q:KQKD",
-      "response_sha256": "534a7858c0c58dea97414dab7b08c11945c6c2537a5e7afc6063a9034036be43"
+      "response_sha256": "0002e6e907979c05b77deb2bcc80e62c6a2f8cfd0beca24319501cc0b987d283"
     },
     {
       "tool": "vn_quote_history",
       "source": "vnstock",
-      "as_of": "2026-11-24T18:51:22.395329+07:00",
+      "as_of": "2026-11-25T18:51:22.395329+07:00",
       "matched_entry_id": "hist:GMD",
-      "response_sha256": "5252e0b5504bd2db3543ad76705322a990e7ee70fa0df554df351b57249918ac"
+      "response_sha256": "acbea2245ecde116a83efb3d889f1437d53e17896bfd918bb2b578958ed51634"
     },
     {
       "tool": "vn_index_ohlcv",
       "source": "vnstock",
-      "as_of": "2026-11-24T18:51:22.395329+07:00",
+      "as_of": "2026-11-25T18:51:22.395329+07:00",
       "matched_entry_id": "idx:VNINDEX",
-      "response_sha256": "b488774051825141515f6c44fb7e9ac3d3d882c5acae3b029ed0b81a7e15a560"
+      "response_sha256": "9e3728dbbf0ef9b88bb5e5887181997e807203cb16d6fd17aa857ba86a0bfd3f"
     }
   ],
-  "payload_sha256": "9cd296feb7f644052c3d66703c0878c0a8cf94e347715eecaec54fc6b52442f1",
+  "payload_sha256": "42c1a91a92ee8084aa87b8130caa2e28180b7c519126d5de7837d3d8a0af1c33",
   "required_payload_keys": [
     "hist:GMD"
   ]

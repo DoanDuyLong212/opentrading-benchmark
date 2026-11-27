@@ -1,0 +1,199 @@
+{
+  "task_id": "fin-c5-lev-611",
+  "scoring": "value",
+  "solution": {
+    "FPT": {
+      "de_now": 0.7986,
+      "de_prev": 1.0464,
+      "de_change": -0.2478,
+      "current_ratio": 1.5563
+    },
+    "FRT": {
+      "de_now": 3.5707,
+      "de_prev": 4.4268,
+      "de_change": -0.8561,
+      "current_ratio": 1.1892
+    },
+    "VCG": {
+      "de_now": 1.2452,
+      "de_prev": 1.6436,
+      "de_change": -0.3984,
+      "current_ratio": 1.5457
+    },
+    "most_deleveraged": "FRT"
+  },
+  "as_of": "2026-11-25T15:51:30.168761+07:00",
+  "split": "main",
+  "expects": [
+    {
+      "type": "value",
+      "path": "values.FPT.de_now",
+      "gold": 0.7986,
+      "tol": {
+        "abs": 0.005
+      }
+    },
+    {
+      "type": "value",
+      "path": "values.FPT.de_prev",
+      "gold": 1.0464,
+      "tol": {
+        "abs": 0.005
+      }
+    },
+    {
+      "type": "value",
+      "path": "values.FPT.de_change",
+      "gold": -0.2478,
+      "tol": {
+        "abs": 0.005
+      }
+    },
+    {
+      "type": "value",
+      "path": "values.FPT.current_ratio",
+      "gold": 1.5563,
+      "tol": {
+        "abs": 0.005
+      }
+    },
+    {
+      "type": "value",
+      "path": "values.FRT.de_now",
+      "gold": 3.5707,
+      "tol": {
+        "abs": 0.005
+      }
+    },
+    {
+      "type": "value",
+      "path": "values.FRT.de_prev",
+      "gold": 4.4268,
+      "tol": {
+        "abs": 0.005
+      }
+    },
+    {
+      "type": "value",
+      "path": "values.FRT.de_change",
+      "gold": -0.8561,
+      "tol": {
+        "abs": 0.005
+      }
+    },
+    {
+      "type": "value",
+      "path": "values.FRT.current_ratio",
+      "gold": 1.1892,
+      "tol": {
+        "abs": 0.005
+      }
+    },
+    {
+      "type": "value",
+      "path": "values.VCG.de_now",
+      "gold": 1.2452,
+      "tol": {
+        "abs": 0.005
+      }
+    },
+    {
+      "type": "value",
+      "path": "values.VCG.de_prev",
+      "gold": 1.6436,
+      "tol": {
+        "abs": 0.005
+      }
+    },
+    {
+      "type": "value",
+      "path": "values.VCG.de_change",
+      "gold": -0.3984,
+      "tol": {
+        "abs": 0.005
+      }
+    },
+    {
+      "type": "value",
+      "path": "values.VCG.current_ratio",
+      "gold": 1.5457,
+      "tol": {
+        "abs": 0.005
+      }
+    },
+    {
+      "type": "tokens",
+      "path": "values.most_deleveraged",
+      "accept": [
+        "FRT"
+      ],
+      "reject": [
+        "FPT",
+        "VCG"
+      ]
+    },
+    {
+      "type": "str",
+      "path": "source",
+      "accept": [
+        "financial_statements"
+      ]
+    }
+  ],
+  "contract_version": 2,
+  "stratum": "compute",
+  "tier": "C5",
+  "notes": "Fundamental compute stratum (amendment 2026-11-25). Gold from tools/finance_stratum_lib.py on the task payloads.",
+  "provenance_contract": [
+    {
+      "tool": "financial_statements",
+      "source": "vietstock",
+      "as_of": "2026-11-25T15:51:30.168761+07:00",
+      "matched_entry_id": "fs:FPT:q:CDKT",
+      "response_sha256": "3bea75d15ce1211407f5852891a8e920fc88fd96f05e8cf23811bace3ad2abb6"
+    },
+    {
+      "tool": "financial_statements",
+      "source": "vietstock",
+      "as_of": "2026-11-25T15:51:30.168761+07:00",
+      "matched_entry_id": "fs:FRT:q:CDKT",
+      "response_sha256": "6203c1b94be3970c4ea0bff65931a50e89290e59e4dff6ee038c5d80d797d17a"
+    },
+    {
+      "tool": "financial_statements",
+      "source": "vietstock",
+      "as_of": "2026-11-25T15:51:30.168761+07:00",
+      "matched_entry_id": "fs:VCG:q:CDKT",
+      "response_sha256": "36af833d63702cb903ba6177a05111864ab12e3e497069a698043567109b7925"
+    }
+  ],
+  "provenance_catalog": [
+    {
+      "tool": "financial_statements",
+      "source": "vietstock",
+      "as_of": "2026-11-25T15:51:30.168761+07:00",
+      "matched_entry_id": "fs:FPT:q:CDKT",
+      "response_sha256": "3bea75d15ce1211407f5852891a8e920fc88fd96f05e8cf23811bace3ad2abb6"
+    },
+    {
+      "tool": "financial_statements",
+      "source": "vietstock",
+      "as_of": "2026-11-25T15:51:30.168761+07:00",
+      "matched_entry_id": "fs:FRT:q:CDKT",
+      "response_sha256": "6203c1b94be3970c4ea0bff65931a50e89290e59e4dff6ee038c5d80d797d17a"
+    },
+    {
+      "tool": "financial_statements",
+      "source": "vietstock",
+      "as_of": "2026-11-25T15:51:30.168761+07:00",
+      "matched_entry_id": "fs:VCG:q:CDKT",
+      "response_sha256": "36af833d63702cb903ba6177a05111864ab12e3e497069a698043567109b7925"
+    }
+  ],
+  "payload_sha256": "e87449d0b775af35d74b728db3271874c084daa4253dd027f36a8a40866cd651",
+  "required_payload_keys": [
+    "fs:FPT:q:CDKT",
+    "fs:FRT:q:CDKT",
+    "fs:VCG:q:CDKT"
+  ]
+}
